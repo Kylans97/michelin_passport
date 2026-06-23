@@ -1,0 +1,2 @@
+name,michelin_stars,cuisine,city,country,country_code,country_flag,latitude,longitude,description,price_range,michelin_url,website_url,category
+"Restaurant Name",3,"Cuisine Type","City Name","Country Name","XX","🇽🇽",52.3676,4.9041,"Your own one-sentence description.","€€€€","https://guide.michelin.com/...","https://restaurant-website.com","star"
