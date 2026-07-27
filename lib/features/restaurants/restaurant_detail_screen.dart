@@ -23,11 +23,15 @@ class RestaurantDetailScreen extends StatelessWidget {
 
   Future<void> _openMaps() async {
     final Uri uri;
-    if (restaurant.googlePlaceId != null && restaurant.googlePlaceId!.isNotEmpty) {
+    if (restaurant.googlePlaceId != null &&
+        restaurant.googlePlaceId!.isNotEmpty) {
       uri = Uri.parse(
-          'https://www.google.com/maps/place/?q=place_id:${restaurant.googlePlaceId}');
+        'https://www.google.com/maps/search/?api=1&query=${restaurant.googlePlaceId}&query_place_id=${restaurant.googlePlaceId}',
+      );
     } else {
-      final query = Uri.encodeComponent('${restaurant.name} ${restaurant.city}');
+      final query = Uri.encodeComponent(
+        '${restaurant.name} ${restaurant.city}',
+      );
       uri = Uri.parse('https://www.google.com/maps/search/?api=1&query=$query');
     }
     if (await canLaunchUrl(uri)) {
@@ -53,7 +57,11 @@ class RestaurantDetailScreen extends StatelessWidget {
                   gradient: LinearGradient(
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
-                    colors: [Color(0xFF1C1400), Color(0xFF110E00), AppColors.background],
+                    colors: [
+                      Color(0xFF1C1400),
+                      Color(0xFF110E00),
+                      AppColors.background,
+                    ],
                     stops: [0.0, 0.5, 1.0],
                   ),
                 ),
@@ -65,13 +73,25 @@ class RestaurantDetailScreen extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         StarRow(count: restaurant.michelinStars, size: 16),
+                        if (restaurant.worlds50BestRank != null) ...[
+                          const SizedBox(height: 8),
+                          Text(
+                            '#${restaurant.worlds50BestRank} — World’s 50 Best ${restaurant.worlds50BestYear ?? ''}',
+                            style: const TextStyle(
+                              color: AppColors.gold,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
                         const SizedBox(height: 8),
                         Text(
                           restaurant.name,
                           style: GoogleFonts.playfairDisplay(
-                              color: AppColors.textPrimary,
-                              fontSize: 26,
-                              fontWeight: FontWeight.w700),
+                            color: AppColors.textPrimary,
+                            fontSize: 26,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
                       ],
                     ),
@@ -91,8 +111,10 @@ class RestaurantDetailScreen extends StatelessWidget {
                   // Cuisine & location
                   _InfoRow(Icons.restaurant_menu_rounded, restaurant.cuisine),
                   const SizedBox(height: 10),
-                  _InfoRow(Icons.location_on_rounded,
-                      '${restaurant.countryFlag}  ${restaurant.city}, ${restaurant.country}'),
+                  _InfoRow(
+                    Icons.location_on_rounded,
+                    '${restaurant.countryFlag}  ${restaurant.city}, ${restaurant.country}',
+                  ),
                   if (restaurant.address.isNotEmpty) ...[
                     const SizedBox(height: 10),
                     _InfoRow(Icons.map_outlined, restaurant.address),
@@ -118,7 +140,9 @@ class RestaurantDetailScreen extends StatelessWidget {
                           icon: isWishlisted
                               ? Icons.favorite_rounded
                               : Icons.favorite_border_rounded,
-                          label: isWishlisted ? 'Wishlisted' : 'Add to wishlist',
+                          label: isWishlisted
+                              ? 'Wishlisted'
+                              : 'Add to wishlist',
                           active: isWishlisted,
                           onTap: onToggleWishlist,
                         ),
@@ -134,14 +158,19 @@ class RestaurantDetailScreen extends StatelessWidget {
                     child: FilledButton.icon(
                       onPressed: _openMaps,
                       icon: const Icon(Icons.map_rounded, size: 18),
-                      label: Text('Reserve via Google Maps',
-                          style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w600, fontSize: 14)),
+                      label: Text(
+                        'Reserve via Google Maps',
+                        style: GoogleFonts.inter(
+                          fontWeight: FontWeight.w600,
+                          fontSize: 14,
+                        ),
+                      ),
                       style: FilledButton.styleFrom(
                         backgroundColor: AppColors.gold,
                         foregroundColor: Colors.black,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(14)),
+                          borderRadius: BorderRadius.circular(14),
+                        ),
                       ),
                     ),
                   ),
@@ -157,19 +186,26 @@ class RestaurantDetailScreen extends StatelessWidget {
                         onPressed: () async {
                           final uri = Uri.parse(restaurant.michelinUrl!);
                           if (await canLaunchUrl(uri)) {
-                            await launchUrl(uri,
-                                mode: LaunchMode.externalApplication);
+                            await launchUrl(
+                              uri,
+                              mode: LaunchMode.externalApplication,
+                            );
                           }
                         },
                         icon: const Icon(Icons.open_in_new_rounded, size: 16),
-                        label: Text('View on Michelin Guide',
-                            style: GoogleFonts.inter(fontSize: 14)),
+                        label: Text(
+                          'View on Michelin Guide',
+                          style: GoogleFonts.inter(fontSize: 14),
+                        ),
                         style: OutlinedButton.styleFrom(
                           foregroundColor: AppColors.textSecondary,
                           side: const BorderSide(
-                              color: AppColors.cardBorder, width: 0.5),
+                            color: AppColors.cardBorder,
+                            width: 0.5,
+                          ),
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(14)),
+                            borderRadius: BorderRadius.circular(14),
+                          ),
                         ),
                       ),
                     ),
@@ -191,17 +227,21 @@ class _InfoRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, color: AppColors.textSecondary, size: 16),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Text(text,
-                style: GoogleFonts.inter(
-                    color: AppColors.textSecondary, fontSize: 14)),
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Icon(icon, color: AppColors.textSecondary, size: 16),
+      const SizedBox(width: 10),
+      Expanded(
+        child: Text(
+          text,
+          style: GoogleFonts.inter(
+            color: AppColors.textSecondary,
+            fontSize: 14,
           ),
-        ],
-      );
+        ),
+      ),
+    ],
+  );
 }
 
 class _ActionButton extends StatelessWidget {
@@ -209,42 +249,46 @@ class _ActionButton extends StatelessWidget {
   final String label;
   final bool active;
   final VoidCallback? onTap;
-  const _ActionButton(
-      {required this.icon,
-      required this.label,
-      required this.active,
-      this.onTap});
+  const _ActionButton({
+    required this.icon,
+    required this.label,
+    required this.active,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 180),
-          padding: const EdgeInsets.symmetric(vertical: 14),
-          decoration: BoxDecoration(
-            color: active ? AppColors.goldMuted : AppColors.surface,
-            borderRadius: BorderRadius.circular(14),
-            border: Border.all(
-              color: active ? AppColors.goldBorder60 : AppColors.cardBorder,
-              width: active ? 1.0 : 0.5,
+    onTap: onTap,
+    child: AnimatedContainer(
+      duration: const Duration(milliseconds: 180),
+      padding: const EdgeInsets.symmetric(vertical: 14),
+      decoration: BoxDecoration(
+        color: active ? AppColors.goldMuted : AppColors.surface,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(
+          color: active ? AppColors.goldBorder60 : AppColors.cardBorder,
+          width: active ? 1.0 : 0.5,
+        ),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            icon,
+            color: active ? AppColors.gold : AppColors.textSecondary,
+            size: 22,
+          ),
+          const SizedBox(height: 6),
+          Text(
+            label,
+            style: GoogleFonts.inter(
+              color: active ? AppColors.gold : AppColors.textSecondary,
+              fontSize: 11,
+              fontWeight: active ? FontWeight.w600 : FontWeight.w400,
             ),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon,
-                  color: active ? AppColors.gold : AppColors.textSecondary,
-                  size: 22),
-              const SizedBox(height: 6),
-              Text(label,
-                  style: GoogleFonts.inter(
-                    color: active ? AppColors.gold : AppColors.textSecondary,
-                    fontSize: 11,
-                    fontWeight:
-                        active ? FontWeight.w600 : FontWeight.w400,
-                  )),
-            ],
-          ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 }

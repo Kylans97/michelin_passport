@@ -11,6 +11,8 @@ class Restaurant {
   final double? longitude;
   final String? googlePlaceId;
   final String? michelinUrl;
+  final int? worlds50BestRank;
+  final int? worlds50BestYear;
 
   const Restaurant({
     required this.id,
@@ -25,20 +27,24 @@ class Restaurant {
     this.longitude,
     this.googlePlaceId,
     this.michelinUrl,
+    this.worlds50BestRank,
+    this.worlds50BestYear,
   });
 
   factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
-        id: json['id'].toString(),
-        name: (json['name'] as String?) ?? '',
-        michelinStars: (json['michelin_stars'] as int?) ?? 0,
-        cuisine: (json['cuisine'] as String?) ?? '',
-        city: (json['city'] as String?) ?? '',
-        country: (json['country'] as String?) ?? '',
-        countryFlag: (json['country_flag'] as String?) ?? '',
-        address: (json['address'] as String?) ?? '',
-        latitude: (json['latitude'] as num?)?.toDouble(),
-        longitude: (json['longitude'] as num?)?.toDouble(),
-        googlePlaceId: json['google_place_id'] as String?,
-        michelinUrl: json['michelin_url'] as String?,
-      );
+    id: json['id'].toString(),
+    name: (json['name'] as String?) ?? '',
+    michelinStars: (json['michelin_stars'] as int?) ?? 0,
+    cuisine: (json['cuisine'] as String?) ?? '',
+    city: (json['city'] as String?) ?? '',
+    country: (json['country'] as String?) ?? '',
+    countryFlag: (json['country_flag'] as String?) ?? '',
+    address: (json['address'] as String?) ?? '',
+    latitude: (json['latitude'] as num?)?.toDouble(),
+    longitude: (json['longitude'] as num?)?.toDouble(),
+    googlePlaceId: json['google_place_id'] as String?,
+    michelinUrl: json['michelin_url'] as String?,
+    worlds50BestRank: (json['worlds_50_best_rank'] as num?)?.toInt(),
+    worlds50BestYear: (json['worlds_50_best_year'] as num?)?.toInt(),
+  );
 }
