@@ -13,7 +13,8 @@ class StarRow extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: List.generate(
         count,
-        (_) => Icon(Icons.star_rounded, color: AppColors.starFilled, size: size),
+        (_) =>
+            Icon(Icons.star_rounded, color: AppColors.starFilled, size: size),
       ),
     );
   }

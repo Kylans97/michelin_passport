@@ -20,10 +20,10 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  late final _authRepo       = AuthRepository(Supabase.instance.client);
-  late final _visitedRepo    = VisitedRepository(Supabase.instance.client);
-  late final _profileRepo    = ProfileRepository(Supabase.instance.client);
-  late final _trophyRepo     = TrophyRepository(Supabase.instance.client);
+  late final _authRepo = AuthRepository(Supabase.instance.client);
+  late final _visitedRepo = VisitedRepository(Supabase.instance.client);
+  late final _profileRepo = ProfileRepository(Supabase.instance.client);
+  late final _trophyRepo = TrophyRepository(Supabase.instance.client);
   late final _friendshipRepo = FriendshipRepository(Supabase.instance.client);
 
   late Future<UserProfile> _profileFuture;
@@ -31,8 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   late Future<List<Friendship>> _friendsFuture;
   late Future<List<Map<String, dynamic>>> _communityFuture;
 
-  final String _uid =
-      Supabase.instance.client.auth.currentUser?.id ?? '';
+  final String _uid = Supabase.instance.client.auth.currentUser?.id ?? '';
 
   @override
   void initState() {
@@ -42,12 +41,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _load() {
     setState(() {
-      _profileFuture = _visitedRepo.getVisited(_uid).then(
-            (visited) => _profileRepo.getProfile(userId: _uid, visited: visited),
+      _profileFuture = _visitedRepo
+          .getVisited(_uid)
+          .then(
+            (visited) =>
+                _profileRepo.getProfile(userId: _uid, visited: visited),
           );
-      _trophyFuture     = _trophyRepo.getAllTrophies(_uid);
-      _friendsFuture    = _friendshipRepo.getFriends(_uid);
-      _communityFuture  = _profileRepo.getCommunityStats();
+      _trophyFuture = _trophyRepo.getAllTrophies(_uid);
+      _friendsFuture = _friendshipRepo.getFriends(_uid);
+      _communityFuture = _profileRepo.getCommunityStats();
     });
   }
 
@@ -63,7 +65,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
             backgroundColor: AppColors.background,
             body: Center(
               child: CircularProgressIndicator(
-                  color: AppColors.gold, strokeWidth: 1.5),
+                color: AppColors.gold,
+                strokeWidth: 1.5,
+              ),
             ),
           );
         }
@@ -74,13 +78,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text('Could not load profile',
-                      style: GoogleFonts.inter(color: AppColors.textSecondary)),
+                  Text(
+                    'Could not load profile',
+                    style: GoogleFonts.inter(color: AppColors.textSecondary),
+                  ),
                   const SizedBox(height: 12),
                   TextButton(
                     onPressed: _load,
-                    child: Text('Retry',
-                        style: GoogleFonts.inter(color: AppColors.gold)),
+                    child: Text(
+                      'Retry',
+                      style: GoogleFonts.inter(color: AppColors.gold),
+                    ),
                   ),
                 ],
               ),
@@ -109,12 +117,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 backgroundColor: AppColors.background,
                 actions: [
                   IconButton(
-                    icon: const Icon(Icons.notifications_outlined,
-                        color: AppColors.textSecondary),
+                    icon: const Icon(
+                      Icons.notifications_outlined,
+                      color: AppColors.textSecondary,
+                    ),
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (_) => const NotificationsScreen()),
+                        builder: (_) => const NotificationsScreen(),
+                      ),
                     ),
                   ),
                 ],
@@ -129,48 +140,68 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         children: [
                           Container(
-                            width: 88, height: 88,
+                            width: 88,
+                            height: 88,
                             decoration: BoxDecoration(
                               shape: BoxShape.circle,
                               color: AppColors.goldMuted,
                               border: Border.all(
-                                  color: AppColors.goldBorder60, width: 1.5),
+                                color: AppColors.goldBorder60,
+                                width: 1.5,
+                              ),
                             ),
                             alignment: Alignment.center,
-                            child: Text(initials,
-                                style: GoogleFonts.playfairDisplay(
-                                    color: AppColors.gold,
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.w700)),
+                            child: Text(
+                              initials,
+                              style: GoogleFonts.playfairDisplay(
+                                color: AppColors.gold,
+                                fontSize: 30,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                           ),
                           const SizedBox(height: 16),
-                          Text(user.name,
-                              style: Theme.of(context).textTheme.headlineMedium),
+                          Text(
+                            user.name,
+                            style: Theme.of(context).textTheme.headlineMedium,
+                          ),
                           const SizedBox(height: 6),
-                          Text(user.email,
-                              style: Theme.of(context).textTheme.bodyMedium),
+                          Text(
+                            user.email,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
                           const SizedBox(height: 12),
                           // Tier badge
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 6),
+                              horizontal: 16,
+                              vertical: 6,
+                            ),
                             decoration: BoxDecoration(
                               color: AppColors.goldMuted,
                               borderRadius: BorderRadius.circular(20),
                               border: Border.all(
-                                  color: AppColors.goldBorder50, width: 0.5),
+                                color: AppColors.goldBorder50,
+                                width: 0.5,
+                              ),
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const Icon(Icons.workspace_premium_rounded,
-                                    color: AppColors.gold, size: 14),
+                                const Icon(
+                                  Icons.workspace_premium_rounded,
+                                  color: AppColors.gold,
+                                  size: 14,
+                                ),
                                 const SizedBox(width: 6),
-                                Text(user.tier,
-                                    style: GoogleFonts.inter(
-                                        color: AppColors.gold,
-                                        fontSize: 13,
-                                        fontWeight: FontWeight.w600)),
+                                Text(
+                                  user.tier,
+                                  style: GoogleFonts.inter(
+                                    color: AppColors.gold,
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                               ],
                             ),
                           ),
@@ -184,20 +215,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Journey Stats',
-                              style: Theme.of(context).textTheme.headlineSmall),
+                          Text(
+                            'Journey Stats',
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
                           const SizedBox(height: 16),
-                          Row(children: [
-                            _StatTile(value: '${user.restaurantsVisited}', label: 'Restaurants', icon: Icons.restaurant_rounded),
-                            const SizedBox(width: 10),
-                            _StatTile(value: '${user.michelinStarsCollected}', label: 'Stars Earned', icon: Icons.star_rounded),
-                          ]),
+                          Row(
+                            children: [
+                              _StatTile(
+                                value: '${user.restaurantsVisited}',
+                                label: 'Restaurants',
+                                icon: Icons.restaurant_rounded,
+                              ),
+                              const SizedBox(width: 10),
+                              _StatTile(
+                                value: '${user.michelinStarsCollected}',
+                                label: 'Stars Earned',
+                                icon: Icons.star_rounded,
+                              ),
+                            ],
+                          ),
                           const SizedBox(height: 10),
-                          Row(children: [
-                            _StatTile(value: '${user.countriesVisited}', label: 'Countries', icon: Icons.public_rounded),
-                            const SizedBox(width: 10),
-                            _StatTile(value: '${user.citiesVisited}', label: 'Cities', icon: Icons.location_city_rounded),
-                          ]),
+                          Row(
+                            children: [
+                              _StatTile(
+                                value: '${user.countriesVisited}',
+                                label: 'Countries',
+                                icon: Icons.public_rounded,
+                              ),
+                              const SizedBox(width: 10),
+                              _StatTile(
+                                value: '${user.citiesVisited}',
+                                label: 'Cities',
+                                icon: Icons.location_city_rounded,
+                              ),
+                            ],
+                          ),
                         ],
                       ),
                     ),
@@ -208,14 +261,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Star Breakdown',
-                              style: Theme.of(context).textTheme.headlineSmall),
+                          Text(
+                            'Star Breakdown',
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
                           const SizedBox(height: 16),
-                          _StarBar(stars: '★★★', count: user.threeStarCount, total: user.restaurantsVisited),
+                          _StarBar(
+                            stars: '★★★',
+                            count: user.threeStarCount,
+                            total: user.restaurantsVisited,
+                          ),
                           const SizedBox(height: 10),
-                          _StarBar(stars: '★★',  count: user.twoStarCount,   total: user.restaurantsVisited),
+                          _StarBar(
+                            stars: '★★',
+                            count: user.twoStarCount,
+                            total: user.restaurantsVisited,
+                          ),
                           const SizedBox(height: 10),
-                          _StarBar(stars: '★',   count: user.oneStarCount,   total: user.restaurantsVisited),
+                          _StarBar(
+                            stars: '★',
+                            count: user.oneStarCount,
+                            total: user.restaurantsVisited,
+                          ),
                         ],
                       ),
                     ),
@@ -239,16 +306,42 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Account',
-                              style: Theme.of(context).textTheme.headlineSmall),
+                          Text(
+                            'Account',
+                            style: Theme.of(context).textTheme.headlineSmall,
+                          ),
                           const SizedBox(height: 12),
-                          _SettingsRow(icon: Icons.edit_outlined, label: 'Edit Profile', onTap: () {}),
-                          _SettingsRow(icon: Icons.notifications_outlined, label: 'Notifications',
-                              onTap: () => Navigator.push(context,
-                                  MaterialPageRoute(builder: (_) => const NotificationsScreen()))),
-                          _SettingsRow(icon: Icons.language_outlined, label: 'Language & Region', onTap: () {}),
-                          _SettingsRow(icon: Icons.info_outline_rounded, label: 'About Table Passport', onTap: () {}),
-                          _SettingsRow(icon: Icons.logout_rounded, label: 'Sign Out', onTap: _signOut, isDestructive: true),
+                          _SettingsRow(
+                            icon: Icons.edit_outlined,
+                            label: 'Edit Profile',
+                            onTap: () {},
+                          ),
+                          _SettingsRow(
+                            icon: Icons.notifications_outlined,
+                            label: 'Notifications',
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => const NotificationsScreen(),
+                              ),
+                            ),
+                          ),
+                          _SettingsRow(
+                            icon: Icons.language_outlined,
+                            label: 'Language & Region',
+                            onTap: () {},
+                          ),
+                          _SettingsRow(
+                            icon: Icons.info_outline_rounded,
+                            label: 'About Table Passport',
+                            onTap: () {},
+                          ),
+                          _SettingsRow(
+                            icon: Icons.logout_rounded,
+                            label: 'Sign Out',
+                            onTap: _signOut,
+                            isDestructive: true,
+                          ),
                         ],
                       ),
                     ),
@@ -278,25 +371,35 @@ class _CommunityStatsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Community Stats', style: Theme.of(context).textTheme.headlineSmall),
+          Text(
+            'Community Stats',
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
           const SizedBox(height: 16),
           FutureBuilder<List<Map<String, dynamic>>>(
             future: future,
             builder: (_, snap) {
               if (snap.connectionState == ConnectionState.waiting) {
                 return const Center(
-                    child: CircularProgressIndicator(
-                        color: AppColors.gold, strokeWidth: 1.5));
+                  child: CircularProgressIndicator(
+                    color: AppColors.gold,
+                    strokeWidth: 1.5,
+                  ),
+                );
               }
               final rows = snap.data ?? [];
               if (rows.isEmpty) {
-                return Text('No community data yet.',
-                    style: GoogleFonts.inter(
-                        color: AppColors.textSecondary, fontSize: 13));
+                return Text(
+                  'No community data yet.',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textSecondary,
+                    fontSize: 13,
+                  ),
+                );
               }
               return Column(
                 children: rows.map((r) {
-                  final tier  = (r['tier'] as String?) ?? '';
+                  final tier = (r['tier'] as String?) ?? '';
                   final count = (r['user_count'] as int?) ?? 0;
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 8),
@@ -304,31 +407,48 @@ class _CommunityStatsSection extends StatelessWidget {
                       children: [
                         SizedBox(
                           width: 120,
-                          child: Text(tier,
-                              style: GoogleFonts.inter(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 13)),
+                          child: Text(
+                            tier,
+                            style: GoogleFonts.inter(
+                              color: AppColors.textSecondary,
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                         Expanded(
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(4),
                             child: LinearProgressIndicator(
-                              value: count > 0 ? (count / (rows.map((e) => (e['user_count'] as int?) ?? 0).reduce((a, b) => a > b ? a : b))) : 0,
+                              value: count > 0
+                                  ? (count /
+                                        (rows
+                                            .map(
+                                              (e) =>
+                                                  (e['user_count'] as int?) ??
+                                                  0,
+                                            )
+                                            .reduce((a, b) => a > b ? a : b)))
+                                  : 0,
                               minHeight: 5,
                               backgroundColor: AppColors.surface,
-                              valueColor: const AlwaysStoppedAnimation<Color>(AppColors.gold),
+                              valueColor: const AlwaysStoppedAnimation<Color>(
+                                AppColors.gold,
+                              ),
                             ),
                           ),
                         ),
                         const SizedBox(width: 10),
                         SizedBox(
                           width: 32,
-                          child: Text('$count',
-                              textAlign: TextAlign.end,
-                              style: GoogleFonts.inter(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w500)),
+                          child: Text(
+                            '$count',
+                            textAlign: TextAlign.end,
+                            style: GoogleFonts.inter(
+                              color: AppColors.textSecondary,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -349,8 +469,11 @@ class _FriendsSection extends StatefulWidget {
   final Future<List<Friendship>> future;
   final String currentUserId;
   final VoidCallback onChanged;
-  const _FriendsSection(
-      {required this.future, required this.currentUserId, required this.onChanged});
+  const _FriendsSection({
+    required this.future,
+    required this.currentUserId,
+    required this.onChanged,
+  });
 
   @override
   State<_FriendsSection> createState() => _FriendsSectionState();
@@ -369,19 +492,28 @@ class _FriendsSectionState extends State<_FriendsSection> {
     }
     setState(() => _searching = true);
     final results = await _friendRepo.searchUsers(q, widget.currentUserId);
-    if (mounted) setState(() { _searchResults = results; _searching = false; });
+    if (mounted) {
+      setState(() {
+        _searchResults = results;
+        _searching = false;
+      });
+    }
   }
 
   Future<void> _sendRequest(String addresseeId) async {
     await _friendRepo.sendRequest(
-        requesterId: widget.currentUserId, addresseeId: addresseeId);
+      requesterId: widget.currentUserId,
+      addresseeId: addresseeId,
+    );
     if (mounted) {
       setState(() => _searchResults = []);
       _searchCtrl.clear();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Friend request sent!',
-              style: GoogleFonts.inter(color: Colors.black)),
+          content: Text(
+            'Friend request sent!',
+            style: GoogleFonts.inter(color: Colors.black),
+          ),
           backgroundColor: AppColors.gold,
           duration: const Duration(seconds: 2),
         ),
@@ -409,7 +541,10 @@ class _FriendsSectionState extends State<_FriendsSection> {
           TextField(
             controller: _searchCtrl,
             onChanged: _search,
-            style: GoogleFonts.inter(color: AppColors.textPrimary, fontSize: 14),
+            style: GoogleFonts.inter(
+              color: AppColors.textPrimary,
+              fontSize: 14,
+            ),
             decoration: const InputDecoration(
               hintText: 'Find friends by name…',
               prefixIcon: Icon(Icons.person_search_rounded),
@@ -419,32 +554,47 @@ class _FriendsSectionState extends State<_FriendsSection> {
             const Padding(
               padding: EdgeInsets.only(top: 12),
               child: Center(
-                  child: CircularProgressIndicator(
-                      color: AppColors.gold, strokeWidth: 1.5)),
+                child: CircularProgressIndicator(
+                  color: AppColors.gold,
+                  strokeWidth: 1.5,
+                ),
+              ),
             ),
           if (_searchResults.isNotEmpty) ...[
             const SizedBox(height: 8),
-            ..._searchResults.map((u) => ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: CircleAvatar(
-                    backgroundColor: AppColors.surface,
-                    child: Text(
-                      (u['display_name'] as String? ?? '?')[0].toUpperCase(),
-                      style: GoogleFonts.inter(color: AppColors.gold),
-                    ),
+            ..._searchResults.map(
+              (u) => ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: CircleAvatar(
+                  backgroundColor: AppColors.surface,
+                  child: Text(
+                    (u['display_name'] as String? ?? '?')[0].toUpperCase(),
+                    style: GoogleFonts.inter(color: AppColors.gold),
                   ),
-                  title: Text((u['display_name'] as String?) ?? '',
-                      style: GoogleFonts.inter(
-                          color: AppColors.textPrimary, fontSize: 14)),
-                  subtitle: Text((u['tier'] as String?) ?? '',
-                      style: GoogleFonts.inter(
-                          color: AppColors.textSecondary, fontSize: 12)),
-                  trailing: TextButton(
-                    onPressed: () => _sendRequest(u['id'] as String),
-                    child: Text('Add',
-                        style: GoogleFonts.inter(color: AppColors.gold)),
+                ),
+                title: Text(
+                  (u['display_name'] as String?) ?? '',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textPrimary,
+                    fontSize: 14,
                   ),
-                )),
+                ),
+                subtitle: Text(
+                  (u['tier'] as String?) ?? '',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textSecondary,
+                    fontSize: 12,
+                  ),
+                ),
+                trailing: TextButton(
+                  onPressed: () => _sendRequest(u['id'] as String),
+                  child: Text(
+                    'Add',
+                    style: GoogleFonts.inter(color: AppColors.gold),
+                  ),
+                ),
+              ),
+            ),
           ],
 
           const SizedBox(height: 16),
@@ -455,46 +605,60 @@ class _FriendsSectionState extends State<_FriendsSection> {
             builder: (_, snap) {
               final friends = snap.data ?? [];
               if (friends.isEmpty) {
-                return Text('No friends yet. Search above to find people!',
-                    style: GoogleFonts.inter(
-                        color: AppColors.textSecondary, fontSize: 13));
+                return Text(
+                  'No friends yet. Search above to find people!',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textSecondary,
+                    fontSize: 13,
+                  ),
+                );
               }
               return Column(
-                children: friends.map((f) => Padding(
-                      padding: const EdgeInsets.only(bottom: 10),
-                      child: Row(
-                        children: [
-                          CircleAvatar(
-                            radius: 20,
-                            backgroundColor: AppColors.surface,
-                            child: Text(
-                              f.friendDisplayName.isNotEmpty
-                                  ? f.friendDisplayName[0].toUpperCase()
-                                  : '?',
-                              style: GoogleFonts.inter(color: AppColors.gold),
+                children: friends
+                    .map(
+                      (f) => Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              radius: 20,
+                              backgroundColor: AppColors.surface,
+                              child: Text(
+                                f.friendDisplayName.isNotEmpty
+                                    ? f.friendDisplayName[0].toUpperCase()
+                                    : '?',
+                                style: GoogleFonts.inter(color: AppColors.gold),
+                              ),
                             ),
-                          ),
-                          const SizedBox(width: 12),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(f.friendDisplayName,
+                            const SizedBox(width: 12),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    f.friendDisplayName,
                                     style: GoogleFonts.inter(
-                                        color: AppColors.textPrimary,
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500)),
-                                if (f.friendTier != null)
-                                  Text(f.friendTier!,
+                                      color: AppColors.textPrimary,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  if (f.friendTier != null)
+                                    Text(
+                                      f.friendTier!,
                                       style: GoogleFonts.inter(
-                                          color: AppColors.textSecondary,
-                                          fontSize: 12)),
-                              ],
+                                        color: AppColors.textSecondary,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    )).toList(),
+                    )
+                    .toList(),
               );
             },
           ),
@@ -513,9 +677,9 @@ class _TrophiesSection extends StatelessWidget {
   static const _categoryOrder = ['milestone', 'travel', 'country', 'social'];
   static const _categoryLabels = {
     'milestone': 'Milestone',
-    'travel':    'Travel',
-    'country':   'Country',
-    'social':    'Social',
+    'travel': 'Travel',
+    'country': 'Country',
+    'social': 'Social',
   };
 
   @override
@@ -532,14 +696,21 @@ class _TrophiesSection extends StatelessWidget {
             builder: (_, snap) {
               if (snap.connectionState == ConnectionState.waiting) {
                 return const Center(
-                    child: CircularProgressIndicator(
-                        color: AppColors.gold, strokeWidth: 1.5));
+                  child: CircularProgressIndicator(
+                    color: AppColors.gold,
+                    strokeWidth: 1.5,
+                  ),
+                );
               }
               final all = snap.data ?? [];
               if (all.isEmpty) {
-                return Text('No trophies defined yet.',
-                    style: GoogleFonts.inter(
-                        color: AppColors.textSecondary, fontSize: 13));
+                return Text(
+                  'No trophies defined yet.',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textSecondary,
+                    fontSize: 13,
+                  ),
+                );
               }
 
               final grouped = <String, List<Trophy>>{};
@@ -552,24 +723,30 @@ class _TrophiesSection extends StatelessWidget {
                 children: _categoryOrder
                     .where((c) => grouped.containsKey(c))
                     .expand((cat) {
-                  final trophies = grouped[cat]!;
-                  return [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 10, top: 8),
-                      child: Text(_categoryLabels[cat] ?? cat,
-                          style: GoogleFonts.inter(
+                      final trophies = grouped[cat]!;
+                      return [
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 10, top: 8),
+                          child: Text(
+                            _categoryLabels[cat] ?? cat,
+                            style: GoogleFonts.inter(
                               color: AppColors.textSecondary,
                               fontSize: 11,
                               fontWeight: FontWeight.w700,
-                              letterSpacing: 1.2)),
-                    ),
-                    Wrap(
-                      spacing: 8,
-                      runSpacing: 8,
-                      children: trophies.map((t) => _TrophyChip(trophy: t)).toList(),
-                    ),
-                  ];
-                }).toList(),
+                              letterSpacing: 1.2,
+                            ),
+                          ),
+                        ),
+                        Wrap(
+                          spacing: 8,
+                          runSpacing: 8,
+                          children: trophies
+                              .map((t) => _TrophyChip(trophy: t))
+                              .toList(),
+                        ),
+                      ];
+                    })
+                    .toList(),
               );
             },
           ),
@@ -590,31 +767,45 @@ class _TrophyChip extends StatelessWidget {
         context: context,
         builder: (_) => AlertDialog(
           backgroundColor: AppColors.card,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
           title: Row(
             children: [
-              Icon(Icons.emoji_events_rounded,
-                  color: trophy.isEarned
-                      ? AppColors.gold
-                      : AppColors.textSecondary,
-                  size: 20),
+              Icon(
+                Icons.emoji_events_rounded,
+                color: trophy.isEarned
+                    ? AppColors.gold
+                    : AppColors.textSecondary,
+                size: 20,
+              ),
               const SizedBox(width: 8),
               Expanded(
-                child: Text(trophy.name,
-                    style: GoogleFonts.playfairDisplay(
-                        color: AppColors.textPrimary,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700)),
+                child: Text(
+                  trophy.name,
+                  style: GoogleFonts.playfairDisplay(
+                    color: AppColors.textPrimary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
               ),
             ],
           ),
-          content: Text(trophy.description,
-              style: GoogleFonts.inter(
-                  color: AppColors.textSecondary, fontSize: 13)),
+          content: Text(
+            trophy.description,
+            style: GoogleFonts.inter(
+              color: AppColors.textSecondary,
+              fontSize: 13,
+            ),
+          ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('OK', style: GoogleFonts.inter(color: AppColors.gold)),
+              child: Text(
+                'OK',
+                style: GoogleFonts.inter(color: AppColors.gold),
+              ),
             ),
           ],
         ),
@@ -635,11 +826,13 @@ class _TrophyChip extends StatelessWidget {
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.emoji_events_rounded,
-                color: trophy.isEarned
-                    ? AppColors.gold
-                    : AppColors.textSecondary.withValues(alpha: 0.4),
-                size: 14),
+            Icon(
+              Icons.emoji_events_rounded,
+              color: trophy.isEarned
+                  ? AppColors.gold
+                  : AppColors.textSecondary.withValues(alpha: 0.4),
+              size: 14,
+            ),
             const SizedBox(width: 6),
             Text(
               trophy.name,
@@ -664,45 +857,60 @@ class _StatTile extends StatelessWidget {
   final String value;
   final String label;
   final IconData icon;
-  const _StatTile({required this.value, required this.label, required this.icon});
+  const _StatTile({
+    required this.value,
+    required this.label,
+    required this.icon,
+  });
 
   @override
   Widget build(BuildContext context) => Expanded(
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
-          decoration: BoxDecoration(
-            color: AppColors.card,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors.cardBorder, width: 0.5),
-          ),
-          child: Row(
+    child: Container(
+      padding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+      decoration: BoxDecoration(
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(16),
+        border: Border.all(color: AppColors.cardBorder, width: 0.5),
+      ),
+      child: Row(
+        children: [
+          Icon(icon, color: AppColors.gold, size: 20),
+          const SizedBox(width: 12),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(icon, color: AppColors.gold, size: 20),
-              const SizedBox(width: 12),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(value,
-                      style: GoogleFonts.playfairDisplay(
-                          color: AppColors.textPrimary,
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700)),
-                  Text(label,
-                      style: GoogleFonts.inter(
-                          color: AppColors.textSecondary, fontSize: 11)),
-                ],
+              Text(
+                value,
+                style: GoogleFonts.playfairDisplay(
+                  color: AppColors.textPrimary,
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              Text(
+                label,
+                style: GoogleFonts.inter(
+                  color: AppColors.textSecondary,
+                  fontSize: 11,
+                ),
               ),
             ],
           ),
-        ),
-      );
+        ],
+      ),
+    ),
+  );
 }
 
 class _StarBar extends StatelessWidget {
   final String stars;
   final int count;
   final int total;
-  const _StarBar({required this.stars, required this.count, required this.total});
+  const _StarBar({
+    required this.stars,
+    required this.count,
+    required this.total,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -710,10 +918,12 @@ class _StarBar extends StatelessWidget {
     return Row(
       children: [
         SizedBox(
-            width: 40,
-            child: Text(stars,
-                style: GoogleFonts.inter(
-                    color: AppColors.starFilled, fontSize: 12))),
+          width: 40,
+          child: Text(
+            stars,
+            style: GoogleFonts.inter(color: AppColors.starFilled, fontSize: 12),
+          ),
+        ),
         const SizedBox(width: 12),
         Expanded(
           child: ClipRRect(
@@ -729,12 +939,15 @@ class _StarBar extends StatelessWidget {
         const SizedBox(width: 12),
         SizedBox(
           width: 24,
-          child: Text('$count',
-              textAlign: TextAlign.end,
-              style: GoogleFonts.inter(
-                  color: AppColors.textSecondary,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w500)),
+          child: Text(
+            '$count',
+            textAlign: TextAlign.end,
+            style: GoogleFonts.inter(
+              color: AppColors.textSecondary,
+              fontSize: 12,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
         ),
       ],
     );
@@ -746,8 +959,12 @@ class _SettingsRow extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final bool isDestructive;
-  const _SettingsRow(
-      {required this.icon, required this.label, required this.onTap, this.isDestructive = false});
+  const _SettingsRow({
+    required this.icon,
+    required this.label,
+    required this.onTap,
+    this.isDestructive = false,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -764,11 +981,17 @@ class _SettingsRow extends StatelessWidget {
                 Icon(icon, color: color, size: 20),
                 const SizedBox(width: 16),
                 Expanded(
-                    child: Text(label,
-                        style: GoogleFonts.inter(color: color, fontSize: 15))),
+                  child: Text(
+                    label,
+                    style: GoogleFonts.inter(color: color, fontSize: 15),
+                  ),
+                ),
                 if (!isDestructive)
-                  const Icon(Icons.chevron_right_rounded,
-                      color: AppColors.textSecondary, size: 20),
+                  const Icon(
+                    Icons.chevron_right_rounded,
+                    color: AppColors.textSecondary,
+                    size: 20,
+                  ),
               ],
             ),
           ),

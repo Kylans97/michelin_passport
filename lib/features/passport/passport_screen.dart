@@ -15,8 +15,9 @@ class PassportScreen extends StatefulWidget {
 }
 
 class _PassportScreenState extends State<PassportScreen> {
-  late final VisitedRepository _repo =
-      VisitedRepository(Supabase.instance.client);
+  late final VisitedRepository _repo = VisitedRepository(
+    Supabase.instance.client,
+  );
 
   late Future<List<Restaurant>> _future;
 
@@ -40,7 +41,7 @@ class _PassportScreenState extends State<PassportScreen> {
       builder: (context, snap) {
         final visited = snap.data ?? [];
         final countries = visited.map((r) => r.country).toSet().length;
-        final cities    = visited.map((r) => r.city).toSet().length;
+        final cities = visited.map((r) => r.city).toSet().length;
 
         return RefreshIndicator(
           color: AppColors.gold,
@@ -80,15 +81,19 @@ class _PassportScreenState extends State<PassportScreen> {
                   padding: const EdgeInsets.fromLTRB(20, 32, 20, 12),
                   child: Row(
                     children: [
-                      Text('My Stamps',
-                          style: Theme.of(context).textTheme.headlineSmall),
+                      Text(
+                        'My Stamps',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                       const SizedBox(width: 10),
                       if (snap.connectionState == ConnectionState.waiting)
                         const SizedBox(
                           width: 14,
                           height: 14,
                           child: CircularProgressIndicator(
-                              color: AppColors.gold, strokeWidth: 1.5),
+                            color: AppColors.gold,
+                            strokeWidth: 1.5,
+                          ),
                         )
                       else
                         _CountBadge('${visited.length}'),
@@ -97,13 +102,16 @@ class _PassportScreenState extends State<PassportScreen> {
                 ),
               ),
               if (snap.hasError)
-                SliverFillRemaining(
-                    child: _ErrorState(onRetry: _refresh))
+                SliverFillRemaining(child: _ErrorState(onRetry: _refresh))
               else if (snap.connectionState == ConnectionState.waiting)
                 const SliverFillRemaining(
-                    child: Center(
-                        child: CircularProgressIndicator(color: AppColors.gold,
-                            strokeWidth: 1.5)))
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.gold,
+                      strokeWidth: 1.5,
+                    ),
+                  ),
+                )
               else if (visited.isEmpty)
                 const SliverFillRemaining(child: _EmptyStamps())
               else
@@ -111,9 +119,15 @@ class _PassportScreenState extends State<PassportScreen> {
                   delegate: SliverChildBuilderDelegate(
                     (context, i) => Padding(
                       padding: EdgeInsets.fromLTRB(
-                          20, 0, 20, i == visited.length - 1 ? 100 : 12),
+                        20,
+                        0,
+                        20,
+                        i == visited.length - 1 ? 100 : 12,
+                      ),
                       child: _StampCard(
-                          restaurant: visited[i], stampNumber: i + 1),
+                        restaurant: visited[i],
+                        stampNumber: i + 1,
+                      ),
                     ),
                     childCount: visited.length,
                   ),
@@ -131,8 +145,10 @@ class _PassportScreenState extends State<PassportScreen> {
 class _PassportHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final name = Supabase.instance.client.auth.currentUser
-        ?.userMetadata?['display_name'] as String? ?? 'Passport';
+    final name =
+        Supabase.instance.client.auth.currentUser?.userMetadata?['display_name']
+            as String? ??
+        'Passport';
 
     return SliverAppBar(
       expandedHeight: 200,
@@ -145,7 +161,11 @@ class _PassportHeader extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [Color(0xFF1C1400), Color(0xFF110E00), AppColors.background],
+              colors: [
+                Color(0xFF1C1400),
+                Color(0xFF110E00),
+                AppColors.background,
+              ],
               stops: [0.0, 0.5, 1.0],
             ),
           ),
@@ -157,34 +177,46 @@ class _PassportHeader extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      const Icon(Icons.menu_book_rounded,
-                          color: AppColors.gold, size: 18),
+                      const Icon(
+                        Icons.menu_book_rounded,
+                        color: AppColors.gold,
+                        size: 18,
+                      ),
                       const SizedBox(width: 8),
-                      Text('TABLE PASSPORT',
-                          style: GoogleFonts.inter(
-                              color: AppColors.gold,
-                              fontSize: 11,
-                              fontWeight: FontWeight.w700,
-                              letterSpacing: 2.0)),
+                      Text(
+                        'TABLE PASSPORT',
+                        style: GoogleFonts.inter(
+                          color: AppColors.gold,
+                          fontSize: 11,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 2.0,
+                        ),
+                      ),
                     ],
                   ),
                   const SizedBox(height: 14),
-                  Text(name,
-                      style: GoogleFonts.playfairDisplay(
-                          color: AppColors.textPrimary,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700)),
+                  Text(
+                    name,
+                    style: GoogleFonts.playfairDisplay(
+                      color: AppColors.textPrimary,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
         ),
         titlePadding: const EdgeInsets.fromLTRB(20, 0, 0, 16),
-        title: Text('My Passport',
-            style: GoogleFonts.playfairDisplay(
-                color: AppColors.textPrimary,
-                fontSize: 22,
-                fontWeight: FontWeight.w700)),
+        title: Text(
+          'My Passport',
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textPrimary,
+            fontSize: 22,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
       ),
     );
   }
@@ -209,34 +241,45 @@ class _StampCard extends StatelessWidget {
       child: Row(
         children: [
           Container(
-            width: 40, height: 40,
+            width: 40,
+            height: 40,
             decoration: BoxDecoration(
               shape: BoxShape.circle,
               border: Border.all(color: AppColors.goldBorder50, width: 1),
             ),
             alignment: Alignment.center,
-            child: Text('#$stampNumber',
-                style: GoogleFonts.inter(
-                    color: AppColors.gold,
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700)),
+            child: Text(
+              '#$stampNumber',
+              style: GoogleFonts.inter(
+                color: AppColors.gold,
+                fontSize: 11,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
           ),
           const SizedBox(width: 14),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(restaurant.name,
-                    style: GoogleFonts.playfairDisplay(
-                        color: AppColors.textPrimary,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600)),
+                Text(
+                  restaurant.name,
+                  style: GoogleFonts.playfairDisplay(
+                    color: AppColors.textPrimary,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
                 const SizedBox(height: 4),
                 StarRow(count: restaurant.michelinStars),
                 const SizedBox(height: 4),
-                Text('${restaurant.countryFlag}  ${restaurant.city}, ${restaurant.country}',
-                    style: GoogleFonts.inter(
-                        color: AppColors.textSecondary, fontSize: 12)),
+                Text(
+                  '${restaurant.countryFlag}  ${restaurant.city}, ${restaurant.country}',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textSecondary,
+                    fontSize: 12,
+                  ),
+                ),
               ],
             ),
           ),
@@ -247,12 +290,15 @@ class _StampCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               border: Border.all(color: AppColors.goldAlpha30, width: 0.5),
             ),
-            child: Text('VISITED',
-                style: GoogleFonts.inter(
-                    color: AppColors.gold,
-                    fontSize: 9,
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 1.2)),
+            child: Text(
+              'VISITED',
+              style: GoogleFonts.inter(
+                color: AppColors.gold,
+                fontSize: 9,
+                fontWeight: FontWeight.w800,
+                letterSpacing: 1.2,
+              ),
+            ),
           ),
         ],
       ),
@@ -268,18 +314,21 @@ class _CountBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-        decoration: BoxDecoration(
-          color: AppColors.goldMuted,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.goldBorder40, width: 0.5),
-        ),
-        child: Text(value,
-            style: GoogleFonts.inter(
-                color: AppColors.gold,
-                fontSize: 12,
-                fontWeight: FontWeight.w600)),
-      );
+    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+    decoration: BoxDecoration(
+      color: AppColors.goldMuted,
+      borderRadius: BorderRadius.circular(20),
+      border: Border.all(color: AppColors.goldBorder40, width: 0.5),
+    ),
+    child: Text(
+      value,
+      style: GoogleFonts.inter(
+        color: AppColors.gold,
+        fontSize: 12,
+        fontWeight: FontWeight.w600,
+      ),
+    ),
+  );
 }
 
 class _EmptyStamps extends StatelessWidget {
@@ -287,22 +336,33 @@ class _EmptyStamps extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.menu_book_outlined,
-                color: AppColors.textSecondary, size: 48),
-            const SizedBox(height: 16),
-            Text('No stamps yet',
-                style: GoogleFonts.playfairDisplay(
-                    color: AppColors.textSecondary, fontSize: 18)),
-            const SizedBox(height: 8),
-            Text('Explore restaurants and mark them as visited',
-                style: GoogleFonts.inter(
-                    color: AppColors.textSecondary, fontSize: 13)),
-          ],
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(
+          Icons.menu_book_outlined,
+          color: AppColors.textSecondary,
+          size: 48,
         ),
-      );
+        const SizedBox(height: 16),
+        Text(
+          'No stamps yet',
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textSecondary,
+            fontSize: 18,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Explore restaurants and mark them as visited',
+          style: GoogleFonts.inter(
+            color: AppColors.textSecondary,
+            fontSize: 13,
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 class _ErrorState extends StatelessWidget {
@@ -311,21 +371,25 @@ class _ErrorState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.wifi_off_rounded,
-                color: AppColors.textSecondary, size: 40),
-            const SizedBox(height: 16),
-            Text('Could not load data',
-                style: GoogleFonts.inter(color: AppColors.textSecondary)),
-            const SizedBox(height: 12),
-            TextButton(
-              onPressed: onRetry,
-              child: Text('Retry',
-                  style: GoogleFonts.inter(color: AppColors.gold)),
-            ),
-          ],
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(
+          Icons.wifi_off_rounded,
+          color: AppColors.textSecondary,
+          size: 40,
         ),
-      );
+        const SizedBox(height: 16),
+        Text(
+          'Could not load data',
+          style: GoogleFonts.inter(color: AppColors.textSecondary),
+        ),
+        const SizedBox(height: 12),
+        TextButton(
+          onPressed: onRetry,
+          child: Text('Retry', style: GoogleFonts.inter(color: AppColors.gold)),
+        ),
+      ],
+    ),
+  );
 }

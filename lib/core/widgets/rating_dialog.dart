@@ -36,8 +36,7 @@ class _RatingSheetState extends State<_RatingSheet> {
   double _rating = 8.0;
   bool _skipRating = false;
   final _notesCtrl = TextEditingController();
-  final _friendshipRepo =
-      FriendshipRepository(Supabase.instance.client);
+  final _friendshipRepo = FriendshipRepository(Supabase.instance.client);
   List<Map<String, dynamic>> _friends = [];
   final Set<String> _taggedFriendNames = {};
 
@@ -99,7 +98,8 @@ class _RatingSheetState extends State<_RatingSheet> {
           // Handle bar
           Center(
             child: Container(
-              width: 40, height: 4,
+              width: 40,
+              height: 4,
               decoration: BoxDecoration(
                 color: AppColors.divider,
                 borderRadius: BorderRadius.circular(2),
@@ -107,33 +107,41 @@ class _RatingSheetState extends State<_RatingSheet> {
             ),
           ),
           const SizedBox(height: 20),
-          Text('Log your visit',
-              style: GoogleFonts.playfairDisplay(
-                  color: AppColors.textPrimary,
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700)),
+          Text(
+            'Log your visit',
+            style: GoogleFonts.playfairDisplay(
+              color: AppColors.textPrimary,
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
           const SizedBox(height: 4),
-          Text(widget.restaurantName,
-              style: GoogleFonts.inter(
-                  color: AppColors.gold, fontSize: 13)),
+          Text(
+            widget.restaurantName,
+            style: GoogleFonts.inter(color: AppColors.gold, fontSize: 13),
+          ),
           const SizedBox(height: 24),
 
           // Rating slider
           Row(
             children: [
-              Text('Personal rating',
-                  style: GoogleFonts.inter(
-                      color: AppColors.textSecondary,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500)),
+              Text(
+                'Personal rating',
+                style: GoogleFonts.inter(
+                  color: AppColors.textSecondary,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
               const Spacer(),
               if (!_skipRating)
                 Text(
                   _rating.toStringAsFixed(1),
                   style: GoogleFonts.playfairDisplay(
-                      color: AppColors.gold,
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700),
+                    color: AppColors.gold,
+                    fontSize: 22,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
             ],
           ),
@@ -158,8 +166,20 @@ class _RatingSheetState extends State<_RatingSheet> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text('0', style: GoogleFonts.inter(color: AppColors.textSecondary, fontSize: 11)),
-                Text('10', style: GoogleFonts.inter(color: AppColors.textSecondary, fontSize: 11)),
+                Text(
+                  '0',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textSecondary,
+                    fontSize: 11,
+                  ),
+                ),
+                Text(
+                  '10',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textSecondary,
+                    fontSize: 11,
+                  ),
+                ),
               ],
             ),
           ],
@@ -169,20 +189,24 @@ class _RatingSheetState extends State<_RatingSheet> {
             child: Text(
               _skipRating ? 'Add a rating' : 'Skip rating',
               style: GoogleFonts.inter(
-                  color: AppColors.textSecondary,
-                  fontSize: 12,
-                  decoration: TextDecoration.underline),
+                color: AppColors.textSecondary,
+                fontSize: 12,
+                decoration: TextDecoration.underline,
+              ),
             ),
           ),
           const SizedBox(height: 20),
 
           // Friend tags
           if (_friends.isNotEmpty) ...[
-            Text('Who did you dine with?',
-                style: GoogleFonts.inter(
-                    color: AppColors.textSecondary,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w500)),
+            Text(
+              'Who did you dine with?',
+              style: GoogleFonts.inter(
+                color: AppColors.textSecondary,
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
             const SizedBox(height: 8),
             Wrap(
               spacing: 8,
@@ -200,20 +224,32 @@ class _RatingSheetState extends State<_RatingSheet> {
                   }),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 150),
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: selected ? AppColors.goldMuted : AppColors.surface,
                       borderRadius: BorderRadius.circular(20),
                       border: Border.all(
-                        color: selected ? AppColors.goldBorder60 : AppColors.cardBorder,
+                        color: selected
+                            ? AppColors.goldBorder60
+                            : AppColors.cardBorder,
                         width: selected ? 1.0 : 0.5,
                       ),
                     ),
-                    child: Text(name,
-                        style: GoogleFonts.inter(
-                            color: selected ? AppColors.gold : AppColors.textSecondary,
-                            fontSize: 12,
-                            fontWeight: selected ? FontWeight.w600 : FontWeight.w400)),
+                    child: Text(
+                      name,
+                      style: GoogleFonts.inter(
+                        color: selected
+                            ? AppColors.gold
+                            : AppColors.textSecondary,
+                        fontSize: 12,
+                        fontWeight: selected
+                            ? FontWeight.w600
+                            : FontWeight.w400,
+                      ),
+                    ),
                   ),
                 );
               }).toList(),
@@ -224,9 +260,14 @@ class _RatingSheetState extends State<_RatingSheet> {
           // Notes field
           TextField(
             controller: _notesCtrl,
-            style: GoogleFonts.inter(color: AppColors.textPrimary, fontSize: 14),
+            style: GoogleFonts.inter(
+              color: AppColors.textPrimary,
+              fontSize: 14,
+            ),
             maxLines: 2,
-            decoration: const InputDecoration(hintText: 'Add a note (optional)…'),
+            decoration: const InputDecoration(
+              hintText: 'Add a note (optional)…',
+            ),
           ),
           const SizedBox(height: 24),
 
@@ -240,11 +281,16 @@ class _RatingSheetState extends State<_RatingSheet> {
                 backgroundColor: AppColors.gold,
                 foregroundColor: Colors.black,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(14),
+                ),
               ),
-              child: Text('Save visit',
-                  style: GoogleFonts.inter(
-                      fontWeight: FontWeight.w700, fontSize: 15)),
+              child: Text(
+                'Save visit',
+                style: GoogleFonts.inter(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 15,
+                ),
+              ),
             ),
           ),
         ],

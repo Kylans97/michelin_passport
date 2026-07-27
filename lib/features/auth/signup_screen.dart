@@ -12,16 +12,15 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  final _formKey   = GlobalKey<FormState>();
-  final _nameCtrl  = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final _nameCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
-  final _passCtrl  = TextEditingController();
-  bool _loading    = false;
+  final _passCtrl = TextEditingController();
+  bool _loading = false;
   String? _error;
-  bool _success    = false;
+  bool _success = false;
 
-  late final AuthRepository _auth =
-      AuthRepository(Supabase.instance.client);
+  late final AuthRepository _auth = AuthRepository(Supabase.instance.client);
 
   @override
   void dispose() {
@@ -33,7 +32,10 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
-    setState(() { _loading = true; _error = null; });
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
     try {
       await _auth.signUp(
         email: _emailCtrl.text.trim(),
@@ -66,15 +68,17 @@ class _SignupScreenState extends State<SignupScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           padding: const EdgeInsets.fromLTRB(28, 16, 28, 28),
-          child: _success ? _SuccessBody() : _FormBody(
-            formKey: _formKey,
-            nameCtrl: _nameCtrl,
-            emailCtrl: _emailCtrl,
-            passCtrl: _passCtrl,
-            loading: _loading,
-            error: _error,
-            onSubmit: _submit,
-          ),
+          child: _success
+              ? _SuccessBody()
+              : _FormBody(
+                  formKey: _formKey,
+                  nameCtrl: _nameCtrl,
+                  emailCtrl: _emailCtrl,
+                  passCtrl: _passCtrl,
+                  loading: _loading,
+                  error: _error,
+                  onSubmit: _submit,
+                ),
         ),
       ),
     );
@@ -121,7 +125,9 @@ class _FormBody extends StatelessWidget {
           Text(
             'Start stamping your culinary passport.',
             style: GoogleFonts.inter(
-                color: AppColors.textSecondary, fontSize: 15),
+              color: AppColors.textSecondary,
+              fontSize: 15,
+            ),
           ),
           const SizedBox(height: 44),
 
@@ -132,7 +138,9 @@ class _FormBody extends StatelessWidget {
             textCapitalization: TextCapitalization.words,
             autofillHints: const [AutofillHints.name],
             style: GoogleFonts.inter(
-                color: AppColors.textPrimary, fontSize: 15),
+              color: AppColors.textPrimary,
+              fontSize: 15,
+            ),
             decoration: const InputDecoration(
               hintText: 'Jane Doe',
               prefixIcon: Icon(Icons.person_outline_rounded),
@@ -148,7 +156,9 @@ class _FormBody extends StatelessWidget {
             keyboardType: TextInputType.emailAddress,
             autofillHints: const [AutofillHints.email],
             style: GoogleFonts.inter(
-                color: AppColors.textPrimary, fontSize: 15),
+              color: AppColors.textPrimary,
+              fontSize: 15,
+            ),
             decoration: const InputDecoration(
               hintText: 'you@example.com',
               prefixIcon: Icon(Icons.mail_outline_rounded),
@@ -164,7 +174,9 @@ class _FormBody extends StatelessWidget {
             obscureText: true,
             autofillHints: const [AutofillHints.newPassword],
             style: GoogleFonts.inter(
-                color: AppColors.textPrimary, fontSize: 15),
+              color: AppColors.textPrimary,
+              fontSize: 15,
+            ),
             decoration: const InputDecoration(
               hintText: 'Minimum 6 characters',
               prefixIcon: Icon(Icons.lock_outline_rounded),
@@ -181,17 +193,26 @@ class _FormBody extends StatelessWidget {
                 color: AppColors.error.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(10),
                 border: Border.all(
-                    color: AppColors.error.withValues(alpha: 0.4), width: 0.5),
+                  color: AppColors.error.withValues(alpha: 0.4),
+                  width: 0.5,
+                ),
               ),
               child: Row(
                 children: [
-                  const Icon(Icons.error_outline_rounded,
-                      color: AppColors.error, size: 16),
+                  const Icon(
+                    Icons.error_outline_rounded,
+                    color: AppColors.error,
+                    size: 16,
+                  ),
                   const SizedBox(width: 10),
                   Expanded(
-                    child: Text(error!,
-                        style: GoogleFonts.inter(
-                            color: AppColors.error, fontSize: 13)),
+                    child: Text(
+                      error!,
+                      style: GoogleFonts.inter(
+                        color: AppColors.error,
+                        fontSize: 13,
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -210,19 +231,24 @@ class _FormBody extends StatelessWidget {
                 foregroundColor: Colors.black,
                 disabledBackgroundColor: AppColors.goldMuted,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14)),
+                  borderRadius: BorderRadius.circular(14),
+                ),
               ),
               child: loading
                   ? const SizedBox(
                       width: 20,
                       height: 20,
                       child: CircularProgressIndicator(
-                          color: Colors.black, strokeWidth: 2),
+                        color: Colors.black,
+                        strokeWidth: 2,
+                      ),
                     )
                   : Text(
                       'Create Account',
                       style: GoogleFonts.inter(
-                          fontWeight: FontWeight.w700, fontSize: 15),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                      ),
                     ),
             ),
           ),
@@ -241,20 +267,29 @@ class _SuccessBody extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SizedBox(height: 80),
-        const Icon(Icons.mark_email_read_outlined,
-            color: AppColors.gold, size: 56),
+        const Icon(
+          Icons.mark_email_read_outlined,
+          color: AppColors.gold,
+          size: 56,
+        ),
         const SizedBox(height: 24),
         Text(
           'Check your inbox',
           style: GoogleFonts.playfairDisplay(
-              color: AppColors.textPrimary, fontSize: 28, fontWeight: FontWeight.w700),
+            color: AppColors.textPrimary,
+            fontSize: 28,
+            fontWeight: FontWeight.w700,
+          ),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 12),
         Text(
           'We sent you a confirmation link.\nClick it to activate your account.',
           style: GoogleFonts.inter(
-              color: AppColors.textSecondary, fontSize: 15, height: 1.6),
+            color: AppColors.textSecondary,
+            fontSize: 15,
+            height: 1.6,
+          ),
           textAlign: TextAlign.center,
         ),
         const SizedBox(height: 40),
@@ -276,12 +311,12 @@ class _FieldLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text(
-        text,
-        style: GoogleFonts.inter(
-          color: AppColors.textSecondary,
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.5,
-        ),
-      );
+    text,
+    style: GoogleFonts.inter(
+      color: AppColors.textSecondary,
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.5,
+    ),
+  );
 }

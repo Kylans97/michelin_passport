@@ -28,10 +28,10 @@ class RestaurantTile extends StatelessWidget {
         context,
         MaterialPageRoute(
           builder: (_) => RestaurantDetailScreen(
-            restaurant:       restaurant,
-            isVisited:        isVisited,
-            isWishlisted:     isWishlisted,
-            onToggleVisited:  onToggleVisited,
+            restaurant: restaurant,
+            isVisited: isVisited,
+            isWishlisted: isWishlisted,
+            onToggleVisited: onToggleVisited,
             onToggleWishlist: onToggleWishlist,
           ),
         ),
@@ -49,7 +49,8 @@ class RestaurantTile extends StatelessWidget {
           children: [
             // Star count circle
             Container(
-              width: 48, height: 48,
+              width: 48,
+              height: 48,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: AppColors.goldMuted,
@@ -59,9 +60,10 @@ class RestaurantTile extends StatelessWidget {
               child: Text(
                 '${restaurant.michelinStars}★',
                 style: GoogleFonts.inter(
-                    color: AppColors.gold,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700),
+                  color: AppColors.gold,
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
             const SizedBox(width: 14),
@@ -70,15 +72,22 @@ class RestaurantTile extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(restaurant.name,
-                      style: GoogleFonts.playfairDisplay(
-                          color: AppColors.textPrimary,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600)),
+                  Text(
+                    restaurant.name,
+                    style: GoogleFonts.playfairDisplay(
+                      color: AppColors.textPrimary,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                   const SizedBox(height: 3),
-                  Text(restaurant.cuisine,
-                      style: GoogleFonts.inter(
-                          color: AppColors.textSecondary, fontSize: 12)),
+                  Text(
+                    restaurant.cuisine,
+                    style: GoogleFonts.inter(
+                      color: AppColors.textSecondary,
+                      fontSize: 12,
+                    ),
+                  ),
                   const SizedBox(height: 6),
                   Row(
                     children: [
@@ -87,7 +96,9 @@ class RestaurantTile extends StatelessWidget {
                       Text(
                         '${restaurant.countryFlag}  ${restaurant.city}',
                         style: GoogleFonts.inter(
-                            color: AppColors.textSecondary, fontSize: 12),
+                          color: AppColors.textSecondary,
+                          fontSize: 12,
+                        ),
                       ),
                     ],
                   ),

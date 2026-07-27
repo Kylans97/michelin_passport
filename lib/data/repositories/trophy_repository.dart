@@ -10,7 +10,11 @@ class TrophyRepository {
 
   // Returns all trophies, merged with which ones the user has earned.
   Future<List<Trophy>> getAllTrophies(String userId) async {
-    final trophiesRows = await _client.from('trophies').select().order('category').order('key');
+    final trophiesRows = await _client
+        .from('trophies')
+        .select()
+        .order('category')
+        .order('key');
     final earnedRows = await _client
         .from('user_trophies')
         .select('trophy_key, earned_at')
@@ -45,7 +49,9 @@ class TrophyRepository {
         .from('user_trophies')
         .select('trophy_key')
         .eq('user_id', userId);
-    final alreadyEarned = {for (final r in earnedRows as List) r['trophy_key'] as String};
+    final alreadyEarned = {
+      for (final r in earnedRows as List) r['trophy_key'] as String,
+    };
 
     final toAward = <String>[];
     final allRestaurants = allVisited.map((v) => v.restaurant).toList();
@@ -82,7 +88,9 @@ class TrophyRepository {
     // ── Travel: country counts ────────────────────────────────────────────────
     final uniqueCountries = allRestaurants.map((r) => r.country).toSet();
     for (final threshold in [5, 10, 20]) {
-      if (uniqueCountries.length == threshold) toAward.add('countries_$threshold');
+      if (uniqueCountries.length == threshold) {
+        toAward.add('countries_$threshold');
+      }
     }
 
     // ── Country complete trophies ─────────────────────────────────────────────
@@ -114,11 +122,13 @@ class TrophyRepository {
       final totalAll = totalRows.length;
 
       // Count user's visited in this country.
-      final visitedInCountry =
-          allRestaurants.where((r) => r.country == justVisited.country).toList();
+      final visitedInCountry = allRestaurants
+          .where((r) => r.country == justVisited.country)
+          .toList();
       final visitedByStars = <int, int>{};
       for (final r in visitedInCountry) {
-        visitedByStars[r.michelinStars] = (visitedByStars[r.michelinStars] ?? 0) + 1;
+        visitedByStars[r.michelinStars] =
+            (visitedByStars[r.michelinStars] ?? 0) + 1;
       }
 
       for (final stars in [1, 2, 3]) {
@@ -134,7 +144,10 @@ class TrophyRepository {
     }
 
     // Filter out already earned and newly duplicate candidates.
-    final newKeys = toAward.where((k) => !alreadyEarned.contains(k)).toSet().toList();
+    final newKeys = toAward
+        .where((k) => !alreadyEarned.contains(k))
+        .toSet()
+        .toList();
     if (newKeys.isEmpty) return [];
 
     // Fetch trophy details for newly earned ones.
@@ -146,7 +159,10 @@ class TrophyRepository {
     final now = DateTime.now();
     final awarded = <Trophy>[];
     for (final row in trophyRows as List) {
-      final trophy = Trophy.fromRow(trophyRow: row as Map<String, dynamic>, earnedAt: now);
+      final trophy = Trophy.fromRow(
+        trophyRow: row as Map<String, dynamic>,
+        earnedAt: now,
+      );
       awarded.add(trophy);
       try {
         await _client.from('user_trophies').insert({
@@ -172,7 +188,11 @@ class TrophyRepository {
         .limit(1);
     if ((existing as List).isNotEmpty) return null;
 
-    final trophyRows = await _client.from('trophies').select().eq('key', key).limit(1);
+    final trophyRows = await _client
+        .from('trophies')
+        .select()
+        .eq('key', key)
+        .limit(1);
     if ((trophyRows as List).isEmpty) return null;
 
     final now = DateTime.now();
@@ -186,6 +206,9 @@ class TrophyRepository {
       return null;
     }
 
-    return Trophy.fromRow(trophyRow: trophyRows.first as Map<String, dynamic>, earnedAt: now);
+    return Trophy.fromRow(
+      trophyRow: trophyRows.first,
+      earnedAt: now,
+    );
   }
 }

@@ -41,14 +41,8 @@ class AuthRepository {
 
   // ── Sign in ───────────────────────────────────────────────────────────────
 
-  Future<void> signIn({
-    required String email,
-    required String password,
-  }) async {
-    await _client.auth.signInWithPassword(
-      email: email,
-      password: password,
-    );
+  Future<void> signIn({required String email, required String password}) async {
+    await _client.auth.signInWithPassword(email: email, password: password);
   }
 
   // ── Sign out ──────────────────────────────────────────────────────────────

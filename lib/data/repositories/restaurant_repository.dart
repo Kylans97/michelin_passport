@@ -62,11 +62,14 @@ class RestaurantRepository {
     for (final row in rows as List) {
       final name = (row['country'] as String?) ?? '';
       if (name.isNotEmpty && seen.add(name)) {
-        result.add(RestaurantCountry(
-          name: name,
-          code: name,   // used as filter key; matches what search() passes to .eq('country', ...)
-          flag: (row['country_flag'] as String?) ?? '',
-        ));
+        result.add(
+          RestaurantCountry(
+            name: name,
+            code:
+                name, // used as filter key; matches what search() passes to .eq('country', ...)
+            flag: (row['country_flag'] as String?) ?? '',
+          ),
+        );
       }
     }
     return result;
@@ -78,5 +81,9 @@ class RestaurantCountry {
   final String name;
   final String code;
   final String flag;
-  const RestaurantCountry({required this.name, required this.code, required this.flag});
+  const RestaurantCountry({
+    required this.name,
+    required this.code,
+    required this.flag,
+  });
 }

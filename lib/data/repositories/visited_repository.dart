@@ -53,7 +53,7 @@ class VisitedRepository {
       await _client.from('visited_restaurants').insert({
         'user_id': userId,
         'restaurant_id': restaurantId,
-        if (personalRating != null) 'personal_rating': personalRating,
+        'personal_rating': ?personalRating,
         if (notes != null && notes.isNotEmpty) 'notes': notes,
       });
     } on PostgrestException catch (e) {
@@ -72,8 +72,8 @@ class VisitedRepository {
     await _client
         .from('visited_restaurants')
         .update({
-          if (personalRating != null) 'personal_rating': personalRating,
-          if (notes != null) 'notes': notes,
+          'personal_rating': ?personalRating,
+          'notes': ?notes,
         })
         .eq('user_id', userId)
         .eq('restaurant_id', restaurantId);

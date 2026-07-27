@@ -14,14 +14,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final _formKey    = GlobalKey<FormState>();
-  final _emailCtrl  = TextEditingController();
-  final _passCtrl   = TextEditingController();
-  bool _loading     = false;
+  final _formKey = GlobalKey<FormState>();
+  final _emailCtrl = TextEditingController();
+  final _passCtrl = TextEditingController();
+  bool _loading = false;
   String? _error;
 
-  late final AuthRepository _auth =
-      AuthRepository(Supabase.instance.client);
+  late final AuthRepository _auth = AuthRepository(Supabase.instance.client);
 
   @override
   void dispose() {
@@ -32,7 +31,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Future<void> _submit() async {
     if (!_formKey.currentState!.validate()) return;
-    setState(() { _loading = true; _error = null; });
+    setState(() {
+      _loading = true;
+      _error = null;
+    });
     try {
       await _auth.signIn(
         email: _emailCtrl.text.trim(),
@@ -70,8 +72,11 @@ class _LoginScreenState extends State<LoginScreen> {
                 // ── Header ──────────────────────────────────────────────
                 Row(
                   children: [
-                    const Icon(Icons.menu_book_rounded,
-                        color: AppColors.gold, size: 20),
+                    const Icon(
+                      Icons.menu_book_rounded,
+                      color: AppColors.gold,
+                      size: 20,
+                    ),
                     const SizedBox(width: 10),
                     Text(
                       'TABLE PASSPORT',
@@ -111,13 +116,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   keyboardType: TextInputType.emailAddress,
                   autofillHints: const [AutofillHints.email],
                   style: GoogleFonts.inter(
-                      color: AppColors.textPrimary, fontSize: 15),
+                    color: AppColors.textPrimary,
+                    fontSize: 15,
+                  ),
                   decoration: const InputDecoration(
                     hintText: 'you@example.com',
                     prefixIcon: Icon(Icons.mail_outline_rounded),
                   ),
-                  validator: (v) =>
-                      (v == null || !v.contains('@')) ? 'Enter a valid email' : null,
+                  validator: (v) => (v == null || !v.contains('@'))
+                      ? 'Enter a valid email'
+                      : null,
                 ),
                 const SizedBox(height: 20),
                 _FieldLabel('Password'),
@@ -127,13 +135,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   obscureText: true,
                   autofillHints: const [AutofillHints.password],
                   style: GoogleFonts.inter(
-                      color: AppColors.textPrimary, fontSize: 15),
+                    color: AppColors.textPrimary,
+                    fontSize: 15,
+                  ),
                   decoration: const InputDecoration(
                     hintText: '••••••••',
                     prefixIcon: Icon(Icons.lock_outline_rounded),
                   ),
-                  validator: (v) =>
-                      (v == null || v.length < 6) ? 'Minimum 6 characters' : null,
+                  validator: (v) => (v == null || v.length < 6)
+                      ? 'Minimum 6 characters'
+                      : null,
                 ),
                 const SizedBox(height: 16),
 
@@ -145,18 +156,26 @@ class _LoginScreenState extends State<LoginScreen> {
                       color: AppColors.error.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(10),
                       border: Border.all(
-                          color: AppColors.error.withValues(alpha: 0.4),
-                          width: 0.5),
+                        color: AppColors.error.withValues(alpha: 0.4),
+                        width: 0.5,
+                      ),
                     ),
                     child: Row(
                       children: [
-                        const Icon(Icons.error_outline_rounded,
-                            color: AppColors.error, size: 16),
+                        const Icon(
+                          Icons.error_outline_rounded,
+                          color: AppColors.error,
+                          size: 16,
+                        ),
                         const SizedBox(width: 10),
                         Expanded(
-                          child: Text(_error!,
-                              style: GoogleFonts.inter(
-                                  color: AppColors.error, fontSize: 13)),
+                          child: Text(
+                            _error!,
+                            style: GoogleFonts.inter(
+                              color: AppColors.error,
+                              fontSize: 13,
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -176,19 +195,24 @@ class _LoginScreenState extends State<LoginScreen> {
                       foregroundColor: Colors.black,
                       disabledBackgroundColor: AppColors.goldMuted,
                       shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(14)),
+                        borderRadius: BorderRadius.circular(14),
+                      ),
                     ),
                     child: _loading
                         ? const SizedBox(
                             width: 20,
                             height: 20,
                             child: CircularProgressIndicator(
-                                color: Colors.black, strokeWidth: 2),
+                              color: Colors.black,
+                              strokeWidth: 2,
+                            ),
                           )
                         : Text(
                             'Sign In',
                             style: GoogleFonts.inter(
-                                fontWeight: FontWeight.w700, fontSize: 15),
+                              fontWeight: FontWeight.w700,
+                              fontSize: 15,
+                            ),
                           ),
                   ),
                 ),
@@ -201,13 +225,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       "Don't have an account? ",
                       style: GoogleFonts.inter(
-                          color: AppColors.textSecondary, fontSize: 14),
+                        color: AppColors.textSecondary,
+                        fontSize: 14,
+                      ),
                     ),
                     GestureDetector(
                       onTap: () => Navigator.push(
                         context,
-                        MaterialPageRoute(
-                            builder: (_) => const SignupScreen()),
+                        MaterialPageRoute(builder: (_) => const SignupScreen()),
                       ),
                       child: Text(
                         'Sign up',
@@ -235,12 +260,12 @@ class _FieldLabel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Text(
-        text,
-        style: GoogleFonts.inter(
-          color: AppColors.textSecondary,
-          fontSize: 12,
-          fontWeight: FontWeight.w500,
-          letterSpacing: 0.5,
-        ),
-      );
+    text,
+    style: GoogleFonts.inter(
+      color: AppColors.textSecondary,
+      fontSize: 12,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 0.5,
+    ),
+  );
 }

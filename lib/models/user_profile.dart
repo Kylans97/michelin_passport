@@ -34,8 +34,8 @@ class UserProfile {
     required List<Restaurant> visited,
     String? tierFromDb,
   }) {
-    final oneStarCount   = visited.where((r) => r.michelinStars == 1).length;
-    final twoStarCount   = visited.where((r) => r.michelinStars == 2).length;
+    final oneStarCount = visited.where((r) => r.michelinStars == 1).length;
+    final twoStarCount = visited.where((r) => r.michelinStars == 2).length;
     final threeStarCount = visited.where((r) => r.michelinStars == 3).length;
 
     return UserProfile(
@@ -60,8 +60,18 @@ class UserProfile {
     final dt = DateTime.tryParse(iso);
     if (dt == null) return '';
     const months = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December',
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December',
     ];
     return '${months[dt.month - 1]} ${dt.year}';
   }

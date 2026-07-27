@@ -10,19 +10,27 @@ class FriendshipRepository {
   Future<List<Friendship>> getFriends(String userId) async {
     final sent = await _client
         .from('friendships')
-        .select('id, requester_id, addressee_id, status, addressee:profiles!addressee_id(display_name, tier)')
+        .select(
+          'id, requester_id, addressee_id, status, addressee:profiles!addressee_id(display_name, tier)',
+        )
         .eq('requester_id', userId)
         .eq('status', 'accepted');
 
     final received = await _client
         .from('friendships')
-        .select('id, requester_id, addressee_id, status, requester:profiles!requester_id(display_name, tier)')
+        .select(
+          'id, requester_id, addressee_id, status, requester:profiles!requester_id(display_name, tier)',
+        )
         .eq('addressee_id', userId)
         .eq('status', 'accepted');
 
     return [
-      ...(sent as List).map((r) => Friendship.asRequester(r as Map<String, dynamic>, userId)),
-      ...(received as List).map((r) => Friendship.asAddressee(r as Map<String, dynamic>, userId)),
+      ...(sent as List).map(
+        (r) => Friendship.asRequester(r as Map<String, dynamic>, userId),
+      ),
+      ...(received as List).map(
+        (r) => Friendship.asAddressee(r as Map<String, dynamic>, userId),
+      ),
     ];
   }
 
@@ -30,7 +38,9 @@ class FriendshipRepository {
   Future<List<Friendship>> getPendingRequests(String userId) async {
     final rows = await _client
         .from('friendships')
-        .select('id, requester_id, addressee_id, status, requester:profiles!requester_id(display_name, tier)')
+        .select(
+          'id, requester_id, addressee_id, status, requester:profiles!requester_id(display_name, tier)',
+        )
         .eq('addressee_id', userId)
         .eq('status', 'pending');
 

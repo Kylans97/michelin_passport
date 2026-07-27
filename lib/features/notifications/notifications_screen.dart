@@ -16,8 +16,7 @@ class NotificationsScreen extends StatefulWidget {
 class _NotificationsScreenState extends State<NotificationsScreen> {
   late final FriendshipRepository _friendRepo;
   late final TrophyRepository _trophyRepo;
-  final String _uid =
-      Supabase.instance.client.auth.currentUser?.id ?? '';
+  final String _uid = Supabase.instance.client.auth.currentUser?.id ?? '';
 
   late Future<List<Friendship>> _future;
 
@@ -73,8 +72,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         builder: (context, snap) {
           if (snap.connectionState == ConnectionState.waiting) {
             return const Center(
-                child: CircularProgressIndicator(
-                    color: AppColors.gold, strokeWidth: 1.5));
+              child: CircularProgressIndicator(
+                color: AppColors.gold,
+                strokeWidth: 1.5,
+              ),
+            );
           }
           final requests = snap.data ?? [];
           if (requests.isEmpty) {
@@ -82,16 +84,27 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Icon(Icons.notifications_none_rounded,
-                      color: AppColors.textSecondary, size: 48),
+                  const Icon(
+                    Icons.notifications_none_rounded,
+                    color: AppColors.textSecondary,
+                    size: 48,
+                  ),
                   const SizedBox(height: 16),
-                  Text('No pending requests',
-                      style: GoogleFonts.playfairDisplay(
-                          color: AppColors.textSecondary, fontSize: 18)),
+                  Text(
+                    'No pending requests',
+                    style: GoogleFonts.playfairDisplay(
+                      color: AppColors.textSecondary,
+                      fontSize: 18,
+                    ),
+                  ),
                   const SizedBox(height: 8),
-                  Text('Friend requests will appear here.',
-                      style: GoogleFonts.inter(
-                          color: AppColors.textSecondary, fontSize: 13)),
+                  Text(
+                    'Friend requests will appear here.',
+                    style: GoogleFonts.inter(
+                      color: AppColors.textSecondary,
+                      fontSize: 13,
+                    ),
+                  ),
                 ],
               ),
             );
@@ -99,7 +112,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
           return ListView.separated(
             padding: const EdgeInsets.all(20),
             itemCount: requests.length,
-            separatorBuilder: (_, __) => const SizedBox(height: 12),
+            separatorBuilder: (_, _) => const SizedBox(height: 12),
             itemBuilder: (_, i) {
               final f = requests[i];
               return Container(
@@ -112,7 +125,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 child: Row(
                   children: [
                     Container(
-                      width: 44, height: 44,
+                      width: 44,
+                      height: 44,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         color: AppColors.goldMuted,
@@ -124,9 +138,10 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                             ? f.friendDisplayName[0].toUpperCase()
                             : '?',
                         style: GoogleFonts.playfairDisplay(
-                            color: AppColors.gold,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w700),
+                          color: AppColors.gold,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
                     ),
                     const SizedBox(width: 12),
@@ -134,16 +149,22 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(f.friendDisplayName,
-                              style: GoogleFonts.inter(
-                                  color: AppColors.textPrimary,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600)),
+                          Text(
+                            f.friendDisplayName,
+                            style: GoogleFonts.inter(
+                              color: AppColors.textPrimary,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                           const SizedBox(height: 2),
-                          Text('Sent you a friend request',
-                              style: GoogleFonts.inter(
-                                  color: AppColors.textSecondary,
-                                  fontSize: 12)),
+                          Text(
+                            'Sent you a friend request',
+                            style: GoogleFonts.inter(
+                              color: AppColors.textSecondary,
+                              fontSize: 12,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -156,10 +177,15 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           color: AppColors.surface,
                           shape: BoxShape.circle,
                           border: Border.all(
-                              color: AppColors.cardBorder, width: 0.5),
+                            color: AppColors.cardBorder,
+                            width: 0.5,
+                          ),
                         ),
-                        child: const Icon(Icons.close_rounded,
-                            color: AppColors.textSecondary, size: 16),
+                        child: const Icon(
+                          Icons.close_rounded,
+                          color: AppColors.textSecondary,
+                          size: 16,
+                        ),
                       ),
                     ),
                     const SizedBox(width: 8),
@@ -172,10 +198,15 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                           color: AppColors.goldMuted,
                           shape: BoxShape.circle,
                           border: Border.all(
-                              color: AppColors.goldBorder60, width: 1),
+                            color: AppColors.goldBorder60,
+                            width: 1,
+                          ),
                         ),
-                        child: const Icon(Icons.check_rounded,
-                            color: AppColors.gold, size: 16),
+                        child: const Icon(
+                          Icons.check_rounded,
+                          color: AppColors.gold,
+                          size: 16,
+                        ),
                       ),
                     ),
                   ],
@@ -195,37 +226,39 @@ class _TrophyMiniDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => AlertDialog(
-        backgroundColor: AppColors.card,
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.emoji_events_rounded,
-                color: AppColors.gold, size: 40),
-            const SizedBox(height: 12),
-            Text('Trophy earned!',
-                style: GoogleFonts.inter(
-                    color: AppColors.gold,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.2)),
-            const SizedBox(height: 6),
-            Text(name,
-                textAlign: TextAlign.center,
-                style: GoogleFonts.playfairDisplay(
-                    color: AppColors.textPrimary,
-                    fontSize: 18,
-                    fontWeight: FontWeight.w700)),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text('Nice!',
-                style:
-                    GoogleFonts.inter(color: AppColors.gold)),
+    backgroundColor: AppColors.card,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+    content: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(Icons.emoji_events_rounded, color: AppColors.gold, size: 40),
+        const SizedBox(height: 12),
+        Text(
+          'Trophy earned!',
+          style: GoogleFonts.inter(
+            color: AppColors.gold,
+            fontSize: 12,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 1.2,
           ),
-        ],
-      );
+        ),
+        const SizedBox(height: 6),
+        Text(
+          name,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textPrimary,
+            fontSize: 18,
+            fontWeight: FontWeight.w700,
+          ),
+        ),
+      ],
+    ),
+    actions: [
+      TextButton(
+        onPressed: () => Navigator.pop(context),
+        child: Text('Nice!', style: GoogleFonts.inter(color: AppColors.gold)),
+      ),
+    ],
+  );
 }

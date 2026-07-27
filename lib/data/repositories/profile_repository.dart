@@ -33,7 +33,7 @@ class ProfileRepository {
         : 'Explorer';
 
     return UserProfile.fromSupabase(
-      profileRow: profileRows.first as Map<String, dynamic>,
+      profileRow: profileRows.first,
       visited: visited,
       tierFromDb: tierName,
     );
@@ -55,7 +55,10 @@ class ProfileRepository {
   }) async {
     await _client
         .from('profiles')
-        .update({'display_name': displayName, 'updated_at': DateTime.now().toIso8601String()})
+        .update({
+          'display_name': displayName,
+          'updated_at': DateTime.now().toIso8601String(),
+        })
         .eq('id', userId);
   }
 }

@@ -22,18 +22,18 @@ class _ExploreScreenState extends State<ExploreScreen> {
   final _searchCtrl = TextEditingController();
 
   late final _restaurantRepo = RestaurantRepository(Supabase.instance.client);
-  late final _visitedRepo    = VisitedRepository(Supabase.instance.client);
-  late final _wishlistRepo   = WishlistRepository(Supabase.instance.client);
-  late final _trophyRepo     = TrophyRepository(Supabase.instance.client);
+  late final _visitedRepo = VisitedRepository(Supabase.instance.client);
+  late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
+  late final _trophyRepo = TrophyRepository(Supabase.instance.client);
 
-  int     _starFilter    = 0;
+  int _starFilter = 0;
   String? _countryFilter;
-  String  _query         = '';
+  String _query = '';
 
-  late Future<List<Restaurant>>        _restaurantFuture;
+  late Future<List<Restaurant>> _restaurantFuture;
   late Future<List<RestaurantCountry>> _countriesFuture;
 
-  Set<String> _visitedIds  = {};
+  Set<String> _visitedIds = {};
   Set<String> _wishlistIds = {};
 
   @override
@@ -48,7 +48,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
     setState(() {
       _restaurantFuture = _restaurantRepo.search(
         _query,
-        stars:       _starFilter == 0 ? null : _starFilter,
+        stars: _starFilter == 0 ? null : _starFilter,
         countryCode: _countryFilter,
       );
     });
@@ -57,11 +57,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
   Future<void> _loadUserSets() async {
     final uid = Supabase.instance.client.auth.currentUser?.id;
     if (uid == null) return;
-    final visited  = await _visitedRepo.getVisited(uid);
+    final visited = await _visitedRepo.getVisited(uid);
     final wishlist = await _wishlistRepo.getWishlist(uid);
     if (mounted) {
       setState(() {
-        _visitedIds  = visited.map((r) => r.id).toSet();
+        _visitedIds = visited.map((r) => r.id).toSet();
         _wishlistIds = wishlist.map((r) => r.id).toSet();
       });
     }
@@ -134,12 +134,18 @@ class _ExploreScreenState extends State<ExploreScreen> {
               bottom: PreferredSize(
                 preferredSize: const Size.fromHeight(152),
                 child: _FilterBar(
-                  searchCtrl:      _searchCtrl,
-                  starFilter:      _starFilter,
-                  countryFilter:   _countryFilter,
+                  searchCtrl: _searchCtrl,
+                  starFilter: _starFilter,
+                  countryFilter: _countryFilter,
                   countriesFuture: _countriesFuture,
-                  onQueryChanged:  (v) { _query = v; _load(); },
-                  onStarChanged:   (v) { setState(() => _starFilter = v); _load(); },
+                  onQueryChanged: (v) {
+                    _query = v;
+                    _load();
+                  },
+                  onStarChanged: (v) {
+                    setState(() => _starFilter = v);
+                    _load();
+                  },
                   onCountryChanged: (v) {
                     setState(() => _countryFilter = v);
                     _load();
@@ -153,13 +159,20 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
                 child: snap.connectionState == ConnectionState.waiting
                     ? const SizedBox(
-                        width: 14, height: 14,
+                        width: 14,
+                        height: 14,
                         child: CircularProgressIndicator(
-                            color: AppColors.gold, strokeWidth: 1.5))
+                          color: AppColors.gold,
+                          strokeWidth: 1.5,
+                        ),
+                      )
                     : Text(
                         '${results.length} restaurant${results.length == 1 ? '' : 's'}',
                         style: GoogleFonts.inter(
-                            color: AppColors.textSecondary, fontSize: 13)),
+                          color: AppColors.textSecondary,
+                          fontSize: 13,
+                        ),
+                      ),
               ),
             ),
 
@@ -169,17 +182,25 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.wifi_off_rounded,
-                          color: AppColors.textSecondary, size: 40),
+                      const Icon(
+                        Icons.wifi_off_rounded,
+                        color: AppColors.textSecondary,
+                        size: 40,
+                      ),
                       const SizedBox(height: 12),
-                      Text('Could not load restaurants',
-                          style: GoogleFonts.inter(
-                              color: AppColors.textSecondary)),
+                      Text(
+                        'Could not load restaurants',
+                        style: GoogleFonts.inter(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
                       const SizedBox(height: 12),
                       TextButton(
                         onPressed: _load,
-                        child: Text('Retry',
-                            style: GoogleFonts.inter(color: AppColors.gold)),
+                        child: Text(
+                          'Retry',
+                          style: GoogleFonts.inter(color: AppColors.gold),
+                        ),
                       ),
                     ],
                   ),
@@ -192,12 +213,18 @@ class _ExploreScreenState extends State<ExploreScreen> {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      const Icon(Icons.search_off_rounded,
-                          color: AppColors.textSecondary, size: 40),
+                      const Icon(
+                        Icons.search_off_rounded,
+                        color: AppColors.textSecondary,
+                        size: 40,
+                      ),
                       const SizedBox(height: 12),
-                      Text('No restaurants found',
-                          style: GoogleFonts.inter(
-                              color: AppColors.textSecondary)),
+                      Text(
+                        'No restaurants found',
+                        style: GoogleFonts.inter(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -207,12 +234,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
                 delegate: SliverChildBuilderDelegate(
                   (context, i) => Padding(
                     padding: EdgeInsets.only(
-                        bottom: i == results.length - 1 ? 88 : 0),
+                      bottom: i == results.length - 1 ? 88 : 0,
+                    ),
                     child: RestaurantTile(
-                      restaurant:       results[i],
-                      isVisited:        _visitedIds.contains(results[i].id),
-                      isWishlisted:     _wishlistIds.contains(results[i].id),
-                      onToggleVisited:  () => _toggleVisited(results[i]),
+                      restaurant: results[i],
+                      isVisited: _visitedIds.contains(results[i].id),
+                      isWishlisted: _wishlistIds.contains(results[i].id),
+                      onToggleVisited: () => _toggleVisited(results[i]),
                       onToggleWishlist: () => _toggleWishlist(results[i]),
                     ),
                   ),
@@ -259,7 +287,9 @@ class _FilterBar extends StatelessWidget {
             controller: searchCtrl,
             onChanged: onQueryChanged,
             style: GoogleFonts.inter(
-                color: AppColors.textPrimary, fontSize: 14),
+              color: AppColors.textPrimary,
+              fontSize: 14,
+            ),
             decoration: const InputDecoration(
               hintText: 'Search restaurants, cities, cuisines…',
               prefixIcon: Icon(Icons.search_rounded),
@@ -279,14 +309,16 @@ class _FilterBar extends StatelessWidget {
                       selected: countryFilter == null,
                       onTap: () => onCountryChanged(null),
                     ),
-                    ...countries.map((c) => Padding(
-                          padding: const EdgeInsets.only(left: 8),
-                          child: _Chip(
-                            label: '${c.flag}  ${c.name}',
-                            selected: countryFilter == c.code,
-                            onTap: () => onCountryChanged(c.code),
-                          ),
-                        )),
+                    ...countries.map(
+                      (c) => Padding(
+                        padding: const EdgeInsets.only(left: 8),
+                        child: _Chip(
+                          label: '${c.flag}  ${c.name}',
+                          selected: countryFilter == c.code,
+                          onTap: () => onCountryChanged(c.code),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               );
@@ -297,17 +329,29 @@ class _FilterBar extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             child: Row(
               children: [
-                _Chip(label: 'All stars', selected: starFilter == 0,
-                    onTap: () => onStarChanged(0)),
+                _Chip(
+                  label: 'All stars',
+                  selected: starFilter == 0,
+                  onTap: () => onStarChanged(0),
+                ),
                 const SizedBox(width: 8),
-                _Chip(label: '★',  selected: starFilter == 1,
-                    onTap: () => onStarChanged(1)),
+                _Chip(
+                  label: '★',
+                  selected: starFilter == 1,
+                  onTap: () => onStarChanged(1),
+                ),
                 const SizedBox(width: 8),
-                _Chip(label: '★★', selected: starFilter == 2,
-                    onTap: () => onStarChanged(2)),
+                _Chip(
+                  label: '★★',
+                  selected: starFilter == 2,
+                  onTap: () => onStarChanged(2),
+                ),
                 const SizedBox(width: 8),
-                _Chip(label: '★★★', selected: starFilter == 3,
-                    onTap: () => onStarChanged(3)),
+                _Chip(
+                  label: '★★★',
+                  selected: starFilter == 3,
+                  onTap: () => onStarChanged(3),
+                ),
               ],
             ),
           ),
@@ -321,30 +365,34 @@ class _Chip extends StatelessWidget {
   final String label;
   final bool selected;
   final VoidCallback onTap;
-  const _Chip({required this.label, required this.selected, required this.onTap});
+  const _Chip({
+    required this.label,
+    required this.selected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) => GestureDetector(
-        onTap: onTap,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 180),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
-          decoration: BoxDecoration(
-            color: selected ? AppColors.goldMuted : AppColors.surface,
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(
-              color: selected ? AppColors.goldBorder60 : AppColors.cardBorder,
-              width: selected ? 1.0 : 0.5,
-            ),
-          ),
-          child: Text(
-            label,
-            style: GoogleFonts.inter(
-              color: selected ? AppColors.gold : AppColors.textSecondary,
-              fontSize: 12,
-              fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
-            ),
-          ),
+    onTap: onTap,
+    child: AnimatedContainer(
+      duration: const Duration(milliseconds: 180),
+      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+      decoration: BoxDecoration(
+        color: selected ? AppColors.goldMuted : AppColors.surface,
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(
+          color: selected ? AppColors.goldBorder60 : AppColors.cardBorder,
+          width: selected ? 1.0 : 0.5,
         ),
-      );
+      ),
+      child: Text(
+        label,
+        style: GoogleFonts.inter(
+          color: selected ? AppColors.gold : AppColors.textSecondary,
+          fontSize: 12,
+          fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+        ),
+      ),
+    ),
+  );
 }

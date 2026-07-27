@@ -21,7 +21,10 @@ class Friendship {
   bool get isAccepted => status == 'accepted';
 
   // Build from a friendships row where the current user is the requester.
-  factory Friendship.asRequester(Map<String, dynamic> row, String currentUserId) {
+  factory Friendship.asRequester(
+    Map<String, dynamic> row,
+    String currentUserId,
+  ) {
     final addressee = row['addressee'] as Map<String, dynamic>? ?? {};
     return Friendship(
       id: row['id'].toString(),
@@ -35,7 +38,10 @@ class Friendship {
   }
 
   // Build from a friendships row where the current user is the addressee.
-  factory Friendship.asAddressee(Map<String, dynamic> row, String currentUserId) {
+  factory Friendship.asAddressee(
+    Map<String, dynamic> row,
+    String currentUserId,
+  ) {
     final requester = row['requester'] as Map<String, dynamic>? ?? {};
     return Friendship(
       id: row['id'].toString(),

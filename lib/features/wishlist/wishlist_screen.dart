@@ -14,8 +14,9 @@ class WishlistScreen extends StatefulWidget {
 }
 
 class _WishlistScreenState extends State<WishlistScreen> {
-  late final WishlistRepository _repo =
-      WishlistRepository(Supabase.instance.client);
+  late final WishlistRepository _repo = WishlistRepository(
+    Supabase.instance.client,
+  );
 
   late Future<List<Restaurant>> _future;
 
@@ -63,30 +64,42 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
                   child: Row(
                     children: [
-                      Text('Dream Destinations',
-                          style: Theme.of(context).textTheme.headlineSmall),
+                      Text(
+                        'Dream Destinations',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
                       const SizedBox(width: 10),
                       if (snap.connectionState == ConnectionState.waiting)
                         const SizedBox(
-                            width: 14,
-                            height: 14,
-                            child: CircularProgressIndicator(
-                                color: AppColors.gold, strokeWidth: 1.5))
+                          width: 14,
+                          height: 14,
+                          child: CircularProgressIndicator(
+                            color: AppColors.gold,
+                            strokeWidth: 1.5,
+                          ),
+                        )
                       else
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 3),
+                            horizontal: 10,
+                            vertical: 3,
+                          ),
                           decoration: BoxDecoration(
                             color: AppColors.goldMuted,
                             borderRadius: BorderRadius.circular(20),
                             border: Border.all(
-                                color: AppColors.goldBorder40, width: 0.5),
+                              color: AppColors.goldBorder40,
+                              width: 0.5,
+                            ),
                           ),
-                          child: Text('${items.length}',
-                              style: GoogleFonts.inter(
-                                  color: AppColors.gold,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w600)),
+                          child: Text(
+                            '${items.length}',
+                            style: GoogleFonts.inter(
+                              color: AppColors.gold,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ),
                     ],
                   ),
@@ -95,32 +108,48 @@ class _WishlistScreenState extends State<WishlistScreen> {
               if (snap.hasError)
                 SliverFillRemaining(
                   child: Center(
-                    child: Text('Could not load wishlist',
-                        style: GoogleFonts.inter(
-                            color: AppColors.textSecondary)),
+                    child: Text(
+                      'Could not load wishlist',
+                      style: GoogleFonts.inter(color: AppColors.textSecondary),
+                    ),
                   ),
                 )
               else if (snap.connectionState == ConnectionState.waiting)
                 const SliverFillRemaining(
-                    child: Center(
-                        child: CircularProgressIndicator(
-                            color: AppColors.gold, strokeWidth: 1.5)))
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.gold,
+                      strokeWidth: 1.5,
+                    ),
+                  ),
+                )
               else if (items.isEmpty)
                 SliverFillRemaining(
                   child: Center(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        const Icon(Icons.favorite_border_rounded,
-                            color: AppColors.textSecondary, size: 48),
+                        const Icon(
+                          Icons.favorite_border_rounded,
+                          color: AppColors.textSecondary,
+                          size: 48,
+                        ),
                         const SizedBox(height: 16),
-                        Text('Your wishlist is empty',
-                            style: GoogleFonts.playfairDisplay(
-                                color: AppColors.textSecondary, fontSize: 18)),
+                        Text(
+                          'Your wishlist is empty',
+                          style: GoogleFonts.playfairDisplay(
+                            color: AppColors.textSecondary,
+                            fontSize: 18,
+                          ),
+                        ),
                         const SizedBox(height: 8),
-                        Text('Tap ♥ on any restaurant to save it here',
-                            style: GoogleFonts.inter(
-                                color: AppColors.textSecondary, fontSize: 13)),
+                        Text(
+                          'Tap ♥ on any restaurant to save it here',
+                          style: GoogleFonts.inter(
+                            color: AppColors.textSecondary,
+                            fontSize: 13,
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -130,7 +159,11 @@ class _WishlistScreenState extends State<WishlistScreen> {
                   delegate: SliverChildBuilderDelegate(
                     (context, i) => Padding(
                       padding: EdgeInsets.fromLTRB(
-                          20, 0, 20, i == items.length - 1 ? 100 : 12),
+                        20,
+                        0,
+                        20,
+                        i == items.length - 1 ? 100 : 12,
+                      ),
                       child: WishlistCard(
                         restaurant: items[i],
                         rank: i + 1,

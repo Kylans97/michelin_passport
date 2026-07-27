@@ -16,22 +16,21 @@ class Trophy {
   bool get isEarned => earnedAt != null;
 
   Trophy copyWithEarned(DateTime at) => Trophy(
-        key: key,
-        name: name,
-        description: description,
-        category: category,
-        earnedAt: at,
-      );
+    key: key,
+    name: name,
+    description: description,
+    category: category,
+    earnedAt: at,
+  );
 
   factory Trophy.fromRow({
     required Map<String, dynamic> trophyRow,
     DateTime? earnedAt,
-  }) =>
-      Trophy(
-        key: trophyRow['key'] as String,
-        name: trophyRow['name'] as String,
-        description: (trophyRow['description'] as String?) ?? '',
-        category: (trophyRow['category'] as String?) ?? 'milestone',
-        earnedAt: earnedAt,
-      );
+  }) => Trophy(
+    key: trophyRow['key'] as String,
+    name: trophyRow['name'] as String,
+    description: (trophyRow['description'] as String?) ?? '',
+    category: (trophyRow['category'] as String?) ?? 'milestone',
+    earnedAt: earnedAt,
+  );
 }
