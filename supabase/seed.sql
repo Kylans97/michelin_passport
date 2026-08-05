@@ -1,3 +1,3 @@
 -- Intentionally empty.
 -- Catalogue data is imported from supabase/data according to
--- docs/Architecture/Michelin_Database/DATABASE_IMPORT_GUIDE.md.
+-- docs/Architecture/Michelin_Database/DATABASE_IMPORT_GUIDE.md.s
