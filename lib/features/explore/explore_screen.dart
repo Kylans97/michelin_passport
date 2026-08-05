@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/widgets/rating_dialog.dart';
-import '../../core/widgets/trophy_popup.dart';
 import '../../data/repositories/restaurant_repository.dart';
-import '../../data/repositories/visited_repository.dart';
-import '../../data/repositories/wishlist_repository.dart';
-import '../../data/repositories/trophy_repository.dart';
 import '../../models/restaurant.dart';
 import 'widgets/restaurant_tile.dart';
 
+// Catalogue-read-only Explore: browses public.restaurants_full. No visited,
+// wishlist or trophy state yet — that is a later slice.
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
 
@@ -22,9 +19,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
   final _searchCtrl = TextEditingController();
 
   late final _restaurantRepo = RestaurantRepository(Supabase.instance.client);
-  late final _visitedRepo = VisitedRepository(Supabase.instance.client);
-  late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
-  late final _trophyRepo = TrophyRepository(Supabase.instance.client);
 
   int _starFilter = 0;
   String? _countryFilter;
@@ -33,15 +27,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
   late Future<List<Restaurant>> _restaurantFuture;
   late Future<List<RestaurantCountry>> _countriesFuture;
 
-  Set<String> _visitedIds = {};
-  Set<String> _wishlistIds = {};
-
   @override
   void initState() {
     super.initState();
     _countriesFuture = _restaurantRepo.getCountries();
     _restaurantFuture = _restaurantRepo.search('');
-    _loadUserSets();
   }
 
   void _load() {
@@ -52,64 +42,6 @@ class _ExploreScreenState extends State<ExploreScreen> {
         countryCode: _countryFilter,
       );
     });
-  }
-
-  Future<void> _loadUserSets() async {
-    final uid = Supabase.instance.client.auth.currentUser?.id;
-    if (uid == null) return;
-    final visited = await _visitedRepo.getVisited(uid);
-    final wishlist = await _wishlistRepo.getWishlist(uid);
-    if (mounted) {
-      setState(() {
-        _visitedIds = visited.map((r) => r.id).toSet();
-        _wishlistIds = wishlist.map((r) => r.id).toSet();
-      });
-    }
-  }
-
-  Future<void> _toggleVisited(Restaurant r) async {
-    final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-    if (_visitedIds.contains(r.id)) {
-      await _visitedRepo.removeVisit(userId: uid, restaurantId: r.id);
-      if (mounted) setState(() => _visitedIds.remove(r.id));
-    } else {
-      // Show rating/log dialog before saving the visit.
-      if (!mounted) return;
-      final result = await showRatingDialog(context, r.name);
-      if (!mounted) return;
-      // If user dismissed the sheet (null), still log the visit without a rating.
-      await _visitedRepo.addVisit(
-        userId: uid,
-        restaurantId: r.id,
-        personalRating: result?.rating,
-        notes: result?.notes,
-      );
-      if (mounted) setState(() => _visitedIds.add(r.id));
-
-      // Check and award trophies.
-      final allVisited = await _visitedRepo.getVisitedWithRatings(uid);
-      if (!mounted) return;
-      final earned = await _trophyRepo.checkAndAward(
-        userId: uid,
-        justVisited: r,
-        personalRating: result?.rating,
-        allVisited: allVisited,
-      );
-      if (earned.isNotEmpty && mounted) {
-        await showTrophyPopups(context, earned);
-      }
-    }
-  }
-
-  Future<void> _toggleWishlist(Restaurant r) async {
-    final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-    if (_wishlistIds.contains(r.id)) {
-      await _wishlistRepo.remove(userId: uid, restaurantId: r.id);
-      setState(() => _wishlistIds.remove(r.id));
-    } else {
-      await _wishlistRepo.add(userId: uid, restaurantId: r.id);
-      setState(() => _wishlistIds.add(r.id));
-    }
   }
 
   @override
@@ -236,13 +168,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
                     padding: EdgeInsets.only(
                       bottom: i == results.length - 1 ? 88 : 0,
                     ),
-                    child: RestaurantTile(
-                      restaurant: results[i],
-                      isVisited: _visitedIds.contains(results[i].id),
-                      isWishlisted: _wishlistIds.contains(results[i].id),
-                      onToggleVisited: () => _toggleVisited(results[i]),
-                      onToggleWishlist: () => _toggleWishlist(results[i]),
-                    ),
+                    child: RestaurantTile(restaurant: results[i]),
                   ),
                   childCount: results.length,
                 ),
@@ -291,7 +217,7 @@ class _FilterBar extends StatelessWidget {
               fontSize: 14,
             ),
             decoration: const InputDecoration(
-              hintText: 'Search restaurants, cities, cuisines…',
+              hintText: 'Search restaurants, cities, countries…',
               prefixIcon: Icon(Icons.search_rounded),
             ),
           ),
@@ -330,7 +256,9 @@ class _FilterBar extends StatelessWidget {
             child: Row(
               children: [
                 _Chip(
-                  label: 'All stars',
+                  // Includes unstarred World's 50 Best restaurants, so
+                  // "All stars" would overpromise — this filter is just "all".
+                  label: 'All',
                   selected: starFilter == 0,
                   onTap: () => onStarChanged(0),
                 ),

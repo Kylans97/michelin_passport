@@ -55,18 +55,13 @@ class WishlistCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                StarRow(count: restaurant.michelinStars),
-                const SizedBox(height: 5),
-                Text(
-                  restaurant.cuisine,
-                  style: GoogleFonts.inter(
-                    color: AppColors.textSecondary,
-                    fontSize: 12,
-                  ),
-                ),
+                // restaurants_full has no cuisine display column, so that
+                // line is omitted here (compatibility fix, not a redesign).
+                if (restaurant.hasMichelinStar)
+                  StarRow(count: restaurant.michelinStars!),
                 const SizedBox(height: 3),
                 Text(
-                  '${restaurant.countryFlag}  ${restaurant.city}, ${restaurant.country}',
+                  '${restaurant.flagEmoji}  ${restaurant.cityName}, ${restaurant.countryName}',
                   style: GoogleFonts.inter(
                     color: AppColors.textSecondary,
                     fontSize: 12,

@@ -81,12 +81,11 @@ class TrophyRepository {
       toAward.add('perfect_ten');
     }
 
-    // ── Milestone: cuisine explorer ───────────────────────────────────────────
-    final uniqueCuisines = allRestaurants.map((r) => r.cuisine).toSet();
-    if (uniqueCuisines.length == 10) toAward.add('cuisine_explorer');
+    // Cuisine-explorer milestone removed: restaurants_full does not expose a
+    // cuisine display column, so there is no data left to compute it from.
 
     // ── Travel: country counts ────────────────────────────────────────────────
-    final uniqueCountries = allRestaurants.map((r) => r.country).toSet();
+    final uniqueCountries = allRestaurants.map((r) => r.countryName).toSet();
     for (final threshold in [5, 10, 20]) {
       if (uniqueCountries.length == threshold) {
         toAward.add('countries_$threshold');
@@ -107,13 +106,19 @@ class TrophyRepository {
     };
 
     // Only check the country of the restaurant just visited.
-    final countryCode = countryMap[justVisited.country];
+    final countryCode = countryMap[justVisited.countryName];
     if (countryCode != null) {
       // Get total counts for this country from the DB.
+      //
+      // NOTE: this still queries the legacy 'restaurants'/'country' shape
+      // and will not resolve rows against the production schema (now
+      // 'restaurants_full'/'country_code'). Left as-is: making trophies
+      // work against the new schema is a separate migration, out of scope
+      // for this change, which only keeps this file compiling.
       final totalRows = await _client
           .from('restaurants')
           .select('michelin_stars')
-          .eq('country', justVisited.country);
+          .eq('country', justVisited.countryName);
       final totals = <int, int>{};
       for (final r in totalRows as List) {
         final stars = (r['michelin_stars'] as int?) ?? 0;
@@ -123,12 +128,13 @@ class TrophyRepository {
 
       // Count user's visited in this country.
       final visitedInCountry = allRestaurants
-          .where((r) => r.country == justVisited.country)
+          .where((r) => r.countryName == justVisited.countryName)
           .toList();
       final visitedByStars = <int, int>{};
       for (final r in visitedInCountry) {
-        visitedByStars[r.michelinStars] =
-            (visitedByStars[r.michelinStars] ?? 0) + 1;
+        final stars = r.michelinStars;
+        if (stars == null) continue; // no current star: doesn't count here
+        visitedByStars[stars] = (visitedByStars[stars] ?? 0) + 1;
       }
 
       for (final stars in [1, 2, 3]) {
@@ -206,9 +212,6 @@ class TrophyRepository {
       return null;
     }
 
-    return Trophy.fromRow(
-      trophyRow: trophyRows.first,
-      earnedAt: now,
-    );
+    return Trophy.fromRow(trophyRow: trophyRows.first, earnedAt: now);
   }
 }

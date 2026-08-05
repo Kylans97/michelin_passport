@@ -40,8 +40,8 @@ class _PassportScreenState extends State<PassportScreen> {
       future: _future,
       builder: (context, snap) {
         final visited = snap.data ?? [];
-        final countries = visited.map((r) => r.country).toSet().length;
-        final cities = visited.map((r) => r.city).toSet().length;
+        final countries = visited.map((r) => r.countryName).toSet().length;
+        final cities = visited.map((r) => r.cityName).toSet().length;
 
         return RefreshIndicator(
           color: AppColors.gold,
@@ -271,10 +271,11 @@ class _StampCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 4),
-                StarRow(count: restaurant.michelinStars),
+                if (restaurant.hasMichelinStar)
+                  StarRow(count: restaurant.michelinStars!),
                 const SizedBox(height: 4),
                 Text(
-                  '${restaurant.countryFlag}  ${restaurant.city}, ${restaurant.country}',
+                  '${restaurant.flagEmoji}  ${restaurant.cityName}, ${restaurant.countryName}',
                   style: GoogleFonts.inter(
                     color: AppColors.textSecondary,
                     fontSize: 12,

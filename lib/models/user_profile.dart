@@ -45,8 +45,8 @@ class UserProfile {
       memberSince: _formatDate(profileRow['member_since'] as String?),
       tier: tierFromDb ?? (profileRow['tier'] as String?) ?? 'Explorer',
       restaurantsVisited: visited.length,
-      countriesVisited: visited.map((r) => r.country).toSet().length,
-      citiesVisited: visited.map((r) => r.city).toSet().length,
+      countriesVisited: visited.map((r) => r.countryName).toSet().length,
+      citiesVisited: visited.map((r) => r.cityName).toSet().length,
       michelinStarsCollected:
           oneStarCount + (twoStarCount * 2) + (threeStarCount * 3),
       oneStarCount: oneStarCount,

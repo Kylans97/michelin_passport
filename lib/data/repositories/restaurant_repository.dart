@@ -1,45 +1,53 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/restaurant.dart';
 
+// Explicit column list matching public.restaurants_full — see
+// supabase/migrations/20260805141519_production_schema_v1.sql. Keep this in
+// sync with Restaurant.fromJson.
+const _restaurantColumns =
+    'id, restaurant_code, name, michelin_stars, inclusion_reason, '
+    'city_name, region, country_code, country_name, flag_emoji, address, '
+    'google_place_id, michelin_url, website_url, booking_url, property_name, '
+    'is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank';
+
 class RestaurantRepository {
   RestaurantRepository(this._client);
 
   final SupabaseClient _client;
 
-  // Full catalogue ordered alphabetically.
+  // Full catalogue ordered by name.
   Future<List<Restaurant>> getAll() async {
-    final rows = await _client.from('restaurants').select().order('name');
+    final rows = await _client
+        .from('restaurants_full')
+        .select(_restaurantColumns)
+        .order('name');
     return (rows as List)
         .map((row) => Restaurant.fromJson(row as Map<String, dynamic>))
         .toList();
   }
 
-  // Search with optional star, country, and category filters.
-  // [countryCode] is a 2-letter ISO code: 'NL', 'BE', 'FR', 'ES', etc.
+  // Search with optional Michelin star and country filters.
+  // [countryCode] is the ISO 3166-1 alpha-2 code stored on restaurants_full,
+  // e.g. 'NL', 'BE', 'FR', 'ES'.
   Future<List<Restaurant>> search(
     String query, {
     int? stars,
     String? countryCode,
-    String? category,
   }) async {
-    var builder = _client.from('restaurants').select();
+    var builder = _client.from('restaurants_full').select(_restaurantColumns);
 
     if (query.isNotEmpty) {
       builder = builder.or(
         'name.ilike.%$query%,'
-        'city.ilike.%$query%,'
-        'country.ilike.%$query%,'
-        'cuisine.ilike.%$query%',
+        'city_name.ilike.%$query%,'
+        'country_name.ilike.%$query%',
       );
     }
     if (stars != null) {
       builder = builder.eq('michelin_stars', stars);
     }
     if (countryCode != null) {
-      builder = builder.eq('country', countryCode);
-    }
-    if (category != null) {
-      builder = builder.eq('category', category);
+      builder = builder.eq('country_code', countryCode);
     }
 
     final rows = await builder.order('name');
@@ -48,31 +56,34 @@ class RestaurantRepository {
         .toList();
   }
 
-  // Returns the distinct countries present in the catalogue.
-  // Used to build dynamic country filter chips.
+  // Countries that have at least one restaurant, for the filter chips.
+  // Two queries total, never one per country: the distinct country_code
+  // values present on restaurants_full, joined in Dart against one read of
+  // public.countries.
   Future<List<RestaurantCountry>> getCountries() async {
-    final rows = await _client
-        .from('restaurants')
-        .select('country, country_flag')
-        .order('country');
+    final restaurantRows = await _client
+        .from('restaurants_full')
+        .select('country_code');
+    final presentCodes = <String>{
+      for (final row in restaurantRows as List)
+        if ((row['country_code'] as String?)?.isNotEmpty ?? false)
+          row['country_code'] as String,
+    };
 
-    // Deduplicate by country name.
-    final seen = <String>{};
-    final result = <RestaurantCountry>[];
-    for (final row in rows as List) {
-      final name = (row['country'] as String?) ?? '';
-      if (name.isNotEmpty && seen.add(name)) {
-        result.add(
+    final countryRows = await _client
+        .from('countries')
+        .select('country_code, name, flag_emoji')
+        .order('name');
+
+    return [
+      for (final row in countryRows as List)
+        if (presentCodes.contains(row['country_code'] as String?))
           RestaurantCountry(
-            name: name,
-            code:
-                name, // used as filter key; matches what search() passes to .eq('country', ...)
-            flag: (row['country_flag'] as String?) ?? '',
+            name: (row['name'] as String?) ?? '',
+            code: (row['country_code'] as String?) ?? '',
+            flag: (row['flag_emoji'] as String?) ?? '',
           ),
-        );
-      }
-    }
-    return result;
+    ];
   }
 }
 

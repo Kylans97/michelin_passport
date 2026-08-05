@@ -30,7 +30,7 @@ class RestaurantDetailScreen extends StatelessWidget {
       );
     } else {
       final query = Uri.encodeComponent(
-        '${restaurant.name} ${restaurant.city}',
+        '${restaurant.name} ${restaurant.cityName}',
       );
       uri = Uri.parse('https://www.google.com/maps/search/?api=1&query=$query');
     }
@@ -72,11 +72,12 @@ class RestaurantDetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        StarRow(count: restaurant.michelinStars, size: 16),
-                        if (restaurant.worlds50BestRank != null) ...[
+                        if (restaurant.hasMichelinStar)
+                          StarRow(count: restaurant.michelinStars!, size: 16),
+                        if (restaurant.isWorlds50Best) ...[
                           const SizedBox(height: 8),
                           Text(
-                            '#${restaurant.worlds50BestRank} — World’s 50 Best ${restaurant.worlds50BestYear ?? ''}',
+                            '#${restaurant.worlds50BestRank} — World’s 50 Best',
                             style: const TextStyle(
                               color: AppColors.gold,
                               fontSize: 14,
@@ -108,12 +109,11 @@ class RestaurantDetailScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Cuisine & location
-                  _InfoRow(Icons.restaurant_menu_rounded, restaurant.cuisine),
-                  const SizedBox(height: 10),
+                  // Location. Cuisine is omitted: restaurants_full does not
+                  // expose a cuisine display column.
                   _InfoRow(
                     Icons.location_on_rounded,
-                    '${restaurant.countryFlag}  ${restaurant.city}, ${restaurant.country}',
+                    '${restaurant.flagEmoji}  ${restaurant.cityName}, ${restaurant.countryName}',
                   ),
                   if (restaurant.address.isNotEmpty) ...[
                     const SizedBox(height: 10),

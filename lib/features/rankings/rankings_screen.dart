@@ -289,10 +289,12 @@ class _PersonalRankCard extends StatelessWidget {
                 const SizedBox(height: 3),
                 Row(
                   children: [
-                    StarRow(count: entry.restaurant.michelinStars, size: 11),
-                    const SizedBox(width: 8),
+                    if (entry.restaurant.hasMichelinStar) ...[
+                      StarRow(count: entry.restaurant.michelinStars!, size: 11),
+                      const SizedBox(width: 8),
+                    ],
                     Text(
-                      '${entry.restaurant.countryFlag}  ${entry.restaurant.city}',
+                      '${entry.restaurant.flagEmoji}  ${entry.restaurant.cityName}',
                       style: GoogleFonts.inter(
                         color: AppColors.textSecondary,
                         fontSize: 11,
