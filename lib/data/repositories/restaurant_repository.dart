@@ -3,8 +3,9 @@ import '../../models/restaurant.dart';
 
 // Explicit column list matching public.restaurants_full — see
 // supabase/migrations/20260805141519_production_schema_v1.sql. Keep this in
-// sync with Restaurant.fromJson.
-const _restaurantColumns =
+// sync with Restaurant.fromJson. Public because visited_repository.dart and
+// wishlist_repository.dart also resolve restaurants_full rows by id.
+const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_name, region, country_code, country_name, flag_emoji, address, '
     'google_place_id, michelin_url, website_url, booking_url, property_name, '
@@ -19,7 +20,7 @@ class RestaurantRepository {
   Future<List<Restaurant>> getAll() async {
     final rows = await _client
         .from('restaurants_full')
-        .select(_restaurantColumns)
+        .select(restaurantFullColumns)
         .order('name');
     return (rows as List)
         .map((row) => Restaurant.fromJson(row as Map<String, dynamic>))
@@ -34,7 +35,9 @@ class RestaurantRepository {
     int? stars,
     String? countryCode,
   }) async {
-    var builder = _client.from('restaurants_full').select(_restaurantColumns);
+    var builder = _client
+        .from('restaurants_full')
+        .select(restaurantFullColumns);
 
     if (query.isNotEmpty) {
       builder = builder.or(
