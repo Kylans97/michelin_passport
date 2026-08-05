@@ -75,6 +75,11 @@ class Restaurant {
   /// True when the restaurant has a current World's 50 Best rank.
   bool get isWorlds50Best => worlds50BestRank != null;
 
+  /// True when the restaurant is a World's 50 Best "Best of the Best" Hall
+  /// of Fame member. Derived from inclusion_reason, already selected by
+  /// RestaurantRepository — no extra column or query needed.
+  bool get isHallOfFame => inclusionReason == 'hall_of_fame';
+
   factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
     id: json['id'].toString(),
     restaurantCode: (json['restaurant_code'] as String?) ?? '',
