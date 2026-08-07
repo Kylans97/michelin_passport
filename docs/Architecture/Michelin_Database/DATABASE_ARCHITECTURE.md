@@ -300,11 +300,18 @@ Never put username selection inside the signup trigger. A `23505` raised there a
 | `entity_type` | `text NOT NULL CHECK (entity_type IN ('hotel','restaurant'))` |
 | `entity_id` | `uuid NOT NULL` |
 | `visited_on` | `date NOT NULL` |
-| `rating` | `smallint CHECK (rating BETWEEN 1 AND 10)` |
+| `rating` | `smallint CHECK (rating BETWEEN 1 AND 10)` — the overall rating |
+| `food_rating` | `smallint CHECK (food_rating BETWEEN 1 AND 10)` |
+| `service_rating` | `smallint CHECK (service_rating BETWEEN 1 AND 10)` |
+| `wine_rating` | `smallint CHECK (wine_rating BETWEEN 1 AND 10)` |
+| `value_rating` | `smallint CHECK (value_rating BETWEEN 1 AND 10)` |
+| `menu_type` | `text CHECK (menu_type IN ('tasting_menu','a_la_carte','both'))` |
 | `notes` | `text` |
 | `price_paid` | `numeric` |
 | `currency` | `char(3)` |
 | `keys_at_visit` / `stars_at_visit` | `smallint` — the award frozen as it stood |
+
+`rating` is the overall rating for the visit and is never renamed to `overall_rating`. `food_rating`, `service_rating`, `wine_rating` and `value_rating` are independent, optional sub-ratings, added in `20260805211243_add_visit_details.sql`: a visit may carry an overall rating with no sub-ratings, some sub-ratings, or none. `wine_rating` in particular is expected to stay NULL on a meal where no wine was consumed or rated — a NULL here is not missing data, it is the correct value. `menu_type` is likewise optional and, when set, restricted to `tasting_menu`, `a_la_carte` or `both`.
 
 **`wishlist`** — `user_id`, `entity_type`, `entity_id`, `added_at`, `priority smallint`, `UNIQUE (user_id, entity_type, entity_id)`.
 
