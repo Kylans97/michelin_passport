@@ -2,19 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../data/repositories/visited_repository.dart';
-import '../../../models/restaurant.dart';
-import '../../../models/visit.dart';
+import '../../../models/hotel.dart';
 import '../../restaurants/widgets/detail_section.dart';
-import 'date_card.dart';
-import 'rating_meter.dart';
-import 'save_button.dart';
+import '../../visits/widgets/date_card.dart';
+import '../../visits/widgets/rating_meter.dart';
+import '../../visits/widgets/save_button.dart';
 
-/// Opens the "log a visit" bottom sheet for [restaurant] and inserts a new
-/// row via [visitedRepository] on save. Returns true once a visit has been
-/// saved, or null if the sheet was dismissed without saving.
-Future<bool?> showAddVisitSheet(
+/// Opens the "log a stay" bottom sheet for [hotel] and inserts a new hotel
+/// stay row via [visitedRepository] on save. Returns true once a stay has
+/// been saved, or null if the sheet was dismissed without saving.
+///
+/// Deliberately narrower than restaurant Add Visit: hotel stays only cover
+/// Overall/Service/Value + Notes — no Food, Wine, or Menu Type, which are
+/// restaurant concepts that don't apply to a hotel stay.
+Future<bool?> showAddStaySheet(
   BuildContext context, {
-  required Restaurant restaurant,
+  required Hotel hotel,
   required String userId,
   required VisitedRepository visitedRepository,
 }) {
@@ -22,37 +25,34 @@ Future<bool?> showAddVisitSheet(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    builder: (_) => _AddVisitSheet(
-      restaurant: restaurant,
+    builder: (_) => _AddStaySheet(
+      hotel: hotel,
       userId: userId,
       visitedRepository: visitedRepository,
     ),
   );
 }
 
-class _AddVisitSheet extends StatefulWidget {
-  final Restaurant restaurant;
+class _AddStaySheet extends StatefulWidget {
+  final Hotel hotel;
   final String userId;
   final VisitedRepository visitedRepository;
 
-  const _AddVisitSheet({
-    required this.restaurant,
+  const _AddStaySheet({
+    required this.hotel,
     required this.userId,
     required this.visitedRepository,
   });
 
   @override
-  State<_AddVisitSheet> createState() => _AddVisitSheetState();
+  State<_AddStaySheet> createState() => _AddStaySheetState();
 }
 
-class _AddVisitSheetState extends State<_AddVisitSheet> {
-  DateTime _visitedOn = DateTime.now();
+class _AddStaySheetState extends State<_AddStaySheet> {
+  DateTime _stayedOn = DateTime.now();
   int? _rating;
-  int? _foodRating;
   int? _serviceRating;
-  int? _wineRating;
   int? _valueRating;
-  MenuType? _menuType;
   final _notesCtrl = TextEditingController();
 
   bool _saving = false;
@@ -68,11 +68,11 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     final now = DateTime.now();
     final picked = await showDatePicker(
       context: context,
-      initialDate: _visitedOn,
+      initialDate: _stayedOn,
       firstDate: DateTime(now.year - 20),
       lastDate: now, // future dates not allowed
     );
-    if (picked != null) setState(() => _visitedOn = picked);
+    if (picked != null) setState(() => _stayedOn = picked);
   }
 
   Future<void> _save() async {
@@ -82,32 +82,27 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     });
     try {
       final notes = _notesCtrl.text.trim();
-      await widget.visitedRepository.markVisited(
+      await widget.visitedRepository.markHotelStay(
         userId: widget.userId,
-        restaurantId: widget.restaurant.id,
-        visitedOn: _visitedOn,
+        hotelId: widget.hotel.id,
+        visitedOn: _stayedOn,
         rating: _rating,
-        foodRating: _foodRating,
         serviceRating: _serviceRating,
-        wineRating: _wineRating,
         valueRating: _valueRating,
-        menuType: _menuType,
         notes: notes.isEmpty ? null : notes,
-        starsAtVisit: widget.restaurant.michelinStars,
-        // keysAtVisit intentionally omitted: this is a restaurant visit,
-        // and Michelin Keys are a hotel award.
+        keysAtVisit: widget.hotel.michelinKeys,
       );
       if (!mounted) return;
       Navigator.pop(context, true);
     } catch (error, stackTrace) {
-      debugPrint('SAVE VISIT ERROR: $error');
-      debugPrintStack(label: 'SAVE VISIT STACK', stackTrace: stackTrace);
+      debugPrint('SAVE STAY ERROR: $error');
+      debugPrintStack(label: 'SAVE STAY STACK', stackTrace: stackTrace);
 
       if (!mounted) return;
 
       setState(() {
         _saving = false;
-        _error = 'Could not save visit: $error';
+        _error = 'Could not save stay: $error';
       });
     }
   }
@@ -116,10 +111,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.of(context).viewInsets.bottom;
     final maxHeight = MediaQuery.of(context).size.height * 0.92;
-    final restaurant = widget.restaurant;
+    final hotel = widget.hotel;
     final location = [
-      restaurant.cityName,
-      restaurant.countryName,
+      hotel.cityName,
+      hotel.countryName,
     ].where((s) => s.isNotEmpty).join(', ');
 
     return Padding(
@@ -152,10 +147,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                   const SizedBox(height: 24),
 
                   // ── Header ─────────────────────────────────────────────
-                  const SectionLabel('LOG YOUR VISIT'),
+                  const SectionLabel('LOG YOUR STAY'),
                   const SizedBox(height: 8),
                   Text(
-                    restaurant.name,
+                    hotel.name,
                     style: GoogleFonts.playfairDisplay(
                       color: AppColors.textPrimary,
                       fontSize: 25,
@@ -176,8 +171,8 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                   const SizedBox(height: 32),
 
                   DateCard(
-                    label: 'VISIT DATE',
-                    date: _visitedOn,
+                    label: 'STAY DATE',
+                    date: _stayedOn,
                     onTap: _pickDate,
                   ),
                   const SizedBox(height: 32),
@@ -192,36 +187,15 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                   ),
                   const SizedBox(height: 22),
                   RatingMeter(
-                    label: 'Food',
-                    value: _foodRating,
-                    onChanged: (v) => setState(() => _foodRating = v),
-                  ),
-                  const SizedBox(height: 22),
-                  RatingMeter(
                     label: 'Service',
                     value: _serviceRating,
                     onChanged: (v) => setState(() => _serviceRating = v),
                   ),
                   const SizedBox(height: 22),
                   RatingMeter(
-                    label: 'Wine',
-                    value: _wineRating,
-                    onChanged: (v) => setState(() => _wineRating = v),
-                  ),
-                  const SizedBox(height: 22),
-                  RatingMeter(
                     label: 'Value',
                     value: _valueRating,
                     onChanged: (v) => setState(() => _valueRating = v),
-                  ),
-                  const SizedBox(height: 32),
-
-                  // ── Menu type ──────────────────────────────────────────
-                  const SectionLabel('MENU TYPE'),
-                  const SizedBox(height: 12),
-                  _MenuTypeSelector(
-                    value: _menuType,
-                    onChanged: (v) => setState(() => _menuType = v),
                   ),
                   const SizedBox(height: 32),
 
@@ -238,7 +212,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                     maxLines: 4,
                     minLines: 3,
                     decoration: InputDecoration(
-                      hintText: 'Add a note about your evening…',
+                      hintText: 'Add a note about your stay…',
                       hintStyle: GoogleFonts.inter(
                         color: AppColors.textSecondary,
                         fontSize: 14,
@@ -277,11 +251,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                   ),
 
                   const SizedBox(height: 28),
-                  SaveButton(
-                    saving: _saving,
-                    label: 'Save visit',
-                    onTap: _save,
-                  ),
+                  SaveButton(saving: _saving, label: 'Save stay', onTap: _save),
                 ],
               ),
             ),
@@ -290,97 +260,4 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
       ),
     );
   }
-}
-
-// ── Menu type ────────────────────────────────────────────────────────────────
-
-class _MenuTypeSelector extends StatelessWidget {
-  final MenuType? value;
-  final ValueChanged<MenuType?> onChanged;
-  const _MenuTypeSelector({required this.value, required this.onChanged});
-
-  static String _labelFor(MenuType type) => switch (type) {
-    MenuType.tastingMenu => 'Tasting menu',
-    MenuType.aLaCarte => 'À la carte',
-    MenuType.both => 'Both',
-  };
-
-  @override
-  Widget build(BuildContext context) {
-    return Wrap(
-      spacing: 10,
-      runSpacing: 10,
-      children: [
-        for (final type in MenuType.values)
-          _MenuTypeChip(
-            label: _labelFor(type),
-            selected: value == type,
-            // Tap again to clear — menu type is optional.
-            onTap: () => onChanged(value == type ? null : type),
-          ),
-      ],
-    );
-  }
-}
-
-class _MenuTypeChip extends StatelessWidget {
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-  const _MenuTypeChip({
-    required this.label,
-    required this.selected,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(22),
-      splashColor: AppColors.goldAlpha10,
-      highlightColor: AppColors.goldAlpha10,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 180),
-        curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        decoration: BoxDecoration(
-          color: selected ? AppColors.goldMuted : AppColors.surface,
-          borderRadius: BorderRadius.circular(22),
-          border: Border.all(
-            color: selected ? AppColors.goldBorder60 : AppColors.cardBorder,
-            width: selected ? 1.0 : 0.5,
-          ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AnimatedSwitcher(
-              duration: const Duration(milliseconds: 150),
-              child: selected
-                  ? const Padding(
-                      key: ValueKey('check'),
-                      padding: EdgeInsets.only(right: 6),
-                      child: Icon(
-                        Icons.check_rounded,
-                        size: 15,
-                        color: AppColors.gold,
-                      ),
-                    )
-                  : const SizedBox(key: ValueKey('nocheck')),
-            ),
-            Text(
-              label,
-              style: GoogleFonts.inter(
-                color: selected ? AppColors.gold : AppColors.textSecondary,
-                fontSize: 13,
-                fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
 }
