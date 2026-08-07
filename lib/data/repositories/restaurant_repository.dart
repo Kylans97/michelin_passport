@@ -1,5 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/restaurant.dart';
+import '../../models/venue_country.dart';
+import 'country_lookup.dart';
 
 // Explicit column list matching public.restaurants_full — see
 // supabase/migrations/20260805141519_production_schema_v1.sql. Keep this in
@@ -27,12 +29,17 @@ class RestaurantRepository {
         .toList();
   }
 
-  // Search with optional Michelin star and country filters.
+  // Search with optional Michelin star, award and country filters.
   // [countryCode] is the ISO 3166-1 alpha-2 code stored on restaurants_full,
-  // e.g. 'NL', 'BE', 'FR', 'ES'.
+  // e.g. 'NL', 'BE', 'FR', 'ES'. [worlds50BestOnly] and [hallOfFameOnly] are
+  // mutually exclusive alternatives to [stars] in the Explore UI (its award
+  // filter is a single-select), but nothing here enforces that — each is
+  // applied independently, ANDed together, whichever are non-null/true.
   Future<List<Restaurant>> search(
     String query, {
     int? stars,
+    bool worlds50BestOnly = false,
+    bool hallOfFameOnly = false,
     String? countryCode,
   }) async {
     var builder = _client
@@ -49,11 +56,28 @@ class RestaurantRepository {
     if (stars != null) {
       builder = builder.eq('michelin_stars', stars);
     }
+    if (worlds50BestOnly) {
+      builder = builder.not('worlds_50_best_rank', 'is', null);
+    }
+    if (hallOfFameOnly) {
+      builder = builder.eq('inclusion_reason', 'hall_of_fame');
+    }
     if (countryCode != null) {
       builder = builder.eq('country_code', countryCode);
     }
 
-    final rows = await builder.order('name');
+    // World's 50 Best results read as a ranking, not a catalogue browse:
+    // ordered by worlds_50_best_rank ascending (#1, #2, #3, ...) rather
+    // than alphabetically, regardless of any country filter also applied
+    // above. Every other filter (including "all" and Hall of Fame) keeps
+    // the usual alphabetical-by-name order.
+    //
+    // `ascending` must be passed explicitly — PostgrestTransformBuilder.order()
+    // defaults to `ascending: false` (descending), not true, so an
+    // unqualified .order('worlds_50_best_rank') silently rendered #50 first.
+    final rows = worlds50BestOnly
+        ? await builder.order('worlds_50_best_rank', ascending: true)
+        : await builder.order('name');
     return (rows as List)
         .map((row) => Restaurant.fromJson(row as Map<String, dynamic>))
         .toList();
@@ -61,9 +85,10 @@ class RestaurantRepository {
 
   // Countries that have at least one restaurant, for the filter chips.
   // Two queries total, never one per country: the distinct country_code
-  // values present on restaurants_full, joined in Dart against one read of
-  // public.countries.
-  Future<List<RestaurantCountry>> getCountries() async {
+  // values present on restaurants_full, resolved against public.countries
+  // by the shared resolveVenueCountries() helper (also used by
+  // HotelRepository.getCountries()).
+  Future<List<VenueCountry>> getCountries() async {
     final restaurantRows = await _client
         .from('restaurants_full')
         .select('country_code');
@@ -72,32 +97,6 @@ class RestaurantRepository {
         if ((row['country_code'] as String?)?.isNotEmpty ?? false)
           row['country_code'] as String,
     };
-
-    final countryRows = await _client
-        .from('countries')
-        .select('country_code, name, flag_emoji')
-        .order('name');
-
-    return [
-      for (final row in countryRows as List)
-        if (presentCodes.contains(row['country_code'] as String?))
-          RestaurantCountry(
-            name: (row['name'] as String?) ?? '',
-            code: (row['country_code'] as String?) ?? '',
-            flag: (row['flag_emoji'] as String?) ?? '',
-          ),
-    ];
+    return resolveVenueCountries(_client, presentCodes);
   }
-}
-
-// Simple value object used by the Explore screen for country filter chips.
-class RestaurantCountry {
-  final String name;
-  final String code;
-  final String flag;
-  const RestaurantCountry({
-    required this.name,
-    required this.code,
-    required this.flag,
-  });
 }
