@@ -23,6 +23,13 @@ enum MenuType {
     }
     return null;
   }
+
+  /// Human-readable label for display in the UI.
+  String get label => switch (this) {
+    MenuType.tastingMenu => 'Tasting menu',
+    MenuType.aLaCarte => 'À la carte',
+    MenuType.both => 'Both',
+  };
 }
 
 class Visit {

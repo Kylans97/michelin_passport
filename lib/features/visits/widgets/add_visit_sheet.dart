@@ -117,10 +117,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
       Navigator.pop(context, true);
     } catch (error, stackTrace) {
       debugPrint('SAVE VISIT ERROR: $error');
-      debugPrintStack(
-        label: 'SAVE VISIT STACK',
-        stackTrace: stackTrace,
-      );
+      debugPrintStack(label: 'SAVE VISIT STACK', stackTrace: stackTrace);
 
       if (!mounted) return;
 

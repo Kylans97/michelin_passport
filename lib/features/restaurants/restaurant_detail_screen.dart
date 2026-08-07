@@ -6,6 +6,7 @@ import '../../core/constants/app_colors.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/restaurant.dart';
+import '../../models/visit.dart';
 import '../visits/widgets/add_visit_sheet.dart';
 import 'widgets/detail_section.dart';
 import 'widgets/restaurant_actions.dart';
@@ -32,9 +33,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
   bool _loadingPersonalState = true;
-  bool _isVisited = false;
+  List<Visit> _visits = [];
   bool _isWishlisted = false;
   bool _wishlistSaving = false;
+
+  bool get _isVisited => _visits.isNotEmpty;
 
   @override
   void initState() {
@@ -50,17 +53,21 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       return;
     }
     try {
-      final results = await Future.wait([
-        _visitedRepo.isVisited(uid, widget.restaurant.id),
-        _wishlistRepo.isWishlisted(
-          userId: uid,
-          restaurantId: widget.restaurant.id,
-        ),
-      ]);
+      // Started together so they run concurrently, then awaited in turn.
+      final visitsFuture = _visitedRepo.loadVisitsForRestaurant(
+        uid,
+        widget.restaurant.id,
+      );
+      final wishlistedFuture = _wishlistRepo.isWishlisted(
+        userId: uid,
+        restaurantId: widget.restaurant.id,
+      );
+      final visits = await visitsFuture;
+      final wishlisted = await wishlistedFuture;
       if (!mounted) return;
       setState(() {
-        _isVisited = results[0];
-        _isWishlisted = results[1];
+        _visits = visits;
+        _isWishlisted = wishlisted;
         _loadingPersonalState = false;
       });
     } catch (_) {
@@ -68,6 +75,24 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       // fall back to "not yet" rather than showing an error for this.
       if (!mounted) return;
       setState(() => _loadingPersonalState = false);
+    }
+  }
+
+  // Reloads just the visit history, e.g. after saving a new visit, so it
+  // reflects the change immediately without leaving/reopening the screen.
+  Future<void> _refreshVisits() async {
+    final uid = _userId;
+    if (uid == null) return;
+    try {
+      final visits = await _visitedRepo.loadVisitsForRestaurant(
+        uid,
+        widget.restaurant.id,
+      );
+      if (!mounted) return;
+      setState(() => _visits = visits);
+    } catch (_) {
+      // Keep showing the previous list rather than clearing it on a
+      // transient error.
     }
   }
 
@@ -126,7 +151,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       visitedRepository: _visitedRepo,
     );
     if (saved == true && mounted) {
-      setState(() => _isVisited = true);
+      await _refreshVisits();
+      if (!mounted) return;
       _showSnack('Visit saved');
     }
   }
@@ -214,7 +240,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   RestaurantVisitsCard(
                     isAuthenticated: isAuthenticated,
                     loading: _loadingPersonalState,
-                    isVisited: _isVisited,
+                    visits: _visits,
+                    restaurant: restaurant,
                     signInMessage: _signInMessage,
                   ),
                 ],

@@ -10,6 +10,14 @@ import 'restaurant_repository.dart' show restaurantFullColumns;
 // entity_type = 'restaurant' rows.
 const _restaurantEntity = 'restaurant';
 
+// Every column on public.visits (production schema v1 +
+// 20260805211243_add_visit_details.sql). Listed explicitly, rather than
+// select('*'), so a schema change is a visible diff here.
+const _visitColumns =
+    'id, user_id, entity_type, entity_id, visited_on, rating, '
+    'food_rating, service_rating, wine_rating, value_rating, menu_type, '
+    'notes, price_paid, currency, keys_at_visit, stars_at_visit';
+
 class VisitedRepository {
   VisitedRepository(this._client);
 
@@ -100,6 +108,41 @@ class VisitedRepository {
         .eq('user_id', userId)
         .eq('entity_type', _restaurantEntity)
         .eq('entity_id', restaurantId);
+  }
+
+  // Every visit this user has logged for one restaurant, newest first (by
+  // visited_on desc). Repeat visits are never merged: a restaurant visited
+  // three times returns three distinct rows, each independently viewable —
+  // this is the foundation for Visit History / Visit Detail.
+  Future<List<Visit>> loadVisitsForRestaurant(
+    String userId,
+    String restaurantId,
+  ) async {
+    final rows = await _client
+        .from('visits')
+        .select(_visitColumns)
+        .eq('user_id', userId)
+        .eq('entity_type', _restaurantEntity)
+        .eq('entity_id', restaurantId)
+        .order('visited_on', ascending: false);
+    return (rows as List)
+        .map((row) => Visit.fromJson(row as Map<String, dynamic>))
+        .toList();
+  }
+
+  // A single visit by id, or null if it doesn't exist (or isn't visible to
+  // the caller under RLS). Not yet wired into any screen — the Visit Detail
+  // screen is currently navigated to with the Visit already in hand from
+  // [loadVisitsForRestaurant] — but kept available for later deep-linking.
+  Future<Visit?> loadVisitById(String visitId) async {
+    final rows = await _client
+        .from('visits')
+        .select(_visitColumns)
+        .eq('id', visitId)
+        .limit(1);
+    final list = rows as List;
+    if (list.isEmpty) return null;
+    return Visit.fromJson(list.first as Map<String, dynamic>);
   }
 
   // ── Existing API, kept working against the new schema ──────────────────
