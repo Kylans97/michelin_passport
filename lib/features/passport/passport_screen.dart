@@ -10,6 +10,7 @@ import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
 import '../explore/widgets/venue_type_selector.dart';
+import '../map/visited_map_screen.dart';
 import 'passport_view_model.dart';
 import 'widgets/passport_empty_state.dart';
 import 'widgets/passport_hotel_card.dart';
@@ -175,7 +176,12 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
       onRefresh: _load,
       child: CustomScrollView(
         slivers: [
-          _PassportHeader(),
+          _PassportHeader(
+            onTapMap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => const VisitedMapScreen()),
+            ),
+          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
@@ -296,6 +302,9 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
 // ── Collapsible header ────────────────────────────────────────────────────────
 
 class _PassportHeader extends StatelessWidget {
+  final VoidCallback onTapMap;
+  const _PassportHeader({required this.onTapMap});
+
   @override
   Widget build(BuildContext context) {
     final name =
@@ -307,6 +316,13 @@ class _PassportHeader extends StatelessWidget {
       expandedHeight: 200,
       pinned: true,
       backgroundColor: AppColors.background,
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.map_outlined, color: AppColors.gold),
+          tooltip: 'My Map',
+          onPressed: onTapMap,
+        ),
+      ],
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.parallax,
         background: Container(

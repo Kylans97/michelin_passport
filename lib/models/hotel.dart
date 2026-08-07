@@ -3,12 +3,14 @@
 // the view actually exposes are modelled — see that view's SELECT list
 // before adding anything here.
 //
-// hotels_full does not expose a scalar latitude/longitude (its `location`
-// column is a raw PostGIS geography, same situation as restaurants_full —
-// see Restaurant's field docs), so no coordinate fields are modelled here.
-// It also has no property_name-equivalent column: unlike a restaurant,
-// which can optionally sit inside a non-Key hotel property, a hotel row
-// *is* the property, so there is nothing analogous to resolve.
+// No latitude/longitude here — see the matching note on Restaurant in
+// restaurant.dart. hotels_full can project scalar coordinates once the
+// 20260807140000 migration is applied, but hotelFullColumns deliberately
+// excludes them so every other feature keeps working regardless; the Map
+// feature reads coordinates directly via MapRepository instead.
+// hotels_full also has no property_name-equivalent column: unlike a
+// restaurant, which can optionally sit inside a non-Key hotel property, a
+// hotel row *is* the property, so there is nothing analogous to resolve.
 class Hotel {
   final String id;
   final String hotelCode;

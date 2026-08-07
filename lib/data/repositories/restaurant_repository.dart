@@ -3,10 +3,19 @@ import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import 'country_lookup.dart';
 
-// Explicit column list matching public.restaurants_full — see
+// Explicit column list matching public.restaurants_full as it exists on the
+// CURRENT remote schema — see
 // supabase/migrations/20260805141519_production_schema_v1.sql. Keep this in
 // sync with Restaurant.fromJson. Public because visited_repository.dart and
 // wishlist_repository.dart also resolve restaurants_full rows by id.
+//
+// Deliberately does NOT include latitude/longitude. Those columns only
+// exist once supabase/migrations/20260807140000_add_venue_coordinates.sql
+// is applied — until then, requesting them here throws PostgREST error
+// 42703 ("column ... does not exist") and takes down every caller of this
+// constant (Explore, Passport, Rankings, Detail, Wishlist, Visits/Stays —
+// i.e. the entire catalogue). Coordinates for the Map feature are loaded
+// separately and only there — see MapRepository.
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_name, region, country_code, country_name, flag_emoji, address, '

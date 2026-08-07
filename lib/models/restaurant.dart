@@ -36,14 +36,18 @@ class Restaurant {
 
   final int? worlds50BestRank;
 
-  // `location` is PostGIS geography(Point,4326). Over PostgREST it comes
-  // back as an EWKB hex string (e.g. "0101000020E6100000..."), not GeoJSON
-  // or a {lat, lng} pair, and restaurants_full does not separately expose
-  // ST_Y/ST_X. Decoding EWKB client-side isn't safe to guess at, and Explore
-  // doesn't need coordinates, so these stay null rather than a wrong parse.
-  final double? latitude;
-  final double? longitude;
-
+  // No latitude/longitude here. `location` is PostGIS
+  // geography(Point,4326); over PostgREST it comes back as an EWKB hex
+  // string, not GeoJSON or a {lat, lng} pair, and decoding that client-side
+  // isn't safe to guess at. restaurants_full can project scalar
+  // ST_Y/ST_X(location::geometry) once
+  // supabase/migrations/20260807140000_add_venue_coordinates.sql is
+  // applied, but that column list is NOT part of restaurantFullColumns —
+  // every other feature (Explore, Passport, Rankings, Detail, Wishlist,
+  // Visits/Stays) reads restaurants_full through this model and must keep
+  // working whether or not that migration has landed. The Map feature reads
+  // coordinates directly via MapRepository instead, deliberately bypassing
+  // Restaurant entirely for that.
   const Restaurant({
     required this.id,
     required this.restaurantCode,
@@ -65,8 +69,6 @@ class Restaurant {
     this.hotelId,
     this.hotelName,
     this.worlds50BestRank,
-    this.latitude,
-    this.longitude,
   });
 
   /// True when the restaurant currently holds at least one Michelin star.
@@ -101,6 +103,5 @@ class Restaurant {
     hotelId: json['hotel_id'] as String?,
     hotelName: json['hotel_name'] as String?,
     worlds50BestRank: (json['worlds_50_best_rank'] as num?)?.toInt(),
-    // latitude/longitude intentionally left null — see field docs above.
   );
 }

@@ -5,9 +5,15 @@ import '../../models/venue_country.dart';
 import 'country_lookup.dart';
 import 'restaurant_repository.dart' show restaurantFullColumns;
 
-// Explicit column list matching public.hotels_full — see
+// Explicit column list matching public.hotels_full as it exists on the
+// CURRENT remote schema — see
 // supabase/migrations/20260805141519_production_schema_v1.sql. Keep this in
 // sync with Hotel.fromJson.
+//
+// Deliberately does NOT include latitude/longitude — see the matching note
+// on restaurantFullColumns in restaurant_repository.dart. Same failure mode,
+// same fix: coordinates are loaded separately by MapRepository, never by
+// this shared, app-wide column list.
 const hotelFullColumns =
     'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
