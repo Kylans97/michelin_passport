@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/utils/visit_years.dart';
+import '../../core/widgets/year_filter_bar.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/passport_entry.dart';
 import 'passport_view_model.dart';
 import 'widgets/passport_empty_state.dart';
 import 'widgets/passport_restaurant_card.dart';
 import 'widgets/stat_card.dart';
-import 'widgets/year_filter_bar.dart';
 
 /// My Passport: the user's personal collection of visited restaurants.
 /// VISITS are individual historical records (see VisitedRepository /
@@ -50,7 +51,9 @@ class _PassportScreenState extends State<PassportScreen> {
       future: _future,
       builder: (context, snap) {
         final allEntries = snap.data ?? [];
-        final years = availablePassportYears(allEntries);
+        final years = availableVisitYears(
+          allEntries.expand((entry) => entry.visits),
+        );
         final result = PassportFilterResult.of(allEntries, _selectedYear);
         final loading = snap.connectionState == ConnectionState.waiting;
 
@@ -213,7 +216,7 @@ class _PassportHeader extends StatelessWidget {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'TABLE PASSPORT',
+                        'CHASING STARS',
                         style: GoogleFonts.inter(
                           color: AppColors.gold,
                           fontSize: 11,

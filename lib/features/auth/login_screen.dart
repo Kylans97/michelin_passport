@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      'TABLE PASSPORT',
+                      'CHASING STARS',
                       style: GoogleFonts.inter(
                         color: AppColors.gold,
                         fontSize: 12,

@@ -333,7 +333,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                           _SettingsRow(
                             icon: Icons.info_outline_rounded,
-                            label: 'About Table Passport',
+                            label: 'About Chasing Stars',
                             onTap: () {},
                           ),
                           _SettingsRow(
