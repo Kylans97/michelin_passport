@@ -1,6 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/hotel.dart';
-import '../../models/passport_entry.dart';
 import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
 import '../../models/venue_entry.dart';
@@ -233,47 +232,6 @@ class VisitedRepository {
     final list = rows as List;
     if (list.isEmpty) return null;
     return Visit.fromJson(list.first as Map<String, dynamic>);
-  }
-
-  // Every restaurant this user has visited, each paired with every visit
-  // logged against it (newest first) — one entry per unique restaurant, no
-  // matter how many times it was visited. Nothing is merged, averaged, or
-  // deleted here — grouping happens only in this in-memory map, never in
-  // the database.
-  //
-  // Restaurant-only (entity_type = 'restaurant'). This is currently used
-  // only by My Rankings (via RankingsRepository.getPersonalRankingSource),
-  // which is restaurant-only for now — see [loadPassportVenues] below for
-  // the restaurant+hotel equivalent My Passport is built from.
-  Future<List<PassportEntry>> loadPassportRestaurants(String userId) async {
-    final rows = await _client
-        .from('visits')
-        .select(_visitColumns)
-        .eq('user_id', userId)
-        .eq('entity_type', _restaurantEntity)
-        .order('visited_on', ascending: false);
-    final visitRows = (rows as List).cast<Map<String, dynamic>>();
-    if (visitRows.isEmpty) return [];
-
-    // Insertion order follows the visited_on-desc query order, so each
-    // restaurant's own visit list comes out newest-first for free.
-    final visitsByRestaurant = <String, List<Visit>>{};
-    for (final row in visitRows) {
-      final visit = Visit.fromJson(row);
-      visitsByRestaurant.putIfAbsent(visit.entityId, () => []).add(visit);
-    }
-
-    final restaurantsById = await _resolveRestaurantsByIds(
-      visitsByRestaurant.keys,
-    );
-    return [
-      for (final entry in visitsByRestaurant.entries)
-        if (restaurantsById[entry.key] != null)
-          PassportEntry(
-            restaurant: restaurantsById[entry.key]!,
-            visits: entry.value,
-          ),
-    ];
   }
 
   // Every venue (restaurant or hotel) this user has visited/stayed at,

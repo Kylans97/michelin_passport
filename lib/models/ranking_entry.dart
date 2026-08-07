@@ -1,14 +1,30 @@
-import 'restaurant.dart';
+import 'passport_venue.dart';
 
+/// One unique venue's (restaurant or hotel) aggregated score for a single
+/// ranking dimension over a selected period (all time or one year).
+/// VISITS/STAYS remain individual historical records; this is the
+/// per-venue aggregate built from them for "My Rankings" — a venue never
+/// appears twice in the same ranking. Built by buildPersonalRankings in
+/// rankings_view_model.dart.
 class PersonalRankingEntry {
-  final Restaurant restaurant;
-  final double personalRating;
-  final DateTime? visitedAt;
+  final PassportVenue venue;
+
+  // Arithmetic mean of the non-null dimension values among the
+  // visits/stays in the selected period. Never includes a null as 0.
+  final double averageScore;
+
+  // How many visits/stays contributed a non-null value to [averageScore].
+  final int ratedVisitCount;
+
+  // Most recent of the visits/stays that contributed to [averageScore].
+  // Used only as a sort tie-break — not shown as "the" date on the card.
+  final DateTime mostRecentRelevantVisit;
 
   const PersonalRankingEntry({
-    required this.restaurant,
-    required this.personalRating,
-    this.visitedAt,
+    required this.venue,
+    required this.averageScore,
+    required this.ratedVisitCount,
+    required this.mostRecentRelevantVisit,
   });
 }
 

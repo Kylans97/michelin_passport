@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/ranking_entry.dart';
+import '../../models/venue_entry.dart';
 import 'visited_repository.dart';
 
 class RankingsRepository {
@@ -7,34 +8,16 @@ class RankingsRepository {
 
   final SupabaseClient _client;
 
-  // Personal rankings: visited restaurants sorted by personal_rating desc.
-  // Optionally filtered by michelin_stars.
-  Future<List<PersonalRankingEntry>> getPersonalRankings(
-    String userId, {
-    int? stars,
-  }) async {
-    final visited = await VisitedRepository(
-      _client,
-    ).getVisitedWithRatings(userId);
-    var entries = visited
-        .where((v) => v.personalRating != null)
-        .map(
-          (v) => PersonalRankingEntry(
-            restaurant: v.restaurant,
-            personalRating: v.personalRating!,
-            visitedAt: v.visitedAt,
-          ),
-        )
-        .toList();
-
-    if (stars != null) {
-      entries = entries
-          .where((e) => e.restaurant.michelinStars == stars)
-          .toList();
-    }
-
-    entries.sort((a, b) => b.personalRating.compareTo(a.personalRating));
-    return entries;
+  // Source data for "My Rankings": every venue (restaurant or hotel) this
+  // user has visited/stayed at, each paired with all of its visits/stays —
+  // same shape My Passport is built from (see
+  // VisitedRepository.loadPassportVenues). Fetched once; turning this into
+  // ranking entries for a specific venue type + dimension + year is a pure,
+  // client-side aggregation (buildPersonalRankings in
+  // rankings_view_model.dart) so switching any of those doesn't require a
+  // new query.
+  Future<List<VenueEntry>> getPersonalRankingSource(String userId) {
+    return VisitedRepository(_client).loadPassportVenues(userId);
   }
 
   // Community rankings from the restaurant_rankings view, optionally filtered by stars.

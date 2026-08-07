@@ -3,10 +3,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
+import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/restaurant.dart';
 import '../../models/visit.dart';
+import '../hotels/hotel_detail_screen.dart';
 import '../visits/widgets/add_visit_sheet.dart';
 import 'widgets/detail_section.dart';
 import 'widgets/restaurant_actions.dart';
@@ -29,6 +31,7 @@ class RestaurantDetailScreen extends StatefulWidget {
 class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
+  late final _hotelRepo = HotelRepository(Supabase.instance.client);
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -36,6 +39,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   List<Visit> _visits = [];
   bool _isWishlisted = false;
   bool _wishlistSaving = false;
+  bool _loadingHotel = false;
 
   bool get _isVisited => _visits.isNotEmpty;
 
@@ -183,11 +187,42 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     }
   }
 
+  // Resolves the actual Hotel via HotelRepository before navigating —
+  // restaurants_full only carries hotel_id/hotel_name, never enough to
+  // construct a real Hotel, so HotelDetailScreen always gets the genuine
+  // hotels_full row rather than a partial stand-in.
+  Future<void> _openHotel() async {
+    final hotelId = widget.restaurant.hotelId;
+    if (hotelId == null || _loadingHotel) return;
+    setState(() => _loadingHotel = true);
+    try {
+      final hotel = await _hotelRepo.getById(hotelId);
+      if (!mounted) return;
+      setState(() => _loadingHotel = false);
+      if (hotel == null) {
+        _showSnack('Could not load this hotel.', isError: true);
+        return;
+      }
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _loadingHotel = false);
+      _showSnack('Could not load this hotel. Please try again.', isError: true);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final restaurant = widget.restaurant;
     final hasHotelBadge =
         restaurant.isInHotel && (restaurant.hotelName?.isNotEmpty ?? false);
+    // Only a real Michelin Key hotel (an actual hotels_full row) is
+    // tappable — a hotel_name sourced purely from property_name (no
+    // hotel_id) stays a plain, non-interactive display, unchanged.
+    final canOpenHotel = hasHotelBadge && restaurant.hotelId != null;
     final michelinUrl = restaurant.michelinUrl;
     final websiteUrl = restaurant.websiteUrl;
     final isAuthenticated = _userId != null;
@@ -208,6 +243,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   RestaurantInfoCard(
                     restaurant: restaurant,
                     hasHotelBadge: hasHotelBadge,
+                    onTapHotel: canOpenHotel ? _openHotel : null,
+                    hotelLoading: _loadingHotel,
                   ),
                   const SizedBox(height: 28),
 

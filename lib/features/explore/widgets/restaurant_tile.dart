@@ -10,7 +10,19 @@ import '../../restaurants/restaurant_detail_screen.dart';
 class RestaurantTile extends StatelessWidget {
   final Restaurant restaurant;
 
-  const RestaurantTile({super.key, required this.restaurant});
+  // Only relevant while the Explore World's 50 Best filter is active. The
+  // award badge already shows the rank on its own (trophy icon + "#N")
+  // whenever the restaurant has no Michelin star; this only fills the gap
+  // the badge can't cover — a starred restaurant that's *also* World's 50
+  // Best ranked, whose badge shows stars instead. Never duplicates what the
+  // badge already displays.
+  final bool showWorlds50BestRank;
+
+  const RestaurantTile({
+    super.key,
+    required this.restaurant,
+    this.showWorlds50BestRank = false,
+  });
 
   String get _locationLabel {
     final parts = <String>[
@@ -25,6 +37,10 @@ class RestaurantTile extends StatelessWidget {
     final locationLabel = _locationLabel;
     final hasHotel =
         restaurant.isInHotel && (restaurant.hotelName?.isNotEmpty ?? false);
+    final showRankLine =
+        showWorlds50BestRank &&
+        restaurant.isWorlds50Best &&
+        restaurant.hasMichelinStar;
 
     return GestureDetector(
       onTap: () => Navigator.push(
@@ -95,6 +111,27 @@ class RestaurantTile extends StatelessWidget {
                               color: AppColors.textSecondary,
                               fontSize: 11,
                             ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                  if (showRankLine) ...[
+                    const SizedBox(height: 4),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.emoji_events_rounded,
+                          size: 12,
+                          color: AppColors.gold,
+                        ),
+                        const SizedBox(width: 4),
+                        Text(
+                          "#${restaurant.worlds50BestRank} · World's 50 Best",
+                          style: GoogleFonts.inter(
+                            color: AppColors.gold,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w600,
                           ),
                         ),
                       ],
