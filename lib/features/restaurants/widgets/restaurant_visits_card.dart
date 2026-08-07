@@ -34,6 +34,11 @@ class RestaurantVisitsCard extends StatelessWidget {
   final Restaurant restaurant;
   final String signInMessage;
 
+  // Called after returning from VisitDetailScreen, regardless of what
+  // happened there — covers a deleted visit just as much as a no-op back
+  // tap; a harmless extra refresh either way.
+  final VoidCallback onReturn;
+
   const RestaurantVisitsCard({
     super.key,
     required this.isAuthenticated,
@@ -41,6 +46,7 @@ class RestaurantVisitsCard extends StatelessWidget {
     required this.visits,
     required this.restaurant,
     required this.signInMessage,
+    required this.onReturn,
   });
 
   @override
@@ -73,13 +79,18 @@ class RestaurantVisitsCard extends StatelessWidget {
           if (i > 0) const SizedBox(height: 10),
           _VisitTile(
             visit: visits[i],
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) =>
-                    VisitDetailScreen(restaurant: restaurant, visit: visits[i]),
-              ),
-            ),
+            onTap: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => VisitDetailScreen(
+                    restaurant: restaurant,
+                    visit: visits[i],
+                  ),
+                ),
+              );
+              onReturn();
+            },
           ),
         ],
       ],

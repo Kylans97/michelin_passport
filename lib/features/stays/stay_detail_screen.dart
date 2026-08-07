@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/widgets/key_row.dart';
+import '../../data/repositories/visited_repository.dart';
 import '../../models/hotel.dart';
 import '../../models/visit.dart';
+import '../photos/widgets/visit_photos_section.dart';
 import '../restaurants/widgets/detail_section.dart';
 import '../visits/widgets/rating_display_row.dart';
 
@@ -29,14 +32,107 @@ String _formatStayDate(DateTime date) =>
 /// historical information: [stay.keysAtVisit] is the hotel's Michelin Keys
 /// at the time of the stay and is shown as-is, never replaced by the
 /// hotel's current Michelin Keys.
-class StayDetailScreen extends StatelessWidget {
+///
+/// Also owns deleting this one stay — see [_confirmDelete]. Deleting pops
+/// this screen with `true`, which HotelStaysCard's onTap uses to refresh
+/// Hotel Detail's stay history immediately.
+class StayDetailScreen extends StatefulWidget {
   final Hotel hotel;
   final Visit stay;
 
   const StayDetailScreen({super.key, required this.hotel, required this.stay});
 
   @override
+  State<StayDetailScreen> createState() => _StayDetailScreenState();
+}
+
+class _StayDetailScreenState extends State<StayDetailScreen> {
+  late final _visitedRepo = VisitedRepository(Supabase.instance.client);
+  bool _deleting = false;
+
+  void _showSnack(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: GoogleFonts.inter(color: AppColors.textPrimary),
+        ),
+        backgroundColor: AppColors.error,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  Future<void> _confirmDelete() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppColors.card,
+        title: Text(
+          'Delete this stay?',
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textPrimary,
+            fontSize: 18,
+          ),
+        ),
+        content: Text(
+          'This will permanently remove:\n'
+          '• this stay\n'
+          '• its ratings\n'
+          '• notes\n'
+          '• photos linked to this stay\n\n'
+          'Other stays at this hotel will NOT be affected.',
+          style: GoogleFonts.inter(
+            color: AppColors.textSecondary,
+            fontSize: 14,
+            height: 1.5,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(
+              'Cancel',
+              style: GoogleFonts.inter(color: AppColors.textSecondary),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(
+              'Delete stay',
+              style: GoogleFonts.inter(
+                color: AppColors.error,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || _deleting || !mounted) return;
+
+    final uid = Supabase.instance.client.auth.currentUser?.id;
+    if (uid == null || uid.isEmpty) {
+      _showSnack('Sign in required.');
+      return;
+    }
+
+    setState(() => _deleting = true);
+    try {
+      await _visitedRepo.deleteVisitById(userId: uid, visitId: widget.stay.id);
+      if (!mounted) return;
+      Navigator.pop(context, true);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _deleting = false);
+      _showSnack('Could not delete stay. Please try again.');
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final hotel = widget.hotel;
+    final stay = widget.stay;
     final keys = stay.keysAtVisit;
     final notes = stay.notes;
 
@@ -46,6 +142,47 @@ class StayDetailScreen extends StatelessWidget {
         backgroundColor: AppColors.background,
         elevation: 0,
         foregroundColor: AppColors.textPrimary,
+        actions: [
+          if (_deleting)
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  color: AppColors.gold,
+                  strokeWidth: 2,
+                ),
+              ),
+            )
+          else
+            PopupMenuButton<String>(
+              icon: const Icon(Icons.more_vert_rounded),
+              color: AppColors.card,
+              onSelected: (value) {
+                if (value == 'delete') _confirmDelete();
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem<String>(
+                  value: 'delete',
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.delete_outline_rounded,
+                        color: AppColors.error,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Delete stay',
+                        style: GoogleFonts.inter(color: AppColors.error),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
@@ -103,6 +240,16 @@ class StayDetailScreen extends StatelessWidget {
                 ),
               ),
             ],
+
+            const SizedBox(height: 32),
+            const SectionLabel('PHOTOS'),
+            const SizedBox(height: 10),
+            VisitPhotosSection(
+              visitId: stay.id,
+              entityType: stay.entityType,
+              entityId: stay.entityId,
+              noun: 'stay',
+            ),
           ],
         ),
       ),

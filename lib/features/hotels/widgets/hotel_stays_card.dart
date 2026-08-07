@@ -34,6 +34,11 @@ class HotelStaysCard extends StatelessWidget {
   final Hotel hotel;
   final String signInMessage;
 
+  // Called after returning from StayDetailScreen, regardless of what
+  // happened there — covers a deleted stay just as much as a no-op back
+  // tap; a harmless extra refresh either way.
+  final VoidCallback onReturn;
+
   const HotelStaysCard({
     super.key,
     required this.isAuthenticated,
@@ -41,6 +46,7 @@ class HotelStaysCard extends StatelessWidget {
     required this.stays,
     required this.hotel,
     required this.signInMessage,
+    required this.onReturn,
   });
 
   @override
@@ -73,12 +79,16 @@ class HotelStaysCard extends StatelessWidget {
           if (i > 0) const SizedBox(height: 10),
           _StayTile(
             stay: stays[i],
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => StayDetailScreen(hotel: hotel, stay: stays[i]),
-              ),
-            ),
+            onTap: () async {
+              await Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) =>
+                      StayDetailScreen(hotel: hotel, stay: stays[i]),
+                ),
+              );
+              onReturn();
+            },
           ),
         ],
       ],

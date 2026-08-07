@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../data/repositories/photo_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
 import '../../../models/restaurant.dart';
+import '../../../models/save_outcome.dart';
 import '../../../models/visit.dart';
+import '../../photos/staged_photo.dart';
+import '../../photos/widgets/staged_photo_picker.dart';
 import '../../restaurants/widgets/detail_section.dart';
 import 'date_card.dart';
 import 'rating_meter.dart';
 import 'save_button.dart';
 
 /// Opens the "log a visit" bottom sheet for [restaurant] and inserts a new
-/// row via [visitedRepository] on save. Returns true once a visit has been
-/// saved, or null if the sheet was dismissed without saving.
-Future<bool?> showAddVisitSheet(
+/// row via [visitedRepository] on save, uploading any staged photos against
+/// the newly created visit id via [photoRepository] once the visit itself
+/// is safely saved. Returns a [SaveOutcome] once saved, or null if the
+/// sheet was dismissed without saving.
+Future<SaveOutcome?> showAddVisitSheet(
   BuildContext context, {
   required Restaurant restaurant,
   required String userId,
   required VisitedRepository visitedRepository,
+  required PhotoRepository photoRepository,
 }) {
-  return showModalBottomSheet<bool>(
+  return showModalBottomSheet<SaveOutcome>(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
@@ -26,6 +33,7 @@ Future<bool?> showAddVisitSheet(
       restaurant: restaurant,
       userId: userId,
       visitedRepository: visitedRepository,
+      photoRepository: photoRepository,
     ),
   );
 }
@@ -34,11 +42,13 @@ class _AddVisitSheet extends StatefulWidget {
   final Restaurant restaurant;
   final String userId;
   final VisitedRepository visitedRepository;
+  final PhotoRepository photoRepository;
 
   const _AddVisitSheet({
     required this.restaurant,
     required this.userId,
     required this.visitedRepository,
+    required this.photoRepository,
   });
 
   @override
@@ -54,6 +64,8 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   int? _valueRating;
   MenuType? _menuType;
   final _notesCtrl = TextEditingController();
+  final List<StagedPhoto> _stagedPhotos = [];
+  bool _pickingPhotos = false;
 
   bool _saving = false;
   String? _error;
@@ -75,14 +87,40 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     if (picked != null) setState(() => _visitedOn = picked);
   }
 
+  Future<void> _addPhotos() async {
+    if (_pickingPhotos) return;
+    setState(() => _pickingPhotos = true);
+    try {
+      final picked = await pickStagedPhotos();
+      if (!mounted) return;
+      setState(() => _stagedPhotos.addAll(picked));
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _error = 'Could not open photo library.');
+    } finally {
+      if (mounted) setState(() => _pickingPhotos = false);
+    }
+  }
+
+  void _removeStagedPhoto(StagedPhoto photo) {
+    setState(() => _stagedPhotos.remove(photo));
+  }
+
   Future<void> _save() async {
     setState(() {
       _saving = true;
       _error = null;
     });
+
+    // Step 1: the visit itself. A public.photos row can't safely reference
+    // a visit that doesn't exist yet, so this must succeed, and only this,
+    // before any staged photo is touched. If it fails, zero photos are
+    // uploaded, the sheet stays open, and every entered value/staged photo
+    // is preserved for the user to retry.
+    final Visit visit;
     try {
       final notes = _notesCtrl.text.trim();
-      await widget.visitedRepository.markVisited(
+      visit = await widget.visitedRepository.markVisited(
         userId: widget.userId,
         restaurantId: widget.restaurant.id,
         visitedOn: _visitedOn,
@@ -97,19 +135,47 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
         // keysAtVisit intentionally omitted: this is a restaurant visit,
         // and Michelin Keys are a hotel award.
       );
-      if (!mounted) return;
-      Navigator.pop(context, true);
     } catch (error, stackTrace) {
       debugPrint('SAVE VISIT ERROR: $error');
       debugPrintStack(label: 'SAVE VISIT STACK', stackTrace: stackTrace);
-
       if (!mounted) return;
-
       setState(() {
         _saving = false;
         _error = 'Could not save visit: $error';
       });
+      return;
     }
+
+    // Step 2: upload whatever staged photos we can against the now-real
+    // visit.id. The visit is already saved and stays saved regardless of
+    // what happens here — a photo failure is reported, never hidden, but
+    // never undoes the historical record.
+    var photoFailures = 0;
+    for (final staged in _stagedPhotos) {
+      try {
+        await widget.photoRepository.uploadPhoto(
+          userId: widget.userId,
+          visitId: visit.id,
+          entityType: visit.entityType,
+          entityId: visit.entityId,
+          bytes: staged.bytes,
+          fileExtension: extensionOfXFile(staged.file),
+        );
+      } catch (error, stackTrace) {
+        debugPrint('SAVE VISIT PHOTO UPLOAD ERROR: $error');
+        debugPrintStack(
+          label: 'SAVE VISIT PHOTO STACK',
+          stackTrace: stackTrace,
+        );
+        photoFailures++;
+      }
+    }
+
+    if (!mounted) return;
+    Navigator.pop(
+      context,
+      photoFailures > 0 ? SaveOutcome.savedWithPhotoErrors : SaveOutcome.saved,
+    );
   }
 
   @override
@@ -245,6 +311,17 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                         height: 1.5,
                       ),
                     ),
+                  ),
+                  const SizedBox(height: 32),
+
+                  // ── Photos ─────────────────────────────────────────────
+                  const SectionLabel('PHOTOS'),
+                  const SizedBox(height: 12),
+                  StagedPhotoPicker(
+                    photos: _stagedPhotos,
+                    picking: _pickingPhotos,
+                    onAdd: _addPhotos,
+                    onRemove: _removeStagedPhoto,
                   ),
 
                   AnimatedSize(

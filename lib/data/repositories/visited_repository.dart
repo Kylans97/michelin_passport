@@ -6,6 +6,7 @@ import '../../models/venue_entry.dart';
 import '../../models/visit.dart';
 import '../../models/visited_restaurant.dart';
 import 'hotel_repository.dart' show hotelFullColumns;
+import 'photo_repository.dart';
 import 'restaurant_repository.dart' show restaurantFullColumns;
 
 // public.visits is polymorphic (see production schema migration):
@@ -53,13 +54,17 @@ class VisitedRepository {
     return (rows as List).isNotEmpty;
   }
 
-  // Inserts a new visit row. Supports every column on public.visits: the
-  // overall `rating` plus the optional food/service/wine/value sub-ratings
-  // and `menu_type` added in 20260805211243_add_visit_details.sql, and
-  // notes, price_paid, currency, keys_at_visit, stars_at_visit. Each visit
-  // is its own row; calling this again for the same restaurant records a
-  // second, independent visit by design.
-  Future<void> markVisited({
+  // Inserts a new visit row and returns the row Supabase actually created —
+  // never guessed at afterward by querying "the latest visit". Supports
+  // every column on public.visits: the overall `rating` plus the optional
+  // food/service/wine/value sub-ratings and `menu_type` added in
+  // 20260805211243_add_visit_details.sql, and notes, price_paid, currency,
+  // keys_at_visit, stars_at_visit. Each visit is its own row; calling this
+  // again for the same restaurant records a second, independent visit by
+  // design. The returned Visit.id is what staged photos are then uploaded
+  // against (see AddVisitSheet — a photo can't safely reference a visit
+  // that doesn't exist in the database yet).
+  Future<Visit> markVisited({
     required String userId,
     required String restaurantId,
     DateTime? visitedOn,
@@ -104,8 +109,9 @@ class VisitedRepository {
   // food_rating, wine_rating and menu_type are restaurant concepts and are
   // never set here — they stay NULL on every hotel stay row.
   // stars_at_visit is likewise never used for hotels; Michelin Stars are a
-  // restaurant award.
-  Future<void> markHotelStay({
+  // restaurant award. Returns the row Supabase actually created, same
+  // reasoning as markVisited above.
+  Future<Visit> markHotelStay({
     required String userId,
     required String hotelId,
     DateTime? visitedOn,
@@ -130,8 +136,11 @@ class VisitedRepository {
 
   // Shared insert behind markVisited and markHotelStay — a restaurant visit
   // and a hotel stay differ only in which columns the caller populates and
-  // which entity_type/entity_id the row is written under.
-  Future<void> _insertVisit({
+  // which entity_type/entity_id the row is written under. Uses
+  // insert().select().single() to get the created row back directly from
+  // Postgres, rather than a second "load the latest visit" query that
+  // could race with another insert.
+  Future<Visit> _insertVisit({
     required String userId,
     required String entityType,
     required String entityId,
@@ -152,39 +161,54 @@ class VisitedRepository {
       0,
       10,
     );
-    await _client.from('visits').insert({
-      'user_id': userId,
-      'entity_type': entityType,
-      'entity_id': entityId,
-      'visited_on': date,
-      'rating': ?rating,
-      'food_rating': ?foodRating,
-      'service_rating': ?serviceRating,
-      'wine_rating': ?wineRating,
-      'value_rating': ?valueRating,
-      'menu_type': ?menuType?.dbValue,
-      if (notes != null && notes.isNotEmpty) 'notes': notes,
-      'price_paid': ?pricePaid,
-      'currency': ?currency,
-      'keys_at_visit': ?keysAtVisit,
-      'stars_at_visit': ?starsAtVisit,
-    });
+    final row = await _client
+        .from('visits')
+        .insert({
+          'user_id': userId,
+          'entity_type': entityType,
+          'entity_id': entityId,
+          'visited_on': date,
+          'rating': ?rating,
+          'food_rating': ?foodRating,
+          'service_rating': ?serviceRating,
+          'wine_rating': ?wineRating,
+          'value_rating': ?valueRating,
+          'menu_type': ?menuType?.dbValue,
+          if (notes != null && notes.isNotEmpty) 'notes': notes,
+          'price_paid': ?pricePaid,
+          'currency': ?currency,
+          'keys_at_visit': ?keysAtVisit,
+          'stars_at_visit': ?starsAtVisit,
+        })
+        .select(_visitColumns)
+        .single();
+    return Visit.fromJson(row);
   }
 
-  // Clears every visit row for this restaurant, i.e. fully un-marks it as
-  // visited. The current UI is a single visited/not-visited toggle, not a
-  // per-visit list, so "remove" means "remove all" here — matches the
-  // existing toggle behaviour rather than picking one row to delete.
-  Future<void> removeVisit({
+  // Deletes exactly one visit/stay row — never any other visit/stay to the
+  // same restaurant/hotel. Constrained by both id and user_id (never
+  // entity_id alone), per the product rule that one visit/stay is one
+  // independent historical record.
+  //
+  // Deletes this visit's photos first (both storage objects and rows) via
+  // PhotoRepository.deleteAllPhotosForVisit — photos.visit_id has no `on
+  // delete cascade` (confirmed against the production schema), so the
+  // visits row could never be deleted while photo rows still reference
+  // it. If that photo cleanup's required row-delete step fails, this
+  // throws before ever touching the visits table, leaving both the visit
+  // and its photos intact rather than a partially-deleted state.
+  Future<void> deleteVisitById({
     required String userId,
-    required String restaurantId,
+    required String visitId,
   }) async {
+    await PhotoRepository(
+      _client,
+    ).deleteAllPhotosForVisit(userId: userId, visitId: visitId);
     await _client
         .from('visits')
         .delete()
-        .eq('user_id', userId)
-        .eq('entity_type', _restaurantEntity)
-        .eq('entity_id', restaurantId);
+        .eq('id', visitId)
+        .eq('user_id', userId);
   }
 
   // Every visit this user has logged for one restaurant, newest first (by

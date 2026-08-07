@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/widgets/star_row.dart';
+import '../../data/repositories/visited_repository.dart';
 import '../../models/restaurant.dart';
 import '../../models/visit.dart';
+import '../photos/widgets/visit_photos_section.dart';
 import '../restaurants/widgets/detail_section.dart';
 import 'widgets/rating_display_row.dart';
 
@@ -29,7 +32,11 @@ String _formatVisitDate(DateTime date) =>
 /// historical information: [visit.starsAtVisit] is the restaurant's award at
 /// the time of the visit and is shown as-is, never replaced by the
 /// restaurant's current Michelin stars.
-class VisitDetailScreen extends StatelessWidget {
+///
+/// Also owns deleting this one visit — see [_confirmDelete]. Deleting pops
+/// this screen with `true`, which RestaurantVisitsCard's onTap uses to
+/// refresh Restaurant Detail's visit history immediately.
+class VisitDetailScreen extends StatefulWidget {
   final Restaurant restaurant;
   final Visit visit;
 
@@ -40,7 +47,96 @@ class VisitDetailScreen extends StatelessWidget {
   });
 
   @override
+  State<VisitDetailScreen> createState() => _VisitDetailScreenState();
+}
+
+class _VisitDetailScreenState extends State<VisitDetailScreen> {
+  late final _visitedRepo = VisitedRepository(Supabase.instance.client);
+  bool _deleting = false;
+
+  void _showSnack(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: GoogleFonts.inter(color: AppColors.textPrimary),
+        ),
+        backgroundColor: AppColors.error,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  Future<void> _confirmDelete() async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppColors.card,
+        title: Text(
+          'Delete this visit?',
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textPrimary,
+            fontSize: 18,
+          ),
+        ),
+        content: Text(
+          'This will permanently remove:\n'
+          '• this visit\n'
+          '• its ratings\n'
+          '• notes\n'
+          '• photos linked to this visit\n\n'
+          'Other visits to this restaurant will NOT be affected.',
+          style: GoogleFonts.inter(
+            color: AppColors.textSecondary,
+            fontSize: 14,
+            height: 1.5,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(
+              'Cancel',
+              style: GoogleFonts.inter(color: AppColors.textSecondary),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(
+              'Delete visit',
+              style: GoogleFonts.inter(
+                color: AppColors.error,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || _deleting || !mounted) return;
+
+    final uid = Supabase.instance.client.auth.currentUser?.id;
+    if (uid == null || uid.isEmpty) {
+      _showSnack('Sign in required.');
+      return;
+    }
+
+    setState(() => _deleting = true);
+    try {
+      await _visitedRepo.deleteVisitById(userId: uid, visitId: widget.visit.id);
+      if (!mounted) return;
+      Navigator.pop(context, true);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _deleting = false);
+      _showSnack('Could not delete visit. Please try again.');
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final restaurant = widget.restaurant;
+    final visit = widget.visit;
     final stars = visit.starsAtVisit;
     final menuType = visit.menuType;
     final notes = visit.notes;
@@ -51,6 +147,47 @@ class VisitDetailScreen extends StatelessWidget {
         backgroundColor: AppColors.background,
         elevation: 0,
         foregroundColor: AppColors.textPrimary,
+        actions: [
+          if (_deleting)
+            const Padding(
+              padding: EdgeInsets.all(16),
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  color: AppColors.gold,
+                  strokeWidth: 2,
+                ),
+              ),
+            )
+          else
+            PopupMenuButton<String>(
+              icon: const Icon(Icons.more_vert_rounded),
+              color: AppColors.card,
+              onSelected: (value) {
+                if (value == 'delete') _confirmDelete();
+              },
+              itemBuilder: (context) => [
+                PopupMenuItem<String>(
+                  value: 'delete',
+                  child: Row(
+                    children: [
+                      const Icon(
+                        Icons.delete_outline_rounded,
+                        color: AppColors.error,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        'Delete visit',
+                        style: GoogleFonts.inter(color: AppColors.error),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+        ],
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
@@ -126,6 +263,16 @@ class VisitDetailScreen extends StatelessWidget {
                 ),
               ),
             ],
+
+            const SizedBox(height: 32),
+            const SectionLabel('PHOTOS'),
+            const SizedBox(height: 10),
+            VisitPhotosSection(
+              visitId: visit.id,
+              entityType: visit.entityType,
+              entityId: visit.entityId,
+              noun: 'visit',
+            ),
           ],
         ),
       ),

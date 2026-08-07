@@ -4,9 +4,11 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../data/repositories/hotel_repository.dart';
+import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
+import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
 import '../restaurants/widgets/detail_section.dart';
 import '../stays/widgets/add_stay_sheet.dart';
@@ -35,6 +37,7 @@ class HotelDetailScreen extends StatefulWidget {
 class _HotelDetailScreenState extends State<HotelDetailScreen> {
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
+  late final _photoRepo = PhotoRepository(Supabase.instance.client);
   late final Future<List<Restaurant>> _linkedRestaurantsFuture =
       widget.hotel.hasMichelinRestaurant
       ? _hotelRepo.getLinkedRestaurants(widget.hotel.id)
@@ -94,16 +97,23 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       _showSnack(_signInMessage, isError: true);
       return;
     }
-    final saved = await showAddStaySheet(
+    final result = await showAddStaySheet(
       context,
       hotel: widget.hotel,
       userId: uid,
       visitedRepository: _visitedRepo,
+      photoRepository: _photoRepo,
     );
-    if (saved == true && mounted) {
+    if (result != null && mounted) {
       await _loadStays();
       if (!mounted) return;
-      _showSnack('Stay saved');
+      final photoErrors = result == SaveOutcome.savedWithPhotoErrors;
+      _showSnack(
+        photoErrors
+            ? 'Stay saved, but some photos could not be uploaded.'
+            : 'Stay saved',
+        isError: photoErrors,
+      );
     }
   }
 
@@ -187,6 +197,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                     stays: _stays,
                     hotel: hotel,
                     signInMessage: _signInMessage,
+                    onReturn: _loadStays,
                   ),
                 ],
               ),

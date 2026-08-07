@@ -4,9 +4,11 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../data/repositories/hotel_repository.dart';
+import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/restaurant.dart';
+import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../visits/widgets/add_visit_sheet.dart';
@@ -32,6 +34,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
+  late final _photoRepo = PhotoRepository(Supabase.instance.client);
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -148,16 +151,23 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       _showSnack(_signInMessage, isError: true);
       return;
     }
-    final saved = await showAddVisitSheet(
+    final result = await showAddVisitSheet(
       context,
       restaurant: widget.restaurant,
       userId: uid,
       visitedRepository: _visitedRepo,
+      photoRepository: _photoRepo,
     );
-    if (saved == true && mounted) {
+    if (result != null && mounted) {
       await _refreshVisits();
       if (!mounted) return;
-      _showSnack('Visit saved');
+      final photoErrors = result == SaveOutcome.savedWithPhotoErrors;
+      _showSnack(
+        photoErrors
+            ? 'Visit saved, but some photos could not be uploaded.'
+            : 'Visit saved',
+        isError: photoErrors,
+      );
     }
   }
 
@@ -280,6 +290,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     visits: _visits,
                     restaurant: restaurant,
                     signInMessage: _signInMessage,
+                    onReturn: _refreshVisits,
                   ),
                 ],
               ),
