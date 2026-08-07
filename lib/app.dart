@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'core/constants/app_colors.dart';
+import 'core/navigation/route_observer.dart';
 import 'core/theme/app_theme.dart';
 import 'features/auth/auth_gate.dart';
 import 'features/explore/explore_screen.dart';
@@ -17,6 +18,7 @@ class TablePassportApp extends StatelessWidget {
       title: 'Table Passport',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.dark,
+      navigatorObservers: [appRouteObserver],
       // AuthGate shows LoginScreen when there is no session,
       // and the tab scaffold when the user is authenticated.
       home: const AuthGate(child: _MainNavigation()),
