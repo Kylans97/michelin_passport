@@ -179,48 +179,53 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       ),
       body: Stack(
         children: [
-          FlutterMap(
-            mapController: _mapController,
-            options: MapOptions(
-              initialCenter: _worldCenter,
-              initialZoom: _worldZoom,
-              interactionOptions: const InteractionOptions(
-                flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+          Positioned.fill(
+            child: FlutterMap(
+              mapController: _mapController,
+              options: MapOptions(
+                initialCenter: _worldCenter,
+                initialZoom: _worldZoom,
+                interactionOptions: const InteractionOptions(
+                  flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                ),
               ),
-            ),
-            children: [
-              TileLayer(
-                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                userAgentPackageName: 'com.chasingstars.app',
-                // A tile request failing (no connectivity, a rate limit)
-                // just leaves that tile blank — flutter_map already
-                // swallows the error internally, so there's nothing further
-                // to do here to keep the screen from crashing.
-                maxZoom: 19,
-              ),
-              MarkerLayer(
-                markers: [
-                  for (final stats in plottable)
-                    if (_coordsOf(stats) case (final lat, final lng))
-                      Marker(
-                        point: LatLng(lat, lng),
-                        width: VenuePin.size,
-                        height: VenuePin.size,
-                        child: VenuePin(
-                          venue: stats.venue,
-                          onTap: () => showVenuePreviewSheet(context, stats),
+              children: [
+                TileLayer(
+                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  userAgentPackageName: 'com.chasingstars.app',
+                  // A tile request failing (no connectivity, a rate limit)
+                  // just leaves that tile blank — flutter_map already
+                  // swallows the error internally, so there's nothing
+                  // further to do here to keep the screen from crashing.
+                  maxZoom: 19,
+                ),
+                MarkerLayer(
+                  markers: [
+                    for (final stats in plottable)
+                      if (_coordsOf(stats) case (final lat, final lng))
+                        Marker(
+                          point: LatLng(lat, lng),
+                          width: VenuePin.size,
+                          height: VenuePin.size,
+                          child: VenuePin(
+                            venue: stats.venue,
+                            onTap: () => showVenuePreviewSheet(context, stats),
+                          ),
                         ),
-                      ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
           SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
-              child: _FilterCard(
-                selected: _venueType,
-                onSelect: _onSelectVenueType,
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
+                child: _FilterCard(
+                  selected: _venueType,
+                  onSelect: _onSelectVenueType,
+                ),
               ),
             ),
           ),
@@ -261,6 +266,19 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   }
 }
 
+// Wraps the shared (Explore-owned) VenueTypeSelector for use as a floating
+// map overlay. VenueTypeSelector's segments use Container(alignment: ...)
+// internally, which — per Container's own sizing rule — expands to fill any
+// BOUNDED parent height (not just tight) before aligning its child. Inside
+// Explore's scrolling Column that parent height is unbounded, so it stays
+// compact there; inside this screen's Stack, SafeArea/Align/Container all
+// hand down loose-but-bounded constraints (bounded by the map's fixed
+// height), which is exactly the case that triggers the expand — without
+// IntrinsicHeight here the card would balloon to fill nearly the whole
+// screen. IntrinsicHeight forces the Row above it to be measured at its own
+// natural content height first, so the fill-parent behavior below never has
+// a large bound to expand into. Fixing this here (map-only) rather than in
+// VenueTypeSelector itself keeps Explore's layout completely untouched.
 class _FilterCard extends StatelessWidget {
   final ExploreVenueType selected;
   final ValueChanged<ExploreVenueType> onSelect;
@@ -277,7 +295,9 @@ class _FilterCard extends StatelessWidget {
         BoxShadow(color: Colors.black45, blurRadius: 8, offset: Offset(0, 3)),
       ],
     ),
-    child: VenueTypeSelector(selected: selected, onSelect: onSelect),
+    child: IntrinsicHeight(
+      child: VenueTypeSelector(selected: selected, onSelect: onSelect),
+    ),
   );
 }
 
