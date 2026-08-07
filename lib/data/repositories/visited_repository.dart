@@ -1,8 +1,12 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/hotel.dart';
 import '../../models/passport_entry.dart';
+import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
+import '../../models/venue_entry.dart';
 import '../../models/visit.dart';
 import '../../models/visited_restaurant.dart';
+import 'hotel_repository.dart' show hotelFullColumns;
 import 'restaurant_repository.dart' show restaurantFullColumns;
 
 // public.visits is polymorphic (see production schema migration):
@@ -233,16 +237,14 @@ class VisitedRepository {
 
   // Every restaurant this user has visited, each paired with every visit
   // logged against it (newest first) — one entry per unique restaurant, no
-  // matter how many times it was visited. This is the data Passport is
-  // built from: Passport shows unique venues, Restaurant Detail (Visit
-  // History) is where each individual visit is browsed separately. Nothing
-  // is merged, averaged, or deleted here — grouping happens only in this
-  // in-memory map, never in the database.
+  // matter how many times it was visited. Nothing is merged, averaged, or
+  // deleted here — grouping happens only in this in-memory map, never in
+  // the database.
   //
-  // Restaurant-only for now (entity_type = 'restaurant'); a future
-  // "PassportEntry for hotels" would be a parallel method querying
-  // entity_type = 'hotel' plus a Hotel model, feeding the same
-  // PassportEntry shape.
+  // Restaurant-only (entity_type = 'restaurant'). This is currently used
+  // only by My Rankings (via RankingsRepository.getPersonalRankingSource),
+  // which is restaurant-only for now — see [loadPassportVenues] below for
+  // the restaurant+hotel equivalent My Passport is built from.
   Future<List<PassportEntry>> loadPassportRestaurants(String userId) async {
     final rows = await _client
         .from('visits')
@@ -272,6 +274,74 @@ class VisitedRepository {
             visits: entry.value,
           ),
     ];
+  }
+
+  // Every venue (restaurant or hotel) this user has visited/stayed at,
+  // each paired with every visit/stay logged against it (newest first) —
+  // one entry per unique venue. This is the data My Passport (All /
+  // Restaurants / Hotels) is built from.
+  //
+  // entity_type is not filtered here — the visits check constraint only
+  // ever allows 'restaurant' or 'hotel', so every row of this user's
+  // belongs to one or the other. Three queries total, regardless of how
+  // many visits/stays exist: one for all visit rows, one batched
+  // restaurants_full lookup, one batched hotels_full lookup — never one
+  // query per venue.
+  Future<List<VenueEntry>> loadPassportVenues(String userId) async {
+    final rows = await _client
+        .from('visits')
+        .select(_visitColumns)
+        .eq('user_id', userId)
+        .order('visited_on', ascending: false);
+    final visitRows = (rows as List).cast<Map<String, dynamic>>();
+    if (visitRows.isEmpty) return [];
+
+    // Insertion order follows the visited_on-desc query order, so each
+    // venue's own visit list comes out newest-first for free.
+    final restaurantVisitsById = <String, List<Visit>>{};
+    final hotelVisitsById = <String, List<Visit>>{};
+    for (final row in visitRows) {
+      final visit = Visit.fromJson(row);
+      final byId = visit.entityType == _hotelEntity
+          ? hotelVisitsById
+          : restaurantVisitsById;
+      byId.putIfAbsent(visit.entityId, () => []).add(visit);
+    }
+
+    final restaurantsByIdFuture = _resolveRestaurantsByIds(
+      restaurantVisitsById.keys,
+    );
+    final hotelsByIdFuture = _resolveHotelsByIds(hotelVisitsById.keys);
+    final restaurantsById = await restaurantsByIdFuture;
+    final hotelsById = await hotelsByIdFuture;
+
+    return [
+      for (final entry in restaurantVisitsById.entries)
+        if (restaurantsById[entry.key] != null)
+          VenueEntry(
+            venue: RestaurantVenue(restaurantsById[entry.key]!),
+            visits: entry.value,
+          ),
+      for (final entry in hotelVisitsById.entries)
+        if (hotelsById[entry.key] != null)
+          VenueEntry(
+            venue: HotelVenue(hotelsById[entry.key]!),
+            visits: entry.value,
+          ),
+    ];
+  }
+
+  Future<Map<String, Hotel>> _resolveHotelsByIds(Iterable<String> ids) async {
+    final idList = ids.toSet().toList();
+    if (idList.isEmpty) return {};
+    final rows = await _client
+        .from('hotels_full')
+        .select(hotelFullColumns)
+        .inFilter('id', idList);
+    return {
+      for (final row in rows as List)
+        (row['id'] as String): Hotel.fromJson(row as Map<String, dynamic>),
+    };
   }
 
   // ── Existing API, kept working against the new schema ──────────────────

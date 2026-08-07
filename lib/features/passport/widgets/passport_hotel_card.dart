@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/widgets/star_row.dart';
-import '../../../models/restaurant.dart';
-import '../../restaurants/restaurant_detail_screen.dart';
+import '../../../core/widgets/key_row.dart';
+import '../../../models/hotel.dart';
+import '../../hotels/hotel_detail_screen.dart';
 import '../passport_view_model.dart';
 
 const _monthNames = [
@@ -24,27 +24,27 @@ const _monthNames = [
 String _formatDate(DateTime date) =>
     '${date.day} ${_monthNames[date.month - 1]} ${date.year}';
 
-// "City, 🇳🇱 Country" — falls back to plain "City, Country" when
+// "City, 🇬🇧 Country" — falls back to plain "City, Country" when
 // flagEmoji is empty rather than inventing one from countryCode.
-String _locationLabel(Restaurant restaurant) {
-  final country = restaurant.flagEmoji.isNotEmpty
-      ? '${restaurant.flagEmoji} ${restaurant.countryName}'
-      : restaurant.countryName;
-  return '${restaurant.cityName}, $country';
+String _locationLabel(Hotel hotel) {
+  final country = hotel.flagEmoji.isNotEmpty
+      ? '${hotel.flagEmoji} ${hotel.countryName}'
+      : hotel.countryName;
+  return '${hotel.cityName}, $country';
 }
 
-/// One unique restaurant in the Passport list, scoped to the active
-/// venue-type/year filter: visit count, latest visit and average rating
-/// all reflect only the visits [stats] was built from. Tapping opens the
-/// existing RestaurantDetailScreen, where every individual visit is still
+/// One unique hotel in the Passport list, scoped to the active
+/// venue-type/year filter: stay count, latest stay and average rating all
+/// reflect only the stays [stats] was built from. Tapping opens the
+/// existing HotelDetailScreen, where every individual stay is still
 /// browsable regardless of what Passport is currently filtered to.
-class PassportRestaurantCard extends StatelessWidget {
-  final Restaurant restaurant;
+class PassportHotelCard extends StatelessWidget {
+  final Hotel hotel;
   final PassportVenueStats stats;
 
-  const PassportRestaurantCard({
+  const PassportHotelCard({
     super.key,
-    required this.restaurant,
+    required this.hotel,
     required this.stats,
   });
 
@@ -60,9 +60,7 @@ class PassportRestaurantCard extends StatelessWidget {
         highlightColor: AppColors.goldAlpha10,
         onTap: () => Navigator.push(
           context,
-          MaterialPageRoute(
-            builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
-          ),
+          MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
         ),
         child: Container(
           width: double.infinity,
@@ -76,7 +74,7 @@ class PassportRestaurantCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                restaurant.name,
+                hotel.name,
                 style: GoogleFonts.playfairDisplay(
                   color: AppColors.textPrimary,
                   fontSize: 17,
@@ -85,22 +83,20 @@ class PassportRestaurantCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                _locationLabel(restaurant),
+                _locationLabel(hotel),
                 style: GoogleFonts.inter(
                   color: AppColors.textSecondary,
                   fontSize: 12.5,
                 ),
               ),
-              if (restaurant.hasMichelinStar) ...[
-                const SizedBox(height: 8),
-                StarRow(count: restaurant.michelinStars!, size: 14),
-              ],
+              const SizedBox(height: 8),
+              KeyRow(count: hotel.michelinKeys, size: 14),
               const SizedBox(height: 12),
               Row(
                 children: [
                   if (avg != null) ...[
                     Text(
-                      '${avg.toStringAsFixed(1)} average',
+                      avg.toStringAsFixed(1),
                       style: GoogleFonts.inter(
                         color: AppColors.gold,
                         fontSize: 13,
@@ -117,8 +113,8 @@ class PassportRestaurantCard extends StatelessWidget {
                   ],
                   Text(
                     stats.visitCount == 1
-                        ? '1 visit'
-                        : '${stats.visitCount} visits',
+                        ? '1 stay'
+                        : '${stats.visitCount} stays',
                     style: GoogleFonts.inter(
                       color: AppColors.textSecondary,
                       fontSize: 13,
@@ -129,7 +125,7 @@ class PassportRestaurantCard extends StatelessWidget {
               ),
               const SizedBox(height: 4),
               Text(
-                'Last visit ${_formatDate(stats.latestVisit)}',
+                'Last stay ${_formatDate(stats.latestVisit)}',
                 style: GoogleFonts.inter(
                   color: AppColors.textSecondary,
                   fontSize: 12,
