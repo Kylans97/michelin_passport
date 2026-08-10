@@ -2,10 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
-import '../../models/restaurant.dart';
+import '../../models/passport_venue.dart';
+import '../explore/models/explore_filters.dart' show ExploreVenueType;
+import '../explore/widgets/venue_type_selector.dart';
+import '../hotels/hotel_detail_screen.dart';
+import '../planning/widgets/plan_venue_sheet.dart';
+import '../restaurants/restaurant_detail_screen.dart';
+import '../trips/planned_trips_screen.dart';
 import 'widgets/wishlist_card.dart';
 
+/// My Wishlist: restaurants and hotels the user wants to go to someday —
+/// distinct from Planned Visits/Stays ("I intend to go around this date").
+/// Supports All/Restaurants/Hotels like Explore/Passport, via the same
+/// [PassportVenue] abstraction and [VenueTypeSelector] styling.
 class WishlistScreen extends StatefulWidget {
   const WishlistScreen({super.key});
 
@@ -17,36 +28,96 @@ class _WishlistScreenState extends State<WishlistScreen> {
   late final WishlistRepository _repo = WishlistRepository(
     Supabase.instance.client,
   );
+  late final PlannedTripsRepository _plannedTripsRepo = PlannedTripsRepository(
+    Supabase.instance.client,
+  );
 
-  late Future<List<Restaurant>> _future;
+  late Future<List<PassportVenue>> _future;
+  ExploreVenueType _venueType = ExploreVenueType.all;
+
+  String get _userId => Supabase.instance.client.auth.currentUser?.id ?? '';
 
   @override
   void initState() {
     super.initState();
-    final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-    _future = _repo.getWishlist(uid);
+    _future = _repo.loadWishlistVenues(_userId);
   }
 
   void _load() {
     if (!mounted) return;
-    final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-    setState(() {
-      _future = _repo.getWishlist(uid);
-    });
+    setState(() => _future = _repo.loadWishlistVenues(_userId));
   }
 
-  Future<void> _remove(Restaurant r) async {
-    final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-    await _repo.remove(userId: uid, restaurantId: r.id);
+  Future<void> _remove(PassportVenue venue) async {
+    switch (venue) {
+      case RestaurantVenue(:final restaurant):
+        await _repo.remove(userId: _userId, restaurantId: restaurant.id);
+      case HotelVenue(:final hotel):
+        await _repo.removeHotel(userId: _userId, hotelId: hotel.id);
+    }
     _load();
   }
 
+  void _openVenue(PassportVenue venue) {
+    switch (venue) {
+      case RestaurantVenue(:final restaurant):
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+          ),
+        );
+      case HotelVenue(:final hotel):
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+        );
+    }
+  }
+
+  Future<void> _planVenue(PassportVenue venue) async {
+    final uid = _userId;
+    if (uid.isEmpty) return;
+    final saved = await showPlanVenueSheet(
+      context,
+      venue: venue,
+      userId: uid,
+      plannedTripsRepository: _plannedTripsRepo,
+    );
+    if (saved == true && mounted) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            venue is HotelVenue ? 'Stay planned' : 'Visit planned',
+            style: GoogleFonts.inter(color: Colors.black),
+          ),
+          backgroundColor: AppColors.gold,
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    }
+  }
+
+  void _openPlannedTrips() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const PlannedTripsScreen()),
+    );
+  }
+
+  bool _matchesFilter(PassportVenue venue) => switch (_venueType) {
+    ExploreVenueType.all => true,
+    ExploreVenueType.restaurants => venue is RestaurantVenue,
+    ExploreVenueType.hotels => venue is HotelVenue,
+  };
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Restaurant>>(
+    return FutureBuilder<List<PassportVenue>>(
       future: _future,
       builder: (context, snap) {
-        final items = snap.data ?? [];
+        final allItems = snap.data ?? [];
+        final items = allItems.where(_matchesFilter).toList();
 
         return RefreshIndicator(
           color: AppColors.gold,
@@ -58,10 +129,29 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 title: const Text('Wishlist'),
                 pinned: true,
                 backgroundColor: AppColors.background,
+                actions: [
+                  IconButton(
+                    icon: const Icon(
+                      Icons.card_travel_rounded,
+                      color: AppColors.textSecondary,
+                    ),
+                    tooltip: 'My Planned Trips',
+                    onPressed: _openPlannedTrips,
+                  ),
+                ],
               ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 24),
+                  padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
+                  child: VenueTypeSelector(
+                    selected: _venueType,
+                    onSelect: (v) => setState(() => _venueType = v),
+                  ),
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
                   child: Row(
                     children: [
                       Text(
@@ -136,7 +226,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
                         ),
                         const SizedBox(height: 16),
                         Text(
-                          'Your wishlist is empty',
+                          allItems.isEmpty
+                              ? 'Your wishlist is empty'
+                              : 'Nothing here yet',
                           style: GoogleFonts.playfairDisplay(
                             color: AppColors.textSecondary,
                             fontSize: 18,
@@ -144,7 +236,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
                         ),
                         const SizedBox(height: 8),
                         Text(
-                          'Tap ♥ on any restaurant to save it here',
+                          allItems.isEmpty
+                              ? 'Tap ♥ on any restaurant or hotel to save it here'
+                              : 'Try a different filter',
                           style: GoogleFonts.inter(
                             color: AppColors.textSecondary,
                             fontSize: 13,
@@ -165,8 +259,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
                         i == items.length - 1 ? 100 : 12,
                       ),
                       child: WishlistCard(
-                        restaurant: items[i],
-                        rank: i + 1,
+                        venue: items[i],
+                        onTap: () => _openVenue(items[i]),
+                        onPlan: () => _planVenue(items[i]),
                         onRemove: () => _remove(items[i]),
                       ),
                     ),

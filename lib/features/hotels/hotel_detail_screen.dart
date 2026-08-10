@@ -6,13 +6,18 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import '../../core/widgets/circular_score_badge.dart';
 import '../../core/widgets/personal_photos_preview.dart';
+import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
+import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/visited_repository.dart';
+import '../../data/repositories/wishlist_repository.dart';
 import '../../models/hotel.dart';
+import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
 import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
+import '../planning/widgets/plan_venue_sheet.dart';
 import '../restaurants/widgets/detail_section.dart';
 import '../stays/widgets/add_stay_sheet.dart';
 import 'widgets/hotel_actions.dart';
@@ -22,12 +27,11 @@ import 'widgets/hotel_links.dart';
 import 'widgets/hotel_restaurants_card.dart';
 import 'widgets/hotel_stays_card.dart';
 
-const _signInMessage = 'Sign in to save stays.';
+const _signInMessage = 'Sign in to save stays and wishlist hotels.';
 
 /// Hotel detail screen: identity, location, external links, the Michelin
-/// restaurants linked to this hotel (when any exist), and the user's own
-/// stay history. No stay photos, ratings aggregation, or wishlist yet;
-/// those are later slices.
+/// restaurants linked to this hotel (when any exist), the user's own stay
+/// history, and wishlist/plan-a-stay personal state.
 class HotelDetailScreen extends StatefulWidget {
   final Hotel hotel;
 
@@ -41,6 +45,10 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _photoRepo = PhotoRepository(Supabase.instance.client);
+  late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
+  late final _plannedTripsRepo = PlannedTripsRepository(
+    Supabase.instance.client,
+  );
   late final Future<List<Restaurant>> _linkedRestaurantsFuture =
       widget.hotel.hasMichelinRestaurant
       ? _hotelRepo.getLinkedRestaurants(widget.hotel.id)
@@ -48,35 +56,102 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
-  bool _loadingStays = true;
+  bool _loadingPersonalState = true;
   List<Visit> _stays = [];
+  bool _isWishlisted = false;
+  bool _wishlistSaving = false;
 
   @override
   void initState() {
     super.initState();
-    _loadStays();
+    _loadPersonalState();
   }
 
-  Future<void> _loadStays() async {
+  Future<void> _loadPersonalState() async {
     final uid = _userId;
     if (uid == null) {
       // Not signed in: nothing to load, catalogue browsing stays available.
-      setState(() => _loadingStays = false);
+      setState(() => _loadingPersonalState = false);
       return;
     }
     try {
-      final stays = await _visitedRepo.loadStaysForHotel(uid, widget.hotel.id);
+      // Started together so they run concurrently, then awaited in turn.
+      final staysFuture = _visitedRepo.loadStaysForHotel(uid, widget.hotel.id);
+      final wishlistedFuture = _wishlistRepo.isHotelWishlisted(
+        userId: uid,
+        hotelId: widget.hotel.id,
+      );
+      final stays = await staysFuture;
+      final wishlisted = await wishlistedFuture;
       if (!mounted) return;
       setState(() {
         _stays = stays;
-        _loadingStays = false;
+        _isWishlisted = wishlisted;
+        _loadingPersonalState = false;
       });
     } catch (_) {
       // A failed personal-state load shouldn't block catalogue browsing —
       // fall back to "not yet" rather than showing an error for this.
       if (!mounted) return;
-      setState(() => _loadingStays = false);
+      setState(() => _loadingPersonalState = false);
     }
+  }
+
+  // Reloads just the stay history, e.g. after saving a new stay, so it
+  // reflects the change immediately without leaving/reopening the screen.
+  Future<void> _refreshStays() async {
+    final uid = _userId;
+    if (uid == null) return;
+    try {
+      final stays = await _visitedRepo.loadStaysForHotel(uid, widget.hotel.id);
+      if (!mounted) return;
+      setState(() => _stays = stays);
+    } catch (_) {
+      // Keep showing the previous list rather than clearing it on a
+      // transient error.
+    }
+  }
+
+  Future<void> _toggleWishlist() async {
+    final uid = _userId;
+    if (uid == null) {
+      _showSnack(_signInMessage, isError: true);
+      return;
+    }
+    if (_wishlistSaving) return;
+
+    setState(() => _wishlistSaving = true);
+    try {
+      final nowWishlisted = await _wishlistRepo.toggleHotelWishlist(
+        userId: uid,
+        hotelId: widget.hotel.id,
+      );
+      if (!mounted) return;
+      setState(() {
+        _isWishlisted = nowWishlisted;
+        _wishlistSaving = false;
+      });
+      _showSnack(nowWishlisted ? 'Added to wishlist' : 'Removed from wishlist');
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _wishlistSaving = false);
+      _showSnack('Could not update wishlist. Please try again.', isError: true);
+    }
+  }
+
+  Future<void> _openPlanStay() async {
+    final uid = _userId;
+    if (uid == null) {
+      _showSnack(_signInMessage, isError: true);
+      return;
+    }
+    final saved = await showPlanVenueSheet(
+      context,
+      venue: HotelVenue(widget.hotel),
+      userId: uid,
+      plannedTripsRepository: _plannedTripsRepo,
+    );
+    if (saved == true && mounted) _showSnack('Stay planned');
   }
 
   void _showSnack(String message, {bool isError = false}) {
@@ -108,7 +183,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       photoRepository: _photoRepo,
     );
     if (result != null && mounted) {
-      await _loadStays();
+      await _refreshStays();
       if (!mounted) return;
       final photoErrors = result == SaveOutcome.savedWithPhotoErrors;
       _showSnack(
@@ -155,7 +230,12 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       backgroundColor: AppColors.background,
       body: CustomScrollView(
         slivers: [
-          HotelHero(hotel: hotel),
+          HotelHero(
+            hotel: hotel,
+            isWishlisted: _isWishlisted,
+            wishlistSaving: _wishlistSaving,
+            onTapWishlist: _toggleWishlist,
+          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 24, 20, 100),
@@ -172,8 +252,16 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                   ),
                   const SizedBox(height: 36),
 
-                  HotelActions(onTapAddStay: _openAddStaySheet),
-                  const SizedBox(height: 24),
+                  HotelActions(
+                    isAuthenticated: isAuthenticated,
+                    loadingPersonalState: _loadingPersonalState,
+                    isWishlisted: _isWishlisted,
+                    wishlistSaving: _wishlistSaving,
+                    onTapAddStay: _openAddStaySheet,
+                    onTapWishlist: _toggleWishlist,
+                  ),
+                  SubtleTextAction(label: 'Plan stay', onTap: _openPlanStay),
+                  const SizedBox(height: 12),
 
                   const SectionLabel('LINKS'),
                   const SizedBox(height: 12),
@@ -235,11 +323,11 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                   const SizedBox(height: 12),
                   HotelStaysCard(
                     isAuthenticated: isAuthenticated,
-                    loading: _loadingStays,
+                    loading: _loadingPersonalState,
                     stays: _stays,
                     hotel: hotel,
                     signInMessage: _signInMessage,
-                    onReturn: _loadStays,
+                    onReturn: _refreshStays,
                   ),
 
                   if (latestStay != null) ...[

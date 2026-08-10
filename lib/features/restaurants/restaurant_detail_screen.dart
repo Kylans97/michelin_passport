@@ -6,15 +6,19 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import '../../core/widgets/circular_score_badge.dart';
 import '../../core/widgets/personal_photos_preview.dart';
+import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
+import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
+import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
 import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
 import '../hotels/hotel_detail_screen.dart';
+import '../planning/widgets/plan_venue_sheet.dart';
 import '../visits/widgets/add_visit_sheet.dart';
 import 'award_history_screen.dart';
 import 'widgets/award_history_action.dart';
@@ -42,6 +46,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
   late final _photoRepo = PhotoRepository(Supabase.instance.client);
   late final _awardHistoryRepo = AwardHistoryRepository(
+    Supabase.instance.client,
+  );
+  late final _plannedTripsRepo = PlannedTripsRepository(
     Supabase.instance.client,
   );
 
@@ -225,6 +232,21 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     }
   }
 
+  Future<void> _openPlanVisit() async {
+    final uid = _userId;
+    if (uid == null) {
+      _showSnack(_signInMessage, isError: true);
+      return;
+    }
+    final saved = await showPlanVenueSheet(
+      context,
+      venue: RestaurantVenue(widget.restaurant),
+      userId: uid,
+      plannedTripsRepository: _plannedTripsRepo,
+    );
+    if (saved == true && mounted) _showSnack('Visit planned');
+  }
+
   void _openAwardHistory() {
     Navigator.push(
       context,
@@ -326,7 +348,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                         ? () => _openUrl(websiteUrl)
                         : null,
                   ),
-                  const SizedBox(height: 36),
+                  SubtleTextAction(label: 'Plan visit', onTap: _openPlanVisit),
+                  const SizedBox(height: 28),
 
                   if (isAuthenticated && latestVisit != null) ...[
                     const SectionLabel('YOUR SCORE'),
