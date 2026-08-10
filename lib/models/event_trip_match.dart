@@ -11,9 +11,16 @@ import 'planned_trip.dart';
 /// Rules (in order):
 /// 1. A cancelled event never matches any trip — nothing "happening during
 ///    your trip" if it's been cancelled.
-/// 2. Date ranges must overlap: the event's [start_at, end_at) window
-///    intersects the trip's [start_date, end_date] window (trip dates are
-///    day-granularity, so the trip's own end date counts as a whole day).
+/// 2. Date ranges must overlap, compared by CALENDAR DATE, not exact
+///    instant: event.startAt/endAt are timestamptz, already converted to
+///    device-local time in Event.fromJson (via .toLocal()), while
+///    trip.startDate/endDate are day-granularity dates with no time
+///    component. Comparing full DateTime instants between the two (e.g. an
+///    exclusive "day + 1" upper bound) makes the match sensitive to
+///    time-of-day at the boundary for no reason — a person reading
+///    "27-30 August" against "26-31 August" is comparing whole days, so
+///    both sides are first truncated to Y-M-D and checked for inclusive
+///    date-range overlap.
 /// 3. Country must match exactly.
 /// 4. City: if BOTH the event and the trip specify a city, they must match
 ///    (case-insensitive) — this is the "city matching preferred when both
@@ -26,20 +33,12 @@ import 'planned_trip.dart';
 bool eventMatchesTrip(Event event, PlannedTrip trip) {
   if (event.isCancelled) return false;
 
-  final tripStart = DateTime(
-    trip.startDate.year,
-    trip.startDate.month,
-    trip.startDate.day,
-  );
-  // Exclusive upper bound covering the whole of the trip's last day.
-  final tripEndExclusive = DateTime(
-    trip.endDate.year,
-    trip.endDate.month,
-    trip.endDate.day + 1,
-  );
+  final eventStart = _dateOnly(event.startAt);
+  final eventEnd = _dateOnly(event.endAt);
+  final tripStart = _dateOnly(trip.startDate);
+  final tripEnd = _dateOnly(trip.endDate);
   final datesOverlap =
-      event.startAt.isBefore(tripEndExclusive) &&
-      event.endAt.isAfter(tripStart);
+      !eventStart.isAfter(tripEnd) && !eventEnd.isBefore(tripStart);
   if (!datesOverlap) return false;
 
   if (event.countryCode.toUpperCase() != trip.countryCode.toUpperCase()) {
@@ -64,3 +63,5 @@ List<Event> eventsMatchingTrip(List<Event> events, PlannedTrip trip) {
     ..sort((a, b) => a.startAt.compareTo(b.startAt));
   return matches;
 }
+
+DateTime _dateOnly(DateTime d) => DateTime(d.year, d.month, d.day);

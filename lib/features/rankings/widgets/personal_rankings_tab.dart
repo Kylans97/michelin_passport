@@ -4,7 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/navigation/route_observer.dart';
 import '../../../core/utils/visit_years.dart';
-import '../../../core/widgets/year_filter_bar.dart';
+import '../../../core/widgets/year_filter_control.dart';
 import '../../../data/repositories/rankings_repository.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/ranking_dimension.dart';
@@ -197,10 +197,13 @@ class _PersonalRankingsTabState extends State<PersonalRankingsTab>
           const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: YearFilterBar(
-              years: years,
-              selectedYear: _selectedYear,
-              onSelect: (year) => setState(() => _selectedYear = year),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: YearFilterControl(
+                years: years,
+                selectedYear: _selectedYear,
+                onSelect: (year) => setState(() => _selectedYear = year),
+              ),
             ),
           ),
         ],

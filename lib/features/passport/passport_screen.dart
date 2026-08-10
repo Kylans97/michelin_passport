@@ -5,7 +5,7 @@ import '../../core/constants/app_colors.dart';
 import '../../core/navigation/route_observer.dart';
 import '../../core/theme/app_typography.dart';
 import '../../core/utils/visit_years.dart';
-import '../../core/widgets/year_filter_bar.dart';
+import '../../core/widgets/year_filter_control.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
@@ -196,10 +196,13 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
-                child: YearFilterBar(
-                  years: years,
-                  selectedYear: _selectedYear,
-                  onSelect: (year) => setState(() => _selectedYear = year),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: YearFilterControl(
+                    years: years,
+                    selectedYear: _selectedYear,
+                    onSelect: (year) => setState(() => _selectedYear = year),
+                  ),
                 ),
               ),
             ),

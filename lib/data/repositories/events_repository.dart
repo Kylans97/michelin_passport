@@ -6,6 +6,7 @@ import '../../models/venue_country.dart';
 import 'country_lookup.dart';
 import 'hotel_repository.dart' show hotelFullColumns;
 import 'restaurant_repository.dart' show restaurantFullColumns;
+import 'search_query.dart';
 
 /// A single event's linked venues, resolved for Event Detail. Either list
 /// may be empty — an event is never required to link to any venue.
@@ -29,16 +30,29 @@ class EventsRepository {
 
   /// Events overlapping [from, to] (inclusive-ish — an event that started
   /// before [from] but is still running is still included), optionally
-  /// narrowed to one country. Chronological, soonest first. Cancelled
-  /// events ARE included (see EventCard for how they're marked) — hiding
-  /// them outright would make "why did this event disappear" a mystery;
-  /// only trip-matching (eventMatchesTrip) excludes them outright.
+  /// narrowed to one country and/or a free-text [query]. [query] and
+  /// [countryCode] are independent, ANDed constraints — a city search must
+  /// work with no country picked at all (see RestaurantRepository.search()/
+  /// HotelRepository.search(), which follow the same independent-filter
+  /// shape). Chronological, soonest first. Cancelled events ARE included
+  /// (see EventCard for how they're marked) — hiding them outright would
+  /// make "why did this event disappear" a mystery; only trip-matching
+  /// (eventMatchesTrip) excludes them outright.
   Future<List<Event>> loadEvents({
     DateTime? from,
     DateTime? to,
     String? countryCode,
+    String query = '',
   }) async {
     var builder = _client.from('events').select();
+    // name/city/venue_name — the textual fields a person would actually
+    // type. No country_name here: events only stores country_code (no
+    // denormalized name column, unlike restaurants_full/hotels_full), so a
+    // country is matched via the separate country chip, not text.
+    final orFilter = buildIlikeOrFilter(query, ['name', 'city', 'venue_name']);
+    if (orFilter != null) {
+      builder = builder.or(orFilter);
+    }
     if (from != null) {
       builder = builder.gte('end_at', from.toUtc().toIso8601String());
     }

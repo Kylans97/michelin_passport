@@ -13,12 +13,13 @@ import '../explore/widgets/restaurant_tile.dart';
 import '../restaurants/widgets/detail_section.dart';
 import 'event_date_format.dart';
 
-/// Full event details: hero (photo-ready, brand-green fallback — same
-/// pattern as Restaurant/Hotel Detail's own hero, since no event has a
-/// verified image yet either), date/time, location, description, official
-/// links, and every linked restaurant/hotel — reusing RestaurantTile/
-/// HotelTile outright rather than a third venue-row widget, since those
-/// already navigate to the real Detail screens on tap.
+/// Full event details: hero (renders event.imageUrl via DetailHero's
+/// backgroundImage slot when set, BoxFit.cover; brand-green fallback
+/// otherwise — same pattern Restaurant/Hotel Detail's own hero already
+/// uses), date/time, location, description, official links, and every
+/// linked restaurant/hotel — reusing RestaurantTile/HotelTile outright
+/// rather than a third venue-row widget, since those already navigate to
+/// the real Detail screens on tap.
 class EventDetailScreen extends StatefulWidget {
   final String eventId;
   const EventDetailScreen({super.key, required this.eventId});
@@ -141,6 +142,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     final hasWebsite =
         event.officialUrl != null && event.officialUrl!.isNotEmpty;
     final hasTickets = event.ticketUrl != null && event.ticketUrl!.isNotEmpty;
+    final isFreeEntry = event.isFreeEntry;
+    final ticketButtonLabel = event.admissionType == EventAdmissionType.mixed
+        ? 'Optional ticket'
+        : 'Tickets';
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -148,11 +153,26 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         slivers: [
           DetailHero(
             title: event.name,
+            backgroundImage:
+                event.imageUrl != null && event.imageUrl!.isNotEmpty
+                ? Image.network(
+                    event.imageUrl!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (_, _, _) => const DecoratedBox(
+                      decoration: BoxDecoration(color: AppColors.brandGreen),
+                    ),
+                  )
+                : null,
             awardBadge: HeroBadge(
               icon: Icons.event_rounded,
               label: event.eventType.label,
             ),
             extraBadges: [
+              if (isFreeEntry)
+                const HeroBadge(
+                  icon: Icons.money_off_rounded,
+                  label: 'Free entry',
+                ),
               if (event.isCancelled)
                 const HeroBadge(
                   icon: Icons.cancel_outlined,
@@ -197,6 +217,20 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                               text: event.address!,
                             ),
                           ],
+                          if (event.admissionType !=
+                              EventAdmissionType.unknown) ...[
+                            const SizedBox(height: 14),
+                            _InfoRow(
+                              icon: isFreeEntry
+                                  ? Icons.money_off_rounded
+                                  : Icons.confirmation_number_outlined,
+                              text:
+                                  event.admissionNote != null &&
+                                      event.admissionNote!.isNotEmpty
+                                  ? event.admissionNote!
+                                  : event.admissionType.label,
+                            ),
+                          ],
                         ],
                       ),
                     ),
@@ -239,7 +273,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                                 Expanded(
                                   child: SecondaryButton(
                                     icon: Icons.confirmation_number_outlined,
-                                    label: 'Tickets',
+                                    label: ticketButtonLabel,
                                     onTap: () => _openUrl(event.ticketUrl!),
                                   ),
                                 ),

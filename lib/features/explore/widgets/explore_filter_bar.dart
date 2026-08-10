@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/widgets/country_filter_control.dart';
 import '../../../models/venue_country.dart';
 import '../models/explore_filters.dart';
 import 'venue_type_selector.dart';
 
-/// Explore's whole filter stack: venue type, search, country, then a
-/// context-dependent award row (Stars for Restaurants, Keys for Hotels,
-/// nothing — deliberately — for All, so there's no confusing mixed
-/// Stars/Keys filter).
+/// Explore's whole filter stack: venue type, search, a compact country
+/// control, then a context-dependent award row (Stars for Restaurants,
+/// Keys for Hotels, nothing — deliberately — for All, so there's no
+/// confusing mixed Stars/Keys filter). Country used to be a persistent
+/// horizontally-scrolling chip row; it's now CountryFilterControl (see that
+/// widget), collapsed until tapped, so it doesn't compete for space with
+/// search/results — filtering semantics underneath (search text and
+/// country are independent, ANDed constraints) are unchanged.
 class ExploreFilterBar extends StatelessWidget {
   final TextEditingController searchCtrl;
   final ExploreVenueType venueType;
   final RestaurantAwardFilter restaurantAward;
   final HotelKeysFilter hotelKeys;
-  final String? countryFilter;
+  final VenueCountry? countryFilter;
   final List<VenueCountry> countries;
   final ValueChanged<String> onQueryChanged;
   final ValueChanged<ExploreVenueType> onVenueTypeChanged;
   final ValueChanged<RestaurantAwardFilter> onRestaurantAwardChanged;
   final ValueChanged<HotelKeysFilter> onHotelKeysChanged;
-  final ValueChanged<String?> onCountryChanged;
+  final ValueChanged<VenueCountry?> onCountryChanged;
 
   const ExploreFilterBar({
     super.key,
@@ -66,26 +71,12 @@ class ExploreFilterBar extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                _Chip(
-                  label: 'All countries',
-                  selected: countryFilter == null,
-                  onTap: () => onCountryChanged(null),
-                ),
-                ...countries.map(
-                  (c) => Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: _Chip(
-                      label: '${c.flag}  ${c.name}',
-                      selected: countryFilter == c.code,
-                      onTap: () => onCountryChanged(c.code),
-                    ),
-                  ),
-                ),
-              ],
+          Align(
+            alignment: Alignment.centerLeft,
+            child: CountryFilterControl(
+              selected: countryFilter,
+              countries: countries,
+              onChanged: onCountryChanged,
             ),
           ),
           if (venueType == ExploreVenueType.restaurants) ...[

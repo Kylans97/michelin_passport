@@ -3,30 +3,35 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../models/explore_filters.dart';
 
-/// The top-level "All / Restaurants / Hotels" segmented selector — compact,
-/// full-width, three equal segments (always exactly three options, so this
-/// is a fixed row rather than a scrolling chip list).
+/// The top-level venue-type segmented selector — compact, full-width,
+/// equal segments. [types] defaults to all three ("All / Restaurants /
+/// Hotels", Explore's own selector); pass a narrower list to drop options
+/// that don't apply to a given screen — Wishlist has no "All" category
+/// (see WishlistScreen), so it passes just [restaurants, hotels] here
+/// rather than a second bespoke widget.
 class VenueTypeSelector extends StatelessWidget {
   final ExploreVenueType selected;
   final ValueChanged<ExploreVenueType> onSelect;
+  final List<ExploreVenueType> types;
 
   const VenueTypeSelector({
     super.key,
     required this.selected,
     required this.onSelect,
+    this.types = ExploreVenueType.values,
   });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        for (var i = 0; i < ExploreVenueType.values.length; i++) ...[
+        for (var i = 0; i < types.length; i++) ...[
           if (i > 0) const SizedBox(width: 8),
           Expanded(
             child: _Segment(
-              label: ExploreVenueType.values[i].label,
-              selected: ExploreVenueType.values[i] == selected,
-              onTap: () => onSelect(ExploreVenueType.values[i]),
+              label: types[i].label,
+              selected: types[i] == selected,
+              onTap: () => onSelect(types[i]),
             ),
           ),
         ],

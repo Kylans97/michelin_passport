@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/country_picker_sheet.dart';
+import '../../../data/repositories/hotel_repository.dart';
 import '../../../data/repositories/planned_trips_repository.dart';
+import '../../../data/repositories/restaurant_repository.dart';
+import '../../../models/hotel.dart';
 import '../../../models/planned_trip.dart';
+import '../../../models/restaurant.dart';
 import '../../../models/venue_country.dart';
 import '../../restaurants/widgets/detail_section.dart';
 import '../../visits/widgets/date_card.dart';
 import '../../visits/widgets/save_button.dart';
+import 'hotel_picker_sheet.dart';
+import 'restaurant_picker_sheet.dart';
 
 /// Opens the "Create trip"/"Edit trip" bottom sheet. Passing [existingTrip]
 /// switches to edit mode (pre-filled fields, updates in place); omitting it
@@ -63,6 +70,16 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
       widget.existingTrip?.endDate ??
       DateTime.now().add(const Duration(days: 33));
   VenueCountry? _country;
+
+  // Optional hotel + restaurants to seed the trip with on creation — see
+  // Trip Detail for the same picks made incrementally after the trip
+  // already exists. Only ever shown/collected for a NEW trip (not editing
+  // an existing one): editing a trip is about the trip's own fields, venue
+  // management belongs to Trip Detail once the trip exists.
+  late final _hotelRepo = HotelRepository(Supabase.instance.client);
+  late final _restaurantRepo = RestaurantRepository(Supabase.instance.client);
+  Hotel? _selectedHotel;
+  final List<Restaurant> _selectedRestaurants = [];
 
   bool _saving = false;
   String? _error;
@@ -122,6 +139,20 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
     if (picked != null) setState(() => _country = picked);
   }
 
+  Future<void> _pickHotel() async {
+    final picked = await showHotelPickerSheet(context, repo: _hotelRepo);
+    if (picked != null) setState(() => _selectedHotel = picked);
+  }
+
+  Future<void> _pickRestaurant() async {
+    final picked = await showRestaurantPickerSheet(
+      context,
+      repo: _restaurantRepo,
+      excludeIds: {for (final r in _selectedRestaurants) r.id},
+    );
+    if (picked != null) setState(() => _selectedRestaurants.add(picked));
+  }
+
   Future<void> _save() async {
     final title = _titleCtrl.text.trim();
     if (title.isEmpty) {
@@ -156,7 +187,7 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
           notes: notes.isEmpty ? null : notes,
         );
       } else {
-        await widget.repo.createTrip(
+        final trip = await widget.repo.createTrip(
           userId: widget.userId,
           title: title,
           startDate: _startDate,
@@ -165,6 +196,29 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
           city: city.isEmpty ? null : city,
           notes: notes.isEmpty ? null : notes,
         );
+        // Normalized references only (entity_id -> hotels_full/
+        // restaurants_full), never copied venue data — same
+        // planned_venues shape Trip Detail's own add-venue actions use.
+        final hotel = _selectedHotel;
+        if (hotel != null) {
+          await widget.repo.createPlannedVenue(
+            userId: widget.userId,
+            entityType: 'hotel',
+            entityId: hotel.id,
+            tripId: trip.id,
+            startDate: _startDate,
+            endDate: _endDate,
+          );
+        }
+        for (final restaurant in _selectedRestaurants) {
+          await widget.repo.createPlannedVenue(
+            userId: widget.userId,
+            entityType: 'restaurant',
+            entityId: restaurant.id,
+            tripId: trip.id,
+            startDate: _startDate,
+          );
+        }
       }
       if (!mounted) return;
       Navigator.pop(context, true);
@@ -321,6 +375,49 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                   ),
                   const SizedBox(height: 28),
 
+                  if (!_isEditing) ...[
+                    const SectionLabel('WHERE ARE YOU STAYING? (OPTIONAL)'),
+                    const SizedBox(height: 12),
+                    if (_selectedHotel == null)
+                      _PickerTrigger(
+                        placeholder: 'Add hotel',
+                        onTap: _pickHotel,
+                        icon: Icons.hotel_rounded,
+                      )
+                    else
+                      _SelectedVenueRow(
+                        title: _selectedHotel!.name,
+                        subtitle:
+                            '${_selectedHotel!.cityName}, '
+                            '${_selectedHotel!.countryName}',
+                        onChange: _pickHotel,
+                        onRemove: () => setState(() => _selectedHotel = null),
+                      ),
+                    const SizedBox(height: 28),
+
+                    const SectionLabel('RESTAURANTS TO VISIT (OPTIONAL)'),
+                    const SizedBox(height: 12),
+                    for (var i = 0; i < _selectedRestaurants.length; i++) ...[
+                      if (i > 0) const SizedBox(height: 8),
+                      _SelectedVenueRow(
+                        title: _selectedRestaurants[i].name,
+                        subtitle:
+                            '${_selectedRestaurants[i].cityName}, '
+                            '${_selectedRestaurants[i].countryName}',
+                        onRemove: () =>
+                            setState(() => _selectedRestaurants.removeAt(i)),
+                      ),
+                    ],
+                    if (_selectedRestaurants.isNotEmpty)
+                      const SizedBox(height: 8),
+                    _PickerTrigger(
+                      placeholder: 'Add restaurant',
+                      onTap: _pickRestaurant,
+                      icon: Icons.restaurant_rounded,
+                    ),
+                    const SizedBox(height: 28),
+                  ],
+
                   const SectionLabel('NOTES (OPTIONAL)'),
                   const SizedBox(height: 12),
                   TextField(
@@ -385,4 +482,132 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
       ),
     );
   }
+}
+
+/// Empty-state tap target for "Add hotel"/"Add restaurant" — opens the
+/// matching picker sheet. Shared shape with [_SelectedVenueRow] below so
+/// the section reads as one consistent control whether empty or filled.
+class _PickerTrigger extends StatelessWidget {
+  final String placeholder;
+  final IconData icon;
+  final VoidCallback onTap;
+  const _PickerTrigger({
+    required this.placeholder,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => Material(
+    color: Colors.transparent,
+    child: InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(18),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        decoration: BoxDecoration(
+          color: AppColors.surface,
+          borderRadius: BorderRadius.circular(18),
+          border: Border.all(color: AppColors.cardBorder, width: 0.5),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, color: AppColors.textSecondary, size: 18),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Text(
+                placeholder,
+                style: GoogleFonts.inter(
+                  color: AppColors.textSecondary,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+            const Icon(
+              Icons.add_rounded,
+              color: AppColors.textSecondary,
+              size: 20,
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+/// A hotel or restaurant already picked for this trip — name/location plus
+/// an optional "Change" (hotel only, since a trip has at most one) and a
+/// "Remove" affordance. [onChange] omitted means no change action (used
+/// for restaurant rows, where "remove and add a different one" is the same
+/// number of taps as a dedicated change action would be).
+class _SelectedVenueRow extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final VoidCallback? onChange;
+  final VoidCallback onRemove;
+  const _SelectedVenueRow({
+    required this.title,
+    required this.subtitle,
+    this.onChange,
+    required this.onRemove,
+  });
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.fromLTRB(16, 12, 8, 12),
+    decoration: BoxDecoration(
+      color: AppColors.surface,
+      borderRadius: BorderRadius.circular(18),
+      border: Border.all(color: AppColors.cardBorder, width: 0.5),
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                title,
+                style: GoogleFonts.inter(
+                  color: AppColors.textPrimary,
+                  fontSize: 14.5,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              const SizedBox(height: 2),
+              Text(
+                subtitle,
+                style: GoogleFonts.inter(
+                  color: AppColors.textSecondary,
+                  fontSize: 12.5,
+                ),
+              ),
+            ],
+          ),
+        ),
+        if (onChange != null)
+          TextButton(
+            onPressed: onChange,
+            child: Text(
+              'Change',
+              style: GoogleFonts.inter(
+                color: AppColors.gold,
+                fontSize: 13,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        IconButton(
+          onPressed: onRemove,
+          icon: const Icon(
+            Icons.close_rounded,
+            color: AppColors.textSecondary,
+            size: 18,
+          ),
+          tooltip: 'Remove',
+        ),
+      ],
+    ),
+  );
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/widgets/country_picker_sheet.dart';
+import '../../../core/widgets/country_filter_control.dart';
 import '../../../models/venue_country.dart';
 import '../models/event_date_filter.dart';
 
@@ -20,12 +20,18 @@ const _monthNames = [
   'December',
 ];
 
-/// Events' filter stack: date-mode chips (Upcoming / This week / Month /
-/// Custom range) plus a country picker. Deliberately no city filter
-/// surfaced yet — the data model already carries city (see Event/events
-/// table), but with only a handful of events live, a city filter would be
-/// empty chrome; it can appear here later without any data change.
+/// Events' filter stack: free-text search, then date-mode chips (Upcoming /
+/// This week / Month / Custom range) on their own row, then a compact
+/// country control on its own row — three visually distinct rows instead
+/// of one crowded scrolling row mixing five different controls together
+/// (see the usability-cleanup task this addresses). Search and country
+/// remain independent, ANDed constraints — CountryFilterControl (shared
+/// with Explore, see that widget) changes only the affordance, not the
+/// underlying filtering semantics: a city query like "Maastricht" still
+/// surfaces matching events with no country picked at all.
 class EventFilterBar extends StatelessWidget {
+  final TextEditingController searchCtrl;
+  final ValueChanged<String> onQueryChanged;
   final EventDateFilter dateFilter;
   final ValueChanged<EventDateFilter> onDateFilterChanged;
   final VenueCountry? country;
@@ -34,6 +40,8 @@ class EventFilterBar extends StatelessWidget {
 
   const EventFilterBar({
     super.key,
+    required this.searchCtrl,
+    required this.onQueryChanged,
     required this.dateFilter,
     required this.onDateFilterChanged,
     required this.country,
@@ -59,24 +67,21 @@ class EventFilterBar extends StatelessWidget {
     }
   }
 
-  Future<void> _pickCountry(BuildContext context) async {
-    final picked = await showCountryPickerSheet(
-      context,
-      countries: countries,
-      allowAll: true,
-    );
-    // showCountryPickerSheet returns null both for "All countries" and for
-    // "dismissed without choosing" — both mean "no country filter", which
-    // is exactly the state onCountryChanged(null) already represents, so
-    // treating them the same is correct here, not a lost distinction.
-    onCountryChanged(picked);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        TextField(
+          controller: searchCtrl,
+          onChanged: onQueryChanged,
+          style: GoogleFonts.inter(color: AppColors.textPrimary, fontSize: 14),
+          decoration: const InputDecoration(
+            hintText: 'Search events, cities…',
+            prefixIcon: Icon(Icons.search_rounded),
+          ),
+        ),
+        const SizedBox(height: 14),
         SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
@@ -114,18 +119,20 @@ class EventFilterBar extends StatelessWidget {
                 selected: dateFilter.mode == EventDateFilterMode.custom,
                 onTap: () => _pickCustomRange(context),
               ),
-              const SizedBox(width: 8),
-              _Chip(
-                label: country == null ? 'All countries' : country!.name,
-                icon: Icons.public_rounded,
-                selected: country != null,
-                onTap: () => _pickCountry(context),
-              ),
             ],
           ),
         ),
+        const SizedBox(height: 14),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: CountryFilterControl(
+            selected: country,
+            countries: countries,
+            onChanged: onCountryChanged,
+          ),
+        ),
         if (dateFilter.mode == EventDateFilterMode.month) ...[
-          const SizedBox(height: 10),
+          const SizedBox(height: 14),
           Row(
             children: [
               IconButton(
@@ -171,12 +178,10 @@ class EventFilterBar extends StatelessWidget {
 
 class _Chip extends StatelessWidget {
   final String label;
-  final IconData? icon;
   final bool selected;
   final VoidCallback onTap;
   const _Chip({
     required this.label,
-    this.icon,
     required this.selected,
     required this.onTap,
   });
@@ -202,14 +207,6 @@ class _Chip extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (icon != null) ...[
-            Icon(
-              icon,
-              size: 14,
-              color: selected ? AppColors.brandGreen : AppColors.textSecondary,
-            ),
-            const SizedBox(width: 6),
-          ],
           Text(
             label,
             style: GoogleFonts.inter(

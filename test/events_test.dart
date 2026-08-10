@@ -209,6 +209,46 @@ void main() {
     });
   });
 
+  group('Regression: Maastricht trip vs \'t Preuvenemint', () {
+    test(
+      'a trip spanning 26-31 Aug matches an event running 27-30 Aug, '
+      'parsed from real PostgREST-shaped JSON (not hand-built DateTimes)',
+      () {
+        final trip = PlannedTrip.fromJson({
+          'id': 'trip-1',
+          'user_id': 'user-1',
+          'title': 'Maastricht',
+          'start_date': '2026-08-26',
+          'end_date': '2026-08-31',
+          'country_code': 'NL',
+          'city': 'Maastricht',
+          'notes': null,
+          'created_at': '2026-08-10T12:00:00+00:00',
+        });
+        final event = Event.fromJson({
+          'id': 'evt-preuvenemint',
+          'name': "'t Preuvenemint",
+          'description': null,
+          'start_at': '2026-08-27T16:00:00+00:00',
+          'end_at': '2026-08-30T22:00:00+00:00',
+          'country_code': 'NL',
+          'city': 'Maastricht',
+          'venue_name': 'Vrijthof',
+          'address': null,
+          'latitude': null,
+          'longitude': null,
+          'official_url': null,
+          'ticket_url': null,
+          'image_url': null,
+          'event_type': 'festival',
+          'status': 'upcoming',
+          'created_at': '2026-08-10T12:00:00+00:00',
+        });
+        expect(eventMatchesTrip(event, trip), isTrue);
+      },
+    );
+  });
+
   group('I: non-overlapping event excluded', () {
     test('event entirely before the trip does not match', () {
       final event = _event(
@@ -290,6 +330,67 @@ void main() {
       );
       expect(cancelled.isCancelled, isTrue);
       expect(upcoming.isCancelled, isFalse);
+    });
+  });
+
+  group('L: admission model (FREE ENTRY badge)', () {
+    Map<String, dynamic> baseJson() => {
+      'id': 'evt-1',
+      'name': 'Test Event',
+      'description': null,
+      'start_at': '2026-08-27T16:00:00+00:00',
+      'end_at': '2026-08-30T22:00:00+00:00',
+      'country_code': 'NL',
+      'city': 'Maastricht',
+      'venue_name': null,
+      'address': null,
+      'latitude': null,
+      'longitude': null,
+      'official_url': null,
+      'ticket_url': null,
+      'image_url': null,
+      'event_type': 'festival',
+      'status': 'upcoming',
+      'created_at': '2026-08-10T12:00:00+00:00',
+    };
+
+    test('admission_type "mixed" parses correctly and counts as free '
+        "entry — the exact 't Preuvenemint case", () {
+      final json = baseJson()
+        ..['admission_type'] = 'mixed'
+        ..['admission_note'] = 'Free general admission; add-on ticketed.';
+      final event = Event.fromJson(json);
+      expect(event.admissionType, EventAdmissionType.mixed);
+      expect(event.isFreeEntry, isTrue);
+      expect(event.admissionNote, 'Free general admission; add-on ticketed.');
+    });
+
+    test('admission_type "free" counts as free entry', () {
+      final event = Event.fromJson(baseJson()..['admission_type'] = 'free');
+      expect(event.isFreeEntry, isTrue);
+    });
+
+    test('admission_type "paid" is NOT free entry', () {
+      final event = Event.fromJson(baseJson()..['admission_type'] = 'paid');
+      expect(event.isFreeEntry, isFalse);
+    });
+
+    test('a JSON row with the admission_type/admission_note KEYS ABSENT '
+        'entirely (exactly what a PostgREST response looks like before the '
+        'admission migration is applied to the remote database — the actual '
+        'root cause of the badge not appearing) parses safely to "unknown", '
+        'never crashes, and is NOT free entry', () {
+      final json = baseJson(); // no admission_type/admission_note keys
+      final event = Event.fromJson(json);
+      expect(event.admissionType, EventAdmissionType.unknown);
+      expect(event.admissionNote, isNull);
+      expect(event.isFreeEntry, isFalse);
+    });
+
+    test('EventAdmissionType.label never leaks the internal "mixed" term', () {
+      for (final type in EventAdmissionType.values) {
+        expect(type.label.toLowerCase(), isNot(contains('mixed')));
+      }
     });
   });
 }

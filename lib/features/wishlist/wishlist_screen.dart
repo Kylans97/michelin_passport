@@ -12,11 +12,13 @@ import '../planning/widgets/plan_venue_sheet.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import '../trips/planned_trips_screen.dart';
 import 'widgets/wishlist_card.dart';
+import 'wishlist_view_model.dart';
 
 /// My Wishlist: restaurants and hotels the user wants to go to someday —
 /// distinct from Planned Visits/Stays ("I intend to go around this date").
-/// Supports All/Restaurants/Hotels like Explore/Passport, via the same
-/// [PassportVenue] abstraction and [VenueTypeSelector] styling.
+/// Restaurants/Hotels only (no All category — see [defaultWishlistVenueType]
+/// for the default-selection rule), via the same [PassportVenue]
+/// abstraction and [VenueTypeSelector] styling Explore/Passport use.
 class WishlistScreen extends StatefulWidget {
   const WishlistScreen({super.key});
 
@@ -32,8 +34,16 @@ class _WishlistScreenState extends State<WishlistScreen> {
     Supabase.instance.client,
   );
 
+  // Wishlist has no "All" category (unlike Explore/Passport) — just
+  // Restaurants/Hotels. Starts on restaurants; _load() below switches this
+  // to hotels once data first arrives IF the user's existing wishlist is
+  // hotels-only, so the default view is never empty-by-construction for
+  // someone who has only ever wishlisted hotels.
+  static const _types = [ExploreVenueType.restaurants, ExploreVenueType.hotels];
+  ExploreVenueType _venueType = ExploreVenueType.restaurants;
+  bool _defaultApplied = false;
+
   late Future<List<PassportVenue>> _future;
-  ExploreVenueType _venueType = ExploreVenueType.all;
 
   String get _userId => Supabase.instance.client.auth.currentUser?.id ?? '';
 
@@ -45,7 +55,21 @@ class _WishlistScreenState extends State<WishlistScreen> {
 
   void _load() {
     if (!mounted) return;
-    setState(() => _future = _repo.loadWishlistVenues(_userId));
+    setState(() {
+      _defaultApplied = false;
+      _future = _repo.loadWishlistVenues(_userId);
+    });
+  }
+
+  void _applyDefaultVenueType(List<PassportVenue> items) {
+    if (_defaultApplied) return;
+    _defaultApplied = true;
+    final defaultType = defaultWishlistVenueType(items);
+    if (defaultType != _venueType) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) setState(() => _venueType = defaultType);
+      });
+    }
   }
 
   Future<void> _remove(PassportVenue venue) async {
@@ -117,6 +141,9 @@ class _WishlistScreenState extends State<WishlistScreen> {
       future: _future,
       builder: (context, snap) {
         final allItems = snap.data ?? [];
+        if (snap.connectionState == ConnectionState.done) {
+          _applyDefaultVenueType(allItems);
+        }
         final items = allItems.where(_matchesFilter).toList();
 
         return RefreshIndicator(
@@ -144,6 +171,7 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
                   child: VenueTypeSelector(
+                    types: _types,
                     selected: _venueType,
                     onSelect: (v) => setState(() => _venueType = v),
                   ),

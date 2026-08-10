@@ -4,6 +4,7 @@ import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import 'country_lookup.dart';
 import 'restaurant_repository.dart' show restaurantFullColumns;
+import 'search_query.dart';
 
 // Explicit column list matching public.hotels_full as it exists on the
 // CURRENT remote schema — see
@@ -77,12 +78,13 @@ class HotelRepository {
   }) async {
     var builder = _client.from('hotels_full').select(hotelFullColumns);
 
-    if (query.isNotEmpty) {
-      builder = builder.or(
-        'name.ilike.%$query%,'
-        'city_name.ilike.%$query%,'
-        'country_name.ilike.%$query%',
-      );
+    final orFilter = buildIlikeOrFilter(query, [
+      'name',
+      'city_name',
+      'country_name',
+    ]);
+    if (orFilter != null) {
+      builder = builder.or(orFilter);
     }
     if (keys != null) {
       builder = builder.eq('michelin_keys', keys);

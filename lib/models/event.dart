@@ -55,6 +55,36 @@ enum EventStatus {
   }
 }
 
+/// The four permitted values of `events.admission_type` (see
+/// supabase/migrations/20260810180000_add_event_admission.sql). An event's
+/// `ticket_url` alone never says whether the event ITSELF requires payment
+/// — 't Preuvenemint is free to attend but still carries a ticket_url for
+/// a separate, optional paid add-on, which is exactly what [mixed] exists
+/// to represent.
+enum EventAdmissionType {
+  free('free'),
+  paid('paid'),
+  mixed('mixed'),
+  unknown('unknown');
+
+  final String dbValue;
+  const EventAdmissionType(this.dbValue);
+
+  static EventAdmissionType fromDbValue(String? value) {
+    for (final type in EventAdmissionType.values) {
+      if (type.dbValue == value) return type;
+    }
+    return EventAdmissionType.unknown;
+  }
+
+  String get label => switch (this) {
+    EventAdmissionType.free => 'Free entry',
+    EventAdmissionType.paid => 'Ticketed',
+    EventAdmissionType.mixed => 'Free entry, optional ticket',
+    EventAdmissionType.unknown => 'Admission not confirmed',
+  };
+}
+
 class Event {
   final String id;
   final String name;
@@ -72,6 +102,8 @@ class Event {
   final String? imageUrl;
   final EventType eventType;
   final EventStatus status;
+  final EventAdmissionType admissionType;
+  final String? admissionNote;
   final DateTime createdAt;
 
   const Event({
@@ -91,10 +123,21 @@ class Event {
     this.imageUrl,
     required this.eventType,
     required this.status,
+    this.admissionType = EventAdmissionType.unknown,
+    this.admissionNote,
     required this.createdAt,
   });
 
   bool get isCancelled => status == EventStatus.cancelled;
+
+  // "mixed" is free general admission with a separately-ticketed add-on
+  // (e.g. 't Preuvenemint) — attending the event itself costs nothing, so
+  // it counts as free entry same as EventAdmissionType.free. Single
+  // canonical definition (EventCard and EventDetailScreen both read this)
+  // rather than each re-deriving the same two-value check.
+  bool get isFreeEntry =>
+      admissionType == EventAdmissionType.free ||
+      admissionType == EventAdmissionType.mixed;
 
   factory Event.fromJson(Map<String, dynamic> json) => Event(
     id: json['id'].toString(),
@@ -113,6 +156,10 @@ class Event {
     imageUrl: json['image_url'] as String?,
     eventType: EventType.fromDbValue(json['event_type'] as String?),
     status: EventStatus.fromDbValue(json['status'] as String?),
+    admissionType: EventAdmissionType.fromDbValue(
+      json['admission_type'] as String?,
+    ),
+    admissionNote: json['admission_note'] as String?,
     createdAt: DateTime.parse(json['created_at'] as String).toLocal(),
   );
 }

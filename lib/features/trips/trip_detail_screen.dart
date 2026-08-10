@@ -4,7 +4,9 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import '../../data/repositories/events_repository.dart';
+import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
+import '../../data/repositories/restaurant_repository.dart';
 import '../../models/event.dart';
 import '../../models/event_trip_match.dart';
 import '../../models/passport_venue.dart';
@@ -16,8 +18,10 @@ import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import '../restaurants/widgets/detail_section.dart';
 import 'widgets/create_trip_sheet.dart';
+import 'widgets/hotel_picker_sheet.dart';
 import 'widgets/planned_venue_actions.dart';
 import 'widgets/planned_venue_row.dart';
+import 'widgets/restaurant_picker_sheet.dart';
 import 'widgets/trip_card.dart' show formatTripDateRange;
 
 /// A single trip: destination, dates, notes, and every planned restaurant/
@@ -36,6 +40,12 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     Supabase.instance.client,
   );
   late final EventsRepository _eventsRepo = EventsRepository(
+    Supabase.instance.client,
+  );
+  late final HotelRepository _hotelRepo = HotelRepository(
+    Supabase.instance.client,
+  );
+  late final RestaurantRepository _restaurantRepo = RestaurantRepository(
     Supabase.instance.client,
   );
 
@@ -198,6 +208,125 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     if (changed) _load();
   }
 
+  // "Change hotel" replaces rather than edits in place: planned_venues has
+  // no column for which venue a row addresses other than entity_id itself,
+  // and there is no update-entity_id method (see PlannedTripsRepository) —
+  // editing a plan only ever changes its dates/notes/status, never which
+  // venue it points to. Swapping hotels is therefore delete-old +
+  // create-new, both against the same normalized entity_id/trip_id shape
+  // Create Trip's own hotel picker writes.
+  Future<void> _addOrChangeHotel(List<ResolvedPlannedVenue> hotels) async {
+    final picked = await showHotelPickerSheet(context, repo: _hotelRepo);
+    if (picked == null) return;
+    try {
+      for (final existing in hotels) {
+        await _repo.deletePlannedVenue(
+          userId: _userId,
+          plannedVenueId: existing.plan.id,
+        );
+      }
+      await _repo.createPlannedVenue(
+        userId: _userId,
+        entityType: 'hotel',
+        entityId: picked.id,
+        tripId: _trip.id,
+        startDate: _trip.startDate,
+        endDate: _trip.endDate,
+      );
+      _load();
+    } catch (_) {
+      if (!mounted) return;
+      _showSnack(
+        'Could not update the hotel. Please try again.',
+        isError: true,
+      );
+    }
+  }
+
+  Future<void> _addRestaurant(List<ResolvedPlannedVenue> restaurants) async {
+    final picked = await showRestaurantPickerSheet(
+      context,
+      repo: _restaurantRepo,
+      excludeIds: {
+        for (final r in restaurants)
+          if (r.venue case RestaurantVenue(:final restaurant)) restaurant.id,
+      },
+    );
+    if (picked == null) return;
+    try {
+      await _repo.createPlannedVenue(
+        userId: _userId,
+        entityType: 'restaurant',
+        entityId: picked.id,
+        tripId: _trip.id,
+        startDate: _trip.startDate,
+      );
+      _load();
+    } catch (_) {
+      if (!mounted) return;
+      _showSnack(
+        'Could not add that restaurant. Please try again.',
+        isError: true,
+      );
+    }
+  }
+
+  Future<void> _removeVenue(ResolvedPlannedVenue item) async {
+    final isHotel = item.venue is HotelVenue;
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppColors.card,
+        title: Text(
+          isHotel ? 'Remove this hotel?' : 'Remove this restaurant?',
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textPrimary,
+            fontSize: 18,
+          ),
+        ),
+        content: Text(
+          'This only removes it from the trip — nothing is deleted from '
+          'the catalogue.',
+          style: GoogleFonts.inter(
+            color: AppColors.textSecondary,
+            fontSize: 14,
+            height: 1.5,
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(
+              'Cancel',
+              style: GoogleFonts.inter(color: AppColors.textSecondary),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(
+              'Remove',
+              style: GoogleFonts.inter(
+                color: AppColors.error,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true) return;
+    try {
+      await _repo.deletePlannedVenue(
+        userId: _userId,
+        plannedVenueId: item.plan.id,
+      );
+      _load();
+    } catch (_) {
+      if (!mounted) return;
+      _showSnack('Could not remove. Please try again.', isError: true);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final restaurants = _venues
@@ -352,9 +481,12 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                       ],
                       const SizedBox(height: 28),
 
-                      SectionLabel(
-                        'RESTAURANTS'
-                        '${restaurants.isNotEmpty ? ' (${restaurants.length})' : ''}',
+                      _SectionHeaderRow(
+                        label:
+                            'RESTAURANTS'
+                            '${restaurants.isNotEmpty ? ' (${restaurants.length})' : ''}',
+                        actionLabel: 'Add',
+                        onAction: () => _addRestaurant(restaurants),
                       ),
                       const SizedBox(height: 12),
                       if (restaurants.isEmpty)
@@ -364,31 +496,36 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                       else
                         for (var i = 0; i < restaurants.length; i++) ...[
                           if (i > 0) const SizedBox(height: 10),
-                          PlannedVenueRow(
+                          _RemovableVenueRow(
                             item: restaurants[i],
                             onTap: () => _openVenue(restaurants[i]),
                             onLongPress: () =>
                                 _showVenueActions(restaurants[i]),
+                            onRemove: () => _removeVenue(restaurants[i]),
                           ),
                         ],
                       const SizedBox(height: 28),
 
-                      SectionLabel(
-                        'HOTELS'
-                        '${hotels.isNotEmpty ? ' (${hotels.length})' : ''}',
+                      _SectionHeaderRow(
+                        label:
+                            'HOTEL'
+                            '${hotels.isNotEmpty ? ' (${hotels.length})' : ''}',
+                        actionLabel: hotels.isEmpty ? 'Add' : 'Change',
+                        onAction: () => _addOrChangeHotel(hotels),
                       ),
                       const SizedBox(height: 12),
                       if (hotels.isEmpty)
                         _EmptySlot(
-                          message: 'No hotels planned for this trip yet.',
+                          message: 'No hotel planned for this trip yet.',
                         )
                       else
                         for (var i = 0; i < hotels.length; i++) ...[
                           if (i > 0) const SizedBox(height: 10),
-                          PlannedVenueRow(
+                          _RemovableVenueRow(
                             item: hotels[i],
                             onTap: () => _openVenue(hotels[i]),
                             onLongPress: () => _showVenueActions(hotels[i]),
+                            onRemove: () => _removeVenue(hotels[i]),
                           ),
                         ],
                     ],
@@ -411,5 +548,80 @@ class _EmptySlot extends StatelessWidget {
       message,
       style: GoogleFonts.inter(color: AppColors.textSecondary, fontSize: 13),
     ),
+  );
+}
+
+/// A section label ("RESTAURANTS (2)") plus an explicit "Add"/"Change"
+/// action — the incremental-editing entry point this task adds, so
+/// building a trip's itinerary after creation is exactly as available as
+/// doing it during creation (see Create Trip's own hotel/restaurant
+/// pickers, which write to the same planned_venues shape).
+class _SectionHeaderRow extends StatelessWidget {
+  final String label;
+  final String actionLabel;
+  final VoidCallback onAction;
+  const _SectionHeaderRow({
+    required this.label,
+    required this.actionLabel,
+    required this.onAction,
+  });
+
+  @override
+  Widget build(BuildContext context) => Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      SectionLabel(label),
+      TextButton.icon(
+        onPressed: onAction,
+        icon: const Icon(Icons.add_rounded, size: 16),
+        label: Text(actionLabel, style: GoogleFonts.inter(fontSize: 13)),
+        style: TextButton.styleFrom(
+          foregroundColor: AppColors.gold,
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          minimumSize: Size.zero,
+          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+        ),
+      ),
+    ],
+  );
+}
+
+/// [PlannedVenueRow] plus an explicit, always-visible remove action —
+/// long-press (see PlannedVenueRow's own "edit/cancel behind onLongPress"
+/// design) still opens the fuller action sheet, but "Remove restaurant"/
+/// "remove hotel" no longer requires discovering that gesture first.
+class _RemovableVenueRow extends StatelessWidget {
+  final ResolvedPlannedVenue item;
+  final VoidCallback onTap;
+  final VoidCallback onLongPress;
+  final VoidCallback onRemove;
+  const _RemovableVenueRow({
+    required this.item,
+    required this.onTap,
+    required this.onLongPress,
+    required this.onRemove,
+  });
+
+  @override
+  Widget build(BuildContext context) => Row(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Expanded(
+        child: PlannedVenueRow(
+          item: item,
+          onTap: onTap,
+          onLongPress: onLongPress,
+        ),
+      ),
+      IconButton(
+        onPressed: onRemove,
+        icon: const Icon(
+          Icons.remove_circle_outline_rounded,
+          color: AppColors.textSecondary,
+          size: 20,
+        ),
+        tooltip: 'Remove',
+      ),
+    ],
   );
 }
