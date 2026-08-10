@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
+import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/visited_repository.dart';
@@ -12,6 +13,8 @@ import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../visits/widgets/add_visit_sheet.dart';
+import 'award_history_screen.dart';
+import 'widgets/award_history_action.dart';
 import 'widgets/detail_section.dart';
 import 'widgets/restaurant_actions.dart';
 import 'widgets/restaurant_awards_card.dart';
@@ -35,6 +38,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
   late final _photoRepo = PhotoRepository(Supabase.instance.client);
+  late final _awardHistoryRepo = AwardHistoryRepository(
+    Supabase.instance.client,
+  );
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -44,12 +50,31 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   bool _wishlistSaving = false;
   bool _loadingHotel = false;
 
+  // Catalogue data, not personal state — loaded regardless of sign-in.
+  // Starts false (action hidden) rather than showing then hiding it, since
+  // most restaurants resolve this within a single indexed round trip.
+  bool _hasAwardHistory = false;
+
   bool get _isVisited => _visits.isNotEmpty;
 
   @override
   void initState() {
     super.initState();
     _loadPersonalState();
+    _checkAwardHistory();
+  }
+
+  Future<void> _checkAwardHistory() async {
+    try {
+      final hasHistory = await _awardHistoryRepo.hasAnyHistory(
+        widget.restaurant.id,
+      );
+      if (!mounted) return;
+      setState(() => _hasAwardHistory = hasHistory);
+    } catch (_) {
+      // Leave the action hidden on a failed check rather than risk opening
+      // AwardHistoryScreen to a broken state.
+    }
   }
 
   Future<void> _loadPersonalState() async {
@@ -197,6 +222,15 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     }
   }
 
+  void _openAwardHistory() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => AwardHistoryScreen(restaurant: widget.restaurant),
+      ),
+    );
+  }
+
   // Resolves the actual Hotel via HotelRepository before navigating —
   // restaurants_full only carries hotel_id/hotel_name, never enough to
   // construct a real Hotel, so HotelDetailScreen always gets the genuine
@@ -280,6 +314,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   const SizedBox(height: 28),
 
                   RestaurantAwardsCard(restaurant: restaurant),
+                  if (_hasAwardHistory)
+                    AwardHistoryAction(onTap: _openAwardHistory),
 
                   const SizedBox(height: 28),
                   const SectionLabel('YOUR VISITS'),
