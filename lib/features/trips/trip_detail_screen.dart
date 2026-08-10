@@ -3,10 +3,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/app_typography.dart';
+import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
+import '../../models/event.dart';
+import '../../models/event_trip_match.dart';
 import '../../models/passport_venue.dart';
 import '../../models/planned_trip.dart';
 import '../../models/resolved_planned_venue.dart';
+import '../events/event_detail_screen.dart';
+import '../events/widgets/event_card.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import '../restaurants/widgets/detail_section.dart';
@@ -30,12 +35,16 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   late final PlannedTripsRepository _repo = PlannedTripsRepository(
     Supabase.instance.client,
   );
+  late final EventsRepository _eventsRepo = EventsRepository(
+    Supabase.instance.client,
+  );
 
   String get _userId => Supabase.instance.client.auth.currentUser?.id ?? '';
 
   late PlannedTrip _trip = widget.trip;
   bool _loading = true;
   List<ResolvedPlannedVenue> _venues = [];
+  List<Event> _matchingEvents = [];
 
   @override
   void initState() {
@@ -46,10 +55,17 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   Future<void> _load() async {
     setState(() => _loading = true);
     try {
-      final venues = await _repo.loadResolvedPlannedVenues(_userId);
+      final venuesFuture = _repo.loadResolvedPlannedVenues(_userId);
+      // Country-scoped fetch, then pure-function matching client-side (see
+      // eventsMatchingTrip) — the user never has to manually attach an
+      // event to a trip for it to show up here.
+      final eventsFuture = _eventsRepo.loadEventsForCountry(_trip.countryCode);
+      final venues = await venuesFuture;
+      final events = await eventsFuture;
       if (!mounted) return;
       setState(() {
         _venues = venues.where((v) => v.plan.tripId == _trip.id).toList();
+        _matchingEvents = eventsMatchingTrip(events, _trip);
         _loading = false;
       });
     } catch (_) {
@@ -85,6 +101,9 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
       final updated = trips.where((t) => t.id == _trip.id);
       if (updated.isNotEmpty && mounted) {
         setState(() => _trip = updated.first);
+        // Country/dates may have changed — re-run event matching against
+        // the updated trip, not the stale one.
+        await _load();
       }
     }
   }
@@ -160,6 +179,13 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
           MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
         );
     }
+  }
+
+  void _openEvent(Event event) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => EventDetailScreen(eventId: event.id)),
+    );
   }
 
   Future<void> _showVenueActions(ResolvedPlannedVenue item) async {
@@ -307,6 +333,23 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                             ],
                           ),
                         ),
+
+                      // Kept visually quiet when empty (omitted outright,
+                      // per the task's explicit instruction) rather than
+                      // showing an empty-state block — a trip with no
+                      // matching events shouldn't look "broken".
+                      if (_matchingEvents.isNotEmpty) ...[
+                        const SizedBox(height: 28),
+                        const SectionLabel('CULINARY EVENTS DURING YOUR TRIP'),
+                        const SizedBox(height: 12),
+                        for (var i = 0; i < _matchingEvents.length; i++) ...[
+                          if (i > 0) const SizedBox(height: 10),
+                          EventCard(
+                            event: _matchingEvents[i],
+                            onTap: () => _openEvent(_matchingEvents[i]),
+                          ),
+                        ],
+                      ],
                       const SizedBox(height: 28),
 
                       SectionLabel(

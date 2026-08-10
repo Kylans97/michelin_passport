@@ -7,6 +7,7 @@ import '../../core/utils/number_format.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../models/venue_country.dart';
+import '../events/events_screen.dart';
 import 'explore_view_model.dart';
 import 'models/explore_filters.dart';
 import 'models/explore_item.dart';
@@ -148,6 +149,19 @@ class _ExploreScreenState extends State<ExploreScreen> {
               backgroundColor: AppColors.brandGreen,
               foregroundColor: AppColors.textOnDark,
               toolbarHeight: 76,
+              actions: [
+                IconButton(
+                  icon: const Icon(
+                    Icons.event_outlined,
+                    color: AppColors.textOnDark,
+                  ),
+                  tooltip: 'Culinary Events',
+                  onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const EventsScreen()),
+                  ),
+                ),
+              ],
               title: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,

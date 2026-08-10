@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/widgets/country_picker_sheet.dart';
 import '../../../data/repositories/planned_trips_repository.dart';
 import '../../../models/planned_trip.dart';
 import '../../../models/venue_country.dart';
@@ -117,12 +118,7 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
   }
 
   Future<void> _pickCountry(List<VenueCountry> countries) async {
-    final picked = await showModalBottomSheet<VenueCountry>(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (_) => _CountryPickerSheet(countries: countries),
-    );
+    final picked = await showCountryPickerSheet(context, countries: countries);
     if (picked != null) setState(() => _country = picked);
   }
 
@@ -384,100 +380,6 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                 ],
               ),
             ),
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _CountryPickerSheet extends StatefulWidget {
-  final List<VenueCountry> countries;
-  const _CountryPickerSheet({required this.countries});
-
-  @override
-  State<_CountryPickerSheet> createState() => _CountryPickerSheetState();
-}
-
-class _CountryPickerSheetState extends State<_CountryPickerSheet> {
-  String _query = '';
-
-  @override
-  Widget build(BuildContext context) {
-    final filtered = _query.isEmpty
-        ? widget.countries
-        : widget.countries
-              .where((c) => c.name.toLowerCase().contains(_query.toLowerCase()))
-              .toList();
-
-    return SafeArea(
-      top: false,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: MediaQuery.of(context).size.height * 0.75,
-        ),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: AppColors.card,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 14),
-              Container(
-                width: 36,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: AppColors.divider,
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(24, 20, 24, 12),
-                child: TextField(
-                  autofocus: true,
-                  onChanged: (v) => setState(() => _query = v),
-                  style: GoogleFonts.inter(
-                    color: AppColors.textPrimary,
-                    fontSize: 14,
-                  ),
-                  decoration: InputDecoration(
-                    hintText: 'Search countries…',
-                    hintStyle: GoogleFonts.inter(
-                      color: AppColors.textSecondary,
-                      fontSize: 14,
-                    ),
-                    prefixIcon: const Icon(Icons.search_rounded),
-                  ),
-                ),
-              ),
-              Flexible(
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.fromLTRB(12, 0, 12, 20),
-                  itemCount: filtered.length,
-                  itemBuilder: (context, i) {
-                    final country = filtered[i];
-                    return ListTile(
-                      onTap: () => Navigator.pop(context, country),
-                      leading: Text(
-                        country.flag,
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                      title: Text(
-                        country.name,
-                        style: GoogleFonts.inter(
-                          color: AppColors.textPrimary,
-                          fontSize: 14.5,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ],
           ),
         ),
       ),
