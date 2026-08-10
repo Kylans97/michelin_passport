@@ -67,4 +67,75 @@ class AppColors {
   static const Color divider = cardBorder;
   // A refined brick/terracotta red — editorial rather than an alarm red.
   static const Color error = Color(0xFFA23E32);
+
+  // ── Redesign foundation tokens (Step 1 — see cs_typography.dart/
+  // cs_spacing.dart for the matching type/spacing systems) ───────────────
+  //
+  // These are ADDITIVE: every token above stays exactly as it is, and every
+  // current screen keeps reading it unchanged. Nothing below is wired into
+  // AppTheme.chasingStars or any existing widget yet — screens migrate onto
+  // these deliberately, one at a time, in a later pass. See CsTheme for a
+  // prepared-but-not-applied ThemeData built from this new set.
+  //
+  // The brand direction shifts the canvas itself from ivory-with-green-
+  // chrome to green-with-warm-neutral-moments (~55-65% deep green, ~25-35%
+  // warm ivory, ~5-10% accent, treated as an overall direction rather than
+  // a per-screen ratio) — hence a slightly richer green ramp (deepGreen/
+  // darkGreen/forestGreen) and a warmer, slightly more saturated neutral
+  // ramp (ivory/warmWhite/warmStone/softStone/taupe) than the original
+  // background/surface/cardBorder trio above, which stayed intentionally
+  // quiet as a light-canvas system.
+
+  // deepGreen is [brandGreen] itself — both are 0xFF16302A. Kept as a
+  // separate name (not a rename of brandGreen, which 30+ call sites read
+  // today) so new/migrated code can adopt the brief's vocabulary without
+  // any churn to what already exists.
+  static const Color deepGreen = brandGreen;
+  static const Color darkGreen = Color(0xFF0E241F);
+  static const Color forestGreen = Color(0xFF23473D);
+
+  static const Color ivory = Color(0xFFF4F0E7);
+  static const Color warmWhite = Color(0xFFFAF7F0);
+  static const Color warmStone = Color(0xFFB8B0A3);
+  static const Color softStone = Color(0xFFDED8CE);
+  // Accessibility-adjusted from the brief's proposed #756D62: that value is
+  // 4.48:1 on `ivory`, just under the 4.5:1 WCAG AA threshold for normal
+  // text. #726A60 (a barely-perceptible touch darker, same hue) clears it
+  // at 4.68:1 — see the Step 1 report for the full contrast audit.
+  static const Color taupe = Color(0xFF726A60);
+
+  static const Color charcoal = Color(0xFF1C1D1A);
+
+  // Muted brass accent — an accent only, per the brief ("VERY sparingly"),
+  // never a body-text color. #A4875C is 4.16:1 on [deepGreen]: safe for
+  // large/bold text, icons and borders on a green surface, but NOT normal-
+  // size text there (needs 4.5:1) — and only 2.98:1 on [ivory]/[warmWhite],
+  // failing even large-text AA, so never used as text on a light surface.
+  static const Color mutedBrass = Color(0xFFA4875C);
+  // The accessible derivative for the one case [mutedBrass] itself can't
+  // cover: brass-colored text at normal size on a light (ivory/warmWhite)
+  // surface. 4.60:1 on [ivory]. Icons/borders on light surfaces should
+  // still use [mutedBrass] itself — this variant is for text only.
+  static const Color mutedBrassOnLight = Color(0xFF7F6947);
+
+  // [textOnDark] above (0xFFF5EFE1) already matches the brief's "warm
+  // ivory, approximately #F5EFE1" — reused as-is, not duplicated under a
+  // new name. 12.29:1 on [deepGreen], comfortably AA.
+  //
+  // secondaryOnDark: the brief suggests warmStone "or an appropriate
+  // accessible derivative" — warmStone is 6.56:1 on deepGreen, already
+  // comfortably AA, so no derivative was needed.
+  static const Color secondaryOnDark = warmStone;
+
+  // subtleBorderLight is identical to softStone (0xFFDED8CE) — the brief
+  // specifies the same value for both; kept as its own name since "a
+  // border" and "a neutral surface tone" are different semantic roles even
+  // when the color happens to coincide today.
+  static const Color subtleBorderLight = softStone;
+  // A translucent ivory hairline for borders drawn over a green surface —
+  // same "faint line, not a boxed edge" treatment [HeroBadge] already uses
+  // via `textOnDark.withValues(alpha: 0.25)`, just centralized as a token.
+  // Decorative/structural only, not text, so WCAG's text-contrast ratios
+  // don't apply the way they do to the tokens above.
+  static const Color subtleBorderDark = Color(0x26F4F0E7);
 }
