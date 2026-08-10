@@ -1,0 +1,51 @@
+restaurant_code,name,city,country,michelin_stars,worlds_50_best_rank,worlds_50_best_year
+rest_0044,DiverXO,Madrid,Spain,3,4.0,2025.0
+rest_0125,Odette,Singapore,Singapore,3,25.0,2025.0
+rest_0128,Tresind Studio,Dubai,United Arab Emirates,3,27.0,2025.0
+rest_0132,Quintonil,Mexico City,Mexico,2,3.0,2025.0
+rest_0134,Maido,Lima,Peru,0,1.0,2025.0
+rest_0135,Kjolle,Lima,Peru,0,9.0,2025.0
+rest_0136,Don Julio,Buenos Aires,Argentina,1,10.0,2025.0
+rest_0137,The Chairman,Hong Kong,Hong Kong,1,19.0,2025.0
+rest_0138,Boragó,Santiago,Chile,0,23.0,2025.0
+rest_0139,Mérito,Lima,Peru,0,26.0,2025.0
+rest_0140,Lasai,Rio de Janeiro,Brazil,2,28.0,2025.0
+rest_0141,Mayta,Lima,Peru,0,39.0,2025.0
+rest_0142,Vyn,Skillinge,Sweden,2,47.0,2025.0
+rest_0143,Celele,Cartagena,Colombia,0,48.0,2025.0
+rest_0182,JAN,Munich,Germany,3,50.0,2025.0
+rest_0266,Steirereck im Stadtpark,Vienna,Austria,3,33.0,2025.0
+rest_0296,Asador Etxebarri,Atxondo,Spain,1,2.0,2025.0
+rest_0297,Alchemist,Copenhagen,Denmark,2,5.0,2025.0
+rest_0298,Gaggan,Bangkok,Thailand,2,6.0,2025.0
+rest_0299,Sézanne,Tokyo,Japan,3,7.0,2025.0
+rest_0300,Table by Bruno Verjus,Paris,France,2,8.0,2025.0
+rest_0301,Wing,Hong Kong,Hong Kong,0,11.0,2025.0
+rest_0302,Atomix,New York,United States,2,12.0,2025.0
+rest_0303,Potong,Bangkok,Thailand,1,13.0,2025.0
+rest_0304,Plénitude,Paris,France,3,14.0,2025.0
+rest_0305,Ikoyi,London,United Kingdom,2,15.0,2025.0
+rest_0306,Lido 84,Gardone Riviera,Italy,1,16.0,2025.0
+rest_0307,Sorn,Bangkok,Thailand,3,17.0,2025.0
+rest_0308,Reale,Castel di Sangro,Italy,3,18.0,2025.0
+rest_0309,Atelier Moessmer Norbert Niederkofler,Brunico,Italy,3,20.0,2025.0
+rest_0310,Narisawa,Tokyo,Japan,2,21.0,2025.0
+rest_0311,Sühring,Bangkok,Thailand,2,22.0,2025.0
+rest_0312,Elkano,Getaria,Spain,1,24.0,2025.0
+rest_0313,Mingles,Seoul,South Korea,3,29.0,2025.0
+rest_0314,Le Du,Bangkok,Thailand,1,30.0,2025.0
+rest_0315,Le Calandre,Rubano,Italy,3,31.0,2025.0
+rest_0316,Piazza Duomo,Alba,Italy,3,32.0,2025.0
+rest_0317,Enigma,Barcelona,Spain,2,34.0,2025.0
+rest_0318,Nusara,Bangkok,Thailand,1,35.0,2025.0
+rest_0319,Florilège,Tokyo,Japan,2,36.0,2025.0
+rest_0320,Orfali Bros,Dubai,United Arab Emirates,1,37.0,2025.0
+rest_0321,Frantzén,Stockholm,Sweden,3,38.0,2025.0
+rest_0322,Septime,Paris,France,1,40.0,2025.0
+rest_0323,Kadeau,Copenhagen,Denmark,3,41.0,2025.0
+rest_0324,Belcanto,Lisbon,Portugal,2,42.0,2025.0
+rest_0325,Uliassi,Senigallia,Italy,3,43.0,2025.0
+rest_0326,La Cime,Osaka,Japan,2,44.0,2025.0
+rest_0327,Arpège,Paris,France,3,45.0,2025.0
+rest_0328,Rosetta,Mexico City,Mexico,1,46.0,2025.0
+rest_0329,Kol,London,United Kingdom,1,49.0,2025.0

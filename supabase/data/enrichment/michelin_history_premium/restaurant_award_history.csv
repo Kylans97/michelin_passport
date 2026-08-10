@@ -1,0 +1,178 @@
+restaurant_code,name,guide_year,award_type,award_value,is_current,evidence_source,confidence,status
+rest_0002,ABAC,2012,michelin_stars,2,false,"WebSearch: gourmenials.cat 'ABaC Barcelona Jordi Cruz Three Michelin Stars'; barcelonayellow.com ABaC page, retrieved 2026-08-07",medium,proposed
+rest_0002,ABAC,2018,michelin_stars,3,false,"WebSearch: gourmenials.cat and barcelonayellow.com (barcelonayellow.com dates the rise to 2017, other sources say 2018 - noted discrepancy). VERIFICATION PASS 2026-08-07: sources still conflict on the exact year (2017 vs 2018); status downgraded from proposed to unresolved per historical_award_conflicts.md - the promotion is real, the exact guide_year is not confirmed.",medium,unresolved
+rest_0004,Alain Ducasse at The Dorchester,2010,michelin_stars,3,false,"Wikipedia 'Alain Ducasse'; dorchestercollection.com/london/the-dorchester/dining/alain-ducasse-at-the-dorchester, retrieved 2026-08-07",high,proposed
+rest_0037,De Librije,1993,michelin_stars,1,false,"Wikipedia 'De Librije'; dutchnews.nl, andyhayler.com/restaurant/de-librije, retrieved 2026-08-07",high,proposed
+rest_0037,De Librije,1999,michelin_stars,2,false,"Wikipedia 'De Librije'; andyhayler.com/restaurant/de-librije, retrieved 2026-08-07",high,proposed
+rest_0037,De Librije,2004,michelin_stars,3,false,"Wikipedia 'De Librije'; dutchnews.nl 'De Librije keeps three Michelin stars', retrieved 2026-08-07",high,proposed
+rest_0044,DiverXO,2010,michelin_stars,1,false,"gulfnews.com 'Three Michelin stars for quirky Madrid restaurant DiverXo'; airmail.news/arts-intel/venues/diverxo, retrieved 2026-08-07",high,proposed
+rest_0044,DiverXO,2012,michelin_stars,2,false,"gulfnews.com; airmail.news, retrieved 2026-08-07",high,proposed
+rest_0044,DiverXO,2013,michelin_stars,3,false,"gulfnews.com 'Three Michelin stars for quirky Madrid restaurant DiverXo'; airmail.news, retrieved 2026-08-07",high,proposed
+rest_0045,Eleven Madison Park,2012,michelin_stars,3,false,"Wikipedia 'Eleven Madison Park', retrieved 2026-08-07",high,proposed
+rest_0053,Jungsik New York,2013,michelin_stars,2,false,"ABC News 'Jungsik makes history as 1st Korean restaurant to earn 3 Michelin stars'; Wikipedia 'Jungsik', retrieved 2026-08-07",medium,proposed
+rest_0053,Jungsik New York,2024,michelin_stars,3,false,"ABC News/Good Morning America 'Jungsik makes history...'; guide.michelin.com article 'first three Michelin star Korean restaurant in the United States', retrieved 2026-08-07",high,proposed
+rest_0058,Lasarte,2017,michelin_stars,3,false,"catalannews.com ''Lasarte' becomes first restaurant in Barcelona with three Michelin stars', retrieved 2026-08-07",high,proposed
+rest_0059,Le Bernardin,2005,michelin_stars,3,false,"guide.michelin.com/us/en/article/people/eric-ripert-le-bernardin-michelin-stars (three stars every year since NYC Guide's inception in 2005); note: some sources date NYC guide's first edition to late 2005 for the 2006 edition - year recorded as guide launch year, retrieved 2026-08-07",medium,proposed
+rest_0060,Le Gabriel - La Reserve Paris,2015,michelin_stars,2,false,"elitetraveler.com 'Le Gabriel: Dining at French Gastronomy's Newest Top Table' (Banctel held two stars for nine years before 2024 third star), retrieved 2026-08-07",medium,proposed
+rest_0060,Le Gabriel - La Reserve Paris,2024,michelin_stars,3,false,"lareserve-paris.com/en/actualites/three-michelin-stars-le-gabriel/, retrieved 2026-08-07",high,proposed
+rest_0078,Osteria Francescana,2002,michelin_stars,1,false,"Wikipedia 'Massimo Bottura', retrieved 2026-08-07",high,proposed
+rest_0078,Osteria Francescana,2006,michelin_stars,2,false,"Wikipedia 'Massimo Bottura', retrieved 2026-08-07",high,proposed
+rest_0078,Osteria Francescana,2012,michelin_stars,3,false,"Wikipedia 'Massimo Bottura'; osteria-francescana.net, retrieved 2026-08-07",high,proposed
+rest_0080,Per Se,2006,michelin_stars,3,false,"thomaskeller.com/new-york-new-york/per-se/restaurant/; Wikipedia 'Per Se (restaurant)', retrieved 2026-08-07",high,proposed
+rest_0102,Sushi Sho,2025,michelin_stars,3,false,"robbreport.com 'New York's Sushi Sho Just Scored 3 Stars in Michelin's Latest Northeast Guide'; guide.michelin.com article 19 November 2025, retrieved 2026-08-07",high,proposed
+rest_0124,Les Amis,2016,michelin_stars,2,false,"thepeakmagazine.com.sg 'Les Amis's third Michelin Star: how they got there'; timeout.com, retrieved 2026-08-07",high,proposed
+rest_0124,Les Amis,2019,michelin_stars,3,false,"timeout.com 'michelin guide singapore 2019 stars revealed les amis and odette earn three stars'; guide.michelin.com article Sept 2019, retrieved 2026-08-07",high,proposed
+rest_0125,Odette,2016,michelin_stars,2,false,"scmp.com; malaymail.com 'Singapore gets two 3-Michelin-starred restaurants for the first time', retrieved 2026-08-07",high,proposed
+rest_0125,Odette,2019,michelin_stars,3,false,"malaymail.com 'Singapore gets two 3-Michelin-starred restaurants for the first time' (Sept 2019); guide.michelin.com, retrieved 2026-08-07",high,proposed
+rest_0126,Zen,2019,michelin_stars,2,false,"worldtraversal.com 'Zen Singapore Review'; timeout.com 'michelin guide singapore 2021', retrieved 2026-08-07",high,proposed
+rest_0126,Zen,2021,michelin_stars,3,false,"bloomberg.com 'Singapore Wins Its Most Michelin Stars Despite Dining Curbs'; frantzengroup.com, retrieved 2026-08-07",high,proposed
+rest_0127,FZN by Bjorn Frantzen,2025,michelin_stars,3,false,"thenationalnews.com 'Michelin Guide awards three stars to Dubai restaurants Tresind Studio and FZN by Bjorn Frantzen', 22 May 2025; theprochefme.com 'FZN by Björn Frantzén earns three Michelin stars in under a year', retrieved 2026-08-07",high,proposed
+rest_0128,Tresind Studio,2022,michelin_stars,1,false,"restaurantonline.co.uk 'Dubai's Trèsind Studio wins three Michelin stars in world first for an Indian restaurant', retrieved 2026-08-07",high,proposed
+rest_0128,Tresind Studio,2023,michelin_stars,2,false,"restaurantonline.co.uk; saladplate.com 'Inside Trèsind Studio', retrieved 2026-08-07",high,proposed
+rest_0128,Tresind Studio,2025,michelin_stars,3,false,"thenationalnews.com 22 May 2025; guide.michelin.com article 'three-michelin-stars-dubai-2025', retrieved 2026-08-07",high,proposed
+rest_0154,Zilte,2021,michelin_stars,3,false,"thedrinksbusiness.com 'Chef Viki Geunes on the philosophy behind three-star Zilte'; foodandwinegazette.com, retrieved 2026-08-07",high,proposed
+rest_0155,Boury,2011,michelin_stars,1,false,"foodandwinegazette.com 'Boury is new three Michelin star restaurant in Belgium'; reportergourmet.com 'Tim Boury', retrieved 2026-08-07",high,proposed
+rest_0155,Boury,2017,michelin_stars,2,false,"foodandwinegazette.com; reportergourmet.com, retrieved 2026-08-07",high,proposed
+rest_0155,Boury,2022,michelin_stars,3,false,"foodandwinegazette.com 'Boury is new three Michelin star restaurant in Belgium', retrieved 2026-08-07",high,proposed
+rest_0175,Restaurant Bareiss,1985,michelin_stars,2,false,"accountingfortasteblog.com 'Restaurant Bareiss Review'; tripadvisor.com 'Three Michelin stars all the way', retrieved 2026-08-07",medium,proposed
+rest_0175,Restaurant Bareiss,2007,michelin_stars,3,false,"accountingfortasteblog.com 'Restaurant Bareiss Review, 3 michelin star'; backroadjournal.wordpress.com, retrieved 2026-08-07",high,proposed
+rest_0176,Schwarzwaldstube,1993,michelin_stars,3,false,"Wikipedia 'Schwarzwaldstube (restaurant)' (three-star since 1993, longest streak in Germany), retrieved 2026-08-07",high,proposed
+rest_0177,Rutz,2020,michelin_stars,3,false,"guide.michelin.com article 'michelin-guide-germany-2020-three-star-establishment-in-berlin-for-the-first-time', 3 March 2020; visitberlin.de, retrieved 2026-08-07",high,proposed
+rest_0178,Waldhotel Sonnora,2000,michelin_stars,3,false,"threestarepicure.com 'Germany- Waldhotel Sonnora- Three Stars in 2019' (chef bio sources place award at 2000); Wikipedia 'Helmut Thieltges', retrieved 2026-08-07",medium,proposed
+rest_0179,ES:SENZ,2024,michelin_stars,3,false,"foodle.pro; travelsforstars.com 'Review: ES:SENZ - Grassau' (opened 2021, reached 3 stars 2024), retrieved 2026-08-07",medium,proposed
+rest_0180,Restaurant Haerlin,2012,michelin_stars,2,false,"theupcoming.co.uk 'Restaurant Haerlin earns third Michelin star' (13 years at two stars before 2025 promotion, i.e. since 2012), retrieved 2026-08-07",medium,proposed
+rest_0180,Restaurant Haerlin,2025,michelin_stars,3,false,"theupcoming.co.uk 'Restaurant Haerlin earns third Michelin star, making Hamburg a top destination for fine dining', 25 June 2025; guide.michelin.com article 17 June 2025, retrieved 2026-08-07",high,proposed
+rest_0181,The Table Kevin Fehling,2015,michelin_stars,3,false,"reportergourmet.com 'Three Michelin stars in record time: the rise of Kevin Fehling'; andyhayler.com review May 2016 (opened Aug 2015, three stars in first year), retrieved 2026-08-07",high,proposed
+rest_0182,JAN,2023,michelin_stars,3,false,"wein.plus magazine 'Guide Michelin: Jan in Munich from zero to three stars'; reportergourmet.com 'Jan Hartwig: The German Chef That Broke Records...in Only Six Months', retrieved 2026-08-07",high,proposed
+rest_0184,Victor's Fine Dining by Christian Bau,2005,michelin_stars,3,false,"restaurantguru/joinpearl and multiple sources citing award 21 November 2005, retrieved 2026-08-07",high,proposed
+rest_0185,schanz. restaurant.,2012,michelin_stars,1,false,"reportergourmet.com 'Thomas Schanz: from Waldhotel Sonnora to Piesport's three-star beacon' (opened 2011, first star following year), retrieved 2026-08-07",medium,proposed
+rest_0185,schanz. restaurant.,2015,michelin_stars,2,false,"reportergourmet.com, retrieved 2026-08-07",medium,proposed
+rest_0185,schanz. restaurant.,2022,michelin_stars,3,false,"finedininglovers.com 'schanz. restaurant.: A Look at Germany's Newest Three-Star Restaurant', retrieved 2026-08-07",high,proposed
+rest_0183,Tohru in der Schreiberei,2025,michelin_stars,3,false,"guide.michelin.com article 'Restaurant Tohru in Munich Germany - Three Michelin Star Dining in Photos', 5 Dec 2025; travelsforstars.com review June 2025, retrieved 2026-08-07",high,proposed
+rest_0186,Aqua,2009,michelin_stars,3,false,"threestarepicure.com 'Germany- Aqua'; visitchef.com 'End of an Era: Sven Elverfeld to Close Three-Star Restaurant Aqua' (uninterrupted 15+ years to closure March 2026 - note restaurant reported closing, flag for review), retrieved 2026-08-07",medium,proposed
+rest_0234,Memories,2020,michelin_stars,2,false,"guide.michelin.com 'Three stars for Sven Wassmer's Memories'; travelsforstars.com, retrieved 2026-08-07",high,proposed
+rest_0234,Memories,2022,michelin_stars,3,false,"guide.michelin.com 'Three stars for Sven Wassmer's Memories', 17 Oct 2022, retrieved 2026-08-07",high,proposed
+rest_0235,Cheval Blanc by Peter Knogl,2007,michelin_stars,1,false,"novacircle.com 'About Cheval Blanc Basel' (chef Knogl since 2007, first star same year), retrieved 2026-08-07",medium,proposed
+rest_0235,Cheval Blanc by Peter Knogl,2008,michelin_stars,2,false,"novacircle.com 'About Cheval Blanc Basel', retrieved 2026-08-07",medium,proposed
+rest_0235,Cheval Blanc by Peter Knogl,2015,michelin_stars,3,false,"novacircle.com 'About Cheval Blanc Basel' (note: one alternate source cites 2016 for the third star - discrepancy flagged), retrieved 2026-08-07",medium,proposed
+rest_0236,Restaurant de l'Hôtel de Ville,1975,michelin_stars,3,false,"bilan.ch 'Franck Giovannini, chef de l'Hôtel de ville de Crissier, trois étoiles Michelin depuis 1975'; note: forbes.com and guide.michelin.com cite 1994, another source cites 1992 - the site held 3 stars continuously since 1975 under predecessor name 'Girardet' (renamed after 1996) - conflicting sources, low confidence pending human review, retrieved 2026-08-07. VERIFICATION PASS 2026-08-07: 19-year spread across three sources plus a mid-history identity change (Girardet -> Restaurant de l'Hotel de Ville) is a genuine conflict, not a rounding difference - status downgraded from proposed to unresolved per historical_award_conflicts.md.",low,unresolved
+rest_0237,Schloss Schauenstein,2004,michelin_stars,1,false,"reportergourmet.com 'Andreas Caminada and Schloss Schauenstein: three Michelin Stars', retrieved 2026-08-07",high,proposed
+rest_0237,Schloss Schauenstein,2007,michelin_stars,2,false,"reportergourmet.com, retrieved 2026-08-07",high,proposed
+rest_0237,Schloss Schauenstein,2010,michelin_stars,3,false,"reportergourmet.com 'three Michelin Stars' (Caminada one of youngest chefs in Europe to reach 3 stars at 33), retrieved 2026-08-07",high,proposed
+rest_0265,Restaurant Amador,2019,michelin_stars,3,false,"gastromondiale.com 'Amador: Austria's First Three-Star Michelin Restaurant', retrieved 2026-08-07",high,proposed
+rest_0266,Steirereck im Stadtpark,2025,michelin_stars,3,false,"guide.michelin.com article 'Steirereck in Vienna is Austria's new 3-Michelin-star restaurant', 21 Jan 2025; thepeakmagazine.com.sg, retrieved 2026-08-07",high,proposed
+rest_0299,Sézanne,2021,michelin_stars,1,false,"japantimes.co.jp 'Tokyo's newest three-star chef wants harmony across every detail' (opened July 2021, first star within six months), retrieved 2026-08-07",medium,proposed
+rest_0299,Sézanne,2022,michelin_stars,2,false,"japantimes.co.jp (second star a year after the first), retrieved 2026-08-07",medium,proposed
+rest_0299,Sézanne,2024,michelin_stars,3,false,"finedininglovers.com 'Sézanne wins three Michelin stars in Michelin Guide to Tokyo 2025'; robbreport.com; guide.michelin.com ceremony article 16 Oct 2024, retrieved 2026-08-07",high,proposed
+rest_0304,Plénitude,2022,michelin_stars,3,false,"suppermag.com 'Plénitude at Cheval Blanc Paris wins three Michelin stars during its first year'; fb101.com, retrieved 2026-08-07",high,proposed
+rest_0307,Sorn,2019,michelin_stars,1,false,"scmp.com 'World's first 3-Michelin-star Thai restaurant named, Sorn in Bangkok' (first star 2019, two-star for five years before 2025 promotion), retrieved 2026-08-07",medium,proposed
+rest_0307,Sorn,2020,michelin_stars,2,false,"scmp.com (five consecutive years at two stars prior to 2025 three-star award, implying since ~2020), retrieved 2026-08-07",medium,proposed
+rest_0307,Sorn,2025,michelin_stars,3,false,"bloomberg.com 'Bangkok Restaurant Sorn Bags Thailand's First Michelin Three-Star Rating', 28 Nov 2024 (2025 Guide Thailand); bangkokpost.com, retrieved 2026-08-07",high,proposed
+rest_0308,Reale,2014,michelin_stars,3,false,"accademianikoromito.it 'Tre stelle Michelin al Reale'; lacucinaitaliana.com, retrieved 2026-08-07",high,proposed
+rest_0309,Atelier Moessmer Norbert Niederkofler,2023,michelin_stars,3,false,"novacircle.com 'Experience 3-Star Michelin Dining at Atelier Moessmer, Brunico' (opened July 2023, three stars within four months), retrieved 2026-08-07",high,proposed
+rest_0313,Mingles,2019,michelin_stars,2,false,"koreaherald.com; en.sedaily.com (two stars 2019-2024 before 2025 third star), retrieved 2026-08-07",high,proposed
+rest_0313,Mingles,2025,michelin_stars,3,false,"koreatimes.co.kr 'Mingles becomes Korea's new Michelin 3-star restaurant'; scmp.com, 27 Feb 2025, retrieved 2026-08-07",high,proposed
+rest_0315,Le Calandre,2002,michelin_stars,3,false,"alajmo.it '20 years of three Michelin stars'; Wikipedia 'Massimiliano Alajmo' (youngest chef ever to reach 3 stars at 28; sources place award in 2002 or the 2003 guide edition), retrieved 2026-08-07",medium,proposed
+rest_0316,Piazza Duomo,2006,michelin_stars,1,false,"restauranttimes.com 'Inside Piazza Duomo, Alba: Enrico Crippa's Garden-Led Fine Dining', retrieved 2026-08-07",high,proposed
+rest_0316,Piazza Duomo,2009,michelin_stars,2,false,"restauranttimes.com, retrieved 2026-08-07",high,proposed
+rest_0316,Piazza Duomo,2012,michelin_stars,3,false,"restauranttimes.com 'Inside Piazza Duomo, Alba', retrieved 2026-08-07",high,proposed
+rest_0321,Frantzén,2018,michelin_stars,3,false,"guide.michelin.com article 'Frantzen Stockholm Sweden three Michelin stars', 28 May 2018; frantzengroup.com, retrieved 2026-08-07",high,proposed
+rest_0323,Kadeau,2013,michelin_stars,1,false,"guide.michelin.com article 'Zooming in on the two stars: Kadeau Copenhagen Denmark', 6 April 2018 (dates first star to 2013), retrieved 2026-08-07",medium,proposed
+rest_0323,Kadeau,2018,michelin_stars,2,false,"guide.michelin.com article 'Zooming in on the two stars: Kadeau Copenhagen Denmark', 6 April 2018, retrieved 2026-08-07",high,proposed
+rest_0323,Kadeau,2026,michelin_stars,3,false,"robbreport.com 'Kadeau in Copenhagen Is the World's Newest Michelin 3-Star Restaurant'; wonderfulcopenhagen.com 'Michelin Guide Nordic Countries 2026', retrieved 2026-08-07",medium,proposed
+rest_0327,Arpège,1996,michelin_stars,3,false,"Wikipedia 'Arpège (restaurant)' and 'Alain Passard' (Passard bought restaurant 1986, 3 stars 1996), retrieved 2026-08-07",high,proposed
+rest_0330,Cocina Hermanos Torres,2022,michelin_stars,3,false,"forbes.com 'Cocina Hermanos Torres In Barcelona Gets A Third Michelin Star, And Is A Triumph For Twins', 25 Nov 2022, retrieved 2026-08-07",high,proposed
+rest_0331,Disfrutar,2023,michelin_stars,3,false,"barcelona.cat 'Barcelona now has four restaurants with three Michelin stars'; Wikipedia 'Disfrutar', retrieved 2026-08-07",high,proposed
+rest_0332,Noor,2016,michelin_stars,1,false,"foodswinesfromspain.com 'Paco Morales and Noor: A Journey Through the History of Spanish Gastronomy', retrieved 2026-08-07",high,proposed
+rest_0332,Noor,2019,michelin_stars,2,false,"foodswinesfromspain.com, retrieved 2026-08-07",high,proposed
+rest_0332,Noor,2024,michelin_stars,3,false,"foodswinesfromspain.com 'Paco Morales and Noor', retrieved 2026-08-07",high,proposed
+rest_0333,Quique Dacosta,2013,michelin_stars,3,false,"en.denia.com 'Quique Dacosta and is a Three Stars'; guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0334,Akelaŕe,1978,michelin_stars,1,false,"akelarre.net 'Pedro Subijana Biography. 50 years at Akelarre.', retrieved 2026-08-07",high,proposed
+rest_0334,Akelaŕe,1982,michelin_stars,2,false,"akelarre.net 'Pedro Subijana Biography', retrieved 2026-08-07",high,proposed
+rest_0334,Akelaŕe,2007,michelin_stars,3,false,"akelarre.net 'Pedro Subijana Biography' (3 stars after 25 years with two stars), retrieved 2026-08-07",high,proposed
+rest_0335,Arzak,1989,michelin_stars,3,false,"travelchronicles-acrossspain.com 'Arzak, a 3 Michelin star reference in San Sebastian since 1897'; theepicureanist.com 'Arzak 3 Michelin Stars', retrieved 2026-08-07",high,proposed
+rest_0336,Aponiente,2010,michelin_stars,1,false,"andalucia.com 'Aponiente - 3 Michelin stars'; foodswinesfromspain.com, retrieved 2026-08-07",high,proposed
+rest_0336,Aponiente,2014,michelin_stars,2,false,"andalucia.com; foodswinesfromspain.com, retrieved 2026-08-07",high,proposed
+rest_0336,Aponiente,2017,michelin_stars,3,false,"andalucia.com 'Aponiente - 3 Michelin stars' (Andalucia's first-ever 3-star restaurant), retrieved 2026-08-07",high,proposed
+rest_0337,El Celler de Can Roca,2009,michelin_stars,3,false,"oykuiu.medium.com 'Michelin 3-Star Family Restaurant El Celler de Can Roca'; gourmandbreaks.com, retrieved 2026-08-07",high,proposed
+rest_0338,Azurmendi,2007,michelin_stars,1,false,"tinyurbankitchen.com 'Azurmendi Spain (3 Michelin Stars)'; accountingfortasteblog.com, retrieved 2026-08-07",high,proposed
+rest_0338,Azurmendi,2011,michelin_stars,2,false,"tinyurbankitchen.com; accountingfortasteblog.com, retrieved 2026-08-07",high,proposed
+rest_0338,Azurmendi,2012,michelin_stars,3,false,"tinyurbankitchen.com 'Azurmendi Spain (3 Michelin Stars)', retrieved 2026-08-07",high,proposed
+rest_0325,Uliassi,1995,michelin_stars,1,false,"restauranttimes.com '3 Michelin Stars And 35 Years Later: How Uliassi Made Senigallia a Global Pilgrimage', retrieved 2026-08-07",high,proposed
+rest_0325,Uliassi,2008,michelin_stars,2,false,"restauranttimes.com, retrieved 2026-08-07",high,proposed
+rest_0325,Uliassi,2018,michelin_stars,3,false,"thelocal.it 'A seaside cafe in Le Marche is Italy's newest three-star restaurant', 16 Nov 2018; foodandwinegazette.com 'Uliassi gets third Michelin star in Italy', retrieved 2026-08-07",high,proposed
+rest_0339,Martín Berasategui,1994,michelin_stars,1,false,"foodswinesfromspain.com; guidavera.com chef profile (opened 1993, first star six months later), retrieved 2026-08-07",medium,proposed
+rest_0339,Martín Berasategui,1996,michelin_stars,2,false,"foodswinesfromspain.com; guidavera.com, retrieved 2026-08-07",high,proposed
+rest_0339,Martín Berasategui,2001,michelin_stars,3,false,"foodswinesfromspain.com 'Martín Berasategui' chef profile, retrieved 2026-08-07",high,proposed
+rest_0340,Cenador de Amós,2019,michelin_stars,3,false,"fcsi.org 'In profile: Chef Jesús Sanchez', retrieved 2026-08-07",high,proposed
+rest_0341,Casa Marcial,2024,michelin_stars,3,false,"foodswinesfromspain.com 'Asturian Restaurant Casa Marcial Receives Three Michelin stars', Nov 2024; gastroactitud.com, retrieved 2026-08-07",high,proposed
+rest_0350,Atrio,2005,michelin_stars,2,false,"elitetraveler.com 'Atrio Review: Wine Heist Restaurant Thrives with Third Michelin Star' (18 years at two stars before 2023 third star, i.e. since ~2005), retrieved 2026-08-07",medium,proposed
+rest_0350,Atrio,2023,michelin_stars,3,false,"elitetraveler.com; robbreport.com 'Two of Spain's Best Restaurants Just Earned 3 Stars From Michelin', retrieved 2026-08-07",high,proposed
+rest_0378,Villa Crespi,2003,michelin_stars,1,false,"barchemagazine.com 'Antonino Cannavacciuolo - The third star', retrieved 2026-08-07",high,proposed
+rest_0378,Villa Crespi,2006,michelin_stars,2,false,"barchemagazine.com, retrieved 2026-08-07",high,proposed
+rest_0378,Villa Crespi,2022,michelin_stars,3,false,"barchemagazine.com 'Antonino Cannavacciuolo - The third star', retrieved 2026-08-07",high,proposed
+rest_0379,Da Vittorio,2010,michelin_stars,3,false,"elitetraveler.com 'Da Vittorio: An Elegant Italian Classic Endures', retrieved 2026-08-07",high,proposed
+rest_0380,Dal Pescatore,1996,michelin_stars,3,false,"greatitalianchefs.com 'Dal Pescatore' (Italian record for three-star longevity); Wikipedia 'Nadia Santini', retrieved 2026-08-07",high,proposed
+rest_0381,Enoteca Pinchiorri,1993,michelin_stars,3,false,"guide.michelin.com article 'Dining at Enoteca Pinchiorri: A MICHELIN Inspector's Take' (three stars in 1993 and 1994), retrieved 2026-08-07",medium,proposed
+rest_0381,Enoteca Pinchiorri,2004,michelin_stars,3,false,"guide.michelin.com article 'Dining at Enoteca Pinchiorri' (three stars perennially since 2004, after an interruption), retrieved 2026-08-07",high,proposed
+rest_0382,La Pergola,2005,michelin_stars,3,false,"reportergourmet.com '30 years at La Pergola and 3 Michelin stars since 2005'; theworlds50best.com, retrieved 2026-08-07",high,proposed
+rest_0383,Enrico Bartolini al MUDEC,2019,michelin_stars,3,false,"finestresullarte.info 'There's a museum that now has a three-star Michelin restaurant: it's Milan's Mudec', retrieved 2026-08-07",high,proposed
+rest_0385,Casa Perbellini 12 Apostoli,2025,michelin_stars,3,false,"reportergourmet.com 'The Perbellini phenomenon: how the 3 stars of the 12 Apostoli restaurant brought Verona to the top of haute cuisine'; gamberorossointernational.com, retrieved 2026-08-07",high,proposed
+rest_0386,La Rei Natura by Michelangelo Mammoliti,2023,michelin_stars,2,false,"theupcoming.co.uk 'Michelangelo Mammoliti earns third Michelin star for La Rei Natura just two years after opening'; reportergourmet.com, retrieved 2026-08-07",high,proposed
+rest_0386,La Rei Natura by Michelangelo Mammoliti,2025,michelin_stars,3,false,"theupcoming.co.uk; marketscreener.com 'new 3 star restaurant shines in the MICHELIN Guide Italy 2026', retrieved 2026-08-07",high,proposed
+rest_0424,Hiša Franko,2020,michelin_stars,2,false,"guide.michelin.com article 'The MICHELIN Guide Slovenia 2023: restaurant Hiša Franko, by Chef Ana Roš, awarded Three MICHELIN Stars' (two stars June 2020), retrieved 2026-08-07",high,proposed
+rest_0424,Hiša Franko,2023,michelin_stars,3,false,"guide.michelin.com article 'The MICHELIN Guide Slovenia 2023...awarded Three MICHELIN Stars'; slovenia.si, retrieved 2026-08-07",high,proposed
+rest_0430,Maaemo,2012,michelin_stars,2,false,"guide.michelin.com article 'A closer look at the new three Michelin star restaurants in the Michelin Guide Nordic Countries 2021' (entered guide with two stars in 2012), retrieved 2026-08-07",medium,proposed
+rest_0430,Maaemo,2016,michelin_stars,3,false,"norwaytoday.info 'The story of Maaemo'; guide.michelin.com references (first Norwegian restaurant with 3 stars, awarded in the 2016 guide), retrieved 2026-08-07",high,proposed
+rest_0431,RE-NAA,2016,michelin_stars,1,false,"honestcooking.com 'Where Vikings Sailed: RE-NAA, Three Michelin Stars in Stavanger' (first restaurant outside Oslo with a star in 2016), retrieved 2026-08-07",high,proposed
+rest_0431,RE-NAA,2020,michelin_stars,2,false,"honestcooking.com, retrieved 2026-08-07",high,proposed
+rest_0431,RE-NAA,2024,michelin_stars,3,false,"honestcooking.com 'Where Vikings Sailed'; fjordnorway.com, retrieved 2026-08-07",high,proposed
+rest_0434,Robuchon au Dôme,2009,michelin_stars,3,false,"koktailmagazine.com 'An Evening of Culinary Excellence at Robuchon au Dôme' (three stars for 18 consecutive years, 2009-2026), retrieved 2026-08-07",high,proposed
+rest_0435,Jade Dragon,2019,michelin_stars,3,false,"hangphamweddings.com 'Jade Dragon: Where Cantonese Heritage Meets Three-Star Innovation'; theworlds50best.com (retained three stars for the eighth consecutive year as of 2026, i.e. since 2019), retrieved 2026-08-07",high,proposed
+rest_0441,8 1/2 Otto e Mezzo - Bombana,2011,michelin_stars,2,false,"tinyurbankitchen.com '8 1/2 Otto e Mezzo Bombana Hong Kong - 3 Michelin Stars' (two stars in the 2011 guide, Dec 2010), retrieved 2026-08-07",high,proposed
+rest_0441,8 1/2 Otto e Mezzo - Bombana,2012,michelin_stars,3,false,"tinyurbankitchen.com; grubstance.com 'the only 3 Michelin Star Italian outside of Italy', retrieved 2026-08-07",high,proposed
+rest_0442,Amber,2009,michelin_stars,2,false,"travelandtourworld.com 'Amber Receiving Prestigious Third Michelin Star' (16 consecutive years with two stars before the 2025 third-star award), retrieved 2026-08-07",medium,proposed
+rest_0442,Amber,2025,michelin_stars,3,false,"press.mandarinoriental.com 'Amber at The Landmark Mandarin Oriental, Hong Kong Awarded Sought-after Third Michelin Star'; bloomberg.com, retrieved 2026-08-07",high,proposed
+rest_0443,Caprice,2019,michelin_stars,3,false,"fourseasons.com press materials (three Michelin stars 'for seven consecutive years' as of ~2025-2026 sources, implying since approximately 2019 - exact year not independently confirmed), retrieved 2026-08-07",low,proposed
+rest_0444,Forum,2020,michelin_stars,3,false,"danielfooddiary.com 'HONG KONG Michelin Guide 2020 – Cantonese Restaurant Forum Receives 3 Stars'; malaymail.com, retrieved 2026-08-07",high,proposed
+rest_0445,Sushi Shikon,2014,michelin_stars,3,false,"hangphamweddings.com 'Sushi Shikon: Where Tokyo's Edomae Soul Meets Three-Star Mastery' (three stars without a break since 2014), retrieved 2026-08-07",high,proposed
+rest_0446,Ta Vie,2016,michelin_stars,1,false,"guide.michelin.com article 'Road 3 stars: Ta Vie Sato Hideaki', 21 Dec 2023, retrieved 2026-08-07",high,proposed
+rest_0446,Ta Vie,2017,michelin_stars,2,false,"guide.michelin.com article 'Road 3 stars: Ta Vie Sato Hideaki', retrieved 2026-08-07",high,proposed
+rest_0446,Ta Vie,2023,michelin_stars,3,false,"prnewswire.co.uk 'Restaurant Ta Vie awarded Three MICHELIN Stars in the 15th anniversary edition of the MICHELIN Guide Hong Kong & Macau'; tastingtable.com, retrieved 2026-08-07",high,proposed
+rest_0447,T'ang Court,2016,michelin_stars,3,false,"langhamhospitalitygroup.com 'T'ang Court and Yat Tung Heen Extend Michelin-Star Reign in Hong Kong' (11th consecutive year as of the 2026 guide, implying since 2016); breakingtravelnews.com 'T'ang Court Marks a Decade of Three Michelin Stars', retrieved 2026-08-07",medium,proposed
+rest_0461,Le Palais,2018,michelin_stars,3,false,"guide.michelin.com article 'First Day I Got My Michelin Stars - Le Palais', 16 March 2018 (first year Michelin awarded stars in Taiwan); palaisdechinehotel.com 'Taiwan Michelin 3-Star 8-Time Winner', retrieved 2026-08-07",high,proposed
+rest_0462,Taïrroir,2023,michelin_stars,3,false,"scmp.com 'Michelin Guide Taiwan 2023 list in full: indigenous Taiwanese cuisine recognised with award of third Michelin star to Taipei's Taïrroir', 31 Aug 2023, retrieved 2026-08-07",high,proposed
+rest_0463,JL Studio,2023,michelin_stars,3,false,"guide.michelin.com article 'Taïrroir And JL Studio Awarded Three MICHELIN Stars In The 2023 Selection Of The MICHELIN Guide Taiwan', 31 Aug 2023, retrieved 2026-08-07",high,proposed
+rest_0471,Xin Rong Ji (Xinyuan South Road),2019,michelin_stars,3,false,"scmp.com 'Michelin Guide Beijing gives three stars to Xin Rong Ji in inaugural list of city's best restaurants', Nov 2019, retrieved 2026-08-07",high,proposed
+rest_0473,Geranium,2016,michelin_stars,3,false,"chefgeeta.wordpress.com 'Rasmus Kofoed of Geranium Lands Third Michelin Star', Feb 2016; andershusa.com 'Three Michelin Stars to Geranium! A First in Denmark', retrieved 2026-08-07",high,proposed
+rest_0474,Jordnær,2018,michelin_stars,1,false,"tastytrip.com 'Love Conquers All: Denmark's New 3-Star Restaurant, Jordnær' (first star 2018, 10 months after opening), retrieved 2026-08-07",high,proposed
+rest_0474,Jordnær,2020,michelin_stars,2,false,"tastytrip.com, retrieved 2026-08-07",high,proposed
+rest_0474,Jordnær,2024,michelin_stars,3,false,"thelocal.dk 'Denmark gets a third three-star Michelin restaurant in new awards', 27 May 2024; guide.michelin.com article 'Jordnær: Denmark's Newest Three Michelin Star Restaurant', retrieved 2026-08-07",high,proposed
+rest_0485,Kikunoi Honten,2010,michelin_stars,3,false,"japantoday.com; travelsforstars.com 'Kikunoi Honten - Kyoto' (three stars in every Kyoto guide edition since the first in 2010, 17 consecutive years as of 2026), retrieved 2026-08-07",high,proposed
+rest_0486,Hyotei,2010,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (Kyoto guide inaugural year 2010), retrieved 2026-08-07",medium,proposed
+rest_0488,Mizai,2014,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants', retrieved 2026-08-07",medium,proposed
+rest_0489,Gion Sasaki,2020,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants', retrieved 2026-08-07",medium,proposed
+rest_0490,Taian,2011,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (Osaka guide inaugural year), retrieved 2026-08-07",medium,proposed
+rest_0491,Kashiwaya Osaka Senriyama,2011,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (Osaka guide inaugural year), retrieved 2026-08-07",medium,proposed
+rest_0492,Hajime,2018,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants', retrieved 2026-08-07",medium,proposed
+rest_0500,Quintessence,2008,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Shuzo Kishida), retrieved 2026-08-07",medium,proposed
+rest_0501,Joël Robuchon,2008,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Kenichiro Sekiya), retrieved 2026-08-07",medium,proposed
+rest_0502,Sazenka,2021,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Tomoya Kawada), retrieved 2026-08-07",medium,proposed
+rest_0503,Azabu Kadowaki,2020,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Toshiya Kadowaki), retrieved 2026-08-07",medium,proposed
+rest_0504,Harutaka,2024,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Harutaka Takahashi), retrieved 2026-08-07",medium,proposed
+rest_0505,L'OSIER,2019,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Olivier Chaignon), retrieved 2026-08-07",medium,proposed
+rest_0506,Kanda,2008,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Hiroyuki Kanda), retrieved 2026-08-07",medium,proposed
+rest_0507,RyuGin,2012,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Seiji Yamamoto, Nihonryori RyuGin), retrieved 2026-08-07",medium,proposed
+rest_0508,L'Effervescence,2021,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Shinobu Namae), retrieved 2026-08-07",medium,proposed
+rest_0509,Kagurazaka Ishikawa,2009,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Hideki Ishikawa), retrieved 2026-08-07",medium,proposed
+rest_0510,Isshisoden Nakamura,2011,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Motokazu Nakamura), retrieved 2026-08-07",medium,proposed
+rest_0735,The French Laundry,2007,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Thomas Keller; first-ever Michelin guide to the region), retrieved 2026-08-07",medium,proposed
+rest_0736,SingleThread,2019,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Kyle Connaughton), retrieved 2026-08-07",medium,proposed
+rest_0737,Benu,2015,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Corey Lee), retrieved 2026-08-07",medium,proposed
+rest_0738,Atelier Crenn,2019,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Dominique Crenn), retrieved 2026-08-07",medium,proposed
+rest_0739,Quince,2017,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Michael Tusk), retrieved 2026-08-07",medium,proposed
+rest_0742,Addison,2022,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef William Bradley), retrieved 2026-08-07",medium,proposed
+rest_0743,Providence,2025,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Michael Cimarusti), retrieved 2026-08-07",medium,proposed
+rest_0744,Somni,2025,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Aitor Zabala), retrieved 2026-08-07",medium,proposed
+rest_0745,Smyth,2023,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef John B. Shields), retrieved 2026-08-07",medium,proposed
+rest_0384,Quattro Passi,2024,michelin_stars,3,false,"Wikipedia 'List of Michelin 3-starred restaurants' (chef Antonio Mellino, Marina del Cantone/Nerano), retrieved 2026-08-07",medium,proposed

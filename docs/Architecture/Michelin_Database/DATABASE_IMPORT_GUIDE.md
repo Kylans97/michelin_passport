@@ -37,8 +37,13 @@ On Supabase, `pgcrypto` and `postgis` are enabled from the dashboard or with the
 | `hotel_restaurant_links.csv` | 68 |
 | `qa_issues.csv` | 188 |
 | `manual_actions_required.csv` | 73 |
+| `worlds_50_best_history.csv` | 726 |
+| `restaurant_award_history.csv` | 120 |
+| `hotel_award_history.csv` | 6 |
 
 `restaurants_pending_manual_review.csv` holds `rest_0158` La Paix. It is imported — see §7.4 — but its address requires attention first.
+
+`worlds_50_best_history.csv`, `restaurant_award_history.csv` and `hotel_award_history.csv` hold historical rows only — 2002–2024 rankings and pre-2026 award tiers, sourced through the catalogue enrichment workstream and approved for merge in `supabase/data/enrichment/APPROVAL_MANIFEST.md`. Each is read by a dedicated loader/insert pair in `scripts/import_catalogue.py` (`load_worlds_50_best_history`/`insert_worlds_50_best_history` and the restaurant/hotel award-history equivalents), inserted after the existing Hall of Fame seeding step in §9.2, always with `is_current = false`. None of the three ever supplies the current guide year — that remains the exclusive responsibility of §9.1's `insert_award_history` and §9.2's `insert_worlds_50_best_top50`/`insert_hall_of_fame`.
 
 ---
 

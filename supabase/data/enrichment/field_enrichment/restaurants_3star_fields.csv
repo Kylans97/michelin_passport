@@ -1,0 +1,154 @@
+restaurant_code,name,field,current_value,proposed_value,evidence_source,confidence,status
+rest_0002,ABAC,website_url,,https://abacbarcelona.com/en/restaurante/,"WebSearch: abacbarcelona.com/en/restaurante/ (official hotel/restaurant site), retrieved 2026-08-07",medium,proposed
+rest_0004,Alain Ducasse at The Dorchester,website_url,,https://www.alainducasse-dorchester.com/,"WebSearch result: alainducasse-dorchester.com, retrieved 2026-08-07",high,proposed
+rest_0037,De Librije,website_url,,https://www.librije.com/en/de-librije/,"WebSearch result: librije.com official site, retrieved 2026-08-07",high,proposed
+rest_0044,DiverXO,website_url,,https://diverxo.com/,"WebSearch result naming diverxo.com as official site, retrieved 2026-08-07",medium,proposed
+rest_0045,Eleven Madison Park,website_url,,https://www.elevenmadisonpark.com/,"WebSearch result: elevenmadisonpark.com, retrieved 2026-08-07",high,proposed
+rest_0053,Jungsik New York,website_url,,https://www.jungsik.com/,"WebSearch result: jungsik.com official site, retrieved 2026-08-07",high,proposed
+rest_0053,Jungsik New York,booking_url,,https://www.exploretock.com/jungsik,"WebSearch result: exploretock.com/jungsik (Tock reservation platform), retrieved 2026-08-07",medium,proposed
+rest_0058,Lasarte,website_url,,https://www.restaurantlasarte.com/en,"WebSearch result: restaurantlasarte.com official site, retrieved 2026-08-07",high,proposed
+rest_0059,Le Bernardin,website_url,,https://www.le-bernardin.com/,"WebSearch result citing Wikipedia/Yelp listing le-bernardin.com as official site, retrieved 2026-08-07",medium,proposed
+rest_0060,Le Gabriel - La Reserve Paris,website_url,,https://www.lareserve-paris.com/en/restaurants-bars/restaurant-le-gabriel/,"lareserve-paris.com official hotel site restaurant page, retrieved 2026-08-07",high,proposed
+rest_0078,Osteria Francescana,website_url,,https://osteria-francescana.net/,"WebSearch result: osteria-francescana.net official site, retrieved 2026-08-07",high,proposed
+rest_0080,Per Se,website_url,,https://thomaskeller.com/new-york-new-york/per-se/restaurant/,"thomaskeller.com official restaurant group site, retrieved 2026-08-07",high,proposed
+rest_0124,Les Amis,website_url,,https://www.lesamis.com.sg/,"WebSearch result: lesamis.com.sg/about-us official site, retrieved 2026-08-07",high,proposed
+rest_0125,Odette,website_url,,https://odetterestaurant.com/,"WebSearch result: odetterestaurant.com official site, retrieved 2026-08-07",high,proposed
+rest_0126,Zen,website_url,,https://www.restaurantzen.com/,"WebSearch result: restaurantzen.com official site, retrieved 2026-08-07",high,proposed
+rest_0127,FZN by Bjorn Frantzen,website_url,,https://www.restaurantfzn.com/,"WebSearch result: restaurantfzn.com official site, retrieved 2026-08-07",high,proposed
+rest_0127,FZN by Bjorn Frantzen,booking_url,,https://www.sevenrooms.com/experiences/fzn/fzn-by-bj-rn-frantz-n-5316116070498304,"WebSearch result: sevenrooms.com FZN booking experience page, retrieved 2026-08-07",medium,proposed
+rest_0128,Tresind Studio,website_url,,https://tresindstudio.com/,"WebSearch result: tresindstudio.com official site, retrieved 2026-08-07",high,proposed
+rest_0154,Zilte,website_url,,https://www.zilte.be/en/,"WebSearch result: zilte.be official site, retrieved 2026-08-07",high,proposed
+rest_0155,Boury,website_url,,https://www.restaurantboury.be/,"WebSearch result: restaurantboury.be official site, retrieved 2026-08-07",high,proposed
+rest_0175,Restaurant Bareiss,website_url,,https://www.bareiss.com/en/gastronomy.html,"WebSearch result: bareiss.com official hotel site gastronomy page, retrieved 2026-08-07",high,proposed
+rest_0175,Restaurant Bareiss,michelin_url,,https://guide.michelin.com/us/en/baden-wurttemberg/baiersbronn/restaurant/restaurant-bareiss,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0178,Waldhotel Sonnora,michelin_url,,https://guide.michelin.com/en/rheinland-pfalz/dreis/restaurant/waldhotel-sonnora,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0179,ES:SENZ,michelin_url,,https://guide.michelin.com/gb/en/bayern/grassau/restaurant/es-senz,"WebSearch result surfacing guide.michelin.com listing (query params stripped), retrieved 2026-08-07",medium,proposed
+rest_0180,Restaurant Haerlin,website_url,,https://restaurant-haerlin.de/en/home.html,"WebSearch result: restaurant-haerlin.de official site, retrieved 2026-08-07",high,proposed
+rest_0181,The Table Kevin Fehling,michelin_url,,https://guide.michelin.com/en/hamburg-region/hamburg/restaurant/the-table-kevin-fehling,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0184,Victor's Fine Dining by Christian Bau,website_url,,https://www.victors-fine-dining.de/en/restaurant,"WebSearch result: victors-fine-dining.de official site, retrieved 2026-08-07",high,proposed
+rest_0184,Victor's Fine Dining by Christian Bau,michelin_url,,https://guide.michelin.com/us/en/saarland/perl/restaurant/victor-s-fine-dining-by-christian-bau,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0185,schanz. restaurant.,website_url,,https://www.schanz-restaurant.de/en/,"WebSearch result: schanz-restaurant.de official site, retrieved 2026-08-07",high,proposed
+rest_0185,schanz. restaurant.,michelin_url,,https://guide.michelin.com/en/rheinland-pfalz/piesport/restaurant/schanz-restaurant,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0183,Tohru in der Schreiberei,website_url,,https://www.schreiberei-muc.de/tohru,"WebSearch result: schreiberei-muc.de/tohru official site, retrieved 2026-08-07",high,proposed
+rest_0183,Tohru in der Schreiberei,michelin_url,,https://guide.michelin.com/us/en/bayern/mnchen/restaurant/tohru-in-der-schreiberei,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0186,Aqua,website_url,,https://www.restaurant-aqua.com/en.html,"WebSearch result: restaurant-aqua.com official site (note: press reports restaurant closing March 2026 - flag for currency review), retrieved 2026-08-07",medium,proposed
+rest_0234,Memories,website_url,,https://www.resortragaz.ch/en/cuisine/memories,"WebSearch result: resortragaz.ch official Grand Resort Bad Ragaz site, retrieved 2026-08-07",medium,proposed
+rest_0234,Memories,michelin_url,,https://guide.michelin.com/en/sankt-gallen-region/bad-ragaz/restaurant/memories,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0235,Cheval Blanc by Peter Knogl,michelin_url,,https://guide.michelin.com/us/en/basel-stadt/basel/restaurant/cheval-blanc-by-peter-knogl,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0236,Restaurant de l'Hôtel de Ville,website_url,,https://www.restaurantcrissier.com/,"WebSearch result: restaurantcrissier.com official site, retrieved 2026-08-07",high,proposed
+rest_0236,Restaurant de l'Hôtel de Ville,michelin_url,,https://guide.michelin.com/us/en/vaud/crissier/restaurant/restaurant-de-l-hotel-de-ville,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0265,Restaurant Amador,michelin_url,,https://guide.michelin.com/us/en/vienna/wien/restaurant/amador,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0304,Plénitude,website_url,,https://www.chevalblanc.com/en/maison/paris/restaurants-and-bars/plenitude/,"WebSearch result: chevalblanc.com official site, retrieved 2026-08-07",high,proposed
+rest_0304,Plénitude,michelin_url,,https://guide.michelin.com/us/en/ile-de-france/paris/restaurant/plenitude-cheval-blanc-paris,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0308,Reale,website_url,,https://www.nikoromito.com/en/reale-ristorante/,"WebSearch result: nikoromito.com official site, retrieved 2026-08-07",high,proposed
+rest_0308,Reale,michelin_url,,https://guide.michelin.com/en/abruzzo/castel-di-sangro/restaurant/reale,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0315,Le Calandre,website_url,,https://alajmo.it/en/pages/homepage-le-calandre,"WebSearch result: alajmo.it official site, retrieved 2026-08-07",high,proposed
+rest_0316,Piazza Duomo,website_url,,https://www.piazzaduomoalba.it/en/ristorante/,"WebSearch result: piazzaduomoalba.it official site, retrieved 2026-08-07",high,proposed
+rest_0321,Frantzén,michelin_url,,https://guide.michelin.com/us/en/stockholm-region/stockholm/restaurant/frantzen,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0330,Cocina Hermanos Torres,michelin_url,,https://guide.michelin.com/us/en/catalunya/barcelona/restaurant/cocina-hermanos-torres,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0330,Cocina Hermanos Torres,cuisine,,Mediterranean Creative,"forbes.com 'Cocina Hermanos Torres In Barcelona Gets A Third Michelin Star' (described as highly delicate Mediterranean cuisine); Wikipedia 'Cocina Hermanos Torres', retrieved 2026-08-07",medium,proposed
+rest_0331,Disfrutar,michelin_url,,https://guide.michelin.com/us/en/catalunya/barcelona/restaurant/disfrutar,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0331,Disfrutar,cuisine,,Creative,"travelsforstars.com review; hangphamweddings.com (cuisine explicitly classified as Creative), retrieved 2026-08-07",high,proposed
+rest_0332,Noor,website_url,,https://noorrestaurant.es/en/,"WebSearch result: noorrestaurant.es official site, retrieved 2026-08-07",high,proposed
+rest_0332,Noor,michelin_url,,https://guide.michelin.com/en/andalucia/cordoba/restaurant/noor,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0332,Noor,cuisine,,Andalusian Historical Cuisine (Cocina Andalusí),"foodswinesfromspain.com 'Paco Morales and Noor: A Journey Through the History of Spanish Gastronomy' (gastroarchaeology, reconstructing Cordoba Caliphate-era flavours), retrieved 2026-08-07",medium,proposed
+rest_0333,Quique Dacosta,website_url,,https://quiquedacosta.es/en/home/,"WebSearch result: quiquedacosta.es official site, retrieved 2026-08-07",high,proposed
+rest_0333,Quique Dacosta,michelin_url,,https://guide.michelin.com/us/en/comunidad-valenciana/dnia/restaurant/quique-dacosta,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0333,Quique Dacosta,cuisine,,Creative,"greatbritishchefs.com chef profile; eightyflavors.com review (innovative cuisine, changes menu almost entirely each year), retrieved 2026-08-07",medium,proposed
+rest_0334,Akelaŕe,website_url,,https://akelarre.net/en/,"WebSearch result: akelarre.net official site, retrieved 2026-08-07",high,proposed
+rest_0334,Akelaŕe,michelin_url,,https://guide.michelin.com/us/en/pais-vasco/es-donostia-san-sebastian/restaurant/akelare,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0334,Akelaŕe,cuisine,,Basque Creative,"akelarre.net (New Basque Cuisine movement founder, creativity and technique rooted in tradition), retrieved 2026-08-07",medium,proposed
+rest_0335,Arzak,michelin_url,,https://guide.michelin.com/us/en/pais-vasco/es-donostia-san-sebastian/restaurant/arzak,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0335,Arzak,cuisine,,Basque Creative,"theepicureanist.com 'Arzak 3 Michelin Stars' (New Basque Cuisine pioneers, avant-garde blended with tradition), retrieved 2026-08-07",medium,proposed
+rest_0336,Aponiente,michelin_url,,https://guide.michelin.com/us/en/andalucia/el-puerto-de-santa-maria/restaurant/aponiente,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0336,Aponiente,cuisine,,Creative Seafood,"andalucia.com 'Aponiente - 3 Michelin stars'; foodswinesfromspain.com (Chef of the Sea, experimental seafood, high-tech plankton dishes), retrieved 2026-08-07",high,proposed
+rest_0337,El Celler de Can Roca,michelin_url,,https://guide.michelin.com/us/en/catalunya/girona/restaurant/el-celler-de-can-roca,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0337,El Celler de Can Roca,cuisine,,Catalan Creative,"oykuiu.medium.com; gastromondiale.com (traditional Catalan cuisine with creative avant-garde/molecular techniques), retrieved 2026-08-07",high,proposed
+rest_0338,Azurmendi,website_url,,https://azurmendi.restaurant/en/,"WebSearch result: azurmendi.restaurant official site, retrieved 2026-08-07",high,proposed
+rest_0338,Azurmendi,michelin_url,,https://guide.michelin.com/us/en/pais-vasco/larrabetzu/restaurant/azurmendi,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0338,Azurmendi,cuisine,,Basque Innovative,"tinyurbankitchen.com; accountingfortasteblog.com (innovative Basque cuisine, sustainability-focused), retrieved 2026-08-07",medium,proposed
+rest_0325,Uliassi,website_url,,https://uliassi.com/en/,"WebSearch result: uliassi.com official site, retrieved 2026-08-07",high,proposed
+rest_0325,Uliassi,michelin_url,,https://guide.michelin.com/kr/en/marche/senigallia/restaurant/uliassi,"WebSearch result surfacing guide.michelin.com listing (regional subdomain), retrieved 2026-08-07",medium,proposed
+rest_0339,Martín Berasategui,michelin_url,,https://guide.michelin.com/en/pais-vasco/lasarte-oria/restaurant/martin-berasategui,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0339,Martín Berasategui,cuisine,,Basque Contemporary,"foodswinesfromspain.com (modern twists on classic Basque dishes; technically meticulous Basque cuisine), retrieved 2026-08-07",medium,proposed
+rest_0340,Cenador de Amós,website_url,,https://cenadordeamos.com/en/,"WebSearch result: cenadordeamos.com official site, retrieved 2026-08-07",high,proposed
+rest_0340,Cenador de Amós,michelin_url,,https://guide.michelin.com/us/en/cantabria/villaverde-de-pontones/restaurant/cenador-de-amos,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0340,Cenador de Amós,cuisine,,Cantabrian Creative,"spend-in.com 'Cenador de Amós' (modern Cantabrian cuisine, territorial and sustainable gastronomy), retrieved 2026-08-07",medium,proposed
+rest_0341,Casa Marcial,michelin_url,,https://guide.michelin.com/us/en/principado-de-asturias/arriondas/restaurant/casa-marcial,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0341,Casa Marcial,cuisine,,Asturian Creative,"foodswinesfromspain.com 'Asturian Restaurant Casa Marcial Receives Three Michelin stars' (Creative, Asturian cuisine, reinterpreting tradition with contemporary technique), retrieved 2026-08-07",high,proposed
+rest_0350,Atrio,website_url,,https://atriocaceres.com/en/,"WebSearch result: atriocaceres.com official site, retrieved 2026-08-07",high,proposed
+rest_0350,Atrio,michelin_url,,https://guide.michelin.com/en/extremadura/cceres/restaurant/atrio,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0350,Atrio,cuisine,,Extremaduran Innovative,"elitetraveler.com 'Atrio Review' (avant-garde cuisine centering Iberian pork and Extremadura's natural bounty), retrieved 2026-08-07",medium,proposed
+rest_0378,Villa Crespi,website_url,,https://villacrespi.it/en/restaurant/,"WebSearch result: villacrespi.it official site, retrieved 2026-08-07",high,proposed
+rest_0378,Villa Crespi,michelin_url,,https://guide.michelin.com/en/piemonte/orta-san-giulio/restaurant/villa-crespi,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0378,Villa Crespi,cuisine,,Italian Contemporary,"Wikipedia 'Antonino Cannavacciuolo' (Campania and Piedmont cuisines combined), retrieved 2026-08-07",medium,proposed
+rest_0379,Da Vittorio,michelin_url,,https://guide.michelin.com/en/lombardia/brusaporto/restaurant/da-vittorio,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0379,Da Vittorio,cuisine,,Italian Contemporary,"elitetraveler.com 'Da Vittorio: An Elegant Italian Classic Endures' (Italian Contemporary and Classic Cuisine), retrieved 2026-08-07",high,proposed
+rest_0380,Dal Pescatore,cuisine,,Mantuan Classic Italian,"greatitalianchefs.com 'Dal Pescatore' (Updated Haute Italian, classics of Mantuan cuisine), retrieved 2026-08-07",medium,proposed
+rest_0381,Enoteca Pinchiorri,cuisine,,Tuscan Contemporary,"guide.michelin.com article 'Dining at Enoteca Pinchiorri' (Tuscan and Italian traditions reworked with modern personal lens), retrieved 2026-08-07",medium,proposed
+rest_0382,La Pergola,website_url,,https://romecavalieri.com/la-pergola/,"WebSearch result: romecavalieri.com official hotel site restaurant page, retrieved 2026-08-07",high,proposed
+rest_0382,La Pergola,michelin_url,,https://guide.michelin.com/en/lazio/roma/restaurant/la-pergola69016,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0382,La Pergola,cuisine,,Italian Creative,"guide.michelin.com article 'Catching Up with Heinz Beck' (lightness of touch, classic elegance and contemporary creativity), retrieved 2026-08-07",medium,proposed
+rest_0383,Enrico Bartolini al MUDEC,website_url,,https://www.enricobartolini.net/en/enrico-bartolini,"WebSearch result: enricobartolini.net chef/restaurant group site, retrieved 2026-08-07",medium,proposed
+rest_0383,Enrico Bartolini al MUDEC,michelin_url,,https://guide.michelin.com/us/en/lombardia/milano/restaurant/enrico-bartolini-al-mudec,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0383,Enrico Bartolini al MUDEC,cuisine,,Italian Contemporary,"whythisplace.com 'Michelin Starred Restaurants in Milan' (contemporary Italian cooking), retrieved 2026-08-07",medium,proposed
+rest_0385,Casa Perbellini 12 Apostoli,michelin_url,,https://guide.michelin.com/us/en/veneto/verona/restaurant/casa-perbellini,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0385,Casa Perbellini 12 Apostoli,cuisine,,Italian Creative Contemporary,"reportergourmet.com; travelsforstars.com (Creative, Contemporary cuisine, tribute to Italian tradition), retrieved 2026-08-07",high,proposed
+rest_0386,La Rei Natura by Michelangelo Mammoliti,michelin_url,,https://guide.michelin.com/us/en/piemonte/serralunga-d-alba/restaurant/la-rei-natura-by-michelangelo-mammoliti,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0424,Hiša Franko,website_url,,https://www.hisafranko.com/en,"WebSearch result: hisafranko.com official site, retrieved 2026-08-07",high,proposed
+rest_0424,Hiša Franko,michelin_url,,https://guide.michelin.com/fi/en/gorizia/kobarid/restaurant/hisa-franko,"WebSearch result surfacing guide.michelin.com listing (regional subdomain), retrieved 2026-08-07",medium,proposed
+rest_0424,Hiša Franko,cuisine,,Slovenian Creative,"foodperestroika.com 'Slovenia's Stars, Part 3: Hiša Franko'; guide.michelin.com (tribute to Soča Valley's natural and culinary heritage), retrieved 2026-08-07",medium,proposed
+rest_0430,Maaemo,cuisine,,New Nordic,"s3lifestyle.substack.com 'MAAEMO - 3 Michelin Star in Oslo' (New Nordic Cuisine movement, seasonal menu from regional Norwegian farmers), retrieved 2026-08-07",high,proposed
+rest_0431,RE-NAA,website_url,,https://www.restaurantrenaa.no/,"WebSearch result: restaurantrenaa.no official site, retrieved 2026-08-07",high,proposed
+rest_0431,RE-NAA,michelin_url,,https://guide.michelin.com/us/en/rogaland/stavanger/restaurant/re-naa,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0431,RE-NAA,cuisine,,Creative Seafood,"honestcooking.com; fjordnorway.com (cuisine classified as Creative and Seafood, ingredients from Rogaland coastline), retrieved 2026-08-07",high,proposed
+rest_0434,Robuchon au Dôme,website_url,,https://www.grandlisboa.com/en/restaurants-n-bars/robuchon-au-dome,"WebSearch result: grandlisboa.com official hotel site restaurant page, retrieved 2026-08-07",high,proposed
+rest_0434,Robuchon au Dôme,cuisine,,French Haute Cuisine,"koktailmagazine.com; jrobuchon.com (haute French cuisine, signature Caviar de Sologne, pommes purée), retrieved 2026-08-07",high,proposed
+rest_0435,Jade Dragon,website_url,,https://www.cityofdreamsmacau.com/en/dining/jade-dragon,"WebSearch result: cityofdreamsmacau.com official site, retrieved 2026-08-07",high,proposed
+rest_0435,Jade Dragon,michelin_url,,https://guide.michelin.com/us/en/macau-region/macau/restaurant/jade-dragon,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0435,Jade Dragon,cuisine,,Cantonese,"theworlds50best.com; hangphamweddings.com (Cantonese heritage, modern techniques), retrieved 2026-08-07",high,proposed
+rest_0441,8 1/2 Otto e Mezzo - Bombana,website_url,,https://www.ottoemezzobombana.com/,"WebSearch result: ottoemezzobombana.com official site, retrieved 2026-08-07",high,proposed
+rest_0441,8 1/2 Otto e Mezzo - Bombana,michelin_url,,https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/8%C2%BD-otto-e-mezzo-bombana,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0441,8 1/2 Otto e Mezzo - Bombana,cuisine,,Italian,"tinyurbankitchen.com; discoverhongkong.com (classical Italian cuisine, first-class imported ingredients), retrieved 2026-08-07",high,proposed
+rest_0442,Amber,website_url,,https://www.mandarinoriental.com/en/hong-kong/the-landmark/dine/amber,"WebSearch result: mandarinoriental.com official site, retrieved 2026-08-07",high,proposed
+rest_0442,Amber,michelin_url,,https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/amber569032,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0442,Amber,cuisine,,Modern French,"bloomberg.com 'HK Restaurant Review: Amber's 3 Michelin Stars Reflect Innovative French Food', retrieved 2026-08-07",high,proposed
+rest_0443,Caprice,website_url,,https://www.fourseasons.com/hongkong/dining/restaurants/caprice/,"WebSearch result: fourseasons.com official site, retrieved 2026-08-07",high,proposed
+rest_0443,Caprice,michelin_url,,https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/caprice,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0443,Caprice,cuisine,,French,"fourseasons.com (classic French savoir-faire with global accents), retrieved 2026-08-07",high,proposed
+rest_0444,Forum,cuisine,,Cantonese,"danielfooddiary.com; tastehk.discoverhongkong.com (Cantonese fine dining, Ah Yat braised abalone), retrieved 2026-08-07",high,proposed
+rest_0445,Sushi Shikon,cuisine,,Japanese / Edomae Sushi,"hangphamweddings.com (textbook Edomae sushi, Tokyo Ginza-style discipline), retrieved 2026-08-07",high,proposed
+rest_0446,Ta Vie,michelin_url,,https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/ta-vie,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0446,Ta Vie,cuisine,,French-Japanese,"scmp.com 'How Japanese chef of 3-Michelin-star restaurant Ta Vie in Hong Kong fell for French food', retrieved 2026-08-07",high,proposed
+rest_0447,T'ang Court,website_url,,https://www.langhamhotels.com/en/the-langham/hong-kong/dine/tang-court/,"WebSearch result: langhamhotels.com official site, retrieved 2026-08-07",high,proposed
+rest_0447,T'ang Court,michelin_url,,https://guide.michelin.com/us/en/hong-kong-region/hong-kong/restaurant/t-ang-court,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0447,T'ang Court,cuisine,,Cantonese,"langhamhospitalitygroup.com (authentic Cantonese dishes, seasonal delicacies and dim sum), retrieved 2026-08-07",high,proposed
+rest_0461,Le Palais,michelin_url,,https://guide.michelin.com/us/en/taipei-region/taipei/restaurant/le-palais,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0462,Taïrroir,website_url,,https://tairroir.com/press?locale=en,"WebSearch result: tairroir.com official site (press page), retrieved 2026-08-07",medium,proposed
+rest_0462,Taïrroir,michelin_url,,https://guide.michelin.com/us/en/taipei-region/taipei/restaurant/tairroir,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0473,Geranium,michelin_url,,https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/geranium,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0473,Geranium,cuisine,,New Nordic,"Wikipedia 'Rasmus Kofoed' and 'Geranium (restaurant)' (master of New Nordic Cuisine, biodynamic vegetables, foraged ingredients), retrieved 2026-08-07",high,proposed
+rest_0474,Jordnær,michelin_url,,https://guide.michelin.com/gb/en/capital-region/gentofte_1373269/restaurant/jordnaer,"WebSearch result surfacing guide.michelin.com listing, retrieved 2026-08-07",high,proposed
+rest_0474,Jordnær,cuisine,,New Nordic Pescatarian,"guide.michelin.com article 'Jordnær: Denmark's Newest Three Michelin Star Restaurant' (Nordic and sustainable kitchen, single pescatarian tasting menu), retrieved 2026-08-07",medium,proposed
+rest_0461,Le Palais,cuisine,,Cantonese,"travelsforstars.com; janicerohrssen.com (refined Cantonese fare), retrieved 2026-08-07",high,proposed
+rest_0462,Taïrroir,cuisine,,Taiwanese Contemporary,"scmp.com 'indigenous Taiwanese cuisine recognised with award of third Michelin star to Taipei's Taïrroir'; creatorslab.co, retrieved 2026-08-07",high,proposed
+rest_0463,JL Studio,cuisine,,Singaporean Contemporary,"sethlui.com 'Singaporean restaurant...just earned 3 Michelin stars in Taiwan'; taiwanfoodie.org, retrieved 2026-08-07",high,proposed
+rest_0471,Xin Rong Ji (Xinyuan South Road),cuisine,,Taizhou Chinese,"scmp.com 'Michelin Guide Beijing gives three stars to Xin Rong Ji' (Taizhou/Zhejiang cuisine, East China Sea seafood), retrieved 2026-08-07",high,proposed
+rest_0485,Kikunoi Honten,cuisine,,Kaiseki,"magical-trip.com 'Kikunoi Honten: Michelin-Starred Japanese Restaurant in Kyoto' (kaiseki cuisine under chef Yoshihiro Murata), retrieved 2026-08-07",high,proposed
+rest_0335,Arzak,website_url,,https://www.arzak.info,"Wikipedia 'Arzak' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0337,El Celler de Can Roca,website_url,,https://cellercanroca.com/home/en/,"Wikipedia 'El Celler de Can Roca' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0735,The French Laundry,website_url,,https://www.thomaskeller.com/tfl,"Wikipedia 'The French Laundry' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0737,Benu,website_url,,https://www.benusf.com,"Wikipedia 'Benu (restaurant)' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0507,RyuGin,website_url,,https://www.nihonryori-ryugin.com,"Wikipedia 'Ryugin' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0380,Dal Pescatore,website_url,,https://www.dalpescatore.com,"Wikipedia 'Dal Pescatore' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0500,Quintessence,website_url,,https://www.quintessence.jp,"Wikipedia 'Quintessence (restaurant)' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0506,Kanda,website_url,,https://nihonryori-kanda.com,"Wikipedia 'Kanda (restaurant)' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0738,Atelier Crenn,website_url,,https://www.ateliercrenn.com,"Wikipedia 'Atelier Crenn' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0473,Geranium,website_url,,https://geranium.dk,"Wikipedia 'Geranium (restaurant)' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0321,Frantzén,website_url,,http://www.restaurantfrantzen.com/,"Wikipedia 'Frantzén' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0381,Enoteca Pinchiorri,website_url,,http://www.enotecapinchiorri.com/,"Wikipedia 'Enoteca Pinchiorri' external links, retrieved 2026-08-07",medium,proposed
+rest_0743,Providence,website_url,,https://www.providencela.com,"Wikipedia 'Providence (restaurant)' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0739,Quince,website_url,,https://quincerestaurant.com,"Wikipedia 'Quince (restaurant)' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0331,Disfrutar,website_url,,https://disfrutarbarcelona.com,"Wikipedia 'Disfrutar' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0176,Schwarzwaldstube,website_url,,https://www.traube-tonbach.de/restaurants-bar/schwarzwaldstube,"Wikipedia 'Schwarzwaldstube (restaurant)' infobox official website, retrieved 2026-08-07",medium,proposed
+rest_0330,Cocina Hermanos Torres,website_url,,https://cocinahermanostorres.com,"Wikipedia 'Cocina Hermanos Torres' infobox official website, retrieved 2026-08-07",medium,proposed

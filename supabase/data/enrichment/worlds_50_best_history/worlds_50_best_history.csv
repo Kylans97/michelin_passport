@@ -1,0 +1,763 @@
+restaurant_code,restaurant_name_as_listed,year,rank,list_type,confidence,match_method,evidence_source,status
+rest_0735,The French Laundry,2002,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2002 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0778,Little Washington,2002,23,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2002 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0212,Tantris,2002,50,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2002 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2003,1,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2003 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0766,Jean Georges,2003,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2003 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2003,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2003 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore,2003,35,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2003 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0384,Quattro Passi,2003,38,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2003 list (past-lists archive), retrieved 2026-08-07; match note: Same venue; Nerano (catalogue city) is a hamlet (frazione) of the municipality of Massa Lubrense (2003 listing city) on the Sorrentine peninsula.",proposed
+rest_0335,Arzak,2003,40,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2003 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0381,Enoteca Pinchiorri,2003,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2003 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2004,1,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2004 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0766,Jean Georges,2004,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2004 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2004,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2004 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore,2004,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2004 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0327,Arpège,2004,25,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2004 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0176,Die Schwarzaldstube,2004,27,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2004 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2005,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2005 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2005,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2005 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0766,Jean Georges,2005,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2005 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2005,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2005 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0236,L'Hotel de Ville,2005,25,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2005 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Crissier); historical listings append chef name (Philippe Rochat) which the parser mis-split as a city.",proposed
+rest_0327,Arpège,2005,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2005 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0381,Enoteca Pinchiorri,2005,48,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2005 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2006,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2006,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2006,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2006,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0766,Jean Georges,2006,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0337,El Celler de Can Roca,2006,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof van Cleve,2006,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0381,Enoteca Pinchiorri,2006,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2006,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0059,Le Bernardin,2006,32,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0339,Martin Berasategui,2006,37,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0176,Die Schwarzaldstube,2006,41,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore,2006,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0327,Arpège,2006,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2006 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2007,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2007,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0080,Per Se,2007,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2007,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0337,El Celler de Can Roca,2007,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof van Cleve,2007,14,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2007,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0766,Jean Georges,2007,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2007,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0339,Martin Berasategui,2007,27,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore,2007,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0772,Alinea,2007,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0381,Enoteca Pinchiorri,2007,41,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2007,43,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2007 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2008,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0735,The French Laundry,2008,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2008,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2008,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0766,Jean Georges,2008,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2008,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2008,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore,2008,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0337,El Celler de Can Roca,2008,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0236,L'Hotel de Ville,2008,27,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Crissier); historical listings append chef name (Philippe Rochat) which the parser mis-split as a city.",proposed
+rest_0165,Hof van Cleve,2008,28,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0339,Martin Berasategui,2008,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0381,Enoteca Pinchiorri,2008,32,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0189,Vendôme,2008,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0176,Die Schwarzaldstube,2008,35,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2008,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0296,Asador Etxebarri,2008,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0327,Arpège,2008,46,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0212,Tantris,2008,47,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2008 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2009,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0337,El Celler de Can Roca,2009,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2009,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2009,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2009,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2009,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0078,Osteria Francescana,2009,13,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2009,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0236,L'Hotel de Ville,2009,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Crissier); historical listings append chef name (Philippe Rochat) which the parser mis-split as a city.",proposed
+rest_0766,Jean Georges,2009,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2009,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0176,Die Schwarzaldstube,2009,23,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0189,Vendôme,2009,25,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof van Cleve,2009,26,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2009,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0339,Martin Berasategui,2009,33,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2009,39,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0212,Tantris,2009,44,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore,2009,48,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0315,Le Calandre,2009,49,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2009 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0337,El Celler de Can Roca,2010,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2010,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0078,Osteria Francescana,2010,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2010,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2010,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2010,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0236,L'Hotel de Ville,2010,14,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Crissier); historical listings append chef name (Philippe Rochat) which the parser mis-split as a city.",proposed
+rest_0059,Le Bernardin,2010,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof van Cleve,2010,17,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2010,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0266,Steirereck,2010,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0189,Vendôme,2010,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2010,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2010,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2010,32,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0339,Martin Berasategui,2010,33,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0186,Aqua,2010,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore,2010,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0037,De Librije,2010,37,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0176,Die Schwarzaldstube,2010,47,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0507,Nihonryori Ryugin,2010,48,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0045,Eleven Madison Park,2010,50,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2010 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0337,El Celler de Can Roca,2011,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2011,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0078,Osteria Francescana,2011,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2011,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2011,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2011,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2011,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof van Cleve,2011,15,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2011,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2011,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Restaurant Frantzén,2011,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0189,Vendôme,2011,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2011,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0237,Schloss Schauenstein,2011,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0045,Eleven Madison Park,2011,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0186,Aqua,2011,25,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0339,Martin Berasategui,2011,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2011,32,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0442,Amber,2011,37,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore,2011,38,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0037,De Librije,2011,46,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0236,Restaurant de l'Hotel de Ville,2011,47,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Crissier); historical listings append chef name (Philippe Rochat) which the parser mis-split as a city.",proposed
+rest_0133,Pujol,2011,49,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2011,50,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2011 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0337,El Celler de Can Roca,2012,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2012,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0078,Osteria Francescana,2012,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2012,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2012,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2012,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0045,Eleven Madison Park,2012,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2012,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0327,Arpège,2012,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2012,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Restaurant Frantzén,2012,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0186,Aqua,2012,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0189,Vendôme,2012,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2012,27,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0507,Nihonryori Ryugin,2012,28,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0237,Schloss Schauenstein,2012,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2012,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0315,Le Calandre,2012,32,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0037,De Librije,2012,33,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2012,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2012,40,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof van Cleve,2012,42,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2012,43,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0442,Amber,2012,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0473,Geranium,2012,49,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2012 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0037,De Librije,2013,57,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0762,Blue Hill At Stone Barns,2013,63,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07; match note: Same venue at Stone Barns Center, Westchester County NY; press variably labels it New York/Tarrytown/Westchester/Pocantico Hills.",proposed
+rest_0339,Martin Berasategui,2013,64,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0298,Gaggan,2013,66,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0443,Caprice,2013,73,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore,2013,74,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0454,Lung King Heen,2013,75,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0124,Les Amis,2013,81,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0176,Die Schwarzwaldstube,2013,83,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0212,Tantris,2013,85,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0236,Hotel De Ville,2013,88,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07; match note: Same venue (Crissier); historical listings append chef name (Philippe Rochat) which the parser mis-split as a city.",proposed
+rest_0449,Bo Innovation,2013,90,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0500,Quintessence,2013,95,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0766,Jean Georges,2013,98,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 51-100 list, retrieved 2026-08-07",proposed
+rest_0337,El Celler de Can Roca,2013,1,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0078,Osteria Francescana,2013,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2013,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0045,Eleven Madison Park,2013,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2013,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2013,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0189,Vendôme,2013,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2013,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Frantzén/Lindeberg,2013,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0772,Alinea,2013,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2013,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2013,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2013,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2013,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0507,Nihonryori Ryugin,2013,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0165,Hof van Cleve,2013,25,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2013,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2013,27,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0186,Aqua,2013,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0442,Amber,2013,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0441,8 1/2 Otto e Mezzo Bombana,2013,39,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0316,Piazza Duomo,2013,41,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2013,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2013,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0473,Geranium,2013,45,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2013,47,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0322,Septime,2013,49,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2013 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0322,Septime,2014,52,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0762,Blue Hill at Stone Barns,2014,54,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07; match note: Same venue at Stone Barns Center, Westchester County NY; press variably labels it New York/Tarrytown/Westchester/Pocantico Hills.",proposed
+rest_0454,Lung King Heen,2014,66,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0441,8½ Otto E Mezzo Bombana,2014,67,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0746,Saison,2014,69,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0193,Tim Raue,2014,78,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0430,Maaemo,2014,79,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0176,Die Schwarzwaldstube,2014,83,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0443,Caprice,2014,85,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0124,Les Amis,2014,86,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0279,Taubenkobel,2014,89,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0380,Dal Pescatore Canneto,2014,90,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07; match note: Same venue (Canneto sull'Oglio); historical listings sometimes truncate to ""Canneto"".",proposed
+rest_0138,Boragó,2014,91,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0044,Restaurant Diverxo,2014,94,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0272,Landhaus Bacher,2014,96,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07; match note: Same venue; catalogue uses full town name ""Mautern an der Donau"".",proposed
+rest_0449,Bo Innovation,2014,97,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0766,Jean Georges,2014,98,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 51-100 list, retrieved 2026-08-07",proposed
+rest_0337,El Celler de Can Roca,2014,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0078,Osteria Francescana,2014,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0045,Eleven Madison Park,2014,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2014,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0335,Arzak,2014,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2014,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0189,Vendôme,2014,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2014,14,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2014,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0298,Gaggan,2014,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2014,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2014,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Restaurant Frantzén,2014,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0442,Amber,2014,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2014,25,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0338,Azurmendi,2014,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0186,Aqua,2014,28,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0037,De Librije,2014,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2014,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0507,Nihonryori Ryugin,2014,33,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0296,Asador Etxebarri,2014,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0339,Martín Berasategui,2014,35,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0316,Piazza Duomo,2014,39,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2014,41,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0473,Geranium,2014,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2014,43,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2014,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof van Cleve,2014,45,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2014,46,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2014 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0473,Geranium,2015,51,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0193,Tim Raue,2015,52,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0165,Hof Van Cleve,2015,54,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0746,Saison,2015,56,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0322,Septime,2015,57,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0044,Diverxo,2015,59,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0339,Martin Berasategui,2015,61,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0441,8 1/2 Otto e Mezzo Bombana,2015,62,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0430,Maaemo,2015,64,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0037,De Librije,2015,71,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0508,L'Effervescence,2015,85,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0492,Hajime,2015,86,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0324,Belcanto,2015,91,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0454,Lung King Heen,2015,99,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 51-100 list, retrieved 2026-08-07",proposed
+rest_0337,El Celler de Can Roca,2015,1,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0078,Osteria Francescana,2015,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0045,Eleven Madison Park,2015,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2015,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0310,Narisawa,2015,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0298,Gaggan,2015,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2015,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2015,13,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0266,Steirereck,2015,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0133,Pujol,2015,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2015,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2015,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0338,Azurmendi,2015,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2015,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0316,Piazza Duomo,2015,27,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0507,Nihonryori Ryugin,2015,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0189,Vendôme,2015,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Restaurant Frantzén,2015,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0186,Aqua,2015,33,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2015,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0132,Quintonil,2015,35,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0442,Amber,2015,38,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2015,39,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2015,40,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0138,Boragó,2015,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0134,Maido,2015,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2015,48,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0762,Blue Hill at Stone Barns,2015,49,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07; match note: Same venue at Stone Barns Center, Westchester County NY; press variably labels it New York/Tarrytown/Westchester/Pocantico Hills.",proposed
+rest_0735,The French Laundry,2015,50,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2015 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0080,Per Se,2016,52,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0165,Hof van Cleve,2016,53,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0339,Martín Berasategui,2016,59,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0430,Maaemo,2016,61,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0186,Aqua,2016,63,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0140,Lasai,2016,64,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0532,Den,2016,77,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0324,Belcanto,2016,78,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0044,Diverxo,2016,79,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0764,Chef's Table at Brooklyn Fare,2016,81,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0492,Hajime,2016,82,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0308,Reale,2016,84,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2016,85,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0441,8 1/2 Otto e Mezzo Bombana,2016,86,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0176,Die Schwarzwaldstube,2016,88,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0737,Benu,2016,89,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0500,Quintessence,2016,92,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0508,L'Effervescence,2016,95,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 51-100 list, retrieved 2026-08-07",proposed
+rest_0078,Osteria Francescana,2016,1,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0337,El Celler de Can Roca,2016,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0045,Eleven Madison Park,2016,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2016,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0310,Narisawa,2016,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2016,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0296,Asador Etxebarri,2016,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0132,Quintonil,2016,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0134,Maido,2016,13,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2016,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0338,Azurmendi,2016,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0316,Piazza Duomo,2016,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2016,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0442,Amber,2016,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2016,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0298,Gaggan,2016,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2016,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2016,25,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0746,Saison,2016,27,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0473,Geranium,2016,28,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0507,Nihonryori Ryugin,2016,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0193,Restaurant Tim Raue,2016,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0189,Vendôme,2016,35,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0138,Boragó,2016,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0037,De Librije,2016,38,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2016,39,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0237,Schloss Schauenstein,2016,47,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0762,Blue Hill at Stone Barns,2016,48,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07; match note: Same venue at Stone Barns Center, Westchester County NY; press variably labels it New York/Tarrytown/Westchester/Pocantico Hills.",proposed
+rest_0333,Quique Dacosta,2016,49,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0322,Septime,2016,50,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2016 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0507,Nihonryori RyuGin,2017,52,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0331,Disfrutar,2017,55,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0441,8 1/2 Otto e Mezzo Bombana,2017,60,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2017,62,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0737,Benu,2017,67,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2017,68,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0424,Hisa Franko,2017,69,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0186,Aqua,2017,70,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0454,Lung King Heen,2017,71,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2017,72,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0140,Lasai,2017,76,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0339,Martín Berasategui,2017,77,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0430,Maaemo,2017,79,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0764,Chef's Table at Brooklyn Fare,2017,82,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0738,Atelier Crenn,2017,83,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0324,Belcanto,2017,85,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0125,Odette,2017,86,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0080,Per Se,2017,87,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0313,Mingles,2017,89,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0323,Kadeau,2017,94,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0319,Florilège,2017,99,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 51-100 list, retrieved 2026-08-07",proposed
+rest_0045,Eleven Madison Park,2017,1,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0078,Osteria Francescana,2017,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0337,El Celler de Can Roca,2017,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2017,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0298,Gaggan,2017,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0134,Maido,2017,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2017,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0266,Steirereck,2017,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0762,Blue Hill at Stone Barns,2017,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07; match note: Same venue at Stone Barns Center, Westchester County NY; press variably labels it New York/Tarrytown/Westchester/Pocantico Hills.",proposed
+rest_0327,Arpège,2017,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0316,Piazza Duomo,2017,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2017,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2017,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0473,Geranium,2017,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2017,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2017,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0132,Quintonil,2017,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0442,Amber,2017,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2017,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0335,Arzak,2017,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0037,De Librije,2017,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0322,Septime,2017,35,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0746,Saison,2017,37,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0338,Azurmendi,2017,38,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0138,Boragó,2017,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0308,Reale,2017,43,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0532,Den,2017,45,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0189,Vendôme,2017,47,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0193,Restaurant Tim Raue,2017,48,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof Van Cleve,2017,50,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2017 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0037,De Librije,2018,51,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0737,Benu,2018,53,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0311,Sühring,2018,54,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0136,Don Julio,2018,55,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0442,Amber,2018,56,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0319,Florilège,2018,59,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0165,Hof Van Cleve,2018,63,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0321,Frantzén,2018,65,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0189,Vendôme,2018,66,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2018,68,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0764,Chef's Table at Brooklyn Fare,2018,69,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0186,Aqua,2018,73,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0324,Belcanto,2018,75,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0339,Martin Berasategui,2018,76,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0312,Elkano,2018,77,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0313,Mingles,2018,78,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0454,Lung King Heen,2018,80,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0080,Per Se,2018,81,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0735,The French Laundry,2018,86,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0736,SingleThread,2018,91,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0508,L'Effervescence,2018,92,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0441,8 1/2 Otto e Mezzo Bombana,2018,93,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0317,Enigma,2018,95,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0044,Diverxo,2018,96,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0210,Atelie,2018,97,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0140,Lasai,2018,100,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 51-100 list, retrieved 2026-08-07",proposed
+rest_0078,Osteria Francescana,2018,1,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0337,El Celler de Can Roca,2018,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0045,Eleven Madison Park,2018,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0298,Gaggan,2018,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0134,Maido,2018,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2018,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2018,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0296,Asador Etxebarri,2018,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0132,Quintonil,2018,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0762,Blue Hill at Stone Barns,2018,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07; match note: Same venue at Stone Barns Center, Westchester County NY; press variably labels it New York/Tarrytown/Westchester/Pocantico Hills.",proposed
+rest_0133,Pujol,2018,13,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2018,14,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0316,Piazza Duomo,2018,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0532,Den,2018,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0331,Disfrutar,2018,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0473,Geranium,2018,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2018,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2018,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0059,Le Bernardin,2018,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0138,Boragó,2018,27,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0125,Odette,2018,28,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0335,Arzak,2018,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2018,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0430,Maaemo,2018,35,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0308,Reale,2018,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0193,Restaurant Tim Raue,2018,37,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0322,Septime,2018,40,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0507,Nihonryori Ryugin,2018,41,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0338,Azurmendi,2018,43,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0746,Saison,2018,46,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2018,47,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0424,Hiša Franko,2018,48,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2018 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0308,Reale,2019,51,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0335,Arzak,2019,53,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0430,Maaemo,2019,55,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0325,Uliassi,2019,61,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0507,Nihonryori RyuGin,2019,62,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0319,Florilège,2019,63,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0746,Saison,2019,70,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0736,SingleThread,2019,71,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0186,Aqua,2019,72,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0140,Lasai,2019,74,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0044,Diverxo,2019,75,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0764,Chef's Table at Brooklyn Fare,2019,77,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0306,Lido 84,2019,78,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0313,Mingles,2019,79,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2019,81,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0317,Enigma,2019,82,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0339,Martín Berasategui,2019,87,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0454,Lung King Heen,2019,88,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0326,La Cime,2019,93,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0336,Aponiente,2019,94,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0189,Vendôme,2019,97,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0442,Amber,2019,102,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0435,Jade Dragon,2019,103,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0323,Kadeau,2019,105,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0495,Il Ristorante Luca Fantin,2019,107,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07; match note: Same Bulgari Hotel Tokyo venue; consulting chef changed from Luca Fantin to Niko Romito (catalogue name ""Il Ristorante - Niko Romito"") around 2023.",proposed
+rest_0071,Neolokal,2019,110,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0080,Per Se,2019,115,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0302,Atomix,2019,119,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 51-120 list, retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2019,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0298,Gaggan,2019,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0473,Geranium,2019,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2019,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0327,Arpège,2019,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0331,Disfrutar,2019,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0134,Maido,2019,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0532,Den,2019,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2019,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0338,Azurmendi,2019,14,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0322,Septime,2019,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2019,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0125,Odette,2019,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Frantzén,2019,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0310,Narisawa,2019,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0132,Quintonil,2019,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0138,Boragó,2019,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0762,Blue Hill at Stone Barns,2019,28,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07; match note: Same venue at Stone Barns Center, Westchester County NY; press variably labels it New York/Tarrytown/Westchester/Pocantico Hills.",proposed
+rest_0316,Piazza Duomo,2019,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0312,Elkano,2019,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2019,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0136,Don Julio,2019,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0738,Atelier Crenn,2019,35,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2019,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0772,Alinea,2019,37,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0424,Hiša Franko,2019,38,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0193,Restaurant Tim Raue,2019,40,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0137,The Chairman,2019,41,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0324,Belcanto,2019,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof Van Cleve,2019,43,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0311,Sühring,2019,45,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0037,De Librije,2019,46,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0737,Benu,2019,47,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2019,50,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2019 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0507,Nihonryori RyuGin,2021,51,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07; match note: Historical ""Nihonryori RyuGin"" is the full-form name for the same Tokyo venue the catalogue lists as ""RyuGin"".",proposed
+rest_0325,Uliassi,2021,52,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0764,Chef's Table at Brooklyn Fare,2021,55,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0297,Alchemist,2021,58,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2021,59,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0313,Mingles,2021,62,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0307,Sorn,2021,63,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0037,De Librije,2021,69,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0772,Alinea,2021,70,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0314,Le Du,2021,72,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0495,Il Ristorante Luca Fantin,2021,73,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07; match note: Same Bulgari Hotel Tokyo venue; consulting chef changed from Luca Fantin to Niko Romito (catalogue name ""Il Ristorante - Niko Romito"") around 2023.",proposed
+rest_0333,Quique Dacosta,2021,74,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0502,Sazenka,2021,75,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0326,La Cime,2021,76,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0336,Aponiente,2021,79,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0140,Lasai,2021,85,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0305,Ikoyi,2021,87,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0335,Arzak,2021,94,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0135,Kjolle,2021,95,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0508,L'Effervescence,2021,99,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0442,Amber,2021,100,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 51-100 list, retrieved 2026-08-07",proposed
+rest_0473,Geranium,2021,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2021,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0331,Disfrutar,2021,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Frantzén,2021,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0134,Maido,2021,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0125,Odette,2021,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2021,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0137,The Chairman,2021,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0532,Den,2021,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2021,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0136,Don Julio,2021,13,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2021,14,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0306,Lido 84,2021,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0312,Elkano,2021,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0316,Piazza Duomo,2021,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2021,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0044,DiverXO,2021,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0424,Hiša Franko,2021,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2021,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0322,Septime,2021,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2021,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0132,Quintonil,2021,27,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0737,Benu,2021,28,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0308,Reale,2021,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0193,Restaurant Tim Raue,2021,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof Van Cleve,2021,36,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0736,SingleThread,2021,37,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0138,Boragó,2021,38,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0319,Florilège,2021,39,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0311,Sühring,2021,40,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0324,Belcanto,2021,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0302,Atomix,2021,43,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2021,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0430,Maaemo,2021,47,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0738,Atelier Crenn,2021,48,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0338,Azurmendi,2021,49,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2021 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0338,Azurmendi,2022,55,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0128,Trèsind Studio,2022,57,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0502,Sazenka,2022,59,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0328,Rosetta,2022,60,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0764,Chef's Table at Brooklyn Fare,2022,63,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0314,Le Du,2022,65,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0311,Sühring,2022,66,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0135,Kjolle,2022,68,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0126,Zén,2022,70,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0313,Mingles,2022,71,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0738,Atelier Crenn,2022,72,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0329,Kol,2022,73,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0762,Blue Hill at Stone Barns,2022,74,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07; match note: Same venue at Stone Barns Center, Westchester County NY; press variably labels it New York/Tarrytown/Westchester/Pocantico Hills.",proposed
+rest_0300,Table by Bruno Verjus,2022,77,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0140,Lasai,2022,78,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0299,Sézanne,2022,82,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0320,Orfali Bros Bistro,2022,87,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07; match note: Same Dubai venue; historical listings append ""Bistro"" to the catalogue name ""Orfali Bros"".",proposed
+rest_0775,Oriole,2022,91,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0159,Hertog Jan at Botanic Sanctuary,2022,93,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07; match note: Catalogue name ""Hertog Jan at Botanic"" (Antwerp) matches the 2022 reopened venue at Botanic Sanctuary; earlier-era ""Hertog Jan, Bruges"" listings (2013-2015, pre-2019 closure) are a DIFFERENT venue and are correctly left unmatched.",proposed
+rest_0737,Benu,2022,97,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0212,Tantris,2022,98,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0301,Wing,2022,100,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 51-100 list, retrieved 2026-08-07",proposed
+rest_0473,Geranium,2022,1,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0331,Disfrutar,2022,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0044,Diverxo,2022,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2022,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2022,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0306,Lido 84,2022,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0132,Quintonil,2022,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2022,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0134,Maido,2022,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0325,Uliassi,2022,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2022,13,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0136,Don Julio,2022,14,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0308,Reale,2022,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0312,Elkano,2022,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0297,Alchemist,2022,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0316,Piazza Duomo,2022,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0532,Den,2022,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2022,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0322,Septime,2022,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0137,The Chairman,2022,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Frantzén,2022,25,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0193,Restaurant Tim Raue,2022,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0165,Hof Van Cleve,2022,27,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0319,Florilège,2022,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2022,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0141,Mayta,2022,32,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0302,Atomix,2022,33,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0424,Hiša Franko,2022,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0125,Odette,2022,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0474,Jordnær,2022,38,top_50,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07; match note: Jordnær relocated to Gentofte (Copenhagen suburb) in 2021; both W50B appearances post-date the move and press loosely labels it ""Copenhagen"".",proposed
+rest_0307,Sorn,2022,39,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2022,40,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0326,La Cime,2022,41,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2022,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0138,Boragó,2022,43,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2022,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2022,45,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0324,Belcanto,2022,46,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0305,Ikoyi,2022,49,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0736,SingleThread,2022,50,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2022 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2023,51,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0165,Hof Van Cleve,2023,52,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0307,Sorn,2023,56,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0474,Jordnær,2023,57,extended_51_100,medium,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07; match note: Jordnær relocated to Gentofte (Copenhagen suburb) in 2021; both W50B appearances post-date the move and press loosely labels it ""Copenhagen"".",proposed
+rest_0140,Lasai,2023,58,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0139,Mérito,2023,59,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0326,La Cime,2023,60,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0764,Chef's Table at Brooklyn Fare,2023,61,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0327,Arpège,2023,62,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0071,Neolokal,2023,63,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0336,Aponiente,2023,64,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0112,Turk Fatih Tutak,2023,66,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0736,SingleThread,2023,68,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0126,Zén,2023,69,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0311,Sühring,2023,72,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0318,Nusara,2023,74,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0212,Tantris,2023,77,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0338,Azurmendi,2023,81,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0317,Enigma,2023,82,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0502,Sazenka,2023,83,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0383,Enrico Bartolini,2023,85,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07; match note: Same venue ""Enrico Bartolini al MUDEC"" (Milan); historical listing drops the ""al MUDEC"" suffix.",proposed
+rest_0303,Potong,2023,88,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0313,Mingles,2023,89,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0301,Wing,2023,90,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0323,Kadeau,2023,91,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0375,Ricard Camarena Restaurant,2023,96,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0746,Saison,2023,98,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 51-100 list, retrieved 2026-08-07",proposed
+rest_0331,Disfrutar,2023,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0044,Diverxo,2023,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2023,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0297,Alchemist,2023,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0134,Maido,2023,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0306,Lido 84,2023,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0302,Atomix,2023,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0132,Quintonil,2023,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0300,Table by Bruno Verjus,2023,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0128,Trèsind Studio,2023,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2023,13,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0125,Odette,2023,14,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0314,Le Du,2023,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0308,Reale,2023,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0298,Gaggan Anand,2023,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07; match note: Same Bangkok venue ""Gaggan""; 2023 listing uses chef's full name Gaggan Anand.",proposed
+rest_0266,Steirereck,2023,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0136,Don Julio,2023,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2023,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0532,Den,2023,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0312,Elkano,2023,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0329,Kol,2023,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0322,Septime,2023,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0324,Belcanto,2023,25,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2023,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0319,Florilège,2023,27,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0135,Kjolle,2023,28,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0138,Boragó,2023,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Frantzén,2023,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0356,Mugaritz,2023,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0424,Hiša Franko,2023,32,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0325,Uliassi,2023,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0305,Ikoyi,2023,35,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0304,Plénitude,2023,36,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0299,Sézanne,2023,37,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0193,Restaurant Tim Raue,2023,40,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2023,41,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0316,Piazza Duomo,2023,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2023,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0320,Orfali Bros Bistro,2023,46,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07; match note: Same Dubai venue; historical listings append ""Bistro"" to the catalogue name ""Orfali Bros"".",proposed
+rest_0141,Mayta,2023,47,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0328,Rosetta,2023,49,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0137,The Chairman,2023,50,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2023 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0315,Le Calandre,2024,51,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07; match note: Same venue (Rubano, Province of Padua) across all years; ""Padua"" is the metro-area label.",proposed
+rest_0309,Atelier Moessmer Norbert Niederkofler,2024,52,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0323,Kadeau,2024,54,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0139,Mérito,2024,55,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0310,Narisawa,2024,56,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0303,Potong,2024,57,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0140,Lasai,2024,58,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0317,Enigma,2024,59,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0156,Bozar,2024,63,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0320,Orfali Bros Bistro,2024,64,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07; match note: Same Dubai venue; historical listings append ""Bistro"" to the catalogue name ""Orfali Bros"".",proposed
+rest_0326,La Cime,2024,66,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0059,Le Bernardin,2024,71,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0336,Aponiente,2024,72,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0318,Nusara,2024,74,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0356,Mugaritz,2024,81,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07; match note: Same venue (Errenteria, Gipuzkoa, near San Sebastian) across all years; press commonly labels it ""San Sebastian"".",proposed
+rest_0182,Restaurant Jan,2024,84,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0212,Tantris,2024,88,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0745,Smyth,2024,90,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0071,Neolokal,2024,91,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0502,Sazenka,2024,93,extended_51_100,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 51-100 list, retrieved 2026-08-07",proposed
+rest_0331,Disfrutar,2024,1,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0296,Asador Etxebarri,2024,2,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07; match note: Same venue (Axpe, municipality of Atxondo, Biscay) across all years; ""Axte""/""Atxondo"" are spelling/administrative variants of Axpe.",proposed
+rest_0300,Table by Bruno Verjus,2024,3,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0044,Diverxo,2024,4,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0134,Maido,2024,5,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0302,Atomix,2024,6,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0132,Quintonil,2024,7,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0297,Alchemist,2024,8,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0298,Gaggan,2024,9,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0136,Don Julio,2024,10,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0322,Septime,2024,11,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0306,Lido 84,2024,12,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0128,Trèsind Studio,2024,13,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0333,Quique Dacosta,2024,14,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0299,Sézanne,2024,15,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0135,Kjolle,2024,16,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0329,Kol,2024,17,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0304,Plénitude,2024,18,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0308,Reale,2024,19,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0301,Wing,2024,20,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0319,Florilège,2024,21,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0266,Steirereck,2024,22,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07; match note: Historical listings use the short form ""Steirereck""; catalogue carries the full official name ""Steirereck im Stadtpark"", same Vienna venue.",proposed
+rest_0311,Sühring,2024,23,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0125,Odette,2024,24,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0137,The Chairman,2024,26,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0312,Elkano,2024,28,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0138,Boragó,2024,29,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0193,Restaurant Tim Raue,2024,30,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0324,Belcanto,2024,31,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0532,Den,2024,32,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0133,Pujol,2024,33,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0328,Rosetta,2024,34,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0321,Frantzén,2024,35,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07; match note: Same Stockholm venue under its 2013-era name ""Frantzén/Lindeberg"" (Björn Frantzén and Daniel Lindeberg's original partnership name); catalogue lists it under the current name ""Frantzén"".",proposed
+rest_0307,Sorn,2024,38,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0316,Piazza Duomo,2024,39,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0314,Le Du,2024,40,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0141,Mayta,2024,41,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0305,Ikoyi,2024,42,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0313,Mingles,2024,44,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0327,Arpège,2024,45,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0736,SingleThread,2024,46,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0237,Schloss Schauenstein,2024,47,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0424,Hiša Franko,2024,48,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed
+rest_0325,Uliassi,2024,50,top_50,high,code_plus_country,"theworlds50best.com, The World's 50 Best Restaurants 2024 list (past-lists archive), retrieved 2026-08-07",proposed

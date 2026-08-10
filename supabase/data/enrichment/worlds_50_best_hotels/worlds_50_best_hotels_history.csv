@@ -1,0 +1,35 @@
+hotel_code,year,rank,list_type,source,confidence,evidence
+hotel_186,2023,17,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,"Algorithm tied with ""Raffles Sentosa Singapore"" (hotel_192) - resolved via known distinct branding: the plain ""Raffles Singapore""/""Raffles Hotel Singapore"" name refers unambiguously to the flagship colonial-era property (hotel_186), not the separate Sentosa resort"
+hotel_186,2024,6,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,"Same disambiguation as ""Raffles Hotel Singapore"" - flagship property, not Raffles Sentosa"
+hotel_186,2025,5,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"Same disambiguation as ""Raffles Hotel Singapore"" - flagship property, not Raffles Sentosa"
+hotel_187,2023,28,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_187,2024,33,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,exact name+city match
+hotel_193,2025,36,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"exact name match; Monaco is a single-city country, ""Monaco"" vs ""Monte Carlo"" is granularity only, not a real city mismatch"
+hotel_195,2025,11,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"unambiguous - only Brazil hotel in catalogue, exact name prefix+city match"
+hotel_266,2025,48,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"exact name (catalogue adds ""by Maistra Collection"")+city match"
+hotel_30,2025,49,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"""Wien"" is German for Vienna - same hotel, language variant only"
+hotel_328,2023,14,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_328,2025,79,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_338,2024,42,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,"RENAMED/REBRANDED: source used full name ""Castello di Reschio"" in 2024; catalogue and 2025 source both use ""Reschio"" - same property, city match confirms"
+hotel_338,2025,81,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,"exact name (catalogue: ""Reschio Hotel"")+city match"
+hotel_343,2023,20,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_343,2025,94,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_346,2025,82,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_349,2025,83,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,"Algorithm tied with sister property ""Splendido Mare, A Belmond Hotel, Portofino"" (different hotel_code) - resolved via known distinct branding: ""Splendido"" (no ""Mare"") is the main hilltop hotel, matches hotel_349 exactly"
+hotel_401,2025,99,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_452,2023,21,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_452,2025,63,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name match; city abbreviated in source (catalogue: Savelletri di Fasano)
+hotel_470,2023,24,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_470,2024,32,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,exact name (short form)+city match
+hotel_470,2025,66,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name (short form)+city match
+hotel_540,2025,71,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_55,2023,43,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_55,2025,52,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name (short form)+city match
+hotel_643,2025,46,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"exact name (catalogue adds ""KYOTO"")+city match"
+hotel_647,2024,22,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,"""Bvlgari"" is the brand's own stylized spelling - same hotel, spelling variant only"
+hotel_647,2025,15,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"""Bvlgari"" is the brand's own stylized spelling - same hotel, spelling variant only"
+hotel_658,2023,30,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_658,2024,27,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,exact name+city match
+hotel_658,2025,59,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_679,2025,74,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_681,2025,37,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,exact name (case)+city match

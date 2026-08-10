@@ -1,0 +1,14 @@
+hotel_code,name,proposed_value,classification,rationale,final_recommendation
+hotel_30,Hotel Sacher Wien,https://www.sacher.com/en/vienna/,B,Evidence text explicitly confirms a booking widget is present on this page,keep - functions as a real booking entry point
+hotel_57,Baur au Lac,https://www.bauraulac.ch/en/home.html,B,Evidence text explicitly confirms an embedded 'Book now' widget on this page,keep - functions as a real booking entry point
+hotel_647,Bvlgari Hotel Tokyo,https://www.bulgarihotels.com/en_US/tokyo,B,Evidence text explicitly confirms an embedded 'Find your stay' booking widget,keep - functions as a real booking entry point
+hotel_193,Hôtel de Paris Monte-Carlo,https://www.montecarlosbm.com/en/hotel-monaco/hotel-paris-monte-carlo,B,Evidence text confirms a primary 'Book' call-to-action on this specific property page (not a generic group homepage),keep - functions as a real booking entry point
+hotel_28,Althoff Seehotel Überfahrt,https://www.althoffcollection.com/en/althoff-seehotel-ueberfahrt/direct-booking-benefits,C,"Page is marketing copy about the benefits of booking direct, not a confirmed widget or form",reject - move out of booking_url
+hotel_49,Grand Resort Bad Ragaz,https://www.resortragaz.ch/en/offers,C,Generic offers/packages listing page; no booking widget or form confirmed on this specific URL,reject - move out of booking_url
+hotel_53,"The Woodward, Auberge Collection",https://auberge.com/the-woodward/stay/,C,Generic 'stay' informational page; no booking widget or form confirmed,reject - move out of booking_url
+hotel_55,Badrutt's Palace Hotel,https://www.badruttspalace.com/en/,C,Plain homepage; no booking mechanism confirmed,reject - move out of booking_url
+hotel_259,Villa Nai 3.3,https://www.villanai.com/,C,Plain homepage; a dedicated booking subpage was probed and returned HTTP 404,reject - move out of booking_url
+hotel_50,Hotel Les Trois Rois,https://www.lestroisrois.com/en/,C,Plain homepage; no booking mechanism confirmed,reject - move out of booking_url
+hotel_370,J.K. Place Capri,https://www.jkplaces.com/jkcapri/accommodation/,C,"Accommodation listing page; a SynXis reservation backend was inferred but no confirmed widget/form on this specific URL",reject - move out of booking_url
+hotel_643,HOTEL THE MITSUI KYOTO,https://www.hotelthemitsui.com/en/kyoto/,C,Plain homepage; no booking mechanism confirmed,reject - move out of booking_url
+hotel_659,Four Seasons Hotel Tokyo at Otemachi,https://www.fourseasons.com/otemachi/reservations/,D,"URL is a guessed brand-standard path pattern, NOT independently confirmed - fourseasons.com blocked the fetch (HTTP 403). Least reliable of the 13.","reject - unresolved, do not populate booking_url from an unverified guessed URL"
