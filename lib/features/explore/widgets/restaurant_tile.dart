@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/star_row.dart';
+import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/restaurant.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 
-// Catalogue-read-only tile: no visited/wishlist actions yet — that is a
-// later slice.
+// A discovery card, not a database row: a photo-ready thumbnail leads,
+// with the award context folded into the text content rather than a
+// dominant gold badge circle. See VenueThumbnail for the photography hook.
 class RestaurantTile extends StatelessWidget {
   final Restaurant restaurant;
 
   // Only relevant while the Explore World's 50 Best filter is active. The
-  // award badge already shows the rank on its own (trophy icon + "#N")
-  // whenever the restaurant has no Michelin star; this only fills the gap
-  // the badge can't cover — a starred restaurant that's *also* World's 50
-  // Best ranked, whose badge shows stars instead. Never duplicates what the
-  // badge already displays.
+  // rank already shows for a non-starred restaurant via the award line;
+  // this only fills the gap for a starred restaurant that's *also*
+  // World's 50 Best ranked. Never duplicates what's already shown.
   final bool showWorlds50BestRank;
 
   const RestaurantTile({
@@ -51,45 +52,39 @@ class RestaurantTile extends StatelessWidget {
       ),
       child: Container(
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 12),
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: AppColors.card,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.cardBorder, width: 0.5),
+          border: Border.all(
+            color: AppColors.cardBorder.withValues(alpha: 0.55),
+            width: 0.5,
+          ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _AwardBadge(restaurant: restaurant),
+            const VenueThumbnail(imageUrl: null),
             const SizedBox(width: 14),
-            // Content
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     restaurant.name,
-                    style: GoogleFonts.playfairDisplay(
-                      color: AppColors.textPrimary,
+                    style: AppTypography.editorialHeading.copyWith(
                       fontSize: 16,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 6),
                   Row(
                     children: [
                       if (restaurant.hasMichelinStar) ...[
-                        StarRow(count: restaurant.michelinStars!, size: 12),
+                        StarRow(count: restaurant.michelinStars!, size: 11),
                         const SizedBox(width: 8),
                       ],
                       if (locationLabel.isNotEmpty)
-                        Text(
-                          locationLabel,
-                          style: GoogleFonts.inter(
-                            color: AppColors.textSecondary,
-                            fontSize: 12,
-                          ),
-                        ),
+                        Text(locationLabel, style: AppTypography.metadata),
                     ],
                   ),
                   if (hasHotel) ...[
@@ -107,8 +102,7 @@ class RestaurantTile extends StatelessWidget {
                             restaurant.hotelName!,
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.inter(
-                              color: AppColors.textSecondary,
+                            style: AppTypography.metadata.copyWith(
                               fontSize: 11,
                             ),
                           ),
@@ -143,61 +137,6 @@ class RestaurantTile extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-// Star-count circle for a Michelin-starred restaurant, or a trophy/rank
-// treatment for a restaurant whose current award is a World's 50 Best
-// placement rather than a star — never "0★" and never an empty star row.
-class _AwardBadge extends StatelessWidget {
-  final Restaurant restaurant;
-  const _AwardBadge({required this.restaurant});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 48,
-      height: 48,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppColors.goldMuted,
-        border: Border.all(color: AppColors.goldBorder40, width: 0.5),
-      ),
-      alignment: Alignment.center,
-      child: restaurant.hasMichelinStar
-          ? Text(
-              '${restaurant.michelinStars}★',
-              style: GoogleFonts.inter(
-                color: AppColors.gold,
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-              ),
-            )
-          : restaurant.isWorlds50Best
-          ? Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Icon(
-                  Icons.emoji_events_rounded,
-                  color: AppColors.gold,
-                  size: 14,
-                ),
-                Text(
-                  '#${restaurant.worlds50BestRank}',
-                  style: GoogleFonts.inter(
-                    color: AppColors.gold,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ],
-            )
-          : const Icon(
-              Icons.restaurant_rounded,
-              color: AppColors.gold,
-              size: 18,
-            ),
     );
   }
 }

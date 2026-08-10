@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/app_typography.dart';
 import 'widgets/community_rankings_tab.dart';
 import 'widgets/personal_rankings_tab.dart';
 
@@ -39,16 +40,26 @@ class _RankingsScreenState extends State<RankingsScreen>
       body: NestedScrollView(
         headerSliverBuilder: (_, _) => [
           SliverAppBar(
-            title: const Text('Rankings'),
+            title: Text(
+              'Rankings',
+              style: AppTypography.editorialHeading.copyWith(
+                color: AppColors.textOnDark,
+                fontSize: 22,
+              ),
+            ),
             pinned: true,
-            backgroundColor: AppColors.background,
+            backgroundColor: AppColors.brandGreen,
+            foregroundColor: AppColors.textOnDark,
+            toolbarHeight: 64,
             bottom: PreferredSize(
               preferredSize: const Size.fromHeight(48),
               child: TabBar(
                 controller: _tabCtrl,
-                labelColor: AppColors.gold,
-                unselectedLabelColor: AppColors.textSecondary,
-                indicatorColor: AppColors.gold,
+                labelColor: AppColors.textOnDark,
+                unselectedLabelColor: AppColors.textOnDark.withValues(
+                  alpha: 0.55,
+                ),
+                indicatorColor: AppColors.textOnDark,
                 indicatorSize: TabBarIndicatorSize.label,
                 labelStyle: GoogleFonts.inter(
                   fontSize: 13,

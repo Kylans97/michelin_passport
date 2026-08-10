@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../models/award_transition.dart';
 
 /// A calm, vertical timeline of award transitions: year on the left, a thin
@@ -62,9 +62,7 @@ class _TimelineRow extends StatelessWidget {
             width: 44,
             child: Text(
               '${transition.guideYear}',
-              style: GoogleFonts.inter(
-                color: AppColors.textSecondary,
-                fontSize: 12.5,
+              style: AppTypography.metadata.copyWith(
                 fontWeight: FontWeight.w600,
               ),
             ),
@@ -104,8 +102,7 @@ class _TimelineRow extends StatelessWidget {
                   const SizedBox(height: 4),
                   Text(
                     label,
-                    style: GoogleFonts.inter(
-                      color: AppColors.textPrimary,
+                    style: AppTypography.body.copyWith(
                       fontSize: 13.5,
                       fontWeight: FontWeight.w500,
                     ),

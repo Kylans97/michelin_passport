@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/app_typography.dart';
+import '../../core/widgets/circular_score_badge.dart';
+import '../../core/widgets/personal_photos_preview.dart';
 import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
@@ -271,29 +274,41 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     final websiteUrl = restaurant.websiteUrl;
     final isAuthenticated = _userId != null;
 
+    final latestVisit = _visits.isEmpty ? null : _visits.first;
+
     return Scaffold(
       backgroundColor: AppColors.background,
       body: CustomScrollView(
         slivers: [
-          RestaurantHero(restaurant: restaurant, hasHotelBadge: hasHotelBadge),
+          RestaurantHero(
+            restaurant: restaurant,
+            hasHotelBadge: hasHotelBadge,
+            isWishlisted: _isWishlisted,
+            wishlistSaving: _wishlistSaving,
+            onTapWishlist: _toggleWishlist,
+          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 24, 20, 100),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SectionLabel('INFORMATION'),
-                  const SizedBox(height: 12),
-                  RestaurantInfoCard(
-                    restaurant: restaurant,
-                    hasHotelBadge: hasHotelBadge,
-                    onTapHotel: canOpenHotel ? _openHotel : null,
-                    hotelLoading: _loadingHotel,
+                  // The hero is the single primary identity area — the
+                  // venue name lives there only, never repeated here. Just
+                  // city/country as light supporting context.
+                  Text(
+                    '${restaurant.flagEmoji}  ${restaurant.cityName}, '
+                    '${restaurant.countryName}',
+                    style: AppTypography.metadata,
                   ),
-                  const SizedBox(height: 28),
+                  const SizedBox(height: 36),
 
-                  const SectionLabel('ACTIONS'),
-                  const SizedBox(height: 12),
+                  // Current Michelin / World's 50 Best status.
+                  RestaurantAwardsCard(restaurant: restaurant),
+                  if (_hasAwardHistory)
+                    AwardHistoryAction(onTap: _openAwardHistory),
+                  const SizedBox(height: 36),
+
                   RestaurantActions(
                     isAuthenticated: isAuthenticated,
                     loadingPersonalState: _loadingPersonalState,
@@ -311,13 +326,43 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                         ? () => _openUrl(websiteUrl)
                         : null,
                   ),
-                  const SizedBox(height: 28),
+                  const SizedBox(height: 36),
 
-                  RestaurantAwardsCard(restaurant: restaurant),
-                  if (_hasAwardHistory)
-                    AwardHistoryAction(onTap: _openAwardHistory),
+                  if (isAuthenticated && latestVisit != null) ...[
+                    const SectionLabel('YOUR SCORE'),
+                    const SizedBox(height: 14),
+                    DetailCard(
+                      child: Row(
+                        children: [
+                          CircularScoreBadge(
+                            score: latestVisit.rating,
+                            caption: 'Overall',
+                          ),
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Latest visit',
+                                  style: AppTypography.body.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  _formatDate(latestVisit.visitedOn),
+                                  style: AppTypography.metadata,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 36),
+                  ],
 
-                  const SizedBox(height: 28),
                   const SectionLabel('YOUR VISITS'),
                   const SizedBox(height: 12),
                   RestaurantVisitsCard(
@@ -328,6 +373,23 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     signInMessage: _signInMessage,
                     onReturn: _refreshVisits,
                   ),
+
+                  if (latestVisit != null) ...[
+                    const SizedBox(height: 36),
+                    const SectionLabel('PERSONAL PHOTOS'),
+                    const SizedBox(height: 12),
+                    PersonalPhotosPreview(latestVisitId: latestVisit.id),
+                  ],
+
+                  const SizedBox(height: 36),
+                  const SectionLabel('INFORMATION'),
+                  const SizedBox(height: 12),
+                  RestaurantInfoCard(
+                    restaurant: restaurant,
+                    hasHotelBadge: hasHotelBadge,
+                    onTapHotel: canOpenHotel ? _openHotel : null,
+                    hotelLoading: _loadingHotel,
+                  ),
                 ],
               ),
             ),
@@ -337,3 +399,21 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     );
   }
 }
+
+const _monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+String _formatDate(DateTime date) =>
+    '${date.day} ${_monthNames[date.month - 1]} ${date.year}';

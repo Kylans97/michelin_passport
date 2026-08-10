@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/key_row.dart';
+import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/hotel.dart';
 import '../../hotels/hotel_detail_screen.dart';
 
-// Catalogue-read-only tile: no hotel stay/wishlist actions yet — that is a
-// later slice.
+// A discovery card, not a database row — mirrors RestaurantTile's
+// photo-ready thumbnail + folded-in award treatment.
 class HotelTile extends StatelessWidget {
   final Hotel hotel;
 
@@ -31,43 +32,37 @@ class HotelTile extends StatelessWidget {
       ),
       child: Container(
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 12),
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(14),
         decoration: BoxDecoration(
           color: AppColors.card,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColors.cardBorder, width: 0.5),
+          border: Border.all(
+            color: AppColors.cardBorder.withValues(alpha: 0.55),
+            width: 0.5,
+          ),
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            _KeysBadge(hotel: hotel),
+            const VenueThumbnail(imageUrl: null),
             const SizedBox(width: 14),
-            // Content
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     hotel.name,
-                    style: GoogleFonts.playfairDisplay(
-                      color: AppColors.textPrimary,
+                    style: AppTypography.editorialHeading.copyWith(
                       fontSize: 16,
-                      fontWeight: FontWeight.w600,
                     ),
                   ),
                   const SizedBox(height: 6),
                   Row(
                     children: [
-                      KeyRow(count: hotel.michelinKeys, size: 12),
+                      KeyRow(count: hotel.michelinKeys, size: 11),
                       const SizedBox(width: 8),
                       if (locationLabel.isNotEmpty)
-                        Text(
-                          locationLabel,
-                          style: GoogleFonts.inter(
-                            color: AppColors.textSecondary,
-                            fontSize: 12,
-                          ),
-                        ),
+                        Text(locationLabel, style: AppTypography.metadata),
                     ],
                   ),
                   if (hotel.hasMichelinRestaurant) ...[
@@ -87,8 +82,7 @@ class HotelTile extends StatelessWidget {
                                 : '${hotel.restaurantCount} Michelin restaurants',
                             maxLines: 1,
                             overflow: TextOverflow.ellipsis,
-                            style: GoogleFonts.inter(
-                              color: AppColors.textSecondary,
+                            style: AppTypography.metadata.copyWith(
                               fontSize: 11,
                             ),
                           ),
@@ -100,36 +94,6 @@ class HotelTile extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-// Keys-count circle, deliberately distinct from RestaurantTile's star
-// badge: a key glyph rather than a star, so the two venue types never look
-// interchangeable at a glance.
-class _KeysBadge extends StatelessWidget {
-  final Hotel hotel;
-  const _KeysBadge({required this.hotel});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 48,
-      height: 48,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: AppColors.goldMuted,
-        border: Border.all(color: AppColors.goldBorder40, width: 0.5),
-      ),
-      alignment: Alignment.center,
-      child: Text(
-        '${hotel.michelinKeys}🔑',
-        style: GoogleFonts.inter(
-          color: AppColors.gold,
-          fontSize: 13,
-          fontWeight: FontWeight.w700,
         ),
       ),
     );

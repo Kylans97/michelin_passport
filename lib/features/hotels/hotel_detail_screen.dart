@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/app_typography.dart';
+import '../../core/widgets/circular_score_badge.dart';
+import '../../core/widgets/personal_photos_preview.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/visited_repository.dart';
@@ -146,6 +149,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     final michelinUrl = hotel.michelinUrl;
     final websiteUrl = hotel.websiteUrl;
     final isAuthenticated = _userId != null;
+    final latestStay = _stays.isEmpty ? null : _stays.first;
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -158,15 +162,18 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SectionLabel('INFORMATION'),
-                  const SizedBox(height: 12),
-                  HotelInfoCard(hotel: hotel),
-                  const SizedBox(height: 28),
+                  // The hero is the single primary identity area — the
+                  // hotel name lives there only, never repeated here. Just
+                  // city/country as light supporting context.
+                  Text(
+                    '${hotel.flagEmoji}  ${hotel.cityName}, '
+                    '${hotel.countryName}',
+                    style: AppTypography.metadata,
+                  ),
+                  const SizedBox(height: 36),
 
-                  const SectionLabel('ACTIONS'),
-                  const SizedBox(height: 12),
                   HotelActions(onTapAddStay: _openAddStaySheet),
-                  const SizedBox(height: 28),
+                  const SizedBox(height: 24),
 
                   const SectionLabel('LINKS'),
                   const SizedBox(height: 12),
@@ -182,13 +189,48 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                   ),
 
                   if (hotel.hasMichelinRestaurant) ...[
-                    const SizedBox(height: 28),
+                    const SizedBox(height: 36),
                     const SectionLabel('RESTAURANTS AT THIS HOTEL'),
                     const SizedBox(height: 12),
                     HotelRestaurantsCard(future: _linkedRestaurantsFuture),
                   ],
+                  const SizedBox(height: 36),
 
-                  const SizedBox(height: 28),
+                  if (isAuthenticated && latestStay != null) ...[
+                    const SectionLabel('YOUR SCORE'),
+                    const SizedBox(height: 14),
+                    DetailCard(
+                      child: Row(
+                        children: [
+                          CircularScoreBadge(
+                            score: latestStay.rating,
+                            caption: 'Overall',
+                          ),
+                          const SizedBox(width: 20),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Latest stay',
+                                  style: AppTypography.body.copyWith(
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                Text(
+                                  _formatStayDate(latestStay.visitedOn),
+                                  style: AppTypography.metadata,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(height: 36),
+                  ],
+
                   const SectionLabel('YOUR STAYS'),
                   const SizedBox(height: 12),
                   HotelStaysCard(
@@ -199,6 +241,18 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                     signInMessage: _signInMessage,
                     onReturn: _loadStays,
                   ),
+
+                  if (latestStay != null) ...[
+                    const SizedBox(height: 36),
+                    const SectionLabel('PERSONAL PHOTOS'),
+                    const SizedBox(height: 12),
+                    PersonalPhotosPreview(latestVisitId: latestStay.id),
+                  ],
+
+                  const SizedBox(height: 36),
+                  const SectionLabel('INFORMATION'),
+                  const SizedBox(height: 12),
+                  HotelInfoCard(hotel: hotel),
                 ],
               ),
             ),
@@ -208,3 +262,21 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     );
   }
 }
+
+const _monthNames = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
+String _formatStayDate(DateTime date) =>
+    '${date.day} ${_monthNames[date.month - 1]} ${date.year}';

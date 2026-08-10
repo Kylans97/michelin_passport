@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/navigation/route_observer.dart';
+import '../../core/theme/app_typography.dart';
 import '../../core/utils/visit_years.dart';
 import '../../core/widgets/year_filter_bar.dart';
 import '../../data/repositories/visited_repository.dart';
@@ -312,78 +313,50 @@ class _PassportHeader extends StatelessWidget {
             as String? ??
         'Passport';
 
+    // A single dark-green editorial header: "My Passport" is the only large
+    // title, the user's name is secondary. No separate collapsed title —
+    // that was the previous overlap bug, where FlexibleSpaceBar's own
+    // `title` and this background's title could both be visible at once in
+    // a too-short expandedHeight. Deliberately generous height so the
+    // title block always clears the status bar/toolbar on every device.
     return SliverAppBar(
-      expandedHeight: 200,
+      expandedHeight: 172,
       pinned: true,
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.brandGreen,
+      foregroundColor: AppColors.textOnDark,
       actions: [
         IconButton(
-          icon: const Icon(Icons.map_outlined, color: AppColors.gold),
+          icon: const Icon(Icons.map_outlined, color: AppColors.textOnDark),
           tooltip: 'My Map',
           onPressed: onTapMap,
         ),
       ],
       flexibleSpace: FlexibleSpaceBar(
         collapseMode: CollapseMode.parallax,
-        background: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Color(0xFF1C1400),
-                Color(0xFF110E00),
-                AppColors.background,
-              ],
-              stops: [0.0, 0.5, 1.0],
-            ),
-          ),
+        background: DecoratedBox(
+          decoration: const BoxDecoration(color: AppColors.brandGreen),
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
+              padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      const Icon(
-                        Icons.menu_book_rounded,
-                        color: AppColors.gold,
-                        size: 18,
-                      ),
-                      const SizedBox(width: 8),
-                      Text(
-                        'CHASING STARS',
-                        style: GoogleFonts.inter(
-                          color: AppColors.gold,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 2.0,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    'My Passport',
+                    style: AppTypography.display.copyWith(
+                      color: AppColors.textOnDark,
+                    ),
                   ),
-                  const SizedBox(height: 14),
+                  const SizedBox(height: 6),
                   Text(
                     name,
-                    style: GoogleFonts.playfairDisplay(
-                      color: AppColors.textPrimary,
-                      fontSize: 30,
-                      fontWeight: FontWeight.w700,
+                    style: AppTypography.metadata.copyWith(
+                      color: AppColors.textOnDark.withValues(alpha: 0.75),
                     ),
                   ),
                 ],
               ),
             ),
-          ),
-        ),
-        titlePadding: const EdgeInsets.fromLTRB(20, 0, 0, 16),
-        title: Text(
-          'My Passport',
-          style: GoogleFonts.playfairDisplay(
-            color: AppColors.textPrimary,
-            fontSize: 22,
-            fontWeight: FontWeight.w700,
           ),
         ),
       ),

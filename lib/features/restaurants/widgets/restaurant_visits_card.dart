@@ -150,7 +150,10 @@ class _VisitTile extends StatelessWidget {
           decoration: BoxDecoration(
             color: AppColors.card,
             borderRadius: BorderRadius.circular(18),
-            border: Border.all(color: AppColors.cardBorder, width: 0.5),
+            border: Border.all(
+              color: AppColors.cardBorder.withValues(alpha: 0.55),
+              width: 0.5,
+            ),
           ),
           child: Row(
             children: [
@@ -171,7 +174,7 @@ class _VisitTile extends StatelessWidget {
                       Text(
                         'Overall $rating/10',
                         style: GoogleFonts.inter(
-                          color: AppColors.gold,
+                          color: AppColors.textSecondary,
                           fontSize: 13,
                           fontWeight: FontWeight.w500,
                         ),

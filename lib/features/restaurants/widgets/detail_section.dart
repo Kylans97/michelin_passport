@@ -1,39 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../../../core/constants/app_colors.dart';
-
-/// Small uppercase eyebrow label used above every section of the detail
-/// screen ("INFORMATION", "ACTIONS", "AWARDS", "YOUR VISITS").
-class SectionLabel extends StatelessWidget {
-  final String text;
-  const SectionLabel(this.text, {super.key});
-
-  @override
-  Widget build(BuildContext context) => Text(
-    text,
-    style: GoogleFonts.inter(
-      color: AppColors.textSecondary,
-      fontSize: 11,
-      fontWeight: FontWeight.w700,
-      letterSpacing: 1.5,
-    ),
-  );
-}
-
-/// The card shell reused across the detail screen's sections.
-class DetailCard extends StatelessWidget {
-  final Widget child;
-  const DetailCard({super.key, required this.child});
-
-  @override
-  Widget build(BuildContext context) => Container(
-    width: double.infinity,
-    padding: const EdgeInsets.all(18),
-    decoration: BoxDecoration(
-      color: AppColors.card,
-      borderRadius: BorderRadius.circular(18),
-      border: Border.all(color: AppColors.cardBorder, width: 0.5),
-    ),
-    child: child,
-  );
-}
+// `DetailCard`/`SectionLabel` moved to `core/widgets/detail_card.dart` as
+// genuine shared design-system components — they were already being
+// imported from this restaurant-namespaced file by the hotels feature
+// (hotel_info_card.dart, hotel_restaurants_card.dart, hotel_stays_card.dart)
+// and photos feature, which was itself a sign they belonged in core, not
+// under restaurants/. Re-exported here so none of those existing imports
+// need to change.
+export '../../../core/widgets/detail_card.dart';

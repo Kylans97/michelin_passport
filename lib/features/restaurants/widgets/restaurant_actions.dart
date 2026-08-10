@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/widgets/app_button.dart';
 
-/// The two personal-state toggles (visited / wishlist) plus the external
-/// links (Maps, Michelin Guide, Website), styled as a single coherent block
-/// of "premium actions" rather than a stack of generic buttons.
+/// The two personal-state toggles (visited / wishlist), plus the external
+/// links (Maps, Michelin Guide, Website) as a single row of compact,
+/// equally-weighted utility buttons — none of them competes with the
+/// venue content around it. Gold is reserved for the toggles' active
+/// state only when tied to a real personal record (visited), never used
+/// just to decorate a button.
 class RestaurantActions extends StatelessWidget {
   final bool isAuthenticated;
   final bool loadingPersonalState;
@@ -67,39 +71,38 @@ class RestaurantActions extends StatelessWidget {
               ),
             ],
           ),
-        const SizedBox(height: 14),
-        _LinkButton(
-          icon: Icons.map_rounded,
-          label: 'Google Maps',
-          filled: true,
-          onTap: onOpenMaps,
-        ),
-        if (hasMichelin || hasWebsite) ...[
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              if (hasMichelin)
-                Expanded(
-                  child: _LinkButton(
-                    icon: Icons.open_in_new_rounded,
-                    label: 'Michelin Guide',
-                    filled: false,
-                    onTap: onOpenMichelin!,
-                  ),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            Expanded(
+              child: SecondaryButton(
+                icon: Icons.map_outlined,
+                label: 'Maps',
+                onTap: onOpenMaps,
+              ),
+            ),
+            if (hasMichelin) ...[
+              const SizedBox(width: 8),
+              Expanded(
+                child: SecondaryButton(
+                  icon: Icons.open_in_new_rounded,
+                  label: 'Michelin',
+                  onTap: onOpenMichelin!,
                 ),
-              if (hasMichelin && hasWebsite) const SizedBox(width: 10),
-              if (hasWebsite)
-                Expanded(
-                  child: _LinkButton(
-                    icon: Icons.language_rounded,
-                    label: 'Website',
-                    filled: false,
-                    onTap: onOpenWebsite!,
-                  ),
-                ),
+              ),
             ],
-          ),
-        ],
+            if (hasWebsite) ...[
+              const SizedBox(width: 8),
+              Expanded(
+                child: SecondaryButton(
+                  icon: Icons.language_rounded,
+                  label: 'Website',
+                  onTap: onOpenWebsite!,
+                ),
+              ),
+            ],
+          ],
+        ),
       ],
     );
   }
@@ -117,16 +120,16 @@ class _TogglesLoadingRow extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(right: i == 0 ? 10 : 0),
           child: Container(
-            height: 66,
+            height: 52,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: AppColors.surface,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.circular(14),
               border: Border.all(color: AppColors.cardBorder, width: 0.5),
             ),
             child: const SizedBox(
-              width: 16,
-              height: 16,
+              width: 14,
+              height: 14,
               child: CircularProgressIndicator(
                 color: AppColors.textSecondary,
                 strokeWidth: 1.5,
@@ -159,6 +162,13 @@ class _ToggleButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Active uses a quiet brand-green tint, not gold — this is a personal
+    // record, not an award/ranking, so gold stays reserved for those. See
+    // RestaurantAwardsCard / CircularScoreBadge for where gold still
+    // appears.
+    final activeTint = AppColors.brandGreen.withValues(alpha: 0.08);
+    final activeBorder = AppColors.brandGreen.withValues(alpha: 0.35);
+
     // Tapping while "disabled" (signed out) still fires onTap, which shows
     // the sign-in message — see AUTH SAFETY. Only a saving in-flight tap is
     // truly ignored.
@@ -166,19 +176,19 @@ class _ToggleButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: saving ? null : onTap,
-        borderRadius: BorderRadius.circular(16),
+        borderRadius: BorderRadius.circular(14),
         splashColor: AppColors.goldAlpha10,
         highlightColor: AppColors.goldAlpha10,
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 220),
           curve: Curves.easeOutCubic,
-          padding: const EdgeInsets.symmetric(vertical: 15),
+          padding: const EdgeInsets.symmetric(vertical: 11),
           decoration: BoxDecoration(
-            color: active ? AppColors.goldMuted : AppColors.surface,
-            borderRadius: BorderRadius.circular(16),
+            color: active ? activeTint : AppColors.surface,
+            borderRadius: BorderRadius.circular(14),
             border: Border.all(
-              color: active ? AppColors.goldBorder60 : AppColors.cardBorder,
-              width: active ? 1.0 : 0.5,
+              color: active ? activeBorder : AppColors.cardBorder,
+              width: 0.5,
             ),
           ),
           child: AnimatedOpacity(
@@ -192,10 +202,10 @@ class _ToggleButton extends StatelessWidget {
                   child: saving
                       ? const SizedBox(
                           key: ValueKey('saving'),
-                          width: 22,
-                          height: 22,
+                          width: 18,
+                          height: 18,
                           child: CircularProgressIndicator(
-                            color: AppColors.gold,
+                            color: AppColors.brandGreen,
                             strokeWidth: 2,
                           ),
                         )
@@ -203,18 +213,20 @@ class _ToggleButton extends StatelessWidget {
                           active ? icon : inactiveIcon,
                           key: ValueKey(active),
                           color: active
-                              ? AppColors.gold
+                              ? AppColors.brandGreen
                               : AppColors.textSecondary,
-                          size: 22,
+                          size: 19,
                         ),
                 ),
-                const SizedBox(height: 7),
+                const SizedBox(height: 6),
                 Text(
                   label,
                   textAlign: TextAlign.center,
                   style: GoogleFonts.inter(
-                    color: active ? AppColors.gold : AppColors.textSecondary,
-                    fontSize: 11.5,
+                    color: active
+                        ? AppColors.brandGreen
+                        : AppColors.textSecondary,
+                    fontSize: 11,
                     fontWeight: active ? FontWeight.w600 : FontWeight.w500,
                     letterSpacing: 0.1,
                   ),
@@ -224,63 +236,6 @@ class _ToggleButton extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class _LinkButton extends StatelessWidget {
-  final IconData icon;
-  final String label;
-  final bool filled;
-  final VoidCallback onTap;
-  const _LinkButton({
-    required this.icon,
-    required this.label,
-    required this.filled,
-    required this.onTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      height: filled ? 54 : 50,
-      child: filled
-          ? FilledButton.icon(
-              onPressed: onTap,
-              icon: Icon(icon, size: 18),
-              label: Text(
-                label,
-                style: GoogleFonts.inter(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                  letterSpacing: 0.1,
-                ),
-              ),
-              style: FilledButton.styleFrom(
-                backgroundColor: AppColors.gold,
-                foregroundColor: Colors.black,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-            )
-          : OutlinedButton.icon(
-              onPressed: onTap,
-              icon: Icon(icon, size: 16),
-              label: Text(
-                label,
-                overflow: TextOverflow.ellipsis,
-                style: GoogleFonts.inter(fontSize: 13.5),
-              ),
-              style: OutlinedButton.styleFrom(
-                foregroundColor: AppColors.textSecondary,
-                side: const BorderSide(color: AppColors.cardBorder, width: 0.5),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-            ),
     );
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/app_typography.dart';
 import '../../core/utils/number_format.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
@@ -140,9 +141,30 @@ class _ExploreScreenState extends State<ExploreScreen> {
         return CustomScrollView(
           slivers: [
             SliverAppBar(
-              title: const Text('Explore'),
               pinned: true,
-              backgroundColor: AppColors.background,
+              backgroundColor: AppColors.brandGreen,
+              foregroundColor: AppColors.textOnDark,
+              toolbarHeight: 76,
+              title: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Explore',
+                    style: AppTypography.editorialHeading.copyWith(
+                      color: AppColors.textOnDark,
+                      fontSize: 22,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    "The world's finest tables and stays",
+                    style: AppTypography.metadata.copyWith(
+                      color: AppColors.textOnDark.withValues(alpha: 0.7),
+                    ),
+                  ),
+                ],
+              ),
               bottom: PreferredSize(
                 preferredSize: Size.fromHeight(
                   _venueType == ExploreVenueType.all ? 152 : 188,

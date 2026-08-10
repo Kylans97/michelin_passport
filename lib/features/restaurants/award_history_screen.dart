@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/app_typography.dart';
+import '../../core/widgets/detail_hero.dart' show HeroIconButton;
 import '../../core/widgets/star_row.dart';
 import '../../data/repositories/award_history_repository.dart';
 import '../../models/award_transition.dart';
@@ -85,76 +87,104 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
 
     return Scaffold(
       backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        elevation: 0,
-        foregroundColor: AppColors.textPrimary,
-      ),
-      body: _loading
-          ? const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.gold,
-                strokeWidth: 1.5,
-              ),
-            )
-          : _loadError
-          ? _ErrorState(onRetry: _load)
-          : SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    restaurant.name,
-                    style: GoogleFonts.playfairDisplay(
-                      color: AppColors.textPrimary,
-                      fontSize: 26,
-                      fontWeight: FontWeight.w700,
-                      height: 1.15,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    '${restaurant.flagEmoji} ${restaurant.cityName}, '
-                    '${restaurant.countryName}',
-                    style: GoogleFonts.inter(
-                      color: AppColors.textSecondary,
-                      fontSize: 13.5,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  const SizedBox(height: 32),
-
-                  if (!hasAnything)
-                    const _EmptyHistoryState()
-                  else ...[
-                    if (hasMichelin) ...[
-                      const SectionLabel('MICHELIN HISTORY'),
-                      const SizedBox(height: 18),
-                      MichelinAwardTimeline(
-                        transitions: _michelinTransitions,
-                        badgeBuilder: (value) => StarRow(count: value),
-                        labelBuilder: michelinTransitionLabel,
+      body: Column(
+        children: [
+          // Compact dark-green editorial identity area — the venue name
+          // lives here, not repeated in the ivory body below.
+          DecoratedBox(
+            decoration: const BoxDecoration(color: AppColors.brandGreen),
+            child: SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(12, 8, 20, 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: HeroIconButton(
+                        icon: Icons.arrow_back_ios_new_rounded,
+                        onTap: () => Navigator.maybePop(context),
                       ),
-                    ],
-                    if (hasMichelin && hasWorlds50Best)
-                      const SizedBox(height: 32),
-                    if (hasWorlds50Best) ...[
-                      const SectionLabel("WORLD'S 50 BEST"),
-                      const SizedBox(height: 14),
-                      Worlds50BestHistorySection(summary: _worlds50Best),
-                    ],
-                    if (hasHallOfFame) ...[
-                      if (hasMichelin || hasWorlds50Best)
-                        const SizedBox(height: 28),
-                      HallOfFameBadge(
-                        inductionYear: _worlds50Best.hallOfFameYear,
+                    ),
+                    const SizedBox(height: 14),
+                    Text(
+                      restaurant.name,
+                      style: AppTypography.editorialHeading.copyWith(
+                        color: AppColors.textOnDark,
+                        fontSize: 24,
                       ),
-                    ],
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      '${restaurant.flagEmoji} ${restaurant.cityName}, '
+                      '${restaurant.countryName}',
+                      style: AppTypography.metadata.copyWith(
+                        color: AppColors.textOnDark.withValues(alpha: 0.75),
+                      ),
+                    ),
                   ],
-                ],
+                ),
               ),
             ),
+          ),
+          Expanded(
+            child: _loading
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.gold,
+                      strokeWidth: 1.5,
+                    ),
+                  )
+                : _loadError
+                ? _ErrorState(onRetry: _load)
+                : SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(20, 24, 20, 40),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'A history of the honors this restaurant has '
+                          'earned over the years.',
+                          style: AppTypography.body.copyWith(
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                        const SizedBox(height: 32),
+
+                        if (!hasAnything)
+                          const _EmptyHistoryState()
+                        else ...[
+                          if (hasMichelin) ...[
+                            const EditorialHeading('Michelin History'),
+                            const SizedBox(height: 18),
+                            MichelinAwardTimeline(
+                              transitions: _michelinTransitions,
+                              badgeBuilder: (value) => StarRow(count: value),
+                              labelBuilder: michelinTransitionLabel,
+                            ),
+                          ],
+                          if (hasMichelin && hasWorlds50Best)
+                            const SizedBox(height: 36),
+                          if (hasWorlds50Best) ...[
+                            const EditorialHeading("World's 50 Best"),
+                            const SizedBox(height: 14),
+                            Worlds50BestHistorySection(summary: _worlds50Best),
+                          ],
+                          if (hasHallOfFame) ...[
+                            if (hasMichelin || hasWorlds50Best)
+                              const SizedBox(height: 28),
+                            HallOfFameBadge(
+                              inductionYear: _worlds50Best.hallOfFameYear,
+                            ),
+                          ],
+                        ],
+                      ],
+                    ),
+                  ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -178,11 +208,7 @@ class _EmptyHistoryState extends StatelessWidget {
           child: Text(
             'Historical award data is not available for this restaurant '
             'yet.',
-            style: GoogleFonts.inter(
-              color: AppColors.textSecondary,
-              fontSize: 13.5,
-              height: 1.5,
-            ),
+            style: AppTypography.body.copyWith(color: AppColors.textSecondary),
           ),
         ),
       ],

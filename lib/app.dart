@@ -17,7 +17,7 @@ class TablePassportApp extends StatelessWidget {
     return MaterialApp(
       title: 'Chasing Stars',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.dark,
+      theme: AppTheme.chasingStars,
       navigatorObservers: [appRouteObserver],
       // AuthGate shows LoginScreen when there is no session,
       // and the tab scaffold when the user is authenticated.
