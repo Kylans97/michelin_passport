@@ -44,25 +44,34 @@ enum RestaurantAwardFilter {
   bool get isHallOfFame => this == RestaurantAwardFilter.hallOfFame;
 }
 
-/// Hotel Michelin Keys filter, shown only when [ExploreVenueType.hotels] is
-/// selected — maps to HotelRepository.search()'s `keys` param.
+/// Hotel award filter, shown only when [ExploreVenueType.hotels] is
+/// selected — maps to HotelRepository.search()'s `keys`/`worlds50BestOnly`
+/// params. [worlds50Best] is independent of Keys entirely, mirroring
+/// RestaurantAwardFilter.worlds50Best: a hotel with a NULL Key value and
+/// World's 50 Best history appears here but never under 1/2/3 Keys.
 enum HotelKeysFilter {
   all,
   oneKey,
   twoKeys,
-  threeKeys;
+  threeKeys,
+  worlds50Best;
 
   String get label => switch (this) {
     HotelKeysFilter.all => 'All',
     HotelKeysFilter.oneKey => '🔑',
     HotelKeysFilter.twoKeys => '🔑🔑',
     HotelKeysFilter.threeKeys => '🔑🔑🔑',
+    HotelKeysFilter.worlds50Best => "World's 50 Best",
   };
 
+  /// The `michelin_keys` value to filter on, or null for "All" or a
+  /// non-Key award (World's 50 Best applies independently).
   int? get keysParam => switch (this) {
     HotelKeysFilter.oneKey => 1,
     HotelKeysFilter.twoKeys => 2,
     HotelKeysFilter.threeKeys => 3,
     _ => null,
   };
+
+  bool get isWorlds50Best => this == HotelKeysFilter.worlds50Best;
 }

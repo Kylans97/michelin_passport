@@ -22,7 +22,19 @@ class HotelHero extends StatelessWidget {
   Widget build(BuildContext context) {
     return DetailHero(
       title: hotel.name,
-      awardBadge: KeyRow(count: hotel.michelinKeys, size: 18),
+      // Absence of a confirmed Key value stays visually neutral — omitted
+      // entirely, never "0 Keys" or an empty KeyRow. Mirrors
+      // RestaurantHero's `hasMichelinStar ? StarRow(...) : SizedBox.shrink()`.
+      awardBadge: hotel.hasMichelinKeys
+          ? KeyRow(count: hotel.michelinKeys!, size: 18)
+          : const SizedBox.shrink(),
+      extraBadges: [
+        if (hotel.isWorlds50Best)
+          HeroBadge(
+            icon: Icons.emoji_events_rounded,
+            label: "World's 50 Best · #${hotel.worlds50BestRank}",
+          ),
+      ],
       overlayAction: HeroIconButton(
         icon: isWishlisted
             ? Icons.favorite_rounded

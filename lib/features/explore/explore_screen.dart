@@ -75,6 +75,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
         final hotels = await _hotelRepo.search(
           _query,
           keys: _hotelKeys.keysParam,
+          worlds50BestOnly: _hotelKeys.isWorlds50Best,
           countryCode: _countryFilter,
         );
         return [for (final h in hotels) HotelExploreItem(h)];
@@ -137,6 +138,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
         final highlightWorlds50Best =
             _venueType == ExploreVenueType.restaurants &&
             _restaurantAward.isWorlds50Best;
+        final highlightHotelWorlds50Best =
+            _venueType == ExploreVenueType.hotels && _hotelKeys.isWorlds50Best;
 
         return CustomScrollView(
           slivers: [
@@ -262,7 +265,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
                           restaurant: restaurant,
                           showWorlds50BestRank: highlightWorlds50Best,
                         ),
-                      HotelExploreItem(:final hotel) => HotelTile(hotel: hotel),
+                      HotelExploreItem(:final hotel) => HotelTile(
+                        hotel: hotel,
+                        showWorlds50BestRank: highlightHotelWorlds50Best,
+                      ),
                     },
                   ),
                   childCount: results.length,

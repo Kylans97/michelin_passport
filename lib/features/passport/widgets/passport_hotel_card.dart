@@ -89,8 +89,10 @@ class PassportHotelCard extends StatelessWidget {
                   fontSize: 12.5,
                 ),
               ),
-              const SizedBox(height: 8),
-              KeyRow(count: hotel.michelinKeys, size: 14),
+              if (hotel.hasMichelinKeys) ...[
+                const SizedBox(height: 8),
+                KeyRow(count: hotel.michelinKeys!, size: 14),
+              ],
               const SizedBox(height: 12),
               Row(
                 children: [

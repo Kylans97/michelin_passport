@@ -7,6 +7,7 @@ import '../../core/theme/app_typography.dart';
 import '../../core/widgets/circular_score_badge.dart';
 import '../../core/widgets/personal_photos_preview.dart';
 import '../../core/widgets/subtle_text_action.dart';
+import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
@@ -18,9 +19,12 @@ import '../../models/restaurant.dart';
 import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
 import '../planning/widgets/plan_venue_sheet.dart';
+import '../restaurants/widgets/award_history_action.dart';
 import '../restaurants/widgets/detail_section.dart';
 import '../stays/widgets/add_stay_sheet.dart';
+import 'award_history_screen.dart';
 import 'widgets/hotel_actions.dart';
+import 'widgets/hotel_awards_card.dart';
 import 'widgets/hotel_hero.dart';
 import 'widgets/hotel_info_card.dart';
 import 'widgets/hotel_links.dart';
@@ -49,6 +53,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   late final _plannedTripsRepo = PlannedTripsRepository(
     Supabase.instance.client,
   );
+  late final _awardHistoryRepo = AwardHistoryRepository(
+    Supabase.instance.client,
+  );
   late final Future<List<Restaurant>> _linkedRestaurantsFuture =
       widget.hotel.hasMichelinRestaurant
       ? _hotelRepo.getLinkedRestaurants(widget.hotel.id)
@@ -61,10 +68,39 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   bool _isWishlisted = false;
   bool _wishlistSaving = false;
 
+  // Catalogue data, not personal state — loaded regardless of sign-in.
+  // Starts false (action hidden) rather than showing then hiding it, since
+  // most hotels resolve this within a single indexed round trip. Mirrors
+  // RestaurantDetailScreen's _hasAwardHistory exactly.
+  bool _hasAwardHistory = false;
+
   @override
   void initState() {
     super.initState();
     _loadPersonalState();
+    _checkAwardHistory();
+  }
+
+  Future<void> _checkAwardHistory() async {
+    try {
+      final hasHistory = await _awardHistoryRepo.hasAnyHotelHistory(
+        widget.hotel.id,
+      );
+      if (!mounted) return;
+      setState(() => _hasAwardHistory = hasHistory);
+    } catch (_) {
+      // Leave the action hidden on a failed check rather than risk opening
+      // HotelAwardHistoryScreen to a broken state.
+    }
+  }
+
+  void _openAwardHistory() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => HotelAwardHistoryScreen(hotel: widget.hotel),
+      ),
+    );
   }
 
   Future<void> _loadPersonalState() async {
@@ -251,6 +287,12 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                     style: AppTypography.metadata,
                   ),
                   const SizedBox(height: 36),
+
+                  // Current MICHELIN Guide / World's 50 Best Hotels status.
+                  HotelAwardsCard(hotel: hotel),
+                  if (_hasAwardHistory)
+                    AwardHistoryAction(onTap: _openAwardHistory),
+                  const SizedBox(height: 28),
 
                   HotelActions(
                     isAuthenticated: isAuthenticated,

@@ -14,6 +14,18 @@ import 'restaurant_repository.dart' show restaurantFullColumns;
 // on restaurantFullColumns in restaurant_repository.dart. Same failure mode,
 // same fix: coordinates are loaded separately by MapRepository, never by
 // this shared, app-wide column list.
+//
+// Also deliberately does NOT include worlds_50_best_rank/worlds_50_best_year
+// yet, for the identical reason: those columns only exist on hotels_full
+// once supabase/migrations/20260807170000_expose_hotel_worlds_50_best_rank.sql
+// is applied, and that migration is prepared but NOT applied remotely (see
+// that file, and phase8/phase11 in the hotel catalogue expansion workspace).
+// Requesting a column the live view doesn't have yet throws PostgREST error
+// 42703 and takes down every caller of this constant — the entire hotel
+// catalogue, not just the World's 50 Best-specific code paths. Hotel.
+// worlds50BestRank/worlds50BestYear are modelled and ready; they simply
+// resolve to null for every hotel fetched through this column list until
+// migration + column list are updated together, in the same change.
 const hotelFullColumns =
     'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
@@ -51,13 +63,25 @@ class HotelRepository {
     return Hotel.fromJson(list.first as Map<String, dynamic>);
   }
 
-  // Search with optional Michelin Keys and country filters.
-  // [countryCode] is the ISO 3166-1 alpha-2 code stored on hotels_full,
-  // e.g. 'NL', 'BE', 'FR', 'ES'. Searches only hotel-readable fields — name,
-  // city, country — never restaurant-only fields like cuisine.
+  // Search with optional Michelin Keys, World's 50 Best and country
+  // filters. [countryCode] is the ISO 3166-1 alpha-2 code stored on
+  // hotels_full, e.g. 'NL', 'BE', 'FR', 'ES'. [worlds50BestOnly] is an
+  // independent alternative to [keys] in the Explore UI (its award filter
+  // is a single-select), but nothing here enforces that — mirrors
+  // RestaurantRepository.search()'s worlds50BestOnly exactly. Searches only
+  // hotel-readable fields — name, city, country — never restaurant-only
+  // fields like cuisine.
+  //
+  // NOTE: [worlds50BestOnly] filters/orders on hotels_full.worlds_50_best_rank,
+  // a column that does not exist on the live view until
+  // 20260807170000_expose_hotel_worlds_50_best_rank.sql is applied (see
+  // hotelFullColumns above) — calling this with worlds50BestOnly: true
+  // against the current remote schema throws a PostgREST 42703 error. This
+  // is intentional: the code is ready, the data layer is not yet deployed.
   Future<List<Hotel>> search(
     String query, {
     int? keys,
+    bool worlds50BestOnly = false,
     String? countryCode,
   }) async {
     var builder = _client.from('hotels_full').select(hotelFullColumns);
@@ -72,11 +96,21 @@ class HotelRepository {
     if (keys != null) {
       builder = builder.eq('michelin_keys', keys);
     }
+    if (worlds50BestOnly) {
+      builder = builder.not('worlds_50_best_rank', 'is', null);
+    }
     if (countryCode != null) {
       builder = builder.eq('country_code', countryCode);
     }
 
-    final rows = await builder.order('name');
+    // World's 50 Best results read as a ranking, not a catalogue browse:
+    // ordered by worlds_50_best_rank ascending (#1 first), mirroring
+    // RestaurantRepository.search() exactly, including the same
+    // `ascending: true` footgun this avoids (PostgrestTransformBuilder.order()
+    // defaults to descending).
+    final rows = worlds50BestOnly
+        ? await builder.order('worlds_50_best_rank', ascending: true)
+        : await builder.order('name');
     return (rows as List)
         .map((row) => Hotel.fromJson(row as Map<String, dynamic>))
         .toList();

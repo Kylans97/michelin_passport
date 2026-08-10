@@ -87,8 +87,10 @@ class HotelRankingCard extends StatelessWidget {
                             fontSize: 12,
                           ),
                         ),
-                        const SizedBox(width: 8),
-                        KeyRow(count: hotel.michelinKeys, size: 11),
+                        if (hotel.hasMichelinKeys) ...[
+                          const SizedBox(width: 8),
+                          KeyRow(count: hotel.michelinKeys!, size: 11),
+                        ],
                       ],
                     ),
                     const SizedBox(height: 10),

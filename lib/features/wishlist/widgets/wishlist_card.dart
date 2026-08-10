@@ -37,7 +37,7 @@ class WishlistCard extends StatelessWidget {
         'Plan visit',
       ),
       HotelVenue(:final hotel) => (
-        KeyRow(count: hotel.michelinKeys),
+        hotel.hasMichelinKeys ? KeyRow(count: hotel.michelinKeys!) : null,
         '${hotel.flagEmoji}  ${hotel.cityName}, ${hotel.countryName}',
         'Plan stay',
       ),

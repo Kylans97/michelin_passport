@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/award_history_entry.dart';
+import '../../models/worlds_50_best_hotel_entry.dart';
 
 // award_history is polymorphic (see production schema migration): the same
 // table carries both restaurants' Michelin star history and hotels'
@@ -92,6 +93,56 @@ class AwardHistoryRepository {
         .from('worlds_50_best')
         .select('id')
         .eq('restaurant_id', restaurantId)
+        .limit(1);
+    final results = await Future.wait([michelinFuture, worlds50BestFuture]);
+    return (results[0] as List).isNotEmpty || (results[1] as List).isNotEmpty;
+  }
+
+  /// Every recorded `worlds_50_best_hotels` row for one hotel (list_type
+  /// top_50 or extended_51_100 — there is no hall_of_fame value for hotels),
+  /// newest year first — the hotel counterpart of loadWorlds50BestHistory.
+  /// Deliberately queries a fully separate table (worlds_50_best_hotels,
+  /// prepared in 20260807160000_create_worlds_50_best_hotels.sql but not
+  /// yet applied remotely) rather than reusing public.worlds_50_best, which
+  /// has a hard `restaurant_id not null` FK and cannot reference a hotel at
+  /// all.
+  Future<List<HotelWorlds50BestEntry>> loadWorlds50BestHotelsHistory(
+    String hotelId,
+  ) async {
+    final rows = await _client
+        .from('worlds_50_best_hotels')
+        .select('year, rank, list_type')
+        .eq('hotel_id', hotelId)
+        .order('year', ascending: false);
+    final result = <HotelWorlds50BestEntry>[];
+    for (final row in (rows as List).cast<Map<String, dynamic>>()) {
+      // The DB CHECK constraint guarantees a known list_type, so this only
+      // drops a row if the schema itself has changed underneath us.
+      final listType = HotelWorlds50BestListType.fromDbValue(
+        row['list_type'] as String?,
+      );
+      if (listType == null) continue;
+      result.add(HotelWorlds50BestEntry.fromJson(row, listType: listType));
+    }
+    return result;
+  }
+
+  /// A cheap existence check — mirrors hasAnyHistory (restaurants), scoped
+  /// to entity_type = 'hotel' and worlds_50_best_hotels instead of
+  /// worlds_50_best. A hotel can have Key history without a current Key
+  /// (e.g. a lapsed Key) or World's 50 Best history without a current rank,
+  /// so this can't be derived from the Hotel model's own fields alone.
+  Future<bool> hasAnyHotelHistory(String hotelId) async {
+    final michelinFuture = _client
+        .from('award_history')
+        .select('id')
+        .eq('entity_type', 'hotel')
+        .eq('entity_id', hotelId)
+        .limit(1);
+    final worlds50BestFuture = _client
+        .from('worlds_50_best_hotels')
+        .select('id')
+        .eq('hotel_id', hotelId)
         .limit(1);
     final results = await Future.wait([michelinFuture, worlds50BestFuture]);
     return (results[0] as List).isNotEmpty || (results[1] as List).isNotEmpty;
