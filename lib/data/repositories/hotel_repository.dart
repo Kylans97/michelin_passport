@@ -15,21 +15,19 @@ import 'restaurant_repository.dart' show restaurantFullColumns;
 // same fix: coordinates are loaded separately by MapRepository, never by
 // this shared, app-wide column list.
 //
-// Also deliberately does NOT include worlds_50_best_rank/worlds_50_best_year
-// yet, for the identical reason: those columns only exist on hotels_full
-// once supabase/migrations/20260807170000_expose_hotel_worlds_50_best_rank.sql
-// is applied, and that migration is prepared but NOT applied remotely (see
-// that file, and phase8/phase11 in the hotel catalogue expansion workspace).
-// Requesting a column the live view doesn't have yet throws PostgREST error
-// 42703 and takes down every caller of this constant — the entire hotel
-// catalogue, not just the World's 50 Best-specific code paths. Hotel.
-// worlds50BestRank/worlds50BestYear are modelled and ready; they simply
-// resolve to null for every hotel fetched through this column list until
-// migration + column list are updated together, in the same change.
+// worlds_50_best_rank/worlds_50_best_year ARE now included:
+// 20260807150000_hotel_michelin_keys_nullable.sql,
+// 20260807160000_create_worlds_50_best_hotels.sql and
+// 20260807170000_expose_hotel_worlds_50_best_rank.sql are all applied on
+// the live schema (production deployment confirmed complete) — hotels_full
+// genuinely exposes both columns now, so every caller of this constant
+// (Explore, Passport, Rankings, Detail, Wishlist) receives real values,
+// not the permanent nulls this list previously guaranteed.
 const hotelFullColumns =
     'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
-    'website_url, has_michelin_restaurant, restaurant_count';
+    'website_url, has_michelin_restaurant, restaurant_count, '
+    'worlds_50_best_rank, worlds_50_best_year';
 
 class HotelRepository {
   HotelRepository(this._client);
@@ -71,13 +69,6 @@ class HotelRepository {
   // RestaurantRepository.search()'s worlds50BestOnly exactly. Searches only
   // hotel-readable fields — name, city, country — never restaurant-only
   // fields like cuisine.
-  //
-  // NOTE: [worlds50BestOnly] filters/orders on hotels_full.worlds_50_best_rank,
-  // a column that does not exist on the live view until
-  // 20260807170000_expose_hotel_worlds_50_best_rank.sql is applied (see
-  // hotelFullColumns above) — calling this with worlds50BestOnly: true
-  // against the current remote schema throws a PostgREST 42703 error. This
-  // is intentional: the code is ready, the data layer is not yet deployed.
   Future<List<Hotel>> search(
     String query, {
     int? keys,

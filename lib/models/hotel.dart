@@ -1,11 +1,10 @@
 // Maps a row from `public.hotels_full` (see
 // supabase/migrations/20260805141519_production_schema_v1.sql, and
 // supabase/migrations/20260807150000_hotel_michelin_keys_nullable.sql /
-// 20260807170000_expose_hotel_worlds_50_best_rank.sql, both prepared but not
-// yet applied remotely — see hotelFullColumns in hotel_repository.dart for
-// why worlds_50_best_rank/year aren't requested yet even though they're
-// modelled here). Only fields the view actually exposes are modelled — see
-// that view's SELECT list before adding anything here.
+// 20260807170000_expose_hotel_worlds_50_best_rank.sql, both applied on the
+// live schema — production deployment confirmed complete). Only fields the
+// view actually exposes are modelled — see that view's SELECT list before
+// adding anything here.
 //
 // No latitude/longitude here — see the matching note on Restaurant in
 // restaurant.dart. hotels_full can project scalar coordinates once the
@@ -54,10 +53,9 @@ class Hotel {
   // position, mirroring Restaurant.worlds50BestRank — a derived column from
   // a left join against public.worlds_50_best_hotels, not a raw table
   // field. Both null together or non-null together; there is no state
-  // where one is set without the other. See hotelFullColumns: these are
-  // deliberately NOT requested yet, since the view migration that would
-  // expose them hasn't been applied remotely — every Hotel parsed via that
-  // column list has both null today, by construction, until it ships.
+  // where one is set without the other. Null for a hotel with no World's 50
+  // Best history, exactly like a hotel with no confirmed Key value — never
+  // treat one absence as implying anything about the other.
   final int? worlds50BestRank;
   final int? worlds50BestYear;
 
