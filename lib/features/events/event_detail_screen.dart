@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import '../../core/widgets/app_button.dart';
+import '../../core/widgets/cs_image_placeholder.dart';
 import '../../core/widgets/detail_hero.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../models/event.dart';
@@ -13,11 +14,19 @@ import '../explore/widgets/restaurant_tile.dart';
 import '../restaurants/widgets/detail_section.dart';
 import 'event_date_format.dart';
 
+// Smaller than CsImagePlaceholder's own 0.4 default: a hero is a much
+// larger, wider area than a card thumbnail, so the same relative scale
+// would make the monogram feel oversized — see the brief's "slightly
+// smaller relative scale for large hero placeholders".
+const double _heroLogoScale = 0.22;
+
 /// Full event details: hero (renders event.imageUrl via DetailHero's
-/// backgroundImage slot when set, BoxFit.cover; brand-green fallback
-/// otherwise — same pattern Restaurant/Hotel Detail's own hero already
-/// uses), date/time, location, description, official links, and every
-/// linked restaurant/hotel — reusing RestaurantTile/HotelTile outright
+/// backgroundImage slot when set, BoxFit.cover; branded CsImagePlaceholder
+/// fallback otherwise, via DetailHero's photoFallback slot — same pattern
+/// Restaurant/Hotel Detail's own hero already uses, just with a fallback
+/// image instead of a plain gradient), date/time, location, description,
+/// official links, and every linked restaurant/hotel — reusing
+/// RestaurantTile/HotelTile outright
 /// rather than a third venue-row widget, since those already navigate to
 /// the real Detail screens on tap.
 class EventDetailScreen extends StatefulWidget {
@@ -158,11 +167,19 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 ? Image.network(
                     event.imageUrl!,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, _, _) => const DecoratedBox(
-                      decoration: BoxDecoration(color: AppColors.brandGreen),
-                    ),
+                    // A failed load still gets the branded placeholder, not
+                    // a plain color block — see CsImagePlaceholder.
+                    errorBuilder: (_, _, _) =>
+                        const CsImagePlaceholder(logoScale: _heroLogoScale),
                   )
                 : null,
+            // No image_url at all — same branded placeholder, via the
+            // hero's dedicated fallback slot (kept separate from
+            // backgroundImage so Restaurant/Hotel Detail, which never pass
+            // this, are completely unaffected).
+            photoFallback: event.imageUrl != null && event.imageUrl!.isNotEmpty
+                ? null
+                : const CsImagePlaceholder(logoScale: _heroLogoScale),
             awardBadge: HeroBadge(
               icon: Icons.event_rounded,
               label: event.eventType.label,

@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
+import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../models/event.dart';
 import '../event_date_format.dart';
 
 /// One event in the discovery list — an atmospheric banner image (fixed
 /// 16:9, BoxFit.cover) across the top when [Event.imageUrl] is populated,
-/// falling back to the same brand-green tonal treatment VenueThumbnail
-/// uses elsewhere (so a missing/failed image never leaves a blank gap) —
-/// then name, date range, city/country and admission below. A cancelled
-/// event is still shown, clearly marked, rather than silently
-/// disappearing.
+/// falling back to the branded [CsImagePlaceholder] VenueThumbnail uses
+/// elsewhere (so a missing/failed image never leaves a blank gap) — then
+/// name, date range, city/country and admission below. A cancelled event
+/// is still shown, clearly marked, rather than silently disappearing.
 class EventCard extends StatelessWidget {
   final Event event;
   final VoidCallback onTap;
@@ -98,10 +98,9 @@ class EventCard extends StatelessWidget {
 }
 
 /// The card's banner slot — a real photo when [imageUrl] is set and loads
-/// successfully, otherwise the same brand-green tonal placeholder in every
-/// other case (null, empty, or a failed load via [errorBuilder]) — deep
-/// green is always the Chasing Stars fallback, never a broken-image icon
-/// or blank space.
+/// successfully, otherwise the branded [CsImagePlaceholder] in every other
+/// case (null, empty, or a failed load via [errorBuilder]) — never a
+/// broken-image icon or blank space.
 class _EventImage extends StatelessWidget {
   final String? imageUrl;
   const _EventImage({required this.imageUrl});
@@ -109,29 +108,14 @@ class _EventImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (imageUrl == null || imageUrl!.isEmpty) {
-      return const _EventImagePlaceholder();
+      return const CsImagePlaceholder();
     }
     return Image.network(
       imageUrl!,
       fit: BoxFit.cover,
-      errorBuilder: (_, _, _) => const _EventImagePlaceholder(),
+      errorBuilder: (_, _, _) => const CsImagePlaceholder(),
     );
   }
-}
-
-class _EventImagePlaceholder extends StatelessWidget {
-  const _EventImagePlaceholder();
-
-  @override
-  Widget build(BuildContext context) => const DecoratedBox(
-    decoration: BoxDecoration(
-      gradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [AppColors.brandGreenLight, AppColors.brandGreen],
-      ),
-    ),
-  );
 }
 
 class _FreeEntryBadge extends StatelessWidget {

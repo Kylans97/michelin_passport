@@ -2,24 +2,35 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../theme/app_typography.dart';
 
-/// The shared hero chrome for Restaurant/Hotel Detail — the SINGLE primary
-/// identity area for a venue: name, award badge and overlay navigation.
-/// Nothing below the hero repeats the venue name; once this collapses to
-/// its pinned title, that title (not a second heading in the content
-/// area) is the only name shown.
+/// The shared hero chrome for Restaurant/Hotel/Event Detail — the SINGLE
+/// primary identity area for a venue: name, award badge and overlay
+/// navigation. Nothing below the hero repeats the venue name; once this
+/// collapses to its pinned title, that title (not a second heading in the
+/// content area) is the only name shown.
 ///
-/// No catalogue table carries a venue image today, so [backgroundImage] is
-/// null for every current call site and the hero renders a considered
-/// brand-green tone instead of a photo. Passing a real image widget later
-/// (e.g. `Image.network(...)`) is the only change needed to light up real
-/// photography — the scrim, text legibility and layout beneath it already
-/// account for a photo being there.
+/// No catalogue table carries a restaurant/hotel image today, so
+/// [backgroundImage] is null at those call sites and the hero renders a
+/// considered brand-green tone instead of a photo — unchanged, since
+/// [photoFallback] is opt-in. Events DO have `image_url`
+/// (see EventDetailScreen), so that call site passes the branded
+/// [CsImagePlaceholder] as [photoFallback] for its "no/failed image" case;
+/// Restaurant/Hotel Detail simply don't pass one, keeping their existing
+/// gradient-only look exactly as before. Passing a real [backgroundImage]
+/// widget (e.g. `Image.network(...)`) is the only change needed to light
+/// up real photography — the scrim, text legibility and layout beneath it
+/// already account for a photo being there.
 class DetailHero extends StatelessWidget {
   final String title;
   final Widget awardBadge;
   final List<Widget> extraBadges;
   final double expandedHeight;
   final Widget? backgroundImage;
+
+  // Shown filling the hero, behind the text-legibility scrim, only when
+  // backgroundImage is null — e.g. CsImagePlaceholder for Events. Optional
+  // and defaults to null so Restaurant/Hotel Detail (which never pass
+  // this) keep their exact current plain-gradient hero, unchanged.
+  final Widget? photoFallback;
 
   // Rendered as an overlay action on the hero itself (e.g. wishlist) —
   // optional, since not every detail screen has a personal-state toggle
@@ -33,12 +44,19 @@ class DetailHero extends StatelessWidget {
     this.extraBadges = const [],
     this.expandedHeight = 208,
     this.backgroundImage,
+    this.photoFallback,
     this.overlayAction,
   });
 
   @override
   Widget build(BuildContext context) {
     final hasPhoto = backgroundImage != null;
+    // A branded placeholder still reads as "there's a background image
+    // here" for gradient purposes — it needs the same transparent-topped
+    // vignette a real photo gets (so the monogram stays visible above the
+    // fold), not the fully-opaque brand-tone gradient reserved for the
+    // genuinely no-background case.
+    final hasBackground = hasPhoto || photoFallback != null;
 
     return SliverAppBar(
       expandedHeight: expandedHeight,
@@ -72,17 +90,18 @@ class DetailHero extends StatelessWidget {
         background: Stack(
           fit: StackFit.expand,
           children: [
-            if (hasPhoto) backgroundImage!,
-            // With a photo, this is a bottom-weighted vignette so the image
-            // reads clearly at the top and text stays legible at the
-            // bottom. Without one (every venue today) it's the full brand
-            // tone standing in for photography — see class doc.
+            if (hasPhoto) backgroundImage! else ?photoFallback,
+            // With a photo or branded placeholder, this is a bottom-weighted
+            // vignette so it reads clearly at the top and text stays legible
+            // at the bottom. With neither (Restaurant/Hotel Detail today)
+            // it's the full brand tone standing in for photography — see
+            // class doc.
             DecoratedBox(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: hasPhoto
+                  colors: hasBackground
                       ? [
                           Colors.transparent,
                           AppColors.brandGreen.withValues(alpha: 0.55),

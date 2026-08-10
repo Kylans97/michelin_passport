@@ -77,7 +77,14 @@ class HotelTile extends StatelessWidget {
                         const SizedBox(width: 8),
                       ],
                       if (locationLabel.isNotEmpty)
-                        Text(locationLabel, style: AppTypography.metadata),
+                        Expanded(
+                          child: Text(
+                            locationLabel,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: AppTypography.metadata,
+                          ),
+                        ),
                     ],
                   ),
                   if (showRankLine) ...[
@@ -90,12 +97,16 @@ class HotelTile extends StatelessWidget {
                           color: AppColors.gold,
                         ),
                         const SizedBox(width: 4),
-                        Text(
-                          "#${hotel.worlds50BestRank} · World's 50 Best",
-                          style: GoogleFonts.inter(
-                            color: AppColors.gold,
-                            fontSize: 11,
-                            fontWeight: FontWeight.w600,
+                        Expanded(
+                          child: Text(
+                            "#${hotel.worlds50BestRank} · World's 50 Best",
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: GoogleFonts.inter(
+                              color: AppColors.gold,
+                              fontSize: 11,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ],
