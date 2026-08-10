@@ -1,0 +1,201 @@
+catalogue_hotel_code,candidate_id,canonical_name,canonical_city,canonical_country,route,year,rank,list_type,source,confidence,evidence
+hotel_186,,,,,existing_catalogue_match,2023,17,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,"Algorithm tied with ""Raffles Sentosa Singapore"" (hotel_192) - resolved via known distinct branding: the plain ""Raffles Singapore""/""Raffles Hotel Singapore"" name refers unambiguously to the flagship colonial-era property (hotel_186), not the separate Sentosa resort"
+hotel_186,,,,,existing_catalogue_match,2024,6,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,"Same disambiguation as ""Raffles Hotel Singapore"" - flagship property, not Raffles Sentosa"
+hotel_186,,,,,existing_catalogue_match,2025,5,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"Same disambiguation as ""Raffles Hotel Singapore"" - flagship property, not Raffles Sentosa"
+hotel_187,,,,,existing_catalogue_match,2023,28,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_187,,,,,existing_catalogue_match,2024,33,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,exact name+city match
+hotel_193,,,,,existing_catalogue_match,2025,36,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"exact name match; Monaco is a single-city country, ""Monaco"" vs ""Monte Carlo"" is granularity only, not a real city mismatch"
+hotel_195,,,,,existing_catalogue_match,2025,11,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"unambiguous - only Brazil hotel in catalogue, exact name prefix+city match"
+hotel_266,,,,,existing_catalogue_match,2025,48,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"exact name (catalogue adds ""by Maistra Collection"")+city match"
+hotel_30,,,,,existing_catalogue_match,2025,49,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"""Wien"" is German for Vienna - same hotel, language variant only"
+hotel_328,,,,,existing_catalogue_match,2023,14,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_328,,,,,existing_catalogue_match,2025,79,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_338,,,,,existing_catalogue_match,2024,42,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,"RENAMED/REBRANDED: source used full name ""Castello di Reschio"" in 2024; catalogue and 2025 source both use ""Reschio"" - same property, city match confirms"
+hotel_338,,,,,existing_catalogue_match,2025,81,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,"exact name (catalogue: ""Reschio Hotel"")+city match"
+hotel_343,,,,,existing_catalogue_match,2023,20,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_343,,,,,existing_catalogue_match,2025,94,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_346,,,,,existing_catalogue_match,2025,82,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_349,,,,,existing_catalogue_match,2025,83,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,"Algorithm tied with sister property ""Splendido Mare, A Belmond Hotel, Portofino"" (different hotel_code) - resolved via known distinct branding: ""Splendido"" (no ""Mare"") is the main hilltop hotel, matches hotel_349 exactly"
+hotel_401,,,,,existing_catalogue_match,2025,99,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_452,,,,,existing_catalogue_match,2023,21,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_452,,,,,existing_catalogue_match,2025,63,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name match; city abbreviated in source (catalogue: Savelletri di Fasano)
+hotel_470,,,,,existing_catalogue_match,2023,24,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_470,,,,,existing_catalogue_match,2024,32,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,exact name (short form)+city match
+hotel_470,,,,,existing_catalogue_match,2025,66,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name (short form)+city match
+hotel_540,,,,,existing_catalogue_match,2025,71,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_55,,,,,existing_catalogue_match,2023,43,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_55,,,,,existing_catalogue_match,2025,52,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name (short form)+city match
+hotel_643,,,,,existing_catalogue_match,2025,46,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"exact name (catalogue adds ""KYOTO"")+city match"
+hotel_647,,,,,existing_catalogue_match,2024,22,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,"""Bvlgari"" is the brand's own stylized spelling - same hotel, spelling variant only"
+hotel_647,,,,,existing_catalogue_match,2025,15,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,"""Bvlgari"" is the brand's own stylized spelling - same hotel, spelling variant only"
+hotel_658,,,,,existing_catalogue_match,2023,30,top_50,https://joinpearl.co/lists/2023-worlds-50-best-hotels,high,exact name+city match
+hotel_658,,,,,existing_catalogue_match,2024,27,top_50,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2024-list.html,high,exact name+city match
+hotel_658,,,,,existing_catalogue_match,2025,59,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_679,,,,,existing_catalogue_match,2025,74,extended_51_100,https://www.theworlds50best.com/stories/News/the-worlds-50-best-hotels-2025-the-51-100-list.html,high,exact name+city match
+hotel_681,,,,,existing_catalogue_match,2025,37,top_50,https://www.theworlds50best.com/hotels/best-in-the-world/list/1-50,high,exact name (case)+city match
+,p1_01,Aman Tokyo,Tokyo,Japan,new_country_covered,2023,5,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Aman Tokyo' / Tokyo
+,p1_01,Aman Tokyo,Tokyo,Japan,new_country_covered,2024,7,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Aman Tokyo' / Tokyo
+,p1_01,Aman Tokyo,Tokyo,Japan,new_country_covered,2025,25,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Aman Tokyo' / Tokyo
+,p1_02,Borgo Santandrea,Amalfi,Italy,new_country_covered,2024,20,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Borgo Santandrea' / Amalfi
+,p1_02,Borgo Santandrea,Amalfi,Italy,new_country_covered,2025,53,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Borgo Santandrea' / Amalfi
+,p1_03,Bulgari Roma,Rome,Italy,new_country_covered,2025,22,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Bulgari Roma' / Rome
+,p1_04,Four Seasons Firenze,Florence,Italy,new_country_covered,2023,9,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Hotel Firenze' / Florence
+,p1_04,Four Seasons Firenze,Florence,Italy,new_country_covered,2024,19,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Firenze' / Florence
+,p1_04,Four Seasons Firenze,Florence,Italy,new_country_covered,2025,9,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Firenze' / Florence
+,p1_05,Hoshinoya Tokyo,Tokyo,Japan,new_country_covered,2023,39,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hoshinoya Tokyo' / Tokyo
+,p1_06,Hotel Cipriani,Venice,Italy,new_country_covered,2025,72,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel Cipriani' / Venice
+,p1_07,Hotel Il Pellicano,Porto Ercole,Italy,new_country_covered,2025,26,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel Il Pellicano' / Porto Ercole
+,p1_08,Hotel das Cataratas,Iguassu Falls,Brazil,new_country_covered,2025,76,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel das Cataratas' / Iguassu Falls
+,p1_09,Passalacqua,Moltrasio,Italy,new_country_covered,2023,1,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Passalacqua' / Moltrasio
+,p1_09,Passalacqua,Moltrasio,Italy,new_country_covered,2024,2,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Passalacqua' / Lake Como
+,p1_09,Passalacqua,Moltrasio,Italy,new_country_covered,2025,4,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Passalacqua' / Lake Como
+,p1_10,Rosewood São Paulo,São Paulo,Brazil,new_country_covered,2023,27,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Rosewood São Paulo' / São Paulo
+,p1_10,Rosewood São Paulo,São Paulo,Brazil,new_country_covered,2024,24,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Rosewood São Paulo' / São Paulo
+,p1_10,Rosewood São Paulo,São Paulo,Brazil,new_country_covered,2025,24,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Rosewood São Paulo' / São Paulo
+,p1_11,Six Senses Ibiza,Ibiza,Spain,new_country_covered,2023,49,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Six Senses Ibiza' / Ibiza
+,p1_12,The Tokyo Edition Toranomon,Tokyo,Japan,new_country_covered,2025,45,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Tokyo Edition Toranomon' / Tokyo
+,p2_001,Capella Sydney,Sydney,Australia,new_country_gap,2025,12,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Capella Sydney' / Sydney / Australia
+,p2_002,Southern Ocean Lodge,Kangaroo Island,Australia,new_country_gap,2025,69,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Southern Ocean Lodge' / Kangaroo Island / Australia
+,p2_003,The Calile,Brisbane,Australia,new_country_gap,2023,12,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Calile' / Brisbane / Australia
+,p2_003,The Calile,Brisbane,Australia,new_country_gap,2024,25,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Calile' / Brisbane / Australia
+,p2_003,The Calile,Brisbane,Australia,new_country_gap,2025,34,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Calile' / Brisbane / Australia
+,p2_004,The Tasman,Hobart,Australia,new_country_gap,2024,49,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Tasman' / Hobart / Australia
+,p2_005,Mandarin Oriental Qianmen,Beijing,China,new_country_gap,2025,14,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Mandarin Oriental Qianmen' / Beijing / China
+,p2_006,Four Seasons Tamarindo,La Manzanilla,Costa Rica,new_country_gap,2025,55,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Tamarindo' / La Manzanilla / Costa Rica
+,p2_007,Kokomo Private Island,Yaukuve Levu Island,Fiji,new_country_gap,2024,50,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Kokomo Private Island' / Yaukuve Levu Island / Fiji
+,p2_008,Cheval Blanc Paris,Paris,France,new_country_gap,2023,34,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Cheval Blanc Paris' / Paris / France
+,p2_008,Cheval Blanc Paris,Paris,France,new_country_gap,2024,4,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Cheval Blanc' / Paris / France
+,p2_008,Cheval Blanc Paris,Paris,France,new_country_gap,2025,21,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Cheval Blanc Paris' / Paris / France
+,p2_009,Hôtel de Crillon,Paris,France,new_country_gap,2023,50,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hôtel de Crillon' / Paris / France
+,p2_009,Hôtel de Crillon,Paris,France,new_country_gap,2024,15,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hôtel de Crillon' / Paris / France
+,p2_009,Hôtel de Crillon,Paris,France,new_country_gap,2025,23,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hôtel de Crillon' / Paris / France
+,p2_010,Hôtel du Cap-Eden-Roc,Antibes,France,new_country_gap,2023,33,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel Du Cap-Eden-Roc' / Cap d'Antibes / France
+,p2_010,Hôtel du Cap-Eden-Roc,Antibes,France,new_country_gap,2024,17,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel du Cap-Eden-Roc' / Antibes / France
+,p2_010,Hôtel du Cap-Eden-Roc,Antibes,France,new_country_gap,2025,57,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel du Cap-Eden-Roc' / Antibes / France
+,p2_011,Hôtel du Couvent,Nice,France,new_country_gap,2025,27,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hôtel du Couvent' / Nice / France
+,p2_012,La Réserve Paris,Paris,France,new_country_gap,2023,31,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'La Réserve Paris' / Paris / France
+,p2_013,Le Bristol Paris,Paris,France,new_country_gap,2023,29,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Le Bristol Paris' / Paris / France
+,p2_013,Le Bristol Paris,Paris,France,new_country_gap,2024,40,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Le Bristol' / Paris / France
+,p2_013,Le Bristol Paris,Paris,France,new_country_gap,2025,19,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Le Bristol' / Paris / France
+,p2_014,Plaza Athénée,Paris,France,new_country_gap,2025,80,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Plaza Athénée' / Paris / France
+,p2_015,The Maybourne Riviera,Roquebrune-Cap-Martin,France,new_country_gap,2023,26,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Maybourne Riviera' / Roquebrune-Cap-Martin / France
+,p2_016,The Brando,Tetiaroa,French Polynesia,new_country_gap,2024,47,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Brando' / Tetiaroa / French Polynesia
+,p2_017,Four Seasons Astir Palace Hotel Athens,Athens,Greece,new_country_gap,2023,35,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Astir Palace Hotel Athens' / Athens / Greece
+,p2_017,Four Seasons Astir Palace Hotel Athens,Athens,Greece,new_country_gap,2025,17,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Astir Palace' / Athens / Greece
+,p2_018,Four Seasons Hong Kong,Hong Kong,Hong Kong,new_country_gap,2025,86,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Hong Kong' / Hong Kong / Hong Kong
+,p2_019,Mandarin Oriental Hong Kong,Hong Kong,Hong Kong,new_country_gap,2025,41,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Mandarin Oriental Hong Kong' / Hong Kong / China
+,p2_020,Rosewood Hong Kong,Hong Kong,Hong Kong,new_country_gap,2023,2,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Rosewood Hong Kong' / Hong Kong / Hong Kong
+,p2_020,Rosewood Hong Kong,Hong Kong,Hong Kong,new_country_gap,2024,3,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Rosewood Hong Kong' / Hong Kong / Hong Kong
+,p2_020,Rosewood Hong Kong,Hong Kong,Hong Kong,new_country_gap,2025,1,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Rosewood Hong Kong' / Hong Kong / China
+,p2_021,The Peninsula Hong Kong,Hong Kong,Hong Kong,new_country_gap,2025,54,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'The Peninsula Hong Kong' / Hong Kong / Hong Kong
+,p2_022,Upper House Hong Kong,Hong Kong,Hong Kong,new_country_gap,2023,4,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Upper House' / Hong Kong / Hong Kong
+,p2_022,Upper House Hong Kong,Hong Kong,Hong Kong,new_country_gap,2024,5,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Upper House' / Hong Kong / Hong Kong
+,p2_022,Upper House Hong Kong,Hong Kong,Hong Kong,new_country_gap,2025,10,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Upper House Hong Kong' / Hong Kong / China
+,p2_023,Amanbagh,Ajabgarh,India,new_country_gap,2025,100,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Amanbagh' / Ajabgarh / India
+,p2_024,Suján Jawai,"Jawai, Rajasthan",India,new_country_gap,2024,43,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Suján Jawai' / Rajasthan / India
+,p2_024,Suján Jawai,"Jawai, Rajasthan",India,new_country_gap,2025,91,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Suján Jawai' / Jawai / India
+,p2_025,The Johri,Jaipur,India,new_country_gap,2025,93,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'The Johri' / Jaipur / India
+,p2_026,The Oberoi Amarvilas,Agra,India,new_country_gap,2023,45,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Oberoi Amarvilas' / Agra / India
+,p2_027,The Taj Mahal Palace,Mumbai,India,new_country_gap,2025,38,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Taj Mahal Palace' / Mumbai / India
+,p2_028,Desa Potato Head,Bali,Indonesia,new_country_gap,2023,40,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Desa Potato Head' / Denpasar / Indonesia
+,p2_028,Desa Potato Head,Bali,Indonesia,new_country_gap,2024,21,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Desa Potato Head' / Bali / Indonesia
+,p2_028,Desa Potato Head,Bali,Indonesia,new_country_gap,2025,18,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Desa Potato Head' / Bali / Indonesia
+,p2_029,Mandapa,Bali,Indonesia,new_country_gap,2025,50,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Mandapa' / Bali / Indonesia
+,p2_030,Nihi Sumba,Sumba Island,Indonesia,new_country_gap,2023,18,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Nihi Sumba' / Sumba / Indonesia
+,p2_030,Nihi Sumba,Sumba Island,Indonesia,new_country_gap,2024,10,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Nihi Sumba' / Sumba Island / Indonesia
+,p2_030,Nihi Sumba,Sumba Island,Indonesia,new_country_gap,2025,56,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Nihi Sumba' / Sumba Island / Indonesia
+,p2_031,The Datai,Langkawi,Malaysia,new_country_gap,2025,85,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'The Datai' / Langkawi / Malaysia
+,p2_032,Soneva Fushi,"Eydhafushi, Baa Atoll",Maldives,new_country_gap,2023,7,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Soneva Fushi' / Eydhafushi / Maldives
+,p2_032,Soneva Fushi,"Eydhafushi, Baa Atoll",Maldives,new_country_gap,2024,8,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Soneva Fushi' / Maldives / Maldives
+,p2_032,Soneva Fushi,"Eydhafushi, Baa Atoll",Maldives,new_country_gap,2025,28,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Soneva Fushi' / Maldives / Maldives
+,p2_033,Soneva Jani,Noonu Atoll,Maldives,new_country_gap,2023,36,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Soneva Jani' / Noonu Atoll / Maldives
+,p2_034,Soneva Secret,Maldives,Maldives,new_country_gap,2025,92,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Soneva Secret' / Maldives / Maldives
+,p2_035,Chablé Yucatán,"Chocholá, Yucatán",Mexico,new_country_gap,2023,13,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Chablé Yucatán' / Mérida / Mexico
+,p2_035,Chablé Yucatán,"Chocholá, Yucatán",Mexico,new_country_gap,2024,16,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Chablé Yucatán' / Chocholá / Mexico
+,p2_035,Chablé Yucatán,"Chocholá, Yucatán",Mexico,new_country_gap,2025,8,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Chablé Yucatán' / Chocholá / Mexico
+,p2_036,Hotel Esencia,Tulum,Mexico,new_country_gap,2023,19,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel Esencia' / Tulum / Mexico
+,p2_036,Hotel Esencia,Tulum,Mexico,new_country_gap,2024,48,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel Esencia' / Tulum / Mexico
+,p2_037,Las Ventanas al Paraíso,Los Cabos,Mexico,new_country_gap,2025,44,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Las Ventanas al Paraíso' / Los Cabos / Mexico
+,p2_038,Maroma,Riviera Maya,Mexico,new_country_gap,2024,18,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Maroma' / Riviera Maya / Mexico
+,p2_038,Maroma,Riviera Maya,Mexico,new_country_gap,2025,33,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Maroma' / Riviera Maya / Mexico
+,p2_039,Montage Los Cabos,Cabo San Lucas,Mexico,new_country_gap,2025,67,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Montage Los Cabos' / Cabo San Lucas / Mexico
+,p2_040,One&Only Mandarina,Riviera Nayarit,Mexico,new_country_gap,2023,8,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'One&Only Mandarina' / Riviera Nayarit / Mexico
+,p2_040,One&Only Mandarina,Riviera Nayarit,Mexico,new_country_gap,2024,29,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'One&Only Mandarina' / Riviera Nayarit / Mexico
+,p2_040,One&Only Mandarina,Riviera Nayarit,Mexico,new_country_gap,2025,39,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'One&Only Mandarina' / Riviera Nayarit / Mexico
+,p2_041,Rosewood Mayakoba,Playa del Carmen,Mexico,new_country_gap,2025,95,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Rosewood Mayakoba' / Playa del Carmen / Mexico
+,p2_042,La Mamounia,Marrakech,Morocco,new_country_gap,2023,6,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'La Mamounia' / Marrakech / Morocco
+,p2_042,La Mamounia,Marrakech,Morocco,new_country_gap,2024,31,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'La Mamounia' / Marrakech / Morocco
+,p2_042,La Mamounia,Marrakech,Morocco,new_country_gap,2025,30,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'La Mamounia' / Marrakech / Morocco
+,p2_043,Royal Mansour,Marrakech,Morocco,new_country_gap,2023,23,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Royal Mansour' / Marrakech / Morocco
+,p2_043,Royal Mansour,Marrakech,Morocco,new_country_gap,2024,38,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Royal Mansour' / Marrakech / Morocco
+,p2_043,Royal Mansour,Marrakech,Morocco,new_country_gap,2025,13,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Royal Mansour' / Marrakech / Morocco
+,p2_044,Huka Lodge,Taupō,New Zealand,new_country_gap,2025,88,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Huka Lodge' / Taupō / New Zealand
+,p2_045,Six Senses Zighy Bay,Zighy Bay,Oman,new_country_gap,2024,45,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Six Senses Zighy Bay' / Zighy / Oman
+,p2_045,Six Senses Zighy Bay,Zighy Bay,Oman,new_country_gap,2025,84,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Six Senses Zighy Bay' / Zighy Bay / Oman
+,p2_046,Palacio Nazarenas,Cusco,Peru,new_country_gap,2025,87,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Palacio Nazarenas' / Cusco / Peru
+,p2_047,Mount Nelson,Cape Town,South Africa,new_country_gap,2024,28,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Mount Nelson' / Cape Town / South Africa
+,p2_047,Mount Nelson,Cape Town,South Africa,new_country_gap,2025,73,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Mount Nelson' / Cape Town / South Africa
+,p2_048,Singita – Kruger National Park,Kruger National Park,South Africa,new_country_gap,2023,15,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Singita – Kruger National Park' / Kruger National Park / South Africa
+,p2_048,Singita – Kruger National Park,Kruger National Park,South Africa,new_country_gap,2024,44,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Singita – Kruger National Park' / Kruger National Park / South Africa
+,p2_048,Singita – Kruger National Park,Kruger National Park,South Africa,new_country_gap,2025,40,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Singita – Kruger National Park' / Kruger National Park / South Africa
+,p2_049,Amangalla,Galle,Sri Lanka,new_country_gap,2023,38,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Amangalla' / Galle / Sri Lanka
+,p2_049,Amangalla,Galle,Sri Lanka,new_country_gap,2024,39,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Amangalla' / Galle / Sri Lanka
+,p2_049,Amangalla,Galle,Sri Lanka,new_country_gap,2025,97,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Amangalla' / Galle / Sri Lanka
+,p2_050,Eden Rock,Saint-Jean,St. Barthélemy,new_country_gap,2023,41,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Eden Rock St Barts' / Saint-Jean / St Barts
+,p2_050,Eden Rock,Saint-Jean,St. Barthélemy,new_country_gap,2024,36,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Eden Rock' / St. Barths / St. Barths
+,p2_050,Eden Rock,Saint-Jean,St. Barthélemy,new_country_gap,2025,90,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Eden Rock' / St. Barths / St. Barthélemy
+,p2_051,Ett Hem,Stockholm,Sweden,new_country_gap,2025,89,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Ett Hem' / Stockholm / Sweden
+,p2_052,Aman Nai Lert,Bangkok,Thailand,new_country_gap,2025,51,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Aman Nai Lert' / Bangkok / Thailand
+,p2_053,Capella Bangkok,Bangkok,Thailand,new_country_gap,2023,11,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Capella Bangkok' / Bangkok / Thailand
+,p2_053,Capella Bangkok,Bangkok,Thailand,new_country_gap,2024,1,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Capella Bangkok' / Bangkok / Thailand
+,p2_053,Capella Bangkok,Bangkok,Thailand,new_country_gap,2025,3,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Capella Bangkok' / Bangkok / Thailand
+,p2_054,Dusit Thani Bangkok,Bangkok,Thailand,new_country_gap,2025,60,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Dusit Thani Bangkok' / Bangkok / Thailand
+,p2_055,Four Seasons Bangkok at Chao Phraya River,Bangkok,Thailand,new_country_gap,2023,3,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Bangkok at Chao Phraya River' / Bangkok / Thailand
+,p2_055,Four Seasons Bangkok at Chao Phraya River,Bangkok,Thailand,new_country_gap,2024,14,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Bangkok at Chao Phraya River' / Bangkok / Thailand
+,p2_055,Four Seasons Bangkok at Chao Phraya River,Bangkok,Thailand,new_country_gap,2025,2,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons Bangkok at Chao Phraya River' / Bangkok / Thailand
+,p2_056,Mandarin Oriental Bangkok,Bangkok,Thailand,new_country_gap,2023,10,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Mandarin Oriental Bangkok' / Bangkok / Thailand
+,p2_056,Mandarin Oriental Bangkok,Bangkok,Thailand,new_country_gap,2024,12,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Mandarin Oriental Bangkok' / Bangkok / Thailand
+,p2_056,Mandarin Oriental Bangkok,Bangkok,Thailand,new_country_gap,2025,7,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Mandarin Oriental Bangkok' / Bangkok / Thailand
+,p2_057,Rosewood Bangkok,Bangkok,Thailand,new_country_gap,2025,62,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Rosewood Bangkok' / Bangkok / Thailand
+,p2_058,The Siam,Bangkok,Thailand,new_country_gap,2023,42,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Siam' / Bangkok / Thailand
+,p2_058,The Siam,Bangkok,Thailand,new_country_gap,2024,26,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Siam' / Bangkok / Thailand
+,p2_058,The Siam,Bangkok,Thailand,new_country_gap,2025,70,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'The Siam' / Bangkok / Thailand
+,p2_059,Maçakızı,Bodrum,Turkey,new_country_gap,2025,96,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Maçakızı' / Bodrum / Turkey
+,p2_060,Atlantis The Royal,Dubai,United Arab Emirates,new_country_gap,2023,44,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Atlantis The Royal' / Dubai / United Arab Emirates
+,p2_060,Atlantis The Royal,Dubai,United Arab Emirates,new_country_gap,2024,9,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Atlantis The Royal' / Dubai / UAE
+,p2_060,Atlantis The Royal,Dubai,United Arab Emirates,new_country_gap,2025,6,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Atlantis The Royal' / Dubai / UAE
+,p2_061,Jumeirah Marsa Al Arab,Dubai,United Arab Emirates,new_country_gap,2025,20,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Jumeirah Marsa Al Arab' / Dubai / UAE
+,p2_062,The Lana,Dubai,United Arab Emirates,new_country_gap,2024,23,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Lana' / Dubai / UAE
+,p2_062,The Lana,Dubai,United Arab Emirates,new_country_gap,2025,35,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Lana' / Dubai / UAE
+,p2_063,Claridge's,London,United Kingdom,new_country_gap,2023,16,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Claridge's' / London / United Kingdom
+,p2_063,Claridge's,London,United Kingdom,new_country_gap,2024,11,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Claridge's' / London / UK
+,p2_063,Claridge's,London,United Kingdom,new_country_gap,2025,16,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Claridge's' / London / UK
+,p2_064,Estelle Manor,Witney,United Kingdom,new_country_gap,2025,47,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Estelle Manor' / Witney / UK
+,p2_065,Gleneagles,Auchterarder,United Kingdom,new_country_gap,2023,32,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Gleneagles' / Auchterarder / United Kingdom
+,p2_065,Gleneagles,Auchterarder,United Kingdom,new_country_gap,2024,41,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Gleneagles' / Auchterarder / UK
+,p2_065,Gleneagles,Auchterarder,United Kingdom,new_country_gap,2025,78,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Gleneagles' / Auchterarder / Scotland
+,p2_066,NoMad London,London,United Kingdom,new_country_gap,2023,46,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'NoMad London' / London / United Kingdom
+,p2_067,Raffles London at The OWO,London,United Kingdom,new_country_gap,2024,13,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Raffles London at The OWO' / London / UK
+,p2_067,Raffles London at The OWO,London,United Kingdom,new_country_gap,2025,31,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Raffles London at The OWO' / London / UK
+,p2_068,The Connaught,London,United Kingdom,new_country_gap,2023,22,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Connaught' / London / United Kingdom
+,p2_068,The Connaught,London,United Kingdom,new_country_gap,2024,46,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Connaught' / London / UK
+,p2_068,The Connaught,London,United Kingdom,new_country_gap,2025,29,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Connaught' / London / UK
+,p2_069,The Emory,London,United Kingdom,new_country_gap,2025,32,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Emory' / London / UK
+,p2_070,The Newt in Somerset,Castle Cary,United Kingdom,new_country_gap,2023,37,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Newt in Somerset' / Castle Cary / United Kingdom
+,p2_071,The Savoy,London,United Kingdom,new_country_gap,2023,47,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Savoy' / London / United Kingdom
+,p2_072,Aman New York,New York,United States,new_country_gap,2023,25,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Aman New York' / New York City / United States
+,p2_072,Aman New York,New York,United States,new_country_gap,2024,37,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Aman New York' / New York / USA
+,p2_072,Aman New York,New York,United States,new_country_gap,2025,61,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Aman New York' / New York / USA
+,p2_073,Amangiri,Canyon Point,United States,new_country_gap,2025,98,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Amangiri' / Canyon Point / USA
+,p2_074,Equinox Hotel New York,New York City,United States,new_country_gap,2023,48,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Equinox Hotel New York' / New York City / United States
+,p2_075,Four Seasons at The Surf Club,Surfside,United States,new_country_gap,2024,34,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons at The Surf Club' / Surfside / USA
+,p2_075,Four Seasons at The Surf Club,Surfside,United States,new_country_gap,2025,58,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'Four Seasons at The Surf Club' / Surfside / USA
+,p2_076,Hotel Bel-Air,Los Angeles,United States,new_country_gap,2024,35,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel Bel-Air' / Los Angeles / USA
+,p2_076,Hotel Bel-Air,Los Angeles,United States,new_country_gap,2025,42,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'Hotel Bel-Air' / Los Angeles / USA
+,p2_077,San Ysidro Ranch,Santa Barbara,United States,new_country_gap,2025,68,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'San Ysidro Ranch' / Santa Barbara / USA
+,p2_078,The Beverly Hills Hotel,Los Angeles,United States,new_country_gap,2025,65,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'The Beverly Hills Hotel' / Los Angeles / USA
+,p2_079,The Carlyle,New York,United States,new_country_gap,2024,30,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Carlyle' / New York / USA
+,p2_079,The Carlyle,New York,United States,new_country_gap,2025,64,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'The Carlyle' / New York / USA
+,p2_080,The Fifth Avenue Hotel,New York,United States,new_country_gap,2025,75,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'The Fifth Avenue Hotel' / New York / USA
+,p2_081,The Greenwich Hotel,New York,United States,new_country_gap,2025,77,extended_51_100,https://www.theworlds50best.com/hotels/,high,raw listing 'The Greenwich Hotel' / New York / USA
+,p2_082,The Mark,New York,United States,new_country_gap,2025,43,top_50,https://www.theworlds50best.com/hotels/,high,raw listing 'The Mark' / New York / USA

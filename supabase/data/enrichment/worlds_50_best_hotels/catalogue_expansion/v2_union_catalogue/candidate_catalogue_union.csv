@@ -1,0 +1,782 @@
+candidate_id,name,city,country,inclusion_reason,michelin_keys,key_confidence,w50b_appearances,status
+hotel_01,Pulitzer Amsterdam,Amsterdam,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_02,Central Park,Voorburg,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_03,The Dylan,Amsterdam,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_04,Soho House,Amsterdam,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_05,Van Oys Maastricht Retreat,Maastricht,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_06,Pillows Grand Boutique Hotel Ter Borch,Zwolle,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_07,Château St. Gerlach,Valkenburg,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_08,Mooirivier,Dalfsen,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_09,The Craftsmen,Amsterdam,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_10,De Plesman Hotel,The Hague,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_11,Landgoed Hotel Het Roode Koper,Ermelo,Netherlands,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_12,Pillows Grand Boutique Hotel Maurits at the Park,Amsterdam,Netherlands,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_13,Château Neercanne,Maastricht,Netherlands,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_14,TwentySeven,Amsterdam,Netherlands,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_15,Rosewood Amsterdam,Amsterdam,Netherlands,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_16,Tivoli Doelen,Amsterdam,Netherlands,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_17,De L'Europe,Amsterdam,Netherlands,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_18,Botanic Sanctuary Antwerp,Antwerp,Belgium,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_19,Juliana Hotel Brussels,Brussels,Belgium,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_20,Hôtel Amigo,Brussels,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_21,Hotel Van Cleef,Bruges,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_147,Pillows Grand Boutique Hotel Reylof Ghent,Ghent,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_148,Kasteel van Ordingen,Sint-Truiden,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_149,Boutiquehotel 't Fraeyhuis,Bruges,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_150,Dukes' Palace Brugge,Bruges,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_151,La Butte aux Bois,Lanaken,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_152,Château de Vignée,Rochefort,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_153,Corinthia Grand Hotel Astoria Brussels,Brussels,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_154,1898 The Post,Ghent,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_155,Hotel De Witte Lelie,Antwerp,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_156,The Notary,Bruges,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_157,Hotel Flora,Antwerp,Belgium,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_22,Le Place d'Armes,Luxembourg City,Luxembourg,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_23,Hotel Bareiss,Baiersbronn,Germany,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_24,Hotel Traube Tonbach,Baiersbronn,Germany,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_25,Schloss Elmau Luxury Spa Retreat & Cultural Hideaway,Elmau,Germany,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_26,Hotel Vier Jahreszeiten,Hamburg,Germany,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_27,The Fontenay,Hamburg,Germany,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_28,Althoff Seehotel Überfahrt,Rottach-Egern,Germany,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_88,Villa Contessa,Bad Saarow,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_89,Kempinski Hotel Berchtesgaden,Berchtesgaden,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_90,Hotel de Rome,Berlin,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_91,Patrick Hellmann Schlosshotel,Berlin,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_92,Telegraphenamt,Berlin,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_93,"The Ritz-Carlton, Berlin",Berlin,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_94,Spa & Golf Hotel Weimarer Land,Blankenhain,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_95,Hotel Ketschauer Hof,Deidesheim,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_96,Der Öschberghof,Donaueschingen,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_97,Bülow Palais,Dresden,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_98,Kempinski Hotel Taschenbergpalais,Dresden,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_99,Breidenbacher Hof Düsseldorf,Düsseldorf,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_100,Sofitel Frankfurt Opera,Frankfurt am Main,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_101,Vitalhotel Alter Meierhof,Glücksburg,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_102,Seezeitlodge Hotel & Spa,Gonnesweiler,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_103,Das Achental Resort,Grassau,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_104,Hotel Louis C. Jacob,Hamburg,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_105,Luisenhöhe - Gesundheitsresort Schwarzwald,Horben,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_106,Das Kranzbach Hotel & Wellness Retreat,Kranzbach,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_107,Mandarin Oriental Munich,Munich,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_108,Rocco Forte Charles Hotel,Munich,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_109,Rosewood Munich,Munich,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_110,Sonnenalp Resort,Ofterschwang,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_111,Hotel Gut Steinbach,Reit im Winkl,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_112,Wellness & Sport Hotel Jagdhof,Röhrnbach,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_113,Parkhotel Egerner Höfe,Rottach-Egern,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_114,Esplanade Saarbrücken,Saarbrücken,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_115,La Maison,Saarlouis,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_116,Seesteg Norderney,Norderney,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_117,Landhaus Stricker,Sylt,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_118,Söl’ring Hof,Sylt,Germany,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_158,Cortiina Hotel,Munich,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_159,Hotel Vier Jahreszeiten Kempinski,Munich,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_160,Hotel Adlon Kempinski,Berlin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_161,Bayerischer Hof Munich,Munich,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_162,Excelsior Hotel Ernst,Cologne,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_163,The Mandala Hotel,Berlin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_164,Wilmina Hotel,Berlin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_165,Château Royal Berlin,Berlin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_166,Das Stue,Berlin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_167,Hotel Orania.Berlin,Berlin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_168,Schloss Eberstein,Gernsbach,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_169,AMERON Neuschwanstein Alpsee Resort & Spa,Schwangau,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_170,Burg Schwarzenstein,Geisenheim,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_171,Kloster Hornbach,Hornbach,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_172,Gasthof Zufriedenheit,Naumburg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_173,Villa Sonnenhof Boutique Hotel,Bad Reichenhall,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_174,Hotel Landhaus Wachtelhof,Rotenburg an der Wümme,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_175,Althoff Grandhotel Schloss Bensberg,Bensberg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_176,Grand Hotel Heiligendamm,Bad Doberan,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_177,Landhaus Flottbek Boutique Hotel,Hamburg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_178,Villa Mittermeier,Rothenburg ob der Tauber,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_179,RIVA - Das Hotel am Bodensee,Konstanz,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_180,Hotel München Palace,Munich,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_181,HOTEL ZOO BERLIN,Berlin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_182,Der Birkenhof Spa & Genuss Resort,Neunburg vorm Wald,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_183,Schlosshotel Münchhausen,Aerzen,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_184,Alpenloge Hotel,Scheidegg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_185,Hardenberg Burghotel,Nörten-Hardenberg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_197,Hotel Oswald Gourmet & Spa,Kaikenried,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_198,Hanusel Hof,Hellengerst,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_199,Hotel BEI SCHUMANN,Kirschau,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_200,Hüttenhof - Wellnesshotel & Luxus-Bergchalets,Grainet,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_201,Chiemgauhof Lakeside Retreat,Übersee,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_202,Steigenberger Icon Europäischer Hof Baden Baden,Baden-Baden,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_203,HUBERTUS Mountain Refugio Allgäu,Oberallgäu,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_204,Schlosshotel Burg Schlitz,Hohen Demzin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_205,1884 Norderney,Norderney,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_206,Hof Galerie,Sylt,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_207,Hotel Deimann,Schmallenberg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_208,Hotel Romantischer Winkel - RoLigio® & Wellness Resort,Bad Sachsa,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_209,Hotel Maximilian's,Augsburg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_210,Parkhotel Adler,Hinterzarten,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_211,Strandhotel Fischland,Dierhagen,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_212,niXe Boutiquehotel & Spa,Binz,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_213,The Wellem,Düsseldorf,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_214,Das James,Flensburg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_215,Strandhaus Spreewald,Lübben,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_216,Maison Messmer,Baden-Baden,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_217,Do & Co Hotel Munich,Munich,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_218,Mauritzhof Hotel Münster,Münster,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_219,Boutique-Hotel Friesinger,Kressbronn am Bodensee,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_220,Steigenberger Icon Parkhotel Düsseldorf,Düsseldorf,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_221,DAS.HOCHGRAT,Oberstaufen,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_222,ROEWERS Privathotel,Ostseebad Sellin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_223,Hotel Exquisit,Oberstdorf,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_224,Hotel Breitenburg,Breitenburg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_225,Maximilian,Oberammergau,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_226,JW Marriott Hotel Frankfurt,Frankfurt am Main,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_227,"Lieser Castle, Autograph Collection",Lieser,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_228,Das Graseck Mountain Hideaway & Healthcare,Garmisch-Partenkirchen,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_229,Boutiquehotel Blaue Burg Falkenstein,Pfronten,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_230,Staudacherhof,Garmisch-Partenkirchen,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_231,Kulturhof Stanggass,Berchtesgaden,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_232,Haubers Naturresort,Oberstaufen,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_233,Das Rübezahl,Schwangau,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_234,Gewandhaus Dresden,Dresden,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_235,Landhaus Severin*s Morsum Kliff,Sylt,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_236,Hotel Engel Obertal - Wellness & Genuss Resort,Baiersbronn,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_237,"Koenigshof, a Luxury Collection Hotel, Munich",Munich,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_238,Hotel Die Sonne Frankenberg,Frankenberg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_239,Hotel Kronelamm im Schwarzwald,Bad Teinach-Zavelstein,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_240,Hotel Alpenkönig,Oberstaufen,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_241,Hotel Restaurant Spa Torkel,Nonnenhorn,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_242,"Roomers Berlin Steinplatz, Autograph Collection",Berlin,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_243,Heidelberg Suites,Heidelberg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_244,Andaz Munich Schwabinger Tor,Munich,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_245,BEYOND by Geisel,Munich,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_246,Werdenfelserei,Garmisch-Partenkirchen,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_247,Tortue Hamburg,Hamburg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_248,Spa & Resort Bachmair Weissach,Rottach-Egern,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_249,Hotel / Weingut Meintzinger,Frickenhausen,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_250,Widmann's Löwen,Königsbronn,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_251,Hotel Dollenberg,Bad Peterstal-Griesbach,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_252,Hotel PURS,Andernach,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_253,Hotel Villa Sorgenfrei & Restaurant Atelier Sanssouci,Dresden,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_254,Hotel Europäischer Hof Heidelberg,Heidelberg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_255,Hotel Rebstock Durbach,Durbach,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_256,The Ritz-Carlton Wolfsburg,Wolfsburg,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_257,Hotel Heinzler am See,Immenstaad am Bodensee,Germany,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_29,Rosewood Schloss Fuschl,Hof bei Salzburg,Austria,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_30,Hotel Sacher Wien,Vienna,Austria,michelin_key_and_worlds_50_best,3,existing_catalogue,1,IN_CATALOGUE
+hotel_31,DAS EDELWEISS - Salzburg Mountain Resort,Grossarl,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_32,Family Nature Resort Moar Gut,Grossarl,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_33,TOP Hotel Hochgurgl,Hochgurgl,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_34,Grand Tirolia Kitzbühel,Kitzbühel,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_35,Naturhotel Waldklause,Längenfeld,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_36,Hotel Almhof Schneider,Lech am Arlberg,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_37,Severins – The Alpine Retreat,Lech am Arlberg,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_38,Alpen-Wellness Resort Hochfirst,Obergurgl,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_39,Schloss Mönchstein,Salzburg,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_40,Hotel Tannenhof,St. Anton am Arlberg,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_41,Hotel Schloss Seefels,Techelsberg,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_42,Aktiv & Wellnesshotel Bergfried,Tux,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_43,Falkensteiner Schlosshotel Velden,Velden am Wörthersee,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_44,Hotel Imperial,Vienna,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_45,Hotel Sans Souci Wien,Vienna,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_46,Park Hyatt Vienna,Vienna,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_47,Rosewood Vienna,Vienna,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_48,The Amauris Vienna,Vienna,Austria,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_119,Das Kronthaler,Achenkirch,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_120,Scheiblhofer THE RESORT,Andau,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_121,The Comodo Bad Gastein,Bad Gastein,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_122,Eriro,Ehrwald,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_123,Schlosshotel Fiss,Fiss,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_124,Impulshotel FREIGOLD,Freistadt,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_125,Bergblick,Grän-Haldensee,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_126,Genießer- & Romantikhotel DAS SCHIFF,Hittisau,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_127,Boutique Hotel Weisses Rössl,Innsbruck,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_128,Elizabeth Arthotel,Ischgl,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_129,Hotel Trofana Royal Resort,Ischgl,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_130,Schlosshotel Ischgl,Ischgl,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_131,Hotel Kitzhof Mountain Design Resort,Kitzbühel,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_132,Hotel Weisses Roessl,Kitzbühel,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_133,Schwarzer Adler - Adults Only,Kitzbühel,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_134,Post Lech Arlberg,Lech am Arlberg,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_135,Burg Vital Resort,Lech am Arlberg,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_136,Walch's Rote Wand Gourmet Hotel,Lech am Arlberg,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_137,Hotel Krallerhof,Leogang,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_138,mama thresl,Leogang,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_139,Naturhotel Forsthofgut,Leogang,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_140,die HOCHKÖNIGIN Mountain Resort,Maria Alm am Steinernen Meer,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_141,Hideaway Hotel Montestyria Chalets & Suiten,Mariazell,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_142,ZillergrundRock Luxury Mountain Resort,Mayrhofen,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_143,Spa Hotel Jagdhof,Neustift im Stubaital,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_144,Alpenresort Schwarz,Obermieming,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_145,Holzleiten Bio Wellness Hotel,Obsteig,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_146,MALAT Weingut und Hotel,Palt,Austria,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_49,Grand Resort Bad Ragaz,Bad Ragaz,Switzerland,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_50,Hotel Les Trois Rois,Basel,Switzerland,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_51,Bürgenstock Resort,Bürgenstock,Switzerland,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_52,Beau-Rivage Geneva,Geneva,Switzerland,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_53,"The Woodward, Auberge Collection",Geneva,Switzerland,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_54,The Alpina Gstaad,Gstaad,Switzerland,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_55,Badrutt's Palace Hotel,St. Moritz,Switzerland,michelin_key_and_worlds_50_best,3,existing_catalogue,2,IN_CATALOGUE
+hotel_56,Carlton Hotel St. Moritz,St. Moritz,Switzerland,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_57,Baur au Lac,Zurich,Switzerland,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_58,The Chedi Andermatt,Andermatt,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_59,Tschuggen Grand Hotel,Arosa,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_60,Valsana Hotel & Appartements,Arosa,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_61,Castello del Sole Beach Resort & Spa,Ascona,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_62,Hotel Eden Roc,Ascona,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_63,Hotel Bellevue Palace Bern,Bern,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_64,Guarda Golf Hotel & Residences,Crans-Montana,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_65,Hostellerie du Pas de l'Ours,Crans-Montana,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_66,LeCrans Hotel & Spa,Crans-Montana,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_67,Hotel Villa Honegg,Ennetbürgen,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_68,Four Seasons Hotel des Bergues,Geneva,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_69,"The Ritz-Carlton Hotel de la Paix, Geneva",Geneva,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_70,Gstaad Palace,Gstaad,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_71,Le Grand Bellevue,Gstaad,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_72,Victoria-Jungfrau Grand Hotel & Spa,Interlaken,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_73,Beau-Rivage Palace,Lausanne,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_74,Lausanne Palace,Lausanne,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_75,Villa Principe Leopoldo,Lugano,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_76,"Mandarin Oriental Palace, Luzern",Lucerne,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_77,Fairmont Le Montreux Palace,Montreux,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_78,Grand Hotel Kronenhof,Pontresina,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_79,Boutique Hotel Restaurant Krone Regensberg,Regensberg,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_80,The Capra,Saas-Fee,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_81,Kulm Hotel St. Moritz,St. Moritz,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_82,Suvretta House,St. Moritz,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_83,7132 Hotel,Vals,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_84,Park Hotel Vitznau,Vitznau,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_85,CERVO Mountain Resort,Zermatt,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_86,Matterhorn FOCUS,Zermatt,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_87,La Réserve Eden au Lac Zurich,Zurich,Switzerland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_570,Le Mirador Resort & Spa,Vevey,Switzerland,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_571,Royal Savoy Hotel & Spa,Lausanne,Switzerland,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_572,Grand Hôtel du Lac,Vevey,Switzerland,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_186,"Raffles Hotel, Singapore",Singapore,Singapore,michelin_key_and_worlds_50_best,3,existing_catalogue,3,IN_CATALOGUE
+hotel_187,Capella Singapore,Singapore,Singapore,michelin_key_and_worlds_50_best,1,existing_catalogue,2,IN_CATALOGUE
+hotel_188,Four Seasons Hotel Singapore,Singapore,Singapore,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_189,"PARKROYAL COLLECTION Pickering, Singapore",Singapore,Singapore,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_190,"Mandarin Oriental, Singapore",Singapore,Singapore,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_191,Artyzen Singapore,Singapore,Singapore,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_192,Raffles Sentosa Singapore,Singapore,Singapore,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_193,Hôtel de Paris Monte-Carlo,Monte Carlo,Monaco,michelin_key_and_worlds_50_best,3,existing_catalogue,1,IN_CATALOGUE
+hotel_194,Hotel Metropole Monte Carlo,Monte Carlo,Monaco,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_195,"Copacabana Palace, A Belmond Hotel, Rio de Janeiro",Rio de Janeiro,Brazil,michelin_key_and_worlds_50_best,2,existing_catalogue,1,IN_CATALOGUE
+hotel_196,Boardwalk Boutique Hotel Aruba,Noord,Aruba,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_258,Maslina Resort,Stari Grad,Croatia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_259,Villa Nai 3.3,Dugi Otok,Croatia,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_260,Villa Dubrovnik,Dubrovnik,Croatia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_261,Supetar,Cavtat,Croatia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_262,Villa Korta Katarina & Winery,Orebić,Croatia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_263,Esplanade Zagreb Hotel,Zagreb,Croatia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_264,San Canzian,Buje,Croatia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_265,Meneghetti Wine Hotel and Winery,Bale,Croatia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_266,Grand Park Hotel Rovinj by Maistra Collection,Rovinj,Croatia,michelin_key_and_worlds_50_best,1,existing_catalogue,1,IN_CATALOGUE
+hotel_267,Palace Elisabeth Hvar,Hvar,Croatia,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_268,Platán Manor,Tata,Hungary,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_269,Hotel Clark Budapest,Budapest,Hungary,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_270,Kozmo Hotel Suites & Spa,Budapest,Hungary,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_271,Kimpton Bem Budapest,Budapest,Hungary,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_272,Anantara New York Palace Budapest,Budapest,Hungary,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_273,Verno House,Budapest,Hungary,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_274,Four Seasons Hotel Gresham Palace Budapest,Budapest,Hungary,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_275,"Matild Palace, a Luxury Collection Hotel",Budapest,Hungary,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_276,"Dorothea Hotel, Budapest, Autograph Collection",Budapest,Hungary,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_277,Párisi Udvar Hotel Budapest,Budapest,Hungary,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_278,W Budapest,Budapest,Hungary,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_279,Hotel Petit Bois,Balatonfüred,Hungary,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_280,The Bristol Belgrade,Belgrade,Serbia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_281,SAINT TEN Hotel,Belgrade,Serbia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_282,Square Nine Hotel,Belgrade,Serbia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_283,The St. Regis Belgrade,Belgrade,Serbia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_284,Grau Roig Andorra Boutique Hotel & Spa,Grandvalira,Andorra,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_285,The Blackpine Hotel,Les Escaldes,Andorra,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_286,Sport Hotel Hermitage & Spa,Soldeu,Andorra,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_287,L'Ovella Negra Mountain,Canillo,Andorra,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_288,Rosselli - AX Privilege,Valletta,Malta,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_289,The Phoenicia Malta,Valletta,Malta,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_290,Lure Hotel & Spa,Mellieha,Malta,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_291,Iniala Valletta,Valletta,Malta,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_292,Xara Palace,Mdina,Malta,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_293,Domus Zamittello,Valletta,Malta,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_294,Casa del Mare - Mediterraneo,Herceg Novi,Montenegro,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_295,Villa Geba,Sveti Stefan,Montenegro,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_296,The Chedi Luštica Bay,Tivat,Montenegro,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_297,One&Only Portonovi,Herceg Novi,Montenegro,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_298,Regent Porto Montenegro,Tivat,Montenegro,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_299,SIRO Boka Place,Tivat,Montenegro,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_300,Grad Otočec,Otočec,Slovenia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_301,Peterc Vineyard Estate,Kojsko,Slovenia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_302,AS Boutique Hotel,Ljubljana,Slovenia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_303,Zlata Ladjica Boutique Hotel,Ljubljana,Slovenia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_304,Chalet Sofija,Kranjska Gora,Slovenia,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_305,Nebesa Chalets,Kobarid,Slovenia,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_306,Jaskółka Dom i SPA,Szklarska Poręba,Poland,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_307,Zamek Łeba,Łeba,Poland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_308,Raffles Europejski Warsaw,Warsaw,Poland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_309,Hotel Copernicus,Krakow,Poland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_310,"Stradom House, Autograph Collection",Krakow,Poland,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_311,Hotel Altus Palace,Wrocław,Poland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_312,Pałac Ciekocinko Hotel Resort & Wellness,Ciekocinko,Poland,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_313,"Hotel Bristol, A Luxury Collection Hotel, Warsaw",Warsaw,Poland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_314,EN Hotel,Zakopane,Poland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_315,Quadrille,Gdynia,Poland,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_316,"H15 Palace, a Luxury Collection Hotel",Krakow,Poland,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_317,Hotel Santa Caterina,Amalfi,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_318,Il Sereno,Torno,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_319,Casa Angelina,Praiano,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_320,Il San Pietro di Positano,Positano,Italy,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_321,Brunelleschi Hotel,Florence,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_322,Villa Fiorella Art Hotel,Massa Lubrense,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_323,COMO Castello del Nero,Barberino Tavarnelle,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_324,Il Borro,San Giustino Valdarno,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_325,Hotel Vilòn,Rome,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_326,Country House Villadorata,Noto,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_327,Grand Hotel Excelsior Vittoria,Sorrento,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_328,Aman Venice,Venice,Italy,michelin_key_and_worlds_50_best,3,existing_catalogue,2,IN_CATALOGUE
+hotel_329,Castel Fragsburg,Merano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_330,Byblos Art Hotel Villa Amistà,San Pietro in Cariano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_331,Hotel Lungarno,Florence,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_332,Therasia Resort Sea & Spa,Vulcano,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_333,Botania Relais & Spa,Island of Ischia,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_334,Grand Hotel Principe di Piemonte,Viareggio,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_335,La Foresteria Planeta Estate,Menfi,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_336,Hassler Roma,Rome,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_337,Goldene Rose Karthaus,Schnals,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_338,Reschio Hotel,Lisciano Niccone,Italy,michelin_key_and_worlds_50_best,3,existing_catalogue,2,IN_CATALOGUE
+hotel_339,Riva Lofts Florence,Florence,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_340,La Minervetta,Sorrento,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_341,ADLER Sicilia,Siculiana,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_342,"Villa Sant'Andrea, A Belmond Hotel",Taormina,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_343,Le Sirenuse,Positano,Italy,michelin_key_and_worlds_50_best,2,existing_catalogue,2,IN_CATALOGUE
+hotel_344,Capri Palace Jumeirah,Capri,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_345,"Castello di Casole, A Belmond Hotel, Tuscany",Casole d'Elsa,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_346,Casa Maria Luigia,Modena,Italy,michelin_key_and_worlds_50_best,3,existing_catalogue,1,IN_CATALOGUE
+hotel_347,Grand Hotel Miramare,Santa Margherita Ligure,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_348,Bellevue Syrene 1820,Sorrento,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_349,"Splendido, A Belmond Hotel, Portofino",Portofino,Italy,michelin_key_and_worlds_50_best,2,existing_catalogue,1,IN_CATALOGUE
+hotel_350,Palazzo Parigi Hotel & Grand Spa,Milan,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_351,Violino D'Oro,Venice,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_352,San Luis Retreat Hotel & Lodges,Avelengo,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_353,Masseria Torre Coccaro,Savelletri di Fasano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_354,Londra Palace Venezia,Venice,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_355,Palazzo Margherita,Bernalda,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_356,Hotel Locarno,Rome,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_357,I Borghi dell'Eremo,Piegaro,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_358,Vico Milano,Milan,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_359,Locanda al Colle,Camaiore,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_360,Vocabolo Moscatelli Boutique Hotel & Restaurant,Umbertide,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_361,Cascioni Eco Retreat,Costa Smeralda,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_362,Grand Hotel Victoria,Menaggio,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_363,Monastero Santa Rosa,Conca dei Marini,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_364,Mediterraneo Sorrento,Sorrento,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_365,Villa Fontelunga,Foiano della Chiana,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_366,Nordelaia,Cremolino,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_367,Palazzo Daniele,Gagliano del Capo,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_368,Six Senses Rome,Rome,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_369,Villa Cora,Florence,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_370,J.K. Place Capri,Capri,Italy,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_371,Monaci delle Terre Nere,Zafferana Etnea,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_372,Velona's Jungle Luxury Suites,Florence,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_373,Precise Tale Poggio Alla Sala,Montepulciano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_374,J.K. Place Roma,Rome,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_375,Castelfalfi,Montaione,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_376,Canne Bianche Lifestyle Hotel,Torre Canne di Fasano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_377,Susafa,Polizzi Generosa,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_378,Il Palazzo Experimental,Venice,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_379,Hotel Metropole Venice,Venice,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_380,Corte della Maestà,Civita di Bagnoregio,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_381,Sextantio Le Grotte della Civita,Matera,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_382,Palazzo Albricci Peregrini,Como,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_383,Grand Hotel Minerva,Florence,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_384,Castel Monastero,Castelnuovo Berardenga,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_385,Castello di Vicarello,Cinigiano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_386,Sextantio,Santo Stefano di Sessanio,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_387,Locanda Rossa,Capalbio,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_388,Villa le Prata - Residenza del Vescovo,Montalcino,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_389,Aethos Monterosa,Champoluc,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_390,Nolinski Venezia - Evok Collection,Venice,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_391,Palazzo Talia,Rome,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_392,Villa Eden The Private Retreat,Merano,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_393,Monastero di Cortona,Cortona,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_394,La Monastica Resort & Spa,Buggiano Castello,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_395,Monteverdi Tuscany,Castiglioncello del Trinoro,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_396,Vista Verona,Verona,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_397,Palazzo Ripetta,Rome,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_398,ADLER Lodge RITTEN,Soprabolzano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_399,LA ROQQA,Porto Ercole,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_400,Villa Petriolo,Cerreto Guidi,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_401,Portrait Milano,Milan,Italy,michelin_key_and_worlds_50_best,2,existing_catalogue,1,IN_CATALOGUE
+hotel_402,Hotel Miramalfi,Amalfi,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_403,COMO Alpina Dolomites,Alpe di Siusi,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_404,Aman Rosa Alpina,San Cassiano,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_405,La Fiermontina Palazzo Bozzi Corso,Lecce,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_406,Casa Cipriani Milano,Milan,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_407,Palazzo Petrvs,Orvieto,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_408,Casa Newton,Pienza,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_409,"La Palma Capri, an Oetker Collection Hotel",Capri,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_410,"Collegio alla Querce, Auberge Collection",Florence,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_411,Villa Corallo,Sant'Omero,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_412,Wine Relais Feudi del Pisciotto,Niscemi,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_413,Donna Coraly Country Boutique Hotel,Syracuse,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_414,Villa La Massa,Florence,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_415,Corte di Gabriela,Venice,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_416,Borgo dei Conti Resort,Boschetto Vecchio,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_417,Lido Palace,Riva del Garda,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_418,Palazzo Pascal,Scala,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_419,Vivere Suites and Rooms,Arco,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_420,Lagació Hotel Mountain Residence,San Cassiano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_421,Casa Clàt,Cagliari,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_422,Lake Spa Hotel SEELEITEN,Kaltern,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_423,La Fiermontina Luxury Home,Lecce,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_424,Stella d'Italia,Florence,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_425,Conti di San Bonifacio,Gavorrano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_426,Portrait Roma,Rome,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_427,Masseria Calderisi,Savelletri di Fasano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_428,Ottolire Resort,Locorotondo,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_429,Lefay Resort & Spa Lago di Garda,Gargnano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_430,Critabianca,Cutrofiano,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_431,Masseria della Volpe,Noto,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_432,Singer Palace Hotel Roma,Rome,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_433,Seven Rooms Villadorata,Noto,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_434,Lefay Resort & Spa Dolomiti,Pinzolo,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_435,Siena House,Torrita di Siena,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_436,Lùme,Syracuse,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_437,Hotel Signum,Salina,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_438,Grand Hotel et de Milan,Milan,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_439,Principe Forte dei Marmi,Forte dei Marmi,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_440,Villa Crespi,Lake Orta,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_441,La Barchessa di Villa Pisani,Bagnolo di Lonigo,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_442,Bellevue Hotel & Spa,Cogne,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_443,Paragon 700 Boutique Hotel & SPA,Ostuni,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_444,Gardena Grödnerhof Hotel & Spa,Ortisei,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_445,"Splendido Mare, A Belmond Hotel, Portofino",Portofino,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_446,The Place Firenze,Florence,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_447,Grand Hotel Tremezzo,Tremezzina,Italy,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_448,Villa d'Este,Cernobbio,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_449,Lupaia,Torrita di Siena,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_450,L'Andana,Castiglione della Pescaia,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_451,Hotel Capo La Gala,Vico Equense,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_452,Borgo Egnazia,Savelletri di Fasano,Italy,michelin_key_and_worlds_50_best,2,existing_catalogue,2,IN_CATALOGUE
+hotel_453,Borgo San Felice Resort,Castelnuovo Berardenga,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_454,Capri Tiberio Palace,Capri,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_455,Borgo Santo Pietro,Chiusdino,Italy,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_456,Castello Banfi - Il Borgo,Montalcino,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_457,Relais Blu,Massa Lubrense,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_458,Palazzo Avino,Ravello,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_459,"The First Arte, Rome",Rome,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_460,Terra - The Magic Place,Sarentino,Italy,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_461,Son Bunyola Hotel & Villas,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_462,Faustino Gran,Minorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_463,Only YOU Hotel Atocha,Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_464,"The Palace, A Luxury Collection Hotel, Madrid",Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_465,Nobis Hotel Palma,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_466,"Castillo Hotel Son Vida, a Luxury Collection Hotel",Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_467,Room Mate Helen Berger,Valencia,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_468,Seventy Barcelona,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_469,Mirlo Barcelona,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_470,Four Seasons Hotel Madrid,Madrid,Spain,michelin_key_and_worlds_50_best,2,existing_catalogue,3,IN_CATALOGUE
+hotel_471,La Zambra Resort,Malaga,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_472,Only YOU Hotel Valencia,Valencia,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_473,Helguera Palacio Boutique & Antique,Santander,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_474,El Llorenç Parc de la Mar,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_475,Hotel Can Ferrereta,Mallorca,Spain,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_476,Sant Francesc Hotel Singular,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_477,Ohla Eixample,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_478,Torralbenc,Minorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_479,Cristine Bedfor Mahón,Minorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_480,Atrio Restaurante Hotel,Cáceres,Spain,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_481,Pepe Vieira,Pontevedra,Spain,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_482,Monument Hotel,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_483,"Convent de La Missió, Grand Luxury Boutique Hotel",Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_484,Abadía Retuerta LeDomaine,Valladolid,Spain,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_485,Hotel Santa María Briones,Briones,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_486,Wittmore,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_487,Cavalta Boutique Hotel,Sevilla,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_488,Mercer Barcelona,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_489,Es Raco d'Artà,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_490,Antiga Casa Buenavista,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_491,Terra Dominicata - Hotel & Winery,Tarragona,Spain,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_492,Alma Barcelona,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_493,CoolRooms Palacio Villapanés,Sevilla,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_494,The Principal Madrid,Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_495,Hotel Cortijo del Marqués,Granada,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_496,Finca Serena Mallorca,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_497,The Artist Grand Hotel of Art,Bilbao,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_498,Finca Cortesin,Marbella,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_499,Castillo del Buen Amor,Salamanca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_500,Can Mascort Eco Hotel,Costa Brava,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_501,Can Alberti 1740 Hotel Boutique,Minorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_502,Hotel Rector,Salamanca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_503,Teranka Formentera,Formentera,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_504,Cap Menorca,Minorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_505,Brach Madrid - Evok Collection,Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_506,Cap Rocat,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_507,"La Residencia, A Belmond Hotel, Mallorca",Mallorca,Spain,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_508,Akelarre,San Sebastian,Spain,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_509,Unico,Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_510,Castell Son Claret,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_511,Es Princep,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_512,La Torre del Visco,Teruel,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_513,URSO,Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_514,Hospes Palacio Del Bailio,Córdoba,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_515,The One Barcelona,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_516,Can Bordoy Grand House & Garden,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_517,Almanac Barcelona,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_518,Mercer Sevilla,Sevilla,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_519,Torre del Marqués Hotel Spa & Winery,Teruel,Spain,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_520,Can Cera,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_521,A Quinta da Auga,Santiago de Compostela,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_522,"Santa Catalina, a Royal Hideaway Hotel",Gran Canaria,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_523,"Canfranc Estación, a Royal Hideaway Hotel",Huesca,Spain,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_524,Bahia del Duque,Tenerife,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_525,Esperit Roca,Girona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_526,Hotel La Caminera Club de Campo,Torrenueva,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_527,Fairmont La Hacienda Costa del Sol,Alcaidesa,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_528,Rural Sant Ignasi,Minorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_529,Only YOU Boutique Hotel Madrid,Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_530,Predi Son Jaumell,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_531,Hotel Mas Lazuli,Girona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_532,"Santo Mauro, a Luxury Collection Hotel",Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_533,VIVOOD Landscape Hotel & Spa,Alicante,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_534,Seda Club Hotel,Granada,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_535,Hotel Arts Barcelona,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_536,Sa Creu Nova Petit Palais,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_537,ABaC Restaurant & Hotel,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_538,Son Brull,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_539,Cap Vermell Grand Hotel,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_540,"Mandarin Oriental Ritz, Madrid",Madrid,Spain,michelin_key_and_worlds_50_best,3,existing_catalogue,1,IN_CATALOGUE
+hotel_541,Mandarin Oriental Barcelona,Barcelona,Spain,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_542,Hotel Maria Cristina,San Sebastian,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_543,Rosewood Villa Magna,Madrid,Spain,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_544,"Hotel Marques de Riscal, a Luxury Collection Hotel",Elciego,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_545,Royal Hideaway Corales Suites,Tenerife,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_546,La Almunia del Valle,Granada,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_547,Anantara Villa Padierna Palace Benahavís Marbella Resort,Marbella,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_548,"Petunia Ibiza, Beaumier Hotel",Ibiza,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_549,Palacio de Luces,Luces,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_550,Hotel L'Avenida,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_551,Little Beach House Barcelona,Garraf,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_552,Fontsanta Thermal Spa & Wellness,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_553,Vincci Selección Unuk,Sevilla,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_554,La Fonda Heritage,Marbella,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_555,Gran Hotel Inglés,Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_556,Caro Hotel,Valencia,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_557,Hotel Puntagrande,El Hierro,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_558,Marbella Club Hotel,Marbella,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_559,Serras Barcelona,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_560,Lasala Plaza Hotel,San Sebastian,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_561,Yurbban Passage,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_562,Mas de Torrent,Costa Brava,Spain,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_563,Hotel Villa Favorita - Adults Only,San Sebastian,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_564,CoolRooms Palacio de Atocha,Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_565,"Palacio de los Duques, Gran Meliá",Madrid,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_566,Casa Beatnik Country House,La Coruña,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_567,Hotel Peralada Wine Spa & Golf,Girona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_568,Boutique Hotel Posada Terra Santa,Mallorca,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_569,Soho House Barcelona,Barcelona,Spain,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_573,Yamagata The Takinami,Nanyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_574,Rosewood Miyakojima,Miyakojima,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_575,Patina Osaka,Osaka,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_576,TAYUTA,Kami Amakusa,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_577,Fairmont Tokyo,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_578,Myoken Ishiharaso,Kirishima,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_579,RYOTEI HANZUIRYO,Unzen,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_580,Banyan Tree Higashiyama Kyoto,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_581,THE HIRAMATSU Karuizawa Miyota,Miyota,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_582,Shoraiso,Yamanouchi,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_583,ESPACIO The Hakone Geihinkan Rin-Poh-Ki-Ryu,Hakone,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_584,SIMOSE ART GARDEN VILLA,Otake,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_585,Fuji Speedway Hotel,Oyama,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_586,Fugaku Gunjo,Izu,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_587,THE HIRAMATSU HOTELS & RESORTS Kashikojima,Shima,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_588,"TIAD, Autograph Collection",Nagoya,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_589,Setsu Niseko,Kutchan,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_590,MUWA NISEKO,Kutchan,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_591,THE HIRAMATSU HOTELS & RESORTS SENGOKUHARA,Hakone,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_592,Kofuyuden Beniya,Awara,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_593,Sansui Niseko,Kutchan,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_594,Fufu Nara,Nara,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_595,Nasu Mukunone,Nasu,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_596,Ryokan Onomichi Nishiyama,Onomichi,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_597,Fufu Karuizawa Wind in the Sunshine,Karuizawa,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_598,THE HIRAMATSU HOTELS & RESORTS Ginoza,Ginoza,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_599,The Kahala Hotel & Resort Yokohama,Yokohama,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_600,One Suite THE GRAND,Nakijin,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_601,Garrya Nijo Castle Kyoto,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_602,Fufu Nikko,Nikko,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_603,Hakone Gora Karaku,Hakone,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_604,BYAKU Narai,Shiojiri,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_605,The Ritz-Carlton Fukuoka,Fukuoka,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_606,Naoshima Ryokan Roka,Naoshima,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_607,Fufu Kyu-Karuizawa Restful Forest,Karuizawa,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_608,ENOWA Yufuin,Yufu,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_609,Araya Totoan,Kaga,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_610,Park Hyatt Niseko Hanazono,Kutchan,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_611,Hyakuna Garan,Nanjo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_612,Izumo Hotel The Cliff,Izumo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_613,GOTO RETREAT by Onko Chishin,Goto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_614,JW Marriott Hotel Nara,Nara,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_615,Four Seasons Hotel Kyoto,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_616,Fufu Hakone,Hakone,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_617,Jusandi,Ishigaki,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_618,Conrad Osaka,Osaka,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_619,Fufu Kyoto,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_620,W Osaka,Osaka,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_621,Fufu Kawaguchiko,Fujikawaguchiko,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_622,"The Ritz-Carlton, Nikko",Nikko,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_623,"The Ritz-Carlton, Okinawa",Nago,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_624,The Aoyama Grand Hotel,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_625,Sekitei,Hatsukaichi,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_626,Wanosato,Takayama,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_627,Ochiairo,Izu,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_628,Satoyama Jujo,Minamiuonuma,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_629,"Suiran, A Luxury Collection Hotel, Kyoto",Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_630,Zaborin,Kutchan,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_631,SETOUCHI RETREAT by Onko Chishin,Matsuyama,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_632,Halekulani Okinawa,Onna,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_633,Four Seasons Hotel Osaka,Osaka,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_634,Andaz Tokyo,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_635,The Okura Tokyo,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_636,Hotel The Celestine Kyoto Gion,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_637,Four Seasons Hotel Tokyo at Marunouchi,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_638,Shangri-La Tokyo,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_639,Hiiragiya,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_640,"The Prince Gallery Tokyo Kioicho, a Luxury Collection Hotel",Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_641,Mandarin Oriental Tokyo,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_642,The Peninsula Tokyo,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_643,HOTEL THE MITSUI KYOTO,Kyoto,Japan,michelin_key_and_worlds_50_best,3,existing_catalogue,1,IN_CATALOGUE
+hotel_644,The Ritz-Carlton Tokyo,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_645,The Ritz-Carlton Osaka,Osaka,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_646,"The Ritz-Carlton, Kyoto",Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_647,Bvlgari Hotel Tokyo,Tokyo,Japan,michelin_key_and_worlds_50_best,3,existing_catalogue,2,IN_CATALOGUE
+hotel_648,The Hotel Seiryu Kyoto Kiyomizu,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_649,Numazu Club,Numazu,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_650,ROKU KYOTO LXR HOTELS & RESORTS,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_651,"Higashiyama Niseko Village, a Ritz-Carlton Reserve",Niseko,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_652,GAJOEN,Kirishima,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_653,Hoshinoya Kyoto,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_654,Yufuin Tamanoyu,Yufu,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_655,Onyado Chikurintei,Takeo,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_656,OSTERIA SINCERITA,Nanyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_657,InterContinental Yokohama Pier 8,Yokohama,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_658,Park Hyatt Kyoto,Kyoto,Japan,michelin_key_and_worlds_50_best,1,existing_catalogue,3,IN_CATALOGUE
+hotel_659,Four Seasons Hotel Tokyo at Otemachi,Tokyo,Japan,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_660,Kifune Ugenta,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_661,The Tokyo Station Hotel,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_662,Oyado The Earth,Toba,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_663,Bettei Otozure,Nagato,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_664,MUNI KYOTO,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_665,Gora Kadan,Hakone,Japan,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_666,Arcana Izu,Izu,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_667,Ace Hotel Kyoto,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_668,TRUNK (HOTEL) YOYOGI PARK,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_669,Genji Kyoto,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_670,Bettei Senjuan,Minakami,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_671,SHISHI-IWA-HOUSE Karuizawa,Karuizawa,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_672,Kamenoi Besso,Yufu,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_673,Auberge TOKITO,Tachikawa,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_674,Hotel New Otani Tokyo - Executive House ZEN,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_675,InterContinental Osaka,Osaka,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_676,K5,Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_677,Beniya Mukayu,Kaga,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_678,Nishimuraya Honkan,Toyooka,Japan,michelin_key,2,existing_catalogue,0,IN_CATALOGUE
+hotel_679,Aman Kyoto,Kyoto,Japan,michelin_key_and_worlds_50_best,2,existing_catalogue,1,IN_CATALOGUE
+hotel_680,Amanemu,Shima,Japan,michelin_key,3,existing_catalogue,0,IN_CATALOGUE
+hotel_681,JANU Tokyo,Tokyo,Japan,michelin_key_and_worlds_50_best,2,existing_catalogue,1,IN_CATALOGUE
+hotel_682,Azumi Setoda,Onomichi,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_683,Dusit Thani Kyoto,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_684,Six Senses Kyoto,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_685,"Bellustar Tokyo, A Pan Pacific Hotel",Tokyo,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_686,The Tower Hotel Nagoya,Nagoya,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+hotel_687,Kanamean Nishitomiya,Kyoto,Japan,michelin_key,1,existing_catalogue,0,IN_CATALOGUE
+p1_01,Aman Tokyo,Tokyo,Japan,michelin_key_and_worlds_50_best,1 Key,medium-high (Japan-focused secondary sources covering the July 2024 Michelin Key Japan announcement; guide.michelin.com's own page exists but exact tier not independently re-confirmed via primary fetch),3,NEW_HIGH_CONFIDENCE
+p1_02,Borgo Santandrea,Amalfi,Italy,michelin_key_and_worlds_50_best,2 Keys,high (guide.michelin.com's own description explicitly states 'awarded Two MICHELIN Keys'),2,NEW_HIGH_CONFIDENCE
+p1_03,Bulgari Roma,Rome,Italy,michelin_key_and_worlds_50_best,3 Keys,high (hotel's own press page states this explicitly: 'Bvlgari Hotel Roma awarded 3 Keys from MICHELIN'),1,NEW_HIGH_CONFIDENCE
+p1_04,Four Seasons Firenze,Florence,Italy,michelin_key_and_worlds_50_best,3 Keys,medium-high (found via a secondary 'Italy 3-Key hotels' aggregator listing; guide.michelin.com's own page for this hotel exists but exact Key count was not independently re-confirmed via a second primary-adjacent source),3,NEW_HIGH_CONFIDENCE
+p1_05,Hoshinoya Tokyo,Tokyo,Japan,michelin_key_and_worlds_50_best,Confirmed present in MICHELIN's Key hotel selection (has its own guide.michelin.com listing page); exact tier (1/2/3 Keys) NOT independently confirmed in this pass despite repeated search attempts,medium (page existence confirmed via 3 independent sources; exact Key count could not be pinned down - left unresolved rather than guessed),1,NEW_HIGH_CONFIDENCE
+p1_06,Hotel Cipriani,Venice,Italy,michelin_key_and_worlds_50_best,3 Keys,high (guide.michelin.com's own description explicitly states 'Three MICHELIN Keys'... 'An extraordinary stay'),1,NEW_HIGH_CONFIDENCE
+p1_07,Hotel Il Pellicano,Porto Ercole,Italy,michelin_key_and_worlds_50_best,1 Key,high (multiple independent sources including guide.michelin.com's own description and a dedicated 'One Michelin Key' secondary aggregator entry),1,NEW_HIGH_CONFIDENCE
+p1_08,Hotel das Cataratas,Iguassu Falls,Brazil,michelin_key_and_worlds_50_best,3 Keys,high (guide.michelin.com's own description explicitly states 'rated with Three Michelin Keys... An extraordinary stay'),1,NEW_HIGH_CONFIDENCE
+p1_09,Passalacqua,Moltrasio,Italy,michelin_key_and_worlds_50_best,3 Keys,high (2 independent secondary sources + confirmed guide.michelin.com listing page exists; not yet cross-checked against a direct guide.michelin.com page fetch since the site blocks automated fetching),3,NEW_HIGH_CONFIDENCE
+p1_10,Rosewood São Paulo,São Paulo,Brazil,michelin_key_and_worlds_50_best,3 Keys,high (guide.michelin.com's own description explicitly states 'earned the prestigious Three Michelin Keys'),3,NEW_HIGH_CONFIDENCE
+p1_11,Six Senses Ibiza,Ibiza,Spain,michelin_key_and_worlds_50_best,"Confirmed present in MICHELIN's Key hotel selection (has its own guide.michelin.com listing page, confirmed across 9+ locale-variant URLs); exact tier NOT independently confirmed in this pass despite repeated search attempts",medium (page existence very well confirmed; exact Key count could not be pinned down - left unresolved rather than guessed),1,NEW_HIGH_CONFIDENCE
+p1_12,The Tokyo Edition Toranomon,Tokyo,Japan,michelin_key_and_worlds_50_best,Confirmed present in MICHELIN's Key hotel selection (has its own guide.michelin.com listing page); exact tier NOT independently confirmed in this pass,medium (page existence confirmed; exact Key count could not be pinned down),1,NEW_HIGH_CONFIDENCE
+p2_001,Capella Sydney,Sydney,Australia,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_002,Southern Ocean Lodge,Kangaroo Island,Australia,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_003,The Calile,Brisbane,Australia,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_004,The Tasman,Hobart,Australia,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_005,Mandarin Oriental Qianmen,Beijing,China,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_006,Four Seasons Tamarindo,La Manzanilla,Costa Rica,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_007,Kokomo Private Island,Yaukuve Levu Island,Fiji,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_008,Cheval Blanc Paris,Paris,France,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_009,Hôtel de Crillon,Paris,France,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_010,Hôtel du Cap-Eden-Roc,Antibes,France,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_011,Hôtel du Couvent,Nice,France,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_012,La Réserve Paris,Paris,France,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_013,Le Bristol Paris,Paris,France,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_014,Plaza Athénée,Paris,France,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_015,The Maybourne Riviera,Roquebrune-Cap-Martin,France,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_016,The Brando,Tetiaroa,French Polynesia,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_017,Four Seasons Astir Palace Hotel Athens,Athens,Greece,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_018,Four Seasons Hong Kong,Hong Kong,Hong Kong,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_019,Mandarin Oriental Hong Kong,Hong Kong,Hong Kong,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_020,Rosewood Hong Kong,Hong Kong,Hong Kong,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_021,The Peninsula Hong Kong,Hong Kong,Hong Kong,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_022,Upper House Hong Kong,Hong Kong,Hong Kong,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_023,Amanbagh,Ajabgarh,India,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_024,Suján Jawai,"Jawai, Rajasthan",India,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_025,The Johri,Jaipur,India,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_026,The Oberoi Amarvilas,Agra,India,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_027,The Taj Mahal Palace,Mumbai,India,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_028,Desa Potato Head,Bali,Indonesia,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_029,Mandapa,Bali,Indonesia,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_030,Nihi Sumba,Sumba Island,Indonesia,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_031,The Datai,Langkawi,Malaysia,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_032,Soneva Fushi,"Eydhafushi, Baa Atoll",Maldives,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_033,Soneva Jani,Noonu Atoll,Maldives,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_034,Soneva Secret,Maldives,Maldives,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_035,Chablé Yucatán,"Chocholá, Yucatán",Mexico,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_036,Hotel Esencia,Tulum,Mexico,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_037,Las Ventanas al Paraíso,Los Cabos,Mexico,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_038,Maroma,Riviera Maya,Mexico,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_039,Montage Los Cabos,Cabo San Lucas,Mexico,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_040,One&Only Mandarina,Riviera Nayarit,Mexico,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_041,Rosewood Mayakoba,Playa del Carmen,Mexico,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_042,La Mamounia,Marrakech,Morocco,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_043,Royal Mansour,Marrakech,Morocco,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_044,Huka Lodge,Taupō,New Zealand,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_045,Six Senses Zighy Bay,Zighy Bay,Oman,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_046,Palacio Nazarenas,Cusco,Peru,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_047,Mount Nelson,Cape Town,South Africa,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_048,Singita – Kruger National Park,Kruger National Park,South Africa,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_049,Amangalla,Galle,Sri Lanka,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_050,Eden Rock,Saint-Jean,St. Barthélemy,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_051,Ett Hem,Stockholm,Sweden,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_052,Aman Nai Lert,Bangkok,Thailand,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_053,Capella Bangkok,Bangkok,Thailand,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_054,Dusit Thani Bangkok,Bangkok,Thailand,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_055,Four Seasons Bangkok at Chao Phraya River,Bangkok,Thailand,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_056,Mandarin Oriental Bangkok,Bangkok,Thailand,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_057,Rosewood Bangkok,Bangkok,Thailand,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_058,The Siam,Bangkok,Thailand,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_059,Maçakızı,Bodrum,Turkey,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_060,Atlantis The Royal,Dubai,United Arab Emirates,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_061,Jumeirah Marsa Al Arab,Dubai,United Arab Emirates,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_062,The Lana,Dubai,United Arab Emirates,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_063,Claridge's,London,United Kingdom,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_064,Estelle Manor,Witney,United Kingdom,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_065,Gleneagles,Auchterarder,United Kingdom,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_066,NoMad London,London,United Kingdom,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_067,Raffles London at The OWO,London,United Kingdom,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_068,The Connaught,London,United Kingdom,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_069,The Emory,London,United Kingdom,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_070,The Newt in Somerset,Castle Cary,United Kingdom,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_071,The Savoy,London,United Kingdom,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_072,Aman New York,New York,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,3,NEW_HIGH_CONFIDENCE
+p2_073,Amangiri,Canyon Point,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_074,Equinox Hotel New York,New York City,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_075,Four Seasons at The Surf Club,Surfside,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_076,Hotel Bel-Air,Los Angeles,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_077,San Ysidro Ranch,Santa Barbara,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_078,The Beverly Hills Hotel,Los Angeles,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_079,The Carlyle,New York,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,2,NEW_HIGH_CONFIDENCE
+p2_080,The Fifth Avenue Hotel,New York,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_081,The Greenwich Hotel,New York,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE
+p2_082,The Mark,New York,United States,worlds_50_best,unresolved - not individually verified this pass,n/a,1,NEW_HIGH_CONFIDENCE

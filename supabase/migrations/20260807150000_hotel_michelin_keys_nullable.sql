@@ -1,0 +1,32 @@
+-- Allow hotels to hold no confirmed MICHELIN Key value, so a hotel can
+-- qualify for the catalogue through The World's 50 Best Hotels alone
+-- (2023-2025), independent of MICHELIN Key recognition -- mirroring how
+-- public.restaurants.michelin_stars has always been nullable (line 150 of
+-- 20260805141519_production_schema_v1.sql: `michelin_stars smallint`, no
+-- NOT NULL, no CHECK) so a restaurant can qualify via World's 50 Best alone.
+-- See supabase/data/enrichment/worlds_50_best_hotels/catalogue_expansion/
+-- for the research and candidate dataset behind this change.
+--
+-- SEMANTICS, explicit and load-bearing: michelin_keys = NULL means "no
+-- confirmed Key value is currently stored for this hotel" -- it is NOT an
+-- assertion that the hotel holds zero Keys, and it must never be read,
+-- displayed, filtered, or sorted as if it were 0. A hotel with NULL keys and
+-- World's 50 Best history is fully catalogue-eligible; its Key status may
+-- simply be unresearched, unpublished for its market, or genuinely absent --
+-- this column alone cannot distinguish those cases, and no code path may
+-- assume it can.
+--
+-- The existing CHECK (michelin_keys between 1 and 3) already permits NULL --
+-- a CHECK constraint is only evaluated against non-null values unless written
+-- otherwise -- so it is intentionally left in place, unmodified: any
+-- non-null value written here still must be a real 1/2/3 Key tier.
+--
+-- PREPARED, NOT APPLIED. Do not run against any database until the paired
+-- Flutter/model changes listed in phase6_flutter_key_nullability_audit.md
+-- (and its production-readiness follow-up, phase8_production_readiness_report.md
+-- section 15) have shipped -- see those files for the exact call sites that
+-- would break, and the exact product behaviour a NULL-Key + W50B hotel must
+-- have, if this migration lands before the app is ready to render it.
+
+alter table public.hotels
+  alter column michelin_keys drop not null;
