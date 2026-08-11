@@ -7,12 +7,14 @@ import '../theme/cs_typography.dart';
 /// dual-surface aware per [CsSurface]: a warm ivory surface on a green
 /// environment, or a soft neutral/subtle-border surface on a light one.
 /// Icons stay simple/functional (a plain search glyph), matching the
-/// brief's restrained-iconography direction. Not wired into any existing
-/// search field yet — Explore's/Events'/trip-picker search fields keep
-/// their current [TextField] styling until those screens are individually
-/// redesigned; see the Step 1 report for why centralizing them without
-/// changing their rendered appearance wasn't practical this pass.
-class CsSearchField extends StatelessWidget {
+/// brief's restrained-iconography direction.
+///
+/// A [StatefulWidget] only so the clear (×) button can appear/disappear as
+/// [controller]'s text changes — everything else about this widget is as
+/// stateless as before. First wired into a real screen by Explore (Step 3);
+/// no other screen used this widget prior to that, so this clear-button
+/// addition doesn't change how anything already looks.
+class CsSearchField extends StatefulWidget {
   final TextEditingController? controller;
   final String hintText;
   final ValueChanged<String>? onChanged;
@@ -29,24 +31,60 @@ class CsSearchField extends StatelessWidget {
   });
 
   @override
+  State<CsSearchField> createState() => _CsSearchFieldState();
+}
+
+class _CsSearchFieldState extends State<CsSearchField> {
+  late final TextEditingController _controller =
+      widget.controller ?? TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    _controller.addListener(_onTextChanged);
+  }
+
+  void _onTextChanged() => setState(() {});
+
+  void _clear() {
+    _controller.clear();
+    widget.onChanged?.call('');
+  }
+
+  @override
+  void dispose() {
+    _controller.removeListener(_onTextChanged);
+    if (widget.controller == null) _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final onDark = surface == CsSurface.dark;
+    final onDark = widget.surface == CsSurface.dark;
     final background = onDark ? AppColors.ivory : AppColors.warmWhite;
     final foreground = AppColors.charcoal;
     final hint = AppColors.taupe;
     final border = onDark ? Colors.transparent : AppColors.subtleBorderLight;
+    final hasText = _controller.text.isNotEmpty;
 
     return SizedBox(
       height: 52,
       child: TextField(
-        controller: controller,
-        onChanged: onChanged,
-        autofocus: autofocus,
+        controller: _controller,
+        onChanged: widget.onChanged,
+        autofocus: widget.autofocus,
         style: CsTypography.body.copyWith(color: foreground),
         decoration: InputDecoration(
-          hintText: hintText,
+          hintText: widget.hintText,
           hintStyle: CsTypography.body.copyWith(color: hint),
           prefixIcon: Icon(Icons.search_rounded, color: hint, size: 20),
+          suffixIcon: hasText
+              ? IconButton(
+                  icon: Icon(Icons.close_rounded, color: hint, size: 18),
+                  tooltip: 'Clear',
+                  onPressed: _clear,
+                )
+              : null,
           filled: true,
           fillColor: background,
           contentPadding: const EdgeInsets.symmetric(horizontal: 16),

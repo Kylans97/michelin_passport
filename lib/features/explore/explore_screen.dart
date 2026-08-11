@@ -1,28 +1,54 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/theme/app_typography.dart';
-import '../../core/utils/number_format.dart';
-import '../../core/widgets/detail_card.dart' show SectionLabel;
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_surface_context.dart';
+import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/country_filter_control.dart';
+import '../../core/widgets/cs_filter_chip.dart';
+import '../../core/widgets/cs_search_field.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../models/event.dart';
+import '../../models/hotel.dart';
+import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
-import '../events/event_date_format.dart';
+import '../events/event_detail_screen.dart';
 import '../events/events_screen.dart';
+import '../hotels/hotel_detail_screen.dart';
+import '../restaurants/restaurant_detail_screen.dart';
+import 'discovery_selectors.dart';
 import 'explore_view_model.dart';
-import 'models/explore_filters.dart';
-import 'models/explore_item.dart';
-import 'widgets/explore_filter_bar.dart';
-import 'widgets/explore_status_states.dart';
-import 'widgets/hotel_tile.dart';
-import 'widgets/restaurant_tile.dart';
+import 'models/explore_filters.dart'
+    show RestaurantAwardFilter, HotelKeysFilter;
+import 'models/explore_search_results.dart';
+import 'models/explore_search_type.dart';
+import 'widgets/explore_discovery_sections.dart';
+import 'widgets/explore_search_results_view.dart';
 
-// Catalogue-read-only Explore: browses public.restaurants_full and
-// public.hotels_full. No visited, wishlist or trophy state for either yet —
-// hotels in particular have no stays/visits at all yet (later slice).
+/// Explore — Chasing Stars' discovery front door. Two mutually exclusive
+/// modes, switched purely by whether the search query is empty (see
+/// [_isSearching]), never shown at once:
+///
+/// DISCOVERY MODE (query empty): an editorial browse — What's On (the
+/// soonest upcoming event), Worth the Journey (a restaurant selection),
+/// Stay a Little Longer (a hotel selection). Loaded once per screen
+/// lifetime via three independent futures, so one catalogue failing (e.g.
+/// Events) never blocks the other two sections from rendering.
+///
+/// SEARCH MODE (query non-empty): universal search across the restaurant,
+/// hotel and event catalogues at once ("All"), or narrowed to one via the
+/// [ExploreSearchType] chips. Country is an independent, optional
+/// refinement on top of the text query — never a prerequisite for it (see
+/// RestaurantRepository.search()/HotelRepository.search()/
+/// EventsRepository.loadEvents(), and buildIlikeOrFilter's own note on the
+/// untrimmed-query bug this already fixed).
+///
+/// Catalogue-read-only, same as before this redesign: no visited,
+/// wishlist or trophy state surfaces here.
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
 
@@ -37,448 +63,469 @@ class _ExploreScreenState extends State<ExploreScreen> {
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
 
-  ExploreVenueType _venueType = ExploreVenueType.all;
+  String _query = '';
+  Timer? _debounce;
+
+  ExploreSearchType _searchType = ExploreSearchType.all;
   RestaurantAwardFilter _restaurantAward = RestaurantAwardFilter.all;
   HotelKeysFilter _hotelKeys = HotelKeysFilter.all;
   VenueCountry? _country;
-  String _query = '';
 
-  late Future<List<ExploreItem>> _resultsFuture;
+  // The last successfully loaded search result set, kept on screen (stale)
+  // while a new one is in flight — see _runSearch: a keystroke never
+  // blanks the list back to nothing, only a small inline indicator appears
+  // alongside what's already showing, avoiding the flicker a full
+  // spinner-replaces-everything approach would cause on every keystroke.
+  ExploreSearchResults? _searchResults;
+  bool _searching = false;
+  bool _searchError = false;
 
-  // Fetched once: the country picker's list doesn't depend on the current
-  // search/filter state, only on which countries exist in each catalogue —
-  // same pattern the previous single-catalogue Explore used.
-  late final Future<(List<VenueCountry>, List<VenueCountry>)> _countriesFuture =
-      _loadCountries();
+  // Discovery content — each independent, loaded once at first mount, not
+  // re-fetched while typing (Discovery mode has no filters of its own).
+  late final Future<List<Event>> _discoveryEventsFuture = _eventsRepo
+      .loadEvents(from: DateTime.now());
+  late final Future<List<Restaurant>> _discoveryRestaurantsFuture =
+      _restaurantRepo.getAll();
+  late final Future<List<Hotel>> _discoveryHotelsFuture = _hotelRepo.getAll();
 
-  // A lightweight, one-time fetch for the "What's on" banner — soonest few
-  // upcoming events, independent of every restaurant/hotel filter above.
-  // Not re-fetched as search/filters change: this is a discovery nudge, not
-  // a filtered result set (see task's explicit "do not overbuild event
-  // recommendation logic yet").
-  late final Future<List<Event>> _upcomingEventsFuture = _eventsRepo.loadEvents(
-    from: DateTime.now(),
-  );
+  // Search mode's country picker options — doesn't depend on the query or
+  // any other filter, only on which countries exist in each catalogue.
+  late final Future<
+    (List<VenueCountry>, List<VenueCountry>, List<VenueCountry>)
+  >
+  _countriesFuture = _loadCountries();
+
+  bool get _isSearching => isExploreSearching(_query);
 
   @override
-  void initState() {
-    super.initState();
-    _resultsFuture = _fetchResults();
+  void dispose() {
+    _debounce?.cancel();
+    _searchCtrl.dispose();
+    super.dispose();
   }
 
-  Future<(List<VenueCountry>, List<VenueCountry>)> _loadCountries() async {
+  Future<(List<VenueCountry>, List<VenueCountry>, List<VenueCountry>)>
+  _loadCountries() async {
     final restaurantsFuture = _restaurantRepo.getCountries();
     final hotelsFuture = _hotelRepo.getCountries();
-    return (await restaurantsFuture, await hotelsFuture);
+    final eventsFuture = _eventsRepo.getCountries();
+    return (await restaurantsFuture, await hotelsFuture, await eventsFuture);
   }
 
-  // All mode issues exactly one restaurant query + one hotel query (run
-  // concurrently, awaited in turn) and combines them in Dart — never one
-  // query per result and never N+1. Search text and country are independent
-  // filters on both queries (see RestaurantRepository.search()/
-  // HotelRepository.search()) — country is never required for a city/
-  // country text query to return matches.
-  Future<List<ExploreItem>> _fetchResults() async {
-    switch (_venueType) {
-      case ExploreVenueType.restaurants:
+  // The mode switch itself (Discovery ↔ Search) happens synchronously,
+  // right here, on every keystroke — no debounce, no network dependency,
+  // exactly the "immediate, no submit button" behavior the redesign
+  // requires. Only the actual catalogue re-fetch behind Search mode is
+  // debounced (see below), so the discovery feed disappearing and a
+  // (possibly still-loading) search view appearing is instant either way.
+  void _onQueryChanged(String value) {
+    setState(() => _query = value);
+    _debounce?.cancel();
+    if (value.trim().isEmpty) return;
+    _debounce = Timer(const Duration(milliseconds: 300), _runSearch);
+  }
+
+  Future<void> _runSearch() async {
+    setState(() => _searching = true);
+    try {
+      final results = await _fetchSearchResults();
+      if (!mounted) return;
+      setState(() {
+        _searchResults = results;
+        _searching = false;
+        _searchError = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _searching = false;
+        // A failed background refresh leaves any existing stale results on
+        // screen — only surface the error state when there's nothing at
+        // all to show yet, mirroring PassportScreen's own _load().
+        _searchError = _searchResults == null;
+      });
+    }
+  }
+
+  // Exactly one restaurant query + one hotel query + one event query for
+  // "All" (run concurrently, awaited in turn) — never one query per
+  // result, never N+1. Query text and country are independent filters on
+  // every one of the three catalogue searches.
+  Future<ExploreSearchResults> _fetchSearchResults() async {
+    final query = _query;
+    switch (_searchType) {
+      case ExploreSearchType.restaurants:
         final restaurants = await _restaurantRepo.search(
-          _query,
+          query,
           stars: _restaurantAward.starsParam,
           worlds50BestOnly: _restaurantAward.isWorlds50Best,
           hallOfFameOnly: _restaurantAward.isHallOfFame,
           countryCode: _country?.code,
         );
-        return [for (final r in restaurants) RestaurantExploreItem(r)];
-      case ExploreVenueType.hotels:
+        return ExploreSearchResults(
+          restaurants: restaurants,
+          hotels: const [],
+          events: const [],
+        );
+      case ExploreSearchType.hotels:
         final hotels = await _hotelRepo.search(
-          _query,
+          query,
           keys: _hotelKeys.keysParam,
           worlds50BestOnly: _hotelKeys.isWorlds50Best,
           countryCode: _country?.code,
         );
-        return [for (final h in hotels) HotelExploreItem(h)];
-      case ExploreVenueType.all:
+        return ExploreSearchResults(
+          restaurants: const [],
+          hotels: hotels,
+          events: const [],
+        );
+      case ExploreSearchType.events:
+        final events = await _eventsRepo.loadEvents(
+          query: query,
+          countryCode: _country?.code,
+        );
+        return ExploreSearchResults(
+          restaurants: const [],
+          hotels: const [],
+          events: events,
+        );
+      case ExploreSearchType.all:
         final restaurantsFuture = _restaurantRepo.search(
-          _query,
+          query,
           countryCode: _country?.code,
         );
         final hotelsFuture = _hotelRepo.search(
-          _query,
+          query,
           countryCode: _country?.code,
         );
-        return combineExploreItems(await restaurantsFuture, await hotelsFuture);
+        final eventsFuture = _eventsRepo.loadEvents(
+          query: query,
+          countryCode: _country?.code,
+        );
+        return ExploreSearchResults(
+          restaurants: await restaurantsFuture,
+          hotels: await hotelsFuture,
+          events: await eventsFuture,
+        );
     }
   }
 
-  void _load() {
-    setState(() => _resultsFuture = _fetchResults());
+  void _onSearchTypeChanged(ExploreSearchType type) {
+    setState(() => _searchType = type);
+    if (_isSearching) _runSearch();
   }
 
-  @override
-  void dispose() {
-    _searchCtrl.dispose();
-    super.dispose();
+  void _onCountryChanged(VenueCountry? country) {
+    setState(() => _country = country);
+    if (_isSearching) _runSearch();
   }
+
+  void _onRestaurantAwardChanged(RestaurantAwardFilter filter) {
+    setState(() => _restaurantAward = filter);
+    if (_isSearching) _runSearch();
+  }
+
+  void _onHotelKeysChanged(HotelKeysFilter filter) {
+    setState(() => _hotelKeys = filter);
+    if (_isSearching) _runSearch();
+  }
+
+  void _openRestaurant(Restaurant restaurant) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+    ),
+  );
+
+  void _openHotel(Hotel hotel) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+  );
+
+  void _openEvent(Event event) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => EventDetailScreen(eventId: event.id)),
+  );
 
   void _openEventsScreen() => Navigator.push(
     context,
     MaterialPageRoute(builder: (_) => const EventsScreen()),
   );
 
-  String _resultCountLabel(int count) {
-    final formatted = formatThousands(count);
-    return switch (_venueType) {
-      ExploreVenueType.restaurants =>
-        '$formatted restaurant${count == 1 ? '' : 's'}',
-      ExploreVenueType.hotels => '$formatted hotel${count == 1 ? '' : 's'}',
-      ExploreVenueType.all => '$formatted place${count == 1 ? '' : 's'}',
-    };
-  }
-
-  String get _emptyMessage => switch (_venueType) {
-    ExploreVenueType.restaurants => 'No restaurants found',
-    ExploreVenueType.hotels => 'No hotels found',
-    ExploreVenueType.all => 'No places found',
-  };
-
-  String get _errorMessage => switch (_venueType) {
-    ExploreVenueType.restaurants => 'Could not load restaurants',
-    ExploreVenueType.hotels => 'Could not load hotels',
-    ExploreVenueType.all => 'Could not load places',
-  };
-
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<ExploreItem>>(
-      future: _resultsFuture,
-      builder: (context, snap) {
-        final results = snap.data ?? [];
-        final loading = snap.connectionState == ConnectionState.waiting;
-        // Only meaningful while browsing Restaurants mode with the World's
-        // 50 Best award filter selected — All mode never applies
-        // _restaurantAward at all (see _fetchResults), so this is false
-        // there regardless of leftover filter state.
-        final highlightWorlds50Best =
-            _venueType == ExploreVenueType.restaurants &&
-            _restaurantAward.isWorlds50Best;
-        final highlightHotelWorlds50Best =
-            _venueType == ExploreVenueType.hotels && _hotelKeys.isWorlds50Best;
-
-        return CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              pinned: true,
-              backgroundColor: AppColors.brandGreen,
-              foregroundColor: AppColors.textOnDark,
-              toolbarHeight: 76,
-              actions: [
-                IconButton(
-                  icon: const Icon(
-                    Icons.event_outlined,
-                    color: AppColors.textOnDark,
-                  ),
-                  tooltip: 'Culinary Events',
-                  onPressed: _openEventsScreen,
-                ),
-              ],
-              title: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Explore',
-                    style: AppTypography.editorialHeading.copyWith(
-                      color: AppColors.textOnDark,
-                      fontSize: 22,
-                    ),
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    "The world's finest tables and stays",
-                    style: AppTypography.metadata.copyWith(
-                      color: AppColors.textOnDark.withValues(alpha: 0.7),
-                    ),
-                  ),
-                ],
+    return ColoredBox(
+      color: AppColors.deepGreen,
+      child: CustomScrollView(
+        slivers: [
+          const SliverToBoxAdapter(child: _ExploreHeader()),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: CsSpacing.pageHorizontal,
               ),
-              bottom: PreferredSize(
-                preferredSize: Size.fromHeight(
-                  _venueType == ExploreVenueType.all ? 152 : 188,
-                ),
-                child: FutureBuilder<(List<VenueCountry>, List<VenueCountry>)>(
-                  future: _countriesFuture,
-                  builder: (context, countrySnap) {
-                    final (restaurantCountries, hotelCountries) =
-                        countrySnap.data ??
-                        (const <VenueCountry>[], const <VenueCountry>[]);
-                    final countries = switch (_venueType) {
-                      ExploreVenueType.restaurants => restaurantCountries,
-                      ExploreVenueType.hotels => hotelCountries,
-                      ExploreVenueType.all => mergeVenueCountries(
-                        restaurantCountries,
-                        hotelCountries,
-                      ),
-                    };
-                    return ExploreFilterBar(
-                      searchCtrl: _searchCtrl,
-                      venueType: _venueType,
-                      restaurantAward: _restaurantAward,
-                      hotelKeys: _hotelKeys,
-                      countryFilter: _country,
-                      countries: countries,
-                      onQueryChanged: (v) {
-                        _query = v;
-                        _load();
-                      },
-                      onVenueTypeChanged: (v) {
-                        setState(() => _venueType = v);
-                        _load();
-                      },
-                      onRestaurantAwardChanged: (v) {
-                        setState(() => _restaurantAward = v);
-                        _load();
-                      },
-                      onHotelKeysChanged: (v) {
-                        setState(() => _hotelKeys = v);
-                        _load();
-                      },
-                      onCountryChanged: (v) {
-                        setState(() => _country = v);
-                        _load();
-                      },
-                    );
-                  },
-                ),
+              child: CsSearchField(
+                controller: _searchCtrl,
+                hintText: 'Search places, cities & events',
+                onChanged: _onQueryChanged,
               ),
             ),
-
-            SliverToBoxAdapter(
-              child: FutureBuilder<List<Event>>(
-                future: _upcomingEventsFuture,
-                builder: (context, eventSnap) {
-                  final events = eventSnap.data ?? const <Event>[];
-                  if (events.isEmpty) return const SizedBox.shrink();
-                  return Padding(
-                    padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-                    child: _WhatsOnBanner(
-                      events: events,
-                      onTap: _openEventsScreen,
-                    ),
-                  );
-                },
-              ),
-            ),
-
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 16, 20, 8),
-                child: loading
-                    ? const SizedBox(
-                        width: 14,
-                        height: 14,
-                        child: CircularProgressIndicator(
-                          color: AppColors.gold,
-                          strokeWidth: 1.5,
-                        ),
-                      )
-                    : Text(
-                        _resultCountLabel(results.length),
-                        style: GoogleFonts.inter(
-                          color: AppColors.textSecondary,
-                          fontSize: 13,
-                        ),
-                      ),
-              ),
-            ),
-
-            if (snap.hasError)
-              SliverFillRemaining(
-                child: ExploreErrorState(
-                  message: _errorMessage,
-                  onRetry: _load,
-                ),
-              )
-            else if (results.isEmpty && !loading)
-              SliverFillRemaining(
-                child: ExploreEmptyState(message: _emptyMessage),
-              )
-            else if (_venueType == ExploreVenueType.all)
-              SliverToBoxAdapter(
-                child: _AllResultsSections(
-                  results: results,
-                  highlightWorlds50Best: highlightWorlds50Best,
-                  highlightHotelWorlds50Best: highlightHotelWorlds50Best,
-                ),
-              )
-            else
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, i) => Padding(
-                    padding: EdgeInsets.only(
-                      bottom: i == results.length - 1 ? 88 : 0,
-                    ),
-                    child: switch (results[i]) {
-                      RestaurantExploreItem(:final restaurant) =>
-                        RestaurantTile(
-                          restaurant: restaurant,
-                          showWorlds50BestRank: highlightWorlds50Best,
-                        ),
-                      HotelExploreItem(:final hotel) => HotelTile(
-                        hotel: hotel,
-                        showWorlds50BestRank: highlightHotelWorlds50Best,
-                      ),
-                    },
-                  ),
-                  childCount: results.length,
-                ),
-              ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-/// "All" mode's result list, split into a RESTAURANTS section and a HOTELS
-/// section rather than one flat alphabetically-interleaved list — a text
-/// query like "Maastricht" now shows matching places from both catalogues
-/// immediately, grouped so it's obvious what's a restaurant and what's a
-/// hotel, per the task's explicit suggested presentation. Built as a plain
-/// Column (not a lazy SliverList) — same "grouped section, not virtualised"
-/// choice already used for Trip Detail's/Event Detail's restaurant/hotel
-/// sections, appropriate here since "All" mode is a combined, already
-/// filtered result set, not a raw multi-hundred-row catalogue browse (that
-/// case is Restaurants-only/Hotels-only mode, which keeps the true
-/// SliverList above).
-class _AllResultsSections extends StatelessWidget {
-  final List<ExploreItem> results;
-  final bool highlightWorlds50Best;
-  final bool highlightHotelWorlds50Best;
-
-  const _AllResultsSections({
-    required this.results,
-    required this.highlightWorlds50Best,
-    required this.highlightHotelWorlds50Best,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final restaurants = [
-      for (final item in results)
-        if (item is RestaurantExploreItem) item.restaurant,
-    ];
-    final hotels = [
-      for (final item in results)
-        if (item is HotelExploreItem) item.hotel,
-    ];
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 88),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (restaurants.isNotEmpty) ...[
-            SectionLabel('RESTAURANTS (${restaurants.length})'),
-            const SizedBox(height: 12),
-            for (var i = 0; i < restaurants.length; i++) ...[
-              if (i > 0) const SizedBox(height: 10),
-              RestaurantTile(
-                restaurant: restaurants[i],
-                showWorlds50BestRank: highlightWorlds50Best,
-              ),
-            ],
-          ],
-          if (restaurants.isNotEmpty && hotels.isNotEmpty)
-            const SizedBox(height: 28),
-          if (hotels.isNotEmpty) ...[
-            SectionLabel('HOTELS (${hotels.length})'),
-            const SizedBox(height: 12),
-            for (var i = 0; i < hotels.length; i++) ...[
-              if (i > 0) const SizedBox(height: 10),
-              HotelTile(
-                hotel: hotels[i],
-                showWorlds50BestRank: highlightHotelWorlds50Best,
-              ),
-            ],
-          ],
+          ),
+          if (_isSearching) ..._searchSlivers() else ..._discoverySlivers(),
         ],
       ),
     );
   }
-}
 
-/// Lightweight "contextual discovery" nudge toward Culinary Events — never
-/// a sixth tab, never folded into Wishlist (per the task's explicit
-/// positioning). Deliberately minimal: soonest event's name/date plus a
-/// count, one tap through to the full Events screen. No per-event
-/// recommendation logic, no filtering by Explore's own search/country
-/// state — see task's "do not overbuild" instruction.
-class _WhatsOnBanner extends StatelessWidget {
-  final List<Event> events;
-  final VoidCallback onTap;
+  List<Widget> _discoverySlivers() => [
+    SliverToBoxAdapter(
+      child: FutureBuilder<List<Event>>(
+        future: _discoveryEventsFuture,
+        builder: (context, snap) => WhatsOnSection(
+          featuredEvent: selectFeaturedEvent(snap.data ?? const []),
+          onTapEvent: _openEvent,
+          onViewAll: _openEventsScreen,
+        ),
+      ),
+    ),
+    SliverToBoxAdapter(
+      child: FutureBuilder<List<Restaurant>>(
+        future: _discoveryRestaurantsFuture,
+        builder: (context, snap) => WorthTheJourneySection(
+          restaurants: selectDiscoveryRestaurants(snap.data ?? const []),
+          onTapRestaurant: _openRestaurant,
+        ),
+      ),
+    ),
+    SliverToBoxAdapter(
+      child: FutureBuilder<List<Hotel>>(
+        future: _discoveryHotelsFuture,
+        builder: (context, snap) => StayALittleLongerSection(
+          hotels: selectDiscoveryHotels(snap.data ?? const []),
+          onTapHotel: _openHotel,
+        ),
+      ),
+    ),
+    const SliverToBoxAdapter(child: SizedBox(height: 88)),
+  ];
 
-  const _WhatsOnBanner({required this.events, required this.onTap});
+  List<Widget> _searchSlivers() {
+    final results = _searchResults;
 
-  @override
-  Widget build(BuildContext context) {
-    final next = events.first;
-    final subtitle = events.length > 1
-        ? '${events.length} upcoming · next: ${next.name}, '
-              '${formatEventDateRange(next)}'
-        : '${next.name}, ${formatEventDateRange(next)}';
-
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(16),
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-          decoration: BoxDecoration(
-            color: AppColors.brandGreen,
-            borderRadius: BorderRadius.circular(16),
+    return [
+      SliverToBoxAdapter(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(
+            CsSpacing.pageHorizontal,
+            CsSpacing.base,
+            CsSpacing.pageHorizontal,
+            0,
           ),
-          child: Row(
-            children: [
-              const Icon(Icons.event_rounded, color: AppColors.gold, size: 20),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "WHAT'S ON",
-                      style: GoogleFonts.inter(
-                        color: AppColors.textOnDark.withValues(alpha: 0.65),
-                        fontSize: 10.5,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.8,
-                      ),
-                    ),
-                    const SizedBox(height: 3),
-                    Text(
-                      subtitle,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.inter(
-                        color: AppColors.textOnDark,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 8),
-              const Icon(
-                Icons.chevron_right_rounded,
-                color: AppColors.textOnDark,
-                size: 20,
-              ),
-            ],
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                for (final type in ExploreSearchType.values) ...[
+                  if (type != ExploreSearchType.values.first)
+                    const SizedBox(width: CsSpacing.sm),
+                  CsFilterChip(
+                    label: type.label,
+                    selected: _searchType == type,
+                    onTap: () => _onSearchTypeChanged(type),
+                  ),
+                ],
+              ],
+            ),
           ),
         ),
       ),
-    );
+      SliverToBoxAdapter(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(
+            CsSpacing.pageHorizontal,
+            CsSpacing.sm,
+            CsSpacing.pageHorizontal,
+            0,
+          ),
+          child:
+              FutureBuilder<
+                (List<VenueCountry>, List<VenueCountry>, List<VenueCountry>)
+              >(
+                future: _countriesFuture,
+                builder: (context, snap) {
+                  final (restaurantCountries, hotelCountries, eventCountries) =
+                      snap.data ??
+                      (
+                        const <VenueCountry>[],
+                        const <VenueCountry>[],
+                        const <VenueCountry>[],
+                      );
+                  final countries = switch (_searchType) {
+                    ExploreSearchType.restaurants => restaurantCountries,
+                    ExploreSearchType.hotels => hotelCountries,
+                    ExploreSearchType.events => eventCountries,
+                    ExploreSearchType.all => mergeVenueCountries([
+                      restaurantCountries,
+                      hotelCountries,
+                      eventCountries,
+                    ]),
+                  };
+                  return Align(
+                    alignment: Alignment.centerLeft,
+                    child: CountryFilterControl(
+                      selected: _country,
+                      countries: countries,
+                      onChanged: _onCountryChanged,
+                      surface: CsSurface.dark,
+                    ),
+                  );
+                },
+              ),
+        ),
+      ),
+      if (_searchType == ExploreSearchType.restaurants)
+        SliverToBoxAdapter(child: _awardFilterRow())
+      else if (_searchType == ExploreSearchType.hotels)
+        SliverToBoxAdapter(child: _keysFilterRow()),
+      if (results != null)
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              CsSpacing.pageHorizontal,
+              CsSpacing.base,
+              CsSpacing.pageHorizontal,
+              CsSpacing.sm,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  results.totalCount == 1
+                      ? '1 result'
+                      : '${results.totalCount} results',
+                  style: CsTypography.eyebrow.copyWith(
+                    color: AppColors.secondaryOnDark,
+                  ),
+                ),
+                if (_searching) ...[
+                  const SizedBox(width: CsSpacing.sm),
+                  const SizedBox(
+                    width: 10,
+                    height: 10,
+                    child: CircularProgressIndicator(
+                      color: AppColors.secondaryOnDark,
+                      strokeWidth: 1.2,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ),
+      if (_searchError && results == null)
+        SliverFillRemaining(child: ExploreSearchErrorState(onRetry: _runSearch))
+      else if (results == null)
+        const SliverFillRemaining(
+          child: Center(
+            child: CircularProgressIndicator(
+              color: AppColors.textOnDark,
+              strokeWidth: 1.5,
+            ),
+          ),
+        )
+      else if (results.isEmpty)
+        const SliverFillRemaining(child: ExploreSearchEmptyState())
+      else
+        SliverToBoxAdapter(
+          child: ExploreSearchResultsView(
+            results: results,
+            onTapEvent: _openEvent,
+          ),
+        ),
+    ];
   }
+
+  Widget _awardFilterRow() => Padding(
+    padding: const EdgeInsets.fromLTRB(
+      CsSpacing.pageHorizontal,
+      CsSpacing.sm,
+      CsSpacing.pageHorizontal,
+      0,
+    ),
+    child: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          for (var i = 0; i < RestaurantAwardFilter.values.length; i++) ...[
+            if (i > 0) const SizedBox(width: CsSpacing.sm),
+            CsFilterChip(
+              label: RestaurantAwardFilter.values[i].label,
+              selected: _restaurantAward == RestaurantAwardFilter.values[i],
+              onTap: () =>
+                  _onRestaurantAwardChanged(RestaurantAwardFilter.values[i]),
+            ),
+          ],
+        ],
+      ),
+    ),
+  );
+
+  Widget _keysFilterRow() => Padding(
+    padding: const EdgeInsets.fromLTRB(
+      CsSpacing.pageHorizontal,
+      CsSpacing.sm,
+      CsSpacing.pageHorizontal,
+      0,
+    ),
+    child: SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          for (var i = 0; i < HotelKeysFilter.values.length; i++) ...[
+            if (i > 0) const SizedBox(width: CsSpacing.sm),
+            CsFilterChip(
+              label: HotelKeysFilter.values[i].label,
+              selected: _hotelKeys == HotelKeysFilter.values[i],
+              onTap: () => _onHotelKeysChanged(HotelKeysFilter.values[i]),
+            ),
+          ],
+        ],
+      ),
+    ),
+  );
+}
+
+// ── Editorial header ────────────────────────────────────────────────────
+
+class _ExploreHeader extends StatelessWidget {
+  const _ExploreHeader();
+
+  @override
+  Widget build(BuildContext context) => SafeArea(
+    bottom: false,
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(
+        CsSpacing.pageHorizontal,
+        CsSpacing.sm,
+        CsSpacing.pageHorizontal,
+        CsSpacing.lg,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'EXPLORE',
+            style: CsTypography.screenTitle.copyWith(
+              color: AppColors.textOnDark,
+            ),
+          ),
+          const SizedBox(height: CsSpacing.xs),
+          Text(
+            'Places worth travelling for.',
+            style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+          ),
+        ],
+      ),
+    ),
+  );
 }
