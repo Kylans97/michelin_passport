@@ -17,11 +17,24 @@ import 'search_query.dart';
 // constant (Explore, Passport, Rankings, Detail, Wishlist, Visits/Stays —
 // i.e. the entire catalogue). Coordinates for the Map feature are loaded
 // separately and only there — see MapRepository.
+//
+// is_hall_of_fame has the identical deployment-ordering hazard: it only
+// exists once
+// supabase/migrations/20260811220000_gault_millau_provenance_and_hall_of_fame_fix.sql
+// is applied to whatever schema this code runs against. That migration is
+// PREPARED — NOT APPLIED as of this comment. Do not ship this constant's
+// current form to any environment ahead of that migration landing there —
+// unlike lat/lon, it was included here directly rather than split into a
+// second constant, because (unlike the Map feature's coordinate-only
+// query) every caller of restaurantFullColumns needs Restaurant.isHallOfFame
+// to work correctly (RestaurantAwardsCard, Explore's Hall of Fame filter),
+// so there is no meaningful subset of callers this column could be safely
+// deferred for.
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_name, region, country_code, country_name, flag_emoji, address, '
     'google_place_id, michelin_url, website_url, booking_url, property_name, '
-    'is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank';
+    'is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank, is_hall_of_fame';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);
@@ -82,7 +95,14 @@ class RestaurantRepository {
       builder = builder.not('worlds_50_best_rank', 'is', null);
     }
     if (hallOfFameOnly) {
-      builder = builder.eq('inclusion_reason', 'hall_of_fame');
+      // is_hall_of_fame, not inclusion_reason — inclusion_reason is
+      // creation provenance only and is never actually set to
+      // 'hall_of_fame' by the import path (every current Hall of Fame
+      // member also holds a Michelin star, so import always picks
+      // 'michelin_star' instead); filtering on it here previously matched
+      // zero real restaurants. is_hall_of_fame is the authoritative,
+      // correctly-derived column — see restaurants_full's definition.
+      builder = builder.eq('is_hall_of_fame', true);
     }
     if (countryCode != null) {
       builder = builder.eq('country_code', countryCode);

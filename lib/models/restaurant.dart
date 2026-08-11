@@ -11,7 +11,30 @@ class Restaurant {
   // never coerced to 0 — see DATABASE_ARCHITECTURE.md section 3.3.
   final int? michelinStars;
 
+  // Creation provenance only — the primary reason this row was originally
+  // created (e.g. 'michelin_star', 'hall_of_fame', 'gault_millau'). A
+  // single historical fact, written once at insert and never rewritten as
+  // recognition changes. MUST NOT be read to derive current guide
+  // recognition of any kind — see isHallOfFame below for why that
+  // distinction is load-bearing, and
+  // docs/Architecture/Michelin_Database/GAULT_MILLAU_CATALOGUE_ARCHITECTURE_REVIEW.md
+  // for the full reasoning. A restaurant can freely have
+  // inclusionReason == 'michelin_star' and isHallOfFame == true at the same
+  // time — that is the real-world state for every current Hall of Fame
+  // member, all of whom were first catalogued for a Michelin star.
   final String inclusionReason;
+
+  // True when the restaurant currently holds World's 50 Best "Best of the
+  // Best" Hall of Fame membership. Sourced directly from
+  // restaurants_full.is_hall_of_fame, which derives it from
+  // worlds_50_best.list_type = 'hall_of_fame' — the authoritative source —
+  // never from inclusionReason. Fixes a prior bug: inclusion_reason is
+  // never actually set to 'hall_of_fame' by the import path (every current
+  // Hall of Fame member also holds a Michelin star, so import always picks
+  // 'michelin_star' instead), which made the old
+  // `inclusionReason == 'hall_of_fame'` derivation return false for every
+  // real Hall of Fame restaurant.
+  final bool isHallOfFame;
 
   final String cityName;
   final String? region;
@@ -54,6 +77,7 @@ class Restaurant {
     required this.name,
     required this.michelinStars,
     required this.inclusionReason,
+    this.isHallOfFame = false,
     required this.cityName,
     this.region,
     required this.countryCode,
@@ -77,17 +101,13 @@ class Restaurant {
   /// True when the restaurant has a current World's 50 Best rank.
   bool get isWorlds50Best => worlds50BestRank != null;
 
-  /// True when the restaurant is a World's 50 Best "Best of the Best" Hall
-  /// of Fame member. Derived from inclusion_reason, already selected by
-  /// RestaurantRepository — no extra column or query needed.
-  bool get isHallOfFame => inclusionReason == 'hall_of_fame';
-
   factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
     id: json['id'].toString(),
     restaurantCode: (json['restaurant_code'] as String?) ?? '',
     name: (json['name'] as String?) ?? '',
     michelinStars: (json['michelin_stars'] as num?)?.toInt(),
     inclusionReason: (json['inclusion_reason'] as String?) ?? '',
+    isHallOfFame: (json['is_hall_of_fame'] as bool?) ?? false,
     cityName: (json['city_name'] as String?) ?? '',
     region: json['region'] as String?,
     countryCode: (json['country_code'] as String?) ?? '',
