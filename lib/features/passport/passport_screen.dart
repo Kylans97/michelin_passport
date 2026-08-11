@@ -1,22 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/navigation/route_observer.dart';
-import '../../core/theme/app_typography.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_surface_context.dart';
+import '../../core/theme/cs_typography.dart';
 import '../../core/utils/visit_years.dart';
+import '../../core/widgets/cs_filter_chip.dart';
+import '../../core/widgets/cs_metric_strip.dart';
+import '../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
 import '../../core/widgets/year_filter_control.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
-import '../explore/widgets/venue_type_selector.dart';
 import '../map/visited_map_screen.dart';
 import 'passport_view_model.dart';
+import 'widgets/passport_collection_header.dart';
 import 'widgets/passport_empty_state.dart';
 import 'widgets/passport_hotel_card.dart';
 import 'widgets/passport_restaurant_card.dart';
-import 'widgets/stat_card.dart';
 
 /// My Passport: the user's personal collection of visited restaurants and
 /// stayed-at hotels. VISITS/STAYS are individual historical records (see
@@ -25,6 +28,11 @@ import 'widgets/stat_card.dart';
 /// visited/stayed at. All aggregation (grouping by venue, venue-type and
 /// year filtering, averages, totals) happens in [PassportFilterResult] —
 /// this screen only lays out what that produces.
+///
+/// Step 2 of the Chasing Stars visual redesign — the first feature screen
+/// migrated onto the Cs design-system foundation from Step 1. Every state/
+/// data-loading concern below is UNCHANGED from before this pass; only
+/// what [build] renders is new.
 ///
 /// This screen stays mounted for the whole app session — it lives inside
 /// the bottom-tab IndexedStack (see `_MainNavigation` in app.dart), which
@@ -121,24 +129,6 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
     ExploreVenueType.hotels => venue is HotelVenue,
   };
 
-  String get _sectionTitle => switch (_venueType) {
-    ExploreVenueType.all => 'Places',
-    ExploreVenueType.restaurants => 'Restaurants',
-    ExploreVenueType.hotels => 'Hotels',
-  };
-
-  (String, IconData) get _placesStat => switch (_venueType) {
-    ExploreVenueType.all => ('PLACES', Icons.travel_explore_rounded),
-    ExploreVenueType.restaurants => ('RESTAURANTS', Icons.restaurant_rounded),
-    ExploreVenueType.hotels => ('HOTELS', Icons.hotel_rounded),
-  };
-
-  (String, IconData) get _awardsStat => switch (_venueType) {
-    ExploreVenueType.all => ('AWARDS', Icons.emoji_events_rounded),
-    ExploreVenueType.restaurants => ('STARS', Icons.star_rounded),
-    ExploreVenueType.hotels => ('KEYS', Icons.vpn_key_rounded),
-  };
-
   String _emptyMessage(List<VenueEntry> allEntries) {
     final hasAnyHistoryForType = allEntries.any(
       (e) => _matchesVenueType(e.venue),
@@ -168,142 +158,159 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
       venueType: _venueType,
       year: _selectedYear,
     );
-    final (placesLabel, placesIcon) = _placesStat;
-    final (awardsLabel, awardsIcon) = _awardsStat;
+    final metricLabels = PassportMetricLabels.forVenueType(_venueType);
 
-    return RefreshIndicator(
-      color: AppColors.gold,
-      backgroundColor: AppColors.card,
-      onRefresh: _load,
-      child: CustomScrollView(
-        slivers: [
-          _PassportHeader(
-            onTapMap: () => Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const VisitedMapScreen()),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-              child: VenueTypeSelector(
-                selected: _venueType,
-                onSelect: (type) => setState(() => _venueType = type),
+    // Explicit deep-green canvas for this whole tab, independent of the
+    // shared tab-shell Scaffold's own (ivory) background — the shell itself
+    // isn't touched in this step; this just makes sure nothing ivory shows
+    // through Passport's own bounds (overscroll bounce, empty gaps, etc.).
+    return ColoredBox(
+      color: AppColors.deepGreen,
+      child: RefreshIndicator(
+        color: AppColors.textOnDark,
+        backgroundColor: AppColors.forestGreen,
+        onRefresh: _load,
+        child: CustomScrollView(
+          slivers: [
+            SliverToBoxAdapter(
+              child: _PassportHeader(
+                onTapMap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const VisitedMapScreen()),
+                ),
               ),
             ),
-          ),
-          if (years.isNotEmpty)
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 14, 20, 0),
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: YearFilterControl(
-                    years: years,
-                    selectedYear: _selectedYear,
-                    onSelect: (year) => setState(() => _selectedYear = year),
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  0,
+                  CsSpacing.pageHorizontal,
+                  0,
+                ),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: [
+                      for (final type in ExploreVenueType.values) ...[
+                        if (type != ExploreVenueType.values.first)
+                          const SizedBox(width: CsSpacing.sm),
+                        CsFilterChip(
+                          label: type.label,
+                          selected: _venueType == type,
+                          onTap: () => setState(() => _venueType = type),
+                        ),
+                      ],
+                    ],
                   ),
                 ),
               ),
             ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-              child: Row(
-                children: [
-                  StatCard(
-                    value: '${result.summary.placesVisited}',
-                    label: placesLabel,
-                    icon: placesIcon,
-                  ),
-                  const SizedBox(width: 10),
-                  StatCard(
-                    value: '${result.summary.awardsExperienced}',
-                    label: awardsLabel,
-                    icon: awardsIcon,
-                  ),
-                  const SizedBox(width: 10),
-                  StatCard(
-                    value: '${result.summary.countriesVisited}',
-                    label: 'COUNTRIES',
-                    icon: Icons.public_rounded,
-                  ),
-                ],
-              ),
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 32, 20, 12),
-              child: Row(
-                children: [
-                  Text(
-                    _sectionTitle,
-                    style: Theme.of(context).textTheme.headlineSmall,
-                  ),
-                  const SizedBox(width: 10),
-                  if (_loading)
-                    const SizedBox(
-                      width: 14,
-                      height: 14,
-                      child: CircularProgressIndicator(
-                        color: AppColors.gold,
-                        strokeWidth: 1.5,
-                      ),
-                    )
-                  else
-                    _CountBadge('${result.entries.length}'),
-                ],
-              ),
-            ),
-          ),
-          if (_loadError)
-            SliverFillRemaining(child: _ErrorState(onRetry: _load))
-          else if (_loading)
-            const SliverFillRemaining(
-              child: Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.gold,
-                  strokeWidth: 1.5,
-                ),
-              ),
-            )
-          else if (result.entries.isEmpty)
-            SliverFillRemaining(
-              child: PassportEmptyState(message: _emptyMessage(allEntries)),
-            )
-          else
-            SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, i) => Padding(
-                  padding: EdgeInsets.fromLTRB(
-                    20,
+            if (years.isNotEmpty)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    CsSpacing.pageHorizontal,
+                    CsSpacing.md,
+                    CsSpacing.pageHorizontal,
                     0,
-                    20,
-                    i == result.entries.length - 1 ? 100 : 12,
                   ),
-                  child: switch (result.entries[i].venue) {
-                    RestaurantVenue(:final restaurant) =>
-                      PassportRestaurantCard(
-                        restaurant: restaurant,
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: YearFilterControl(
+                      years: years,
+                      selectedYear: _selectedYear,
+                      onSelect: (year) => setState(() => _selectedYear = year),
+                      surface: CsSurface.dark,
+                    ),
+                  ),
+                ),
+              ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.xl,
+                  CsSpacing.pageHorizontal,
+                  0,
+                ),
+                child: CsMetricStrip(
+                  metrics: [
+                    CsMetric(
+                      value: '${result.summary.placesVisited}',
+                      label: metricLabels.visited,
+                    ),
+                    CsMetric(
+                      value: '${result.summary.countriesVisited}',
+                      label: metricLabels.countries,
+                    ),
+                    CsMetric(
+                      value: '${result.summary.awardsExperienced}',
+                      label: metricLabels.awards,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.section,
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.md,
+                ),
+                child: const PassportCollectionHeader(),
+              ),
+            ),
+            if (_loadError)
+              SliverFillRemaining(child: _ErrorState(onRetry: _load))
+            else if (_loading)
+              const SliverFillRemaining(
+                child: Center(
+                  child: CircularProgressIndicator(
+                    color: AppColors.textOnDark,
+                    strokeWidth: 1.5,
+                  ),
+                ),
+              )
+            else if (result.entries.isEmpty)
+              SliverFillRemaining(
+                child: PassportEmptyState(message: _emptyMessage(allEntries)),
+              )
+            else
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) => Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      CsSpacing.pageHorizontal,
+                      0,
+                      CsSpacing.pageHorizontal,
+                      i == result.entries.length - 1 ? 100 : CsSpacing.md,
+                    ),
+                    child: switch (result.entries[i].venue) {
+                      RestaurantVenue(:final restaurant) =>
+                        PassportRestaurantCard(
+                          restaurant: restaurant,
+                          stats: result.entries[i],
+                        ),
+                      HotelVenue(:final hotel) => PassportHotelCard(
+                        hotel: hotel,
                         stats: result.entries[i],
                       ),
-                    HotelVenue(:final hotel) => PassportHotelCard(
-                      hotel: hotel,
-                      stats: result.entries[i],
-                    ),
-                  },
+                    },
+                  ),
+                  childCount: result.entries.length,
                 ),
-                childCount: result.entries.length,
               ),
-            ),
-        ],
+          ],
+        ),
       ),
     );
   }
 }
 
-// ── Collapsible header ────────────────────────────────────────────────────────
+// ── Editorial header ──────────────────────────────────────────────────────────
 
 class _PassportHeader extends StatelessWidget {
   final VoidCallback onTapMap;
@@ -311,86 +318,58 @@ class _PassportHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final name =
-        Supabase.instance.client.auth.currentUser?.userMetadata?['display_name']
-            as String? ??
-        'Passport';
-
-    // A single dark-green editorial header: "My Passport" is the only large
-    // title, the user's name is secondary. No separate collapsed title —
-    // that was the previous overlap bug, where FlexibleSpaceBar's own
-    // `title` and this background's title could both be visible at once in
-    // a too-short expandedHeight. Deliberately generous height so the
-    // title block always clears the status bar/toolbar on every device.
-    return SliverAppBar(
-      expandedHeight: 172,
-      pinned: true,
-      backgroundColor: AppColors.brandGreen,
-      foregroundColor: AppColors.textOnDark,
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.map_outlined, color: AppColors.textOnDark),
-          tooltip: 'My Map',
-          onPressed: onTapMap,
+    return SafeArea(
+      bottom: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(
+          CsSpacing.pageHorizontal,
+          CsSpacing.sm,
+          CsSpacing.md,
+          CsSpacing.section,
         ),
-      ],
-      flexibleSpace: FlexibleSpaceBar(
-        collapseMode: CollapseMode.parallax,
-        background: DecoratedBox(
-          decoration: const BoxDecoration(color: AppColors.brandGreen),
-          child: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 24, 20, 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Align(
+              alignment: Alignment.centerRight,
+              child: IconButton(
+                icon: const Icon(
+                  Icons.map_outlined,
+                  color: AppColors.textOnDark,
+                ),
+                tooltip: 'My Map',
+                onPressed: onTapMap,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: CsSpacing.sm),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'My Passport',
-                    style: AppTypography.display.copyWith(
+                    'PASSPORT',
+                    style: CsTypography.screenTitle.copyWith(
                       color: AppColors.textOnDark,
                     ),
                   ),
-                  const SizedBox(height: 6),
+                  const SizedBox(height: CsSpacing.xs),
                   Text(
-                    name,
-                    style: AppTypography.metadata.copyWith(
-                      color: AppColors.textOnDark.withValues(alpha: 0.75),
+                    'Your collection of remarkable places.',
+                    style: CsTypography.body.copyWith(
+                      color: AppColors.secondaryOnDark,
                     ),
                   ),
                 ],
               ),
             ),
-          ),
+          ],
         ),
       ),
     );
   }
 }
 
-// ── Small helpers ─────────────────────────────────────────────────────────────
-
-class _CountBadge extends StatelessWidget {
-  final String value;
-  const _CountBadge(this.value);
-
-  @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
-    decoration: BoxDecoration(
-      color: AppColors.goldMuted,
-      borderRadius: BorderRadius.circular(20),
-      border: Border.all(color: AppColors.goldBorder40, width: 0.5),
-    ),
-    child: Text(
-      value,
-      style: GoogleFonts.inter(
-        color: AppColors.gold,
-        fontSize: 12,
-        fontWeight: FontWeight.w600,
-      ),
-    ),
-  );
-}
+// ── Error state ───────────────────────────────────────────────────────────────
 
 class _ErrorState extends StatelessWidget {
   final VoidCallback onRetry;
@@ -403,18 +382,18 @@ class _ErrorState extends StatelessWidget {
       children: [
         const Icon(
           Icons.wifi_off_rounded,
-          color: AppColors.textSecondary,
+          color: AppColors.secondaryOnDark,
           size: 40,
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: CsSpacing.base),
         Text(
           'Could not load data',
-          style: GoogleFonts.inter(color: AppColors.textSecondary),
+          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
         ),
-        const SizedBox(height: 12),
-        TextButton(
-          onPressed: onRetry,
-          child: Text('Retry', style: GoogleFonts.inter(color: AppColors.gold)),
+        const SizedBox(height: CsSpacing.md),
+        SizedBox(
+          width: 160,
+          child: CsSecondaryButton(label: 'Retry', onTap: onRetry, height: 44),
         ),
       ],
     ),

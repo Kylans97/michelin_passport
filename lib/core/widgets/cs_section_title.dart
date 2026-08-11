@@ -10,11 +10,27 @@ class CsSectionTitle extends StatelessWidget {
   final String text;
   final Color? color;
 
-  const CsSectionTitle(this.text, {super.key, this.color});
+  /// Both default to null/unbounded, preserving the original behavior
+  /// (wraps freely, no truncation) for any existing call site that doesn't
+  /// pass them. Pass both together (e.g. `maxLines: 1, overflow:
+  /// TextOverflow.ellipsis`) when this title shares a Row with other
+  /// content and needs to yield space rather than force an overflow.
+  final int? maxLines;
+  final TextOverflow? overflow;
+
+  const CsSectionTitle(
+    this.text, {
+    super.key,
+    this.color,
+    this.maxLines,
+    this.overflow,
+  });
 
   @override
   Widget build(BuildContext context) => Text(
     text,
+    maxLines: maxLines,
+    overflow: overflow,
     style: color == null
         ? CsTypography.sectionTitle
         : CsTypography.sectionTitle.copyWith(color: color),

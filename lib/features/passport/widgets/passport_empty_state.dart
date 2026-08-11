@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/cs_spacing.dart';
+import '../../../core/theme/cs_typography.dart';
+import '../../../core/widgets/cs_image_placeholder.dart';
 
 /// Shared shape for both Passport empty states: no visits logged at all, or
-/// a year filter with nothing in it. Only the message differs.
+/// a year filter with nothing in it. Only the message differs. Restyled
+/// for the deep-green Passport canvas — the official monogram (via
+/// [CsImagePlaceholder], small and quiet) stands in for the old generic
+/// book icon, and text reads in the redesigned [CsTypography] roles. No
+/// new CTA: nothing existed here before, and this task doesn't add flows.
 class PassportEmptyState extends StatelessWidget {
   final String message;
 
@@ -16,18 +22,18 @@ class PassportEmptyState extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(
-            Icons.menu_book_outlined,
-            color: AppColors.textSecondary,
-            size: 48,
+          const CsImagePlaceholder(
+            width: 64,
+            height: 64,
+            borderRadius: BorderRadius.all(Radius.circular(CsRadius.medium)),
+            logoScale: 0.5,
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: CsSpacing.lg),
           Text(
             message,
             textAlign: TextAlign.center,
-            style: GoogleFonts.playfairDisplay(
-              color: AppColors.textSecondary,
-              fontSize: 17,
+            style: CsTypography.placeTitle.copyWith(
+              color: AppColors.textOnDark,
             ),
           ),
         ],

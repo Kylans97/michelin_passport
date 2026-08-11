@@ -130,3 +130,40 @@ class PassportFilterResult {
         ExploreVenueType.hotels => venue is HotelVenue,
       };
 }
+
+/// The three CsMetricStrip labels for a given venue-type filter — the only
+/// place venue-type wording still appears on Passport (the section title
+/// and card eyebrows were deliberately made venue-type-neutral; the selected
+/// tab already gives that context). Values themselves are untouched —
+/// [PassportSummary.placesVisited]/[awardsExperienced]/[countriesVisited]
+/// are exactly what's shown; only the label text changes.
+class PassportMetricLabels {
+  final String visited;
+  final String countries;
+  final String awards;
+
+  const PassportMetricLabels({
+    required this.visited,
+    required this.countries,
+    required this.awards,
+  });
+
+  factory PassportMetricLabels.forVenueType(ExploreVenueType venueType) =>
+      switch (venueType) {
+        ExploreVenueType.all => const PassportMetricLabels(
+          visited: 'PLACES',
+          countries: 'COUNTRIES',
+          awards: 'AWARDS',
+        ),
+        ExploreVenueType.restaurants => const PassportMetricLabels(
+          visited: 'VISITED',
+          countries: 'COUNTRIES',
+          awards: 'STARS',
+        ),
+        ExploreVenueType.hotels => const PassportMetricLabels(
+          visited: 'STAYS',
+          countries: 'COUNTRIES',
+          awards: 'KEYS',
+        ),
+      };
+}

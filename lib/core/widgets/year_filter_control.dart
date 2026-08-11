@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../theme/cs_surface_context.dart';
 
 /// Compact "All time ▾" / "2025 ▾" trigger that opens a bottom-sheet list
 /// (All time, then years descending) on tap. Replaces the old persistent
@@ -11,16 +12,26 @@ import '../constants/app_colors.dart';
 /// of years actually available to pick from. Shared verbatim by Passport
 /// and My Rankings — same widget, same filtering behavior, just a
 /// different affordance than the old chip row.
+///
+/// [surface] is optional and defaults to null, which keeps the original
+/// light-surface trigger styling exactly as it always was — My Rankings
+/// (which doesn't pass it) is completely unaffected. Passing
+/// [CsSurface.dark] switches to a small outlined/tonal look for a
+/// deep-green environment (Passport's redesign) — no brass. The picker
+/// sheet itself is unchanged either way: a light modal overlay is the
+/// established pattern for every bottom sheet in this app already.
 class YearFilterControl extends StatelessWidget {
   final List<int> years; // descending, no duplicates
   final int? selectedYear; // null means "All time"
   final ValueChanged<int?> onSelect;
+  final CsSurface? surface;
 
   const YearFilterControl({
     super.key,
     required this.years,
     required this.selectedYear,
     required this.onSelect,
+    this.surface,
   });
 
   Future<void> _open(BuildContext context) async {
@@ -43,6 +54,14 @@ class YearFilterControl extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final label = selectedYear == null ? 'All time' : '$selectedYear';
+    final onDark = surface == CsSurface.dark;
+    final background = onDark ? Colors.transparent : AppColors.surface;
+    final border = onDark ? AppColors.subtleBorderDark : AppColors.cardBorder;
+    final textColor = onDark ? AppColors.textOnDark : AppColors.textPrimary;
+    final iconColor = onDark
+        ? AppColors.secondaryOnDark
+        : AppColors.textSecondary;
+
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -51,9 +70,9 @@ class YearFilterControl extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           decoration: BoxDecoration(
-            color: AppColors.surface,
+            color: background,
             borderRadius: BorderRadius.circular(20),
-            border: Border.all(color: AppColors.cardBorder, width: 0.5),
+            border: Border.all(color: border, width: 0.5),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -61,17 +80,13 @@ class YearFilterControl extends StatelessWidget {
               Text(
                 label,
                 style: GoogleFonts.inter(
-                  color: AppColors.textPrimary,
+                  color: textColor,
                   fontSize: 13,
                   fontWeight: FontWeight.w600,
                 ),
               ),
               const SizedBox(width: 4),
-              const Icon(
-                Icons.arrow_drop_down_rounded,
-                color: AppColors.textSecondary,
-                size: 20,
-              ),
+              Icon(Icons.arrow_drop_down_rounded, color: iconColor, size: 20),
             ],
           ),
         ),
