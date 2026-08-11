@@ -45,9 +45,18 @@ class RestaurantRepository {
   // mutually exclusive alternatives to [stars] in the Explore UI (its award
   // filter is a single-select), but nothing here enforces that — each is
   // applied independently, ANDed together, whichever are non-null/true.
+  //
+  // [starsOnly] restricts to restaurants that currently hold ANY Michelin
+  // star (michelin_stars is not null) — added for Guides' Michelin
+  // Restaurants catalogue (Step 2B), which must only ever browse currently-
+  // starred restaurants, including when no specific [stars] tier is
+  // selected. Explore never passes this (defaults false), so its "All"
+  // restaurant search — which intentionally includes unstarred
+  // restaurants — is unaffected.
   Future<List<Restaurant>> search(
     String query, {
     int? stars,
+    bool starsOnly = false,
     bool worlds50BestOnly = false,
     bool hallOfFameOnly = false,
     String? countryCode,
@@ -66,6 +75,8 @@ class RestaurantRepository {
     }
     if (stars != null) {
       builder = builder.eq('michelin_stars', stars);
+    } else if (starsOnly) {
+      builder = builder.not('michelin_stars', 'is', null);
     }
     if (worlds50BestOnly) {
       builder = builder.not('worlds_50_best_rank', 'is', null);
@@ -99,10 +110,18 @@ class RestaurantRepository {
   // values present on restaurants_full, resolved against public.countries
   // by the shared resolveVenueCountries() helper (also used by
   // HotelRepository.getCountries()).
-  Future<List<VenueCountry>> getCountries() async {
-    final restaurantRows = await _client
-        .from('restaurants_full')
-        .select('country_code');
+  //
+  // [starsOnly] narrows the first query to currently-starred restaurants
+  // only — Guides' Michelin Restaurants catalogue (Step 2B) uses this so
+  // its country picker never offers a country whose only restaurants are
+  // unstarred. Explore never passes this (defaults false), so its own
+  // country list is unaffected.
+  Future<List<VenueCountry>> getCountries({bool starsOnly = false}) async {
+    var query = _client.from('restaurants_full').select('country_code');
+    if (starsOnly) {
+      query = query.not('michelin_stars', 'is', null);
+    }
+    final restaurantRows = await query;
     final presentCodes = <String>{
       for (final row in restaurantRows as List)
         if ((row['country_code'] as String?)?.isNotEmpty ?? false)

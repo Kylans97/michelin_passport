@@ -1,16 +1,17 @@
 // Covers GuideCatalogueLayout (the shared, presentation-only catalogue
-// shell) and the four concrete Step 2A catalogue screens. None of these
-// construct a repository or touch Supabase — pumping them directly with
-// no Supabase session initialized is exactly how that's verified: if any
-// of them did eager Supabase work, these tests would throw.
+// shell) and the two still-data-free World's 50 Best catalogue screens.
+// None of these construct a repository or touch Supabase — pumping them
+// directly with no Supabase session initialized is exactly how that's
+// verified: if any of them did eager Supabase work, these tests would
+// throw. See the note above the second group below for why
+// MichelinRestaurantGuideScreen/MichelinHotelGuideScreen (Step 2B, real
+// data) are no longer pumped here.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/guides/fifty_best_hotel_guide_screen.dart';
 import 'package:michelin_passport/features/guides/fifty_best_restaurant_guide_screen.dart';
-import 'package:michelin_passport/features/guides/michelin_hotel_guide_screen.dart';
-import 'package:michelin_passport/features/guides/michelin_restaurant_guide_screen.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_catalogue_layout.dart';
 
 Widget _wrap(Widget child) => MaterialApp(home: child);
@@ -108,6 +109,42 @@ void main() {
       expect(find.textContaining('Coming soon'), findsNothing);
     });
 
+    testWidgets('a self-scrolling content (e.g. a long result ListView) '
+        'lays out without a RenderFlex overflow or nested-scroll error', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          GuideCatalogueLayout(
+            source: 'MICHELIN GUIDE',
+            title: 'Restaurants',
+            subtitle:
+                'Exceptional restaurants recognised by the Michelin '
+                'Guide.',
+            content: ListView.builder(
+              itemCount: 200,
+              itemBuilder: (context, index) =>
+                  ListTile(title: Text('Place #$index')),
+            ),
+          ),
+        ),
+      );
+      expect(tester.takeException(), isNull);
+      // The header (fixed, non-scrolling) and the first list item are both
+      // on screen at once — proof the content isn't nested inside the
+      // header's own scroll view.
+      expect(find.text('Restaurants'), findsOneWidget);
+      expect(find.text('Place #0'), findsOneWidget);
+
+      // Scrolling the content must not move the header — only the content
+      // owns scrolling, confirming there's exactly one scrollable, not two
+      // competing ones.
+      await tester.drag(find.text('Place #0'), const Offset(0, -3000));
+      await tester.pump();
+      expect(find.text('Restaurants'), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
     testWidgets('320px and 390px widths — no overflow', (tester) async {
       for (final width in [320.0, 390.0]) {
         await tester.binding.setSurfaceSize(Size(width, 844));
@@ -159,23 +196,19 @@ void main() {
     });
   });
 
-  group('The four Step 2A catalogue screens', () {
-    testWidgets('MichelinRestaurantGuideScreen renders the right family/'
-        'title, no data loading', (tester) async {
-      await tester.pumpWidget(_wrap(const MichelinRestaurantGuideScreen()));
-      expect(find.text('MICHELIN GUIDE'), findsOneWidget);
-      expect(find.text('Restaurants'), findsOneWidget);
-      expect(tester.takeException(), isNull);
-    });
-
-    testWidgets('MichelinHotelGuideScreen renders the right family/title, '
-        'no data loading', (tester) async {
-      await tester.pumpWidget(_wrap(const MichelinHotelGuideScreen()));
-      expect(find.text('MICHELIN GUIDE'), findsOneWidget);
-      expect(find.text('Hotels'), findsOneWidget);
-      expect(tester.takeException(), isNull);
-    });
-
+  // MichelinRestaurantGuideScreen/MichelinHotelGuideScreen are no longer
+  // covered here as of Step 2B: both now construct RestaurantRepository/
+  // HotelRepository against Supabase.instance.client eagerly in initState
+  // (to load the real catalogue), so — like ExploreScreen, which has never
+  // had a screen-level widget test for the same reason — they can't be
+  // safely pumped without a live Supabase session. Their presentation
+  // pieces (GuideVenueCard, GuideCatalogueLoading/EmptyState/ErrorState,
+  // GuideStarFilter/GuideKeyFilter) are covered directly instead — see
+  // guide_venue_card_test.dart, guide_catalogue_states_test.dart and
+  // guide_view_model_test.dart. Full functional verification happens via
+  // physical-device review (see the Step 2B report for the preview entry
+  // point).
+  group('The two still-data-free World\'s 50 Best catalogue screens', () {
     testWidgets('FiftyBestRestaurantGuideScreen renders the right family/'
         'title, no data loading', (tester) async {
       await tester.pumpWidget(_wrap(const FiftyBestRestaurantGuideScreen()));

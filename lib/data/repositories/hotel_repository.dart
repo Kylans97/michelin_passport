@@ -70,9 +70,17 @@ class HotelRepository {
   // RestaurantRepository.search()'s worlds50BestOnly exactly. Searches only
   // hotel-readable fields — name, city, country — never restaurant-only
   // fields like cuisine.
+  //
+  // [keysOnly] restricts to hotels that currently hold a confirmed Key
+  // value (michelin_keys is not null) — mirrors
+  // RestaurantRepository.search()'s [starsOnly] exactly, added for Guides'
+  // Michelin Hotels catalogue (Step 2B). Explore never passes this
+  // (defaults false), so its own "All" hotel search — which intentionally
+  // includes Key-less hotels — is unaffected.
   Future<List<Hotel>> search(
     String query, {
     int? keys,
+    bool keysOnly = false,
     bool worlds50BestOnly = false,
     String? countryCode,
   }) async {
@@ -88,6 +96,8 @@ class HotelRepository {
     }
     if (keys != null) {
       builder = builder.eq('michelin_keys', keys);
+    } else if (keysOnly) {
+      builder = builder.not('michelin_keys', 'is', null);
     }
     if (worlds50BestOnly) {
       builder = builder.not('worlds_50_best_rank', 'is', null);
@@ -113,8 +123,18 @@ class HotelRepository {
   // queries total, never one per country — mirrors
   // RestaurantRepository.getCountries(), sharing its countries-join logic
   // via resolveVenueCountries().
-  Future<List<VenueCountry>> getCountries() async {
-    final hotelRows = await _client.from('hotels_full').select('country_code');
+  //
+  // [keysOnly] narrows the first query to hotels with a confirmed Key value
+  // only — mirrors RestaurantRepository.getCountries()'s [starsOnly]
+  // exactly, used by Guides' Michelin Hotels catalogue (Step 2B). Explore
+  // never passes this (defaults false), so its own country list is
+  // unaffected.
+  Future<List<VenueCountry>> getCountries({bool keysOnly = false}) async {
+    var query = _client.from('hotels_full').select('country_code');
+    if (keysOnly) {
+      query = query.not('michelin_keys', 'is', null);
+    }
+    final hotelRows = await query;
     final presentCodes = <String>{
       for (final row in hotelRows as List)
         if ((row['country_code'] as String?)?.isNotEmpty ?? false)

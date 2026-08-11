@@ -22,6 +22,20 @@ import '../../../core/widgets/detail_hero.dart' show HeroIconButton;
 /// by DetailHero and Sign up's back button — rather than a default
 /// Material AppBar, and a plain [MaterialPageRoute] push/pop keeps iOS
 /// edge-swipe-to-pop working with no extra wiring.
+///
+/// Step 2B addition: when [content] is supplied, the header stops being
+/// part of the scroll view and becomes a fixed block, with [content] given
+/// the remaining height via [Expanded] instead. This is the shell's one
+/// permitted small additive change — Michelin Restaurants/Hotels' own
+/// result list is a [ListView] that needs to own scrolling itself (so a
+/// catalogue of hundreds of places is lazily built, not eagerly laid out
+/// in a single giant [Column]); nesting that inside the header's own
+/// [SingleChildScrollView], as a naive content slot would, produces two
+/// competing scrollables. Screens that pass no [content] (Step 2A's four
+/// shells, and 50 Best's still-frozen pair) are completely unaffected —
+/// they keep the exact original header-only [SingleChildScrollView], so a
+/// short/likely-not-full-height header never looks like a broken half-
+/// empty scrollable.
 class GuideCatalogueLayout extends StatelessWidget {
   /// The eyebrow-weight source line, e.g. "MICHELIN GUIDE" or
   /// "THE WORLD'S 50 BEST".
@@ -34,9 +48,11 @@ class GuideCatalogueLayout extends StatelessWidget {
   /// with copy that doesn't earn its place.
   final String? subtitle;
 
-  /// Where Step 2B/2C's search/filter/result-list content will go.
-  /// Deliberately null in Step 2A: no fake venues, no placeholder list —
-  /// the composition simply ends after the header for this pass.
+  /// Where Step 2B/2C's search/filter/result-list content goes. Deliberately
+  /// null for the still-frozen Step 2A shells: no fake venues, no
+  /// placeholder list — the composition simply ends after the header for
+  /// those. When supplied, expected to manage its own internal scrolling
+  /// (see the class doc above).
   final Widget? content;
 
   const GuideCatalogueLayout({
@@ -47,52 +63,63 @@ class GuideCatalogueLayout extends StatelessWidget {
     this.content,
   });
 
+  Widget _header() => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Text(
+        source,
+        style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+      ),
+      const SizedBox(height: CsSpacing.xs),
+      Text(
+        title,
+        style: CsTypography.screenTitle.copyWith(color: AppColors.textOnDark),
+      ),
+      if (subtitle != null) ...[
+        const SizedBox(height: CsSpacing.sm),
+        Text(
+          subtitle!,
+          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+        ),
+      ],
+    ],
+  );
+
   @override
   Widget build(BuildContext context) {
+    final body = content == null
+        ? SingleChildScrollView(
+            padding: const EdgeInsets.fromLTRB(
+              CsSpacing.pageHorizontal,
+              CsSpacing.hero,
+              CsSpacing.pageHorizontal,
+              CsSpacing.xxl,
+            ),
+            child: _header(),
+          )
+        : Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.hero,
+                  CsSpacing.pageHorizontal,
+                  0,
+                ),
+                child: _header(),
+              ),
+              const SizedBox(height: CsSpacing.section),
+              Expanded(child: content!),
+            ],
+          );
+
     return Scaffold(
       backgroundColor: AppColors.deepGreen,
       body: SafeArea(
         child: Stack(
           children: [
-            SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.pageHorizontal,
-                CsSpacing.hero,
-                CsSpacing.pageHorizontal,
-                CsSpacing.xxl,
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    source,
-                    style: CsTypography.eyebrow.copyWith(
-                      color: AppColors.secondaryOnDark,
-                    ),
-                  ),
-                  const SizedBox(height: CsSpacing.xs),
-                  Text(
-                    title,
-                    style: CsTypography.screenTitle.copyWith(
-                      color: AppColors.textOnDark,
-                    ),
-                  ),
-                  if (subtitle != null) ...[
-                    const SizedBox(height: CsSpacing.sm),
-                    Text(
-                      subtitle!,
-                      style: CsTypography.body.copyWith(
-                        color: AppColors.secondaryOnDark,
-                      ),
-                    ),
-                  ],
-                  if (content != null) ...[
-                    const SizedBox(height: CsSpacing.section),
-                    content!,
-                  ],
-                ],
-              ),
-            ),
+            body,
             Positioned(
               left: CsSpacing.base,
               top: CsSpacing.sm,
