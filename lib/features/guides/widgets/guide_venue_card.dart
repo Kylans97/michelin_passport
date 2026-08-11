@@ -15,20 +15,30 @@ import '../../../core/widgets/cs_image_placeholder.dart';
 ///
 /// Presentation-only: knows nothing about Restaurant, Hotel, stars, Keys or
 /// World's 50 Best. [distinction] is any widget the caller builds — today
-/// that's a [StarRow]/[KeyRow], but nothing here assumes that; a future
-/// numeric "#12" ranking slot (World's 50 Best, Step 2C) drops in the same
-/// way with no change to this widget.
+/// that's a [StarRow]/[KeyRow] for Michelin, omitted (null) for World's 50
+/// Best (Step 2C), which has nothing to put there yet (cross-recognition
+/// is deferred) — but nothing here assumes any particular content.
+///
+/// [leading] (Step 2C addition) is an optional widget rendered before the
+/// monogram thumbnail — World's 50 Best passes a [GuideRankMark] there, so
+/// the rank reads as the row's hero (leftmost, first thing seen) while the
+/// thumbnail stays in place for future photography. Both additions default
+/// to null/unused, so Michelin's existing calls (which pass neither)
+/// render byte-identical to before Step 2C — this widget's own visual
+/// contract for Michelin is unchanged.
 class GuideVenueCard extends StatelessWidget {
   final String title;
   final String locationLabel;
-  final Widget distinction;
+  final Widget? leading;
+  final Widget? distinction;
   final VoidCallback onTap;
 
   const GuideVenueCard({
     super.key,
     required this.title,
     required this.locationLabel,
-    required this.distinction,
+    this.leading,
+    this.distinction,
     required this.onTap,
   });
 
@@ -47,6 +57,10 @@ class GuideVenueCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              if (leading != null) ...[
+                leading!,
+                const SizedBox(width: CsSpacing.sm),
+              ],
               const CsImagePlaceholder(
                 width: 52,
                 height: 52,
@@ -78,8 +92,10 @@ class GuideVenueCard extends StatelessWidget {
                         ),
                       ),
                     ],
-                    const SizedBox(height: 4),
-                    distinction,
+                    if (distinction != null) ...[
+                      const SizedBox(height: 4),
+                      distinction!,
+                    ],
                   ],
                 ),
               ),

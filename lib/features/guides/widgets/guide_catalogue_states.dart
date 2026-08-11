@@ -72,6 +72,46 @@ class GuideCatalogueEmptyState extends StatelessWidget {
   );
 }
 
+/// A Guide catalogue's subtle result count — "50 places" / "1 place",
+/// never "50 WORLD'S 50 BEST RESTAURANTS" (see the Guides Step 2B/2C
+/// briefs). Shared by both World's 50 Best catalogues (Step 2C); the two
+/// Michelin catalogues (Step 2B) keep their own small private
+/// `_ResultCountLine` copies rather than being migrated onto this one —
+/// see the Step 2C report for why touching the already-approved Michelin
+/// screen files wasn't worth it for a purely internal de-duplication.
+class GuideResultCountLine extends StatelessWidget {
+  final int count;
+  final bool loading;
+
+  const GuideResultCountLine({
+    super.key,
+    required this.count,
+    required this.loading,
+  });
+
+  @override
+  Widget build(BuildContext context) => Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Text(
+        count == 1 ? '1 place' : '$count places',
+        style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+      ),
+      if (loading) ...[
+        const SizedBox(width: CsSpacing.sm),
+        const SizedBox(
+          width: 10,
+          height: 10,
+          child: CircularProgressIndicator(
+            color: AppColors.secondaryOnDark,
+            strokeWidth: 1.2,
+          ),
+        ),
+      ],
+    ],
+  );
+}
+
 /// A Guide catalogue's error state — reuses [ExploreSearchErrorState]'s
 /// language exactly (same icon, same restrained copy, same retry
 /// treatment) rather than inventing a second error style. Never surfaces a

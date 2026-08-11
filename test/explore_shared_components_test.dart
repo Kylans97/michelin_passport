@@ -105,5 +105,38 @@ void main() {
       }
       expect(find.text('Netherlands'), findsOneWidget);
     });
+
+    testWidgets('a long country name in a narrow squeezed row ellipsizes '
+        "instead of overflowing (Guides Step 2C's GuideYearSelector-plus-"
+        'CountryFilterControl row)', (tester) async {
+      const uae = VenueCountry(
+        name: 'United Arab Emirates',
+        code: 'AE',
+        flag: '🇦🇪',
+      );
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: SizedBox(
+              width: 320,
+              child: Row(
+                children: [
+                  const SizedBox(width: 220), // simulate a sibling control
+                  Expanded(
+                    child: CountryFilterControl(
+                      selected: uae,
+                      countries: const [uae],
+                      onChanged: (_) {},
+                      surface: CsSurface.dark,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      );
+      expect(tester.takeException(), isNull);
+    });
   });
 }

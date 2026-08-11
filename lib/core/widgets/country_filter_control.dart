@@ -86,12 +86,26 @@ class CountryFilterControl extends StatelessWidget {
             children: [
               Icon(Icons.public_rounded, size: 15, color: iconColor),
               const SizedBox(width: 6),
-              Text(
-                label,
-                style: GoogleFonts.inter(
-                  color: textColor,
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
+              // Flexible + ellipsis (Guides Step 2C addition): every
+              // existing caller (Explore, Events) gives this control the
+              // full row width, where no real country name is ever wide
+              // enough to need truncation, so their rendering is
+              // unaffected. Guides' World's 50 Best catalogues (Step 2C)
+              // are the first callers to place this beside another compact
+              // control (GuideYearSelector) in a shared Row, which a long
+              // country name ("United Arab Emirates") could otherwise
+              // overflow — this makes that squeeze degrade to an ellipsis
+              // instead of a RenderFlex error.
+              Flexible(
+                child: Text(
+                  label,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: GoogleFonts.inter(
+                    color: textColor,
+                    fontSize: 13,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               const SizedBox(width: 2),

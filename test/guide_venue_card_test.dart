@@ -6,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/widgets/key_row.dart';
 import 'package:michelin_passport/core/widgets/star_row.dart';
+import 'package:michelin_passport/features/guides/widgets/guide_rank_mark.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_venue_card.dart';
 
 Widget _wrap(Widget child, {double width = 390}) => MaterialApp(
@@ -129,6 +130,104 @@ void main() {
         ),
       );
       expect(find.byType(KeyRow), findsOneWidget);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('distinction is optional — omitted entirely when null '
+        '(Step 2C: World\'s 50 Best has nothing to put there)', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          GuideVenueCard(
+            title: 'Noma',
+            locationLabel: 'Copenhagen, Denmark',
+            leading: const GuideRankMark(rank: 1),
+            onTap: () {},
+          ),
+        ),
+      );
+      expect(find.text('Noma'), findsOneWidget);
+      expect(find.byType(StarRow), findsNothing);
+      expect(find.byType(KeyRow), findsNothing);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('leading (Step 2C: GuideRankMark) renders before the '
+        'thumbnail, and is absent by default (Michelin, Step 2B, is '
+        'pixel-unaffected)', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          GuideVenueCard(
+            title: 'Noma',
+            locationLabel: 'Copenhagen, Denmark',
+            leading: const GuideRankMark(rank: 1),
+            onTap: () {},
+          ),
+        ),
+      );
+      expect(find.byType(GuideRankMark), findsOneWidget);
+
+      await tester.pumpWidget(
+        _wrap(
+          GuideVenueCard(
+            title: 'Le Bernardin',
+            locationLabel: 'New York, United States',
+            distinction: const StarRow(count: 3, size: 12),
+            onTap: () {},
+          ),
+        ),
+      );
+      expect(find.byType(GuideRankMark), findsNothing);
+      expect(tester.takeException(), isNull);
+    });
+
+    for (final rank in [1, 50, 100]) {
+      testWidgets(
+        'a #$rank ranked entry with a long name/location at 320px does '
+        'not overflow',
+        (tester) async {
+          await tester.pumpWidget(
+            _wrap(
+              GuideVenueCard(
+                title:
+                    'A Deliberately Extremely Long Restaurant Name Used '
+                    'To Confirm This Ranked Row Never Overflows',
+                locationLabel:
+                    'A Deliberately Long City Name, A Deliberately '
+                    'Long Country Name',
+                leading: GuideRankMark(rank: rank),
+                onTap: () {},
+              ),
+              width: 320,
+            ),
+          );
+          expect(find.text('#$rank'), findsOneWidget);
+          expect(tester.takeException(), isNull);
+        },
+      );
+    }
+
+    testWidgets('a ranked entry at 1.6x text scale does not overflow', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MediaQuery(
+            data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
+            child: Scaffold(
+              backgroundColor: AppColors.deepGreen,
+              body: SizedBox(
+                width: 320,
+                child: GuideVenueCard(
+                  title: 'Noma',
+                  locationLabel: 'Copenhagen, Denmark',
+                  leading: const GuideRankMark(rank: 100),
+                  onTap: () {},
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
       expect(tester.takeException(), isNull);
     });
   });

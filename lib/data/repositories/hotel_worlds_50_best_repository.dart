@@ -1,7 +1,11 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/hotel.dart';
+import '../../models/venue_country.dart';
 import '../../models/worlds_50_best_hotel_entry.dart';
+import 'country_lookup.dart';
 import 'hotel_repository.dart' show hotelFullColumns;
+import 'search_query.dart';
+import 'worlds_50_best_ranking.dart';
 
 /// One hotel's position on an official World's 50 Best Hotels list for one
 /// year — the repository-layer foundation for a future "official rankings"
@@ -22,83 +26,127 @@ class HotelWorlds50BestRankingEntry {
   });
 }
 
-/// Official World's 50 Best Hotels rankings by year/list_type — distinct
-/// from RankingsRepository, which serves "My Rankings" (personal,
-/// per-user aggregation) and "Community" (public.restaurant_rankings,
-/// unrelated user-rating data, restaurant-only). This is the third,
-/// genuinely different kind of ranking: an external, official award list,
-/// with no personal or community rating involved at all.
+/// Official World's 50 Best Hotels rankings by year — distinct from
+/// RankingsRepository, which serves "My Rankings" (personal, per-user
+/// aggregation) and "Community" (public.restaurant_rankings, unrelated
+/// user-rating data, restaurant-only). This is the third, genuinely
+/// different kind of ranking: an external, official award list, with no
+/// personal or community rating involved at all.
 ///
-/// ARCHITECTURE NOTE — where this belongs in the UI is not decided here.
-/// RankingsScreen currently has exactly two tabs, "My Rankings" and
-/// "Community" (lib/features/rankings/rankings_screen.dart) — "Community"
-/// is restaurant-only user-rating data (public.restaurant_rankings) and is
-/// not the right home for an official, externally-curated award list;
-/// forcing this into either existing tab would misrepresent what both
-/// currently mean. Per the task scope for this pass, only this
-/// repository/model foundation is built — the actual screen/tab is left
-/// for a follow-up decision. See phase-report section 8 for the full
-/// reasoning.
+/// Where this belongs in the UI was originally left an open question (see
+/// git history for this file's earlier "ARCHITECTURE NOTE") — resolved by
+/// Guides Step 2C: FiftyBestHotelGuideScreen is this repository's first
+/// real caller, under Guides rather than RankingsScreen, which stays
+/// "My Rankings"/"Community" only. An official, externally-curated award
+/// list belongs with Guides' other reference catalogues (Michelin
+/// Restaurants/Hotels), not folded into either existing Rankings tab.
 class HotelWorlds50BestRepository {
   HotelWorlds50BestRepository(this._client);
 
   final SupabaseClient _client;
 
   // Years the app should offer in a year selector — hardcoded to the years
-  // actually researched and present in the source data (2023-2025), never
-  // fabricated forward. A future year's data arriving is a data change, not
-  // a code change: this list intentionally does NOT compute "current year"
-  // or extrapolate — see the task guardrail against inventing a hardcoded
-  // "current year" concept for a list that only publishes annually and
-  // irregularly.
+  // actually researched and present in the source data (2023-2025) at the
+  // time this repository was first built, never fabricated forward.
+  // Superseded by [getAvailableYears] (Guides Step 2C), which reads the
+  // real distinct years live instead — kept here unused rather than
+  // deleted, since removing already-shipped code isn't this step's job and
+  // nothing depends on it either way.
   static const availableYears = [2025, 2024, 2023];
 
+  /// Years the app can offer in a year selector, descending, deduplicated —
+  /// read live from worlds_50_best_hotels rather than the hardcoded
+  /// [availableYears] above, per the Guides Step 2C brief's explicit "do
+  /// not hard-code year ranges" requirement.
+  Future<List<int>> getAvailableYears() async {
+    final rows = await _client.from('worlds_50_best_hotels').select('year');
+    final years = <int>{
+      for (final row in rows as List) (row['year'] as num).toInt(),
+    };
+    return sortYearsDescending(years);
+  }
+
   /// One year's list, resolved to real Hotel rows (via hotels_full, the
-  /// same shared column list — and the same NOT-yet-exposed
-  /// worlds_50_best_rank/year limitation — every other hotel screen uses),
-  /// sorted by rank ascending (#1 first). [listType] defaults to the
-  /// numbered Top 50; pass extended to get the 51-100 list, which per the
-  /// source data only exists for 2025.
+  /// same shared column list every other hotel screen uses), sorted by
+  /// rank ascending (#1 first). [listType] is nullable and defaults to
+  /// null, meaning "every list_type for the year" — Guides' World's 50
+  /// Best Hotels catalogue (Step 2C) wants one continuous #1-#100 list,
+  /// never a separate Top 50/Extended split (the source itself makes no
+  /// such distinction to readers); pass a specific [listType] only if a
+  /// future caller genuinely needs just one slice. [query]/[countryCode]
+  /// narrow the *resolved* hotels — independent filters, combined with
+  /// AND, mirroring HotelRepository.search()'s own query/country semantics.
   ///
-  /// Requires both prerequisite migrations
-  /// (20260807150000_hotel_michelin_keys_nullable.sql,
-  /// 20260807160000_create_worlds_50_best_hotels.sql) to be applied on the
-  /// target — neither is applied remotely yet, so this throws against the
-  /// current production schema exactly like HotelRepository.search(
-  /// worlds50BestOnly: true) does. The code is ready; the data layer isn't
-  /// deployed.
+  /// worlds_50_best_hotels is genuinely deployed and queryable today
+  /// (confirmed via a live query during the Step 2C audit) — an earlier
+  /// version of this file's docs described its prerequisite migrations as
+  /// not yet applied remotely; that was accurate when written but is
+  /// stale now, a reminder to verify against the live schema rather than
+  /// trust an in-repo comment's age.
   Future<List<HotelWorlds50BestRankingEntry>> getRanking({
     required int year,
-    HotelWorlds50BestListType listType = HotelWorlds50BestListType.topFifty,
+    HotelWorlds50BestListType? listType,
+    String query = '',
+    String? countryCode,
   }) async {
-    final rankingRows = await _client
+    var rankingBuilder = _client
         .from('worlds_50_best_hotels')
         .select('hotel_id, rank, year, list_type')
         .eq('year', year)
-        .eq('list_type', listType.dbValue)
-        .order('rank', ascending: true);
+        .not('rank', 'is', null);
+    if (listType != null) {
+      rankingBuilder = rankingBuilder.eq('list_type', listType.dbValue);
+    }
+    final rankingRows = await rankingBuilder.order('rank', ascending: true);
     final rankingList = (rankingRows as List).cast<Map<String, dynamic>>();
     if (rankingList.isEmpty) return [];
 
     final hotelIds = rankingList.map((r) => r['hotel_id'] as String).toSet();
-    final hotelRows = await _client
+    var hotelBuilder = _client
         .from('hotels_full')
         .select(hotelFullColumns)
         .inFilter('id', hotelIds.toList());
-    final hotelsById = {
-      for (final row in hotelRows as List)
-        (row['id'] as String): Hotel.fromJson(row as Map<String, dynamic>),
-    };
+    final orFilter = buildIlikeOrFilter(query, [
+      'name',
+      'city_name',
+      'country_name',
+    ]);
+    if (orFilter != null) {
+      hotelBuilder = hotelBuilder.or(orFilter);
+    }
+    if (countryCode != null) {
+      hotelBuilder = hotelBuilder.eq('country_code', countryCode);
+    }
+    final hotelRows = await hotelBuilder;
 
-    return [
-      for (final row in rankingList)
-        if (hotelsById[row['hotel_id'] as String] != null)
-          HotelWorlds50BestRankingEntry(
-            hotel: hotelsById[row['hotel_id'] as String]!,
-            rank: (row['rank'] as num?)?.toInt(),
-            year: (row['year'] as num).toInt(),
-            listType: listType,
-          ),
-    ];
+    return buildHotelRankingEntries(
+      rankingRows: rankingList,
+      hotelRows: (hotelRows as List).cast<Map<String, dynamic>>(),
+      year: year,
+    );
+  }
+
+  /// Countries represented in [year]'s ranking specifically — mirrors
+  /// RestaurantWorlds50BestRepository.getCountries exactly.
+  Future<List<VenueCountry>> getCountries(int year) async {
+    final rankingRows = await _client
+        .from('worlds_50_best_hotels')
+        .select('hotel_id')
+        .eq('year', year)
+        .not('rank', 'is', null);
+    final hotelIds = <String>{
+      for (final row in rankingRows as List) row['hotel_id'] as String,
+    };
+    if (hotelIds.isEmpty) return [];
+    final hotelRows = await _client
+        .from('hotels_full')
+        .select('country_code')
+        .inFilter('id', hotelIds.toList());
+    final presentCodes = <String>{
+      for (final row in hotelRows as List)
+        if ((row['country_code'] as String?)?.isNotEmpty ?? false)
+          row['country_code'] as String,
+    };
+    return resolveVenueCountries(_client, presentCodes);
   }
 }

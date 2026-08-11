@@ -1,17 +1,23 @@
-// Covers GuideCatalogueLayout (the shared, presentation-only catalogue
-// shell) and the two still-data-free World's 50 Best catalogue screens.
-// None of these construct a repository or touch Supabase — pumping them
-// directly with no Supabase session initialized is exactly how that's
-// verified: if any of them did eager Supabase work, these tests would
-// throw. See the note above the second group below for why
-// MichelinRestaurantGuideScreen/MichelinHotelGuideScreen (Step 2B, real
-// data) are no longer pumped here.
+// Covers GuideCatalogueLayout — the shared, presentation-only catalogue
+// shell every Guides catalogue screen sits on. It never constructs a
+// repository or touches Supabase itself (it only ever renders whatever
+// [content] widget it's handed), which is exactly why it's still safely
+// pumpable directly here even though, as of Step 2C, all four concrete
+// catalogue screens (Michelin Restaurants/Hotels, World's 50 Best
+// Restaurants/Hotels) are real and construct a repository against
+// Supabase.instance.client eagerly in their own initState — none of them
+// are pumped in this file (see the Step 2B report for why the Michelin
+// pair was first removed from here, and the Step 2C report for the same
+// reasoning applied to the World's 50 Best pair). Every screen's
+// presentation pieces (GuideVenueCard,
+// GuideCatalogueLoading/EmptyState/ErrorState, GuideRankMark,
+// GuideYearSelector, the filter enums, the pure ranking/sort logic) are
+// covered directly in their own test files instead; full functional
+// verification happens via physical-device review.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
-import 'package:michelin_passport/features/guides/fifty_best_hotel_guide_screen.dart';
-import 'package:michelin_passport/features/guides/fifty_best_restaurant_guide_screen.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_catalogue_layout.dart';
 
 Widget _wrap(Widget child) => MaterialApp(home: child);
@@ -192,36 +198,6 @@ void main() {
           ),
         ),
       );
-      expect(tester.takeException(), isNull);
-    });
-  });
-
-  // MichelinRestaurantGuideScreen/MichelinHotelGuideScreen are no longer
-  // covered here as of Step 2B: both now construct RestaurantRepository/
-  // HotelRepository against Supabase.instance.client eagerly in initState
-  // (to load the real catalogue), so — like ExploreScreen, which has never
-  // had a screen-level widget test for the same reason — they can't be
-  // safely pumped without a live Supabase session. Their presentation
-  // pieces (GuideVenueCard, GuideCatalogueLoading/EmptyState/ErrorState,
-  // GuideStarFilter/GuideKeyFilter) are covered directly instead — see
-  // guide_venue_card_test.dart, guide_catalogue_states_test.dart and
-  // guide_view_model_test.dart. Full functional verification happens via
-  // physical-device review (see the Step 2B report for the preview entry
-  // point).
-  group('The two still-data-free World\'s 50 Best catalogue screens', () {
-    testWidgets('FiftyBestRestaurantGuideScreen renders the right family/'
-        'title, no data loading', (tester) async {
-      await tester.pumpWidget(_wrap(const FiftyBestRestaurantGuideScreen()));
-      expect(find.text("THE WORLD'S 50 BEST"), findsOneWidget);
-      expect(find.text('Restaurants'), findsOneWidget);
-      expect(tester.takeException(), isNull);
-    });
-
-    testWidgets('FiftyBestHotelGuideScreen renders the right family/title, '
-        'no data loading', (tester) async {
-      await tester.pumpWidget(_wrap(const FiftyBestHotelGuideScreen()));
-      expect(find.text("THE WORLD'S 50 BEST"), findsOneWidget);
-      expect(find.text('Hotels'), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
   });

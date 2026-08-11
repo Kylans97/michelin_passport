@@ -1,6 +1,6 @@
 // Covers GuideCatalogueLoading/GuideCatalogueEmptyState/
-// GuideCatalogueErrorState (Step 2B) — presentation-only, no Supabase
-// involved.
+// GuideCatalogueErrorState (Step 2B) and GuideResultCountLine (Step 2C) —
+// presentation-only, no Supabase involved.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -69,6 +69,37 @@ void main() {
       expect(find.textContaining('Exception'), findsNothing);
       expect(find.textContaining('Postgrest'), findsNothing);
       expect(find.textContaining('Supabase'), findsNothing);
+    });
+  });
+
+  group('GuideResultCountLine', () {
+    testWidgets('singular count reads "1 place"', (tester) async {
+      await tester.pumpWidget(
+        _wrap(const GuideResultCountLine(count: 1, loading: false)),
+      );
+      expect(find.text('1 place'), findsOneWidget);
+    });
+
+    testWidgets('plural count reads "N places", never shouting the '
+        'catalogue name', (tester) async {
+      await tester.pumpWidget(
+        _wrap(const GuideResultCountLine(count: 50, loading: false)),
+      );
+      expect(find.text('50 places'), findsOneWidget);
+      expect(find.textContaining("WORLD'S 50 BEST"), findsNothing);
+    });
+
+    testWidgets('shows an inline spinner only while loading', (tester) async {
+      await tester.pumpWidget(
+        _wrap(const GuideResultCountLine(count: 50, loading: false)),
+      );
+      expect(find.byType(CircularProgressIndicator), findsNothing);
+
+      await tester.pumpWidget(
+        _wrap(const GuideResultCountLine(count: 50, loading: true)),
+      );
+      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      expect(tester.takeException(), isNull);
     });
   });
 }
