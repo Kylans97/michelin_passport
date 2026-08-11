@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/widgets/cs_primary_button.dart';
+import '../../core/widgets/cs_text_field.dart';
 import '../../data/repositories/auth_repository.dart';
 import 'signup_screen.dart';
+import 'widgets/auth_presentation.dart';
 
+/// The entrance to Chasing Stars — Step 4A of the visual redesign. Every
+/// piece of authentication behavior below (form/validation, the Supabase
+/// call, error/loading state, AuthGate's own session listener picking up
+/// the new session automatically) is UNCHANGED from before this pass; only
+/// what [build] renders is new. See AuthRepository — there is no
+/// forgot-password method on it, so this screen deliberately shows no
+/// "Forgot password?" link; adding the backend for that is out of scope
+/// here (see the Step 4A report).
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -17,6 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
+  final _passFocus = FocusNode();
   bool _loading = false;
   String? _error;
 
@@ -26,10 +37,12 @@ class _LoginScreenState extends State<LoginScreen> {
   void dispose() {
     _emailCtrl.dispose();
     _passCtrl.dispose();
+    _passFocus.dispose();
     super.dispose();
   }
 
   Future<void> _submit() async {
+    if (_loading) return; // guards against a duplicate submit mid-flight
     if (!_formKey.currentState!.validate()) return;
     setState(() {
       _loading = true;
@@ -52,198 +65,80 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // A real Scaffold (not a bare ColoredBox) — unlike Passport/Explore,
+    // LoginScreen is used directly as MaterialApp.home via AuthGate's
+    // session-null branch, with no enclosing Scaffold anywhere above it,
+    // so it must provide its own Material ancestor for TextField/InkWell.
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.deepGreen,
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(28, 60, 28, 28),
+          padding: const EdgeInsets.fromLTRB(
+            CsSpacing.xxl,
+            CsSpacing.xxl,
+            CsSpacing.xxl,
+            CsSpacing.xxl,
+          ),
           child: Form(
             key: _formKey,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                SvgPicture.asset(
-                  'assets/table_passport_logo.svg',
-                  width: 72,
-                  height: 72,
+                const AuthBrandHeader(
+                  tagline:
+                      "Discover the world's most remarkable culinary "
+                      'experiences.',
                 ),
-                const SizedBox(height: 24),
+                const SizedBox(height: CsSpacing.section),
 
-                // ── Header ──────────────────────────────────────────────
-                Row(
-                  children: [
-                    const Icon(
-                      Icons.menu_book_rounded,
-                      color: AppColors.gold,
-                      size: 20,
-                    ),
-                    const SizedBox(width: 10),
-                    Text(
-                      'CHASING STARS',
-                      style: GoogleFonts.inter(
-                        color: AppColors.gold,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 2.0,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 40),
-                Text(
-                  'Welcome back.',
-                  style: GoogleFonts.playfairDisplay(
-                    color: AppColors.textPrimary,
-                    fontSize: 36,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  'Sign in to continue your culinary journey.',
-                  style: GoogleFonts.inter(
-                    color: AppColors.textSecondary,
-                    fontSize: 15,
-                  ),
-                ),
-                const SizedBox(height: 48),
-
-                // ── Fields ──────────────────────────────────────────────
-                _FieldLabel('Email address'),
-                const SizedBox(height: 8),
-                TextFormField(
+                CsTextField(
+                  label: 'Email',
                   controller: _emailCtrl,
+                  hintText: 'you@example.com',
                   keyboardType: TextInputType.emailAddress,
                   autofillHints: const [AutofillHints.email],
-                  style: GoogleFonts.inter(
-                    color: AppColors.textPrimary,
-                    fontSize: 15,
-                  ),
-                  decoration: const InputDecoration(
-                    hintText: 'you@example.com',
-                    prefixIcon: Icon(Icons.mail_outline_rounded),
-                  ),
+                  textInputAction: TextInputAction.next,
+                  onFieldSubmitted: (_) => _passFocus.requestFocus(),
                   validator: (v) => (v == null || !v.contains('@'))
                       ? 'Enter a valid email'
                       : null,
                 ),
-                const SizedBox(height: 20),
-                _FieldLabel('Password'),
-                const SizedBox(height: 8),
-                TextFormField(
+                const SizedBox(height: CsSpacing.lg),
+                CsTextField(
+                  label: 'Password',
                   controller: _passCtrl,
+                  focusNode: _passFocus,
                   obscureText: true,
+                  showVisibilityToggle: true,
+                  hintText: '••••••••',
                   autofillHints: const [AutofillHints.password],
-                  style: GoogleFonts.inter(
-                    color: AppColors.textPrimary,
-                    fontSize: 15,
-                  ),
-                  decoration: const InputDecoration(
-                    hintText: '••••••••',
-                    prefixIcon: Icon(Icons.lock_outline_rounded),
-                  ),
+                  textInputAction: TextInputAction.done,
+                  onFieldSubmitted: (_) => _submit(),
                   validator: (v) => (v == null || v.length < 6)
                       ? 'Minimum 6 characters'
                       : null,
                 ),
-                const SizedBox(height: 16),
 
-                // ── Error ────────────────────────────────────────────────
                 if (_error != null) ...[
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: AppColors.error.withValues(alpha: 0.1),
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(
-                        color: AppColors.error.withValues(alpha: 0.4),
-                        width: 0.5,
-                      ),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          Icons.error_outline_rounded,
-                          color: AppColors.error,
-                          size: 16,
-                        ),
-                        const SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
-                            _error!,
-                            style: GoogleFonts.inter(
-                              color: AppColors.error,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: CsSpacing.base),
+                  AuthErrorBanner(message: _error!),
                 ],
 
-                // ── Submit ───────────────────────────────────────────────
-                const SizedBox(height: 8),
-                SizedBox(
-                  width: double.infinity,
-                  height: 52,
-                  child: FilledButton(
-                    onPressed: _loading ? null : _submit,
-                    style: FilledButton.styleFrom(
-                      backgroundColor: AppColors.gold,
-                      foregroundColor: Colors.black,
-                      disabledBackgroundColor: AppColors.goldMuted,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
-                    ),
-                    child: _loading
-                        ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(
-                              color: Colors.black,
-                              strokeWidth: 2,
-                            ),
-                          )
-                        : Text(
-                            'Sign In',
-                            style: GoogleFonts.inter(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 15,
-                            ),
-                          ),
-                  ),
+                const SizedBox(height: CsSpacing.xl),
+                CsPrimaryButton(
+                  label: 'Sign in',
+                  onTap: _submit,
+                  loading: _loading,
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: CsSpacing.xxl),
 
-                // ── Sign-up link ─────────────────────────────────────────
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Don't have an account? ",
-                      style: GoogleFonts.inter(
-                        color: AppColors.textSecondary,
-                        fontSize: 14,
-                      ),
-                    ),
-                    GestureDetector(
-                      onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (_) => const SignupScreen()),
-                      ),
-                      child: Text(
-                        'Sign up',
-                        style: GoogleFonts.inter(
-                          color: AppColors.gold,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-                  ],
+                SecondaryAuthLink(
+                  question: 'New to Chasing Stars?',
+                  actionLabel: 'Create an account',
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (_) => const SignupScreen()),
+                  ),
                 ),
               ],
             ),
@@ -252,20 +147,4 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-}
-
-class _FieldLabel extends StatelessWidget {
-  final String text;
-  const _FieldLabel(this.text);
-
-  @override
-  Widget build(BuildContext context) => Text(
-    text,
-    style: GoogleFonts.inter(
-      color: AppColors.textSecondary,
-      fontSize: 12,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 0.5,
-    ),
-  );
 }

@@ -85,6 +85,25 @@ void main() {
       );
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets('loading: true shows a spinner instead of the label and '
+        'suppresses onTap', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          CsPrimaryButton(
+            label: 'Sign in',
+            onTap: () => tapped = true,
+            loading: true,
+          ),
+        ),
+      );
+      expect(find.text('Sign in'), findsNothing);
+      expect(find.byType(CircularProgressIndicator), findsOneWidget);
+      await tester.tap(find.byType(CsPrimaryButton));
+      expect(tapped, isFalse);
+      expect(tester.takeException(), isNull);
+    });
   });
 
   group('CsSecondaryButton', () {

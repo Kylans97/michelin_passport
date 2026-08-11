@@ -1,9 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/cs_primary_button.dart';
+import '../../core/widgets/cs_text_field.dart';
+import '../../core/widgets/detail_hero.dart' show HeroIconButton;
 import '../../data/repositories/auth_repository.dart';
+import 'widgets/auth_presentation.dart';
 
+/// Sign up — the same entrance experience as [LoginScreen] (Step 4A),
+/// just with the additional field a new account needs. Every piece of
+/// authentication behavior below (form/validation, the Supabase call,
+/// the email-confirmation "check your inbox" success state, error/loading
+/// state) is UNCHANGED from before this pass; only what [build] renders is
+/// new.
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
 
@@ -16,6 +27,8 @@ class _SignupScreenState extends State<SignupScreen> {
   final _nameCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
+  final _emailFocus = FocusNode();
+  final _passFocus = FocusNode();
   bool _loading = false;
   String? _error;
   bool _success = false;
@@ -27,10 +40,13 @@ class _SignupScreenState extends State<SignupScreen> {
     _nameCtrl.dispose();
     _emailCtrl.dispose();
     _passCtrl.dispose();
+    _emailFocus.dispose();
+    _passFocus.dispose();
     super.dispose();
   }
 
   Future<void> _submit() async {
+    if (_loading) return; // guards against a duplicate submit mid-flight
     if (!_formKey.currentState!.validate()) return;
     setState(() {
       _loading = true;
@@ -56,267 +72,162 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // See LoginScreen's matching note: a real Scaffold, not a bare
+    // ColoredBox — this screen has no enclosing Scaffold of its own above
+    // it either (pushed directly via MaterialPageRoute from LoginScreen).
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_rounded),
-          onPressed: () => Navigator.pop(context),
-        ),
-      ),
+      backgroundColor: AppColors.deepGreen,
       body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(28, 16, 28, 28),
-          child: _success
-              ? _SuccessBody()
-              : _FormBody(
-                  formKey: _formKey,
-                  nameCtrl: _nameCtrl,
-                  emailCtrl: _emailCtrl,
-                  passCtrl: _passCtrl,
-                  loading: _loading,
-                  error: _error,
-                  onSubmit: _submit,
-                ),
-        ),
-      ),
-    );
-  }
-}
-
-// ── Form body ─────────────────────────────────────────────────────────────────
-
-class _FormBody extends StatelessWidget {
-  const _FormBody({
-    required this.formKey,
-    required this.nameCtrl,
-    required this.emailCtrl,
-    required this.passCtrl,
-    required this.loading,
-    required this.error,
-    required this.onSubmit,
-  });
-
-  final GlobalKey<FormState> formKey;
-  final TextEditingController nameCtrl;
-  final TextEditingController emailCtrl;
-  final TextEditingController passCtrl;
-  final bool loading;
-  final String? error;
-  final VoidCallback onSubmit;
-
-  @override
-  Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Create account.',
-            style: GoogleFonts.playfairDisplay(
-              color: AppColors.textPrimary,
-              fontSize: 36,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Start stamping your culinary passport.',
-            style: GoogleFonts.inter(
-              color: AppColors.textSecondary,
-              fontSize: 15,
-            ),
-          ),
-          const SizedBox(height: 44),
-
-          _FieldLabel('Your name'),
-          const SizedBox(height: 8),
-          TextFormField(
-            controller: nameCtrl,
-            textCapitalization: TextCapitalization.words,
-            autofillHints: const [AutofillHints.name],
-            style: GoogleFonts.inter(
-              color: AppColors.textPrimary,
-              fontSize: 15,
-            ),
-            decoration: const InputDecoration(
-              hintText: 'Jane Doe',
-              prefixIcon: Icon(Icons.person_outline_rounded),
-            ),
-            validator: (v) =>
-                (v == null || v.trim().isEmpty) ? 'Enter your name' : null,
-          ),
-          const SizedBox(height: 20),
-          _FieldLabel('Email address'),
-          const SizedBox(height: 8),
-          TextFormField(
-            controller: emailCtrl,
-            keyboardType: TextInputType.emailAddress,
-            autofillHints: const [AutofillHints.email],
-            style: GoogleFonts.inter(
-              color: AppColors.textPrimary,
-              fontSize: 15,
-            ),
-            decoration: const InputDecoration(
-              hintText: 'you@example.com',
-              prefixIcon: Icon(Icons.mail_outline_rounded),
-            ),
-            validator: (v) =>
-                (v == null || !v.contains('@')) ? 'Enter a valid email' : null,
-          ),
-          const SizedBox(height: 20),
-          _FieldLabel('Password'),
-          const SizedBox(height: 8),
-          TextFormField(
-            controller: passCtrl,
-            obscureText: true,
-            autofillHints: const [AutofillHints.newPassword],
-            style: GoogleFonts.inter(
-              color: AppColors.textPrimary,
-              fontSize: 15,
-            ),
-            decoration: const InputDecoration(
-              hintText: 'Minimum 6 characters',
-              prefixIcon: Icon(Icons.lock_outline_rounded),
-            ),
-            validator: (v) =>
-                (v == null || v.length < 6) ? 'Minimum 6 characters' : null,
-          ),
-          const SizedBox(height: 16),
-
-          if (error != null) ...[
-            Container(
-              padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                color: AppColors.error.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(
-                  color: AppColors.error.withValues(alpha: 0.4),
-                  width: 0.5,
-                ),
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              padding: const EdgeInsets.fromLTRB(
+                CsSpacing.xxl,
+                CsSpacing.hero,
+                CsSpacing.xxl,
+                CsSpacing.xxl,
               ),
-              child: Row(
-                children: [
-                  const Icon(
-                    Icons.error_outline_rounded,
-                    color: AppColors.error,
-                    size: 16,
-                  ),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      error!,
-                      style: GoogleFonts.inter(
-                        color: AppColors.error,
-                        fontSize: 13,
+              child: _success
+                  ? const _CheckInboxBody()
+                  : Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          const AuthBrandHeader(
+                            compact: true,
+                            tagline: 'Create your account.',
+                          ),
+                          const SizedBox(height: CsSpacing.xxl),
+
+                          CsTextField(
+                            label: 'Name',
+                            controller: _nameCtrl,
+                            hintText: 'Jane Doe',
+                            textCapitalization: TextCapitalization.words,
+                            autofillHints: const [AutofillHints.name],
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) => _emailFocus.requestFocus(),
+                            validator: (v) => (v == null || v.trim().isEmpty)
+                                ? 'Enter your name'
+                                : null,
+                          ),
+                          const SizedBox(height: CsSpacing.lg),
+                          CsTextField(
+                            label: 'Email',
+                            controller: _emailCtrl,
+                            focusNode: _emailFocus,
+                            hintText: 'you@example.com',
+                            keyboardType: TextInputType.emailAddress,
+                            autofillHints: const [AutofillHints.email],
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) => _passFocus.requestFocus(),
+                            validator: (v) => (v == null || !v.contains('@'))
+                                ? 'Enter a valid email'
+                                : null,
+                          ),
+                          const SizedBox(height: CsSpacing.lg),
+                          CsTextField(
+                            label: 'Password',
+                            controller: _passCtrl,
+                            focusNode: _passFocus,
+                            obscureText: true,
+                            showVisibilityToggle: true,
+                            hintText: 'Minimum 6 characters',
+                            autofillHints: const [AutofillHints.newPassword],
+                            textInputAction: TextInputAction.done,
+                            onFieldSubmitted: (_) => _submit(),
+                            validator: (v) => (v == null || v.length < 6)
+                                ? 'Minimum 6 characters'
+                                : null,
+                          ),
+
+                          if (_error != null) ...[
+                            const SizedBox(height: CsSpacing.base),
+                            AuthErrorBanner(message: _error!),
+                          ],
+
+                          const SizedBox(height: CsSpacing.xl),
+                          CsPrimaryButton(
+                            label: 'Create account',
+                            onTap: _submit,
+                            loading: _loading,
+                          ),
+                          const SizedBox(height: CsSpacing.xxl),
+
+                          SecondaryAuthLink(
+                            question: 'Already a member?',
+                            actionLabel: 'Sign in',
+                            onTap: () => Navigator.pop(context),
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ],
+            ),
+            Positioned(
+              left: CsSpacing.base,
+              top: CsSpacing.sm,
+              child: HeroIconButton(
+                icon: Icons.arrow_back_ios_new_rounded,
+                onTap: () => Navigator.maybePop(context),
               ),
             ),
-            const SizedBox(height: 16),
           ],
-
-          const SizedBox(height: 8),
-          SizedBox(
-            width: double.infinity,
-            height: 52,
-            child: FilledButton(
-              onPressed: loading ? null : onSubmit,
-              style: FilledButton.styleFrom(
-                backgroundColor: AppColors.gold,
-                foregroundColor: Colors.black,
-                disabledBackgroundColor: AppColors.goldMuted,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
-              ),
-              child: loading
-                  ? const SizedBox(
-                      width: 20,
-                      height: 20,
-                      child: CircularProgressIndicator(
-                        color: Colors.black,
-                        strokeWidth: 2,
-                      ),
-                    )
-                  : Text(
-                      'Create Account',
-                      style: GoogleFonts.inter(
-                        fontWeight: FontWeight.w700,
-                        fontSize: 15,
-                      ),
-                    ),
-            ),
-          ),
-        ],
+        ),
       ),
     );
   }
 }
 
-// ── Success body (shown when email confirmation is required) ──────────────────
+/// Shown once sign-up succeeds and email confirmation is required —
+/// unchanged condition from before this pass (see _submit), only the
+/// presentation is new.
+class _CheckInboxBody extends StatelessWidget {
+  const _CheckInboxBody();
 
-class _SuccessBody extends StatelessWidget {
   @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(top: CsSpacing.hero),
+    child: Column(
       children: [
-        const SizedBox(height: 80),
         const Icon(
-          Icons.mark_email_read_outlined,
-          color: AppColors.gold,
-          size: 56,
+          Icons.mail_outline_rounded,
+          color: AppColors.textOnDark,
+          size: 40,
         ),
-        const SizedBox(height: 24),
+        const SizedBox(height: CsSpacing.xl),
         Text(
           'Check your inbox',
-          style: GoogleFonts.playfairDisplay(
-            color: AppColors.textPrimary,
-            fontSize: 28,
-            fontWeight: FontWeight.w700,
-          ),
           textAlign: TextAlign.center,
+          style: CsTypography.screenTitle.copyWith(color: AppColors.textOnDark),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: CsSpacing.sm),
         Text(
           'We sent you a confirmation link.\nClick it to activate your account.',
-          style: GoogleFonts.inter(
-            color: AppColors.textSecondary,
-            fontSize: 15,
-            height: 1.6,
-          ),
           textAlign: TextAlign.center,
+          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
         ),
-        const SizedBox(height: 40),
-        TextButton(
-          onPressed: () => Navigator.pop(context),
-          child: Text(
-            'Back to sign in',
-            style: GoogleFonts.inter(color: AppColors.gold, fontSize: 15),
+        const SizedBox(height: CsSpacing.xxl),
+        Material(
+          color: Colors.transparent,
+          child: InkWell(
+            onTap: () => Navigator.pop(context),
+            borderRadius: BorderRadius.circular(8),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: CsSpacing.md,
+                vertical: CsSpacing.sm,
+              ),
+              child: Text(
+                'Back to sign in',
+                style: CsTypography.bodyMedium.copyWith(
+                  color: AppColors.textOnDark,
+                ),
+              ),
+            ),
           ),
         ),
       ],
-    );
-  }
-}
-
-class _FieldLabel extends StatelessWidget {
-  final String text;
-  const _FieldLabel(this.text);
-
-  @override
-  Widget build(BuildContext context) => Text(
-    text,
-    style: GoogleFonts.inter(
-      color: AppColors.textSecondary,
-      fontSize: 12,
-      fontWeight: FontWeight.w500,
-      letterSpacing: 0.5,
     ),
   );
 }

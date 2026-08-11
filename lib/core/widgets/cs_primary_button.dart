@@ -19,6 +19,15 @@ class CsPrimaryButton extends StatelessWidget {
   final CsSurface surface;
   final double height;
 
+  /// When true, shows a small restrained spinner in place of the label and
+  /// disables [onTap] regardless of what's passed — the caller doesn't need
+  /// to also null out its own callback. Added for Login/Sign up (Step 4A),
+  /// where preventing a duplicate submission needed a loading affordance on
+  /// the CTA itself rather than a full-page spinner; kept as a plain
+  /// optional param (default false) so every existing call site is
+  /// unaffected.
+  final bool loading;
+
   const CsPrimaryButton({
     super.key,
     required this.label,
@@ -26,6 +35,7 @@ class CsPrimaryButton extends StatelessWidget {
     this.icon,
     this.surface = CsSurface.dark,
     this.height = 52,
+    this.loading = false,
   });
 
   @override
@@ -41,19 +51,29 @@ class CsPrimaryButton extends StatelessWidget {
       disabledForegroundColor: foreground.withValues(alpha: 0.6),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
     );
-    final labelText = Text(
-      label,
-      style: CsTypography.bodyMedium.copyWith(color: foreground),
-    );
+    final child = loading
+        ? SizedBox(
+            width: 20,
+            height: 20,
+            child: CircularProgressIndicator(strokeWidth: 2, color: foreground),
+          )
+        : Text(
+            label,
+            style: CsTypography.bodyMedium.copyWith(color: foreground),
+          );
 
     return SizedBox(
       height: height,
-      child: icon == null
-          ? FilledButton(onPressed: onTap, style: style, child: labelText)
+      child: icon == null || loading
+          ? FilledButton(
+              onPressed: loading ? null : onTap,
+              style: style,
+              child: child,
+            )
           : FilledButton.icon(
               onPressed: onTap,
               icon: Icon(icon, size: 18),
-              label: labelText,
+              label: child,
               style: style,
             ),
     );
