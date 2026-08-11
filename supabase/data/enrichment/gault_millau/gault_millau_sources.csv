@@ -1,0 +1,21 @@
+source_id,domain,market_scope,content_used,retrieval_date,access_status
+src_001,fr.gaultmillau.com,France (official),"Restaurant profiles, scoring FAQ, gala/awards recap, news",2026-08-11,accessible
+src_002,shop.gaultmillau.fr,"France (official, shop)",Guide France 2026 edition confirmation,2026-08-11,accessible
+src_003,gault-millau.nl,Netherlands (official),"Restaurant profiles, sorted directory, 2026 awards article, 2022 score-update news post",2026-08-11,accessible
+src_004,gaultmillau.be,Belgium (official),"Restaurant + H!P profiles, sorted directory, 23rd edition/2026 awards article",2026-08-11,accessible
+src_005,gaultmillau.ch,Switzerland (official),"Restaurant profiles, starchefs editorial round-up (""ultimative Liste""), Chef of the Year article",2026-08-11,accessible
+src_006,gaultmillau.de,Germany (official),"INACCESSIBLE during this research — SSL certificate error, site down",2026-08-11,INACCESSIBLE (SSL error)
+src_007,gaultmillau.at,Austria (official),"Restaurant profiles, official scoring-system explainer page, 2026 winners article",2026-08-11,accessible
+src_008,gaultmillau.org,Group corporate/international hub,"International market history, France 2024 awards recap",2026-08-11,accessible
+src_009,gaultmillau.com,Group consumer hub,Country selector / market list,2026-08-11,accessible
+src_010,gourmoer.ch,Secondary — CH editorial,Guide Suisse 2026 restaurant score round-up (scores not shown on gaultmillau.ch profile pages themselves),2026-08-11,accessible
+src_011,tageskarte.io,Secondary — DE trade press,2025 Germany Hauben list + awards (used because gaultmillau.de was down),2026-08-11,accessible
+src_012,rollingpin.de,Secondary — DE trade press,2025 Germany 5-Hauben list corroboration,2026-08-11,accessible
+src_013,vinaria.at,Secondary — AT editorial,2026 Austria Hauben overview,2026-08-11,accessible
+src_014,gaumenhoch.at,Secondary — AT editorial,2026 Austria Hauben overview (4-toque tier),2026-08-11,accessible
+src_015,horecava.nl,Secondary — NL trade fair org,Approximate NL minimum-score paraphrase,2026-08-11,accessible
+src_016,vrt.be,Secondary — BE press (VRT News),Hof van Cleve unscored-year 2024 report,2026-08-11,accessible
+src_017,restaurantguru.com,Secondary — aggregator,2025 global award-winners roundup (cross-market orientation only),2026-08-11,accessible
+src_018,croatiaweek.com,Secondary — press,Croatia 2026 Chef of the Year,2026-08-11,accessible
+src_019,delano.lu,Secondary — Luxembourg press,Luxembourg 2024 Chef of the Year,2026-08-11,accessible
+src_020,gault-millau.cz,Czech Republic (official),Young Talent of the Year 2026 article (market-survey context only),2026-08-11,accessible
