@@ -1,0 +1,10 @@
+category,action,count,notes
+restaurant,INSERT,100,"All 100 pass the WHERE-clause + ON CONFLICT dedup logic against live production, verified via read-only SELECT emulation of the exact prepared SQL."
+restaurant,SKIP,0,
+restaurant,BLOCK,0,
+award,INSERT,100,"One row per successfully-inserted restaurant, driven by RETURNING."
+award,SKIP,0,
+award,BLOCK,0,
+hotel_link,INSERT,1,"be_010 Fine Fleur -> Botanic Sanctuary Antwerp"
+hotel_link,SKIP,99,"No verified production hotel relationship for the remaining 99."
+hotel_link,BLOCK,0,

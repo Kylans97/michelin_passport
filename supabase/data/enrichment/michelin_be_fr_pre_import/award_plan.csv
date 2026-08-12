@@ -1,0 +1,3 @@
+country_code,award_rows_planned,entity_type,guide_year,award_type,award_value_source,is_current,announced_on,convention_source
+BE,100,restaurant,2026,michelin_stars,"per-candidate michelin_stars (manifest value; 0 corrections in BE)",true,,"matches all 20 existing BE current award_history rows (live-verified)"
+FR,473,restaurant,2026,michelin_stars,"per-candidate michelin_stars_final (4 corrected: fr_0306=3, fr_0404=2, fr_0420=2, fr_0521=1; 1 confirmed unchanged: fr_0518=1; 468 unchanged manifest values)",true,,"matches all 6 existing FR current award_history rows (live-verified)"

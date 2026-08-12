@@ -1,0 +1,474 @@
+candidate_id,country_code,restaurant_name,resolved_city,city_id,michelin_stars_manifest,michelin_stars_final,star_corrected,coordinate_quality,latitude,longitude,has_michelin_url,hotel_link,classification,notes
+fr_0017,FR,Assiette Champenoise,Tinqueux,58e74915-0b99-4dd2-92f7-9c9d686ddf49,3,3,no,PROPERTY_EXACT,49.2479311,4.0031097,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0024,FR,Le Royal,Champillon,9bb90c14-6fec-4d4d-b599-8cabdeed194c,1,1,no,PROPERTY_EXACT,49.0909765,3.9767240,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0029,FR,Alcôve,Vinay,06eeb39d-f089-47b3-ac28-0e34cd540b65,1,1,no,PROPERTY_EXACT,49.0087890,3.9075840,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0040,FR,Villa René Lalique,Wingen-sur-Moder,33144ce8-e058-4e28-ac2a-706938e9acca,2,2,no,PROPERTY_EXACT,48.9184873,7.3647098,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0026,FR,Yozora,Metz,d1127883-b874-4fbb-8415-6b97a966a5ee,1,1,no,PROPERTY_EXACT,49.1082004,6.1815828,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0028,FR,Les Voiles d'Or,Dieppe,73ef0d5f-df69-46f0-9055-ff10c6c23b12,1,1,no,VENUE_EXACT,49.9319818,1.0893379,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0001,FR,Harmonie,Villeneuve-d'Ascq,f895a812-e163-406e-9554-51fbdc742f67,1,1,no,ADDRESS_EXACT,50.6640640,3.1457110,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0043,FR,Villa9Trois,Montreuil,5c87132d-7e01-49c7-8499-32b98f65ffe8,1,1,no,ADDRESS_EXACT,48.8639093,2.4331381,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0010,FR,Bacôve,Saint-Omer,3e50a27a-71e3-49be-a629-1092c3e5c101,1,1,no,VENUE_EXACT,50.7482326,2.2553203,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0038,FR,L'Odas,Rouen,b7d82b2b-93aa-4639-9b78-4ec65068cf25,1,1,no,VENUE_EXACT,49.4410947,1.0945572,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+fr_0002,FR,Arborescence,Croix,4d640f78-5459-40ee-97dc-9450d05fdd7a,1,1,no,VENUE_EXACT,50.6770420,3.1417215,yes,,APPROVED_FOR_IMPORT,
+fr_0004,FR,Le Restaurant du Cerisier,Lille,555a94b2-8901-4109-904f-0ecfb9d65c88,1,1,no,ADDRESS_EXACT,50.6420348,3.0642501,yes,,APPROVED_FOR_IMPORT,
+fr_0005,FR,Auberge du Vert Mont,Boeschepe,d6acea43-5483-4c61-bc59-68673c6bbe96,1,1,no,VENUE_EXACT,50.7929646,2.7034612,yes,,APPROVED_FOR_IMPORT,
+fr_0006,FR,Ginko,Lille,555a94b2-8901-4109-904f-0ecfb9d65c88,1,1,no,VENUE_EXACT,50.6353273,3.0601383,yes,,APPROVED_FOR_IMPORT,
+fr_0007,FR,Pureté,Lille,555a94b2-8901-4109-904f-0ecfb9d65c88,1,1,no,VENUE_EXACT,50.6415206,3.0618239,yes,,APPROVED_FOR_IMPORT,
+fr_0008,FR,Haut Bonheur de la Table,Cassel,2dc33d88-5d9e-492a-b4f4-7a612e20f772,1,1,no,VENUE_EXACT,50.7998212,2.4855555,yes,,APPROVED_FOR_IMPORT,
+fr_0009,FR,Le Camélia,Bry,7091050d-c13c-4073-96ad-1cbc0a5412c9,1,1,no,ADDRESS_EXACT,50.3190375,3.6770444,yes,,APPROVED_FOR_IMPORT,
+fr_0011,FR,La Table de Christophe Dufossé,Busnes,8c2ab08d-192c-46c3-bf1b-411a5bfe945b,2,2,no,ADDRESS_EXACT,50.5830173,2.5137203,yes,,APPROVED_FOR_IMPORT,
+fr_0012,FR,La Grenouillère,La Madelaine-sous-Montreuil,81c4ec4b-17d1-4ca3-859b-c7d7eff38f3b,2,2,no,VENUE_EXACT,50.4711000,1.7543454,yes,,APPROVED_FOR_IMPORT,"2-star, Relais & Chateaux, chef Alexandre Gauthier"
+fr_0013,FR,Auberge de la Grive,Trosly-Loire,99f86c8e-8be8-49f5-8f32-3fcc334b1ef9,1,1,no,ADDRESS_EXACT,49.5166950,3.2252020,yes,,APPROVED_FOR_IMPORT,
+fr_0014,FR,Alexis Baudin,Malling,8fe2c604-8c3b-4ed5-9103-90163179e5d7,1,1,no,VENUE_EXACT,49.4090714,6.3078998,yes,,APPROVED_FOR_IMPORT,"Address given as 'Petite-Hettange, Malling' -- Petite-Hettange is a hamlet within Malling commune"
+fr_0015,FR,Le K,Montenach,571922cb-541b-4ac2-90a4-18e846182441,1,1,no,PROPERTY_EXACT,49.4192419,6.3758272,yes,,APPROVED_FOR_IMPORT,Located in Domaine de la Klauss hotel -- property relationship candidate
+fr_0016,FR,La Table de Courcelles - Château de Courcelles,Courcelles-sur-Vesle,7054ae07-df83-4b93-b92a-c38b2929efc5,1,1,no,PROPERTY_EXACT,49.3378635,3.5695851,yes,,APPROVED_FOR_IMPORT,No specific street address found in search snippets -- located at Château de Courcelles hotel property. Will rely on venue-name Nominatim search. | Exact street address (8 Rue du Chateau) discovered v
+fr_0018,FR,Le Millénaire,Reims,c575e9b7-0a90-46d0-9908-21c9e16de488,1,1,no,VENUE_EXACT,49.2561359,4.0342620,yes,,APPROVED_FOR_IMPORT,
+fr_0019,FR,Arbane,Reims,c575e9b7-0a90-46d0-9908-21c9e16de488,1,1,no,VENUE_EXACT,49.2573210,4.0274053,yes,,APPROVED_FOR_IMPORT,"2-star, chef Philippe Mille"
+fr_0020,FR,Racine,Reims,c575e9b7-0a90-46d0-9908-21c9e16de488,2,2,no,VENUE_EXACT,49.2527649,4.0374948,yes,,APPROVED_FOR_IMPORT,"2-star, chef Kazuyuki Tanaka"
+fr_0021,FR,Le Parc Les Crayères,Reims,c575e9b7-0a90-46d0-9908-21c9e16de488,2,2,no,ADDRESS_EXACT,49.2411629,4.0518150,yes,,APPROVED_FOR_IMPORT,"2-star, located in Domaine Les Crayeres hotel -- property relationship candidate"
+fr_0022,FR,Quai des Saveurs,Hagondange,7b73683c-8da7-443f-9695-e3754ef6268b,1,1,no,VENUE_EXACT,49.2534283,6.1646208,yes,,APPROVED_FOR_IMPORT,
+fr_0023,FR,Le Grand Cerf,Montchenot,31d8eb7d-e1f2-40cf-8d7e-84d5867a1963,1,1,no,VENUE_EXACT,49.1617127,4.0108509,yes,,APPROVED_FOR_IMPORT,Postal town given as Villers-Allerand; Montchenot is the specific hamlet -- resolved city Montchenot per city-coverage workstream
+fr_0025,FR,L'Orée de la Forêt,Étouy,f50fa646-fde2-4355-a1f4-9599b8e5c089,1,1,no,VENUE_EXACT,49.4145475,2.3686887,yes,,APPROVED_FOR_IMPORT,
+fr_0030,FR,Jérôme Feck,Châlons-en-Champagne,dbffabb7-6da8-438a-9eb7-f722a5e5d33b,1,1,no,VENUE_EXACT,48.9569564,4.3649367,yes,,APPROVED_FOR_IMPORT,Located in Hotel d'Angleterre -- property relationship candidate
+fr_0031,FR,Le Verbois,Chantilly,383bec8b-7700-446b-817a-8c8a65bc90c8,1,1,no,ADDRESS_EXACT,49.2218736,2.4666385,yes,,APPROVED_FOR_IMPORT,"Actual village is Saint-Maximin, near Chantilly -- source city on file is 'Chantilly', kept for city_id consistency"
+fr_0033,FR,Auberge Saint-Walfrid,Sarreguemines,57493eee-c292-4a1b-b3f6-5e09a3d711c5,1,1,no,VENUE_EXACT,49.1147436,7.0448951,yes,,APPROVED_FOR_IMPORT,Also a hotel -- property relationship candidate
+fr_0034,FR,La Grange de Belle-Église,Belle-Église,795ecffa-4252-41f1-b64b-57072d45d0db,1,1,no,VENUE_EXACT,49.1921513,2.2145177,yes,,APPROVED_FOR_IMPORT,
+fr_0035,FR,La Licorne Royale,Lyons-la-Forêt,702dacbe-6b05-4b99-9860-e088803e6d78,1,1,no,ADDRESS_EXACT,49.3991369,1.4767326,yes,,APPROVED_FOR_IMPORT,
+fr_0036,FR,Auberge de la Brie,Couilly-Pont-aux-Dames,3ab18bfd-be91-4f7e-b4b0-da184602c9d5,1,1,no,ADDRESS_EXACT,48.8858117,2.8561850,yes,,APPROVED_FOR_IMPORT,
+fr_0039,FR,La Maison dans le Parc,Nancy,eac4ec08-3d02-43f6-b7ad-30e6f14d07ef,1,1,no,VENUE_EXACT,48.6941849,6.1851687,yes,,APPROVED_FOR_IMPORT,
+fr_0041,FR,La Vieille Auberge,Villeneuve-le-Comte,3a75d0a1-68ed-4973-8626-1a0ae79caae2,1,1,no,ADDRESS_EXACT,48.8134306,2.8295067,yes,,APPROVED_FOR_IMPORT,
+fr_0042,FR,Maison Caillet,Valmont,d73be66e-fa14-4736-8370-1d93d439551a,1,1,no,ADDRESS_EXACT,49.7446263,0.4919090,yes,,APPROVED_FOR_IMPORT,Also a hotel -- property relationship candidate
+fr_0044,FR,L'Arnsbourg,Baerenthal,a0eb3a5c-8842-4b52-9bae-d31cab5fe793,1,1,no,VENUE_EXACT,48.9499922,7.5439384,yes,,APPROVED_FOR_IMPORT,Relais & Chateaux
+fr_0045,FR,Maison Rostang,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8814422,2.2985522,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0046,FR,Héritages,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8769687,2.3140289,yes,,APPROVED_FOR_IMPORT,
+fr_0047,FR,Irwin,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8734481,2.3179173,yes,,APPROVED_FOR_IMPORT,
+fr_0048,FR,NESO,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8760543,2.3476567,yes,,APPROVED_FOR_IMPORT,
+fr_0049,FR,Le Faham,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8855902,2.3117195,yes,,APPROVED_FOR_IMPORT,Full Michelin name 'Le Faham by Kelly Rangama'
+fr_0050,FR,Automne,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8547698,2.3821392,yes,,APPROVED_FOR_IMPORT,
+fr_0051,FR,Contraste,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8704298,2.3212953,yes,,APPROVED_FOR_IMPORT,
+fr_0052,FR,Anona,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8819840,2.3187180,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0053,FR,Fleur de Pavé,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8676694,2.3433379,yes,,APPROVED_FOR_IMPORT,
+fr_0054,FR,L'Ours,Vincennes,7a2a2484-ec58-474f-b2f2-210cf282e725,1,1,no,VENUE_EXACT,48.8476364,2.4366153,yes,,APPROVED_FOR_IMPORT,
+fr_0055,FR,Jacques Faussat,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8828583,2.3065399,yes,,APPROVED_FOR_IMPORT,
+fr_0056,FR,Qui Plume la Lune,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8590800,2.3685636,yes,,APPROVED_FOR_IMPORT,
+fr_0057,FR,Frédéric Simonin,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8799467,2.2942003,yes,,APPROVED_FOR_IMPORT,
+fr_0058,FR,Agapé,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8848688,2.3069070,yes,,APPROVED_FOR_IMPORT,
+fr_0059,FR,Sushi B,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8677062,2.3374280,yes,,APPROVED_FOR_IMPORT,
+fr_0060,FR,Chez Michèle,Languimberg,5c82c230-df9a-4de2-8987-7dc47a4b8e9b,1,1,no,VENUE_EXACT,48.7458020,6.8589764,yes,,APPROVED_FOR_IMPORT,
+fr_0061,FR,Géosmine,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8655110,2.3705183,yes,,APPROVED_FOR_IMPORT,
+fr_0062,FR,Onor,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8736875,2.3087456,yes,,APPROVED_FOR_IMPORT,
+fr_0063,FR,Omar Dhiab,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8651635,2.3419355,yes,,APPROVED_FOR_IMPORT,
+fr_0064,FR,Accents Table Bourse,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8699222,2.3402797,yes,,APPROVED_FOR_IMPORT,
+fr_0065,FR,Maison Dubois,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8761914,2.3213046,yes,,APPROVED_FOR_IMPORT,
+fr_0066,FR,Nhome,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8660062,2.3373121,yes,,APPROVED_FOR_IMPORT,
+fr_0067,FR,Sushi Yoshinaga,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8697847,2.3349041,yes,,APPROVED_FOR_IMPORT,
+fr_0068,FR,Maison Ruggieri Palais Royal,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8657284,2.3389227,yes,,APPROVED_FOR_IMPORT,
+fr_0069,FR,FIEF,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8636174,2.3724967,yes,,APPROVED_FOR_IMPORT,
+fr_0071,FR,Shabour,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8659208,2.3490735,yes,,APPROVED_FOR_IMPORT,
+fr_0072,FR,Akrame,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8714228,2.3251829,yes,,APPROVED_FOR_IMPORT,"Relocated from 19 Rue Lauriston (16th) to 7 Rue Tronchet (8th) -- current address used, confirmed via Michelin Guide"
+fr_0073,FR,Frenchie,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8677442,2.3479751,yes,,APPROVED_FOR_IMPORT,Distinct from 'Frenchie Pigalle' and 'L'Altro Frenchie' -- confirmed via specific Michelin Guide URL slug frenchie262795
+fr_0074,FR,Datil,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8636109,2.3573253,yes,,APPROVED_FOR_IMPORT,
+fr_0075,FR,Vaisseau,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8531937,2.3825854,yes,,APPROVED_FOR_IMPORT,
+fr_0076,FR,Sushi Shunei,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8850881,2.3358119,yes,,APPROVED_FOR_IMPORT,
+fr_0077,FR,Épisodes,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8833307,2.3045258,yes,,APPROVED_FOR_IMPORT,
+fr_0078,FR,Épicure,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,3,3,no,VENUE_EXACT,48.8717179,2.3148011,yes,Le Bristol Paris,APPROVED_FOR_IMPORT,3-star; located in Le Bristol Paris hotel -- property relationship candidate
+fr_0080,FR,Restaurant Le Meurice Alain Ducasse,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,ADDRESS_EXACT,48.8651455,2.3280773,yes,,APPROVED_FOR_IMPORT,2-star; located in Hotel Le Meurice -- property relationship candidate
+fr_0081,FR,Trente-Trois,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8652692,2.3047621,yes,,APPROVED_FOR_IMPORT,Located in Maison Villeroy hotel -- property relationship candidate
+fr_0082,FR,Le Baudelaire,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8682607,2.3256161,yes,,APPROVED_FOR_IMPORT,Located in Le Burgundy hotel -- property relationship candidate
+fr_0083,FR,Bellefeuille - Saint James Paris,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8705158,2.2798626,yes,,APPROVED_FOR_IMPORT,Located in Saint James Paris hotel -- property relationship candidate
+fr_0084,FR,Jean Imbert au Plaza Athénée,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8661751,2.3042684,yes,Plaza Athénée,APPROVED_FOR_IMPORT,Located in Hotel Plaza Athenee -- property relationship candidate
+fr_0085,FR,Kei,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,3,3,no,VENUE_EXACT,48.8643561,2.3421230,yes,,APPROVED_FOR_IMPORT,3-star
+fr_0086,FR,La Scène,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8720547,2.3145504,yes,,APPROVED_FOR_IMPORT,"2-star; note Michelin also separately lists 'La Scene Theleme' -- confirmed this candidate matches the distinct 'la-scene' URL slug, chef Stephanie Le Quellec"
+fr_0087,FR,Le Grand Restaurant - Jean-François Piège,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,ADDRESS_EXACT,48.8701168,2.3192755,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0088,FR,Le Taillevent,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8741490,2.3024714,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0089,FR,Alliance,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8499232,2.3533019,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0090,FR,Marsan par Hélène Darroze,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,ADDRESS_EXACT,48.8500436,2.3278425,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0091,FR,Le Clarence,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8674023,2.3097941,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0092,FR,David Toutain,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8602539,2.3097147,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0094,FR,Pantagruel,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8641463,2.3361736,yes,,APPROVED_FOR_IMPORT,"RELOCATED: moved from 24 rue du Sentier (2nd arr.) to 10 rue de Richelieu (1st arr.) in 2025/2026 -- the old address is now a DIFFERENT restaurant, 'Panurge', same chef Jason Gouzy. Current verified a"
+fr_0095,FR,Origines Restaurant,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8702009,2.3112410,yes,,APPROVED_FOR_IMPORT,
+fr_0096,FR,Gaya par Pierre Gagnaire,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,ADDRESS_EXACT,48.8565429,2.3241172,yes,,APPROVED_FOR_IMPORT,
+fr_0097,FR,Imperial Treasure,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8704493,2.2992053,yes,,APPROVED_FOR_IMPORT,Located in La Clef Champs-Elysees Paris hotel -- property relationship candidate
+fr_0098,FR,Substance,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8673236,2.2976240,yes,,APPROVED_FOR_IMPORT,
+fr_0099,FR,Baieta,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8501437,2.3523081,yes,,APPROVED_FOR_IMPORT,
+fr_0100,FR,Zostera,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8743141,2.2826153,yes,,APPROVED_FOR_IMPORT,
+fr_0101,FR,Astrance,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8650912,2.2897810,yes,,APPROVED_FOR_IMPORT,"RELOCATED: closed ~3 years for COVID/renovation, reopened at new address (former Jamin premises) -- current verified address used, not the pre-closure one"
+fr_0103,FR,Restaurant H,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8544888,2.3679571,yes,,APPROVED_FOR_IMPORT,
+fr_0104,FR,L'Arôme,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8731735,2.3088160,yes,,APPROVED_FOR_IMPORT,
+fr_0105,FR,Yoshinori,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8529975,2.3377554,yes,,APPROVED_FOR_IMPORT,
+fr_0106,FR,Armani Ristorante,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8536548,2.3328389,yes,,APPROVED_FOR_IMPORT,"POSTCODE CORRECTION: WebSearch summary internally contradicted itself, stating '75012' while also stating the location is 'St-Germain-des-Prés' -- Place du Quebec is geographically in the 6th arrondis"
+fr_0107,FR,Le Violon d'Ingres,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8582007,2.3018850,yes,,APPROVED_FOR_IMPORT,
+fr_0108,FR,Pages,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8709238,2.2962081,yes,,APPROVED_FOR_IMPORT,
+fr_0109,FR,La Scène Thélème,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8762593,2.2951581,yes,,APPROVED_FOR_IMPORT,"Confirmed distinct from 'La Scene' (fr_0086, Stephanie Le Quellec) via separate Michelin Guide URL slug"
+fr_0110,FR,Pertinence,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8570742,2.3034841,yes,,APPROVED_FOR_IMPORT,
+fr_0111,FR,Auguste,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8562753,2.3170116,yes,,APPROVED_FOR_IMPORT,
+fr_0112,FR,114 Faubourg,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8718416,2.3144851,yes,,APPROVED_FOR_IMPORT,Located in Le Bristol Paris hotel -- property relationship candidate. NOTE: one source states the restaurant is 'temporarily closed until further notice' as of this research -- address/location unaffe
+fr_0113,FR,Lasserre,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8663234,2.3099159,yes,,APPROVED_FOR_IMPORT,
+fr_0114,FR,Jin,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8653406,2.3318567,yes,,APPROVED_FOR_IMPORT,
+fr_0115,FR,Le Sergent Recruteur,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8519572,2.3560211,yes,,APPROVED_FOR_IMPORT,
+fr_0116,FR,Granite,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8610076,2.3419911,yes,,APPROVED_FOR_IMPORT,
+fr_0117,FR,Le Cinq,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,3,3,no,VENUE_EXACT,48.8686738,2.3007762,yes,,APPROVED_FOR_IMPORT,"3-star; located in Four Seasons Hotel George V -- property relationship candidate. Shares street address with Le George (fr_0120) and L'Orangerie (fr_0126), all distinct restaurants inside the same ho"
+fr_0118,FR,Hakuba,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8588656,2.3421867,yes,Cheval Blanc Paris,APPROVED_FOR_IMPORT,"2-star; located in Cheval Blanc Paris hotel -- property relationship candidate. Shares street address with Le Tout-Paris (fr_0122), both distinct restaurants inside the same hotel."
+fr_0119,FR,Espadon,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8681448,2.3285389,yes,,APPROVED_FOR_IMPORT,Located in Ritz Paris hotel -- property relationship candidate
+fr_0120,FR,Le George,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8687237,2.3001825,yes,,APPROVED_FOR_IMPORT,Located in Four Seasons Hotel George V -- property relationship candidate; see fr_0117 note
+fr_0121,FR,Il Carpaccio,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8757736,2.3002863,yes,,APPROVED_FOR_IMPORT,Located in Le Royal Monceau hotel -- property relationship candidate
+fr_0122,FR,Le Tout-Paris,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8587643,2.3423190,yes,Cheval Blanc Paris,APPROVED_FOR_IMPORT,Located in Cheval Blanc Paris hotel -- property relationship candidate; see fr_0118 note
+fr_0123,FR,Pierre Gagnaire,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,3,3,no,VENUE_EXACT,48.8733364,2.3004153,yes,,APPROVED_FOR_IMPORT,3-star; located in Hotel Balzac -- property relationship candidate
+fr_0125,FR,L'Abysse Paris,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,ADDRESS_EXACT,48.8661093,2.3156834,yes,,APPROVED_FOR_IMPORT,"2-star; located in Pavillon Ledoyen -- property relationship candidate. Shares exact street address with Pavyllon Paris (fr_0134), a distinct restaurant in the same estate."
+fr_0127,FR,Guy Savoy,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8565393,2.3395348,yes,,APPROVED_FOR_IMPORT,Located in Monnaie de Paris -- property relationship candidate
+fr_0128,FR,L'Ambroisie,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8554103,2.3643002,yes,,APPROVED_FOR_IMPORT,
+fr_0129,FR,Virtus,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,2,2,no,VENUE_EXACT,48.8502518,2.3781248,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0130,FR,HANADA,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8587049,2.3315202,yes,,APPROVED_FOR_IMPORT,
+fr_0131,FR,Monsieur Dior by Yannick Alléno,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8666928,2.3061198,yes,,APPROVED_FOR_IMPORT,Located inside the Dior flagship building -- property relationship candidate
+fr_0132,FR,Prévelle,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8599844,2.3154233,yes,,APPROVED_FOR_IMPORT,
+fr_0133,FR,Aldehyde,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8549738,2.3553822,yes,,APPROVED_FOR_IMPORT,
+fr_0134,FR,Pavyllon Paris,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8661093,2.3156834,yes,,APPROVED_FOR_IMPORT,Located in Pavillon Ledoyen -- property relationship candidate; see fr_0125 note
+fr_0135,FR,Oxte,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8758951,2.2954072,yes,,APPROVED_FOR_IMPORT,
+fr_0136,FR,Tomy & Co,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8605426,2.3094173,yes,,APPROVED_FOR_IMPORT,
+fr_0138,FR,Alan Geaam,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8714572,2.2923141,yes,,APPROVED_FOR_IMPORT,
+fr_0139,FR,Lucas Carton,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8695227,2.3230867,yes,,APPROVED_FOR_IMPORT,
+fr_0140,FR,Divellec,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8610190,2.3113026,yes,,APPROVED_FOR_IMPORT,
+fr_0142,FR,Ze Kitchen Galerie,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8550884,2.3412458,yes,,APPROVED_FOR_IMPORT,
+fr_0143,FR,Relais Louis XIII,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8546194,2.3407781,yes,,APPROVED_FOR_IMPORT,
+fr_0144,FR,Tour d'Argent,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8498300,2.3549148,yes,,APPROVED_FOR_IMPORT,
+fr_0146,FR,Don Juan II,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8621538,2.2937134,yes,,APPROVED_FOR_IMPORT,Boat restaurant (Seine river cruise) -- fixed mooring/departure point address used
+fr_0147,FR,Mallory Gabsi,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8767720,2.2915790,yes,,APPROVED_FOR_IMPORT,
+fr_0148,FR,Sola,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8515784,2.3483405,yes,,APPROVED_FOR_IMPORT,
+fr_0149,FR,Geoélia,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8632163,2.2746988,yes,,APPROVED_FOR_IMPORT,
+fr_0150,FR,Pilgrim,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8426266,2.3138853,yes,,APPROVED_FOR_IMPORT,
+fr_0151,FR,Ochre,Rueil-Malmaison,72154dcd-a047-43f0-858b-2eaa4f98d3dd,1,1,no,VENUE_EXACT,48.8778050,2.1829283,yes,,APPROVED_FOR_IMPORT,
+fr_0152,FR,Comice,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8494670,2.2760946,yes,,APPROVED_FOR_IMPORT,
+fr_0154,FR,Neige d'Été,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8454117,2.2990085,yes,,APPROVED_FOR_IMPORT,
+fr_0155,FR,Nakatani,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8484024,2.3195757,yes,,APPROVED_FOR_IMPORT,
+fr_0156,FR,L'Archeste,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8617957,2.2781329,yes,,APPROVED_FOR_IMPORT,
+fr_0158,FR,Quinsou,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8476949,2.3254795,yes,,APPROVED_FOR_IMPORT,
+fr_0161,FR,Le Jules Verne,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8581328,2.2944968,yes,,APPROVED_FOR_IMPORT,"2-star; located inside the Eiffel Tower itself, 2nd floor -- property relationship candidate"
+fr_0162,FR,Solstice,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8401697,2.3458453,yes,,APPROVED_FOR_IMPORT,
+fr_0163,FR,MoSuke,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8362236,2.3223968,yes,,APPROVED_FOR_IMPORT,
+fr_0164,FR,Aida,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,VENUE_EXACT,48.8501791,2.3187017,yes,,APPROVED_FOR_IMPORT,
+fr_0165,FR,Chakaiseki Akiyoshi,Paris,54ae8294-e4cf-474e-9848-be81f7d9b945,1,1,no,ADDRESS_EXACT,48.8469863,2.2988330,yes,,APPROVED_FOR_IMPORT,
+fr_0166,FR,Maison Avoise,Issy-les-Moulineaux,a6c8c013-3fbb-4920-bc9f-3e4db3623863,1,1,no,VENUE_EXACT,48.8173934,2.2663558,yes,,APPROVED_FOR_IMPORT,
+fr_0167,FR,L'Escarbille,Meudon,7ae19ec4-99cb-4511-bda3-d9d2ddfefd43,1,1,no,VENUE_EXACT,48.8202070,2.2268570,yes,,APPROVED_FOR_IMPORT,
+fr_0168,FR,Le Jardin des Plumes,Giverny,3dc183ef-46d2-404a-9f0b-6206069d091a,1,1,no,VENUE_EXACT,49.0755336,1.5255082,yes,,APPROVED_FOR_IMPORT,
+fr_0169,FR,Le Panoramique - Domaine de la Corniche,Rolleboise,9c6a3e8a-3322-4ed7-b50c-a811465c058c,1,1,no,ADDRESS_EXACT,49.0226790,1.6093510,yes,,APPROVED_FOR_IMPORT,Located in hotel Domaine de la Corniche -- property relationship candidate
+fr_0170,FR,Le Corot,Ville-d'Avray,c19c8578-fbfc-4a9d-a5ee-eef8062ee2f1,1,1,no,VENUE_EXACT,48.8220544,2.1833136,yes,,APPROVED_FOR_IMPORT,2-star; located in Les Etangs de Corot hotel -- property relationship candidate
+fr_0171,FR,La Merise,Laubach,377b7de6-7351-47ec-b22c-1440244178a5,2,2,no,VENUE_EXACT,48.8800905,7.7224713,yes,,APPROVED_FOR_IMPORT,2-star; Relais & Chateaux
+fr_0172,FR,Château d'Adoménil,Lunéville,b85125e6-0ded-4278-b381-8b93f569c321,1,1,no,VENUE_EXACT,48.5649431,6.4626324,yes,,APPROVED_FOR_IMPORT,Located in Adomenil-Rehainviller hamlet; hotel property -- relationship candidate
+fr_0173,FR,Ducasse au Château de Versailles - Le Grand Contrôle,Versailles,ec76c224-10b2-48a4-932c-9cd67110c087,1,1,no,ADDRESS_EXACT,48.8013918,2.1199697,yes,,APPROVED_FOR_IMPORT,Located in Airelles hotel within Chateau de Versailles grounds -- property relationship candidate
+fr_0174,FR,Gordon Ramsay au Trianon,Versailles,ec76c224-10b2-48a4-932c-9cd67110c087,1,1,no,VENUE_EXACT,48.8106968,2.1201661,yes,,APPROVED_FOR_IMPORT,Located in Waldorf Astoria Versailles Trianon Palace hotel -- property relationship candidate
+fr_0176,FR,La Table du 11,Versailles,ec76c224-10b2-48a4-932c-9cd67110c087,1,1,no,VENUE_EXACT,48.8027978,2.1228474,yes,,APPROVED_FOR_IMPORT,
+fr_0177,FR,Au Gourmet,Drusenheim,0f499b14-60dc-49c2-93f2-397a66f55316,1,1,no,ADDRESS_EXACT,48.7536412,7.9448202,yes,,APPROVED_FOR_IMPORT,
+fr_0178,FR,Ruche,Gambais,8534688c-0ec5-44e4-8f27-76f03a92b4f9,1,1,no,ADDRESS_EXACT,48.7822418,1.6868992,yes,,APPROVED_FOR_IMPORT,Located in Domaine les Bruyeres -- property relationship candidate
+fr_0179,FR,Burnel,Rouvres-en-Xaintois,a9f16b04-66c3-4ed1-b46a-4ec6f968f3dd,1,1,no,VENUE_EXACT,48.3112756,6.0320776,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant, family-run since 1919 -- property relationship candidate"
+fr_0180,FR,Le Jardin Secret,La Wantzenau,67abefa1-0d0a-4924-b92a-23dcc335f9f7,1,1,no,VENUE_EXACT,48.6648596,7.8251948,yes,,APPROVED_FOR_IMPORT,
+fr_0181,FR,Le Relais de la Poste,La Wantzenau,67abefa1-0d0a-4924-b92a-23dcc335f9f7,1,1,no,ADDRESS_EXACT,48.6610296,7.8228158,yes,,APPROVED_FOR_IMPORT,Also a hotel -- property relationship candidate
+fr_0182,FR,Hostellerie la Montagne,Colombey-les-Deux-Églises,47417715-9688-4602-93ee-be3129580643,1,1,no,ADDRESS_EXACT,48.2226717,4.8901755,yes,,APPROVED_FOR_IMPORT,Also a hotel -- property relationship candidate
+fr_0183,FR,Guillaume Scheer - Les Plaisirs Gourmands,Strasbourg,fc1715c6-e85d-4ac7-8b43-86ef6679e99d,1,1,no,ADDRESS_EXACT,48.5897433,7.7633871,yes,,APPROVED_FOR_IMPORT,RELOCATED: moved from Schiltigheim to this Strasbourg address in 2025 -- current verified address used
+fr_0184,FR,Au Crocodile,Strasbourg,fc1715c6-e85d-4ac7-8b43-86ef6679e99d,1,1,no,VENUE_EXACT,48.5836836,7.7474302,yes,,APPROVED_FOR_IMPORT,
+fr_0185,FR,1741,Strasbourg,fc1715c6-e85d-4ac7-8b43-86ef6679e99d,1,1,no,VENUE_EXACT,48.5805139,7.7536241,yes,,APPROVED_FOR_IMPORT,
+fr_0186,FR,Umami,Strasbourg,fc1715c6-e85d-4ac7-8b43-86ef6679e99d,1,1,no,VENUE_EXACT,48.5809302,7.7430415,yes,,APPROVED_FOR_IMPORT,
+fr_0187,FR,Les Funambules,Strasbourg,fc1715c6-e85d-4ac7-8b43-86ef6679e99d,1,1,no,VENUE_EXACT,48.5870033,7.7677385,yes,,APPROVED_FOR_IMPORT,3-star
+fr_0188,FR,L'Axel,Fontainebleau,d10c3d04-9dca-4e82-81dd-a70da965b400,1,1,no,VENUE_EXACT,48.4049204,2.6972177,yes,,APPROVED_FOR_IMPORT,
+fr_0189,FR,de:ja,Strasbourg,fc1715c6-e85d-4ac7-8b43-86ef6679e99d,1,1,no,VENUE_EXACT,48.5873526,7.7685662,yes,,APPROVED_FOR_IMPORT,
+fr_0190,FR,La Cheneaudière - Le Feuillage,Colroy-la-Roche,a9d46787-38ee-47d0-9223-d127ef3aa651,1,1,no,ADDRESS_EXACT,48.3915029,7.1837222,yes,,APPROVED_FOR_IMPORT,Located in La Cheneaudiere hotel/spa -- property relationship candidate
+fr_0191,FR,Thierry Schwartz - Table Naturelle,Obernai,49407654-ccf1-4374-98f2-fb1095b9b521,1,1,no,ADDRESS_EXACT,48.4605127,7.4837230,yes,,APPROVED_FOR_IMPORT,
+fr_0192,FR,La Fourchette des Ducs,Obernai,49407654-ccf1-4374-98f2-fb1095b9b521,2,2,no,VENUE_EXACT,48.4620168,7.4884059,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0193,FR,Maximin Hellio,Deauville,2e7281c9-f6a0-4717-9a79-94b335128635,1,1,no,VENUE_EXACT,49.3591011,0.0768938,yes,,APPROVED_FOR_IMPORT,
+fr_0194,FR,L'Essentiel,Deauville,2e7281c9-f6a0-4717-9a79-94b335128635,1,1,no,VENUE_EXACT,49.3600808,0.0793646,yes,,APPROVED_FOR_IMPORT,
+fr_0195,FR,Auberge Chez Guth,Steige,131bec33-f761-48e7-824a-de6053072be8,1,1,no,VENUE_EXACT,48.3630544,7.2461042,yes,,APPROVED_FOR_IMPORT,
+fr_0196,FR,La Madeleine,Sens,a88b1164-2c6f-4374-b67c-94cde2701223,1,1,no,VENUE_EXACT,48.1956695,3.2740062,yes,,APPROVED_FOR_IMPORT,
+fr_0197,FR,Enfin,Barr,145d6a54-ee94-4343-beb2-380d4d66b9cd,1,1,no,VENUE_EXACT,48.4042771,7.4262170,yes,,APPROVED_FOR_IMPORT,
+fr_0198,FR,Les Ducs de Lorraine,Épinal,b7a702fe-9db1-45c1-b967-b4ab8f612fa0,1,1,no,VENUE_EXACT,48.1690530,6.4490810,yes,,APPROVED_FOR_IMPORT,
+fr_0199,FR,Auberge Frankenbourg,La Vancelle,39b7968f-8e4b-4274-9a3d-4556c3ceb732,1,1,no,VENUE_EXACT,48.2837569,7.3028608,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0200,FR,Symbiose,Cabourg,b893bc10-72df-4d58-8555-05f6cfb06a96,1,1,no,VENUE_EXACT,49.2924422,-0.1142648,yes,,APPROVED_FOR_IMPORT,
+fr_0201,FR,Au Vieux Couvent,Rhinau,2f8d3eec-d9bb-4d52-8acc-62a0ab5c2b55,1,1,no,VENUE_EXACT,48.3172142,7.7069461,yes,,APPROVED_FOR_IMPORT,
+fr_0202,FR,Château de Courban,Courban,e5334264-304a-40f9-a314-019327eed321,1,1,no,VENUE_EXACT,47.9194326,4.7376545,yes,,APPROVED_FOR_IMPORT,Located in a hotel/spa -- property relationship candidate
+fr_0203,FR,Le Georges,Chartres,3b7b8293-c025-4de8-8907-5ed90f07d629,1,1,no,VENUE_EXACT,48.4443245,1.4831603,yes,,APPROVED_FOR_IMPORT,Located in Le Grand Monarque hotel -- property relationship candidate
+fr_0204,FR,La Table du Gourmet,Riquewihr,56efa338-0289-4127-99e6-e1763dfa14e6,1,1,no,VENUE_EXACT,48.1663362,7.2971109,yes,,APPROVED_FOR_IMPORT,
+fr_0205,FR,La Côte Saint-Jacques,Joigny,51446476-90b4-4219-b931-fbb5b1d048d5,2,2,no,VENUE_EXACT,47.9833237,3.3856709,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant -- property relationship candidate
+fr_0206,FR,La Table d'Olivier Nasti,Kaysersberg,d922bbca-5d5e-42c9-893b-667ae5981e75,2,2,no,ADDRESS_EXACT,48.1527693,7.2473640,yes,,APPROVED_FOR_IMPORT,"2-star; located in Hotel Le Chambard -- exact street address not found in search snippets, only 'heart of Kaysersberg'. Will rely on venue-name Nominatim search / Le Chambard hotel resolution."
+fr_0207,FR,Auberge de l'Ill,Illhaeusern,dc072252-d9a9-4c85-9731-fe8533663e47,2,2,no,ADDRESS_EXACT,48.1836510,7.4326186,yes,,APPROVED_FOR_IMPORT,"2-star; Relais & Chateaux, hotel-restaurant -- property relationship candidate"
+fr_0208,FR,Alchémille,Kaysersberg,d922bbca-5d5e-42c9-893b-667ae5981e75,1,1,no,VENUE_EXACT,48.1487680,7.2500958,yes,,APPROVED_FOR_IMPORT,
+fr_0209,FR,Restaurant Julien Binz,Ammerschwihr,7398b130-6c60-4a47-916b-6722fd505d06,1,1,no,VENUE_EXACT,48.1256164,7.2830728,yes,,APPROVED_FOR_IMPORT,
+fr_0210,FR,Bulle d'Osier,Langres,2ddf7520-1818-4d88-bd6f-b0372f11481c,2,2,no,VENUE_EXACT,47.8588674,5.3334172,yes,,APPROVED_FOR_IMPORT,2-star; located at Clos Vauban mansion -- property relationship candidate
+fr_0211,FR,La Nouvelle Auberge,Wihr-au-Val,b6a4122b-f2d2-4551-b294-385384dd7ef7,1,1,no,VENUE_EXACT,48.0462742,7.2084231,yes,,APPROVED_FOR_IMPORT,
+fr_0212,FR,L'Atelier du Peintre,Colmar,b2dfeafa-638f-43c5-bc38-ec3bc63b0160,1,1,no,VENUE_EXACT,48.0763230,7.3579581,yes,,APPROVED_FOR_IMPORT,
+fr_0213,FR,JY'S,Colmar,b2dfeafa-638f-43c5-bc38-ec3bc63b0160,2,2,no,VENUE_EXACT,48.0740801,7.3587011,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0214,FR,Restaurant Girardin,Colmar,b2dfeafa-638f-43c5-bc38-ec3bc63b0160,1,1,no,ADDRESS_EXACT,48.0786266,7.3555401,yes,,APPROVED_FOR_IMPORT,Located in Maison des Tetes hotel -- property relationship candidate
+fr_0215,FR,Ivan Vautier,Caen,7dfe2a7f-8367-46b5-bf25-b4d782944a94,1,1,no,VENUE_EXACT,49.1740659,-0.3903580,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0217,FR,Erre,Chassy,348d1e15-e8f3-4007-83cb-5140b39a24d1,2,2,no,VENUE_EXACT,47.8444722,3.3006728,yes,,APPROVED_FOR_IMPORT,"Located at Domaine du Roncemay hotel/golf estate -- no street number found, will rely on estate-name venue resolution. Note: Michelin Guide also separately lists 'JK Restaurant' at what appears to be "
+fr_0218,FR,Auberge des Templiers,Boismorand,31cb4798-b2fa-4be5-99c2-32d9484cb58a,1,1,no,VENUE_EXACT,47.8005509,2.7392175,yes,,APPROVED_FOR_IMPORT,"Relais & Chateaux, hotel-restaurant -- property relationship candidate"
+fr_0219,FR,L'Orchidée,Ensisheim,bec062db-4583-4386-bbc1-7574ed9d8618,1,1,no,VENUE_EXACT,47.8651116,7.3526597,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant, relocated to Ensisheim -- current address used"
+fr_0220,FR,La Renaissance,Argentan,b2530fba-1b09-4c75-ac47-b1e56cb19fdd,1,1,no,VENUE_EXACT,48.7392227,-0.0286111,yes,,APPROVED_FOR_IMPORT,"Full name Hostellerie de la Renaissance -- hotel-restaurant, property relationship candidate"
+fr_0221,FR,Il Cortile,Mulhouse,53faef3c-5079-4f90-9676-175aff45d9b2,1,1,no,VENUE_EXACT,47.7475183,7.3338510,yes,,APPROVED_FOR_IMPORT,
+fr_0222,FR,Le 7ème Continent,Rixheim,68896973-72a2-4757-ab20-9a05b0a24c3a,1,1,no,VENUE_EXACT,47.7480341,7.4030500,yes,,APPROVED_FOR_IMPORT,
+fr_0223,FR,Côté Jardin,Gien,26acbb41-0eb4-4116-b10e-41dbc898bc93,1,1,no,ADDRESS_EXACT,47.6803684,2.6295598,yes,,APPROVED_FOR_IMPORT,
+fr_0224,FR,Le Pily,Cherbourg-en-Cotentin,672c9bac-fceb-41ac-b86b-c8fcdc7af83c,1,1,no,VENUE_EXACT,49.6391994,-1.6197755,yes,,APPROVED_FOR_IMPORT,
+fr_0226,FR,Le Pot d'Étain,Danjoutin,58b4932e-5863-46a5-ad8a-fdf47d2c28a0,1,1,no,VENUE_EXACT,47.6161683,6.8595405,yes,,APPROVED_FOR_IMPORT,
+fr_0227,FR,Le Valucien - Château de Vault-de-Lugny,Vault-de-Lugny,825400dd-3192-416d-aa96-a480499bd80d,1,1,no,ADDRESS_EXACT,47.4956804,3.8534627,yes,,APPROVED_FOR_IMPORT,Located in Chateau de Vault-de-Lugny hotel -- property relationship candidate
+fr_0229,FR,Auberge Saint-Laurent,Sierentz,cc643124-c844-4714-84c1-1589fe5df94d,1,1,no,VENUE_EXACT,47.6540322,7.4538723,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0230,FR,Auberge de la Charme,Prenois,832e62f4-73e3-496c-9583-47a83060f3ec,1,1,no,VENUE_EXACT,47.3756859,4.8989149,yes,,APPROVED_FOR_IMPORT,
+fr_0231,FR,Loiseau des Ducs,Dijon,12ba86d9-436a-4c18-bc33-5fdae7a4c170,1,1,no,VENUE_EXACT,47.3207666,5.0411946,yes,,APPROVED_FOR_IMPORT,
+fr_0232,FR,William Frachot,Dijon,12ba86d9-436a-4c18-bc33-5fdae7a4c170,2,2,no,VENUE_EXACT,47.3212699,5.0357882,yes,,APPROVED_FOR_IMPORT,2-star; located in Hotel Chapeau Rouge -- property relationship candidate
+fr_0233,FR,CIBO,Dijon,12ba86d9-436a-4c18-bc33-5fdae7a4c170,1,1,no,VENUE_EXACT,47.3219045,5.0454523,yes,,APPROVED_FOR_IMPORT,
+fr_0234,FR,L'Aspérule,Dijon,12ba86d9-436a-4c18-bc33-5fdae7a4c170,1,1,no,VENUE_EXACT,47.3248138,5.0450367,yes,,APPROVED_FOR_IMPORT,
+fr_0235,FR,Origine,Dijon,12ba86d9-436a-4c18-bc33-5fdae7a4c170,1,1,no,VENUE_EXACT,47.3159220,5.0442541,yes,,APPROVED_FOR_IMPORT,Full name 'Origine par Tomofumi Uchimura'
+fr_0236,FR,La Maison des Cariatides,Dijon,12ba86d9-436a-4c18-bc33-5fdae7a4c170,1,1,no,VENUE_EXACT,47.3228898,5.0440946,yes,,APPROVED_FOR_IMPORT,
+fr_0237,FR,Auberge de la Mine,La Ferrière-aux-Étangs,0c479106-5562-45a6-9245-db4cc6b00b0b,1,1,no,VENUE_EXACT,48.6468846,-0.5220790,yes,,APPROVED_FOR_IMPORT,
+fr_0239,FR,La Côte d'Or,Saulieu,561b9b74-9cd3-4f14-b558-b73ac156224f,2,2,no,VENUE_EXACT,47.2799319,4.2321854,yes,,APPROVED_FOR_IMPORT,"2-star; also known as Le Relais Bernard Loiseau -- hotel-restaurant, property relationship candidate"
+fr_0240,FR,Maison Medard,Boulleret,99f06e86-cdc1-400c-9d9d-a7687ddd0ebc,1,1,no,VENUE_EXACT,47.4239922,2.8744052,yes,,APPROVED_FOR_IMPORT,
+fr_0241,FR,La Table d'Hôtes - La Rôtisserie du Chambertin,Gevrey-Chambertin,dcac85fd-cd32-4f07-bf1c-f05a207f9e23,1,1,no,ADDRESS_EXACT,47.2242228,4.9698866,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant with two dining concepts (Bistrot Lucien + Table d'Hotes) -- this candidate is the starred Table d'Hotes, confirmed via specific Michelin URL"
+fr_0242,FR,Ezia,Montlivault,c2646afc-15ae-4d62-b19c-15ee25c9d00e,1,1,no,ADDRESS_EXACT,47.6409832,1.4450750,yes,,APPROVED_FOR_IMPORT,
+fr_0243,FR,La Pomme d'Or,Sancerre,0f5e7fdf-08e9-495a-bd3d-af5cc2779529,1,1,no,VENUE_EXACT,47.3298076,2.8390977,yes,,APPROVED_FOR_IMPORT,
+fr_0244,FR,Le Mascaret,Blainville-sur-Mer,8d59d997-4bcc-4208-b05a-c210277eda42,1,1,no,VENUE_EXACT,49.0674580,-1.5839646,yes,,APPROVED_FOR_IMPORT,
+fr_0245,FR,Château du Mont Joly,Sampans,d3005db9-f726-4d91-a4db-9cc77101ae00,1,1,no,VENUE_EXACT,47.1232721,5.4567873,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0246,FR,L'Auberge de Bagatelle,Le Mans,b866b129-3ca4-4079-aceb-4552bb6c40b5,1,1,no,ADDRESS_EXACT,47.9994656,0.2355883,yes,,APPROVED_FOR_IMPORT,
+fr_0248,FR,Christophe Hay - Fleur de Loire,Blois,8ae46a50-3c74-4a8a-9a6b-9c0689422241,2,2,no,ADDRESS_EXACT,47.5828307,1.3372281,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant -- property relationship candidate
+fr_0249,FR,L'Étang du Moulin,Bonnétage,02a670d8-8433-41e2-9ed1-bcb33648c7a4,1,1,no,ADDRESS_EXACT,47.1977410,6.7215270,yes,,APPROVED_FOR_IMPORT,
+fr_0251,FR,La Chaumière,Dole,905b47dc-b16e-4c22-a989-54b74e3cc9b4,1,1,no,VENUE_EXACT,47.0650155,5.4950426,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0252,FR,Clos du Cèdre,Beaune,fa28691a-6089-460f-b874-bac4f1bd46e2,1,1,no,PROPERTY_EXACT,47.0270252,4.8356366,yes,,APPROVED_FOR_IMPORT,Located in Hostellerie Cedre & Spa -- property relationship candidate
+fr_0253,FR,Granica,Cellettes,45a155d8-7f8a-46cf-bf55-d9f31801fc7b,1,1,no,ADDRESS_EXACT,47.5259520,1.3828510,yes,,APPROVED_FOR_IMPORT,
+fr_0254,FR,Auprès du Clocher,Pommard,027ea1ee-ca97-41d4-a9dd-a5dade192226,1,1,no,VENUE_EXACT,47.0089647,4.7953807,yes,,APPROVED_FOR_IMPORT,
+fr_0255,FR,L'Éveil des Sens,Mayenne,6e9134fe-b6eb-48a9-a605-24bc2d92976a,1,1,no,VENUE_EXACT,48.3060345,-0.6084292,yes,,APPROVED_FOR_IMPORT,
+fr_0256,FR,Le Carmin,Beaune,fa28691a-6089-460f-b874-bac4f1bd46e2,1,1,no,VENUE_EXACT,47.0225329,4.8375903,yes,,APPROVED_FOR_IMPORT,
+fr_0258,FR,Table de Levernois,Levernois,fc55ae91-b1b5-4db3-8ac5-cd219313ac94,1,1,no,ADDRESS_EXACT,46.9926570,4.8794597,yes,,APPROVED_FOR_IMPORT,Located in Hostellerie de Levernois -- property relationship candidate
+fr_0259,FR,Grand Hôtel du Lion d'Or,Romorantin-Lanthenay,64c83467-0d27-4de8-b53f-047e7ba15ffb,1,1,no,ADDRESS_EXACT,47.3602147,1.7438779,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant, also known as Lion d'Or 1774 -- property relationship candidate"
+fr_0261,FR,Maison Lameloise,Chagny,f7785d5b-9fe0-4a01-9e98-e8f6d716663d,2,2,no,VENUE_EXACT,46.9078413,4.7529574,yes,,APPROVED_FOR_IMPORT,3-star; hotel-restaurant -- property relationship candidate
+fr_0262,FR,Auberge Sauvage,Servon,969b377e-d399-419e-ac4c-d45c6bbd6f6e,1,1,no,ADDRESS_EXACT,48.1205417,-1.4581438,yes,,APPROVED_FOR_IMPORT,
+fr_0263,FR,La Table du Grapiot,Pupillin,b7765f55-9f9d-4ea0-90b1-1cf8a8c6d2b1,1,1,no,VENUE_EXACT,46.8834195,5.7605375,yes,,APPROVED_FOR_IMPORT,"Also listed under 'Le Grapiot' -- same restaurant, confirmed via corroborating source"
+fr_0264,FR,Château de Pray,Amboise,bf03839f-51a2-4416-b319-29ad9d6cf940,2,2,no,VENUE_EXACT,47.4250013,1.0160999,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant, physically in Chargé commune but Michelin-listed under Amboise -- kept as Amboise per source city on file"
+fr_0265,FR,Cédric Burtin,Saint-Rémy,2d7e5097-8fa1-491e-938d-185d9d06ca2d,2,2,no,ADDRESS_EXACT,46.7598528,4.8204424,yes,,APPROVED_FOR_IMPORT,"Address already verified in the earlier city-coverage homonym check (Saint-Remy, Saone-et-Loire) -- reused, not re-researched"
+fr_0266,FR,Le Bon Accueil,Malbuisson,481cbd06-1236-4cc5-bf74-a4237c04d250,1,1,no,VENUE_EXACT,46.7973475,6.3033276,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0267,FR,La Table Breizh Café,Cancale,06861720-61b1-4706-8740-cd8deb095f32,1,1,no,ADDRESS_EXACT,48.6708793,-1.8518172,yes,,APPROVED_FOR_IMPORT,
+fr_0268,FR,Le Coquillage,Saint-Méloir-des-Ondes,924530aa-714d-4d87-a42d-8f1dec822486,2,2,no,VENUE_EXACT,48.6430426,-1.8710769,yes,,APPROVED_FOR_IMPORT,"3-star; located at Chateau Richeux hotel -- no street number found, will rely on estate-name venue resolution"
+fr_0269,FR,L'Opidom,Fondettes,1c28eb4d-84ef-4f74-a01f-d316cd576a7f,1,1,no,VENUE_EXACT,47.3926587,0.6445855,yes,,APPROVED_FOR_IMPORT,
+fr_0270,FR,L'Évidence,Montbazon,77409eb2-8c4f-425f-ab5e-4ec5ac6db5a6,1,1,no,VENUE_EXACT,47.2873484,0.7134191,yes,,APPROVED_FOR_IMPORT,
+fr_0271,FR,Le Saint Placide,Saint-Malo,b70c9b2c-f522-409e-a1e2-9b6183a059a3,1,1,no,VENUE_EXACT,48.6296729,-2.0106116,yes,,APPROVED_FOR_IMPORT,Located in Saint-Servan-sur-Mer sub-district of Saint-Malo -- kept as Saint-Malo per source city on file
+fr_0273,FR,L'Écrin de Yohann Chapuis,Tournus,8e67d4a8-8969-4848-9991-b89b78b324c0,1,1,no,VENUE_EXACT,46.5657506,4.9079031,yes,,APPROVED_FOR_IMPORT,"Also known as Restaurant Greuze -- hotel-restaurant, property relationship candidate"
+fr_0274,FR,Aux Terrasses,Tournus,8e67d4a8-8969-4848-9991-b89b78b324c0,1,1,no,VENUE_EXACT,46.5590547,4.9143174,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant -- distinct from L'Ecrin de Yohann Chapuis, same city, different address"
+fr_0275,FR,Arbore & Sens,Loches,aac2ba24-e185-4cd9-b2c3-add5ae1b5908,1,1,no,VENUE_EXACT,47.1275731,0.9964380,yes,,APPROVED_FOR_IMPORT,
+fr_0276,FR,Auberge du XIIème Siècle,Saché,d170ad49-0d90-4bf0-83dd-f9df5528e3cd,1,1,no,VENUE_EXACT,47.2463576,0.5436632,yes,,APPROVED_FOR_IMPORT,
+fr_0277,FR,La Mare aux Oiseaux,Saint-Joachim,d4668b4c-809d-4a59-986b-45d6a2cd7bbd,1,1,no,VENUE_EXACT,47.3729180,-2.2141988,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0278,FR,La Table - Domaine du Liziec,Vannes,e9c73b23-2e85-4ce8-a5f3-d2b40c3e3c10,1,1,no,ADDRESS_EXACT,47.6684780,-2.7299610,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0280,FR,La Source,Saint-Galmier,76e9beb7-6268-4089-846b-4a86091024a3,1,1,no,ADDRESS_EXACT,45.5871538,4.3109550,yes,,APPROVED_FOR_IMPORT,Located at La Charpiniere hotel -- property relationship candidate
+fr_0281,FR,La Tête en l'air,Vannes,e9c73b23-2e85-4ce8-a5f3-d2b40c3e3c10,1,1,no,VENUE_EXACT,47.6606046,-2.7546127,yes,,APPROVED_FOR_IMPORT,
+fr_0282,FR,Ambroisie,Saint-Didier-de-la-Tour,934c22bb-ec5b-48f0-b388-4a6d9b1fe509,1,1,no,VENUE_EXACT,45.5603488,5.4874789,yes,,APPROVED_FOR_IMPORT,
+fr_0283,FR,La Chabotterie,Montréverd,ab76538a-cc98-4492-a5bf-e6898483ec52,1,1,no,VENUE_EXACT,46.8799208,-1.4063144,yes,,APPROVED_FOR_IMPORT,"Rural hamlet address, no street number -- will rely on venue-name resolution"
+fr_0284,FR,La Pyramide - Maison Henriroux,Vienne,707b713e-dacb-40ca-9c71-c02a8aa34c0c,2,2,no,ADDRESS_EXACT,45.5166170,4.8670936,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant -- property relationship candidate
+fr_0286,FR,La Chapelle Saint-Martin,Nieul,12c466b0-1af4-4463-886c-6640543980b1,1,1,no,ADDRESS_EXACT,45.8945633,1.1769858,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0288,FR,La Table de La Butte,Plouider,d4df9a9b-f74d-47a9-8a73-a840dd346cfd,1,1,no,VENUE_EXACT,48.6111246,-4.2979275,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0291,FR,L'Inattendu - Domaine de Locguénolé,Kervignac,81253f32-cd93-4403-87b6-47504f0f8fe6,1,1,no,PROPERTY_EXACT,47.7697308,-3.2824688,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant -- property relationship candidate. Structured/venue query on street address missed; resolved via freeform property-name retry (Chateau de Locguenole, tourism=hotel) at Maison Rouge/L"
+fr_0292,FR,Côté Cuisine,Carnac,78753be8-7826-4f56-bc86-09bf4fc0c3b7,1,1,no,VENUE_EXACT,47.5788811,-3.0783590,yes,,APPROVED_FOR_IMPORT,Located in Lann Roz hotel -- property relationship candidate
+fr_0293,FR,Louise,Lorient,c5937837-3e5e-4fb7-b58c-90510a0a0d35,1,1,no,VENUE_EXACT,47.7487717,-3.3649524,yes,,APPROVED_FOR_IMPORT,
+fr_0295,FR,Les Reflets,La Roche-sur-Yon,dccd77e4-20d4-4cdd-8213-2fbbba575a51,1,1,no,VENUE_EXACT,46.6650126,-1.4495623,yes,,APPROVED_FOR_IMPORT,
+fr_0298,FR,Le Sarkara,Courchevel,ad16ef0a-9c6f-4fdc-bd87-fe3150d89281,2,2,no,VENUE_EXACT,45.4122140,6.6389657,yes,,APPROVED_FOR_IMPORT,"2-star; Courchevel 1850; located in Le K2 Palace hotel -- property relationship candidate. Initial structured/venue queries missed; resolved via freeform retry (""Sarkara restaurant""), amenity=restaura"
+fr_0299,FR,Sylvestre Wahid - Les Grandes Alpes,Courchevel,ad16ef0a-9c6f-4fdc-bd87-fe3150d89281,2,2,no,ADDRESS_EXACT,45.4144520,6.6346860,yes,,APPROVED_FOR_IMPORT,2-star; Courchevel 1850; located in Hotel Les Grandes Alpes -- property relationship candidate
+fr_0300,FR,Maison Desamy,Mareuil-sur-Lay-Dissais,89a4c002-45f7-45cc-b23f-7c530c64a3c7,1,1,no,VENUE_EXACT,46.5349088,-1.2208868,yes,,APPROVED_FOR_IMPORT,
+fr_0301,FR,Ursus,Tignes,d93a2ee6-06de-45b9-9144-e8beb1caedc4,1,1,no,VENUE_EXACT,45.4579155,6.9013483,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (Les Suites du Nevada) -- property relationship candidate
+fr_0302,FR,La Table de l'Ours,Val-d'Isère,259d98e6-6922-4c40-824b-2b123134a92f,1,1,no,PROPERTY_EXACT,45.4476020,6.9743012,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed (rural/resort address); resolved via freeform property-name retry.
+fr_0304,FR,Alpage,Courchevel,ad16ef0a-9c6f-4fdc-bd87-fe3150d89281,1,1,no,PROPERTY_EXACT,45.4012022,6.6373917,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed (rural/resort address); resolved via freeform property-name retry.
+fr_0305,FR,Le 1947 à Cheval Blanc,Courchevel,ad16ef0a-9c6f-4fdc-bd87-fe3150d89281,3,3,no,VENUE_EXACT,45.4094995,6.6336316,yes,,APPROVED_FOR_IMPORT,3-star; hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed (rural/resort address); resolved via freeform property-name retry.
+fr_0306,FR,La Marine,L'Herbaudière,df6fdf0a-75e5-4a77-82af-78adb53942af,1,3,yes,VENUE_EXACT,47.0237081,-2.2999258,yes,,APPROVED_FOR_IMPORT,"3-star restaurant (Alexandre Couillon) -- source_dataset lists as 1-star candidate, star count taken from manifest"
+fr_0307,FR,L'Altitude,Courchevel,ad16ef0a-9c6f-4fdc-bd87-fe3150d89281,2,2,no,PROPERTY_EXACT,45.4026673,6.6379618,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed (rural/resort address); resolved via freeform property-name retry.
+fr_0309,FR,Le Clocher des Pères,Saint-Martin-sur-la-Chambre,4abbf71c-2eb7-48eb-b8fa-b82aec7e6c5f,1,1,no,VENUE_EXACT,45.3662310,6.3165268,yes,,APPROVED_FOR_IMPORT,
+fr_0310,FR,René et Maxime Meilleur,Saint-Martin-de-Belleville,fe3938a2-aa42-4335-a7dc-1ee3eaa38a83,2,2,no,PROPERTY_EXACT,45.3690945,6.5132964,yes,,APPROVED_FOR_IMPORT,"2-star; hotel-restaurant (La Bouitte), no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed (rural/resort address); resolved via freeform property-name ret"
+fr_0311,FR,Rosmadec Le Moulin,Pont-Aven,540a4172-4a55-49bc-a4b4-b1eff1b87aa6,1,1,no,VENUE_EXACT,47.8549182,-3.7479151,yes,,APPROVED_FOR_IMPORT,
+fr_0312,FR,Dyades au Domaine des Étangs,Massignac,30202351-764c-4139-9c18-e14ca17dbc54,1,1,no,PROPERTY_EXACT,45.7758818,0.6426941,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed (rural/resort address); resolved via freeform property-name retry.
+fr_0313,FR,L'Auberge des Glazicks,Plomodiern,45e5c9a8-e2f7-4cce-b253-51f408f17c12,2,2,no,ADDRESS_EXACT,48.1806002,-4.2343996,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant -- property relationship candidate
+fr_0314,FR,Les Explorateurs - Hôtel Pashmina,Val-Thorens,2e05e4b9-f43d-423f-b77b-e5cf91e23e3f,1,1,no,PROPERTY_EXACT,45.2956028,6.5873675,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed (rural/resort address); resolved via freeform property-name retry.
+fr_0315,FR,L'Embrun,Brest,fde81cc5-c5b3-4ac5-abaa-b8524316406d,1,1,no,VENUE_EXACT,48.3900536,-4.4914295,yes,,APPROVED_FOR_IMPORT,
+fr_0316,FR,Ar Men Du,Névez,63adb651-6978-4919-9806-1191871fd278,1,1,no,VENUE_EXACT,47.7889108,-3.7998803,yes,,APPROVED_FOR_IMPORT,
+fr_0317,FR,Maison Fantin Latour - Stéphane Froidevaux,Grenoble,6df4aa7a-3b97-40c7-ae3b-1733d2d7b12b,1,1,no,ADDRESS_EXACT,45.1900156,5.7326143,yes,,APPROVED_FOR_IMPORT,
+fr_0319,FR,Allium,Quimper,2d570a3f-143c-4b65-a617-310e287587cd,1,1,no,VENUE_EXACT,47.9761260,-4.0982447,yes,,APPROVED_FOR_IMPORT,
+fr_0320,FR,Les Genêts,Brem-sur-Mer,d21c8c51-d949-451b-8adb-1cab6aa01a99,1,1,no,VENUE_EXACT,46.6056948,-1.8349099,yes,,APPROVED_FOR_IMPORT,
+fr_0321,FR,Restaurant Marcon,Saint-Bonnet-le-Froid,be5de7ba-451b-4fb1-95fa-dd64a426a165,3,3,no,VENUE_EXACT,45.1389305,4.4336578,yes,,APPROVED_FOR_IMPORT,3-star; hotel-restaurant (Les Maisons Marcon) -- property relationship candidate
+fr_0322,FR,Maison Aribert,Uriage-les-Bains,136a0a76-ff02-442d-bcc4-aa79d9565dda,2,2,no,VENUE_EXACT,45.1417345,5.8315369,yes,,APPROVED_FOR_IMPORT,"2-star; hotel-restaurant; Michelin lists commune as Saint-Martin-d'Uriage, source city on file is Uriage-les-Bains -- kept as filed"
+fr_0323,FR,Palégrié Chez l'Henri,Autrans-Méaudre en Vercors,8b96c2ea-50b2-4da5-bf4b-ee541b26be44,1,1,no,ADDRESS_EXACT,45.1265953,5.5282065,yes,,APPROVED_FOR_IMPORT,
+fr_0325,FR,Les Trois Rochers, Villa Tri Men),7eb0db49-f875-4652-a061-351c334cf4ab,1,1,no,PROPERTY_EXACT,47.8735658,-4.1183136,no,,APPROVED_FOR_IMPORT,"high -- Initial structured/venue queries missed; resolved via freeform property-name retry, exact street/house-number match."
+fr_0326,FR,L'Abissiou,Les Sables-d'Olonne,6eefceab-da27-4b04-b824-fc7e7e3e714d,1,1,no,ADDRESS_EXACT,46.4955480,-1.7874140,yes,,APPROVED_FOR_IMPORT,
+fr_0327,FR,Les Cèdres,Granges-les-Beaumont,056247fe-20f4-45b4-ba3b-8ed49587d0f5,1,1,no,ADDRESS_EXACT,45.0483235,4.9834105,yes,,APPROVED_FOR_IMPORT,
+fr_0328,FR,Hostellerie de la Pointe Saint-Mathieu,Plougonvelin,64018766-a604-4bf3-9ed4-8bdcccd9b7a6,1,1,no,ADDRESS_EXACT,48.3309033,-4.7708997,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0329,FR,Christopher Coutanceau,La Rochelle,5da6590a-6c87-4479-b785-fd010c7a032f,3,3,no,VENUE_EXACT,46.1553795,-1.1599853,yes,,APPROVED_FOR_IMPORT,"3-star; beachfront address, no street number found -- will rely on venue-name resolution"
+fr_0330,FR,Asterales, Hôtel du Golf),9b9cfc36-0e88-4d7c-8143-c1982fbb9d89,1,1,no,VENUE_EXACT,45.0265923,5.5202738,no,,APPROVED_FOR_IMPORT,"high -- Initial structured/venue queries missed; resolved via freeform property-name retry, exact street/house-number match."
+fr_0331,FR,Le Chamarlenc,Le Puy-en-Velay,fd1cd850-7dcd-4ecf-8d52-4401bb7babdc,1,1,no,VENUE_EXACT,45.0443288,3.8826057,yes,,APPROVED_FOR_IMPORT,
+fr_0332,FR,L'Écailler,La Flotte,0ba20f41-eca4-4abf-b900-5c708dc3c75f,1,1,no,VENUE_EXACT,46.1877723,-1.3245439,yes,,APPROVED_FOR_IMPORT,
+fr_0333,FR,Maltacina,Saint-Théoffrey,062f9a7a-8d13-4d58-a711-de1cd6acf089,1,1,no,VENUE_EXACT,44.9982973,5.7730967,yes,,APPROVED_FOR_IMPORT,
+fr_0334,FR,Mandibule,Alixan,ccff5db3-7827-4817-b5ea-2c15227d2b24,1,1,no,VENUE_EXACT,44.9745780,5.0259914,yes,,APPROVED_FOR_IMPORT,
+fr_0336,FR,La Cachette,Valence,8e642790-deba-4042-9f5d-2d51157ffeae,1,1,no,VENUE_EXACT,44.9324964,4.8865534,yes,,APPROVED_FOR_IMPORT,Address discrepancy noted across sources (some list 16 rue des Cevennes); using Michelin Guide's own listed address
+fr_0337,FR,Épithèque,Valence,8e642790-deba-4042-9f5d-2d51157ffeae,1,1,no,ADDRESS_EXACT,44.9326964,4.8908881,yes,,APPROVED_FOR_IMPORT,
+fr_0338,FR,Pic,Valence,8e642790-deba-4042-9f5d-2d51157ffeae,3,3,no,VENUE_EXACT,44.9175731,4.8855564,yes,,APPROVED_FOR_IMPORT,3-star; hotel-restaurant (Maison Pic) -- property relationship candidate
+fr_0339,FR,La Ribaudière,Bourg-Charente,2dafe4c2-1039-4e32-aa70-5654ff17262b,1,1,no,VENUE_EXACT,45.6734984,-0.2248405,yes,,APPROVED_FOR_IMPORT,
+fr_0340,FR,Le Puy Tilleul,Tournemire,6629a223-107c-40dc-82e3-6a9026366d7f,1,1,no,VENUE_EXACT,45.0524290,2.4827291,yes,,APPROVED_FOR_IMPORT,
+fr_0341,FR,Les Foudres,Cognac,5c5bdbb4-78bd-4b0c-a692-c13504aee6ca,1,1,no,VENUE_EXACT,45.6903773,-0.3328886,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0342,FR,Le Haut-Allier,Alleyras,80464faa-45a6-45e3-a0cb-38c34a17e01a,1,1,no,VENUE_EXACT,44.9195999,3.6743326,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0343,FR,Notes,Cognac,5c5bdbb4-78bd-4b0c-a692-c13504aee6ca,1,1,no,PROPERTY_EXACT,45.6838492,-0.3534283,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0344,FR,Le Carré d'Alethius,Charmes-sur-Rhône,061997d8-48c8-43a1-a44c-7726143b94cd,1,1,no,ADDRESS_EXACT,44.8613963,4.8331776,yes,,APPROVED_FOR_IMPORT,
+fr_0346,FR,La Table d'Olivier,Brive-la-Gaillarde,2750db41-d0a9-43c6-ba41-05eb67b5f48e,1,1,no,ADDRESS_EXACT,45.1589240,1.5309176,yes,,APPROVED_FOR_IMPORT,
+fr_0347,FR,Serge Vieira,Chaudes-Aigues,4aad5196-e6b4-4d2f-9a5b-344f557e8a37,2,2,no,VENUE_EXACT,44.8442314,3.0019701,yes,,APPROVED_FOR_IMPORT,"2-star; hilltop chateau site, no street number found -- will rely on venue-name resolution"
+fr_0348,FR,Le Kléber - La Maison Bonnet,Grane,bc94af68-3d19-4733-83eb-353e0be65a59,1,1,no,ADDRESS_EXACT,44.7318013,4.9239969,yes,,APPROVED_FOR_IMPORT,
+fr_0350,FR,Cueillette,Altillac,760d39ea-7379-4f80-b902-62836fb0a070,1,1,no,VENUE_EXACT,44.9473727,1.8560328,yes,,APPROVED_FOR_IMPORT,
+fr_0351,FR,L'Essentiel,Périgueux,98ab0db8-62a5-4f6f-acb7-e05e95d4570e,1,1,no,VENUE_EXACT,45.1840379,0.7223796,yes,,APPROVED_FOR_IMPORT,
+fr_0353,FR,Le Petit Léon,Saint-Léon-sur-Vézère,ad8bba66-0ec5-4218-a6cf-96f402cccff2,1,1,no,VENUE_EXACT,45.0104154,1.0899391,yes,,APPROVED_FOR_IMPORT,"Village-centre address, no street number -- will rely on venue-name resolution"
+fr_0355,FR,Lavandin - Château Les Oliviers de Salettes,Charols,d04414a3-f06b-4359-af8f-cb911b2a1c7a,1,1,no,ADDRESS_EXACT,44.5874778,4.9697980,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (château) -- property relationship candidate
+fr_0356,FR,Le Suquet - Sébastien Bras,Laguiole,e4e92560-92ca-4018-857e-140c8b6ca94c,3,3,no,VENUE_EXACT,44.6807795,2.8918953,yes,,APPROVED_FOR_IMPORT,"3-star; hilltop hotel-restaurant, no street number found -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property-name retry."
+fr_0357,FR,Auberge de Montfleury,Saint-Germain,f5ccaafb-28d6-4f67-a265-2a9e9eadcf70,1,1,no,VENUE_EXACT,44.5636755,4.4714270,yes,,APPROVED_FOR_IMPORT,
+fr_0359,FR,Le 1862 - Les Glycines,Les Eyzies-de-Tayac-Sireuil,d2eca4da-db6b-425a-9726-e82a570ef78a,1,1,no,ADDRESS_EXACT,44.9461013,0.9987199,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0360,FR,Le Colombier,Malataverne,fd4b0c0a-3aea-49c8-bc2f-49d4074ee164,1,1,no,PROPERTY_EXACT,44.4688101,4.7432658,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0361,FR,Le Clair de la Plume,Grignan,dcd01ac4-2fd8-4dd6-bff7-8df313b64563,1,1,no,VENUE_EXACT,44.4195329,4.9073070,yes,,APPROVED_FOR_IMPORT,
+fr_0362,FR,Émilie & Thomas - Moulin de Cambelong,Conques-en-Rouergue,f17a31b1-5c5a-415b-ac71-cebc0fe50967,1,1,no,PROPERTY_EXACT,44.5927200,2.3962208,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0363,FR,Le Vieux Logis,Trémolat,8d693880-46eb-4412-8828-29ac60b583ab,1,1,no,ADDRESS_EXACT,44.8755912,0.8294413,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0365,FR,La Tour des Vents,Monbazillac,0307ab68-0bf9-41d5-9825-e25cdfd51ba1,1,1,no,ADDRESS_EXACT,44.7968120,0.4613890,yes,,APPROVED_FOR_IMPORT,
+fr_0366,FR,Les Fresques - Château des Vigiers,Monestier,040ee041-c4f9-4f96-8f16-c5406e5597c9,1,1,no,PROPERTY_EXACT,44.7917444,0.2864616,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (château) -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0367,FR,Restaurant Hervé Busset,Rodez,7bd11110-6afe-4664-8dc5-bde9f19cc01d,1,1,no,VENUE_EXACT,44.3484817,2.5758103,yes,,APPROVED_FOR_IMPORT,
+fr_0368,FR,Vieux Pont,Belcastel,0b0b57ad-34fb-41b9-824b-175f0d2102d8,1,1,no,VENUE_EXACT,44.3881108,2.3355746,yes,,APPROVED_FOR_IMPORT,
+fr_0369,FR,La Table de Pavie,Saint-Émilion,500db25e-b15d-4405-b8a4-310afb98bf91,2,2,no,PROPERTY_EXACT,44.8934672,-0.1566415,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0370,FR,Le Gindreau,Saint-Médard,607d7109-fc30-4ab7-a80c-57a80e23ff6c,1,1,no,ADDRESS_EXACT,44.5381779,1.2898549,yes,,APPROVED_FOR_IMPORT,
+fr_0371,FR,Logis de la Cadène,Saint-Émilion,500db25e-b15d-4405-b8a4-310afb98bf91,1,1,no,VENUE_EXACT,44.8935270,-0.1559423,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0373,FR,Le Cèdre de Montcaud,Sabran,a0f54289-96e9-4806-970f-d43eea6f218c,1,1,no,PROPERTY_EXACT,44.1718560,4.5710216,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (château) -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0375,FR,L'Oustalet,Gigondas,cbf88e87-0e6d-408a-a8b5-b771329766db,1,1,no,VENUE_EXACT,44.1636683,5.0045357,yes,,APPROVED_FOR_IMPORT,
+fr_0376,FR,L'Auberge Saint Jean,Saint-Jean-de-Blaignac,63b6c8b3-8820-436d-bd90-7ba8ed353692,1,1,no,ADDRESS_EXACT,44.8130343,-0.1390388,yes,,APPROVED_FOR_IMPORT,
+fr_0377,FR,Le Prince Noir - Vivien Durand,Lormont,fa8c8c61-f304-4923-b650-fbad74f26e5c,1,1,no,ADDRESS_EXACT,44.8784227,-0.5298255,yes,,APPROVED_FOR_IMPORT,
+fr_0378,FR,Le Saint Hilaire,Saint-Hilaire-de-Brethmas,c5e2174d-10c9-42d4-9e57-c22fffc37b4c,1,1,no,ADDRESS_EXACT,44.0996215,4.1059456,yes,,APPROVED_FOR_IMPORT,
+fr_0379,FR,La Bonne Étape,Château-Arnoux-Saint-Auban,f0c3ecfd-fd15-4557-ad67-9346a4e6ecde,1,1,no,VENUE_EXACT,44.0938205,6.0099903,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0380,FR,Holodeck,Floressas,a635d649-1cc4-4299-b3b8-9f133a71b4e1,1,1,no,PROPERTY_EXACT,44.4487662,1.1321907,yes,,APPROVED_FOR_IMPORT,"Wine estate address, no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property-name retry."
+fr_0381,FR,Maison Nouvelle,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,2,2,no,VENUE_EXACT,44.8524933,-0.5720934,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0382,FR,Cent33,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,1,1,no,ADDRESS_EXACT,44.8548927,-0.5740809,yes,,APPROVED_FOR_IMPORT,
+fr_0383,FR,L'Oiseau Bleu,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,1,1,no,VENUE_EXACT,44.8443135,-0.5528064,yes,,APPROVED_FOR_IMPORT,
+fr_0384,FR,Le Pressoir d'Argent - Gordon Ramsay,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,2,2,no,VENUE_EXACT,44.8423174,-0.5747632,yes,,APPROVED_FOR_IMPORT,"2-star; hotel-restaurant, no street number found -- will rely on venue-name resolution"
+fr_0385,FR,Soléna,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,1,1,no,VENUE_EXACT,44.8404688,-0.5903817,yes,,APPROVED_FOR_IMPORT,
+fr_0386,FR,Le Saint-James,Bouliac,b0c17cf2-e691-4a9f-8cc3-c10d668a39cd,1,1,no,VENUE_EXACT,44.8143497,-0.5042345,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0387,FR,Amicis,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,1,1,no,VENUE_EXACT,44.8436264,-0.5771859,yes,,APPROVED_FOR_IMPORT,
+fr_0388,FR,Le Pavillon des Boulevards,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,1,1,no,VENUE_EXACT,44.8532231,-0.5927825,yes,,APPROVED_FOR_IMPORT,
+fr_0389,FR,La Table d'Hôtes - Le Quatrième Mur,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,1,1,no,PROPERTY_EXACT,44.8426240,-0.5736750,yes,,APPROVED_FOR_IMPORT, -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0390,FR,Tentazioni,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,1,1,no,VENUE_EXACT,44.8435458,-0.5816504,yes,,APPROVED_FOR_IMPORT,
+fr_0391,FR,Ressources,Bordeaux,e85cb63e-d47d-4e28-9c5a-ab9597a4e2a7,1,1,no,VENUE_EXACT,44.8489160,-0.5836132,yes,,APPROVED_FOR_IMPORT,
+fr_0392,FR,La Table d'Uzès,Uzès,4a768361-e169-46b7-b81f-8bbb6e59d282,1,1,no,VENUE_EXACT,44.0124580,4.4215369,yes,,APPROVED_FOR_IMPORT,No street number -- will rely on venue-name resolution
+fr_0393,FR,Maison Chenet - Entre Vigne et Garrigue,Pujaut,cffd1cd7-f80f-488c-a47c-039be4ec7b60,1,1,no,ADDRESS_EXACT,43.9901026,4.7775405,yes,,APPROVED_FOR_IMPORT,
+fr_0394,FR,La Belle Vie,Saint-Hilaire-d'Ozilhan,eb50239c-ceb7-476a-b3fb-e55c13cc001d,1,1,no,ADDRESS_EXACT,43.9728886,4.5842955,yes,,APPROVED_FOR_IMPORT,
+fr_0395,FR,Auberge Quintessence,Roubion,3b111c54-7c23-4337-841b-ddc44252aadf,1,1,no,VENUE_EXACT,44.0996549,7.0228317,yes,,APPROVED_FOR_IMPORT,"Mountain-pass address, no street number -- will rely on venue-name resolution"
+fr_0397,FR,Le Prieuré,Villeneuve-lès-Avignon,ecaaba7f-dee2-4530-8577-86638e5ff497,1,1,no,ADDRESS_EXACT,43.9632638,4.7961564,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0399,FR,La Table de Xavier Mathieu,Joucas,f6b8520d-7733-4e69-ae33-dc08d27e7b3e,1,1,no,PROPERTY_EXACT,43.9293122,5.2562362,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant, no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property-name retry."
+fr_0400,FR,Le Vivier,L'Isle-sur-la-Sorgue,7faf2262-2faa-4b4a-be29-8a5bcee2d057,1,1,no,VENUE_EXACT,43.9257153,5.0637687,yes,,APPROVED_FOR_IMPORT,
+fr_0401,FR,Le Feuillée - Le Couvent des Minimes,Mane,a0447d10-17c3-4165-9faa-93ef49458a09,1,1,no,ADDRESS_EXACT,43.9387221,5.7720260,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0402,FR,Auberge de la Roche,Valdeblore,e76c3bb7-fc15-40ce-adfe-67c201e8dac6,1,1,no,VENUE_EXACT,44.0693214,7.1756169,yes,,APPROVED_FOR_IMPORT,"Hamlet address, no street number -- will rely on venue-name resolution"
+fr_0403,FR,Ineffable,Barbentane,d63e6f41-81d9-462a-a385-df4de1d1d66f,1,1,no,ADDRESS_EXACT,43.8991230,4.7480510,yes,,APPROVED_FOR_IMPORT,
+fr_0404,FR,La Table des Amis,Bonnieux,89195f2d-ec29-46c6-9c78-bc0788bee4ec,1,2,yes,VENUE_EXACT,43.8510572,5.3014385,yes,,APPROVED_FOR_IMPORT,"Source states 2-star Michelin (Christophe Bacquie), manifest lists 1-star -- discrepancy kept as manifest value per protocol, flagged for later recognition-review pass. Hotel-restaurant -- property re"
+fr_0405,FR,Duende,Nîmes,2cf3b4dc-c3e0-438f-ba66-eb127d08aa63,2,2,no,VENUE_EXACT,43.8386344,4.3528378,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant -- property relationship candidate
+fr_0406,FR,Lalique,Bommes,b1645737-9f77-440a-89fe-8f891b48b629,2,2,no,VENUE_EXACT,44.5499533,-0.3373782,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant (château) -- property relationship candidate
+fr_0407,FR,Rouge,Nîmes,2cf3b4dc-c3e0-438f-ba66-eb127d08aa63,1,1,no,VENUE_EXACT,43.8370112,4.3579665,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0408,FR,Skab,Nîmes,2cf3b4dc-c3e0-438f-ba66-eb127d08aa63,2,2,no,VENUE_EXACT,43.8331524,4.3592903,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0411,FR,JU - Maison de Cuisine,Bonnieux,89195f2d-ec29-46c6-9c78-bc0788bee4ec,1,1,no,ADDRESS_EXACT,43.8235499,5.3070068,yes,,APPROVED_FOR_IMPORT,
+fr_0412,FR,Restaurant Pierre Grein,Manosque,fe3f5079-1f96-4edf-8908-5b617713400d,1,1,no,VENUE_EXACT,43.8302958,5.7973507,yes,,APPROVED_FOR_IMPORT," -- Initial structured/venue queries missed; resolved via freeform retry using Michelin URL slug alias (Le Bistronomique), exact street match."
+fr_0414,FR,L'Auberge de Saint-Rémy - Fanny Rey & Jonathan Wahid,Saint-Rémy-de-Provence,1c2e1eae-9924-4ba3-bdb9-169e69842bd5,2,2,no,ADDRESS_EXACT,43.7884790,4.8332890,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant -- property relationship candidate
+fr_0416,FR,La Bastide de Moustiers,Moustiers-Sainte-Marie,8ad780a5-59ee-4703-aeb9-2c554140aa55,1,1,no,ADDRESS_EXACT,43.8409044,6.2180278,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0417,FR,Nacre,Arès,fe253d98-84a5-481e-917c-d41e09507c37,1,1,no,VENUE_EXACT,44.7663007,-1.1400316,yes,,APPROVED_FOR_IMPORT,
+fr_0418,FR,Monique,Calvisson,592b853c-994c-42e5-9796-b6852695bd6a,1,1,no,ADDRESS_EXACT,43.7844553,4.1927859,yes,,APPROVED_FOR_IMPORT,
+fr_0419,FR,La Petite Maison de Cucuron,Cucuron,6aabf3e5-463e-470d-b6c2-a776a0803227,1,1,no,VENUE_EXACT,43.7739104,5.4386931,yes,,APPROVED_FOR_IMPORT,
+fr_0420,FR,Michel Kayser - Restaurant Alexandre,Garons,9e4391dd-cee9-4a31-abed-7e685568b7a3,1,2,yes,ADDRESS_EXACT,43.7685997,4.4228897,yes,,APPROVED_FOR_IMPORT,"Source states 2 Michelin stars, manifest lists 1-star -- discrepancy kept as manifest value per protocol, flagged for later recognition-review pass"
+fr_0421,FR,L'Oustau de Baumanière,Les Baux-de-Provence,3b6b30aa-c3c7-47bf-a4c8-c452f3e5fba0,2,2,no,VENUE_EXACT,43.7470213,4.7955483,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant -- property relationship candidate
+fr_0422,FR,Le Goût du Bonheur - La Fenière,Cadenet,9c75d604-8ba4-4b89-a788-eff08c728bb2,1,1,no,PROPERTY_EXACT,43.7487995,5.3638207,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0423,FR,Garrigue,Ansouis,7cd8042e-a75f-4a49-bbbf-8e3df5205796,1,1,no,ADDRESS_EXACT,43.7383635,5.4649963,yes,,APPROVED_FOR_IMPORT,
+fr_0424,FR,L'Aupiho - Domaine de Manville,Les Baux-de-Provence,3b6b30aa-c3c7-47bf-a4c8-c452f3e5fba0,1,1,no,PROPERTY_EXACT,43.7325398,4.8014909,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0425,FR,Le Patio,Arcachon,797658ab-e9df-4c53-8469-67e3c4103ab7,1,1,no,VENUE_EXACT,44.6567275,-1.1481225,yes,,APPROVED_FOR_IMPORT,
+fr_0426,FR,Auberge Le Prieuré,Moirax,6d4f632d-926a-4a94-93d0-5a577eb8098c,1,1,no,ADDRESS_EXACT,44.1411585,0.6088893,yes,,APPROVED_FOR_IMPORT,
+fr_0428,FR,La Table de l'Orangerie - Château de Fonscolombe,Le Puy-Sainte-Réparade,da2804cc-8885-46f4-a99c-cedee97f55db,1,1,no,PROPERTY_EXACT,43.6391826,5.4682271,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant (château), no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property-name retry."
+fr_0429,FR,Villa Salone,Salon-de-Provence,65ac40b0-0341-42d9-968a-b7c6808fcfa4,1,1,no,VENUE_EXACT,43.6414495,5.0986171,yes,,APPROVED_FOR_IMPORT,
+fr_0430,FR,La Réserve Rimbaud,Montpellier,0d1f8eec-cf49-4d5c-af48-12c1a26008de,1,1,no,VENUE_EXACT,43.6169645,3.8929317,yes,,APPROVED_FOR_IMPORT,
+fr_0431,FR,Mirazur,Menton,c606bc0d-9478-4cd5-9dd1-4f4beedc681d,3,3,no,VENUE_EXACT,43.7859123,7.5280996,yes,,APPROVED_FOR_IMPORT,3-star
+fr_0432,FR,Le Mas Bottero,Saint-Cannat,9ed74b31-e321-4eb4-aac6-97852c5de5c7,1,1,no,VENUE_EXACT,43.6087699,5.3302299,yes,,APPROVED_FOR_IMPORT,
+fr_0433,FR,Reflet d'Obione,Montpellier,0d1f8eec-cf49-4d5c-af48-12c1a26008de,1,1,no,VENUE_EXACT,43.6123103,3.8729845,yes,,APPROVED_FOR_IMPORT,
+fr_0434,FR,Pastis Restaurant,Montpellier,0d1f8eec-cf49-4d5c-af48-12c1a26008de,1,1,no,ADDRESS_EXACT,43.6099630,3.8738071,yes,,APPROVED_FOR_IMPORT,
+fr_0435,FR,Jardin des Sens,Montpellier,0d1f8eec-cf49-4d5c-af48-12c1a26008de,1,1,no,ADDRESS_EXACT,43.6118052,3.8744287,yes,,APPROVED_FOR_IMPORT,
+fr_0436,FR,Ébullition,Montpellier,0d1f8eec-cf49-4d5c-af48-12c1a26008de,1,1,no,ADDRESS_EXACT,43.6133408,3.8798373,yes,,APPROVED_FOR_IMPORT,
+fr_0437,FR,Leclère,Montpellier,0d1f8eec-cf49-4d5c-af48-12c1a26008de,1,1,no,ADDRESS_EXACT,43.6094003,3.8740276,yes,,APPROVED_FOR_IMPORT,
+fr_0438,FR,La Table du Cap Estel,Èze-Bord-de-Mer,414956e4-cbea-40dc-b589-835627b9d772,1,1,no,PROPERTY_EXACT,43.7183141,7.3741887,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0439,FR,La Table de Pierre,Saint-Paul-de-Vence,51472f59-8792-4f1a-bfe7-88d73813705a,1,1,no,PROPERTY_EXACT,43.6828256,7.1232087,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0440,FR,Château Eza,Èze,9a7f1456-e418-4c6e-88d7-b1e147ffcb8e,1,1,no,VENUE_EXACT,43.7277152,7.3610456,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (château) -- property relationship candidate
+fr_0441,FR,Flaveur,Nice,a2a0f435-d720-4c14-9348-452148144a76,2,2,no,VENUE_EXACT,43.7013005,7.2718374,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0442,FR,Alain Llorca,La Colle-sur-Loup,fda4eee6-6302-4e5a-8715-2238bb2eb48e,1,1,no,ADDRESS_EXACT,43.6916534,7.1056870,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0443,FR,La Chassagnette,Arles,a2542ec7-e8de-4fa4-a57f-5c5970873322,1,1,no,VENUE_EXACT,43.5676344,4.6674351,yes,,APPROVED_FOR_IMPORT,"Rural address, no street number -- will rely on venue-name resolution"
+fr_0444,FR,La Chèvre d'Or,Èze,9a7f1456-e418-4c6e-88d7-b1e147ffcb8e,2,2,no,ADDRESS_EXACT,43.7275990,7.3622347,yes,,APPROVED_FOR_IMPORT,2-star; hotel-restaurant (château) -- property relationship candidate
+fr_0445,FR,Le Art - Château de la Gaude,Aix-en-Provence,b8c3ac3c-42d9-4631-86ce-276d390402eb,1,1,no,ADDRESS_EXACT,43.5688470,5.4784707,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (château) -- property relationship candidate
+fr_0446,FR,Racines - Bruno Cirino,Nice,a2a0f435-d720-4c14-9348-452148144a76,1,1,no,ADDRESS_EXACT,43.7085828,7.2622660,yes,,APPROVED_FOR_IMPORT,
+fr_0447,FR,Le Chantecler,Nice,a2a0f435-d720-4c14-9348-452148144a76,1,1,no,VENUE_EXACT,43.6944586,7.2580822,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0448,FR,Le Restaurant des Rois - La Réserve de Beaulieu,Beaulieu-sur-Mer,72ce0d14-f1de-4473-835b-93e12008e7c2,1,1,no,ADDRESS_EXACT,43.7057299,7.3353227,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0449,FR,Épicentre,Nice,a2a0f435-d720-4c14-9348-452148144a76,1,1,no,VENUE_EXACT,43.6990647,7.2857191,yes,,APPROVED_FOR_IMPORT,
+fr_0450,FR,Les Agitateurs,Nice,a2a0f435-d720-4c14-9348-452148144a76,1,1,no,VENUE_EXACT,43.7005164,7.2843652,yes,,APPROVED_FOR_IMPORT,
+fr_0451,FR,L'Aromate,Nice,a2a0f435-d720-4c14-9348-452148144a76,1,1,no,ADDRESS_EXACT,43.6994781,7.2697614,yes,,APPROVED_FOR_IMPORT,
+fr_0452,FR,ONICE,Nice,a2a0f435-d720-4c14-9348-452148144a76,1,1,no,VENUE_EXACT,43.6987866,7.2827938,yes,,APPROVED_FOR_IMPORT,
+fr_0454,FR,La Table de Pierre Reboul,Aix-en-Provence,b8c3ac3c-42d9-4631-86ce-276d390402eb,1,1,no,PROPERTY_EXACT,43.5259788,5.4379520,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0455,FR,Le Cap,Saint-Jean-Cap-Ferrat,8fde8222-11c4-436f-8ca4-df8ef5c8fde2,1,1,no,VENUE_EXACT,43.6767533,7.3314763,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0456,FR,Étude,Aix-en-Provence,b8c3ac3c-42d9-4631-86ce-276d390402eb,1,1,no,VENUE_EXACT,43.5283637,5.4465213,yes,,APPROVED_FOR_IMPORT,
+fr_0457,FR,Faventia,Tourrettes,df96f66d-3d20-4128-86b4-82e9b76e917b,1,1,no,VENUE_EXACT,43.5946209,6.7310822,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (golf resort) -- property relationship candidate
+fr_0458,FR,Les Terraillers,Biot,ba5d656b-8d73-440c-b431-d1229631391b,1,1,no,VENUE_EXACT,43.6266739,7.0957026,yes,,APPROVED_FOR_IMPORT,
+fr_0459,FR,Granit - La Mécanique des Frères Bonano,Colombières-sur-Orb,14b325a9-47ee-498d-82e8-bf37384c3305,1,1,no,PROPERTY_EXACT,43.5785644,3.0232331,yes,,APPROVED_FOR_IMPORT,"Rural hamlet address, no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property-name retry."
+fr_0462,FR,La Bastide Bourrelly - Mathias Dandine,Calas-Cabriès,15eac778-3c6e-42d6-8fcd-c99e8c196f7a,1,1,no,PROPERTY_EXACT,43.4610270,5.3536356,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0463,FR,Bessem,Mandelieu-la-Napoule,d8dace0a-5e66-4b0c-ba6b-36390c6c7d3b,1,1,no,VENUE_EXACT,43.5405840,6.9334043,yes,,APPROVED_FOR_IMPORT,
+fr_0464,FR,La Passagère - Hôtel Belles Rives,Juan-les-Pins,f592cfc6-03fc-4f57-926b-d6164d695a0e,1,1,no,ADDRESS_EXACT,43.5647458,7.1154847,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0465,FR,La Palme d'Or,Cannes,b8e75290-20b4-4572-bb80-66e6f34caf45,1,1,no,PROPERTY_EXACT,43.5482538,7.0309481,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0466,FR,Les Pêcheurs,Antibes,c2b4216f-5f30-4114-9182-80c1574b5895,1,1,no,PROPERTY_EXACT,43.5613719,7.1179609,yes,,APPROVED_FOR_IMPORT, -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0467,FR,Restaurant De Lauzun,Pézenas,42e937ea-a3e2-4033-a6c8-ed4c0c88e1d1,1,1,no,VENUE_EXACT,43.4825191,3.4115104,yes,,APPROVED_FOR_IMPORT,"Winery/priory estate, no street number -- will rely on venue-name resolution"
+fr_0468,FR,Louroc - Hôtel du Cap-Eden-Roc,Antibes,c2b4216f-5f30-4114-9182-80c1574b5895,1,1,no,PROPERTY_EXACT,43.5484489,7.1215745,yes,Hôtel du Cap-Eden-Roc,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0469,FR,Bruno,Lorgues,230bbb77-c09f-4afe-9e43-bdfb4108538b,1,1,no,VENUE_EXACT,43.4702338,6.3783396,yes,,APPROVED_FOR_IMPORT,Also known as Chez Bruno
+fr_0470,FR,Mareluna,Théoule-sur-Mer,1c285bc6-0d92-4346-9914-aa8921366bd3,1,1,no,VENUE_EXACT,43.5080829,6.9402507,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (château) -- property relationship candidate
+fr_0474,FR,Villa Pinewood,Payrin-Augmontel,c9a498da-3cc1-42cd-8102-9f802f58ab29,1,1,no,ADDRESS_EXACT,43.5265241,2.3467757,yes,,APPROVED_FOR_IMPORT,Address discrepancy noted across sources (590 vs 328 chemin du Negre); using most recent Michelin Guide address
+fr_0475,FR,Auberge de la Forge,Lavalette,18d89bf3-215f-4d46-95d6-4474f71cd148,1,1,no,VENUE_EXACT,43.6377203,1.5951593,yes,,APPROVED_FOR_IMPORT,
+fr_0476,FR,Chez Jeannette,Flassans-sur-Issole,0e651bb3-5d7f-48bf-9c32-be6091c97edd,1,1,no,PROPERTY_EXACT,43.3770603,6.2656321,yes,,APPROVED_FOR_IMPORT, -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0477,FR,L'Oursin,Carry-le-Rouet,d1eeaa2c-6608-4a97-9772-5ba80490280f,1,1,no,PROPERTY_EXACT,43.3297339,5.1512273,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0479,FR,L'Écorce,Toulouse,13e2008a-fd8b-468a-ba95-92a144826804,1,1,no,VENUE_EXACT,43.6063573,1.4418429,yes,,APPROVED_FOR_IMPORT,
+fr_0480,FR,Maison Pellestor Veyrier,Colomiers,ccf743b3-76c7-4081-8ac1-7d04cef0874a,1,1,no,VENUE_EXACT,43.6251320,1.3427266,yes,,APPROVED_FOR_IMPORT,
+fr_0481,FR,Acte 2 Yannick Delpech,Toulouse,13e2008a-fd8b-468a-ba95-92a144826804,1,1,no,ADDRESS_EXACT,43.5931728,1.4605493,yes,,APPROVED_FOR_IMPORT,
+fr_0482,FR,Michel Sarran,Toulouse,13e2008a-fd8b-468a-ba95-92a144826804,1,1,no,VENUE_EXACT,43.6072830,1.4345554,yes,,APPROVED_FOR_IMPORT,
+fr_0483,FR,Stéphane Tournié - Les Jardins de l'Opéra,Toulouse,13e2008a-fd8b-468a-ba95-92a144826804,1,1,no,ADDRESS_EXACT,43.6041433,1.4443378,yes,,APPROVED_FOR_IMPORT,
+fr_0484,FR,En Pleine Nature,Quint-Fonsegrives,71dc823d-334a-4591-8b90-2f3dd0c6ee60,1,1,no,VENUE_EXACT,43.5852455,1.5292218,yes,,APPROVED_FOR_IMPORT,
+fr_0485,FR,Agapes,Toulouse,13e2008a-fd8b-468a-ba95-92a144826804,1,1,no,VENUE_EXACT,43.6047727,1.4509507,yes,,APPROVED_FOR_IMPORT,
+fr_0486,FR,SEPT,Toulouse,13e2008a-fd8b-468a-ba95-92a144826804,1,1,no,VENUE_EXACT,43.5968129,1.4468358,yes,,APPROVED_FOR_IMPORT,
+fr_0487,FR,Une Table au Sud,Marseille,c9a1c483-3e89-46e2-aa7c-b31ed1b53870,1,1,no,VENUE_EXACT,43.2963677,5.3736590,yes,,APPROVED_FOR_IMPORT,
+fr_0488,FR,La Magdeleine - Mathias Dandine,Gémenos,799de1fe-f70d-4152-8e1f-9d9bb5d6f2d8,1,1,no,PROPERTY_EXACT,43.2988589,5.6245669,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate. Address discrepancy noted (alt source: 40 avenue du 2e Cuirassier); using Michelin Guide-consistent address -- Initial structured/venue queries mis
+fr_0489,FR,Le Petit Nice, Corniche J.F. Kennedy),c9a1c483-3e89-46e2-aa7c-b31ed1b53870,3,3,no,VENUE_EXACT,43.2801442,5.3519239,no,,APPROVED_FOR_IMPORT,high -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0490,FR,Auffo,Marseille,c9a1c483-3e89-46e2-aa7c-b31ed1b53870,1,1,no,ADDRESS_EXACT,43.2857285,5.3499027,yes,,APPROVED_FOR_IMPORT,
+fr_0491,FR,Belle de Mars,Marseille,c9a1c483-3e89-46e2-aa7c-b31ed1b53870,1,1,no,ADDRESS_EXACT,43.2787242,5.3920475,yes,,APPROVED_FOR_IMPORT,"Relocation: restaurant has moved from 56 rue de Forbin (13002) to 180 rue du Rouet (13008), per official restaurant website -- current-address rule applied, using verified current address"
+fr_0492,FR,Calice,Béziers,b0cc8199-8065-4cc8-b2ba-c4380cd9cb4c,1,1,no,VENUE_EXACT,43.3435302,3.2231427,yes,,APPROVED_FOR_IMPORT,
+fr_0493,FR,L'Alter-Native,Béziers,b0cc8199-8065-4cc8-b2ba-c4380cd9cb4c,1,1,no,VENUE_EXACT,43.3427840,3.2176679,yes,,APPROVED_FOR_IMPORT,
+fr_0494,FR,AM par Alexandre Mazzia,Marseille,c9a1c483-3e89-46e2-aa7c-b31ed1b53870,3,3,no,ADDRESS_EXACT,43.2700440,5.3862604,yes,,APPROVED_FOR_IMPORT,3-star
+fr_0495,FR,Le Puits Saint Jacques,Pujaudran,b2ab20a4-66ea-44d8-ba6a-cd458d1b7efd,1,1,no,VENUE_EXACT,43.5908166,1.1499168,yes,,APPROVED_FOR_IMPORT,
+fr_0497,FR,La Villa Madie,Cassis,7b58bc3c-76d4-4db5-9e26-3f134fc9db6f,3,3,no,VENUE_EXACT,43.2111019,5.5449357,yes,,APPROVED_FOR_IMPORT,3-star
+fr_0498,FR,En Marge,Aureville,e5fba4a2-ab7f-4c60-8f9a-39daf6d893f1,1,1,no,VENUE_EXACT,43.4905877,1.4410029,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0501,FR,La Vague d'Or - Cheval Blanc St-Tropez,Saint-Tropez,b92ff98e-aae2-4075-9370-fe7e9acdd9b8,3,3,no,PROPERTY_EXACT,43.2664830,6.6265656,yes,,APPROVED_FOR_IMPORT,"3-star; hotel-restaurant, no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property/place-name retry."
+fr_0502,FR,Arnaud Donckele & Maxime Frédéric at Louis Vuitton,Saint-Tropez,b92ff98e-aae2-4075-9370-fe7e9acdd9b8,1,1,no,ADDRESS_EXACT,43.2700292,6.6412522,yes,,APPROVED_FOR_IMPORT,"Seasonal restaurant, hotel property, no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property/place-name retry."
+fr_0503,FR,La Terrasse - Cheval Blanc St-Tropez,Saint-Tropez,b92ff98e-aae2-4075-9370-fe7e9acdd9b8,1,1,no,PROPERTY_EXACT,43.2664830,6.6265656,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant, no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property/place-name retry."
+fr_0504,FR,La Table de Nans,La Ciotat,a37b9735-b89d-493b-809f-b4cde1ffa372,1,1,no,ADDRESS_EXACT,43.1813215,5.6690800,yes,,APPROVED_FOR_IMPORT,
+fr_0505,FR,Couleurs de Shimatani,La Ciotat,a37b9735-b89d-493b-809f-b4cde1ffa372,1,1,no,VENUE_EXACT,43.1752257,5.6099263,yes,,APPROVED_FOR_IMPORT,
+fr_0506,FR,La Table Mirasol,Mont-de-Marsan,61266f98-91ec-40c4-981a-68ae86e8dffe,1,1,no,VENUE_EXACT,43.8912816,-0.5035467,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (Villa Mirasol) -- property relationship candidate
+fr_0507,FR,La Voile - La Réserve Ramatuelle,Ramatuelle,257cadc8-8540-4fad-a139-6b3dfc8543e9,1,1,no,ADDRESS_EXACT,43.1925762,6.6432324,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0508,FR,Les Oliviers,Bandol,10ed4067-adf7-412a-b15c-34095a57fa94,1,1,no,PROPERTY_EXACT,43.1332909,5.7511142,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property/place-name retry.
+fr_0509,FR,La Palmeraie - Château de Valmer,La Croix-Valmer,c6887e94-04a0-4bf1-9c10-a1dc8c543477,1,1,no,ADDRESS_EXACT,43.1859671,6.5928531,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant (château) -- property relationship candidate
+fr_0510,FR,L'Oursin - Hôtel Les Roches,Le Lavandou,d510c0be-47ca-4be8-92f8-638fe19d0e32,1,1,no,ADDRESS_EXACT,43.1496061,6.4059097,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0512,FR,Shanael,Toulon,b5c68be0-b4ca-4257-a5fc-ad7cf056335a,1,1,no,VENUE_EXACT,43.1241506,5.9327692,yes,,APPROVED_FOR_IMPORT,
+fr_0513,FR,La Maison Despouès,Puylausic,49741d9c-8e90-4b36-9106-c3d471d74503,1,1,no,VENUE_EXACT,43.4403735,0.9286649,yes,,APPROVED_FOR_IMPORT,
+fr_0514,FR,La Table de Franck Putelat,Carcassonne,ba5886b8-9fca-48da-876e-c2d326c9b3a4,2,2,no,ADDRESS_EXACT,43.2026335,2.3619802,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0515,FR,Les Prés d'Eugénie - Michel Guérard,Eugénie-les-Bains,abef2b68-5bdb-4d7a-89e6-c79cd024bf2c,3,3,no,ADDRESS_EXACT,43.6965483,-0.3799318,yes,,APPROVED_FOR_IMPORT,3-star; hotel-restaurant -- property relationship candidate
+fr_0516,FR,L'Orangerie,Eugénie-les-Bains,abef2b68-5bdb-4d7a-89e6-c79cd024bf2c,1,1,no,ADDRESS_EXACT,43.6948070,-0.3784806,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property/place-name retry.
+fr_0517,FR,Auberge du Vieux Puits,Fontjoncouse,efe578f6-2909-4290-9f41-7aa828eb4aa0,3,3,no,VENUE_EXACT,43.0485903,2.7886134,yes,,APPROVED_FOR_IMPORT,3-star; hotel-restaurant -- property relationship candidate
+fr_0518,FR,Relais de la Poste,Magescq,e2e04598-4826-4b3f-8c7a-e8ce7fd807b3,1,1,no,VENUE_EXACT,43.7787322,-1.2180152,yes,,APPROVED_FOR_IMPORT,"Source states 2 Michelin stars (53 consecutive years), manifest lists 1-star -- discrepancy kept as manifest value per protocol, flagged for later recognition-review pass. Hotel-restaurant -- property"
+fr_0520,FR,Villa de l'Étang Blanc,Seignosse,9c2a83f4-fb1c-46cd-a081-e0467ddd6e40,1,1,no,ADDRESS_EXACT,43.7014219,-1.3619064,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0521,FR,Le Hittau,Saint-Vincent-de-Tyrosse,03ab5253-4e23-4703-b23c-0be80400c801,3,1,yes,VENUE_EXACT,43.6616928,-1.2961799,yes,,APPROVED_FOR_IMPORT,"Source states 1 Michelin star, manifest lists 3-star -- significant discrepancy kept as manifest value per protocol, flagged for later recognition-review pass. Address discrepancy also noted (alt: 1 a"
+fr_0522,FR,La Galinette,Perpignan,70fec494-13c1-46f2-b8d2-7bc041738c3b,1,1,no,VENUE_EXACT,42.7024685,2.8931453,yes,,APPROVED_FOR_IMPORT,
+fr_0523,FR,L'Almandin,Saint-Cyprien,e2e6b1f4-8efc-4c7a-8d7a-b89db15d16bd,1,1,no,PROPERTY_EXACT,42.6094106,3.0358514,yes,,APPROVED_FOR_IMPORT,"Hotel-restaurant, no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property-name retry."
+fr_0524,FR,La Table d'Aurélien Largeau,Biarritz,b6ae9862-c86f-4b10-98fe-3bc3aaf7b7fb,1,1,no,ADDRESS_EXACT,43.4810752,-1.5581373,yes,,APPROVED_FOR_IMPORT,
+fr_0525,FR,L'Impertinent,Biarritz,b6ae9862-c86f-4b10-98fe-3bc3aaf7b7fb,1,1,no,VENUE_EXACT,43.4864430,-1.5504442,yes,,APPROVED_FOR_IMPORT,
+fr_0526,FR,La Maison de Pierre,Hasparren,0814370b-5031-406d-86d9-9a7fd8cc091a,1,1,no,VENUE_EXACT,43.3684857,-1.3524002,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0527,FR,Moulin d'Alotz,Arcangues,08498594-0e8b-4637-a4da-422c835b4418,1,1,no,VENUE_EXACT,43.4214583,-1.5384046,yes,,APPROVED_FOR_IMPORT,
+fr_0528,FR,La Balette,Collioure,f93acbf6-14cd-4ea0-8689-5f39e8fa5d54,1,1,no,VENUE_EXACT,42.5244575,3.0891591,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0529,FR,Briketenia,Guéthary,5b6d3ba1-8e47-4f31-a8b0-d3d7c9f0bcba,1,1,no,VENUE_EXACT,43.4194552,-1.6060129,yes,,APPROVED_FOR_IMPORT,
+fr_0530,FR,Les Frères Ibarboure,Bidart,0ab2e309-022d-48e2-96a4-477ca0d656a6,1,1,no,VENUE_EXACT,43.4181736,-1.5981898,yes,,APPROVED_FOR_IMPORT, -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0531,FR,Choko Ona,Espelette,805770ec-52db-4852-92bb-59dcf995548f,1,1,no,VENUE_EXACT,43.3415485,-1.4447912,yes,,APPROVED_FOR_IMPORT,
+fr_0532,FR,La Table de Cédric Béchade - L'Auberge Basque,Saint-Pée-sur-Nivelle,52dc0bab-c39a-406f-aa54-c57ffe41e9c3,1,1,no,VENUE_EXACT,43.3675439,-1.5847425,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate -- Initial structured/venue queries missed; resolved via freeform property-name retry.
+fr_0533,FR,Le Kaïku,Saint-Jean-de-Luz,86535795-27ef-4231-91ed-d0707ebce2bd,1,1,no,ADDRESS_EXACT,43.3885808,-1.6644333,yes,,APPROVED_FOR_IMPORT,
+fr_0535,FR,Ekaitza,Ciboure,caa627a6-a899-49f8-80c0-ac43c6b9e48f,2,2,no,VENUE_EXACT,43.3852118,-1.6674947,yes,,APPROVED_FOR_IMPORT,2-star
+fr_0536,FR,Fario,Céret,a3624d15-5f06-47b0-8aa7-0fdeec6705dd,1,1,no,VENUE_EXACT,42.4862740,2.7477762,yes,,APPROVED_FOR_IMPORT,
+fr_0537,FR,Ithurria,Ainhoa,8baad75f-46c6-4157-b13f-df4a0c4652db,1,1,no,VENUE_EXACT,43.3079856,-1.4992278,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant -- property relationship candidate
+fr_0539,FR,Le Charlie,Porticcio,c7919729-dc66-4380-999b-fd9d777240fc,1,1,no,ADDRESS_EXACT,41.8952022,8.8102272,yes,,APPROVED_FOR_IMPORT,"Hillside address, no street number -- will rely on venue-name resolution"
+fr_0541,FR,Casadelmar,Porto-Vecchio,58e7efc4-d6bf-46c7-a73d-70549a47d7ab,2,2,no,VENUE_EXACT,41.5947879,9.3098819,yes,,APPROVED_FOR_IMPORT,"2-star; hotel-restaurant, no street number -- will rely on venue-name resolution"
+fr_0542,FR,La Table de la Ferme,Sartène,64b2f3c4-d890-4ed9-8bf6-de8fadee4eb8,1,1,no,PROPERTY_EXACT,41.5160957,8.9488892,yes,,APPROVED_FOR_IMPORT,"Rural estate address, no street number -- will rely on venue-name resolution -- Initial structured/venue queries missed; resolved via freeform property-name retry."
+fr_0543,FR,Finestra by Italo Bassi,Bonifacio,311e0281-c413-4def-b978-5ca4c7aa2ab7,1,1,no,ADDRESS_EXACT,41.3879860,9.1638094,yes,,APPROVED_FOR_IMPORT,

@@ -1,0 +1,101 @@
+candidate_id,country_code,restaurant_name,resolved_city,city_id,michelin_stars_manifest,michelin_stars_final,star_corrected,coordinate_quality,latitude,longitude,has_michelin_url,hotel_link,classification,notes
+be_007,BE,Bistrot du Nord,Antwerpen,4de2e02c-0e95-443b-9319-d1ff935a114c,1,1,no,VENUE_EXACT,51.2275728,4.4187220,yes,,APPROVED_FOR_IMPORT,"Candidate name on file is 'Bistrot de Nord' -- real name confirmed 'Bistrot du Nord' (de->du) via Michelin Guide + multiple corroborating sources; same restaurant, minor spelling variant on file"
+be_008,BE,The Butcher's son,Antwerpen,4de2e02c-0e95-443b-9319-d1ff935a114c,1,1,no,VENUE_EXACT,51.1995473,4.4158394,yes,,APPROVED_FOR_IMPORT,Located in the historic De Koninck brewery
+be_010,BE,Fine Fleur,Antwerpen,4de2e02c-0e95-443b-9319-d1ff935a114c,1,1,no,PROPERTY_EXACT,51.2153311,4.4050482,yes,Botanic Sanctuary Antwerp,APPROVED_FOR_IMPORT,Located inside Botanic Sanctuary Antwerp hotel -- property relationship candidate
+be_011,BE,Kommilfoo,Antwerpen,4de2e02c-0e95-443b-9319-d1ff935a114c,1,1,no,ADDRESS_EXACT,51.2111252,4.3926732,yes,,APPROVED_FOR_IMPORT,Official site restaurantkommilfoo.be corroborates
+be_013,BE,Misera,Antwerpen,4de2e02c-0e95-443b-9319-d1ff935a114c,1,1,no,ADDRESS_EXACT,51.2045642,4.3823102,yes,,APPROVED_FOR_IMPORT,"NOTE: a separate 'Bar Misera' Michelin listing also exists at nicolasmisera.com -- this candidate is restaurant Misera, not Bar Misera; verified via distinct Michelin Guide URL slug /restaurant/misera"
+be_014,BE,Nathan,Antwerpen,4de2e02c-0e95-443b-9319-d1ff935a114c,1,1,no,VENUE_EXACT,51.2231170,4.4027864,yes,,APPROVED_FOR_IMPORT,Official site restaurant-nathan.be corroborates; chef Nathan Van Echelpoel
+be_016,BE,Pont neuf,Antwerpen,4de2e02c-0e95-443b-9319-d1ff935a114c,1,1,no,ADDRESS_EXACT,51.2304881,4.4081274,yes,,APPROVED_FOR_IMPORT,Matches address already independently verified in the prior location spike (candidate be_016) -- consistent
+be_017,BE,'t Fornuis,Antwerpen,4de2e02c-0e95-443b-9319-d1ff935a114c,1,1,no,VENUE_EXACT,51.2190167,4.3994157,yes,,APPROVED_FOR_IMPORT,"Long-running restaurant (1-star since 1986), well documented incl. Wikipedia"
+be_018,BE,Centpourcent,Sint-Katelijne-Waver,8bc77d85-2eb0-488e-a92c-e55132b9279d,1,1,no,VENUE_EXACT,51.0557966,4.4634265,yes,,APPROVED_FOR_IMPORT,Official site centpourcent.be corroborates
+be_019,BE,De Pastorie,Lichtaart,ff92bd50-b965-45f0-a081-5848a3e138b5,1,1,no,VENUE_EXACT,51.2261191,4.9241642,yes,,APPROVED_FOR_IMPORT,Matches address already independently verified in the prior location spike (candidate be_019) -- consistent
+be_020,BE,Hert,Turnhout,b6c3093d-c9a0-4069-98d1-84846c68f7d7,1,1,no,ADDRESS_EXACT,51.3232299,4.9523127,yes,,APPROVED_FOR_IMPORT,Located in Turnova Tower; GPS reference point given as P.J. Brepolsplein
+be_021,BE,Hof Ter Hulst,Hulshout,0e4616c4-0e7e-4fa0-a8ac-33c092a32ad3,1,1,no,VENUE_EXACT,51.0770585,4.7935031,yes,,APPROVED_FOR_IMPORT,Official site hofterhulst.be corroborates; chef Johan Schroven
+be_022,BE,La Belle,Geel,09f3ae87-5802-4dcb-83b0-d1a49818958b,1,1,no,VENUE_EXACT,51.1632537,5.0638738,yes,,APPROVED_FOR_IMPORT,"'Bel' is a hamlet/gehucht within Geel municipality -- kept as street-level detail, city remains Geel"
+be_023,BE,Neon,Lier,03b3dcc8-b374-4a66-b6cf-07667cc89550,1,1,no,VENUE_EXACT,51.1303285,4.5766348,yes,,APPROVED_FOR_IMPORT,Newly starred 2026; official corroboration via multiple directories
+be_030,BE,Kelderman,Aalst,ddfeca86-0d74-4b4d-99ee-705a7c4ab892,1,1,no,ADDRESS_EXACT,50.9301090,4.0418528,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike -- now READY given city coverage is deployed. See spike source_evidence.csv for full provenance.
+be_034,BE,Sense,Waasmunster,a398e028-bebf-44e8-87c9-e92d73df3d09,1,1,no,VENUE_EXACT,51.1229282,4.1032334,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike -- now READY given city coverage is deployed. See spike source_evidence.csv for full provenance.
+be_045,BE,Goffin,Sint-Kruis (Brugge),65da3090-95da-4373-927d-72ebc42e250d,1,1,no,VENUE_EXACT,51.2119589,3.2418157,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike -- now READY given city coverage is deployed. See spike source_evidence.csv for full provenance.
+be_047,BE,Hostellerie St-Nicolas,Elverdinge (Ieper),98b401db-3283-4514-8b88-b68d05f57c68,1,1,no,PROPERTY_EXACT,50.8855753,2.8197826,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike -- now READY given city coverage is deployed. See spike source_evidence.csv for full provenance.
+be_024,BE,Tinèlle,Mechelen,621341b1-a9e3-444d-aa28-bbe69752fafe,1,1,no,VENUE_EXACT,51.0336431,4.4800897,yes,,APPROVED_FOR_IMPORT,Located in a restored former Predikheren church
+be_025,BE,Bloesem,Borgerhout,cb27049d-57ec-4e45-b1c9-1a6cef166f0d,1,1,no,ADDRESS_EXACT,51.2005187,4.4490358,yes,,APPROVED_FOR_IMPORT,"Newly starred 2026 (VRT news article confirms), located in Borgerhout sub-municipality of Antwerpen"
+be_026,BE,Komaf,Wommelgem,17f90cee-c070-423d-be7b-a4e0cdd035d3,1,1,no,ADDRESS_EXACT,51.2002265,4.5088010,yes,,APPROVED_FOR_IMPORT,
+be_027,BE,Vintage,Kontich,8324089e-2fbf-4f27-af64-36f29e7e0089,1,1,no,VENUE_EXACT,51.1155529,4.4378325,yes,,APPROVED_FOR_IMPORT,"Also listed as 'Bistro Vintage' -- same restaurant, different Michelin listing name variant"
+be_028,BE,Benoit en Bernard Dewitte,Ouwegem,31e8ab51-a9b5-4619-b68a-7708bcd3fa76,1,1,no,ADDRESS_EXACT,50.9133712,3.6063860,yes,,APPROVED_FOR_IMPORT,
+be_029,BE,Fleur de Lin,Zele,6c9cbe11-5f43-4bae-8d9a-33cba0aa898e,1,1,no,VENUE_EXACT,51.0758261,4.0409546,yes,,APPROVED_FOR_IMPORT,
+be_031,BE,Le Julien,Lotenhulle,ebf3d28f-56b9-400e-9f9e-6c131518bffb,1,1,no,ADDRESS_EXACT,51.0599634,3.4664999,yes,,APPROVED_FOR_IMPORT,
+be_033,BE,Publiek,Gent,dc860991-6378-420f-9e94-7c8a851ef2b8,1,1,no,VENUE_EXACT,51.0577781,3.7329399,yes,,APPROVED_FOR_IMPORT,
+be_037,BE,Hofke van Bazel,Bazel,78cbfabd-35d2-4d6a-bfd4-8104c8750642,1,1,no,VENUE_EXACT,51.1472884,4.3001270,yes,,APPROVED_FOR_IMPORT,"Also a boutique hotel -- property relationship candidate, hotel not yet checked against production catalogue"
+be_038,BE,'t Korennaer,Nieuwkerken-Waas,472d98a1-0321-4ff6-868a-4c47ce9a14df,1,1,no,ADDRESS_EXACT,51.1928751,4.1784454,yes,,APPROVED_FOR_IMPORT,
+be_040,BE,Moscou by Danny Horseele,Gentbrugge,30d0b843-43bc-4b1b-bd55-1bf0093f9ac6,1,1,no,ADDRESS_EXACT,51.0320200,3.7546287,yes,,APPROVED_FOR_IMPORT,Opened June 2025
+be_041,BE,Bar Bulot Zedelgem,Zedelgem,ebfe8084-ac6f-458a-9f9b-58245d70222f,1,1,no,ADDRESS_EXACT,51.1488985,3.1495160,yes,,APPROVED_FOR_IMPORT,Note: moved from Bruges to Zedelgem per foodandwinegazette.com -- current address confirmed by Michelin Guide + official site
+be_042,BE,Boo Raan,Knokke-Heist,7f38fb1d-beb8-4c56-947a-2f8019837d52,1,1,no,ADDRESS_EXACT,51.3394944,3.2892734,yes,,APPROVED_FOR_IMPORT,
+be_043,BE,Carcasse,Sint-Idesbald,6ab18621-0eaf-4e5a-9fe5-16dad9fc3429,1,1,no,VENUE_EXACT,51.1099417,2.6112357,yes,,APPROVED_FOR_IMPORT,
+be_044,BE,De Zuidkant,Damme,821fb226-7c8f-487b-9404-26bba0f881e0,1,1,no,ADDRESS_EXACT,51.2518644,3.2823619,yes,,APPROVED_FOR_IMPORT,
+be_046,BE,HAUT,Oostende,d96ec6ef-ff94-4f7d-bd36-031c8389e25f,1,1,no,VENUE_EXACT,51.2275175,2.9243512,yes,,APPROVED_FOR_IMPORT,28th floor of SKY Towers -- unit '28.01' dropped for geocoding
+be_048,BE,L'Envie,Sint-Denijs,d9138622-e411-4e84-804d-ac5c8bed40f7,1,1,no,ADDRESS_EXACT,50.7491990,3.3712079,yes,,APPROVED_FOR_IMPORT,
+be_049,BE,Mémoire,Brugge,9c2f6d51-b087-4790-9f31-90f2ce8b3b6c,1,1,no,ADDRESS_EXACT,51.2063079,3.2267846,yes,,APPROVED_FOR_IMPORT,"Located in Hotel De Tuilerieen -- property relationship candidate, hotel not yet checked against production catalogue"
+be_050,BE,Rebelle,Marke,62db7841-b6fc-4bee-ba5a-be3ccafbd762,1,1,no,VENUE_EXACT,50.8039494,3.2219177,yes,,APPROVED_FOR_IMPORT,
+be_051,BE,Sans Cravate,Brugge,9c2f6d51-b087-4790-9f31-90f2ce8b3b6c,1,1,no,ADDRESS_EXACT,51.2123905,3.2380851,yes,,APPROVED_FOR_IMPORT,
+be_001,BE,Cuines 33,Knokke-Heist,7f38fb1d-beb8-4c56-947a-2f8019837d52,2,2,no,VENUE_EXACT,51.3394236,3.2879539,yes,,APPROVED_FOR_IMPORT,Address already on file from prior verified pass; official site cuines33.be
+be_002,BE,L'air du temps,Eghezee,353a8b11-38c2-4112-be4c-fdbea7cd6c55,2,2,no,VENUE_EXACT,50.5930505,4.8329602,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+be_004,BE,Arabelle Meirlaen,Marchin,916e4a03-b374-42e6-b91a-9b10bae8a327,1,1,no,VENUE_EXACT,50.4864828,5.2222404,yes,,APPROVED_FOR_IMPORT,Address already on file from prior verified pass; official site arabelle.be
+be_006,BE,La Paix,Anderlecht,4967ac0e-64af-4fe0-afa2-3acaa20ef5e5,2,2,no,VENUE_EXACT,50.8437328,4.3283571,yes,,APPROVED_FOR_IMPORT,Address already on file from prior verified pass; official site lapaix.eu. KNOWN COLLISION-FIXTURE NAME (La Paix BE/Tokyo per MATCHER_REGRESSION_FIXTURES.md) -- identity confirmed via Michelin Guide B
+be_003,BE,The Jane,Antwerpen,4de2e02c-0e95-443b-9319-d1ff935a114c,2,2,no,VENUE_EXACT,51.2343679,4.4048738,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+be_005,BE,Comme chez Soi,Brussels,4967ac0e-64af-4fe0-afa2-3acaa20ef5e5,1,1,no,VENUE_EXACT,50.8423459,4.3458140,no,,APPROVED_FOR_IMPORT,Reused verbatim from the completed 20-record location spike.
+be_052,BE,Sel Gris,Knokke-Heist,7f38fb1d-beb8-4c56-947a-2f8019837d52,1,1,no,VENUE_EXACT,51.3440990,3.2563957,yes,,APPROVED_FOR_IMPORT,Located in Duinbergen sub-area of Knokke-Heist
+be_053,BE,Table d'Amis,Kortrijk,28f47abf-4bf7-439e-985e-a78ce0bd53bf,1,1,no,VENUE_EXACT,50.8279332,3.2681661,yes,,APPROVED_FOR_IMPORT,
+be_054,BE,Vol-Ver,Marke,62db7841-b6fc-4bee-ba5a-be3ccafbd762,1,1,no,ADDRESS_EXACT,50.7976678,3.2369143,yes,,APPROVED_FOR_IMPORT,
+be_055,BE,Willem Hiele,Oudenburg,713ef35b-bcb7-4c60-82a4-b9ee7996328a,1,1,no,VENUE_EXACT,51.1906910,2.9731338,yes,,APPROVED_FOR_IMPORT,
+be_056,BE,Zet'Joe by Geert Van Hecke,Brugge,9c2f6d51-b087-4790-9f31-90f2ce8b3b6c,1,1,no,ADDRESS_EXACT,51.2097693,3.2320790,yes,,APPROVED_FOR_IMPORT,"Candidate name on file lacks apostrophe ('Zet' Joe') -- confirmed same restaurant, chef Geert Van Hecke ex-De Karmeliet"
+be_057,BE,Subtiel,De Panne,e9144af7-5bda-4355-90dd-6ec746a35247,1,1,no,ADDRESS_EXACT,51.0935435,2.5830690,yes,,APPROVED_FOR_IMPORT,
+be_058,BE,Alter,Tongeren,2ca05455-51be-461b-9032-2b09bde6a9cf,1,1,no,ADDRESS_EXACT,50.8025064,5.4654602,yes,,APPROVED_FOR_IMPORT,
+be_059,BE,Aurum by Gary Kirchens,Sint-Truiden,cec01979-8d97-4493-bb6d-90ecada67341,1,1,no,ADDRESS_EXACT,50.8099505,5.2285647,yes,,APPROVED_FOR_IMPORT,Located in Kasteel van Ordingen (Ordingen Castle) -- property relationship candidate
+be_060,BE,De Kristalijn,Genk,df852e79-e2ce-44a9-bf08-0b8f4459127e,1,1,no,VENUE_EXACT,50.9700865,5.5559858,yes,,APPROVED_FOR_IMPORT,
+be_061,BE,De Mijlpaal,Tongeren,2ca05455-51be-461b-9032-2b09bde6a9cf,1,1,no,VENUE_EXACT,50.7803832,5.4616326,yes,,APPROVED_FOR_IMPORT,
+be_062,BE,Hoeve De Bies,Sint-Martens-Voeren,96e4111a-43dd-4f8f-8fff-9ec7888ec000,1,1,no,VENUE_EXACT,50.7467209,5.8151619,yes,,APPROVED_FOR_IMPORT,
+be_063,BE,Hostellerie Vivendum,Dilsen-Stokkem,941a9970-9f8f-4106-b6ec-d09d40d3b8fd,1,1,no,ADDRESS_EXACT,51.0333638,5.7364148,yes,,APPROVED_FOR_IMPORT,Michelin lists sub-area 'Dilsen'; resolved city is the merged municipality Dilsen-Stokkem per city-coverage workstream
+be_064,BE,Innesto,Zonhoven,f7fd6bca-0312-400a-b9ab-faec0b17bed8,1,1,no,ADDRESS_EXACT,50.9875602,5.3689034,yes,,APPROVED_FOR_IMPORT,
+be_065,BE,JER,Hasselt,96c54d14-b8cb-4c8a-a836-0adb8ddfd7e7,1,1,no,VENUE_EXACT,50.9308528,5.3406210,yes,,APPROVED_FOR_IMPORT,
+be_066,BE,La Botte,Genk,df852e79-e2ce-44a9-bf08-0b8f4459127e,1,1,no,VENUE_EXACT,50.9663334,5.5010139,yes,,APPROVED_FOR_IMPORT,
+be_067,BE,Modest,Opglabbeek,609a8582-4571-4b69-9ddf-ed9e2ed71b62,1,1,no,ADDRESS_EXACT,51.0494721,5.5991781,yes,,APPROVED_FOR_IMPORT,"Distinct from 'Slagmolen', another Michelin restaurant in same village -- confirmed via distinct Guide URL slug /restaurant/modest"
+be_068,BE,Ogst,Hasselt,96c54d14-b8cb-4c8a-a836-0adb8ddfd7e7,1,1,no,VENUE_EXACT,50.9293652,5.3335057,yes,,APPROVED_FOR_IMPORT,
+be_069,BE,Melchior,Tienen,b834b4ff-7dd8-4ca3-bd2e-ebe83f53017a,1,1,no,VENUE_EXACT,50.8058331,4.9409097,yes,,APPROVED_FOR_IMPORT,
+be_075,BE,Agnes,Dilbeek,9ef6df96-762b-4b1e-bcaa-0edfbcaa92ee,1,1,no,ADDRESS_EXACT,50.8620569,4.2148869,yes,,APPROVED_FOR_IMPORT,Michelin Guide URL uses sub-municipality 'sint-martens-bodegem'; official address given as Dilbeek (Sint-Martens-Bodegem) -- resolved city per city-coverage workstream is Sint-Martens-Bodegem (the sub
+be_076,BE,EST,Heverlee,a5c4b502-c3a9-4073-81c0-b4fab1f99f59,1,1,no,VENUE_EXACT,50.8609616,4.6649859,yes,,APPROVED_FOR_IMPORT,Postal address given as 'Leuven (Heverlee)' -- resolved city is Heverlee per city-coverage workstream
+be_077,BE,Atelier Noun,Leefdaal,f00f7526-6b2c-46b3-a26c-754395007b72,1,1,no,VENUE_EXACT,50.8573562,4.6140890,yes,,APPROVED_FOR_IMPORT,
+be_078,BE,Barge,Bruxelles,4967ac0e-64af-4fe0-afa2-3acaa20ef5e5,1,1,no,VENUE_EXACT,50.8568936,4.3469641,yes,,APPROVED_FOR_IMPORT,"Chef Gregoire Gillard previously at L'air du temps (be_002) -- distinct restaurant, no identity overlap"
+be_079,BE,Da Mimmo,Woluwe-Saint-Lambert,9b53fd50-9f65-4dc7-912c-9530469e9fd8,1,1,no,ADDRESS_EXACT,50.8434622,4.4181790,yes,,APPROVED_FOR_IMPORT,
+be_080,BE,Eliane,Bruxelles,4967ac0e-64af-4fe0-afa2-3acaa20ef5e5,1,1,no,VENUE_EXACT,50.8506650,4.3600878,yes,,APPROVED_FOR_IMPORT,
+be_081,BE,humus x hortense,Ixelles,49ae3d25-9bc8-4fbc-a5e2-3664b97c927f,1,1,no,VENUE_EXACT,50.8294890,4.3703813,yes,,APPROVED_FOR_IMPORT,
+be_082,BE,Kamo,Ixelles,49ae3d25-9bc8-4fbc-a5e2-3664b97c927f,1,1,no,VENUE_EXACT,50.8193649,4.3615191,yes,,APPROVED_FOR_IMPORT,
+be_084,BE,La Villa in the Sky,Bruxelles,4967ac0e-64af-4fe0-afa2-3acaa20ef5e5,1,1,no,VENUE_EXACT,50.8172663,4.3721830,yes,,APPROVED_FOR_IMPORT,25th floor of IT Tower
+be_085,BE,Les Gourmands,Blaregnies,a620cde2-7bf9-43e1-95cf-5162cb39088d,1,1,no,ADDRESS_EXACT,50.3607052,3.8872241,yes,,APPROVED_FOR_IMPORT,
+be_086,BE,Le Vieux Château,Flobecq,24ccbcf3-d446-444b-848c-8c716dd728c7,1,1,no,ADDRESS_EXACT,50.7372799,3.7329021,yes,,APPROVED_FOR_IMPORT,Candidate name on file includes chef parenthetical '(Tanguy De Turck)' -- same restaurant
+be_087,BE,l'Impératif d'Éole,Quévy-le-Grand,11d7ac8c-4121-4720-83e8-3ee711222532,1,1,no,ADDRESS_EXACT,50.3813917,3.9648245,yes,,APPROVED_FOR_IMPORT,
+be_088,BE,Vicomté,Roucourt,e40b94b4-a8d4-441c-9ceb-f37194bc51e9,1,1,no,VENUE_EXACT,50.5246117,3.5747608,yes,,APPROVED_FOR_IMPORT,Candidate name on file 'Le Vicomté (Quentin Gallopyn)' -- Michelin lists it as bare 'Vicomté'; located in Domaine d'Arondeau estate
+be_089,BE,Au Gré du Vent,Seneffe,58189788-1285-4ccd-b8aa-b0ff30c73248,1,1,no,VENUE_EXACT,50.5159466,4.2618565,yes,,APPROVED_FOR_IMPORT,
+be_092,BE,Le Coq aux Champs,Soheit-Tinlot,b948e883-647d-4fb9-868b-bee204c0a647,1,1,no,VENUE_EXACT,50.4713346,5.3878509,yes,,APPROVED_FOR_IMPORT,
+be_093,BE,Le Roannay,Francorchamps,91323d6d-3e9f-4789-96c9-c51c78690407,1,1,no,VENUE_EXACT,50.4561478,5.9526291,yes,,APPROVED_FOR_IMPORT,"Michelin lists city as Francorchamps; some secondary sources give postal town as Stavelot (Francorchamps is a sub-village of Stavelot) -- resolved city Francorchamps per city-coverage workstream, cons"
+be_094,BE,Quadras,Saint-Vith,a5f9a254-8638-4980-858e-890c7470e51a,1,1,no,VENUE_EXACT,50.2844598,6.1221320,yes,,APPROVED_FOR_IMPORT,German-speaking Belgium; street name in German
+be_096,BE,¡Toma!,Liège,0791a7ca-3a95-42f1-9125-fbaa802010ac,1,1,no,VENUE_EXACT,50.6436084,5.5655129,yes,,APPROVED_FOR_IMPORT,
+be_098,BE,Zur Post,Saint-Vith,a5f9a254-8638-4980-858e-890c7470e51a,1,1,no,VENUE_EXACT,50.2801758,6.1261217,yes,,APPROVED_FOR_IMPORT,Hotel-restaurant; German-speaking Belgium
+be_099,BE,Chai Gourmand,Beuzet,2471f104-ca89-4afe-b431-776dc0f37d87,1,1,no,ADDRESS_EXACT,50.5303124,4.7398433,yes,,APPROVED_FOR_IMPORT,
+be_100,BE,Pré de chez vous,Bouge,549d8289-0a25-4319-bfdb-b169176e688c,1,1,no,VENUE_EXACT,50.4802165,4.8820699,yes,,APPROVED_FOR_IMPORT,
+be_101,BE,Le Beau Rivage by Curtis,Dave,6634f916-c6e7-44ed-8a55-625f20942822,1,1,no,ADDRESS_EXACT,50.4145764,4.8851266,yes,,APPROVED_FOR_IMPORT,
+be_102,BE,La Grange d'Hamois,Emptinne,e89e36b4-fc67-4c5f-b1d8-1880da1c9309,1,1,no,VENUE_EXACT,50.3376332,5.1039602,yes,,APPROVED_FOR_IMPORT,
+be_103,BE,Attablez-vous,Namur,cd839fe5-64b7-404d-bc8f-9f90ba20af41,1,1,no,VENUE_EXACT,50.4448917,4.8537555,yes,,APPROVED_FOR_IMPORT,
+be_104,BE,l'Essentiel,Temploux,f976616a-0d21-4120-8577-4b23265aa1d5,1,1,no,VENUE_EXACT,50.4753298,4.7387083,yes,,APPROVED_FOR_IMPORT,
+be_105,BE,Arden,Villers-sur-Lesse,bfa25bda-28fc-4fe2-add2-36451a84ed07,1,1,no,ADDRESS_EXACT,50.1578142,5.0746265,yes,,APPROVED_FOR_IMPORT,
+be_106,BE,La Table-Lasne by Alain Bianchin,Lasne,e5550678-0ef8-4b81-84bf-91738554ed10,1,1,no,ADDRESS_EXACT,50.6985809,4.4694911,yes,,APPROVED_FOR_IMPORT,"Michelin Guide URL uses sub-municipality 'ohain'; official address given as Lasne -- resolved city is Ohain per city-coverage workstream, consistent with established sub-municipality rule"
+be_107,BE,Maison Marit,Braine-l'Alleud,63aca91f-99f1-4024-ae96-43171c4ff417,1,1,no,VENUE_EXACT,50.6603391,4.3796402,yes,,APPROVED_FOR_IMPORT,
+be_108,BE,Philippe Meyers,Braine-l'Alleud,63aca91f-99f1-4024-ae96-43171c4ff417,1,1,no,VENUE_EXACT,50.6823203,4.3700437,yes,,APPROVED_FOR_IMPORT,"Distinct restaurant from Maison Marit, same city -- confirmed via distinct Michelin Guide URL slug"
+be_109,BE,Bistro Racine,Braine-le-Château,4429f9fc-cac2-4a17-9bd1-c4a09933d5af,1,1,no,VENUE_EXACT,50.6815901,4.2731352,yes,,APPROVED_FOR_IMPORT,
+be_110,BE,Aux petits oignons,Jodoigne,c10b51cd-e271-46b1-a714-c320266bf5e9,1,1,no,VENUE_EXACT,50.7418362,4.8801826,yes,,APPROVED_FOR_IMPORT,
+be_111,BE,La Grappe d'Or,Arlon,945ed237-d90b-4421-904a-fbaaf14570bc,1,1,no,VENUE_EXACT,49.6625497,5.8437457,yes,,APPROVED_FOR_IMPORT,Relocated from Torgny to Arlon in 2022 -- current address confirmed via Michelin Guide + official site
+be_112,BE,Le Grand Verre,Durbuy,8d469fbf-058e-460f-8aac-b5a164120917,1,1,no,ADDRESS_EXACT,50.3519966,5.4559682,yes,,APPROVED_FOR_IMPORT,
+be_113,BE,La Table de Manon,Grandhan,e603dbf3-7f76-4727-8716-aa2af1ad82c2,1,1,no,VENUE_EXACT,50.3241923,5.4218646,yes,,APPROVED_FOR_IMPORT,
+be_114,BE,Bistrot Blaise,Marche-en-Famenne,5e2bf0d7-eac9-4526-8e65-b4ba646be35e,1,1,no,ADDRESS_EXACT,50.2264063,5.3449532,yes,,APPROVED_FOR_IMPORT,
+be_115,BE,Les Pieds dans le Plat,Marenne,60a917b3-0e7a-403c-b42c-c6dfba39a88a,1,1,no,VENUE_EXACT,50.2396417,5.4108377,yes,,APPROVED_FOR_IMPORT,
+be_116,BE,Le Gastronome,Paliseul,3f0835ed-f7c2-40b1-b325-9a43be5ec07e,1,1,no,VENUE_EXACT,49.8953169,5.1177911,yes,,APPROVED_FOR_IMPORT,"Also a hotel -- property relationship candidate, not yet checked against production catalogue"
+be_117,BE,Le Cor de Chasse,Wéris,968ae34b-85bd-48f4-adc8-6443e4a0de38,1,1,no,VENUE_EXACT,50.3244966,5.5300615,yes,,APPROVED_FOR_IMPORT,"Also a hotel (Les Villas de Durbuy) -- property relationship candidate, not yet checked against production catalogue"

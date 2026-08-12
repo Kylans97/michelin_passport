@@ -1,0 +1,10 @@
+category,action,count,notes
+restaurant,INSERT,473,"All 473 pass the WHERE-clause + ON CONFLICT dedup logic against live production, verified via read-only SELECT emulation of the exact prepared SQL."
+restaurant,SKIP,0,
+restaurant,BLOCK,0,
+award,INSERT,473,"One row per successfully-inserted restaurant, driven by RETURNING. 4 of the 473 use a corrected star value (see recognition_discrepancy_audit.csv)."
+award,SKIP,0,
+award,BLOCK,0,
+hotel_link,INSERT,5,"fr_0078 Épicure -> Le Bristol Paris; fr_0084 Jean Imbert au Plaza Athénée -> Plaza Athénée; fr_0118 Hakuba -> Cheval Blanc Paris; fr_0122 Le Tout-Paris -> Cheval Blanc Paris; fr_0468 Louroc -> Hôtel du Cap-Eden-Roc"
+hotel_link,SKIP,468,"No verified production hotel relationship for the remaining 468."
+hotel_link,BLOCK,0,
