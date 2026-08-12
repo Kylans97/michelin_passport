@@ -18,6 +18,8 @@ import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import '../events/event_detail_screen.dart';
 import '../events/events_screen.dart';
+import '../guides/guides_screen.dart';
+import '../guides/widgets/guide_destination_row.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'discovery_selectors.dart';
@@ -33,11 +35,14 @@ import 'widgets/explore_search_results_view.dart';
 /// modes, switched purely by whether the search query is empty (see
 /// [_isSearching]), never shown at once:
 ///
-/// DISCOVERY MODE (query empty): an editorial browse — What's On (the
-/// soonest upcoming event), Worth the Journey (a restaurant selection),
-/// Stay a Little Longer (a hotel selection). Loaded once per screen
-/// lifetime via three independent futures, so one catalogue failing (e.g.
-/// Events) never blocks the other two sections from rendering.
+/// DISCOVERY MODE (query empty): a permanent "Browse the Guides" entry
+/// (Navigation Step 1 — routes to the existing GuidesScreen, never a
+/// duplicate landing page rendered inline here), then an editorial browse —
+/// What's On (the soonest upcoming event), Worth the Journey (a restaurant
+/// selection), Stay a Little Longer (a hotel selection). The three
+/// catalogue sections are loaded once per screen lifetime via three
+/// independent futures, so one catalogue failing (e.g. Events) never
+/// blocks the other two sections from rendering.
 ///
 /// SEARCH MODE (query non-empty): universal search across the restaurant,
 /// hotel and event catalogues at once ("All"), or narrowed to one via the
@@ -252,6 +257,16 @@ class _ExploreScreenState extends State<ExploreScreen> {
     MaterialPageRoute(builder: (_) => const EventsScreen()),
   );
 
+  // Navigation Step 1: a permanent entry point into the already-built
+  // GuidesScreen (Michelin/World's 50 Best/Gault&Millau) — previously
+  // reachable only via a temporary, uncommitted device-review harness. This
+  // is deliberately just a route push to the EXISTING screen, not a second
+  // Guides landing page rendered inline here.
+  void _openGuides() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const GuidesScreen()),
+  );
+
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
@@ -278,6 +293,25 @@ class _ExploreScreenState extends State<ExploreScreen> {
   }
 
   List<Widget> _discoverySlivers() => [
+    // A compact, permanent navigation row into Guides — sits above the
+    // heavier editorial sections (What's On/Worth the Journey/Stay a
+    // Little Longer) so it reads as quick access to a reference catalogue,
+    // not as another curated content section competing with them.
+    SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(
+          CsSpacing.pageHorizontal,
+          CsSpacing.lg,
+          CsSpacing.pageHorizontal,
+          0,
+        ),
+        child: GuideDestinationRow(
+          label: 'Browse the Guides',
+          descriptor: "Michelin, World's 50 Best & Gault&Millau.",
+          onTap: _openGuides,
+        ),
+      ),
+    ),
     SliverToBoxAdapter(
       child: FutureBuilder<List<Event>>(
         future: _discoveryEventsFuture,

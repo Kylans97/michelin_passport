@@ -57,7 +57,7 @@ class _RestaurantPickerSheetState extends State<_RestaurantPickerSheet> {
         ),
         child: Container(
           decoration: const BoxDecoration(
-            color: AppColors.card,
+            color: AppColors.brandGreenLight,
             borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
           ),
           child: Column(
@@ -68,7 +68,7 @@ class _RestaurantPickerSheetState extends State<_RestaurantPickerSheet> {
                 width: 36,
                 height: 4,
                 decoration: BoxDecoration(
-                  color: AppColors.divider,
+                  color: AppColors.textOnDark.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),
@@ -77,6 +77,12 @@ class _RestaurantPickerSheetState extends State<_RestaurantPickerSheet> {
                 child: TextField(
                   autofocus: true,
                   onChanged: _onQueryChanged,
+                  // A light-filled search field (the app's global
+                  // InputDecorationTheme fills every TextField with
+                  // AppColors.surface by default) reads as a quiet "island"
+                  // on the sheet's dark canvas — the same treatment the
+                  // date/country/venue-picker rows in CreateTripSheet use —
+                  // rather than fighting the theme's default fill.
                   style: GoogleFonts.inter(
                     color: AppColors.textPrimary,
                     fontSize: 14,
@@ -119,7 +125,7 @@ class _RestaurantPickerSheetState extends State<_RestaurantPickerSheet> {
                                 ? 'No restaurants in the catalogue yet'
                                 : 'No restaurants found',
                             style: GoogleFonts.inter(
-                              color: AppColors.textSecondary,
+                              color: AppColors.secondaryOnDark,
                               fontSize: 13,
                             ),
                           ),
@@ -141,7 +147,7 @@ class _RestaurantPickerSheetState extends State<_RestaurantPickerSheet> {
                           title: Text(
                             restaurant.name,
                             style: GoogleFonts.inter(
-                              color: AppColors.textPrimary,
+                              color: AppColors.textOnDark,
                               fontSize: 14.5,
                               fontWeight: FontWeight.w500,
                             ),
@@ -149,7 +155,7 @@ class _RestaurantPickerSheetState extends State<_RestaurantPickerSheet> {
                           subtitle: Text(
                             '${restaurant.cityName}, ${restaurant.countryName}',
                             style: GoogleFonts.inter(
-                              color: AppColors.textSecondary,
+                              color: AppColors.secondaryOnDark,
                               fontSize: 12.5,
                             ),
                           ),

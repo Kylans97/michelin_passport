@@ -157,14 +157,29 @@ class _WishlistScreenState extends State<WishlistScreen> {
                 pinned: true,
                 backgroundColor: AppColors.background,
                 actions: [
-                  IconButton(
+                  // Navigation Step 1: upgraded from an unlabelled icon
+                  // button to a clearly labelled entry — the existing
+                  // PlannedTripsScreen was already reachable here, just not
+                  // discoverably. Still the least-invasive option: same
+                  // screen, same handler, only the affordance itself made
+                  // legible.
+                  TextButton.icon(
+                    onPressed: _openPlannedTrips,
                     icon: const Icon(
                       Icons.card_travel_rounded,
                       color: AppColors.textSecondary,
+                      size: 18,
                     ),
-                    tooltip: 'My Planned Trips',
-                    onPressed: _openPlannedTrips,
+                    label: Text(
+                      'Trips',
+                      style: GoogleFonts.inter(
+                        color: AppColors.textSecondary,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                   ),
+                  const SizedBox(width: 4),
                 ],
               ),
               SliverToBoxAdapter(

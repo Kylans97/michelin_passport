@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/theme/cs_spacing.dart';
+import '../../../core/theme/cs_surface_context.dart';
+import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/country_picker_sheet.dart';
+import '../../../core/widgets/cs_primary_button.dart';
+import '../../../core/widgets/editorial_back_button.dart';
 import '../../../data/repositories/hotel_repository.dart';
 import '../../../data/repositories/planned_trips_repository.dart';
 import '../../../data/repositories/restaurant_repository.dart';
@@ -10,11 +15,9 @@ import '../../../models/hotel.dart';
 import '../../../models/planned_trip.dart';
 import '../../../models/restaurant.dart';
 import '../../../models/venue_country.dart';
-import '../../restaurants/widgets/detail_section.dart';
-import '../../visits/widgets/date_card.dart';
-import '../../visits/widgets/save_button.dart';
 import 'hotel_picker_sheet.dart';
 import 'restaurant_picker_sheet.dart';
+import 'trip_eyebrow.dart';
 
 /// Opens the "Create trip"/"Edit trip" bottom sheet. Passing [existingTrip]
 /// switches to edit mode (pre-filled fields, updates in place); omitting it
@@ -231,6 +234,31 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
     }
   }
 
+  // A borderless, underline-only field for text entry directly on the
+  // sheet's dark canvas — explicitly overrides the app's global
+  // InputDecorationTheme (filled: true, fillColor: AppColors.surface),
+  // which would otherwise still paint an ivory box behind the hairline.
+  // Used for Trip name/City/Notes: fields that don't need to read as
+  // "cards" the way a tappable picker row does.
+  InputDecoration _underlineDecoration(String hint, {TextStyle? hintStyle}) =>
+      InputDecoration(
+        filled: false,
+        isDense: true,
+        contentPadding: const EdgeInsets.symmetric(vertical: 10),
+        hintText: hint,
+        hintStyle:
+            hintStyle ??
+            CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: AppColors.textOnDark.withValues(alpha: 0.2),
+          ),
+        ),
+        focusedBorder: const UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.gold, width: 1.25),
+        ),
+      );
+
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.of(context).viewInsets.bottom;
@@ -244,7 +272,7 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
           constraints: BoxConstraints(maxHeight: maxHeight),
           child: Container(
             decoration: const BoxDecoration(
-              color: AppColors.card,
+              color: AppColors.brandGreenLight,
               borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
             ),
             child: SingleChildScrollView(
@@ -253,137 +281,117 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Container(
-                      width: 36,
-                      height: 4,
-                      decoration: BoxDecoration(
-                        color: AppColors.divider,
-                        borderRadius: BorderRadius.circular(2),
+                  // An explicit, always-visible dismiss control — swipe-to-
+                  // dismiss (the sheet's default showModalBottomSheet
+                  // behaviour, still intact) was previously the only way
+                  // out, with no on-screen affordance. Same EditorialBackButton
+                  // treatment used for pushed screens, just the close glyph
+                  // instead of a back chevron — visible before any field is
+                  // touched, dismisses via Navigator.pop with no result
+                  // (matching what swipe-to-dismiss already returns), never
+                  // saves or writes anything.
+                  Row(
+                    children: [
+                      EditorialBackButton(
+                        icon: Icons.close_rounded,
+                        semanticLabel: 'Close',
+                        onTap: () => Navigator.pop(context),
                       ),
-                    ),
+                      Expanded(
+                        child: Center(
+                          child: Container(
+                            width: 36,
+                            height: 4,
+                            decoration: BoxDecoration(
+                              color: AppColors.textOnDark.withValues(
+                                alpha: 0.3,
+                              ),
+                              borderRadius: BorderRadius.circular(2),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Balances EditorialBackButton's own footprint so the
+                      // drag handle stays visually centered in the row.
+                      const SizedBox(width: 44),
+                    ],
                   ),
-                  const SizedBox(height: 24),
+                  const SizedBox(height: 20),
 
-                  SectionLabel(_isEditing ? 'EDIT TRIP' : 'CREATE TRIP'),
-                  const SizedBox(height: 12),
+                  TripSectionLabel(_isEditing ? 'EDIT TRIP' : 'CREATE TRIP'),
+                  const SizedBox(height: CsSpacing.md),
                   TextField(
                     controller: _titleCtrl,
-                    style: GoogleFonts.playfairDisplay(
-                      color: AppColors.textPrimary,
-                      fontSize: 20,
-                      fontWeight: FontWeight.w700,
+                    style: CsTypography.placeTitle.copyWith(
+                      color: AppColors.textOnDark,
                     ),
-                    decoration: InputDecoration(
-                      hintText: 'Trip name, e.g. Maastricht',
-                      hintStyle: GoogleFonts.playfairDisplay(
-                        color: AppColors.textSecondary,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w700,
+                    decoration: _underlineDecoration(
+                      'Trip name, e.g. Maastricht',
+                      hintStyle: CsTypography.placeTitle.copyWith(
+                        color: AppColors.secondaryOnDark,
                       ),
                     ),
                   ),
-                  const SizedBox(height: 28),
+                  const SizedBox(height: CsSpacing.xl),
 
-                  DateCard(
-                    label: 'START DATE',
-                    date: _startDate,
-                    onTap: _pickStartDate,
+                  const TripSectionLabel('DATES'),
+                  const SizedBox(height: CsSpacing.sm),
+                  _TripDateRangeRow(
+                    startDate: _startDate,
+                    endDate: _endDate,
+                    onTapStart: _pickStartDate,
+                    onTapEnd: _pickEndDate,
                   ),
-                  const SizedBox(height: 12),
-                  DateCard(
-                    label: 'END DATE',
-                    date: _endDate,
-                    onTap: _pickEndDate,
-                  ),
-                  const SizedBox(height: 28),
+                  const SizedBox(height: CsSpacing.xl),
 
-                  const SectionLabel('COUNTRY'),
-                  const SizedBox(height: 12),
+                  const TripSectionLabel('DESTINATION'),
+                  const SizedBox(height: CsSpacing.sm),
                   FutureBuilder<List<VenueCountry>>(
                     future: _countriesFuture,
                     builder: (context, snap) {
                       final countries = snap.data ?? [];
-                      return Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: countries.isEmpty
-                              ? null
-                              : () => _pickCountry(countries),
-                          borderRadius: BorderRadius.circular(18),
-                          child: Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 16,
-                              vertical: 16,
-                            ),
-                            decoration: BoxDecoration(
-                              color: AppColors.surface,
-                              borderRadius: BorderRadius.circular(18),
-                              border: Border.all(
-                                color: AppColors.cardBorder,
-                                width: 0.5,
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    _country == null
-                                        ? (snap.connectionState ==
-                                                  ConnectionState.waiting
-                                              ? 'Loading countries…'
-                                              : 'Choose a country')
-                                        : '${_country!.flag}  ${_country!.name}',
-                                    style: GoogleFonts.inter(
-                                      color: _country == null
-                                          ? AppColors.textSecondary
-                                          : AppColors.textPrimary,
-                                      fontSize: 15,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  ),
-                                ),
-                                const Icon(
-                                  Icons.chevron_right_rounded,
-                                  color: AppColors.textSecondary,
-                                  size: 20,
-                                ),
-                              ],
-                            ),
+                      return _BorderedRow(
+                        onTap: countries.isEmpty
+                            ? null
+                            : () => _pickCountry(countries),
+                        child: Text(
+                          _country == null
+                              ? (snap.connectionState == ConnectionState.waiting
+                                    ? 'Loading countries…'
+                                    : 'Choose a country')
+                              : '${_country!.flag}  ${_country!.name}',
+                          style: CsTypography.bodyMedium.copyWith(
+                            color: _country == null
+                                ? AppColors.secondaryOnDark
+                                : AppColors.textOnDark,
                           ),
                         ),
                       );
                     },
                   ),
-                  const SizedBox(height: 28),
-
-                  const SectionLabel('CITY (OPTIONAL)'),
-                  const SizedBox(height: 12),
+                  const SizedBox(height: CsSpacing.md),
                   TextField(
                     controller: _cityCtrl,
-                    style: GoogleFonts.inter(
-                      color: AppColors.textPrimary,
-                      fontSize: 14,
+                    style: CsTypography.body.copyWith(
+                      color: AppColors.textOnDark,
                     ),
-                    decoration: InputDecoration(
-                      hintText: 'e.g. Maastricht',
-                      hintStyle: GoogleFonts.inter(
-                        color: AppColors.textSecondary,
-                        fontSize: 14,
-                      ),
-                    ),
+                    decoration: _underlineDecoration('City'),
                   ),
-                  const SizedBox(height: 28),
+                  const SizedBox(height: CsSpacing.section),
 
                   if (!_isEditing) ...[
-                    const SectionLabel('WHERE ARE YOU STAYING? (OPTIONAL)'),
-                    const SizedBox(height: 12),
+                    const TripSectionLabel('PLAN FURTHER'),
+                    const SizedBox(height: CsSpacing.xs),
+                    Text(
+                      'Add a hotel or restaurants now, or come back to it '
+                      'later.',
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.secondaryOnDark,
+                      ),
+                    ),
+                    const SizedBox(height: CsSpacing.md),
                     if (_selectedHotel == null)
-                      _PickerTrigger(
-                        placeholder: 'Add hotel',
-                        onTap: _pickHotel,
-                        icon: Icons.hotel_rounded,
-                      )
+                      _QuietAddAction(label: 'Add hotel', onTap: _pickHotel)
                     else
                       _SelectedVenueRow(
                         title: _selectedHotel!.name,
@@ -393,12 +401,8 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                         onChange: _pickHotel,
                         onRemove: () => setState(() => _selectedHotel = null),
                       ),
-                    const SizedBox(height: 28),
-
-                    const SectionLabel('RESTAURANTS TO VISIT (OPTIONAL)'),
-                    const SizedBox(height: 12),
+                    const SizedBox(height: CsSpacing.md),
                     for (var i = 0; i < _selectedRestaurants.length; i++) ...[
-                      if (i > 0) const SizedBox(height: 8),
                       _SelectedVenueRow(
                         title: _selectedRestaurants[i].name,
                         subtitle:
@@ -407,35 +411,26 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                         onRemove: () =>
                             setState(() => _selectedRestaurants.removeAt(i)),
                       ),
+                      const SizedBox(height: CsSpacing.sm),
                     ],
-                    if (_selectedRestaurants.isNotEmpty)
-                      const SizedBox(height: 8),
-                    _PickerTrigger(
-                      placeholder: 'Add restaurant',
+                    _QuietAddAction(
+                      label: 'Add restaurant',
                       onTap: _pickRestaurant,
-                      icon: Icons.restaurant_rounded,
                     ),
-                    const SizedBox(height: 28),
+                    const SizedBox(height: CsSpacing.xl),
                   ],
 
-                  const SectionLabel('NOTES (OPTIONAL)'),
-                  const SizedBox(height: 12),
+                  const TripSectionLabel('NOTES'),
+                  const SizedBox(height: CsSpacing.sm),
                   TextField(
                     controller: _notesCtrl,
-                    style: GoogleFonts.inter(
-                      color: AppColors.textPrimary,
-                      fontSize: 14,
-                      height: 1.5,
+                    style: CsTypography.body.copyWith(
+                      color: AppColors.textOnDark,
                     ),
                     maxLines: 3,
                     minLines: 2,
-                    decoration: InputDecoration(
-                      hintText: 'Anything to remember for this trip…',
-                      hintStyle: GoogleFonts.inter(
-                        color: AppColors.textSecondary,
-                        fontSize: 14,
-                        height: 1.5,
-                      ),
+                    decoration: _underlineDecoration(
+                      'Anything to remember for this trip…',
                     ),
                   ),
 
@@ -468,11 +463,15 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                           ),
                   ),
 
-                  const SizedBox(height: 28),
-                  SaveButton(
-                    saving: _saving,
-                    label: _isEditing ? 'Save changes' : 'Create trip',
-                    onTap: _save,
+                  const SizedBox(height: CsSpacing.xl),
+                  SizedBox(
+                    width: double.infinity,
+                    child: CsPrimaryButton(
+                      label: _isEditing ? 'Save changes' : 'Create trip',
+                      onTap: _save,
+                      loading: _saving,
+                      surface: CsSurface.dark,
+                    ),
                   ),
                 ],
               ),
@@ -484,16 +483,56 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
   }
 }
 
-/// Empty-state tap target for "Add hotel"/"Add restaurant" — opens the
-/// matching picker sheet. Shared shape with [_SelectedVenueRow] below so
-/// the section reads as one consistent control whether empty or filled.
-class _PickerTrigger extends StatelessWidget {
-  final String placeholder;
-  final IconData icon;
+/// A compact "belong together" trip-date control — Start and End share one
+/// bordered (not filled) row, separated by a small arrow, rather than two
+/// large independent cards. Deliberately outlined only, no ivory fill: a
+/// premium travel-planning form doesn't need every field to look like a
+/// white card.
+class _TripDateRangeRow extends StatelessWidget {
+  final DateTime startDate;
+  final DateTime endDate;
+  final VoidCallback onTapStart;
+  final VoidCallback onTapEnd;
+
+  const _TripDateRangeRow({
+    required this.startDate,
+    required this.endDate,
+    required this.onTapStart,
+    required this.onTapEnd,
+  });
+
+  @override
+  Widget build(BuildContext context) => DecoratedBox(
+    decoration: BoxDecoration(
+      border: Border.all(color: AppColors.textOnDark.withValues(alpha: 0.2)),
+      borderRadius: BorderRadius.circular(CsRadius.medium),
+    ),
+    child: Row(
+      children: [
+        Expanded(
+          child: _DateHalf(label: 'FROM', date: startDate, onTap: onTapStart),
+        ),
+        Icon(
+          Icons.arrow_forward_rounded,
+          size: 14,
+          color: AppColors.secondaryOnDark.withValues(alpha: 0.7),
+        ),
+        Expanded(
+          child: _DateHalf(label: 'TO', date: endDate, onTap: onTapEnd),
+        ),
+      ],
+    ),
+  );
+}
+
+class _DateHalf extends StatelessWidget {
+  final String label;
+  final DateTime date;
   final VoidCallback onTap;
-  const _PickerTrigger({
-    required this.placeholder,
-    required this.icon,
+
+  const _DateHalf({
+    required this.label,
+    required this.date,
     required this.onTap,
   });
 
@@ -502,31 +541,90 @@ class _PickerTrigger extends StatelessWidget {
     color: Colors.transparent,
     child: InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(18),
+      borderRadius: BorderRadius.circular(CsRadius.medium),
+      splashColor: AppColors.textOnDark.withValues(alpha: 0.06),
+      highlightColor: AppColors.textOnDark.withValues(alpha: 0.04),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: CsSpacing.md,
+          vertical: CsSpacing.sm,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              label,
+              style: CsTypography.eyebrow.copyWith(
+                color: AppColors.secondaryOnDark,
+                fontSize: 10.5,
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              _formatDate(date),
+              style: CsTypography.bodyMedium.copyWith(
+                color: AppColors.textOnDark,
+              ),
+            ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+const _monthNames = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
+
+String _formatDate(DateTime date) =>
+    '${date.day} ${_monthNames[date.month - 1]} ${date.year}';
+
+/// A slim bordered (not filled) tappable row — used for Country, where a
+/// picker sheet opens on tap. Outlined rather than an ivory-filled card,
+/// same restrained treatment as [_TripDateRangeRow].
+class _BorderedRow extends StatelessWidget {
+  final VoidCallback? onTap;
+  final Widget child;
+  const _BorderedRow({required this.onTap, required this.child});
+
+  @override
+  Widget build(BuildContext context) => Material(
+    color: Colors.transparent,
+    child: InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(CsRadius.medium),
+      splashColor: AppColors.textOnDark.withValues(alpha: 0.06),
+      highlightColor: AppColors.textOnDark.withValues(alpha: 0.04),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        padding: const EdgeInsets.symmetric(
+          horizontal: CsSpacing.base,
+          vertical: CsSpacing.md,
+        ),
         decoration: BoxDecoration(
-          color: AppColors.surface,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(color: AppColors.cardBorder, width: 0.5),
+          border: Border.all(
+            color: AppColors.textOnDark.withValues(alpha: 0.2),
+          ),
+          borderRadius: BorderRadius.circular(CsRadius.medium),
         ),
         child: Row(
           children: [
-            Icon(icon, color: AppColors.textSecondary, size: 18),
-            const SizedBox(width: 10),
-            Expanded(
-              child: Text(
-                placeholder,
-                style: GoogleFonts.inter(
-                  color: AppColors.textSecondary,
-                  fontSize: 15,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-            ),
+            Expanded(child: child),
             const Icon(
-              Icons.add_rounded,
-              color: AppColors.textSecondary,
+              Icons.chevron_right_rounded,
+              color: AppColors.secondaryOnDark,
               size: 20,
             ),
           ],
@@ -536,11 +634,38 @@ class _PickerTrigger extends StatelessWidget {
   );
 }
 
-/// A hotel or restaurant already picked for this trip — name/location plus
-/// an optional "Change" (hotel only, since a trip has at most one) and a
-/// "Remove" affordance. [onChange] omitted means no change action (used
-/// for restaurant rows, where "remove and add a different one" is the same
-/// number of taps as a dedicated change action would be).
+/// "Add hotel"/"Add restaurant" — a quiet secondary action, not a form
+/// field: a plain text row with a small gold "+", so Hotel/Restaurants
+/// read as something to enrich the trip with later, not something the
+/// trip is incomplete without.
+class _QuietAddAction extends StatelessWidget {
+  final String label;
+  final VoidCallback onTap;
+  const _QuietAddAction({required this.label, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => TextButton.icon(
+    onPressed: onTap,
+    icon: const Icon(Icons.add_rounded, size: 16, color: AppColors.gold),
+    label: Text(
+      label,
+      style: CsTypography.bodyMedium.copyWith(color: AppColors.gold),
+    ),
+    style: TextButton.styleFrom(
+      padding: EdgeInsets.zero,
+      minimumSize: const Size(0, 44),
+      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      alignment: Alignment.centerLeft,
+    ),
+  );
+}
+
+/// A hotel or restaurant already picked for this trip — a plain row, not a
+/// card: name/location plus an optional "Change" (hotel only, since a trip
+/// has at most one) and a "Remove" affordance. [onChange] omitted means no
+/// change action (used for restaurant rows, where "remove and add a
+/// different one" is the same number of taps as a dedicated change action
+/// would be).
 class _SelectedVenueRow extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -554,60 +679,48 @@ class _SelectedVenueRow extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.fromLTRB(16, 12, 8, 12),
-    decoration: BoxDecoration(
-      color: AppColors.surface,
-      borderRadius: BorderRadius.circular(18),
-      border: Border.all(color: AppColors.cardBorder, width: 0.5),
-    ),
-    child: Row(
-      children: [
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                title,
-                style: GoogleFonts.inter(
-                  color: AppColors.textPrimary,
-                  fontSize: 14.5,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-              const SizedBox(height: 2),
-              Text(
-                subtitle,
-                style: GoogleFonts.inter(
-                  color: AppColors.textSecondary,
-                  fontSize: 12.5,
-                ),
-              ),
-            ],
-          ),
-        ),
-        if (onChange != null)
-          TextButton(
-            onPressed: onChange,
-            child: Text(
-              'Change',
-              style: GoogleFonts.inter(
-                color: AppColors.gold,
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
+  Widget build(BuildContext context) => Row(
+    children: [
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              title,
+              style: CsTypography.bodyMedium.copyWith(
+                color: AppColors.textOnDark,
               ),
             ),
-          ),
-        IconButton(
-          onPressed: onRemove,
-          icon: const Icon(
-            Icons.close_rounded,
-            color: AppColors.textSecondary,
-            size: 18,
-          ),
-          tooltip: 'Remove',
+            const SizedBox(height: 2),
+            Text(
+              subtitle,
+              style: CsTypography.metadata.copyWith(
+                color: AppColors.secondaryOnDark,
+              ),
+            ),
+          ],
         ),
-      ],
-    ),
+      ),
+      if (onChange != null)
+        TextButton(
+          onPressed: onChange,
+          child: Text(
+            'Change',
+            style: CsTypography.metadata.copyWith(
+              color: AppColors.gold,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      IconButton(
+        onPressed: onRemove,
+        icon: const Icon(
+          Icons.close_rounded,
+          color: AppColors.secondaryOnDark,
+          size: 18,
+        ),
+        tooltip: 'Remove',
+      ),
+    ],
   );
 }

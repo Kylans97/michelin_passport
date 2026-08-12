@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
-import '../../../core/widgets/detail_hero.dart' show HeroIconButton;
+import '../../../core/widgets/editorial_back_button.dart';
 
 /// The shared shell every Guide catalogue screen sits on top of —
 /// deliberately presentation-only. It knows a catalogue has a source
@@ -17,11 +17,10 @@ import '../../../core/widgets/detail_hero.dart' show HeroIconButton;
 /// A real [Scaffold] (not a bare canvas) — this is pushed via
 /// [MaterialPageRoute] from [GuidesScreen], which has no enclosing
 /// Scaffold of its own to inherit (same reasoning as LoginScreen/
-/// SignupScreen in Step 4A). The back affordance reuses [HeroIconButton]
-/// verbatim — the same translucent-circle treatment already established
-/// by DetailHero and Sign up's back button — rather than a default
-/// Material AppBar, and a plain [MaterialPageRoute] push/pop keeps iOS
-/// edge-swipe-to-pop working with no extra wiring.
+/// SignupScreen in Step 4A). The back affordance is a small
+/// [EditorialBackButton] — fixed above the header rather than floating
+/// over it — never a default Material AppBar; a plain [MaterialPageRoute]
+/// push/pop keeps iOS edge-swipe-to-pop working with no extra wiring.
 ///
 /// Step 2B addition: when [content] is supplied, the header stops being
 /// part of the scroll view and becomes a fixed block, with [content] given
@@ -117,17 +116,21 @@ class GuideCatalogueLayout extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.deepGreen,
       body: SafeArea(
-        child: Stack(
+        child: Column(
           children: [
-            body,
-            Positioned(
-              left: CsSpacing.base,
-              top: CsSpacing.sm,
-              child: HeroIconButton(
-                icon: Icons.arrow_back_ios_new_rounded,
-                onTap: () => Navigator.maybePop(context),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                CsSpacing.base,
+                CsSpacing.xs,
+                CsSpacing.base,
+                0,
+              ),
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: EditorialBackButton(),
               ),
             ),
+            Expanded(child: body),
           ],
         ),
       ),

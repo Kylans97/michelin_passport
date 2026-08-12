@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/theme/app_typography.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/detail_hero.dart' show HeroIconButton;
+import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../models/passport_venue.dart';
 import '../../models/planned_trip.dart';
@@ -14,10 +16,12 @@ import 'widgets/create_trip_sheet.dart';
 import 'widgets/planned_venue_actions.dart';
 import 'widgets/planned_venue_row.dart';
 import 'widgets/trip_card.dart';
+import 'widgets/trip_eyebrow.dart';
 
 /// My Planned Trips: upcoming trips (with their venue counts) plus any
 /// planned restaurant visits/hotel stays that aren't attached to a trip —
-/// a trip is never required just to plan one restaurant.
+/// a trip is never required just to plan one restaurant. Dark editorial
+/// canvas — a personal planning surface, not a browsable catalogue.
 class PlannedTripsScreen extends StatefulWidget {
   const PlannedTripsScreen({super.key});
 
@@ -126,118 +130,202 @@ class _PlannedTripsScreenState extends State<PlannedTripsScreen> {
     }
 
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        elevation: 0,
-        foregroundColor: AppColors.textPrimary,
-        title: Text(
-          'My Planned Trips',
-          style: AppTypography.editorialHeading.copyWith(fontSize: 19),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add_rounded),
-            tooltip: 'Create trip',
-            onPressed: _createTrip,
-          ),
-        ],
-      ),
-      body: _loading
-          ? const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.gold,
-                strokeWidth: 1.5,
+      backgroundColor: AppColors.deepGreen,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                CsSpacing.base,
+                CsSpacing.sm,
+                CsSpacing.base,
+                0,
               ),
-            )
-          : _loadError
-          ? _ErrorState(onRetry: _load)
-          : RefreshIndicator(
-              color: AppColors.gold,
-              backgroundColor: AppColors.card,
-              onRefresh: _load,
-              child: (_trips.isEmpty && untripped.isEmpty)
-                  ? const _EmptyState()
-                  : ListView(
-                      padding: const EdgeInsets.fromLTRB(20, 8, 20, 40),
-                      children: [
-                        if (_trips.isNotEmpty) ...[
-                          Text('UPCOMING', style: AppTypography.sectionHeading),
-                          const SizedBox(height: 14),
-                          for (var i = 0; i < _trips.length; i++) ...[
-                            if (i > 0) const SizedBox(height: 12),
-                            TripCard(
-                              trip: _trips[i],
-                              restaurantCount: (byTrip[_trips[i].id] ?? [])
-                                  .where((v) => v.venue is RestaurantVenue)
-                                  .length,
-                              hotelCount: (byTrip[_trips[i].id] ?? [])
-                                  .where((v) => v.venue is HotelVenue)
-                                  .length,
-                              onTap: () => _openTrip(_trips[i]),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const EditorialBackButton(),
+                  Tooltip(
+                    message: 'Create trip',
+                    child: HeroIconButton(
+                      icon: Icons.add_rounded,
+                      onTap: _createTrip,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(
+                CsSpacing.pageHorizontal,
+                CsSpacing.xl,
+                CsSpacing.pageHorizontal,
+                0,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Trips',
+                    style: CsTypography.screenTitle.copyWith(
+                      color: AppColors.textOnDark,
+                    ),
+                  ),
+                  const SizedBox(height: CsSpacing.sm),
+                  Text(
+                    'Plan the places worth travelling for.',
+                    style: CsTypography.body.copyWith(
+                      color: AppColors.secondaryOnDark,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: CsSpacing.xl),
+            Expanded(
+              child: _loading
+                  ? const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.gold,
+                        strokeWidth: 1.5,
+                      ),
+                    )
+                  : _loadError
+                  ? _ErrorState(onRetry: _load)
+                  : RefreshIndicator(
+                      color: AppColors.gold,
+                      backgroundColor: AppColors.brandGreenLight,
+                      onRefresh: _load,
+                      child: (_trips.isEmpty && untripped.isEmpty)
+                          ? _EmptyState(onCreateTrip: _createTrip)
+                          : ListView(
+                              padding: const EdgeInsets.fromLTRB(
+                                CsSpacing.pageHorizontal,
+                                0,
+                                CsSpacing.pageHorizontal,
+                                CsSpacing.section,
+                              ),
+                              children: [
+                                if (_trips.isNotEmpty) ...[
+                                  const TripSectionLabel('UPCOMING'),
+                                  const SizedBox(height: CsSpacing.md),
+                                  for (var i = 0; i < _trips.length; i++) ...[
+                                    if (i > 0)
+                                      const SizedBox(height: CsSpacing.md),
+                                    TripCard(
+                                      trip: _trips[i],
+                                      restaurantCount:
+                                          (byTrip[_trips[i].id] ?? [])
+                                              .where(
+                                                (v) =>
+                                                    v.venue is RestaurantVenue,
+                                              )
+                                              .length,
+                                      hotelCount: (byTrip[_trips[i].id] ?? [])
+                                          .where((v) => v.venue is HotelVenue)
+                                          .length,
+                                      onTap: () => _openTrip(_trips[i]),
+                                    ),
+                                  ],
+                                ],
+                                if (_trips.isNotEmpty && untripped.isNotEmpty)
+                                  const SizedBox(height: CsSpacing.xxl),
+                                if (untripped.isNotEmpty) ...[
+                                  const TripSectionLabel('PLANNED VISITS'),
+                                  const SizedBox(height: CsSpacing.md),
+                                  for (
+                                    var i = 0;
+                                    i < untripped.length;
+                                    i++
+                                  ) ...[
+                                    if (i > 0)
+                                      const SizedBox(height: CsSpacing.sm),
+                                    PlannedVenueRow(
+                                      item: untripped[i],
+                                      onTap: () => _openVenue(untripped[i]),
+                                      onLongPress: () =>
+                                          _showVenueActions(untripped[i]),
+                                    ),
+                                  ],
+                                ],
+                              ],
                             ),
-                          ],
-                        ],
-                        if (_trips.isNotEmpty && untripped.isNotEmpty)
-                          const SizedBox(height: 32),
-                        if (untripped.isNotEmpty) ...[
-                          Text(
-                            'PLANNED VISITS',
-                            style: AppTypography.sectionHeading,
-                          ),
-                          const SizedBox(height: 14),
-                          for (var i = 0; i < untripped.length; i++) ...[
-                            if (i > 0) const SizedBox(height: 10),
-                            PlannedVenueRow(
-                              item: untripped[i],
-                              onTap: () => _openVenue(untripped[i]),
-                              onLongPress: () =>
-                                  _showVenueActions(untripped[i]),
-                            ),
-                          ],
-                        ],
-                      ],
                     ),
             ),
+          ],
+        ),
+      ),
     );
   }
 }
 
 class _EmptyState extends StatelessWidget {
-  const _EmptyState();
+  final VoidCallback onCreateTrip;
+  const _EmptyState({required this.onCreateTrip});
 
   @override
-  Widget build(BuildContext context) => Center(
-    child: Padding(
-      padding: const EdgeInsets.all(32),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(
-            Icons.card_travel_rounded,
-            color: AppColors.textSecondary,
-            size: 44,
-          ),
-          const SizedBox(height: 16),
-          Text(
-            'No trips planned yet',
-            style: GoogleFonts.playfairDisplay(
-              color: AppColors.textSecondary,
-              fontSize: 18,
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, constraints) => SingleChildScrollView(
+      physics: const AlwaysScrollableScrollPhysics(),
+      padding: const EdgeInsets.symmetric(horizontal: CsSpacing.pageHorizontal),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(minHeight: constraints.maxHeight),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: CsSpacing.xxl),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'No trips planned yet',
+                  textAlign: TextAlign.center,
+                  style: CsTypography.placeTitle.copyWith(
+                    color: AppColors.textOnDark,
+                    fontSize: 22,
+                  ),
+                ),
+                const SizedBox(height: CsSpacing.sm),
+                Text(
+                  'Start with a destination, then collect the places worth '
+                  'travelling for.',
+                  textAlign: TextAlign.center,
+                  style: CsTypography.body.copyWith(
+                    color: AppColors.secondaryOnDark,
+                  ),
+                ),
+                const SizedBox(height: CsSpacing.xl),
+                Semantics(
+                  button: true,
+                  label: 'Plan a trip',
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      onTap: onCreateTrip,
+                      borderRadius: BorderRadius.circular(CsRadius.pill),
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: CsSpacing.xl,
+                          vertical: CsSpacing.md,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.gold,
+                          borderRadius: BorderRadius.circular(CsRadius.pill),
+                        ),
+                        child: Text(
+                          'Plan a trip',
+                          style: CsTypography.bodyMedium.copyWith(
+                            color: Colors.black,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 8),
-          Text(
-            'Plan a visit from any restaurant or hotel, or create a trip '
-            'to group them together.',
-            textAlign: TextAlign.center,
-            style: GoogleFonts.inter(
-              color: AppColors.textSecondary,
-              fontSize: 13,
-              height: 1.5,
-            ),
-          ),
-        ],
+        ),
       ),
     ),
   );
@@ -254,18 +342,21 @@ class _ErrorState extends StatelessWidget {
       children: [
         const Icon(
           Icons.wifi_off_rounded,
-          color: AppColors.textSecondary,
+          color: AppColors.secondaryOnDark,
           size: 40,
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: CsSpacing.base),
         Text(
           'Could not load your trips',
-          style: GoogleFonts.inter(color: AppColors.textSecondary),
+          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
         ),
-        const SizedBox(height: 12),
+        const SizedBox(height: CsSpacing.md),
         TextButton(
           onPressed: onRetry,
-          child: Text('Retry', style: GoogleFonts.inter(color: AppColors.gold)),
+          child: Text(
+            'Retry',
+            style: CsTypography.bodyMedium.copyWith(color: AppColors.gold),
+          ),
         ),
       ],
     ),

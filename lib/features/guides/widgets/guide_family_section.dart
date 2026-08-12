@@ -6,12 +6,13 @@ import 'guide_destination_row.dart';
 
 /// One source family on the Guides landing page — "MICHELIN GUIDE",
 /// "THE WORLD'S 50 BEST", and later "GAULT&MILLAU" (see this class's own
-/// doc on why adding a third family needs no change here). A thin
-/// hairline under the family name, then its destinations with generous
-/// space between them — deliberately no divider between every row: a
-/// line under each destination would read as a settings list; one line
-/// under the family name, then open breathing room, reads as an editorial
-/// index instead.
+/// doc on why adding a third family needs no change here). The family
+/// name, then its destinations with generous space between them —
+/// hierarchy comes from spacing and typography alone (no hairline under
+/// the family name): a translucent-ivory divider over the deep-green
+/// canvas reads as a faint green line rather than a crisp rule, and the
+/// brief is explicit that this screen should rely on whitespace, not
+/// horizontal rules.
 ///
 /// [GuidesScreen] adds a third family later purely by adding another
 /// `GuideFamilySection(title: 'GAULT&MILLAU', destinations: [...])` to its
@@ -35,9 +36,7 @@ class GuideFamilySection extends StatelessWidget {
         title,
         style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
       ),
-      const SizedBox(height: CsSpacing.sm),
-      Container(height: 0.5, color: AppColors.subtleBorderDark),
-      const SizedBox(height: CsSpacing.lg),
+      const SizedBox(height: CsSpacing.xl),
       for (var i = 0; i < destinations.length; i++) ...[
         // ~12.5% less than CsSpacing.xl (24) per physical-device review —
         // Restaurants/Hotels should read as two destinations within ONE

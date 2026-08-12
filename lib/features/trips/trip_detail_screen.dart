@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/theme/app_typography.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
@@ -16,17 +18,20 @@ import '../events/event_detail_screen.dart';
 import '../events/widgets/event_card.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
-import '../restaurants/widgets/detail_section.dart';
 import 'widgets/create_trip_sheet.dart';
 import 'widgets/hotel_picker_sheet.dart';
 import 'widgets/planned_venue_actions.dart';
 import 'widgets/planned_venue_row.dart';
 import 'widgets/restaurant_picker_sheet.dart';
 import 'widgets/trip_card.dart' show formatTripDateRange;
+import 'widgets/trip_eyebrow.dart';
 
 /// A single trip: destination, dates, notes, and every planned restaurant/
 /// hotel attached to it. Editing/deleting the trip and each planned venue
-/// all live here.
+/// all live here — the most-used Trips screen, so it carries the full dark
+/// editorial canvas: a typography-led destination header, then STAY,
+/// DINING and WHAT'S ON as quiet, spacious sections rather than boxed
+/// cards.
 class TripDetailScreen extends StatefulWidget {
   final PlannedTrip trip;
   const TripDetailScreen({super.key, required this.trip});
@@ -122,12 +127,13 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: AppColors.card,
+        backgroundColor: AppColors.brandGreenLight,
         title: Text(
           'Delete this trip?',
-          style: GoogleFonts.playfairDisplay(
-            color: AppColors.textPrimary,
-            fontSize: 18,
+          style: GoogleFonts.cormorantGaramond(
+            color: AppColors.textOnDark,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
           ),
         ),
         content: Text(
@@ -137,7 +143,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                     'planned ${_venues.length == 1 ? 'venue' : 'venues'} will '
                     'NOT be deleted — they\'ll just no longer belong to a trip.',
           style: GoogleFonts.inter(
-            color: AppColors.textSecondary,
+            color: AppColors.secondaryOnDark,
             fontSize: 14,
             height: 1.5,
           ),
@@ -147,7 +153,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
             onPressed: () => Navigator.pop(context, false),
             child: Text(
               'Cancel',
-              style: GoogleFonts.inter(color: AppColors.textSecondary),
+              style: GoogleFonts.inter(color: AppColors.secondaryOnDark),
             ),
           ),
           TextButton(
@@ -276,19 +282,20 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: AppColors.card,
+        backgroundColor: AppColors.brandGreenLight,
         title: Text(
           isHotel ? 'Remove this hotel?' : 'Remove this restaurant?',
-          style: GoogleFonts.playfairDisplay(
-            color: AppColors.textPrimary,
-            fontSize: 18,
+          style: GoogleFonts.cormorantGaramond(
+            color: AppColors.textOnDark,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
           ),
         ),
         content: Text(
           'This only removes it from the trip — nothing is deleted from '
           'the catalogue.',
           style: GoogleFonts.inter(
-            color: AppColors.textSecondary,
+            color: AppColors.secondaryOnDark,
             fontSize: 14,
             height: 1.5,
           ),
@@ -298,7 +305,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
             onPressed: () => Navigator.pop(context, false),
             child: Text(
               'Cancel',
-              style: GoogleFonts.inter(color: AppColors.textSecondary),
+              style: GoogleFonts.inter(color: AppColors.secondaryOnDark),
             ),
           ),
           TextButton(
@@ -333,80 +340,130 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
         .where((v) => v.venue is RestaurantVenue)
         .toList();
     final hotels = _venues.where((v) => v.venue is HotelVenue).toList();
+    final hasCity = _trip.city != null && _trip.city!.isNotEmpty;
+    final hasNotes = _trip.notes != null && _trip.notes!.isNotEmpty;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.deepGreen,
       body: Column(
         children: [
-          DecoratedBox(
-            decoration: const BoxDecoration(color: AppColors.brandGreen),
-            child: SafeArea(
-              bottom: false,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(12, 4, 12, 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                          icon: const Icon(
-                            Icons.arrow_back_ios_new_rounded,
+          SafeArea(
+            bottom: false,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                CsSpacing.base,
+                CsSpacing.sm,
+                CsSpacing.base,
+                CsSpacing.xl,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const EditorialBackButton(),
+                      PopupMenuButton<String>(
+                        tooltip: 'Trip actions',
+                        color: AppColors.brandGreenLight,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(CsRadius.medium),
+                        ),
+                        icon: Container(
+                          padding: const EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.24),
+                            shape: BoxShape.circle,
+                          ),
+                          child: const Icon(
+                            Icons.more_horiz_rounded,
                             color: AppColors.textOnDark,
                             size: 18,
                           ),
-                          onPressed: () => Navigator.maybePop(context),
                         ),
-                        Row(
-                          children: [
-                            IconButton(
-                              icon: const Icon(
-                                Icons.edit_outlined,
-                                color: AppColors.textOnDark,
-                              ),
-                              tooltip: 'Edit trip',
-                              onPressed: _editTrip,
-                            ),
-                            IconButton(
-                              icon: const Icon(
-                                Icons.delete_outline_rounded,
-                                color: AppColors.textOnDark,
-                              ),
-                              tooltip: 'Delete trip',
-                              onPressed: _deleteTrip,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            _trip.title,
-                            style: AppTypography.display.copyWith(
-                              color: AppColors.textOnDark,
-                              fontSize: 26,
+                        onSelected: (value) {
+                          if (value == 'edit') _editTrip();
+                          if (value == 'delete') _deleteTrip();
+                        },
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            value: 'edit',
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.edit_outlined,
+                                  color: AppColors.textOnDark,
+                                  size: 18,
+                                ),
+                                const SizedBox(width: CsSpacing.sm),
+                                Text(
+                                  'Edit trip',
+                                  style: GoogleFonts.inter(
+                                    color: AppColors.textOnDark,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                          const SizedBox(height: 6),
-                          Text(
-                            formatTripDateRange(_trip),
-                            style: AppTypography.metadata.copyWith(
-                              color: AppColors.textOnDark.withValues(
-                                alpha: 0.75,
-                              ),
+                          PopupMenuItem(
+                            value: 'delete',
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.delete_outline_rounded,
+                                  color: AppColors.error,
+                                  size: 18,
+                                ),
+                                const SizedBox(width: CsSpacing.sm),
+                                Text(
+                                  'Delete trip',
+                                  style: GoogleFonts.inter(
+                                    color: AppColors.error,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
+                    ],
+                  ),
+                  const SizedBox(height: CsSpacing.xl),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: CsSpacing.sm,
                     ),
-                  ],
-                ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const TripSectionLabel('YOUR TRIP'),
+                        const SizedBox(height: CsSpacing.xs),
+                        Text(
+                          _trip.title,
+                          style: CsTypography.screenTitle.copyWith(
+                            color: AppColors.textOnDark,
+                          ),
+                        ),
+                        const SizedBox(height: CsSpacing.sm),
+                        Text(
+                          formatTripDateRange(_trip),
+                          style: CsTypography.metadata.copyWith(
+                            color: AppColors.secondaryOnDark,
+                          ),
+                        ),
+                        if (hasCity) ...[
+                          const SizedBox(height: 2),
+                          Text(
+                            _trip.city!,
+                            style: CsTypography.metadata.copyWith(
+                              color: AppColors.secondaryOnDark,
+                            ),
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -419,83 +476,67 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                     ),
                   )
                 : ListView(
-                    padding: const EdgeInsets.fromLTRB(20, 24, 20, 40),
+                    padding: const EdgeInsets.fromLTRB(
+                      CsSpacing.pageHorizontal,
+                      0,
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.section,
+                    ),
                     children: [
-                      if (_trip.city != null && _trip.city!.isNotEmpty ||
-                          _trip.notes != null && _trip.notes!.isNotEmpty)
-                        DetailCard(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              if (_trip.city != null && _trip.city!.isNotEmpty)
-                                Row(
-                                  children: [
-                                    const Icon(
-                                      Icons.location_city_rounded,
-                                      color: AppColors.textSecondary,
-                                      size: 16,
-                                    ),
-                                    const SizedBox(width: 10),
-                                    Text(
-                                      _trip.city!,
-                                      style: GoogleFonts.inter(
-                                        color: AppColors.textSecondary,
-                                        fontSize: 14,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              if (_trip.notes != null &&
-                                  _trip.notes!.isNotEmpty) ...[
-                                if (_trip.city != null &&
-                                    _trip.city!.isNotEmpty)
-                                  const SizedBox(height: 12),
-                                Text(
-                                  _trip.notes!,
-                                  style: GoogleFonts.inter(
-                                    color: AppColors.textPrimary,
-                                    fontSize: 14,
-                                    height: 1.5,
-                                  ),
-                                ),
-                              ],
-                            ],
+                      // Kept visually quiet when absent (omitted outright)
+                      // rather than showing an empty-state block — a trip
+                      // with no notes shouldn't look "broken".
+                      if (hasNotes) ...[
+                        const TripSectionLabel('NOTES'),
+                        const SizedBox(height: CsSpacing.sm),
+                        Text(
+                          _trip.notes!,
+                          style: CsTypography.body.copyWith(
+                            color: AppColors.textOnDark,
                           ),
                         ),
-
-                      // Kept visually quiet when empty (omitted outright,
-                      // per the task's explicit instruction) rather than
-                      // showing an empty-state block — a trip with no
-                      // matching events shouldn't look "broken".
-                      if (_matchingEvents.isNotEmpty) ...[
-                        const SizedBox(height: 28),
-                        const SectionLabel('CULINARY EVENTS DURING YOUR TRIP'),
-                        const SizedBox(height: 12),
-                        for (var i = 0; i < _matchingEvents.length; i++) ...[
-                          if (i > 0) const SizedBox(height: 10),
-                          EventCard(
-                            event: _matchingEvents[i],
-                            onTap: () => _openEvent(_matchingEvents[i]),
-                          ),
-                        ],
+                        const SizedBox(height: CsSpacing.xxl),
                       ],
-                      const SizedBox(height: 28),
 
                       _SectionHeaderRow(
                         label:
-                            'RESTAURANTS'
+                            'STAY'
+                            '${hotels.isNotEmpty ? ' (${hotels.length})' : ''}',
+                        actionLabel: hotels.isEmpty ? 'Add' : 'Change',
+                        onAction: () => _addOrChangeHotel(hotels),
+                      ),
+                      const SizedBox(height: CsSpacing.md),
+                      if (hotels.isEmpty)
+                        _EmptySlot(
+                          message: 'No hotel planned for this trip yet.',
+                        )
+                      else
+                        for (var i = 0; i < hotels.length; i++) ...[
+                          if (i > 0) const SizedBox(height: CsSpacing.sm),
+                          _RemovableVenueRow(
+                            item: hotels[i],
+                            onTap: () => _openVenue(hotels[i]),
+                            onLongPress: () => _showVenueActions(hotels[i]),
+                            onRemove: () => _removeVenue(hotels[i]),
+                          ),
+                        ],
+                      const SizedBox(height: CsSpacing.xxl),
+
+                      _SectionHeaderRow(
+                        label:
+                            'DINING'
                             '${restaurants.isNotEmpty ? ' (${restaurants.length})' : ''}',
                         actionLabel: 'Add',
                         onAction: () => _addRestaurant(restaurants),
                       ),
-                      const SizedBox(height: 12),
+                      const SizedBox(height: CsSpacing.md),
                       if (restaurants.isEmpty)
                         _EmptySlot(
                           message: 'No restaurants planned for this trip yet.',
                         )
                       else
                         for (var i = 0; i < restaurants.length; i++) ...[
-                          if (i > 0) const SizedBox(height: 10),
+                          if (i > 0) const SizedBox(height: CsSpacing.sm),
                           _RemovableVenueRow(
                             item: restaurants[i],
                             onTap: () => _openVenue(restaurants[i]),
@@ -504,30 +545,23 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                             onRemove: () => _removeVenue(restaurants[i]),
                           ),
                         ],
-                      const SizedBox(height: 28),
 
-                      _SectionHeaderRow(
-                        label:
-                            'HOTEL'
-                            '${hotels.isNotEmpty ? ' (${hotels.length})' : ''}',
-                        actionLabel: hotels.isEmpty ? 'Add' : 'Change',
-                        onAction: () => _addOrChangeHotel(hotels),
-                      ),
-                      const SizedBox(height: 12),
-                      if (hotels.isEmpty)
-                        _EmptySlot(
-                          message: 'No hotel planned for this trip yet.',
-                        )
-                      else
-                        for (var i = 0; i < hotels.length; i++) ...[
-                          if (i > 0) const SizedBox(height: 10),
-                          _RemovableVenueRow(
-                            item: hotels[i],
-                            onTap: () => _openVenue(hotels[i]),
-                            onLongPress: () => _showVenueActions(hotels[i]),
-                            onRemove: () => _removeVenue(hotels[i]),
+                      // Kept visually quiet when empty (omitted outright,
+                      // per the task's explicit instruction) rather than
+                      // showing an empty-state block — a trip with no
+                      // matching events shouldn't look "broken".
+                      if (_matchingEvents.isNotEmpty) ...[
+                        const SizedBox(height: CsSpacing.xxl),
+                        const TripSectionLabel("WHAT'S ON"),
+                        const SizedBox(height: CsSpacing.md),
+                        for (var i = 0; i < _matchingEvents.length; i++) ...[
+                          if (i > 0) const SizedBox(height: CsSpacing.sm),
+                          EventCard(
+                            event: _matchingEvents[i],
+                            onTap: () => _openEvent(_matchingEvents[i]),
                           ),
                         ],
+                      ],
                     ],
                   ),
           ),
@@ -546,16 +580,19 @@ class _EmptySlot extends StatelessWidget {
     padding: const EdgeInsets.symmetric(vertical: 4),
     child: Text(
       message,
-      style: GoogleFonts.inter(color: AppColors.textSecondary, fontSize: 13),
+      style: CsTypography.body.copyWith(
+        color: AppColors.secondaryOnDark,
+        fontSize: 13,
+      ),
     ),
   );
 }
 
-/// A section label ("RESTAURANTS (2)") plus an explicit "Add"/"Change"
-/// action — the incremental-editing entry point this task adds, so
-/// building a trip's itinerary after creation is exactly as available as
-/// doing it during creation (see Create Trip's own hotel/restaurant
-/// pickers, which write to the same planned_venues shape).
+/// A section label ("DINING (2)") plus an explicit "Add"/"Change" action —
+/// the incremental-editing entry point this task adds, so building a
+/// trip's itinerary after creation is exactly as available as doing it
+/// during creation (see Create Trip's own hotel/restaurant pickers, which
+/// write to the same planned_venues shape).
 class _SectionHeaderRow extends StatelessWidget {
   final String label;
   final String actionLabel;
@@ -570,7 +607,7 @@ class _SectionHeaderRow extends StatelessWidget {
   Widget build(BuildContext context) => Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      SectionLabel(label),
+      TripSectionLabel(label),
       TextButton.icon(
         onPressed: onAction,
         icon: const Icon(Icons.add_rounded, size: 16),
@@ -617,7 +654,7 @@ class _RemovableVenueRow extends StatelessWidget {
         onPressed: onRemove,
         icon: const Icon(
           Icons.remove_circle_outline_rounded,
-          color: AppColors.textSecondary,
+          color: AppColors.secondaryOnDark,
           size: 20,
         ),
         tooltip: 'Remove',

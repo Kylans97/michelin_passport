@@ -150,6 +150,52 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
+    testWidgets(
+      'renders no divider/hairline under the family title (spacing-only '
+      'hierarchy, TRIPS+GUIDES MICRO-POLISH)',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            GuideFamilySection(
+              title: 'MICHELIN GUIDE',
+              destinations: [
+                GuideDestinationRow(
+                  label: 'Restaurants',
+                  descriptor: 'x',
+                  onTap: () {},
+                ),
+                GuideDestinationRow(
+                  label: 'Hotels',
+                  descriptor: 'y',
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+        );
+        expect(find.byType(Divider), findsNothing);
+        // GuideFamilySection itself contributes no Container/DecoratedBox at
+        // all — every Container found here belongs to GuideDestinationRow's
+        // own InkWell/Padding machinery, none of which paints a border. The
+        // stronger, decoration-level assertion below is the one that would
+        // actually have caught the original bug (a bordered/colored
+        // Container standing in for a hairline).
+        for (final element in tester.widgetList<Container>(
+          find.byType(Container),
+        )) {
+          expect(element.decoration, isNull);
+        }
+        for (final element in tester.widgetList<DecoratedBox>(
+          find.byType(DecoratedBox),
+        )) {
+          final decoration = element.decoration;
+          if (decoration is BoxDecoration) {
+            expect(decoration.border, isNull);
+          }
+        }
+      },
+    );
+
     testWidgets('long family title ("THE WORLD\'S 50 BEST") at 320px does '
         'not overflow', (tester) async {
       await tester.pumpWidget(

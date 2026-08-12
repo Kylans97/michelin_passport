@@ -21,7 +21,7 @@ Future<bool> showPlannedVenueActions(
 }) async {
   final action = await showModalBottomSheet<String>(
     context: context,
-    backgroundColor: AppColors.card,
+    backgroundColor: AppColors.brandGreenLight,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),
@@ -34,18 +34,24 @@ Future<bool> showPlannedVenueActions(
           ListTile(
             leading: const Icon(
               Icons.edit_outlined,
-              color: AppColors.textPrimary,
+              color: AppColors.textOnDark,
             ),
-            title: Text('Edit plan', style: GoogleFonts.inter()),
+            title: Text(
+              'Edit plan',
+              style: GoogleFonts.inter(color: AppColors.textOnDark),
+            ),
             onTap: () => Navigator.pop(context, 'edit'),
           ),
           if (item.plan.status == PlannedVenueStatus.planned)
             ListTile(
               leading: const Icon(
                 Icons.cancel_outlined,
-                color: AppColors.textSecondary,
+                color: AppColors.secondaryOnDark,
               ),
-              title: Text('Cancel plan', style: GoogleFonts.inter()),
+              title: Text(
+                'Cancel plan',
+                style: GoogleFonts.inter(color: AppColors.textOnDark),
+              ),
               onTap: () => Navigator.pop(context, 'cancel'),
             ),
           ListTile(
@@ -93,19 +99,20 @@ Future<bool> showPlannedVenueActions(
       final confirmed = await showDialog<bool>(
         context: context,
         builder: (context) => AlertDialog(
-          backgroundColor: AppColors.card,
+          backgroundColor: AppColors.brandGreenLight,
           title: Text(
             'Delete this plan?',
-            style: GoogleFonts.playfairDisplay(
-              color: AppColors.textPrimary,
-              fontSize: 18,
+            style: GoogleFonts.cormorantGaramond(
+              color: AppColors.textOnDark,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
             ),
           ),
           content: Text(
             'This removes the planned visit/stay only — the venue itself '
             'is never affected.',
             style: GoogleFonts.inter(
-              color: AppColors.textSecondary,
+              color: AppColors.secondaryOnDark,
               fontSize: 14,
             ),
           ),
@@ -114,7 +121,7 @@ Future<bool> showPlannedVenueActions(
               onPressed: () => Navigator.pop(context, false),
               child: Text(
                 'Cancel',
-                style: GoogleFonts.inter(color: AppColors.textSecondary),
+                style: GoogleFonts.inter(color: AppColors.secondaryOnDark),
               ),
             ),
             TextButton(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/theme/app_typography.dart';
+import '../../../core/theme/cs_spacing.dart';
+import '../../../core/theme/cs_typography.dart';
 import '../../../models/planned_trip.dart';
 
 const _monthNames = [
@@ -35,7 +35,11 @@ String formatTripDateRange(PlannedTrip trip) {
 
 /// One trip in "UPCOMING" — title, date range, and a compact
 /// restaurants/hotels count line resolved by the caller (see
-/// PlannedTripsScreen, which groups ResolvedPlannedVenue by trip_id).
+/// PlannedTripsScreen, which groups ResolvedPlannedVenue by trip_id). A
+/// dark editorial card — quiet elevated surface on the deep-green canvas,
+/// rather than the light ivory card the rest of the app still uses —
+/// matching the same "card floating on dark canvas" language Explore's
+/// discovery cards already established.
 class TripCard extends StatelessWidget {
   final PlannedTrip trip;
   final int restaurantCount;
@@ -60,52 +64,64 @@ class TripCard extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(18),
-      child: Container(
-        width: double.infinity,
-        padding: const EdgeInsets.all(18),
-        decoration: BoxDecoration(
-          color: AppColors.card,
-          borderRadius: BorderRadius.circular(18),
-          border: Border.all(
-            color: AppColors.cardBorder.withValues(alpha: 0.55),
-            width: 0.5,
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: '${trip.title}. ${formatTripDateRange(trip)}. $_countsLine',
+    child: Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(CsRadius.card),
+        splashColor: AppColors.textOnDark.withValues(alpha: 0.06),
+        highlightColor: AppColors.textOnDark.withValues(alpha: 0.04),
+        child: Container(
+          width: double.infinity,
+          padding: const EdgeInsets.all(CsSpacing.cardPadding),
+          decoration: BoxDecoration(
+            color: AppColors.brandGreenLight,
+            borderRadius: BorderRadius.circular(CsRadius.card),
+            border: Border.all(color: AppColors.subtleBorderDark, width: 0.5),
           ),
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(trip.title, style: AppTypography.editorialHeading),
-                  const SizedBox(height: 4),
-                  Text(
-                    formatTripDateRange(trip),
-                    style: AppTypography.metadata,
-                  ),
-                  const SizedBox(height: 6),
-                  Text(
-                    _countsLine,
-                    style: GoogleFonts.inter(
-                      color: AppColors.textSecondary,
-                      fontSize: 12.5,
-                      fontWeight: FontWeight.w500,
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      trip.title,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: CsTypography.placeTitle.copyWith(
+                        color: AppColors.textOnDark,
+                      ),
                     ),
-                  ),
-                ],
+                    const SizedBox(height: CsSpacing.xs),
+                    Text(
+                      formatTripDateRange(trip),
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.secondaryOnDark,
+                      ),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      _countsLine,
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.gold,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            const Icon(
-              Icons.chevron_right_rounded,
-              color: AppColors.textSecondary,
-              size: 22,
-            ),
-          ],
+              const SizedBox(width: CsSpacing.sm),
+              const Icon(
+                Icons.chevron_right_rounded,
+                color: AppColors.secondaryOnDark,
+                size: 22,
+              ),
+            ],
+          ),
         ),
       ),
     ),
