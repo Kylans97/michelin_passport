@@ -4,6 +4,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import 'fifty_best_hotel_guide_screen.dart';
 import 'fifty_best_restaurant_guide_screen.dart';
+import 'gault_millau_restaurant_guide_screen.dart';
 import 'michelin_hotel_guide_screen.dart';
 import 'michelin_restaurant_guide_screen.dart';
 import 'widgets/guide_destination_row.dart';
@@ -11,12 +12,15 @@ import 'widgets/guide_family_section.dart';
 
 /// Guides — "Help me find something." The structured, reference-driven
 /// counterpart to Explore's editorial "Inspire me." An editorial index of
-/// the guide families Chasing Stars currently has real data for
-/// (Michelin, The World's 50 Best) — never a settings menu, never a grid
-/// of generic buttons, and never a family the app can't yet back with
-/// real content (see the deliberate absence of Gault&Millau — Guides Step
-/// 1's audit confirmed there is no such data today, and none is faked
-/// here).
+/// the guide families Chasing Stars currently has real data for (Michelin,
+/// The World's 50 Best, Gault&Millau) — never a settings menu, never a grid
+/// of generic buttons, and never a family the app can't yet back with real
+/// content. Gault&Millau (Step 2D) has exactly one destination,
+/// Restaurants — no Hotels entry, since production's Gault&Millau data is
+/// restaurant-only (see the Step 2D data audit). Germany remains deferred
+/// and is never shown, even as a placeholder — see
+/// RestaurantGaultMillauRepository.getCountries, which derives its country
+/// list from data actually present, not a hardcoded launch-market list.
 ///
 /// A bare canvas (no [Scaffold] of its own), matching Passport/Explore's
 /// pattern rather than Login/Sign up's: this screen is built to live
@@ -84,6 +88,21 @@ class GuidesScreen extends StatelessWidget {
                     descriptor: "The world's most remarkable stays.",
                     onTap: () =>
                         _open(context, const FiftyBestHotelGuideScreen()),
+                  ),
+                ],
+              ),
+              const SizedBox(height: CsSpacing.section),
+              GuideFamilySection(
+                title: 'GAULT&MILLAU',
+                destinations: [
+                  GuideDestinationRow(
+                    label: 'Restaurants',
+                    descriptor:
+                        'Distinctive restaurants recognised by Gault&Millau.',
+                    onTap: () => _open(
+                      context,
+                      const GaultMillauRestaurantGuideScreen(),
+                    ),
                   ),
                 ],
               ),

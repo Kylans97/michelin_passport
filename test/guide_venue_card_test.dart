@@ -6,8 +6,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/widgets/key_row.dart';
 import 'package:michelin_passport/core/widgets/star_row.dart';
+import 'package:michelin_passport/features/guides/widgets/guide_gault_millau_mark.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_rank_mark.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_venue_card.dart';
+import 'package:michelin_passport/models/gault_millau_award.dart';
 
 Widget _wrap(Widget child, {double width = 390}) => MaterialApp(
   home: Scaffold(
@@ -228,6 +230,85 @@ void main() {
           ),
         ),
       );
+      expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('GuideVenueCard with GuideGaultMillauMark (Step 2D)', () {
+    testWidgets('renders a Gault&Millau distinction with no leading mark, '
+        'Michelin/50 Best unaffected by the addition', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          GuideVenueCard(
+            title: 'Comme chez Soi',
+            locationLabel: 'Brussels, Belgium',
+            distinction: GuideGaultMillauMark(
+              award: const GaultMillauAward(
+                restaurantId: 'r1',
+                guideYear: 2026,
+                score: 18,
+                toqueCount: 4,
+              ),
+            ),
+            onTap: () {},
+          ),
+        ),
+      );
+      expect(find.text('Comme chez Soi'), findsOneWidget);
+      expect(find.text('18/20 · 4 Toques'), findsOneWidget);
+      expect(find.byType(GuideRankMark), findsNothing);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('a long name with a combined score+toque distinction at '
+        '320px does not overflow', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          GuideVenueCard(
+            title:
+                'A Deliberately Extremely Long Restaurant Name Used To '
+                'Confirm This Card Never Overflows At A Narrow Width',
+            locationLabel:
+                'A Deliberately Long City Name, A Deliberately '
+                'Long Country Name',
+            distinction: GuideGaultMillauMark(
+              award: const GaultMillauAward(
+                restaurantId: 'r1',
+                guideYear: 2026,
+                score: 19.5,
+                toqueCount: 5,
+                toqueColour: 'red',
+              ),
+            ),
+            onTap: () {},
+          ),
+          width: 320,
+        ),
+      );
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('an unscored distinction label renders truthfully, never a '
+        'fabricated score', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          GuideVenueCard(
+            title: 'A Belgian Bistro',
+            locationLabel: 'Ghent, Belgium',
+            distinction: GuideGaultMillauMark(
+              award: const GaultMillauAward(
+                restaurantId: 'r1',
+                guideYear: 2026,
+                recognitionType: GaultMillauRecognitionType.unscoredCasual,
+                distinctionLabel: 'H!P',
+              ),
+            ),
+            onTap: () {},
+          ),
+        ),
+      );
+      expect(find.text('H!P'), findsOneWidget);
+      expect(find.textContaining('/20'), findsNothing);
       expect(tester.takeException(), isNull);
     });
   });

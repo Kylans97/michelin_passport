@@ -2,11 +2,12 @@
 // directly — like Passport/Explore, it has no Scaffold of its own and it
 // constructs no repository and touches no Supabase itself, so it needs
 // only a Scaffold ancestor for Material widgets (InkWell etc.) to resolve.
-// As of Step 2C, ALL FOUR of its destinations (Michelin Restaurants/
-// Hotels, Step 2B; World's 50 Best Restaurants/Hotels, Step 2C) construct
-// a repository against Supabase.instance.client eagerly in their own
-// initState — see the note above the "destination routing" comment below
-// for why none of them are tapped through to completion here anymore.
+// As of Step 2D, ALL FIVE of its destinations (Michelin Restaurants/
+// Hotels, Step 2B; World's 50 Best Restaurants/Hotels, Step 2C;
+// Gault&Millau Restaurants, Step 2D) construct a repository against
+// Supabase.instance.client eagerly in their own initState — see the note
+// above the "destination routing" comment below for why none of them are
+// tapped through to completion here anymore.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -46,21 +47,32 @@ void main() {
         'Hotels destinations', (tester) async {
       await tester.pumpWidget(_wrap(const GuidesScreen()));
       expect(find.text("THE WORLD'S 50 BEST"), findsOneWidget);
-      // 'Restaurants'/'Hotels' each appear twice — once per family.
-      expect(find.text('Restaurants'), findsNWidgets(2));
+      // 'Hotels' appears twice total (Michelin + World's 50 Best — G&M has
+      // no Hotels destination); 'Restaurants' appears three times (all
+      // three families) — the Gault&Millau-specific test below confirms
+      // that count precisely.
       expect(find.text('Hotels'), findsNWidgets(2));
     });
 
-    testWidgets('shows no Gault&Millau family', (tester) async {
+    testWidgets('renders the Gault&Millau family with only a Restaurants '
+        'destination — no Hotels', (tester) async {
       await tester.pumpWidget(_wrap(const GuidesScreen()));
-      expect(find.textContaining('GAULT'), findsNothing);
-      expect(find.textContaining('Millau'), findsNothing);
+      expect(find.text('GAULT&MILLAU'), findsOneWidget);
+      expect(
+        find.text('Distinctive restaurants recognised by Gault&Millau.'),
+        findsOneWidget,
+      );
+      // 'Restaurants' now appears three times total (Michelin, World's 50
+      // Best, Gault&Millau) — confirming the third family's destination is
+      // actually present, not just its title.
+      expect(find.text('Restaurants'), findsNWidgets(3));
     });
 
     testWidgets('shows no fake venue/ranking content', (tester) async {
       await tester.pumpWidget(_wrap(const GuidesScreen()));
-      // No numbers, no venue names — only the four destination
-      // label/descriptor pairs and the two headers should be present.
+      // No numbers, no venue names — only the five destination
+      // label/descriptor pairs and the three family headers should be
+      // present.
       expect(find.textContaining('#'), findsNothing);
       expect(find.textContaining('★'), findsNothing);
     });
