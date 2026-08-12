@@ -1,12 +1,15 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/utils/username_rules.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_text_field.dart';
 import '../../core/widgets/detail_hero.dart' show HeroIconButton;
 import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/profile_repository.dart';
 import 'widgets/auth_presentation.dart';
 
 /// Sign up — the same entrance experience as [LoginScreen] (Step 4A),
@@ -25,8 +28,10 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   final _formKey = GlobalKey<FormState>();
   final _nameCtrl = TextEditingController();
+  final _usernameCtrl = TextEditingController();
   final _emailCtrl = TextEditingController();
   final _passCtrl = TextEditingController();
+  final _usernameFocus = FocusNode();
   final _emailFocus = FocusNode();
   final _passFocus = FocusNode();
   bool _loading = false;
@@ -34,15 +39,50 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _success = false;
 
   late final AuthRepository _auth = AuthRepository(Supabase.instance.client);
+  late final ProfileRepository _profiles = ProfileRepository(
+    Supabase.instance.client,
+  );
+
+  // Best-effort "is this taken?" hint while typing — debounced so it
+  // doesn't fire a request per keystroke. Never the actual authority: the
+  // DB constraint decides for real at submit time regardless of what this
+  // shows (see AuthRepository.signUp's own uniqueness-violation handling).
+  Timer? _availabilityDebounce;
+  bool? _usernameAvailable;
+  String? _usernameChecked;
 
   @override
   void dispose() {
+    _availabilityDebounce?.cancel();
     _nameCtrl.dispose();
+    _usernameCtrl.dispose();
     _emailCtrl.dispose();
     _passCtrl.dispose();
+    _usernameFocus.dispose();
     _emailFocus.dispose();
     _passFocus.dispose();
     super.dispose();
+  }
+
+  void _onUsernameChanged(String raw) {
+    _availabilityDebounce?.cancel();
+    setState(() => _usernameAvailable = null);
+    final normalized = UsernameRules.normalize(raw);
+    if (UsernameRules.validate(normalized) != null) return;
+    _availabilityDebounce = Timer(const Duration(milliseconds: 400), () async {
+      try {
+        final available = await _profiles.isUsernameAvailable(normalized);
+        if (mounted && _usernameCtrl.text.trim().toLowerCase() == normalized) {
+          setState(() {
+            _usernameAvailable = available;
+            _usernameChecked = normalized;
+          });
+        }
+      } catch (_) {
+        // Best-effort only — a failed check just means no hint is shown;
+        // the real constraint still applies at submit time.
+      }
+    });
   }
 
   Future<void> _submit() async {
@@ -57,6 +97,7 @@ class _SignupScreenState extends State<SignupScreen> {
         email: _emailCtrl.text.trim(),
         password: _passCtrl.text,
         displayName: _nameCtrl.text.trim(),
+        username: UsernameRules.normalize(_usernameCtrl.text),
       );
       // If email confirmation is enabled, tell the user to check their inbox.
       // If it's disabled, AuthGate will navigate automatically.
@@ -107,11 +148,43 @@ class _SignupScreenState extends State<SignupScreen> {
                             textCapitalization: TextCapitalization.words,
                             autofillHints: const [AutofillHints.name],
                             textInputAction: TextInputAction.next,
-                            onFieldSubmitted: (_) => _emailFocus.requestFocus(),
+                            onFieldSubmitted: (_) =>
+                                _usernameFocus.requestFocus(),
                             validator: (v) => (v == null || v.trim().isEmpty)
                                 ? 'Enter your name'
                                 : null,
                           ),
+                          const SizedBox(height: CsSpacing.lg),
+                          CsTextField(
+                            label: 'Username',
+                            controller: _usernameCtrl,
+                            focusNode: _usernameFocus,
+                            hintText: 'kylan.s',
+                            keyboardType: TextInputType.visiblePassword,
+                            textInputAction: TextInputAction.next,
+                            onFieldSubmitted: (_) => _emailFocus.requestFocus(),
+                            onChanged: _onUsernameChanged,
+                            validator: (v) => UsernameRules.validate(
+                              UsernameRules.normalize(v ?? ''),
+                            ),
+                          ),
+                          if (_usernameAvailable != null &&
+                              _usernameChecked ==
+                                  UsernameRules.normalize(
+                                    _usernameCtrl.text,
+                                  )) ...[
+                            const SizedBox(height: CsSpacing.xs),
+                            Text(
+                              _usernameAvailable!
+                                  ? 'Available'
+                                  : 'That username is already taken',
+                              style: CsTypography.metadata.copyWith(
+                                color: _usernameAvailable!
+                                    ? AppColors.secondaryOnDark
+                                    : AppColors.error,
+                              ),
+                            ),
+                          ],
                           const SizedBox(height: CsSpacing.lg),
                           CsTextField(
                             label: 'Email',

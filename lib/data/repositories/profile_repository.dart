@@ -21,44 +21,39 @@ class ProfileRepository {
       throw Exception('Profile not found for user $userId');
     }
 
-    // Query user_tiers view for the authoritative tier.
-    final tierRows = await _client
-        .from('user_tiers')
-        .select('tier, total_visits')
-        .eq('user_id', userId)
-        .limit(1);
-
-    final tierName = (tierRows as List).isNotEmpty
-        ? (tierRows.first['tier'] as String?) ?? 'Explorer'
-        : 'Explorer';
-
     return UserProfile.fromSupabase(
       profileRow: profileRows.first,
       visited: visited,
-      tierFromDb: tierName,
+      email: _client.auth.currentUser?.email ?? '',
     );
   }
 
-  // Returns the community tier distribution from the tier_stats view.
-  // Each entry: { tier: String, user_count: int }
-  Future<List<Map<String, dynamic>>> getCommunityStats() async {
-    final rows = await _client
-        .from('tier_stats')
-        .select('tier, user_count')
-        .order('tier_order');
-    return (rows as List).cast<Map<String, dynamic>>();
+  // Sets display name and/or username (whichever is passed). The
+  // database's profiles_username_format CHECK and profiles_username_key
+  // unique index remain the real authority — a caller should validate
+  // with UsernameRules first for UX, then be ready to catch a
+  // PostgrestException with code 23505 (taken) or 23514 (invalid format)
+  // from this call regardless.
+  Future<void> updateProfile({
+    required String userId,
+    String? displayName,
+    String? username,
+  }) async {
+    final payload = <String, dynamic>{};
+    if (displayName != null) payload['display_name'] = displayName;
+    if (username != null) payload['username'] = username;
+    if (payload.isEmpty) return;
+    await _client.from('profiles').update(payload).eq('id', userId);
   }
 
-  Future<void> updateDisplayName({
-    required String userId,
-    required String displayName,
-  }) async {
-    await _client
-        .from('profiles')
-        .update({
-          'display_name': displayName,
-          'updated_at': DateTime.now().toIso8601String(),
-        })
-        .eq('id', userId);
+  // Best-effort availability hint (debounced typing feedback) — not
+  // authoritative; a race between the check and the actual update is
+  // still possible and is still safely caught by the real DB constraint.
+  Future<bool> isUsernameAvailable(String candidate) async {
+    final result = await _client.rpc(
+      'username_available',
+      params: {'candidate': candidate},
+    );
+    return result as bool;
   }
 }

@@ -33,6 +33,12 @@ class CsTextField extends StatefulWidget {
   final String? Function(String?)? validator;
   final TextInputAction? textInputAction;
   final ValueChanged<String>? onFieldSubmitted;
+
+  /// Fires on every keystroke — optional; most callers only need
+  /// [validator] (checked on submit) or [onFieldSubmitted]. Added for
+  /// Sign up's username field, which needs live availability-hint
+  /// debouncing while the field is being typed into.
+  final ValueChanged<String>? onChanged;
   final FocusNode? focusNode;
   final CsSurface surface;
 
@@ -49,6 +55,7 @@ class CsTextField extends StatefulWidget {
     this.validator,
     this.textInputAction,
     this.onFieldSubmitted,
+    this.onChanged,
     this.focusNode,
     this.surface = CsSurface.dark,
   });
@@ -92,6 +99,7 @@ class _CsTextFieldState extends State<CsTextField> {
             validator: widget.validator,
             textInputAction: widget.textInputAction,
             onFieldSubmitted: widget.onFieldSubmitted,
+            onChanged: widget.onChanged,
             focusNode: widget.focusNode,
             style: CsTypography.body.copyWith(color: AppColors.charcoal),
             decoration: InputDecoration(

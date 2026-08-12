@@ -3,9 +3,22 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../data/repositories/friendship_repository.dart';
-import '../../data/repositories/trophy_repository.dart';
 import '../../models/friendship.dart';
 
+/// Incoming friend requests. Fixed to compile against Social Foundation
+/// Step 1's FriendshipRepository (getPendingRequests/declineOrRemove and
+/// Friendship.id/friendDisplayName no longer exist — see the migration
+/// and model rewrite) — this screen's entire feature set already WAS
+/// "pending friend requests, accept/decline inline," so the fix is a
+/// like-for-like API update, not new functionality. The trophy-awarding
+/// side effect on accept (`first_friend`/`friends_10`) is removed rather
+/// than fixed: `TrophyRepository.awardSocialTrophy` reads `trophies`/
+/// `user_trophies`, tables that don't exist in the live schema either
+/// (confirmed via the same live read-only audit that found `friendships`
+/// missing) — trophies are out of this task's scope entirely, not merely
+/// deferred, so this stops trying to call into that dead path rather than
+/// fixing it. Visual system (light/legacy) is intentionally untouched —
+/// out of this task's scope; only what was required to compile changed.
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
 
@@ -15,47 +28,29 @@ class NotificationsScreen extends StatefulWidget {
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
   late final FriendshipRepository _friendRepo;
-  late final TrophyRepository _trophyRepo;
-  final String _uid = Supabase.instance.client.auth.currentUser?.id ?? '';
 
-  late Future<List<Friendship>> _future;
+  late Future<List<FriendRequest>> _future;
 
   @override
   void initState() {
     super.initState();
     _friendRepo = FriendshipRepository(Supabase.instance.client);
-    _trophyRepo = TrophyRepository(Supabase.instance.client);
     _load();
   }
 
   void _load() {
     setState(() {
-      _future = _friendRepo.getPendingRequests(_uid);
+      _future = _friendRepo.getIncomingRequests();
     });
   }
 
-  Future<void> _accept(Friendship f) async {
-    await _friendRepo.acceptRequest(f.id);
-    // Check first_friend trophy.
-    final count = await _friendRepo.getFriendCount(_uid);
-    if (count == 1 && mounted) {
-      final trophy = await _trophyRepo.awardSocialTrophy(_uid, 'first_friend');
-      if (trophy != null && mounted) {
-        showDialog(
-          context: context,
-          builder: (_) => _TrophyMiniDialog(name: trophy.name),
-        );
-      }
-    }
-    // Check friends_10 trophy.
-    if (count == 10 && mounted) {
-      await _trophyRepo.awardSocialTrophy(_uid, 'friends_10');
-    }
+  Future<void> _accept(FriendRequest f) async {
+    await _friendRepo.acceptRequest(f.friendshipId);
     _load();
   }
 
-  Future<void> _decline(Friendship f) async {
-    await _friendRepo.declineOrRemove(f.id);
+  Future<void> _decline(FriendRequest f) async {
+    await _friendRepo.declineRequest(f.friendshipId);
     _load();
   }
 
@@ -67,7 +62,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         title: const Text('Notifications'),
         backgroundColor: AppColors.background,
       ),
-      body: FutureBuilder<List<Friendship>>(
+      body: FutureBuilder<List<FriendRequest>>(
         future: _future,
         builder: (context, snap) {
           if (snap.connectionState == ConnectionState.waiting) {
@@ -134,9 +129,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                       ),
                       alignment: Alignment.center,
                       child: Text(
-                        f.friendDisplayName.isNotEmpty
-                            ? f.friendDisplayName[0].toUpperCase()
-                            : '?',
+                        f.label.isNotEmpty ? f.label[0].toUpperCase() : '?',
                         style: GoogleFonts.playfairDisplay(
                           color: AppColors.gold,
                           fontSize: 18,
@@ -150,7 +143,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            f.friendDisplayName,
+                            f.label,
                             style: GoogleFonts.inter(
                               color: AppColors.textPrimary,
                               fontSize: 14,
@@ -218,47 +211,4 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       ),
     );
   }
-}
-
-class _TrophyMiniDialog extends StatelessWidget {
-  final String name;
-  const _TrophyMiniDialog({required this.name});
-
-  @override
-  Widget build(BuildContext context) => AlertDialog(
-    backgroundColor: AppColors.card,
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    content: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const Icon(Icons.emoji_events_rounded, color: AppColors.gold, size: 40),
-        const SizedBox(height: 12),
-        Text(
-          'Trophy earned!',
-          style: GoogleFonts.inter(
-            color: AppColors.gold,
-            fontSize: 12,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1.2,
-          ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          name,
-          textAlign: TextAlign.center,
-          style: GoogleFonts.playfairDisplay(
-            color: AppColors.textPrimary,
-            fontSize: 18,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ],
-    ),
-    actions: [
-      TextButton(
-        onPressed: () => Navigator.pop(context),
-        child: Text('Nice!', style: GoogleFonts.inter(color: AppColors.gold)),
-      ),
-    ],
-  );
 }

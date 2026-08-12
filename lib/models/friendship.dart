@@ -1,56 +1,86 @@
+/// An accepted friendship, from the current user's point of view — the
+/// shape `public.get_friends()` returns (see the Social Foundation Step 1
+/// migration). `friendId` is always "the other person," regardless of
+/// which side of the original request the current user was on; the RPC
+/// itself already resolves that orientation server-side.
 class Friendship {
-  final String id;
-  final String requesterId;
-  final String addresseeId;
-  final String status; // pending / accepted
-  final String friendDisplayName;
+  final String friendshipId;
   final String friendId;
-  final String? friendTier;
+  final String? username;
+  final String? displayName;
+  final String? avatarUrl;
 
   const Friendship({
-    required this.id,
-    required this.requesterId,
-    required this.addresseeId,
-    required this.status,
-    required this.friendDisplayName,
+    required this.friendshipId,
     required this.friendId,
-    this.friendTier,
+    this.username,
+    this.displayName,
+    this.avatarUrl,
   });
 
-  bool get isPending => status == 'pending';
-  bool get isAccepted => status == 'accepted';
+  factory Friendship.fromRow(Map<String, dynamic> row) => Friendship(
+    friendshipId: row['friendship_id'] as String,
+    friendId: row['friend_id'] as String,
+    username: row['username'] as String?,
+    displayName: row['display_name'] as String?,
+    avatarUrl: row['avatar_url'] as String?,
+  );
 
-  // Build from a friendships row where the current user is the requester.
-  factory Friendship.asRequester(
-    Map<String, dynamic> row,
-    String currentUserId,
-  ) {
-    final addressee = row['addressee'] as Map<String, dynamic>? ?? {};
-    return Friendship(
-      id: row['id'].toString(),
-      requesterId: currentUserId,
-      addresseeId: row['addressee_id'].toString(),
-      status: (row['status'] as String?) ?? 'pending',
-      friendDisplayName: (addressee['display_name'] as String?) ?? 'Unknown',
-      friendId: row['addressee_id'].toString(),
-      friendTier: addressee['tier'] as String?,
-    );
+  String get label {
+    final name = displayName?.trim();
+    if (name != null && name.isNotEmpty) return name;
+    if (username != null && username!.isNotEmpty) return '@$username';
+    return 'Chasing Stars member';
   }
+}
 
-  // Build from a friendships row where the current user is the addressee.
-  factory Friendship.asAddressee(
-    Map<String, dynamic> row,
-    String currentUserId,
-  ) {
-    final requester = row['requester'] as Map<String, dynamic>? ?? {};
-    return Friendship(
-      id: row['id'].toString(),
-      requesterId: row['requester_id'].toString(),
-      addresseeId: currentUserId,
-      status: (row['status'] as String?) ?? 'pending',
-      friendDisplayName: (requester['display_name'] as String?) ?? 'Unknown',
-      friendId: row['requester_id'].toString(),
-      friendTier: requester['tier'] as String?,
-    );
+/// A still-pending friend request — either one the current user sent
+/// (outgoing) or received (incoming). Two separate factories rather than
+/// one generic row shape because `get_incoming_friend_requests`/
+/// `get_outgoing_friend_requests` return the other participant under a
+/// different column name (`requester_id` vs `addressee_id`) — see the
+/// migration.
+class FriendRequest {
+  final String friendshipId;
+  final String otherUserId;
+  final String? username;
+  final String? displayName;
+  final String? avatarUrl;
+  final DateTime createdAt;
+
+  const FriendRequest({
+    required this.friendshipId,
+    required this.otherUserId,
+    this.username,
+    this.displayName,
+    this.avatarUrl,
+    required this.createdAt,
+  });
+
+  factory FriendRequest.fromIncomingRow(Map<String, dynamic> row) =>
+      FriendRequest(
+        friendshipId: row['friendship_id'] as String,
+        otherUserId: row['requester_id'] as String,
+        username: row['username'] as String?,
+        displayName: row['display_name'] as String?,
+        avatarUrl: row['avatar_url'] as String?,
+        createdAt: DateTime.parse(row['created_at'] as String),
+      );
+
+  factory FriendRequest.fromOutgoingRow(Map<String, dynamic> row) =>
+      FriendRequest(
+        friendshipId: row['friendship_id'] as String,
+        otherUserId: row['addressee_id'] as String,
+        username: row['username'] as String?,
+        displayName: row['display_name'] as String?,
+        avatarUrl: row['avatar_url'] as String?,
+        createdAt: DateTime.parse(row['created_at'] as String),
+      );
+
+  String get label {
+    final name = displayName?.trim();
+    if (name != null && name.isNotEmpty) return name;
+    if (username != null && username!.isNotEmpty) return '@$username';
+    return 'Chasing Stars member';
   }
 }

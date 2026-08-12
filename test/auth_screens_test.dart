@@ -178,6 +178,10 @@ void main() {
     testWidgets('submitting empty fields shows validation errors without '
         'touching Supabase', (tester) async {
       await tester.pumpWidget(_wrap(const SignupScreen()));
+      // The Username field (Social Foundation Step 1) added enough height
+      // that "Create account" can sit below the default 800x600 test
+      // surface's fold — scroll it into view rather than tapping blind.
+      await tester.ensureVisible(find.text('Create account'));
       await tester.tap(find.text('Create account'));
       await tester.pump();
       expect(find.text('Enter your name'), findsOneWidget);

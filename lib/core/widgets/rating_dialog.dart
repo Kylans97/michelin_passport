@@ -50,11 +50,13 @@ class _RatingSheetState extends State<_RatingSheet> {
     final uid = Supabase.instance.client.auth.currentUser?.id;
     if (uid == null) return;
     try {
-      final friendships = await _friendshipRepo.getFriends(uid);
+      // FriendshipRepository.getFriends() reads auth.uid() server-side
+      // (Social Foundation Step 1) — it no longer takes a userId param.
+      final friendships = await _friendshipRepo.getFriends();
       if (mounted) {
         setState(() {
           _friends = friendships
-              .map((f) => {'id': f.friendId, 'name': f.friendDisplayName})
+              .map((f) => {'id': f.friendId, 'name': f.label})
               .toList();
         });
       }

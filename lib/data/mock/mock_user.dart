@@ -5,10 +5,10 @@ class MockUser {
 
   static const UserProfile profile = UserProfile(
     id: 'u1',
+    username: 'kylan',
     name: 'Kylan Scheepstra',
     email: 'kylan@tablepassport.com',
     memberSince: 'January 2024',
-    tier: 'Gold Palate',
     restaurantsVisited: 12,
     countriesVisited: 4,
     citiesVisited: 8,
