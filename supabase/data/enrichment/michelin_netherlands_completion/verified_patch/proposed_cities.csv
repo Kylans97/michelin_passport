@@ -1,0 +1,13 @@
+country_code,name,region,postal_municipality,michelin_guide_edition,reason,source_restaurant_candidate_ids,verified_absent_from_production
+NL,Schoorl,,,,"No production city named Schoorl (or containing it) exists today.",nl_001,yes
+NL,Noordwijk aan Zee,,,,"No production city named Noordwijk (any form) exists today. Kept as the full 'Noordwijk aan Zee' per Michelin's own municipality naming, not merged into a shorter 'Noordwijk'.",nl_002,yes
+NL,Wolvega,,,,"No production city named Wolvega exists today.",nl_004,yes
+NL,Zuidlaren,,,,"No production city named Zuidlaren exists today.",nl_005,yes
+NL,Gramsbergen,,,,"No production city named Gramsbergen exists today.",nl_007,yes
+NL,Holten,,,,"No production city named Holten exists today.",nl_008,yes
+NL,Hengelo,Overijssel,,,"HOMONYM RISK: Netherlands has two towns named Hengelo (Overijssel and Gelderland). Region set to disambiguate, matching production's existing convention of populating region only where a genuine homonym exists (see cities rows for Montreuil/Saint-Germain/Saint-Remy/Saint-Medard/Washington). Resolved to Overijssel via the restaurant's own Michelin Guide URL path (/overijssel/hengelo/).",nl_009,yes
+NL,De Lutte,,,,"No production city named De Lutte exists today.",nl_010,yes
+NL,Noordeloos,,,,"No production city named Noordeloos exists today.",nl_011,yes
+NL,Warmond,,,,"No production city named Warmond exists today.",nl_012,yes
+NL,Den Hoorn,Noord-Holland,,,"HOMONYM RISK: Netherlands has two places named Den Hoorn (Texel island, Noord-Holland; and near Delft, Zuid-Holland). Region set to disambiguate, same convention as Hengelo above. Resolved to the Texel/Noord-Holland town via the restaurant's own Michelin Guide URL path (/noord-holland/den-hoorn/).",nl_013,yes
+NL,Cadzand-Bad,,,,"Distinct Michelin-guide municipality slug from the already-existing production city 'Cadzand' (/cadzand-bad/ vs /cadzand/) -- confirmed NOT a duplicate of the existing row, per Michelin's own URL-based municipality distinction already established in the prior workstream.",nl_018,yes

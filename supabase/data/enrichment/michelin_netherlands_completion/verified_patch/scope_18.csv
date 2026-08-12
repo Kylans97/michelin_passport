@@ -1,0 +1,19 @@
+candidate_id,canonical_name,city,michelin_stars,is_user_flagged_lead,in_manual_review_rejects_previously,scope_confirmed
+nl_001,Merlet,Schoorl,1,yes (Merlet),no,yes
+nl_002,Latour,Noordwijk aan Zee,1,yes (Latour),no,yes
+nl_003,Basiliek,Harderwijk,1,no,no,yes
+nl_004,Restaurant Smink,Wolvega,1,no,no,yes
+nl_005,De Vlindertuin,Zuidlaren,1,no,no,yes
+nl_006,Noble Kitchen,Cromvoirt,1,no,no,yes
+nl_007,De Woage,Gramsbergen,1,no,no,yes
+nl_008,De Swarte Ruijter,Holten,1,no,no,yes
+nl_009,'t Lansink,Hengelo,1,no,no,yes
+nl_010,De Bloemenbeek,De Lutte,1,no,no,yes
+nl_011,De Gieser Wildeman,Noordeloos,1,no,no,yes
+nl_012,De Moerbei,Warmond,1,no,no,yes
+nl_013,Bij Jef,Den Hoorn,1,no,no,yes
+nl_014,Daalder,Amsterdam,1,no,no,yes
+nl_015,Graphite by Peter Gast,Amsterdam,1,no,no,yes
+nl_016,Zheng,The Hague,1,no,no,yes
+nl_017,AIRrepublic,Cadzand,1,no,no,yes
+nl_018,Pure C,Cadzand-Bad,2,no,no,yes
