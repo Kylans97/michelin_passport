@@ -1,0 +1,16 @@
+candidate_id,canonical_name,identity_verified,address_verified,city_fk_verified,coordinate_quality,coordinate_consistent,michelin_status_verified,duplicate_concern,soft_flags,hard_ready
+nl_003,Basiliek,yes,yes,yes,VENUE_EXACT,yes,yes,none,none,yes
+nl_015,Graphite by Peter Gast,yes,yes,yes,VENUE_EXACT,yes,yes,none,none,yes
+nl_016,Zheng,yes,yes,yes,VENUE_EXACT,yes,yes,none,none,yes
+nl_014,Daalder,yes,yes,yes,ADDRESS_EXACT,yes,yes,none,none,yes
+nl_001,Merlet,yes,yes,yes,PROPERTY_EXACT,yes,yes,none,"hotel relationship plausible, unverified -- not a blocker",yes
+nl_002,Latour,yes,yes,yes,VENUE_EXACT,yes,yes,none,"hotel relationship plausible, unverified -- not a blocker",yes
+nl_004,Restaurant Smink,yes,yes,yes,ADDRESS_EXACT,yes,yes,none,none,yes
+nl_005,De Vlindertuin,yes,yes,yes,VENUE_EXACT,yes,yes,none,none,yes
+nl_007,De Woage,yes,yes,yes,VENUE_EXACT,yes,yes,none,"MICHELIN_STATUS_VOLATILITY -- recent Jan 2026 rebrand to 'Restobar De Woage'; recommend a fresh re-check immediately before actual import",yes
+nl_008,De Swarte Ruijter,yes,yes,yes,PROPERTY_EXACT,yes,yes,none,"hotel relationship plausible, unverified -- not a blocker",yes
+nl_009,'t Lansink,yes,yes,yes,PROPERTY_EXACT,yes,yes,none,"hotel relationship plausible, unverified -- not a blocker",yes
+nl_010,De Bloemenbeek,yes,yes,yes,PROPERTY_EXACT,yes,yes,none,"hotel relationship plausible, unverified -- not a blocker",yes
+nl_011,De Gieser Wildeman,yes,yes,yes,VENUE_EXACT,yes,yes,none,"OWNERSHIP_TRANSITION_RISK -- possible pending sale referenced in one source; current star status not in doubt",yes
+nl_012,De Moerbei,yes,yes,yes,VENUE_EXACT,yes,yes,none,"minor postcode discrepancy between source and OSM for the same street/number -- recommend correcting post-import",yes
+nl_013,Bij Jef,yes,yes,yes,VENUE_EXACT,yes,yes,none,"hotel relationship plausible, unverified -- not a blocker",yes

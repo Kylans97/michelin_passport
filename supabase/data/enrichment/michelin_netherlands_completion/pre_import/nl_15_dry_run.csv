@@ -1,0 +1,10 @@
+category,action,count,names
+restaurant,INSERT,15,"Basiliek; Graphite by Peter Gast; Zheng; Daalder; Merlet; Latour; Restaurant Smink; De Vlindertuin; De Woage; De Swarte Ruijter; 't Lansink; De Bloemenbeek; De Gieser Wildeman; De Moerbei; Bij Jef"
+restaurant,SKIP,0,
+restaurant,BLOCK,0,
+award,INSERT,15,"one row per successfully-inserted restaurant, driven by RETURNING -- same 15 names"
+award,SKIP,0,
+award,BLOCK,0,
+hotel_link,INSERT,0,
+hotel_link,SKIP,5,"Merlet; Latour; De Swarte Ruijter; 't Lansink; De Bloemenbeek -- plausible property context but no verified production hotel_id"
+hotel_link,BLOCK,0,

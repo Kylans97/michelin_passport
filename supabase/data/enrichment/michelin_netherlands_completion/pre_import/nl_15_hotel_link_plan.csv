@@ -1,0 +1,6 @@
+candidate_id,canonical_name,property_context,checked_against_nl_hotels,production_hotel_match,proposed_hotel_restaurants_row,notes
+nl_001,Merlet,"Combined restaurant + hotel (Hotel Merlet)",yes (17 NL rows),none,no,"0/17 fresh live match by name -- not a blocker per task instruction."
+nl_002,Latour,"Inside Grand Hotel Huis ter Duin",yes (17 NL rows),none,no,"0/17 fresh live match by name -- not a blocker per task instruction."
+nl_008,De Swarte Ruijter,"Thatched restaurant + hotel on the Holterberg",yes (17 NL rows),none,no,"0/17 fresh live match by name -- not a blocker per task instruction."
+nl_009,'t Lansink,"Hotel-restaurant since 1916",yes (17 NL rows),none,no,"0/17 fresh live match by name -- not a blocker per task instruction."
+nl_010,De Bloemenbeek,"Landhuishotel (manor house hotel) with restaurant",yes (17 NL rows),none,no,"0/17 fresh live match by name -- not a blocker per task instruction."
