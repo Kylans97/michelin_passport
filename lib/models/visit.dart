@@ -1,8 +1,31 @@
 // Maps a row from `public.visits` (see
-// supabase/migrations/20260805141519_production_schema_v1.sql and
-// supabase/migrations/20260805211243_add_visit_details.sql). visits is
-// polymorphic: entity_type + entity_id address either a hotel or a
-// restaurant. This app only writes entity_type = 'restaurant' rows so far.
+// supabase/migrations/20260805141519_production_schema_v1.sql,
+// supabase/migrations/20260805211243_add_visit_details.sql, and
+// supabase/migrations/20260814120000_social_foundation_step2_visit_visibility.sql).
+// visits is polymorphic: entity_type + entity_id address either a hotel or
+// a restaurant. This app only writes entity_type = 'restaurant' rows so far.
+
+/// The two permitted values of `visits.visibility` (Social Foundation
+/// Step 2). Ratings, notes, and photos are NOT independently visible —
+/// they inherit this exact value from their parent visit, enforced at the
+/// database level (visits_read/photos_read RLS), not just in Flutter.
+enum VisitVisibility {
+  private('private'),
+  friends('friends');
+
+  final String dbValue;
+  const VisitVisibility(this.dbValue);
+
+  /// Parses defensively: an unrecognised or null value fails safe to
+  /// [private] — the more restrictive option — rather than throwing or
+  /// silently defaulting to the more exposed value.
+  static VisitVisibility fromDbValue(String? value) {
+    for (final v in VisitVisibility.values) {
+      if (v.dbValue == value) return v;
+    }
+    return VisitVisibility.private;
+  }
+}
 
 /// The three permitted values of `visits.menu_type`. Stores the exact
 /// database strings via [dbValue] — do not rename these without a migration.
@@ -61,6 +84,13 @@ class Visit {
   final int? keysAtVisit;
   final int? starsAtVisit;
 
+  // Social Foundation Step 2. Defaults to private both here and at the
+  // database column level — never inferred as friends-visible just
+  // because a row is missing the column (old rows are backfilled by the
+  // migration itself, so this default only ever matters for a Visit
+  // constructed in Flutter before being saved).
+  final VisitVisibility visibility;
+
   const Visit({
     required this.id,
     required this.userId,
@@ -78,6 +108,7 @@ class Visit {
     this.currency,
     this.keysAtVisit,
     this.starsAtVisit,
+    this.visibility = VisitVisibility.private,
   });
 
   factory Visit.fromJson(Map<String, dynamic> json) => Visit(
@@ -97,5 +128,6 @@ class Visit {
     currency: json['currency'] as String?,
     keysAtVisit: (json['keys_at_visit'] as num?)?.toInt(),
     starsAtVisit: (json['stars_at_visit'] as num?)?.toInt(),
+    visibility: VisitVisibility.fromDbValue(json['visibility'] as String?),
   );
 }

@@ -20,11 +20,19 @@ class EditorialBackButton extends StatelessWidget {
   final IconData icon;
   final String semanticLabel;
 
+  // Defaults to the dark-canvas ivory this widget was originally built
+  // for; pass an override (e.g. AppColors.textPrimary) to reuse the exact
+  // same treatment on a light-card surface — e.g. the legacy-styled Add
+  // Visit/Add Stay sheets — rather than building a second one-off
+  // back/close widget for that surface.
+  final Color? color;
+
   const EditorialBackButton({
     super.key,
     this.onTap,
     this.icon = Icons.arrow_back_ios_new_rounded,
     this.semanticLabel = 'Back',
+    this.color,
   });
 
   @override
@@ -36,11 +44,11 @@ class EditorialBackButton extends StatelessWidget {
       child: InkWell(
         onTap: onTap ?? () => Navigator.maybePop(context),
         borderRadius: BorderRadius.circular(20),
-        splashColor: AppColors.textOnDark.withValues(alpha: 0.06),
-        highlightColor: AppColors.textOnDark.withValues(alpha: 0.04),
+        splashColor: (color ?? AppColors.textOnDark).withValues(alpha: 0.06),
+        highlightColor: (color ?? AppColors.textOnDark).withValues(alpha: 0.04),
         child: Padding(
           padding: const EdgeInsets.all(13),
-          child: Icon(icon, color: AppColors.textOnDark, size: 18),
+          child: Icon(icon, color: color ?? AppColors.textOnDark, size: 18),
         ),
       ),
     ),

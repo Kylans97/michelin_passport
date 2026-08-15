@@ -7,18 +7,28 @@ import '../../core/theme/app_typography.dart';
 import '../../core/widgets/app_button.dart';
 import '../../core/widgets/cs_image_placeholder.dart';
 import '../../core/widgets/detail_hero.dart';
+import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../models/event.dart';
 import '../explore/widgets/hotel_tile.dart';
 import '../explore/widgets/restaurant_tile.dart';
 import '../restaurants/widgets/detail_section.dart';
 import 'event_date_format.dart';
+import 'widgets/event_going_button.dart';
 
 // Smaller than CsImagePlaceholder's own 0.4 default: a hero is a much
 // larger, wider area than a card thumbnail, so the same relative scale
 // would make the monogram feel oversized — see the brief's "slightly
 // smaller relative scale for large hero placeholders".
 const double _heroLogoScale = 0.22;
+
+/// Whether "I'm going" should be offered at all — no new event-status
+/// system (Step 2B §21's explicit instruction): reuses [Event.isCancelled]
+/// and the event's own [Event.endAt]. A top-level pure function, not
+/// inlined in build(), so it's directly unit-testable without a live
+/// Supabase session.
+bool canAttendEvent(Event event, {DateTime? now}) =>
+    !event.isCancelled && event.endAt.isAfter(now ?? DateTime.now());
 
 /// Full event details: hero (renders event.imageUrl via DetailHero's
 /// backgroundImage slot when set, BoxFit.cover; branded CsImagePlaceholder
@@ -41,17 +51,24 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   late final EventsRepository _repo = EventsRepository(
     Supabase.instance.client,
   );
+  late final EventAttendanceRepository _attendanceRepo =
+      EventAttendanceRepository(Supabase.instance.client);
 
   bool _loading = true;
   bool _loadError = false;
   Event? _event;
   EventVenues _venues = const EventVenues(restaurants: [], hotels: []);
 
+  bool _going = false;
+  bool _attendanceBusy = false;
+
   @override
   void initState() {
     super.initState();
     _load();
   }
+
+  String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
   Future<void> _load() async {
     setState(() {
@@ -61,8 +78,16 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     try {
       final eventFuture = _repo.loadEventById(widget.eventId);
       final venuesFuture = _repo.loadLinkedVenues(widget.eventId);
+      final uid = _userId;
+      final attendanceFuture = uid == null
+          ? Future.value(null)
+          : _attendanceRepo.getMyAttendance(
+              userId: uid,
+              eventId: widget.eventId,
+            );
       final event = await eventFuture;
       final venues = await venuesFuture;
+      final attendance = await attendanceFuture;
       if (!mounted) return;
       if (event == null) {
         setState(() {
@@ -74,6 +99,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       setState(() {
         _event = event;
         _venues = venues;
+        _going = attendance != null;
         _loading = false;
       });
     } catch (_) {
@@ -82,6 +108,40 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         _loading = false;
         _loadError = true;
       });
+    }
+  }
+
+  Future<void> _toggleGoing() async {
+    final uid = _userId;
+    if (uid == null || _attendanceBusy) return;
+    setState(() => _attendanceBusy = true);
+    try {
+      if (_going) {
+        await _attendanceRepo.removeAttendance(
+          userId: uid,
+          eventId: widget.eventId,
+        );
+      } else {
+        await _attendanceRepo.markGoing(userId: uid, eventId: widget.eventId);
+      }
+      if (!mounted) return;
+      setState(() {
+        _going = !_going;
+        _attendanceBusy = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _attendanceBusy = false);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(
+            'Could not update. Please try again.',
+            style: GoogleFonts.inter(color: AppColors.textPrimary),
+          ),
+          backgroundColor: AppColors.error,
+          duration: const Duration(seconds: 2),
+        ),
+      );
     }
   }
 
@@ -155,6 +215,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     final ticketButtonLabel = event.admissionType == EventAdmissionType.mixed
         ? 'Optional ticket'
         : 'Tickets';
+    final canAttend = canAttendEvent(event);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -252,6 +313,18 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       ),
                     ),
                   ),
+
+                  if (canAttend) ...[
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: EventGoingButton(
+                        going: _going,
+                        busy: _attendanceBusy,
+                        onTap: _toggleGoing,
+                      ),
+                    ),
+                  ],
 
                   if (event.description != null &&
                       event.description!.isNotEmpty)

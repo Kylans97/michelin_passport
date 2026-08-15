@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/widgets/sheet_dismiss_handle.dart';
 import '../../../data/repositories/photo_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
 import '../../../models/hotel.dart';
@@ -12,6 +13,7 @@ import '../../restaurants/widgets/detail_section.dart';
 import '../../visits/widgets/date_card.dart';
 import '../../visits/widgets/rating_meter.dart';
 import '../../visits/widgets/save_button.dart';
+import '../../visits/widgets/visit_privacy_toggle.dart';
 
 /// Opens the "log a stay" bottom sheet for [hotel] and inserts a new hotel
 /// stay row via [visitedRepository] on save, uploading any staged photos
@@ -67,6 +69,7 @@ class _AddStaySheetState extends State<_AddStaySheet> {
   final _notesCtrl = TextEditingController();
   final List<StagedPhoto> _stagedPhotos = [];
   bool _pickingPhotos = false;
+  bool _friendsVisible = false; // OFF by default → private, per the task brief
 
   bool _saving = false;
   String? _error;
@@ -130,6 +133,9 @@ class _AddStaySheetState extends State<_AddStaySheet> {
         valueRating: _valueRating,
         notes: notes.isEmpty ? null : notes,
         keysAtVisit: widget.hotel.michelinKeys,
+        visibility: _friendsVisible
+            ? VisitVisibility.friends
+            : VisitVisibility.private,
       );
     } catch (error, stackTrace) {
       debugPrint('SAVE STAY ERROR: $error');
@@ -198,15 +204,10 @@ class _AddStaySheetState extends State<_AddStaySheet> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Container(
-                      width: 36,
-                      height: 4,
-                      decoration: BoxDecoration(
-                        color: AppColors.divider,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
+                  // Mirrors AddVisitSheet's own explicit dismiss control.
+                  SheetDismissHandle(
+                    color: AppColors.textPrimary,
+                    onClose: () => Navigator.pop(context),
                   ),
                   const SizedBox(height: 24),
 
@@ -260,6 +261,13 @@ class _AddStaySheetState extends State<_AddStaySheet> {
                     label: 'Value',
                     value: _valueRating,
                     onChanged: (v) => setState(() => _valueRating = v),
+                  ),
+                  const SizedBox(height: 32),
+
+                  // ── Privacy ────────────────────────────────────────────
+                  VisitPrivacyToggle(
+                    friendsVisible: _friendsVisible,
+                    onChanged: (v) => setState(() => _friendsVisible = v),
                   ),
                   const SizedBox(height: 32),
 

@@ -16,12 +16,14 @@ const _restaurantEntity = 'restaurant';
 const _hotelEntity = 'hotel';
 
 // Every column on public.visits (production schema v1 +
-// 20260805211243_add_visit_details.sql). Listed explicitly, rather than
-// select('*'), so a schema change is a visible diff here.
+// 20260805211243_add_visit_details.sql +
+// 20260814120000_social_foundation_step2_visit_visibility.sql). Listed
+// explicitly, rather than select('*'), so a schema change is a visible
+// diff here.
 const _visitColumns =
     'id, user_id, entity_type, entity_id, visited_on, rating, '
     'food_rating, service_rating, wine_rating, value_rating, menu_type, '
-    'notes, price_paid, currency, keys_at_visit, stars_at_visit';
+    'notes, price_paid, currency, keys_at_visit, stars_at_visit, visibility';
 
 class VisitedRepository {
   VisitedRepository(this._client);
@@ -79,6 +81,7 @@ class VisitedRepository {
     String? currency,
     int? keysAtVisit,
     int? starsAtVisit,
+    VisitVisibility visibility = VisitVisibility.private,
   }) {
     return _insertVisit(
       userId: userId,
@@ -96,6 +99,7 @@ class VisitedRepository {
       currency: currency,
       keysAtVisit: keysAtVisit,
       starsAtVisit: starsAtVisit,
+      visibility: visibility,
     );
   }
 
@@ -120,6 +124,7 @@ class VisitedRepository {
     int? valueRating,
     String? notes,
     int? keysAtVisit,
+    VisitVisibility visibility = VisitVisibility.private,
   }) {
     return _insertVisit(
       userId: userId,
@@ -131,6 +136,7 @@ class VisitedRepository {
       valueRating: valueRating,
       notes: notes,
       keysAtVisit: keysAtVisit,
+      visibility: visibility,
     );
   }
 
@@ -156,6 +162,7 @@ class VisitedRepository {
     String? currency,
     int? keysAtVisit,
     int? starsAtVisit,
+    VisitVisibility visibility = VisitVisibility.private,
   }) async {
     final date = (visitedOn ?? DateTime.now()).toIso8601String().substring(
       0,
@@ -179,7 +186,31 @@ class VisitedRepository {
           'currency': ?currency,
           'keys_at_visit': ?keysAtVisit,
           'stars_at_visit': ?starsAtVisit,
+          'visibility': visibility.dbValue,
         })
+        .select(_visitColumns)
+        .single();
+    return Visit.fromJson(row);
+  }
+
+  // Social Foundation Step 2 — the smallest sensible privacy-management
+  // seam: this app has no general visit-edit flow (create + delete only),
+  // so this is a single-column update, not a new edit architecture.
+  // Scoped by both id and user_id, matching every other owner-write
+  // method on this repository — belt-and-suspenders alongside RLS
+  // (visits_update), which is the actual security boundary. Returns the
+  // updated Visit so the caller can refresh its UI from the row Postgres
+  // actually now holds, not an assumed value.
+  Future<Visit> updateVisitVisibility({
+    required String userId,
+    required String visitId,
+    required VisitVisibility visibility,
+  }) async {
+    final row = await _client
+        .from('visits')
+        .update({'visibility': visibility.dbValue})
+        .eq('id', visitId)
+        .eq('user_id', userId)
         .select(_visitColumns)
         .single();
     return Visit.fromJson(row);

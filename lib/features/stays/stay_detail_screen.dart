@@ -48,19 +48,59 @@ class StayDetailScreen extends StatefulWidget {
 
 class _StayDetailScreenState extends State<StayDetailScreen> {
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
+  late Visit _stay = widget.stay;
   bool _deleting = false;
+  bool _updatingVisibility = false;
 
-  void _showSnack(String message) {
+  void _showSnack(String message, {bool isError = true}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           message,
           style: GoogleFonts.inter(color: AppColors.textPrimary),
         ),
-        backgroundColor: AppColors.error,
+        backgroundColor: isError ? AppColors.error : AppColors.gold,
         duration: const Duration(seconds: 2),
       ),
     );
+  }
+
+  // Mirrors VisitDetailScreen's own _toggleVisibility — same table, same
+  // smallest-sensible-seam reasoning (see the Step 2 implementation
+  // report).
+  Future<void> _toggleVisibility() async {
+    if (_updatingVisibility) return;
+    final uid = Supabase.instance.client.auth.currentUser?.id;
+    if (uid == null || uid.isEmpty) {
+      _showSnack('Sign in required.');
+      return;
+    }
+    final next = _stay.visibility == VisitVisibility.friends
+        ? VisitVisibility.private
+        : VisitVisibility.friends;
+    setState(() => _updatingVisibility = true);
+    try {
+      final updated = await _visitedRepo.updateVisitVisibility(
+        userId: uid,
+        visitId: _stay.id,
+        visibility: next,
+      );
+      if (!mounted) return;
+      setState(() {
+        _stay = updated;
+        _updatingVisibility = false;
+      });
+      _showSnack(
+        next == VisitVisibility.friends
+            ? 'Friends can now see this stay.'
+            : 'This stay is private again.',
+        isError: false,
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _updatingVisibility = false);
+      _showSnack('Could not update. Please try again.');
+    }
   }
 
   Future<void> _confirmDelete() async {
@@ -119,7 +159,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
 
     setState(() => _deleting = true);
     try {
-      await _visitedRepo.deleteVisitById(userId: uid, visitId: widget.stay.id);
+      await _visitedRepo.deleteVisitById(userId: uid, visitId: _stay.id);
       if (!mounted) return;
       Navigator.pop(context, true);
     } catch (_) {
@@ -132,7 +172,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final hotel = widget.hotel;
-    final stay = widget.stay;
+    final stay = _stay;
     final keys = stay.keysAtVisit;
     final notes = stay.notes;
 
@@ -143,7 +183,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
         elevation: 0,
         foregroundColor: AppColors.textPrimary,
         actions: [
-          if (_deleting)
+          if (_deleting || _updatingVisibility)
             const Padding(
               padding: EdgeInsets.all(16),
               child: SizedBox(
@@ -160,9 +200,31 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
               icon: const Icon(Icons.more_vert_rounded),
               color: AppColors.card,
               onSelected: (value) {
+                if (value == 'visibility') _toggleVisibility();
                 if (value == 'delete') _confirmDelete();
               },
               itemBuilder: (context) => [
+                PopupMenuItem<String>(
+                  value: 'visibility',
+                  child: Row(
+                    children: [
+                      Icon(
+                        stay.visibility == VisitVisibility.friends
+                            ? Icons.lock_open_rounded
+                            : Icons.lock_outline_rounded,
+                        color: AppColors.textPrimary,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        stay.visibility == VisitVisibility.friends
+                            ? 'Make private'
+                            : 'Make visible to friends',
+                        style: GoogleFonts.inter(color: AppColors.textPrimary),
+                      ),
+                    ],
+                  ),
+                ),
                 PopupMenuItem<String>(
                   value: 'delete',
                   child: Row(
@@ -213,6 +275,24 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                   const SizedBox(width: 10),
                   KeyRow(count: keys, size: 14),
                 ],
+                const SizedBox(width: 10),
+                Icon(
+                  stay.visibility == VisitVisibility.friends
+                      ? Icons.lock_open_rounded
+                      : Icons.lock_outline_rounded,
+                  color: AppColors.textSecondary,
+                  size: 13,
+                ),
+                const SizedBox(width: 3),
+                Text(
+                  stay.visibility == VisitVisibility.friends
+                      ? 'Visible to friends'
+                      : 'Private',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textSecondary,
+                    fontSize: 12,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 32),

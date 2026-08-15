@@ -52,19 +52,59 @@ class VisitDetailScreen extends StatefulWidget {
 
 class _VisitDetailScreenState extends State<VisitDetailScreen> {
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
+  late Visit _visit = widget.visit;
   bool _deleting = false;
+  bool _updatingVisibility = false;
 
-  void _showSnack(String message) {
+  void _showSnack(String message, {bool isError = true}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
           message,
           style: GoogleFonts.inter(color: AppColors.textPrimary),
         ),
-        backgroundColor: AppColors.error,
+        backgroundColor: isError ? AppColors.error : AppColors.gold,
         duration: const Duration(seconds: 2),
       ),
     );
+  }
+
+  // The smallest sensible privacy-management seam for a table with no
+  // general edit flow (see the Step 2 implementation report) — a single
+  // toggle alongside the existing Delete action, not a new edit screen.
+  Future<void> _toggleVisibility() async {
+    if (_updatingVisibility) return;
+    final uid = Supabase.instance.client.auth.currentUser?.id;
+    if (uid == null || uid.isEmpty) {
+      _showSnack('Sign in required.');
+      return;
+    }
+    final next = _visit.visibility == VisitVisibility.friends
+        ? VisitVisibility.private
+        : VisitVisibility.friends;
+    setState(() => _updatingVisibility = true);
+    try {
+      final updated = await _visitedRepo.updateVisitVisibility(
+        userId: uid,
+        visitId: _visit.id,
+        visibility: next,
+      );
+      if (!mounted) return;
+      setState(() {
+        _visit = updated;
+        _updatingVisibility = false;
+      });
+      _showSnack(
+        next == VisitVisibility.friends
+            ? 'Friends can now see this visit.'
+            : 'This visit is private again.',
+        isError: false,
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _updatingVisibility = false);
+      _showSnack('Could not update. Please try again.');
+    }
   }
 
   Future<void> _confirmDelete() async {
@@ -123,7 +163,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
 
     setState(() => _deleting = true);
     try {
-      await _visitedRepo.deleteVisitById(userId: uid, visitId: widget.visit.id);
+      await _visitedRepo.deleteVisitById(userId: uid, visitId: _visit.id);
       if (!mounted) return;
       Navigator.pop(context, true);
     } catch (_) {
@@ -136,7 +176,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
   @override
   Widget build(BuildContext context) {
     final restaurant = widget.restaurant;
-    final visit = widget.visit;
+    final visit = _visit;
     final stars = visit.starsAtVisit;
     final menuType = visit.menuType;
     final notes = visit.notes;
@@ -148,7 +188,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         elevation: 0,
         foregroundColor: AppColors.textPrimary,
         actions: [
-          if (_deleting)
+          if (_deleting || _updatingVisibility)
             const Padding(
               padding: EdgeInsets.all(16),
               child: SizedBox(
@@ -165,9 +205,31 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
               icon: const Icon(Icons.more_vert_rounded),
               color: AppColors.card,
               onSelected: (value) {
+                if (value == 'visibility') _toggleVisibility();
                 if (value == 'delete') _confirmDelete();
               },
               itemBuilder: (context) => [
+                PopupMenuItem<String>(
+                  value: 'visibility',
+                  child: Row(
+                    children: [
+                      Icon(
+                        visit.visibility == VisitVisibility.friends
+                            ? Icons.lock_open_rounded
+                            : Icons.lock_outline_rounded,
+                        color: AppColors.textPrimary,
+                        size: 18,
+                      ),
+                      const SizedBox(width: 10),
+                      Text(
+                        visit.visibility == VisitVisibility.friends
+                            ? 'Make private'
+                            : 'Make visible to friends',
+                        style: GoogleFonts.inter(color: AppColors.textPrimary),
+                      ),
+                    ],
+                  ),
+                ),
                 PopupMenuItem<String>(
                   value: 'delete',
                   child: Row(
@@ -218,6 +280,24 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                   const SizedBox(width: 10),
                   StarRow(count: stars, size: 14),
                 ],
+                const SizedBox(width: 10),
+                Icon(
+                  visit.visibility == VisitVisibility.friends
+                      ? Icons.lock_open_rounded
+                      : Icons.lock_outline_rounded,
+                  color: AppColors.textSecondary,
+                  size: 13,
+                ),
+                const SizedBox(width: 3),
+                Text(
+                  visit.visibility == VisitVisibility.friends
+                      ? 'Visible to friends'
+                      : 'Private',
+                  style: GoogleFonts.inter(
+                    color: AppColors.textSecondary,
+                    fontSize: 12,
+                  ),
+                ),
               ],
             ),
             const SizedBox(height: 32),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/widgets/sheet_dismiss_handle.dart';
 import '../../../data/repositories/photo_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
 import '../../../models/restaurant.dart';
@@ -12,6 +13,7 @@ import '../../restaurants/widgets/detail_section.dart';
 import 'date_card.dart';
 import 'rating_meter.dart';
 import 'save_button.dart';
+import 'visit_privacy_toggle.dart';
 
 /// Opens the "log a visit" bottom sheet for [restaurant] and inserts a new
 /// row via [visitedRepository] on save, uploading any staged photos against
@@ -66,6 +68,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   final _notesCtrl = TextEditingController();
   final List<StagedPhoto> _stagedPhotos = [];
   bool _pickingPhotos = false;
+  bool _friendsVisible = false; // OFF by default → private, per the task brief
 
   bool _saving = false;
   String? _error;
@@ -134,6 +137,9 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
         starsAtVisit: widget.restaurant.michelinStars,
         // keysAtVisit intentionally omitted: this is a restaurant visit,
         // and Michelin Keys are a hotel award.
+        visibility: _friendsVisible
+            ? VisitVisibility.friends
+            : VisitVisibility.private,
       );
     } catch (error, stackTrace) {
       debugPrint('SAVE VISIT ERROR: $error');
@@ -205,15 +211,14 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Container(
-                      width: 36,
-                      height: 4,
-                      decoration: BoxDecoration(
-                        color: AppColors.divider,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
+                  // An explicit, always-visible dismiss control — swipe-to-
+                  // dismiss (the sheet's default showModalBottomSheet
+                  // behaviour, still intact) was previously the only way
+                  // out, with no on-screen affordance, the same gap
+                  // Create Trip's own sheet already fixed.
+                  SheetDismissHandle(
+                    color: AppColors.textPrimary,
+                    onClose: () => Navigator.pop(context),
                   ),
                   const SizedBox(height: 24),
 
@@ -288,6 +293,13 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                   _MenuTypeSelector(
                     value: _menuType,
                     onChanged: (v) => setState(() => _menuType = v),
+                  ),
+                  const SizedBox(height: 32),
+
+                  // ── Privacy ────────────────────────────────────────────
+                  VisitPrivacyToggle(
+                    friendsVisible: _friendsVisible,
+                    onChanged: (v) => setState(() => _friendsVisible = v),
                   ),
                   const SizedBox(height: 32),
 

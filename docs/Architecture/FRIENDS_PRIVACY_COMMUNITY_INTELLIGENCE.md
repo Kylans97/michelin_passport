@@ -420,6 +420,42 @@ That document is not modified by this spike, per instruction. Summary of what a 
 
 ---
 
-## 15. Safety confirmation
+## 15. Safety confirmation (this spike, 2026-08-13)
 
 No code was changed. No database was written to — one read-only `information_schema.tables`/`information_schema.columns` query was run against the linked production project to verify the `friendships`/`user_tiers`/`tier_stats`/`profiles.tier` schema-drift finding in §0.2/§1.1; nothing was inserted, updated, deleted, or altered. No migrations were created. Nothing was staged. Nothing was committed. Nothing was pushed.
+
+---
+
+## 16. Step 2 implementation status — Privacy & Friend Content
+
+**2026-08-14, implemented; deployed to production and physically reviewed/approved 2026-08-15.** See `SOCIAL_FOUNDATION_STEP_2_IMPLEMENTATION_REPORT.md` for the audit/build/test record and `SOCIAL_FOUNDATION_STEP_2B_DEPLOYMENT_REPORT.md`'s own preflight for the live production re-verification of this exact state. This section documents what was actually built and is now live, superseding §3.2/§3.4a/§3.6/§7.3's own recommendations with the as-implemented shape (the two never materially diverge except where noted).
+
+- **VISITS**: `visits.visibility text not null default 'private' check (in ('private','friends'))`. Every existing row backfilled to `'private'` by the column default itself (no separate UPDATE). No public tier exists or is planned. `visits_read` rewritten to `owner OR (visibility='friends' AND is_friend(owner))`, narrowed from `anon, authenticated` to `authenticated` only (anon could never satisfy either clause anyway). Owner INSERT/UPDATE/DELETE untouched.
+- **RATINGS/COMMENTS**: no separate visibility field of any kind — they are columns on the visit row itself and inherit `visits_read` automatically, exactly as §3.2 already recommended.
+- **PHOTOS**: `photos_read` rewritten to `owner OR (visit_id is not null AND parent visit is friends-visible AND viewer is_friend(visit owner))` — `photos.is_public` is no longer read by this policy at all. **Storage**: a new additive `storage.objects` SELECT policy (`visit_photos_read_friends`) joins through `public.photos.storage_path = name` to the same parent-visit check, rather than parsing `(storage.foldername(name))[2])::uuid` (which would need an explicit format guard before casting to avoid throwing on any malformed path). The bucket stays private; the app still resolves images via `PhotoRepository.resolveDisplayUrls`'s existing signed-URL call, unchanged — Postgres RLS (not a new RPC) is the enforcement point, per §3.6's own preferred option. The pre-existing owner-only policies (both the migration-created ones and four dashboard-created duplicates found during this step's own audit — see the implementation report) are left exactly as they are; RLS policies OR together, so this is purely additive.
+- **WISHLIST**: `wishlist_read` rewritten to `owner OR is_friend(owner)` — no `wishlist.visibility` column exists or is planned, per the explicit final MVP decision (supersedes this document's own earlier, more cautious §3.4 "private only" recommendation, itself already superseded by §3.4a's "auto-visible to friends" direction — this section is that direction, implemented).
+- **TRIPS**: `planned_trips`/`planned_venues` policies are untouched — confirmed by construction, not just by testing (the migration file contains zero references to either table).
+- **NON-FRIEND / PENDING / DECLINED / BLOCKED**: identity-only, unchanged from Step 1 — Friend Profile only renders VISITED/WISHLIST when `relationshipStatus == accepted`; every other state renders exactly as Step 1 already built it.
+- **Live authorization**: every check above is a live subquery against `public.friendships` via the Step 1 `is_friend()` helper — reused as the single shared predicate everywhere, never duplicated. An unfriend or a block takes effect on the very next read, with zero content rows ever rewritten — verified directly (not assumed) against a local Postgres instance: block correctly denied access even after the underlying visit was re-marked `friends`-visible, proving the check is genuinely live rather than cached at grant time.
+
+---
+
+## 17. Step 2B implementation status — Friend Venue Navigation + Event Attendance
+
+**2026-08-15, implemented, deployed to production, and physically reviewed/approved.** See `SOCIAL_FOUNDATION_STEP_2B_IMPLEMENTATION_REPORT.md` for the audit/build/test record and `SOCIAL_FOUNDATION_STEP_2B_DEPLOYMENT_REPORT.md` for the production deployment/verification record, including the least-privilege follow-up migration (`20260815130000`) that revoked an unintended `anon` EXECUTE grant on `get_event_attendance_count` discovered during that deployment.
+
+### 17.1 Canonical venue-detail navigation from friend content
+
+Friend Profile's VISITED and WISHLIST rows both now navigate to the exact same `RestaurantDetailScreen`/`HotelDetailScreen` reached from Explore/Passport — no `FriendRestaurantDetailScreen`/social wrapper of any kind was built or is planned. This works correctly with zero extra plumbing because every action on those canonical screens (Wishlist toggle, Add Visit, external links) already reads/writes only `Supabase.instance.client.auth.currentUser` — the current viewer's own data — regardless of how the screen was reached; a friend's own Wishlist/visits are never touched by opening their content this way. Event attendance follows the identical rule: a friend's GOING row navigates to the canonical `EventDetailScreen`, never a wrapper.
+
+### 17.2 Event attendance model
+
+New table `public.event_attendance`: one row per `(event_id, user_id)` (enforced by a real UNIQUE constraint, not application logic), a single legal `status` value `'going'` for MVP (removing attendance is a DELETE, mirroring how unfriending is a DELETE rather than a `friendships.status` value), and a `visibility` column reusing the exact `private | friends` shape `visits.visibility` already established. INSERT/UPDATE/DELETE are plain client-side ownership writes (matching `wishlist`'s pattern), not RPC-mediated — there is no multi-party state machine here the way there is for `friendships`.
+
+### 17.3 Attendance privacy
+
+Default **`friends`**, not `private` — a deliberate divergence from `visits.visibility`'s own `private` default, reasoned through explicitly rather than copied by habit: an event is already fully public catalogue content (`events` is public-read, seeded server-side), so "I'm going to a public festival" is a materially lower-sensitivity disclosure than a personal dining rating on a specific night. Defaulting to friends-visible lets the feature work for testers with zero extra opt-in friction for something this low-stakes; a user can still mark a specific event's attendance `private`. No dedicated visibility-toggle control was built into the Event Detail UI for this step (the "I'm going" action always writes `friends`) — the schema/RLS/repository layer fully supports `private` regardless, so a future toggle needs no new migration, matching the task's own explicit "recommend a safer default rather than overbuilding the interaction" guidance. `event_attendance_select` enforces: owner always; an accepted friend only when the row is `friends`-visible; everyone else (stranger, pending, declined, blocked) never — the identical live-subquery-via-`is_friend()` pattern as visits/wishlist/photos, so unfriending or blocking revokes attendance visibility on the very next read.
+
+### 17.4 Future aggregate attendance seam
+
+A narrow, read-only `get_event_attendance_count(event_id)` RPC was implemented (not deferred — judged straightforward enough to include per the task's own stated preference) but is **not wired into any UI in this step**. It returns the exact count once ≥5 unique attendees exist (the same minimum-aggregation threshold §5.7 already established for Community Intelligence), `NULL` below that — never row-level data, never a specific small number that could make one attendee identifiable. This is deliberately the full extent of "Community" work in this step: no feed, no public attendee list, no Community tab, no geographic communities — those remain exactly as deferred as §8/§12.3 already recorded.
