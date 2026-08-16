@@ -3,42 +3,56 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/theme/app_typography.dart';
-import '../../core/widgets/app_button.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_image_placeholder.dart';
-import '../../core/widgets/detail_hero.dart';
+import '../../core/widgets/linked_venue_row.dart';
+import '../../core/widgets/section_divider.dart';
+import '../../core/widgets/subtle_text_action.dart';
+import '../../core/widgets/venue_about_section.dart';
 import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../models/event.dart';
-import '../explore/widgets/hotel_tile.dart';
-import '../explore/widgets/restaurant_tile.dart';
-import '../restaurants/widgets/detail_section.dart';
+import '../../models/hotel.dart';
+import '../../models/restaurant.dart';
+import '../hotels/hotel_detail_screen.dart';
+import '../restaurants/restaurant_detail_screen.dart';
 import 'event_date_format.dart';
+import 'widgets/event_detail_hero.dart';
 import 'widgets/event_going_button.dart';
+import 'widgets/event_meta_section.dart';
+import 'widgets/michelin_at_event_section.dart';
 
 // Smaller than CsImagePlaceholder's own 0.4 default: a hero is a much
 // larger, wider area than a card thumbnail, so the same relative scale
-// would make the monogram feel oversized — see the brief's "slightly
-// smaller relative scale for large hero placeholders".
+// would make the monogram feel oversized.
 const double _heroLogoScale = 0.22;
 
 /// Whether "I'm going" should be offered at all — no new event-status
-/// system (Step 2B §21's explicit instruction): reuses [Event.isCancelled]
-/// and the event's own [Event.endAt]. A top-level pure function, not
-/// inlined in build(), so it's directly unit-testable without a live
-/// Supabase session.
+/// system (Step 2B §21's explicit instruction, unchanged by the Events UI
+/// Consistency Step 1 redesign): reuses [Event.isCancelled] and the
+/// event's own [Event.endAt]. A top-level pure function, not inlined in
+/// build(), so it's directly unit-testable without a live Supabase
+/// session.
 bool canAttendEvent(Event event, {DateTime? now}) =>
     !event.isCancelled && event.endAt.isAfter(now ?? DateTime.now());
 
-/// Full event details: hero (renders event.imageUrl via DetailHero's
-/// backgroundImage slot when set, BoxFit.cover; branded CsImagePlaceholder
-/// fallback otherwise, via DetailHero's photoFallback slot — same pattern
-/// Restaurant/Hotel Detail's own hero already uses, just with a fallback
-/// image instead of a plain gradient), date/time, location, description,
-/// official links, and every linked restaurant/hotel — reusing
-/// RestaurantTile/HotelTile outright
-/// rather than a third venue-row widget, since those already navigate to
-/// the real Detail screens on tap.
+/// Full event details — Events UI Consistency Step 1: rebuilt onto the
+/// same editorial design language Restaurant/Hotel Detail established
+/// (ivory canvas, forest-green content, taupe secondary text, gold
+/// reserved for Michelin stars only, [SectionDivider] hairlines), while
+/// preserving every existing behavior: attendance, admission, linked
+/// venues, and navigation are all unchanged in substance, only in
+/// presentation. See docs/Architecture/EVENTS_UI_MICHELIN_PARTICIPATION.md
+/// for the full before/after and the Michelin-participation architecture.
+///
+/// Hero (image or branded monogram fallback, name, city/country, date
+/// range) → EVENT META (date/time, venue, admission) → ATTENDANCE (if
+/// [canAttendEvent]) → ABOUT (conditional, reusing [VenueAboutSection]
+/// outright) → MICHELIN AT THIS EVENT (conditional, Michelin-starred
+/// linked restaurants only) → HOTELS (conditional, preserved existing
+/// functionality, reskinned) → LOCATION / practical info (address +
+/// Website/Tickets, conditional as a whole).
 class EventDetailScreen extends StatefulWidget {
   final String eventId;
   const EventDetailScreen({super.key, required this.eventId});
@@ -136,7 +150,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         SnackBar(
           content: Text(
             'Could not update. Please try again.',
-            style: GoogleFonts.inter(color: AppColors.textPrimary),
+            style: GoogleFonts.inter(color: AppColors.textOnDark),
           ),
           backgroundColor: AppColors.error,
           duration: const Duration(seconds: 2),
@@ -152,14 +166,30 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     }
   }
 
+  void _openRestaurant(Restaurant restaurant) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+      ),
+    );
+  }
+
+  void _openHotel(Hotel hotel) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_loading) {
       return const Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: AppColors.deepGreen,
         body: Center(
           child: CircularProgressIndicator(
-            color: AppColors.gold,
+            color: AppColors.textOnDark,
             strokeWidth: 1.5,
           ),
         ),
@@ -168,11 +198,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     final event = _event;
     if (_loadError || event == null) {
       return Scaffold(
-        backgroundColor: AppColors.background,
+        backgroundColor: AppColors.ivory,
         appBar: AppBar(
-          backgroundColor: AppColors.background,
+          backgroundColor: AppColors.ivory,
           elevation: 0,
-          foregroundColor: AppColors.textPrimary,
+          foregroundColor: AppColors.forestGreen,
         ),
         body: Center(
           child: Column(
@@ -180,20 +210,22 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
             children: [
               const Icon(
                 Icons.wifi_off_rounded,
-                color: AppColors.textSecondary,
+                color: AppColors.taupe,
                 size: 40,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: CsSpacing.base),
               Text(
                 'Could not load this event',
-                style: GoogleFonts.inter(color: AppColors.textSecondary),
+                style: CsTypography.body.copyWith(color: AppColors.taupe),
               ),
-              const SizedBox(height: 12),
+              const SizedBox(height: CsSpacing.md),
               TextButton(
                 onPressed: _load,
                 child: Text(
                   'Retry',
-                  style: GoogleFonts.inter(color: AppColors.gold),
+                  style: CsTypography.bodyMedium.copyWith(
+                    color: AppColors.forestGreen,
+                  ),
                 ),
               ),
             ],
@@ -202,198 +234,130 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       );
     }
 
-    final location = [
-      if (event.venueName != null && event.venueName!.isNotEmpty)
-        event.venueName,
+    final cityCountryLine = [
       if (event.city != null && event.city!.isNotEmpty) event.city,
       event.countryCode,
-    ].join(', ');
+    ].join(' · ');
     final hasWebsite =
         event.officialUrl != null && event.officialUrl!.isNotEmpty;
     final hasTickets = event.ticketUrl != null && event.ticketUrl!.isNotEmpty;
-    final isFreeEntry = event.isFreeEntry;
+    final hasAddress = event.address != null && event.address!.isNotEmpty;
+    final hasLocationSection = hasAddress || hasWebsite || hasTickets;
     final ticketButtonLabel = event.admissionType == EventAdmissionType.mixed
         ? 'Optional ticket'
         : 'Tickets';
     final canAttend = canAttendEvent(event);
 
+    final hasImage = event.imageUrl != null && event.imageUrl!.isNotEmpty;
+    final backgroundImage = hasImage
+        ? Image.network(
+            event.imageUrl!,
+            fit: BoxFit.cover,
+            errorBuilder: (_, _, _) =>
+                const CsImagePlaceholder(logoScale: _heroLogoScale),
+          )
+        : const CsImagePlaceholder(logoScale: _heroLogoScale);
+
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.ivory,
       body: CustomScrollView(
         slivers: [
-          DetailHero(
+          EventDetailHero(
             title: event.name,
-            backgroundImage:
-                event.imageUrl != null && event.imageUrl!.isNotEmpty
-                ? Image.network(
-                    event.imageUrl!,
-                    fit: BoxFit.cover,
-                    // A failed load still gets the branded placeholder, not
-                    // a plain color block — see CsImagePlaceholder.
-                    errorBuilder: (_, _, _) =>
-                        const CsImagePlaceholder(logoScale: _heroLogoScale),
-                  )
-                : null,
-            // No image_url at all — same branded placeholder, via the
-            // hero's dedicated fallback slot (kept separate from
-            // backgroundImage so Restaurant/Hotel Detail, which never pass
-            // this, are completely unaffected).
-            photoFallback: event.imageUrl != null && event.imageUrl!.isNotEmpty
-                ? null
-                : const CsImagePlaceholder(logoScale: _heroLogoScale),
-            awardBadge: HeroBadge(
-              icon: Icons.event_rounded,
-              label: event.eventType.label,
-            ),
-            extraBadges: [
-              if (isFreeEntry)
-                const HeroBadge(
-                  icon: Icons.money_off_rounded,
-                  label: 'Free entry',
-                ),
-              if (event.isCancelled)
-                const HeroBadge(
-                  icon: Icons.cancel_outlined,
-                  label: 'Cancelled',
-                ),
-            ],
+            eventTypeLabel: event.eventType.label.toUpperCase(),
+            cityCountryLine: cityCountryLine,
+            dateRangeLine: formatEventDateRange(event).toUpperCase(),
+            backgroundImage: backgroundImage,
           ),
           SliverToBoxAdapter(
             child: Padding(
-              // No horizontal inset here — RestaurantTile/HotelTile below
-              // already carry their own 20px margin (they're designed for
-              // full-bleed lists, see Explore), so every OTHER child in
-              // this column pads itself individually instead, keeping a
-              // single consistent left/right edge throughout.
-              padding: const EdgeInsets.fromLTRB(0, 24, 0, 100),
+              padding: const EdgeInsets.fromLTRB(
+                CsSpacing.pageHorizontal,
+                CsSpacing.xl,
+                CsSpacing.pageHorizontal,
+                100,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(location, style: AppTypography.metadata),
-                  ),
-                  const SizedBox(height: 28),
-
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: DetailCard(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          _InfoRow(
-                            icon: Icons.calendar_today_rounded,
-                            text:
-                                '${formatEventDateTime(event.startAt)}\n'
-                                'to ${formatEventDateTime(event.endAt)}',
-                          ),
-                          if (event.address != null &&
-                              event.address!.isNotEmpty) ...[
-                            const SizedBox(height: 14),
-                            _InfoRow(
-                              icon: Icons.place_outlined,
-                              text: event.address!,
-                            ),
-                          ],
-                          if (event.admissionType !=
-                              EventAdmissionType.unknown) ...[
-                            const SizedBox(height: 14),
-                            _InfoRow(
-                              icon: isFreeEntry
-                                  ? Icons.money_off_rounded
-                                  : Icons.confirmation_number_outlined,
-                              text:
-                                  event.admissionNote != null &&
-                                      event.admissionNote!.isNotEmpty
-                                  ? event.admissionNote!
-                                  : event.admissionType.label,
-                            ),
-                          ],
-                        ],
-                      ),
-                    ),
-                  ),
+                  EventMetaSection(event: event),
 
                   if (canAttend) ...[
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: EventGoingButton(
-                        going: _going,
-                        busy: _attendanceBusy,
-                        onTap: _toggleGoing,
-                      ),
+                    const SectionDivider(),
+                    EventGoingButton(
+                      going: _going,
+                      busy: _attendanceBusy,
+                      onTap: _toggleGoing,
                     ),
                   ],
 
                   if (event.description != null &&
-                      event.description!.isNotEmpty)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 28),
-                          const SectionLabel('ABOUT'),
-                          const SizedBox(height: 12),
-                          Text(event.description!, style: AppTypography.body),
-                        ],
-                      ),
-                    ),
-
-                  if (hasWebsite || hasTickets)
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 28),
-                          Row(
-                            children: [
-                              if (hasWebsite)
-                                Expanded(
-                                  child: SecondaryButton(
-                                    icon: Icons.language_rounded,
-                                    label: 'Website',
-                                    onTap: () => _openUrl(event.officialUrl!),
-                                  ),
-                                ),
-                              if (hasWebsite && hasTickets)
-                                const SizedBox(width: 8),
-                              if (hasTickets)
-                                Expanded(
-                                  child: SecondaryButton(
-                                    icon: Icons.confirmation_number_outlined,
-                                    label: ticketButtonLabel,
-                                    onTap: () => _openUrl(event.ticketUrl!),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
+                      event.description!.isNotEmpty) ...[
+                    const SectionDivider(),
+                    VenueAboutSection(text: event.description),
+                  ],
 
                   if (_venues.restaurants.isNotEmpty) ...[
-                    const SizedBox(height: 28),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: SectionLabel(
-                        'RESTAURANTS (${_venues.restaurants.length})',
-                      ),
+                    const SectionDivider(),
+                    MichelinAtEventSection(
+                      restaurants: _venues.restaurants,
+                      onTapRestaurant: _openRestaurant,
                     ),
-                    const SizedBox(height: 12),
-                    for (final restaurant in _venues.restaurants)
-                      RestaurantTile(restaurant: restaurant),
                   ],
 
                   if (_venues.hotels.isNotEmpty) ...[
-                    const SizedBox(height: 28),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: SectionLabel('HOTELS (${_venues.hotels.length})'),
+                    const SectionDivider(),
+                    Text(
+                      'HOTELS',
+                      style: CsTypography.eyebrow.copyWith(
+                        color: AppColors.taupe,
+                      ),
                     ),
-                    const SizedBox(height: 12),
-                    for (final hotel in _venues.hotels) HotelTile(hotel: hotel),
+                    const SizedBox(height: CsSpacing.md),
+                    for (var i = 0; i < _venues.hotels.length; i++) ...[
+                      if (i > 0) const SizedBox(height: 10),
+                      LinkedVenueRow(
+                        name: _venues.hotels[i].name,
+                        onTap: () => _openHotel(_venues.hotels[i]),
+                      ),
+                    ],
+                  ],
+
+                  if (hasLocationSection) ...[
+                    const SectionDivider(),
+                    Text(
+                      'LOCATION',
+                      style: CsTypography.eyebrow.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    ),
+                    const SizedBox(height: CsSpacing.md),
+                    if (hasAddress)
+                      Text(
+                        event.address!,
+                        style: CsTypography.body.copyWith(
+                          color: AppColors.forestGreen,
+                        ),
+                      ),
+                    if (hasAddress && (hasWebsite || hasTickets))
+                      const SizedBox(height: CsSpacing.md),
+                    if (hasWebsite || hasTickets)
+                      Row(
+                        children: [
+                          if (hasWebsite)
+                            SubtleTextAction(
+                              label: 'Website',
+                              onTap: () => _openUrl(event.officialUrl!),
+                            ),
+                          if (hasWebsite && hasTickets)
+                            const SizedBox(width: CsSpacing.xl),
+                          if (hasTickets)
+                            SubtleTextAction(
+                              label: ticketButtonLabel,
+                              onTap: () => _openUrl(event.ticketUrl!),
+                            ),
+                        ],
+                      ),
                   ],
                 ],
               ),
@@ -403,28 +367,4 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       ),
     );
   }
-}
-
-class _InfoRow extends StatelessWidget {
-  final IconData icon;
-  final String text;
-  const _InfoRow({required this.icon, required this.text});
-
-  @override
-  Widget build(BuildContext context) => Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Icon(icon, color: AppColors.textSecondary, size: 16),
-      const SizedBox(width: 10),
-      Expanded(
-        child: Text(
-          text,
-          style: GoogleFonts.inter(
-            color: AppColors.textSecondary,
-            fontSize: 14,
-          ),
-        ),
-      ),
-    ],
-  );
 }
