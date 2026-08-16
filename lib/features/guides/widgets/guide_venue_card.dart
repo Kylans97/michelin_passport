@@ -50,8 +50,8 @@ class GuideVenueCard extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
-        splashColor: AppColors.textOnDark.withValues(alpha: 0.06),
-        highlightColor: AppColors.textOnDark.withValues(alpha: 0.04),
+        splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
+        highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
           child: Row(
@@ -78,7 +78,7 @@ class GuideVenueCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: CsTypography.placeTitle.copyWith(
                         fontSize: 17,
-                        color: AppColors.textOnDark,
+                        color: AppColors.forestGreen,
                       ),
                     ),
                     if (locationLabel.isNotEmpty) ...[
@@ -88,7 +88,7 @@ class GuideVenueCard extends StatelessWidget {
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: CsTypography.metadata.copyWith(
-                          color: AppColors.secondaryOnDark,
+                          color: AppColors.taupe,
                         ),
                       ),
                     ],
@@ -107,14 +107,25 @@ class GuideVenueCard extends StatelessWidget {
   );
 }
 
-/// A 0.5px hairline between [GuideVenueCard] rows — the same treatment
-/// [GuideFamilySection] already uses under each family title, reused here
-/// so a long results list reads as one continuous editorial index rather
-/// than a stack of separate cards.
+/// A hairline between [GuideVenueCard] rows (and, since Step 1A, between
+/// destinations inside a [GuideFamilySection] ivory block) — at zero
+/// vertical margin here rather than [SectionDivider]'s generous
+/// [CsSpacing.lg] padding: a dense results list needs a tight separator
+/// between rows, not the wide gap [SectionDivider] uses between major page
+/// sections.
+///
+/// Step 1A: physical-device review found the original 0.5px/taupe-40%
+/// treatment nearly invisible against the ivory canvas. Rather than invent
+/// an unproven new value, this now uses [SectionDivider]'s own already
+/// on-device-approved thickness (0.75px) at a modestly higher opacity
+/// (taupe 55%, up from 40%) — [SectionDivider] itself (used by Restaurant/
+/// Hotel/Event Detail) is deliberately left unchanged, since a list of
+/// many rows needs a touch more contrast than a rule between two large
+/// text blocks does.
 class GuideVenueCardDivider extends StatelessWidget {
   const GuideVenueCardDivider({super.key});
 
   @override
   Widget build(BuildContext context) =>
-      Container(height: 0.5, color: AppColors.subtleBorderDark);
+      Container(height: 0.75, color: AppColors.taupe.withValues(alpha: 0.55));
 }

@@ -16,13 +16,18 @@ import '../theme/cs_surface_context.dart';
 /// row already passed through.
 ///
 /// [surface] is optional and defaults to null, which keeps the original
-/// light-surface trigger styling exactly as it always was — Events (which
-/// doesn't pass it) is completely unaffected. Passing [CsSurface.dark]
-/// switches to a small outlined/tonal look for a deep-green environment
-/// (Explore's redesign), mirroring YearFilterControl's own dark-surface
-/// support exactly, including "no gold" (a selected country reads in
-/// [AppColors.textOnDark], not brass, on a dark surface). The picker sheet
-/// itself is unchanged either way — same established light-modal pattern.
+/// legacy light-surface trigger styling exactly as it always was — Events
+/// (which doesn't pass it) is completely unaffected. Passing
+/// [CsSurface.dark] switches to a small outlined/tonal look for a
+/// deep-green environment (Explore's redesign), mirroring
+/// YearFilterControl's own dark-surface support exactly, including "no
+/// gold" (a selected country reads in [AppColors.textOnDark], not brass,
+/// on a dark surface). Passing [CsSurface.light] explicitly (Guides'
+/// ivory-canvas catalogues) uses the redesigned ivory-canvas palette
+/// instead — [AppColors.forestGreen]/[AppColors.taupe], never
+/// [AppColors.gold] — distinct from the legacy null default so Events'
+/// current look is untouched by this addition. The picker sheet itself is
+/// unchanged in every case — same established light-modal pattern.
 class CountryFilterControl extends StatelessWidget {
   final VenueCountry? selected;
   final List<VenueCountry> countries;
@@ -57,16 +62,35 @@ class CountryFilterControl extends StatelessWidget {
   Widget build(BuildContext context) {
     final label = selected == null ? 'All countries' : selected!.name;
     final onDark = surface == CsSurface.dark;
+    final onLight = surface == CsSurface.light;
 
-    final background = onDark ? Colors.transparent : AppColors.surface;
-    final border = onDark ? AppColors.subtleBorderDark : AppColors.cardBorder;
-    final neutralColor = onDark
-        ? AppColors.secondaryOnDark
-        : AppColors.textSecondary;
-    final selectedColor = onDark ? AppColors.textOnDark : AppColors.gold;
+    final Color background;
+    final Color border;
+    final Color neutralColor;
+    final Color selectedColor;
+    if (onDark) {
+      background = Colors.transparent;
+      border = AppColors.subtleBorderDark;
+      neutralColor = AppColors.secondaryOnDark;
+      selectedColor = AppColors.textOnDark;
+    } else if (onLight) {
+      background = Colors.transparent;
+      border = AppColors.subtleBorderLight;
+      neutralColor = AppColors.taupe;
+      selectedColor = AppColors.forestGreen;
+    } else {
+      background = AppColors.surface;
+      border = AppColors.cardBorder;
+      neutralColor = AppColors.textSecondary;
+      selectedColor = AppColors.gold;
+    }
     final iconColor = selected == null ? neutralColor : selectedColor;
     final textColor = selected == null
-        ? (onDark ? AppColors.textOnDark : AppColors.textPrimary)
+        ? (onDark
+              ? AppColors.textOnDark
+              : onLight
+              ? AppColors.forestGreen
+              : AppColors.textPrimary)
         : selectedColor;
 
     return Material(

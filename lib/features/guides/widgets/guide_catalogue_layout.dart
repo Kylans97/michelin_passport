@@ -3,6 +3,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/editorial_back_button.dart';
+import 'guide_venue_card.dart';
 
 /// The shared shell every Guide catalogue screen sits on top of —
 /// deliberately presentation-only. It knows a catalogue has a source
@@ -68,18 +69,18 @@ class GuideCatalogueLayout extends StatelessWidget {
     children: [
       Text(
         source,
-        style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+        style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
       ),
       const SizedBox(height: CsSpacing.xs),
       Text(
         title,
-        style: CsTypography.screenTitle.copyWith(color: AppColors.textOnDark),
+        style: CsTypography.screenTitle.copyWith(color: AppColors.forestGreen),
       ),
       if (subtitle != null) ...[
         const SizedBox(height: CsSpacing.sm),
         Text(
           subtitle!,
-          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+          style: CsTypography.body.copyWith(color: AppColors.taupe),
         ),
       ],
     ],
@@ -108,13 +109,26 @@ class GuideCatalogueLayout extends StatelessWidget {
                 ),
                 child: _header(),
               ),
-              const SizedBox(height: CsSpacing.section),
+              // GuideVenueCardDivider's own token (Step 1A: physical-device
+              // review found the shared SectionDivider's 40%-alpha taupe
+              // too faint here) wrapped in SectionDivider's own generous
+              // vertical rhythm — [SectionDivider] itself stays untouched,
+              // since it's shared with Restaurant/Hotel/Event Detail.
+              const Padding(
+                padding: EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.lg,
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.lg,
+                ),
+                child: GuideVenueCardDivider(),
+              ),
               Expanded(child: content!),
             ],
           );
 
     return Scaffold(
-      backgroundColor: AppColors.deepGreen,
+      backgroundColor: AppColors.ivory,
       body: SafeArea(
         child: Column(
           children: [
@@ -127,7 +141,7 @@ class GuideCatalogueLayout extends StatelessWidget {
               ),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: EditorialBackButton(),
+                child: EditorialBackButton(color: AppColors.forestGreen),
               ),
             ),
             Expanded(child: body),

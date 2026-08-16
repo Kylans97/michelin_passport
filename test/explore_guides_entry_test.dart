@@ -17,7 +17,7 @@ const _label = 'Browse the Guides';
 const _descriptor = "Michelin, World's 50 Best & Gault&Millau.";
 
 Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
+  home: Scaffold(backgroundColor: AppColors.ivory, body: child),
 );
 
 void main() {
@@ -68,7 +68,7 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.deepGreen,
+              backgroundColor: AppColors.ivory,
               body: GuideDestinationRow(
                 label: _label,
                 descriptor: _descriptor,

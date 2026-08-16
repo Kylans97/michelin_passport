@@ -19,9 +19,9 @@ import '../../../core/constants/app_colors.dart';
 /// choice. [YearFilterControl] itself is completely unchanged by this file
 /// existing.
 ///
-/// Always on the deep-green Guides canvas — unlike [YearFilterControl],
-/// there's no light-surface variant to support, so [CsSurface] isn't a
-/// parameter here.
+/// Always on the ivory Guides canvas — unlike [YearFilterControl], there's
+/// no dark-surface variant to support, so [CsSurface] isn't a parameter
+/// here.
 class GuideYearSelector extends StatelessWidget {
   final List<int> years; // descending, deduplicated
   final int selectedYear;
@@ -56,7 +56,7 @@ class GuideYearSelector extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: AppColors.subtleBorderDark, width: 0.5),
+          border: Border.all(color: AppColors.subtleBorderLight, width: 0.5),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -64,7 +64,7 @@ class GuideYearSelector extends StatelessWidget {
             Text(
               '$selectedYear',
               style: GoogleFonts.inter(
-                color: AppColors.textOnDark,
+                color: AppColors.forestGreen,
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
               ),
@@ -72,7 +72,7 @@ class GuideYearSelector extends StatelessWidget {
             const SizedBox(width: 4),
             const Icon(
               Icons.arrow_drop_down_rounded,
-              color: AppColors.secondaryOnDark,
+              color: AppColors.taupe,
               size: 20,
             ),
           ],
@@ -164,13 +164,13 @@ class _GuideYearTile extends StatelessWidget {
     title: Text(
       '$year',
       style: GoogleFonts.inter(
-        color: selected ? AppColors.gold : AppColors.textPrimary,
+        color: selected ? AppColors.forestGreen : AppColors.textPrimary,
         fontSize: 14.5,
         fontWeight: selected ? FontWeight.w700 : FontWeight.w500,
       ),
     ),
     trailing: selected
-        ? const Icon(Icons.check_rounded, color: AppColors.gold)
+        ? const Icon(Icons.check_rounded, color: AppColors.forestGreen)
         : null,
   );
 }

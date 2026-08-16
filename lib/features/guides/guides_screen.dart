@@ -32,7 +32,7 @@ import 'widgets/guide_family_section.dart';
 /// anywhere above it (confirmed by an on-device A/B rebuild: identical
 /// widgets, wrapped in a [Scaffold] vs. not, only underline when not),
 /// which is what produced the faint underline artifact under "GUIDES",
-/// its intro line and each family eyebrow — [GuideDestinationRow]'s own
+/// its intro line and each family title — [GuideDestinationRow]'s own
 /// labels were never affected, since that widget wraps its own local
 /// [Material]. Matches [GuideCatalogueLayout]'s own established pattern.
 class GuidesScreen extends StatelessWidget {
@@ -41,7 +41,7 @@ class GuidesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.deepGreen,
+      backgroundColor: AppColors.forestGreen,
       body: SafeArea(
         child: Column(
           children: [
@@ -54,7 +54,7 @@ class GuidesScreen extends StatelessWidget {
               ),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: EditorialBackButton(),
+                child: EditorialBackButton(color: AppColors.ivory),
               ),
             ),
             const Expanded(child: _GuidesBody()),
@@ -84,10 +84,11 @@ class _GuidesBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const _GuidesHeader(),
-          // ~12.5% less than CsSpacing.section (40) per physical-device
-          // review — still generous editorial breathing room, just not
-          // as wide as the gap between two guide families below.
-          const SizedBox(height: 35),
+          // Same rhythm as the gap between two ivory family blocks below
+          // (Step 1A) — one repeated unit of forest-green canvas, so the
+          // page reads as composed rather than using a bespoke one-off gap
+          // just for the header.
+          const SizedBox(height: CsSpacing.section),
           GuideFamilySection(
             title: 'MICHELIN GUIDE',
             destinations: [
@@ -151,7 +152,7 @@ class _GuidesHeader extends StatelessWidget {
     children: [
       Text(
         'GUIDES',
-        style: CsTypography.screenTitle.copyWith(color: AppColors.textOnDark),
+        style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
       ),
       const SizedBox(height: CsSpacing.xs),
       Text(

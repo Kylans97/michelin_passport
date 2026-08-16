@@ -14,10 +14,10 @@ import '../../../core/theme/cs_typography.dart';
 /// brief's own stated preference: clearer, less decorative. Cormorant
 /// Garamond (CsTypography.largeMetric — "a serif numeral treatment for
 /// scores/ratings/counts", already the app's established "this is a
-/// number worth reading, not a heading" role) at a subdued secondaryOnDark
-/// tone, deliberately not gold and not a badge/circle — the brief is
-/// explicit that the rank should read as editorial, not as a sports
-/// leaderboard position.
+/// number worth reading, not a heading" role) at a subdued taupe tone,
+/// deliberately not gold and not a badge/circle — the brief is explicit
+/// that the rank should read as editorial, not as a sports leaderboard
+/// position.
 ///
 /// Rendered in a fixed-width box (wide enough for "#100") so the venue
 /// text column that follows always starts at the same horizontal position
@@ -36,7 +36,7 @@ class GuideRankMark extends StatelessWidget {
     child: Text(
       '#$rank',
       style: CsTypography.largeMetric.copyWith(
-        color: AppColors.secondaryOnDark,
+        color: AppColors.taupe,
         fontSize: 20,
       ),
     ),

@@ -12,8 +12,8 @@ import '../../../core/theme/cs_typography.dart';
 /// settings-style rows — as a deliberately different, more "table of
 /// contents" cue that this is an index entry, not a settings item.
 ///
-/// Splash/highlight are a faint ivory tint rather than Material's default
-/// ripple, which would read wrong against the deep-green canvas.
+/// Splash/highlight are a faint forest-green tint rather than Material's
+/// default ripple, matching the ivory canvas.
 class GuideDestinationRow extends StatelessWidget {
   final String label;
   final String descriptor;
@@ -36,8 +36,8 @@ class GuideDestinationRow extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
-        splashColor: AppColors.textOnDark.withValues(alpha: 0.06),
-        highlightColor: AppColors.textOnDark.withValues(alpha: 0.04),
+        splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
+        highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
           child: Column(
@@ -52,14 +52,14 @@ class GuideDestinationRow extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: CsTypography.placeTitle.copyWith(
-                        color: AppColors.textOnDark,
+                        color: AppColors.forestGreen,
                       ),
                     ),
                   ),
                   const SizedBox(width: CsSpacing.sm),
                   const Icon(
                     Icons.arrow_forward_rounded,
-                    color: AppColors.secondaryOnDark,
+                    color: AppColors.taupe,
                     size: 18,
                   ),
                 ],
@@ -70,12 +70,12 @@ class GuideDestinationRow extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 // A VERY slight size step down from CsTypography.metadata's
-                // 14 (not a color change — secondaryOnDark's contrast is
+                // 14 (not a color change — taupe's contrast on ivory is
                 // already-audited and legible; per physical-device review,
                 // 13 was enough on its own to read as clearly subordinate
                 // to the label without going anywhere near faint).
                 style: CsTypography.metadata.copyWith(
-                  color: AppColors.secondaryOnDark,
+                  color: AppColors.taupe,
                   fontSize: 13,
                 ),
               ),

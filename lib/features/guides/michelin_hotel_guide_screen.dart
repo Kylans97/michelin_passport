@@ -143,7 +143,7 @@ class _MichelinHotelGuideScreenState extends State<MichelinHotelGuideScreen> {
                 selected: _country,
                 countries: snap.data ?? const [],
                 onChanged: _onCountryChanged,
-                surface: CsSurface.dark,
+                surface: CsSurface.light,
               ),
             ),
           ),
@@ -211,7 +211,7 @@ class _ResultCountLine extends StatelessWidget {
     children: [
       Text(
         count == 1 ? '1 place' : '$count places',
-        style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+        style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
       ),
       if (loading) ...[
         const SizedBox(width: CsSpacing.sm),
@@ -219,7 +219,7 @@ class _ResultCountLine extends StatelessWidget {
           width: 10,
           height: 10,
           child: CircularProgressIndicator(
-            color: AppColors.secondaryOnDark,
+            color: AppColors.taupe,
             strokeWidth: 1.2,
           ),
         ),

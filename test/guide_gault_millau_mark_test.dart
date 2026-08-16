@@ -118,7 +118,7 @@ void main() {
 
   group('GuideGaultMillauMark', () {
     Widget wrap(Widget child) => MaterialApp(
-      home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
+      home: Scaffold(backgroundColor: AppColors.ivory, body: child),
     );
 
     testWidgets('renders a scored award', (tester) async {
@@ -182,7 +182,7 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.deepGreen,
+              backgroundColor: AppColors.ivory,
               body: SizedBox(
                 width: 200,
                 child: GuideGaultMillauMark(

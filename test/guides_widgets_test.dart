@@ -5,12 +5,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_destination_row.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_family_section.dart';
+import 'package:michelin_passport/features/guides/widgets/guide_venue_card.dart';
 
+// Step 1A: both widgets now live on GuidesScreen's forest-green canvas —
+// GuideFamilySection paints its own ivory block on top of it.
 Widget _wrap(Widget child, {double width = 390}) => MaterialApp(
   home: Scaffold(
-    backgroundColor: AppColors.deepGreen,
+    backgroundColor: AppColors.forestGreen,
     body: SizedBox(
       width: width,
       child: SingleChildScrollView(child: child),
@@ -104,7 +108,7 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.deepGreen,
+              backgroundColor: AppColors.forestGreen,
               body: SizedBox(
                 width: 320,
                 child: GuideDestinationRow(
@@ -151,8 +155,8 @@ void main() {
     });
 
     testWidgets(
-      'renders no divider/hairline under the family title (spacing-only '
-      'hierarchy, TRIPS+GUIDES MICRO-POLISH)',
+      'renders as an ivory editorial block — no border, no shadow, only a '
+      'modest corner radius (Step 1A: forest-green canvas + ivory blocks)',
       (tester) async {
         await tester.pumpWidget(
           _wrap(
@@ -173,26 +177,94 @@ void main() {
             ),
           ),
         );
-        expect(find.byType(Divider), findsNothing);
-        // GuideFamilySection itself contributes no Container/DecoratedBox at
-        // all — every Container found here belongs to GuideDestinationRow's
-        // own InkWell/Padding machinery, none of which paints a border. The
-        // stronger, decoration-level assertion below is the one that would
-        // actually have caught the original bug (a bordered/colored
-        // Container standing in for a hairline).
-        for (final element in tester.widgetList<Container>(
-          find.byType(Container),
-        )) {
-          expect(element.decoration, isNull);
-        }
-        for (final element in tester.widgetList<DecoratedBox>(
-          find.byType(DecoratedBox),
-        )) {
-          final decoration = element.decoration;
-          if (decoration is BoxDecoration) {
-            expect(decoration.border, isNull);
-          }
-        }
+        final container = tester.widget<Container>(
+          find.byType(Container).first,
+        );
+        final decoration = container.decoration! as BoxDecoration;
+        expect(decoration.color, AppColors.ivory);
+        expect(decoration.border, isNull);
+        expect(decoration.boxShadow, anyOf(isNull, isEmpty));
+        expect(decoration.borderRadius, BorderRadius.circular(CsRadius.medium));
+      },
+    );
+
+    testWidgets(
+      'shows exactly one internal hairline between two destinations, never '
+      'gold and never a thick forest-green rule (Step 1A)',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            GuideFamilySection(
+              title: 'MICHELIN GUIDE',
+              destinations: [
+                GuideDestinationRow(
+                  label: 'Restaurants',
+                  descriptor: 'x',
+                  onTap: () {},
+                ),
+                GuideDestinationRow(
+                  label: 'Hotels',
+                  descriptor: 'y',
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+        );
+        expect(find.byType(GuideVenueCardDivider), findsOneWidget);
+      },
+    );
+
+    testWidgets('a single-destination family (Gault&Millau) shows no internal '
+        'hairline — nothing to separate', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          GuideFamilySection(
+            title: 'GAULT&MILLAU',
+            destinations: [
+              GuideDestinationRow(
+                label: 'Restaurants',
+                descriptor: 'x',
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      );
+      expect(find.byType(GuideVenueCardDivider), findsNothing);
+    });
+
+    testWidgets(
+      'the family title reads larger than each destination label and stays '
+      'forest-green (Step 1A hierarchy: masthead > navigation label)',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            GuideFamilySection(
+              title: 'MICHELIN GUIDE',
+              destinations: [
+                GuideDestinationRow(
+                  label: 'Restaurants',
+                  descriptor: 'x',
+                  onTap: () {},
+                ),
+                GuideDestinationRow(
+                  label: 'Hotels',
+                  descriptor: 'y',
+                  onTap: () {},
+                ),
+              ],
+            ),
+          ),
+        );
+        final titleText = tester.widget<Text>(find.text('MICHELIN GUIDE'));
+        final labelText = tester.widget<Text>(find.text('Restaurants'));
+        expect(
+          titleText.style!.fontSize,
+          greaterThan(labelText.style!.fontSize!),
+        );
+        expect(titleText.style!.color, AppColors.forestGreen);
+        expect(titleText.style!.color, isNot(AppColors.gold));
       },
     );
 

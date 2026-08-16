@@ -229,7 +229,7 @@ class _FiftyBestRestaurantGuideScreenState
                   selected: _country,
                   countries: _countryOptions,
                   onChanged: _onCountryChanged,
-                  surface: CsSurface.dark,
+                  surface: CsSurface.light,
                 ),
               ),
             ),

@@ -7,7 +7,7 @@ import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_year_selector.dart';
 
 Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
+  home: Scaffold(backgroundColor: AppColors.ivory, body: child),
 );
 
 void main() {
@@ -70,6 +70,32 @@ void main() {
       // icon (only rendered inside the now-dismissed sheet) confirms the
       // sheet itself is gone.
       expect(find.byIcon(Icons.check_rounded), findsNothing);
+    });
+
+    testWidgets('the selected year is never rendered in gold — gold is '
+        'reserved for Michelin stars/Keys only', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          GuideYearSelector(
+            years: const [2025, 2024, 2023],
+            selectedYear: 2025,
+            onSelect: (_) {},
+          ),
+        ),
+      );
+      await tester.tap(find.text('2025'));
+      await tester.pumpAndSettle();
+
+      final checkIcon = tester.widget<Icon>(find.byIcon(Icons.check_rounded));
+      expect(checkIcon.color, isNot(AppColors.gold));
+      expect(checkIcon.color, AppColors.forestGreen);
+
+      final selectedRow = tester.widget<Text>(
+        find
+            .descendant(of: find.byType(ListTile), matching: find.text('2025'))
+            .last,
+      );
+      expect(selectedRow.style?.color, isNot(AppColors.gold));
     });
 
     testWidgets('a single-year list still renders without overflow', (

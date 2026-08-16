@@ -13,7 +13,7 @@ import 'package:michelin_passport/models/gault_millau_award.dart';
 
 Widget _wrap(Widget child, {double width = 390}) => MaterialApp(
   home: Scaffold(
-    backgroundColor: AppColors.deepGreen,
+    backgroundColor: AppColors.ivory,
     body: SizedBox(width: width, child: child),
   ),
 );
@@ -97,7 +97,7 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.deepGreen,
+              backgroundColor: AppColors.ivory,
               body: SizedBox(
                 width: 320,
                 child: GuideVenueCard(
@@ -216,7 +216,7 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.deepGreen,
+              backgroundColor: AppColors.ivory,
               body: SizedBox(
                 width: 320,
                 child: GuideVenueCard(
@@ -319,5 +319,18 @@ void main() {
       expect(find.byType(GuideVenueCardDivider), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets(
+      'Step 1A: uses the strengthened, unmistakably-visible taupe token — '
+      'never gold, never a heavy/dark rule',
+      (tester) async {
+        await tester.pumpWidget(_wrap(const GuideVenueCardDivider()));
+        final container = tester.widget<Container>(find.byType(Container));
+        expect(container.constraints?.maxHeight, 0.75);
+        expect(container.color, AppColors.taupe.withValues(alpha: 0.55));
+        expect(container.color, isNot(AppColors.gold));
+        expect(container.color, isNot(AppColors.forestGreen));
+      },
+    );
   });
 }

@@ -211,7 +211,7 @@ class _FiftyBestHotelGuideScreenState extends State<FiftyBestHotelGuideScreen> {
                   selected: _country,
                   countries: _countryOptions,
                   onChanged: _onCountryChanged,
-                  surface: CsSurface.dark,
+                  surface: CsSurface.light,
                 ),
               ),
             ),

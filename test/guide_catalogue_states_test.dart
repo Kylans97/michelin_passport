@@ -8,7 +8,7 @@ import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_catalogue_states.dart';
 
 Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
+  home: Scaffold(backgroundColor: AppColors.ivory, body: child),
 );
 
 void main() {

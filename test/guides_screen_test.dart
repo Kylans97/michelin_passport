@@ -14,9 +14,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/guides/guides_screen.dart';
 
-Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
-);
+Widget _wrap(Widget child) => MaterialApp(home: child);
 
 void main() {
   group('GuidesScreen', () {
@@ -31,6 +29,36 @@ void main() {
       );
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets(
+      'Step 1A: canvas is forest-green, GUIDES/back arrow are ivory, with '
+      'three ivory family blocks visible on top of it',
+      (tester) async {
+        await tester.pumpWidget(_wrap(const GuidesScreen()));
+
+        final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
+        expect(scaffold.backgroundColor, AppColors.forestGreen);
+
+        final title = tester.widget<Text>(find.text('GUIDES'));
+        expect(title.style!.color, AppColors.ivory);
+
+        final backIcon = tester.widget<Icon>(
+          find.byIcon(Icons.arrow_back_ios_new_rounded),
+        );
+        expect(backIcon.color, AppColors.ivory);
+
+        // One ivory-decorated Container per family block — Michelin,
+        // World's 50 Best, Gault&Millau.
+        final ivoryBlocks = tester
+            .widgetList<Container>(find.byType(Container))
+            .where((c) {
+              final decoration = c.decoration;
+              return decoration is BoxDecoration &&
+                  decoration.color == AppColors.ivory;
+            });
+        expect(ivoryBlocks.length, 3);
+      },
+    );
 
     testWidgets('renders the Michelin Guide family with Restaurants and '
         'Hotels destinations', (tester) async {
@@ -114,10 +142,7 @@ void main() {
         MaterialApp(
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
-            child: Scaffold(
-              backgroundColor: AppColors.deepGreen,
-              body: const GuidesScreen(),
-            ),
+            child: const GuidesScreen(),
           ),
         ),
       );

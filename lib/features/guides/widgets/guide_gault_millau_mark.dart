@@ -53,9 +53,9 @@ String? formatGaultMillauDistinction(GaultMillauAward award) {
 /// Michelin/World's 50 Best. Presentation-only: knows nothing about
 /// Supabase, repositories, or business logic, per the Step 2D brief.
 ///
-/// Deliberately plain text at the established `secondaryOnDark` metadata
-/// tone — no badge, no gold treatment, no gradient (the brief is explicit
-/// that recognition strength must never be color-coded alone, and that this
+/// Deliberately plain text at the established `taupe` metadata tone — no
+/// badge, no gold treatment, no gradient (the brief is explicit that
+/// recognition strength must never be color-coded alone, and that this
 /// widget should match the app's quiet editorial aesthetic rather than
 /// reach for a "gold guide" cliché).
 class GuideGaultMillauMark extends StatelessWidget {
@@ -70,7 +70,7 @@ class GuideGaultMillauMark extends StatelessWidget {
     return Text(
       text,
       style: CsTypography.metadata.copyWith(
-        color: AppColors.secondaryOnDark,
+        color: AppColors.taupe,
         fontWeight: FontWeight.w600,
       ),
     );

@@ -7,7 +7,7 @@ import 'package:michelin_passport/features/guides/widgets/guide_rank_mark.dart';
 
 Widget _wrap(Widget child, {double width = 390}) => MaterialApp(
   home: Scaffold(
-    backgroundColor: AppColors.deepGreen,
+    backgroundColor: AppColors.ivory,
     body: SizedBox(width: width, child: child),
   ),
 );
@@ -46,7 +46,7 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.deepGreen,
+              backgroundColor: AppColors.ivory,
               body: const SizedBox(width: 320, child: GuideRankMark(rank: 100)),
             ),
           ),

@@ -14,7 +14,7 @@ class GuideCatalogueLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) => const Center(
     child: CircularProgressIndicator(
-      color: AppColors.textOnDark,
+      color: AppColors.forestGreen,
       strokeWidth: 1.5,
     ),
   );
@@ -53,7 +53,7 @@ class GuideCatalogueEmptyState extends StatelessWidget {
             'No places found',
             textAlign: TextAlign.center,
             style: CsTypography.placeTitle.copyWith(
-              color: AppColors.textOnDark,
+              color: AppColors.forestGreen,
             ),
           ),
           const SizedBox(height: CsSpacing.xs),
@@ -62,9 +62,7 @@ class GuideCatalogueEmptyState extends StatelessWidget {
                 ? 'Try adjusting your search or filters.'
                 : 'This guide has no places to show yet.',
             textAlign: TextAlign.center,
-            style: CsTypography.metadata.copyWith(
-              color: AppColors.secondaryOnDark,
-            ),
+            style: CsTypography.metadata.copyWith(color: AppColors.taupe),
           ),
         ],
       ),
@@ -95,7 +93,7 @@ class GuideResultCountLine extends StatelessWidget {
     children: [
       Text(
         count == 1 ? '1 place' : '$count places',
-        style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+        style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
       ),
       if (loading) ...[
         const SizedBox(width: CsSpacing.sm),
@@ -103,7 +101,7 @@ class GuideResultCountLine extends StatelessWidget {
           width: 10,
           height: 10,
           child: CircularProgressIndicator(
-            color: AppColors.secondaryOnDark,
+            color: AppColors.taupe,
             strokeWidth: 1.2,
           ),
         ),
@@ -128,16 +126,12 @@ class GuideCatalogueErrorState extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(
-            Icons.wifi_off_rounded,
-            color: AppColors.secondaryOnDark,
-            size: 32,
-          ),
+          const Icon(Icons.wifi_off_rounded, color: AppColors.taupe, size: 32),
           const SizedBox(height: CsSpacing.base),
           Text(
             'Unable to load places',
             textAlign: TextAlign.center,
-            style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+            style: CsTypography.body.copyWith(color: AppColors.taupe),
           ),
           const SizedBox(height: CsSpacing.md),
           TextButton(
@@ -145,7 +139,7 @@ class GuideCatalogueErrorState extends StatelessWidget {
             child: Text(
               'Retry',
               style: CsTypography.bodyMedium.copyWith(
-                color: AppColors.textOnDark,
+                color: AppColors.forestGreen,
               ),
             ),
           ),

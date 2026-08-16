@@ -19,13 +19,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_catalogue_layout.dart';
+import 'package:michelin_passport/features/guides/widgets/guide_venue_card.dart';
 
 Widget _wrap(Widget child) => MaterialApp(home: child);
 
 void main() {
   group('GuideCatalogueLayout', () {
-    testWidgets('renders source, title and subtitle on a deep-green '
-        'canvas', (tester) async {
+    testWidgets('renders source, title and subtitle on the ivory canvas', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         _wrap(
           const GuideCatalogueLayout(
@@ -36,7 +38,7 @@ void main() {
         ),
       );
       final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
-      expect(scaffold.backgroundColor, AppColors.deepGreen);
+      expect(scaffold.backgroundColor, AppColors.ivory);
       expect(find.text('MICHELIN GUIDE'), findsOneWidget);
       expect(find.text('Restaurants'), findsOneWidget);
       expect(find.text('A subtitle.'), findsOneWidget);
@@ -99,6 +101,34 @@ void main() {
         ),
       );
       expect(find.text('future filter/list content'), findsOneWidget);
+    });
+
+    testWidgets('shows a hairline between the header and content when '
+        'content is present', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          const GuideCatalogueLayout(
+            source: 'MICHELIN GUIDE',
+            title: 'Restaurants',
+            content: Text('future filter/list content'),
+          ),
+        ),
+      );
+      expect(find.byType(GuideVenueCardDivider), findsOneWidget);
+    });
+
+    testWidgets('shows no hairline when there is no content to separate', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          const GuideCatalogueLayout(
+            source: 'MICHELIN GUIDE',
+            title: 'Restaurants',
+          ),
+        ),
+      );
+      expect(find.byType(GuideVenueCardDivider), findsNothing);
     });
 
     testWidgets('content slot is absent (no fake content) when omitted', (
