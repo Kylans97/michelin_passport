@@ -21,9 +21,16 @@ import '../../visits/widgets/visit_privacy_toggle.dart';
 /// itself is safely saved. Returns a [SaveOutcome] once saved, or null if
 /// the sheet was dismissed without saving.
 ///
-/// Deliberately narrower than restaurant Add Visit: hotel stays only cover
-/// Overall/Service/Value + Notes — no Food, Wine, or Menu Type, which are
-/// restaurant concepts that don't apply to a hotel stay.
+/// Five rating dimensions (UI Consistency Step 1E — Chasing Stars' hotel
+/// product direction, giving Hotel Detail's score presentation the same
+/// visual weight as Restaurant's): Overall, Service, Room, Experience,
+/// Value. Menu Type is a restaurant-only concept and never appears here.
+///
+/// IMPORTANT: Room/Experience persist to `visits.room_rating`/
+/// `experience_rating`, added by
+/// supabase/migrations/20260816120000_add_hotel_room_experience_ratings.sql
+/// — NOT deployed to production as of this change. Saving a stay with
+/// either rated will fail against production until that migration ships.
 Future<SaveOutcome?> showAddStaySheet(
   BuildContext context, {
   required Hotel hotel,
@@ -65,6 +72,8 @@ class _AddStaySheetState extends State<_AddStaySheet> {
   DateTime _stayedOn = DateTime.now();
   int? _rating;
   int? _serviceRating;
+  int? _roomRating;
+  int? _experienceRating;
   int? _valueRating;
   final _notesCtrl = TextEditingController();
   final List<StagedPhoto> _stagedPhotos = [];
@@ -130,6 +139,8 @@ class _AddStaySheetState extends State<_AddStaySheet> {
         visitedOn: _stayedOn,
         rating: _rating,
         serviceRating: _serviceRating,
+        roomRating: _roomRating,
+        experienceRating: _experienceRating,
         valueRating: _valueRating,
         notes: notes.isEmpty ? null : notes,
         keysAtVisit: widget.hotel.michelinKeys,
@@ -255,6 +266,18 @@ class _AddStaySheetState extends State<_AddStaySheet> {
                     label: 'Service',
                     value: _serviceRating,
                     onChanged: (v) => setState(() => _serviceRating = v),
+                  ),
+                  const SizedBox(height: 22),
+                  RatingMeter(
+                    label: 'Room',
+                    value: _roomRating,
+                    onChanged: (v) => setState(() => _roomRating = v),
+                  ),
+                  const SizedBox(height: 22),
+                  RatingMeter(
+                    label: 'Experience',
+                    value: _experienceRating,
+                    onChanged: (v) => setState(() => _experienceRating = v),
                   ),
                   const SizedBox(height: 22),
                   RatingMeter(

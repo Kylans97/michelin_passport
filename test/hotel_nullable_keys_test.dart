@@ -22,7 +22,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/widgets/key_row.dart';
 import 'package:michelin_passport/features/hotels/award_history/keys_history_view_model.dart';
 import 'package:michelin_passport/features/hotels/award_history/worlds_50_best_hotels_history_view_model.dart';
-import 'package:michelin_passport/features/hotels/widgets/hotel_awards_card.dart';
+import 'package:michelin_passport/features/hotels/widgets/hotel_hero.dart';
 import 'package:michelin_passport/features/hotels/widgets/worlds_50_best_hotels_history_section.dart';
 import 'package:michelin_passport/models/award_history_entry.dart';
 import 'package:michelin_passport/models/award_transition.dart';
@@ -52,6 +52,13 @@ Hotel _hotel({
 
 Widget _wrap(Widget child) => MaterialApp(
   home: Scaffold(body: Material(child: child)),
+);
+
+// HotelHero (UI Consistency Step 1) renders a SliverAppBar internally, so
+// it needs a scroll-sliver host rather than a bare Material — matches how
+// HotelDetailScreen actually mounts it.
+Widget _wrapHero(Widget hero) => MaterialApp(
+  home: Scaffold(body: CustomScrollView(slivers: [hero])),
 );
 
 void main() {
@@ -157,16 +164,28 @@ void main() {
       expect(find.text('0'), findsNothing);
     });
 
-    testWidgets('HotelAwardsCard shows World\'s 50 Best row, no Keys row', (
-      tester,
-    ) async {
-      final hotel = _hotel(worlds50BestRank: 95, worlds50BestYear: 2025);
-      await tester.pumpWidget(_wrap(HotelAwardsCard(hotel: hotel)));
-      expect(find.textContaining('#95'), findsOneWidget);
-      expect(find.textContaining('2025'), findsOneWidget);
-      expect(find.textContaining('MICHELIN Keys'), findsNothing);
-      expect(find.byIcon(Icons.vpn_key_rounded), findsNothing);
-    });
+    testWidgets(
+      "HotelHero shows World's 50 Best badge, no Keys row (recognition now "
+      'consolidated into the hero — UI Consistency Step 1, no more '
+      'duplicate HotelAwardsCard)',
+      (tester) async {
+        final hotel = _hotel(worlds50BestRank: 95, worlds50BestYear: 2025);
+        await tester.pumpWidget(
+          _wrapHero(
+            HotelHero(
+              hotel: hotel,
+              isWishlisted: false,
+              wishlistSaving: false,
+              onTapWishlist: () {},
+            ),
+          ),
+        );
+        expect(find.textContaining('#95'), findsOneWidget);
+        expect(find.textContaining('2025'), findsOneWidget);
+        expect(find.byType(KeyRow), findsNothing);
+        expect(find.byIcon(Icons.vpn_key_rounded), findsNothing);
+      },
+    );
 
     test('a hotel with null Keys is still structurally a valid Hotel', () {
       // Confirms the model never requires michelinKeys to be non-null —
@@ -190,15 +209,27 @@ void main() {
       expect(hotel.worlds50BestRank, 4);
     });
 
-    testWidgets('HotelAwardsCard shows both rows', (tester) async {
+    testWidgets('HotelHero shows both Keys and World\'s 50 Best', (
+      tester,
+    ) async {
       final hotel = _hotel(
         michelinKeys: 2,
         worlds50BestRank: 4,
         worlds50BestYear: 2025,
       );
-      await tester.pumpWidget(_wrap(HotelAwardsCard(hotel: hotel)));
-      expect(find.textContaining('MICHELIN Keys'), findsOneWidget);
-      expect(find.textContaining("World's 50 Best Hotels"), findsOneWidget);
+      await tester.pumpWidget(
+        _wrapHero(
+          HotelHero(
+            hotel: hotel,
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      expect(find.byType(KeyRow), findsOneWidget);
+      expect(find.byIcon(Icons.vpn_key_rounded), findsNWidgets(2));
+      expect(find.textContaining("World's 50 Best"), findsOneWidget);
       expect(find.textContaining('#4'), findsOneWidget);
     });
   });
@@ -225,14 +256,25 @@ void main() {
       expect(find.text('appearances'), findsNothing);
     });
 
-    testWidgets('HotelAwardsCard renders nothing for a hotel with neither', (
-      tester,
-    ) async {
-      final hotel = _hotel(); // no Keys, no W50B rank
-      await tester.pumpWidget(_wrap(HotelAwardsCard(hotel: hotel)));
-      expect(find.byType(SizedBox), findsWidgets);
-      expect(find.text('AWARDS'), findsNothing);
-    });
+    testWidgets(
+      'HotelHero shows neither Keys nor World\'s 50 Best for a hotel with '
+      'neither',
+      (tester) async {
+        final hotel = _hotel(); // no Keys, no W50B rank
+        await tester.pumpWidget(
+          _wrapHero(
+            HotelHero(
+              hotel: hotel,
+              isWishlisted: false,
+              wishlistSaving: false,
+              onTapWishlist: () {},
+            ),
+          ),
+        );
+        expect(find.byType(KeyRow), findsNothing);
+        expect(find.textContaining("World's 50 Best"), findsNothing);
+      },
+    );
   });
 
   group('F. Hotel Award History with multiple World\'s 50 Best years', () {

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
+import '../theme/cs_typography.dart';
 
 /// A single quiet "Label →" affordance — no card background, no
 /// icon-heavy styling, just text and a chevron. Used for restrained
-/// secondary entry points on Detail screens ("Award history", "Plan
-/// visit") that shouldn't compete with the content around them.
+/// secondary entry points on Restaurant/Hotel Detail's ivory content
+/// canvas ("Award history", "Plan visit") that shouldn't compete with the
+/// content around them. Forest-green, never gold — Step 1B's color rule
+/// reserves gold for Michelin stars/Keys only.
 class SubtleTextAction extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
@@ -17,8 +19,8 @@ class SubtleTextAction extends StatelessWidget {
     child: InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(10),
-      splashColor: AppColors.goldAlpha10,
-      highlightColor: AppColors.goldAlpha10,
+      splashColor: AppColors.forestGreen.withValues(alpha: 0.08),
+      highlightColor: AppColors.forestGreen.withValues(alpha: 0.08),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 2),
         child: Row(
@@ -26,16 +28,15 @@ class SubtleTextAction extends StatelessWidget {
           children: [
             Text(
               label,
-              style: GoogleFonts.inter(
-                color: AppColors.textSecondary,
-                fontSize: 13,
+              style: CsTypography.smallLabel.copyWith(
+                color: AppColors.forestGreen,
                 fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(width: 6),
             const Icon(
               Icons.chevron_right_rounded,
-              color: AppColors.textSecondary,
+              color: AppColors.forestGreen,
               size: 16,
             ),
           ],

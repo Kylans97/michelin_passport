@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../../core/constants/app_colors.dart';
-import '../../../core/widgets/detail_hero.dart';
 import '../../../core/widgets/key_row.dart';
+import '../../../core/widgets/venue_detail_hero.dart';
 import '../../../models/hotel.dart';
 
+/// UI Consistency Step 1: wraps the shared [VenueDetailHero] instead of the
+/// old, widely-shared [DetailHero] — mirrors [RestaurantHero]'s treatment,
+/// Keys instead of Stars. Consolidated recognition hierarchy: MICHELIN Keys
+/// are the sole primary signal; World's 50 Best Hotels is the only
+/// secondary badge (hotels have no Hall of Fame equivalent), previously
+/// duplicated in a now-removed `HotelAwardsCard`.
 class HotelHero extends StatelessWidget {
   final Hotel hotel;
   final bool isWishlisted;
@@ -20,28 +25,26 @@ class HotelHero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DetailHero(
+    return VenueDetailHero(
       title: hotel.name,
-      // Absence of a confirmed Key value stays visually neutral — omitted
-      // entirely, never "0 Keys" or an empty KeyRow. Mirrors
-      // RestaurantHero's `hasMichelinStar ? StarRow(...) : SizedBox.shrink()`.
-      awardBadge: hotel.hasMichelinKeys
-          ? KeyRow(count: hotel.michelinKeys!, size: 18)
-          : const SizedBox.shrink(),
-      extraBadges: [
+      primaryRecognition: hotel.hasMichelinKeys
+          ? KeyRow(count: hotel.michelinKeys!, size: 20)
+          : null,
+      secondaryBadges: [
         if (hotel.isWorlds50Best)
-          HeroBadge(
+          VenueHeroBadge(
             icon: Icons.emoji_events_rounded,
-            label: "World's 50 Best · #${hotel.worlds50BestRank}",
+            // The previous `HotelAwardsCard` also surfaced the ranking
+            // year when known — preserved here rather than dropped.
+            label: hotel.worlds50BestYear != null
+                ? "World's 50 Best · #${hotel.worlds50BestRank} · "
+                      '${hotel.worlds50BestYear}'
+                : "World's 50 Best · #${hotel.worlds50BestRank}",
           ),
       ],
-      overlayAction: HeroIconButton(
-        icon: isWishlisted
-            ? Icons.favorite_rounded
-            : Icons.favorite_border_rounded,
-        color: isWishlisted ? AppColors.goldLight : AppColors.textOnDark,
-        onTap: wishlistSaving ? () {} : onTapWishlist,
-      ),
+      isWishlisted: isWishlisted,
+      wishlistSaving: wishlistSaving,
+      onTapWishlist: onTapWishlist,
     );
   }
 }

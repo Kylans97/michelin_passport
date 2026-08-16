@@ -1,9 +1,18 @@
 // Maps a row from `public.visits` (see
 // supabase/migrations/20260805141519_production_schema_v1.sql,
-// supabase/migrations/20260805211243_add_visit_details.sql, and
-// supabase/migrations/20260814120000_social_foundation_step2_visit_visibility.sql).
+// supabase/migrations/20260805211243_add_visit_details.sql,
+// supabase/migrations/20260814120000_social_foundation_step2_visit_visibility.sql,
+// and supabase/migrations/20260816120000_add_hotel_room_experience_ratings.sql).
 // visits is polymorphic: entity_type + entity_id address either a hotel or
 // a restaurant. This app only writes entity_type = 'restaurant' rows so far.
+//
+// IMPORTANT (UI Consistency Step 1E): the room_rating/experience_rating
+// migration has NOT been deployed to production as of this model change —
+// see that migration's own header. Reading/writing those two fields
+// against production will fail (PGRST204, same class of failure the
+// codebase has hit before over a missing deployed column) until the
+// migration ships. Do not test the five-dimension Add Stay save path
+// against production before then.
 
 /// The two permitted values of `visits.visibility` (Social Foundation
 /// Step 2). Ratings, notes, and photos are NOT independently visible —
@@ -69,10 +78,19 @@ class Visit {
   // Optional per-aspect sub-ratings, each 1-10. Independently nullable: a
   // visit may rate food but not wine (e.g. no wine was consumed), or record
   // no sub-ratings at all.
+  //
+  // foodRating/wineRating are restaurant-only concepts (always null on a
+  // hotel stay); roomRating/experienceRating are hotel-only concepts
+  // (always null on a restaurant visit, and always null on every existing
+  // hotel stay row too, until the Step 1E migration ships and a user rates
+  // a new stay — see this file's own top-of-file migration-status note).
+  // serviceRating/valueRating apply to both venue types.
   final int? foodRating;
   final int? serviceRating;
   final int? wineRating;
   final int? valueRating;
+  final int? roomRating;
+  final int? experienceRating;
 
   final MenuType? menuType;
 
@@ -102,6 +120,8 @@ class Visit {
     this.serviceRating,
     this.wineRating,
     this.valueRating,
+    this.roomRating,
+    this.experienceRating,
     this.menuType,
     this.notes,
     this.pricePaid,
@@ -122,6 +142,12 @@ class Visit {
     serviceRating: (json['service_rating'] as num?)?.toInt(),
     wineRating: (json['wine_rating'] as num?)?.toInt(),
     valueRating: (json['value_rating'] as num?)?.toInt(),
+    // Absent on a historical row read before the Step 1E migration ships
+    // (the column won't exist yet in production) exactly as absent as a
+    // brand-new row nobody has rated this dimension on — both parse to
+    // null the same way every other optional rating already does.
+    roomRating: (json['room_rating'] as num?)?.toInt(),
+    experienceRating: (json['experience_rating'] as num?)?.toInt(),
     menuType: MenuType.fromDbValue(json['menu_type'] as String?),
     notes: json['notes'] as String?,
     pricePaid: (json['price_paid'] as num?)?.toDouble(),

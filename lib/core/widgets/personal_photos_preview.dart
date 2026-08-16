@@ -4,7 +4,7 @@ import '../../data/repositories/photo_repository.dart';
 import '../../features/photos/photo_viewer_screen.dart';
 import '../../models/visit_photo.dart';
 import '../constants/app_colors.dart';
-import '../theme/app_spacing.dart';
+import '../theme/cs_spacing.dart';
 
 /// A compact, read-only preview of the most recent visit/stay's photos —
 /// the "personal photos" slice of Restaurant/Hotel Detail's hierarchy.
@@ -65,11 +65,11 @@ class _PersonalPhotosPreviewState extends State<PersonalPhotosPreview> {
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: photos.length,
-        separatorBuilder: (_, _) => const SizedBox(width: AppSpacing.sm),
+        separatorBuilder: (_, _) => const SizedBox(width: CsSpacing.sm),
         itemBuilder: (context, i) {
           final url = _urls[photos[i].storagePath];
           return ClipRRect(
-            borderRadius: BorderRadius.circular(AppRadii.sm),
+            borderRadius: BorderRadius.circular(CsRadius.small),
             child: GestureDetector(
               onTap: () => Navigator.push(
                 context,
@@ -85,12 +85,12 @@ class _PersonalPhotosPreviewState extends State<PersonalPhotosPreview> {
                 width: 84,
                 height: 84,
                 child: url == null
-                    ? const ColoredBox(color: AppColors.surface)
+                    ? const ColoredBox(color: AppColors.warmWhite)
                     : Image.network(
                         url,
                         fit: BoxFit.cover,
                         errorBuilder: (_, _, _) =>
-                            const ColoredBox(color: AppColors.surface),
+                            const ColoredBox(color: AppColors.warmWhite),
                       ),
               ),
             ),

@@ -17,13 +17,21 @@ const _hotelEntity = 'hotel';
 
 // Every column on public.visits (production schema v1 +
 // 20260805211243_add_visit_details.sql +
-// 20260814120000_social_foundation_step2_visit_visibility.sql). Listed
+// 20260814120000_social_foundation_step2_visit_visibility.sql +
+// 20260816120000_add_hotel_room_experience_ratings.sql). Listed
 // explicitly, rather than select('*'), so a schema change is a visible
 // diff here.
+//
+// IMPORTANT: room_rating/experience_rating are NOT yet deployed to
+// production (see that migration's own header and Visit's top-of-file
+// note) — selecting them against production will fail with PGRST204
+// until the migration ships. This list must not be used against
+// production until then.
 const _visitColumns =
     'id, user_id, entity_type, entity_id, visited_on, rating, '
-    'food_rating, service_rating, wine_rating, value_rating, menu_type, '
-    'notes, price_paid, currency, keys_at_visit, stars_at_visit, visibility';
+    'food_rating, service_rating, wine_rating, value_rating, room_rating, '
+    'experience_rating, menu_type, notes, price_paid, currency, '
+    'keys_at_visit, stars_at_visit, visibility';
 
 class VisitedRepository {
   VisitedRepository(this._client);
@@ -105,22 +113,29 @@ class VisitedRepository {
 
   // Inserts a new hotel stay row (same public.visits table, entity_type =
   // 'hotel'). Only the columns that make sense for a hotel are exposed:
-  // the overall `rating`, `service_rating`, `value_rating`, `notes`, and
-  // `keys_at_visit` — the hotel's Michelin Keys frozen at the moment of the
-  // stay, so a later change to the hotel's *current* Keys never rewrites
-  // this historical row (see Hotel.michelinKeys / HotelDetailScreen, which
-  // passes it in explicitly, same as markVisited's starsAtVisit).
+  // the overall `rating`, `service_rating`, `value_rating`, the Step 1E
+  // `room_rating`/`experience_rating` pair, `notes`, and `keys_at_visit` —
+  // the hotel's Michelin Keys frozen at the moment of the stay, so a later
+  // change to the hotel's *current* Keys never rewrites this historical
+  // row (see Hotel.michelinKeys / HotelDetailScreen, which passes it in
+  // explicitly, same as markVisited's starsAtVisit).
   // food_rating, wine_rating and menu_type are restaurant concepts and are
   // never set here — they stay NULL on every hotel stay row.
   // stars_at_visit is likewise never used for hotels; Michelin Stars are a
   // restaurant award. Returns the row Supabase actually created, same
   // reasoning as markVisited above.
+  //
+  // IMPORTANT: passing roomRating/experienceRating against production
+  // before 20260816120000_add_hotel_room_experience_ratings.sql is
+  // deployed will fail — see that migration's own header.
   Future<Visit> markHotelStay({
     required String userId,
     required String hotelId,
     DateTime? visitedOn,
     int? rating,
     int? serviceRating,
+    int? roomRating,
+    int? experienceRating,
     int? valueRating,
     String? notes,
     int? keysAtVisit,
@@ -133,6 +148,8 @@ class VisitedRepository {
       visitedOn: visitedOn,
       rating: rating,
       serviceRating: serviceRating,
+      roomRating: roomRating,
+      experienceRating: experienceRating,
       valueRating: valueRating,
       notes: notes,
       keysAtVisit: keysAtVisit,
@@ -156,6 +173,8 @@ class VisitedRepository {
     int? serviceRating,
     int? wineRating,
     int? valueRating,
+    int? roomRating,
+    int? experienceRating,
     MenuType? menuType,
     String? notes,
     double? pricePaid,
@@ -180,6 +199,8 @@ class VisitedRepository {
           'service_rating': ?serviceRating,
           'wine_rating': ?wineRating,
           'value_rating': ?valueRating,
+          'room_rating': ?roomRating,
+          'experience_rating': ?experienceRating,
           'menu_type': ?menuType?.dbValue,
           if (notes != null && notes.isNotEmpty) 'notes': notes,
           'price_paid': ?pricePaid,

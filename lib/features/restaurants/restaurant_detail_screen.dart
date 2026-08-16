@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/theme/app_typography.dart';
-import '../../core/widgets/circular_score_badge.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/linked_venue_row.dart';
 import '../../core/widgets/personal_photos_preview.dart';
+import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/subtle_text_action.dart';
+import '../../core/widgets/venue_about_section.dart';
+import '../../core/widgets/venue_score_strip.dart';
+import '../../core/widgets/venue_utility_actions.dart';
 import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
@@ -22,9 +26,6 @@ import '../planning/widgets/plan_venue_sheet.dart';
 import '../visits/widgets/add_visit_sheet.dart';
 import 'award_history_screen.dart';
 import 'widgets/award_history_action.dart';
-import 'widgets/detail_section.dart';
-import 'widgets/restaurant_actions.dart';
-import 'widgets/restaurant_awards_card.dart';
 import 'widgets/restaurant_hero.dart';
 import 'widgets/restaurant_info_card.dart';
 import 'widgets/restaurant_visits_card.dart';
@@ -143,11 +144,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       SnackBar(
         content: Text(
           message,
-          style: GoogleFonts.inter(
-            color: isError ? AppColors.textPrimary : Colors.black,
-          ),
+          style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
         ),
-        backgroundColor: isError ? AppColors.error : AppColors.gold,
+        // Step 1B color rule: gold is reserved for Michelin stars only —
+        // this is a generic save/wishlist confirmation, not a Michelin
+        // moment, so it reads forest-green rather than gold.
+        backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
         duration: const Duration(seconds: 2),
       ),
     );
@@ -297,9 +299,16 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     final isAuthenticated = _userId != null;
 
     final latestVisit = _visits.isEmpty ? null : _visits.first;
+    final hasMichelinLink = michelinUrl != null && michelinUrl.isNotEmpty;
+    final hasWebsiteLink = websiteUrl != null && websiteUrl.isNotEmpty;
+    // No editorial-copy field exists on Restaurant yet (no `description`/
+    // `about`/`summary` column on restaurants_full) — see
+    // VenueAboutSection's own doc comment. Kept as a local so the day a
+    // real field lands, only this line changes.
+    final String? aboutText = null;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.ivory,
       body: CustomScrollView(
         slivers: [
           RestaurantHero(
@@ -311,83 +320,131 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 24, 20, 100),
+              padding: const EdgeInsets.fromLTRB(
+                CsSpacing.pageHorizontal,
+                CsSpacing.xl,
+                CsSpacing.pageHorizontal,
+                100,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // The hero is the single primary identity area — the
-                  // venue name lives there only, never repeated here. Just
-                  // city/country as light supporting context.
+                  // The hero is the single primary identity + recognition
+                  // area — venue name, Michelin stars, World's 50 Best and
+                  // Hall of Fame all live there only. Just city/country as
+                  // light supporting context here, shown once.
                   Text(
                     '${restaurant.flagEmoji}  ${restaurant.cityName}, '
                     '${restaurant.countryName}',
-                    style: AppTypography.metadata,
-                  ),
-                  const SizedBox(height: 36),
-
-                  // Current Michelin / World's 50 Best status.
-                  RestaurantAwardsCard(restaurant: restaurant),
-                  if (_hasAwardHistory)
-                    AwardHistoryAction(onTap: _openAwardHistory),
-                  const SizedBox(height: 36),
-
-                  RestaurantActions(
-                    isAuthenticated: isAuthenticated,
-                    loadingPersonalState: _loadingPersonalState,
-                    isVisited: _isVisited,
-                    isWishlisted: _isWishlisted,
-                    wishlistSaving: _wishlistSaving,
-                    onTapVisited: _openAddVisitSheet,
-                    onTapWishlist: _toggleWishlist,
-                    onOpenMaps: _openMaps,
-                    onOpenMichelin:
-                        (michelinUrl != null && michelinUrl.isNotEmpty)
-                        ? () => _openUrl(michelinUrl)
-                        : null,
-                    onOpenWebsite: (websiteUrl != null && websiteUrl.isNotEmpty)
-                        ? () => _openUrl(websiteUrl)
-                        : null,
-                  ),
-                  SubtleTextAction(label: 'Plan visit', onTap: _openPlanVisit),
-                  const SizedBox(height: 28),
-
-                  if (isAuthenticated && latestVisit != null) ...[
-                    const SectionLabel('YOUR SCORE'),
-                    const SizedBox(height: 14),
-                    DetailCard(
-                      child: Row(
-                        children: [
-                          CircularScoreBadge(
-                            score: latestVisit.rating,
-                            caption: 'Overall',
-                          ),
-                          const SizedBox(width: 20),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Latest visit',
-                                  style: AppTypography.body.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  _formatDate(latestVisit.visitedOn),
-                                  style: AppTypography.metadata,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.taupe,
                     ),
-                    const SizedBox(height: 36),
+                  ),
+                  if (_hasAwardHistory) ...[
+                    const SizedBox(height: CsSpacing.sm),
+                    AwardHistoryAction(onTap: _openAwardHistory),
                   ],
 
-                  const SectionLabel('YOUR VISITS'),
-                  const SizedBox(height: 12),
+                  const SectionDivider(),
+
+                  // ── Venue utilities — Directions/Website/Michelin only.
+                  // Wishlist lives solely in the hero; there is no second
+                  // Wishlist control here (UI Consistency Step 1E).
+                  VenueUtilityActions(
+                    onOpenMaps: _openMaps,
+                    onOpenWebsite: hasWebsiteLink
+                        ? () => _openUrl(websiteUrl)
+                        : null,
+                    // No `phone` field exists on Restaurant today — a
+                    // prepared seam, not a missing feature: see
+                    // VenueUtilityActions' own doc comment.
+                    onCall: null,
+                    onOpenMichelin: hasMichelinLink
+                        ? () => _openUrl(michelinUrl)
+                        : null,
+                  ),
+
+                  const SectionDivider(),
+
+                  // ── Planning — a distinct intent from recording a visit
+                  // that already happened: creates a planned_venues row
+                  // (future intention / trip planning), never a visits
+                  // row. Kept in its own compact section rather than
+                  // beneath the utility row, where it previously read as
+                  // a disconnected, loose action.
+                  Text(
+                    'PLAN YOUR VISIT',
+                    style: CsTypography.eyebrow.copyWith(
+                      color: AppColors.taupe,
+                    ),
+                  ),
+                  const SizedBox(height: CsSpacing.sm),
+                  SubtleTextAction(label: 'Plan visit', onTap: _openPlanVisit),
+
+                  if (isAuthenticated && latestVisit != null) ...[
+                    const SectionDivider(),
+                    VenueScoreHeader(
+                      noun: 'visit',
+                      date: latestVisit.visitedOn,
+                    ),
+                    const SizedBox(height: CsSpacing.md),
+                    VenueScoreStrip(
+                      dimensions: [
+                        ScoreDimension(
+                          label: 'Overall',
+                          value: latestVisit.rating,
+                        ),
+                        ScoreDimension(
+                          label: 'Food',
+                          value: latestVisit.foodRating,
+                        ),
+                        ScoreDimension(
+                          label: 'Service',
+                          value: latestVisit.serviceRating,
+                        ),
+                        ScoreDimension(
+                          label: 'Wine',
+                          value: latestVisit.wineRating,
+                        ),
+                        ScoreDimension(
+                          label: 'Value',
+                          value: latestVisit.valueRating,
+                        ),
+                      ],
+                    ),
+                  ],
+
+                  if (aboutText != null) ...[
+                    const SectionDivider(),
+                    VenueAboutSection(text: aboutText),
+                  ],
+
+                  const SectionDivider(),
+
+                  // ── History — recording a visit that already happened.
+                  // "Add another visit"/"Add your first visit" lives here,
+                  // beside the history it belongs to, never as a large
+                  // top-of-screen CTA competing with venue navigation.
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'YOUR VISITS',
+                          style: CsTypography.eyebrow.copyWith(
+                            color: AppColors.taupe,
+                          ),
+                        ),
+                      ),
+                      SubtleTextAction(
+                        label: _isVisited
+                            ? 'Add another visit'
+                            : 'Add your first visit',
+                        onTap: _openAddVisitSheet,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: CsSpacing.md),
                   RestaurantVisitsCard(
                     isAuthenticated: isAuthenticated,
                     loading: _loadingPersonalState,
@@ -398,21 +455,37 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   ),
 
                   if (latestVisit != null) ...[
-                    const SizedBox(height: 36),
-                    const SectionLabel('PERSONAL PHOTOS'),
-                    const SizedBox(height: 12),
+                    const SectionDivider(),
+                    Text(
+                      'PERSONAL PHOTOS',
+                      style: CsTypography.eyebrow.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    ),
+                    const SizedBox(height: CsSpacing.md),
                     PersonalPhotosPreview(latestVisitId: latestVisit.id),
                   ],
 
-                  const SizedBox(height: 36),
-                  const SectionLabel('INFORMATION'),
-                  const SizedBox(height: 12),
-                  RestaurantInfoCard(
-                    restaurant: restaurant,
-                    hasHotelBadge: hasHotelBadge,
-                    onTapHotel: canOpenHotel ? _openHotel : null,
-                    hotelLoading: _loadingHotel,
-                  ),
+                  if (hasHotelBadge) ...[
+                    const SectionDivider(),
+                    Text(
+                      'AT THIS HOTEL',
+                      style: CsTypography.eyebrow.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    ),
+                    const SizedBox(height: CsSpacing.md),
+                    LinkedVenueRow(
+                      name: restaurant.hotelName!,
+                      loading: _loadingHotel,
+                      onTap: canOpenHotel ? _openHotel : null,
+                    ),
+                  ],
+
+                  if (restaurant.address.isNotEmpty) ...[
+                    const SectionDivider(),
+                    RestaurantInfoCard(restaurant: restaurant),
+                  ],
                 ],
               ),
             ),
@@ -422,21 +495,3 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     );
   }
 }
-
-const _monthNames = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
-String _formatDate(DateTime date) =>
-    '${date.day} ${_monthNames[date.month - 1]} ${date.year}';

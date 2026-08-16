@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/theme/app_typography.dart';
-import '../../core/widgets/circular_score_badge.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/personal_photos_preview.dart';
+import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/subtle_text_action.dart';
+import '../../core/widgets/venue_about_section.dart';
+import '../../core/widgets/venue_score_strip.dart';
+import '../../core/widgets/venue_utility_actions.dart';
 import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
@@ -20,14 +23,10 @@ import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
 import '../planning/widgets/plan_venue_sheet.dart';
 import '../restaurants/widgets/award_history_action.dart';
-import '../restaurants/widgets/detail_section.dart';
 import '../stays/widgets/add_stay_sheet.dart';
 import 'award_history_screen.dart';
-import 'widgets/hotel_actions.dart';
-import 'widgets/hotel_awards_card.dart';
 import 'widgets/hotel_hero.dart';
 import 'widgets/hotel_info_card.dart';
-import 'widgets/hotel_links.dart';
 import 'widgets/hotel_restaurants_card.dart';
 import 'widgets/hotel_stays_card.dart';
 
@@ -195,11 +194,12 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       SnackBar(
         content: Text(
           message,
-          style: GoogleFonts.inter(
-            color: isError ? AppColors.textPrimary : Colors.black,
-          ),
+          style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
         ),
-        backgroundColor: isError ? AppColors.error : AppColors.gold,
+        // Step 1B color rule: gold is reserved for MICHELIN Keys only —
+        // this is a generic save/wishlist confirmation, not a Michelin
+        // moment, so it reads forest-green rather than gold.
+        backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
         duration: const Duration(seconds: 2),
       ),
     );
@@ -261,9 +261,15 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     final websiteUrl = hotel.websiteUrl;
     final isAuthenticated = _userId != null;
     final latestStay = _stays.isEmpty ? null : _stays.first;
+    final hasMichelinLink = michelinUrl != null && michelinUrl.isNotEmpty;
+    final hasWebsiteLink = websiteUrl != null && websiteUrl.isNotEmpty;
+    // No editorial-copy field exists on Hotel yet — see
+    // VenueAboutSection's own doc comment and RestaurantDetailScreen's
+    // matching note.
+    final String? aboutText = null;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.ivory,
       body: CustomScrollView(
         slivers: [
           HotelHero(
@@ -274,95 +280,128 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
           ),
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 24, 20, 100),
+              padding: const EdgeInsets.fromLTRB(
+                CsSpacing.pageHorizontal,
+                CsSpacing.xl,
+                CsSpacing.pageHorizontal,
+                100,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // The hero is the single primary identity area — the
-                  // hotel name lives there only, never repeated here. Just
-                  // city/country as light supporting context.
+                  // The hero is the single primary identity + recognition
+                  // area — hotel name and MICHELIN Keys/World's 50 Best
+                  // both live there only. Just city/country as light
+                  // supporting context here, shown once.
                   Text(
                     '${hotel.flagEmoji}  ${hotel.cityName}, '
                     '${hotel.countryName}',
-                    style: AppTypography.metadata,
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.taupe,
+                    ),
                   ),
-                  const SizedBox(height: 36),
-
-                  // Current MICHELIN Guide / World's 50 Best Hotels status.
-                  HotelAwardsCard(hotel: hotel),
-                  if (_hasAwardHistory)
+                  if (_hasAwardHistory) ...[
+                    const SizedBox(height: CsSpacing.sm),
                     AwardHistoryAction(onTap: _openAwardHistory),
-                  const SizedBox(height: 28),
+                  ],
 
-                  HotelActions(
-                    isAuthenticated: isAuthenticated,
-                    loadingPersonalState: _loadingPersonalState,
-                    isWishlisted: _isWishlisted,
-                    wishlistSaving: _wishlistSaving,
-                    onTapAddStay: _openAddStaySheet,
-                    onTapWishlist: _toggleWishlist,
-                  ),
-                  SubtleTextAction(label: 'Plan stay', onTap: _openPlanStay),
-                  const SizedBox(height: 12),
+                  const SectionDivider(),
 
-                  const SectionLabel('LINKS'),
-                  const SizedBox(height: 12),
-                  HotelLinks(
+                  // ── Venue utilities — Directions/Website/Michelin only.
+                  // Wishlist lives solely in the hero; there is no second
+                  // Wishlist control here (UI Consistency Step 1E).
+                  VenueUtilityActions(
                     onOpenMaps: _openMaps,
-                    onOpenMichelin:
-                        (michelinUrl != null && michelinUrl.isNotEmpty)
-                        ? () => _openUrl(michelinUrl)
-                        : null,
-                    onOpenWebsite: (websiteUrl != null && websiteUrl.isNotEmpty)
+                    onOpenWebsite: hasWebsiteLink
                         ? () => _openUrl(websiteUrl)
                         : null,
+                    // No `phone` field exists on Hotel today — a prepared
+                    // seam, not a missing feature: see VenueUtilityActions'
+                    // own doc comment.
+                    onCall: null,
+                    onOpenMichelin: hasMichelinLink
+                        ? () => _openUrl(michelinUrl)
+                        : null,
                   ),
 
-                  if (hotel.hasMichelinRestaurant) ...[
-                    const SizedBox(height: 36),
-                    const SectionLabel('RESTAURANTS AT THIS HOTEL'),
-                    const SizedBox(height: 12),
-                    HotelRestaurantsCard(future: _linkedRestaurantsFuture),
-                  ],
-                  const SizedBox(height: 36),
+                  const SectionDivider(),
+
+                  // ── Planning — a distinct intent from recording a stay
+                  // that already happened: creates a planned_venues row
+                  // (future intention / trip planning), never a visits
+                  // row. Kept in its own compact section rather than
+                  // beneath the utility row, where it previously read as
+                  // a disconnected, loose action.
+                  Text(
+                    'PLAN YOUR STAY',
+                    style: CsTypography.eyebrow.copyWith(
+                      color: AppColors.taupe,
+                    ),
+                  ),
+                  const SizedBox(height: CsSpacing.sm),
+                  SubtleTextAction(label: 'Plan stay', onTap: _openPlanStay),
 
                   if (isAuthenticated && latestStay != null) ...[
-                    const SectionLabel('YOUR SCORE'),
-                    const SizedBox(height: 14),
-                    DetailCard(
-                      child: Row(
-                        children: [
-                          CircularScoreBadge(
-                            score: latestStay.rating,
-                            caption: 'Overall',
-                          ),
-                          const SizedBox(width: 20),
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Latest stay',
-                                  style: AppTypography.body.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                const SizedBox(height: 4),
-                                Text(
-                                  _formatStayDate(latestStay.visitedOn),
-                                  style: AppTypography.metadata,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                    const SectionDivider(),
+                    VenueScoreHeader(noun: 'stay', date: latestStay.visitedOn),
+                    const SizedBox(height: CsSpacing.md),
+                    VenueScoreStrip(
+                      dimensions: [
+                        ScoreDimension(
+                          label: 'Overall',
+                          value: latestStay.rating,
+                        ),
+                        ScoreDimension(
+                          label: 'Service',
+                          value: latestStay.serviceRating,
+                        ),
+                        ScoreDimension(
+                          label: 'Room',
+                          value: latestStay.roomRating,
+                        ),
+                        ScoreDimension(
+                          label: 'Experience',
+                          value: latestStay.experienceRating,
+                        ),
+                        ScoreDimension(
+                          label: 'Value',
+                          value: latestStay.valueRating,
+                        ),
+                      ],
                     ),
-                    const SizedBox(height: 36),
                   ],
 
-                  const SectionLabel('YOUR STAYS'),
-                  const SizedBox(height: 12),
+                  if (aboutText != null) ...[
+                    const SectionDivider(),
+                    VenueAboutSection(text: aboutText),
+                  ],
+
+                  const SectionDivider(),
+
+                  // ── History — recording a stay that already happened.
+                  // "Add another stay"/"Add your first stay" lives here,
+                  // beside the history it belongs to, never as a large
+                  // top-of-screen CTA competing with venue navigation.
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          'YOUR STAYS',
+                          style: CsTypography.eyebrow.copyWith(
+                            color: AppColors.taupe,
+                          ),
+                        ),
+                      ),
+                      SubtleTextAction(
+                        label: _stays.isNotEmpty
+                            ? 'Add another stay'
+                            : 'Add your first stay',
+                        onTap: _openAddStaySheet,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: CsSpacing.md),
                   HotelStaysCard(
                     isAuthenticated: isAuthenticated,
                     loading: _loadingPersonalState,
@@ -373,16 +412,33 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                   ),
 
                   if (latestStay != null) ...[
-                    const SizedBox(height: 36),
-                    const SectionLabel('PERSONAL PHOTOS'),
-                    const SizedBox(height: 12),
+                    const SectionDivider(),
+                    Text(
+                      'PERSONAL PHOTOS',
+                      style: CsTypography.eyebrow.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    ),
+                    const SizedBox(height: CsSpacing.md),
                     PersonalPhotosPreview(latestVisitId: latestStay.id),
                   ],
 
-                  const SizedBox(height: 36),
-                  const SectionLabel('INFORMATION'),
-                  const SizedBox(height: 12),
-                  HotelInfoCard(hotel: hotel),
+                  if (hotel.hasMichelinRestaurant) ...[
+                    const SectionDivider(),
+                    Text(
+                      'DINING',
+                      style: CsTypography.eyebrow.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    ),
+                    const SizedBox(height: CsSpacing.md),
+                    HotelRestaurantsCard(future: _linkedRestaurantsFuture),
+                  ],
+
+                  if (hotel.address.isNotEmpty) ...[
+                    const SectionDivider(),
+                    HotelInfoCard(hotel: hotel),
+                  ],
                 ],
               ),
             ),
@@ -392,21 +448,3 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     );
   }
 }
-
-const _monthNames = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
-
-String _formatStayDate(DateTime date) =>
-    '${date.day} ${_monthNames[date.month - 1]} ${date.year}';

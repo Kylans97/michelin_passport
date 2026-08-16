@@ -303,6 +303,10 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
             const SizedBox(height: 20),
             RatingDisplayRow(label: 'Service', value: stay.serviceRating),
             const SizedBox(height: 20),
+            RatingDisplayRow(label: 'Room', value: stay.roomRating),
+            const SizedBox(height: 20),
+            RatingDisplayRow(label: 'Experience', value: stay.experienceRating),
+            const SizedBox(height: 20),
             RatingDisplayRow(label: 'Value', value: stay.valueRating),
 
             if (notes != null && notes.isNotEmpty) ...[
