@@ -1,0 +1,26 @@
+{
+  "_status": "APPLIED AND VERIFIED. production event id fd23d7f5-ff7c-4caf-ba9b-a17e6397a607, applied_at 2026-08-16. See EVENT_PARTICIPANT_ENRICHMENT_REPORT.md for the full verification record and the future chef-line-up re-enrichment note.",
+  "name": "Vergeet Mij Niet Gala",
+  "description": "The first edition of the Vergeet Mij Niet Gala brings together some of the finest restaurants in the Netherlands for an evening of gastronomy, storytelling and entertainment in the Grand Ballroom of Hotel Okura Amsterdam. Guests enjoy an aperitif, a 5-course dinner prepared by leading Dutch chefs, drinks and entertainment, black tie with a touch of yellow. All proceeds support research, guidance and awareness for young-onset dementia, including Alzheimer's research.",
+  "start_at": "2026-10-06T18:00:00+02:00",
+  "end_at": "2026-10-06T23:59:00+02:00",
+  "country_code": "NL",
+  "city": "Amsterdam",
+  "venue_name": "Hotel Okura Amsterdam (Grand Ballroom)",
+  "address": null,
+  "latitude": null,
+  "longitude": null,
+  "official_url": "https://www.vergeetmijnietgala.nl",
+  "ticket_url": "https://www.vergeetmijnietgala.nl",
+  "image_url": null,
+  "event_type": "dinner",
+  "status": "upcoming",
+  "admission_type": "paid",
+  "admission_note": "EUR 575 per seat, or EUR 5,500 per table of 10. Black tie with a touch of yellow. Proceeds benefit dementia research and awareness.",
+  "_notes": {
+    "start_time": "18:00 is an estimate for a black-tie gala dinner start time — the official source did not state an exact start time in the content retrieved during this pass; end time is likewise an estimate (11:59pm) pending exact programme confirmation.",
+    "michelin_participation": "CONFIRMED (2nd research pass): the organizers themselves state the programme/entertainment details, including the chef line-up, 'will be announced in the coming weeks' — i.e. as of this research date, no chef or restaurant roster has been officially published at all. Per the enrichment standard's evidence requirements ('no vague citations'), NO event_restaurants link was prepared. NOTABLE PLAUSIBILITY, STILL NOT A MATCH: the host hotel, Okura Amsterdam, itself contains two restaurants already in the production catalogue — Ciel Bleu (2 Michelin stars) and Yamazato (1 Michelin star) — making their participation plausible given the venue, but this remains unconfirmed by any source and must not be assumed. Re-run the matching pass once the lineup is officially announced.",
+    "hotel_relationship": "CONFIRMED NOT_ELIGIBLE (2nd research pass, dedicated catalogue-gap investigation): Hotel Okura Amsterdam does not hold confirmed Michelin Key recognition (extensive search found only its restaurants' stars, never a Key award for the hotel itself) and does not appear on The World's 50 Best Hotels (2023-2025) list — it fails both prongs of the established hotel union-inclusion rule (1-3 Keys OR W50B appearance). 'Hosts Michelin-starred restaurants' is explicitly documented in this project's own architecture as NOT qualifying evidence for hotel inclusion. This is a confirmed decision, not a pending gap — see catalogue_gap_pass/DUTCH_CATALOGUE_GAP_REPORT.md and hotel_gap_candidates.csv for the full evidence trail. No event_hotels relationship is prepared or expected unless Okura's own status changes via a separate, dedicated hotel-catalogue decision.",
+    "event_type_choice": "'dinner' chosen as the closest existing EventType value for a formal charity gala dinner."
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "_status": "APPLIED AND VERIFIED. production event id d09498ce-df42-4885-98d9-ec26fae5945c, applied_at 2026-08-16. See EVENT_PARTICIPANT_ENRICHMENT_REPORT.md for the full verification record.",
+  "name": "Erloom x Henrique Sá Pessoa",
+  "description": "Erloom is a traveling summer restaurant set on the biological farm 't Schop in Hilvarenbeek, hosting a new guest chef nearly every weekend from May to September in an open-air pop-up celebrating hyper-seasonal, farm-fresh ingredients. From 25-27 September 2026, the guest chef is Henrique Sá Pessoa — concept chef of ARCA (Amsterdam) and chef of the 2-Michelin-starred Alma in Lisbon — presenting a menu connecting his Portuguese roots to Erloom's own seasonal produce.",
+  "start_at": "2026-09-25T12:00:00+02:00",
+  "end_at": "2026-09-27T23:00:00+02:00",
+  "country_code": "NL",
+  "city": "Hilvarenbeek",
+  "venue_name": "Erloom (bio-boerderij 't Schop)",
+  "address": null,
+  "latitude": null,
+  "longitude": null,
+  "official_url": "https://erloom-restaurant.com/chefs/henrique-sa-pessoa/",
+  "ticket_url": "https://erloom-restaurant.com/",
+  "image_url": null,
+  "event_type": "dinner",
+  "status": "upcoming",
+  "admission_type": "paid",
+  "admission_note": "Lunch EUR 99 per person, dinner EUR 129 per person, includes the tasting menu, drink pairing, and table water. Publicly bookable via the official Erloom website.",
+  "_notes": {
+    "lat_lng_address": "Left null — 't Schop's precise street address was not independently confirmed via an official source in this pass.",
+    "michelin_participation": "Henrique Sá Pessoa's own restaurant Alma (Lisbon, 2 Michelin stars) is NOT in the production catalogue (Portugal coverage is limited to Belcanto only) — confirmed via direct query, not assumed. A same-named but unrelated restaurant 'Alma' exists in the catalogue in Oisterwijk, Netherlands (1 star) — explicitly NOT the same restaurant, checked to avoid a false-positive name collision. No event_restaurants link is prepared for this event.",
+    "event_type_choice": "'dinner' chosen as the closest existing EventType value for a chef-residency tasting-menu format spanning a long weekend; 'experience' would also be defensible — documented as a judgment call, not a schema gap.",
+    "dates": "Start/end times approximate the 3-day guest-chef window (25-27 Sep); exact lunch/dinner service times per day were not itemized in the sources found."
+  }
+}

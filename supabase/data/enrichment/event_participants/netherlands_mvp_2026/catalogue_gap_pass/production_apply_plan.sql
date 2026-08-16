@@ -1,0 +1,92 @@
+-- Netherlands MVP Events — production apply plan.
+--
+-- NOT APPLIED. This file is a PLAN, not a runnable script — it documents
+-- the exact recommended sequence and points to the real prepared SQL in
+-- each event's own directory. Do not run anything here without a human
+-- reviewing and approving each step first, per docs/Architecture/
+-- EVENT_PARTICIPANT_ENRICHMENT_STANDARD.md.
+--
+-- ============================================================
+-- STEP A — Canonical catalogue additions
+-- ============================================================
+-- NONE. Both investigated hotel gap candidates (Hotel Okura Amsterdam,
+-- Anantara Grand Hotel Krasnapolsky) were classified
+-- NOT_ELIGIBLE_UNDER_CURRENT_RULES — neither has confirmed Michelin Key
+-- recognition nor a World's 50 Best Hotels (2023-2025) appearance, and
+-- "hosts a starred restaurant" is explicitly not qualifying evidence
+-- under the established union rule. See hotel_gap_candidates.csv.
+--
+-- All four investigated restaurant gap candidates (De Echoput, Wild
+-- Atelier, Alma-Lisbon, ARCA) were classified NOT_ELIGIBLE_UNDER_CURRENT_
+-- RULES or lacking Michelin evidence. See restaurant_gap_candidates.csv.
+--
+-- Nothing to insert into hotels or restaurants.
+--
+-- ============================================================
+-- STEP B — Canonical restaurant<->hotel relationships
+-- ============================================================
+-- NONE prepared for write in this pass. Three existing restaurants
+-- (Ciel Bleu, Yamazato, The White Room by Jacob Jan Boerma) are missing
+-- their is_in_hotel/property_name values for hotels that turned out to
+-- be non-canonical anyway (see hotel_restaurant_relationships.csv) —
+-- flagged as a NORMAL_CATALOGUE_GAP for a future, separate data-quality
+-- pass, not applied here (out of this task's approved scope).
+--
+-- ============================================================
+-- STEP C — Insert events — EXECUTED 2026-08-16
+-- ============================================================
+-- All three applied, each pre-flight-checked and independently
+-- re-verified post-insert:
+--   Erloom x Henrique Sá Pessoa    -> d09498ce-df42-4885-98d9-ec26fae5945c
+--   Wildfestival                   -> eaad5729-e88c-47fa-b842-0343f6f794a2
+--   Vergeet Mij Niet Gala          -> fd23d7f5-ff7c-4caf-ba9b-a17e6397a607
+-- Source scripts (kept as the historical prepared artifacts; re-running
+-- any of them is safe — each targets a distinct pre-flight-checked name/
+-- date, and none of the three now needs re-applying):
+--   ../erloom_henrique_sa_pessoa/insert_event.sql
+--   ../wildfestival_2026/insert_event.sql
+--   ../vergeet_mij_niet_gala/insert_event.sql
+--
+-- ============================================================
+-- STEP D — Insert event_hotels
+-- ============================================================
+-- NONE for any of the three events:
+--   - Erloom: hosted on a farm, not a hotel — no relationship applies.
+--   - Wildfestival: De Echoput is not a canonical hotel.
+--   - Vergeet Mij Niet Gala: Hotel Okura Amsterdam is not a canonical
+--     hotel (Step A finding) — no relationship can be prepared until/
+--     unless that changes via a separate, dedicated hotel-catalogue
+--     decision.
+--
+-- ============================================================
+-- STEP E — Insert event_restaurants
+-- ============================================================
+-- NONE for any of the three events — zero EXACT_MATCH participants
+-- exist for any of them (see each event's own
+-- EVENT_PARTICIPANT_ENRICHMENT_REPORT.md). This is an accurate,
+-- accepted outcome, not a gap to force-fill: per the product direction,
+-- a Michelin-starred participant is not required for event eligibility.
+--
+-- Vergeet Mij Niet Gala specifically: the official organizers have
+-- stated the chef/restaurant line-up "will be announced in the coming
+-- weeks" — re-run the matching pass in
+-- EVENT_PARTICIPANT_ENRICHMENT_STANDARD.md once that announcement
+-- happens, rather than assuming Ciel Bleu/Yamazato participate merely
+-- because they're in the host venue.
+--
+-- ============================================================
+-- STEP F — Runtime verification (after any real apply)
+-- ============================================================
+-- For each inserted event:
+--   1. select count(*) from public.events where name = '<event name>'
+--      and start_at::date = '<date>'; -- expect exactly 1
+--   2. Mirror EventsRepository.loadLinkedVenues()'s exact query shape
+--      (event_restaurants -> restaurant_id list -> restaurants_full
+--      select) — expect an empty restaurant list for all three events,
+--      which is the correct, verified outcome, not a bug.
+--   3. Confirm via the live PostgREST REST endpoint (anon key) that the
+--      new event row is publicly readable, matching events_public_read
+--      RLS.
+--   4. On a physical device: confirm the event renders correctly on
+--      Event Detail with no MICHELIN AT THIS EVENT section (expected)
+--      and no HOTELS section (expected) for all three.

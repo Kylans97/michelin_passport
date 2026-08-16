@@ -355,6 +355,37 @@ everywhere else in this app) — the same distinction §10 already draws for
 events. No table, model, or UI code for this exists or should be created
 as part of this standard.
 
+## 18. Global-facing completeness — canonical entities, never local duplicates
+
+Chasing Stars is a global-facing product. Restaurant and Hotel are shared
+canonical entities — Events, Trips, Passport, Guides, Community, and any
+future Private Chef provenance feature must all be able to resolve against
+the *same* Restaurant/Hotel objects, not feature-specific copies of them.
+
+When event research surfaces a venue that seems to be missing, the required
+path is always:
+
+```
+EVENT RESEARCH → CATALOGUE GAP → SEPARATE CANONICAL VALIDATION
+  → CANONICAL ENTITY (if it earns inclusion on its own merits)
+  → EVENT RELATIONSHIP
+```
+
+**Never:** `EVENT → CREATE CONVENIENT PLACEHOLDER VENUE`. A venue is never
+added to `hotels`/`restaurants` *because* an event needs it — it is added
+(by a separate, dedicated catalogue workstream) only if it independently
+satisfies that catalogue's own existing inclusion rule, exactly as if no
+event had ever mentioned it. If it doesn't qualify, the event still ships
+— simply without that relationship — rather than lowering the catalogue's
+bar to make one event's data look more complete.
+
+This is not hypothetical: a hotel hosting a Michelin-starred restaurant is
+explicitly **not**, by itself, evidence that the hotel qualifies for the
+canonical `hotels` table (see `docs/Architecture/Michelin_Database/
+DATABASE_ARCHITECTURE.md`'s own hotel-scope rules) — "famous host of a
+starred restaurant" and "canonical Key/W50B hotel" are different
+questions, and event enrichment must never conflate them.
+
 ---
 
 ## Applying this standard: quick checklist

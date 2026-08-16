@@ -1,0 +1,3 @@
+participant_display_name,match_status,restaurant_code,canonical_name,city_name,country_code,current_michelin_stars,match_reasoning
+Peter Paul van den Breemen,NO_MATCH,,,,,,"Chef of De Echoput — no matching restaurant/hotel in production catalogue under any name/city variant checked"
+Jonathan Zandbergen,NO_MATCH,,,,,,"Chef of Wild Atelier — no matching restaurant in production catalogue"
