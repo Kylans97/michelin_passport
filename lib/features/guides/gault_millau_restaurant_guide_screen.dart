@@ -114,14 +114,6 @@ class _GaultMillauRestaurantGuideScreenState
     ),
   );
 
-  String _locationLabel(RestaurantGaultMillauEntry entry) {
-    final parts = <String>[
-      if (entry.restaurant.cityName.isNotEmpty) entry.restaurant.cityName,
-      if (entry.restaurant.countryName.isNotEmpty) entry.restaurant.countryName,
-    ];
-    return parts.join(', ');
-  }
-
   @override
   Widget build(BuildContext context) => GuideCatalogueLayout(
     source: 'GAULT&MILLAU',
@@ -170,8 +162,13 @@ class _GaultMillauRestaurantGuideScreenState
                       final entry = _results![index];
                       return GuideVenueCard(
                         title: entry.restaurant.name,
-                        locationLabel: _locationLabel(entry),
-                        distinction: GuideGaultMillauMark(award: entry.award),
+                        metadataLine: GuideGaultMillauMark(award: entry.award),
+                        cityName: entry.restaurant.cityName,
+                        countryName: entry.restaurant.countryName,
+                        flagEmoji: entry.restaurant.flagEmoji,
+                        recognitionSemanticLabel: formatGaultMillauDistinction(
+                          entry.award,
+                        ),
                         onTap: () => _open(entry),
                       );
                     },

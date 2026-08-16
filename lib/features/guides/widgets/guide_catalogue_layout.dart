@@ -3,45 +3,47 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/editorial_back_button.dart';
-import 'guide_venue_card.dart';
 
 /// The shared shell every Guide catalogue screen sits on top of —
 /// deliberately presentation-only. It knows a catalogue has a source
-/// family (eyebrow), a title, an optional supporting line, and an
-/// optional content slot below — nothing about stars, Keys, rank,
-/// restaurant/hotel models, filters, years or repositories. Michelin
-/// Restaurants/Hotels and 50 Best Restaurants/Hotels (Step 2B/2C) each
-/// supply their own [content] (search field, filters, result list) later;
-/// this shell never needs to change to accommodate that, since it only
-/// ever renders whatever widget it's handed.
+/// family, a title, an optional supporting line, and an optional content
+/// slot below — nothing about stars, Keys, rank, restaurant/hotel models,
+/// filters, years or repositories. Michelin Restaurants/Hotels and 50
+/// Best Restaurants/Hotels (Step 2B/2C) each supply their own [content]
+/// (search field, filters, result list) later; this shell never needs to
+/// change to accommodate that, since it only ever renders whatever widget
+/// it's handed.
 ///
 /// A real [Scaffold] (not a bare canvas) — this is pushed via
 /// [MaterialPageRoute] from [GuidesScreen], which has no enclosing
 /// Scaffold of its own to inherit (same reasoning as LoginScreen/
 /// SignupScreen in Step 4A). The back affordance is a small
-/// [EditorialBackButton] — fixed above the header rather than floating
+/// [EditorialBackButton] — fixed inside the header rather than floating
 /// over it — never a default Material AppBar; a plain [MaterialPageRoute]
 /// push/pop keeps iOS edge-swipe-to-pop working with no extra wiring.
 ///
-/// Step 2B addition: when [content] is supplied, the header stops being
-/// part of the scroll view and becomes a fixed block, with [content] given
-/// the remaining height via [Expanded] instead. This is the shell's one
-/// permitted small additive change — Michelin Restaurants/Hotels' own
-/// result list is a [ListView] that needs to own scrolling itself (so a
-/// catalogue of hundreds of places is lazily built, not eagerly laid out
-/// in a single giant [Column]); nesting that inside the header's own
-/// [SingleChildScrollView], as a naive content slot would, produces two
-/// competing scrollables. Screens that pass no [content] (Step 2A's four
-/// shells, and 50 Best's still-frozen pair) are completely unaffected —
-/// they keep the exact original header-only [SingleChildScrollView], so a
-/// short/likely-not-full-height header never looks like a broken half-
-/// empty scrollable.
+/// Step 1B — CATALOGUE HEADER: the header is now a fixed forest-green
+/// editorial masthead — [source] (the Guide family, e.g. "MICHELIN
+/// GUIDE") prominent in ivory, [title] (the content type, "Restaurants"/
+/// "Hotels") smaller and subordinate in [AppColors.secondaryOnDark] —
+/// deliberately the exact same size relationship [GuidesScreen]'s own
+/// family-title-vs-destination-label hierarchy already uses, so a
+/// catalogue page visually continues the landing page rather than
+/// introducing a second hierarchy language. Below it, [content] (search,
+/// filters, results) sits on the plain ivory [Scaffold] canvas — the
+/// forest-green-to-ivory color transition itself is now the separator
+/// between them; no hairline is inserted there, since a hand-drawn line
+/// would be redundant next to a full color-block boundary already this
+/// strong (contrast with [GuideVenueCardDivider], still used between
+/// individual venue rows inside [content] — a genuinely different, much
+/// lower-contrast context that still needs a drawn line).
 class GuideCatalogueLayout extends StatelessWidget {
-  /// The eyebrow-weight source line, e.g. "MICHELIN GUIDE" or
-  /// "THE WORLD'S 50 BEST".
+  /// The Guide family, e.g. "MICHELIN GUIDE" or "THE WORLD'S 50 BEST" —
+  /// the header's prominent line.
   final String source;
 
-  /// The catalogue's own title, e.g. "Restaurants" or "Hotels".
+  /// The catalogue's own content type, e.g. "Restaurants" or "Hotels" —
+  /// the header's subordinate line.
   final String title;
 
   /// A short, truthful supporting line. Optional — omit rather than pad
@@ -69,85 +71,72 @@ class GuideCatalogueLayout extends StatelessWidget {
     children: [
       Text(
         source,
-        style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+        style: CsTypography.sectionTitle.copyWith(color: AppColors.ivory),
       ),
-      const SizedBox(height: CsSpacing.xs),
+      const SizedBox(height: 4),
       Text(
         title,
-        style: CsTypography.screenTitle.copyWith(color: AppColors.forestGreen),
+        style: CsTypography.placeTitle.copyWith(
+          color: AppColors.secondaryOnDark,
+        ),
       ),
       if (subtitle != null) ...[
         const SizedBox(height: CsSpacing.sm),
         Text(
           subtitle!,
-          style: CsTypography.body.copyWith(color: AppColors.taupe),
+          style: CsTypography.metadata.copyWith(
+            color: AppColors.secondaryOnDark,
+          ),
         ),
       ],
     ],
   );
 
   @override
-  Widget build(BuildContext context) {
-    final body = content == null
-        ? SingleChildScrollView(
-            padding: const EdgeInsets.fromLTRB(
-              CsSpacing.pageHorizontal,
-              CsSpacing.hero,
-              CsSpacing.pageHorizontal,
-              CsSpacing.xxl,
-            ),
-            child: _header(),
-          )
-        : Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.hero,
-                  CsSpacing.pageHorizontal,
-                  0,
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: AppColors.ivory,
+    body: SafeArea(
+      child: Column(
+        children: [
+          ColoredBox(
+            color: AppColors.forestGreen,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    CsSpacing.base,
+                    CsSpacing.xs,
+                    CsSpacing.base,
+                    0,
+                  ),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: EditorialBackButton(color: AppColors.ivory),
+                  ),
                 ),
-                child: _header(),
-              ),
-              // GuideVenueCardDivider's own token (Step 1A: physical-device
-              // review found the shared SectionDivider's 40%-alpha taupe
-              // too faint here) wrapped in SectionDivider's own generous
-              // vertical rhythm — [SectionDivider] itself stays untouched,
-              // since it's shared with Restaurant/Hotel/Event Detail.
-              const Padding(
-                padding: EdgeInsets.fromLTRB(
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.lg,
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.lg,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    CsSpacing.pageHorizontal,
+                    CsSpacing.sm,
+                    CsSpacing.pageHorizontal,
+                    CsSpacing.xl,
+                  ),
+                  child: _header(),
                 ),
-                child: GuideVenueCardDivider(),
-              ),
-              Expanded(child: content!),
-            ],
-          );
-
-    return Scaffold(
-      backgroundColor: AppColors.ivory,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.base,
-                CsSpacing.xs,
-                CsSpacing.base,
-                0,
-              ),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: EditorialBackButton(color: AppColors.forestGreen),
-              ),
+              ],
             ),
-            Expanded(child: body),
-          ],
-        ),
+          ),
+          Expanded(
+            child: content == null
+                ? const SizedBox.shrink()
+                : Padding(
+                    padding: const EdgeInsets.only(top: CsSpacing.lg),
+                    child: content!,
+                  ),
+          ),
+        ],
       ),
-    );
-  }
+    ),
+  );
 }

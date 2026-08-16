@@ -111,14 +111,6 @@ class _MichelinHotelGuideScreenState extends State<MichelinHotelGuideScreen> {
     MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
   );
 
-  String _locationLabel(Hotel hotel) {
-    final parts = <String>[
-      if (hotel.cityName.isNotEmpty) hotel.cityName,
-      if (hotel.countryName.isNotEmpty) hotel.countryName,
-    ];
-    return parts.join(', ');
-  }
-
   @override
   Widget build(BuildContext context) => GuideCatalogueLayout(
     source: 'MICHELIN GUIDE',
@@ -181,13 +173,15 @@ class _MichelinHotelGuideScreenState extends State<MichelinHotelGuideScreen> {
                     separatorBuilder: (_, _) => const GuideVenueCardDivider(),
                     itemBuilder: (context, index) {
                       final hotel = _results![index];
+                      final keys = hotel.michelinKeys ?? 0;
                       return GuideVenueCard(
                         title: hotel.name,
-                        locationLabel: _locationLabel(hotel),
-                        distinction: KeyRow(
-                          count: hotel.michelinKeys ?? 0,
-                          size: 12,
-                        ),
+                        inlineRecognition: KeyRow(count: keys, size: 12),
+                        cityName: hotel.cityName,
+                        countryName: hotel.countryName,
+                        flagEmoji: hotel.flagEmoji,
+                        recognitionSemanticLabel:
+                            '$keys ${keys == 1 ? 'Michelin Key' : 'Michelin Keys'}',
                         onTap: () => _open(hotel),
                       );
                     },

@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
+import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/country_filter_control.dart';
 import '../../core/widgets/cs_search_field.dart';
 import '../../data/repositories/hotel_worlds_50_best_repository.dart';
@@ -13,7 +15,6 @@ import '../hotels/hotel_detail_screen.dart';
 import 'fifty_best_view_model.dart';
 import 'widgets/guide_catalogue_layout.dart';
 import 'widgets/guide_catalogue_states.dart';
-import 'widgets/guide_rank_mark.dart';
 import 'widgets/guide_venue_card.dart';
 import 'widgets/guide_year_selector.dart';
 
@@ -158,14 +159,6 @@ class _FiftyBestHotelGuideScreenState extends State<FiftyBestHotelGuideScreen> {
     MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
   );
 
-  String _locationLabel(Hotel hotel) {
-    final parts = <String>[
-      if (hotel.cityName.isNotEmpty) hotel.cityName,
-      if (hotel.countryName.isNotEmpty) hotel.countryName,
-    ];
-    return parts.join(', ');
-  }
-
   @override
   Widget build(BuildContext context) => GuideCatalogueLayout(
     source: "THE WORLD'S 50 BEST",
@@ -237,8 +230,18 @@ class _FiftyBestHotelGuideScreenState extends State<FiftyBestHotelGuideScreen> {
                     final entry = _results![index];
                     return GuideVenueCard(
                       title: entry.hotel.name,
-                      locationLabel: _locationLabel(entry.hotel),
-                      leading: GuideRankMark(rank: entry.rank!),
+                      metadataLine: Text(
+                        '#${entry.rank} · ${entry.year}',
+                        style: CsTypography.metadata.copyWith(
+                          color: AppColors.forestGreen,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      cityName: entry.hotel.cityName,
+                      countryName: entry.hotel.countryName,
+                      flagEmoji: entry.hotel.flagEmoji,
+                      recognitionSemanticLabel:
+                          'ranked number ${entry.rank}, ${entry.year}',
                       onTap: () => _open(entry.hotel),
                     );
                   },

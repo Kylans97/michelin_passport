@@ -49,12 +49,15 @@ String? formatGaultMillauDistinction(GaultMillauAward award) {
 }
 
 /// A Gault&Millau restaurant's distinction, rendered in [GuideVenueCard]'s
-/// `distinction` slot — the same role [StarRow]/[GuideRankMark] play for
-/// Michelin/World's 50 Best. Presentation-only: knows nothing about
-/// Supabase, repositories, or business logic, per the Step 2D brief.
+/// `metadataLine` slot — the same role a "#12 · 2026" rank/year line plays
+/// for World's 50 Best. Presentation-only: knows nothing about Supabase,
+/// repositories, or business logic, per the Step 2D brief.
 ///
-/// Deliberately plain text at the established `taupe` metadata tone — no
-/// badge, no gold treatment, no gradient (the brief is explicit that
+/// Step 1B: forest-green, not taupe — this is the row's primary "why is
+/// this venue in this Guide" signal (the Gault&Millau score itself), the
+/// same visual weight World's 50 Best's rank/year line uses, so the two
+/// non-Michelin Guides read consistently. Still deliberately plain text —
+/// no badge, no gold treatment, no gradient (the brief is explicit that
 /// recognition strength must never be color-coded alone, and that this
 /// widget should match the app's quiet editorial aesthetic rather than
 /// reach for a "gold guide" cliché).
@@ -70,7 +73,7 @@ class GuideGaultMillauMark extends StatelessWidget {
     return Text(
       text,
       style: CsTypography.metadata.copyWith(
-        color: AppColors.taupe,
+        color: AppColors.forestGreen,
         fontWeight: FontWeight.w600,
       ),
     );

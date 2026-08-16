@@ -125,14 +125,6 @@ class _MichelinRestaurantGuideScreenState
     ),
   );
 
-  String _locationLabel(Restaurant restaurant) {
-    final parts = <String>[
-      if (restaurant.cityName.isNotEmpty) restaurant.cityName,
-      if (restaurant.countryName.isNotEmpty) restaurant.countryName,
-    ];
-    return parts.join(', ');
-  }
-
   @override
   Widget build(BuildContext context) => GuideCatalogueLayout(
     source: 'MICHELIN GUIDE',
@@ -196,13 +188,15 @@ class _MichelinRestaurantGuideScreenState
                     separatorBuilder: (_, _) => const GuideVenueCardDivider(),
                     itemBuilder: (context, index) {
                       final restaurant = _results![index];
+                      final stars = restaurant.michelinStars ?? 0;
                       return GuideVenueCard(
                         title: restaurant.name,
-                        locationLabel: _locationLabel(restaurant),
-                        distinction: StarRow(
-                          count: restaurant.michelinStars ?? 0,
-                          size: 12,
-                        ),
+                        inlineRecognition: StarRow(count: stars, size: 12),
+                        cityName: restaurant.cityName,
+                        countryName: restaurant.countryName,
+                        flagEmoji: restaurant.flagEmoji,
+                        recognitionSemanticLabel:
+                            '$stars ${stars == 1 ? 'Michelin star' : 'Michelin stars'}',
                         onTap: () => _open(restaurant),
                       );
                     },

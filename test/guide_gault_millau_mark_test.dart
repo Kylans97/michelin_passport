@@ -129,6 +129,16 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
+    testWidgets('Step 1B: renders forest-green (the row\'s primary recognition '
+        'signal), never gold', (tester) async {
+      await tester.pumpWidget(
+        wrap(GuideGaultMillauMark(award: _award(score: 18, toqueCount: 4))),
+      );
+      final text = tester.widget<Text>(find.text('18/20 · 4 Toques'));
+      expect(text.style?.color, AppColors.forestGreen);
+      expect(text.style?.color, isNot(AppColors.gold));
+    });
+
     testWidgets('renders a toque-only award (no score)', (tester) async {
       await tester.pumpWidget(
         wrap(GuideGaultMillauMark(award: _award(toqueCount: 5))),

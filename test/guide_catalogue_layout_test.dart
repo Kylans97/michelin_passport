@@ -2,15 +2,12 @@
 // shell every Guides catalogue screen sits on. It never constructs a
 // repository or touches Supabase itself (it only ever renders whatever
 // [content] widget it's handed), which is exactly why it's still safely
-// pumpable directly here even though, as of Step 2C, all four concrete
-// catalogue screens (Michelin Restaurants/Hotels, World's 50 Best
-// Restaurants/Hotels) are real and construct a repository against
+// pumpable directly here even though all five concrete catalogue screens
+// (Michelin Restaurants/Hotels, World's 50 Best Restaurants/Hotels,
+// Gault&Millau Restaurants) are real and construct a repository against
 // Supabase.instance.client eagerly in their own initState — none of them
-// are pumped in this file (see the Step 2B report for why the Michelin
-// pair was first removed from here, and the Step 2C report for the same
-// reasoning applied to the World's 50 Best pair). Every screen's
-// presentation pieces (GuideVenueCard,
-// GuideCatalogueLoading/EmptyState/ErrorState, GuideRankMark,
+// are pumped in this file. Every screen's presentation pieces
+// (GuideVenueCard, GuideCatalogueLoading/EmptyState/ErrorState,
 // GuideYearSelector, the filter enums, the pure ranking/sort logic) are
 // covered directly in their own test files instead; full functional
 // verification happens via physical-device review.
@@ -19,15 +16,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_catalogue_layout.dart';
-import 'package:michelin_passport/features/guides/widgets/guide_venue_card.dart';
 
 Widget _wrap(Widget child) => MaterialApp(home: child);
 
 void main() {
   group('GuideCatalogueLayout', () {
-    testWidgets('renders source, title and subtitle on the ivory canvas', (
-      tester,
-    ) async {
+    testWidgets('renders source, title and subtitle', (tester) async {
       await tester.pumpWidget(
         _wrap(
           const GuideCatalogueLayout(
@@ -37,8 +31,6 @@ void main() {
           ),
         ),
       );
-      final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
-      expect(scaffold.backgroundColor, AppColors.ivory);
       expect(find.text('MICHELIN GUIDE'), findsOneWidget);
       expect(find.text('Restaurants'), findsOneWidget);
       expect(find.text('A subtitle.'), findsOneWidget);
@@ -54,6 +46,52 @@ void main() {
       expect(find.text('Hotels'), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets(
+      'Step 1B: the header is a forest-green editorial masthead — the '
+      'Guide family is prominent ivory, the content type is smaller and '
+      'secondary, the back arrow is ivory, the Scaffold canvas below stays '
+      'ivory',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            const GuideCatalogueLayout(
+              source: 'MICHELIN GUIDE',
+              title: 'Restaurants',
+              subtitle: 'A subtitle.',
+            ),
+          ),
+        );
+
+        final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
+        expect(scaffold.backgroundColor, AppColors.ivory);
+
+        expect(
+          find.byWidgetPredicate(
+            (w) => w is ColoredBox && w.color == AppColors.forestGreen,
+          ),
+          findsOneWidget,
+        );
+
+        final family = tester.widget<Text>(find.text('MICHELIN GUIDE'));
+        expect(family.style?.color, AppColors.ivory);
+
+        final contentType = tester.widget<Text>(find.text('Restaurants'));
+        expect(contentType.style?.color, AppColors.secondaryOnDark);
+        expect(
+          family.style!.fontSize,
+          greaterThan(contentType.style!.fontSize!),
+        );
+
+        final subtitle = tester.widget<Text>(find.text('A subtitle.'));
+        expect(subtitle.style?.color, AppColors.secondaryOnDark);
+
+        final backIcon = tester.widget<Icon>(
+          find.byIcon(Icons.arrow_back_ios_new_rounded),
+        );
+        expect(backIcon.color, AppColors.ivory);
+      },
+    );
 
     testWidgets('has a back affordance that pops the route', (tester) async {
       await tester.pumpWidget(
@@ -101,34 +139,6 @@ void main() {
         ),
       );
       expect(find.text('future filter/list content'), findsOneWidget);
-    });
-
-    testWidgets('shows a hairline between the header and content when '
-        'content is present', (tester) async {
-      await tester.pumpWidget(
-        _wrap(
-          const GuideCatalogueLayout(
-            source: 'MICHELIN GUIDE',
-            title: 'Restaurants',
-            content: Text('future filter/list content'),
-          ),
-        ),
-      );
-      expect(find.byType(GuideVenueCardDivider), findsOneWidget);
-    });
-
-    testWidgets('shows no hairline when there is no content to separate', (
-      tester,
-    ) async {
-      await tester.pumpWidget(
-        _wrap(
-          const GuideCatalogueLayout(
-            source: 'MICHELIN GUIDE',
-            title: 'Restaurants',
-          ),
-        ),
-      );
-      expect(find.byType(GuideVenueCardDivider), findsNothing);
     });
 
     testWidgets('content slot is absent (no fake content) when omitted', (
