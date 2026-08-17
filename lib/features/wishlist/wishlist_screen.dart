@@ -22,14 +22,16 @@ import 'wishlist_view_model.dart';
 /// for the default-selection rule), via the same [PassportVenue]
 /// abstraction Explore/Passport use.
 ///
-/// UI Consistency Step 1: forest-green masthead (title, supporting line,
+/// UI Consistency Step 1: deep-green masthead (title, supporting line,
 /// Restaurants/Hotels selector) over an ivory body — the same editorial
-/// composition established for Guides' catalogues and Friends. Unlike
-/// those screens this one is a permanent bottom-navigation tab (see
-/// app.dart's `_MainNavigation`), not a pushed route: it owns no
-/// [Scaffold] of its own (the tab shell already provides one) and needs no
-/// back affordance, so the safe-area architecture is the same forest-
-/// green-through-the-status-bar / scoped [AnnotatedRegion] / explicit
+/// composition established for Guides' catalogues and Friends (Green Token
+/// Consistency Migration: AppColors.deepGreen, the canonical primary brand
+/// dark surface — not forestGreen). Unlike those screens this one is a
+/// permanent bottom-navigation tab (see app.dart's `_MainNavigation`), not
+/// a pushed route: it owns no [Scaffold] of its own (the tab shell already
+/// provides one) and needs no back affordance, so the safe-area
+/// architecture is the same deep-green-through-the-status-bar / scoped
+/// [AnnotatedRegion] / explicit
 /// ivory-body pattern, just without the [Scaffold] wrapper other pushed
 /// screens use.
 class WishlistScreen extends StatefulWidget {
@@ -138,19 +140,22 @@ class _WishlistScreenState extends State<WishlistScreen> {
           value: SystemUiOverlayStyle.light,
           // Wishlist is a bottom-navigation tab body, not a pushed route —
           // unlike GuideCatalogueLayout/FriendProfileScreen/FriendsScreen,
-          // it has no Scaffold(backgroundColor: forestGreen) of its own to
+          // it has no Scaffold(backgroundColor: deepGreen) of its own to
           // fall back on: _MainNavigation's Scaffold owns that, painted in
           // the legacy AppColors.background. This outer ColoredBox is the
           // substitute — it wraps the header AND the ivory body together
           // so the header's SafeArea(bottom: false) inserts its top-inset
-          // padding *inside* an area already painted forest-green, rather
+          // padding *inside* an area already painted deep-green, rather
           // than exposing whatever sits behind it. Physical-device review
           // found the previous structure (ColoredBox nested *inside*
           // SafeArea) left that inset unpainted, showing an ivory/white
           // strip behind the iOS status bar — the same root cause already
           // documented and fixed on the screens named above.
+          //
+          // Green Token Consistency Migration: AppColors.deepGreen, not
+          // forestGreen — the canonical primary brand dark surface.
           child: ColoredBox(
-            color: AppColors.forestGreen,
+            color: AppColors.deepGreen,
             child: Column(
               children: [
                 SafeArea(
@@ -166,12 +171,12 @@ class _WishlistScreenState extends State<WishlistScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'WISHLIST',
+                          'Wishlist',
                           style: CsTypography.screenTitle.copyWith(
                             color: AppColors.ivory,
                           ),
                         ),
-                        const SizedBox(height: 4),
+                        const SizedBox(height: CsSpacing.xs),
                         Text(
                           "Places you're saving for later.",
                           style: CsTypography.body.copyWith(

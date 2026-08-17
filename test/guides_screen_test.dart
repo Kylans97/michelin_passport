@@ -31,13 +31,13 @@ void main() {
     });
 
     testWidgets(
-      'Step 1A: canvas is forest-green, GUIDES/back arrow are ivory, with '
+      'Step 1A: canvas is deep-green, GUIDES/back arrow are ivory, with '
       'three ivory family blocks visible on top of it',
       (tester) async {
         await tester.pumpWidget(_wrap(const GuidesScreen()));
 
         final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
-        expect(scaffold.backgroundColor, AppColors.forestGreen);
+        expect(scaffold.backgroundColor, AppColors.deepGreen);
 
         final title = tester.widget<Text>(find.text('GUIDES'));
         expect(title.style!.color, AppColors.ivory);

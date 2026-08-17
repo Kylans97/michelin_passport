@@ -57,6 +57,11 @@ import '../../../core/widgets/editorial_back_button.dart';
 /// themes currently applies that automatically here, since this shell has
 /// no [AppBar]/[SliverAppBar] for a theme's `appBarTheme.
 /// systemOverlayStyle` to attach to.
+///
+/// Green Token Consistency Migration: the masthead is AppColors.deepGreen,
+/// not forestGreen — the canonical primary brand dark surface, matching
+/// Explore/Passport/Event Detail's hero and every other migrated masthead
+/// (Wishlist, Friends, this screen's own siblings).
 class GuideCatalogueLayout extends StatelessWidget {
   /// The Guide family, e.g. "MICHELIN GUIDE" or "THE WORLD'S 50 BEST" —
   /// the header's prominent line.
@@ -116,13 +121,13 @@ class GuideCatalogueLayout extends StatelessWidget {
   Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
     value: SystemUiOverlayStyle.light,
     child: Scaffold(
-      backgroundColor: AppColors.forestGreen,
+      backgroundColor: AppColors.deepGreen,
       body: Column(
         children: [
           SafeArea(
             bottom: false,
             child: ColoredBox(
-              color: AppColors.forestGreen,
+              color: AppColors.deepGreen,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

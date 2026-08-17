@@ -221,7 +221,7 @@ void main() {
       expect(find.text("'t Preuvenemint"), findsOneWidget);
     });
 
-    testWidgets('forest-green Scaffold background with an explicit ivory '
+    testWidgets('deep-green Scaffold background with an explicit ivory '
         'ColoredBox body and a light status-bar AnnotatedRegion', (
       tester,
     ) async {
@@ -231,7 +231,7 @@ void main() {
         ),
       );
       final scaffold = tester.widget<Scaffold>(find.byType(Scaffold));
-      expect(scaffold.backgroundColor, AppColors.forestGreen);
+      expect(scaffold.backgroundColor, AppColors.deepGreen);
       expect(
         find.byWidgetPredicate(
           (w) => w is ColoredBox && w.color == AppColors.ivory,

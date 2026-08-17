@@ -9,6 +9,14 @@ It does not duplicate the generic database architecture doc
 (`docs/Architecture/DATABASE_GUIDE.md`) — only the tables/policies relevant
 to social reads are covered here.
 
+**Green token note (Green Token Consistency Migration):** every
+"forest-green" mention below now refers to `AppColors.deepGreen` in code —
+FriendsScreen's header and FriendProfileScreen's hero were migrated from
+`forestGreen` to the canonical primary-brand-surface token; see
+`UI_CONSISTENCY_AUDIT.md`'s "Canonical green system" section for the full
+deepGreen/forestGreen role split. Not rewritten line-by-line below to
+avoid churn in an otherwise-accurate historical document.
+
 ## 1. Screen → repository → table map
 
 | Screen | Repository | Backing |

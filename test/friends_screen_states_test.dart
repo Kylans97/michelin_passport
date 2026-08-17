@@ -20,19 +20,21 @@ import 'package:michelin_passport/features/friends/widgets/identity_row.dart';
 // Polish pass) — FriendsScreen constructs FriendshipRepository against
 // Supabase.instance.client eagerly in initState, so the real screen can't
 // be pumped here (same established limitation as the rest of this file).
-// Scaffold.backgroundColor is forest-green (not ivory) so the top safe
-// area/status bar continues the header seamlessly; the tab content area
-// below paints its own explicit ivory ColoredBox rather than relying on
-// the Scaffold's background.
+// Scaffold.backgroundColor is deep-green (Green Token Consistency
+// Migration: AppColors.deepGreen, the canonical primary brand dark
+// surface, not forestGreen), not ivory, so the top safe area/status bar
+// continues the header seamlessly; the tab content area below paints its
+// own explicit ivory ColoredBox rather than relying on the Scaffold's
+// background.
 Widget _friendsScreenShell({required Widget tabContent}) =>
     AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
-        backgroundColor: AppColors.forestGreen,
+        backgroundColor: AppColors.deepGreen,
         body: Column(
           children: [
             ColoredBox(
-              color: AppColors.forestGreen,
+              color: AppColors.deepGreen,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -103,7 +105,7 @@ Widget _wrap(Widget child) => MaterialApp(
 
 void main() {
   group('FriendsScreen outer shell (Safe Area Polish)', () {
-    testWidgets('Scaffold background is forest-green, with an explicit ivory '
+    testWidgets('Scaffold background is deep-green, with an explicit ivory '
         'ColoredBox for the tab content area below the header', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
@@ -112,11 +114,11 @@ void main() {
       );
 
       final scaffold = tester.widget<Scaffold>(find.byType(Scaffold));
-      expect(scaffold.backgroundColor, AppColors.forestGreen);
+      expect(scaffold.backgroundColor, AppColors.deepGreen);
 
       expect(
         find.byWidgetPredicate(
-          (w) => w is ColoredBox && w.color == AppColors.forestGreen,
+          (w) => w is ColoredBox && w.color == AppColors.deepGreen,
         ),
         findsOneWidget,
       );

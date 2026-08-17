@@ -14,13 +14,16 @@ import '../friends/widgets/identity_row.dart';
 /// is ever pushed, so this makes no query of its own — there is nothing
 /// left to fetch.
 ///
-/// Built fresh with the corrected safe-area pattern (forest-green
+/// Built fresh with the corrected safe-area pattern (deep-green
 /// Scaffold background continuing through the iOS status bar behind a
 /// scoped AnnotatedRegion, explicit ivory ColoredBox for the list body)
 /// rather than reusing friend_activity_list_screen.dart's shell — that
 /// file's three screens predate the UI Polish safe-area fix and still
 /// carry the ivory-strip-behind-the-status-bar bug; a new screen must not
 /// inherit it.
+///
+/// Green Token Consistency Migration: AppColors.deepGreen, not
+/// forestGreen — the canonical primary brand dark surface.
 class EventFriendsGoingListScreen extends StatelessWidget {
   final String eventTitle;
   final List<Friendship> friends;
@@ -36,7 +39,7 @@ class EventFriendsGoingListScreen extends StatelessWidget {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
-        backgroundColor: AppColors.forestGreen,
+        backgroundColor: AppColors.deepGreen,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -48,50 +48,44 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets(
-      'Step 1B: the header is a forest-green editorial masthead — the '
-      'Guide family is prominent ivory, the content type is smaller and '
-      'secondary, the back arrow is ivory',
-      (tester) async {
-        await tester.pumpWidget(
-          _wrap(
-            const GuideCatalogueLayout(
-              source: 'MICHELIN GUIDE',
-              title: 'Restaurants',
-              subtitle: 'A subtitle.',
-            ),
+    testWidgets('Step 1B: the header is a deep-green editorial masthead — the '
+        'Guide family is prominent ivory, the content type is smaller and '
+        'secondary, the back arrow is ivory', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          const GuideCatalogueLayout(
+            source: 'MICHELIN GUIDE',
+            title: 'Restaurants',
+            subtitle: 'A subtitle.',
           ),
-        );
+        ),
+      );
 
-        expect(
-          find.byWidgetPredicate(
-            (w) => w is ColoredBox && w.color == AppColors.forestGreen,
-          ),
-          findsOneWidget,
-        );
+      expect(
+        find.byWidgetPredicate(
+          (w) => w is ColoredBox && w.color == AppColors.deepGreen,
+        ),
+        findsOneWidget,
+      );
 
-        final family = tester.widget<Text>(find.text('MICHELIN GUIDE'));
-        expect(family.style?.color, AppColors.ivory);
+      final family = tester.widget<Text>(find.text('MICHELIN GUIDE'));
+      expect(family.style?.color, AppColors.ivory);
 
-        final contentType = tester.widget<Text>(find.text('Restaurants'));
-        expect(contentType.style?.color, AppColors.secondaryOnDark);
-        expect(
-          family.style!.fontSize,
-          greaterThan(contentType.style!.fontSize!),
-        );
+      final contentType = tester.widget<Text>(find.text('Restaurants'));
+      expect(contentType.style?.color, AppColors.secondaryOnDark);
+      expect(family.style!.fontSize, greaterThan(contentType.style!.fontSize!));
 
-        final subtitle = tester.widget<Text>(find.text('A subtitle.'));
-        expect(subtitle.style?.color, AppColors.secondaryOnDark);
+      final subtitle = tester.widget<Text>(find.text('A subtitle.'));
+      expect(subtitle.style?.color, AppColors.secondaryOnDark);
 
-        final backIcon = tester.widget<Icon>(
-          find.byIcon(Icons.arrow_back_ios_new_rounded),
-        );
-        expect(backIcon.color, AppColors.ivory);
-      },
-    );
+      final backIcon = tester.widget<Icon>(
+        find.byIcon(Icons.arrow_back_ios_new_rounded),
+      );
+      expect(backIcon.color, AppColors.ivory);
+    });
 
     testWidgets(
-      'UI Polish: Scaffold.backgroundColor is forest-green (not ivory) so '
+      'UI Polish: Scaffold.backgroundColor is deep-green (not ivory) so '
       'the top safe area/status bar continues the masthead seamlessly, '
       'with the results area painted explicitly ivory on top of it',
       (tester) async {
@@ -106,7 +100,7 @@ void main() {
         );
 
         final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
-        expect(scaffold.backgroundColor, AppColors.forestGreen);
+        expect(scaffold.backgroundColor, AppColors.deepGreen);
 
         expect(
           find.byWidgetPredicate(

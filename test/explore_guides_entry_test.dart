@@ -8,11 +8,15 @@
 // pumped in a widget test without a live session — the presentation seam
 // (this exact row, this exact copy) is what's tested instead.
 //
-// UI Polish pass: Explore's own canvas is forest-green, not ivory, so this
+// UI Polish pass: Explore's own canvas is deep-green, not ivory, so this
 // row must pass `surface: CsSurface.dark` (matching the real call site in
 // explore_screen.dart) — physical-device review found the row rendering
-// forest-green-on-forest-green (i.e. defaulting to CsSurface.light, meant
+// forest-green-on-deep-green (i.e. defaulting to CsSurface.light, meant
 // for GuideFamilySection's ivory blocks) essentially unreadable here.
+// (Green Token Consistency Migration: this comment previously said
+// "forest-green canvas," which was already inaccurate before that
+// migration — Explore has used AppColors.deepGreen the whole time —
+// corrected here so this file doesn't keep confusing the two greens.)
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -24,7 +28,7 @@ const _label = 'Browse the Guides';
 const _descriptor = "Michelin, World's 50 Best & Gault&Millau.";
 
 Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(backgroundColor: AppColors.forestGreen, body: child),
+  home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
 );
 
 void main() {
@@ -50,7 +54,7 @@ void main() {
     });
 
     testWidgets(
-      'UI Polish: on Explore\'s forest-green canvas, the label is ivory '
+      'UI Polish: on Explore\'s deep-green canvas, the label is ivory '
       '(not forest-green) — legible, never gold',
       (tester) async {
         await tester.pumpWidget(
@@ -129,7 +133,7 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.forestGreen,
+              backgroundColor: AppColors.deepGreen,
               body: GuideDestinationRow(
                 label: _label,
                 descriptor: _descriptor,

@@ -9,6 +9,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_surface_context.dart';
 import 'package:michelin_passport/core/widgets/cs_content_sheet.dart';
 import 'package:michelin_passport/core/widgets/cs_filter_chip.dart';
@@ -173,6 +174,29 @@ void main() {
       );
       expect(tester.takeException(), isNull);
       expect(find.byIcon(Icons.public_rounded), findsOneWidget);
+    });
+
+    testWidgets('Green Token Consistency Migration: on CsSurface.dark, the '
+        'unselected background is forestGreen (never deepGreen) — the one '
+        'intentional case forestGreen remains in active use, as a panel '
+        'lifted one shade off whatever deepGreen canvas it sits on '
+        '(matches Wishlist\'s Restaurants/Hotels selector exactly)', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          CsFilterChip(
+            label: 'Restaurants',
+            selected: false,
+            onTap: () {},
+            surface: CsSurface.dark,
+          ),
+        ),
+      );
+      final container = tester.widget<Container>(find.byType(Container));
+      final decoration = container.decoration! as BoxDecoration;
+      expect(decoration.color, equals(AppColors.forestGreen));
+      expect(decoration.color, isNot(equals(AppColors.deepGreen)));
     });
   });
 

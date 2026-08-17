@@ -22,9 +22,12 @@ import 'widgets/worlds_50_best_hotels_history_section.dart';
 /// MichelinAwardTimeline/detectAwardTransitions unchanged, only swapping
 /// the badge (KeyRow) and label formatter (keysTransitionLabel).
 ///
-/// UI Consistency Step 1B: same forest-green/ivory inversion as Restaurant
+/// UI Consistency Step 1B: same deep-green/ivory inversion as Restaurant
 /// Award History. Gold is reserved for MICHELIN Keys alone — World's 50
 /// Best is ivory.
+///
+/// Green Token Consistency Migration: AppColors.deepGreen, not
+/// forestGreen — see restaurants/award_history_screen.dart's own comment.
 class HotelAwardHistoryScreen extends StatefulWidget {
   final Hotel hotel;
   const HotelAwardHistoryScreen({super.key, required this.hotel});
@@ -92,7 +95,7 @@ class _HotelAwardHistoryScreenState extends State<HotelAwardHistoryScreen> {
     final hasAnything = hasKeys || hasWorlds50Best;
 
     return Scaffold(
-      backgroundColor: AppColors.forestGreen,
+      backgroundColor: AppColors.deepGreen,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

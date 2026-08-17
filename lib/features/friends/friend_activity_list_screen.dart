@@ -23,6 +23,8 @@ import 'widgets/friend_wishlist_tile.dart';
 /// language the preview already uses. No search/filter — a friend's full
 /// activity list is expected to stay short; add filtering later only if
 /// real usage shows it's needed.
+// Green Token Consistency Migration: AppColors.deepGreen, not forestGreen
+// — the canonical primary brand dark surface.
 class _FriendActivityHeader extends StatelessWidget {
   final String eyebrow;
   final String title;
@@ -31,7 +33,7 @@ class _FriendActivityHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => ColoredBox(
-    color: AppColors.forestGreen,
+    color: AppColors.deepGreen,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [

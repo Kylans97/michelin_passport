@@ -21,10 +21,14 @@ import 'widgets/worlds_50_best_history_section.dart';
 ///
 /// UI Consistency Step 1B (physical-device polish): a deliberate color
 /// inversion from Restaurant Detail's ivory canvas — this screen is a full
-/// forest-green "archive / record book" canvas with ivory content, so
+/// deep-green "archive / record book" canvas with ivory content, so
 /// moving between the two reads as a deliberate transition into a distinct
 /// experience. Even here, gold is reserved for Michelin stars alone —
 /// World's 50 Best and Hall of Fame are ivory, never gold.
+///
+/// Green Token Consistency Migration: AppColors.deepGreen, not
+/// forestGreen — this is a primary full-screen dark canvas, the same
+/// canonical brand surface Explore/Passport/Event Detail's hero use.
 class AwardHistoryScreen extends StatefulWidget {
   final Restaurant restaurant;
   const AwardHistoryScreen({super.key, required this.restaurant});
@@ -92,7 +96,7 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
     final hasAnything = hasMichelin || hasWorlds50Best || hasHallOfFame;
 
     return Scaffold(
-      backgroundColor: AppColors.forestGreen,
+      backgroundColor: AppColors.deepGreen,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

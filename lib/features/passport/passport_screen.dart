@@ -312,6 +312,16 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
 
 // ── Editorial header ──────────────────────────────────────────────────────────
 
+// Primary Tab Header Consistency Step 1: title/subtitle sit in a Row
+// alongside the map action (matching ProfileScreen's own established
+// title+action Row pattern) rather than stacked below a separate icon
+// row — that previous stacked layout pushed "PASSPORT" well below where
+// the other four tabs' titles start, since the icon row's own height
+// added extra vertical offset before the title ever appeared. Wishlist
+// is the reference position: SafeArea + CsSpacing.lg before the title,
+// pageHorizontal as the only horizontal inset (the previous extra nested
+// CsSpacing.sm indent around the title Column is removed so the title's
+// left edge lines up with the other four tabs too).
 class _PassportHeader extends StatelessWidget {
   final VoidCallback onTapMap;
   const _PassportHeader({required this.onTapMap});
@@ -323,33 +333,21 @@ class _PassportHeader extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(
           CsSpacing.pageHorizontal,
-          CsSpacing.sm,
-          CsSpacing.md,
+          CsSpacing.lg,
+          CsSpacing.pageHorizontal,
           CsSpacing.section,
         ),
-        child: Column(
+        child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Align(
-              alignment: Alignment.centerRight,
-              child: IconButton(
-                icon: const Icon(
-                  Icons.map_outlined,
-                  color: AppColors.textOnDark,
-                ),
-                tooltip: 'My Map',
-                onPressed: onTapMap,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: CsSpacing.sm),
+            Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'PASSPORT',
+                    'Passport',
                     style: CsTypography.screenTitle.copyWith(
-                      color: AppColors.textOnDark,
+                      color: AppColors.ivory,
                     ),
                   ),
                   const SizedBox(height: CsSpacing.xs),
@@ -361,6 +359,11 @@ class _PassportHeader extends StatelessWidget {
                   ),
                 ],
               ),
+            ),
+            IconButton(
+              icon: const Icon(Icons.map_outlined, color: AppColors.textOnDark),
+              tooltip: 'My Map',
+              onPressed: onTapMap,
             ),
           ],
         ),

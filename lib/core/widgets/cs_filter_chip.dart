@@ -8,9 +8,20 @@ import '../theme/cs_typography.dart';
 /// padding per the brief, dual-surface aware per [CsSurface]. Selected
 /// state is always an ivory/deep-green surface swap, never a brass fill
 /// ("Muted brass should not become the default selected-filter
-/// background"). Not wired into any existing filter bar yet — Explore's/
-/// Events'/Trips' filter chips keep their current styling until those
-/// screens are individually redesigned.
+/// background"). Wired into Wishlist's Restaurants/Hotels selector
+/// (`CsSurface.dark`, the default); Explore's/Events'/Trips' own filter
+/// chips keep their current styling until those screens are individually
+/// redesigned.
+///
+/// Green Token Consistency Migration: on `CsSurface.dark`, the
+/// *unselected* background is deliberately [AppColors.forestGreen], not
+/// [AppColors.deepGreen] — this is the one intentional case forestGreen
+/// remains in active use, matching [CsSurfaces.greenElevated]'s own
+/// documented role: a panel/pill lifted one shade off whatever deepGreen
+/// canvas it sits on (Wishlist's header, now), so it stays visually
+/// distinct from that canvas rather than disappearing into it. forestGreen
+/// is never used for a canvas/masthead/hero itself — only for a surface
+/// that's already sitting *on* one.
 class CsFilterChip extends StatelessWidget {
   final String label;
   final bool selected;

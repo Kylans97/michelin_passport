@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 import 'app_typography.dart';
+import 'cs_typography.dart';
 
 class AppTheme {
   AppTheme._();
@@ -35,24 +36,40 @@ class AppTheme {
         titleTextStyle: AppTypography.editorialHeading,
         iconTheme: const IconThemeData(color: AppColors.textPrimary),
       ),
+      // Bottom Navigation UI Consistency Step 1A: dark-green surface,
+      // ivory selected / secondaryOnDark unselected — physical-device
+      // direction change from Step 1's ivory surface (see app.dart's own
+      // comment for the full reasoning). Never gold (gold stays reserved
+      // for Michelin stars/Keys). No Material indicator pill —
+      // indicatorColor: transparent means selection reads through icon/
+      // label tone alone, not a filled background. app.dart's own
+      // NavigationBar construction fully specifies these same properties
+      // inline (it always has, for backgroundColor/height), so this theme
+      // block is a consistent fallback/single source of truth rather than
+      // the "live" styling path — NavigationBar is used nowhere else in
+      // this app, so correcting it here carries no risk to other screens.
+      //
+      // Green Token Consistency Migration: AppColors.deepGreen, the app's
+      // canonical primary brand dark surface — not forestGreen, which is
+      // reserved for secondary elevated panels (see app_colors.dart's own
+      // role documentation).
       navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: AppColors.surface,
+        backgroundColor: AppColors.deepGreen,
         surfaceTintColor: Colors.transparent,
         shadowColor: Colors.transparent,
-        indicatorColor: AppColors.goldMuted,
+        indicatorColor: Colors.transparent,
         height: 68,
         labelTextStyle: WidgetStateProperty.resolveWith((states) {
           final selected = states.contains(WidgetState.selected);
-          return GoogleFonts.inter(
-            color: selected ? AppColors.gold : AppColors.textSecondary,
-            fontSize: 11,
-            fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
+          return CsTypography.navigation.copyWith(
+            color: selected ? AppColors.ivory : AppColors.secondaryOnDark,
+            fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
           );
         }),
         iconTheme: WidgetStateProperty.resolveWith((states) {
           final selected = states.contains(WidgetState.selected);
           return IconThemeData(
-            color: selected ? AppColors.gold : AppColors.textSecondary,
+            color: selected ? AppColors.ivory : AppColors.secondaryOnDark,
             size: 22,
           );
         }),

@@ -26,10 +26,12 @@ enum _VenueType { restaurants, hotels }
 
 // Mirrors _WishlistScreenState.build's header exactly — Safe Area Polish:
 // the header's own SafeArea(bottom: false) padding must land *inside* an
-// already-green-painted area, so the outer ColoredBox(forestGreen) now
+// already-green-painted area, so the outer ColoredBox(deepGreen) now
 // wraps the header AND the ivory body together (both live inside one
 // Column, itself the child of the ColoredBox), rather than the ColoredBox
-// being nested inside the SafeArea as before.
+// being nested inside the SafeArea as before. (Green Token Consistency
+// Migration: AppColors.deepGreen, not forestGreen — the canonical
+// primary brand dark surface.)
 Widget _header({required _VenueType selected}) => SafeArea(
   bottom: false,
   child: Padding(
@@ -43,10 +45,10 @@ Widget _header({required _VenueType selected}) => SafeArea(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'WISHLIST',
+          'Wishlist',
           style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
         ),
-        const SizedBox(height: 4),
+        const SizedBox(height: CsSpacing.xs),
         Text(
           "Places you're saving for later.",
           style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
@@ -77,7 +79,7 @@ Widget _shell({required _VenueType selected, required Widget body}) =>
       home: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
         child: ColoredBox(
-          color: AppColors.forestGreen,
+          color: AppColors.deepGreen,
           child: Column(
             children: [
               _header(selected: selected),
@@ -160,14 +162,14 @@ Widget _emptyState({required bool isHotels}) => Center(
 
 void main() {
   group('WishlistScreen outer shell', () {
-    testWidgets('forest-green header with an explicit ivory ColoredBox '
+    testWidgets('deep-green header with an explicit ivory ColoredBox '
         'body, scoped light status-bar region', (tester) async {
       await tester.pumpWidget(
         _shell(selected: _VenueType.restaurants, body: _loadingState()),
       );
       expect(
         find.byWidgetPredicate(
-          (w) => w is ColoredBox && w.color == AppColors.forestGreen,
+          (w) => w is ColoredBox && w.color == AppColors.deepGreen,
         ),
         findsOneWidget,
       );
@@ -186,7 +188,7 @@ void main() {
     });
 
     testWidgets('Safe Area Polish: the header SafeArea sits INSIDE the '
-        'forest-green ColoredBox, not the other way around — this is the '
+        'deep-green ColoredBox, not the other way around — this is the '
         'exact structure that determines whether the top status-bar inset '
         'paints green or shows whatever is behind the tab (the regression '
         'this fix corrects)', (tester) async {
@@ -194,7 +196,7 @@ void main() {
         _shell(selected: _VenueType.restaurants, body: _loadingState()),
       );
       final greenBox = find.byWidgetPredicate(
-        (w) => w is ColoredBox && w.color == AppColors.forestGreen,
+        (w) => w is ColoredBox && w.color == AppColors.deepGreen,
       );
       expect(
         find.descendant(of: greenBox, matching: find.byType(SafeArea)),
@@ -211,7 +213,7 @@ void main() {
       await tester.pumpWidget(
         _shell(selected: _VenueType.restaurants, body: _loadingState()),
       );
-      final title = tester.widget<Text>(find.text('WISHLIST'));
+      final title = tester.widget<Text>(find.text('Wishlist'));
       expect(title.style?.color, AppColors.ivory);
       expect(title.style?.color, isNot(AppColors.gold));
       final subtitle = tester.widget<Text>(
@@ -261,7 +263,7 @@ void main() {
         find.byType(CircularProgressIndicator),
       );
       expect(indicator.color, AppColors.forestGreen);
-      expect(find.text('WISHLIST'), findsOneWidget);
+      expect(find.text('Wishlist'), findsOneWidget);
     });
 
     testWidgets('error state shows restrained copy and a working retry, '

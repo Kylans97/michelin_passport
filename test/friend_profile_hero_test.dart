@@ -1,6 +1,8 @@
 // Covers FriendProfileScreen's hero (Community/Friends UX Step 1 §6-8):
-// the forest-green upper treatment — back arrow, avatar, display name,
-// username, relationship action. _Hero is private to
+// the deep-green upper treatment (Green Token Consistency Migration:
+// AppColors.deepGreen, the canonical primary brand dark surface, not
+// forestGreen) — back arrow, avatar, display name, username,
+// relationship action. _Hero is private to
 // friend_profile_screen.dart (Dart privacy is per-file), so this
 // reconstructs its exact widget tree/colors here, using the real
 // CsPrimaryButton/CsSecondaryButton/EditorialBackButton leaf widgets.
@@ -24,7 +26,7 @@ Widget _hero({required String label, String? username}) {
       : words.map((w) => w[0]).take(2).join().toUpperCase();
 
   return ColoredBox(
-    color: AppColors.forestGreen,
+    color: AppColors.deepGreen,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -119,13 +121,13 @@ void main() {
       expect(find.text('@kylan'), findsOneWidget);
     });
 
-    testWidgets('never renders gold — canvas is forest-green, avatar/name '
+    testWidgets('never renders gold — canvas is deep-green, avatar/name '
         'are ivory', (tester) async {
       await tester.pumpWidget(_wrap(_hero(label: 'Kylan Scheepstra')));
 
       expect(
         find.byWidgetPredicate(
-          (w) => w is ColoredBox && w.color == AppColors.forestGreen,
+          (w) => w is ColoredBox && w.color == AppColors.deepGreen,
         ),
         findsOneWidget,
       );
@@ -202,18 +204,18 @@ void main() {
   // can't be pumped here — same established limitation as everywhere else
   // in this file/feature. This mirrors _FriendProfileScreenState.build's
   // outer shell (UI Polish pass) instead: Scaffold.backgroundColor is
-  // forest-green (not ivory) so the top safe area/status bar continues
-  // whatever forest-green content sits directly beneath it, and an
+  // deep-green (not ivory) so the top safe area/status bar continues
+  // whatever deep-green content sits directly beneath it, and an
   // AnnotatedRegion forces light status-bar icons for this screen only.
   group('FriendProfileScreen outer shell (UI Polish)', () {
-    testWidgets('Scaffold background is forest-green, with an explicit ivory '
+    testWidgets('Scaffold background is deep-green, with an explicit ivory '
         'ColoredBox for the content area below the hero', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: AnnotatedRegion<SystemUiOverlayStyle>(
             value: SystemUiOverlayStyle.light,
             child: Scaffold(
-              backgroundColor: AppColors.forestGreen,
+              backgroundColor: AppColors.deepGreen,
               body: Column(
                 children: [
                   _hero(label: 'Kylan Scheepstra'),
@@ -231,7 +233,7 @@ void main() {
       );
 
       final scaffold = tester.widget<Scaffold>(find.byType(Scaffold));
-      expect(scaffold.backgroundColor, AppColors.forestGreen);
+      expect(scaffold.backgroundColor, AppColors.deepGreen);
 
       expect(
         find.byWidgetPredicate(

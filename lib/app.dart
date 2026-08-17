@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'core/constants/app_colors.dart';
 import 'core/navigation/route_observer.dart';
 import 'core/theme/app_theme.dart';
+import 'core/theme/cs_typography.dart';
 import 'features/auth/auth_gate.dart';
 import 'features/explore/explore_screen.dart';
 import 'features/passport/passport_screen.dart';
@@ -51,17 +52,57 @@ class _MainNavigationState extends State<_MainNavigation> {
     return Scaffold(
       backgroundColor: AppColors.background,
       body: IndexedStack(index: _index, children: _screens),
+      // Bottom Navigation UI Consistency Step 1A: physical-device direction
+      // change — an explicit dark-green Container/NavigationBar (Step 1's
+      // ivory surface tested clean but the approved direction is now a
+      // deliberate green-top/ivory-middle/green-bottom frame, matching how
+      // many primary screens already open on a dark-green hero). Never
+      // relying on this Scaffold's own AppColors.background showing
+      // through. No top hairline: a dark-green bar sitting directly
+      // against an ivory tab body is already a full color-block boundary
+      // — exactly the same reasoning GuideCatalogueLayout's own
+      // green-masthead-to-ivory-content transition already established
+      // ("a hand-drawn line would be redundant next to a full color-block
+      // boundary already this strong"), so Step 1's taupe hairline (right
+      // for an ivory-on-ivory transition) is removed rather than kept and
+      // reworked for a surface it was never designed for.
+      //
+      // Green Token Consistency Migration (Step 1B follow-up): the canvas
+      // color here is AppColors.deepGreen, not forestGreen — deepGreen is
+      // the app's canonical PRIMARY brand dark surface (see app_colors.dart
+      // and CsSurfaces.greenCanvas), the same one Explore/Passport/Event
+      // Detail's hero already use. forestGreen remains reserved for
+      // secondary elevated panels sitting ON a deepGreen canvas (see
+      // CsSurfaces.greenElevated) — this nav bar isn't a panel on
+      // something else, it IS a primary surface, so it takes the primary
+      // token.
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          border: Border(top: BorderSide(color: AppColors.divider, width: 0.5)),
-        ),
+        decoration: const BoxDecoration(color: AppColors.deepGreen),
         child: NavigationBar(
           selectedIndex: _index,
           onDestinationSelected: (i) => setState(() => _index = i),
-          backgroundColor: AppColors.surface,
+          backgroundColor: AppColors.deepGreen,
           surfaceTintColor: Colors.transparent,
-          indicatorColor: AppColors.goldMuted,
+          shadowColor: Colors.transparent,
+          elevation: 0,
+          // No Material indicator pill — selection reads through icon/
+          // label color alone (ivory vs. secondaryOnDark below), never a
+          // filled background, and never gold.
+          indicatorColor: Colors.transparent,
           height: 68,
+          // Icon color/size has no direct NavigationBar constructor
+          // parameter (Material only exposes it via
+          // NavigationBarThemeData.iconTheme) — supplied by
+          // AppTheme.chasingStars.navigationBarTheme above instead;
+          // labelTextStyle IS a direct parameter, set explicitly here to
+          // match the same ivory/secondaryOnDark selected/unselected rule.
+          labelTextStyle: WidgetStateProperty.resolveWith((states) {
+            final selected = states.contains(WidgetState.selected);
+            return CsTypography.navigation.copyWith(
+              color: selected ? AppColors.ivory : AppColors.secondaryOnDark,
+              fontWeight: selected ? FontWeight.w600 : FontWeight.w500,
+            );
+          }),
           destinations: const [
             NavigationDestination(
               icon: Icon(Icons.menu_book_outlined),

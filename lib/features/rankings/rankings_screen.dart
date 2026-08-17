@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/theme/app_typography.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
 import 'widgets/community_rankings_tab.dart';
 import 'widgets/personal_rankings_tab.dart';
 
@@ -40,15 +41,40 @@ class _RankingsScreenState extends State<RankingsScreen>
       body: NestedScrollView(
         headerSliverBuilder: (_, _) => [
           SliverAppBar(
-            title: Text(
-              'Rankings',
-              style: AppTypography.editorialHeading.copyWith(
-                color: AppColors.textOnDark,
-                fontSize: 22,
+            // Primary Tab Header Consistency Step 1: replaces the
+            // Material title: slot (which always vertically CENTERS its
+            // content within toolbarHeight, with no way to pin it to a
+            // fixed offset the way the other four tabs' plain
+            // SafeArea+Padding headers do) with a manually-positioned
+            // flexibleSpace — the only way to make "Rankings" start at
+            // the same SafeArea + CsSpacing.lg position as Wishlist while
+            // keeping this screen's TabBar/NestedScrollView architecture
+            // (pinned AppBar, tab controller, tab content) completely
+            // unchanged. toolbarHeight (64) is unchanged from before —
+            // it already fits CsSpacing.lg + one CsTypography.screenTitle
+            // line + a little breathing room above the TabBar.
+            flexibleSpace: SafeArea(
+              bottom: false,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.lg,
+                  CsSpacing.pageHorizontal,
+                  0,
+                ),
+                child: Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    'Rankings',
+                    style: CsTypography.screenTitle.copyWith(
+                      color: AppColors.ivory,
+                    ),
+                  ),
+                ),
               ),
             ),
             pinned: true,
-            backgroundColor: AppColors.brandGreen,
+            backgroundColor: AppColors.deepGreen,
             foregroundColor: AppColors.textOnDark,
             toolbarHeight: 64,
             bottom: PreferredSize(

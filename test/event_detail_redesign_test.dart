@@ -150,6 +150,27 @@ void main() {
       expect(find.byType(CsImagePlaceholder), findsOneWidget);
     });
 
+    testWidgets('background is AppColors.deepGreen — the canonical primary '
+        'brand dark surface (Green Token Consistency Migration reference '
+        'point: this hero was already correct, never touched, and stays '
+        'the audit anchor every migrated masthead now matches)', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          const EventDetailHero(
+            title: "'t Preuvenemint",
+            cityCountryLine: 'Maastricht · NL',
+            dateRangeLine: '27–30 AUG 2026',
+            backgroundImage: CsImagePlaceholder(logoScale: 0.22),
+          ),
+        ),
+      );
+      final hero = tester.widget<SliverAppBar>(find.byType(SliverAppBar));
+      expect(hero.backgroundColor, equals(AppColors.deepGreen));
+      expect(hero.backgroundColor, isNot(equals(AppColors.forestGreen)));
+    });
+
     testWidgets('shows title, event type, city/country and date range', (
       tester,
     ) async {

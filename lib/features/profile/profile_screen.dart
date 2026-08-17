@@ -156,10 +156,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
             backgroundColor: AppColors.brandGreenLight,
             onRefresh: () async => _load(),
             child: SafeArea(
+              // Primary Tab Header Consistency Step 1: top padding is
+              // CsSpacing.lg, matching Wishlist's reference title
+              // position — was CsSpacing.md, which started "Profile"
+              // higher than the other primary tabs.
               child: ListView(
                 padding: const EdgeInsets.fromLTRB(
                   CsSpacing.pageHorizontal,
-                  CsSpacing.md,
+                  CsSpacing.lg,
                   CsSpacing.pageHorizontal,
                   CsSpacing.section,
                 ),
@@ -170,7 +174,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       Text(
                         'Profile',
                         style: CsTypography.screenTitle.copyWith(
-                          color: AppColors.textOnDark,
+                          color: AppColors.ivory,
                         ),
                       ),
                       Tooltip(

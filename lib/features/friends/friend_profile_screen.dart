@@ -198,16 +198,19 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // UI Polish pass: Scaffold.backgroundColor is forest-green (not ivory)
+    // UI Polish pass: Scaffold.backgroundColor is deep-green (not ivory)
     // so the iOS status-bar area continues the hero seamlessly instead of
     // showing an ivory strip above it — see _Hero's own doc comment for
     // the full root-cause explanation (identical fix to
     // GuideCatalogueLayout's). AnnotatedRegion forces light status-bar
     // icons for exactly this screen.
+    //
+    // Green Token Consistency Migration: AppColors.deepGreen, not
+    // forestGreen — the canonical primary brand dark surface.
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
-        backgroundColor: AppColors.forestGreen,
+        backgroundColor: AppColors.deepGreen,
         body: FutureBuilder<ProfileIdentity?>(
           future: _future,
           builder: (context, snap) {
@@ -400,13 +403,16 @@ class _ProfileBody extends StatelessWidget {
   }
 }
 
-/// UI Polish pass: this paints its own forest-green [ColoredBox] as
+/// UI Polish pass: this paints its own deep-green [ColoredBox] as
 /// always, but the top iOS safe-area strip above it is no longer a
 /// separate concern — [_FriendProfileScreenState.build] now sets
-/// [Scaffold.backgroundColor] to forest-green directly, so that gap (and
+/// [Scaffold.backgroundColor] to deep-green directly, so that gap (and
 /// every other bit of unpainted space this screen has) reads as a
 /// seamless continuation of this hero rather than the ivory strip
 /// physical-device review found before this pass.
+///
+/// Green Token Consistency Migration: AppColors.deepGreen, not
+/// forestGreen — the canonical primary brand dark surface.
 class _Hero extends StatelessWidget {
   final ProfileIdentity identity;
   final VoidCallback onSendRequest;
@@ -430,7 +436,7 @@ class _Hero extends StatelessWidget {
         : words.map((w) => w[0]).take(2).join().toUpperCase();
 
     return ColoredBox(
-      color: AppColors.forestGreen,
+      color: AppColors.deepGreen,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

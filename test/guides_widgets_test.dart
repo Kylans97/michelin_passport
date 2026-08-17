@@ -10,11 +10,13 @@ import 'package:michelin_passport/features/guides/widgets/guide_destination_row.
 import 'package:michelin_passport/features/guides/widgets/guide_family_section.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_venue_card.dart';
 
-// Step 1A: both widgets now live on GuidesScreen's forest-green canvas —
-// GuideFamilySection paints its own ivory block on top of it.
+// Step 1A: both widgets now live on GuidesScreen's deep-green canvas
+// (Green Token Consistency Migration: AppColors.deepGreen, not
+// forestGreen) — GuideFamilySection paints its own ivory block on top
+// of it.
 Widget _wrap(Widget child, {double width = 390}) => MaterialApp(
   home: Scaffold(
-    backgroundColor: AppColors.forestGreen,
+    backgroundColor: AppColors.deepGreen,
     body: SizedBox(
       width: width,
       child: SingleChildScrollView(child: child),
@@ -108,7 +110,7 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.forestGreen,
+              backgroundColor: AppColors.deepGreen,
               body: SizedBox(
                 width: 320,
                 child: GuideDestinationRow(

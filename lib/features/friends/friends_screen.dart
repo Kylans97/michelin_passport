@@ -154,26 +154,29 @@ class _FriendsScreenState extends State<FriendsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // UI Polish pass: Scaffold.backgroundColor is forest-green (not
+    // UI Polish pass: Scaffold.backgroundColor is deep-green (not
     // ivory) so the iOS status-bar area continues the header seamlessly
     // instead of showing an ivory strip above it — same root cause and
     // fix as GuideCatalogueLayout/FriendProfileScreen (see their own doc
     // comments): the previous single SafeArea rendered its top inset
     // against the Scaffold's own (then-ivory) background before the
-    // forest-green header's ColoredBox ever got to paint it. AnnotatedRegion
+    // deep-green header's ColoredBox ever got to paint it. AnnotatedRegion
     // forces light status-bar icons for exactly this screen.
+    //
+    // Green Token Consistency Migration: AppColors.deepGreen, not
+    // forestGreen — the canonical primary brand dark surface.
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: DefaultTabController(
         length: 2,
         child: Scaffold(
-          backgroundColor: AppColors.forestGreen,
+          backgroundColor: AppColors.deepGreen,
           body: Column(
             children: [
               SafeArea(
                 bottom: false,
                 child: ColoredBox(
-                  color: AppColors.forestGreen,
+                  color: AppColors.deepGreen,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

@@ -35,13 +35,17 @@ import 'widgets/guide_family_section.dart';
 /// its intro line and each family title — [GuideDestinationRow]'s own
 /// labels were never affected, since that widget wraps its own local
 /// [Material]. Matches [GuideCatalogueLayout]'s own established pattern.
+///
+/// Green Token Consistency Migration: AppColors.deepGreen, not
+/// forestGreen — the canonical primary brand dark surface, matching
+/// Explore/Passport/Event Detail's hero.
 class GuidesScreen extends StatelessWidget {
   const GuidesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.forestGreen,
+      backgroundColor: AppColors.deepGreen,
       body: SafeArea(
         child: Column(
           children: [

@@ -532,6 +532,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
 // ── Editorial header ────────────────────────────────────────────────────
 
+// Primary Tab Header Consistency Step 1: top padding is CsSpacing.lg,
+// matching Wishlist's reference title position — was CsSpacing.sm, which
+// started "EXPLORE" noticeably higher than the other primary tabs.
 class _ExploreHeader extends StatelessWidget {
   const _ExploreHeader();
 
@@ -541,7 +544,7 @@ class _ExploreHeader extends StatelessWidget {
     child: Padding(
       padding: const EdgeInsets.fromLTRB(
         CsSpacing.pageHorizontal,
-        CsSpacing.sm,
+        CsSpacing.lg,
         CsSpacing.pageHorizontal,
         CsSpacing.lg,
       ),
@@ -549,10 +552,8 @@ class _ExploreHeader extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'EXPLORE',
-            style: CsTypography.screenTitle.copyWith(
-              color: AppColors.textOnDark,
-            ),
+            'Explore',
+            style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
           ),
           const SizedBox(height: CsSpacing.xs),
           Text(
