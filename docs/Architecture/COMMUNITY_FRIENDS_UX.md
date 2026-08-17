@@ -306,3 +306,50 @@ access unchanged, just not currently surfaced in any screen.
 **Explicitly not built, per the task brief:** activity feed, "X visited Y"
 timeline, likes/comments/reactions, posts, follower-count vanity metrics,
 gamified badges, DMs.
+
+## 14. Step 1A — Friends Going on Event Detail
+
+Implements the "Friends going" signal §12 scoped out of Step 1. Zero
+migrations, zero new RPCs — the feasibility audit's finding held.
+
+**Query path.** `EventAttendanceRepository.getVisibleAttendeeUserIds
+(eventId)` does a plain, unfiltered `select user_id from event_attendance
+where event_id = ?`. `event_attendance_select` RLS
+(`user_id = auth.uid() or (visibility = 'friends' and is_friend(user_id))`)
+already decides exactly who belongs in the result — the repository never
+re-derives that filter client-side. This is the *event → its visible
+attendees* direction, the inverse of the existing
+`getFriendUpcomingAttendance` (*one friend → their events*); the two are
+not interchangeable.
+
+Those ids are resolved against the caller's own already-fetched
+`FriendshipRepository.getFriends()` list (one call, not one query per
+attendee — no N+1) by the pure `friendsGoingToEvent` function
+(`lib/features/events/friends_going_view_model.dart`), which:
+- excludes the viewer's own id (presentation only — RLS is still the
+  actual authority; the viewer's own state is already shown via the
+  "I'm going" button),
+- silently drops any id with no matching entry in `friends` (defensive;
+  should not occur if RLS is behaving as documented),
+- sorts alphabetically, case-insensitive, by `Friendship.label`.
+
+**Distinct from `get_event_attendance_count`.** That RPC (§12) returns a
+global, identity-free, k-anonymized number and is not called, modified, or
+repurposed anywhere in this feature — FRIENDS GOING only ever shows named
+friends, never a total headcount.
+
+**Visibility gating.** The section is fetched and shown only when
+`canAttendEvent(event)` is true (upcoming/current, not cancelled — the
+same gate `EventGoingButton` already uses) and a friend is signed in;
+omitted entirely (not "0 friends going") when the resolved list is empty,
+still loading, or the query errors — the rest of Event Detail is
+unaffected either way.
+
+**UI.** `EventFriendsGoingSection` sits directly under `EventGoingButton`,
+before ABOUT. Shows up to 3 friends (`IdentityRow` — avatar, name,
+`@username`, no counts/scores/timestamps); a fourth-plus triggers "View
+all" → `EventFriendsGoingListScreen`, a new screen (not
+`friend_activity_list_screen.dart`'s shell, which predates the UI Polish
+safe-area fix) built with the corrected forest-green/AnnotatedRegion
+pattern from the start. Both tap targets push the canonical
+`FriendProfileScreen` — no event-specific friend detail screen.

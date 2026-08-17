@@ -85,6 +85,25 @@ class EventAttendanceRepository {
         .eq('user_id', userId);
   }
 
+  /// Every user_id RLS (event_attendance_select) allows the caller to see
+  /// for [eventId] — the caller's own row plus any accepted friend's
+  /// friends-visible row, and nothing else. Community/Friends Step 1A:
+  /// this is the "event → its visible attendees" direction, the inverse of
+  /// [getFriendUpcomingAttendance] ("one friend → their events") — the two
+  /// are not interchangeable. A plain, unfiltered select is deliberate:
+  /// event_attendance_select already decides exactly who belongs in the
+  /// result, so re-deriving that filter in Flutter would only risk
+  /// drifting out of sync with the database's own rule. Distinct from
+  /// get_event_attendance_count, which returns a k-anonymized global
+  /// number with no identities at all — not reused or repurposed here.
+  Future<List<String>> getVisibleAttendeeUserIds(String eventId) async {
+    final rows = await _client
+        .from('event_attendance')
+        .select('user_id')
+        .eq('event_id', eventId);
+    return [for (final row in rows as List) row['user_id'] as String];
+  }
+
   /// Every future/current event [userId] is going to that the caller is
   /// authorized to see — RLS alone decides that; this never fetches a
   /// broader set and filters client-side. Past events are excluded here

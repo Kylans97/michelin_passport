@@ -12,13 +12,17 @@ import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_about_section.dart';
 import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/events_repository.dart';
+import '../../data/repositories/friendship_repository.dart';
 import '../../models/event.dart';
+import '../../models/friendship.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'event_date_format.dart';
+import 'friends_going_view_model.dart';
 import 'widgets/event_detail_hero.dart';
+import 'widgets/event_friends_going_section.dart';
 import 'widgets/event_going_button.dart';
 import 'widgets/event_meta_section.dart';
 import 'widgets/michelin_at_event_section.dart';
@@ -67,6 +71,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   );
   late final EventAttendanceRepository _attendanceRepo =
       EventAttendanceRepository(Supabase.instance.client);
+  late final FriendshipRepository _friendshipRepo = FriendshipRepository(
+    Supabase.instance.client,
+  );
 
   bool _loading = true;
   bool _loadError = false;
@@ -75,6 +82,13 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
 
   bool _going = false;
   bool _attendanceBusy = false;
+
+  // Populated only for an upcoming/current, non-cancelled event with a
+  // signed-in viewer (see canAttendEvent) — never awaited by _load itself,
+  // so a slow or failed friends-going lookup can never block or break the
+  // rest of Event Detail; EventFriendsGoingSection's own FutureBuilder
+  // handles loading/error/empty by simply not rendering the section.
+  Future<List<Friendship>>? _friendsGoingFuture;
 
   @override
   void initState() {
@@ -115,6 +129,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         _venues = venues;
         _going = attendance != null;
         _loading = false;
+        _friendsGoingFuture = (uid != null && canAttendEvent(event))
+            ? _loadFriendsGoing(uid, event.id)
+            : null;
       });
     } catch (_) {
       if (!mounted) return;
@@ -123,6 +140,18 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         _loadError = true;
       });
     }
+  }
+
+  Future<List<Friendship>> _loadFriendsGoing(String uid, String eventId) async {
+    final attendeeIds = await _attendanceRepo.getVisibleAttendeeUserIds(
+      eventId,
+    );
+    final friends = await _friendshipRepo.getFriends();
+    return friendsGoingToEvent(
+      attendeeUserIds: attendeeIds,
+      friends: friends,
+      selfUserId: uid,
+    );
   }
 
   Future<void> _toggleGoing() async {
@@ -288,6 +317,28 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       going: _going,
                       busy: _attendanceBusy,
                       onTap: _toggleGoing,
+                    ),
+                    FutureBuilder<List<Friendship>>(
+                      future: _friendsGoingFuture,
+                      builder: (context, snap) {
+                        final friends = snap.data;
+                        if (snap.connectionState != ConnectionState.done ||
+                            snap.hasError ||
+                            friends == null ||
+                            friends.isEmpty) {
+                          return const SizedBox.shrink();
+                        }
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SectionDivider(),
+                            EventFriendsGoingSection(
+                              eventTitle: event.name,
+                              friends: friends,
+                            ),
+                          ],
+                        );
+                      },
                     ),
                   ],
 
