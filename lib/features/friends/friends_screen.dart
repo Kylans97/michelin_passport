@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../models/friendship.dart';
@@ -13,7 +16,13 @@ import 'widgets/identity_row.dart';
 /// Friends — accepted friends plus incoming/outgoing requests. Deliberately
 /// small: no follower/following counts, no "people you may know," no
 /// public discovery feed, no friend-of-friend graph — just the three
-/// things Social Foundation Step 1 actually builds (list, requests, add).
+/// things this screen actually builds (list, requests, add).
+///
+/// Community/Friends UX Step 1: forest-green header (back arrow, add-
+/// friend action, "Friends" title, tab bar) over an ivory body — see
+/// docs/Architecture/COMMUNITY_FRIENDS_UX.md for why "Friends" (not
+/// "Community") stays the visible label this step, and for the broader
+/// information-architecture direction this screen is one part of.
 class FriendsScreen extends StatefulWidget {
   const FriendsScreen({super.key});
 
@@ -48,11 +57,9 @@ class _FriendsScreenState extends State<FriendsScreen> {
       SnackBar(
         content: Text(
           message,
-          style: CsTypography.metadata.copyWith(
-            color: isError ? AppColors.textOnDark : Colors.black,
-          ),
+          style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
         ),
-        backgroundColor: isError ? AppColors.error : AppColors.gold,
+        backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
         duration: const Duration(seconds: 2),
       ),
     );
@@ -89,27 +96,25 @@ class _FriendsScreenState extends State<FriendsScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        backgroundColor: AppColors.brandGreenLight,
+        backgroundColor: AppColors.warmWhite,
         title: Text(
           'Remove ${friend.label}?',
           style: CsTypography.placeTitle.copyWith(
-            color: AppColors.textOnDark,
+            color: AppColors.forestGreen,
             fontSize: 20,
           ),
         ),
         content: Text(
           'You will no longer be friends. Either of you can send a new '
           'request later.',
-          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+          style: CsTypography.body.copyWith(color: AppColors.taupe),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
             child: Text(
               'Cancel',
-              style: CsTypography.bodyMedium.copyWith(
-                color: AppColors.secondaryOnDark,
-              ),
+              style: CsTypography.bodyMedium.copyWith(color: AppColors.taupe),
             ),
           ),
           TextButton(
@@ -149,77 +154,104 @@ class _FriendsScreenState extends State<FriendsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      child: Scaffold(
-        backgroundColor: AppColors.deepGreen,
-        body: SafeArea(
-          child: Column(
+    // UI Polish pass: Scaffold.backgroundColor is forest-green (not
+    // ivory) so the iOS status-bar area continues the header seamlessly
+    // instead of showing an ivory strip above it — same root cause and
+    // fix as GuideCatalogueLayout/FriendProfileScreen (see their own doc
+    // comments): the previous single SafeArea rendered its top inset
+    // against the Scaffold's own (then-ivory) background before the
+    // forest-green header's ColoredBox ever got to paint it. AnnotatedRegion
+    // forces light status-bar icons for exactly this screen.
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          backgroundColor: AppColors.forestGreen,
+          body: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  CsSpacing.base,
-                  CsSpacing.sm,
-                  CsSpacing.base,
-                  0,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const EditorialBackButton(),
-                    Tooltip(
-                      message: 'Add friend',
-                      child: HeroIconButtonStandIn(
-                        icon: Icons.person_add_alt_1_rounded,
-                        onTap: _openAddFriend,
+              SafeArea(
+                bottom: false,
+                child: ColoredBox(
+                  color: AppColors.forestGreen,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          CsSpacing.base,
+                          CsSpacing.sm,
+                          CsSpacing.base,
+                          0,
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            EditorialBackButton(color: AppColors.ivory),
+                            Tooltip(
+                              message: 'Add friend',
+                              child: _HeroIconButtonStandIn(
+                                icon: Icons.person_add_alt_1_rounded,
+                                onTap: _openAddFriend,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.xl,
-                  CsSpacing.pageHorizontal,
-                  0,
-                ),
-                child: Text(
-                  'Friends',
-                  style: CsTypography.screenTitle.copyWith(
-                    color: AppColors.textOnDark,
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          CsSpacing.pageHorizontal,
+                          CsSpacing.xl,
+                          CsSpacing.pageHorizontal,
+                          0,
+                        ),
+                        child: Text(
+                          'Friends',
+                          style: CsTypography.screenTitle.copyWith(
+                            color: AppColors.ivory,
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: CsSpacing.lg),
+                      TabBar(
+                        labelColor: AppColors.ivory,
+                        unselectedLabelColor: AppColors.secondaryOnDark,
+                        indicatorColor: AppColors.ivory,
+                        labelStyle: CsTypography.bodyMedium,
+                        unselectedLabelStyle: CsTypography.bodyMedium,
+                        tabs: const [
+                          Tab(text: 'Friends'),
+                          Tab(text: 'Requests'),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ),
-              const SizedBox(height: CsSpacing.lg),
-              TabBar(
-                labelColor: AppColors.gold,
-                unselectedLabelColor: AppColors.secondaryOnDark,
-                indicatorColor: AppColors.gold,
-                labelStyle: CsTypography.bodyMedium,
-                unselectedLabelStyle: CsTypography.bodyMedium,
-                tabs: const [
-                  Tab(text: 'Friends'),
-                  Tab(text: 'Requests'),
-                ],
-              ),
               Expanded(
-                child: TabBarView(
-                  children: [
-                    _FriendsTab(
-                      future: _friendsFuture,
-                      onTapFriend: (f) => _openProfile(f.friendId),
-                      onRemove: _removeFriend,
+                child: ColoredBox(
+                  color: AppColors.ivory,
+                  child: SafeArea(
+                    top: false,
+                    child: TabBarView(
+                      children: [
+                        _FriendsTab(
+                          future: _friendsFuture,
+                          onTapFriend: (f) => _openProfile(f.friendId),
+                          onRemove: _removeFriend,
+                          onFindFriends: _openAddFriend,
+                        ),
+                        _RequestsTab(
+                          incomingFuture: _incomingFuture,
+                          outgoingFuture: _outgoingFuture,
+                          onAccept: _accept,
+                          onDecline: _decline,
+                          onCancelOutgoing: _cancelOutgoing,
+                          onTapRequester: (r) => _openProfile(r.otherUserId),
+                        ),
+                      ],
                     ),
-                    _RequestsTab(
-                      incomingFuture: _incomingFuture,
-                      outgoingFuture: _outgoingFuture,
-                      onAccept: _accept,
-                      onDecline: _decline,
-                      onCancelOutgoing: _cancelOutgoing,
-                      onTapRequester: (r) => _openProfile(r.otherUserId),
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ],
@@ -232,17 +264,12 @@ class _FriendsScreenState extends State<FriendsScreen> {
 
 /// A small translucent-circle icon button matching [EditorialBackButton]'s
 /// own visual weight for a non-back action (the add-friend "+") — the
-/// exact same "quiet on a flat dark canvas" reasoning as
-/// PlannedTripsScreen's own add-trip button, reused locally rather than
-/// importing a Trips-internal component.
-class HeroIconButtonStandIn extends StatelessWidget {
+/// exact same "quiet on a dark canvas" reasoning as [HeroIconButton],
+/// reused locally rather than importing a Detail-internal component.
+class _HeroIconButtonStandIn extends StatelessWidget {
   final IconData icon;
   final VoidCallback onTap;
-  const HeroIconButtonStandIn({
-    super.key,
-    required this.icon,
-    required this.onTap,
-  });
+  const _HeroIconButtonStandIn({required this.icon, required this.onTap});
 
   @override
   Widget build(BuildContext context) => Material(
@@ -253,7 +280,7 @@ class HeroIconButtonStandIn extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.all(13),
-        child: Icon(icon, color: AppColors.textOnDark, size: 18),
+        child: Icon(icon, color: AppColors.ivory, size: 18),
       ),
     ),
   );
@@ -263,10 +290,12 @@ class _FriendsTab extends StatelessWidget {
   final Future<List<Friendship>> future;
   final ValueChanged<Friendship> onTapFriend;
   final ValueChanged<Friendship> onRemove;
+  final VoidCallback onFindFriends;
   const _FriendsTab({
     required this.future,
     required this.onTapFriend,
     required this.onRemove,
+    required this.onFindFriends,
   });
 
   @override
@@ -276,7 +305,7 @@ class _FriendsTab extends StatelessWidget {
       if (snap.connectionState == ConnectionState.waiting) {
         return const Center(
           child: CircularProgressIndicator(
-            color: AppColors.gold,
+            color: AppColors.forestGreen,
             strokeWidth: 1.5,
           ),
         );
@@ -285,7 +314,7 @@ class _FriendsTab extends StatelessWidget {
         return Center(
           child: Text(
             'Could not load friends',
-            style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+            style: CsTypography.body.copyWith(color: AppColors.taupe),
           ),
         );
       }
@@ -298,20 +327,25 @@ class _FriendsTab extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  'No friends yet',
+                  'Find friends and discover the places they loved',
                   textAlign: TextAlign.center,
                   style: CsTypography.placeTitle.copyWith(
-                    color: AppColors.textOnDark,
+                    color: AppColors.forestGreen,
                     fontSize: 20,
                   ),
                 ),
                 const SizedBox(height: CsSpacing.sm),
                 Text(
-                  'Find people you know by username.',
+                  'Search for people you know by username.',
                   textAlign: TextAlign.center,
-                  style: CsTypography.body.copyWith(
-                    color: AppColors.secondaryOnDark,
-                  ),
+                  style: CsTypography.body.copyWith(color: AppColors.taupe),
+                ),
+                const SizedBox(height: CsSpacing.xl),
+                CsPrimaryButton(
+                  label: 'Find friends',
+                  icon: Icons.person_add_alt_1_rounded,
+                  onTap: onFindFriends,
+                  surface: CsSurface.light,
                 ),
               ],
             ),
@@ -336,7 +370,7 @@ class _FriendsTab extends StatelessWidget {
             trailing: IconButton(
               icon: const Icon(
                 Icons.more_horiz_rounded,
-                color: AppColors.secondaryOnDark,
+                color: AppColors.taupe,
                 size: 20,
               ),
               tooltip: 'Remove friend',
@@ -377,7 +411,7 @@ class _RequestsTab extends StatelessWidget {
     children: [
       Text(
         'INCOMING',
-        style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+        style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
       ),
       const SizedBox(height: CsSpacing.md),
       FutureBuilder<List<FriendRequest>>(
@@ -389,7 +423,7 @@ class _RequestsTab extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: CsSpacing.md),
               child: Center(
                 child: CircularProgressIndicator(
-                  color: AppColors.gold,
+                  color: AppColors.forestGreen,
                   strokeWidth: 1.5,
                 ),
               ),
@@ -398,9 +432,7 @@ class _RequestsTab extends StatelessWidget {
           if (requests.isEmpty) {
             return Text(
               'No pending requests',
-              style: CsTypography.body.copyWith(
-                color: AppColors.secondaryOnDark,
-              ),
+              style: CsTypography.body.copyWith(color: AppColors.taupe),
             );
           }
           return Column(
@@ -419,7 +451,7 @@ class _RequestsTab extends StatelessWidget {
                           child: Text(
                             'Decline',
                             style: CsTypography.metadata.copyWith(
-                              color: AppColors.secondaryOnDark,
+                              color: AppColors.taupe,
                             ),
                           ),
                         ),
@@ -428,7 +460,7 @@ class _RequestsTab extends StatelessWidget {
                           child: Text(
                             'Accept',
                             style: CsTypography.metadata.copyWith(
-                              color: AppColors.gold,
+                              color: AppColors.forestGreen,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
@@ -444,7 +476,7 @@ class _RequestsTab extends StatelessWidget {
       const SizedBox(height: CsSpacing.section),
       Text(
         'SENT',
-        style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+        style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
       ),
       const SizedBox(height: CsSpacing.md),
       FutureBuilder<List<FriendRequest>>(
@@ -456,7 +488,7 @@ class _RequestsTab extends StatelessWidget {
               padding: EdgeInsets.symmetric(vertical: CsSpacing.md),
               child: Center(
                 child: CircularProgressIndicator(
-                  color: AppColors.gold,
+                  color: AppColors.forestGreen,
                   strokeWidth: 1.5,
                 ),
               ),
@@ -465,9 +497,7 @@ class _RequestsTab extends StatelessWidget {
           if (requests.isEmpty) {
             return Text(
               'No requests sent',
-              style: CsTypography.body.copyWith(
-                color: AppColors.secondaryOnDark,
-              ),
+              style: CsTypography.body.copyWith(color: AppColors.taupe),
             );
           }
           return Column(
@@ -483,7 +513,7 @@ class _RequestsTab extends StatelessWidget {
                       child: Text(
                         'Cancel',
                         style: CsTypography.metadata.copyWith(
-                          color: AppColors.secondaryOnDark,
+                          color: AppColors.taupe,
                         ),
                       ),
                     ),

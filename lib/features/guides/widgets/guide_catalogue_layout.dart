@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
@@ -30,13 +31,32 @@ import '../../../core/widgets/editorial_back_button.dart';
 /// family-title-vs-destination-label hierarchy already uses, so a
 /// catalogue page visually continues the landing page rather than
 /// introducing a second hierarchy language. Below it, [content] (search,
-/// filters, results) sits on the plain ivory [Scaffold] canvas — the
+/// filters, results) sits on an explicitly ivory-painted area — the
 /// forest-green-to-ivory color transition itself is now the separator
 /// between them; no hairline is inserted there, since a hand-drawn line
 /// would be redundant next to a full color-block boundary already this
 /// strong (contrast with [GuideVenueCardDivider], still used between
 /// individual venue rows inside [content] — a genuinely different, much
 /// lower-contrast context that still needs a drawn line).
+///
+/// UI Polish pass: [Scaffold.backgroundColor] is forest-green (not ivory)
+/// and the header sits in a `SafeArea(bottom: false)` rather than the
+/// header+content sharing one `SafeArea` — physical-device review found
+/// the previous ivory-Scaffold version left an unintended ivory strip
+/// behind the iOS status bar, above the green masthead, because the safe-
+/// area top inset was rendered against the Scaffold's own (then-ivory)
+/// background before the masthead's [ColoredBox] ever got a chance to
+/// paint it. Forest-green is now the Scaffold's background precisely so
+/// that gap reads as a seamless continuation of the masthead instead; the
+/// content area below now paints its own explicit ivory [ColoredBox] (it
+/// used to rely on the Scaffold's background showing through) so it stays
+/// ivory regardless of what the Scaffold itself is set to, with its own
+/// `SafeArea(top: false)` for the bottom inset so no green ever leaks in
+/// behind the home indicator. [AnnotatedRegion] forces light (ivory)
+/// status-bar icons for exactly this screen — neither of the app's two
+/// themes currently applies that automatically here, since this shell has
+/// no [AppBar]/[SliverAppBar] for a theme's `appBarTheme.
+/// systemOverlayStyle` to attach to.
 class GuideCatalogueLayout extends StatelessWidget {
   /// The Guide family, e.g. "MICHELIN GUIDE" or "THE WORLD'S 50 BEST" —
   /// the header's prominent line.
@@ -93,47 +113,57 @@ class GuideCatalogueLayout extends StatelessWidget {
   );
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-    backgroundColor: AppColors.ivory,
-    body: SafeArea(
-      child: Column(
+  Widget build(BuildContext context) => AnnotatedRegion<SystemUiOverlayStyle>(
+    value: SystemUiOverlayStyle.light,
+    child: Scaffold(
+      backgroundColor: AppColors.forestGreen,
+      body: Column(
         children: [
-          ColoredBox(
-            color: AppColors.forestGreen,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    CsSpacing.base,
-                    CsSpacing.xs,
-                    CsSpacing.base,
-                    0,
+          SafeArea(
+            bottom: false,
+            child: ColoredBox(
+              color: AppColors.forestGreen,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      CsSpacing.base,
+                      CsSpacing.xs,
+                      CsSpacing.base,
+                      0,
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: EditorialBackButton(color: AppColors.ivory),
+                    ),
                   ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: EditorialBackButton(color: AppColors.ivory),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.sm,
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.xl,
+                    ),
+                    child: _header(),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    CsSpacing.pageHorizontal,
-                    CsSpacing.sm,
-                    CsSpacing.pageHorizontal,
-                    CsSpacing.xl,
-                  ),
-                  child: _header(),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Expanded(
-            child: content == null
-                ? const SizedBox.shrink()
-                : Padding(
-                    padding: const EdgeInsets.only(top: CsSpacing.lg),
-                    child: content!,
-                  ),
+            child: ColoredBox(
+              color: AppColors.ivory,
+              child: SafeArea(
+                top: false,
+                child: content == null
+                    ? const SizedBox.shrink()
+                    : Padding(
+                        padding: const EdgeInsets.only(top: CsSpacing.lg),
+                        child: content!,
+                      ),
+              ),
+            ),
           ),
         ],
       ),

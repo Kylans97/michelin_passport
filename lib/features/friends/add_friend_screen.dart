@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/cs_search_field.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../models/profile_identity.dart';
@@ -65,9 +67,11 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
           SnackBar(
             content: Text(
               'Friend request sent',
-              style: CsTypography.metadata.copyWith(color: Colors.black),
+              style: CsTypography.metadata.copyWith(
+                color: AppColors.textOnDark,
+              ),
             ),
-            backgroundColor: AppColors.gold,
+            backgroundColor: AppColors.forestGreen,
             duration: const Duration(seconds: 2),
           ),
         );
@@ -90,7 +94,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.deepGreen,
+      backgroundColor: AppColors.ivory,
       body: SafeArea(
         child: Column(
           children: [
@@ -103,7 +107,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
               ),
               child: Align(
                 alignment: Alignment.centerLeft,
-                child: EditorialBackButton(),
+                child: EditorialBackButton(color: AppColors.forestGreen),
               ),
             ),
             Padding(
@@ -116,7 +120,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
               child: Text(
                 'Add Friend',
                 style: CsTypography.screenTitle.copyWith(
-                  color: AppColors.textOnDark,
+                  color: AppColors.forestGreen,
                 ),
               ),
             ),
@@ -127,18 +131,12 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
                 CsSpacing.pageHorizontal,
                 0,
               ),
-              child: TextField(
+              child: CsSearchField(
                 controller: _searchCtrl,
-                autofocus: true,
+                hintText: 'Search by username…',
                 onChanged: _onQueryChanged,
-                style: CsTypography.body.copyWith(color: AppColors.textPrimary),
-                decoration: InputDecoration(
-                  hintText: 'Search by username…',
-                  hintStyle: CsTypography.body.copyWith(
-                    color: AppColors.textSecondary,
-                  ),
-                  prefixIcon: const Icon(Icons.search_rounded),
-                ),
+                autofocus: true,
+                surface: CsSurface.light,
               ),
             ),
             const SizedBox(height: CsSpacing.lg),
@@ -146,7 +144,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
               child: _searching
                   ? const Center(
                       child: CircularProgressIndicator(
-                        color: AppColors.gold,
+                        color: AppColors.forestGreen,
                         strokeWidth: 1.5,
                       ),
                     )
@@ -162,7 +160,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
                               : 'No one found with that username.',
                           textAlign: TextAlign.center,
                           style: CsTypography.body.copyWith(
-                            color: AppColors.secondaryOnDark,
+                            color: AppColors.taupe,
                           ),
                         ),
                       ),
@@ -212,30 +210,24 @@ class _ActionForStatus extends StatelessWidget {
     if (justSent || status == RelationshipStatus.pendingSent) {
       return Text(
         'Request sent',
-        style: CsTypography.metadata.copyWith(color: AppColors.secondaryOnDark),
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
       );
     }
     switch (status) {
       case RelationshipStatus.accepted:
         return Text(
           'Friends',
-          style: CsTypography.metadata.copyWith(
-            color: AppColors.secondaryOnDark,
-          ),
+          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
         );
       case RelationshipStatus.pendingReceived:
         return Text(
           'Respond in requests',
-          style: CsTypography.metadata.copyWith(
-            color: AppColors.secondaryOnDark,
-          ),
+          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
         );
       case RelationshipStatus.declined:
         return Text(
           'Unavailable',
-          style: CsTypography.metadata.copyWith(
-            color: AppColors.secondaryOnDark,
-          ),
+          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
         );
       case RelationshipStatus.none:
       case RelationshipStatus.pendingSent:
@@ -244,7 +236,7 @@ class _ActionForStatus extends StatelessWidget {
           child: Text(
             'Add',
             style: CsTypography.metadata.copyWith(
-              color: AppColors.gold,
+              color: AppColors.forestGreen,
               fontWeight: FontWeight.w600,
             ),
           ),

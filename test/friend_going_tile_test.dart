@@ -3,6 +3,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/core/widgets/venue_thumbnail.dart';
 import 'package:michelin_passport/features/friends/widgets/friend_going_tile.dart';
 import 'package:michelin_passport/models/event.dart';
 
@@ -28,6 +30,7 @@ Event _event({
 
 Widget _wrap(Widget child, {double width = 390}) => MaterialApp(
   home: Scaffold(
+    backgroundColor: AppColors.ivory,
     body: SizedBox(width: width, child: child),
   ),
 );
@@ -54,11 +57,38 @@ void main() {
       expect(tapped, isTrue);
     });
 
-    testWidgets('shows a chevron affordance', (tester) async {
+    testWidgets(
+      'shows no chevron — the row itself reads as tappable (Step 1)',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(FriendGoingTile(event: _event(), onTap: () {})),
+        );
+        expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'the leading slot is VenueThumbnail, using Event.imageUrl directly '
+      '(Step 1 — already photo-ready, unlike Restaurant/Hotel)',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(FriendGoingTile(event: _event(), onTap: () {})),
+        );
+        final thumbnail = tester.widget<VenueThumbnail>(
+          find.byType(VenueThumbnail),
+        );
+        expect(thumbnail.imageUrl, isNull);
+      },
+    );
+
+    testWidgets('combines name, date and location into one spoken '
+        'accessibility label', (tester) async {
       await tester.pumpWidget(
         _wrap(FriendGoingTile(event: _event(), onTap: () {})),
       );
-      expect(find.byIcon(Icons.chevron_right_rounded), findsOneWidget);
+      final semantics = tester.getSemantics(find.byType(FriendGoingTile));
+      expect(semantics.label, contains('Test Festival'));
+      expect(semantics.label, contains('Maastricht'));
     });
 
     testWidgets('works without a city (location omitted cleanly)', (

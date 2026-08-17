@@ -9,7 +9,7 @@ import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/friends/widgets/identity_row.dart';
 
 Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
+  home: Scaffold(backgroundColor: AppColors.ivory, body: child),
 );
 
 void main() {
@@ -29,6 +29,20 @@ void main() {
         _wrap(const IdentityRow(label: 'Kylan Scheepstra')),
       );
       expect(find.text('KS'), findsOneWidget);
+    });
+
+    testWidgets('never renders gold — name is forest-green, initials match', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(const IdentityRow(label: 'Kylan Scheepstra')),
+      );
+      final name = tester.widget<Text>(find.text('Kylan Scheepstra'));
+      final initials = tester.widget<Text>(find.text('KS'));
+      expect(name.style?.color, AppColors.forestGreen);
+      expect(name.style?.color, isNot(AppColors.gold));
+      expect(initials.style?.color, AppColors.forestGreen);
+      expect(initials.style?.color, isNot(AppColors.gold));
     });
 
     testWidgets('strips a leading "@" fallback label before computing '
@@ -91,7 +105,7 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.deepGreen,
+              backgroundColor: AppColors.ivory,
               body: const IdentityRow(
                 label: 'User B',
                 username: 'userb',

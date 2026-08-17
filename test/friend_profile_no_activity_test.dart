@@ -84,7 +84,7 @@ void _expectNoActivityCopy(WidgetTester tester) {
 }
 
 Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
+  home: Scaffold(backgroundColor: AppColors.ivory, body: child),
 );
 
 void main() {

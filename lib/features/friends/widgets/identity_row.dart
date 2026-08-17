@@ -49,7 +49,7 @@ class IdentityRow extends StatelessWidget {
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: CsTypography.bodyMedium.copyWith(
-                  color: AppColors.textOnDark,
+                  color: AppColors.forestGreen,
                 ),
               ),
               if (username != null && username!.isNotEmpty) ...[
@@ -58,9 +58,7 @@ class IdentityRow extends StatelessWidget {
                   '@$username',
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: CsTypography.metadata.copyWith(
-                    color: AppColors.secondaryOnDark,
-                  ),
+                  style: CsTypography.metadata.copyWith(color: AppColors.taupe),
                 ),
               ],
             ],
@@ -85,8 +83,8 @@ class IdentityRow extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(CsRadius.medium),
-        splashColor: AppColors.textOnDark.withValues(alpha: 0.06),
-        highlightColor: AppColors.textOnDark.withValues(alpha: 0.04),
+        splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
+        highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
         child: Padding(
           padding: const EdgeInsets.symmetric(
             vertical: CsSpacing.sm,
@@ -112,8 +110,8 @@ class _RowAvatar extends StatelessWidget {
       height: 44,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        color: AppColors.brandGreenLight,
-        border: Border.all(color: AppColors.subtleBorderDark),
+        color: AppColors.warmWhite,
+        border: Border.all(color: AppColors.subtleBorderLight),
       ),
       alignment: Alignment.center,
       child: (url != null && url.isNotEmpty)
@@ -138,6 +136,6 @@ class _InitialsText extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Text(
     initials,
-    style: CsTypography.bodyMedium.copyWith(color: AppColors.gold),
+    style: CsTypography.bodyMedium.copyWith(color: AppColors.forestGreen),
   );
 }

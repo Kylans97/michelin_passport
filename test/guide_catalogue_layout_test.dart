@@ -13,6 +13,7 @@
 // verification happens via physical-device review.
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_catalogue_layout.dart';
@@ -50,8 +51,7 @@ void main() {
     testWidgets(
       'Step 1B: the header is a forest-green editorial masthead — the '
       'Guide family is prominent ivory, the content type is smaller and '
-      'secondary, the back arrow is ivory, the Scaffold canvas below stays '
-      'ivory',
+      'secondary, the back arrow is ivory',
       (tester) async {
         await tester.pumpWidget(
           _wrap(
@@ -62,9 +62,6 @@ void main() {
             ),
           ),
         );
-
-        final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
-        expect(scaffold.backgroundColor, AppColors.ivory);
 
         expect(
           find.byWidgetPredicate(
@@ -90,6 +87,51 @@ void main() {
           find.byIcon(Icons.arrow_back_ios_new_rounded),
         );
         expect(backIcon.color, AppColors.ivory);
+      },
+    );
+
+    testWidgets(
+      'UI Polish: Scaffold.backgroundColor is forest-green (not ivory) so '
+      'the top safe area/status bar continues the masthead seamlessly, '
+      'with the results area painted explicitly ivory on top of it',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            const GuideCatalogueLayout(
+              source: 'MICHELIN GUIDE',
+              title: 'Restaurants',
+              content: Text('future filter/list content'),
+            ),
+          ),
+        );
+
+        final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
+        expect(scaffold.backgroundColor, AppColors.forestGreen);
+
+        expect(
+          find.byWidgetPredicate(
+            (w) => w is ColoredBox && w.color == AppColors.ivory,
+          ),
+          findsOneWidget,
+        );
+      },
+    );
+
+    testWidgets(
+      'UI Polish: forces light (ivory) status-bar icons for this screen',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            const GuideCatalogueLayout(
+              source: 'MICHELIN GUIDE',
+              title: 'Restaurants',
+            ),
+          ),
+        );
+        final region = tester.widget<AnnotatedRegion<SystemUiOverlayStyle>>(
+          find.byType(AnnotatedRegion<SystemUiOverlayStyle>),
+        );
+        expect(region.value, SystemUiOverlayStyle.light);
       },
     );
 

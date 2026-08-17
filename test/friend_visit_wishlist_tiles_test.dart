@@ -1,14 +1,14 @@
-// Covers FriendVisitTile and FriendWishlistTile (Social Foundation Step 2
-// §13-14 — the Friend Profile VISITED/WISHLIST tiles). Pumped directly,
-// including the real FriendPhotoStrip FriendVisitTile embeds: confirmed
-// safe without a live Supabase session because FriendPhotoStrip's own
-// _load() catches the synchronous throw from an uninitialized
-// Supabase.instance.client inside its own try block (see the widget's own
-// doc comment) — no presentation-seam stand-in needed here, unlike
-// screens that touch Supabase in initState outside a try/catch.
+// Covers FriendVisitTile and FriendWishlistTile (Community/Friends UX
+// Step 1 — the Friend Profile VISITED/WISHLIST rows). Presentation-only,
+// no Supabase involved — Step 1 dropped the embedded FriendPhotoStrip (see
+// docs/Architecture/COMMUNITY_FRIENDS_UX.md) so these tiles no longer
+// touch Supabase at all.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/core/widgets/key_row.dart';
+import 'package:michelin_passport/core/widgets/star_row.dart';
 import 'package:michelin_passport/features/friends/widgets/friend_visit_tile.dart';
 import 'package:michelin_passport/features/friends/widgets/friend_wishlist_tile.dart';
 import 'package:michelin_passport/models/hotel.dart';
@@ -21,6 +21,7 @@ Restaurant _restaurant({
   int? michelinStars,
   String cityName = 'Paris',
   String countryName = 'France',
+  String flagEmoji = '🇫🇷',
 }) => Restaurant(
   id: 'r1',
   restaurantCode: 'r1',
@@ -30,7 +31,7 @@ Restaurant _restaurant({
   cityName: cityName,
   countryCode: 'FR',
   countryName: countryName,
-  flagEmoji: '🇫🇷',
+  flagEmoji: flagEmoji,
   address: '1 Rue de Test',
 );
 
@@ -72,13 +73,14 @@ Visit _visit({
 
 Widget _wrap(Widget child, {double width = 390}) => MaterialApp(
   home: Scaffold(
+    backgroundColor: AppColors.ivory,
     body: SizedBox(width: width, child: child),
   ),
 );
 
 void main() {
   group('FriendVisitTile', () {
-    testWidgets('renders venue name, location, date, and rating', (
+    testWidgets('renders venue name, city, flag, date, and rating', (
       tester,
     ) async {
       await tester.pumpWidget(
@@ -90,29 +92,37 @@ void main() {
           ),
         ),
       );
-      await tester.pump();
-      expect(find.text('Test Restaurant'), findsOneWidget);
-      expect(find.text('Paris, France'), findsOneWidget);
-      expect(find.text('9/10'), findsOneWidget);
-      expect(find.text('12 June 2026'), findsOneWidget);
+      expect(
+        find.textContaining('Test Restaurant', findRichText: true),
+        findsOneWidget,
+      );
+      expect(find.text('Paris'), findsOneWidget);
+      expect(find.text('🇫🇷'), findsOneWidget);
+      expect(find.text('9/10 · 12 June 2026'), findsOneWidget);
+      expect(find.byType(StarRow), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('renders notes when present, omits them when absent', (
+    testWidgets(
+      'no longer renders notes — this is a concise discovery preview, not '
+      'a full visit-detail view (Step 1)',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            FriendVisitTile(
+              venue: RestaurantVenue(_restaurant()),
+              visit: _visit(notes: 'Wonderful tasting menu.'),
+              onTap: () {},
+            ),
+          ),
+        );
+        expect(find.text('Wonderful tasting menu.'), findsNothing);
+      },
+    );
+
+    testWidgets('omits the date/rating format gracefully when unrated', (
       tester,
     ) async {
-      await tester.pumpWidget(
-        _wrap(
-          FriendVisitTile(
-            venue: RestaurantVenue(_restaurant()),
-            visit: _visit(notes: 'Wonderful tasting menu.'),
-            onTap: () {},
-          ),
-        ),
-      );
-      await tester.pump();
-      expect(find.text('Wonderful tasting menu.'), findsOneWidget);
-
       await tester.pumpWidget(
         _wrap(
           FriendVisitTile(
@@ -122,8 +132,8 @@ void main() {
           ),
         ),
       );
-      await tester.pump();
-      expect(find.text('Wonderful tasting menu.'), findsNothing);
+      expect(find.text('12 June 2026'), findsOneWidget);
+      expect(find.textContaining('/10'), findsNothing);
     });
 
     testWidgets('renders a hotel stay via HotelVenue with Keys', (
@@ -138,9 +148,30 @@ void main() {
           ),
         ),
       );
-      await tester.pump();
-      expect(find.text('Test Hotel'), findsOneWidget);
+      expect(
+        find.textContaining('Test Hotel', findRichText: true),
+        findsOneWidget,
+      );
+      expect(find.byType(KeyRow), findsOneWidget);
       expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('combines name, city, country and recognition into one spoken '
+        'accessibility label', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          FriendVisitTile(
+            venue: RestaurantVenue(_restaurant(michelinStars: 3)),
+            visit: _visit(rating: 9),
+            onTap: () {},
+          ),
+        ),
+      );
+      final semantics = tester.getSemantics(find.byType(FriendVisitTile));
+      expect(
+        semantics.label,
+        'Test Restaurant, Paris, France, 3 Michelin stars, rated 9 out of 10',
+      );
     });
 
     testWidgets('long restaurant name + long city/country — no overflow, '
@@ -157,18 +188,12 @@ void main() {
                 countryName: 'United Kingdom of Great Britain',
               ),
             ),
-            visit: _visit(
-              rating: 10,
-              notes:
-                  'A very long note that keeps going and going and going '
-                  'well past what a single line could ever hold comfortably.',
-            ),
+            visit: _visit(rating: 10),
             onTap: () {},
           ),
           width: 320,
         ),
       );
-      await tester.pump();
       expect(tester.takeException(), isNull);
     });
 
@@ -178,11 +203,12 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
+              backgroundColor: AppColors.ivory,
               body: SizedBox(
                 width: 320,
                 child: FriendVisitTile(
                   venue: RestaurantVenue(_restaurant(michelinStars: 3)),
-                  visit: _visit(rating: 10, notes: 'Long note here.'),
+                  visit: _visit(rating: 10),
                   onTap: () {},
                 ),
               ),
@@ -190,12 +216,11 @@ void main() {
           ),
         ),
       );
-      await tester.pump();
       expect(tester.takeException(), isNull);
     });
 
     testWidgets('tapping the row fires onTap (navigates to canonical venue '
-        'detail — Step 2B §2)', (tester) async {
+        'detail)', (tester) async {
       var tapped = false;
       await tester.pumpWidget(
         _wrap(
@@ -210,9 +235,8 @@ void main() {
       expect(tapped, isTrue);
     });
 
-    testWidgets('shows a chevron affordance, not a prominent button', (
-      tester,
-    ) async {
+    testWidgets('shows no chevron and no prominent button — the row itself '
+        'reads as tappable', (tester) async {
       await tester.pumpWidget(
         _wrap(
           FriendVisitTile(
@@ -222,14 +246,31 @@ void main() {
           ),
         ),
       );
-      expect(find.byIcon(Icons.chevron_right_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
       expect(find.textContaining('View restaurant'), findsNothing);
       expect(find.byType(ElevatedButton), findsNothing);
+    });
+
+    testWidgets('never renders gold — rating and date are taupe metadata', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          FriendVisitTile(
+            venue: RestaurantVenue(_restaurant()),
+            visit: _visit(rating: 9),
+            onTap: () {},
+          ),
+        ),
+      );
+      final ratingText = tester.widget<Text>(find.text('9/10 · 12 June 2026'));
+      expect(ratingText.style?.color, isNot(AppColors.gold));
+      expect(ratingText.style?.color, AppColors.taupe);
     });
   });
 
   group('FriendWishlistTile', () {
-    testWidgets('renders venue name, location, and fires onTap', (
+    testWidgets('renders venue name, city, flag, and fires onTap', (
       tester,
     ) async {
       var tapped = false;
@@ -241,8 +282,12 @@ void main() {
           ),
         ),
       );
-      expect(find.text('Test Restaurant'), findsOneWidget);
-      expect(find.text('Paris, France'), findsOneWidget);
+      expect(
+        find.textContaining('Test Restaurant', findRichText: true),
+        findsOneWidget,
+      );
+      expect(find.text('Paris'), findsOneWidget);
+      expect(find.text('🇫🇷'), findsOneWidget);
       await tester.tap(find.byType(FriendWishlistTile));
       expect(tapped, isTrue);
     });
@@ -269,7 +314,25 @@ void main() {
           ),
         ),
       );
-      expect(find.text('Test Hotel'), findsOneWidget);
+      expect(
+        find.textContaining('Test Hotel', findRichText: true),
+        findsOneWidget,
+      );
+      expect(find.byType(KeyRow), findsOneWidget);
+    });
+
+    testWidgets('combines name, city, country and recognition into one spoken '
+        'accessibility label', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          FriendWishlistTile(
+            venue: HotelVenue(_hotel(michelinKeys: 2)),
+            onTap: () {},
+          ),
+        ),
+      );
+      final semantics = tester.getSemantics(find.byType(FriendWishlistTile));
+      expect(semantics.label, 'Test Hotel, Paris, France, 2 Michelin Keys');
     });
 
     testWidgets('long name — no overflow, 320px', (tester) async {

@@ -7,17 +7,24 @@
 // Supabase.instance.client eagerly in initState, so it can't itself be
 // pumped in a widget test without a live session — the presentation seam
 // (this exact row, this exact copy) is what's tested instead.
+//
+// UI Polish pass: Explore's own canvas is forest-green, not ivory, so this
+// row must pass `surface: CsSurface.dark` (matching the real call site in
+// explore_screen.dart) — physical-device review found the row rendering
+// forest-green-on-forest-green (i.e. defaulting to CsSurface.light, meant
+// for GuideFamilySection's ivory blocks) essentially unreadable here.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/core/theme/cs_surface_context.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_destination_row.dart';
 
 const _label = 'Browse the Guides';
 const _descriptor = "Michelin, World's 50 Best & Gault&Millau.";
 
 Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(backgroundColor: AppColors.ivory, body: child),
+  home: Scaffold(backgroundColor: AppColors.forestGreen, body: child),
 );
 
 void main() {
@@ -31,6 +38,7 @@ void main() {
             label: _label,
             descriptor: _descriptor,
             onTap: () => tapped = true,
+            surface: CsSurface.dark,
           ),
         ),
       );
@@ -40,6 +48,58 @@ void main() {
       expect(tapped, isTrue);
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets(
+      'UI Polish: on Explore\'s forest-green canvas, the label is ivory '
+      '(not forest-green) — legible, never gold',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            GuideDestinationRow(
+              label: _label,
+              descriptor: _descriptor,
+              onTap: () {},
+              surface: CsSurface.dark,
+            ),
+          ),
+        );
+        final label = tester.widget<Text>(find.text(_label));
+        expect(label.style?.color, AppColors.ivory);
+        expect(label.style?.color, isNot(AppColors.forestGreen));
+        expect(label.style?.color, isNot(AppColors.gold));
+
+        final descriptor = tester.widget<Text>(find.text(_descriptor));
+        expect(descriptor.style?.color, AppColors.secondaryOnDark);
+
+        final arrow = tester.widget<Icon>(
+          find.byIcon(Icons.arrow_forward_rounded),
+        );
+        expect(arrow.color, AppColors.secondaryOnDark);
+        expect(arrow.color, isNot(AppColors.gold));
+      },
+    );
+
+    testWidgets(
+      'defaulting to CsSurface.light (no surface passed) still renders '
+      'forest-green on ivory — GuideFamilySection\'s own call sites stay '
+      'byte-identical',
+      (tester) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              backgroundColor: AppColors.ivory,
+              body: GuideDestinationRow(
+                label: _label,
+                descriptor: _descriptor,
+                onTap: () {},
+              ),
+            ),
+          ),
+        );
+        final label = tester.widget<Text>(find.text(_label));
+        expect(label.style?.color, AppColors.forestGreen);
+      },
+    );
 
     testWidgets('320px and 390px widths — no overflow with this exact copy', (
       tester,
@@ -52,6 +112,7 @@ void main() {
               label: _label,
               descriptor: _descriptor,
               onTap: () {},
+              surface: CsSurface.dark,
             ),
           ),
         );
@@ -68,11 +129,12 @@ void main() {
           home: MediaQuery(
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
-              backgroundColor: AppColors.ivory,
+              backgroundColor: AppColors.forestGreen,
               body: GuideDestinationRow(
                 label: _label,
                 descriptor: _descriptor,
                 onTap: () {},
+                surface: CsSurface.dark,
               ),
             ),
           ),
