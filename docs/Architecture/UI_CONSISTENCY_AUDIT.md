@@ -47,3 +47,44 @@ If/when legacy screens are modernized, the natural order follows this spike's ow
 5. **Shared pickers/cards** (country picker, date card, save button) — used across several legacy screens; ride along with whichever screen above needs them modernized first rather than a standalone pass.
 
 This is a sequencing observation for a future design task, not a commitment made by this spike.
+
+## Update — Wishlist UI Consistency Step 1
+
+Row 10 above (Wishlist, Class C) is now stale: Wishlist has been migrated
+to the current editorial system. No repository, RLS, or navigation
+changes — presentation only.
+
+- **Canvas**: forest-green masthead (`WISHLIST`, supporting line,
+  Restaurants/Hotels selector) over an explicit ivory body — the same
+  composition Guides' catalogues and Friends use, adapted for Wishlist's
+  own architecture: it is a permanent bottom-navigation tab body (see
+  `app.dart`'s `_MainNavigation`), not a pushed route, so it owns no
+  `Scaffold` of its own and needs no back affordance — the tab shell
+  already provides both. Safe area: scoped
+  `AnnotatedRegion<SystemUiOverlayStyle>(value: .light)`, forest-green
+  reaching the status bar, explicit ivory `ColoredBox` body — the same
+  fix pattern established for `GuideCatalogueLayout`/`FriendProfileScreen`/
+  `FriendsScreen`.
+- **Selector**: `CsFilterChip` (`CsSurface.dark`) — restrained pill chips,
+  reusing an already-approved-but-previously-unwired primitive rather than
+  reskinning the shared `VenueTypeSelector` (which stays legacy/gold for
+  its other call site, `visited_map_screen.dart`, out of scope here).
+  Restaurants/Hotels only, Restaurants default — unchanged, already
+  regression-tested by `wishlist_default_venue_type_test.dart`.
+- **Rows**: `WishlistVenueRow` replaces the old bordered `WishlistCard` —
+  same 52×52 `VenueThumbnail` + inline `StarRow`/`KeyRow` + city/flag
+  language `FriendWishlistTile` established, plus its own remove
+  affordance (a second, independently-semantic target, not folded into
+  the row's merged navigation label). Taupe hairlines between rows
+  (N-1, no orphan trailing divider), never a card border.
+- **Removed as a deliberate simplification, not a functional regression**:
+  the inline "Plan visit"/"Plan stay" shortcut each row used to offer.
+  The target row structure has no slot for a secondary action beneath the
+  name, and `showPlanVenueSheet` remains one tap away on
+  `RestaurantDetailScreen`/`HotelDetailScreen` (which the row's own tap
+  already opens) — the capability isn't lost, only the direct shortcut.
+- **Explore CTA in empty states**: omitted. Wishlist and Explore are
+  sibling tabs in the same `IndexedStack` with no shared controller
+  exposing the active tab index — switching tabs from within a tab body
+  would require new cross-tab navigation infrastructure, out of scope for
+  a UI-only pass.

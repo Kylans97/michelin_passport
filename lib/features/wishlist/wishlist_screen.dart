@@ -1,24 +1,37 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
-import '../../data/repositories/planned_trips_repository.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/cs_filter_chip.dart';
+import '../../core/widgets/cs_image_placeholder.dart';
+import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/passport_venue.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
-import '../explore/widgets/venue_type_selector.dart';
 import '../hotels/hotel_detail_screen.dart';
-import '../planning/widgets/plan_venue_sheet.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import '../trips/planned_trips_screen.dart';
-import 'widgets/wishlist_card.dart';
+import 'widgets/wishlist_venue_row.dart';
 import 'wishlist_view_model.dart';
 
 /// My Wishlist: restaurants and hotels the user wants to go to someday —
 /// distinct from Planned Visits/Stays ("I intend to go around this date").
 /// Restaurants/Hotels only (no All category — see [defaultWishlistVenueType]
 /// for the default-selection rule), via the same [PassportVenue]
-/// abstraction and [VenueTypeSelector] styling Explore/Passport use.
+/// abstraction Explore/Passport use.
+///
+/// UI Consistency Step 1: forest-green masthead (title, supporting line,
+/// Restaurants/Hotels selector) over an ivory body — the same editorial
+/// composition established for Guides' catalogues and Friends. Unlike
+/// those screens this one is a permanent bottom-navigation tab (see
+/// app.dart's `_MainNavigation`), not a pushed route: it owns no
+/// [Scaffold] of its own (the tab shell already provides one) and needs no
+/// back affordance, so the safe-area architecture is the same forest-
+/// green-through-the-status-bar / scoped [AnnotatedRegion] / explicit
+/// ivory-body pattern, just without the [Scaffold] wrapper other pushed
+/// screens use.
 class WishlistScreen extends StatefulWidget {
   const WishlistScreen({super.key});
 
@@ -28,9 +41,6 @@ class WishlistScreen extends StatefulWidget {
 
 class _WishlistScreenState extends State<WishlistScreen> {
   late final WishlistRepository _repo = WishlistRepository(
-    Supabase.instance.client,
-  );
-  late final PlannedTripsRepository _plannedTripsRepo = PlannedTripsRepository(
     Supabase.instance.client,
   );
 
@@ -99,29 +109,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
     }
   }
 
-  Future<void> _planVenue(PassportVenue venue) async {
-    final uid = _userId;
-    if (uid.isEmpty) return;
-    final saved = await showPlanVenueSheet(
-      context,
-      venue: venue,
-      userId: uid,
-      plannedTripsRepository: _plannedTripsRepo,
-    );
-    if (saved == true && mounted) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text(
-            venue is HotelVenue ? 'Stay planned' : 'Visit planned',
-            style: GoogleFonts.inter(color: Colors.black),
-          ),
-          backgroundColor: AppColors.gold,
-          duration: const Duration(seconds: 2),
-        ),
-      );
-    }
-  }
-
   void _openPlannedTrips() {
     Navigator.push(
       context,
@@ -141,180 +128,244 @@ class _WishlistScreenState extends State<WishlistScreen> {
       future: _future,
       builder: (context, snap) {
         final allItems = snap.data ?? [];
-        if (snap.connectionState == ConnectionState.done) {
+        if (snap.connectionState == ConnectionState.done && !snap.hasError) {
           _applyDefaultVenueType(allItems);
         }
         final items = allItems.where(_matchesFilter).toList();
+        final loading = snap.connectionState == ConnectionState.waiting;
 
-        return RefreshIndicator(
-          color: AppColors.gold,
-          backgroundColor: AppColors.card,
-          onRefresh: () async => _load(),
-          child: CustomScrollView(
-            slivers: [
-              SliverAppBar(
-                title: const Text('Wishlist'),
-                pinned: true,
-                backgroundColor: AppColors.background,
-                actions: [
-                  // Navigation Step 1: upgraded from an unlabelled icon
-                  // button to a clearly labelled entry — the existing
-                  // PlannedTripsScreen was already reachable here, just not
-                  // discoverably. Still the least-invasive option: same
-                  // screen, same handler, only the affordance itself made
-                  // legible.
-                  TextButton.icon(
-                    onPressed: _openPlannedTrips,
-                    icon: const Icon(
-                      Icons.card_travel_rounded,
-                      color: AppColors.textSecondary,
-                      size: 18,
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+          value: SystemUiOverlayStyle.light,
+          // Wishlist is a bottom-navigation tab body, not a pushed route —
+          // unlike GuideCatalogueLayout/FriendProfileScreen/FriendsScreen,
+          // it has no Scaffold(backgroundColor: forestGreen) of its own to
+          // fall back on: _MainNavigation's Scaffold owns that, painted in
+          // the legacy AppColors.background. This outer ColoredBox is the
+          // substitute — it wraps the header AND the ivory body together
+          // so the header's SafeArea(bottom: false) inserts its top-inset
+          // padding *inside* an area already painted forest-green, rather
+          // than exposing whatever sits behind it. Physical-device review
+          // found the previous structure (ColoredBox nested *inside*
+          // SafeArea) left that inset unpainted, showing an ivory/white
+          // strip behind the iOS status bar — the same root cause already
+          // documented and fixed on the screens named above.
+          child: ColoredBox(
+            color: AppColors.forestGreen,
+            child: Column(
+              children: [
+                SafeArea(
+                  bottom: false,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.lg,
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.lg,
                     ),
-                    label: Text(
-                      'Trips',
-                      style: GoogleFonts.inter(
-                        color: AppColors.textSecondary,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 4),
-                ],
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 12, 20, 16),
-                  child: VenueTypeSelector(
-                    types: _types,
-                    selected: _venueType,
-                    onSelect: (v) => setState(() => _venueType = v),
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Dream Destinations',
-                        style: Theme.of(context).textTheme.headlineSmall,
-                      ),
-                      const SizedBox(width: 10),
-                      if (snap.connectionState == ConnectionState.waiting)
-                        const SizedBox(
-                          width: 14,
-                          height: 14,
-                          child: CircularProgressIndicator(
-                            color: AppColors.gold,
-                            strokeWidth: 1.5,
-                          ),
-                        )
-                      else
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 10,
-                            vertical: 3,
-                          ),
-                          decoration: BoxDecoration(
-                            color: AppColors.goldMuted,
-                            borderRadius: BorderRadius.circular(20),
-                            border: Border.all(
-                              color: AppColors.goldBorder40,
-                              width: 0.5,
-                            ),
-                          ),
-                          child: Text(
-                            '${items.length}',
-                            style: GoogleFonts.inter(
-                              color: AppColors.gold,
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                    ],
-                  ),
-                ),
-              ),
-              if (snap.hasError)
-                SliverFillRemaining(
-                  child: Center(
-                    child: Text(
-                      'Could not load wishlist',
-                      style: GoogleFonts.inter(color: AppColors.textSecondary),
-                    ),
-                  ),
-                )
-              else if (snap.connectionState == ConnectionState.waiting)
-                const SliverFillRemaining(
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      color: AppColors.gold,
-                      strokeWidth: 1.5,
-                    ),
-                  ),
-                )
-              else if (items.isEmpty)
-                SliverFillRemaining(
-                  child: Center(
                     child: Column(
-                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Icon(
-                          Icons.favorite_border_rounded,
-                          color: AppColors.textSecondary,
-                          size: 48,
-                        ),
-                        const SizedBox(height: 16),
                         Text(
-                          allItems.isEmpty
-                              ? 'Your wishlist is empty'
-                              : 'Nothing here yet',
-                          style: GoogleFonts.playfairDisplay(
-                            color: AppColors.textSecondary,
-                            fontSize: 18,
+                          'WISHLIST',
+                          style: CsTypography.screenTitle.copyWith(
+                            color: AppColors.ivory,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        const SizedBox(height: 4),
                         Text(
-                          allItems.isEmpty
-                              ? 'Tap ♥ on any restaurant or hotel to save it here'
-                              : 'Try a different filter',
-                          style: GoogleFonts.inter(
-                            color: AppColors.textSecondary,
-                            fontSize: 13,
+                          "Places you're saving for later.",
+                          style: CsTypography.body.copyWith(
+                            color: AppColors.secondaryOnDark,
                           ),
+                        ),
+                        const SizedBox(height: CsSpacing.lg),
+                        Row(
+                          children: [
+                            for (var i = 0; i < _types.length; i++) ...[
+                              if (i > 0) const SizedBox(width: CsSpacing.sm),
+                              CsFilterChip(
+                                label: _types[i].label,
+                                selected: _types[i] == _venueType,
+                                onTap: () =>
+                                    setState(() => _venueType = _types[i]),
+                              ),
+                            ],
+                          ],
                         ),
                       ],
                     ),
                   ),
-                )
-              else
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, i) => Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        20,
-                        0,
-                        20,
-                        i == items.length - 1 ? 100 : 12,
-                      ),
-                      child: WishlistCard(
-                        venue: items[i],
-                        onTap: () => _openVenue(items[i]),
-                        onPlan: () => _planVenue(items[i]),
-                        onRemove: () => _remove(items[i]),
+                ),
+                Expanded(
+                  child: ColoredBox(
+                    color: AppColors.ivory,
+                    child: SafeArea(
+                      top: false,
+                      child: RefreshIndicator(
+                        color: AppColors.forestGreen,
+                        backgroundColor: AppColors.warmWhite,
+                        onRefresh: () async => _load(),
+                        child: CustomScrollView(
+                          slivers: [
+                            SliverToBoxAdapter(
+                              child: Padding(
+                                padding: const EdgeInsets.fromLTRB(
+                                  CsSpacing.pageHorizontal,
+                                  CsSpacing.md,
+                                  CsSpacing.pageHorizontal,
+                                  0,
+                                ),
+                                child: Align(
+                                  alignment: Alignment.centerRight,
+                                  child: SubtleTextAction(
+                                    label: 'Trips',
+                                    onTap: _openPlannedTrips,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            if (snap.hasError)
+                              SliverFillRemaining(
+                                hasScrollBody: false,
+                                child: _ErrorState(onRetry: _load),
+                              )
+                            else if (loading)
+                              const SliverFillRemaining(
+                                hasScrollBody: false,
+                                child: _LoadingState(),
+                              )
+                            else if (items.isEmpty)
+                              SliverFillRemaining(
+                                hasScrollBody: false,
+                                child: _EmptyState(venueType: _venueType),
+                              )
+                            else
+                              SliverPadding(
+                                padding: const EdgeInsets.fromLTRB(
+                                  CsSpacing.pageHorizontal,
+                                  CsSpacing.sm,
+                                  CsSpacing.pageHorizontal,
+                                  100,
+                                ),
+                                sliver: SliverList(
+                                  delegate: SliverChildBuilderDelegate(
+                                    (context, i) => Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        if (i > 0) const WishlistRowDivider(),
+                                        WishlistVenueRow(
+                                          venue: items[i],
+                                          onTap: () => _openVenue(items[i]),
+                                          onRemove: () => _remove(items[i]),
+                                        ),
+                                      ],
+                                    ),
+                                    childCount: items.length,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
                       ),
                     ),
-                    childCount: items.length,
                   ),
                 ),
-            ],
+              ],
+            ),
           ),
         );
       },
+    );
+  }
+}
+
+class _LoadingState extends StatelessWidget {
+  const _LoadingState();
+
+  @override
+  Widget build(BuildContext context) => const Center(
+    child: CircularProgressIndicator(
+      color: AppColors.forestGreen,
+      strokeWidth: 1.5,
+    ),
+  );
+}
+
+class _ErrorState extends StatelessWidget {
+  final VoidCallback onRetry;
+  const _ErrorState({required this.onRetry});
+
+  @override
+  Widget build(BuildContext context) => Center(
+    child: Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 56),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.wifi_off_rounded, color: AppColors.taupe, size: 32),
+          const SizedBox(height: CsSpacing.base),
+          Text(
+            'Could not load your wishlist',
+            textAlign: TextAlign.center,
+            style: CsTypography.body.copyWith(color: AppColors.taupe),
+          ),
+          const SizedBox(height: CsSpacing.md),
+          TextButton(
+            onPressed: onRetry,
+            child: Text(
+              'Retry',
+              style: CsTypography.bodyMedium.copyWith(
+                color: AppColors.forestGreen,
+              ),
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
+class _EmptyState extends StatelessWidget {
+  final ExploreVenueType venueType;
+  const _EmptyState({required this.venueType});
+
+  @override
+  Widget build(BuildContext context) {
+    final isHotels = venueType == ExploreVenueType.hotels;
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 56),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const CsImagePlaceholder(
+              width: 56,
+              height: 56,
+              borderRadius: BorderRadius.all(Radius.circular(14)),
+              logoScale: 0.5,
+            ),
+            const SizedBox(height: CsSpacing.lg),
+            Text(
+              isHotels ? 'No hotels saved yet' : 'No restaurants saved yet',
+              textAlign: TextAlign.center,
+              style: CsTypography.placeTitle.copyWith(
+                color: AppColors.forestGreen,
+              ),
+            ),
+            const SizedBox(height: CsSpacing.xs),
+            Text(
+              isHotels
+                  ? "Save hotels you'd like to stay at and they'll appear "
+                        'here.'
+                  : "Save restaurants you'd like to experience and they'll "
+                        'appear here.',
+              textAlign: TextAlign.center,
+              style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
