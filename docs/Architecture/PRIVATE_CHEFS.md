@@ -1,10 +1,12 @@
 # Private Chefs — Product & Data Architecture
 
 **Status:** Step 0 (product/data architecture), Step 1 (database
-foundation), Step 1A (enquiry integrity hardening), and Step 1B
-(production deployment) are all complete. No Dart code, no routes, no
-seed/real data. Concept validated against one real-world candidate
-(Lucas / Jagers Catering) rather than designed in the abstract.
+foundation), Step 1A (enquiry integrity hardening), Step 1B (production
+deployment), and Step 2 (application layer + Explore discovery + Chef
+Detail) are all complete. Still no real chef data anywhere, and no
+enquiry form yet (Step 3). Concept validated against one real-world
+candidate (Lucas / Jagers Catering) rather than designed in the
+abstract.
 
 ## PRIVATE CHEFS DATABASE FOUNDATION — DEPLOYED
 
@@ -20,6 +22,174 @@ seed/real data. Concept validated against one real-world candidate
 **Privilege audit result** (project-wide, read-only, 2026-08-17): `anon`/`authenticated` hold broad table-level grants on every application table in this project, including all three Private Chefs tables — this is a **universal Supabase project default** (`ALTER DEFAULT PRIVILEGES` at the project level), confirmed identical on 25 pre-existing tables (`restaurants`, `profiles`, `event_attendance`, `friendships`, etc.), and is **not Private-Chefs-specific**. The explicit `GRANT` statements in the Private Chefs migration do not themselves narrow this — **RLS is the actual, sole, authoritative effective security boundary** for these tables, exactly as it already is for every other table in this project. Private Chefs' own RLS policies were live-verified and are correct. Project-wide default-privilege hardening (making the migration's own `GRANT` statements independently restrictive) remains a deferred, separate decision — see `docs/Architecture/DATABASE_GUIDE.md`'s "Row Level Security" section.
 
 One unrelated pre-existing defect was found and fixed during this audit: `public.worlds_50_best_hotels` had RLS disabled entirely (migration `20260817130000_fix_worlds_50_best_hotels_rls.sql`) — not a Private Chefs table, noted here only because it was discovered during the same review pass.
+
+## PRIVATE CHEFS STEP 2 — APPLICATION LAYER + DISCOVERY UI
+
+The read-only application layer against the deployed schema. No enquiry
+form (Step 3), no real chef data, no bottom-navigation change.
+
+**Application models** — `lib/models/private_chef.dart` (`PrivateChef`,
+mirrors `restaurant.dart`/`hotel.dart`'s own doc-comment-heavy,
+`fromJson`-only, no-`copyWith` convention exactly) and
+`lib/models/private_chef_restaurant_history.dart`
+(`PrivateChefRestaurantHistory`, built via `fromRow(row, {restaurant})`
+rather than a bare `fromJson`, since resolving its canonical `Restaurant`
+requires a second query the model itself has no business making). Neither
+model carries a Michelin/Keys field of any kind — recognition is read
+only from the resolved `Restaurant` (see §10, unchanged).
+
+**Repository** — `lib/data/repositories/private_chef_repository.dart`
+(`PrivateChefRepository`, read-only, matching
+`RestaurantRepository`/`HotelRepository`/`EventsRepository`'s exact
+constructor-injection shape and `privateChefFullColumns` explicit-column-
+list convention). Four methods: `getPublishedChefs()`,
+`getPrivateChefById()`, `getPrivateChefBySlug()` (unused today, kept
+because `slug` is the schema's own stable public identity and the lookup
+is genuinely cheap — not spec work), and `getRestaurantHistory()`.
+
+- **Published query**: `getPublishedChefs()` explicitly re-applies
+  `publication_status = 'published'` even though `private_chefs_public_read`
+  RLS already restricts anon/authenticated reads to published rows —
+  deliberately, so the query documents its own intent and keeps behaving
+  correctly if this repository is ever reused under a service-role
+  context. Ordered by `display_name` ascending — no editorial
+  `display_order`/ranking field exists on `private_chefs`, and this
+  domain has no popularity concept to invent one from; `display_name` is
+  the smallest honest, deterministic fallback.
+- **Detail query**: `getPrivateChefById()` is published-gated the same
+  way — a draft/archived chef id must not resolve. `PrivateChefDetailScreen`
+  takes only a `chefId` and resolves it internally (matching
+  `EventDetailScreen`'s `eventId`-only convention, not Restaurant/Hotel
+  Detail's "caller already has the model" convention) precisely so a
+  removed/archived chef renders `PrivateChefNotFoundState` rather than
+  stale data.
+- **Provenance query / restaurant resolution**: `getRestaurantHistory()`
+  is two queries total — the history rows, then one batched
+  `restaurants_full` lookup via `.inFilter('id', ...)` across every
+  canonical `restaurant_id` among them — never one query per row,
+  mirroring `EventsRepository.loadLinkedVenues` exactly. **N+1 result:
+  none** — verified by construction (the same pattern already proven
+  correct for Event Detail's linked venues).
+
+**Explore placement** — a second `GuideDestinationRow` ("Private Chefs" /
+"Exceptional chefs, selected for private dining.", `surface:
+CsSurface.dark`) directly beneath "Browse the Guides" in
+`explore_screen.dart`'s discovery slivers, pushing `PrivateChefsScreen` via
+plain `MaterialPageRoute` — the exact same permanent-navigation-row
+pattern Guides already uses, not a duplicate landing page rendered
+inline, not a 6th bottom-navigation tab, and not folded into the main
+restaurant/hotel/event search.
+
+**`PrivateChefsScreen`** (`lib/features/private_chefs/private_chefs_screen.dart`) —
+a pushed route with its own `Scaffold`, reusing `GuideCatalogueLayout`'s
+proven `Scaffold(deepGreen)` → `SafeArea(bottom: false)` masthead → ivory
+`ColoredBox` + `SafeArea(top: false)` content architecture (the exact fix
+for the ivory-strip-behind-the-status-bar bug that shell already solved),
+but with a single `screenTitle`/`body` heading — matching Explore/
+Wishlist's primary-tab header language — rather than Guides' two-level
+source/title split, since Private Chefs has no family-of-catalogues
+hierarchy above it. Production currently has zero published chefs, so
+`PrivateChefsEmptyState` ("Private Chefs are coming soon" / "We're
+curating a small collection of exceptional chefs for private dining
+experiences.") is the real, first-class state most users see today — not
+"No chefs found," no promised date, no mention of Lucas or the database.
+Populated rows use `PrivateChefRow` (a `GuideVenueCard`-family editorial
+index row, but person-first: `display_name` primary, `business_name`
+clearly subordinate) with `PrivateChefAvatar` — a small, circular,
+chef-specific image primitive reusing `CsImagePlaceholder`'s exact
+fallback logic rather than `VenueThumbnail` (whose rounded-square
+treatment is built for venue photography and reads wrong for a person).
+
+**`PrivateChefDetailScreen`** (`lib/features/private_chefs/private_chef_detail_screen.dart`) —
+canonical hierarchy HERO → ABOUT → RESTAURANT PROVENANCE → THE EXPERIENCE
+→ CONNECT, each section conditional and self-omitting, separated by
+`SectionDivider` only between sections actually present:
+
+- **Hero** (`PrivateChefHero`) — a parallel, trimmed sibling of
+  `VenueDetailHero`, not a reuse of it: that widget hard-requires
+  wishlist state, which has no equivalent here (Private Chefs is not on
+  Wishlist, §33 unchanged). Shows the chef's real `profile_image_url`
+  photo when present (unlike Restaurant/Hotel, which have no photo column
+  yet), falling back to the same deep-green gradient treatment
+  otherwise. The only editorial context label is a small "PRIVATE CHEF"
+  eyebrow — never "Chasing Stars Selected" as a badge, never a score,
+  rating, review count, or price badge. The page existing at all is the
+  selection signal (§14).
+- **About** — `biography` verbatim, section omitted entirely (not shown
+  with placeholder copy) when null/blank.
+- **Restaurant Provenance** — `PrivateChefProvenanceRow` per history row.
+  **Hard Michelin-attribution rule, enforced in code and tested
+  explicitly**: `StarRow` renders only beside the *restaurant's* own name,
+  sourced only from the resolved `Restaurant.michelinStars` — never
+  beside the chef's name, never inferred, never phrased as "the chef has
+  N stars." Canonical rows are tappable → `RestaurantDetailScreen` (via
+  the already-resolved `Restaurant` model, no second lookup) and show
+  city + flag from that same `Restaurant`; text-only rows show only
+  `restaurant_name_text` + role/period, are never tappable, never show a
+  fabricated location, and are visually distinguished only by the absence
+  of the tap affordance (no arrow icon) — not by looking broken.
+- **The Experience** (`PrivateChefExperienceSection`) — editorial prose,
+  never a specification table, built entirely from conditional fields via
+  two pure, independently tested functions: `formatGuestRange` (both /
+  min-only / max-only / neither, never "null–14 guests") and
+  `formatPricingFrom` (`price_on_request` always wins regardless of
+  whether `pricing_from` is also set; the raw ISO 4217 code is shown as
+  text — no currency-symbol mapping invented, matching this codebase's
+  existing precedent of never guessing one, e.g. `Visit.currency`/
+  `EventCard`'s raw country-code text). `wine_pairing_available == false`
+  renders no wine line at all (omission, not a negative statement).
+- **Connect** — reuses `SubtleTextAction` (the same understated "Label →"
+  affordance Restaurant/Hotel Detail already use), never a large
+  social-button treatment. Self-omits entirely when neither
+  `instagram_url` nor `website_url` is present; shows just the one that
+  exists otherwise. URL opening is the screen's own inline `_openUrl`
+  (identical `canLaunchUrl`/`launchUrl(mode: externalApplication)`
+  pattern already duplicated in `RestaurantDetailScreen`/
+  `HotelDetailScreen` — no shared helper exists in this codebase to
+  extract into, so this doesn't invent one either).
+- **Step 3 seam** — no CTA of any kind (disabled, "coming soon", or
+  otherwise) is rendered where "Request an Experience" will eventually
+  go; a documented comment in `_body()` marks exactly where Step 3 adds
+  it. Nothing about the current section list/divider structure needs to
+  change to accommodate that addition later.
+
+**Testing** — model tests are pure Dart (JSON mapping, nullable fields,
+pricing, languages, canonical-vs-text-fallback). Every presentational
+widget (`PrivateChefRow`, `PrivateChefHero`, `PrivateChefProvenanceRow`,
+`PrivateChefExperienceSection`, `PrivateChefConnectSection`, the four
+state widgets) is a pure `StatelessWidget` with no Supabase dependency
+and is widget-tested directly. `PrivateChefsScreen`/`PrivateChefDetailScreen`
+themselves construct `PrivateChefRepository` against
+`Supabase.instance.client` eagerly in `initState` — the same established
+Supabase-eager-screen limitation as every other primary/pushed screen in
+this app — so their own shell/composition is covered by mirrored-widget-
+tree tests (`private_chefs_screen_shell_test.dart`,
+`private_chef_detail_screen_shell_test.dart`), following
+`wishlist_screen_shell_test.dart`'s exact established pattern, built
+almost entirely from the real, already-independently-tested production
+sub-widgets rather than re-mirroring their internals. The Explore entry
+is covered the same way `explore_guides_entry_test.dart` already covers
+"Browse the Guides." The repository's own N+1-avoidance and query shape
+are verified by code inspection against `EventsRepository
+.loadLinkedVenues`'s already-proven pattern, not a live-Supabase test —
+this codebase has no mocking harness for `SupabaseClient`, matching the
+existing precedent for every other repository in this app.
+
+**Physical-device review — APPROVED.** Step 2 was reviewed on a real
+iPhone against the live (empty) production catalogue. Confirmed: the
+Explore → Private Chefs entry renders correctly; the deepGreen/ivory
+masthead-to-content treatment matches the approved Chasing Stars
+language; the safe area paints deepGreen cleanly through the status-bar
+area with no white/ivory/legacy strip; navigation into and back out of
+`PrivateChefsScreen` works correctly; the production empty state
+("Private Chefs are coming soon...") reads as intentional, not broken or
+placeholder-like; no decorative gold was introduced anywhere in the
+feature; and "Browse the Guides" remains unaffected alongside the new
+row. Populated-landing and Chef Detail physical review is explicitly
+**deferred** until the first real chef is published — production
+currently has zero chefs, so only the empty state is reviewable on-device
+today; the populated path's evidence is its automated widget coverage
+(§ above).
 
 **Step 1 corrections to the original Step 0 proposal below** (the
 sections themselves are updated in place; this box is a map to what

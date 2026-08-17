@@ -21,6 +21,7 @@ import '../events/events_screen.dart';
 import '../guides/guides_screen.dart';
 import '../guides/widgets/guide_destination_row.dart';
 import '../hotels/hotel_detail_screen.dart';
+import '../private_chefs/private_chefs_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'discovery_selectors.dart';
 import 'explore_view_model.dart';
@@ -267,6 +268,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
     MaterialPageRoute(builder: (_) => const GuidesScreen()),
   );
 
+  // Private Chefs Step 2: a second compact, permanent navigation row,
+  // directly mirroring "Browse the Guides" — a distinct destination
+  // (PrivateChefsScreen), never a Guide masquerading as one, never chef
+  // results folded into the main restaurant/hotel/event search below.
+  void _openPrivateChefs() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const PrivateChefsScreen()),
+  );
+
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
@@ -305,11 +315,21 @@ class _ExploreScreenState extends State<ExploreScreen> {
           CsSpacing.pageHorizontal,
           0,
         ),
-        child: GuideDestinationRow(
-          label: 'Browse the Guides',
-          descriptor: "Michelin, World's 50 Best & Gault&Millau.",
-          onTap: _openGuides,
-          surface: CsSurface.dark,
+        child: Column(
+          children: [
+            GuideDestinationRow(
+              label: 'Browse the Guides',
+              descriptor: "Michelin, World's 50 Best & Gault&Millau.",
+              onTap: _openGuides,
+              surface: CsSurface.dark,
+            ),
+            GuideDestinationRow(
+              label: 'Private Chefs',
+              descriptor: 'Exceptional chefs, selected for private dining.',
+              onTap: _openPrivateChefs,
+              surface: CsSurface.dark,
+            ),
+          ],
         ),
       ),
     ),
