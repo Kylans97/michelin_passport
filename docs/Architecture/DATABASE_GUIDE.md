@@ -359,6 +359,45 @@ Avoid combining multiple unrelated changes.
 
 ---
 
+# Row Level Security
+
+RLS is the authoritative client-access boundary in this project — not table
+grants.
+
+This project's Supabase bootstrap grants `anon`/`authenticated` broad
+table-level privileges (`SELECT`/`INSERT`/`UPDATE`/`DELETE`/...) by default
+on every table in `public`, via project-level `ALTER DEFAULT PRIVILEGES`.
+This is standard Supabase behavior, not something any migration here
+controls, and it is **not** an independent least-privilege layer — a
+migration's own explicit `GRANT` statement does not narrow it. RLS policies
+are what actually restrict client access.
+
+Every new table must:
+
+- `enable row level security`
+- have a `select` policy (`to anon, authenticated` for public catalogue
+  data; `to authenticated` scoped to the owner for personal data)
+- have no `insert`/`update`/`delete` policy unless a client is genuinely
+  meant to write directly — omit the policy entirely rather than writing
+  one that's never exercised
+
+A table with RLS enabled and no policy for a given command is fully closed
+for that command, regardless of what the underlying grant allows. This
+project relies on that guarantee throughout (`friendships`, `private_chefs`,
+`private_chef_restaurant_history`, `private_chef_enquiries` all have zero
+write policies for at least one command and are correctly closed for it).
+
+A project-wide database privilege audit (2026-08-17) confirmed this pattern
+holds correctly across every application table except one:
+`public.worlds_50_best_hotels` was created without RLS at all (fixed in
+`20260817130000_fix_worlds_50_best_hotels_rls.sql`). Normalizing the
+underlying default privileges themselves (so a migration's own `GRANT`
+statements become the true, sole boundary) remains a deferred, separate,
+project-wide decision — not required while RLS coverage is complete and
+correctly scoped.
+
+---
+
 # Data Imports
 
 Every import should follow the same process.
