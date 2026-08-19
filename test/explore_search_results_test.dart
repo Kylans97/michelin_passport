@@ -338,6 +338,178 @@ void main() {
     });
   });
 
+  group(
+    'SliverFillRemaining keyboard-overflow regression (Explore bugfix)',
+    () {
+      // Reproduces the reported bug: opening the iOS keyboard shrinks the
+      // Scaffold body (default resizeToAvoidBottomInset: true), which
+      // shrinks how much viewport height is left for the trailing
+      // SliverFillRemaining once the header/search field/type chips/
+      // country filter/(award-or-keys filter row) above it have taken
+      // their share — sometimes down to less than the empty/error state's
+      // own fixed content height. A plain SingleChildScrollView (this
+      // file's usual `_wrap`) hands its child unbounded height and would
+      // never exercise that failure — a real CustomScrollView inside a
+      // height-constrained SizedBox is what actually reproduces it.
+      //
+      // 200px is not an arbitrary round number: `ExploreSearchEmptyState`'s
+      // own fixed vertical padding alone is 112px (56 top + 56 bottom, see
+      // explore_search_results_view.dart), so any viewport height at or
+      // below that deflates to an exact ZERO-height box for its inner
+      // Column — and a genuinely zero-sized box never reaches Flutter's
+      // overflow-indicator/assertion path at all (there's nothing to
+      // visibly clip), so a too-small probe height would pass even against
+      // the ORIGINAL buggy `hasScrollBody: true` and prove nothing. 200px
+      // leaves a small but *positive* remainder for the Column (well under
+      // its own ~126px of content), which is the actual failure mode
+      // reported on-device (a positive but insufficient remaining height,
+      // not a literal zero) — confirmed against the pre-fix code during
+      // development: `hasScrollBody: true` at this exact height threw
+      // "A RenderFlex overflowed by 38 pixels", and `hasScrollBody: false`
+      // (the shipped fix, used below) does not.
+      //
+      // `hasScrollBody: false` is exercised directly here rather than by
+      // pumping the full ExploreScreen, which can't be widget-tested (see
+      // this file's header comment) — this targets the exact shared sliver
+      // composition every search type (All/Restaurants/Hotels/Events)
+      // funnels through, so one test here stands in for all four rather
+      // than needing a mode-specific duplicate of each.
+      const double keyboardShrunkHeight = 200;
+
+      Widget sliverWrap(
+        Widget child, {
+        double viewportHeight = keyboardShrunkHeight,
+      }) => MaterialApp(
+        home: Scaffold(
+          backgroundColor: AppColors.deepGreen,
+          body: SizedBox(
+            height: viewportHeight,
+            child: CustomScrollView(
+              slivers: [
+                SliverFillRemaining(hasScrollBody: false, child: child),
+              ],
+            ),
+          ),
+        ),
+      );
+
+      testWidgets('ExploreSearchEmptyState in a keyboard-shrunk viewport (a '
+          'positive, but insufficient, remaining height) scrolls instead of '
+          'overflowing — no RenderFlex exception', (tester) async {
+        await tester.pumpWidget(sliverWrap(const ExploreSearchEmptyState()));
+        expect(find.text('No places found'), findsOneWidget);
+        expect(tester.takeException(), isNull);
+      });
+
+      testWidgets('ExploreSearchErrorState in the same shrunk viewport scrolls '
+          'instead of overflowing', (tester) async {
+        await tester.pumpWidget(
+          sliverWrap(ExploreSearchErrorState(onRetry: () {})),
+        );
+        expect(find.text('Could not load results'), findsOneWidget);
+        expect(tester.takeException(), isNull);
+      });
+
+      testWidgets(
+        'still renders cleanly with plenty of room (keyboard closed) — '
+        'hasScrollBody: false is not a regression for the common case',
+        (tester) async {
+          await tester.pumpWidget(
+            sliverWrap(const ExploreSearchEmptyState(), viewportHeight: 700),
+          );
+          expect(find.text('No places found'), findsOneWidget);
+          expect(tester.takeException(), isNull);
+        },
+      );
+
+      testWidgets('320px width, keyboard-shrunk viewport — no overflow', (
+        tester,
+      ) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              backgroundColor: AppColors.deepGreen,
+              body: SizedBox(
+                width: 320,
+                height: keyboardShrunkHeight,
+                child: CustomScrollView(
+                  slivers: [
+                    const SliverFillRemaining(
+                      hasScrollBody: false,
+                      child: ExploreSearchEmptyState(),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        );
+        expect(tester.takeException(), isNull);
+      });
+
+      testWidgets('1.6x text scale, keyboard-shrunk viewport — no overflow', (
+        tester,
+      ) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            home: MediaQuery(
+              data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
+              child: Scaffold(
+                backgroundColor: AppColors.deepGreen,
+                body: SizedBox(
+                  height: keyboardShrunkHeight,
+                  child: CustomScrollView(
+                    slivers: [
+                      const SliverFillRemaining(
+                        hasScrollBody: false,
+                        child: ExploreSearchEmptyState(),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+        expect(tester.takeException(), isNull);
+      });
+
+      testWidgets(
+        'a populated ExploreSearchResultsView (the non-empty branch, a '
+        'plain SliverToBoxAdapter, not SliverFillRemaining) still scrolls '
+        'cleanly in the same shrunk viewport — confirms this fix does not '
+        'touch or regress the populated-results path',
+        (tester) async {
+          await tester.pumpWidget(
+            MaterialApp(
+              home: Scaffold(
+                backgroundColor: AppColors.deepGreen,
+                body: SizedBox(
+                  height: 100,
+                  child: CustomScrollView(
+                    slivers: [
+                      SliverToBoxAdapter(
+                        child: ExploreSearchResultsView(
+                          results: ExploreSearchResults(
+                            restaurants: [_restaurant()],
+                            hotels: [_hotel()],
+                            events: const [],
+                          ),
+                          onTapEvent: (_) {},
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+          expect(tester.takeException(), isNull);
+        },
+      );
+    },
+  );
+
   group('ExploreEventResultTile', () {
     testWidgets('renders name, date and location', (tester) async {
       await tester.pumpWidget(

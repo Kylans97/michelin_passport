@@ -478,9 +478,31 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
         ),
       if (_searchError && results == null)
-        SliverFillRemaining(child: ExploreSearchErrorState(onRetry: _runSearch))
+        SliverFillRemaining(
+          // hasScrollBody: false — these three branches all render a
+          // fixed-height, non-scrolling widget (empty state / error state
+          // / a small spinner), never a scrollable body. With the default
+          // `true`, the sliver forces its child into a *tight* box equal
+          // to whatever viewport height remains after the header/search
+          // field/filter rows above — and that remaining height shrinks
+          // whenever the keyboard is open (the ancestor Scaffold's
+          // default resizeToAvoidBottomInset already subtracts the
+          // keyboard height from the body). A tight box smaller than the
+          // empty/error state's own content threw a RenderFlex bottom
+          // overflow. `false` instead fills the remaining space when
+          // there's room (identical look to before) and gracefully
+          // defers to the child's own larger size when there isn't,
+          // which — because this sliver lives inside the screen's own
+          // CustomScrollView — simply makes the whole search view
+          // scrollable instead of overflowing. Applies identically to
+          // every search type (All/Restaurants/Hotels/Events); nothing
+          // here is mode-specific.
+          hasScrollBody: false,
+          child: ExploreSearchErrorState(onRetry: _runSearch),
+        )
       else if (results == null)
         const SliverFillRemaining(
+          hasScrollBody: false,
           child: Center(
             child: CircularProgressIndicator(
               color: AppColors.textOnDark,
@@ -489,7 +511,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
         )
       else if (results.isEmpty)
-        const SliverFillRemaining(child: ExploreSearchEmptyState())
+        const SliverFillRemaining(
+          hasScrollBody: false,
+          child: ExploreSearchEmptyState(),
+        )
       else
         SliverToBoxAdapter(
           child: ExploreSearchResultsView(
