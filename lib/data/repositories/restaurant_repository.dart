@@ -21,20 +21,27 @@ import 'search_query.dart';
 // is_hall_of_fame has the identical deployment-ordering hazard: it only
 // exists once
 // supabase/migrations/20260811220000_gault_millau_provenance_and_hall_of_fame_fix.sql
-// is applied to whatever schema this code runs against. That migration is
-// PREPARED — NOT APPLIED as of this comment. Do not ship this constant's
-// current form to any environment ahead of that migration landing there —
-// unlike lat/lon, it was included here directly rather than split into a
-// second constant, because (unlike the Map feature's coordinate-only
-// query) every caller of restaurantFullColumns needs Restaurant.isHallOfFame
-// to work correctly (RestaurantAwardsCard, Explore's Hall of Fame filter),
-// so there is no meaningful subset of callers this column could be safely
-// deferred for.
+// is applied to whatever schema this code runs against. Confirmed deployed
+// to production (queried directly). Unlike lat/lon, it was included here
+// directly rather than split into a second constant, because (unlike the
+// Map feature's coordinate-only query) every caller of
+// restaurantFullColumns needs Restaurant.isHallOfFame to work correctly
+// (RestaurantAwardsCard, Explore's Hall of Fame filter), so there is no
+// meaningful subset of callers this column could be safely deferred for.
+//
+// phone (Restaurant Enrichment Step 1D) has the same deployment-ordering
+// hazard, deliberately accepted for the same reason — VenueUtilityActions'
+// Call action needs it wherever Restaurant Detail is shown, so there is no
+// subset of callers to safely split it out for either. Do not query this
+// constant against an environment where
+// supabase/migrations/20260819120000_add_restaurant_phone.sql has not
+// been applied.
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_name, region, country_code, country_name, flag_emoji, address, '
-    'google_place_id, michelin_url, website_url, booking_url, property_name, '
-    'is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank, is_hall_of_fame';
+    'google_place_id, michelin_url, website_url, booking_url, phone, '
+    'property_name, is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank, '
+    'is_hall_of_fame';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);

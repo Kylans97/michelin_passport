@@ -4,6 +4,29 @@ Status: implemented, validated, and **physically approved on-device** (Steps 1B 
 
 ---
 
+## RESTAURANT ENRICHMENT STEP 1D — PARKHEUVEL DETAIL COMPLETENESS + GENERIC CONTACT ACTIONS
+
+Activates the `onCall` seam `VenueUtilityActions` gained back in its own Step 1D (below): `Restaurant` gained a nullable `phone` column (`restaurants` table + `restaurants_full` view, migration `20260819120000_add_restaurant_phone.sql` — the view is rebuilt with an explicit column enumeration rather than `select r.*`, since Postgres freezes a `SELECT *` expansion at view-creation time and a bare `r.*` cannot have a new base-table column inserted mid-sequence). Stored as human-readable international text (e.g. `"+31 (0)10 436 07 66"`), never a URI; `lib/core/utils/phone_utils.dart`'s `buildTelUri` derives a machine-safe `tel:` URI at call time, stripping formatting and the European `"(0)"` national trunk-prefix notation (dialed domestically, dropped when dialing with the country code — confirmed correct against a physical device: `tel:+31104360766` successfully reached Parkheuvel from Spain). `RestaurantDetailScreen` wires a real `onCall` callback whenever `buildTelUri` resolves one; `_openCall` only fires on explicit user tap, checks `canLaunchUrl` first, and hands off to the native Phone app (`LaunchMode.externalApplication`) — it never dials automatically. Hotel Detail still passes `onCall: null` — no `phone` field exists on `Hotel` yet, a natural future follow-up.
+
+`RestaurantInfoCard`'s "LOCATION" section is renamed "PRACTICAL INFORMATION" and now shows the phone number (conditionally, trimmed, blank/whitespace treated as absent) alongside the address — the only place the number appears as text, since `VenueUtilityActions`' Call button is icon+label only. Website/Directions/Michelin Guide are deliberately not restated as text here, since they're already the tappable actions immediately above.
+
+This is venue-*data* enrichment, not venue self-management — practical contact fields sourced and verified from primary sources (official site, official MICHELIN Guide page), applied by the same production-apply process as every other catalogue change. Chasing Stars' own verified recognition (MICHELIN stars, Gault&Millau, World's 50 Best) remains entirely separate data, untouched by this change.
+
+### Files changed
+
+**Modified:** `lib/models/restaurant.dart` (`phone` field), `lib/data/repositories/restaurant_repository.dart` (`restaurantFullColumns`), `lib/features/restaurants/restaurant_detail_screen.dart` (`_openCall`, `telUri` derivation), `lib/features/restaurants/widgets/restaurant_info_card.dart` (heading rename, phone line), `lib/core/widgets/venue_utility_actions.dart` (doc comment only — no behavior change, `onCall` API unchanged from its own Step 1D).
+**Added:** `lib/core/utils/phone_utils.dart`, `supabase/migrations/20260819120000_add_restaurant_phone.sql`.
+
+### Tests
+
+`test/phone_utils_test.dart` (new, `buildTelUri` — formatting strip, leading-`+`-only-at-position-0, `"(0)"` trunk-prefix drop including the exact Parkheuvel value, a real area-code-in-parens is *not* mistaken for trunk notation, null-on-no-digits) and `test/restaurant_phone_test.dart` (new, `Restaurant.fromJson` — populated/null/missing-key `phone`) plus 4 new cases in `test/venue_detail_redesign_test.dart`'s `RestaurantInfoCard` group (heading text, phone shown, phone absent, blank phone treated as absent). Full suite: **1054 passing**, `flutter analyze` clean.
+
+### Production deployment
+
+Migration and the verified Parkheuvel `phone`/`website_url` values deployed to production; physically approved on-device (Call, Website, Directions, Michelin Guide all confirmed working, including a live international call from Spain reaching the restaurant) before this section was written.
+
+---
+
 ## SCORE LABEL BASELINE + HEADER ALIGNMENT MICRO-FIX — STEP 1G
 
 Applied on top of Step 1F after physical-device review surfaced two remaining alignment issues — the rings themselves were now correct and identical, but two things around them still weren't.

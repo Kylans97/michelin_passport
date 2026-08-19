@@ -136,6 +136,7 @@ One row per MICHELIN-starred restaurant or World's 50 Best entry.
 | `michelin_url` | `text UNIQUE` | |
 | `website_url` | `text` | |
 | `booking_url` | `text` | |
+| `phone` | `text` | nullable, human-readable international format (e.g. `"+31 (0)10 436 07 66"`), not a URI — `lib/core/utils/phone_utils.dart` derives a `tel:` URI at call time. Added by `20260819120000_add_restaurant_phone.sql`; restaurants only, no equivalent column on `hotels` yet |
 | `property_name` | `text` | name of a non-Key hotel; free text |
 | `status` | `venue_status NOT NULL DEFAULT 'open'` | |
 | `status_since` | `date` | |

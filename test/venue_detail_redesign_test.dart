@@ -52,6 +52,7 @@ Restaurant _restaurant({
   String? hotelId,
   String? hotelName,
   String address = '1 Rue de Test',
+  String? phone,
 }) => Restaurant(
   id: 'r1',
   restaurantCode: 'rest_0001',
@@ -68,6 +69,7 @@ Restaurant _restaurant({
   hotelId: hotelId,
   hotelName: hotelName,
   worlds50BestRank: worlds50BestRank,
+  phone: phone,
 );
 
 Hotel _hotel({
@@ -853,6 +855,48 @@ void main() {
         _wrap(RestaurantInfoCard(restaurant: _restaurant(address: ''))),
       );
       expect(find.byType(Icon), findsNothing);
+    });
+
+    testWidgets(
+      'Restaurant Enrichment Step 1D: heading is PRACTICAL INFORMATION, '
+      'not LOCATION, now that phone can appear alongside the address',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(RestaurantInfoCard(restaurant: _restaurant())),
+        );
+        expect(find.text('PRACTICAL INFORMATION'), findsOneWidget);
+        expect(find.text('LOCATION'), findsNothing);
+      },
+    );
+
+    testWidgets('shows the phone number when present, alongside the '
+        'address', (tester) async {
+      final restaurant = _restaurant(
+        address: 'Heuvellaan 21, 3016 GL Rotterdam',
+        phone: '+31 (0)10 436 07 66',
+      );
+      await tester.pumpWidget(
+        _wrap(RestaurantInfoCard(restaurant: restaurant)),
+      );
+      expect(find.text('Heuvellaan 21, 3016 GL Rotterdam'), findsOneWidget);
+      expect(find.text('+31 (0)10 436 07 66'), findsOneWidget);
+    });
+
+    testWidgets('no phone line at all when phone is null', (tester) async {
+      await tester.pumpWidget(
+        _wrap(RestaurantInfoCard(restaurant: _restaurant(phone: null))),
+      );
+      // Exactly two Text widgets: the eyebrow heading and the address —
+      // no third line rendered for an absent phone.
+      expect(find.byType(Text), findsNWidgets(2));
+    });
+
+    testWidgets('a blank/whitespace-only phone is treated the same as '
+        'absent', (tester) async {
+      await tester.pumpWidget(
+        _wrap(RestaurantInfoCard(restaurant: _restaurant(phone: '   '))),
+      );
+      expect(find.byType(Text), findsNWidgets(2));
     });
 
     testWidgets('HotelInfoCard shows only the address', (tester) async {

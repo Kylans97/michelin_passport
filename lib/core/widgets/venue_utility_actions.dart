@@ -15,12 +15,15 @@ import '../theme/cs_typography.dart';
 /// disabled button pretending to be real. [onOpenMaps] is the only
 /// required callback (every venue can always be located); [onOpenWebsite],
 /// [onCall], and [onOpenMichelin] are each omitted individually when that
-/// action isn't available. [onCall] exists as a prepared seam: no `phone`
-/// field exists on [Restaurant]/[Hotel] today, so every call site passes
-/// `null` for it — the row already renders correctly with 2, 3, or 4
-/// actions and rebalances automatically, so the day phone data lands, only
-/// the call site changes. Existing URL-generation logic is untouched —
-/// this widget only ever receives already-resolved callbacks.
+/// action isn't available. [onCall] was a prepared seam until Restaurant
+/// Enrichment Step 1D added `phone` to [Restaurant] — RestaurantDetailScreen
+/// now wires a real callback whenever `buildTelUri` resolves one; Hotel
+/// Detail still passes `null` (no `phone` field on [Hotel] yet, a natural
+/// future follow-up, not implemented in Step 1D). The row already renders
+/// correctly with 2, 3, or 4 actions and rebalances automatically, so
+/// Hotel's own day-phone-data-lands change would only touch its call site.
+/// Existing URL-generation logic is untouched — this widget only ever
+/// receives already-resolved callbacks.
 class VenueUtilityActions extends StatelessWidget {
   final VoidCallback onOpenMaps;
   final VoidCallback? onOpenWebsite;

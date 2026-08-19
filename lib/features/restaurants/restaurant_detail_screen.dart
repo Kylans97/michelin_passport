@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/utils/phone_utils.dart';
 import '../../core/widgets/linked_venue_row.dart';
 import '../../core/widgets/personal_photos_preview.dart';
 import '../../core/widgets/section_divider.dart';
@@ -234,6 +235,18 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     }
   }
 
+  // Restaurant Enrichment Step 1D. Never called with an empty/unparseable
+  // phone — the call site only wires this up when buildTelUri already
+  // resolved a real tel: URI (see hasPhoneLink/telUri below), so a null
+  // here would be a caller bug, not an expected runtime case; failing
+  // silently (matching _openUrl/_openMaps' own established pattern) is
+  // still the right behaviour if it ever happens.
+  Future<void> _openCall(Uri uri) async {
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
   Future<void> _openPlanVisit() async {
     final uid = _userId;
     if (uid == null) {
@@ -301,6 +314,14 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     final latestVisit = _visits.isEmpty ? null : _visits.first;
     final hasMichelinLink = michelinUrl != null && michelinUrl.isNotEmpty;
     final hasWebsiteLink = websiteUrl != null && websiteUrl.isNotEmpty;
+    // Restaurant Enrichment Step 1D. buildTelUri returns null for an
+    // empty/unparseable phone (no digits at all), which doubles as the
+    // "hide the Call action" signal — matching hasMichelinLink/
+    // hasWebsiteLink's own "presence of a usable value" pattern, never a
+    // separately-tracked boolean that could drift from the URI itself.
+    final telUri = (restaurant.phone ?? '').isEmpty
+        ? null
+        : buildTelUri(restaurant.phone!);
     // No editorial-copy field exists on Restaurant yet (no `description`/
     // `about`/`summary` column on restaurants_full) — see
     // VenueAboutSection's own doc comment. Kept as a local so the day a
@@ -355,10 +376,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     onOpenWebsite: hasWebsiteLink
                         ? () => _openUrl(websiteUrl)
                         : null,
-                    // No `phone` field exists on Restaurant today — a
-                    // prepared seam, not a missing feature: see
-                    // VenueUtilityActions' own doc comment.
-                    onCall: null,
+                    onCall: telUri == null ? null : () => _openCall(telUri),
                     onOpenMichelin: hasMichelinLink
                         ? () => _openUrl(michelinUrl)
                         : null,

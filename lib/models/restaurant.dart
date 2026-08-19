@@ -49,6 +49,12 @@ class Restaurant {
   final String? websiteUrl;
   final String? bookingUrl;
 
+  // Human-readable international format (e.g. "+31 (0)10 436 07 66") --
+  // not a URI. Restaurant Enrichment Step 1D. See
+  // lib/core/utils/phone_utils.dart for deriving a tel: URI from this at
+  // call time. Nullable -- most restaurants have none populated yet.
+  final String? phone;
+
   // Non-null only for a restaurant inside a non-Key hotel.
   final String? propertyName;
 
@@ -88,6 +94,7 @@ class Restaurant {
     this.michelinUrl,
     this.websiteUrl,
     this.bookingUrl,
+    this.phone,
     this.propertyName,
     this.isInHotel = false,
     this.hotelId,
@@ -118,6 +125,7 @@ class Restaurant {
     michelinUrl: json['michelin_url'] as String?,
     websiteUrl: json['website_url'] as String?,
     bookingUrl: json['booking_url'] as String?,
+    phone: json['phone'] as String?,
     propertyName: json['property_name'] as String?,
     isInHotel: (json['is_in_hotel'] as bool?) ?? false,
     hotelId: json['hotel_id'] as String?,
