@@ -593,6 +593,8 @@ Admin/service-role remains the only writer for `events`/`event_restaurants`/`eve
 
 ## 31. Analytics architecture
 
+**Step 2 update**: the vendor-neutral analytics foundation designed in this section has been implemented (`lib/core/analytics/`) and its operational counterpart, `docs/Architecture/EVENTS_V2_ANALYTICS_CONTRACT.md`, is now the canonical file for "which event to emit, when, with which properties" — this section remains the design rationale; that document is the implementation-facing contract Step 3+ actually works from. Two properties were added during that step, not present in §31.3's original list: `attendance_source` (mirrors `event_confirmed_attendance.source` exactly, needed once the taxonomy was checked against the Step 1 database's own constraint) and `host_count` (needed for correct multi-host attribution, §10 of the contract doc) — both purely additive, nothing below changed meaning.
+
 ### 31.1 Product principle
 
 Analytics becomes a first-class capability in this phase (as documentation and architecture only — no SDK is installed, no event is fired, per explicit instruction), oriented around nine goals the brief names verbatim: improving UX, understanding engagement drivers, curating better events, understanding which places/hosts create repeat interest, demonstrating platform value to future host partners, supporting future commercial partnerships, understanding recognition-source value, improving future MICHELIN/W50B/Gault&Millau conversations, understanding city/country demand, and improving Event/Trip recommendations. It must stay privacy-conscious, purpose-limited, first-party, explainable, non-creepy, and structurally separate from product state (§2) — explicitly not an ad-tech surveillance platform.
@@ -638,6 +640,8 @@ Classified `REQUIRED` / `OPTIONAL` / `DO_NOT_TRACK`, evaluated per the brief's o
 | `followed_host` | OPTIONAL | boolean, only on discovery events where relevant to §31.8 |
 | `position_in_feed` | OPTIONAL | only where impression-adjacent tracking is actually built (§31.14) |
 | `friend_signal_type` | DO_NOT_TRACK as a friend identifier — OPTIONAL as an **aggregate count only** | see §31.9 — never a specific friend's id/name |
+| `attendance_source` | REQUIRED on `event_attendance_confirmed` | added Step 2 — mirrors `event_confirmed_attendance.source` exactly (`manual\|post_event_prompt\|trip_completion`) |
+| `host_count` | OPTIONAL | added Step 2 — always safe to include when known, regardless of `host_id`/`host_type` being populated; see the contract doc §10 for why a bare single `host_id` is unsafe for multi-host events |
 | precise user GPS | DO_NOT_TRACK | §31.7 — city/country of the *content*, never the user's coordinates |
 | rating/comment/photo **content** | DO_NOT_TRACK | only the fact that an action occurred, never the payload (§31.9, §31.15) |
 
