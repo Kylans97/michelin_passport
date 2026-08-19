@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -14,6 +16,8 @@ import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../models/event.dart';
+import '../../models/event_attendance.dart';
+import '../../models/event_intent.dart';
 import '../../models/friendship.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
@@ -21,11 +25,11 @@ import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'event_date_format.dart';
 import 'friends_going_view_model.dart';
+import 'widgets/at_this_event_section.dart';
 import 'widgets/event_detail_hero.dart';
 import 'widgets/event_friends_going_section.dart';
-import 'widgets/event_going_button.dart';
+import 'widgets/event_intent_controls.dart';
 import 'widgets/event_meta_section.dart';
-import 'widgets/michelin_at_event_section.dart';
 
 // Smaller than CsImagePlaceholder's own 0.4 default: a hero is a much
 // larger, wider area than a card thumbnail, so the same relative scale
@@ -53,13 +57,31 @@ bool canAttendEvent(Event event, {DateTime? now}) =>
 /// Hero (image or branded monogram fallback, name, city/country, date
 /// range) → EVENT META (date/time, venue, admission) → ATTENDANCE (if
 /// [canAttendEvent]) → ABOUT (conditional, reusing [VenueAboutSection]
-/// outright) → MICHELIN AT THIS EVENT (conditional, Michelin-starred
-/// linked restaurants only) → HOTELS (conditional, preserved existing
-/// functionality, reskinned) → LOCATION / practical info (address +
-/// Website/Tickets, conditional as a whole).
+/// outright) → AT THIS EVENT (conditional, Michelin-starred linked
+/// restaurants only — Events V2 Step 3 renamed this section's heading
+/// from "MICHELIN AT THIS EVENT"; see [AtThisEventSection]'s own doc
+/// comment for why the section name is entity-neutral even though its
+/// current content is unchanged) → HOTELS (conditional, preserved
+/// existing functionality, reskinned) → LOCATION / practical info
+/// (address + Website/Tickets, conditional as a whole).
 class EventDetailScreen extends StatefulWidget {
   final String eventId;
-  const EventDetailScreen({super.key, required this.eventId});
+
+  /// Where the viewer was immediately before opening this screen — see
+  /// `EVENTS_V2_ANALYTICS_CONTRACT.md` §9. Both null at every call site
+  /// this screen doesn't yet attribute (documented per call site in Events
+  /// V2 Step 3's own implementation report) rather than a fake/guessed
+  /// value — analytics omits both fields entirely when null
+  /// (AnalyticsProperties.toMap already drops null fields).
+  final AnalyticsSourceSurface? sourceSurface;
+  final AnalyticsSourceContext? sourceContext;
+
+  const EventDetailScreen({
+    super.key,
+    required this.eventId,
+    this.sourceSurface,
+    this.sourceContext,
+  });
 
   @override
   State<EventDetailScreen> createState() => _EventDetailScreenState();
@@ -75,13 +97,25 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     Supabase.instance.client,
   );
 
+  // No vendor selected yet (Events V2 Step 2) — NoopAnalyticsService is
+  // the production-safe default. Swapping the implementation here is the
+  // one place a future provider gets wired in; no other line in this
+  // screen would need to change.
+  final AnalyticsService _analytics = const NoopAnalyticsService();
+
   bool _loading = true;
   bool _loadError = false;
   Event? _event;
   EventVenues _venues = const EventVenues(restaurants: [], hotels: []);
 
-  bool _going = false;
-  bool _attendanceBusy = false;
+  // null = NONE (no intent recorded) — see event_intent.dart's own header
+  // comment for why NONE is represented as a null status rather than a
+  // third enum member.
+  EventIntentStatus? _status;
+  bool _intentBusy = false;
+  // The status a mutation-in-flight is moving toward; null while a
+  // removal is in flight (see EventIntentControls' own doc comment).
+  EventIntentStatus? _pendingTarget;
 
   // Populated only for an upcoming/current, non-cancelled event with a
   // signed-in viewer (see canAttendEvent) — never awaited by _load itself,
@@ -107,15 +141,15 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       final eventFuture = _repo.loadEventById(widget.eventId);
       final venuesFuture = _repo.loadLinkedVenues(widget.eventId);
       final uid = _userId;
-      final attendanceFuture = uid == null
+      final intentFuture = uid == null
           ? Future.value(null)
-          : _attendanceRepo.getMyAttendance(
+          : _attendanceRepo.getMyEventIntent(
               userId: uid,
               eventId: widget.eventId,
             );
       final event = await eventFuture;
       final venues = await venuesFuture;
-      final attendance = await attendanceFuture;
+      final intent = await intentFuture;
       if (!mounted) return;
       if (event == null) {
         setState(() {
@@ -127,7 +161,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       setState(() {
         _event = event;
         _venues = venues;
-        _going = attendance != null;
+        _status = intent?.status;
         _loading = false;
         _friendsGoingFuture = (uid != null && canAttendEvent(event))
             ? _loadFriendsGoing(uid, event.id)
@@ -143,8 +177,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   }
 
   Future<List<Friendship>> _loadFriendsGoing(String uid, String eventId) async {
-    final attendeeIds = await _attendanceRepo.getVisibleAttendeeUserIds(
-      eventId,
+    // Going-scoped, deliberately — see getVisibleUserIds' own doc comment.
+    // Interested rows must never appear under a "Friends Going" heading.
+    final attendeeIds = await _attendanceRepo.getVisibleUserIds(
+      eventId: eventId,
+      status: EventIntentStatus.going,
     );
     final friends = await _friendshipRepo.getFriends();
     return friendsGoingToEvent(
@@ -154,27 +191,67 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     );
   }
 
-  Future<void> _toggleGoing() async {
+  /// Handles a tap on either intent pill. [tapped] is always the status
+  /// the tapped pill represents, regardless of current state —
+  /// [resolveIntentTap] (event_intent.dart) is the single place that
+  /// decides whether this is a selection or a removal. The Supabase write
+  /// always happens first and must succeed before any local state or
+  /// analytics changes — see this method's own ordering, matching Events
+  /// V2 Step 3's non-negotiable successful-write rule.
+  Future<void> _handleIntentTap(EventIntentStatus tapped) async {
     final uid = _userId;
-    if (uid == null || _attendanceBusy) return;
-    setState(() => _attendanceBusy = true);
+    final event = _event;
+    // Unreachable in practice — this app requires a session for the whole
+    // shell (AuthGate), so Event Detail is never reached signed out — kept
+    // as defensive dead-code safety, matching this screen's own existing
+    // convention rather than inventing a new one.
+    if (uid == null || event == null || _intentBusy) return;
+
+    final previous = _status;
+    final next = resolveIntentTap(current: previous, tapped: tapped);
+    setState(() {
+      _intentBusy = true;
+      _pendingTarget = next;
+    });
     try {
-      if (_going) {
-        await _attendanceRepo.removeAttendance(
+      if (next == null) {
+        await _attendanceRepo.removeEventIntent(
           userId: uid,
           eventId: widget.eventId,
         );
       } else {
-        await _attendanceRepo.markGoing(userId: uid, eventId: widget.eventId);
+        await _attendanceRepo.setEventIntent(
+          userId: uid,
+          eventId: widget.eventId,
+          status: next,
+        );
       }
       if (!mounted) return;
       setState(() {
-        _going = !_going;
-        _attendanceBusy = false;
+        _status = next;
+        _intentBusy = false;
+        _pendingTarget = null;
       });
+      // Analytics only after the write above has already succeeded — see
+      // the method-level doc comment. intentAnalyticsEvents already
+      // encodes the exact contract-derived decision for a switch firing
+      // two events (a removed echo, then an added echo) rather than one.
+      final properties = _intentProperties(event);
+      for (final analyticsEvent in intentAnalyticsEvents(
+        previous: previous,
+        next: next,
+      )) {
+        _analytics.track(analyticsEvent, properties);
+      }
     } catch (_) {
       if (!mounted) return;
-      setState(() => _attendanceBusy = false);
+      // No local state changed above the try block, so simply clearing
+      // the busy flags already restores the last confirmed state — no
+      // separate rollback step is needed (non-optimistic UI, by design).
+      setState(() {
+        _intentBusy = false;
+        _pendingTarget = null;
+      });
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(
@@ -187,6 +264,23 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       );
     }
   }
+
+  /// Only data already in hand from this screen's own load — never an
+  /// extra query solely to populate an analytics property. `hostCount`
+  /// and `availabilityStatus` were evaluated and deliberately left
+  /// unpopulated in this step (see the Step 3 implementation report) —
+  /// neither is reliably available here without new data-fetching
+  /// plumbing this step doesn't otherwise need.
+  AnalyticsProperties _intentProperties(Event event) => AnalyticsProperties(
+    entityType: AnalyticsEntityType.event,
+    entityId: event.id,
+    sourceSurface: widget.sourceSurface,
+    sourceContext: widget.sourceContext,
+    eventCategory: event.eventType.dbValue,
+    city: event.city,
+    countryCode: event.countryCode,
+    admissionType: event.admissionType.dbValue,
+  );
 
   Future<void> _openUrl(String url) async {
     final uri = Uri.parse(url);
@@ -313,10 +407,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
 
                   if (canAttend) ...[
                     const SectionDivider(),
-                    EventGoingButton(
-                      going: _going,
-                      busy: _attendanceBusy,
-                      onTap: _toggleGoing,
+                    EventIntentControls(
+                      status: _status,
+                      busy: _intentBusy,
+                      pendingTarget: _pendingTarget,
+                      onTap: _handleIntentTap,
                     ),
                     FutureBuilder<List<Friendship>>(
                       future: _friendsGoingFuture,
@@ -350,7 +445,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
 
                   if (_venues.restaurants.isNotEmpty) ...[
                     const SectionDivider(),
-                    MichelinAtEventSection(
+                    AtThisEventSection(
                       restaurants: _venues.restaurants,
                       onTapRestaurant: _openRestaurant,
                     ),

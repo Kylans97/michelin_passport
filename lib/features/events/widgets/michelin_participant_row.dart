@@ -5,8 +5,9 @@ import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../models/restaurant.dart';
 
-/// One row inside [MichelinAtEventSection] (Events UI Consistency Step
-/// 1A) — a restaurant's name with its Michelin stars inline on the
+/// One row inside [AtThisEventSection] (Events UI Consistency Step
+/// 1A; section renamed from `MichelinAtEventSection` in Events V2 Step 3)
+/// — a restaurant's name with its Michelin stars inline on the
 /// primary line, then city and country flag on a quieter secondary line.
 ///
 /// Deliberately NOT [LinkedVenueRow] (`core/widgets/linked_venue_row.dart`)

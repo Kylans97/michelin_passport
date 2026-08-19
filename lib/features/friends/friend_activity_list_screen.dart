@@ -8,6 +8,7 @@ import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
+import '../../models/event_attendance.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import 'friend_profile_screen.dart';
@@ -255,9 +256,11 @@ class FriendGoingListScreen extends StatefulWidget {
 }
 
 class _FriendGoingListScreenState extends State<FriendGoingListScreen> {
-  late final _future = EventAttendanceRepository(
-    Supabase.instance.client,
-  ).getFriendUpcomingAttendance(widget.userId);
+  late final _future = EventAttendanceRepository(Supabase.instance.client)
+      .getFriendUpcomingEvents(
+        userId: widget.userId,
+        status: EventIntentStatus.going,
+      );
 
   @override
   Widget build(BuildContext context) => Scaffold(

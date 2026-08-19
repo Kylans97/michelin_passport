@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/analytics/analytics_properties.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -12,6 +13,7 @@ import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
+import '../../models/event_attendance.dart';
 import '../../models/passport_venue.dart';
 import '../../models/profile_identity.dart';
 import '../../models/venue_entry.dart';
@@ -96,8 +98,9 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
       setState(() {
         _visitedFuture = _visitedRepo.loadPassportVenues(widget.userId);
         _wishlistFuture = _wishlistRepo.loadWishlistVenues(widget.userId);
-        _goingFuture = _attendanceRepo.getFriendUpcomingAttendance(
-          widget.userId,
+        _goingFuture = _attendanceRepo.getFriendUpcomingEvents(
+          userId: widget.userId,
+          status: EventIntentStatus.going,
         );
       });
     });
@@ -650,7 +653,13 @@ void openFriendVenue(BuildContext context, PassportVenue venue) {
 void openFriendEvent(BuildContext context, String eventId) {
   Navigator.push(
     context,
-    MaterialPageRoute(builder: (_) => EventDetailScreen(eventId: eventId)),
+    MaterialPageRoute(
+      builder: (_) => EventDetailScreen(
+        eventId: eventId,
+        sourceSurface: AnalyticsSourceSurface.friendActivity,
+        sourceContext: AnalyticsSourceContext.friendSignal,
+      ),
+    ),
   );
 }
 

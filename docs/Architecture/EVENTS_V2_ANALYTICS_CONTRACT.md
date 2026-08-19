@@ -187,11 +187,12 @@ Funnel: `event_opened → event_interested_added/event_going_added → ticket_li
 For any event representing a database state change — Interested, Going, Follow, confirmed Attendance — **`track()` is called only after the corresponding Supabase write has already succeeded.** If the write fails, **no** success event fires. This is not optional and not a style preference — it's the mechanism that keeps analytics from ever drifting out of sync with the database it's supposed to be a read-only echo of. Future error/failure telemetry, if ever built, is a **separate** signal — never mixed into the same success-event stream.
 
 ```dart
-final result = await repository.markGoing(...);   // 1. write
-if (result.succeeded) {
-  analytics.track(AnalyticsEvent.eventGoingAdded, properties);  // 2. echo, only on success
-}
+final row = await repository.setEventIntent(status: EventIntentStatus.going, ...);  // 1. write (throws on failure)
+// 2. echo, only reached if the write above succeeded
+analytics.track(AnalyticsEvent.eventGoingAdded, properties);
 ```
+
+(Illustrative shape only — Step 3's actual implementation, `EventDetailScreen._handleIntentTap`, wraps the write in a try/catch and only reaches the `track()` call inside the success path, per this section's own rule. `setEventIntent` is a single typed method for both Interested and Going, not a `markGoing`-style per-status method — see the Step 3 implementation report for the full repository API.)
 
 ## 12. Identity
 

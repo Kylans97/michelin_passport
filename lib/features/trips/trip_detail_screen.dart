@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/analytics/analytics_properties.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -200,7 +201,12 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   void _openEvent(Event event) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => EventDetailScreen(eventId: event.id)),
+      MaterialPageRoute(
+        builder: (_) => EventDetailScreen(
+          eventId: event.id,
+          sourceSurface: AnalyticsSourceSurface.tripRecommendation,
+        ),
+      ),
     );
   }
 

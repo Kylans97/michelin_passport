@@ -10,7 +10,7 @@ import 'michelin_participant_row.dart';
 /// within the same star count for a stable, deterministic order — the
 /// underlying `event_restaurants`/`restaurants_full` join has no natural
 /// ordering of its own. A pure, top-level function (not inlined in
-/// [MichelinAtEventSection].build) so the filter/sort rule is directly
+/// [AtThisEventSection].build) so the filter/sort rule is directly
 /// unit-testable without pumping a widget.
 ///
 /// Michelin star data is read from the SAME canonical source Restaurant
@@ -31,16 +31,31 @@ List<Restaurant> michelinStarredParticipants(List<Restaurant> restaurants) {
   return starred;
 }
 
-/// "MICHELIN AT THIS EVENT" — the event's Michelin-starred participating
-/// restaurants only (Events UI Consistency Step 1 §12/§20). A restaurant
-/// linked to the event without a current Michelin star is not shown here
-/// at all — this is a deliberately simplified, high-impact recognition
-/// display, not a general participant roster (the underlying
-/// `event_restaurants` relationship itself is untouched either way; this
-/// is a display filter, not a data deletion). Renders nothing at all when
-/// the starred subset is empty — never a "No Michelin restaurants
-/// participating." placeholder (matching [VenueAboutSection]'s own
-/// established "omit the section" convention for an empty result).
+/// "AT THIS EVENT" — the canonical Event participant/entity section
+/// (Events V2 Step 3 terminology correction; renamed from
+/// `MichelinAtEventSection`/"MICHELIN AT THIS EVENT"). Event participation
+/// is entity-neutral by product rule: an event may involve restaurants,
+/// hotels, private chefs, and future winery/bar entities, so the section's
+/// own name must never be defined by one recognition system. Recognition
+/// (Michelin, Gault&Millau, World's 50 Best, future sources) is a
+/// contextual attribute *of* a participating entity, shown alongside it,
+/// never the reason the section itself is named.
+///
+/// **Scope of this rename, explicitly**: only the heading text and this
+/// class's own identity changed. The actual content this widget renders is
+/// UNCHANGED — still only the event's current-Michelin-starred linked
+/// restaurants ([michelinStarredParticipants]), still via
+/// [MichelinParticipantRow]. Broadening this section to genuinely show
+/// every entity type (hotels, private chefs, future wineries/bars)
+/// uniformly under "AT THIS EVENT" is deliberately NOT done here — that is
+/// a real data/layout change, out of this correction's own scope, and
+/// remains future work. A restaurant linked to the event without a
+/// current Michelin star is still not shown here at all — this display
+/// filter is unchanged; the underlying `event_restaurants` relationship
+/// itself was never touched by any of this, either before or now. Renders
+/// nothing at all when the starred subset is empty — never a "Nothing to
+/// show" placeholder (matching [VenueAboutSection]'s own established
+/// "omit the section" convention for an empty result).
 ///
 /// Renders each restaurant via [MichelinParticipantRow] — Step 1A's
 /// dedicated Event-participant row (name + stars inline, city + flag
@@ -58,11 +73,11 @@ List<Restaurant> michelinStarredParticipants(List<Restaurant> restaurants) {
 /// and would make a list of many participants feel sparse and slow to
 /// scan rather than dense and elegant (Step 1A §10's explicit "avoid
 /// excessive vertical padding... the list should scan quickly").
-class MichelinAtEventSection extends StatelessWidget {
+class AtThisEventSection extends StatelessWidget {
   final List<Restaurant> restaurants;
   final ValueChanged<Restaurant> onTapRestaurant;
 
-  const MichelinAtEventSection({
+  const AtThisEventSection({
     super.key,
     required this.restaurants,
     required this.onTapRestaurant,
@@ -77,7 +92,7 @@ class MichelinAtEventSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'MICHELIN AT THIS EVENT',
+          'AT THIS EVENT',
           style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
         ),
         const SizedBox(height: CsSpacing.md),

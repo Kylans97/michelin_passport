@@ -30,6 +30,7 @@ This document assumes the reader has *not* re-read the five audits that produced
 21. [Cancelled, rescheduled & series events](#21-cancelled-rescheduled--series-events)
 22. [Event location, price, category, imagery](#22-event-location-price-category-imagery)
 23. [Event Detail product direction](#23-event-detail-product-direction)
+23a. [Event participant terminology](#23a-event-participant-terminology)
 24. [Host profile → Events](#24-host-profile--events)
 25. [Future wineries & bars](#25-future-wineries--bars)
 26. [Event discovery](#26-event-discovery)
@@ -346,7 +347,7 @@ Query relationship (design only, not built — brief explicitly defers the ranki
 
 ## 16. Friends: Interested, Going, Activity
 
-**Friends Going** already exists and needs no redesign (Friends audit §7) — `EventAttendanceRepository.getVisibleAttendeeUserIds` + `friendsGoingToEvent` already read exactly the right RLS-gated rows; once §9's split lands, this same code path simply filters `event_attendance.status = 'going'` (excluding `'interested'`) to keep its current meaning unchanged.
+**Friends Going** already exists and needs no redesign (Friends audit §7) — `EventAttendanceRepository.getVisibleAttendeeUserIds` + `friendsGoingToEvent` already read exactly the right RLS-gated rows. **Correction from Step 3's own implementation audit**: this section originally assumed the existing query would "simply filter" to `status='going'` with no code change once §9's split landed — that was wrong. The query was unfiltered by `status` (harmless before Step 1, when `'going'` was the only legal value), so once `'interested'` became legal it would have silently returned both intents indiscriminately, leaking Interested rows into Friends Going. Step 3 fixed this by parameterizing the method — renamed to `getVisibleUserIds({eventId, status})` — with every caller now passing `status: EventIntentStatus.going` explicitly; `getFriendUpcomingAttendance` (Friend Profile's own GOING query) had the identical latent gap and was fixed the same way, renamed to `getFriendUpcomingEvents({userId, status})`. Both now make the future Friends Interested query exactly the drop-in described below — `status: EventIntentStatus.interested` — with the filter already proven correct, not merely assumed to be.
 
 **Friends Interested** is the identical pattern one status value over — no new repository shape, no new RLS shape, just `status = 'interested'` instead of `'going'`, read through the same `is_friend()`-gated `event_attendance` table. A combined "4 friends interested · 2 friends going" summary line (brief §21) is one query returning both counts, grouped by `status`, rather than two separate calls.
 
@@ -458,7 +459,7 @@ ABOUT          (existing description)
 
 HOSTED BY      Parkheuvel                                     (§6 host resolution)
                Rotterdam
-               ★★ Michelin                                    (reads live from Restaurant, never duplicated — existing MichelinAtEventSection precedent, Events audit §3)
+               ★★ Michelin                                    (reads live from Restaurant, never duplicated — existing AtThisEventSection precedent, Events audit §3)
 
 DETAILS        date/time · price · ticketing · location        (existing EventMetaSection)
 
@@ -472,7 +473,17 @@ ATTENDANCE     Did you make it?  [ Yes ] [ No ]                (§3/§9 prompt, 
                                                                  §18's notification is the other)
 ```
 
-The one structural change from today: recognition ("★★ Michelin") stays visually and semantically attached to the *host*, never the event — "Michelin recognition belongs to Parkheuvel, not the Event" (brief §8) is already how `MichelinAtEventSection` works today (reads live off `Restaurant.michelinStars`, Events audit §3/§8) and this design changes nothing about that. Marketplace clutter (price comparison, review-count badges, "X sold") is deliberately absent — matches the brief's "keep editorial/high-end" instruction.
+The one structural change from today: recognition ("★★ Michelin") stays visually and semantically attached to the *host*, never the event — "Michelin recognition belongs to Parkheuvel, not the Event" (brief §8) is already how `AtThisEventSection` (renamed from `MichelinAtEventSection` in Events V2 Step 3 — see §23a) works today (reads live off `Restaurant.michelinStars`, Events audit §3/§8) and this design changes nothing about that. Marketplace clutter (price comparison, review-count badges, "X sold") is deliberately absent — matches the brief's "keep editorial/high-end" instruction.
+
+## 23a. Event participant terminology
+
+**Added in Events V2 Step 3, a product-terminology correction.** The canonical Event participant/entity section is named **"AT THIS EVENT"** — not "MICHELIN AT THIS EVENT" (its name until this correction).
+
+Event participation is entity-neutral: an event may involve restaurants, hotels, private chefs, and future winery/bar entities, in any combination, with or without a canonical host (§6). Recognition systems — MICHELIN, Gault&Millau, World's 50 Best, and future sources — are contextual attributes *of* a participating entity, shown alongside it (exactly as `AtThisEventSection` already shows MICHELIN stars next to a restaurant's own name, never as the section's own heading). They must never define the name of the Chasing Stars Events feature or any of its sections. This keeps Events independent of any single guide/recognition brand and lets the same section, unchanged in name, eventually support every entity type without a future rename.
+
+This is a naming/terminology rule, not a data-model or layout change.
+
+**Implementation note (Events V2 Step 3)**: `MichelinAtEventSection` was renamed to `AtThisEventSection`, and its heading text changed from "MICHELIN AT THIS EVENT" to "AT THIS EVENT". The section's actual *content* was deliberately left unchanged in that same pass — it still shows only the event's current-MICHELIN-starred linked restaurants; broadening it to genuinely list every participating entity type uniformly is real future work, not implied or started by this rename. See `docs/Architecture/EVENTS_V2_STEP3_INTERESTED_GOING_IMPLEMENTATION.md` for the full change record.
 
 ## 24. Host profile → Events
 

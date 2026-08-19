@@ -1,8 +1,9 @@
 // Covers Events UI Consistency Step 1 — Event Detail's redesigned
 // presentational primitives: EventDetailHero, EventMetaSection,
-// MichelinAtEventSection (+ its pure michelinStarredParticipants filter/
-// sort helper), and EventGoingButton's own gold-audit (see
-// event_going_button_test.dart for its full behavioral coverage).
+// AtThisEventSection (+ its pure michelinStarredParticipants filter/
+// sort helper). The former EventGoingButton's own gold-audit now lives in
+// event_intent_controls_test.dart, covering its Events V2 Step 3
+// successor EventIntentControls.
 //
 // EventDetailScreen itself is a StatefulWidget that hits Supabase in
 // initState — this project has no Supabase mocking harness (same
@@ -15,9 +16,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
 import 'package:michelin_passport/core/widgets/star_row.dart';
+import 'package:michelin_passport/features/events/widgets/at_this_event_section.dart';
 import 'package:michelin_passport/features/events/widgets/event_detail_hero.dart';
 import 'package:michelin_passport/features/events/widgets/event_meta_section.dart';
-import 'package:michelin_passport/features/events/widgets/michelin_at_event_section.dart';
 import 'package:michelin_passport/features/events/widgets/michelin_participant_row.dart';
 import 'package:michelin_passport/models/event.dart';
 import 'package:michelin_passport/models/restaurant.dart';
@@ -654,13 +655,13 @@ void main() {
     });
   });
 
-  group('MichelinAtEventSection — Michelin-starred participants only '
+  group('AtThisEventSection — Michelin-starred participants only '
       '(§12, §20)', () {
     testWidgets('shows only Michelin-starred restaurants, not unstarred '
         'participants', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
+          AtThisEventSection(
             restaurants: [
               _restaurant(id: 'r1', name: 'Starred House', michelinStars: 2),
               _restaurant(
@@ -683,7 +684,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
+          AtThisEventSection(
             restaurants: [
               _restaurant(
                 id: 'r1',
@@ -695,7 +696,7 @@ void main() {
           ),
         ),
       );
-      expect(find.text('MICHELIN AT THIS EVENT'), findsNothing);
+      expect(find.text('AT THIS EVENT'), findsNothing);
       expect(find.textContaining('No Michelin'), findsNothing);
       expect(find.byType(SizedBox), findsWidgets);
     });
@@ -703,20 +704,17 @@ void main() {
     testWidgets('renders nothing for an empty restaurant list', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
-            restaurants: const [],
-            onTapRestaurant: (_) {},
-          ),
+          AtThisEventSection(restaurants: const [], onTapRestaurant: (_) {}),
         ),
       );
-      expect(find.text('MICHELIN AT THIS EVENT'), findsNothing);
+      expect(find.text('AT THIS EVENT'), findsNothing);
     });
 
     testWidgets('1-star, 2-star, and 3-star restaurants each show the '
         'correct star count', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
+          AtThisEventSection(
             restaurants: [
               _restaurant(id: 'r1', name: 'One Star', michelinStars: 1),
               _restaurant(id: 'r2', name: 'Two Star', michelinStars: 2),
@@ -750,7 +748,7 @@ void main() {
       final starred = _restaurant(id: 'r9', name: 'Tap Me', michelinStars: 3);
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
+          AtThisEventSection(
             restaurants: [starred],
             onTapRestaurant: (r) => tapped = r,
           ),
@@ -764,7 +762,7 @@ void main() {
         'hairline spacing never do', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
+          AtThisEventSection(
             restaurants: [
               _restaurant(id: 'r1', name: 'Starred House', michelinStars: 2),
             ],
@@ -772,7 +770,7 @@ void main() {
           ),
         ),
       );
-      final title = tester.widget<Text>(find.text('MICHELIN AT THIS EVENT'));
+      final title = tester.widget<Text>(find.text('AT THIS EVENT'));
       expect(title.style?.color, isNot(AppColors.gold));
       final chevron = tester.widget<Icon>(
         find.byIcon(Icons.chevron_right_rounded),
@@ -790,7 +788,7 @@ void main() {
         'overflow', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
+          AtThisEventSection(
             restaurants: [
               _restaurant(
                 id: 'r1',
@@ -812,7 +810,7 @@ void main() {
         'the first row', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
+          AtThisEventSection(
             restaurants: [
               _restaurant(id: 'r1', name: 'First', michelinStars: 1),
               _restaurant(id: 'r2', name: 'Second', michelinStars: 2),
@@ -836,7 +834,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
+          AtThisEventSection(
             restaurants: [
               _restaurant(id: 'r1', name: 'Only One', michelinStars: 1),
             ],
@@ -894,10 +892,7 @@ void main() {
       ];
       await tester.pumpWidget(
         _wrap(
-          MichelinAtEventSection(
-            restaurants: restaurants,
-            onTapRestaurant: (_) {},
-          ),
+          AtThisEventSection(restaurants: restaurants, onTapRestaurant: (_) {}),
           width: 320,
         ),
       );
@@ -940,7 +935,7 @@ void main() {
             // production, not an unbounded-height assumption.
             child: Scaffold(
               body: SingleChildScrollView(
-                child: MichelinAtEventSection(
+                child: AtThisEventSection(
                   restaurants: restaurants,
                   onTapRestaurant: (_) {},
                 ),
