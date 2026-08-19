@@ -6,13 +6,10 @@
 // visits is polymorphic: entity_type + entity_id address either a hotel or
 // a restaurant. This app only writes entity_type = 'restaurant' rows so far.
 //
-// IMPORTANT (UI Consistency Step 1E): the room_rating/experience_rating
-// migration has NOT been deployed to production as of this model change —
-// see that migration's own header. Reading/writing those two fields
-// against production will fail (PGRST204, same class of failure the
-// codebase has hit before over a missing deployed column) until the
-// migration ships. Do not test the five-dimension Add Stay save path
-// against production before then.
+// The room_rating/experience_rating migration (20260816120000) is deployed
+// to production — confirmed directly against information_schema.columns.
+// Both fields are safe to read/write and are surfaced in My Rankings'
+// hotel dimension list (see RankingDimension).
 
 /// The two permitted values of `visits.visibility` (Social Foundation
 /// Step 2). Ratings, notes, and photos are NOT independently visible —

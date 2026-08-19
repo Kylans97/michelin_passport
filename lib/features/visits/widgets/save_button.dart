@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 
-/// The gold save button shared by Add Visit and Add Stay — [label] is the
-/// only thing that differs ("Save visit" vs "Save stay").
+/// The deep-green primary-action save button shared by Add Visit, Add Stay
+/// and Plan Visit — [label] is the only thing that differs ("Save visit" vs
+/// "Save stay" vs "Save plan"/"Save changes"). UI Consistency pass: was a
+/// large gold button; deep green is now this app's primary-action color
+/// system-wide, gold reserved for Michelin-star/Key recognition only.
 class SaveButton extends StatelessWidget {
   final bool saving;
   final String label;
@@ -26,7 +29,7 @@ class SaveButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: AppColors.gold.withValues(alpha: saving ? 0.12 : 0.28),
+            color: AppColors.deepGreen.withValues(alpha: saving ? 0.12 : 0.28),
             blurRadius: 24,
             offset: const Offset(0, 10),
           ),
@@ -35,9 +38,9 @@ class SaveButton extends StatelessWidget {
       child: FilledButton(
         onPressed: saving ? null : onTap,
         style: FilledButton.styleFrom(
-          backgroundColor: AppColors.gold,
-          foregroundColor: Colors.black,
-          disabledBackgroundColor: AppColors.goldMuted,
+          backgroundColor: AppColors.deepGreen,
+          foregroundColor: AppColors.textOnDark,
+          disabledBackgroundColor: AppColors.forestGreen,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
@@ -50,7 +53,7 @@ class SaveButton extends StatelessWidget {
                   width: 22,
                   height: 22,
                   child: CircularProgressIndicator(
-                    color: Colors.black,
+                    color: AppColors.textOnDark,
                     strokeWidth: 2,
                   ),
                 )

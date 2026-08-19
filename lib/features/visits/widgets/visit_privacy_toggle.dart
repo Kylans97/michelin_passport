@@ -77,7 +77,7 @@ class VisitPrivacyToggle extends StatelessWidget {
               Switch(
                 value: friendsVisible,
                 onChanged: onChanged,
-                activeTrackColor: AppColors.gold,
+                activeTrackColor: AppColors.forestGreen,
                 thumbColor: const WidgetStatePropertyAll(Colors.white),
               ),
             ],

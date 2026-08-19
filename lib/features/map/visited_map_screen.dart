@@ -4,12 +4,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/cs_filter_chip.dart';
+import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/map_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
-import '../explore/widgets/venue_type_selector.dart';
 import '../passport/passport_view_model.dart';
 import 'widgets/venue_pin.dart';
 import 'widgets/venue_preview_sheet.dart';
@@ -163,142 +166,170 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     final hasAnyVisitedVenue = (_entries ?? []).isNotEmpty;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
-      appBar: AppBar(
-        backgroundColor: AppColors.background,
-        elevation: 0,
-        foregroundColor: AppColors.textPrimary,
-        title: Text(
-          'My Map',
-          style: GoogleFonts.playfairDisplay(
-            color: AppColors.textPrimary,
-            fontSize: 20,
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-      ),
-      body: Stack(
+      backgroundColor: AppColors.deepGreen,
+      body: Column(
         children: [
-          Positioned.fill(
-            child: FlutterMap(
-              mapController: _mapController,
-              options: MapOptions(
-                initialCenter: _worldCenter,
-                initialZoom: _worldZoom,
-                interactionOptions: const InteractionOptions(
-                  flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-                ),
-              ),
-              children: [
-                TileLayer(
-                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                  userAgentPackageName: 'com.chasingstars.app',
-                  // A tile request failing (no connectivity, a rate limit)
-                  // just leaves that tile blank — flutter_map already
-                  // swallows the error internally, so there's nothing
-                  // further to do here to keep the screen from crashing.
-                  maxZoom: 19,
-                ),
-                MarkerLayer(
-                  markers: [
-                    for (final stats in plottable)
-                      if (_coordsOf(stats) case (final lat, final lng))
-                        Marker(
-                          point: LatLng(lat, lng),
-                          width: VenuePin.size,
-                          height: VenuePin.size,
-                          child: VenuePin(
-                            venue: stats.venue,
-                            onTap: () => showVenuePreviewSheet(context, stats),
+          SafeArea(
+            bottom: false,
+            child: ColoredBox(
+              color: AppColors.deepGreen,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      CsSpacing.base,
+                      0,
+                      CsSpacing.base,
+                      0,
+                    ),
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: EditorialBackButton(color: AppColors.ivory),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.xs,
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.sm,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          'My Map',
+                          style: CsTypography.screenTitle.copyWith(
+                            color: AppColors.ivory,
                           ),
                         ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          SafeArea(
-            child: Align(
-              alignment: Alignment.topCenter,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 8, 20, 0),
-                child: _FilterCard(
-                  selected: _venueType,
-                  onSelect: _onSelectVenueType,
-                ),
+                        const SizedBox(height: CsSpacing.xs),
+                        Text(
+                          "Every place you've experienced.",
+                          style: CsTypography.body.copyWith(
+                            color: AppColors.secondaryOnDark,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(
+                      CsSpacing.pageHorizontal,
+                      0,
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.base,
+                    ),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          for (final type in ExploreVenueType.values) ...[
+                            if (type != ExploreVenueType.values.first)
+                              const SizedBox(width: CsSpacing.sm),
+                            CsFilterChip(
+                              label: type.label,
+                              selected: _venueType == type,
+                              onTap: () => _onSelectVenueType(type),
+                            ),
+                          ],
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          if (_loading)
-            const Center(
-              child: CircularProgressIndicator(
-                color: AppColors.gold,
-                strokeWidth: 2,
+          Expanded(
+            child: ColoredBox(
+              color: AppColors.background,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: FlutterMap(
+                      mapController: _mapController,
+                      options: MapOptions(
+                        initialCenter: _worldCenter,
+                        initialZoom: _worldZoom,
+                        interactionOptions: const InteractionOptions(
+                          flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                        ),
+                      ),
+                      children: [
+                        TileLayer(
+                          urlTemplate:
+                              'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                          userAgentPackageName: 'com.chasingstars.app',
+                          // A tile request failing (no connectivity, a rate
+                          // limit) just leaves that tile blank — flutter_map
+                          // already swallows the error internally, so
+                          // there's nothing further to do here to keep the
+                          // screen from crashing.
+                          maxZoom: 19,
+                        ),
+                        MarkerLayer(
+                          markers: [
+                            for (final stats in plottable)
+                              if (_coordsOf(stats) case (final lat, final lng))
+                                Marker(
+                                  point: LatLng(lat, lng),
+                                  width: VenuePin.size,
+                                  height: VenuePin.size,
+                                  child: VenuePin(
+                                    venue: stats.venue,
+                                    onTap: () =>
+                                        showVenuePreviewSheet(context, stats),
+                                  ),
+                                ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (_loading)
+                    const Center(
+                      child: CircularProgressIndicator(
+                        color: AppColors.forestGreen,
+                        strokeWidth: 2,
+                      ),
+                    )
+                  else if (_loadError)
+                    _MapMessage(
+                      icon: Icons.wifi_off_rounded,
+                      message: 'Could not load your visited venues.',
+                      actionLabel: 'Retry',
+                      onAction: () {
+                        setState(() => _loading = true);
+                        _load();
+                      },
+                    )
+                  else if (!hasAnyVisitedVenue)
+                    const _MapMessage(
+                      icon: Icons.explore_outlined,
+                      message: 'Your map is waiting for its first destination.',
+                    )
+                  else if (plottable.isEmpty)
+                    _MapMessage(
+                      icon: Icons.location_off_outlined,
+                      message: switch (_venueType) {
+                        ExploreVenueType.hotels => 'No hotel stays yet.',
+                        ExploreVenueType.restaurants =>
+                          'No restaurant visits yet.',
+                        ExploreVenueType.all => 'No visited venues yet.',
+                      },
+                    ),
+                ],
               ),
-            )
-          else if (_loadError)
-            _MapMessage(
-              icon: Icons.wifi_off_rounded,
-              message: 'Could not load your visited venues.',
-              actionLabel: 'Retry',
-              onAction: () {
-                setState(() => _loading = true);
-                _load();
-              },
-            )
-          else if (!hasAnyVisitedVenue)
-            const _MapMessage(
-              icon: Icons.explore_outlined,
-              message: 'Your map is waiting for its first destination.',
-            )
-          else if (plottable.isEmpty)
-            _MapMessage(
-              icon: Icons.location_off_outlined,
-              message: switch (_venueType) {
-                ExploreVenueType.hotels => 'No hotel stays yet.',
-                ExploreVenueType.restaurants => 'No restaurant visits yet.',
-                ExploreVenueType.all => 'No visited venues yet.',
-              },
             ),
+          ),
         ],
       ),
     );
   }
-}
-
-// Wraps the shared (Explore-owned) VenueTypeSelector for use as a floating
-// map overlay. VenueTypeSelector's segments use Container(alignment: ...)
-// internally, which — per Container's own sizing rule — expands to fill any
-// BOUNDED parent height (not just tight) before aligning its child. Inside
-// Explore's scrolling Column that parent height is unbounded, so it stays
-// compact there; inside this screen's Stack, SafeArea/Align/Container all
-// hand down loose-but-bounded constraints (bounded by the map's fixed
-// height), which is exactly the case that triggers the expand — without
-// IntrinsicHeight here the card would balloon to fill nearly the whole
-// screen. IntrinsicHeight forces the Row above it to be measured at its own
-// natural content height first, so the fill-parent behavior below never has
-// a large bound to expand into. Fixing this here (map-only) rather than in
-// VenueTypeSelector itself keeps Explore's layout completely untouched.
-class _FilterCard extends StatelessWidget {
-  final ExploreVenueType selected;
-  final ValueChanged<ExploreVenueType> onSelect;
-  const _FilterCard({required this.selected, required this.onSelect});
-
-  @override
-  Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.all(8),
-    decoration: BoxDecoration(
-      color: AppColors.card.withValues(alpha: 0.92),
-      borderRadius: BorderRadius.circular(14),
-      border: Border.all(color: AppColors.cardBorder, width: 0.5),
-      boxShadow: const [
-        BoxShadow(color: Colors.black45, blurRadius: 8, offset: Offset(0, 3)),
-      ],
-    ),
-    child: IntrinsicHeight(
-      child: VenueTypeSelector(selected: selected, onSelect: onSelect),
-    ),
-  );
 }
 
 /// Bottom-anchored subtle message overlay — used both for the true empty
@@ -352,7 +383,7 @@ class _MapMessage extends StatelessWidget {
                   child: Text(
                     actionLabel!,
                     style: GoogleFonts.inter(
-                      color: AppColors.gold,
+                      color: AppColors.forestGreen,
                       fontWeight: FontWeight.w600,
                     ),
                   ),

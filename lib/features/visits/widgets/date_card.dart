@@ -42,8 +42,8 @@ class DateCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(18),
-        splashColor: AppColors.goldAlpha10,
-        highlightColor: AppColors.goldAlpha10,
+        splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
+        highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
           decoration: BoxDecoration(
@@ -58,13 +58,16 @@ class DateCard extends StatelessWidget {
                 height: 42,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: AppColors.goldAlpha10,
+                  color: AppColors.forestGreen.withValues(alpha: 0.08),
                   shape: BoxShape.circle,
-                  border: Border.all(color: AppColors.goldBorder40, width: 0.5),
+                  border: Border.all(
+                    color: AppColors.forestGreen.withValues(alpha: 0.3),
+                    width: 0.5,
+                  ),
                 ),
                 child: const Icon(
                   Icons.calendar_today_rounded,
-                  color: AppColors.gold,
+                  color: AppColors.forestGreen,
                   size: 17,
                 ),
               ),

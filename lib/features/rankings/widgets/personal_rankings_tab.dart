@@ -13,9 +13,9 @@ import '../../../models/ranking_venue_type.dart';
 import '../../../models/venue_entry.dart';
 import '../../restaurants/widgets/detail_section.dart';
 import '../rankings_view_model.dart';
-import 'dimension_filter_bar.dart';
 import 'hotel_ranking_card.dart';
 import 'personal_ranking_card.dart';
+import 'ranking_dimension_dropdown.dart';
 import 'ranking_venue_type_selector.dart';
 
 /// "My Rankings": the user's own visited restaurants and stayed-at hotels,
@@ -147,7 +147,7 @@ class _PersonalRankingsTabState extends State<PersonalRankingsTab>
     if (_loading) {
       return const Center(
         child: CircularProgressIndicator(
-          color: AppColors.gold,
+          color: AppColors.forestGreen,
           strokeWidth: 1.5,
         ),
       );
@@ -187,26 +187,29 @@ class _PersonalRankingsTabState extends State<PersonalRankingsTab>
         const SizedBox(height: 12),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: DimensionFilterBar(
-            dimensions: _venueType.validDimensions,
-            selected: _dimension,
-            onSelect: (d) => setState(() => _dimension = d),
+          // Wrap (not Row) so a long dimension label ("Experience") next to
+          // the year control flexes onto a second line at very narrow
+          // widths instead of overflowing — both controls stay left
+          // -aligned and compact either way.
+          child: Wrap(
+            spacing: 8,
+            runSpacing: 8,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: [
+              RankingDimensionDropdown(
+                dimensions: _venueType.validDimensions,
+                selected: _dimension,
+                onSelect: (d) => setState(() => _dimension = d),
+              ),
+              if (years.isNotEmpty)
+                YearFilterControl(
+                  years: years,
+                  selectedYear: _selectedYear,
+                  onSelect: (year) => setState(() => _selectedYear = year),
+                ),
+            ],
           ),
         ),
-        if (years.isNotEmpty) ...[
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: YearFilterControl(
-                years: years,
-                selectedYear: _selectedYear,
-                onSelect: (year) => setState(() => _selectedYear = year),
-              ),
-            ),
-          ),
-        ],
         const SizedBox(height: 16),
         Expanded(
           child: _RankingsList(
@@ -251,7 +254,7 @@ class _RankingsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      color: AppColors.gold,
+      color: AppColors.forestGreen,
       backgroundColor: AppColors.card,
       onRefresh: onRefresh,
       child: rankings.isEmpty

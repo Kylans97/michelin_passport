@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/widgets/sheet_dismiss_handle.dart';
 import '../../../data/repositories/planned_trips_repository.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/planned_trip.dart';
@@ -185,15 +186,13 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Center(
-                    child: Container(
-                      width: 36,
-                      height: 4,
-                      decoration: BoxDecoration(
-                        color: AppColors.divider,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
+                  // Matches Log Visit's own explicit, always-visible dismiss
+                  // control — UI Consistency pass: previously a bare drag
+                  // handle with no close affordance, the one concrete
+                  // inconsistency between these two sheets.
+                  SheetDismissHandle(
+                    color: AppColors.textPrimary,
+                    onClose: () => Navigator.pop(context),
                   ),
                   const SizedBox(height: 24),
 
@@ -252,7 +251,7 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                             width: 16,
                             height: 16,
                             child: CircularProgressIndicator(
-                              color: AppColors.gold,
+                              color: AppColors.forestGreen,
                               strokeWidth: 1.5,
                             ),
                           ),
@@ -401,8 +400,8 @@ class _TripOption extends StatelessWidget {
     child: InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(14),
-      splashColor: AppColors.goldAlpha10,
-      highlightColor: AppColors.goldAlpha10,
+      splashColor: AppColors.brandGreen.withValues(alpha: 0.06),
+      highlightColor: AppColors.brandGreen.withValues(alpha: 0.04),
       child: Container(
         width: double.infinity,
         padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),

@@ -33,8 +33,8 @@ class HotelRankingCard extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         borderRadius: BorderRadius.circular(16),
-        splashColor: AppColors.goldAlpha10,
-        highlightColor: AppColors.goldAlpha10,
+        splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
+        highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
         onTap: () async {
           await Navigator.push(
             context,
@@ -58,7 +58,7 @@ class HotelRankingCard extends StatelessWidget {
                 child: Text(
                   '$rank',
                   style: GoogleFonts.inter(
-                    color: AppColors.gold,
+                    color: AppColors.forestGreen,
                     fontSize: 14,
                     fontWeight: FontWeight.w700,
                   ),
@@ -99,7 +99,7 @@ class HotelRankingCard extends StatelessWidget {
                         Text(
                           entry.averageScore.toStringAsFixed(1),
                           style: GoogleFonts.inter(
-                            color: AppColors.gold,
+                            color: AppColors.forestGreen,
                             fontSize: 14,
                             fontWeight: FontWeight.w700,
                           ),

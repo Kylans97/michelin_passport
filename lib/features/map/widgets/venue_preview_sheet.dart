@@ -101,8 +101,8 @@ class _VenuePreviewSheet extends StatelessWidget {
                 width: double.infinity,
                 child: FilledButton(
                   style: FilledButton.styleFrom(
-                    backgroundColor: AppColors.gold,
-                    foregroundColor: Colors.black,
+                    backgroundColor: AppColors.deepGreen,
+                    foregroundColor: AppColors.textOnDark,
                     padding: const EdgeInsets.symmetric(vertical: 14),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(14),

@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 
-/// A compact 1-10 rating control: a slim gold fill-meter with a large,
-/// comfortable tap target per segment, plus an explicit "Not rated" pill.
-/// Used for every optional rating in the visit sheet (overall, food,
-/// service, wine, value) so all five share one consistent design.
+/// A compact 1-10 rating control: a slim deep-green fill-meter with a
+/// large, comfortable tap target per segment, plus an explicit "Not rated"
+/// pill. Used for every optional rating in the visit sheet (overall, food,
+/// service, wine, value — and room/experience for a hotel stay) so all
+/// dimensions share one consistent design.
 class RatingMeter extends StatelessWidget {
   final String label;
   final int? value;
@@ -43,7 +44,7 @@ class RatingMeter extends StatelessWidget {
                 style: GoogleFonts.inter(
                   color: value == null
                       ? AppColors.textSecondary
-                      : AppColors.gold,
+                      : AppColors.forestGreen,
                   fontSize: 12.5,
                   fontWeight: FontWeight.w600,
                 ),
@@ -97,17 +98,21 @@ class _NotRatedPill extends StatelessWidget {
       height: 32,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: selected ? AppColors.goldMuted : AppColors.surface,
+        color: selected
+            ? AppColors.forestGreen.withValues(alpha: 0.12)
+            : AppColors.surface,
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
-          color: selected ? AppColors.goldBorder60 : AppColors.cardBorder,
+          color: selected
+              ? AppColors.forestGreen.withValues(alpha: 0.5)
+              : AppColors.cardBorder,
           width: selected ? 1.0 : 0.5,
         ),
       ),
       child: Text(
         '—',
         style: GoogleFonts.inter(
-          color: selected ? AppColors.gold : AppColors.textSecondary,
+          color: selected ? AppColors.forestGreen : AppColors.textSecondary,
           fontSize: 14,
           fontWeight: FontWeight.w600,
         ),
@@ -141,7 +146,7 @@ class _MeterSegment extends StatelessWidget {
           height: 8,
           margin: const EdgeInsets.symmetric(horizontal: 1.5),
           decoration: BoxDecoration(
-            color: filled ? AppColors.gold : AppColors.surface,
+            color: filled ? AppColors.forestGreen : AppColors.surface,
             borderRadius: BorderRadius.horizontal(
               left: isFirst ? const Radius.circular(4) : Radius.zero,
               right: isLast ? const Radius.circular(4) : Radius.zero,

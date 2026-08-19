@@ -428,17 +428,21 @@ class _MenuTypeChip extends StatelessWidget {
     child: InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.circular(22),
-      splashColor: AppColors.goldAlpha10,
-      highlightColor: AppColors.goldAlpha10,
+      splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
+      highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 180),
         curve: Curves.easeOutCubic,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         decoration: BoxDecoration(
-          color: selected ? AppColors.goldMuted : AppColors.surface,
+          color: selected
+              ? AppColors.forestGreen.withValues(alpha: 0.12)
+              : AppColors.surface,
           borderRadius: BorderRadius.circular(22),
           border: Border.all(
-            color: selected ? AppColors.goldBorder60 : AppColors.cardBorder,
+            color: selected
+                ? AppColors.forestGreen.withValues(alpha: 0.5)
+                : AppColors.cardBorder,
             width: selected ? 1.0 : 0.5,
           ),
         ),
@@ -454,7 +458,7 @@ class _MenuTypeChip extends StatelessWidget {
                       child: Icon(
                         Icons.check_rounded,
                         size: 15,
-                        color: AppColors.gold,
+                        color: AppColors.forestGreen,
                       ),
                     )
                   : const SizedBox(key: ValueKey('nocheck')),
@@ -462,7 +466,9 @@ class _MenuTypeChip extends StatelessWidget {
             Text(
               label,
               style: GoogleFonts.inter(
-                color: selected ? AppColors.gold : AppColors.textSecondary,
+                color: selected
+                    ? AppColors.forestGreen
+                    : AppColors.textSecondary,
                 fontSize: 13,
                 fontWeight: selected ? FontWeight.w600 : FontWeight.w400,
               ),

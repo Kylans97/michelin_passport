@@ -27,18 +27,18 @@ class VenuePin extends StatelessWidget {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: AppColors.card,
+          color: AppColors.deepGreen,
           shape: BoxShape.circle,
-          border: Border.all(color: AppColors.gold, width: 1.5),
+          border: Border.all(color: AppColors.ivory, width: 2),
           boxShadow: const [
             BoxShadow(
-              color: Colors.black45,
+              color: Colors.black38,
               blurRadius: 4,
               offset: Offset(0, 2),
             ),
           ],
         ),
-        child: Icon(icon, color: AppColors.gold, size: 17),
+        child: Icon(icon, color: AppColors.ivory, size: 17),
       ),
     );
   }
