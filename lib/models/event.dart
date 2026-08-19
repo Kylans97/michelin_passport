@@ -91,6 +91,14 @@ class Event {
   final String? description;
   final DateTime startAt;
   final DateTime endAt;
+  // IANA identifier (e.g. "Europe/Amsterdam") — see
+  // supabase/migrations/20260820120000_events_v2_timezone_hardening.sql.
+  // Nullable: pre-hardening rows (and any row read before the NOT NULL
+  // follow-up migration lands) may not have this backfilled yet. Every
+  // Event-local render must go through
+  // lib/features/events/event_date_format.dart, which already treats a
+  // null/invalid value as "fall back to UTC" — never the device's zone.
+  final String? timezone;
   final String countryCode;
   final String? city;
   final String? venueName;
@@ -112,6 +120,7 @@ class Event {
     this.description,
     required this.startAt,
     required this.endAt,
+    this.timezone,
     required this.countryCode,
     this.city,
     this.venueName,
@@ -143,8 +152,15 @@ class Event {
     id: json['id'].toString(),
     name: (json['name'] as String?) ?? '',
     description: json['description'] as String?,
-    startAt: DateTime.parse(json['start_at'] as String).toLocal(),
-    endAt: DateTime.parse(json['end_at'] as String).toLocal(),
+    // No .toLocal() here, deliberately: start_at/end_at must stay tagged
+    // as the absolute instant Postgres sent (UTC). Event-local display is
+    // derived later, on demand, from this instant + [timezone] — see
+    // lib/features/events/event_date_format.dart. Tagging as device-local
+    // here would silently discard the information needed to render the
+    // event's OWN local time for a viewer in a different zone.
+    startAt: DateTime.parse(json['start_at'] as String),
+    endAt: DateTime.parse(json['end_at'] as String),
+    timezone: json['timezone'] as String?,
     countryCode: (json['country_code'] as String?) ?? '',
     city: json['city'] as String?,
     venueName: json['venue_name'] as String?,

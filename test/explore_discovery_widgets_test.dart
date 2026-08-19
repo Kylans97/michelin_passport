@@ -65,8 +65,12 @@ Event _event({
 }) => Event(
   id: id,
   name: name,
-  startAt: startAt ?? DateTime(2026, 8, 27),
-  endAt: startAt ?? DateTime(2026, 8, 30),
+  // Re-tagged as UTC + paired with an explicit 'UTC' timezone so date
+  // rendering is deterministic regardless of the test machine's own
+  // zone — see events_test.dart's _event() for the full rationale.
+  startAt: _utc(startAt ?? DateTime(2026, 8, 27)),
+  endAt: _utc(startAt ?? DateTime(2026, 8, 30)),
+  timezone: 'UTC',
   countryCode: 'NL',
   city: city ?? 'Maastricht',
   eventType: EventType.festival,
@@ -74,6 +78,9 @@ Event _event({
   admissionType: freeEntry ? EventAdmissionType.free : EventAdmissionType.paid,
   createdAt: DateTime(2026, 1, 1),
 );
+
+DateTime _utc(DateTime d) =>
+    DateTime.utc(d.year, d.month, d.day, d.hour, d.minute, d.second);
 
 Widget _wrap(Widget child, {double width = 390}) => MaterialApp(
   home: Scaffold(

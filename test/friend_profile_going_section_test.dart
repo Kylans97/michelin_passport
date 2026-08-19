@@ -28,13 +28,17 @@ Event _event(String id, String name, {DateTime? startAt}) => Event(
   id: id,
   name: name,
   city: 'Maastricht',
-  startAt: startAt ?? DateTime(2026, 8, 28),
-  endAt: startAt ?? DateTime(2026, 8, 30),
+  startAt: _utc(startAt ?? DateTime(2026, 8, 28)),
+  endAt: _utc(startAt ?? DateTime(2026, 8, 30)),
+  timezone: 'UTC',
   countryCode: 'NL',
   eventType: EventType.festival,
   status: EventStatus.upcoming,
   createdAt: DateTime(2026, 1, 1),
 );
+
+DateTime _utc(DateTime d) =>
+    DateTime.utc(d.year, d.month, d.day, d.hour, d.minute, d.second);
 
 // Mirrors _FriendGoingSection exactly.
 Widget _goingSection(Future<List<Event>>? future) {

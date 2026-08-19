@@ -1,3 +1,4 @@
+import '../core/utils/event_time.dart';
 import 'event.dart';
 import 'planned_trip.dart';
 
@@ -12,15 +13,20 @@ import 'planned_trip.dart';
 /// 1. A cancelled event never matches any trip — nothing "happening during
 ///    your trip" if it's been cancelled.
 /// 2. Date ranges must overlap, compared by CALENDAR DATE, not exact
-///    instant: event.startAt/endAt are timestamptz, already converted to
-///    device-local time in Event.fromJson (via .toLocal()), while
-///    trip.startDate/endDate are day-granularity dates with no time
-///    component. Comparing full DateTime instants between the two (e.g. an
-///    exclusive "day + 1" upper bound) makes the match sensitive to
-///    time-of-day at the boundary for no reason — a person reading
-///    "27-30 August" against "26-31 August" is comparing whole days, so
-///    both sides are first truncated to Y-M-D and checked for inclusive
-///    date-range overlap.
+///    instant: event.startAt/endAt are absolute timestamptz instants — the
+///    calendar date they fall on depends on WHICH zone you read them in.
+///    A viewer in New York and the event's own venue in Tokyo can
+///    legitimately disagree about which day a given instant falls on, and
+///    a trip is planned against the destination's own calendar, not the
+///    trip-planner's device zone — so both event dates are read via
+///    eventLocalDateTime(event's own timezone), never device-local, before
+///    truncating to Y-M-D. trip.startDate/endDate are already
+///    day-granularity dates with no time component. Comparing full
+///    DateTime instants between the two (e.g. an exclusive "day + 1" upper
+///    bound) makes the match sensitive to time-of-day at the boundary for
+///    no reason — a person reading "27-30 August" against "26-31 August"
+///    is comparing whole days, so both sides are first truncated to Y-M-D
+///    and checked for inclusive date-range overlap.
 /// 3. Country must match exactly.
 /// 4. City: if BOTH the event and the trip specify a city, they must match
 ///    (case-insensitive) — this is the "city matching preferred when both
@@ -33,8 +39,10 @@ import 'planned_trip.dart';
 bool eventMatchesTrip(Event event, PlannedTrip trip) {
   if (event.isCancelled) return false;
 
-  final eventStart = _dateOnly(event.startAt);
-  final eventEnd = _dateOnly(event.endAt);
+  final eventStart = _dateOnly(
+    eventLocalDateTime(event.startAt, event.timezone),
+  );
+  final eventEnd = _dateOnly(eventLocalDateTime(event.endAt, event.timezone));
   final tripStart = _dateOnly(trip.startDate);
   final tripEnd = _dateOnly(trip.endDate);
   final datesOverlap =

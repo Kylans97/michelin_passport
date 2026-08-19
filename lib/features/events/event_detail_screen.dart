@@ -42,6 +42,15 @@ const double _heroLogoScale = 0.22;
 /// event's own [Event.endAt]. A top-level pure function, not inlined in
 /// build(), so it's directly unit-testable without a live Supabase
 /// session.
+///
+/// Unaffected by Events V2 Timezone Hardening (Event.fromJson no longer
+/// calling .toLocal()): `.isAfter`/`.isBefore`/`.compareTo` compare the
+/// underlying absolute instant regardless of which zone a DateTime is
+/// tagged as, so this stays correct with zero change — only *display*
+/// (reading .hour/.day off a DateTime) was ever affected by .toLocal(),
+/// and this function never does that. The same reasoning is why the
+/// future "Did you make it?" attendance trigger must key off this same
+/// event.endAt instant, never a rendered event-local date/time.
 bool canAttendEvent(Event event, {DateTime? now}) =>
     !event.isCancelled && event.endAt.isAfter(now ?? DateTime.now());
 

@@ -45,8 +45,8 @@ class EventMetaSection extends StatelessWidget {
         _MetaRow(
           icon: Icons.calendar_today_rounded,
           text:
-              '${formatEventDateTime(event.startAt)}\n'
-              'to ${formatEventDateTime(event.endAt)}',
+              '${formatEventDateTime(event.startAt, event.timezone)}\n'
+              'to ${formatEventDateTime(event.endAt, event.timezone)}',
         ),
         if (hasVenueName) ...[
           const SizedBox(height: CsSpacing.md),

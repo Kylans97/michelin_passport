@@ -69,8 +69,9 @@ Event _event({
 }) => Event(
   id: id,
   name: name,
-  startAt: DateTime(2026, 8, 27),
-  endAt: DateTime(2026, 8, 30),
+  startAt: DateTime.utc(2026, 8, 27),
+  endAt: DateTime.utc(2026, 8, 30),
+  timezone: 'UTC',
   countryCode: 'NL',
   city: city ?? 'Maastricht',
   eventType: EventType.festival,

@@ -40,6 +40,20 @@ dependencies:
   image_picker: ^1.2.3
   flutter_map: ^8.3.1
   latlong2: ^0.10.1
+  # Events V2 Timezone Hardening: dart:core's DateTime only knows UTC and
+  # "whatever the OS reports as local" — no way to render an instant in an
+  # arbitrary IANA zone (e.g. Asia/Tokyo) without a real tzdata package.
+  # Verified via pub.dev before adding (not assumed): published by
+  # labs.dart.dev, actively maintained, full iOS/Android/Web/desktop
+  # support, ~2.94M downloads, depends only on http+path. The one package
+  # this ecosystem actually uses for IANA conversion. The app loads its
+  # "_all" database variant, not the smaller default one — see
+  # lib/main.dart's initializeTimeZones() comment for why (the default
+  # variant excludes "Europe/Amsterdam", the zone every current event
+  # needs, as a deprecated tzdata link). See
+  # docs/Architecture/EVENTS_V2_TIMEZONE_HARDENING_PRE_APPLY.md for the
+  # full evaluation.
+  timezone: ^0.11.1
 
 dev_dependencies:
   flutter_test:

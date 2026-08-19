@@ -27,6 +27,16 @@ import 'package:michelin_passport/models/hotel.dart';
 import 'package:michelin_passport/models/planned_trip.dart';
 import 'package:michelin_passport/models/restaurant.dart';
 
+// Timezone Hardening: startAt/endAt are re-tagged as UTC (same Y-M-D-H-M-S
+// digits the caller wrote, just reinterpreted as UTC rather than whatever
+// zone the test machine happens to be in) and paired with an explicit
+// 'UTC' timezone by default. eventMatchesTrip now reads the event's
+// calendar date via eventLocalDateTime(startAt, timezone) instead of the
+// raw DateTime fields, so leaving these as machine-local DateTimes (as
+// this helper did pre-hardening) would make every date-boundary test
+// silently depend on the machine's own UTC offset — re-tagging as UTC
+// keeps these tests exactly as deterministic as they were before, without
+// baking in a real (offset-shifting) timezone conversion.
 Event _event({
   String id = 'evt-1',
   required DateTime startAt,
@@ -34,11 +44,27 @@ Event _event({
   String countryCode = 'NL',
   String? city = 'Maastricht',
   EventStatus status = EventStatus.upcoming,
+  String? timezone = 'UTC',
 }) => Event(
   id: id,
   name: 'Test Event',
-  startAt: startAt,
-  endAt: endAt,
+  startAt: DateTime.utc(
+    startAt.year,
+    startAt.month,
+    startAt.day,
+    startAt.hour,
+    startAt.minute,
+    startAt.second,
+  ),
+  endAt: DateTime.utc(
+    endAt.year,
+    endAt.month,
+    endAt.day,
+    endAt.hour,
+    endAt.minute,
+    endAt.second,
+  ),
+  timezone: timezone,
   countryCode: countryCode,
   city: city,
   eventType: EventType.festival,

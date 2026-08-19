@@ -39,12 +39,19 @@ Event _event({
   EventStatus status = EventStatus.upcoming,
   EventAdmissionType admissionType = EventAdmissionType.unknown,
   String? admissionNote,
+  String? timezone = 'UTC',
 }) => Event(
   id: 'e1',
   name: name,
   description: description,
-  startAt: startAt ?? DateTime(2026, 8, 27, 18),
-  endAt: endAt ?? DateTime(2026, 8, 30, 22),
+  // Re-tagged as UTC (same digits the caller wrote) + paired with an
+  // explicit 'UTC' timezone by default, so formatEventDateTime/
+  // formatEventDateRange render deterministically regardless of the test
+  // machine's own zone — see events_test.dart's _event() for the full
+  // rationale.
+  startAt: _utc(startAt ?? DateTime(2026, 8, 27, 18)),
+  endAt: _utc(endAt ?? DateTime(2026, 8, 30, 22)),
+  timezone: timezone,
   countryCode: countryCode,
   city: city,
   venueName: venueName,
@@ -58,6 +65,9 @@ Event _event({
   admissionNote: admissionNote,
   createdAt: DateTime(2026, 1, 1),
 );
+
+DateTime _utc(DateTime d) =>
+    DateTime.utc(d.year, d.month, d.day, d.hour, d.minute, d.second);
 
 Restaurant _restaurant({
   String id = 'r1',
