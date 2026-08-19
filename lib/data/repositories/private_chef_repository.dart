@@ -1,7 +1,11 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/private_chef.dart';
+import '../../models/private_chef_education.dart';
+import '../../models/private_chef_photo.dart';
 import '../../models/private_chef_restaurant_history.dart';
 import '../../models/restaurant.dart';
+import '../../models/venue_country.dart';
+import 'country_lookup.dart' show resolveVenueCountries;
 import 'restaurant_repository.dart' show restaurantFullColumns;
 
 // Explicit column list matching public.private_chefs as deployed by
@@ -150,6 +154,87 @@ class PrivateChefRepository {
               ? restaurantsById[row['restaurant_id'] as String]
               : null,
         ),
+    ];
+  }
+
+  /// A chef's Detail-hero gallery, ordered — at most 5 rows, enforced at
+  /// the database layer (`private_chef_photos_max_five` trigger), not
+  /// re-enforced here.
+  Future<List<PrivateChefPhoto>> getChefPhotos(String privateChefId) async {
+    final rows = await _client
+        .from('private_chef_photos')
+        .select('id, private_chef_id, image_url, alt_text, display_order')
+        .eq('private_chef_id', privateChefId)
+        .order('display_order');
+    return [
+      for (final row in rows as List)
+        PrivateChefPhoto.fromJson(row as Map<String, dynamic>),
+    ];
+  }
+
+  /// The landing editorial card's cover image for a batch of chefs — one
+  /// query for every id the caller already has (from [getPublishedChefs]),
+  /// never one per chef, mirroring [getRestaurantHistory]'s own batched-
+  /// lookup shape. The cover is each chef's lowest-`display_order` photo
+  /// (Step 2C — the same photo Detail's hero also shows first, see
+  /// `PrivateChefHero`'s own gallery ordering). A chef with zero
+  /// `private_chef_photos` rows is simply absent from the returned map;
+  /// callers render the branded large placeholder in that case, matching
+  /// `PrivateChefHero`'s own no-photo fallback.
+  Future<Map<String, PrivateChefPhoto>> getCoverPhotos(
+    List<String> privateChefIds,
+  ) async {
+    if (privateChefIds.isEmpty) return {};
+    final rows = await _client
+        .from('private_chef_photos')
+        .select('id, private_chef_id, image_url, alt_text, display_order')
+        .inFilter('private_chef_id', privateChefIds)
+        .order('private_chef_id')
+        .order('display_order');
+    final coverByChefId = <String, PrivateChefPhoto>{};
+    for (final row in rows as List) {
+      final photo = PrivateChefPhoto.fromJson(row as Map<String, dynamic>);
+      // Rows arrive display_order-ascending within each chef, so the
+      // first one seen per chef is always the cover — putIfAbsent skips
+      // every later (higher-display_order) row for that same chef.
+      coverByChefId.putIfAbsent(photo.privateChefId, () => photo);
+    }
+    return coverByChefId;
+  }
+
+  /// Full country names for a set of `home_country_code` values (e.g.
+  /// `{'NL'}` -> `{'NL': VenueCountry(name: 'Netherlands', ...)}`), reusing
+  /// the same `public.countries` resolver Restaurant/Hotel already share
+  /// (Step 2C §12) rather than a Private-Chefs-specific code->name map.
+  /// Callers already have the codes from already-loaded [PrivateChef] rows,
+  /// so this takes codes directly instead of re-querying `private_chefs`
+  /// for them (unlike [RestaurantRepository.getCountries], which has no
+  /// full rows on hand yet at the point it needs the codes).
+  Future<Map<String, VenueCountry>> getCountryNames(
+    Set<String> countryCodes,
+  ) async {
+    final countries = await resolveVenueCountries(_client, countryCodes);
+    return {for (final country in countries) country.code: country};
+  }
+
+  /// A chef's education background, ordered — the second, distinct
+  /// source the Detail screen's "Background" section reads from
+  /// alongside [getRestaurantHistory] (see the education migration's own
+  /// header comment for why these stay two small typed tables rather
+  /// than one generalized "background" table).
+  Future<List<PrivateChefEducation>> getEducationHistory(
+    String privateChefId,
+  ) async {
+    final rows = await _client
+        .from('private_chef_education')
+        .select(
+          'id, private_chef_id, institution, program, period_text, display_order',
+        )
+        .eq('private_chef_id', privateChefId)
+        .order('display_order');
+    return [
+      for (final row in rows as List)
+        PrivateChefEducation.fromJson(row as Map<String, dynamic>),
     ];
   }
 }

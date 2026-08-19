@@ -7,37 +7,31 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../models/private_chef.dart';
-import '../guides/widgets/guide_venue_card.dart' show GuideVenueCardDivider;
+import '../../models/private_chef_photo.dart';
+import '../../models/venue_country.dart';
 import 'private_chef_detail_screen.dart';
-import 'widgets/private_chef_row.dart';
+import 'private_chef_grouping.dart';
+import 'private_chef_location.dart';
+import 'widgets/private_chef_discovery_card.dart';
 import 'widgets/private_chef_states.dart';
 
-/// Private Chefs' landing/catalogue — reached from Explore only, never a
-/// 6th bottom-navigation tab (PRIVATE_CHEFS.md §37). Pushed via
-/// [MaterialPageRoute], so it owns its own [Scaffold] — mirrors
-/// [GuideCatalogueLayout]'s proven `Scaffold(deepGreen)` →
-/// `SafeArea(bottom: false)` masthead → ivory `ColoredBox` +
-/// `SafeArea(top: false)` content architecture, the exact fix for the
-/// ivory-strip-behind-the-status-bar bug that shell already solved. Uses a
-/// single `screenTitle` + `body` heading (matching Explore/Wishlist's
-/// primary-tab header language) rather than Guides' two-level source/
-/// title split, since Private Chefs has no family-of-catalogues hierarchy
-/// above it — this screen IS the destination, not a sub-catalogue of one.
-///
-/// Production currently has zero published chefs — the empty state (see
-/// [PrivateChefsEmptyState]) is a first-class, expected experience, not a
-/// placeholder for missing data.
+/// Private Chefs landing — an editorial discovery collection (Step 2C),
+/// not a directory/search-results list: chefs are grouped by country under
+/// a quiet heading, each rendered as a large [PrivateChefDiscoveryCard]
+/// with generous whitespace between them. The deepGreen masthead below is
+/// unchanged from the original Step 2 approval — only the body beneath it
+/// was redesigned.
 class PrivateChefsScreen extends StatefulWidget {
   const PrivateChefsScreen({super.key});
-
   @override
   State<PrivateChefsScreen> createState() => _PrivateChefsScreenState();
 }
 
 class _PrivateChefsScreenState extends State<PrivateChefsScreen> {
   late final _repo = PrivateChefRepository(Supabase.instance.client);
-
   List<PrivateChef>? _chefs;
+  Map<String, PrivateChefPhoto> _coverPhotos = const {};
+  Map<String, VenueCountry> _countryNames = const {};
   bool _loading = true;
   bool _error = false;
 
@@ -54,9 +48,23 @@ class _PrivateChefsScreenState extends State<PrivateChefsScreen> {
     });
     try {
       final chefs = await _repo.getPublishedChefs();
+      final chefIds = [for (final chef in chefs) chef.id];
+      final countryCodes = {
+        for (final chef in chefs)
+          if ((chef.homeCountryCode ?? '').trim().isNotEmpty)
+            chef.homeCountryCode!.trim(),
+      };
+      // Two more queries total, never one per chef — same batched shape
+      // as PrivateChefRepository.getRestaurantHistory.
+      final coverPhotosFuture = _repo.getCoverPhotos(chefIds);
+      final countryNamesFuture = _repo.getCountryNames(countryCodes);
+      final coverPhotos = await coverPhotosFuture;
+      final countryNames = await countryNamesFuture;
       if (!mounted) return;
       setState(() {
         _chefs = chefs;
+        _coverPhotos = coverPhotos;
+        _countryNames = countryNames;
         _loading = false;
       });
     } catch (_) {
@@ -90,7 +98,7 @@ class _PrivateChefsScreenState extends State<PrivateChefsScreen> {
                   const Padding(
                     padding: EdgeInsets.fromLTRB(
                       CsSpacing.base,
-                      CsSpacing.xs,
+                      0,
                       CsSpacing.base,
                       0,
                     ),
@@ -102,9 +110,9 @@ class _PrivateChefsScreenState extends State<PrivateChefsScreen> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(
                       CsSpacing.pageHorizontal,
-                      CsSpacing.sm,
+                      CsSpacing.xs,
                       CsSpacing.pageHorizontal,
-                      CsSpacing.xl,
+                      CsSpacing.base,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -146,17 +154,52 @@ class _PrivateChefsScreenState extends State<PrivateChefsScreen> {
     if (_error) return PrivateChefsErrorState(onRetry: _load);
     final chefs = _chefs ?? const [];
     if (chefs.isEmpty) return const PrivateChefsEmptyState();
-    return ListView.separated(
-      padding: const EdgeInsets.symmetric(
-        horizontal: CsSpacing.pageHorizontal,
-        vertical: CsSpacing.sm,
+
+    final groups = groupChefsByCountry(chefs, _countryNames);
+    return ListView.builder(
+      padding: const EdgeInsets.fromLTRB(
+        CsSpacing.pageHorizontal,
+        CsSpacing.lg,
+        CsSpacing.pageHorizontal,
+        CsSpacing.section,
       ),
-      itemCount: chefs.length,
-      separatorBuilder: (_, _) => const GuideVenueCardDivider(),
-      itemBuilder: (context, index) => PrivateChefRow(
-        chef: chefs[index],
-        onTap: () => _openChef(chefs[index]),
-      ),
+      itemCount: groups.length,
+      itemBuilder: (context, index) =>
+          _countrySection(groups[index], isFirst: index == 0),
     );
   }
+
+  Widget _countrySection(
+    PrivateChefCountryGroup group, {
+    required bool isFirst,
+  }) => Padding(
+    padding: EdgeInsets.only(top: isFirst ? 0 : CsSpacing.section),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (group.countryName != null) ...[
+          Text(
+            group.countryName!.toUpperCase(),
+            style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+          ),
+          const SizedBox(height: CsSpacing.lg),
+        ],
+        for (var i = 0; i < group.chefs.length; i++) ...[
+          if (i > 0) const SizedBox(height: CsSpacing.section),
+          _chefCard(group.chefs[i]),
+        ],
+      ],
+    ),
+  );
+
+  Widget _chefCard(PrivateChef chef) => PrivateChefDiscoveryCard(
+    chef: chef,
+    coverImageUrl: _coverPhotos[chef.id]?.imageUrl,
+    location: formatChefLocation(
+      city: chef.homeCity,
+      countryCode: chef.homeCountryCode,
+      countryNames: _countryNames,
+    ),
+    onTap: () => _openChef(chef),
+  );
 }

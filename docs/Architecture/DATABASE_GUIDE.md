@@ -514,6 +514,21 @@ created_at
 
 Never binary image data.
 
+Two Storage buckets exist, for two different content shapes — see each
+bucket's own migration for full detail:
+
+- `visit-photos` — private, per-user visit/stay photography, owner-only
+  RLS, read via signed URLs. The table-level `storage_path` pattern
+  above.
+- `catalogue-media` — public-read, admin/service-role-write-only,
+  reusable across Restaurants/Hotels/Private Chefs catalogue photography
+  (see `supabase/migrations/20260818150000_add_catalogue_media_storage.sql`
+  and `PRIVATE_CHEFS.md`'s Step 2C section). Objects are served directly
+  over a public URL, so the owning table stores a plain `image_url` text
+  column pointing at that URL rather than a `storage_path` + signed-URL
+  pair — the right shape when content is admin-curated and meant to be
+  publicly visible, not user-owned and private.
+
 ---
 
 # External Data

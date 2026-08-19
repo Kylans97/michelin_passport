@@ -2,11 +2,12 @@
 
 **Status:** Step 0 (product/data architecture), Step 1 (database
 foundation), Step 1A (enquiry integrity hardening), Step 1B (production
-deployment), and Step 2 (application layer + Explore discovery + Chef
-Detail) are all complete. Still no real chef data anywhere, and no
-enquiry form yet (Step 3). Concept validated against one real-world
-candidate (Lucas / Jagers Catering) rather than designed in the
-abstract.
+deployment), Step 2 (application layer + Explore discovery + Chef
+Detail), Step 2A (Lucas de Jager / Jagers Catering curation research),
+and Step 2B (5-photo hero gallery, Background architecture, and Lucas
+de Jager production apply) are all complete. **Lucas de Jager / Jagers
+Catering is the first published Private Chef** — see "STEP 2B" below for
+the full applied state. No enquiry form yet (Step 3).
 
 ## PRIVATE CHEFS DATABASE FOUNDATION — DEPLOYED
 
@@ -191,6 +192,157 @@ currently has zero chefs, so only the empty state is reviewable on-device
 today; the populated path's evidence is its automated widget coverage
 (§ above).
 
+## STEP 2B — 5-PHOTO HERO GALLERY + BACKGROUND ARCHITECTURE + LUCAS DE JAGER APPLIED
+
+**First published chef: Lucas de Jager / Jagers Catering — APPLIED to
+production 2026-08-18.** `private_chefs.id =
+2e2089b0-f94d-46f5-923b-4ebf9135a5a1`, `publication_status = 'published'`,
+`selected_at` set to the apply timestamp as audit-only metadata (never
+read for visibility). Full curation research lives in
+`supabase/data/enrichment/private_chefs/lucas_de_jager/`
+(`PROFILE_RESEARCH_REPORT.md` is the source of truth). Profile-inclusion
+permission was confirmed by Lucas directly (`PROFILE_PERMISSION:
+APPROVED_BY_CHEF`). Photography permission has **not** been granted for
+any specific image, and no image files exist in this repository — the
+profile publishes with zero photos and no `profile_image_url`, using the
+existing branded placeholder, which is the expected and correct MVP
+result, not a blocker.
+
+**BACKGROUND — renamed from "Restaurant Provenance."** A chef's relevant
+professional background is broader than kitchen positions —
+hospitality, service, wine, and education can all be curation-relevant.
+The user-facing section heading changed from "RESTAURANT PROVENANCE" to
+**"BACKGROUND"**, and now merges two distinct sources: restaurant
+background (`private_chef_restaurant_history`, unchanged) and education
+background (new `private_chef_education` table), restaurant items
+rendered first, then education items — no sub-headings between them.
+
+**Architecture decision (Option A, chosen) vs. Option B (rejected)** —
+see `supabase/migrations/20260818130000_add_private_chef_education.sql`'s
+own header comment for the full reasoning:
+- **Option A (chosen)**: keep `private_chef_restaurant_history` exactly
+  as already deployed/tested/RLS'd, and add one new, small,
+  single-purpose `private_chef_education` table alongside it
+  (`private_chef_id` FK, `institution`, `program`, `period_text`,
+  `display_order`, `created_at`/`updated_at`, RLS gated on parent-chef-
+  published, no client write policy — mirrors every other Private Chefs
+  table's own established shape). Plain text `institution`/`program`,
+  no institution catalogue, no polymorphic association, never tappable
+  (no canonical "institution" domain exists or is planned).
+- **Option B (rejected)**: one generalized `private_chef_background`
+  table with a type discriminator and per-type-nullable columns.
+  Rejected because it would require reworking
+  `private_chef_restaurant_history`'s already-shipped canonical/text-
+  fallback/XOR/Michelin-attribution design for no present benefit, and a
+  polymorphic table with optional columns per type is *worse* for
+  referential integrity and simplicity than two small typed tables —
+  exactly the "CV system" this domain's own product principle warns
+  against building, not a simplification of it.
+
+**Parkheuvel — CONFIRMED, applied.** Lucas directly confirmed his
+Parkheuvel experience: restaurant Parkheuvel, Rotterdam; function
+Service / Front of House (explicitly not kitchen/chef); duration 2.5
+years; explicit permission to mention it granted
+(`DIRECTLY_CONFIRMED_BY_CHEF`). `private_chef_restaurant_history.id =
+ee0e36aa-ba1f-4b68-a6d9-f0e42bf8e5f1`, `restaurant_id =
+90d2b4ae-2b39-4bed-beec-31d6008a7ea8` (re-queried fresh immediately
+before apply), `role = 'Service'`, `period_text = '2.5 years'` — no more
+specific title, no exact dates, no kitchen responsibilities claimed or
+invented. The restaurant's current 2 Michelin stars are **not** written
+anywhere in Private Chef tables — recognition renders dynamically from
+the live `Restaurant` row via `PrivateChefProvenanceRow`'s existing,
+audited `StarRow` logic (§4 of the task: confirmed unambiguous as-is —
+the star renders only on the same line as, and grammatically bound only
+to, the restaurant's own name; `role`/`period_text` render on their own
+separate, visually subordinate line).
+
+**De Rooi Pannen — CONFIRMED, applied.** `private_chef_education.id =
+f5facd4b-720c-4520-997c-3c3bf2ca3681`, `institution = 'De Rooi Pannen'`,
+`program = 'Horeca Ondernemend Management'`, `period_text = null` — no
+degree level, diploma type, graduation year, campus, city, honours, or
+qualification equivalence is claimed; none of that was independently
+confirmed.
+
+**New migrations**:
+`supabase/migrations/20260818120000_add_private_chef_photos_and_biography_limit.sql`
+and
+`supabase/migrations/20260818130000_add_private_chef_education.sql` —
+both applied to production 2026-08-18, each recorded remotely exactly
+once. The first adds two things on top of the already-deployed
+foundation:
+
+- **`private_chef_photos`** — an admin-curated, up-to-5-image Detail-hero
+  gallery per chef. Shape mirrors `private_chef_restaurant_history`
+  (synthetic uuid pk, `private_chef_id` FK on delete cascade,
+  `display_order`, `created_at`/`updated_at` with the shared
+  `set_updated_at()` trigger) rather than the unrelated,
+  Storage-backed `public.photos` table (personal user-uploaded visit
+  photos — a different system for a different, private/user-owned use
+  case). `image_url` is a plain text URL, matching
+  `private_chefs.profile_image_url`'s own shape — admin-curated
+  photography, no new Supabase Storage bucket.
+  - **Ordering, single source of truth**: `display_order` alone — no
+    separate `is_cover` boolean. The lowest `display_order` for a chef
+    is always the cover/first hero image. A `unique (private_chef_id,
+    display_order)` constraint makes "which one is first" unambiguous
+    by construction.
+  - **Max 5, enforced at the database layer**: a single-purpose
+    `BEFORE INSERT` trigger (`private_chef_photos_max_five` /
+    `enforce_private_chef_photo_limit()`) rejects a 6th row for any
+    chef — not just a convention the admin/import workflow has to
+    remember.
+  - **RLS**: enabled, `select to anon, authenticated` gated on the
+    parent chef's `publication_status = 'published'`, matching
+    `private_chef_restaurant_history_public_read`'s exact predicate
+    shape. No client write policy — admin-managed, same as every other
+    Private Chefs table.
+  - **`profile_image_url` vs. `private_chef_photos` — the deliberate
+    MVP split**: `profile_image_url` is the compact portrait/avatar
+    used by catalogue rows (`PrivateChefRow`/`PrivateChefAvatar`) and
+    is also the Detail hero's fallback when no gallery photo exists.
+    `private_chef_photos` is the curated, richer Detail-hero gallery;
+    when present it is authoritative for the hero. Neither column is
+    dropped or deprecated by the other — this is additive, not a
+    migration of meaning.
+- **Biography length cap**: `private_chefs_biography_max_length` CHECK
+  constraint — `biography is null or char_length(biography) <= 900`,
+  added via `ALTER TABLE` on the already-deployed (still zero-row)
+  `private_chefs` table. Editorial target is 350–650 characters,
+  enforced by curation practice, not the database; this constraint is
+  only the hard outer bound. Scoped to `biography` only —
+  `personalization_note` and every other editorial field are
+  unaffected.
+
+**Hero gallery UI** (`PrivateChefHero`, now a `StatefulWidget`):
+background resolves in order — (1) `photos` (1 photo → static image; 2–5
+→ a swipeable `PageView` with a small restrained dot indicator, ivory for
+the active page, `secondaryOnDark` at reduced opacity otherwise, excluded
+from the accessibility tree since `PageView` already carries swipe
+semantics); (2) `profileImageUrl` as a single static fallback; (3) the
+existing branded gradient placeholder. No autoplay, no thumbnail rail, no
+large pagination chrome, no gold anywhere in the gallery — matching the
+same restrained, editorial (never marketplace/Instagram-feed) language
+the rest of this feature already uses. A broken image among several
+falls back per-image, never taking down the whole gallery. A small,
+hero-specific gallery implementation — not a new generic reusable
+carousel primitive, since nothing else in this app needs one yet.
+
+**Live verification performed** (2026-08-18, immediately after apply):
+RLS and schema confirmed on both new tables; `anon` role successfully
+read the chef, the restaurant background, and the education background
+end to end; `authenticated`/`anon` write attempts against both new
+tables rejected with RLS policy violations (rolled back, nothing
+persisted); final production counts `private_chefs = 1`,
+`private_chef_restaurant_history = 1`, `private_chef_education = 1`,
+`private_chef_photos = 0`, `private_chef_enquiries = 0`.
+
+**Physical-device review**: populated-state review (landing row, hero,
+About, Background — restaurant item with recognition + education item,
+Experience, Connect — all with zero photos, since none are available)
+is now possible for the first time. Photo-gallery swipe review
+specifically remains deferred until rights-cleared images are supplied
+for Lucas or any future chef.
+
 **Step 1 corrections to the original Step 0 proposal below** (the
 sections themselves are updated in place; this box is a map to what
 changed and why):
@@ -202,7 +354,7 @@ changed and why):
 | C | `source_url`/`verified_at` do **not** live on `private_chef_restaurant_history`. Omitting sensitive columns from the app's own SELECT list is not a security boundary — RLS in this project is row-level, not column-level, so any column on a client-readable table is reachable by any client holding a valid key. Evidence stays entirely outside any publicly-readable table: verification happens *before* a row is entered, via internal enrichment artifacts. | §13, §41, §45, §50, §52 |
 | D | `private_chef_enquiries` is a bespoke request, never a booking — unchanged from Step 0, reconfirmed. | §24–26 (unchanged) |
 | E | `private_chef_internal_reviews` remains deferred — not built in Step 1 either. | §15, §49 |
-| F | `private_chef_photos` remains deferred — no reusable media pattern in this codebase required it now; `profile_image_url` is sufficient for MVP. | §16, §31, §45 |
+| F | `private_chef_photos` remains deferred — no reusable media pattern in this codebase required it now; `profile_image_url` is sufficient for MVP. **Superseded in Step 2B** — a 5-photo hero gallery was product-approved and built; see §31. | §16, §31, §45 |
 
 **Step 1A hardening** (patched into the same, still-undeployed migration
 — see §26 "Enquiry integrity" for the full detail): the original
@@ -819,7 +971,7 @@ inputs into the human publication decision (§41) — not an automatic gate.
 private_chefs                          → public catalogue (published rows only) — BUILT, Step 1
 private_chef_restaurant_history        → public catalogue (parent chef published only) — BUILT, Step 1
 private_chef_enquiries                 → user-owned only (own INSERT/SELECT, no client UPDATE/DELETE) — BUILT, Step 1
-private_chef_photos                    → DEFERRED — not built in Step 1, see §31/§45
+private_chef_photos                    → public catalogue (parent chef published only) — BUILT, Step 2B, see §31/§45
 private_chef_internal_reviews          → DEFERRED — admin/service-role ONLY when built, never client-readable, see §15/§49
 ```
 
@@ -1161,30 +1313,29 @@ composition).
 
 ---
 
-## 31. Photography — `private_chef_photos` DEFERRED IN STEP 1
+## 31. Photography — `private_chef_photos` BUILT IN STEP 2B
 
-**Step 1 decision: `private_chef_photos` is not created.** Before
-building it, Step 1's audit checked whether an existing, mature media
-pattern in this codebase (the `photos`/`visit_photos` shape) made the
-table necessary now for the schema to stay coherent — it doesn't:
-`profile_image_url` alone is a complete, valid MVP shape for `private_chefs`,
-exactly as it is for a chef with no gallery at all. Building
-`private_chef_photos` now, with no real content or image-rights workflow
-to populate it, would be exactly the kind of speculative infrastructure
-this project's own conventions warn against.
+**Step 1 decision (superseded): `private_chef_photos` was not created.**
+Before building it, Step 1's audit checked whether an existing, mature
+media pattern in this codebase (the `photos`/`visit_photos` shape) made
+the table necessary immediately for the schema to stay coherent — it
+didn't: `profile_image_url` alone was a complete, valid MVP shape for a
+chef with no gallery at all, and building a gallery table with no real
+content or image-rights workflow to populate it would have been
+speculative infrastructure.
 
-**Original Step 0 recommendation, preserved as the future design** (not
-built): one portrait/hero image + a small curated gallery.
-`profile_image_url` on `private_chefs` covers the required portrait/card
-image; a future `private_chef_photos` table (mirroring the existing
-`photos`/`visit_photos` media-table shape — `id`, `private_chef_id`,
-`storage_path`, `caption`, `display_order`, `created_at`) would cover an
-optional curated gallery (signature dishes, table settings, the dining
-environment), matching `DATABASE_GUIDE.md`'s own Media Table principle:
-the database stores only `storage_path`/`caption`/`display_order`, never
-binary image data. A clean additive table whenever actual content
-requirements and an image-rights workflow are understood — not designed
-further here.
+**Step 2B: that content/image-rights need became concrete** (a 5-photo
+hero gallery, product-approved) and `private_chef_photos` was built —
+see the "STEP 2B" section above for the full design (schema, RLS,
+max-5 trigger, ordering, and the `profile_image_url` vs.
+`private_chef_photos` split). It uses a plain `image_url text` column
+(matching `profile_image_url`'s own shape), **not** the `photos`/
+`visit_photos` table's `storage_path` + Supabase-Storage pattern — that
+pattern is for user-uploaded personal content in a Storage bucket, a
+genuinely different system for a genuinely different (private,
+user-owned) use case. Private Chef photography remains admin-curated,
+supplied as already-hosted, rights-cleared URLs — exactly the model this
+section originally anticipated.
 
 ---
 
@@ -1586,7 +1737,21 @@ established nullability reasoning from Step 0.
 `source_url`/`verified_at` (removed entirely — evidence lives outside
 this table, §13).
 
-### `private_chef_photos` — DEFERRED, not built in Step 1 (§16, §31)
+### `private_chef_photos` (built, Step 2B)
+
+| Field | Type | Null | Default | Constraint / FK | Index | Public/Private |
+|---|---|---|---|---|---|---|
+| `id` | uuid | not null | `gen_random_uuid()` | pk | pk | Public |
+| `private_chef_id` | uuid | not null | — | FK → `private_chefs(id)` on delete cascade | idx | Public |
+| `image_url` | text | not null | — | — | — | Public |
+| `alt_text` | text | null | — | — | — | Public |
+| `display_order` | smallint | not null | `0` | unique with `private_chef_id` | — | Public |
+| `created_at` / `updated_at` | timestamptz | not null | `now()` | `updated_at` via `set_updated_at()` trigger | — | Internal |
+
+Max 5 rows per chef enforced by a `BEFORE INSERT` trigger
+(`private_chef_photos_max_five`), not merely a curation convention — see
+§31 for the full reasoning, including why `display_order` alone (no
+`is_cover` boolean) is the single ordering source of truth.
 
 ### `private_chef_enquiries` (built)
 
@@ -1698,7 +1863,16 @@ private_chef_enquiries
     grant in the migration's own text, matching the absence of any
     update/delete policy)
 
-private_chef_photos          — DEFERRED, not built (§16, §31)
+private_chef_photos
+  select: to anon, authenticated using (
+    exists (
+      select 1 from private_chefs pc
+      where pc.id = private_chef_id and pc.publication_status = 'published'
+    )
+  )
+  insert/update/delete: none for any client role
+  grant: select to anon, authenticated
+
 private_chef_internal_reviews — DEFERRED, not built (§15, §49)
 ```
 
@@ -1883,3 +2057,167 @@ explicitly out of this MVP, with the architectural seams for each
 documented above (§33–36, §38) so that building any of them later
 requires an *extension*, never a redesign — matching this project's own
 stated database philosophy.
+
+---
+
+## 61. Step 2C — Editorial discovery redesign + cover photo
+
+The Private Chefs landing was rebuilt from a compact, directory-style
+list (`PrivateChefRow` + circular `PrivateChefAvatar`, both deleted in
+this step) into a curated editorial collection — the product framing is
+"a members-club recommendation," not a marketplace/search-results list,
+matching how ~5 chefs per country is expected at this scale, not
+hundreds. The deepGreen masthead (title, subtitle, back button, safe
+-area treatment) is unchanged from its original Step 2 approval; only the
+body beneath it changed.
+
+**Country grouping.** Chefs are grouped by `home_country_code` under a
+quiet uppercase country heading (`CsTypography.eyebrow`, taupe) —
+deliberately not "N results" search-result language. Grouping and
+alphabetical-by-resolved-name sort order live in a pure function
+(`groupChefsByCountry`, `lib/features/private_chefs/private_chef_grouping.dart`)
+with no query and no hardcoded country — a second/third/fourth country
+section appears automatically the moment a published chef with that code
+exists. No editorial `display_order` field exists on `private_chefs` yet;
+chefs within a country keep `getPublishedChefs`'s existing `display_name`
+ascending order rather than inventing a ranking field for one chef. A
+chef with no `home_country_code` at all falls into an unlabeled group
+rendered last, so a data gap never crashes the grouping — not expected in
+practice today (Lucas has `home_country_code = 'NL'`), but the function
+handles it rather than assuming every row is complete.
+
+**The discovery card** (`PrivateChefDiscoveryCard`,
+`lib/features/private_chefs/widgets/private_chef_discovery_card.dart`)
+replaces the old row entirely: a large portrait cover photo (4:5 aspect
+ratio, `CsRadius.card` corners — the same "editorial, not bubbly" radius
+token used elsewhere, not a new value), then `display_name` (primary),
+then an optional `business_name · location` subordinate line (person
+-first, matching §4/§30's identity hierarchy — a chef with no
+`business_name` shows only the location, never a dangling separator),
+then up to 3 quiet uppercase descriptors. The whole card is one tappable
+region into the existing `PrivateChefDetailScreen` — no "View chef"
+button, no score, no rating, no price badge, no decorative gold.
+
+**Cover photo semantics.** The landing card and Chef Detail's hero now
+both resolve their image from the *same* source: `private_chef_photos`'
+lowest-`display_order` row is the cover, used for the landing card AND as
+photo #1 of Chef Detail's hero gallery (`PrivateChefHero`, unchanged —
+its existing photos/profileImageUrl/placeholder fallback order already
+correctly renders a single photo with no misleading swipe affordance, so
+Step 2C reused it rather than rebuilding it). Photos #2–5 remain
+Detail-only story/gallery content, swipeable, cover first, `display_order`
+sequenced — nothing about the 5-photo architecture or the max-5 DB
+trigger changed. The landing card itself never falls back to
+`profile_image_url` — only the cover photo or the large branded
+placeholder (`CsImagePlaceholder`, sized to the full card, never the old
+small circular avatar). `PrivateChefRepository.getCoverPhotos` resolves
+covers for every chef on the landing in one batched query (never one
+query per chef), mirroring `getRestaurantHistory`'s existing batched
+-lookup shape.
+
+**Location presentation.** `formatChefLocation`
+(`lib/features/private_chefs/private_chef_location.dart`) prefers a full,
+user-facing country name ("Breda, Netherlands") over the raw ISO code
+("Breda, NL"), resolved via the same `resolveVenueCountries`/
+`public.countries` helper Restaurant/Hotel already share
+(`PrivateChefRepository.getCountryNames` — no new Private-Chefs-specific
+country table or code→name map). Falls back to the raw code only when the
+countries table has no match. This also changed Chef Detail's own hero
+location line from the raw code to the resolved name, since showing
+"Breda, Netherlands" on the landing card and "Breda, NL" on the very next
+screen for the same chef would read as inconsistent — every other part of
+Chef Detail (ABOUT/BACKGROUND/THE EXPERIENCE/CONNECT) is untouched, and
+restaurant-provenance rows keep their existing raw-code format (`Rotterdam
+NL`), which is a different, already-established convention for that
+context.
+
+**Descriptors.** Up to 3 quiet editorial micro-labels
+(`chefDescriptors`, `lib/features/private_chefs/private_chef_descriptors.dart`),
+deliberately not a marketplace filter/chip system: `PRIVATE DINING` always
+shown (the one universal domain descriptor for this catalogue), `WINE
+PAIRING` only when `wine_pairing_available` is true, `TRAVELS` only when
+`travel_available` is true. Never invented per chef, never more than
+these 3 — a larger taxonomy (tasting menus, seasonal, local produce, ...)
+would need real supporting schema fields this table doesn't have and
+isn't being added speculatively here.
+
+**Media architecture — the `catalogue-media` Storage bucket.** Once the
+user supplied Lucas's actual cover photograph, the pre-existing "no
+Storage bucket needed" conclusion (image URLs were always a plain
+`text` column, see §31) turned out to be half right: no bucket was
+*structurally* required by the schema, but the project also had nowhere
+of its own to host a rights-cleared image (the only existing bucket,
+`visit-photos`, is private and user-scoped for personal visit
+photography — architecturally wrong for public, admin-curated catalogue
+content, and left untouched). `supabase/migrations/20260818150000_add_catalogue_media_storage.sql`
+adds a small, deliberately reusable bucket for exactly this need:
+`catalogue-media`, **public read, admin/service-role write only** —
+public buckets serve objects directly over their public URL without
+evaluating `storage.objects` RLS at all (so `Image.network(url)` needs
+no auth), and a `select`-only policy exists for defence-in-depth on the
+Storage API itself; no `insert`/`update`/`delete` policy exists for
+`anon`/`authenticated` at all, so those roles are denied by default —
+only the service role (used by admin import tooling, never the app)
+bypasses RLS to write. Object paths follow `{entity_type}/{entity_id}/
+{display_order}.{ext}` (e.g. `private-chefs/{chef_uuid}/0.jpg`) —
+general enough for a future `restaurants/{id}/...` or `hotels/{id}/...`
+prefix without a new bucket or migration, matching this section's own
+"reusable catalogue-media concept, not a Private-Chef-only hack"
+requirement. `private_chef_photos.image_url`/`private_chefs.profile_image_url`
+keep their existing plain-`text` shape unchanged — they now typically
+*contain* a `catalogue-media` public URL, but the column itself doesn't
+know or care where the URL points.
+
+**Lucas's cover photo — production state.** Lucas's supplied photograph
+(chef whites, green apron, holding a plated dish) is uploaded to
+`catalogue-media` at `private-chefs/2e2089b0-f94d-46f5-923b-4ebf9135a5a1/0.jpg`,
+with exactly one `private_chef_photos` row for Lucas at `display_order =
+0` (the cover). Provenance (user-supplied in-conversation, integration
+date, approved use) is recorded in
+`supabase/data/enrichment/private_chefs/lucas_de_jager/proposed_photos.json`
+— no photographer/copyright owner/licence terms are recorded anywhere,
+since none were ever stated. The original source file remains as an
+internal enrichment artifact (`lucas_cover_source.jpg`, same directory)
+— never bundled into Flutter assets; production runtime image loading
+goes exclusively through `catalogue-media`/`private_chef_photos`. Lucas
+is the first (and, as of this step, only) chef with a curated cover —
+every other piece of this section (grouping, the discovery card,
+descriptors, location, the large placeholder fallback) was built and
+verified against the zero-photo state too, since that's what every
+*future* chef starts in before their own cover is curated.
+
+**Physical-device refinements (approved).** Three adjustments came out
+of on-device review, all scoped narrowly:
+- **Masthead height** — the deepGreen masthead's fixed spacing was
+  trimmed (back-button top padding `xs`→`0`, the gap above the title
+  `sm`→`xs`, the gap below the subtitle `xl`→`base`; 16px total) so the
+  first chef photograph appears sooner, without touching typography,
+  the back arrow, or SafeArea handling.
+- **Chef Detail hero focal alignment** — `PrivateChefHero`'s photo now
+  uses a top-biased `Alignment(0, -0.8)` (previously dead-center),
+  independent of the discovery card's own separately-tuned `Alignment(0,
+  -0.3)`: the hero's box is landscape-shaped while chef photography is
+  typically portrait, so a naive center-crop pushed a subject's face up
+  behind the iOS Dynamic Island/status-bar strip. Biasing toward the top
+  of the source image keeps the natural headroom above a person's head
+  in that strip instead of their face — a general fix for any hero
+  photo, not tuned to Lucas's photo specifically, and the source image
+  itself was never re-cropped or edited.
+- **Chef Detail top navigation** — the SliverAppBar's top-center title
+  (which duplicated the large `displayHero` name already shown lower in
+  the same hero, and added visual competition in the same crowded top
+  strip) was removed for this screen only; only the back arrow remains
+  in the top strip. Restaurant/Hotel/Event Detail keep their own
+  existing top-title convention — this change is scoped to Private
+  Chefs' hero alone.
+
+**Status: physical-device approved.** The editorial discovery landing,
+masthead, Lucas's cover photo/crop/focal treatment, country presentation,
+descriptors, and Chef Detail hero have all been reviewed on a physical
+iPhone and accepted as-is. Nothing here introduces marketplace semantics
+(no ratings, reviews, pricing filters, availability, booking, or search
+-results framing) — the catalogue-media write model (admin/service-role
+only) is also already shaped to support a future owner/admin-submitted
+-then-approved content workflow (for chefs, and potentially Restaurants/
+Hotels) without a schema change: it would add an approval step in front
+of the same service-role write path, not a new one.

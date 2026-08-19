@@ -3,9 +3,14 @@
 // Supabase.instance.client eagerly in initState — same established
 // Supabase-eager-screen limitation as private_chefs_screen_shell_test.dart
 // — so this mirrors the exact widget tree its build() produces (hero +
-// ABOUT + RESTAURANT PROVENANCE + THE EXPERIENCE + CONNECT, each
-// conditional, separated by SectionDivider only between sections that are
-// actually present) rather than pumping the real screen.
+// ABOUT + BACKGROUND + THE EXPERIENCE + CONNECT, each conditional,
+// separated by SectionDivider only between sections that are actually
+// present) rather than pumping the real screen.
+//
+// Step 2B: "Restaurant Provenance" was renamed to "Background" and now
+// merges two distinct sources — restaurant history
+// (PrivateChefRestaurantHistory/PrivateChefProvenanceRow) and education
+// (PrivateChefEducation/PrivateChefEducationRow), restaurant items first.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -13,14 +18,22 @@ import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/core/widgets/section_divider.dart';
+import 'package:michelin_passport/features/private_chefs/private_chef_location.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_connect_section.dart';
+import 'package:michelin_passport/features/private_chefs/widgets/private_chef_education_row.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_experience_section.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_hero.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_provenance_row.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_states.dart';
 import 'package:michelin_passport/models/private_chef.dart';
+import 'package:michelin_passport/models/private_chef_education.dart';
 import 'package:michelin_passport/models/private_chef_restaurant_history.dart';
 import 'package:michelin_passport/models/restaurant.dart';
+import 'package:michelin_passport/models/venue_country.dart';
+
+const _countryNames = {
+  'NL': VenueCountry(name: 'Netherlands', code: 'NL', flag: '🇳🇱'),
+};
 
 const _restaurant = Restaurant(
   id: 'r1',
@@ -57,17 +70,30 @@ final _history = [
     'private_chef_id': 'c1',
     'restaurant_id': 'r1',
     'restaurant_name_text': null,
-    'role': 'Sous Chef',
-    'period_text': '2019–2022',
+    'role': 'Service',
+    'period_text': '2.5 years',
     'display_order': 0,
   }, restaurant: _restaurant),
 ];
 
+final _education = [
+  const PrivateChefEducation(
+    id: 'e1',
+    privateChefId: 'c1',
+    institution: 'De Rooi Pannen',
+    program: 'Horeca Ondernemend Management',
+  ),
+];
+
 // Mirrors _PrivateChefDetailScreenState._body's section-assembly exactly.
-Widget _body(PrivateChef chef, List<PrivateChefRestaurantHistory> history) {
+Widget _body(
+  PrivateChef chef,
+  List<PrivateChefRestaurantHistory> history, [
+  List<PrivateChefEducation> education = const [],
+]) {
   final biography = (chef.biography ?? '').trim();
   final hasBiography = biography.isNotEmpty;
-  final hasProvenance = history.isNotEmpty;
+  final hasBackground = history.isNotEmpty || education.isNotEmpty;
   final hasInstagram = (chef.instagramUrl ?? '').trim().isNotEmpty;
   final hasWebsite = (chef.websiteUrl ?? '').trim().isNotEmpty;
 
@@ -87,12 +113,12 @@ Widget _body(PrivateChef chef, List<PrivateChefRestaurantHistory> history) {
           ),
         ],
       ),
-    if (hasProvenance)
+    if (hasBackground)
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'RESTAURANT PROVENANCE',
+            'BACKGROUND',
             style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
           ),
           const SizedBox(height: CsSpacing.xs),
@@ -101,6 +127,8 @@ Widget _body(PrivateChef chef, List<PrivateChefRestaurantHistory> history) {
               history: row,
               onTap: row.isCanonical ? () {} : null,
             ),
+          for (final item in education)
+            PrivateChefEducationRow(education: item),
         ],
       ),
     PrivateChefExperienceSection(chef: chef),
@@ -122,63 +150,63 @@ Widget _body(PrivateChef chef, List<PrivateChefRestaurantHistory> history) {
   );
 }
 
-Widget _shell(PrivateChef chef, List<PrivateChefRestaurantHistory> history) =>
-    MaterialApp(
-      home: Scaffold(
-        backgroundColor: AppColors.deepGreen,
-        body: CustomScrollView(
-          slivers: [
-            PrivateChefHero(
-              displayName: chef.displayName,
-              businessName: chef.businessName,
-              location:
-                  [
-                    if ((chef.homeCity ?? '').isNotEmpty) chef.homeCity!,
-                    if ((chef.homeCountryCode ?? '').isNotEmpty)
-                      chef.homeCountryCode!,
-                  ].isEmpty
-                  ? null
-                  : [
-                      if ((chef.homeCity ?? '').isNotEmpty) chef.homeCity!,
-                      if ((chef.homeCountryCode ?? '').isNotEmpty)
-                        chef.homeCountryCode!,
-                    ].join(', '),
-              profileImageUrl: chef.profileImageUrl,
-            ),
-            SliverToBoxAdapter(
-              child: ColoredBox(
-                color: AppColors.ivory,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    CsSpacing.pageHorizontal,
-                    CsSpacing.xl,
-                    CsSpacing.pageHorizontal,
-                    CsSpacing.section,
-                  ),
-                  child: _body(chef, history),
-                ),
-              ),
-            ),
-          ],
+Widget _shell(
+  PrivateChef chef,
+  List<PrivateChefRestaurantHistory> history, [
+  List<PrivateChefEducation> education = const [],
+]) => MaterialApp(
+  home: Scaffold(
+    backgroundColor: AppColors.deepGreen,
+    body: CustomScrollView(
+      slivers: [
+        PrivateChefHero(
+          displayName: chef.displayName,
+          businessName: chef.businessName,
+          location: formatChefLocation(
+            city: chef.homeCity,
+            countryCode: chef.homeCountryCode,
+            countryNames: _countryNames,
+          ),
+          profileImageUrl: chef.profileImageUrl,
         ),
-      ),
-    );
+        SliverToBoxAdapter(
+          child: ColoredBox(
+            color: AppColors.ivory,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                CsSpacing.pageHorizontal,
+                CsSpacing.xl,
+                CsSpacing.pageHorizontal,
+                CsSpacing.section,
+              ),
+              child: _body(chef, history, education),
+            ),
+          ),
+        ),
+      ],
+    ),
+  ),
+);
 
 void main() {
   group('PrivateChefDetailScreen shell', () {
     testWidgets('renders hero identity and every present section', (
       tester,
     ) async {
-      await tester.pumpWidget(_shell(_fullChef, _history));
+      await tester.pumpWidget(_shell(_fullChef, _history, _education));
       expect(find.text('Lucas'), findsWidgets);
       expect(find.text('Test Catering'), findsWidgets);
+      // Step 2C §12/§15: hero location resolves to the full country name
+      // ("Breda, Netherlands"), never the raw ISO code.
+      expect(find.text('Breda, Netherlands'), findsOneWidget);
       expect(find.text('ABOUT'), findsOneWidget);
       expect(find.text('A short editorial biography.'), findsOneWidget);
-      expect(find.text('RESTAURANT PROVENANCE'), findsOneWidget);
+      expect(find.text('BACKGROUND'), findsOneWidget);
       // Renders inside a Text.rich span alongside StarRow — see
       // private_chef_provenance_row_test.dart's own note on why
       // textContaining, not text, is the correct finder here.
       expect(find.textContaining('Parkheuvel'), findsOneWidget);
+      expect(find.text('De Rooi Pannen'), findsOneWidget);
       expect(find.text('THE EXPERIENCE'), findsOneWidget);
       expect(find.text('CONNECT'), findsOneWidget);
     });
@@ -191,12 +219,62 @@ void main() {
       expect(find.text('ABOUT'), findsNothing);
     });
 
-    testWidgets('no provenance -> no RESTAURANT PROVENANCE section', (
-      tester,
-    ) async {
-      final chef = PrivateChef(id: 'c1', slug: 'lucas', displayName: 'Lucas');
-      await tester.pumpWidget(_shell(chef, const []));
-      expect(find.text('RESTAURANT PROVENANCE'), findsNothing);
+    testWidgets(
+      'no restaurant history and no education -> no BACKGROUND section',
+      (tester) async {
+        final chef = PrivateChef(id: 'c1', slug: 'lucas', displayName: 'Lucas');
+        await tester.pumpWidget(_shell(chef, const []));
+        expect(find.text('BACKGROUND'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'the old "Restaurant Provenance" heading is never rendered anymore',
+      (tester) async {
+        await tester.pumpWidget(_shell(_fullChef, _history, _education));
+        expect(find.text('RESTAURANT PROVENANCE'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'restaurant history alone (no education) still renders BACKGROUND',
+      (tester) async {
+        await tester.pumpWidget(_shell(_fullChef, _history, const []));
+        expect(find.text('BACKGROUND'), findsOneWidget);
+        expect(find.textContaining('Parkheuvel'), findsOneWidget);
+        expect(find.text('De Rooi Pannen'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'education alone (no restaurant history) still renders BACKGROUND',
+      (tester) async {
+        await tester.pumpWidget(_shell(_fullChef, const [], _education));
+        expect(find.text('BACKGROUND'), findsOneWidget);
+        expect(find.text('De Rooi Pannen'), findsOneWidget);
+        expect(find.textContaining('Parkheuvel'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'restaurant items render before education items within BACKGROUND, '
+      'matching the approved worked example',
+      (tester) async {
+        await tester.pumpWidget(_shell(_fullChef, _history, _education));
+        final restaurantY = tester
+            .getTopLeft(find.textContaining('Parkheuvel'))
+            .dy;
+        final educationY = tester.getTopLeft(find.text('De Rooi Pannen')).dy;
+        expect(restaurantY, lessThan(educationY));
+      },
+    );
+
+    testWidgets('education row shows institution, program, and no period '
+        'when none is known', (tester) async {
+      await tester.pumpWidget(_shell(_fullChef, const [], _education));
+      expect(find.text('De Rooi Pannen'), findsOneWidget);
+      expect(find.text('Horeca Ondernemend Management'), findsOneWidget);
+      expect(find.byIcon(Icons.arrow_forward_rounded), findsNothing);
     });
 
     testWidgets('no instagram/website -> no CONNECT section', (tester) async {
@@ -205,14 +283,38 @@ void main() {
       expect(find.text('CONNECT'), findsNothing);
     });
 
+    testWidgets(
+      'a 900-character biography (the hard product maximum) renders in '
+      'full — no "Read more", no collapse, no ellipsis truncation',
+      (tester) async {
+        final longBiography = List.generate(
+          900,
+          (i) => 'abcdefghijklmnopqrstuvwxyz '[i % 27],
+        ).join();
+        expect(longBiography.length, 900);
+        final chef = PrivateChef(
+          id: 'c1',
+          slug: 'lucas',
+          displayName: 'Lucas',
+          biography: longBiography,
+        );
+        await tester.pumpWidget(_shell(chef, const []));
+        final aboutText = tester.widget<Text>(find.text(longBiography));
+        expect(aboutText.maxLines, isNull);
+        expect(aboutText.overflow, isNot(TextOverflow.ellipsis));
+        expect(find.textContaining('Read more'), findsNothing);
+        expect(tester.takeException(), isNull);
+      },
+    );
+
     testWidgets('no score/rating/selected badge anywhere', (tester) async {
-      await tester.pumpWidget(_shell(_fullChef, _history));
+      await tester.pumpWidget(_shell(_fullChef, _history, _education));
       expect(find.textContaining('Chasing Stars Selected'), findsNothing);
       expect(find.textContaining('rating'), findsNothing);
     });
 
     testWidgets('no dead "Request an Experience" CTA', (tester) async {
-      await tester.pumpWidget(_shell(_fullChef, _history));
+      await tester.pumpWidget(_shell(_fullChef, _history, _education));
       expect(find.textContaining('Request'), findsNothing);
       expect(find.textContaining('Coming soon'), findsNothing);
     });
@@ -253,7 +355,14 @@ void main() {
             'several countries and regions for testing purposes',
       );
       await tester.binding.setSurfaceSize(const Size(320, 844));
-      await tester.pumpWidget(_shell(chef, _history));
+      await tester.pumpWidget(_shell(chef, _history, _education));
+      expect(tester.takeException(), isNull);
+      await tester.binding.setSurfaceSize(null);
+    });
+
+    testWidgets('390px width — no overflow', (tester) async {
+      await tester.binding.setSurfaceSize(const Size(390, 844));
+      await tester.pumpWidget(_shell(_fullChef, _history, _education));
       expect(tester.takeException(), isNull);
       await tester.binding.setSurfaceSize(null);
     });
@@ -276,7 +385,7 @@ void main() {
                       color: AppColors.ivory,
                       child: Padding(
                         padding: const EdgeInsets.all(CsSpacing.pageHorizontal),
-                        child: _body(_fullChef, _history),
+                        child: _body(_fullChef, _history, _education),
                       ),
                     ),
                   ),

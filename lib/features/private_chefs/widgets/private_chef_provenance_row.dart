@@ -5,14 +5,25 @@ import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../models/private_chef_restaurant_history.dart';
 
-/// One row in Chef Detail's RESTAURANT PROVENANCE section.
+/// One restaurant-background item in Chef Detail's BACKGROUND section
+/// (renamed from "Restaurant Provenance" in Step 2B — background now also
+/// includes non-restaurant items, e.g. education, via the sibling
+/// [PrivateChefEducationRow] — but this widget itself is unchanged:
+/// restaurant background keeps its own richer shape).
 ///
 /// HARD RULE (PRIVATE_CHEFS.md §10/§15): [StarRow] renders beside the
 /// RESTAURANT name, sourced only from [PrivateChefRestaurantHistory.
 /// restaurant]'s own current `michelinStars` — never beside the chef's own
 /// name, never implying the chef personally holds the recognition. This is
 /// the only place in the entire Private Chefs feature a star is ever
-/// rendered.
+/// rendered. Audited explicitly in Step 2B for a non-kitchen role
+/// (front-of-house "Service"): the star renders only on the same line as
+/// —  and grammatically bound only to — the restaurant's own name (via one
+/// `Text.rich` span); `role`/`period_text` render on their own separate
+/// line below, in a visually distinct, subordinate style. There is no
+/// rendering path where a star could appear adjacent to a role/period
+/// value or to the chef's own name — confirmed unambiguous as-is, no
+/// change required.
 ///
 /// Canonical rows (`history.isCanonical`) are tappable → the caller's
 /// [onTap] (RestaurantDetailScreen) and show the restaurant's city + flag.

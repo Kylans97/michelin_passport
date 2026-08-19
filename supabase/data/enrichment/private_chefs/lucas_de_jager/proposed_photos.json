@@ -1,0 +1,24 @@
+{
+  "_status": "APPLIED to production 2026-08-18 — private_chef_photos.id = 680461a1-bc6c-4b2e-8c5d-c1f096622476",
+  "_note": "Supersedes this file's original 'NO PHOTOS PROPOSED' state (Step 2B). Step 2C: the user supplied one cover photograph directly in-conversation and explicitly instructed it be used as Lucas's Private Chefs cover image. No Instagram or website images were scraped, downloaded, or otherwise used — this is the only photo asset ever incorporated for Lucas.",
+  "photos": [
+    {
+      "display_order": 0,
+      "role": "cover — landing discovery card + Chef Detail hero (first image)",
+      "source": "user-provided directly in-conversation, not sourced from any website/social account",
+      "source_file": "supabase/data/enrichment/private_chefs/lucas_de_jager/lucas_cover_source.jpg (original, preserved unmodified)",
+      "integration_date": "2026-08-18",
+      "approved_use": "Lucas de Jager's Private Chefs profile/cover photo, per explicit user instruction",
+      "image_inspection": {
+        "format": "JPEG",
+        "pixel_dimensions": "1206x1603 (portrait)",
+        "exif_orientation": "upper-left (no rotation required)",
+        "file_size_bytes": 192005
+      },
+      "production_storage_destination": "Supabase Storage, public 'catalogue-media' bucket, object path private-chefs/2e2089b0-f94d-46f5-923b-4ebf9135a5a1/0.jpg",
+      "production_image_url": "https://wcmxugunvwsrulcpeyrc.supabase.co/storage/v1/object/public/catalogue-media/private-chefs/2e2089b0-f94d-46f5-923b-4ebf9135a5a1/0.jpg",
+      "rights_note": "Approved for use by explicit user instruction. Photographer/copyright owner/license terms were never stated and are NOT recorded here — nothing about them is invented or assumed."
+    }
+  ],
+  "future_requirement": "Photos #2-5 (story/gallery) remain open — up to 4 more rights-cleared images may be added later at display_order 1-4 via the same trusted/admin workflow, never a client-facing write."
+}

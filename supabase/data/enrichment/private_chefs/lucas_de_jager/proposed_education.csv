@@ -1,0 +1,2 @@
+status,private_chef_slug,institution,program,period_text,display_order,notes
+APPLIED,lucas-de-jager,De Rooi Pannen,Horeca Ondernemend Management,,0,"Step 2B: USER_CONFIRMED directly by Lucas. period_text left NULL -- degree level/diploma type/graduation year/campus/city/honours/qualification equivalence were not independently confirmed and are not inferred. display_order=0 renders after all restaurant-background items in the merged BACKGROUND section (restaurant items first, per the approved worked example), independent of this table's own internal ordering."
