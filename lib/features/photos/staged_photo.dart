@@ -31,11 +31,22 @@ String extensionOfXFile(XFile file) {
 /// by both the staged pre-save picker (Add Visit/Add Stay) and
 /// VisitPhotosSection's post-save "add more photos" — one picker
 /// configuration, not two.
-Future<List<StagedPhoto>> pickStagedPhotos() async {
+///
+/// [limit] (Events V2 Step 4's photo-limit correction) is forwarded
+/// verbatim to `image_picker`'s own `pickMultiImage(limit: ...)` — left
+/// `null` (unlimited, today's exact behavior) by every existing caller
+/// (Add Visit/Add Stay, VisitPhotosSection), so Restaurant/Hotel photo
+/// selection is completely unaffected by this parameter's addition. Only
+/// AttendancePhotosSection passes a value. Advisory only, per
+/// `image_picker`'s own doc comment ("this value may be ignored by
+/// platforms that cannot support it") — the caller must still clamp the
+/// returned list defensively; see `clampToRemainingCapacity`.
+Future<List<StagedPhoto>> pickStagedPhotos({int? limit}) async {
   final picker = ImagePicker();
   final picked = await picker.pickMultiImage(
     imageQuality: 85,
     maxWidth: 1600,
+    limit: limit,
     requestFullMetadata: false,
   );
   return [

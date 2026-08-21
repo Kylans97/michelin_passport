@@ -162,6 +162,7 @@ class AnalyticsProperties {
     this.friendSignalType,
     this.attendanceSource,
     this.resultsCount,
+    this.wouldRecommend,
   });
 
   /// The catalogue entity type this action concerns (Follow's target,
@@ -232,6 +233,17 @@ class AnalyticsProperties {
   /// free text can.
   final int? resultsCount;
 
+  /// Events V2 Step 4.1. The Yes/No value being reported by
+  /// [AnalyticsEvent.eventRecommendationAdded] only — the controlled
+  /// nullable boolean mirroring `event_confirmed_attendance.would_recommend`
+  /// exactly (see that column's own comment: NULL is never sent as a
+  /// property value, since there is nothing to report once cleared).
+  /// Deliberately left null (omitted from the wire payload) on
+  /// [AnalyticsEvent.eventRecommendationRemoved] — that event's entire
+  /// meaning is "the answer no longer exists," so attaching a stale true/
+  /// false here would misrepresent it as a fresh Yes/No.
+  final bool? wouldRecommend;
+
   /// Serializes to wire-safe key/value pairs — every enum becomes its
   /// [wireName], every null field is omitted entirely rather than sent as
   /// an explicit null. Used by [DebugPrintAnalyticsService] today, and is
@@ -260,6 +272,7 @@ class AnalyticsProperties {
     put('friend_signal_type', friendSignalType?.wireName);
     put('attendance_source', attendanceSource?.wireName);
     put('results_count', resultsCount);
+    put('would_recommend', wouldRecommend);
     return map;
   }
 }

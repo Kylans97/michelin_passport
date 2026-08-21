@@ -107,6 +107,7 @@ void main() {
         friendSignalType: FriendSignalType.going,
         attendanceSource: AttendanceSource.tripCompletion,
         resultsCount: 5,
+        wouldRecommend: true,
       );
 
       expect(properties.toMap(), {
@@ -128,7 +129,20 @@ void main() {
         'friend_signal_type': 'going',
         'attendance_source': 'trip_completion',
         'results_count': 5,
+        'would_recommend': true,
       });
+    });
+
+    test('would_recommend serializes false as an explicit false, never '
+        'omitted — false is a genuine answer, not "unset"', () {
+      const properties = AnalyticsProperties(wouldRecommend: false);
+      expect(properties.toMap(), {'would_recommend': false});
+    });
+
+    test('would_recommend is omitted entirely when null — Step 4.1\'s '
+        '"never send a value for event_recommendation_removed" rule', () {
+      const properties = AnalyticsProperties(wouldRecommend: null);
+      expect(properties.toMap(), isEmpty);
     });
 
     test('a null field is omitted entirely, never sent as an explicit '

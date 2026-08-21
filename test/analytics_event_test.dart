@@ -28,6 +28,9 @@ void main() {
         AnalyticsEvent.eventRatingAdded: 'event_rating_added',
         AnalyticsEvent.eventPhotoAdded: 'event_photo_added',
         AnalyticsEvent.eventCommentAdded: 'event_comment_added',
+        AnalyticsEvent.eventRecommendationAdded: 'event_recommendation_added',
+        AnalyticsEvent.eventRecommendationRemoved:
+            'event_recommendation_removed',
         AnalyticsEvent.tripEventAdded: 'trip_event_added',
         AnalyticsEvent.tripRestaurantAdded: 'trip_restaurant_added',
         AnalyticsEvent.tripHotelAdded: 'trip_hotel_added',

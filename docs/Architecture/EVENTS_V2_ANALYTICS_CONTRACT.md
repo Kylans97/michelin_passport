@@ -105,6 +105,8 @@ Carries `attendanceSource` (§6) mirroring `event_confirmed_attendance.source` e
 | `event_rating_added` | Fired on every save (create or update) of `event_confirmed_attendance.rating` — no separate "updated" event; see the original taxonomy's own reasoning (`EVENTS_V2_ARCHITECTURE.md` §31.2) |
 | `event_photo_added` | A photo is attached to a confirmed attendance |
 | `event_comment_added` | A comment is saved on a confirmed attendance |
+| `event_recommendation_added` | Events V2 Step 4.1. Fired on every save that results in a definite Yes/No `event_confirmed_attendance.would_recommend` value — first answer AND changing an existing answer both fire this one event, same "no separate updated event" convention as `event_rating_added` above |
+| `event_recommendation_removed` | Events V2 Step 4.1. Fired only when a save changes `would_recommend` from a definite Yes/No back to `NULL` — i.e. an existing answer was deliberately cleared. **Not adopted**: reporting a null update as `event_recommendation_added` with no value — that would misrepresent "the user removed their answer" as "the user just told us something." Never fired when the value was already `NULL` (nothing to remove) |
 
 ### Trips
 
@@ -157,8 +159,9 @@ Carries `sourceContext=friendSignal` + `friendSignalType` (§6) — never a frie
 | `friendSignalType` | `FriendSignalType` | OPTIONAL | *what kind* of friend signal — never *which* friend |
 | `attendanceSource` | `AttendanceSource` | REQUIRED on `event_attendance_confirmed` | mirrors the DB column exactly |
 | `resultsCount` | `int` | OPTIONAL | `event_search_performed` only — a count, never the query text |
+| `wouldRecommend` | `bool` | OPTIONAL | Events V2 Step 4.1. `event_recommendation_added` only — the new Yes/No value being reported. Never populated on `event_recommendation_removed` (there is no value once cleared — sending a stale `true`/`false` there would misrepresent a removal as a fresh answer) |
 
-Two properties added in this step, not present in the architecture document's original property list: `attendanceSource` (needed to align with the Step 1 database's own `source` constraint, per this step's explicit instruction) and `hostCount` (needed for the host-attribution correctness requirement, §10). Both are additive — nothing in the original list changed meaning.
+Two properties added in Step 2, not present in the architecture document's original property list: `attendanceSource` (needed to align with the Step 1 database's own `source` constraint, per this step's explicit instruction) and `hostCount` (needed for the host-attribution correctness requirement, §10). Both are additive — nothing in the original list changed meaning. `wouldRecommend` was added in Step 4.1 for the same reason: it mirrors a new DB column (`event_confirmed_attendance.would_recommend`), and the boolean value itself was explicitly approved for analytics (§9 below) rather than left DO_NOT_TRACK by default.
 
 ## 7. Do-not-track
 
@@ -243,7 +246,7 @@ Fire `ticket_link_opened` **after `launchUrl` returns `true`** (the actual OS-le
 |---|---|---|
 | `event_opened`, `event_search_performed`, `event_filter_applied`, `ticket_link_opened`, `host_profile_opened`, `trip_review_opened`, `friends_signal_opened` | **Client** | inherently a UI moment with no reliable server-side equivalent |
 | `follow_added`/`removed`, `event_interested_added`/`removed`, `event_going_added`/`removed`, `event_attendance_confirmed`, `event_attendance_denied`, `passport_item_created`/`removed` | **Client at Step 3, server-emittable in a future phase** | Step 3 fires these client-side immediately after a successful write (§11); a future phase may move them server-side (a Postgres trigger/edge function reacting to the write) for stronger guarantees against a client crashing between write and track-call — not required for Step 3, documented as the long-term intended source |
-| `event_rating_added`, `event_photo_added`, `event_comment_added` | **Client**, same successful-write rule | |
+| `event_rating_added`, `event_photo_added`, `event_comment_added`, `event_recommendation_added`, `event_recommendation_removed` | **Client**, same successful-write rule | |
 | `trip_event_added`/`trip_restaurant_added`/`trip_hotel_added`/`trip_item_confirmed`/`trip_item_rejected` | **Client**, same successful-write rule | |
 | Host/venue/destination aggregate metrics (§17) | **Derived** | never tracked directly — always a query-time aggregation over the raw event stream and/or transactional tables |
 

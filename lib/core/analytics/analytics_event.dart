@@ -47,6 +47,23 @@ enum AnalyticsEvent {
   eventPhotoAdded,
   eventCommentAdded,
 
+  /// Events V2 Step 4.1. Fired on every save that results in a definite
+  /// Yes/No `would_recommend` value — first answer AND changing an
+  /// existing answer both fire this one event, mirroring
+  /// [eventRatingAdded]'s own "no separate updated event" convention.
+  /// Never fired for a save that leaves the value at null — see
+  /// [eventRecommendationRemoved] for the distinct "cleared an existing
+  /// answer" case.
+  eventRecommendationAdded,
+
+  /// Events V2 Step 4.1. Fired only when a save changes `would_recommend`
+  /// from a definite Yes/No back to null — i.e. an existing answer was
+  /// deliberately cleared. Never fired when the value was already null
+  /// (nothing to remove) — see EVENTS_V2_ANALYTICS_CONTRACT.md's Content
+  /// section for the full decision not to silently report a null update
+  /// as "added".
+  eventRecommendationRemoved,
+
   // ── Trips ──────────────────────────────────────────────────────────────
   tripEventAdded,
   tripRestaurantAdded,
@@ -85,6 +102,8 @@ enum AnalyticsEvent {
     AnalyticsEvent.eventRatingAdded => 'event_rating_added',
     AnalyticsEvent.eventPhotoAdded => 'event_photo_added',
     AnalyticsEvent.eventCommentAdded => 'event_comment_added',
+    AnalyticsEvent.eventRecommendationAdded => 'event_recommendation_added',
+    AnalyticsEvent.eventRecommendationRemoved => 'event_recommendation_removed',
     AnalyticsEvent.tripEventAdded => 'trip_event_added',
     AnalyticsEvent.tripRestaurantAdded => 'trip_restaurant_added',
     AnalyticsEvent.tripHotelAdded => 'trip_hotel_added',

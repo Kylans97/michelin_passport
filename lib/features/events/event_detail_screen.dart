@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_colors.dart';
@@ -13,10 +14,14 @@ import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_about_section.dart';
 import '../../data/repositories/event_attendance_repository.dart';
+import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../models/event.dart';
 import '../../models/event_attendance.dart';
+import '../../models/event_attendance_eligibility.dart';
+import '../../models/event_confirmed_attendance.dart';
+import '../../models/event_confirmed_attendance_analytics.dart';
 import '../../models/event_intent.dart';
 import '../../models/friendship.dart';
 import '../../models/hotel.dart';
@@ -26,6 +31,8 @@ import '../restaurants/restaurant_detail_screen.dart';
 import 'event_date_format.dart';
 import 'friends_going_view_model.dart';
 import 'widgets/at_this_event_section.dart';
+import 'widgets/attendance_details_sheet.dart';
+import 'widgets/event_attendance_section.dart';
 import 'widgets/event_detail_hero.dart';
 import 'widgets/event_friends_going_section.dart';
 import 'widgets/event_intent_controls.dart';
@@ -102,6 +109,8 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   );
   late final EventAttendanceRepository _attendanceRepo =
       EventAttendanceRepository(Supabase.instance.client);
+  late final EventConfirmedAttendanceRepository _confirmedRepo =
+      EventConfirmedAttendanceRepository(Supabase.instance.client);
   late final FriendshipRepository _friendshipRepo = FriendshipRepository(
     Supabase.instance.client,
   );
@@ -133,6 +142,21 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   // handles loading/error/empty by simply not rendering the section.
   Future<List<Friendship>>? _friendsGoingFuture;
 
+  // Events V2 Step 4 — Confirmed Attendance / "Did you make it?" state.
+  EventConfirmedAttendance? _confirmedAttendance;
+  bool _attendanceBusy = false;
+  // "Not now" hides the prompt for the rest of this screen visit only —
+  // never persisted, never applied to the Events-screen ambient surface
+  // (see AttendancePromptDismissal's own doc comment for why that's a
+  // deliberately separate, session-scoped mechanism).
+  bool _promptDismissedLocally = false;
+  // Guards event_attendance_prompted from firing more than once per screen
+  // visit — build() re-runs on every setState, but the prompt's own
+  // *impression* only happens once (EVENTS_V2_ANALYTICS_CONTRACT.md's
+  // event_opened uses the identical "once per landing, not per render"
+  // rule this mirrors).
+  bool _promptedAnalyticsFired = false;
+
   @override
   void initState() {
     super.initState();
@@ -156,9 +180,16 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               userId: uid,
               eventId: widget.eventId,
             );
+      final confirmedFuture = uid == null
+          ? Future.value(null)
+          : _confirmedRepo.getConfirmedAttendance(
+              userId: uid,
+              eventId: widget.eventId,
+            );
       final event = await eventFuture;
       final venues = await venuesFuture;
       final intent = await intentFuture;
+      final confirmed = await confirmedFuture;
       if (!mounted) return;
       if (event == null) {
         setState(() {
@@ -171,11 +202,13 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         _event = event;
         _venues = venues;
         _status = intent?.status;
+        _confirmedAttendance = confirmed;
         _loading = false;
         _friendsGoingFuture = (uid != null && canAttendEvent(event))
             ? _loadFriendsGoing(uid, event.id)
             : null;
       });
+      _maybeFirePromptedAnalytics(event, intent?.status, confirmed);
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -291,6 +324,287 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     admissionType: event.admissionType.dbValue,
   );
 
+  /// Fires `event_attendance_prompted` at most once per screen visit, only
+  /// when the resolved state is actually [AttendanceUiState.promptable] —
+  /// never for the plain manual CTA or the attended state, which are not
+  /// "prompts" in the analytics-contract sense (see
+  /// EVENTS_V2_ANALYTICS_CONTRACT.md's Attendance section: "the prompt is
+  /// shown").
+  void _maybeFirePromptedAnalytics(
+    Event event,
+    EventIntentStatus? intent,
+    EventConfirmedAttendance? confirmed,
+  ) {
+    if (_promptedAnalyticsFired) return;
+    final state = resolveAttendanceUiState(
+      event: event,
+      intent: intent,
+      hasConfirmedAttendance: confirmed != null,
+    );
+    if (state != AttendanceUiState.promptable) return;
+    _promptedAnalyticsFired = true;
+    _analytics.track(
+      AnalyticsEvent.eventAttendancePrompted,
+      _intentProperties(event),
+    );
+  }
+
+  AnalyticsProperties _attendanceProperties(
+    Event event,
+    EventAttendanceSource source, {
+    bool? wouldRecommend,
+  }) => AnalyticsProperties(
+    entityType: AnalyticsEntityType.event,
+    entityId: event.id,
+    sourceSurface: widget.sourceSurface,
+    sourceContext: widget.sourceContext,
+    eventCategory: event.eventType.dbValue,
+    city: event.city,
+    countryCode: event.countryCode,
+    admissionType: event.admissionType.dbValue,
+    attendanceSource: attendanceSourceForAnalytics(source),
+    wouldRecommend: wouldRecommend,
+  );
+
+  /// Yes (from the prompt) and the plain manual "Add to Passport" CTA both
+  /// funnel through this one method — §7's "reuse one Attendance
+  /// confirmation flow" — differing only in [source]. Ordering matches
+  /// §19 exactly: (1) insert confirmed Attendance, (2) confirm success,
+  /// (3) remove Going intent IF one exists — in its own try/catch so a
+  /// cleanup failure never undoes the already-successful Attendance write
+  /// — (4) update UI, (5) analytics, (6) the optional rating/comment sheet
+  /// (itself a second, independent write — see attendance_details_sheet's
+  /// own header comment for why dismissing it has no effect on whether
+  /// attendance is recorded).
+  Future<void> _confirmAttendance(EventAttendanceSource source) async {
+    final uid = _userId;
+    final event = _event;
+    if (uid == null || event == null || _attendanceBusy) return;
+
+    setState(() => _attendanceBusy = true);
+    late final EventConfirmedAttendance confirmed;
+    try {
+      confirmed = await _confirmedRepo.confirmAttendance(
+        userId: uid,
+        eventId: widget.eventId,
+        source: source,
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _attendanceBusy = false);
+      _showAttendanceError();
+      return;
+    }
+    if (!mounted) return;
+    setState(() {
+      _confirmedAttendance = confirmed;
+      _attendanceBusy = false;
+    });
+    final properties = _attendanceProperties(event, source);
+    _analytics.track(AnalyticsEvent.eventAttendanceConfirmed, properties);
+    _analytics.track(AnalyticsEvent.passportItemCreated, properties);
+
+    // Stale Going intent should no longer remain as active upcoming intent
+    // once history exists — but a failure here must never roll back the
+    // Attendance write above, which stays authoritative regardless (§18).
+    if (_status == EventIntentStatus.going) {
+      try {
+        await _attendanceRepo.removeEventIntent(
+          userId: uid,
+          eventId: widget.eventId,
+        );
+        if (mounted) setState(() => _status = null);
+      } catch (_) {
+        // Silently leave the stale Going row in place — Attendance is
+        // already the authoritative record regardless of whether this
+        // best-effort cleanup succeeded.
+      }
+    }
+
+    if (!mounted) return;
+    final details = await showAttendanceDetailsSheet(
+      context: context,
+      eventName: event.name,
+      attendanceId: confirmed.id,
+      eventId: event.id,
+      onPhotoUploaded: () => _analytics.track(
+        AnalyticsEvent.eventPhotoAdded,
+        _attendanceProperties(event, confirmed.source),
+      ),
+    );
+    if (details == null || !mounted) return;
+    await _saveAttendanceDetails(details, event);
+  }
+
+  Future<void> _saveAttendanceDetails(
+    AttendanceDetailsResult details,
+    Event event,
+  ) async {
+    final uid = _userId;
+    final current = _confirmedAttendance;
+    if (uid == null || current == null) return;
+    // Captured before the write — the analytics decision below (§21/Step
+    // 4.1) needs to know what was on the row BEFORE this save to tell a
+    // genuine "cleared an existing answer" apart from "never answered."
+    final previousRecommendation = current.wouldRecommend;
+    try {
+      final updated = await _confirmedRepo.updateAttendanceDetails(
+        userId: uid,
+        attendanceId: current.id,
+        rating: details.rating,
+        comment: details.comment,
+        wouldRecommend: WouldRecommendUpdate(details.wouldRecommend),
+      );
+      if (!mounted) return;
+      setState(() => _confirmedAttendance = updated);
+      final properties = _attendanceProperties(event, updated.source);
+      if (details.rating != null) {
+        _analytics.track(AnalyticsEvent.eventRatingAdded, properties);
+      }
+      if (details.comment != null) {
+        _analytics.track(AnalyticsEvent.eventCommentAdded, properties);
+      }
+      final recommendationEvent = recommendationAnalyticsEvent(
+        previous: previousRecommendation,
+        next: details.wouldRecommend,
+      );
+      if (recommendationEvent != null) {
+        _analytics.track(
+          recommendationEvent,
+          recommendationEvent == AnalyticsEvent.eventRecommendationAdded
+              ? _attendanceProperties(
+                  event,
+                  updated.source,
+                  wouldRecommend: details.wouldRecommend,
+                )
+              : properties,
+        );
+      }
+    } catch (_) {
+      if (!mounted) return;
+      _showAttendanceError();
+    }
+  }
+
+  /// "No" — removes Going intent, creates no Attendance row, no schema
+  /// change: Going is disposable current intent, not a historical record
+  /// worth persisting a "declined" state for (§4's own reasoning). Denied
+  /// analytics fires only after the removal actually succeeds (§21/§19).
+  Future<void> _denyAttendance() async {
+    final uid = _userId;
+    final event = _event;
+    if (uid == null || event == null || _attendanceBusy) return;
+    setState(() => _attendanceBusy = true);
+    try {
+      await _attendanceRepo.removeEventIntent(
+        userId: uid,
+        eventId: widget.eventId,
+      );
+      if (!mounted) return;
+      setState(() {
+        _status = null;
+        _attendanceBusy = false;
+      });
+      _analytics.track(
+        AnalyticsEvent.eventAttendanceDenied,
+        _attendanceProperties(event, EventAttendanceSource.postEventPrompt),
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _attendanceBusy = false);
+      _showAttendanceError();
+    }
+  }
+
+  /// "Not now" — purely local, purely visual, no write, no analytics (no
+  /// dismissal event exists in the canonical taxonomy — §21's explicit
+  /// "do not invent one casually"). Hides the section for the rest of
+  /// this screen visit only; reopening Event Detail later re-evaluates
+  /// eligibility from scratch.
+  void _dismissPromptLocally() =>
+      setState(() => _promptDismissedLocally = true);
+
+  Future<void> _editAttendanceDetails() async {
+    final event = _event;
+    final current = _confirmedAttendance;
+    if (event == null || current == null) return;
+    final details = await showAttendanceDetailsSheet(
+      context: context,
+      eventName: event.name,
+      attendanceId: current.id,
+      eventId: event.id,
+      initialRating: current.rating,
+      initialWouldRecommend: current.wouldRecommend,
+      initialComment: current.comment,
+      onPhotoUploaded: () => _analytics.track(
+        AnalyticsEvent.eventPhotoAdded,
+        _attendanceProperties(event, current.source),
+      ),
+    );
+    if (details == null || !mounted) return;
+    await _saveAttendanceDetails(details, event);
+  }
+
+  /// §16 — removing history is deliberate and final: it never recreates a
+  /// Going row, it only deletes `event_confirmed_attendance` (photos
+  /// cascade automatically at the database level).
+  Future<void> _removeAttendance() async {
+    final uid = _userId;
+    final current = _confirmedAttendance;
+    final event = _event;
+    if (uid == null || current == null || event == null) return;
+    final confirm = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Remove from Passport?'),
+        content: const Text(
+          'This removes your confirmed attendance, rating, notes and photos '
+          'for this event. This cannot be undone.',
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: const Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            style: TextButton.styleFrom(foregroundColor: AppColors.error),
+            child: const Text('Remove'),
+          ),
+        ],
+      ),
+    );
+    if (confirm != true) return;
+    try {
+      await _confirmedRepo.deleteConfirmedAttendance(
+        userId: uid,
+        attendanceId: current.id,
+      );
+      if (!mounted) return;
+      setState(() => _confirmedAttendance = null);
+      _analytics.track(
+        AnalyticsEvent.passportItemRemoved,
+        _attendanceProperties(event, current.source),
+      );
+    } catch (_) {
+      if (!mounted) return;
+      _showAttendanceError();
+    }
+  }
+
+  void _showAttendanceError() {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          'Could not update. Please try again.',
+          style: GoogleFonts.inter(color: AppColors.textOnDark),
+        ),
+        backgroundColor: AppColors.error,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
   Future<void> _openUrl(String url) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
@@ -379,6 +693,13 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         ? 'Optional ticket'
         : 'Tickets';
     final canAttend = canAttendEvent(event);
+    final attendanceState = _promptDismissedLocally
+        ? AttendanceUiState.none
+        : resolveAttendanceUiState(
+            event: event,
+            intent: _status,
+            hasConfirmedAttendance: _confirmedAttendance != null,
+          );
 
     final hasImage = event.imageUrl != null && event.imageUrl!.isNotEmpty;
     final backgroundImage = hasImage
@@ -413,6 +734,25 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   EventMetaSection(event: event),
+
+                  if (attendanceState != AttendanceUiState.none) ...[
+                    const SectionDivider(),
+                    EventAttendanceSection(
+                      state: attendanceState,
+                      attendance: _confirmedAttendance,
+                      eventName: event.name,
+                      busy: _attendanceBusy,
+                      onYes: () => _confirmAttendance(
+                        EventAttendanceSource.postEventPrompt,
+                      ),
+                      onNo: _denyAttendance,
+                      onNotNow: _dismissPromptLocally,
+                      onManualAttend: () =>
+                          _confirmAttendance(EventAttendanceSource.manual),
+                      onEdit: _editAttendanceDetails,
+                      onRemove: _removeAttendance,
+                    ),
+                  ],
 
                   if (canAttend) ...[
                     const SectionDivider(),

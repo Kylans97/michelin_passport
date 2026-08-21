@@ -182,4 +182,42 @@ class EventAttendanceRepository {
         Event.fromJson(row as Map<String, dynamic>),
     ];
   }
+
+  /// Every event [userId] currently has an active GOING intent for that
+  /// has already ended — the raw candidate pool for Events V2 Step 4's
+  /// "Did you make it?" prompt surfaces. Deliberately unfiltered by
+  /// cancellation, lookback window, or existing confirmed attendance —
+  /// [mostRecentEligibleAttendancePromptEvent] (event_attendance_
+  /// eligibility.dart) applies every one of those rules itself, so this
+  /// method stays a plain, reusable "past Going events" query, the mirror
+  /// image of [getFriendUpcomingEvents]'s own "future/current" query.
+  /// [maxCount] bounds how many past-Going rows are ever fetched — no
+  /// signed-in user is expected to have more than a handful of unresolved
+  /// past-Going events at once, and this is a client-side candidate list,
+  /// not a paginated feed.
+  Future<List<Event>> getPastGoingEvents({
+    required String userId,
+    int maxCount = 20,
+  }) async {
+    final attendanceRows = await _client
+        .from('event_attendance')
+        .select('event_id')
+        .eq('user_id', userId)
+        .eq('status', EventIntentStatus.going.dbValue)
+        .limit(maxCount);
+    final eventIds = [
+      for (final row in attendanceRows as List) row['event_id'] as String,
+    ];
+    if (eventIds.isEmpty) return [];
+
+    final rows = await _client
+        .from('events')
+        .select()
+        .inFilter('id', eventIds)
+        .lt('end_at', DateTime.now().toUtc().toIso8601String());
+    return [
+      for (final row in rows as List)
+        Event.fromJson(row as Map<String, dynamic>),
+    ];
+  }
 }

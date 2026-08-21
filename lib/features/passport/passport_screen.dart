@@ -10,6 +10,7 @@ import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/cs_metric_strip.dart';
 import '../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
 import '../../core/widgets/year_filter_control.dart';
+import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
@@ -18,6 +19,7 @@ import '../map/visited_map_screen.dart';
 import 'passport_view_model.dart';
 import 'widgets/passport_collection_header.dart';
 import 'widgets/passport_empty_state.dart';
+import 'widgets/passport_event_card.dart';
 import 'widgets/passport_hotel_card.dart';
 import 'widgets/passport_restaurant_card.dart';
 
@@ -54,8 +56,17 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
   late final VisitedRepository _repo = VisitedRepository(
     Supabase.instance.client,
   );
+  late final EventConfirmedAttendanceRepository _eventAttendanceRepo =
+      EventConfirmedAttendanceRepository(Supabase.instance.client);
 
   List<VenueEntry>? _entries; // null until the first load completes.
+  // Events V2 Step 4 §14/§15 — confirmed Event history, additive to the
+  // Restaurant/Hotel list above rather than folded into PassportVenue's
+  // sealed union (see PassportEventCard's own doc comment for why). Loaded
+  // alongside _entries but never blocks/fails the rest of Passport — a
+  // failure here leaves this section simply empty, same reasoning as
+  // EventsScreen's own prompt-nudge load.
+  List<EventAttendanceEntry> _eventEntries = [];
   bool _loading = true; // true only for the very first, blocking load.
   bool _loadError = false;
   bool _refreshing = false; // guards overlapping refresh calls.
@@ -96,12 +107,22 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
     try {
       final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
       final entries = await _repo.loadPassportVenues(uid);
+      var eventEntries = <EventAttendanceEntry>[];
+      try {
+        eventEntries = await _eventAttendanceRepo.loadPassportEventAttendance(
+          uid,
+        );
+      } catch (_) {
+        // See _eventEntries' own doc comment — never fails the rest of
+        // Passport.
+      }
       if (!mounted) return;
       final years = availableVisitYears(
         entries.expand((entry) => entry.visits),
       );
       setState(() {
         _entries = entries;
+        _eventEntries = eventEntries;
         _loading = false;
         _loadError = false;
         // Preserve the selected year only if it's still represented in the
@@ -303,6 +324,38 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
                   childCount: result.entries.length,
                 ),
               ),
+            if (!_loading && !_loadError && _eventEntries.isNotEmpty) ...[
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    CsSpacing.pageHorizontal,
+                    CsSpacing.section,
+                    CsSpacing.pageHorizontal,
+                    CsSpacing.md,
+                  ),
+                  child: Text(
+                    'EVENTS',
+                    style: CsTypography.eyebrow.copyWith(
+                      color: AppColors.secondaryOnDark,
+                    ),
+                  ),
+                ),
+              ),
+              SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  (context, i) => Padding(
+                    padding: EdgeInsets.fromLTRB(
+                      CsSpacing.pageHorizontal,
+                      0,
+                      CsSpacing.pageHorizontal,
+                      i == _eventEntries.length - 1 ? 100 : CsSpacing.md,
+                    ),
+                    child: PassportEventCard(entry: _eventEntries[i]),
+                  ),
+                  childCount: _eventEntries.length,
+                ),
+              ),
+            ],
           ],
         ),
       ),
