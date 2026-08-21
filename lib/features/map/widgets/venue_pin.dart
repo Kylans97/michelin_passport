@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../models/passport_venue.dart';
+import '../models/map_pin.dart';
 
-/// Small circular map badge for one venue. Restaurant and hotel pins use
-/// different icons (matching the icon vocabulary already used for these
-/// venue types elsewhere — see PassportScreen's `_placesStat`) so the two
-/// types stay visually distinguishable at a glance, without giant markers.
+/// Small circular map badge for one pin. Restaurant/Hotel/Event pins each
+/// use a different icon (matching the icon vocabulary already used for
+/// Restaurant/Hotel elsewhere — see PassportScreen's `_placesStat` — plus a
+/// calendar icon added for Events V2 Step 5) so all three types stay
+/// visually distinguishable at a glance without a legend or a differently
+/// shaped marker — deepGreen fill, ivory border/icon throughout, no gold.
 class VenuePin extends StatelessWidget {
   static const double size = 34;
 
-  final PassportVenue venue;
+  final MapPinType type;
   final VoidCallback onTap;
 
-  const VenuePin({super.key, required this.venue, required this.onTap});
+  const VenuePin({super.key, required this.type, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
-    final icon = switch (venue) {
-      RestaurantVenue() => Icons.restaurant_rounded,
-      HotelVenue() => Icons.vpn_key_rounded,
+    final icon = switch (type) {
+      MapPinType.restaurant => Icons.restaurant_rounded,
+      MapPinType.hotel => Icons.vpn_key_rounded,
+      MapPinType.event => Icons.event_rounded,
     };
 
     return GestureDetector(

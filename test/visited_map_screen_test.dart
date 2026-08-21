@@ -1,14 +1,19 @@
 // Covers the UI Consistency pass on My Map:
 // - VenuePin — recolored from gold-bordered ivory to deepGreen/ivory, no
-//   gold anywhere.
+//   gold anywhere. Events V2 Step 5 generalized it from taking a
+//   PassportVenue to taking a MapPinType (Restaurant/Hotel/Event), so it
+//   can render an Event pin using the same architecture.
 // - The venue-preview-sheet "View restaurant"/"View hotel" action —
 //   recolored from a gold FilledButton to deepGreen.
-// - The compact deepGreen header (title/subtitle/All-Restaurants-Hotels
-//   filter row) — VisitedMapScreen itself constructs VisitedRepository/
-//   MapRepository against Supabase.instance.client eagerly, so — matching
-//   this app's established limitation for Supabase-eager screens (see
-//   wishlist_screen_shell_test.dart's own note) — the header is mirrored
-//   here rather than pumping the real screen.
+// - The compact deepGreen header (title/subtitle/filter row) — VisitedMapScreen
+//   itself constructs VisitedRepository/MapRepository/
+//   EventConfirmedAttendanceRepository against Supabase.instance.client
+//   eagerly, so — matching this app's established limitation for
+//   Supabase-eager screens (see wishlist_screen_shell_test.dart's own note)
+//   — the header is mirrored here rather than pumping the real screen.
+//   Events V2 Step 5 extended the filter row from All/Restaurants/Hotels to
+//   All/Restaurants/Hotels/Events (MapFilterType, a My-Map-local enum — see
+//   that type's own doc comment for why it isn't ExploreVenueType).
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -17,12 +22,11 @@ import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/core/widgets/cs_filter_chip.dart';
 import 'package:michelin_passport/core/widgets/editorial_back_button.dart';
-import 'package:michelin_passport/features/explore/models/explore_filters.dart'
-    show ExploreVenueType;
+import 'package:michelin_passport/features/map/models/map_filter_type.dart';
+import 'package:michelin_passport/features/map/models/map_pin.dart';
 import 'package:michelin_passport/features/map/widgets/venue_pin.dart';
 import 'package:michelin_passport/features/map/widgets/venue_preview_sheet.dart';
 import 'package:michelin_passport/features/passport/passport_view_model.dart';
-import 'package:michelin_passport/models/hotel.dart';
 import 'package:michelin_passport/models/passport_venue.dart';
 import 'package:michelin_passport/models/restaurant.dart';
 import 'package:michelin_passport/models/visit.dart';
@@ -40,28 +44,14 @@ const _restaurant = Restaurant(
   address: '1 Test Street',
 );
 
-const _hotel = Hotel(
-  id: 'h1',
-  hotelCode: 'h1',
-  name: 'Test Hotel',
-  michelinKeys: 1,
-  cityName: 'Amsterdam',
-  countryCode: 'NL',
-  countryName: 'Netherlands',
-  flagEmoji: '🇳🇱',
-  address: '1 Test Street',
-  hasMichelinRestaurant: false,
-  restaurantCount: 0,
-);
-
 Widget _wrap(Widget child) => MaterialApp(
   home: Scaffold(body: Center(child: child)),
 );
 
 // Mirrors _VisitedMapScreenState.build's header exactly.
 Widget _header({
-  required ExploreVenueType selected,
-  required ValueChanged<ExploreVenueType> onSelect,
+  required MapFilterType selected,
+  required ValueChanged<MapFilterType> onSelect,
 }) => MaterialApp(
   home: Scaffold(
     backgroundColor: AppColors.deepGreen,
@@ -123,8 +113,8 @@ Widget _header({
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   children: [
-                    for (final type in ExploreVenueType.values) ...[
-                      if (type != ExploreVenueType.values.first)
+                    for (final type in MapFilterType.values) ...[
+                      if (type != MapFilterType.values.first)
                         const SizedBox(width: CsSpacing.sm),
                       CsFilterChip(
                         label: type.label,
@@ -147,7 +137,7 @@ void main() {
   group('VenuePin', () {
     testWidgets('deepGreen fill, ivory border/icon — no gold', (tester) async {
       await tester.pumpWidget(
-        _wrap(VenuePin(venue: RestaurantVenue(_restaurant), onTap: () {})),
+        _wrap(VenuePin(type: MapPinType.restaurant, onTap: () {})),
       );
       final container = tester.widget<Container>(find.byType(Container));
       final decoration = container.decoration! as BoxDecoration;
@@ -160,30 +150,47 @@ void main() {
       expect(icon.color, isNot(AppColors.gold));
     });
 
-    testWidgets('restaurant and hotel pins use different icons', (
-      tester,
-    ) async {
+    testWidgets('restaurant, hotel and event pins each use a different icon '
+        '— distinguishable without a legend', (tester) async {
       await tester.pumpWidget(
-        _wrap(VenuePin(venue: RestaurantVenue(_restaurant), onTap: () {})),
+        _wrap(VenuePin(type: MapPinType.restaurant, onTap: () {})),
       );
       final restaurantIcon = tester.widget<Icon>(find.byType(Icon)).icon;
 
       await tester.pumpWidget(
-        _wrap(VenuePin(venue: HotelVenue(_hotel), onTap: () {})),
+        _wrap(VenuePin(type: MapPinType.hotel, onTap: () {})),
       );
       final hotelIcon = tester.widget<Icon>(find.byType(Icon)).icon;
 
+      await tester.pumpWidget(
+        _wrap(VenuePin(type: MapPinType.event, onTap: () {})),
+      );
+      final eventIcon = tester.widget<Icon>(find.byType(Icon)).icon;
+
       expect(restaurantIcon, isNot(hotelIcon));
+      expect(restaurantIcon, isNot(eventIcon));
+      expect(hotelIcon, isNot(eventIcon));
+    });
+
+    testWidgets('event pin is deepGreen/ivory too — no gold, no radically '
+        'different shape', (tester) async {
+      await tester.pumpWidget(
+        _wrap(VenuePin(type: MapPinType.event, onTap: () {})),
+      );
+      final container = tester.widget<Container>(find.byType(Container));
+      final decoration = container.decoration! as BoxDecoration;
+      expect(decoration.shape, BoxShape.circle);
+      expect(decoration.color, AppColors.deepGreen);
+      expect(decoration.color, isNot(AppColors.gold));
+      final icon = tester.widget<Icon>(find.byType(Icon));
+      expect(icon.color, isNot(AppColors.gold));
     });
 
     testWidgets('tapping fires onTap', (tester) async {
       var tapped = false;
       await tester.pumpWidget(
         _wrap(
-          VenuePin(
-            venue: RestaurantVenue(_restaurant),
-            onTap: () => tapped = true,
-          ),
+          VenuePin(type: MapPinType.restaurant, onTap: () => tapped = true),
         ),
       );
       await tester.tap(find.byType(VenuePin));
@@ -234,32 +241,36 @@ void main() {
   group('My Map header (mirror)', () {
     testWidgets('title, subtitle and back button render', (tester) async {
       await tester.pumpWidget(
-        _header(selected: ExploreVenueType.all, onSelect: (_) {}),
+        _header(selected: MapFilterType.all, onSelect: (_) {}),
       );
       expect(find.text('My Map'), findsOneWidget);
       expect(find.text("Every place you've experienced."), findsOneWidget);
       expect(find.byType(EditorialBackButton), findsOneWidget);
     });
 
-    testWidgets('All / Restaurants / Hotels chips render and tapping fires '
-        'the callback', (tester) async {
-      ExploreVenueType? selected;
+    testWidgets('All / Restaurants / Hotels / Events chips render and '
+        'tapping fires the callback', (tester) async {
+      MapFilterType? selected;
       await tester.pumpWidget(
-        _header(selected: ExploreVenueType.all, onSelect: (t) => selected = t),
+        _header(selected: MapFilterType.all, onSelect: (t) => selected = t),
       );
       expect(find.text('All'), findsOneWidget);
       expect(find.text('Restaurants'), findsOneWidget);
       expect(find.text('Hotels'), findsOneWidget);
+      expect(find.text('Events'), findsOneWidget);
 
       await tester.tap(find.text('Hotels'));
-      expect(selected, ExploreVenueType.hotels);
+      expect(selected, MapFilterType.hotels);
+
+      await tester.tap(find.text('Events'));
+      expect(selected, MapFilterType.events);
     });
 
     testWidgets('gold audit: no gold color anywhere in the header', (
       tester,
     ) async {
       await tester.pumpWidget(
-        _header(selected: ExploreVenueType.restaurants, onSelect: (_) {}),
+        _header(selected: MapFilterType.restaurants, onSelect: (_) {}),
       );
       final texts = tester.widgetList<Text>(find.byType(Text));
       for (final text in texts) {
@@ -267,16 +278,16 @@ void main() {
       }
     });
 
-    testWidgets('320px width — no overflow', (tester) async {
+    testWidgets('320px width, all 4 chips — no overflow', (tester) async {
       await tester.binding.setSurfaceSize(const Size(320, 844));
       await tester.pumpWidget(
-        _header(selected: ExploreVenueType.hotels, onSelect: (_) {}),
+        _header(selected: MapFilterType.hotels, onSelect: (_) {}),
       );
       expect(tester.takeException(), isNull);
       await tester.binding.setSurfaceSize(null);
     });
 
-    testWidgets('1.6x text scale — no overflow', (tester) async {
+    testWidgets('1.6x text scale, all 4 chips — no overflow', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: MediaQuery(
@@ -296,12 +307,12 @@ void main() {
                     ),
                     child: Row(
                       children: [
-                        for (final type in ExploreVenueType.values) ...[
-                          if (type != ExploreVenueType.values.first)
+                        for (final type in MapFilterType.values) ...[
+                          if (type != MapFilterType.values.first)
                             const SizedBox(width: CsSpacing.sm),
                           CsFilterChip(
                             label: type.label,
-                            selected: type == ExploreVenueType.all,
+                            selected: type == MapFilterType.all,
                             onTap: () {},
                           ),
                         ],

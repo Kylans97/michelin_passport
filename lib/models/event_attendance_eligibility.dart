@@ -29,10 +29,15 @@ const attendancePromptLookbackWindow = Duration(days: 30);
 /// not scattered boolean checks, so the same rule can't drift between
 /// call sites (Event Detail vs. any future surface).
 enum AttendanceUiState {
-  /// The event hasn't ended yet, or is cancelled — no attendance UI of any
-  /// kind renders. Mirrors [Event.isCancelled] and the same `endAt`
-  /// instant [canAttendEvent] itself already uses (see that function's own
-  /// doc comment in event_detail_screen.dart).
+  /// No confirmed attendance exists, AND the event hasn't ended yet, OR
+  /// the event is cancelled — no attendance UI of any kind renders.
+  /// Mirrors [Event.isCancelled] and the same `endAt` instant
+  /// [canAttendEvent] itself already uses (see that function's own doc
+  /// comment in event_detail_screen.dart). Events V2 Step 5 bugfix: this
+  /// state is reached only when [hasConfirmedAttendance] is false — a
+  /// genuinely confirmed attendance always resolves to [attended]
+  /// instead, regardless of the event's current cancelled/ended state
+  /// (see [resolveAttendanceUiState]'s own doc comment).
   none,
 
   /// A confirmed attendance row already exists for this (event, viewer)
@@ -65,6 +70,21 @@ bool _withinPromptWindow(Event event, DateTime now) =>
 /// section should show. [intent] is the viewer's own current
 /// `event_attendance.status` (null = NONE, matching event_intent.dart's
 /// own convention).
+///
+/// Events V2 Step 5 bugfix: [hasConfirmedAttendance] is checked FIRST,
+/// before [Event.isCancelled] or whether the event "has ended" — a
+/// confirmed attendance is a record of a past fact, and a later change
+/// to the event's own lifecycle state (e.g. an organizer marking it
+/// cancelled after the fact) must never retroactively hide that the
+/// viewer actually attended. Without this ordering, a cancelled-after-
+/// the-fact event would incorrectly fall through to [AttendanceUiState.
+/// none] and hide the viewer's rating, would-recommend, photos, and
+/// "Edit your experience" / "Remove from Passport" affordances, even
+/// though the underlying `event_confirmed_attendance` row and Passport
+/// listing are untouched. A cancelled event with NO confirmed
+/// attendance still correctly resolves to [AttendanceUiState.none] —
+/// cancellation only ever suppresses the *prompt*/*manual* paths, never
+/// an attendance that already happened.
 AttendanceUiState resolveAttendanceUiState({
   required Event event,
   required EventIntentStatus? intent,
@@ -72,9 +92,9 @@ AttendanceUiState resolveAttendanceUiState({
   DateTime? now,
 }) {
   final n = now ?? DateTime.now();
+  if (hasConfirmedAttendance) return AttendanceUiState.attended;
   if (event.isCancelled) return AttendanceUiState.none;
   if (!_hasEnded(event, n)) return AttendanceUiState.none;
-  if (hasConfirmedAttendance) return AttendanceUiState.attended;
   if (intent == EventIntentStatus.going && _withinPromptWindow(event, n)) {
     return AttendanceUiState.promptable;
   }

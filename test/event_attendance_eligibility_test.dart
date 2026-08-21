@@ -168,6 +168,99 @@ void main() {
     });
   });
 
+  group('resolveAttendanceUiState — Events V2 Step 5 cancelled + confirmed '
+      'attendance precedence bugfix', () {
+    test('event completed, confirmed attendance exists => attended', () {
+      final event = _event(
+        startAt: now.subtract(const Duration(days: 2)),
+        endAt: now.subtract(const Duration(days: 1)),
+      );
+      expect(
+        resolveAttendanceUiState(
+          event: event,
+          intent: null,
+          hasConfirmedAttendance: true,
+          now: now,
+        ),
+        AttendanceUiState.attended,
+      );
+    });
+
+    test('event later marked cancelled, confirmed attendance still exists '
+        '=> still attended, not none — a confirmed historical attendance '
+        'must survive a later cancellation', () {
+      final event = _event(
+        startAt: now.subtract(const Duration(days: 2)),
+        endAt: now.subtract(const Duration(days: 1)),
+        status: EventStatus.cancelled,
+      );
+      expect(
+        resolveAttendanceUiState(
+          event: event,
+          intent: EventIntentStatus.going,
+          hasConfirmedAttendance: true,
+          now: now,
+        ),
+        AttendanceUiState.attended,
+      );
+    });
+
+    test('cancelled event, NO confirmed attendance => none — cancellation '
+        'must not become manually addable', () {
+      final event = _event(
+        startAt: now.subtract(const Duration(days: 2)),
+        endAt: now.subtract(const Duration(days: 1)),
+        status: EventStatus.cancelled,
+      );
+      expect(
+        resolveAttendanceUiState(
+          event: event,
+          intent: null,
+          hasConfirmedAttendance: false,
+          now: now,
+        ),
+        AttendanceUiState.none,
+      );
+    });
+
+    test('future upcoming event marked cancelled, no confirmed attendance '
+        '=> none', () {
+      final event = _event(
+        startAt: now.add(const Duration(days: 1)),
+        endAt: now.add(const Duration(days: 2)),
+        status: EventStatus.cancelled,
+      );
+      expect(
+        resolveAttendanceUiState(
+          event: event,
+          intent: null,
+          hasConfirmedAttendance: false,
+          now: now,
+        ),
+        AttendanceUiState.none,
+      );
+    });
+
+    test('cancelled event, confirmed attendance exists, event technically '
+        'still "upcoming" per its own dates (e.g. end_at edited after the '
+        'fact) => attended still wins over the not-yet-ended check', () {
+      final event = _event(
+        startAt: now.add(const Duration(days: 1)),
+        endAt: now.add(const Duration(days: 2)),
+        status: EventStatus.cancelled,
+      );
+      expect(
+        resolveAttendanceUiState(
+          event: event,
+          intent: null,
+          hasConfirmedAttendance: true,
+          now: now,
+        ),
+        AttendanceUiState.attended,
+      );
+    });
+  });
+
   group('resolveAttendanceUiState — §25 lookback window', () {
     test('Going, ended exactly at the edge of the window => still '
         'promptable', () {

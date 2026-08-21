@@ -8,12 +8,16 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/editorial_back_button.dart';
+import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/map_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
 import '../passport/passport_view_model.dart';
+import 'models/map_filter_type.dart';
+import 'models/map_pin.dart';
+import 'widgets/event_map_preview_sheet.dart';
 import 'widgets/venue_pin.dart';
 import 'widgets/venue_preview_sheet.dart';
 
@@ -24,16 +28,25 @@ const _worldCenter = LatLng(20, 0);
 const _worldZoom = 1.6;
 const _singlePinZoom = 12.0;
 
-/// "My Map": every restaurant the user has visited and every hotel they've
-/// stayed at, plotted once each (repeat visits/stays collapse to one pin —
-/// see [PassportFilterResult.of], the same aggregation My Passport uses).
-/// Tapping a pin opens a preview sheet, which hands off to the existing
-/// Restaurant/Hotel Detail screens — this screen owns no venue data beyond
-/// what [VisitedRepository.loadPassportVenues] already resolves.
+/// "My Map": every restaurant the user has visited, every hotel they've
+/// stayed at, and (Events V2 Step 5) every Event they have a CONFIRMED
+/// attendance record for — plotted once each (repeat visits/stays collapse
+/// to one pin — see [PassportFilterResult.of], the same aggregation My
+/// Passport uses; a confirmed attendance is already unique per event+user
+/// at the database level, so no separate collapse is needed there). Tapping
+/// a pin opens a preview sheet, which hands off to the existing
+/// Restaurant/Hotel/Event Detail screens — this screen owns no venue or
+/// Event data beyond what [VisitedRepository.loadPassportVenues] and
+/// [EventConfirmedAttendanceRepository.loadPassportEventAttendance] already
+/// resolve. Interested/Going Event intent is deliberately never plotted —
+/// only confirmed history belongs on a map of "every place you've
+/// experienced."
 ///
 /// No GPS/location permission is used or requested: every coordinate shown
-/// comes from the venues themselves (restaurants_full/hotels_full), never
-/// from the device's current position.
+/// comes from the venues/Events themselves (restaurants_full/hotels_full/
+/// events), never from the device's current position, and never inferred
+/// from a linked venue when an Event's own coordinates are missing — see
+/// [eventMapPins]'s own doc comment.
 class VisitedMapScreen extends StatefulWidget {
   const VisitedMapScreen({super.key});
 
@@ -46,9 +59,12 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     Supabase.instance.client,
   );
   late final MapRepository _mapRepo = MapRepository(Supabase.instance.client);
+  late final EventConfirmedAttendanceRepository _eventsRepo =
+      EventConfirmedAttendanceRepository(Supabase.instance.client);
   final _mapController = MapController();
 
   List<VenueEntry>? _entries; // null until the first load completes.
+  List<EventAttendanceEntry>? _eventEntries; // null until the first load.
 
   // Keyed by Restaurant.id / Hotel.id. Loaded separately from _entries, via
   // MapRepository — see that class for why coordinates are never part of
@@ -60,7 +76,7 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
 
   bool _loading = true;
   bool _loadError = false;
-  ExploreVenueType _venueType = ExploreVenueType.all;
+  MapFilterType _filter = MapFilterType.all;
 
   @override
   void initState() {
@@ -71,6 +87,13 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   Future<void> _load() async {
     try {
       final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
+      // Kicked off immediately, alongside the venue-entries load below —
+      // fully independent of it (Event confirmed attendance has no
+      // dependency on restaurant/hotel ids), so it runs concurrently rather
+      // than after. Never throws: an Event-attendance hiccup must not take
+      // down Restaurant/Hotel pins any more than a coordinate hiccup does
+      // (see the comment below) — it only means no Event pins this load.
+      final eventEntriesFuture = _loadEventEntriesSafely(uid);
       final entries = await _visitedRepo.loadPassportVenues(uid);
 
       // Coordinate loading is independent of the venue-entries load above:
@@ -93,10 +116,12 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       final hotelCoordsFuture = _mapRepo.loadHotelCoordinates(hotelIds);
       final restaurantCoords = await restaurantCoordsFuture;
       final hotelCoords = await hotelCoordsFuture;
+      final eventEntries = await eventEntriesFuture;
 
       if (!mounted) return;
       setState(() {
         _entries = entries;
+        _eventEntries = eventEntries;
         _restaurantCoords = restaurantCoords;
         _hotelCoords = hotelCoords;
         _loading = false;
@@ -112,27 +137,43 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     }
   }
 
-  List<PassportVenueStats> get _visibleStats {
-    final allEntries = _entries ?? [];
-    return PassportFilterResult.of(
-      allEntries,
-      venueType: _venueType,
-      year: null,
-    ).entries;
+  Future<List<EventAttendanceEntry>> _loadEventEntriesSafely(String uid) async {
+    try {
+      return await _eventsRepo.loadPassportEventAttendance(uid);
+    } catch (_) {
+      return [];
+    }
   }
 
-  List<LatLng> get _visiblePoints => [
-    for (final stats in _visibleStats)
-      if (_coordsOf(stats) case (final lat, final lng)) LatLng(lat, lng),
+  /// Every pin this user could possibly see, before the active filter —
+  /// Restaurant/Hotel pins adapted from the same [PassportFilterResult.of]
+  /// aggregation My Passport uses (requesting every venue type here; the
+  /// active [MapFilterType] is applied afterward in [_visiblePins], not by
+  /// this aggregation step, so multi-visit collapse behavior is untouched),
+  /// plus Event pins adapted from confirmed attendance. Every pin returned
+  /// here already has a resolved coordinate — [restaurantAndHotelMapPins]/
+  /// [eventMapPins] both silently omit anything that doesn't.
+  List<MapPin> get _allPins => [
+    ...restaurantAndHotelMapPins(
+      stats: PassportFilterResult.of(
+        _entries ?? [],
+        venueType: ExploreVenueType.all,
+        year: null,
+      ).entries,
+      restaurantCoords: _restaurantCoords,
+      hotelCoords: _hotelCoords,
+    ),
+    ...eventMapPins(_eventEntries ?? []),
   ];
 
-  (double, double)? _coordsOf(PassportVenueStats stats) {
-    final venue = stats.venue;
-    return switch (venue) {
-      RestaurantVenue(:final restaurant) => _restaurantCoords[restaurant.id],
-      HotelVenue(:final hotel) => _hotelCoords[hotel.id],
-    };
-  }
+  List<MapPin> get _visiblePins => [
+    for (final pin in _allPins)
+      if (_filter.matches(pin.type)) pin,
+  ];
+
+  List<LatLng> get _visiblePoints => [
+    for (final pin in _visiblePins) LatLng(pin.latitude, pin.longitude),
+  ];
 
   void _fitCamera() {
     final points = _visiblePoints;
@@ -151,19 +192,27 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
     }
   }
 
-  void _onSelectVenueType(ExploreVenueType type) {
-    setState(() => _venueType = type);
+  void _onSelectFilter(MapFilterType type) {
+    setState(() => _filter = type);
     WidgetsBinding.instance.addPostFrameCallback((_) => _fitCamera());
+  }
+
+  void _onPinTap(BuildContext context, MapPin pin) {
+    switch (pin) {
+      case RestaurantMapPin(:final stats):
+        showVenuePreviewSheet(context, stats);
+      case HotelMapPin(:final stats):
+        showVenuePreviewSheet(context, stats);
+      case EventMapPin():
+        showEventMapPreviewSheet(context, pin);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    final visibleStats = _visibleStats;
-    final plottable = [
-      for (final stats in visibleStats)
-        if (_coordsOf(stats) != null) stats,
-    ];
-    final hasAnyVisitedVenue = (_entries ?? []).isNotEmpty;
+    final plottable = _visiblePins;
+    final hasAnyHistory =
+        (_entries ?? []).isNotEmpty || (_eventEntries ?? []).isNotEmpty;
 
     return Scaffold(
       backgroundColor: AppColors.deepGreen,
@@ -227,13 +276,13 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                       scrollDirection: Axis.horizontal,
                       child: Row(
                         children: [
-                          for (final type in ExploreVenueType.values) ...[
-                            if (type != ExploreVenueType.values.first)
+                          for (final type in MapFilterType.values) ...[
+                            if (type != MapFilterType.values.first)
                               const SizedBox(width: CsSpacing.sm),
                             CsFilterChip(
                               label: type.label,
-                              selected: _venueType == type,
-                              onTap: () => _onSelectVenueType(type),
+                              selected: _filter == type,
+                              onTap: () => _onSelectFilter(type),
                             ),
                           ],
                         ],
@@ -273,18 +322,16 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                         ),
                         MarkerLayer(
                           markers: [
-                            for (final stats in plottable)
-                              if (_coordsOf(stats) case (final lat, final lng))
-                                Marker(
-                                  point: LatLng(lat, lng),
-                                  width: VenuePin.size,
-                                  height: VenuePin.size,
-                                  child: VenuePin(
-                                    venue: stats.venue,
-                                    onTap: () =>
-                                        showVenuePreviewSheet(context, stats),
-                                  ),
+                            for (final pin in plottable)
+                              Marker(
+                                point: LatLng(pin.latitude, pin.longitude),
+                                width: VenuePin.size,
+                                height: VenuePin.size,
+                                child: VenuePin(
+                                  type: pin.type,
+                                  onTap: () => _onPinTap(context, pin),
                                 ),
+                              ),
                           ],
                         ),
                       ],
@@ -307,7 +354,7 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                         _load();
                       },
                     )
-                  else if (!hasAnyVisitedVenue)
+                  else if (!hasAnyHistory)
                     const _MapMessage(
                       icon: Icons.explore_outlined,
                       message: 'Your map is waiting for its first destination.',
@@ -315,11 +362,12 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                   else if (plottable.isEmpty)
                     _MapMessage(
                       icon: Icons.location_off_outlined,
-                      message: switch (_venueType) {
-                        ExploreVenueType.hotels => 'No hotel stays yet.',
-                        ExploreVenueType.restaurants =>
+                      message: switch (_filter) {
+                        MapFilterType.hotels => 'No hotel stays yet.',
+                        MapFilterType.restaurants =>
                           'No restaurant visits yet.',
-                        ExploreVenueType.all => 'No visited venues yet.',
+                        MapFilterType.events => 'No event attendance yet.',
+                        MapFilterType.all => 'No visited venues yet.',
                       },
                     ),
                 ],
