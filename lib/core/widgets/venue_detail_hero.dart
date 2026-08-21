@@ -3,6 +3,7 @@ import '../constants/app_colors.dart';
 import '../theme/cs_spacing.dart';
 import '../theme/cs_typography.dart';
 import 'editorial_back_button.dart';
+import 'follow_toggle_button.dart';
 
 /// The current-generation hero for Restaurant/Hotel Detail (UI Consistency
 /// Step 1) — a fresh, Cs-token-based primitive, deliberately NOT a
@@ -41,6 +42,16 @@ class VenueDetailHero extends StatelessWidget {
   final bool wishlistSaving;
   final VoidCallback onTapWishlist;
 
+  /// Events V2 Step 6. [onTapFollow] is deliberately nullable and defaults
+  /// to null — when omitted, no Follow control renders at all, so every
+  /// existing call site (and every existing test) that predates Follow
+  /// keeps its exact prior rendering with zero changes required. Only
+  /// Restaurant/Hotel Detail (the two screens that wire a real callback)
+  /// show the second hero icon.
+  final bool isFollowing;
+  final bool followBusy;
+  final VoidCallback? onTapFollow;
+
   const VenueDetailHero({
     super.key,
     required this.title,
@@ -58,6 +69,9 @@ class VenueDetailHero extends StatelessWidget {
     required this.isWishlisted,
     required this.wishlistSaving,
     required this.onTapWishlist,
+    this.isFollowing = false,
+    this.followBusy = false,
+    this.onTapFollow,
   });
 
   @override
@@ -85,6 +99,16 @@ class VenueDetailHero extends StatelessWidget {
             onTap: wishlistSaving ? null : onTapWishlist,
           ),
         ),
+        if (onTapFollow != null)
+          Padding(
+            padding: const EdgeInsets.only(right: CsSpacing.sm),
+            child: FollowToggleButton(
+              isFollowing: isFollowing,
+              busy: followBusy,
+              onTap: onTapFollow,
+              entityName: title,
+            ),
+          ),
       ],
       title: Text(
         title,

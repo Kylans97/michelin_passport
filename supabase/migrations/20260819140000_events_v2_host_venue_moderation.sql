@@ -24,10 +24,14 @@
 -- Does NOT touch event_attendance, visits, wishlist, photos, planned_trips,
 -- planned_venues, restaurants, hotels, or award_history.
 --
--- NOT applied to production by this migration file's authoring — prepared
--- for pre-deployment review only. See
+-- Applied to production (confirmed live via `supabase migration list
+-- --linked` and direct column checks during the Events V2 Step 6 Follow
+-- audit) — this comment previously read "NOT applied... prepared for
+-- pre-deployment review only," which was accurate at authoring time but
+-- went stale once the migration actually shipped; corrected here as a
+-- comment-only change, no SQL semantics altered. See
 -- docs/Architecture/EVENTS_V2_DATABASE_FOUNDATION_PRE_APPLY.md for the
--- full audit this migration was designed against.
+-- full audit this migration was originally designed against.
 
 begin;
 

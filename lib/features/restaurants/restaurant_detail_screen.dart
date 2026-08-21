@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../core/analytics/analytics_event.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -13,6 +16,7 @@ import '../../core/widgets/venue_about_section.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
 import '../../data/repositories/award_history_repository.dart';
+import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
@@ -45,6 +49,7 @@ class RestaurantDetailScreen extends StatefulWidget {
 class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
+  late final _followRepo = FollowRepository(Supabase.instance.client);
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
   late final _photoRepo = PhotoRepository(Supabase.instance.client);
   late final _awardHistoryRepo = AwardHistoryRepository(
@@ -53,6 +58,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _plannedTripsRepo = PlannedTripsRepository(
     Supabase.instance.client,
   );
+  // Events V2 Step 6 — never wired into a constructor param (matching
+  // EventDetailScreen's own established seam); no vendor is selected yet,
+  // so this is always the production-safe no-op today.
+  final AnalyticsService _analytics = const NoopAnalyticsService();
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -60,6 +69,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   List<Visit> _visits = [];
   bool _isWishlisted = false;
   bool _wishlistSaving = false;
+  bool _isFollowing = false;
+  bool _followBusy = false;
   bool _loadingHotel = false;
 
   // Catalogue data, not personal state — loaded regardless of sign-in.
@@ -106,12 +117,18 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         userId: uid,
         restaurantId: widget.restaurant.id,
       );
+      final followingFuture = _followRepo.isFollowingRestaurant(
+        userId: uid,
+        restaurantId: widget.restaurant.id,
+      );
       final visits = await visitsFuture;
       final wishlisted = await wishlistedFuture;
+      final following = await followingFuture;
       if (!mounted) return;
       setState(() {
         _visits = visits;
         _isWishlisted = wishlisted;
+        _isFollowing = following;
         _loadingPersonalState = false;
       });
     } catch (_) {
@@ -180,6 +197,61 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       if (!mounted) return;
       setState(() => _wishlistSaving = false);
       _showSnack('Could not update wishlist. Please try again.', isError: true);
+    }
+  }
+
+  // Events V2 Step 6. Non-optimistic, matching _toggleWishlist and
+  // EventDetailScreen._handleIntentTap's own documented rationale: state
+  // only flips after the write succeeds, so a failure never needs a
+  // rollback — clearing _followBusy alone already restores the correct
+  // (unchanged) state. Analytics fires only after the write succeeds, per
+  // AnalyticsService.track's own mandatory successful-write rule.
+  Future<void> _toggleFollow() async {
+    final uid = _userId;
+    if (uid == null) {
+      _showSnack(_signInMessage, isError: true);
+      return;
+    }
+    if (_followBusy) return;
+
+    final wasFollowing = _isFollowing;
+    setState(() => _followBusy = true);
+    try {
+      if (wasFollowing) {
+        await _followRepo.unfollowRestaurant(
+          userId: uid,
+          restaurantId: widget.restaurant.id,
+        );
+      } else {
+        await _followRepo.followRestaurant(
+          userId: uid,
+          restaurantId: widget.restaurant.id,
+        );
+      }
+      if (!mounted) return;
+      setState(() {
+        _isFollowing = !wasFollowing;
+        _followBusy = false;
+      });
+      _showSnack(
+        followSnackMessage(
+          wasFollowing: wasFollowing,
+          entityName: widget.restaurant.name,
+        ),
+      );
+      _analytics.track(
+        wasFollowing
+            ? AnalyticsEvent.followRemoved
+            : AnalyticsEvent.followAdded,
+        AnalyticsProperties(
+          entityType: AnalyticsEntityType.restaurant,
+          entityId: widget.restaurant.id,
+        ),
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _followBusy = false);
+      _showSnack('Could not update. Please try again.', isError: true);
     }
   }
 
@@ -338,6 +410,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
             isWishlisted: _isWishlisted,
             wishlistSaving: _wishlistSaving,
             onTapWishlist: _toggleWishlist,
+            isFollowing: _isFollowing,
+            followBusy: _followBusy,
+            onTapFollow: _toggleFollow,
           ),
           SliverToBoxAdapter(
             child: Padding(

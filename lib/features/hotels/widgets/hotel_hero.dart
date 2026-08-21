@@ -15,12 +15,22 @@ class HotelHero extends StatelessWidget {
   final bool wishlistSaving;
   final VoidCallback onTapWishlist;
 
+  // Events V2 Step 6 — see VenueDetailHero's own doc comment for why
+  // onTapFollow defaults to null (no control renders until a real
+  // callback is wired).
+  final bool isFollowing;
+  final bool followBusy;
+  final VoidCallback? onTapFollow;
+
   const HotelHero({
     super.key,
     required this.hotel,
     required this.isWishlisted,
     required this.wishlistSaving,
     required this.onTapWishlist,
+    this.isFollowing = false,
+    this.followBusy = false,
+    this.onTapFollow,
   });
 
   @override
@@ -45,6 +55,9 @@ class HotelHero extends StatelessWidget {
       isWishlisted: isWishlisted,
       wishlistSaving: wishlistSaving,
       onTapWishlist: onTapWishlist,
+      isFollowing: isFollowing,
+      followBusy: followBusy,
+      onTapFollow: onTapFollow,
     );
   }
 }

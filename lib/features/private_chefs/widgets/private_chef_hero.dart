@@ -3,6 +3,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/editorial_back_button.dart';
+import '../../../core/widgets/follow_toggle_button.dart';
 import '../../../models/private_chef_photo.dart';
 
 /// Chef Detail's hero — a parallel, trimmed sibling of [VenueDetailHero],
@@ -44,6 +45,14 @@ class PrivateChefHero extends StatefulWidget {
   final String? profileImageUrl;
   final double expandedHeight;
 
+  /// Events V2 Step 6. Nullable and defaults to null — see
+  /// VenueDetailHero's own doc comment for why: when omitted, no Follow
+  /// control renders, so every pre-Step-6 call site (and test) keeps its
+  /// exact prior rendering.
+  final bool isFollowing;
+  final bool followBusy;
+  final VoidCallback? onTapFollow;
+
   const PrivateChefHero({
     super.key,
     required this.displayName,
@@ -52,6 +61,9 @@ class PrivateChefHero extends StatefulWidget {
     this.photos = const [],
     this.profileImageUrl,
     this.expandedHeight = 320,
+    this.isFollowing = false,
+    this.followBusy = false,
+    this.onTapFollow,
   });
 
   @override
@@ -92,6 +104,18 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
         padding: EdgeInsets.only(left: CsSpacing.sm),
         child: EditorialBackButton(),
       ),
+      actions: [
+        if (widget.onTapFollow != null)
+          Padding(
+            padding: const EdgeInsets.only(right: CsSpacing.sm),
+            child: FollowToggleButton(
+              isFollowing: widget.isFollowing,
+              busy: widget.followBusy,
+              onTap: widget.onTapFollow,
+              entityName: widget.displayName,
+            ),
+          ),
+      ],
       // Physical-device review (Step 2C): no top-center title here — it
       // sat directly over the photo, redundant with the large displayHero
       // name lower in this same hero, and competed with the iOS Dynamic

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../core/analytics/analytics_event.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/section_divider.dart';
+import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../models/private_chef.dart';
 import '../../models/private_chef_education.dart';
@@ -55,8 +59,17 @@ class PrivateChefDetailScreen extends StatefulWidget {
       _PrivateChefDetailScreenState();
 }
 
+const _signInMessage = 'Sign in to follow private chefs.';
+
 class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   late final _repo = PrivateChefRepository(Supabase.instance.client);
+  late final _followRepo = FollowRepository(Supabase.instance.client);
+  // Events V2 Step 6 — never wired into a constructor param (matching
+  // EventDetailScreen's own established seam); no vendor is selected yet,
+  // so this is always the production-safe no-op today.
+  final AnalyticsService _analytics = const NoopAnalyticsService();
+
+  String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
   PrivateChef? _chef;
   List<PrivateChefRestaurantHistory> _history = const [];
@@ -66,6 +79,8 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   bool _loading = true;
   bool _error = false;
   bool _notFound = false;
+  bool _isFollowing = false;
+  bool _followBusy = false;
 
   @override
   void initState() {
@@ -108,6 +123,18 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
               if ((chef.homeCountryCode ?? '').trim().isNotEmpty)
                 chef.homeCountryCode!.trim(),
             });
+      // Events V2 Step 6. Personal state (not signed in, or the follow
+      // check itself failing) never blocks the chef's own catalogue data
+      // from rendering — same "fall back to not yet" convention
+      // RestaurantDetailScreen/HotelDetailScreen already use for their
+      // own personal-state loads.
+      final uid = _userId;
+      final following = (chef == null || uid == null)
+          ? false
+          : await _followRepo.isFollowingPrivateChef(
+              userId: uid,
+              privateChefId: chef.id,
+            );
       if (!mounted) return;
       setState(() {
         _chef = chef;
@@ -115,6 +142,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
         _education = education;
         _photos = photos;
         _countryNames = countryNames;
+        _isFollowing = following;
         _loading = false;
         _notFound = chef == null;
       });
@@ -132,6 +160,73 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     if (uri == null) return;
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
+  void _showSnack(String message, {bool isError = false}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
+        ),
+        backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  // Events V2 Step 6 — mirrors RestaurantDetailScreen._toggleFollow /
+  // HotelDetailScreen._toggleFollow exactly. Non-optimistic; analytics
+  // fires only after the write succeeds.
+  Future<void> _toggleFollow() async {
+    final chef = _chef;
+    final uid = _userId;
+    if (chef == null) return;
+    if (uid == null) {
+      _showSnack(_signInMessage, isError: true);
+      return;
+    }
+    if (_followBusy) return;
+
+    final wasFollowing = _isFollowing;
+    setState(() => _followBusy = true);
+    try {
+      if (wasFollowing) {
+        await _followRepo.unfollowPrivateChef(
+          userId: uid,
+          privateChefId: chef.id,
+        );
+      } else {
+        await _followRepo.followPrivateChef(
+          userId: uid,
+          privateChefId: chef.id,
+        );
+      }
+      if (!mounted) return;
+      setState(() {
+        _isFollowing = !wasFollowing;
+        _followBusy = false;
+      });
+      _showSnack(
+        followSnackMessage(
+          wasFollowing: wasFollowing,
+          entityName: chef.displayName,
+        ),
+      );
+      _analytics.track(
+        wasFollowing
+            ? AnalyticsEvent.followRemoved
+            : AnalyticsEvent.followAdded,
+        AnalyticsProperties(
+          entityType: AnalyticsEntityType.privateChef,
+          entityId: chef.id,
+        ),
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _followBusy = false);
+      _showSnack('Could not update. Please try again.', isError: true);
     }
   }
 
@@ -178,6 +273,9 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
             location: _location(chef),
             photos: _photos,
             profileImageUrl: chef.profileImageUrl,
+            isFollowing: _isFollowing,
+            followBusy: _followBusy,
+            onTapFollow: _toggleFollow,
           ),
           SliverToBoxAdapter(
             child: ColoredBox(

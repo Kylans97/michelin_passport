@@ -5,6 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/core/widgets/follow_toggle_button.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_hero.dart';
 import 'package:michelin_passport/models/private_chef_photo.dart';
 
@@ -172,6 +173,73 @@ void main() {
         ),
       );
       expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('PrivateChefHero — Events V2 Step 6 Follow control', () {
+    testWidgets('onTapFollow omitted (pre-Step-6 call sites): no Follow '
+        'control renders — zero change to existing behavior', (tester) async {
+      await tester.pumpWidget(
+        _wrap(const PrivateChefHero(displayName: 'Lucas')),
+      );
+      expect(find.byType(FollowToggleButton), findsNothing);
+    });
+
+    testWidgets('onTapFollow provided: Follow control renders, reflects '
+        'state, and fires its own callback', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          PrivateChefHero(
+            displayName: 'Lucas',
+            isFollowing: true,
+            followBusy: false,
+            onTapFollow: () => tapped = true,
+          ),
+        ),
+      );
+      expect(find.byType(FollowToggleButton), findsOneWidget);
+      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsOneWidget);
+      await tester.tap(find.byType(FollowToggleButton));
+      expect(tapped, isTrue);
+    });
+
+    testWidgets('a busy Follow control ignores taps', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          PrivateChefHero(
+            displayName: 'Lucas',
+            isFollowing: false,
+            followBusy: true,
+            onTapFollow: () => tapped = true,
+          ),
+        ),
+      );
+      await tester.tap(find.byType(FollowToggleButton), warnIfMissed: false);
+      expect(tapped, isFalse);
+    });
+
+    testWidgets('gold audit: the Follow control never uses gold', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          PrivateChefHero(
+            displayName: 'Lucas',
+            isFollowing: true,
+            followBusy: false,
+            onTapFollow: () {},
+          ),
+        ),
+      );
+      final icon = tester.widget<Icon>(
+        find.descendant(
+          of: find.byType(FollowToggleButton),
+          matching: find.byType(Icon),
+        ),
+      );
+      expect(icon.color, isNot(AppColors.gold));
     });
   });
 

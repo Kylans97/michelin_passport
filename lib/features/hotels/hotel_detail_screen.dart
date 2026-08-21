@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../core/analytics/analytics_event.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -11,6 +14,7 @@ import '../../core/widgets/venue_about_section.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
 import '../../data/repositories/award_history_repository.dart';
+import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
@@ -49,6 +53,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _photoRepo = PhotoRepository(Supabase.instance.client);
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
+  late final _followRepo = FollowRepository(Supabase.instance.client);
   late final _plannedTripsRepo = PlannedTripsRepository(
     Supabase.instance.client,
   );
@@ -59,6 +64,10 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       widget.hotel.hasMichelinRestaurant
       ? _hotelRepo.getLinkedRestaurants(widget.hotel.id)
       : Future.value(const <Restaurant>[]);
+  // Events V2 Step 6 — never wired into a constructor param (matching
+  // EventDetailScreen's own established seam); no vendor is selected yet,
+  // so this is always the production-safe no-op today.
+  final AnalyticsService _analytics = const NoopAnalyticsService();
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -66,6 +75,8 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   List<Visit> _stays = [];
   bool _isWishlisted = false;
   bool _wishlistSaving = false;
+  bool _isFollowing = false;
+  bool _followBusy = false;
 
   // Catalogue data, not personal state — loaded regardless of sign-in.
   // Starts false (action hidden) rather than showing then hiding it, since
@@ -116,12 +127,18 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         userId: uid,
         hotelId: widget.hotel.id,
       );
+      final followingFuture = _followRepo.isFollowingHotel(
+        userId: uid,
+        hotelId: widget.hotel.id,
+      );
       final stays = await staysFuture;
       final wishlisted = await wishlistedFuture;
+      final following = await followingFuture;
       if (!mounted) return;
       setState(() {
         _stays = stays;
         _isWishlisted = wishlisted;
+        _isFollowing = following;
         _loadingPersonalState = false;
       });
     } catch (_) {
@@ -171,6 +188,52 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       if (!mounted) return;
       setState(() => _wishlistSaving = false);
       _showSnack('Could not update wishlist. Please try again.', isError: true);
+    }
+  }
+
+  // Events V2 Step 6 — mirrors _toggleWishlist/RestaurantDetailScreen
+  // ._toggleFollow exactly. Non-optimistic; analytics fires only after
+  // the write succeeds.
+  Future<void> _toggleFollow() async {
+    final uid = _userId;
+    if (uid == null) {
+      _showSnack(_signInMessage, isError: true);
+      return;
+    }
+    if (_followBusy) return;
+
+    final wasFollowing = _isFollowing;
+    setState(() => _followBusy = true);
+    try {
+      if (wasFollowing) {
+        await _followRepo.unfollowHotel(userId: uid, hotelId: widget.hotel.id);
+      } else {
+        await _followRepo.followHotel(userId: uid, hotelId: widget.hotel.id);
+      }
+      if (!mounted) return;
+      setState(() {
+        _isFollowing = !wasFollowing;
+        _followBusy = false;
+      });
+      _showSnack(
+        followSnackMessage(
+          wasFollowing: wasFollowing,
+          entityName: widget.hotel.name,
+        ),
+      );
+      _analytics.track(
+        wasFollowing
+            ? AnalyticsEvent.followRemoved
+            : AnalyticsEvent.followAdded,
+        AnalyticsProperties(
+          entityType: AnalyticsEntityType.hotel,
+          entityId: widget.hotel.id,
+        ),
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _followBusy = false);
+      _showSnack('Could not update. Please try again.', isError: true);
     }
   }
 
@@ -277,6 +340,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
             isWishlisted: _isWishlisted,
             wishlistSaving: _wishlistSaving,
             onTapWishlist: _toggleWishlist,
+            isFollowing: _isFollowing,
+            followBusy: _followBusy,
+            onTapFollow: _toggleFollow,
           ),
           SliverToBoxAdapter(
             child: Padding(

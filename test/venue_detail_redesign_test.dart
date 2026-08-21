@@ -23,6 +23,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/core/widgets/follow_toggle_button.dart';
 import 'package:michelin_passport/core/widgets/key_row.dart';
 import 'package:michelin_passport/core/widgets/linked_venue_row.dart';
 import 'package:michelin_passport/core/widgets/section_divider.dart';
@@ -274,6 +275,103 @@ void main() {
     });
   });
 
+  group('VenueDetailHero — Events V2 Step 6 Follow control', () {
+    testWidgets('onTapFollow omitted (pre-Step-6 call sites): no Follow '
+        'control renders at all — zero change to existing behavior', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Venue',
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byType(FollowToggleButton), findsNothing);
+    });
+
+    testWidgets('onTapFollow provided: Follow control renders alongside '
+        'Wishlist, reflects state, and fires its own callback', (tester) async {
+      var followTapped = false;
+      var wishlistTapped = false;
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Venue',
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () => wishlistTapped = true,
+            isFollowing: true,
+            followBusy: false,
+            onTapFollow: () => followTapped = true,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byType(FollowToggleButton), findsOneWidget);
+      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsOneWidget);
+
+      await tester.tap(find.byType(FollowToggleButton));
+      expect(followTapped, isTrue);
+      expect(wishlistTapped, isFalse);
+    });
+
+    testWidgets('a busy Follow control ignores taps, independent of '
+        'Wishlist busy state', (tester) async {
+      var followTapped = false;
+      // A plain pump, not pumpAndSettle: the busy spinner animates
+      // indefinitely, so pumpAndSettle would never converge.
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Venue',
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+            isFollowing: false,
+            followBusy: true,
+            onTapFollow: () => followTapped = true,
+          ),
+        ),
+      );
+      await tester.pump();
+      await tester.tap(find.byType(FollowToggleButton), warnIfMissed: false);
+      expect(followTapped, isFalse);
+    });
+
+    testWidgets('gold audit: the Follow control never uses gold in either '
+        'state', (tester) async {
+      for (final following in [true, false]) {
+        await tester.pumpWidget(
+          _wrapSliver(
+            VenueDetailHero(
+              title: 'Venue',
+              isWishlisted: false,
+              wishlistSaving: false,
+              onTapWishlist: () {},
+              isFollowing: following,
+              followBusy: false,
+              onTapFollow: () {},
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+        final icon = tester.widget<Icon>(
+          find.descendant(
+            of: find.byType(FollowToggleButton),
+            matching: find.byType(Icon),
+          ),
+        );
+        expect(icon.color, isNot(AppColors.gold));
+      }
+    });
+  });
+
   group('VenueDetailHero — responsive (§18)', () {
     for (final width in [320.0, 390.0]) {
       testWidgets('long title + 3 stars + two badges: no overflow at '
@@ -490,6 +588,53 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('RestaurantHero/HotelHero — Events V2 Step 6 Follow pass-through', () {
+    testWidgets('RestaurantHero forwards Follow state and callback to '
+        'VenueDetailHero', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrapSliver(
+          RestaurantHero(
+            restaurant: _restaurant(),
+            hasHotelBadge: false,
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+            isFollowing: true,
+            followBusy: false,
+            onTapFollow: () => tapped = true,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsOneWidget);
+      await tester.tap(find.byType(FollowToggleButton));
+      expect(tapped, isTrue);
+    });
+
+    testWidgets('HotelHero forwards Follow state and callback to '
+        'VenueDetailHero', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrapSliver(
+          HotelHero(
+            hotel: _hotel(),
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+            isFollowing: false,
+            followBusy: false,
+            onTapFollow: () => tapped = true,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byIcon(Icons.person_add_alt_1_outlined), findsOneWidget);
+      await tester.tap(find.byType(FollowToggleButton));
+      expect(tapped, isTrue);
     });
   });
 

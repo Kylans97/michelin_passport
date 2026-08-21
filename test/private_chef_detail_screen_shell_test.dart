@@ -17,6 +17,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
+import 'package:michelin_passport/core/widgets/follow_toggle_button.dart';
 import 'package:michelin_passport/core/widgets/section_divider.dart';
 import 'package:michelin_passport/features/private_chefs/private_chef_location.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_connect_section.dart';
@@ -154,6 +155,9 @@ Widget _shell(
   PrivateChef chef,
   List<PrivateChefRestaurantHistory> history, [
   List<PrivateChefEducation> education = const [],
+  bool isFollowing = false,
+  bool followBusy = false,
+  VoidCallback? onTapFollow,
 ]) => MaterialApp(
   home: Scaffold(
     backgroundColor: AppColors.deepGreen,
@@ -168,6 +172,9 @@ Widget _shell(
             countryNames: _countryNames,
           ),
           profileImageUrl: chef.profileImageUrl,
+          isFollowing: isFollowing,
+          followBusy: followBusy,
+          onTapFollow: onTapFollow,
         ),
         SliverToBoxAdapter(
           child: ColoredBox(
@@ -311,6 +318,33 @@ void main() {
       await tester.pumpWidget(_shell(_fullChef, _history, _education));
       expect(find.textContaining('Chasing Stars Selected'), findsNothing);
       expect(find.textContaining('rating'), findsNothing);
+    });
+
+    testWidgets('Events V2 Step 6: no Follow control when onTapFollow is '
+        'omitted (pre-Step-6 shape)', (tester) async {
+      await tester.pumpWidget(_shell(_fullChef, _history, _education));
+      expect(find.byType(FollowToggleButton), findsNothing);
+    });
+
+    testWidgets('Events V2 Step 6: Follow control renders in the hero and '
+        'fires its own callback, independent of the rest of the shell', (
+      tester,
+    ) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _shell(
+          _fullChef,
+          _history,
+          _education,
+          true,
+          false,
+          () => tapped = true,
+        ),
+      );
+      expect(find.byType(FollowToggleButton), findsOneWidget);
+      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsOneWidget);
+      await tester.tap(find.byType(FollowToggleButton));
+      expect(tapped, isTrue);
     });
 
     testWidgets('no dead "Request an Experience" CTA', (tester) async {
