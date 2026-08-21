@@ -15,6 +15,7 @@ import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_about_section.dart';
 import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
+import '../../data/repositories/event_social_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../models/event.dart';
@@ -24,17 +25,20 @@ import '../../models/event_confirmed_attendance.dart';
 import '../../models/event_confirmed_attendance_analytics.dart';
 import '../../models/event_intent.dart';
 import '../../models/friendship.dart';
+import '../../models/going_member_count.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'event_date_format.dart';
 import 'friends_going_view_model.dart';
+import 'going_member_count_format.dart';
 import 'widgets/at_this_event_section.dart';
 import 'widgets/attendance_details_sheet.dart';
 import 'widgets/event_attendance_section.dart';
 import 'widgets/event_detail_hero.dart';
 import 'widgets/event_friends_going_section.dart';
+import 'widgets/event_friends_interested_section.dart';
 import 'widgets/event_intent_controls.dart';
 import 'widgets/event_meta_section.dart';
 
@@ -114,6 +118,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   late final FriendshipRepository _friendshipRepo = FriendshipRepository(
     Supabase.instance.client,
   );
+  late final EventSocialRepository _socialRepo = EventSocialRepository(
+    Supabase.instance.client,
+  );
 
   // No vendor selected yet (Events V2 Step 2) — NoopAnalyticsService is
   // the production-safe default. Swapping the implementation here is the
@@ -141,6 +148,13 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   // rest of Event Detail; EventFriendsGoingSection's own FutureBuilder
   // handles loading/error/empty by simply not rendering the section.
   Future<List<Friendship>>? _friendsGoingFuture;
+  // Events V2 Step 7 — same gating/failure-isolation shape as
+  // _friendsGoingFuture, one status over.
+  Future<List<Friendship>>? _friendsInterestedFuture;
+  // Events V2 Step 7 — the anonymous, capped platform-wide Going count.
+  // Same failure-isolation shape: a failed/slow count must never block or
+  // break the rest of Event Detail, or the Friends sections above it.
+  Future<GoingMemberCount>? _goingMemberCountFuture;
 
   // Events V2 Step 4 — Confirmed Attendance / "Did you make it?" state.
   EventConfirmedAttendance? _confirmedAttendance;
@@ -204,9 +218,31 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         _status = intent?.status;
         _confirmedAttendance = confirmed;
         _loading = false;
-        _friendsGoingFuture = (uid != null && canAttendEvent(event))
-            ? _loadFriendsGoing(uid, event.id)
-            : null;
+        if (uid != null && canAttendEvent(event)) {
+          // getFriends() is started once and shared between the Going and
+          // Interested resolutions below — Dart Futures cache their
+          // result, so awaiting the same Future instance from two call
+          // sites costs one RPC call total, not two (Events V2 Step 7
+          // performance requirement: no duplicate friend-list fetch).
+          final friendsFuture = _friendshipRepo.getFriends();
+          _friendsGoingFuture = _loadFriendsForStatus(
+            uid,
+            event.id,
+            EventIntentStatus.going,
+            friendsFuture,
+          );
+          _friendsInterestedFuture = _loadFriendsForStatus(
+            uid,
+            event.id,
+            EventIntentStatus.interested,
+            friendsFuture,
+          );
+          _goingMemberCountFuture = _socialRepo.getGoingMemberCount(event.id);
+        } else {
+          _friendsGoingFuture = null;
+          _friendsInterestedFuture = null;
+          _goingMemberCountFuture = null;
+        }
       });
       _maybeFirePromptedAnalytics(event, intent?.status, confirmed);
     } catch (_) {
@@ -218,14 +254,23 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
     }
   }
 
-  Future<List<Friendship>> _loadFriendsGoing(String uid, String eventId) async {
-    // Going-scoped, deliberately — see getVisibleUserIds' own doc comment.
-    // Interested rows must never appear under a "Friends Going" heading.
+  // Events V2 Step 7 — status-parameterized (reused for both Friends
+  // Going and Friends Interested; see getVisibleUserIds' own doc comment
+  // for why the status filter is mandatory, not cosmetic). [friendsFuture]
+  // is the caller's own shared getFriends() call — never fetched again
+  // here, so calling this twice (once per status) never doubles the
+  // friend-list RPC cost.
+  Future<List<Friendship>> _loadFriendsForStatus(
+    String uid,
+    String eventId,
+    EventIntentStatus status,
+    Future<List<Friendship>> friendsFuture,
+  ) async {
     final attendeeIds = await _attendanceRepo.getVisibleUserIds(
       eventId: eventId,
-      status: EventIntentStatus.going,
+      status: status,
     );
-    final friends = await _friendshipRepo.getFriends();
+    final friends = await friendsFuture;
     return friendsGoingToEvent(
       attendeeUserIds: attendeeIds,
       friends: friends,
@@ -781,6 +826,64 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                               friends: friends,
                             ),
                           ],
+                        );
+                      },
+                    ),
+                    // Events V2 Step 7. Going before Interested — the
+                    // stronger intent leads, matching the task's own
+                    // explicit product hierarchy. Independently gated:
+                    // Interested friends render (or don't) regardless of
+                    // whether the Going section above rendered anything.
+                    FutureBuilder<List<Friendship>>(
+                      future: _friendsInterestedFuture,
+                      builder: (context, snap) {
+                        final friends = snap.data;
+                        if (snap.connectionState != ConnectionState.done ||
+                            snap.hasError ||
+                            friends == null ||
+                            friends.isEmpty) {
+                          return const SizedBox.shrink();
+                        }
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SectionDivider(),
+                            EventFriendsInterestedSection(
+                              eventTitle: event.name,
+                              friends: friends,
+                            ),
+                          ],
+                        );
+                      },
+                    ),
+                    // Events V2 Step 7. Anonymous social proof — a plain
+                    // text line, not a labeled section, not tappable
+                    // (there is no identity list behind it), independent
+                    // of whether either Friends group above rendered
+                    // anything. formatGoingMemberCount returns null for a
+                    // 0 count, which this FutureBuilder already treats
+                    // the same as "nothing to show" alongside loading/
+                    // error/null-data.
+                    FutureBuilder<GoingMemberCount>(
+                      future: _goingMemberCountFuture,
+                      builder: (context, snap) {
+                        final memberCount = snap.data;
+                        final copy = memberCount == null
+                            ? null
+                            : formatGoingMemberCount(memberCount);
+                        if (snap.connectionState != ConnectionState.done ||
+                            snap.hasError ||
+                            copy == null) {
+                          return const SizedBox.shrink();
+                        }
+                        return Padding(
+                          padding: const EdgeInsets.only(top: CsSpacing.sm),
+                          child: Text(
+                            copy,
+                            style: CsTypography.metadata.copyWith(
+                              color: AppColors.taupe,
+                            ),
+                          ),
                         );
                       },
                     ),

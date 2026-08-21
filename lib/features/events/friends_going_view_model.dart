@@ -1,10 +1,15 @@
 import '../../models/friendship.dart';
 
 /// The accepted friends attending an event, ready to display (Community/
-/// Friends Step 1A). Every id in [attendeeUserIds] is already RLS-
-/// confirmed visible to the caller — `event_attendance_select` only ever
-/// returns the caller's own row or an accepted friend's friends-visible
-/// row (see `is_friend()`), so this function's only jobs are:
+/// Friends Step 1A; reused as-is for Friends Interested by Events V2 Step
+/// 7 — this function has never actually depended on Going specifically,
+/// only on "a list of attendee ids RLS already confirmed visible," so
+/// EventDetailScreen calls it a second time with Interested-status ids
+/// rather than duplicating it). Every id in [attendeeUserIds] is already
+/// RLS-confirmed visible to the caller — `event_attendance_select` only
+/// ever returns the caller's own row or an accepted friend's
+/// friends-visible row (see `is_friend()`), so this function's only jobs
+/// are:
 ///
 /// - self-exclusion (presentation only, not a security filter — RLS is
 ///   the actual authority; the viewer's own state is already shown via

@@ -242,6 +242,92 @@ class _FriendWishlistListScreenState extends State<FriendWishlistListScreen> {
   );
 }
 
+/// Events V2 Step 7 — the "View all" destination for Friend Profile's
+/// INTERESTED section, a parallel of [FriendGoingListScreen] one status
+/// over. Same fresh-independent-fetch shape (never data threaded through
+/// navigation).
+class FriendInterestedListScreen extends StatefulWidget {
+  final String userId;
+  final String friendLabel;
+  const FriendInterestedListScreen({
+    super.key,
+    required this.userId,
+    required this.friendLabel,
+  });
+
+  @override
+  State<FriendInterestedListScreen> createState() =>
+      _FriendInterestedListScreenState();
+}
+
+class _FriendInterestedListScreenState
+    extends State<FriendInterestedListScreen> {
+  late final _future = EventAttendanceRepository(Supabase.instance.client)
+      .getFriendUpcomingEvents(
+        userId: widget.userId,
+        status: EventIntentStatus.interested,
+      );
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    backgroundColor: AppColors.ivory,
+    body: SafeArea(
+      child: Column(
+        children: [
+          _FriendActivityHeader(
+            eyebrow: widget.friendLabel,
+            title: 'Interested',
+          ),
+          Expanded(
+            child: FutureBuilder<List<Event>>(
+              future: _future,
+              builder: (context, snap) {
+                if (snap.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.forestGreen,
+                      strokeWidth: 1.5,
+                    ),
+                  );
+                }
+                if (snap.hasError) {
+                  return Center(
+                    child: Text(
+                      'Could not load events.',
+                      style: CsTypography.body.copyWith(color: AppColors.taupe),
+                    ),
+                  );
+                }
+                final events = snap.data ?? const [];
+                if (events.isEmpty) {
+                  return Center(
+                    child: Text(
+                      'No upcoming events yet.',
+                      style: CsTypography.body.copyWith(color: AppColors.taupe),
+                    ),
+                  );
+                }
+                return ListView.separated(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: CsSpacing.pageHorizontal,
+                    vertical: CsSpacing.lg,
+                  ).copyWith(bottom: CsSpacing.xxl),
+                  itemCount: events.length,
+                  separatorBuilder: (_, _) => const _RowDivider(),
+                  itemBuilder: (context, i) => FriendGoingTile(
+                    event: events[i],
+                    onTap: () => openFriendEvent(context, events[i].id),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
+}
+
 class FriendGoingListScreen extends StatefulWidget {
   final String userId;
   final String friendLabel;

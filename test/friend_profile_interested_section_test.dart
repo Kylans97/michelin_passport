@@ -1,17 +1,17 @@
-// Covers the GOING section FriendProfileScreen adds for an accepted
-// friend (Community/Friends UX Step 1): loading/error/empty states (empty
-// AND error now omit the section entirely — Step 1 §18's "omit rather
-// than clutter" rule applied consistently across VISITED/WISHLIST/GOING),
-// the shared preview limit, the "View all" trigger, and that it renders
-// exactly what the repository call returns (RLS-filtered already) via the
-// real FriendGoingTile leaf widget.
+// Events V2 Step 7 — covers the INTERESTED section FriendProfileScreen
+// adds for an accepted friend, directly paralleling
+// friend_profile_going_section_test.dart's own coverage of GOING one
+// status over: loading/error/empty states all omit the section entirely
+// (Step 1 §18's "omit rather than clutter" rule, unchanged), the shared
+// preview limit, the "View all" trigger, and rendering via the same real
+// FriendGoingTile leaf widget (reused as-is — it has no Going-specific
+// text baked in, see FriendGoingTile's own doc comment).
 //
-// _FriendGoingSection is private to friend_profile_screen.dart, and
+// _FriendInterestedSection is private to friend_profile_screen.dart, and
 // FriendProfileScreen constructs EventAttendanceRepository against
 // Supabase.instance.client eagerly in initState — same established
-// limitation as every other screen in this app that touches Supabase
-// there — so this reconstructs the exact FutureBuilder + preview/
-// empty-omission shape here, using the real FriendGoingTile.
+// limitation as GOING's own test file — so this reconstructs the exact
+// FutureBuilder + preview/empty-omission shape here.
 
 import 'dart:async';
 
@@ -19,7 +19,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
-import 'package:michelin_passport/core/widgets/section_divider.dart';
 import 'package:michelin_passport/features/friends/widgets/friend_going_tile.dart';
 import 'package:michelin_passport/models/event.dart';
 
@@ -41,10 +40,9 @@ Event _event(String id, String name, {DateTime? startAt}) => Event(
 DateTime _utc(DateTime d) =>
     DateTime.utc(d.year, d.month, d.day, d.hour, d.minute, d.second);
 
-// Mirrors _FriendGoingSection exactly — including the trailing
-// SectionDivider Events V2 Step 7 added now that INTERESTED follows
-// GOING (no longer the last section on the page).
-Widget _goingSection(Future<List<Event>>? future) {
+// Mirrors _FriendInterestedSection exactly — no trailing SectionDivider,
+// since INTERESTED is the last section on the page.
+Widget _interestedSection(Future<List<Event>>? future) {
   return FutureBuilder<List<Event>>(
     future: future,
     builder: (context, snap) {
@@ -59,7 +57,7 @@ Widget _goingSection(Future<List<Event>>? future) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'GOING',
+                  'INTERESTED',
                   style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
                 ),
                 if (events.length > _previewLimit)
@@ -73,7 +71,6 @@ Widget _goingSection(Future<List<Event>>? future) {
             ),
             for (var i = 0; i < events.length && i < _previewLimit; i++)
               FriendGoingTile(event: events[i], onTap: () {}),
-            const SectionDivider(),
           ],
         );
       }
@@ -90,29 +87,31 @@ Widget _wrap(Widget child) => MaterialApp(
 );
 
 void main() {
-  group('Friend Profile GOING section', () {
+  group('Friend Profile INTERESTED section (Events V2 Step 7)', () {
     testWidgets('shows a loading spinner while pending', (tester) async {
       final completer = Completer<List<Event>>();
-      await tester.pumpWidget(_wrap(_goingSection(completer.future)));
+      await tester.pumpWidget(_wrap(_interestedSection(completer.future)));
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
     });
 
     testWidgets(
       'omits the whole section entirely when empty — never a "nothing '
-      'here" line (Step 1 §18)',
+      'here" line',
       (tester) async {
-        await tester.pumpWidget(_wrap(_goingSection(Future.value(const []))));
+        await tester.pumpWidget(
+          _wrap(_interestedSection(Future.value(const []))),
+        );
         await tester.pumpAndSettle();
-        expect(find.text('GOING'), findsNothing);
-        expect(find.textContaining('No upcoming events'), findsNothing);
+        expect(find.text('INTERESTED'), findsNothing);
       },
     );
 
-    testWidgets('renders one tile per upcoming event the repository '
-        'returns', (tester) async {
+    testWidgets('renders one tile per event the repository returns', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         _wrap(
-          _goingSection(
+          _interestedSection(
             Future.value([
               _event('e1', 'Festival A'),
               _event('e2', 'Festival B'),
@@ -132,7 +131,7 @@ void main() {
       (tester) async {
         await tester.pumpWidget(
           _wrap(
-            _goingSection(
+            _interestedSection(
               Future.value([
                 for (var i = 0; i < 6; i++) _event('e$i', 'Festival $i'),
               ]),
@@ -146,31 +145,12 @@ void main() {
     );
 
     testWidgets(
-      'Events V2 Step 7: renders a trailing SectionDivider when non-empty '
-      '— GOING is no longer the last section now that INTERESTED follows '
-      'it',
-      (tester) async {
-        await tester.pumpWidget(
-          _wrap(_goingSection(Future.value([_event('e1', 'Festival A')]))),
-        );
-        await tester.pumpAndSettle();
-        expect(find.byType(SectionDivider), findsOneWidget);
-      },
-    );
-
-    testWidgets(
       'omits the section on error, rather than showing a raw error line',
       (tester) async {
-        // .ignore() marks this future's error as intentionally handled
-        // elsewhere (by FutureBuilder's own snapshot.error, not a
-        // top-level catch) — without it, the test zone reports it as an
-        // unhandled exception even though FutureBuilder handles it
-        // correctly.
         final errorFuture = Future<List<Event>>.error('boom')..ignore();
-        await tester.pumpWidget(_wrap(_goingSection(errorFuture)));
+        await tester.pumpWidget(_wrap(_interestedSection(errorFuture)));
         await tester.pumpAndSettle();
-        expect(find.text('GOING'), findsNothing);
-        expect(find.textContaining('Could not load'), findsNothing);
+        expect(find.text('INTERESTED'), findsNothing);
         expect(tester.takeException(), isNull);
       },
     );

@@ -76,6 +76,8 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
   Future<List<VenueEntry>>? _visitedFuture;
   Future<List<PassportVenue>>? _wishlistFuture;
   Future<List<Event>>? _goingFuture;
+  // Events V2 Step 7 — same gating shape as _goingFuture, one status over.
+  Future<List<Event>>? _interestedFuture;
 
   @override
   void initState() {
@@ -89,6 +91,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
       _visitedFuture = null;
       _wishlistFuture = null;
       _goingFuture = null;
+      _interestedFuture = null;
     });
     _future.then((identity) {
       if (!mounted ||
@@ -101,6 +104,14 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
         _goingFuture = _attendanceRepo.getFriendUpcomingEvents(
           userId: widget.userId,
           status: EventIntentStatus.going,
+        );
+        // Events V2 Step 7 — same status-parameterized method, one
+        // status over. Only ever reads rows RLS already allows this
+        // viewer to see (an accepted friend's friends-visible Interested
+        // row) — no new query architecture.
+        _interestedFuture = _attendanceRepo.getFriendUpcomingEvents(
+          userId: widget.userId,
+          status: EventIntentStatus.interested,
         );
       });
     });
@@ -269,6 +280,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
               visitedFuture: _visitedFuture,
               wishlistFuture: _wishlistFuture,
               goingFuture: _goingFuture,
+              interestedFuture: _interestedFuture,
               onSendRequest: _sendRequest,
               onAccept: () async {
                 final friendshipId = await _incomingFriendshipId(identity.id);
@@ -324,6 +336,7 @@ class _ProfileBody extends StatelessWidget {
   final Future<List<VenueEntry>>? visitedFuture;
   final Future<List<PassportVenue>>? wishlistFuture;
   final Future<List<Event>>? goingFuture;
+  final Future<List<Event>>? interestedFuture;
   final VoidCallback onSendRequest;
   final VoidCallback onAccept;
   final VoidCallback onDecline;
@@ -334,6 +347,7 @@ class _ProfileBody extends StatelessWidget {
     required this.visitedFuture,
     required this.wishlistFuture,
     required this.goingFuture,
+    required this.interestedFuture,
     required this.onSendRequest,
     required this.onAccept,
     required this.onDecline,
@@ -394,6 +408,7 @@ class _ProfileBody extends StatelessWidget {
                           visitedFuture: visitedFuture,
                           wishlistFuture: wishlistFuture,
                           goingFuture: goingFuture,
+                          interestedFuture: interestedFuture,
                         ),
                       )
                     : const SizedBox.shrink(),
@@ -674,6 +689,7 @@ class _ActivitySections extends StatelessWidget {
   final Future<List<VenueEntry>>? visitedFuture;
   final Future<List<PassportVenue>>? wishlistFuture;
   final Future<List<Event>>? goingFuture;
+  final Future<List<Event>>? interestedFuture;
 
   const _ActivitySections({
     required this.userId,
@@ -681,6 +697,7 @@ class _ActivitySections extends StatelessWidget {
     required this.visitedFuture,
     required this.wishlistFuture,
     required this.goingFuture,
+    required this.interestedFuture,
   });
 
   @override
@@ -701,6 +718,13 @@ class _ActivitySections extends StatelessWidget {
         userId: userId,
         friendLabel: friendLabel,
         future: goingFuture,
+      ),
+      // Events V2 Step 7 — Going before Interested, matching the same
+      // hierarchy Event Detail uses. Last section: no trailing divider.
+      _FriendInterestedSection(
+        userId: userId,
+        friendLabel: friendLabel,
+        future: interestedFuture,
       ),
     ],
   );
@@ -890,6 +914,79 @@ class _FriendGoingSection extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (_) => FriendGoingListScreen(
+                            userId: userId,
+                            friendLabel: friendLabel,
+                          ),
+                        ),
+                      )
+                    : null,
+              ),
+              const SizedBox(height: CsSpacing.sm),
+              for (var i = 0; i < events.length && i < _previewLimit; i++) ...[
+                if (i > 0) const _RowDivider(),
+                FriendGoingTile(
+                  event: events[i],
+                  onTap: () => openFriendEvent(context, events[i].id),
+                ),
+              ],
+              // Events V2 Step 7: no longer the last section — INTERESTED
+              // now follows. Mirrors VISITED/WISHLIST's own trailing
+              // SectionDivider exactly.
+              const SectionDivider(),
+            ],
+          );
+        }
+        if (snap.hasError) return const SizedBox.shrink();
+        return const Padding(
+          padding: EdgeInsets.symmetric(vertical: CsSpacing.lg),
+          child: Center(
+            child: CircularProgressIndicator(
+              color: AppColors.forestGreen,
+              strokeWidth: 1.5,
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// Events V2 Step 7 — "I want to be able to see Friends Interested and
+/// Friends Going as a friend." Identical shape to [_FriendGoingSection]
+/// one status over; last section on the page, so — unlike GOING above —
+/// this one has no trailing divider. Only ever reads rows RLS already
+/// permits (this viewer's own accepted-friend relationship plus the
+/// row's own friends visibility) — no new query architecture, no
+/// exposure of a non-friend's or pending-friend's private intent.
+class _FriendInterestedSection extends StatelessWidget {
+  final String userId;
+  final String friendLabel;
+  final Future<List<Event>>? future;
+  const _FriendInterestedSection({
+    required this.userId,
+    required this.friendLabel,
+    required this.future,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FutureBuilder<List<Event>>(
+      future: future,
+      builder: (context, snap) {
+        final loading = snap.connectionState == ConnectionState.waiting;
+        if (!loading && !snap.hasError) {
+          final events = snap.data ?? const [];
+          if (events.isEmpty) return const SizedBox.shrink();
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _SectionHeader(
+                title: 'INTERESTED',
+                onViewAll: events.length > _previewLimit
+                    ? () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => FriendInterestedListScreen(
                             userId: userId,
                             friendLabel: friendLabel,
                           ),

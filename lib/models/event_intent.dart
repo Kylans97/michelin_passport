@@ -15,17 +15,27 @@ import 'event_attendance.dart';
 
 /// Derives `event_attendance.visibility` from the *target* intent status —
 /// never independently settable by a caller, and never preserved across a
-/// transition. Going stays friends-visible (unchanged from Social
-/// Foundation Step 2B's own default — an event is already public
-/// catalogue content, so intending to go is lower-sensitivity than a
-/// private rating). Interested is always private in MVP, full stop —
-/// switching Going -> Interested resets to private rather than blindly
-/// carrying a friends-visible value onto a concept explicitly designed to
-/// stay private (Events V2 Step 3's own approved visibility rule).
+/// transition. Both Going and Interested are friends-visible as of Events
+/// V2 Step 7 — an event is already public catalogue content, so either
+/// intent is lower-sensitivity than a private rating, and Step 7's own
+/// product requirement is that accepted friends can see both signals
+/// consistently (Friends Going and Friends Interested read as two states
+/// of the same social system, not one visible and one hidden).
+///
+/// Step 3 originally kept Interested private-by-default in MVP; Step 7
+/// changes that default for FUTURE writes only (this function is the
+/// single place the value is derived — see [EventAttendanceRepository
+/// .setEventIntent], the only caller). No backfill accompanies this
+/// change: production held zero Interested rows at the time of the Step 7
+/// architecture audit, and even in general the safer transition is
+/// future-writes-only — a user who marked Interested under the old
+/// private default should never have that historical row silently
+/// broadened without their own re-action (re-tapping Interested, which
+/// already goes through this same function on the next write).
 AttendanceVisibility visibilityForIntent(EventIntentStatus status) =>
     switch (status) {
       EventIntentStatus.going => AttendanceVisibility.friends,
-      EventIntentStatus.interested => AttendanceVisibility.private,
+      EventIntentStatus.interested => AttendanceVisibility.friends,
     };
 
 /// The entire Interested/Going state machine in one pure function.

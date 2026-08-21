@@ -77,19 +77,28 @@ void main() {
     });
   });
 
-  group('visibilityForIntent — the approved MVP rule', () {
-    test('Interested is always private', () {
+  group('visibilityForIntent — Events V2 Step 7: Interested and Going are '
+      'both friends-visible', () {
+    test('Interested is friends-visible (Step 7 change from Step 3\'s '
+        'private-by-default MVP rule)', () {
       expect(
         visibilityForIntent(EventIntentStatus.interested),
-        AttendanceVisibility.private,
+        AttendanceVisibility.friends,
       );
     });
 
-    test('Going uses the existing approved friends-visible default', () {
+    test('Going remains friends-visible — unchanged by Step 7', () {
       expect(
         visibilityForIntent(EventIntentStatus.going),
         AttendanceVisibility.friends,
       );
+    });
+
+    test('every EventIntentStatus value resolves to friends — no status '
+        'is ever private under the current rule', () {
+      for (final status in EventIntentStatus.values) {
+        expect(visibilityForIntent(status), AttendanceVisibility.friends);
+      }
     });
   });
 
