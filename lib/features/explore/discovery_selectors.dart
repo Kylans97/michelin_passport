@@ -1,4 +1,5 @@
 import '../../models/event.dart';
+import '../../models/event_chronology.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
 
@@ -63,14 +64,16 @@ List<Hotel> selectDiscoveryHotels(List<Hotel> hotels, {int limit = 8}) {
 /// discovery feed: the soonest upcoming event, excluding cancelled ones
 /// (a cancelled event stays visible everywhere it's explicitly searched
 /// for or browsed in the full Events list — see EventCard's cancelled
-/// badge — but is never the thing Explore leads with). Sorts by
-/// [Event.startAt] ascending internally rather than trusting the caller's
-/// ordering, so this function's output is deterministic regardless of what
-/// order [events] arrives in. Returns null when there is nothing upcoming
-/// to feature — callers must render no "What's On" section at all in that
+/// badge — but is never the thing Explore leads with). Sorts internally
+/// via [compareEventChronology] (Events V2 Time Precision Phase B) rather
+/// than trusting the caller's ordering, so this function's output is
+/// deterministic regardless of what order [events] arrives in — and safe
+/// for a date-only Event, which [compareEventChronology] never sorts by
+/// an invented time. Returns null when there is nothing upcoming to
+/// feature — callers must render no "What's On" section at all in that
 /// case, never an empty/fake card.
 Event? selectFeaturedEvent(List<Event> events) {
   final upcoming = events.where((e) => !e.isCancelled).toList()
-    ..sort((a, b) => a.startAt.compareTo(b.startAt));
+    ..sort(compareEventChronology);
   return upcoming.isEmpty ? null : upcoming.first;
 }

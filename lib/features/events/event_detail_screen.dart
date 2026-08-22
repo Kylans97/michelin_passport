@@ -8,10 +8,10 @@ import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/utils/event_time.dart';
 import '../../core/widgets/cs_image_placeholder.dart';
 import '../../core/widgets/linked_venue_row.dart';
 import '../../core/widgets/section_divider.dart';
-import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_about_section.dart';
 import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
@@ -30,11 +30,11 @@ import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
-import 'event_date_format.dart';
 import 'friends_going_view_model.dart';
 import 'going_member_count_format.dart';
 import 'widgets/at_this_event_section.dart';
 import 'widgets/attendance_details_sheet.dart';
+import 'widgets/event_actions_row.dart';
 import 'widgets/event_attendance_section.dart';
 import 'widgets/event_detail_hero.dart';
 import 'widgets/event_friends_going_section.dart';
@@ -49,21 +49,26 @@ const double _heroLogoScale = 0.22;
 
 /// Whether "I'm going" should be offered at all — no new event-status
 /// system (Step 2B §21's explicit instruction, unchanged by the Events UI
-/// Consistency Step 1 redesign): reuses [Event.isCancelled] and the
-/// event's own [Event.endAt]. A top-level pure function, not inlined in
-/// build(), so it's directly unit-testable without a live Supabase
-/// session.
+/// Consistency Step 1 redesign): reuses [Event.isCancelled] and
+/// [eventHasEnded]. A top-level pure function, not inlined in build(), so
+/// it's directly unit-testable without a live Supabase session.
 ///
-/// Unaffected by Events V2 Timezone Hardening (Event.fromJson no longer
-/// calling .toLocal()): `.isAfter`/`.isBefore`/`.compareTo` compare the
-/// underlying absolute instant regardless of which zone a DateTime is
-/// tagged as, so this stays correct with zero change — only *display*
-/// (reading .hour/.day off a DateTime) was ever affected by .toLocal(),
-/// and this function never does that. The same reasoning is why the
-/// future "Did you make it?" attendance trigger must key off this same
-/// event.endAt instant, never a rendered event-local date/time.
+/// Events V2 Time Precision Phase B: delegates to the same centralized
+/// [eventHasEnded] the Attendance-eligibility subsystem uses — exact
+/// [Event.endAt] instant when known (unaffected by Events V2 Timezone
+/// Hardening; `.isAfter` compares the underlying absolute instant
+/// regardless of zone tag, unchanged since before Phase B), else the
+/// local-day-end of [Event.endDate] in [Event.timezone] when [Event.endAt]
+/// is unknown — so Interested/Going stay offered through an unknown-end
+/// Event's final local day, never cut off by a fabricated end time.
 bool canAttendEvent(Event event, {DateTime? now}) =>
-    !event.isCancelled && event.endAt.isAfter(now ?? DateTime.now());
+    !event.isCancelled &&
+    !eventHasEnded(
+      endAt: event.endAt,
+      endDate: event.endDate,
+      timezone: event.timezone,
+      now: now ?? DateTime.now(),
+    );
 
 /// Full event details — Events UI Consistency Step 1: rebuilt onto the
 /// same editorial design language Restaurant/Hotel Detail established
@@ -74,16 +79,21 @@ bool canAttendEvent(Event event, {DateTime? now}) =>
 /// presentation. See docs/Architecture/EVENTS_UI_MICHELIN_PARTICIPATION.md
 /// for the full before/after and the Michelin-participation architecture.
 ///
-/// Hero (image or branded monogram fallback, name, city/country, date
-/// range) → EVENT META (date/time, venue, admission) → ATTENDANCE (if
-/// [canAttendEvent]) → ABOUT (conditional, reusing [VenueAboutSection]
-/// outright) → AT THIS EVENT (conditional, Michelin-starred linked
-/// restaurants only — Events V2 Step 3 renamed this section's heading
-/// from "MICHELIN AT THIS EVENT"; see [AtThisEventSection]'s own doc
-/// comment for why the section name is entity-neutral even though its
-/// current content is unchanged) → HOTELS (conditional, preserved
-/// existing functionality, reskinned) → LOCATION / practical info
-/// (address + Website/Tickets, conditional as a whole).
+/// Events V2 Time Precision Phase B — Event Detail Hierarchy UX
+/// correction: HERO (image or branded monogram fallback, name, city/
+/// country only — event type and date moved out, see below) → EVENT
+/// ESSENTIALS ([EventMetaSection]: event type, precision-aware date/time,
+/// venue, admission) → ACTIONS ([EventActionsRow]: Tickets/Official
+/// website, conditional, moved up from the former LOCATION section) →
+/// ATTENDANCE (if [canAttendEvent]) → ABOUT (conditional, reusing
+/// [VenueAboutSection] outright) → AT THIS EVENT (conditional,
+/// Michelin-starred linked restaurants only — Events V2 Step 3 renamed
+/// this section's heading from "MICHELIN AT THIS EVENT"; see
+/// [AtThisEventSection]'s own doc comment for why the section name is
+/// entity-neutral even though its current content is unchanged) → HOTELS
+/// (conditional, preserved existing functionality, reskinned) → LOCATION
+/// (conditional; address only now — Tickets/Official website live in
+/// ACTIONS instead, so this section is genuinely location-only).
 class EventDetailScreen extends StatefulWidget {
   final String eventId;
 
@@ -733,7 +743,11 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         event.officialUrl != null && event.officialUrl!.isNotEmpty;
     final hasTickets = event.ticketUrl != null && event.ticketUrl!.isNotEmpty;
     final hasAddress = event.address != null && event.address!.isNotEmpty;
-    final hasLocationSection = hasAddress || hasWebsite || hasTickets;
+    // Events V2 Time Precision Phase B — Event Detail Hierarchy UX
+    // correction: LOCATION is now location-only (Tickets/Official website
+    // moved to the new ACTIONS area, above) — hasLocationSection is simply
+    // hasAddress now, not a three-way OR.
+    final hasLocationSection = hasAddress;
     final ticketButtonLabel = event.admissionType == EventAdmissionType.mixed
         ? 'Optional ticket'
         : 'Tickets';
@@ -760,11 +774,16 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       backgroundColor: AppColors.ivory,
       body: CustomScrollView(
         slivers: [
+          // Events V2 Time Precision Phase B — Event Detail Hierarchy UX
+          // correction: the hero no longer carries eventTypeLabel or
+          // dateRangeLine — both moved to EventMetaSection ("Event
+          // Essentials"), directly below, so the hero stays a quiet
+          // image/title/location surface (deliberately more breathing
+          // room for future Event photography) rather than repeating
+          // facts the very next section already states.
           EventDetailHero(
             title: event.name,
-            eventTypeLabel: event.eventType.label.toUpperCase(),
             cityCountryLine: cityCountryLine,
-            dateRangeLine: formatEventDateRange(event).toUpperCase(),
             backgroundImage: backgroundImage,
           ),
           SliverToBoxAdapter(
@@ -779,6 +798,25 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   EventMetaSection(event: event),
+
+                  // Events V2 Time Precision Phase B — Event Detail
+                  // Hierarchy UX correction: ACTIONS moved up from the
+                  // former LOCATION section, directly after Essentials —
+                  // Tickets/Official website are actionable, practical
+                  // information and belong near the top, not buried near
+                  // the bottom of the screen. EventActionsRow itself
+                  // renders nothing when neither URL exists, so no empty
+                  // divider/section appears for an Event with no links.
+                  if (hasWebsite || hasTickets) ...[
+                    const SectionDivider(),
+                    EventActionsRow(
+                      ticketUrl: event.ticketUrl,
+                      officialUrl: event.officialUrl,
+                      ticketLabel: ticketButtonLabel,
+                      eventName: event.name,
+                      onTapUrl: _openUrl,
+                    ),
+                  ],
 
                   if (attendanceState != AttendanceUiState.none) ...[
                     const SectionDivider(),
@@ -921,6 +959,12 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                     ],
                   ],
 
+                  // Events V2 Time Precision Phase B — Event Detail
+                  // Hierarchy UX correction: LOCATION is now genuinely
+                  // location-only — Tickets/Official website moved up to
+                  // ACTIONS, above. hasLocationSection/hasAddress below
+                  // reflect that (see this build method's own local
+                  // variable definitions).
                   if (hasLocationSection) ...[
                     const SectionDivider(),
                     Text(
@@ -930,32 +974,12 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                       ),
                     ),
                     const SizedBox(height: CsSpacing.md),
-                    if (hasAddress)
-                      Text(
-                        event.address!,
-                        style: CsTypography.body.copyWith(
-                          color: AppColors.forestGreen,
-                        ),
+                    Text(
+                      event.address!,
+                      style: CsTypography.body.copyWith(
+                        color: AppColors.forestGreen,
                       ),
-                    if (hasAddress && (hasWebsite || hasTickets))
-                      const SizedBox(height: CsSpacing.md),
-                    if (hasWebsite || hasTickets)
-                      Row(
-                        children: [
-                          if (hasWebsite)
-                            SubtleTextAction(
-                              label: 'Website',
-                              onTap: () => _openUrl(event.officialUrl!),
-                            ),
-                          if (hasWebsite && hasTickets)
-                            const SizedBox(width: CsSpacing.xl),
-                          if (hasTickets)
-                            SubtleTextAction(
-                              label: ticketButtonLabel,
-                              onTap: () => _openUrl(event.ticketUrl!),
-                            ),
-                        ],
-                      ),
+                    ),
                   ],
                 ],
               ),

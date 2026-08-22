@@ -1,6 +1,8 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/utils/event_time.dart';
 import '../../models/event.dart';
 import '../../models/event_attendance.dart';
+import '../../models/event_chronology.dart';
 import '../../models/event_intent.dart';
 
 // Every column on public.event_attendance. Listed explicitly, rather than
@@ -182,15 +184,29 @@ class EventAttendanceRepository {
 
   /// Every future/current event [userId] has the given [status] for that
   /// the caller is authorized to see — RLS alone decides that; this never
-  /// fetches a broader set and filters client-side. The [status] filter
-  /// exists for the identical reason [getVisibleUserIds]'s own does — see
-  /// that method's doc comment; Friend Profile's GOING section passes
-  /// `status: EventIntentStatus.going` and must never show a friend's
-  /// Interested events under a "GOING" heading. Past events are excluded
-  /// here (Friend Profile GOING intentionally shows only upcoming/current
-  /// intent), soonest first. Two queries total regardless of how many
-  /// events: one for the intent rows, one batched `events` lookup — never
-  /// one query per event.
+  /// fetches a broader set and filters client-side BEYOND the precision-
+  /// aware upcoming/past split below. The [status] filter exists for the
+  /// identical reason [getVisibleUserIds]'s own does — see that method's
+  /// doc comment; Friend Profile's GOING section passes `status:
+  /// EventIntentStatus.going` and must never show a friend's Interested
+  /// events under a "GOING" heading. Past events are excluded here (Friend
+  /// Profile GOING intentionally shows only upcoming/current intent),
+  /// soonest first. Two queries total regardless of how many events: one
+  /// for the intent rows, one batched `events` lookup — never one query
+  /// per event.
+  ///
+  /// Events V2 Time Precision Phase B: the upcoming/past split is now
+  /// [eventHasEnded] (exact `end_at` instant when known — identical
+  /// behavior to before Phase B for every one of today's full-precision
+  /// Events — else the local-day-end of `end_date`), applied Dart-side
+  /// after a single batched fetch, rather than a `.gte('end_at', now)` SQL
+  /// filter. Production still has `end_at NOT NULL` on every row today
+  /// (Phase A only), so this produces byte-identical results to the old
+  /// SQL filter right now — but a SQL `NULL` comparison is neither true
+  /// nor false, so once Phase C ever lets `end_at` be null, the old filter
+  /// would have silently excluded every date-only Event from this query
+  /// forever. Preparing this now means Phase C needs zero further changes
+  /// here.
   Future<List<Event>> getFriendUpcomingEvents({
     required String userId,
     required EventIntentStatus status,
@@ -205,16 +221,24 @@ class EventAttendanceRepository {
     ];
     if (eventIds.isEmpty) return [];
 
-    final rows = await _client
-        .from('events')
-        .select()
-        .inFilter('id', eventIds)
-        .gte('end_at', DateTime.now().toUtc().toIso8601String())
-        .order('start_at', ascending: true);
-    return [
-      for (final row in rows as List)
-        Event.fromJson(row as Map<String, dynamic>),
-    ];
+    final rows = await _client.from('events').select().inFilter('id', eventIds);
+    final now = DateTime.now().toUtc();
+    final events =
+        [
+              for (final row in rows as List)
+                Event.fromJson(row as Map<String, dynamic>),
+            ]
+            .where(
+              (event) => !eventHasEnded(
+                endAt: event.endAt,
+                endDate: event.endDate,
+                timezone: event.timezone,
+                now: now,
+              ),
+            )
+            .toList()
+          ..sort(compareEventChronology);
+    return events;
   }
 
   /// Every event [userId] currently has an active GOING intent for that
@@ -229,6 +253,12 @@ class EventAttendanceRepository {
   /// signed-in user is expected to have more than a handful of unresolved
   /// past-Going events at once, and this is a client-side candidate list,
   /// not a paginated feed.
+  ///
+  /// Events V2 Time Precision Phase B: same rationale as
+  /// [getFriendUpcomingEvents] — the past-events filter is now
+  /// [eventHasEnded], applied Dart-side, not a `.lt('end_at', now)` SQL
+  /// filter that would silently exclude a future date-only Event once
+  /// `end_at` can be null.
   Future<List<Event>> getPastGoingEvents({
     required String userId,
     int maxCount = 20,
@@ -244,14 +274,20 @@ class EventAttendanceRepository {
     ];
     if (eventIds.isEmpty) return [];
 
-    final rows = await _client
-        .from('events')
-        .select()
-        .inFilter('id', eventIds)
-        .lt('end_at', DateTime.now().toUtc().toIso8601String());
+    final rows = await _client.from('events').select().inFilter('id', eventIds);
+    final now = DateTime.now().toUtc();
     return [
-      for (final row in rows as List)
-        Event.fromJson(row as Map<String, dynamic>),
-    ];
+          for (final row in rows as List)
+            Event.fromJson(row as Map<String, dynamic>),
+        ]
+        .where(
+          (event) => eventHasEnded(
+            endAt: event.endAt,
+            endDate: event.endDate,
+            timezone: event.timezone,
+            now: now,
+          ),
+        )
+        .toList();
   }
 }

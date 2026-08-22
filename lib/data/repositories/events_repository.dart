@@ -8,6 +8,40 @@ import 'hotel_repository.dart' show hotelFullColumns;
 import 'restaurant_repository.dart' show restaurantFullColumns;
 import 'search_query.dart';
 
+/// The conservative, one-calendar-day-widened `end_date`/`start_date` SQL
+/// bounds [EventsRepository.loadEvents] applies for a given browse
+/// window — extracted as a standalone pure function specifically so this
+/// exact date arithmetic can be unit-tested without a live SupabaseClient
+/// (see [EventsRepository.loadEvents]'s own doc comment for why the
+/// widening exists, and
+/// event_confirmed_attendance_repository_test.dart's identical "extract
+/// the pure part, prove the network call separately against local
+/// Postgres" precedent — the network call itself is proven in
+/// docs/Architecture/Events/EVENT_TIME_PRECISION_PHASE_C_PRE_APPLY.md's
+/// Local Date-Only Insert / Start-Known End-Unknown Insert sections).
+({String? gteEndDate, String? lteStartDate}) eventBrowseWindowBounds({
+  DateTime? from,
+  DateTime? to,
+}) {
+  return (
+    gteEndDate: from == null
+        ? null
+        : _dateOnly(from.subtract(const Duration(days: 1))),
+    lteStartDate: to == null
+        ? null
+        : _dateOnly(to.add(const Duration(days: 1))),
+  );
+}
+
+// 'YYYY-MM-DD' — matches the date column's own text form (and
+// PlannedTripsRepository's identical convention for the same reason): no
+// time-of-day, no timezone conversion, since `date` columns compare as
+// calendar dates regardless of session timezone.
+String _dateOnly(DateTime date) =>
+    '${date.year.toString().padLeft(4, '0')}-'
+    '${date.month.toString().padLeft(2, '0')}-'
+    '${date.day.toString().padLeft(2, '0')}';
+
 /// A single event's linked venues, resolved for Event Detail. Either list
 /// may be empty — an event is never required to link to any venue.
 class EventVenues {
@@ -38,6 +72,27 @@ class EventsRepository {
   /// (see EventCard for how they're marked) — hiding them outright would
   /// make "why did this event disappear" a mystery; only trip-matching
   /// (eventMatchesTrip) excludes them outright.
+  ///
+  /// Events V2 Time Precision Phase C: filters and orders on
+  /// [start_date]/[end_date] — each event's OWN local calendar date — never
+  /// on start_at/end_at, which are nullable from Phase C onward (a
+  /// date-only or start-known/end-unknown event has no exact instant to
+  /// compare). [from]/[to] arrive as device-local DateTimes (see
+  /// EventDateFilter.resolve()); comparing a device-local calendar day
+  /// directly against another event's own IANA-zone calendar day is exactly
+  /// the trap this repository must not fall into — a person a day away by
+  /// timezone must never see a legitimate event silently vanish near a
+  /// midnight boundary. So the SQL window is widened by one calendar day on
+  /// each open end before being sent as the filter: since any two IANA
+  /// zones differ by at most ~26 hours, "today" can disagree by at most one
+  /// calendar day between the viewer's device and an event's own zone, and
+  /// widening by exactly one day on each side is therefore always enough to
+  /// avoid excluding a legitimate boundary event. This trades a rare extra
+  /// edge-of-window event for never hiding one — see
+  /// docs/Architecture/Events/EVENT_TIME_PRECISION_PHASE_C_PRE_APPLY.md's
+  /// International Date-Boundary Strategy section for the full reasoning.
+  /// No further "exact" trim runs afterward in Dart — once timezones
+  /// differ, there is no single correct answer, only "never silently hide."
   Future<List<Event>> loadEvents({
     DateTime? from,
     DateTime? to,
@@ -53,16 +108,17 @@ class EventsRepository {
     if (orFilter != null) {
       builder = builder.or(orFilter);
     }
-    if (from != null) {
-      builder = builder.gte('end_at', from.toUtc().toIso8601String());
+    final bounds = eventBrowseWindowBounds(from: from, to: to);
+    if (bounds.gteEndDate != null) {
+      builder = builder.gte('end_date', bounds.gteEndDate!);
     }
-    if (to != null) {
-      builder = builder.lte('start_at', to.toUtc().toIso8601String());
+    if (bounds.lteStartDate != null) {
+      builder = builder.lte('start_date', bounds.lteStartDate!);
     }
     if (countryCode != null) {
       builder = builder.eq('country_code', countryCode);
     }
-    final rows = await builder.order('start_at', ascending: true);
+    final rows = await builder.order('start_date', ascending: true);
     return [
       for (final row in rows as List)
         Event.fromJson(row as Map<String, dynamic>),
@@ -74,13 +130,14 @@ class EventsRepository {
   /// date-bounded here: a trip's own start/end dates already do that
   /// filtering inside the pure matching function, and re-deriving the same
   /// window twice (once in SQL, once in Dart) risks the two drifting out
-  /// of sync.
+  /// of sync. Ordered on start_date (Phase C — never start_at, nullable
+  /// from Phase C onward).
   Future<List<Event>> loadEventsForCountry(String countryCode) async {
     final rows = await _client
         .from('events')
         .select()
         .eq('country_code', countryCode)
-        .order('start_at', ascending: true);
+        .order('start_date', ascending: true);
     return [
       for (final row in rows as List)
         Event.fromJson(row as Map<String, dynamic>),

@@ -1,4 +1,5 @@
 import '../../models/event.dart';
+import '../../models/event_chronology.dart';
 import '../../models/event_discovery_item.dart';
 import '../../models/event_relevance_reason.dart';
 
@@ -91,13 +92,16 @@ EventRelevanceReason? primaryReasonFor(EventRelevanceSignals signals) {
 ///
 /// Ordering: relevance tier ascending (Trip first, then Friend Going,
 /// Followed Host, Friend Interested, Popular, then "no reason" last),
-/// then [Event.startAt] ascending within a tier, then [Event.id] ascending
-/// as a final, purely-mechanical tiebreaker for two events sharing the
-/// exact same instant — never a meaningful ranking signal itself. A user
-/// with zero personalization state (cold start) gets every event with a
-/// null [EventDiscoveryItem.primaryReason], which collapses this sort to
-/// plain [Event.startAt] order — the exact same order [events] was already
-/// in, since EventsRepository.loadEvents already orders by start_at.
+/// then chronological within a tier via [compareEventChronology] (Events
+/// V2 Time Precision Phase B — local start date, then known-time-before-
+/// unknown-time, then [Event.id] as a final purely-mechanical tiebreaker,
+/// never a meaningful ranking signal itself). A user with zero
+/// personalization state (cold start) gets every event with a null
+/// [EventDiscoveryItem.primaryReason], which collapses this sort to plain
+/// chronological order — the exact same order [events] was already in,
+/// since EventsRepository.loadEvents already orders by start_date (Events
+/// V2 Time Precision Phase C — start_date, not start_at, is the canonical
+/// browse-order key from Phase C onward).
 List<EventDiscoveryItem> rankEventsForDiscovery({
   required List<Event> events,
   required Map<String, EventRelevanceSignals> signalsByEventId,
@@ -116,9 +120,7 @@ List<EventDiscoveryItem> rankEventsForDiscovery({
       a.primaryReason,
     ).compareTo(_tierOf(b.primaryReason));
     if (tierCompare != 0) return tierCompare;
-    final startCompare = a.event.startAt.compareTo(b.event.startAt);
-    if (startCompare != 0) return startCompare;
-    return a.event.id.compareTo(b.event.id);
+    return compareEventChronology(a.event, b.event);
   });
   return items;
 }

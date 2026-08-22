@@ -202,6 +202,26 @@ void main() {
       expect(find.text('27–30 AUG 2026'), findsOneWidget);
     });
 
+    testWidgets('Events V2 Time Precision Phase B UX correction: the real '
+        'Event Detail call site no longer supplies eventTypeLabel or '
+        'dateRangeLine — both render nothing when omitted, rather than an '
+        'empty line/placeholder', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          const EventDetailHero(
+            title: "'t Preuvenemint",
+            cityCountryLine: 'Maastricht · NL',
+            backgroundImage: CsImagePlaceholder(logoScale: 0.22),
+          ),
+        ),
+      );
+      expect(find.text("'t Preuvenemint"), findsWidgets);
+      expect(find.text('Maastricht · NL'), findsOneWidget);
+      expect(find.textContaining('FESTIVAL'), findsNothing);
+      expect(find.textContaining('AUG 2026'), findsNothing);
+      expect(tester.takeException(), isNull);
+    });
+
     testWidgets('has a back action', (tester) async {
       await tester.pumpWidget(
         _wrapSliver(
@@ -257,7 +277,46 @@ void main() {
   group('EventMetaSection — date/venue/admission/cancelled (§7-9, §26-27)', () {
     testWidgets('always shows the date/time range', (tester) async {
       await tester.pumpWidget(_wrap(EventMetaSection(event: _event())));
-      expect(find.textContaining('27 Aug 2026'), findsOneWidget);
+      // One combined precision-aware line (Events V2 Time Precision Phase
+      // B) — date range plus the known start/end times — replacing the
+      // former two separate "Thu 27 Aug 2026, 18:00" / "to Sun 30 Aug
+      // 2026, 22:00" lines.
+      expect(
+        find.textContaining('27–30 Aug 2026 · 18:00–22:00'),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('Event Detail Hierarchy UX correction: event type renders '
+        'as a small eyebrow directly above the date/time row', (tester) async {
+      await tester.pumpWidget(
+        _wrap(EventMetaSection(event: _event(eventType: EventType.dinner))),
+      );
+      expect(find.text('DINNER'), findsOneWidget);
+      // Above the date/time row: confirmed by finding both, then checking
+      // relative vertical position within the same Column.
+      final typeY = tester.getTopLeft(find.text('DINNER')).dy;
+      final dateY = tester.getTopLeft(find.textContaining('27–30 Aug 2026')).dy;
+      expect(typeY, lessThan(dateY));
+    });
+
+    testWidgets('renders no event-type label at all for EventType.other — '
+        'the schema\'s own "no real type known" fallback, treated as '
+        '"no type known" rather than a generic "EVENT" placeholder', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(EventMetaSection(event: _event(eventType: EventType.other))),
+      );
+      expect(find.text('EVENT'), findsNothing);
+    });
+
+    testWidgets('event type is conveyed through visible text, never color '
+        'alone', (tester) async {
+      await tester.pumpWidget(
+        _wrap(EventMetaSection(event: _event(eventType: EventType.tasting))),
+      );
+      expect(find.text('TASTING'), findsOneWidget);
     });
 
     testWidgets('shows the venue name row when present', (tester) async {

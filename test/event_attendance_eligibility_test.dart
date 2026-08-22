@@ -10,6 +10,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/models/event.dart';
 import 'package:michelin_passport/models/event_attendance.dart';
 import 'package:michelin_passport/models/event_attendance_eligibility.dart';
+import 'package:timezone/data/latest_all.dart' as tz_data;
 
 Event _event({
   String id = 'evt-1',
@@ -30,6 +31,8 @@ Event _event({
 );
 
 void main() {
+  setUpAll(tz_data.initializeTimeZones);
+
   final now = DateTime.utc(2026, 9, 1, 12);
 
   group('resolveAttendanceUiState — §3 base eligibility', () {
@@ -459,6 +462,128 @@ void main() {
         now: now,
       );
       expect(result?.id, 'a');
+    });
+  });
+
+  group('Events V2 Time Precision Phase B — unknown-end-time Attendance '
+      'eligibility', () {
+    // A date-only or start-known/end-unknown Event, per the architecture
+    // audit's own recommended rule: eligibility waits until the Event's
+    // final LOCAL calendar day has fully ended — never the moment the
+    // known start time passes, and never a fabricated end instant.
+    Event unknownEndEvent({
+      String id = 'evt-1',
+      required String startDate,
+      required String endDate,
+      EventStatus status = EventStatus.upcoming,
+    }) => Event(
+      id: id,
+      name: 'Test Event',
+      startDate: DateTime.utc(
+        int.parse(startDate.split('-')[0]),
+        int.parse(startDate.split('-')[1]),
+        int.parse(startDate.split('-')[2]),
+      ),
+      endDate: DateTime.utc(
+        int.parse(endDate.split('-')[0]),
+        int.parse(endDate.split('-')[1]),
+        int.parse(endDate.split('-')[2]),
+      ),
+      timezone: 'Europe/Amsterdam',
+      countryCode: 'NL',
+      eventType: EventType.dinner,
+      status: status,
+      createdAt: DateTime.utc(2026, 1, 1),
+    );
+
+    test('does not prompt merely because the Event is later "today" in UTC '
+        '— eligibility is not offered at all while the Event is still '
+        'upcoming', () {
+      final event = unknownEndEvent(
+        startDate: '2026-09-29',
+        endDate: '2026-09-29',
+      );
+      final state = resolveAttendanceUiState(
+        event: event,
+        intent: EventIntentStatus.going,
+        hasConfirmedAttendance: false,
+        now: DateTime.utc(2026, 9, 29, 10), // well before the local day ends
+      );
+      expect(state, AttendanceUiState.none);
+    });
+
+    test('waits until the local final day fully ends before becoming '
+        'promptable, even though a naive "start time has passed" check '
+        'would have already fired', () {
+      final event = unknownEndEvent(
+        startDate: '2026-09-29',
+        endDate: '2026-09-29',
+      );
+      // 2026-09-29 20:00 UTC = 22:00 CEST local — well past a typical
+      // evening start time, but the local day has not ended yet.
+      final stillActive = resolveAttendanceUiState(
+        event: event,
+        intent: EventIntentStatus.going,
+        hasConfirmedAttendance: false,
+        now: DateTime.utc(2026, 9, 29, 20),
+      );
+      expect(stillActive, AttendanceUiState.none);
+
+      // 2026-09-29 22:00:01 UTC = 2026-09-30 00:00:01 CEST — just past the
+      // local day boundary.
+      final nowEnded = resolveAttendanceUiState(
+        event: event,
+        intent: EventIntentStatus.going,
+        hasConfirmedAttendance: false,
+        now: DateTime.utc(2026, 9, 29, 22, 0, 1),
+      );
+      expect(nowEnded, AttendanceUiState.promptable);
+    });
+
+    test('multi-day date-only Event: waits until the FINAL day ends, not '
+        'the first', () {
+      final event = unknownEndEvent(
+        startDate: '2026-10-16',
+        endDate: '2026-10-18',
+      );
+      final duringFestival = resolveAttendanceUiState(
+        event: event,
+        intent: EventIntentStatus.going,
+        hasConfirmedAttendance: false,
+        now: DateTime.utc(2026, 10, 17, 12),
+      );
+      expect(duringFestival, AttendanceUiState.none);
+
+      final afterFestival = resolveAttendanceUiState(
+        event: event,
+        intent: EventIntentStatus.going,
+        hasConfirmedAttendance: false,
+        now: DateTime.utc(2026, 10, 19, 0),
+      );
+      expect(afterFestival, AttendanceUiState.promptable);
+    });
+
+    test('exact end known (full-time Event, the existing regression case): '
+        'unaffected, still uses the precise endAt instant', () {
+      final event = _event(
+        startAt: DateTime.utc(2026, 9, 29, 16),
+        endAt: DateTime.utc(2026, 9, 29, 18),
+      );
+      final beforeExactEnd = resolveAttendanceUiState(
+        event: event,
+        intent: EventIntentStatus.going,
+        hasConfirmedAttendance: false,
+        now: DateTime.utc(2026, 9, 29, 17, 59, 59),
+      );
+      expect(beforeExactEnd, AttendanceUiState.none);
+
+      final afterExactEnd = resolveAttendanceUiState(
+        event: event,
+        intent: EventIntentStatus.going,
+        hasConfirmedAttendance: false,
+        now: DateTime.utc(2026, 9, 29, 18, 0, 1),
+      );
+      expect(afterExactEnd, AttendanceUiState.promptable);
     });
   });
 }

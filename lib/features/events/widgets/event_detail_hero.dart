@@ -26,14 +26,25 @@ import '../../../core/widgets/editorial_back_button.dart';
 /// same legibility vignette.
 ///
 /// Deliberately minimal: image/placeholder, back action, an optional
-/// small event-type eyebrow, the event name, and two compact metadata
-/// lines (city/country, date range) — no badge stack, no gold, no
-/// marketplace-style pricing chip. "Curated," not "ticket marketplace."
+/// small event-type eyebrow, the event name, and a compact city/country
+/// line — no badge stack, no gold, no marketplace-style pricing chip.
+/// "Curated," not "ticket marketplace."
+///
+/// Events V2 Time Precision Phase B — Event Detail Hierarchy UX
+/// correction: [eventTypeLabel] and [dateRangeLine] are now BOTH optional,
+/// and the production call site (`event_detail_screen.dart`) no longer
+/// supplies either — that information moved to Event Essentials, directly
+/// below the hero, so the hero can do one job well (image, title, "where")
+/// rather than repeating facts the very next section already states.
+/// [dateRangeLine] stays a supported parameter (not removed outright) so
+/// this widget's own direct tests, and any future caller with a genuine
+/// reason to show a date in the hero, are not forced into a wider redesign
+/// of this primitive to do so.
 class EventDetailHero extends StatelessWidget {
   final String title;
   final String? eventTypeLabel;
   final String cityCountryLine;
-  final String dateRangeLine;
+  final String? dateRangeLine;
   final Widget backgroundImage;
   final double expandedHeight;
 
@@ -42,7 +53,7 @@ class EventDetailHero extends StatelessWidget {
     required this.title,
     this.eventTypeLabel,
     required this.cityCountryLine,
-    required this.dateRangeLine,
+    this.dateRangeLine,
     required this.backgroundImage,
     this.expandedHeight = 300,
   });
@@ -132,15 +143,17 @@ class EventDetailHero extends StatelessWidget {
                           fontSize: 14,
                         ),
                       ),
-                      const SizedBox(height: CsSpacing.xs),
-                      Text(
-                        dateRangeLine,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: CsTypography.smallLabel.copyWith(
-                          color: AppColors.textOnDark.withValues(alpha: 0.7),
+                      if (dateRangeLine != null) ...[
+                        const SizedBox(height: CsSpacing.xs),
+                        Text(
+                          dateRangeLine!,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: CsTypography.smallLabel.copyWith(
+                            color: AppColors.textOnDark.withValues(alpha: 0.7),
+                          ),
                         ),
-                      ),
+                      ],
                     ],
                   ),
                 ),

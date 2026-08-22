@@ -1,5 +1,6 @@
-import '../core/utils/event_time.dart';
+import '../core/utils/event_time.dart' show compareCalendarDates;
 import 'event.dart';
+import 'event_chronology.dart';
 import 'planned_trip.dart';
 
 /// Pure trip/event matching — no Supabase dependency, so this is testable
@@ -12,21 +13,23 @@ import 'planned_trip.dart';
 /// Rules (in order):
 /// 1. A cancelled event never matches any trip — nothing "happening during
 ///    your trip" if it's been cancelled.
-/// 2. Date ranges must overlap, compared by CALENDAR DATE, not exact
-///    instant: event.startAt/endAt are absolute timestamptz instants — the
-///    calendar date they fall on depends on WHICH zone you read them in.
-///    A viewer in New York and the event's own venue in Tokyo can
-///    legitimately disagree about which day a given instant falls on, and
-///    a trip is planned against the destination's own calendar, not the
-///    trip-planner's device zone — so both event dates are read via
-///    eventLocalDateTime(event's own timezone), never device-local, before
-///    truncating to Y-M-D. trip.startDate/endDate are already
-///    day-granularity dates with no time component. Comparing full
-///    DateTime instants between the two (e.g. an exclusive "day + 1" upper
-///    bound) makes the match sensitive to time-of-day at the boundary for
-///    no reason — a person reading "27-30 August" against "26-31 August"
-///    is comparing whole days, so both sides are first truncated to Y-M-D
-///    and checked for inclusive date-range overlap.
+/// 2. Date ranges must overlap, compared by CALENDAR DATE, never an exact
+///    instant. Events V2 Time Precision Phase B: [Event.startDate]/
+///    [endDate] are already the event's own correct local calendar dates
+///    (see event.dart — computed once, at construction/backfill time, via
+///    the event's own timezone) — this function no longer derives them
+///    itself from [Event.startAt]/[endAt], which also makes it correct
+///    for a date-only Event with no exact instants at all.
+///    [trip.startDate]/[endDate] are already day-granularity dates with no
+///    time component. The overlap check uses [compareCalendarDates] —
+///    zone-tag-agnostic on purpose: [Event.startDate] is always
+///    UTC-tagged, but [PlannedTrip.startDate]/[endDate] are parsed via a
+///    bare `DateTime.parse` of a date-only string, which Dart resolves to
+///    the DEVICE's local zone — comparing the two via ordinary
+///    `DateTime.isAfter`/`.isBefore` would silently leak the device's own
+///    UTC offset into what must be a pure calendar-date comparison.
+///    [compareCalendarDates] only ever looks at (year, month, day),
+///    structurally ruling that out.
 /// 3. Country must match exactly.
 /// 4. City: if BOTH the event and the trip specify a city, they must match
 ///    (case-insensitive) — this is the "city matching preferred when both
@@ -39,14 +42,9 @@ import 'planned_trip.dart';
 bool eventMatchesTrip(Event event, PlannedTrip trip) {
   if (event.isCancelled) return false;
 
-  final eventStart = _dateOnly(
-    eventLocalDateTime(event.startAt, event.timezone),
-  );
-  final eventEnd = _dateOnly(eventLocalDateTime(event.endAt, event.timezone));
-  final tripStart = _dateOnly(trip.startDate);
-  final tripEnd = _dateOnly(trip.endDate);
   final datesOverlap =
-      !eventStart.isAfter(tripEnd) && !eventEnd.isBefore(tripStart);
+      compareCalendarDates(event.startDate, trip.endDate) <= 0 &&
+      compareCalendarDates(event.endDate, trip.startDate) >= 0;
   if (!datesOverlap) return false;
 
   if (event.countryCode.toUpperCase() != trip.countryCode.toUpperCase()) {
@@ -65,11 +63,11 @@ bool eventMatchesTrip(Event event, PlannedTrip trip) {
 }
 
 /// Every event in [events] that matches [trip], chronologically sorted —
-/// what "CULINARY EVENTS DURING YOUR TRIP" renders directly.
+/// what "CULINARY EVENTS DURING YOUR TRIP" renders directly. Sorted via
+/// [compareEventChronology] (Events V2 Time Precision Phase B) rather than
+/// a raw `startAt` comparison, so this stays correct for a date-only Event.
 List<Event> eventsMatchingTrip(List<Event> events, PlannedTrip trip) {
   final matches = events.where((e) => eventMatchesTrip(e, trip)).toList()
-    ..sort((a, b) => a.startAt.compareTo(b.startAt));
+    ..sort(compareEventChronology);
   return matches;
 }
-
-DateTime _dateOnly(DateTime d) => DateTime(d.year, d.month, d.day);

@@ -266,6 +266,8 @@ void main() {
       'description': null,
       'start_at': '2026-08-27T16:00:00+00:00',
       'end_at': '2026-08-30T22:00:00+00:00',
+      'start_date': '2026-08-27',
+      'end_date': '2026-08-30',
       'country_code': 'NL',
       'city': 'Maastricht',
       'venue_name': null,
@@ -301,10 +303,10 @@ void main() {
     test('startAt/endAt are never converted to device-local — parsing '
         'preserves the absolute instant exactly as sent, tagged UTC', () {
       final event = Event.fromJson(baseJson());
-      expect(event.startAt.isUtc, isTrue);
-      expect(event.endAt.isUtc, isTrue);
-      expect(event.startAt.toIso8601String(), '2026-08-27T16:00:00.000Z');
-      expect(event.endAt.toIso8601String(), '2026-08-30T22:00:00.000Z');
+      expect(event.startAt!.isUtc, isTrue);
+      expect(event.endAt!.isUtc, isTrue);
+      expect(event.startAt!.toIso8601String(), '2026-08-27T16:00:00.000Z');
+      expect(event.endAt!.toIso8601String(), '2026-08-30T22:00:00.000Z');
     });
   });
 

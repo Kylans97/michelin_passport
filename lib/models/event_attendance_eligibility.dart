@@ -4,11 +4,17 @@
 // pattern in this codebase) so they're unit-testable without a live
 // Supabase session or a widget pump.
 //
-// Eligibility is always keyed off Event.endAt's absolute instant — never a
-// rendered/event-local date, never the viewer's device time — exactly the
-// same rule event_detail_screen.dart's own canAttendEvent doc comment
-// already commits this codebase to for a future Attendance step.
+// Eligibility is always keyed off a precise "has this Event ended" instant
+// — never a rendered/event-local date, never the viewer's device time.
+// Events V2 Time Precision Phase B: that instant is now
+// [eventEndReferenceInstant] (core/utils/event_time.dart) rather than a
+// bare `event.endAt` — the exact instant when known (identical behavior to
+// before Phase B for every full-precision Event), or the local-day-end of
+// [Event.endDate] when [Event.endAt] is unknown. This is exactly the same
+// rule event_detail_screen.dart's own canAttendEvent doc comment already
+// commits this codebase to.
 
+import '../core/utils/event_time.dart';
 import 'event.dart';
 import 'event_attendance.dart';
 
@@ -61,10 +67,24 @@ enum AttendanceUiState {
   manualOnly,
 }
 
-bool _hasEnded(Event event, DateTime now) => !event.endAt.isAfter(now);
+bool _hasEnded(Event event, DateTime now) => eventHasEnded(
+  endAt: event.endAt,
+  endDate: event.endDate,
+  timezone: event.timezone,
+  now: now,
+);
 
-bool _withinPromptWindow(Event event, DateTime now) =>
-    !now.isAfter(event.endAt.add(attendancePromptLookbackWindow));
+// The lookback window counts from the same "when did this Event actually
+// end" reference instant [_hasEnded] itself uses — exact endAt when known,
+// else the local-day-end of endDate — never a raw endAt that may not
+// exist.
+bool _withinPromptWindow(Event event, DateTime now) => !now.isAfter(
+  eventEndReferenceInstant(
+    endAt: event.endAt,
+    endDate: event.endDate,
+    timezone: event.timezone,
+  ).add(attendancePromptLookbackWindow),
+);
 
 /// The single source of truth for what Event Detail's completed-event
 /// section should show. [intent] is the viewer's own current
@@ -107,9 +127,9 @@ AttendanceUiState resolveAttendanceUiState({
 /// cancelled events, or events already confirmed — this function applies
 /// every eligibility rule itself rather than trusting a pre-filtered
 /// caller, so a future caller can pass a broader query result safely.
-/// Ties (same `endAt`) break by `id` for a fully deterministic order — an
-/// arbitrary but stable choice, never "whatever order the database
-/// returned them in."
+/// Ties (same end reference instant) break by `id` for a fully
+/// deterministic order — an arbitrary but stable choice, never "whatever
+/// order the database returned them in."
 ///
 /// Returns null when nothing is eligible — callers must render nothing at
 /// all in that case (§24's explicit "never stack, never show more than
@@ -132,7 +152,17 @@ Event? mostRecentEligibleAttendancePromptEvent({
           )
           .toList()
         ..sort((a, b) {
-          final byEnd = b.endAt.compareTo(a.endAt);
+          final aEnd = eventEndReferenceInstant(
+            endAt: a.endAt,
+            endDate: a.endDate,
+            timezone: a.timezone,
+          );
+          final bEnd = eventEndReferenceInstant(
+            endAt: b.endAt,
+            endDate: b.endDate,
+            timezone: b.timezone,
+          );
+          final byEnd = bEnd.compareTo(aEnd);
           return byEnd != 0 ? byEnd : a.id.compareTo(b.id);
         });
   return eligible.isEmpty ? null : eligible.first;
