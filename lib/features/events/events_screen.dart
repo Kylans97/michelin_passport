@@ -9,14 +9,21 @@ import '../../core/theme/app_typography.dart';
 import '../../core/theme/cs_surface_context.dart';
 import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
+import '../../data/repositories/event_host_follow_repository.dart';
+import '../../data/repositories/event_social_repository.dart';
 import '../../data/repositories/events_repository.dart';
+import '../../data/repositories/friendship_repository.dart';
+import '../../data/repositories/planned_trips_repository.dart';
 import '../../models/event.dart';
 import '../../models/event_attendance_eligibility.dart';
 import '../../models/event_confirmed_attendance.dart';
 import '../../models/event_confirmed_attendance_analytics.dart';
+import '../../models/event_discovery_item.dart';
+import '../../models/event_relevance_reason.dart';
 import '../../models/venue_country.dart';
 import 'attendance_prompt_dismissal.dart';
 import 'event_detail_screen.dart';
+import 'event_discovery_service.dart';
 import 'models/event_date_filter.dart';
 import 'widgets/attendance_details_sheet.dart';
 import 'widgets/attendance_prompt_card.dart';
@@ -42,6 +49,17 @@ class _EventsScreenState extends State<EventsScreen> {
       EventAttendanceRepository(Supabase.instance.client);
   late final EventConfirmedAttendanceRepository _confirmedRepo =
       EventConfirmedAttendanceRepository(Supabase.instance.client);
+  // Events V2 Step 8A — personalized ranking is a layer on top of the same
+  // base Events query above, never a replacement query. See
+  // EventDiscoveryService's own doc comment for the per-signal failure
+  // isolation this composes.
+  late final EventDiscoveryService _discoveryService = EventDiscoveryService(
+    attendanceRepo: _attendanceRepo,
+    friendshipRepo: FriendshipRepository(Supabase.instance.client),
+    tripsRepo: PlannedTripsRepository(Supabase.instance.client),
+    hostFollowRepo: EventHostFollowRepository(Supabase.instance.client),
+    socialRepo: EventSocialRepository(Supabase.instance.client),
+  );
   final AnalyticsService _analytics = const NoopAnalyticsService();
 
   final _searchCtrl = TextEditingController();
@@ -52,7 +70,7 @@ class _EventsScreenState extends State<EventsScreen> {
   );
   VenueCountry? _country;
 
-  late Future<List<Event>> _eventsFuture;
+  late Future<List<EventDiscoveryItem>> _discoveryFuture;
   late final Future<List<VenueCountry>> _countriesFuture = _repo.getCountries();
 
   // Events V2 Step 4 — the "Did you make it?" ambient nudge. A separate
@@ -67,7 +85,7 @@ class _EventsScreenState extends State<EventsScreen> {
   @override
   void initState() {
     super.initState();
-    _eventsFuture = _fetchEvents();
+    _discoveryFuture = _fetchDiscoveryList();
     _loadPromptEvent();
   }
 
@@ -244,26 +262,74 @@ class _EventsScreenState extends State<EventsScreen> {
     );
   }
 
-  void _reload() => setState(() => _eventsFuture = _fetchEvents());
+  // Events V2 Step 8A §16 — one coherent ranked render once the base list
+  // AND the (independently failure-isolated) personalization signals are
+  // both ready, rather than rendering chronological first and reshuffling
+  // once ranking finishes. A top-level try/catch is defense-in-depth only:
+  // EventDiscoveryService.rankForDiscovery already isolates every signal
+  // source's own failure and never rethrows in practice.
+  Future<List<EventDiscoveryItem>> _fetchDiscoveryList() async {
+    final events = await _fetchEvents();
+    try {
+      return await _discoveryService.rankForDiscovery(
+        events: events,
+        userId: _userId,
+      );
+    } catch (_) {
+      return [for (final event in events) EventDiscoveryItem(event: event)];
+    }
+  }
 
-  void _openEvent(Event event) {
+  void _reload() => setState(() => _discoveryFuture = _fetchDiscoveryList());
+
+  // Attributes the open to the item's PRIMARY visible relevance reason
+  // where the existing AnalyticsSourceContext taxonomy has a clean match
+  // (Step 8A §19) — a chronological/no-reason item, or a reason with no
+  // clean existing match (e.g. Popularity, which isn't "featured" in the
+  // editorial sense that value already carries), leaves sourceContext null
+  // rather than force a misleading fit. No new taxonomy is introduced.
+  void _openEvent(EventDiscoveryItem item) {
+    _analytics.track(
+      AnalyticsEvent.eventOpened,
+      AnalyticsProperties(
+        entityType: AnalyticsEntityType.event,
+        entityId: item.event.id,
+        sourceSurface: AnalyticsSourceSurface.eventsFeed,
+        sourceContext: _analyticsContextFor(item.primaryReason),
+      ),
+    );
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (_) => EventDetailScreen(
-          eventId: event.id,
+          eventId: item.event.id,
           sourceSurface: AnalyticsSourceSurface.eventsFeed,
+          sourceContext: _analyticsContextFor(item.primaryReason),
         ),
       ),
     );
   }
 
+  AnalyticsSourceContext? _analyticsContextFor(EventRelevanceReason? reason) {
+    if (reason == null) return null;
+    return switch (reason.type) {
+      EventRelevanceReasonType.trip => AnalyticsSourceContext.tripDestination,
+      EventRelevanceReasonType.friendGoing =>
+        AnalyticsSourceContext.friendSignal,
+      EventRelevanceReasonType.followedHost =>
+        AnalyticsSourceContext.followedHost,
+      EventRelevanceReasonType.friendInterested =>
+        AnalyticsSourceContext.friendSignal,
+      EventRelevanceReasonType.popular => null,
+    };
+  }
+
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<Event>>(
-      future: _eventsFuture,
+    return FutureBuilder<List<EventDiscoveryItem>>(
+      future: _discoveryFuture,
       builder: (context, snap) {
-        final events = snap.data ?? [];
+        final items = snap.data ?? [];
         final loading = snap.connectionState == ConnectionState.waiting;
 
         return Scaffold(
@@ -376,7 +442,7 @@ class _EventsScreenState extends State<EventsScreen> {
                       ),
                     ),
                   )
-                else if (events.isEmpty)
+                else if (items.isEmpty)
                   SliverFillRemaining(
                     child: Center(
                       child: Padding(
@@ -418,14 +484,15 @@ class _EventsScreenState extends State<EventsScreen> {
                           20,
                           i == 0 ? 20 : 0,
                           20,
-                          i == events.length - 1 ? 100 : 12,
+                          i == items.length - 1 ? 100 : 12,
                         ),
                         child: EventCard(
-                          event: events[i],
-                          onTap: () => _openEvent(events[i]),
+                          event: items[i].event,
+                          reason: items[i].primaryReason,
+                          onTap: () => _openEvent(items[i]),
                         ),
                       ),
-                      childCount: events.length,
+                      childCount: items.length,
                     ),
                   ),
               ],

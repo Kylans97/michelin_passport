@@ -146,6 +146,40 @@ class EventAttendanceRepository {
     return [for (final row in rows as List) row['user_id'] as String];
   }
 
+  /// Events V2 Step 8A — the discovery-list counterpart to
+  /// [getVisibleUserIds]'s single-event shape: every visible (own or
+  /// accepted-friend, per RLS) attendance row with the given [status]
+  /// across ALL of [eventIds] in ONE query, grouped by event id.
+  /// `event_attendance_select` RLS
+  /// (`user_id = auth.uid() OR (visibility = 'friends' AND
+  /// is_friend(user_id))`) has no per-event dependency in its own logic —
+  /// it only ever reasons about the ROW's own user_id/visibility — so
+  /// filtering by `event_id IN (...)` instead of `.eq()` still applies that
+  /// exact same per-row guarantee across many events at once. This is why
+  /// one call here replaces what would otherwise be one [getVisibleUserIds]
+  /// call per event on a discovery list of any size — the N+1 shape Step 8A
+  /// §14 explicitly prohibits. An [eventId] with no visible rows for
+  /// [status] is simply absent from the result map, never an empty-list
+  /// entry.
+  Future<Map<String, List<String>>> getVisibleUserIdsForEvents({
+    required List<String> eventIds,
+    required EventIntentStatus status,
+  }) async {
+    if (eventIds.isEmpty) return {};
+    final rows = await _client
+        .from('event_attendance')
+        .select('event_id, user_id')
+        .inFilter('event_id', eventIds)
+        .eq('status', status.dbValue);
+    final result = <String, List<String>>{};
+    for (final row in rows as List) {
+      final eventId = row['event_id'] as String;
+      final userId = row['user_id'] as String;
+      (result[eventId] ??= <String>[]).add(userId);
+    }
+    return result;
+  }
+
   /// Every future/current event [userId] has the given [status] for that
   /// the caller is authorized to see — RLS alone decides that; this never
   /// fetches a broader set and filters client-side. The [status] filter
