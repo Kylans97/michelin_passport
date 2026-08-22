@@ -1,0 +1,127 @@
+{
+  "batch": "DUTCH EVENT ENRICHMENT — BATCH 2 pre-apply",
+  "source": "Selected from the remaining pool of dutch_event_candidates_2026_2027.json, deeply re-verified fresh — not a new discovery pass.",
+  "production_events_before_batch": 17,
+  "ready": [
+    {
+      "name": "VanOost Sundays: BBQ with Friends",
+      "classification": "READY_WITH_EXTERNAL_HOST",
+      "start_date": "2026-08-30", "time_precision": "DATE_ONLY",
+      "venue_name": "VanOost", "city": "Amsterdam",
+      "external_host_name": "VanOost",
+      "canonical_relationships": [
+        {"entity": "Triptyque", "uuid": "2d37657d-36b6-4f9c-a087-397b22a86d07", "is_host": false, "is_venue": false},
+        {"entity": "Basiliek", "uuid": "8a4d032b-6e9b-4d5c-85ed-68f667f0366b", "is_host": false, "is_venue": false}
+      ],
+      "admission": "paid, €160pp", "official_url": "https://www.vanoostrestaurant.com/events-nl"
+    },
+    {
+      "name": "Wine & Dine × Pierre Ache Wijnen",
+      "classification": "READY_TO_INSERT",
+      "start_date": "2026-09-15", "time_precision": "FULL_TIME", "start_time": "18:30", "end_time": "22:30",
+      "venue_name": "Maes, Cuisine du Terroir (Van Oys Maastricht Retreat)", "city": "Eijsden",
+      "canonical_relationships": [
+        {"entity": "Van Oys Maastricht Retreat", "uuid": "4d09cb3c-7dd0-408e-80ac-02642a6b320b", "type": "hotel", "is_host": true, "is_venue": true}
+      ],
+      "admission": "paid, €110pp", "official_url": "https://www.vanoys.com/event-calendar/wine-dine-maes-pierre-ache-wijnen/"
+    },
+    {
+      "name": "Wijnmakersdiner Montanha Vermelha",
+      "classification": "READY_TO_INSERT",
+      "start_date": "2026-09-18", "time_precision": "DATE_ONLY",
+      "venue_name": "Kaatje bij de Sluis", "city": "Blokzijl",
+      "canonical_relationships": [
+        {"entity": "Kaatje bij de Sluis", "uuid": "a4581a6e-7ec2-48ec-8958-2ec7ded46592", "is_host": true, "is_venue": true}
+      ],
+      "admission": "paid, price not published", "official_url": "https://www.kaatje.nl"
+    },
+    {
+      "name": "Wijnmakerslunch Heidi Schröck & Söhne",
+      "classification": "READY_WITH_EXTERNAL_HOST",
+      "start_date": "2026-10-18", "time_precision": "START_KNOWN_END_UNKNOWN", "start_time": "11:45",
+      "venue_name": "Hotel Gastronomique De Echoput", "city": "Apeldoorn",
+      "external_host_name": "Hotel Gastronomique De Echoput",
+      "notes": "End time explicitly published as approximate ('rond 16:00') — excluded, not stored. De Echoput's own Michelin/recognition status is genuinely ambiguous post-2025 restructuring — no star claim made.",
+      "admission": "paid, €129pp", "official_url": "https://echoput.nl/agenda"
+    },
+    {
+      "name": "Four-Hands Diner: Olde Marckt x Karels",
+      "classification": "READY_TO_INSERT",
+      "start_date": "2026-11-01", "time_precision": "START_KNOWN_END_UNKNOWN", "start_time": "13:00",
+      "venue_name": "Olde Marckt", "city": "Aalten",
+      "canonical_relationships": [
+        {"entity": "Olde Marckt", "uuid": "8f7cb302-8c83-47ba-bb80-2456689a89ff", "is_host": true, "is_venue": true}
+      ],
+      "notes": "13:00-15:00 is an arrival window, not a meal duration — 15:00 excluded as end_time.",
+      "admission": "paid, price not published", "official_url": "https://oldemarckt.nl/agenda"
+    },
+    {
+      "name": "Club Leroy bij Parkheuvel",
+      "classification": "READY_TO_INSERT",
+      "start_date": "2026-09-20", "time_precision": "START_KNOWN_END_UNKNOWN", "start_time": "13:00",
+      "venue_name": "Restaurant Parkheuvel", "city": "Rotterdam",
+      "canonical_relationships": [
+        {"entity": "Parkheuvel", "uuid": "90d2b4ae-2b39-4bed-beec-31d6008a7ea8", "is_host": true, "is_venue": true}
+      ],
+      "admission": "paid, €249pp", "official_url": "https://www.parkheuvel.nl/en/events/"
+    },
+    {
+      "name": "Chaîne des Rôtisseurs Gala Dîner op SS Antoinette",
+      "classification": "READY_WITH_EXTERNAL_HOST",
+      "start_date": "2026-09-13", "time_precision": "START_KNOWN_END_UNKNOWN", "start_time": "17:00",
+      "venue_name": "SS Antoinette (Passenger Terminal Amsterdam)", "city": "Amsterdam",
+      "external_host_name": "Chaîne des Rôtisseurs, Bailliage Nederland",
+      "notes": "Confirmed distinct from same-date Wildfestival (different venue/city/host). A possible '22:00' end time was investigated and excluded as unreliable/unconfirmed.",
+      "admission": "paid, €135pp black tie", "official_url": "https://chainedesrotisseurs.nl/evenementen"
+    },
+    {
+      "name": "Jubileumdiner — 5 jaar Restaurant Roemer",
+      "classification": "READY_WITH_EXTERNAL_HOST",
+      "start_date": "2026-10-08", "time_precision": "START_KNOWN_END_UNKNOWN", "start_time": "18:00",
+      "venue_name": "Restaurant Roemer", "city": "Utrecht",
+      "external_host_name": "Restaurant Roemer",
+      "notes": "Now confirmed to hold a Gault&Millau newcomer-tier listing (~12 points), C confidence.",
+      "admission": "paid, €75pp", "official_url": "https://www.roemer-utrecht.nl/restaurant-roemer-agenda/"
+    },
+    {
+      "name": "Friends & Family Zomer BBQ met Marko Karelse",
+      "classification": "READY_TO_INSERT",
+      "start_date": "2026-08-30", "time_precision": "DATE_ONLY",
+      "venue_name": "'t Ganzenest", "city": "Rijswijk",
+      "canonical_relationships": [
+        {"entity": "'t Ganzenest", "uuid": "bec64ec6-5f9a-4f73-9bae-a8c61f50fea2", "is_host": true, "is_venue": true}
+      ],
+      "notes": "Year confirmed via venue's own booking-system API (2026 explicit). Marko Karelse's Villa la Ruche affiliation confirmed.",
+      "admission": "paid, €130pp", "official_url": "https://ganzenest.nl/nl/evenementen-agenda"
+    },
+    {
+      "name": "Exclusieve Wijnproeverij — Domaine Paul Pillot",
+      "classification": "READY_TO_INSERT",
+      "start_date": "2026-09-24", "time_precision": "DATE_ONLY",
+      "venue_name": "'t Ganzenest", "city": "Rijswijk",
+      "canonical_relationships": [
+        {"entity": "'t Ganzenest", "uuid": "bec64ec6-5f9a-4f73-9bae-a8c61f50fea2", "is_host": true, "is_venue": true}
+      ],
+      "notes": "Year confirmed via venue's own booking-system API (2026 explicit). Confirmed still bookable (first-available date on this ticket product).",
+      "admission": "paid, €450pp (€150 deposit)", "official_url": "https://ganzenest.nl/nl/evenementen-agenda"
+    }
+  ],
+  "hold": [
+    {
+      "name": "Exclusieve Wijnproeverij — Tenuta San Guido / Sassicaia",
+      "classification": "HOLD_OTHER",
+      "start_date": "2026-11-19",
+      "venue_name": "'t Ganzenest", "city": "Rijswijk",
+      "reason": "Year confirmed 2026 via the same booking-system technique, but live queries against the venue's own reservation system show no bookable slot exists for this date (empty slot array), unlike the Sept 24 tasting on the same shared ticket product. No explicit sold-out/cancelled messaging found either way.",
+      "unblock_path": "Re-check the venue's booking system within 4-6 weeks of 2026-11-19, once slots for that window would reasonably be expected to open."
+    },
+    {
+      "name": "\"Chardonnay & Spätburgunder\" Wine & Food Lunch",
+      "classification": "HOLD_SOURCE",
+      "start_date": "2026-09-21",
+      "venue_name": "Restaurant Karel 5 (Hotel Karel V)", "city": "Utrecht",
+      "reason": "Only source is the national sommelier guild's own calendar (sommeliers.nl). karelv.nl was directly and thoroughly reached this pass and shows zero corroborating mention, no agenda page, no price/time/ticket information.",
+      "unblock_path": "Contact Karel V directly (info@karelv.nl / +31 30 233 75 55) to confirm the event is genuine and obtain a price before reconsidering."
+    }
+  ]
+}
