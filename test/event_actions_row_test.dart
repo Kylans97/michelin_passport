@@ -1,9 +1,13 @@
-// Events V2 Time Precision Phase B — Event Detail Hierarchy UX correction.
+// Events V2 Time Precision Phase B — Event Detail Hierarchy UX correction,
+// plus the Editorial Hero + Essentials/Actions polish pass.
 // Covers EventActionsRow (lib/features/events/widgets/event_actions_row.dart)
 // — the Tickets/Official website action area moved up from the former
-// LOCATION section: every conditional URL-combination state, the
-// identical-URL dedup case (Vergeet Mij Niet Gala's own real production
-// shape), Tickets-first priority, semantics, and responsive behavior.
+// LOCATION section, then refined from a pair of loose "Label →" text links
+// into deliberate full-width action rows: every conditional URL-combination
+// state, the identical-URL dedup case (Vergeet Mij Niet Gala's own real
+// production shape), Tickets-first priority (now top-to-bottom, not
+// left-to-right), the restrained hairline between rows, semantics, and
+// responsive behavior.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -24,7 +28,8 @@ Widget _wrap(Widget child, {double width = 390, double textScale = 1.0}) =>
 void main() {
   group('EventActionsRow — conditional rendering', () {
     testWidgets('ticket URL + official URL: both actions render, Tickets '
-        'first (stronger priority via reading order)', (tester) async {
+        'first (stronger priority, now expressed top-to-bottom since each '
+        'action is its own full-width row)', (tester) async {
       await tester.pumpWidget(
         _wrap(
           EventActionsRow(
@@ -37,10 +42,10 @@ void main() {
         ),
       );
       expect(find.text('Tickets'), findsOneWidget);
-      expect(find.text('Website'), findsOneWidget);
-      final ticketsX = tester.getTopLeft(find.text('Tickets')).dx;
-      final websiteX = tester.getTopLeft(find.text('Website')).dx;
-      expect(ticketsX, lessThan(websiteX));
+      expect(find.text('Official website'), findsOneWidget);
+      final ticketsY = tester.getTopLeft(find.text('Tickets')).dy;
+      final websiteY = tester.getTopLeft(find.text('Official website')).dy;
+      expect(ticketsY, lessThan(websiteY));
     });
 
     testWidgets('ticket URL only: only Tickets renders', (tester) async {
@@ -56,10 +61,12 @@ void main() {
         ),
       );
       expect(find.text('Tickets'), findsOneWidget);
-      expect(find.text('Website'), findsNothing);
+      expect(find.text('Official website'), findsNothing);
     });
 
-    testWidgets('official URL only: only Website renders', (tester) async {
+    testWidgets('official URL only: only Official website renders', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         _wrap(
           EventActionsRow(
@@ -72,7 +79,7 @@ void main() {
         ),
       );
       expect(find.text('Tickets'), findsNothing);
-      expect(find.text('Website'), findsOneWidget);
+      expect(find.text('Official website'), findsOneWidget);
     });
 
     testWidgets('neither URL: renders nothing at all — no empty action '
@@ -89,7 +96,7 @@ void main() {
         ),
       );
       expect(find.text('Tickets'), findsNothing);
-      expect(find.text('Website'), findsNothing);
+      expect(find.text('Official website'), findsNothing);
       expect(find.byType(SizedBox), findsOneWidget); // SizedBox.shrink()
     });
 
@@ -107,7 +114,7 @@ void main() {
         ),
       );
       expect(find.text('Tickets'), findsNothing);
-      expect(find.text('Website'), findsNothing);
+      expect(find.text('Official website'), findsNothing);
     });
 
     testWidgets('the admission-aware "Optional ticket" label is honored '
@@ -131,7 +138,7 @@ void main() {
 
     testWidgets("identical ticket and official URLs — Vergeet Mij Niet "
         "Gala's own real production shape — render only ONE action "
-        '(Tickets), never two visually-duplicated links to the same '
+        '(Tickets), never two visually-duplicated rows to the same '
         'destination', (tester) async {
       const sameUrl = 'https://www.vergeetmijnietgala.nl';
       await tester.pumpWidget(
@@ -146,7 +153,62 @@ void main() {
         ),
       );
       expect(find.text('Tickets'), findsOneWidget);
-      expect(find.text('Website'), findsNothing);
+      expect(find.text('Official website'), findsNothing);
+    });
+  });
+
+  group('EventActionsRow — full-width rows + separator', () {
+    testWidgets('each action row spans the full available width, not a '
+        'loose inline text link', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          EventActionsRow(
+            ticketUrl: 'https://tickets.example/e1',
+            officialUrl: null,
+            ticketLabel: 'Tickets',
+            eventName: 'Test Event',
+            onTapUrl: (_) {},
+          ),
+          width: 390,
+        ),
+      );
+      final sizedBox = tester
+          .widgetList<SizedBox>(find.byType(SizedBox))
+          .firstWhere((box) => box.width == double.infinity);
+      expect(sizedBox.width, double.infinity);
+      // A comfortable, consistent tap target — not a tight inline link.
+      expect(sizedBox.height, greaterThanOrEqualTo(44));
+    });
+
+    testWidgets('a restrained hairline separates the two rows when both '
+        'exist', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          EventActionsRow(
+            ticketUrl: 'https://tickets.example/e1',
+            officialUrl: 'https://example.com/e1',
+            ticketLabel: 'Tickets',
+            eventName: 'Test Event',
+            onTapUrl: (_) {},
+          ),
+        ),
+      );
+      expect(find.byType(Divider), findsOneWidget);
+    });
+
+    testWidgets('no separator renders for a single action', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          EventActionsRow(
+            ticketUrl: 'https://tickets.example/e1',
+            officialUrl: null,
+            ticketLabel: 'Tickets',
+            eventName: 'Test Event',
+            onTapUrl: (_) {},
+          ),
+        ),
+      );
+      expect(find.byType(Divider), findsNothing);
     });
   });
 
@@ -170,9 +232,8 @@ void main() {
       expect(tapped, 'https://tickets.example/e1');
     });
 
-    testWidgets('tapping Website calls onTapUrl with the official URL', (
-      tester,
-    ) async {
+    testWidgets('tapping Official website calls onTapUrl with the '
+        'official URL', (tester) async {
       String? tapped;
       await tester.pumpWidget(
         _wrap(
@@ -185,7 +246,7 @@ void main() {
           ),
         ),
       );
-      await tester.tap(find.text('Website'));
+      await tester.tap(find.text('Official website'));
       expect(tapped, 'https://example.com/e1');
     });
   });
@@ -210,8 +271,8 @@ void main() {
       );
     });
 
-    testWidgets('Website carries a descriptive "Official website for '
-        '{event name}" semantic label', (tester) async {
+    testWidgets('Official website carries a descriptive "Official website '
+        'for {event name}" semantic label', (tester) async {
       await tester.pumpWidget(
         _wrap(
           EventActionsRow(
@@ -245,6 +306,35 @@ void main() {
       );
       for (final text in tester.widgetList<Text>(find.byType(Text))) {
         expect(text.style?.color, isNot(AppColors.gold));
+      }
+    });
+
+    testWidgets('never renders a filled CTA block — background stays '
+        'transparent, no ColoredBox/Container decoration behind either '
+        'row', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          EventActionsRow(
+            ticketUrl: 'https://tickets.example/e1',
+            officialUrl: 'https://example.com/e1',
+            ticketLabel: 'Tickets',
+            eventName: 'Test Event',
+            onTapUrl: (_) {},
+          ),
+        ),
+      );
+      // Scoped to Materials inside EventActionsRow itself — the ancestor
+      // Scaffold also creates its own (non-transparent) Material, which
+      // is irrelevant to this widget's own background.
+      final materials = tester.widgetList<Material>(
+        find.descendant(
+          of: find.byType(EventActionsRow),
+          matching: find.byType(Material),
+        ),
+      );
+      expect(materials, isNotEmpty);
+      for (final material in materials) {
+        expect(material.color, Colors.transparent);
       }
     });
 

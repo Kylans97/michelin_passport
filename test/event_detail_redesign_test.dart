@@ -17,6 +17,7 @@ import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
 import 'package:michelin_passport/core/widgets/star_row.dart';
 import 'package:michelin_passport/features/events/widgets/at_this_event_section.dart';
+import 'package:michelin_passport/features/events/widgets/event_actions_row.dart';
 import 'package:michelin_passport/features/events/widgets/event_detail_hero.dart';
 import 'package:michelin_passport/features/events/widgets/event_meta_section.dart';
 import 'package:michelin_passport/features/events/widgets/michelin_participant_row.dart';
@@ -222,6 +223,26 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
+    testWidgets('hero/Essentials title correction: real Event Detail usage '
+        '(only backgroundImage supplied, matching the actual production '
+        'call site) renders no text at all — no title, no event type, no '
+        'city/country, no date range. The Event name itself moved to '
+        'EventMetaSection, so this hero is genuinely photography-ready.', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          const EventDetailHero(
+            backgroundImage: CsImagePlaceholder(logoScale: 0.22),
+          ),
+        ),
+      );
+      expect(find.byType(Text), findsNothing);
+      final hero = tester.widget<SliverAppBar>(find.byType(SliverAppBar));
+      expect(hero.title, isNull);
+      expect(tester.takeException(), isNull);
+    });
+
     testWidgets('has a back action', (tester) async {
       await tester.pumpWidget(
         _wrapSliver(
@@ -272,6 +293,42 @@ void main() {
       );
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets('Editorial Hero + Essentials/Actions polish pass: real '
+        'Event Detail usage now supplies eventTypeLabel again (and only '
+        'that) — the subtle editorial eyebrow renders, but title, '
+        'city/country and date range still render nothing, matching the '
+        'actual production call site shape exactly', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          const EventDetailHero(
+            eventTypeLabel: 'DINNER',
+            backgroundImage: CsImagePlaceholder(logoScale: 0.22),
+          ),
+        ),
+      );
+      expect(find.text('DINNER'), findsOneWidget);
+      final hero = tester.widget<SliverAppBar>(find.byType(SliverAppBar));
+      expect(hero.title, isNull);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('EventType.other renders no eyebrow at all — the real '
+        'call site computes a null eventTypeLabel for this case (the '
+        'schema\'s own "no real type known" fallback), which is exactly '
+        'the same no-text-at-all shape as the general real-usage case', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          const EventDetailHero(
+            eventTypeLabel: null,
+            backgroundImage: CsImagePlaceholder(logoScale: 0.22),
+          ),
+        ),
+      );
+      expect(find.byType(Text), findsNothing);
+    });
   });
 
   group('EventMetaSection — date/venue/admission/cancelled (§7-9, §26-27)', () {
@@ -287,36 +344,21 @@ void main() {
       );
     });
 
-    testWidgets('Event Detail Hierarchy UX correction: event type renders '
-        'as a small eyebrow directly above the date/time row', (tester) async {
-      await tester.pumpWidget(
-        _wrap(EventMetaSection(event: _event(eventType: EventType.dinner))),
-      );
-      expect(find.text('DINNER'), findsOneWidget);
-      // Above the date/time row: confirmed by finding both, then checking
-      // relative vertical position within the same Column.
-      final typeY = tester.getTopLeft(find.text('DINNER')).dy;
-      final dateY = tester.getTopLeft(find.textContaining('27–30 Aug 2026')).dy;
-      expect(typeY, lessThan(dateY));
-    });
-
-    testWidgets('renders no event-type label at all for EventType.other — '
-        'the schema\'s own "no real type known" fallback, treated as '
-        '"no type known" rather than a generic "EVENT" placeholder', (
-      tester,
-    ) async {
-      await tester.pumpWidget(
-        _wrap(EventMetaSection(event: _event(eventType: EventType.other))),
-      );
-      expect(find.text('EVENT'), findsNothing);
-    });
-
-    testWidgets('event type is conveyed through visible text, never color '
-        'alone', (tester) async {
-      await tester.pumpWidget(
-        _wrap(EventMetaSection(event: _event(eventType: EventType.tasting))),
-      );
-      expect(find.text('TASTING'), findsOneWidget);
+    testWidgets('Editorial Hero + Essentials/Actions polish pass: event '
+        'type no longer renders in EventMetaSection at all — it moved '
+        'back to the hero as a subtle eyebrow (see the EventDetailHero '
+        'group below) — regardless of which EventType value the Event '
+        'has', (tester) async {
+      for (final type in EventType.values) {
+        await tester.pumpWidget(
+          _wrap(EventMetaSection(event: _event(eventType: type))),
+        );
+        expect(
+          find.text(type.label.toUpperCase()),
+          findsNothing,
+          reason: '${type.label} eyebrow should not render in Essentials',
+        );
+      }
     });
 
     testWidgets('shows the venue name row when present', (tester) async {
@@ -326,9 +368,37 @@ void main() {
       expect(find.text('Vrijthof'), findsOneWidget);
     });
 
-    testWidgets('omits the venue row when absent', (tester) async {
+    testWidgets('venue row also shows city as a secondary line when both '
+        'exist — the pilot\'s own "Restaurant Flore / Amsterdam" shape, '
+        'now that the hero no longer carries a cityCountryLine at all', (
+      tester,
+    ) async {
       await tester.pumpWidget(
-        _wrap(EventMetaSection(event: _event(venueName: null))),
+        _wrap(
+          EventMetaSection(
+            event: _event(venueName: 'Restaurant Flore', city: 'Amsterdam'),
+          ),
+        ),
+      );
+      expect(find.text('Restaurant Flore'), findsOneWidget);
+      expect(find.text('Amsterdam'), findsOneWidget);
+    });
+
+    testWidgets('venue row falls back to city alone when venue name is '
+        'absent but city exists — city must not simply disappear now that '
+        'the hero no longer shows it', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          EventMetaSection(event: _event(venueName: null, city: 'Amsterdam')),
+        ),
+      );
+      expect(find.text('Amsterdam'), findsOneWidget);
+    });
+
+    testWidgets('omits the venue row entirely only when both venue name '
+        'and city are absent', (tester) async {
+      await tester.pumpWidget(
+        _wrap(EventMetaSection(event: _event(venueName: null, city: null))),
       );
       expect(find.byIcon(Icons.place_outlined), findsNothing);
     });
@@ -431,6 +501,159 @@ void main() {
         expect(icon.color, isNot(AppColors.gold));
         expect(icon.color, isNot(AppColors.goldLight));
       }
+    });
+  });
+
+  group('Event Detail hierarchy — hero title removal + Essentials '
+      'title-first ordering (physical-device pilot correction)', () {
+    const longTitle = '4 Hands Dinner: Bas van Kranen x Sang Hoon Degeimbre';
+
+    testWidgets('the Event title renders exactly once, and the event-type '
+        'eyebrow renders exactly once too, when Hero and Essentials are '
+        'composed together as the real screen does (Hero sliver — now '
+        'carrying eventTypeLabel again — then a sliver wrapping '
+        'Essentials below it)', (tester) async {
+      final event = _event(name: longTitle, eventType: EventType.dinner);
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: CustomScrollView(
+              slivers: [
+                const EventDetailHero(
+                  eventTypeLabel: 'DINNER',
+                  backgroundImage: CsImagePlaceholder(logoScale: 0.22),
+                ),
+                SliverToBoxAdapter(
+                  child: Material(child: EventMetaSection(event: event)),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
+      expect(find.text(longTitle), findsOneWidget);
+      expect(find.text('DINNER'), findsOneWidget);
+    });
+
+    testWidgets('order is Title → Date → Venue → Admission', (tester) async {
+      final event = _event(
+        name: 'Test Event',
+        eventType: EventType.dinner,
+        venueName: 'Restaurant Flore',
+        city: 'Amsterdam',
+        admissionType: EventAdmissionType.paid,
+      );
+      await tester.pumpWidget(_wrap(EventMetaSection(event: event)));
+
+      double topOf(Finder finder) => tester.getTopLeft(finder).dy;
+      final titleY = topOf(find.text('Test Event'));
+      final dateY = topOf(find.textContaining('2026'));
+      final venueY = topOf(find.text('Restaurant Flore'));
+      final admissionY = topOf(find.text(EventAdmissionType.paid.label));
+
+      expect(titleY, lessThan(dateY));
+      expect(dateY, lessThan(venueY));
+      expect(venueY, lessThan(admissionY));
+      // Event type moved back to the hero — confirming it does NOT
+      // reappear anywhere in Essentials for this fixture either.
+      expect(find.text('DINNER'), findsNothing);
+    });
+
+    testWidgets('EventActionsRow renders below Essentials when composed as '
+        'the real screen does (Essentials, then Actions)', (tester) async {
+      final event = _event(
+        name: 'Test Event',
+        officialUrl: 'https://example.com',
+      );
+      await tester.pumpWidget(
+        _wrap(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              EventMetaSection(event: event),
+              EventActionsRow(
+                ticketUrl: null,
+                officialUrl: event.officialUrl,
+                ticketLabel: 'Tickets',
+                eventName: event.name,
+                onTapUrl: (_) {},
+              ),
+            ],
+          ),
+        ),
+      );
+      final titleY = tester.getTopLeft(find.text('Test Event')).dy;
+      final websiteY = tester.getTopLeft(find.text('Official website')).dy;
+      expect(titleY, lessThan(websiteY));
+    });
+
+    testWidgets('the real pilot title wraps naturally with no overflow, '
+        'never truncated or ellipsized', (tester) async {
+      await tester.pumpWidget(
+        _wrap(EventMetaSection(event: _event(name: longTitle))),
+      );
+      expect(find.text(longTitle), findsOneWidget);
+      final titleText = tester.widget<Text>(find.text(longTitle));
+      expect(titleText.overflow, isNot(TextOverflow.ellipsis));
+      expect(titleText.maxLines, isNull);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('the real pilot title at 320px: no overflow', (tester) async {
+      await tester.pumpWidget(
+        _wrap(EventMetaSection(event: _event(name: longTitle)), width: 320),
+      );
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('the real pilot title at 1.6x text scale: no overflow', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          EventMetaSection(event: _event(name: longTitle)),
+          width: 320,
+          textScale: 1.6,
+        ),
+      );
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('date-only pilot shape: title renders alongside the date '
+        'line, and the date line still shows no fabricated time', (
+      tester,
+    ) async {
+      final dateOnlyEvent = Event(
+        id: 'pilot-1',
+        name: longTitle,
+        startDate: DateTime.utc(2026, 10, 19),
+        endDate: DateTime.utc(2026, 10, 19),
+        timezone: 'Europe/Amsterdam',
+        countryCode: 'NL',
+        venueName: 'Restaurant Flore',
+        eventType: EventType.dinner,
+        status: EventStatus.upcoming,
+        createdAt: DateTime.utc(2026, 1, 1),
+      );
+      await tester.pumpWidget(_wrap(EventMetaSection(event: dateOnlyEvent)));
+      expect(find.text(longTitle), findsOneWidget);
+      // formatEventDateAndTime's date-only shape is exactly the bare date
+      // string, with no "· <time>" suffix appended at all — the title
+      // itself legitimately contains a colon ("4 Hands Dinner: ..."), so
+      // this checks the date TEXT WIDGET itself, not the whole tree, for
+      // the absence of a time separator/fake time.
+      expect(find.text('19 Oct 2026'), findsOneWidget);
+      expect(find.textContaining('00:00'), findsNothing);
+    });
+
+    testWidgets('full-time formatting is unaffected by the title now '
+        'sitting above it — the default fixture\'s combined date/time line '
+        'still renders exactly as before', (tester) async {
+      await tester.pumpWidget(
+        _wrap(EventMetaSection(event: _event(name: 'Test Event'))),
+      );
+      expect(find.text('Test Event'), findsOneWidget);
+      expect(find.text('27–30 Aug 2026 · 18:00–22:00'), findsOneWidget);
     });
   });
 

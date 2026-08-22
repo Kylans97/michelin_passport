@@ -80,11 +80,16 @@ bool canAttendEvent(Event event, {DateTime? now}) =>
 /// for the full before/after and the Michelin-participation architecture.
 ///
 /// Events V2 Time Precision Phase B — Event Detail Hierarchy UX
-/// correction: HERO (image or branded monogram fallback, name, city/
-/// country only — event type and date moved out, see below) → EVENT
-/// ESSENTIALS ([EventMetaSection]: event type, precision-aware date/time,
-/// venue, admission) → ACTIONS ([EventActionsRow]: Tickets/Official
-/// website, conditional, moved up from the former LOCATION section) →
+/// correction, its hero/Essentials title follow-up, and the Editorial
+/// Hero + Essentials/Actions polish pass (all three physical-device
+/// findings on the real date-only pilot): HERO (image or branded
+/// monogram fallback, a back action, and a subtle event-type editorial
+/// eyebrow — no other text identity, still genuinely photography-ready)
+/// → EVENT TITLE + ESSENTIALS ([EventMetaSection]: event title,
+/// precision-aware date/time, venue + city, admission — event type moved
+/// back into the hero, so it no longer appears here) → ACTIONS
+/// ([EventActionsRow]: full-width Tickets/Official website rows,
+/// conditional, moved up from the former LOCATION section) →
 /// ATTENDANCE (if [canAttendEvent]) → ABOUT (conditional, reusing
 /// [VenueAboutSection] outright) → AT THIS EVENT (conditional,
 /// Michelin-starred linked restaurants only — Events V2 Step 3 renamed
@@ -735,10 +740,6 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       );
     }
 
-    final cityCountryLine = [
-      if (event.city != null && event.city!.isNotEmpty) event.city,
-      event.countryCode,
-    ].join(' · ');
     final hasWebsite =
         event.officialUrl != null && event.officialUrl!.isNotEmpty;
     final hasTickets = event.ticketUrl != null && event.ticketUrl!.isNotEmpty;
@@ -769,21 +770,28 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
                 const CsImagePlaceholder(logoScale: _heroLogoScale),
           )
         : const CsImagePlaceholder(logoScale: _heroLogoScale);
+    // Editorial Hero + Essentials/Actions polish pass: the one piece of
+    // Event identity the hero carries again — a subtle editorial eyebrow,
+    // never the generic "EVENT" fallback (EventType.other renders no
+    // label at all, same "no type known" treatment EventMetaSection
+    // always used for this case).
+    final heroEventTypeLabel = event.eventType == EventType.other
+        ? null
+        : event.eventType.label.toUpperCase();
 
     return Scaffold(
       backgroundColor: AppColors.ivory,
       body: CustomScrollView(
         slivers: [
           // Events V2 Time Precision Phase B — Event Detail Hierarchy UX
-          // correction: the hero no longer carries eventTypeLabel or
-          // dateRangeLine — both moved to EventMetaSection ("Event
-          // Essentials"), directly below, so the hero stays a quiet
-          // image/title/location surface (deliberately more breathing
-          // room for future Event photography) rather than repeating
-          // facts the very next section already states.
+          // correction, hero/Essentials title correction, editorial Hero
+          // polish: the hero carries only the subtle event-type eyebrow —
+          // title, date, venue/city, and admission all live in
+          // EventMetaSection ("Event Essentials") directly below, so the
+          // hero stays otherwise photography-ready (no title/date/venue/
+          // admission competing with future Event photography).
           EventDetailHero(
-            title: event.name,
-            cityCountryLine: cityCountryLine,
+            eventTypeLabel: heroEventTypeLabel,
             backgroundImage: backgroundImage,
           ),
           SliverToBoxAdapter(
