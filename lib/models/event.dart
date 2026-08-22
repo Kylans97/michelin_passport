@@ -8,13 +8,23 @@
 import '../core/utils/event_time.dart';
 import 'event_local_time.dart';
 
-/// The six permitted values of `events.event_type`. Stores the exact
+/// The permitted values of `events.event_type`. Stores the exact
 /// database strings via [dbValue] — do not rename these without a
 /// migration.
+///
+/// Events V2 Discovery Taxonomy Phase A: `lunch`/`gala`/`brunch`/`party`
+/// were added to the CHECK constraint (widened, additive-only) to cover
+/// the seven approved V1 Event Types. `market`/`experience`/`other`
+/// remain fully supported for backward compatibility — no existing row
+/// or legacy value is invalidated by this change.
 enum EventType {
   festival('festival'),
   dinner('dinner'),
+  lunch('lunch'),
   tasting('tasting'),
+  gala('gala'),
+  brunch('brunch'),
+  party('party'),
   market('market'),
   experience('experience'),
   other('other');
@@ -26,15 +36,19 @@ enum EventType {
     for (final type in EventType.values) {
       if (type.dbValue == value) return type;
     }
-    // The DB CHECK constraint guarantees one of the six values; this is
-    // only reached if the schema changes underneath us.
+    // The DB CHECK constraint guarantees one of the permitted values;
+    // this is only reached if the schema changes underneath us.
     return EventType.other;
   }
 
   String get label => switch (this) {
     EventType.festival => 'Festival',
     EventType.dinner => 'Dinner',
+    EventType.lunch => 'Lunch',
     EventType.tasting => 'Tasting',
+    EventType.gala => 'Gala',
+    EventType.brunch => 'Brunch',
+    EventType.party => 'Party',
     EventType.market => 'Market',
     EventType.experience => 'Experience',
     EventType.other => 'Event',
