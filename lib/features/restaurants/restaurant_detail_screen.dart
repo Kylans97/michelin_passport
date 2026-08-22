@@ -16,16 +16,20 @@ import '../../core/widgets/venue_about_section.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
 import '../../data/repositories/award_history_repository.dart';
+import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
+import '../../models/event.dart';
 import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
 import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
+import '../events/event_detail_screen.dart';
+import '../events/widgets/hosted_events_section.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../planning/widgets/plan_venue_sheet.dart';
 import '../visits/widgets/add_visit_sheet.dart';
@@ -58,6 +62,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _plannedTripsRepo = PlannedTripsRepository(
     Supabase.instance.client,
   );
+  late final _eventsRepo = EventsRepository(Supabase.instance.client);
   // Events V2 Step 6 — never wired into a constructor param (matching
   // EventDetailScreen's own established seam); no vendor is selected yet,
   // so this is always the production-safe no-op today.
@@ -78,6 +83,13 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // most restaurants resolve this within a single indexed round trip.
   bool _hasAwardHistory = false;
 
+  // Events V2 Step 8B — starts empty (section hidden) rather than showing
+  // a loading/empty state, same "not yet resolved = hidden" convention as
+  // _hasAwardHistory. Only ever set on a successful, non-empty load — see
+  // _loadHostedEvents' own doc comment for why a failure leaves this
+  // silently empty rather than surfacing an error.
+  List<Event> _hostedEvents = const [];
+
   bool get _isVisited => _visits.isNotEmpty;
 
   @override
@@ -85,6 +97,37 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     super.initState();
     _loadPersonalState();
     _checkAwardHistory();
+    _loadHostedEvents();
+  }
+
+  // Events V2 Step 8B — hosted Events are enhancement content: a failed
+  // lookup (or simply zero qualifying Events) must never affect the rest
+  // of this screen, so this leaves _hostedEvents at its empty default on
+  // any error rather than showing a raw failure — matching
+  // _checkAwardHistory's own established "leave hidden on failure"
+  // pattern exactly.
+  Future<void> _loadHostedEvents() async {
+    try {
+      final events = await _eventsRepo.loadHostedEventsForRestaurant(
+        widget.restaurant.id,
+      );
+      if (!mounted) return;
+      setState(() => _hostedEvents = events);
+    } catch (_) {
+      // Leave the section hidden on a failed lookup.
+    }
+  }
+
+  void _openEvent(Event event) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => EventDetailScreen(
+          eventId: event.id,
+          sourceSurface: AnalyticsSourceSurface.hostProfile,
+        ),
+      ),
+    );
   }
 
   Future<void> _checkAwardHistory() async {
@@ -572,6 +615,20 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                       name: restaurant.hotelName!,
                       loading: _loadingHotel,
                       onTap: canOpenHotel ? _openHotel : null,
+                    ),
+                  ],
+
+                  // Events V2 Step 8B — genuinely hosted Events only
+                  // (is_host = true), upcoming/active, already
+                  // chronologically sorted by the repository. Same
+                  // relative position "AT THIS HOTEL"/"DINING" already
+                  // occupy on Restaurant/Hotel Detail: just before the
+                  // closing Info/Location card.
+                  if (_hostedEvents.isNotEmpty) ...[
+                    const SectionDivider(),
+                    HostedEventsSection(
+                      events: _hostedEvents,
+                      onTapEvent: _openEvent,
                     ),
                   ],
 

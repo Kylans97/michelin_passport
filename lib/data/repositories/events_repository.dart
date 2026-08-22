@@ -1,5 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/utils/event_time.dart' show eventHasEnded;
 import '../../models/event.dart';
+import '../../models/event_chronology.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
@@ -41,6 +43,35 @@ String _dateOnly(DateTime date) =>
     '${date.year.toString().padLeft(4, '0')}-'
     '${date.month.toString().padLeft(2, '0')}-'
     '${date.day.toString().padLeft(2, '0')}';
+
+/// Events V2 Step 8B — filters a raw list of Events down to the ones that
+/// belong in a reverse-host "EVENTS" section on a Restaurant/Hotel/
+/// Private Chef Detail page: not cancelled, and not yet ended per the
+/// same precision-aware [eventHasEnded] every other lifecycle decision in
+/// this app already uses (exact instant when known, else the local-day-
+/// end of [Event.endDate] in [Event.timezone]) — never a raw `end_at >
+/// now` comparison, which would incorrectly exclude a date-only Event
+/// whose `end_at` is null by design. An Event that has started but not
+/// yet ended is included (`!eventHasEnded` alone already covers
+/// "upcoming or currently active" — there is no separate "has started"
+/// check to make). Sorted via the canonical [compareEventChronology] —
+/// never a second comparator. Extracted as a standalone pure function,
+/// matching [eventBrowseWindowBounds]'s own precedent, so this filter/
+/// sort logic is unit-testable without a live SupabaseClient.
+List<Event> upcomingHostedEvents(List<Event> events, {DateTime? now}) {
+  final effectiveNow = now ?? DateTime.now();
+  final filtered = events.where((event) {
+    if (event.isCancelled) return false;
+    return !eventHasEnded(
+      endAt: event.endAt,
+      endDate: event.endDate,
+      timezone: event.timezone,
+      now: effectiveNow,
+    );
+  }).toList();
+  filtered.sort(compareEventChronology);
+  return filtered;
+}
 
 /// A single event's linked venues, resolved for Event Detail. Either list
 /// may be empty — an event is never required to link to any venue.
@@ -219,5 +250,84 @@ class EventsRepository {
       restaurants: await restaurantsFuture,
       hotels: await hotelsFuture,
     );
+  }
+
+  /// Events V2 Step 8B — the reverse direction of [loadLinkedVenues]:
+  /// Events [restaurantId] genuinely HOSTS (`is_host = true` on
+  /// `event_restaurants`), not merely a physical venue for
+  /// (`is_venue`-only) or a culinary participant in (`is_host = false,
+  /// is_venue = false`) — see the Step 8B architecture audit's own Host
+  /// Semantics section for why that distinction is non-negotiable. No
+  /// `moderation_status` filter is applied here explicitly — it doesn't
+  /// need to be: `event_restaurants` itself has no moderation column and
+  /// its own RLS is unconditionally public, but the second query below
+  /// reads `events` directly, whose RLS (`moderation_status =
+  /// 'published'`) is enforced automatically, so a relationship row
+  /// pointing at a draft/rejected/archived Event simply yields no
+  /// corresponding row here — the exact same RLS composition
+  /// [loadLinkedVenues] already relies on for the forward direction.
+  /// Upcoming/active only, chronologically sorted — see
+  /// [upcomingHostedEvents].
+  Future<List<Event>> loadHostedEventsForRestaurant(
+    String restaurantId, {
+    DateTime? now,
+  }) => _loadHostedEvents(
+    table: 'event_restaurants',
+    entityColumn: 'restaurant_id',
+    entityId: restaurantId,
+    now: now,
+  );
+
+  /// Events V2 Step 8B — the Hotel equivalent of
+  /// [loadHostedEventsForRestaurant]. Production currently has zero
+  /// `event_hotels` rows of any kind (host, venue, or participant) — this
+  /// method is exercised by repository-shape reasoning and fixture/widget
+  /// tests today, not yet by a real production Hotel host.
+  Future<List<Event>> loadHostedEventsForHotel(
+    String hotelId, {
+    DateTime? now,
+  }) => _loadHostedEvents(
+    table: 'event_hotels',
+    entityColumn: 'hotel_id',
+    entityId: hotelId,
+    now: now,
+  );
+
+  /// Events V2 Step 8B — the Private Chef equivalent of
+  /// [loadHostedEventsForRestaurant]. Production currently has zero
+  /// `event_chefs` rows — same caveat as [loadHostedEventsForHotel].
+  Future<List<Event>> loadHostedEventsForChef(String chefId, {DateTime? now}) =>
+      _loadHostedEvents(
+        table: 'event_chefs',
+        entityColumn: 'chef_id',
+        entityId: chefId,
+        now: now,
+      );
+
+  // Shared shape behind all three loadHostedEventsFor* methods — exactly
+  // 2 queries (the relationship-id fetch, then one batched Event fetch),
+  // mirroring loadLinkedVenues' own established two-query pattern,
+  // reversed. No N+1 regardless of how many Events an entity hosts.
+  Future<List<Event>> _loadHostedEvents({
+    required String table,
+    required String entityColumn,
+    required String entityId,
+    DateTime? now,
+  }) async {
+    final relRows = await _client
+        .from(table)
+        .select('event_id')
+        .eq(entityColumn, entityId)
+        .eq('is_host', true);
+    final eventIds = [
+      for (final row in relRows as List) row['event_id'] as String,
+    ];
+    if (eventIds.isEmpty) return const [];
+    final rows = await _client.from('events').select().inFilter('id', eventIds);
+    final events = [
+      for (final row in rows as List)
+        Event.fromJson(row as Map<String, dynamic>),
+    ];
+    return upcomingHostedEvents(events, now: now);
   }
 }

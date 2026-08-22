@@ -14,17 +14,21 @@ import '../../core/widgets/venue_about_section.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
 import '../../data/repositories/award_history_repository.dart';
+import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
+import '../../models/event.dart';
 import '../../models/hotel.dart';
 import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
 import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
+import '../events/event_detail_screen.dart';
+import '../events/widgets/hosted_events_section.dart';
 import '../planning/widgets/plan_venue_sheet.dart';
 import '../restaurants/widgets/award_history_action.dart';
 import '../stays/widgets/add_stay_sheet.dart';
@@ -60,6 +64,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   late final _awardHistoryRepo = AwardHistoryRepository(
     Supabase.instance.client,
   );
+  late final _eventsRepo = EventsRepository(Supabase.instance.client);
   late final Future<List<Restaurant>> _linkedRestaurantsFuture =
       widget.hotel.hasMichelinRestaurant
       ? _hotelRepo.getLinkedRestaurants(widget.hotel.id)
@@ -84,11 +89,45 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   // RestaurantDetailScreen's _hasAwardHistory exactly.
   bool _hasAwardHistory = false;
 
+  // Events V2 Step 8B — mirrors RestaurantDetailScreen's _hostedEvents
+  // exactly. Production currently has zero event_hotels rows, so this
+  // stays empty (section hidden) on every real device today — see the
+  // Step 8B pre-final doc.
+  List<Event> _hostedEvents = const [];
+
   @override
   void initState() {
     super.initState();
     _loadPersonalState();
     _checkAwardHistory();
+    _loadHostedEvents();
+  }
+
+  // Events V2 Step 8B — mirrors RestaurantDetailScreen's
+  // _loadHostedEvents exactly: a failed lookup (or zero qualifying
+  // Events) silently leaves the section hidden, never surfaces an error.
+  Future<void> _loadHostedEvents() async {
+    try {
+      final events = await _eventsRepo.loadHostedEventsForHotel(
+        widget.hotel.id,
+      );
+      if (!mounted) return;
+      setState(() => _hostedEvents = events);
+    } catch (_) {
+      // Leave the section hidden on a failed lookup.
+    }
+  }
+
+  void _openEvent(Event event) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => EventDetailScreen(
+          eventId: event.id,
+          sourceSurface: AnalyticsSourceSurface.hostProfile,
+        ),
+      ),
+    );
   }
 
   Future<void> _checkAwardHistory() async {
@@ -499,6 +538,16 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                     ),
                     const SizedBox(height: CsSpacing.md),
                     HotelRestaurantsCard(future: _linkedRestaurantsFuture),
+                  ],
+
+                  // Events V2 Step 8B — same relative position DINING
+                  // occupies: just before the closing Info/Location card.
+                  if (_hostedEvents.isNotEmpty) ...[
+                    const SectionDivider(),
+                    HostedEventsSection(
+                      events: _hostedEvents,
+                      onTapEvent: _openEvent,
+                    ),
                   ],
 
                   if (hotel.address.isNotEmpty) ...[

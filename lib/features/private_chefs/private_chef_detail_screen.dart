@@ -8,13 +8,17 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/section_divider.dart';
+import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
+import '../../models/event.dart';
 import '../../models/private_chef.dart';
 import '../../models/private_chef_education.dart';
 import '../../models/private_chef_photo.dart';
 import '../../models/private_chef_restaurant_history.dart';
 import '../../models/venue_country.dart';
+import '../events/event_detail_screen.dart';
+import '../events/widgets/hosted_events_section.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'private_chef_location.dart';
 import 'widgets/private_chef_connect_section.dart';
@@ -64,6 +68,7 @@ const _signInMessage = 'Sign in to follow private chefs.';
 class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   late final _repo = PrivateChefRepository(Supabase.instance.client);
   late final _followRepo = FollowRepository(Supabase.instance.client);
+  late final _eventsRepo = EventsRepository(Supabase.instance.client);
   // Events V2 Step 6 — never wired into a constructor param (matching
   // EventDetailScreen's own established seam); no vendor is selected yet,
   // so this is always the production-safe no-op today.
@@ -82,10 +87,33 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   bool _isFollowing = false;
   bool _followBusy = false;
 
+  // Events V2 Step 8B — loaded independently of _load()'s own critical
+  // try/catch (below), on purpose: hosted Events are enhancement content
+  // and must never flip this whole screen into its error state.
+  // Production currently has zero event_chefs rows, so this stays empty
+  // (section hidden) on every real device today.
+  List<Event> _hostedEvents = const [];
+
   @override
   void initState() {
     super.initState();
     _load();
+    _loadHostedEvents();
+  }
+
+  // Events V2 Step 8B — mirrors RestaurantDetailScreen/HotelDetailScreen's
+  // own _loadHostedEvents exactly: a failed lookup (or zero qualifying
+  // Events) silently leaves the section hidden, never surfaces an error,
+  // and never blocks the chef's own catalogue data (_load, above) from
+  // rendering.
+  Future<void> _loadHostedEvents() async {
+    try {
+      final events = await _eventsRepo.loadHostedEventsForChef(widget.chefId);
+      if (!mounted) return;
+      setState(() => _hostedEvents = events);
+    } catch (_) {
+      // Leave the section hidden on a failed lookup.
+    }
   }
 
   Future<void> _load() async {
@@ -241,6 +269,18 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     );
   }
 
+  void _openEvent(Event event) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => EventDetailScreen(
+          eventId: event.id,
+          sourceSurface: AnalyticsSourceSurface.hostProfile,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     if (_loading) {
@@ -320,6 +360,14 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
               : null,
           onTapWebsite: hasWebsite ? () => _openUrl(chef.websiteUrl!) : null,
         ),
+      // Events V2 Step 8B — appended after CONNECT, the least disruptive
+      // placement relative to this screen's own documented canonical
+      // hierarchy (HERO → ABOUT → BACKGROUND → THE EXPERIENCE → CONNECT).
+      // Production currently has zero event_chefs rows, so this entry is
+      // absent from the list entirely (not merely hidden) on every real
+      // device today.
+      if (_hostedEvents.isNotEmpty)
+        HostedEventsSection(events: _hostedEvents, onTapEvent: _openEvent),
     ];
 
     // Step 3 will add "Request an Experience" here as the final section.
