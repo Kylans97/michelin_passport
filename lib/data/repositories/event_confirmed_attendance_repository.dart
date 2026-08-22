@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/event.dart';
+import '../../models/event_chronology.dart';
 import '../../models/event_confirmed_attendance.dart';
 import 'photo_repository.dart';
 
@@ -38,6 +39,60 @@ class EventAttendanceEntry {
     required this.event,
     this.coverPhotoUrl,
   });
+}
+
+/// Events V2 Step 8C — Passport's own "when did this actually happen"
+/// order: most recent Event date first, using each entry's [Event.
+/// startDate] — never [EventConfirmedAttendance.confirmedAt]/
+/// `createdAt`, which describe when the row was logged, not when the
+/// experience occurred (a post-event-prompt confirmation logged weeks
+/// later, or a manually back-logged one, must still sort by the Event's
+/// own date). Matches Restaurant/Hotel Passport's own "sort by when it
+/// happened" convention exactly. Reuses the canonical
+/// [compareEventChronology] rather than inventing a second comparator —
+/// simply swaps the two operands to get descending (most-recent-first)
+/// order from that same ascending (soonest-first) rule, including its
+/// existing tie-break (a known start time before an unknown one, then
+/// [Event.id]). Extracted as a standalone pure function, matching this
+/// codebase's established "extract the pure part for direct testing"
+/// convention (see [buildAttendanceDetailsUpdate] in this same file).
+List<EventAttendanceEntry> sortEventAttendanceByEventDate(
+  List<EventAttendanceEntry> entries,
+) {
+  final sorted = List<EventAttendanceEntry>.from(entries);
+  sorted.sort((a, b) => compareEventChronology(b.event, a.event));
+  return sorted;
+}
+
+/// Events V2 Step 8C — the [entries] whose Event happened in [year]
+/// (all of them when [year] is null), using [Event.startDate].year —
+/// never `confirmedAt.year`, so an Event that happened 31 Dec 2026 but
+/// was confirmed 1 Jan 2027 still files under 2026, matching how
+/// Restaurant/Hotel Passport already scopes by when a visit/stay itself
+/// occurred.
+List<EventAttendanceEntry> eventAttendanceInYear(
+  List<EventAttendanceEntry> entries,
+  int? year,
+) {
+  if (year == null) return entries;
+  return [
+    for (final entry in entries)
+      if (entry.event.startDate.year == year) entry,
+  ];
+}
+
+/// Every year with at least one confirmed Event attendance among
+/// [entries], newest first — the Event-attendance equivalent of
+/// [availableVisitYears] (`core/utils/visit_years.dart`), kept as its
+/// own function here rather than folded into that shared helper: a year
+/// with only Event attendance, and no Restaurant/Hotel visit at all,
+/// must still be selectable — the two year lists are independent, not a
+/// single merged set (see the Step 8C pre-final doc's Year Filter
+/// section for the full reasoning).
+List<int> availableEventAttendanceYears(List<EventAttendanceEntry> entries) {
+  final years = entries.map((e) => e.event.startDate.year).toSet().toList();
+  years.sort((a, b) => b.compareTo(a));
+  return years;
 }
 
 /// Events V2 Step 4.1. Distinguishes "leave `would_recommend` unchanged"
@@ -245,19 +300,26 @@ class EventConfirmedAttendanceRepository {
 
   /// Every confirmed attendance the caller has, each paired with its own
   /// Event and (if one exists) a signed URL for its cover photo — what
-  /// Passport's additive Events section renders. Three queries total
-  /// regardless of row count (the confirmed-attendance rows, one batched
-  /// `events` lookup, one batched `photos` lookup for cover images),
-  /// matching EventAttendanceRepository.getFriendUpcomingEvents' own
-  /// "never one query per row" convention. Most-recently-confirmed first.
+  /// Passport's Events filter renders. Three queries total regardless of
+  /// row count (the confirmed-attendance rows, one batched `events`
+  /// lookup, one batched `photos` lookup for cover images), matching
+  /// EventAttendanceRepository.getFriendUpcomingEvents' own "never one
+  /// query per row" convention.
+  ///
+  /// Events V2 Step 8C: sorted by the Event's own occurrence date, most
+  /// recent first ([sortEventAttendanceByEventDate]) — not by
+  /// `confirmed_at`, which only reflects when the row was logged. That
+  /// sort needs the joined Event's own `startDate`, which isn't known
+  /// until after the second query below resolves, so no SQL `.order(...)`
+  /// is applied to the first query at all — it would only describe an
+  /// intermediate, not-final order.
   Future<List<EventAttendanceEntry>> loadPassportEventAttendance(
     String userId,
   ) async {
     final rows = await _client
         .from('event_confirmed_attendance')
         .select(_attendanceColumns)
-        .eq('user_id', userId)
-        .order('confirmed_at', ascending: false);
+        .eq('user_id', userId);
     final attendanceRows = (rows as List).cast<Map<String, dynamic>>();
     if (attendanceRows.isEmpty) return [];
 
@@ -281,7 +343,7 @@ class EventConfirmedAttendanceRepository {
       coverPathByAttendanceId.values.toList(),
     );
 
-    return [
+    final entries = [
       for (final row in attendanceRows)
         if (eventsById[row['event_id'] as String] != null)
           EventAttendanceEntry(
@@ -291,6 +353,7 @@ class EventConfirmedAttendanceRepository {
                 coverUrls[coverPathByAttendanceId[row['id'] as String]],
           ),
     ];
+    return sortEventAttendanceByEventDate(entries);
   }
 
   /// One storage_path per attendance id — its most-recently-taken photo,

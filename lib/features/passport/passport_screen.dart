@@ -16,6 +16,7 @@ import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
 import '../map/visited_map_screen.dart';
+import 'passport_filter_type.dart';
 import 'passport_view_model.dart';
 import 'widgets/passport_collection_header.dart';
 import 'widgets/passport_empty_state.dart';
@@ -23,28 +24,42 @@ import 'widgets/passport_event_card.dart';
 import 'widgets/passport_hotel_card.dart';
 import 'widgets/passport_restaurant_card.dart';
 
-/// My Passport: the user's personal collection of visited restaurants and
-/// stayed-at hotels. VISITS/STAYS are individual historical records (see
-/// VisitedRepository / Restaurant/Hotel Detail's own history); PASSPORT
-/// shows each unique venue once, however many times it's actually been
-/// visited/stayed at. All aggregation (grouping by venue, venue-type and
-/// year filtering, averages, totals) happens in [PassportFilterResult] —
-/// this screen only lays out what that produces.
+/// My Passport: the user's personal collection of visited restaurants,
+/// stayed-at hotels, and attended Events. VISITS/STAYS are individual
+/// historical records (see VisitedRepository / Restaurant/Hotel Detail's
+/// own history); PASSPORT shows each unique venue once, however many
+/// times it's actually been visited/stayed at. All Restaurant/Hotel
+/// aggregation (grouping by venue, year filtering, averages, totals)
+/// happens in [PassportFilterResult] — this screen only lays out what
+/// that produces.
 ///
 /// Step 2 of the Chasing Stars visual redesign — the first feature screen
-/// migrated onto the Cs design-system foundation from Step 1. Every state/
-/// data-loading concern below is UNCHANGED from before this pass; only
-/// what [build] renders is new.
+/// migrated onto the Cs design-system foundation from Step 1.
+///
+/// Events V2 Step 8C — Events promoted to a genuine first-class Passport
+/// content type: [PassportFilterType] (Restaurants/Hotels/Events) is
+/// Passport's own local filter, exactly one selected at a time — never
+/// merged, never an Events section appended below Restaurants/Hotels the
+/// way Step 4 originally shipped it. Deliberately NOT
+/// [ExploreVenueType] (shared with Explore/Wishlist/Rankings/My Map) and
+/// Events deliberately does NOT become a third [PassportVenue] variant —
+/// see the Step 8C architecture audit's own PassportVenue Boundary /
+/// ExploreVenueType Boundary sections for why both would have a much
+/// larger blast radius than useful here. Confirmed-attendance Events
+/// (`event_confirmed_attendance`, via [EventConfirmedAttendanceRepository
+/// .loadPassportEventAttendance]) are the ONLY Event content Passport
+/// ever shows — Interested/Going intent never appears here.
 ///
 /// This screen stays mounted for the whole app session — it lives inside
 /// the bottom-tab IndexedStack (see `_MainNavigation` in app.dart), which
 /// never disposes its children on tab switch. A one-time fetch would go
-/// stale the moment a visit/stay is saved elsewhere, so the source data is
-/// reloaded explicitly instead: on first mount, on pull-to-refresh, and via
-/// [RouteAware.didPopNext] whenever a pushed screen (Restaurant/Hotel
-/// Detail) is popped back to the tab shell. Changing venue type or year
-/// never refetches — both just re-run [PassportFilterResult.of] against the
-/// source already held in memory.
+/// stale the moment a visit/stay/attendance is saved elsewhere, so the
+/// source data is reloaded explicitly instead: on first mount, on
+/// pull-to-refresh, and via [RouteAware.didPopNext] whenever a pushed
+/// screen (Restaurant/Hotel/Event Detail) is popped back to the tab
+/// shell. Changing the selected filter type or year never refetches —
+/// both just re-run the relevant filter against data already held in
+/// memory.
 class PassportScreen extends StatefulWidget {
   const PassportScreen({super.key});
 
@@ -60,18 +75,20 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
       EventConfirmedAttendanceRepository(Supabase.instance.client);
 
   List<VenueEntry>? _entries; // null until the first load completes.
-  // Events V2 Step 4 §14/§15 — confirmed Event history, additive to the
-  // Restaurant/Hotel list above rather than folded into PassportVenue's
-  // sealed union (see PassportEventCard's own doc comment for why). Loaded
-  // alongside _entries but never blocks/fails the rest of Passport — a
-  // failure here leaves this section simply empty, same reasoning as
-  // EventsScreen's own prompt-nudge load.
+  // Events V2 Step 4 §14/§15, promoted to first-class in Step 8C —
+  // confirmed Event history, kept structurally separate from
+  // PassportVenue's sealed union (see EventAttendanceEntry's own doc
+  // comment for why). Loaded alongside _entries but never blocks/fails
+  // the rest of Passport — a failure here leaves this filter's own
+  // content simply empty, same reasoning as EventsScreen's own
+  // prompt-nudge load.
   List<EventAttendanceEntry> _eventEntries = [];
   bool _loading = true; // true only for the very first, blocking load.
-  bool _loadError = false;
+  bool _loadError = false; // Restaurant/Hotel load failure only — see
+  // _load's own doc comment: a failed Event load never sets this.
   bool _refreshing = false; // guards overlapping refresh calls.
 
-  ExploreVenueType _venueType = ExploreVenueType.all;
+  PassportFilterType _filterType = PassportFilterType.restaurants;
   int? _selectedYear; // null = "All time", the default.
 
   @override
@@ -95,12 +112,17 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
     super.dispose();
   }
 
-  // Fires when a screen pushed on top of the tab shell (Restaurant Detail,
-  // Hotel Detail) is popped and this (permanently mounted) tab becomes
-  // current again — so a visit/stay saved there shows up immediately.
+  // Fires when a screen pushed on top of the tab shell (Restaurant/Hotel/
+  // Event Detail) is popped and this (permanently mounted) tab becomes
+  // current again — so a visit/stay/attendance saved there shows up
+  // immediately.
   @override
   void didPopNext() => _load();
 
+  // Events V2 Step 8C — the Event load's own failure is already isolated
+  // (own try/catch below, never sets _loadError); this only reports
+  // whether the Restaurant/Hotel load itself failed, matching _loadError's
+  // own unchanged meaning.
   Future<void> _load() async {
     if (_refreshing) return;
     _refreshing = true;
@@ -117,17 +139,24 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
         // Passport.
       }
       if (!mounted) return;
-      final years = availableVisitYears(
+      final venueYears = availableVisitYears(
         entries.expand((entry) => entry.visits),
       );
+      final eventYears = availableEventAttendanceYears(eventEntries);
       setState(() {
         _entries = entries;
         _eventEntries = eventEntries;
         _loading = false;
         _loadError = false;
-        // Preserve the selected year only if it's still represented in the
-        // freshly loaded data; otherwise fall back to "All time".
-        if (_selectedYear != null && !years.contains(_selectedYear)) {
+        // Preserve the selected year only if it's still represented in
+        // whichever filter is currently active; otherwise fall back to
+        // "All time" — mirrors the pre-Step-8C behavior exactly, just
+        // scoped to the active filter's own year list now that
+        // Restaurants/Hotels and Events have independent year sets.
+        final currentYears = _filterType == PassportFilterType.events
+            ? eventYears
+            : venueYears;
+        if (_selectedYear != null && !currentYears.contains(_selectedYear)) {
           _selectedYear = null;
         }
       });
@@ -144,42 +173,66 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
     }
   }
 
-  bool _matchesVenueType(PassportVenue venue) => switch (_venueType) {
-    ExploreVenueType.all => true,
-    ExploreVenueType.restaurants => venue is RestaurantVenue,
-    ExploreVenueType.hotels => venue is HotelVenue,
-  };
+  // Only ever called for the Restaurants/Hotels branches (never Events —
+  // see _eventEmptyMessage for that filter's own copy), so this switches
+  // on just the two relevant PassportFilterType values via _isHotel
+  // rather than carrying a dead `events` arm.
+  bool get _isHotel => _filterType == PassportFilterType.hotels;
 
-  String _emptyMessage(List<VenueEntry> allEntries) {
+  bool _matchesVenueType(PassportVenue venue) =>
+      _isHotel ? venue is HotelVenue : venue is RestaurantVenue;
+
+  String _venueEmptyMessage(List<VenueEntry> allEntries) {
     final hasAnyHistoryForType = allEntries.any(
       (e) => _matchesVenueType(e.venue),
     );
     if (!hasAnyHistoryForType) {
-      return switch (_venueType) {
-        ExploreVenueType.all => 'Your passport is waiting for its first stamp.',
-        ExploreVenueType.restaurants => 'No restaurant visits yet.',
-        ExploreVenueType.hotels => 'No hotel stays yet.',
-      };
+      return _isHotel ? 'No hotel stays yet.' : 'No restaurant visits yet.';
     }
-    return switch (_venueType) {
-      ExploreVenueType.all => 'No places visited in $_selectedYear.',
-      ExploreVenueType.restaurants => 'No restaurant visits in $_selectedYear.',
-      ExploreVenueType.hotels => 'No hotel stays in $_selectedYear.',
-    };
+    return _isHotel
+        ? 'No hotel stays in $_selectedYear.'
+        : 'No restaurant visits in $_selectedYear.';
+  }
+
+  // Events V2 Step 8C §14 — restrained, type-specific copy; never the old
+  // venue-oriented "waiting for its first stamp" message, and never shown
+  // merely because Restaurants/Hotels happens to be empty (this is gated
+  // on _filterType == events, so it only ever appears when Events is the
+  // active selection).
+  String _eventEmptyMessage(List<EventAttendanceEntry> allEventEntries) {
+    if (allEventEntries.isEmpty) return 'No events in your Passport yet.';
+    return 'No events in your Passport in $_selectedYear.';
   }
 
   @override
   Widget build(BuildContext context) {
     final allEntries = _entries ?? [];
-    final years = availableVisitYears(
-      allEntries.expand((entry) => entry.visits),
-    );
-    final result = PassportFilterResult.of(
-      allEntries,
-      venueType: _venueType,
-      year: _selectedYear,
-    );
-    final metricLabels = PassportMetricLabels.forVenueType(_venueType);
+    final isEvents = _filterType == PassportFilterType.events;
+
+    // Events V2 Step 8C — each filter type has its own independent year
+    // list: a year with only confirmed Event attendance, and no
+    // Restaurant/Hotel visit at all, must still be selectable, and vice
+    // versa — never a single merged set.
+    final years = isEvents
+        ? availableEventAttendanceYears(_eventEntries)
+        : availableVisitYears(allEntries.expand((entry) => entry.visits));
+
+    final restaurantOrHotel = _isHotel
+        ? ExploreVenueType.hotels
+        : ExploreVenueType.restaurants;
+    final result = isEvents
+        ? null
+        : PassportFilterResult.of(
+            allEntries,
+            venueType: restaurantOrHotel,
+            year: _selectedYear,
+          );
+    final metricLabels = isEvents
+        ? null
+        : PassportMetricLabels.forVenueType(restaurantOrHotel);
+    final filteredEventEntries = isEvents
+        ? eventAttendanceInYear(_eventEntries, _selectedYear)
+        : const <EventAttendanceEntry>[];
 
     // Explicit deep-green canvas for this whole tab, independent of the
     // shared tab-shell Scaffold's own (ivory) background — the shell itself
@@ -213,13 +266,28 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      for (final type in ExploreVenueType.values) ...[
-                        if (type != ExploreVenueType.values.first)
+                      for (final type in PassportFilterType.values) ...[
+                        if (type != PassportFilterType.values.first)
                           const SizedBox(width: CsSpacing.sm),
                         CsFilterChip(
                           label: type.label,
-                          selected: _venueType == type,
-                          onTap: () => setState(() => _venueType = type),
+                          selected: _filterType == type,
+                          onTap: () => setState(() {
+                            _filterType = type;
+                            // Re-validate the selected year against the
+                            // newly-active filter's own year list — never
+                            // leave a year selected that this filter has
+                            // no data for.
+                            final newYears = type == PassportFilterType.events
+                                ? availableEventAttendanceYears(_eventEntries)
+                                : availableVisitYears(
+                                    allEntries.expand((e) => e.visits),
+                                  );
+                            if (_selectedYear != null &&
+                                !newYears.contains(_selectedYear)) {
+                              _selectedYear = null;
+                            }
+                          }),
                         ),
                       ],
                     ],
@@ -247,32 +315,39 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
                   ),
                 ),
               ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.xl,
-                  CsSpacing.pageHorizontal,
-                  0,
-                ),
-                child: CsMetricStrip(
-                  metrics: [
-                    CsMetric(
-                      value: '${result.summary.placesVisited}',
-                      label: metricLabels.visited,
-                    ),
-                    CsMetric(
-                      value: '${result.summary.countriesVisited}',
-                      label: metricLabels.countries,
-                    ),
-                    CsMetric(
-                      value: '${result.summary.awardsExperienced}',
-                      label: metricLabels.awards,
-                    ),
-                  ],
+            // Events V2 Step 8C §28 — the Restaurant/Hotel metric strip
+            // (places/countries/awards) has no natural Event equivalent
+            // (an Event isn't a "place" the same way a venue is, and has
+            // no stars/Keys award to sum) — hidden entirely rather than
+            // showing stale/irrelevant Restaurant or Hotel numbers, or
+            // inventing an Event vanity metric merely to fill the strip.
+            if (!isEvents)
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    CsSpacing.pageHorizontal,
+                    CsSpacing.xl,
+                    CsSpacing.pageHorizontal,
+                    0,
+                  ),
+                  child: CsMetricStrip(
+                    metrics: [
+                      CsMetric(
+                        value: '${result!.summary.placesVisited}',
+                        label: metricLabels!.visited,
+                      ),
+                      CsMetric(
+                        value: '${result.summary.countriesVisited}',
+                        label: metricLabels.countries,
+                      ),
+                      CsMetric(
+                        value: '${result.summary.awardsExperienced}',
+                        label: metricLabels.awards,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
@@ -284,9 +359,14 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
                 child: const PassportCollectionHeader(),
               ),
             ),
-            if (_loadError)
-              SliverFillRemaining(child: _ErrorState(onRetry: _load))
-            else if (_loading)
+            // Events V2 Step 8C §9/§15 — exactly one selected Passport
+            // content type renders at a time now: no Events section is
+            // ever appended below Restaurants/Hotels, and Restaurant/
+            // Hotel's own loading/error/empty states can never hide
+            // Event content (or vice versa) behind a SliverFillRemaining
+            // belonging to a different filter — each branch below is
+            // scoped entirely to the currently selected _filterType.
+            if (_loading)
               const SliverFillRemaining(
                 child: Center(
                   child: CircularProgressIndicator(
@@ -295,9 +375,37 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
                   ),
                 ),
               )
-            else if (result.entries.isEmpty)
+            else if (isEvents)
+              if (filteredEventEntries.isEmpty)
+                SliverFillRemaining(
+                  child: PassportEmptyState(
+                    message: _eventEmptyMessage(_eventEntries),
+                  ),
+                )
+              else
+                SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, i) => Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        CsSpacing.pageHorizontal,
+                        0,
+                        CsSpacing.pageHorizontal,
+                        i == filteredEventEntries.length - 1
+                            ? 100
+                            : CsSpacing.md,
+                      ),
+                      child: PassportEventCard(entry: filteredEventEntries[i]),
+                    ),
+                    childCount: filteredEventEntries.length,
+                  ),
+                )
+            else if (_loadError)
+              SliverFillRemaining(child: _ErrorState(onRetry: _load))
+            else if (result!.entries.isEmpty)
               SliverFillRemaining(
-                child: PassportEmptyState(message: _emptyMessage(allEntries)),
+                child: PassportEmptyState(
+                  message: _venueEmptyMessage(allEntries),
+                ),
               )
             else
               SliverList(
@@ -324,38 +432,6 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
                   childCount: result.entries.length,
                 ),
               ),
-            if (!_loading && !_loadError && _eventEntries.isNotEmpty) ...[
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    CsSpacing.pageHorizontal,
-                    CsSpacing.section,
-                    CsSpacing.pageHorizontal,
-                    CsSpacing.md,
-                  ),
-                  child: Text(
-                    'EVENTS',
-                    style: CsTypography.eyebrow.copyWith(
-                      color: AppColors.secondaryOnDark,
-                    ),
-                  ),
-                ),
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, i) => Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      CsSpacing.pageHorizontal,
-                      0,
-                      CsSpacing.pageHorizontal,
-                      i == _eventEntries.length - 1 ? 100 : CsSpacing.md,
-                    ),
-                    child: PassportEventCard(entry: _eventEntries[i]),
-                  ),
-                  childCount: _eventEntries.length,
-                ),
-              ),
-            ],
           ],
         ),
       ),
