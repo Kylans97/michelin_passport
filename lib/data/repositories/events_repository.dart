@@ -124,10 +124,26 @@ class EventsRepository {
   /// International Date-Boundary Strategy section for the full reasoning.
   /// No further "exact" trim runs afterward in Dart — once timezones
   /// differ, there is no single correct answer, only "never silently hide."
+  ///
+  /// Events V2 Discovery Taxonomy Phase B: [eventTypes]/[countryCodes] are
+  /// additional, independent, ANDed-with-everything-else server-side
+  /// predicates (OR within each — `.inFilter`), layered on top of the
+  /// same query rather than a separate one, so Type/Country filtering
+  /// never requires fetching the full unfiltered catalogue first (Phase B
+  /// §11's own "no fetching all production Events when strong server-side
+  /// predicates can narrow them first" requirement). [countryCodes] is
+  /// deliberately a second, independent parameter from the pre-existing
+  /// single [countryCode] — the original single-selection call site
+  /// (`EventsScreen`'s own `CountryFilterControl`) is untouched by this
+  /// addition; a future multi-select control would pass [countryCodes]
+  /// instead, never both at once in practice, though nothing prevents it
+  /// (both are simply ANDed if a caller genuinely did).
   Future<List<Event>> loadEvents({
     DateTime? from,
     DateTime? to,
     String? countryCode,
+    Set<String>? countryCodes,
+    Set<EventType>? eventTypes,
     String query = '',
   }) async {
     var builder = _client.from('events').select();
@@ -148,6 +164,14 @@ class EventsRepository {
     }
     if (countryCode != null) {
       builder = builder.eq('country_code', countryCode);
+    }
+    if (countryCodes != null && countryCodes.isNotEmpty) {
+      builder = builder.inFilter('country_code', countryCodes.toList());
+    }
+    if (eventTypes != null && eventTypes.isNotEmpty) {
+      builder = builder.inFilter('event_type', [
+        for (final type in eventTypes) type.dbValue,
+      ]);
     }
     final rows = await builder.order('start_date', ascending: true);
     return [
