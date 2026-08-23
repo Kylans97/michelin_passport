@@ -1,4 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Events V2 Near Me Phase N2.1 — foreground-only, coarse location.
+         Near me filters against a fixed 100km radius (see
+         GeolocatorCurrentLocationProvider's own LocationAccuracy.low
+         choice), which needs neither meter-level precision nor
+         background access — ACCESS_FINE_LOCATION and
+         ACCESS_BACKGROUND_LOCATION are deliberately NOT declared. -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <application
         android:label="Chasing Stars"
         android:name="${applicationName}"

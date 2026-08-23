@@ -6,6 +6,7 @@ import '../../data/repositories/friendship_repository.dart';
 import '../../models/event_attendance.dart';
 import '../../models/event_discovery_filters.dart';
 import '../../models/event_discovery_item.dart';
+import '../../models/event_near_me_location.dart';
 import '../../models/friendship.dart';
 import 'event_discovery_filtering.dart';
 import 'event_discovery_service.dart';
@@ -118,6 +119,14 @@ class EventDiscoveryFilterService {
     DateTime? from,
     DateTime? to,
     String query = '',
+    // Events V2 Near Me Phase N2.3 — the already-resolved Near-me location
+    // (EventsScreen's own `_location.nearMe`, never computed here: this
+    // service never requests permission, calls a location provider, or
+    // performs its own distance math — it simply forwards whatever it was
+    // given straight into `applyDiscoveryFilters`'s already-existing
+    // `nearMeLocation` parameter, exactly like `filters` itself is already
+    // forwarded unchanged).
+    EventNearMeLocation? nearMeLocation,
   }) async {
     final events = await eventsRepo.loadEvents(
       from: from,
@@ -127,7 +136,7 @@ class EventDiscoveryFilterService {
       query: query,
     );
 
-    if (filters.isEmpty || events.isEmpty) {
+    if ((filters.isEmpty && nearMeLocation == null) || events.isEmpty) {
       return discoveryService.rankForDiscovery(events: events, userId: userId);
     }
 
@@ -165,6 +174,7 @@ class EventDiscoveryFilterService {
       userSignedIn: userId != null,
       tagMatchingEventIds: tagMatchingIds,
       socialQualifyingEventIds: socialQualifyingIds,
+      nearMeLocation: nearMeLocation,
     );
 
     return discoveryService.rankForDiscovery(events: filtered, userId: userId);

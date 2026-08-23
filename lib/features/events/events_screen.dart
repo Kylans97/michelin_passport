@@ -7,7 +7,6 @@ import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import '../../core/theme/cs_surface_context.dart';
-import '../../core/widgets/country_filter_control.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
@@ -28,15 +27,19 @@ import '../../models/event_relevance_reason.dart';
 import '../../models/event_tag.dart';
 import '../../models/venue_country.dart';
 import 'attendance_prompt_dismissal.dart';
+import 'current_location_provider.dart';
 import 'event_detail_screen.dart';
 import 'event_discovery_filter_service.dart';
 import 'event_discovery_service.dart';
+import 'geolocator_current_location_provider.dart';
+import 'location_settings_opener.dart';
 import 'models/event_date_filter.dart';
 import 'widgets/attendance_details_sheet.dart';
 import 'widgets/attendance_prompt_card.dart';
 import 'widgets/event_card.dart';
 import 'widgets/event_date_control.dart';
 import 'widgets/event_filter_sheet.dart';
+import 'widgets/event_location_control.dart';
 
 /// Culinary Events discovery — standalone events, multi-venue events,
 /// festivals, tastings.
@@ -53,7 +56,25 @@ import 'widgets/event_filter_sheet.dart';
 /// Correction Pass" section for the full root-cause writeup of the bug
 /// this design fixes.
 class EventsScreen extends StatefulWidget {
-  const EventsScreen({super.key});
+  /// Events V2 Near Me Phase N2.3/N2.4 — exist ONLY so `test/` can
+  /// substitute a deterministic fake [CurrentLocationProvider]/
+  /// [LocationSettingsOpener] (mirrors
+  /// [GeolocatorCurrentLocationProvider]'s own `gateway` parameter, same
+  /// reasoning: `geolocator_current_location_provider.dart`'s own doc
+  /// comment). No production call site passes either — every real screen
+  /// instantiation gets the real, `geolocator`-backed adapter for both via
+  /// [_EventsScreenState]'s own defaults.
+  const EventsScreen({
+    super.key,
+    @visibleForTesting this.locationProvider,
+    @visibleForTesting this.settingsOpener,
+  });
+
+  @visibleForTesting
+  final CurrentLocationProvider? locationProvider;
+
+  @visibleForTesting
+  final LocationSettingsOpener? settingsOpener;
 
   @override
   State<EventsScreen> createState() => _EventsScreenState();
@@ -95,6 +116,20 @@ class _EventsScreenState extends State<EventsScreen> {
         discoveryService: _discoveryService,
       );
   final AnalyticsService _analytics = const NoopAnalyticsService();
+  // Events V2 Near Me Phase N2.3 — the default here (never a parameter
+  // passed by production code) is the only concrete CurrentLocationProvider
+  // this codebase has: the real, geolocator-backed adapter. See
+  // EventsScreen.locationProvider's own doc comment for why the seam
+  // exists at all.
+  late final CurrentLocationProvider _locationProvider =
+      widget.locationProvider ?? const GeolocatorCurrentLocationProvider();
+  // Events V2 Near Me Phase N2.4 — same default reasoning as
+  // [_locationProvider] immediately above; a distinct field (not the same
+  // instance re-typed) because [EventsScreen.settingsOpener] is
+  // independently injectable for tests that only care about one
+  // capability or the other.
+  late final LocationSettingsOpener _settingsOpener =
+      widget.settingsOpener ?? const GeolocatorCurrentLocationProvider();
 
   // ── The four independent discovery-state dimensions ──────────────────
   final _searchCtrl = TextEditingController();
@@ -330,6 +365,7 @@ class _EventsScreenState extends State<EventsScreen> {
       from: from,
       to: to,
       query: _query,
+      nearMeLocation: _location.nearMe,
     );
   }
 
@@ -363,13 +399,21 @@ class _EventsScreenState extends State<EventsScreen> {
     _reload();
   }
 
-  void _onLocationChanged(VenueCountry? country) {
-    setState(() => _location = EventLocationContext(country: country));
+  // Events V2 Near Me Phase N2.3 — the single handler for BOTH resolution
+  // modes EventLocationControl's own onChanged can now report (previously
+  // country-only). Constructing a brand-new EventLocationContext here
+  // (never mutating the old one) is what gives Country<->Near-me
+  // replacement its guarantee: a fresh `.country` value structurally
+  // cannot carry a stale `.nearMe`, and vice versa (see
+  // `event_location_context.dart`'s own assert). Analytics preserve their
+  // exact pre-N2.3 shape: fired only for an explicit country selection,
+  // never for "All locations", and — deliberately, per this phase's own
+  // privacy scope — never for Near Me, which carries a coordinate this
+  // event's own taxonomy has no safe place for.
+  void _onLocationChanged(EventLocationContext location) {
+    setState(() => _location = location);
     _reload();
-    // event_filter_applied's own contract explicitly covers "a
-    // controlled-vocabulary filter (event type, country, etc.) is
-    // applied" — Location selecting a country is exactly that, using the
-    // existing countryCode property, no new taxonomy.
+    final country = location.country;
     if (country != null) {
       _analytics.track(
         AnalyticsEvent.eventFilterApplied,
@@ -555,9 +599,11 @@ class _EventsScreenState extends State<EventsScreen> {
                                 child: FutureBuilder<List<VenueCountry>>(
                                   future: _countriesFuture,
                                   builder: (context, countrySnap) =>
-                                      CountryFilterControl(
-                                        selected: _location.country,
+                                      EventLocationControl(
+                                        location: _location,
                                         countries: countrySnap.data ?? [],
+                                        locationProvider: _locationProvider,
+                                        settingsOpener: _settingsOpener,
                                         onChanged: _onLocationChanged,
                                       ),
                                 ),
