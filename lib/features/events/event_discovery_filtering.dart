@@ -1,7 +1,9 @@
 import '../../core/utils/event_time.dart' show compareCalendarDates;
 import '../../models/event.dart';
 import '../../models/event_discovery_filters.dart';
+import '../../models/event_near_me_location.dart';
 import '../../models/friendship.dart';
+import 'event_near_me_filtering.dart';
 import 'friends_going_view_model.dart';
 
 /// Events V2 Discovery Taxonomy Phase B — the pure, Supabase-free core of
@@ -69,17 +71,37 @@ bool eventIntersectsDateRange(Event event, DateTime? from, DateTime? to) {
 /// dimension is included exactly as it already is today with no filter
 /// active — filtering narrows by type/theme/country/date/social, it does
 /// not introduce a new lifecycle rule.
+///
+/// Near Me Phase N1 — [nearMeLocation], when non-null, adds ONE further
+/// AND'd predicate ([eventQualifiesForNearMe]), checked alongside every
+/// other dimension in the same single pass. Deliberately a separate
+/// parameter, never folded into [EventDiscoveryFilters] itself (see
+/// `event_location_context.dart`'s own doc comment): Near Me is a
+/// Location-context concern resolved by [EventLocationContext], exactly
+/// like `countryCodes` is, but geometric rather than a set-membership
+/// check, so it cannot live inside `EventDiscoveryFilters.countryCodes`
+/// without corrupting that field's own "a Set of ISO codes" contract.
+/// `filters.isEmpty` alone no longer means "no restriction at all" once
+/// [nearMeLocation] is provided — see the updated short-circuit below,
+/// which only fires when BOTH are absent, preserving the exact original
+/// "empty filter behaves identically to today" guarantee for every
+/// existing caller that never passes [nearMeLocation] at all.
 List<Event> applyDiscoveryFilters({
   required List<Event> events,
   required EventDiscoveryFilters filters,
   required bool userSignedIn,
   Set<String> tagMatchingEventIds = const {},
   Set<String> socialQualifyingEventIds = const {},
+  EventNearMeLocation? nearMeLocation,
 }) {
-  if (filters.isEmpty) return events;
+  if (filters.isEmpty && nearMeLocation == null) return events;
   if (filters.social.isNotEmpty && !userSignedIn) return const [];
 
   return events.where((event) {
+    if (nearMeLocation != null &&
+        !eventQualifiesForNearMe(event, nearMeLocation)) {
+      return false;
+    }
     if (filters.eventTypes.isNotEmpty &&
         !filters.eventTypes.contains(event.eventType)) {
       return false;
