@@ -1,0 +1,27 @@
+{
+  "_status": "APPLIED to production 2026-08-23. Production event id 35dd62ac-2d72-40e1-a231-8518358d169d, independently re-verified post-insert (see EVENT_PARTICIPANT_ENRICHMENT_REPORT.md's Applied Status section).",
+  "_schema_note": "Field names match public.events columns exactly (see supabase/migrations/20260810160000_create_events.sql and 20260810180000_add_event_admission.sql). No migration required — table already exists in production.",
+  "_schema_drift_note": "By apply time (2026-08-23), the Events V2 Time Precision migrations (2026-08-22) had added NOT NULL timezone/start_date/end_date columns not present when this payload was originally prepared (2026-08-16). start_at/end_at below were never inserted as literal timestamps — this event's exact clock time was never actually researched/sourced (00:00:00/23:59:59 were always whole-day placeholders, not sourced times), so it was applied as a genuine date-only Event: start_at/end_at NULL, timezone='Europe/Andorra', start_date='2026-09-16', end_date='2026-09-20', start_time/end_time NULL — matching the same live precedent already set by Douro to Table / Forces of Nature. This represents the exact same originally-researched facts, just via the schema's current date-only representation rather than a fabricated exact instant.",
+  "name": "Andorra Taste",
+  "description": "The 5th edition of the International High Mountain Gastronomy Meeting brings together 18 chefs from France, Spain, Austria, Italy, Peru and Andorra — 14 international participants carrying 19 Michelin stars between them — to explore how territory, altitude, climate and biodiversity shape mountain cuisine. The 2026 edition spotlights France as guest country and presents the Andorra Taste Award 2026 to chef Virgilio Martínez of Central (Lima).",
+  "start_at": "2026-09-16T00:00:00+02:00",
+  "end_at": "2026-09-20T23:59:59+02:00",
+  "country_code": "AD",
+  "city": "Escaldes-Engordany",
+  "venue_name": "El Prat del Roure",
+  "address": "C/ Veedors, Escaldes-Engordany, Andorra",
+  "latitude": null,
+  "longitude": null,
+  "official_url": "https://www.andorrataste.com/en",
+  "ticket_url": null,
+  "image_url": null,
+  "event_type": "festival",
+  "status": "upcoming",
+  "admission_type": "mixed",
+  "admission_note": "General-public programme (showcookings, demonstrations at El Prat del Roure, Sept 18-20) is free to attend, with limited capacity for some activities. A separate professional/trade agenda runs Sept 16-18. No consumer ticket-purchase URL was found on the official site during this research pass — left null rather than guessed.",
+  "_notes": {
+    "lat_lng": "Left null — no independently verified coordinates found for El Prat del Roure during this research pass; per the task's own instruction, lat/lng are populated only from a reliable source, never guessed.",
+    "event_type_limitation": "None — 'festival' is a reasonably accurate fit for a multi-day public gastronomy meeting; no schema limitation to document here (contrast with San Sebastián Gastronomika, which has a genuine event_type gap — see that event's payload).",
+    "dates": "Sept 16-20 2026 spans both the professional agenda (16-18) and the public agenda (18-20); the full event window is used as start_at/end_at, matching how other multi-day events in this app (e.g. 't Preuvenemint) already represent their full span rather than only the public-facing days."
+  }
+}
