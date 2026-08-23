@@ -63,6 +63,48 @@ void main() {
     });
   });
 
+  group('EventDiscoveryFilters — advancedFilterDimensionCount '
+      '(Phase C Correction Pass §11)', () {
+    test('default filters count zero', () {
+      expect(EventDiscoveryFilters().advancedFilterDimensionCount, 0);
+    });
+
+    test('Location (countryCodes) and Date never contribute, even when '
+        'active', () {
+      final filters = EventDiscoveryFilters(
+        countryCodes: {'NL'},
+        dateRange: EventDiscoveryDateRange(from: DateTime.utc(2026, 9, 1)),
+      );
+      expect(filters.advancedFilterDimensionCount, 0);
+      // activeDimensionCount (the original, unrepurposed getter) still
+      // correctly counts both — proving this is a new, narrower count,
+      // not a behavior change to the existing one.
+      expect(filters.activeDimensionCount, 2);
+    });
+
+    test('Social, Type and Theme each contribute exactly 1', () {
+      final filters = EventDiscoveryFilters(
+        social: {EventSocialFilter.friendsGoing},
+        eventTypes: {EventType.dinner},
+        tagSlugs: {'wine'},
+      );
+      expect(filters.advancedFilterDimensionCount, 3);
+    });
+
+    test('Location + Date + all three advanced dimensions active at '
+        'once still reports exactly 3 (never 5)', () {
+      final filters = EventDiscoveryFilters(
+        social: {EventSocialFilter.friendsGoing},
+        eventTypes: {EventType.dinner},
+        tagSlugs: {'wine'},
+        countryCodes: {'NL'},
+        dateRange: EventDiscoveryDateRange(from: DateTime.utc(2026, 9, 1)),
+      );
+      expect(filters.advancedFilterDimensionCount, 3);
+      expect(filters.activeDimensionCount, 5);
+    });
+  });
+
   group('EventDiscoveryFilters — equality', () {
     test('two filters with the same values (different construction order) '
         'are equal', () {

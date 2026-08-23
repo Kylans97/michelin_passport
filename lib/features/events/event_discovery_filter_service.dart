@@ -10,6 +10,30 @@ import '../../models/friendship.dart';
 import 'event_discovery_filtering.dart';
 import 'event_discovery_service.dart';
 
+/// Events V2 Discovery Taxonomy Phase C §19 — thrown by
+/// [EventDiscoveryFilterService.loadFilteredDiscovery] when resolving an
+/// ACTIVE Theme or Social dimension fails (a taxonomy/attendance/friend/
+/// follow query throws). Deliberately distinct from a base
+/// `EventsRepository.loadEvents` failure (which still propagates as
+/// whatever exception it naturally throws, unwrapped — the screen's
+/// existing generic "could not load" handling already covers that): the
+/// whole point of this type is to let the UI tell "the base feed itself
+/// failed" apart from "the feed loaded fine but we can no longer honestly
+/// claim your Theme/Social filter was actually applied" — the latter must
+/// never be silently swallowed into an unfiltered-but-unlabeled result, or
+/// a user who chose "Friends Going" could end up looking at Events with no
+/// relation to their friends while believing the filter still worked
+/// (Phase C §19's own explicit product requirement). Carries no raw
+/// backend error text — [message] is a fixed, friendly, already-safe-to-
+/// display string.
+class EventFilterResolutionException implements Exception {
+  const EventFilterResolutionException(this.message);
+  final String message;
+
+  @override
+  String toString() => message;
+}
+
 /// Events V2 Discovery Taxonomy Phase B — the single orchestration path
 /// for filtered Event discovery: **filter first, then apply the existing
 /// Step 8A ranking to the filtered result set** (the non-negotiable
@@ -73,6 +97,21 @@ class EventDiscoveryFilterService {
   ///    [EventDiscoveryItem.primaryReason] is computed exactly as it
   ///    would be with no filter active at all — filtering never invents,
   ///    suppresses, or overrides a relevance reason (Phase B §15).
+  ///
+  /// Failure isolation (Phase C §19 — mandatory now that this method has a
+  /// live UI caller, unlike Phase B where it did not): step 1's base
+  /// `eventsRepo.loadEvents` failure propagates unwrapped — an empty
+  /// [filters] never reaches step 2/3 at all, so a taxonomy/social outage
+  /// can never break the base feed when no such filter is even active
+  /// (§19's "EMPTY FILTER" rule, true by construction — the calls below
+  /// are simply never made). Steps 2/3 (Theme/Social resolution), ONLY
+  /// reached when that dimension is genuinely active, are wrapped in
+  /// try/catch that rethrows as [EventFilterResolutionException] rather
+  /// than either propagating a raw backend error or silently degrading to
+  /// an empty matching set (which would either crash the UI with an
+  /// unrecognized exception type, or — worse — read as "zero results
+  /// match," indistinguishable from an honest zero-result filter outcome,
+  /// exactly the false impression §19 forbids).
   Future<List<EventDiscoveryItem>> loadFilteredDiscovery({
     required EventDiscoveryFilters filters,
     required String? userId,
@@ -92,17 +131,32 @@ class EventDiscoveryFilterService {
       return discoveryService.rankForDiscovery(events: events, userId: userId);
     }
 
-    final tagMatchingIds = filters.tagSlugs.isEmpty
-        ? const <String>{}
-        : await tagRepo.loadEventIdsForTagSlugs(filters.tagSlugs);
+    Set<String> tagMatchingIds = const {};
+    if (filters.tagSlugs.isNotEmpty) {
+      try {
+        tagMatchingIds = await tagRepo.loadEventIdsForTagSlugs(
+          filters.tagSlugs,
+        );
+      } catch (_) {
+        throw const EventFilterResolutionException(
+          'Could not apply your theme filter right now.',
+        );
+      }
+    }
 
     Set<String> socialQualifyingIds = const {};
     if (filters.social.isNotEmpty && userId != null) {
-      socialQualifyingIds = await _resolveSocialQualifyingIds(
-        social: filters.social,
-        eventIds: [for (final event in events) event.id],
-        userId: userId,
-      );
+      try {
+        socialQualifyingIds = await _resolveSocialQualifyingIds(
+          social: filters.social,
+          eventIds: [for (final event in events) event.id],
+          userId: userId,
+        );
+      } catch (_) {
+        throw const EventFilterResolutionException(
+          'Could not apply your social filter right now.',
+        );
+      }
     }
 
     final filtered = applyDiscoveryFilters(

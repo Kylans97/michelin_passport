@@ -182,6 +182,24 @@ class EventDiscoveryFilters {
       (countryCodes.isNotEmpty ? 1 : 0) +
       (dateRange.isEmpty ? 0 : 1);
 
+  /// Events V2 Discovery Taxonomy Phase C Correction Pass §11 — the
+  /// "Filters · N" button's own count, deliberately narrower than
+  /// [activeDimensionCount]: Location (country) and Date now have their
+  /// own always-visible, first-class controls on the Events screen (no
+  /// longer part of the advanced Filters sheet), so counting them again
+  /// here would double-report state the user can already see directly in
+  /// those controls' own labels. Only the three dimensions that still
+  /// live INSIDE the advanced sheet — Social, Type, Theme — count toward
+  /// this number. [activeDimensionCount] itself is intentionally left
+  /// unchanged (it still correctly answers "how many of all five
+  /// dimensions are active," a real, distinct, already-tested question)
+  /// rather than repurposed, so no existing caller/test of its original
+  /// five-dimension meaning is put at risk by this addition.
+  int get advancedFilterDimensionCount =>
+      (social.isNotEmpty ? 1 : 0) +
+      (eventTypes.isNotEmpty ? 1 : 0) +
+      (tagSlugs.isNotEmpty ? 1 : 0);
+
   EventDiscoveryFilters copyWith({
     Set<EventSocialFilter>? social,
     Set<EventType>? eventTypes,

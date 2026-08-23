@@ -7,10 +7,13 @@ import '../../core/analytics/analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import '../../core/theme/cs_surface_context.dart';
+import '../../core/widgets/country_filter_control.dart';
+import '../../core/widgets/cs_primary_button.dart';
 import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/event_host_follow_repository.dart';
 import '../../data/repositories/event_social_repository.dart';
+import '../../data/repositories/event_tag_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
@@ -18,22 +21,37 @@ import '../../models/event.dart';
 import '../../models/event_attendance_eligibility.dart';
 import '../../models/event_confirmed_attendance.dart';
 import '../../models/event_confirmed_attendance_analytics.dart';
+import '../../models/event_discovery_filters.dart';
 import '../../models/event_discovery_item.dart';
+import '../../models/event_location_context.dart';
 import '../../models/event_relevance_reason.dart';
+import '../../models/event_tag.dart';
 import '../../models/venue_country.dart';
 import 'attendance_prompt_dismissal.dart';
 import 'event_detail_screen.dart';
+import 'event_discovery_filter_service.dart';
 import 'event_discovery_service.dart';
 import 'models/event_date_filter.dart';
 import 'widgets/attendance_details_sheet.dart';
 import 'widgets/attendance_prompt_card.dart';
 import 'widgets/event_card.dart';
-import 'widgets/event_filter_bar.dart';
+import 'widgets/event_date_control.dart';
+import 'widgets/event_filter_sheet.dart';
 
 /// Culinary Events discovery — standalone events, multi-venue events,
-/// festivals, tastings. Country + date filtering; city stays in the data
-/// model (see Event) without a prominent UI control yet, per the task's
-/// explicit "can become visible later" instruction.
+/// festivals, tastings.
+///
+/// Events V2 Discovery Taxonomy Phase C Correction Pass: discovery state
+/// is composed from FOUR independently-held pieces — [_query] (search),
+/// [_location], [_datePreset]/[_dateRange], and [_advancedFilters]
+/// (Social/Type/Theme only) — combined into one [EventDiscoveryFilters]
+/// fresh on every fetch via [_effectiveFilters], never by mutating a
+/// shared object in place. Changing any one of the four never touches
+/// the other three; the order a user interacts with them in can never
+/// change the resulting query. See this file's own doc comments below
+/// and EVENTS_DISCOVERY_TAXONOMY_PHASE_C_PRE_FINAL.md's "Physical Device
+/// Correction Pass" section for the full root-cause writeup of the bug
+/// this design fixes.
 class EventsScreen extends StatefulWidget {
   const EventsScreen({super.key});
 
@@ -60,18 +78,61 @@ class _EventsScreenState extends State<EventsScreen> {
     hostFollowRepo: EventHostFollowRepository(Supabase.instance.client),
     socialRepo: EventSocialRepository(Supabase.instance.client),
   );
+  late final EventTagRepository _tagRepo = EventTagRepository(
+    Supabase.instance.client,
+  );
+  // Events V2 Discovery Taxonomy Phase C — the live wiring point for
+  // Phase B's plumbing: filter first, then the SAME EventDiscoveryService
+  // above ranks the filtered result. See loadFilteredDiscovery's own doc
+  // comment for the exact sequencing and failure-isolation contract.
+  late final EventDiscoveryFilterService _filterService =
+      EventDiscoveryFilterService(
+        eventsRepo: _repo,
+        tagRepo: _tagRepo,
+        attendanceRepo: _attendanceRepo,
+        friendshipRepo: FriendshipRepository(Supabase.instance.client),
+        hostFollowRepo: EventHostFollowRepository(Supabase.instance.client),
+        discoveryService: _discoveryService,
+      );
   final AnalyticsService _analytics = const NoopAnalyticsService();
 
+  // ── The four independent discovery-state dimensions ──────────────────
   final _searchCtrl = TextEditingController();
   String _query = '';
+  EventLocationContext _location = EventLocationContext.any;
+  EventDiscoveryDatePreset _datePreset = EventDiscoveryDatePreset.none;
+  EventDiscoveryDateRange _dateRange = EventDiscoveryDateRange.none;
+  // Social/Type/Theme ONLY — countryCodes/dateRange on this field are
+  // always empty; Location/Date are never read from or written into it.
+  // See event_filter_sheet.dart's own doc comment.
+  EventDiscoveryFilters _advancedFilters = EventDiscoveryFilters.empty;
 
-  EventDateFilter _dateFilter = EventDateFilter(
+  /// The ONE composed query state (Correction Pass §2) —
+  /// [_advancedFilters] plus [_location]/[_dateRange] re-attached, built
+  /// fresh here rather than stored, so there is never a second object
+  /// that could drift out of sync with the four fields above.
+  EventDiscoveryFilters get _effectiveFilters => _advancedFilters.copyWith(
+    countryCodes: _location.countryCodes,
+    dateRange: _dateRange,
+  );
+
+  bool get _isDefaultDiscoveryState =>
+      _query.isEmpty &&
+      _location.isAny &&
+      _dateRange.isEmpty &&
+      _advancedFilters.isEmpty;
+
+  // Fixed at "upcoming" — the base browse window (Phase B §13's own
+  // upcoming-only invariant) is not a user-visible control; the Date
+  // control (_datePreset/_dateRange) is the one user-facing date concept,
+  // layered on top of this fixed window rather than replacing it.
+  late final EventDateFilter _dateFilter = EventDateFilter(
     mode: EventDateFilterMode.upcoming,
   );
-  VenueCountry? _country;
 
   late Future<List<EventDiscoveryItem>> _discoveryFuture;
   late final Future<List<VenueCountry>> _countriesFuture = _repo.getCountries();
+  late final Future<List<EventTag>> _tagsFuture = _tagRepo.loadAllTags();
 
   // Events V2 Step 4 — the "Did you make it?" ambient nudge. A separate
   // future from _eventsFuture: this must never block or delay the main
@@ -252,35 +313,117 @@ class _EventsScreenState extends State<EventsScreen> {
     setState(() => _promptEvent = null);
   }
 
-  Future<List<Event>> _fetchEvents() {
+  // Events V2 Discovery Taxonomy Phase C Correction Pass — the one live
+  // call path: [_effectiveFilters] (freshly composed from all four
+  // independent state pieces on every call — never a stored, potentially
+  // stale object) plus the fixed "upcoming" base window feed
+  // EventDiscoveryFilterService exactly as Phase B/C designed. A base-
+  // load failure propagates here unwrapped; an active Theme/Social
+  // filter's own resolution failure surfaces as
+  // [EventFilterResolutionException] specifically — see that class's own
+  // doc comment for why the two must never be conflated.
+  Future<List<EventDiscoveryItem>> _fetchDiscoveryList() {
     final (from, to) = _dateFilter.resolve();
-    return _repo.loadEvents(
+    return _filterService.loadFilteredDiscovery(
+      filters: _effectiveFilters,
+      userId: _userId,
       from: from,
       to: to,
-      countryCode: _country?.code,
       query: _query,
     );
   }
 
-  // Events V2 Step 8A §16 — one coherent ranked render once the base list
-  // AND the (independently failure-isolated) personalization signals are
-  // both ready, rather than rendering chronological first and reshuffling
-  // once ranking finishes. A top-level try/catch is defense-in-depth only:
-  // EventDiscoveryService.rankForDiscovery already isolates every signal
-  // source's own failure and never rethrows in practice.
-  Future<List<EventDiscoveryItem>> _fetchDiscoveryList() async {
-    final events = await _fetchEvents();
-    try {
-      return await _discoveryService.rankForDiscovery(
-        events: events,
-        userId: _userId,
+  // FutureBuilder itself discards a stale future's eventual result once
+  // its `future` parameter is reassigned to a new instance (tracked via
+  // Flutter's own `_activeCallbackIdentity` mechanism) — so simply
+  // replacing _discoveryFuture on every reload is sufficient race
+  // protection for a rapid Location -> Date -> Search -> Filters-Apply
+  // sequence (Correction Pass §19): only the newest request's result can
+  // ever reach setState, regardless of network ordering.
+  void _reload() => setState(() => _discoveryFuture = _fetchDiscoveryList());
+
+  // Clears ALL FOUR discovery dimensions at once (Correction Pass §21/
+  // §22) — the one unambiguous, always-safe recovery action offered from
+  // the zero-result and failure states, where it is often unclear which
+  // single dimension a user would need to blame. Each control also has
+  // its own independent, narrower clear built directly into itself
+  // (Location's "All countries" tile, Date's "Any date" option, the
+  // advanced sheet's own "Clear all" for Social/Type/Theme only) — this
+  // is deliberately the one broader, unambiguous action layered on top,
+  // never the only way to clear a single dimension.
+  void _resetDiscovery() {
+    _searchCtrl.clear();
+    setState(() {
+      _query = '';
+      _location = EventLocationContext.any;
+      _datePreset = EventDiscoveryDatePreset.none;
+      _dateRange = EventDiscoveryDateRange.none;
+      _advancedFilters = EventDiscoveryFilters.empty;
+    });
+    _reload();
+  }
+
+  void _onLocationChanged(VenueCountry? country) {
+    setState(() => _location = EventLocationContext(country: country));
+    _reload();
+    // event_filter_applied's own contract explicitly covers "a
+    // controlled-vocabulary filter (event type, country, etc.) is
+    // applied" — Location selecting a country is exactly that, using the
+    // existing countryCode property, no new taxonomy.
+    if (country != null) {
+      _analytics.track(
+        AnalyticsEvent.eventFilterApplied,
+        AnalyticsProperties(
+          sourceSurface: AnalyticsSourceSurface.eventsFeed,
+          countryCode: country.code,
+        ),
       );
-    } catch (_) {
-      return [for (final event in events) EventDiscoveryItem(event: event)];
     }
   }
 
-  void _reload() => setState(() => _discoveryFuture = _fetchDiscoveryList());
+  void _onDateChanged(EventDateSelection selection) {
+    setState(() {
+      _datePreset = selection.preset;
+      _dateRange = selection.range;
+    });
+    _reload();
+  }
+
+  Future<void> _openFilterSheet() async {
+    final tags = await _tagsFuture;
+    if (!mounted) return;
+    final result = await showEventFilterSheet(
+      context,
+      committed: _advancedFilters,
+      tags: tags,
+      signedIn: _userId != null,
+    );
+    if (result == null || !mounted) return;
+    setState(() => _advancedFilters = result.filters);
+    _reload();
+    // Minimal V1 filter analytics — reuses the pre-existing
+    // AnalyticsEvent.eventFilterApplied taxonomy (declared, unused, since
+    // Events V2 Step 2). Only fired when the applied advanced state is
+    // genuinely non-empty; eventCategory is only populated when exactly
+    // one Type is selected (a single-value typed property — sending one
+    // of several selected values would misrepresent a multi-select).
+    // Social/Theme selections are not individually reported (no existing
+    // property fits them without expanding the analytics contract, which
+    // is intentionally deferred, not silently attempted). No friend
+    // identities, followed-entity names, or search text are ever
+    // included.
+    if (!result.filters.isEmpty) {
+      _analytics.track(
+        AnalyticsEvent.eventFilterApplied,
+        AnalyticsProperties(
+          sourceSurface: AnalyticsSourceSurface.eventsFeed,
+          eventCategory: result.filters.eventTypes.length == 1
+              ? result.filters.eventTypes.first.dbValue
+              : null,
+        ),
+      );
+    }
+  }
 
   // Attributes the open to the item's PRIMARY visible relevance reason
   // where the existing AnalyticsSourceContext taxonomy has a clean match
@@ -375,35 +518,65 @@ class _EventsScreenState extends State<EventsScreen> {
                       ),
                     ],
                   ),
+                  // Correction Pass §2/§26 — Search, then Location / Date /
+                  // Filters as one calm row. No separate active-filter
+                  // summary line beneath it: Location and Date already
+                  // communicate their own state directly in their own
+                  // labels, and repeating that underneath would be
+                  // redundant (§12) — Filters · N is sufficient for the
+                  // advanced dimensions, which stay invisible until opened.
                   bottom: PreferredSize(
-                    preferredSize: Size.fromHeight(
-                      _dateFilter.mode == EventDateFilterMode.month ? 224 : 170,
-                    ),
+                    preferredSize: const Size.fromHeight(138),
                     child: Container(
                       color: AppColors.background,
                       padding: const EdgeInsets.fromLTRB(20, 16, 20, 18),
-                      child: FutureBuilder<List<VenueCountry>>(
-                        future: _countriesFuture,
-                        builder: (context, countrySnap) {
-                          return EventFilterBar(
-                            searchCtrl: _searchCtrl,
-                            onQueryChanged: (v) {
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          TextField(
+                            controller: _searchCtrl,
+                            onChanged: (v) {
                               _query = v;
                               _reload();
                             },
-                            dateFilter: _dateFilter,
-                            onDateFilterChanged: (filter) {
-                              setState(() => _dateFilter = filter);
-                              _reload();
-                            },
-                            country: _country,
-                            countries: countrySnap.data ?? [],
-                            onCountryChanged: (country) {
-                              setState(() => _country = country);
-                              _reload();
-                            },
-                          );
-                        },
+                            style: GoogleFonts.inter(
+                              color: AppColors.textPrimary,
+                              fontSize: 14,
+                            ),
+                            decoration: const InputDecoration(
+                              hintText: 'Search events, cities…',
+                              prefixIcon: Icon(Icons.search_rounded),
+                            ),
+                          ),
+                          const SizedBox(height: 12),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: FutureBuilder<List<VenueCountry>>(
+                                  future: _countriesFuture,
+                                  builder: (context, countrySnap) =>
+                                      CountryFilterControl(
+                                        selected: _location.country,
+                                        countries: countrySnap.data ?? [],
+                                        onChanged: _onLocationChanged,
+                                      ),
+                                ),
+                              ),
+                              const SizedBox(width: 8),
+                              EventDateControl(
+                                preset: _datePreset,
+                                range: _dateRange,
+                                onChanged: _onDateChanged,
+                              ),
+                              const SizedBox(width: 8),
+                              _EventsFiltersButton(
+                                activeCount: _advancedFilters
+                                    .advancedFilterDimensionCount,
+                                onTap: _openFilterSheet,
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -425,12 +598,30 @@ class _EventsScreenState extends State<EventsScreen> {
                 if (snap.hasError)
                   SliverFillRemaining(
                     child: Center(
-                      child: Text(
-                        'Could not load events',
-                        style: GoogleFonts.inter(
-                          color: AppColors.textSecondary,
-                        ),
-                      ),
+                      // Correction Pass §18 — a Theme/Social filter's own
+                      // resolution failure keeps its distinct, honest
+                      // message; every other failure (including a base
+                      // query that now embeds Location/Date/Type/Country
+                      // as server-side predicates) gets the same
+                      // recoverable treatment — Retry always, plus Reset
+                      // discovery whenever some non-default state might be
+                      // the cause. Never silently shown as if the request
+                      // had simply returned zero results.
+                      child: snap.error is EventFilterResolutionException
+                          ? _DiscoveryFailureState(
+                              message:
+                                  (snap.error as EventFilterResolutionException)
+                                      .message,
+                              onRetry: _reload,
+                              onReset: _resetDiscovery,
+                            )
+                          : _DiscoveryFailureState(
+                              message: 'Could not load events',
+                              onRetry: _reload,
+                              onReset: _isDefaultDiscoveryState
+                                  ? null
+                                  : _resetDiscovery,
+                            ),
                     ),
                   )
                 else if (loading)
@@ -445,35 +636,17 @@ class _EventsScreenState extends State<EventsScreen> {
                 else if (items.isEmpty)
                   SliverFillRemaining(
                     child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(32),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Icon(
-                              Icons.event_outlined,
-                              color: AppColors.textSecondary,
-                              size: 44,
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              'No events found',
-                              style: GoogleFonts.playfairDisplay(
-                                color: AppColors.textSecondary,
-                                fontSize: 18,
-                              ),
-                            ),
-                            const SizedBox(height: 8),
-                            Text(
-                              'Try a different date range or country.',
-                              style: GoogleFonts.inter(
-                                color: AppColors.textSecondary,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      // Correction Pass §22 — differentiate "the catalogue
+                      // itself is empty" (cold start, every dimension at
+                      // its default — the exact, unchanged pre-Phase-C
+                      // copy) from "this combination of search/location/
+                      // date/filters matched nothing" (restrained copy +
+                      // one unambiguous Reset discovery action, never the
+                      // generic "no events exist" message for what is
+                      // actually a narrowed result).
+                      child: _isDefaultDiscoveryState
+                          ? const _NoEventsState()
+                          : _NoFilterResultsState(onReset: _resetDiscovery),
                     ),
                   )
                 else
@@ -502,4 +675,222 @@ class _EventsScreenState extends State<EventsScreen> {
       },
     );
   }
+}
+
+/// The advanced-refinement entry point (Correction Pass §5/§10/§11) —
+/// "Filters" when no Social/Type/Theme dimension is active, "Filters · N"
+/// (N = [EventDiscoveryFilters.advancedFilterDimensionCount] — Social,
+/// Type, Theme only; Location and Date have their own visible controls
+/// and never contribute here) otherwise.
+class _EventsFiltersButton extends StatelessWidget {
+  final int activeCount;
+  final VoidCallback onTap;
+  const _EventsFiltersButton({required this.activeCount, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final active = activeCount > 0;
+    return Semantics(
+      button: true,
+      label: active ? 'Filters, $activeCount active' : 'Filters',
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(20),
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
+            decoration: BoxDecoration(
+              color: active
+                  ? AppColors.brandGreen.withValues(alpha: 0.08)
+                  : AppColors.surface,
+              borderRadius: BorderRadius.circular(20),
+              border: Border.all(
+                color: active
+                    ? AppColors.brandGreen.withValues(alpha: 0.4)
+                    : AppColors.cardBorder,
+                width: active ? 1.0 : 0.5,
+              ),
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.tune_rounded,
+                  size: 15,
+                  color: active
+                      ? AppColors.brandGreen
+                      : AppColors.textSecondary,
+                ),
+                const SizedBox(width: 6),
+                Text(
+                  active ? 'Filters · $activeCount' : 'Filters',
+                  style: GoogleFonts.inter(
+                    color: active
+                        ? AppColors.brandGreen
+                        : AppColors.textSecondary,
+                    fontSize: 13,
+                    fontWeight: active ? FontWeight.w600 : FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The unchanged, pre-Phase-C cold-start empty state — extracted verbatim
+/// (not reworded) so the every-dimension-default case stays byte-
+/// identical, per §18's "no visible regression" requirement.
+class _NoEventsState extends StatelessWidget {
+  const _NoEventsState();
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.all(32),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(
+          Icons.event_outlined,
+          color: AppColors.textSecondary,
+          size: 44,
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'No events found',
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textSecondary,
+            fontSize: 18,
+          ),
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Try a different date range or country.',
+          style: GoogleFonts.inter(
+            color: AppColors.textSecondary,
+            fontSize: 13,
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+/// Correction Pass §22 — a narrowed-to-empty result (any of search/
+/// location/date/advanced filters active) gets its own restrained copy
+/// and ONE unambiguous recovery action that clears all four dimensions
+/// at once — distinct from [_NoEventsState]'s "nothing in the catalogue
+/// at all" message, and deliberately not a dimension-scoped "Clear
+/// filters" (Correction Pass §22 explicitly flags that wording as
+/// insufficient/ambiguous once Location/Date/Search can also be active).
+class _NoFilterResultsState extends StatelessWidget {
+  final VoidCallback onReset;
+  const _NoFilterResultsState({required this.onReset});
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.all(32),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(
+          Icons.filter_alt_off_outlined,
+          color: AppColors.textSecondary,
+          size: 40,
+        ),
+        const SizedBox(height: 16),
+        Text(
+          'Nothing matches right now',
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textSecondary,
+            fontSize: 18,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 8),
+        Text(
+          'Try adjusting your search, location, date or filters.',
+          style: GoogleFonts.inter(
+            color: AppColors.textSecondary,
+            fontSize: 13,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 16),
+        CsSecondaryButton(
+          label: 'Reset discovery',
+          onTap: onReset,
+          surface: CsSurface.light,
+          height: 44,
+        ),
+      ],
+    ),
+  );
+}
+
+/// A recoverable discovery failure (Correction Pass §18) — friendly,
+/// fixed copy (for an [EventFilterResolutionException], its own already-
+/// safe [message]; otherwise the same unchanged generic text this app has
+/// always shown for a base load failure — never a raw backend error
+/// either way), with a Retry (the exact same query, unchanged) and,
+/// whenever some non-default discovery state might plausibly be involved,
+/// a Reset discovery action.
+class _DiscoveryFailureState extends StatelessWidget {
+  final String message;
+  final VoidCallback onRetry;
+  final VoidCallback? onReset;
+  const _DiscoveryFailureState({
+    required this.message,
+    required this.onRetry,
+    required this.onReset,
+  });
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.all(32),
+    child: Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(
+          Icons.error_outline_rounded,
+          color: AppColors.textSecondary,
+          size: 40,
+        ),
+        const SizedBox(height: 16),
+        Text(
+          message,
+          style: GoogleFonts.playfairDisplay(
+            color: AppColors.textSecondary,
+            fontSize: 16,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 16),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            if (onReset != null) ...[
+              CsSecondaryButton(
+                label: 'Reset discovery',
+                onTap: onReset,
+                surface: CsSurface.light,
+                height: 44,
+              ),
+              const SizedBox(width: 12),
+            ],
+            CsPrimaryButton(
+              label: 'Retry',
+              onTap: onRetry,
+              surface: CsSurface.light,
+              height: 44,
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
 }
