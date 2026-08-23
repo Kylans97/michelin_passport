@@ -1,7 +1,11 @@
 // Covers Events UI Consistency Step 1 — Event Detail's redesigned
 // presentational primitives: EventDetailHero, EventMetaSection,
-// AtThisEventSection (+ its pure michelinStarredParticipants filter/
-// sort helper). The former EventGoingButton's own gold-audit now lives in
+// AtThisEventSection (+ its pure recognizedEventParticipants filter/
+// sort helper, and isRecognizedEventParticipant eligibility predicate —
+// Events Recognition V2, generalized from the original Michelin-only
+// michelinStarredParticipants/MichelinParticipantRow to also admit
+// World's 50 Best/Hall of Fame recognition). The former
+// EventGoingButton's own gold-audit now lives in
 // event_intent_controls_test.dart, covering its Events V2 Step 3
 // successor EventIntentControls.
 //
@@ -20,7 +24,7 @@ import 'package:michelin_passport/features/events/widgets/at_this_event_section.
 import 'package:michelin_passport/features/events/widgets/event_actions_row.dart';
 import 'package:michelin_passport/features/events/widgets/event_detail_hero.dart';
 import 'package:michelin_passport/features/events/widgets/event_meta_section.dart';
-import 'package:michelin_passport/features/events/widgets/michelin_participant_row.dart';
+import 'package:michelin_passport/features/events/widgets/event_participant_row.dart';
 import 'package:michelin_passport/models/event.dart';
 import 'package:michelin_passport/models/restaurant.dart';
 
@@ -78,13 +82,15 @@ Restaurant _restaurant({
   String countryCode = 'FR',
   String countryName = 'France',
   String flagEmoji = '🇫🇷',
+  bool isHallOfFame = false,
+  int? worlds50BestRank,
 }) => Restaurant(
   id: id,
   restaurantCode: 'rest_$id',
   name: name,
   michelinStars: michelinStars,
   inclusionReason: 'michelin_star',
-  isHallOfFame: false,
+  isHallOfFame: isHallOfFame,
   cityName: cityName,
   countryCode: countryCode,
   countryName: countryName,
@@ -93,7 +99,7 @@ Restaurant _restaurant({
   isInHotel: false,
   hotelId: null,
   hotelName: null,
-  worlds50BestRank: null,
+  worlds50BestRank: worlds50BestRank,
 );
 
 Widget _wrap(Widget child, {double width = 390, double textScale = 1.0}) =>
@@ -657,13 +663,13 @@ void main() {
     });
   });
 
-  group('MichelinParticipantRow — inline stars + city + flag '
+  group('EventParticipantRow — inline stars + city + flag '
       '(Events UI Consistency Step 1A)', () {
     testWidgets('stars render inline with the name, not on a secondary '
         'line', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(name: 'Tout a Fait', michelinStars: 1),
             onTap: () {},
           ),
@@ -684,7 +690,7 @@ void main() {
       ) async {
         await tester.pumpWidget(
           _wrap(
-            MichelinParticipantRow(
+            EventParticipantRow(
               restaurant: _restaurant(michelinStars: stars),
               onTap: () {},
             ),
@@ -703,7 +709,7 @@ void main() {
     testWidgets('renders city on the secondary line', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(
               michelinStars: 1,
               cityName: 'Maastricht',
@@ -721,7 +727,7 @@ void main() {
     testWidgets('renders the correct NL flag', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(
               michelinStars: 1,
               cityName: 'Maastricht',
@@ -739,7 +745,7 @@ void main() {
     testWidgets('renders the correct AT flag', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(
               michelinStars: 2,
               cityName: 'Vienna',
@@ -760,7 +766,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(
               michelinStars: 1,
               cityName: '',
@@ -779,7 +785,7 @@ void main() {
         'renders', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(
               michelinStars: 1,
               cityName: 'Somewhere',
@@ -798,7 +804,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(
               name:
                   'An Exceptionally Long Michelin Restaurant Name That '
@@ -820,13 +826,13 @@ void main() {
       var calls = 0;
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(michelinStars: 1),
             onTap: () => calls++,
           ),
         ),
       );
-      await tester.tap(find.byType(MichelinParticipantRow));
+      await tester.tap(find.byType(EventParticipantRow));
       expect(calls, 1);
     });
 
@@ -835,7 +841,7 @@ void main() {
       final handle = tester.ensureSemantics();
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(
               name: 'De Librije',
               michelinStars: 3,
@@ -864,7 +870,7 @@ void main() {
       final handle = tester.ensureSemantics();
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(
               name: 'Tout a Fait',
               michelinStars: 1,
@@ -890,7 +896,7 @@ void main() {
         'gold', (tester) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(michelinStars: 1),
             onTap: () {},
           ),
@@ -907,7 +913,7 @@ void main() {
       testWidgets('renders with no overflow at ${width}px', (tester) async {
         await tester.pumpWidget(
           _wrap(
-            MichelinParticipantRow(
+            EventParticipantRow(
               restaurant: _restaurant(
                 name: 'Château de Something Rather Long',
                 michelinStars: 3,
@@ -928,7 +934,7 @@ void main() {
     ) async {
       await tester.pumpWidget(
         _wrap(
-          MichelinParticipantRow(
+          EventParticipantRow(
             restaurant: _restaurant(
               name: 'Tout a Fait',
               michelinStars: 3,
@@ -1022,7 +1028,7 @@ void main() {
 
     testWidgets('sorts most-decorated first, alphabetically within the '
         'same star count', (tester) async {
-      final result = michelinStarredParticipants([
+      final result = recognizedEventParticipants([
         _restaurant(id: 'r1', name: 'Zebra', michelinStars: 2),
         _restaurant(id: 'r2', name: 'Alpha', michelinStars: 2),
         _restaurant(id: 'r3', name: 'ThreeStarPlace', michelinStars: 3),
@@ -1046,7 +1052,7 @@ void main() {
           ),
         ),
       );
-      await tester.tap(find.byType(MichelinParticipantRow));
+      await tester.tap(find.byType(EventParticipantRow));
       expect(tapped, starred);
     });
 
@@ -1112,7 +1118,7 @@ void main() {
           ),
         ),
       );
-      expect(find.byType(MichelinParticipantRow), findsNWidgets(3));
+      expect(find.byType(EventParticipantRow), findsNWidgets(3));
       // 3 rows need exactly 2 separating hairlines, never a leading one.
       expect(find.byType(Divider), findsNWidgets(2));
       final dividers = tester.widgetList<Divider>(find.byType(Divider));
@@ -1189,7 +1195,7 @@ void main() {
         ),
       );
       expect(tester.takeException(), isNull);
-      expect(find.byType(MichelinParticipantRow), findsNWidgets(4));
+      expect(find.byType(EventParticipantRow), findsNWidgets(4));
       expect(find.byType(Divider), findsNWidgets(3));
       final stars = tester
           .widgetList<StarRow>(find.byType(StarRow))
@@ -1237,8 +1243,519 @@ void main() {
         ),
       );
       expect(tester.takeException(), isNull);
-      expect(find.byType(MichelinParticipantRow), findsNWidgets(12));
+      expect(find.byType(EventParticipantRow), findsNWidgets(12));
       expect(find.byType(Divider), findsNWidgets(11));
+    });
+  });
+
+  group('isRecognizedEventParticipant — Events Recognition V2 eligibility', () {
+    test('Michelin-starred is recognized', () {
+      expect(
+        isRecognizedEventParticipant(_restaurant(michelinStars: 1)),
+        isTrue,
+      );
+    });
+
+    test("World's 50 Best ranked (no Michelin star) is recognized", () {
+      expect(
+        isRecognizedEventParticipant(
+          _restaurant(michelinStars: null, worlds50BestRank: 24),
+        ),
+        isTrue,
+      );
+    });
+
+    test('Hall of Fame (no Michelin star) is recognized', () {
+      expect(
+        isRecognizedEventParticipant(
+          _restaurant(michelinStars: null, isHallOfFame: true),
+        ),
+        isTrue,
+      );
+    });
+
+    test('no qualifying recognition at all is not recognized', () {
+      expect(
+        isRecognizedEventParticipant(_restaurant(michelinStars: null)),
+        isFalse,
+      );
+    });
+  });
+
+  group('recognizedEventParticipants — sorting, dedup (Recognition V2)', () {
+    test('a World\'s 50 Best-only restaurant (no Michelin star) sorts after '
+        'every Michelin-starred one — 0 stars, never a fabricated '
+        'cross-guide prestige comparison', () {
+      final result = recognizedEventParticipants([
+        _restaurant(id: 'r1', name: 'One Star', michelinStars: 1),
+        _restaurant(
+          id: 'r2',
+          name: 'W50B Only',
+          michelinStars: null,
+          worlds50BestRank: 5,
+        ),
+      ]);
+      expect(result.map((r) => r.name).toList(), ['One Star', 'W50B Only']);
+    });
+
+    test('multiple recognition-only (no Michelin) restaurants fall back to '
+        'alphabetical order among themselves', () {
+      final result = recognizedEventParticipants([
+        _restaurant(
+          id: 'r1',
+          name: 'Zebra House',
+          michelinStars: null,
+          isHallOfFame: true,
+        ),
+        _restaurant(
+          id: 'r2',
+          name: 'Alpha House',
+          michelinStars: null,
+          worlds50BestRank: 10,
+        ),
+      ]);
+      expect(result.map((r) => r.name).toList(), [
+        'Alpha House',
+        'Zebra House',
+      ]);
+    });
+
+    test('duplicate restaurant ids (defensive safety — should never occur '
+        'through the real event_restaurants/restaurants_full path) collapse '
+        'to a single row, never a duplicate', () {
+      final result = recognizedEventParticipants([
+        _restaurant(id: 'r1', name: 'Same Place', michelinStars: 2),
+        _restaurant(id: 'r1', name: 'Same Place', michelinStars: 2),
+      ]);
+      expect(result.length, 1);
+    });
+
+    test('unrecognized restaurants are excluded entirely', () {
+      final result = recognizedEventParticipants([
+        _restaurant(id: 'r1', name: 'No Recognition', michelinStars: null),
+      ]);
+      expect(result, isEmpty);
+    });
+  });
+
+  group('EventParticipantRow — World\'s 50 Best / Hall of Fame presentation '
+      '(Recognition V2)', () {
+    testWidgets(
+      "World's 50 Best-only restaurant (no Michelin star): no StarRow, "
+      'compact rank text on the secondary line',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            EventParticipantRow(
+              restaurant: _restaurant(
+                name: 'Rank Only House',
+                michelinStars: null,
+                worlds50BestRank: 24,
+                cityName: 'Lima',
+                countryCode: 'PE',
+                countryName: 'Peru',
+                flagEmoji: '🇵🇪',
+              ),
+              onTap: () {},
+            ),
+          ),
+        );
+        expect(find.byType(StarRow), findsNothing);
+        expect(find.textContaining("World's 50 Best · #24"), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'Hall of Fame restaurant (no Michelin star): no StarRow, "Hall of '
+      'Fame" on the secondary line',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            EventParticipantRow(
+              restaurant: _restaurant(
+                name: 'Legend House',
+                michelinStars: null,
+                isHallOfFame: true,
+              ),
+              onTap: () {},
+            ),
+          ),
+        );
+        expect(find.byType(StarRow), findsNothing);
+        expect(find.textContaining('Hall of Fame'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      "Michelin + World's 50 Best (one restaurant, both recognitions): "
+      'one row, stars inline with the name AND the rank text on the '
+      'secondary line',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            EventParticipantRow(
+              restaurant: _restaurant(
+                name: 'Double Recognized',
+                michelinStars: 3,
+                worlds50BestRank: 7,
+                cityName: 'Copenhagen',
+                countryCode: 'DK',
+                countryName: 'Denmark',
+                flagEmoji: '🇩🇰',
+              ),
+              onTap: () {},
+            ),
+          ),
+        );
+        expect(find.byType(EventParticipantRow), findsOneWidget);
+        final star = tester.widget<StarRow>(find.byType(StarRow));
+        expect(star.count, 3);
+        expect(find.textContaining("World's 50 Best · #7"), findsOneWidget);
+        expect(find.textContaining('Copenhagen'), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'Michelin-only restaurant (no W50B/Hall of Fame): no recognition '
+      'text beyond stars — secondary line is exactly city + flag, '
+      'unchanged from before Recognition V2',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            EventParticipantRow(
+              restaurant: _restaurant(
+                name: 'Plain Starred',
+                michelinStars: 2,
+                cityName: 'Maastricht',
+                countryCode: 'NL',
+                countryName: 'Netherlands',
+                flagEmoji: '🇳🇱',
+              ),
+              onTap: () {},
+            ),
+          ),
+        );
+        expect(find.text('Maastricht'), findsOneWidget);
+        expect(find.textContaining("World's 50 Best"), findsNothing);
+        expect(find.textContaining('Hall of Fame'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'accessibility: a World\'s 50 Best-only restaurant\'s semantic label '
+      'includes the rank, never a fabricated Michelin phrase',
+      (tester) async {
+        final handle = tester.ensureSemantics();
+        await tester.pumpWidget(
+          _wrap(
+            EventParticipantRow(
+              restaurant: _restaurant(
+                name: 'Rank Only House',
+                michelinStars: null,
+                worlds50BestRank: 24,
+                cityName: 'Lima',
+                countryCode: 'PE',
+                countryName: 'Peru',
+                flagEmoji: '🇵🇪',
+              ),
+              onTap: () {},
+            ),
+          ),
+        );
+        expect(
+          find.bySemanticsLabel(
+            "Rank Only House, Lima, Peru, World's 50 Best · #24",
+          ),
+          findsOneWidget,
+        );
+        handle.dispose();
+      },
+    );
+  });
+
+  group('AtThisEventSection — Recognition V2 multi-guide fixture matrix '
+      '(§13)', () {
+    testWidgets("World's 50 Best-only participant is visible", (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          AtThisEventSection(
+            restaurants: [
+              _restaurant(
+                id: 'r1',
+                name: 'W50B House',
+                michelinStars: null,
+                worlds50BestRank: 12,
+              ),
+            ],
+            onTapRestaurant: (_) {},
+          ),
+        ),
+      );
+      expect(find.text('AT THIS EVENT'), findsOneWidget);
+      expect(find.textContaining('W50B House'), findsOneWidget);
+    });
+
+    testWidgets('Hall of Fame-only participant is visible', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          AtThisEventSection(
+            restaurants: [
+              _restaurant(
+                id: 'r1',
+                name: 'Legend House',
+                michelinStars: null,
+                isHallOfFame: true,
+              ),
+            ],
+            onTapRestaurant: (_) {},
+          ),
+        ),
+      );
+      expect(find.text('AT THIS EVENT'), findsOneWidget);
+      expect(find.textContaining('Legend House'), findsOneWidget);
+    });
+
+    testWidgets(
+      "Michelin + World's 50 Best participant renders as one row, both "
+      'recognitions visible',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            AtThisEventSection(
+              restaurants: [
+                _restaurant(
+                  id: 'r1',
+                  name: 'Double House',
+                  michelinStars: 2,
+                  worlds50BestRank: 30,
+                ),
+              ],
+              onTapRestaurant: (_) {},
+            ),
+          ),
+        );
+        expect(find.byType(EventParticipantRow), findsOneWidget);
+        expect(find.textContaining("World's 50 Best · #30"), findsOneWidget);
+      },
+    );
+
+    testWidgets('Michelin + Hall of Fame participant renders as one row', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          AtThisEventSection(
+            restaurants: [
+              _restaurant(
+                id: 'r1',
+                name: 'Starred Legend',
+                michelinStars: 3,
+                isHallOfFame: true,
+              ),
+            ],
+            onTapRestaurant: (_) {},
+          ),
+        ),
+      );
+      expect(find.byType(EventParticipantRow), findsOneWidget);
+      expect(find.textContaining('Hall of Fame'), findsOneWidget);
+    });
+
+    testWidgets(
+      'a restaurant with zero qualifying recognition is excluded even '
+      'when other participants are recognized',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            AtThisEventSection(
+              restaurants: [
+                _restaurant(id: 'r1', name: 'Starred', michelinStars: 1),
+                _restaurant(
+                  id: 'r2',
+                  name: 'Unrecognized',
+                  michelinStars: null,
+                ),
+              ],
+              onTapRestaurant: (_) {},
+            ),
+          ),
+        );
+        expect(find.textContaining('Starred'), findsOneWidget);
+        expect(find.textContaining('Unrecognized'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'duplicate relationship/input safety: the same restaurant id linked '
+      'twice renders exactly one row, never two',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            AtThisEventSection(
+              restaurants: [
+                _restaurant(id: 'dup', name: 'Duplicated', michelinStars: 1),
+                _restaurant(id: 'dup', name: 'Duplicated', michelinStars: 1),
+              ],
+              onTapRestaurant: (_) {},
+            ),
+          ),
+        );
+        expect(find.byType(EventParticipantRow), findsOneWidget);
+      },
+    );
+  });
+
+  group('Andorra Taste 2026 regression — Recognition V2 must not change this '
+      'already-production, already-approved case (§12)', () {
+    // Fixture profile mirrors Andorra Taste's real 6 linked restaurants
+    // (name/star count only — never the live production UUIDs, per the
+    // task's own explicit instruction) exactly as verified live in
+    // production before this workstream began: 3+2+2+2+2+1 stars,
+    // none with World's 50 Best/Hall of Fame recognition.
+    List<Restaurant> andorraFixture() => [
+      _restaurant(
+        id: 'a1',
+        name: 'Cocina Hermanos Torres',
+        michelinStars: 3,
+        cityName: 'Barcelona',
+        countryCode: 'ES',
+        countryName: 'Spain',
+        flagEmoji: '🇪🇸',
+      ),
+      _restaurant(
+        id: 'a2',
+        name: "Rote Wand Chef's Table",
+        michelinStars: 2,
+        cityName: 'Lech am Arlberg',
+        countryCode: 'AT',
+        countryName: 'Austria',
+        flagEmoji: '🇦🇹',
+      ),
+      _restaurant(
+        id: 'a3',
+        name: 'LÚ Cocina y Alma',
+        michelinStars: 2,
+        cityName: 'Jerez de la Frontera',
+        countryCode: 'ES',
+        countryName: 'Spain',
+        flagEmoji: '🇪🇸',
+      ),
+      _restaurant(
+        id: 'a4',
+        name: 'Paco Roncero',
+        michelinStars: 2,
+        cityName: 'Madrid',
+        countryCode: 'ES',
+        countryName: 'Spain',
+        flagEmoji: '🇪🇸',
+      ),
+      _restaurant(
+        id: 'a5',
+        name: 'Iván Cerdeño',
+        michelinStars: 2,
+        cityName: 'Toledo',
+        countryCode: 'ES',
+        countryName: 'Spain',
+        flagEmoji: '🇪🇸',
+      ),
+      _restaurant(
+        id: 'a6',
+        name: 'Le Prince Noir - Vivien Durand',
+        michelinStars: 1,
+        cityName: 'Lormont',
+        countryCode: 'FR',
+        countryName: 'France',
+        flagEmoji: '🇫🇷',
+      ),
+    ];
+
+    testWidgets('all six restaurants remain visible, one row each', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          AtThisEventSection(
+            restaurants: andorraFixture(),
+            onTapRestaurant: (_) {},
+          ),
+        ),
+      );
+      expect(find.byType(EventParticipantRow), findsNWidgets(6));
+    });
+
+    test('sort order unchanged: most-decorated first, alphabetical '
+        'within the same star count', () {
+      final result = recognizedEventParticipants(andorraFixture());
+      expect(result.map((r) => r.name).toList(), [
+        'Cocina Hermanos Torres',
+        'Iván Cerdeño',
+        'LÚ Cocina y Alma',
+        'Paco Roncero',
+        "Rote Wand Chef's Table",
+        'Le Prince Noir - Vivien Durand',
+      ]);
+    });
+
+    testWidgets('Michelin star counts render correctly for all six — '
+        'no visual regression', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          AtThisEventSection(
+            restaurants: andorraFixture(),
+            onTapRestaurant: (_) {},
+          ),
+        ),
+      );
+      final stars = tester
+          .widgetList<StarRow>(find.byType(StarRow))
+          .map((s) => s.count)
+          .toList();
+      expect(stars, [3, 2, 2, 2, 2, 1]);
+    });
+
+    testWidgets('none of the six show any World\'s 50 Best/Hall of Fame text — '
+        'none of Andorra\'s real restaurants currently hold that '
+        'recognition', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          AtThisEventSection(
+            restaurants: andorraFixture(),
+            onTapRestaurant: (_) {},
+          ),
+        ),
+      );
+      expect(find.textContaining("World's 50 Best"), findsNothing);
+      expect(find.textContaining('Hall of Fame'), findsNothing);
+    });
+
+    testWidgets('5 hairlines separate the 6 rows, no visual regression', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          AtThisEventSection(
+            restaurants: andorraFixture(),
+            onTapRestaurant: (_) {},
+          ),
+        ),
+      );
+      expect(find.byType(Divider), findsNWidgets(5));
+    });
+
+    testWidgets('tapping a row still navigates via the exact tapped '
+        'Restaurant instance', (tester) async {
+      Restaurant? tapped;
+      final fixture = andorraFixture();
+      await tester.pumpWidget(
+        _wrap(
+          AtThisEventSection(
+            restaurants: fixture,
+            onTapRestaurant: (r) => tapped = r,
+          ),
+        ),
+      );
+      await tester.tap(find.textContaining('Cocina Hermanos Torres'));
+      expect(tapped?.name, 'Cocina Hermanos Torres');
     });
   });
 }

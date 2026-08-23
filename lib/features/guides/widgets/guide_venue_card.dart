@@ -107,9 +107,9 @@ class GuideVenueCard extends StatelessWidget {
                     children: [
                       // No maxLines/ellipsis: a long name wraps cleanly
                       // rather than being truncated or shrunk — see
-                      // MichelinParticipantRow's identical reasoning for
-                      // Event Michelin participants, the established
-                      // precedent this row deliberately mirrors.
+                      // EventParticipantRow's identical reasoning for
+                      // Event participants, the established precedent
+                      // this row deliberately mirrors.
                       inlineRecognition == null
                           ? Text(
                               title,
