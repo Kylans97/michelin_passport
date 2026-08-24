@@ -1,18 +1,25 @@
-// Covers Primary Tab Header Consistency Step 1 — the five bottom-
-// navigation tab titles (Passport, Explore, Rankings, Wishlist, Profile)
-// now share the same Title Case labels, the same CsTypography.screenTitle
-// role, the same ivory-on-deepGreen color, and — the actual physical-
-// device complaint — the same rendered vertical starting position,
-// derived from Wishlist as the reference.
+// Covers Primary Tab Header Consistency — the five actual bottom-
+// navigation tab titles (Explore, Passport, News, Community, Profile;
+// see app.dart's _MainNavigation) share the same Title Case labels, the
+// same CsTypography.screenTitle role, the same ivory-on-deepGreen color,
+// and the same rendered vertical starting position.
+//
+// Passport Unified Experience V1: Wishlist and Rankings are no longer
+// primary destinations with their own headers at all — both were
+// re-homed as local subsections inside Passport's own persistent shell
+// (Navigation & Information Architecture V2 had already demoted them
+// from bottom-nav tabs to pushed screens; this pass removed even that).
+// This file's own comparison set is updated to match the real five tabs
+// app.dart actually wires up — Wishlist/Rankings' mirrors are retired,
+// not left testing headers that no longer exist.
 //
 // All five tab screens construct repositories against
 // Supabase.instance.client eagerly in initState, so none can be pumped
 // directly (same established limitation as every other Supabase-eager
 // screen in this app). This mirrors each screen's exact header widget
-// tree — Passport/Explore/Wishlist/Profile's plain SafeArea+Padding
-// headers, and Rankings' SliverAppBar+flexibleSpace — under an identical
-// MediaQuery (fixed screen size, fixed status-bar inset) so their
-// rendered title positions are directly, meaningfully comparable.
+// tree under an identical MediaQuery (fixed screen size, fixed
+// status-bar inset) so their rendered title positions are directly,
+// meaningfully comparable.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -36,10 +43,10 @@ Widget _wrap(Widget child, {double width = 390, double textScale = 1.0}) =>
       ),
     );
 
-// Mirrors WishlistScreen's header exactly (wishlist_screen.dart) — the
-// physical-device reference position: SafeArea + CsSpacing.lg before the
-// title, CsSpacing.pageHorizontal as the only horizontal inset.
-Widget _wishlistHeader() => ColoredBox(
+// Mirrors NewsScreen's header exactly (news_screen.dart) — the physical-
+// device reference position: SafeArea + CsSpacing.lg before the title,
+// CsSpacing.pageHorizontal as the only horizontal inset.
+Widget _newsHeader() => ColoredBox(
   color: AppColors.deepGreen,
   child: SafeArea(
     bottom: false,
@@ -54,12 +61,45 @@ Widget _wishlistHeader() => ColoredBox(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Wishlist',
+            'News',
             style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
           ),
           const SizedBox(height: CsSpacing.xs),
           Text(
-            "Places you're saving for later.",
+            'Stories, interviews and the world of Chasing Stars.',
+            style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+          ),
+        ],
+      ),
+    ),
+  ),
+);
+
+// Mirrors CommunityScreen's header exactly (community_screen.dart) — same
+// SafeArea + CsSpacing.lg top inset as every other tab; the bottom inset
+// differs (CsSpacing.md, not lg) but that only affects spacing after the
+// title, not the title's own Y position under test here.
+Widget _communityHeader() => ColoredBox(
+  color: AppColors.deepGreen,
+  child: SafeArea(
+    bottom: false,
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(
+        CsSpacing.pageHorizontal,
+        CsSpacing.lg,
+        CsSpacing.pageHorizontal,
+        CsSpacing.md,
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Community',
+            style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
+          ),
+          const SizedBox(height: CsSpacing.xs),
+          Text(
+            'What people are chasing.',
             style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
           ),
         ],
@@ -177,54 +217,11 @@ Widget _profileHeader() => ColoredBox(
   ),
 );
 
-// Mirrors RankingsScreen's SliverAppBar (rankings_screen.dart) —
-// flexibleSpace positions the title manually (Material's title: slot
-// always vertically centers within toolbarHeight, which cannot be made
-// to match the other four screens' fixed-offset headers). Navigation &
-// Information Architecture V2 UI Refinement: RankingsScreen is no longer
-// a TabBar/TabController screen — its former "Community" tab moved to
-// CommunityScreen, so this mirror no longer wraps a
-// DefaultTabController/TabBar either.
-Widget _rankingsHeader() => Scaffold(
-  backgroundColor: AppColors.background,
-  body: NestedScrollView(
-    headerSliverBuilder: (_, _) => [
-      SliverAppBar(
-        flexibleSpace: SafeArea(
-          bottom: false,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-              CsSpacing.pageHorizontal,
-              CsSpacing.lg,
-              CsSpacing.pageHorizontal,
-              0,
-            ),
-            child: Align(
-              alignment: Alignment.topLeft,
-              child: Text(
-                'Rankings',
-                style: CsTypography.screenTitle.copyWith(
-                  color: AppColors.ivory,
-                ),
-              ),
-            ),
-          ),
-        ),
-        pinned: true,
-        backgroundColor: AppColors.deepGreen,
-        foregroundColor: AppColors.textOnDark,
-        toolbarHeight: 64,
-      ),
-    ],
-    body: const SizedBox.shrink(),
-  ),
-);
-
 const _headers = {
-  'Passport': _passportHeader,
   'Explore': _exploreHeader,
-  'Rankings': _rankingsHeader,
-  'Wishlist': _wishlistHeader,
+  'Passport': _passportHeader,
+  'News': _newsHeader,
+  'Community': _communityHeader,
   'Profile': _profileHeader,
 };
 
@@ -252,14 +249,6 @@ void main() {
           expect(find.text(old), findsNothing);
         }
       }
-    });
-
-    testWidgets('Rankings label is unchanged — "Rankings", never touched', (
-      tester,
-    ) async {
-      await tester.pumpWidget(_wrap(_rankingsHeader()));
-      await tester.pump();
-      expect(find.text('Rankings'), findsOneWidget);
     });
   });
 
@@ -300,9 +289,9 @@ void main() {
     });
   });
 
-  group('Primary tab headers — rendered vertical position (Wishlist is '
+  group('Primary tab headers — rendered vertical position (Explore is '
       'the physical-device reference)', () {
-    testWidgets('all five titles start within 1px of Wishlist\'s Y '
+    testWidgets("all five titles start within 1px of Explore's Y "
         'position', (tester) async {
       final positions = <String, double>{};
       for (final entry in _headers.entries) {
@@ -310,13 +299,13 @@ void main() {
         await tester.pump();
         positions[entry.key] = tester.getTopLeft(find.text(entry.key)).dy;
       }
-      final reference = positions['Wishlist']!;
+      final reference = positions['Explore']!;
       for (final entry in positions.entries) {
         expect(
           entry.value,
           closeTo(reference, 1.0),
           reason:
-              '${entry.key} title Y=${entry.value}, Wishlist reference '
+              '${entry.key} title Y=${entry.value}, Explore reference '
               'Y=$reference',
         );
       }

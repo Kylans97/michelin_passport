@@ -22,10 +22,18 @@ information architecture instead (see below).
   label.
 - **Passport** — the personal collection/history view (Restaurants/
   Hotels/Events, year filter, metric strip, "Your Collection") plus a
-  compact secondary nav — "Passport · Wishlist · Ranking · Trips" — into
-  `WishlistScreen`, `RankingsScreen` (now purely personal — see §11), and
-  `PlannedTripsScreen`. **No Stats destination** — the existing metric
-  strip already is Passport's statistics (§10).
+  local tab bar — "Passport · Wishlist · Ranking · Trips". **Superseded by
+  Passport Unified Experience V1** (`docs/Architecture/
+  PASSPORT_UNIFIED_EXPERIENCE_V1.md`): Wishlist/Ranking/Trips are no
+  longer pushed screens reached via `Navigator.push` (`WishlistScreen`/
+  `RankingsScreen`/`PlannedTripsScreen` as described below and in §10-11)
+  — they're local subsections of one persistent Passport shell, switched
+  in place with no back button, no separate header, and no navigation
+  stack growth. `WishlistScreen`/`RankingsScreen` no longer exist as
+  screens at all (renamed `WishlistBody`/folded into `_RankingBody`);
+  `PlannedTripsScreen` became `TripsBody`. **No Stats destination** — the
+  existing metric strip (now `PassportStatsPanel`) already is Passport's
+  statistics (§10).
 - **News** — a placeholder tab only (`NewsScreen`, `CsComingSoon`). News
   V1 (real articles, categories) is explicitly the next, separate
   workstream — not started here.

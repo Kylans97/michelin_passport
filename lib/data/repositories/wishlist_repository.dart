@@ -84,6 +84,19 @@ class WishlistRepository {
 
   // ── Hotel API — mirrors the restaurant one exactly ──────────────────────
 
+  // Passport UI Polish V2 — mirrors loadWishlistRestaurantIds exactly, for
+  // the same bulk-membership-check use case (Passport's collection cards
+  // need "is this hotel wishlisted" for many hotels at once, never one
+  // isHotelWishlisted call per card).
+  Future<Set<String>> loadWishlistHotelIds(String userId) async {
+    final rows = await _client
+        .from('wishlist')
+        .select('entity_id')
+        .eq('user_id', userId)
+        .eq('entity_type', _hotelEntity);
+    return {for (final row in rows as List) row['entity_id'] as String};
+  }
+
   Future<bool> toggleHotelWishlist({
     required String userId,
     required String hotelId,

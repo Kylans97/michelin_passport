@@ -1,39 +1,45 @@
-// Covers the redesigned PlannedTripsScreen's header and empty state.
-// PlannedTripsScreen itself constructs PlannedTripsRepository against
-// Supabase.instance.client eagerly in initState (same established
-// limitation as every other guide/Explore/Wishlist screen — see
-// explore_guides_entry_test.dart's own note), so it can't be pumped
-// directly without a live session. This reconstructs the exact copy and
-// CTA shape used in lib/features/trips/planned_trips_screen.dart's own
-// header and _EmptyState, mirroring the precedent
-// wishlist_trips_entry_test.dart already set for the equivalent problem.
+// Covers TripsBody's header and empty state. TripsBody constructs
+// PlannedTripsRepository against Supabase.instance.client eagerly in
+// initState (same established limitation as every other Supabase-eager
+// screen in this app), so it can't be pumped directly without a live
+// session. This reconstructs the exact copy/CTA shape used in
+// lib/features/trips/planned_trips_screen.dart.
+//
+// Passport Unified Experience V1: TripsBody is no longer a pushed screen
+// with its own back button — it's one of PassportScreen's four local
+// subsections, embedded beneath the shared Passport header + local tab
+// bar (see passport_unified_shell_test.dart for that persistent-shell
+// behavior). The old "Trips" title/subtitle is gone (the shared header
+// says "Passport" now); this body's own heading is "YOUR TRIPS", with
+// the "Create trip" action moved beside it in place of the old back
+// button row.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
-import 'package:michelin_passport/core/widgets/editorial_back_button.dart';
+import 'package:michelin_passport/core/widgets/cs_section_title.dart';
 
-const _title = 'Trips';
-const _subtitle = 'Plan the places worth travelling for.';
 const _emptyHeadline = 'No trips planned yet';
 const _emptyBody =
     'Start with a destination, then collect the places worth travelling for.';
 const _cta = 'Plan a trip';
 
-Widget _header() => Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
-  mainAxisSize: MainAxisSize.min,
+Widget _header(VoidCallback onCreateTrip) => Row(
   children: [
-    Text(
-      _title,
-      style: CsTypography.screenTitle.copyWith(color: AppColors.textOnDark),
+    const Expanded(
+      child: CsSectionTitle(
+        'YOUR TRIPS',
+        color: AppColors.textOnDark,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
     ),
-    const SizedBox(height: CsSpacing.sm),
-    Text(
-      _subtitle,
-      style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+    IconButton(
+      icon: const Icon(Icons.add_rounded),
+      tooltip: 'Create trip',
+      onPressed: onCreateTrip,
     ),
   ],
 );
@@ -81,56 +87,44 @@ Widget _wrap(Widget child) => MaterialApp(
   home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
 );
 
-// Reconstructs PlannedTripsScreen's actual outer Column shape (TRIPS+GUIDES
-// MICRO-POLISH item 1): back button + header are unconditional siblings
-// BEFORE the state-dependent Expanded, never nested inside the
-// loading/error/empty/populated switch. [stateContent] stands in for
-// whatever that switch currently renders — its own content isn't under
-// test here (covered elsewhere); what's under test is that
-// EditorialBackButton keeps rendering no matter what stateContent is.
-Widget _screenShell(Widget stateContent) => Column(
+// Reconstructs TripsBody's actual outer Column shape: the "YOUR TRIPS" +
+// Create-trip header is an unconditional sibling BEFORE the
+// state-dependent Expanded, never nested inside the loading/error/empty/
+// populated switch. [stateContent] stands in for whatever that switch
+// currently renders — what's under test is that the header keeps
+// rendering no matter what stateContent is.
+Widget _bodyShell(Widget stateContent, {VoidCallback? onCreateTrip}) => Column(
   children: [
-    const Padding(
-      padding: EdgeInsets.fromLTRB(
-        CsSpacing.base,
-        CsSpacing.sm,
-        CsSpacing.base,
-        0,
-      ),
-      child: Align(
-        alignment: Alignment.centerLeft,
-        child: EditorialBackButton(),
-      ),
-    ),
     Padding(
       padding: const EdgeInsets.fromLTRB(
         CsSpacing.pageHorizontal,
-        CsSpacing.xl,
+        CsSpacing.md,
         CsSpacing.pageHorizontal,
         0,
       ),
-      child: _header(),
+      child: _header(onCreateTrip ?? () {}),
     ),
-    const SizedBox(height: CsSpacing.xl),
+    const SizedBox(height: CsSpacing.lg),
     Expanded(child: stateContent),
   ],
 );
 
 void main() {
-  group('PlannedTripsScreen header', () {
-    testWidgets('renders the exact "Trips" title and supporting line', (
-      tester,
-    ) async {
-      await tester.pumpWidget(_wrap(_header()));
-      expect(find.text(_title), findsOneWidget);
-      expect(find.text(_subtitle), findsOneWidget);
+  group('TripsBody header', () {
+    testWidgets('renders "YOUR TRIPS" and a Create trip action, no back '
+        'button, no separate title/subtitle (owned by the shared Passport '
+        'header now)', (tester) async {
+      await tester.pumpWidget(_wrap(_header(() {})));
+      expect(find.text('YOUR TRIPS'), findsOneWidget);
+      expect(find.byIcon(Icons.add_rounded), findsOneWidget);
+      expect(find.byType(BackButton), findsNothing);
       expect(tester.takeException(), isNull);
     });
 
     testWidgets('320px and 390px widths — no overflow', (tester) async {
       for (final width in [320.0, 390.0]) {
         await tester.binding.setSurfaceSize(Size(width, 844));
-        await tester.pumpWidget(_wrap(_header()));
+        await tester.pumpWidget(_wrap(_header(() {})));
         expect(tester.takeException(), isNull);
       }
       await tester.binding.setSurfaceSize(null);
@@ -143,80 +137,84 @@ void main() {
             data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
             child: Scaffold(
               backgroundColor: AppColors.deepGreen,
-              body: _header(),
+              body: _header(() {}),
             ),
           ),
         ),
       );
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets('tapping Create trip fires the callback', (tester) async {
+      var tapped = false;
+      await tester.pumpWidget(_wrap(_header(() => tapped = true)));
+      await tester.tap(find.byIcon(Icons.add_rounded));
+      expect(tapped, isTrue);
+    });
   });
 
-  group(
-    'PlannedTripsScreen back button (TRIPS+GUIDES MICRO-POLISH item 1)',
-    () {
-      testWidgets('visible while loading', (tester) async {
-        await tester.pumpWidget(
-          _wrap(
-            _screenShell(
-              const Center(
-                child: CircularProgressIndicator(color: AppColors.gold),
-              ),
+  group('TripsBody header persists across loading/error/empty/populated', () {
+    testWidgets('visible while loading', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          _bodyShell(
+            const Center(
+              child: CircularProgressIndicator(color: AppColors.gold),
             ),
           ),
-        );
-        expect(find.byType(EditorialBackButton), findsOneWidget);
-      });
-
-      testWidgets('visible on error', (tester) async {
-        await tester.pumpWidget(
-          _wrap(
-            _screenShell(
-              Text(
-                'Could not load your trips',
-                style: CsTypography.body.copyWith(
-                  color: AppColors.secondaryOnDark,
-                ),
-              ),
-            ),
-          ),
-        );
-        expect(find.byType(EditorialBackButton), findsOneWidget);
-      });
-
-      testWidgets(
-        'visible in the empty state — never forces trip creation just to '
-        'navigate back',
-        (tester) async {
-          var ctaTapped = false;
-          await tester.pumpWidget(
-            _wrap(_screenShell(_emptyState(() => ctaTapped = true))),
-          );
-          expect(find.byType(EditorialBackButton), findsOneWidget);
-          expect(find.text(_emptyHeadline), findsOneWidget);
-          // Tapping back must be independent of the "Plan a trip" CTA —
-          // EditorialBackButton's own default onTap (Navigator.maybePop)
-          // fires, not onCreateTrip.
-          await tester.tap(find.byType(EditorialBackButton));
-          expect(tester.takeException(), isNull);
-          expect(ctaTapped, isFalse);
-        },
+        ),
       );
+      expect(find.text('YOUR TRIPS'), findsOneWidget);
+    });
 
-      testWidgets('visible when trips are populated', (tester) async {
-        await tester.pumpWidget(
-          _wrap(
-            _screenShell(
-              ListView(children: const [Text('a trip card stand-in')]),
+    testWidgets('visible on error', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          _bodyShell(
+            Text(
+              'Could not load your trips',
+              style: CsTypography.body.copyWith(
+                color: AppColors.secondaryOnDark,
+              ),
             ),
           ),
-        );
-        expect(find.byType(EditorialBackButton), findsOneWidget);
-      });
-    },
-  );
+        ),
+      );
+      expect(find.text('YOUR TRIPS'), findsOneWidget);
+    });
 
-  group('PlannedTripsScreen empty state', () {
+    testWidgets('visible in the empty state — Create trip in the header is '
+        'independent of the "Plan a trip" CTA in the empty state itself', (
+      tester,
+    ) async {
+      var headerCtaTapped = false;
+      var emptyStateCtaTapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          _bodyShell(
+            _emptyState(() => emptyStateCtaTapped = true),
+            onCreateTrip: () => headerCtaTapped = true,
+          ),
+        ),
+      );
+      expect(find.text('YOUR TRIPS'), findsOneWidget);
+      expect(find.text(_emptyHeadline), findsOneWidget);
+      await tester.tap(find.byIcon(Icons.add_rounded));
+      expect(headerCtaTapped, isTrue);
+      expect(emptyStateCtaTapped, isFalse);
+    });
+
+    testWidgets('visible when trips are populated', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          _bodyShell(ListView(children: const [Text('a trip card stand-in')])),
+        ),
+      );
+      expect(find.text('YOUR TRIPS'), findsOneWidget);
+    });
+  });
+
+  group('TripsBody empty state', () {
     testWidgets('renders headline, supporting copy and the CTA', (
       tester,
     ) async {

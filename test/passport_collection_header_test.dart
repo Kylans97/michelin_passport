@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
+import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
 import 'package:michelin_passport/features/passport/widgets/passport_collection_header.dart';
 
 Widget _wrap(Widget child, {double width = 320}) => MaterialApp(
@@ -31,6 +32,18 @@ void main() {
       await tester.pumpWidget(_wrap(const PassportCollectionHeader()));
       expect(find.text('YOUR COLLECTION'), findsOneWidget);
       expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('Passport Unified Experience V1 — no decorative emblem/logo '
+        'precedes the text (the approved visual reference shows one; the '
+        'product decision is text-only). This does not affect the '
+        'unrelated Cs monogram fallback inside restaurant/hotel image '
+        'placeholders elsewhere on the page.', (tester) async {
+      await tester.pumpWidget(_wrap(const PassportCollectionHeader()));
+      expect(find.byType(Icon), findsNothing);
+      expect(find.byType(Image), findsNothing);
+      expect(find.byType(CsImagePlaceholder), findsNothing);
+      expect(find.byType(CircleAvatar), findsNothing);
     });
 
     testWidgets('shows no right-hand count of any kind', (tester) async {

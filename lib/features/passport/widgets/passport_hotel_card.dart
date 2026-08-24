@@ -1,31 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
-import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../core/widgets/cs_place_card.dart';
 import '../../../core/widgets/key_row.dart';
 import '../../../models/hotel.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../passport_view_model.dart';
-
-const _monthNames = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
-  'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
-];
-
-String _formatDate(DateTime date) =>
-    '${date.day} ${_monthNames[date.month - 1]} ${date.year}';
+import 'passport_card_chrome.dart';
 
 // "City, 🇬🇧 Country" — falls back to plain "City, Country" when
 // flagEmoji is empty rather than inventing one from countryCode.
@@ -37,20 +18,28 @@ String _locationLabel(Hotel hotel) {
 }
 
 /// One unique hotel in the Passport list, scoped to the active
-/// venue-type/year filter: stay count, latest stay and average rating all
-/// reflect only the stays [stats] was built from. Tapping opens the
-/// existing HotelDetailScreen, exactly as before — only the visual
-/// presentation (now built on [CsPlaceCard]) changed. KeyRow is reused
-/// unchanged (gold-filled keys) — see PassportRestaurantCard's matching
-/// note on StarRow.
+/// venue-type/year filter: stay count and average rating reflect only the
+/// stays [stats] was built from. Tapping opens the existing
+/// HotelDetailScreen, exactly as before — only the visual presentation
+/// (now built on [CsPlaceCard]) changed. KeyRow is reused unchanged
+/// (gold-filled keys) — see PassportRestaurantCard's matching note on
+/// StarRow.
+///
+/// Passport UI Polish V2: see PassportRestaurantCard's matching note —
+/// "Last stay DATE" removed from the footer; the bookmark is now a real,
+/// wired wishlist toggle rather than a static glyph.
 class PassportHotelCard extends StatelessWidget {
   final Hotel hotel;
   final PassportVenueStats stats;
+  final bool isWishlisted;
+  final VoidCallback onToggleWishlist;
 
   const PassportHotelCard({
     super.key,
     required this.hotel,
     required this.stats,
+    required this.isWishlisted,
+    required this.onToggleWishlist,
   });
 
   @override
@@ -66,43 +55,17 @@ class PassportHotelCard extends StatelessWidget {
       awardRow: hotel.hasMichelinKeys
           ? KeyRow(count: hotel.michelinKeys!, size: 14)
           : null,
-      footer: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // See PassportRestaurantCard's matching note: a single Text.rich
-          // rather than a Row of separate Text widgets, so overflow can
-          // never happen regardless of which font metrics actually render.
-          Text.rich(
-            TextSpan(
-              children: [
-                if (avg != null)
-                  TextSpan(
-                    text: '${avg.toStringAsFixed(1)} · ',
-                    style: CsTypography.metadata.copyWith(
-                      color: AppColors.mutedBrassOnLight,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                TextSpan(
-                  text: stats.visitCount == 1
-                      ? '1 stay'
-                      : '${stats.visitCount} stays',
-                  style: CsTypography.metadata,
-                ),
-              ],
-            ),
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-          ),
-          const SizedBox(height: 2),
-          Text(
-            'Last stay ${_formatDate(stats.latestVisit)}',
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: CsTypography.metadata,
-          ),
-        ],
+      bookmark: PassportCardBookmark(
+        isWishlisted: isWishlisted,
+        onTap: onToggleWishlist,
+      ),
+      fullWidthFooter: PassportCardFooter(
+        // See PassportRestaurantCard's matching note — visitCount is
+        // always >= 1 here; avg is null only when unrated, never
+        // "never stayed."
+        ratingText:
+            (avg != null ? '${avg.toStringAsFixed(1)} · ' : '') +
+            (stats.visitCount == 1 ? '1 stay' : '${stats.visitCount} stays'),
       ),
       onTap: () => Navigator.push(
         context,

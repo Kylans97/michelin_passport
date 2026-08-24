@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/cs_image_placeholder.dart';
-import '../../core/widgets/editorial_back_button.dart';
-import '../../core/widgets/subtle_text_action.dart';
+import '../../core/widgets/cs_section_title.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/passport_venue.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
-import '../trips/planned_trips_screen.dart';
 import 'widgets/wishlist_venue_row.dart';
 import 'wishlist_view_model.dart';
 
@@ -23,29 +20,26 @@ import 'wishlist_view_model.dart';
 /// for the default-selection rule), via the same [PassportVenue]
 /// abstraction Explore/Passport use.
 ///
-/// UI Consistency Step 1: deep-green masthead (title, supporting line,
-/// Restaurants/Hotels selector) over an ivory body — the same editorial
-/// composition established for Guides' catalogues and Friends (Green Token
-/// Consistency Migration: AppColors.deepGreen, the canonical primary brand
-/// dark surface — not forestGreen).
-///
-/// Navigation & Information Architecture V2: no longer a bottom-navigation
-/// tab — pushed from [PassportScreen]'s "Wishlist" quick-access row
-/// instead, alongside My Ranking/Trips/Stats. Owns its own [Scaffold]
-/// (`AppColors.deepGreen`) and leading [EditorialBackButton] now, matching
-/// every other pushed dark-canvas screen in this app (`PlannedTripsScreen`,
-/// `RankingsScreen`) — the deep-green-through-the-status-bar / scoped
-/// [AnnotatedRegion] / explicit ivory-body pattern is otherwise unchanged
-/// from before this move; only the outer chrome (Scaffold + back button)
-/// is new.
-class WishlistScreen extends StatefulWidget {
-  const WishlistScreen({super.key});
+/// Passport Unified Experience V1: re-homed from a pushed, independently
+/// scaffolded screen into one of [PassportScreen]'s four local
+/// subsections — no back button, no separate title (the shared Passport
+/// header above this body covers that), reached via the persistent
+/// Passport/Wishlist/Ranking/Trips tab bar rather than
+/// `Navigator.push`/pop. Content and data logic are otherwise unchanged
+/// from before this move: still a dark top zone (the Restaurants/Hotels
+/// selector) over an ivory scrollable body — the same editorial
+/// composition established for Guides' catalogues and Friends. The
+/// previous "Trips" quick-link at the top of the list is removed — Trips
+/// is now a sibling tab one tap away on the shared bar, so the in-body
+/// shortcut was redundant.
+class WishlistBody extends StatefulWidget {
+  const WishlistBody({super.key});
 
   @override
-  State<WishlistScreen> createState() => _WishlistScreenState();
+  State<WishlistBody> createState() => _WishlistBodyState();
 }
 
-class _WishlistScreenState extends State<WishlistScreen> {
+class _WishlistBodyState extends State<WishlistBody> {
   late final WishlistRepository _repo = WishlistRepository(
     Supabase.instance.client,
   );
@@ -115,13 +109,6 @@ class _WishlistScreenState extends State<WishlistScreen> {
     }
   }
 
-  void _openPlannedTrips() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (_) => const PlannedTripsScreen()),
-    );
-  }
-
   bool _matchesFilter(PassportVenue venue) => switch (_venueType) {
     ExploreVenueType.all => true,
     ExploreVenueType.restaurants => venue is RestaurantVenue,
@@ -140,162 +127,103 @@ class _WishlistScreenState extends State<WishlistScreen> {
         final items = allItems.where(_matchesFilter).toList();
         final loading = snap.connectionState == ConnectionState.waiting;
 
-        return AnnotatedRegion<SystemUiOverlayStyle>(
-          value: SystemUiOverlayStyle.light,
-          // Navigation & Information Architecture V2 — Wishlist moved from
-          // a bottom-navigation tab body to a screen pushed from Passport
-          // ("Wishlist" quick-access row), so it now owns its own
-          // Scaffold(backgroundColor: deepGreen) + EditorialBackButton,
-          // exactly the same pattern PlannedTripsScreen/RankingsScreen
-          // already use for a pushed dark-canvas screen — matching
-          // test/wishlist_screen_shell_test.dart's own updated assertion.
-          // The ColoredBox below is still needed on top of the Scaffold's
-          // own background: it wraps the header AND the ivory body
-          // together so the header's SafeArea(bottom: false) inserts its
-          // top-inset padding *inside* an area already painted deep-green
-          // (unchanged reasoning from before this screen was pushed).
-          //
-          // Green Token Consistency Migration: AppColors.deepGreen, not
-          // forestGreen — the canonical primary brand dark surface.
-          child: Scaffold(
-            backgroundColor: AppColors.deepGreen,
-            body: ColoredBox(
-              color: AppColors.deepGreen,
-              child: Column(
-                children: [
-                  SafeArea(
-                    bottom: false,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        CsSpacing.base,
-                        CsSpacing.sm,
-                        CsSpacing.base,
-                        0,
+        // Passport Unified Experience V1 — no own Scaffold/header/back
+        // button anymore: this body is embedded directly beneath the
+        // shared Passport header + local tab bar. The dark-top-zone /
+        // ivory-body composition itself is unchanged from before the move.
+        return ColoredBox(
+          color: AppColors.deepGreen,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.md,
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.lg,
+                ),
+                child: Row(
+                  children: [
+                    for (var i = 0; i < _types.length; i++) ...[
+                      if (i > 0) const SizedBox(width: CsSpacing.sm),
+                      CsFilterChip(
+                        label: _types[i].label,
+                        selected: _types[i] == _venueType,
+                        onTap: () => setState(() => _venueType = _types[i]),
                       ),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: EditorialBackButton(),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(
-                      CsSpacing.pageHorizontal,
-                      CsSpacing.sm,
-                      CsSpacing.pageHorizontal,
-                      CsSpacing.lg,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Wishlist',
-                          style: CsTypography.screenTitle.copyWith(
-                            color: AppColors.ivory,
+                    ],
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ColoredBox(
+                  color: AppColors.ivory,
+                  child: RefreshIndicator(
+                    color: AppColors.forestGreen,
+                    backgroundColor: AppColors.warmWhite,
+                    onRefresh: () async => _load(),
+                    child: CustomScrollView(
+                      slivers: [
+                        const SliverToBoxAdapter(
+                          child: Padding(
+                            padding: EdgeInsets.fromLTRB(
+                              CsSpacing.pageHorizontal,
+                              CsSpacing.lg,
+                              CsSpacing.pageHorizontal,
+                              CsSpacing.md,
+                            ),
+                            child: CsSectionTitle(
+                              'YOUR WISHLIST',
+                              color: AppColors.forestGreen,
+                            ),
                           ),
                         ),
-                        const SizedBox(height: CsSpacing.xs),
-                        Text(
-                          "Places you're saving for later.",
-                          style: CsTypography.body.copyWith(
-                            color: AppColors.secondaryOnDark,
-                          ),
-                        ),
-                        const SizedBox(height: CsSpacing.lg),
-                        Row(
-                          children: [
-                            for (var i = 0; i < _types.length; i++) ...[
-                              if (i > 0) const SizedBox(width: CsSpacing.sm),
-                              CsFilterChip(
-                                label: _types[i].label,
-                                selected: _types[i] == _venueType,
-                                onTap: () =>
-                                    setState(() => _venueType = _types[i]),
+                        if (snap.hasError)
+                          SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: _ErrorState(onRetry: _load),
+                          )
+                        else if (loading)
+                          const SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: _LoadingState(),
+                          )
+                        else if (items.isEmpty)
+                          SliverFillRemaining(
+                            hasScrollBody: false,
+                            child: _EmptyState(venueType: _venueType),
+                          )
+                        else
+                          SliverPadding(
+                            padding: const EdgeInsets.fromLTRB(
+                              CsSpacing.pageHorizontal,
+                              CsSpacing.sm,
+                              CsSpacing.pageHorizontal,
+                              100,
+                            ),
+                            sliver: SliverList(
+                              delegate: SliverChildBuilderDelegate(
+                                (context, i) => Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    if (i > 0) const WishlistRowDivider(),
+                                    WishlistVenueRow(
+                                      venue: items[i],
+                                      onTap: () => _openVenue(items[i]),
+                                      onRemove: () => _remove(items[i]),
+                                    ),
+                                  ],
+                                ),
+                                childCount: items.length,
                               ),
-                            ],
-                          ],
-                        ),
+                            ),
+                          ),
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: ColoredBox(
-                      color: AppColors.ivory,
-                      child: SafeArea(
-                        top: false,
-                        child: RefreshIndicator(
-                          color: AppColors.forestGreen,
-                          backgroundColor: AppColors.warmWhite,
-                          onRefresh: () async => _load(),
-                          child: CustomScrollView(
-                            slivers: [
-                              SliverToBoxAdapter(
-                                child: Padding(
-                                  padding: const EdgeInsets.fromLTRB(
-                                    CsSpacing.pageHorizontal,
-                                    CsSpacing.md,
-                                    CsSpacing.pageHorizontal,
-                                    0,
-                                  ),
-                                  child: Align(
-                                    alignment: Alignment.centerRight,
-                                    child: SubtleTextAction(
-                                      label: 'Trips',
-                                      onTap: _openPlannedTrips,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              if (snap.hasError)
-                                SliverFillRemaining(
-                                  hasScrollBody: false,
-                                  child: _ErrorState(onRetry: _load),
-                                )
-                              else if (loading)
-                                const SliverFillRemaining(
-                                  hasScrollBody: false,
-                                  child: _LoadingState(),
-                                )
-                              else if (items.isEmpty)
-                                SliverFillRemaining(
-                                  hasScrollBody: false,
-                                  child: _EmptyState(venueType: _venueType),
-                                )
-                              else
-                                SliverPadding(
-                                  padding: const EdgeInsets.fromLTRB(
-                                    CsSpacing.pageHorizontal,
-                                    CsSpacing.sm,
-                                    CsSpacing.pageHorizontal,
-                                    100,
-                                  ),
-                                  sliver: SliverList(
-                                    delegate: SliverChildBuilderDelegate(
-                                      (context, i) => Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          if (i > 0) const WishlistRowDivider(),
-                                          WishlistVenueRow(
-                                            venue: items[i],
-                                            onTap: () => _openVenue(items[i]),
-                                            onRemove: () => _remove(items[i]),
-                                          ),
-                                        ],
-                                      ),
-                                      childCount: items.length,
-                                    ),
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+                ),
               ),
-            ),
+            ],
           ),
         );
       },

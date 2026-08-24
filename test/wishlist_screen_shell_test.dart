@@ -1,122 +1,100 @@
-// Covers WishlistScreen's redesigned outer shell, Restaurants/Hotels
-// selector, and loading/error/empty states (Wishlist UI Consistency
-// Step 1). WishlistScreen constructs WishlistRepository against
-// Supabase.instance.client eagerly in initState — same established
-// limitation as every other Supabase-eager screen in this app (see e.g.
-// friend_profile_hero_test.dart's own note) — so this mirrors the exact
-// widget tree WishlistScreen's build() produces rather than pumping the
-// real screen.
+// Covers WishlistBody's outer shell, Restaurants/Hotels selector, and
+// loading/error/empty states. WishlistBody constructs WishlistRepository
+// against Supabase.instance.client eagerly in initState — same
+// established limitation as every other Supabase-eager screen in this
+// app — so this mirrors the exact widget tree WishlistBody's build()
+// produces rather than pumping the real widget.
 //
-// Navigation & Information Architecture V2: WishlistScreen is no longer a
-// bottom-navigation tab body — it's pushed from PassportScreen's
-// "Wishlist" quick-access row instead, and now owns its own
-// Scaffold(deepGreen) + leading EditorialBackButton, matching every other
-// pushed dark-canvas screen in this app (PlannedTripsScreen,
-// RankingsScreen). This mirror wraps a Scaffold + back-button row the
-// same way.
+// Passport Unified Experience V1: WishlistBody is no longer a pushed
+// screen with its own Scaffold/back button/title — it's one of
+// PassportScreen's four local subsections, embedded directly beneath the
+// shared Passport header + local tab bar (see passport_unified_shell_test
+// .dart for that persistent-shell behavior). This mirror now reflects
+// just WishlistBody's own content: a dark top zone (the Restaurants/
+// Hotels selector, no title/subtitle of its own) over an ivory body
+// headed "YOUR WISHLIST". The old in-body "Trips" quick-link is gone —
+// Trips is a sibling tab one tap away on the shared bar now, so the
+// shortcut was redundant (see the deleted wishlist_trips_entry_test.dart).
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/core/widgets/cs_filter_chip.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
-import 'package:michelin_passport/core/widgets/editorial_back_button.dart';
-import 'package:michelin_passport/core/widgets/subtle_text_action.dart';
+import 'package:michelin_passport/core/widgets/cs_section_title.dart';
 import 'package:michelin_passport/features/wishlist/widgets/wishlist_venue_row.dart';
 
 enum _VenueType { restaurants, hotels }
 
-// Mirrors _WishlistScreenState.build's header exactly — Safe Area Polish:
-// the header's own SafeArea(bottom: false) padding must land *inside* an
-// already-green-painted area, so the outer ColoredBox(deepGreen) now
-// wraps the header AND the ivory body together (both live inside one
-// Column, itself the child of the ColoredBox), rather than the ColoredBox
-// being nested inside the SafeArea as before. (Green Token Consistency
-// Migration: AppColors.deepGreen, not forestGreen — the canonical
-// primary brand dark surface.)
-Widget _header({required _VenueType selected}) => Padding(
+// Mirrors WishlistBody's own top padding — filter chips only, no
+// title/subtitle (those live once in the shared Passport header now).
+Widget _filterRow({required _VenueType selected}) => Padding(
   padding: const EdgeInsets.fromLTRB(
     CsSpacing.pageHorizontal,
-    CsSpacing.sm,
+    CsSpacing.md,
     CsSpacing.pageHorizontal,
     CsSpacing.lg,
   ),
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
+  child: Row(
     children: [
-      Text(
-        'Wishlist',
-        style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
+      CsFilterChip(
+        label: 'Restaurants',
+        selected: selected == _VenueType.restaurants,
+        onTap: () {},
       ),
-      const SizedBox(height: CsSpacing.xs),
-      Text(
-        "Places you're saving for later.",
-        style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
-      ),
-      const SizedBox(height: CsSpacing.lg),
-      Row(
-        children: [
-          CsFilterChip(
-            label: 'Restaurants',
-            selected: selected == _VenueType.restaurants,
-            onTap: () {},
-          ),
-          const SizedBox(width: CsSpacing.sm),
-          CsFilterChip(
-            label: 'Hotels',
-            selected: selected == _VenueType.hotels,
-            onTap: () {},
-          ),
-        ],
+      const SizedBox(width: CsSpacing.sm),
+      CsFilterChip(
+        label: 'Hotels',
+        selected: selected == _VenueType.hotels,
+        onTap: () {},
       ),
     ],
   ),
 );
 
-// Mirrors the back-button row placed above the header in
-// _WishlistScreenState.build — its own SafeArea(bottom: false).
-Widget _backButtonRow() => SafeArea(
-  bottom: false,
-  child: Padding(
-    padding: const EdgeInsets.fromLTRB(
-      CsSpacing.base,
-      CsSpacing.sm,
-      CsSpacing.base,
-      0,
-    ),
-    child: Align(
-      alignment: Alignment.centerLeft,
-      child: EditorialBackButton(),
-    ),
-  ),
-);
-
 Widget _shell({required _VenueType selected, required Widget body}) =>
     MaterialApp(
-      home: AnnotatedRegion<SystemUiOverlayStyle>(
-        value: SystemUiOverlayStyle.light,
-        child: Scaffold(
-          backgroundColor: AppColors.deepGreen,
-          body: ColoredBox(
-            color: AppColors.deepGreen,
-            child: Column(
-              children: [
-                _backButtonRow(),
-                _header(selected: selected),
-                Expanded(
-                  child: ColoredBox(color: AppColors.ivory, child: body),
+      home: Scaffold(
+        backgroundColor: AppColors.deepGreen,
+        body: ColoredBox(
+          color: AppColors.deepGreen,
+          child: Column(
+            children: [
+              _filterRow(selected: selected),
+              Expanded(
+                child: ColoredBox(
+                  color: AppColors.ivory,
+                  child: Column(
+                    children: [
+                      const Padding(
+                        padding: EdgeInsets.fromLTRB(
+                          CsSpacing.pageHorizontal,
+                          CsSpacing.lg,
+                          CsSpacing.pageHorizontal,
+                          CsSpacing.md,
+                        ),
+                        child: Align(
+                          alignment: Alignment.centerLeft,
+                          child: CsSectionTitle(
+                            'YOUR WISHLIST',
+                            color: AppColors.forestGreen,
+                          ),
+                        ),
+                      ),
+                      Expanded(child: body),
+                    ],
+                  ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
     );
 
-// Mirrors WishlistScreen's private _LoadingState/_ErrorState/_EmptyState.
+// Mirrors WishlistBody's private _LoadingState/_ErrorState/_EmptyState.
 Widget _loadingState() => const Center(
   child: CircularProgressIndicator(
     color: AppColors.forestGreen,
@@ -185,9 +163,10 @@ Widget _emptyState({required bool isHotels}) => Center(
 );
 
 void main() {
-  group('WishlistScreen outer shell', () {
-    testWidgets('deep-green header with an explicit ivory ColoredBox '
-        'body, scoped light status-bar region', (tester) async {
+  group('WishlistBody outer shell', () {
+    testWidgets('a dark top zone with an explicit ivory ColoredBox body — '
+        'no own Scaffold or back button anymore, embedded in the Passport '
+        'shell instead', (tester) async {
       await tester.pumpWidget(
         _shell(selected: _VenueType.restaurants, body: _loadingState()),
       );
@@ -203,49 +182,7 @@ void main() {
         ),
         findsOneWidget,
       );
-      final region = tester.widget<AnnotatedRegion<SystemUiOverlayStyle>>(
-        find.byType(AnnotatedRegion<SystemUiOverlayStyle>),
-      );
-      expect(region.value, SystemUiOverlayStyle.light);
-      // Navigation & Information Architecture V2: WishlistScreen is now a
-      // pushed route with its own Scaffold + back button, not a tab body.
-      expect(find.byType(Scaffold), findsOneWidget);
-      expect(find.byType(EditorialBackButton), findsOneWidget);
-    });
-
-    testWidgets('Safe Area Polish: the header SafeArea sits INSIDE the '
-        'deep-green ColoredBox, not the other way around — this is the '
-        'exact structure that determines whether the top status-bar inset '
-        'paints green or shows whatever is behind the tab (the regression '
-        'this fix corrects)', (tester) async {
-      await tester.pumpWidget(
-        _shell(selected: _VenueType.restaurants, body: _loadingState()),
-      );
-      final greenBox = find.byWidgetPredicate(
-        (w) => w is ColoredBox && w.color == AppColors.deepGreen,
-      );
-      expect(
-        find.descendant(of: greenBox, matching: find.byType(SafeArea)),
-        findsWidgets,
-        reason:
-            'SafeArea must be a descendant of the green ColoredBox so its '
-            'top-inset padding is inserted inside already-green-painted '
-            'space, not outside it',
-      );
-    });
-
-    testWidgets('title is ivory, subtitle is on-dark secondary, neither is '
-        'gold', (tester) async {
-      await tester.pumpWidget(
-        _shell(selected: _VenueType.restaurants, body: _loadingState()),
-      );
-      final title = tester.widget<Text>(find.text('Wishlist'));
-      expect(title.style?.color, AppColors.ivory);
-      expect(title.style?.color, isNot(AppColors.gold));
-      final subtitle = tester.widget<Text>(
-        find.text("Places you're saving for later."),
-      );
-      expect(subtitle.style?.color, AppColors.secondaryOnDark);
+      expect(find.text('YOUR WISHLIST'), findsOneWidget);
     });
 
     testWidgets('Restaurants/Hotels selector: selected chip is ivory-on-'
@@ -277,10 +214,9 @@ void main() {
     });
   });
 
-  group('WishlistScreen states', () {
-    testWidgets('loading renders within the ivory body, header stays', (
-      tester,
-    ) async {
+  group('WishlistBody states', () {
+    testWidgets('loading renders within the ivory body, "YOUR WISHLIST" '
+        'stays', (tester) async {
       await tester.pumpWidget(
         _shell(selected: _VenueType.restaurants, body: _loadingState()),
       );
@@ -289,7 +225,7 @@ void main() {
         find.byType(CircularProgressIndicator),
       );
       expect(indicator.color, AppColors.forestGreen);
-      expect(find.text('Wishlist'), findsOneWidget);
+      expect(find.text('YOUR WISHLIST'), findsOneWidget);
     });
 
     testWidgets('error state shows restrained copy and a working retry, '
@@ -345,29 +281,6 @@ void main() {
       for (final text in tester.widgetList<Text>(find.byType(Text))) {
         expect(text.style?.color, isNot(AppColors.gold));
       }
-    });
-  });
-
-  group('WishlistScreen "Trips" entry (top of ivory body)', () {
-    testWidgets('renders above the state content, always visible', (
-      tester,
-    ) async {
-      await tester.pumpWidget(
-        _shell(
-          selected: _VenueType.restaurants,
-          body: Column(
-            children: [
-              Align(
-                alignment: Alignment.centerRight,
-                child: SubtleTextAction(label: 'Trips', onTap: () {}),
-              ),
-              Expanded(child: _emptyState(isHotels: false)),
-            ],
-          ),
-        ),
-      );
-      expect(find.text('Trips'), findsOneWidget);
-      expect(find.text('No restaurants saved yet'), findsOneWidget);
     });
   });
 

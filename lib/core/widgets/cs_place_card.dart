@@ -26,6 +26,21 @@ class CsPlaceCard extends StatelessWidget {
   final String subtitle;
   final Widget? awardRow;
   final Widget? footer;
+
+  /// Passport Unified Experience V1 — an optional trailing glyph (e.g. a
+  /// bookmark) rendered top-right, aligned with the title/image, matching
+  /// the approved Passport collection-card reference. Null (the default)
+  /// renders nothing — [PassportEventCard] doesn't use this.
+  final Widget? bookmark;
+
+  /// Passport Unified Experience V1 — an optional second content region
+  /// spanning the card's full width, separated from [image]/[title] by a
+  /// thin divider — the reference's rating/visit-count-left,
+  /// last-visit-date-right footer row. Distinct from [footer], which stays
+  /// confined to the text column's width for callers that don't need the
+  /// divider treatment.
+  final Widget? fullWidthFooter;
+
   final VoidCallback onTap;
   final double imageSize;
 
@@ -37,6 +52,8 @@ class CsPlaceCard extends StatelessWidget {
     required this.subtitle,
     this.awardRow,
     this.footer,
+    this.bookmark,
+    this.fullWidthFooter,
     required this.onTap,
     this.imageSize = 96,
   });
@@ -55,43 +72,55 @@ class CsPlaceCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(CsRadius.card),
             border: Border.all(color: AppColors.subtleBorderLight, width: 0.5),
           ),
-          child: Row(
+          child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(width: imageSize, height: imageSize, child: image),
-              const SizedBox(width: CsSpacing.base),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    if (eyebrow != null) ...[
-                      Text(eyebrow!, style: CsTypography.eyebrow),
-                      const SizedBox(height: CsSpacing.xs),
-                    ],
-                    Text(
-                      title,
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      style: CsTypography.placeTitle,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(width: imageSize, height: imageSize, child: image),
+                  const SizedBox(width: CsSpacing.base),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (eyebrow != null) ...[
+                          Text(eyebrow!, style: CsTypography.eyebrow),
+                          const SizedBox(height: CsSpacing.xs),
+                        ],
+                        Text(
+                          title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: CsTypography.placeTitle,
+                        ),
+                        const SizedBox(height: CsSpacing.xs),
+                        Text(
+                          subtitle,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: CsTypography.metadata,
+                        ),
+                        if (awardRow != null) ...[
+                          const SizedBox(height: CsSpacing.sm),
+                          awardRow!,
+                        ],
+                        if (footer != null) ...[
+                          const SizedBox(height: CsSpacing.sm),
+                          footer!,
+                        ],
+                      ],
                     ),
-                    const SizedBox(height: CsSpacing.xs),
-                    Text(
-                      subtitle,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: CsTypography.metadata,
-                    ),
-                    if (awardRow != null) ...[
-                      const SizedBox(height: CsSpacing.sm),
-                      awardRow!,
-                    ],
-                    if (footer != null) ...[
-                      const SizedBox(height: CsSpacing.sm),
-                      footer!,
-                    ],
-                  ],
-                ),
+                  ),
+                  ?bookmark,
+                ],
               ),
+              if (fullWidthFooter != null) ...[
+                const SizedBox(height: CsSpacing.md),
+                Divider(height: 1, color: AppColors.subtleBorderLight),
+                const SizedBox(height: CsSpacing.md),
+                fullWidthFooter!,
+              ],
             ],
           ),
         ),
