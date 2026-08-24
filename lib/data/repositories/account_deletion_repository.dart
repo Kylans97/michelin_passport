@@ -2,18 +2,20 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 /// Requests deletion of the CURRENT session's own account — the method
 /// takes no user id and never can: the client can only ever ask "delete
-/// me," identity is established server-side from the caller's own JWT.
+/// me," identity is established server-side from the caller's own JWT
+/// (`supabase.functions.invoke` forwards the current session's access
+/// token automatically — no id is ever passed in a request body).
 ///
-/// Backend status (audited 2026-08-23): no `delete-account` Edge Function
-/// exists in this project yet (`supabase/functions/` does not exist), so
-/// calling this in production today always fails — honestly, via
-/// [AccountDeletionFailure], never a false success. See
-/// docs/Architecture/NAVIGATION_INFORMATION_ARCHITECTURE_V2.md's Account
-/// Deletion section for the audited FK/cascade/Storage findings and the
-/// required Edge Function contract, which is intentionally NOT
-/// implemented here — deploying a privileged, destructive server-side
-/// deletion endpoint is a separate, controlled sub-step, not something to
-/// bundle silently into a UI workstream.
+/// Backend status (2026-08-24): the `delete-account` Edge Function
+/// (`supabase/functions/delete-account/index.ts`) now exists, is unit
+/// tested (`index.test.ts`), and has been validated end-to-end against a
+/// local Supabase stack with disposable test accounts — including a live
+/// "malicious body" attack test confirming a caller cannot delete another
+/// account by passing a target id. See
+/// docs/Architecture/ACCOUNT_DELETION.md for the full dependency map,
+/// security model, and deployment status. Production deployment is a
+/// separate, explicitly gated step — check that document for whether it
+/// has happened yet before assuming this is live in production.
 class AccountDeletionRepository {
   AccountDeletionRepository(this._client);
 
