@@ -48,6 +48,23 @@ class RestaurantRepository {
 
   final SupabaseClient _client;
 
+  // One restaurant by id — a cheap, single-row fetch against the same
+  // restaurants_full columns getAll()/search() already use. Added for
+  // Community's "Hot Right Now" hero (community_screen.dart): a
+  // CommunityRankingEntry only carries a restaurant_id plus a handful of
+  // summary fields, not enough to push RestaurantDetailScreen (which
+  // requires a full Restaurant), so the detail screen resolves the full
+  // row on tap rather than the summary list eagerly fetching one.
+  Future<Restaurant?> getById(String id) async {
+    final row = await _client
+        .from('restaurants_full')
+        .select(restaurantFullColumns)
+        .eq('id', id)
+        .maybeSingle();
+    if (row == null) return null;
+    return Restaurant.fromJson(row);
+  }
+
   // Full catalogue ordered by name.
   Future<List<Restaurant>> getAll() async {
     final rows = await _client

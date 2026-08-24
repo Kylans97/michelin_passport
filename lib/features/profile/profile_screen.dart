@@ -13,6 +13,7 @@ import '../../data/repositories/visited_repository.dart';
 import '../../models/user_profile.dart';
 import '../friends/friends_screen.dart';
 import '../notifications/notifications_screen.dart';
+import 'delete_account_screen.dart';
 
 /// My Profile — identity, Journey Stats (existing Passport-derived data,
 /// unchanged computation), Friends entry, and account actions. Dark
@@ -84,6 +85,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   Future<void> _signOut() async => _authRepo.signOut();
+
+  void _openDeleteAccount() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const DeleteAccountScreen()),
+  );
 
   Future<void> _openEditProfile(UserProfile profile) async {
     final saved = await showModalBottomSheet<bool>(
@@ -278,6 +284,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: Icons.logout_rounded,
                     label: 'Sign out',
                     onTap: _signOut,
+                  ),
+                  // App Store readiness — real, findable, not buried
+                  // behind Privacy/Terms/About/support email. Error-tinted
+                  // (not gold, not the neutral secondaryOnDark other rows
+                  // use) purely as a destructive-action clarity signal,
+                  // matching AppColors.error's existing use elsewhere in
+                  // this app — not a dark pattern; the row is exactly as
+                  // large and easy to tap as every other row above it.
+                  _SettingsRow(
+                    icon: Icons.delete_outline_rounded,
+                    label: 'Delete account',
+                    color: AppColors.error,
+                    onTap: _openDeleteAccount,
                   ),
                 ],
               ),
@@ -577,43 +596,49 @@ class _SettingsRow extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
+  // Optional tint override — used only by the destructive "Delete
+  // account" row (AppColors.error); every other row omits it and keeps
+  // the original neutral secondaryOnDark/textOnDark styling unchanged.
+  final Color? color;
   const _SettingsRow({
     required this.icon,
     required this.label,
     required this.onTap,
+    this.color,
   });
 
   @override
-  Widget build(BuildContext context) => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(CsRadius.medium),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: CsSpacing.md,
-          horizontal: CsSpacing.xs,
-        ),
-        child: Row(
-          children: [
-            Icon(icon, color: AppColors.secondaryOnDark, size: 20),
-            const SizedBox(width: CsSpacing.base),
-            Expanded(
-              child: Text(
-                label,
-                style: CsTypography.body.copyWith(color: AppColors.textOnDark),
+  Widget build(BuildContext context) {
+    final tint = color ?? AppColors.secondaryOnDark;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(CsRadius.medium),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(
+            vertical: CsSpacing.md,
+            horizontal: CsSpacing.xs,
+          ),
+          child: Row(
+            children: [
+              Icon(icon, color: tint, size: 20),
+              const SizedBox(width: CsSpacing.base),
+              Expanded(
+                child: Text(
+                  label,
+                  style: CsTypography.body.copyWith(
+                    color: color ?? AppColors.textOnDark,
+                  ),
+                ),
               ),
-            ),
-            const Icon(
-              Icons.chevron_right_rounded,
-              color: AppColors.secondaryOnDark,
-              size: 20,
-            ),
-          ],
+              Icon(Icons.chevron_right_rounded, color: tint, size: 20),
+            ],
+          ),
         ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 // ── Edit profile sheet ────────────────────────────────────────────────

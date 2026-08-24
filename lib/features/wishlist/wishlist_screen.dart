@@ -6,6 +6,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/cs_image_placeholder.dart';
+import '../../core/widgets/editorial_back_button.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/passport_venue.dart';
@@ -26,14 +27,17 @@ import 'wishlist_view_model.dart';
 /// Restaurants/Hotels selector) over an ivory body — the same editorial
 /// composition established for Guides' catalogues and Friends (Green Token
 /// Consistency Migration: AppColors.deepGreen, the canonical primary brand
-/// dark surface — not forestGreen). Unlike those screens this one is a
-/// permanent bottom-navigation tab (see app.dart's `_MainNavigation`), not
-/// a pushed route: it owns no [Scaffold] of its own (the tab shell already
-/// provides one) and needs no back affordance, so the safe-area
-/// architecture is the same deep-green-through-the-status-bar / scoped
-/// [AnnotatedRegion] / explicit
-/// ivory-body pattern, just without the [Scaffold] wrapper other pushed
-/// screens use.
+/// dark surface — not forestGreen).
+///
+/// Navigation & Information Architecture V2: no longer a bottom-navigation
+/// tab — pushed from [PassportScreen]'s "Wishlist" quick-access row
+/// instead, alongside My Ranking/Trips/Stats. Owns its own [Scaffold]
+/// (`AppColors.deepGreen`) and leading [EditorialBackButton] now, matching
+/// every other pushed dark-canvas screen in this app (`PlannedTripsScreen`,
+/// `RankingsScreen`) — the deep-green-through-the-status-bar / scoped
+/// [AnnotatedRegion] / explicit ivory-body pattern is otherwise unchanged
+/// from before this move; only the outer chrome (Scaffold + back button)
+/// is new.
 class WishlistScreen extends StatefulWidget {
   const WishlistScreen({super.key});
 
@@ -138,32 +142,46 @@ class _WishlistScreenState extends State<WishlistScreen> {
 
         return AnnotatedRegion<SystemUiOverlayStyle>(
           value: SystemUiOverlayStyle.light,
-          // Wishlist is a bottom-navigation tab body, not a pushed route —
-          // unlike GuideCatalogueLayout/FriendProfileScreen/FriendsScreen,
-          // it has no Scaffold(backgroundColor: deepGreen) of its own to
-          // fall back on: _MainNavigation's Scaffold owns that, painted in
-          // the legacy AppColors.background. This outer ColoredBox is the
-          // substitute — it wraps the header AND the ivory body together
-          // so the header's SafeArea(bottom: false) inserts its top-inset
-          // padding *inside* an area already painted deep-green, rather
-          // than exposing whatever sits behind it. Physical-device review
-          // found the previous structure (ColoredBox nested *inside*
-          // SafeArea) left that inset unpainted, showing an ivory/white
-          // strip behind the iOS status bar — the same root cause already
-          // documented and fixed on the screens named above.
+          // Navigation & Information Architecture V2 — Wishlist moved from
+          // a bottom-navigation tab body to a screen pushed from Passport
+          // ("Wishlist" quick-access row), so it now owns its own
+          // Scaffold(backgroundColor: deepGreen) + EditorialBackButton,
+          // exactly the same pattern PlannedTripsScreen/RankingsScreen
+          // already use for a pushed dark-canvas screen — matching
+          // test/wishlist_screen_shell_test.dart's own updated assertion.
+          // The ColoredBox below is still needed on top of the Scaffold's
+          // own background: it wraps the header AND the ivory body
+          // together so the header's SafeArea(bottom: false) inserts its
+          // top-inset padding *inside* an area already painted deep-green
+          // (unchanged reasoning from before this screen was pushed).
           //
           // Green Token Consistency Migration: AppColors.deepGreen, not
           // forestGreen — the canonical primary brand dark surface.
-          child: ColoredBox(
-            color: AppColors.deepGreen,
-            child: Column(
-              children: [
-                SafeArea(
-                  bottom: false,
-                  child: Padding(
+          child: Scaffold(
+            backgroundColor: AppColors.deepGreen,
+            body: ColoredBox(
+              color: AppColors.deepGreen,
+              child: Column(
+                children: [
+                  SafeArea(
+                    bottom: false,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        CsSpacing.base,
+                        CsSpacing.sm,
+                        CsSpacing.base,
+                        0,
+                      ),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: EditorialBackButton(),
+                      ),
+                    ),
+                  ),
+                  Padding(
                     padding: const EdgeInsets.fromLTRB(
                       CsSpacing.pageHorizontal,
-                      CsSpacing.lg,
+                      CsSpacing.sm,
                       CsSpacing.pageHorizontal,
                       CsSpacing.lg,
                     ),
@@ -200,83 +218,83 @@ class _WishlistScreenState extends State<WishlistScreen> {
                       ],
                     ),
                   ),
-                ),
-                Expanded(
-                  child: ColoredBox(
-                    color: AppColors.ivory,
-                    child: SafeArea(
-                      top: false,
-                      child: RefreshIndicator(
-                        color: AppColors.forestGreen,
-                        backgroundColor: AppColors.warmWhite,
-                        onRefresh: () async => _load(),
-                        child: CustomScrollView(
-                          slivers: [
-                            SliverToBoxAdapter(
-                              child: Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                  CsSpacing.pageHorizontal,
-                                  CsSpacing.md,
-                                  CsSpacing.pageHorizontal,
-                                  0,
-                                ),
-                                child: Align(
-                                  alignment: Alignment.centerRight,
-                                  child: SubtleTextAction(
-                                    label: 'Trips',
-                                    onTap: _openPlannedTrips,
+                  Expanded(
+                    child: ColoredBox(
+                      color: AppColors.ivory,
+                      child: SafeArea(
+                        top: false,
+                        child: RefreshIndicator(
+                          color: AppColors.forestGreen,
+                          backgroundColor: AppColors.warmWhite,
+                          onRefresh: () async => _load(),
+                          child: CustomScrollView(
+                            slivers: [
+                              SliverToBoxAdapter(
+                                child: Padding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                    CsSpacing.pageHorizontal,
+                                    CsSpacing.md,
+                                    CsSpacing.pageHorizontal,
+                                    0,
                                   ),
-                                ),
-                              ),
-                            ),
-                            if (snap.hasError)
-                              SliverFillRemaining(
-                                hasScrollBody: false,
-                                child: _ErrorState(onRetry: _load),
-                              )
-                            else if (loading)
-                              const SliverFillRemaining(
-                                hasScrollBody: false,
-                                child: _LoadingState(),
-                              )
-                            else if (items.isEmpty)
-                              SliverFillRemaining(
-                                hasScrollBody: false,
-                                child: _EmptyState(venueType: _venueType),
-                              )
-                            else
-                              SliverPadding(
-                                padding: const EdgeInsets.fromLTRB(
-                                  CsSpacing.pageHorizontal,
-                                  CsSpacing.sm,
-                                  CsSpacing.pageHorizontal,
-                                  100,
-                                ),
-                                sliver: SliverList(
-                                  delegate: SliverChildBuilderDelegate(
-                                    (context, i) => Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        if (i > 0) const WishlistRowDivider(),
-                                        WishlistVenueRow(
-                                          venue: items[i],
-                                          onTap: () => _openVenue(items[i]),
-                                          onRemove: () => _remove(items[i]),
-                                        ),
-                                      ],
+                                  child: Align(
+                                    alignment: Alignment.centerRight,
+                                    child: SubtleTextAction(
+                                      label: 'Trips',
+                                      onTap: _openPlannedTrips,
                                     ),
-                                    childCount: items.length,
                                   ),
                                 ),
                               ),
-                          ],
+                              if (snap.hasError)
+                                SliverFillRemaining(
+                                  hasScrollBody: false,
+                                  child: _ErrorState(onRetry: _load),
+                                )
+                              else if (loading)
+                                const SliverFillRemaining(
+                                  hasScrollBody: false,
+                                  child: _LoadingState(),
+                                )
+                              else if (items.isEmpty)
+                                SliverFillRemaining(
+                                  hasScrollBody: false,
+                                  child: _EmptyState(venueType: _venueType),
+                                )
+                              else
+                                SliverPadding(
+                                  padding: const EdgeInsets.fromLTRB(
+                                    CsSpacing.pageHorizontal,
+                                    CsSpacing.sm,
+                                    CsSpacing.pageHorizontal,
+                                    100,
+                                  ),
+                                  sliver: SliverList(
+                                    delegate: SliverChildBuilderDelegate(
+                                      (context, i) => Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          if (i > 0) const WishlistRowDivider(),
+                                          WishlistVenueRow(
+                                            venue: items[i],
+                                            onTap: () => _openVenue(items[i]),
+                                            onRemove: () => _remove(items[i]),
+                                          ),
+                                        ],
+                                      ),
+                                      childCount: items.length,
+                                    ),
+                                  ),
+                                ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );

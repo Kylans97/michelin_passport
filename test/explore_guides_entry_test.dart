@@ -1,6 +1,8 @@
-// Covers the "Browse the Guides" entry point ExploreScreen adds in
-// Navigation Step 1 — GuideDestinationRow itself is already fully covered
-// by guides_widgets_test.dart, so this file only exercises the actual copy
+// Covers the "Collections" entry point ExploreScreen adds (originally
+// "Browse the Guides" in Navigation Step 1; relabeled by Navigation &
+// Information Architecture V2 §3 — same GuidesScreen destination, new
+// copy) — GuideDestinationRow itself is already fully covered by
+// guides_widgets_test.dart, so this file only exercises the actual copy
 // used in Explore and confirms it doesn't overflow, mirroring the
 // established precedent (guides_screen_test.dart's own "destination
 // routing" note): ExploreScreen constructs repositories against
@@ -24,7 +26,7 @@ import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_surface_context.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_destination_row.dart';
 
-const _label = 'Browse the Guides';
+const _label = 'Collections';
 const _descriptor = "Michelin, World's 50 Best & Gault&Millau.";
 
 Widget _wrap(Widget child) => MaterialApp(
@@ -32,7 +34,7 @@ Widget _wrap(Widget child) => MaterialApp(
 );
 
 void main() {
-  group('Explore "Browse the Guides" entry', () {
+  group('Explore "Collections" entry', () {
     testWidgets('renders the exact label and descriptor used in '
         'ExploreScreen', (tester) async {
       var tapped = false;

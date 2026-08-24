@@ -180,52 +180,43 @@ Widget _profileHeader() => ColoredBox(
 // Mirrors RankingsScreen's SliverAppBar (rankings_screen.dart) —
 // flexibleSpace positions the title manually (Material's title: slot
 // always vertically centers within toolbarHeight, which cannot be made
-// to match the other four screens' fixed-offset headers), keeping the
-// TabBar/NestedScrollView architecture and tab labels untouched.
-Widget _rankingsHeader() => DefaultTabController(
-  length: 2,
-  child: Scaffold(
-    backgroundColor: AppColors.background,
-    body: NestedScrollView(
-      headerSliverBuilder: (_, _) => [
-        SliverAppBar(
-          flexibleSpace: SafeArea(
-            bottom: false,
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.pageHorizontal,
-                CsSpacing.lg,
-                CsSpacing.pageHorizontal,
-                0,
-              ),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'Rankings',
-                  style: CsTypography.screenTitle.copyWith(
-                    color: AppColors.ivory,
-                  ),
+// to match the other four screens' fixed-offset headers). Navigation &
+// Information Architecture V2 UI Refinement: RankingsScreen is no longer
+// a TabBar/TabController screen — its former "Community" tab moved to
+// CommunityScreen, so this mirror no longer wraps a
+// DefaultTabController/TabBar either.
+Widget _rankingsHeader() => Scaffold(
+  backgroundColor: AppColors.background,
+  body: NestedScrollView(
+    headerSliverBuilder: (_, _) => [
+      SliverAppBar(
+        flexibleSpace: SafeArea(
+          bottom: false,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              CsSpacing.pageHorizontal,
+              CsSpacing.lg,
+              CsSpacing.pageHorizontal,
+              0,
+            ),
+            child: Align(
+              alignment: Alignment.topLeft,
+              child: Text(
+                'Rankings',
+                style: CsTypography.screenTitle.copyWith(
+                  color: AppColors.ivory,
                 ),
               ),
             ),
           ),
-          pinned: true,
-          backgroundColor: AppColors.deepGreen,
-          foregroundColor: AppColors.textOnDark,
-          toolbarHeight: 64,
-          bottom: PreferredSize(
-            preferredSize: const Size.fromHeight(48),
-            child: TabBar(
-              tabs: const [
-                Tab(text: 'My Rankings'),
-                Tab(text: 'Community'),
-              ],
-            ),
-          ),
         ),
-      ],
-      body: const SizedBox.shrink(),
-    ),
+        pinned: true,
+        backgroundColor: AppColors.deepGreen,
+        foregroundColor: AppColors.textOnDark,
+        toolbarHeight: 64,
+      ),
+    ],
+    body: const SizedBox.shrink(),
   ),
 );
 

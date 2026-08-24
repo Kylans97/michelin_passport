@@ -16,6 +16,9 @@ import '../../models/passport_venue.dart';
 import '../../models/venue_entry.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
 import '../map/visited_map_screen.dart';
+import '../rankings/rankings_screen.dart';
+import '../trips/planned_trips_screen.dart';
+import '../wishlist/wishlist_screen.dart';
 import 'passport_filter_type.dart';
 import 'passport_view_model.dart';
 import 'widgets/passport_collection_header.dart';
@@ -173,6 +176,28 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
     }
   }
 
+  // Navigation & Information Architecture V2 UI Refinement — Passport's
+  // compact secondary nav into the three destinations re-homed here from
+  // the old 5-tab shell (Wishlist, My Ranking [RankingsScreen — now purely
+  // personal, its Community tab moved to CommunityScreen], Trips). Stats
+  // is no longer a destination at all — see this class's own doc comment
+  // for why (the existing CsMetricStrip below already is Passport's
+  // statistics).
+  void _openWishlist() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const WishlistScreen()),
+  );
+
+  void _openMyRanking() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const RankingsScreen()),
+  );
+
+  void _openTrips() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const PlannedTripsScreen()),
+  );
+
   // Only ever called for the Restaurants/Hotels branches (never Events —
   // see _eventEmptyMessage for that filter's own copy), so this switches
   // on just the two relevant PassportFilterType values via _isHotel
@@ -251,6 +276,30 @@ class _PassportScreenState extends State<PassportScreen> with RouteAware {
                 onTapMap: () => Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const VisitedMapScreen()),
+                ),
+              ),
+            ),
+            // Navigation & Information Architecture V2 UI Refinement —
+            // replaces the previous four full-width GuideDestinationRows
+            // (which made Passport read as a menu/dashboard rather than a
+            // personal collection) with a compact horizontal secondary nav:
+            // "Passport  Wishlist  Ranking  Trips". "Passport" is always
+            // the active item (this screen IS that destination); the other
+            // three push their existing screens exactly as before. Never
+            // competes visually with the five-tab bottom navigation —
+            // smaller type, no background, no icons.
+            SliverToBoxAdapter(
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  0,
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.md,
+                ),
+                child: _PassportSecondaryNav(
+                  onWishlist: _openWishlist,
+                  onMyRanking: _openMyRanking,
+                  onTrips: _openTrips,
                 ),
               ),
             ),
@@ -530,4 +579,79 @@ class _ErrorState extends StatelessWidget {
       ],
     ),
   );
+}
+
+// ── Secondary nav ──────────────────────────────────────────────────────
+
+/// Navigation & Information Architecture V2 UI Refinement — Passport's
+/// compact secondary nav (§4 of the refinement brief): text-only, no
+/// background, no icons, small enough to never compete with the five-tab
+/// bottom navigation. Deliberately not [GuideDestinationRow] (that's a
+/// full-width label+descriptor+arrow row — the exact "large destination
+/// stack" this replaces).
+class _PassportSecondaryNav extends StatelessWidget {
+  final VoidCallback onWishlist;
+  final VoidCallback onMyRanking;
+  final VoidCallback onTrips;
+
+  const _PassportSecondaryNav({
+    required this.onWishlist,
+    required this.onMyRanking,
+    required this.onTrips,
+  });
+
+  @override
+  Widget build(BuildContext context) => Row(
+    children: [
+      const _SecondaryNavItem(label: 'Passport', active: true),
+      const SizedBox(width: CsSpacing.lg),
+      _SecondaryNavItem(label: 'Wishlist', onTap: onWishlist),
+      const SizedBox(width: CsSpacing.lg),
+      _SecondaryNavItem(label: 'Ranking', onTap: onMyRanking),
+      const SizedBox(width: CsSpacing.lg),
+      _SecondaryNavItem(label: 'Trips', onTap: onTrips),
+    ],
+  );
+}
+
+/// A single item in [_PassportSecondaryNav]. Active state reads through
+/// color/weight alone (ivory + w600 vs secondaryOnDark + w500) — the same
+/// rule the bottom NavigationBar itself already uses (see app.dart's own
+/// `labelTextStyle`) — never a filled background or an underline pill.
+/// "Passport" (the screen you're already on) has no [onTap]: it's always
+/// active and not a navigation action.
+class _SecondaryNavItem extends StatelessWidget {
+  final String label;
+  final bool active;
+  final VoidCallback? onTap;
+
+  const _SecondaryNavItem({
+    required this.label,
+    this.active = false,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final text = Text(
+      label,
+      style: CsTypography.navigation.copyWith(
+        fontSize: 13,
+        color: active ? AppColors.ivory : AppColors.secondaryOnDark,
+        fontWeight: active ? FontWeight.w600 : FontWeight.w500,
+      ),
+    );
+    if (onTap == null) return text;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 4),
+          child: text,
+        ),
+      ),
+    );
+  }
 }

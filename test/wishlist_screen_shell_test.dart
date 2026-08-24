@@ -5,11 +5,15 @@
 // limitation as every other Supabase-eager screen in this app (see e.g.
 // friend_profile_hero_test.dart's own note) — so this mirrors the exact
 // widget tree WishlistScreen's build() produces rather than pumping the
-// real screen. Unlike GuideCatalogueLayout/FriendProfileScreen (pushed
-// routes that own a Scaffold), WishlistScreen is a permanent bottom-
-// navigation tab body with NO Scaffold of its own — app.dart's
-// `_MainNavigation` already provides one — so this mirror deliberately
-// has no Scaffold either.
+// real screen.
+//
+// Navigation & Information Architecture V2: WishlistScreen is no longer a
+// bottom-navigation tab body — it's pushed from PassportScreen's
+// "Wishlist" quick-access row instead, and now owns its own
+// Scaffold(deepGreen) + leading EditorialBackButton, matching every other
+// pushed dark-canvas screen in this app (PlannedTripsScreen,
+// RankingsScreen). This mirror wraps a Scaffold + back-button row the
+// same way.
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -19,6 +23,7 @@ import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/core/widgets/cs_filter_chip.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
+import 'package:michelin_passport/core/widgets/editorial_back_button.dart';
 import 'package:michelin_passport/core/widgets/subtle_text_action.dart';
 import 'package:michelin_passport/features/wishlist/widgets/wishlist_venue_row.dart';
 
@@ -32,44 +37,59 @@ enum _VenueType { restaurants, hotels }
 // being nested inside the SafeArea as before. (Green Token Consistency
 // Migration: AppColors.deepGreen, not forestGreen — the canonical
 // primary brand dark surface.)
-Widget _header({required _VenueType selected}) => SafeArea(
+Widget _header({required _VenueType selected}) => Padding(
+  padding: const EdgeInsets.fromLTRB(
+    CsSpacing.pageHorizontal,
+    CsSpacing.sm,
+    CsSpacing.pageHorizontal,
+    CsSpacing.lg,
+  ),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text(
+        'Wishlist',
+        style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
+      ),
+      const SizedBox(height: CsSpacing.xs),
+      Text(
+        "Places you're saving for later.",
+        style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+      ),
+      const SizedBox(height: CsSpacing.lg),
+      Row(
+        children: [
+          CsFilterChip(
+            label: 'Restaurants',
+            selected: selected == _VenueType.restaurants,
+            onTap: () {},
+          ),
+          const SizedBox(width: CsSpacing.sm),
+          CsFilterChip(
+            label: 'Hotels',
+            selected: selected == _VenueType.hotels,
+            onTap: () {},
+          ),
+        ],
+      ),
+    ],
+  ),
+);
+
+// Mirrors the back-button row placed above the header in
+// _WishlistScreenState.build — its own SafeArea(bottom: false).
+Widget _backButtonRow() => SafeArea(
   bottom: false,
   child: Padding(
     padding: const EdgeInsets.fromLTRB(
-      CsSpacing.pageHorizontal,
-      CsSpacing.lg,
-      CsSpacing.pageHorizontal,
-      CsSpacing.lg,
+      CsSpacing.base,
+      CsSpacing.sm,
+      CsSpacing.base,
+      0,
     ),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'Wishlist',
-          style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
-        ),
-        const SizedBox(height: CsSpacing.xs),
-        Text(
-          "Places you're saving for later.",
-          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
-        ),
-        const SizedBox(height: CsSpacing.lg),
-        Row(
-          children: [
-            CsFilterChip(
-              label: 'Restaurants',
-              selected: selected == _VenueType.restaurants,
-              onTap: () {},
-            ),
-            const SizedBox(width: CsSpacing.sm),
-            CsFilterChip(
-              label: 'Hotels',
-              selected: selected == _VenueType.hotels,
-              onTap: () {},
-            ),
-          ],
-        ),
-      ],
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: EditorialBackButton(),
     ),
   ),
 );
@@ -78,15 +98,19 @@ Widget _shell({required _VenueType selected, required Widget body}) =>
     MaterialApp(
       home: AnnotatedRegion<SystemUiOverlayStyle>(
         value: SystemUiOverlayStyle.light,
-        child: ColoredBox(
-          color: AppColors.deepGreen,
-          child: Column(
-            children: [
-              _header(selected: selected),
-              Expanded(
-                child: ColoredBox(color: AppColors.ivory, child: body),
-              ),
-            ],
+        child: Scaffold(
+          backgroundColor: AppColors.deepGreen,
+          body: ColoredBox(
+            color: AppColors.deepGreen,
+            child: Column(
+              children: [
+                _backButtonRow(),
+                _header(selected: selected),
+                Expanded(
+                  child: ColoredBox(color: AppColors.ivory, child: body),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -183,8 +207,10 @@ void main() {
         find.byType(AnnotatedRegion<SystemUiOverlayStyle>),
       );
       expect(region.value, SystemUiOverlayStyle.light);
-      // No Scaffold — WishlistScreen is a tab body, not a pushed route.
-      expect(find.byType(Scaffold), findsNothing);
+      // Navigation & Information Architecture V2: WishlistScreen is now a
+      // pushed route with its own Scaffold + back button, not a tab body.
+      expect(find.byType(Scaffold), findsOneWidget);
+      expect(find.byType(EditorialBackButton), findsOneWidget);
     });
 
     testWidgets('Safe Area Polish: the header SafeArea sits INSIDE the '

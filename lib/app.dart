@@ -4,11 +4,11 @@ import 'core/navigation/route_observer.dart';
 import 'core/theme/app_theme.dart';
 import 'core/theme/cs_typography.dart';
 import 'features/auth/auth_gate.dart';
+import 'features/community/community_screen.dart';
 import 'features/explore/explore_screen.dart';
+import 'features/news/news_screen.dart';
 import 'features/passport/passport_screen.dart';
 import 'features/profile/profile_screen.dart';
-import 'features/rankings/rankings_screen.dart';
-import 'features/wishlist/wishlist_screen.dart';
 
 class TablePassportApp extends StatelessWidget {
   const TablePassportApp({super.key});
@@ -39,11 +39,21 @@ class _MainNavigation extends StatefulWidget {
 class _MainNavigationState extends State<_MainNavigation> {
   int _index = 0;
 
+  // Navigation & Information Architecture V2 — the long-term product
+  // structure: five destinations answering five different user questions
+  // (Explore "where can I go", Passport "where have I been/want to go",
+  // News "what's happening", Community "what are other people doing",
+  // Profile "my identity and settings"). Rankings and Wishlist are no
+  // longer their own tabs — both are still fully intact, just re-homed as
+  // pushed screens reachable from Passport's own quick-access row (see
+  // passport_screen.dart). See docs/Architecture/
+  // NAVIGATION_INFORMATION_ARCHITECTURE_V2.md for the full rationale and
+  // migration map.
   static const _screens = [
-    PassportScreen(),
     ExploreScreen(),
-    RankingsScreen(),
-    WishlistScreen(),
+    PassportScreen(),
+    NewsScreen(),
+    CommunityScreen(),
     ProfileScreen(),
   ];
 
@@ -105,24 +115,24 @@ class _MainNavigationState extends State<_MainNavigation> {
           }),
           destinations: const [
             NavigationDestination(
-              icon: Icon(Icons.menu_book_outlined),
-              selectedIcon: Icon(Icons.menu_book_rounded),
-              label: 'Passport',
-            ),
-            NavigationDestination(
               icon: Icon(Icons.explore_outlined),
               selectedIcon: Icon(Icons.explore_rounded),
               label: 'Explore',
             ),
             NavigationDestination(
-              icon: Icon(Icons.leaderboard_outlined),
-              selectedIcon: Icon(Icons.leaderboard_rounded),
-              label: 'Rankings',
+              icon: Icon(Icons.menu_book_outlined),
+              selectedIcon: Icon(Icons.menu_book_rounded),
+              label: 'Passport',
             ),
             NavigationDestination(
-              icon: Icon(Icons.favorite_border_rounded),
-              selectedIcon: Icon(Icons.favorite_rounded),
-              label: 'Wishlist',
+              icon: Icon(Icons.article_outlined),
+              selectedIcon: Icon(Icons.article_rounded),
+              label: 'News',
+            ),
+            NavigationDestination(
+              icon: Icon(Icons.groups_outlined),
+              selectedIcon: Icon(Icons.groups_rounded),
+              label: 'Community',
             ),
             NavigationDestination(
               icon: Icon(Icons.person_outline_rounded),

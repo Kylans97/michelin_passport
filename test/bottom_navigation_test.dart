@@ -1,15 +1,25 @@
-// Covers _MainNavigation's bottom navigation bar (Bottom Navigation UI
-// Consistency Step 1 + Step 1A's dark-green surface direction change +
-// Step 1B's exact-color regression coverage + the Green Token Consistency
-// Migration, which corrected which dark green: AppColors.deepGreen, the
-// app's canonical primary brand surface, not forestGreen, which Step 1A
-// had used and which is reserved for secondary elevated panels) —
-// app.dart's _MainNavigation is a private class
-// whose 5 tab children (PassportScreen, ExploreScreen, RankingsScreen,
-// WishlistScreen, ProfileScreen) all construct repositories against
-// Supabase.instance.client eagerly, so it can't be pumped directly (same
-// established limitation as every other Supabase-eager screen in this
-// app). This mirrors app.dart's exact NavigationBar construction — same
+// Covers _MainNavigation's bottom navigation bar. Navigation & Information
+// Architecture V2 replaced the previous 5-tab structure (Passport,
+// Explore, Rankings, Wishlist, Profile) with the long-term product
+// structure: Explore, Passport, News, Community, Profile — five
+// destinations answering five different user questions (see
+// docs/Architecture/NAVIGATION_INFORMATION_ARCHITECTURE_V2.md). Rankings
+// and Wishlist are NOT gone — both are fully intact, just re-homed as
+// screens pushed from Passport's own quick-access row (see
+// passport_screen_test.dart / passport_screen.dart) rather than primary
+// tabs of their own. This file otherwise keeps every pre-existing visual-
+// token/accessibility/responsive/tap-behavior/tab-state-preservation
+// assertion (Bottom Navigation UI Consistency Step 1 + Step 1A's dark-
+// green surface direction change + Step 1B's exact-color regression
+// coverage + the Green Token Consistency Migration) — those guarantees
+// are unchanged by which five destinations they apply to.
+//
+// app.dart's _MainNavigation is a private class whose 5 tab children
+// (ExploreScreen, PassportScreen, NewsScreen, CommunityScreen,
+// ProfileScreen) all construct repositories against Supabase.instance
+// .client eagerly, so it can't be pumped directly (same established
+// limitation as every other Supabase-eager screen in this app). This
+// mirrors app.dart's exact NavigationBar construction — same
 // destinations, same styling parameters, same theme — with plain
 // Container bodies standing in for the real tab screens.
 
@@ -20,7 +30,7 @@ import 'package:michelin_passport/core/theme/app_theme.dart';
 import 'package:michelin_passport/core/theme/cs_theme.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 
-const _labels = ['Passport', 'Explore', 'Rankings', 'Wishlist', 'Profile'];
+const _labels = ['Explore', 'Passport', 'News', 'Community', 'Profile'];
 
 // Mirrors _MainNavigationState.build's bottomNavigationBar exactly.
 Widget _bottomNav({
@@ -46,24 +56,24 @@ Widget _bottomNav({
     }),
     destinations: const [
       NavigationDestination(
-        icon: Icon(Icons.menu_book_outlined),
-        selectedIcon: Icon(Icons.menu_book_rounded),
-        label: 'Passport',
-      ),
-      NavigationDestination(
         icon: Icon(Icons.explore_outlined),
         selectedIcon: Icon(Icons.explore_rounded),
         label: 'Explore',
       ),
       NavigationDestination(
-        icon: Icon(Icons.leaderboard_outlined),
-        selectedIcon: Icon(Icons.leaderboard_rounded),
-        label: 'Rankings',
+        icon: Icon(Icons.menu_book_outlined),
+        selectedIcon: Icon(Icons.menu_book_rounded),
+        label: 'Passport',
       ),
       NavigationDestination(
-        icon: Icon(Icons.favorite_border_rounded),
-        selectedIcon: Icon(Icons.favorite_rounded),
-        label: 'Wishlist',
+        icon: Icon(Icons.article_outlined),
+        selectedIcon: Icon(Icons.article_rounded),
+        label: 'News',
+      ),
+      NavigationDestination(
+        icon: Icon(Icons.groups_outlined),
+        selectedIcon: Icon(Icons.groups_rounded),
+        label: 'Community',
       ),
       NavigationDestination(
         icon: Icon(Icons.person_outline_rounded),
@@ -113,10 +123,10 @@ void main() {
           .widgetList<NavigationDestination>(find.byType(NavigationDestination))
           .toList();
       const expectedIcons = [
-        (Icons.menu_book_outlined, Icons.menu_book_rounded),
         (Icons.explore_outlined, Icons.explore_rounded),
-        (Icons.leaderboard_outlined, Icons.leaderboard_rounded),
-        (Icons.favorite_border_rounded, Icons.favorite_rounded),
+        (Icons.menu_book_outlined, Icons.menu_book_rounded),
+        (Icons.article_outlined, Icons.article_rounded),
+        (Icons.groups_outlined, Icons.groups_rounded),
         (Icons.person_outline_rounded, Icons.person_rounded),
       ];
       for (var i = 0; i < 5; i++) {
@@ -300,7 +310,7 @@ void main() {
         _wrap(_bottomNav(selectedIndex: 1, onSelect: (_) {})),
       );
       expect(
-        tester.getSemantics(find.text('Explore')),
+        tester.getSemantics(find.text('Passport')),
         matchesSemantics(
           isSelected: true,
           isButton: true,
@@ -323,7 +333,7 @@ void main() {
         _wrap(_bottomNav(selectedIndex: 1, onSelect: (_) {})),
       );
       expect(
-        tester.getSemantics(find.text('Passport')),
+        tester.getSemantics(find.text('Explore')),
         matchesSemantics(
           isSelected: false,
           isButton: true,

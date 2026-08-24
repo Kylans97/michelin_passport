@@ -1,41 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
-import 'widgets/community_rankings_tab.dart';
 import 'widgets/personal_rankings_tab.dart';
 
-/// Rankings: "My Rankings" (personal, per-unique-restaurant aggregation —
-/// see rankings_view_model.dart) and "Community" (unrelated, its own data
-/// source) as two independent tabs.
-class RankingsScreen extends StatefulWidget {
+/// My Ranking: purely personal (per-unique-restaurant aggregation — see
+/// rankings_view_model.dart). Navigation & Information Architecture V2 UI
+/// Refinement — this screen previously also hosted a "Community" tab
+/// (community_rankings_tab.dart's CommunityRankingsTab); that content
+/// moved to CommunityScreen (see community_screen.dart /
+/// community_rankings_screen.dart), which is where any ranking based on
+/// other users now belongs. This screen shows only the current user's own
+/// visited/rated content.
+class RankingsScreen extends StatelessWidget {
   const RankingsScreen({super.key});
 
   @override
-  State<RankingsScreen> createState() => _RankingsScreenState();
-}
-
-class _RankingsScreenState extends State<RankingsScreen>
-    with SingleTickerProviderStateMixin {
-  late final TabController _tabCtrl;
-  final String _uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-
-  @override
-  void initState() {
-    super.initState();
-    _tabCtrl = TabController(length: 2, vsync: this);
-  }
-
-  @override
-  void dispose() {
-    _tabCtrl.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
     return Scaffold(
       backgroundColor: AppColors.background,
       body: NestedScrollView(
@@ -47,12 +30,7 @@ class _RankingsScreenState extends State<RankingsScreen>
             // fixed offset the way the other four tabs' plain
             // SafeArea+Padding headers do) with a manually-positioned
             // flexibleSpace — the only way to make "Rankings" start at
-            // the same SafeArea + CsSpacing.lg position as Wishlist while
-            // keeping this screen's TabBar/NestedScrollView architecture
-            // (pinned AppBar, tab controller, tab content) completely
-            // unchanged. toolbarHeight (64) is unchanged from before —
-            // it already fits CsSpacing.lg + one CsTypography.screenTitle
-            // line + a little breathing room above the TabBar.
+            // the same SafeArea + CsSpacing.lg position as Wishlist.
             flexibleSpace: SafeArea(
               bottom: false,
               child: Padding(
@@ -77,36 +55,9 @@ class _RankingsScreenState extends State<RankingsScreen>
             backgroundColor: AppColors.deepGreen,
             foregroundColor: AppColors.textOnDark,
             toolbarHeight: 64,
-            bottom: PreferredSize(
-              preferredSize: const Size.fromHeight(48),
-              child: TabBar(
-                controller: _tabCtrl,
-                labelColor: AppColors.textOnDark,
-                unselectedLabelColor: AppColors.textOnDark.withValues(
-                  alpha: 0.55,
-                ),
-                indicatorColor: AppColors.textOnDark,
-                indicatorSize: TabBarIndicatorSize.label,
-                labelStyle: GoogleFonts.inter(
-                  fontSize: 13,
-                  fontWeight: FontWeight.w600,
-                ),
-                unselectedLabelStyle: GoogleFonts.inter(fontSize: 13),
-                tabs: const [
-                  Tab(text: 'My Rankings'),
-                  Tab(text: 'Community'),
-                ],
-              ),
-            ),
           ),
         ],
-        body: TabBarView(
-          controller: _tabCtrl,
-          children: [
-            PersonalRankingsTab(userId: _uid),
-            const CommunityRankingsTab(),
-          ],
-        ),
+        body: PersonalRankingsTab(userId: uid),
       ),
     );
   }

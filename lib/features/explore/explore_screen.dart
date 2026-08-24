@@ -37,9 +37,10 @@ import 'widgets/explore_search_results_view.dart';
 /// modes, switched purely by whether the search query is empty (see
 /// [_isSearching]), never shown at once:
 ///
-/// DISCOVERY MODE (query empty): a permanent "Browse the Guides" entry
-/// (Navigation Step 1 — routes to the existing GuidesScreen, never a
-/// duplicate landing page rendered inline here), then an editorial browse —
+/// DISCOVERY MODE (query empty): a permanent "Collections" entry
+/// (Navigation Step 1, relabeled by Navigation & Information Architecture
+/// V2 §3 — routes to the existing GuidesScreen, never a duplicate landing
+/// page rendered inline here), then an editorial browse —
 /// What's On (the soonest upcoming event), Worth the Journey (a restaurant
 /// selection), Stay a Little Longer (a hotel selection). The three
 /// catalogue sections are loaded once per screen lifetime via three
@@ -269,6 +270,14 @@ class _ExploreScreenState extends State<ExploreScreen> {
   // reachable only via a temporary, uncommitted device-review harness. This
   // is deliberately just a route push to the EXISTING screen, not a second
   // Guides landing page rendered inline here.
+  //
+  // Navigation & Information Architecture V2 §3 — labeled "Collections" in
+  // the UI now (Chasing Stars should not read as a UI wrapper around
+  // Michelin/World's 50 Best/Gault&Millau), routing to the exact same,
+  // completely unmodified GuidesScreen — the smallest safe migration
+  // toward Collections this phase calls for. A future Collections-specific
+  // screen (Chasing Stars' own curated selections, alongside these
+  // externally-sourced guides) is explicitly deferred, not built here.
   void _openGuides() => Navigator.push(
     context,
     MaterialPageRoute(builder: (_) => const GuidesScreen()),
@@ -324,7 +333,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
         child: Column(
           children: [
             GuideDestinationRow(
-              label: 'Browse the Guides',
+              label: 'Collections',
               descriptor: "Michelin, World's 50 Best & Gault&Millau.",
               onTap: _openGuides,
               surface: CsSurface.dark,
