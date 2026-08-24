@@ -30,30 +30,34 @@ information architecture instead (see below).
   V1 (real articles, categories) is explicitly the next, separate
   workstream — not started here.
 - **Community** — "What people are chasing." Landing hierarchy: Hottest
-  Places (real content when available, gracefully absent otherwise — see
-  Known Launch Blockers), Community Rankings (title + description +
-  "View rankings →" link into the unchanged `CommunityRankingsScreen`),
-  Dining Together (title + teaser + "Discover the concept →" link into
-  the new `DiningTogetherScreen`, a concept-only page with zero real
+  Places (real backend, real restaurant hero when the community rating
+  threshold is met — currently empty in production, see Known Launch
+  Blockers item 1), Community Rankings (title + description + "View
+  rankings →" link into `CommunityRankingsScreen`, now genuinely
+  functional — see `docs/Architecture/COMMUNITY_RANKINGS_V1.md`), Dining
+  Together (title + teaser + "Discover the concept →" link into
+  `DiningTogetherScreen`, a concept-only page with zero real
   functionality). Meet the Community is absent — see §15/§18. Full detail
   in §18 (supersedes §12/§15's section-label/Dining Together specifics).
-- **Profile** — Edit profile, Notifications, Sign out, and a new **Delete
-  account** entry (see Known Launch Blockers — UI is real and tested, the
-  backend it depends on is not deployed).
+- **Profile** — Edit profile, Notifications, Sign out, and a **Delete
+  account** entry — backend deployed and production-verified, see
+  `docs/Architecture/ACCOUNT_DELETION.md`.
 
-**Known launch blockers (explicitly NOT resolved by this document's
-work — each is its own separate, not-yet-scoped workstream):**
-1. **`restaurant_rankings` database view does not exist in production**
-   (§17) — blocks both Hottest Places' real restaurant signal and
-   Community Rankings' actual data (the "View rankings" screen itself
-   works and navigates correctly; it will show its own empty/error state
-   until this view exists).
-2. **Account deletion backend does not exist** (§13) — no
-   `supabase/functions/` directory, no Edge Function, no `auth.users`
-   deletion mechanism. The UI/UX (entry point, confirmation flow,
-   client-side abstraction) is complete and tested; tapping through to
-   final confirmation will fail honestly today. **Not App-Store-ready
-   until this backend exists.**
+**Known launch blockers (remaining, each its own separate workstream):**
+1. **`restaurant_rankings` currently returns zero rows in production** —
+   the view itself is real, deployed, and correct (see
+   `docs/Architecture/COMMUNITY_RANKINGS_V1.md`), but production has only
+   one restaurant rating in total today, below the (deliberately
+   principled, human-approved) 3-unique-rater minimum. Both Hottest
+   Places and Community Rankings already handle this gracefully (see
+   that document's §7) and will show real content the moment real usage
+   crosses the threshold — no further backend work required. **This is no
+   longer a missing-backend blocker — §17 below, describing the view as
+   not existing, is now historical.**
+2. ~~Account deletion backend does not exist~~ — **resolved.** Deployed to
+   production, smoke-tested with disposable accounts (including a live
+   attack test) and physically verified on-device. See
+   `docs/Architecture/ACCOUNT_DELETION.md`.
 3. **News V1** (real articles/categories) is not started.
 4. **Dining Together** real functionality (matching, discovery, etc.) is
    not started — deliberately deferred given its privacy/safety
@@ -61,9 +65,11 @@ work — each is its own separate, not-yet-scoped workstream):**
 5. **Meet the Community** is not started — deferred until genuine
    editorial/user-story content exists via News.
 
-**Backend/schema impact of this entire document's work: none.** No
-migration, no RLS change, no production-data write, at any point across
-every pass.
+**Backend/schema impact of this document's own navigation/IA work:
+none.** (Two later, separate workstreams referenced above — Account
+Deletion and Community Rankings Backend V1 — did make real, deliberate
+backend changes; see their own documents for full detail. Neither
+touched navigation/IA itself.)
 
 ## 1. What changed
 
@@ -592,12 +598,16 @@ to pump directly in tests, unlike most pushed screens in this app).
 
 **Meet the Community** — unchanged, still absent (§15).
 
-**Hottest Places data limitation** — unchanged from §17/§17a: only the
-restaurant "highest rated by the community" signal is real; Hotel and
-Event remain structurally absent (not degraded). **This still depends on
-the missing `restaurant_rankings` backend view (§17)** — that remains its
-own, separate, not-yet-scoped backend workstream; nothing in this pass
-touches it.
+**Hottest Places data limitation** — only the restaurant "highest rated
+by the community" signal is real; Hotel and Event remain structurally
+absent (not degraded), deliberately out of scope for V1 — see
+`docs/Architecture/COMMUNITY_RANKINGS_V1.md` §13 for their documented
+future requirements. **The `restaurant_rankings` backend view itself is
+now real and deployed** (Community Rankings Backend V1, after this
+Community Typography pass) — it currently returns zero rows because
+production has only one restaurant rating in total, below the
+3-unique-rater minimum; this is a data-volume state, not a missing-
+backend one. See that document's §4 and §7.
 
 **Bug found and fixed during this pass:** `_CommunityActionLink`'s `Row`
 originally wrapped its label in a bare `Text` (no `Flexible`/`Expanded`).

@@ -4,23 +4,42 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../data/repositories/rankings_repository.dart';
+import '../../../data/repositories/restaurant_repository.dart';
 import '../../../models/ranking_entry.dart';
+import '../../../models/restaurant.dart';
+import '../../restaurants/restaurant_detail_screen.dart';
 
 /// Community Rankings: unrelated to "My Rankings" and deliberately kept
 /// self-contained (its own star filter, its own data source) rather than
 /// forced through the personal per-restaurant aggregation.
+///
+/// Community Rankings Backend V1: rows are now tappable — the same
+/// resolve-full-Restaurant-then-push pattern Community's "Hottest Places"
+/// hero already uses ([RestaurantRepository.getById], since
+/// [CommunityRankingEntry] only carries summary fields, not enough for
+/// [RestaurantDetailScreen]). [loadCommunityRankings] and
+/// [getRestaurantById] are injectable — the same constructor-injection
+/// seam used throughout this app's other Supabase-eager destructive/
+/// data-loading widgets (`DeleteAccountScreen`, `CommunityScreen`) — so
+/// the real widget can be pumped and exercised in tests without Supabase.
+/// Both default to the real repositories against
+/// `Supabase.instance.client` when omitted.
 class CommunityRankingsTab extends StatefulWidget {
-  const CommunityRankingsTab({super.key});
+  final Future<List<CommunityRankingEntry>> Function({int? stars})?
+  loadCommunityRankings;
+  final Future<Restaurant?> Function(String id)? getRestaurantById;
+
+  const CommunityRankingsTab({
+    super.key,
+    this.loadCommunityRankings,
+    this.getRestaurantById,
+  });
 
   @override
   State<CommunityRankingsTab> createState() => _CommunityRankingsTabState();
 }
 
 class _CommunityRankingsTabState extends State<CommunityRankingsTab> {
-  late final RankingsRepository _repo = RankingsRepository(
-    Supabase.instance.client,
-  );
-
   int _starFilter = 0;
   late Future<List<CommunityRankingEntry>> _future;
 
@@ -32,10 +51,25 @@ class _CommunityRankingsTabState extends State<CommunityRankingsTab> {
 
   void _load() {
     setState(() {
-      _future = _repo.getCommunityRankings(
-        stars: _starFilter == 0 ? null : _starFilter,
-      );
+      final load =
+          widget.loadCommunityRankings ??
+          RankingsRepository(Supabase.instance.client).getCommunityRankings;
+      _future = load(stars: _starFilter == 0 ? null : _starFilter);
     });
+  }
+
+  Future<void> _openRestaurant(String restaurantId) async {
+    final getById =
+        widget.getRestaurantById ??
+        RestaurantRepository(Supabase.instance.client).getById;
+    final restaurant = await getById(restaurantId);
+    if (!mounted || restaurant == null) return;
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+      ),
+    );
   }
 
   @override
@@ -119,8 +153,11 @@ class _CommunityRankingsTabState extends State<CommunityRankingsTab> {
               return ListView.builder(
                 padding: const EdgeInsets.fromLTRB(20, 16, 20, 100),
                 itemCount: entries.length,
-                itemBuilder: (_, i) =>
-                    _CommunityRankCard(entry: entries[i], rank: i + 1),
+                itemBuilder: (_, i) => _CommunityRankCard(
+                  entry: entries[i],
+                  rank: i + 1,
+                  onTap: () => _openRestaurant(entries[i].restaurantId),
+                ),
               );
             },
           ),
@@ -135,10 +172,33 @@ class _CommunityRankingsTabState extends State<CommunityRankingsTab> {
 class _CommunityRankCard extends StatelessWidget {
   final CommunityRankingEntry entry;
   final int rank;
-  const _CommunityRankCard({required this.entry, required this.rank});
+  final VoidCallback onTap;
+  const _CommunityRankCard({
+    required this.entry,
+    required this.rank,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
+    return Semantics(
+      button: true,
+      label:
+          '#$rank, ${entry.name}, ${entry.city}. Community rating '
+          '${entry.communityRating.toStringAsFixed(1)}.',
+      excludeSemantics: true,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: _cardContent(),
+        ),
+      ),
+    );
+  }
+
+  Widget _cardContent() {
     return Container(
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(16),
