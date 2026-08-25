@@ -15,6 +15,7 @@ import '../../models/user_profile.dart';
 import '../friends/friends_screen.dart';
 import '../notifications/notifications_screen.dart';
 import 'delete_account_screen.dart';
+import 'privacy_settings_screen.dart';
 
 /// My Profile — identity, Journey Stats (existing Passport-derived data,
 /// unchanged computation), Friends entry, and account actions. Dark
@@ -90,6 +91,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _openDeleteAccount() => Navigator.push(
     context,
     MaterialPageRoute(builder: (_) => const DeleteAccountScreen()),
+  );
+
+  void _openPrivacySettings() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const PrivacySettingsScreen()),
   );
 
   Future<void> _openEditProfile(UserProfile profile) async {
@@ -266,6 +272,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         builder: (_) => const NotificationsScreen(),
                       ),
                     ),
+                  ),
+                  _SettingsRow(
+                    icon: Icons.lock_outline_rounded,
+                    label: 'Privacy',
+                    onTap: _openPrivacySettings,
                   ),
                   _SettingsRow(
                     // Icon audit: was logout_rounded (solid), the only

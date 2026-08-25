@@ -56,4 +56,34 @@ class ProfileRepository {
     );
     return result as bool;
   }
+
+  // PROFILE PRIVACY & DISCOVERABILITY V1 — [userId] is always the
+  // caller's own id at every real call site (Privacy Settings only ever
+  // reads/writes the signed-in user's own row), which is also the only
+  // row `profiles_read`/`profiles_update` RLS permits either of these to
+  // touch — a user cannot read or write another user's is_discoverable
+  // through this repository, enforced server-side, not just by this
+  // method's own calling convention. Governs Find Friends discovery
+  // ONLY — see the column's own migration comment
+  // (`20260825160000_profile_privacy_discoverability_v1.sql`) for why
+  // this never affects visits/wishlist/photos/Trips/event visibility.
+  Future<bool> getDiscoverable(String userId) async {
+    final row = await _client
+        .from('profiles')
+        .select('is_discoverable')
+        .eq('id', userId)
+        .limit(1)
+        .single();
+    return row['is_discoverable'] as bool? ?? true;
+  }
+
+  Future<void> setDiscoverable({
+    required String userId,
+    required bool value,
+  }) async {
+    await _client
+        .from('profiles')
+        .update({'is_discoverable': value})
+        .eq('id', userId);
+  }
 }

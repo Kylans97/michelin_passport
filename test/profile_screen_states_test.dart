@@ -28,7 +28,10 @@ import 'package:michelin_passport/core/widgets/cs_metric_strip.dart';
 
 // ── Reconstructed from ProfileScreen's own _SettingsRow + Account section ──
 
-Widget _accountSection({required VoidCallback onSignOut}) => Column(
+Widget _accountSection({
+  required VoidCallback onSignOut,
+  VoidCallback? onOpenPrivacy,
+}) => Column(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
     Text(
@@ -45,6 +48,14 @@ Widget _accountSection({required VoidCallback onSignOut}) => Column(
       icon: Icons.notifications_outlined,
       label: 'Notifications',
       onTap: () {},
+    ),
+    // PROFILE PRIVACY & DISCOVERABILITY V1 — opens PrivacySettingsScreen
+    // (see privacy_settings_screen_test.dart for that screen's own,
+    // direct — non-mirrored — coverage).
+    _SettingsRowStandIn(
+      icon: Icons.lock_outline_rounded,
+      label: 'Privacy',
+      onTap: onOpenPrivacy ?? () {},
     ),
     _SettingsRowStandIn(
       icon: Icons.logout_outlined,
@@ -235,6 +246,31 @@ void main() {
       await tester.pumpWidget(_wrap(_accountSection(onSignOut: () {})));
       final size = tester.getSize(find.widgetWithText(InkWell, 'Sign out'));
       expect(size.height, greaterThanOrEqualTo(44));
+    });
+  });
+
+  group('ProfileScreen — Privacy entry (PROFILE PRIVACY & DISCOVERABILITY '
+      'V1)', () {
+    testWidgets('is visible in the Account section, alongside Edit profile/'
+        'Notifications/Sign out', (tester) async {
+      await tester.pumpWidget(_wrap(_accountSection(onSignOut: () {})));
+      expect(find.text('Privacy'), findsOneWidget);
+      expect(find.text('Edit profile'), findsOneWidget);
+      expect(find.text('Notifications'), findsOneWidget);
+      expect(find.text('Sign out'), findsOneWidget);
+    });
+
+    testWidgets('tapping Privacy opens the Privacy settings entry point', (
+      tester,
+    ) async {
+      var opened = false;
+      await tester.pumpWidget(
+        _wrap(
+          _accountSection(onSignOut: () {}, onOpenPrivacy: () => opened = true),
+        ),
+      );
+      await tester.tap(find.text('Privacy'));
+      expect(opened, isTrue);
     });
   });
 
