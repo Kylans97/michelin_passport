@@ -135,20 +135,26 @@ class _PassportScreenState extends State<PassportScreen> {
 
 // ── Ranking subsection ──────────────────────────────────────────────────
 
-/// Wraps the existing, unchanged [PersonalRankingsTab] (My Ranking's real
-/// content — filters, dimension picker, ranked list) in the light canvas
-/// it already assumes, matching its previous host (the deleted
-/// `RankingsScreen`, `Scaffold(backgroundColor: AppColors.background)`).
-/// This is "My Ranking" only — Community's own ranking never appears
-/// here; see `community_rankings_screen.dart` for that, reached only from
-/// the Community tab.
+/// Wraps [PersonalRankingsTab] (My Ranking's real content — filters,
+/// dimension picker, ranked list) in the same persistent deep-green canvas
+/// as every other Passport subsection — Color Hierarchy Correction pass.
+/// Ranking used to sit on its own light canvas (matching its previous,
+/// pre-shell host, the deleted `RankingsScreen`) — that read as leaving
+/// Passport for a visually separate page rather than switching a mode
+/// within it, the same "still Passport, not somewhere else" property the
+/// header/tab bar already guarantee structurally. `PersonalRankingsTab`
+/// itself now renders every one of its own pieces (loading/error/empty
+/// states, filters, cards) for a dark canvas — see that class's own
+/// history. This is "My Ranking" only — Community's own ranking never
+/// appears here; see `community_rankings_screen.dart` for that, reached
+/// only from the Community tab.
 class _RankingBody extends StatelessWidget {
   final String userId;
   const _RankingBody({required this.userId});
 
   @override
   Widget build(BuildContext context) => ColoredBox(
-    color: AppColors.background,
+    color: AppColors.deepGreen,
     child: PersonalRankingsTab(userId: userId),
   );
 }

@@ -52,8 +52,12 @@ Visit _stay({
   experienceRating: experienceRating,
 );
 
+// Color Hierarchy Correction pass: wrapped on the deep-green canvas
+// Ranking actually renders against today (was AppColors.background — a
+// light canvas that stopped matching reality once Ranking moved onto the
+// persistent Passport shell's deep-green environment).
 Widget _wrap(Widget child) => MaterialApp(
-  home: Scaffold(backgroundColor: AppColors.background, body: child),
+  home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
 );
 
 void main() {
@@ -153,6 +157,27 @@ void main() {
       await tester.tap(find.text('Room'));
       await tester.pumpAndSettle();
       expect(picked, RankingDimension.room);
+    });
+
+    testWidgets('the trigger uses on-dark tokens — transparent fill, '
+        'subtle dark-canvas border, ivory label — matching '
+        "YearFilterControl's own CsSurface.dark trigger now that Ranking "
+        'sits on the deep-green canvas', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          RankingDimensionDropdown(
+            dimensions: RankingVenueType.restaurant.validDimensions,
+            selected: RankingDimension.overall,
+            onSelect: (_) {},
+          ),
+        ),
+      );
+      final container = tester.widget<Container>(find.byType(Container).first);
+      final decoration = container.decoration as BoxDecoration;
+      expect(decoration.color, Colors.transparent);
+      expect(decoration.border?.top.color, AppColors.subtleBorderDark);
+      final label = tester.widget<Text>(find.text('Overall'));
+      expect(label.style?.color, AppColors.textOnDark);
     });
 
     testWidgets('gold audit: no gold color anywhere in the trigger or sheet', (

@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../models/ranking_entry.dart';
 import '../../../models/restaurant.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
+import 'ranking_editorial_card.dart';
+
+// "City 🇳🇱" — the same city + flag pairing this card has always shown
+// (unchanged from before this visual pass), matching the reference's
+// city-line, not Passport's own "City, Country" collection-card format.
+String _locationLabel(Restaurant restaurant) =>
+    '${restaurant.cityName} ${restaurant.flagEmoji}'.trim();
 
 /// One unique restaurant's row in "My Rankings": rank, identity, current
 /// Michelin stars (context only — never part of computing the ranking),
@@ -13,6 +18,12 @@ import '../../restaurants/restaurant_detail_screen.dart';
 /// ranking-detail screen. [onReturn] fires once that screen is popped, so a
 /// visit saved there (or a repeat visit added to the same restaurant) is
 /// reflected in the ranking immediately, without leaving and reopening it.
+///
+/// PASSPORT — RANKING UI REDESIGN V1: visual presentation now delegates to
+/// [RankingEditorialCard] (the reference's dark editorial row) — every
+/// value shown (rank, name, city, stars, score, visit count) is still read
+/// straight from [restaurant]/[entry]/[rank], unchanged from before this
+/// pass.
 class PersonalRankingCard extends StatelessWidget {
   final Restaurant restaurant;
   final PersonalRankingEntry entry;
@@ -29,100 +40,27 @@ class PersonalRankingCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(16),
-        splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
-        highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
-        onTap: () async {
-          await Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
-            ),
-          );
-          onReturn();
-        },
-        child: Container(
-          margin: const EdgeInsets.only(bottom: 12),
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: AppColors.card,
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(color: AppColors.cardBorder, width: 0.5),
+    return RankingEditorialCard(
+      rank: rank,
+      imageUrl: null,
+      title: restaurant.name,
+      subtitle: _locationLabel(restaurant),
+      recognition: restaurant.hasMichelinStar
+          ? StarRow(count: restaurant.michelinStars!, size: 12)
+          : null,
+      scoreText: entry.averageScore.toStringAsFixed(1),
+      visitText: entry.ratedVisitCount == 1
+          ? '1 visit'
+          : '${entry.ratedVisitCount} visits',
+      onTap: () async {
+        await Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
           ),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                width: 26,
-                child: Text(
-                  '$rank',
-                  style: GoogleFonts.inter(
-                    color: AppColors.forestGreen,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      restaurant.name,
-                      style: GoogleFonts.playfairDisplay(
-                        color: AppColors.textPrimary,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 4),
-                    Row(
-                      children: [
-                        Text(
-                          '${restaurant.cityName} ${restaurant.flagEmoji}',
-                          style: GoogleFonts.inter(
-                            color: AppColors.textSecondary,
-                            fontSize: 12,
-                          ),
-                        ),
-                        if (restaurant.hasMichelinStar) ...[
-                          const SizedBox(width: 8),
-                          StarRow(count: restaurant.michelinStars!, size: 11),
-                        ],
-                      ],
-                    ),
-                    const SizedBox(height: 10),
-                    Row(
-                      children: [
-                        Text(
-                          entry.averageScore.toStringAsFixed(1),
-                          style: GoogleFonts.inter(
-                            color: AppColors.forestGreen,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Text(
-                          ' · ${entry.ratedVisitCount == 1 ? '1 visit' : '${entry.ratedVisitCount} visits'}',
-                          style: GoogleFonts.inter(
-                            color: AppColors.textSecondary,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
+        );
+        onReturn();
+      },
     );
   }
 }

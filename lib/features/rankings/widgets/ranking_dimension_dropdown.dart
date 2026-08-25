@@ -16,6 +16,17 @@ import '../../../models/ranking_dimension.dart';
 /// gold — this pass removes decorative gold from Rankings' own controls,
 /// which would have silently reskinned Passport's year picker too if done
 /// by editing the shared file instead of building a parallel component.
+///
+/// Color Hierarchy Correction pass: the trigger now uses the same dark-
+/// canvas token pairing as [YearFilterControl]'s own `CsSurface.dark`
+/// trigger (transparent fill, [AppColors.subtleBorderDark] outline,
+/// [AppColors.textOnDark] label) now that Ranking sits on the deep-green
+/// Passport canvas rather than a light one. Only Ranking uses this widget
+/// today, so it's restyled directly rather than growing a `surface`
+/// parameter nothing else would pass. The picker sheet itself is
+/// unchanged — a light modal overlay, the established pattern for every
+/// bottom sheet in this app, exactly as [YearFilterControl]'s own sheet
+/// stays light regardless of its trigger's surface.
 class RankingDimensionDropdown extends StatelessWidget {
   final List<RankingDimension> dimensions;
   final RankingDimension selected;
@@ -51,9 +62,9 @@ class RankingDimensionDropdown extends StatelessWidget {
           vertical: CsSpacing.sm,
         ),
         decoration: BoxDecoration(
-          color: AppColors.surface,
+          color: Colors.transparent,
           borderRadius: BorderRadius.circular(CsRadius.pill),
-          border: Border.all(color: AppColors.cardBorder, width: 0.5),
+          border: Border.all(color: AppColors.subtleBorderDark, width: 0.5),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
@@ -61,14 +72,14 @@ class RankingDimensionDropdown extends StatelessWidget {
             Text(
               selected.label,
               style: CsTypography.smallLabel.copyWith(
-                color: AppColors.textPrimary,
+                color: AppColors.textOnDark,
                 fontWeight: FontWeight.w600,
               ),
             ),
             const SizedBox(width: 2),
             const Icon(
               Icons.arrow_drop_down_rounded,
-              color: AppColors.textSecondary,
+              color: AppColors.secondaryOnDark,
               size: 20,
             ),
           ],

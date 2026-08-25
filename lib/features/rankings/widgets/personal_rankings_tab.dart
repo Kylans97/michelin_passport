@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/navigation/route_observer.dart';
+import '../../../core/theme/cs_spacing.dart';
+import '../../../core/theme/cs_surface_context.dart';
+import '../../../core/theme/cs_typography.dart';
 import '../../../core/utils/visit_years.dart';
 import '../../../core/widgets/year_filter_control.dart';
 import '../../../data/repositories/rankings_repository.dart';
@@ -11,7 +13,7 @@ import '../../../models/ranking_dimension.dart';
 import '../../../models/ranking_entry.dart';
 import '../../../models/ranking_venue_type.dart';
 import '../../../models/venue_entry.dart';
-import '../../restaurants/widgets/detail_section.dart';
+import '../../passport/widgets/passport_empty_state.dart';
 import '../rankings_view_model.dart';
 import 'hotel_ranking_card.dart';
 import 'personal_ranking_card.dart';
@@ -147,7 +149,7 @@ class _PersonalRankingsTabState extends State<PersonalRankingsTab>
     if (_loading) {
       return const Center(
         child: CircularProgressIndicator(
-          color: AppColors.forestGreen,
+          color: AppColors.textOnDark,
           strokeWidth: 1.5,
         ),
       );
@@ -156,7 +158,7 @@ class _PersonalRankingsTabState extends State<PersonalRankingsTab>
       return Center(
         child: Text(
           'Could not load rankings',
-          style: GoogleFonts.inter(color: AppColors.textSecondary),
+          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
         ),
       );
     }
@@ -173,9 +175,20 @@ class _PersonalRankingsTabState extends State<PersonalRankingsTab>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
-          padding: EdgeInsets.fromLTRB(20, 16, 20, 12),
-          child: SectionLabel('MY RANKINGS'),
+        Padding(
+          padding: const EdgeInsets.fromLTRB(
+            CsSpacing.pageHorizontal,
+            CsSpacing.base,
+            CsSpacing.pageHorizontal,
+            CsSpacing.md,
+          ),
+          child: Text(
+            'MY RANKINGS',
+            style: CsTypography.eyebrow.copyWith(
+              color: AppColors.textOnDark,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -206,11 +219,12 @@ class _PersonalRankingsTabState extends State<PersonalRankingsTab>
                   years: years,
                   selectedYear: _selectedYear,
                   onSelect: (year) => setState(() => _selectedYear = year),
+                  surface: CsSurface.dark,
                 ),
             ],
           ),
         ),
-        const SizedBox(height: 16),
+        const SizedBox(height: 14),
         Expanded(
           child: _RankingsList(
             rankings: rankings,
@@ -254,37 +268,21 @@ class _RankingsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-      color: AppColors.forestGreen,
-      backgroundColor: AppColors.card,
+      color: AppColors.textOnDark,
+      backgroundColor: AppColors.forestGreen,
       onRefresh: onRefresh,
       child: rankings.isEmpty
           ? ListView(
               physics: const AlwaysScrollableScrollPhysics(),
               children: [
+                // Reuses Passport's own dark-canvas empty state (the
+                // branded monogram + placeTitle message) now that
+                // Ranking sits on the identical deep-green canvas —
+                // Color Hierarchy Correction pass. No near-duplicate
+                // component introduced.
                 Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 32,
-                    vertical: 80,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Icon(
-                        Icons.leaderboard_outlined,
-                        color: AppColors.textSecondary,
-                        size: 48,
-                      ),
-                      const SizedBox(height: 16),
-                      Text(
-                        emptyMessage,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.playfairDisplay(
-                          color: AppColors.textSecondary,
-                          fontSize: 17,
-                        ),
-                      ),
-                    ],
-                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 80),
+                  child: PassportEmptyState(message: emptyMessage),
                 ),
               ],
             )
