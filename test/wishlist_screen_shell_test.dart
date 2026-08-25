@@ -5,26 +5,23 @@
 // app — so this mirrors the exact widget tree WishlistBody's build()
 // produces rather than pumping the real widget.
 //
-// Passport Unified Experience V1: WishlistBody is no longer a pushed
-// screen with its own Scaffold/back button/title — it's one of
-// PassportScreen's four local subsections, embedded directly beneath the
-// shared Passport header + local tab bar (see passport_unified_shell_test
-// .dart for that persistent-shell behavior). This mirror now reflects
-// just WishlistBody's own content: a dark top zone (the Restaurants/
-// Hotels selector, no title/subtitle of its own) over an ivory body
-// headed "YOUR WISHLIST". The old in-body "Trips" quick-link is gone —
-// Trips is a sibling tab one tap away on the shared bar now, so the
-// shortcut was redundant (see the deleted wishlist_trips_entry_test.dart).
+// PASSPORT — WISHLIST UI POLISH V1: the previous large ivory content
+// sheet is gone — the persistent deep-green canvas now runs the whole
+// way down, matching Passport's own collection body and the finalized
+// Ranking cards; saved venues render as ivory WishlistRestaurantCard/
+// WishlistHotelCard cards (covered in wishlist_venue_cards_test.dart)
+// floating individually on it, not compact rows inside an ivory sheet.
+// The old in-body "Trips" quick-link stayed removed (see the deleted
+// wishlist_trips_entry_test.dart from the earlier Passport Unified
+// Experience V1 pass) — Trips remains a sibling tab on the shared bar.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
-import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/core/widgets/cs_filter_chip.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
 import 'package:michelin_passport/core/widgets/cs_section_title.dart';
-import 'package:michelin_passport/features/wishlist/widgets/wishlist_venue_row.dart';
 
 enum _VenueType { restaurants, hotels }
 
@@ -35,7 +32,7 @@ Widget _filterRow({required _VenueType selected}) => Padding(
     CsSpacing.pageHorizontal,
     CsSpacing.md,
     CsSpacing.pageHorizontal,
-    CsSpacing.lg,
+    0,
   ),
   child: Row(
     children: [
@@ -63,99 +60,73 @@ Widget _shell({required _VenueType selected, required Widget body}) =>
           child: Column(
             children: [
               _filterRow(selected: selected),
-              Expanded(
-                child: ColoredBox(
-                  color: AppColors.ivory,
-                  child: Column(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.fromLTRB(
-                          CsSpacing.pageHorizontal,
-                          CsSpacing.lg,
-                          CsSpacing.pageHorizontal,
-                          CsSpacing.md,
-                        ),
-                        child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: CsSectionTitle(
-                            'YOUR WISHLIST',
-                            color: AppColors.forestGreen,
-                          ),
-                        ),
-                      ),
-                      Expanded(child: body),
-                    ],
+              const Padding(
+                padding: EdgeInsets.fromLTRB(
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.xl,
+                  CsSpacing.pageHorizontal,
+                  CsSpacing.md,
+                ),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: CsSectionTitle(
+                    'YOUR WISHLIST',
+                    color: AppColors.textOnDark,
                   ),
                 ),
               ),
+              Expanded(child: body),
             ],
           ),
         ),
       ),
     );
 
-// Mirrors WishlistBody's private _LoadingState/_ErrorState/_EmptyState.
+// Mirrors WishlistBody's private loading/_ErrorState/PassportEmptyState use.
 Widget _loadingState() => const Center(
   child: CircularProgressIndicator(
-    color: AppColors.forestGreen,
+    color: AppColors.textOnDark,
     strokeWidth: 1.5,
   ),
 );
 
 Widget _errorState(VoidCallback onRetry) => Center(
-  child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 56),
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const Icon(Icons.wifi_off_rounded, color: AppColors.taupe, size: 32),
-        const SizedBox(height: CsSpacing.base),
-        Text(
-          'Could not load your wishlist',
-          textAlign: TextAlign.center,
-          style: CsTypography.body.copyWith(color: AppColors.taupe),
-        ),
-        const SizedBox(height: CsSpacing.md),
-        TextButton(
-          onPressed: onRetry,
-          child: Text(
-            'Retry',
-            style: CsTypography.bodyMedium.copyWith(
-              color: AppColors.forestGreen,
-            ),
-          ),
-        ),
-      ],
-    ),
+  child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      const Icon(
+        Icons.wifi_off_rounded,
+        color: AppColors.secondaryOnDark,
+        size: 32,
+      ),
+      const SizedBox(height: CsSpacing.base),
+      Text(
+        'Could not load your wishlist',
+        style: TextStyle(color: AppColors.secondaryOnDark),
+      ),
+      const SizedBox(height: CsSpacing.md),
+      TextButton(onPressed: onRetry, child: const Text('Retry')),
+    ],
   ),
 );
 
 Widget _emptyState({required bool isHotels}) => Center(
   child: Padding(
-    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 56),
+    padding: const EdgeInsets.symmetric(horizontal: 32),
     child: Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         const CsImagePlaceholder(
-          width: 56,
-          height: 56,
-          borderRadius: BorderRadius.all(Radius.circular(14)),
+          width: 64,
+          height: 64,
+          borderRadius: BorderRadius.all(Radius.circular(12)),
           logoScale: 0.5,
         ),
         const SizedBox(height: CsSpacing.lg),
         Text(
-          isHotels ? 'No hotels saved yet' : 'No restaurants saved yet',
+          isHotels ? 'No hotels saved yet.' : 'No restaurants saved yet.',
           textAlign: TextAlign.center,
-          style: CsTypography.placeTitle.copyWith(color: AppColors.forestGreen),
-        ),
-        const SizedBox(height: CsSpacing.xs),
-        Text(
-          isHotels
-              ? "Save hotels you'd like to stay at and they'll appear here."
-              : "Save restaurants you'd like to experience and they'll "
-                    'appear here.',
-          textAlign: TextAlign.center,
-          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+          style: const TextStyle(color: AppColors.textOnDark),
         ),
       ],
     ),
@@ -164,9 +135,11 @@ Widget _emptyState({required bool isHotels}) => Center(
 
 void main() {
   group('WishlistBody outer shell', () {
-    testWidgets('a dark top zone with an explicit ivory ColoredBox body — '
-        'no own Scaffold or back button anymore, embedded in the Passport '
-        'shell instead', (tester) async {
+    testWidgets('a single persistent deep-green canvas runs the whole way '
+        'down — no separate ivory content sheet, no own Scaffold or back '
+        'button anymore, embedded in the Passport shell instead', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         _shell(selected: _VenueType.restaurants, body: _loadingState()),
       );
@@ -174,19 +147,21 @@ void main() {
         find.byWidgetPredicate(
           (w) => w is ColoredBox && w.color == AppColors.deepGreen,
         ),
-        findsOneWidget,
+        findsWidgets,
       );
       expect(
         find.byWidgetPredicate(
           (w) => w is ColoredBox && w.color == AppColors.ivory,
         ),
-        findsOneWidget,
+        findsNothing,
       );
       expect(find.text('YOUR WISHLIST'), findsOneWidget);
+      final title = tester.widget<Text>(find.text('YOUR WISHLIST'));
+      expect(title.style?.color, AppColors.textOnDark);
     });
 
-    testWidgets('Restaurants/Hotels selector: selected chip is ivory-on-'
-        'green, unselected is forest-green-on-green — never gold', (
+    testWidgets('Restaurants/Hotels selector: selected chip is deep-green-'
+        'on-ivory, unselected is ivory-on-forest-green — never gold', (
       tester,
     ) async {
       await tester.pumpWidget(
@@ -202,9 +177,8 @@ void main() {
       expect(chips[1].selected, isFalse);
     });
 
-    testWidgets('only Restaurants and Hotels exist — no All chip', (
-      tester,
-    ) async {
+    testWidgets('only Restaurants and Hotels exist — no All chip, no '
+        'Events chip (Events are not wishlistable)', (tester) async {
       await tester.pumpWidget(
         _shell(selected: _VenueType.restaurants, body: _loadingState()),
       );
@@ -212,11 +186,21 @@ void main() {
       expect(find.text('Events'), findsNothing);
       expect(find.text('Private Chefs'), findsNothing);
     });
+
+    testWidgets('no redundant Trips shortcut anywhere in the body', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _shell(selected: _VenueType.restaurants, body: _loadingState()),
+      );
+      expect(find.text('Trips'), findsNothing);
+      expect(find.text('View trips'), findsNothing);
+    });
   });
 
   group('WishlistBody states', () {
-    testWidgets('loading renders within the ivory body, "YOUR WISHLIST" '
-        'stays', (tester) async {
+    testWidgets('loading renders on the deep-green canvas, "YOUR '
+        'WISHLIST" stays', (tester) async {
       await tester.pumpWidget(
         _shell(selected: _VenueType.restaurants, body: _loadingState()),
       );
@@ -224,7 +208,7 @@ void main() {
       final indicator = tester.widget<CircularProgressIndicator>(
         find.byType(CircularProgressIndicator),
       );
-      expect(indicator.color, AppColors.forestGreen);
+      expect(indicator.color, AppColors.textOnDark);
       expect(find.text('YOUR WISHLIST'), findsOneWidget);
     });
 
@@ -244,31 +228,23 @@ void main() {
       expect(retried, isTrue);
     });
 
-    testWidgets('restaurants empty state shows restaurant-specific copy', (
-      tester,
-    ) async {
+    testWidgets('restaurants empty state shows restaurant-specific copy '
+        'via the canonical Passport empty-state shape', (tester) async {
       await tester.pumpWidget(
         _shell(
           selected: _VenueType.restaurants,
           body: _emptyState(isHotels: false),
         ),
       );
-      expect(find.text('No restaurants saved yet'), findsOneWidget);
-      expect(
-        find.textContaining("Save restaurants you'd like to experience"),
-        findsOneWidget,
-      );
+      expect(find.text('No restaurants saved yet.'), findsOneWidget);
+      expect(find.byType(CsImagePlaceholder), findsOneWidget);
     });
 
     testWidgets('hotels empty state shows hotel-specific copy', (tester) async {
       await tester.pumpWidget(
         _shell(selected: _VenueType.hotels, body: _emptyState(isHotels: true)),
       );
-      expect(find.text('No hotels saved yet'), findsOneWidget);
-      expect(
-        find.textContaining("Save hotels you'd like to stay at"),
-        findsOneWidget,
-      );
+      expect(find.text('No hotels saved yet.'), findsOneWidget);
     });
 
     testWidgets('empty state never renders gold', (tester) async {
@@ -281,45 +257,6 @@ void main() {
       for (final text in tester.widgetList<Text>(find.byType(Text))) {
         expect(text.style?.color, isNot(AppColors.gold));
       }
-    });
-  });
-
-  group('WishlistRowDivider — N-1 separators, no orphan trailing hairline', () {
-    Widget list(int itemCount) => MaterialApp(
-      home: Scaffold(
-        backgroundColor: AppColors.ivory,
-        body: ListView.builder(
-          itemCount: itemCount,
-          itemBuilder: (context, i) => Column(
-            children: [
-              if (i > 0) const WishlistRowDivider(),
-              const SizedBox(height: 20),
-            ],
-          ),
-        ),
-      ),
-    );
-
-    testWidgets('1 row renders zero dividers', (tester) async {
-      await tester.pumpWidget(list(1));
-      expect(find.byType(WishlistRowDivider), findsNothing);
-    });
-
-    testWidgets('3 rows render exactly 2 dividers', (tester) async {
-      await tester.pumpWidget(list(3));
-      expect(find.byType(WishlistRowDivider), findsNWidgets(2));
-    });
-
-    testWidgets('the divider color is a restrained taupe, never gold or '
-        'forest-green', (tester) async {
-      await tester.pumpWidget(
-        MaterialApp(home: Scaffold(body: WishlistRowDivider())),
-      );
-      final divider = tester.widget<Container>(find.byType(Container));
-      final decoration = divider.color;
-      expect(decoration, AppColors.taupe.withValues(alpha: 0.55));
-      expect(decoration, isNot(AppColors.gold));
-      expect(decoration, isNot(AppColors.forestGreen));
     });
   });
 }
