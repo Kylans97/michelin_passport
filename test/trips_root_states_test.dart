@@ -19,6 +19,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
+import 'package:michelin_passport/core/widgets/cs_primary_button.dart';
 import 'package:michelin_passport/core/widgets/cs_section_title.dart';
 
 const _emptyHeadline = 'No trips planned yet';
@@ -59,26 +60,9 @@ Widget _emptyState(VoidCallback onCreateTrip) => Column(
       style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
     ),
     const SizedBox(height: CsSpacing.xl),
-    Semantics(
-      button: true,
-      label: _cta,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onCreateTrip,
-          child: Container(
-            padding: const EdgeInsets.symmetric(
-              horizontal: CsSpacing.xl,
-              vertical: CsSpacing.md,
-            ),
-            decoration: BoxDecoration(
-              color: AppColors.gold,
-              borderRadius: BorderRadius.circular(CsRadius.pill),
-            ),
-            child: Text(_cta),
-          ),
-        ),
-      ),
+    SizedBox(
+      width: 200,
+      child: CsPrimaryButton(label: _cta, onTap: onCreateTrip),
     ),
   ],
 );
@@ -159,7 +143,7 @@ void main() {
         _wrap(
           _bodyShell(
             const Center(
-              child: CircularProgressIndicator(color: AppColors.gold),
+              child: CircularProgressIndicator(color: AppColors.textOnDark),
             ),
           ),
         ),
@@ -257,8 +241,39 @@ void main() {
 
     testWidgets('CTA tap target meets the 44px minimum', (tester) async {
       await tester.pumpWidget(_wrap(_emptyState(() {})));
-      final size = tester.getSize(find.byType(InkWell));
+      final size = tester.getSize(find.byType(CsPrimaryButton));
       expect(size.height, greaterThanOrEqualTo(44));
+    });
+
+    testWidgets('CTA is never gold — CsPrimaryButton\'s own no-gold '
+        'guarantee', (tester) async {
+      await tester.pumpWidget(_wrap(_emptyState(() {})));
+      final text = tester.widget<Text>(find.text(_cta));
+      expect(text.style?.color, isNot(AppColors.gold));
+    });
+  });
+
+  group('PLANNED VISITS REFINEMENT — section-level empty state', () {
+    // Mirrors the exact Text planned_trips_screen.dart renders in place
+    // of PLANNED VISITS' rows when the user has planned-visit history but
+    // nothing currently upcoming — a small, restrained line under the
+    // still-visible "PLANNED VISITS" heading, never a large empty block.
+    Widget nothingPlannedYet() => Text(
+      'Nothing planned yet.',
+      style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+    );
+
+    testWidgets('renders as a small, restrained line — no illustration, '
+        'no CTA', (tester) async {
+      await tester.pumpWidget(_wrap(nothingPlannedYet()));
+      expect(find.text('Nothing planned yet.'), findsOneWidget);
+      expect(find.byType(CsPrimaryButton), findsNothing);
+    });
+
+    testWidgets('never gold', (tester) async {
+      await tester.pumpWidget(_wrap(nothingPlannedYet()));
+      final text = tester.widget<Text>(find.text('Nothing planned yet.'));
+      expect(text.style?.color, isNot(AppColors.gold));
     });
   });
 }

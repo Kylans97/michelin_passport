@@ -12,6 +12,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/trips/widgets/planned_venue_row.dart';
 import 'package:michelin_passport/features/trips/widgets/trip_card.dart';
 import 'package:michelin_passport/features/trips/widgets/trip_eyebrow.dart';
@@ -185,6 +186,24 @@ void main() {
         ),
       );
       expect(find.text('1 restaurant · 1 hotel'), findsOneWidget);
+    });
+
+    testWidgets('TRIPS HERO REDESIGN: the venue-counts line is never gold '
+        '— no gold anywhere on the visual-direction-audited Trips surface', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          TripCard(
+            trip: _trip(),
+            restaurantCount: 1,
+            hotelCount: 1,
+            onTap: () {},
+          ),
+        ),
+      );
+      final text = tester.widget<Text>(find.text('1 restaurant · 1 hotel'));
+      expect(text.style?.color, isNot(AppColors.gold));
     });
 
     testWidgets('tap fires onTap', (tester) async {

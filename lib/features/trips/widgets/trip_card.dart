@@ -33,6 +33,21 @@ String formatTripDateRange(PlannedTrip trip) {
       '${_monthNames[e.month - 1]} ${e.year}';
 }
 
+/// "1 restaurant · 1 hotel" — shared by [TripCard] and [TripHeroCard] so
+/// both read the exact same wording rather than each growing their own
+/// copy of this logic.
+String tripVenueCountsLine({
+  required int restaurantCount,
+  required int hotelCount,
+}) {
+  final parts = <String>[
+    if (restaurantCount > 0)
+      '$restaurantCount restaurant${restaurantCount == 1 ? '' : 's'}',
+    if (hotelCount > 0) '$hotelCount hotel${hotelCount == 1 ? '' : 's'}',
+  ];
+  return parts.isEmpty ? 'No venues planned yet' : parts.join(' · ');
+}
+
 /// One trip in "UPCOMING" — title, date range, and a compact
 /// restaurants/hotels count line resolved by the caller (see
 /// PlannedTripsScreen, which groups ResolvedPlannedVenue by trip_id). A
@@ -54,19 +69,12 @@ class TripCard extends StatelessWidget {
     required this.onTap,
   });
 
-  String get _countsLine {
-    final parts = <String>[
-      if (restaurantCount > 0)
-        '$restaurantCount restaurant${restaurantCount == 1 ? '' : 's'}',
-      if (hotelCount > 0) '$hotelCount hotel${hotelCount == 1 ? '' : 's'}',
-    ];
-    return parts.isEmpty ? 'No venues planned yet' : parts.join(' · ');
-  }
-
   @override
   Widget build(BuildContext context) => Semantics(
     button: true,
-    label: '${trip.title}. ${formatTripDateRange(trip)}. $_countsLine',
+    label:
+        '${trip.title}. ${formatTripDateRange(trip)}. '
+        '${tripVenueCountsLine(restaurantCount: restaurantCount, hotelCount: hotelCount)}',
     child: Material(
       color: Colors.transparent,
       child: InkWell(
@@ -105,9 +113,12 @@ class TripCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 6),
                     Text(
-                      _countsLine,
+                      tripVenueCountsLine(
+                        restaurantCount: restaurantCount,
+                        hotelCount: hotelCount,
+                      ),
                       style: CsTypography.metadata.copyWith(
-                        color: AppColors.gold,
+                        color: AppColors.textOnDark,
                         fontWeight: FontWeight.w600,
                       ),
                     ),
