@@ -8,6 +8,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/features/rankings/widgets/community_rankings_tab.dart';
 import 'package:michelin_passport/models/ranking_entry.dart';
 import 'package:michelin_passport/models/restaurant.dart';
@@ -110,6 +111,36 @@ void main() {
       expect(find.textContaining('Exception'), findsNothing);
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets('the empty message uses secondaryOnDark — the correct '
+        'dark-surface text token — never textSecondary, a light-surface '
+        'token that would render dark-on-dark and nearly invisible on '
+        'this screen\'s deep-green canvas', (tester) async {
+      await tester.pumpWidget(
+        _wrap(loadCommunityRankings: ({stars}) async => []),
+      );
+      await tester.pumpAndSettle();
+      final emptyText = tester.widget<Text>(find.text('No community data yet'));
+      expect(emptyText.style?.color, AppColors.secondaryOnDark);
+      expect(emptyText.style?.color, isNot(AppColors.textSecondary));
+    });
+
+    testWidgets('the error message uses secondaryOnDark — same '
+        'dark-surface token as the empty message, never textSecondary', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          loadCommunityRankings: ({stars}) async => throw Exception('down'),
+        ),
+      );
+      await tester.pumpAndSettle();
+      final errorText = tester.widget<Text>(
+        find.text('Could not load community rankings'),
+      );
+      expect(errorText.style?.color, AppColors.secondaryOnDark);
+      expect(errorText.style?.color, isNot(AppColors.textSecondary));
+    });
   });
 
   group('CommunityRankingsTab — star filter', () {
@@ -134,6 +165,22 @@ void main() {
       await tester.tap(find.text('All ★'));
       await tester.pumpAndSettle();
       expect(requestedStars, [null, 2, null]);
+    });
+  });
+
+  group('CommunityRankingsTab — responsive', () {
+    testWidgets('the filter row and a ranked card (stars + flag + city) '
+        'never overflow at 320px', (tester) async {
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.binding.setSurfaceSize(const Size(320, 844));
+      await tester.pumpWidget(
+        _wrap(loadCommunityRankings: ({stars}) async => [_entry(stars: 3)]),
+      );
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+      expect(find.text('All ★'), findsOneWidget);
+      expect(find.text('★★★'), findsOneWidget);
+      expect(find.text('Maison Verte'), findsOneWidget);
     });
   });
 

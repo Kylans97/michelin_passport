@@ -57,7 +57,7 @@ class ExploreFeaturedEventCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               AspectRatio(
-                aspectRatio: 16 / 10,
+                aspectRatio: 16 / 9,
                 child: _EventImage(imageUrl: event.imageUrl),
               ),
               Padding(

@@ -193,9 +193,19 @@ class _CommunityScreenState extends State<CommunityScreen> {
         ),
         Expanded(
           child: SingleChildScrollView(
+            // Community Rankings V1 UI Polish — a fixed top inset here
+            // (rather than relying on Hottest Places' own trailing
+            // SizedBox as the only gap above Community Rankings) keeps the
+            // page from starting abruptly whenever Hottest Places is
+            // absent (today: zero restaurants meet the community-rating
+            // threshold). Same CsSpacing.section major-section-break token
+            // already used between every other pair of sections on this
+            // screen, so the rhythm stays identical whether Hottest Places
+            // is present or not — never a spacing value tuned to today's
+            // empty state specifically.
             padding: const EdgeInsets.fromLTRB(
               CsSpacing.pageHorizontal,
-              0,
+              CsSpacing.section,
               CsSpacing.pageHorizontal,
               CsSpacing.section,
             ),
@@ -308,9 +318,7 @@ class _CommunityActionLink extends StatelessWidget {
             Flexible(
               child: Text(
                 label,
-                style: CsTypography.bodyMedium.copyWith(
-                  color: AppColors.ivory,
-                ),
+                style: CsTypography.bodyMedium.copyWith(color: AppColors.ivory),
               ),
             ),
             const SizedBox(width: 6),

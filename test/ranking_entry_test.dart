@@ -69,6 +69,24 @@ void main() {
       expect(entry.restaurantId, isA<String>());
     });
 
+    test('a genuinely malformed row (wrong type, not just a missing/null '
+        'field) throws explicitly rather than silently becoming a zero — '
+        'RankingsRepository.getCommunityRankings() lets this propagate as '
+        'a real error, never swallowing it into an empty result', () {
+      expect(
+        () => CommunityRankingEntry.fromJson({
+          'restaurant_id': 'r1',
+          'name': 'Test',
+          'city': 'Test',
+          'country_flag': '🏳️',
+          'michelin_stars': 0,
+          'community_rating': 'not-a-number', // wrong type, not null
+          'total_visits': 3,
+        }),
+        throwsA(isA<TypeError>()),
+      );
+    });
+
     test('mapping a list of rows preserves backend order — the repository '
         'never re-sorts client-side', () {
       final rows = [

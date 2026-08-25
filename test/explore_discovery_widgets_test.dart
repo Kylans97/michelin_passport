@@ -188,6 +188,29 @@ void main() {
       );
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets('View all events sits on the title\'s row, not the '
+        'subtitle\'s — the subtitle gets the section\'s full width and '
+        'never competes with the CTA for space', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          WhatsOnSection(
+            featuredEvent: _event(),
+            onTapEvent: (_) {},
+            onViewAll: () {},
+          ),
+          width: 320,
+        ),
+      );
+      final titleY = tester.getTopLeft(find.text("WHAT'S ON")).dy;
+      final subtitleY = tester
+          .getTopLeft(find.text('Things worth making plans for.'))
+          .dy;
+      final viewAllY = tester.getTopLeft(find.text('View all events')).dy;
+
+      expect(viewAllY, closeTo(titleY, 6));
+      expect(subtitleY, greaterThan(viewAllY));
+    });
   });
 
   group('WorthTheJourneySection', () {

@@ -67,7 +67,7 @@ Widget _accountSection({
           onTap: onNotifications,
         ),
         _SettingsRowMirror(
-          icon: Icons.logout_rounded,
+          icon: Icons.logout_outlined,
           label: 'Sign out',
           onTap: onSignOut,
         ),

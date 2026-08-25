@@ -14,6 +14,13 @@ import 'explore_discovery_cards.dart';
 /// pairing Explore's own header and Passport's header both already use.
 /// Copy only (no data), so it's safe even when the section beneath it is
 /// momentarily empty while loading.
+///
+/// [trailing] (e.g. "View all events →") shares the title's row, not the
+/// subtitle's — the subtitle always gets the section's full width on its
+/// own line below. Squeezing all three (title, subtitle, trailing) into
+/// one Row previously forced the subtitle to compete with trailing for
+/// horizontal space, clipping it on narrow widths even though nothing sat
+/// directly beside it visually.
 class _DiscoverySectionHeader extends StatelessWidget {
   final String title;
   final String subtitle;
@@ -26,32 +33,30 @@ class _DiscoverySectionHeader extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Row(
-    crossAxisAlignment: CrossAxisAlignment.end,
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CsSectionTitle(
+      Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: CsSectionTitle(
               title,
               color: AppColors.textOnDark,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
-            const SizedBox(height: 2),
-            Text(
-              subtitle,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: CsTypography.metadata.copyWith(
-                color: AppColors.secondaryOnDark,
-              ),
-            ),
-          ],
-        ),
+          ),
+          if (trailing != null) Flexible(child: trailing!),
+        ],
       ),
-      if (trailing != null) Flexible(child: trailing!),
+      const SizedBox(height: 2),
+      Text(
+        subtitle,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+        style: CsTypography.metadata.copyWith(color: AppColors.secondaryOnDark),
+      ),
     ],
   );
 }

@@ -4,6 +4,7 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/utils/username_rules.dart';
+import '../../core/widgets/cs_metric_strip.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_text_field.dart';
 import '../../data/repositories/auth_repository.dart';
@@ -215,35 +216,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   const SizedBox(height: CsSpacing.section),
                   const TripSectionLabelStandIn('JOURNEY'),
                   const SizedBox(height: CsSpacing.md),
-                  Row(
-                    children: [
-                      _StatTile(
+                  CsMetricStrip(
+                    metrics: [
+                      CsMetric(
                         value: '${user.restaurantsVisited}',
-                        label: 'Restaurants',
-                        icon: Icons.restaurant_rounded,
+                        label: 'RESTAURANTS',
                       ),
-                      const SizedBox(width: CsSpacing.sm),
-                      _StatTile(
+                      CsMetric(
                         value: '${user.michelinStarsCollected}',
-                        label: 'Stars',
-                        icon: Icons.star_rounded,
+                        label: 'STARS',
                       ),
-                    ],
-                  ),
-                  const SizedBox(height: CsSpacing.sm),
-                  Row(
-                    children: [
-                      _StatTile(
+                      CsMetric(
                         value: '${user.countriesVisited}',
-                        label: 'Countries',
-                        icon: Icons.public_rounded,
+                        label: 'COUNTRIES',
                       ),
-                      const SizedBox(width: CsSpacing.sm),
-                      _StatTile(
-                        value: '${user.citiesVisited}',
-                        label: 'Cities',
-                        icon: Icons.location_city_rounded,
-                      ),
+                      CsMetric(value: '${user.citiesVisited}', label: 'CITIES'),
                     ],
                   ),
 
@@ -281,7 +268,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                   _SettingsRow(
-                    icon: Icons.logout_rounded,
+                    // Icon audit: was logout_rounded (solid), the only
+                    // filled icon among this list's four otherwise
+                    // outline-stroke icons — normalized to match.
+                    icon: Icons.logout_outlined,
                     label: 'Sign out',
                     onTap: _signOut,
                   ),
@@ -396,6 +386,11 @@ class _ProfileHeader extends StatelessWidget {
   }
 }
 
+/// Gold audit (Primary Tabs UI Polish V1): the border/initials were gold
+/// purely decoratively — no Michelin-recognition meaning — inconsistent
+/// with gold being reserved for stars/Keys. Now `subtleBorderDark`/`ivory`,
+/// matching the restrained editorial-identity treatment used everywhere
+/// else on this screen.
 class _Avatar extends StatelessWidget {
   final String initials;
   const _Avatar({required this.initials});
@@ -407,12 +402,12 @@ class _Avatar extends StatelessWidget {
     decoration: BoxDecoration(
       shape: BoxShape.circle,
       color: AppColors.brandGreenLight,
-      border: Border.all(color: AppColors.gold.withValues(alpha: 0.5)),
+      border: Border.all(color: AppColors.subtleBorderDark),
     ),
     alignment: Alignment.center,
     child: Text(
       initials,
-      style: CsTypography.placeTitle.copyWith(color: AppColors.gold),
+      style: CsTypography.placeTitle.copyWith(color: AppColors.ivory),
     ),
   );
 }
@@ -431,14 +426,14 @@ class _ChooseUsernameBanner extends StatelessWidget {
         width: double.infinity,
         padding: const EdgeInsets.all(CsSpacing.base),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.gold.withValues(alpha: 0.4)),
+          border: Border.all(color: AppColors.subtleBorderDark),
           borderRadius: BorderRadius.circular(CsRadius.medium),
         ),
         child: Row(
           children: [
             const Icon(
               Icons.alternate_email_rounded,
-              color: AppColors.gold,
+              color: AppColors.ivory,
               size: 18,
             ),
             const SizedBox(width: CsSpacing.sm),
@@ -452,7 +447,7 @@ class _ChooseUsernameBanner extends StatelessWidget {
             ),
             const Icon(
               Icons.chevron_right_rounded,
-              color: AppColors.gold,
+              color: AppColors.secondaryOnDark,
               size: 20,
             ),
           ],
@@ -462,61 +457,13 @@ class _ChooseUsernameBanner extends StatelessWidget {
   );
 }
 
-// ── Journey stats ──────────────────────────────────────────────────────
-
-class _StatTile extends StatelessWidget {
-  final String value;
-  final String label;
-  final IconData icon;
-  const _StatTile({
-    required this.value,
-    required this.label,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) => Expanded(
-    child: Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: CsSpacing.md,
-        horizontal: CsSpacing.base,
-      ),
-      decoration: BoxDecoration(
-        color: AppColors.brandGreenLight,
-        borderRadius: BorderRadius.circular(CsRadius.medium),
-        border: Border.all(color: AppColors.subtleBorderDark),
-      ),
-      child: Row(
-        children: [
-          Icon(icon, color: AppColors.gold, size: 18),
-          const SizedBox(width: CsSpacing.sm),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                value,
-                style: CsTypography.placeTitle.copyWith(
-                  color: AppColors.textOnDark,
-                  fontSize: 20,
-                ),
-              ),
-              Text(
-                label,
-                style: CsTypography.metadata.copyWith(
-                  color: AppColors.secondaryOnDark,
-                  fontSize: 11,
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
-    ),
-  );
-}
-
 // ── Friends entry row ─────────────────────────────────────────────────
 
+/// Simplified from a bordered/iconed card into a restrained editorial
+/// action row — the same "label … detail →" language as Community's
+/// `_CommunityActionLink` (no card background, no leading icon avatar) —
+/// so Friends reads as part of Profile's content rather than a dashboard
+/// tile. Tap target and semantics label are unchanged.
 class _FriendsEntryRow extends StatelessWidget {
   final int? friendCount;
   final int? pendingCount;
@@ -540,46 +487,40 @@ class _FriendsEntryRow extends StatelessWidget {
     return Semantics(
       button: true,
       label: 'Friends. ${parts.join(', ')}',
+      excludeSemantics: true,
       child: Material(
-        color: AppColors.brandGreenLight,
-        borderRadius: BorderRadius.circular(CsRadius.medium),
+        color: Colors.transparent,
         child: InkWell(
           onTap: onTap,
           borderRadius: BorderRadius.circular(CsRadius.medium),
-          child: Container(
-            padding: const EdgeInsets.all(CsSpacing.base),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(CsRadius.medium),
-              border: Border.all(color: AppColors.subtleBorderDark),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+              vertical: CsSpacing.md,
+              horizontal: CsSpacing.xs,
             ),
             child: Row(
               children: [
-                const Icon(
-                  Icons.people_outline_rounded,
-                  color: AppColors.gold,
-                  size: 20,
-                ),
-                const SizedBox(width: CsSpacing.sm),
                 Expanded(
                   child: Text(
                     'Friends',
-                    style: CsTypography.bodyMedium.copyWith(
+                    style: CsTypography.body.copyWith(
                       color: AppColors.textOnDark,
                     ),
                   ),
                 ),
-                if (parts.isNotEmpty)
+                if (parts.isNotEmpty) ...[
                   Text(
                     parts.join(' · '),
                     style: CsTypography.metadata.copyWith(
                       color: AppColors.secondaryOnDark,
                     ),
                   ),
-                const SizedBox(width: CsSpacing.sm),
+                  const SizedBox(width: CsSpacing.sm),
+                ],
                 const Icon(
-                  Icons.chevron_right_rounded,
-                  color: AppColors.secondaryOnDark,
-                  size: 20,
+                  Icons.arrow_forward_rounded,
+                  color: AppColors.ivory,
+                  size: 16,
                 ),
               ],
             ),

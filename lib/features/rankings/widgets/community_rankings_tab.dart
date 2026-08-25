@@ -134,20 +134,16 @@ class _CommunityRankingsTabState extends State<CommunityRankingsTab> {
                 );
               }
               if (snap.hasError) {
-                return Center(
-                  child: Text(
-                    'Could not load community rankings',
-                    style: GoogleFonts.inter(color: AppColors.textSecondary),
-                  ),
+                return const _RankingsMessage(
+                  icon: Icons.wifi_off_rounded,
+                  message: 'Could not load community rankings',
                 );
               }
               final entries = snap.data ?? [];
               if (entries.isEmpty) {
-                return Center(
-                  child: Text(
-                    'No community data yet',
-                    style: GoogleFonts.inter(color: AppColors.textSecondary),
-                  ),
+                return const _RankingsMessage(
+                  icon: Icons.emoji_events_outlined,
+                  message: 'No community data yet',
                 );
               }
               return ListView.builder(
@@ -165,6 +161,44 @@ class _CommunityRankingsTabState extends State<CommunityRankingsTab> {
       ],
     );
   }
+}
+
+// ── Empty / error message ───────────────────────────────────────────────────
+
+/// Primary Tabs UI Polish V1 bugfix + polish: the previous `Center` inside
+/// the tab's `Expanded` region vertically centered the message in all
+/// leftover space below the filter row — on a typical phone that reads as
+/// floating oddly low, disconnected from the filters right above it. This
+/// anchors it just below the filters instead, like the next natural
+/// content block. It also fixes a real color-token bug: this file's
+/// message text (and, elsewhere in this file, the name/city/visits text)
+/// used `AppColors.textPrimary`/`textSecondary` — near-black/dark-brown
+/// tokens meant for light surfaces — on `CommunityRankingsScreen`'s dark
+/// green canvas, rendering as low-contrast dark-on-dark. `textOnDark`/
+/// `secondaryOnDark` are the correct dark-surface counterparts.
+class _RankingsMessage extends StatelessWidget {
+  final IconData icon;
+  final String message;
+  const _RankingsMessage({required this.icon, required this.message});
+
+  @override
+  Widget build(BuildContext context) => Align(
+    alignment: Alignment.topCenter,
+    child: Padding(
+      padding: const EdgeInsets.only(top: 56),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, color: AppColors.secondaryOnDark, size: 28),
+          const SizedBox(height: 12),
+          Text(
+            message,
+            style: GoogleFonts.inter(color: AppColors.secondaryOnDark),
+          ),
+        ],
+      ),
+    ),
+  );
 }
 
 // ── Community rank card ───────────────────────────────────────────────────────
@@ -238,11 +272,23 @@ class _CommunityRankCard extends StatelessWidget {
                   children: [
                     StarRow(count: entry.michelinStars, size: 11),
                     const SizedBox(width: 8),
-                    Text(
-                      '${entry.countryFlag}  ${entry.city}',
-                      style: GoogleFonts.inter(
-                        color: AppColors.textSecondary,
-                        fontSize: 11,
+                    // Responsiveness pass: this was a bare Text — with no
+                    // Flexible/ellipsis, a 2-3 star restaurant with a
+                    // flag+city combination could exceed the row's
+                    // available width (confirmed via a 320px widget test:
+                    // 2 stars + "🇫🇷  Paris" overflowed by 19px). Flexible
+                    // + maxLines/overflow matches every other name/city
+                    // row in this codebase (e.g. explore_discovery_cards
+                    // .dart, community_screen.dart's Hottest Places card).
+                    Flexible(
+                      child: Text(
+                        '${entry.countryFlag}  ${entry.city}',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.inter(
+                          color: AppColors.textSecondary,
+                          fontSize: 11,
+                        ),
                       ),
                     ),
                   ],
