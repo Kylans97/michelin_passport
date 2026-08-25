@@ -1,14 +1,22 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/event.dart';
 import '../../models/hotel.dart';
 import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
+import 'events_repository.dart' show EventsRepository;
 import 'hotel_repository.dart' show hotelFullColumns;
 import 'restaurant_repository.dart' show restaurantFullColumns;
 
 // public.wishlist is polymorphic, same shape as public.visits: entity_type +
-// entity_id, no foreign key on entity_id.
+// entity_id, no foreign key on entity_id. EVENT WISHLIST V1 adds 'event' as
+// a third entity_type — see
+// supabase/migrations/20260825150000_add_event_wishlist.sql (widens the
+// existing entity_type CHECK constraint; no new table, same unique
+// (user_id, entity_type, entity_id) constraint, same RLS policies —
+// nothing keyed on entity_type there).
 const _restaurantEntity = 'restaurant';
 const _hotelEntity = 'hotel';
+const _eventEntity = 'event';
 
 class WishlistRepository {
   WishlistRepository(this._client);
@@ -116,6 +124,59 @@ class WishlistRepository {
 
   Future<void> removeHotel({required String userId, required String hotelId}) =>
       _remove(userId: userId, entityType: _hotelEntity, entityId: hotelId);
+
+  // ── Event API (EVENT WISHLIST V1) — mirrors the restaurant/hotel ones
+  // exactly, same shape, same _toggle/_isWishlisted/_add/_remove shared
+  // implementation. Wishlist = canonical individual Event id only (see
+  // this feature's own migration header comment) — no event-series/
+  // recurring-identity concept, deliberately out of scope for V1.
+
+  Future<Set<String>> loadWishlistEventIds(String userId) async {
+    final rows = await _client
+        .from('wishlist')
+        .select('entity_id')
+        .eq('user_id', userId)
+        .eq('entity_type', _eventEntity);
+    return {for (final row in rows as List) row['entity_id'] as String};
+  }
+
+  Future<bool> toggleEventWishlist({
+    required String userId,
+    required String eventId,
+  }) => _toggle(userId: userId, entityType: _eventEntity, entityId: eventId);
+
+  Future<bool> isEventWishlisted({
+    required String userId,
+    required String eventId,
+  }) => _isWishlisted(
+    userId: userId,
+    entityType: _eventEntity,
+    entityId: eventId,
+  );
+
+  Future<void> addEvent({required String userId, required String eventId}) =>
+      _add(userId: userId, entityType: _eventEntity, entityId: eventId);
+
+  Future<void> removeEvent({required String userId, required String eventId}) =>
+      _remove(userId: userId, entityType: _eventEntity, entityId: eventId);
+
+  // Every wishlisted Event, added_at-desc, resolved against the canonical
+  // `events` table via EventsRepository.loadEventsByIds — one batched
+  // lookup regardless of wishlist size, matching [getWishlist]'s own
+  // "resolve real rows, skip whatever no longer exists" shape. An Event
+  // later unpublished/archived/deleted simply drops out of this list —
+  // never a crash, never an orphaned entry surfaced to the UI (see the
+  // migration's own doc comment on this).
+  Future<List<Event>> getWishlistEvents(String userId) async {
+    final ids = await _wishlistedIds(userId, _eventEntity);
+    if (ids.isEmpty) return [];
+    final events = await EventsRepository(_client).loadEventsByIds(ids);
+    final byId = {for (final event in events) event.id: event};
+    return [
+      for (final id in ids)
+        if (byId[id] != null) byId[id]!,
+    ];
+  }
 
   // ── Combined All/Restaurants/Hotels wishlist ────────────────────────────
 

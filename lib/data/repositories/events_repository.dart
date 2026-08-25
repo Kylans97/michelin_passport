@@ -223,6 +223,24 @@ class EventsRepository {
     return Event.fromJson(list.first as Map<String, dynamic>);
   }
 
+  /// EVENT WISHLIST V1 — one batched lookup for a set of Event ids
+  /// (e.g. WishlistRepository.getWishlistEvents resolving saved-event
+  /// ids), never one query per id. No status/lifecycle filtering here —
+  /// unlike [_loadHostedEvents]/[upcomingHostedEvents], the caller may
+  /// deliberately want past or cancelled Events too (a Wishlist is user
+  /// intent/history, not a live discovery feed). [eventIds] that no
+  /// longer resolve (an Event later unpublished/archived/deleted) are
+  /// simply absent from the result — never an error, never a crash — so
+  /// callers resolving a wishlist can skip whatever isn't returned.
+  Future<List<Event>> loadEventsByIds(List<String> eventIds) async {
+    if (eventIds.isEmpty) return const [];
+    final rows = await _client.from('events').select().inFilter('id', eventIds);
+    return [
+      for (final row in rows as List)
+        Event.fromJson(row as Map<String, dynamic>),
+    ];
+  }
+
   /// The restaurants/hotels linked to [eventId] — three queries total
   /// (join-table ids, then one batched restaurants_full lookup, one
   /// batched hotels_full lookup), never one query per linked venue.

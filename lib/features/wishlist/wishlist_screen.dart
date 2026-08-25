@@ -7,17 +7,26 @@ import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
 import '../../core/widgets/cs_section_title.dart';
 import '../../data/repositories/wishlist_repository.dart';
+import '../../models/event.dart';
 import '../../models/passport_venue.dart';
-import '../explore/models/explore_filters.dart' show ExploreVenueType;
+import '../events/events_screen.dart';
 import '../passport/widgets/passport_empty_state.dart';
+import 'event_wishlist_schedule.dart';
+import 'widgets/event_wishlist_card.dart';
+import 'widgets/event_wishlist_empty_state.dart';
 import 'widgets/wishlist_venue_cards.dart';
 import 'wishlist_view_model.dart';
 
-/// My Wishlist: restaurants and hotels the user wants to go to someday —
-/// distinct from Planned Visits/Stays ("I intend to go around this date").
-/// Restaurants/Hotels only (no All category — see [defaultWishlistVenueType]
-/// for the default-selection rule), via the same [PassportVenue]
-/// abstraction Explore/Passport use.
+/// My Wishlist: restaurants, hotels and (EVENT WISHLIST V1) events the
+/// user wants to go to someday — distinct from Planned Visits/Stays
+/// ("I intend to go around this date") and, for Events specifically,
+/// distinct from Going/Interested (see event_wishlist_schedule.dart's own
+/// header comment — saving to Wishlist is a separate user action from
+/// either). No All category (see [defaultWishlistVenueType] for the
+/// default-selection rule). Restaurants/Hotels go through the shared
+/// [PassportVenue] abstraction Explore/Passport use; Events are a
+/// different canonical entity and are held/rendered separately (see
+/// [_events] alongside [_venues]).
 ///
 /// Passport Unified Experience V1: re-homed from a pushed, independently
 /// scaffolded screen into one of [PassportScreen]'s four local
@@ -51,13 +60,13 @@ class _WishlistBodyState extends State<WishlistBody> {
     Supabase.instance.client,
   );
 
-  // Wishlist has no "All" category (unlike Explore/Passport) — just
-  // Restaurants/Hotels.
-  static const _types = [ExploreVenueType.restaurants, ExploreVenueType.hotels];
-  ExploreVenueType _venueType = ExploreVenueType.restaurants;
+  // Wishlist has no "All" category (unlike Explore/Passport) — Restaurants/
+  // Hotels/Events (EVENT WISHLIST V1 adds the third).
+  WishlistVenueType _venueType = WishlistVenueType.restaurants;
   bool _defaultApplied = false;
 
   List<PassportVenue>? _venues; // null until the first load completes.
+  List<Event>? _events; // null until the first load completes.
   bool _loading = true; // true only for the very first, blocking load.
   bool _loadError = false;
   bool _refreshing = false; // guards overlapping refresh calls.
@@ -74,14 +83,18 @@ class _WishlistBodyState extends State<WishlistBody> {
     if (_refreshing) return;
     _refreshing = true;
     try {
-      final venues = await _repo.loadWishlistVenues(_userId);
+      final venuesFuture = _repo.loadWishlistVenues(_userId);
+      final eventsFuture = _repo.getWishlistEvents(_userId);
+      final venues = await venuesFuture;
+      final events = await eventsFuture;
       if (!mounted) return;
       setState(() {
         _venues = venues;
+        _events = events;
         _loading = false;
         _loadError = false;
       });
-      _applyDefaultVenueType(venues);
+      _applyDefaultVenueType(venues, events);
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -93,10 +106,10 @@ class _WishlistBodyState extends State<WishlistBody> {
     }
   }
 
-  void _applyDefaultVenueType(List<PassportVenue> items) {
+  void _applyDefaultVenueType(List<PassportVenue> venues, List<Event> events) {
     if (_defaultApplied) return;
     _defaultApplied = true;
-    final defaultType = defaultWishlistVenueType(items);
+    final defaultType = defaultWishlistVenueType(venues, events);
     if (defaultType != _venueType && mounted) {
       setState(() => _venueType = defaultType);
     }
@@ -126,17 +139,43 @@ class _WishlistBodyState extends State<WishlistBody> {
     }
   }
 
+  // Mirrors [_remove] exactly — optimistic removal from [_events],
+  // reverted if the server call fails. Never deletes the Event itself,
+  // never touches Going/Interested/Attendance (Wishlist and event social
+  // status are separate concepts — see this feature's own spec).
+  Future<void> _removeEvent(Event event) async {
+    final events = _events;
+    if (events == null) return;
+    final index = events.indexOf(event);
+    if (index == -1) return;
+    setState(() => events.removeAt(index));
+    try {
+      await _repo.removeEvent(userId: _userId, eventId: event.id);
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => events.insert(index, event));
+    }
+  }
+
+  void _openExploreEvents() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const EventsScreen()),
+  );
+
   bool _matchesFilter(PassportVenue venue) => switch (_venueType) {
-    ExploreVenueType.all => true,
-    ExploreVenueType.restaurants => venue is RestaurantVenue,
-    ExploreVenueType.hotels => venue is HotelVenue,
+    WishlistVenueType.events => false,
+    WishlistVenueType.restaurants => venue is RestaurantVenue,
+    WishlistVenueType.hotels => venue is HotelVenue,
   };
 
   @override
   Widget build(BuildContext context) {
+    final isEvents = _venueType == WishlistVenueType.events;
     final allVenues = _venues ?? [];
     final items = allVenues.where(_matchesFilter).toList();
-    final isHotels = _venueType == ExploreVenueType.hotels;
+    final isHotels = _venueType == WishlistVenueType.hotels;
+    final events = _events ?? [];
+    final schedule = scheduleEventWishlist(events);
 
     return ColoredBox(
       color: AppColors.deepGreen,
@@ -156,12 +195,14 @@ class _WishlistBodyState extends State<WishlistBody> {
                 ),
                 child: Row(
                   children: [
-                    for (var i = 0; i < _types.length; i++) ...[
+                    for (var i = 0; i < WishlistVenueType.values.length; i++) ...[
                       if (i > 0) const SizedBox(width: CsSpacing.sm),
                       CsFilterChip(
-                        label: _types[i].label,
-                        selected: _types[i] == _venueType,
-                        onTap: () => setState(() => _venueType = _types[i]),
+                        label: WishlistVenueType.values[i].label,
+                        selected: WishlistVenueType.values[i] == _venueType,
+                        onTap: () => setState(
+                          () => _venueType = WishlistVenueType.values[i],
+                        ),
                       ),
                     ],
                   ],
@@ -197,6 +238,8 @@ class _WishlistBodyState extends State<WishlistBody> {
                 hasScrollBody: false,
                 child: _ErrorState(onRetry: _load),
               )
+            else if (isEvents)
+              ..._eventSlivers(schedule)
             else if (items.isEmpty)
               SliverFillRemaining(
                 hasScrollBody: false,
@@ -242,6 +285,70 @@ class _WishlistBodyState extends State<WishlistBody> {
       ),
     );
   }
+
+  // EVENT WISHLIST V1 — UPCOMING (nearest first) then, only when non-empty,
+  // PAST (most recently ended first, visually secondary). A saved Event is
+  // never removed from this list just because it ended — see
+  // event_wishlist_schedule.dart's own doc comment.
+  List<Widget> _eventSlivers(EventWishlistSchedule schedule) {
+    if (schedule.upcoming.isEmpty && schedule.past.isEmpty) {
+      return [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: EventWishlistEmptyState(onExplore: _openExploreEvents),
+        ),
+      ];
+    }
+    final slivers = <Widget>[];
+    if (schedule.upcoming.isNotEmpty) {
+      slivers.add(_eventSectionHeader('UPCOMING'));
+      slivers.add(_eventCardsList(schedule.upcoming, dimmed: false));
+    }
+    if (schedule.past.isNotEmpty) {
+      slivers.add(_eventSectionHeader('PAST'));
+      slivers.add(_eventCardsList(schedule.past, dimmed: true));
+    }
+    return slivers;
+  }
+
+  Widget _eventSectionHeader(String label) => SliverToBoxAdapter(
+    child: Padding(
+      padding: const EdgeInsets.fromLTRB(
+        CsSpacing.pageHorizontal,
+        CsSpacing.md,
+        CsSpacing.pageHorizontal,
+        CsSpacing.sm,
+      ),
+      child: Text(
+        label,
+        style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+      ),
+    ),
+  );
+
+  Widget _eventCardsList(List<Event> events, {required bool dimmed}) =>
+      SliverList(
+        delegate: SliverChildBuilderDelegate(
+          (context, i) {
+            final card = Padding(
+              padding: EdgeInsets.fromLTRB(
+                CsSpacing.pageHorizontal,
+                0,
+                CsSpacing.pageHorizontal,
+                i == events.length - 1 ? 100 : CsSpacing.md,
+              ),
+              child: EventWishlistCard(
+                event: events[i],
+                onRemove: () => _removeEvent(events[i]),
+              ),
+            );
+            // Past events read as visually secondary to Upcoming — a
+            // restrained opacity dip, not a different card treatment.
+            return dimmed ? Opacity(opacity: 0.7, child: card) : card;
+          },
+          childCount: events.length,
+        ),
+      );
 }
 
 class _ErrorState extends StatelessWidget {

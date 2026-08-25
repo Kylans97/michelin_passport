@@ -337,6 +337,161 @@ void main() {
     });
   });
 
+  group('EventDetailHero — EVENT WISHLIST V1 wishlist heart', () {
+    testWidgets('onTapWishlist omitted renders no heart action at all — '
+        'unaffected default for every pre-existing call site/test', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          const EventDetailHero(
+            backgroundImage: CsImagePlaceholder(logoScale: 0.22),
+          ),
+        ),
+      );
+      expect(find.byIcon(Icons.favorite_rounded), findsNothing);
+      expect(find.byIcon(Icons.favorite_border_rounded), findsNothing);
+    });
+
+    testWidgets('unsaved (isWishlisted: false) shows the outline heart — '
+        'never a star, bookmark or bell', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          EventDetailHero(
+            backgroundImage: const CsImagePlaceholder(logoScale: 0.22),
+            isWishlisted: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      expect(find.byIcon(Icons.favorite_border_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.favorite_rounded), findsNothing);
+      expect(find.byIcon(Icons.star_border), findsNothing);
+      expect(find.byIcon(Icons.bookmark_outline_rounded), findsNothing);
+      expect(find.byIcon(Icons.notifications_outlined), findsNothing);
+    });
+
+    testWidgets('saved (isWishlisted: true) shows the filled heart', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          EventDetailHero(
+            backgroundImage: const CsImagePlaceholder(logoScale: 0.22),
+            isWishlisted: true,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      expect(find.byIcon(Icons.favorite_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.favorite_border_rounded), findsNothing);
+    });
+
+    testWidgets('tapping the heart fires onTapWishlist exactly once — '
+        'saving an unsaved Event', (tester) async {
+      var calls = 0;
+      await tester.pumpWidget(
+        _wrapSliver(
+          EventDetailHero(
+            backgroundImage: const CsImagePlaceholder(logoScale: 0.22),
+            isWishlisted: false,
+            onTapWishlist: () => calls++,
+          ),
+        ),
+      );
+      await tester.tap(find.byIcon(Icons.favorite_border_rounded));
+      expect(calls, 1);
+    });
+
+    testWidgets('tapping the heart fires onTapWishlist exactly once — '
+        'removing an already-saved Event', (tester) async {
+      var calls = 0;
+      await tester.pumpWidget(
+        _wrapSliver(
+          EventDetailHero(
+            backgroundImage: const CsImagePlaceholder(logoScale: 0.22),
+            isWishlisted: true,
+            onTapWishlist: () => calls++,
+          ),
+        ),
+      );
+      await tester.tap(find.byIcon(Icons.favorite_rounded));
+      expect(calls, 1);
+    });
+
+    testWidgets('wishlistSaving disables the tap — a busy toggle never '
+        'double-fires', (tester) async {
+      var calls = 0;
+      await tester.pumpWidget(
+        _wrapSliver(
+          EventDetailHero(
+            backgroundImage: const CsImagePlaceholder(logoScale: 0.22),
+            isWishlisted: false,
+            wishlistSaving: true,
+            onTapWishlist: () => calls++,
+          ),
+        ),
+      );
+      await tester.tap(find.byIcon(Icons.favorite_border_rounded));
+      expect(calls, 0);
+    });
+
+    testWidgets('the heart icon is ivory regardless of saved state — never '
+        'gold, matching Step 1B\'s reserved-for-Michelin-recognition rule', (
+      tester,
+    ) async {
+      for (final saved in [false, true]) {
+        await tester.pumpWidget(
+          _wrapSliver(
+            EventDetailHero(
+              backgroundImage: const CsImagePlaceholder(logoScale: 0.22),
+              isWishlisted: saved,
+              onTapWishlist: () {},
+            ),
+          ),
+        );
+        final icon = tester.widget<Icon>(
+          find.byIcon(
+            saved ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+          ),
+        );
+        expect(icon.color, AppColors.textOnDark);
+        expect(icon.color, isNot(AppColors.gold));
+      }
+    });
+  });
+
+  group('EventDetailHero — Wishlist vs. attendance intent are independent '
+      '(EVENT WISHLIST V1 §11)', () {
+    testWidgets('EventDetailHero has no attendance/intent concept at all — '
+        'saving/removing a Wishlist entry cannot, by construction, touch '
+        'Going/Interested state, which this widget never even receives', (
+      tester,
+    ) async {
+      // The strongest proof here is structural: EventDetailHero's own
+      // constructor accepts isWishlisted/wishlistSaving/onTapWishlist and
+      // nothing attendance-related — there is no EventIntentStatus
+      // parameter for a wishlist toggle to accidentally also set. This
+      // test pumps the hero with only wishlist params supplied and
+      // confirms tapping the heart renders no attendance-related text
+      // anywhere in the tree.
+      var wishlistCalls = 0;
+      await tester.pumpWidget(
+        _wrapSliver(
+          EventDetailHero(
+            backgroundImage: const CsImagePlaceholder(logoScale: 0.22),
+            isWishlisted: false,
+            onTapWishlist: () => wishlistCalls++,
+          ),
+        ),
+      );
+      await tester.tap(find.byIcon(Icons.favorite_border_rounded));
+      expect(wishlistCalls, 1);
+      expect(find.textContaining('Going'), findsNothing);
+      expect(find.textContaining('Interested'), findsNothing);
+    });
+  });
+
   group('EventMetaSection — date/venue/admission/cancelled (§7-9, §26-27)', () {
     testWidgets('always shows the date/time range', (tester) async {
       await tester.pumpWidget(_wrap(EventMetaSection(event: _event())));

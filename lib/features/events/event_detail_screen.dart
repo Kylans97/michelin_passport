@@ -18,6 +18,7 @@ import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/event_social_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
+import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
 import '../../models/event_attendance.dart';
 import '../../models/event_attendance_eligibility.dart';
@@ -46,6 +47,11 @@ import 'widgets/event_meta_section.dart';
 // larger, wider area than a card thumbnail, so the same relative scale
 // would make the monogram feel oversized.
 const double _heroLogoScale = 0.22;
+
+// EVENT WISHLIST V1 — matches RestaurantDetailScreen's/HotelDetailScreen's
+// own sign-in-required copy convention exactly, worded for the Event
+// entity rather than "visits and wishlist restaurants".
+const _signInMessage = 'Sign in to save events to your wishlist.';
 
 /// Whether "I'm going" should be offered at all — no new event-status
 /// system (Step 2B §21's explicit instruction, unchanged by the Events UI
@@ -136,6 +142,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   late final EventSocialRepository _socialRepo = EventSocialRepository(
     Supabase.instance.client,
   );
+  late final WishlistRepository _wishlistRepo = WishlistRepository(
+    Supabase.instance.client,
+  );
 
   // No vendor selected yet (Events V2 Step 2) — NoopAnalyticsService is
   // the production-safe default. Swapping the implementation here is the
@@ -153,6 +162,14 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   // third enum member.
   EventIntentStatus? _status;
   bool _intentBusy = false;
+
+  // EVENT WISHLIST V1 — entirely independent of [_status]/Going/
+  // Interested (see event_wishlist_schedule.dart's own header comment):
+  // this screen never reads or writes [_status] when saving/removing a
+  // Wishlist entry, and never reads or writes this state when handling
+  // an intent tap.
+  bool _isWishlisted = false;
+  bool _wishlistSaving = false;
   // The status a mutation-in-flight is moving toward; null while a
   // removal is in flight (see EventIntentControls' own doc comment).
   EventIntentStatus? _pendingTarget;
@@ -215,10 +232,20 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
               userId: uid,
               eventId: widget.eventId,
             );
+      // EVENT WISHLIST V1 — loaded regardless of [canAttendEvent]: unlike
+      // Going/Interested (only offered while an event can still be
+      // attended), Wishlist state must remain visible/toggleable for a
+      // past event too — Wishlist is user intent/history, not gated by
+      // the calendar (see event_wishlist_schedule.dart's own header
+      // comment).
+      final wishlistedFuture = uid == null
+          ? Future.value(false)
+          : _wishlistRepo.isEventWishlisted(userId: uid, eventId: widget.eventId);
       final event = await eventFuture;
       final venues = await venuesFuture;
       final intent = await intentFuture;
       final confirmed = await confirmedFuture;
+      final wishlisted = await wishlistedFuture;
       if (!mounted) return;
       if (event == null) {
         setState(() {
@@ -232,6 +259,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         _venues = venues;
         _status = intent?.status;
         _confirmedAttendance = confirmed;
+        _isWishlisted = wishlisted;
         _loading = false;
         if (uid != null && canAttendEvent(event)) {
           // getFriends() is started once and shared between the Going and
@@ -290,6 +318,57 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       attendeeUserIds: attendeeIds,
       friends: friends,
       selfUserId: uid,
+    );
+  }
+
+  // EVENT WISHLIST V1 — mirrors RestaurantDetailScreen's/HotelDetailScreen's
+  // own _toggleWishlist exactly: non-optimistic (state only flips after
+  // the write succeeds), same sign-in/busy/error handling shape. Never
+  // reads or writes [_status]/[_confirmedAttendance] — Wishlist and
+  // attendance intent are independent user actions (see this feature's
+  // own spec).
+  Future<void> _toggleWishlist() async {
+    final uid = _userId;
+    if (uid == null) {
+      _showWishlistSnack(_signInMessage, isError: true);
+      return;
+    }
+    if (_wishlistSaving) return;
+
+    setState(() => _wishlistSaving = true);
+    try {
+      final nowWishlisted = await _wishlistRepo.toggleEventWishlist(
+        userId: uid,
+        eventId: widget.eventId,
+      );
+      if (!mounted) return;
+      setState(() {
+        _isWishlisted = nowWishlisted;
+        _wishlistSaving = false;
+      });
+      _showWishlistSnack(
+        nowWishlisted ? 'Added to wishlist' : 'Removed from wishlist',
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _wishlistSaving = false);
+      _showWishlistSnack(
+        'Could not update wishlist. Please try again.',
+        isError: true,
+      );
+    }
+  }
+
+  void _showWishlistSnack(String message, {bool isError = false}) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: GoogleFonts.inter(color: AppColors.textOnDark),
+        ),
+        backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
+        duration: const Duration(seconds: 2),
+      ),
     );
   }
 
@@ -793,6 +872,9 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
           EventDetailHero(
             eventTypeLabel: heroEventTypeLabel,
             backgroundImage: backgroundImage,
+            isWishlisted: _isWishlisted,
+            wishlistSaving: _wishlistSaving,
+            onTapWishlist: _toggleWishlist,
           ),
           SliverToBoxAdapter(
             child: Padding(

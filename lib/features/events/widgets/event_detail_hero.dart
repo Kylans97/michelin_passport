@@ -12,8 +12,20 @@ import '../../../core/widgets/editorial_back_button.dart';
 /// editing it would risk changing their appearance too. This is a
 /// parallel component, mirroring [VenueDetailHero]'s own "one small
 /// primitive genuinely reused twice" reasoning from the Restaurant/Hotel
-/// Detail redesign — except an event genuinely has no wishlist concept, so
-/// this hero carries no toggle/actions overlay at all, just identity.
+/// Detail redesign.
+///
+/// EVENT WISHLIST V1: this hero now DOES carry one overlay action — the
+/// same wishlist heart convention [VenueDetailHero] already established
+/// for Restaurant/Hotel Detail (unsaved/saved via the outline-vs-filled
+/// icon shape alone, ivory regardless of state — never color, matching
+/// Step 1B's gold-reservation rule). [isWishlisted]/[wishlistSaving]/
+/// [onTapWishlist] are optional and default to not rendering the action
+/// at all, so this hero's own direct tests (and any future caller with no
+/// wishlist concept) are unaffected. Built as independent code here
+/// rather than reaching into [VenueDetailHero]'s own private toggle
+/// button — the same "don't share a sibling file's private widget"
+/// precedent [VenueDetailHero] itself already set by not reusing
+/// `detail_hero.dart`'s [HeroIconButton].
 ///
 /// Unlike [VenueDetailHero] (whose no-photo fallback is a plain gradient,
 /// since no restaurant/hotel photo exists in the catalogue at all today),
@@ -70,6 +82,13 @@ class EventDetailHero extends StatelessWidget {
   final Widget backgroundImage;
   final double expandedHeight;
 
+  // EVENT WISHLIST V1 — null (the default) renders no wishlist action at
+  // all, exactly like [VenueDetailHero.onTapFollow]'s own "omit the
+  // callback, omit the control" convention.
+  final bool isWishlisted;
+  final bool wishlistSaving;
+  final VoidCallback? onTapWishlist;
+
   const EventDetailHero({
     super.key,
     this.title,
@@ -78,6 +97,9 @@ class EventDetailHero extends StatelessWidget {
     this.dateRangeLine,
     required this.backgroundImage,
     this.expandedHeight = 300,
+    this.isWishlisted = false,
+    this.wishlistSaving = false,
+    this.onTapWishlist,
   });
 
   @override
@@ -97,6 +119,17 @@ class EventDetailHero extends StatelessWidget {
         padding: EdgeInsets.only(left: CsSpacing.sm),
         child: EditorialBackButton(),
       ),
+      actions: onTapWishlist == null
+          ? null
+          : [
+              Padding(
+                padding: const EdgeInsets.only(right: CsSpacing.sm),
+                child: _EventWishlistButton(
+                  isWishlisted: isWishlisted,
+                  onTap: wishlistSaving ? null : onTapWishlist,
+                ),
+              ),
+            ],
       title: title == null
           ? null
           : Text(
@@ -213,4 +246,40 @@ class EventDetailHero extends StatelessWidget {
       ),
     );
   }
+}
+
+/// The overlay wishlist toggle — same "translucent disc over the hero"
+/// treatment [VenueDetailHero]'s own private toggle button uses, rebuilt
+/// as independent code per this file's own class doc.
+class _EventWishlistButton extends StatelessWidget {
+  final bool isWishlisted;
+  final VoidCallback? onTap;
+
+  const _EventWishlistButton({required this.isWishlisted, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: isWishlisted ? 'Remove from wishlist' : 'Add to wishlist',
+    excludeSemantics: true,
+    child: Material(
+      color: Colors.black.withValues(alpha: 0.24),
+      shape: const CircleBorder(),
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(9),
+          child: Icon(
+            isWishlisted ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+            // Step 1B color rule: gold is reserved for Michelin stars/Keys
+            // only. Wishlist state reads through the filled-vs-outline
+            // icon shape alone, not color — both states stay ivory-on-dark.
+            color: AppColors.textOnDark,
+            size: 19,
+          ),
+        ),
+      ),
+    ),
+  );
 }
