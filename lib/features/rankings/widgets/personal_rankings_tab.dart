@@ -175,23 +175,19 @@ class _PersonalRankingsTabState extends State<PersonalRankingsTab>
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        // "MY RANKINGS" heading intentionally removed (COMMUNITY V1 UI
+        // REFINEMENT — Passport Ranking spacing pass): redundant with the
+        // RANKING tab the user is already inside. The selector below
+        // keeps its own top padding (matching WishlistBody's identical
+        // gap after the Passport local-tab-bar divider) rather than
+        // leaving an empty gap where the heading used to sit.
         Padding(
           padding: const EdgeInsets.fromLTRB(
             CsSpacing.pageHorizontal,
-            CsSpacing.base,
-            CsSpacing.pageHorizontal,
             CsSpacing.md,
+            CsSpacing.pageHorizontal,
+            0,
           ),
-          child: Text(
-            'MY RANKINGS',
-            style: CsTypography.eyebrow.copyWith(
-              color: AppColors.textOnDark,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: RankingVenueTypeSelector(
             selected: _venueType,
             onSelect: _onVenueTypeChanged,

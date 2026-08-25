@@ -99,7 +99,7 @@ Widget _communityHeader() => ColoredBox(
           ),
           const SizedBox(height: CsSpacing.xs),
           Text(
-            'What people are chasing.',
+            'Connect, follow and explore together.',
             style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
           ),
         ],

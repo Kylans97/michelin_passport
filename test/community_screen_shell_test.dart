@@ -1,14 +1,21 @@
-// Covers CommunityScreen (Community Typography + Dining Together
-// Refinement — Hottest Places/Community Rankings/Dining Together are
-// major editorial section titles, not tiny uppercase eyebrows; Dining
-// Together is tappable). CommunityScreen injects loadCommunityRankings/
-// getRestaurantById (see its own doc comment for why) — the REAL widget
-// is pumped directly with hand-rolled fakes, no mocking framework, no
-// mirrored copy of its build() method. This is a deliberate departure
-// from this app's usual "mirror a Supabase-eager screen" pattern: a
-// mirror can never catch a defect in the actual production code path,
-// which is exactly what happened here previously — see the Hot Right Now
-// Bugfix note in docs/Architecture/NAVIGATION_INFORMATION_ARCHITECTURE_V2.md.
+// Covers CommunityScreen's own COMMUNITY tab (Community Typography +
+// Dining Together Refinement, extended by COMMUNITY & FRIENDS FOUNDATION
+// V1, then refined again by COMMUNITY V1 UI REFINEMENT) — Hottest Places/
+// Community Ranking/Upcoming Events/Dining Together are all major
+// editorial section titles, not tiny uppercase eyebrows; Dining Together
+// is tappable. Trending Now and Recently Discovered are deliberately
+// absent entirely (no canonical data source exists yet — see
+// community_screen.dart's own extension-point comments) rather than shown
+// as placeholder/empty sections. FRIENDS-tab and tab-switching coverage
+// lives in community_friends_foundation_test.dart. CommunityScreen
+// injects loadCommunityRankings/getRestaurantById (see its own doc
+// comment for why) — the REAL widget is pumped directly with hand-rolled
+// fakes, no mocking framework, no mirrored copy of its build() method.
+// This is a deliberate departure from this app's usual "mirror a
+// Supabase-eager screen" pattern: a mirror can never catch a defect in
+// the actual production code path, which is exactly what happened here
+// previously — see the Hot Right Now Bugfix note in
+// docs/Architecture/NAVIGATION_INFORMATION_ARCHITECTURE_V2.md.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -50,13 +57,24 @@ void main() {
 
       expect(find.text('Hottest Places'), findsOneWidget);
       expect(find.text('RESTAURANT'), findsOneWidget);
-      expect(find.text('Maison Verte'), findsOneWidget);
+      // "Maison Verte" now legitimately appears twice: once as the
+      // Hottest Places hero, once more as the actual #1 row inside the
+      // Community Ranking feature card directly below it (both are
+      // correctly derived from the exact same #1 ranking entry — a real
+      // top-3 list must include the real #1, not artificially exclude
+      // it).
+      expect(find.text('Maison Verte'), findsNWidgets(2));
       expect(find.text('Highest rated by the community'), findsOneWidget);
-      expect(find.text('4.8'), findsOneWidget);
-      // Never implies a temporal trending algorithm the data doesn't
-      // support.
-      expect(find.textContaining('Trending'), findsNothing);
+      // Likewise legitimately doubled — the hero's own rating numeral and
+      // the ranking card's own #1 row both display the same real 4.8.
+      expect(find.text('4.8'), findsNWidgets(2));
+      // Hottest Places' own caption never implies a temporal trending
+      // algorithm the data doesn't support — "Highest rated by the
+      // community" (already asserted above) is its only caption.
+      // "Trending Now" is deliberately absent entirely (no fake/no
+      // placeholder trending section anywhere on this page).
       expect(find.textContaining('This week'), findsNothing);
+      expect(find.textContaining('Trending'), findsNothing);
       expect(tester.takeException(), isNull);
     });
 
@@ -83,9 +101,9 @@ void main() {
 
       expect(tester.takeException(), isNull);
       expect(find.text('Hottest Places'), findsNothing);
-      // Community Rankings and Dining Together are unconditional siblings
+      // Community Ranking and Dining Together are unconditional siblings
       // — a Hottest Places failure must never take them down too.
-      expect(find.text('Community Rankings'), findsOneWidget);
+      expect(find.text('Community Ranking'), findsOneWidget);
       expect(find.text('Dining Together'), findsOneWidget);
     });
 
@@ -115,7 +133,10 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      await tester.tap(find.text('Maison Verte'));
+      // "Maison Verte" legitimately appears twice now (Hottest Places
+      // hero + the Community Ranking card's own #1 row) — .first targets
+      // the hero specifically, which sits earlier in the tree.
+      await tester.tap(find.text('Maison Verte').first);
       await tester.pumpAndSettle();
 
       expect(lookupCalls, 1);
@@ -136,9 +157,8 @@ void main() {
       expect(title.style?.color, isNot(AppColors.gold));
     });
 
-    testWidgets('the three major section titles use the same serif style, '
-        'clearly smaller than the page title and larger than their own '
-        'description text', (tester) async {
+    testWidgets('the major section titles use the same serif style, '
+        'clearly smaller than the page title', (tester) async {
       await tester.pumpWidget(
         _wrap(loadCommunityRankings: () async => [_entry()]),
       );
@@ -147,13 +167,11 @@ void main() {
       final pageTitle = tester.widget<Text>(find.text('Community'));
       final sectionTitles = [
         tester.widget<Text>(find.text('Hottest Places')),
-        tester.widget<Text>(find.text('Community Rankings')),
+        tester.widget<Text>(find.text('Community Ranking')),
+        tester.widget<Text>(find.text('Upcoming Events')),
         tester.widget<Text>(find.text('Dining Together')),
       ];
-      final description = tester.widget<Text>(
-        find.text('See how the community rates every restaurant.'),
-      );
-      final actionLink = tester.widget<Text>(find.text('View rankings'));
+      final actionLink = tester.widget<Text>(find.text('Discover the concept'));
 
       for (final title in sectionTitles) {
         expect(title.style?.fontSize, sectionTitles.first.style?.fontSize);
@@ -166,36 +184,52 @@ void main() {
         expect(title.style!.fontSize!, lessThan(pageTitle.style!.fontSize!));
         expect(
           title.style!.fontSize!,
-          greaterThan(description.style!.fontSize!),
-        );
-        expect(
-          title.style!.fontSize!,
           greaterThan(actionLink.style!.fontSize!),
         );
       }
       // Never the tiny tracked-uppercase eyebrow style previously used.
       expect(find.text('HOTTEST PLACES'), findsNothing);
-      expect(find.text('COMMUNITY RANKINGS'), findsNothing);
+      expect(find.text('COMMUNITY RANKING'), findsNothing);
       expect(find.text('DINING TOGETHER'), findsNothing);
     });
 
-    testWidgets('Community Rankings: title, description, and a restrained '
-        '"View rankings" action link — the link is not more prominent '
-        'than the title', (tester) async {
+    testWidgets('Community Ranking: title only (no explanatory sentence — '
+        'the section name already explains the feature), rendered inside '
+        'the ivory feature card with a restrained "See full ranking" '
+        'action — the link always renders even with zero qualifying '
+        'restaurants', (tester) async {
       await tester.pumpWidget(_wrap(loadCommunityRankings: () async => []));
       await tester.pumpAndSettle();
-      expect(find.text('Community Rankings'), findsOneWidget);
+      expect(find.text('Community Ranking'), findsOneWidget);
       expect(
         find.text('See how the community rates every restaurant.'),
-        findsOneWidget,
+        findsNothing,
       );
-      expect(find.text('View rankings'), findsOneWidget);
+      expect(find.text('See full ranking'), findsOneWidget);
+      expect(find.text('No restaurants have qualified yet.'), findsOneWidget);
       // Not tapped here: it pushes CommunityRankingsScreen, which embeds
       // the Supabase-eager CommunityRankingsTab — same established
       // limitation as every other pushed detail screen in this suite
       // (see this file's own Hottest Places hero-card tap test for the
       // identical reasoning). CommunityRankingsScreen has its own
       // dedicated mirror coverage in community_rankings_screen_test.dart.
+    });
+
+    testWidgets('Trending Now and Recently Discovered are completely '
+        'absent — no canonical data source exists yet, so no placeholder '
+        'or "coming soon" section is shown', (tester) async {
+      await tester.pumpWidget(_wrap(loadCommunityRankings: () async => []));
+      await tester.pumpAndSettle();
+      expect(find.text('Trending Now'), findsNothing);
+      expect(find.text('Recently Discovered'), findsNothing);
+      expect(
+        find.text('Trending places will appear here.'),
+        findsNothing,
+      );
+      expect(
+        find.text('Recently discovered places will appear here.'),
+        findsNothing,
+      );
     });
 
     testWidgets('Meet the Community is completely absent', (tester) async {
@@ -216,14 +250,64 @@ void main() {
       expect(find.text('Coming soon'), findsNothing);
     });
 
-    testWidgets('Dining Together is now tappable and opens its own '
-        'concept page', (tester) async {
+    testWidgets('Dining Together is tappable and opens its own concept '
+        'page', (tester) async {
       await tester.pumpWidget(_wrap(loadCommunityRankings: () async => []));
+      await tester.pumpAndSettle();
+      // Dining Together may sit below the default test viewport — scroll
+      // it into view before tapping, the same pattern used elsewhere in
+      // this codebase for a target that may be off-screen.
+      await tester.ensureVisible(find.text('Discover the concept'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Discover the concept'));
       await tester.pumpAndSettle();
       expect(find.byType(DiningTogetherScreen), findsOneWidget);
       expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('CommunityScreen — visual hierarchy (ivory content on deep green)', () {
+    testWidgets('the Community Ranking feature card is an ivory surface '
+        'with deep-green-family text, not ivory text on the deep-green '
+        'canvas', (tester) async {
+      await tester.pumpWidget(
+        _wrap(loadCommunityRankings: () async => [_entry()]),
+      );
+      await tester.pumpAndSettle();
+
+      final nameInCard = tester.widget<Text>(
+        find.text('Maison Verte').last, // the ranking card's #1 row
+      );
+      expect(nameInCard.style?.color, isNot(AppColors.ivory));
+      expect(nameInCard.style?.color, isNot(AppColors.gold));
+    });
+
+    testWidgets('the deep-green canvas remains the dominant page surface '
+        '— the page is not converted to a mostly-ivory screen', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(loadCommunityRankings: () async => [_entry()]),
+      );
+      await tester.pumpAndSettle();
+      expect(
+        find.byWidgetPredicate(
+          (w) => w is ColoredBox && w.color == AppColors.deepGreen,
+        ),
+        findsWidgets,
+      );
+      // Exactly one ivory feature-card surface exists on this fixture
+      // (Community Ranking) — Hottest Places/Upcoming Events/Dining
+      // Together all stay on the dark canvas, never converted to ivory.
+      expect(
+        find.byWidgetPredicate(
+          (w) =>
+              w is Container &&
+              w.decoration is BoxDecoration &&
+              (w.decoration! as BoxDecoration).color == AppColors.ivory,
+        ),
+        findsOneWidget,
+      );
     });
   });
 
@@ -255,9 +339,9 @@ void main() {
       await tester.pumpAndSettle();
       final texts = [
         'Community',
-        'What people are chasing.',
-        'Community Rankings',
-        'View rankings',
+        'Connect, follow and explore together.',
+        'Community Ranking',
+        'Upcoming Events',
         'Dining Together',
         'Great tables are better shared.',
         'Discover the concept',
