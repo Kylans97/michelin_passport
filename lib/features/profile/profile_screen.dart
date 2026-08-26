@@ -4,39 +4,44 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/utils/username_rules.dart';
-import '../../core/widgets/cs_metric_strip.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_text_field.dart';
+import '../../core/widgets/member_avatar.dart';
 import '../../data/repositories/auth_repository.dart';
+import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/profile_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/user_profile.dart';
+import '../../models/venue_entry.dart';
 import '../friends/friends_screen.dart';
 import '../notifications/notifications_screen.dart';
+import 'change_avatar_sheet.dart';
 import 'delete_account_screen.dart';
+import 'journey_card.dart';
+import 'journey_metrics.dart';
 import 'privacy_settings_screen.dart';
 
-/// My Profile — identity, Journey Stats (existing Passport-derived data,
-/// unchanged computation), Friends entry, and account actions. Dark
-/// editorial canvas, matching Explore/Guides/Trips/Auth. Root tab screen
-/// (reached via bottom navigation) — no back button, matching Passport/
-/// Explore/Rankings/Wishlist's own root-tab treatment.
+/// My Profile — PROFILE UI REDESIGN V1.
+///
+/// Profile answers "who am I and what is the shape of my overall
+/// journey" — deliberately distinct from Passport's own "what have I
+/// collected/visited/rated/planned" AND from Passport's own per-category
+/// Restaurants/Hotels/Events filtering — so Your Journey below is a
+/// compact TOTAL summary (Places/Countries only; see
+/// `journey_metrics.dart` for the exact, audited definition of each),
+/// never a restatement of anything Passport already shows in detail.
+///
+/// Dark editorial canvas, matching Explore/Guides/Trips/Auth. Root tab
+/// screen (reached via bottom navigation) — no back button, matching
+/// Passport/Explore/Rankings/Wishlist's own root-tab treatment.
 ///
 /// The previous version of this screen also rendered a tier badge,
 /// "Community Stats" (tier distribution), and "Trophies" — all three
 /// depended on database views/tables (`user_tiers`, `tier_stats`,
 /// `trophies`, `user_trophies`) that were dropped when the production
-/// schema was rebuilt and never recreated (confirmed via a live read-only
-/// query against the linked project during this task's audit); every
-/// load of this screen has been throwing "Could not load profile" for
-/// every user, unconditionally, since before this task started. Fixing
-/// `getProfile` to stop depending on those means those three sections no
-/// longer have real data to show — they are removed here, not hidden;
-/// rebuilding tiers/trophies against a real schema is out of this step's
-/// scope. `TrophyRepository`/`models/trophy.dart` are untouched (still
-/// used elsewhere — see `notifications_screen.dart`/`rating_dialog.dart`
-/// — just no longer referenced from this screen).
+/// schema was rebuilt and never recreated; those sections were removed
+/// (not hidden) in an earlier pass and stay removed here.
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
@@ -49,8 +54,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _profileRepo = ProfileRepository(Supabase.instance.client);
   late final _friendshipRepo = FriendshipRepository(Supabase.instance.client);
+  late final _eventAttendanceRepo = EventConfirmedAttendanceRepository(
+    Supabase.instance.client,
+  );
 
   late Future<UserProfile> _profileFuture;
+  late Future<String?> _avatarUrlFuture;
+  late Future<JourneyMetrics> _journeyFuture;
   late Future<_FriendsSummary> _friendsSummaryFuture;
 
   final String _uid = Supabase.instance.client.auth.currentUser?.id ?? '';
@@ -69,6 +79,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
             (visited) =>
                 _profileRepo.getProfile(userId: _uid, visited: visited),
           );
+
+      // Chained off the profile load — avatarPath is only known once the
+      // profile row itself has loaded. resolveAvatarUrl returns null
+      // (no network call) when there's nothing to resolve, so this stays
+      // cheap for every member who hasn't set a photo yet.
+      _avatarUrlFuture = _profileFuture.then(
+        (profile) => _profileRepo.resolveAvatarUrl(profile.avatarPath),
+      );
+
+      // Places = restaurants + hotels + confirmed-attendance events
+      // combined (see journey_metrics.dart) — just these same two lists,
+      // no Trips query needed anymore now the card no longer shows one.
+      _journeyFuture = Future.wait([
+        _visitedRepo.loadPassportVenues(_uid),
+        _eventAttendanceRepo.loadPassportEventAttendance(_uid),
+      ]).then(
+        (results) => computeJourneyMetrics(
+          passportVenues: results[0] as List<VenueEntry>,
+          confirmedEventAttendance: results[1] as List<EventAttendanceEntry>,
+        ),
+      );
+
       // Genuinely cheap and already-needed data (the Friends screen itself
       // fetches the same two lists) — not a new aggregate query invented
       // purely to decorate this row, just the lengths of lists this
@@ -99,6 +131,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
   );
 
   Future<void> _openEditProfile(UserProfile profile) async {
+    // Awaited (not passed as a Future) so the sheet can show the member's
+    // actual current photo immediately rather than always starting on the
+    // initials fallback — cheap since resolveAvatarUrl is already loaded
+    // or loading by the time any entry point can reach this method.
+    final avatarUrl = await _avatarUrlFuture;
+    if (!mounted) return;
     final saved = await showModalBottomSheet<bool>(
       context: context,
       isScrollControlled: true,
@@ -108,9 +146,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
         profileRepo: _profileRepo,
         initialDisplayName: profile.name,
         initialUsername: profile.username,
+        currentAvatarPath: profile.avatarPath,
+        currentAvatarUrl: avatarUrl,
       ),
     );
     if (saved == true) _load();
+  }
+
+  Future<void> _openChangeAvatar(UserProfile profile) async {
+    final changed = await ChangeAvatarSheet.show(
+      context,
+      userId: _uid,
+      currentAvatarPath: profile.avatarPath,
+    );
+    if (changed == true) _load();
   }
 
   void _openFriends() async {
@@ -171,47 +220,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: SafeArea(
               // Primary Tab Header Consistency Step 1: top padding is
               // CsSpacing.lg, matching Wishlist's reference title
-              // position — was CsSpacing.md, which started "Profile"
-              // higher than the other primary tabs.
+              // position.
               child: ListView(
+                // FINAL VISUAL REFINEMENT — generous bottom inset (beyond
+                // the automatic Scaffold/SafeArea reservation, which
+                // already keeps content from ever rendering underneath
+                // the persistent bottom NavigationBar) so Sign out/Delete
+                // account settle to a comfortable resting position above
+                // the nav rather than crowding its edge. A design token,
+                // not a device-specific magic number.
                 padding: const EdgeInsets.fromLTRB(
                   CsSpacing.pageHorizontal,
                   CsSpacing.lg,
                   CsSpacing.pageHorizontal,
-                  CsSpacing.section,
+                  CsSpacing.hero,
                 ),
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Profile',
-                        style: CsTypography.screenTitle.copyWith(
-                          color: AppColors.ivory,
-                        ),
-                      ),
-                      Tooltip(
-                        message: 'Notifications',
-                        child: IconButton(
-                          icon: const Icon(
-                            Icons.notifications_outlined,
-                            color: AppColors.secondaryOnDark,
-                          ),
-                          onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (_) => const NotificationsScreen(),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                  Text(
+                    'Profile',
+                    style: CsTypography.screenTitle.copyWith(
+                      color: AppColors.ivory,
+                    ),
                   ),
-                  const SizedBox(height: CsSpacing.xl),
+                  const SizedBox(height: 4),
+                  Text(
+                    'Your place in Chasing Stars.',
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.secondaryOnDark,
+                    ),
+                  ),
+                  const SizedBox(height: CsSpacing.xxl),
 
-                  _ProfileHeader(
-                    user: user,
-                    onEdit: () => _openEditProfile(user),
+                  FutureBuilder<String?>(
+                    future: _avatarUrlFuture,
+                    builder: (context, avatarSnap) => _IdentityHero(
+                      user: user,
+                      avatarUrl: avatarSnap.data,
+                      onEditAvatar: () => _openChangeAvatar(user),
+                    ),
                   ),
 
                   if (user.username == null) ...[
@@ -219,29 +265,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     _ChooseUsernameBanner(onTap: () => _openEditProfile(user)),
                   ],
 
-                  const SizedBox(height: CsSpacing.section),
-                  const TripSectionLabelStandIn('JOURNEY'),
-                  const SizedBox(height: CsSpacing.md),
-                  CsMetricStrip(
-                    metrics: [
-                      CsMetric(
-                        value: '${user.restaurantsVisited}',
-                        label: 'RESTAURANTS',
-                      ),
-                      CsMetric(
-                        value: '${user.michelinStarsCollected}',
-                        label: 'STARS',
-                      ),
-                      CsMetric(
-                        value: '${user.countriesVisited}',
-                        label: 'COUNTRIES',
-                      ),
-                      CsMetric(value: '${user.citiesVisited}', label: 'CITIES'),
-                    ],
+                  const SizedBox(height: CsSpacing.xxl),
+                  FutureBuilder<JourneyMetrics>(
+                    future: _journeyFuture,
+                    builder: (context, journeySnap) {
+                      final journey = journeySnap.data;
+                      if (journey == null) {
+                        return const SizedBox(
+                          height: 140,
+                          child: Center(
+                            child: SizedBox(
+                              width: 16,
+                              height: 16,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 1.5,
+                                color: AppColors.secondaryOnDark,
+                              ),
+                            ),
+                          ),
+                        );
+                      }
+                      return JourneyCard(
+                        journey: journey,
+                        memberSince: user.memberSince,
+                      );
+                    },
                   ),
 
-                  const SizedBox(height: CsSpacing.section),
-                  const TripSectionLabelStandIn('FRIENDS'),
+                  const SizedBox(height: CsSpacing.xxl),
+                  const TripSectionLabelStandIn('SOCIAL'),
                   const SizedBox(height: CsSpacing.md),
                   FutureBuilder<_FriendsSummary>(
                     future: _friendsSummaryFuture,
@@ -255,7 +307,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     },
                   ),
 
-                  const SizedBox(height: CsSpacing.section),
+                  const SizedBox(height: CsSpacing.xxl),
                   const TripSectionLabelStandIn('ACCOUNT'),
                   const SizedBox(height: CsSpacing.md),
                   _SettingsRow(
@@ -278,9 +330,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     label: 'Privacy',
                     onTap: _openPrivacySettings,
                   ),
+
+                  // FINAL VISUAL REFINEMENT — no "ACCOUNT ACTIONS" eyebrow:
+                  // Sign out/Delete account read clearly as their own
+                  // group from generous spacing alone (and Delete
+                  // account's own destructive tint), matching this pass's
+                  // "calmer composition" preference over a label that
+                  // added little beyond what the spacing and color already
+                  // communicate.
+                  const SizedBox(height: CsSpacing.xxl),
                   _SettingsRow(
                     // Icon audit: was logout_rounded (solid), the only
-                    // filled icon among this list's four otherwise
+                    // filled icon among this list's otherwise
                     // outline-stroke icons — normalized to match.
                     icon: Icons.logout_outlined,
                     label: 'Sign out',
@@ -289,10 +350,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   // App Store readiness — real, findable, not buried
                   // behind Privacy/Terms/About/support email. Error-tinted
                   // (not gold, not the neutral secondaryOnDark other rows
-                  // use) purely as a destructive-action clarity signal,
-                  // matching AppColors.error's existing use elsewhere in
-                  // this app — not a dark pattern; the row is exactly as
-                  // large and easy to tap as every other row above it.
+                  // use) purely as a destructive-action clarity signal —
+                  // not a dark pattern; the row is exactly as large and
+                  // easy to tap as every other row above it.
                   _SettingsRow(
                     icon: Icons.delete_outline_rounded,
                     label: 'Delete account',
@@ -334,26 +394,50 @@ class TripSectionLabelStandIn extends StatelessWidget {
   );
 }
 
-// ── Header: avatar, name, @username ─────────────────────────────────────
+// ── Identity hero: avatar, name, @username, edit ────────────────────────
 
-class _ProfileHeader extends StatelessWidget {
+/// PROFILE UI REDESIGN V1 — replaces the previous compact `_ProfileHeader`
+/// row. Still a header, not a dashboard card: no background fill, no
+/// border, no gold — an ivory serif identity block on the bare deep-green
+/// canvas, exactly like Explore/Passport's own editorial headers.
+///
+/// FINAL VISUAL REFINEMENT — the standalone trailing pencil this hero
+/// used to show (a second, redundant edit affordance alongside the
+/// avatar's own) is gone. [MemberAvatar]'s own `onEdit` pencil badge is
+/// now the ONLY edit affordance in this hero, and its semantic meaning is
+/// narrowed to exactly what it visually points at: change/add/remove the
+/// photo. General profile editing (name/username) is reached from the
+/// existing "Edit profile" row in the ACCOUNT section below — unchanged
+/// by this pass.
+///
+/// JOURNEY CARD REFINEMENT — the "Member since …" line that used to sit
+/// under @username is gone too: that same date now appears exactly once,
+/// as the join-date stamp on [JourneyCard] below (see
+/// `journey_card.dart`'s `journeyStampLabel`). Judged not to harm this
+/// hero's hierarchy — Name/@username alone is still a complete, clean
+/// identity block, and removing the third line is a genuine declutter,
+/// not a loss.
+class _IdentityHero extends StatelessWidget {
   final UserProfile user;
-  final VoidCallback onEdit;
-  const _ProfileHeader({required this.user, required this.onEdit});
+  final String? avatarUrl;
+  final VoidCallback onEditAvatar;
+  const _IdentityHero({
+    required this.user,
+    required this.avatarUrl,
+    required this.onEditAvatar,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final initials = user.name
-        .split(' ')
-        .where((w) => w.isNotEmpty)
-        .map((w) => w[0])
-        .take(2)
-        .join()
-        .toUpperCase();
-
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _Avatar(initials: initials.isEmpty ? '?' : initials),
+        MemberAvatar(
+          avatarUrl: avatarUrl,
+          displayName: user.name,
+          size: 76,
+          onEdit: onEditAvatar,
+        ),
         const SizedBox(width: CsSpacing.base),
         Expanded(
           child: Column(
@@ -381,46 +465,9 @@ class _ProfileHeader extends StatelessWidget {
             ],
           ),
         ),
-        Tooltip(
-          message: 'Edit profile',
-          child: IconButton(
-            icon: const Icon(
-              Icons.edit_outlined,
-              color: AppColors.secondaryOnDark,
-              size: 20,
-            ),
-            onPressed: onEdit,
-          ),
-        ),
       ],
     );
   }
-}
-
-/// Gold audit (Primary Tabs UI Polish V1): the border/initials were gold
-/// purely decoratively — no Michelin-recognition meaning — inconsistent
-/// with gold being reserved for stars/Keys. Now `subtleBorderDark`/`ivory`,
-/// matching the restrained editorial-identity treatment used everywhere
-/// else on this screen.
-class _Avatar extends StatelessWidget {
-  final String initials;
-  const _Avatar({required this.initials});
-
-  @override
-  Widget build(BuildContext context) => Container(
-    width: 64,
-    height: 64,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      color: AppColors.brandGreenLight,
-      border: Border.all(color: AppColors.subtleBorderDark),
-    ),
-    alignment: Alignment.center,
-    child: Text(
-      initials,
-      style: CsTypography.placeTitle.copyWith(color: AppColors.ivory),
-    ),
-  );
 }
 
 class _ChooseUsernameBanner extends StatelessWidget {
@@ -470,11 +517,10 @@ class _ChooseUsernameBanner extends StatelessWidget {
 
 // ── Friends entry row ─────────────────────────────────────────────────
 
-/// Simplified from a bordered/iconed card into a restrained editorial
-/// action row — the same "label … detail →" language as Community's
-/// `_CommunityActionLink` (no card background, no leading icon avatar) —
-/// so Friends reads as part of Profile's content rather than a dashboard
-/// tile. Tap target and semantics label are unchanged.
+/// A restrained editorial action row — the same "label … detail →"
+/// language as Community's `_CommunityActionLink` (no card background, no
+/// leading icon avatar) — so Friends reads as part of Profile's content
+/// rather than a dashboard tile.
 class _FriendsEntryRow extends StatelessWidget {
   final int? friendCount;
   final int? pendingCount;
@@ -600,11 +646,15 @@ class _EditProfileSheet extends StatefulWidget {
   final ProfileRepository profileRepo;
   final String initialDisplayName;
   final String? initialUsername;
+  final String? currentAvatarPath;
+  final String? currentAvatarUrl;
   const _EditProfileSheet({
     required this.userId,
     required this.profileRepo,
     required this.initialDisplayName,
     required this.initialUsername,
+    required this.currentAvatarPath,
+    required this.currentAvatarUrl,
   });
 
   @override
@@ -624,6 +674,20 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
     _nameCtrl.dispose();
     _usernameCtrl.dispose();
     super.dispose();
+  }
+
+  // Opens the same canonical photo-edit sheet the identity hero's avatar
+  // tap uses (§26 of this feature's own spec: one mechanism, reached from
+  // two places) — closes THIS sheet with `true` if the photo actually
+  // changed, since the caller (ProfileScreen) reloads on any `true` pop
+  // regardless of which field changed.
+  Future<void> _changePhoto() async {
+    final changed = await ChangeAvatarSheet.show(
+      context,
+      userId: widget.userId,
+      currentAvatarPath: widget.currentAvatarPath,
+    );
+    if (changed == true && mounted) Navigator.pop(context, true);
   }
 
   Future<void> _save() async {
@@ -701,6 +765,22 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
                 'EDIT PROFILE',
                 style: CsTypography.eyebrow.copyWith(
                   color: AppColors.secondaryOnDark,
+                ),
+              ),
+              const SizedBox(height: CsSpacing.lg),
+              Center(
+                child: Semantics(
+                  button: true,
+                  label: 'Change profile photo',
+                  child: GestureDetector(
+                    onTap: _changePhoto,
+                    child: MemberAvatar(
+                      avatarUrl: widget.currentAvatarUrl,
+                      displayName: widget.initialDisplayName,
+                      size: 64,
+                      onEdit: _changePhoto,
+                    ),
+                  ),
                 ),
               ),
               const SizedBox(height: CsSpacing.lg),

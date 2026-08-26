@@ -1,9 +1,11 @@
 # Account Deletion
 
-Status: **deployed to production, live-smoke-tested with disposable
+Status: **deployed to production (v2), live-smoke-tested with disposable
 accounts (including a live attack test), unit tested, and locally
-end-to-end validated. Physical-device confirmation with a disposable
-account pending.**
+end-to-end validated. Now purges BOTH `visit-photos` and `profile-photos`
+as hard preconditions — see §3/§5 for the Profile Avatar V1 backend apply
+that added the second bucket. Physical-device confirmation with a
+disposable account pending.**
 
 ## 1. Why this exists
 
@@ -48,11 +50,14 @@ handles all of this with zero manual work.
 
 ### EXPLICIT_DELETE_REQUIRED — must be cleaned up manually, and now blocks deletion if it fails (see §3)
 
-**Supabase Storage** is never covered by a Postgres FK cascade. Only one
-bucket holds user-owned content: `visit-photos` (private, objects keyed
-`{user_id}/{visit_id}/{filename}`). The other bucket, `catalogue-media`,
-is public admin/curated content (private chef photos etc.), keyed by
-entity id, not user id — never touched by deletion.
+**Supabase Storage** is never covered by a Postgres FK cascade. Two
+buckets hold user-owned content: `visit-photos` (private, objects keyed
+`{user_id}/{visit_id}/{filename}`) and, as of **Profile Avatar V1**
+(applied 2026-08-25), `profile-photos` (private, objects keyed
+`{user_id}/{uniqueId}.{ext}` — see `docs/Architecture/PROFILE_AVATAR_V1.md`).
+The other bucket, `catalogue-media`, is public admin/curated content
+(private chef photos etc.), keyed by entity id, not user id — never
+touched by deletion.
 
 ### ANONYMIZE_REQUIRED
 
@@ -67,9 +72,13 @@ independent audit passes. No `notifications`, `reviews`, `comments`,
 `reports`, `blocks`, or trip-sub-item tables exist in this schema at all.
 
 `public.profiles.avatar_url` is a free-text column, not a Storage
-reference — no avatars bucket exists, no upload code path wires it to
-one — so it needs no separate handling; the row itself is deleted by
-cascade.
+reference, and has never been populated by any write path — it needs no
+separate handling; the row itself is deleted by cascade.
+`public.profiles.avatar_path` (added by Profile Avatar V1) IS a Storage
+object reference, but needs no separate handling either: it is a plain
+text column on the same cascading `profiles` row, and by the time that
+cascade runs, the Storage OBJECT it points to has already been purged in
+the precondition step below (§3) — never left dangling.
 
 No `SECURITY DEFINER` function relevant to deletion/admin operations
 exists (18 checked — friend/follow RPCs and PostGIS internals only).
@@ -106,17 +115,16 @@ project default — no override).
   (its `auth.users` row, `profiles` row, and a control `planned_trips`
   row all still present). See §5.
 
-### Deletion order — Storage is now a HARD PRECONDITION
+### Deletion order — Storage is now a HARD PRECONDITION, both buckets
 
 1. Authenticate the caller from their JWT → derive `userId`.
-2. **Purge `visit-photos/{userId}/...` (recursive — Supabase Storage's
+2. **Purge `visit-photos/{userId}/...`** (recursive — Supabase Storage's
    `list()` represents a "folder" as an entry with `id: null`; there is
    no native recursive delete, so this function recurses manually).
-   This is a hard precondition, not best-effort**: if listing OR removal
-   fails for any reason, the function returns failure immediately and
-   never proceeds to step 3 — the auth account and the caller's session
-   are left fully intact, so the same authenticated user can simply
-   retry.
+   **Hard precondition, not best-effort**: if listing OR removal fails
+   for any reason, the function returns failure immediately and never
+   proceeds further — the auth account and the caller's session are left
+   fully intact, so the same authenticated user can simply retry.
    - **Why this changed from an earlier best-effort design**: once
      `auth.users` is deleted, the user's own JWT is invalidated, so they
      can no longer retry Storage cleanup under their own identity — any
@@ -127,19 +135,27 @@ project default — no override).
      (rather than being treated as "no files found") — "I couldn't
      verify whether files exist" must never be treated the same as "no
      files exist" when the whole point is a hard precondition.
-3. `supabase.auth.admin.deleteUser(userId)` — only reached after step 2
-   succeeds. `profiles.id` is `ON DELETE CASCADE` from `auth.users(id)`,
-   and every one of the 16 user-owned tables (§2) cascades from
-   `profiles.id` in turn — this one call is sufficient for all
-   Postgres-side data. No manual per-table DELETE is issued anywhere;
+3. **Purge `profile-photos/{userId}/...`** — same hard-precondition
+   treatment, same reasoning, added by Profile Avatar V1. Both bucket
+   purges share one `purgeBucket(admin, bucket, userId)` helper
+   (previously `purgeVisitPhotos`, generalized) — parameterized only by
+   bucket name, since the recursive-listing/hard-precondition logic is
+   identical for either bucket. A user who never set an avatar purges an
+   empty listing — a normal, successful no-op, not a failure.
+4. `supabase.auth.admin.deleteUser(userId)` — only reached after steps 2
+   AND 3 both succeed. `profiles.id` is `ON DELETE CASCADE` from
+   `auth.users(id)`, and every one of the 16 user-owned tables (§2)
+   cascades from `profiles.id` in turn — this one call is sufficient for
+   all Postgres-side data. No manual per-table DELETE is issued anywhere;
    the cascade is trusted because it was independently, twice verified,
-   not assumed.
+   not assumed. `profiles.avatar_path` is a plain column on that same
+   cascading row — see §2's note on why it needs no separate handling.
 
-Success is reported ONLY after step 3 itself succeeds — never before, so
+Success is reported ONLY after step 4 itself succeeds — never before, so
 the client never hears "deleted" while the auth account still exists. A
-Storage failure now means the account is NOT deleted at all — there is no
-longer any window where auth deletion succeeds but Storage cleanup
-didn't, and no residual orphaned-file risk.
+Storage failure in EITHER bucket now means the account is NOT deleted at
+all — there is no window where auth deletion succeeds but Storage cleanup
+didn't, and no residual orphaned-file risk in either bucket.
 
 ### Response contract
 
@@ -190,21 +206,30 @@ token as part of this same function.
 
 ### Backend unit tests (`supabase/functions/delete-account/index.test.ts`, Deno)
 
-11 tests, hand-rolled fakes (a narrow `DeletionAdminClient` structural
-interface — not the full Supabase SDK — so fakes are plain object
-literals, no mocking framework), all passing:
+15 tests (9 original + 6 added by Profile Avatar V1), hand-rolled fakes (a
+narrow `DeletionAdminClient` structural interface — not the full Supabase
+SDK — so fakes are plain object literals, no mocking framework; storage
+entries/errors are now keyed per-bucket so a test can prove either bucket
+independently blocks deletion), all passing:
 - OPTIONS request → CORS response, no auth attempted.
 - Non-POST method rejected (405).
 - Missing Authorization header rejected (401), no deletion attempted.
 - Invalid/expired token rejected (401), no deletion attempted.
 - A valid caller deletes exactly their own id.
 - Storage folder recursion correctly purges nested `visit-photos` files.
-- A Storage list failure **blocks** account deletion (hard precondition)
-  — the account is not deleted, the raw error never reaches the client.
-- A Storage remove failure **blocks** account deletion (hard
-  precondition).
-- Storage cleanup success is required before, and precedes, auth
-  deletion.
+- A `visit-photos` list failure **blocks** account deletion (hard
+  precondition) — the account is not deleted, the raw error never
+  reaches the client.
+- A `visit-photos` remove failure **blocks** account deletion.
+- `profile-photos` is purged after `visit-photos`, before deletion.
+- A user who never set an avatar (empty `profile-photos` listing)
+  deletes normally — an empty listing is a successful no-op.
+- A `profile-photos` list failure **blocks** deletion even when
+  `visit-photos` succeeded.
+- A `profile-photos` remove failure **blocks** deletion even when
+  `visit-photos` succeeded.
+- Storage cleanup success (both buckets) is required before, and
+  precedes, auth deletion.
 - An `auth.admin.deleteUser` failure is reported honestly (500, generic
   message) — the raw backend error never reaches the response body.
 - Two different callers each delete only their own account.
@@ -276,6 +301,41 @@ production project — real, but 100% disposable, test-only accounts;
     immediately after (never committed, never logged in full to any
     file).
 
+### Profile Avatar V1 production verification (live, disposable accounts, real client path — 2026-08-25)
+
+Run after applying the `profile-photos` migration and redeploying this
+function (v1 → v2, confirmed via `supabase functions list`):
+
+1. Created a disposable production user (Test User C), distinctly
+   emailed, via the Admin API.
+2. Uploaded a real object to `visit-photos/{C}/test-visit/private.jpg`
+   and a real object to `profile-photos/{C}/avatar.jpg`, both via the
+   real Storage REST API using C's own signed-in access token.
+3. Set `profiles.avatar_path` for C to the uploaded `profile-photos`
+   path via the real PostgREST path (owner-only `profiles_update` RLS).
+4. Inserted a representative dependent row (`planned_trips`) for C.
+5. Called the **live, deployed** `delete-account` function as C.
+   **Result: `{"success":true}`, HTTP 200.**
+6. Verified directly against production (`information_schema`/table
+   queries, not inference): C's `auth.users` row gone, `profiles` row
+   gone, the `planned_trips` row gone, the `visit-photos` object gone
+   (`storage.objects` count = 0 for C's prefix), the `profile-photos`
+   object gone (`storage.objects` count = 0 for C's prefix).
+7. Retried C's now-stale token → 401 "Invalid or expired session" —
+   consistent with the pre-existing retry semantics.
+8. Two other disposable users (A, B) used earlier in the same session for
+   Storage RLS cross-user attack testing (see
+   `docs/Architecture/PROFILE_AVATAR_V1.md`) were confirmed still present
+   in `auth.users` throughout — proving C's deletion was scoped to C
+   alone.
+9. **Cleanup**: deleted Test Users A, B, and C via the Admin API.
+   Confirmed zero `storage.objects` rows remain in `profile-photos`.
+   Confirmed zero `auth.users` rows matching the test email pattern
+   remain. All local files containing the production service-role/anon
+   keys and disposable-user tokens used for this test were deleted
+   immediately after (chmod 600 throughout, never printed in full, never
+   committed).
+
 ### Flutter (existing, unchanged, already covers the client contract)
 
 `test/delete_account_screen_test.dart` (9 tests) and
@@ -326,11 +386,14 @@ JWT/access token, service-role key, deleted-content bodies. Findings:
 
 ## 7. Production deployment status
 
-**Deployed and live.** `supabase functions deploy delete-account` —
-confirmed via `supabase functions list`: `status: ACTIVE`, `verify_jwt:
-true`. Smoke-tested end-to-end with disposable production accounts (§5),
-including a live attack test proving the security model in the real
-production environment, not just locally.
+**Deployed and live, version 2.** `supabase functions deploy
+delete-account` — confirmed via `supabase functions list`: `status:
+ACTIVE`, `verify_jwt: true`, `version: 2` (redeployed 2026-08-25 to add
+the `profile-photos` purge; `version: 1` was the original visit-photos-
+only deployment). Smoke-tested end-to-end with disposable production
+accounts (§5), including a live attack test and, for v2, a full
+two-bucket deletion integration test, all proving the security model in
+the real production environment, not just locally.
 
 ## 8. Known limitations
 

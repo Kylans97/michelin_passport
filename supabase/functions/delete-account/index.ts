@@ -15,22 +15,30 @@
 // audited dependency map):
 //   1. Authenticate the caller from their JWT.
 //   2. Purge that user's objects in the `visit-photos` Storage bucket —
-//      the ONLY user-owned Storage content (confirmed by schema audit),
-//      and NOT covered by any Postgres FK cascade. **This is now a HARD
-//      PRECONDITION, not best-effort**: if listing or removing those
-//      objects fails for any reason, the function returns failure
-//      immediately and NEVER proceeds to step 3 — the auth account (and
-//      the caller's session) is left fully intact, so the same
-//      authenticated user can simply retry. This was deliberately
-//      changed from an earlier best-effort design: once `auth.users` is
-//      deleted, the user's own JWT is invalidated, so THEY can no longer
-//      retry Storage cleanup under their own identity — any leftover
-//      personal media would then require manual/admin intervention to
-//      remove, which is a materially worse privacy outcome than asking
-//      the user to tap "Delete my account" again after a transient
-//      Storage failure.
-//   3. supabase.auth.admin.deleteUser(userId) — only reached after step 2
-//      succeeds. `profiles.id` is `ON DELETE CASCADE` from
+//      NOT covered by any Postgres FK cascade. **Hard precondition, not
+//      best-effort**: if listing or removing those objects fails for any
+//      reason, the function returns failure immediately and NEVER
+//      proceeds further — the auth account (and the caller's session) is
+//      left fully intact, so the same authenticated user can simply
+//      retry. This was deliberately changed from an earlier best-effort
+//      design: once `auth.users` is deleted, the user's own JWT is
+//      invalidated, so THEY can no longer retry Storage cleanup under
+//      their own identity — any leftover personal media would then
+//      require manual/admin intervention to remove, which is a
+//      materially worse privacy outcome than asking the user to tap
+//      "Delete my account" again after a transient Storage failure.
+//   3. PROFILE UI REDESIGN V1 (proposed, not yet deployed — see
+//      docs/Architecture/PROFILE_AVATAR_V1.md) — purge that user's
+//      objects in the `profile-photos` Storage bucket, the second and
+//      only other user-owned Storage location once avatar upload ships.
+//      Same hard-precondition treatment as step 2, for the identical
+//      reason: a failure here must block deletion, never proceed with an
+//      orphaned avatar object left behind under an identity nobody can
+//      authenticate as anymore. Both bucket purges share one
+//      `purgeBucket` helper — the same recursive-listing, hard-
+//      precondition logic, parameterized only by bucket name.
+//   4. supabase.auth.admin.deleteUser(userId) — only reached after steps
+//      2 and 3 both succeed. `profiles.id` is `ON DELETE CASCADE` from
 //      `auth.users(id)`, and every one of the 16 user-owned tables this
 //      app has (visits, wishlist, planned_trips, planned_venues, photos,
 //      event_attendance, event_confirmed_attendance, follows,
@@ -42,13 +50,16 @@
 //      Postgres-side data, confirmed via a live, read-only
 //      information_schema/pg_constraint audit against production. No
 //      manual per-table DELETE is issued; the cascade is trusted because
-//      it was independently verified, not assumed.
+//      it was independently verified, not assumed. `profiles.avatar_path`
+//      is a plain text column on that same cascading row — no separate
+//      handling needed once the Storage OBJECT it points to has already
+//      been purged in step 3.
 //
-// Success is reported ONLY after step 3 itself succeeds — never before,
+// Success is reported ONLY after step 4 itself succeeds — never before,
 // so the client never hears "deleted" while the auth account still
-// exists. A Storage failure now means the account is NOT deleted at all
-// (step 2 blocks step 3) — there is no longer any window where auth
-// deletion succeeds but Storage cleanup didn't.
+// exists. A Storage failure (either bucket) now means the account is NOT
+// deleted at all — there is no window where auth deletion succeeds but
+// Storage cleanup didn't.
 
 import { createClient } from 'jsr:@supabase/supabase-js@2';
 
@@ -135,18 +146,23 @@ type PurgeResult = { ok: true } | { ok: false; message: string };
 // Storage cleanup is a HARD PRECONDITION for account deletion — see this
 // file's own top-of-file doc comment for why. Returns `{ ok: false }` on
 // ANY listing or removal failure; the caller must not proceed to delete
-// the auth user when that happens.
-async function purgeVisitPhotos(
+// the auth user when that happens. Shared by both `visit-photos` and
+// (proposed) `profile-photos` — the only two user-owned Storage buckets
+// this app has — parameterized only by bucket name, since the recursive-
+// listing/hard-precondition logic itself is identical for either one.
+async function purgeBucket(
   admin: DeletionAdminClient,
+  bucket: string,
   userId: string,
 ): Promise<PurgeResult> {
   try {
-    const paths = await listAllFiles(admin, 'visit-photos', userId);
+    const paths = await listAllFiles(admin, bucket, userId);
     if (paths.length === 0) return { ok: true };
-    const { error } = await admin.storage.from('visit-photos').remove(paths);
+    const { error } = await admin.storage.from(bucket).remove(paths);
     if (error) {
       console.error('delete-account: storage remove failed', {
         userId,
+        bucket,
         message: error.message,
       });
       return { ok: false, message: error.message };
@@ -154,7 +170,7 @@ async function purgeVisitPhotos(
     return { ok: true };
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    console.error('delete-account: storage cleanup failed', { userId, message });
+    console.error('delete-account: storage cleanup failed', { userId, bucket, message });
     return { ok: false, message };
   }
 }
@@ -197,11 +213,20 @@ export async function handleRequest(
     return jsonResponse({ error: 'Invalid or expired session' }, 401);
   }
 
-  const purgeResult = await purgeVisitPhotos(admin, userId);
-  if (!purgeResult.ok) {
+  const visitPhotosResult = await purgeBucket(admin, 'visit-photos', userId);
+  if (!visitPhotosResult.ok) {
     // Hard precondition: Storage cleanup failed, so the auth account is
     // NEVER touched — the caller's session remains valid and they can
     // simply retry. See this file's own top doc comment for why.
+    return jsonResponse({ error: 'Could not delete account. Please try again.' }, 500);
+  }
+
+  // PROFILE UI REDESIGN V1 (proposed) — second hard precondition, same
+  // reasoning as visit-photos above. Purges even if the user never set an
+  // avatar (an empty listing is a normal, successful no-op — see
+  // listAllFiles/purgeBucket).
+  const profilePhotosResult = await purgeBucket(admin, 'profile-photos', userId);
+  if (!profilePhotosResult.ok) {
     return jsonResponse({ error: 'Could not delete account. Please try again.' }, 500);
   }
 

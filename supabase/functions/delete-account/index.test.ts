@@ -22,19 +22,24 @@ function req(opts: { method?: string; authorization?: string } = {}): Request {
 interface FakeOptions {
   validUserId?: string | null;
   getUserError?: string;
-  storageEntries?: Record<string, Array<{ id: string | null; name: string }>>;
-  storageListError?: string;
-  storageRemoveError?: string;
+  // Keyed by bucket, then by list() prefix — lets a test give
+  // `visit-photos` and `profile-photos` independently different (or
+  // identically empty) contents.
+  storageEntries?: Record<string, Record<string, Array<{ id: string | null; name: string }>>>;
+  // Per-bucket list()/remove() failure — lets a test prove EITHER bucket
+  // independently blocks deletion, not just the first one checked.
+  storageListError?: Partial<Record<string, string>>;
+  storageRemoveError?: Partial<Record<string, string>>;
   deleteUserError?: string;
 }
 
 function fakeAdmin(opts: FakeOptions = {}): {
   admin: DeletionAdminClient;
   deleteUserCalls: string[];
-  removeCalls: string[][];
+  removeCalls: Array<{ bucket: string; paths: string[] }>;
 } {
   const deleteUserCalls: string[] = [];
-  const removeCalls: string[][] = [];
+  const removeCalls: Array<{ bucket: string; paths: string[] }> = [];
 
   const admin: DeletionAdminClient = {
     auth: {
@@ -61,24 +66,26 @@ function fakeAdmin(opts: FakeOptions = {}): {
       },
     },
     storage: {
-      from(_bucket: string) {
+      from(bucket: string) {
         return {
           list(prefix: string, _o: { limit: number }) {
-            if (opts.storageListError) {
+            const listError = opts.storageListError?.[bucket];
+            if (listError) {
               return Promise.resolve({
                 data: null,
-                error: { message: opts.storageListError },
+                error: { message: listError },
               });
             }
             return Promise.resolve({
-              data: opts.storageEntries?.[prefix] ?? [],
+              data: opts.storageEntries?.[bucket]?.[prefix] ?? [],
               error: null,
             });
           },
           remove(paths: string[]) {
-            removeCalls.push(paths);
-            if (opts.storageRemoveError) {
-              return Promise.resolve({ error: { message: opts.storageRemoveError } });
+            removeCalls.push({ bucket, paths });
+            const removeError = opts.storageRemoveError?.[bucket];
+            if (removeError) {
+              return Promise.resolve({ error: { message: removeError } });
             }
             return Promise.resolve({ error: null });
           },
@@ -133,20 +140,25 @@ Deno.test('storage cleanup purges nested visit-photos files (folder recursion) b
   const { admin, removeCalls, deleteUserCalls } = fakeAdmin({
     validUserId: 'user-1',
     storageEntries: {
-      'user-1': [{ id: null, name: 'visit-1' }], // a "folder" (no id)
-      'user-1/visit-1': [{ id: 'file-id', name: 'private.jpg' }],
+      'visit-photos': {
+        'user-1': [{ id: null, name: 'visit-1' }], // a "folder" (no id)
+        'user-1/visit-1': [{ id: 'file-id', name: 'private.jpg' }],
+      },
     },
   });
   const res = await handleRequest(req({ authorization: 'Bearer good-token' }), admin);
   assertEquals(res.status, 200);
-  assertEquals(removeCalls, [['user-1/visit-1/private.jpg']]);
+  assertEquals(removeCalls[0], {
+    bucket: 'visit-photos',
+    paths: ['user-1/visit-1/private.jpg'],
+  });
   assertEquals(deleteUserCalls, ['user-1']);
 });
 
-Deno.test('a Storage list failure BLOCKS account deletion — hard precondition, the account is NOT deleted, the session stays valid so the user can retry', async () => {
+Deno.test('a visit-photos list failure BLOCKS account deletion — hard precondition, the account is NOT deleted, the session stays valid so the user can retry', async () => {
   const { admin, deleteUserCalls } = fakeAdmin({
     validUserId: 'user-1',
-    storageListError: 'network error',
+    storageListError: { 'visit-photos': 'network error' },
   });
   const res = await handleRequest(req({ authorization: 'Bearer good-token' }), admin);
   assertEquals(res.status, 500);
@@ -157,25 +169,85 @@ Deno.test('a Storage list failure BLOCKS account deletion — hard precondition,
   assertEquals(JSON.stringify(body).includes('network error'), false);
 });
 
-Deno.test('a Storage remove failure BLOCKS account deletion — hard precondition, the account is NOT deleted, the session stays valid so the user can retry', async () => {
+Deno.test('a visit-photos remove failure BLOCKS account deletion — hard precondition, the account is NOT deleted, the session stays valid so the user can retry', async () => {
   const { admin, deleteUserCalls } = fakeAdmin({
     validUserId: 'user-1',
-    storageEntries: { 'user-1': [{ id: 'f1', name: 'a.jpg' }] },
-    storageRemoveError: 'network error',
+    storageEntries: { 'visit-photos': { 'user-1': [{ id: 'f1', name: 'a.jpg' }] } },
+    storageRemoveError: { 'visit-photos': 'network error' },
   });
   const res = await handleRequest(req({ authorization: 'Bearer good-token' }), admin);
   assertEquals(res.status, 500);
   assertEquals(deleteUserCalls.length, 0);
 });
 
-Deno.test('Storage cleanup success is required before — and precedes — auth deletion', async () => {
+// PROFILE UI REDESIGN V1 (proposed) — profile-photos is the second hard
+// precondition, purged only after visit-photos succeeds, and must
+// independently block deletion on its own failure — never masked by, or
+// mistaken for, the visit-photos check above.
+
+Deno.test('storage cleanup also purges profile-photos, after visit-photos, before deleting the user', async () => {
   const { admin, removeCalls, deleteUserCalls } = fakeAdmin({
     validUserId: 'user-1',
-    storageEntries: { 'user-1': [{ id: 'f1', name: 'a.jpg' }] },
+    storageEntries: {
+      'visit-photos': { 'user-1': [{ id: 'v1', name: 'a.jpg' }] },
+      'profile-photos': { 'user-1': [{ id: 'p1', name: 'avatar.jpg' }] },
+    },
   });
   const res = await handleRequest(req({ authorization: 'Bearer good-token' }), admin);
   assertEquals(res.status, 200);
-  assertEquals(removeCalls, [['user-1/a.jpg']]);
+  assertEquals(removeCalls, [
+    { bucket: 'visit-photos', paths: ['user-1/a.jpg'] },
+    { bucket: 'profile-photos', paths: ['user-1/avatar.jpg'] },
+  ]);
+  assertEquals(deleteUserCalls, ['user-1']);
+});
+
+Deno.test('a user who never set an avatar (empty profile-photos listing) deletes normally — an empty listing is a successful no-op, never a failure', async () => {
+  const { admin, removeCalls, deleteUserCalls } = fakeAdmin({
+    validUserId: 'user-1',
+    storageEntries: { 'profile-photos': { 'user-1': [] } },
+  });
+  const res = await handleRequest(req({ authorization: 'Bearer good-token' }), admin);
+  assertEquals(res.status, 200);
+  assertEquals(
+    removeCalls.some((c) => c.bucket === 'profile-photos'),
+    false,
+  );
+  assertEquals(deleteUserCalls, ['user-1']);
+});
+
+Deno.test('a profile-photos list failure BLOCKS account deletion, even though visit-photos succeeded', async () => {
+  const { admin, deleteUserCalls } = fakeAdmin({
+    validUserId: 'user-1',
+    storageListError: { 'profile-photos': 'network error' },
+  });
+  const res = await handleRequest(req({ authorization: 'Bearer good-token' }), admin);
+  assertEquals(res.status, 500);
+  assertEquals(deleteUserCalls.length, 0);
+  const body = await res.json();
+  assertEquals(body.error, 'Could not delete account. Please try again.');
+  assertEquals(JSON.stringify(body).includes('network error'), false);
+});
+
+Deno.test('a profile-photos remove failure BLOCKS account deletion, even though visit-photos succeeded', async () => {
+  const { admin, deleteUserCalls } = fakeAdmin({
+    validUserId: 'user-1',
+    storageEntries: { 'profile-photos': { 'user-1': [{ id: 'p1', name: 'avatar.jpg' }] } },
+    storageRemoveError: { 'profile-photos': 'network error' },
+  });
+  const res = await handleRequest(req({ authorization: 'Bearer good-token' }), admin);
+  assertEquals(res.status, 500);
+  assertEquals(deleteUserCalls.length, 0);
+});
+
+Deno.test('Storage cleanup success (both buckets) is required before — and precedes — auth deletion', async () => {
+  const { admin, removeCalls, deleteUserCalls } = fakeAdmin({
+    validUserId: 'user-1',
+    storageEntries: { 'visit-photos': { 'user-1': [{ id: 'f1', name: 'a.jpg' }] } },
+  });
+  const res = await handleRequest(req({ authorization: 'Bearer good-token' }), admin);
+  assertEquals(res.status, 200);
+  assertEquals(removeCalls[0], { bucket: 'visit-photos', paths: ['user-1/a.jpg'] });
   assertEquals(deleteUserCalls, ['user-1']);
 });
 

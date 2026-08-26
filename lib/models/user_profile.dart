@@ -13,6 +13,18 @@ class UserProfile {
   final String name;
   final String email;
   final String memberSince;
+
+  // PROFILE UI REDESIGN V1 — the Storage object path (never a URL) for
+  // this user's current avatar, or null if none is set. Resolving this
+  // into a displayable URL is `ProfileRepository.resolveAvatarUrl`'s job
+  // — this model only carries the stable reference, matching `avatar_
+  // path`'s own migration-comment rationale for why a path is stored
+  // rather than a brittle signed/public URL. `profile_avatar_v1` — the
+  // proposed migration adding this column has NOT been applied to
+  // production yet (see `docs/Architecture/PROFILE_AVATAR_V1.md`); until
+  // then this is always null, which [MemberAvatar] already renders
+  // correctly (initials fallback).
+  final String? avatarPath;
   final int restaurantsVisited;
   final int countriesVisited;
   final int citiesVisited;
@@ -27,6 +39,7 @@ class UserProfile {
     required this.name,
     required this.email,
     required this.memberSince,
+    this.avatarPath,
     required this.restaurantsVisited,
     required this.countriesVisited,
     required this.citiesVisited,
@@ -58,6 +71,7 @@ class UserProfile {
       name: (profileRow['display_name'] as String?) ?? 'Member',
       email: email,
       memberSince: _formatDate(profileRow['created_at'] as String?),
+      avatarPath: profileRow['avatar_path'] as String?,
       restaurantsVisited: visited.length,
       countriesVisited: visited.map((r) => r.countryName).toSet().length,
       citiesVisited: visited.map((r) => r.cityName).toSet().length,

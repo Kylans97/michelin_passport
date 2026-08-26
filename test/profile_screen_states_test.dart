@@ -1,37 +1,40 @@
-// Covers ProfileScreen's redesigned states (Social Foundation Step 1):
-// the "choose a username" banner, and — explicitly required — Sign Out.
-// ProfileScreen constructs repositories against Supabase.instance.client
-// eagerly in initState (same established limitation as every other
-// screen in this app that touches Supabase there), so it can't be pumped
-// directly — this reconstructs the exact widgets/copy from
-// lib/features/profile/profile_screen.dart, mirroring this codebase's
-// established "test the presentation seam" precedent.
+// Covers ProfileScreen's redesigned states. ProfileScreen constructs
+// repositories against Supabase.instance.client eagerly in initState (same
+// established limitation as every other screen in this app that touches
+// Supabase there), so it can't be pumped directly — this reconstructs the
+// exact widgets/copy from lib/features/profile/profile_screen.dart,
+// mirroring this codebase's established "test the presentation seam"
+// precedent.
 //
-// Sign Out specifically: verifies the row (a) is present and immediately
-// visible in a plain list — not nested inside a submenu/dialog — and
-// (b) invokes the provided callback on tap, standing in for
-// AuthRepository.signOut() exactly as ProfileScreen._signOut() calls it
-// (`Future<void> _signOut() async => _authRepo.signOut();` — a direct,
-// unconditional call with no second/alternate logout mechanism).
+// PROFILE UI REDESIGN V1: ACCOUNT holds only Edit profile/Notifications/
+// Privacy. Friends sits under a "SOCIAL" section. The avatar mirror is
+// gone — MemberAvatar is a real, Supabase-free widget now, covered
+// directly in member_avatar_test.dart.
 //
-// Primary Tabs UI Polish V1 additions: Journey metrics (now CsMetricStrip,
-// replacing the old icon/card grid) and the Friends row (now a restrained
-// editorial action row, replacing the old bordered/icon card) — both
-// mirrored the same way, plus a gold-audit check on the avatar.
+// FINAL VISUAL REFINEMENT: Sign out/Delete account no longer sit under an
+// "ACCOUNT ACTIONS" eyebrow (see profile_delete_account_entry_test.dart
+// for that pairing's own coverage) — generous spacing plus Delete
+// account's own destructive tint read as a group without a label.
+//
+// JOURNEY CARD REFINEMENT: Your Journey is no longer mirrored here at
+// all — it's now a single `JourneyCard` (lib/features/profile/
+// journey_card.dart), a real, Supabase-free widget pumped DIRECTLY in
+// journey_card_test.dart (metric semantics/calculation logic itself
+// stays covered, unchanged, by journey_metrics_test.dart). The same pass
+// also moved "Member since …" out of the identity hero and into
+// JourneyCard's own stamp — the hero mirror below no longer renders or
+// asserts a Member since line.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
-import 'package:michelin_passport/core/widgets/cs_metric_strip.dart';
+import 'package:michelin_passport/core/widgets/member_avatar.dart';
 
-// ── Reconstructed from ProfileScreen's own _SettingsRow + Account section ──
+// ── Reconstructed from ProfileScreen's own _SettingsRow + section split ──
 
-Widget _accountSection({
-  required VoidCallback onSignOut,
-  VoidCallback? onOpenPrivacy,
-}) => Column(
+Widget _accountSection({VoidCallback? onOpenPrivacy}) => Column(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
     Text(
@@ -57,6 +60,14 @@ Widget _accountSection({
       label: 'Privacy',
       onTap: onOpenPrivacy ?? () {},
     ),
+  ],
+);
+
+// FINAL VISUAL REFINEMENT — no "ACCOUNT ACTIONS" eyebrow above these rows
+// (see ProfileScreen.build's own comment for why it was removed).
+Widget _accountActionsSection({required VoidCallback onSignOut}) => Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
     _SettingsRowStandIn(
       icon: Icons.logout_outlined,
       label: 'Sign out',
@@ -117,43 +128,54 @@ Widget _wrap(Widget child) => MaterialApp(
   home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),
 );
 
-// ── Reconstructed from ProfileScreen's own _Avatar/JOURNEY/_FriendsEntryRow ──
-
-Widget _avatarMirror(String initials) => Container(
-  width: 64,
-  height: 64,
-  decoration: BoxDecoration(
-    shape: BoxShape.circle,
-    color: AppColors.brandGreenLight,
-    border: Border.all(color: AppColors.subtleBorderDark),
-  ),
-  alignment: Alignment.center,
-  child: Text(
-    initials,
-    style: CsTypography.placeTitle.copyWith(color: AppColors.ivory),
-  ),
-);
-
-Widget _journeyMetrics({
-  required int restaurants,
-  required int stars,
-  required int countries,
-  required int cities,
-}) => Column(
-  crossAxisAlignment: CrossAxisAlignment.start,
+// ── Reconstructed from ProfileScreen's own _IdentityHero ────────────────
+//
+// FINAL VISUAL REFINEMENT — the standalone trailing pencil IconButton
+// this hero used to render is gone; [MemberAvatar]'s own `onEdit` pencil
+// badge is now the ONLY edit affordance. Uses the REAL [MemberAvatar]
+// widget (no Supabase dependency, so no mirror needed for it), matching
+// _IdentityHero's own composition exactly.
+//
+// JOURNEY CARD REFINEMENT — no `memberSince` parameter/line anymore: that
+// fact moved to JourneyCard's own stamp (see journey_card_test.dart) so
+// it appears in exactly one place, never duplicated.
+Widget _identityHero({
+  required String name,
+  String? username,
+  required VoidCallback onEditAvatar,
+}) => Row(
+  crossAxisAlignment: CrossAxisAlignment.center,
   children: [
-    Text(
-      'JOURNEY',
-      style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+    MemberAvatar(
+      avatarUrl: null,
+      displayName: name,
+      size: 76,
+      onEdit: onEditAvatar,
     ),
-    const SizedBox(height: CsSpacing.md),
-    CsMetricStrip(
-      metrics: [
-        CsMetric(value: '$restaurants', label: 'RESTAURANTS'),
-        CsMetric(value: '$stars', label: 'STARS'),
-        CsMetric(value: '$countries', label: 'COUNTRIES'),
-        CsMetric(value: '$cities', label: 'CITIES'),
-      ],
+    const SizedBox(width: CsSpacing.base),
+    Expanded(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            name,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: CsTypography.placeTitle.copyWith(color: AppColors.textOnDark),
+          ),
+          if (username != null) ...[
+            const SizedBox(height: 2),
+            Text(
+              '@$username',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: CsTypography.metadata.copyWith(
+                color: AppColors.secondaryOnDark,
+              ),
+            ),
+          ],
+        ],
+      ),
     ),
   ],
 );
@@ -209,15 +231,20 @@ Widget _friendsRowMirror({
 }
 
 void main() {
-  group('ProfileScreen — Sign Out', () {
+  group('ProfileScreen — Sign Out (no ACCOUNT ACTIONS heading)', () {
     testWidgets('is visible immediately, in a plain list, not a submenu', (
       tester,
     ) async {
-      await tester.pumpWidget(_wrap(_accountSection(onSignOut: () {})));
+      await tester.pumpWidget(
+        _wrap(_accountActionsSection(onSignOut: () {})),
+      );
       // No nested Drawer/PopupMenu/second dialog needed to find it — it's
-      // a direct descendant of the Account section, found without any
-      // prior interaction.
+      // found directly, without any prior interaction, and without an
+      // "ACCOUNT ACTIONS" eyebrow above it (removed for a calmer
+      // composition — generous spacing plus Delete account's own
+      // destructive tint read as a group without a label).
       expect(find.text('Sign out'), findsOneWidget);
+      expect(find.text('ACCOUNT ACTIONS'), findsNothing);
       expect(find.byType(PopupMenuButton), findsNothing);
       expect(find.byType(Drawer), findsNothing);
     });
@@ -226,24 +253,25 @@ void main() {
         'in for AuthRepository.signOut())', (tester) async {
       var signedOut = false;
       await tester.pumpWidget(
-        _wrap(_accountSection(onSignOut: () => signedOut = true)),
+        _wrap(_accountActionsSection(onSignOut: () => signedOut = true)),
       );
       await tester.tap(find.text('Sign out'));
       expect(signedOut, isTrue);
     });
 
-    testWidgets('Sign Out sits alongside Edit Profile/Notifications — no '
-        'second/alternate logout control exists', (tester) async {
-      await tester.pumpWidget(_wrap(_accountSection(onSignOut: () {})));
-      expect(find.text('Edit profile'), findsOneWidget);
-      expect(find.text('Notifications'), findsOneWidget);
+    testWidgets('no second/alternate logout control exists', (tester) async {
+      await tester.pumpWidget(
+        _wrap(_accountActionsSection(onSignOut: () {})),
+      );
       expect(find.text('Sign out'), findsOneWidget);
       expect(find.textContaining('Log out'), findsNothing);
       expect(find.textContaining('Logout'), findsNothing);
     });
 
     testWidgets('tap target meets the 44px minimum', (tester) async {
-      await tester.pumpWidget(_wrap(_accountSection(onSignOut: () {})));
+      await tester.pumpWidget(
+        _wrap(_accountActionsSection(onSignOut: () {})),
+      );
       final size = tester.getSize(find.widgetWithText(InkWell, 'Sign out'));
       expect(size.height, greaterThanOrEqualTo(44));
     });
@@ -252,12 +280,11 @@ void main() {
   group('ProfileScreen — Privacy entry (PROFILE PRIVACY & DISCOVERABILITY '
       'V1)', () {
     testWidgets('is visible in the Account section, alongside Edit profile/'
-        'Notifications/Sign out', (tester) async {
-      await tester.pumpWidget(_wrap(_accountSection(onSignOut: () {})));
+        'Notifications', (tester) async {
+      await tester.pumpWidget(_wrap(_accountSection()));
       expect(find.text('Privacy'), findsOneWidget);
       expect(find.text('Edit profile'), findsOneWidget);
       expect(find.text('Notifications'), findsOneWidget);
-      expect(find.text('Sign out'), findsOneWidget);
     });
 
     testWidgets('tapping Privacy opens the Privacy settings entry point', (
@@ -265,12 +292,64 @@ void main() {
     ) async {
       var opened = false;
       await tester.pumpWidget(
-        _wrap(
-          _accountSection(onSignOut: () {}, onOpenPrivacy: () => opened = true),
-        ),
+        _wrap(_accountSection(onOpenPrivacy: () => opened = true)),
       );
       await tester.tap(find.text('Privacy'));
       expect(opened, isTrue);
+    });
+  });
+
+  group('ProfileScreen — Identity hero (FINAL VISUAL REFINEMENT: single '
+      'edit affordance)', () {
+    testWidgets('shows exactly one edit affordance — the avatar\'s own '
+        'pencil badge — never a second standalone pencil', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          _identityHero(
+            name: 'Kylan Scheepstra',
+            username: 'admin',
+            onEditAvatar: () {},
+          ),
+        ),
+      );
+      expect(find.byIcon(Icons.edit_outlined), findsOneWidget);
+      expect(find.byType(IconButton), findsNothing);
+    });
+
+    testWidgets('tapping the avatar\'s edit badge invokes onEditAvatar', (
+      tester,
+    ) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          _identityHero(
+            name: 'Kylan Scheepstra',
+            username: 'admin',
+            onEditAvatar: () => tapped = true,
+          ),
+        ),
+      );
+      await tester.tap(find.byType(InkWell));
+      expect(tapped, isTrue);
+    });
+
+    testWidgets('name and @username render — no "Member since" line (moved '
+        'to JourneyCard\'s own stamp, never duplicated here)', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          _identityHero(
+            name: 'Kylan Scheepstra',
+            username: 'admin',
+            onEditAvatar: () {},
+          ),
+        ),
+      );
+      expect(find.text('Kylan Scheepstra'), findsOneWidget);
+      expect(find.text('@admin'), findsOneWidget);
+      expect(find.textContaining('Member since'), findsNothing);
+      expect(find.byType(Chip), findsNothing);
     });
   });
 
@@ -291,50 +370,7 @@ void main() {
     });
   });
 
-  group('ProfileScreen — Journey metrics (Primary Tabs UI Polish V1)', () {
-    testWidgets('renders all four values and labels via the shared '
-        'typography-led CsMetricStrip — no decorative icons, matching '
-        "Passport's own metric strip treatment", (tester) async {
-      await tester.pumpWidget(
-        _wrap(
-          _journeyMetrics(restaurants: 42, stars: 12, countries: 9, cities: 20),
-        ),
-      );
-      expect(find.text('42'), findsOneWidget);
-      expect(find.text('RESTAURANTS'), findsOneWidget);
-      expect(find.text('12'), findsOneWidget);
-      expect(find.text('STARS'), findsOneWidget);
-      expect(find.text('9'), findsOneWidget);
-      expect(find.text('COUNTRIES'), findsOneWidget);
-      expect(find.text('20'), findsOneWidget);
-      expect(find.text('CITIES'), findsOneWidget);
-      // The old grid rendered a restaurant/star/public/city icon per
-      // tile — the redesigned strip is typography-only.
-      expect(find.byType(Icon), findsNothing);
-    });
-
-    testWidgets('no overflow at 320px', (tester) async {
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            backgroundColor: AppColors.deepGreen,
-            body: SizedBox(
-              width: 320,
-              child: _journeyMetrics(
-                restaurants: 128,
-                stars: 61,
-                countries: 24,
-                cities: 87,
-              ),
-            ),
-          ),
-        ),
-      );
-      expect(tester.takeException(), isNull);
-    });
-  });
-
-  group('ProfileScreen — Friends row (Primary Tabs UI Polish V1)', () {
+  group('ProfileScreen — Friends row (now under SOCIAL)', () {
     testWidgets('shows the label, friend/request counts, and a restrained '
         'arrow — never the old leading icon avatar or a card background', (
       tester,
@@ -375,21 +411,6 @@ void main() {
       );
       final size = tester.getSize(find.byType(InkWell));
       expect(size.height, greaterThanOrEqualTo(44));
-    });
-  });
-
-  group('ProfileScreen — Avatar gold audit (Primary Tabs UI Polish V1)', () {
-    testWidgets('the border and initials are never gold — restrained '
-        'subtleBorderDark/ivory instead', (tester) async {
-      await tester.pumpWidget(_wrap(_avatarMirror('KS')));
-      final container = tester.widget<Container>(find.byType(Container));
-      final decoration = container.decoration! as BoxDecoration;
-      expect(decoration.border!.top.color, AppColors.subtleBorderDark);
-      expect(decoration.border!.top.color, isNot(AppColors.gold));
-
-      final initials = tester.widget<Text>(find.text('KS'));
-      expect(initials.style?.color, AppColors.ivory);
-      expect(initials.style?.color, isNot(AppColors.gold));
     });
   });
 }

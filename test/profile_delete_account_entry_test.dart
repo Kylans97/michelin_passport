@@ -1,12 +1,21 @@
-// Covers ProfileScreen's ACCOUNT section rows, focused on the new
-// "Delete account" entry (Account Deletion / App Store readiness addendum
-// to Navigation & Information Architecture V2 UI Refinement) — must be
+// Covers ProfileScreen's account-actions rows, focused on the "Delete
+// account" entry (Account Deletion / App Store readiness addendum to
+// Navigation & Information Architecture V2 UI Refinement) — must be
 // directly visible and tappable from Profile, never buried behind
 // Privacy/Terms/About/a support email. ProfileScreen constructs several
 // repositories against Supabase.instance.client eagerly in initState —
 // same established limitation as every other Supabase-eager screen in
-// this app — so this mirrors the exact ACCOUNT section _SettingsRow list
-// ProfileScreen.build() produces rather than pumping the real screen.
+// this app — so this mirrors the exact _SettingsRow list ProfileScreen.
+// build() produces rather than pumping the real screen.
+//
+// PROFILE UI REDESIGN V1 split Edit profile/Notifications into their own
+// ACCOUNT section, leaving Sign out/Delete account together lower on the
+// page — all four rows are still mirrored together here since this
+// file's own coverage (visibility, destructive tint, tap-to-navigate) is
+// section-boundary-agnostic. FINAL VISUAL REFINEMENT later removed the
+// "ACCOUNT ACTIONS" eyebrow that once sat above Sign out/Delete account
+// (see profile_screen_states_test.dart for that specific change's own
+// coverage) — this file never depended on that heading existing.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
