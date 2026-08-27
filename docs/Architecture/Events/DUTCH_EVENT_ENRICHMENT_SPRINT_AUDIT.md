@@ -1,6 +1,6 @@
 # DUTCH EVENT ENRICHMENT SPRINT — AUDIT
 
-Research-only sprint deepening the Netherlands market for Chasing Stars
+Research-only sprint deepening the Netherlands market for Mantelier
 Events, run against the now-live date-only architecture and the
 already-shipped European Batch 1. **Nothing was inserted, updated, or
 staged in this task.** This document is the research record; the raw
@@ -14,7 +14,7 @@ Rotterdam/The Hague/Utrecht; Limburg/Brabant; Gelderland/Overijssel/
 Veluwe; North NL/Zeeland/Wadden Islands; and a national sweep of
 organizers and formats (wine/sommelier guilds, Chaîne des Rôtisseurs,
 charity circuits, Michelin/Gault&Millau NL official channels). Each
-pass checked the relevant Chasing Stars catalogue restaurants/hotels'
+pass checked the relevant Mantelier catalogue restaurants/hotels'
 own sites directly, plus Dutch culinary press, tourism boards, wine and
 charity-gala organizers, and both English and Dutch search terms
 (four-hands/vierhandendiner, guest chef/gastchef, anniversary dinner/
@@ -112,7 +112,7 @@ European batch.
 
 ## 6. CANONICAL ENTITY MATCHES
 
-Checked live against the current Chasing Stars catalogue (~112 Dutch
+Checked live against the current Mantelier catalogue (~112 Dutch
 Michelin-starred restaurants, 17 Dutch Michelin-keyed hotels).
 **EXACT**: Flore, Triptyque, Basiliek, Parkheuvel, 't Ganzenest, Van Oys
 Maastricht Retreat, Kaatje bij de Sluis, Olde Marckt, Inter Scaldes,
@@ -168,7 +168,7 @@ copied, or uploaded. No candidate was blocked on this.
 
 ## 11. CURATED SHORTLIST (18 CANDIDATES)
 
-| Priority | Event | Date | City | Host | Participants | Admission | Confidence | Canonical coverage | Why Chasing Stars should include it |
+| Priority | Event | Date | City | Host | Participants | Admission | Confidence | Canonical coverage | Why Mantelier should include it |
 |---|---|---|---|---|---|---|---|---|---|
 | P0 | 4 Hands Dinner: Bas van Kranen x Sebastian Frank | 2026-11-09 | Amsterdam | Flore | Sebastian Frank (Horváth, Berlin, 2★+Green Star) | Paid | A | Flore EXACT | Recurring series at the same host as the production pilot, internationally lauded guest |
 | P0 | VanOost 4 Hands Lunch — Sören Herzig | 2026-09-06 | Amsterdam | VanOost | Sören Herzig (Vienna, 1★) | Paid €210 | A | VanOost NOT_FOUND | International Michelin guest flown in for a reciprocal exchange |

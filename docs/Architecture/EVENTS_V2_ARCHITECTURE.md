@@ -48,7 +48,7 @@ This document assumes the reader has *not* re-read the five audits that produced
 
 ## 0. Product direction
 
-Chasing Stars is repositioning from a guide-centric discovery app to a curated high-end gastronomy experience platform, organized around five pillars: **Discover** (places and people), **Events** (gastronomic moments, now promoted to a primary reason to return), **Passport** (confirmed personal history), **Trips** (future planning that converts into Passport history), and **Profile/Community** (Friends and social discovery).
+Mantelier is repositioning from a guide-centric discovery app to a curated high-end gastronomy experience platform, organized around five pillars: **Discover** (places and people), **Events** (gastronomic moments, now promoted to a primary reason to return), **Passport** (confirmed personal history), **Trips** (future planning that converts into Passport history), and **Profile/Community** (Friends and social discovery).
 
 External recognition — MICHELIN Guide, World's 50 Best, Gault&Millau, and future sources — remains canonical, accurate, and prominently surfaced, but functions going forward as a **recognition layer attached to Places**, not as the organizing principle of the navigation or the product's identity. The app's own defensible value increasingly comes from data nobody else has: canonical Places, Private Chefs, curated Events, Follow relationships, Friends signals, Interested/Going/Attended, Trips, Passport, My Map, and — new as of this phase — first-party behavioral intelligence about how all of the above connect.
 
@@ -125,8 +125,8 @@ This document's job here is narrower than "make Events standalone" (already true
 
 ### 6.1 Definitions
 
-- **HOST** — primary organizer/publisher of the event. Zero or more per event; supports single-host (Club Leroy: Parkheuvel), multi-host (Hotel × Chef × Winemaker), and fully-external (Preuvenemint: "the event organization," not any canonical Chasing Stars entity).
-- **VENUE** — where it physically occurs. Always present (an event without a location isn't useful to a traveller), but is *not* always a canonical Chasing Stars entity (Vrijthof, a public square, will never be a `restaurants`/`hotels` row).
+- **HOST** — primary organizer/publisher of the event. Zero or more per event; supports single-host (Club Leroy: Parkheuvel), multi-host (Hotel × Chef × Winemaker), and fully-external (Preuvenemint: "the event organization," not any canonical Mantelier entity).
+- **VENUE** — where it physically occurs. Always present (an event without a location isn't useful to a traveller), but is *not* always a canonical Mantelier entity (Vrijthof, a public square, will never be a `restaurants`/`hotels` row).
 - **PARTICIPANT** — an entity taking part without organizing. Preuvenemint's non-hosting restaurants; a guest bartender at someone else's bar.
 - **COLLABORATOR** — rejected as a distinct concept, per the brief's own steer. "Participant + role" already expresses everything a "collaborator" would.
 
@@ -201,7 +201,7 @@ Validated against §6's **corrected** host/venue/participant model (independent 
 
 | Case | Host(s) | Venue | Participants | Admission |
 |---|---|---|---|---|
-| 1. Club Leroy at Parkheuvel | `events.external_host_name = 'Club Leroy'` (Erik van Loo's presenting brand — not a canonical Chasing Stars entity) | `event_restaurants` row, Parkheuvel, `is_venue=true, is_host=false` — Parkheuvel is where it happens, not who organizes it | none | paid, fixed €249, external ticket URL |
+| 1. Club Leroy at Parkheuvel | `events.external_host_name = 'Club Leroy'` (Erik van Loo's presenting brand — not a canonical Mantelier entity) | `event_restaurants` row, Parkheuvel, `is_venue=true, is_host=false` — Parkheuvel is where it happens, not who organizes it | none | paid, fixed €249, external ticket URL |
 | 2. Preuvenemint | `external_host_name` (or left null if no named organizer exists) | `events.venue_name='Vrijthof'` (no canonical entity at all — never a restaurant/hotel row) | `event_restaurants`, Tout à Fait, `is_host=false, is_venue=false` (live in production today, correctly the all-`false` default) | mixed |
 | 3. Lucas de Jager × Winery X | `event_chefs` row (Lucas, `is_host=true`) **+** future `event_wineries` row (`is_host=true`) once Wineries ships — genuinely two simultaneous hosts | future `event_wineries` row, `is_venue=true` (the same row that's also `is_host=true` — one row, both flags) — or event-specific text if held off-site | none | paid, limited seats |
 | 4. Apostelhoeve special event | future `event_wineries` row, `is_host=true` | same row, `is_venue=true` | possibly an `event_chefs` row, `is_host=false, is_venue=false` | paid |
@@ -399,7 +399,7 @@ Future verified host types (Restaurant, Hotel, Private Chef, later Winery, Bar) 
 | Category | Fields | Who writes |
 |---|---|---|
 | Host-manageable (future) | title, description, date/time, ticket URL, price, photos, practical details | Host, via a future submission RPC — never direct `UPDATE` (§20 explains why) |
-| Chasing Stars controlled | publication approval, editorial promotion, host verification, recognition, curation status | Service role / admin only, same as every other moderation field in this schema |
+| Mantelier controlled | publication approval, editorial promotion, host verification, recognition, curation status | Service role / admin only, same as every other moderation field in this schema |
 | User owned | Interested, Going, Attendance, rating, photos, comment | The attending user, via the plain-RLS ownership pattern already used for `event_attendance`/`visits` |
 
 ## 20. Publication vs. lifecycle vs. availability state machines
@@ -479,7 +479,7 @@ The one structural change from today: recognition ("★★ Michelin") stays visu
 
 **Added in Events V2 Step 3, a product-terminology correction.** The canonical Event participant/entity section is named **"AT THIS EVENT"** — not "MICHELIN AT THIS EVENT" (its name until this correction).
 
-Event participation is entity-neutral: an event may involve restaurants, hotels, private chefs, and future winery/bar entities, in any combination, with or without a canonical host (§6). Recognition systems — MICHELIN, Gault&Millau, World's 50 Best, and future sources — are contextual attributes *of* a participating entity, shown alongside it (exactly as `AtThisEventSection` already shows MICHELIN stars next to a restaurant's own name, never as the section's own heading). They must never define the name of the Chasing Stars Events feature or any of its sections. This keeps Events independent of any single guide/recognition brand and lets the same section, unchanged in name, eventually support every entity type without a future rename.
+Event participation is entity-neutral: an event may involve restaurants, hotels, private chefs, and future winery/bar entities, in any combination, with or without a canonical host (§6). Recognition systems — MICHELIN, Gault&Millau, World's 50 Best, and future sources — are contextual attributes *of* a participating entity, shown alongside it (exactly as `AtThisEventSection` already shows MICHELIN stars next to a restaurant's own name, never as the section's own heading). They must never define the name of the Mantelier Events feature or any of its sections. This keeps Events independent of any single guide/recognition brand and lets the same section, unchanged in name, eventually support every entity type without a future rename.
 
 This is a naming/terminology rule, not a data-model or layout change.
 
@@ -684,7 +684,7 @@ Recommended venue-facing vocabulary, precisely named to avoid the exact overstat
 
 ### 31.7 Partner/recognition value metrics
 
-Aggregate-only, engagement-framed, never redistribution-framed — the brief's own "Users discovered X Michelin-recognized restaurants through Chasing Stars" vs. "We redistributed Michelin's Guide" distinction (§54) is the load-bearing principle here. Concretely: joins between analytics events and the *existing, canonical* `michelin_stars`/award data already on `restaurants`/`hotels` (never a new recognition-specific analytics table) — e.g. "% of `event_opened` events where the host holds current MICHELIN stars," "distinct recognized venues discovered per month." All aggregate, all engagement-side, never anything resembling a usage report *of* Michelin's own data back to Michelin as if redistributing it.
+Aggregate-only, engagement-framed, never redistribution-framed — the brief's own "Users discovered X Michelin-recognized restaurants through Mantelier" vs. "We redistributed Michelin's Guide" distinction (§54) is the load-bearing principle here. Concretely: joins between analytics events and the *existing, canonical* `michelin_stars`/award data already on `restaurants`/`hotels` (never a new recognition-specific analytics table) — e.g. "% of `event_opened` events where the host holds current MICHELIN stars," "distinct recognized venues discovered per month." All aggregate, all engagement-side, never anything resembling a usage report *of* Michelin's own data back to Michelin as if redistributing it.
 
 ### 31.8 Internal product metrics
 
@@ -808,7 +808,7 @@ No event in this taxonomy is fired both client- and server-side for the same und
 
 ### 31.31 Event catalogue performance metrics
 
-Which categories/cities/host-types/price-ranges/friend-engagement-levels perform (brief §78) is answerable entirely from the metrics already defined above (§31.6/§31.8) sliced by `events.event_type`/`city`/host type — no new metric category. Explicit constraint, restated as binding: these metrics **inform** editorial curation (§7); they never **automate** it — no auto-promotion, no algorithmic surfacing based on engagement alone, preserving the brief's own "Chasing Stars remains curated" instruction.
+Which categories/cities/host-types/price-ranges/friend-engagement-levels perform (brief §78) is answerable entirely from the metrics already defined above (§31.6/§31.8) sliced by `events.event_type`/`city`/host type — no new metric category. Explicit constraint, restated as binding: these metrics **inform** editorial curation (§7); they never **automate** it — no auto-promotion, no algorithmic surfacing based on engagement alone, preserving the brief's own "Mantelier remains curated" instruction.
 
 ### 31.32 Success-criteria self-audit
 

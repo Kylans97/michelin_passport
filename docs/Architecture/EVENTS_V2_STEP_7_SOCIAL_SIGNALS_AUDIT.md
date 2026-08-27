@@ -8,7 +8,7 @@ Read-only architecture audit. No Dart code, migrations, RLS, or production data 
 
 1. Friends Going — unchanged, already shipped.
 2. Friends Interested — new: accepted friends may see who is Interested, mirroring Friends Going.
-3. Chasing Stars members going — new: an anonymous, platform-wide Going count. Display rule: `0` → hidden; `1–99` → exact number; `100+` → always literally `"100+"`, never the real number once it reaches 100.
+3. Mantelier members going — new: an anonymous, platform-wide Going count. Display rule: `0` → hidden; `1–99` → exact number; `100+` → always literally `"100+"`, never the real number once it reaches 100.
 
 ## CURRENT EVENT ATTENDANCE
 
@@ -94,7 +94,7 @@ EventFriendsGoingSection      "FRIENDS GOING"
   ↓ (only if non-empty, only if canAttend)
 EventFriendsInterestedSection "FRIENDS INTERESTED"
   ↓ (independent of canAttend/friends; only if count > 0)
-"37 Chasing Stars members going"   ← compact text line, no heading needed
+"37 Mantelier members going"   ← compact text line, no heading needed
 ```
 
 Do not introduce a "SOCIAL SIGNALS" eyebrow/heading wrapper around all three — the two Friends sections already have their own eyebrow headings and visual language; the member-count line is small enough to read as a natural trailing line under the Friends sections (or under the pills if no friends qualify) rather than needing its own labeled block. This keeps the area from becoming visually noisy, per the task's own instruction.
@@ -191,7 +191,7 @@ Friends identities require an authenticated session regardless of platform — u
 
 **Friend signals**: 0/1/many friends Going; 0/1/many friends Interested; a friend who switches Interested→Going disappears from Interested and appears in Going (guaranteed by the `UNIQUE(event_id,user_id)` + single-`status`-column schema, not just app logic); Going always ordered before Interested in the UI; each group independently hidden when empty; both empty ⇒ entire friends-signal area absent, but the member-count line may still render independently.
 
-**Member count**: exact boundary table — `0`→hidden; `1`→"1 Chasing Stars member going" (singular); `2`→"2 Chasing Stars members going"; `99`→exact; `100`→"100+"; `101`→"100+"; `1000`→"100+". Critically: a unit/widget test on the display-formatting function alone cannot prove the *server* never sends the true value above 99 — that requires either an integration test against a live/staged Supabase instance with ≥100 seeded rows, or (more practically for this codebase's established testing conventions, which have no Supabase mocking harness) a close reading of the deployed SQL body itself as the enforcement point, plus a pure Dart formatter tested against the assumption that its input is already capped at 100.
+**Member count**: exact boundary table — `0`→hidden; `1`→"1 Mantelier member going" (singular); `2`→"2 Mantelier members going"; `99`→exact; `100`→"100+"; `101`→"100+"; `1000`→"100+". Critically: a unit/widget test on the display-formatting function alone cannot prove the *server* never sends the true value above 99 — that requires either an integration test against a live/staged Supabase instance with ≥100 seeded rows, or (more practically for this codebase's established testing conventions, which have no Supabase mocking harness) a close reading of the deployed SQL body itself as the enforcement point, plus a pure Dart formatter tested against the assumption that its input is already capped at 100.
 
 ## PHYSICAL DEVICE PLAN
 
@@ -200,7 +200,7 @@ Two friend accounts (A, B, accepted friendship), one non-friend account (C):
 2. A switches to Going → B no longer sees A under Interested, now sees A under Going (single-row/single-status transition, not an add).
 3. A removes intent entirely → B sees neither.
 4. Member-going count updates correctly as real users go, while no non-friend or friend ever sees more than the capped display value — verify specifically that going from 99→100 real Going users flips the display from an exact number to "100+" and never regresses back to an exact number as more people join.
-5. Singular "1 Chasing Stars member going" vs. plural, no overflow on a 320px device, friend avatar/name rows read as polished as the existing Friends Going section they mirror.
+5. Singular "1 Mantelier member going" vs. plural, no overflow on a 320px device, friend avatar/name rows read as polished as the existing Friends Going section they mirror.
 
 ## DATABASE
 

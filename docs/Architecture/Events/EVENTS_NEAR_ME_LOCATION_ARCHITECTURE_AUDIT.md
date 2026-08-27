@@ -122,7 +122,7 @@ question about whether to invest in coverage before shipping broadly
 
 ## Near Me Definition
 
-Chasing Stars Events are rare, destination-worthy, and often intentionally
+Mantelier Events are rare, destination-worthy, and often intentionally
 worth travelling for — a generic "restaurants within 5 km" model would
 be wrong for this catalogue and would likely return near-empty results
 given current density (19 coordinate-bearing Events across mostly one
@@ -276,7 +276,7 @@ implemented now, a design note only**:
 4. **Last-used location may improve returning-user continuity** — a
    reasonable future enhancement, not decided here.
 5. **The ultimate fallback is "All locations" (global), never a guessed
-   country.** Chasing Stars' own stated international-appeal goal means
+   country.** Mantelier's own stated international-appeal goal means
    silently narrowing new/returning users to Netherlands (today's data
    skew) by default would be actively wrong — nothing in this
    architecture should hardwire that, and V1's actual default
@@ -454,7 +454,7 @@ full-screen transitions.
 - **Freshness**: resolve once per Events-screen open (or an explicit
   manual refresh), never continuously. App-resume re-resolution is a
   plausible refinement, not required for V1.
-- **No background location monitoring, ever** — Chasing Stars does not
+- **No background location monitoring, ever** — Mantelier does not
   need continuous tracking for a destination-Event-discovery feature,
   and building it would be a significant, unjustified privacy/battery
   cost for zero product benefit here.

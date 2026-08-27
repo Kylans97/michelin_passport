@@ -1,6 +1,6 @@
 # Database Import Guide
 
-Michelin Passport — building the production database from the source data.
+Mantelier — building the production database from the source data.
 
 Table definitions, constraints and conventions are specified in `DATABASE_ARCHITECTURE.md`. Environment setup, secrets and storage are in `DEPLOYMENT.md`. This document is the procedure: order of operations, transformations, verification and rollback. Follow it top to bottom.
 

@@ -8,7 +8,7 @@ Implemented locally, following `EVENTS_V2_STEP_7_SOCIAL_SIGNALS_AUDIT.md`'s conc
 
 - **Friends Going** — unchanged.
 - **Friends Interested** — new: accepted friends can see who is Interested, identical mechanism to Friends Going.
-- **Chasing Stars members going** — new: an anonymous, server-capped platform-wide Going count. `0` → hidden. `1–99` → exact. `100+` → always literally `"100+"`, and the server itself never discloses the true count once it reaches 100.
+- **Mantelier members going** — new: an anonymous, server-capped platform-wide Going count. `0` → hidden. `1–99` → exact. `100+` → always literally `"100+"`, and the server itself never discloses the true count once it reaches 100.
 
 ## INTERESTED VISIBILITY CHANGE
 
@@ -57,14 +57,14 @@ EventFriendsGoingSection        "FRIENDS GOING"
   ↓ (only if non-empty, independent of Going)
 EventFriendsInterestedSection   "FRIENDS INTERESTED"
   ↓ (only if count > 0, independent of both Friends groups)
-"37 Chasing Stars members going"   ← plain taupe metadata text, not tappable, not a labeled section
+"37 Mantelier members going"   ← plain taupe metadata text, not tappable, not a labeled section
 ```
 
 Going always precedes Interested (source order). Each of the three pieces is its own independent `FutureBuilder` — a slow/failed member count never blocks or hides the Friends sections, a slow/failed Friends Interested load never blocks or hides Friends Going, and vice versa (Events V2 Step 7's own explicit failure-isolation requirement). No empty headings are ever possible: every piece either renders its full content or `SizedBox.shrink()`.
 
 ## MEMBER GOING COUNT
 
-**Dart**: `GoingMemberCount` (`lib/models/going_member_count.dart`) — `count` (0–100, where 100 means "100 or more") + a derived `isCapped` getter (`count >= 100`), never a separately-stored redundant flag. `EventSocialRepository.getGoingMemberCount(eventId)` (`lib/data/repositories/event_social_repository.dart`) — one RPC call, wraps the raw integer. `formatGoingMemberCount()` (`lib/features/events/going_member_count_format.dart`) — the single centralized copy function; returns `null` for 0 (hidden), the exact singular/plural string for 1–99, and always `"100+ Chasing Stars members going"` once capped — never the literal "100".
+**Dart**: `GoingMemberCount` (`lib/models/going_member_count.dart`) — `count` (0–100, where 100 means "100 or more") + a derived `isCapped` getter (`count >= 100`), never a separately-stored redundant flag. `EventSocialRepository.getGoingMemberCount(eventId)` (`lib/data/repositories/event_social_repository.dart`) — one RPC call, wraps the raw integer. `formatGoingMemberCount()` (`lib/features/events/going_member_count_format.dart`) — the single centralized copy function; returns `null` for 0 (hidden), the exact singular/plural string for 1–99, and always `"100+ Mantelier members going"` once capped — never the literal "100".
 
 **SQL**: new migration `20260821120000_events_v2_social_signals_going_member_count.sql`, function `get_event_going_member_count(target_event_id uuid) returns integer`:
 
@@ -182,7 +182,7 @@ Two accepted-friend accounts (A, B), one non-friend account (C). To be run **aft
 
 **Member count**:
 - 0 → hidden entirely.
-- 1 → "1 Chasing Stars member going" (singular).
+- 1 → "1 Mantelier member going" (singular).
 - 2+ → plural, exact number.
 - ≥100 real-device coverage: automated/local validation (above) is sufficient — do NOT create ~100 production rows merely to exercise the UI.
 

@@ -89,7 +89,7 @@ timezone:          Europe/Amsterdam (high-confidence inference — Rotterdam, NL
                     single national zone; not independently verified against
                     an official source)
 host:               external_host_name = "Club Leroy" (Erik van Loo's presenting
-                    brand — not a canonical Chasing Stars entity)
+                    brand — not a canonical Mantelier entity)
 venue:              event_restaurants row, Parkheuvel, is_venue=true, is_host=false
 location snapshot:  venue_name="Parkheuvel", address/city/country/lat/lng =
                     UNKNOWN in this audit (would be populated from Parkheuvel's

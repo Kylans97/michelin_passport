@@ -21,7 +21,7 @@ Five tabs, `IndexedStack`-backed, no lazy construction: **Passport · Explore ·
 - **Table shape**: `id, name, description, start_at, end_at, country_code, city (free text), venue_name, address, latitude, longitude (plain double, not PostGIS), official_url, ticket_url, image_url, event_type (festival|dinner|tasting|market|experience|other), status (upcoming|cancelled|completed), admission_type (free|paid|mixed|unknown), admission_note, created_at`.
 - **Venue links**: two normalized join tables, `event_restaurants` and `event_hotels`, each a real cascading FK + `unique(event_id, venue_id)` — deliberately not the polymorphic `entity_type/entity_id` pattern `visits`/`wishlist`/`planned_venues` use, because one event can link both a restaurant and a hotel simultaneously, and PostgREST embedding needs a real FK either way.
 - **RLS**: public read (`anon, authenticated`), **no insert/update/delete policy for any client role** — events are catalogue-style content, written only by the service role (import scripts), exactly like `restaurants`/`hotels` themselves.
-- **No ownership/source concept at all today.** There is no `created_by`, `source_type`, `organizer_id`, or moderation state — every row is implicitly "Chasing Stars editorial," because nothing else has ever written here.
+- **No ownership/source concept at all today.** There is no `created_by`, `source_type`, `organizer_id`, or moderation state — every row is implicitly "Mantelier editorial," because nothing else has ever written here.
 - **Flutter**: `Event` model, `EventsRepository` (read-only: `loadEvents`, `loadEventsForCountry`, `getCountries`, `loadEventById`, `loadLinkedVenues`), `EventsScreen`, `EventDetailScreen`, `EventCard`, `EventFilterBar`. Reached today from `ExploreScreen`'s `WhatsOnSection` (`_openEventsScreen`).
 - **Trip integration already exists**: `eventMatchesTrip`/`eventsMatchingTrip` (pure, unit-tested) compare `event.startAt/endAt` to `trip.startDate/endDate` by calendar date, require exact `country_code` match, and require city match **only when both sides have a city** — otherwise falls back to country-level. `TripDetailScreen` already calls this against `EventsRepository.loadEventsForCountry`.
 
@@ -281,9 +281,9 @@ Because `verification_status` + `verified_at` + `entity_id` are real, queryable,
 
 ### 6.1 Ownership boundary — the one hard rule
 
-**Recognition data (Michelin stars, Gault&Millau score/toques, World's 50 Best rank) is never venue-editable, ever.** This isn't new policy — it's the same boundary `DATABASE_ARCHITECTURE.md` and the Gault&Millau architecture review already established for `inclusion_reason` vs. current recognition (`award_history`/`gault_millau_awards`/`worlds_50_best`): a venue manager operates at the same layer a Chasing Stars editor does today, and recognition tables have never had a client write policy — that doesn't change.
+**Recognition data (Michelin stars, Gault&Millau score/toques, World's 50 Best rank) is never venue-editable, ever.** This isn't new policy — it's the same boundary `DATABASE_ARCHITECTURE.md` and the Gault&Millau architecture review already established for `inclusion_reason` vs. current recognition (`award_history`/`gault_millau_awards`/`worlds_50_best`): a venue manager operates at the same layer a Mantelier editor does today, and recognition tables have never had a client write policy — that doesn't change.
 
-| Venue-controlled | Chasing Stars-controlled |
+| Venue-controlled | Mantelier-controlled |
 |---|---|
 | Photos | Michelin stars |
 | Description | Gault&Millau score/toques |

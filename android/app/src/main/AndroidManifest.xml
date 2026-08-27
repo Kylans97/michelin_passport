@@ -7,7 +7,7 @@
          ACCESS_BACKGROUND_LOCATION are deliberately NOT declared. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <application
-        android:label="Chasing Stars"
+        android:label="Mantelier"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

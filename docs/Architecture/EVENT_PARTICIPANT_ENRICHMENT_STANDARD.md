@@ -1,7 +1,7 @@
 # Event Participant Enrichment Standard
 
 Status: **established, operational**. This document is the default process for
-enriching any Chasing Stars gastronomic event with participating-restaurant
+enriching any Mantelier gastronomic event with participating-restaurant
 data. It generalizes the workflow first proven end-to-end on 't Preuvenemint
 (2026 edition) — see `supabase/data/enrichment/event_participants/preuvenemint/`
 for that pilot's full evidence trail, now marked `APPLIED / VERIFIED` for its
@@ -219,7 +219,7 @@ explicitly needs to browse genuinely historical event editions.
 
 **Event participant enrichment must never create restaurants.** A
 `NO_MATCH` restaurant-type participant — a real, verifiable restaurant that
-simply isn't in the Chasing Stars catalogue yet — becomes a **catalogue
+simply isn't in the Mantelier catalogue yet — becomes a **catalogue
 expansion candidate**, recorded with its evidence, and nothing more. It may
 later be picked up by a separate, dedicated Restaurant Catalogue Expansion
 workflow (out of scope for this document), which has its own review bar for
@@ -357,7 +357,7 @@ as part of this standard.
 
 ## 18. Global-facing completeness — canonical entities, never local duplicates
 
-Chasing Stars is a global-facing product. Restaurant and Hotel are shared
+Mantelier is a global-facing product. Restaurant and Hotel are shared
 canonical entities — Events, Trips, Passport, Guides, Community, and any
 future Private Chef provenance feature must all be able to resolve against
 the *same* Restaurant/Hotel objects, not feature-specific copies of them.

@@ -6,7 +6,7 @@ accounts through the real PostgREST/RPC path** (not just SQL). Migration:
 
 ## 1. The distinction this feature exists to draw
 
-Chasing Stars previously had exactly one privacy-adjacent flag,
+Mantelier previously had exactly one privacy-adjacent flag,
 `profiles.is_public`, which conflated two unrelated questions:
 
 1. Can another member **find** this person at all (search, Find Friends)?
@@ -26,7 +26,7 @@ question 1 only.
 
 ```
 is_discoverable = true
-  → other authenticated Chasing Stars members may find this user's
+  → other authenticated Mantelier members may find this user's
     basic identity (username, display name, avatar) through Find
     Friends search.
 
@@ -118,7 +118,7 @@ privacy_settings_screen.dart`): a single row, **"Allow members to find
 me"**, with copy that is deliberately specific about what it does and
 does not affect:
 
-> Let other Chasing Stars members find your name and username in Find
+> Let other Mantelier members find your name and username in Find
 > Friends.
 > Your visits, wishlist and trips keep their existing privacy settings.
 

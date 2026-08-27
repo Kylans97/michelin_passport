@@ -472,7 +472,7 @@ change to serve one caller's new requirement.
 New `EventActionsRow` widget
 (`lib/features/events/widgets/event_actions_row.dart`) renders directly
 after Event Essentials, reusing the existing `SubtleTextAction` atom
-unchanged (no new button style, no gold, "Chasing Stars, not a ticket
+unchanged (no new button style, no gold, "Mantelier, not a ticket
 marketplace"). Tickets renders first when both exist — priority expressed
 through left-to-right reading order, not a second, louder visual
 treatment. Handles all four conditional states (both / tickets-only /

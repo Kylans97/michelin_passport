@@ -11,7 +11,7 @@ disposable account pending.**
 
 Apple App Store review requires apps that support account creation to
 also offer in-app account deletion, without requiring the user to email
-support. Chasing Stars' Profile screen already has a real, tested "Delete
+support. Mantelier's Profile screen already has a real, tested "Delete
 account" entry and confirmation flow (see
 `docs/Architecture/NAVIGATION_INFORMATION_ARCHITECTURE_V2.md` §13); this
 document covers the backend that flow depends on.

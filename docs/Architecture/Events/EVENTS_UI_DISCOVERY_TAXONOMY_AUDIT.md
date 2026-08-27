@@ -6,7 +6,7 @@ production Events, not hypothetical categories.
 
 ## EXECUTIVE DECISION
 
-Chasing Stars' Events catalogue has outgrown a single overloaded
+Mantelier's Events catalogue has outgrown a single overloaded
 `EventType` (70% of Events are currently typed `dinner`). The
 catalogue itself already contains a clean, real separation between
 **form** (dinner/lunch/festival/gala/tasting/brunch/party) and
@@ -201,7 +201,7 @@ non-trivial catalogue support (1–15 Events each). No merges were
 needed; each earns its slot.
 
 **Open naming question, not resolved here**: "Party" may read slightly
-casual for Chasing Stars' understated-luxury editorial tone. Two of
+casual for Mantelier's understated-luxury editorial tone. Two of
 its three members (Chefs & Sommeliers Party, SHEf's Kitchen Party)
 literally use "Party" in their own official name, which argues for
 keeping it verbatim; an alternative like "Showcase" or "Gathering"

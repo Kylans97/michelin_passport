@@ -1,4 +1,4 @@
-# Michelin Passport
+# Mantelier
 
 A Flutter application for discovering, tracking and reviewing Michelin-starred restaurants and Michelin Key hotels.
 

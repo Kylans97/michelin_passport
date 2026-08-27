@@ -716,7 +716,7 @@ two separate days.
 
 **Event Detail** (all 8): Tickets/Official website rows link out
 correctly (note: Dîner Dansant's own official link currently
-misroutes on the venue's own site — confirm Chasing Stars doesn't
+misroutes on the venue's own site — confirm Mantelier doesn't
 compound this by masking or mislabeling it); admission info renders
 correctly including Six Hands Dinner's phone/email-only note and Game
 Brunch's tiered child pricing; venue/location renders correctly,
@@ -741,7 +741,7 @@ hosts one Event and merely participates in another. Zarzo's, Parkheuvel's,
 and Zilte's own Detail pages show **zero** newly hosted Events from
 this batch (participant-only). Joann's own Detail page shows zero.
 
-**Placeholder imagery**: all 8 render the branded Chasing Stars
+**Placeholder imagery**: all 8 render the branded Mantelier
 placeholder, no broken image state.
 
 **Interested/Going**: available on all 8 like any other Event; does

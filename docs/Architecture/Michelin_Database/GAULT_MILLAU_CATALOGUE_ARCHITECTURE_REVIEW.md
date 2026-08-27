@@ -92,7 +92,7 @@ Three genuinely distinct concepts, currently conflated by a single column trying
 
 - **VENUE IDENTITY** — "this restaurant has exactly one row in `public.restaurants`." Owned by `restaurants` itself: `id`, `restaurant_code`, `name`, `address`, `location`. A fact about the *place*, immutable in the sense that a venue doesn't stop existing when it loses an award.
 - **EXTERNAL RECOGNITION** — "which outside authorities currently recognize this restaurant, and with what value." Already correctly modeled as **N independent, per-source fact tables**: `award_history` (Michelin stars/keys), `worlds_50_best` (rank + hall-of-fame membership), and now `gault_millau_awards`/`gault_millau_special_awards`. Zero, one, or many can be true simultaneously for the same restaurant, each with its own history, its own current-vs-past distinction, its own value shape (a star count is not a rank is not a score).
-- **EDITORIAL RECOGNITION** — "Chasing Stars itself has selected this restaurant" (Editor's Choice, One to Watch, etc.). Structurally identical in shape to EXTERNAL RECOGNITION — a future dedicated table, not a `restaurants` column, not a special case.
+- **EDITORIAL RECOGNITION** — "Mantelier itself has selected this restaurant" (Editor's Choice, One to Watch, etc.). Structurally identical in shape to EXTERNAL RECOGNITION — a future dedicated table, not a `restaurants` column, not a special case.
 
 **These three must stay orthogonal.** A restaurant can have venue identity with zero recognition sources (should it? — see §11), or with any combination of Michelin/W50B/G&M/editorial recognition simultaneously (§10). `inclusion_reason`, single-valued by construction, can only ever answer "which ONE of these got the row created" — a `WHERE` clause on it answers a provenance question, never a "does this restaurant currently qualify" question, and treating it as if it does is exactly §1.1's bug.
 
@@ -147,7 +147,7 @@ award_history              = Michelin recognition/history (stars AND keys, both 
 worlds_50_best              = World's 50 Best recognition/history (rank + hall-of-fame)
 gault_millau_awards         = Gault&Millau recognition/history
 gault_millau_special_awards = Gault&Millau editorial-award history (person-level, not venue recognition — see that table's own design)
-[future] chasing_stars_editorial_picks = Chasing Stars' own editorial recognition/history
+[future] chasing_stars_editorial_picks = Mantelier's own editorial recognition/history
 ```
 
 `restaurants.inclusion_reason` should **never** be queried to determine current recognition of any kind — not Michelin (already correctly not: `restaurant_repository.dart` reads `michelin_stars`/`worlds_50_best_rank` directly, never `inclusion_reason`, for those two), not Hall of Fame (currently **incorrectly** still reads `inclusion_reason` — §1.1, §17), and not Gault&Millau once it exists (the reviewed `import_gault_millau.py` already gets this right by construction — it has no code path that touches `inclusion_reason` at all).
@@ -187,7 +187,7 @@ values
 
 ## 10. Multi-recognition example — Restaurant X
 
-Michelin 2 stars (2026), World's 50 Best #37 (2026), Gault&Millau 17/20 (2026), Chasing Stars Editor's Choice — **exactly one row in `restaurants`:**
+Michelin 2 stars (2026), World's 50 Best #37 (2026), Gault&Millau 17/20 (2026), Mantelier Editor's Choice — **exactly one row in `restaurants`:**
 
 ```
 restaurants:            id=<uuid>, restaurant_code='rest_XXXX', michelin_stars=2,
@@ -202,11 +202,11 @@ gault_millau_awards:      (restaurant_id=<id>, guide_year=2026, score=17,
 
 `restaurants_full` (extended, not built now) would expose `michelin_stars=2`, `worlds_50_best_rank=37`, and — once a G&M UI consumer justifies it — a current score/toque pair, all simultaneously, all independently derived, none stored redundantly on the `restaurants` row. `RestaurantAwardsCard` (§2) already renders exactly this shape today — `hasMichelinStar`, `isWorlds50Best`, `isHallOfFame` are already three independent, simultaneously-true booleans building up a list of badge rows; adding a fourth (`hasGaultMillau`) or fifth (`isEditorialPick`) is additive to that same pattern, not a redesign of it.
 
-## 11. Chasing Stars editorial future — architecture check only
+## 11. Mantelier editorial future — architecture check only
 
 No editorial feature is designed here (per instruction). The question asked is narrower: **does today's catalogue architecture force a redesign later when editorial-only restaurants need to exist?**
 
-**No, given §7's model.** An editorial-only restaurant (one Chasing Stars wants to feature that holds no Michelin/W50B/G&M recognition at all) is structurally identical to §9's Gault&Millau-only case: one `restaurants` row, `michelin_stars = NULL`, `inclusion_reason` needing exactly one more permitted value (`'chasing_stars_editorial'`, not added now — §4/§18) when that feature is actually built, plus a row in a future dedicated editorial table mirroring `gault_millau_awards`'s shape. Nothing about §9's or §10's pattern needs to change to accommodate this later — the same `CHECK`-widen-when-needed, same one-table-per-source discipline, applies unchanged.
+**No, given §7's model.** An editorial-only restaurant (one Mantelier wants to feature that holds no Michelin/W50B/G&M recognition at all) is structurally identical to §9's Gault&Millau-only case: one `restaurants` row, `michelin_stars = NULL`, `inclusion_reason` needing exactly one more permitted value (`'chasing_stars_editorial'`, not added now — §4/§18) when that feature is actually built, plus a row in a future dedicated editorial table mirroring `gault_millau_awards`'s shape. Nothing about §9's or §10's pattern needs to change to accommodate this later — the same `CHECK`-widen-when-needed, same one-table-per-source discipline, applies unchanged.
 
 ## 12. `restaurants_full` impact
 

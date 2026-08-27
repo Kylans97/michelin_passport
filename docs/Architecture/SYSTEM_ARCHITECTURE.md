@@ -1,8 +1,8 @@
-# Michelin Passport Architecture
+# Mantelier Architecture
 
 ## Purpose
 
-This document describes the overall software architecture of Michelin Passport.
+This document describes the overall software architecture of Mantelier.
 
 The goal is to keep the project scalable, maintainable and easy to extend as new functionality is introduced.
 

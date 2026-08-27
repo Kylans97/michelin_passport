@@ -86,7 +86,7 @@ Follow's entity type is the `entityType` **property** (`restaurant`/`hotel`/`pri
 |---|---|
 | `ticket_link_opened` | See §15 for the exact boundary |
 
-Means **only** "the user opened the external ticket/booking destination from Chasing Stars." Never implies purchase, booking, or revenue — see §17.
+Means **only** "the user opened the external ticket/booking destination from Mantelier." Never implies purchase, booking, or revenue — see §17.
 
 ### Attendance
 

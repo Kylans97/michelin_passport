@@ -1,6 +1,6 @@
 # Data Update Process
 
-Michelin Passport — maintaining the catalogue.
+Mantelier — maintaining the catalogue.
 
 Schema is specified in `DATABASE_ARCHITECTURE.md`. Building from scratch is covered in `DATABASE_IMPORT_GUIDE.md`. This document covers every change made to the catalogue after launch.
 

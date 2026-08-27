@@ -113,7 +113,7 @@ canonical hierarchy HERO → ABOUT → RESTAURANT PROVENANCE → THE EXPERIENCE
   photo when present (unlike Restaurant/Hotel, which have no photo column
   yet), falling back to the same deep-green gradient treatment
   otherwise. The only editorial context label is a small "PRIVATE CHEF"
-  eyebrow — never "Chasing Stars Selected" as a badge, never a score,
+  eyebrow — never "Mantelier Selected" as a badge, never a score,
   rating, review count, or price badge. The page existing at all is the
   selection signal (§14).
 - **About** — `biography` verbatim, section omitted entirely (not shown
@@ -179,7 +179,7 @@ existing precedent for every other repository in this app.
 **Physical-device review — APPROVED.** Step 2 was reviewed on a real
 iPhone against the live (empty) production catalogue. Confirmed: the
 Explore → Private Chefs entry renders correctly; the deepGreen/ivory
-masthead-to-content treatment matches the approved Chasing Stars
+masthead-to-content treatment matches the approved Mantelier
 language; the safe area paints deepGreen cleanly through the status-bar
 area with no white/ivory/legacy strip; navigation into and back out of
 `PrivateChefsScreen` works correctly; the production empty state
@@ -370,7 +370,7 @@ requires `status = 'submitted'` and that the target chef is currently
 
 ## 1. Product vision
 
-Private Chefs is a highly curated Chasing Stars collection of chefs capable
+Private Chefs is a highly curated Mantelier collection of chefs capable
 of delivering exceptional private dining experiences — a small, personally
 selected roster, not an open marketplace. The product must answer, in this
 order of importance: *who is this chef*, *why should I trust them*, *what
@@ -393,7 +393,7 @@ redesign of anything that already exists.
 
 Deliberately **not copied** from a generic chef marketplace:
 
-| Marketplace pattern | Why Chasing Stars rejects it |
+| Marketplace pattern | Why Mantelier rejects it |
 |---|---|
 | Self-service chef signup | Curation is the entire trust mechanism — anyone could list themselves on a marketplace |
 | Public star ratings / review counts | Turns hospitality into a scoreboard; the task brief is explicit: no public numeric score |
@@ -402,7 +402,7 @@ Deliberately **not copied** from a generic chef marketplace:
 | Follower-count-based ranking | Popularity ≠ quality; Instagram is context, not a ranking signal |
 | Dozens of rigid filters | A members'-club discovery experience is editorial, not faceted search |
 
-What Chasing Stars leans into instead: curation, limited supply, editorial
+What Mantelier leans into instead: curation, limited supply, editorial
 storytelling, professional provenance (tied to the *existing* canonical
 Restaurant catalogue — a differentiator no generic marketplace has), high
 -quality photography, and a personalization-first proposition rather than a
@@ -472,7 +472,7 @@ capacity, structured pricing, and languages spoken.
    single-city model) is the right MVP shape (§21–22).
 3. **Direct public contact already exists and should NOT be what Chasing
    Stars surfaces.** The business already publishes a phone number and
-   email; Chasing Stars' value-add is curation *and* a mediated,
+   email; Mantelier's value-add is curation *and* a mediated,
    privacy-preserving enquiry path instead of raw contact-detail exposure
    (§27).
 4. **Provenance needs a first-party/third-party distinction the schema
@@ -498,7 +498,7 @@ cleanly represents every case audited:
   `display_name = "Lucas de Jager"`, `business_name = "Jagers Catering"`.
 - A small private-dining team led by a named chef: same shape — the
   *person* is still the display identity; the team/brand is the
-  subordinate line. Chasing Stars curates a chef relationship, not a
+  subordinate line. Mantelier curates a chef relationship, not a
   company account, even when a small team supports them.
 
 A separate `private_chef_businesses` table was audited and rejected for
@@ -531,7 +531,7 @@ required and primary, business_name is optional and secondary."
   wherever the referenced restaurant exists there.
 - Correct Michelin-recognition semantics (stars belong to the Restaurant,
   never the chef).
-- "Chasing Stars Selected" as a qualitative public signal.
+- "Mantelier Selected" as a qualitative public signal.
 - "Request an Experience" — a database-backed enquiry, not a booking.
 - Admin-managed content pipeline (research → human review → SQL import),
   matching the existing Claude Data Pipeline in `DATABASE_GUIDE.md`.
@@ -712,7 +712,7 @@ signal than any self-written biography claim could be alone.
 **Concept**: `private_chef_restaurant_history` — a normalized table
 linking a chef to zero or more prior (or current) restaurant
 relationships, using the canonical `restaurants` foreign key wherever
-that restaurant exists in the Chasing Stars catalogue (§12).
+that restaurant exists in the Mantelier catalogue (§12).
 
 **Display concept** (documented for later UI work, not built now):
 ```
@@ -750,7 +750,7 @@ for private chefs, but if an equivalent ever did), that would need its
 own, separately reviewed claim model — explicitly out of scope here, not
 assumed, not designed against.
 
-This rule exists because Chasing Stars' entire credibility rests on
+This rule exists because Mantelier's entire credibility rests on
 Michelin/W50B/Gault&Millau data being exactly correct — a single
 misattributed star claim would undermine that far more than it would
 help one chef's profile.
@@ -882,7 +882,7 @@ now, since nothing in the MVP requires it yet.
 
 ---
 
-## 14. Chasing Stars Selected — CORRECTED IN STEP 1
+## 14. Mantelier Selected — CORRECTED IN STEP 1
 
 **Step 0 originally proposed a separate `chasing_stars_selected` boolean
 alongside `publication_status`, reasoning that "row visibility" and
@@ -891,7 +891,7 @@ columns. Step 1 rejects that design.**
 
 The product premise is not "some published chefs are selected and some
 aren't" — it's the reverse: **a chef only ever becomes visible *because*
-Chasing Stars selected them.** There is no scenario in this MVP where a
+Mantelier selected them.** There is no scenario in this MVP where a
 row is `published` but not selected, or selected but not published — the
 two states are, by product definition, the same event. Keeping them as
 two columns doesn't protect against a real future divergence; it just
@@ -949,7 +949,7 @@ and pure-A "checklist" in favor of a lighter B/C hybrid), for the same
 reason the public side has no numeric score: a number anchors decisions
 the wrong way ("7.8 vs 8.1") for what is fundamentally a subjective,
 high-touch, low-volume judgment call — "would I confidently recommend
-this chef to a Chasing Stars member?"
+this chef to a Mantelier member?"
 
 Dimensions worth naming explicitly (as a *process template* for the
 reviewer to write prose against, not as separate database columns — see
@@ -1058,7 +1058,7 @@ Randstad" to "The Netherlands and Belgium" (the reference case) to
 geographic-region taxonomy this MVP has no proven need for.
 `travel_available` (boolean) is a cheap, independently useful signal for
 a future "chefs who travel" discovery moment, without committing to a
-structured multi-region model prematurely. If Chasing Stars' existing
+structured multi-region model prematurely. If Mantelier's existing
 `countries`/`cities` architecture later makes a genuinely useful
 structured filter obvious (e.g. "chefs available in France"), a
 `private_chef_service_countries` join table would be a clean additive
@@ -1091,9 +1091,9 @@ chat, cancellation engine, or availability engine.
 |---|---|
 | A. `mailto:` link | Loses all product learning (no record of demand, no ownership history for the member), and exposes the chef's raw email — rejected |
 | B. External form (e.g. Typeform) | Breaks the in-app experience, no member-side history, no consistent data shape — rejected |
-| C. Database-backed Chasing Stars enquiry | **Recommended** — see below |
-| D. Direct chef contact (phone/Instagram DM) | Already exists (the reference case has a phone number and email publicly), which is exactly what Chasing Stars' curated mediation should elevate *past* — rejected as the primary path |
-| E. Chasing Stars-mediated enquiry | Same as C in practice — a database-backed enquiry *is* the mediation |
+| C. Database-backed Mantelier enquiry | **Recommended** — see below |
+| D. Direct chef contact (phone/Instagram DM) | Already exists (the reference case has a phone number and email publicly), which is exactly what Mantelier's curated mediation should elevate *past* — rejected as the primary path |
+| E. Mantelier-mediated enquiry | Same as C in practice — a database-backed enquiry *is* the mediation |
 
 **Recommendation: C/E — a database-backed `private_chef_enquiries`
 table.** It's the smallest architecture that (a) feels premium (a proper
@@ -1223,8 +1223,8 @@ presence the chef already controls and has chosen to publish, not a
 Chasing-Stars-collected private contact detail. The actual enquiry always
 flows through `private_chef_enquiries`, preserving curation (no
 direct-to-chef spam), member privacy (the chef doesn't receive a random
-phone number), the members'-club positioning (Chasing Stars mediates, it
-doesn't just link out), and Chasing Stars' own future ability to
+phone number), the members'-club positioning (Mantelier mediates, it
+doesn't just link out), and Mantelier's own future ability to
 understand aggregate demand.
 
 ---
@@ -1301,7 +1301,7 @@ exactly (`display_name` primary, `business_name` subordinate). This
 default must remain flexible enough to also render:
 - Independent chef, no business: just `display_name`, no second line.
 - A small team led by a named chef: same template — the person stays the
-  headline; the team is still the subordinate line, since Chasing Stars
+  headline; the team is still the subordinate line, since Mantelier
   curates a *chef relationship*, not a company account.
 
 No decision is being locked in based on the one candidate alone — the
@@ -1345,7 +1345,7 @@ section originally anticipated.
 Trust comes from curation + provenance + editorial profile + photography.
 Future-only concepts, explicitly not designed now: verified post
 -experience feedback (a member who actually enquired and dined could
-leave a private, curated testimonial Chasing Stars chooses whether to
+leave a private, curated testimonial Mantelier chooses whether to
 surface — closer to an editorial pull-quote than a review), purely
 internal feedback (feeds `private_chef_internal_reviews`, never public),
 or a curated testimonial system (hand-picked, attributed or anonymized
@@ -1489,7 +1489,7 @@ publication workflow (§41, §53), not legal advice:
   _confirmed_at timestamptz` on the internal review record (§49) would be
   a reasonable place to track it if needed.
 - **Photography rights**: portrait/gallery images must be rights-cleared
-  for Chasing Stars' use (chef-supplied, commissioned, or licensed) —
+  for Mantelier's use (chef-supplied, commissioned, or licensed) —
   tracked as part of the curation checklist (§41), not a public column.
 - **Instagram/website linking permission**: linking to a chef's public
   professional account doesn't need separate legal permission the way
@@ -1530,7 +1530,7 @@ blockers explicitly marked:
 
 **PROFILE** *(hard blockers)*
 - ✓ Rights-cleared portrait image approved
-- ✓ Biography approved (by Chasing Stars editorially, and confirmed
+- ✓ Biography approved (by Mantelier editorially, and confirmed
   accurate by the chef)
 
 **PROVENANCE** *(hard blocker only if provenance is shown at all)*
@@ -1551,7 +1551,7 @@ blockers explicitly marked:
   proposition understood; wine capability understood
 
 **CURATION** *(hard blockers)*
-- ✓ Chasing Stars internal review completed (§15/§49)
+- ✓ Mantelier internal review completed (§15/§49)
 - ✓ Test dinner completed where required by that review
 - ✓ Explicit human approval to publish
 
@@ -1569,12 +1569,12 @@ non-negotiable minimum.
 
 ## 42. Product differentiation (summary)
 
-| Chasing Stars Private Chefs | Generic chef marketplace |
+| Mantelier Private Chefs | Generic chef marketplace |
 |---|---|
 | Curated, limited roster | Open, self-service listing |
 | Editorial storytelling | Product-catalogue listings |
 | Provenance tied to a real, canonical restaurant catalogue | Unverifiable resume claims |
-| Qualitative trust ("Chasing Stars Selected") | Numeric star ratings, review counts |
+| Qualitative trust ("Mantelier Selected") | Numeric star ratings, review counts |
 | Personalized, conversational experience proposition | Configurable product options |
 | Wine capability as a curated differentiator | Rarely modeled at all |
 | Mediated, privacy-preserving enquiry | Direct contact / instant booking |
@@ -1938,7 +1938,7 @@ Refined from the task's own draft:
 1. Confirm Lucas's full identity directly with him (not solely from the
    business website) — including whether "Lucas de Jager" is the name he
    wants used publicly.
-2. Obtain explicit permission to build and publish a Chasing Stars
+2. Obtain explicit permission to build and publish a Mantelier
    profile.
 3. Confirm whether "Jagers Catering" is the correct public business
    identity he wants attached, or whether he'd prefer to lead purely
@@ -2000,7 +2000,7 @@ the content canvas, `taupe`/`secondaryOnDark` for secondary text,
 (matching its established role, not as a masthead color — see the Green
 Token Consistency Migration). Gold remains reserved for Michelin/Keys
 recognition beside the linked **Restaurant**, never beside a chef's name,
-"Chasing Stars Selected," buttons, Instagram/website links, the enquiry
+"Mantelier Selected," buttons, Instagram/website links, the enquiry
 CTA, or any section heading.
 
 **Landing**: deepGreen masthead ("PRIVATE CHEFS" + short curated-supporting

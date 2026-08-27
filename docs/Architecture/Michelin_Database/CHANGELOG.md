@@ -1,6 +1,6 @@
 # Changelog
 
-Michelin Passport — documentation changes.
+Mantelier — documentation changes.
 
 Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 2** implemented the accepted findings of `MAINTAINABILITY_AUDIT.md`. No schema was redesigned in either. One constraint was widened in Pass 1; Pass 2 changed no schema at all.
 

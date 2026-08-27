@@ -1,6 +1,6 @@
 # Action Triage
 
-Michelin Passport — open data work.
+Mantelier — open data work.
 
 Thirty-eight items. None blocks the import. All are corrected by row update, none by schema change.
 

@@ -1,4 +1,4 @@
-# Michelin Passport Ideas
+# Mantelier Ideas
 
 ## Restaurants
 

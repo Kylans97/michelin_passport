@@ -1,4 +1,4 @@
-# Michelin Passport
+# Mantelier
 
 ## Engineering Guide
 
@@ -11,7 +11,7 @@
 
 # Purpose
 
-This document defines the engineering standards for Michelin Passport.
+This document defines the engineering standards for Mantelier.
 
 Its purpose is to ensure that the application remains clean, scalable, maintainable and consistent as it grows.
 
@@ -25,7 +25,7 @@ Good software is not measured by how quickly it is built.
 
 It is measured by how easily it can evolve.
 
-Michelin Passport should remain understandable years after its first release.
+Mantelier should remain understandable years after its first release.
 
 Code should be written for the next developer, even if that developer is yourself.
 
@@ -486,6 +486,6 @@ If the answer is "No", rethink the implementation.
 
 # North Star
 
-> Michelin Passport is engineered for longevity.
+> Mantelier is engineered for longevity.
 
 > Every line of code should make the next version easier to build.

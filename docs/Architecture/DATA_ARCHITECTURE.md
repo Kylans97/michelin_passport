@@ -1,4 +1,4 @@
-# Michelin Passport
+# Mantelier
 
 ## Data Architecture
 
@@ -11,7 +11,7 @@
 
 # Purpose
 
-This document defines the core data architecture of Michelin Passport.
+This document defines the core data architecture of Mantelier.
 
 Its purpose is to ensure that every database change, new feature and software component follows the same architectural principles.
 
@@ -23,7 +23,7 @@ This document is the technical foundation upon which the application is built.
 
 # Architecture Philosophy
 
-Michelin Passport is built around one simple idea:
+Mantelier is built around one simple idea:
 
 > Experiences matter more than places.
 
@@ -66,7 +66,7 @@ Examples of personal data:
 
 ## Every Experience Is Represented By A Visit
 
-Visits are the most important entity in Michelin Passport.
+Visits are the most important entity in Mantelier.
 
 Restaurants and hotels exist independently.
 
@@ -86,7 +86,7 @@ Multiple visits to the same location are always supported.
 
 ## History Is Never Overwritten
 
-Michelin Passport preserves history.
+Mantelier preserves history.
 
 Stars change.
 
@@ -164,7 +164,7 @@ Profile
 
 ## Profile
 
-Represents a Michelin Passport user.
+Represents a Mantelier user.
 
 Contains user-specific information only.
 
@@ -310,7 +310,7 @@ Does not represent completed visits.
 
 ## Friendship
 
-Stores relationships between Michelin Passport users.
+Stores relationships between Mantelier users.
 
 Designed to support future social features.
 
@@ -422,7 +422,7 @@ Nothing is overwritten
 
 # Historical Data
 
-Michelin Passport treats historical information as permanent.
+Mantelier treats historical information as permanent.
 
 Example:
 
@@ -565,6 +565,6 @@ If the answer to any of these questions is "No", the design should be reconsider
 
 # North Star
 
-> Michelin Passport is not designed to remember restaurants.
+> Mantelier is not designed to remember restaurants.
 
 > It is designed to preserve experiences.

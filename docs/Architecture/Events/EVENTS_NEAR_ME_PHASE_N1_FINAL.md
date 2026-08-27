@@ -79,7 +79,7 @@ edit — confirmed by `EventsScreen`'s own empty diff.
 
 `eventGeoDistanceKm(GeoCoordinate, GeoCoordinate)`
 (`lib/features/events/event_near_me_filtering.dart`) is the one
-canonical Chasing Stars distance function — confirmed via `grep`, no
+canonical Mantelier distance function — confirmed via `grep`, no
 second distance formula exists anywhere in this codebase. Implemented via
 `latlong2`'s own `DistanceHaversine` (already a dependency — the exact
 package My Map already uses for tile rendering; no new dependency was

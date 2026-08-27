@@ -133,7 +133,7 @@ learned Near me exists.
 | `CurrentLocationFailureType` | Copy | Action |
 |---|---|---|
 | `permissionDenied` | "Location access is needed to show Events near you." | **Try again** → re-calls `getCurrentLocation()` |
-| `permissionDeniedForever` | "Location access is turned off for Chasing Stars. Enable it in Settings to use Near me." | **Open Settings** → `LocationSettingsOpener.openAppSettings()` |
+| `permissionDeniedForever` | "Location access is turned off for Mantelier. Enable it in Settings to use Near me." | **Open Settings** → `LocationSettingsOpener.openAppSettings()` |
 | `servicesDisabled` | "Location Services are turned off. Turn them on to use Near me." | **Open Location Settings** → `LocationSettingsOpener.openLocationSettings()` |
 | `unavailable` | "We couldn't determine your current location." | **Try again** |
 

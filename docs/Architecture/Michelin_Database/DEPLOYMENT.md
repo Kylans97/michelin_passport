@@ -1,6 +1,6 @@
 # Deployment
 
-Michelin Passport — environments, secrets and operations.
+Mantelier — environments, secrets and operations.
 
 This document covers everything outside the database schema. It does not restate table definitions, policies or import steps.
 

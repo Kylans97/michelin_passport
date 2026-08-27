@@ -1,6 +1,6 @@
 # Validation Report
 
-Michelin Passport — data validation for the launch catalogue.
+Mantelier — data validation for the launch catalogue.
 
 | | |
 |---|---|

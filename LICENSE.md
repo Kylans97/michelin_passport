@@ -1,6 +1,6 @@
 # License
 
-Copyright © Michelin Passport.
+Copyright © Mantelier.
 
 All rights reserved.
 

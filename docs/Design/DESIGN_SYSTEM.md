@@ -1,4 +1,4 @@
-# Michelin Passport
+# Mantelier
 
 # Design System
 
@@ -11,7 +11,7 @@
 
 # Purpose
 
-The Michelin Passport Design System defines the visual and emotional identity of the product.
+The Mantelier Design System defines the visual and emotional identity of the product.
 
 It exists to ensure that every screen, interaction and animation contributes to one coherent experience.
 
@@ -23,13 +23,13 @@ It is a philosophy for designing timeless digital experiences.
 
 # Design Philosophy
 
-Michelin Passport is not designed to impress.
+Mantelier is not designed to impress.
 
 It is designed to disappear.
 
 The interface should quietly frame the memories it preserves.
 
-When a user opens Michelin Passport, the focus should never be the application itself.
+When a user opens Mantelier, the focus should never be the application itself.
 
 The focus should always be the experience.
 
@@ -37,7 +37,7 @@ The focus should always be the experience.
 
 # Our North Star
 
-> Michelin Passport never competes with the memory.
+> Mantelier never competes with the memory.
 
 > It frames it.
 
@@ -73,7 +73,7 @@ If an element cannot justify its existence, it should not exist.
 
 ## Enduring
 
-Michelin Passport should feel as modern in ten years as it does today.
+Mantelier should feel as modern in ten years as it does today.
 
 We do not design for trends.
 
@@ -83,7 +83,7 @@ We design for longevity.
 
 # Emotional Design
 
-Michelin Passport should evoke emotion before functionality.
+Mantelier should evoke emotion before functionality.
 
 The product should feel:
 
@@ -118,7 +118,7 @@ Luxury is experienced through quality, not decoration.
 
 # Photography First
 
-Photography is the heart of Michelin Passport.
+Photography is the heart of Mantelier.
 
 Images should lead the experience.
 
@@ -359,7 +359,7 @@ Accessibility is a design requirement, not an enhancement.
 
 # Premium Rules
 
-Michelin Passport deliberately avoids:
+Mantelier deliberately avoids:
 
 - advertisements
 - clutter
@@ -376,7 +376,7 @@ Quality is always preferred over quantity.
 
 # What We Are Not
 
-Michelin Passport is not:
+Mantelier is not:
 
 - a review platform
 - a social media feed
@@ -438,6 +438,6 @@ Enduring.
 
 # North Star
 
-> Michelin Passport is not designed to showcase restaurants.
+> Mantelier is not designed to showcase restaurants.
 
 > It is designed to preserve a lifetime of unforgettable experiences.

@@ -170,7 +170,7 @@ diff` / `git diff --cached`: both empty.
 7. **Dîner Dansant specifically**: confirm tapping its ticket/booking
    action opens the Van Oys event page itself, not an unrelated brunch
    — the underlying booking CTA on Van Oys's own site is still broken,
-   so Chasing Stars should not compound it by mislabeling the link as
+   so Mantelier should not compound it by mislabeling the link as
    a working direct-booking action.
 8. Event → Restaurant/Hotel links work for every canonical
    relationship: Flore, Inter Scaldes (+ Bij Jef/Zarzo/Parkheuvel/

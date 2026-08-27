@@ -10,7 +10,7 @@ Activates the `onCall` seam `VenueUtilityActions` gained back in its own Step 1D
 
 `RestaurantInfoCard`'s "LOCATION" section is renamed "PRACTICAL INFORMATION" and now shows the phone number (conditionally, trimmed, blank/whitespace treated as absent) alongside the address — the only place the number appears as text, since `VenueUtilityActions`' Call button is icon+label only. Website/Directions/Michelin Guide are deliberately not restated as text here, since they're already the tappable actions immediately above.
 
-This is venue-*data* enrichment, not venue self-management — practical contact fields sourced and verified from primary sources (official site, official MICHELIN Guide page), applied by the same production-apply process as every other catalogue change. Chasing Stars' own verified recognition (MICHELIN stars, Gault&Millau, World's 50 Best) remains entirely separate data, untouched by this change.
+This is venue-*data* enrichment, not venue self-management — practical contact fields sourced and verified from primary sources (official site, official MICHELIN Guide page), applied by the same production-apply process as every other catalogue change. Mantelier's own verified recognition (MICHELIN stars, Gault&Millau, World's 50 Best) remains entirely separate data, untouched by this change.
 
 ### Files changed
 
@@ -216,7 +216,7 @@ Testing the new Room/Experience save path against production before step 2 was c
 
 ## FINAL CLOVE CLUB SCORE + ACTION ALIGNMENT — STEP 1D
 
-Applied on top of Step 1C after a positive physical-device review that flagged two remaining details: the score rings should visually communicate the score itself, and Michelin Guide belongs back in the compact action row (as Chasing Stars' answer to the reference's "Share").
+Applied on top of Step 1C after a positive physical-device review that flagged two remaining details: the score rings should visually communicate the score itself, and Michelin Guide belongs back in the compact action row (as Mantelier's answer to the reference's "Share").
 
 ### Proportional score ring
 
@@ -283,7 +283,7 @@ Scores, About, the utility row, and Location were already flat (no card) as of S
 
 ### Awards summary — assessed, not added
 
-The reference shows a compact Awards summary before Award History. Chasing Stars' hero already shows current Michelin recognition (primary) plus World's 50 Best/Hall of Fame (secondary badges) exactly once — adding a second on-page summary would violate the task's own explicit instruction not to show stars/W50B a third time (hero + a summary + Award History). Decision: **no new UI added** — the hero already is the "current snapshot," Award History already is the "chronology," and that two-part split was already correct. Verified by inspection, not by writing dead code.
+The reference shows a compact Awards summary before Award History. Mantelier's hero already shows current Michelin recognition (primary) plus World's 50 Best/Hall of Fame (secondary badges) exactly once — adding a second on-page summary would violate the task's own explicit instruction not to show stars/W50B a third time (hero + a summary + Award History). Decision: **no new UI added** — the hero already is the "current snapshot," Award History already is the "chronology," and that two-part split was already correct. Verified by inspection, not by writing dead code.
 
 ### Bottom navigation — investigated, deferred with reasoning
 
@@ -346,7 +346,7 @@ A missing optional dimension renders `—`, never a fabricated `0`. Each column 
 
 Neither `Restaurant` nor `Hotel` has a `description`/`about`/`summary` column today (confirmed by reading both models in full — nothing exists to surface). `VenueAboutSection` (`lib/core/widgets/venue_about_section.dart`) is built and wired into both detail screens as a conditional seam: it takes `text: String?` and renders nothing (not a "No description available." placeholder) whenever the value is null/empty. Both screens currently call it with a local `aboutText = null` and an inline comment — the day a real editorial-copy field lands on the model, only that one line changes. **No migration was added in this task**, per the explicit instruction, and no runtime web scraping was introduced.
 
-**Recommended future architecture** (documented, not built): official venue website → a controlled, offline enrichment pipeline → concise Chasing Stars-authored ABOUT copy → source URL/provenance stored alongside it → the app reads only from the database, same as every other field. Never: Flutter app → scrape the venue's own website on every page open. Reasons: performance (no per-view network fetch to a third party), reliability (venue sites change/break without warning), editorial control and consistent tone, copyright (scraped text is not ours to redistribute), and offline/cache behavior (a database field works with the app's existing caching; a live scrape does not).
+**Recommended future architecture** (documented, not built): official venue website → a controlled, offline enrichment pipeline → concise Mantelier-authored ABOUT copy → source URL/provenance stored alongside it → the app reads only from the database, same as every other field. Never: Flutter app → scrape the venue's own website on every page open. Reasons: performance (no per-view network fetch to a third party), reliability (venue sites change/break without warning), editorial control and consistent tone, copyright (scraped text is not ours to redistribute), and offline/cache behavior (a database field works with the app's existing caching; a live scrape does not).
 
 ### LOCATION section
 

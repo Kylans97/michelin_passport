@@ -1,6 +1,6 @@
 # Database Architecture
 
-Michelin Passport — production schema reference.
+Mantelier — production schema reference.
 
 This document is authoritative for table structure, constraints, indexes, data conventions and the security model. Procedure for building the database is in `DATABASE_IMPORT_GUIDE.md`; for maintaining it, `DATA_UPDATE_PROCESS.md`; for environments, secrets and operations, `DEPLOYMENT.md`. Dataset statistics and row counts are authoritative in `VALIDATION_REPORT.md`, so counts are avoided here except where a number is part of a rule.
 
@@ -506,7 +506,7 @@ A fifth, added after the relationship consolidation: no restaurant carries both 
 
 Three reasons. They are volatile — a rating moves continuously, so a stored copy is stale from the moment it is written and there is no event that would trigger a refresh. They are third-party licensed, and Google's terms restrict retention and redisplay of Places content. And they are already reachable: `google_place_id` resolves to the current rating through the Places API at the moment it is needed, which is both fresher and simpler than a cache.
 
-There is also a product reason. `visits.rating` is the user's own score, and Country Progress and every statistic are built from it. A stored Google rating would sit beside it on the same screen and compete with it. Inside Michelin Passport, the user's rating is the source of truth.
+There is also a product reason. `visits.rating` is the user's own score, and Country Progress and every statistic are built from it. A stored Google rating would sit beside it on the same screen and compete with it. Inside Mantelier, the user's rating is the source of truth.
 
 ---
 
@@ -703,3 +703,152 @@ SET LOCAL request.jwt.claims = '{"sub":"<some-user-uuid>"}';
 SELECT count(*) FROM visits;   -- own rows plus public profiles only
 RESET ROLE;
 ```
+
+# MA-059 — Region column for federal countries
+
+**Status:** Decided. Closes MA-059 (bucket 1, "must fix before import").
+**Decided:** 24 August 2026.
+
+---
+
+## The problem
+
+`cities` currently carries `country_code` and `name`. Between those two levels
+there is nothing. For most countries that is fine — Netherlands, Belgium,
+Monaco. For federal countries it is not.
+
+Three questions cannot be answered today:
+
+- Show all starred restaurants in **California**
+- I am travelling to **Texas** — what is there
+- How much of the **New York** guide have I covered
+
+Answering "California" without a region column means hard-coding a list of
+Californian city names into queries. That works until someone adds a city
+that is not on the list, and then it fails silently — the exact failure mode
+this project has spent months eliminating.
+
+The United States is the immediate case: 51 restaurants across 13 MICHELIN
+guide jurisdictions, distinguishable today only through the city string.
+The same question returns for Canada, Mexico, Brazil and Germany — Germany
+already holds 126 hotels with no state recorded.
+
+## Why it had to be decided before the US import
+
+Adding the column after loading costs a migration **plus** a backfill. The
+migration is trivial; the backfill is not. Every US row would have to be
+re-researched to determine its state, which is precisely the work that comes
+for free while building the rows in the first place.
+
+Deciding now costs one column.
+
+## The decision
+
+**`region` is administrative, not editorial.** It holds the state, federal
+state, or province — California, Bayern, Ontario, São Paulo.
+
+It is **not** the MICHELIN guide jurisdiction. Those two look similar and are
+not the same thing: MICHELIN's "American South" spans several states, while
+California is a single guide covering the whole state.
+
+This follows the precedent already set in MA-035 and §7: **country is
+geographic, not editorial.** Monaco is its own country even though MICHELIN
+files it under the France guide, with `countries.michelin_guide_edition`
+carrying the editorial view separately. Region follows the same logic — the
+administrative value is stored, and the guide view is derived or carried
+separately.
+
+Consequence, stated plainly: **per-region counts will not reconcile with
+MICHELIN's published per-guide figures.** That is the accepted cost, exactly
+as it already is at country level.
+
+## Where it lives
+
+On **`cities`**, not on `hotels` or `restaurants`.
+
+A city lies in exactly one state. Storing it on the city means filling it in
+once per city rather than once per venue, and it cannot drift between two
+venues in the same city — the same reason `cities` exists at all.
+
+```sql
+ALTER TABLE cities ADD COLUMN region text NULL;
+```
+
+Nullable by design. Most countries never need it. A null region means "this
+country does not subdivide for our purposes", not "unknown" — see below.
+
+## Rules
+
+**Value format.** The full administrative name in English as commonly used:
+`California`, not `CA`. `Bayern`, not `Bavaria` — native form, consistent
+with the address convention in §8. No abbreviations, no postal codes.
+
+**Which countries get one.** Fill `region` for federal or large countries
+where a user would plausibly filter by it:
+United States, Canada, Mexico, Brazil, Germany, Spain, Italy, Japan,
+Australia, India.
+
+Leave null everywhere else. Netherlands, Belgium, Monaco, Singapore,
+Luxembourg do not need it.
+
+**Never infer it.** If the state cannot be verified from the address or a
+MICHELIN source, leave it null and log it. The `region` value is subject to
+the same never-guess discipline as every other field. A wrong state is worse
+than a null one because it renders as fact in a filter.
+
+**Never derive it from the guide edition.** `michelin_guide_edition` at
+country level answers the editorial question. Region answers the geographic
+one. Do not populate one from the other.
+
+## Distinguishing null from unknown
+
+`region IS NULL` is ambiguous on its own: it may mean "not applicable" or
+"not yet researched". Resolve it the way the project already resolves this
+elsewhere — at the country level.
+
+Add to `countries`:
+
+```sql
+ALTER TABLE countries ADD COLUMN uses_region boolean NOT NULL DEFAULT false;
+```
+
+Then:
+- `uses_region = false` → a null region is correct and final
+- `uses_region = true` and `region IS NULL` → genuinely outstanding, and
+  should surface in QA
+
+Without this, a US city with no region is indistinguishable from a Dutch one,
+and the gap never gets found.
+
+## CI check
+
+Add to the four checks in §13:
+
+```
+Every city whose country has uses_region = true has a non-null region.
+```
+
+## Index
+
+```sql
+CREATE INDEX ON cities (country_code, region);
+```
+
+Region filters always run within a country, so the composite is the useful
+form. A standalone index on `region` is not needed.
+
+## Backfill scope, today
+
+Currently affected: 318 restaurant cities and the hotel cities across
+21 countries. Only the ten countries listed above need filling.
+
+The United States is the largest single job at 51 restaurants. Germany
+follows with 126 hotels. Neither blocks anything — both are `NULL` until
+filled, and `uses_region` makes the gap visible rather than silent.
+
+## What this does not do
+
+It does not model guide jurisdictions. If per-guide filtering ever becomes a
+feature — "how much of the Texas guide have I covered" — that needs its own
+lookup, because guide areas cross state lines and change between editions.
+Do not overload `region` to serve both.

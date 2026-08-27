@@ -113,7 +113,7 @@ MVP states: `notFollowing`, `following`, `busy` (three, matching the task's own 
 
 ## EXTERNAL HOSTS
 
-`events.external_host_name`/`events.external_host_url` are live in production (confirmed) but unmapped in the `Event` Dart model — not read by any current code. Confirmed rule: external hosts have no canonical Chasing Stars entity id and are therefore **not followable** in MVP — no `follow_external_hosts` table should ever be created; a user simply cannot follow an external host until/unless that host is later onboarded as a canonical entity. **No current production Events data issue**: all 4 live Events (from Step 5) resolve to canonical venue_name/address fields already; none currently relies on `external_host_name`/`external_host_url` being non-null for basic display, so this rule creates no gap in what's already shipped.
+`events.external_host_name`/`events.external_host_url` are live in production (confirmed) but unmapped in the `Event` Dart model — not read by any current code. Confirmed rule: external hosts have no canonical Mantelier entity id and are therefore **not followable** in MVP — no `follow_external_hosts` table should ever be created; a user simply cannot follow an external host until/unless that host is later onboarded as a canonical entity. **No current production Events data issue**: all 4 live Events (from Step 5) resolve to canonical venue_name/address fields already; none currently relies on `external_host_name`/`external_host_url` being non-null for basic display, so this rule creates no gap in what's already shipped.
 
 ## ANALYTICS
 

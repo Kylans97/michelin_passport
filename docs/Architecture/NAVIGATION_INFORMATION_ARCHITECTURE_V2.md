@@ -161,7 +161,7 @@ completeness.
 `NewsScreen` is a new bottom-nav tab body (no own `Scaffold`, matching
 `ExploreScreen`/`PassportScreen`'s convention). It shows a title, a supporting
 line, and a `CsComingSoon` placeholder. News V1's real content system
-(Latest/Chasing Stars/Interviews/Restaurants/Events/Awards categories, three
+(Latest/Mantelier/Interviews/Restaurants/Events/Awards categories, three
 launch stories) is explicitly out of scope for this phase — no fake articles
 were built.
 

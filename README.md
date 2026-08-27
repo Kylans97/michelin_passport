@@ -1,6 +1,6 @@
-# 🍷 Michelin Passport
+# 🍷 Mantelier
 
-Michelin Passport is a premium Flutter application that enables food lovers to build their own digital culinary passport.
+Mantelier is a premium Flutter application that enables food lovers to build their own digital culinary passport.
 
 The app allows users to track Michelin-starred restaurants, Michelin Key hotels and other exceptional dining experiences around the world.
 
@@ -8,7 +8,7 @@ The app allows users to track Michelin-starred restaurants, Michelin Key hotels 
 
 ## ✨ Vision
 
-Michelin Passport is not just another restaurant tracker.
+Mantelier is not just another restaurant tracker.
 
 Our ambition is to become **the platform for culinary experiences**, where users can:
 
@@ -84,7 +84,7 @@ supabase/
 
 ## 🎯 Design Principles
 
-Michelin Passport is built around a few core principles:
+Mantelier is built around a few core principles:
 
 - Build once, scale forever.
 - Quality over speed.
@@ -98,7 +98,7 @@ Every technical and product decision is made with long-term scalability and a pr
 
 ## 📱 Long-Term Vision
 
-The goal is to launch Michelin Passport as a premium App Store application.
+The goal is to launch Mantelier as a premium App Store application.
 
 Future releases will introduce:
 
@@ -118,4 +118,4 @@ Future releases will introduce:
 
 Private project.
 
-Copyright © Michelin Passport.
+Copyright © Mantelier.

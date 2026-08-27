@@ -1,6 +1,50 @@
-# Michelin Passport
+# Mantelier
 
 Project orientation. Read this first, then the document you need.
+
+---
+
+## SUPERSEDED NOTICE — 24 August 2026: production is now the source of truth
+
+Everything below this notice describes the project as it stood **before
+the database and application were built** — a pre-implementation planning
+snapshot. It is kept, not deleted, as the historical record of that
+freeze. It is no longer current, and should not be read as authoritative
+about the present state of the data.
+
+**What changed and why.** The catalogue was originally imported from the
+CSVs listed in "Source files" below. Since then, the live Supabase
+database has grown beyond that snapshot through direct enrichment work —
+588 restaurants and 88 hotels now exist in production that were never in
+`restaurants_master.csv`/`hotels_master.csv`, and a `phone` column was
+added to `restaurants` (migration `20260819120000_add_restaurant_phone
+.sql`) that no CSV ever carried. The CSVs stopped being updated; the
+database did not stop growing. Discovered and reconciled 24 August 2026.
+
+**The rule going forward: the live Supabase database is authoritative.
+The master CSVs are an export of it, never an import into it.** Nothing
+should be re-imported from `restaurants_master.csv`/`hotels_master.csv`
+on the assumption they are current — they are not. A fresh, read-only
+export was taken directly from production on 24 August 2026:
+
+| File | Rows | Status |
+|---|---|---|
+| `restaurants_master_LIVE_20260824.csv` | 1362 | **Current** — read-only export of `restaurants_full` |
+| `hotels_master_LIVE_20260824.csv` | 775 | **Current** — read-only export of `hotels_full` |
+| `hotel_restaurants_LIVE_20260824.csv` | 74 | **Current** — the join table (called `hotel_restaurant_links.csv` in the frozen export below; the live table's real name is `hotel_restaurants`) |
+| `events_LIVE_20260824.csv` + 7 related `event_*_LIVE_20260824.csv` files | 28 events, see each file | **Current** — did not exist at all in the original freeze; the events feature was built after this document was last accurate |
+| `cuisines_LIVE_20260824.csv`, `worlds_50_best_LIVE_20260824.csv`, `worlds_50_best_hotels_LIVE_20260824.csv` | 153 / 782 / 189 | **Current** — reference tables used to resolve `cuisine`/World's 50 Best fields in the two exports above |
+| `restaurants_master.csv`, `hotels_master.csv`, `hotel_restaurant_links.csv` (below) | 774 / 687 / 68 | **Historical freeze only** — the original import snapshot this whole document describes. Preserved untouched as the historical record; do not treat as current, do not re-import. |
+
+The 588 restaurants and 88 hotels that exist only in production are
+unevenly enriched — most importantly, essentially none of the 588 new
+restaurants have a `google_place_id` or resolved `cuisine`, and only
+~2% have a `website_url`, despite being fully geocoded (address/lat/lng
+100% populated). The 88 new hotels are in much better shape (address/lat
+/lng 100%, `website_url` 95.5%, but `google_place_id` still only 5.7%).
+See the enrichment-state report this notice's own investigation produced
+for the full per-field, per-country breakdown — this is exactly the input
+the next enrichment pass needs and did not have before.
 
 ---
 
@@ -83,13 +127,13 @@ These are fixed. Each has a full argument in `ARCHITECTURE_REVIEW.md`; the one-l
 | **`worlds_50_best` is its own table** | A star is an ordinal tier where higher is better and a rank is a position where lower is better; one column cannot order both correctly. |
 | **`is_in_hotel` is derived, never stored** | It drifted twice as a stored value, and a generated column cannot depend on the existence of a row in another table. |
 | **`michelin_stars` is nullable, never zero** | Zero asserts an assessment that did not happen for venues in countries where MICHELIN awards no stars. |
-| **No phone numbers** | Not stored on either catalogue table; `google_place_id` resolves to one when needed. |
-| **No stored Google ratings** | Volatile, third-party licensed, and reachable through the Places API; inside Michelin Passport the user's own rating is the source of truth. |
+| **No phone numbers** *(SUPERSEDED 24 Aug 2026 — see notice at top of this document)* | Not stored on either catalogue table; `google_place_id` resolves to one when needed. **No longer true**: `restaurants.phone` was added by migration `20260819120000_add_restaurant_phone.sql` and is live in production (1 of 1362 restaurants populated: Parkheuvel). Hotels still have no `phone` column — that half of the original claim still holds. |
+| **No stored Google ratings** | Volatile, third-party licensed, and reachable through the Places API; inside Mantelier the user's own rating is the source of truth. |
 | **Hotel and property relationship model** | `hotels` holds only Key hotels, the join table holds only verified links to them, and a restaurant in a non-Key hotel records `property_name` instead — three mutually exclusive states. |
 
 ---
 
-## Source files
+## Source files *(SUPERSEDED 24 Aug 2026 — historical freeze, not current row counts. See the notice at the top of this document for the live `_LIVE_20260824` exports and which files are now authoritative.)*
 
 | File | Rows |
 |---|---|

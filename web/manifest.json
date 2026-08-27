@@ -1,6 +1,6 @@
 {
-    "name": "michelin_passport",
-    "short_name": "michelin_passport",
+    "name": "Mantelier",
+    "short_name": "Mantelier",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

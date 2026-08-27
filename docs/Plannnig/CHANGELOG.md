@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to Michelin Passport will be documented in this file.
+All notable changes to Mantelier will be documented in this file.
 
 The format follows Keep a Changelog.
 

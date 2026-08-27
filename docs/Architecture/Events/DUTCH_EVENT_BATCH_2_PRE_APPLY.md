@@ -88,7 +88,7 @@ HOLD. Notable corrections/upgrades found:
   recognition.
 - **VanOost BBQ — one location correction.** Niven Kunz's restaurant
   Triptyque is in Wateringen, not Waalre as the original sprint notes
-  stated — this matches Chasing Stars' own canonical catalogue record
+  stated — this matches Mantelier's own canonical catalogue record
   for Triptyque exactly, so no data-quality issue exists in production,
   only in the prior research note.
 - **Karel 5 lunch — source weakness confirmed, not resolved.**

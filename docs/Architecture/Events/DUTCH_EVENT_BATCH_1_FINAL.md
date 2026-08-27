@@ -11,7 +11,7 @@ summary once human approval was recorded.
 ## SCOPE
 
 Dutch Event enrichment Batch 1 — a research-through-production
-workstream targeting the Netherlands market for Chasing Stars Events,
+workstream targeting the Netherlands market for Mantelier Events,
 building directly on the now-live date-only architecture and the
 already-shipped European Batch 1.
 

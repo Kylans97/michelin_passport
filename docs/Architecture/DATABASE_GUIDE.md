@@ -1,4 +1,4 @@
-# Michelin Passport
+# Mantelier
 
 ## Database Guide
 
@@ -11,7 +11,7 @@
 
 # Purpose
 
-This document defines how the Michelin Passport database is designed, maintained and expanded.
+This document defines how the Mantelier database is designed, maintained and expanded.
 
 It establishes the standards for data quality, migrations, imports and long-term maintainability.
 
@@ -21,7 +21,7 @@ Every database change should follow the principles described in this guide.
 
 # Database Philosophy
 
-The database is the foundation of Michelin Passport.
+The database is the foundation of Mantelier.
 
 Application code can be rewritten.
 
