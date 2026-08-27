@@ -51,3 +51,6 @@ app.*.map.json
 /android/app/release
 .venv/
 supabase/snippets/
+
+# Claude Code local tooling config — not project code
+.claude/
