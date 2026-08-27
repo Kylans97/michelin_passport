@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/widgets/cs_image_placeholder.dart' show csMonogramAssetPath;
@@ -46,7 +47,7 @@ class _SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset(csMonogramAssetPath, width: 56, height: 56),
+            SvgPicture.asset(csMonogramAssetPath, width: 56, height: 56),
             const SizedBox(height: 24),
             const SizedBox(
               width: 20,

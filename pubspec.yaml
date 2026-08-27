@@ -79,8 +79,12 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/table_passport_logo.svg
-    - assets/branding/chasing_stars_monogram.png
+    - assets/branding/mark-ivory-ink.svg
+    - assets/branding/mark-green-ink.svg
+    - assets/branding/mark-small-ivory-ink.svg
+    - assets/branding/mark-small-green-ink.svg
+    - assets/branding/wordmark-ivory.svg
+    - assets/branding/wordmark-deepgreen.svg
     - .env
 
   # To add assets to your application, add an assets section, like this:

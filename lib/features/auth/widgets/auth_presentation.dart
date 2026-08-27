@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
@@ -9,7 +10,7 @@ import '../../../core/widgets/cs_image_placeholder.dart'
 /// editorial "entrance" moment shared by Login and Sign up (Step 4A), so
 /// both screens unmistakably read as the same experience. The monogram is
 /// the official asset rendered directly via [csMonogramAssetPath]
-/// (Image.asset, BoxFit.contain — no recolor, no redraw), not
+/// (SvgPicture.asset, BoxFit.contain — no recolor, no redraw), not
 /// [CsImagePlaceholder]: that widget exists specifically for a venue-photo
 /// fallback slot, which isn't the semantic role a brand mark plays here.
 /// [compact] shrinks the monogram/wordmark slightly for Sign up, which has
@@ -29,7 +30,7 @@ class AuthBrandHeader extends StatelessWidget {
     final monogramSize = compact ? 48.0 : 64.0;
     return Column(
       children: [
-        Image.asset(
+        SvgPicture.asset(
           csMonogramAssetPath,
           width: monogramSize,
           height: monogramSize,

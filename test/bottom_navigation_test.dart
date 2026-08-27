@@ -90,7 +90,7 @@ Widget _wrap(
   double textScale = 1.0,
   Widget body = const SizedBox.shrink(),
 }) => MaterialApp(
-  theme: AppTheme.chasingStars,
+  theme: AppTheme.mantelier,
   home: MediaQuery(
     data: MediaQueryData(
       size: Size(width, 844),
@@ -172,7 +172,7 @@ void main() {
     testWidgets('theme-level NavigationBarTheme.backgroundColor is EXACTLY '
         'AppColors.deepGreen — the same fallback source app.dart\'s own '
         'inline value must never drift from', (tester) async {
-      final theme = AppTheme.chasingStars.navigationBarTheme;
+      final theme = AppTheme.mantelier.navigationBarTheme;
       expect(theme.backgroundColor, equals(AppColors.deepGreen));
     });
 
@@ -195,7 +195,7 @@ void main() {
       final container = tester.widget<Container>(find.byType(Container).first);
       final decoration = container.decoration! as BoxDecoration;
       final bar = tester.widget<NavigationBar>(find.byType(NavigationBar));
-      final theme = AppTheme.chasingStars.navigationBarTheme;
+      final theme = AppTheme.mantelier.navigationBarTheme;
       expect(AppColors.deepGreen, isNot(equals(AppColors.forestGreen)));
       expect(decoration.color, isNot(equals(AppColors.forestGreen)));
       expect(bar.backgroundColor, isNot(equals(AppColors.forestGreen)));
@@ -253,7 +253,7 @@ void main() {
 
     testWidgets('theme-level icon color: ivory selected, secondaryOnDark '
         'unselected — never gold', (tester) async {
-      final theme = AppTheme.chasingStars.navigationBarTheme;
+      final theme = AppTheme.mantelier.navigationBarTheme;
       final selectedIcon = theme.iconTheme!.resolve({WidgetState.selected});
       final unselectedIcon = theme.iconTheme!.resolve({});
       expect(selectedIcon?.color, AppColors.ivory);

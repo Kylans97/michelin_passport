@@ -17,6 +17,7 @@
 // isn't exercised here either.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart'
@@ -34,8 +35,11 @@ void main() {
       final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
       expect(scaffold.backgroundColor, AppColors.deepGreen);
       expect(find.text('MANTELIER'), findsOneWidget);
-      final image = tester.widget<Image>(find.byType(Image));
-      expect((image.image as AssetImage).assetName, csMonogramAssetPath);
+      final picture = tester.widget<SvgPicture>(find.byType(SvgPicture));
+      expect(
+        (picture.bytesLoader as SvgAssetLoader).assetName,
+        csMonogramAssetPath,
+      );
       expect(tester.takeException(), isNull);
     });
 

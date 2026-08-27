@@ -18,7 +18,7 @@ class TablePassportApp extends StatelessWidget {
     return MaterialApp(
       title: 'Mantelier',
       debugShowCheckedModeBanner: false,
-      theme: AppTheme.chasingStars,
+      theme: AppTheme.mantelier,
       navigatorObservers: [appRouteObserver],
       // AuthGate shows LoginScreen when there is no session,
       // and the tab scaffold when the user is authenticated.
@@ -103,7 +103,7 @@ class _MainNavigationState extends State<_MainNavigation> {
           // Icon color/size has no direct NavigationBar constructor
           // parameter (Material only exposes it via
           // NavigationBarThemeData.iconTheme) — supplied by
-          // AppTheme.chasingStars.navigationBarTheme above instead;
+          // AppTheme.mantelier.navigationBarTheme above instead;
           // labelTextStyle IS a direct parameter, set explicitly here to
           // match the same ivory/secondaryOnDark selected/unselected rule.
           labelTextStyle: WidgetStateProperty.resolveWith((states) {

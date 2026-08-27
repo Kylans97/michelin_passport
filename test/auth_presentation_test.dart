@@ -3,6 +3,7 @@
 // AuthErrorBanner, SecondaryAuthLink. Presentation-only, no Supabase.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart'
@@ -26,8 +27,11 @@ void main() {
       await tester.pumpWidget(
         _wrap(const AuthBrandHeader(tagline: 'A quiet line of copy.')),
       );
-      final image = tester.widget<Image>(find.byType(Image));
-      expect((image.image as AssetImage).assetName, csMonogramAssetPath);
+      final picture = tester.widget<SvgPicture>(find.byType(SvgPicture));
+      expect(
+        (picture.bytesLoader as SvgAssetLoader).assetName,
+        csMonogramAssetPath,
+      );
       expect(find.text('MANTELIER'), findsOneWidget);
       expect(find.text('A quiet line of copy.'), findsOneWidget);
       expect(tester.takeException(), isNull);
@@ -48,8 +52,8 @@ void main() {
       await tester.pumpWidget(
         _wrap(const AuthBrandHeader(tagline: 'Tagline', compact: true)),
       );
-      final image = tester.widget<Image>(find.byType(Image));
-      expect(image.width, 48);
+      final picture = tester.widget<SvgPicture>(find.byType(SvgPicture));
+      expect(picture.width, 48);
       expect(tester.takeException(), isNull);
     });
 

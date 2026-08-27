@@ -8,7 +8,7 @@ import 'cs_typography.dart';
 class AppTheme {
   AppTheme._();
 
-  static ThemeData get chasingStars {
+  static ThemeData get mantelier {
     final base = ThemeData.light(useMaterial3: true);
 
     return base.copyWith(

@@ -4,6 +4,7 @@
 // and hero areas stretched via a Stack with no explicit width/height.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
 
@@ -36,7 +37,7 @@ void main() {
     );
     await tester.pump();
     expect(tester.takeException(), isNull);
-    expect(find.byType(Image), findsOneWidget);
+    expect(find.byType(SvgPicture), findsOneWidget);
   });
 
   testWidgets(
@@ -59,7 +60,7 @@ void main() {
       );
       await tester.pump();
       expect(tester.takeException(), isNull);
-      expect(find.byType(Image), findsOneWidget);
+      expect(find.byType(SvgPicture), findsOneWidget);
     },
   );
 

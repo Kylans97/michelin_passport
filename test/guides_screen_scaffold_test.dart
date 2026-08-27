@@ -28,7 +28,7 @@ void main() {
       'descendant of the calling screen\'s Scaffold)',
       (tester) async {
         await tester.pumpWidget(
-          MaterialApp(theme: AppTheme.chasingStars, home: const GuidesScreen()),
+          MaterialApp(theme: AppTheme.mantelier, home: const GuidesScreen()),
         );
         expect(find.byType(Scaffold), findsOneWidget);
         expect(
@@ -44,7 +44,7 @@ void main() {
 
     testWidgets('renders every family title and destination', (tester) async {
       await tester.pumpWidget(
-        MaterialApp(theme: AppTheme.chasingStars, home: const GuidesScreen()),
+        MaterialApp(theme: AppTheme.mantelier, home: const GuidesScreen()),
       );
       expect(find.text('GUIDES'), findsOneWidget);
       expect(find.text('MICHELIN GUIDE'), findsOneWidget);

@@ -6,11 +6,11 @@ import 'cs_typography.dart';
 
 /// A complete [ThemeData] built from the redesigned Mantelier tokens —
 /// PREPARED, NOT APPLIED. `app.dart` still constructs `MaterialApp(theme:
-/// AppTheme.chasingStars)`; nothing here is wired in. Swapping it in is a
+/// AppTheme.mantelier)`; nothing here is wired in. Swapping it in is a
 /// deliberate Step 2+ decision (see the Step 1 report's "proposed Step 2"),
 /// made only once individual screens are actually ready to sit on a
 /// deep-green canvas — flipping this globally today would restyle every
-/// screen still built for [AppTheme.chasingStars] in one shot, exactly the
+/// screen still built for [AppTheme.mantelier] in one shot, exactly the
 /// "unintentional visual change" this foundation pass must avoid.
 class CsTheme {
   CsTheme._();
@@ -135,7 +135,7 @@ class CsTheme {
 }
 
 /// Bottom navigation tokens — kept in sync with whatever `_MainNavigation`
-/// (app.dart) actually implements (see [AppTheme.chasingStars]'s
+/// (app.dart) actually implements (see [AppTheme.mantelier]'s
 /// `navigationBarTheme`, the live styling path); nothing in this file
 /// applies these automatically, so treat this as a named reference to
 /// correct alongside app.dart, not an independent source of truth. Current

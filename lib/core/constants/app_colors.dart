@@ -73,7 +73,7 @@ class AppColors {
   //
   // These are ADDITIVE: every token above stays exactly as it is, and every
   // current screen keeps reading it unchanged. Nothing below is wired into
-  // AppTheme.chasingStars or any existing widget yet — screens migrate onto
+  // AppTheme.mantelier or any existing widget yet — screens migrate onto
   // these deliberately, one at a time, in a later pass. See CsTheme for a
   // prepared-but-not-applied ThemeData built from this new set.
   //
@@ -93,6 +93,18 @@ class AppColors {
   static const Color deepGreen = brandGreen;
   static const Color darkGreen = Color(0xFF0E241F);
   static const Color forestGreen = Color(0xFF23473D);
+
+  // The two official Mantelier brand colors, exactly as specified in the
+  // Mantelier asset kit (README.txt: "Colours (only two, no third
+  // accent)"). Deliberately NOT the same token as [ivory]/[deepGreen]
+  // below, which are close but not pixel-identical (ivory is 0xFFF4F0E7
+  // vs. this kit's 0xFFF7F1DE; deepGreen/brandGreen is 0xFF16302A vs.
+  // this kit's 0xFF0C1F18) — this pair exists so brand-asset consumers
+  // (the monogram/wordmark SVGs, the app icon) can reference the exact
+  // authoritative value the kit was designed against, without silently
+  // repainting the existing UI's own established green/ivory ramp.
+  static const Color brandIvory = Color(0xFFF7F1DE);
+  static const Color brandDeepGreen = Color(0xFF0C1F18);
 
   static const Color ivory = Color(0xFFF4F0E7);
   static const Color warmWhite = Color(0xFFFAF7F0);
