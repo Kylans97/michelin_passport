@@ -8,7 +8,7 @@ import '../../data/repositories/auth_repository.dart';
 import 'signup_screen.dart';
 import 'widgets/auth_presentation.dart';
 
-/// The entrance to Chasing Stars — Step 4A of the visual redesign. Every
+/// The entrance to Mantelier — Step 4A of the visual redesign. Every
 /// piece of authentication behavior below (form/validation, the Supabase
 /// call, error/loading state, AuthGate's own session listener picking up
 /// the new session automatically) is UNCHANGED from before this pass; only
@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 const SizedBox(height: CsSpacing.xxl),
 
                 SecondaryAuthLink(
-                  question: 'New to Chasing Stars?',
+                  question: 'New to Mantelier?',
                   actionLabel: 'Create an account',
                   onTap: () => Navigator.push(
                     context,

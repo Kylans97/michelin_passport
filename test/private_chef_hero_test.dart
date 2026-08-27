@@ -1,5 +1,5 @@
 // Covers PrivateChefHero — identity hierarchy, optional business name,
-// the "PRIVATE CHEF" eyebrow (never "Chasing Stars Selected"), and the
+// the "PRIVATE CHEF" eyebrow (never "Mantelier Selected"), and the
 // gold/score/rating audit (none of that is ever rendered in the hero).
 
 import 'package:flutter/material.dart';
@@ -46,13 +46,13 @@ void main() {
       },
     );
 
-    testWidgets('the "PRIVATE CHEF" eyebrow renders, never "Chasing Stars '
+    testWidgets('the "PRIVATE CHEF" eyebrow renders, never "Mantelier '
         'Selected"', (tester) async {
       await tester.pumpWidget(
         _wrap(const PrivateChefHero(displayName: 'Lucas')),
       );
       expect(find.text('PRIVATE CHEF'), findsOneWidget);
-      expect(find.textContaining('Chasing Stars Selected'), findsNothing);
+      expect(find.textContaining('Mantelier Selected'), findsNothing);
       expect(find.textContaining('Selected'), findsNothing);
     });
 

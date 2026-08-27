@@ -34,7 +34,7 @@ enum AnalyticsEvent {
 
   // ── Ticketing ──────────────────────────────────────────────────────────
   /// Means only "the user opened the external ticket/booking destination
-  /// from Chasing Stars." Never implies purchase, booking, or revenue.
+  /// from Mantelier." Never implies purchase, booking, or revenue.
   ticketLinkOpened,
 
   // ── Attendance ─────────────────────────────────────────────────────────

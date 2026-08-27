@@ -4,7 +4,7 @@ import '../constants/app_colors.dart';
 import 'cs_spacing.dart';
 import 'cs_typography.dart';
 
-/// A complete [ThemeData] built from the redesigned Chasing Stars tokens —
+/// A complete [ThemeData] built from the redesigned Mantelier tokens —
 /// PREPARED, NOT APPLIED. `app.dart` still constructs `MaterialApp(theme:
 /// AppTheme.chasingStars)`; nothing here is wired in. Swapping it in is a
 /// deliberate Step 2+ decision (see the Step 1 report's "proposed Step 2"),
@@ -22,7 +22,7 @@ class CsTheme {
       scaffoldBackgroundColor: AppColors.deepGreen,
       primaryColor: AppColors.deepGreen,
       // primary = deepGreen (the brief's actual primary identity color —
-      // "dark forest green is the PRIMARY Chasing Stars canvas"), not
+      // "dark forest green is the PRIMARY Mantelier canvas"), not
       // mutedBrass: Material widgets reach for `colorScheme.primary` by
       // default (FilledButton, active states, ...), and the brief is
       // explicit that buttons/large fills must never be brass ("Do not

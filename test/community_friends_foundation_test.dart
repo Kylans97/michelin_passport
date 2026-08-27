@@ -421,7 +421,7 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(find.text("'t Preuvenemint"), findsOneWidget);
-      expect(find.text('12 Chasing Stars members going'), findsOneWidget);
+      expect(find.text('12 Mantelier members going'), findsOneWidget);
     });
 
     testWidgets('the Going-count RPC failing never crashes the section, '

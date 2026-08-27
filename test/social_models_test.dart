@@ -65,7 +65,7 @@ void main() {
         'avatar_url': null,
         'relationship_status': null,
       });
-      expect(identity.label, 'Chasing Stars member');
+      expect(identity.label, 'Mantelier member');
     });
 
     test('fromRow maps relationship_status correctly', () {

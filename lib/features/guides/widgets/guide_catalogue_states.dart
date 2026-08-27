@@ -6,7 +6,7 @@ import '../../../core/widgets/cs_image_placeholder.dart';
 
 /// A Guide catalogue's loading state — the same restrained
 /// `CircularProgressIndicator(strokeWidth: 1.5)` language already used
-/// everywhere else in Chasing Stars (see ExploreScreen's search-mode
+/// everywhere else in Mantelier (see ExploreScreen's search-mode
 /// loading state), never a skeleton or shimmer package.
 class GuideCatalogueLoading extends StatelessWidget {
   const GuideCatalogueLoading({super.key});

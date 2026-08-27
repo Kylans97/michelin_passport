@@ -145,7 +145,7 @@ void main() {
 
       expect(
         find.text(
-          'Location access is turned off for Chasing Stars. Enable it '
+          'Location access is turned off for Mantelier. Enable it '
           'in Settings to use Near me.',
         ),
         findsOneWidget,

@@ -62,7 +62,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(
         find.text(
-          'Let other Chasing Stars members find your name and username '
+          'Let other Mantelier members find your name and username '
           'in Find Friends.',
         ),
         findsOneWidget,

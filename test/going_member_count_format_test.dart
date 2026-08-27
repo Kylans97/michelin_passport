@@ -36,39 +36,39 @@ void main() {
       expect(formatGoingMemberCount(const GoingMemberCount(0)), isNull);
     });
 
-    test('1 -> singular "1 Chasing Stars member going"', () {
+    test('1 -> singular "1 Mantelier member going"', () {
       expect(
         formatGoingMemberCount(const GoingMemberCount(1)),
-        '1 Chasing Stars member going',
+        '1 Mantelier member going',
       );
     });
 
-    test('2 -> plural "2 Chasing Stars members going"', () {
+    test('2 -> plural "2 Mantelier members going"', () {
       expect(
         formatGoingMemberCount(const GoingMemberCount(2)),
-        '2 Chasing Stars members going',
+        '2 Mantelier members going',
       );
     });
 
     test('37 -> exact plural', () {
       expect(
         formatGoingMemberCount(const GoingMemberCount(37)),
-        '37 Chasing Stars members going',
+        '37 Mantelier members going',
       );
     });
 
     test('99 -> exact plural, the highest uncapped value', () {
       expect(
         formatGoingMemberCount(const GoingMemberCount(99)),
-        '99 Chasing Stars members going',
+        '99 Mantelier members going',
       );
     });
 
-    test('100 (the server\'s capped sentinel) -> "100+ Chasing Stars '
+    test('100 (the server\'s capped sentinel) -> "100+ Mantelier '
         'members going", never the literal "100"', () {
       final copy = formatGoingMemberCount(const GoingMemberCount(100));
-      expect(copy, '100+ Chasing Stars members going');
-      expect(copy, isNot(contains('100 Chasing Stars')));
+      expect(copy, '100+ Mantelier members going');
+      expect(copy, isNot(contains('100 Mantelier')));
     });
 
     test('copy never says "users," "attendees," or "people registered" — '
@@ -78,7 +78,7 @@ void main() {
         expect(copy, isNot(contains('users')));
         expect(copy, isNot(contains('attendees')));
         expect(copy, isNot(contains('registered')));
-        expect(copy, contains('Chasing Stars'));
+        expect(copy, contains('Mantelier'));
       }
     });
 
@@ -92,7 +92,7 @@ void main() {
       // value above 99 even in that defensive edge case.
       expect(
         formatGoingMemberCount(const GoingMemberCount(523)),
-        '100+ Chasing Stars members going',
+        '100+ Mantelier members going',
       );
     });
   });

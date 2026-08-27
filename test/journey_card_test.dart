@@ -116,7 +116,7 @@ void main() {
           ),
         ),
       );
-      expect(find.text('CHASING STARS · AUG 2026'), findsOneWidget);
+      expect(find.text('MANTELIER · AUG 2026'), findsOneWidget);
       expect(find.textContaining('Member since'), findsNothing);
     });
 

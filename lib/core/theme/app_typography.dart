@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 
-/// Chasing Stars' typography, expressed as roles rather than one-off,
+/// Mantelier's typography, expressed as roles rather than one-off,
 /// screen-specific `GoogleFonts.xxx(...)` calls scattered across widgets.
 /// Editorial serif (Playfair Display) carries venue identity and premium
 /// moments; clean sans (Inter) carries functional UI, metadata and

@@ -16,7 +16,7 @@ class TablePassportApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Chasing Stars',
+      title: 'Mantelier',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.chasingStars,
       navigatorObservers: [appRouteObserver],

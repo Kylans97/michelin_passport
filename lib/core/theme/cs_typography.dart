@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../constants/app_colors.dart';
 
-/// Chasing Stars' redesigned type system (Step 1 foundation) — Cormorant
+/// Mantelier's redesigned type system (Step 1 foundation) — Cormorant
 /// Garamond for editorial/display roles, Inter for functional interface
 /// roles, per the brand brief. Purely additive: [AppTypography] (Playfair
 /// Display + Inter) is untouched and keeps serving every current screen —

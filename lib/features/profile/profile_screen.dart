@@ -244,7 +244,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'Your place in Chasing Stars.',
+                    'Your place in Mantelier.',
                     style: CsTypography.metadata.copyWith(
                       color: AppColors.secondaryOnDark,
                     ),

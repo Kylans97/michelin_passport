@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 
-/// The single official Chasing Stars monogram asset — a transparent PNG,
+/// The single official Mantelier monogram asset — a transparent PNG,
 /// used exactly as provided (see assets/branding/ — never redrawn,
 /// retraced or reinterpreted). [CsImagePlaceholder] is the only place this
 /// path should appear; every other call site should go through that widget
@@ -9,7 +9,7 @@ import '../constants/app_colors.dart';
 /// change if the master asset is ever replaced.
 const String csMonogramAssetPath = 'assets/branding/chasing_stars_monogram.png';
 
-/// The standard branded fallback wherever Chasing Stars doesn't yet have an
+/// The standard branded fallback wherever Mantelier doesn't yet have an
 /// official photo for a restaurant, hotel or event: a deep forest-green
 /// field with the official CS monogram centered. The monogram is rendered
 /// exactly as exported in the source PNG — no color filter, no

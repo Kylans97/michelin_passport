@@ -30,7 +30,7 @@ class Friendship {
     final name = displayName?.trim();
     if (name != null && name.isNotEmpty) return name;
     if (username != null && username!.isNotEmpty) return '@$username';
-    return 'Chasing Stars member';
+    return 'Mantelier member';
   }
 }
 
@@ -81,6 +81,6 @@ class FriendRequest {
     final name = displayName?.trim();
     if (name != null && name.isNotEmpty) return name;
     if (username != null && username!.isNotEmpty) return '@$username';
-    return 'Chasing Stars member';
+    return 'Mantelier member';
   }
 }

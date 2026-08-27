@@ -37,7 +37,7 @@ class AuthBrandHeader extends StatelessWidget {
         ),
         SizedBox(height: compact ? CsSpacing.base : CsSpacing.lg),
         Text(
-          'CHASING STARS',
+          'MANTELIER',
           textAlign: TextAlign.center,
           style: CsTypography.screenTitle.copyWith(
             color: AppColors.textOnDark,
@@ -96,7 +96,7 @@ class AuthErrorBanner extends StatelessWidget {
   );
 }
 
-/// "New to Chasing Stars? / Create an account →" (or the Sign up
+/// "New to Mantelier? / Create an account →" (or the Sign up
 /// equivalent, "Already a member? / Sign in →") — one quiet editorial
 /// link, never a second button competing with the primary CTA.
 class SecondaryAuthLink extends StatelessWidget {

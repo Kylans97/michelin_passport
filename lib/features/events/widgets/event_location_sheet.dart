@@ -419,7 +419,7 @@ class _NearMeFailure extends StatelessWidget {
         onAction = onRetry;
       case CurrentLocationFailureType.permissionDeniedForever:
         message =
-            'Location access is turned off for Chasing Stars. Enable it '
+            'Location access is turned off for Mantelier. Enable it '
             'in Settings to use Near me.';
         actionLabel = 'Open Settings';
         onAction = onOpenAppSettings;

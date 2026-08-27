@@ -13,7 +13,7 @@ import 'widgets/guide_family_section.dart';
 
 /// Guides — "Help me find something." The structured, reference-driven
 /// counterpart to Explore's editorial "Inspire me." An editorial index of
-/// the guide families Chasing Stars currently has real data for (Michelin,
+/// the guide families Mantelier currently has real data for (Michelin,
 /// The World's 50 Best, Gault&Millau) — never a settings menu, never a grid
 /// of generic buttons, and never a family the app can't yet back with real
 /// content. Gault&Millau (Step 2D) has exactly one destination,

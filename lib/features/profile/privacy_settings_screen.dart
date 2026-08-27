@@ -244,7 +244,7 @@ class _DiscoverabilityToggleRow extends StatelessWidget {
             ),
             const SizedBox(height: CsSpacing.xs),
             Text(
-              'Let other Chasing Stars members find your name and '
+              'Let other Mantelier members find your name and '
               'username in Find Friends.',
               style: CsTypography.metadata.copyWith(
                 color: AppColors.secondaryOnDark,

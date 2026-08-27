@@ -6,7 +6,7 @@ import '../theme/cs_typography.dart';
 /// The compact "icon above label" utility row shared by Restaurant and
 /// Hotel Detail, per the Clove Club reference's "DIRECTIONS · WEBSITE ·
 /// CALL · [X]" pattern (UI Consistency Step 1D — final action alignment):
-/// Chasing Stars uses Michelin Guide as its fourth action instead of
+/// Mantelier uses Michelin Guide as its fourth action instead of
 /// Share, since Michelin is more valuable to this product and there is no
 /// existing share infrastructure (`share_plus` is not a dependency — Share
 /// is deliberately not offered anywhere in this app today).

@@ -136,7 +136,7 @@ void main() {
           ),
         ),
       );
-      expect(find.text('Popular with Chasing Stars members'), findsOneWidget);
+      expect(find.text('Popular with Mantelier members'), findsOneWidget);
       expect(find.byIcon(Icons.trending_up), findsOneWidget);
     });
 

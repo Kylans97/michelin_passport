@@ -33,7 +33,7 @@ void main() {
       await tester.pumpWidget(_wrap(const LoginScreen()));
       final scaffold = tester.widget<Scaffold>(find.byType(Scaffold).first);
       expect(scaffold.backgroundColor, AppColors.deepGreen);
-      expect(find.text('CHASING STARS'), findsOneWidget);
+      expect(find.text('MANTELIER'), findsOneWidget);
       final image = tester.widget<Image>(find.byType(Image));
       expect((image.image as AssetImage).assetName, csMonogramAssetPath);
       expect(tester.takeException(), isNull);
@@ -53,7 +53,7 @@ void main() {
     testWidgets('renders the secondary "Create an account" navigation link '
         'and navigates to SignupScreen', (tester) async {
       await tester.pumpWidget(_wrap(const LoginScreen()));
-      expect(find.text('New to Chasing Stars?'), findsOneWidget);
+      expect(find.text('New to Mantelier?'), findsOneWidget);
       expect(find.text('Create an account →'), findsOneWidget);
       await tester.tap(find.text('Create an account →'));
       await tester.pumpAndSettle();
@@ -143,7 +143,7 @@ void main() {
       tester,
     ) async {
       await tester.pumpWidget(_wrap(const SignupScreen()));
-      expect(find.text('CHASING STARS'), findsOneWidget);
+      expect(find.text('MANTELIER'), findsOneWidget);
       expect(find.text('Create your account.'), findsOneWidget);
       expect(tester.takeException(), isNull);
     });

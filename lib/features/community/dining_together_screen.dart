@@ -71,7 +71,7 @@ class DiningTogetherScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: CsSpacing.lg),
                   Text(
-                    'Chasing Stars is built for people who travel for '
+                    'Mantelier is built for people who travel for '
                     'restaurants, plan around memorable meals, and are '
                     'always looking for the next remarkable table.',
                     style: CsTypography.body.copyWith(

@@ -28,7 +28,7 @@ void main() {
       );
       final image = tester.widget<Image>(find.byType(Image));
       expect((image.image as AssetImage).assetName, csMonogramAssetPath);
-      expect(find.text('CHASING STARS'), findsOneWidget);
+      expect(find.text('MANTELIER'), findsOneWidget);
       expect(find.text('A quiet line of copy.'), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
@@ -36,7 +36,7 @@ void main() {
     testWidgets('wordmark uses the Cormorant Garamond family, never '
         'Playfair Display', (tester) async {
       await tester.pumpWidget(_wrap(const AuthBrandHeader(tagline: 'Tagline')));
-      final wordmark = tester.widget<Text>(find.text('CHASING STARS'));
+      final wordmark = tester.widget<Text>(find.text('MANTELIER'));
       final family = wordmark.style?.fontFamily ?? '';
       expect(family, contains('CormorantGaramond'));
       expect(family, isNot(contains('PlayfairDisplay')));

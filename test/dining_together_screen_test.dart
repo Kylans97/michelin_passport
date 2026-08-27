@@ -45,7 +45,7 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(
-        find.textContaining('Chasing Stars is built for people who travel'),
+        find.textContaining('Mantelier is built for people who travel'),
         findsOneWidget,
       );
       expect(

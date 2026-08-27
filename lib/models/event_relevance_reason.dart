@@ -144,5 +144,5 @@ class PopularRelevanceReason extends EventRelevanceReason {
   EventRelevanceReasonType get type => EventRelevanceReasonType.popular;
 
   @override
-  String get label => 'Popular with Chasing Stars members';
+  String get label => 'Popular with Mantelier members';
 }

@@ -15,14 +15,14 @@ import '../../models/going_member_count.dart';
 /// once capped, so there is nothing more precise this function could show
 /// even if it wanted to.
 ///
-/// Copy is deliberately "Chasing Stars member(s) going" — never "users,"
+/// Copy is deliberately "Mantelier member(s) going" — never "users,"
 /// "attendees," or "people registered" (this is intent, not a ticket
 /// count or confirmed registration), matching Going's own existing
 /// product meaning throughout this app.
 String? formatGoingMemberCount(GoingMemberCount memberCount) {
   if (memberCount.count == 0) return null;
-  if (memberCount.isCapped) return '100+ Chasing Stars members going';
+  if (memberCount.isCapped) return '100+ Mantelier members going';
   return memberCount.count == 1
-      ? '1 Chasing Stars member going'
-      : '${memberCount.count} Chasing Stars members going';
+      ? '1 Mantelier member going'
+      : '${memberCount.count} Mantelier members going';
 }

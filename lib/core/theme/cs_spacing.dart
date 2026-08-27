@@ -1,4 +1,4 @@
-/// Chasing Stars' redesigned 4pt spacing grid (Step 1 foundation) — a
+/// Mantelier's redesigned 4pt spacing grid (Step 1 foundation) — a
 /// complete, self-contained token set matching the brand brief exactly.
 ///
 /// Deliberately a NEW class rather than an extension of [AppSpacing]:
@@ -28,7 +28,7 @@ class CsSpacing {
   static const double cardPadding = 20;
 }
 
-/// Chasing Stars' redesigned corner-radius scale (Step 1 foundation) — see
+/// Mantelier's redesigned corner-radius scale (Step 1 foundation) — see
 /// [CsSpacing]'s own doc comment for why this is a new class rather than
 /// an extension of the existing [AppRadii] (which is actively read by
 /// [DetailCard]/[PrimaryButton]/[VenueThumbnail] today, at different

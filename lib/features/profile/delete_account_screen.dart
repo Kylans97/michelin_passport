@@ -49,7 +49,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
           style: CsTypography.placeTitle.copyWith(color: AppColors.textOnDark),
         ),
         content: Text(
-          "This permanently removes your Chasing Stars account and your "
+          "This permanently removes your Mantelier account and your "
           "personal data. This can't be undone.",
           style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
         ),
@@ -149,7 +149,7 @@ class _DeleteAccountScreenState extends State<DeleteAccountScreen> {
                   ),
                   const SizedBox(height: CsSpacing.md),
                   Text(
-                    'This permanently deletes your Chasing Stars account '
+                    'This permanently deletes your Mantelier account '
                     'and all associated personal data — visits, ratings, '
                     "wishlist, trips and photos. This can't be undone.",
                     style: CsTypography.body.copyWith(

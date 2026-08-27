@@ -6,7 +6,7 @@ import '../../core/widgets/cs_coming_soon.dart';
 
 /// News — Navigation & Information Architecture V2's third primary
 /// destination. "What's happening?" — stories, interviews, and the world
-/// of Chasing Stars. News V1's real content system (Latest/Chasing Stars/
+/// of Mantelier. News V1's real content system (Latest/Mantelier/
 /// Interviews/Restaurants/Events/Awards categories, three launch stories)
 /// is deliberately NOT built here — this phase is IA migration only; News
 /// V1 is its own, later workstream. A bottom-tab body (no own [Scaffold],
@@ -40,7 +40,7 @@ class NewsScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: CsSpacing.xs),
                 Text(
-                  'Stories, interviews and the world of Chasing Stars.',
+                  'Stories, interviews and the world of Mantelier.',
                   style: CsTypography.body.copyWith(
                     color: AppColors.secondaryOnDark,
                   ),

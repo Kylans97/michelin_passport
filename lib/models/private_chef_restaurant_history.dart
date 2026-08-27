@@ -22,7 +22,7 @@ class PrivateChefRestaurantHistory {
   final String privateChefId;
 
   /// The canonical restaurant, when this row resolves to one already in
-  /// the Chasing Stars catalogue. Null for text-only provenance.
+  /// the Mantelier catalogue. Null for text-only provenance.
   final Restaurant? restaurant;
 
   /// Populated only when [restaurant] is null — the chef's provenance at a

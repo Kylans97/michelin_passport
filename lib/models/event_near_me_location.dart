@@ -3,7 +3,7 @@ import 'geo_coordinate.dart';
 /// Events V2 Near Me Phase N1 — the V1 default/only radius. **Provisional
 /// product decision, not an architectural constraint**: 100 km was chosen
 /// (see EVENTS_NEAR_ME_LOCATION_ARCHITECTURE_AUDIT.md's "Near Me
-/// Definition"/"Radius Model" sections) because Chasing Stars Events are
+/// Definition"/"Radius Model" sections) because Mantelier Events are
 /// rare and destination-worthy — a typical "5 km nearby restaurant"
 /// radius would be wrong for this catalogue. Named and centralized here
 /// specifically so this single number is never scattered as a literal

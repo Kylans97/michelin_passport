@@ -316,7 +316,7 @@ void main() {
 
     testWidgets('no score/rating/selected badge anywhere', (tester) async {
       await tester.pumpWidget(_shell(_fullChef, _history, _education));
-      expect(find.textContaining('Chasing Stars Selected'), findsNothing);
+      expect(find.textContaining('Mantelier Selected'), findsNothing);
       expect(find.textContaining('rating'), findsNothing);
     });
 

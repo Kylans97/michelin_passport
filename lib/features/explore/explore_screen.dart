@@ -33,7 +33,7 @@ import 'models/explore_search_type.dart';
 import 'widgets/explore_discovery_sections.dart';
 import 'widgets/explore_search_results_view.dart';
 
-/// Explore — Chasing Stars' discovery front door. Two mutually exclusive
+/// Explore — Mantelier's discovery front door. Two mutually exclusive
 /// modes, switched purely by whether the search query is empty (see
 /// [_isSearching]), never shown at once:
 ///
@@ -272,11 +272,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
   // Guides landing page rendered inline here.
   //
   // Navigation & Information Architecture V2 §3 — labeled "Collections" in
-  // the UI now (Chasing Stars should not read as a UI wrapper around
+  // the UI now (Mantelier should not read as a UI wrapper around
   // Michelin/World's 50 Best/Gault&Millau), routing to the exact same,
   // completely unmodified GuidesScreen — the smallest safe migration
   // toward Collections this phase calls for. A future Collections-specific
-  // screen (Chasing Stars' own curated selections, alongside these
+  // screen (Mantelier's own curated selections, alongside these
   // externally-sourced guides) is explicitly deferred, not built here.
   void _openGuides() => Navigator.push(
     context,

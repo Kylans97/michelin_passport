@@ -18,7 +18,7 @@ void main() {
       expect(title.style?.color, AppColors.ivory);
       expect(title.style?.color, isNot(AppColors.gold));
       final subtitle = tester.widget<Text>(
-        find.text('Stories, interviews and the world of Chasing Stars.'),
+        find.text('Stories, interviews and the world of Mantelier.'),
       );
       expect(subtitle.style?.color, AppColors.secondaryOnDark);
     });

@@ -8,7 +8,7 @@ import 'journey_metrics.dart';
 
 /// PROFILE JOURNEY CARD — a compact, restrained card: a panel lifted off
 /// the deep-green canvas ([CsSurfaces.greenElevated] — the same token
-/// role Chasing Stars already uses for "content grouped on top of the
+/// role Mantelier already uses for "content grouped on top of the
 /// canvas," not a new color), showing exactly two numbers — Places and
 /// Countries ([computeJourneyMetrics]'s own calculation logic is entirely
 /// untouched by this file; this is presentation only) — side by side,
@@ -131,7 +131,7 @@ String journeyStampDateLabel(String memberSince) {
 }
 
 String journeyStampLabel(String memberSince) =>
-    'CHASING STARS · ${journeyStampDateLabel(memberSince)}';
+    'MANTELIER · ${journeyStampDateLabel(memberSince)}';
 
 // Centered value-over-label, no icon — Places/Countries are the entire
 // content of this card, so nothing should compete for attention above

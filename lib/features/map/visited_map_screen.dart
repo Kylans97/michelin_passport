@@ -312,7 +312,7 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                         TileLayer(
                           urlTemplate:
                               'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          userAgentPackageName: 'com.chasingstars.app',
+                          userAgentPackageName: 'app.mantelier',
                           // A tile request failing (no connectivity, a rate
                           // limit) just leaves that tile blank — flutter_map
                           // already swallows the error internally, so

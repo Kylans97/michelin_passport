@@ -21,7 +21,7 @@ import '../../visits/widgets/visit_privacy_toggle.dart';
 /// itself is safely saved. Returns a [SaveOutcome] once saved, or null if
 /// the sheet was dismissed without saving.
 ///
-/// Five rating dimensions (UI Consistency Step 1E — Chasing Stars' hotel
+/// Five rating dimensions (UI Consistency Step 1E — Mantelier's hotel
 /// product direction, giving Hotel Detail's score presentation the same
 /// visual weight as Restaurant's): Overall, Service, Room, Experience,
 /// Value. Menu Type is a restaurant-only concept and never appears here.

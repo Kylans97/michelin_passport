@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_typography.dart';
 
-/// PROFILE UI REDESIGN V1 — the ONE canonical Chasing Stars member avatar.
+/// PROFILE UI REDESIGN V1 — the ONE canonical Mantelier member avatar.
 /// Intended to become the single mechanism every member/social surface
 /// (Profile, Friends, Community, Dining Together, Meet the Community)
 /// renders a person's photo through — no screen should independently

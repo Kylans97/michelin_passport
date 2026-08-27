@@ -31,10 +31,10 @@ import 'widgets/community_shared.dart';
 import 'widgets/friends_circle_row.dart';
 
 /// Community — Navigation & Information Architecture V2's fourth primary
-/// destination. "What are other Chasing Stars members interested in?"
+/// destination. "What are other Mantelier members interested in?"
 ///
 /// COMMUNITY & FRIENDS FOUNDATION V1: introduces two local top-level tabs
-/// — COMMUNITY (discovery/activity across the wider Chasing Stars
+/// — COMMUNITY (discovery/activity across the wider Mantelier
 /// community) and FRIENDS (personal activity from people the user
 /// follows) — the same persistent-local-tab pattern Passport's own
 /// PASSPORT/WISHLIST/RANKING/TRIPS subsections already established:

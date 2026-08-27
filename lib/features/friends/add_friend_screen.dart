@@ -18,7 +18,7 @@ import 'widgets/identity_row.dart';
 /// FriendshipRepository — this screen only renders whatever it returns.
 ///
 /// COMMUNITY V1 UI REFINEMENT: full visual redesign onto the current
-/// Chasing Stars deep-green canvas (this screen previously predated that
+/// Mantelier deep-green canvas (this screen previously predated that
 /// system — almost entirely ivory background, generic search-page
 /// styling). Renamed from "Add Friend" to "Find friends" in the visible
 /// copy — finding someone and sending a request are separate actions, so

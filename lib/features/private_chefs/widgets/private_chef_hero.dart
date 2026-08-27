@@ -15,7 +15,7 @@ import '../../../models/private_chef_photo.dart';
 /// — [VenueDetailHero] itself exists for exactly this reason rather than
 /// modifying the older shared `DetailHero`.
 ///
-/// Deliberately shows NO score, rating, review count, "Chasing Stars
+/// Deliberately shows NO score, rating, review count, "Mantelier
 /// Selected" badge, Michelin stars, or price badge — the chef's page
 /// existing at all is the selection signal (PRIVATE_CHEFS.md §14). The one
 /// permitted editorial context label is the small "PRIVATE CHEF" eyebrow,

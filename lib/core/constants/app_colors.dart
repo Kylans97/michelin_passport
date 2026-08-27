@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-/// Chasing Stars' design tokens — understated luxury in the vein of Aman,
+/// Mantelier's design tokens — understated luxury in the vein of Aman,
 /// Belmond and Soho House: deep sophisticated green as the brand color,
 /// warm ivory/cream surfaces (not stark white or black), and a single
 /// restrained warm-gold accent used sparingly rather than "gold
