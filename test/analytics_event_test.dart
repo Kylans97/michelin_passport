@@ -22,6 +22,7 @@ void main() {
         AnalyticsEvent.eventGoingAdded: 'event_going_added',
         AnalyticsEvent.eventGoingRemoved: 'event_going_removed',
         AnalyticsEvent.ticketLinkOpened: 'ticket_link_opened',
+        AnalyticsEvent.venueBookingLinkOpened: 'venue_booking_link_opened',
         AnalyticsEvent.eventAttendancePrompted: 'event_attendance_prompted',
         AnalyticsEvent.eventAttendanceConfirmed: 'event_attendance_confirmed',
         AnalyticsEvent.eventAttendanceDenied: 'event_attendance_denied',

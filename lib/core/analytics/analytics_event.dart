@@ -34,8 +34,22 @@ enum AnalyticsEvent {
 
   // ── Ticketing ──────────────────────────────────────────────────────────
   /// Means only "the user opened the external ticket/booking destination
-  /// from Mantelier." Never implies purchase, booking, or revenue.
+  /// from Mantelier." Never implies purchase, booking, or revenue. Scoped
+  /// to Events only — an Event's own ticket/booking link, never a
+  /// Restaurant/Hotel's own website or booking_url. See
+  /// [venueBookingLinkOpened] for the Venue-scoped sibling.
   ticketLinkOpened,
+
+  /// The narrow venue-link-click-tracking path (see
+  /// docs/Architecture/EVENTS_V2_ANALYTICS_CONTRACT.md's "Venue link
+  /// clicks" section) — fired after a Restaurant/Hotel's own website or
+  /// `booking_url` link is opened from that venue's own Detail screen.
+  /// Deliberately a separate event from [ticketLinkOpened], which stays
+  /// scoped to Events only. Carries [AnalyticsProperties.entityType]/
+  /// [AnalyticsProperties.entityId] (the venue), [AnalyticsProperties.
+  /// linkDestination] (website vs. booking) and [AnalyticsProperties.
+  /// sourceScreen] — all three REQUIRED; see `SupabaseAnalyticsService`.
+  venueBookingLinkOpened,
 
   // ── Attendance ─────────────────────────────────────────────────────────
   eventAttendancePrompted,
@@ -96,6 +110,7 @@ enum AnalyticsEvent {
     AnalyticsEvent.eventGoingAdded => 'event_going_added',
     AnalyticsEvent.eventGoingRemoved => 'event_going_removed',
     AnalyticsEvent.ticketLinkOpened => 'ticket_link_opened',
+    AnalyticsEvent.venueBookingLinkOpened => 'venue_booking_link_opened',
     AnalyticsEvent.eventAttendancePrompted => 'event_attendance_prompted',
     AnalyticsEvent.eventAttendanceConfirmed => 'event_attendance_confirmed',
     AnalyticsEvent.eventAttendanceDenied => 'event_attendance_denied',

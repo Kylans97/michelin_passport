@@ -44,6 +44,13 @@ class Hotel {
   final String? michelinUrl;
   final String? websiteUrl;
 
+  // hotels_full exposes this via its own `h.*` — the underlying
+  // hotels.booking_url column already existed (production schema v1)
+  // but was never mapped into this model until now. Field only, no UI
+  // consumer yet — see venue_link_clicks' own "booking" destination
+  // value, reserved for the future booking action this field enables.
+  final String? bookingUrl;
+
   // Derived by hotels_full from a left join against hotel_restaurants,
   // grouped server-side — never a second query per hotel.
   final bool hasMichelinRestaurant;
@@ -73,6 +80,7 @@ class Hotel {
     this.googlePlaceId,
     this.michelinUrl,
     this.websiteUrl,
+    this.bookingUrl,
     required this.hasMichelinRestaurant,
     required this.restaurantCount,
     this.worlds50BestRank,
@@ -102,6 +110,7 @@ class Hotel {
     googlePlaceId: json['google_place_id'] as String?,
     michelinUrl: json['michelin_url'] as String?,
     websiteUrl: json['website_url'] as String?,
+    bookingUrl: json['booking_url'] as String?,
     hasMichelinRestaurant: (json['has_michelin_restaurant'] as bool?) ?? false,
     restaurantCount: (json['restaurant_count'] as num?)?.toInt() ?? 0,
     worlds50BestRank: (json['worlds_50_best_rank'] as num?)?.toInt(),

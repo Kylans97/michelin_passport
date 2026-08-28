@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/analytics_service.dart';
+import '../../core/analytics/supabase_analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -64,9 +65,15 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   );
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
   // Events V2 Step 6 — never wired into a constructor param (matching
-  // EventDetailScreen's own established seam); no vendor is selected yet,
-  // so this is always the production-safe no-op today.
-  final AnalyticsService _analytics = const NoopAnalyticsService();
+  // EventDetailScreen's own established seam). Restaurant/Hotel Detail
+  // are the only two screens using SupabaseAnalyticsService instead of
+  // the production-safe Noop default — see that class's own doc comment
+  // for why: the narrow venue-link-click-tracking path only, not the
+  // general analytics vendor decision (still unmade, still Noop
+  // everywhere else).
+  late final AnalyticsService _analytics = SupabaseAnalyticsService(
+    Supabase.instance.client,
+  );
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -343,10 +350,28 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     }
   }
 
-  Future<void> _openUrl(String url) async {
+  // [trackAs] null (the default, e.g. the Michelin link) means "never
+  // track this open" — only a caller that explicitly names a
+  // destination (the website link today; booking_url once its own
+  // action exists) fires venueBookingLinkOpened. Fired only after
+  // launchUrl itself returns true (Analytics Contract §15's exact
+  // boundary) — canLaunchUrl only confirms capability, not that an
+  // attempt was actually made.
+  Future<void> _openUrl(String url, {AnalyticsLinkDestination? trackAs}) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+      final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+      if (launched && trackAs != null) {
+        _analytics.track(
+          AnalyticsEvent.venueBookingLinkOpened,
+          AnalyticsProperties(
+            entityType: AnalyticsEntityType.restaurant,
+            entityId: widget.restaurant.id,
+            linkDestination: trackAs,
+            sourceScreen: AnalyticsVenueDetailScreen.restaurantDetail,
+          ),
+        );
+      }
     }
   }
 
@@ -492,7 +517,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   VenueUtilityActions(
                     onOpenMaps: _openMaps,
                     onOpenWebsite: hasWebsiteLink
-                        ? () => _openUrl(websiteUrl)
+                        ? () => _openUrl(
+                            websiteUrl,
+                            trackAs: AnalyticsLinkDestination.website,
+                          )
                         : null,
                     onCall: telUri == null ? null : () => _openCall(telUri),
                     onOpenMichelin: hasMichelinLink

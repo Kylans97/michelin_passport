@@ -109,6 +109,36 @@ enum AnalyticsEntityType {
   };
 }
 
+/// [AnalyticsEvent.venueBookingLinkOpened] only — which link a Restaurant/
+/// Hotel Detail screen's tap opened. Matches
+/// `venue_link_clicks.destination`'s own CHECK constraint exactly
+/// (20260829120000_add_venue_link_click_tracking.sql).
+enum AnalyticsLinkDestination {
+  website,
+  booking;
+
+  String get wireName => switch (this) {
+    AnalyticsLinkDestination.website => 'website',
+    AnalyticsLinkDestination.booking => 'booking',
+  };
+}
+
+/// [AnalyticsEvent.venueBookingLinkOpened] only — which Detail screen the
+/// click happened on. Matches `venue_link_clicks.source_screen`'s own
+/// CHECK constraint exactly. Explicit call-site data, not derived from
+/// [AnalyticsProperties.entityType]: today it happens to be 1:1 with the
+/// venue type, but the call site is what actually knows which screen it
+/// is, not this property bag.
+enum AnalyticsVenueDetailScreen {
+  restaurantDetail,
+  hotelDetail;
+
+  String get wireName => switch (this) {
+    AnalyticsVenueDetailScreen.restaurantDetail => 'restaurant_detail',
+    AnalyticsVenueDetailScreen.hotelDetail => 'hotel_detail',
+  };
+}
+
 /// A coarse price bucket — the exact `price_amount` (if that field is ever
 /// added to `events`) must never be sent; this is a deliberate coarsening,
 /// not a placeholder for the real value.
@@ -163,6 +193,9 @@ class AnalyticsProperties {
     this.attendanceSource,
     this.resultsCount,
     this.wouldRecommend,
+    this.linkDestination,
+    this.sourceScreen,
+    this.eventId,
   });
 
   /// The catalogue entity type this action concerns (Follow's target,
@@ -244,6 +277,21 @@ class AnalyticsProperties {
   /// false here would misrepresent it as a fresh Yes/No.
   final bool? wouldRecommend;
 
+  /// [AnalyticsEvent.venueBookingLinkOpened] only, REQUIRED. See
+  /// [AnalyticsLinkDestination]'s own doc comment.
+  final AnalyticsLinkDestination? linkDestination;
+
+  /// [AnalyticsEvent.venueBookingLinkOpened] only, REQUIRED. See
+  /// [AnalyticsVenueDetailScreen]'s own doc comment.
+  final AnalyticsVenueDetailScreen? sourceScreen;
+
+  /// [AnalyticsEvent.venueBookingLinkOpened] only, OPTIONAL — set only
+  /// when the click happened from an event context. Not yet populated by
+  /// any call site (the Restaurant/Hotel Detail screens this event is
+  /// wired into today have no event context); reserved for a future
+  /// venue link surfaced from Event Detail.
+  final String? eventId;
+
   /// Serializes to wire-safe key/value pairs — every enum becomes its
   /// [wireName], every null field is omitted entirely rather than sent as
   /// an explicit null. Used by [DebugPrintAnalyticsService] today, and is
@@ -273,6 +321,9 @@ class AnalyticsProperties {
     put('attendance_source', attendanceSource?.wireName);
     put('results_count', resultsCount);
     put('would_recommend', wouldRecommend);
+    put('link_destination', linkDestination?.wireName);
+    put('source_screen', sourceScreen?.wireName);
+    put('event_id', eventId);
     return map;
   }
 }

@@ -88,6 +88,16 @@ Follow's entity type is the `entityType` **property** (`restaurant`/`hotel`/`pri
 
 Means **only** "the user opened the external ticket/booking destination from Mantelier." Never implies purchase, booking, or revenue — see §17.
 
+### Venue link clicks
+
+| Event | When | Class |
+|---|---|---|
+| `venue_booking_link_opened` | A Restaurant/Hotel's own `website_url` or `booking_url` link is opened from that venue's Detail screen — after `launchUrl` returns `true`, same §15 boundary as `ticket_link_opened` | Client + server-persisted |
+
+**Not the same event as `ticket_link_opened`**, deliberately: that event is scoped to an Event's own ticket/booking destination; this one is scoped to a Restaurant/Hotel's own website/booking link, opened from that venue's own Detail screen, with no Event in the picture at all. Conflating the two would make it impossible to answer "how many people clicked through to this restaurant's booking page" without also counting Event ticket opens, or vice versa.
+
+**The narrow exception to §2/§18's "analytics is never persisted server-side" default**: `venue_booking_link_opened` is the one event in this taxonomy that IS written to a Supabase table (`public.venue_link_clicks`, `supabase/migrations/20260829120000_add_venue_link_click_tracking.sql`) via a dedicated `SupabaseAnalyticsService` (`lib/core/analytics/supabase_analytics_service.dart`), injected only on Restaurant/Hotel Detail — every other screen, and every other event, still goes through `NoopAnalyticsService`. This is a deliberate, narrow build (a host/venue click-through reporting need), not the general analytics vendor decision described in §3/§20, which remains unmade. `venue_link_clicks` itself has no select policy for `anon` or `authenticated` at all — it is not user-readable data, and the only path any of it can leave that table is `public.venue_link_click_stats`, an aggregating, k-anonymity-suppressed view (rows with fewer than `venue_link_click_min_unique_users()` distinct clickers are omitted entirely) not currently granted to any client role either — see that migration's own header for the full reasoning.
+
 ### Attendance
 
 | Event | When |
@@ -144,7 +154,10 @@ Carries `sourceContext=friendSignal` + `friendSignalType` (§6) — never a frie
 
 | Property | Type | Classification | Notes |
 |---|---|---|---|
-| `entityType` / `entityId` | `AnalyticsEntityType` / `String` | REQUIRED on Follow, Trip-item, Passport-item events | the entity the action concerns |
+| `entityType` / `entityId` | `AnalyticsEntityType` / `String` | REQUIRED on Follow, Trip-item, Passport-item events; also REQUIRED on `venue_booking_link_opened` (the venue) | the entity the action concerns |
+| `linkDestination` | `AnalyticsLinkDestination` | REQUIRED on `venue_booking_link_opened` | `website` or `booking` — which link was opened |
+| `sourceScreen` | `AnalyticsVenueDetailScreen` | REQUIRED on `venue_booking_link_opened` | `restaurant_detail` or `hotel_detail` — explicit call-site data, not derived from `entityType` |
+| `eventId` | `String` | OPTIONAL | `venue_booking_link_opened` only — set only if the click happened from an event context; unused by any call site today |
 | `sourceSurface` | `AnalyticsSourceSurface` | REQUIRED on discovery/open events | §9 |
 | `sourceContext` | `AnalyticsSourceContext` | OPTIONAL | only when more specific than the surface alone |
 | `hostType` / `hostId` | `AnalyticsEntityType` / `String` | OPTIONAL, single-host events **only** | never populate for a zero- or multi-host event — see §10 |
@@ -250,7 +263,7 @@ Fire `ticket_link_opened` **after `launchUrl` returns `true`** (the actual OS-le
 | `trip_event_added`/`trip_restaurant_added`/`trip_hotel_added`/`trip_item_confirmed`/`trip_item_rejected` | **Client**, same successful-write rule | |
 | Host/venue/destination aggregate metrics (§17) | **Derived** | never tracked directly — always a query-time aggregation over the raw event stream and/or transactional tables |
 
-No server-side analytics implementation exists or is built in this step (per explicit instruction) — this table documents the *intended long-term source* for Step 3+ and beyond, not current behavior.
+No server-side analytics implementation exists or is built in this step (per explicit instruction) — this table documents the *intended long-term source* for Step 3+ and beyond, not current behavior. **One exception, added later, narrow in scope**: `venue_booking_link_opened` (see its own "Venue link clicks" section above) genuinely is written to `public.venue_link_clicks` today, via `SupabaseAnalyticsService` on Restaurant/Hotel Detail only — not a change to this table's general statement about the rest of the taxonomy, which remains entirely unimplemented server-side.
 
 ## 19. Schema versioning
 

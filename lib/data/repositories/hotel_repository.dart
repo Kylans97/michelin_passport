@@ -27,7 +27,7 @@ import 'search_query.dart';
 const hotelFullColumns =
     'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
-    'website_url, has_michelin_restaurant, restaurant_count, '
+    'website_url, booking_url, has_michelin_restaurant, restaurant_count, '
     'worlds_50_best_rank, worlds_50_best_year';
 
 class HotelRepository {
