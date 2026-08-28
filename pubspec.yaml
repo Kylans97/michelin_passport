@@ -55,6 +55,17 @@ dependencies:
   # full evaluation.
   timezone: ^0.11.1
   geolocator: ^14.0.3
+  # Venue photo submission pipeline (client-side validation, EXIF strip,
+  # perceptual hash) — see lib/data/services/photo_submission_pipeline.dart.
+  # Pure Dart, no native/FFI dependency, actively maintained (4.9.2 at
+  # time of adding), already a transitive dependency of packages this
+  # ecosystem commonly uses for image work. Chosen over ready-made pHash
+  # packages (image_hashing 0.1.1) because that package's own docs mark
+  # PHash "under development... AHash currently validated" — not
+  # something to depend on for a duplicate-detection gate. The DCT pHash
+  # implemented on top of this package is a direct, testable
+  # implementation of the standard algorithm instead.
+  image: ^4.9.2
 
 dev_dependencies:
   flutter_test:
