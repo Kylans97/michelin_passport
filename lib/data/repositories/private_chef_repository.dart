@@ -16,13 +16,20 @@ import 'restaurant_repository.dart' show restaurantFullColumns;
 // this table doesn't have (there are none — every column here is public
 // presentation data, see PRIVATE_CHEFS.md §13/§45 on why evidence columns
 // were never added to any client-readable Private Chefs table).
+// starts_on/ends_on/parent_venue_type/parent_venue_id/opening_weekdays
+// (pop-ups and temporary venues) and is_expired both added by
+// 20260829150000_add_popup_expiry_to_views_and_search.sql — is_expired
+// only exists on public.private_chefs_full, not the bare private_chefs
+// table this column list originally matched, which is why every query
+// below now reads from that view instead (see each method's own note).
 const privateChefFullColumns =
     'id, slug, display_name, business_name, biography, '
     'personalization_note, home_city, home_country_code, service_area_text, '
     'travel_available, minimum_guests, maximum_guests, '
     'wine_pairing_available, wine_note, price_on_request, pricing_from, '
     'pricing_currency, pricing_unit, instagram_url, website_url, '
-    'profile_image_url, languages, publication_status';
+    'profile_image_url, languages, publication_status, starts_on, ends_on, '
+    'parent_venue_type, parent_venue_id, opening_weekdays, is_expired';
 
 /// Read-only — Private Chefs is an admin-managed catalogue, same as
 /// RestaurantRepository/HotelRepository/EventsRepository: no write methods
@@ -54,12 +61,23 @@ class PrivateChefRepository {
   /// this domain has no popularity/ranking concept to invent one from —
   /// see PRIVATE_CHEFS.md's explicit "do not invent popularity" rule.
   /// `display_name` ascending is the smallest honest, deterministic
-  /// fallback.
+  /// fallback — now the secondary key: pop-ups (20260829150000) sort
+  /// is_expired first, SQL-side, same reasoning as RestaurantRepository.
+  /// search()'s own comment (is_expired, not raw ends_on; chained
+  /// .order(), not a client-side re-sort that breaks under pagination).
+  ///
+  /// Reads from private_chefs_full, not the bare private_chefs table —
+  /// that's the only relation is_expired exists on (private_chefs
+  /// itself doesn't have it; see the view's own migration comment for
+  /// why). security_invoker on that view means the RLS-authoritative
+  /// `publication_status = 'published'` filter still comes from
+  /// private_chefs' own policy underneath, unchanged by this switch.
   Future<List<PrivateChef>> getPublishedChefs() async {
     final rows = await _client
-        .from('private_chefs')
+        .from('private_chefs_full')
         .select(privateChefFullColumns)
         .eq('publication_status', 'published')
+        .order('is_expired', ascending: true)
         .order('display_name');
     return [
       for (final row in rows as List)
@@ -72,7 +90,7 @@ class PrivateChefRepository {
   /// PRIVATE_CHEFS.md §8).
   Future<PrivateChef?> getPrivateChefById(String id) async {
     final rows = await _client
-        .from('private_chefs')
+        .from('private_chefs_full')
         .select(privateChefFullColumns)
         .eq('id', id)
         .eq('publication_status', 'published')
@@ -92,7 +110,7 @@ class PrivateChefRepository {
   /// exist yet.
   Future<PrivateChef?> getPrivateChefBySlug(String slug) async {
     final rows = await _client
-        .from('private_chefs')
+        .from('private_chefs_full')
         .select(privateChefFullColumns)
         .eq('slug', slug)
         .eq('publication_status', 'published')

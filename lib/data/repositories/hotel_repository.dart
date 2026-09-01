@@ -24,11 +24,15 @@ import 'search_query.dart';
 // genuinely exposes both columns now, so every caller of this constant
 // (Explore, Passport, Rankings, Detail, Wishlist) receives real values,
 // not the permanent nulls this list previously guaranteed.
+// starts_on/ends_on/parent_venue_type/parent_venue_id/opening_weekdays
+// (pop-ups and temporary venues) and is_expired both added by
+// 20260829150000_add_popup_expiry_to_views_and_search.sql.
 const hotelFullColumns =
     'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
     'website_url, booking_url, has_michelin_restaurant, restaurant_count, '
-    'worlds_50_best_rank, worlds_50_best_year';
+    'worlds_50_best_rank, worlds_50_best_year, starts_on, ends_on, '
+    'parent_venue_type, parent_venue_id, opening_weekdays, is_expired';
 
 class HotelRepository {
   HotelRepository(this._client);
@@ -106,14 +110,21 @@ class HotelRepository {
       builder = builder.eq('country_code', countryCode);
     }
 
+    // Pop-ups: SQL-side sort, is_expired as the primary key — see
+    // RestaurantRepository.search()'s own comment for the full reasoning
+    // (why is_expired and not raw ends_on, why chained .order() and not
+    // a client-side re-sort).
+    //
     // World's 50 Best results read as a ranking, not a catalogue browse:
-    // ordered by worlds_50_best_rank ascending (#1 first), mirroring
-    // RestaurantRepository.search() exactly, including the same
-    // `ascending: true` footgun this avoids (PostgrestTransformBuilder.order()
-    // defaults to descending).
+    // ordered by worlds_50_best_rank ascending (#1 first) as the
+    // secondary key, mirroring RestaurantRepository.search() exactly,
+    // including the same `ascending: true` footgun this avoids
+    // (PostgrestTransformBuilder.order() defaults to descending).
     final rows = worlds50BestOnly
-        ? await builder.order('worlds_50_best_rank', ascending: true)
-        : await builder.order('name');
+        ? await builder
+              .order('is_expired', ascending: true)
+              .order('worlds_50_best_rank', ascending: true)
+        : await builder.order('is_expired', ascending: true).order('name');
     return (rows as List)
         .map((row) => Hotel.fromJson(row as Map<String, dynamic>))
         .toList();

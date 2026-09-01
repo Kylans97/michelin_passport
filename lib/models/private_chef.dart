@@ -52,6 +52,19 @@ class PrivateChef {
 
   final String publicationStatus; // 'draft' | 'published' | 'archived'
 
+  // Pop-ups and temporary venues (20260829140000) — see the identical
+  // fields on Restaurant for the full field semantics. Sourced from
+  // public.private_chefs_full (20260829150000), not the bare
+  // private_chefs table this model otherwise maps — see
+  // privateChefFullColumns and PrivateChefRepository's own comments for
+  // why every read now goes through that view.
+  final DateTime? startsOn;
+  final DateTime? endsOn;
+  final String? parentVenueType;
+  final String? parentVenueId;
+  final List<int>? openingWeekdays;
+  final bool isExpired;
+
   const PrivateChef({
     required this.id,
     required this.slug,
@@ -76,10 +89,20 @@ class PrivateChef {
     this.profileImageUrl,
     this.languages = const [],
     this.publicationStatus = 'draft',
+    this.startsOn,
+    this.endsOn,
+    this.parentVenueType,
+    this.parentVenueId,
+    this.openingWeekdays,
+    this.isExpired = false,
   });
 
   /// True when curation has stated at least one of minimum/maximum guests.
   bool get hasGuestRange => minimumGuests != null || maximumGuests != null;
+
+  /// True when this chef has a scheduled end date at all — a pop-up
+  /// residency, whether or not it has already expired.
+  bool get isTemporary => endsOn != null;
 
   /// True when a valid, showable from-price exists — `pricingFrom` alone
   /// is not sufficient: `price_on_request` always wins when true,
@@ -112,5 +135,17 @@ class PrivateChef {
         (json['languages'] as List?)?.map((e) => e.toString()).toList() ??
         const [],
     publicationStatus: (json['publication_status'] as String?) ?? 'draft',
+    startsOn: json['starts_on'] == null
+        ? null
+        : DateTime.parse(json['starts_on'] as String),
+    endsOn: json['ends_on'] == null
+        ? null
+        : DateTime.parse(json['ends_on'] as String),
+    parentVenueType: json['parent_venue_type'] as String?,
+    parentVenueId: json['parent_venue_id'] as String?,
+    openingWeekdays: (json['opening_weekdays'] as List?)
+        ?.map((d) => (d as num).toInt())
+        .toList(),
+    isExpired: (json['is_expired'] as bool?) ?? false,
   );
 }

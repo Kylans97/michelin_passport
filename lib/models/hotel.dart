@@ -66,6 +66,18 @@ class Hotel {
   final int? worlds50BestRank;
   final int? worlds50BestYear;
 
+  // Pop-ups and temporary venues (20260829140000) — see the identical
+  // fields on Restaurant for the full field semantics.
+  final DateTime? startsOn;
+  final DateTime? endsOn;
+  final String? parentVenueType;
+  final String? parentVenueId;
+  final List<int>? openingWeekdays;
+
+  // Sourced directly from hotels_full.is_expired (20260829150000), never
+  // recomputed client-side.
+  final bool isExpired;
+
   const Hotel({
     required this.id,
     required this.hotelCode,
@@ -85,6 +97,12 @@ class Hotel {
     required this.restaurantCount,
     this.worlds50BestRank,
     this.worlds50BestYear,
+    this.startsOn,
+    this.endsOn,
+    this.parentVenueType,
+    this.parentVenueId,
+    this.openingWeekdays,
+    this.isExpired = false,
   });
 
   /// True when the hotel currently holds a confirmed MICHELIN Key value.
@@ -95,6 +113,10 @@ class Hotel {
 
   /// True when the hotel has a current World's 50 Best Hotels rank.
   bool get isWorlds50Best => worlds50BestRank != null;
+
+  /// True when this hotel has a scheduled end date at all — a pop-up or
+  /// other temporary venue, whether or not it has already expired.
+  bool get isTemporary => endsOn != null;
 
   factory Hotel.fromJson(Map<String, dynamic> json) => Hotel(
     id: json['id'].toString(),
@@ -115,5 +137,17 @@ class Hotel {
     restaurantCount: (json['restaurant_count'] as num?)?.toInt() ?? 0,
     worlds50BestRank: (json['worlds_50_best_rank'] as num?)?.toInt(),
     worlds50BestYear: (json['worlds_50_best_year'] as num?)?.toInt(),
+    startsOn: json['starts_on'] == null
+        ? null
+        : DateTime.parse(json['starts_on'] as String),
+    endsOn: json['ends_on'] == null
+        ? null
+        : DateTime.parse(json['ends_on'] as String),
+    parentVenueType: json['parent_venue_type'] as String?,
+    parentVenueId: json['parent_venue_id'] as String?,
+    openingWeekdays: (json['opening_weekdays'] as List?)
+        ?.map((d) => (d as num).toInt())
+        .toList(),
+    isExpired: (json['is_expired'] as bool?) ?? false,
   );
 }

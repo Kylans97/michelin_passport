@@ -65,6 +65,23 @@ class Restaurant {
 
   final int? worlds50BestRank;
 
+  // Pop-ups and temporary venues (20260829140000). Both null means an
+  // ordinary permanent restaurant — every row before this feature, and
+  // most rows after it. See that migration's own header comment for the
+  // full field semantics (parent venue is generic across restaurant/
+  // hotel/private chef, opening_weekdays is a set of ISO weekday
+  // numbers 1=Monday..7=Sunday).
+  final DateTime? startsOn;
+  final DateTime? endsOn;
+  final String? parentVenueType;
+  final String? parentVenueId;
+  final List<int>? openingWeekdays;
+
+  // Sourced directly from restaurants_full.is_expired (20260829150000),
+  // never recomputed client-side from endsOn — the view's own
+  // current_date is the authoritative "today," not the device clock.
+  final bool isExpired;
+
   // No latitude/longitude here. `location` is PostGIS
   // geography(Point,4326); over PostgREST it comes back as an EWKB hex
   // string, not GeoJSON or a {lat, lng} pair, and decoding that client-side
@@ -100,6 +117,12 @@ class Restaurant {
     this.hotelId,
     this.hotelName,
     this.worlds50BestRank,
+    this.startsOn,
+    this.endsOn,
+    this.parentVenueType,
+    this.parentVenueId,
+    this.openingWeekdays,
+    this.isExpired = false,
   });
 
   /// True when the restaurant currently holds at least one Michelin star.
@@ -107,6 +130,11 @@ class Restaurant {
 
   /// True when the restaurant has a current World's 50 Best rank.
   bool get isWorlds50Best => worlds50BestRank != null;
+
+  /// True when this restaurant has a scheduled end date at all — a
+  /// pop-up or other temporary venue, whether or not it has already
+  /// expired. Never true for an ordinary permanent restaurant.
+  bool get isTemporary => endsOn != null;
 
   factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
     id: json['id'].toString(),
@@ -131,5 +159,17 @@ class Restaurant {
     hotelId: json['hotel_id'] as String?,
     hotelName: json['hotel_name'] as String?,
     worlds50BestRank: (json['worlds_50_best_rank'] as num?)?.toInt(),
+    startsOn: json['starts_on'] == null
+        ? null
+        : DateTime.parse(json['starts_on'] as String),
+    endsOn: json['ends_on'] == null
+        ? null
+        : DateTime.parse(json['ends_on'] as String),
+    parentVenueType: json['parent_venue_type'] as String?,
+    parentVenueId: json['parent_venue_id'] as String?,
+    openingWeekdays: (json['opening_weekdays'] as List?)
+        ?.map((d) => (d as num).toInt())
+        .toList(),
+    isExpired: (json['is_expired'] as bool?) ?? false,
   );
 }

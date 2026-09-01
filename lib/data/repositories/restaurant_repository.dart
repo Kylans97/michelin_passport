@@ -36,12 +36,19 @@ import 'search_query.dart';
 // constant against an environment where
 // supabase/migrations/20260819120000_add_restaurant_phone.sql has not
 // been applied.
+// starts_on/ends_on/parent_venue_type/parent_venue_id/opening_weekdays
+// (pop-ups and temporary venues) and is_expired both added by
+// 20260829150000_add_popup_expiry_to_views_and_search.sql — same
+// deployment-ordering hazard as is_hall_of_fame/phone above, accepted
+// for the same reason (every caller needs Restaurant.isExpired/
+// isTemporary to work correctly, no safe subset to split them into).
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_name, region, country_code, country_name, flag_emoji, address, '
     'google_place_id, michelin_url, website_url, booking_url, phone, '
     'property_name, is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank, '
-    'is_hall_of_fame';
+    'is_hall_of_fame, starts_on, ends_on, parent_venue_type, '
+    'parent_venue_id, opening_weekdays, is_expired';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);
@@ -132,18 +139,32 @@ class RestaurantRepository {
       builder = builder.eq('country_code', countryCode);
     }
 
-    // World's 50 Best results read as a ranking, not a catalogue browse:
-    // ordered by worlds_50_best_rank ascending (#1, #2, #3, ...) rather
-    // than alphabetically, regardless of any country filter also applied
-    // above. Every other filter (including "all" and Hall of Fame) keeps
-    // the usual alphabetical-by-name order.
+    // Pop-ups: a SQL-side sort key, not a client-side re-sort — the
+    // latter only ever sorts within one already-fetched page and
+    // silently breaks the moment pagination exists. `.order()` chains
+    // (PostgrestTransformBuilder appends each call to the same ORDER BY
+    // clause), so is_expired is always the primary key and the existing
+    // name/worlds_50_best_rank order becomes the secondary key within
+    // each is_expired group, completely unchanged otherwise.
     //
-    // `ascending` must be passed explicitly — PostgrestTransformBuilder.order()
-    // defaults to `ascending: false` (descending), not true, so an
-    // unqualified .order('worlds_50_best_rank') silently rendered #50 first.
+    // is_expired, not ends_on: sorting by the raw date (even NULLS
+    // FIRST) is wrong the moment both an expired and a still-running
+    // pop-up are in the same result set — a pop-up that closed a year
+    // ago has an EARLIER date than one still running for months, so
+    // ascending-by-date would rank the long-expired one above the
+    // active one. The boolean is correct regardless of how far in the
+    // past or future any individual ends_on falls.
+    //
+    // `ascending` must be passed explicitly on every key here —
+    // PostgrestTransformBuilder.order() defaults to `ascending: false`
+    // (descending), not true, so an unqualified .order('worlds_50_best_
+    // rank') silently rendered #50 first, and an unqualified
+    // .order('is_expired') would put expired results FIRST.
     final rows = worlds50BestOnly
-        ? await builder.order('worlds_50_best_rank', ascending: true)
-        : await builder.order('name');
+        ? await builder
+              .order('is_expired', ascending: true)
+              .order('worlds_50_best_rank', ascending: true)
+        : await builder.order('is_expired', ascending: true).order('name');
     return (rows as List)
         .map((row) => Restaurant.fromJson(row as Map<String, dynamic>))
         .toList();
