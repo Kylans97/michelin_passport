@@ -96,7 +96,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
         content: Text(
           message,
           style: GoogleFonts.inter(
-            color: isError ? AppColors.textPrimary : Colors.black,
+            color: AppColors.textPrimary,
           ),
         ),
         backgroundColor: isError ? AppColors.error : AppColors.gold,

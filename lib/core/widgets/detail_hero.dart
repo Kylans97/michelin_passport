@@ -110,7 +110,7 @@ class DetailHero extends StatelessWidget {
                       : const [
                           AppColors.brandGreenLight,
                           AppColors.brandGreen,
-                          Color(0xFF0E211C),
+                          AppColors.heroGradientEnd,
                         ],
                   stops: const [0.0, 0.6, 1.0],
                 ),

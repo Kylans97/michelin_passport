@@ -8,20 +8,31 @@ import 'package:flutter/material.dart';
 /// these names — never a raw hex — so this file alone defines the app's
 /// entire visual identity; changing a value here reskins every screen that
 /// uses it. [background]/[surface]/[surfaceElevated] are deliberately
-/// LIGHT (the ivory content backdrop); [brandGreen] is the separate deep
+/// LIGHT (the ivory content backdrop); [deepGreen] is the separate deep
 /// chrome/hero color used for overlay navigation and hero treatments — see
 /// DetailHero. Text tokens are paired with those surfaces accordingly:
 /// [textPrimary]/[textSecondary] read as ink-on-ivory, [textOnDark] reads
-/// as warm white on [brandGreen].
+/// as warm white on [deepGreen].
 class AppColors {
   AppColors._();
 
   // ── Brand ────────────────────────────────────────────────────────────
-  // Deep, sophisticated bottle green — the one true "brand" color. Used
-  // for hero backdrops, overlay chrome, and other deliberate brand
-  // moments; never as a general-purpose background.
-  static const Color brandGreen = Color(0xFF16302A);
+  // DEPRECATED — same value as [deepGreen] (47 call sites against this
+  // name vs. 90 against deepGreen, which the Step 1 foundation pass
+  // adopted as the primary "brief" vocabulary term and which real usage
+  // has since moved past this one). Kept only for existing call sites,
+  // not replaced here — that's a separate, later pass. Use [deepGreen]
+  // for anything new.
+  static const Color brandGreen = deepGreen;
   static const Color brandGreenLight = Color(0xFF25453C);
+  // The darkest stop in the three-color hero gradient (brandGreenLight ->
+  // deepGreen -> this) used identically by DetailHero, VenueDetailHero
+  // and PrivateChefHero to fade a hero image into legibility for
+  // overlaid text. Previously a bare Color(0xFF0E211C) literal repeated
+  // three times — not a color used anywhere else, hence its own,
+  // role-specific name rather than reusing [darkGreen] (a close but
+  // distinct value, 0xFF0E241F).
+  static const Color heroGradientEnd = Color(0xFF0E211C);
 
   // ── Surfaces (warm ivory/cream, not stark white) ────────────────────
   // Page backdrop — the lightest, warmest tone.
@@ -64,6 +75,10 @@ class AppColors {
   // dark chrome) — never used over the ivory surfaces.
   static const Color textOnDark = Color(0xFFF5EFE1);
 
+  // DEPRECATED — same value as [cardBorder] (12 call sites against this
+  // name vs. 35 against cardBorder). Kept only for existing call sites,
+  // not replaced here — that's a separate, later pass. Use [cardBorder]
+  // for anything new.
   static const Color divider = cardBorder;
   // A refined brick/terracotta red — editorial rather than an alarm red.
   static const Color error = Color(0xFFA23E32);
@@ -82,34 +97,24 @@ class AppColors {
   // warm ivory, ~5-10% accent, treated as an overall direction rather than
   // a per-screen ratio) — hence a slightly richer green ramp (deepGreen/
   // darkGreen/forestGreen) and a warmer, slightly more saturated neutral
-  // ramp (ivory/warmWhite/warmStone/softStone/taupe) than the original
+  // ramp (ivory/warmWhite/secondaryOnDark/subtleBorderLight/taupe) than
+  // the original
   // background/surface/cardBorder trio above, which stayed intentionally
   // quiet as a light-canvas system.
 
-  // deepGreen is [brandGreen] itself — both are 0xFF16302A. Kept as a
-  // separate name (not a rename of brandGreen, which 30+ call sites read
-  // today) so new/migrated code can adopt the brief's vocabulary without
-  // any churn to what already exists.
-  static const Color deepGreen = brandGreen;
+  // Deep, sophisticated bottle green — the one true "brand" color. Used
+  // for hero backdrops, overlay chrome, and other deliberate brand
+  // moments; never as a general-purpose background. The canonical name
+  // for this value — see [brandGreen] above for the deprecated alias
+  // this used to be defined in terms of (reversed by this cleanup: 90
+  // real call sites already read this color through this name, not
+  // that one).
+  static const Color deepGreen = Color(0xFF16302A);
   static const Color darkGreen = Color(0xFF0E241F);
   static const Color forestGreen = Color(0xFF23473D);
 
-  // The two official Mantelier brand colors, exactly as specified in the
-  // Mantelier asset kit (README.txt: "Colours (only two, no third
-  // accent)"). Deliberately NOT the same token as [ivory]/[deepGreen]
-  // below, which are close but not pixel-identical (ivory is 0xFFF4F0E7
-  // vs. this kit's 0xFFF7F1DE; deepGreen/brandGreen is 0xFF16302A vs.
-  // this kit's 0xFF0C1F18) — this pair exists so brand-asset consumers
-  // (the monogram/wordmark SVGs, the app icon) can reference the exact
-  // authoritative value the kit was designed against, without silently
-  // repainting the existing UI's own established green/ivory ramp.
-  static const Color brandIvory = Color(0xFFF7F1DE);
-  static const Color brandDeepGreen = Color(0xFF0C1F18);
-
   static const Color ivory = Color(0xFFF4F0E7);
   static const Color warmWhite = Color(0xFFFAF7F0);
-  static const Color warmStone = Color(0xFFB8B0A3);
-  static const Color softStone = Color(0xFFDED8CE);
   // Accessibility-adjusted from the brief's proposed #756D62: that value is
   // 4.48:1 on `ivory`, just under the 4.5:1 WCAG AA threshold for normal
   // text. #726A60 (a barely-perceptible touch darker, same hue) clears it
@@ -134,16 +139,19 @@ class AppColors {
   // ivory, approximately #F5EFE1" — reused as-is, not duplicated under a
   // new name. 12.29:1 on [deepGreen], comfortably AA.
   //
-  // secondaryOnDark: the brief suggests warmStone "or an appropriate
-  // accessible derivative" — warmStone is 6.56:1 on deepGreen, already
-  // comfortably AA, so no derivative was needed.
-  static const Color secondaryOnDark = warmStone;
+  // 161 real call sites read this color through secondaryOnDark; no
+  // other name for it exists — a prior warmStone alias was removed
+  // entirely rather than deprecated, since it had zero call sites of
+  // its own to preserve. 6.56:1 on [deepGreen], comfortably AA.
+  static const Color secondaryOnDark = Color(0xFFB8B0A3);
 
-  // subtleBorderLight is identical to softStone (0xFFDED8CE) — the brief
-  // specifies the same value for both; kept as its own name since "a
-  // border" and "a neutral surface tone" are different semantic roles even
-  // when the color happens to coincide today.
-  static const Color subtleBorderLight = softStone;
+  // 32 real call sites read this color through subtleBorderLight; no
+  // other name for it exists — a prior softStone alias was removed
+  // entirely rather than deprecated, for the same reason as warmStone
+  // above. "a border" and "a neutral surface tone" are different
+  // semantic roles even when the color happens to coincide today; kept
+  // as its own name for that reason, same as before this cleanup.
+  static const Color subtleBorderLight = Color(0xFFDED8CE);
   // A translucent ivory hairline for borders drawn over a green surface —
   // same "faint line, not a boxed edge" treatment [HeroBadge] already uses
   // via `textOnDark.withValues(alpha: 0.25)`, just centralized as a token.

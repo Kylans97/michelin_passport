@@ -155,17 +155,17 @@ class EventDetailHero extends StatelessWidget {
             // overlay text at all (EventType.other), since a real photo
             // still benefits from the same bottom-weighted legibility
             // treatment once Event photography exists.
-            const DecoratedBox(
+            DecoratedBox(
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
                     Colors.transparent,
-                    Color(0x6616302A),
-                    Color(0xCC16302A),
+                    AppColors.brandGreen.withValues(alpha: 0.4),
+                    AppColors.brandGreen.withValues(alpha: 0.8),
                   ],
-                  stops: [0.0, 0.7, 1.0],
+                  stops: const [0.0, 0.7, 1.0],
                 ),
               ),
             ),

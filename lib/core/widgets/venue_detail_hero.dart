@@ -132,7 +132,7 @@ class VenueDetailHero extends StatelessWidget {
                     colors: [
                       AppColors.brandGreenLight,
                       AppColors.deepGreen,
-                      Color(0xFF0E211C),
+                      AppColors.heroGradientEnd,
                     ],
                   ),
                 ),

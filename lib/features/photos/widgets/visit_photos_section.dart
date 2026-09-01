@@ -81,7 +81,7 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
         content: Text(
           message,
           style: GoogleFonts.inter(
-            color: isError ? AppColors.textPrimary : Colors.black,
+            color: AppColors.textPrimary,
           ),
         ),
         backgroundColor: isError ? AppColors.error : AppColors.gold,
