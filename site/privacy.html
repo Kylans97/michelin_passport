@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy — Mantelier</title>
+<meta name="description" content="How Mantelier handles your data.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#16302A">
+
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" href="/favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ivory: #F4F0E7;
+    --green: #16302A;
+    --line: rgba(244, 240, 231, 0.22);
+    --muted: rgba(244, 240, 231, 0.62);
+
+    --display: "Cormorant Garamond", Georgia, serif;
+    --body: "IBM Plex Sans", system-ui, sans-serif;
+    --util: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--green);
+    color: var(--ivory);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 660px; margin: 0 auto; padding: 9vh 28px 96px; }
+
+  .back {
+    font-family: var(--util);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 44px;
+  }
+
+  .back:hover { color: var(--ivory); }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: clamp(38px, 8vw, 54px);
+    line-height: 1.08;
+    letter-spacing: 0.01em;
+    margin: 0 0 10px;
+  }
+
+  .updated {
+    font-family: var(--util);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+
+  .lede { color: var(--muted); margin: 0 0 8px; }
+
+  h2 {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 27px;
+    line-height: 1.25;
+    margin: 52px 0 14px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+  }
+
+  h3 {
+    font-family: var(--util);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 400;
+    margin: 30px 0 8px;
+  }
+
+  p { margin: 0 0 14px; }
+
+  ul { margin: 0 0 14px; padding-left: 20px; }
+  li { margin-bottom: 8px; }
+
+  a { color: var(--ivory); text-decoration-color: var(--line); text-underline-offset: 3px; }
+
+  .note {
+    border-left: 2px solid var(--line);
+    padding: 2px 0 2px 18px;
+    color: var(--muted);
+    margin: 0 0 14px;
+  }
+
+  footer {
+    margin-top: 68px;
+    padding-top: 26px;
+    border-top: 1px solid var(--line);
+    font-family: var(--util);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+</style>
+</head>
+
+<body>
+<main class="wrap">
+
+  <a class="back" href="/">← Mantelier</a>
+
+  <p class="updated">Last updated: 1 September 2026</p>
+  <h1>Privacy</h1>
+  <p class="lede">What Mantelier collects, why, and what you can ask us to do about it. Written to be read, not to be survived.</p>
+
+  <h2>Who is responsible</h2>
+  <p>Mantelier is run by Kylan Scheepstra, based in the Netherlands. For anything in this policy — including access, correction or deletion requests — write to <a href="mailto:hello@mantelier.app">hello@mantelier.app</a> and you'll get a reply from a person.</p>
+  <p>Under the GDPR, we are the data controller for the personal data described below.</p>
+
+  <h2>What we collect</h2>
+
+  <h3>When you join the waiting list</h3>
+  <p>Your email address, and the date you submitted it. Nothing else — no name, no tracking pixel, no profiling. We use it once: to tell you when the app opens.</p>
+
+  <h3>When you create an account</h3>
+  <p>Your email address, a password (stored hashed — we never see it), a display name, and optionally a profile photo. Sign-in is handled by Supabase Auth.</p>
+
+  <h3>What you create in the app</h3>
+  <ul>
+    <li>Restaurants and hotels you save, visit or rate</li>
+    <li>Photos you upload, including any caption</li>
+    <li>Trips you plan and events you mark yourself as attending</li>
+    <li>Friend requests, accepted friendships, and blocks</li>
+    <li>Corrections you report about a venue's details</li>
+  </ul>
+  <p>Most of this is private by default. Some of it can be shared with people you have accepted as friends. You choose which, and you can change it at any time.</p>
+
+  <h3>If you claim a venue</h3>
+  <p>If you are a chef, restaurateur or hotelier and claim a listing, we record who you are, which venue you claimed, and anything you submit for it — events, descriptions, photos. Submissions are reviewed by hand before they appear.</p>
+
+  <h3>How you use the app</h3>
+  <p>When you tap through from a venue to its own website or booking page, we record that a tap happened: which venue, which destination, which screen, and when. This tells us which listings are useful. We do not follow you to the other site and we do not know whether you booked anything.</p>
+
+  <h3>Location</h3>
+  <p>If you allow it, the app uses your device's location to show what is near you. Permission is asked at the moment it is needed, and you can refuse or withdraw it in your device settings without losing access to the rest of the app.</p>
+
+  <h3>Technical data</h3>
+  <p>Our hosting providers process standard technical data — IP address, device type, timestamps — as part of delivering the service and keeping it secure.</p>
+
+  <h2>Why we are allowed to hold it</h2>
+  <p>Account data and the content you create: because we need it to provide the service you asked for (contract). Waiting-list emails: because you gave them to us for that purpose (consent — withdraw any time by replying to any message). Usage data and security logs: because we have a legitimate interest in knowing whether the product works and in protecting it from abuse. Location: consent, which you give and withdraw in your device settings.</p>
+
+  <h2>Who else sees it</h2>
+
+  <h3>Our processors</h3>
+  <ul>
+    <li><strong>Supabase</strong> — database, authentication and file storage</li>
+    <li><strong>Cloudflare</strong> — hosting and delivery of this website</li>
+    <li><strong>Apple</strong> — App Store and TestFlight distribution</li>
+    <li><strong>Google Fonts</strong> — typefaces on this website</li>
+  </ul>
+  <p>These providers act on our instructions and may not use your data for their own purposes. Some of them operate outside the European Economic Area; where that happens, transfers rely on the European Commission's standard contractual clauses.</p>
+
+  <h3>Other people in the app</h3>
+  <p>People you accept as friends can see what you have chosen to share with them. Removing a friend or blocking someone takes effect immediately, on their next request — there is no cached access.</p>
+
+  <h3>Restaurants, hotels and partners</h3>
+  <p>We intend to share aggregated statistics with venues and partners — for example, how many people looked at a listing or tapped through to a booking page in a given month.</p>
+  <p class="note">This is built so that individual people cannot be identified. Aggregates are suppressed entirely below five unique users, individual identifiers and precise timestamps are never included, and the underlying records are not readable by anyone outside Mantelier. We do not sell personal data, and we do not share data that can be traced back to you.</p>
+
+  <h3>When the law requires it</h3>
+  <p>If we receive a valid legal order, we comply. If we are permitted to tell you, we will.</p>
+
+  <h2>How long we keep it</h2>
+  <p>Account data and the content you create: for as long as your account exists. Waiting-list emails: until the app launches or you ask us to remove you, whichever comes first. Usage records: kept in aggregate; the underlying rows are retained no longer than we need them for that purpose.</p>
+
+  <h2>Deleting your account</h2>
+  <p>You can delete your account from within the app. This removes your profile, your saved places, your visits, your photos and your friendships. Aggregated counts that no longer identify you may remain, because there is nothing left in them to remove.</p>
+  <p>If you would rather we did it for you, write to <a href="mailto:hello@mantelier.app">hello@mantelier.app</a>.</p>
+
+  <h2>Your rights</h2>
+  <p>Under the GDPR you can ask us for a copy of your data, ask us to correct it, ask us to delete it, ask us to restrict or stop a particular use, and ask for it in a portable format. You can also object to processing we base on legitimate interest.</p>
+  <p>Write to <a href="mailto:hello@mantelier.app">hello@mantelier.app</a> and we will respond within one month. If you are unhappy with how we handle it, you can complain to the Dutch Data Protection Authority, the <a href="https://autoriteitpersoonsgegevens.nl">Autoriteit Persoonsgegevens</a>.</p>
+
+  <h2>Children</h2>
+  <p>Mantelier is not intended for children under 16. We do not knowingly collect their data. If you believe a child has created an account, write to us and we will remove it.</p>
+
+  <h2>Changes</h2>
+  <p>If we change how we use your data in a way that matters, we will update this page and change the date at the top. If the change is significant, we will tell you in the app or by email rather than expecting you to notice.</p>
+
+  <footer>
+    <a href="mailto:hello@mantelier.app">hello@mantelier.app</a>
+  </footer>
+
+</main>
+</body>
+</html>
