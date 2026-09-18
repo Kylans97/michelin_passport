@@ -53,7 +53,7 @@ void main() {
         _wrap(const AuthBrandHeader(tagline: 'Tagline', compact: true)),
       );
       final picture = tester.widget<SvgPicture>(find.byType(SvgPicture));
-      expect(picture.width, 48);
+      expect(picture.width, 60);
       expect(tester.takeException(), isNull);
     });
 

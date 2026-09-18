@@ -47,7 +47,11 @@ class _SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            SvgPicture.asset(csMonogramAssetPath, width: 56, height: 56),
+            // Same whitespace-in-the-asset correction as AuthBrandHeader
+            // (auth_presentation.dart) — matched to its non-compact 80px
+            // so the mark reads consistently across the splash-to-login
+            // transition, not smaller on the splash that precedes it.
+            SvgPicture.asset(csMonogramAssetPath, width: 80, height: 80),
             const SizedBox(height: 24),
             const SizedBox(
               width: 20,

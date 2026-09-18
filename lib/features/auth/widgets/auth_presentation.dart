@@ -27,7 +27,12 @@ class AuthBrandHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final monogramSize = compact ? 48.0 : 64.0;
+    // mark-ivory-ink.svg carries generous whitespace around the ink
+    // itself (unlike the old filled-square asset these sizes were tuned
+    // for), so the same pixel box now reads noticeably smaller — bumped
+    // so the login screen's mark reads at ~80 logical px again, compact
+    // scaled by the same 0.75 ratio the two sizes always had (48/64).
+    final monogramSize = compact ? 60.0 : 80.0;
     return Column(
       children: [
         SvgPicture.asset(

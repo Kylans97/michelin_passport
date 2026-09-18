@@ -85,9 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 const AuthBrandHeader(
-                  tagline:
-                      "Discover the world's most remarkable culinary "
-                      'experiences.',
+                  tagline: 'Some evenings only happen once',
                 ),
                 const SizedBox(height: CsSpacing.section),
 
