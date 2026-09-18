@@ -162,28 +162,6 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
                 ),
               ),
             ),
-            // A generic "Report photo" — private_chef_photos has no
-            // submitted_by/user_id (admin-curated, not tied to any end
-            // user), so this reports the photo itself, not a person.
-            // Above the vignette (like the identity text below) so it's
-            // never visually or interactively obscured by it. Bottom-right,
-            // opposite the page indicator (bottom-left, in the text block
-            // below), so the two never collide.
-            if (hasGallery)
-              Positioned(
-                right: CsSpacing.pageHorizontal,
-                bottom: CsSpacing.lg,
-                child: SafeArea(
-                  top: false,
-                  child: _ReportPhotoButton(
-                    onTap: () => showReportSheet(
-                      context,
-                      contentType: ReportContentType.photo,
-                      contentId: photos[_pageIndex].id,
-                    ),
-                  ),
-                ),
-              ),
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
@@ -248,6 +226,35 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
                 ),
               ),
             ),
+            // A generic "Report photo" — private_chef_photos has no
+            // submitted_by/user_id (admin-curated, not tied to any end
+            // user), so this reports the photo itself, not a person.
+            // Must be the LAST Stack child, not just painted last visually:
+            // the identity-text SafeArea above is a non-Positioned child of
+            // this StackFit.expand Stack, so it fills the entire hero
+            // (Scrollable-driven, even though scrolling is disabled) and,
+            // being earlier in this list, would otherwise sit on TOP of an
+            // earlier-declared Positioned button in hit-test order and
+            // silently absorb every tap across the whole hero — confirmed
+            // via a failing widget test before this was moved down here
+            // (the button was visible but untappable). Bottom-right,
+            // opposite the page indicator (bottom-left, in the text block
+            // above), so the two never collide.
+            if (hasGallery)
+              Positioned(
+                right: CsSpacing.pageHorizontal,
+                bottom: CsSpacing.lg,
+                child: SafeArea(
+                  top: false,
+                  child: _ReportPhotoButton(
+                    onTap: () => showReportSheet(
+                      context,
+                      contentType: ReportContentType.photo,
+                      contentId: photos[_pageIndex].id,
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
       ),

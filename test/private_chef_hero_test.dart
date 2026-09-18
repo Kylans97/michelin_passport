@@ -346,6 +346,17 @@ void main() {
       }
     });
 
+    testWidgets('tapping the Report flag actually opens the report sheet '
+        '(not just: the button exists)', (tester) async {
+      await tester.pumpWidget(
+        _wrap(PrivateChefHero(displayName: 'Lucas', photos: _photos(2))),
+      );
+      expect(find.byIcon(Icons.flag_outlined), findsOneWidget);
+      await tester.tap(find.byIcon(Icons.flag_outlined));
+      await tester.pumpAndSettle();
+      expect(find.text('Report'), findsOneWidget);
+    });
+
     testWidgets('320px / 1.6x text scale — no overflow with 5 photos', (
       tester,
     ) async {
