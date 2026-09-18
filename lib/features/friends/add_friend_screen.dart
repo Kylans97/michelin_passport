@@ -10,6 +10,7 @@ import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../models/profile_identity.dart';
 import '../community/widgets/community_shared.dart';
+import 'friend_profile_screen.dart';
 import 'widgets/identity_row.dart';
 
 /// "Find friends" — username search → send request. Server-side
@@ -220,19 +221,29 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
                           const SizedBox(height: CsSpacing.sm),
                       itemBuilder: (context, i) {
                         final result = _results[i];
-                        return CommunityIvoryCard(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: CsSpacing.md,
-                            vertical: CsSpacing.xs,
+                        return InkWell(
+                          borderRadius: BorderRadius.circular(12),
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) =>
+                                  FriendProfileScreen(userId: result.id),
+                            ),
                           ),
-                          child: IdentityRow(
-                            label: result.label,
-                            username: result.username,
-                            avatarUrl: result.avatarUrl,
-                            trailing: _ActionForStatus(
-                              status: result.relationshipStatus,
-                              justSent: _sentTo.contains(result.id),
-                              onAdd: () => _send(result),
+                          child: CommunityIvoryCard(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: CsSpacing.md,
+                              vertical: CsSpacing.xs,
+                            ),
+                            child: IdentityRow(
+                              label: result.label,
+                              username: result.username,
+                              avatarUrl: result.avatarUrl,
+                              trailing: _ActionForStatus(
+                                status: result.relationshipStatus,
+                                justSent: _sentTo.contains(result.id),
+                                onAdd: () => _send(result),
+                              ),
                             ),
                           ),
                         );

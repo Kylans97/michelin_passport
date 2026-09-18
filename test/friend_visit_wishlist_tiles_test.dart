@@ -167,10 +167,16 @@ void main() {
           ),
         ),
       );
-      final semantics = tester.getSemantics(find.byType(FriendVisitTile));
+      // find.byType(FriendVisitTile) no longer resolves directly to the
+      // tile's own Semantics node now that a separate Report action sits
+      // beside it (its own, distinct Semantics node) — bySemanticsLabel
+      // locates the tile's node by its content instead of by tree
+      // position, which is what this test actually cares about.
       expect(
-        semantics.label,
-        'Test Restaurant, Paris, France, 3 Michelin stars, rated 9 out of 10',
+        find.bySemanticsLabel(
+          'Test Restaurant, Paris, France, 3 Michelin stars, rated 9 out of 10',
+        ),
+        findsOneWidget,
       );
     });
 

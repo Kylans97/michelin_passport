@@ -4,7 +4,9 @@ import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/editorial_back_button.dart';
 import '../../../core/widgets/follow_toggle_button.dart';
+import '../../../models/content_report.dart';
 import '../../../models/private_chef_photo.dart';
+import '../../reports/widgets/report_content_sheet.dart';
 
 /// Chef Detail's hero — a parallel, trimmed sibling of [VenueDetailHero],
 /// not a reuse of it: that widget hard-requires wishlist state
@@ -160,6 +162,28 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
                 ),
               ),
             ),
+            // A generic "Report photo" — private_chef_photos has no
+            // submitted_by/user_id (admin-curated, not tied to any end
+            // user), so this reports the photo itself, not a person.
+            // Above the vignette (like the identity text below) so it's
+            // never visually or interactively obscured by it. Bottom-right,
+            // opposite the page indicator (bottom-left, in the text block
+            // below), so the two never collide.
+            if (hasGallery)
+              Positioned(
+                right: CsSpacing.pageHorizontal,
+                bottom: CsSpacing.lg,
+                child: SafeArea(
+                  top: false,
+                  child: _ReportPhotoButton(
+                    onTap: () => showReportSheet(
+                      context,
+                      contentType: ReportContentType.photo,
+                      contentId: photos[_pageIndex].id,
+                    ),
+                  ),
+                ),
+              ),
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
@@ -338,6 +362,38 @@ class _PhotoPageIndicator extends StatelessWidget {
           ),
         ],
       ],
+    ),
+  );
+}
+
+/// Same translucent-circle treatment as [FollowToggleButton]/the wishlist
+/// toggle — a single tap opens the shared report sheet directly (one
+/// action, not worth a menu of its own).
+class _ReportPhotoButton extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _ReportPhotoButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: 'Report this photo',
+    excludeSemantics: true,
+    child: Material(
+      color: Colors.black.withValues(alpha: 0.24),
+      shape: const CircleBorder(),
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: onTap,
+        child: const Padding(
+          padding: EdgeInsets.all(9),
+          child: Icon(
+            Icons.flag_outlined,
+            color: AppColors.textOnDark,
+            size: 19,
+          ),
+        ),
+      ),
     ),
   );
 }

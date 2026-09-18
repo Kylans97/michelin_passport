@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/blocked_user.dart';
 import '../../models/friendship.dart';
 import '../../models/profile_identity.dart';
 
@@ -87,6 +88,21 @@ class FriendshipRepository {
 
   Future<void> blockUser(String targetUserId) =>
       _client.rpc('block_user', params: {'target_user_id': targetUserId});
+
+  // Only the person who set blocked_by may unblock — unblock_user's own
+  // rule. Calling this on a block the current user didn't create throws.
+  Future<void> unblockUser(String targetUserId) =>
+      _client.rpc('unblock_user', params: {'target_user_id': targetUserId});
+
+  // get_blocked_users() resolves the "other party" server-side, since
+  // friendships is self-referencing (requester_id/addressee_id) with no
+  // fixed column for it — see the RPC's own comment.
+  Future<List<BlockedUser>> getBlockedUsers() async {
+    final rows = await _client.rpc('get_blocked_users');
+    return (rows as List)
+        .map((r) => BlockedUser.fromRow(r as Map<String, dynamic>))
+        .toList();
+  }
 
   // Direct table delete — removes an accepted friendship, or cancels a
   // still-pending request the current user sent. RLS (friendships_delete)

@@ -12,6 +12,7 @@ import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
+import '../../models/content_report.dart';
 import '../../models/event.dart';
 import '../../models/event_attendance.dart';
 import '../../models/passport_venue.dart';
@@ -20,6 +21,7 @@ import '../../models/venue_entry.dart';
 import '../../models/visit.dart';
 import '../events/event_detail_screen.dart';
 import '../hotels/hotel_detail_screen.dart';
+import '../reports/widgets/report_content_sheet.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'friend_activity_list_screen.dart';
 import 'widgets/friend_going_tile.dart';
@@ -210,6 +212,70 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
     }
   }
 
+  Future<void> _blockUser(String name) async {
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (context) => AlertDialog(
+        backgroundColor: AppColors.warmWhite,
+        title: Text(
+          'Block $name?',
+          style: CsTypography.placeTitle.copyWith(
+            color: AppColors.forestGreen,
+            fontSize: 20,
+          ),
+        ),
+        content: Text(
+          "You'll no longer see each other's content, and any existing "
+          'friendship will end.',
+          style: CsTypography.body.copyWith(color: AppColors.taupe),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context, false),
+            child: Text(
+              'Cancel',
+              style: CsTypography.bodyMedium.copyWith(color: AppColors.taupe),
+            ),
+          ),
+          TextButton(
+            onPressed: () => Navigator.pop(context, true),
+            child: Text(
+              'Block',
+              style: CsTypography.bodyMedium.copyWith(color: AppColors.error),
+            ),
+          ),
+        ],
+      ),
+    );
+    if (confirmed != true || !mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      await _repo.blockUser(widget.userId);
+      if (!mounted) return;
+      Navigator.pop(context);
+      messenger.showSnackBar(
+        SnackBar(
+          content: Text(
+            'Blocked $name.',
+            style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
+          ),
+          backgroundColor: AppColors.forestGreen,
+          duration: const Duration(seconds: 2),
+        ),
+      );
+    } on PostgrestException catch (e) {
+      _showSnack(e.message, isError: true);
+    } catch (_) {
+      _showSnack('Could not block. Please try again.', isError: true);
+    }
+  }
+
+  Future<void> _reportProfile() => showReportSheet(
+    context,
+    contentType: ReportContentType.profile,
+    contentId: widget.userId,
+  );
+
   @override
   Widget build(BuildContext context) {
     // UI Polish pass: Scaffold.backgroundColor is deep-green (not ivory)
@@ -291,6 +357,12 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
                 if (friendshipId != null) _decline(friendshipId);
               },
               onRemove: _removeFriend,
+              onBlock: () => _blockUser(
+                identity.displayName?.trim().isNotEmpty == true
+                    ? identity.displayName!
+                    : identity.label,
+              ),
+              onReport: _reportProfile,
             );
           },
         ),
@@ -341,6 +413,8 @@ class _ProfileBody extends StatelessWidget {
   final VoidCallback onAccept;
   final VoidCallback onDecline;
   final VoidCallback onRemove;
+  final VoidCallback onBlock;
+  final VoidCallback onReport;
 
   const _ProfileBody({
     required this.identity,
@@ -352,6 +426,8 @@ class _ProfileBody extends StatelessWidget {
     required this.onAccept,
     required this.onDecline,
     required this.onRemove,
+    required this.onBlock,
+    required this.onReport,
   });
 
   @override
@@ -385,6 +461,8 @@ class _ProfileBody extends StatelessWidget {
                 onAccept: onAccept,
                 onDecline: onDecline,
                 onRemove: onRemove,
+                onBlock: onBlock,
+                onReport: onReport,
               ),
             ),
           ),
@@ -437,6 +515,8 @@ class _Hero extends StatelessWidget {
   final VoidCallback onAccept;
   final VoidCallback onDecline;
   final VoidCallback onRemove;
+  final VoidCallback onBlock;
+  final VoidCallback onReport;
 
   const _Hero({
     required this.identity,
@@ -444,6 +524,8 @@ class _Hero extends StatelessWidget {
     required this.onAccept,
     required this.onDecline,
     required this.onRemove,
+    required this.onBlock,
+    required this.onReport,
   });
 
   @override
@@ -465,9 +547,13 @@ class _Hero extends StatelessWidget {
               CsSpacing.base,
               0,
             ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: EditorialBackButton(color: AppColors.ivory),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                EditorialBackButton(color: AppColors.ivory),
+                if (identity.id != Supabase.instance.client.auth.currentUser?.id)
+                  _ProfileOverflowMenu(onBlock: onBlock, onReport: onReport),
+              ],
             ),
           ),
           Padding(
@@ -1018,6 +1104,64 @@ class _FriendInterestedSection extends StatelessWidget {
       },
     );
   }
+}
+
+/// Block + Report, behind one overflow menu on another user's profile —
+/// never a primary action. Same translucent-circle trigger the hero's
+/// other icon-only controls use (e.g. [FollowToggleButton]), styled for
+/// the deep-green hero it always sits on.
+class _ProfileOverflowMenu extends StatelessWidget {
+  final VoidCallback onBlock;
+  final VoidCallback onReport;
+
+  const _ProfileOverflowMenu({required this.onBlock, required this.onReport});
+
+  @override
+  Widget build(BuildContext context) => PopupMenuButton<String>(
+    color: AppColors.card,
+    onSelected: (value) {
+      if (value == 'block') onBlock();
+      if (value == 'report') onReport();
+    },
+    itemBuilder: (context) => [
+      const PopupMenuItem(
+        value: 'report',
+        child: Row(
+          children: [
+            Icon(
+              Icons.flag_outlined,
+              color: AppColors.textPrimary,
+              size: 18,
+            ),
+            SizedBox(width: 10),
+            Text('Report profile'),
+          ],
+        ),
+      ),
+      const PopupMenuItem(
+        value: 'block',
+        child: Row(
+          children: [
+            Icon(Icons.block_rounded, color: AppColors.error, size: 18),
+            SizedBox(width: 10),
+            Text('Block', style: TextStyle(color: AppColors.error)),
+          ],
+        ),
+      ),
+    ],
+    child: Material(
+      color: Colors.black.withValues(alpha: 0.24),
+      shape: const CircleBorder(),
+      child: const Padding(
+        padding: EdgeInsets.all(9),
+        child: Icon(
+          Icons.more_horiz_rounded,
+          color: AppColors.textOnDark,
+          size: 19,
+        ),
+      ),
+    ),
+  );
 }
 
 /// The same strengthened taupe hairline token established for Guides'

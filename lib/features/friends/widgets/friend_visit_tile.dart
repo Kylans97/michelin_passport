@@ -5,8 +5,10 @@ import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/key_row.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../models/content_report.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/visit.dart';
+import '../../reports/widgets/report_content_sheet.dart';
 
 const _monthNames = [
   'January',
@@ -97,94 +99,145 @@ class FriendVisitTile extends StatelessWidget {
       if (rating != null) 'rated $rating out of 10',
     ].join(', ');
 
-    return Semantics(
-      button: true,
-      label: semanticLabel,
-      excludeSemantics: true,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
-          highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const VenueThumbnail(imageUrl: null, size: 52),
-                const SizedBox(width: CsSpacing.md),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Expanded(
+          child: Semantics(
+            button: true,
+            label: semanticLabel,
+            excludeSemantics: true,
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: onTap,
+                splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
+                highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      recognition == null
-                          ? Text(
-                              v.name,
-                              style: CsTypography.placeTitle.copyWith(
-                                fontSize: 17,
-                                color: AppColors.forestGreen,
-                              ),
-                            )
-                          : Text.rich(
-                              TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: v.name,
+                      const VenueThumbnail(imageUrl: null, size: 52),
+                      const SizedBox(width: CsSpacing.md),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            recognition == null
+                                ? Text(
+                                    v.name,
                                     style: CsTypography.placeTitle.copyWith(
                                       fontSize: 17,
                                       color: AppColors.forestGreen,
                                     ),
+                                  )
+                                : Text.rich(
+                                    TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: v.name,
+                                          style: CsTypography.placeTitle
+                                              .copyWith(
+                                                fontSize: 17,
+                                                color: AppColors.forestGreen,
+                                              ),
+                                        ),
+                                        const WidgetSpan(
+                                          child: SizedBox(width: CsSpacing.xs),
+                                        ),
+                                        WidgetSpan(
+                                          alignment: PlaceholderAlignment.middle,
+                                          child: recognition,
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                  const WidgetSpan(
-                                    child: SizedBox(width: CsSpacing.xs),
-                                  ),
-                                  WidgetSpan(
-                                    alignment: PlaceholderAlignment.middle,
-                                    child: recognition,
-                                  ),
-                                ],
+                            const SizedBox(height: 2),
+                            Text(
+                              ratingLabel,
+                              style: CsTypography.metadata.copyWith(
+                                color: AppColors.taupe,
+                                fontWeight: FontWeight.w600,
                               ),
                             ),
-                      const SizedBox(height: 2),
-                      Text(
-                        ratingLabel,
-                        style: CsTypography.metadata.copyWith(
-                          color: AppColors.taupe,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      if (city.isNotEmpty || flag.isNotEmpty) ...[
-                        const SizedBox(height: 2),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            if (city.isNotEmpty)
-                              Flexible(
-                                child: Text(
-                                  city,
-                                  maxLines: 1,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: CsTypography.metadata.copyWith(
-                                    color: AppColors.taupe,
-                                  ),
-                                ),
+                            if (city.isNotEmpty || flag.isNotEmpty) ...[
+                              const SizedBox(height: 2),
+                              Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  if (city.isNotEmpty)
+                                    Flexible(
+                                      child: Text(
+                                        city,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: CsTypography.metadata.copyWith(
+                                          color: AppColors.taupe,
+                                        ),
+                                      ),
+                                    ),
+                                  if (city.isNotEmpty && flag.isNotEmpty)
+                                    const SizedBox(width: CsSpacing.xs),
+                                  if (flag.isNotEmpty)
+                                    Text(
+                                      flag,
+                                      style: const TextStyle(fontSize: 13),
+                                    ),
+                                ],
                               ),
-                            if (city.isNotEmpty && flag.isNotEmpty)
-                              const SizedBox(width: CsSpacing.xs),
-                            if (flag.isNotEmpty)
-                              Text(flag, style: const TextStyle(fontSize: 13)),
+                            ],
                           ],
                         ),
-                      ],
+                      ),
                     ],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
         ),
-      ),
+        _ReportRatingButton(
+          onTap: () => showReportSheet(
+            context,
+            contentType: ReportContentType.rating,
+            contentId: visit.id,
+          ),
+        ),
+      ],
     );
   }
+}
+
+/// The one non-navigational control on this row — a small overflow
+/// trigger for reporting the visible rating/note, kept outside the
+/// tile's own [InkWell] so it doesn't also navigate to the venue.
+class _ReportRatingButton extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _ReportRatingButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => PopupMenuButton<String>(
+    padding: EdgeInsets.zero,
+    icon: const Icon(
+      Icons.more_horiz_rounded,
+      color: AppColors.taupe,
+      size: 18,
+    ),
+    color: AppColors.card,
+    onSelected: (_) => onTap(),
+    itemBuilder: (context) => const [
+      PopupMenuItem(
+        value: 'report',
+        child: Row(
+          children: [
+            Icon(Icons.flag_outlined, color: AppColors.textPrimary, size: 18),
+            SizedBox(width: 10),
+            Text('Report'),
+          ],
+        ),
+      ),
+    ],
+  );
 }

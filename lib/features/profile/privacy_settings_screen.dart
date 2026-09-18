@@ -5,6 +5,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/profile_repository.dart';
+import 'blocked_users_screen.dart';
 
 /// Profile → Settings → Privacy — PROFILE PRIVACY & DISCOVERABILITY V1.
 /// Currently a single setting: **Allow members to find me**, which
@@ -162,6 +163,15 @@ class _PrivacySettingsScreenState extends State<PrivacySettingsScreen> {
                           busy: _saving,
                           onChanged: _toggle,
                         ),
+                        const SizedBox(height: CsSpacing.xl),
+                        _BlockedUsersRow(
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const BlockedUsersScreen(),
+                            ),
+                          ),
+                        ),
                         if (_saveError != null) ...[
                           const SizedBox(height: CsSpacing.sm),
                           Text(
@@ -269,5 +279,38 @@ class _DiscoverabilityToggleRow extends StatelessWidget {
         thumbColor: const WidgetStatePropertyAll(Colors.white),
       ),
     ],
+  );
+}
+
+/// A tappable navigation row into [BlockedUsersScreen] — Block only works
+/// two-way if there's a place to see and undo it (see that screen's own
+/// doc comment).
+class _BlockedUsersRow extends StatelessWidget {
+  final VoidCallback onTap;
+  const _BlockedUsersRow({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => InkWell(
+    onTap: onTap,
+    borderRadius: BorderRadius.circular(10),
+    child: Padding(
+      padding: const EdgeInsets.symmetric(vertical: CsSpacing.xs),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              'Blocked users',
+              style: CsTypography.bodyMedium.copyWith(
+                color: AppColors.textOnDark,
+              ),
+            ),
+          ),
+          const Icon(
+            Icons.chevron_right_rounded,
+            color: AppColors.secondaryOnDark,
+          ),
+        ],
+      ),
+    ),
   );
 }
