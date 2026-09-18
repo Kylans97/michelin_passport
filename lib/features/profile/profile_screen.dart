@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -62,6 +64,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
   late Future<String?> _avatarUrlFuture;
   late Future<JourneyMetrics> _journeyFuture;
   late Future<_FriendsSummary> _friendsSummaryFuture;
+
+  // Loaded once, not re-fetched on pull-to-refresh (_load) — the running
+  // build's own version/build number can't change at runtime.
+  late final Future<PackageInfo> _packageInfoFuture = PackageInfo.fromPlatform();
 
   final String _uid = Supabase.instance.client.auth.currentUser?.id ?? '';
 
@@ -129,6 +135,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
     context,
     MaterialPageRoute(builder: (_) => const PrivacySettingsScreen()),
   );
+
+  // Same external-browser pattern RestaurantDetailScreen/HotelDetailScreen
+  // already use for venue links — never an in-app webview. Apple requires
+  // the privacy policy be reachable from inside the app itself, not only
+  // from the App Store listing; this is that requirement's entry point.
+  Future<void> _openExternal(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
 
   Future<void> _openEditProfile(UserProfile profile) async {
     // Awaited (not passed as a Future) so the sheet can show the member's
@@ -358,6 +375,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     label: 'Delete account',
                     color: AppColors.error,
                     onTap: _openDeleteAccount,
+                  ),
+
+                  // Legal/info footer — deliberately separated from the
+                  // ACCOUNT actions above by extra space rather than its
+                  // own eyebrow label, matching this screen's existing
+                  // "spacing alone signals a new group" convention. The
+                  // open-in-new (not chevron) trailing icon marks these as
+                  // leaving the app, not pushing a route.
+                  const SizedBox(height: CsSpacing.xxl),
+                  _SettingsRow(
+                    icon: Icons.public_rounded,
+                    label: 'Website',
+                    trailingIcon: Icons.open_in_new_rounded,
+                    onTap: () => _openExternal('https://mantelier.app'),
+                  ),
+                  _SettingsRow(
+                    icon: Icons.privacy_tip_outlined,
+                    label: 'Privacy policy',
+                    trailingIcon: Icons.open_in_new_rounded,
+                    onTap: () =>
+                        _openExternal('https://mantelier.app/privacy'),
+                  ),
+                  const SizedBox(height: CsSpacing.lg),
+                  FutureBuilder<PackageInfo>(
+                    future: _packageInfoFuture,
+                    builder: (context, infoSnap) {
+                      final info = infoSnap.data;
+                      if (info == null) return const SizedBox.shrink();
+                      return Center(
+                        child: Text(
+                          'Mantelier ${info.version} (${info.buildNumber})',
+                          style: CsTypography.metadata.copyWith(
+                            color: AppColors.secondaryOnDark.withValues(
+                              alpha: 0.6,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
@@ -598,11 +654,16 @@ class _SettingsRow extends StatelessWidget {
   // account" row (AppColors.error); every other row omits it and keeps
   // the original neutral secondaryOnDark/textOnDark styling unchanged.
   final Color? color;
+  // Defaults to the in-app-navigation chevron every existing row uses.
+  // The Website/Privacy policy rows pass open_in_new instead, since
+  // those leave the app rather than push a route.
+  final IconData trailingIcon;
   const _SettingsRow({
     required this.icon,
     required this.label,
     required this.onTap,
     this.color,
+    this.trailingIcon = Icons.chevron_right_rounded,
   });
 
   @override
@@ -630,7 +691,7 @@ class _SettingsRow extends StatelessWidget {
                   ),
                 ),
               ),
-              Icon(Icons.chevron_right_rounded, color: tint, size: 20),
+              Icon(trailingIcon, color: tint, size: 20),
             ],
           ),
         ),
