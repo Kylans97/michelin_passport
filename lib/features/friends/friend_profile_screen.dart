@@ -95,28 +95,41 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
       _goingFuture = null;
       _interestedFuture = null;
     });
-    _future.then((identity) {
-      if (!mounted ||
-          identity?.relationshipStatus != RelationshipStatus.accepted) {
-        return;
-      }
-      setState(() {
-        _visitedFuture = _visitedRepo.loadPassportVenues(widget.userId);
-        _wishlistFuture = _wishlistRepo.loadWishlistVenues(widget.userId);
-        _goingFuture = _attendanceRepo.getFriendUpcomingEvents(
-          userId: widget.userId,
-          status: EventIntentStatus.going,
-        );
-        // Events V2 Step 7 — same status-parameterized method, one
-        // status over. Only ever reads rows RLS already allows this
-        // viewer to see (an accepted friend's friends-visible Interested
-        // row) — no new query architecture.
-        _interestedFuture = _attendanceRepo.getFriendUpcomingEvents(
-          userId: widget.userId,
-          status: EventIntentStatus.interested,
-        );
-      });
-    });
+    _future
+        .then((identity) {
+          if (!mounted ||
+              identity?.relationshipStatus != RelationshipStatus.accepted) {
+            return;
+          }
+          setState(() {
+            _visitedFuture = _visitedRepo.loadPassportVenues(widget.userId);
+            _wishlistFuture = _wishlistRepo.loadWishlistVenues(widget.userId);
+            _goingFuture = _attendanceRepo.getFriendUpcomingEvents(
+              userId: widget.userId,
+              status: EventIntentStatus.going,
+            );
+            // Events V2 Step 7 — same status-parameterized method, one
+            // status over. Only ever reads rows RLS already allows this
+            // viewer to see (an accepted friend's friends-visible
+            // Interested row) — no new query architecture.
+            _interestedFuture = _attendanceRepo.getFriendUpcomingEvents(
+              userId: widget.userId,
+              status: EventIntentStatus.interested,
+            );
+          });
+        })
+        // _future's own failure is already surfaced by the FutureBuilder
+        // in build() (snap.hasError -> "Could not load this profile") —
+        // this second, independent .then() chain off the same future
+        // needs its own handler too, or an identity lookup failure
+        // becomes an unhandled Future rejection nothing ever catches.
+        // Confirmed via a widget test that pushes this screen through
+        // the real MaterialPageRoute both friends_screen.dart and
+        // add_friend_screen.dart use (test/
+        // friend_profile_screen_navigation_test.dart) — every prior test
+        // in this feature only ever reconstructed _Hero in isolation, so
+        // this was never actually exercised end to end.
+        .catchError((_) {});
   }
 
   void _showSnack(String message, {bool isError = false}) {
