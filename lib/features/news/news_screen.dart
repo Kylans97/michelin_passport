@@ -212,6 +212,13 @@ class _NewsArticleCard extends StatelessWidget {
                   child: Image.network(
                     article.imageUrl!,
                     fit: BoxFit.cover,
+                    // Same per-article crop focus as the detail screen's
+                    // own hero — the same source image, same reason a
+                    // plain center crop can cut through a face.
+                    alignment: Alignment(
+                      article.alignmentX,
+                      article.alignmentY,
+                    ),
                     // A failed load still shouldn't produce a half-card —
                     // collapse to zero height rather than a broken-image
                     // icon or a branded placeholder standing in for a

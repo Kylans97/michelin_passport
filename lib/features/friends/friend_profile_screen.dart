@@ -462,52 +462,62 @@ class _ProfileBody extends StatelessWidget {
     // viewport" while still letting the whole page grow/scroll normally if
     // the hero or the activity sections end up taller than the screen —
     // preserving the original no-overflow guarantee above.
-    return Expanded(
-      child: CustomScrollView(
-        slivers: [
-          SliverToBoxAdapter(
+    //
+    // NOT wrapped in Expanded: _ProfileBody is returned directly as
+    // Scaffold.body (via the FutureBuilder in _FriendProfileScreenState.
+    // build), which lays out its body through a CustomMultiChildLayout,
+    // not a Flex — Expanded here throws "Incorrect use of
+    // ParentDataWidget" in debug (a real, on-device bug found via a
+    // profile-mode reproduction, not caught by any prior test, since
+    // every previous test either hand-built _Hero in isolation or hit
+    // this screen's OWN error branch before ever reaching this widget).
+    // In release the assertion is stripped, so this silently produced a
+    // blank/grey screen instead of a crash. CustomScrollView already
+    // fills the available space on its own here — no wrapper needed.
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: SafeArea(
+            bottom: false,
+            child: _Hero(
+              identity: identity,
+              onSendRequest: onSendRequest,
+              onAccept: onAccept,
+              onDecline: onDecline,
+              onRemove: onRemove,
+              onBlock: onBlock,
+              onReport: onReport,
+            ),
+          ),
+        ),
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: ColoredBox(
+            color: AppColors.ivory,
             child: SafeArea(
-              bottom: false,
-              child: _Hero(
-                identity: identity,
-                onSendRequest: onSendRequest,
-                onAccept: onAccept,
-                onDecline: onDecline,
-                onRemove: onRemove,
-                onBlock: onBlock,
-                onReport: onReport,
-              ),
+              top: false,
+              child: accepted
+                  ? Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: CsSpacing.pageHorizontal,
+                      ).copyWith(top: CsSpacing.lg, bottom: CsSpacing.xxl),
+                      child: _ActivitySections(
+                        userId: identity.id,
+                        friendLabel:
+                            identity.displayName?.trim().isNotEmpty == true
+                            ? identity.displayName!
+                            : identity.label,
+                        visitedFuture: visitedFuture,
+                        wishlistFuture: wishlistFuture,
+                        goingFuture: goingFuture,
+                        interestedFuture: interestedFuture,
+                      ),
+                    )
+                  : const SizedBox.shrink(),
             ),
           ),
-          SliverFillRemaining(
-            hasScrollBody: false,
-            child: ColoredBox(
-              color: AppColors.ivory,
-              child: SafeArea(
-                top: false,
-                child: accepted
-                    ? Padding(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: CsSpacing.pageHorizontal,
-                        ).copyWith(top: CsSpacing.lg, bottom: CsSpacing.xxl),
-                        child: _ActivitySections(
-                          userId: identity.id,
-                          friendLabel:
-                              identity.displayName?.trim().isNotEmpty == true
-                              ? identity.displayName!
-                              : identity.label,
-                          visitedFuture: visitedFuture,
-                          wishlistFuture: wishlistFuture,
-                          goingFuture: goingFuture,
-                          interestedFuture: interestedFuture,
-                        ),
-                      )
-                    : const SizedBox.shrink(),
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

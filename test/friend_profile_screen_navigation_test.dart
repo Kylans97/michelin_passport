@@ -22,6 +22,19 @@
 // screen still renders something, proving its build() and initState()
 // survive being pushed with a real userId end to end, exactly the
 // question this bug report raises.
+//
+// A SECOND, physical-device-found bug this file's first version still
+// missed entirely: the error-path test above never reaches _ProfileBody
+// (the FutureBuilder's error branch short-circuits before it), so it
+// could not have caught _ProfileBody.build() returning
+// `Expanded(child: CustomScrollView(...))` directly as Scaffold.body —
+// invalid ("Incorrect use of ParentDataWidget"), since Scaffold lays its
+// body out via a CustomMultiChildLayout, not a Flex. That assertion only
+// fires in debug; release silently produced a blank/grey screen instead.
+// The MockClient below now routes on the request body's target_user_id
+// so a second test can mock a genuinely SUCCESSFUL get_profile_identity
+// response, letting _ProfileBody actually build — which is the only way
+// either version of this bug could ever have been caught here.
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -46,17 +59,28 @@ void main() {
         autoRefreshToken: false,
         detectSessionInUri: false,
       ),
-      httpClient: MockClient(
-        // postgrest's own error path reads response.request!.method —
-        // http.Response's `request` field is null unless explicitly
-        // attached, which a real Client.send() does automatically but a
-        // bare MockClient response does not.
-        (request) async => http.Response(
+      httpClient: MockClient((request) async {
+        // postgrest's own error path (and a real response either way)
+        // reads response.request!.method — http.Response's `request`
+        // field is null unless explicitly attached, which a real
+        // Client.send() does automatically but a bare MockClient
+        // response does not.
+        final body = request.body;
+        if (body.contains('success-user-456')) {
+          return http.Response(
+            '[{"id":"success-user-456","username":"kylan",'
+            '"display_name":"Kylan","avatar_url":null,'
+            '"relationship_status":null}]',
+            200,
+            request: request,
+          );
+        }
+        return http.Response(
           '{"message":"not reachable in tests","code":"PGRST000"}',
           400,
           request: request,
-        ),
-      ),
+        );
+      }),
     );
   });
 
@@ -100,6 +124,47 @@ void main() {
       // screen, not an uncaught exception.
       expect(find.byType(FriendProfileScreen), findsOneWidget);
       expect(find.text('Could not load this profile'), findsOneWidget);
+    },
+  );
+
+  testWidgets(
+    'a genuinely successful identity load builds _ProfileBody without '
+    'throwing — this is the only path that could ever have caught the '
+    'Expanded/CustomMultiChildLayout bug',
+    (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: Builder(
+              builder: (context) => ListTile(
+                title: const Text('A Friend'),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const FriendProfileScreen(
+                      userId: 'success-user-456',
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(find.text('A Friend'));
+      await tester.pump();
+      expect(tester.takeException(), isNull);
+
+      await tester.pumpAndSettle();
+      expect(tester.takeException(), isNull);
+
+      // The real hero (identity, avatar initials, relationship action)
+      // rendered — proof _ProfileBody's own build() actually ran, not
+      // just the loading/error branches above it.
+      expect(find.text('Kylan'), findsOneWidget);
+      expect(find.text('@kylan'), findsOneWidget);
+      expect(find.text('Add friend'), findsOneWidget);
     },
   );
 }

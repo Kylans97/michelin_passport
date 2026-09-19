@@ -14,6 +14,14 @@ class NewsArticle {
   final String? linkUrl;
   final DateTime publishedAt;
 
+  /// Normalized 0..1 crop-focus coordinates for [imageUrl] — matches
+  /// restaurant_photos/hotel_photos/private_chef_photos' own focus_x/
+  /// focus_y exactly (20260828130000_add_photo_duplicate_detection_and_
+  /// focus_point.sql). Default 0.5/0.5 (center) at the database level;
+  /// always present once a row is fetched, never actually null.
+  final double focusX;
+  final double focusY;
+
   const NewsArticle({
     required this.id,
     required this.title,
@@ -21,6 +29,8 @@ class NewsArticle {
     this.imageUrl,
     this.linkUrl,
     required this.publishedAt,
+    this.focusX = 0.5,
+    this.focusY = 0.5,
   });
 
   factory NewsArticle.fromJson(Map<String, dynamic> json) => NewsArticle(
@@ -30,7 +40,17 @@ class NewsArticle {
     imageUrl: json['image_url'] as String?,
     linkUrl: json['link_url'] as String?,
     publishedAt: DateTime.parse(json['published_at'] as String),
+    focusX: ((json['focus_x'] as num?) ?? 0.5).toDouble(),
+    focusY: ((json['focus_y'] as num?) ?? 0.5).toDouble(),
   );
+
+  /// [focusX]/[focusY] converted to Flutter's own -1..1 [Alignment]
+  /// coordinate space for a `BoxFit.cover` image — the same "keep
+  /// headroom, push the subject down" technique PrivateChefHero's
+  /// hardcoded `_focalAlignment` already uses, here driven by a
+  /// per-article stored value instead of one fixed constant.
+  double get alignmentX => focusX * 2 - 1;
+  double get alignmentY => focusY * 2 - 1;
 
   /// [body] split into paragraphs on blank lines — the one piece of
   /// "Markdown-ish" handling News V1 actually does. Empty pieces (e.g.

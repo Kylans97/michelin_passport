@@ -132,6 +132,15 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
                     background: Image.network(
                       article.imageUrl!,
                       fit: BoxFit.cover,
+                      // Per-article crop focus (news_articles.focus_x/
+                      // focus_y) — a plain center crop on a roughly
+                      // square source under this wide, short hero cuts
+                      // straight through faces near the top of the
+                      // frame, right behind the status bar/back button.
+                      alignment: Alignment(
+                        article.alignmentX,
+                        article.alignmentY,
+                      ),
                       errorBuilder: (_, _, _) =>
                           const ColoredBox(color: AppColors.deepGreen),
                     ),

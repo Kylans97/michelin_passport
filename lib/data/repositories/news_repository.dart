@@ -21,7 +21,10 @@ class NewsRepository {
   Future<List<NewsArticle>> getPublishedArticles() async {
     final rows = await _client
         .from('news_articles')
-        .select('id, title, body, image_url, link_url, published_at')
+        .select(
+          'id, title, body, image_url, link_url, published_at, '
+          'focus_x, focus_y',
+        )
         .order('published_at', ascending: false);
     return (rows as List)
         .map((r) => NewsArticle.fromJson(r as Map<String, dynamic>))
