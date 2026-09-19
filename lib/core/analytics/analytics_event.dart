@@ -91,7 +91,19 @@ enum AnalyticsEvent {
   passportItemRemoved,
 
   // ── Friends ────────────────────────────────────────────────────────────
-  friendsSignalOpened;
+  friendsSignalOpened,
+
+  // ── News V1 ────────────────────────────────────────────────────────────
+  /// Fired once when a user opens a News article's detail screen — not
+  /// on card render/prefetch, and not on the article's own optional
+  /// outbound link (that's a separate, unmeasured action; News V1 only
+  /// measures opens, not read time or scroll depth). Carries
+  /// [AnalyticsProperties.entityType] (`newsArticle`) and
+  /// [AnalyticsProperties.entityId] (the article id), both REQUIRED —
+  /// see `SupabaseAnalyticsService`, which writes this to
+  /// `news_article_opens`
+  /// (20260918140000_add_news_v1.sql).
+  newsArticleOpened;
 
   /// The canonical `snake_case` wire name — the only place any of these
   /// strings is spelled out. A future provider adapter (or the debug
@@ -128,6 +140,7 @@ enum AnalyticsEvent {
     AnalyticsEvent.passportItemCreated => 'passport_item_created',
     AnalyticsEvent.passportItemRemoved => 'passport_item_removed',
     AnalyticsEvent.friendsSignalOpened => 'friends_signal_opened',
+    AnalyticsEvent.newsArticleOpened => 'news_article_opened',
   };
 }
 

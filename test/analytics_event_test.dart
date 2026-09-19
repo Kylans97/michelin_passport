@@ -41,6 +41,7 @@ void main() {
         AnalyticsEvent.passportItemCreated: 'passport_item_created',
         AnalyticsEvent.passportItemRemoved: 'passport_item_removed',
         AnalyticsEvent.friendsSignalOpened: 'friends_signal_opened',
+        AnalyticsEvent.newsArticleOpened: 'news_article_opened',
       };
 
       for (final event in AnalyticsEvent.values) {

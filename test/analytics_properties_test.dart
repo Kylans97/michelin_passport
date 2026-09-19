@@ -56,14 +56,16 @@ void main() {
     }
   });
 
-  test('AnalyticsEntityType.wireName covers only MVP entity types', () {
+  test('AnalyticsEntityType.wireName covers the MVP entity types plus '
+      "News V1's own newsArticle exception", () {
     const expected = {
       AnalyticsEntityType.restaurant: 'restaurant',
       AnalyticsEntityType.hotel: 'hotel',
       AnalyticsEntityType.privateChef: 'private_chef',
       AnalyticsEntityType.event: 'event',
+      AnalyticsEntityType.newsArticle: 'news_article',
     };
-    expect(AnalyticsEntityType.values.length, 4);
+    expect(AnalyticsEntityType.values.length, 5);
     for (final value in AnalyticsEntityType.values) {
       expect(value.wireName, expected[value]);
     }

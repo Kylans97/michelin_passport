@@ -95,17 +95,24 @@ enum AttendanceSource {
 /// entity, not because Follow does. Winery/Bar/a broader Chef entity are
 /// deliberately not added — do not extend this enum ahead of those
 /// entities actually existing.
+///
+/// `newsArticle` (News V1) is the one exception to the "Follow/Trip/
+/// Passport entity" framing above — added purely so
+/// [AnalyticsEvent.newsArticleOpened] can reuse this same generic
+/// entityType/entityId pair rather than a dedicated property.
 enum AnalyticsEntityType {
   restaurant,
   hotel,
   privateChef,
-  event;
+  event,
+  newsArticle;
 
   String get wireName => switch (this) {
     AnalyticsEntityType.restaurant => 'restaurant',
     AnalyticsEntityType.hotel => 'hotel',
     AnalyticsEntityType.privateChef => 'private_chef',
     AnalyticsEntityType.event => 'event',
+    AnalyticsEntityType.newsArticle => 'news_article',
   };
 }
 
@@ -203,7 +210,7 @@ class AnalyticsProperties {
   final AnalyticsEntityType? entityType;
 
   /// The catalogue row id paired with [entityType] — a restaurant/hotel/
-  /// private-chef/event id, never a user id.
+  /// private-chef/event/news-article id, never a user id.
   final String? entityId;
 
   final AnalyticsSourceSurface? sourceSurface;
