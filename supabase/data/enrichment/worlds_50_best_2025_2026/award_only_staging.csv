@@ -17,7 +17,7 @@ hotel,hotel_760,Jumeirah Marsa Al Arab,Dubai,2026,15,top_50
 hotel,hotel_700,Capella Sydney,Sydney,2026,16,top_50
 hotel,hotel_186,Raffles Singapore,Singapore,2026,17,top_50
 hotel,hotel_346,Casa Maria Luigia,Modena,2026,18,top_50
-hotel,hotel_280,Le Bristol,Paris,2026,19,top_50
+hotel,hotel_712,Le Bristol,Paris,2026,19,top_50
 hotel,hotel_707,Cheval Blanc Paris,Paris,2026,20,top_50
 hotel,hotel_727,Desa Potato Head,Bali,2026,21,top_50
 hotel,hotel_776,San Ysidro Ranch,Santa Barbara,2026,22,top_50
@@ -79,6 +79,7 @@ hotel,hotel_187,Capella Singapore,Singapore,2026,97,extended_51_100
 hotel,hotel_764,Gleneagles,Auchterarder,2026,100,extended_51_100
 restaurant,rest_0237,Schloss Schauenstein,Furstenau,2025,52,extended_51_100
 restaurant,rest_0532,Den,Tokyo,2025,53,extended_51_100
+restaurant,rest_0474,Jordnaer,Copenhagen,2025,56,extended_51_100
 restaurant,rest_0193,Restaurant Tim Raue,Berlin,2025,58,extended_51_100
 restaurant,rest_0133,Pujol,Mexico City,2025,60,extended_51_100
 restaurant,rest_0842,Willem Hiele,Oudenburg,2025,62,extended_51_100
@@ -89,6 +90,7 @@ restaurant,rest_0502,Sazenka,Tokyo,2025,71,extended_51_100
 restaurant,rest_0440,Chef Tam's Seasons,Macau,2025,72,extended_51_100
 restaurant,rest_0212,Tantris,Munich,2025,73,extended_51_100
 restaurant,rest_0330,Cocina Hermanos Torres,Barcelona,2025,78,extended_51_100
+restaurant,rest_0190,Coda,Berlin,2025,79,extended_51_100
 restaurant,rest_0736,SingleThread,Healdsburg,2025,80,extended_51_100
 restaurant,rest_0336,Aponiente,El Puerto de Santa Maria,2025,84,extended_51_100
 restaurant,rest_0356,Mugaritz,San Sebastian,2025,87,extended_51_100
