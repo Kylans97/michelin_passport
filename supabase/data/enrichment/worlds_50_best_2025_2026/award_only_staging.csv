@@ -1,0 +1,100 @@
+entity_type,code,name,city,year,rank,list_type
+hotel,hotel_719,Rosewood Hong Kong,Hong Kong,2026,1,top_50
+hotel,hotel_752,Capella Bangkok,Bangkok,2026,2,top_50
+hotel,hotel_754,Four Seasons Bangkok at Chao Phraya River,Bangkok,2026,3,top_50
+hotel,hotel_759,Atlantis The Royal,Dubai,2026,4,top_50
+hotel,hotel_696,Passalacqua,Lake Como,2026,5,top_50
+hotel,hotel_697,Rosewood Sao Paulo,Sao Paulo,2026,6,top_50
+hotel,hotel_704,Mandarin Oriental Qianmen,Beijing,2026,7,top_50
+hotel,hotel_721,Upper House Hong Kong,Hong Kong,2026,8,top_50
+hotel,hotel_734,Chable Yucatan,Chochola,2026,9,top_50
+hotel,hotel_755,Mandarin Oriental Bangkok,Bangkok,2026,10,top_50
+hotel,hotel_688,Aman Tokyo,Tokyo,2026,11,top_50
+hotel,hotel_691,Four Seasons Firenze,Florence,2026,12,top_50
+hotel,hotel_762,Claridge's,London,2026,13,top_50
+hotel,hotel_708,Hotel de Crillon,Paris,2026,14,top_50
+hotel,hotel_760,Jumeirah Marsa Al Arab,Dubai,2026,15,top_50
+hotel,hotel_700,Capella Sydney,Sydney,2026,16,top_50
+hotel,hotel_186,Raffles Singapore,Singapore,2026,17,top_50
+hotel,hotel_346,Casa Maria Luigia,Modena,2026,18,top_50
+hotel,hotel_280,Le Bristol,Paris,2026,19,top_50
+hotel,hotel_707,Cheval Blanc Paris,Paris,2026,20,top_50
+hotel,hotel_727,Desa Potato Head,Bali,2026,21,top_50
+hotel,hotel_776,San Ysidro Ranch,Santa Barbara,2026,22,top_50
+hotel,hotel_736,Las Ventanas al Paraiso,Los Cabos,2026,25,top_50
+hotel,hotel_742,Royal Mansour,Marrakech,2026,26,top_50
+hotel,hotel_716,Four Seasons Astir Palace,Athens,2026,27,top_50
+hotel,hotel_766,Raffles London at The OWO,London,2026,28,top_50
+hotel,hotel_195,Copacabana Palace,Rio de Janeiro,2026,29,top_50
+hotel,hotel_726,The Taj Mahal Palace,Mumbai,2026,30,top_50
+hotel,hotel_690,Bulgari Roma,Rome,2026,32,top_50
+hotel,hotel_575,Patina Osaka,Osaka,2026,33,top_50
+hotel,hotel_746,Mount Nelson,Cape Town,2026,34,top_50
+hotel,hotel_729,Nihi Sumba,Sumba Island,2026,35,top_50
+hotel,hotel_55,Badrutt's Palace,St. Moritz,2026,36,top_50
+hotel,hotel_658,Park Hyatt Kyoto,Kyoto,2026,37,top_50
+hotel,hotel_710,Hotel du Couvent,Nice,2026,38,top_50
+hotel,hotel_401,Portrait Milano,Milan,2026,39,top_50
+hotel,hotel_193,Hotel de Paris Monte-Carlo,Monaco,2026,40,top_50
+hotel,hotel_713,Plaza Athenee,Paris,2026,41,top_50
+hotel,hotel_763,Estelle Manor,Witney,2026,43,top_50
+hotel,hotel_709,Hotel du Cap-Eden-Roc,Antibes,2026,44,top_50
+hotel,hotel_772,Amangiri,Canyon Point,2026,45,top_50
+hotel,hotel_720,The Peninsula Hong Kong,Hong Kong,2026,46,top_50
+hotel,hotel_737,Maroma,Riviera Maya,2026,47,top_50
+hotel,hotel_751,Aman Nai Lert,Bangkok,2026,48,top_50
+hotel,hotel_767,The Connaught,London,2026,49,top_50
+hotel,hotel_711,La Reserve Paris,Paris,2026,51,extended_51_100
+hotel,hotel_681,Janu Tokyo,Tokyo,2026,52,extended_51_100
+hotel,hotel_745,Palacio Nazarenas,Cusco,2026,54,extended_51_100
+hotel,hotel_731,Soneva Fushi,Maldives,2026,55,extended_51_100
+hotel,hotel_775,Hotel Bel-Air,Los Angeles,2026,57,extended_51_100
+hotel,hotel_320,Il San Pietro di Positano,Positano,2026,58,extended_51_100
+hotel,hotel_718,Mandarin Oriental Hong Kong,Hong Kong,2026,59,extended_51_100
+hotel,hotel_349,Splendido,Portofino,2026,60,extended_51_100
+hotel,hotel_728,Mandapa,Bali,2026,61,extended_51_100
+hotel,hotel_735,Hotel Esencia,Tulum,2026,64,extended_51_100
+hotel,hotel_777,The Beverly Hills Hotel,Los Angeles,2026,65,extended_51_100
+hotel,hotel_738,Montage Los Cabos,Cabo San Lucas,2026,67,extended_51_100
+hotel,hotel_635,The Okura,Tokyo,2026,69,extended_51_100
+hotel,hotel_756,Rosewood Bangkok,Bangkok,2026,70,extended_51_100
+hotel,hotel_748,Amangalla,Galle,2026,71,extended_51_100
+hotel,hotel_705,Four Seasons Tamarindo,La Manzanilla,2026,74,extended_51_100
+hotel,hotel_741,La Mamounia,Marrakech,2026,75,extended_51_100
+hotel,hotel_695,Hotel das Cataratas,Iguassu Falls,2026,77,extended_51_100
+hotel,hotel_779,The Fifth Avenue Hotel,New York,2026,78,extended_51_100
+hotel,hotel_643,Hotel The Mitsui,Kyoto,2026,79,extended_51_100
+hotel,hotel_743,Huka Lodge,Taupo,2026,82,extended_51_100
+hotel,hotel_702,The Calile,Brisbane,2026,83,extended_51_100
+hotel,hotel_689,Borgo Santandrea,Amalfi,2026,84,extended_51_100
+hotel,hotel_692,Hoshinoya Tokyo,Tokyo,2026,85,extended_51_100
+hotel,hotel_717,Four Seasons Hong Kong,Hong Kong,2026,86,extended_51_100
+hotel,hotel_771,Aman New York,New York,2026,87,extended_51_100
+hotel,hotel_452,Borgo Egnazia,Savelletri,2026,88,extended_51_100
+hotel,hotel_780,The Greenwich Hotel,New York,2026,92,extended_51_100
+hotel,hotel_714,The Maybourne Riviera,Roquebrune-Cap-Martin,2026,93,extended_51_100
+hotel,hotel_724,The Johri,Jaipur,2026,94,extended_51_100
+hotel,hotel_338,Reschio,Lisciano Niccone,2026,95,extended_51_100
+hotel,hotel_187,Capella Singapore,Singapore,2026,97,extended_51_100
+hotel,hotel_764,Gleneagles,Auchterarder,2026,100,extended_51_100
+restaurant,rest_0237,Schloss Schauenstein,Furstenau,2025,52,extended_51_100
+restaurant,rest_0532,Den,Tokyo,2025,53,extended_51_100
+restaurant,rest_0193,Restaurant Tim Raue,Berlin,2025,58,extended_51_100
+restaurant,rest_0133,Pujol,Mexico City,2025,60,extended_51_100
+restaurant,rest_0842,Willem Hiele,Oudenburg,2025,62,extended_51_100
+restaurant,rest_0156,Bozar,Brussels,2025,63,extended_51_100
+restaurant,rest_0333,Quique Dacosta,Denia,2025,65,extended_51_100
+restaurant,rest_0424,Hisa Franko,Kobarid,2025,69,extended_51_100
+restaurant,rest_0502,Sazenka,Tokyo,2025,71,extended_51_100
+restaurant,rest_0440,Chef Tam's Seasons,Macau,2025,72,extended_51_100
+restaurant,rest_0212,Tantris,Munich,2025,73,extended_51_100
+restaurant,rest_0330,Cocina Hermanos Torres,Barcelona,2025,78,extended_51_100
+restaurant,rest_0736,SingleThread,Healdsburg,2025,80,extended_51_100
+restaurant,rest_0336,Aponiente,El Puerto de Santa Maria,2025,84,extended_51_100
+restaurant,rest_0356,Mugaritz,San Sebastian,2025,87,extended_51_100
+restaurant,rest_0059,Le Bernardin,New York,2025,90,extended_51_100
+restaurant,rest_0476,Koan,Copenhagen,2025,91,extended_51_100
+restaurant,rest_0003,Al Gatto Verde,Modena,2025,92,extended_51_100
+restaurant,rest_0738,Atelier Crenn,San Francisco,2025,96,extended_51_100
+restaurant,rest_0763,Cesar,New York,2025,98,extended_51_100
+restaurant,rest_0071,Neolokal,Istanbul,2025,100,extended_51_100
