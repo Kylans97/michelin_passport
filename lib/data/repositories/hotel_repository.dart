@@ -93,13 +93,16 @@ class HotelRepository {
   }) async {
     var builder = _client.from('hotels_full').select(hotelFullColumns);
 
-    final orFilter = buildIlikeOrFilter(query, [
+    // One .or() call per word in [query] — mirrors
+    // RestaurantRepository.search() exactly; see buildIlikeOrFilters()'s
+    // doc comment for why chained .or() calls AND together instead of
+    // overwriting, and why a single-word query is unaffected.
+    for (final filter in buildIlikeOrFilters(query, [
       'name',
       'city_name',
       'country_name',
-    ]);
-    if (orFilter != null) {
-      builder = builder.or(orFilter);
+    ])) {
+      builder = builder.or(filter);
     }
     if (keys != null) {
       builder = builder.eq('michelin_keys', keys);

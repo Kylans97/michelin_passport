@@ -16,3 +16,33 @@ String? buildIlikeOrFilter(String query, List<String> fields) {
   if (trimmed.isEmpty) return null;
   return fields.map((field) => '$field.ilike.%$trimmed%').join(',');
 }
+
+/// Splits [query] into words and returns one ilike-or-group per word, each
+/// checking [fields] independently — for RestaurantRepository.search() and
+/// HotelRepository.search() only, so a combined query like "Flore
+/// Amsterdam" can match a name and a city on the same row. Callers apply
+/// `.or()` once per returned group; PostgREST ANDs repeated `or=` params
+/// together (confirmed against the postgrest package source, since
+/// postgrest-dart's `.or()` appends to the `or` query parameter rather than
+/// overwriting it), so a row must satisfy every word's group — a row with
+/// only "Flore" and nothing matching "Amsterdam" anywhere is excluded, not
+/// included via a broader OR-across-everything union.
+///
+/// Deliberately a separate function from [buildIlikeOrFilter] rather than a
+/// change to it: five other call sites (events, Gault&Millau, both World's
+/// 50 Best repositories) use the single-string form today and didn't ask
+/// for AND-across-words semantics — this leaves their behaviour untouched.
+///
+/// A single-word query returns a single-element list whose one group is
+/// byte-for-byte what [buildIlikeOrFilter] would build for the same query
+/// and fields — so wiring this in does not change single-word search.
+List<String> buildIlikeOrFilters(String query, List<String> fields) {
+  final words = query.trim().split(RegExp(r'\s+'));
+  return words
+      .where((word) => word.isNotEmpty)
+      .map(
+        (word) =>
+            fields.map((field) => '$field.ilike.%$word%').join(','),
+      )
+      .toList();
+}

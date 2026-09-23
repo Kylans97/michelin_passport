@@ -115,13 +115,21 @@ class RestaurantRepository {
         .from('restaurants_full')
         .select(restaurantFullColumns);
 
-    final orFilter = buildIlikeOrFilter(query, [
+    // One .or() call per word in [query] — "Flore Amsterdam" must match a
+    // venue with "Flore" in one field and "Amsterdam" in another, not just
+    // a single field containing the whole two-word string. Each call
+    // appends its own `or=` query param (postgrest-dart never overwrites a
+    // repeated one), and PostgREST ANDs all top-level params together, so
+    // a row has to satisfy every word's group — see
+    // buildIlikeOrFilters()'s own doc comment for the full reasoning. A
+    // single-word query loops exactly once, producing the identical filter
+    // buildIlikeOrFilter() would have built — unchanged single-word search.
+    for (final filter in buildIlikeOrFilters(query, [
       'name',
       'city_name',
       'country_name',
-    ]);
-    if (orFilter != null) {
-      builder = builder.or(orFilter);
+    ])) {
+      builder = builder.or(filter);
     }
     if (stars != null) {
       builder = builder.eq('michelin_stars', stars);
