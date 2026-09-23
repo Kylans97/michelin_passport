@@ -26,3 +26,23 @@ Future<List<VenueCountry>> resolveVenueCountries(
         ),
   ];
 }
+
+/// The full `public.countries` reference table, unfiltered — for pickers
+/// that aren't tied to a venue catalogue (e.g. a profile's home-country
+/// field), unlike [resolveVenueCountries]'s deliberate catalogue-presence
+/// intersection. Reuses [VenueCountry]'s shape only; not itself a claim
+/// that every returned country is "present" in anything.
+Future<List<VenueCountry>> getAllCountries(SupabaseClient client) async {
+  final countryRows = await client
+      .from('countries')
+      .select('country_code, name, flag_emoji')
+      .order('name');
+  return [
+    for (final row in countryRows as List)
+      VenueCountry(
+        name: (row['name'] as String?) ?? '',
+        code: (row['country_code'] as String?) ?? '',
+        flag: (row['flag_emoji'] as String?) ?? '',
+      ),
+  ];
+}

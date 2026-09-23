@@ -526,9 +526,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
           ),
         )
       else if (results.isEmpty)
-        const SliverFillRemaining(
+        SliverFillRemaining(
           hasScrollBody: false,
-          child: ExploreSearchEmptyState(),
+          child: ExploreSearchEmptyState(searchTerm: _query),
         )
       else
         SliverToBoxAdapter(

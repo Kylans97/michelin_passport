@@ -6,6 +6,7 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/utils/username_rules.dart';
+import '../../core/widgets/country_picker_sheet.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_text_field.dart';
 import '../../core/widgets/member_avatar.dart';
@@ -15,6 +16,7 @@ import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/profile_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/user_profile.dart';
+import '../../models/venue_country.dart';
 import '../../models/venue_entry.dart';
 import '../friends/friends_screen.dart';
 import '../notifications/notifications_screen.dart';
@@ -171,6 +173,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         initialUsername: profile.username,
         currentAvatarPath: profile.avatarPath,
         currentAvatarUrl: avatarUrl,
+        initialHomeCountryCode: profile.homeCountryCode,
       ),
     );
     if (saved == true) _load();
@@ -720,6 +723,7 @@ class _EditProfileSheet extends StatefulWidget {
   final String? initialUsername;
   final String? currentAvatarPath;
   final String? currentAvatarUrl;
+  final String? initialHomeCountryCode;
   const _EditProfileSheet({
     required this.userId,
     required this.profileRepo,
@@ -727,6 +731,7 @@ class _EditProfileSheet extends StatefulWidget {
     required this.initialUsername,
     required this.currentAvatarPath,
     required this.currentAvatarUrl,
+    required this.initialHomeCountryCode,
   });
 
   @override
@@ -738,8 +743,34 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
   late final _usernameCtrl = TextEditingController(
     text: widget.initialUsername ?? '',
   );
+  // Internal-only field (see UserProfile.homeCountryCode's own doc comment)
+  // — never shown to other users, so this sheet is the only place it's
+  // ever read back after being set.
+  VenueCountry? _country;
+  // True once the initial code (if any) has been resolved against the
+  // full country list — distinguishes "still loading the flag/name for an
+  // existing selection" from "genuinely not set" so the field never
+  // flashes "Not set" before correcting itself.
+  bool _countryResolved = false;
   bool _saving = false;
   String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    final code = widget.initialHomeCountryCode;
+    if (code == null) {
+      _countryResolved = true;
+      return;
+    }
+    widget.profileRepo.getAllCountries().then((all) {
+      if (!mounted) return;
+      setState(() {
+        _country = all.where((c) => c.code == code).firstOrNull;
+        _countryResolved = true;
+      });
+    });
+  }
 
   @override
   void dispose() {
@@ -761,6 +792,21 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
     );
     if (changed == true && mounted) Navigator.pop(context, true);
   }
+
+  // Never passes allowAll to showCountryPickerSheet: that reuses `null`
+  // for both "an All/None option was tapped" and "the sheet was dismissed
+  // without choosing anything" — indistinguishable at this call site, and
+  // conflating them would silently clear a person's country if they just
+  // swiped the sheet away. A null result here always means "no change";
+  // clearing has its own explicit, separate affordance below.
+  Future<void> _pickCountry() async {
+    final all = await widget.profileRepo.getAllCountries();
+    if (!mounted) return;
+    final picked = await showCountryPickerSheet(context, countries: all);
+    if (picked != null) setState(() => _country = picked);
+  }
+
+  void _clearCountry() => setState(() => _country = null);
 
   Future<void> _save() async {
     final name = _nameCtrl.text.trim();
@@ -785,6 +831,16 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
         displayName: name,
         username: username,
       );
+      // Its own call, only when actually changed — updateProfile's
+      // null-means-untouched convention can't express "clear this field",
+      // which is exactly why updateHomeCountryCode is separate (see its
+      // own doc comment).
+      if (_country?.code != widget.initialHomeCountryCode) {
+        await widget.profileRepo.updateHomeCountryCode(
+          userId: widget.userId,
+          homeCountryCode: _country?.code,
+        );
+      }
       if (!mounted) return;
       Navigator.pop(context, true);
     } on PostgrestException catch (e) {
@@ -863,6 +919,13 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
               CsTextField(label: 'Name', controller: _nameCtrl),
               const SizedBox(height: CsSpacing.lg),
               CsTextField(label: 'Username', controller: _usernameCtrl),
+              const SizedBox(height: CsSpacing.lg),
+              _CountryField(
+                country: _country,
+                resolved: _countryResolved,
+                onTap: _saving ? null : _pickCountry,
+                onClear: _saving ? null : _clearCountry,
+              ),
               if (_error != null) ...[
                 const SizedBox(height: CsSpacing.base),
                 Text(
@@ -883,6 +946,97 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
           ),
         ),
       ),
+    );
+  }
+}
+
+/// The tappable "Country" row in Edit Profile — visually matches
+/// [CsTextField]'s own label/field shape (eyebrow label, ivory rounded
+/// container) so it reads as one more field in the same form, not a
+/// bolted-on control. A plain tap opens the picker; a separate "×" only
+/// renders once a country is set, so clearing is its own explicit action
+/// distinct from dismissing the picker without choosing (see
+/// _EditProfileSheetState._pickCountry's own doc comment for why that
+/// distinction matters).
+class _CountryField extends StatelessWidget {
+  final VenueCountry? country;
+  final bool resolved;
+  final VoidCallback? onTap;
+  final VoidCallback? onClear;
+
+  const _CountryField({
+    required this.country,
+    required this.resolved,
+    required this.onTap,
+    required this.onClear,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final label = !resolved ? 'Loading…' : country?.name ?? 'Not set';
+    final labelColor = country != null ? AppColors.charcoal : AppColors.taupe;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'Country',
+          style: CsTypography.eyebrow.copyWith(
+            color: AppColors.secondaryOnDark,
+          ),
+        ),
+        const SizedBox(height: CsSpacing.sm),
+        Material(
+          color: AppColors.ivory,
+          borderRadius: BorderRadius.circular(16),
+          child: InkWell(
+            onTap: onTap,
+            borderRadius: BorderRadius.circular(16),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: CsSpacing.base,
+                vertical: 16,
+              ),
+              child: Row(
+                children: [
+                  if (country != null && country!.flag.isNotEmpty) ...[
+                    Text(country!.flag, style: const TextStyle(fontSize: 18)),
+                    const SizedBox(width: CsSpacing.sm),
+                  ],
+                  Expanded(
+                    child: Text(
+                      label,
+                      style: CsTypography.body.copyWith(color: labelColor),
+                    ),
+                  ),
+                  if (country != null && onClear != null)
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: onClear,
+                        borderRadius: BorderRadius.circular(12),
+                        child: const Padding(
+                          padding: EdgeInsets.all(4),
+                          child: Icon(
+                            Icons.close_rounded,
+                            size: 18,
+                            color: AppColors.taupe,
+                          ),
+                        ),
+                      ),
+                    ),
+                  const SizedBox(width: 2),
+                  const Icon(
+                    Icons.chevron_right_rounded,
+                    color: AppColors.taupe,
+                    size: 20,
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

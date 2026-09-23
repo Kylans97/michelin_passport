@@ -4,6 +4,7 @@ import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../models/event.dart';
+import '../../reports/widgets/report_missing_listing_sheet.dart';
 import '../models/explore_search_results.dart';
 import '../widgets/hotel_tile.dart';
 import '../widgets/restaurant_tile.dart';
@@ -135,8 +136,16 @@ class _ResultSection extends StatelessWidget {
 /// Search mode's "nothing matched" state — restrained copy on the deep-
 /// green environment, never implying exhaustive worldwide coverage, and
 /// never a generic Material empty-state box.
+///
+/// [searchTerm] is whatever the person typed to get here — this is
+/// precisely the moment they've noticed something is missing, so the
+/// "report it" link below is offered right here rather than buried in
+/// settings, with the search term carried into the form as a starting
+/// value.
 class ExploreSearchEmptyState extends StatelessWidget {
-  const ExploreSearchEmptyState({super.key});
+  final String searchTerm;
+
+  const ExploreSearchEmptyState({super.key, required this.searchTerm});
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -162,6 +171,15 @@ class ExploreSearchEmptyState extends StatelessWidget {
           textAlign: TextAlign.center,
           style: CsTypography.metadata.copyWith(
             color: AppColors.secondaryOnDark,
+          ),
+        ),
+        const SizedBox(height: CsSpacing.lg),
+        TextButton(
+          onPressed: () =>
+              showReportMissingListingSheet(context, initialQuery: searchTerm),
+          child: Text(
+            'Report a missing restaurant, hotel or event',
+            style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
           ),
         ),
       ],

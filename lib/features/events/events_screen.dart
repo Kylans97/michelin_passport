@@ -26,6 +26,7 @@ import '../../models/event_location_context.dart';
 import '../../models/event_relevance_reason.dart';
 import '../../models/event_tag.dart';
 import '../../models/venue_country.dart';
+import '../reports/widgets/report_missing_listing_sheet.dart';
 import 'attendance_prompt_dismissal.dart';
 import 'current_location_provider.dart';
 import 'event_detail_screen.dart';
@@ -692,7 +693,10 @@ class _EventsScreenState extends State<EventsScreen> {
                       // actually a narrowed result).
                       child: _isDefaultDiscoveryState
                           ? const _NoEventsState()
-                          : _NoFilterResultsState(onReset: _resetDiscovery),
+                          : _NoFilterResultsState(
+                              onReset: _resetDiscovery,
+                              searchTerm: _query,
+                            ),
                     ),
                   )
                 else
@@ -835,7 +839,11 @@ class _NoEventsState extends StatelessWidget {
 /// insufficient/ambiguous once Location/Date/Search can also be active).
 class _NoFilterResultsState extends StatelessWidget {
   final VoidCallback onReset;
-  const _NoFilterResultsState({required this.onReset});
+  final String searchTerm;
+  const _NoFilterResultsState({
+    required this.onReset,
+    required this.searchTerm,
+  });
 
   @override
   Widget build(BuildContext context) => Padding(
@@ -872,6 +880,18 @@ class _NoFilterResultsState extends StatelessWidget {
           onTap: onReset,
           surface: CsSurface.light,
           height: 44,
+        ),
+        const SizedBox(height: 8),
+        TextButton(
+          onPressed: () =>
+              showReportMissingListingSheet(context, initialQuery: searchTerm),
+          child: Text(
+            'Report a missing event',
+            style: GoogleFonts.inter(
+              color: AppColors.textSecondary,
+              fontSize: 13,
+            ),
+          ),
         ),
       ],
     ),

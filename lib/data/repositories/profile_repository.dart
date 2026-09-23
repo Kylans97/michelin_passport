@@ -3,6 +3,12 @@ import 'dart:typed_data';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/restaurant.dart';
 import '../../models/user_profile.dart';
+import '../../models/venue_country.dart';
+// Prefixed — this class's own getAllCountries() wraps the top-level
+// function of the same name, same collision this codebase already avoids
+// elsewhere by keeping country_lookup.dart's helpers as free functions
+// rather than static methods.
+import 'country_lookup.dart' as country_lookup;
 
 // PROFILE UI REDESIGN V1 — the private Storage bucket profile photos are
 // uploaded to. NOT YET CREATED in production — see the proposed
@@ -173,6 +179,29 @@ class ProfileRepository {
         .update({'avatar_path': avatarPath})
         .eq('id', userId);
   }
+
+  /// Persists [homeCountryCode] (an ISO 3166-1 alpha-2 code) or `null` to
+  /// clear it — its own method rather than a parameter on [updateProfile],
+  /// since that method's convention treats a null argument as "leave this
+  /// field untouched," which can't represent "the user explicitly cleared
+  /// their country." Same RLS boundary as [updateAvatarPath].
+  Future<void> updateHomeCountryCode({
+    required String userId,
+    required String? homeCountryCode,
+  }) async {
+    await _client
+        .from('profiles')
+        .update({'home_country_code': homeCountryCode})
+        .eq('id', userId);
+  }
+
+  /// The full country list for the home-country picker — mirrors
+  /// RestaurantRepository.getCountries()/HotelRepository.getCountries()'s
+  /// own thin-wrapper-over-country_lookup.dart shape, so callers only ever
+  /// talk to their one repository, never reach for Supabase.instance
+  /// directly for a lookup this class already owns.
+  Future<List<VenueCountry>> getAllCountries() =>
+      country_lookup.getAllCountries(_client);
 
   /// The full "pick a new photo" flow's safe ordering (§29 of this
   /// feature's own spec): upload the new object first, only then update

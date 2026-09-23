@@ -321,7 +321,7 @@ void main() {
   group('ExploreSearchEmptyState / ExploreSearchErrorState', () {
     testWidgets('empty state renders restrained copy, no exhaustive-'
         'coverage claim', (tester) async {
-      await tester.pumpWidget(_wrap(const ExploreSearchEmptyState()));
+      await tester.pumpWidget(_wrap(const ExploreSearchEmptyState(searchTerm: '')));
       expect(find.text('No places found'), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
@@ -336,6 +336,26 @@ void main() {
       expect(find.text('Could not load results'), findsOneWidget);
       await tester.tap(find.text('Retry'));
       expect(retried, isTrue);
+    });
+
+    testWidgets('offers a "report a missing listing" link that opens the '
+        'report sheet with the search term carried in as the starting '
+        'Name value', (tester) async {
+      await tester.pumpWidget(
+        _wrap(const ExploreSearchEmptyState(searchTerm: 'Flore Amsterdam')),
+      );
+      expect(
+        find.text('Report a missing restaurant, hotel or event'),
+        findsOneWidget,
+      );
+      await tester.tap(
+        find.text('Report a missing restaurant, hotel or event'),
+      );
+      await tester.pumpAndSettle();
+      // The report sheet's own Name field, pre-filled from searchTerm —
+      // confirms the wiring, not the sheet's own internal behavior
+      // (covered by report_missing_listing_sheet_test.dart).
+      expect(find.text('Flore Amsterdam'), findsOneWidget);
     });
   });
 
@@ -397,7 +417,7 @@ void main() {
       testWidgets('ExploreSearchEmptyState in a keyboard-shrunk viewport (a '
           'positive, but insufficient, remaining height) scrolls instead of '
           'overflowing — no RenderFlex exception', (tester) async {
-        await tester.pumpWidget(sliverWrap(const ExploreSearchEmptyState()));
+        await tester.pumpWidget(sliverWrap(const ExploreSearchEmptyState(searchTerm: '')));
         expect(find.text('No places found'), findsOneWidget);
         expect(tester.takeException(), isNull);
       });
@@ -416,7 +436,7 @@ void main() {
         'hasScrollBody: false is not a regression for the common case',
         (tester) async {
           await tester.pumpWidget(
-            sliverWrap(const ExploreSearchEmptyState(), viewportHeight: 700),
+            sliverWrap(const ExploreSearchEmptyState(searchTerm: ''), viewportHeight: 700),
           );
           expect(find.text('No places found'), findsOneWidget);
           expect(tester.takeException(), isNull);
@@ -437,7 +457,7 @@ void main() {
                   slivers: [
                     const SliverFillRemaining(
                       hasScrollBody: false,
-                      child: ExploreSearchEmptyState(),
+                      child: ExploreSearchEmptyState(searchTerm: ''),
                     ),
                   ],
                 ),
@@ -463,7 +483,7 @@ void main() {
                     slivers: [
                       const SliverFillRemaining(
                         hasScrollBody: false,
-                        child: ExploreSearchEmptyState(),
+                        child: ExploreSearchEmptyState(searchTerm: ''),
                       ),
                     ],
                   ),

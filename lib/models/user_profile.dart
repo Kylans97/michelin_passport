@@ -25,6 +25,13 @@ class UserProfile {
   // then this is always null, which [MemberAvatar] already renders
   // correctly (initials fallback).
   final String? avatarPath;
+
+  // The user's own stated home country — ISO 3166-1 alpha-2, an internal-
+  // only field (private by construction: profiles_read is owner-only RLS,
+  // and this is deliberately never selected by search_profiles or
+  // get_profile_identity). Optional, so null is a normal, common value —
+  // never treated as an error.
+  final String? homeCountryCode;
   final int restaurantsVisited;
   final int countriesVisited;
   final int citiesVisited;
@@ -40,6 +47,7 @@ class UserProfile {
     required this.email,
     required this.memberSince,
     this.avatarPath,
+    this.homeCountryCode,
     required this.restaurantsVisited,
     required this.countriesVisited,
     required this.citiesVisited,
@@ -72,6 +80,7 @@ class UserProfile {
       email: email,
       memberSince: _formatDate(profileRow['created_at'] as String?),
       avatarPath: profileRow['avatar_path'] as String?,
+      homeCountryCode: profileRow['home_country_code'] as String?,
       restaurantsVisited: visited.length,
       countriesVisited: visited.map((r) => r.countryName).toSet().length,
       citiesVisited: visited.map((r) => r.cityName).toSet().length,
