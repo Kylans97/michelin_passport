@@ -143,3 +143,58 @@ standing flag that a dedicated closure/relocation verification pass
 starting with the highest-profile venues) is overdue, not a one-off
 fix. Until one runs, treat every `status: open` row as "unverified
 since import," not "confirmed open."
+
+---
+
+## 5. Convention: recording a lost MICHELIN star
+
+**Decided during**: the Netherlands completeness check (September
+2026), on finding Zheng (`rest_0782`) and De Woage (`rest_0788`) both
+still operating but no longer starred in the current guide — a
+genuinely different situation from checkpoint 4 above (which is about
+closures), and one `award_history`'s `UNIQUE (entity_type, entity_id,
+guide_year, award_type)` constraint makes a real design question, not
+just a data-entry detail: the table already holds exactly one
+`guide_year: 2026` row for each, `award_value: 1`, `is_current: true`,
+and that constraint blocks inserting a second 2026 row to represent
+"now unstarred."
+
+**The two options weighed, and which one won**: overwrite the
+existing row's `award_value` to `NULL` in place (keeps one row per
+entity per guide_year, matches how every other correction this
+session was applied), or leave the row untouched and flip
+`is_current` to `false` with no replacement row. **The second one is
+the convention.** The restaurant genuinely held one star for real
+stretches of the 2026 edition — overwriting `award_value` would erase
+that this was ever true, which defeats the entire purpose of an
+append-only history table: `award_history` should still be able to
+answer "did this restaurant hold a star for part of 2026" correctly,
+even after the star is gone.
+
+**The convention, precisely**: when a restaurant loses a star while
+remaining open,
+1. `restaurants.michelin_stars` -> `NULL` (this is what "currently
+   unstarred, remains in the catalogue" means — see
+   `DATABASE_ARCHITECTURE.md` §3.3's `michelin_stars IS NULL, never
+   zero` rule).
+2. The relevant `award_history` row's `is_current` -> `false`. Do
+   **not** change its `award_value` — it stays the true historical
+   record for that `guide_year`.
+3. No new `award_history` row is inserted. A genuinely new guide
+   edition with a *different* `guide_year` would still get its own
+   row per the table's normal append-only behaviour; this convention
+   only covers a within-edition change discovered after the fact,
+   where no second `guide_year` value exists to key a new row on.
+
+**Net effect**: after this, a restaurant can have zero `is_current`
+rows in `award_history` for a given award type — which is expected
+and fine (the partial unique index only enforces uniqueness *among*
+`is_current` rows, it never requires one to exist). The restaurant's
+actual current standing lives in `restaurants.michelin_stars`, not in
+whether an `award_history` row is flagged current — `award_history`'s
+job is the timeline, not the live value.
+
+Distinct from checkpoint 4: a closure is a `restaurants.status`
+change and does not touch `award_history` at all — the venue's last
+known award stays exactly as recorded, `is_current` included, because
+it's still true right up to the day it closed.

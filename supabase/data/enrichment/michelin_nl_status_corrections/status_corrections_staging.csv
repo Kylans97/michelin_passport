@@ -1,0 +1,8 @@
+restaurant_code,name,field,old_value,new_value,source
+rest_0149,De Groene Lantaarn,status,open,permanently_closed,"Chef/hostess (Jarno Eggen/Cindy Borger) confirmed closing 3 May 2026 in press coverage; corroborated by absence from current 2-star guide listing"
+rest_0149,De Groene Lantaarn,status_since,NULL,2026-05-03,"Exact date from press coverage"
+rest_0144,Spectrum,status,open,permanently_closed,"Waldorf Astoria Amsterdam announced Spectrum's closure in press coverage; corroborated by absence from current 2-star guide listing"
+rest_0144,Spectrum,status_since,NULL,NULL (left empty - no exact date found),"Only 'eind mei 2026' (end of May 2026) confirmed across multiple press sources -- no single exact date announced. Noted in status_note instead of guessing a day."
+rest_0144,Spectrum,status_note,NULL,"Sluit eind mei 2026 na 12 jaar; Waldorf Astoria Amsterdam werkt aan nieuw dining-concept voor 2027 (Goldfinch Brasserie opent juni 2026 als vervanging).",""
+rest_0782,Zheng,michelin_stars,1,NULL,"guide.michelin.com page directly fetched and confirmed: currently listed as 'Selected', no star shown"
+rest_0788,De Woage,michelin_stars,1,NULL,"guide.michelin.com page directly fetched and confirmed: no star/Bib Gourmand designation shown, restaurant repositioned as 'Restobar'"
