@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/utils/password_rules.dart';
 import '../../core/utils/username_rules.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_text_field.dart';
@@ -210,9 +211,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             autofillHints: const [AutofillHints.newPassword],
                             textInputAction: TextInputAction.done,
                             onFieldSubmitted: (_) => _submit(),
-                            validator: (v) => (v == null || v.length < 6)
-                                ? 'Minimum 6 characters'
-                                : null,
+                            validator: PasswordRules.validate,
                           ),
 
                           if (_error != null) ...[

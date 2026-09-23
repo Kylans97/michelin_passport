@@ -19,6 +19,7 @@ import '../../models/venue_entry.dart';
 import '../friends/friends_screen.dart';
 import '../notifications/notifications_screen.dart';
 import 'change_avatar_sheet.dart';
+import 'change_password_screen.dart';
 import 'delete_account_screen.dart';
 import 'journey_card.dart';
 import 'journey_metrics.dart';
@@ -129,6 +130,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _openDeleteAccount() => Navigator.push(
     context,
     MaterialPageRoute(builder: (_) => const DeleteAccountScreen()),
+  );
+
+  void _openChangePassword() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const ChangePasswordScreen()),
   );
 
   void _openPrivacySettings() => Navigator.push(
@@ -331,6 +337,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: Icons.edit_outlined,
                     label: 'Edit profile',
                     onTap: () => _openEditProfile(user),
+                  ),
+                  _SettingsRow(
+                    icon: Icons.lock_reset_outlined,
+                    label: 'Change password',
+                    onTap: _openChangePassword,
                   ),
                   _SettingsRow(
                     icon: Icons.notifications_outlined,

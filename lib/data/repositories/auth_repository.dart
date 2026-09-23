@@ -84,4 +84,44 @@ class AuthRepository {
   Future<void> signOut() async {
     await _client.auth.signOut();
   }
+
+  // ── Change password ─────────────────────────────────────────────────────
+  //
+  // Supabase's updateUser() never asks for the current password — it trusts
+  // the caller's access token alone. That's not enough here: an unattended,
+  // already-unlocked phone would let anyone holding it lock the real owner
+  // out. So this re-authenticates with [currentPassword] first (the only
+  // password-verification primitive GoTrue actually exposes — there's no
+  // "check this password without changing the session" endpoint) and only
+  // calls updateUser() if that succeeds. A wrong [currentPassword] surfaces
+  // as its own AuthException here rather than GoTrue's generic "Invalid
+  // login credentials", so ChangePasswordScreen can show a message that
+  // actually matches what the user just typed in the wrong field.
+  Future<void> changePassword({
+    required String currentPassword,
+    required String newPassword,
+  }) async {
+    final email = currentUser?.email;
+    if (email == null) {
+      throw const AuthException(
+        'You need to be signed in to change your password.',
+      );
+    }
+    try {
+      await _client.auth.signInWithPassword(
+        email: email,
+        password: currentPassword,
+      );
+    } on AuthException {
+      throw const AuthException('Current password is incorrect.');
+    }
+    await _client.auth.updateUser(UserAttributes(password: newPassword));
+    // A password change is often prompted by suspecting someone else has
+    // access — if their session on another device just kept working, the
+    // change accomplished nothing. SignOutScope.others revokes every
+    // session except this one and (per gotrue's own doc comment on the
+    // enum) never fires a signedOut event on the current session, so this
+    // can't accidentally log the person out of the screen they're on.
+    await _client.auth.signOut(scope: SignOutScope.others);
+  }
 }
