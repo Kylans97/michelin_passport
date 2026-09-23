@@ -78,3 +78,68 @@ no `submitted_by`), these photos genuinely originate from another
 user — this is real UGC, and Apple's user-generated-content
 requirement applies to it the moment it's visible. Do not ship the
 gallery and the Report action as separate rounds.
+
+---
+
+## 3. La Paix (Brussels, `rest_0836`) is relocating 2026-09-15
+
+**Found during**: the Belgium Place ID / cuisine backfill (September
+2026, `supabase/data/enrichment/michelin_belgium_place_id/`,
+`michelin_belgium_cuisine/`). A Google Places Text Search candidate for
+La Paix was correctly rejected at the time (2,707.6 m from the address
+on file — outside the >500 m reject threshold) before a follow-up
+WebSearch surfaced why: the MICHELIN Guide's own listing states La
+Paix is moving to a new address.
+
+**The gap**: `restaurants.address`/`location` for `rest_0836` still
+hold the old Anderlecht address. Applying the rejected Place ID now
+would point the record at a location the restaurant doesn't occupy yet
+(correct after 2026-09-15, wrong before it) — worse than leaving the
+field empty, so it was deliberately left unset rather than "fixed"
+early.
+
+**New address, once the move has happened**: Corinthia Hotel Astoria –
+Brussels, Rue Royale 103, 1000 Brussels. (The Google Place ID
+candidate found for this address during the September 2026 pass was
+not independently re-verified against the *new* location — re-run the
+same name+street+city Text Search and distance check once the address
+below has been updated, rather than reusing the old candidate id
+untested.)
+
+**What to check, manually, after 2026-09-15**: update `rest_0836`'s
+`address`, `location` (coordinates), and `city_id` if the new address
+resolves to a different `cities` row, then re-run the Place ID lookup
+against the corrected address before writing `google_place_id`.
+
+---
+
+## 4. Zero Benelux restaurants or hotels are marked closed or relocated
+
+**Found during**: the same Belgium backfill pass, prompted directly by
+checkpoint 3 above — La Paix's relocation was only caught by accident
+(a Google Places distance rejection led to a WebSearch), not by
+anything in the data itself.
+
+**The gap**: across all 251 Benelux restaurants and 33 Benelux hotels,
+`status` reads `open` for every single row — 0% `temporarily_closed`,
+0% `permanently_closed` (confirmed by direct query, not assumed; see
+the Benelux inventory report from this same session). No venue has
+ever been marked closed, relocated, or under a chef change severe
+enough to affect identity, despite normal churn in high-end hospitality
+over the time this catalogue has existed. `status_since` is empty for
+every restaurant too, so there's no way to tell "checked recently, still
+open" from "never checked since import."
+
+**Why no constraint was added**: this isn't a schema gap — `status`
+and its enum already support exactly this. It's an operational gap:
+nothing has ever run a closure/relocation audit against the live
+catalogue, and there's no scheduled or semi-automated process that
+would surface one the way La Paix's was surfaced (by luck, during
+unrelated Place ID work).
+
+**What to check, manually**: no specific action per row — this is a
+standing flag that a dedicated closure/relocation verification pass
+(spot-checking a sample of the catalogue against current sources,
+starting with the highest-profile venues) is overdue, not a one-off
+fix. Until one runs, treat every `status: open` row as "unverified
+since import," not "confirmed open."

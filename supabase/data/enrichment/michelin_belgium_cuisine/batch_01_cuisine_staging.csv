@@ -1,0 +1,26 @@
+restaurant_code,name,michelin_page_text,cuisine_id,matched_cuisine_name,status,confidence
+rest_0795,Bistrot du Nord,Traditional Cuisine,314,Traditional Cuisine,matched,literal
+rest_0796,The Butcher's son,"Traditional Cuisine, Meats and Grills",314,Traditional Cuisine,matched,literal
+rest_0798,Kommilfoo,Creative French,197,French (mapped from 'Creative French'),matched,literal
+rest_0800,Nathan,Modern French,241,Modern French,matched,literal
+rest_0801,Pont neuf,Fish and Seafood,267,Seafood (mapped from 'Fish and Seafood'),matched,literal
+rest_0802,'t Fornuis,Classic Cuisine,315,Classic Cuisine,matched,literal
+rest_0803,Centpourcent,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0804,De Pastorie,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0805,Hert,"Modern French, Creative",241,Modern French,matched,literal
+rest_0806,Hof Ter Hulst,"French, Classic French",197,French,matched,literal
+rest_0807,La Belle,Creative French,197,French (mapped from 'Creative French'),matched,literal
+rest_0808,Neon,"Country cooking, Creative French",317,Country cooking,matched,literal
+rest_0809,Kelderman,"Traditional Cuisine, Fish and Seafood",314,Traditional Cuisine,matched,literal
+rest_0810,Sense,Modern French,241,Modern French,matched,literal
+rest_0811,Goffin,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0813,Tinèlle,French Contemporary,204,French Contemporary,matched,literal
+rest_0814,Bloesem,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0815,Komaf,French Contemporary,204,French Contemporary,matched,literal
+rest_0816,Vintage,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0817,Benoit en Bernard Dewitte,Modern French,241,Modern French,matched,literal
+rest_0818,Fleur de Lin,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0819,Le Julien,"French, Modern French",197,French,matched,literal
+rest_0820,Publiek,"Modern Cuisine, Seasonal Cuisine",170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0821,Hofke van Bazel,"French Contemporary, Seasonal Cuisine",204,French Contemporary,matched,literal
+rest_0822,'t Korennaer,"French, Modern Cuisine",197,French,matched,literal

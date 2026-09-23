@@ -1,0 +1,11 @@
+restaurant_code,name,michelin_page_text,cuisine_id,matched_cuisine_name,status,confidence
+rest_0797,Fine Fleur,"Creative, Modern French",308,Creative,matched,literal
+rest_0799,Misera,"Creative French, Modern French",197,French (mapped from 'Creative French'),matched,literal
+rest_0812,Hostellerie St-Nicolas,Creative,308,Creative,matched,literal
+rest_0836,La Paix,,,,left_empty_low_confidence_source,"NO_TEXT: page 404'd on every URL/locale tried. Separately: restaurant is relocating 2026-09-15 to Rue Royale 103, Brussels — see MODERATION_MANUAL_CHECKPOINTS.md"
+rest_0846,Aurum by Gary Kirchens,,,,left_empty_low_confidence_source,"NO_TEXT: page 404'd on every URL/locale tried (th, tr locales)"
+rest_0850,Hostellerie Vivendum,"Modern Cuisine, Modern French",170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0872,Le Roannay,Modern French,241,Modern French,matched,literal
+rest_0875,Zur Post,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0876,Chai Gourmand,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0894,Le Cor de Chasse,Creative,308,Creative,matched,literal

@@ -1,0 +1,66 @@
+restaurant_code,name,michelin_page_text,cuisine_id,matched_cuisine_name,status,confidence
+rest_0823,Moscou by Danny Horseele,Modern French,241,Modern French,matched,literal
+rest_0824,Bar Bulot Zedelgem,"Classic Cuisine, Belgian",315,Classic Cuisine,matched,literal
+rest_0825,Boo Raan,"Thai, Traditional Cuisine",314,Traditional Cuisine,matched,literal
+rest_0826,Carcasse,Meats and Grills,316,Meats and Grills,matched,literal
+rest_0827,De Zuidkant,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0828,HAUT,"Modern French, Asian Influences",241,Modern French,matched,literal
+rest_0829,L'Envie,Modern French,241,Modern French,matched,literal
+rest_0830,Mémoire,,,,left_empty_low_confidence_source,"LOW_CONFIDENCE source (WebSearch AI summary, page 404'd) — left empty per user instruction; retry in ~1 week"
+rest_0831,Rebelle,"Modern Cuisine, Creative French",170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0832,Sans Cravate,"Creative French, Creative",197,French (mapped from 'Creative French'),matched,literal
+rest_0833,Cuines 33,Creative,308,Creative,matched,literal
+rest_0834,L'air du temps,"Creative, Modern Cuisine",308,Creative,matched,literal
+rest_0835,Arabelle Meirlaen,"Organic, Creative",318,Organic,matched,literal
+rest_0837,The Jane,"Creative, Asian Influences",308,Creative,matched,literal
+rest_0838,Comme chez Soi,Classic Cuisine,315,Classic Cuisine,matched,literal
+rest_0839,Sel Gris,"Creative, Contemporary",308,Creative,matched,literal
+rest_0840,Table d'Amis,,,,left_empty_low_confidence_source,"LOW_CONFIDENCE source (WebSearch AI summary, page 404'd) — left empty per user instruction; retry in ~1 week"
+rest_0841,Vol-Ver,"Modern Cuisine, French Contemporary",170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0842,Willem Hiele,"Creative, Seasonal Cuisine",308,Creative,matched,literal
+rest_0843,Zet'Joe by Geert Van Hecke,Creative French,197,French (mapped from 'Creative French'),matched,literal
+rest_0844,Subtiel,"Classic Cuisine, Fish and Seafood",315,Classic Cuisine,matched,literal
+rest_0845,Alter,Creative,308,Creative,matched,literal
+rest_0847,De Kristalijn,Modern French,241,Modern French,matched,literal
+rest_0848,De Mijlpaal,"Creative, French Contemporary",308,Creative,matched,literal
+rest_0849,Hoeve De Bies,Modern French,241,Modern French,matched,literal
+rest_0851,Innesto,Creative,308,Creative,matched,literal
+rest_0852,JER,"Modern Cuisine, Contemporary",170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0853,La Botte,Italian,223,Italian,matched,literal
+rest_0854,Modest,"Creative French, Modern French",197,French (mapped from 'Creative French'),matched,literal
+rest_0855,Ogst,Modern French,241,Modern French,matched,literal
+rest_0856,Melchior,Modern French,241,Modern French,matched,literal
+rest_0857,Agnes,Modern French,241,Modern French,matched,literal
+rest_0858,EST,Frans,196,Frans,matched,literal
+rest_0859,Atelier Noun,"Modern French, Fusion",241,Modern French,matched,literal
+rest_0860,Barge,"Organic, Farm to table",318,Organic,matched,literal
+rest_0861,Da Mimmo,Italian Contemporary,224,Italian Contemporary,matched,literal
+rest_0862,Eliane,Creative,308,Creative,matched,literal
+rest_0863,humus x hortense,"Creative, Organic",308,Creative,matched,literal
+rest_0864,Kamo,"Japanese, Sushi",226,Japanese,matched,literal
+rest_0865,La Villa in the Sky,"Creative, Organic",308,Creative,matched,literal
+rest_0866,Les Gourmands,Classic Cuisine,315,Classic Cuisine,matched,literal
+rest_0867,Le Vieux Château,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0868,l'Impératif d'Éole,French Contemporary,204,French Contemporary,matched,literal
+rest_0869,Vicomté,Modern French,241,Modern French,matched,literal
+rest_0870,Au Gré du Vent,Farm to table,319,Farm to table,matched,literal
+rest_0871,Le Coq aux Champs,Creative French,197,French (mapped from 'Creative French'),matched,literal
+rest_0873,Quadras,"Creative, French Contemporary",308,Creative,matched,literal
+rest_0874,¡Toma!,Creative,308,Creative,matched,literal
+rest_0877,Pré de chez vous,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0878,Le Beau Rivage by Curtis,Modern French,241,Modern French,matched,literal
+rest_0879,La Grange d'Hamois,"Modern French, Classic French",241,Modern French,matched,literal
+rest_0880,Attablez-vous,"Creative French, Modern French",197,French (mapped from 'Creative French'),matched,literal
+rest_0881,l'Essentiel,Creative French,197,French (mapped from 'Creative French'),matched,literal
+rest_0882,Arden,French Contemporary,204,French Contemporary,matched,literal
+rest_0883,La Table-Lasne by Alain Bianchin,"French, Creative French",197,French,matched,literal
+rest_0884,Maison Marit,Classic French,203,Classic French,matched,literal
+rest_0885,Philippe Meyers,Modern French,241,Modern French,matched,literal
+rest_0886,Bistro Racine,Modern Cuisine,170,Contemporary (mapped from 'Modern Cuisine'),matched,literal
+rest_0887,Aux petits oignons,"Modern French, French",241,Modern French,matched,literal
+rest_0888,La Grappe d'Or,"French Contemporary, Creative French",204,French Contemporary,matched,literal
+rest_0889,Le Grand Verre,"Modern French, International",241,Modern French,matched,literal
+rest_0890,La Table de Manon,,,,left_empty_low_confidence_source,"NO_TEXT: no working URL found anywhere, no literal Cuisine: tag recoverable; retry in ~1 week"
+rest_0891,Bistrot Blaise,French Contemporary,204,French Contemporary,matched,literal
+rest_0892,Les Pieds dans le Plat,"Classic Cuisine, Modern Cuisine",315,Classic Cuisine,matched,literal
+rest_0893,Le Gastronome,"Contemporary, Farm to table",319,Farm to table,matched,literal
