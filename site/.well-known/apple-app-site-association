@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appID": "QMF89BFNGF.app.mantelier",
+        "components": [
+          { "/": "/auth/reset-password" }
+        ]
+      }
+    ]
+  }
+}
