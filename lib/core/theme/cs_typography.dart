@@ -26,12 +26,25 @@ import '../constants/app_colors.dart';
 class CsTypography {
   CsTypography._();
 
+  /// Forces lining figures (digits aligned to cap-height, all the same
+  /// height, no descenders) on every Cormorant Garamond role below.
+  /// Without this, a title like "THE WORLD'S 50 BEST" renders its "50"
+  /// visibly lower/smaller than the surrounding capitals — the font falls
+  /// back to oldstyle figures (designed to blend into lowercase text,
+  /// varying height/baseline) in this weight as served by google_fonts,
+  /// even though the family's own default is documented as lining. A
+  /// no-op for any title with no digits in it, so this is safe to apply
+  /// everywhere Cormorant Garamond is used, not just call sites that
+  /// happen to contain a number today.
+  static const _liningFigures = [FontFeature.enable('lnum')];
+
   /// DISPLAY HERO — Cormorant Garamond, Semibold, 40 / 42.
   static TextStyle get displayHero => GoogleFonts.cormorantGaramond(
     color: AppColors.charcoal,
     fontSize: 40,
     fontWeight: FontWeight.w600,
     height: 42 / 40,
+    fontFeatures: _liningFigures,
   );
 
   /// SCREEN TITLE — Cormorant Garamond, Semibold, 32 / 36.
@@ -40,6 +53,7 @@ class CsTypography {
     fontSize: 32,
     fontWeight: FontWeight.w600,
     height: 36 / 32,
+    fontFeatures: _liningFigures,
   );
 
   /// SECTION TITLE — Cormorant Garamond, Semibold, 28 / 32.
@@ -48,6 +62,7 @@ class CsTypography {
     fontSize: 28,
     fontWeight: FontWeight.w600,
     height: 32 / 28,
+    fontFeatures: _liningFigures,
   );
 
   /// PLACE TITLE — Cormorant Garamond, Semibold, 22 / 26. A restaurant/
@@ -57,6 +72,7 @@ class CsTypography {
     fontSize: 22,
     fontWeight: FontWeight.w600,
     height: 26 / 22,
+    fontFeatures: _liningFigures,
   );
 
   /// LARGE METRIC — Cormorant Garamond, Semibold, 28 / 32. A serif numeral
@@ -69,6 +85,7 @@ class CsTypography {
     fontSize: 28,
     fontWeight: FontWeight.w600,
     height: 32 / 28,
+    fontFeatures: _liningFigures,
   );
 
   /// BODY — Inter, Regular, 16 / 24.

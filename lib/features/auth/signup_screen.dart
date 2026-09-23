@@ -122,120 +122,125 @@ class _SignupScreenState extends State<SignupScreen> {
       body: SafeArea(
         child: Stack(
           children: [
-            SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.xxl,
-                CsSpacing.hero,
-                CsSpacing.xxl,
-                CsSpacing.xxl,
-              ),
-              child: _success
-                  ? const _CheckInboxBody()
-                  : Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          const AuthBrandHeader(
-                            compact: true,
-                            tagline: 'Create your account.',
-                          ),
-                          const SizedBox(height: CsSpacing.xxl),
-
-                          CsTextField(
-                            label: 'Name',
-                            controller: _nameCtrl,
-                            hintText: 'Jane Doe',
-                            textCapitalization: TextCapitalization.words,
-                            autofillHints: const [AutofillHints.name],
-                            textInputAction: TextInputAction.next,
-                            onFieldSubmitted: (_) =>
-                                _usernameFocus.requestFocus(),
-                            validator: (v) => (v == null || v.trim().isEmpty)
-                                ? 'Enter your name'
-                                : null,
-                          ),
-                          const SizedBox(height: CsSpacing.lg),
-                          CsTextField(
-                            label: 'Username',
-                            controller: _usernameCtrl,
-                            focusNode: _usernameFocus,
-                            hintText: 'kylan.s',
-                            keyboardType: TextInputType.visiblePassword,
-                            textInputAction: TextInputAction.next,
-                            onFieldSubmitted: (_) => _emailFocus.requestFocus(),
-                            onChanged: _onUsernameChanged,
-                            validator: (v) => UsernameRules.validate(
-                              UsernameRules.normalize(v ?? ''),
-                            ),
-                          ),
-                          if (_usernameAvailable != null &&
-                              _usernameChecked ==
-                                  UsernameRules.normalize(
-                                    _usernameCtrl.text,
-                                  )) ...[
-                            const SizedBox(height: CsSpacing.xs),
-                            Text(
-                              _usernameAvailable!
-                                  ? 'Available'
-                                  : 'That username is already taken',
-                              style: CsTypography.metadata.copyWith(
-                                color: _usernameAvailable!
-                                    ? AppColors.secondaryOnDark
-                                    : AppColors.error,
-                              ),
-                            ),
-                          ],
-                          const SizedBox(height: CsSpacing.lg),
-                          CsTextField(
-                            label: 'Email',
-                            controller: _emailCtrl,
-                            focusNode: _emailFocus,
-                            hintText: 'you@example.com',
-                            keyboardType: TextInputType.emailAddress,
-                            autofillHints: const [AutofillHints.email],
-                            textInputAction: TextInputAction.next,
-                            onFieldSubmitted: (_) => _passFocus.requestFocus(),
-                            validator: (v) => (v == null || !v.contains('@'))
-                                ? 'Enter a valid email'
-                                : null,
-                          ),
-                          const SizedBox(height: CsSpacing.lg),
-                          CsTextField(
-                            label: 'Password',
-                            controller: _passCtrl,
-                            focusNode: _passFocus,
-                            obscureText: true,
-                            showVisibilityToggle: true,
-                            hintText: 'Minimum 6 characters',
-                            autofillHints: const [AutofillHints.newPassword],
-                            textInputAction: TextInputAction.done,
-                            onFieldSubmitted: (_) => _submit(),
-                            validator: PasswordRules.validate,
-                          ),
-
-                          if (_error != null) ...[
-                            const SizedBox(height: CsSpacing.base),
-                            AuthErrorBanner(message: _error!),
-                          ],
-
-                          const SizedBox(height: CsSpacing.xl),
-                          CsPrimaryButton(
-                            label: 'Create account',
-                            onTap: _submit,
-                            loading: _loading,
-                          ),
-                          const SizedBox(height: CsSpacing.xxl),
-
-                          SecondaryAuthLink(
-                            question: 'Already a member?',
-                            actionLabel: 'Sign in',
-                            onTap: () => Navigator.pop(context),
-                          ),
-                        ],
+            // _success renders through Center, not this
+            // SingleChildScrollView — a SingleChildScrollView never
+            // centers a child shorter than the viewport, it just pins it
+            // to the top, which is exactly wrong for a short confirmation
+            // like _CheckInboxBody. The form itself still needs to
+            // scroll (keyboard open on a short device), so that branch
+            // keeps the SingleChildScrollView.
+            if (_success)
+              const Center(child: _CheckInboxBody())
+            else
+              SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.xxl,
+                  CsSpacing.hero,
+                  CsSpacing.xxl,
+                  CsSpacing.xxl,
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      const AuthBrandHeader(
+                        compact: true,
+                        tagline: 'Create your account.',
                       ),
-                    ),
-            ),
+                      const SizedBox(height: CsSpacing.xxl),
+
+                      CsTextField(
+                        label: 'Name',
+                        controller: _nameCtrl,
+                        hintText: 'Jane Doe',
+                        textCapitalization: TextCapitalization.words,
+                        autofillHints: const [AutofillHints.name],
+                        textInputAction: TextInputAction.next,
+                        onFieldSubmitted: (_) => _usernameFocus.requestFocus(),
+                        validator: (v) => (v == null || v.trim().isEmpty)
+                            ? 'Enter your name'
+                            : null,
+                      ),
+                      const SizedBox(height: CsSpacing.lg),
+                      CsTextField(
+                        label: 'Username',
+                        controller: _usernameCtrl,
+                        focusNode: _usernameFocus,
+                        hintText: 'kylan.s',
+                        keyboardType: TextInputType.visiblePassword,
+                        textInputAction: TextInputAction.next,
+                        onFieldSubmitted: (_) => _emailFocus.requestFocus(),
+                        onChanged: _onUsernameChanged,
+                        validator: (v) => UsernameRules.validate(
+                          UsernameRules.normalize(v ?? ''),
+                        ),
+                      ),
+                      if (_usernameAvailable != null &&
+                          _usernameChecked ==
+                              UsernameRules.normalize(_usernameCtrl.text)) ...[
+                        const SizedBox(height: CsSpacing.xs),
+                        Text(
+                          _usernameAvailable!
+                              ? 'Available'
+                              : 'That username is already taken',
+                          style: CsTypography.metadata.copyWith(
+                            color: _usernameAvailable!
+                                ? AppColors.secondaryOnDark
+                                : AppColors.error,
+                          ),
+                        ),
+                      ],
+                      const SizedBox(height: CsSpacing.lg),
+                      CsTextField(
+                        label: 'Email',
+                        controller: _emailCtrl,
+                        focusNode: _emailFocus,
+                        hintText: 'you@example.com',
+                        keyboardType: TextInputType.emailAddress,
+                        autofillHints: const [AutofillHints.email],
+                        textInputAction: TextInputAction.next,
+                        onFieldSubmitted: (_) => _passFocus.requestFocus(),
+                        validator: (v) => (v == null || !v.contains('@'))
+                            ? 'Enter a valid email'
+                            : null,
+                      ),
+                      const SizedBox(height: CsSpacing.lg),
+                      CsTextField(
+                        label: 'Password',
+                        controller: _passCtrl,
+                        focusNode: _passFocus,
+                        obscureText: true,
+                        showVisibilityToggle: true,
+                        hintText: 'Minimum 6 characters',
+                        autofillHints: const [AutofillHints.newPassword],
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: (_) => _submit(),
+                        validator: PasswordRules.validate,
+                      ),
+
+                      if (_error != null) ...[
+                        const SizedBox(height: CsSpacing.base),
+                        AuthErrorBanner(message: _error!),
+                      ],
+
+                      const SizedBox(height: CsSpacing.xl),
+                      CsPrimaryButton(
+                        label: 'Create account',
+                        onTap: _submit,
+                        loading: _loading,
+                      ),
+                      const SizedBox(height: CsSpacing.xxl),
+
+                      SecondaryAuthLink(
+                        question: 'Already a member?',
+                        actionLabel: 'Sign in',
+                        onTap: () => Navigator.pop(context),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             Positioned(
               left: CsSpacing.base,
               top: CsSpacing.sm,
@@ -259,8 +264,14 @@ class _CheckInboxBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(top: CsSpacing.hero),
+    padding: const EdgeInsets.symmetric(horizontal: CsSpacing.xxl),
     child: Column(
+      // MainAxisSize.min, not the Column default of .max: under Center's
+      // loose constraints, a .max Column still expands to fill the whole
+      // available height, leaving nothing shorter for Center to actually
+      // center — the exact same top-pinned bug this whole change exists
+      // to fix, just moved one level down.
+      mainAxisSize: MainAxisSize.min,
       children: [
         const Icon(
           Icons.mail_outline_rounded,

@@ -11,8 +11,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:michelin_passport/features/profile/change_password_screen.dart';
 
-typedef _ChangePasswordCall =
-    ({String currentPassword, String newPassword});
+typedef _ChangePasswordCall = ({String currentPassword, String newPassword});
 
 Future<void> _pumpPushed(
   WidgetTester tester, {
@@ -62,7 +61,11 @@ void main() {
   group('ChangePasswordScreen', () {
     testWidgets('renders the icon, title, body copy, three fields and both '
         'actions', (tester) async {
-      await _pumpPushed(tester, changePassword: ({required currentPassword, required newPassword}) async {});
+      await _pumpPushed(
+        tester,
+        changePassword:
+            ({required currentPassword, required newPassword}) async {},
+      );
       expect(find.byIcon(Icons.lock_reset_outlined), findsOneWidget);
       expect(find.text('Change password'), findsNWidgets(2)); // title + button
       expect(find.text('Current password'), findsOneWidget);
@@ -76,9 +79,10 @@ void main() {
       var calls = 0;
       await _pumpPushed(
         tester,
-        changePassword: ({required currentPassword, required newPassword}) async {
-          calls++;
-        },
+        changePassword:
+            ({required currentPassword, required newPassword}) async {
+              calls++;
+            },
       );
       await _fillFields(tester, current: '');
       await tester.ensureVisible(find.text('Change password').last);
@@ -95,9 +99,10 @@ void main() {
       var calls = 0;
       await _pumpPushed(
         tester,
-        changePassword: ({required currentPassword, required newPassword}) async {
-          calls++;
-        },
+        changePassword:
+            ({required currentPassword, required newPassword}) async {
+              calls++;
+            },
       );
       await _fillFields(tester, next: 'abc12', confirm: 'abc12');
       await tester.ensureVisible(find.text('Change password').last);
@@ -112,11 +117,16 @@ void main() {
       var calls = 0;
       await _pumpPushed(
         tester,
-        changePassword: ({required currentPassword, required newPassword}) async {
-          calls++;
-        },
+        changePassword:
+            ({required currentPassword, required newPassword}) async {
+              calls++;
+            },
       );
-      await _fillFields(tester, next: 'newpassword123', confirm: 'somethingelse');
+      await _fillFields(
+        tester,
+        next: 'newpassword123',
+        confirm: 'somethingelse',
+      );
       await tester.ensureVisible(find.text('Change password').last);
       await tester.tap(find.text('Change password').last);
       await tester.pump();
@@ -131,9 +141,13 @@ void main() {
       final calls = <_ChangePasswordCall>[];
       await _pumpPushed(
         tester,
-        changePassword: ({required currentPassword, required newPassword}) async {
-          calls.add((currentPassword: currentPassword, newPassword: newPassword));
-        },
+        changePassword:
+            ({required currentPassword, required newPassword}) async {
+              calls.add((
+                currentPassword: currentPassword,
+                newPassword: newPassword,
+              ));
+            },
       );
       await _fillFields(tester, current: 'oldpassword', next: 'newpassword123');
       await tester.ensureVisible(find.text('Change password').last);
@@ -150,15 +164,29 @@ void main() {
       expect(find.textContaining('other devices'), findsOneWidget);
       // The form is gone — no stray field labels left behind.
       expect(find.text('Current password'), findsNothing);
+
+      // Regression: _SuccessBody used to render through
+      // crossAxisAlignment.start inside a SingleChildScrollView — left-
+      // aligned and pinned to the top, not the centered confirmation a
+      // "your password changed" screen should read as. Measuring the
+      // actual on-screen position, not just presence of the text.
+      // MaterialApp, not Scaffold — _pumpPushed's root screen and
+      // ChangePasswordScreen both have their own Scaffold, and both are
+      // still in the tree once pushed (Navigator keeps prior routes
+      // mounted), so find.byType(Scaffold) would match two.
+      final screenCenterX = tester.getRect(find.byType(MaterialApp)).center.dx;
+      final titleCenterX = tester.getCenter(find.text('Password changed')).dx;
+      expect(titleCenterX, closeTo(screenCenterX, 1.0));
     });
 
     testWidgets('a wrong current password shows a specific, restrained '
         'error and never shows the success view', (tester) async {
       await _pumpPushed(
         tester,
-        changePassword: ({required currentPassword, required newPassword}) async {
-          throw const AuthException('Current password is incorrect.');
-        },
+        changePassword:
+            ({required currentPassword, required newPassword}) async {
+              throw const AuthException('Current password is incorrect.');
+            },
       );
       await _fillFields(tester);
       await tester.ensureVisible(find.text('Change password').last);
@@ -173,9 +201,10 @@ void main() {
         'leaks the raw exception', (tester) async {
       await _pumpPushed(
         tester,
-        changePassword: ({required currentPassword, required newPassword}) async {
-          throw Exception('connection reset');
-        },
+        changePassword:
+            ({required currentPassword, required newPassword}) async {
+              throw Exception('connection reset');
+            },
       );
       await _fillFields(tester);
       await tester.ensureVisible(find.text('Change password').last);
@@ -196,9 +225,10 @@ void main() {
       var calls = 0;
       await _pumpPushed(
         tester,
-        changePassword: ({required currentPassword, required newPassword}) async {
-          calls++;
-        },
+        changePassword:
+            ({required currentPassword, required newPassword}) async {
+              calls++;
+            },
       );
       await tester.ensureVisible(find.text('Cancel'));
       await tester.tap(find.text('Cancel'));
@@ -212,7 +242,8 @@ void main() {
     ) async {
       await _pumpPushed(
         tester,
-        changePassword: ({required currentPassword, required newPassword}) async {},
+        changePassword:
+            ({required currentPassword, required newPassword}) async {},
       );
       await _fillFields(tester);
       await tester.ensureVisible(find.text('Change password').last);

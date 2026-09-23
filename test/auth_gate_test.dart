@@ -66,13 +66,18 @@ void main() {
       expect(find.text('App'), findsNothing);
     });
 
-    testWidgets('a signedIn session shows the app', (tester) async {
+    testWidgets('a signedIn session for an account that has already seen '
+        'the welcome flow shows the app', (tester) async {
       final controller = StreamController<AuthState>.broadcast();
       addTearDown(controller.close);
       await tester.pumpWidget(
         MaterialApp(
           home: AuthGate(
             authStateChanges: controller.stream,
+            // Passed straight through to OnboardingGate (see AuthGate's
+            // own doc comment on these two params) so this never falls
+            // back to a real ProfileRepository/Supabase.instance call.
+            hasSeenWelcome: (userId) async => true,
             child: const Text('App'),
           ),
         ),
@@ -80,6 +85,12 @@ void main() {
       controller.add(
         AuthState(AuthChangeEvent.signedIn, _fakeSession()),
       );
+      // Two pumps, not pumpAndSettle: OnboardingGate shows BrandedSplash
+      // (its own infinitely-animating spinner, same as AuthGate's own)
+      // for the one microtask its hasSeenWelcome check takes — settle
+      // would never terminate while that's on screen. One pump lands on
+      // the splash; the second lets the check's Future resolve.
+      await tester.pump();
       await tester.pump();
       expect(find.text('App'), findsOneWidget);
       expect(find.byType(LoginScreen), findsNothing);

@@ -12,6 +12,11 @@ import '../../../core/widgets/subtle_text_action.dart';
 /// HotelDetailScreen already use — see Chef Detail's own screen file) —
 /// this widget stays presentation-only and pure/testable. Omits itself
 /// entirely when neither [onTapInstagram] nor [onTapWebsite] is supplied.
+///
+/// Passes [SubtleTextAction]'s own [CsTypography.metadata] override — see
+/// that widget's doc comment for why: at the widget's default 12px, these
+/// two links (rendered here as plain stacked text, no icon or toolbar
+/// grid) read as uncomfortably small.
 class PrivateChefConnectSection extends StatelessWidget {
   final VoidCallback? onTapInstagram;
   final VoidCallback? onTapWebsite;
@@ -21,6 +26,11 @@ class PrivateChefConnectSection extends StatelessWidget {
     this.onTapInstagram,
     this.onTapWebsite,
   });
+
+  static final _linkStyle = CsTypography.metadata.copyWith(
+    color: AppColors.forestGreen,
+    fontWeight: FontWeight.w600,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +46,17 @@ class PrivateChefConnectSection extends StatelessWidget {
         ),
         const SizedBox(height: CsSpacing.sm),
         if (onTapInstagram != null)
-          SubtleTextAction(label: 'Instagram', onTap: onTapInstagram!),
+          SubtleTextAction(
+            label: 'Instagram',
+            onTap: onTapInstagram!,
+            labelStyle: _linkStyle,
+          ),
         if (onTapWebsite != null)
-          SubtleTextAction(label: 'Website', onTap: onTapWebsite!),
+          SubtleTextAction(
+            label: 'Website',
+            onTap: onTapWebsite!,
+            labelStyle: _linkStyle,
+          ),
       ],
     );
   }

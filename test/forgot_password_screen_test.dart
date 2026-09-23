@@ -15,9 +15,7 @@ void main() {
     testWidgets('renders the title, body copy, email field and submit '
         'action', (tester) async {
       await tester.pumpWidget(
-        _wrap(
-          ForgotPasswordScreen(resetPasswordForEmail: (email) async {}),
-        ),
+        _wrap(ForgotPasswordScreen(resetPasswordForEmail: (email) async {})),
       );
       expect(find.text('Reset your password'), findsOneWidget);
       expect(find.text('Email'), findsOneWidget);
@@ -29,9 +27,7 @@ void main() {
       var calls = 0;
       await tester.pumpWidget(
         _wrap(
-          ForgotPasswordScreen(
-            resetPasswordForEmail: (email) async => calls++,
-          ),
+          ForgotPasswordScreen(resetPasswordForEmail: (email) async => calls++),
         ),
       );
       await tester.enterText(find.byType(TextFormField).first, 'not-an-email');
@@ -69,6 +65,14 @@ void main() {
       // or not.
       expect(find.textContaining('does not exist'), findsNothing);
       expect(find.textContaining('not found'), findsNothing);
+
+      // Regression: _CheckInboxBody used to render through a
+      // SingleChildScrollView, which pins a short child to the top-left
+      // of the viewport instead of centering it. Measuring the actual
+      // on-screen position, not just presence of the text.
+      final screenCenterX = tester.getRect(find.byType(Scaffold)).center.dx;
+      final titleCenterX = tester.getCenter(find.text('Check your inbox')).dx;
+      expect(titleCenterX, closeTo(screenCenterX, 1.0));
     });
 
     testWidgets('shows the SAME neutral confirmation even when the '

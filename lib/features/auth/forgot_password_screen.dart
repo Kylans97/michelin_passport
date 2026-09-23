@@ -74,63 +74,68 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       body: SafeArea(
         child: Stack(
           children: [
-            SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.xxl,
-                CsSpacing.hero,
-                CsSpacing.xxl,
-                CsSpacing.xxl,
-              ),
-              child: _sent
-                  ? const _CheckInboxBody()
-                  : Form(
-                      key: _formKey,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: [
-                          Text(
-                            'Reset your password',
-                            textAlign: TextAlign.center,
-                            style: CsTypography.screenTitle.copyWith(
-                              color: AppColors.ivory,
-                            ),
-                          ),
-                          const SizedBox(height: CsSpacing.sm),
-                          Text(
-                            "Enter your account's email and we'll send you "
-                            'a link to set a new password.',
-                            textAlign: TextAlign.center,
-                            style: CsTypography.body.copyWith(
-                              color: AppColors.secondaryOnDark,
-                            ),
-                          ),
-                          const SizedBox(height: CsSpacing.xxl),
-                          CsTextField(
-                            label: 'Email',
-                            controller: _emailCtrl,
-                            hintText: 'you@example.com',
-                            keyboardType: TextInputType.emailAddress,
-                            autofillHints: const [AutofillHints.email],
-                            textInputAction: TextInputAction.done,
-                            onFieldSubmitted: (_) => _submit(),
-                            validator: (v) => (v == null || !v.contains('@'))
-                                ? 'Enter a valid email'
-                                : null,
-                          ),
-                          if (_error != null) ...[
-                            const SizedBox(height: CsSpacing.base),
-                            AuthErrorBanner(message: _error!),
-                          ],
-                          const SizedBox(height: CsSpacing.xl),
-                          CsPrimaryButton(
-                            label: 'Send reset link',
-                            onTap: _submit,
-                            loading: _loading,
-                          ),
-                        ],
+            // _sent renders through Center, not this SingleChildScrollView
+            // — see SignupScreen's identical fix/comment on its own
+            // _CheckInboxBody for why a SingleChildScrollView never
+            // centers a short child.
+            if (_sent)
+              const Center(child: _CheckInboxBody())
+            else
+              SingleChildScrollView(
+                padding: const EdgeInsets.fromLTRB(
+                  CsSpacing.xxl,
+                  CsSpacing.hero,
+                  CsSpacing.xxl,
+                  CsSpacing.xxl,
+                ),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'Reset your password',
+                        textAlign: TextAlign.center,
+                        style: CsTypography.screenTitle.copyWith(
+                          color: AppColors.ivory,
+                        ),
                       ),
-                    ),
-            ),
+                      const SizedBox(height: CsSpacing.sm),
+                      Text(
+                        "Enter your account's email and we'll send you "
+                        'a link to set a new password.',
+                        textAlign: TextAlign.center,
+                        style: CsTypography.body.copyWith(
+                          color: AppColors.secondaryOnDark,
+                        ),
+                      ),
+                      const SizedBox(height: CsSpacing.xxl),
+                      CsTextField(
+                        label: 'Email',
+                        controller: _emailCtrl,
+                        hintText: 'you@example.com',
+                        keyboardType: TextInputType.emailAddress,
+                        autofillHints: const [AutofillHints.email],
+                        textInputAction: TextInputAction.done,
+                        onFieldSubmitted: (_) => _submit(),
+                        validator: (v) => (v == null || !v.contains('@'))
+                            ? 'Enter a valid email'
+                            : null,
+                      ),
+                      if (_error != null) ...[
+                        const SizedBox(height: CsSpacing.base),
+                        AuthErrorBanner(message: _error!),
+                      ],
+                      const SizedBox(height: CsSpacing.xl),
+                      CsPrimaryButton(
+                        label: 'Send reset link',
+                        onTap: _submit,
+                        loading: _loading,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             Positioned(
               left: CsSpacing.base,
               top: CsSpacing.sm,
@@ -153,8 +158,11 @@ class _CheckInboxBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.only(top: CsSpacing.hero),
+    padding: const EdgeInsets.symmetric(horizontal: CsSpacing.xxl),
     child: Column(
+      // MainAxisSize.min — see SignupScreen's own _CheckInboxBody for why
+      // this is required for Center to actually center a short child.
+      mainAxisSize: MainAxisSize.min,
       children: [
         const Icon(
           Icons.mail_outline_rounded,

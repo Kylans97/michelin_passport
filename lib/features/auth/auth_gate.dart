@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../../core/constants/app_colors.dart';
-import '../../core/widgets/cs_image_placeholder.dart' show csMonogramAssetPath;
+import '../../core/widgets/branded_splash.dart';
+import '../onboarding/onboarding_gate.dart';
 import 'login_screen.dart';
 import 'reset_password_screen.dart';
 
-// AuthGate listens to Supabase's auth state stream and shows the main app,
-// the login screen, or — mid password recovery — ResetPasswordScreen.
-// Swap the session-null branch to show an onboarding flow later.
+// AuthGate listens to Supabase's auth state stream and shows the main app
+// (behind OnboardingGate — see below), the login screen, or — mid password
+// recovery — ResetPasswordScreen.
 //
 // A StatefulWidget with its own subscription, not a StreamBuilder, because
 // "are we mid password recovery" has to survive events that aren't
@@ -23,10 +22,16 @@ import 'reset_password_screen.dart';
 // completePasswordRecovery's own explicit sign-out triggers once the flow
 // actually finishes) — nothing in between resets it.
 class AuthGate extends StatefulWidget {
-  const AuthGate({super.key, required this.child, this.authStateChanges});
+  const AuthGate({
+    super.key,
+    required this.child,
+    this.authStateChanges,
+    this.hasSeenWelcome,
+    this.markWelcomeSeen,
+  });
 
-  // The main app scaffold — shown when a session is active and no password
-  // recovery is in progress.
+  // The main app scaffold — shown (via OnboardingGate) when a session is
+  // active and no password recovery is in progress.
   final Widget child;
 
   // Defaults to the real Supabase.instance.client.auth.onAuthStateChange —
@@ -36,6 +41,14 @@ class AuthGate extends StatefulWidget {
   // driven directly, without reaching into gotrue's own @internal
   // notifyAllSubscribers to fake a stream event.
   final Stream<AuthState>? authStateChanges;
+
+  // Pure pass-through to the OnboardingGate this class renders once a
+  // session exists — AuthGate itself has no opinion on welcome-flow state,
+  // this only exists so a test can drive a signedIn session all the way to
+  // `child` without OnboardingGate falling back to a real
+  // ProfileRepository/Supabase.instance call.
+  final Future<bool> Function(String userId)? hasSeenWelcome;
+  final Future<void> Function(String userId)? markWelcomeSeen;
 
   @override
   State<AuthGate> createState() => _AuthGateState();
@@ -81,46 +94,20 @@ class _AuthGateState extends State<AuthGate> {
 
   @override
   Widget build(BuildContext context) {
-    if (!_hasEvent) return const _SplashScreen();
+    if (!_hasEvent) return const BrandedSplash();
     if (_passwordRecoveryPending && _session != null) {
       return const ResetPasswordScreen();
     }
-    return _session != null ? widget.child : const LoginScreen();
-  }
-}
-
-// Shown only for the brief moment before Supabase's auth stream emits its
-// first event — the same deep-green entrance canvas as LoginScreen/
-// SignupScreen (Step 4A), so there's no flash of the old ivory theme before
-// the branded screens appear.
-class _SplashScreen extends StatelessWidget {
-  const _SplashScreen();
-
-  @override
-  Widget build(BuildContext context) {
-    return ColoredBox(
-      color: AppColors.deepGreen,
-      child: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // Same whitespace-in-the-asset correction as AuthBrandHeader
-            // (auth_presentation.dart) — matched to its non-compact 80px
-            // so the mark reads consistently across the splash-to-login
-            // transition, not smaller on the splash that precedes it.
-            SvgPicture.asset(csMonogramAssetPath, width: 80, height: 80),
-            const SizedBox(height: 24),
-            const SizedBox(
-              width: 20,
-              height: 20,
-              child: CircularProgressIndicator(
-                color: AppColors.textOnDark,
-                strokeWidth: 1.5,
-              ),
-            ),
-          ],
-        ),
-      ),
+    final session = _session;
+    if (session == null) return const LoginScreen();
+    // OnboardingGate owns "has THIS account completed the welcome flow" —
+    // a separate concern from auth state, kept out of this class so it
+    // doesn't grow a third sticky flag alongside password recovery.
+    return OnboardingGate(
+      userId: session.user.id,
+      hasSeenWelcome: widget.hasSeenWelcome,
+      markWelcomeSeen: widget.markWelcomeSeen,
+      child: widget.child,
     );
   }
 }

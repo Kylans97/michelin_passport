@@ -99,15 +99,23 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             ),
           ),
           Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.fromLTRB(
-                CsSpacing.pageHorizontal,
-                CsSpacing.lg,
-                CsSpacing.pageHorizontal,
-                CsSpacing.section,
-              ),
-              child: _success ? _SuccessBody(onDone: () => Navigator.pop(context)) : _buildForm(),
-            ),
+            // _success renders through Center, not the SingleChildScrollView
+            // the form uses — a SingleChildScrollView never centers a child
+            // shorter than the viewport, it just pins it to the top (see
+            // SignupScreen's own _CheckInboxBody fix for the same issue).
+            child: _success
+                ? Center(
+                    child: _SuccessBody(onDone: () => Navigator.pop(context)),
+                  )
+                : SingleChildScrollView(
+                    padding: const EdgeInsets.fromLTRB(
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.lg,
+                      CsSpacing.pageHorizontal,
+                      CsSpacing.section,
+                    ),
+                    child: _buildForm(),
+                  ),
           ),
         ],
       ),
@@ -135,9 +143,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             'Confirm your current password, then choose a new one. '
             "You'll stay signed in on this device, but any other devices "
             'signed in to your account will be signed out.',
-            style: CsTypography.body.copyWith(
-              color: AppColors.secondaryOnDark,
-            ),
+            style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
           ),
           const SizedBox(height: CsSpacing.xl),
           CsTextField(
@@ -148,9 +154,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             autofillHints: const [AutofillHints.password],
             textInputAction: TextInputAction.next,
             onFieldSubmitted: (_) => _newFocus.requestFocus(),
-            validator: (v) => (v == null || v.isEmpty)
-                ? 'Enter your current password'
-                : null,
+            validator: (v) =>
+                (v == null || v.isEmpty) ? 'Enter your current password' : null,
           ),
           const SizedBox(height: CsSpacing.lg),
           CsTextField(
@@ -216,27 +221,38 @@ class _SuccessBody extends StatelessWidget {
   const _SuccessBody({required this.onDone});
 
   @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      const Icon(
-        Icons.check_circle_outline_rounded,
-        color: AppColors.textOnDark,
-        size: 32,
-      ),
-      const SizedBox(height: CsSpacing.lg),
-      Text(
-        'Password changed',
-        style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
-      ),
-      const SizedBox(height: CsSpacing.md),
-      Text(
-        'Your password has been updated, and any other devices signed in '
-        "to your account have been signed out. You're still signed in here.",
-        style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
-      ),
-      const SizedBox(height: CsSpacing.xl),
-      CsPrimaryButton(label: 'Done', onTap: onDone),
-    ],
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(horizontal: CsSpacing.pageHorizontal),
+    child: Column(
+      // Was CrossAxisAlignment.start, left-aligning everything below — a
+      // confirmation screen reads as centered, not as a left-aligned form.
+      // MainAxisSize.min so Center (now this widget's parent — see the
+      // build() fix above) has something shorter than the full viewport
+      // to actually center.
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(
+          Icons.check_circle_outline_rounded,
+          color: AppColors.textOnDark,
+          size: 32,
+        ),
+        const SizedBox(height: CsSpacing.lg),
+        Text(
+          'Password changed',
+          textAlign: TextAlign.center,
+          style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
+        ),
+        const SizedBox(height: CsSpacing.md),
+        Text(
+          'Your password has been updated, and any other devices signed '
+          "in to your account have been signed out. You're still signed "
+          'in here.',
+          textAlign: TextAlign.center,
+          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+        ),
+        const SizedBox(height: CsSpacing.xl),
+        CsPrimaryButton(label: 'Done', onTap: onDone),
+      ],
+    ),
   );
 }

@@ -59,6 +59,29 @@ class ProfileRepository {
     await _client.from('profiles').update(payload).eq('id', userId);
   }
 
+  // ── Welcome flow ──────────────────────────────────────────────────────
+  //
+  // Server-tracked, not local storage — see the has_seen_welcome migration
+  // — so OnboardingGate reads/writes it here rather than any device-local
+  // flag.
+
+  Future<bool> hasSeenWelcome({required String userId}) async {
+    final rows = await _client
+        .from('profiles')
+        .select('has_seen_welcome')
+        .eq('id', userId)
+        .limit(1);
+    if ((rows as List).isEmpty) return false;
+    return rows.first['has_seen_welcome'] as bool? ?? false;
+  }
+
+  Future<void> markWelcomeSeen({required String userId}) async {
+    await _client
+        .from('profiles')
+        .update({'has_seen_welcome': true})
+        .eq('id', userId);
+  }
+
   // Best-effort availability hint (debounced typing feedback) — not
   // authoritative; a race between the check and the actual update is
   // still possible and is still safely caught by the real DB constraint.
