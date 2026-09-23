@@ -784,6 +784,10 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
             : e.code == '23514'
             ? 'Usernames are 3–30 characters: lowercase letters, numbers, '
                   '"_" or "." only.'
+            // MT001 — check_username_not_blocked() trigger (username
+            // blocklist migration).
+            : e.code == 'MT001'
+            ? 'That username is not allowed.'
             : 'Could not save changes. Please try again.';
       });
     } catch (_) {

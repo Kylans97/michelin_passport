@@ -63,6 +63,12 @@ class AuthRepository {
           '"_" or "." only.',
         );
       }
+      // MT001 — check_username_not_blocked() trigger (username
+      // blocklist migration). A reserved name or a blocked term,
+      // distinct from "taken"/"bad format" above.
+      if (e.code == 'MT001') {
+        throw const AuthException('That username is not allowed.');
+      }
       rethrow;
     }
   }
