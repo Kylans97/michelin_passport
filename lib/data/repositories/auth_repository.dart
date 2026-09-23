@@ -9,6 +9,15 @@ class AuthRepository {
 
   final SupabaseClient _client;
 
+  // The Universal Link (iOS Associated Domains + Android App Link, both
+  // scoped to this one path — see the AASA on mantelier.app and the
+  // AndroidManifest intent-filter) that GoTrue's password-recovery email
+  // ultimately redirects to. Must exactly match an entry in
+  // supabase/config.toml's additional_redirect_urls — GoTrue rejects a
+  // redirectTo that isn't on that allow-list.
+  static const _passwordRecoveryRedirectUrl =
+      'https://mantelier.app/auth/reset-password';
+
   // ── Current state ─────────────────────────────────────────────────────────
 
   User? get currentUser => _client.auth.currentUser;
@@ -123,5 +132,41 @@ class AuthRepository {
     // enum) never fires a signedOut event on the current session, so this
     // can't accidentally log the person out of the screen they're on.
     await _client.auth.signOut(scope: SignOutScope.others);
+  }
+
+  // ── Forgot password ──────────────────────────────────────────────────────
+  //
+  // Always resolves the same way regardless of whether [email] actually
+  // belongs to an account — GoTrue itself never reveals account existence
+  // through this endpoint, and LoginScreen's own copy stays equally neutral
+  // ("if that address is registered..."), so this never becomes a way to
+  // probe which emails have accounts.
+  Future<void> resetPasswordForEmail(String email) async {
+    await _client.auth.resetPasswordForEmail(
+      email,
+      redirectTo: _passwordRecoveryRedirectUrl,
+    );
+  }
+
+  // ── Complete password recovery ──────────────────────────────────────────
+  //
+  // Called from ResetPasswordScreen, reached only via AuthGate's own
+  // AuthChangeEvent.passwordRecovery handling — by the time this runs, the
+  // recovery link has already produced a valid (temporary) session proving
+  // the person controls the account's inbox, so unlike changePassword()
+  // there is no separate "current password" to verify first.
+  //
+  // Same reasoning as changePassword() for what happens next: a reset is
+  // often prompted by suspecting someone else has access, so every OTHER
+  // session is revoked first (SignOutScope.others — never fires signedOut
+  // on this one). Then, per an explicit decision (not GoTrue's default):
+  // this recovery session itself is also ended, returning the person to
+  // LoginScreen to sign in fresh with the new password, rather than
+  // dropping them straight into the app on the same session that proved
+  // identity via a possibly-compromised inbox.
+  Future<void> completePasswordRecovery(String newPassword) async {
+    await _client.auth.updateUser(UserAttributes(password: newPassword));
+    await _client.auth.signOut(scope: SignOutScope.others);
+    await _client.auth.signOut();
   }
 }

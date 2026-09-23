@@ -22,6 +22,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart'
     show csMonogramAssetPath;
+import 'package:michelin_passport/features/auth/forgot_password_screen.dart';
 import 'package:michelin_passport/features/auth/login_screen.dart';
 import 'package:michelin_passport/features/auth/signup_screen.dart';
 
@@ -59,15 +60,19 @@ void main() {
       await tester.pumpWidget(_wrap(const LoginScreen()));
       expect(find.text('New to Mantelier?'), findsOneWidget);
       expect(find.text('Create an account →'), findsOneWidget);
+      await tester.ensureVisible(find.text('Create an account →'));
       await tester.tap(find.text('Create an account →'));
       await tester.pumpAndSettle();
       expect(find.byType(SignupScreen), findsOneWidget);
     });
 
-    testWidgets('shows no "Forgot password?" link (no backend for it '
-        'exists)', (tester) async {
+    testWidgets('shows a "Forgot password?" link that navigates to '
+        'ForgotPasswordScreen', (tester) async {
       await tester.pumpWidget(_wrap(const LoginScreen()));
-      expect(find.textContaining('Forgot password'), findsNothing);
+      expect(find.text('Forgot password?'), findsOneWidget);
+      await tester.tap(find.text('Forgot password?'));
+      await tester.pumpAndSettle();
+      expect(find.byType(ForgotPasswordScreen), findsOneWidget);
     });
 
     testWidgets('password field has a visibility toggle and starts hidden', (

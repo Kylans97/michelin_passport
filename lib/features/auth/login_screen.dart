@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_text_field.dart';
 import '../../data/repositories/auth_repository.dart';
+import 'forgot_password_screen.dart';
 import 'signup_screen.dart';
 import 'widgets/auth_presentation.dart';
 
@@ -12,10 +14,13 @@ import 'widgets/auth_presentation.dart';
 /// piece of authentication behavior below (form/validation, the Supabase
 /// call, error/loading state, AuthGate's own session listener picking up
 /// the new session automatically) is UNCHANGED from before this pass; only
-/// what [build] renders is new. See AuthRepository — there is no
-/// forgot-password method on it, so this screen deliberately shows no
-/// "Forgot password?" link; adding the backend for that is out of scope
-/// here (see the Step 4A report).
+/// what [build] renders is new.
+///
+/// Password recovery — "Forgot password?" below, pushing
+/// [ForgotPasswordScreen] — added later, once Universal Links (iOS
+/// Associated Domains + AASA) and the Android App Link scaffold existed to
+/// carry a recovery link back into the app; see AuthRepository.
+/// resetPasswordForEmail()/AuthGate's own passwordRecovery handling.
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -115,6 +120,24 @@ class _LoginScreenState extends State<LoginScreen> {
                   validator: (v) => (v == null || v.length < 6)
                       ? 'Minimum 6 characters'
                       : null,
+                ),
+                const SizedBox(height: CsSpacing.xs),
+                Align(
+                  alignment: Alignment.centerRight,
+                  child: TextButton(
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => const ForgotPasswordScreen(),
+                      ),
+                    ),
+                    child: Text(
+                      'Forgot password?',
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.secondaryOnDark,
+                      ),
+                    ),
+                  ),
                 ),
 
                 if (_error != null) ...[
