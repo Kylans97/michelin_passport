@@ -13,7 +13,7 @@ import '../community/widgets/community_shared.dart';
 import 'friend_profile_screen.dart';
 import 'widgets/identity_row.dart';
 
-/// "Find friends" — username search → send request. Server-side
+/// "Find friends" — name or username search → send request. Server-side
 /// eligibility (blocked pairs excluded, self excluded, minimum query
 /// length) is enforced by search_profiles itself — see
 /// FriendshipRepository — this screen only renders whatever it returns.
@@ -180,7 +180,7 @@ class _AddFriendScreenState extends State<AddFriendScreen> {
               ),
               child: CsSearchField(
                 controller: _searchCtrl,
-                hintText: 'Search by username…',
+                hintText: 'Search by name or username…',
                 onChanged: _onQueryChanged,
                 autofocus: true,
                 surface: CsSurface.dark,
