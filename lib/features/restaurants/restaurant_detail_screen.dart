@@ -9,11 +9,13 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/utils/phone_utils.dart';
+import '../../core/utils/venue_lifecycle.dart';
 import '../../core/widgets/linked_venue_row.dart';
 import '../../core/widgets/personal_photos_preview.dart';
 import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_about_section.dart';
+import '../../core/widgets/venue_lifecycle_banner.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
 import '../../data/repositories/award_history_repository.dart';
@@ -454,12 +456,28 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     final latestVisit = _visits.isEmpty ? null : _visits.first;
     final hasMichelinLink = michelinUrl != null && michelinUrl.isNotEmpty;
     final hasWebsiteLink = websiteUrl != null && websiteUrl.isNotEmpty;
+    // Venue lifecycle (DATA_UPDATE_PROCESS.md §7): Directions and the
+    // Michelin link stay available in every state — you still want to
+    // know where a closed venue was, and the guide listing is still the
+    // historical record. Website survives a temporary closure (that's
+    // exactly where someone checks for a reopening date) but not a
+    // permanent one; Call is suppressed the moment a venue is closed at
+    // all, temporary or permanent — there's nothing to call about.
+    final lifecycleState = resolveLifecycleState(
+      status: restaurant.status,
+      isExpired: restaurant.isExpired,
+    );
+    final websiteSuppressed =
+        lifecycleState == VenueLifecycleState.permanentlyClosed;
+    final callSuppressed =
+        lifecycleState == VenueLifecycleState.permanentlyClosed ||
+        lifecycleState == VenueLifecycleState.temporarilyClosed;
     // Restaurant Enrichment Step 1D. buildTelUri returns null for an
     // empty/unparseable phone (no digits at all), which doubles as the
     // "hide the Call action" signal — matching hasMichelinLink/
     // hasWebsiteLink's own "presence of a usable value" pattern, never a
     // separately-tracked boolean that could drift from the URI itself.
-    final telUri = (restaurant.phone ?? '').isEmpty
+    final telUri = (restaurant.phone ?? '').isEmpty || callSuppressed
         ? null
         : buildTelUri(restaurant.phone!);
     // No editorial-copy field exists on Restaurant yet (no `description`/
@@ -493,6 +511,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  VenueLifecycleBanner(
+                    state: lifecycleState,
+                    statusNote: restaurant.statusNote,
+                  ),
+
                   // The hero is the single primary identity + recognition
                   // area — venue name, Michelin stars, World's 50 Best and
                   // Hall of Fame all live there only. Just city/country as
@@ -516,7 +539,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   // Wishlist control here (UI Consistency Step 1E).
                   VenueUtilityActions(
                     onOpenMaps: _openMaps,
-                    onOpenWebsite: hasWebsiteLink
+                    onOpenWebsite: (hasWebsiteLink && !websiteSuppressed)
                         ? () => _openUrl(
                             websiteUrl,
                             trackAs: AnalyticsLinkDestination.website,

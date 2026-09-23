@@ -8,10 +8,12 @@ import '../../core/analytics/supabase_analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/utils/venue_lifecycle.dart';
 import '../../core/widgets/personal_photos_preview.dart';
 import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_about_section.dart';
+import '../../core/widgets/venue_lifecycle_banner.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
 import '../../data/repositories/award_history_repository.dart';
@@ -390,6 +392,14 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     final latestStay = _stays.isEmpty ? null : _stays.first;
     final hasMichelinLink = michelinUrl != null && michelinUrl.isNotEmpty;
     final hasWebsiteLink = websiteUrl != null && websiteUrl.isNotEmpty;
+    // See the identical note in restaurant_detail_screen.dart. Hotel has
+    // no `phone` field yet, so there is no Call action to suppress here.
+    final lifecycleState = resolveLifecycleState(
+      status: hotel.status,
+      isExpired: hotel.isExpired,
+    );
+    final websiteSuppressed =
+        lifecycleState == VenueLifecycleState.permanentlyClosed;
     // No editorial-copy field exists on Hotel yet — see
     // VenueAboutSection's own doc comment and RestaurantDetailScreen's
     // matching note.
@@ -419,6 +429,11 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  VenueLifecycleBanner(
+                    state: lifecycleState,
+                    statusNote: hotel.statusNote,
+                  ),
+
                   // The hero is the single primary identity + recognition
                   // area — hotel name and MICHELIN Keys/World's 50 Best
                   // both live there only. Just city/country as light
@@ -442,7 +457,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                   // Wishlist control here (UI Consistency Step 1E).
                   VenueUtilityActions(
                     onOpenMaps: _openMaps,
-                    onOpenWebsite: hasWebsiteLink
+                    onOpenWebsite: (hasWebsiteLink && !websiteSuppressed)
                         ? () => _openUrl(
                             websiteUrl,
                             trackAs: AnalyticsLinkDestination.website,

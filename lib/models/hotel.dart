@@ -78,6 +78,12 @@ class Hotel {
   // recomputed client-side.
   final bool isExpired;
 
+  // See the identical fields on Restaurant for full field semantics and
+  // the MODERATION_MANUAL_CHECKPOINTS.md history.
+  final String status;
+  final DateTime? statusSince;
+  final String? statusNote;
+
   const Hotel({
     required this.id,
     required this.hotelCode,
@@ -103,6 +109,9 @@ class Hotel {
     this.parentVenueId,
     this.openingWeekdays,
     this.isExpired = false,
+    this.status = 'open',
+    this.statusSince,
+    this.statusNote,
   });
 
   /// True when the hotel currently holds a confirmed MICHELIN Key value.
@@ -117,6 +126,9 @@ class Hotel {
   /// True when this hotel has a scheduled end date at all — a pop-up or
   /// other temporary venue, whether or not it has already expired.
   bool get isTemporary => endsOn != null;
+
+  bool get isTemporarilyClosed => status == 'temporarily_closed';
+  bool get isPermanentlyClosed => status == 'permanently_closed';
 
   factory Hotel.fromJson(Map<String, dynamic> json) => Hotel(
     id: json['id'].toString(),
@@ -149,5 +161,10 @@ class Hotel {
         ?.map((d) => (d as num).toInt())
         .toList(),
     isExpired: (json['is_expired'] as bool?) ?? false,
+    status: (json['status'] as String?) ?? 'open',
+    statusSince: json['status_since'] == null
+        ? null
+        : DateTime.parse(json['status_since'] as String),
+    statusNote: json['status_note'] as String?,
   );
 }

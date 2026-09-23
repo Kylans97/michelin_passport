@@ -82,6 +82,17 @@ class Restaurant {
   // current_date is the authoritative "today," not the device clock.
   final bool isExpired;
 
+  // Present since the initial production schema (20260805141519) but
+  // never modelled until now — see MODERATION_MANUAL_CHECKPOINTS.md
+  // checkpoint 4/5 for why. 'open' | 'temporarily_closed' |
+  // 'permanently_closed'; see resolveLifecycleState in
+  // lib/core/utils/venue_lifecycle.dart for how this combines with
+  // isExpired. statusNote carries the banner copy for a temporary
+  // closure (DATA_UPDATE_PROCESS.md §7's interface contract).
+  final String status;
+  final DateTime? statusSince;
+  final String? statusNote;
+
   // No latitude/longitude here. `location` is PostGIS
   // geography(Point,4326); over PostgREST it comes back as an EWKB hex
   // string, not GeoJSON or a {lat, lng} pair, and decoding that client-side
@@ -123,6 +134,9 @@ class Restaurant {
     this.parentVenueId,
     this.openingWeekdays,
     this.isExpired = false,
+    this.status = 'open',
+    this.statusSince,
+    this.statusNote,
   });
 
   /// True when the restaurant currently holds at least one Michelin star.
@@ -135,6 +149,9 @@ class Restaurant {
   /// pop-up or other temporary venue, whether or not it has already
   /// expired. Never true for an ordinary permanent restaurant.
   bool get isTemporary => endsOn != null;
+
+  bool get isTemporarilyClosed => status == 'temporarily_closed';
+  bool get isPermanentlyClosed => status == 'permanently_closed';
 
   factory Restaurant.fromJson(Map<String, dynamic> json) => Restaurant(
     id: json['id'].toString(),
@@ -171,5 +188,10 @@ class Restaurant {
         ?.map((d) => (d as num).toInt())
         .toList(),
     isExpired: (json['is_expired'] as bool?) ?? false,
+    status: (json['status'] as String?) ?? 'open',
+    statusSince: json['status_since'] == null
+        ? null
+        : DateTime.parse(json['status_since'] as String),
+    statusNote: json['status_note'] as String?,
   );
 }

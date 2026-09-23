@@ -198,3 +198,36 @@ Distinct from checkpoint 4: a closure is a `restaurants.status`
 change and does not touch `award_history` at all — the venue's last
 known award stays exactly as recorded, `is_current` included, because
 it's still true right up to the day it closed.
+
+---
+
+## 6. `booking_url` exists on both catalogue tables and renders nowhere
+
+**Found during**: the venue lifecycle UI build (September 2026) — while
+wiring `VenueUtilityActions`' Website action to `websiteUrl`, it became
+clear `bookingUrl` (already a field on both `Restaurant` and `Hotel`,
+already in `restaurantFullColumns`/`hotelFullColumns`, already a real
+column on both `restaurants`/`hotels` since the initial production
+schema) has never had a UI consumer. `Hotel.bookingUrl`'s own doc
+comment already flagged this ("Field only, no UI consumer yet") before
+this pass; this entry makes the same true of `Restaurant.bookingUrl`
+and records the connection to venue lifecycle specifically.
+
+**The gap**: nothing renders a "Book" action anywhere — `Website` is
+the only outbound link currently wired in `VenueUtilityActions`, and it
+points at `websiteUrl`, never `bookingUrl`. Not a bug (the data was
+never dead — both fields are correctly fetched and modelled) — just an
+action that was scoped for later and never came back around, the same
+"schema/repository landed, UI didn't" shape as checkpoint 4/5's own
+pop-up and closed-status history.
+
+**What to do when a Book action is finally built**: it must follow the
+exact same venue-lifecycle suppression rules already implemented for
+Website and Call in `restaurant_detail_screen.dart`/
+`hotel_detail_screen.dart` (see `resolveLifecycleState` in
+`lib/core/utils/venue_lifecycle.dart`) — disabled during
+`temporarily_closed`, removed entirely during `permanently_closed`.
+Booking a table at a closed restaurant is a worse failure mode than
+either of the two actions that already handle this correctly, so this
+is not optional follow-up polish; treat it as part of the Book
+action's first implementation, not a separate later pass.

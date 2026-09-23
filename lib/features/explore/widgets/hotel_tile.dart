@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
+import '../../../core/utils/venue_lifecycle.dart';
 import '../../../core/widgets/key_row.dart';
+import '../../../core/widgets/venue_lifecycle_line.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/hotel.dart';
 import '../../hotels/hotel_detail_screen.dart';
@@ -37,6 +39,10 @@ class HotelTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final locationLabel = _locationLabel;
     final showRankLine = showWorlds50BestRank && hotel.isWorlds50Best;
+    final lifecycleState = resolveLifecycleState(
+      status: hotel.status,
+      isExpired: hotel.isExpired,
+    );
 
     return GestureDetector(
       onTap: () => Navigator.push(
@@ -136,6 +142,10 @@ class HotelTile extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ],
+                  if (lifecycleState != VenueLifecycleState.normal) ...[
+                    const SizedBox(height: 4),
+                    VenueLifecycleLine(state: lifecycleState),
                   ],
                 ],
               ),

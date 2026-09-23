@@ -42,13 +42,19 @@ import 'search_query.dart';
 // deployment-ordering hazard as is_hall_of_fame/phone above, accepted
 // for the same reason (every caller needs Restaurant.isExpired/
 // isTemporary to work correctly, no safe subset to split them into).
+// status/status_since/status_note (venue lifecycle display) have existed
+// on restaurants since the initial production schema — no
+// deployment-ordering hazard like the columns documented above, just
+// never selected until now. See lib/core/utils/venue_lifecycle.dart and
+// MODERATION_MANUAL_CHECKPOINTS.md checkpoints 4/5.
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_name, region, country_code, country_name, flag_emoji, address, '
     'google_place_id, michelin_url, website_url, booking_url, phone, '
     'property_name, is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank, '
     'is_hall_of_fame, starts_on, ends_on, parent_venue_type, '
-    'parent_venue_id, opening_weekdays, is_expired';
+    'parent_venue_id, opening_weekdays, is_expired, status, status_since, '
+    'status_note';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);

@@ -66,6 +66,7 @@ class RestaurantHero extends StatelessWidget {
       isFollowing: isFollowing,
       followBusy: followBusy,
       onTapFollow: onTapFollow,
+      isClosed: restaurant.isPermanentlyClosed,
     );
   }
 }

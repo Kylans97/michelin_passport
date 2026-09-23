@@ -52,6 +52,15 @@ class VenueDetailHero extends StatelessWidget {
   final bool followBusy;
   final VoidCallback? onTapFollow;
 
+  /// True for a `permanently_closed` venue — DATA_UPDATE_PROCESS.md §7's
+  /// "renders greyed". No catalogue table carries a restaurant/hotel
+  /// photo today (see this class's own doc comment), so there is nothing
+  /// to desaturate with a ColorFilter yet — a real photo pipeline should
+  /// apply one to [backgroundImage] specifically when it lands. Until
+  /// then this swaps the no-photo gradient for a neutral grey one and
+  /// mutes the title, which is the entire visible hero surface today.
+  final bool isClosed;
+
   const VenueDetailHero({
     super.key,
     required this.title,
@@ -72,6 +81,7 @@ class VenueDetailHero extends StatelessWidget {
     this.isFollowing = false,
     this.followBusy = false,
     this.onTapFollow,
+    this.isClosed = false,
   });
 
   @override
@@ -123,6 +133,20 @@ class VenueDetailHero extends StatelessWidget {
           children: [
             if (hasPhoto)
               backgroundImage!
+            else if (isClosed)
+              const DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      Color(0xFF5A564D),
+                      Color(0xFF3E3B35),
+                      Color(0xFF26241F),
+                    ],
+                  ),
+                ),
+              )
             else
               const DecoratedBox(
                 decoration: BoxDecoration(
@@ -175,7 +199,10 @@ class VenueDetailHero extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       if (primaryRecognition != null) ...[
-                        primaryRecognition!,
+                        Opacity(
+                          opacity: isClosed ? 0.5 : 1,
+                          child: primaryRecognition,
+                        ),
                         const SizedBox(height: CsSpacing.sm),
                       ],
                       Text(
@@ -183,7 +210,9 @@ class VenueDetailHero extends StatelessWidget {
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: CsTypography.displayHero.copyWith(
-                          color: AppColors.textOnDark,
+                          color: AppColors.textOnDark.withValues(
+                            alpha: isClosed ? 0.7 : 1,
+                          ),
                           fontSize: 30,
                           height: 1.1,
                         ),

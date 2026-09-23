@@ -58,6 +58,7 @@ class HotelHero extends StatelessWidget {
       isFollowing: isFollowing,
       followBusy: followBusy,
       onTapFollow: onTapFollow,
+      isClosed: hotel.isPermanentlyClosed,
     );
   }
 }

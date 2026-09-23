@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/app_typography.dart';
+import '../../../core/utils/venue_lifecycle.dart';
 import '../../../core/widgets/star_row.dart';
+import '../../../core/widgets/venue_lifecycle_line.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/restaurant.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
@@ -42,6 +44,10 @@ class RestaurantTile extends StatelessWidget {
         showWorlds50BestRank &&
         restaurant.isWorlds50Best &&
         restaurant.hasMichelinStar;
+    final lifecycleState = resolveLifecycleState(
+      status: restaurant.status,
+      isExpired: restaurant.isExpired,
+    );
 
     return GestureDetector(
       onTap: () => Navigator.push(
@@ -141,6 +147,10 @@ class RestaurantTile extends StatelessWidget {
                         ),
                       ],
                     ),
+                  ],
+                  if (lifecycleState != VenueLifecycleState.normal) ...[
+                    const SizedBox(height: 4),
+                    VenueLifecycleLine(state: lifecycleState),
                   ],
                 ],
               ),
