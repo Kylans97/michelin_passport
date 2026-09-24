@@ -38,12 +38,21 @@ String _semanticLabel(FriendVenueVisit fv) {
   return parts.join(', ');
 }
 
-/// Read-only passport page for layout A: the ivory card chrome (guilloché
-/// background, spine shadow, `{NAME}'S ENTRIES` / `p. NN` header), 2
-/// stamps per page, swipeable with page dots when there are more. Renders
-/// the dashed empty state itself when [visits] is empty — no "next stamp"
-/// slot (that's a first-person Passport concept; this is someone else's
-/// already-settled history).
+// 3 non-collinear anchors — the widest stamp (the 210pt oval) always has
+// room regardless of which slot it lands in, since no two anchors share
+// an x position the way a strict grid would.
+const _slotAnchors = [
+  Alignment(-0.58, -0.35),
+  Alignment(0.58, -0.15),
+  Alignment(0.0, 0.55),
+];
+
+/// Read-only passport page: the ivory card chrome (guilloché background,
+/// spine shadow, `{NAME}'S ENTRIES` / `p. NN` header), 3 stamps per page,
+/// swipeable with page dots when there are more. Renders the dashed empty
+/// state itself when [visits] is empty — no "next stamp" slot (that's a
+/// first-person Passport concept; this is someone else's already-settled
+/// history).
 class FriendProfileStampPage extends StatefulWidget {
   final List<FriendVenueVisit> visits;
   final String ownerName;
@@ -56,7 +65,8 @@ class FriendProfileStampPage extends StatefulWidget {
     required this.onTapStamp,
   });
 
-  static const double height = 250;
+  static const double height = 360;
+  static const int perPage = 3;
 
   @override
   State<FriendProfileStampPage> createState() => _FriendProfileStampPageState();
@@ -74,8 +84,8 @@ class _FriendProfileStampPageState extends State<FriendProfileStampPage> {
 
   List<List<FriendVenueVisit>> get _pages {
     final pages = <List<FriendVenueVisit>>[];
-    for (var i = 0; i < widget.visits.length; i += 2) {
-      pages.add(widget.visits.skip(i).take(2).toList());
+    for (var i = 0; i < widget.visits.length; i += FriendProfileStampPage.perPage) {
+      pages.add(widget.visits.skip(i).take(FriendProfileStampPage.perPage).toList());
     }
     return pages;
   }
@@ -96,9 +106,9 @@ class _FriendProfileStampPageState extends State<FriendProfileStampPage> {
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.18),
-            blurRadius: 16,
-            offset: const Offset(0, 7),
+            color: Colors.black.withValues(alpha: 0.20),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
           ),
         ],
       ),
@@ -158,15 +168,16 @@ class _FriendProfileStampPageState extends State<FriendProfileStampPage> {
                 ),
                 if (pages.length > 1)
                   Padding(
-                    padding: const EdgeInsets.only(bottom: CsSpacing.sm),
+                    padding: const EdgeInsets.only(bottom: CsSpacing.md),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         for (var i = 0; i < pages.length; i++) ...[
                           if (i > 0) const SizedBox(width: 6),
-                          Container(
-                            width: i == _page ? 14 : 5,
-                            height: 5,
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 180),
+                            width: i == _page ? 18 : 6,
+                            height: 6,
                             decoration: BoxDecoration(
                               color: i == _page
                                   ? AppColors.forestGreen
@@ -216,10 +227,14 @@ class _StampPageContent extends StatelessWidget {
     FriendStampInk? previousInk;
     final children = <Widget>[];
 
-    for (var i = 0; i < visits.length; i++) {
+    for (var i = 0; i < visits.length && i < _slotAnchors.length; i++) {
       final fv = visits[i];
       final id = fv.visit.id;
-      final variant = pickFriendStampVariant(id, avoid: previousVariant);
+      final variant = pickFriendStampVariant(
+        id,
+        isHotel: fv.isHotel,
+        avoid: previousVariant,
+      );
       final ink = pickFriendStampInk(id, avoid: previousInk);
       previousVariant = variant;
       previousInk = ink;
@@ -237,15 +252,13 @@ class _StampPageContent extends StatelessWidget {
 
       children.add(
         Align(
-          alignment: i == 0 ? const Alignment(-0.55, 0.1) : const Alignment(0.55, 0.1),
-          child: GestureDetector(
+          alignment: _slotAnchors[i],
+          child: FriendProfileStamp(
+            data: data,
+            variant: variant,
+            rotationDegrees: pickFriendStampRotation(id),
+            semanticLabel: _semanticLabel(fv),
             onTap: () => onTapStamp(fv),
-            child: FriendProfileStamp(
-              data: data,
-              variant: variant,
-              rotationDegrees: pickFriendStampRotation(id),
-              semanticLabel: _semanticLabel(fv),
-            ),
           ),
         ),
       );

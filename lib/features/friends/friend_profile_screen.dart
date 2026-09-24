@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/analytics/analytics_properties.dart';
@@ -12,6 +11,7 @@ import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
+import '../../models/content_report.dart';
 import '../../models/passport_venue.dart';
 import '../../models/profile_identity.dart';
 import '../../models/venue_entry.dart';
@@ -20,17 +20,19 @@ import '../events/event_detail_screen.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../reports/widgets/report_content_sheet.dart';
 import '../restaurants/restaurant_detail_screen.dart';
+import '../stays/stay_detail_screen.dart';
+import '../visits/visit_detail_screen.dart';
 import 'friend_profile_data.dart';
-import 'friend_profile_layout.dart';
-import 'layouts/friend_profile_layout_a.dart';
-import 'layouts/friend_profile_layout_b.dart';
-import 'layouts/friend_profile_layout_c.dart';
-import '../../models/content_report.dart';
+import 'tabs/friend_profile_overview_tab.dart';
+import 'tabs/friend_profile_passport_tab.dart';
+import 'tabs/friend_profile_together_tab.dart';
+import 'widgets/friend_profile_header.dart';
+import 'widgets/friend_profile_plan_dinner_sheet.dart';
 
 /// One (venue, visit) pair — [VenueEntry] groups every visit under its
 /// venue for Passport's own grouped display; this screen instead flattens
-/// to one row per visit, newest first overall — every stamp/verdict/
-/// review row across all three layouts is built from this same shape.
+/// to one row per visit, newest first overall — every stamp/verdict row
+/// across all three tabs is built from this same shape.
 class FriendVenueVisit {
   final PassportVenue venue;
   final Visit visit;
@@ -62,11 +64,47 @@ void openFriendVenue(BuildContext context, PassportVenue venue) {
   }
 }
 
+/// Opens the existing VisitDetailScreen/StayDetailScreen for [fv] — "Tik op
+/// een stempel/rij opent de bestaande visit-detail", reused exactly as it
+/// already exists, not a friend-specific copy.
+///
+/// KNOWN GAP, surfaced rather than silently worked around: both of those
+/// screens present Delete/visibility-toggle controls driven by
+/// `Supabase.instance.client.auth.currentUser`, with no check that the
+/// VIEWER actually owns [fv.visit] — every existing call site only ever
+/// opens one's own visit, so this was never exercised for someone else's.
+/// RLS (`visits_update`/`visits_delete`, owner-only) blocks the actual
+/// mutation either way, so nothing another user's visit can be corrupted
+/// this way, but the controls themselves render regardless, which reads
+/// as an affordance a viewer has no right to. Fixing that means changing
+/// VisitDetailScreen/StayDetailScreen themselves, which is out of scope
+/// here — "laat andere schermen ongemoeid" — so it's flagged here and in
+/// docs/Architecture/EDITORIAL_REDESIGN_TRACKING.md instead of silently
+/// shipped or silently avoided.
+void openVisitDetail(BuildContext context, FriendVenueVisit fv) {
+  switch (fv.venue) {
+    case RestaurantVenue(:final restaurant):
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => VisitDetailScreen(restaurant: restaurant, visit: fv.visit),
+        ),
+      );
+    case HotelVenue(:final hotel):
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => StayDetailScreen(hotel: hotel, stay: fv.visit),
+        ),
+      );
+  }
+}
+
 // Still exported for friend_activity_list_screen.dart's own
 // FriendGoingListScreen/FriendInterestedListScreen (unchanged, out of
 // scope for this pass — see this file's own class doc) — those two
-// screens are reached from elsewhere (e.g. a future Going/Interested
-// entry point), not from this redesigned profile itself anymore.
+// screens are reached from elsewhere, not from this redesigned profile
+// itself anymore.
 void openFriendEvent(BuildContext context, String eventId) {
   Navigator.push(
     context,
@@ -82,21 +120,17 @@ void openFriendEvent(BuildContext context, String eventId) {
 
 /// The friend-profile screen — reached from Community → Friends. Identity-
 /// only for anyone not an accepted friend (unchanged legacy hero/action
-/// UI, out of scope for this pass — see this class's own git history for
-/// that UI; the three new editorial layouts below apply only once
-/// [RelationshipStatus.accepted] is confirmed, which is the only case
-/// Friends' own list can ever navigate here from).
+/// UI, out of scope for this pass; the redesign below applies only once
+/// [RelationshipStatus.accepted] is confirmed, the only case Friends' own
+/// list can ever navigate here from).
 ///
-/// EDITORIAL REDESIGN (three layouts, dev-only switch): an accepted
-/// friend's profile now renders as one of [FriendProfileLayout.passport]/
-/// `.dineTogether`/`.column` — compared live via a debug-only A/B/C row
-/// (kDebugMode only), defaulting to `.passport`. See
-/// docs/Architecture/EDITORIAL_REDESIGN_TRACKING.md.
+/// ONE profile, three tabs (Overview / Passport / Together) plus a "Plan a
+/// dinner" sheet — replaces the earlier three-separate-layouts-behind-a-
+/// debug-picker pass entirely (see
+/// docs/Architecture/EDITORIAL_REDESIGN_TRACKING.md for that history).
 ///
-/// "Remove friend" moved from a standalone hero button into the shared
-/// [FriendProfileTopBar]'s "⋯" menu, with a confirmation dialog — the bare
-/// "Friends" text label is gone; relationship status now only shows up as
-/// the absence of "Add friend"/request actions.
+/// "Remove friend" lives in the shared header's "⋯" menu, with a
+/// confirmation dialog — no standalone "Friends" text/button anywhere.
 ///
 /// "Friends since" is deliberately NOT shown anywhere: neither
 /// `get_profile_identity` nor `get_friends` returns when a friendship was
@@ -114,20 +148,40 @@ class FriendProfileScreen extends StatefulWidget {
   State<FriendProfileScreen> createState() => _FriendProfileScreenState();
 }
 
-class _FriendProfileScreenState extends State<FriendProfileScreen> {
+class _FriendProfileScreenState extends State<FriendProfileScreen>
+    with SingleTickerProviderStateMixin {
   late final _repo = FriendshipRepository(Supabase.instance.client);
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
   late final _photoRepo = PhotoRepository(Supabase.instance.client);
+  // Constructed eagerly in initState, NOT as a `late final` field
+  // initializer: `late final x = TabController(...)` only actually runs
+  // the initializer the first time `x` is read, and this widget's own
+  // `build()` doesn't always reach the point that reads it (its own
+  // loading/error states return before ever building the tab view). A
+  // widget test that only ever exercises those earlier states confirmed
+  // the real failure mode this avoids: dispose() was the very first
+  // read, lazily constructing a brand-new TabController — which needs
+  // `vsync: this` to do a live ancestor lookup — AFTER this element was
+  // already deactivated, throwing "Looking up a deactivated widget's
+  // ancestor is unsafe." Eager construction in initState is the standard
+  // TabController lifecycle for exactly this reason.
+  late final TabController _tabController;
   late Future<ProfileIdentity?> _future;
 
   Future<FriendProfileLayoutData>? _layoutFuture;
-  FriendProfileLayout _layout = FriendProfileLayout.defaultLayout;
 
   @override
   void initState() {
     super.initState();
+    _tabController = TabController(length: 3, vsync: this);
     _load();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   void _load() {
@@ -170,8 +224,8 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
         visits.map((v) => v.visit.id).toList(),
       );
     } catch (_) {
-      // "Lately"'s mini-reviews just fall back to PhotoOrTile's own tile —
-      // never blocks the rest of the screen.
+      // Photo rows just fall back to PhotoOrTile's own tile — never
+      // blocks the rest of the screen.
     }
 
     return FriendProfileLayoutData(
@@ -180,6 +234,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
       visitedEntries: entries,
       visits: visits,
       wishlist: wishlist,
+      myWishlist: myWishlist,
       sharedKeys: sharedWishlistKeys(wishlist: wishlist, myWishlist: myWishlist),
       stats: FriendProfileStats.from(entries),
       coverPhotoByVisitId: coverPhotos,
@@ -351,6 +406,17 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
       ? identity.displayName!
       : identity.label;
 
+  Future<void> _planDinner(FriendProfileLayoutData data, PassportVenue? preselected) async {
+    final invitation = await showPlanDinnerSheet(
+      context,
+      data: data,
+      viewerUserId: Supabase.instance.client.auth.currentUser?.id ?? '',
+      preselected: preselected,
+    );
+    if (invitation == null || !mounted) return;
+    _showSnack('Invitation sent to ${data.friendName}.');
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -383,59 +449,59 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
                 onReport: _reportProfile,
               );
             }
-            return Stack(
-              children: [
-                FutureBuilder<FriendProfileLayoutData>(
-                  future: _layoutFuture,
-                  builder: (context, layoutSnap) {
-                    if (layoutSnap.connectionState == ConnectionState.waiting ||
-                        _layoutFuture == null) {
-                      return const _LoadingState();
-                    }
-                    final data = layoutSnap.data;
-                    if (layoutSnap.hasError || data == null) {
-                      return const _ErrorState();
-                    }
-                    final callbacks = (
-                      onBack: () => Navigator.pop(context),
-                      onRemoveFriend: _removeFriend,
-                      onBlock: () => _blockUser(data.friendName),
-                      onReport: _reportProfile,
-                    );
-                    return switch (_layout) {
-                      FriendProfileLayout.passport => FriendProfileLayoutA(
-                        data: data,
-                        onBack: callbacks.onBack,
-                        onRemoveFriend: callbacks.onRemoveFriend,
-                        onBlock: callbacks.onBlock,
-                        onReport: callbacks.onReport,
+            return FutureBuilder<FriendProfileLayoutData>(
+              future: _layoutFuture,
+              builder: (context, layoutSnap) {
+                if (layoutSnap.connectionState == ConnectionState.waiting ||
+                    _layoutFuture == null) {
+                  return const _LoadingState();
+                }
+                final data = layoutSnap.data;
+                if (layoutSnap.hasError || data == null) {
+                  return const _ErrorState();
+                }
+                return NestedScrollView(
+                  headerSliverBuilder: (context, innerBoxIsScrolled) => [
+                    SliverToBoxAdapter(
+                      child: FriendProfileHeaderTop(
+                        friendPhoto: data.identity.avatarUrl,
+                        friendLabel: data.friendName,
+                        myPhoto: data.myIdentity?.avatarUrl,
+                        myLabel: data.myIdentity?.label ?? 'You',
+                        name: data.friendName,
+                        username: data.identity.username,
+                        stamps: data.stats.stamps,
+                        stars: data.stats.totalStars,
+                        onBack: () => Navigator.pop(context),
+                        onRemoveFriend: _removeFriend,
+                        onBlock: () => _blockUser(data.friendName),
+                        onReport: _reportProfile,
                       ),
-                      FriendProfileLayout.dineTogether => FriendProfileLayoutB(
+                    ),
+                    SliverPersistentHeader(
+                      pinned: true,
+                      delegate: FriendProfileTabBarDelegate(controller: _tabController),
+                    ),
+                  ],
+                  body: TabBarView(
+                    controller: _tabController,
+                    children: [
+                      FriendProfileOverviewTab(
+                        data: data,
+                        onPlanTapped: () => _tabController.animateTo(2),
+                      ),
+                      FriendProfilePassportTab(data: data),
+                      FriendProfileTogetherTab(
                         data: data,
                         wishlistRepo: _wishlistRepo,
                         viewerUserId:
                             Supabase.instance.client.auth.currentUser?.id ?? '',
-                        onBack: callbacks.onBack,
-                        onRemoveFriend: callbacks.onRemoveFriend,
-                        onBlock: callbacks.onBlock,
-                        onReport: callbacks.onReport,
+                        onPlanDinner: (venue) => _planDinner(data, venue),
                       ),
-                      FriendProfileLayout.column => FriendProfileLayoutC(
-                        data: data,
-                        onBack: callbacks.onBack,
-                        onRemoveFriend: callbacks.onRemoveFriend,
-                        onBlock: callbacks.onBlock,
-                        onReport: callbacks.onReport,
-                      ),
-                    };
-                  },
-                ),
-                if (kDebugMode)
-                  _DebugLayoutSwitcher(
-                    selected: _layout,
-                    onSelect: (l) => setState(() => _layout = l),
+                    ],
                   ),
-              ],
+                );
+              },
             );
           },
         ),
@@ -495,64 +561,6 @@ class _SimpleBackRow extends StatelessWidget {
       child: Align(
         alignment: Alignment.centerLeft,
         child: EditorialBackButton(color: AppColors.ivory),
-      ),
-    ),
-  );
-}
-
-/// Dev-only A/B/C layout switcher — kDebugMode only, per the task brief
-/// ("een dev-only instelling... zodat we ze in de app naast elkaar kunnen
-/// vergelijken"). Local `setState` on the screen, not persisted — exists
-/// purely to compare the three layouts live in a running build.
-class _DebugLayoutSwitcher extends StatelessWidget {
-  final FriendProfileLayout selected;
-  final ValueChanged<FriendProfileLayout> onSelect;
-
-  const _DebugLayoutSwitcher({required this.selected, required this.onSelect});
-
-  static const _labels = {
-    FriendProfileLayout.passport: 'A',
-    FriendProfileLayout.dineTogether: 'B',
-    FriendProfileLayout.column: 'C',
-  };
-
-  @override
-  Widget build(BuildContext context) => Positioned(
-    right: 12,
-    bottom: 12,
-    child: SafeArea(
-      child: Material(
-        color: Colors.black.withValues(alpha: 0.7),
-        borderRadius: BorderRadius.circular(8),
-        child: Padding(
-          padding: const EdgeInsets.all(4),
-          child: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              for (final layout in FriendProfileLayout.values)
-                GestureDetector(
-                  onTap: () => onSelect(layout),
-                  child: Container(
-                    width: 32,
-                    height: 32,
-                    margin: const EdgeInsets.symmetric(horizontal: 2),
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: layout == selected ? Colors.white : Colors.transparent,
-                      borderRadius: BorderRadius.circular(6),
-                    ),
-                    child: Text(
-                      _labels[layout]!,
-                      style: TextStyle(
-                        color: layout == selected ? Colors.black : Colors.white,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
-            ],
-          ),
-        ),
       ),
     ),
   );

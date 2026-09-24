@@ -3,25 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../passport/models/passport_stamp_award.dart';
+import '../../passport/utils/passport_stamp_text_fit.dart' show fitStampTextByShrinking;
 import '../../passport/widgets/passport_stamp_painters.dart'
     show drawArcText, drawIconGlyph, paintStampInk;
 
-/// The friend-profile passport's own two stamp designs — deliberately a
+/// The friend-profile passport's own three stamp designs — deliberately a
 /// SMALLER, separate set from the main Passport's five (see
-/// passport_stamp_painters.dart): this screen's stamps carry a score the
-/// main ones don't, and the design brief specifies its own exact sizes/
-/// content, not a reuse of `RoundSealPainter`/`DoubleFramePainter` as-is.
-/// What IS reused directly: the hard-won rendering techniques ([paintStampInk]'s
-/// multiply-blend-plus-grain "pressed into paper" effect, [drawArcText]'s
-/// character-by-character ring text, [drawIconGlyph]'s icon-font star/Key
-/// glyphs) — importing three small, already-public, already-shipped
-/// functions from the Passport feature, not duplicating them a second
-/// time.
-enum FriendStampVariant { roundSeal, doubleFrame }
+/// passport_stamp_painters.dart): these carry a score the main ones
+/// don't, and the variant CHOICE is scoped by venue type (a restaurant
+/// visit picks between [roundSeal]/[doubleFrame]; a hotel stay always
+/// gets [oval] — there's only one hotel design). What IS reused directly:
+/// the hard-won rendering techniques ([paintStampInk]'s multiply-blend-
+/// plus-grain "pressed into paper" effect, [drawArcText]'s character-by-
+/// character ring text, [drawIconGlyph]'s icon-font star/Key glyphs,
+/// [fitStampTextByShrinking]'s shrink-then-truncate rule) — importing
+/// already-public, already-shipped functions from the Passport feature,
+/// not duplicating them a second time.
+enum FriendStampVariant { roundSeal, doubleFrame, oval }
+
+// Only these two ever get chosen between — [oval] is hotel-only and never
+// entered into this rotation (see [pickFriendStampVariant]).
+const _restaurantVariants = [FriendStampVariant.roundSeal, FriendStampVariant.doubleFrame];
 
 /// The two inks a friend-profile stamp can be printed in — dark gold or
 /// green, both already-defined editorial-pass tokens (see
-/// [AppColors.accent700]/[AppColors.green600]), not new colors.
+/// [AppColors.accent700]/[AppColors.green600]), not new colors. This is
+/// ink, not UI text — the redesign's "no gold text" rule doesn't apply to
+/// a stamp's own printed color, the same distinction the brief itself
+/// draws ("Stempel-inkt mag goud en groen zijn — dat is inkt, geen UI-
+/// tekst").
 enum FriendStampInk {
   deepGold(AppColors.accent700),
   green(AppColors.green600);
@@ -46,12 +56,22 @@ int _stableHash(String input) {
   return hash;
 }
 
-FriendStampVariant pickFriendStampVariant(String id, {FriendStampVariant? avoid}) {
-  final values = FriendStampVariant.values;
-  final index = _stableHash('$id:variant') % values.length;
-  final variant = values[index];
+/// A hotel stay always gets [FriendStampVariant.oval] — no choice, no
+/// hash needed, since it's the only hotel design. A restaurant visit
+/// picks between [roundSeal]/[doubleFrame] via hash, stepping to the
+/// other one if it would collide with [avoid] (the previous stamp on the
+/// same page) — "variant (binnen het type)... nooit twee dezelfde naast
+/// elkaar".
+FriendStampVariant pickFriendStampVariant(
+  String id, {
+  required bool isHotel,
+  FriendStampVariant? avoid,
+}) {
+  if (isHotel) return FriendStampVariant.oval;
+  final index = _stableHash('$id:variant') % _restaurantVariants.length;
+  final variant = _restaurantVariants[index];
   if (avoid != null && variant == avoid) {
-    return values[(index + 1) % values.length];
+    return _restaurantVariants[(index + 1) % _restaurantVariants.length];
   }
   return variant;
 }
@@ -125,7 +145,7 @@ String fitFriendArcText({
   return build(null);
 }
 
-/// Everything one of the two friend-profile stamp painters needs.
+/// Everything one of the three friend-profile stamp painters needs.
 class FriendStampPaintData {
   final String seedId;
   final String cityName;
@@ -181,20 +201,21 @@ void _drawAward(
   }
 }
 
-/// 140pt round seal: `CITY · LC · VENUE · SCORE ·` running around the
-/// ring, stars/Keys centred, the visit date in italic serif below them.
+/// 146pt round seal (restaurant only): `CITY · LC · VENUE · SCORE ·`
+/// running around the ring, stars centred, the visit date in italic
+/// serif below them.
 class FriendRoundSealPainter extends CustomPainter {
   final FriendStampPaintData data;
   const FriendRoundSealPainter(this.data);
 
-  static const diameter = 140.0;
+  static const diameter = 146.0;
 
   @override
   void paint(Canvas canvas, Size size) {
     paintStampInk(canvas, size, data.ink, data.seedId, (canvas, ink) {
       final center = size.center(Offset.zero);
       final outerRadius = size.width / 2 - 3;
-      const innerRadius = 38.0;
+      const innerRadius = 40.0;
 
       canvas.drawCircle(
         center,
@@ -265,9 +286,9 @@ class FriendRoundSealPainter extends CustomPainter {
   bool shouldRepaint(covariant FriendRoundSealPainter oldDelegate) => true;
 }
 
-/// A 170×120 double-frame stamp: `CITY · LC` on top, the venue in large
-/// serif caps in the middle, stars/Keys, then `DD MMM · SCORE/10` at the
-/// bottom.
+/// A 170×120 double-frame stamp (restaurant only): `CITY · LC` on top,
+/// the venue in large serif caps in the middle, stars, then `DD MMM ·
+/// SCORE/10` at the bottom.
 class FriendDoubleFramePainter extends CustomPainter {
   final FriendStampPaintData data;
   const FriendDoubleFramePainter(this.data);
@@ -379,6 +400,118 @@ class FriendDoubleFramePainter extends CustomPainter {
   bool shouldRepaint(covariant FriendDoubleFramePainter oldDelegate) => true;
 }
 
+/// A 210×112 oval stamp (hotel only): a double oval border, `CITY · LC ·
+/// HOTEL` on top, the venue in italic serif in the middle, `DD MMM ·
+/// SCORE/10` at the bottom. No Keys glyph on the stamp itself — the
+/// spec's own oval description never asks for one, unlike the double
+/// frame's explicit "sterren" — "HOTEL" in the top label already signals
+/// what this stamp is.
+class FriendOvalPainter extends CustomPainter {
+  final FriendStampPaintData data;
+  const FriendOvalPainter(this.data);
+
+  static const width = 210.0;
+  static const height = 112.0;
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    paintStampInk(canvas, size, data.ink, data.seedId, (canvas, ink) {
+      final outer = (Offset.zero & size).deflate(2);
+      final inner = outer.deflate(7);
+      canvas.drawOval(
+        outer,
+        Paint()
+          ..color = ink
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1.6,
+      );
+      canvas.drawOval(
+        inner,
+        Paint()
+          ..color = ink
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 1,
+      );
+
+      final centerX = size.width / 2;
+      final centerY = size.height / 2;
+      final maxWidth = size.width * 0.64;
+
+      final topLabel = [
+        data.cityName.toUpperCase(),
+        data.countryCode.toUpperCase(),
+        'HOTEL',
+      ].where((s) => s.isNotEmpty).join(' · ');
+      final topPainter = TextPainter(
+        text: TextSpan(
+          text: topLabel,
+          style: GoogleFonts.inter(
+            color: ink,
+            fontSize: 8.5,
+            letterSpacing: 1.2,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+        maxLines: 1,
+        ellipsis: '…',
+        textAlign: TextAlign.center,
+      )..layout(maxWidth: maxWidth);
+      topPainter.paint(
+        canvas,
+        Offset(centerX - topPainter.width / 2, centerY - 30),
+      );
+
+      final nameStyle = fitStampTextByShrinking(
+        text: data.venueName,
+        style: GoogleFonts.cormorantGaramond(
+          color: ink,
+          fontSize: 25,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.w600,
+        ),
+        maxWidth: maxWidth,
+      );
+      final namePainter = TextPainter(
+        text: TextSpan(text: data.venueName, style: nameStyle),
+        textDirection: TextDirection.ltr,
+        maxLines: 1,
+        ellipsis: '…',
+        textAlign: TextAlign.center,
+      )..layout(maxWidth: maxWidth);
+      namePainter.paint(
+        canvas,
+        Offset(centerX - namePainter.width / 2, centerY - namePainter.height / 2 + 2),
+      );
+
+      final bottomText = data.score != null
+          ? '${_shortDateLabel(data.date)} · ${data.score}/10'
+          : _shortDateLabel(data.date);
+      final bottomPainter = TextPainter(
+        text: TextSpan(
+          text: bottomText,
+          style: GoogleFonts.inter(
+            color: ink,
+            fontSize: 8,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0.6,
+          ),
+        ),
+        textDirection: TextDirection.ltr,
+        maxLines: 1,
+        ellipsis: '…',
+      )..layout(maxWidth: maxWidth);
+      bottomPainter.paint(
+        canvas,
+        Offset(centerX - bottomPainter.width / 2, centerY + 26),
+      );
+    });
+  }
+
+  @override
+  bool shouldRepaint(covariant FriendOvalPainter oldDelegate) => true;
+}
+
 Size friendStampVariantSize(FriendStampVariant variant) => switch (variant) {
   FriendStampVariant.roundSeal => const Size(
     FriendRoundSealPainter.diameter,
@@ -388,6 +521,7 @@ Size friendStampVariantSize(FriendStampVariant variant) => switch (variant) {
     FriendDoubleFramePainter.width,
     FriendDoubleFramePainter.height,
   ),
+  FriendStampVariant.oval => const Size(FriendOvalPainter.width, FriendOvalPainter.height),
 };
 
 CustomPainter friendStampPainterFor(
@@ -396,6 +530,7 @@ CustomPainter friendStampPainterFor(
 ) => switch (variant) {
   FriendStampVariant.roundSeal => FriendRoundSealPainter(data),
   FriendStampVariant.doubleFrame => FriendDoubleFramePainter(data),
+  FriendStampVariant.oval => FriendOvalPainter(data),
 };
 
 /// One read-only stamp: picks its painter, applies its deterministic
@@ -409,6 +544,7 @@ class FriendProfileStamp extends StatelessWidget {
   final FriendStampVariant variant;
   final double rotationDegrees;
   final String semanticLabel;
+  final VoidCallback? onTap;
 
   const FriendProfileStamp({
     super.key,
@@ -416,24 +552,30 @@ class FriendProfileStamp extends StatelessWidget {
     required this.variant,
     required this.rotationDegrees,
     required this.semanticLabel,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
     final size = friendStampVariantSize(variant);
-    return Semantics(
-      label: semanticLabel,
-      child: Transform.rotate(
-        angle: rotationDegrees * math.pi / 180,
-        child: ExcludeSemantics(
-          child: SizedBox.fromSize(
-            size: size,
-            child: RepaintBoundary(
-              child: CustomPaint(painter: friendStampPainterFor(variant, data)),
-            ),
+    final visual = Transform.rotate(
+      angle: rotationDegrees * math.pi / 180,
+      child: ExcludeSemantics(
+        child: SizedBox.fromSize(
+          size: size,
+          child: RepaintBoundary(
+            child: CustomPaint(painter: friendStampPainterFor(variant, data)),
           ),
         ),
       ),
+    );
+
+    return Semantics(
+      label: semanticLabel,
+      button: onTap != null,
+      child: onTap == null
+          ? visual
+          : GestureDetector(onTap: onTap, child: visual),
     );
   }
 }
