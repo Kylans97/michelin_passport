@@ -1,56 +1,28 @@
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/navigation/route_observer.dart';
 import '../../../core/theme/cs_spacing.dart';
-import '../../../core/theme/cs_surface_context.dart';
-import '../../../core/theme/cs_typography.dart';
-import '../../../core/utils/visit_years.dart';
-import '../../../core/widgets/cs_filter_chip.dart';
 import '../../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
-import '../../../core/widgets/year_filter_control.dart';
-import '../../../data/repositories/country_lookup.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
+import '../../../data/repositories/profile_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
-import '../../../models/hotel.dart';
-import '../../../models/passport_venue.dart';
-import '../../../models/restaurant.dart';
-import '../../../models/venue_entry.dart';
-import '../../events/event_detail_screen.dart';
-import '../../explore/explore_screen.dart';
-import '../../explore/models/explore_filters.dart' show ExploreVenueType;
-import '../../hotels/hotel_detail_screen.dart';
-import '../../restaurants/restaurant_detail_screen.dart';
-import '../models/passport_stamp_item.dart';
-import '../passport_filter_type.dart';
-import '../passport_stamp_source.dart';
-import '../passport_view_model.dart';
-import 'passport_empty_state.dart';
-import 'passport_page_view.dart';
-import 'passport_stamp_stats_row.dart';
+import '../passport_booklet_data.dart';
+import '../utils/passport_member_number.dart';
+import 'passport_cover.dart';
+import 'passport_data_page.dart';
 
-/// Passport's default "Passport" subsection content: entity filter, time
-/// filter, the stats row, and — since the ink-stamp redesign — a
-/// paginated [PassportPageView] instead of a flat list of venue/event
-/// cards. Extracted from what used to be [PassportScreen]'s entire body;
-/// the header and Passport/Wishlist/Ranking/Trips tab bar live once,
-/// persistently, in the shared shell above this widget.
-///
-/// STAMP REDESIGN — what changed vs. the previous card-based list:
-/// - Each stamp is now one VISIT/STAY/confirmed attendance, not one
-///   deduplicated venue (see passport_stamp_source.dart's own doc
-///   comment) — a place visited three times now shows three stamps.
-/// - Events participate in the same paginated stamp page as Restaurants/
-///   Hotels (the filter chips still show exactly one type at a time,
-///   unchanged) rather than their own separate card list.
-/// - The wishlist bookmark toggle the previous restaurant/hotel cards
-///   carried is gone — a real stamp has no such affordance, and the
-///   design spec for this redesign doesn't call for one. `WishlistRepository`
-///   is no longer touched by this widget as a result.
-/// - The "YOUR COLLECTION" section title is gone — each stamp page now
-///   carries its own "ENTRIES · X" / "p. NN" header, making a second,
-///   plain-text heading above it redundant.
+/// Passport's default "Passport" subsection content: a real passport
+/// booklet — closed cover (with yearly volumes fanned behind it) that
+/// opens, 3D, onto a bound data page. Round 1 of the booklet redesign:
+/// only the cover and the data page exist here — the swipeable stamp
+/// pages and the add-a-visit flow are Round 2/3, not built yet (see
+/// EDITORIAL_REDESIGN_TRACKING.md). Replaces the previous filter-chip +
+/// flat stamp-page-list body entirely; the header and Passport/Wishlist/
+/// Ranking/Trips tab bar above this widget are untouched, owned by
+/// PassportScreen.
 class PassportCollectionBody extends StatefulWidget {
   const PassportCollectionBody({super.key});
 
@@ -59,32 +31,34 @@ class PassportCollectionBody extends StatefulWidget {
 }
 
 class _PassportCollectionBodyState extends State<PassportCollectionBody>
-    with RouteAware {
-  late final VisitedRepository _repo = VisitedRepository(
+    with SingleTickerProviderStateMixin, RouteAware {
+  late final _visitedRepo = VisitedRepository(Supabase.instance.client);
+  late final _eventAttendanceRepo = EventConfirmedAttendanceRepository(
     Supabase.instance.client,
   );
-  late final EventConfirmedAttendanceRepository _eventAttendanceRepo =
-      EventConfirmedAttendanceRepository(Supabase.instance.client);
+  late final _profileRepo = ProfileRepository(Supabase.instance.client);
 
-  List<VenueEntry>? _entries; // null until the first load completes.
-  List<EventAttendanceEntry> _eventEntries = [];
-  Map<String, String> _countryNameByCode = {};
+  List<PassportVolume> _volumes = [];
+  String _holderName = 'Member';
+  String? _avatarUrl;
+  String _memberNumber = '';
 
-  // Stamp-animation bookkeeping: every visit/stay/attendance id seen as of
-  // the last completed load, and — once at least one prior load has
-  // happened — the ids that are new since then. The very first load of
-  // the app session never has anything to diff against, so it never
-  // animates anything (see _load's own comment).
-  Set<String> _knownStampIds = {};
-  Set<String> _newStampIds = {};
-  bool _hasLoadedOnce = false;
+  bool _loading = true;
+  bool _loadError = false;
 
-  bool _loading = true; // true only for the very first, blocking load.
-  bool _loadError = false; // Restaurant/Hotel load failure only.
-  bool _refreshing = false; // guards overlapping refresh calls.
+  // "Remember whether the booklet was open, which volume, which page" —
+  // Round 1 only has one page (the data page), so page memory itself is
+  // Round 2's concern. In-memory, not persisted to disk: PassportScreen
+  // keeps this whole widget alive via IndexedStack for the life of the
+  // app session, which is exactly "per session" — an app restart clearing
+  // it is the correct behavior, not a gap.
+  bool _isOpen = false;
+  int _openVolumeIndex = 0;
 
-  PassportFilterType _filterType = PassportFilterType.restaurants;
-  int? _selectedYear; // null = "All time", the default.
+  late final AnimationController _flipController = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 450),
+  );
 
   @override
   void initState() {
@@ -104,317 +78,386 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   @override
   void dispose() {
     appRouteObserver.unsubscribe(this);
+    _flipController.dispose();
     super.dispose();
   }
 
   @override
   void didPopNext() => _load();
 
-  Set<String> _allStampIds(
-    List<VenueEntry> entries,
-    List<EventAttendanceEntry> eventEntries,
-  ) {
-    final ids = <String>{};
-    for (final entry in entries) {
-      for (final visit in entry.visits) {
-        ids.add(visit.id);
-      }
-    }
-    for (final entry in eventEntries) {
-      ids.add(entry.attendance.id);
-    }
-    return ids;
-  }
-
   Future<void> _load() async {
-    if (_refreshing) return;
-    _refreshing = true;
     try {
       final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-      final entries = await _repo.loadPassportVenues(uid);
+      final entries = await _visitedRepo.loadPassportVenues(uid);
       var eventEntries = <EventAttendanceEntry>[];
       try {
         eventEntries = await _eventAttendanceRepo.loadPassportEventAttendance(
           uid,
         );
       } catch (_) {
-        // Never fails the rest of Passport — see _eventEntries' own field.
+        // Never fails the rest of Passport — same precedent as before.
       }
-      var countryNameByCode = <String, String>{};
+
+      var name = 'Member';
+      String? avatarUrl;
       try {
-        final countries = await getAllCountries(Supabase.instance.client);
-        countryNameByCode = {for (final c in countries) c.code: c.name};
+        // `visited` only feeds UserProfile's own current-award stats,
+        // which this screen never reads (it computes ENTRIES/COUNTRIES/
+        // STARS itself from stars-at-visit, not current award) — so an
+        // empty list here avoids a second restaurant load for fields
+        // that would go unused.
+        final profile = await _profileRepo.getProfile(
+          userId: uid,
+          visited: const [],
+        );
+        name = profile.name;
+        avatarUrl = await _profileRepo.resolveAvatarUrl(profile.avatarPath);
       } catch (_) {
-        // Never fails the rest of Passport — stamp semantics labels fall
-        // back to the bare country code (see stampSemanticLabel).
+        // Cover/data page still render with the 'Member' + initials
+        // fallback — a profile-load failure never blocks Passport itself.
       }
+
       if (!mounted) return;
-
-      final allIds = _allStampIds(entries, eventEntries);
-      final newIds = _hasLoadedOnce
-          ? allIds.difference(_knownStampIds)
-          : <String>{};
-
-      final venueYears = availableVisitYears(
-        entries.expand((entry) => entry.visits),
+      final volumes = buildPassportVolumes(
+        entries: entries,
+        eventEntries: eventEntries,
       );
-      final eventYears = availableEventAttendanceYears(eventEntries);
       setState(() {
-        _entries = entries;
-        _eventEntries = eventEntries;
-        _countryNameByCode = countryNameByCode;
-        _newStampIds = newIds;
-        _knownStampIds = allIds;
-        _hasLoadedOnce = true;
+        _volumes = volumes;
+        _holderName = name;
+        _avatarUrl = avatarUrl;
+        _memberNumber = derivedMemberNumberPlaceholder(uid);
         _loading = false;
         _loadError = false;
-        final currentYears = _filterType == PassportFilterType.events
-            ? eventYears
-            : venueYears;
-        if (_selectedYear != null && !currentYears.contains(_selectedYear)) {
-          _selectedYear = null;
-        }
+        if (_openVolumeIndex >= volumes.length) _openVolumeIndex = 0;
       });
     } catch (_) {
       if (!mounted) return;
       setState(() {
         _loading = false;
-        _loadError = _entries == null;
+        _loadError = _volumes.isEmpty;
       });
-    } finally {
-      _refreshing = false;
     }
   }
 
-  bool get _isHotel => _filterType == PassportFilterType.hotels;
+  bool get _reduceMotion => MediaQuery.of(context).disableAnimations;
 
-  bool _matchesVenueType(PassportVenue venue) =>
-      _isHotel ? venue is HotelVenue : venue is RestaurantVenue;
-
-  String _venueEmptyMessage(List<VenueEntry> allEntries) {
-    final hasAnyHistoryForType = allEntries.any(
-      (e) => _matchesVenueType(e.venue),
-    );
-    if (!hasAnyHistoryForType) {
-      return _isHotel ? 'No hotel stays yet.' : 'No restaurant visits yet.';
+  void _open(int index) {
+    setState(() {
+      _isOpen = true;
+      _openVolumeIndex = index;
+    });
+    if (_reduceMotion) {
+      _flipController.value = 1;
+    } else {
+      _flipController.forward(from: 0);
     }
-    return _isHotel
-        ? 'No hotel stays in $_selectedYear.'
-        : 'No restaurant visits in $_selectedYear.';
   }
 
-  String _eventEmptyMessage(List<EventAttendanceEntry> allEventEntries) {
-    if (allEventEntries.isEmpty) return 'No events in your Passport yet.';
-    return 'No events in your Passport in $_selectedYear.';
+  void _close() {
+    if (_reduceMotion) {
+      _flipController.value = 0;
+      setState(() => _isOpen = false);
+    } else {
+      _flipController.reverse().whenComplete(() {
+        if (mounted) setState(() => _isOpen = false);
+      });
+    }
   }
 
-  static const _filterIcons = {
-    PassportFilterType.restaurants: Icons.restaurant_outlined,
-    PassportFilterType.hotels: Icons.bed_outlined,
-    PassportFilterType.events: Icons.confirmation_number_outlined,
-  };
-
-  void _openRestaurant(Restaurant restaurant) => Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
-    ),
+  static final _emptyVolume = PassportVolume(
+    year: null,
+    items: const [],
+    countryCodes: const [],
+    stars: 0,
+    collectionFirstYear: null,
   );
-
-  void _openHotel(Hotel hotel) => Navigator.push(
-    context,
-    MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
-  );
-
-  void _openEvent(String eventId) => Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => EventDetailScreen(
-        eventId: eventId,
-        sourceSurface: AnalyticsSourceSurface.passport,
-      ),
-    ),
-  );
-
-  void _openExplore() => Navigator.push(
-    context,
-    MaterialPageRoute(builder: (_) => const ExploreScreen()),
-  );
-
-  void _onTapStamp(PassportStampItem item) => switch (item) {
-    RestaurantStampItem(:final restaurant) => _openRestaurant(restaurant),
-    HotelStampItem(:final hotel) => _openHotel(hotel),
-    EventStampItem(:final entry) => _openEvent(entry.event.id),
-  };
 
   @override
   Widget build(BuildContext context) {
-    final allEntries = _entries ?? [];
-    final isEvents = _filterType == PassportFilterType.events;
+    if (_loading) {
+      return const ColoredBox(
+        color: AppColors.deepGreen,
+        child: Center(
+          child: CircularProgressIndicator(
+            color: AppColors.textOnDark,
+            strokeWidth: 1.5,
+          ),
+        ),
+      );
+    }
+    if (_loadError) {
+      return ColoredBox(
+        color: AppColors.deepGreen,
+        child: Center(child: _ErrorState(onRetry: _load)),
+      );
+    }
 
-    final years = isEvents
-        ? availableEventAttendanceYears(_eventEntries)
-        : availableVisitYears(allEntries.expand((entry) => entry.visits));
-
-    final restaurantOrHotel = _isHotel
-        ? ExploreVenueType.hotels
-        : ExploreVenueType.restaurants;
-    final venueResult = isEvents
-        ? null
-        : PassportFilterResult.of(
-            allEntries,
-            venueType: restaurantOrHotel,
-            year: _selectedYear,
-          );
-    final stampItems = isEvents
-        ? buildEventStampItems(_eventEntries, year: _selectedYear)
-        : _isHotel
-        ? buildHotelStampItems(allEntries, year: _selectedYear)
-        : buildRestaurantStampItems(allEntries, year: _selectedYear);
-
-    final headerLabel = 'ENTRIES · ${_filterType.label.toUpperCase()}';
+    final coverVolumes = _volumes.isEmpty ? [_emptyVolume] : _volumes;
+    final openVolume = coverVolumes[_openVolumeIndex.clamp(0, coverVolumes.length - 1)];
 
     return ColoredBox(
       color: AppColors.deepGreen,
-      child: RefreshIndicator(
-        color: AppColors.textOnDark,
-        backgroundColor: AppColors.forestGreen,
-        onRefresh: _load,
-        child: CustomScrollView(
-          slivers: [
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.md,
-                  CsSpacing.pageHorizontal,
-                  0,
-                ),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      for (final type in PassportFilterType.values) ...[
-                        if (type != PassportFilterType.values.first)
-                          const SizedBox(width: CsSpacing.sm),
-                        CsFilterChip(
-                          label: type.label,
-                          icon: _filterIcons[type],
-                          selected: _filterType == type,
-                          onTap: () => setState(() {
-                            _filterType = type;
-                            final newYears = type == PassportFilterType.events
-                                ? availableEventAttendanceYears(_eventEntries)
-                                : availableVisitYears(
-                                    allEntries.expand((e) => e.visits),
-                                  );
-                            if (_selectedYear != null &&
-                                !newYears.contains(_selectedYear)) {
-                              _selectedYear = null;
-                            }
-                          }),
-                        ),
-                      ],
-                    ],
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(
+          CsSpacing.pageHorizontal,
+          CsSpacing.md,
+          CsSpacing.pageHorizontal,
+          CsSpacing.xl,
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: _reduceMotion
+                ? _CrossFadeBook(
+                    isOpen: _isOpen,
+                    coverVolumes: coverVolumes,
+                    openVolume: openVolume,
+                    memberNumber: _memberNumber,
+                    holderName: _holderName,
+                    avatarUrl: _avatarUrl,
+                    onOpen: _open,
+                    onClose: _close,
+                  )
+                : _FlipBook(
+                    controller: _flipController,
+                    isOpen: _isOpen,
+                    coverVolumes: coverVolumes,
+                    openVolume: openVolume,
+                    memberNumber: _memberNumber,
+                    holderName: _holderName,
+                    avatarUrl: _avatarUrl,
+                    onOpen: _open,
+                    onClose: _close,
                   ),
-                ),
-              ),
-            ),
-            if (years.isNotEmpty)
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    CsSpacing.pageHorizontal,
-                    CsSpacing.md,
-                    CsSpacing.pageHorizontal,
-                    0,
-                  ),
-                  child: Align(
-                    alignment: Alignment.centerLeft,
-                    child: YearFilterControl(
-                      years: years,
-                      selectedYear: _selectedYear,
-                      onSelect: (year) => setState(() => _selectedYear = year),
-                      surface: CsSurface.dark,
-                    ),
-                  ),
-                ),
-              ),
-            if (venueResult != null)
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    CsSpacing.pageHorizontal,
-                    CsSpacing.lg,
-                    CsSpacing.pageHorizontal,
-                    0,
-                  ),
-                  child: PassportStampStatsRow(
-                    stats: [
-                      PassportStampStat(
-                        value: '${venueResult.summary.placesVisited}',
-                        label: PassportMetricLabels.forVenueType(
-                          restaurantOrHotel,
-                        ).visited,
-                      ),
-                      PassportStampStat(
-                        value: '${venueResult.summary.countriesVisited}',
-                        label: 'COUNTRIES',
-                      ),
-                      PassportStampStat(
-                        value: '${venueResult.summary.awardsExperienced}',
-                        label: PassportMetricLabels.forVenueType(
-                          restaurantOrHotel,
-                        ).awards,
-                        gold: true,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            if (_loading)
-              const SliverFillRemaining(
-                child: Center(
-                  child: CircularProgressIndicator(
-                    color: AppColors.textOnDark,
-                    strokeWidth: 1.5,
-                  ),
-                ),
-              )
-            else if (_loadError)
-              SliverFillRemaining(child: _ErrorState(onRetry: _load))
-            else if (stampItems.isEmpty)
-              SliverFillRemaining(
-                child: PassportEmptyState(
-                  message: isEvents
-                      ? _eventEmptyMessage(_eventEntries)
-                      : _venueEmptyMessage(allEntries),
-                ),
-              )
-            else
-              SliverToBoxAdapter(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    0,
-                    CsSpacing.xl,
-                    0,
-                    100,
-                  ),
-                  child: PassportPageView(
-                    pages: paginateStamps(stampItems),
-                    headerLabel: headerLabel,
-                    countryNameByCode: _countryNameByCode,
-                    newStampIds: _newStampIds,
-                    onTapStamp: _onTapStamp,
-                    onTapNextStamp: _openExplore,
-                  ),
-                ),
-              ),
-          ],
+          ),
         ),
       ),
     );
   }
+}
+
+/// The 3D open/close transition: the selected cover face rotates open
+/// around its own left edge while the data page (already laid out at
+/// rest beneath it) is revealed. Only the single cover FACE animates —
+/// not the whole peeking stack behind it — matching a real book: once one
+/// volume commits to opening, what's behind it in the pile isn't part of
+/// the motion.
+class _FlipBook extends StatelessWidget {
+  final AnimationController controller;
+  final bool isOpen;
+  final List<PassportVolume> coverVolumes;
+  final PassportVolume openVolume;
+  final String memberNumber;
+  final String holderName;
+  final String? avatarUrl;
+  final ValueChanged<int> onOpen;
+  final VoidCallback onClose;
+
+  const _FlipBook({
+    required this.controller,
+    required this.isOpen,
+    required this.coverVolumes,
+    required this.openVolume,
+    required this.memberNumber,
+    required this.holderName,
+    required this.avatarUrl,
+    required this.onOpen,
+    required this.onClose,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: controller,
+      builder: (context, _) {
+        final t = Curves.easeOut.transform(controller.value);
+        final atRestClosed = controller.value == 0 && !isOpen;
+        final atRestOpen = controller.value == 1 && isOpen;
+
+        return SizedBox(
+          height: math.max(_OpenBookFrame.height, PassportCoverFace.height + 24 * 5 + 40),
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              if (!atRestClosed)
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: IgnorePointer(
+                    ignoring: !atRestOpen,
+                    child: _OpenBookFrame(
+                      volume: openVolume,
+                      holderName: holderName,
+                      avatarUrl: avatarUrl,
+                      memberNumber: memberNumber,
+                      onClose: onClose,
+                    ),
+                  ),
+                ),
+              if (!atRestOpen)
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: IgnorePointer(
+                    ignoring: !atRestClosed,
+                    child: atRestClosed
+                        ? PassportCoverStack(
+                            volumes: coverVolumes,
+                            memberNumber: memberNumber,
+                            onOpen: onOpen,
+                          )
+                        : Transform(
+                            alignment: Alignment.centerLeft,
+                            transform: Matrix4.identity()
+                              ..setEntry(3, 2, 0.0015)
+                              ..rotateY(-math.pi / 2 * t),
+                            child: Opacity(
+                              opacity: (1 - t).clamp(0.0, 1.0),
+                              child: PassportCoverFace(
+                                volume: openVolume,
+                                memberNumber: memberNumber,
+                              ),
+                            ),
+                          ),
+                  ),
+                ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// Reduce Motion fallback: a plain cross-fade between the closed stack and
+/// the open book, no 3D transform, no page-curl — matching this task's own
+/// "Reduce Motion: geen 3D-flip of page-curl, maar een cross-fade."
+class _CrossFadeBook extends StatelessWidget {
+  final bool isOpen;
+  final List<PassportVolume> coverVolumes;
+  final PassportVolume openVolume;
+  final String memberNumber;
+  final String holderName;
+  final String? avatarUrl;
+  final ValueChanged<int> onOpen;
+  final VoidCallback onClose;
+
+  const _CrossFadeBook({
+    required this.isOpen,
+    required this.coverVolumes,
+    required this.openVolume,
+    required this.memberNumber,
+    required this.holderName,
+    required this.avatarUrl,
+    required this.onOpen,
+    required this.onClose,
+  });
+
+  @override
+  Widget build(BuildContext context) => AnimatedSwitcher(
+    duration: const Duration(milliseconds: 220),
+    child: isOpen
+        ? _OpenBookFrame(
+            key: const ValueKey('open'),
+            volume: openVolume,
+            holderName: holderName,
+            avatarUrl: avatarUrl,
+            memberNumber: memberNumber,
+            onClose: onClose,
+          )
+        : PassportCoverStack(
+            key: const ValueKey('closed'),
+            volumes: coverVolumes,
+            memberNumber: memberNumber,
+            onOpen: onOpen,
+          ),
+  );
+}
+
+/// The open-book topbar ("‹ Close" / volume label) plus the data page.
+/// The design spec's own topbar also names a right-hand map icon — omitted
+/// here: PassportScreen's persistent outer header already carries one
+/// (see that class's own doc comment on why the header/tab bar never
+/// leave the screen for an internal state like this), and a second map
+/// icon two rows apart would read as a mistake rather than a feature. A
+/// disclosed adaptation, not a silent drop.
+class _OpenBookFrame extends StatelessWidget {
+  final PassportVolume volume;
+  final String holderName;
+  final String? avatarUrl;
+  final String memberNumber;
+  final VoidCallback onClose;
+
+  const _OpenBookFrame({
+    super.key,
+    required this.volume,
+    required this.holderName,
+    required this.avatarUrl,
+    required this.memberNumber,
+    required this.onClose,
+  });
+
+  static const double height = PassportDataPage.height + 52;
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: PassportDataPage.width,
+    height: height,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        Row(
+          children: [
+            GestureDetector(
+              onTap: onClose,
+              behavior: HitTestBehavior.opaque,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Icon(
+                      Icons.chevron_left_rounded,
+                      color: AppColors.textOnDark,
+                      size: 20,
+                    ),
+                    Text(
+                      'Close',
+                      style: GoogleFonts.inter(
+                        color: AppColors.textOnDark,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Expanded(
+              child: Text(
+                volume.year == null ? 'COMPLETE PASSPORT' : '${volume.year} VOLUME',
+                textAlign: TextAlign.center,
+                style: GoogleFonts.inter(
+                  color: AppColors.secondaryOnDark,
+                  fontSize: 11,
+                  fontWeight: FontWeight.w600,
+                  letterSpacing: 11 * 0.12,
+                ),
+              ),
+            ),
+            const SizedBox(width: 52),
+          ],
+        ),
+        const SizedBox(height: 12),
+        Expanded(
+          child: PassportDataPage(
+            volume: volume,
+            holderName: holderName,
+            avatarUrl: avatarUrl,
+            memberNumber: memberNumber,
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 class _ErrorState extends StatelessWidget {
@@ -422,26 +465,24 @@ class _ErrorState extends StatelessWidget {
   const _ErrorState({required this.onRetry});
 
   @override
-  Widget build(BuildContext context) => Center(
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const Icon(
-          Icons.wifi_off_rounded,
-          color: AppColors.secondaryOnDark,
-          size: 40,
-        ),
-        const SizedBox(height: CsSpacing.base),
-        Text(
-          'Could not load data',
-          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
-        ),
-        const SizedBox(height: CsSpacing.md),
-        SizedBox(
-          width: 160,
-          child: CsSecondaryButton(label: 'Retry', onTap: onRetry, height: 44),
-        ),
-      ],
-    ),
+  Widget build(BuildContext context) => Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      const Icon(
+        Icons.wifi_off_rounded,
+        color: AppColors.secondaryOnDark,
+        size: 40,
+      ),
+      const SizedBox(height: CsSpacing.base),
+      Text(
+        'Could not load data',
+        style: GoogleFonts.inter(color: AppColors.secondaryOnDark, fontSize: 14),
+      ),
+      const SizedBox(height: CsSpacing.md),
+      SizedBox(
+        width: 160,
+        child: CsSecondaryButton(label: 'Retry', onTap: onRetry, height: 44),
+      ),
+    ],
   );
 }

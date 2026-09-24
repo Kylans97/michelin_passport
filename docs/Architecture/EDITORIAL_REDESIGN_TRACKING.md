@@ -40,9 +40,13 @@ Explore ("Tonight") is still next once resumed.
 - [ ] 1 — Explore "Tonight" cover — next up
 - [ ] 2 — Events list (calendar edition)
 - [ ] 3 — Event detail (the invitation)
-- [ ] 4 — Passport (stamped page) — 4a header/tabs/stats only; the stamp
-      pages themselves already ship (see the Passport ink-stamp redesign,
-      commit 29f5178)
+- [~] 4 — Passport — **superseded by a much larger scope, built out of
+      order (like item 6 was), not the original "4a header/tabs/stats
+      only" plan.** The Passport sub-tab is being rebuilt as an actual
+      passport booklet (closed cover → 3D-open → bound data page →
+      swipeable stamp pages, in three explicitly agreed rounds; see this
+      file's own dedicated section below for what Round 1 shipped and
+      what Rounds 2–3 still owe).
 - [ ] 5 — Community (your circle)
 - [x] 6 — Friend profile — **built out of order, twice.** First pass:
       three full layouts (A/B/C) behind a `kDebugMode` A/B/C picker, per
@@ -145,6 +149,145 @@ Explore ("Tonight") is still next once resumed.
     a context above the harness's own `MaterialApp`/Navigator, fixed
     with a `navigatorKey`).
 
+## Passport booklet redesign (item 4, built out of order)
+
+Replaces `PassportCollectionBody` (filter chips + flat stamp-page list)
+with an actual passport booklet: closed cover with yearly volumes fanned
+behind it → 3D open → bound data page → (Round 2) swipeable stamp pages.
+Agreed as 3 rounds before any code was written, with an explicit stop
+after the cover + data page — this section covers Round 1 only.
+
+**Reuse audit done first, before writing anything**: the whole ink-stamp
+engine from the earlier Passport redesign (commit 29f5178) — hash/
+variant/ink/rotation/jitter in `passport_stamp_style.dart`, the 5 painters,
+`paintStampInk`/`drawArcText`/`drawIconGlyph`, `PassportStampWidget`'s own
+"just stamped" animation, `paginateStamps`, `PassportPage`'s guilloché-ring
++ slot-anchor + adjacency logic, `PassportPageView`'s page-dots — all of it
+stays, all reused as-is for Round 2, none of it duplicated. Four widgets
+(`passport_collection_header.dart`, `passport_stats_panel.dart`,
+`passport_restaurant_card.dart`/`passport_hotel_card.dart`/
+`passport_event_card.dart`) were found to already be dead code (zero real
+consumers, verified by grep, not assumed) independent of this redesign —
+flagged, not touched. `passport_view_model.dart` (`PassportFilterResult`)
+and `passport_filter_type.dart`'s enum stay: both are cross-feature (My
+Map; `journey_metrics.dart`), not exclusive to the old Passport list.
+
+**Round 1 — cover + data page — shipped:**
+- `passport_booklet_data.dart` (new) — `PassportVolume` +
+  `buildPassportVolumes`: the complete passport plus one volume per year
+  with at least one entry, newest first. ENTRIES/COUNTRIES/STARS are all
+  computed per-stamp (not per-venue), matching how the stamp system itself
+  already counts visits, not venues.
+- `widgets/passport_cover.dart` (new) — `PassportCoverFace` (single cover,
+  reused for both the front face and a peeking sliver via a `depth` param)
+  + `PassportCoverStack` (the fanned stack, swipe/tap to bring a volume
+  forward, "Tap to open", page dots). Capped at 5 peeking slivers — a
+  scaling simplification for an unrealistically long visit history,
+  disclosed rather than silently assumed away.
+- `widgets/passport_data_page.dart` (new) — the bound data page: photo/
+  initials, HOLDER/MEMBER NO./VALID fields, the ENTRIES/COUNTRIES/STARS
+  trio, country-code chips, and the MRZ-style footer.
+- `widgets/passport_collection_body.dart` (rewritten) — orchestrates
+  load → cover ↔ open-book state, a real 3D rotateY flip
+  (`Transform`+`Matrix4`, no package) for the open/close transition, and a
+  plain cross-fade fallback when Reduce Motion is on. Open/closed state
+  and which volume is open live in this widget's own `State` and survive
+  subsection switching for the life of the app session (PassportScreen
+  already keeps this whole widget alive via `IndexedStack`) — never
+  written to disk, matching "remembered per session," not permanently.
+- `CsMastheadLogo` gained an optional `tint` param (a `ColorFilter`) so the
+  cover's logo can render in gold — no gold SVG asset exists, and adding
+  one would be a third bundled variant for one screen; tinting the
+  existing ivory-ink asset is the standard dependency-free way to do this.
+
+**Real bugs the preview harness caught, not analyze/tests** (built and
+reviewed per explicit instruction, before this round was called done):
+  - The peeking-sliver stack initially rendered every volume at the exact
+    same `Positioned(bottom: 0, ...)` — the depth offset was written into
+    `stackHeight`'s calculation but never actually applied to each card's
+    own position, so every sliver sat fully hidden behind the front cover
+    with nothing peeking at all.
+  - Once fixed, the year label on each sliver was still invisible — it
+    used a fractional `Alignment(0, -0.88)` against the card's full 410pt
+    height, landing it right at the edge of (or just past) the ~24pt band
+    that's actually visible above the card in front. Switched to a fixed
+    7pt inset from the card's own top edge instead of a fraction of its
+    full height.
+  - Cormorant Garamond numerals (the ENTRIES/COUNTRIES/STARS trio, MEMBER
+    NO., the sliver year labels) rendered with visibly uneven digit
+    heights — the same oldstyle-figure font fallback `CsTypography`'s own
+    `_liningFigures` exists to prevent, but this page hardcodes its own
+    literal spec sizes rather than reusing those roles, so the
+    `FontFeature.enable('lnum')` fix had to be repeated locally in both
+    `passport_data_page.dart` and `passport_cover.dart`.
+  - The data page's fixed height (430) was too short once real content
+    (photo + fields + stat row + wrapped country chips + MRZ) was laid
+    out — with scrolling deliberately disabled (it's meant to read as a
+    fixed bound page, not a scrolling list), the MRZ lines were silently
+    clipped off the bottom with no visible error. Raised to 480.
+  Screenshots taken and reviewed: 0/1/4/5/13 visits, complete vs. a yearly
+  volume, and a long name/long holder name (truncation + MRZ line length)
+  — per the explicit "make previews of..." list. All via the real
+  `PassportCoverStack`/`PassportDataPage` widgets fed by hand-built
+  fixtures, not a mock of the whole screen — `PassportCollectionBody`
+  itself isn't seamed for fake repositories (unlike Wishlist/Ranking/
+  Trips' injectable bodies), so the harness bypassed its Supabase-backed
+  `_load()` entirely rather than adding an injection seam for a throwaway
+  file.
+
+**Interpretive calls made, disclosed, not asked about individually:**
+  - **STARS metric**: sums stars-AT-VISIT across every restaurant stamp in
+    scope (never the current award — same historical-snapshot rule every
+    other visit surface follows), and sums per-stamp, not per-venue —
+    consistent with ENTRIES also counting every visit, not every venue.
+    Hotel keys and event types don't contribute; the brief's own field is
+    literally named "STARS," not "AWARDS."
+  - **No gold text beyond the brief's own enumerated list**: the brief
+    names gold-foil for "logo, MANTELIER, rand" only. The cover's italic
+    tagline, the COMPLETE/year label, and "NO. {member}" are rendered
+    ivory instead of gold — applying this app's own established "gold is
+    ornament-only" rule (see the friend-profile redesign's identical
+    correction) rather than treating the brief's silence on those three
+    as an invitation to gold them.
+  - **Open-book topbar's map icon dropped**: the brief's own 10b topbar
+    names a right-hand map icon. `PassportScreen`'s persistent outer
+    header (untouched, per this round's own scope) already carries one —
+    a second map icon two rows below would read as a mistake, not a
+    feature, so this round's topbar keeps only "‹ Close" and the volume
+    label.
+  - **ID photo fallback**: rendered as a filled ink-green tile with
+    initials (the same fallback convention `MemberAvatar`/
+    `CsEditorialImageFallback` already use elsewhere), not a hollow
+    outlined frame — "een lege lijst met initialen" reads as ambiguous
+    between the two; the filled-tile reading was chosen for visual
+    consistency with the rest of the app's own identity fallbacks.
+
+**Backend gap flagged, not silently worked around**: no `member_number`
+column exists on `profiles` (checked, not assumed). "MEMBER NO." and the
+MRZ strip's second line use `derivedMemberNumberPlaceholder` —
+deterministic from the user id via the stamp system's own stable hash, so
+it's at least constant across sessions, but explicitly NOT a real assigned
+number. Every call site is commented for replacement the moment a real
+column exists. User confirmed this placeholder approach for Round 1 rather
+than blocking on a migration.
+
+**Not built yet — Rounds 2 and 3, by design:**
+  - Round 2: the swipeable stamp pages themselves (per-year grouped pages,
+    year-in-corner label, the empty-slot tile's filled "+" affordance which
+    doesn't exist on today's stamp pages), plus the 5 stamp designs'
+    literal size/detail adjustments from the reuse-audit comparison
+    (oval 190×100→200×106 and italic 26→30; double-frame padding
+    16h/10v→12h/18v; round-seal centre showing month+year, not year alone).
+  - Round 3: the 2-step "add a visit" flow (venue picker with wishlist/
+    events/search → date/score/note + live stamp preview + same-venue-
+    same-date duplicate check), wired to the stamp pages' entrance
+    animation.
+  - Tests: none yet — same deferral rationale as §0 and the friend-profile
+    round (a preview harness catches real layout/lifecycle bugs a widget
+    test's own fake-driven setup wouldn't; unit/widget tests come once the
+    booklet has proven stable in real use, matching this file's own
+    established pattern).
+
 ## New backend needs surfaced along the way
 
 Anything a screen's design calls for that the backend doesn't have yet gets
@@ -155,6 +298,14 @@ effect of another task"). Filled in as each screen is built.
 - **Friendship acceptance date** — not exposed by `get_friends`/
   `get_profile_identity`. Needed for "Friends since {month year}" on the
   Friend Profile header, still not shown anywhere.
+- **Member number** — `profiles` has no such column. The Passport
+  booklet's cover ("NO. {member}") and data page (MEMBER NO. + the MRZ
+  strip's serial) currently use `derivedMemberNumberPlaceholder` — a
+  deterministic, user-id-derived placeholder, explicitly not a real
+  assigned number. Needs: a `member_number` column (assigned at signup,
+  stable, human-shown), then every call site of
+  `passport/utils/passport_member_number.dart` swapped for the real
+  value.
 - **Dinner invitations** — no `dinner_invitations` table/RPC exists.
   Needs: the table itself (id, from_user, to_user, venue_id, venue_type,
   proposed_dates[], meal_type, note, status, chosen_date, created_at),

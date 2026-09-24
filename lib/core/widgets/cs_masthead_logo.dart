@@ -12,13 +12,24 @@ import 'cs_image_placeholder.dart' show csMonogramAssetPath, csMonogramSmallAsse
 class CsMastheadLogo extends StatelessWidget {
   final double size;
 
-  const CsMastheadLogo({super.key, this.size = 22});
-  const CsMastheadLogo.cover({super.key}) : size = 76;
+  /// Recolors the mark via [ColorFilter.mode]/[BlendMode.srcIn] — the SVG
+  /// asset itself only ships in ivory-ink/green-ink variants (no gold
+  /// foil asset exists), and this is the standard, dependency-free way to
+  /// tint a monochrome vector asset rather than adding a third bundled
+  /// file. Null (the default) renders the asset's own ivory ink,
+  /// unchanged for every existing call site.
+  final Color? tint;
+
+  const CsMastheadLogo({super.key, this.size = 22, this.tint});
+  const CsMastheadLogo.cover({super.key, this.tint}) : size = 76;
 
   @override
   Widget build(BuildContext context) => SvgPicture.asset(
     size < 40 ? csMonogramSmallAssetPath : csMonogramAssetPath,
     width: size,
     height: size,
+    colorFilter: tint == null
+        ? null
+        : ColorFilter.mode(tint!, BlendMode.srcIn),
   );
 }
