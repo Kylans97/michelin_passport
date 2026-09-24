@@ -77,3 +77,93 @@ Event? selectFeaturedEvent(List<Event> events) {
     ..sort(compareEventChronology);
   return upcoming.isEmpty ? null : upcoming.first;
 }
+
+/// One catalogue row surfaced in "Fresh Finds" — a restaurant, hotel, or
+/// event, already resolved to whichever concrete type it is. Deliberately
+/// a sealed wrapper around the existing models rather than a new shared
+/// model: Restaurant/Hotel/Event stay exactly as they are, this only
+/// exists so [selectFreshFinds] can sort/limit across all three in one
+/// list, and so [ExploreFreshFindCard] can pattern-match on `switch` to
+/// render whichever fields each concrete type actually has.
+sealed class FreshFindItem {
+  DateTime get createdAt;
+  String get name;
+  String get cityName;
+  String get flagEmoji;
+}
+
+class FreshFindRestaurant extends FreshFindItem {
+  final Restaurant restaurant;
+  FreshFindRestaurant(this.restaurant);
+
+  @override
+  DateTime get createdAt => restaurant.createdAt!;
+  @override
+  String get name => restaurant.name;
+  @override
+  String get cityName => restaurant.cityName;
+  @override
+  String get flagEmoji => restaurant.flagEmoji;
+}
+
+class FreshFindHotel extends FreshFindItem {
+  final Hotel hotel;
+  FreshFindHotel(this.hotel);
+
+  @override
+  DateTime get createdAt => hotel.createdAt!;
+  @override
+  String get name => hotel.name;
+  @override
+  String get cityName => hotel.cityName;
+  @override
+  String get flagEmoji => hotel.flagEmoji;
+}
+
+class FreshFindEvent extends FreshFindItem {
+  final Event event;
+  FreshFindEvent(this.event);
+
+  @override
+  DateTime get createdAt => event.createdAt;
+  @override
+  String get name => event.name;
+  @override
+  String get cityName => event.city ?? '';
+  @override
+  String get flagEmoji => '';
+}
+
+/// "Fresh Finds" — restaurants/hotels/events added because someone
+/// reported them missing (see missing_listing_report_id on each model's
+/// own doc comment), newest first. Reuses Explore's own already-loaded
+/// discovery lists rather than a new query — every candidate here is
+/// already fetched for Worth the Journey/Stay a Little Longer/What's On,
+/// this just filters and re-sorts client-side, the same "no new database
+/// query, pure selection over what's already loaded" shape every other
+/// selector in this file uses.
+///
+/// [events] is expected to already be Explore's own upcoming-only
+/// discovery list (`loadEvents(from: DateTime.now())`) — Fresh Finds
+/// never surfaces an event that has already happened, which is a
+/// deliberate, not incidental, consequence of reusing that list rather
+/// than a separate all-time query.
+List<FreshFindItem> selectFreshFinds({
+  required List<Restaurant> restaurants,
+  required List<Hotel> hotels,
+  required List<Event> events,
+  int limit = 10,
+}) {
+  final items = <FreshFindItem>[
+    for (final r in restaurants)
+      if (r.missingListingReportId != null && r.createdAt != null)
+        FreshFindRestaurant(r),
+    for (final h in hotels)
+      if (h.missingListingReportId != null && h.createdAt != null)
+        FreshFindHotel(h),
+    for (final e in events)
+      if (e.missingListingReportId != null) FreshFindEvent(e),
+  ];
+  items.sort((a, b) => b.createdAt.compareTo(a.createdAt));
+  return items.take(limit).toList();
+}

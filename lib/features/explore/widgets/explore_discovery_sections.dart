@@ -6,6 +6,8 @@ import '../../../core/widgets/cs_section_title.dart';
 import '../../../models/event.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
+import '../discovery_selectors.dart'
+    show FreshFindItem, FreshFindRestaurant, FreshFindHotel, FreshFindEvent;
 import 'explore_discovery_cards.dart';
 
 /// A section heading shared by all three discovery sections: an eyebrow-
@@ -147,6 +149,76 @@ class WhatsOnSection extends StatelessWidget {
           ExploreFeaturedEventCard(
             event: event,
             onTap: () => onTapEvent(event),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// "Fresh Finds" — restaurants/hotels/events added because someone
+/// reported them missing (see selectFreshFinds in discovery_selectors.dart).
+/// Placed ABOVE Worth the Journey/Stay a Little Longer deliberately: those
+/// two are always there, this is what actually changed since the last
+/// visit — the reason to come back. Renders nothing at all (no header,
+/// no empty row) until the first item exists; there is no "nothing here
+/// yet" placeholder, matching every other discovery section's own
+/// "silently omit itself" empty behaviour.
+class FreshFindsSection extends StatelessWidget {
+  final List<FreshFindItem> items;
+  final ValueChanged<Restaurant> onTapRestaurant;
+  final ValueChanged<Hotel> onTapHotel;
+  final ValueChanged<Event> onTapEvent;
+
+  const FreshFindsSection({
+    super.key,
+    required this.items,
+    required this.onTapRestaurant,
+    required this.onTapHotel,
+    required this.onTapEvent,
+  });
+
+  void _handleTap(FreshFindItem item) => switch (item) {
+    FreshFindRestaurant(:final restaurant) => onTapRestaurant(restaurant),
+    FreshFindHotel(:final hotel) => onTapHotel(hotel),
+    FreshFindEvent(:final event) => onTapEvent(event),
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    if (items.isEmpty) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, CsSpacing.section, 0, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: CsSpacing.pageHorizontal,
+            ),
+            child: const _DiscoverySectionHeader(
+              title: 'FRESH FINDS',
+              subtitle: 'Found by you, added by us.',
+            ),
+          ),
+          const SizedBox(height: CsSpacing.base),
+          // Same row height as WorthTheJourneySection — ExploreFreshFindCard
+          // shares its exact card shape/content proportions.
+          SizedBox(
+            height: 340,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(
+                horizontal: CsSpacing.pageHorizontal,
+              ),
+              itemCount: items.length,
+              separatorBuilder: (_, _) => const SizedBox(width: CsSpacing.md),
+              itemBuilder: (context, i) => ExploreFreshFindCard(
+                item: items[i],
+                onTap: () => _handleTap(items[i]),
+              ),
+            ),
           ),
         ],
       ),

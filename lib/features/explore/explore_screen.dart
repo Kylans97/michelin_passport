@@ -358,6 +358,35 @@ class _ExploreScreenState extends State<ExploreScreen> {
         ),
       ),
     ),
+    // Above Worth the Journey/Stay a Little Longer, deliberately — see
+    // FreshFindsSection's own doc comment. Waits on all three discovery
+    // futures (restaurants/hotels/events already loaded for the sections
+    // below it, no new query) via Future.wait so it never flashes empty
+    // then pops in once each future resolves at a different time.
+    SliverToBoxAdapter(
+      child: FutureBuilder<List<Object>>(
+        future: Future.wait([
+          _discoveryRestaurantsFuture,
+          _discoveryHotelsFuture,
+          _discoveryEventsFuture,
+        ]),
+        builder: (context, snap) {
+          final results = snap.data;
+          return FreshFindsSection(
+            items: results == null
+                ? const []
+                : selectFreshFinds(
+                    restaurants: results[0] as List<Restaurant>,
+                    hotels: results[1] as List<Hotel>,
+                    events: results[2] as List<Event>,
+                  ),
+            onTapRestaurant: _openRestaurant,
+            onTapHotel: _openHotel,
+            onTapEvent: _openEvent,
+          );
+        },
+      ),
+    ),
     SliverToBoxAdapter(
       child: FutureBuilder<List<Restaurant>>(
         future: _discoveryRestaurantsFuture,

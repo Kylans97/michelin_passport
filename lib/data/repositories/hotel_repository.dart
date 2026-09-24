@@ -29,13 +29,16 @@ import 'search_query.dart';
 // 20260829150000_add_popup_expiry_to_views_and_search.sql.
 // status/status_since/status_note — see the identical note on
 // restaurantFullColumns in restaurant_repository.dart.
+// created_at/missing_listing_report_id (Fresh Finds, 20260924140000_add_
+// missing_listing_report_link.sql) — see restaurantFullColumns' own
+// matching comment.
 const hotelFullColumns =
     'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
     'website_url, booking_url, has_michelin_restaurant, restaurant_count, '
     'worlds_50_best_rank, worlds_50_best_year, starts_on, ends_on, '
     'parent_venue_type, parent_venue_id, opening_weekdays, is_expired, '
-    'status, status_since, status_note';
+    'status, status_since, status_note, created_at, missing_listing_report_id';
 
 class HotelRepository {
   HotelRepository(this._client);

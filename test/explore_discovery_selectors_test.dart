@@ -14,6 +14,8 @@ Restaurant _restaurant({
   String name = 'Test Restaurant',
   int? michelinStars,
   int? worlds50BestRank,
+  DateTime? createdAt,
+  String? missingListingReportId,
 }) => Restaurant(
   id: id,
   restaurantCode: id,
@@ -26,6 +28,8 @@ Restaurant _restaurant({
   flagEmoji: '🇫🇷',
   address: '1 Rue de Test',
   worlds50BestRank: worlds50BestRank,
+  createdAt: createdAt,
+  missingListingReportId: missingListingReportId,
 );
 
 Hotel _hotel({
@@ -33,6 +37,8 @@ Hotel _hotel({
   String name = 'Test Hotel',
   int? michelinKeys,
   int? worlds50BestRank,
+  DateTime? createdAt,
+  String? missingListingReportId,
 }) => Hotel(
   id: id,
   hotelCode: id,
@@ -46,6 +52,8 @@ Hotel _hotel({
   hasMichelinRestaurant: false,
   restaurantCount: 0,
   worlds50BestRank: worlds50BestRank,
+  createdAt: createdAt,
+  missingListingReportId: missingListingReportId,
 );
 
 Event _event({
@@ -54,6 +62,8 @@ Event _event({
   required DateTime startAt,
   DateTime? endAt,
   EventStatus status = EventStatus.upcoming,
+  DateTime? createdAt,
+  String? missingListingReportId,
 }) => Event(
   id: id,
   name: name,
@@ -62,7 +72,8 @@ Event _event({
   countryCode: 'FR',
   eventType: EventType.festival,
   status: status,
-  createdAt: DateTime(2026, 1, 1),
+  createdAt: createdAt ?? DateTime(2026, 1, 1),
+  missingListingReportId: missingListingReportId,
 );
 
 void main() {
@@ -204,6 +215,121 @@ void main() {
           _event(startAt: DateTime(2026, 8, 1), status: EventStatus.cancelled),
         ]),
         isNull,
+      );
+    });
+  });
+
+  group('selectFreshFinds', () {
+    test('excludes every restaurant/hotel/event with no '
+        'missingListingReportId', () {
+      final result = selectFreshFinds(
+        restaurants: [
+          _restaurant(id: 'r1', createdAt: DateTime(2026, 9, 1)),
+        ],
+        hotels: [_hotel(id: 'h1', createdAt: DateTime(2026, 9, 1))],
+        events: [_event(id: 'e1', startAt: DateTime(2026, 10, 1))],
+      );
+      expect(result, isEmpty);
+    });
+
+    test('includes a restaurant/hotel only when both createdAt and '
+        'missingListingReportId are set — defensive against the '
+        'DB-guaranteed-but-not-Dart-guaranteed case', () {
+      final result = selectFreshFinds(
+        restaurants: [
+          _restaurant(
+            id: 'r1',
+            missingListingReportId: 'report-1',
+            createdAt: null,
+          ),
+        ],
+        hotels: const [],
+        events: const [],
+      );
+      expect(result, isEmpty);
+    });
+
+    test('sorts newest first across all three types mixed together', () {
+      final result = selectFreshFinds(
+        restaurants: [
+          _restaurant(
+            id: 'r1',
+            name: 'Oldest',
+            missingListingReportId: 'rep-r1',
+            createdAt: DateTime(2026, 9, 1),
+          ),
+        ],
+        hotels: [
+          _hotel(
+            id: 'h1',
+            name: 'Newest',
+            missingListingReportId: 'rep-h1',
+            createdAt: DateTime(2026, 9, 20),
+          ),
+        ],
+        events: [
+          _event(
+            id: 'e1',
+            name: 'Middle',
+            startAt: DateTime(2026, 10, 1),
+            missingListingReportId: 'rep-e1',
+            createdAt: DateTime(2026, 9, 10),
+          ),
+        ],
+      );
+      expect(result.map((i) => i.name), ['Newest', 'Middle', 'Oldest']);
+    });
+
+    test('caps at the given limit, default 10', () {
+      final restaurants = [
+        for (var i = 0; i < 12; i++)
+          _restaurant(
+            id: 'r$i',
+            name: 'R$i',
+            missingListingReportId: 'rep-$i',
+            createdAt: DateTime(2026, 9, i + 1),
+          ),
+      ];
+      expect(
+        selectFreshFinds(restaurants: restaurants, hotels: const [], events: const []).length,
+        10,
+      );
+      expect(
+        selectFreshFinds(
+          restaurants: restaurants,
+          hotels: const [],
+          events: const [],
+          limit: 3,
+        ).length,
+        3,
+      );
+    });
+
+    test('each FreshFindItem exposes the right concrete type and fields',
+        () {
+      final restaurant = _restaurant(
+        id: 'r1',
+        name: 'Flore',
+        missingListingReportId: 'rep-1',
+        createdAt: DateTime(2026, 9, 1),
+      );
+      final result = selectFreshFinds(
+        restaurants: [restaurant],
+        hotels: const [],
+        events: const [],
+      );
+      expect(result, hasLength(1));
+      final item = result.single;
+      expect(item, isA<FreshFindRestaurant>());
+      expect(item.name, 'Flore');
+      expect(item.cityName, 'Paris');
+      expect((item as FreshFindRestaurant).restaurant, restaurant);
+    });
+
+    test('returns empty for empty input', () {
+      expect(
+        selectFreshFinds(restaurants: const [], hotels: const [], events: const []),
+        isEmpty,
       );
     });
   });

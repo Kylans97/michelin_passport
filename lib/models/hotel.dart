@@ -84,6 +84,13 @@ class Hotel {
   final DateTime? statusSince;
   final String? statusNote;
 
+  // See the identical fields on Restaurant (Fresh Finds) for full
+  // semantics — createdAt is the row's own creation timestamp,
+  // missingListingReportId is non-null only when this hotel was added
+  // because of a missing_listing_reports submission.
+  final DateTime? createdAt;
+  final String? missingListingReportId;
+
   const Hotel({
     required this.id,
     required this.hotelCode,
@@ -112,6 +119,8 @@ class Hotel {
     this.status = 'open',
     this.statusSince,
     this.statusNote,
+    this.createdAt,
+    this.missingListingReportId,
   });
 
   /// True when the hotel currently holds a confirmed MICHELIN Key value.
@@ -166,5 +175,9 @@ class Hotel {
         ? null
         : DateTime.parse(json['status_since'] as String),
     statusNote: json['status_note'] as String?,
+    createdAt: json['created_at'] == null
+        ? null
+        : DateTime.parse(json['created_at'] as String),
+    missingListingReportId: json['missing_listing_report_id'] as String?,
   );
 }

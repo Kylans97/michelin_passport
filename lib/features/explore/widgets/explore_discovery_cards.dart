@@ -9,6 +9,7 @@ import '../../../models/event.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../events/event_date_format.dart';
+import '../discovery_selectors.dart' show FreshFindItem, FreshFindRestaurant, FreshFindHotel, FreshFindEvent;
 
 String _locationOf({required String flagEmoji, required String cityName}) =>
     [if (flagEmoji.isNotEmpty) flagEmoji, cityName].join('  ');
@@ -343,6 +344,104 @@ class ExploreDiscoveryHotelCard extends StatelessWidget {
                         ),
                       ),
                     ],
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// A "Fresh Finds" card — one restaurant, hotel, or event, sourced from a
+/// missing-listing report (see [FreshFindItem]/selectFreshFinds in
+/// discovery_selectors.dart). Deliberately its own single compact shape
+/// rather than reusing [ExploreDiscoveryRestaurantCard]/
+/// [ExploreDiscoveryHotelCard]/[ExploreFeaturedEventCard] directly: those
+/// three have different widths/heights/layouts (image-top vs image-left
+/// vs full-width hero), and mixing them in one horizontal row would read
+/// as visually inconsistent — a Fresh Finds row is explicitly a single
+/// feed of "what changed," not three different card languages side by
+/// side. Same width as [ExploreDiscoveryRestaurantCard] so it sits
+/// comfortably in the same kind of horizontal row. Shows a type tag
+/// (RESTAURANT/HOTEL/EVENT) instead of a stars/Keys/rank line — a
+/// freshly-added venue is, by definition, unlikely to have that
+/// recognition yet, and the type tag is what actually varies across a
+/// mixed-type row.
+class ExploreFreshFindCard extends StatelessWidget {
+  final FreshFindItem item;
+  final VoidCallback onTap;
+
+  static const double width = 200;
+
+  const ExploreFreshFindCard({
+    super.key,
+    required this.item,
+    required this.onTap,
+  });
+
+  String get _typeTag => switch (item) {
+    FreshFindRestaurant() => 'RESTAURANT',
+    FreshFindHotel() => 'HOTEL',
+    FreshFindEvent() => 'EVENT',
+  };
+
+  @override
+  Widget build(BuildContext context) {
+    final location = _locationOf(
+      flagEmoji: item.flagEmoji,
+      cityName: item.cityName,
+    );
+
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(CsRadius.card),
+        child: Container(
+          width: width,
+          decoration: BoxDecoration(
+            color: AppColors.ivory,
+            borderRadius: BorderRadius.circular(CsRadius.card),
+            border: Border.all(color: AppColors.subtleBorderLight, width: 0.5),
+          ),
+          clipBehavior: Clip.antiAlias,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const AspectRatio(
+                aspectRatio: 4 / 3,
+                child: CsImagePlaceholder(logoScale: 0.32),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(CsSpacing.md),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      _typeTag,
+                      style: CsTypography.eyebrow.copyWith(
+                        color: AppColors.mutedBrassOnLight,
+                        fontSize: 10.5,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      item.name,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: CsTypography.bodyMedium,
+                    ),
+                    const SizedBox(height: 2),
+                    if (location.isNotEmpty)
+                      Text(
+                        location,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: CsTypography.metadata,
+                      ),
                   ],
                 ),
               ),

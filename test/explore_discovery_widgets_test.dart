@@ -9,6 +9,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/features/explore/discovery_selectors.dart';
 import 'package:michelin_passport/features/explore/widgets/explore_discovery_cards.dart';
 import 'package:michelin_passport/features/explore/widgets/explore_discovery_sections.dart';
 import 'package:michelin_passport/models/event.dart';
@@ -366,6 +367,96 @@ void main() {
               ),
             ),
           ),
+        ),
+      );
+      expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('FreshFindsSection', () {
+    testWidgets('renders a mixed-type row and routes taps to the right '
+        'callback per type', (tester) async {
+      String? tappedRestaurant;
+      String? tappedHotel;
+      String? tappedEvent;
+      await tester.pumpWidget(
+        _wrap(
+          FreshFindsSection(
+            items: [
+              FreshFindRestaurant(_restaurant(id: 'r1', name: 'Flore')),
+              FreshFindHotel(_hotel(id: 'h1', name: 'Hotel Ivy')),
+              FreshFindEvent(_event(id: 'e1', name: 'Winemaker Dinner')),
+            ],
+            onTapRestaurant: (r) => tappedRestaurant = r.name,
+            onTapHotel: (h) => tappedHotel = h.name,
+            onTapEvent: (e) => tappedEvent = e.name,
+          ),
+          // Wide enough that all three 200px cards + separators are laid
+          // out (and tappable) without needing to scroll the horizontal
+          // row first — 390 (this file's default _wrap width) isn't.
+          width: 700,
+        ),
+      );
+      expect(find.text('FRESH FINDS'), findsOneWidget);
+      expect(find.text('Found by you, added by us.'), findsOneWidget);
+      expect(find.text('Flore'), findsOneWidget);
+      expect(find.text('Hotel Ivy'), findsOneWidget);
+      expect(find.text('Winemaker Dinner'), findsOneWidget);
+      expect(find.text('RESTAURANT'), findsOneWidget);
+      expect(find.text('HOTEL'), findsOneWidget);
+      expect(find.text('EVENT'), findsOneWidget);
+
+      await tester.tap(find.text('Flore'));
+      expect(tappedRestaurant, 'Flore');
+      expect(tappedHotel, isNull);
+      expect(tappedEvent, isNull);
+
+      await tester.tap(find.text('Hotel Ivy'));
+      expect(tappedHotel, 'Hotel Ivy');
+
+      await tester.tap(find.text('Winemaker Dinner'));
+      expect(tappedEvent, 'Winemaker Dinner');
+
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('renders nothing at all when there are no items yet — no '
+        'header, no empty row', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          FreshFindsSection(
+            items: const [],
+            onTapRestaurant: (_) {},
+            onTapHotel: (_) {},
+            onTapEvent: (_) {},
+          ),
+        ),
+      );
+      expect(find.text('FRESH FINDS'), findsNothing);
+      expect(find.text('Found by you, added by us.'), findsNothing);
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('long name/city at 320px — no overflow', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          FreshFindsSection(
+            items: [
+              FreshFindRestaurant(
+                _restaurant(
+                  id: 'r1',
+                  name:
+                      'A Genuinely Very Long Restaurant Name That Could Wrap',
+                  cityName: 'Saint-Jean-Cap-Ferrat-sur-Mer',
+                  countryName: 'France',
+                ),
+              ),
+            ],
+            onTapRestaurant: (_) {},
+            onTapHotel: (_) {},
+            onTapEvent: (_) {},
+          ),
+          width: 320,
         ),
       );
       expect(tester.takeException(), isNull);

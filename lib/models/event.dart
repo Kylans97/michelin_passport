@@ -165,6 +165,11 @@ class Event {
   final String? admissionNote;
   final DateTime createdAt;
 
+  // Non-null only when this event was added because of a
+  // missing_listing_reports submission — see the identical field on
+  // Restaurant (Fresh Finds) for full semantics.
+  final String? missingListingReportId;
+
   // Deliberately NOT `const` — [startDate]/[endDate]/[startTime]/[endTime]
   // may need to be derived at construction time (see below), which reads
   // the timezone database via [eventLocalDateTime] and can't run in a
@@ -222,6 +227,7 @@ class Event {
     this.admissionType = EventAdmissionType.unknown,
     this.admissionNote,
     required this.createdAt,
+    this.missingListingReportId,
   }) : startDate =
            startDate ??
            _deriveDateOnly(
@@ -362,6 +368,7 @@ class Event {
     ),
     admissionNote: json['admission_note'] as String?,
     createdAt: DateTime.parse(json['created_at'] as String).toLocal(),
+    missingListingReportId: json['missing_listing_report_id'] as String?,
   );
 }
 

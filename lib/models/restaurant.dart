@@ -93,6 +93,20 @@ class Restaurant {
   final DateTime? statusSince;
   final String? statusNote;
 
+  // Row creation timestamp — present since the initial production schema
+  // but not modelled until Fresh Finds needed a real "most recently
+  // added" sort key (client-side selection, same as every other Explore
+  // discovery section — see discovery_selectors.dart).
+  final DateTime? createdAt;
+
+  // Non-null only when this row was added because of a
+  // missing_listing_reports submission (set by hand on the same INSERT
+  // that creates the row — see that table's own migration). Never read
+  // from missing_listing_reports itself, which has no client select
+  // grant at all — this is purely a presence check on the restaurant's
+  // own, already-world-readable row.
+  final String? missingListingReportId;
+
   // No latitude/longitude here. `location` is PostGIS
   // geography(Point,4326); over PostgREST it comes back as an EWKB hex
   // string, not GeoJSON or a {lat, lng} pair, and decoding that client-side
@@ -137,6 +151,8 @@ class Restaurant {
     this.status = 'open',
     this.statusSince,
     this.statusNote,
+    this.createdAt,
+    this.missingListingReportId,
   });
 
   /// True when the restaurant currently holds at least one Michelin star.
@@ -193,5 +209,9 @@ class Restaurant {
         ? null
         : DateTime.parse(json['status_since'] as String),
     statusNote: json['status_note'] as String?,
+    createdAt: json['created_at'] == null
+        ? null
+        : DateTime.parse(json['created_at'] as String),
+    missingListingReportId: json['missing_listing_report_id'] as String?,
   );
 }

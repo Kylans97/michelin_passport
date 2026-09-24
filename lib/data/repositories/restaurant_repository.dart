@@ -47,6 +47,10 @@ import 'search_query.dart';
 // deployment-ordering hazard like the columns documented above, just
 // never selected until now. See lib/core/utils/venue_lifecycle.dart and
 // MODERATION_MANUAL_CHECKPOINTS.md checkpoints 4/5.
+// created_at/missing_listing_report_id (Fresh Finds, 20260924140000_add_
+// missing_listing_report_link.sql) — created_at has existed since the
+// initial schema, missing_listing_report_id is new but nullable, so
+// neither has a deployment-ordering hazard for existing rows.
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_name, region, country_code, country_name, flag_emoji, address, '
@@ -54,7 +58,7 @@ const restaurantFullColumns =
     'property_name, is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank, '
     'is_hall_of_fame, starts_on, ends_on, parent_venue_type, '
     'parent_venue_id, opening_weekdays, is_expired, status, status_since, '
-    'status_note';
+    'status_note, created_at, missing_listing_report_id';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);
