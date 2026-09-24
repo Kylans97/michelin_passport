@@ -154,4 +154,78 @@ class CsTypography {
     fontWeight: FontWeight.w600,
     fontFeatures: _liningFigures,
   );
+
+  // ── Editorial redesign (magazine pass) ──────────────────────────────
+  // The brief's scale is explicitly a RANGE per role ("Display: Cormorant
+  // 46–56", "Titel: 22–42"), not one fixed size — different screens in
+  // this pass call for different sizes within the same role ("Tonight"
+  // at 56, "Passport"/"Events" headers at 46; an InvitationCard title at
+  // 42, a place-card title much smaller). Factory methods (a size
+  // parameter with a sensible default), not fixed getters like every
+  // role above, so one call site can ask for "a display line, but at
+  // this screen's own size" instead of every screen needing its own
+  // bespoke TextStyle. Defaults to [AppColors.charcoal]/ink, same as
+  // every role above — override with `.copyWith(color: ...)` for
+  // text-on-green exactly like the rest of this class.
+
+  /// EDITORIAL DISPLAY — Cormorant Garamond, [italic], 46–56, line-height
+  /// 0.9–1.0. Screen titles ("Tonight", "Events", "Passport",
+  /// "Community").
+  static TextStyle editorialDisplay({double size = 48, bool italic = true}) =>
+      GoogleFonts.cormorantGaramond(
+        color: AppColors.charcoal,
+        fontSize: size,
+        fontWeight: FontWeight.w500,
+        fontStyle: italic ? FontStyle.italic : FontStyle.normal,
+        height: 0.95,
+        fontFeatures: _liningFigures,
+      );
+
+  /// EDITORIAL TITLE — Cormorant Garamond, Semibold, 22–42. Event/venue
+  /// names at whatever scale the surrounding layout calls for (a list
+  /// row vs. an InvitationCard's own large title).
+  static TextStyle editorialTitle({double size = 28, bool italic = false}) =>
+      GoogleFonts.cormorantGaramond(
+        color: AppColors.charcoal,
+        fontSize: size,
+        fontWeight: FontWeight.w600,
+        fontStyle: italic ? FontStyle.italic : FontStyle.normal,
+        height: 1.15,
+        fontFeatures: _liningFigures,
+      );
+
+  /// EDITORIAL LEAD — Cormorant Garamond, Italic, 16–23. A quote-like
+  /// lead line/tagline ("Culinary happenings worth planning a trip
+  /// around.").
+  static TextStyle editorialLead({double size = 18}) =>
+      GoogleFonts.cormorantGaramond(
+        color: AppColors.taupe,
+        fontSize: size,
+        fontStyle: FontStyle.italic,
+        fontWeight: FontWeight.w400,
+        height: 1.3,
+      );
+
+  /// EDITORIAL BODY — Inter, Regular, 14 / 1.5. The redesign's own body
+  /// copy size — distinct from [body] (16/1.5): the brief calls for a
+  /// smaller 13–14 range throughout, matching the more compact,
+  /// typography-led density this pass wants.
+  static TextStyle get editorialBody => GoogleFonts.inter(
+    color: AppColors.charcoal,
+    fontSize: 14,
+    fontWeight: FontWeight.w400,
+    height: 1.5,
+  );
+
+  /// EDITORIAL LABEL — Inter, Medium, 10.5, uppercase, letter-spacing
+  /// ~0.12em (computed per [size] — the brief specifies letter-spacing in
+  /// em, not a fixed px value the way [eyebrow] does). Callers pass
+  /// already-uppercased text, same contract as [eyebrow].
+  static TextStyle editorialLabel({double size = 10.5, double em = 0.12}) =>
+      GoogleFonts.inter(
+        color: AppColors.taupe,
+        fontSize: size,
+        fontWeight: FontWeight.w500,
+        letterSpacing: size * em,
+      );
 }

@@ -152,7 +152,7 @@ void _paintInkGrain(Canvas canvas, Rect bounds, String seedId) {
 /// its own icon font) rather than drawing a hand-built [Path] — the same
 /// glyph [KeyRow]/[StarRow] already render elsewhere in the app, so a Key
 /// on a stamp matches a Key everywhere else pixel-for-pixel.
-void _drawIconGlyph(
+void drawIconGlyph(
   Canvas canvas,
   Offset center,
   IconData icon,
@@ -176,7 +176,7 @@ void _drawIconGlyph(
 
 /// The award row shared by all 5 variants: Michelin stars, Keys, or an
 /// event type label. Stars and Keys are both drawn via the same icon-font
-/// codepoint technique ([_drawIconGlyph]) — the same [Icons.star_rounded]/
+/// codepoint technique ([drawIconGlyph]) — the same [Icons.star_rounded]/
 /// [Icons.vpn_key_rounded] glyphs [StarRow]/[KeyRow] already render
 /// elsewhere in the app, repeated per star/Key. Deliberately NOT a plain
 /// Unicode '★' text glyph (the design spec's own literal wording): that
@@ -203,7 +203,7 @@ void _drawAward(
       final totalWidth = starFontSize * count + 1.5 * (count - 1);
       var x = center.dx - totalWidth / 2 + starFontSize / 2;
       for (var i = 0; i < count; i++) {
-        _drawIconGlyph(
+        drawIconGlyph(
           canvas,
           Offset(x, center.dy),
           Icons.star_rounded,
@@ -217,7 +217,7 @@ void _drawAward(
       final totalWidth = iconSize * count + 2.0 * (count - 1);
       var x = center.dx - totalWidth / 2 + iconSize / 2;
       for (var i = 0; i < count; i++) {
-        _drawIconGlyph(
+        drawIconGlyph(
           canvas,
           Offset(x, center.dy),
           Icons.vpn_key_rounded,
@@ -252,7 +252,13 @@ void _drawAward(
 /// character's own angular width is `measuredCharWidth / radius` — the
 /// same derivation [fitRoundSealArcText] uses to decide how much text
 /// fits in the first place, so the two stay exactly consistent.
-void _drawArcText(
+///
+/// Public (not `_drawArcText`): reused as-is by the Friend Profile
+/// screen's own read-only stamp (see friend_profile_stamp.dart) — the
+/// same ring-text technique, applied to that screen's own different
+/// template (it includes a score, this one doesn't), so only the drawing
+/// primitive is shared, not a whole painter class.
+void drawArcText(
   Canvas canvas, {
   required String text,
   required TextStyle style,
@@ -329,7 +335,7 @@ class RoundSealPainter extends CustomPainter {
         style: labelStyle,
         maxArcLength: textRadius * sweep,
       );
-      _drawArcText(
+      drawArcText(
         canvas,
         text: arcText,
         style: labelStyle,
@@ -775,7 +781,7 @@ class PostmarkPainter extends CustomPainter {
         cityStyle,
         (circleRadius - 10) * sweep,
       );
-      _drawArcText(
+      drawArcText(
         canvas,
         text: cityText,
         style: cityStyle,

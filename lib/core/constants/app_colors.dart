@@ -178,4 +178,90 @@ class AppColors {
   // sites a repeating ring pattern needs) so the one value used to paint
   // every ring stays a single source of truth.
   static const Color stampGuillocheLine = Color(0x17AC8244); // ~9%
+
+  // ── Editorial redesign (magazine pass) ──────────────────────────────
+  // Semantic aliases for the editorial/magazine visual language (thin
+  // typography, hairlines instead of cards, gold "ink" used sparingly) —
+  // additive, same as every other section in this file: nothing above is
+  // touched, existing screens keep reading their current tokens unchanged.
+  // Most of the redesign brief's named roles ("bg", "paper", "ink",
+  // "text-on-green", "accent"...) already have a clear existing name
+  // above (deepGreen, background, textPrimary, textOnDark, gold) — reused
+  // directly rather than duplicated under a second name. What's new here
+  // is only the roles that didn't already have one: a lifted green
+  // surface, a tile-fallback dark green, a numbered gold scale for
+  // legible gold-on-green vs. gold-on-ivory text, and precise ~12%
+  // hairlines.
+  //
+  // Gold scale — every value below is a real value already defined above
+  // (a distinct name, not a distinct color), chosen and verified by
+  // contrast ratio rather than guessed:
+  //   gold300 (goldLight)         6.01:1 on deepGreen — normal text-safe
+  //   gold400 (mutedBrass)        4.16:1 on deepGreen — large/bold text
+  //                                and icons/borders ONLY, same
+  //                                restriction [mutedBrass] already
+  //                                documents above
+  //   gold600 (gold)              3.06:1 on ivory / 4.05:1 on deepGreen —
+  //                                decorative (ornaments, hairline
+  //                                strokes, icons), not body text
+  //   gold700 (mutedBrassOnLight) 4.60:1 on ivory — the one to reach for
+  //                                for actual gold-colored TEXT on ivory
+  static const Color gold300 = goldLight;
+  static const Color gold400 = mutedBrass;
+  static const Color gold600 = gold;
+  static const Color gold700 = mutedBrassOnLight;
+
+  /// A green surface lifted off [deepGreen] — panels/rows grouped on the
+  /// canvas. Same value [brandGreenLight] already defines (that name's own
+  /// doc scopes it to one specific hero-gradient stop); this is the
+  /// general-purpose "surface" role the redesign brief names directly.
+  static const Color greenSurface = brandGreenLight;
+
+  /// A green darker than [deepGreen] — the editorial image-fallback
+  /// tile's own background (see [CsEditorialImageFallback]). Same value
+  /// as [darkGreen].
+  static const Color green800 = darkGreen;
+
+  /// A mid-tone green, distinct in hue from the gold/stone family —
+  /// one of [FriendsStack]'s three deterministic fallback-avatar
+  /// backgrounds. Same value as [stampInkGreen] (Passport ink stamps use
+  /// it too; both names share the one real color).
+  static const Color green600 = stampInkGreen;
+
+  /// A deep gold-brown — another of [FriendsStack]'s three fallback-avatar
+  /// backgrounds. Same value as [stampInkDeepGold].
+  static const Color accent700 = stampInkDeepGold;
+
+  /// The darkest warm-stone neutral — the last of [FriendsStack]'s three
+  /// fallback-avatar backgrounds, and the darkest stop the "no neutral
+  /// grey, only warm stone" rule ever needs. Same value as [charcoal].
+  static const Color stone800 = charcoal;
+
+  /// "stone-300" — a light, recessive warm neutral for a decorative
+  /// surface (e.g. a progress-bar track on ivory) that isn't read as
+  /// text, so it doesn't need its own contrast ratio. Same value as
+  /// [subtleBorderLight].
+  static const Color stone300 = subtleBorderLight;
+
+  /// "stone-600" text/icon tone ON GREEN (tab-bar inactive icons,
+  /// activity-feed timestamps). Same value as [secondaryOnDark]
+  /// (6.56:1 on deepGreen) — there is no separate stone600 constant:
+  /// this alias exists so new editorial code can reach for the name the
+  /// redesign brief actually uses.
+  static const Color stone600OnGreen = secondaryOnDark;
+
+  /// "stone-600" text tone ON IVORY/PAPER. Same value as [taupe]
+  /// (4.68:1 on ivory) — see [stone600OnGreen]'s own doc for why this
+  /// is an alias, not a new color.
+  static const Color stone600OnPaper = taupe;
+
+  /// A hairline divider drawn over a green surface — [textOnDark] at
+  /// ~12% opacity (precise value for the redesign's own hairline system;
+  /// distinct from the very similar but not identical [subtleBorderDark]
+  /// at ~15%, which existing screens keep reading unchanged).
+  static const Color hairlineOnGreen = Color(0x1FF5EFE1); // ~12%
+
+  /// A hairline divider drawn over ivory/paper — [textPrimary] at ~12%
+  /// opacity.
+  static const Color hairlineOnPaper = Color(0x1F20261F); // ~12%
 }

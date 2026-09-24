@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/analytics/analytics_properties.dart';
@@ -7,14 +8,10 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/editorial_back_button.dart';
-import '../../core/widgets/section_divider.dart';
-import '../../data/repositories/event_attendance_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
+import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
-import '../../models/content_report.dart';
-import '../../models/event.dart';
-import '../../models/event_attendance.dart';
 import '../../models/passport_venue.dart';
 import '../../models/profile_identity.dart';
 import '../../models/venue_entry.dart';
@@ -23,38 +20,92 @@ import '../events/event_detail_screen.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../reports/widgets/report_content_sheet.dart';
 import '../restaurants/restaurant_detail_screen.dart';
-import 'friend_activity_list_screen.dart';
-import 'widgets/friend_going_tile.dart';
-import 'widgets/friend_visit_tile.dart';
-import 'widgets/friend_wishlist_tile.dart';
+import 'friend_profile_data.dart';
+import 'friend_profile_layout.dart';
+import 'layouts/friend_profile_layout_a.dart';
+import 'layouts/friend_profile_layout_b.dart';
+import 'layouts/friend_profile_layout_c.dart';
+import '../../models/content_report.dart';
 
-/// How many rows each of VISITED/WISHLIST/GOING shows before deferring to
-/// "View all" — one shared constant so the three sections stay in lockstep
-/// rather than drifting to different preview depths over time.
-const _previewLimit = 4;
+/// One (venue, visit) pair — [VenueEntry] groups every visit under its
+/// venue for Passport's own grouped display; this screen instead flattens
+/// to one row per visit, newest first overall — every stamp/verdict/
+/// review row across all three layouts is built from this same shape.
+class FriendVenueVisit {
+  final PassportVenue venue;
+  final Visit visit;
+  const FriendVenueVisit(this.venue, this.visit);
+}
 
-/// One screen for both a friend's profile and a non-friend's — the
-/// difference is entirely in which action [relationshipStatus] resolves
-/// to. Identity-only for anyone not an accepted friend — no visits,
-/// ratings, photos, wishlist, or trips, per the non-friend-profile rule
-/// Step 1 established.
+/// Flattens/sorts VenueEntry groups into one row per visit, newest first.
+List<FriendVenueVisit> flattenFriendVisits(List<VenueEntry> entries) => [
+  for (final entry in entries)
+    for (final visit in entry.visits) FriendVenueVisit(entry.venue, visit),
+]..sort((a, b) => b.visit.visitedOn.compareTo(a.visit.visitedOn));
+
+// Opens the canonical, unmodified RestaurantDetailScreen/HotelDetailScreen
+// — never a friend-specific detail wrapper.
+void openFriendVenue(BuildContext context, PassportVenue venue) {
+  switch (venue) {
+    case RestaurantVenue(:final restaurant):
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+        ),
+      );
+    case HotelVenue(:final hotel):
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+      );
+  }
+}
+
+// Still exported for friend_activity_list_screen.dart's own
+// FriendGoingListScreen/FriendInterestedListScreen (unchanged, out of
+// scope for this pass — see this file's own class doc) — those two
+// screens are reached from elsewhere (e.g. a future Going/Interested
+// entry point), not from this redesigned profile itself anymore.
+void openFriendEvent(BuildContext context, String eventId) {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => EventDetailScreen(
+        eventId: eventId,
+        sourceSurface: AnalyticsSourceSurface.friendActivity,
+        sourceContext: AnalyticsSourceContext.friendSignal,
+      ),
+    ),
+  );
+}
+
+/// The friend-profile screen — reached from Community → Friends. Identity-
+/// only for anyone not an accepted friend (unchanged legacy hero/action
+/// UI, out of scope for this pass — see this class's own git history for
+/// that UI; the three new editorial layouts below apply only once
+/// [RelationshipStatus.accepted] is confirmed, which is the only case
+/// Friends' own list can ever navigate here from).
 ///
-/// Community/Friends UX Step 1: forest-green hero (back arrow, avatar,
-/// name, relationship action) over an ivory body — the same canvas-split
-/// composition Guides' catalogue headers established, deliberately
-/// connecting this screen to the rest of the app's editorial language
-/// rather than staying on the legacy dark canvas. VISITED/WISHLIST/GOING
-/// are omitted entirely once loaded and confirmed empty, rather than each
-/// showing its own "nothing here" line — see
-/// docs/Architecture/COMMUNITY_FRIENDS_UX.md for the full reasoning.
+/// EDITORIAL REDESIGN (three layouts, dev-only switch): an accepted
+/// friend's profile now renders as one of [FriendProfileLayout.passport]/
+/// `.dineTogether`/`.column` — compared live via a debug-only A/B/C row
+/// (kDebugMode only), defaulting to `.passport`. See
+/// docs/Architecture/EDITORIAL_REDESIGN_TRACKING.md.
 ///
-/// For an ACCEPTED friend, also shows VISITED (every visit the database's
-/// own RLS allows this viewer to read — see
-/// [VisitedRepository.loadPassportVenues], unchanged, reused as-is: the
-/// friends-visibility rewrite lives entirely in visits_read/photos_read,
-/// never in this screen) and WISHLIST (same reuse of
-/// [WishlistRepository.loadWishlistVenues]). Trips are never shown here —
-/// planned_trips/planned_venues RLS remains strictly owner-only.
+/// "Remove friend" moved from a standalone hero button into the shared
+/// [FriendProfileTopBar]'s "⋯" menu, with a confirmation dialog — the bare
+/// "Friends" text label is gone; relationship status now only shows up as
+/// the absence of "Add friend"/request actions.
+///
+/// "Friends since" is deliberately NOT shown anywhere: neither
+/// `get_profile_identity` nor `get_friends` returns when a friendship was
+/// accepted (confirmed by reading both RPCs' own Dart models — no
+/// createdAt/acceptedAt field exists on [ProfileIdentity] or `Friendship`).
+/// TODO(friend-profile): surface a friendship acceptance date from the
+/// backend (`get_friends`/`get_profile_identity` would need to start
+/// returning the friendship row's own `created_at`/`accepted_at`) before
+/// this can ever be shown — not guessed, not left as a silent gap.
 class FriendProfileScreen extends StatefulWidget {
   final String userId;
   const FriendProfileScreen({super.key, required this.userId});
@@ -67,19 +118,11 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
   late final _repo = FriendshipRepository(Supabase.instance.client);
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
-  late final _attendanceRepo = EventAttendanceRepository(
-    Supabase.instance.client,
-  );
+  late final _photoRepo = PhotoRepository(Supabase.instance.client);
   late Future<ProfileIdentity?> _future;
 
-  // Only populated once identity resolves as an accepted friendship — see
-  // _load below. Left null otherwise so _ProfileBody never even attempts
-  // these sections for a non-friend, pending, or declined relationship.
-  Future<List<VenueEntry>>? _visitedFuture;
-  Future<List<PassportVenue>>? _wishlistFuture;
-  Future<List<Event>>? _goingFuture;
-  // Events V2 Step 7 — same gating shape as _goingFuture, one status over.
-  Future<List<Event>>? _interestedFuture;
+  Future<FriendProfileLayoutData>? _layoutFuture;
+  FriendProfileLayout _layout = FriendProfileLayout.defaultLayout;
 
   @override
   void initState() {
@@ -90,10 +133,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
   void _load() {
     setState(() {
       _future = _repo.getProfileIdentity(widget.userId);
-      _visitedFuture = null;
-      _wishlistFuture = null;
-      _goingFuture = null;
-      _interestedFuture = null;
+      _layoutFuture = null;
     });
     _future
         .then((identity) {
@@ -102,34 +142,48 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
             return;
           }
           setState(() {
-            _visitedFuture = _visitedRepo.loadPassportVenues(widget.userId);
-            _wishlistFuture = _wishlistRepo.loadWishlistVenues(widget.userId);
-            _goingFuture = _attendanceRepo.getFriendUpcomingEvents(
-              userId: widget.userId,
-              status: EventIntentStatus.going,
-            );
-            // Events V2 Step 7 — same status-parameterized method, one
-            // status over. Only ever reads rows RLS already allows this
-            // viewer to see (an accepted friend's friends-visible
-            // Interested row) — no new query architecture.
-            _interestedFuture = _attendanceRepo.getFriendUpcomingEvents(
-              userId: widget.userId,
-              status: EventIntentStatus.interested,
-            );
+            _layoutFuture = _loadLayoutData(identity!);
           });
         })
-        // _future's own failure is already surfaced by the FutureBuilder
-        // in build() (snap.hasError -> "Could not load this profile") —
-        // this second, independent .then() chain off the same future
-        // needs its own handler too, or an identity lookup failure
-        // becomes an unhandled Future rejection nothing ever catches.
-        // Confirmed via a widget test that pushes this screen through
-        // the real MaterialPageRoute both friends_screen.dart and
-        // add_friend_screen.dart use (test/
-        // friend_profile_screen_navigation_test.dart) — every prior test
-        // in this feature only ever reconstructed _Hero in isolation, so
-        // this was never actually exercised end to end.
         .catchError((_) {});
+  }
+
+  Future<FriendProfileLayoutData> _loadLayoutData(
+    ProfileIdentity identity,
+  ) async {
+    final myId = Supabase.instance.client.auth.currentUser?.id ?? '';
+    final results = await Future.wait([
+      _visitedRepo.loadPassportVenues(widget.userId),
+      _wishlistRepo.loadWishlistVenues(widget.userId),
+      _wishlistRepo.loadWishlistVenues(myId),
+      _repo.getProfileIdentity(myId),
+    ]);
+    final entries = results[0] as List<VenueEntry>;
+    final wishlist = results[1] as List<PassportVenue>;
+    final myWishlist = results[2] as List<PassportVenue>;
+    final myIdentity = results[3] as ProfileIdentity?;
+    final visits = flattenFriendVisits(entries);
+
+    var coverPhotos = <String, String>{};
+    try {
+      coverPhotos = await _photoRepo.loadCoverPhotoUrlsForVisits(
+        visits.map((v) => v.visit.id).toList(),
+      );
+    } catch (_) {
+      // "Lately"'s mini-reviews just fall back to PhotoOrTile's own tile —
+      // never blocks the rest of the screen.
+    }
+
+    return FriendProfileLayoutData(
+      identity: identity,
+      myIdentity: myIdentity,
+      visitedEntries: entries,
+      visits: visits,
+      wishlist: wishlist,
+      sharedKeys: sharedWishlistKeys(wishlist: wishlist, myWishlist: myWishlist),
+      stats: FriendProfileStats.from(entries),
+      coverPhotoByVisitId: coverPhotos,
+    );
   }
 
   void _showSnack(String message, {bool isError = false}) {
@@ -174,10 +228,6 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
   }
 
   Future<void> _removeFriend() async {
-    // Needs the friendship id, which get_profile_identity doesn't
-    // return — the outgoing/incoming id isn't relevant once accepted, so
-    // resolve it via the friends list rather than adding a new RPC solely
-    // to look up one id (getFriends() is already cheap and cached-free).
     final friends = await _repo.getFriends();
     final match = friends.where((f) => f.friendId == widget.userId);
     if (match.isEmpty) return;
@@ -219,7 +269,8 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
     if (confirmed != true) return;
     try {
       await _repo.removeFriendship(match.first.friendshipId);
-      _load();
+      if (!mounted) return;
+      Navigator.pop(context);
     } catch (_) {
       _showSnack('Could not remove. Please try again.', isError: true);
     }
@@ -289,17 +340,19 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
     contentId: widget.userId,
   );
 
+  Future<String?> _incomingFriendshipId(String requesterId) async {
+    final incoming = await _repo.getIncomingRequests();
+    final match = incoming.where((r) => r.otherUserId == requesterId);
+    return match.isEmpty ? null : match.first.friendshipId;
+  }
+
+  String _labelFor(ProfileIdentity identity) =>
+      identity.displayName?.trim().isNotEmpty == true
+      ? identity.displayName!
+      : identity.label;
+
   @override
   Widget build(BuildContext context) {
-    // UI Polish pass: Scaffold.backgroundColor is deep-green (not ivory)
-    // so the iOS status-bar area continues the hero seamlessly instead of
-    // showing an ivory strip above it — see _Hero's own doc comment for
-    // the full root-cause explanation (identical fix to
-    // GuideCatalogueLayout's). AnnotatedRegion forces light status-bar
-    // icons for exactly this screen.
-    //
-    // Green Token Consistency Migration: AppColors.deepGreen, not
-    // forestGreen — the canonical primary brand dark surface.
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: Scaffold(
@@ -308,106 +361,137 @@ class _FriendProfileScreenState extends State<FriendProfileScreen> {
           future: _future,
           builder: (context, snap) {
             if (snap.connectionState == ConnectionState.waiting) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _BackRow(),
-                  Expanded(
-                    child: ColoredBox(
-                      color: AppColors.ivory,
-                      child: SafeArea(
-                        top: false,
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.forestGreen,
-                            strokeWidth: 1.5,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              );
+              return const _LoadingState();
             }
             final identity = snap.data;
             if (snap.hasError || identity == null) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _BackRow(),
-                  Expanded(
-                    child: ColoredBox(
-                      color: AppColors.ivory,
-                      child: SafeArea(
-                        top: false,
-                        child: Center(
-                          child: Text(
-                            'Could not load this profile',
-                            style: CsTypography.body.copyWith(
-                              color: AppColors.taupe,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              return const _ErrorState();
+            }
+            if (identity.relationshipStatus != RelationshipStatus.accepted) {
+              return _NonFriendBody(
+                identity: identity,
+                onSendRequest: _sendRequest,
+                onAccept: () async {
+                  final friendshipId = await _incomingFriendshipId(identity.id);
+                  if (friendshipId != null) _accept(friendshipId);
+                },
+                onDecline: () async {
+                  final friendshipId = await _incomingFriendshipId(identity.id);
+                  if (friendshipId != null) _decline(friendshipId);
+                },
+                onBlock: () => _blockUser(_labelFor(identity)),
+                onReport: _reportProfile,
               );
             }
-            return _ProfileBody(
-              identity: identity,
-              visitedFuture: _visitedFuture,
-              wishlistFuture: _wishlistFuture,
-              goingFuture: _goingFuture,
-              interestedFuture: _interestedFuture,
-              onSendRequest: _sendRequest,
-              onAccept: () async {
-                final friendshipId = await _incomingFriendshipId(identity.id);
-                if (friendshipId != null) _accept(friendshipId);
-              },
-              onDecline: () async {
-                final friendshipId = await _incomingFriendshipId(identity.id);
-                if (friendshipId != null) _decline(friendshipId);
-              },
-              onRemove: _removeFriend,
-              onBlock: () => _blockUser(
-                identity.displayName?.trim().isNotEmpty == true
-                    ? identity.displayName!
-                    : identity.label,
-              ),
-              onReport: _reportProfile,
+            return Stack(
+              children: [
+                FutureBuilder<FriendProfileLayoutData>(
+                  future: _layoutFuture,
+                  builder: (context, layoutSnap) {
+                    if (layoutSnap.connectionState == ConnectionState.waiting ||
+                        _layoutFuture == null) {
+                      return const _LoadingState();
+                    }
+                    final data = layoutSnap.data;
+                    if (layoutSnap.hasError || data == null) {
+                      return const _ErrorState();
+                    }
+                    final callbacks = (
+                      onBack: () => Navigator.pop(context),
+                      onRemoveFriend: _removeFriend,
+                      onBlock: () => _blockUser(data.friendName),
+                      onReport: _reportProfile,
+                    );
+                    return switch (_layout) {
+                      FriendProfileLayout.passport => FriendProfileLayoutA(
+                        data: data,
+                        onBack: callbacks.onBack,
+                        onRemoveFriend: callbacks.onRemoveFriend,
+                        onBlock: callbacks.onBlock,
+                        onReport: callbacks.onReport,
+                      ),
+                      FriendProfileLayout.dineTogether => FriendProfileLayoutB(
+                        data: data,
+                        wishlistRepo: _wishlistRepo,
+                        viewerUserId:
+                            Supabase.instance.client.auth.currentUser?.id ?? '',
+                        onBack: callbacks.onBack,
+                        onRemoveFriend: callbacks.onRemoveFriend,
+                        onBlock: callbacks.onBlock,
+                        onReport: callbacks.onReport,
+                      ),
+                      FriendProfileLayout.column => FriendProfileLayoutC(
+                        data: data,
+                        onBack: callbacks.onBack,
+                        onRemoveFriend: callbacks.onRemoveFriend,
+                        onBlock: callbacks.onBlock,
+                        onReport: callbacks.onReport,
+                      ),
+                    };
+                  },
+                ),
+                if (kDebugMode)
+                  _DebugLayoutSwitcher(
+                    selected: _layout,
+                    onSelect: (l) => setState(() => _layout = l),
+                  ),
+              ],
             );
           },
         ),
       ),
     );
   }
-
-  Future<String?> _incomingFriendshipId(String requesterId) async {
-    final incoming = await _repo.getIncomingRequests();
-    final match = incoming.where((r) => r.otherUserId == requesterId);
-    return match.isEmpty ? null : match.first.friendshipId;
-  }
 }
 
-/// The back arrow while identity is still loading/failed — [_ProfileBody]
-/// renders its own copy inside the forest-green hero once identity
-/// resolves, so this standalone version only ever appears briefly. Ivory
-/// (not forest-green) to stay legible now that the Scaffold behind it is
-/// forest-green everywhere; `SafeArea(bottom: false)` gives it the correct
-/// top inset without also padding the ivory content below it a second
-/// time.
-class _BackRow extends StatelessWidget {
+class _LoadingState extends StatelessWidget {
+  const _LoadingState();
+
+  @override
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const _SimpleBackRow(),
+      Expanded(
+        child: Center(
+          child: CircularProgressIndicator(
+            color: AppColors.textOnDark,
+            strokeWidth: 1.5,
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+class _ErrorState extends StatelessWidget {
+  const _ErrorState();
+
+  @override
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      const _SimpleBackRow(),
+      Expanded(
+        child: Center(
+          child: Text(
+            'Could not load this profile',
+            style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+          ),
+        ),
+      ),
+    ],
+  );
+}
+
+class _SimpleBackRow extends StatelessWidget {
+  const _SimpleBackRow();
+
   @override
   Widget build(BuildContext context) => SafeArea(
     bottom: false,
     child: Padding(
-      padding: const EdgeInsets.fromLTRB(
-        CsSpacing.base,
-        CsSpacing.sm,
-        CsSpacing.base,
-        0,
-      ),
+      padding: const EdgeInsets.fromLTRB(CsSpacing.base, CsSpacing.sm, CsSpacing.base, 0),
       child: Align(
         alignment: Alignment.centerLeft,
         child: EditorialBackButton(color: AppColors.ivory),
@@ -416,128 +500,119 @@ class _BackRow extends StatelessWidget {
   );
 }
 
-class _ProfileBody extends StatelessWidget {
+/// Dev-only A/B/C layout switcher — kDebugMode only, per the task brief
+/// ("een dev-only instelling... zodat we ze in de app naast elkaar kunnen
+/// vergelijken"). Local `setState` on the screen, not persisted — exists
+/// purely to compare the three layouts live in a running build.
+class _DebugLayoutSwitcher extends StatelessWidget {
+  final FriendProfileLayout selected;
+  final ValueChanged<FriendProfileLayout> onSelect;
+
+  const _DebugLayoutSwitcher({required this.selected, required this.onSelect});
+
+  static const _labels = {
+    FriendProfileLayout.passport: 'A',
+    FriendProfileLayout.dineTogether: 'B',
+    FriendProfileLayout.column: 'C',
+  };
+
+  @override
+  Widget build(BuildContext context) => Positioned(
+    right: 12,
+    bottom: 12,
+    child: SafeArea(
+      child: Material(
+        color: Colors.black.withValues(alpha: 0.7),
+        borderRadius: BorderRadius.circular(8),
+        child: Padding(
+          padding: const EdgeInsets.all(4),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              for (final layout in FriendProfileLayout.values)
+                GestureDetector(
+                  onTap: () => onSelect(layout),
+                  child: Container(
+                    width: 32,
+                    height: 32,
+                    margin: const EdgeInsets.symmetric(horizontal: 2),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: layout == selected ? Colors.white : Colors.transparent,
+                      borderRadius: BorderRadius.circular(6),
+                    ),
+                    child: Text(
+                      _labels[layout]!,
+                      style: TextStyle(
+                        color: layout == selected ? Colors.black : Colors.white,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ),
+    ),
+  );
+}
+
+// ── Non-friend / pending relationship — unchanged legacy UI ────────────
+// Out of scope for the editorial redesign (see this file's own class doc):
+// Friends' own list only ever opens this screen for an accepted friend,
+// so this path only matters for other entry points (e.g. search) this
+// task wasn't asked to touch.
+
+class _NonFriendBody extends StatelessWidget {
   final ProfileIdentity identity;
-  final Future<List<VenueEntry>>? visitedFuture;
-  final Future<List<PassportVenue>>? wishlistFuture;
-  final Future<List<Event>>? goingFuture;
-  final Future<List<Event>>? interestedFuture;
   final VoidCallback onSendRequest;
   final VoidCallback onAccept;
   final VoidCallback onDecline;
-  final VoidCallback onRemove;
   final VoidCallback onBlock;
   final VoidCallback onReport;
 
-  const _ProfileBody({
+  const _NonFriendBody({
     required this.identity,
-    required this.visitedFuture,
-    required this.wishlistFuture,
-    required this.goingFuture,
-    required this.interestedFuture,
     required this.onSendRequest,
     required this.onAccept,
     required this.onDecline,
-    required this.onRemove,
     required this.onBlock,
     required this.onReport,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final accepted = identity.relationshipStatus == RelationshipStatus.accepted;
-
-    // The whole body scrolls as one unit, hero included — never a fixed
-    // hero with no escape route. A user-generated display name can be
-    // arbitrarily long, and for a non-accepted relationship there's no
-    // activity content below to absorb overflow, so the hero itself must
-    // stay inside the scrollable rather than being pinned.
-    //
-    // UI Polish pass: CustomScrollView + SliverFillRemaining(hasScrollBody:
-    // false) rather than SingleChildScrollView+Column — the ivory content
-    // area still needs to visually reach the bottom of the screen even
-    // when short (a non-accepted profile, or a friend with little
-    // activity), which SingleChildScrollView alone can't do; SliverFill-
-    // Remaining gives it a MINIMUM height of "whatever's left in the
-    // viewport" while still letting the whole page grow/scroll normally if
-    // the hero or the activity sections end up taller than the screen —
-    // preserving the original no-overflow guarantee above.
-    //
-    // NOT wrapped in Expanded: _ProfileBody is returned directly as
-    // Scaffold.body (via the FutureBuilder in _FriendProfileScreenState.
-    // build), which lays out its body through a CustomMultiChildLayout,
-    // not a Flex — Expanded here throws "Incorrect use of
-    // ParentDataWidget" in debug (a real, on-device bug found via a
-    // profile-mode reproduction, not caught by any prior test, since
-    // every previous test either hand-built _Hero in isolation or hit
-    // this screen's OWN error branch before ever reaching this widget).
-    // In release the assertion is stripped, so this silently produced a
-    // blank/grey screen instead of a crash. CustomScrollView already
-    // fills the available space on its own here — no wrapper needed.
-    return CustomScrollView(
-      slivers: [
-        SliverToBoxAdapter(
-          child: SafeArea(
-            bottom: false,
-            child: _Hero(
-              identity: identity,
-              onSendRequest: onSendRequest,
-              onAccept: onAccept,
-              onDecline: onDecline,
-              onRemove: onRemove,
-              onBlock: onBlock,
-              onReport: onReport,
-            ),
+  Widget build(BuildContext context) => CustomScrollView(
+    slivers: [
+      SliverToBoxAdapter(
+        child: SafeArea(
+          bottom: false,
+          child: _Hero(
+            identity: identity,
+            onSendRequest: onSendRequest,
+            onAccept: onAccept,
+            onDecline: onDecline,
+            onBlock: onBlock,
+            onReport: onReport,
           ),
         ),
-        SliverFillRemaining(
-          hasScrollBody: false,
-          child: ColoredBox(
-            color: AppColors.ivory,
-            child: SafeArea(
-              top: false,
-              child: accepted
-                  ? Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: CsSpacing.pageHorizontal,
-                      ).copyWith(top: CsSpacing.lg, bottom: CsSpacing.xxl),
-                      child: _ActivitySections(
-                        userId: identity.id,
-                        friendLabel:
-                            identity.displayName?.trim().isNotEmpty == true
-                            ? identity.displayName!
-                            : identity.label,
-                        visitedFuture: visitedFuture,
-                        wishlistFuture: wishlistFuture,
-                        goingFuture: goingFuture,
-                        interestedFuture: interestedFuture,
-                      ),
-                    )
-                  : const SizedBox.shrink(),
-            ),
-          ),
+      ),
+      SliverFillRemaining(
+        hasScrollBody: false,
+        child: ColoredBox(
+          color: AppColors.ivory,
+          child: SafeArea(top: false, child: const SizedBox.shrink()),
         ),
-      ],
-    );
-  }
+      ),
+    ],
+  );
 }
 
-/// UI Polish pass: this paints its own deep-green [ColoredBox] as
-/// always, but the top iOS safe-area strip above it is no longer a
-/// separate concern — [_FriendProfileScreenState.build] now sets
-/// [Scaffold.backgroundColor] to deep-green directly, so that gap (and
-/// every other bit of unpainted space this screen has) reads as a
-/// seamless continuation of this hero rather than the ivory strip
-/// physical-device review found before this pass.
-///
-/// Green Token Consistency Migration: AppColors.deepGreen, not
-/// forestGreen — the canonical primary brand dark surface.
 class _Hero extends StatelessWidget {
   final ProfileIdentity identity;
   final VoidCallback onSendRequest;
   final VoidCallback onAccept;
   final VoidCallback onDecline;
-  final VoidCallback onRemove;
   final VoidCallback onBlock;
   final VoidCallback onReport;
 
@@ -546,7 +621,6 @@ class _Hero extends StatelessWidget {
     required this.onSendRequest,
     required this.onAccept,
     required this.onDecline,
-    required this.onRemove,
     required this.onBlock,
     required this.onReport,
   });
@@ -564,12 +638,7 @@ class _Hero extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.fromLTRB(
-              CsSpacing.base,
-              CsSpacing.sm,
-              CsSpacing.base,
-              0,
-            ),
+            padding: const EdgeInsets.fromLTRB(CsSpacing.base, CsSpacing.sm, CsSpacing.base, 0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -592,14 +661,9 @@ class _Hero extends StatelessWidget {
                 Container(
                   width: 96,
                   height: 96,
-                  decoration: const BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: AppColors.ivory,
-                  ),
+                  decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.ivory),
                   alignment: Alignment.center,
-                  child:
-                      (identity.avatarUrl != null &&
-                          identity.avatarUrl!.isNotEmpty)
+                  child: (identity.avatarUrl != null && identity.avatarUrl!.isNotEmpty)
                       ? ClipOval(
                           child: Image.network(
                             identity.avatarUrl!,
@@ -627,17 +691,13 @@ class _Hero extends StatelessWidget {
                       ? identity.displayName!
                       : identity.label,
                   textAlign: TextAlign.center,
-                  style: CsTypography.screenTitle.copyWith(
-                    color: AppColors.ivory,
-                  ),
+                  style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
                 ),
                 if (identity.username != null) ...[
                   const SizedBox(height: 4),
                   Text(
                     '@${identity.username}',
-                    style: CsTypography.body.copyWith(
-                      color: AppColors.secondaryOnDark,
-                    ),
+                    style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
                   ),
                 ],
                 const SizedBox(height: CsSpacing.xl),
@@ -646,7 +706,6 @@ class _Hero extends StatelessWidget {
                   onSendRequest: onSendRequest,
                   onAccept: onAccept,
                   onDecline: onDecline,
-                  onRemove: onRemove,
                 ),
               ],
             ),
@@ -662,14 +721,12 @@ class _RelationshipAction extends StatelessWidget {
   final VoidCallback onSendRequest;
   final VoidCallback onAccept;
   final VoidCallback onDecline;
-  final VoidCallback onRemove;
 
   const _RelationshipAction({
     required this.status,
     required this.onSendRequest,
     required this.onAccept,
     required this.onDecline,
-    required this.onRemove,
   });
 
   @override
@@ -687,452 +744,27 @@ class _RelationshipAction extends StatelessWidget {
       case RelationshipStatus.pendingSent:
         return Text(
           'Request sent',
-          style: CsTypography.bodyMedium.copyWith(
-            color: AppColors.secondaryOnDark,
-          ),
+          style: CsTypography.bodyMedium.copyWith(color: AppColors.secondaryOnDark),
         );
       case RelationshipStatus.pendingReceived:
         return Row(
           children: [
-            Expanded(
-              child: CsSecondaryButton(label: 'Decline', onTap: onDecline),
-            ),
+            Expanded(child: CsSecondaryButton(label: 'Decline', onTap: onDecline)),
             const SizedBox(width: CsSpacing.md),
-            Expanded(
-              child: CsPrimaryButton(label: 'Accept', onTap: onAccept),
-            ),
+            Expanded(child: CsPrimaryButton(label: 'Accept', onTap: onAccept)),
           ],
         );
       case RelationshipStatus.accepted:
-        return Column(
-          children: [
-            Text(
-              'Friends',
-              style: CsTypography.bodyMedium.copyWith(color: AppColors.ivory),
-            ),
-            const SizedBox(height: CsSpacing.md),
-            TextButton(
-              onPressed: onRemove,
-              child: Text(
-                'Remove friend',
-                style: CsTypography.metadata.copyWith(
-                  color: AppColors.secondaryOnDark,
-                ),
-              ),
-            ),
-          ],
-        );
+        return const SizedBox.shrink();
       case RelationshipStatus.declined:
         return Text(
           'Unavailable',
-          style: CsTypography.bodyMedium.copyWith(
-            color: AppColors.secondaryOnDark,
-          ),
+          style: CsTypography.bodyMedium.copyWith(color: AppColors.secondaryOnDark),
         );
     }
   }
 }
 
-/// One (venue, visit) pair — [VenueEntry] groups every visit under its
-/// venue for Passport's own grouped display; VISITED instead flattens to
-/// one row per visit, newest first overall.
-class FriendVenueVisit {
-  final PassportVenue venue;
-  final Visit visit;
-  const FriendVenueVisit(this.venue, this.visit);
-}
-
-/// Flattens/sorts VenueEntry groups into one row per visit, newest first —
-/// shared by the profile's preview section and [FriendVisitedListScreen]'s
-/// full list, so the two never drift out of sync on ordering.
-List<FriendVenueVisit> flattenFriendVisits(List<VenueEntry> entries) => [
-  for (final entry in entries)
-    for (final visit in entry.visits) FriendVenueVisit(entry.venue, visit),
-]..sort((a, b) => b.visit.visitedOn.compareTo(a.visit.visitedOn));
-
-// Shared by VISITED and WISHLIST: opens the canonical, unmodified
-// RestaurantDetailScreen/HotelDetailScreen — never a friend-specific
-// detail wrapper. Every normal venue action there (Wishlist toggle,
-// external links, Add Visit) already targets only
-// Supabase.instance.client.auth.currentUser — the viewer's own data —
-// regardless of how the screen was reached, so no extra plumbing is
-// needed to keep a friend's own Wishlist/visits untouched.
-void openFriendVenue(BuildContext context, PassportVenue venue) {
-  switch (venue) {
-    case RestaurantVenue(:final restaurant):
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
-        ),
-      );
-    case HotelVenue(:final hotel):
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
-      );
-  }
-}
-
-void openFriendEvent(BuildContext context, String eventId) {
-  Navigator.push(
-    context,
-    MaterialPageRoute(
-      builder: (_) => EventDetailScreen(
-        eventId: eventId,
-        sourceSurface: AnalyticsSourceSurface.friendActivity,
-        sourceContext: AnalyticsSourceContext.friendSignal,
-      ),
-    ),
-  );
-}
-
-/// The three activity sections together, each entirely omitted once its
-/// future resolves to zero items — never a stack of "nothing here" lines
-/// (Community/Friends UX Step 1 §18). Hairlines are only inserted between
-/// two sections that both actually render, so an omitted middle section
-/// never leaves an orphan divider.
-class _ActivitySections extends StatelessWidget {
-  final String userId;
-  final String friendLabel;
-  final Future<List<VenueEntry>>? visitedFuture;
-  final Future<List<PassportVenue>>? wishlistFuture;
-  final Future<List<Event>>? goingFuture;
-  final Future<List<Event>>? interestedFuture;
-
-  const _ActivitySections({
-    required this.userId,
-    required this.friendLabel,
-    required this.visitedFuture,
-    required this.wishlistFuture,
-    required this.goingFuture,
-    required this.interestedFuture,
-  });
-
-  @override
-  Widget build(BuildContext context) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      _FriendVisitedSection(
-        userId: userId,
-        friendLabel: friendLabel,
-        future: visitedFuture,
-      ),
-      _FriendWishlistSection(
-        userId: userId,
-        friendLabel: friendLabel,
-        future: wishlistFuture,
-      ),
-      _FriendGoingSection(
-        userId: userId,
-        friendLabel: friendLabel,
-        future: goingFuture,
-      ),
-      // Events V2 Step 7 — Going before Interested, matching the same
-      // hierarchy Event Detail uses. Last section: no trailing divider.
-      _FriendInterestedSection(
-        userId: userId,
-        friendLabel: friendLabel,
-        future: interestedFuture,
-      ),
-    ],
-  );
-}
-
-/// Section eyebrow + optional "View all" trigger — one consistent pattern
-/// shared by VISITED/WISHLIST/GOING.
-class _SectionHeader extends StatelessWidget {
-  final String title;
-  final VoidCallback? onViewAll;
-
-  const _SectionHeader({required this.title, this.onViewAll});
-
-  @override
-  Widget build(BuildContext context) => Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      Text(title, style: CsTypography.eyebrow.copyWith(color: AppColors.taupe)),
-      if (onViewAll != null)
-        GestureDetector(
-          onTap: onViewAll,
-          child: Text(
-            'View all',
-            style: CsTypography.metadata.copyWith(
-              color: AppColors.forestGreen,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
-    ],
-  );
-}
-
-class _FriendVisitedSection extends StatelessWidget {
-  final String userId;
-  final String friendLabel;
-  final Future<List<VenueEntry>>? future;
-  const _FriendVisitedSection({
-    required this.userId,
-    required this.friendLabel,
-    required this.future,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<VenueEntry>>(
-      future: future,
-      builder: (context, snap) {
-        final loading = snap.connectionState == ConnectionState.waiting;
-        if (!loading && !snap.hasError) {
-          final rows = flattenFriendVisits(snap.data ?? const []);
-          if (rows.isEmpty) return const SizedBox.shrink();
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _SectionHeader(
-                title: 'VISITED',
-                onViewAll: rows.length > _previewLimit
-                    ? () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => FriendVisitedListScreen(
-                            userId: userId,
-                            friendLabel: friendLabel,
-                          ),
-                        ),
-                      )
-                    : null,
-              ),
-              const SizedBox(height: CsSpacing.sm),
-              for (var i = 0; i < rows.length && i < _previewLimit; i++) ...[
-                if (i > 0) const _RowDivider(),
-                FriendVisitTile(
-                  venue: rows[i].venue,
-                  visit: rows[i].visit,
-                  onTap: () => openFriendVenue(context, rows[i].venue),
-                ),
-              ],
-              const SectionDivider(),
-            ],
-          );
-        }
-        if (snap.hasError) return const SizedBox.shrink();
-        return const Padding(
-          padding: EdgeInsets.symmetric(vertical: CsSpacing.lg),
-          child: Center(
-            child: CircularProgressIndicator(
-              color: AppColors.forestGreen,
-              strokeWidth: 1.5,
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class _FriendWishlistSection extends StatelessWidget {
-  final String userId;
-  final String friendLabel;
-  final Future<List<PassportVenue>>? future;
-  const _FriendWishlistSection({
-    required this.userId,
-    required this.friendLabel,
-    required this.future,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<PassportVenue>>(
-      future: future,
-      builder: (context, snap) {
-        final loading = snap.connectionState == ConnectionState.waiting;
-        if (!loading && !snap.hasError) {
-          final items = snap.data ?? const [];
-          if (items.isEmpty) return const SizedBox.shrink();
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _SectionHeader(
-                title: 'WISHLIST',
-                onViewAll: items.length > _previewLimit
-                    ? () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => FriendWishlistListScreen(
-                            userId: userId,
-                            friendLabel: friendLabel,
-                          ),
-                        ),
-                      )
-                    : null,
-              ),
-              const SizedBox(height: CsSpacing.sm),
-              for (var i = 0; i < items.length && i < _previewLimit; i++) ...[
-                if (i > 0) const _RowDivider(),
-                FriendWishlistTile(
-                  venue: items[i],
-                  onTap: () => openFriendVenue(context, items[i]),
-                ),
-              ],
-              const SectionDivider(),
-            ],
-          );
-        }
-        if (snap.hasError) return const SizedBox.shrink();
-        return const Padding(
-          padding: EdgeInsets.symmetric(vertical: CsSpacing.lg),
-          child: Center(
-            child: CircularProgressIndicator(
-              color: AppColors.forestGreen,
-              strokeWidth: 1.5,
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class _FriendGoingSection extends StatelessWidget {
-  final String userId;
-  final String friendLabel;
-  final Future<List<Event>>? future;
-  const _FriendGoingSection({
-    required this.userId,
-    required this.friendLabel,
-    required this.future,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<Event>>(
-      future: future,
-      builder: (context, snap) {
-        final loading = snap.connectionState == ConnectionState.waiting;
-        if (!loading && !snap.hasError) {
-          final events = snap.data ?? const [];
-          if (events.isEmpty) return const SizedBox.shrink();
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _SectionHeader(
-                title: 'GOING',
-                onViewAll: events.length > _previewLimit
-                    ? () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => FriendGoingListScreen(
-                            userId: userId,
-                            friendLabel: friendLabel,
-                          ),
-                        ),
-                      )
-                    : null,
-              ),
-              const SizedBox(height: CsSpacing.sm),
-              for (var i = 0; i < events.length && i < _previewLimit; i++) ...[
-                if (i > 0) const _RowDivider(),
-                FriendGoingTile(
-                  event: events[i],
-                  onTap: () => openFriendEvent(context, events[i].id),
-                ),
-              ],
-              // Events V2 Step 7: no longer the last section — INTERESTED
-              // now follows. Mirrors VISITED/WISHLIST's own trailing
-              // SectionDivider exactly.
-              const SectionDivider(),
-            ],
-          );
-        }
-        if (snap.hasError) return const SizedBox.shrink();
-        return const Padding(
-          padding: EdgeInsets.symmetric(vertical: CsSpacing.lg),
-          child: Center(
-            child: CircularProgressIndicator(
-              color: AppColors.forestGreen,
-              strokeWidth: 1.5,
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-/// Events V2 Step 7 — "I want to be able to see Friends Interested and
-/// Friends Going as a friend." Identical shape to [_FriendGoingSection]
-/// one status over; last section on the page, so — unlike GOING above —
-/// this one has no trailing divider. Only ever reads rows RLS already
-/// permits (this viewer's own accepted-friend relationship plus the
-/// row's own friends visibility) — no new query architecture, no
-/// exposure of a non-friend's or pending-friend's private intent.
-class _FriendInterestedSection extends StatelessWidget {
-  final String userId;
-  final String friendLabel;
-  final Future<List<Event>>? future;
-  const _FriendInterestedSection({
-    required this.userId,
-    required this.friendLabel,
-    required this.future,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return FutureBuilder<List<Event>>(
-      future: future,
-      builder: (context, snap) {
-        final loading = snap.connectionState == ConnectionState.waiting;
-        if (!loading && !snap.hasError) {
-          final events = snap.data ?? const [];
-          if (events.isEmpty) return const SizedBox.shrink();
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _SectionHeader(
-                title: 'INTERESTED',
-                onViewAll: events.length > _previewLimit
-                    ? () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (_) => FriendInterestedListScreen(
-                            userId: userId,
-                            friendLabel: friendLabel,
-                          ),
-                        ),
-                      )
-                    : null,
-              ),
-              const SizedBox(height: CsSpacing.sm),
-              for (var i = 0; i < events.length && i < _previewLimit; i++) ...[
-                if (i > 0) const _RowDivider(),
-                FriendGoingTile(
-                  event: events[i],
-                  onTap: () => openFriendEvent(context, events[i].id),
-                ),
-              ],
-            ],
-          );
-        }
-        if (snap.hasError) return const SizedBox.shrink();
-        return const Padding(
-          padding: EdgeInsets.symmetric(vertical: CsSpacing.lg),
-          child: Center(
-            child: CircularProgressIndicator(
-              color: AppColors.forestGreen,
-              strokeWidth: 1.5,
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
-
-/// Block + Report, behind one overflow menu on another user's profile —
-/// never a primary action. Same translucent-circle trigger the hero's
-/// other icon-only controls use (e.g. [FollowToggleButton]), styled for
-/// the deep-green hero it always sits on.
 class _ProfileOverflowMenu extends StatelessWidget {
   final VoidCallback onBlock;
   final VoidCallback onReport;
@@ -1151,11 +783,7 @@ class _ProfileOverflowMenu extends StatelessWidget {
         value: 'report',
         child: Row(
           children: [
-            Icon(
-              Icons.flag_outlined,
-              color: AppColors.textPrimary,
-              size: 18,
-            ),
+            Icon(Icons.flag_outlined, color: AppColors.textPrimary, size: 18),
             SizedBox(width: 10),
             Text('Report profile'),
           ],
@@ -1177,24 +805,8 @@ class _ProfileOverflowMenu extends StatelessWidget {
       shape: const CircleBorder(),
       child: const Padding(
         padding: EdgeInsets.all(9),
-        child: Icon(
-          Icons.more_horiz_rounded,
-          color: AppColors.textOnDark,
-          size: 19,
-        ),
+        child: Icon(Icons.more_horiz_rounded, color: AppColors.textOnDark, size: 19),
       ),
     ),
   );
-}
-
-/// The same strengthened taupe hairline token established for Guides'
-/// dense result lists — [GuideVenueCardDivider]'s own value, inlined here
-/// rather than importing across the Guides/Friends feature boundary (see
-/// docs/Architecture/COMMUNITY_FRIENDS_UX.md's reuse note).
-class _RowDivider extends StatelessWidget {
-  const _RowDivider();
-
-  @override
-  Widget build(BuildContext context) =>
-      Container(height: 0.75, color: AppColors.taupe.withValues(alpha: 0.55));
 }

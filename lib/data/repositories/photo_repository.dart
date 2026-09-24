@@ -78,6 +78,48 @@ class PhotoRepository {
     };
   }
 
+  // One signed cover-photo URL per visit id — its most-recently-taken
+  // photo, if any — batched the same way
+  // EventConfirmedAttendanceRepository._coverPhotoPaths batches event
+  // cover photos: one `visit_id IN (...)` query plus one
+  // resolveDisplayUrls call, never one query per visit. Built for the
+  // Friend Profile screen's "Lately" mini-reviews (layout C), which can
+  // show many visits at once.
+  //
+  // No extra client-side visibility filtering needed here: every visit id
+  // this is ever called with already came from VisitedRepository
+  // .loadPassportVenues(friendUserId), which only ever returns rows
+  // visits_read RLS already allowed this viewer to see — for a friend
+  // viewer, that means `visibility = 'friends'`. Both `photos` (this
+  // query) and the visit-photos storage bucket's own
+  // `visit_photos_read_friends` policy gate on that identical condition
+  // (confirmed directly against the live `storage.objects` policies, not
+  // assumed), so a visit that reached this screen at all is guaranteed to
+  // already satisfy both.
+  Future<Map<String, String>> loadCoverPhotoUrlsForVisits(
+    List<String> visitIds,
+  ) async {
+    if (visitIds.isEmpty) return {};
+    final rows = await _client
+        .from('photos')
+        .select('visit_id, storage_path')
+        .inFilter('visit_id', visitIds)
+        .eq('is_public', true)
+        .order('taken_at', ascending: false);
+    final pathByVisitId = <String, String>{};
+    for (final row in rows as List) {
+      final map = row as Map<String, dynamic>;
+      final visitId = map['visit_id'] as String?;
+      if (visitId == null) continue;
+      pathByVisitId.putIfAbsent(visitId, () => map['storage_path'] as String);
+    }
+    final urlByPath = await resolveDisplayUrls(pathByVisitId.values.toList());
+    return {
+      for (final entry in pathByVisitId.entries)
+        if (urlByPath[entry.value] != null) entry.key: urlByPath[entry.value]!,
+    };
+  }
+
   // Events V2 Step 4's photo-limit correction is deliberately NOT applied
   // here — Restaurant/Hotel visit photos have no maximum, and this method
   // must stay that way unless a future task gives it its own explicit
