@@ -78,21 +78,6 @@ Widget _friendsEmptyState({VoidCallback? onFindFriends}) => Column(
   ],
 );
 
-Widget _incomingRequestRow({
-  required VoidCallback onAccept,
-  required VoidCallback onDecline,
-}) => IdentityRow(
-  label: 'User A',
-  username: 'usera',
-  trailing: Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      TextButton(onPressed: onDecline, child: const Text('Decline')),
-      TextButton(onPressed: onAccept, child: const Text('Accept')),
-    ],
-  ),
-);
-
 Widget _outgoingRequestRow({required VoidCallback onCancel}) => IdentityRow(
   label: 'User C',
   username: 'userc',
@@ -190,43 +175,10 @@ void main() {
     });
   });
 
-  group('FriendsScreen incoming request row', () {
-    testWidgets('accept fires its own callback, not decline\'s', (
-      tester,
-    ) async {
-      var accepted = false;
-      var declined = false;
-      await tester.pumpWidget(
-        _wrap(
-          _incomingRequestRow(
-            onAccept: () => accepted = true,
-            onDecline: () => declined = true,
-          ),
-        ),
-      );
-      await tester.tap(find.text('Accept'));
-      expect(accepted, isTrue);
-      expect(declined, isFalse);
-    });
-
-    testWidgets('decline fires its own callback, not accept\'s', (
-      tester,
-    ) async {
-      var accepted = false;
-      var declined = false;
-      await tester.pumpWidget(
-        _wrap(
-          _incomingRequestRow(
-            onAccept: () => accepted = true,
-            onDecline: () => declined = true,
-          ),
-        ),
-      );
-      await tester.tap(find.text('Decline'));
-      expect(declined, isTrue);
-      expect(accepted, isFalse);
-    });
-  });
+  // "FriendsScreen incoming request row" coverage moved to
+  // notifications_screen_test.dart — incoming requests no longer render
+  // in FriendsScreen at all (Notifications V1); see _RequestsTab's own
+  // doc comment in friends_screen.dart for why.
 
   group('FriendsScreen outgoing request row', () {
     testWidgets('shows Cancel and fires the cancel callback', (tester) async {

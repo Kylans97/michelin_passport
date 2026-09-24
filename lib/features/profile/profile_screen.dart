@@ -13,6 +13,7 @@ import '../../core/widgets/member_avatar.dart';
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
+import '../../data/repositories/notifications_repository.dart';
 import '../../data/repositories/profile_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/user_profile.dart';
@@ -59,6 +60,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
   late final _profileRepo = ProfileRepository(Supabase.instance.client);
   late final _friendshipRepo = FriendshipRepository(Supabase.instance.client);
+  late final _notificationsRepo = NotificationsRepository(
+    Supabase.instance.client,
+  );
   late final _eventAttendanceRepo = EventConfirmedAttendanceRepository(
     Supabase.instance.client,
   );
@@ -67,6 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   late Future<String?> _avatarUrlFuture;
   late Future<JourneyMetrics> _journeyFuture;
   late Future<_FriendsSummary> _friendsSummaryFuture;
+  late Future<int> _unreadNotificationCountFuture;
 
   // Loaded once, not re-fetched on pull-to-refresh (_load) — the running
   // build's own version/build number can't change at runtime.
@@ -124,6 +129,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
               pendingCount: results[1].length,
             ),
           );
+
+      _unreadNotificationCountFuture = _notificationsRepo.getUnreadCount();
     });
   }
 
@@ -346,14 +353,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     label: 'Change password',
                     onTap: _openChangePassword,
                   ),
-                  _SettingsRow(
-                    icon: Icons.notifications_outlined,
-                    label: 'Notifications',
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => const NotificationsScreen(),
-                      ),
+                  FutureBuilder<int>(
+                    future: _unreadNotificationCountFuture,
+                    builder: (context, unreadSnap) => _SettingsRow(
+                      icon: Icons.notifications_outlined,
+                      label: 'Notifications',
+                      badgeCount: unreadSnap.data,
+                      onTap: () async {
+                        await Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => const NotificationsScreen(),
+                          ),
+                        );
+                        // NotificationsScreen marks everything read on
+                        // open — refresh so the badge reflects that
+                        // immediately on return, not on the next full
+                        // profile reload.
+                        if (mounted) {
+                          setState(() {
+                            _unreadNotificationCountFuture =
+                                _notificationsRepo.getUnreadCount();
+                          });
+                        }
+                      },
                     ),
                   ),
                   _SettingsRow(
@@ -672,17 +695,23 @@ class _SettingsRow extends StatelessWidget {
   // The Website/Privacy policy rows pass open_in_new instead, since
   // those leave the app rather than push a route.
   final IconData trailingIcon;
+  // A small count pill between the label and the chevron — currently
+  // only the Notifications row uses this (unread count). Null/zero
+  // renders nothing, so every other existing row is unaffected.
+  final int? badgeCount;
   const _SettingsRow({
     required this.icon,
     required this.label,
     required this.onTap,
     this.color,
     this.trailingIcon = Icons.chevron_right_rounded,
+    this.badgeCount,
   });
 
   @override
   Widget build(BuildContext context) {
     final tint = color ?? AppColors.secondaryOnDark;
+    final count = badgeCount;
     return Material(
       color: Colors.transparent,
       child: InkWell(
@@ -705,6 +734,30 @@ class _SettingsRow extends StatelessWidget {
                   ),
                 ),
               ),
+              // Never gold — Step 1B's color rule reserves gold for
+              // Michelin stars/Keys only; an unread count is an
+              // attention signal, matching the same AppColors.error
+              // register Delete account already uses for that purpose.
+              if (count != null && count > 0) ...[
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 7,
+                    vertical: 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.error,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    count > 9 ? '9+' : '$count',
+                    style: CsTypography.smallLabel.copyWith(
+                      color: AppColors.textOnDark,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: CsSpacing.sm),
+              ],
               Icon(trailingIcon, color: tint, size: 20),
             ],
           ),

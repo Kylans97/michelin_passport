@@ -34,7 +34,6 @@ class _FriendsScreenState extends State<FriendsScreen> {
   late final _repo = FriendshipRepository(Supabase.instance.client);
 
   late Future<List<Friendship>> _friendsFuture;
-  late Future<List<FriendRequest>> _incomingFuture;
   late Future<List<FriendRequest>> _outgoingFuture;
 
   @override
@@ -46,7 +45,6 @@ class _FriendsScreenState extends State<FriendsScreen> {
   void _load() {
     setState(() {
       _friendsFuture = _repo.getFriends();
-      _incomingFuture = _repo.getIncomingRequests();
       _outgoingFuture = _repo.getOutgoingRequests();
     });
   }
@@ -65,23 +63,9 @@ class _FriendsScreenState extends State<FriendsScreen> {
     );
   }
 
-  Future<void> _accept(FriendRequest request) async {
-    try {
-      await _repo.acceptRequest(request.friendshipId);
-      _load();
-    } on PostgrestException catch (e) {
-      _showSnack(e.message, isError: true);
-    }
-  }
-
-  Future<void> _decline(FriendRequest request) async {
-    try {
-      await _repo.declineRequest(request.friendshipId);
-      _load();
-    } on PostgrestException catch (e) {
-      _showSnack(e.message, isError: true);
-    }
-  }
+  // Accept/decline for INCOMING requests moved to NotificationsScreen —
+  // see _RequestsTab's own doc comment for why this tab no longer shows
+  // that section at all.
 
   Future<void> _cancelOutgoing(FriendRequest request) async {
     try {
@@ -224,7 +208,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                         unselectedLabelStyle: CsTypography.bodyMedium,
                         tabs: const [
                           Tab(text: 'Friends'),
-                          Tab(text: 'Requests'),
+                          Tab(text: 'Sent'),
                         ],
                       ),
                     ],
@@ -245,10 +229,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                           onFindFriends: _openAddFriend,
                         ),
                         _RequestsTab(
-                          incomingFuture: _incomingFuture,
                           outgoingFuture: _outgoingFuture,
-                          onAccept: _accept,
-                          onDecline: _decline,
                           onCancelOutgoing: _cancelOutgoing,
                           onTapRequester: (r) => _openProfile(r.otherUserId),
                         ),
@@ -386,19 +367,20 @@ class _FriendsTab extends StatelessWidget {
   );
 }
 
+// Incoming requests moved to NotificationsScreen (Notifications V1) —
+// they now arrive as friend_request_received notifications there, with
+// the same working Accept/Decline. This tab kept its name ("Sent" is
+// really just this tab's own content now) but dropped the INCOMING
+// section entirely rather than showing it in two places at once. Nothing
+// else currently surfaces "your request is still pending", so the
+// outgoing/SENT section stays exactly as it was.
 class _RequestsTab extends StatelessWidget {
-  final Future<List<FriendRequest>> incomingFuture;
   final Future<List<FriendRequest>> outgoingFuture;
-  final ValueChanged<FriendRequest> onAccept;
-  final ValueChanged<FriendRequest> onDecline;
   final ValueChanged<FriendRequest> onCancelOutgoing;
   final ValueChanged<FriendRequest> onTapRequester;
 
   const _RequestsTab({
-    required this.incomingFuture,
     required this.outgoingFuture,
-    required this.onAccept,
-    required this.onDecline,
     required this.onCancelOutgoing,
     required this.onTapRequester,
   });
@@ -412,76 +394,6 @@ class _RequestsTab extends StatelessWidget {
       CsSpacing.section,
     ),
     children: [
-      Text(
-        'INCOMING',
-        style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
-      ),
-      const SizedBox(height: CsSpacing.md),
-      FutureBuilder<List<FriendRequest>>(
-        future: incomingFuture,
-        builder: (context, snap) {
-          final requests = snap.data ?? [];
-          if (snap.connectionState == ConnectionState.waiting) {
-            return const Padding(
-              padding: EdgeInsets.symmetric(vertical: CsSpacing.md),
-              child: Center(
-                child: CircularProgressIndicator(
-                  color: AppColors.forestGreen,
-                  strokeWidth: 1.5,
-                ),
-              ),
-            );
-          }
-          if (requests.isEmpty) {
-            return Text(
-              'No pending requests',
-              style: CsTypography.body.copyWith(color: AppColors.taupe),
-            );
-          }
-          return Column(
-            children: requests
-                .map(
-                  (r) => IdentityRow(
-                    label: r.label,
-                    username: r.username,
-                    avatarUrl: r.avatarUrl,
-                    onTap: () => onTapRequester(r),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextButton(
-                          onPressed: () => onDecline(r),
-                          child: Text(
-                            'Decline',
-                            style: CsTypography.metadata.copyWith(
-                              color: AppColors.taupe,
-                            ),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () => onAccept(r),
-                          child: Text(
-                            'Accept',
-                            style: CsTypography.metadata.copyWith(
-                              color: AppColors.forestGreen,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                )
-                .toList(),
-          );
-        },
-      ),
-      const SizedBox(height: CsSpacing.section),
-      Text(
-        'SENT',
-        style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
-      ),
-      const SizedBox(height: CsSpacing.md),
       FutureBuilder<List<FriendRequest>>(
         future: outgoingFuture,
         builder: (context, snap) {

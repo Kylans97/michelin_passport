@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
 import '../../data/repositories/friendship_repository.dart';
-import '../../models/friendship.dart';
+import '../../data/repositories/notifications_repository.dart';
+import '../../models/app_notification.dart';
+import '../friends/friend_profile_screen.dart';
+import '../friends/widgets/identity_row.dart';
 
-/// Incoming friend requests. Fixed to compile against Social Foundation
-/// Step 1's FriendshipRepository (getPendingRequests/declineOrRemove and
-/// Friendship.id/friendDisplayName no longer exist — see the migration
-/// and model rewrite) — this screen's entire feature set already WAS
-/// "pending friend requests, accept/decline inline," so the fix is a
-/// like-for-like API update, not new functionality. The trophy-awarding
-/// side effect on accept (`first_friend`/`friends_10`) is removed rather
-/// than fixed: `TrophyRepository.awardSocialTrophy` reads `trophies`/
-/// `user_trophies`, tables that don't exist in the live schema either
-/// (confirmed via the same live read-only audit that found `friendships`
-/// missing) — trophies are out of this task's scope entirely, not merely
-/// deferred, so this stops trying to call into that dead path rather than
-/// fixing it. Visual system (light/legacy) is intentionally untouched —
-/// out of this task's scope; only what was required to compile changed.
+/// Rebuilt to show real notifications (Notifications V1) — the previous
+/// version of this screen was entirely a friend-request inbox wearing a
+/// "Notifications" label; that functionality still exists here (a
+/// [AppNotificationType.friendRequestReceived] row keeps its working
+/// Accept/Decline, unchanged underneath — same [FriendshipRepository]
+/// RPCs), it's just one of three types now instead of the whole screen.
+///
+/// Opening this screen marks everything unread AT LOAD TIME as read in
+/// the background, but the fetched list itself keeps rendering with each
+/// row's read state as it was AT FETCH TIME — otherwise the "here's what's
+/// new" visual distinction this screen exists to show would disappear the
+/// instant it appeared.
 class NotificationsScreen extends StatefulWidget {
   const NotificationsScreen({super.key});
 
@@ -27,188 +29,241 @@ class NotificationsScreen extends StatefulWidget {
 }
 
 class _NotificationsScreenState extends State<NotificationsScreen> {
-  late final FriendshipRepository _friendRepo;
+  late final _notificationsRepo = NotificationsRepository(
+    Supabase.instance.client,
+  );
+  late final _friendRepo = FriendshipRepository(Supabase.instance.client);
 
-  late Future<List<FriendRequest>> _future;
+  late Future<List<AppNotification>> _future;
 
   @override
   void initState() {
     super.initState();
-    _friendRepo = FriendshipRepository(Supabase.instance.client);
     _load();
   }
 
   void _load() {
     setState(() {
-      _future = _friendRepo.getIncomingRequests();
+      _future = _notificationsRepo.getNotifications().then((notifications) {
+        // Fire-and-forget: the caller doesn't need to wait for this to
+        // render the list, and a failure here shouldn't block viewing
+        // notifications that already loaded successfully.
+        _notificationsRepo.markAllAsRead().catchError((_) {});
+        return notifications;
+      });
     });
   }
 
-  Future<void> _accept(FriendRequest f) async {
-    await _friendRepo.acceptRequest(f.friendshipId);
+  Future<void> _accept(AppNotification n) async {
+    await _friendRepo.acceptRequest(n.subjectId);
     _load();
   }
 
-  Future<void> _decline(FriendRequest f) async {
-    await _friendRepo.declineRequest(f.friendshipId);
+  Future<void> _decline(AppNotification n) async {
+    await _friendRepo.declineRequest(n.subjectId);
     _load();
   }
+
+  void _openProfile(String userId) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => FriendProfileScreen(userId: userId)),
+  );
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.warmWhite,
       appBar: AppBar(
-        title: const Text('Notifications'),
-        backgroundColor: AppColors.background,
+        title: Text(
+          'Notifications',
+          style: CsTypography.placeTitle.copyWith(
+            color: AppColors.forestGreen,
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: AppColors.warmWhite,
+        surfaceTintColor: Colors.transparent,
+        iconTheme: const IconThemeData(color: AppColors.forestGreen),
       ),
-      body: FutureBuilder<List<FriendRequest>>(
+      body: FutureBuilder<List<AppNotification>>(
         future: _future,
         builder: (context, snap) {
           if (snap.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(
-                color: AppColors.gold,
+                color: AppColors.forestGreen,
                 strokeWidth: 1.5,
               ),
             );
           }
-          final requests = snap.data ?? [];
-          if (requests.isEmpty) {
+          final notifications = snap.data ?? [];
+          if (notifications.isEmpty) {
             return Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.notifications_none_rounded,
-                    color: AppColors.textSecondary,
-                    size: 48,
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'No pending requests',
-                    style: GoogleFonts.playfairDisplay(
-                      color: AppColors.textSecondary,
-                      fontSize: 18,
-                    ),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    'Friend requests will appear here.',
-                    style: GoogleFonts.inter(
-                      color: AppColors.textSecondary,
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              ),
-            );
-          }
-          return ListView.separated(
-            padding: const EdgeInsets.all(20),
-            itemCount: requests.length,
-            separatorBuilder: (_, _) => const SizedBox(height: 12),
-            itemBuilder: (_, i) {
-              final f = requests[i];
-              return Container(
-                padding: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                  color: AppColors.card,
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: AppColors.cardBorder, width: 0.5),
-                ),
-                child: Row(
+              child: Padding(
+                padding: const EdgeInsets.all(CsSpacing.xxl),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    Container(
-                      width: 44,
-                      height: 44,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: AppColors.goldMuted,
-                        border: Border.all(color: AppColors.goldBorder40),
-                      ),
-                      alignment: Alignment.center,
-                      child: Text(
-                        f.label.isNotEmpty ? f.label[0].toUpperCase() : '?',
-                        style: GoogleFonts.playfairDisplay(
-                          color: AppColors.gold,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                        ),
+                    const Icon(
+                      Icons.notifications_none_rounded,
+                      color: AppColors.taupe,
+                      size: 40,
+                    ),
+                    const SizedBox(height: CsSpacing.md),
+                    Text(
+                      'Nothing yet',
+                      style: CsTypography.placeTitle.copyWith(
+                        color: AppColors.forestGreen,
+                        fontSize: 18,
                       ),
                     ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            f.label,
-                            style: GoogleFonts.inter(
-                              color: AppColors.textPrimary,
-                              fontSize: 14,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          const SizedBox(height: 2),
-                          Text(
-                            'Sent you a friend request',
-                            style: GoogleFonts.inter(
-                              color: AppColors.textSecondary,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    // Decline
-                    GestureDetector(
-                      onTap: () => _decline(f),
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: AppColors.surface,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: AppColors.cardBorder,
-                            width: 0.5,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.close_rounded,
-                          color: AppColors.textSecondary,
-                          size: 16,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    // Accept
-                    GestureDetector(
-                      onTap: () => _accept(f),
-                      child: Container(
-                        padding: const EdgeInsets.all(8),
-                        decoration: BoxDecoration(
-                          color: AppColors.goldMuted,
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            color: AppColors.goldBorder60,
-                            width: 1,
-                          ),
-                        ),
-                        child: const Icon(
-                          Icons.check_rounded,
-                          color: AppColors.gold,
-                          size: 16,
-                        ),
+                    const SizedBox(height: CsSpacing.xs),
+                    Text(
+                      'Friend requests and updates will appear here.',
+                      textAlign: TextAlign.center,
+                      style: CsTypography.body.copyWith(
+                        color: AppColors.taupe,
                       ),
                     ),
                   ],
                 ),
-              );
-            },
+              ),
+            );
+          }
+          return ListView.separated(
+            padding: const EdgeInsets.symmetric(
+              horizontal: CsSpacing.pageHorizontal,
+              vertical: CsSpacing.md,
+            ),
+            itemCount: notifications.length,
+            separatorBuilder: (_, _) => const SizedBox(height: 4),
+            itemBuilder: (_, i) => _NotificationRow(
+              notification: notifications[i],
+              onAccept: () => _accept(notifications[i]),
+              onDecline: () => _decline(notifications[i]),
+              onTapOther: notifications[i].otherUserId == null
+                  ? null
+                  : () => _openProfile(notifications[i].otherUserId!),
+            ),
           );
         },
       ),
     );
   }
+}
+
+class _NotificationRow extends StatelessWidget {
+  final AppNotification notification;
+  final VoidCallback onAccept;
+  final VoidCallback onDecline;
+  final VoidCallback? onTapOther;
+
+  const _NotificationRow({
+    required this.notification,
+    required this.onAccept,
+    required this.onDecline,
+    required this.onTapOther,
+  });
+
+  @override
+  Widget build(BuildContext context) => Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Padding(
+        padding: const EdgeInsets.only(top: CsSpacing.md, right: CsSpacing.xs),
+        child: _UnreadDot(visible: !notification.isRead),
+      ),
+      Expanded(child: _content(context)),
+    ],
+  );
+
+  Widget _content(BuildContext context) {
+    switch (notification.type) {
+      case AppNotificationType.friendRequestReceived:
+        return IdentityRow(
+          label: notification.otherLabel,
+          username: notification.otherUsername,
+          avatarUrl: notification.otherAvatarUrl,
+          onTap: onTapOther,
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextButton(
+                onPressed: onDecline,
+                child: Text(
+                  'Decline',
+                  style: CsTypography.metadata.copyWith(
+                    color: AppColors.taupe,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: onAccept,
+                child: Text(
+                  'Accept',
+                  style: CsTypography.metadata.copyWith(
+                    color: AppColors.forestGreen,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      case AppNotificationType.friendRequestAccepted:
+        return IdentityRow(
+          label: notification.otherLabel,
+          username: null,
+          avatarUrl: notification.otherAvatarUrl,
+          onTap: onTapOther,
+          trailing: Text(
+            'Accepted',
+            style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+          ),
+        );
+      case AppNotificationType.missingListingAdded:
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
+          child: Row(
+            children: [
+              const Icon(
+                Icons.storefront_outlined,
+                color: AppColors.forestGreen,
+                size: 20,
+              ),
+              const SizedBox(width: CsSpacing.md),
+              Expanded(
+                child: Text(
+                  '${notification.listingName ?? 'A place you reported'} '
+                  '${notification.listingCity != null ? "in ${notification.listingCity}" : ""} '
+                  'has been added.',
+                  style: CsTypography.body.copyWith(
+                    color: AppColors.forestGreen,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+    }
+  }
+}
+
+class _UnreadDot extends StatelessWidget {
+  final bool visible;
+  const _UnreadDot({required this.visible});
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: 8,
+    height: 8,
+    child: visible
+        ? const DecoratedBox(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.error,
+            ),
+          )
+        : null,
+  );
 }
