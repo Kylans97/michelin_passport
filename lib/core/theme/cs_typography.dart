@@ -142,4 +142,16 @@ class CsTypography {
     fontWeight: FontWeight.w500,
     height: 16 / 12,
   );
+
+  /// STAMP STAT VALUE — Cormorant Garamond, Semibold, 30, no fixed line
+  /// height (the Passport stamp-page stats row's own three big serif
+  /// numerals — Places/Countries/Stars — sized between [screenTitle] (32)
+  /// and [sectionTitle]/[largeMetric] (28), a role neither of those two
+  /// existing sizes covers).
+  static TextStyle get stampStatValue => GoogleFonts.cormorantGaramond(
+    color: AppColors.charcoal,
+    fontSize: 30,
+    fontWeight: FontWeight.w600,
+    fontFeatures: _liningFigures,
+  );
 }

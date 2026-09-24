@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/navigation/route_observer.dart';
 import '../../../core/theme/cs_spacing.dart';
@@ -9,31 +10,47 @@ import '../../../core/utils/visit_years.dart';
 import '../../../core/widgets/cs_filter_chip.dart';
 import '../../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
 import '../../../core/widgets/year_filter_control.dart';
+import '../../../data/repositories/country_lookup.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
-import '../../../data/repositories/wishlist_repository.dart';
+import '../../../models/hotel.dart';
 import '../../../models/passport_venue.dart';
+import '../../../models/restaurant.dart';
 import '../../../models/venue_entry.dart';
+import '../../events/event_detail_screen.dart';
+import '../../explore/explore_screen.dart';
 import '../../explore/models/explore_filters.dart' show ExploreVenueType;
+import '../../hotels/hotel_detail_screen.dart';
+import '../../restaurants/restaurant_detail_screen.dart';
+import '../models/passport_stamp_item.dart';
 import '../passport_filter_type.dart';
+import '../passport_stamp_source.dart';
 import '../passport_view_model.dart';
-import 'passport_collection_header.dart';
 import 'passport_empty_state.dart';
-import 'passport_event_card.dart';
-import 'passport_hotel_card.dart';
-import 'passport_restaurant_card.dart';
-import 'passport_stats_panel.dart';
+import 'passport_page_view.dart';
+import 'passport_stamp_stats_row.dart';
 
-/// Passport Unified Experience V1 — the default "Passport" subsection's
-/// content: entity filter, time filter, stats panel, and the collection
-/// list. Extracted from what used to be [PassportScreen]'s entire body;
-/// the header and Passport/Wishlist/Ranking/Trips tab bar now live once,
-/// persistently, in the shared shell above this widget. All data-loading
-/// and filtering logic is unchanged from before this extraction — only
-/// the header/secondary-nav slivers were removed (now owned by the shell)
-/// and the entity filter/stats panel were restyled to match the approved
-/// visual reference (rounded icon-led filter pills; a bordered, tonal-icon
-/// three-column stats panel replacing the previous bare metric strip).
+/// Passport's default "Passport" subsection content: entity filter, time
+/// filter, the stats row, and — since the ink-stamp redesign — a
+/// paginated [PassportPageView] instead of a flat list of venue/event
+/// cards. Extracted from what used to be [PassportScreen]'s entire body;
+/// the header and Passport/Wishlist/Ranking/Trips tab bar live once,
+/// persistently, in the shared shell above this widget.
+///
+/// STAMP REDESIGN — what changed vs. the previous card-based list:
+/// - Each stamp is now one VISIT/STAY/confirmed attendance, not one
+///   deduplicated venue (see passport_stamp_source.dart's own doc
+///   comment) — a place visited three times now shows three stamps.
+/// - Events participate in the same paginated stamp page as Restaurants/
+///   Hotels (the filter chips still show exactly one type at a time,
+///   unchanged) rather than their own separate card list.
+/// - The wishlist bookmark toggle the previous restaurant/hotel cards
+///   carried is gone — a real stamp has no such affordance, and the
+///   design spec for this redesign doesn't call for one. `WishlistRepository`
+///   is no longer touched by this widget as a result.
+/// - The "YOUR COLLECTION" section title is gone — each stamp page now
+///   carries its own "ENTRIES · X" / "p. NN" header, making a second,
+///   plain-text heading above it redundant.
 class PassportCollectionBody extends StatefulWidget {
   const PassportCollectionBody({super.key});
 
@@ -48,19 +65,20 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   );
   late final EventConfirmedAttendanceRepository _eventAttendanceRepo =
       EventConfirmedAttendanceRepository(Supabase.instance.client);
-  late final WishlistRepository _wishlistRepo = WishlistRepository(
-    Supabase.instance.client,
-  );
 
   List<VenueEntry>? _entries; // null until the first load completes.
   List<EventAttendanceEntry> _eventEntries = [];
-  // Passport UI Polish V2 — the wishlist membership backing each card's
-  // bookmark. Loaded in bulk alongside the main data load (never one
-  // query per card); empty by default so a failed/slow wishlist load
-  // never blocks or breaks the rest of Passport, it just starts every
-  // bookmark unfilled until it resolves.
-  Set<String> _wishlistedRestaurantIds = {};
-  Set<String> _wishlistedHotelIds = {};
+  Map<String, String> _countryNameByCode = {};
+
+  // Stamp-animation bookkeeping: every visit/stay/attendance id seen as of
+  // the last completed load, and — once at least one prior load has
+  // happened — the ids that are new since then. The very first load of
+  // the app session never has anything to diff against, so it never
+  // animates anything (see _load's own comment).
+  Set<String> _knownStampIds = {};
+  Set<String> _newStampIds = {};
+  bool _hasLoadedOnce = false;
+
   bool _loading = true; // true only for the very first, blocking load.
   bool _loadError = false; // Restaurant/Hotel load failure only.
   bool _refreshing = false; // guards overlapping refresh calls.
@@ -92,6 +110,22 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   @override
   void didPopNext() => _load();
 
+  Set<String> _allStampIds(
+    List<VenueEntry> entries,
+    List<EventAttendanceEntry> eventEntries,
+  ) {
+    final ids = <String>{};
+    for (final entry in entries) {
+      for (final visit in entry.visits) {
+        ids.add(visit.id);
+      }
+    }
+    for (final entry in eventEntries) {
+      ids.add(entry.attendance.id);
+    }
+    return ids;
+  }
+
   Future<void> _load() async {
     if (_refreshing) return;
     _refreshing = true;
@@ -106,17 +140,21 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
       } catch (_) {
         // Never fails the rest of Passport — see _eventEntries' own field.
       }
-      var wishlistedRestaurantIds = <String>{};
-      var wishlistedHotelIds = <String>{};
+      var countryNameByCode = <String, String>{};
       try {
-        wishlistedRestaurantIds = await _wishlistRepo.loadWishlistRestaurantIds(
-          uid,
-        );
-        wishlistedHotelIds = await _wishlistRepo.loadWishlistHotelIds(uid);
+        final countries = await getAllCountries(Supabase.instance.client);
+        countryNameByCode = {for (final c in countries) c.code: c.name};
       } catch (_) {
-        // Never fails the rest of Passport — bookmarks just start unfilled.
+        // Never fails the rest of Passport — stamp semantics labels fall
+        // back to the bare country code (see stampSemanticLabel).
       }
       if (!mounted) return;
+
+      final allIds = _allStampIds(entries, eventEntries);
+      final newIds = _hasLoadedOnce
+          ? allIds.difference(_knownStampIds)
+          : <String>{};
+
       final venueYears = availableVisitYears(
         entries.expand((entry) => entry.visits),
       );
@@ -124,8 +162,10 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
       setState(() {
         _entries = entries;
         _eventEntries = eventEntries;
-        _wishlistedRestaurantIds = wishlistedRestaurantIds;
-        _wishlistedHotelIds = wishlistedHotelIds;
+        _countryNameByCode = countryNameByCode;
+        _newStampIds = newIds;
+        _knownStampIds = allIds;
+        _hasLoadedOnce = true;
         _loading = false;
         _loadError = false;
         final currentYears = _filterType == PassportFilterType.events
@@ -143,82 +183,6 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
       });
     } finally {
       _refreshing = false;
-    }
-  }
-
-  // Passport UI Polish V2 — optimistic toggle: flips local membership
-  // immediately (so the bookmark responds the instant it's tapped), then
-  // persists via the same WishlistRepository.toggleWishlist every other
-  // wishlist entry point in the app already uses, and reconciles/reverts
-  // if the server's own returned state disagrees or the call fails (e.g.
-  // a concurrent toggle from another device).
-  Future<void> _toggleRestaurantWishlist(String restaurantId) async {
-    final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-    final optimistic = !_wishlistedRestaurantIds.contains(restaurantId);
-    setState(() {
-      if (optimistic) {
-        _wishlistedRestaurantIds.add(restaurantId);
-      } else {
-        _wishlistedRestaurantIds.remove(restaurantId);
-      }
-    });
-    try {
-      final actual = await _wishlistRepo.toggleWishlist(
-        userId: uid,
-        restaurantId: restaurantId,
-      );
-      if (!mounted || actual == optimistic) return;
-      setState(() {
-        if (actual) {
-          _wishlistedRestaurantIds.add(restaurantId);
-        } else {
-          _wishlistedRestaurantIds.remove(restaurantId);
-        }
-      });
-    } catch (_) {
-      if (!mounted) return;
-      setState(() {
-        if (optimistic) {
-          _wishlistedRestaurantIds.remove(restaurantId);
-        } else {
-          _wishlistedRestaurantIds.add(restaurantId);
-        }
-      });
-    }
-  }
-
-  Future<void> _toggleHotelWishlist(String hotelId) async {
-    final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-    final optimistic = !_wishlistedHotelIds.contains(hotelId);
-    setState(() {
-      if (optimistic) {
-        _wishlistedHotelIds.add(hotelId);
-      } else {
-        _wishlistedHotelIds.remove(hotelId);
-      }
-    });
-    try {
-      final actual = await _wishlistRepo.toggleHotelWishlist(
-        userId: uid,
-        hotelId: hotelId,
-      );
-      if (!mounted || actual == optimistic) return;
-      setState(() {
-        if (actual) {
-          _wishlistedHotelIds.add(hotelId);
-        } else {
-          _wishlistedHotelIds.remove(hotelId);
-        }
-      });
-    } catch (_) {
-      if (!mounted) return;
-      setState(() {
-        if (optimistic) {
-          _wishlistedHotelIds.remove(hotelId);
-        } else {
-          _wishlistedHotelIds.add(hotelId);
-        }
-      });
     }
   }
 
@@ -250,6 +214,39 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     PassportFilterType.events: Icons.confirmation_number_outlined,
   };
 
+  void _openRestaurant(Restaurant restaurant) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+    ),
+  );
+
+  void _openHotel(Hotel hotel) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+  );
+
+  void _openEvent(String eventId) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => EventDetailScreen(
+        eventId: eventId,
+        sourceSurface: AnalyticsSourceSurface.passport,
+      ),
+    ),
+  );
+
+  void _openExplore() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const ExploreScreen()),
+  );
+
+  void _onTapStamp(PassportStampItem item) => switch (item) {
+    RestaurantStampItem(:final restaurant) => _openRestaurant(restaurant),
+    HotelStampItem(:final hotel) => _openHotel(hotel),
+    EventStampItem(:final entry) => _openEvent(entry.event.id),
+  };
+
   @override
   Widget build(BuildContext context) {
     final allEntries = _entries ?? [];
@@ -262,16 +259,20 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     final restaurantOrHotel = _isHotel
         ? ExploreVenueType.hotels
         : ExploreVenueType.restaurants;
-    final result = isEvents
+    final venueResult = isEvents
         ? null
         : PassportFilterResult.of(
             allEntries,
             venueType: restaurantOrHotel,
             year: _selectedYear,
           );
-    final filteredEventEntries = isEvents
-        ? eventAttendanceInYear(_eventEntries, _selectedYear)
-        : const <EventAttendanceEntry>[];
+    final stampItems = isEvents
+        ? buildEventStampItems(_eventEntries, year: _selectedYear)
+        : _isHotel
+        ? buildHotelStampItems(allEntries, year: _selectedYear)
+        : buildRestaurantStampItems(allEntries, year: _selectedYear);
+
+    final headerLabel = 'ENTRIES · ${_filterType.label.toUpperCase()}';
 
     return ColoredBox(
       color: AppColors.deepGreen,
@@ -339,7 +340,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
                   ),
                 ),
               ),
-            if (!isEvents)
+            if (venueResult != null)
               SliverToBoxAdapter(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(
@@ -348,35 +349,29 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
                     CsSpacing.pageHorizontal,
                     0,
                   ),
-                  child: PassportStatsPanel(
+                  child: PassportStampStatsRow(
                     stats: [
-                      PassportStat(
-                        value: '${result!.summary.placesVisited}',
-                        label: 'VISITED',
+                      PassportStampStat(
+                        value: '${venueResult.summary.placesVisited}',
+                        label: PassportMetricLabels.forVenueType(
+                          restaurantOrHotel,
+                        ).visited,
                       ),
-                      PassportStat(
-                        value: '${result.summary.countriesVisited}',
+                      PassportStampStat(
+                        value: '${venueResult.summary.countriesVisited}',
                         label: 'COUNTRIES',
                       ),
-                      PassportStat(
-                        value: '${result.summary.awardsExperienced}',
-                        label: 'STARS',
+                      PassportStampStat(
+                        value: '${venueResult.summary.awardsExperienced}',
+                        label: PassportMetricLabels.forVenueType(
+                          restaurantOrHotel,
+                        ).awards,
+                        gold: true,
                       ),
                     ],
                   ),
                 ),
               ),
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.xl,
-                  CsSpacing.pageHorizontal,
-                  CsSpacing.md,
-                ),
-                child: const PassportCollectionHeader(),
-              ),
-            ),
             if (_loading)
               const SliverFillRemaining(
                 child: Center(
@@ -386,68 +381,33 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
                   ),
                 ),
               )
-            else if (isEvents)
-              if (filteredEventEntries.isEmpty)
-                SliverFillRemaining(
-                  child: PassportEmptyState(
-                    message: _eventEmptyMessage(_eventEntries),
-                  ),
-                )
-              else
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, i) => Padding(
-                      padding: EdgeInsets.fromLTRB(
-                        CsSpacing.pageHorizontal,
-                        0,
-                        CsSpacing.pageHorizontal,
-                        i == filteredEventEntries.length - 1
-                            ? 100
-                            : CsSpacing.md,
-                      ),
-                      child: PassportEventCard(entry: filteredEventEntries[i]),
-                    ),
-                    childCount: filteredEventEntries.length,
-                  ),
-                )
             else if (_loadError)
               SliverFillRemaining(child: _ErrorState(onRetry: _load))
-            else if (result!.entries.isEmpty)
+            else if (stampItems.isEmpty)
               SliverFillRemaining(
                 child: PassportEmptyState(
-                  message: _venueEmptyMessage(allEntries),
+                  message: isEvents
+                      ? _eventEmptyMessage(_eventEntries)
+                      : _venueEmptyMessage(allEntries),
                 ),
               )
             else
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                  (context, i) => Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      CsSpacing.pageHorizontal,
-                      0,
-                      CsSpacing.pageHorizontal,
-                      i == result.entries.length - 1 ? 100 : CsSpacing.md,
-                    ),
-                    child: switch (result.entries[i].venue) {
-                      RestaurantVenue(:final restaurant) =>
-                        PassportRestaurantCard(
-                          restaurant: restaurant,
-                          stats: result.entries[i],
-                          isWishlisted: _wishlistedRestaurantIds.contains(
-                            restaurant.id,
-                          ),
-                          onToggleWishlist: () =>
-                              _toggleRestaurantWishlist(restaurant.id),
-                        ),
-                      HotelVenue(:final hotel) => PassportHotelCard(
-                        hotel: hotel,
-                        stats: result.entries[i],
-                        isWishlisted: _wishlistedHotelIds.contains(hotel.id),
-                        onToggleWishlist: () => _toggleHotelWishlist(hotel.id),
-                      ),
-                    },
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    0,
+                    CsSpacing.xl,
+                    0,
+                    100,
                   ),
-                  childCount: result.entries.length,
+                  child: PassportPageView(
+                    pages: paginateStamps(stampItems),
+                    headerLabel: headerLabel,
+                    countryNameByCode: _countryNameByCode,
+                    newStampIds: _newStampIds,
+                    onTapStamp: _onTapStamp,
+                    onTapNextStamp: _openExplore,
+                  ),
                 ),
               ),
           ],

@@ -158,4 +158,24 @@ class AppColors {
   // Decorative/structural only, not text, so WCAG's text-contrast ratios
   // don't apply the way they do to the tokens above.
   static const Color subtleBorderDark = Color(0x26F4F0E7);
+
+  // ── Passport ink stamps ─────────────────────────────────────────────
+  // Three inks a stamp is rendered in (never a fourth) — each stamp picks
+  // one deterministically (see passport_stamp_style.dart) and is painted
+  // in it alone at ~90% opacity with a multiply blend, so it reads as
+  // pressed into [background]/ivory paper rather than a flat icon.
+  // Deliberately distinct values from [gold]/[goldLight] above: those are
+  // UI-accent tones meant to sit at low-opacity/small-scale (a star, a
+  // border); these are saturated enough to read correctly at full stamp
+  // scale under multiply blend without going muddy.
+  static const Color stampInkGold = Color(0xFF8E6935);
+  static const Color stampInkDeepGold = Color(0xFF6E5129);
+  static const Color stampInkGreen = Color(0xFF2C574B);
+
+  // The fine concentric guilloché rings on a passport page background —
+  // [gold] at ~9% opacity. Kept as its own named constant (rather than
+  // `AppColors.gold.withValues(alpha: 0.09)` at each of the many call
+  // sites a repeating ring pattern needs) so the one value used to paint
+  // every ring stays a single source of truth.
+  static const Color stampGuillocheLine = Color(0x17AC8244); // ~9%
 }
