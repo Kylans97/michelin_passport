@@ -119,11 +119,23 @@ Explore ("Tonight") is still next once resumed.
     neither `get_profile_identity` nor `get_friends` returns a friendship
     acceptance date today. See "New backend needs" below.
   - **TODO, explicitly marked in code** (`friend_profile_dinner_invitation
-    .dart` and `_PlanTableButton`'s successor, the Plan sheet's "Send
-    invitation"): `DinnerInvitation` is a client-local stub — sending one
-    shows the "Invitation sent" toast but persists nothing anywhere and
-    nothing on the recipient's side ever renders it. See "New backend
-    needs" below for exactly what's missing.
+    .dart` and the Plan sheet's "Send invitation"): `DinnerInvitation` is
+    a client-local stub — sending one persists nothing anywhere and
+    nothing on the recipient's side ever renders it. The confirmation
+    toast was corrected 2026-09-25 from "Invitation sent to {name}."
+    (false — nothing was sent) to "This is a preview — invitations
+    aren't sent yet." — update that copy the moment a real send exists.
+    See "New backend needs" below for exactly what's missing.
+  - **Follow-up, same date**: `VisitDetailScreen`/`StayDetailScreen` (the
+    screens a stamp/verdict row opens) now gate their edit/delete
+    controls on actual ownership (`visit.userId == currentUser.id`) —
+    the gap flagged above when this screen first started opening
+    someone else's visit is now fixed. `VisitPhotosSection` gained a
+    `readOnly` param for the same reason (its Add/Delete photo
+    affordances were an identical instance of the same problem, found
+    while fixing the first one — not mentioned in the original ask, but
+    the same failure mode). Both screens' non-owner path renders no "⋯"
+    menu at all, not a disabled one.
   - Tests: still none — same deferral rationale as §0. A preview harness
     (0/3-mixed/12+ visits, shared/unshared wishlist, the Plan sheet both
     with and without a preselected venue) was built and visually

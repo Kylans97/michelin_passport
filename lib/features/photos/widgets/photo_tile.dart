@@ -6,10 +6,15 @@ import '../../../core/constants/app_colors.dart';
 /// that batch hasn't resolved yet, or if resolution failed for this photo.
 /// Delete is an always-visible small badge (not just long-press) so it's
 /// actually discoverable; long-press still works too as a convenience.
+///
+/// [onDelete] is null for a photo the viewer doesn't own (see
+/// [VisitPhotosSection]'s own `readOnly`) — the badge and long-press both
+/// disappear entirely rather than rendering a control RLS would just
+/// reject, which reads as a broken app rather than a restricted one.
 class PhotoTile extends StatelessWidget {
   final String? url;
   final VoidCallback onTap;
-  final VoidCallback onDelete;
+  final VoidCallback? onDelete;
 
   const PhotoTile({
     super.key,
@@ -41,26 +46,27 @@ class PhotoTile extends StatelessWidget {
                           const _TileIcon(Icons.broken_image_outlined),
                     ),
             ),
-            Positioned(
-              top: 4,
-              right: 4,
-              child: Material(
-                color: Colors.black54,
-                shape: const CircleBorder(),
-                child: InkWell(
-                  onTap: onDelete,
-                  customBorder: const CircleBorder(),
-                  child: const Padding(
-                    padding: EdgeInsets.all(4),
-                    child: Icon(
-                      Icons.delete_outline_rounded,
-                      color: AppColors.textPrimary,
-                      size: 15,
+            if (onDelete != null)
+              Positioned(
+                top: 4,
+                right: 4,
+                child: Material(
+                  color: Colors.black54,
+                  shape: const CircleBorder(),
+                  child: InkWell(
+                    onTap: onDelete,
+                    customBorder: const CircleBorder(),
+                    child: const Padding(
+                      padding: EdgeInsets.all(4),
+                      child: Icon(
+                        Icons.delete_outline_rounded,
+                        color: AppColors.textPrimary,
+                        size: 15,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
           ],
         ),
       ),

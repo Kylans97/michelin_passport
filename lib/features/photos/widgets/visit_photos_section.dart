@@ -25,12 +25,21 @@ class VisitPhotosSection extends StatefulWidget {
   // this visit/stay yet.").
   final String noun;
 
+  /// True when the viewer doesn't own this visit/stay (e.g. viewing a
+  /// friend's) — hides Add/Delete entirely rather than showing controls
+  /// RLS would reject anyway, which reads as a broken app rather than a
+  /// restricted one. Defaults to false: every pre-existing call site only
+  /// ever shows the viewer's own visit, so this is opt-in, not a
+  /// behaviour change for them.
+  final bool readOnly;
+
   const VisitPhotosSection({
     super.key,
     required this.visitId,
     required this.entityType,
     required this.entityId,
     required this.noun,
+    this.readOnly = false,
   });
 
   @override
@@ -256,6 +265,31 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
 
     final photos = _photos ?? [];
     if (photos.isEmpty) {
+      if (widget.readOnly) {
+        // No "Add photos" CTA at all — an empty state that invites an
+        // action only the owner can actually take would be exactly the
+        // "button that just errors" problem this whole gate exists to
+        // avoid.
+        return DetailCard(
+          child: Column(
+            children: [
+              const Icon(
+                Icons.photo_library_outlined,
+                color: AppColors.textSecondary,
+                size: 28,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                'No photos from this ${widget.noun} yet.',
+                style: GoogleFonts.inter(
+                  color: AppColors.textSecondary,
+                  fontSize: 13,
+                ),
+              ),
+            ],
+          ),
+        );
+      }
       return DetailCard(
         child: Column(
           children: [
@@ -290,14 +324,16 @@ class _VisitPhotosSectionState extends State<VisitPhotosSection> {
           photos: photos,
           urls: _urls,
           onTapPhoto: _openViewer,
-          onDeletePhoto: _confirmDelete,
+          onDeletePhoto: widget.readOnly ? null : _confirmDelete,
         ),
-        const SizedBox(height: 12),
-        AddPhotosButton(
-          busy: _uploading,
-          label: 'Add more photos',
-          onTap: _addPhotos,
-        ),
+        if (!widget.readOnly) ...[
+          const SizedBox(height: 12),
+          AddPhotosButton(
+            busy: _uploading,
+            label: 'Add more photos',
+            onTap: _addPhotos,
+          ),
+        ],
       ],
     );
   }

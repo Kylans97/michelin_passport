@@ -10,7 +10,11 @@ class VisitPhotoGrid extends StatelessWidget {
   final List<VisitPhoto> photos;
   final Map<String, String> urls;
   final ValueChanged<int> onTapPhoto;
-  final ValueChanged<VisitPhoto> onDeletePhoto;
+
+  /// Null for a read-only grid (see [VisitPhotosSection]'s own
+  /// `readOnly`) — every tile's own delete affordance disappears rather
+  /// than rendering one RLS would just reject anyway.
+  final ValueChanged<VisitPhoto>? onDeletePhoto;
 
   const VisitPhotoGrid({
     super.key,
@@ -34,7 +38,7 @@ class VisitPhotoGrid extends StatelessWidget {
       itemBuilder: (context, i) => PhotoTile(
         url: urls[photos[i].storagePath],
         onTap: () => onTapPhoto(i),
-        onDelete: () => onDeletePhoto(photos[i]),
+        onDelete: onDeletePhoto == null ? null : () => onDeletePhoto!(photos[i]),
       ),
     );
   }

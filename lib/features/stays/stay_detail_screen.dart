@@ -52,6 +52,13 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
   bool _deleting = false;
   bool _updatingVisibility = false;
 
+  // Mirrors VisitDetailScreen's own _isOwner — same reasoning: Friend
+  // Profile now opens this screen for a friend's stay too, and RLS alone
+  // blocking the mutation isn't enough — the controls themselves must
+  // not render for a non-owner.
+  bool get _isOwner =>
+      Supabase.instance.client.auth.currentUser?.id == _stay.userId;
+
   void _showSnack(String message, {bool isError = true}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -183,7 +190,9 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
         elevation: 0,
         foregroundColor: AppColors.textPrimary,
         actions: [
-          if (_deleting || _updatingVisibility)
+          if (!_isOwner)
+            const SizedBox.shrink()
+          else if (_deleting || _updatingVisibility)
             const Padding(
               padding: EdgeInsets.all(16),
               child: SizedBox(
@@ -333,6 +342,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
               entityType: stay.entityType,
               entityId: stay.entityId,
               noun: 'stay',
+              readOnly: !_isOwner,
             ),
           ],
         ),

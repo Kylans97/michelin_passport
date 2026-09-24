@@ -56,6 +56,15 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
   bool _deleting = false;
   bool _updatingVisibility = false;
 
+  // Friend Profile (editorial redesign) now opens this same screen for a
+  // FRIEND's visit, not just the viewer's own — RLS already blocks the
+  // actual mutation for a non-owner (visits_update/visits_delete are
+  // owner-only), but the edit/delete controls themselves rendered
+  // regardless of who was looking, which read as a broken app when they
+  // failed rather than a restricted one. Gated on the view instead.
+  bool get _isOwner =>
+      Supabase.instance.client.auth.currentUser?.id == _visit.userId;
+
   void _showSnack(String message, {bool isError = true}) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -188,7 +197,9 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         elevation: 0,
         foregroundColor: AppColors.textPrimary,
         actions: [
-          if (_deleting || _updatingVisibility)
+          if (!_isOwner)
+            const SizedBox.shrink()
+          else if (_deleting || _updatingVisibility)
             const Padding(
               padding: EdgeInsets.all(16),
               child: SizedBox(
@@ -352,6 +363,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
               entityType: visit.entityType,
               entityId: visit.entityId,
               noun: 'visit',
+              readOnly: !_isOwner,
             ),
           ],
         ),

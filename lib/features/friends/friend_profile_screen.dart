@@ -414,7 +414,13 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       preselected: preselected,
     );
     if (invitation == null || !mounted) return;
-    _showSnack('Invitation sent to ${data.friendName}.');
+    // DinnerInvitation is a client-local stub today (see that class's own
+    // doc) — nothing is persisted and ${data.friendName} never sees
+    // this. "Invitation sent to..." previously claimed otherwise, which
+    // is exactly the kind of thing this app's own "never guess, report
+    // honestly" standard exists to catch. Update this copy the moment a
+    // real send exists.
+    _showSnack("This is a preview — invitations aren't sent yet.");
   }
 
   @override
