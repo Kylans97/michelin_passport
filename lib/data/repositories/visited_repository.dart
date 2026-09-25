@@ -64,6 +64,32 @@ class VisitedRepository {
     return (rows as List).isNotEmpty;
   }
 
+  // Restaurant-or-hotel, DATE-scoped — [isVisited] above only ever checks
+  // "any visit, any date," which is the wrong question for the add-visit
+  // flow's own duplicate check ("Er is al een bezoek aan deze venue op
+  // deze datum?" — a second, later visit to the same place is expected
+  // and normal; a second visit already logged for the exact same date is
+  // almost certainly the same one being logged twice). [date] is compared
+  // as a plain date, matching `visited_on`'s own column type (no time
+  // component to worry about).
+  Future<bool> hasVisitOnDate({
+    required String userId,
+    required String entityType,
+    required String entityId,
+    required DateTime date,
+  }) async {
+    final dateOnly = date.toIso8601String().substring(0, 10);
+    final rows = await _client
+        .from('visits')
+        .select('id')
+        .eq('user_id', userId)
+        .eq('entity_type', entityType)
+        .eq('entity_id', entityId)
+        .eq('visited_on', dateOnly)
+        .limit(1);
+    return (rows as List).isNotEmpty;
+  }
+
   // Inserts a new visit row and returns the row Supabase actually created —
   // never guessed at afterward by querying "the latest visit". Supports
   // every column on public.visits: the overall `rating` plus the optional

@@ -13,11 +13,11 @@ import '../../../data/repositories/visited_repository.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../events/event_detail_screen.dart';
-import '../../explore/explore_screen.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../models/passport_stamp_item.dart';
 import '../passport_booklet_data.dart';
+import 'add_visit_flow.dart';
 import 'passport_booklet_view.dart';
 
 /// Passport's default "Passport" subsection content: loads the CURRENT
@@ -28,9 +28,9 @@ import 'passport_booklet_view.dart';
 /// read-only Passport tab is its other caller). This widget's only job is
 /// the loading/error states and the current-user-specific navigation
 /// (tapping a stamp opens the VENUE'S detail screen; tapping the empty
-/// slot opens Explore — both specific to "this is MY OWN passport",
-/// unlike the friend booklet's "tapping a stamp opens THAT VISIT's own
-/// detail, there is no empty slot").
+/// slot opens the "add a visit" flow — both specific to "this is MY OWN
+/// passport", unlike the friend booklet's "tapping a stamp opens THAT
+/// VISIT's own detail, there is no empty slot").
 class PassportCollectionBody extends StatefulWidget {
   const PassportCollectionBody({super.key});
 
@@ -200,14 +200,20 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     EventStampItem(:final entry) => _openEvent(entry.event.id),
   };
 
-  // Round 3 (not built yet) replaces this with the real "add a visit"
-  // sheet. Interim behavior matches the pre-booklet Passport's own
-  // fallback for the exact same tap target — open Explore rather than
-  // leaving the empty slot inert.
-  void _openExplore() => Navigator.push(
-    context,
-    MaterialPageRoute(builder: (_) => const ExploreScreen()),
-  );
+  Future<void> _addVisit() async {
+    final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
+    final saved = await showAddVisitFlow(context, userId: uid);
+    // Reload only — never resets `_isOpen`/`_openVolumeIndex`/
+    // `_bookPageIndex` (those live inside PassportBookletView's own
+    // State, untouched by this widget's setState). The empty slot only
+    // ever appears on an already-open volume that will itself contain
+    // the new stamp (today's date, no future dates allowed — see
+    // add_visit_flow.dart's own date picker), so staying on the same
+    // volume is already correct; PassportOpenBookPager's existing
+    // newStampIds diffing (built in Round 2) picks up the new id from
+    // this reload and animates/auto-scrolls to it on its own.
+    if (saved && mounted) _load();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -248,7 +254,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
               countryNameByCode: _countryNameByCode,
               newStampIds: _newStampIds,
               onTapStamp: _onTapStamp,
-              onTapNextStamp: _openExplore,
+              onTapNextStamp: _addVisit,
             ),
           ),
         ),

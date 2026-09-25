@@ -425,17 +425,43 @@ years, mixing restaurant+hotel stamps) visits, a long name on every
 variant, the empty-slot tile, and the "exactly a full page then a wholly
 new trailing page" pagination edge case.
 
-**Still not built — Round 3, by design:**
-  - The 2-step "add a visit" flow (venue picker with wishlist/events/
-    search → date/score/note + live stamp preview + same-venue-same-date
-    duplicate check), wired to the stamp pages' entrance animation that
-    already exists (reinstated this round) and currently has nothing
-    real feeding it.
-  - Tests: none yet — same deferral rationale as §0 and the friend-profile
-    round (a preview harness catches real layout/lifecycle bugs a widget
-    test's own fake-driven setup wouldn't; unit/widget tests come once the
-    booklet has proven stable in real use, matching this file's own
-    established pattern).
+**Built — the 2-step "add a visit" flow:** venue picker (step 1, "Where
+did you go?") with wishlist/events/search shortcuts → date/score/note +
+live stamp preview (step 2), wired to the stamp pages' entrance animation
+that already existed (reinstated in Round 2) and previously had nothing
+real feeding it. Score input reuses [`RatingMeter`](../../lib/features/visits/widgets/rating_meter.dart)
+verbatim — same 1–10 range, same "Not rated" affordance, same storage via
+`markVisited`/`markHotelStay` — after an early draft of this round
+invented a different-looking picker instead; corrected on explicit
+instruction before anything shipped.
+
+**Near-miss, corrected — "From your events" was wrongly reported as
+infeasible, then actually built:** the first pass of this round shipped
+without the events shortcut, reasoning that `Event` carries no
+restaurant/hotel foreign key and that resolving one would require either
+a schema change or guessed name-matching — neither of which this task
+was asked to do. That reasoning was wrong: `event_restaurants`/
+`event_hotels` (plus `event_chefs`) already carry exactly this link, with
+`is_host`/`is_venue` booleans distinguishing "hosted by" from "physically
+took place at" (20260810160000_create_events.sql,
+20260819140000_events_v2_host_venue_moderation.sql) — the same shape
+`news_article_restaurants`/`news_article_hotels` mirrored this same week
+(20260919120000_add_news_article_venue_links.sql). The gap was never in
+the schema, only in not having looked. Corrected by adding
+`EventsRepository.loadVenuesForEvents` (batched across every event id at
+once, filtered to `is_venue = true` — a host isn't necessarily where you
+physically stood) and wiring it into step 1 as a "FROM YOUR EVENTS"
+section alongside "FROM YOUR WISHLIST", deduplicated against wishlist
+matches so the same venue never appears twice on one screen. Verified via
+preview harness: both sections populated with a deliberate id overlap
+(dedup holds), hotel-only fixture with no wishlist match, and the combined
+empty state when both sources are empty.
+
+**Tests: none yet** — same deferral rationale as §0 and the friend-profile
+round (a preview harness catches real layout/lifecycle bugs a widget
+test's own fake-driven setup wouldn't; unit/widget tests come once the
+booklet has proven stable in real use, matching this file's own
+established pattern).
 
 ## Friend Profile's Passport tab — now the same booklet, read-only
 

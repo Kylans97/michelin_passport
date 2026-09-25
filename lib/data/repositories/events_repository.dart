@@ -294,6 +294,72 @@ class EventsRepository {
     );
   }
 
+  /// The restaurants/hotels that are genuinely the physical VENUE
+  /// (`is_venue = true` on `event_restaurants`/`event_hotels`) for any of
+  /// [eventIds] — Passport's "add a visit" flow "From your events"
+  /// shortcut: confirming attendance at an event tells you where you
+  /// physically were, which is exactly what a visit needs. Deliberately
+  /// `is_venue`, not `is_host` — a host can be someone else's kitchen
+  /// hosting a guest-chef dinner elsewhere; see
+  /// [loadHostedEventsForRestaurant]'s own doc comment for why that
+  /// distinction is load-bearing. Two queries total across ALL of
+  /// [eventIds] at once (join-table ids, deduplicated, then one batched
+  /// restaurants_full/hotels_full lookup) — never one query per event,
+  /// matching [loadLinkedVenues]'s own established shape.
+  Future<EventVenues> loadVenuesForEvents(List<String> eventIds) async {
+    if (eventIds.isEmpty) return const EventVenues(restaurants: [], hotels: []);
+
+    final restaurantLinksFuture = _client
+        .from('event_restaurants')
+        .select('restaurant_id')
+        .inFilter('event_id', eventIds)
+        .eq('is_venue', true);
+    final hotelLinksFuture = _client
+        .from('event_hotels')
+        .select('hotel_id')
+        .inFilter('event_id', eventIds)
+        .eq('is_venue', true);
+    final restaurantLinks = await restaurantLinksFuture;
+    final hotelLinks = await hotelLinksFuture;
+
+    final restaurantIds = {
+      for (final row in restaurantLinks as List) row['restaurant_id'] as String,
+    }.toList();
+    final hotelIds = {
+      for (final row in hotelLinks as List) row['hotel_id'] as String,
+    }.toList();
+
+    final restaurantsFuture = restaurantIds.isEmpty
+        ? Future.value(const <Restaurant>[])
+        : _client
+              .from('restaurants_full')
+              .select(restaurantFullColumns)
+              .inFilter('id', restaurantIds)
+              .then(
+                (rows) => [
+                  for (final row in rows as List)
+                    Restaurant.fromJson(row as Map<String, dynamic>),
+                ],
+              );
+    final hotelsFuture = hotelIds.isEmpty
+        ? Future.value(const <Hotel>[])
+        : _client
+              .from('hotels_full')
+              .select(hotelFullColumns)
+              .inFilter('id', hotelIds)
+              .then(
+                (rows) => [
+                  for (final row in rows as List)
+                    Hotel.fromJson(row as Map<String, dynamic>),
+                ],
+              );
+
+    return EventVenues(
+      restaurants: await restaurantsFuture,
+      hotels: await hotelsFuture,
+    );
+  }
+
   /// Events V2 Step 8B — the reverse direction of [loadLinkedVenues]:
   /// Events [restaurantId] genuinely HOSTS (`is_host = true` on
   /// `event_restaurants`), not merely a physical venue for
