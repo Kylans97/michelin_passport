@@ -6,6 +6,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/navigation/route_observer.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
+import '../../../core/widgets/floating_nav_bar.dart';
 import '../../../data/repositories/country_lookup.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../../data/repositories/profile_repository.dart';
@@ -238,11 +239,11 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     return ColoredBox(
       color: AppColors.deepGreen,
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
+        padding: EdgeInsets.fromLTRB(
           CsSpacing.pageHorizontal,
           CsSpacing.md,
           CsSpacing.pageHorizontal,
-          CsSpacing.xl,
+          floatingNavClearance(context),
         ),
         child: SingleChildScrollView(
           child: Center(

@@ -4,6 +4,7 @@ import '../../core/analytics/analytics_properties.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/floating_nav_bar.dart';
 import '../../core/widgets/star_row.dart';
 import '../../core/widgets/venue_thumbnail.dart';
 import '../../data/repositories/event_social_repository.dart';
@@ -306,11 +307,11 @@ class _CommunityTabBodyState extends State<_CommunityTabBody> {
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-    padding: const EdgeInsets.fromLTRB(
+    padding: EdgeInsets.fromLTRB(
       CsSpacing.pageHorizontal,
       CsSpacing.lg,
       CsSpacing.pageHorizontal,
-      CsSpacing.section,
+      floatingNavClearance(context),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -567,11 +568,11 @@ class _FriendsTabBodyState extends State<_FriendsTabBody> {
 
   @override
   Widget build(BuildContext context) => SingleChildScrollView(
-    padding: const EdgeInsets.fromLTRB(
+    padding: EdgeInsets.fromLTRB(
       CsSpacing.pageHorizontal,
       CsSpacing.lg,
       CsSpacing.pageHorizontal,
-      CsSpacing.section,
+      floatingNavClearance(context),
     ),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,

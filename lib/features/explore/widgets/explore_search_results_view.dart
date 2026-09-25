@@ -3,6 +3,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_image_placeholder.dart';
+import '../../../core/widgets/floating_nav_bar.dart';
 import '../../../models/event.dart';
 import '../../reports/widgets/report_missing_listing_sheet.dart';
 import '../models/explore_search_results.dart';
@@ -79,7 +80,7 @@ class ExploreSearchResultsView extends StatelessWidget {
                 ),
             ],
           ),
-        const SizedBox(height: 76),
+        SizedBox(height: floatingNavClearance(context)),
       ],
     );
   }

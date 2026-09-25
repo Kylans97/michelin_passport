@@ -10,6 +10,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/country_filter_control.dart';
 import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/cs_search_field.dart';
+import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
@@ -405,7 +406,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
         ),
       ),
     ),
-    const SliverToBoxAdapter(child: SizedBox(height: 88)),
+    SliverToBoxAdapter(child: SizedBox(height: floatingNavClearance(context))),
   ];
 
   List<Widget> _searchSlivers() {

@@ -6,6 +6,7 @@ import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_surface_context.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/utils/visit_years.dart';
+import '../../../core/widgets/floating_nav_bar.dart';
 import '../../../core/widgets/year_filter_control.dart';
 import '../../../data/repositories/rankings_repository.dart';
 import '../../../models/passport_venue.dart';
@@ -284,7 +285,7 @@ class _RankingsList extends StatelessWidget {
             )
           : ListView.builder(
               physics: const AlwaysScrollableScrollPhysics(),
-              padding: const EdgeInsets.fromLTRB(20, 0, 20, 100),
+              padding: EdgeInsets.fromLTRB(20, 0, 20, floatingNavClearance(context)),
               itemCount: rankings.length,
               itemBuilder: (_, i) => switch (rankings[i].venue) {
                 RestaurantVenue(:final restaurant) => PersonalRankingCard(

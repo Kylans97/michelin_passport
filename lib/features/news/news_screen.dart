@@ -3,6 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/news_repository.dart';
 import '../../models/news_article.dart';
 import 'news_article_detail_screen.dart';
@@ -147,11 +148,11 @@ class _NewsScreenState extends State<NewsScreen> {
                 );
               }
               return ListView.separated(
-                padding: const EdgeInsets.fromLTRB(
+                padding: EdgeInsets.fromLTRB(
                   CsSpacing.pageHorizontal,
                   0,
                   CsSpacing.pageHorizontal,
-                  CsSpacing.section,
+                  floatingNavClearance(context),
                 ),
                 itemCount: articles.length,
                 separatorBuilder: (_, _) =>

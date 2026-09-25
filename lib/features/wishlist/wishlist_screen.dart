@@ -6,6 +6,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
 import '../../core/widgets/cs_section_title.dart';
+import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
 import '../../models/passport_venue.dart';
@@ -256,14 +257,16 @@ class _WishlistBodyState extends State<WishlistBody> {
                   // same pattern PassportCollectionBody's own collection
                   // list uses: visible deep-green breathing room between
                   // each floating ivory card, with the last card getting
-                  // extra bottom clearance for the bottom nav bar rather
-                  // than sitting flush behind it.
+                  // extra bottom clearance for the floating nav pill rather
+                  // than sitting under it.
                   (context, i) => Padding(
                     padding: EdgeInsets.fromLTRB(
                       CsSpacing.pageHorizontal,
                       0,
                       CsSpacing.pageHorizontal,
-                      i == items.length - 1 ? 100 : CsSpacing.md,
+                      i == items.length - 1
+                          ? floatingNavClearance(context)
+                          : CsSpacing.md,
                     ),
                     child: switch (items[i]) {
                       RestaurantVenue(:final restaurant) =>
@@ -335,7 +338,9 @@ class _WishlistBodyState extends State<WishlistBody> {
                 CsSpacing.pageHorizontal,
                 0,
                 CsSpacing.pageHorizontal,
-                i == events.length - 1 ? 100 : CsSpacing.md,
+                i == events.length - 1
+                    ? floatingNavClearance(context)
+                    : CsSpacing.md,
               ),
               child: EventWishlistCard(
                 event: events[i],

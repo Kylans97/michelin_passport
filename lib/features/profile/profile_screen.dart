@@ -9,6 +9,7 @@ import '../../core/utils/username_rules.dart';
 import '../../core/widgets/country_picker_sheet.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_text_field.dart';
+import '../../core/widgets/floating_nav_bar.dart';
 import '../../core/widgets/member_avatar.dart';
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
@@ -253,20 +254,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             child: SafeArea(
               // Primary Tab Header Consistency Step 1: top padding is
               // CsSpacing.lg, matching Wishlist's reference title
-              // position.
+              // position. bottom: false, matching every other top-level
+              // tab screen — the floating nav pill isn't part of Scaffold's
+              // own layout anymore (see app.dart), so this list's own
+              // bottom padding is the only thing keeping Sign out/Delete
+              // account clear of it; floatingNavClearance() already folds
+              // in the device's own safe-area inset, so SafeArea handling
+              // it too would double-count that inset.
+              bottom: false,
               child: ListView(
-                // FINAL VISUAL REFINEMENT — generous bottom inset (beyond
-                // the automatic Scaffold/SafeArea reservation, which
-                // already keeps content from ever rendering underneath
-                // the persistent bottom NavigationBar) so Sign out/Delete
-                // account settle to a comfortable resting position above
-                // the nav rather than crowding its edge. A design token,
-                // not a device-specific magic number.
-                padding: const EdgeInsets.fromLTRB(
+                padding: EdgeInsets.fromLTRB(
                   CsSpacing.pageHorizontal,
                   CsSpacing.lg,
                   CsSpacing.pageHorizontal,
-                  CsSpacing.hero,
+                  floatingNavClearance(context),
                 ),
                 children: [
                   Text(

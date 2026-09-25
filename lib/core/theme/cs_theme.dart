@@ -134,18 +134,15 @@ class CsTheme {
   }
 }
 
-/// Bottom navigation tokens — kept in sync with whatever `_MainNavigation`
-/// (app.dart) actually implements (see [AppTheme.mantelier]'s
-/// `navigationBarTheme`, the live styling path); nothing in this file
-/// applies these automatically, so treat this as a named reference to
-/// correct alongside app.dart, not an independent source of truth. Current
-/// as of the Green Token Consistency Migration: a deepGreen surface
-/// (Step 1A first moved the bar off ivory onto a green surface; this pass
-/// corrected which green — deepGreen is the canonical primary brand dark
-/// surface, forestGreen is reserved for secondary elevated panels — see
-/// app_colors.dart's own role documentation. An earlier version of this
-/// comment called the forestGreen direction final; it wasn't, so this one
-/// avoids repeating that claim).
+/// Bottom navigation tokens — kept in sync with whatever `FloatingNavBar`
+/// (`lib/core/widgets/floating_nav_bar.dart`, wired in from app.dart)
+/// actually implements; nothing in this file applies these automatically,
+/// so treat this as a named reference to correct alongside that widget,
+/// not an independent source of truth. Current as of the floating-pill
+/// redesign: the bar is no longer Material's docked `NavigationBar` on a
+/// deepGreen primary surface — it's a pill floating ON the deepGreen
+/// canvas, so its own background is forestGreen (a panel token, see
+/// app_colors.dart's own role documentation), not deepGreen.
 class CsNavStyle {
   CsNavStyle._();
 
@@ -157,5 +154,5 @@ class CsNavStyle {
   /// background.
   static const Color selectedColor = AppColors.ivory;
   static const Color unselectedColor = AppColors.secondaryOnDark;
-  static const Color background = AppColors.deepGreen;
+  static const Color background = AppColors.forestGreen;
 }

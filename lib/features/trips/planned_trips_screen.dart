@@ -7,6 +7,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/cs_section_title.dart';
 import '../../core/widgets/detail_hero.dart' show HeroIconButton;
+import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../models/event.dart';
@@ -296,11 +297,11 @@ class _TripsBodyState extends State<TripsBody> {
                     child: (upcoming.isEmpty && untripped.isEmpty)
                         ? _EmptyState(onCreateTrip: _createTrip)
                         : ListView(
-                            padding: const EdgeInsets.fromLTRB(
+                            padding: EdgeInsets.fromLTRB(
                               CsSpacing.pageHorizontal,
                               0,
                               CsSpacing.pageHorizontal,
-                              CsSpacing.section,
+                              floatingNavClearance(context),
                             ),
                             children: [
                               if (featuredTrip != null) ...[
