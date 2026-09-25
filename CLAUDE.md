@@ -138,6 +138,25 @@ database controls. Preferred shape:
 - **RLS is mandatory on every user table.** The `anon` key ships inside the
   published Flutter app and is public. `profiles`, `visits`, `photos`,
   `wishlist`, `follows`, event attendance — all of them.
+- **Every new `SECURITY DEFINER` function needs its own explicit
+  `revoke execute on function ... from public, anon;`, written in the same
+  migration that creates it.** This project's Supabase instance auto-grants
+  `anon` (via PUBLIC) execute on every new function in `public`, and —
+  confirmed by direct testing (20260925170000, PG 17) — `alter default
+  privileges ... revoke execute on functions from public, anon` does **not**
+  suppress this for functions the way the equivalent fix works for tables
+  (`20260918130000_revoke_anon_defaults_on_private_tables.sql` — tables have
+  no such built-in default, so that one genuinely closed the source). This
+  exact gap has already been independently rediscovered and patched four
+  times on four different functions
+  (`20260813130000_social_foundation_step1_revoke_anon_execute.sql`,
+  `20260815130000_social_foundation_step2b_revoke_anon_execute.sql`,
+  `20260925140000_add_venue_invites.sql`/`20260925160000_...`, and
+  `20260925170000_close_anon_execute_default_privilege.sql`'s own backlog
+  cleanup) — do not let it become a fifth. `from public` is required, not
+  optional: revoking only `from anon` is a no-op if PUBLIC still holds the
+  grant. Verify with `has_function_privilege('anon', '<fn>(<args>)',
+  'EXECUTE')`, not by inspection alone.
 - The `service_role` key never appears in client code.
 - Catalogue tables (`hotels`, `restaurants`, `hotel_restaurants`,
   `countries`, `cities`) are world-readable, write-restricted.
