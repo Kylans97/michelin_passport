@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
-import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 
 /// Photo, or an initial in Cormorant — this screen's own small identity
@@ -89,79 +88,6 @@ class _InitialGlyph extends StatelessWidget {
       ).copyWith(color: color),
     ),
   );
-}
-
-/// One column of [FriendProfileStatsRow]. No gold variant — this
-/// redesign's own rule is "no gold text, ever"; every numeral here is
-/// plain ivory/ink regardless of which stat it is.
-class FriendProfileStat {
-  final String value;
-  final String label;
-  const FriendProfileStat({required this.value, required this.label});
-}
-
-/// Columns separated by vertical hairlines, with a hairline above and
-/// below the whole row — the "Stamps / Countries / Avg. score" stats
-/// block. Dual-surface aware ([onDark]) even though every current call
-/// site is on the green canvas, matching this codebase's established
-/// pattern for anything that might reasonably sit on paper later.
-class FriendProfileStatsRow extends StatelessWidget {
-  final List<FriendProfileStat> stats;
-  final bool onDark;
-
-  const FriendProfileStatsRow({
-    super.key,
-    required this.stats,
-    this.onDark = true,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final hairline = onDark ? AppColors.hairlineOnGreen : AppColors.hairlineOnPaper;
-    final valueColor = onDark ? AppColors.textOnDark : AppColors.textPrimary;
-    final labelColor = onDark ? AppColors.stone600OnGreen : AppColors.stone600OnPaper;
-
-    return Column(
-      children: [
-        Container(height: 1, color: hairline),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: CsSpacing.md),
-          child: Row(
-            children: [
-              for (var i = 0; i < stats.length; i++) ...[
-                if (i > 0)
-                  Container(
-                    width: 1,
-                    height: 32,
-                    margin: const EdgeInsets.symmetric(horizontal: CsSpacing.md),
-                    color: hairline,
-                  ),
-                Expanded(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Text(
-                        stats[i].value,
-                        style: CsTypography.editorialTitle(
-                          size: 26,
-                        ).copyWith(color: valueColor),
-                      ),
-                      const SizedBox(height: 2),
-                      Text(
-                        stats[i].label,
-                        style: CsTypography.editorialLabel().copyWith(color: labelColor),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ],
-          ),
-        ),
-        Container(height: 1, color: hairline),
-      ],
-    );
-  }
 }
 
 /// A photo, or a dark-green fallback tile with a 1px gold border and the

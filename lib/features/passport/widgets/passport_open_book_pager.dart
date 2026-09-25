@@ -28,6 +28,11 @@ class PassportOpenBookPager extends StatefulWidget {
   /// page holding one of them, same as the pre-booklet stamp pager did.
   final Set<String> newStampIds;
 
+  /// False removes the dashed "Add your next stamp" empty slot from every
+  /// stamp page — see [buildYearGroupedStampPages]'s own doc comment.
+  /// Defaults to true, the current-user booklet's unchanged behavior.
+  final bool includeNextStampSlot;
+
   /// Which page to open on — PassportCollectionBody's own "remember which
   /// page" state, restored when reopening the same volume you last closed.
   final int initialPage;
@@ -44,6 +49,7 @@ class PassportOpenBookPager extends StatefulWidget {
     required this.size,
     required this.countryNameByCode,
     required this.newStampIds,
+    this.includeNextStampSlot = true,
     required this.initialPage,
     required this.onPageChanged,
     required this.onTapStamp,
@@ -104,8 +110,10 @@ class _PassportOpenBookPagerState extends State<PassportOpenBookPager> {
     super.dispose();
   }
 
-  List<PassportStampPage> get _stampPages =>
-      buildYearGroupedStampPages(widget.volume.items);
+  List<PassportStampPage> get _stampPages => buildYearGroupedStampPages(
+    widget.volume.items,
+    includeNextStampSlot: widget.includeNextStampSlot,
+  );
 
   /// +1 throughout: index 0 in the returned page list is always the data
   /// page, so every stamp page's own index in [_stampPages] sits one

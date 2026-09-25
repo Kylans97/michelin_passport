@@ -154,6 +154,12 @@ class FriendProfileLayoutData {
   final FriendProfileStats stats;
   final Map<String, String> coverPhotoByVisitId;
 
+  // Country code → name, for the Passport tab's booklet (country chips,
+  // stamp accessibility labels) — not needed by the other two tabs, but
+  // loaded once here alongside everything else rather than given its own
+  // separate loading state inside the tab itself.
+  final Map<String, String> countryNameByCode;
+
   const FriendProfileLayoutData({
     required this.identity,
     required this.myIdentity,
@@ -164,6 +170,7 @@ class FriendProfileLayoutData {
     required this.sharedKeys,
     required this.stats,
     required this.coverPhotoByVisitId,
+    required this.countryNameByCode,
   });
 
   String get friendName =>

@@ -44,12 +44,21 @@ class ProfileIdentity {
   final String? avatarUrl;
   final RelationshipStatus relationshipStatus;
 
+  // Only populated by get_profile_identity() (20260925130000_add_member_
+  // number_to_profile_identity.sql) — search_profiles() doesn't select
+  // this column, so a ProfileIdentity built from a search result always
+  // has memberNumber null here, same as the two pre-existing test
+  // accounts a real get_profile_identity() call can also legitimately
+  // return null for (see 20260925120000_add_profiles_member_number.sql).
+  final int? memberNumber;
+
   const ProfileIdentity({
     required this.id,
     this.username,
     this.displayName,
     this.avatarUrl,
     required this.relationshipStatus,
+    this.memberNumber,
   });
 
   factory ProfileIdentity.fromRow(Map<String, dynamic> row) => ProfileIdentity(
@@ -60,6 +69,7 @@ class ProfileIdentity {
     relationshipStatus: RelationshipStatus.fromDb(
       row['relationship_status'] as String?,
     ),
+    memberNumber: row['member_number'] as int?,
   );
 
   /// display_name when set, falling back to @username, falling back to a

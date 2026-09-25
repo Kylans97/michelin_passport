@@ -7,6 +7,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/editorial_back_button.dart';
+import '../../data/repositories/country_lookup.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/visited_repository.dart';
@@ -68,19 +69,14 @@ void openFriendVenue(BuildContext context, PassportVenue venue) {
 /// een stempel/rij opent de bestaande visit-detail", reused exactly as it
 /// already exists, not a friend-specific copy.
 ///
-/// KNOWN GAP, surfaced rather than silently worked around: both of those
-/// screens present Delete/visibility-toggle controls driven by
-/// `Supabase.instance.client.auth.currentUser`, with no check that the
-/// VIEWER actually owns [fv.visit] — every existing call site only ever
-/// opens one's own visit, so this was never exercised for someone else's.
-/// RLS (`visits_update`/`visits_delete`, owner-only) blocks the actual
-/// mutation either way, so nothing another user's visit can be corrupted
-/// this way, but the controls themselves render regardless, which reads
-/// as an affordance a viewer has no right to. Fixing that means changing
-/// VisitDetailScreen/StayDetailScreen themselves, which is out of scope
-/// here — "laat andere schermen ongemoeid" — so it's flagged here and in
-/// docs/Architecture/EDITORIAL_REDESIGN_TRACKING.md instead of silently
-/// shipped or silently avoided.
+/// The owner-only-controls gap this doc comment used to flag here is
+/// fixed — both screens now gate their edit/delete controls on actual
+/// ownership (`visit.userId == currentUser.id`), not just on RLS blocking
+/// the mutation server-side (see EDITORIAL_REDESIGN_TRACKING.md's own
+/// note on that fix, and VisitDetailScreen/StayDetailScreen's own
+/// `_isOwner` getters). Safe to open for someone else's visit — including
+/// from the Passport tab's own read-only friend booklet — without
+/// re-checking anything here.
 void openVisitDetail(BuildContext context, FriendVenueVisit fv) {
   switch (fv.venue) {
     case RestaurantVenue(:final restaurant):
@@ -228,6 +224,16 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       // blocks the rest of the screen.
     }
 
+    // For the Passport tab's booklet — country chips, stamp semantic
+    // labels. Same "never blocks the rest of the screen, falls back to
+    // the bare country code" precedent as the main Passport screen's own
+    // identical load.
+    var countryNameByCode = <String, String>{};
+    try {
+      final countries = await getAllCountries(Supabase.instance.client);
+      countryNameByCode = {for (final c in countries) c.code: c.name};
+    } catch (_) {}
+
     return FriendProfileLayoutData(
       identity: identity,
       myIdentity: myIdentity,
@@ -238,6 +244,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       sharedKeys: sharedWishlistKeys(wishlist: wishlist, myWishlist: myWishlist),
       stats: FriendProfileStats.from(entries),
       coverPhotoByVisitId: coverPhotos,
+      countryNameByCode: countryNameByCode,
     );
   }
 

@@ -437,6 +437,119 @@ new trailing page" pagination edge case.
     booklet has proven stable in real use, matching this file's own
     established pattern).
 
+## Friend Profile's Passport tab — now the same booklet, read-only
+
+The Friend Profile screen's own parallel stamp system (`friend_profile_
+stamp.dart`, `friend_profile_stamp_page.dart` — a smaller, separately
+built 3-variant set, only ever sharing the main booklet's low-level
+painting helpers) is retired entirely, not kept alongside. Its Passport
+tab now renders the exact same [`PassportBookletView`](#extraction) the
+current user's own Passport tab uses, fed the friend's data instead —
+cover, data page, stamp pages, size, and stamp designs are ALL the same
+component, per explicit instruction ("De Stamp-component hergebruik je,
+niet opnieuw maken").
+
+**Extraction this round made necessary**: `PassportCollectionBody`'s own
+open/close/flip choreography (`_FlipBook`/`_CrossFadeBook`/
+`_OpenBookFrame`) was private to that one file — reusing it for a friend
+meant either un-privating it or re-implementing ~300 lines of animation
+state. Chose the former: pulled the whole thing out into
+`widgets/passport_booklet_view.dart` as a new public, generic
+`PassportBookletView` (plus `PassportFlipBook`/`PassportCrossFadeBook`/
+`PassportOpenBookFrame`, all public now) that takes every byte of data as
+a constructor parameter and touches `Supabase`/`currentUser` nowhere.
+`PassportCollectionBody` is now a thin wrapper: its own `_load()`
+(current user's own visits/identity/countries, unchanged) plus
+current-user-specific navigation (tap a stamp → the VENUE's detail
+screen; tap the empty slot → Explore), delegating everything about how
+the booklet itself looks and behaves to the shared widget. Verified via
+the full test suite (2249 tests, all still passing) that this refactor
+changed nothing observable about the current user's own booklet.
+
+**The three differences, each an explicit ask, not incidental:**
+  - `includeNextStampSlot: false` — new parameter threaded through
+    `buildYearGroupedStampPages` → `PassportOpenBookPager` →
+    `PassportBookletView`. False skips the empty "add your next stamp"
+    slot entirely (and the wholly-new trailing page that slot would
+    otherwise force) — confirmed in this round's own preview harness by
+    paging to exactly the page where that slot would have appeared and
+    seeing nothing render there.
+  - Tapping a stamp opens the EXISTING `VisitDetailScreen`/
+    `StayDetailScreen` for that specific visit (via `friend_profile_
+    screen.dart`'s own `openVisitDetail`, already ownership-gated by the
+    fix from the round before this one) — not the venue's own detail
+    screen the current-user booklet jumps to. That function's own doc
+    comment, which still described the ownership gap as a "KNOWN GAP" at
+    the top of this round, is corrected to say so.
+  - The data page shows the FRIEND's own name/counts/countries — trivial
+    once `PassportBookletView` takes these as parameters rather than
+    reading `currentUser` itself.
+
+**Privacy, checked before writing any of this, not assumed —** the
+explicit ask this round included finding exactly this kind of gap:
+  - **Visit visibility was already safe.** `loadPassportVenues(friendId)`
+    (unchanged, already what this screen called before this round) relies
+    entirely on `visits_read` RLS
+    (`user_id = auth.uid() or (visibility = 'friends' and is_friend(...))`)
+    — a friend's `private` rows are never returned, friendship or not.
+    Nothing new to filter in Dart.
+  - **Member number was NOT reachable for a friend — a real gap, closed
+    this round with the user's explicit go-ahead.**
+    `get_profile_identity()` (the only cross-user identity RPC; direct
+    `profiles` reads are owner-only RLS) didn't select `member_number` at
+    all. `20260925130000_add_member_number_to_profile_identity.sql`
+    extends it — same curated column list, same friendship/discoverability
+    filtering, `member_number` added alongside. Had to `drop function`
+    before recreating it — confirmed by actually trying `create or
+    replace` first and hitting Postgres's real "cannot change return
+    type of existing function" error, not assumed. Validated in a
+    rollback transaction (including faking `auth.uid()` via
+    `set_config('request.jwt.claims', ...)` to call the function as a
+    real user targeting another) before applying — same two-step
+    validate-then-push discipline as every prior migration this session.
+    `ProfileIdentity` gained a `memberNumber` field; `search_profiles()`
+    was deliberately left untouched (nothing needs a number in search
+    results, and the shared `ProfileIdentity.fromRow` factory already
+    treats a missing key as null).
+  - **Avatar photos remain unreachable for a friend — pre-existing, not
+    introduced by this round, not a privacy risk (just an unbuilt
+    feature).** `avatar_url` (the one column `get_profile_identity` did
+    already return) has never been populated by any code path; the real
+    avatar (`avatar_path` + a signed Storage URL) is blocked by
+    owner-only RLS on both `profiles` and the `profile-photos` bucket, for
+    literally every viewer including this new booklet. The booklet's
+    existing null-avatar fallback (initials tile) already handles this
+    correctly — not a gap this task needed to close, just confirmed and
+    disclosed rather than silently assumed fine.
+  - **Events stay excluded.** The friend profile's own pre-existing,
+    deliberate "restaurants/hotels only, no event stamps" scope
+    (`eventEntries: const []`) is kept as-is here too — not silently
+    expanded to match the current-user booklet's own event support,
+    since nothing asked for that and the tap-target for an event stamp
+    (`EventDetailScreen`) is a different navigation shape than every
+    other stamp on this specific tab.
+
+**A stale doc comment fixed in passing**: `openVisitDetail`'s own "KNOWN
+GAP" comment (about the exact ownership issue fixed two rounds ago) was
+still describing that gap as open. Corrected while already touching this
+exact function for its new, second real caller.
+
+**`FriendProfileStats`/`FriendProfileLayoutData.stats` is UNCHANGED and
+still used** — it feeds the header's own `@HANDLE · N STAMPS · N STARS`
+line (`FriendProfileHeaderTop`), a separate consumer from the old Passport
+tab. Only the old tab's own `FriendProfileStatsRow` UI widget (STAMPS/
+COUNTRIES/AVG. SCORE) is gone — the booklet's data page already shows
+ENTRIES/COUNTRIES/STARS itself, making a second stats block directly
+below it redundant.
+
+Screenshots taken and reviewed: the friend's cover (correct yearly
+volumes for their own history), the friend's data page (their real name,
+real member number, their own counts/countries/MRZ), the exact page
+where the empty slot would appear for the current user's own booklet
+(confirmed absent), and the 0-visits/null-member-number edge cases
+(honest "—"/MRZ filler, no crash, no page dots with nothing to page
+through).
+
 ## New backend needs surfaced along the way
 
 Anything a screen's design calls for that the backend doesn't have yet gets

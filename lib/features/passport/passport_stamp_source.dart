@@ -157,9 +157,20 @@ class PassportStampPage {
 /// passport) is not a special case here — it's simply the one-year-group
 /// case this same function already produces, so both scopes share this
 /// one implementation.
+///
+/// [includeNextStampSlot] (default true, matching the current-user
+/// booklet's own behavior unchanged) controls whether that empty slot
+/// exists on the last page at all — a friend's read-only booklet passes
+/// false: "geen lege plek met 'Add your next stamp' — dit is niet jouw
+/// paspoort." False still pads the last page to [perPage] with
+/// [BlankStampSlot]s if it's short, it just never adds the one
+/// [NextStampSlot] (and therefore never appends a wholly-new trailing
+/// page just to hold it either, since with the slot removed a full last
+/// page has nothing left needing one).
 List<PassportStampPage> buildYearGroupedStampPages(
   List<PassportStampItem> itemsOldestFirst, {
   int perPage = 4,
+  bool includeNextStampSlot = true,
 }) {
   if (itemsOldestFirst.isEmpty) return [];
 
@@ -184,6 +195,8 @@ List<PassportStampPage> buildYearGroupedStampPages(
       i += perPage;
     }
   }
+
+  if (!includeNextStampSlot) return pages;
 
   final lastYear = pages.last.year;
   if (pages.last.slots.length == perPage) {
