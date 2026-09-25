@@ -2,26 +2,34 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/navigation/route_observer.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
+import '../../../data/repositories/country_lookup.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../../data/repositories/profile_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
+import '../../../models/hotel.dart';
+import '../../../models/restaurant.dart';
+import '../../events/event_detail_screen.dart';
+import '../../explore/explore_screen.dart';
+import '../../hotels/hotel_detail_screen.dart';
+import '../../restaurants/restaurant_detail_screen.dart';
+import '../models/passport_stamp_item.dart';
 import '../passport_booklet_data.dart';
 import 'passport_cover.dart';
-import 'passport_data_page.dart';
+import 'passport_open_book_pager.dart';
 
 /// Passport's default "Passport" subsection content: a real passport
 /// booklet — closed cover (with yearly volumes fanned behind it) that
-/// opens, 3D, onto a bound data page. Round 1 of the booklet redesign:
-/// only the cover and the data page exist here — the swipeable stamp
-/// pages and the add-a-visit flow are Round 2/3, not built yet (see
-/// EDITORIAL_REDESIGN_TRACKING.md). Replaces the previous filter-chip +
-/// flat stamp-page-list body entirely; the header and Passport/Wishlist/
-/// Ranking/Trips tab bar above this widget are untouched, owned by
-/// PassportScreen.
+/// opens, 3D, onto a bound data page, then the swipeable stamp pages
+/// (Round 2 of the booklet redesign; see EDITORIAL_REDESIGN_TRACKING.md).
+/// The add-a-visit flow is Round 3, not built yet. Replaces the previous
+/// filter-chip + flat stamp-page-list body entirely; the header and
+/// Passport/Wishlist/Ranking/Trips tab bar above this widget are
+/// untouched, owned by PassportScreen.
 class PassportCollectionBody extends StatefulWidget {
   const PassportCollectionBody({super.key});
 
@@ -40,6 +48,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   List<PassportVolume> _volumes = [];
   String _holderName = 'Member';
   String? _avatarUrl;
+  Map<String, String> _countryNameByCode = {};
 
   // Null only for the handful of pre-existing test accounts
   // 20260925120000_add_profiles_member_number.sql deliberately left
@@ -49,14 +58,27 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   bool _loading = true;
   bool _loadError = false;
 
+  // Stamp-animation bookkeeping, reinstated from the pre-booklet
+  // PassportCollectionBody: every stamp id seen as of the last completed
+  // load, and — once at least one prior load has happened — the ids new
+  // since then. The very first load of the app session never has
+  // anything to diff against, so it never animates anything.
+  Set<String> _knownStampIds = {};
+  Set<String> _newStampIds = {};
+  bool _hasLoadedOnce = false;
+
   // "Remember whether the booklet was open, which volume, which page" —
-  // Round 1 only has one page (the data page), so page memory itself is
-  // Round 2's concern. In-memory, not persisted to disk: PassportScreen
-  // keeps this whole widget alive via IndexedStack for the life of the
-  // app session, which is exactly "per session" — an app restart clearing
-  // it is the correct behavior, not a gap.
+  // in-memory, not persisted to disk: PassportScreen keeps this whole
+  // widget alive via IndexedStack for the life of the app session, which
+  // is exactly "per session" — an app restart clearing it is the correct
+  // behavior, not a gap.
   bool _isOpen = false;
   int _openVolumeIndex = 0;
+
+  // Which page within the open volume was last showing — reset to 0 only
+  // when [_open] targets a DIFFERENT volume than before; reopening the
+  // SAME volume you last closed restores exactly where you left off.
+  int _bookPageIndex = 0;
 
   late final AnimationController _flipController = AnimationController(
     vsync: this,
@@ -87,6 +109,14 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
 
   @override
   void didPopNext() => _load();
+
+  Set<String> _allStampIds(List<PassportVolume> volumes) {
+    // Index 0 is always the complete volume — see buildPassportVolumes'
+    // own contract — so its items alone already cover every stamp across
+    // every year, with nothing double-counted.
+    if (volumes.isEmpty) return {};
+    return {for (final item in volumes.first.items) item.id};
+  }
 
   Future<void> _load() async {
     try {
@@ -122,16 +152,32 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
         // fallback — a profile-load failure never blocks Passport itself.
       }
 
+      var countryNameByCode = <String, String>{};
+      try {
+        final countries = await getAllCountries(Supabase.instance.client);
+        countryNameByCode = {for (final c in countries) c.code: c.name};
+      } catch (_) {
+        // Never fails the rest of Passport — stamp semantics labels fall
+        // back to the bare country code (see stampSemanticLabel).
+      }
+
       if (!mounted) return;
       final volumes = buildPassportVolumes(
         entries: entries,
         eventEntries: eventEntries,
       );
+      final allIds = _allStampIds(volumes);
+      final newIds = _hasLoadedOnce ? allIds.difference(_knownStampIds) : <String>{};
+
       setState(() {
         _volumes = volumes;
         _holderName = name;
         _avatarUrl = avatarUrl;
         _memberNumber = memberNumber;
+        _countryNameByCode = countryNameByCode;
+        _newStampIds = newIds;
+        _knownStampIds = allIds;
+        _hasLoadedOnce = true;
         _loading = false;
         _loadError = false;
         if (_openVolumeIndex >= volumes.length) _openVolumeIndex = 0;
@@ -149,6 +195,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
 
   void _open(int index) {
     setState(() {
+      if (index != _openVolumeIndex) _bookPageIndex = 0;
       _isOpen = true;
       _openVolumeIndex = index;
     });
@@ -170,6 +217,43 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     }
   }
 
+  void _openRestaurant(Restaurant restaurant) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+    ),
+  );
+
+  void _openHotel(Hotel hotel) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+  );
+
+  void _openEvent(String eventId) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => EventDetailScreen(
+        eventId: eventId,
+        sourceSurface: AnalyticsSourceSurface.passport,
+      ),
+    ),
+  );
+
+  void _onTapStamp(PassportStampItem item) => switch (item) {
+    RestaurantStampItem(:final restaurant) => _openRestaurant(restaurant),
+    HotelStampItem(:final hotel) => _openHotel(hotel),
+    EventStampItem(:final entry) => _openEvent(entry.event.id),
+  };
+
+  // Round 3 (not built yet) replaces this with the real "add a visit"
+  // sheet. Interim behavior matches the pre-booklet Passport's own
+  // fallback for the exact same tap target — open Explore rather than
+  // leaving the empty slot inert.
+  void _openExplore() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const ExploreScreen()),
+  );
+
   static final _emptyVolume = PassportVolume(
     year: null,
     items: const [],
@@ -179,9 +263,9 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   );
 
   // The cover's own original design aspect ratio (270×410) — every
-  // responsively-sized book (cover AND data page, so both stay the same
-  // shape while paging through) derives its height from this ratio times
-  // whatever width [_bookWidth] computes.
+  // responsively-sized book (cover, data page, and every stamp page, so
+  // all of them stay the same shape while paging through) derives its
+  // height from this ratio times whatever width [_bookWidth] computes.
   static const _aspect = PassportCoverFace.baseHeight / PassportCoverFace.baseWidth;
 
   // "Bijna de volle breedte, met genoeg marge dat het nog als een boekje
@@ -238,6 +322,12 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
                         holderName: _holderName,
                         avatarUrl: _avatarUrl,
                         bookSize: bookSize,
+                        countryNameByCode: _countryNameByCode,
+                        newStampIds: _newStampIds,
+                        initialPage: _bookPageIndex,
+                        onPageChanged: (i) => setState(() => _bookPageIndex = i),
+                        onTapStamp: _onTapStamp,
+                        onTapNextStamp: _openExplore,
                         onOpen: _open,
                         onClose: _close,
                       )
@@ -250,6 +340,12 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
                         holderName: _holderName,
                         avatarUrl: _avatarUrl,
                         bookSize: bookSize,
+                        countryNameByCode: _countryNameByCode,
+                        newStampIds: _newStampIds,
+                        initialPage: _bookPageIndex,
+                        onPageChanged: (i) => setState(() => _bookPageIndex = i),
+                        onTapStamp: _onTapStamp,
+                        onTapNextStamp: _openExplore,
                         onOpen: _open,
                         onClose: _close,
                       ),
@@ -263,11 +359,11 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
 }
 
 /// The 3D open/close transition: the selected cover face rotates open
-/// around its own left edge while the data page (already laid out at
-/// rest beneath it) is revealed. Only the single cover FACE animates —
-/// not the whole peeking stack behind it — matching a real book: once one
-/// volume commits to opening, what's behind it in the pile isn't part of
-/// the motion.
+/// around its own left edge while the open book (already laid out at rest
+/// beneath it) is revealed. Only the single cover FACE animates — not the
+/// whole peeking stack behind it — matching a real book: once one volume
+/// commits to opening, what's behind it in the pile isn't part of the
+/// motion.
 class _FlipBook extends StatelessWidget {
   final AnimationController controller;
   final bool isOpen;
@@ -277,6 +373,12 @@ class _FlipBook extends StatelessWidget {
   final String holderName;
   final String? avatarUrl;
   final Size bookSize;
+  final Map<String, String> countryNameByCode;
+  final Set<String> newStampIds;
+  final int initialPage;
+  final ValueChanged<int> onPageChanged;
+  final void Function(PassportStampItem item) onTapStamp;
+  final VoidCallback onTapNextStamp;
   final ValueChanged<int> onOpen;
   final VoidCallback onClose;
 
@@ -289,6 +391,12 @@ class _FlipBook extends StatelessWidget {
     required this.holderName,
     required this.avatarUrl,
     required this.bookSize,
+    required this.countryNameByCode,
+    required this.newStampIds,
+    required this.initialPage,
+    required this.onPageChanged,
+    required this.onTapStamp,
+    required this.onTapNextStamp,
     required this.onOpen,
     required this.onClose,
   });
@@ -321,6 +429,12 @@ class _FlipBook extends StatelessWidget {
                       avatarUrl: avatarUrl,
                       memberNumber: memberNumber,
                       size: bookSize,
+                      countryNameByCode: countryNameByCode,
+                      newStampIds: newStampIds,
+                      initialPage: initialPage,
+                      onPageChanged: onPageChanged,
+                      onTapStamp: onTapStamp,
+                      onTapNextStamp: onTapNextStamp,
                       onClose: onClose,
                     ),
                   ),
@@ -372,6 +486,12 @@ class _CrossFadeBook extends StatelessWidget {
   final String holderName;
   final String? avatarUrl;
   final Size bookSize;
+  final Map<String, String> countryNameByCode;
+  final Set<String> newStampIds;
+  final int initialPage;
+  final ValueChanged<int> onPageChanged;
+  final void Function(PassportStampItem item) onTapStamp;
+  final VoidCallback onTapNextStamp;
   final ValueChanged<int> onOpen;
   final VoidCallback onClose;
 
@@ -383,6 +503,12 @@ class _CrossFadeBook extends StatelessWidget {
     required this.holderName,
     required this.avatarUrl,
     required this.bookSize,
+    required this.countryNameByCode,
+    required this.newStampIds,
+    required this.initialPage,
+    required this.onPageChanged,
+    required this.onTapStamp,
+    required this.onTapNextStamp,
     required this.onOpen,
     required this.onClose,
   });
@@ -398,6 +524,12 @@ class _CrossFadeBook extends StatelessWidget {
             avatarUrl: avatarUrl,
             memberNumber: memberNumber,
             size: bookSize,
+            countryNameByCode: countryNameByCode,
+            newStampIds: newStampIds,
+            initialPage: initialPage,
+            onPageChanged: onPageChanged,
+            onTapStamp: onTapStamp,
+            onTapNextStamp: onTapNextStamp,
             onClose: onClose,
           )
         : PassportCoverStack(
@@ -410,19 +542,26 @@ class _CrossFadeBook extends StatelessWidget {
   );
 }
 
-/// The open-book topbar ("‹ Close" / volume label) plus the data page.
-/// The design spec's own topbar also names a right-hand map icon — omitted
-/// here: PassportScreen's persistent outer header already carries one
-/// (see that class's own doc comment on why the header/tab bar never
-/// leave the screen for an internal state like this), and a second map
-/// icon two rows apart would read as a mistake rather than a feature. A
-/// disclosed adaptation, not a silent drop.
+/// The open-book topbar ("‹ Close" / volume label) plus the swipeable
+/// data-page-then-stamp-pages pager. The design spec's own topbar also
+/// names a right-hand map icon — omitted here: PassportScreen's persistent
+/// outer header already carries one (see that class's own doc comment on
+/// why the header/tab bar never leave the screen for an internal state
+/// like this), and a second map icon two rows apart would read as a
+/// mistake rather than a feature. A disclosed adaptation, not a silent
+/// drop.
 class _OpenBookFrame extends StatelessWidget {
   final PassportVolume volume;
   final String holderName;
   final String? avatarUrl;
   final int? memberNumber;
   final Size size;
+  final Map<String, String> countryNameByCode;
+  final Set<String> newStampIds;
+  final int initialPage;
+  final ValueChanged<int> onPageChanged;
+  final void Function(PassportStampItem item) onTapStamp;
+  final VoidCallback onTapNextStamp;
   final VoidCallback onClose;
 
   const _OpenBookFrame({
@@ -432,12 +571,19 @@ class _OpenBookFrame extends StatelessWidget {
     required this.avatarUrl,
     required this.memberNumber,
     required this.size,
+    required this.countryNameByCode,
+    required this.newStampIds,
+    required this.initialPage,
+    required this.onPageChanged,
+    required this.onTapStamp,
+    required this.onTapNextStamp,
     required this.onClose,
   });
 
-  /// Topbar row + the gap above the page — added on top of the page's own
-  /// [size] height when reserving room for this whole frame.
-  static const double topbarAllowance = 52;
+  /// Topbar row + the gap above the page, plus the page-dots row + its own
+  /// gap below the page — added on top of the page's own [size] height
+  /// when reserving room for this whole frame.
+  static const double topbarAllowance = 52 + 12 + 6;
 
   @override
   Widget build(BuildContext context) => SizedBox(
@@ -489,13 +635,18 @@ class _OpenBookFrame extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 12),
-        Expanded(
-          child: PassportDataPage(
-            volume: volume,
-            holderName: holderName,
-            avatarUrl: avatarUrl,
-            memberNumber: memberNumber,
-          ),
+        PassportOpenBookPager(
+          volume: volume,
+          holderName: holderName,
+          avatarUrl: avatarUrl,
+          memberNumber: memberNumber,
+          size: size,
+          countryNameByCode: countryNameByCode,
+          newStampIds: newStampIds,
+          initialPage: initialPage,
+          onPageChanged: onPageChanged,
+          onTapStamp: onTapStamp,
+          onTapNextStamp: onTapNextStamp,
         ),
       ],
     ),

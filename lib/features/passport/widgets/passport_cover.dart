@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_masthead_logo.dart';
 import '../passport_booklet_data.dart';
+import 'passport_page_dots.dart';
 
 // Same oldstyle-figure fallback PassportDataPage's own [_liningFigures]
 // documents and fixes — the year label on a peeking sliver is a Cormorant
@@ -380,36 +381,9 @@ class PassportCoverStackState extends State<PassportCoverStack> {
         ),
         if (widget.volumes.length > 1) ...[
           const SizedBox(height: 10),
-          _CoverDots(count: widget.volumes.length, activeIndex: _selected),
+          PassportPageDots(count: widget.volumes.length, activeIndex: _selected),
         ],
       ],
     );
   }
-}
-
-class _CoverDots extends StatelessWidget {
-  final int count;
-  final int activeIndex;
-  const _CoverDots({required this.count, required this.activeIndex});
-
-  @override
-  Widget build(BuildContext context) => Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      for (var i = 0; i < count; i++) ...[
-        if (i > 0) const SizedBox(width: 6),
-        AnimatedContainer(
-          duration: const Duration(milliseconds: 200),
-          width: i == activeIndex ? 18 : 6,
-          height: 6,
-          decoration: BoxDecoration(
-            color: i == activeIndex
-                ? AppColors.forestGreen
-                : AppColors.secondaryOnDark.withValues(alpha: 0.4),
-            borderRadius: BorderRadius.circular(3),
-          ),
-        ),
-      ],
-    ],
-  );
 }

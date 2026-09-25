@@ -1,5 +1,5 @@
 // Widget-level coverage for passport_page.dart: a page renders exactly one
-// tappable stamp per FilledStampSlot, exactly one "Your next stamp"
+// tappable stamp per FilledStampSlot, exactly one "Add your next stamp"
 // placeholder for a NextStampSlot, and nothing observable for a
 // BlankStampSlot — plus that tapping each wires to the right callback.
 // The "how many PAGES for N visits" half of the ink-stamp redesign's
@@ -75,7 +75,7 @@ void main() {
     await _pumpPage(tester, slots: slots);
     expect(tester.takeException(), isNull);
     expect(find.byType(PassportStampWidget), findsNWidgets(4));
-    expect(find.textContaining('Your next'), findsNothing);
+    expect(find.textContaining('your next'), findsNothing);
   });
 
   testWidgets(
@@ -91,7 +91,7 @@ void main() {
       await _pumpPage(tester, slots: slots);
       expect(tester.takeException(), isNull);
       expect(find.byType(PassportStampWidget), findsOneWidget);
-      expect(find.textContaining('Your next'), findsOneWidget);
+      expect(find.textContaining('your next'), findsOneWidget);
     },
   );
 
@@ -141,7 +141,7 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.textContaining('Your next'));
+    await tester.tap(find.textContaining('your next'));
     await tester.pumpAndSettle();
     expect(tappedNext, isTrue);
   });

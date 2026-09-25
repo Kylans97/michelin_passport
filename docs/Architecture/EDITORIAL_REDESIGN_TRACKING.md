@@ -328,17 +328,109 @@ seeing Round 1's own screenshots, both shipped before Round 2 started:
     number and the two-excluded-accounts' null case, confirmed to show an
     honest "—" / MRZ filler rather than reviving the deleted placeholder).
 
-**Not built yet — Rounds 2 and 3, by design:**
-  - Round 2: the swipeable stamp pages themselves (per-year grouped pages,
-    year-in-corner label, the empty-slot tile's filled "+" affordance which
-    doesn't exist on today's stamp pages), plus the 5 stamp designs'
-    literal size/detail adjustments from the reuse-audit comparison
-    (oval 190×100→200×106 and italic 26→30; double-frame padding
-    16h/10v→12h/18v; round-seal centre showing month+year, not year alone).
-  - Round 3: the 2-step "add a visit" flow (venue picker with wishlist/
-    events/search → date/score/note + live stamp preview + same-venue-
-    same-date duplicate check), wired to the stamp pages' entrance
-    animation.
+## Round 2 — the swipeable stamp pages — shipped
+
+One continuous `PageView` now spans the data page (index 0) and every
+stamp page: `widgets/passport_open_book_pager.dart` (new) replaced
+`_OpenBookFrame`'s bare `PassportDataPage` with this pager, and the
+now-fully-superseded old `passport_page_view.dart` (dead the moment this
+landed — its only job, paging through JUST stamp pages, is what the new
+pager does instead) was deleted rather than left orphaned.
+
+- `passport_stamp_source.dart` gained `PassportStampPage` +
+  `buildYearGroupedStampPages` — the complete passport's pages are
+  grouped by year (newest first, per the spec's own literal "nieuwste
+  eerst"), every year always starting a fresh page even if the previous
+  year's last page had room; a single-year volume is just the one-group
+  case of the same function, not a separate code path. The single
+  "add your next stamp" `NextStampSlot` still belongs to exactly one page
+  for the whole scope (the very last page of the very last, oldest, year
+  group) — literally what "de laatste pagina van het complete paspoort"
+  says, even though that reads unexpectedly (it lands deep in your oldest
+  year, not your most recent) — implemented literally rather than
+  silently "fixed" to something that felt more intuitive.
+- `PassportPage` gained: a `size` param (defaults to the data page's own
+  320×480 base size, so existing tests keep passing unchanged), a `year`
+  corner label (bottom-left, Cormorant 26 ink-green + "YEAR OF ENTRY"),
+  a `parallaxDx` param wired to a subtle ±24pt background-only drift on
+  the guilloché layer as the pager scrolls ("een subtiel parallax-
+  effect"), and the empty-slot tile now has the filled dark-green "+"
+  circle inside the dashed ring plus corrected copy ("Add your next
+  stamp" / a11y label "Add a visit", matching the Kwaliteit section's own
+  example) — neither existed before this round.
+- The 5 stamp designs' literal size/detail deviations flagged in the
+  original reuse audit are now applied: round seal shows month+year
+  ("Mar 2026"), not year alone; double-frame padding is 12×18 (was
+  16×10 — backwards from spec); oval is 200×106 with 30pt italic venue
+  text (was 190×100/26) — re-verified against a long name ("8½ Otto e
+  Mezzo Bombana") at the new size, same as the original tuning's own
+  precedent.
+- New-stamp entrance animation + auto-scroll-to-new-stamp — dropped
+  entirely when Round 1 rewrote this screen (there were no stamp pages
+  yet to scroll to) — is reinstated: `_knownStampIds`/`_newStampIds`
+  diffing lives in `PassportCollectionBody` again, computed off the
+  complete volume's own item list (index 0 of `_volumes`, always the
+  full set, per `buildPassportVolumes`' own contract) rather than
+  per-filter-type sets the way the pre-Round-1 screen did it, since there
+  are no more type filters to diff against.
+- Tapping a stamp reopens `RestaurantDetailScreen`/`HotelDetailScreen`/
+  `EventDetailScreen` — the exact dispatch the pre-Round-1 screen had,
+  reinstated verbatim. Tapping the empty slot opens Explore, an EXPLICIT
+  interim stand-in for Round 3's real "add a visit" flow (matching that
+  same pre-Round-1 screen's own fallback for the same tap target), not a
+  new placeholder invented for this round.
+- "Remember which page" (deferred from Round 1's own "remember open/
+  volume" note) is now real: `_bookPageIndex` lives in
+  `PassportCollectionBody`, resets to 0 only when `_open` targets a
+  DIFFERENT volume than before, and is otherwise restored exactly when
+  reopening the same volume you last closed — a deliberate simplification
+  over one memory slot per volume, which the booklet's own "close and
+  reopen the same book" usage pattern doesn't need.
+- `PassportPageDots` (new, in `widgets/passport_page_dots.dart`) — the
+  cover's own `_CoverDots` and this round's new pager dots were about to
+  become two near-identical private widgets, so it was promoted to one
+  shared public widget instead, the same threshold this codebase already
+  applied to `drawArcText`/`drawIconGlyph`.
+
+**A real overlap bug found and iterated on twice via this round's own
+preview harness** (not caught by `flutter analyze`/tests, same as every
+prior round's harness-only catches): a round seal and a double frame
+landing on adjacent anchors overlapped well past the design spec's
+"maximaal ~10%" — confirmed directly by screenshotting a dense (4-filled-
+slot) real page, something no unit test exercises. Two fixes, in order:
+  1. Retuned `_slotAnchors` from the old middle/bottom pair (tuned
+     against the pre-booklet, full-screen-width stamp page) to four
+     quadrant-leaning anchors, for more baseline separation on the
+     booklet's own narrower ~320-480pt page.
+  2. Added a proper three-pass layout to `_StampField.build` — resolve
+     each stamp's raw anchor+jitter position, run a few iterations of
+     PAIRWISE, SYMMETRIC relaxation moving any two stamps closer than the
+     spec's 10% allowance apart, and only clamp to the page bounds once,
+     at the very end. (The first version of this fix clamped-then-pushed
+     per stamp, which let the page-bounds clamp silently undo part of
+     every push — confirmed by re-testing the exact same overlapping
+     case and seeing it barely improve.)
+  Disclosed, not claimed as fully solved: an adversarial single page (6
+  same-year items, filling all 4 anchors) can still show a moderate
+  round-seal/double-frame overlap after both fixes — a genuine geometric
+  limit of fitting stamps up to ~212pt diagonal on a ~320-480pt page, not
+  an unexamined gap. Every screenshot taken kept all text/stars legible
+  despite the residual touching; shrinking the literal stamp sizes to
+  close this gap the rest of the way was considered and rejected (Round 1
+  deliberately keeps them unscaled — "a real passport's print doesn't
+  rescale").
+
+Screenshots taken and reviewed: 0/1/4(exact-page-boundary)/5/13(across 3
+years, mixing restaurant+hotel stamps) visits, a long name on every
+variant, the empty-slot tile, and the "exactly a full page then a wholly
+new trailing page" pagination edge case.
+
+**Still not built — Round 3, by design:**
+  - The 2-step "add a visit" flow (venue picker with wishlist/events/
+    search → date/score/note + live stamp preview + same-venue-same-date
+    duplicate check), wired to the stamp pages' entrance animation that
+    already exists (reinstated this round) and currently has nothing
+    real feeding it.
   - Tests: none yet — same deferral rationale as §0 and the friend-profile
     round (a preview harness catches real layout/lifecycle bugs a widget
     test's own fake-driven setup wouldn't; unit/widget tests come once the

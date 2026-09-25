@@ -354,21 +354,27 @@ class RoundSealPainter extends CustomPainter {
         eventFontSize: 9,
       );
 
-      final yearPainter = TextPainter(
+      // Month + year ("Mar 2026"), not year alone — the design spec's own
+      // literal example for this variant's centre text; Round 1's reuse
+      // audit flagged the year-only version as a deviation to fix here.
+      final dateLabel = '${_months[data.date.month - 1][0]}'
+          '${_months[data.date.month - 1].substring(1).toLowerCase()} '
+          '${data.date.year}';
+      final datePainter = TextPainter(
         text: TextSpan(
-          text: '${data.date.year}',
+          text: dateLabel,
           style: GoogleFonts.cormorantGaramond(
             color: ink,
-            fontSize: 17,
+            fontSize: 15,
             fontStyle: FontStyle.italic,
             fontWeight: FontWeight.w600,
           ),
         ),
         textDirection: TextDirection.ltr,
       )..layout();
-      yearPainter.paint(
+      datePainter.paint(
         canvas,
-        center + Offset(-yearPainter.width / 2, 8),
+        center + Offset(-datePainter.width / 2, 8),
       );
     });
   }
@@ -402,8 +408,11 @@ class DoubleFramePainter extends CustomPainter {
       canvas.drawRect(outer, framePaint);
       canvas.drawRect(inner, framePaint..strokeWidth = 1.4);
 
-      const horizontalPadding = 16.0;
-      const verticalPadding = 10.0;
+      // 12×18 per the design spec's own literal padding (Round 1's reuse
+      // audit flagged this variant's original 16×10 — more horizontal
+      // than vertical padding — as backwards from what's specced).
+      const horizontalPadding = 12.0;
+      const verticalPadding = 18.0;
       final contentRect = inner.deflate(0).translate(0, 0);
       final maxWidth = contentRect.width - horizontalPadding * 2;
       final centerX = contentRect.center.dx;
@@ -470,16 +479,20 @@ class DoubleFramePainter extends CustomPainter {
 
 // ── 3. Oval ───────────────────────────────────────────────────────────────
 
-/// A 190×100 oval stamp: an outer + inset-6 inner oval border, `CITY ·
+/// A 200×106 oval stamp: an outer + inset-6 inner oval border, `CITY ·
 /// CC`, the venue name in italic serif, then the award row — all laid out
 /// within a safely-inscribed rectangle so nothing crosses the oval's own
-/// curve.
+/// curve. Size and italic venue size (30, was 26) per the design spec's
+/// own literal numbers — Round 1's reuse audit flagged the original
+/// 190×100/26 as a deviation, re-verified against a long name ("Le
+/// Bernardin") at the new size before shipping this change, same as the
+/// original 0.78-width-fraction tuning below did for the old size.
 class OvalPainter extends CustomPainter {
   final StampPaintData data;
   const OvalPainter(this.data);
 
-  static const width = 190.0;
-  static const height = 100.0;
+  static const width = 200.0;
+  static const height = 106.0;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -538,7 +551,7 @@ class OvalPainter extends CustomPainter {
         text: data.venueName,
         style: GoogleFonts.cormorantGaramond(
           color: ink,
-          fontSize: 26,
+          fontSize: 30,
           fontStyle: FontStyle.italic,
           fontWeight: FontWeight.w600,
         ),
@@ -556,7 +569,7 @@ class OvalPainter extends CustomPainter {
         Offset(centerX - namePainter.width / 2, centerY - namePainter.height / 2 + 2),
       );
 
-      _drawAward(canvas, Offset(centerX, centerY + 28), data.award, ink);
+      _drawAward(canvas, Offset(centerX, centerY + 30), data.award, ink);
     });
   }
 
