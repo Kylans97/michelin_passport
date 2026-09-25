@@ -10,7 +10,6 @@ import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../../data/repositories/profile_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
 import '../passport_booklet_data.dart';
-import '../utils/passport_member_number.dart';
 import 'passport_cover.dart';
 import 'passport_data_page.dart';
 
@@ -41,7 +40,11 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   List<PassportVolume> _volumes = [];
   String _holderName = 'Member';
   String? _avatarUrl;
-  String _memberNumber = '';
+
+  // Null only for the handful of pre-existing test accounts
+  // 20260925120000_add_profiles_member_number.sql deliberately left
+  // unnumbered — never expected for a real member.
+  int? _memberNumber;
 
   bool _loading = true;
   bool _loadError = false;
@@ -100,6 +103,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
 
       var name = 'Member';
       String? avatarUrl;
+      int? memberNumber;
       try {
         // `visited` only feeds UserProfile's own current-award stats,
         // which this screen never reads (it computes ENTRIES/COUNTRIES/
@@ -112,6 +116,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
         );
         name = profile.name;
         avatarUrl = await _profileRepo.resolveAvatarUrl(profile.avatarPath);
+        memberNumber = profile.memberNumber;
       } catch (_) {
         // Cover/data page still render with the 'Member' + initials
         // fallback — a profile-load failure never blocks Passport itself.
@@ -126,7 +131,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
         _volumes = volumes;
         _holderName = name;
         _avatarUrl = avatarUrl;
-        _memberNumber = derivedMemberNumberPlaceholder(uid);
+        _memberNumber = memberNumber;
         _loading = false;
         _loadError = false;
         if (_openVolumeIndex >= volumes.length) _openVolumeIndex = 0;
@@ -173,6 +178,19 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     collectionFirstYear: null,
   );
 
+  // The cover's own original design aspect ratio (270×410) — every
+  // responsively-sized book (cover AND data page, so both stay the same
+  // shape while paging through) derives its height from this ratio times
+  // whatever width [_bookWidth] computes.
+  static const _aspect = PassportCoverFace.baseHeight / PassportCoverFace.baseWidth;
+
+  // "Bijna de volle breedte, met genoeg marge dat het nog als een boekje
+  // op een tafel leest" — 92% of the space already inside this screen's
+  // own page margin (not literally 100%, so there's still a visible inset
+  // beyond the page edge itself), clamped so it doesn't become an
+  // unreasonably large slab on a tablet/desktop/web window.
+  double _bookWidth(double maxWidth) => (maxWidth * 0.92).clamp(240.0, 480.0);
+
   @override
   Widget build(BuildContext context) {
     if (_loading) {
@@ -205,31 +223,39 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
           CsSpacing.pageHorizontal,
           CsSpacing.xl,
         ),
-        child: Center(
-          child: SingleChildScrollView(
-            child: _reduceMotion
-                ? _CrossFadeBook(
-                    isOpen: _isOpen,
-                    coverVolumes: coverVolumes,
-                    openVolume: openVolume,
-                    memberNumber: _memberNumber,
-                    holderName: _holderName,
-                    avatarUrl: _avatarUrl,
-                    onOpen: _open,
-                    onClose: _close,
-                  )
-                : _FlipBook(
-                    controller: _flipController,
-                    isOpen: _isOpen,
-                    coverVolumes: coverVolumes,
-                    openVolume: openVolume,
-                    memberNumber: _memberNumber,
-                    holderName: _holderName,
-                    avatarUrl: _avatarUrl,
-                    onOpen: _open,
-                    onClose: _close,
-                  ),
-          ),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final width = _bookWidth(constraints.maxWidth);
+            final bookSize = Size(width, width * _aspect);
+            return SingleChildScrollView(
+              child: Center(
+                child: _reduceMotion
+                    ? _CrossFadeBook(
+                        isOpen: _isOpen,
+                        coverVolumes: coverVolumes,
+                        openVolume: openVolume,
+                        memberNumber: _memberNumber,
+                        holderName: _holderName,
+                        avatarUrl: _avatarUrl,
+                        bookSize: bookSize,
+                        onOpen: _open,
+                        onClose: _close,
+                      )
+                    : _FlipBook(
+                        controller: _flipController,
+                        isOpen: _isOpen,
+                        coverVolumes: coverVolumes,
+                        openVolume: openVolume,
+                        memberNumber: _memberNumber,
+                        holderName: _holderName,
+                        avatarUrl: _avatarUrl,
+                        bookSize: bookSize,
+                        onOpen: _open,
+                        onClose: _close,
+                      ),
+              ),
+            );
+          },
         ),
       ),
     );
@@ -247,9 +273,10 @@ class _FlipBook extends StatelessWidget {
   final bool isOpen;
   final List<PassportVolume> coverVolumes;
   final PassportVolume openVolume;
-  final String memberNumber;
+  final int? memberNumber;
   final String holderName;
   final String? avatarUrl;
+  final Size bookSize;
   final ValueChanged<int> onOpen;
   final VoidCallback onClose;
 
@@ -261,6 +288,7 @@ class _FlipBook extends StatelessWidget {
     required this.memberNumber,
     required this.holderName,
     required this.avatarUrl,
+    required this.bookSize,
     required this.onOpen,
     required this.onClose,
   });
@@ -275,7 +303,10 @@ class _FlipBook extends StatelessWidget {
         final atRestOpen = controller.value == 1 && isOpen;
 
         return SizedBox(
-          height: math.max(_OpenBookFrame.height, PassportCoverFace.height + 24 * 5 + 40),
+          height: math.max(
+            bookSize.height + _OpenBookFrame.topbarAllowance,
+            bookSize.height + 24 * 5 + 40,
+          ),
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -289,6 +320,7 @@ class _FlipBook extends StatelessWidget {
                       holderName: holderName,
                       avatarUrl: avatarUrl,
                       memberNumber: memberNumber,
+                      size: bookSize,
                       onClose: onClose,
                     ),
                   ),
@@ -302,6 +334,7 @@ class _FlipBook extends StatelessWidget {
                         ? PassportCoverStack(
                             volumes: coverVolumes,
                             memberNumber: memberNumber,
+                            faceSize: bookSize,
                             onOpen: onOpen,
                           )
                         : Transform(
@@ -314,6 +347,7 @@ class _FlipBook extends StatelessWidget {
                               child: PassportCoverFace(
                                 volume: openVolume,
                                 memberNumber: memberNumber,
+                                size: bookSize,
                               ),
                             ),
                           ),
@@ -334,9 +368,10 @@ class _CrossFadeBook extends StatelessWidget {
   final bool isOpen;
   final List<PassportVolume> coverVolumes;
   final PassportVolume openVolume;
-  final String memberNumber;
+  final int? memberNumber;
   final String holderName;
   final String? avatarUrl;
+  final Size bookSize;
   final ValueChanged<int> onOpen;
   final VoidCallback onClose;
 
@@ -347,6 +382,7 @@ class _CrossFadeBook extends StatelessWidget {
     required this.memberNumber,
     required this.holderName,
     required this.avatarUrl,
+    required this.bookSize,
     required this.onOpen,
     required this.onClose,
   });
@@ -361,12 +397,14 @@ class _CrossFadeBook extends StatelessWidget {
             holderName: holderName,
             avatarUrl: avatarUrl,
             memberNumber: memberNumber,
+            size: bookSize,
             onClose: onClose,
           )
         : PassportCoverStack(
             key: const ValueKey('closed'),
             volumes: coverVolumes,
             memberNumber: memberNumber,
+            faceSize: bookSize,
             onOpen: onOpen,
           ),
   );
@@ -383,7 +421,8 @@ class _OpenBookFrame extends StatelessWidget {
   final PassportVolume volume;
   final String holderName;
   final String? avatarUrl;
-  final String memberNumber;
+  final int? memberNumber;
+  final Size size;
   final VoidCallback onClose;
 
   const _OpenBookFrame({
@@ -392,15 +431,18 @@ class _OpenBookFrame extends StatelessWidget {
     required this.holderName,
     required this.avatarUrl,
     required this.memberNumber,
+    required this.size,
     required this.onClose,
   });
 
-  static const double height = PassportDataPage.height + 52;
+  /// Topbar row + the gap above the page — added on top of the page's own
+  /// [size] height when reserving room for this whole frame.
+  static const double topbarAllowance = 52;
 
   @override
   Widget build(BuildContext context) => SizedBox(
-    width: PassportDataPage.width,
-    height: height,
+    width: size.width,
+    height: size.height + topbarAllowance,
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [

@@ -262,14 +262,71 @@ reviewed per explicit instruction, before this round was called done):
     between the two; the filled-tile reading was chosen for visual
     consistency with the rest of the app's own identity fallbacks.
 
-**Backend gap flagged, not silently worked around**: no `member_number`
-column exists on `profiles` (checked, not assumed). "MEMBER NO." and the
-MRZ strip's second line use `derivedMemberNumberPlaceholder` —
-deterministic from the user id via the stamp system's own stable hash, so
-it's at least constant across sessions, but explicitly NOT a real assigned
-number. Every call site is commented for replacement the moment a real
-column exists. User confirmed this placeholder approach for Round 1 rather
-than blocking on a migration.
+**Backend gap flagged, then resolved same day**: no `member_number` column
+existed on `profiles` at first (checked, not assumed). MEMBER NO./the MRZ
+strip briefly used `derivedMemberNumberPlaceholder`, a hash-derived stand-
+in — the user then asked for the real thing instead of leaving it as a
+placeholder. See "Follow-up, same date (round 1 revisions)" below for what
+shipped; the placeholder file is deleted, not kept alongside.
+
+**Follow-up, same date (Round 1 revisions)** — two changes requested after
+seeing Round 1's own screenshots, both shipped before Round 2 started:
+
+  - **Real member numbers.** `20260925120000_add_profiles_member_number
+    .sql` adds a permanent, sequential, never-reused `member_number` to
+    `profiles` — a real Postgres `SEQUENCE` behind a column `DEFAULT`, not
+    a computed `row_number()`/rank, specifically because a rank would
+    silently shift or reuse a number the moment an earlier row disappeared
+    (`profiles.id references auth.users(id) on delete cascade`, so a
+    deleted account's row is genuinely gone, not soft-deleted — a sequence
+    never reissues a value regardless). Backfilled the real pre-existing
+    accounts in `created_at` order (kylan = 1, confirmed against the live
+    data, not assumed). Two accounts (`test`, `kylan2`) were excluded from
+    numbering by explicit instruction — they read as throwaway/test
+    accounts, and a number once assigned is permanent, so the column is
+    NOT `NOT NULL` (those two rows keep `member_number = null`); a future
+    signup is unaffected since the `DEFAULT` only skips a column that's
+    explicitly specified, which the trigger never does. A `BEFORE UPDATE`
+    trigger (`prevent_member_number_change`) blocks changing an
+    already-assigned number (RLS's `profiles_update` policy only
+    restricts *which row* a user can touch, not *which column*, so this
+    is the only thing stopping a direct REST call from overwriting one)
+    but still allows filling in a currently-NULL one later, since "don't
+    number them now" was the actual ask, not "never number them." Real
+    count discrepancy caught before applying: the user said 10 existing
+    profiles, production actually had 11 — surfaced via
+    `supabase db query --linked` against live data rather than assumed
+    away, and the user resolved it (exclude `test`/`kylan2`) before the
+    migration was pushed. Validated twice in a rollback transaction
+    (including simulating a real new signup via `auth.users` and a
+    deliberate illegal update) before either `supabase db push --linked`.
+    `UserProfile.memberNumber` (nullable `int`) and every Dart call site
+    now read the real column; `passport_member_number.dart`'s placeholder
+    helper is deleted, not left dangling.
+  - **Bigger booklet.** The cover and data page were both hardcoded to
+    one fixed pixel size (270×410 / 320×480) — too small on a real device
+    per direct visual feedback ("dit is te klein... op een scherm anders
+    voelt dan in een screenshot"). Both now derive their size from a
+    `LayoutBuilder` in `PassportCollectionBody` itself: ~92% of the
+    screen's own available width (already inset by the page's existing
+    `CsSpacing.pageHorizontal` margin), clamped to [240, 480]pt, height
+    derived from the cover's own original 270:410 aspect ratio — so the
+    cover and the data page (and, in Round 2, every stamp page) always
+    render at the exact same [Size], keeping the booklet one consistent
+    physical object while paging through rather than changing shape
+    screen to screen. `PassportCoverFace`/`PassportCoverStack` gained a
+    `size`/`faceSize` parameter (defaulting to the original design size
+    for any caller that doesn't care); `PassportDataPage` needed no
+    change at all — it was already sized by whatever box its caller gives
+    it, never by its own now-renamed `baseWidth`/`baseHeight` reference
+    constants. Internal type sizes/logo size/border insets stay literal,
+    unscaled pixel values on purpose, the same reasoning a real printed
+    passport's own trim doesn't rescale with however far away you're
+    holding it — only the outer booklet grows. Verified via the preview
+    harness at 320/390/800px simulated screen widths (floor, typical
+    phone, wide-screen clamp) plus both member-number states (a real
+    number and the two-excluded-accounts' null case, confirmed to show an
+    honest "—" / MRZ filler rather than reviving the deleted placeholder).
 
 **Not built yet — Rounds 2 and 3, by design:**
   - Round 2: the swipeable stamp pages themselves (per-year grouped pages,
@@ -298,14 +355,10 @@ effect of another task"). Filled in as each screen is built.
 - **Friendship acceptance date** — not exposed by `get_friends`/
   `get_profile_identity`. Needed for "Friends since {month year}" on the
   Friend Profile header, still not shown anywhere.
-- **Member number** — `profiles` has no such column. The Passport
-  booklet's cover ("NO. {member}") and data page (MEMBER NO. + the MRZ
-  strip's serial) currently use `derivedMemberNumberPlaceholder` — a
-  deterministic, user-id-derived placeholder, explicitly not a real
-  assigned number. Needs: a `member_number` column (assigned at signup,
-  stable, human-shown), then every call site of
-  `passport/utils/passport_member_number.dart` swapped for the real
-  value.
+- ~~**Member number**~~ — RESOLVED same day by
+  `20260925120000_add_profiles_member_number.sql`. See "Follow-up, same
+  date (Round 1 revisions)" above for the full shape (sequence-backed,
+  immutable, two test accounts excluded).
 - **Dinner invitations** — no `dinner_invitations` table/RPC exists.
   Needs: the table itself (id, from_user, to_user, venue_id, venue_type,
   proposed_dates[], meal_type, note, status, chosen_date, created_at),

@@ -40,6 +40,15 @@ class UserProfile {
   final int twoStarCount;
   final int threeStarCount;
 
+  // The permanent, sequential, never-reused registration-order number
+  // assigned by 20260925120000_add_profiles_member_number.sql. Null only
+  // for the small number of pre-existing test/throwaway accounts that
+  // migration deliberately left unnumbered (see its own header comment) —
+  // every real signup from that migration onward always gets one via a
+  // column DEFAULT, so null is not an expected steady-state for a real
+  // member.
+  final int? memberNumber;
+
   const UserProfile({
     required this.id,
     this.username,
@@ -55,6 +64,7 @@ class UserProfile {
     required this.oneStarCount,
     required this.twoStarCount,
     required this.threeStarCount,
+    this.memberNumber,
   });
 
   /// [email] comes from the auth session, not the profile row —
@@ -81,6 +91,7 @@ class UserProfile {
       memberSince: _formatDate(profileRow['created_at'] as String?),
       avatarPath: profileRow['avatar_path'] as String?,
       homeCountryCode: profileRow['home_country_code'] as String?,
+      memberNumber: profileRow['member_number'] as int?,
       restaurantsVisited: visited.length,
       countriesVisited: visited.map((r) => r.countryName).toSet().length,
       citiesVisited: visited.map((r) => r.cityName).toSet().length,

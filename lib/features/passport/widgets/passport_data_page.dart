@@ -27,7 +27,11 @@ class PassportDataPage extends StatelessWidget {
   final PassportVolume volume;
   final String holderName;
   final String? avatarUrl;
-  final String memberNumber;
+
+  // Null only for the handful of pre-existing test accounts the member-
+  // number backfill deliberately left unnumbered — never expected for a
+  // real member.
+  final int? memberNumber;
 
   const PassportDataPage({
     super.key,
@@ -37,8 +41,14 @@ class PassportDataPage extends StatelessWidget {
     required this.memberNumber,
   });
 
-  static const double width = 320;
-  static const double height = 480;
+  // Reference/base design size — the actual rendered size is whatever box
+  // the caller lays this out in (see _OpenBookFrame in
+  // passport_collection_body.dart, which now sizes it to match the
+  // cover's own responsive size so the booklet reads as one consistent
+  // object while paging through it). Kept here as the size these literal
+  // spec pixel values were designed against.
+  static const double baseWidth = 320;
+  static const double baseHeight = 480;
 
   static const _cornerLeft = 4.0;
   static const _cornerRight = 14.0;
@@ -124,7 +134,10 @@ class PassportDataPage extends StatelessWidget {
                                 valueSize: 22,
                               ),
                               const SizedBox(height: 10),
-                              _Field(label: 'MEMBER NO.', value: memberNumber),
+                              _Field(
+                                label: 'MEMBER NO.',
+                                value: memberNumber == null ? '—' : '$memberNumber',
+                              ),
                               const SizedBox(height: 10),
                               _Field(label: 'VALID', value: _validLine),
                             ],
@@ -243,7 +256,8 @@ class PassportDataPage extends StatelessWidget {
     final e = volume.entries.toString().padLeft(2, '0');
     final c = volume.countries.toString().padLeft(2, '0');
     final s = volume.stars.toString().padLeft(2, '0');
-    return '$memberNumber<${e}E<${c}C<${s}S<<<<<<<<';
+    final member = memberNumber?.toString() ?? '<<<<<<';
+    return '$member<${e}E<${c}C<${s}S<<<<<<<<';
   }
 }
 

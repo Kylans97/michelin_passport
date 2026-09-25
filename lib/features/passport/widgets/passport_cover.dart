@@ -22,7 +22,11 @@ const _liningFigures = [FontFeature.enable('lnum')];
 /// about explicitly for this screen.
 class PassportCoverFace extends StatelessWidget {
   final PassportVolume volume;
-  final String memberNumber;
+
+  // Null only for the handful of pre-existing test accounts the member-
+  // number backfill deliberately left unnumbered (see the migration's own
+  // header) — never expected for a real member.
+  final int? memberNumber;
 
   /// 0 = the true front cover (full color, full contrast). Each step back
   /// in the physical stack lightens the face slightly toward
@@ -30,15 +34,26 @@ class PassportCoverFace extends StatelessWidget {
   /// for why depth is capped rather than unbounded.
   final int depth;
 
+  /// The rendered footprint — the same [Size] the data page (and, in
+  /// Round 2, every stamp page) is given, so the booklet reads as one
+  /// consistent physical object while paging through it rather than
+  /// changing shape from screen to screen. Defaults to the original
+  /// design size for callers (tests, older previews) that don't care.
+  final Size size;
+
   const PassportCoverFace({
     super.key,
     required this.volume,
     required this.memberNumber,
     this.depth = 0,
+    this.size = const Size(baseWidth, baseHeight),
   });
 
-  static const double width = 270;
-  static const double height = 410;
+  /// The design's own reference size, at the original (pre "make it
+  /// bigger") scale — kept as the aspect-ratio source every caller that
+  /// computes a responsive [size] derives from, and as the default above.
+  static const double baseWidth = 270;
+  static const double baseHeight = 410;
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +71,8 @@ class PassportCoverFace extends StatelessWidget {
           : null,
       excludeSemantics: depth != 0,
       child: Container(
-        width: width,
-        height: height,
+        width: size.width,
+        height: size.height,
         decoration: BoxDecoration(
           color: faceColor,
           borderRadius: const BorderRadius.only(
@@ -159,7 +174,7 @@ class PassportCoverFace extends StatelessWidget {
                         ),
                       ),
                       Text(
-                        'NO. $memberNumber',
+                        memberNumber == null ? 'NO. —' : 'NO. $memberNumber',
                         style: GoogleFonts.inter(
                           color: ivory,
                           fontSize: 10.5,
@@ -253,14 +268,24 @@ class _CoverBorderPainter extends CustomPainter {
 /// disclosed rather than silently assumed away.
 class PassportCoverStack extends StatefulWidget {
   final List<PassportVolume> volumes;
-  final String memberNumber;
+  final int? memberNumber;
   final ValueChanged<int> onOpen;
+
+  /// The front face's rendered size — see [PassportCoverFace.size]'s own
+  /// doc comment. Every peeking sliver behind it uses this same size too;
+  /// only their position/scale differs by depth, never their own
+  /// intrinsic footprint.
+  final Size faceSize;
 
   const PassportCoverStack({
     super.key,
     required this.volumes,
     required this.memberNumber,
     required this.onOpen,
+    this.faceSize = const Size(
+      PassportCoverFace.baseWidth,
+      PassportCoverFace.baseHeight,
+    ),
   });
 
   @override
@@ -282,7 +307,7 @@ class PassportCoverStackState extends State<PassportCoverStack> {
     final visible = widget.volumes.length - _selected;
     final peekCount = (visible - 1).clamp(0, _maxPeek);
     const peekStep = 24.0;
-    final stackHeight = PassportCoverFace.height + peekStep * peekCount;
+    final stackHeight = widget.faceSize.height + peekStep * peekCount;
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -298,7 +323,7 @@ class PassportCoverStackState extends State<PassportCoverStack> {
           },
           child: SizedBox(
             height: stackHeight,
-            width: PassportCoverFace.width + 20,
+            width: widget.faceSize.width + 20,
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: [
@@ -326,6 +351,7 @@ class PassportCoverStackState extends State<PassportCoverStack> {
                               child: PassportCoverFace(
                                 volume: widget.volumes[_selected],
                                 memberNumber: widget.memberNumber,
+                                size: widget.faceSize,
                               ),
                             )
                           : GestureDetector(
@@ -334,6 +360,7 @@ class PassportCoverStackState extends State<PassportCoverStack> {
                                 volume: widget.volumes[_selected + depth],
                                 memberNumber: widget.memberNumber,
                                 depth: depth,
+                                size: widget.faceSize,
                               ),
                             ),
                     ),
