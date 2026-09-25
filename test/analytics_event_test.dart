@@ -42,6 +42,9 @@ void main() {
         AnalyticsEvent.passportItemRemoved: 'passport_item_removed',
         AnalyticsEvent.friendsSignalOpened: 'friends_signal_opened',
         AnalyticsEvent.newsArticleOpened: 'news_article_opened',
+        AnalyticsEvent.venueInviteSent: 'venue_invite_sent',
+        AnalyticsEvent.venueInviteAccepted: 'venue_invite_accepted',
+        AnalyticsEvent.venueInviteDeclined: 'venue_invite_declined',
       };
 
       for (final event in AnalyticsEvent.values) {

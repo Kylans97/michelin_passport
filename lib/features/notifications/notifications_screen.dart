@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/analytics/analytics_event.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/analytics_service.dart';
+import '../../core/analytics/supabase_analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/notifications_repository.dart';
+import '../../data/repositories/venue_invite_repository.dart';
 import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
 import '../friends/widgets/identity_row.dart';
@@ -22,7 +27,12 @@ import '../friends/widgets/identity_row.dart';
 /// new" visual distinction this screen exists to show would disappear the
 /// instant it appeared.
 class NotificationsScreen extends StatefulWidget {
-  const NotificationsScreen({super.key});
+  // Optional DI seam, matching NewsArticleDetailScreen's established
+  // convention — defaults to the real SupabaseAnalyticsService so a test
+  // can supply a fake without needing a live Supabase session.
+  final AnalyticsService? analytics;
+
+  const NotificationsScreen({super.key, this.analytics});
 
   @override
   State<NotificationsScreen> createState() => _NotificationsScreenState();
@@ -33,6 +43,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     Supabase.instance.client,
   );
   late final _friendRepo = FriendshipRepository(Supabase.instance.client);
+  late final _venueInviteRepo = VenueInviteRepository(Supabase.instance.client);
+  late final AnalyticsService _analytics =
+      widget.analytics ?? SupabaseAnalyticsService(Supabase.instance.client);
 
   late Future<List<AppNotification>> _future;
 
@@ -54,13 +67,50 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     });
   }
 
+  AnalyticsEntityType? _inviteEntityType(AppNotification n) =>
+      switch (n.inviteVenueType) {
+        'restaurant' => AnalyticsEntityType.restaurant,
+        'hotel' => AnalyticsEntityType.hotel,
+        _ => null,
+      };
+
   Future<void> _accept(AppNotification n) async {
-    await _friendRepo.acceptRequest(n.subjectId);
+    switch (n.type) {
+      case AppNotificationType.friendRequestReceived:
+        await _friendRepo.acceptRequest(n.subjectId);
+      case AppNotificationType.venueInviteReceived:
+        await _venueInviteRepo.acceptInvite(n.subjectId);
+        _analytics.track(
+          AnalyticsEvent.venueInviteAccepted,
+          AnalyticsProperties(
+            inviteId: n.subjectId,
+            entityType: _inviteEntityType(n),
+            entityId: n.inviteVenueId,
+          ),
+        );
+      default:
+        return;
+    }
     _load();
   }
 
   Future<void> _decline(AppNotification n) async {
-    await _friendRepo.declineRequest(n.subjectId);
+    switch (n.type) {
+      case AppNotificationType.friendRequestReceived:
+        await _friendRepo.declineRequest(n.subjectId);
+      case AppNotificationType.venueInviteReceived:
+        await _venueInviteRepo.declineInvite(n.subjectId);
+        _analytics.track(
+          AnalyticsEvent.venueInviteDeclined,
+          AnalyticsProperties(
+            inviteId: n.subjectId,
+            entityType: _inviteEntityType(n),
+            entityId: n.inviteVenueId,
+          ),
+        );
+      default:
+        return;
+    }
     _load();
   }
 
@@ -245,6 +295,139 @@ class _NotificationRow extends StatelessWidget {
             ],
           ),
         );
+      case AppNotificationType.venueInviteReceived:
+      case AppNotificationType.venueInviteAccepted:
+      case AppNotificationType.venueInviteDeclined:
+        return _VenueInviteContent(
+          notification: notification,
+          onTapOther: onTapOther,
+          onAccept: onAccept,
+          onDecline: onDecline,
+        );
+    }
+  }
+}
+
+/// The three venue-invite notification types share one layout: the other
+/// participant's identity, then an indented line describing what
+/// happened, then (received only) either Accept/Decline or a status
+/// label. An expired invite is never hidden or removed — only its
+/// Accept/Decline buttons are replaced with a neutral "Expired" label,
+/// per explicit product requirement (an invite that silently vanished
+/// would read as "I missed something", not "this lapsed").
+class _VenueInviteContent extends StatelessWidget {
+  final AppNotification notification;
+  final VoidCallback? onTapOther;
+  final VoidCallback onAccept;
+  final VoidCallback onDecline;
+
+  const _VenueInviteContent({
+    required this.notification,
+    required this.onTapOther,
+    required this.onAccept,
+    required this.onDecline,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final venueName = notification.inviteVenueName ?? 'a place';
+    final city = notification.inviteVenueCity;
+    final note = notification.inviteNote?.trim();
+    final isReceived = notification.type == AppNotificationType.venueInviteReceived;
+
+    final description = switch (notification.type) {
+      AppNotificationType.venueInviteReceived =>
+        'Suggests going to $venueName${city != null ? ' in $city' : ''}',
+      AppNotificationType.venueInviteAccepted => 'Said yes to $venueName',
+      AppNotificationType.venueInviteDeclined => "Can't make it to $venueName",
+      _ => '',
+    };
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        IdentityRow(
+          label: notification.otherLabel,
+          username: isReceived ? notification.otherUsername : null,
+          avatarUrl: notification.otherAvatarUrl,
+          onTap: onTapOther,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(
+            left: 56,
+            bottom: CsSpacing.sm,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                description,
+                style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+              ),
+              if (isReceived && note != null && note.isNotEmpty) ...[
+                const SizedBox(height: 4),
+                Text(
+                  '"$note"',
+                  style: CsTypography.body.copyWith(
+                    color: AppColors.taupe,
+                    fontStyle: FontStyle.italic,
+                  ),
+                ),
+              ],
+              if (isReceived) ...[
+                const SizedBox(height: 6),
+                _receivedStatus(context),
+              ],
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _receivedStatus(BuildContext context) {
+    switch (notification.inviteStatus) {
+      case 'pending':
+        if (notification.inviteIsExpired) {
+          return Text(
+            'Expired',
+            style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+          );
+        }
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextButton(
+              onPressed: onDecline,
+              child: Text(
+                'Decline',
+                style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+              ),
+            ),
+            TextButton(
+              onPressed: onAccept,
+              child: Text(
+                'Accept',
+                style: CsTypography.metadata.copyWith(
+                  color: AppColors.forestGreen,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        );
+      case 'accepted':
+        return Text(
+          'You accepted',
+          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+        );
+      case 'declined':
+        return Text(
+          'You declined',
+          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+        );
+      default:
+        return const SizedBox.shrink();
     }
   }
 }

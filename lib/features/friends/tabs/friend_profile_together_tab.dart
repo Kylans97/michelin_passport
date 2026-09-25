@@ -13,7 +13,8 @@ import '../widgets/friend_profile_widgets.dart';
 /// Tab 3: shared wishlist items (each with its own "Plan" pill), then the
 /// friend's own-only items (each with a "+" that saves it to the viewer's
 /// wishlist and moves it up into the shared section), then a sticky
-/// "Plan a dinner with {name}" button pinned to the bottom of the tab.
+/// "Suggest going together" button pinned to the bottom of the tab — both
+/// open the real venue-invite flow (`showPlanDinnerSheet`), not a preview.
 ///
 /// Stateful (unlike the other two tabs) because the +/move interaction is
 /// real, local, optimistic state — the shared/only-theirs split changes
@@ -188,7 +189,7 @@ class _FriendProfileTogetherTabState extends State<FriendProfileTogetherTab> {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
-                  child: Text('Plan a dinner with ${widget.data.friendName}'),
+                  child: const Text('Suggest going together'),
                 ),
               ),
             ),
@@ -294,7 +295,7 @@ class _PlanPill extends StatelessWidget {
           borderRadius: BorderRadius.circular(17),
         ),
         child: Text(
-          'Plan',
+          'Suggest',
           style: CsTypography.editorialLabel().copyWith(color: AppColors.textOnDark),
         ),
       ),

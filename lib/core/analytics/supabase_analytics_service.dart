@@ -6,23 +6,27 @@ import 'analytics_properties.dart';
 import 'analytics_service.dart';
 
 /// The narrow venue-link-click-tracking path, plus News V1's own equally
-/// narrow "article opened" tracking — NOT the general analytics vendor
-/// this app's "no vendor selected" contract (EVENTS_V2_ANALYTICS_
-/// CONTRACT.md) is waiting on. This implementation only ever writes
-/// [AnalyticsEvent.venueBookingLinkOpened] and
-/// [AnalyticsEvent.newsArticleOpened]; every other [AnalyticsEvent] is
-/// silently ignored, matching the explicit "alleen dit, niet de volledige
+/// narrow "article opened" tracking, plus venue-invite send/respond
+/// tracking — NOT the general analytics vendor this app's "no vendor
+/// selected" contract (EVENTS_V2_ANALYTICS_CONTRACT.md) is waiting on.
+/// This implementation only ever writes [AnalyticsEvent.venueBookingLinkOpened],
+/// [AnalyticsEvent.newsArticleOpened], and [AnalyticsEvent.venueInviteSent]/
+/// `Accepted`/`Declined`; every other [AnalyticsEvent] is silently
+/// ignored, matching the explicit "alleen dit, niet de volledige
 /// analyticslaag" scope this class was built under. Injected only on
-/// Restaurant/Hotel Detail and News Article Detail — every other screen
-/// still uses [NoopAnalyticsService].
+/// Restaurant/Hotel Detail, News Article Detail, the "suggest going
+/// together" sheet, and Notifications' accept/decline handlers — every
+/// other screen still uses [NoopAnalyticsService].
 ///
 /// Writes to `public.venue_link_clicks`
-/// (supabase/migrations/20260829120000_add_venue_link_click_tracking.sql)
-/// and `public.news_article_opens`
-/// (supabase/migrations/20260918140000_add_news_v1.sql) — both tables
-/// with no select policy for any client role at all ("deze data is van
-/// mij, niet van de gebruiker"). This service only ever inserts; it never
-/// reads either table back.
+/// (supabase/migrations/20260829120000_add_venue_link_click_tracking.sql),
+/// `public.news_article_opens`
+/// (supabase/migrations/20260918140000_add_news_v1.sql), and
+/// `public.venue_invite_events`
+/// (supabase/migrations/20260925150000_add_venue_invite_event_tracking.sql)
+/// — all three tables with no select policy for any client role at all
+/// ("deze data is van mij, niet van de gebruiker"). This service only
+/// ever inserts; it never reads any of them back.
 class SupabaseAnalyticsService implements AnalyticsService {
   SupabaseAnalyticsService(this._client);
 
@@ -50,6 +54,12 @@ class SupabaseAnalyticsService implements AnalyticsService {
         _trackVenueBookingLinkOpened(properties);
       case AnalyticsEvent.newsArticleOpened:
         _trackNewsArticleOpened(properties);
+      case AnalyticsEvent.venueInviteSent:
+        _trackVenueInviteEvent('sent', properties);
+      case AnalyticsEvent.venueInviteAccepted:
+        _trackVenueInviteEvent('accepted', properties);
+      case AnalyticsEvent.venueInviteDeclined:
+        _trackVenueInviteEvent('declined', properties);
       default:
         return;
     }
@@ -101,6 +111,50 @@ class SupabaseAnalyticsService implements AnalyticsService {
     if (articleId == null) return;
 
     unawaited(_insertNewsArticleOpen(articleId: articleId));
+  }
+
+  void _trackVenueInviteEvent(String action, AnalyticsProperties? properties) {
+    final inviteId = properties?.inviteId;
+    final venueType = properties?.entityType;
+    final venueId = properties?.entityId;
+
+    assert(
+      inviteId != null && venueType != null && venueId != null,
+      'venueInvite$action requires inviteId, entityType and entityId',
+    );
+    if (inviteId == null || venueType == null || venueId == null) return;
+
+    unawaited(
+      _insertVenueInviteEvent(
+        inviteId: inviteId,
+        action: action,
+        venueType: venueType,
+        venueId: venueId,
+      ),
+    );
+  }
+
+  Future<void> _insertVenueInviteEvent({
+    required String inviteId,
+    required String action,
+    required AnalyticsEntityType venueType,
+    required String venueId,
+  }) async {
+    final userId = _client.auth.currentUser?.id;
+    if (userId == null) return; // Signed out — RLS would reject it anyway.
+
+    try {
+      await _client.from('venue_invite_events').insert({
+        'user_id': userId,
+        'invite_id': inviteId,
+        'action': action,
+        'venue_type': venueType.wireName,
+        'venue_id': venueId,
+      });
+    } catch (error, stackTrace) {
+      debugPrint('VENUE INVITE EVENT TRACK FAILED: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
   }
 
   Future<void> _insertClick({

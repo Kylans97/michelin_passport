@@ -103,7 +103,24 @@ enum AnalyticsEvent {
   /// see `SupabaseAnalyticsService`, which writes this to
   /// `news_article_opens`
   /// (20260918140000_add_news_v1.sql).
-  newsArticleOpened;
+  newsArticleOpened,
+
+  // ── Venue invites ("suggest going together") ───────────────────────────
+  /// Fired only after `send_venue_invite` succeeds. Carries
+  /// [AnalyticsProperties.inviteId], [AnalyticsProperties.entityType]
+  /// (`restaurant`/`hotel`) and [AnalyticsProperties.entityId] (the
+  /// venue) — all three REQUIRED. See `SupabaseAnalyticsService`, which
+  /// writes this to `venue_invite_events`
+  /// (20260925150000_add_venue_invite_event_tracking.sql).
+  venueInviteSent,
+
+  /// Fired only after `accept_venue_invite` succeeds — the recipient's
+  /// own action, same required properties as [venueInviteSent].
+  venueInviteAccepted,
+
+  /// Fired only after `decline_venue_invite` succeeds — same required
+  /// properties as [venueInviteSent].
+  venueInviteDeclined;
 
   /// The canonical `snake_case` wire name — the only place any of these
   /// strings is spelled out. A future provider adapter (or the debug
@@ -141,6 +158,9 @@ enum AnalyticsEvent {
     AnalyticsEvent.passportItemRemoved => 'passport_item_removed',
     AnalyticsEvent.friendsSignalOpened => 'friends_signal_opened',
     AnalyticsEvent.newsArticleOpened => 'news_article_opened',
+    AnalyticsEvent.venueInviteSent => 'venue_invite_sent',
+    AnalyticsEvent.venueInviteAccepted => 'venue_invite_accepted',
+    AnalyticsEvent.venueInviteDeclined => 'venue_invite_declined',
   };
 }
 

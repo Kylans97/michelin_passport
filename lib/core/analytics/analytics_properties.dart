@@ -203,6 +203,7 @@ class AnalyticsProperties {
     this.linkDestination,
     this.sourceScreen,
     this.eventId,
+    this.inviteId,
   });
 
   /// The catalogue entity type this action concerns (Follow's target,
@@ -299,6 +300,14 @@ class AnalyticsProperties {
   /// venue link surfaced from Event Detail.
   final String? eventId;
 
+  /// [AnalyticsEvent.venueInviteSent]/`Accepted`/`Declined` only,
+  /// REQUIRED — the `venue_invites.id` row this event is about. The
+  /// venue itself reuses [entityType]/[entityId] rather than a dedicated
+  /// property pair, matching [AnalyticsEvent.newsArticleOpened]'s own
+  /// precedent for reusing the generic entity fields instead of growing a
+  /// new one-off pair per event.
+  final String? inviteId;
+
   /// Serializes to wire-safe key/value pairs — every enum becomes its
   /// [wireName], every null field is omitted entirely rather than sent as
   /// an explicit null. Used by [DebugPrintAnalyticsService] today, and is
@@ -331,6 +340,7 @@ class AnalyticsProperties {
     put('link_destination', linkDestination?.wireName);
     put('source_screen', sourceScreen?.wireName);
     put('event_id', eventId);
+    put('invite_id', inviteId);
     return map;
   }
 }

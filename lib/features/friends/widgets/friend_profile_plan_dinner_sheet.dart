@@ -1,38 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../../core/analytics/analytics_event.dart';
+import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/analytics/analytics_service.dart';
+import '../../../core/analytics/supabase_analytics_service.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_editorial_glyphs.dart';
 import '../../../core/widgets/cs_invitation_card.dart';
 import '../../../core/widgets/cs_ornament_divider.dart';
+import '../../../data/repositories/venue_invite_repository.dart';
 import '../../../models/passport_venue.dart';
 import '../friend_profile_data.dart';
-import '../friend_profile_dinner_invitation.dart';
 import 'friend_profile_venue_picker_sheet.dart';
 
-const _weekdays = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
-const _months = [
-  'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
-  'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC',
-];
-
-/// "Plan a dinner" (7d) — a modal sheet. [preselected] pre-fills the venue
-/// (Together's "Plan" pill on a specific item); null means "nothing
-/// chosen yet" (Together's own sticky primary button), which opens the
-/// venue picker immediately before the rest of the sheet ever shows.
+/// "Suggest going together" — a modal sheet. [preselected] pre-fills the
+/// venue (Together's per-item "Plan" pill); null means "nothing chosen
+/// yet" (Together's own sticky primary button), which opens the venue
+/// picker immediately before the rest of the sheet ever shows.
 ///
-/// Returns the [DinnerInvitation] that was "sent" (see that class's own
-/// doc — this is a stub, nothing is actually persisted anywhere yet) or
-/// null if the flow was cancelled — the caller uses that to decide
-/// whether to show the confirmation toast, matching "de sheet sluit, en
-/// een toast" being two separate steps owned by two different widgets.
-Future<DinnerInvitation?> showPlanDinnerSheet(
+/// Deliberately narrow: one venue (already on the viewer's wishlist) plus
+/// an optional short note — no dates, no meal type. This is a signal
+/// ("this is on my list too, shall we go together?"), not a scheduling
+/// tool; if the recipient accepts, the two of them arrange the actual
+/// visit themselves outside this flow (see `send_venue_invite`/
+/// `accept_venue_invite`'s own migration comments —
+/// supabase/migrations/20260925140000_add_venue_invites.sql).
+///
+/// Returns `true` once the invite has actually been sent (a real
+/// `venue_invites` row, not a client-local stub — see
+/// EDITORIAL_REDESIGN_TRACKING.md for the "From your events"-style
+/// correction this replaces), `false`/null if the flow was cancelled.
+Future<bool> showPlanDinnerSheet(
   BuildContext context, {
   required FriendProfileLayoutData data,
   required String viewerUserId,
   PassportVenue? preselected,
-}) {
-  return showModalBottomSheet<DinnerInvitation?>(
+}) async {
+  final sent = await showModalBottomSheet<bool>(
     context: context,
     backgroundColor: AppColors.background,
     isScrollControlled: true,
@@ -45,6 +51,7 @@ Future<DinnerInvitation?> showPlanDinnerSheet(
       initialVenue: preselected,
     ),
   );
+  return sent ?? false;
 }
 
 class FriendProfilePlanDinnerSheet extends StatefulWidget {
@@ -52,11 +59,19 @@ class FriendProfilePlanDinnerSheet extends StatefulWidget {
   final String viewerUserId;
   final PassportVenue? initialVenue;
 
+  // Optional DI seam, matching NewsArticleDetailScreen's established
+  // convention — defaults to the real repository/service so a test can
+  // supply fakes without needing a live Supabase session.
+  final VenueInviteRepository? repo;
+  final AnalyticsService? analytics;
+
   const FriendProfilePlanDinnerSheet({
     super.key,
     required this.data,
     required this.viewerUserId,
     required this.initialVenue,
+    this.repo,
+    this.analytics,
   });
 
   @override
@@ -65,14 +80,15 @@ class FriendProfilePlanDinnerSheet extends StatefulWidget {
 }
 
 class _FriendProfilePlanDinnerSheetState extends State<FriendProfilePlanDinnerSheet> {
+  late final VenueInviteRepository _repo =
+      widget.repo ?? VenueInviteRepository(Supabase.instance.client);
+  late final AnalyticsService _analytics =
+      widget.analytics ?? SupabaseAnalyticsService(Supabase.instance.client);
+
   PassportVenue? _venue;
-  final List<DateTime> _selectedDates = [];
-  DinnerMealType _mealType = DinnerMealType.dinner;
   final _noteCtrl = TextEditingController();
-  late final List<DateTime> _upcomingDates = List.generate(
-    21,
-    (i) => DateTime.now().add(Duration(days: i + 1)),
-  );
+  bool _sending = false;
+  String? _error;
 
   @override
   void initState() {
@@ -103,41 +119,51 @@ class _FriendProfilePlanDinnerSheetState extends State<FriendProfilePlanDinnerSh
     }
   }
 
-  void _toggleDate(DateTime date) {
-    setState(() {
-      final existing = _selectedDates.indexWhere((d) => _isSameDay(d, date));
-      if (existing != -1) {
-        _selectedDates.removeAt(existing);
-      } else if (_selectedDates.length < 3) {
-        _selectedDates.add(date);
-      }
-    });
-  }
-
-  bool _isSameDay(DateTime a, DateTime b) =>
-      a.year == b.year && a.month == b.month && a.day == b.day;
-
-  void _send() {
+  Future<void> _send() async {
     final venue = _venue;
-    if (venue == null || _selectedDates.isEmpty) return;
-    final venueId = switch (venue) {
+    if (venue == null || _sending) return;
+    setState(() {
+      _sending = true;
+      _error = null;
+    });
+
+    final entityType = venue is HotelVenue
+        ? AnalyticsEntityType.hotel
+        : AnalyticsEntityType.restaurant;
+    final entityId = switch (venue) {
       RestaurantVenue(:final restaurant) => restaurant.id,
       HotelVenue(:final hotel) => hotel.id,
     };
-    final invitation = DinnerInvitation(
-      // Stub only — see DinnerInvitation's own doc. No real id space
-      // exists yet, so this is a client-local placeholder, never sent
-      // anywhere that would need it to be a real, collision-free id.
-      id: 'local-${DateTime.now().microsecondsSinceEpoch}',
-      fromUserId: widget.viewerUserId,
-      toUserId: widget.data.identity.id,
-      venueId: venueId,
-      venueIsHotel: venue is HotelVenue,
-      proposedDates: List.of(_selectedDates)..sort(),
-      mealType: _mealType,
-      note: _noteCtrl.text.trim().isEmpty ? null : _noteCtrl.text.trim(),
-    );
-    Navigator.pop(context, invitation);
+
+    try {
+      final inviteId = await _repo.sendInvite(
+        toUserId: widget.data.identity.id,
+        venue: venue,
+        note: _noteCtrl.text.trim().isEmpty ? null : _noteCtrl.text.trim(),
+      );
+      _analytics.track(
+        AnalyticsEvent.venueInviteSent,
+        AnalyticsProperties(
+          inviteId: inviteId,
+          entityType: entityType,
+          entityId: entityId,
+        ),
+      );
+      if (!mounted) return;
+      Navigator.pop(context, true);
+    } on PostgrestException catch (e) {
+      if (!mounted) return;
+      setState(() {
+        _sending = false;
+        _error = e.message;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _sending = false;
+        _error = 'Could not send. Please try again.';
+      });
+    }
   }
 
   @override
@@ -148,9 +174,9 @@ class _FriendProfilePlanDinnerSheetState extends State<FriendProfilePlanDinnerSh
       child: Padding(
         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
         child: DraggableScrollableSheet(
-          initialChildSize: 0.9,
-          minChildSize: 0.5,
-          maxChildSize: 0.95,
+          initialChildSize: 0.7,
+          minChildSize: 0.4,
+          maxChildSize: 0.9,
           expand: false,
           builder: (context, scrollController) => Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -189,7 +215,7 @@ class _FriendProfilePlanDinnerSheetState extends State<FriendProfilePlanDinnerSh
                     Expanded(
                       child: Center(
                         child: Text(
-                          'NEW INVITATION',
+                          'GO TOGETHER',
                           style: CsTypography.editorialLabel().copyWith(
                             color: AppColors.textSecondary,
                           ),
@@ -221,56 +247,6 @@ class _FriendProfilePlanDinnerSheetState extends State<FriendProfilePlanDinnerSh
                             ),
                           ),
                           const SizedBox(height: CsSpacing.xl),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                'PROPOSE DATES',
-                                style: CsTypography.editorialLabel().copyWith(
-                                  color: AppColors.textSecondary,
-                                ),
-                              ),
-                              Text(
-                                'Pick up to 3',
-                                style: CsTypography.editorialLabel().copyWith(
-                                  color: AppColors.taupe,
-                                ),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: CsSpacing.sm),
-                          SizedBox(
-                            height: 70,
-                            child: ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: _upcomingDates.length,
-                              separatorBuilder: (_, _) => const SizedBox(width: 8),
-                              itemBuilder: (context, i) {
-                                final date = _upcomingDates[i];
-                                final selected = _selectedDates.any((d) => _isSameDay(d, date));
-                                return _DateTile(
-                                  date: date,
-                                  selected: selected,
-                                  onTap: () => _toggleDate(date),
-                                );
-                              },
-                            ),
-                          ),
-                          const SizedBox(height: CsSpacing.lg),
-                          Row(
-                            children: [
-                              for (final meal in DinnerMealType.values) ...[
-                                if (meal != DinnerMealType.values.first)
-                                  const SizedBox(width: CsSpacing.sm),
-                                _MealChip(
-                                  label: meal.label,
-                                  selected: _mealType == meal,
-                                  onTap: () => setState(() => _mealType = meal),
-                                ),
-                              ],
-                            ],
-                          ),
-                          const SizedBox(height: CsSpacing.lg),
                           Container(height: 1, color: AppColors.hairlineOnPaper),
                           TextField(
                             controller: _noteCtrl,
@@ -279,7 +255,7 @@ class _FriendProfilePlanDinnerSheetState extends State<FriendProfilePlanDinnerSh
                               color: AppColors.textPrimary,
                             ),
                             decoration: InputDecoration(
-                              hintText: 'Add a note…',
+                              hintText: 'Add a note… (optional)',
                               hintStyle: CsTypography.editorialTitle(
                                 size: 16,
                                 italic: true,
@@ -291,11 +267,19 @@ class _FriendProfilePlanDinnerSheetState extends State<FriendProfilePlanDinnerSh
                             ),
                           ),
                           Container(height: 1, color: AppColors.hairlineOnPaper),
+                          if (_error != null) ...[
+                            const SizedBox(height: CsSpacing.md),
+                            Text(
+                              _error!,
+                              textAlign: TextAlign.center,
+                              style: CsTypography.body.copyWith(color: AppColors.error),
+                            ),
+                          ],
                           const SizedBox(height: CsSpacing.xl),
                           SizedBox(
                             height: 52,
                             child: ElevatedButton(
-                              onPressed: _selectedDates.isEmpty ? null : _send,
+                              onPressed: _sending ? null : _send,
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: AppColors.forestGreen,
                                 foregroundColor: AppColors.textOnDark,
@@ -306,7 +290,16 @@ class _FriendProfilePlanDinnerSheetState extends State<FriendProfilePlanDinnerSh
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
-                              child: const Text('Send invitation'),
+                              child: _sending
+                                  ? const SizedBox(
+                                      width: 20,
+                                      height: 20,
+                                      child: CircularProgressIndicator(
+                                        strokeWidth: 2,
+                                        color: AppColors.textOnDark,
+                                      ),
+                                    )
+                                  : const Text('Send'),
                             ),
                           ),
                         ],
@@ -352,7 +345,7 @@ class _InvitationPreview extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            '$viewerLabel invites $friendName to dinner at',
+            '$viewerLabel wants to go with $friendName to',
             textAlign: TextAlign.center,
             style: CsTypography.editorialLead().copyWith(color: AppColors.taupe),
           ),
@@ -404,87 +397,4 @@ class _InvitationPreview extends StatelessWidget {
       ),
     );
   }
-}
-
-class _DateTile extends StatelessWidget {
-  final DateTime date;
-  final bool selected;
-  final VoidCallback onTap;
-
-  const _DateTile({required this.date, required this.selected, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(4),
-      child: Container(
-        width: 58,
-        padding: const EdgeInsets.symmetric(vertical: 8),
-        decoration: BoxDecoration(
-          color: selected ? AppColors.forestGreen : AppColors.card,
-          borderRadius: BorderRadius.circular(4),
-          border: selected ? null : Border.all(color: AppColors.hairlineOnPaper),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              _weekdays[date.weekday - 1],
-              style: CsTypography.editorialLabel(size: 9).copyWith(
-                color: selected ? AppColors.background : AppColors.taupe,
-              ),
-            ),
-            Text(
-              '${date.day}',
-              style: CsTypography.editorialTitle(size: 26).copyWith(
-                color: selected ? AppColors.background : AppColors.textPrimary,
-              ),
-            ),
-            Text(
-              _months[date.month - 1],
-              style: CsTypography.editorialLabel(size: 9).copyWith(
-                color: selected ? AppColors.background : AppColors.taupe,
-              ),
-            ),
-          ],
-        ),
-      ),
-    ),
-  );
-}
-
-class _MealChip extends StatelessWidget {
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-
-  const _MealChip({required this.label, required this.selected, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) => Material(
-    color: Colors.transparent,
-    child: InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(18),
-      child: Container(
-        height: 36,
-        padding: const EdgeInsets.symmetric(horizontal: 18),
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: selected ? AppColors.forestGreen : AppColors.card,
-          borderRadius: BorderRadius.circular(18),
-          border: selected ? null : Border.all(color: AppColors.hairlineOnPaper),
-        ),
-        child: Text(
-          label,
-          style: CsTypography.editorialBody.copyWith(
-            color: selected ? AppColors.textOnDark : AppColors.textPrimary,
-            fontSize: 13,
-          ),
-        ),
-      ),
-    ),
-  );
 }

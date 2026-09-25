@@ -414,20 +414,14 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       : identity.label;
 
   Future<void> _planDinner(FriendProfileLayoutData data, PassportVenue? preselected) async {
-    final invitation = await showPlanDinnerSheet(
+    final sent = await showPlanDinnerSheet(
       context,
       data: data,
       viewerUserId: Supabase.instance.client.auth.currentUser?.id ?? '',
       preselected: preselected,
     );
-    if (invitation == null || !mounted) return;
-    // DinnerInvitation is a client-local stub today (see that class's own
-    // doc) — nothing is persisted and ${data.friendName} never sees
-    // this. "Invitation sent to..." previously claimed otherwise, which
-    // is exactly the kind of thing this app's own "never guess, report
-    // honestly" standard exists to catch. Update this copy the moment a
-    // real send exists.
-    _showSnack("This is a preview — invitations aren't sent yet.");
+    if (!sent || !mounted) return;
+    _showSnack('Sent to ${data.friendName}.');
   }
 
   @override
