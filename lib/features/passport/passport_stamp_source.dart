@@ -169,7 +169,13 @@ class PassportStampPage {
 /// page has nothing left needing one).
 List<PassportStampPage> buildYearGroupedStampPages(
   List<PassportStampItem> itemsOldestFirst, {
-  int perPage = 4,
+  // Was 4 — dropped to 3 once the September 2026 stamp redesign made every
+  // design physically bigger: 4 of the new, larger stamps on one page
+  // overlapped heavily (confirmed via that round's own preview harness).
+  // Trading a shorter page for less overlap — "liever meer bladeren dan
+  // stempels die over elkaar heen liggen" — rather than trying to
+  // squeeze 4 into the same footprint.
+  int perPage = 3,
   bool includeNextStampSlot = true,
 }) {
   if (itemsOldestFirst.isEmpty) return [];

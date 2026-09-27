@@ -10,35 +10,81 @@ import '../utils/passport_stamp_style.dart';
 import 'passport_stamp.dart';
 import 'passport_stamp_painters.dart' show stampVariantSize, verifiedStampSize;
 
-/// One of the 4 fixed positions a stamp can sit near on a page — "top
-/// left, top right, middle, bottom" from the design spec, expressed as a
-/// fractional anchor within the page's own content rect (below the
-/// header) — retuned to four corner-leaning quadrants in Round 2, see
-/// this constant's own doc comment below for why. The `NextStampSlot`'s
-/// dashed placeholder always renders at whichever of these 4 anchors its
-/// slot index maps to, un-jittered — see [_StampField.build] below (a
-/// stale reference to a `_PassportPageState._anchorFor` that doesn't
-/// exist in this file was here before this comment; corrected in
-/// passing).
-// Deliberately NOT collinear (no two anchors share an x or a y) — this
-// feature's own visual QA showed two same-axis anchors close enough that
-// even modest jitter drove real overlap well past prior rounds' own
-// "at most about 10%" target. Pushed further toward the actual corners in
-// the September 2026 stamp redesign: that round's 5 designs are
-// physically much bigger (up to ~283pt diagonal, vs ~213pt before), and —
-// significantly — its own acceptance criteria dropped the "~10% overlap"
-// requirement entirely, keeping only "never off the page" and "never over
-// the header or year corner" (see PassportPage's own preview harness for
-// that round). Real passport stamps genuinely overlap each other when a
-// page fills up; this redesign leans into that rather than fighting it,
-// so the anchors/relaxation pass below now aim for "spread out as much as
-// this page size allows," not "never touch."
-const _slotAnchors = [
-  Alignment(-0.85, -0.80), // top left
-  Alignment(0.85, -0.65), // top right
-  Alignment(0.75, 0.45), // mid right
-  Alignment(-0.70, 0.80), // lower left (may still brush the bottom-left year corner at these larger sizes — verified via screenshot, not assumed clear the way the old smaller anchors were)
+/// The 8 compass directions [_directedAnchor] tries for every stamp/
+/// placeholder on a page — replaces the October round's fixed, same-for-
+/// every-design corner anchors (kept here in git history if that simpler
+/// scheme is ever wanted back). That scheme broke down once the September
+/// 2026 stamp redesign made every design physically bigger (up to ~283pt
+/// diagonal): pinning every item to the SAME 4 points regardless of its
+/// own footprint meant two wide designs sharing the "top" pair (e.g. a
+/// 228pt oval and a 176pt round seal) always collided, since 228+176
+/// already exceeds this page's own content width on its own — no anchor
+/// tuning fixes that, because it isn't an anchor problem, it's that two
+/// side-by-side items literally don't both fit at their natural size.
+/// [_StampField.build]'s own greedy placement (score each of these 8
+/// directions by how much clearance it leaves against everything already
+/// placed, keep the best) discovers on its own that two wide items belong
+/// stacked north/south rather than crammed side by side at NW/NE — no
+/// hand-tuning per combination needed, because the search runs fresh for
+/// whatever sizes actually land on a given page.
+const _candidateDirections = [
+  Alignment(-1, -1), // NW
+  Alignment(1, -1), // NE
+  Alignment(1, 1), // SE
+  Alignment(-1, 1), // SW
+  Alignment(0, -1), // N
+  Alignment(1, 0), // E
+  Alignment(0, 1), // S
+  Alignment(-1, 0), // W
 ];
+
+/// Clearance kept between an item's own edge and the content rect's edge
+/// when [_directedAnchor] pushes it as far toward [direction] as it can.
+const _edgeMargin = 6.0;
+
+/// Where an item with [halfDiagonal] would sit if pushed as far toward
+/// [direction] as its own footprint allows within [contentSize] (leaving
+/// [margin] clear of the edge) — a wide oval anchored "east" ends up
+/// closer to center than a narrower round seal anchored the same
+/// direction would, because there's less room for the oval to be pushed
+/// before its own edge would leave the page. This is what makes the
+/// search in [_StampField.build] size-aware instead of every design
+/// sharing one fixed point regardless of its own footprint.
+///
+/// Deliberately [halfDiagonal], not half the item's own width/height
+/// separately: [_StampField._clampToContent] (the final safety-net pass,
+/// after this search has already run) constrains BOTH axes by that same
+/// diagonal, to leave room for rotation. An earlier version of this
+/// function used plain half-width/half-height here, which is a laxer
+/// bound than the clamp's own — so a candidate this function considered
+/// safely inside the page could still get yanked back inward by that
+/// later, stricter clamp, landing right back in the collision the search
+/// had specifically picked that candidate to avoid. Confirmed via this
+/// round's own preview harness: two large designs the search had placed
+/// at opposite corners with real clearance between them still rendered
+/// overlapping, because the clamp silently overrode the second one's
+/// position. Matching the clamp's own bound here means the clamp has
+/// nothing left to correct in the common case — it stays a pure safety
+/// net rather than an active participant in placement.
+Offset _directedAnchor(
+  Alignment direction,
+  double halfDiagonal,
+  Size contentSize,
+  double margin,
+) {
+  final maxDx = (contentSize.width / 2 - halfDiagonal - margin).clamp(
+    0.0,
+    contentSize.width / 2,
+  );
+  final maxDy = (contentSize.height / 2 - halfDiagonal - margin).clamp(
+    0.0,
+    contentSize.height / 2,
+  );
+  return Offset(
+    contentSize.width / 2 + direction.x * maxDx,
+    contentSize.height / 2 + direction.y * maxDy,
+  );
+}
 
 /// The bound-page card: ivory paper, a faint guilloché ring pattern, the
 /// "ENTRIES · X" / "p. NN" header, and up to 4 stamps (or the dashed
@@ -277,32 +323,76 @@ class _PageHeader extends StatelessWidget {
 }
 
 /// One stamp mid-layout, between [_StampField]'s three passes — resolved
-/// variant/ink/size, and a [center] that starts as the raw anchor+jitter
-/// position and gets mutated in place by the pairwise-relaxation pass
-/// before anything is clamped to the page or built into a widget.
-class _StampEntry {
-  final PassportStampItem item;
-  final StampVariant variant;
-  final StampInk ink;
+/// One stamp OR the next-stamp placeholder ([item] null), mid-layout —
+/// resolved variant/ink/size (real stamps only), and a [center] that
+/// starts unset (`Offset.zero`, assigned by [_StampField.build]'s own
+/// greedy search) and gets mutated in place by the pairwise-relaxation
+/// pass afterward, before anything is clamped to the page or built into a
+/// widget. Both kinds share one class because they compete for the same
+/// space on the page and need to be placed against each other, not just
+/// against other real stamps — see [_StampField.build]'s own doc comment.
+class _Placeable {
+  final PassportStampItem? item;
+  final StampVariant? variant;
+  final StampInk? ink;
   final Size size;
   final double halfDiagonal;
-  Offset center;
 
-  _StampEntry({
+  /// The next-stamp placeholder stays un-jittered (matching every earlier
+  /// version of this page) — it's a fixed "add here" affordance, not a
+  /// pressed ink stamp.
+  final Offset jitter;
+  Offset center = Offset.zero;
+
+  _Placeable({
     required this.item,
     required this.variant,
     required this.ink,
     required this.size,
     required this.halfDiagonal,
-    required this.center,
+    required this.jitter,
   });
+
+  bool get isNextStamp => item == null;
 }
 
-/// Places [slots] near their [_slotAnchors], each with its own
-/// deterministic rotation/jitter, tracking the previously-placed stamp's
-/// variant/ink as it goes so no two adjacent stamps on this one page
-/// repeat either (see [pickStampVariant]/[pickStampInk]'s own `avoid`
-/// parameter).
+double _diagonalOf(Size size) =>
+    math.sqrt(size.width * size.width + size.height * size.height) / 2;
+
+_Placeable _stampPlaceable({
+  required PassportStampItem item,
+  required StampVariant variant,
+  required StampInk ink,
+  required Size size,
+}) => _Placeable(
+  item: item,
+  variant: variant,
+  ink: ink,
+  size: size,
+  halfDiagonal: _diagonalOf(size),
+  jitter: pickStampPositionJitter(item.id),
+);
+
+_Placeable _nextStampPlaceable() {
+  const size = Size(
+    _NextStampPlaceholder._diameter,
+    _NextStampPlaceholder._diameter,
+  );
+  return _Placeable(
+    item: null,
+    variant: null,
+    ink: null,
+    size: size,
+    halfDiagonal: _diagonalOf(size),
+    jitter: Offset.zero,
+  );
+}
+
+/// Places [slots] via [_StampField.build]'s own size-aware greedy search,
+/// each real stamp with its own deterministic rotation/jitter, tracking
+/// the previously-placed stamp's variant/ink as it goes so no two
+/// adjacent stamps on this one page repeat either (see
+/// [pickStampVariant]/[pickStampInk]'s own `avoid` parameter).
 class _StampField extends StatelessWidget {
   final List<PassportStampSlot> slots;
   final Size contentSize;
@@ -326,63 +416,82 @@ class _StampField extends StatelessWidget {
       return const SizedBox.shrink();
     }
 
-    final children = <Widget>[];
-    final nextStampAnchors = <int>[];
-
-    // Pass 1: resolve variant/ink/size and each stamp's RAW (unclamped)
-    // anchor+jitter center — nothing pushed apart yet, nothing clamped to
-    // the page yet.
+    // Pass 1: resolve variant/ink/size for every non-blank slot, in order
+    // — no positions yet. A [BlankStampSlot] contributes nothing (not
+    // even a placeholder), matching every earlier version of this page.
     StampVariant? previousVariant;
     StampInk? previousInk;
-    final entries = <_StampEntry>[];
-    for (var i = 0; i < slots.length && i < _slotAnchors.length; i++) {
-      final slot = slots[i];
-      final anchorCenter = _alignmentWithinRect(
-        _slotAnchors[i],
-        Rect.fromLTWH(0, 0, contentSize.width, contentSize.height),
-      );
+    final placeable = <_Placeable>[];
+    for (final slot in slots) {
       switch (slot) {
         case BlankStampSlot():
           continue;
         case NextStampSlot():
-          nextStampAnchors.add(i);
+          placeable.add(_nextStampPlaceable());
         case FilledStampSlot(:final item):
           final variant = pickStampVariant(item.id, avoid: previousVariant);
           final ink = pickStampInk(item.id, avoid: previousInk);
           previousVariant = variant;
           previousInk = ink;
           final size = item.verified ? verifiedStampSize : stampVariantSize(variant);
-          final halfDiagonal =
-              math.sqrt(size.width * size.width + size.height * size.height) / 2;
-          entries.add(
-            _StampEntry(
-              item: item,
-              variant: variant,
-              ink: ink,
-              size: size,
-              halfDiagonal: halfDiagonal,
-              center: anchorCenter + pickStampPositionJitter(item.id),
-            ),
+          placeable.add(
+            _stampPlaceable(item: item, variant: variant, ink: ink, size: size),
           );
       }
     }
 
-    // Pass 2: relax every PAIR of stamps apart symmetrically (both move,
-    // proportional to their own footprint) when they're closer than the
-    // design spec's "maximaal ~10% overlap" allows — run over a few
-    // iterations so an early correction that brings one stamp near a
-    // THIRD one still gets resolved, not just pairwise-first-come.
-    // Deliberately not clamped to the page between iterations: doing that
-    // (this file's own first attempt at this fix) let the page-bounds
-    // clamp silently undo part of every push — a big stamp anchored near
-    // an edge clamps back toward the page centre, toward its neighbour,
-    // eating into the very separation just added. Clamping only ONCE at
-    // the very end (pass 3) avoids that fight entirely.
+    // Pass 2: place each item greedily, in slot order — for every one of
+    // the 8 [_candidateDirections], compute where THIS item's own size
+    // would sit (see [_directedAnchor]) and add its own jitter, then score
+    // that candidate by the worst-case clearance it leaves against every
+    // item already placed (negative = still overlapping, but by less than
+    // an unscored candidate would). Keep whichever candidate scores
+    // highest. The first item has nothing yet to score against — every
+    // candidate ties at +infinity clearance, and the fold below keeps the
+    // FIRST one checked (NW) in that case, so a page's first stamp still
+    // lands top-left, matching every earlier version of this page.
+    for (var i = 0; i < placeable.length; i++) {
+      final current = placeable[i];
+      final alreadyPlaced = placeable.take(i);
+      Offset? best;
+      var bestScore = double.negativeInfinity;
+      for (final direction in _candidateDirections) {
+        final candidate =
+            _directedAnchor(direction, current.halfDiagonal, contentSize, _edgeMargin) +
+            current.jitter;
+        final score = alreadyPlaced.fold<double>(
+          double.infinity,
+          (worst, other) => math.min(
+            worst,
+            (candidate - other.center).distance -
+                (current.halfDiagonal + other.halfDiagonal),
+          ),
+        );
+        if (score > bestScore) {
+          bestScore = score;
+          best = candidate;
+        }
+      }
+      current.center = best!;
+    }
+
+    // Pass 3: a light relaxation safety net — the greedy search above
+    // already accounts for everything placed BEFORE a given item, but
+    // can't retroactively account for what comes after it. Nudge every
+    // PAIR still closer than a small clearance apart, symmetrically,
+    // proportional to their own footprint, over a few iterations so an
+    // early correction that brings one item near a THIRD one still gets
+    // resolved. Deliberately not clamped to the page between iterations —
+    // clamping mid-loop let a big item anchored near an edge clamp back
+    // toward the page centre, toward its neighbour, eating into the very
+    // separation just added (this page's own prior round already found
+    // this the hard way). Clamping only ONCE at the very end (pass 4)
+    // avoids that fight entirely.
     for (var iteration = 0; iteration < 3; iteration++) {
-      for (var a = 0; a < entries.length; a++) {
-        for (var b = a + 1; b < entries.length; b++) {
-          final entryA = entries[a];
-          final entryB = entries[b];
+      for (var a = 0; a < placeable.length; a++) {
+        for (var b = a + 1; b < placeable.length; b++) {
+          final entryA = placeable[a];
+          final entryB = placeable[b];
           final minSeparation = (entryA.halfDiagonal + entryB.halfDiagonal) * 0.9;
           final delta = entryB.center - entryA.center;
           final dist = delta.distance;
@@ -397,43 +506,41 @@ class _StampField extends StatelessWidget {
       }
     }
 
-    // Pass 3: NOW clamp each relaxed center to the page, and build.
-    for (final entry in entries) {
+    // Pass 4: NOW clamp each relaxed center to the page, and build.
+    final children = <Widget>[];
+    for (final entry in placeable) {
       final center = _clampToContent(
         entry.center,
         stampSize: entry.size,
         contentSize: contentSize,
       );
+      if (entry.isNextStamp) {
+        children.add(
+          Positioned(
+            left: center.dx - entry.size.width / 2,
+            top: center.dy - entry.size.height / 2,
+            child: _NextStampPlaceholder(onTap: onTapNextStamp),
+          ),
+        );
+        continue;
+      }
+      final item = entry.item!;
       children.add(
         Positioned(
           left: center.dx - entry.size.width / 2,
           top: center.dy - entry.size.height / 2,
           child: PassportStampWidget(
-            item: entry.item,
-            variant: entry.variant,
-            ink: entry.ink,
-            rotationDegrees: pickStampRotationDegrees(entry.item.id),
+            item: item,
+            variant: entry.variant!,
+            ink: entry.ink!,
+            rotationDegrees: pickStampRotationDegrees(item.id),
             semanticLabel: stampSemanticLabel(
-              entry.item,
-              countryName: countryNameByCode[entry.item.countryCode],
+              item,
+              countryName: countryNameByCode[item.countryCode],
             ),
-            isNew: newStampIds.contains(entry.item.id),
-            onTap: () => onTapStamp(entry.item),
+            isNew: newStampIds.contains(item.id),
+            onTap: () => onTapStamp(item),
           ),
-        ),
-      );
-    }
-
-    for (final i in nextStampAnchors) {
-      final anchorCenter = _alignmentWithinRect(
-        _slotAnchors[i],
-        Rect.fromLTWH(0, 0, contentSize.width, contentSize.height),
-      );
-      children.add(
-        Positioned(
-          left: anchorCenter.dx - _NextStampPlaceholder._diameter / 2,
-          top: anchorCenter.dy - _NextStampPlaceholder._diameter / 2,
-          child: _NextStampPlaceholder(onTap: onTapNextStamp),
         ),
       );
     }
@@ -468,11 +575,6 @@ class _StampField extends StatelessWidget {
     );
   }
 }
-
-Offset _alignmentWithinRect(Alignment alignment, Rect rect) => Offset(
-  rect.left + (alignment.x + 1) / 2 * rect.width,
-  rect.top + (alignment.y + 1) / 2 * rect.height,
-);
 
 class _NextStampPlaceholder extends StatelessWidget {
   final VoidCallback onTap;
