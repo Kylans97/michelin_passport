@@ -107,6 +107,21 @@ class Restaurant {
   // own, already-world-readable row.
   final String? missingListingReportId;
 
+  // Passport stamp redesign, "16b — verified venue stamps" (September
+  // 2026): what the venue itself supplies for a verified-visit stamp — a
+  // single-color SVG designed for a 104×104 circle, tinted to whatever ink
+  // the stamp is printed in. Model + rendering only per this feature's
+  // own explicit scope: no `stamp_artwork_url`/`stamp_artwork_approved`
+  // columns exist on `restaurants`/`restaurants_full` yet (uploading and
+  // approving artwork is a documented TODO), so both parse to "no artwork"
+  // from any row read today. [stampArtworkApproved] gates rendering
+  // independently of [stampArtworkUrl] being present — an uploaded-but-
+  // not-yet-approved SVG must never render. A migration adding these would
+  // need: `stamp_artwork_url text`, `stamp_artwork_approved boolean not
+  // null default false`, plus exposing both through `restaurants_full`.
+  final String? stampArtworkUrl;
+  final bool stampArtworkApproved;
+
   // No latitude/longitude here. `location` is PostGIS
   // geography(Point,4326); over PostgREST it comes back as an EWKB hex
   // string, not GeoJSON or a {lat, lng} pair, and decoding that client-side
@@ -153,6 +168,8 @@ class Restaurant {
     this.statusNote,
     this.createdAt,
     this.missingListingReportId,
+    this.stampArtworkUrl,
+    this.stampArtworkApproved = false,
   });
 
   /// True when the restaurant currently holds at least one Michelin star.
@@ -213,5 +230,7 @@ class Restaurant {
         ? null
         : DateTime.parse(json['created_at'] as String),
     missingListingReportId: json['missing_listing_report_id'] as String?,
+    stampArtworkUrl: json['stamp_artwork_url'] as String?,
+    stampArtworkApproved: (json['stamp_artwork_approved'] as bool?) ?? false,
   );
 }

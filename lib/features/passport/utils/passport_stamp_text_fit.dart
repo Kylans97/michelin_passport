@@ -1,46 +1,73 @@
 import 'package:flutter/material.dart';
 
-/// Shrinks [style]'s font size by up to 15%, in ~1% steps, until [text]
-/// fits within [maxWidth] at [maxLines] line(s) — "shrink the font by up
-/// to 15%, and only then truncate" (every stamp variant except the round
-/// seal's arc text, which has its own fitting in [fitRoundSealArcText]).
+/// Which of a stamp's 3 name sizes applies — purely from character count,
+/// independent of variant. Each variant maps its own L/M/S to different
+/// literal point sizes (see passport_stamp_painters.dart), but every
+/// variant uses this same length-based tier boundary: "≤ 10 tekens is L,
+/// 11–18 is M, ≥ 19 is S" per the September 2026 stamp redesign brief.
+enum StampNameTier { l, m, s }
+
+StampNameTier stampNameTierFor(String name) {
+  final length = name.length;
+  if (length <= 10) return StampNameTier.l;
+  if (length <= 18) return StampNameTier.m;
+  return StampNameTier.s;
+}
+
+/// A venue name laid out per the brief's shared fitting rule, used by all
+/// 5 stamp variants: never on an arc, a straight text box up to 2 lines,
+/// "gebalanceerd afgebroken" (balanced line-break — both lines as close in
+/// width as possible, not a greedy first-line-fills-first wrap), sized
+/// from [stampNameTierFor] via [sizeL]/[sizeM]/[sizeS]. If the name still
+/// doesn't fit 2 lines at its tier's size, shrinks to 85% once; whatever
+/// still doesn't fit after that is truncated with an ellipsis by the
+/// returned [TextPainter] itself (built with `maxLines: 2, ellipsis:
+/// '…'`) — same "let TextPainter do the actual truncation" contract the
+/// old `fitStampTextByShrinking` used, for the same UTF-16-safety reason.
 ///
-/// Deliberately does NOT perform the truncation itself: manually cutting
-/// a [String] with `substring` risks splitting a UTF-16 surrogate pair or
-/// combining-mark cluster mid-character. The caller instead paints [text]
-/// at the RETURNED style using a `TextPainter(maxLines: ..., ellipsis:
-/// '…')` — Flutter's own text layout performs that final truncation
-/// correctly, which is also why this function's contract is "never lets
-/// text spill outside" even though it returns a style, not a shortened
-/// string: whatever doesn't fit at the smallest allowed size is still
-/// guaranteed to be truncated, just one layer up from here.
-TextStyle fitStampTextByShrinking({
+/// [styleFor] builds the text style for a given resolved font size (so
+/// callers can bake in weight/italic/letterSpacing/color/uppercase
+/// transforms specific to their own variant) — [text] passed in should
+/// already be whatever case the variant wants (e.g. DoubleFramePainter
+/// upper-cases it before calling this).
+TextPainter fitStampNameBalanced({
   required String text,
-  required TextStyle style,
+  required TextStyle Function(double fontSize) styleFor,
   required double maxWidth,
-  int maxLines = 1,
+  required double sizeL,
+  required double sizeM,
+  required double sizeS,
 }) {
-  bool overflows(TextStyle candidate) {
-    final painter = TextPainter(
-      text: TextSpan(text: text, style: candidate),
+  final tier = stampNameTierFor(text);
+  final baseSize = switch (tier) {
+    StampNameTier.l => sizeL,
+    StampNameTier.m => sizeM,
+    StampNameTier.s => sizeS,
+  };
+
+  TextPainter layoutAt(double fontSize) {
+    final style = styleFor(fontSize);
+    final oneLine = TextPainter(
+      text: TextSpan(text: text, style: style),
       textDirection: TextDirection.ltr,
-      maxLines: maxLines,
+    )..layout();
+    if (oneLine.width <= maxWidth) {
+      oneLine.layout(maxWidth: maxWidth);
+      return oneLine;
+    }
+    final balanced = _balancedTwoLines(text, style, maxWidth);
+    return TextPainter(
+      text: TextSpan(text: balanced, style: style),
+      textDirection: TextDirection.ltr,
+      maxLines: 2,
+      textAlign: TextAlign.center,
+      ellipsis: '…',
     )..layout(maxWidth: maxWidth);
-    return painter.didExceedMaxLines;
   }
 
-  if (!overflows(style)) return style;
-
-  final originalSize = style.fontSize ?? 14;
-  final minSize = originalSize * 0.85;
-  var size = originalSize;
-  var resolved = style;
-  while (size > minSize) {
-    size -= originalSize * 0.01;
-    resolved = style.copyWith(fontSize: size);
-    if (!overflows(resolved)) break;
-  }
-  return resolved;
+  final atBaseSize = layoutAt(baseSize);
+  if (!atBaseSize.didExceedMaxLines) return atBaseSize;
+  return layoutAt(baseSize * 0.85);
 }
 
 double _measureWidth(String text, TextStyle style) {
@@ -51,34 +78,31 @@ double _measureWidth(String text, TextStyle style) {
   return painter.width;
 }
 
-/// The round seal's own fitting rule (distinct from every other variant):
-/// "measure the arc length and shorten the venue name with `…` if `CITY ·
-/// VENUE ·` doesn't fit" — never shrinks the font here, only truncates
-/// [venueName].
-///
-/// [maxArcLength] must already be `radius * allowedSweepRadians` — the
-/// straight-line width measured here is exactly equal to the arc length
-/// the text will occupy when drawn, because
-/// passport_stamp_painters.dart's `_drawArcText` derives each character's
-/// own angular step from that same character's measured width divided by
-/// the radius; matching total straight-line width to the allowed arc
-/// length is therefore exact, not an approximation.
-String fitRoundSealArcText({
-  required String cityName,
-  required String venueName,
-  required TextStyle style,
-  required double maxArcLength,
-}) {
-  final city = cityName.toUpperCase();
-  final venue = venueName.toUpperCase();
-  final full = venue.isEmpty ? '$city ·' : '$city · $venue ·';
-  if (_measureWidth(full, style) <= maxArcLength) return full;
+/// Splits [text] on a single space into 2 lines, choosing whichever split
+/// point makes the two resulting line widths closest to each other (a
+/// "balanced" wrap) among every split where BOTH lines individually fit
+/// within [maxWidth]. Falls back to the original, unsplit [text] when
+/// there's only one word or no split keeps both lines within [maxWidth] —
+/// the caller's own `TextPainter(maxLines: 2, ellipsis: '…')` still wraps/
+/// truncates that safely, just via Flutter's ordinary greedy wrap instead
+/// of a balanced one.
+String _balancedTwoLines(String text, TextStyle style, double maxWidth) {
+  final words = text.split(' ').where((w) => w.isNotEmpty).toList();
+  if (words.length <= 1) return text;
 
-  var truncated = venue;
-  while (truncated.isNotEmpty) {
-    truncated = truncated.substring(0, truncated.length - 1);
-    final candidate = truncated.isEmpty ? '$city ·' : '$city · $truncated… ·';
-    if (_measureWidth(candidate, style) <= maxArcLength) return candidate;
+  String? best;
+  var bestDiff = double.infinity;
+  for (var i = 1; i < words.length; i++) {
+    final line1 = words.sublist(0, i).join(' ');
+    final line2 = words.sublist(i).join(' ');
+    final w1 = _measureWidth(line1, style);
+    final w2 = _measureWidth(line2, style);
+    if (w1 > maxWidth || w2 > maxWidth) continue;
+    final diff = (w1 - w2).abs();
+    if (diff < bestDiff) {
+      bestDiff = diff;
+      best = '$line1\n$line2';
+    }
   }
-  return '$city ·';
+  return best ?? text;
 }

@@ -70,11 +70,16 @@ StampInk pickStampInk(String id, {StampInk? avoid}) {
   return ink;
 }
 
-/// Deterministic rotation in degrees, uniformly within [-12, 8] — a stamp
-/// pressed slightly askew, never dead straight, never upside down.
+/// Deterministic rotation in degrees, uniformly within [-7, 6] — a stamp
+/// pressed slightly askew, never dead straight, never upside down. Range
+/// tightened from the original [-12, 8] by the September 2026 stamp
+/// redesign brief — the 5 designs are physically larger now (see
+/// passport_stamp_painters.dart), and a wide rotation on a bigger stamp
+/// pushes its corners much further, which needs a smaller allowance to
+/// keep the same "slightly askew, not falling off the page" read.
 double pickStampRotationDegrees(String id) {
   final t = _unitFraction('$id:rotation');
-  return -12 + t * 20;
+  return -7 + t * 13;
 }
 
 /// Deterministic (dx, dy) jitter in [-12, 12] on each axis — the ±12pt

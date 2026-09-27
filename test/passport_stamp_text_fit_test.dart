@@ -2,130 +2,131 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/features/passport/utils/passport_stamp_text_fit.dart';
 
-const _style = TextStyle(fontSize: 9.6, letterSpacing: 2);
-
-double _measure(String text, TextStyle style) {
-  final painter = TextPainter(
-    text: TextSpan(text: text, style: style),
-    textDirection: TextDirection.ltr,
-  )..layout();
-  return painter.width;
-}
+TextStyle _style(double size) => TextStyle(fontSize: size, fontFamily: 'Roboto');
 
 void main() {
-  group('fitRoundSealArcText', () {
-    test('returns the full "CITY · VENUE ·" text unchanged when it fits', () {
-      final result = fitRoundSealArcText(
-        cityName: 'Paris',
-        venueName: 'Flore',
-        style: _style,
-        maxArcLength: 400,
-      );
-      expect(result, 'PARIS · FLORE ·');
+  group('stampNameTierFor', () {
+    test('<= 10 characters is L', () {
+      expect(stampNameTierFor('ABAC'), StampNameTier.l);
+      expect(stampNameTierFor('1234567890'), StampNameTier.l);
     });
 
-    test(
-      'truncates only the venue name with an ellipsis when the full '
-      'string does not fit — the classic long-name case ("8½ Otto e '
-      'Mezzo Bombana")',
-      () {
-        final full = fitRoundSealArcText(
-          cityName: 'Hong Kong',
-          venueName: '8½ Otto e Mezzo Bombana',
-          style: _style,
-          maxArcLength: 10000, // effectively unlimited
-        );
-        final tight = fitRoundSealArcText(
-          cityName: 'Hong Kong',
-          venueName: '8½ Otto e Mezzo Bombana',
-          style: _style,
-          maxArcLength: 190,
-        );
-        expect(tight, isNot(full));
-        expect(tight, contains('HONG KONG'));
-        expect(tight, contains('…'));
-        expect(_measure(tight, _style), lessThanOrEqualTo(190));
-      },
-    );
+    test('11-18 characters is M', () {
+      expect(stampNameTierFor('12345678901'), StampNameTier.m);
+      expect(stampNameTierFor('123456789012345678'), StampNameTier.m);
+    });
 
-    test(
-      'never exceeds maxArcLength when the city name alone still fits '
-      'within it',
-      () {
-        final result = fitRoundSealArcText(
-          cityName: 'Copenhagen',
-          venueName: 'Noma',
-          style: _style,
-          maxArcLength: 160,
-        );
-        expect(_measure(result, _style), lessThanOrEqualTo(160));
-      },
-    );
-
-    test(
-      'an unrealistically tiny budget (tighter than even the city name '
-      'alone) falls back to the city-only label — this function only ever '
-      'shortens the VENUE name, per spec ("shorten the venue name with … '
-      'if CITY · VENUE · doesn\'t fit"), so an arc too tight for the city '
-      'itself is a degenerate case no real stamp geometry produces, not a '
-      'guarantee this function makes',
-      () {
-        final result = fitRoundSealArcText(
-          cityName: 'Copenhagen',
-          venueName: 'Noma',
-          style: _style,
-          maxArcLength: 10,
-        );
-        expect(result, 'COPENHAGEN ·');
-      },
-    );
-
-    test('an empty venue name still produces a valid "CITY ·" label', () {
-      final result = fitRoundSealArcText(
-        cityName: 'Tokyo',
-        venueName: '',
-        style: _style,
-        maxArcLength: 400,
-      );
-      expect(result, 'TOKYO ·');
+    test('>= 19 characters is S', () {
+      expect(stampNameTierFor('1234567890123456789'), StampNameTier.s);
+      expect(stampNameTierFor('8½ Otto e Mezzo Bombana'), StampNameTier.s);
     });
   });
 
-  group('fitStampTextByShrinking', () {
-    test('returns the style unchanged when the text already fits', () {
-      const style = TextStyle(fontSize: 20);
-      final resolved = fitStampTextByShrinking(
-        text: 'Short',
-        style: style,
+  group('fitStampNameBalanced', () {
+    test('a short name that fits on one line stays on one line', () {
+      final painter = fitStampNameBalanced(
+        text: 'ABAC',
+        styleFor: _style,
+        maxWidth: 200,
+        sizeL: 22,
+        sizeM: 17,
+        sizeS: 15,
+      );
+      expect(painter.text!.toPlainText(), 'ABAC');
+      // Single-line layout never carries an internal newline.
+      expect((painter.text as TextSpan).text, isNot(contains('\n')));
+    });
+
+    test('uses the L/M/S size matching the name\'s own tier', () {
+      TextStyle capturedStyleAtSize(double size) => _style(size);
+      final l = fitStampNameBalanced(
+        text: 'ABAC',
+        styleFor: capturedStyleAtSize,
         maxWidth: 1000,
+        sizeL: 22,
+        sizeM: 17,
+        sizeS: 15,
       );
-      expect(resolved.fontSize, 20);
-    });
+      expect(l.text!.style!.fontSize, 22);
 
-    test('shrinks the font size by no more than 15% before giving up', () {
-      const style = TextStyle(fontSize: 32);
-      final resolved = fitStampTextByShrinking(
+      final s = fitStampNameBalanced(
         text: '8½ Otto e Mezzo Bombana',
-        style: style,
-        maxWidth: 60, // tight enough that even -15% still won't fit
+        styleFor: capturedStyleAtSize,
+        maxWidth: 1000,
+        sizeL: 22,
+        sizeM: 17,
+        sizeS: 15,
       );
-      expect(resolved.fontSize!, greaterThanOrEqualTo(32 * 0.85 - 0.5));
-      expect(resolved.fontSize!, lessThanOrEqualTo(32));
+      // At an effectively unlimited width the S-size text fits on one
+      // line, so no 85% shrink is needed — still resolves to the S size.
+      expect(s.text!.style!.fontSize, 15);
     });
 
-    test('a comfortably long name at a real stamp width shrinks but stays '
-        'legible (not slammed to the 15% floor)', () {
-      const style = TextStyle(fontSize: 32);
-      final resolved = fitStampTextByShrinking(
-        text: 'Le Bernardin',
-        style: style,
-        maxWidth: 148, // DoubleFramePainter's real inner content width
+    test('a moderately long name at a real stamp width balances onto 2 '
+        'lines, never more, and never overflows maxWidth', () {
+      final painter = fitStampNameBalanced(
+        text: 'Chez Dominique',
+        styleFor: _style,
+        maxWidth: 104, // RoundSealPainter's own real name-box width
+        sizeL: 22,
+        sizeM: 17,
+        sizeS: 15,
       );
-      expect(resolved.fontSize!, lessThanOrEqualTo(32));
-      // >= (with a tiny epsilon for float drift across the ~1%-step loop)
-      // rather than a strict >: the guarantee is "never below the 15%
-      // floor", not "always strictly above it".
-      expect(resolved.fontSize!, greaterThanOrEqualTo(32 * 0.85 - 0.01));
+      expect(painter.didExceedMaxLines, isFalse);
+      expect(painter.width, lessThanOrEqualTo(104));
+    });
+
+    test('an extreme long name ("8½ Otto e Mezzo Bombana") at the same '
+        'tight width still never overflows maxWidth, even when 2 lines at '
+        '85% still isn\'t enough and it falls back to ellipsis '
+        'truncation — the documented last resort, not a bug', () {
+      final painter = fitStampNameBalanced(
+        text: '8½ Otto e Mezzo Bombana',
+        styleFor: _style,
+        maxWidth: 104,
+        sizeL: 22,
+        sizeM: 17,
+        sizeS: 15,
+      );
+      expect(painter.width, lessThanOrEqualTo(104));
+      // TextPainter's own `ellipsis` is applied at paint time, not
+      // reflected back into `.text` — `didExceedMaxLines` is the correct
+      // signal that the fallback truncation path was actually needed.
+      expect(painter.didExceedMaxLines, isTrue);
+    });
+
+    test('an unrealistically tiny width still resolves without throwing, '
+        'ellipsis-truncated rather than overflowing', () {
+      final painter = fitStampNameBalanced(
+        text: '8½ Otto e Mezzo Bombana',
+        styleFor: _style,
+        maxWidth: 20,
+        sizeL: 22,
+        sizeM: 17,
+        sizeS: 15,
+      );
+      expect(painter.width, lessThanOrEqualTo(20));
+    });
+
+    test('shrinks by exactly 15% (never more) when the tier size still '
+        "doesn't fit 2 lines", () {
+      double? usedSize;
+      TextStyle styleFor(double size) {
+        usedSize = size;
+        return _style(size);
+      }
+
+      fitStampNameBalanced(
+        text: 'A Genuinely Very Long Restaurant Name Indeed',
+        styleFor: styleFor,
+        maxWidth: 60,
+        sizeL: 22,
+        sizeM: 17,
+        sizeS: 15,
+      );
+      // The final call inside fitStampNameBalanced is always the resolved
+      // one (either the base tier size, or exactly base*0.85).
+      expect(usedSize, anyOf(15, closeTo(15 * 0.85, 0.01)));
     });
   });
 }

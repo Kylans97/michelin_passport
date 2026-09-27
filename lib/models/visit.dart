@@ -106,6 +106,22 @@ class Visit {
   // constructed in Flutter before being saved).
   final VisitVisibility visibility;
 
+  // Passport stamp redesign, "16b — verified venue stamps" (September
+  // 2026): a visit the VENUE itself confirmed (QR code at the table, the
+  // booking record, or a staff code), never something the visiting user
+  // can set themselves. Model + rendering only per this feature's own
+  // explicit scope — no `verified`/`verification_method` column exists on
+  // `public.visits` yet (the upload/approval/confirmation flow itself is
+  // a documented TODO), so both fields parse to their "not verified"
+  // default from any row read today, exactly as roomRating/
+  // experienceRating above already do for their own not-yet-migrated
+  // columns. A migration adding them would need: `verified boolean not
+  // null default false`, `verification_method text check
+  // (verification_method in ('qr','booking','staff'))`, written only when
+  // the confirmation flow is actually built.
+  final bool verified;
+  final String? verificationMethod;
+
   const Visit({
     required this.id,
     required this.userId,
@@ -126,6 +142,8 @@ class Visit {
     this.keysAtVisit,
     this.starsAtVisit,
     this.visibility = VisitVisibility.private,
+    this.verified = false,
+    this.verificationMethod,
   });
 
   factory Visit.fromJson(Map<String, dynamic> json) => Visit(
@@ -152,5 +170,7 @@ class Visit {
     keysAtVisit: (json['keys_at_visit'] as num?)?.toInt(),
     starsAtVisit: (json['stars_at_visit'] as num?)?.toInt(),
     visibility: VisitVisibility.fromDbValue(json['visibility'] as String?),
+    verified: (json['verified'] as bool?) ?? false,
+    verificationMethod: json['verification_method'] as String?,
   );
 }

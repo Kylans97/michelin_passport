@@ -1,6 +1,7 @@
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show HapticFeedback;
+import 'package:flutter_svg/flutter_svg.dart';
 import '../models/passport_stamp_award.dart';
 import '../models/passport_stamp_item.dart';
 import '../utils/passport_stamp_style.dart';
@@ -70,16 +71,21 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
 
   @override
   Widget build(BuildContext context) {
-    final size = stampVariantSize(widget.variant);
+    final item = widget.item;
+    final verified = item.verified;
+    final size = verified ? verifiedStampSize : stampVariantSize(widget.variant);
     final data = StampPaintData(
-      seedId: widget.item.id,
-      cityName: widget.item.cityName,
-      countryCode: widget.item.countryCode,
-      venueName: widget.item.venueName,
-      date: widget.item.date,
-      award: stampAwardFor(widget.item),
+      seedId: item.id,
+      cityName: item.cityName,
+      countryCode: item.countryCode,
+      venueName: item.venueName,
+      date: item.date,
+      award: stampAwardFor(item),
       ink: widget.ink.color,
     );
+    final painter = verified
+        ? VerifiedVenueStampPainter(data)
+        : stampPainterFor(widget.variant, data);
 
     return Semantics(
       label: widget.semanticLabel,
@@ -100,10 +106,31 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
               child: ExcludeSemantics(
                 child: SizedBox.fromSize(
                   size: size,
-                  child: RepaintBoundary(
-                    child: CustomPaint(
-                      painter: stampPainterFor(widget.variant, data),
-                    ),
+                  child: Stack(
+                    // Non-positioned children of a loose (the default)
+                    // Stack get LOOSENED constraints — a plain CustomPaint
+                    // with no size/child of its own then lays out at
+                    // Size.zero instead of filling this SizedBox, which
+                    // fed the painters a zero-size canvas: deflate()ing it
+                    // produced negative rects, and a maxWidth derived from
+                    // that (DoubleFrame/Oval/Postmark, whose name-box
+                    // width comes FROM the received canvas size, unlike
+                    // RoundSeal/Octagon's own hardcoded constants) hit a
+                    // negative `TextPainter.layout(maxWidth: ...)` —
+                    // caught only by actually running the widget tests,
+                    // not by analyze. `expand` forces every non-positioned
+                    // child (just the CustomPaint layer here) to fill this
+                    // exact [size] again, matching the pre-Stack behavior.
+                    fit: StackFit.expand,
+                    children: [
+                      RepaintBoundary(child: CustomPaint(painter: painter)),
+                      if (verified && item.venueArtworkApproved && item.venueArtworkUrl != null)
+                        _VenueArtwork(
+                          url: item.venueArtworkUrl!,
+                          tint: widget.ink.color,
+                          rect: VerifiedVenueStampPainter.artworkRect(size),
+                        ),
+                    ],
                   ),
                 ),
               ),
@@ -111,6 +138,41 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
           ),
         ),
       ),
+    );
+  }
+}
+
+/// The venue's own single-color SVG, tinted to the stamp's ink via
+/// [ColorFilter] (same technique [CsMastheadLogo] already uses to recolor
+/// a monochrome vector asset) and positioned over
+/// [VerifiedVenueStampPainter]'s own reserved artwork circle. Only ever
+/// shown when [PassportStampItem.venueArtworkApproved] is true — an
+/// uploaded-but-unapproved SVG must never render (see that field's own
+/// doc comment on `Restaurant`/`Hotel`).
+///
+/// Accepts either a real URL ([SvgPicture.network], the production case)
+/// or literal inline `<svg ...>` markup ([SvgPicture.string]) — the latter
+/// exists purely so this feature's own "test de weergave nu met een
+/// test-SVG" requirement can be exercised (in previews and tests) without
+/// a live server to fetch from; production data always goes through
+/// `stamp_artwork_url`, a real URL, once the upload/approval flow this
+/// feature's own scope explicitly defers actually exists.
+class _VenueArtwork extends StatelessWidget {
+  final String url;
+  final Color tint;
+  final Rect rect;
+
+  const _VenueArtwork({required this.url, required this.tint, required this.rect});
+
+  @override
+  Widget build(BuildContext context) {
+    final colorFilter = ColorFilter.mode(tint, BlendMode.srcIn);
+    final svg = url.trimLeft().startsWith('<svg')
+        ? SvgPicture.string(url, colorFilter: colorFilter)
+        : SvgPicture.network(url, colorFilter: colorFilter);
+    return Positioned.fromRect(
+      rect: rect,
+      child: ExcludeSemantics(child: svg),
     );
   }
 }

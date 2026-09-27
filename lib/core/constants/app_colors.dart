@@ -159,6 +159,29 @@ class AppColors {
   // don't apply the way they do to the tokens above.
   static const Color subtleBorderDark = Color(0x26F4F0E7);
 
+  // ── Passport cover leather ───────────────────────────────────────────
+  // The closed booklet's own material, front and back — chocolate leather,
+  // not a flat green panel like the rest of the app's chrome. Translated
+  // from the design brief's web/OKLCH tokens (`--color-leather`/
+  // `--color-leather-deep`, `mix(oklch, accent-900 ..%, stone-900)`) into
+  // plain warm-brown hex values — this app has no OKLCH/Tailwind token
+  // system, so these are a disclosed, designed approximation of that
+  // brief's intent, not a literal port. "Geen neutraal grijs" still
+  // applies: every stop here is warm chocolate/umber, never a true grey.
+  // Used only by PassportCoverFace/PassportBackCoverFace — no other screen
+  // has a "this is a bound leather object" moment.
+  static const Color coverLeather = Color(0xFF6B4226);
+  static const Color coverLeatherDeep = Color(0xFF3A2214);
+  // The cover's 1px edge stroke — "stone-900" in the brief, translated as
+  // a near-black warm umber rather than a literal grey/black.
+  static const Color coverLeatherEdge = Color(0xFF1C110A);
+  // The back cover's blind (foil-free) embossed "M": a fill darker than
+  // [coverLeatherDeep] so it barely reads against the leather field except
+  // as a pressed impression, plus a subtle lighter tone for the "1px
+  // lichte onderrand" catching-the-light edge along its lower stroke.
+  static const Color coverLeatherEmboss = Color(0xFF2E1B10);
+  static const Color coverLeatherEmbossHighlight = Color(0xFF4A2E1C);
+
   // ── Passport ink stamps ─────────────────────────────────────────────
   // Three inks a stamp is rendered in (never a fourth) — each stamp picks
   // one deterministically (see passport_stamp_style.dart) and is painted

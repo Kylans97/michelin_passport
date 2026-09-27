@@ -30,6 +30,17 @@ sealed class PassportStampItem {
   String get cityName;
   String get countryCode;
   DateTime get date;
+
+  // Passport stamp redesign, "16b — verified venue stamps" (September
+  // 2026). False/null on every item by default — only RestaurantStampItem
+  // and HotelStampItem ever override these (from their own Visit/venue),
+  // since "verified" is specifically about a physical venue confirming a
+  // visit; an EventStampItem has its own, separate confirmed-attendance
+  // concept and is never "verified" in this sense.
+  bool get verified => false;
+  String? get verificationMethod => null;
+  String? get venueArtworkUrl => null;
+  bool get venueArtworkApproved => false;
 }
 
 class RestaurantStampItem extends PassportStampItem {
@@ -56,6 +67,15 @@ class RestaurantStampItem extends PassportStampItem {
   /// passport_stamp_painters.dart's own note on why that doesn't conflict
   /// with `michelin_stars = 0` being a valid award elsewhere.
   int? get stars => visit.starsAtVisit;
+
+  @override
+  bool get verified => visit.verified;
+  @override
+  String? get verificationMethod => visit.verificationMethod;
+  @override
+  String? get venueArtworkUrl => restaurant.stampArtworkUrl;
+  @override
+  bool get venueArtworkApproved => restaurant.stampArtworkApproved;
 }
 
 class HotelStampItem extends PassportStampItem {
@@ -77,6 +97,15 @@ class HotelStampItem extends PassportStampItem {
 
   /// Keys AT THIS STAY — same reasoning as [RestaurantStampItem.stars].
   int? get keys => visit.keysAtVisit;
+
+  @override
+  bool get verified => visit.verified;
+  @override
+  String? get verificationMethod => visit.verificationMethod;
+  @override
+  String? get venueArtworkUrl => hotel.stampArtworkUrl;
+  @override
+  bool get venueArtworkApproved => hotel.stampArtworkApproved;
 }
 
 class EventStampItem extends PassportStampItem {

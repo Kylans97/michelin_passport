@@ -53,9 +53,11 @@ class PassportDataPage extends StatelessWidget {
   static const _cornerLeft = 4.0;
   static const _cornerRight = 14.0;
 
+  // volume.year is always null post-refactor (one continuous booklet, no
+  // more per-year volumes) — this always resolves to the all-time range
+  // now, never a single year.
   String get _validLine {
     final first = volume.collectionFirstYear;
-    if (volume.year != null) return '${volume.year}';
     if (first == null) return 'present';
     return '$first – present';
   }

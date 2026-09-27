@@ -8,7 +8,7 @@ import '../passport_stamp_source.dart';
 import '../utils/passport_stamp_semantics.dart';
 import '../utils/passport_stamp_style.dart';
 import 'passport_stamp.dart';
-import 'passport_stamp_painters.dart' show stampVariantSize;
+import 'passport_stamp_painters.dart' show stampVariantSize, verifiedStampSize;
 
 /// One of the 4 fixed positions a stamp can sit near on a page — "top
 /// left, top right, middle, bottom" from the design spec, expressed as a
@@ -22,38 +22,22 @@ import 'passport_stamp_painters.dart' show stampVariantSize;
 /// passing).
 // Deliberately NOT collinear (no two anchors share an x or a y) — this
 // feature's own visual QA showed two same-axis anchors close enough that
-// even modest jitter drove real overlap well past the spec's "at most
-// about 10%". Retuned again in Round 2 (booklet redesign): the previous
-// middle/bottom pair (-0.20, 0.14) / (0.30, 0.72) was tuned against the
-// old full-screen-width stamp page, not the booklet's own, narrower
-// ~320-480pt page — at that size a round seal (156pt) landing in the
-// middle anchor and a double frame (180×112pt) in the bottom anchor
-// overlapped well past 10%, confirmed directly in this round's own
-// preview harness. Spread into four quadrant-like anchors instead, each
-// pushed toward its own corner of the content rect, for more separation
-// between any two anchors regardless of which variants land on them.
-// Anchor placement alone still can't guarantee the spec's "maximaal ~10%
-// overlap" for every possible variant pairing — see _StampField.build's
-// own three-pass layout (resolve → relax apart → clamp once) for the
-// actual enforcement of that number. Confirmed via this round's own
-// preview harness against an adversarial case (6 same-year items, all 4
-// anchors filled): even with that relaxation pass, a round seal and a
-// double frame BOTH needing to sit near their own page edge (their own
-// halfDiagonal margin, enforced by the final clamp) can still end up
-// closer together than the relaxation pass alone moved them apart — the
-// clamp step is not itself relaxation-aware. This is a genuine, disclosed
-// residual limit of fitting 4 stamps this large (up to ~212pt diagonal)
-// on a page this size (~320-480pt), not an unexamined gap: the fix
-// materially improves the common case (spread across multiple pages/
-// years, confirmed in the same harness) without fully eliminating the
-// adversarial single-page worst case. Shrinking the literal stamp sizes
-// to close this gap was considered and rejected — Round 1 deliberately
-// keeps them unscaled ("a real passport's print doesn't rescale").
+// even modest jitter drove real overlap well past prior rounds' own
+// "at most about 10%" target. Pushed further toward the actual corners in
+// the September 2026 stamp redesign: that round's 5 designs are
+// physically much bigger (up to ~283pt diagonal, vs ~213pt before), and —
+// significantly — its own acceptance criteria dropped the "~10% overlap"
+// requirement entirely, keeping only "never off the page" and "never over
+// the header or year corner" (see PassportPage's own preview harness for
+// that round). Real passport stamps genuinely overlap each other when a
+// page fills up; this redesign leans into that rather than fighting it,
+// so the anchors/relaxation pass below now aim for "spread out as much as
+// this page size allows," not "never touch."
 const _slotAnchors = [
-  Alignment(-0.55, -0.60), // top left
-  Alignment(0.55, -0.45), // top right
-  Alignment(0.50, 0.20), // mid right
-  Alignment(-0.45, 0.55), // lower left (clear of the bottom-left year corner, which sits lower still)
+  Alignment(-0.85, -0.80), // top left
+  Alignment(0.85, -0.65), // top right
+  Alignment(0.75, 0.45), // mid right
+  Alignment(-0.70, 0.80), // lower left (may still brush the bottom-left year corner at these larger sizes — verified via screenshot, not assumed clear the way the old smaller anchors were)
 ];
 
 /// The bound-page card: ivory paper, a faint guilloché ring pattern, the
@@ -367,7 +351,7 @@ class _StampField extends StatelessWidget {
           final ink = pickStampInk(item.id, avoid: previousInk);
           previousVariant = variant;
           previousInk = ink;
-          final size = stampVariantSize(variant);
+          final size = item.verified ? verifiedStampSize : stampVariantSize(variant);
           final halfDiagonal =
               math.sqrt(size.width * size.width + size.height * size.height) / 2;
           entries.add(
@@ -447,8 +431,8 @@ class _StampField extends StatelessWidget {
       );
       children.add(
         Positioned(
-          left: anchorCenter.dx - 52,
-          top: anchorCenter.dy - 52,
+          left: anchorCenter.dx - _NextStampPlaceholder._diameter / 2,
+          top: anchorCenter.dy - _NextStampPlaceholder._diameter / 2,
           child: _NextStampPlaceholder(onTap: onTapNextStamp),
         ),
       );
@@ -494,8 +478,21 @@ class _NextStampPlaceholder extends StatelessWidget {
   final VoidCallback onTap;
   const _NextStampPlaceholder({required this.onTap});
 
-  static const double _diameter = 108;
+  // 108 was too small for its own content: the plus-icon (30) + gap (6) +
+  // two-line-wrapped "Add your next stamp" (13pt, ~31px tall) fits inside
+  // the 108×108 SQUARE bounding box, but a circle inscribed in that square
+  // curves away well before its corners — the top of the icon and the
+  // bottom line of text, both near the box's own top/bottom edge, ended up
+  // wider than the CIRCLE's actual available width at that height, so they
+  // visibly poked out past the dashed ring despite technically staying
+  // inside the box. Caught only by screenshotting this in a preview
+  // harness, not by analyze/tests. 150 (plus an explicit, narrower text
+  // width below) gives real margin between the widest wrapped line and the
+  // circle's curve at that vertical offset, not just between the text and
+  // the outer square.
+  static const double _diameter = 150;
   static const double _plusDiameter = 30;
+  static const double _labelWidth = 96;
 
   @override
   Widget build(BuildContext context) => Semantics(
@@ -535,14 +532,17 @@ class _NextStampPlaceholder extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 6),
-                    Text(
-                      'Add your next stamp',
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.cormorantGaramond(
-                        color: AppColors.textSecondary,
-                        fontSize: 13,
-                        fontStyle: FontStyle.italic,
-                        height: 1.2,
+                    SizedBox(
+                      width: _labelWidth,
+                      child: Text(
+                        'Add your next stamp',
+                        textAlign: TextAlign.center,
+                        style: GoogleFonts.cormorantGaramond(
+                          color: AppColors.textSecondary,
+                          fontSize: 13,
+                          fontStyle: FontStyle.italic,
+                          height: 1.2,
+                        ),
                       ),
                     ),
                   ],

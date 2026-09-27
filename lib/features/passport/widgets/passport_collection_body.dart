@@ -13,11 +13,14 @@ import '../../../data/repositories/profile_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
+import '../../../models/venue_entry.dart';
 import '../../events/event_detail_screen.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../models/passport_stamp_item.dart';
+import '../passport_all_visits_screen.dart';
 import '../passport_booklet_data.dart';
+import '../passport_filter_type.dart';
 import 'add_visit_flow.dart';
 import 'passport_booklet_view.dart';
 
@@ -48,6 +51,15 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   late final _profileRepo = ProfileRepository(Supabase.instance.client);
 
   List<PassportVolume> _volumes = [];
+
+  // The raw, un-capped loads _volumes is built from — kept alongside it
+  // for PassportAllVisitsScreen (point 5's "volledige lijst van alle
+  // bezoeken"), which deliberately shows the user's WHOLE history, not
+  // just what buildPassportVolumes keeps inside the booklet's 5-year
+  // window. See _openAllVisits below.
+  List<VenueEntry> _entries = [];
+  List<EventAttendanceEntry> _eventEntries = [];
+
   String _holderName = 'Member';
   String? _avatarUrl;
   Map<String, String> _countryNameByCode = {};
@@ -154,6 +166,8 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
 
       setState(() {
         _volumes = volumes;
+        _entries = entries;
+        _eventEntries = eventEntries;
         _holderName = name;
         _avatarUrl = avatarUrl;
         _memberNumber = memberNumber;
@@ -200,6 +214,18 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     HotelStampItem(:final hotel) => _openHotel(hotel),
     EventStampItem(:final entry) => _openEvent(entry.event.id),
   };
+
+  void _openAllVisits(PassportFilterType? filter) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => PassportAllVisitsScreen(
+        entries: _entries,
+        eventEntries: _eventEntries,
+        initialFilter: filter,
+        onTapItem: _onTapStamp,
+      ),
+    ),
+  );
 
   Future<void> _addVisit() async {
     final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
@@ -254,8 +280,10 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
               memberNumber: _memberNumber,
               countryNameByCode: _countryNameByCode,
               newStampIds: _newStampIds,
+              includeBackCoverPage: true,
               onTapStamp: _onTapStamp,
               onTapNextStamp: _addVisit,
+              onOpenAllVisits: _openAllVisits,
             ),
           ),
         ),

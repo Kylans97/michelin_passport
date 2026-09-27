@@ -91,6 +91,12 @@ class Hotel {
   final DateTime? createdAt;
   final String? missingListingReportId;
 
+  // See the identical fields on Restaurant (Passport stamp redesign, "16b
+  // — verified venue stamps") for full semantics and the migration a real
+  // upload/approval flow would still need.
+  final String? stampArtworkUrl;
+  final bool stampArtworkApproved;
+
   const Hotel({
     required this.id,
     required this.hotelCode,
@@ -121,6 +127,8 @@ class Hotel {
     this.statusNote,
     this.createdAt,
     this.missingListingReportId,
+    this.stampArtworkUrl,
+    this.stampArtworkApproved = false,
   });
 
   /// True when the hotel currently holds a confirmed MICHELIN Key value.
@@ -179,5 +187,7 @@ class Hotel {
         ? null
         : DateTime.parse(json['created_at'] as String),
     missingListingReportId: json['missing_listing_report_id'] as String?,
+    stampArtworkUrl: json['stamp_artwork_url'] as String?,
+    stampArtworkApproved: (json['stamp_artwork_approved'] as bool?) ?? false,
   );
 }

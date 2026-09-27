@@ -1,15 +1,22 @@
+import 'dart:math' as math;
+
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../models/venue_entry.dart';
 import 'models/passport_stamp_item.dart';
 import 'passport_stamp_source.dart';
 
-/// One "book" in the Passport stack — either the complete passport
-/// (`year == null`, every entry ever recorded) or one calendar year's own
-/// volume. Built once per load by [buildPassportVolumes]; everything a
-/// cover face or the data page needs to render is already computed here,
-/// so neither widget re-derives stats from the raw entry lists itself.
+/// The Passport's one continuous booklet — every stamp across every year
+/// (capped to the last 5 calendar years, see [buildPassportVolumes]), never
+/// split into separate per-year books any more. [year] is always null now
+/// (kept as a field, not removed, only because [PassportCoverFace]/
+/// [PassportDataPage]/[PassportOpenBookFrame] already branch on it for the
+/// pre-existing "no entries yet" empty state — see those files' own
+/// remaining `volume.year == null` checks). Built once per load by
+/// [buildPassportVolumes]; everything a cover face or the data page needs
+/// to render is already computed here, so neither widget re-derives stats
+/// from the raw entry lists itself.
 class PassportVolume {
-  /// Null for the complete passport; a calendar year for a yearly volume.
+  /// Always null post-refactor — see this class's own doc comment.
   final int? year;
 
   /// Every stamp in this volume's scope, oldest first — unused by Round 1
@@ -57,15 +64,25 @@ class PassportVolume {
     required this.stars,
     required this.collectionFirstYear,
   });
-
-  String get label => year == null ? 'COMPLETE' : '$year';
 }
 
-/// Builds the complete-passport volume plus one volume per year that has
-/// at least one entry (restaurant visit, hotel stay, or confirmed event
-/// attendance), newest year first. Empty (`entries.isEmpty &&
-/// eventEntries.isEmpty`) returns an empty list — the caller renders the
-/// existing "no visits yet" cover-only state instead of any volume.
+/// Builds the single continuous booklet volume — every restaurant visit,
+/// hotel stay, and confirmed event attendance across the last 5 calendar
+/// years (this year plus the 4 before it), oldest-first internally (the
+/// stamp pages themselves group and order newest-first, see
+/// [buildYearGroupedStampPages]). Returns an empty list only when there is
+/// truly nothing to show at all (no entries, or every entry falls outside
+/// the 5-year window) — the caller renders the existing "no visits yet"
+/// cover-only state in that case, exactly as it did for a genuinely empty
+/// passport before this refactor.
+///
+/// Previously returned one volume per YEAR (plus a "COMPLETE" volume
+/// containing everything) — a stack of separate yearly booklets you'd
+/// swipe between on the cover. That's gone: one booklet, one cover, all
+/// stamps together. Year-grouping is kept, just moved entirely into how
+/// the stamp pages themselves are laid out
+/// ([buildYearGroupedStampPages]'s own per-year page breaks and corner
+/// labels), not into a separate volume per year.
 List<PassportVolume> buildPassportVolumes({
   required List<VenueEntry> entries,
   required List<EventAttendanceEntry> eventEntries,
@@ -78,35 +95,34 @@ List<PassportVolume> buildPassportVolumes({
 
   if (allItems.isEmpty) return [];
 
-  final years = allItems.map((item) => item.date.year).toSet().toList()
-    ..sort();
-  final firstYear = years.first;
+  // "Tot vijf jaar terug" — this year plus the 4 before it, a real data
+  // cutoff, not the old cover-stack's purely VISUAL 5-peek cap
+  // (PassportCoverStackState._maxPeek, which never actually hid data —
+  // every year beyond the front 6 was still reachable by swiping). Stamps
+  // older than this window are dropped from the booklet entirely.
+  final cutoffYear = DateTime.now().year - 4;
+  final items = allItems.where((item) => item.date.year >= cutoffYear).toList();
+  if (items.isEmpty) return [];
 
-  PassportVolume volumeFor(int? year) {
-    final items = year == null
-        ? allItems
-        : allItems.where((item) => item.date.year == year).toList();
-    final countryCodes =
-        items
-            .map((item) => item.countryCode)
-            .where((code) => code.isNotEmpty)
-            .toSet()
-            .toList()
-          ..sort();
-    final stars = items
-        .whereType<RestaurantStampItem>()
-        .fold<int>(0, (sum, item) => sum + (item.stars ?? 0));
-    return PassportVolume(
-      year: year,
+  final firstYear = items.map((item) => item.date.year).reduce(math.min);
+  final countryCodes =
+      items
+          .map((item) => item.countryCode)
+          .where((code) => code.isNotEmpty)
+          .toSet()
+          .toList()
+        ..sort();
+  final stars = items
+      .whereType<RestaurantStampItem>()
+      .fold<int>(0, (sum, item) => sum + (item.stars ?? 0));
+
+  return [
+    PassportVolume(
+      year: null,
       items: items,
       countryCodes: countryCodes,
       stars: stars,
       collectionFirstYear: firstYear,
-    );
-  }
-
-  return [
-    volumeFor(null),
-    for (final year in years.reversed) volumeFor(year),
+    ),
   ];
 }

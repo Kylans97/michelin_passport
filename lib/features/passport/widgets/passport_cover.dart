@@ -5,22 +5,22 @@ import '../../../core/widgets/cs_masthead_logo.dart';
 import '../passport_booklet_data.dart';
 import 'passport_page_dots.dart';
 
-// Same oldstyle-figure fallback PassportDataPage's own [_liningFigures]
-// documents and fixes — the year label on a peeking sliver is a Cormorant
-// numeral too.
-const _liningFigures = [FontFeature.enable('lnum')];
-
-/// The closed cover of one [PassportVolume] — the complete passport or one
-/// yearly volume, same face, only the bottom-left label differs
-/// ("COMPLETE" vs. the year). Gold appears ONLY on the logo mark, the
-/// MANTELIER wordmark, and the two border strokes — every other piece of
-/// text (the italic tagline, the COMPLETE/year label, the member number)
-/// is ivory, matching this app's app-wide "no gold text" rule (see
-/// EDITORIAL_REDESIGN_TRACKING.md's friend-profile note on the same rule)
-/// — the design spec's own enumerated gold-foil list ("logo, MANTELIER,
-/// rand") doesn't include the tagline or the corner labels, so they follow
-/// the general rule instead. A disclosed interpretive call, not asked
-/// about explicitly for this screen.
+/// The closed cover of the one continuous [PassportVolume] — no more
+/// per-year covers, so [depth] is always 0 in practice now (see
+/// [PassportCoverStack]'s own doc comment); the parameter stays because a
+/// single-face render is still exactly what this widget does.
+///
+/// Chocolate leather (see [AppColors.coverLeather]/[coverLeatherDeep]), not
+/// a flat lerped green — a September 2026 revision to the original build.
+/// Gold foil now covers the logo mark, the MANTELIER wordmark, the italic
+/// tagline, AND the member number — an explicit, confirmed exception to
+/// this app's general "no gold text" rule, asked for by name for this one
+/// ornamental object (a bound cover, not a UI control) after this file
+/// previously kept the tagline/number ivory as an interpretive call nobody
+/// had actually asked for either way. The two solid gold border strokes
+/// that used to sit under [_CoverBorderPainter] are gone too, replaced by
+/// the single dashed gold saddle-stitch ([_SaddleStitchPainter]) — the
+/// brief is explicit that nothing else draws a line/frame on the leather.
 class PassportCoverFace extends StatelessWidget {
   final PassportVolume volume;
 
@@ -56,32 +56,44 @@ class PassportCoverFace extends StatelessWidget {
   static const double baseWidth = 270;
   static const double baseHeight = 410;
 
+  /// Corners: 6 left (spine) / 16 right — mirrored by
+  /// [PassportBackCoverFace]'s own `_radius` for the true back of the
+  /// book, whose spine sits on the right instead.
+  static const _radius = BorderRadius.only(
+    topLeft: Radius.circular(6),
+    bottomLeft: Radius.circular(6),
+    topRight: Radius.circular(16),
+    bottomRight: Radius.circular(16),
+  );
+
   @override
   Widget build(BuildContext context) {
     final t = (depth * 0.16).clamp(0.0, 0.6);
-    final faceColor = Color.lerp(AppColors.darkGreen, AppColors.forestGreen, t)!;
-    final ivory = depth == 0
-        ? AppColors.secondaryOnDark
-        : AppColors.secondaryOnDark.withValues(alpha: 0.7);
+    final leatherLight = Color.lerp(AppColors.coverLeather, AppColors.coverLeatherDeep, t)!;
+    final leatherDark = Color.lerp(AppColors.coverLeatherDeep, AppColors.coverLeatherEdge, t)!;
+    final foil = depth == 0 ? AppColors.goldLight : AppColors.goldLight.withValues(alpha: 0.7);
 
     return Semantics(
       label: depth == 0
-          ? '${volume.year == null ? "Complete passport" : "${volume.year} volume"}, '
-                '${volume.entries} ${volume.entries == 1 ? "entry" : "entries"}. '
-                'Double-tap to open. Swipe for yearly volumes.'
+          ? 'Passport, ${volume.entries} ${volume.entries == 1 ? "entry" : "entries"}. '
+                'Double-tap to open.'
           : null,
       excludeSemantics: depth != 0,
       child: Container(
         width: size.width,
         height: size.height,
         decoration: BoxDecoration(
-          color: faceColor,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(6),
-            bottomLeft: Radius.circular(6),
-            topRight: Radius.circular(16),
-            bottomRight: Radius.circular(16),
+          // Radial gloss from the top-left, per the brief's "zachte
+          // radiale glans linksboven" — a designed approximation of its
+          // OKLCH color-mix gradient (see AppColors.coverLeather's own
+          // doc comment for why these are plain hex, not OKLCH tokens).
+          gradient: RadialGradient(
+            center: const Alignment(-0.6, -0.7),
+            radius: 1.3,
+            colors: [leatherLight, leatherDark],
           ),
+          border: Border.all(color: AppColors.coverLeatherEdge, width: 1),
+          borderRadius: _radius,
           boxShadow: depth == 0
               ? [
                   BoxShadow(
@@ -93,21 +105,17 @@ class PassportCoverFace extends StatelessWidget {
               : null,
         ),
         child: ClipRRect(
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(6),
-            bottomLeft: Radius.circular(6),
-            topRight: Radius.circular(16),
-            bottomRight: Radius.circular(16),
-          ),
+          borderRadius: _radius,
           child: Stack(
             children: [
+              // The gold saddle-stitch — the ONLY line/frame drawn on the
+              // leather now (see this class's own doc comment for why the
+              // old double gold border strokes are gone).
               Positioned.fill(
                 child: CustomPaint(
-                  painter: _CoverBorderPainter(
-                    outerColor: AppColors.stampInkDeepGold,
-                    innerColor: AppColors.gold.withValues(
-                      alpha: depth == 0 ? 1 : 0.6,
-                    ),
+                  painter: _SaddleStitchPainter(
+                    radius: _radius,
+                    color: AppColors.gold.withValues(alpha: depth == 0 ? 0.7 : 0.4),
                   ),
                 ),
               ),
@@ -150,7 +158,7 @@ class PassportCoverFace extends StatelessWidget {
                       Text(
                         'Passeport gastronomique',
                         style: GoogleFonts.cormorantGaramond(
-                          color: ivory,
+                          color: foil,
                           fontSize: 13,
                           fontStyle: FontStyle.italic,
                         ),
@@ -158,26 +166,22 @@ class PassportCoverFace extends StatelessWidget {
                     ],
                   ),
                 ),
+                // No more COMPLETE/year label here — there's only ever one
+                // continuous booklet now, so the bottom corner shows just
+                // the member number, right-aligned (previously the right
+                // half of a spaceBetween row whose left half was the now-
+                // removed volume label).
                 Positioned(
                   left: 22,
                   right: 22,
                   bottom: 20,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        volume.label,
-                        style: GoogleFonts.inter(
-                          color: ivory,
-                          fontSize: 10.5,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 10.5 * 0.14,
-                        ),
-                      ),
                       Text(
                         memberNumber == null ? 'NO. —' : 'NO. $memberNumber',
                         style: GoogleFonts.inter(
-                          color: ivory,
+                          color: foil,
                           fontSize: 10.5,
                           fontWeight: FontWeight.w600,
                           letterSpacing: 10.5 * 0.14,
@@ -186,33 +190,15 @@ class PassportCoverFace extends StatelessWidget {
                     ],
                   ),
                 ),
-              ] else
-                // Fixed 7pt inset from the card's own top edge, NOT a
-                // fractional Alignment — the visible sliver band is only
-                // ~[PassportCoverStackState._maxPeek]'s own peekStep
-                // (24pt) regardless of the card's full 410pt height, so a
-                // fractional y (e.g. -0.88) that happens to fall outside
-                // that band renders the label but leaves it fully
-                // occluded by the card in front. Confirmed missing this
-                // way in this round's own preview-harness screenshot
-                // before switching to a fixed inset.
-                Positioned(
-                  top: 7,
-                  left: 0,
-                  right: 0,
-                  child: Center(
-                    child: Text(
-                      volume.label,
-                      style: GoogleFonts.cormorantGaramond(
-                        color: depth == 1 ? AppColors.secondaryOnDark : ivory,
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                        letterSpacing: 13 * 0.12,
-                        fontFeatures: _liningFigures,
-                      ),
-                    ),
-                  ),
-                ),
+              ],
+              // depth > 0 (a peeking sliver behind the front cover) never
+              // happens any more — buildPassportVolumes always returns at
+              // most one volume post-refactor, so PassportCoverStack's own
+              // peekCount is always 0 — but depth stays a real parameter
+              // (still drives the leather gradient's lerp above) rather
+              // than being torn out, since a future product decision to
+              // peek something else behind the cover again wouldn't need
+              // to touch this widget at all, only PassportCoverStack.
             ],
           ),
         ),
@@ -221,61 +207,229 @@ class PassportCoverFace extends StatelessWidget {
   }
 }
 
-class _CoverBorderPainter extends CustomPainter {
-  final Color outerColor;
-  final Color innerColor;
-  const _CoverBorderPainter({required this.outerColor, required this.innerColor});
+/// The dashed gold "saddle stitch" — the only line drawn on the leather,
+/// front or back (see [PassportCoverFace]/[PassportBackCoverFace]'s own
+/// doc comments for why the old solid double border is gone). Follows
+/// [radius]'s own rounded-rect shape, inset 10pt from the edge, so it
+/// tracks whichever corner the caller mirrors the spine to. Dash 4 / gap 3
+/// / stroke 1.5, per the brief.
+class _SaddleStitchPainter extends CustomPainter {
+  final BorderRadius radius;
+  final Color color;
+  const _SaddleStitchPainter({required this.radius, required this.color});
 
-  static const _radii = BorderRadius.only(
-    topLeft: Radius.circular(6),
-    bottomLeft: Radius.circular(6),
-    topRight: Radius.circular(16),
-    bottomRight: Radius.circular(16),
-  );
+  static const double _inset = 10;
+  static const double _dashLength = 4;
+  static const double _gapLength = 3;
 
   @override
   void paint(Canvas canvas, Size size) {
-    final outerRect = (Offset.zero & size).deflate(1);
-    canvas.drawRRect(
-      _radii.toRRect(outerRect),
-      Paint()
-        ..color = outerColor
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1,
+    final rect = Rect.fromLTWH(
+      _inset,
+      _inset,
+      size.width - _inset * 2,
+      size.height - _inset * 2,
     );
-    final innerRect = (Offset.zero & size).deflate(12);
-    canvas.drawRRect(
-      _radii.toRRect(innerRect).deflate(0),
-      Paint()
-        ..color = innerColor
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 1,
-    );
+    if (rect.width <= 0 || rect.height <= 0) return;
+    final path = Path()..addRRect(radius.toRRect(rect));
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.5
+      ..strokeCap = StrokeCap.round;
+    for (final metric in path.computeMetrics()) {
+      var distance = 0.0;
+      while (distance < metric.length) {
+        final end = distance + _dashLength < metric.length
+            ? distance + _dashLength
+            : metric.length;
+        canvas.drawPath(metric.extractPath(distance, end), paint);
+        distance = end + _gapLength;
+      }
+    }
   }
 
   @override
-  bool shouldRepaint(covariant _CoverBorderPainter oldDelegate) =>
-      oldDelegate.outerColor != outerColor || oldDelegate.innerColor != innerColor;
+  bool shouldRepaint(covariant _SaddleStitchPainter oldDelegate) =>
+      oldDelegate.radius != radius || oldDelegate.color != color;
 }
 
-/// The landing state's whole stack: the complete passport in front, one
-/// sliver per yearly volume peeking above it, swipe/tap to bring a volume
-/// forward, "Tap to open" + page dots below. Depth is capped at 5 peeking
-/// slivers — a user with a longer history can still reach every volume by
-/// swiping, but rendering an unbounded, ever-taller fan for e.g. 12 years
-/// of visits would push the "Tap to open" caption and dots off whatever
-/// screen height is available; 5 is generous for what this app's own
-/// visit history realistically looks like today. A scaling simplification,
-/// disclosed rather than silently assumed away.
+/// The booklet's true outer back — reached by swiping one page past
+/// [PassportBackCoverPage] (the ivory content page with the "View all
+/// visits" link/filters; see passport_back_cover_page.dart), where the
+/// booklet visually runs out of pages onto its own leather back. Same
+/// chocolate leather and gold saddle-stitch as [PassportCoverFace],
+/// mirrored: the spine sits on the RIGHT here (this is the back, so its
+/// bound edge is the opposite side from the front cover's), corners 16
+/// left / 6 right instead of 6 left / 16 right. No foil branding — the
+/// brief is explicit this face carries only a blind (foil-free) embossed
+/// "M" and a plain gold property-of footer, never the front's logo/
+/// wordmark/tagline treatment.
+class PassportBackCoverFace extends StatelessWidget {
+  final String holderName;
+  final int? memberNumber;
+  final Size size;
+
+  const PassportBackCoverFace({
+    super.key,
+    required this.holderName,
+    required this.memberNumber,
+    this.size = const Size(PassportCoverFace.baseWidth, PassportCoverFace.baseHeight),
+  });
+
+  static const _radius = BorderRadius.only(
+    topLeft: Radius.circular(16),
+    bottomLeft: Radius.circular(16),
+    topRight: Radius.circular(6),
+    bottomRight: Radius.circular(6),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    return Semantics(
+      label: 'Back cover.',
+      child: Container(
+        width: size.width,
+        height: size.height,
+        decoration: BoxDecoration(
+          gradient: const RadialGradient(
+            center: Alignment(-0.6, -0.7),
+            radius: 1.3,
+            colors: [AppColors.coverLeather, AppColors.coverLeatherDeep],
+          ),
+          border: Border.all(color: AppColors.coverLeatherEdge, width: 1),
+          borderRadius: _radius,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: 0.32),
+              blurRadius: 28,
+              offset: const Offset(0, 14),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: _radius,
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: CustomPaint(
+                  painter: _SaddleStitchPainter(
+                    radius: _radius,
+                    color: AppColors.gold.withValues(alpha: 0.7),
+                  ),
+                ),
+              ),
+              // Spine shadow on the right — mirrored from the front
+              // cover's own left-edge treatment.
+              const Positioned(
+                right: 0,
+                top: 0,
+                bottom: 0,
+                width: 18,
+                child: IgnorePointer(
+                  child: DecoratedBox(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.centerRight,
+                        end: Alignment.centerLeft,
+                        colors: [Color(0x40000000), Color(0x00000000)],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const Center(child: _BlindEmbossedM()),
+              Positioned(
+                left: 22,
+                right: 22,
+                bottom: 24,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      'PROPERTY OF THE HOLDER',
+                      style: GoogleFonts.inter(
+                        color: AppColors.goldLight,
+                        fontSize: 9,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 9 * 0.12,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      memberNumber == null
+                          ? '$holderName · No. —'
+                          : '$holderName · No. $memberNumber',
+                      style: GoogleFonts.cormorantGaramond(
+                        color: AppColors.gold,
+                        fontSize: 17,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    Text(
+                      'MANTELIER',
+                      style: GoogleFonts.cormorantGaramond(
+                        color: AppColors.gold,
+                        fontSize: 13,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 13 * 0.32,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The back cover's own foil-free "M" — two overlapping tinted copies of
+/// the same monochrome SVG mark ([CsMastheadLogo] ships no separate
+/// embossed asset), the lighter one offset a touch lower so a sliver of it
+/// catches "light" beneath the darker top copy: a cheap, dependency-free
+/// stand-in for an actual emboss/shadow render, matching the brief's own
+/// "donkerdere leertint met een 1px lichte onderrand."
+class _BlindEmbossedM extends StatelessWidget {
+  const _BlindEmbossedM();
+
+  @override
+  Widget build(BuildContext context) => ExcludeSemantics(
+    child: Stack(
+      alignment: Alignment.center,
+      children: [
+        Transform.translate(
+          offset: const Offset(0, 1.2),
+          child: const CsMastheadLogo(size: 44, tint: AppColors.coverLeatherEmbossHighlight),
+        ),
+        const CsMastheadLogo(size: 44, tint: AppColors.coverLeatherEmboss),
+      ],
+    ),
+  );
+}
+
+/// The landing state's cover: the one continuous passport's front face,
+/// "Tap to open" beneath it. Formerly a genuine stack — a sliver per
+/// yearly volume peeking behind the front cover, swipe/tap to bring one
+/// forward, page dots showing which was selected — now that
+/// [buildPassportVolumes] always returns at most one volume, [volumes]
+/// here is always length ≤1, so [PassportCoverStackState]'s own peek/
+/// swipe/dots machinery below is effectively inert (peekCount always 0,
+/// the dots row's own `length > 1` guard never true) rather than removed
+/// outright: nothing about this widget's CONTRACT changed (it still takes
+/// a list, still exposes `onOpen(index)`), only what
+/// [buildPassportVolumes] ever puts in that list — see this class's own
+/// git history if the swipe-between-volumes behavior is ever wanted back
+/// for something else.
 class PassportCoverStack extends StatefulWidget {
   final List<PassportVolume> volumes;
   final int? memberNumber;
   final ValueChanged<int> onOpen;
 
-  /// The front face's rendered size — see [PassportCoverFace.size]'s own
-  /// doc comment. Every peeking sliver behind it uses this same size too;
-  /// only their position/scale differs by depth, never their own
-  /// intrinsic footprint.
+  /// The front face's rendered size.
   final Size faceSize;
 
   const PassportCoverStack({

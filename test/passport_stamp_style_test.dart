@@ -63,13 +63,13 @@ void main() {
   });
 
   group('pickStampRotationDegrees', () {
-    test('is deterministic and always within [-12, 8]', () {
+    test('is deterministic and always within [-7, 6]', () {
       for (var i = 0; i < 200; i++) {
         final id = 'visit-$i';
         final rotation = pickStampRotationDegrees(id);
         expect(rotation, pickStampRotationDegrees(id));
-        expect(rotation, greaterThanOrEqualTo(-12));
-        expect(rotation, lessThanOrEqualTo(8));
+        expect(rotation, greaterThanOrEqualTo(-7));
+        expect(rotation, lessThanOrEqualTo(6));
       }
     });
   });

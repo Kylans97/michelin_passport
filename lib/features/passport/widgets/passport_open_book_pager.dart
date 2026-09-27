@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../models/passport_stamp_item.dart';
 import '../passport_booklet_data.dart';
+import '../passport_filter_type.dart';
 import '../passport_stamp_source.dart';
+import 'passport_back_cover_page.dart';
+import 'passport_cover.dart' show PassportBackCoverFace;
 import 'passport_data_page.dart';
 import 'passport_page.dart';
 import 'passport_page_dots.dart';
@@ -33,12 +36,24 @@ class PassportOpenBookPager extends StatefulWidget {
   /// Defaults to true, the current-user booklet's unchanged behavior.
   final bool includeNextStampSlot;
 
+  /// True appends one more page after every stamp page: a way out of the
+  /// booklet into a flat, filterable "all visits" list (point 5 of the
+  /// September 2026 Passport fixes) — see [PassportBackCoverPage]. Only
+  /// the current user's own booklet has such a screen to link to, so this
+  /// defaults to false (a friend's read-only booklet gets no back cover).
+  final bool includeBackCoverPage;
+
   /// Which page to open on — PassportCollectionBody's own "remember which
   /// page" state, restored when reopening the same volume you last closed.
   final int initialPage;
   final ValueChanged<int> onPageChanged;
   final void Function(PassportStampItem item) onTapStamp;
   final VoidCallback onTapNextStamp;
+
+  /// Called from the back cover page — null for "View all visits" (no
+  /// filter), or a specific [PassportFilterType] for one of its three
+  /// shortcuts. Never called when [includeBackCoverPage] is false.
+  final void Function(PassportFilterType? filter) onOpenAllVisits;
 
   const PassportOpenBookPager({
     super.key,
@@ -50,10 +65,12 @@ class PassportOpenBookPager extends StatefulWidget {
     required this.countryNameByCode,
     required this.newStampIds,
     this.includeNextStampSlot = true,
+    this.includeBackCoverPage = false,
     required this.initialPage,
     required this.onPageChanged,
     required this.onTapStamp,
     required this.onTapNextStamp,
+    required this.onOpenAllVisits,
   });
 
   @override
@@ -134,7 +151,12 @@ class _PassportOpenBookPagerState extends State<PassportOpenBookPager> {
   @override
   Widget build(BuildContext context) {
     final stampPages = _stampPages;
-    final totalPages = 1 + stampPages.length;
+    // 2 extra pages when included: the ivory content back-cover page
+    // (PassportBackCoverPage — "View all visits" + filters) then, one
+    // swipe further, the booklet's own literal leather back
+    // (PassportBackCoverFace) — see that class's own doc comment.
+    final backCoverCount = widget.includeBackCoverPage ? 2 : 0;
+    final totalPages = 1 + stampPages.length + backCoverCount;
     final activeIndex = _currentPage.clamp(0, totalPages - 1);
 
     return Column(
@@ -157,6 +179,20 @@ class _PassportOpenBookPagerState extends State<PassportOpenBookPager> {
                   holderName: widget.holderName,
                   avatarUrl: widget.avatarUrl,
                   memberNumber: widget.memberNumber,
+                );
+              }
+              if (widget.includeBackCoverPage && i == totalPages - 2) {
+                return PassportBackCoverPage(
+                  size: widget.size,
+                  onViewAll: () => widget.onOpenAllVisits(null),
+                  onFilterTap: widget.onOpenAllVisits,
+                );
+              }
+              if (widget.includeBackCoverPage && i == totalPages - 1) {
+                return PassportBackCoverFace(
+                  holderName: widget.holderName,
+                  memberNumber: widget.memberNumber,
+                  size: widget.size,
                 );
               }
               final stampPage = stampPages[i - 1];

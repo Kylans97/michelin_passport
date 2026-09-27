@@ -4,13 +4,17 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../models/passport_stamp_item.dart';
 import '../passport_booklet_data.dart';
+import '../passport_filter_type.dart';
 import 'passport_cover.dart';
 import 'passport_open_book_pager.dart';
 
-/// The whole booklet UI, generic over WHOSE data it shows: closed cover
-/// (with yearly volumes fanned behind it) → 3D open → data page → stamp
-/// pages, all self-contained state (open/closed, which volume, which
-/// page, the flip animation). Extracted from `PassportCollectionBody` —
+/// The whole booklet UI, generic over WHOSE data it shows: closed cover →
+/// 3D open → data page → stamp pages, all self-contained state (open/
+/// closed, which page, the flip animation). One continuous booklet, not a
+/// stack of yearly volumes any more — see `buildPassportVolumes`'s own
+/// doc comment for that refactor; `_openVolumeIndex` below is a holdover
+/// from when there could be more than one, effectively always 0 now.
+/// Extracted from `PassportCollectionBody` —
 /// that widget originally owned this choreography directly, hardcoded to
 /// `Supabase.instance.client.auth.currentUser`'s own data; it's now a
 /// thin self-loading wrapper around this widget instead (see that file's
@@ -20,11 +24,11 @@ import 'passport_open_book_pager.dart';
 /// `currentUser` or performs any network I/O; every byte of data it shows
 /// is a constructor parameter.
 class PassportBookletView extends StatefulWidget {
-  /// Whatever `buildPassportVolumes` returned — may legitimately be
-  /// empty (no entries at all), in which case this widget renders a
-  /// single synthetic empty "COMPLETE" cover with no volumes fanned
-  /// behind it, matching the design spec's own "Geen bezoeken: alleen de
-  /// omslag, geen volumes erachter."
+  /// Whatever `buildPassportVolumes` returned — length 0 (no entries at
+  /// all, or every entry fell outside the 5-year window) or 1, never more.
+  /// Empty renders a single synthetic empty cover via [_emptyVolume]
+  /// below, matching the design spec's own "Geen bezoeken: alleen de
+  /// omslag."
   final List<PassportVolume> volumes;
 
   final String holderName;
@@ -46,12 +50,27 @@ class PassportBookletView extends StatefulWidget {
   /// from every stamp page — a friend's booklet isn't yours to add to.
   final bool includeNextStampSlot;
 
+  /// True appends a final back-cover page after the stamp pages — a link
+  /// to the complete, unfiltered visit list plus a shortcut per
+  /// [PassportFilterType] (point 5 of the September 2026 Passport fixes;
+  /// see [PassportBackCoverPage] in passport_back_cover_page.dart).
+  /// Defaults to false: only the current user's own booklet
+  /// (PassportCollectionBody) has an "all visits" screen to link to — a
+  /// friend's read-only booklet has none, so it stays exactly as it was.
+  final bool includeBackCoverPage;
+
   final void Function(PassportStampItem item) onTapStamp;
 
   /// Never called when [includeNextStampSlot] is false (there's no slot
   /// to tap). Optional for exactly that case — a caller that never shows
   /// the slot doesn't need to supply a handler for it.
   final VoidCallback? onTapNextStamp;
+
+  /// Called from the back cover page — null for "View all visits", or a
+  /// specific [PassportFilterType] for one of its three shortcuts. Never
+  /// called when [includeBackCoverPage] is false; optional for exactly
+  /// that case, mirroring [onTapNextStamp] above.
+  final void Function(PassportFilterType? filter)? onOpenAllVisits;
 
   const PassportBookletView({
     super.key,
@@ -62,8 +81,10 @@ class PassportBookletView extends StatefulWidget {
     required this.countryNameByCode,
     this.newStampIds = const {},
     this.includeNextStampSlot = true,
+    this.includeBackCoverPage = false,
     required this.onTapStamp,
     this.onTapNextStamp,
+    this.onOpenAllVisits,
   });
 
   @override
@@ -165,10 +186,12 @@ class _PassportBookletViewState extends State<PassportBookletView>
                 countryNameByCode: widget.countryNameByCode,
                 newStampIds: widget.newStampIds,
                 includeNextStampSlot: widget.includeNextStampSlot,
+                includeBackCoverPage: widget.includeBackCoverPage,
                 initialPage: _bookPageIndex,
                 onPageChanged: (i) => setState(() => _bookPageIndex = i),
                 onTapStamp: widget.onTapStamp,
                 onTapNextStamp: widget.onTapNextStamp ?? () {},
+                onOpenAllVisits: widget.onOpenAllVisits ?? (_) {},
                 onOpen: _open,
                 onClose: _close,
               )
@@ -184,10 +207,12 @@ class _PassportBookletViewState extends State<PassportBookletView>
                 countryNameByCode: widget.countryNameByCode,
                 newStampIds: widget.newStampIds,
                 includeNextStampSlot: widget.includeNextStampSlot,
+                includeBackCoverPage: widget.includeBackCoverPage,
                 initialPage: _bookPageIndex,
                 onPageChanged: (i) => setState(() => _bookPageIndex = i),
                 onTapStamp: widget.onTapStamp,
                 onTapNextStamp: widget.onTapNextStamp ?? () {},
+                onOpenAllVisits: widget.onOpenAllVisits ?? (_) {},
                 onOpen: _open,
                 onClose: _close,
               );
@@ -216,10 +241,12 @@ class PassportFlipBook extends StatelessWidget {
   final Map<String, String> countryNameByCode;
   final Set<String> newStampIds;
   final bool includeNextStampSlot;
+  final bool includeBackCoverPage;
   final int initialPage;
   final ValueChanged<int> onPageChanged;
   final void Function(PassportStampItem item) onTapStamp;
   final VoidCallback onTapNextStamp;
+  final void Function(PassportFilterType? filter) onOpenAllVisits;
   final ValueChanged<int> onOpen;
   final VoidCallback onClose;
 
@@ -236,10 +263,12 @@ class PassportFlipBook extends StatelessWidget {
     required this.countryNameByCode,
     required this.newStampIds,
     required this.includeNextStampSlot,
+    required this.includeBackCoverPage,
     required this.initialPage,
     required this.onPageChanged,
     required this.onTapStamp,
     required this.onTapNextStamp,
+    required this.onOpenAllVisits,
     required this.onOpen,
     required this.onClose,
   });
@@ -253,11 +282,18 @@ class PassportFlipBook extends StatelessWidget {
         final atRestClosed = controller.value == 0 && !isOpen;
         final atRestOpen = controller.value == 1 && isOpen;
 
+        // Previously math.max(..., bookSize.height + 24 * 5 + 40) — a
+        // worst-case allowance for up to 5 peeking yearly-volume slivers
+        // fanned behind the closed cover, always reserved even while the
+        // book was OPEN and even for a user with far fewer than 5 years of
+        // history. Once buildPassportVolumes stopped returning more than
+        // one volume, that peeking stack can't happen at all any more
+        // (PassportCoverStackState's own peekCount is always 0), so this
+        // permanently-reserved ~90pt+ of empty green space above/below the
+        // book is gone — the topbar allowance (only needed while OPEN) is
+        // the one real number left.
         return SizedBox(
-          height: math.max(
-            bookSize.height + PassportOpenBookFrame.topbarAllowance,
-            bookSize.height + 24 * 5 + 40,
-          ),
+          height: bookSize.height + PassportOpenBookFrame.topbarAllowance,
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
@@ -275,10 +311,12 @@ class PassportFlipBook extends StatelessWidget {
                       countryNameByCode: countryNameByCode,
                       newStampIds: newStampIds,
                       includeNextStampSlot: includeNextStampSlot,
+                      includeBackCoverPage: includeBackCoverPage,
                       initialPage: initialPage,
                       onPageChanged: onPageChanged,
                       onTapStamp: onTapStamp,
                       onTapNextStamp: onTapNextStamp,
+                      onOpenAllVisits: onOpenAllVisits,
                       onClose: onClose,
                     ),
                   ),
@@ -334,10 +372,12 @@ class PassportCrossFadeBook extends StatelessWidget {
   final Map<String, String> countryNameByCode;
   final Set<String> newStampIds;
   final bool includeNextStampSlot;
+  final bool includeBackCoverPage;
   final int initialPage;
   final ValueChanged<int> onPageChanged;
   final void Function(PassportStampItem item) onTapStamp;
   final VoidCallback onTapNextStamp;
+  final void Function(PassportFilterType? filter) onOpenAllVisits;
   final ValueChanged<int> onOpen;
   final VoidCallback onClose;
 
@@ -353,10 +393,12 @@ class PassportCrossFadeBook extends StatelessWidget {
     required this.countryNameByCode,
     required this.newStampIds,
     required this.includeNextStampSlot,
+    required this.includeBackCoverPage,
     required this.initialPage,
     required this.onPageChanged,
     required this.onTapStamp,
     required this.onTapNextStamp,
+    required this.onOpenAllVisits,
     required this.onOpen,
     required this.onClose,
   });
@@ -375,10 +417,12 @@ class PassportCrossFadeBook extends StatelessWidget {
             countryNameByCode: countryNameByCode,
             newStampIds: newStampIds,
             includeNextStampSlot: includeNextStampSlot,
+            includeBackCoverPage: includeBackCoverPage,
             initialPage: initialPage,
             onPageChanged: onPageChanged,
             onTapStamp: onTapStamp,
             onTapNextStamp: onTapNextStamp,
+            onOpenAllVisits: onOpenAllVisits,
             onClose: onClose,
           )
         : PassportCoverStack(
@@ -415,10 +459,12 @@ class PassportOpenBookFrame extends StatelessWidget {
   final Map<String, String> countryNameByCode;
   final Set<String> newStampIds;
   final bool includeNextStampSlot;
+  final bool includeBackCoverPage;
   final int initialPage;
   final ValueChanged<int> onPageChanged;
   final void Function(PassportStampItem item) onTapStamp;
   final VoidCallback onTapNextStamp;
+  final void Function(PassportFilterType? filter) onOpenAllVisits;
   final VoidCallback onClose;
 
   const PassportOpenBookFrame({
@@ -431,10 +477,12 @@ class PassportOpenBookFrame extends StatelessWidget {
     required this.countryNameByCode,
     required this.newStampIds,
     required this.includeNextStampSlot,
+    required this.includeBackCoverPage,
     required this.initialPage,
     required this.onPageChanged,
     required this.onTapStamp,
     required this.onTapNextStamp,
+    required this.onOpenAllVisits,
     required this.onClose,
   });
 
@@ -479,7 +527,9 @@ class PassportOpenBookFrame extends StatelessWidget {
             ),
             Expanded(
               child: Text(
-                volume.year == null ? 'COMPLETE PASSPORT' : '${volume.year} VOLUME',
+                // Always "PASSPORT" now — volume.year is always null, no
+                // more per-year volume to distinguish it from.
+                'PASSPORT',
                 textAlign: TextAlign.center,
                 style: GoogleFonts.inter(
                   color: AppColors.secondaryOnDark,
@@ -502,10 +552,12 @@ class PassportOpenBookFrame extends StatelessWidget {
           countryNameByCode: countryNameByCode,
           newStampIds: newStampIds,
           includeNextStampSlot: includeNextStampSlot,
+          includeBackCoverPage: includeBackCoverPage,
           initialPage: initialPage,
           onPageChanged: onPageChanged,
           onTapStamp: onTapStamp,
           onTapNextStamp: onTapNextStamp,
+          onOpenAllVisits: onOpenAllVisits,
         ),
       ],
     ),

@@ -107,7 +107,25 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
 
   PassportVenue? _selectedVenue;
   DateTime _visitedOn = DateTime.now();
-  int? _score;
+
+  // The exact same rating dimensions as the real, already-shipped flows
+  // this stamp-flow must match — add_visit_sheet.dart (restaurant) and
+  // add_stay_sheet.dart (hotel) — never a single generic "score" field.
+  // Both share Overall/Service/Value; Food/Wine are restaurant-only,
+  // Room/Experience are hotel-only. Corrected after shipping a single
+  // RatingMeter that reused the right WIDGET but not the right per-type
+  // FIELDS — the second time this exact class of bug has hit this file
+  // (the first correction, reusing RatingMeter itself instead of a
+  // hand-rolled picker, missed that the two real flows collect different
+  // numbers of dimensions).
+  int? _rating;
+  int? _foodRating;
+  int? _serviceRating;
+  int? _wineRating;
+  int? _valueRating;
+  int? _roomRating;
+  int? _experienceRating;
+
   final _notesCtrl = TextEditingController();
   bool _saving = false;
   String? _error;
@@ -248,7 +266,11 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
             userId: widget.userId,
             restaurantId: restaurant.id,
             visitedOn: _visitedOn,
-            rating: _score,
+            rating: _rating,
+            foodRating: _foodRating,
+            serviceRating: _serviceRating,
+            wineRating: _wineRating,
+            valueRating: _valueRating,
             notes: _notesCtrl.text.trim().isEmpty ? null : _notesCtrl.text.trim(),
             starsAtVisit: restaurant.michelinStars,
           );
@@ -257,7 +279,11 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
             userId: widget.userId,
             hotelId: hotel.id,
             visitedOn: _visitedOn,
-            rating: _score,
+            rating: _rating,
+            serviceRating: _serviceRating,
+            roomRating: _roomRating,
+            experienceRating: _experienceRating,
+            valueRating: _valueRating,
             notes: _notesCtrl.text.trim().isEmpty ? null : _notesCtrl.text.trim(),
             keysAtVisit: hotel.michelinKeys,
           );
@@ -343,8 +369,20 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                                 venue: _selectedVenue!,
                                 visitedOn: _visitedOn,
                                 onPickDate: _pickDate,
-                                score: _score,
-                                onScoreChanged: (v) => setState(() => _score = v),
+                                rating: _rating,
+                                onRatingChanged: (v) => setState(() => _rating = v),
+                                foodRating: _foodRating,
+                                onFoodRatingChanged: (v) => setState(() => _foodRating = v),
+                                serviceRating: _serviceRating,
+                                onServiceRatingChanged: (v) => setState(() => _serviceRating = v),
+                                wineRating: _wineRating,
+                                onWineRatingChanged: (v) => setState(() => _wineRating = v),
+                                valueRating: _valueRating,
+                                onValueRatingChanged: (v) => setState(() => _valueRating = v),
+                                roomRating: _roomRating,
+                                onRoomRatingChanged: (v) => setState(() => _roomRating = v),
+                                experienceRating: _experienceRating,
+                                onExperienceRatingChanged: (v) => setState(() => _experienceRating = v),
                                 notesCtrl: _notesCtrl,
                                 saving: _saving,
                                 error: _error,
@@ -713,8 +751,27 @@ class _Step2 extends StatelessWidget {
   final PassportVenue venue;
   final DateTime visitedOn;
   final VoidCallback onPickDate;
-  final int? score;
-  final ValueChanged<int?> onScoreChanged;
+
+  // The exact rating dimensions add_visit_sheet.dart (restaurant) and
+  // add_stay_sheet.dart (hotel) each collect — never a single "score"
+  // field. Which of these render depends on [venue]'s own type (see
+  // build() below); a hotel never sees food/wine, a restaurant never sees
+  // room/experience.
+  final int? rating;
+  final ValueChanged<int?> onRatingChanged;
+  final int? foodRating;
+  final ValueChanged<int?> onFoodRatingChanged;
+  final int? serviceRating;
+  final ValueChanged<int?> onServiceRatingChanged;
+  final int? wineRating;
+  final ValueChanged<int?> onWineRatingChanged;
+  final int? valueRating;
+  final ValueChanged<int?> onValueRatingChanged;
+  final int? roomRating;
+  final ValueChanged<int?> onRoomRatingChanged;
+  final int? experienceRating;
+  final ValueChanged<int?> onExperienceRatingChanged;
+
   final TextEditingController notesCtrl;
   final bool saving;
   final String? error;
@@ -724,8 +781,20 @@ class _Step2 extends StatelessWidget {
     required this.venue,
     required this.visitedOn,
     required this.onPickDate,
-    required this.score,
-    required this.onScoreChanged,
+    required this.rating,
+    required this.onRatingChanged,
+    required this.foodRating,
+    required this.onFoodRatingChanged,
+    required this.serviceRating,
+    required this.onServiceRatingChanged,
+    required this.wineRating,
+    required this.onWineRatingChanged,
+    required this.valueRating,
+    required this.onValueRatingChanged,
+    required this.roomRating,
+    required this.onRoomRatingChanged,
+    required this.experienceRating,
+    required this.onExperienceRatingChanged,
     required this.notesCtrl,
     required this.saving,
     required this.error,
@@ -816,14 +885,39 @@ class _Step2 extends StatelessWidget {
           const SizedBox(height: 6),
           _DateTapRow(date: visitedOn, months: _months, onTap: onPickDate),
           const SizedBox(height: 24),
-          // The SAME RatingMeter every other visit-rating input in this app
-          // already uses (add_visit_sheet.dart/add_stay_sheet.dart) — same
-          // 1-10 range, same tap behavior, same "Not rated" affordance for
-          // this optional field. The stamp flow is a new way to add a
-          // visit, not a new way to score one; explicitly corrected away
-          // from this file's own first draft, which had invented a
-          // different-looking picker instead of reusing this.
-          RatingMeter(label: 'Your score', value: score, onChanged: onScoreChanged),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: _FieldLabel('RATINGS'),
+          ),
+          const SizedBox(height: 12),
+          // The exact same dimensions, in the exact same order, as the
+          // real flows this stamp-flow must match — never a single generic
+          // "score" (that was this file's own second miss at parity: the
+          // first correction reused the right WIDGET, RatingMeter, but
+          // still only wired one field regardless of venue type).
+          RatingMeter(label: 'Overall', value: rating, onChanged: onRatingChanged),
+          const SizedBox(height: 14),
+          if (venue is RestaurantVenue) ...[
+            RatingMeter(label: 'Food', value: foodRating, onChanged: onFoodRatingChanged),
+            const SizedBox(height: 14),
+          ],
+          RatingMeter(label: 'Service', value: serviceRating, onChanged: onServiceRatingChanged),
+          const SizedBox(height: 14),
+          if (venue is RestaurantVenue) ...[
+            RatingMeter(label: 'Wine', value: wineRating, onChanged: onWineRatingChanged),
+            const SizedBox(height: 14),
+          ],
+          if (venue is HotelVenue) ...[
+            RatingMeter(label: 'Room', value: roomRating, onChanged: onRoomRatingChanged),
+            const SizedBox(height: 14),
+            RatingMeter(
+              label: 'Experience',
+              value: experienceRating,
+              onChanged: onExperienceRatingChanged,
+            ),
+            const SizedBox(height: 14),
+          ],
+          RatingMeter(label: 'Value', value: valueRating, onChanged: onValueRatingChanged),
           const SizedBox(height: 24),
           Container(height: 1, color: AppColors.hairlineOnPaper),
           TextField(
