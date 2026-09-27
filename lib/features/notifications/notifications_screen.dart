@@ -304,7 +304,59 @@ class _NotificationRow extends StatelessWidget {
           onAccept: onAccept,
           onDecline: onDecline,
         );
+      case AppNotificationType.venueClaimReceived:
+      case AppNotificationType.venueClaimApproved:
+      case AppNotificationType.venueClaimRejected:
+        return _VenueClaimContent(notification: notification);
     }
+  }
+}
+
+/// The three claim-lifecycle notifications share one read-only layout —
+/// no Accept/Decline, no "other person": a claim is a status update about
+/// the claimant's own request, not something to act on here (approval
+/// happens on the Supabase dashboard, by explicit product decision).
+/// [AppNotificationType.venueClaimRejected] covers both a rejected AND a
+/// blocked claim with the identical copy — see that enum case's own doc
+/// comment for why there's nothing here to tell the two apart.
+class _VenueClaimContent extends StatelessWidget {
+  final AppNotification notification;
+  const _VenueClaimContent({required this.notification});
+
+  @override
+  Widget build(BuildContext context) {
+    final venueName = notification.claimVenueName ?? 'the venue you claimed';
+    final description = switch (notification.type) {
+      AppNotificationType.venueClaimReceived =>
+        'Your claim for $venueName is being reviewed.',
+      AppNotificationType.venueClaimApproved =>
+        'Your claim for $venueName was approved — you can now manage its page.',
+      AppNotificationType.venueClaimRejected =>
+        'Your claim for $venueName was not approved.',
+      _ => '',
+    };
+    final icon = switch (notification.type) {
+      AppNotificationType.venueClaimApproved => Icons.verified_outlined,
+      AppNotificationType.venueClaimRejected => Icons.storefront_outlined,
+      _ => Icons.hourglass_top_outlined,
+    };
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, color: AppColors.forestGreen, size: 20),
+          const SizedBox(width: CsSpacing.md),
+          Expanded(
+            child: Text(
+              description,
+              style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 

@@ -1,16 +1,23 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-/// A restaurant, hotel or event a reporter couldn't find in the app —
-/// deliberately not `venue_corrections`' `restaurant`/`hotel`/`private_
-/// chef` shape (see the migration's own header for why). No enum needed
-/// beyond this constant set of three wire values, matching how
-/// `subject_type`'s own CHECK constraint is written.
+/// A restaurant, hotel, event or private chef a reporter couldn't find in
+/// the app. `privateChef` was added for the venue-claim flow's own "type
+/// + search, not found -> report it" step, which needs to cover every
+/// venue type the claims tables do — the original three (restaurant/
+/// hotel/event) predate that flow. `wireValue` can't just be `name` for
+/// every case any more (`'privateChef'` is not a valid identifier match
+/// for the `'private_chef'` the CHECK constraint/column actually store),
+/// hence the explicit switch instead of the old one-line `=> name`.
 enum MissingListingSubjectType {
   restaurant,
   hotel,
-  event;
+  event,
+  privateChef;
 
-  String get wireValue => name;
+  String get wireValue => switch (this) {
+    MissingListingSubjectType.privateChef => 'private_chef',
+    _ => name,
+  };
 }
 
 /// A plain table insert — same shape as [ReportRepository.submitReport]

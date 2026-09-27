@@ -30,6 +30,12 @@ import '../../../data/repositories/missing_listing_repository.dart';
 Future<void> showReportMissingListingSheet(
   BuildContext context, {
   required String initialQuery,
+  // Pre-selects a type when the caller already knows it (the claim
+  // flow's own "type + search, not found" step knows exactly which type
+  // was being searched) — null for every pre-existing caller (Explore/
+  // Events' empty states), which don't know a type up front and keep
+  // showing the picker with nothing selected, unchanged.
+  MissingListingSubjectType? initialType,
   Future<void> Function({
     required MissingListingSubjectType subjectType,
     required String name,
@@ -49,6 +55,7 @@ Future<void> showReportMissingListingSheet(
     ),
     builder: (_) => _ReportMissingListingSheet(
       initialQuery: initialQuery,
+      initialType: initialType,
       submitReport: submitReport,
     ),
   );
@@ -71,6 +78,7 @@ Future<void> showReportMissingListingSheet(
 /// defaulting to the real [MissingListingRepository]-backed call.
 class _ReportMissingListingSheet extends StatefulWidget {
   final String initialQuery;
+  final MissingListingSubjectType? initialType;
   final Future<void> Function({
     required MissingListingSubjectType subjectType,
     required String name,
@@ -83,6 +91,7 @@ class _ReportMissingListingSheet extends StatefulWidget {
 
   const _ReportMissingListingSheet({
     required this.initialQuery,
+    this.initialType,
     this.submitReport,
   });
 
@@ -93,7 +102,7 @@ class _ReportMissingListingSheet extends StatefulWidget {
 
 class _ReportMissingListingSheetState
     extends State<_ReportMissingListingSheet> {
-  MissingListingSubjectType? _type;
+  late MissingListingSubjectType? _type = widget.initialType;
   late final _nameCtrl = TextEditingController(text: widget.initialQuery);
   final _cityCtrl = TextEditingController();
   final _messageCtrl = TextEditingController();
@@ -325,6 +334,7 @@ class _TypeRow extends StatelessWidget {
     MissingListingSubjectType.restaurant => 'Restaurant',
     MissingListingSubjectType.hotel => 'Hotel',
     MissingListingSubjectType.event => 'Event',
+    MissingListingSubjectType.privateChef => 'Private chef',
   };
 
   @override

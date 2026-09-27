@@ -9,7 +9,15 @@ enum AppNotificationType {
   missingListingAdded,
   venueInviteReceived,
   venueInviteAccepted,
-  venueInviteDeclined;
+  venueInviteDeclined,
+  venueClaimReceived,
+  venueClaimApproved,
+  // Deliberately no separate "blocked" case — the database trigger fires
+  // this exact same type for both a rejected and a blocked claim (that
+  // distinction is information for the reviewer, not the requester; see
+  // notify_venue_claim_change()'s own migration comment), so there is
+  // nothing for this enum to distinguish either.
+  venueClaimRejected;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -18,6 +26,9 @@ enum AppNotificationType {
     'venue_invite_received' => AppNotificationType.venueInviteReceived,
     'venue_invite_accepted' => AppNotificationType.venueInviteAccepted,
     'venue_invite_declined' => AppNotificationType.venueInviteDeclined,
+    'venue_claim_received' => AppNotificationType.venueClaimReceived,
+    'venue_claim_approved' => AppNotificationType.venueClaimApproved,
+    'venue_claim_rejected' => AppNotificationType.venueClaimRejected,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
 }
@@ -34,7 +45,10 @@ enum AppNotificationType {
 /// the `other*` fields, a [missingListingAdded] one carries the
 /// `listing*` fields, a [venueInviteReceived]/[venueInviteAccepted]/
 /// [venueInviteDeclined] one carries both `other*` (the invite's other
-/// participant) and `invite*`, never all three groups at once.
+/// participant) and `invite*`, and a [venueClaimReceived]/
+/// [venueClaimApproved]/[venueClaimRejected] one carries only `claim*` —
+/// there is no "other person" on a claim, it's a status update about the
+/// claimant's own request.
 class AppNotification {
   final String id;
   final AppNotificationType type;
@@ -63,6 +77,13 @@ class AppNotification {
   final String? inviteStatus;
   final DateTime? inviteExpiresAt;
 
+  // subjectId doubles as the claim id when subjectType == 'venue_claim' —
+  // same convention as inviteVenueId above.
+  final String? claimVenueType;
+  final String? claimVenueId;
+  final String? claimVenueName;
+  final String? claimVenueCity;
+
   const AppNotification({
     required this.id,
     required this.type,
@@ -84,6 +105,10 @@ class AppNotification {
     this.inviteNote,
     this.inviteStatus,
     this.inviteExpiresAt,
+    this.claimVenueType,
+    this.claimVenueId,
+    this.claimVenueName,
+    this.claimVenueCity,
   });
 
   factory AppNotification.fromRow(Map<String, dynamic> row) => AppNotification(
@@ -109,6 +134,10 @@ class AppNotification {
     inviteExpiresAt: row['invite_expires_at'] == null
         ? null
         : DateTime.parse(row['invite_expires_at'] as String),
+    claimVenueType: row['claim_venue_type'] as String?,
+    claimVenueId: row['claim_venue_id'] as String?,
+    claimVenueName: row['claim_venue_name'] as String?,
+    claimVenueCity: row['claim_venue_city'] as String?,
   );
 
   /// True only for a still-`pending` invite whose [inviteExpiresAt] has

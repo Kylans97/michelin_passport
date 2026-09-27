@@ -20,6 +20,7 @@ import '../../data/repositories/visited_repository.dart';
 import '../../models/user_profile.dart';
 import '../../models/venue_country.dart';
 import '../../models/venue_entry.dart';
+import '../claims/claim_venue_screen.dart';
 import '../friends/friends_screen.dart';
 import '../notifications/notifications_screen.dart';
 import 'change_avatar_sheet.dart';
@@ -150,6 +151,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _openPrivacySettings() => Navigator.push(
     context,
     MaterialPageRoute(builder: (_) => const PrivacySettingsScreen()),
+  );
+
+  void _openClaimVenue() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const ClaimVenueScreen()),
   );
 
   // Same external-browser pattern RestaurantDetailScreen/HotelDetailScreen
@@ -384,6 +390,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: Icons.lock_outline_rounded,
                     label: 'Privacy',
                     onTap: _openPrivacySettings,
+                  ),
+                  _SettingsRow(
+                    icon: Icons.storefront_outlined,
+                    label: 'Claim your venue',
+                    onTap: _openClaimVenue,
                   ),
 
                   // FINAL VISUAL REFINEMENT — no "ACCOUNT ACTIONS" eyebrow:

@@ -249,6 +249,11 @@ void main() {
           reporterContact,
         }) async {},
       );
+      // Ensure visible before tapping — the type list grew by one row
+      // (private chef, added for the venue-claim flow's own redirect)
+      // since this test was written, which can push "I work here" past
+      // the test surface's default 800x600 without a scroll first.
+      await tester.ensureVisible(find.text('I work here'));
       await tester.tap(find.text('I work here'));
       await tester.pump();
       expect(find.text('Your role'), findsOneWidget);
@@ -282,6 +287,11 @@ void main() {
         find.byKey(const Key('missingListingMessageField')),
         'Four-hands dinner series.',
       );
+      // Ensure visible before tapping — the type list grew by one row
+      // (private chef, added for the venue-claim flow's own redirect)
+      // since this test was written, which can push "I work here" past
+      // the test surface's default 800x600 without a scroll first.
+      await tester.ensureVisible(find.text('I work here'));
       await tester.tap(find.text('I work here'));
       await tester.pump();
       await tester.ensureVisible(find.text('Send report'));
@@ -324,6 +334,11 @@ void main() {
         find.byKey(const Key('missingListingMessageField')),
         'Four-hands dinner series.',
       );
+      // Ensure visible before tapping — the type list grew by one row
+      // (private chef, added for the venue-claim flow's own redirect)
+      // since this test was written, which can push "I work here" past
+      // the test surface's default 800x600 without a scroll first.
+      await tester.ensureVisible(find.text('I work here'));
       await tester.tap(find.text('I work here'));
       await tester.pump();
       await tester.enterText(find.byType(TextFormField).at(2), 'Sommelier');

@@ -7,6 +7,7 @@ import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import 'country_lookup.dart' show resolveVenueCountries;
 import 'restaurant_repository.dart' show restaurantFullColumns;
+import 'search_query.dart';
 
 // Explicit column list matching public.private_chefs as deployed by
 // supabase/migrations/20260817120000_create_private_chefs_foundation.sql.
@@ -79,6 +80,35 @@ class PrivateChefRepository {
         .eq('publication_status', 'published')
         .order('is_expired', ascending: true)
         .order('display_name');
+    return [
+      for (final row in rows as List)
+        PrivateChef.fromJson(row as Map<String, dynamic>),
+    ];
+  }
+
+  /// Added for the venue-claim flow's own "type + search" step (see
+  /// `lib/features/claims/`) — this repository's own class doc comment
+  /// ("no write methods... none are planned") is about writes only; a
+  /// read/search method doesn't conflict with that. Mirrors
+  /// RestaurantRepository.search()/HotelRepository.search() exactly: one
+  /// `.or()` ilike group per word in [query], AND'd together via repeated
+  /// `or=` params, against `display_name`/`business_name`/`home_city` —
+  /// the three free-text fields a claimant is realistically searching by.
+  /// `publication_status = 'published'` re-applied client-side for the
+  /// same documented reason [getPublishedChefs] already gives.
+  Future<List<PrivateChef>> search(String query) async {
+    var builder = _client
+        .from('private_chefs_full')
+        .select(privateChefFullColumns)
+        .eq('publication_status', 'published');
+    for (final filter in buildIlikeOrFilters(query, [
+      'display_name',
+      'business_name',
+      'home_city',
+    ])) {
+      builder = builder.or(filter);
+    }
+    final rows = await builder.order('display_name');
     return [
       for (final row in rows as List)
         PrivateChef.fromJson(row as Map<String, dynamic>),
