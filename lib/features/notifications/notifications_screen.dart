@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/analytics_service.dart';
@@ -13,6 +14,34 @@ import '../../data/repositories/venue_invite_repository.dart';
 import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
 import '../friends/widgets/identity_row.dart';
+
+/// Shared inbox for claim questions — reviewed manually alongside the
+/// claim itself (see PART 1 of the venue-claim-hardening work this
+/// belongs to). Not a support address for anything else in the app.
+const _kClaimQuestionsEmail = 'claimedvenues@mantelier.app';
+
+/// Pulled out to a top-level, `@visibleForTesting` function — same reason
+/// as VenueClaimRepository.claimConflictMessage: this codebase has no
+/// existing pattern for pumping a Supabase-eager screen's private row
+/// widgets in a test (see notifications_screen_test.dart's own header
+/// comment), so the one part worth asserting on directly — the venue
+/// name actually reaching the mailto subject — is tested as pure Uri-
+/// building logic instead.
+///
+/// Deliberately NOT built via `Uri(..., queryParameters: {...})`: that
+/// convenience map always encodes through `Uri.encodeQueryComponent`,
+/// which is application/x-www-form-urlencoded — spaces become "+", which
+/// is a form-encoding convention, not the query encoding RFC 6068
+/// (mailto) actually specifies, and not every mail client decodes "+"
+/// back to a space. `Uri.encodeComponent` (RFC 3986 percent-encoding,
+/// space -> %20) is the correct one here, and is already this codebase's
+/// own convention for encoding a URL query value by hand — see
+/// RestaurantDetailScreen._openMaps/HotelDetailScreen._openMaps.
+@visibleForTesting
+Uri claimQuestionMailtoUri(String venueName) {
+  final subject = Uri.encodeComponent('Claim question — $venueName');
+  return Uri(scheme: 'mailto', path: _kClaimQuestionsEmail, query: 'subject=$subject');
+}
 
 /// Rebuilt to show real notifications (Notifications V1) — the previous
 /// version of this screen was entirely a friend-request inbox wearing a
@@ -319,9 +348,23 @@ class _NotificationRow extends StatelessWidget {
 /// [AppNotificationType.venueClaimRejected] covers both a rejected AND a
 /// blocked claim with the identical copy — see that enum case's own doc
 /// comment for why there's nothing here to tell the two apart.
+///
+/// The received/rejected rows only (not approved — nothing to ask once a
+/// claim has succeeded) also carry a "Questions about your claim?" mailto
+/// line, since this is the only screen in the app where a claimant sees
+/// their claim's status at all — there is no separate "my claims" screen
+/// to put it on instead, no in-app messaging, and no second email flow;
+/// this is the one contact point.
 class _VenueClaimContent extends StatelessWidget {
   final AppNotification notification;
   const _VenueClaimContent({required this.notification});
+
+  Future<void> _emailUs(String venueName) async {
+    final uri = claimQuestionMailtoUri(venueName);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -340,6 +383,9 @@ class _VenueClaimContent extends StatelessWidget {
       AppNotificationType.venueClaimRejected => Icons.storefront_outlined,
       _ => Icons.hourglass_top_outlined,
     };
+    final showContactLine =
+        notification.type == AppNotificationType.venueClaimReceived ||
+        notification.type == AppNotificationType.venueClaimRejected;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
@@ -349,9 +395,35 @@ class _VenueClaimContent extends StatelessWidget {
           Icon(icon, color: AppColors.forestGreen, size: 20),
           const SizedBox(width: CsSpacing.md),
           Expanded(
-            child: Text(
-              description,
-              style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  description,
+                  style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+                ),
+                if (showContactLine) ...[
+                  const SizedBox(height: CsSpacing.xs),
+                  GestureDetector(
+                    onTap: () => _emailUs(venueName),
+                    child: Text.rich(
+                      TextSpan(
+                        text: 'Questions about your claim? ',
+                        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+                        children: [
+                          TextSpan(
+                            text: _kClaimQuestionsEmail,
+                            style: CsTypography.metadata.copyWith(
+                              color: AppColors.forestGreen,
+                              decoration: TextDecoration.underline,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ],
             ),
           ),
         ],

@@ -17,6 +17,8 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/features/friends/widgets/identity_row.dart';
+import 'package:michelin_passport/features/notifications/notifications_screen.dart'
+    show claimQuestionMailtoUri;
 
 Widget _unreadDot({required bool visible}) => SizedBox(
   width: 8,
@@ -85,6 +87,59 @@ Widget _missingListingAddedRow({
         child: Text(
           '$name in $city has been added.',
           style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+        ),
+      ),
+    ],
+  ),
+);
+
+// Mirrors _VenueClaimContent's layout (lib/features/notifications/
+// notifications_screen.dart) — same "reconstruct the row" approach as
+// _missingListingAddedRow above, for the same reason (Supabase-eager
+// screen, private row widget). showContactLine/onEmailTap mirror the
+// real widget's received/rejected-only mailto line.
+Widget _venueClaimRow({
+  required String description,
+  required IconData icon,
+  bool showContactLine = false,
+  VoidCallback? onEmailTap,
+}) => Padding(
+  padding: const EdgeInsets.symmetric(vertical: 8),
+  child: Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Icon(icon, color: AppColors.forestGreen, size: 20),
+      const SizedBox(width: 12),
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              description,
+              style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+            ),
+            if (showContactLine) ...[
+              const SizedBox(height: 4),
+              GestureDetector(
+                onTap: onEmailTap,
+                child: Text.rich(
+                  TextSpan(
+                    text: 'Questions about your claim? ',
+                    style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+                    children: [
+                      TextSpan(
+                        text: 'claimedvenues@mantelier.app',
+                        style: CsTypography.metadata.copyWith(
+                          color: AppColors.forestGreen,
+                          decoration: TextDecoration.underline,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ],
         ),
       ),
     ],
@@ -206,5 +261,151 @@ void main() {
       expect(find.text('Accept'), findsNothing);
       expect(find.byIcon(Icons.storefront_outlined), findsOneWidget);
     });
+  });
+
+  group('NotificationsScreen — venue_claim rows', () {
+    testWidgets('received (pending) row shows the "being reviewed" copy '
+        'and the mailto contact line', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          _venueClaimRow(
+            description: 'Your claim for Flore Amsterdam is being reviewed.',
+            icon: Icons.hourglass_top_outlined,
+            showContactLine: true,
+          ),
+        ),
+      );
+      expect(
+        find.text('Your claim for Flore Amsterdam is being reviewed.'),
+        findsOneWidget,
+      );
+      expect(find.textContaining('Questions about your claim?'), findsOneWidget);
+      expect(find.textContaining('claimedvenues@mantelier.app'), findsOneWidget);
+    });
+
+    testWidgets('rejected (also covers blocked) row shows the "not '
+        'approved" copy and the mailto contact line too', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          _venueClaimRow(
+            description: 'Your claim for Flore Amsterdam was not approved.',
+            icon: Icons.storefront_outlined,
+            showContactLine: true,
+          ),
+        ),
+      );
+      expect(
+        find.text('Your claim for Flore Amsterdam was not approved.'),
+        findsOneWidget,
+      );
+      expect(find.textContaining('Questions about your claim?'), findsOneWidget);
+    });
+
+    testWidgets('approved row shows the success copy but no contact line '
+        '— nothing to ask once the claim has already succeeded', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          _venueClaimRow(
+            description:
+                'Your claim for Flore Amsterdam was approved — you can now manage its page.',
+            icon: Icons.verified_outlined,
+          ),
+        ),
+      );
+      expect(
+        find.textContaining('was approved — you can now manage its page.'),
+        findsOneWidget,
+      );
+      expect(find.textContaining('Questions about your claim?'), findsNothing);
+    });
+
+    testWidgets('tapping the contact line fires its own callback', (
+      tester,
+    ) async {
+      var tapped = false;
+      await tester.pumpWidget(
+        _wrap(
+          _venueClaimRow(
+            description: 'Your claim for Flore Amsterdam is being reviewed.',
+            icon: Icons.hourglass_top_outlined,
+            showContactLine: true,
+            onEmailTap: () => tapped = true,
+          ),
+        ),
+      );
+      await tester.tap(find.textContaining('Questions about your claim?'));
+      expect(tapped, isTrue);
+    });
+  });
+
+  group('claimQuestionMailtoUri', () {
+    test(
+      'addresses the shared claims inbox and puts the venue name in the '
+      'subject, so a reply is identifiable without asking what it\'s about',
+      () {
+        final uri = claimQuestionMailtoUri('Flore Amsterdam');
+        expect(uri.scheme, 'mailto');
+        expect(uri.path, 'claimedvenues@mantelier.app');
+        expect(uri.queryParameters['subject'], 'Claim question — Flore Amsterdam');
+      },
+    );
+
+    test('a different venue name produces a different subject, not a '
+        'fixed/generic one', () {
+      final uri = claimQuestionMailtoUri('Hôtel de la Paix');
+      expect(uri.queryParameters['subject'], 'Claim question — Hôtel de la Paix');
+    });
+
+    test(
+      'the encoded query string uses %20 for spaces, never the form-encoded '
+      '"+" — a decoded-getter assertion alone would pass even with "+" in '
+      'the wire form, since Uri.queryParameters decodes "+" back to a space',
+      () {
+        final uri = claimQuestionMailtoUri('Flore Amsterdam');
+        expect(
+          uri.query,
+          'subject=Claim%20question%20%E2%80%94%20Flore%20Amsterdam',
+        );
+        expect(uri.query.contains('+'), isFalse);
+      },
+    );
+
+    test(
+      'the em dash is percent-encoded as its real UTF-8 bytes (%E2%80%94), '
+      'never collapsed to a double hyphen',
+      () {
+        final uri = claimQuestionMailtoUri('Flore Amsterdam');
+        expect(uri.query, contains('%E2%80%94'));
+        expect(uri.query.contains('--'), isFalse);
+      },
+    );
+
+    test(
+      'a non-ASCII venue name is percent-encoded correctly, not mangled or '
+      'stripped',
+      () {
+        final uri = claimQuestionMailtoUri('Hôtel de la Paix');
+        expect(
+          uri.query,
+          'subject=Claim%20question%20%E2%80%94%20H%C3%B4tel%20de%20la%20Paix',
+        );
+      },
+    );
+
+    test(
+      'the full mailto URI string round-trips through Uri.parse back to the '
+      'exact original subject, proving a real mail client would decode it '
+      'correctly rather than just this function\'s own Uri object',
+      () {
+        final uri = claimQuestionMailtoUri('Flore Amsterdam');
+        final reparsed = Uri.parse(uri.toString());
+        expect(
+          reparsed.queryParameters['subject'],
+          'Claim question — Flore Amsterdam',
+        );
+      },
+    );
   });
 }

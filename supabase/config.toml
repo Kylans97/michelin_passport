@@ -391,6 +391,16 @@ deno_version = 2
 # [edge_runtime.secrets]
 # secret_key = "env(SECRET_VALUE)"
 
+# notify-venue-claim is called only by the claims_restaurants insert
+# trigger via pg_net (see
+# 20260929120000_add_venue_claim_admin_email_notification.sql) — there is
+# no user JWT in that calling context, unlike delete-account (client-
+# called, left at the platform default verify_jwt = true). This function
+# checks its own shared secret (x-webhook-secret, compared against the
+# NOTIFY_VENUE_CLAIM_WEBHOOK_SECRET function secret) instead.
+[functions.notify-venue-claim]
+verify_jwt = false
+
 [analytics]
 enabled = true
 port = 54327
