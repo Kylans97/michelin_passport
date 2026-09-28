@@ -25,12 +25,16 @@
 // JourneyCard's own stamp — the hero mirror below no longer renders or
 // asserts a Member since line.
 
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/core/widgets/member_avatar.dart';
+import 'package:michelin_passport/models/managed_venue.dart';
+import 'package:michelin_passport/models/restaurant.dart';
 
 // ── Reconstructed from ProfileScreen's own _SettingsRow + section split ──
 
@@ -112,6 +116,22 @@ class _SettingsRowStandIn extends StatelessWidget {
     ),
   );
 }
+
+// Mirrors profile_screen.dart's own FutureBuilder-gated "My venues" row
+// exactly — hidden (SizedBox.shrink) on null/empty, shown otherwise. The
+// gating is the entire point of this row (§2 of the task that built it:
+// "invisible to users who manage nothing"), so it's tested here as its
+// own reconstructed unit rather than only implied by the rest of the
+// section rendering.
+Widget _myVenuesRow(Future<List<ManagedVenue>> future, {required VoidCallback onTap}) =>
+    FutureBuilder<List<ManagedVenue>>(
+      future: future,
+      builder: (context, snap) {
+        final venues = snap.data;
+        if (venues == null || venues.isEmpty) return const SizedBox.shrink();
+        return _SettingsRowStandIn(icon: Icons.dashboard_outlined, label: 'My venues', onTap: onTap);
+      },
+    );
 
 Widget _chooseUsernameBanner(VoidCallback onTap) => Material(
   color: Colors.transparent,
@@ -411,6 +431,66 @@ void main() {
       );
       final size = tester.getSize(find.byType(InkWell));
       expect(size.height, greaterThanOrEqualTo(44));
+    });
+  });
+
+  group('ProfileScreen — "My venues" entry (read-only manager entry point)', () {
+    testWidgets('a user who manages nothing sees no trace of the row — '
+        'not even a placeholder or a zero state', (tester) async {
+      await tester.pumpWidget(
+        _wrap(_myVenuesRow(Future.value(const []), onTap: () {})),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('My venues'), findsNothing);
+      expect(find.byIcon(Icons.dashboard_outlined), findsNothing);
+    });
+
+    testWidgets('still loading (future not yet resolved) also shows '
+        'nothing — never a flash of the row before it can be hidden', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(_myVenuesRow(Completer<List<ManagedVenue>>().future, onTap: () {})),
+      );
+      expect(find.text('My venues'), findsNothing);
+    });
+
+    testWidgets('a failed load is treated the same as managing nothing — '
+        'hidden, not an error row', (tester) async {
+      // A Completer, completed with an error only AFTER pumpWidget —
+      // FutureBuilder's own listener is already attached by then, so
+      // there's no race with Dart's zone-level "unhandled Future error"
+      // check (which a pre-rejected future created before pumpWidget can
+      // lose, since argument evaluation happens before pumpWidget's own
+      // guarded zone is entered). Standard pattern for testing
+      // FutureBuilder's error branch deterministically.
+      final completer = Completer<List<ManagedVenue>>();
+      await tester.pumpWidget(_wrap(_myVenuesRow(completer.future, onTap: () {})));
+      completer.completeError(Exception('boom'));
+      await tester.pumpAndSettle();
+      expect(find.text('My venues'), findsNothing);
+    });
+
+    testWidgets('a manager of at least one venue sees the row, and can tap '
+        'it', (tester) async {
+      var tapped = false;
+      final restaurant = Restaurant.fromJson({
+        'id': 'r1',
+        'name': 'Flore Amsterdam',
+        'city_name': 'Amsterdam',
+      });
+      await tester.pumpWidget(
+        _wrap(
+          _myVenuesRow(
+            Future.value([ManagedRestaurant(restaurant)]),
+            onTap: () => tapped = true,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('My venues'), findsOneWidget);
+      await tester.tap(find.text('My venues'));
+      expect(tapped, isTrue);
     });
   });
 }

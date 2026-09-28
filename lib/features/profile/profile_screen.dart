@@ -16,7 +16,9 @@ import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/notifications_repository.dart';
 import '../../data/repositories/profile_repository.dart';
+import '../../data/repositories/venue_manager_repository.dart';
 import '../../data/repositories/visited_repository.dart';
+import '../../models/managed_venue.dart';
 import '../../models/user_profile.dart';
 import '../../models/venue_country.dart';
 import '../../models/venue_entry.dart';
@@ -28,6 +30,7 @@ import 'change_password_screen.dart';
 import 'delete_account_screen.dart';
 import 'journey_card.dart';
 import 'journey_metrics.dart';
+import 'my_venues_screen.dart';
 import 'privacy_settings_screen.dart';
 
 /// My Profile — PROFILE UI REDESIGN V1.
@@ -68,12 +71,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
   late final _eventAttendanceRepo = EventConfirmedAttendanceRepository(
     Supabase.instance.client,
   );
+  late final _venueManagerRepo = VenueManagerRepository(Supabase.instance.client);
 
   late Future<UserProfile> _profileFuture;
   late Future<String?> _avatarUrlFuture;
   late Future<JourneyMetrics> _journeyFuture;
   late Future<_FriendsSummary> _friendsSummaryFuture;
   late Future<int> _unreadNotificationCountFuture;
+  // Drives the "My venues" row's own visibility (see build()) — never
+  // shown to the other twelve accounts who manage nothing. Reuses the
+  // same list MyVenuesScreen itself will independently fetch when
+  // opened, rather than adding a separate count-only repository method
+  // purely to decorate this row — mirrors _friendsSummaryFuture's own
+  // stated reasoning just above.
+  late Future<List<ManagedVenue>> _managedVenuesFuture;
 
   // Loaded once, not re-fetched on pull-to-refresh (_load) — the running
   // build's own version/build number can't change at runtime.
@@ -133,6 +144,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
 
       _unreadNotificationCountFuture = _notificationsRepo.getUnreadCount();
+      _managedVenuesFuture = _venueManagerRepo.loadMyManagedVenues();
     });
   }
 
@@ -156,6 +168,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _openClaimVenue() => Navigator.push(
     context,
     MaterialPageRoute(builder: (_) => const ClaimVenueScreen()),
+  );
+
+  void _openMyVenues() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const MyVenuesScreen()),
   );
 
   // Same external-browser pattern RestaurantDetailScreen/HotelDetailScreen
@@ -395,6 +412,33 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     icon: Icons.storefront_outlined,
                     label: 'Claim your venue',
                     onTap: _openClaimVenue,
+                  ),
+                  // Invisible to the other twelve accounts who manage
+                  // nothing — an empty "My venues" row would be pure
+                  // database-UI noise for everyone but the handful of
+                  // approved managers. FutureBuilder + SizedBox.shrink()
+                  // on empty/error/still-loading, same conditional-row
+                  // technique the Notifications badge above already
+                  // establishes in this exact file (just without a
+                  // badge, since presence/absence IS the signal here).
+                  FutureBuilder<List<ManagedVenue>>(
+                    future: _managedVenuesFuture,
+                    builder: (context, managedSnap) {
+                      final venues = managedSnap.data;
+                      if (venues == null || venues.isEmpty) {
+                        return const SizedBox.shrink();
+                      }
+                      return _SettingsRow(
+                        // Outline-stroke, matching this list's own
+                        // established icon register (see the Sign out
+                        // icon-audit note below) — distinct from Claim
+                        // your venue's storefront_outlined just above so
+                        // the two rows don't read as duplicates.
+                        icon: Icons.dashboard_outlined,
+                        label: 'My venues',
+                        onTap: _openMyVenues,
+                      );
+                    },
                   ),
 
                   // FINAL VISUAL REFINEMENT — no "ACCOUNT ACTIONS" eyebrow:
