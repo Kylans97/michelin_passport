@@ -75,6 +75,24 @@ stop and say so rather than working around it.
 - Google Place ID uniqueness is **per table, never across tables**. Shared
   IDs between a hotel row and a restaurant row are deliberate.
 
+### Data source of truth (corrected 24 August 2026)
+- **The live Supabase database is authoritative. The master CSVs
+  (`restaurants_master.csv`, `hotels_master.csv`, `hotel_restaurant_links
+  .csv`) are an export of it, never an import into it.** They were the
+  original import source; production has since grown beyond them (588
+  restaurants and 88 hotels exist only in the database, plus a `phone`
+  column on `restaurants` no CSV ever carried) and they were never
+  refreshed. Do not treat their row counts or schema as current.
+- `START_HERE.md`'s own "Source files" section and its "No phone numbers"
+  settled decision predate this correction and describe the pre-build
+  planning snapshot, not the present state — both are marked superseded
+  in place there, not deleted, per this project's own "log near-misses,
+  not just failures" standard.
+- Current, dated read-only exports taken directly from production live
+  alongside the frozen originals in `supabase/data/` as
+  `*_LIVE_20260824.csv`. See `START_HERE.md`'s superseded notice for the
+  full file list and what each one covers.
+
 ### Awards
 - `michelin_stars = 0` is valid — World's 50 Best entries without a star.
   Never render as "no award".
@@ -96,6 +114,40 @@ stop and say so rather than working around it.
   **New filtering runs before this ranking, never replaces or duplicates it.**
 - Passport stamps come only from **confirmed attendance**. Interested/Going
   never creates a stamp.
+
+### Venue permissions
+- `venue_managers_restaurants` / `_hotels` / `_private_chefs` are the
+  **single source of permission** to edit a venue. A claim is a historical
+  request; a permission is current state. **Never read the claims tables
+  to decide whether someone may edit** — check `is_active_venue_manager()`.
+- `has_approved_venue_claim()` **no longer exists.** It conflated request
+  and grant; `is_active_venue_manager()` replaced it, and eight policies
+  were migrated onto it.
+- Active access is the absence of revocation: **`revoked_at is null`**.
+  There is deliberately no `status` column.
+- Granting a permission from an approved claim is manual SQL run against
+  the dashboard (snippets in `docs/Engineering/VENUE_CLAIM_OPERATIONS.md`).
+  There is no in-app admin identity and none is planned — review happens
+  through the dashboard with `service_role`, the same pattern every other
+  manual approval in this schema already uses.
+
+### Venue-supplied content
+- **Only factual, verified data originates from us**: MICHELIN stars,
+  Keys, World's 50 Best, Gault & Millau, and the verified location
+  fields. All descriptive text and all photos come from the venue. Any
+  descriptive copy we've filled in ourselves is a **starting value, not
+  something we own** — a venue's own submission is never a correction to
+  defer to, it's the actual source taking over.
+- `venue_about_submissions` holds a venue's own about text, pending
+  review; `venue_about_current` is the view resolving the latest
+  *approved* one. Verified data is never overwritten by a submission.
+- Photo ordering lives on the **published** tables (`restaurant_photos` /
+  `hotel_photos` / `private_chef_photos`), never on submissions, and
+  changes only through the `reorder_venue_photos` RPC — never a direct
+  client-side `display_order` write.
+- A manager may change only `display_order` on their venue's published
+  photos. A `BEFORE UPDATE` trigger enforces that restriction, since RLS
+  itself cannot restrict which columns an update touches.
 
 ### Out of scope
 No Bib Gourmand or unstarred MICHELIN Guide entries. No Green Star in award
@@ -163,6 +215,15 @@ database controls. Preferred shape:
 - Supabase region is EU and cannot be changed without migration.
 - Photo egress is the primary cost risk, not database size. Compress
   client-side before upload; never serve full-resolution images.
+- Venue photos are picked with `photo_manager`, not `image_picker` —
+  `image_picker`'s iOS picker can silently return a locally-cached iCloud
+  proxy under this feature's resolution minimum; `photo_manager` can
+  request the true original.
+- Two Edge Functions (`notify-venue-claim`, `notify-venue-submission`)
+  email `claimedvenues@mantelier.app` on a new claim and on a new
+  about/photo submission. Both are best-effort — a pg_net trigger with
+  its own exception handler — and can never block the insert that
+  triggered them.
 
 ---
 
