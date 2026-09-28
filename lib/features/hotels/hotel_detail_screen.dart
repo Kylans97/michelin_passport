@@ -22,6 +22,7 @@ import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
+import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
@@ -68,6 +69,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     Supabase.instance.client,
   );
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
+  late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
   late final Future<List<Restaurant>> _linkedRestaurantsFuture =
       widget.hotel.hasMichelinRestaurant
       ? _hotelRepo.getLinkedRestaurants(widget.hotel.id)
@@ -104,12 +106,31 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   // Step 8B pre-final doc.
   List<Event> _hostedEvents = const [];
 
+  // Mirrors RestaurantDetailScreen's _aboutText exactly — venue_about_
+  // current (the latest APPROVED submission), starts hidden, a failed
+  // lookup leaves it hidden rather than affecting the rest of the
+  // screen. `null` is already exactly what VenueAboutSection itself
+  // treats as "nothing to show."
+  String? _aboutText;
+
   @override
   void initState() {
     super.initState();
     _loadPersonalState();
     _checkAwardHistory();
     _loadHostedEvents();
+    _loadAboutText();
+  }
+
+  Future<void> _loadAboutText() async {
+    try {
+      final text = await _venueAboutRepo.loadCurrentText(venueType: 'hotel', venueId: widget.hotel.id);
+      if (!mounted) return;
+      setState(() => _aboutText = text);
+    } catch (_) {
+      // Leave the section hidden on a failed lookup — same reasoning as
+      // _checkAwardHistory/_loadHostedEvents above.
+    }
   }
 
   // Events V2 Step 8B — mirrors RestaurantDetailScreen's
@@ -400,10 +421,10 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     );
     final websiteSuppressed =
         lifecycleState == VenueLifecycleState.permanentlyClosed;
-    // No editorial-copy field exists on Hotel yet — see
-    // VenueAboutSection's own doc comment and RestaurantDetailScreen's
-    // matching note.
-    final String? aboutText = null;
+    // Wired to venue_about_current (via _loadAboutText/_aboutText) — an
+    // approved submission, or null/hidden when nothing has been approved
+    // yet. See _aboutText's own doc comment.
+    final aboutText = _aboutText;
 
     return Scaffold(
       backgroundColor: AppColors.ivory,

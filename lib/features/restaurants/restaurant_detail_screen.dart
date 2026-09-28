@@ -24,6 +24,7 @@ import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
+import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
@@ -66,6 +67,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     Supabase.instance.client,
   );
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
+  late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
   // Events V2 Step 6 — never wired into a constructor param (matching
   // EventDetailScreen's own established seam). Restaurant/Hotel Detail
   // are the only two screens using SupabaseAnalyticsService instead of
@@ -99,6 +101,17 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // silently empty rather than surfacing an error.
   List<Event> _hostedEvents = const [];
 
+  // The venue's current, APPROVED about text — venue_about_current, not
+  // venue_about_submissions directly (that view already resolves "latest
+  // approved," see VenueAboutRepository's own doc comment). Same "starts
+  // hidden, only ever set on a successful non-empty-implied load" shape
+  // as _hasAwardHistory/_hostedEvents just above — an about-text lookup
+  // failure must not affect the rest of this screen, and `null` here is
+  // already exactly what VenueAboutSection itself treats as "nothing to
+  // show," so no separate loading/error state is needed for this one
+  // field.
+  String? _aboutText;
+
   bool get _isVisited => _visits.isNotEmpty;
 
   @override
@@ -107,6 +120,21 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     _loadPersonalState();
     _checkAwardHistory();
     _loadHostedEvents();
+    _loadAboutText();
+  }
+
+  Future<void> _loadAboutText() async {
+    try {
+      final text = await _venueAboutRepo.loadCurrentText(
+        venueType: 'restaurant',
+        venueId: widget.restaurant.id,
+      );
+      if (!mounted) return;
+      setState(() => _aboutText = text);
+    } catch (_) {
+      // Leave the section hidden on a failed lookup — same reasoning as
+      // _checkAwardHistory/_loadHostedEvents above.
+    }
   }
 
   // Events V2 Step 8B — hosted Events are enhancement content: a failed
@@ -480,11 +508,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     final telUri = (restaurant.phone ?? '').isEmpty || callSuppressed
         ? null
         : buildTelUri(restaurant.phone!);
-    // No editorial-copy field exists on Restaurant yet (no `description`/
-    // `about`/`summary` column on restaurants_full) — see
-    // VenueAboutSection's own doc comment. Kept as a local so the day a
-    // real field lands, only this line changes.
-    final String? aboutText = null;
+    // Wired to venue_about_current (via _loadAboutText/_aboutText) — an
+    // approved submission, or null/hidden when nothing has been approved
+    // yet. See _aboutText's own doc comment.
+    final aboutText = _aboutText;
 
     return Scaffold(
       backgroundColor: AppColors.ivory,

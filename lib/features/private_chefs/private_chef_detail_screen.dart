@@ -8,9 +8,11 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/section_divider.dart';
+import '../../core/widgets/venue_about_section.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
+import '../../data/repositories/venue_about_repository.dart';
 import '../../models/event.dart';
 import '../../models/private_chef.dart';
 import '../../models/private_chef_education.dart';
@@ -41,6 +43,11 @@ import 'widgets/private_chef_states.dart';
 /// no CTA of any kind is rendered here in the meantime; see [_body]'s
 /// trailing comment for the seam.
 ///
+/// A "FROM THE TEAM" section (venue_about_current — see
+/// VenueAboutSection's own doc comment) now sits right after ABOUT, when
+/// present — PRIVATE_CHEFS.md itself is unchanged (not touched by this
+/// feature), so this is noted here rather than there.
+///
 /// Step 2B — BACKGROUND (renamed from "Restaurant Provenance"): a chef's
 /// relevant professional background is broader than kitchen positions —
 /// hospitality, service, wine, and education can all be curation-relevant
@@ -69,6 +76,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   late final _repo = PrivateChefRepository(Supabase.instance.client);
   late final _followRepo = FollowRepository(Supabase.instance.client);
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
+  late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
   // Events V2 Step 6 — never wired into a constructor param (matching
   // EventDetailScreen's own established seam); no vendor is selected yet,
   // so this is always the production-safe no-op today.
@@ -94,11 +102,37 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   // (section hidden) on every real device today.
   List<Event> _hostedEvents = const [];
 
+  // venue_about_current for this chef — the latest APPROVED venue_about_
+  // submissions row, a manager's own reviewed copy. Completely separate
+  // from chef.biography (a verified catalogue fact, loaded via _load()
+  // below, untouched by this feature) — see _aboutSection/VenueAboutSection
+  // for how the two coexist without reading as duplicates. Same "starts
+  // hidden, a failed lookup stays hidden" shape as _hostedEvents just
+  // above, and loaded independently for the same reason: this chef's own
+  // catalogue data must never wait on, or be taken down by, an about-text
+  // lookup failure.
+  String? _aboutText;
+
   @override
   void initState() {
     super.initState();
     _load();
     _loadHostedEvents();
+    _loadAboutText();
+  }
+
+  Future<void> _loadAboutText() async {
+    try {
+      final text = await _venueAboutRepo.loadCurrentText(
+        venueType: 'private_chef',
+        venueId: widget.chefId,
+      );
+      if (!mounted) return;
+      setState(() => _aboutText = text);
+    } catch (_) {
+      // Leave the section hidden on a failed lookup — same reasoning as
+      // _loadHostedEvents above.
+    }
   }
 
   // Events V2 Step 8B — mirrors RestaurantDetailScreen/HotelDetailScreen's
@@ -345,12 +379,24 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   Widget _body(PrivateChef chef) {
     final biography = (chef.biography ?? '').trim();
     final hasBiography = biography.isNotEmpty;
+    final hasAboutText = (_aboutText ?? '').trim().isNotEmpty;
     final hasBackground = _history.isNotEmpty || _education.isNotEmpty;
     final hasInstagram = (chef.instagramUrl ?? '').trim().isNotEmpty;
     final hasWebsite = (chef.websiteUrl ?? '').trim().isNotEmpty;
 
     final sections = <Widget>[
       if (hasBiography) _aboutSection(biography),
+      // Placed immediately after biography, before BACKGROUND: both are
+      // narrative/editorial text about the chef (who they are, and what
+      // they — or whoever manages this page — currently want a visitor
+      // to know), so they read together as one continuous introduction
+      // before the page moves into structured facts (career background,
+      // booking details, contact). hasAboutText gates this explicitly,
+      // the same way every other optional entry in this list does — the
+      // divider loop below adds a divider only BETWEEN present entries,
+      // so an always-included-but-internally-empty VenueAboutSection
+      // would still claim a divider on either side of nothing.
+      if (hasAboutText) VenueAboutSection(text: _aboutText, heading: 'FROM THE TEAM'),
       if (hasBackground) _backgroundSection(),
       PrivateChefExperienceSection(chef: chef),
       if (hasInstagram || hasWebsite)
