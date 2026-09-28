@@ -401,6 +401,16 @@ deno_version = 2
 [functions.notify-venue-claim]
 verify_jwt = false
 
+# notify-venue-submission is called only by the shared venue_about_
+# submissions/venue_photo_submissions insert trigger via pg_net (see
+# 20261004120000_add_venue_submission_admin_email_notification.sql) —
+# same reasoning as notify-venue-claim above: no user JWT in that calling
+# context, so this checks its own shared secret (x-webhook-secret,
+# compared against the NOTIFY_VENUE_SUBMISSION_WEBHOOK_SECRET function
+# secret, deliberately separate from notify-venue-claim's own) instead.
+[functions.notify-venue-submission]
+verify_jwt = false
+
 [analytics]
 enabled = true
 port = 54327
