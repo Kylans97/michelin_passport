@@ -1,7 +1,26 @@
 import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/published_venue_photo.dart';
+import '../../models/venue_photo_submission_status.dart';
 import '../services/venue_photo_pipeline.dart';
+
+/// {venue_type} -> the table its APPROVED photos live in — mirrors the
+/// same three-way split is_active_venue_manager()/reorder_venue_photos()
+/// already use on the database side.
+String _publishedTableFor(String venueType) => switch (venueType) {
+  'restaurant' => 'restaurant_photos',
+  'hotel' => 'hotel_photos',
+  'private_chef' => 'private_chef_photos',
+  _ => throw ArgumentError('Unknown venue_type: $venueType'),
+};
+
+String _venueColumnFor(String venueType) => switch (venueType) {
+  'restaurant' => 'restaurant_id',
+  'hotel' => 'hotel_id',
+  'private_chef' => 'private_chef_id',
+  _ => throw ArgumentError('Unknown venue_type: $venueType'),
+};
 
 /// The private Storage bucket pending venue photo submissions land in —
 /// see supabase/migrations/20260828120000_add_venue_claims_submissions_
@@ -114,4 +133,85 @@ class VenuePhotoSubmissionRepository {
       rethrow;
     }
   }
+
+  /// The venue's current PUBLISHED photos — restaurant_photos/
+  /// hotel_photos/private_chef_photos, whichever matches [venueType] —
+  /// display_order ascending, so index 0 is always the one that appears
+  /// first. Readable by anyone (public_read policy), not manager-gated —
+  /// same as the public detail page itself would read.
+  Future<List<PublishedVenuePhoto>> loadPublishedPhotos({
+    required String venueType,
+    required String venueId,
+  }) async {
+    final rows = await _client
+        .from(_publishedTableFor(venueType))
+        .select('id, image_url, alt_text, display_order')
+        .eq(_venueColumnFor(venueType), venueId)
+        .order('display_order');
+    return [
+      for (final row in rows as List)
+        PublishedVenuePhoto.fromJson(row as Map<String, dynamic>),
+    ];
+  }
+
+  /// The signed-in user's own PENDING or REJECTED submissions for this
+  /// venue, newest first — never approved ones (see
+  /// VenuePhotoSubmissionSummary's own doc comment for why). Reads only
+  /// this user's own rows, matching venue_photo_submissions_own_read's
+  /// own scope (`user_id = auth.uid()`) — no explicit .eq('user_id', ...)
+  /// needed for correctness, since RLS already restricts it, but added
+  /// anyway for the same explicitness this app's other repositories
+  /// already use over RLS-only scoping.
+  Future<List<VenuePhotoSubmissionSummary>> loadMyOpenSubmissions({
+    required String venueType,
+    required String venueId,
+  }) async {
+    final userId = _client.auth.currentUser?.id;
+    if (userId == null) return [];
+    final rows = await _client
+        .from('venue_photo_submissions')
+        .select('id, storage_path, status, review_note, submitted_at')
+        .eq('user_id', userId)
+        .eq('venue_type', venueType)
+        .eq('venue_id', venueId)
+        .inFilter('status', ['pending', 'rejected'])
+        .order('submitted_at', ascending: false);
+    return [
+      for (final row in rows as List)
+        VenuePhotoSubmissionSummary.fromJson(row as Map<String, dynamic>),
+    ];
+  }
+
+  /// Signed, time-limited URLs for a batch of PRIVATE-bucket storage
+  /// paths — one request regardless of how many photos, mirroring
+  /// PhotoRepository.resolveDisplayUrls' own established shape/expiry
+  /// exactly. The only way to actually display a pending submission's
+  /// photo, since the bucket is private.
+  Future<Map<String, String>> resolveDisplayUrls(
+    List<String> storagePaths, {
+    int expiresInSeconds = 3600,
+  }) async {
+    if (storagePaths.isEmpty) return {};
+    final signed = await _client.storage
+        .from(venuePhotoSubmissionsBucket)
+        .createSignedUrls(storagePaths, expiresInSeconds);
+    return {
+      for (final s in signed)
+        if (s.path.isNotEmpty && s.signedUrl.isNotEmpty) s.path: s.signedUrl,
+    };
+  }
+
+  /// Reorders the venue's PUBLISHED photos via reorder_venue_photos —
+  /// never a direct display_order write. [photoIds] must be the venue's
+  /// COMPLETE photo id list in the desired new order (the RPC itself
+  /// rejects a partial or duplicate list — see
+  /// 20261003120000_add_reorder_venue_photos_rpc.sql).
+  Future<void> reorderPhotos({
+    required String venueType,
+    required String venueId,
+    required List<String> photoIds,
+  }) => _client.rpc(
+    'reorder_venue_photos',
+    params: {'p_venue_type': venueType, 'p_venue_id': venueId, 'p_photo_ids': photoIds},
+  );
 }

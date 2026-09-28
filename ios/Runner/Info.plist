@@ -31,7 +31,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Mantelier uses your location to show gastronomic events happening near you.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Mantelier uses your photo library so you can attach photos to your visits and stays.</string>
+	<string>Mantelier uses your photo library so you can attach photos to your visits and stays, and submit photos for venues you manage.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

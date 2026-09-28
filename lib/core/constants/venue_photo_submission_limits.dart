@@ -25,3 +25,14 @@ const double maxVenuePhotoAspectRatio = 16 / 9;
 /// "Accepteer alleen JPEG en PNG" — matches the Storage bucket's own
 /// `allowed_mime_types` exactly (`['image/jpeg', 'image/png']`).
 const List<String> allowedVenuePhotoMimeTypes = ['image/jpeg', 'image/png'];
+
+/// The maximum number of PUBLISHED (approved) photos a single venue may
+/// have — mirrors `enforce_restaurant_photo_limit()`/
+/// `enforce_hotel_photo_limit()`/`enforce_private_chef_photo_limit()`
+/// (20260818120000/20260828120000), each hardcoded to 5 in their own
+/// `raise exception` message. No Dart constant existed for this before —
+/// added here, next to this file's other real, DB-sourced limits, rather
+/// than left as a bare literal in UI copy. Applies only to the approved
+/// set; there is no limit on how many submissions may be pending review
+/// at once.
+const int maxVenuePhotoCount = 5;

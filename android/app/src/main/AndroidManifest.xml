@@ -6,6 +6,20 @@
          background access — ACCESS_FINE_LOCATION and
          ACCESS_BACKGROUND_LOCATION are deliberately NOT declared. -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <!-- Venue photo picking (photo_manager, replacing image_picker for
+         that one flow — see venue_photo_picker.dart's own doc comment
+         for why) reads the photo library directly rather than through a
+         system picker sheet, so it needs real read permission. Android
+         13+ (API 33) requires READ_MEDIA_IMAGES and, per photo_manager's
+         own documented Android 13 note, READ_MEDIA_VIDEO alongside it
+         even though this app only ever requests RequestType.image — the
+         plugin's own manifest already supplies READ_EXTERNAL_STORAGE for
+         API 32 and below via merge, so it isn't repeated here.
+         READ_MEDIA_VISUAL_USER_SELECTED supports Android 14's partial/
+         limited-selection grant. -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED"/>
     <application
         android:label="Mantelier"
         android:name="${applicationName}"
