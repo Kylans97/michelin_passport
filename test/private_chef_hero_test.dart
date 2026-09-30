@@ -245,17 +245,19 @@ void main() {
 
   group('PrivateChefHero — photo gallery (Step 2B)', () {
     testWidgets('0 photos, no profile image -> gradient placeholder, no '
-        'PageView, no indicator', (tester) async {
+        'PageView, no chevrons', (tester) async {
       await tester.pumpWidget(
         _wrap(const PrivateChefHero(displayName: 'Lucas')),
       );
       expect(find.byType(PageView), findsNothing);
       expect(find.byType(Image), findsNothing);
+      expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+      expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
       expect(tester.takeException(), isNull);
     });
 
     testWidgets('0 photos, profile_image_url set -> static fallback image, '
-        'no PageView, no indicator', (tester) async {
+        'no PageView, no chevrons', (tester) async {
       await tester.pumpWidget(
         _wrap(
           const PrivateChefHero(
@@ -266,6 +268,8 @@ void main() {
       );
       expect(find.byType(Image), findsOneWidget);
       expect(find.byType(PageView), findsNothing);
+      expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+      expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
     });
 
     testWidgets('Step 2C device review: the hero photo uses a top-biased focal '
@@ -285,7 +289,7 @@ void main() {
       expect((image.alignment as Alignment).y, lessThan(0));
     });
 
-    testWidgets('1 photo -> static image, no PageView, no page indicator '
+    testWidgets('1 photo -> static image, no PageView, no chevrons '
         '(even though profile_image_url is also set — gallery wins)', (
       tester,
     ) async {
@@ -300,20 +304,24 @@ void main() {
       );
       expect(find.byType(Image), findsOneWidget);
       expect(find.byType(PageView), findsNothing);
+      expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+      expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
     });
 
-    testWidgets('2 photos -> PageView renders with a page indicator', (
-      tester,
-    ) async {
+    testWidgets('2 photos -> PageView renders; first photo shows only the '
+        'right chevron', (tester) async {
       await tester.pumpWidget(
         _wrap(PrivateChefHero(displayName: 'Lucas', photos: _photos(2))),
       );
       expect(find.byType(PageView), findsOneWidget);
+      expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+      expect(find.byIcon(Icons.chevron_right_rounded), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('5 photos (the maximum) -> PageView renders with a page '
-        'indicator, no overflow', (tester) async {
+    testWidgets('5 photos (the maximum) -> PageView renders, no overflow', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         _wrap(PrivateChefHero(displayName: 'Lucas', photos: _photos(5))),
       );
@@ -321,7 +329,80 @@ void main() {
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('page indicator has no autoplay controller side effects and '
+    testWidgets(
+      'chevrons: hidden on their own end, shown on both sides in the '
+      'middle, and never wrap around',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(PrivateChefHero(displayName: 'Lucas', photos: _photos(3))),
+        );
+
+        // Photo 1 of 3: right only.
+        expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+        expect(find.byIcon(Icons.chevron_right_rounded), findsOneWidget);
+
+        tester.widget<PageView>(find.byType(PageView)).onPageChanged!(1);
+        await tester.pumpAndSettle();
+        expect(find.byIcon(Icons.chevron_left_rounded), findsOneWidget);
+        expect(find.byIcon(Icons.chevron_right_rounded), findsOneWidget);
+
+        // Photo 3 of 3 (the last): left only, right simply gone.
+        tester.widget<PageView>(find.byType(PageView)).onPageChanged!(2);
+        await tester.pumpAndSettle();
+        expect(find.byIcon(Icons.chevron_left_rounded), findsOneWidget);
+        expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
+      },
+    );
+
+    testWidgets('tapping the right chevron advances the PageController; '
+        'tapping the left one goes back', (tester) async {
+      await tester.pumpWidget(
+        _wrap(PrivateChefHero(displayName: 'Lucas', photos: _photos(2))),
+      );
+
+      await tester.tap(find.byIcon(Icons.chevron_right_rounded));
+      await tester.pumpAndSettle();
+      var pageView = tester.widget<PageView>(find.byType(PageView));
+      expect(pageView.controller!.page, 1);
+      expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
+
+      await tester.tap(find.byIcon(Icons.chevron_left_rounded));
+      await tester.pumpAndSettle();
+      pageView = tester.widget<PageView>(find.byType(PageView));
+      expect(pageView.controller!.page, 0);
+      expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+    });
+
+    testWidgets('the chevron tap target is comfortably larger than its '
+        'glyph', (tester) async {
+      await tester.pumpWidget(
+        _wrap(PrivateChefHero(displayName: 'Lucas', photos: _photos(2))),
+      );
+      final glyphFinder = find.byIcon(Icons.chevron_right_rounded);
+      final tapTargetSize = tester.getSize(
+        find.ancestor(of: glyphFinder, matching: find.byType(GestureDetector)),
+      );
+      final glyphSize = tester.getSize(glyphFinder);
+      expect(tapTargetSize.width, greaterThan(glyphSize.width * 1.5));
+      expect(tapTargetSize.height, greaterThan(glyphSize.height * 1.5));
+    });
+
+    testWidgets(
+      'the text-overlay SingleChildScrollView does not absorb pointer '
+      'events meant for the gallery beneath it — translucent, not opaque, '
+      'hit-test behaviour (same fix as VenueDetailHero)',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(PrivateChefHero(displayName: 'Lucas', photos: _photos(2))),
+        );
+        final scrollView = tester.widget<SingleChildScrollView>(
+          find.byType(SingleChildScrollView),
+        );
+        expect(scrollView.hitTestBehavior, HitTestBehavior.translucent);
+      },
+    );
+
+    testWidgets('the gallery has no autoplay controller side effects and '
         'starts at the first page', (tester) async {
       await tester.pumpWidget(
         _wrap(PrivateChefHero(displayName: 'Lucas', photos: _photos(3))),
@@ -330,20 +411,6 @@ void main() {
       // genuinely autoplaying carousel; a plain pump proves there is none.
       await tester.pump(const Duration(seconds: 5));
       expect(tester.takeException(), isNull);
-    });
-
-    testWidgets('gold audit: page indicator uses no gold', (tester) async {
-      await tester.pumpWidget(
-        _wrap(PrivateChefHero(displayName: 'Lucas', photos: _photos(3))),
-      );
-      final decorated = tester.widgetList<Container>(find.byType(Container));
-      for (final container in decorated) {
-        final decoration = container.decoration;
-        if (decoration is BoxDecoration &&
-            decoration.shape == BoxShape.circle) {
-          expect(decoration.color, isNot(AppColors.gold));
-        }
-      }
     });
 
     testWidgets('tapping the Report flag actually opens the report sheet '

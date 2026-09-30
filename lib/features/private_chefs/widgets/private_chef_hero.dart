@@ -4,6 +4,7 @@ import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/editorial_back_button.dart';
 import '../../../core/widgets/follow_toggle_button.dart';
+import '../../../core/widgets/hero_photo_chevron.dart';
 import '../../../models/content_report.dart';
 import '../../../models/private_chef_photo.dart';
 import '../../reports/widgets/report_content_sheet.dart';
@@ -26,8 +27,9 @@ import '../../reports/widgets/report_content_sheet.dart';
 /// Step 2B — PHOTO GALLERY: background image resolution, in order:
 ///   1. [photos] (up to 5, [PrivateChefPhoto.displayOrder] ascending) —
 ///      1 photo renders as a static image; 2–5 render as a swipeable
-///      [PageView] with a small dot indicator (no autoplay, no
-///      thumbnail rail — see the class's own gallery widgets below).
+///      [PageView] with a chevron at each edge (no dot/count indicator —
+///      the chevrons alone carry position; no autoplay, no thumbnail
+///      rail — see the class's own gallery widgets below).
 ///   2. [profileImageUrl] — a single static fallback image when no
 ///      gallery photo exists yet, matching the schema's own documented
 ///      profile_image_url (avatar/fallback) vs. private_chef_photos
@@ -88,6 +90,20 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
     super.dispose();
   }
 
+  void _goToNextPhoto() {
+    _pageController.nextPage(
+      duration: const Duration(milliseconds: 260),
+      curve: Curves.easeOutCubic,
+    );
+  }
+
+  void _goToPreviousPhoto() {
+    _pageController.previousPage(
+      duration: const Duration(milliseconds: 260),
+      curve: Curves.easeOutCubic,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final photos = widget.photos;
@@ -95,6 +111,10 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
     final hasFallbackPhoto =
         !hasGallery && (widget.profileImageUrl ?? '').isNotEmpty;
     final hasAnyPhoto = hasGallery || hasFallbackPhoto;
+    // A swipeable set only exists for 2+ photos — _PhotoGallery itself
+    // renders a single photo as a plain static image (no PageView), same
+    // "1 photo changes nothing" rule VenueDetailHero's gallery follows.
+    final isGallery = photos.length > 1;
 
     return SliverAppBar(
       expandedHeight: widget.expandedHeight,
@@ -162,6 +182,30 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
                 ),
               ),
             ),
+            if (isGallery && _pageIndex > 0)
+              Positioned(
+                left: 0,
+                top: 0,
+                bottom: 0,
+                child: Center(
+                  child: HeroPhotoChevron(
+                    icon: Icons.chevron_left_rounded,
+                    onTap: _goToPreviousPhoto,
+                  ),
+                ),
+              ),
+            if (isGallery && _pageIndex < photos.length - 1)
+              Positioned(
+                right: 0,
+                top: 0,
+                bottom: 0,
+                child: Center(
+                  child: HeroPhotoChevron(
+                    icon: Icons.chevron_right_rounded,
+                    onTap: _goToNextPhoto,
+                  ),
+                ),
+              ),
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
@@ -172,18 +216,33 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
                 ),
                 child: SingleChildScrollView(
                   physics: const NeverScrollableScrollPhysics(),
+                  // Mechanism (confirmed identical to VenueDetailHero's own
+                  // fix): this box is stretched to the FULL hero area by
+                  // the parent Stack's StackFit.expand, and Scrollable's
+                  // own hit-test behaviour defaults to
+                  // HitTestBehavior.opaque regardless of
+                  // NeverScrollableScrollPhysics (that only empties its
+                  // drag-recognizer list, it doesn't change hit-testing).
+                  // Stack hit-testing stops at the first child that
+                  // reports a hit, walking topmost-first — so this box,
+                  // sitting above the gallery in the Stack, was silently
+                  // absorbing every pointer down across the whole photo
+                  // before the PageView ever saw it. This is exactly the
+                  // same reason _ReportPhotoButton below has to be the
+                  // LAST Stack child (its own doc comment describes the
+                  // identical mechanism) — that workaround fixes a small
+                  // button by outranking this box in hit-test order, but
+                  // doesn't help the PageView, which sits BENEATH this box
+                  // and can't be reordered above the text/gradient it's a
+                  // background for. translucent still lets this box
+                  // report itself as hit without stopping the Stack from
+                  // also testing the sibling behind it.
+                  hitTestBehavior: HitTestBehavior.translucent,
                   reverse: true,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      if (photos.length > 1) ...[
-                        _PhotoPageIndicator(
-                          count: photos.length,
-                          index: _pageIndex,
-                        ),
-                        const SizedBox(height: CsSpacing.sm),
-                      ],
                       Text(
                         'PRIVATE CHEF',
                         style: CsTypography.eyebrow.copyWith(
@@ -229,17 +288,19 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
             // A generic "Report photo" — private_chef_photos has no
             // submitted_by/user_id (admin-curated, not tied to any end
             // user), so this reports the photo itself, not a person.
-            // Must be the LAST Stack child, not just painted last visually:
-            // the identity-text SafeArea above is a non-Positioned child of
-            // this StackFit.expand Stack, so it fills the entire hero
-            // (Scrollable-driven, even though scrolling is disabled) and,
-            // being earlier in this list, would otherwise sit on TOP of an
-            // earlier-declared Positioned button in hit-test order and
-            // silently absorb every tap across the whole hero — confirmed
-            // via a failing widget test before this was moved down here
-            // (the button was visible but untappable). Bottom-right,
-            // opposite the page indicator (bottom-left, in the text block
-            // above), so the two never collide.
+            // History: this used to have to be the LAST Stack child,
+            // because the identity-text SafeArea above defaults its
+            // Scrollable to HitTestBehavior.opaque and, filling the whole
+            // StackFit.expand hero, claimed every tap before it reached an
+            // earlier-declared sibling — this button included. That's
+            // fixed at the source now: the SafeArea's SingleChildScrollView
+            // carries hitTestBehavior: HitTestBehavior.translucent (see
+            // its own comment), so z-order no longer decides whether this
+            // button receives taps — it would work in any position in this
+            // list. Left where it is because there's no reason to move a
+            // working button, not because it still needs to be last.
+            // Bottom-right, clear of the chevrons (vertically centred) and
+            // the identity text (bottom-left).
             if (hasGallery)
               Positioned(
                 right: CsSpacing.pageHorizontal,
@@ -334,41 +395,6 @@ class _HeroImage extends StatelessWidget {
       fit: BoxFit.cover,
       alignment: _focalAlignment,
       errorBuilder: (_, _, _) => const _NoPhotoBackground(),
-    ),
-  );
-}
-
-/// A restrained dot indicator — ivory for the active page,
-/// [AppColors.secondaryOnDark] (at reduced opacity) for the rest. No
-/// gold, no numbers, no large pill controls. Purely decorative — excluded
-/// from the accessibility tree so it doesn't add noisy, uninformative
-/// stops; swipe/page semantics are already carried by the [PageView]
-/// itself.
-class _PhotoPageIndicator extends StatelessWidget {
-  final int count;
-  final int index;
-
-  const _PhotoPageIndicator({required this.count, required this.index});
-
-  @override
-  Widget build(BuildContext context) => ExcludeSemantics(
-    child: Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        for (var i = 0; i < count; i++) ...[
-          if (i > 0) const SizedBox(width: 6),
-          Container(
-            width: 6,
-            height: 6,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: i == index
-                  ? AppColors.ivory
-                  : AppColors.secondaryOnDark.withValues(alpha: 0.5),
-            ),
-          ),
-        ],
-      ],
     ),
   );
 }
