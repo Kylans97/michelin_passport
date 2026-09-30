@@ -411,6 +411,16 @@ verify_jwt = false
 [functions.notify-venue-submission]
 verify_jwt = false
 
+# publish-venue-photo is called on demand (by a reviewer today, possibly
+# some other tool later) to publish a pending photo submission — not by a
+# pg_net database trigger like the two functions above. There is still no
+# user JWT in that calling context (it's invoked directly with the shared
+# secret, never through the app), so the same shape applies: this checks
+# its own x-webhook-secret against PUBLISH_VENUE_PHOTO_WEBHOOK_SECRET
+# instead of a JWT.
+[functions.publish-venue-photo]
+verify_jwt = false
+
 [analytics]
 enabled = true
 port = 54327
