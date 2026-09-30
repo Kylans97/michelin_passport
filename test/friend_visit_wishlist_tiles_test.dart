@@ -7,8 +7,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
 import 'package:michelin_passport/core/widgets/key_row.dart';
 import 'package:michelin_passport/core/widgets/star_row.dart';
+import 'package:michelin_passport/core/widgets/venue_thumbnail.dart';
 import 'package:michelin_passport/features/friends/widgets/friend_visit_tile.dart';
 import 'package:michelin_passport/features/friends/widgets/friend_wishlist_tile.dart';
 import 'package:michelin_passport/models/hotel.dart';
@@ -22,6 +24,7 @@ Restaurant _restaurant({
   String cityName = 'Paris',
   String countryName = 'France',
   String flagEmoji = '🇫🇷',
+  String? coverImageUrl,
 }) => Restaurant(
   id: 'r1',
   restaurantCode: 'r1',
@@ -33,6 +36,7 @@ Restaurant _restaurant({
   countryName: countryName,
   flagEmoji: flagEmoji,
   address: '1 Rue de Test',
+  coverImageUrl: coverImageUrl,
 );
 
 Hotel _hotel({
@@ -102,6 +106,30 @@ void main() {
       expect(find.byType(StarRow), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets(
+      'a venue with a cover photo renders it via VenueThumbnail, not the '
+      'branded placeholder',
+      (tester) async {
+        final restaurant = _restaurant(
+          coverImageUrl: 'https://example.com/restaurants/r1/0.jpg',
+        );
+        await tester.pumpWidget(
+          _wrap(
+            FriendVisitTile(
+              venue: RestaurantVenue(restaurant),
+              visit: _visit(rating: 9),
+              onTap: () {},
+            ),
+          ),
+        );
+        expect(find.byType(CsImagePlaceholder), findsNothing);
+        final thumbnail = tester.widget<VenueThumbnail>(
+          find.byType(VenueThumbnail),
+        );
+        expect(thumbnail.imageUrl, restaurant.coverImageUrl);
+      },
+    );
 
     testWidgets(
       'no longer renders notes — this is a concise discovery preview, not '
@@ -297,6 +325,26 @@ void main() {
       await tester.tap(find.byType(FriendWishlistTile));
       expect(tapped, isTrue);
     });
+
+    testWidgets(
+      'a venue with a cover photo renders it via VenueThumbnail, not the '
+      'branded placeholder',
+      (tester) async {
+        final restaurant = _restaurant(
+          coverImageUrl: 'https://example.com/restaurants/r1/0.jpg',
+        );
+        await tester.pumpWidget(
+          _wrap(
+            FriendWishlistTile(venue: RestaurantVenue(restaurant), onTap: () {}),
+          ),
+        );
+        expect(find.byType(CsImagePlaceholder), findsNothing);
+        final thumbnail = tester.widget<VenueThumbnail>(
+          find.byType(VenueThumbnail),
+        );
+        expect(thumbnail.imageUrl, restaurant.coverImageUrl);
+      },
+    );
 
     testWidgets('never shows a remove affordance', (tester) async {
       await tester.pumpWidget(

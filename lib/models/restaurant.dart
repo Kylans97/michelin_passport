@@ -122,6 +122,15 @@ class Restaurant {
   final String? stampArtworkUrl;
   final bool stampArtworkApproved;
 
+  // The restaurant's cover photo — restaurants_full.cover_photo_url
+  // (20261006120000_add_cover_photo_url_to_full_views.sql), a LATERAL join
+  // to the lowest display_order row on restaurant_photos. Null for the
+  // large majority of restaurants (no published photo yet), in which case
+  // every rendering surface falls back to the branded placeholder — never
+  // fetch this separately from restaurant_photos once a Restaurant is
+  // already in hand.
+  final String? coverImageUrl;
+
   // No latitude/longitude here. `location` is PostGIS
   // geography(Point,4326); over PostgREST it comes back as an EWKB hex
   // string, not GeoJSON or a {lat, lng} pair, and decoding that client-side
@@ -170,6 +179,7 @@ class Restaurant {
     this.missingListingReportId,
     this.stampArtworkUrl,
     this.stampArtworkApproved = false,
+    this.coverImageUrl,
   });
 
   /// True when the restaurant currently holds at least one Michelin star.
@@ -232,5 +242,6 @@ class Restaurant {
     missingListingReportId: json['missing_listing_report_id'] as String?,
     stampArtworkUrl: json['stamp_artwork_url'] as String?,
     stampArtworkApproved: (json['stamp_artwork_approved'] as bool?) ?? false,
+    coverImageUrl: json['cover_photo_url'] as String?,
   );
 }

@@ -26,6 +26,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
+import 'package:michelin_passport/core/widgets/venue_thumbnail.dart';
 import 'package:michelin_passport/features/passport/passport_view_model.dart';
 import 'package:michelin_passport/features/passport/widgets/passport_hotel_card.dart';
 import 'package:michelin_passport/features/passport/widgets/passport_restaurant_card.dart';
@@ -40,6 +42,7 @@ Restaurant _restaurant({
   String cityName = 'Paris',
   String countryName = 'France',
   String flagEmoji = '🇫🇷',
+  String? coverImageUrl,
 }) => Restaurant(
   id: 'r1',
   restaurantCode: 'r1',
@@ -51,6 +54,7 @@ Restaurant _restaurant({
   countryName: countryName,
   flagEmoji: flagEmoji,
   address: '1 Rue de Test',
+  coverImageUrl: coverImageUrl,
 );
 
 Hotel _hotel({
@@ -59,6 +63,7 @@ Hotel _hotel({
   String cityName = 'Paris',
   String countryName = 'France',
   String flagEmoji = '🇫🇷',
+  String? coverImageUrl,
 }) => Hotel(
   id: 'h1',
   hotelCode: 'h1',
@@ -71,6 +76,7 @@ Hotel _hotel({
   address: '1 Rue de Test',
   hasMichelinRestaurant: false,
   restaurantCount: 0,
+  coverImageUrl: coverImageUrl,
 );
 
 Visit _visit({
@@ -209,6 +215,35 @@ void main() {
       expect(find.text('RESTAURANT'), findsNothing);
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets(
+      'a restaurant with a cover photo renders it via VenueThumbnail, not '
+      'the branded placeholder',
+      (tester) async {
+        final restaurant = _restaurant(
+          michelinStars: 2,
+          coverImageUrl: 'https://example.com/restaurants/r1/0.jpg',
+        );
+        final stats = PassportVenueStats.from(RestaurantVenue(restaurant), [
+          _visit(visitedOn: DateTime(2026, 6, 12), starsAtVisit: 2),
+        ]);
+        await tester.pumpWidget(
+          _wrap(
+            PassportRestaurantCard(
+              restaurant: restaurant,
+              stats: stats,
+              isWishlisted: false,
+              onToggleWishlist: () {},
+            ),
+          ),
+        );
+        expect(find.byType(CsImagePlaceholder), findsNothing);
+        final thumbnail = tester.widget<VenueThumbnail>(
+          find.byType(VenueThumbnail),
+        );
+        expect(thumbnail.imageUrl, restaurant.coverImageUrl);
+      },
+    );
 
     testWidgets('shows an InkWell tap affordance (navigation entry point)', (
       tester,
@@ -443,6 +478,40 @@ void main() {
       expect(find.text('HOTEL'), findsNothing);
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets(
+      'a hotel with a cover photo renders it via VenueThumbnail, not the '
+      'branded placeholder',
+      (tester) async {
+        final hotel = _hotel(
+          michelinKeys: 3,
+          coverImageUrl: 'https://example.com/hotels/h1/0.jpg',
+        );
+        final stats = PassportVenueStats.from(HotelVenue(hotel), [
+          _visit(
+            entityType: 'hotel',
+            entityId: 'h1',
+            visitedOn: DateTime(2026, 6, 12),
+            keysAtVisit: 3,
+          ),
+        ]);
+        await tester.pumpWidget(
+          _wrap(
+            PassportHotelCard(
+              hotel: hotel,
+              stats: stats,
+              isWishlisted: false,
+              onToggleWishlist: () {},
+            ),
+          ),
+        );
+        expect(find.byType(CsImagePlaceholder), findsNothing);
+        final thumbnail = tester.widget<VenueThumbnail>(
+          find.byType(VenueThumbnail),
+        );
+        expect(thumbnail.imageUrl, hotel.coverImageUrl);
+      },
+    );
 
     testWidgets('renders with no Keys and no average rating', (tester) async {
       final stats = PassportVenueStats.from(HotelVenue(_hotel()), [

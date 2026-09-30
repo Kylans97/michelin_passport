@@ -118,7 +118,7 @@ class FriendVisitTile extends StatelessWidget {
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const VenueThumbnail(imageUrl: null, size: 52),
+                      VenueThumbnail(imageUrl: v.coverImageUrl, size: 52),
                       const SizedBox(width: CsSpacing.md),
                       Expanded(
                         child: Column(

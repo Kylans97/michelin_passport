@@ -39,7 +39,7 @@ class HotelRankingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return RankingEditorialCard(
       rank: rank,
-      imageUrl: null,
+      imageUrl: hotel.coverImageUrl,
       title: hotel.name,
       subtitle: _locationLabel(hotel),
       recognition: hotel.hasMichelinKeys

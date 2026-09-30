@@ -15,6 +15,11 @@ sealed class PassportVenue {
   /// ISO 3166-1 alpha-2 country code — what Passport's countries count and
   /// country filters key on.
   String get countryCode;
+
+  /// The venue's cover photo — restaurants_full/hotels_full.cover_photo_url.
+  /// Null for the large majority of venues; every renderer falls back to
+  /// the branded placeholder in that case.
+  String? get coverImageUrl;
 }
 
 class RestaurantVenue extends PassportVenue {
@@ -26,6 +31,9 @@ class RestaurantVenue extends PassportVenue {
 
   @override
   String get countryCode => restaurant.countryCode;
+
+  @override
+  String? get coverImageUrl => restaurant.coverImageUrl;
 }
 
 class HotelVenue extends PassportVenue {
@@ -37,4 +45,7 @@ class HotelVenue extends PassportVenue {
 
   @override
   String get countryCode => hotel.countryCode;
+
+  @override
+  String? get coverImageUrl => hotel.coverImageUrl;
 }

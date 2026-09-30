@@ -12,6 +12,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/core/widgets/cs_image_placeholder.dart';
 import 'package:michelin_passport/features/explore/models/explore_search_results.dart';
 import 'package:michelin_passport/features/explore/models/explore_search_type.dart';
 import 'package:michelin_passport/features/explore/widgets/explore_event_result_tile.dart';
@@ -28,6 +29,7 @@ Restaurant _restaurant({
   String cityName = 'Amsterdam',
   String countryName = 'Netherlands',
   String flagEmoji = '🇳🇱',
+  String? coverImageUrl,
 }) => Restaurant(
   id: id,
   restaurantCode: id,
@@ -39,6 +41,7 @@ Restaurant _restaurant({
   countryName: countryName,
   flagEmoji: flagEmoji,
   address: '1 Rue de Test',
+  coverImageUrl: coverImageUrl,
 );
 
 Hotel _hotel({
@@ -47,6 +50,7 @@ Hotel _hotel({
   String cityName = 'Amsterdam',
   String countryName = 'Netherlands',
   String flagEmoji = '🇳🇱',
+  String? coverImageUrl,
 }) => Hotel(
   id: id,
   hotelCode: id,
@@ -59,6 +63,7 @@ Hotel _hotel({
   address: '1 Rue de Test',
   hasMichelinRestaurant: false,
   restaurantCount: 0,
+  coverImageUrl: coverImageUrl,
 );
 
 Event _event({
@@ -231,6 +236,60 @@ void main() {
         );
         expect(find.byType(RestaurantTile), findsOneWidget);
         expect(find.byType(HotelTile), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'a restaurant/hotel with a cover photo renders it via Image.network, '
+      'not the branded placeholder — the Flore-shaped state once a venue '
+      'has a published photo',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            ExploreSearchResultsView(
+              results: ExploreSearchResults(
+                restaurants: [
+                  _restaurant(
+                    id: 'r1',
+                    coverImageUrl: 'https://example.com/restaurants/r1/0.jpg',
+                  ),
+                ],
+                hotels: [
+                  _hotel(
+                    id: 'h1',
+                    coverImageUrl: 'https://example.com/hotels/h1/0.jpg',
+                  ),
+                ],
+                events: const [],
+              ),
+              onTapEvent: (_) {},
+            ),
+          ),
+        );
+        expect(find.byType(CsImagePlaceholder), findsNothing);
+        expect(find.byType(Image), findsNWidgets(2));
+      },
+    );
+
+    testWidgets(
+      'a restaurant/hotel with no cover photo still renders the branded '
+      'placeholder — the long-term default state for the 1362 restaurants '
+      'with no published photo',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            ExploreSearchResultsView(
+              results: ExploreSearchResults(
+                restaurants: [_restaurant(id: 'r1')],
+                hotels: [_hotel(id: 'h1')],
+                events: const [],
+              ),
+              onTapEvent: (_) {},
+            ),
+          ),
+        );
+        expect(find.byType(Image), findsNothing);
+        expect(find.byType(CsImagePlaceholder), findsNWidgets(2));
       },
     );
 

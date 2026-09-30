@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/cs_spacing.dart';
-import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../core/widgets/cs_place_card.dart';
 import '../../../core/widgets/key_row.dart';
 import '../../../core/widgets/star_row.dart';
+import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../hotels/hotel_detail_screen.dart';
@@ -38,8 +38,11 @@ class WishlistRestaurantCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CsPlaceCard(
-    image: const CsImagePlaceholder(
-      borderRadius: BorderRadius.all(Radius.circular(CsRadius.medium)),
+    image: VenueThumbnail(
+      imageUrl: restaurant.coverImageUrl,
+      width: 96,
+      height: 96,
+      borderRadius: const BorderRadius.all(Radius.circular(CsRadius.medium)),
     ),
     title: restaurant.name,
     subtitle: _locationLabel(
@@ -76,8 +79,11 @@ class WishlistHotelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => CsPlaceCard(
-    image: const CsImagePlaceholder(
-      borderRadius: BorderRadius.all(Radius.circular(CsRadius.medium)),
+    image: VenueThumbnail(
+      imageUrl: hotel.coverImageUrl,
+      width: 96,
+      height: 96,
+      borderRadius: const BorderRadius.all(Radius.circular(CsRadius.medium)),
     ),
     title: hotel.name,
     subtitle: _locationLabel(

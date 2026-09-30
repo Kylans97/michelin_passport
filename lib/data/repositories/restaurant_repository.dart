@@ -51,6 +51,10 @@ import 'search_query.dart';
 // missing_listing_report_link.sql) — created_at has existed since the
 // initial schema, missing_listing_report_id is new but nullable, so
 // neither has a deployment-ordering hazard for existing rows.
+// cover_photo_url (20261006120000_add_cover_photo_url_to_full_views.sql) —
+// a LATERAL join onto restaurant_photos, resolved server-side once for
+// every caller of this constant rather than a second query per surface.
+// Null for the large majority of restaurants; see Restaurant.coverImageUrl.
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_name, region, country_code, country_name, flag_emoji, address, '
@@ -58,12 +62,31 @@ const restaurantFullColumns =
     'property_name, is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank, '
     'is_hall_of_fame, starts_on, ends_on, parent_venue_type, '
     'parent_venue_id, opening_weekdays, is_expired, status, status_since, '
-    'status_note, created_at, missing_listing_report_id';
+    'status_note, created_at, missing_listing_report_id, cover_photo_url';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);
 
   final SupabaseClient _client;
+
+  // Every published photo for one restaurant, in display_order — the
+  // Detail screen's own swipeable set. Deliberately NOT on
+  // restaurants_full/restaurantFullColumns: that view resolves only the
+  // single cover photo for every list-shaped surface (Explore, Wishlist,
+  // Passport, Friend activity, Rankings, Guides — a second query per row
+  // there would be real N+1), but the full ordered set is only ever
+  // needed for the one venue currently open on Detail — a second query
+  // there is the right shape, not a workaround.
+  Future<List<String>> getPhotoUrls(String restaurantId) async {
+    final rows = await _client
+        .from('restaurant_photos')
+        .select('image_url')
+        .eq('restaurant_id', restaurantId)
+        .order('display_order');
+    return [
+      for (final row in rows as List) (row as Map<String, dynamic>)['image_url'] as String,
+    ];
+  }
 
   // One restaurant by id — a cheap, single-row fetch against the same
   // restaurants_full columns getAll()/search() already use. Added for

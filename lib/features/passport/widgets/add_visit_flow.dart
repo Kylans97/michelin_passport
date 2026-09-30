@@ -704,7 +704,7 @@ class _VenueRow extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Row(
             children: [
-              const VenueThumbnail(imageUrl: null, size: 52, borderRadius: BorderRadius.all(Radius.circular(4))),
+              VenueThumbnail(imageUrl: venue.coverImageUrl, size: 52, borderRadius: const BorderRadius.all(Radius.circular(4))),
               const SizedBox(width: 12),
               Expanded(
                 child: Column(

@@ -9,14 +9,11 @@ import '../../../core/widgets/venue_thumbnail.dart';
 /// Guides landing page, separated by hairlines rather than boxed cards, so
 /// a long list of many venues stays quiet and scannable.
 ///
-/// Step 1B — PHOTO-READY: the leading slot is now [VenueThumbnail], the
-/// same photo-first thumbnail already used by Explore's RestaurantTile/
-/// HotelTile — [imageUrl] is null at every current call site (neither
-/// catalogue table carries a venue image yet, same as Explore's own
-/// today), which renders the branded [CsImagePlaceholder] as a fallback
-/// occupying the exact same frame a real photo will later fill. No new
-/// image infrastructure was built for this — [VenueThumbnail] already IS
-/// the "nullable imageUrl + fallback" seam this row needs.
+/// Step 1B — PHOTO-READY: the leading slot is [VenueThumbnail], the same
+/// photo-first thumbnail Explore's RestaurantTile/HotelTile use — every
+/// call site now passes the venue's own restaurants_full/hotels_full.
+/// cover_photo_url, which renders the branded [CsImagePlaceholder] as a
+/// fallback only for venues that have no published photo.
 ///
 /// Presentation-only: knows nothing about Restaurant, Hotel, stars, Keys,
 /// rank or Gault&Millau. Recognition is expressed through two independent,
@@ -45,9 +42,8 @@ class GuideVenueCard extends StatelessWidget {
   /// 2026" — recognition must never be gold-icon-only for accessibility.
   final String? recognitionSemanticLabel;
 
-  /// Null at every current call site (no catalogue table carries a venue
-  /// image yet) — the seam that lights up real photography the moment one
-  /// does, with zero further changes to this widget.
+  /// The venue's cover photo — restaurants_full/hotels_full.cover_photo_url.
+  /// Null renders the branded placeholder.
   final String? imageUrl;
 
   final VoidCallback onTap;

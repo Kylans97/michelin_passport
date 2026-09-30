@@ -32,18 +32,35 @@ import 'search_query.dart';
 // created_at/missing_listing_report_id (Fresh Finds, 20260924140000_add_
 // missing_listing_report_link.sql) — see restaurantFullColumns' own
 // matching comment.
+// cover_photo_url (20261006120000_add_cover_photo_url_to_full_views.sql) —
+// see restaurantFullColumns' own matching comment.
 const hotelFullColumns =
     'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
     'website_url, booking_url, has_michelin_restaurant, restaurant_count, '
     'worlds_50_best_rank, worlds_50_best_year, starts_on, ends_on, '
     'parent_venue_type, parent_venue_id, opening_weekdays, is_expired, '
-    'status, status_since, status_note, created_at, missing_listing_report_id';
+    'status, status_since, status_note, created_at, missing_listing_report_id, '
+    'cover_photo_url';
 
 class HotelRepository {
   HotelRepository(this._client);
 
   final SupabaseClient _client;
+
+  // Every published photo for one hotel, in display_order — see
+  // RestaurantRepository.getPhotoUrls' own doc comment for why this is
+  // deliberately not on hotels_full/hotelFullColumns.
+  Future<List<String>> getPhotoUrls(String hotelId) async {
+    final rows = await _client
+        .from('hotel_photos')
+        .select('image_url')
+        .eq('hotel_id', hotelId)
+        .order('display_order');
+    return [
+      for (final row in rows as List) (row as Map<String, dynamic>)['image_url'] as String,
+    ];
+  }
 
   // Full catalogue ordered by name.
   Future<List<Hotel>> getAll() async {

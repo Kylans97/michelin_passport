@@ -97,6 +97,11 @@ class Hotel {
   final String? stampArtworkUrl;
   final bool stampArtworkApproved;
 
+  // The hotel's cover photo — hotels_full.cover_photo_url
+  // (20261006120000_add_cover_photo_url_to_full_views.sql). See the
+  // identical field on Restaurant for full semantics.
+  final String? coverImageUrl;
+
   const Hotel({
     required this.id,
     required this.hotelCode,
@@ -129,6 +134,7 @@ class Hotel {
     this.missingListingReportId,
     this.stampArtworkUrl,
     this.stampArtworkApproved = false,
+    this.coverImageUrl,
   });
 
   /// True when the hotel currently holds a confirmed MICHELIN Key value.
@@ -189,5 +195,6 @@ class Hotel {
     missingListingReportId: json['missing_listing_report_id'] as String?,
     stampArtworkUrl: json['stamp_artwork_url'] as String?,
     stampArtworkApproved: (json['stamp_artwork_approved'] as bool?) ?? false,
+    coverImageUrl: json['cover_photo_url'] as String?,
   );
 }

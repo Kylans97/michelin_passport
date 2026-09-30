@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../../core/theme/cs_spacing.dart';
-import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../core/widgets/cs_place_card.dart';
 import '../../../core/widgets/star_row.dart';
+import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/restaurant.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../passport_view_model.dart';
@@ -52,8 +52,11 @@ class PassportRestaurantCard extends StatelessWidget {
     final avg = stats.averageRating;
 
     return CsPlaceCard(
-      image: const CsImagePlaceholder(
-        borderRadius: BorderRadius.all(Radius.circular(CsRadius.medium)),
+      image: VenueThumbnail(
+        imageUrl: restaurant.coverImageUrl,
+        width: 96,
+        height: 96,
+        borderRadius: const BorderRadius.all(Radius.circular(CsRadius.medium)),
       ),
       title: restaurant.name,
       subtitle: _locationLabel(restaurant),

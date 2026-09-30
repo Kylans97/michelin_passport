@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../models/passport_venue.dart';
 import '../friend_profile_all_visits_screen.dart';
 import '../friend_profile_data.dart';
 import '../friend_profile_screen.dart' show openVisitDetail;
@@ -92,7 +93,7 @@ class FriendProfileOverviewTab extends StatelessWidget {
 
 class _CommonBar extends StatelessWidget {
   final int count;
-  final List<dynamic> venues;
+  final List<PassportVenue> venues;
   final VoidCallback onTap;
 
   const _CommonBar({required this.count, required this.venues, required this.onTap});
@@ -122,8 +123,8 @@ class _CommonBar extends StatelessWidget {
                       Positioned(
                         left: i * 24.0,
                         child: RoundVenueThumbnail(
-                          photoUrl: null,
-                          venueName: shown[i].name as String,
+                          photoUrl: shown[i].coverImageUrl,
+                          venueName: shown[i].name,
                         ),
                       ),
                   ],

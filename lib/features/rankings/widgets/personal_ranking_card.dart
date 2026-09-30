@@ -42,7 +42,7 @@ class PersonalRankingCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return RankingEditorialCard(
       rank: rank,
-      imageUrl: null,
+      imageUrl: restaurant.coverImageUrl,
       title: restaurant.name,
       subtitle: _locationLabel(restaurant),
       recognition: restaurant.hasMichelinStar

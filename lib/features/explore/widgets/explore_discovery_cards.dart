@@ -59,7 +59,7 @@ class ExploreFeaturedEventCard extends StatelessWidget {
             children: [
               AspectRatio(
                 aspectRatio: 16 / 9,
-                child: _EventImage(imageUrl: event.imageUrl),
+                child: _DiscoveryImage(imageUrl: event.imageUrl),
               ),
               Padding(
                 padding: const EdgeInsets.all(CsSpacing.cardPadding),
@@ -112,19 +112,27 @@ class ExploreFeaturedEventCard extends StatelessWidget {
   }
 }
 
-class _EventImage extends StatelessWidget {
+// Shared image slot for every discovery card in this file (event, "Worth
+// the Journey", "Stay a Little Longer", Fresh Finds) — a real photo via
+// Image.network when [imageUrl] is populated, the branded
+// [CsImagePlaceholder] otherwise or on a failed load, same fallback
+// pattern as VenueThumbnail. Not VenueThumbnail itself: these cards each
+// have their own AspectRatio/fixed-size frame rather than VenueThumbnail's
+// own fixed square/rect shape.
+class _DiscoveryImage extends StatelessWidget {
   final String? imageUrl;
-  const _EventImage({required this.imageUrl});
+  final double logoScale;
+  const _DiscoveryImage({required this.imageUrl, this.logoScale = 0.3});
 
   @override
   Widget build(BuildContext context) {
     if (imageUrl == null || imageUrl!.isEmpty) {
-      return const CsImagePlaceholder(logoScale: 0.3);
+      return CsImagePlaceholder(logoScale: logoScale);
     }
     return Image.network(
       imageUrl!,
       fit: BoxFit.cover,
-      errorBuilder: (_, _, _) => const CsImagePlaceholder(logoScale: 0.3),
+      errorBuilder: (_, _, _) => CsImagePlaceholder(logoScale: logoScale),
     );
   }
 }
@@ -212,9 +220,12 @@ class ExploreDiscoveryRestaurantCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const AspectRatio(
+              AspectRatio(
                 aspectRatio: 4 / 3,
-                child: CsImagePlaceholder(logoScale: 0.32),
+                child: _DiscoveryImage(
+                  imageUrl: restaurant.coverImageUrl,
+                  logoScale: 0.32,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(CsSpacing.md),
@@ -300,14 +311,17 @@ class ExploreDiscoveryHotelCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const ClipRRect(
-                borderRadius: BorderRadius.all(
+              ClipRRect(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(CsRadius.medium),
                 ),
                 child: SizedBox(
                   width: 72,
                   height: 72,
-                  child: CsImagePlaceholder(logoScale: 0.34),
+                  child: _DiscoveryImage(
+                    imageUrl: hotel.coverImageUrl,
+                    logoScale: 0.34,
+                  ),
                 ),
               ),
               const SizedBox(width: CsSpacing.sm),
@@ -411,9 +425,12 @@ class ExploreFreshFindCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const AspectRatio(
+              AspectRatio(
                 aspectRatio: 4 / 3,
-                child: CsImagePlaceholder(logoScale: 0.32),
+                child: _DiscoveryImage(
+                  imageUrl: item.coverImageUrl,
+                  logoScale: 0.32,
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(CsSpacing.md),
