@@ -312,7 +312,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
 
           if (submission != null && submission.status != VenueAboutSubmissionStatus.approved) ...[
             const SizedBox(height: CsSpacing.md),
-            _StatusBanner(status: submission.status),
+            _StatusBanner(status: submission.status, reviewNote: submission.reviewNote),
           ],
 
           const SizedBox(height: CsSpacing.lg),
@@ -477,7 +477,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
 
 class _StatusBanner extends StatelessWidget {
   final VenueAboutSubmissionStatus status;
-  const _StatusBanner({required this.status});
+  final String? reviewNote;
+  const _StatusBanner({required this.status, this.reviewNote});
 
   @override
   Widget build(BuildContext context) {
@@ -493,14 +494,28 @@ class _StatusBanner extends StatelessWidget {
       ),
       VenueAboutSubmissionStatus.approved => (Icons.verified_outlined, ''),
     };
-    return Row(
+    // Same shape as _OpenSubmissionRow's own photo review_note line
+    // (icon+status row, then the reviewer's note plainly below it when
+    // one exists) — a rejection with no reason reaches the manager as a
+    // bare status and nothing to act on.
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(icon, color: AppColors.forestGreen, size: 18),
-        const SizedBox(width: CsSpacing.sm),
-        Expanded(
-          child: Text(text, style: CsTypography.metadata.copyWith(color: AppColors.taupe)),
+        Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(icon, color: AppColors.forestGreen, size: 18),
+            const SizedBox(width: CsSpacing.sm),
+            Expanded(
+              child: Text(text, style: CsTypography.metadata.copyWith(color: AppColors.taupe)),
+            ),
+          ],
         ),
+        if (status == VenueAboutSubmissionStatus.rejected &&
+            (reviewNote ?? '').trim().isNotEmpty) ...[
+          const SizedBox(height: 2),
+          Text(reviewNote!, style: CsTypography.metadata.copyWith(color: AppColors.taupe)),
+        ],
       ],
     );
   }

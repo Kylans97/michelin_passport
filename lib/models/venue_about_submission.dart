@@ -31,11 +31,19 @@ class VenueAboutSubmission {
   final VenueAboutSubmissionStatus status;
   final DateTime submittedAt;
 
+  /// The reviewer's own note on a rejected submission — null on anything
+  /// pending/approved, or when a reviewer rejected without leaving one.
+  /// Mirrors VenuePhotoSubmissionSummary.reviewNote exactly (same
+  /// column, same reasoning: a rejection with no reason reaches the
+  /// manager as a bare status and nothing else to act on).
+  final String? reviewNote;
+
   const VenueAboutSubmission({
     required this.id,
     required this.aboutText,
     required this.status,
     required this.submittedAt,
+    this.reviewNote,
   });
 
   factory VenueAboutSubmission.fromJson(Map<String, dynamic> json) => VenueAboutSubmission(
@@ -43,5 +51,6 @@ class VenueAboutSubmission {
     aboutText: json['about_text'] as String,
     status: VenueAboutSubmissionStatus.fromWire(json['status'] as String),
     submittedAt: DateTime.parse(json['submitted_at'] as String),
+    reviewNote: json['review_note'] as String?,
   );
 }

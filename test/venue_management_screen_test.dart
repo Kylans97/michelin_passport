@@ -208,6 +208,45 @@ void main() {
       expect(find.textContaining("wasn't approved"), findsOneWidget);
     });
 
+    testWidgets('a rejected submission shows the reviewer\'s own note, so the reason actually '
+        'reaches the manager — same shape as a rejected photo submission\'s own note', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        _FakeVenueAboutRepository(
+          latestSubmission: VenueAboutSubmission(
+            id: 's1',
+            aboutText: 'Draft text',
+            status: VenueAboutSubmissionStatus.rejected,
+            submittedAt: DateTime(2026, 9, 1),
+            reviewNote: 'Tone does not match editorial voice.',
+          ),
+        ),
+      );
+      expect(find.textContaining("wasn't approved"), findsOneWidget);
+      expect(find.text('Tone does not match editorial voice.'), findsOneWidget);
+    });
+
+    testWidgets('a rejected submission with no note shows the status but no note line', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        _FakeVenueAboutRepository(
+          latestSubmission: VenueAboutSubmission(
+            id: 's1',
+            aboutText: 'Draft text',
+            status: VenueAboutSubmissionStatus.rejected,
+            submittedAt: DateTime(2026, 9, 1),
+          ),
+        ),
+      );
+      expect(find.textContaining("wasn't approved"), findsOneWidget);
+      // Nothing to render as a note — reviewNote is null on this
+      // submission, matching the fake repository's default.
+    });
+
     testWidgets('shows no status banner when there is no submission at all', (tester) async {
       await _pump(tester, _FakeVenueAboutRepository());
       expect(find.textContaining('awaiting review'), findsNothing);

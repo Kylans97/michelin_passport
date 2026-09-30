@@ -52,7 +52,7 @@ class VenueAboutRepository {
     if (userId == null) return null;
     final row = await _client
         .from('venue_about_submissions')
-        .select('id, about_text, status, submitted_at')
+        .select('id, about_text, status, submitted_at, review_note')
         .eq('user_id', userId)
         .eq('venue_type', venueType)
         .eq('venue_id', venueId)
