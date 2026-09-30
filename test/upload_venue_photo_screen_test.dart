@@ -375,6 +375,38 @@ void main() {
       expect(find.textContaining('connection reset'), findsNothing);
     });
 
+    testWidgets(
+      'a permanent conflict (the repository\'s own StateError, e.g. a '
+      'pending replacement already exists) reads as permanent — its own '
+      'message shows instead of the generic "try again"',
+      (tester) async {
+        await _pump(
+          tester,
+          pickPhotos: _pickerReturning([_validBytes]),
+          repository: _FakeVenuePhotoSubmissionRepository(
+            submitError: StateError(
+              "A replacement for this photo is already awaiting review. "
+              "You can submit another once that one's been decided.",
+            ),
+          ),
+        );
+        await _tapChoose(tester);
+        await tester.ensureVisible(find.text('Submit for review'));
+        await tester.tap(find.text('Submit for review'));
+        await tester.pumpAndSettle();
+
+        expect(find.text('Could not submit this photo'), findsOneWidget);
+        expect(
+          find.text(
+            "A replacement for this photo is already awaiting review. "
+            "You can submit another once that one's been decided.",
+          ),
+          findsOneWidget,
+        );
+        expect(find.text('Please try again.'), findsNothing);
+      },
+    );
+
     testWidgets('at the photo cap, submitting is blocked until a replacement is chosen', (
       tester,
     ) async {

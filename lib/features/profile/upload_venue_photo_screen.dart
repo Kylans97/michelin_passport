@@ -79,6 +79,14 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
   int _failedCount = 0;
   String? _submitError;
 
+  // Distinct messages from failures the repository already translated
+  // into a UI-safe StateError (e.g. "a replacement for this photo is
+  // already awaiting review") — a permanent failure, retrying can't help.
+  // Failures of every other shape stay uncounted here, so _confirmation()
+  // can tell the two apart without this screen needing to know what
+  // every possible repository error means.
+  Set<String> _permanentFailureMessages = {};
+
   bool get _atCap => widget.publishedPhotos.length >= maxVenuePhotoCount;
 
   /// At cap, exactly one photo may be picked (it must name a replacement)
@@ -145,6 +153,7 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
     // AttendancePhotosSection's own established multi-upload loop.
     var successes = 0;
     var failures = 0;
+    final permanentMessages = <String>{};
     for (final photo in _staged) {
       try {
         await _repo.submit(
@@ -155,6 +164,11 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
           replacesPhotoId: _staged.length == 1 ? _replacesPhotoId : null,
         );
         successes++;
+      } on StateError catch (e) {
+        // The repository's own conflict translation — a permanent
+        // failure, distinct from a generic/transient one below.
+        failures++;
+        permanentMessages.add(e.message);
       } catch (_) {
         failures++;
       }
@@ -165,6 +179,7 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
       _submitted = true;
       _submittedCount = successes;
       _failedCount = failures;
+      _permanentFailureMessages = permanentMessages;
     });
   }
 
@@ -191,15 +206,25 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
     final noun = total == 1 ? 'photo' : 'photos';
     final String title;
     final String subtitle;
+    // A permanent failure (the repository's own conflict translation —
+    // e.g. a replacement for this exact photo is already pending) reads
+    // as permanent: its own message replaces "please try again", since
+    // trying again can't succeed until that pending review is decided.
+    // Any failure with no permanent message attached is left exactly as
+    // before — still generic, still "try again", because it might be.
+    final permanentMessage = _permanentFailureMessages.length == 1
+        ? _permanentFailureMessages.first
+        : null;
     if (_failedCount == 0) {
       title = total == 1 ? 'Submitted for review' : 'Submitted $total photos for review';
       subtitle = "We'll review $noun submitted and let you know here once we've made a decision.";
     } else if (_submittedCount == 0) {
       title = total == 1 ? 'Could not submit this photo' : 'Could not submit these photos';
-      subtitle = 'Please try again.';
+      subtitle = permanentMessage ?? 'Please try again.';
     } else {
       title = 'Submitted $_submittedCount of $total photos';
-      subtitle = '$_failedCount could not be submitted — please try again for those.';
+      subtitle = permanentMessage ??
+          '$_failedCount could not be submitted — please try again for those.';
     }
     return Center(
       child: Padding(

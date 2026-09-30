@@ -44,6 +44,38 @@ class VenuePhotoRejectedException implements Exception {
   String toString() => rejection.message;
 }
 
+/// Maps a 23505 (unique_violation) from a submission insert to the one
+/// UI-safe message this repository needs — `null` for anything else (any
+/// other constraint, or not a 23505 at all), so [submit] knows to rethrow
+/// rather than substitute a message. Mirrors
+/// venue_claim_repository.dart's `claimConflictMessage` exactly: a
+/// top-level function, not a private method, and `@visibleForTesting`,
+/// for the same reason — this repository's own [submit] needs a real
+/// signed-in [SupabaseClient] with Storage access to reach this code any
+/// other way, and this codebase has no pattern for faking that in a test.
+///
+/// Postgres/PostgREST put the constraint name only in
+/// [PostgrestException.message] — there is no separate structured
+/// "constraint" field — so matching against it is the only way to tell
+/// this apart from an unrelated 23505.
+@visibleForTesting
+String? photoSubmissionConflictMessage(PostgrestException e) {
+  if (e.code != '23505') return null;
+  if (e.message.contains(
+    'venue_photo_submissions_one_pending_replacement_uidx',
+  )) {
+    // A replacement for this exact photo — theirs or someone else's — is
+    // already pending review. Added by
+    // 20261006130000_add_venue_photo_submissions_replacement_uidx.sql.
+    return "A replacement for this photo is already awaiting review. "
+        "You can submit another once that one's been decided.";
+  }
+  // Any other 23505 — an unrelated constraint — is deliberately left
+  // unmapped so submit() rethrows it unchanged rather than showing a
+  // conflict message for a conflict that isn't one.
+  return null;
+}
+
 final _random = Random();
 
 class VenuePhotoSubmissionRepository {
@@ -119,7 +151,9 @@ class VenuePhotoSubmissionRepository {
       // Same "clean up the orphaned object, still surface the original
       // error" shape as PhotoRepository.uploadPhoto — a rejected
       // near-duplicate or a missing-replacement error must not leave a
-      // stray file in the bucket behind it.
+      // stray file in the bucket behind it. Cleanup and logging happen
+      // for every error, including the translated conflict below — only
+      // what's thrown to the caller differs.
       try {
         await _client.storage
             .from(venuePhotoSubmissionsBucket)
@@ -130,6 +164,16 @@ class VenuePhotoSubmissionRepository {
       }
       debugPrint('VENUE PHOTO SUBMIT ERROR: $error');
       debugPrintStack(stackTrace: stackTrace);
+      // A permanent conflict (someone's replacement for this exact photo
+      // is already pending) surfaces as a plain StateError carrying the
+      // UI-safe message — same convention venue_claim_repository.dart's
+      // claimConflictMessage established, read back via `e is StateError
+      // ? e.message : ...` at the call site. Anything else rethrows
+      // unchanged, exactly as before this change.
+      if (error is PostgrestException) {
+        final message = photoSubmissionConflictMessage(error);
+        if (message != null) throw StateError(message);
+      }
       rethrow;
     }
   }
