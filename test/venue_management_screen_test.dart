@@ -5,11 +5,15 @@
 // Supabase.instance.client when a fake is injected.
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart' as dotenv_pkg;
 import 'package:flutter_test/flutter_test.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_about_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_photo_submission_repository.dart';
 import 'package:michelin_passport/features/profile/venue_management_screen.dart';
+import 'package:michelin_passport/features/restaurants/restaurant_detail_screen.dart';
 import 'package:michelin_passport/models/managed_venue.dart';
 import 'package:michelin_passport/models/private_chef.dart';
 import 'package:michelin_passport/models/published_venue_photo.dart';
@@ -116,6 +120,19 @@ ManagedVenue _venue() => ManagedRestaurant(
   Restaurant.fromJson({'id': 'r1', 'name': 'Flore Amsterdam', 'city_name': 'Amsterdam'}),
 );
 
+class _FakeRestaurantRepository extends RestaurantRepository {
+  _FakeRestaurantRepository({this.result, this.error}) : super(_dummyClient());
+
+  final Restaurant? result;
+  final Object? error;
+
+  @override
+  Future<Restaurant?> getById(String id) async {
+    if (error != null) throw error!;
+    return result;
+  }
+}
+
 Future<void> _pump(
   WidgetTester tester,
   VenueAboutRepository repo, {
@@ -135,6 +152,25 @@ Future<void> _pump(
 }
 
 void main() {
+  // Only the "Preview my page" group below actually needs this: tapping
+  // the button navigates for real, so the REAL RestaurantDetailScreen it
+  // pushes builds for real too (unlike every other pushed screen in this
+  // file, none of which touch Supabase.instance.client in their own
+  // build path) — Supabase.instance.client throws without this. Doesn't
+  // affect the rest of the file: every other test's fake repositories
+  // wrap their own directly-constructed SupabaseClient, never the
+  // singleton this initializes. Same pattern venue_preview_test.dart
+  // already established.
+  setUpAll(() async {
+    SharedPreferences.setMockInitialValues({});
+    await dotenv_pkg.dotenv.load(fileName: '.env');
+    await Supabase.initialize(
+      url: dotenv_pkg.dotenv.env['SUPABASE_URL']!,
+      // ignore: deprecated_member_use
+      anonKey: dotenv_pkg.dotenv.env['SUPABASE_ANON_KEY']!,
+    );
+  });
+
   group('VenueManagementScreen — loading/error', () {
     testWidgets('shows a loading spinner before the future resolves', (tester) async {
       final repo = _FakeVenueAboutRepository();
@@ -601,6 +637,71 @@ void main() {
       await tester.tap(find.text('Add a photo'));
       expect(observer.pushed.length, 1);
     });
+  });
+
+  group('VenueManagementScreen — Preview my page, fresh venue re-fetch', () {
+    Future<RestaurantDetailScreen> openPreviewAndCapture(
+      WidgetTester tester, {
+      required RestaurantRepository restaurantRepo,
+    }) async {
+      final observer = _RecordingNavigatorObserver();
+      await tester.pumpWidget(
+        MaterialApp(
+          navigatorObservers: [observer],
+          home: VenueManagementScreen(
+            venue: _venue(),
+            aboutRepo: _FakeVenueAboutRepository(),
+            photoRepo: _FakeVenuePhotoSubmissionRepository(),
+            restaurantRepo: restaurantRepo,
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      observer.pushed.clear();
+      await tester.ensureVisible(find.text('Preview my page'));
+      await tester.tap(find.text('Preview my page'));
+      await tester.pumpAndSettle();
+
+      final route = observer.pushed.single as MaterialPageRoute;
+      return route.builder(tester.element(find.byType(Navigator)))
+          as RestaurantDetailScreen;
+    }
+
+    testWidgets(
+      'the re-fetch succeeding shows the freshly fetched venue, not the '
+      "cached one My Venues loaded — and marks the preview not stale",
+      (tester) async {
+        final fresh = Restaurant.fromJson({
+          'id': 'r1',
+          'name': 'Flore Amsterdam (renamed)',
+          'city_name': 'Amsterdam',
+        });
+        final screen = await openPreviewAndCapture(
+          tester,
+          restaurantRepo: _FakeRestaurantRepository(result: fresh),
+        );
+
+        expect(screen.restaurant.name, 'Flore Amsterdam (renamed)');
+        expect(screen.previewIsStale, isFalse);
+      },
+    );
+
+    testWidgets(
+      'the re-fetch failing falls back to the cached venue rather than '
+      'aborting the preview — and marks it stale so that is disclosed on '
+      'the preview screen itself, not silently shown as current',
+      (tester) async {
+        final screen = await openPreviewAndCapture(
+          tester,
+          restaurantRepo: _FakeRestaurantRepository(
+            error: Exception('connection reset'),
+          ),
+        );
+
+        expect(screen.restaurant.name, 'Flore Amsterdam');
+        expect(screen.previewIsStale, isTrue);
+      },
+    );
   });
 }
 

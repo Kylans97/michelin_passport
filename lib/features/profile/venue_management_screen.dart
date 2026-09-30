@@ -6,6 +6,9 @@ import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/subtle_text_action.dart';
+import '../../data/repositories/hotel_repository.dart';
+import '../../data/repositories/private_chef_repository.dart';
+import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/venue_photo_submission_repository.dart';
 import '../../models/managed_venue.dart';
@@ -65,11 +68,22 @@ class VenueManagementScreen extends StatefulWidget {
   final VenueAboutRepository? aboutRepo;
   final VenuePhotoSubmissionRepository? photoRepo;
 
+  // Owner preview only — the fresh venue re-fetch _openPreview does
+  // alongside its existing photo/about-text fetches. Same DI-seam
+  // convention as the two above, not three separate ones this screen
+  // otherwise has no use for.
+  final RestaurantRepository? restaurantRepo;
+  final HotelRepository? hotelRepo;
+  final PrivateChefRepository? privateChefRepo;
+
   const VenueManagementScreen({
     super.key,
     required this.venue,
     this.aboutRepo,
     this.photoRepo,
+    this.restaurantRepo,
+    this.hotelRepo,
+    this.privateChefRepo,
   });
 
   @override
@@ -97,6 +111,11 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   late final _aboutRepo = widget.aboutRepo ?? VenueAboutRepository(Supabase.instance.client);
   late final _photoRepo =
       widget.photoRepo ?? VenuePhotoSubmissionRepository(Supabase.instance.client);
+  late final _restaurantRepo =
+      widget.restaurantRepo ?? RestaurantRepository(Supabase.instance.client);
+  late final _hotelRepo = widget.hotelRepo ?? HotelRepository(Supabase.instance.client);
+  late final _privateChefRepo =
+      widget.privateChefRepo ?? PrivateChefRepository(Supabase.instance.client);
 
   late Future<_AboutState> _future;
   final _textCtrl = TextEditingController();
@@ -188,6 +207,39 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
     if (added == true) _loadPhotos();
   }
 
+  // Re-fetches the venue itself fresh, for _openPreview below. widget.venue
+  // is whatever My Venues last loaded — could be minutes old by the time
+  // a manager taps Preview, and every field it carries (name, address,
+  // stars/Keys, status, cover-image fallback) would otherwise be shown as
+  // current when it might not be. Returns null on ANY failure — a thrown
+  // error or a legitimately-absent row alike — so the caller has one
+  // simple fallback path rather than needing to tell the two apart.
+  //
+  // getPrivateChefById filters to publication_status = 'published' (the
+  // Restaurant/Hotel getById methods have no such filter) — a manager's
+  // own chef profile sitting in 'draft' at the moment they open Preview
+  // would come back null here too, read the same as any other refetch
+  // failure: falls back to the cached model, marked stale. That's an
+  // honest label for "not fresh," even though the underlying reason here
+  // is narrower ("not published"), not a network failure.
+  Future<ManagedVenue?> _refetchVenue(ManagedVenue venue) async {
+    try {
+      return switch (venue) {
+        ManagedRestaurant() => await _restaurantRepo
+            .getById(venue.id)
+            .then((r) => r == null ? null : ManagedRestaurant(r)),
+        ManagedHotel() => await _hotelRepo
+            .getById(venue.id)
+            .then((h) => h == null ? null : ManagedHotel(h)),
+        ManagedPrivateChef() => await _privateChefRepo
+            .getPrivateChefById(venue.id)
+            .then((c) => c == null ? null : ManagedPrivateChef(c)),
+      };
+    } catch (_) {
+      return null;
+    }
+  }
+
   // Reached from the header, not the photos/about sections specifically —
   // it renders the manager's PROPOSED future state (pending about text if
   // any, published + pending photos merged via mergePreviewPhotoOrder),
@@ -197,6 +249,12 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   // time a manager taps Preview, and resolveDisplayUrls' signed URLs
   // expire in an hour — re-entering the preview later must resolve fresh
   // ones, not reuse whatever was signed at this screen's own last load.
+  // The venue itself is included in that same "fetch fresh" contract via
+  // _refetchVenue above — a failure there doesn't abort the preview the
+  // way a photos/about-text failure below does; it falls back to the
+  // cached model and says so on the preview screen itself
+  // (OwnerPreviewMarker's subtitle), since falling back is acceptable but
+  // showing stale data as if it were fresh is not.
   Future<void> _openPreview() async {
     if (_previewLoading) return;
     setState(() {
@@ -204,25 +262,30 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       _previewError = null;
     });
     try {
-      final venue = widget.venue;
+      final cachedVenue = widget.venue;
+      final freshVenueFuture = _refetchVenue(cachedVenue);
       final publishedFuture = _photoRepo.loadPublishedPhotos(
-        venueType: venue.venueTypeWireValue,
-        venueId: venue.id,
+        venueType: cachedVenue.venueTypeWireValue,
+        venueId: cachedVenue.id,
       );
       final openSubmissionsFuture = _photoRepo.loadMyOpenSubmissions(
-        venueType: venue.venueTypeWireValue,
-        venueId: venue.id,
+        venueType: cachedVenue.venueTypeWireValue,
+        venueId: cachedVenue.id,
       );
       final pendingAboutFuture = _aboutRepo.loadMyLatestSubmission(
-        venueType: venue.venueTypeWireValue,
-        venueId: venue.id,
+        venueType: cachedVenue.venueTypeWireValue,
+        venueId: cachedVenue.id,
       );
+      final freshVenue = await freshVenueFuture;
       final published = await publishedFuture;
       final openSubmissions = await openSubmissionsFuture;
       final pendingAbout = await pendingAboutFuture;
       final signedUrls = await _photoRepo.resolveDisplayUrls([
         for (final s in openSubmissions) s.storagePath,
       ]);
+
+      final isStale = freshVenue == null;
+      final venue = freshVenue ?? cachedVenue;
 
       final mergedPhotos = mergePreviewPhotoOrder(
         published: published,
@@ -251,12 +314,14 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
               aboutTextOverride: aboutOverride,
               photoUrlsOverride: [for (final p in mergedPhotos) p.imageUrl],
               isPreview: true,
+              previewIsStale: isStale,
             ),
             ManagedHotel(:final hotel) => HotelDetailScreen(
               hotel: hotel,
               aboutTextOverride: aboutOverride,
               photoUrlsOverride: [for (final p in mergedPhotos) p.imageUrl],
               isPreview: true,
+              previewIsStale: isStale,
             ),
             ManagedPrivateChef(:final chef) => PrivateChefDetailScreen(
               chefId: chef.id,
@@ -272,6 +337,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                   ),
               ],
               isPreview: true,
+              previewIsStale: isStale,
             ),
           },
         ),

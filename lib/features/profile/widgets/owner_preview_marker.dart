@@ -19,7 +19,17 @@ import '../../../core/theme/cs_typography.dart';
 class OwnerPreviewMarker extends StatelessWidget {
   final Widget child;
 
-  const OwnerPreviewMarker({super.key, required this.child});
+  /// Set only when the preview's fresh venue re-fetch failed and it fell
+  /// back to the cached model VenueManagementScreen already had — e.g.
+  /// "Showing your last saved details". Falling back is acceptable;
+  /// showing stale data as if it were fresh is not, so this is how that
+  /// fallback says so on the one screen the manager is actually looking
+  /// at, rather than a toast they may have missed before this screen
+  /// opened. `null` (the ordinary case — the re-fetch succeeded) renders
+  /// just the plain "PREVIEW" pill, unchanged.
+  final String? subtitle;
+
+  const OwnerPreviewMarker({super.key, required this.child, this.subtitle});
 
   @override
   Widget build(BuildContext context) => Stack(
@@ -42,12 +52,24 @@ class OwnerPreviewMarker extends StatelessWidget {
                 color: AppColors.deepGreen.withValues(alpha: 0.85),
                 borderRadius: BorderRadius.circular(999),
               ),
-              child: Text(
-                'PREVIEW',
-                style: CsTypography.eyebrow.copyWith(
-                  color: AppColors.textOnDark,
-                  letterSpacing: 1.2,
-                ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'PREVIEW',
+                    style: CsTypography.eyebrow.copyWith(
+                      color: AppColors.textOnDark,
+                      letterSpacing: 1.2,
+                    ),
+                  ),
+                  if (subtitle != null)
+                    Text(
+                      subtitle!,
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.textOnDark,
+                      ),
+                    ),
+                ],
               ),
             ),
           ),

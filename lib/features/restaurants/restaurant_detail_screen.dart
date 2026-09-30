@@ -79,12 +79,21 @@ class RestaurantDetailScreen extends StatefulWidget {
   /// unaffected.
   final bool isPreview;
 
+  /// Owner preview only. True when the caller's own fresh re-fetch of
+  /// this venue failed and it fell back to a cached model instead —
+  /// [restaurant] above may then be minutes old. Rendered as a second
+  /// line on the PREVIEW pill (OwnerPreviewMarker) so that's disclosed on
+  /// the screen itself rather than silently shown as current. Ignored
+  /// when [isPreview] is false.
+  final bool previewIsStale;
+
   const RestaurantDetailScreen({
     super.key,
     required this.restaurant,
     this.aboutTextOverride,
     this.photoUrlsOverride,
     this.isPreview = false,
+    this.previewIsStale = false,
   });
 
   @override
@@ -812,7 +821,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       ),
     );
     return widget.isPreview
-        ? OwnerPreviewMarker(child: scaffold)
+        ? OwnerPreviewMarker(
+            subtitle: widget.previewIsStale ? 'Showing your last saved details' : null,
+            child: scaffold,
+          )
         : scaffold;
   }
 }

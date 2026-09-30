@@ -65,12 +65,17 @@ class HotelDetailScreen extends StatefulWidget {
   /// events on the restaurant side — not gated by this flag either.
   final bool isPreview;
 
+  /// Owner preview only — see RestaurantDetailScreen.previewIsStale's own
+  /// doc comment, identical reasoning.
+  final bool previewIsStale;
+
   const HotelDetailScreen({
     super.key,
     required this.hotel,
     this.aboutTextOverride,
     this.photoUrlsOverride,
     this.isPreview = false,
+    this.previewIsStale = false,
   });
 
   @override
@@ -691,7 +696,10 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       ),
     );
     return widget.isPreview
-        ? OwnerPreviewMarker(child: scaffold)
+        ? OwnerPreviewMarker(
+            subtitle: widget.previewIsStale ? 'Showing your last saved details' : null,
+            child: scaffold,
+          )
         : scaffold;
   }
 }

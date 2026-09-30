@@ -96,6 +96,10 @@ class PrivateChefDetailScreen extends StatefulWidget {
   /// gated by this flag; only follow-state (personal) is.
   final bool isPreview;
 
+  /// Owner preview only — see RestaurantDetailScreen.previewIsStale's own
+  /// doc comment, identical reasoning.
+  final bool previewIsStale;
+
   const PrivateChefDetailScreen({
     super.key,
     required this.chefId,
@@ -103,6 +107,7 @@ class PrivateChefDetailScreen extends StatefulWidget {
     this.aboutTextOverride,
     this.photosOverride,
     this.isPreview = false,
+    this.previewIsStale = false,
   });
 
   @override
@@ -450,7 +455,10 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       ),
     );
     return widget.isPreview
-        ? OwnerPreviewMarker(child: scaffold)
+        ? OwnerPreviewMarker(
+            subtitle: widget.previewIsStale ? 'Showing your last saved details' : null,
+            child: scaffold,
+          )
         : scaffold;
   }
 
