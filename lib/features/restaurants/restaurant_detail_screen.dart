@@ -18,6 +18,7 @@ import '../../core/widgets/venue_about_section.dart';
 import '../../core/widgets/venue_lifecycle_banner.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
+import '../profile/widgets/owner_preview_marker.dart';
 import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
@@ -49,7 +50,42 @@ const _signInMessage = 'Sign in to save visits and wishlist restaurants.';
 class RestaurantDetailScreen extends StatefulWidget {
   final Restaurant restaurant;
 
-  const RestaurantDetailScreen({super.key, required this.restaurant});
+  /// Owner preview only. When supplied, replaces the live approved about
+  /// text (venue_about_current) and skips that fetch entirely — a
+  /// manager's own pending submission, or a test's fixture text. Null
+  /// (every existing call site) is the live page, unchanged.
+  final String? aboutTextOverride;
+
+  /// Owner preview only. When supplied, replaces the venue's own
+  /// published photo set and skips that fetch entirely — see
+  /// mergePreviewPhotoOrder (venue_preview_photo_merge.dart) for how a
+  /// preview caller builds this from published + pending photos. Null is
+  /// the live page, unchanged.
+  final List<String>? photoUrlsOverride;
+
+  /// Owner preview only. Turns off what belongs to the *viewer*, not what
+  /// belongs to the venue: personal state (visits, wishlisted, following)
+  /// is meaningless when previewing your own page, so it's skipped
+  /// entirely rather than fetched and shown. Venue-level content a real
+  /// visitor genuinely sees — award history, hosted events — is
+  /// deliberately NOT gated by this flag; hiding it would make the
+  /// preview an inaccurate copy of the live page, which is the one
+  /// failure mode this whole feature exists to avoid. The mutating
+  /// personal-state actions (Wishlist, Follow, Add visit, Plan visit)
+  /// stay visible — hiding them would be the same inaccuracy — but become
+  /// inert: each early-returns before touching any repository, so a
+  /// manager tapping their own Wishlist heart from inside a preview
+  /// changes nothing. Defaults to false; every existing call site is
+  /// unaffected.
+  final bool isPreview;
+
+  const RestaurantDetailScreen({
+    super.key,
+    required this.restaurant,
+    this.aboutTextOverride,
+    this.photoUrlsOverride,
+    this.isPreview = false,
+  });
 
   @override
   State<RestaurantDetailScreen> createState() => _RestaurantDetailScreenState();
@@ -129,11 +165,23 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   @override
   void initState() {
     super.initState();
+    // Award history/hosted events are venue-level content a real visitor
+    // sees, so they always load, preview or not — only _loadPersonalState
+    // itself is gated (see its own doc comment for why: isPreview only
+    // turns off what belongs to the viewer).
     _loadPersonalState();
     _checkAwardHistory();
     _loadHostedEvents();
-    _loadAboutText();
-    _loadPhotos();
+    if (widget.aboutTextOverride != null) {
+      _aboutText = widget.aboutTextOverride;
+    } else {
+      _loadAboutText();
+    }
+    if (widget.photoUrlsOverride != null) {
+      _photoUrls = widget.photoUrlsOverride!;
+    } else {
+      _loadPhotos();
+    }
   }
 
   Future<void> _loadPhotos() async {
@@ -206,9 +254,13 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   }
 
   Future<void> _loadPersonalState() async {
-    final uid = _userId;
+    // Preview: personal state (visits/wishlisted/following) is meaningless
+    // when previewing your own page — skipped entirely rather than
+    // fetched, same treatment as not being signed in below.
+    final uid = widget.isPreview ? null : _userId;
     if (uid == null) {
-      // Not signed in: nothing to load, catalogue browsing stays available.
+      // Not signed in (or previewing): nothing to load, catalogue browsing
+      // stays available.
       setState(() => _loadingPersonalState = false);
       return;
     }
@@ -279,6 +331,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   }
 
   Future<void> _toggleWishlist() async {
+    // Preview: the heart stays visible (a visitor sees it) but does
+    // nothing — see widget.isPreview's own doc comment.
+    if (widget.isPreview) return;
     final uid = _userId;
     if (uid == null) {
       _showSnack(_signInMessage, isError: true);
@@ -312,6 +367,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // (unchanged) state. Analytics fires only after the write succeeds, per
   // AnalyticsService.track's own mandatory successful-write rule.
   Future<void> _toggleFollow() async {
+    // Preview: same as _toggleWishlist — inert, not hidden.
+    if (widget.isPreview) return;
     final uid = _userId;
     if (uid == null) {
       _showSnack(_signInMessage, isError: true);
@@ -361,6 +418,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   }
 
   Future<void> _openAddVisitSheet() async {
+    // Preview: inert — no sheet, no write. Opening the sheet at all would
+    // let a manager go on to actually save a visit from inside a preview,
+    // which is exactly the "submit/edit/change" this screen must never
+    // allow here.
+    if (widget.isPreview) return;
     final uid = _userId;
     if (uid == null) {
       _showSnack(_signInMessage, isError: true);
@@ -443,6 +505,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   }
 
   Future<void> _openPlanVisit() async {
+    // Preview: inert — see _openAddVisitSheet's own comment.
+    if (widget.isPreview) return;
     final uid = _userId;
     if (uid == null) {
       _showSnack(_signInMessage, isError: true);
@@ -538,7 +602,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     // yet. See _aboutText's own doc comment.
     final aboutText = _aboutText;
 
-    return Scaffold(
+    final scaffold = Scaffold(
       backgroundColor: AppColors.ivory,
       body: CustomScrollView(
         slivers: [
@@ -747,5 +811,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         ],
       ),
     );
+    return widget.isPreview
+        ? OwnerPreviewMarker(child: scaffold)
+        : scaffold;
   }
 }

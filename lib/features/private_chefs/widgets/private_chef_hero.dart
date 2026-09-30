@@ -57,6 +57,14 @@ class PrivateChefHero extends StatefulWidget {
   final bool followBusy;
   final VoidCallback? onTapFollow;
 
+  /// Owner preview only. The Follow control (via [onTapFollow] already
+  /// being a no-op supplied by the caller in preview mode) needs no
+  /// change here — but the report-photo action is hardcoded inside this
+  /// widget, not externalised as a callback, so it needs its own flag to
+  /// become inert: stays visible (a visitor sees it), does nothing when
+  /// tapped. Defaults to false; every existing call site is unaffected.
+  final bool isPreview;
+
   const PrivateChefHero({
     super.key,
     required this.displayName,
@@ -68,6 +76,7 @@ class PrivateChefHero extends StatefulWidget {
     this.isFollowing = false,
     this.followBusy = false,
     this.onTapFollow,
+    this.isPreview = false,
   });
 
   @override
@@ -308,11 +317,18 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
                 child: SafeArea(
                   top: false,
                   child: _ReportPhotoButton(
-                    onTap: () => showReportSheet(
-                      context,
-                      contentType: ReportContentType.photo,
-                      contentId: photos[_pageIndex].id,
-                    ),
+                    // Preview: stays visible (a visitor sees it) but does
+                    // nothing — see widget.isPreview's own doc comment.
+                    // Reporting a photo writes a content_reports row,
+                    // exactly the "submit/edit/change" this screen must
+                    // never allow from inside a preview.
+                    onTap: widget.isPreview
+                        ? () {}
+                        : () => showReportSheet(
+                            context,
+                            contentType: ReportContentType.photo,
+                            contentId: photos[_pageIndex].id,
+                          ),
                   ),
                 ),
               ),

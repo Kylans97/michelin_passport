@@ -148,6 +148,22 @@ stop and say so rather than working around it.
 - A manager may change only `display_order` on their venue's published
   photos. A `BEFORE UPDATE` trigger enforces that restriction, since RLS
   itself cannot restrict which columns an update touches.
+- A manager's "Preview my page" (`VenueManagementScreen._openPreview`)
+  renders the **real** `RestaurantDetailScreen`/`HotelDetailScreen`/
+  `PrivateChefDetailScreen`, given their pending content via optional
+  override params (`aboutTextOverride`, `photoUrlsOverride`/
+  `photosOverride`, `isPreview`) — never a separate replica screen, so it
+  cannot drift from what a visitor actually sees. `isPreview` only skips
+  *personal* state (visits/stays/wishlisted/following); venue-level
+  content (award history, hosted events, linked hotel/restaurants, chef
+  history/education) always loads live, and mutating controls stay
+  visible but inert rather than hidden.
+- `VenueDetailHero` (Restaurant/Hotel), `PrivateChefHero`, and
+  `EventDetailHero` stay three separate widgets — **settled, do not
+  unify**. Each already diverges in chrome, data shape and interaction
+  (AppBar presence, gallery vs. single cover, differing action rows), and
+  a forced shared hero would trade that clarity for an abstraction with
+  no real reuse behind it.
 
 ### Out of scope
 No Bib Gourmand or unstarred MICHELIN Guide entries. No Green Star in award

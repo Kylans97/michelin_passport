@@ -26,12 +26,23 @@ class VenuePhotoSubmissionSummary {
   final String? reviewNote;
   final DateTime submittedAt;
 
+  /// The published photo this submission will replace once approved, or
+  /// null when the venue was under the 5-photo cap at submission time —
+  /// mirrors venue_photo_submissions.replaces_photo_id exactly (already
+  /// existed on the table; this is the first client-side reader of it).
+  /// Not shown anywhere in VenueManagementScreen's own UI today — added
+  /// so the owner preview's photo-order merge can mirror
+  /// approve_venue_photo's own swap-vs-append rule (see
+  /// venue_preview_photo_merge.dart).
+  final String? replacesPhotoId;
+
   const VenuePhotoSubmissionSummary({
     required this.id,
     required this.storagePath,
     required this.status,
     this.reviewNote,
     required this.submittedAt,
+    this.replacesPhotoId,
   });
 
   factory VenuePhotoSubmissionSummary.fromJson(Map<String, dynamic> json) =>
@@ -41,5 +52,6 @@ class VenuePhotoSubmissionSummary {
         status: VenuePhotoSubmissionStatus.fromWire(json['status'] as String),
         reviewNote: json['review_note'] as String?,
         submittedAt: DateTime.parse(json['submitted_at'] as String),
+        replacesPhotoId: json['replaces_photo_id'] as String?,
       );
 }

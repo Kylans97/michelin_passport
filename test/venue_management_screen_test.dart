@@ -320,6 +320,7 @@ void main() {
       var calls = 0;
       await _pump(tester, _FakeVenueAboutRepository(onSubmit: (_) => calls++));
       await tester.enterText(find.byType(TextField), '');
+      await tester.ensureVisible(find.text('Submit for review'));
       await tester.tap(find.text('Submit for review'));
       await tester.pump();
       expect(find.text('Write something before submitting.'), findsOneWidget);
@@ -334,6 +335,7 @@ void main() {
         _FakeVenueAboutRepository(onSubmit: (call) => received = call),
       );
       await tester.enterText(find.byType(TextField), 'A new description of the venue.');
+      await tester.ensureVisible(find.text('Submit for review'));
       await tester.tap(find.text('Submit for review'));
       await tester.pumpAndSettle();
 
@@ -350,6 +352,7 @@ void main() {
         _FakeVenueAboutRepository(currentText: 'Old approved text', onSubmit: (_) {}),
       );
       await tester.enterText(find.byType(TextField), 'Brand new draft.');
+      await tester.ensureVisible(find.text('Submit for review'));
       await tester.tap(find.text('Submit for review'));
       await tester.pumpAndSettle();
 
@@ -362,6 +365,7 @@ void main() {
     ) async {
       await _pump(tester, _FakeVenueAboutRepository(submitError: Exception('connection reset')));
       await tester.enterText(find.byType(TextField), 'Some text');
+      await tester.ensureVisible(find.text('Submit for review'));
       await tester.tap(find.text('Submit for review'));
       await tester.pumpAndSettle();
       expect(find.text('Could not submit. Please try again.'), findsOneWidget);

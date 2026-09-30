@@ -16,6 +16,7 @@ import '../../core/widgets/venue_about_section.dart';
 import '../../core/widgets/venue_lifecycle_banner.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
+import '../profile/widgets/owner_preview_marker.dart';
 import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
@@ -50,7 +51,27 @@ const _signInMessage = 'Sign in to save stays and wishlist hotels.';
 class HotelDetailScreen extends StatefulWidget {
   final Hotel hotel;
 
-  const HotelDetailScreen({super.key, required this.hotel});
+  /// Owner preview only — see RestaurantDetailScreen.aboutTextOverride's
+  /// own doc comment, identical reasoning.
+  final String? aboutTextOverride;
+
+  /// Owner preview only — see RestaurantDetailScreen.photoUrlsOverride's
+  /// own doc comment, identical reasoning.
+  final List<String>? photoUrlsOverride;
+
+  /// Owner preview only — see RestaurantDetailScreen.isPreview's own doc
+  /// comment, identical reasoning. Linked-restaurants (DINING) is
+  /// venue-level content a visitor sees, same as award history/hosted
+  /// events on the restaurant side — not gated by this flag either.
+  final bool isPreview;
+
+  const HotelDetailScreen({
+    super.key,
+    required this.hotel,
+    this.aboutTextOverride,
+    this.photoUrlsOverride,
+    this.isPreview = false,
+  });
 
   @override
   State<HotelDetailScreen> createState() => _HotelDetailScreenState();
@@ -121,11 +142,22 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   @override
   void initState() {
     super.initState();
+    // Award history/hosted events/linked restaurants are venue-level
+    // content a real visitor sees, so they always load, preview or not —
+    // only _loadPersonalState itself is gated (see its own doc comment).
     _loadPersonalState();
     _checkAwardHistory();
     _loadHostedEvents();
-    _loadAboutText();
-    _loadPhotos();
+    if (widget.aboutTextOverride != null) {
+      _aboutText = widget.aboutTextOverride;
+    } else {
+      _loadAboutText();
+    }
+    if (widget.photoUrlsOverride != null) {
+      _photoUrls = widget.photoUrlsOverride!;
+    } else {
+      _loadPhotos();
+    }
   }
 
   Future<void> _loadPhotos() async {
@@ -201,9 +233,13 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   }
 
   Future<void> _loadPersonalState() async {
-    final uid = _userId;
+    // Preview: personal state (stays/wishlisted/following) is meaningless
+    // when previewing your own page — skipped entirely, same treatment as
+    // not being signed in below.
+    final uid = widget.isPreview ? null : _userId;
     if (uid == null) {
-      // Not signed in: nothing to load, catalogue browsing stays available.
+      // Not signed in (or previewing): nothing to load, catalogue browsing
+      // stays available.
       setState(() => _loadingPersonalState = false);
       return;
     }
@@ -252,6 +288,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   }
 
   Future<void> _toggleWishlist() async {
+    // Preview: the heart stays visible (a visitor sees it) but does
+    // nothing — see widget.isPreview's own doc comment.
+    if (widget.isPreview) return;
     final uid = _userId;
     if (uid == null) {
       _showSnack(_signInMessage, isError: true);
@@ -282,6 +321,8 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   // ._toggleFollow exactly. Non-optimistic; analytics fires only after
   // the write succeeds.
   Future<void> _toggleFollow() async {
+    // Preview: same as _toggleWishlist — inert, not hidden.
+    if (widget.isPreview) return;
     final uid = _userId;
     if (uid == null) {
       _showSnack(_signInMessage, isError: true);
@@ -325,6 +366,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   }
 
   Future<void> _openPlanStay() async {
+    // Preview: inert — see _toggleWishlist's own comment; opening the
+    // sheet at all would let a manager go on to actually save a stay.
+    if (widget.isPreview) return;
     final uid = _userId;
     if (uid == null) {
       _showSnack(_signInMessage, isError: true);
@@ -356,6 +400,8 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   }
 
   Future<void> _openAddStaySheet() async {
+    // Preview: inert — see _openPlanStay's own comment.
+    if (widget.isPreview) return;
     final uid = _userId;
     if (uid == null) {
       _showSnack(_signInMessage, isError: true);
@@ -444,7 +490,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     // yet. See _aboutText's own doc comment.
     final aboutText = _aboutText;
 
-    return Scaffold(
+    final scaffold = Scaffold(
       backgroundColor: AppColors.ivory,
       body: CustomScrollView(
         slivers: [
@@ -644,5 +690,8 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         ],
       ),
     );
+    return widget.isPreview
+        ? OwnerPreviewMarker(child: scaffold)
+        : scaffold;
   }
 }

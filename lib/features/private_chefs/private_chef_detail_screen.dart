@@ -21,6 +21,7 @@ import '../../models/private_chef_restaurant_history.dart';
 import '../../models/venue_country.dart';
 import '../events/event_detail_screen.dart';
 import '../events/widgets/hosted_events_section.dart';
+import '../profile/widgets/owner_preview_marker.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'private_chef_location.dart';
 import 'widgets/private_chef_connect_section.dart';
@@ -63,7 +64,46 @@ import 'widgets/private_chef_states.dart';
 class PrivateChefDetailScreen extends StatefulWidget {
   final String chefId;
 
-  const PrivateChefDetailScreen({super.key, required this.chefId});
+  /// Owner preview only. Unlike Restaurant/Hotel Detail, this screen
+  /// normally resolves its own base identity from [chefId] by design (see
+  /// this class's own doc comment: a removed/archived chef must show
+  /// [PrivateChefNotFoundState], not stale data) — a preview needs to
+  /// show a manager's *pending*, not-yet-published state, which has no id
+  /// to resolve from at all, so the base [PrivateChef] itself has to be
+  /// injectable too, not just its about text/photos. When supplied, the
+  /// id-driven `getPrivateChefById` fetch is skipped and this is used
+  /// directly; [chefId] is still used to fetch restaurant history,
+  /// education and hosted events (venue-level content a visitor sees —
+  /// not part of what's being previewed, so never skipped).
+  final PrivateChef? chefOverride;
+
+  /// Owner preview only — see RestaurantDetailScreen.aboutTextOverride's
+  /// own doc comment, identical reasoning.
+  final String? aboutTextOverride;
+
+  /// Owner preview only — see RestaurantDetailScreen.photoUrlsOverride's
+  /// own doc comment. Typed as [PrivateChefPhoto], not a bare URL list,
+  /// because [PrivateChefHero]'s report-photo action reads
+  /// `photos[i].id` — a preview caller supplies real submission ids here,
+  /// not synthetic ones, and that action is inert anyway when
+  /// [isPreview] is true (see [PrivateChefHero.isPreview]).
+  final List<PrivateChefPhoto>? photosOverride;
+
+  /// Owner preview only — see RestaurantDetailScreen.isPreview's own doc
+  /// comment, identical reasoning. Restaurant history/education/hosted
+  /// events are venue-level content a visitor sees, so — like award
+  /// history/hosted events on the restaurant/hotel side — they are never
+  /// gated by this flag; only follow-state (personal) is.
+  final bool isPreview;
+
+  const PrivateChefDetailScreen({
+    super.key,
+    required this.chefId,
+    this.chefOverride,
+    this.aboutTextOverride,
+    this.photosOverride,
+    this.isPreview = false,
+  });
 
   @override
   State<PrivateChefDetailScreen> createState() =>
@@ -118,7 +158,11 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     super.initState();
     _load();
     _loadHostedEvents();
-    _loadAboutText();
+    if (widget.aboutTextOverride != null) {
+      _aboutText = widget.aboutTextOverride;
+    } else {
+      _loadAboutText();
+    }
   }
 
   Future<void> _loadAboutText() async {
@@ -170,12 +214,22 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       // regardless of whether some other future in the batch is caught —
       // `.ignore()` is the stdlib's own tool for exactly this shape
       // (started speculatively, may or may not end up awaited).
-      final chefFuture = _repo.getPrivateChefById(widget.chefId)..ignore();
+      //
+      // Owner preview: chefOverride/photosOverride, when supplied, replace
+      // the corresponding fetch outright rather than racing it — history/
+      // education still fire live either way (see widget.chefOverride's
+      // own doc comment for why: they're venue-level content a visitor
+      // sees, not part of what a preview is previewing).
+      final chefFuture = widget.chefOverride != null
+          ? Future.value(widget.chefOverride)
+          : _repo.getPrivateChefById(widget.chefId)..ignore();
       final historyFuture = _repo.getRestaurantHistory(widget.chefId)
         ..ignore();
       final educationFuture = _repo.getEducationHistory(widget.chefId)
         ..ignore();
-      final photosFuture = _repo.getChefPhotos(widget.chefId)..ignore();
+      final photosFuture = widget.photosOverride != null
+          ? Future.value(widget.photosOverride!)
+          : _repo.getChefPhotos(widget.chefId)..ignore();
       final chef = await chefFuture;
       // Each dependent fetch below is defused with its own .catchError,
       // same "a failed lookup leaves this section empty, never takes
@@ -210,8 +264,10 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       // check itself failing) never blocks the chef's own catalogue data
       // from rendering — same "fall back to not yet" convention
       // RestaurantDetailScreen/HotelDetailScreen already use for their
-      // own personal-state loads.
-      final uid = _userId;
+      // own personal-state loads. Owner preview: follow-state is personal
+      // (belongs to the viewer, not the venue), so it's skipped the same
+      // way — see widget.isPreview's own doc comment.
+      final uid = widget.isPreview ? null : _userId;
       final following = (chef == null || uid == null)
           ? false
           : await _followRepo.isFollowingPrivateChef(
@@ -263,6 +319,9 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   // HotelDetailScreen._toggleFollow exactly. Non-optimistic; analytics
   // fires only after the write succeeds.
   Future<void> _toggleFollow() async {
+    // Preview: the Follow control stays visible (a visitor sees it) but
+    // does nothing — see widget.isPreview's own doc comment.
+    if (widget.isPreview) return;
     final chef = _chef;
     final uid = _userId;
     if (chef == null) return;
@@ -358,7 +417,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     }
 
     final chef = _chef!;
-    return Scaffold(
+    final scaffold = Scaffold(
       backgroundColor: AppColors.deepGreen,
       body: CustomScrollView(
         slivers: [
@@ -371,6 +430,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
             isFollowing: _isFollowing,
             followBusy: _followBusy,
             onTapFollow: _toggleFollow,
+            isPreview: widget.isPreview,
           ),
           SliverToBoxAdapter(
             child: ColoredBox(
@@ -389,6 +449,9 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
         ],
       ),
     );
+    return widget.isPreview
+        ? OwnerPreviewMarker(child: scaffold)
+        : scaffold;
   }
 
   String? _location(PrivateChef chef) => formatChefLocation(

@@ -5,13 +5,19 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
+import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/venue_photo_submission_repository.dart';
 import '../../models/managed_venue.dart';
+import '../../models/private_chef_photo.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/venue_about_submission.dart';
 import '../../models/venue_photo_submission_status.dart';
+import '../hotels/hotel_detail_screen.dart';
+import '../private_chefs/private_chef_detail_screen.dart';
+import '../restaurants/restaurant_detail_screen.dart';
 import 'upload_venue_photo_screen.dart';
+import 'venue_preview_photo_merge.dart';
 
 /// The management view a claim is supposed to unlock — reached from My
 /// Venues, separate from the venue's own public detail page (which stays
@@ -109,6 +115,9 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   bool _reordering = false;
   String? _photosError;
 
+  bool _previewLoading = false;
+  String? _previewError;
+
   @override
   void initState() {
     super.initState();
@@ -177,6 +186,103 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       ),
     );
     if (added == true) _loadPhotos();
+  }
+
+  // Reached from the header, not the photos/about sections specifically —
+  // it renders the manager's PROPOSED future state (pending about text if
+  // any, published + pending photos merged via mergePreviewPhotoOrder),
+  // never a mode of the live page. Deliberately fetches its own fresh
+  // copy of everything rather than reusing _future/_photosFuture: those
+  // are this screen's own cached state, which can be minutes old by the
+  // time a manager taps Preview, and resolveDisplayUrls' signed URLs
+  // expire in an hour — re-entering the preview later must resolve fresh
+  // ones, not reuse whatever was signed at this screen's own last load.
+  Future<void> _openPreview() async {
+    if (_previewLoading) return;
+    setState(() {
+      _previewLoading = true;
+      _previewError = null;
+    });
+    try {
+      final venue = widget.venue;
+      final publishedFuture = _photoRepo.loadPublishedPhotos(
+        venueType: venue.venueTypeWireValue,
+        venueId: venue.id,
+      );
+      final openSubmissionsFuture = _photoRepo.loadMyOpenSubmissions(
+        venueType: venue.venueTypeWireValue,
+        venueId: venue.id,
+      );
+      final pendingAboutFuture = _aboutRepo.loadMyLatestSubmission(
+        venueType: venue.venueTypeWireValue,
+        venueId: venue.id,
+      );
+      final published = await publishedFuture;
+      final openSubmissions = await openSubmissionsFuture;
+      final pendingAbout = await pendingAboutFuture;
+      final signedUrls = await _photoRepo.resolveDisplayUrls([
+        for (final s in openSubmissions) s.storagePath,
+      ]);
+
+      final mergedPhotos = mergePreviewPhotoOrder(
+        published: published,
+        pendingSubmissions: openSubmissions,
+        pendingSignedUrls: signedUrls,
+      );
+      // Only a still-PENDING about submission represents a proposed
+      // future — a rejected one will not happen, same reasoning as the
+      // photo merge excluding rejected photos. null here means "no
+      // override": the Detail screen falls back to loading the live
+      // approved text itself, same as the live page.
+      final aboutOverride =
+          pendingAbout?.status == VenueAboutSubmissionStatus.pending
+          ? pendingAbout!.aboutText
+          : null;
+
+      if (!mounted) return;
+      setState(() => _previewLoading = false);
+
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => switch (venue) {
+            ManagedRestaurant(:final restaurant) => RestaurantDetailScreen(
+              restaurant: restaurant,
+              aboutTextOverride: aboutOverride,
+              photoUrlsOverride: [for (final p in mergedPhotos) p.imageUrl],
+              isPreview: true,
+            ),
+            ManagedHotel(:final hotel) => HotelDetailScreen(
+              hotel: hotel,
+              aboutTextOverride: aboutOverride,
+              photoUrlsOverride: [for (final p in mergedPhotos) p.imageUrl],
+              isPreview: true,
+            ),
+            ManagedPrivateChef(:final chef) => PrivateChefDetailScreen(
+              chefId: chef.id,
+              chefOverride: chef,
+              aboutTextOverride: aboutOverride,
+              photosOverride: [
+                for (var i = 0; i < mergedPhotos.length; i++)
+                  PrivateChefPhoto(
+                    id: mergedPhotos[i].id,
+                    privateChefId: chef.id,
+                    imageUrl: mergedPhotos[i].imageUrl,
+                    displayOrder: i,
+                  ),
+              ],
+              isPreview: true,
+            ),
+          },
+        ),
+      );
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _previewLoading = false;
+        _previewError = 'Could not prepare the preview. Please try again.';
+      });
+    }
   }
 
   void _load() {
@@ -299,7 +405,23 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
             ].join(' · '),
             style: CsTypography.body.copyWith(color: AppColors.taupe),
           ),
-          const SizedBox(height: CsSpacing.lg),
+          const SizedBox(height: CsSpacing.sm),
+          // Reached here, above CURRENT TEXT/PHOTOS, since it's the one
+          // place with context for both sections at once. Renders the
+          // real venue page — never a replica of it — with whatever is
+          // currently pending: see _openPreview's own doc comment.
+          SubtleTextAction(
+            label: _previewLoading ? 'Preparing preview…' : 'Preview my page',
+            onTap: _openPreview,
+          ),
+          if (_previewError != null) ...[
+            const SizedBox(height: 2),
+            Text(
+              _previewError!,
+              style: CsTypography.metadata.copyWith(color: AppColors.error),
+            ),
+          ],
+          const SizedBox(height: CsSpacing.md),
 
           Text('CURRENT TEXT', style: CsTypography.eyebrow.copyWith(color: AppColors.taupe)),
           const SizedBox(height: CsSpacing.sm),

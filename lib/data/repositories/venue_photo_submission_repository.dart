@@ -170,7 +170,9 @@ class VenuePhotoSubmissionRepository {
     if (userId == null) return [];
     final rows = await _client
         .from('venue_photo_submissions')
-        .select('id, storage_path, status, review_note, submitted_at')
+        .select(
+          'id, storage_path, status, review_note, submitted_at, replaces_photo_id',
+        )
         .eq('user_id', userId)
         .eq('venue_type', venueType)
         .eq('venue_id', venueId)
