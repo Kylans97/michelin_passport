@@ -335,6 +335,27 @@ void main() {
       );
       expect(find.byType(Text), findsNothing);
     });
+
+    testWidgets(
+      'the text-overlay SingleChildScrollView does not claim the whole '
+      'hero opaquely — translucent, not opaque, hit-test behaviour (same '
+      'fix as VenueDetailHero/PrivateChefHero, applied here pre-emptively '
+      'since nothing behind it needs gestures yet)',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrapSliver(
+            const EventDetailHero(
+              title: "'t Preuvenemint",
+              backgroundImage: CsImagePlaceholder(logoScale: 0.22),
+            ),
+          ),
+        );
+        final scrollView = tester.widget<SingleChildScrollView>(
+          find.byType(SingleChildScrollView),
+        );
+        expect(scrollView.hitTestBehavior, HitTestBehavior.translucent);
+      },
+    );
   });
 
   group('EventDetailHero — EVENT WISHLIST V1 wishlist heart', () {

@@ -180,6 +180,22 @@ class EventDetailHero extends StatelessWidget {
                   ),
                   child: SingleChildScrollView(
                     physics: const NeverScrollableScrollPhysics(),
+                    // Prevents a landmine, not a fix for an observed bug:
+                    // this box is stretched to the full hero by the parent
+                    // Stack's StackFit.expand, and Scrollable's hit-test
+                    // behaviour defaults to opaque regardless of
+                    // NeverScrollableScrollPhysics — combined with Stack
+                    // hit-testing stopping at the first child that reports
+                    // a hit (topmost first), that would silently swallow
+                    // every pointer down over the background before
+                    // anything behind this box ever saw it. Nothing behind
+                    // it needs gestures today (backgroundImage is static,
+                    // the real Wishlist control lives in the SliverAppBar's
+                    // actions, outside this Stack) — this is the same
+                    // mechanism that broke the swipe on VenueDetailHero and
+                    // PrivateChefHero's photo galleries, fixed here before
+                    // Event Detail grows one of its own.
+                    hitTestBehavior: HitTestBehavior.translucent,
                     reverse: true,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
