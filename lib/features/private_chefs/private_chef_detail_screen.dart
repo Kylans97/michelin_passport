@@ -161,30 +161,51 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       // one query waiting on another's result — matching
       // EventsRepository.loadLinkedVenues' "start together, await in
       // turn" shape. The history/education/photos results are simply
-      // discarded if the chef itself doesn't resolve.
-      final chefFuture = _repo.getPrivateChefById(widget.chefId);
-      final historyFuture = _repo.getRestaurantHistory(widget.chefId);
-      final educationFuture = _repo.getEducationHistory(widget.chefId);
-      final photosFuture = _repo.getChefPhotos(widget.chefId);
+      // discarded if the chef itself doesn't resolve — and each is
+      // `.ignore()`d at the point it's started, not just awaited below:
+      // once any one of these already-in-flight futures is awaited and
+      // rejects, the sequential awaits below never reach the later ones,
+      // leaving them with no listener at all when they themselves later
+      // reject. An unawaited rejection is an unhandled one in Dart
+      // regardless of whether some other future in the batch is caught —
+      // `.ignore()` is the stdlib's own tool for exactly this shape
+      // (started speculatively, may or may not end up awaited).
+      final chefFuture = _repo.getPrivateChefById(widget.chefId)..ignore();
+      final historyFuture = _repo.getRestaurantHistory(widget.chefId)
+        ..ignore();
+      final educationFuture = _repo.getEducationHistory(widget.chefId)
+        ..ignore();
+      final photosFuture = _repo.getChefPhotos(widget.chefId)..ignore();
       final chef = await chefFuture;
+      // Each dependent fetch below is defused with its own .catchError,
+      // same "a failed lookup leaves this section empty, never takes
+      // down the chef's own data" contract _loadHostedEvents/_loadAboutText
+      // already use — chef resolution is the only thing that can land in
+      // the outer catch and flip this screen into its error state.
       final history = chef == null
           ? const <PrivateChefRestaurantHistory>[]
-          : await historyFuture;
+          : await historyFuture.catchError(
+              (_) => const <PrivateChefRestaurantHistory>[],
+            );
       final education = chef == null
           ? const <PrivateChefEducation>[]
-          : await educationFuture;
+          : await educationFuture.catchError(
+              (_) => const <PrivateChefEducation>[],
+            );
       final photos = chef == null
           ? const <PrivateChefPhoto>[]
-          : await photosFuture;
+          : await photosFuture.catchError((_) => const <PrivateChefPhoto>[]);
       // Fired last since it needs the chef's own home_country_code — a
       // single-code lookup, not worth starting speculatively alongside
       // the other three futures above.
       final countryNames = chef == null
           ? const <String, VenueCountry>{}
-          : await _repo.getCountryNames({
-              if ((chef.homeCountryCode ?? '').trim().isNotEmpty)
-                chef.homeCountryCode!.trim(),
-            });
+          : await _repo
+                .getCountryNames({
+                  if ((chef.homeCountryCode ?? '').trim().isNotEmpty)
+                    chef.homeCountryCode!.trim(),
+                })
+                .catchError((_) => const <String, VenueCountry>{});
       // Events V2 Step 6. Personal state (not signed in, or the follow
       // check itself failing) never blocks the chef's own catalogue data
       // from rendering — same "fall back to not yet" convention
