@@ -24,6 +24,7 @@ import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
+import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
@@ -59,6 +60,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
   late final _followRepo = FollowRepository(Supabase.instance.client);
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
+  late final _restaurantRepo = RestaurantRepository(Supabase.instance.client);
   late final _photoRepo = PhotoRepository(Supabase.instance.client);
   late final _awardHistoryRepo = AwardHistoryRepository(
     Supabase.instance.client,
@@ -112,6 +114,16 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // field.
   String? _aboutText;
 
+  // The venue's full published-photo set, in display_order — one venue,
+  // one query, independent of restaurant_hero.dart's coverImageUrl
+  // fallback (see RestaurantHero.photoUrls' own doc comment for why this
+  // is a second query rather than something the view/model carries: it's
+  // only ever needed for the single venue open here, never for a list).
+  // Same "starts empty, only ever set on success" shape as _aboutText —
+  // an empty list already reads correctly to RestaurantHero (falls back
+  // to the single cover photo already known from widget.restaurant).
+  List<String> _photoUrls = const [];
+
   bool get _isVisited => _visits.isNotEmpty;
 
   @override
@@ -121,6 +133,19 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     _checkAwardHistory();
     _loadHostedEvents();
     _loadAboutText();
+    _loadPhotos();
+  }
+
+  Future<void> _loadPhotos() async {
+    try {
+      final urls = await _restaurantRepo.getPhotoUrls(widget.restaurant.id);
+      if (!mounted) return;
+      setState(() => _photoUrls = urls);
+    } catch (_) {
+      // Leave the hero on its single cover photo (or gradient) on a
+      // failed lookup — same reasoning as every other enhancement-content
+      // load on this screen.
+    }
   }
 
   Future<void> _loadAboutText() async {
@@ -520,6 +545,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           RestaurantHero(
             restaurant: restaurant,
             hasHotelBadge: hasHotelBadge,
+            photoUrls: _photoUrls,
             isWishlisted: _isWishlisted,
             wishlistSaving: _wishlistSaving,
             onTapWishlist: _toggleWishlist,

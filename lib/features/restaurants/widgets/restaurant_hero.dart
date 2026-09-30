@@ -6,6 +6,18 @@ import '../../../models/restaurant.dart';
 class RestaurantHero extends StatelessWidget {
   final Restaurant restaurant;
   final bool hasHotelBadge;
+
+  /// The restaurant's full published-photo set, in display_order — loaded
+  /// independently by RestaurantDetailScreen (one venue, one query; never
+  /// merged onto the Restaurant model or restaurants_full, which only ever
+  /// resolves the single cover photo — see RestaurantRepository
+  /// .getPhotoUrls' own doc comment). Empty while that load is still in
+  /// flight or on a venue with no photos; [restaurant.coverImageUrl] covers
+  /// that gap below so the hero never regresses to the gradient for a venue
+  /// whose cover photo is already known synchronously from the initial
+  /// restaurants_full row.
+  final List<String> photoUrls;
+
   final bool isWishlisted;
   final bool wishlistSaving;
   final VoidCallback onTapWishlist;
@@ -21,6 +33,7 @@ class RestaurantHero extends StatelessWidget {
     super.key,
     required this.restaurant,
     required this.hasHotelBadge,
+    this.photoUrls = const [],
     required this.isWishlisted,
     required this.wishlistSaving,
     required this.onTapWishlist,
@@ -54,8 +67,14 @@ class RestaurantHero extends StatelessWidget {
         VenueHeroBadge(icon: Icons.hotel_rounded, label: restaurant.hotelName!),
     ];
 
+    final coverImageUrl = restaurant.coverImageUrl;
+    final imageUrls = photoUrls.isNotEmpty
+        ? photoUrls
+        : (coverImageUrl != null ? [coverImageUrl] : const <String>[]);
+
     return VenueDetailHero(
       title: restaurant.name,
+      imageUrls: imageUrls,
       primaryRecognition: restaurant.hasMichelinStar
           ? StarRow(count: restaurant.michelinStars!, size: 20)
           : null,

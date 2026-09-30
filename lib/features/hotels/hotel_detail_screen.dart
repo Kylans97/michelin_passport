@@ -113,6 +113,11 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   // treats as "nothing to show."
   String? _aboutText;
 
+  // Mirrors RestaurantDetailScreen's _photoUrls exactly — the hotel's full
+  // published-photo set, one venue/one query, independent of hotel_hero
+  // .dart's coverImageUrl fallback.
+  List<String> _photoUrls = const [];
+
   @override
   void initState() {
     super.initState();
@@ -120,6 +125,19 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     _checkAwardHistory();
     _loadHostedEvents();
     _loadAboutText();
+    _loadPhotos();
+  }
+
+  Future<void> _loadPhotos() async {
+    try {
+      final urls = await _hotelRepo.getPhotoUrls(widget.hotel.id);
+      if (!mounted) return;
+      setState(() => _photoUrls = urls);
+    } catch (_) {
+      // Leave the hero on its single cover photo (or gradient) on a
+      // failed lookup — same reasoning as every other enhancement-content
+      // load on this screen.
+    }
   }
 
   Future<void> _loadAboutText() async {
@@ -432,6 +450,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         slivers: [
           HotelHero(
             hotel: hotel,
+            photoUrls: _photoUrls,
             isWishlisted: _isWishlisted,
             wishlistSaving: _wishlistSaving,
             onTapWishlist: _toggleWishlist,

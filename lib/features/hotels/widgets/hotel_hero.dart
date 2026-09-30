@@ -11,6 +11,11 @@ import '../../../models/hotel.dart';
 /// duplicated in a now-removed `HotelAwardsCard`.
 class HotelHero extends StatelessWidget {
   final Hotel hotel;
+
+  /// The hotel's full published-photo set, in display_order — see
+  /// RestaurantHero.photoUrls' own doc comment, identical reasoning.
+  final List<String> photoUrls;
+
   final bool isWishlisted;
   final bool wishlistSaving;
   final VoidCallback onTapWishlist;
@@ -25,6 +30,7 @@ class HotelHero extends StatelessWidget {
   const HotelHero({
     super.key,
     required this.hotel,
+    this.photoUrls = const [],
     required this.isWishlisted,
     required this.wishlistSaving,
     required this.onTapWishlist,
@@ -35,8 +41,14 @@ class HotelHero extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final coverImageUrl = hotel.coverImageUrl;
+    final imageUrls = photoUrls.isNotEmpty
+        ? photoUrls
+        : (coverImageUrl != null ? [coverImageUrl] : const <String>[]);
+
     return VenueDetailHero(
       title: hotel.name,
+      imageUrls: imageUrls,
       primaryRecognition: hotel.hasMichelinKeys
           ? KeyRow(count: hotel.michelinKeys!, size: 20)
           : null,

@@ -54,6 +54,7 @@ Restaurant _restaurant({
   String? hotelName,
   String address = '1 Rue de Test',
   String? phone,
+  String? coverImageUrl,
 }) => Restaurant(
   id: 'r1',
   restaurantCode: 'rest_0001',
@@ -71,6 +72,7 @@ Restaurant _restaurant({
   hotelName: hotelName,
   worlds50BestRank: worlds50BestRank,
   phone: phone,
+  coverImageUrl: coverImageUrl,
 );
 
 Hotel _hotel({
@@ -79,6 +81,7 @@ Hotel _hotel({
   int? worlds50BestRank,
   int? worlds50BestYear,
   String address = '1 Rue de Test',
+  String? coverImageUrl,
 }) => Hotel(
   id: 'h1',
   hotelCode: 'hotel_0001',
@@ -93,6 +96,7 @@ Hotel _hotel({
   restaurantCount: 0,
   worlds50BestRank: worlds50BestRank,
   worlds50BestYear: worlds50BestYear,
+  coverImageUrl: coverImageUrl,
 );
 
 Visit _visit({DateTime? visitedOn, int? rating, MenuType? menuType}) => Visit(
@@ -210,6 +214,258 @@ void main() {
       expect(find.byType(Image), findsNothing);
       expect(find.byType(DecoratedBox), findsWidgets);
     });
+
+    testWidgets('a single real imageUrl renders via Image.network, not the '
+        'tonal gradient — the cover-photo-wired state once a venue has a '
+        'published photo', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Photographed Venue',
+            imageUrls: const ['https://example.com/restaurants/test/0.jpg'],
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final image = tester.widget<Image>(find.byType(Image));
+      expect(image.fit, BoxFit.cover);
+      // Exactly one photo: no PageView — this must render identically to
+      // the pre-gallery single-image hero.
+      expect(find.byType(PageView), findsNothing);
+    });
+
+    testWidgets('an empty imageUrls list falls back to the tonal gradient, '
+        'same as omitting it entirely', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Venue',
+            imageUrls: const [],
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byType(Image), findsNothing);
+    });
+
+    testWidgets('two or more photos render a swipeable PageView, one page '
+        'per photo', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Venue',
+            imageUrls: const [
+              'https://example.com/restaurants/test/0.jpg',
+              'https://example.com/restaurants/test/1.jpg',
+              'https://example.com/restaurants/test/2.jpg',
+            ],
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      expect(find.byType(PageView), findsOneWidget);
+      final pageView = tester.widget<PageView>(find.byType(PageView));
+      expect(pageView.childrenDelegate.estimatedChildCount, 3);
+    });
+
+    testWidgets('a single photo shows no chevrons', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Venue',
+            imageUrls: const ['https://example.com/restaurants/test/0.jpg'],
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+      expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
+    });
+
+    testWidgets(
+      'on the first of several photos, only the right chevron shows; on '
+      'the last, only the left one — no wrap-around',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrapSliver(
+            VenueDetailHero(
+              title: 'Venue',
+              imageUrls: const [
+                'https://example.com/restaurants/test/0.jpg',
+                'https://example.com/restaurants/test/1.jpg',
+                'https://example.com/restaurants/test/2.jpg',
+              ],
+              isWishlisted: false,
+              wishlistSaving: false,
+              onTapWishlist: () {},
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        // Photo 1 of 3: no left chevron (nothing to go back to), a right
+        // chevron (more photos ahead).
+        expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+        expect(find.byIcon(Icons.chevron_right_rounded), findsOneWidget);
+
+        // Advance to the middle photo via the same PageView.onPageChanged
+        // path a real swipe drives (see the page-changed-wiring test
+        // above for why this — not a raw drag — is how this suite proves
+        // the callback chain, given the parallax-transform hit-testing
+        // limitation documented there).
+        tester.widget<PageView>(find.byType(PageView)).onPageChanged!(1);
+        await tester.pumpAndSettle();
+        expect(find.byIcon(Icons.chevron_left_rounded), findsOneWidget);
+        expect(find.byIcon(Icons.chevron_right_rounded), findsOneWidget);
+
+        // Photo 3 of 3 (the last): a left chevron, no right one — the
+        // right chevron is simply gone, never wrapping back to photo 1.
+        tester.widget<PageView>(find.byType(PageView)).onPageChanged!(2);
+        await tester.pumpAndSettle();
+        expect(find.byIcon(Icons.chevron_left_rounded), findsOneWidget);
+        expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'tapping the right chevron advances the PageController to the next '
+      'page',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrapSliver(
+            VenueDetailHero(
+              title: 'Venue',
+              imageUrls: const [
+                'https://example.com/restaurants/test/0.jpg',
+                'https://example.com/restaurants/test/1.jpg',
+              ],
+              isWishlisted: false,
+              wishlistSaving: false,
+              onTapWishlist: () {},
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        await tester.tap(find.byIcon(Icons.chevron_right_rounded));
+        await tester.pumpAndSettle();
+
+        final pageView = tester.widget<PageView>(find.byType(PageView));
+        expect(pageView.controller!.page, 1);
+        // Having advanced to the last photo, the right chevron is gone and
+        // a left one has appeared.
+        expect(find.byIcon(Icons.chevron_right_rounded), findsNothing);
+        expect(find.byIcon(Icons.chevron_left_rounded), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'tapping the left chevron goes back to the previous page',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrapSliver(
+            VenueDetailHero(
+              title: 'Venue',
+              imageUrls: const [
+                'https://example.com/restaurants/test/0.jpg',
+                'https://example.com/restaurants/test/1.jpg',
+              ],
+              isWishlisted: false,
+              wishlistSaving: false,
+              onTapWishlist: () {},
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        // Get to photo 2 first via the right chevron, exactly as a person
+        // would, then use the left chevron to come back.
+        await tester.tap(find.byIcon(Icons.chevron_right_rounded));
+        await tester.pumpAndSettle();
+        await tester.tap(find.byIcon(Icons.chevron_left_rounded));
+        await tester.pumpAndSettle();
+
+        final pageView = tester.widget<PageView>(find.byType(PageView));
+        expect(pageView.controller!.page, 0);
+        expect(find.byIcon(Icons.chevron_left_rounded), findsNothing);
+        expect(find.byIcon(Icons.chevron_right_rounded), findsOneWidget);
+      },
+    );
+
+    testWidgets(
+      'the chevron tap target is comfortably larger than its glyph',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrapSliver(
+            VenueDetailHero(
+              title: 'Venue',
+              imageUrls: const [
+                'https://example.com/restaurants/test/0.jpg',
+                'https://example.com/restaurants/test/1.jpg',
+              ],
+              isWishlisted: false,
+              wishlistSaving: false,
+              onTapWishlist: () {},
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        final glyphFinder = find.byIcon(Icons.chevron_right_rounded);
+        final tapTargetSize = tester.getSize(
+          find.ancestor(
+            of: glyphFinder,
+            matching: find.byType(GestureDetector),
+          ),
+        );
+        final glyphSize = tester.getSize(glyphFinder);
+        expect(tapTargetSize.width, greaterThan(glyphSize.width * 1.5));
+        expect(tapTargetSize.height, greaterThan(glyphSize.height * 1.5));
+      },
+    );
+
+    testWidgets(
+      'the SingleChildScrollView text overlay no longer absorbs pointer '
+      'events meant for the gallery beneath it — translucent, not opaque, '
+      'hit-test behaviour',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrapSliver(
+            VenueDetailHero(
+              title: 'Venue',
+              imageUrls: const [
+                'https://example.com/restaurants/test/0.jpg',
+                'https://example.com/restaurants/test/1.jpg',
+              ],
+              isWishlisted: false,
+              wishlistSaving: false,
+              onTapWishlist: () {},
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        final scrollView = tester.widget<SingleChildScrollView>(
+          find.byType(SingleChildScrollView),
+        );
+        expect(scrollView.hitTestBehavior, HitTestBehavior.translucent);
+      },
+    );
 
     testWidgets('back control is present with semantic label "Back"', (
       tester,
@@ -515,6 +771,29 @@ void main() {
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets('restaurant.coverImageUrl passes through to VenueDetailHero '
+        'as a real photo, not the tonal gradient', (tester) async {
+      final restaurant = _restaurant(
+        michelinStars: null,
+        coverImageUrl: 'https://example.com/restaurants/test/0.jpg',
+      );
+      await tester.pumpWidget(
+        _wrapSliver(
+          RestaurantHero(
+            restaurant: restaurant,
+            hasHotelBadge: false,
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final image = tester.widget<Image>(find.byType(Image));
+      expect(image.fit, BoxFit.cover);
+    });
   });
 
   group('HotelHero — MICHELIN Keys recognition (§12)', () {
@@ -588,6 +867,27 @@ void main() {
       );
       await tester.pumpAndSettle();
       expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('hotel.coverImageUrl passes through to VenueDetailHero as a '
+        'real photo, not the tonal gradient', (tester) async {
+      final hotel = _hotel(
+        coverImageUrl: 'https://example.com/hotels/test/0.jpg',
+      );
+      await tester.pumpWidget(
+        _wrapSliver(
+          HotelHero(
+            hotel: hotel,
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      final image = tester.widget<Image>(find.byType(Image));
+      expect(image.fit, BoxFit.cover);
     });
   });
 
