@@ -67,6 +67,13 @@ const _hotel = Hotel(
 
 const _chef = PrivateChef(id: 'c1', slug: 'chef-c1', displayName: 'Chef Name');
 
+const _chefWithBiography = PrivateChef(
+  id: 'c1',
+  slug: 'chef-c1',
+  displayName: 'Chef Name',
+  biography: "The chef's catalogue biography, filled in by Mantelier.",
+);
+
 const _chefPhotos = [
   PrivateChefPhoto(
     id: 'p1',
@@ -181,6 +188,33 @@ void main() {
       expect(find.byType(VenueAboutSection), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
+
+    testWidgets(
+      "PrivateChefDetailScreen — a pending about submission shows in "
+      "place of the chef's catalogue biography, not alongside it",
+      (tester) async {
+        await tester.pumpWidget(
+          const MaterialApp(
+            home: PrivateChefDetailScreen(
+              chefId: 'c1',
+              chefOverride: _chefWithBiography,
+              isPreview: true,
+              aboutTextOverride: "The chef's own proposed words.",
+              photosOverride: _chefPhotos,
+            ),
+          ),
+        );
+        await tester.pumpAndSettle();
+
+        expect(find.text("The chef's own proposed words."), findsOneWidget);
+        expect(
+          find.text("The chef's catalogue biography, filled in by Mantelier."),
+          findsNothing,
+        );
+        expect(find.byType(VenueAboutSection), findsOneWidget);
+        expect(tester.takeException(), isNull);
+      },
+    );
   });
 
   group('empty case — no photos, no about text', () {

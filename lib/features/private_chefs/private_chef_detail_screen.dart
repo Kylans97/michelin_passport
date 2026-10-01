@@ -44,10 +44,12 @@ import 'widgets/private_chef_states.dart';
 /// no CTA of any kind is rendered here in the meantime; see [_body]'s
 /// trailing comment for the seam.
 ///
-/// A "FROM THE TEAM" section (venue_about_current — see
-/// VenueAboutSection's own doc comment) now sits right after ABOUT, when
-/// present — PRIVATE_CHEFS.md itself is unchanged (not touched by this
-/// feature), so this is noted here rather than there.
+/// ABOUT is a single section with a precedence, not two — venue_about_
+/// current (a chef's own approved submission) wins whenever one exists;
+/// chef.biography renders only as the fallback shown until then. Never
+/// both at once — see [_body]'s own comment for why. PRIVATE_CHEFS.md
+/// itself is unchanged (not touched by this feature), so this is noted
+/// here rather than there.
 ///
 /// Step 2B — BACKGROUND (renamed from "Restaurant Provenance"): a chef's
 /// relevant professional background is broader than kitchen positions —
@@ -148,14 +150,14 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   List<Event> _hostedEvents = const [];
 
   // venue_about_current for this chef — the latest APPROVED venue_about_
-  // submissions row, a manager's own reviewed copy. Completely separate
-  // from chef.biography (a verified catalogue fact, loaded via _load()
-  // below, untouched by this feature) — see _aboutSection/VenueAboutSection
-  // for how the two coexist without reading as duplicates. Same "starts
-  // hidden, a failed lookup stays hidden" shape as _hostedEvents just
-  // above, and loaded independently for the same reason: this chef's own
-  // catalogue data must never wait on, or be taken down by, an about-text
-  // lookup failure.
+  // submissions row, a manager's own reviewed copy. Takes precedence over
+  // chef.biography (a verified catalogue fact, loaded via _load() below,
+  // untouched by this feature) when both exist — see _body's own comment
+  // for why only one ever renders. Same "starts hidden, a failed lookup
+  // stays hidden" shape as _hostedEvents just above, and loaded
+  // independently for the same reason: this chef's own catalogue data
+  // must never wait on, or be taken down by, an about-text lookup
+  // failure.
   String? _aboutText;
 
   @override
@@ -469,26 +471,29 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   );
 
   Widget _body(PrivateChef chef) {
+    // venue_about_current wins whenever an approved submission exists —
+    // chef.biography (a verified catalogue fact WE filled in) is a
+    // starting value, not something Mantelier owns alongside the chef's
+    // own words (CLAUDE.md's "Venue-supplied content" settled decision).
+    // So this is one section with a precedence, not two rendered
+    // together: the chef's own approved text, or — only until one
+    // exists — the biography as a fallback. Never both. The biography
+    // itself is never deleted or blanked when a submission is approved;
+    // it simply stops being what's shown, and would resume being shown
+    // again if the approved submission were ever withdrawn.
     final biography = (chef.biography ?? '').trim();
-    final hasBiography = biography.isNotEmpty;
-    final hasAboutText = (_aboutText ?? '').trim().isNotEmpty;
+    final aboutText = (_aboutText ?? '').trim();
+    final effectiveAboutText = aboutText.isNotEmpty
+        ? aboutText
+        : (biography.isNotEmpty ? biography : null);
     final hasBackground = _history.isNotEmpty || _education.isNotEmpty;
     final hasInstagram = (chef.instagramUrl ?? '').trim().isNotEmpty;
     final hasWebsite = (chef.websiteUrl ?? '').trim().isNotEmpty;
 
     final sections = <Widget>[
-      if (hasBiography) _aboutSection(biography),
-      // Placed immediately after biography, before BACKGROUND: both are
-      // narrative/editorial text about the chef (who they are, and what
-      // they — or whoever manages this page — currently want a visitor
-      // to know), so they read together as one continuous introduction
-      // before the page moves into structured facts (career background,
-      // booking details, contact). hasAboutText gates this explicitly,
-      // the same way every other optional entry in this list does — the
-      // divider loop below adds a divider only BETWEEN present entries,
-      // so an always-included-but-internally-empty VenueAboutSection
-      // would still claim a divider on either side of nothing.
-      if (hasAboutText) VenueAboutSection(text: _aboutText, heading: 'FROM THE TEAM'),
+      // Same default 'ABOUT' heading Restaurant/Hotel Detail use — no
+      // third label invented for this screen.
+      if (effectiveAboutText != null) VenueAboutSection(text: effectiveAboutText),
       if (hasBackground) _backgroundSection(),
       PrivateChefExperienceSection(chef: chef),
       if (hasInstagram || hasWebsite)
@@ -522,21 +527,6 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       ],
     );
   }
-
-  Widget _aboutSection(String biography) => Column(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Text(
-        'ABOUT',
-        style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
-      ),
-      const SizedBox(height: CsSpacing.md),
-      Text(
-        biography,
-        style: CsTypography.body.copyWith(color: AppColors.textPrimary),
-      ),
-    ],
-  );
 
   // Restaurant items first, then education items — matching the
   // approved worked example exactly (PRIVATE_CHEFS.md, Step 2B §12/§13).

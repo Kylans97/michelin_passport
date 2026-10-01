@@ -19,6 +19,7 @@ import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/core/widgets/follow_toggle_button.dart';
 import 'package:michelin_passport/core/widgets/section_divider.dart';
+import 'package:michelin_passport/core/widgets/venue_about_section.dart';
 import 'package:michelin_passport/features/private_chefs/private_chef_location.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_connect_section.dart';
 import 'package:michelin_passport/features/private_chefs/widgets/private_chef_education_row.dart';
@@ -86,34 +87,31 @@ final _education = [
   ),
 ];
 
-// Mirrors _PrivateChefDetailScreenState._body's section-assembly exactly.
+// Mirrors _PrivateChefDetailScreenState._body's section-assembly exactly
+// — including its ABOUT precedence: an approved venue_about_current
+// submission (aboutText) wins over chef.biography whenever both exist;
+// biography renders only as the fallback. VenueAboutSection itself has
+// no Supabase dependency, so it's called directly here rather than
+// re-derived by hand (that's what drifted silently before: this shell
+// hand-rolled its own ABOUT Column, which is exactly the kind of replica
+// the real screen's own preview feature was built to avoid elsewhere).
 Widget _body(
   PrivateChef chef,
   List<PrivateChefRestaurantHistory> history, [
   List<PrivateChefEducation> education = const [],
+  String? aboutText,
 ]) {
   final biography = (chef.biography ?? '').trim();
-  final hasBiography = biography.isNotEmpty;
+  final trimmedAboutText = (aboutText ?? '').trim();
+  final effectiveAboutText = trimmedAboutText.isNotEmpty
+      ? trimmedAboutText
+      : (biography.isNotEmpty ? biography : null);
   final hasBackground = history.isNotEmpty || education.isNotEmpty;
   final hasInstagram = (chef.instagramUrl ?? '').trim().isNotEmpty;
   final hasWebsite = (chef.websiteUrl ?? '').trim().isNotEmpty;
 
   final sections = <Widget>[
-    if (hasBiography)
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'ABOUT',
-            style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
-          ),
-          const SizedBox(height: CsSpacing.md),
-          Text(
-            biography,
-            style: CsTypography.body.copyWith(color: AppColors.textPrimary),
-          ),
-        ],
-      ),
+    if (effectiveAboutText != null) VenueAboutSection(text: effectiveAboutText),
     if (hasBackground)
       Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -158,6 +156,7 @@ Widget _shell(
   bool isFollowing = false,
   bool followBusy = false,
   VoidCallback? onTapFollow,
+  String? aboutText,
 ]) => MaterialApp(
   home: Scaffold(
     backgroundColor: AppColors.deepGreen,
@@ -186,7 +185,7 @@ Widget _shell(
                 CsSpacing.pageHorizontal,
                 CsSpacing.section,
               ),
-              child: _body(chef, history, education),
+              child: _body(chef, history, education, aboutText),
             ),
           ),
         ),
@@ -225,6 +224,40 @@ void main() {
       await tester.pumpWidget(_shell(chef, const []));
       expect(find.text('ABOUT'), findsNothing);
     });
+
+    testWidgets(
+      "an approved about-text submission wins over the chef's own "
+      'biography — one ABOUT section, never both at once',
+      (tester) async {
+        await tester.pumpWidget(
+          _shell(
+            _fullChef,
+            const [],
+            const [],
+            false,
+            false,
+            null,
+            "The chef's own words about their cooking.",
+          ),
+        );
+        expect(find.text('ABOUT'), findsOneWidget);
+        expect(
+          find.text("The chef's own words about their cooking."),
+          findsOneWidget,
+        );
+        expect(find.text('A short editorial biography.'), findsNothing);
+      },
+    );
+
+    testWidgets(
+      'no about-text submission -> the biography still renders as the '
+      'fallback',
+      (tester) async {
+        await tester.pumpWidget(_shell(_fullChef, const []));
+        expect(find.text('ABOUT'), findsOneWidget);
+        expect(find.text('A short editorial biography.'), findsOneWidget);
+      },
+    );
 
     testWidgets(
       'no restaurant history and no education -> no BACKGROUND section',

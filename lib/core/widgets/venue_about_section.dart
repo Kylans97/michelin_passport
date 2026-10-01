@@ -21,13 +21,15 @@ import '../theme/cs_typography.dart';
 /// at `null`) — so this section simply doesn't exist on the page until
 /// there's real, approved copy to show.
 ///
-/// [heading] defaults to "ABOUT", unchanged for Restaurant/Hotel Detail.
-/// PrivateChefDetailScreen passes "FROM THE TEAM" instead: that screen
-/// already has its OWN, older "ABOUT" section rendering
-/// `private_chefs.biography` (a verified catalogue fact, left untouched —
-/// see that screen's own doc comment), so reusing "ABOUT" here too would
-/// read as a duplicated section rather than two genuinely different kinds
-/// of content sitting next to each other.
+/// [heading] defaults to "ABOUT" — every call site uses the default.
+/// PrivateChefDetailScreen is the one caller with a second possible
+/// source (`private_chefs.biography`) for the same section, and resolves
+/// that entirely on its own side before ever reaching here: it passes
+/// [text] as `venue_about_current` when approved text exists, or the
+/// biography as a fallback when it doesn't — never both, never a second
+/// heading for the fallback (see that screen's own `_body` comment for
+/// why: the biography is a starting value the venue's own words replace,
+/// not editorial content of its own that stands alongside them).
 class VenueAboutSection extends StatelessWidget {
   final String? text;
   final String heading;
