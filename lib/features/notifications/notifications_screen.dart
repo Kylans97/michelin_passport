@@ -8,6 +8,7 @@ import '../../core/analytics/supabase_analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/utils/mailto_uri.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/notifications_repository.dart';
 import '../../data/repositories/venue_invite_repository.dart';
@@ -26,22 +27,14 @@ const _kClaimQuestionsEmail = 'claimedvenues@mantelier.app';
 /// widgets in a test (see notifications_screen_test.dart's own header
 /// comment), so the one part worth asserting on directly — the venue
 /// name actually reaching the mailto subject — is tested as pure Uri-
-/// building logic instead.
-///
-/// Deliberately NOT built via `Uri(..., queryParameters: {...})`: that
-/// convenience map always encodes through `Uri.encodeQueryComponent`,
-/// which is application/x-www-form-urlencoded — spaces become "+", which
-/// is a form-encoding convention, not the query encoding RFC 6068
-/// (mailto) actually specifies, and not every mail client decodes "+"
-/// back to a space. `Uri.encodeComponent` (RFC 3986 percent-encoding,
-/// space -> %20) is the correct one here, and is already this codebase's
-/// own convention for encoding a URL query value by hand — see
-/// RestaurantDetailScreen._openMaps/HotelDetailScreen._openMaps.
+/// building logic instead. Encoding itself lives in mailtoUri
+/// (core/utils/mailto_uri.dart) — see that function's own doc comment for
+/// why `Uri.encodeComponent`, never `queryParameters:`; every mailto link
+/// in this app builds through that one function rather than re-deriving
+/// this by hand.
 @visibleForTesting
-Uri claimQuestionMailtoUri(String venueName) {
-  final subject = Uri.encodeComponent('Claim question — $venueName');
-  return Uri(scheme: 'mailto', path: _kClaimQuestionsEmail, query: 'subject=$subject');
-}
+Uri claimQuestionMailtoUri(String venueName) =>
+    mailtoUri(_kClaimQuestionsEmail, subject: 'Claim question — $venueName');
 
 /// Rebuilt to show real notifications (Notifications V1) — the previous
 /// version of this screen was entirely a friend-request inbox wearing a
