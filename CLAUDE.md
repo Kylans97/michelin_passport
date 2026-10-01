@@ -178,8 +178,15 @@ inferred. When a lookup returns the wrong record, hold it back and log it —
 do not import it and do not quietly fix it.
 
 **Log near-misses, not just failures.** The QA log runs to 174 entries
-because it records reasoning, not only errors. Corrections go in
-`CHANGELOG.md` with the relevant `issue_id`.
+because it records reasoning, not only errors. Two logs, two conventions:
+data corrections go in the Michelin_Database changelog
+(`docs/Architecture/Michelin_Database/CHANGELOG.md`), with an issue id
+from `qa_issues.csv` — that is where an issue id comes from and what it
+is for, and traceability there is the whole point of the never-guess rule
+above. Engineering changes go in the app's `CHANGELOG.md`
+(`docs/Plannnig/CHANGELOG.md`), Keep a Changelog format, with near-misses
+under Fixed — an issue id is filing without a function there; what
+matters is what broke and why it would recur.
 
 **Treat published totals from secondary sources as unverified.** Only
 per-guide selections published by MICHELIN itself proved reliable.
@@ -248,6 +255,12 @@ database controls. Preferred shape:
 - Never commit or push unless explicitly asked.
 - Never create migrations or write to Supabase as a side effect of another
   task. Say what a migration would need to do and stop.
+- A session that applies a migration ends by confirming the migration is
+  committed and that `supabase migration list --linked` shows local and
+  remote in agreement. Not optional, not conditional on being asked.
+- A schema diff — production against what the local migrations actually
+  produce, not just the migration ledger — runs at each version bump,
+  before the push.
 - Never modify files under `docs/Architecture/Michelin_Database/` without
   being asked — those are the record.
 - Do not run destructive commands against production data.
