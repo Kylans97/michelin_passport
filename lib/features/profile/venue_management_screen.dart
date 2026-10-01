@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/utils/mailto_uri.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/hotel_repository.dart';
@@ -21,6 +23,25 @@ import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'upload_venue_photo_screen.dart';
 import 'venue_preview_photo_merge.dart';
+
+/// The one venue-ops inbox this app has — same address
+/// notifications_screen.dart's own _kClaimQuestionsEmail already sends
+/// claim questions to. A manager's question about their venue's page
+/// (about text, photos, anything else here) goes to the same place a
+/// claim question does; there is no separate inbox for this screen.
+const _kVenueQuestionsEmail = 'claimedvenues@mantelier.app';
+
+/// Top-level and `@visibleForTesting`, same reasoning as
+/// notifications_screen.dart's own claimQuestionMailtoUri: this screen
+/// constructs its repositories against a real SupabaseClient, so the one
+/// part worth asserting on directly — the venue name reaching the mailto
+/// subject — is tested as pure Uri-building logic instead of through the
+/// widget. Encoding itself is mailtoUri's (core/utils/mailto_uri.dart) —
+/// this must never hand-build its own `Uri(...)`, per that function's own
+/// doc comment.
+@visibleForTesting
+Uri venueQuestionMailtoUri(String venueName) =>
+    mailtoUri(_kVenueQuestionsEmail, subject: 'Venue question — $venueName');
 
 /// The management view a claim is supposed to unlock — reached from My
 /// Venues, separate from the venue's own public detail page (which stays
@@ -61,6 +82,12 @@ import 'venue_preview_photo_merge.dart';
 /// treatment is the right shape once a report-a-problem flow exists to
 /// point the explanatory line at; building it now would be a line
 /// explaining a feature that doesn't exist.
+///
+/// A manager can email a question — the same shared inbox
+/// notifications_screen.dart's own claim-question contact line already
+/// uses (see _kVenueQuestionsEmail's own doc comment), reached from a
+/// single restrained line at the foot of this screen. There is no other
+/// contact point anywhere on this screen today.
 class VenueManagementScreen extends StatefulWidget {
   final ManagedVenue venue;
 
@@ -351,6 +378,13 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
     }
   }
 
+  Future<void> _emailUs() async {
+    final uri = venueQuestionMailtoUri(widget.venue.name);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    }
+  }
+
   void _load() {
     setState(() {
       _future = Future.wait([
@@ -568,11 +602,37 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
           Container(height: 1, color: AppColors.cardBorder),
           const SizedBox(height: CsSpacing.xl),
           _photosSection(),
+          const SizedBox(height: CsSpacing.xl),
+          _contactLine(),
           const SizedBox(height: CsSpacing.xxl),
         ],
       ),
     );
   }
+
+  // One restrained line, not a card or a section of its own — the same
+  // register as everything else on this screen. Sends to the one
+  // venue-ops inbox a claimed venue's manager already knows is read (the
+  // same address the claim-approval notification's own contact line
+  // uses), since there is no other contact point anywhere on this screen.
+  Widget _contactLine() => GestureDetector(
+    onTap: _emailUs,
+    child: Text.rich(
+      TextSpan(
+        text: 'Questions about your page? ',
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+        children: [
+          TextSpan(
+            text: _kVenueQuestionsEmail,
+            style: CsTypography.metadata.copyWith(
+              color: AppColors.forestGreen,
+              decoration: TextDecoration.underline,
+            ),
+          ),
+        ],
+      ),
+    ),
+  );
 
   Widget _photosSection() {
     return FutureBuilder<_PhotosState>(

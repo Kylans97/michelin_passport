@@ -703,6 +703,48 @@ void main() {
       },
     );
   });
+
+  group('VenueManagementScreen — contact line', () {
+    testWidgets(
+      'a restrained line names the shared venue-ops inbox — the one '
+      'contact point on this screen',
+      (tester) async {
+        await _pump(tester, _FakeVenueAboutRepository());
+        expect(
+          find.textContaining('Questions about your page?'),
+          findsOneWidget,
+        );
+        expect(
+          find.textContaining('claimedvenues@mantelier.app'),
+          findsOneWidget,
+        );
+      },
+    );
+  });
+
+  group('venueQuestionMailtoUri', () {
+    test(
+      'addresses the shared venue-ops inbox and puts the venue name in '
+      'the subject, so a reply is identifiable without asking what it is '
+      'about',
+      () {
+        final uri = venueQuestionMailtoUri('Flore Amsterdam');
+        expect(uri.scheme, 'mailto');
+        expect(uri.path, 'claimedvenues@mantelier.app');
+        expect(
+          uri.queryParameters['subject'],
+          'Venue question — Flore Amsterdam',
+        );
+      },
+    );
+
+    test('a different venue name produces a different subject, not a '
+        'fixed/generic one', () {
+      final a = venueQuestionMailtoUri('Flore Amsterdam');
+      final b = venueQuestionMailtoUri('Aman Venice');
+      expect(a.queryParameters['subject'], isNot(b.queryParameters['subject']));
+    });
+  });
 }
 
 class _RecordingNavigatorObserver extends NavigatorObserver {
