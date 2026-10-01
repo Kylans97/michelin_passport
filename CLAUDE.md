@@ -260,7 +260,14 @@ database controls. Preferred shape:
   remote in agreement. Not optional, not conditional on being asked.
 - A schema diff — production against what the local migrations actually
   produce, not just the migration ledger — runs at each version bump,
-  before the push.
+  before the push. `supabase db diff --linked` currently cannot do this:
+  its shadow-database bootstrap replays every migration from empty, and
+  nothing in migration history seeds `public.countries`, so any migration
+  with a real `country_code` fails its foreign key and the bootstrap
+  never completes. Until that gap is closed, do the diff by hand instead —
+  `supabase db dump --linked` for production's schema, a disposable local
+  Postgres with migrations replayed directly via `psql`, then `diff` the
+  two dumps.
 - Never modify files under `docs/Architecture/Michelin_Database/` without
   being asked — those are the record.
 - Do not run destructive commands against production data.
