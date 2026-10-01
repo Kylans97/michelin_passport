@@ -25,6 +25,31 @@ Map<String, dynamic> _friendshipRow({
   'listing_city': null,
 };
 
+Map<String, dynamic> _submissionRow({
+  required String type,
+  required String subjectType,
+  String? reviewNote,
+}) => {
+  'id': 'notif-3',
+  'type': type,
+  'subject_type': subjectType,
+  'subject_id': 'submission-1',
+  'is_read': false,
+  'created_at': '2026-01-03T00:00:00Z',
+  'other_user_id': null,
+  'other_username': null,
+  'other_display_name': null,
+  'other_avatar_url': null,
+  'listing_subject_type': null,
+  'listing_name': null,
+  'listing_city': null,
+  'submission_venue_type': 'restaurant',
+  'submission_venue_id': 'r1',
+  'submission_venue_name': 'Flore',
+  'submission_venue_city': 'Amsterdam',
+  'submission_review_note': reviewNote,
+};
+
 Map<String, dynamic> _listingRow() => {
   'id': 'notif-2',
   'type': 'missing_listing_added',
@@ -55,6 +80,22 @@ void main() {
       expect(
         AppNotificationType.fromWire('missing_listing_added'),
         AppNotificationType.missingListingAdded,
+      );
+      expect(
+        AppNotificationType.fromWire('venue_about_approved'),
+        AppNotificationType.venueAboutApproved,
+      );
+      expect(
+        AppNotificationType.fromWire('venue_about_rejected'),
+        AppNotificationType.venueAboutRejected,
+      );
+      expect(
+        AppNotificationType.fromWire('venue_photo_approved'),
+        AppNotificationType.venuePhotoApproved,
+      );
+      expect(
+        AppNotificationType.fromWire('venue_photo_rejected'),
+        AppNotificationType.venuePhotoRejected,
       );
     });
 
@@ -96,6 +137,39 @@ void main() {
         _friendshipRow(type: 'friend_request_accepted', isRead: true),
       );
       expect(n.isRead, isTrue);
+    });
+
+    test('maps a venue-about-rejected row, including the venue and the '
+        "reviewer's own note", () {
+      final n = AppNotification.fromRow(
+        _submissionRow(
+          type: 'venue_about_rejected',
+          subjectType: 'venue_about_submission',
+          reviewNote: 'Please rewrite without contact details.',
+        ),
+      );
+      expect(n.type, AppNotificationType.venueAboutRejected);
+      expect(n.subjectType, 'venue_about_submission');
+      expect(n.submissionVenueName, 'Flore');
+      expect(n.submissionVenueCity, 'Amsterdam');
+      expect(
+        n.submissionReviewNote,
+        'Please rewrite without contact details.',
+      );
+    });
+
+    test('maps a venue-photo-approved row — no review note on an approval',
+        () {
+      final n = AppNotification.fromRow(
+        _submissionRow(
+          type: 'venue_photo_approved',
+          subjectType: 'venue_photo_submission',
+        ),
+      );
+      expect(n.type, AppNotificationType.venuePhotoApproved);
+      expect(n.subjectType, 'venue_photo_submission');
+      expect(n.submissionVenueName, 'Flore');
+      expect(n.submissionReviewNote, isNull);
     });
   });
 

@@ -16,9 +16,12 @@ import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
 import '../friends/widgets/identity_row.dart';
 
-/// Shared inbox for claim questions — reviewed manually alongside the
-/// claim itself (see PART 1 of the venue-claim-hardening work this
-/// belongs to). Not a support address for anything else in the app.
+/// The one venue-ops inbox this app has — reviewed manually alongside
+/// whatever it's about. Originally just claim questions (PART 1 of the
+/// venue-claim-hardening work this belongs to); VenueManagementScreen's
+/// own contact line now sends here too, for the same reason: it's the
+/// one place a claimed venue's manager can already be told a person will
+/// actually read what they send.
 const _kClaimQuestionsEmail = 'claimedvenues@mantelier.app';
 
 /// Pulled out to a top-level, `@visibleForTesting` function — same reason
@@ -30,8 +33,8 @@ const _kClaimQuestionsEmail = 'claimedvenues@mantelier.app';
 /// building logic instead. Encoding itself lives in mailtoUri
 /// (core/utils/mailto_uri.dart) — see that function's own doc comment for
 /// why `Uri.encodeComponent`, never `queryParameters:`; every mailto link
-/// in this app builds through that one function rather than re-deriving
-/// this by hand.
+/// in this app, including VenueManagementScreen's own contact line,
+/// builds through that one function rather than re-deriving this by hand.
 @visibleForTesting
 Uri claimQuestionMailtoUri(String venueName) =>
     mailtoUri(_kClaimQuestionsEmail, subject: 'Claim question — $venueName');
@@ -330,6 +333,11 @@ class _NotificationRow extends StatelessWidget {
       case AppNotificationType.venueClaimApproved:
       case AppNotificationType.venueClaimRejected:
         return _VenueClaimContent(notification: notification);
+      case AppNotificationType.venueAboutApproved:
+      case AppNotificationType.venueAboutRejected:
+      case AppNotificationType.venuePhotoApproved:
+      case AppNotificationType.venuePhotoRejected:
+        return _VenueSubmissionContent(notification: notification);
     }
   }
 }
@@ -413,6 +421,73 @@ class _VenueClaimContent extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The four submission-review notification types share one read-only
+/// layout, same shape as [_VenueClaimContent] — no Accept/Decline, no
+/// "other person": each is a status update about the manager's own
+/// submission, closing the loop notify_venue_submission_review() opened
+/// (a trigger on venue_about_submissions/venue_photo_submissions going
+/// pending -> approved/rejected — see that migration's own comment for
+/// why there is no "received" counterpart here, unlike claims).
+///
+/// The rejection notification carries the reviewer's own note inline —
+/// [AppNotification.submissionReviewNote] — the same place
+/// [_VenueInviteContent] shows [AppNotification.inviteNote], rather than
+/// pointing at a separate screen: there is no other screen a submission's
+/// review state is shown on today.
+class _VenueSubmissionContent extends StatelessWidget {
+  final AppNotification notification;
+  const _VenueSubmissionContent({required this.notification});
+
+  @override
+  Widget build(BuildContext context) {
+    final venueName = notification.submissionVenueName ?? 'your venue';
+    final isPhoto =
+        notification.type == AppNotificationType.venuePhotoApproved ||
+        notification.type == AppNotificationType.venuePhotoRejected;
+    final what = isPhoto ? 'photo' : 'about text';
+    final isRejected =
+        notification.type == AppNotificationType.venueAboutRejected ||
+        notification.type == AppNotificationType.venuePhotoRejected;
+    final description = isRejected
+        ? 'Your $what for $venueName was not approved.'
+        : 'Your $what for $venueName is now live.';
+    final icon = isRejected ? Icons.storefront_outlined : Icons.verified_outlined;
+    final note = notification.submissionReviewNote?.trim();
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, color: AppColors.forestGreen, size: 20),
+          const SizedBox(width: CsSpacing.md),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  description,
+                  style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+                ),
+                if (isRejected && note != null && note.isNotEmpty) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    '"$note"',
+                    style: CsTypography.body.copyWith(
+                      color: AppColors.taupe,
+                      fontStyle: FontStyle.italic,
                     ),
                   ),
                 ],

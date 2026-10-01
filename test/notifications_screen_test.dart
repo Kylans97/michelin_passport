@@ -146,6 +146,45 @@ Widget _venueClaimRow({
   ),
 );
 
+// Mirrors _VenueSubmissionContent's layout — same "reconstruct the row"
+// approach as _venueClaimRow above, for the same reason (private widget,
+// not reachable from outside its own file regardless of import).
+Widget _venueSubmissionRow({
+  required String description,
+  required IconData icon,
+  String? note,
+}) => Padding(
+  padding: const EdgeInsets.symmetric(vertical: 8),
+  child: Row(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Icon(icon, color: AppColors.forestGreen, size: 20),
+      const SizedBox(width: 12),
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              description,
+              style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+            ),
+            if (note != null) ...[
+              const SizedBox(height: 4),
+              Text(
+                '"$note"',
+                style: CsTypography.body.copyWith(
+                  color: AppColors.taupe,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ],
+          ],
+        ),
+      ),
+    ],
+  ),
+);
+
 Widget _wrap(Widget child) => MaterialApp(
   home: Scaffold(backgroundColor: AppColors.warmWhite, body: child),
 );
@@ -338,6 +377,51 @@ void main() {
       await tester.tap(find.textContaining('Questions about your claim?'));
       expect(tapped, isTrue);
     });
+  });
+
+  group('NotificationsScreen — venue_about/venue_photo submission-review rows', () {
+    testWidgets('an approved row shows the "is now live" copy, no note', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          _venueSubmissionRow(
+            description: 'Your about text for Flore is now live.',
+            icon: Icons.verified_outlined,
+          ),
+        ),
+      );
+      expect(
+        find.text('Your about text for Flore is now live.'),
+        findsOneWidget,
+      );
+      expect(find.textContaining('"'), findsNothing);
+    });
+
+    testWidgets(
+      "a rejected row shows the \"not approved\" copy AND the reviewer's "
+      'own note — the rejection notification must carry the note, not '
+      'just restate that something was rejected',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            _venueSubmissionRow(
+              description: 'Your photo for Flore was not approved.',
+              icon: Icons.storefront_outlined,
+              note: 'Please use a landscape orientation photo.',
+            ),
+          ),
+        );
+        expect(
+          find.text('Your photo for Flore was not approved.'),
+          findsOneWidget,
+        );
+        expect(
+          find.text('"Please use a landscape orientation photo."'),
+          findsOneWidget,
+        );
+      },
+    );
   });
 
   group('claimQuestionMailtoUri', () {

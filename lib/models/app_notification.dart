@@ -17,7 +17,17 @@ enum AppNotificationType {
   // distinction is information for the reviewer, not the requester; see
   // notify_venue_claim_change()'s own migration comment), so there is
   // nothing for this enum to distinguish either.
-  venueClaimRejected;
+  venueClaimRejected,
+  // The review loop's missing link: notify_venue_submission_review()
+  // fires these on venue_about_submissions/venue_photo_submissions going
+  // pending -> approved/rejected — see that trigger's own migration
+  // comment for why there is no "received" counterpart to these four
+  // (unlike the claim types above): the in-app confirmation shown at
+  // submission time already covers that half.
+  venueAboutApproved,
+  venueAboutRejected,
+  venuePhotoApproved,
+  venuePhotoRejected;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -29,6 +39,10 @@ enum AppNotificationType {
     'venue_claim_received' => AppNotificationType.venueClaimReceived,
     'venue_claim_approved' => AppNotificationType.venueClaimApproved,
     'venue_claim_rejected' => AppNotificationType.venueClaimRejected,
+    'venue_about_approved' => AppNotificationType.venueAboutApproved,
+    'venue_about_rejected' => AppNotificationType.venueAboutRejected,
+    'venue_photo_approved' => AppNotificationType.venuePhotoApproved,
+    'venue_photo_rejected' => AppNotificationType.venuePhotoRejected,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
 }
@@ -45,10 +59,12 @@ enum AppNotificationType {
 /// the `other*` fields, a [missingListingAdded] one carries the
 /// `listing*` fields, a [venueInviteReceived]/[venueInviteAccepted]/
 /// [venueInviteDeclined] one carries both `other*` (the invite's other
-/// participant) and `invite*`, and a [venueClaimReceived]/
+/// participant) and `invite*`, a [venueClaimReceived]/
 /// [venueClaimApproved]/[venueClaimRejected] one carries only `claim*` —
 /// there is no "other person" on a claim, it's a status update about the
-/// claimant's own request.
+/// claimant's own request — and a [venueAboutApproved]/
+/// [venueAboutRejected]/[venuePhotoApproved]/[venuePhotoRejected] one
+/// carries only `submission*`, same reasoning as claims.
 class AppNotification {
   final String id;
   final AppNotificationType type;
@@ -84,6 +100,18 @@ class AppNotification {
   final String? claimVenueName;
   final String? claimVenueCity;
 
+  // subjectId doubles as the submission id when subjectType ==
+  // 'venue_about_submission'/'venue_photo_submission' — same convention
+  // as inviteVenueId/claimVenueId above. submissionReviewNote is only
+  // ever non-null on a rejected submission (approve_venue_about/
+  // approve_venue_photo never write one) — how the rejection
+  // notification carries the reviewer's note.
+  final String? submissionVenueType;
+  final String? submissionVenueId;
+  final String? submissionVenueName;
+  final String? submissionVenueCity;
+  final String? submissionReviewNote;
+
   const AppNotification({
     required this.id,
     required this.type,
@@ -109,6 +137,11 @@ class AppNotification {
     this.claimVenueId,
     this.claimVenueName,
     this.claimVenueCity,
+    this.submissionVenueType,
+    this.submissionVenueId,
+    this.submissionVenueName,
+    this.submissionVenueCity,
+    this.submissionReviewNote,
   });
 
   factory AppNotification.fromRow(Map<String, dynamic> row) => AppNotification(
@@ -138,6 +171,11 @@ class AppNotification {
     claimVenueId: row['claim_venue_id'] as String?,
     claimVenueName: row['claim_venue_name'] as String?,
     claimVenueCity: row['claim_venue_city'] as String?,
+    submissionVenueType: row['submission_venue_type'] as String?,
+    submissionVenueId: row['submission_venue_id'] as String?,
+    submissionVenueName: row['submission_venue_name'] as String?,
+    submissionVenueCity: row['submission_venue_city'] as String?,
+    submissionReviewNote: row['submission_review_note'] as String?,
   );
 
   /// True only for a still-`pending` invite whose [inviteExpiresAt] has
