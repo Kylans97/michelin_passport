@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import '../../features/reports/widgets/report_content_sheet.dart';
+import '../../models/content_report.dart';
+import '../../models/published_venue_photo.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_spacing.dart';
 import '../theme/cs_typography.dart';
@@ -50,6 +53,27 @@ class VenueDetailHero extends StatefulWidget {
   final double expandedHeight;
   final List<String> imageUrls;
 
+  /// The real published-photo rows backing [imageUrls], in the same order
+  /// — never populated for the single cover-photo fallback (that string
+  /// comes from `restaurants_full`/`hotels_full.cover_photo_url`, which
+  /// has no `restaurant_photos`/`hotel_photos` row and therefore nothing
+  /// to report). Empty by default, matching every pre-Report-action call
+  /// site unchanged. The caller (RestaurantHero/HotelHero) owns keeping
+  /// this aligned 1:1 with [imageUrls] — this widget trusts that
+  /// invariant rather than re-deriving it, the same way it already
+  /// trusts [imageUrls] itself to be in display_order.
+  final List<PublishedVenuePhoto> photos;
+
+  /// Owner preview only — mirrors PrivateChefHero's own `isPreview` and
+  /// its Report action exactly, rather than this hero's existing
+  /// screen-owns-the-inertness pattern (Wishlist/Follow): unlike those
+  /// two, this widget calls [showReportSheet] directly, using its own
+  /// [BuildContext], since the Report action has no other state for a
+  /// screen to own — there's nothing to toggle, no repository write this
+  /// widget itself performs. Defaults to false; every existing call site
+  /// is unaffected.
+  final bool isPreview;
+
   final bool isWishlisted;
   final bool wishlistSaving;
   final VoidCallback onTapWishlist;
@@ -87,6 +111,8 @@ class VenueDetailHero extends StatefulWidget {
     // actually needed for realistic content.
     this.expandedHeight = 300,
     this.imageUrls = const [],
+    this.photos = const [],
+    this.isPreview = false,
     required this.isWishlisted,
     required this.wishlistSaving,
     required this.onTapWishlist,
@@ -280,6 +306,33 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
                   ),
                 ),
               ),
+            // Manager-submitted UGC (real restaurant_photos/hotel_photos
+            // rows, never the cover-fallback) — Apple's user-generated-
+            // content requirement applies to it the moment it's visible.
+            // Mirrors PrivateChefHero's own _ReportPhotoButton exactly,
+            // including calling showReportSheet directly rather than
+            // delegating through a callback: bottom-right, clear of the
+            // chevrons (vertically centred) and the identity text
+            // (bottom-left) below.
+            if (widget.photos.isNotEmpty)
+              Positioned(
+                right: CsSpacing.pageHorizontal,
+                bottom: CsSpacing.lg,
+                child: SafeArea(
+                  top: false,
+                  child: _ReportPhotoButton(
+                    // Preview: stays visible (a visitor sees it) but does
+                    // nothing — see widget.isPreview's own doc comment.
+                    onTap: widget.isPreview
+                        ? () {}
+                        : () => showReportSheet(
+                            context,
+                            contentType: ReportContentType.photo,
+                            contentId: widget.photos[_currentPage].id,
+                          ),
+                  ),
+                ),
+              ),
             SafeArea(
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(
@@ -356,6 +409,40 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
       ),
     );
   }
+}
+
+/// Identical to PrivateChefHero's own private `_ReportPhotoButton` —
+/// deliberately not extracted into a shared widget the two heroes both
+/// import, matching this codebase's established "a small genuinely
+/// hero-specific primitive, not a shared one" precedent for everything
+/// else in this file ([_FallbackGradient], [_HeroToggleButton]).
+class _ReportPhotoButton extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _ReportPhotoButton({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: 'Report this photo',
+    excludeSemantics: true,
+    child: Material(
+      color: Colors.black.withValues(alpha: 0.24),
+      shape: const CircleBorder(),
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: onTap,
+        child: const Padding(
+          padding: EdgeInsets.all(9),
+          child: Icon(
+            Icons.flag_outlined,
+            color: AppColors.textOnDark,
+            size: 19,
+          ),
+        ),
+      ),
+    ),
+  );
 }
 
 /// The two gradient washes VenueDetailHero falls back to — factored out

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../core/widgets/venue_detail_hero.dart';
+import '../../../models/published_venue_photo.dart';
 import '../../../models/restaurant.dart';
 
 class RestaurantHero extends StatelessWidget {
@@ -11,12 +12,15 @@ class RestaurantHero extends StatelessWidget {
   /// independently by RestaurantDetailScreen (one venue, one query; never
   /// merged onto the Restaurant model or restaurants_full, which only ever
   /// resolves the single cover photo — see RestaurantRepository
-  /// .getPhotoUrls' own doc comment). Empty while that load is still in
+  /// .getPhotos' own doc comment). Empty while that load is still in
   /// flight or on a venue with no photos; [restaurant.coverImageUrl] covers
   /// that gap below so the hero never regresses to the gradient for a venue
   /// whose cover photo is already known synchronously from the initial
-  /// restaurants_full row.
-  final List<String> photoUrls;
+  /// restaurants_full row. Typed as [PublishedVenuePhoto], not a bare url
+  /// list, since Report (below) needs each photo's real id — the cover
+  /// fallback deliberately never flows through here, since it has no
+  /// `restaurant_photos` row to report.
+  final List<PublishedVenuePhoto> photos;
 
   final bool isWishlisted;
   final bool wishlistSaving;
@@ -29,17 +33,23 @@ class RestaurantHero extends StatelessWidget {
   final bool followBusy;
   final VoidCallback? onTapFollow;
 
+  /// See VenueDetailHero.isPreview's own doc comment — passed straight
+  /// through; false (the default) means every call site that predates
+  /// the Report action is unaffected.
+  final bool isPreview;
+
   const RestaurantHero({
     super.key,
     required this.restaurant,
     required this.hasHotelBadge,
-    this.photoUrls = const [],
+    this.photos = const [],
     required this.isWishlisted,
     required this.wishlistSaving,
     required this.onTapWishlist,
     this.isFollowing = false,
     this.followBusy = false,
     this.onTapFollow,
+    this.isPreview = false,
   });
 
   @override
@@ -68,13 +78,15 @@ class RestaurantHero extends StatelessWidget {
     ];
 
     final coverImageUrl = restaurant.coverImageUrl;
-    final imageUrls = photoUrls.isNotEmpty
-        ? photoUrls
+    final imageUrls = photos.isNotEmpty
+        ? [for (final p in photos) p.imageUrl]
         : (coverImageUrl != null ? [coverImageUrl] : const <String>[]);
 
     return VenueDetailHero(
       title: restaurant.name,
       imageUrls: imageUrls,
+      photos: photos,
+      isPreview: isPreview,
       primaryRecognition: restaurant.hasMichelinStar
           ? StarRow(count: restaurant.michelinStars!, size: 20)
           : null,

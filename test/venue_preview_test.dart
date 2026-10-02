@@ -36,6 +36,7 @@ import 'package:michelin_passport/features/restaurants/restaurant_detail_screen.
 import 'package:michelin_passport/models/hotel.dart';
 import 'package:michelin_passport/models/private_chef.dart';
 import 'package:michelin_passport/models/private_chef_photo.dart';
+import 'package:michelin_passport/models/published_venue_photo.dart';
 import 'package:michelin_passport/models/restaurant.dart';
 
 const _restaurant = Restaurant(
@@ -131,7 +132,7 @@ void main() {
               restaurant: _restaurant,
               isPreview: true,
               aboutTextOverride: 'A proposed new description of the venue.',
-              photoUrlsOverride: ['https://example.com/r1/0.jpg'],
+              photosOverride: [PublishedVenuePhoto(id: 'r1-photo-0', imageUrl: 'https://example.com/r1/0.jpg', displayOrder: 0)],
             ),
           ),
         );
@@ -154,7 +155,7 @@ void main() {
             hotel: _hotel,
             isPreview: true,
             aboutTextOverride: 'A proposed new description of the hotel.',
-            photoUrlsOverride: ['https://example.com/h1/0.jpg'],
+            photosOverride: [PublishedVenuePhoto(id: 'h1-photo-0', imageUrl: 'https://example.com/h1/0.jpg', displayOrder: 0)],
           ),
         ),
       );
@@ -228,7 +229,7 @@ void main() {
               restaurant: _restaurant,
               isPreview: true,
               aboutTextOverride: null,
-              photoUrlsOverride: [],
+              photosOverride: [],
             ),
           ),
         );
@@ -271,7 +272,7 @@ void main() {
             restaurant: _restaurant,
             isPreview: true,
             aboutTextOverride: 'About.',
-            photoUrlsOverride: ['https://example.com/r1/0.jpg'],
+            photosOverride: [PublishedVenuePhoto(id: 'r1-photo-0', imageUrl: 'https://example.com/r1/0.jpg', displayOrder: 0)],
           ),
         ),
       );
@@ -292,7 +293,7 @@ void main() {
             restaurant: _restaurant,
             isPreview: true,
             aboutTextOverride: 'About.',
-            photoUrlsOverride: ['https://example.com/r1/0.jpg'],
+            photosOverride: [PublishedVenuePhoto(id: 'r1-photo-0', imageUrl: 'https://example.com/r1/0.jpg', displayOrder: 0)],
           ),
         ),
       );
@@ -312,7 +313,7 @@ void main() {
             restaurant: _restaurant,
             isPreview: true,
             aboutTextOverride: 'About.',
-            photoUrlsOverride: ['https://example.com/r1/0.jpg'],
+            photosOverride: [PublishedVenuePhoto(id: 'r1-photo-0', imageUrl: 'https://example.com/r1/0.jpg', displayOrder: 0)],
           ),
         ),
       );
@@ -336,7 +337,7 @@ void main() {
             restaurant: _restaurant,
             isPreview: true,
             aboutTextOverride: 'About.',
-            photoUrlsOverride: ['https://example.com/r1/0.jpg'],
+            photosOverride: [PublishedVenuePhoto(id: 'r1-photo-0', imageUrl: 'https://example.com/r1/0.jpg', displayOrder: 0)],
           ),
         ),
       );
@@ -356,7 +357,7 @@ void main() {
             hotel: _hotel,
             isPreview: true,
             aboutTextOverride: 'About.',
-            photoUrlsOverride: ['https://example.com/h1/0.jpg'],
+            photosOverride: [PublishedVenuePhoto(id: 'h1-photo-0', imageUrl: 'https://example.com/h1/0.jpg', displayOrder: 0)],
           ),
         ),
       );
@@ -376,7 +377,7 @@ void main() {
             hotel: _hotel,
             isPreview: true,
             aboutTextOverride: 'About.',
-            photoUrlsOverride: ['https://example.com/h1/0.jpg'],
+            photosOverride: [PublishedVenuePhoto(id: 'h1-photo-0', imageUrl: 'https://example.com/h1/0.jpg', displayOrder: 0)],
           ),
         ),
       );
@@ -396,7 +397,7 @@ void main() {
             hotel: _hotel,
             isPreview: true,
             aboutTextOverride: 'About.',
-            photoUrlsOverride: ['https://example.com/h1/0.jpg'],
+            photosOverride: [PublishedVenuePhoto(id: 'h1-photo-0', imageUrl: 'https://example.com/h1/0.jpg', displayOrder: 0)],
           ),
         ),
       );
@@ -416,7 +417,7 @@ void main() {
             hotel: _hotel,
             isPreview: true,
             aboutTextOverride: 'About.',
-            photoUrlsOverride: ['https://example.com/h1/0.jpg'],
+            photosOverride: [PublishedVenuePhoto(id: 'h1-photo-0', imageUrl: 'https://example.com/h1/0.jpg', displayOrder: 0)],
           ),
         ),
       );

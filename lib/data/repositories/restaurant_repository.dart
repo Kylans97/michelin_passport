@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import 'country_lookup.dart';
@@ -77,14 +78,19 @@ class RestaurantRepository {
   // there would be real N+1), but the full ordered set is only ever
   // needed for the one venue currently open on Detail — a second query
   // there is the right shape, not a workaround.
-  Future<List<String>> getPhotoUrls(String restaurantId) async {
+  // Renamed from getPhotoUrls (id, image_url, alt_text, display_order —
+  // was image_url alone): the Report action on this gallery
+  // (VenueDetailHero.onTapReportPhoto) needs each photo's real id,
+  // content_reports.content_id, not just its url.
+  Future<List<PublishedVenuePhoto>> getPhotos(String restaurantId) async {
     final rows = await _client
         .from('restaurant_photos')
-        .select('image_url')
+        .select('id, image_url, alt_text, display_order')
         .eq('restaurant_id', restaurantId)
         .order('display_order');
     return [
-      for (final row in rows as List) (row as Map<String, dynamic>)['image_url'] as String,
+      for (final row in rows as List)
+        PublishedVenuePhoto.fromJson(row as Map<String, dynamic>),
     ];
   }
 

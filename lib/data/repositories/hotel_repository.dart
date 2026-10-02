@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/hotel.dart';
+import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import 'country_lookup.dart';
@@ -49,16 +50,18 @@ class HotelRepository {
   final SupabaseClient _client;
 
   // Every published photo for one hotel, in display_order — see
-  // RestaurantRepository.getPhotoUrls' own doc comment for why this is
-  // deliberately not on hotels_full/hotelFullColumns.
-  Future<List<String>> getPhotoUrls(String hotelId) async {
+  // RestaurantRepository.getPhotos' own doc comment for why this is
+  // deliberately not on hotels_full/hotelFullColumns, and for why this
+  // returns the full row (id included) rather than bare urls.
+  Future<List<PublishedVenuePhoto>> getPhotos(String hotelId) async {
     final rows = await _client
         .from('hotel_photos')
-        .select('image_url')
+        .select('id, image_url, alt_text, display_order')
         .eq('hotel_id', hotelId)
         .order('display_order');
     return [
-      for (final row in rows as List) (row as Map<String, dynamic>)['image_url'] as String,
+      for (final row in rows as List)
+        PublishedVenuePhoto.fromJson(row as Map<String, dynamic>),
     ];
   }
 

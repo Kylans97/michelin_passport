@@ -41,6 +41,7 @@ import 'package:michelin_passport/features/restaurants/widgets/restaurant_hero.d
 import 'package:michelin_passport/features/restaurants/widgets/restaurant_info_card.dart';
 import 'package:michelin_passport/features/restaurants/widgets/restaurant_visits_card.dart';
 import 'package:michelin_passport/models/hotel.dart';
+import 'package:michelin_passport/models/published_venue_photo.dart';
 import 'package:michelin_passport/models/restaurant.dart';
 import 'package:michelin_passport/models/visit.dart';
 
@@ -528,6 +529,100 @@ void main() {
 
       await tester.tap(find.byIcon(Icons.favorite_border_rounded));
       expect(tapped, isFalse);
+    });
+  });
+
+  group('VenueDetailHero — Report action (manager-submitted UGC)', () {
+    testWidgets('no photos at all: no Report button, matching the '
+        'pre-existing no-image state exactly', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'No Photo Venue',
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byIcon(Icons.flag_outlined), findsNothing);
+    });
+
+    testWidgets('a single real imageUrl but no photos wired: no Report '
+        'button — the cover-photo fallback has no real restaurant_photos/'
+        'hotel_photos row to report', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Cover Only',
+            imageUrls: const ['https://example.com/cover.jpg'],
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byIcon(Icons.flag_outlined), findsNothing);
+    });
+
+    testWidgets('real photos wired: the Report button shows and tapping it '
+        'actually opens the report sheet (not just: the button exists) — '
+        'mirrors PrivateChefHero calling showReportSheet directly, not a '
+        'delegated callback', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Venue',
+            imageUrls: const ['https://example.com/restaurants/test/0.jpg'],
+            photos: const [
+              PublishedVenuePhoto(
+                id: 'photo-1',
+                imageUrl: 'https://example.com/restaurants/test/0.jpg',
+                displayOrder: 0,
+              ),
+            ],
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byIcon(Icons.flag_outlined), findsOneWidget);
+      await tester.tap(find.byIcon(Icons.flag_outlined));
+      await tester.pumpAndSettle();
+      expect(find.text('Report'), findsOneWidget);
+    });
+
+    testWidgets('preview: the Report button stays visible but is inert — no '
+        'sheet opens, matching this project\'s "visible but inert, never '
+        'hidden" preview rule', (tester) async {
+      await tester.pumpWidget(
+        _wrapSliver(
+          VenueDetailHero(
+            title: 'Venue',
+            imageUrls: const ['https://example.com/0.jpg'],
+            photos: const [
+              PublishedVenuePhoto(
+                id: 'photo-0',
+                imageUrl: 'https://example.com/0.jpg',
+                displayOrder: 0,
+              ),
+            ],
+            isPreview: true,
+            isWishlisted: false,
+            wishlistSaving: false,
+            onTapWishlist: () {},
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.byIcon(Icons.flag_outlined), findsOneWidget);
+      await tester.tap(find.byIcon(Icons.flag_outlined));
+      await tester.pumpAndSettle();
+      expect(find.text('Report'), findsNothing);
     });
   });
 

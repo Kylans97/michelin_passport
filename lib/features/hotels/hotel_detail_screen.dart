@@ -29,6 +29,7 @@ import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
 import '../../models/hotel.dart';
 import '../../models/passport_venue.dart';
+import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
 import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
@@ -55,9 +56,9 @@ class HotelDetailScreen extends StatefulWidget {
   /// own doc comment, identical reasoning.
   final String? aboutTextOverride;
 
-  /// Owner preview only — see RestaurantDetailScreen.photoUrlsOverride's
-  /// own doc comment, identical reasoning.
-  final List<String>? photoUrlsOverride;
+  /// Owner preview only — see RestaurantDetailScreen.photosOverride's own
+  /// doc comment, identical reasoning.
+  final List<PublishedVenuePhoto>? photosOverride;
 
   /// Owner preview only — see RestaurantDetailScreen.isPreview's own doc
   /// comment, identical reasoning. Linked-restaurants (DINING) is
@@ -73,7 +74,7 @@ class HotelDetailScreen extends StatefulWidget {
     super.key,
     required this.hotel,
     this.aboutTextOverride,
-    this.photoUrlsOverride,
+    this.photosOverride,
     this.isPreview = false,
     this.previewIsStale = false,
   });
@@ -139,10 +140,10 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   // treats as "nothing to show."
   String? _aboutText;
 
-  // Mirrors RestaurantDetailScreen's _photoUrls exactly — the hotel's full
+  // Mirrors RestaurantDetailScreen's _photos exactly — the hotel's full
   // published-photo set, one venue/one query, independent of hotel_hero
   // .dart's coverImageUrl fallback.
-  List<String> _photoUrls = const [];
+  List<PublishedVenuePhoto> _photos = const [];
 
   @override
   void initState() {
@@ -158,8 +159,8 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     } else {
       _loadAboutText();
     }
-    if (widget.photoUrlsOverride != null) {
-      _photoUrls = widget.photoUrlsOverride!;
+    if (widget.photosOverride != null) {
+      _photos = widget.photosOverride!;
     } else {
       _loadPhotos();
     }
@@ -167,9 +168,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
 
   Future<void> _loadPhotos() async {
     try {
-      final urls = await _hotelRepo.getPhotoUrls(widget.hotel.id);
+      final photos = await _hotelRepo.getPhotos(widget.hotel.id);
       if (!mounted) return;
-      setState(() => _photoUrls = urls);
+      setState(() => _photos = photos);
     } catch (_) {
       // Leave the hero on its single cover photo (or gradient) on a
       // failed lookup — same reasoning as every other enhancement-content
@@ -370,6 +371,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     }
   }
 
+
   Future<void> _openPlanStay() async {
     // Preview: inert — see _toggleWishlist's own comment; opening the
     // sheet at all would let a manager go on to actually save a stay.
@@ -501,7 +503,8 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         slivers: [
           HotelHero(
             hotel: hotel,
-            photoUrls: _photoUrls,
+            photos: _photos,
+            isPreview: widget.isPreview,
             isWishlisted: _isWishlisted,
             wishlistSaving: _wishlistSaving,
             onTapWishlist: _toggleWishlist,

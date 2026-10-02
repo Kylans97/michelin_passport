@@ -31,6 +31,7 @@ import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
 import '../../models/passport_venue.dart';
+import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
 import '../../models/save_outcome.dart';
 import '../../models/visit.dart';
@@ -60,8 +61,15 @@ class RestaurantDetailScreen extends StatefulWidget {
   /// published photo set and skips that fetch entirely — see
   /// mergePreviewPhotoOrder (venue_preview_photo_merge.dart) for how a
   /// preview caller builds this from published + pending photos. Null is
-  /// the live page, unchanged.
-  final List<String>? photoUrlsOverride;
+  /// the live page, unchanged. Typed as [PublishedVenuePhoto], not a bare
+  /// url list — see RestaurantHero.photos' own doc comment: the Report
+  /// action needs each photo's real id. The preview caller supplies the
+  /// published photo's own id for an untouched entry, or the pending
+  /// submission's own id for a swapped-in/appended one (never a
+  /// fabricated one) — see mergePreviewPhotoOrder's own doc comment.
+  /// Reporting is inert in preview regardless (isPreview below), so which
+  /// id a pending entry carries never actually matters in practice.
+  final List<PublishedVenuePhoto>? photosOverride;
 
   /// Owner preview only. Turns off what belongs to the *viewer*, not what
   /// belongs to the venue: personal state (visits, wishlisted, following)
@@ -91,7 +99,7 @@ class RestaurantDetailScreen extends StatefulWidget {
     super.key,
     required this.restaurant,
     this.aboutTextOverride,
-    this.photoUrlsOverride,
+    this.photosOverride,
     this.isPreview = false,
     this.previewIsStale = false,
   });
@@ -161,13 +169,13 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
 
   // The venue's full published-photo set, in display_order — one venue,
   // one query, independent of restaurant_hero.dart's coverImageUrl
-  // fallback (see RestaurantHero.photoUrls' own doc comment for why this
+  // fallback (see RestaurantHero.photos' own doc comment for why this
   // is a second query rather than something the view/model carries: it's
   // only ever needed for the single venue open here, never for a list).
   // Same "starts empty, only ever set on success" shape as _aboutText —
   // an empty list already reads correctly to RestaurantHero (falls back
   // to the single cover photo already known from widget.restaurant).
-  List<String> _photoUrls = const [];
+  List<PublishedVenuePhoto> _photos = const [];
 
   bool get _isVisited => _visits.isNotEmpty;
 
@@ -186,8 +194,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     } else {
       _loadAboutText();
     }
-    if (widget.photoUrlsOverride != null) {
-      _photoUrls = widget.photoUrlsOverride!;
+    if (widget.photosOverride != null) {
+      _photos = widget.photosOverride!;
     } else {
       _loadPhotos();
     }
@@ -195,9 +203,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
 
   Future<void> _loadPhotos() async {
     try {
-      final urls = await _restaurantRepo.getPhotoUrls(widget.restaurant.id);
+      final photos = await _restaurantRepo.getPhotos(widget.restaurant.id);
       if (!mounted) return;
-      setState(() => _photoUrls = urls);
+      setState(() => _photos = photos);
     } catch (_) {
       // Leave the hero on its single cover photo (or gradient) on a
       // failed lookup — same reasoning as every other enhancement-content
@@ -618,7 +626,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           RestaurantHero(
             restaurant: restaurant,
             hasHotelBadge: hasHotelBadge,
-            photoUrls: _photoUrls,
+            photos: _photos,
+            isPreview: widget.isPreview,
             isWishlisted: _isWishlisted,
             wishlistSaving: _wishlistSaving,
             onTapWishlist: _toggleWishlist,

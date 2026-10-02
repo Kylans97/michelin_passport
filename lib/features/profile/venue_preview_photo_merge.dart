@@ -1,17 +1,17 @@
 import '../../models/published_venue_photo.dart';
 import '../../models/venue_photo_submission_status.dart';
 
-/// One photo in a merged preview order — just enough identity for both
-/// callers of [mergePreviewPhotoOrder]: Restaurant/HotelDetailScreen only
-/// need [imageUrl] (their `photoUrlsOverride` is a bare `List<String>`),
-/// PrivateChefDetailScreen also needs [id] (`PrivateChefHero`'s
-/// report-photo action reads `photos[i].id`). An untouched published
-/// entry keeps its own published-table id; a swapped-in or appended
-/// pending entry uses its submission's own id — never a fabricated one.
-/// Neither is "the id it will actually have once approved" (Postgres
-/// generates a fresh one at insert time, unknowable in advance) — that's
-/// fine here, since the one action that would care (reporting a photo)
-/// is always inert in preview mode.
+/// One photo in a merged preview order — just enough identity for every
+/// caller of [mergePreviewPhotoOrder]: all three (Restaurant/Hotel/
+/// PrivateChefDetailScreen) now need [id], not only [imageUrl] —
+/// VenueDetailHero's and PrivateChefHero's own report-photo actions both
+/// read `photos[i].id`. An untouched published entry keeps its own
+/// published-table id; a swapped-in or appended pending entry uses its
+/// submission's own id — never a fabricated one. Neither is "the id it
+/// will actually have once approved" (Postgres generates a fresh one at
+/// insert time, unknowable in advance) — that's fine here, since the one
+/// action that would care (reporting a photo) is always inert in preview
+/// mode.
 class MergedPreviewPhoto {
   final String id;
   final String imageUrl;

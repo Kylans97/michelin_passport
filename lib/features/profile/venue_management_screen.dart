@@ -339,14 +339,28 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
             ManagedRestaurant(:final restaurant) => RestaurantDetailScreen(
               restaurant: restaurant,
               aboutTextOverride: aboutOverride,
-              photoUrlsOverride: [for (final p in mergedPhotos) p.imageUrl],
+              photosOverride: [
+                for (var i = 0; i < mergedPhotos.length; i++)
+                  PublishedVenuePhoto(
+                    id: mergedPhotos[i].id,
+                    imageUrl: mergedPhotos[i].imageUrl,
+                    displayOrder: i,
+                  ),
+              ],
               isPreview: true,
               previewIsStale: isStale,
             ),
             ManagedHotel(:final hotel) => HotelDetailScreen(
               hotel: hotel,
               aboutTextOverride: aboutOverride,
-              photoUrlsOverride: [for (final p in mergedPhotos) p.imageUrl],
+              photosOverride: [
+                for (var i = 0; i < mergedPhotos.length; i++)
+                  PublishedVenuePhoto(
+                    id: mergedPhotos[i].id,
+                    imageUrl: mergedPhotos[i].imageUrl,
+                    displayOrder: i,
+                  ),
+              ],
               isPreview: true,
               previewIsStale: isStale,
             ),
