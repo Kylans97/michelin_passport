@@ -16,13 +16,17 @@ The format follows Keep a Changelog.
 
 ---
 
-## v1.1.0
+## v1.1.0 — 2026-10-08
 
 ### Added
 
+- Venue claim request flow: a manager/owner/chef picks their venue,
+  submits role/business email/phone, with duplicate-claim protection and
+  a domain-mismatch flag surfaced on the admin notification
 - Venue manager permission model (`venue_managers_restaurants`/`_hotels`/
   `_private_chefs`), replacing the claim-based `has_approved_venue_claim()`
   check across every policy that gated on it
+- My venues screen, where a manager finds and opens what they manage
 - Six venue approval RPCs — approve/reject for both about-text and photo
   submissions
 - `publish-venue-photo` Edge Function, the documented normal path for
@@ -38,6 +42,16 @@ The format follows Keep a Changelog.
   or photo submission is approved or rejected, with the reviewer's own
   note carried on a rejection
 - A contact line on the venue management screen
+- The admin email on a new claim now reaches every claim type — a hotel
+  or private chef claim previously generated no email at all — through
+  one generic function rather than a duplicate per venue type
+- Passport stamp designs rebuilt with larger, size-aware footprints
+- Database foundation for venues and organisers eventually hosting their
+  own events: `cancelled_at` as the maintained cancellation signal,
+  owner edit rights on a submitted event, and a per-link approval marker
+  so crediting a co-participant doesn't require republishing the whole
+  event. Backend only — no new screen yet; the one user-visible effect
+  this build ships is the Fixed item below.
 
 ### Fixed
 
@@ -68,6 +82,19 @@ The format follows Keep a Changelog.
   catalogue biography and a separately-submitted "from the team" text —
   at once. The venue's own submitted text now always takes precedence;
   the biography shows only as a fallback until one exists.
+- A manager replacing a photo already occupying the same display slot
+  could lose track of which photo was which; replacement is now indexed
+  explicitly, with a message when this happens.
+- Owner preview re-fetches the venue fresh rather than reusing a stale
+  copy, and discloses to the manager when that refetch itself fails.
+- Event cancellation now reads a real, maintained `cancelled_at` column
+  instead of a `status` value nothing was keeping correct — the database
+  already stored it and a trigger kept it in sync, but the app never read
+  it, which is what made the drift invisible. `EventStatus` is removed
+  from the Dart model entirely: `upcoming`/`completed` were never read
+  anywhere beyond making this one field possible (confirmed by direct
+  search before removing it). `status` itself stays in the database,
+  kept correct by the same trigger, for any app build still reading it.
 
 ---
 
