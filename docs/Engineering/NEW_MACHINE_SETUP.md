@@ -127,33 +127,47 @@ move.
 
 ---
 
-## 4. The countries seed gap — this will bite immediately if you start a local stack
+## 4. The countries seed gap — fixed in migration history, not yet proven by replay
 
-If you run `supabase start` (or `supabase db diff --linked`) on the new
-machine, it will fail the same way it failed here: the shadow-database
-bootstrap replays all 83 migrations from empty, and no migration in history
-ever seeds `public.countries` — any migration carrying a real `country_code`
-(`20260810160000_create_events.sql`, `20260812100000_...`,
-`20260812150000_...`, and more) fails its foreign key, and the bootstrap never
-completes. This is not new-machine-specific; it is a pre-existing gap in
-migration history itself, confirmed by direct investigation, and it has
-nothing to do with anything the move does differently.
+The gap itself: no migration in the first 83 ever seeded `public.countries` —
+it was populated by hand outside migration history at some point after the
+schema was first applied. Any from-scratch replay (a shadow database, a
+preview branch, disaster recovery into an empty project) hit this immediately,
+failing at the first insert carrying a real `country_code`.
 
-**Parked, not fixed, as of this document**: a `countries` seed migration
-(generated from the live table, not hand-typed — 55 rows, confirmed) has been
-investigated and the CLI's exact behaviour on an out-of-order migration
-timestamp confirmed (it refuses by default, needs `--include-all`), but the
-seed migration has not been written, and will not be until it passes a full
-84-file replay with `ON_ERROR_STOP=1` — proof that adding it doesn't just move
-the failure somewhere else. See `CLAUDE.md`'s "Constraints on agent behaviour"
-section for the current standing note on `supabase db diff --linked` being
-blocked, and this project's own chat history around the schema-diff
-investigation for the full trail.
+**Fixed and applied**: `supabase/migrations/20260805141520_seed_countries.sql`
+is now committed and applied to production — 55 rows generated from the live
+table (not hand-typed), `on conflict (country_code) do nothing`, validated in a
+rollback transaction first (0 rows would insert — a true no-op against data
+that already exists) before being applied for real with `--include-all`
+(required: its timestamp precedes migrations already on remote, so plain
+`db push` wouldn't see it as pending). The remote ledger confirms 84/84, no
+local-only file.
 
-Until that seed migration lands: `supabase db diff --linked` and a from-scratch
-`supabase start` both fail on a fresh machine exactly as they do here. The
-linked remote project itself is unaffected — this only blocks local-stack and
-shadow-database workflows, not the app talking to production.
+**Still outstanding, and this is the part a new machine should actually run**:
+an end-to-end proof that a database built from *only* these 84 files, with
+nothing seeded by hand, comes up clean. The rollback validation above proves
+the migration is safe against a database that already has the data — it does
+not prove a database that doesn't yet exist can be built from the files alone.
+That proof needs a disposable Postgres replay with `ON_ERROR_STOP=1`
+(errors fatal, nothing tolerated), and it has not run since the fix landed —
+Docker has been down on the machine that did this work since **2026-10-01**
+and never recovered before this document was last updated.
+
+**Run this on the new machine, once Docker is confirmed working, and be
+specific about what each outcome means:**
+- Replaying the **83** pre-fix files alone should fail at
+  `20260810160000_create_events.sql`, **line 172** — the `'t Preuvenemint`
+  insert, `country_code = 'NL'`, against an empty `countries` table. If it
+  fails somewhere else instead, that's not this gap — don't assume it's the
+  same problem.
+- Replaying all **84** files (including the seed) should complete with zero
+  errors. If something *else* fails once `countries` exists, that's a second,
+  different gap — name it, don't work around it silently.
+
+Being specific about the expected failure point matters here: without it,
+whoever runs this later has no way to tell "the known problem, still present"
+apart from "a new problem that looks similar."
 
 ---
 
