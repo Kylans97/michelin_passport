@@ -208,7 +208,7 @@ this way during this project's own development, not hypothetical.
 
 Ten uploads have gone out this way before this document existed — the
 procedure lived entirely in one person's head. **Recorded here from the
-first run actually walked through while writing this section** (2026-10-08,
+first run actually walked through while writing this section** (2026-10-02,
 version 1.1.0 build 12, Xcode 26.6, Flutter 3.44.3), not from memory
 afterward: exit code 0, real timings, real file sizes, below.
 

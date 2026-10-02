@@ -2,10 +2,10 @@
 
 # Product Rules
 
-**Version:** 1.0  
+**Version:** 1.1  
 **Status:** Active  
 **Owner:** Product  
-**Last Updated:** 27 July 2026
+**Last Updated:** 2 October 2026
 
 ---
 
@@ -236,26 +236,28 @@ Nothing is public by default.
 
 Statistics should celebrate experiences.
 
-They should never encourage competition.
+Ranking places is core to the product. Which restaurants the community rates highest, across everyone, is the point of Community Rankings and should not be hedged.
+
+Ranking people is the narrow case. Among friends it is welcome — comparing stars or countries with people you actually know is part of what makes a shared hobby enjoyable. A public leaderboard of users, ranked against strangers, is out.
+
+Streaks are out everywhere. They create pressure to dine on a schedule instead of when it's worth it, and nothing about friends makes that better.
 
 Metrics should focus on:
 
 - places visited
 - countries explored
-- Michelin stars experienced
+- Michelin stars experienced, counted once per restaurant, because we reward discovery rather than repetition
 - years of memories
-
-Avoid creating pressure through rankings or streaks.
 
 ---
 
 # Social Features
 
-Social features exist to inspire.
+Social features exist to inspire — and, among friends, to invite comparison.
 
-Never to compare.
+Ranking venues is a different question, settled in Statistics above: an aggregate of what the community thinks, not a comparison between people.
 
-The application should encourage discovery rather than competition.
+This rule is about people. A public leaderboard of users, ranked against strangers, is out. The application should encourage discovery and shared enjoyment with the people in your life, not competition with people you don't know.
 
 ---
 
