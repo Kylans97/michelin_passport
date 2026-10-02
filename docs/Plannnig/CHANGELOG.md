@@ -16,7 +16,7 @@ The format follows Keep a Changelog.
 
 ---
 
-## v1.1.0 — 2026-10-08
+## v1.1.0 — 2026-10-02
 
 ### Added
 
@@ -42,16 +42,17 @@ The format follows Keep a Changelog.
   or photo submission is approved or rejected, with the reviewer's own
   note carried on a rejection
 - A contact line on the venue management screen
-- The admin email on a new claim now reaches every claim type — a hotel
-  or private chef claim previously generated no email at all — through
-  one generic function rather than a duplicate per venue type
 - Passport stamp designs rebuilt with larger, size-aware footprints
 - Database foundation for venues and organisers eventually hosting their
-  own events: `cancelled_at` as the maintained cancellation signal,
-  owner edit rights on a submitted event, and a per-link approval marker
-  so crediting a co-participant doesn't require republishing the whole
-  event. Backend only — no new screen yet; the one user-visible effect
-  this build ships is the Fixed item below.
+  own events: `cancelled_at` as the maintained cancellation signal (with
+  a compatibility shim keeping the old `status` column in sync for any
+  app build still reading it), an owner `UPDATE` policy plus a
+  column-restriction trigger so a host can edit everything about their
+  own event except the moderation machinery, and a per-link approval
+  marker on the three participant join tables so crediting a
+  co-participant doesn't require republishing the whole event. Backend
+  only — no new screen yet; the one user-visible effect this build ships
+  is the Fixed item below.
 
 ### Fixed
 
@@ -87,6 +88,19 @@ The format follows Keep a Changelog.
   explicitly, with a message when this happens.
 - Owner preview re-fetches the venue fresh rather than reusing a stale
   copy, and discloses to the manager when that refetch itself fails.
+- No migration ever seeded `public.countries`, so a database built from
+  the migration set alone (a disaster-recovery replay, a fresh preview
+  branch) failed at the first insert carrying a real `country_code` —
+  invisible until something actually needed to rebuild from scratch.
+  Seeded now from the live table, in migration history, so the gap
+  doesn't resurface on the next rebuild.
+- A hotel or private chef claim generated no admin email at all — only
+  `claims_restaurants` was ever wired to send one. Generalised into one
+  function across all three claim types rather than duplicated, and the
+  matching one-pending-claim-per-venue protection `claims_restaurants`
+  already had is now on `claims_hotels`/`claims_private_chefs` too, so a
+  second person can no longer hold a simultaneous pending claim on a
+  venue someone else already claimed.
 - Event cancellation now reads a real, maintained `cancelled_at` column
   instead of a `status` value nothing was keeping correct — the database
   already stored it and a trigger kept it in sync, but the app never read

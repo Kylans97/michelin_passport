@@ -186,7 +186,12 @@ is for, and traceability there is the whole point of the never-guess rule
 above. Engineering changes go in the app's `CHANGELOG.md`
 (`docs/Plannnig/CHANGELOG.md`), Keep a Changelog format, with near-misses
 under Fixed — an issue id is filing without a function there; what
-matters is what broke and why it would recur.
+matters is what broke and why it would recur. Engineering changes
+include schema and backend changes even when no build ships alongside
+them — a migration applied to production is not nothing just because no
+app code changed that day. Each entry belongs to the release it goes out
+alongside: applied before a build, it sits in that build's own section;
+applied after, it sits under Unreleased until the next one.
 
 **Treat published totals from secondary sources as unverified.** Only
 per-guide selections published by MICHELIN itself proved reliable.
