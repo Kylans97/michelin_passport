@@ -421,6 +421,16 @@ verify_jwt = false
 [functions.publish-venue-photo]
 verify_jwt = false
 
+# notify-content-report is called only by the content_reports insert
+# trigger via pg_net (see 20261010120000_add_content_report_admin_email_
+# notification.sql) — same reasoning as notify-venue-claim above: no user
+# JWT in that calling context, so this checks its own shared secret
+# (x-webhook-secret, compared against the
+# NOTIFY_CONTENT_REPORT_WEBHOOK_SECRET function secret, deliberately
+# separate from every other notify-* function's own) instead.
+[functions.notify-content-report]
+verify_jwt = false
+
 [analytics]
 enabled = true
 port = 54327
