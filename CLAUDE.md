@@ -281,6 +281,27 @@ database controls. Preferred shape:
   real state against production directly (query for the object the
   migration creates) before concluding anything, and never retry on
   output alone.
+- **A migration's filename timestamp is a monotonic sequence number, never
+  a date you believe it to be.** Name the next migration after the
+  highest existing one, full stop — correct replay order matters,
+  accurate-looking dates don't, and the two came apart badly enough to
+  be worth writing down: six migrations between `20260930120000` and
+  `20261008120000` carry filename dates up to six days ahead of the git
+  commit date that actually created them (verified per-file via `git log
+  --diff-filter=A --format=%ad`, not assumed), because each new filename
+  was picked as "the last one plus a day" rather than checked against
+  reality even once. This is not cosmetic: filename order is replay
+  order. A later-created migration misnamed with an *earlier* timestamp
+  than one already in the ledger would, on a from-scratch replay, apply
+  *before* it — and if the two touch the same object (a `drop function`/
+  `create function` pair, say), the fresh replay ends with whichever one
+  sorts last, independent of which one actually ran last in production.
+  Production stays correct either way (it only ever applies what's
+  pending, in order); a fresh bootstrap — disaster recovery, a preview
+  branch, the still-blocked replay proof — would silently diverge from
+  it. The real date belongs in the migration's own header comment and
+  the changelog entry, where it can actually be checked against git
+  history; the filename's only job is sort order.
 - A column, table or RPC that a shipped build reads cannot be removed
   while that build is in the wild. Destructive changes go in three
   steps — add the new shape, migrate readers and ship, then remove the
