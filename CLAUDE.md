@@ -268,6 +268,20 @@ database controls. Preferred shape:
   `supabase db dump --linked` for production's schema, a disposable local
   Postgres with migrations replayed directly via `psql`, then `diff` the
   two dumps.
+- `supabase db push --linked` can hang after printing "Applying
+  migration..." even though the migration already committed successfully —
+  observed directly (20261007120000, CLI 2.111.0). The failure mode this
+  invites is retrying the apply on the strength of the CLI not returning,
+  which is the one thing not to do. When a push looks stuck, verify the
+  real state against production directly (query for the object the
+  migration creates) before concluding anything, and never retry on
+  output alone.
+- A column, table or RPC that a shipped build reads cannot be removed
+  while that build is in the wild. Destructive changes go in three
+  steps — add the new shape, migrate readers and ship, then remove the
+  old shape once the old build is gone. During the middle step both
+  shapes must stay correct, not merely present, because a stale value an
+  old build trusts is worse than a missing one it crashes on.
 - Never modify files under `docs/Architecture/Michelin_Database/` without
   being asked — those are the record.
 - Do not run destructive commands against production data.
