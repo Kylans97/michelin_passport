@@ -275,9 +275,28 @@ not a new column or a new write path. The one piece of real prior art is
 which already computes a related but different number for a single
 friend's own profile: one count per unique restaurant, using that
 restaurant's stars at its most recent visit — deliberately avoiding
-double-counting a repeat visit to the same place. A ranking framed as
-"who has eaten the most stars" would need its own decision on that same
-question (every dining experience counted, or once per restaurant) before
-it could reuse or diverge from that precedent, plus how it interacts with
-a visit's own visibility/privacy setting when comparing across more than
-one friend at once. Not designed further here.
+double-counting a repeat visit to the same place.
+
+**Decided (2026-10-02): the unit is distinct restaurants, not dining
+experiences.** The ranking rewards discovery, not frequency — eating at
+the same three-star twelve times is twelve good evenings and one
+discovery, and the count should say one. This is not a future decision;
+it's confirming the existing per-restaurant computation already does the
+right thing, checked rather than assumed. Verified directly against both
+implementations that do this today (`FriendProfileStats.totalStars` and
+its sibling `PassportVenueStats.awardAtLatestVisit`, `lib/features/
+passport/passport_view_model.dart:43-49`) — both reduce a venue's visits
+to the single most recent one (`reduce` on `visitedOn`) and use **that
+visit's own `stars_at_visit`**, not the restaurant's current live
+`michelinStars`. So when a restaurant's star count changed between
+visits, the count a ranking would reuse takes the rating as it stood on
+the most recent visit, not the highest ever earned or the one at first
+discovery. `PassportVenueStats` additionally confirms this already works
+correctly per year, not only all-time — its own `visitsInPeriod` is
+pre-filtered to the active year before the same most-recent-visit
+reduction runs, so a restaurant visited in two different years would
+correctly count once in each, using each year's own most-recent value.
+Still a direction, not a commitment, and still not designed further —
+only the counting unit is now settled; what interacts with a visit's own
+visibility/privacy setting when comparing across more than one friend at
+once remains open.
