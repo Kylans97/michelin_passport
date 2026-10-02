@@ -1,11 +1,15 @@
 // Notify Venue Claim — sends an admin-facing email the moment someone
-// submits a restaurant claim, so a pending claim (which, since
-// 20260928120000_harden_claims_restaurants_insert_rls.sql, now blocks
-// every other user from claiming that same venue) never sits unseen.
+// submits a restaurant, hotel, or private-chef claim, so a pending claim
+// (which, since 20260928120000_harden_claims_restaurants_insert_rls.sql
+// for restaurants and 20261007120000_genericize_venue_claim_admin_email_
+// and_pending_indexes.sql for hotels/chefs, now blocks every other user
+// from claiming that same venue) never sits unseen.
 //
-// Called ONLY by the claims_restaurants insert trigger
-// (notify_admin_of_pending_restaurant_claim(), added in
-// 20260929120000_add_venue_claim_admin_email_notification.sql) via
+// Called ONLY by the generic claims-table insert trigger
+// (notify_admin_of_pending_venue_claim(), added in
+// 20261007120000_genericize_venue_claim_admin_email_and_pending_indexes.sql,
+// replacing the restaurant-only notify_admin_of_pending_restaurant_claim()
+// from 20260929120000_add_venue_claim_admin_email_notification.sql) via
 // pg_net — never by the Flutter app, and there is no user JWT to verify
 // in that calling context. So, unlike delete-account (verify_jwt = true,
 // unchanged, because it IS called by the client with a real session):
@@ -27,6 +31,24 @@
 // Function logs) and this function's own HTTP status — nothing else
 // reads either one automatically. See this repo's own PR/chat report for
 // exactly how that surfaces to a human.
+//
+// ------------------------------------------------------------
+// TEMPORARY dual-payload tolerance — remove once the trigger migration
+// is confirmed applied and no old-shape call can still be in flight.
+// ------------------------------------------------------------
+// The trigger function changed, in the same deploy window as this file,
+// from sending the raw restaurant row (`to_jsonb(new)`, no envelope) to
+// sending `{claim_type, row}`. A migration and an Edge Function deploy
+// are two separate actions with no way to guarantee which lands first,
+// so this function accepts BOTH shapes — an un-enveloped body is treated
+// as a legacy claims_restaurants payload — mirroring the same rule
+// CLAUDE.md now states for a shipped build reading a column mid-rename:
+// during the transition both shapes must stay correct, not merely
+// present. Removal condition: once
+// 20261007120000_genericize_venue_claim_admin_email_and_pending_indexes.sql
+// is applied in production, the trigger can never again send the old
+// flat shape, and the `'claim_type' in body` branch below (plus the
+// LegacyClaimPayload type and its handling) can be deleted outright.
 
 import { createClient } from 'jsr:@supabase/supabase-js@2';
 
@@ -65,21 +87,76 @@ export interface NotifyClaimAdminClient {
   };
 }
 
-// The claims_restaurants row, sent verbatim as the trigger's own
-// to_jsonb(new) — see the migration's own comment for why the full row
-// is sent rather than just an id (avoids a second, redundant
-// claims_restaurants lookup here, and is exactly the state at insert
-// time with no race against a later update).
-export interface ClaimPayload {
+// The claims_* row, sent verbatim as the trigger's own to_jsonb(new) —
+// see the migration's own comment for why the full row is sent rather
+// than just an id (avoids a second, redundant claims table lookup here,
+// and is exactly the state at insert time with no race against a later
+// update). Only one of restaurant_id/hotel_id/private_chef_id is ever
+// present on a given row — which one is determined by claim_type.
+export interface ClaimRow {
   id: string;
   user_id: string;
-  restaurant_id: string;
+  restaurant_id?: string;
+  hotel_id?: string;
+  private_chef_id?: string;
   role: string;
   business_email: string;
   phone: string;
   notes: string | null;
   requested_at: string;
 }
+
+// The current (post-genericization) trigger payload shape: TG_TABLE_NAME
+// plus the row, exactly mirroring notify_admin_of_pending_venue_submission's
+// own envelope (20261004120000_add_venue_submission_admin_email_notification.sql).
+export interface ClaimEnvelope {
+  claim_type: string;
+  row: ClaimRow;
+}
+
+// The pre-genericization shape — a bare claims_restaurants row with no
+// envelope at all. Accepted only for the dual-payload tolerance window
+// described above.
+export type LegacyClaimPayload = ClaimRow;
+
+interface ClaimTypeConfig {
+  readonly viewName: string;
+  readonly subjectIdField: 'restaurant_id' | 'hotel_id' | 'private_chef_id';
+  // Column names on the venue's own `_full` view — deliberately NOT
+  // uniform across the three. Restaurants and hotels share `name` plus a
+  // stable `*_code`; private chefs have neither — only `display_name`
+  // and `slug` (confirmed against the actual private_chefs table before
+  // writing this, not assumed from the restaurant/hotel pair). Forcing a
+  // shared column shape here would mean inventing a code private chefs
+  // don't have.
+  readonly nameColumn: string;
+  readonly codeColumn: string;
+  readonly venueLabel: string;
+}
+
+const CLAIM_TYPES: Record<string, ClaimTypeConfig> = {
+  claims_restaurants: {
+    viewName: 'restaurants_full',
+    subjectIdField: 'restaurant_id',
+    nameColumn: 'name',
+    codeColumn: 'restaurant_code',
+    venueLabel: 'restaurant',
+  },
+  claims_hotels: {
+    viewName: 'hotels_full',
+    subjectIdField: 'hotel_id',
+    nameColumn: 'name',
+    codeColumn: 'hotel_code',
+    venueLabel: 'hotel',
+  },
+  claims_private_chefs: {
+    viewName: 'private_chefs_full',
+    subjectIdField: 'private_chef_id',
+    nameColumn: 'display_name',
+    codeColumn: 'slug',
+    venueLabel: 'private chef',
+  },
+};
 
 export interface EmailMessage {
   from: string;
@@ -112,8 +189,14 @@ function jsonResponse(body: unknown, status: number): Response {
 // param (Supabase's own documented way to share a pre-filled query) only
 // needs the table name and the row id — both of which this function
 // already has. Opening it runs the query immediately.
-function dashboardLink(claimId: string): string {
-  const query = `select * from public.claims_restaurants where id = '${claimId}';`;
+//
+// tableName is always one of CLAIM_TYPES' own keys by the time this is
+// called (claim_type is validated against that allow-list before any
+// lookup happens), never attacker-controlled free text, so interpolating
+// it directly here carries the same (non-)risk as the original
+// hardcoded 'claims_restaurants' literal did.
+function dashboardLink(tableName: string, claimId: string): string {
+  const query = `select * from public.${tableName} where id = '${claimId}';`;
   return `https://supabase.com/dashboard/project/${DASHBOARD_PROJECT_REF}/sql/new?content=${
     encodeURIComponent(query)
   }`;
@@ -164,17 +247,39 @@ export async function handleRequest(
     return jsonResponse({ error: 'Unauthorized' }, 401);
   }
 
-  let claim: ClaimPayload;
+  let body: unknown;
   try {
-    claim = await req.json();
+    body = await req.json();
   } catch (_err) {
     return jsonResponse({ error: 'Invalid JSON body' }, 400);
   }
+
+  // Dual-payload tolerance (see file header): an enveloped body carries
+  // its own claim_type; a bare body is the legacy claims_restaurants
+  // shape with no envelope at all.
+  let claimType: string;
+  let claim: ClaimRow;
+  if (body && typeof body === 'object' && 'claim_type' in body && 'row' in body) {
+    const envelope = body as ClaimEnvelope;
+    claimType = envelope.claim_type;
+    claim = envelope.row;
+  } else {
+    claimType = 'claims_restaurants';
+    claim = body as LegacyClaimPayload;
+  }
+
+  const config = CLAIM_TYPES[claimType];
+  if (!config) {
+    return jsonResponse({ error: `Unknown claim_type: ${claimType}` }, 400);
+  }
+
+  const subjectId = claim?.[config.subjectIdField];
+
   if (
     !claim ||
     typeof claim.id !== 'string' ||
     typeof claim.user_id !== 'string' ||
-    typeof claim.restaurant_id !== 'string' ||
+    typeof subjectId !== 'string' ||
     typeof claim.role !== 'string' ||
     typeof claim.business_email !== 'string' ||
     typeof claim.phone !== 'string' ||
@@ -189,8 +294,10 @@ export async function handleRequest(
   // blocks sending it. The claim insert this email is ABOUT has already
   // committed by the time this function runs at all.
   const [venueResult, profileResult, userResult] = await Promise.all([
-    admin.from('restaurants_full').select('name, restaurant_code').eq('id', claim.restaurant_id)
-      .maybeSingle(),
+    admin.from(config.viewName).select(`${config.nameColumn}, ${config.codeColumn}`).eq(
+      'id',
+      subjectId,
+    ).maybeSingle(),
     admin.from('profiles').select('display_name, username').eq('id', claim.user_id).maybeSingle(),
     admin.auth.admin.getUserById(claim.user_id),
   ]);
@@ -198,7 +305,8 @@ export async function handleRequest(
   if (venueResult.error) {
     console.error('notify-venue-claim: venue lookup failed', {
       claimId: claim.id,
-      restaurantId: claim.restaurant_id,
+      claimType,
+      subjectId,
       message: venueResult.error.message,
     });
   }
@@ -217,8 +325,9 @@ export async function handleRequest(
     });
   }
 
-  const venueName = (venueResult.data?.name as string | undefined) ?? 'Unknown venue';
-  const restaurantCode = (venueResult.data?.restaurant_code as string | undefined) ??
+  const venueName = (venueResult.data?.[config.nameColumn] as string | undefined) ??
+    'Unknown venue';
+  const venueCode = (venueResult.data?.[config.codeColumn] as string | undefined) ??
     'unknown code';
   const displayName = (profileResult.data?.display_name as string | undefined) ??
     (profileResult.data?.username as string | undefined) ?? 'Unknown claimant';
@@ -230,9 +339,9 @@ export async function handleRequest(
     businessDomain !== accountDomain;
 
   const submittedAt = formatAmsterdamTime(claim.requested_at);
-  const link = dashboardLink(claim.id);
+  const link = dashboardLink(claimType, claim.id);
 
-  const subject = `New venue claim: ${venueName} (${restaurantCode})`;
+  const subject = `New ${config.venueLabel} claim: ${venueName} (${venueCode})`;
 
   const mismatchLineText = domainMismatch
     ? `\n⚠ Domain mismatch: business email domain "${businessDomain}" differs from the ` +
@@ -244,7 +353,7 @@ export async function handleRequest(
       `"${escapeHtml(accountDomain!)}". Worth a closer look.</p>`
     : '';
 
-  const text = `A new claim was submitted for ${venueName} (${restaurantCode}).
+  const text = `A new ${config.venueLabel} claim was submitted for ${venueName} (${venueCode}).
 
 Claimant: ${displayName}
 Account email: ${accountEmail ?? 'unknown'}
@@ -258,9 +367,9 @@ Submitted: ${submittedAt} (Europe/Amsterdam)
 Review in the dashboard: ${link}`;
 
   const html = `
-    <p>A new claim was submitted for <strong>${escapeHtml(venueName)}</strong> (${
-    escapeHtml(restaurantCode)
-  }).</p>
+    <p>A new ${escapeHtml(config.venueLabel)} claim was submitted for <strong>${
+    escapeHtml(venueName)
+  }</strong> (${escapeHtml(venueCode)}).</p>
     <table cellpadding="4" cellspacing="0">
       <tr><td><strong>Claimant</strong></td><td>${escapeHtml(displayName)}</td></tr>
       <tr><td><strong>Account email</strong></td><td>${
@@ -291,7 +400,8 @@ Review in the dashboard: ${link}`;
   if (!result.ok) {
     console.error('notify-venue-claim: email send failed', {
       claimId: claim.id,
-      restaurantId: claim.restaurant_id,
+      claimType,
+      subjectId,
       message: result.error,
     });
     return jsonResponse({ error: 'Email send failed' }, 502);

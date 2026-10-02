@@ -43,7 +43,8 @@ function req(opts: {
 }
 
 interface FakeOptions {
-  venue?: { name: string; restaurant_code: string } | null;
+  venue?: Record<string, unknown> | null;
+  venueTable?: string;
   venueError?: string;
   profile?: { display_name: string | null; username: string | null } | null;
   profileError?: string;
@@ -58,6 +59,7 @@ function fakeAdmin(opts: FakeOptions = {}): {
 } {
   const fromCalls: string[] = [];
   const getUserByIdCalls: string[] = [];
+  const venueTable = opts.venueTable ?? 'restaurants_full';
 
   const admin: NotifyClaimAdminClient = {
     from(table: string) {
@@ -68,7 +70,7 @@ function fakeAdmin(opts: FakeOptions = {}): {
             eq(_column: string, _value: string) {
               return {
                 maybeSingle: () => {
-                  if (table === 'restaurants_full') {
+                  if (table === venueTable) {
                     if (opts.venueError) {
                       return Promise.resolve({ data: null, error: { message: opts.venueError } });
                     }
@@ -294,4 +296,125 @@ Deno.test('a Resend failure is reported as a 502 and never thrown as an unhandle
   const { sendEmail } = fakeSendEmail({ ok: false, error: 'Resend responded 500' });
   const res = await handleRequest(req(), admin, sendEmail, SECRET);
   assertEquals(res.status, 502);
+});
+
+// ============================================================
+// Genericization (20261007120000_genericize_venue_claim_admin_email_and_
+// pending_indexes.sql): the trigger now sends an enveloped
+// {claim_type, row} body for all three claims tables, and this function
+// must render a correct email for each — not just the restaurant case
+// above, which was the only one with real production data behind it
+// before this change.
+// ============================================================
+
+const HOTEL_CLAIM = {
+  id: 'claim-hotel-1',
+  user_id: 'user-2',
+  hotel_id: 'hotel-1',
+  role: 'manager',
+  business_email: 'manager@chateau.example',
+  phone: '+31 6 9876 5432',
+  notes: null,
+  requested_at: '2026-09-29T13:00:00Z',
+};
+
+const PRIVATE_CHEF_CLAIM = {
+  id: 'claim-chef-1',
+  user_id: 'user-3',
+  private_chef_id: 'chef-1',
+  role: 'chef',
+  business_email: 'lucas@lucascooks.example',
+  phone: '+31 6 1111 2222',
+  notes: 'This is my own profile.',
+  requested_at: '2026-09-29T13:00:00Z',
+};
+
+Deno.test('an enveloped hotel claim queries hotels_full and renders a correct email', async () => {
+  const { admin, fromCalls } = fakeAdmin({
+    venueTable: 'hotels_full',
+    venue: { name: 'Château Neercanne', hotel_code: 'CHN-NL-001' },
+  });
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(
+    req({ body: { claim_type: 'claims_hotels', row: HOTEL_CLAIM } }),
+    admin,
+    sendEmail,
+    SECRET,
+  );
+  assertEquals(res.status, 200);
+  assertEquals(calls.length, 1);
+  assertEquals(fromCalls.includes('hotels_full'), true);
+
+  const email = calls[0];
+  assertStringIncludes(email.subject, 'hotel claim');
+  assertStringIncludes(email.subject, 'Château Neercanne');
+  assertStringIncludes(email.subject, 'CHN-NL-001');
+  assertStringIncludes(email.text, 'manager@chateau.example');
+  assertStringIncludes(decodeURIComponent(email.text), 'claims_hotels');
+  assertStringIncludes(decodeURIComponent(email.text), "id = 'claim-hotel-1'");
+});
+
+Deno.test('an enveloped private-chef claim queries private_chefs_full and renders display_name/slug, not name/code', async () => {
+  const { admin, fromCalls } = fakeAdmin({
+    venueTable: 'private_chefs_full',
+    venue: { display_name: 'Lucas', slug: 'lucas' },
+  });
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(
+    req({ body: { claim_type: 'claims_private_chefs', row: PRIVATE_CHEF_CLAIM } }),
+    admin,
+    sendEmail,
+    SECRET,
+  );
+  assertEquals(res.status, 200);
+  assertEquals(calls.length, 1);
+  assertEquals(fromCalls.includes('private_chefs_full'), true);
+
+  const email = calls[0];
+  assertStringIncludes(email.subject, 'private chef claim');
+  assertStringIncludes(email.subject, 'Lucas');
+  assertStringIncludes(email.subject, 'lucas');
+  assertStringIncludes(email.text, 'lucas@lucascooks.example');
+  assertStringIncludes(decodeURIComponent(email.text), 'claims_private_chefs');
+});
+
+Deno.test('a venue lookup failure degrades gracefully for a hotel claim too', async () => {
+  const { admin } = fakeAdmin({ venueTable: 'hotels_full', venue: null });
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(
+    req({ body: { claim_type: 'claims_hotels', row: HOTEL_CLAIM } }),
+    admin,
+    sendEmail,
+    SECRET,
+  );
+  assertEquals(res.status, 200);
+  assertStringIncludes(calls[0].subject, 'Unknown venue');
+});
+
+Deno.test('an unknown claim_type is rejected with 400 before any lookup runs', async () => {
+  const { admin, fromCalls } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(
+    req({ body: { claim_type: 'claims_wineries', row: HOTEL_CLAIM } }),
+    admin,
+    sendEmail,
+    SECRET,
+  );
+  assertEquals(res.status, 400);
+  assertEquals(fromCalls.length, 0);
+  assertEquals(calls.length, 0);
+});
+
+Deno.test('a legacy un-enveloped restaurant payload (pre-genericization trigger) is still accepted', async () => {
+  // This is VALID_CLAIM itself — a bare row, no {claim_type, row} wrapper
+  // — proving the dual-payload tolerance window actually works, not just
+  // that the new enveloped shape works. Every test above this section
+  // already exercises this path implicitly; this test names it so the
+  // tolerance isn't only incidentally covered.
+  const { admin, fromCalls } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(req(), admin, sendEmail, SECRET);
+  assertEquals(res.status, 200);
+  assertEquals(fromCalls.includes('restaurants_full'), true);
+  assertStringIncludes(calls[0].subject, 'restaurant claim');
 });
