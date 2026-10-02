@@ -141,6 +141,8 @@ Every function: `SECURITY DEFINER`, explicit `set search_path = public`, `revoke
 
 `ProfileScreen`'s tier badge, "Community Stats" (tier distribution), and "Trophies" sections — all three depended on `user_tiers`/`tier_stats`/`trophies`/`user_trophies`, none of which exist in the live schema (§0.2). Rebuilding a tier/trophy system is out of this step's scope entirely, not deferred-but-implied. `TrophyRepository`/`models/trophy.dart` are untouched (still referenced by `rating_dialog.dart`, which itself is dead/unreachable code — `showRatingDialog` is called from nowhere in the app — and by `notifications_screen.dart`'s own friend-request UI, fixed to compile against the new `FriendshipRepository` API with its trophy side-effect removed, since that side effect also targeted the same nonexistent tables).
 
+**Superseded (2026-10-02):** "out of this step's scope" read as temporary and no longer does — the trophy system is gone as a settled product decision, not deferred. `lib/models/trophy.dart`, `lib/data/repositories/trophy_repository.dart`, and `lib/core/widgets/trophy_popup.dart` have been deleted outright, confirmed to have zero callers anywhere in the app at deletion time. The `rating_dialog.dart` reference noted above had already stopped being true by the time of this check — that file no longer mentions trophy at all, independent of today's deletion — so this paragraph's wiring description was stale before today, not only after.
+
 `lib/features/notifications/notifications_screen.dart` was fixed (its entire feature was already "pending friend requests, accept/decline inline" — a like-for-like API update, not new functionality) but **not visually redesigned** — out of this step's declared scope.
 
 ---

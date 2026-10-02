@@ -56,8 +56,8 @@ import 'widgets/explore_search_results_view.dart';
 /// EventsRepository.loadEvents(), and buildIlikeOrFilter's own note on the
 /// untrimmed-query bug this already fixed).
 ///
-/// Catalogue-read-only, same as before this redesign: no visited,
-/// wishlist or trophy state surfaces here.
+/// Catalogue-read-only, same as before this redesign: no visited or
+/// wishlist state surfaces here.
 class ExploreScreen extends StatefulWidget {
   const ExploreScreen({super.key});
 
