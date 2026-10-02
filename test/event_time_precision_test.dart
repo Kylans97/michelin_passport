@@ -162,7 +162,6 @@ void main() {
         timezone: 'Europe/Amsterdam',
         countryCode: 'NL',
         eventType: EventType.festival,
-        status: EventStatus.upcoming,
         createdAt: DateTime.utc(2026, 1, 1),
       );
       expect(event.startDate, DateTime.utc(2026, 8, 27));
@@ -179,7 +178,6 @@ void main() {
           endAt: DateTime.utc(2026, 1, 2),
           countryCode: 'NL',
           eventType: EventType.dinner,
-          status: EventStatus.upcoming,
           createdAt: DateTime.utc(2026, 1, 1),
         ),
         throwsA(isA<ArgumentError>()),

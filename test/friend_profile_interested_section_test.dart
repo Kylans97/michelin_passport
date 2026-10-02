@@ -33,7 +33,6 @@ Event _event(String id, String name, {DateTime? startAt}) => Event(
   timezone: 'UTC',
   countryCode: 'NL',
   eventType: EventType.festival,
-  status: EventStatus.upcoming,
   createdAt: DateTime(2026, 1, 1),
 );
 

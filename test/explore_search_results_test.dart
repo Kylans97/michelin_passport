@@ -80,7 +80,7 @@ Event _event({
   countryCode: 'NL',
   city: city ?? 'Maastricht',
   eventType: EventType.festival,
-  status: cancelled ? EventStatus.cancelled : EventStatus.upcoming,
+  cancelledAt: cancelled ? DateTime.utc(2026, 1, 1) : null,
   createdAt: DateTime(2026, 1, 1),
 );
 

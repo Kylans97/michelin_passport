@@ -46,7 +46,6 @@ Event _event() => Event(
   endDate: DateTime.utc(2026, 9, 1),
   countryCode: 'FR',
   eventType: EventType.dinner,
-  status: EventStatus.upcoming,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 

@@ -32,7 +32,6 @@ Event _event({
   timezone: timezone,
   countryCode: 'NL',
   eventType: EventType.dinner,
-  status: EventStatus.upcoming,
   admissionType: admissionType,
   createdAt: DateTime.utc(2026, 1, 1),
 );

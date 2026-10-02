@@ -27,7 +27,7 @@ Event _event({
   endDate: endDate ?? startDate ?? DateTime.utc(2026, 9, 10),
   countryCode: countryCode,
   eventType: eventType,
-  status: cancelled ? EventStatus.cancelled : EventStatus.upcoming,
+  cancelledAt: cancelled ? DateTime.utc(2026, 1, 1) : null,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 
@@ -288,7 +288,6 @@ void main() {
         endDate: DateTime.utc(2026, 9, 18),
         countryCode: 'NL',
         eventType: EventType.dinner,
-        status: EventStatus.upcoming,
         createdAt: DateTime.utc(2026, 1, 1),
       );
       final result = applyDiscoveryFilters(
@@ -314,7 +313,6 @@ void main() {
         timezone: 'Europe/Amsterdam',
         countryCode: 'NL',
         eventType: EventType.dinner,
-        status: EventStatus.upcoming,
         createdAt: DateTime.utc(2026, 1, 1),
       );
       final result = applyDiscoveryFilters(
@@ -339,7 +337,6 @@ void main() {
         endDate: DateTime.utc(2026, 9, 18),
         countryCode: 'NL',
         eventType: EventType.festival,
-        status: EventStatus.upcoming,
         createdAt: DateTime.utc(2026, 1, 1),
       );
       final result = applyDiscoveryFilters(

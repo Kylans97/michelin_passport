@@ -40,7 +40,6 @@ Event _event({
   longitude: 5.69,
   imageUrl: imageUrl,
   eventType: EventType.festival,
-  status: EventStatus.completed,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 

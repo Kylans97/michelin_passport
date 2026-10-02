@@ -55,23 +55,6 @@ enum EventType {
   };
 }
 
-/// The three permitted values of `events.status`.
-enum EventStatus {
-  upcoming('upcoming'),
-  cancelled('cancelled'),
-  completed('completed');
-
-  final String dbValue;
-  const EventStatus(this.dbValue);
-
-  static EventStatus fromDbValue(String? value) {
-    for (final status in EventStatus.values) {
-      if (status.dbValue == value) return status;
-    }
-    return EventStatus.upcoming;
-  }
-}
-
 /// The four permitted values of `events.admission_type` (see
 /// supabase/migrations/20260810180000_add_event_admission.sql). An event's
 /// `ticket_url` alone never says whether the event ITSELF requires payment
@@ -160,7 +143,15 @@ class Event {
   final String? ticketUrl;
   final String? imageUrl;
   final EventType eventType;
-  final EventStatus status;
+  // null = not cancelled, a timestamp = cancelled then. Replaces the
+  // retired `status` enum (upcoming/cancelled/completed) — upcoming/
+  // completed were never read anywhere beyond making this possible
+  // (confirmed by direct search before removing the enum); cancelled is
+  // the one state actually worth storing, since it's an assertion, not
+  // something derivable from the time fields below. `status` itself still
+  // exists in the database, kept correct by a trigger for an app build
+  // that might still read it — this model simply stops parsing it.
+  final DateTime? cancelledAt;
   final EventAdmissionType admissionType;
   final String? admissionNote;
   final DateTime createdAt;
@@ -223,7 +214,7 @@ class Event {
     this.ticketUrl,
     this.imageUrl,
     required this.eventType,
-    required this.status,
+    this.cancelledAt,
     this.admissionType = EventAdmissionType.unknown,
     this.admissionNote,
     required this.createdAt,
@@ -281,7 +272,7 @@ class Event {
     );
   }
 
-  bool get isCancelled => status == EventStatus.cancelled;
+  bool get isCancelled => cancelledAt != null;
 
   // "mixed" is free general admission with a separately-ticketed add-on
   // (e.g. 't Preuvenemint) — attending the event itself costs nothing, so
@@ -362,7 +353,12 @@ class Event {
     ticketUrl: json['ticket_url'] as String?,
     imageUrl: json['image_url'] as String?,
     eventType: EventType.fromDbValue(json['event_type'] as String?),
-    status: EventStatus.fromDbValue(json['status'] as String?),
+    // null = not cancelled. status (still present in the database, kept
+    // correct for old builds by a trigger) is deliberately not parsed
+    // here — this is the only thing it was ever read for.
+    cancelledAt: json['cancelled_at'] == null
+        ? null
+        : DateTime.parse(json['cancelled_at'] as String),
     admissionType: EventAdmissionType.fromDbValue(
       json['admission_type'] as String?,
     ),

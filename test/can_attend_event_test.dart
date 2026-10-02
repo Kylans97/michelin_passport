@@ -9,7 +9,7 @@ import 'package:michelin_passport/models/event.dart';
 Event _event({
   DateTime? startAt,
   DateTime? endAt,
-  EventStatus status = EventStatus.upcoming,
+  DateTime? cancelledAt,
 }) => Event(
   id: 'evt-1',
   name: 'Test Event',
@@ -17,7 +17,7 @@ Event _event({
   endAt: endAt ?? DateTime(2026, 8, 30),
   countryCode: 'NL',
   eventType: EventType.festival,
-  status: status,
+  cancelledAt: cancelledAt,
   createdAt: DateTime(2026, 1, 1),
 );
 
@@ -37,7 +37,7 @@ void main() {
       final event = _event(
         startAt: DateTime(2026, 8, 28),
         endAt: DateTime(2026, 8, 30),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime(2026, 8, 1),
       );
       expect(canAttendEvent(event, now: now), isFalse);
     });
@@ -46,15 +46,6 @@ void main() {
       final event = _event(
         startAt: DateTime(2026, 1, 1),
         endAt: DateTime(2026, 1, 2),
-      );
-      expect(canAttendEvent(event, now: now), isFalse);
-    });
-
-    test('false for a completed-status event that already ended', () {
-      final event = _event(
-        startAt: DateTime(2026, 1, 1),
-        endAt: DateTime(2026, 1, 2),
-        status: EventStatus.completed,
       );
       expect(canAttendEvent(event, now: now), isFalse);
     });

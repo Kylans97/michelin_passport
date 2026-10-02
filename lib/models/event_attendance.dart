@@ -20,8 +20,8 @@ enum EventIntentStatus {
   /// Fails safe to [interested] — the lighter-commitment state — for a
   /// null or unrecognised value; the CHECK constraint guarantees one of
   /// the two legal values in practice, so this is only reached if the
-  /// schema changes underneath us (matching EventType/EventStatus's own
-  /// fail-safe convention).
+  /// schema changes underneath us (matching EventType's own fail-safe
+  /// convention).
   static EventIntentStatus fromDbValue(String? value) {
     for (final status in EventIntentStatus.values) {
       if (status.dbValue == value) return status;

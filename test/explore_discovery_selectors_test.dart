@@ -61,7 +61,7 @@ Event _event({
   String name = 'Test Event',
   required DateTime startAt,
   DateTime? endAt,
-  EventStatus status = EventStatus.upcoming,
+  DateTime? cancelledAt,
   DateTime? createdAt,
   String? missingListingReportId,
 }) => Event(
@@ -71,7 +71,7 @@ Event _event({
   endAt: endAt ?? startAt,
   countryCode: 'FR',
   eventType: EventType.festival,
-  status: status,
+  cancelledAt: cancelledAt,
   createdAt: createdAt ?? DateTime(2026, 1, 1),
   missingListingReportId: missingListingReportId,
 );
@@ -201,7 +201,7 @@ void main() {
           id: 'e1',
           name: 'Cancelled Soonest',
           startAt: DateTime(2026, 8, 1),
-          status: EventStatus.cancelled,
+          cancelledAt: DateTime(2026, 1, 1),
         ),
         _event(id: 'e2', name: 'Next Upcoming', startAt: DateTime(2026, 9, 1)),
       ];
@@ -212,7 +212,10 @@ void main() {
       expect(selectFeaturedEvent(const []), isNull);
       expect(
         selectFeaturedEvent([
-          _event(startAt: DateTime(2026, 8, 1), status: EventStatus.cancelled),
+          _event(
+            startAt: DateTime(2026, 8, 1),
+            cancelledAt: DateTime(2026, 1, 1),
+          ),
         ]),
         isNull,
       );

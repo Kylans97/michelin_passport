@@ -37,7 +37,6 @@ Event _event({
   city: city,
   imageUrl: imageUrl,
   eventType: EventType.dinner,
-  status: EventStatus.completed,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 

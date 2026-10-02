@@ -43,7 +43,7 @@ Event _event({
   required DateTime endAt,
   String countryCode = 'NL',
   String? city = 'Maastricht',
-  EventStatus status = EventStatus.upcoming,
+  DateTime? cancelledAt,
   String? timezone = 'UTC',
 }) => Event(
   id: id,
@@ -68,7 +68,7 @@ Event _event({
   countryCode: countryCode,
   city: city,
   eventType: EventType.festival,
-  status: status,
+  cancelledAt: cancelledAt,
   createdAt: DateTime(2026, 1, 1),
 );
 
@@ -337,7 +337,7 @@ void main() {
       final event = _event(
         startAt: DateTime(2026, 8, 28),
         endAt: DateTime(2026, 8, 28, 23),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime(2026, 1, 1),
       );
       final trip = _trip(
         startDate: DateTime(2026, 8, 27),
@@ -346,11 +346,11 @@ void main() {
       expect(eventMatchesTrip(event, trip), isFalse);
     });
 
-    test('Event.isCancelled reflects status correctly', () {
+    test('Event.isCancelled reflects cancelledAt correctly', () {
       final cancelled = _event(
         startAt: DateTime(2026, 8, 28),
         endAt: DateTime(2026, 8, 28),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime(2026, 1, 1),
       );
       final upcoming = _event(
         startAt: DateTime(2026, 8, 28),
@@ -358,6 +358,70 @@ void main() {
       );
       expect(cancelled.isCancelled, isTrue);
       expect(upcoming.isCancelled, isFalse);
+    });
+  });
+
+  // cancelled_at is new to production (20261008120000) and has never been
+  // exercised against a real row — every live event today is null. These
+  // are its first real test, covering the one thing the model no longer
+  // reads (status) and the one thing it now does (cancelled_at), via a
+  // real Event.fromJson parse rather than the direct-constructor fixtures
+  // used elsewhere in this file.
+  group('M: cancelled_at (replaces status) — fromJson parsing', () {
+    Map<String, dynamic> baseJson() => {
+      'id': 'evt-1',
+      'name': 'Test Event',
+      'description': null,
+      'start_at': '2026-08-27T16:00:00+00:00',
+      'end_at': '2026-08-30T22:00:00+00:00',
+      'start_date': '2026-08-27',
+      'end_date': '2026-08-30',
+      'country_code': 'NL',
+      'city': 'Maastricht',
+      'venue_name': null,
+      'address': null,
+      'latitude': null,
+      'longitude': null,
+      'official_url': null,
+      'ticket_url': null,
+      'image_url': null,
+      'event_type': 'festival',
+      'created_at': '2026-08-10T12:00:00+00:00',
+    };
+
+    test('cancelled_at null parses to isCancelled false — the state of '
+        'every one of the 28 live events today', () {
+      final event = Event.fromJson(baseJson()..['cancelled_at'] = null);
+      expect(event.cancelledAt, isNull);
+      expect(event.isCancelled, isFalse);
+    });
+
+    test('a real cancelled_at timestamp parses to isCancelled true', () {
+      final event = Event.fromJson(
+        baseJson()..['cancelled_at'] = '2026-09-15T10:00:00+00:00',
+      );
+      expect(event.cancelledAt, isNotNull);
+      expect(event.isCancelled, isTrue);
+    });
+
+    test('cancelled_at key absent entirely (a select() that predates this '
+        'column, or an older cached response) parses safely to not '
+        'cancelled, never crashes', () {
+      final json = baseJson(); // no cancelled_at key at all
+      final event = Event.fromJson(json);
+      expect(event.cancelledAt, isNull);
+      expect(event.isCancelled, isFalse);
+    });
+
+    test('a status value in the JSON (still sent by the database, kept in '
+        'sync by the compatibility shim) is simply ignored — only '
+        'cancelled_at drives isCancelled now', () {
+      final event = Event.fromJson(
+        baseJson()
+          ..['cancelled_at'] = null
+          ..['status'] = 'cancelled', // shim bug or stale cache, hypothetically
+      );
+      expect(event.isCancelled, isFalse);
     });
   });
 

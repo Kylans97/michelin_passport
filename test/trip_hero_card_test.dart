@@ -40,7 +40,6 @@ Event _event({
   endDate: endDate ?? DateTime.utc(2026, 8, 31),
   countryCode: 'NL',
   eventType: EventType.festival,
-  status: EventStatus.upcoming,
   createdAt: DateTime(2026, 1, 1),
 );
 

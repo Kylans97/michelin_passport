@@ -31,7 +31,7 @@ Event _event({bool freeEntry = false, bool cancelled = false}) => Event(
   countryCode: 'NL',
   city: 'Maastricht',
   eventType: EventType.festival,
-  status: cancelled ? EventStatus.cancelled : EventStatus.upcoming,
+  cancelledAt: cancelled ? DateTime.utc(2026, 1, 1) : null,
   admissionType: freeEntry ? EventAdmissionType.free : EventAdmissionType.paid,
   createdAt: DateTime.utc(2026, 1, 1),
 );

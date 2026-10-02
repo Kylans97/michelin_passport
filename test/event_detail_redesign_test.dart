@@ -41,7 +41,7 @@ Event _event({
   String? ticketUrl,
   String? imageUrl,
   EventType eventType = EventType.festival,
-  EventStatus status = EventStatus.upcoming,
+  DateTime? cancelledAt,
   EventAdmissionType admissionType = EventAdmissionType.unknown,
   String? admissionNote,
   String? timezone = 'UTC',
@@ -65,7 +65,7 @@ Event _event({
   ticketUrl: ticketUrl,
   imageUrl: imageUrl,
   eventType: eventType,
-  status: status,
+  cancelledAt: cancelledAt,
   admissionType: admissionType,
   admissionNote: admissionNote,
   createdAt: DateTime(2026, 1, 1),
@@ -650,7 +650,11 @@ void main() {
       tester,
     ) async {
       await tester.pumpWidget(
-        _wrap(EventMetaSection(event: _event(status: EventStatus.cancelled))),
+        _wrap(
+          EventMetaSection(
+            event: _event(cancelledAt: DateTime(2026, 1, 1)),
+          ),
+        ),
       );
       expect(find.textContaining('cancelled'), findsOneWidget);
       final icon = tester.widget<Icon>(find.byIcon(Icons.cancel_outlined));
@@ -661,9 +665,7 @@ void main() {
     testWidgets('upcoming (non-cancelled) event shows no cancelled row', (
       tester,
     ) async {
-      await tester.pumpWidget(
-        _wrap(EventMetaSection(event: _event(status: EventStatus.upcoming))),
-      );
+      await tester.pumpWidget(_wrap(EventMetaSection(event: _event())));
       expect(find.byIcon(Icons.cancel_outlined), findsNothing);
     });
 
@@ -674,7 +676,7 @@ void main() {
             event: _event(
               admissionType: EventAdmissionType.mixed,
               admissionNote: 'Optional add-on',
-              status: EventStatus.cancelled,
+              cancelledAt: DateTime(2026, 1, 1),
             ),
           ),
         ),
@@ -814,7 +816,6 @@ void main() {
         countryCode: 'NL',
         venueName: 'Restaurant Flore',
         eventType: EventType.dinner,
-        status: EventStatus.upcoming,
         createdAt: DateTime.utc(2026, 1, 1),
       );
       await tester.pumpWidget(_wrap(EventMetaSection(event: dateOnlyEvent)));

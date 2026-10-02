@@ -63,6 +63,7 @@ Event _event({
   DateTime? startAt,
   String? city,
   bool freeEntry = true,
+  bool cancelled = false,
 }) => Event(
   id: id,
   name: name,
@@ -75,8 +76,8 @@ Event _event({
   countryCode: 'NL',
   city: city ?? 'Maastricht',
   eventType: EventType.festival,
-  status: EventStatus.upcoming,
   admissionType: freeEntry ? EventAdmissionType.free : EventAdmissionType.paid,
+  cancelledAt: cancelled ? DateTime(2026, 1, 1) : null,
   createdAt: DateTime(2026, 1, 1),
 );
 
@@ -145,6 +146,39 @@ void main() {
         ),
       );
       expect(find.text('FREE ENTRY'), findsOneWidget);
+    });
+
+    // First real exercise of this badge for a cancelled event — the
+    // cancelled path has never fired in production, and selectFeaturedEvent
+    // itself excludes cancelled events, so this is only reachable if a
+    // caller passes one directly (as here) rather than via that selector.
+    testWidgets('shows a CANCELLED badge when the featured event is '
+        'cancelled', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          WhatsOnSection(
+            featuredEvent: _event(cancelled: true),
+            onTapEvent: (_) {},
+            onViewAll: () {},
+          ),
+        ),
+      );
+      expect(find.text('CANCELLED'), findsOneWidget);
+    });
+
+    testWidgets('shows no CANCELLED badge for a non-cancelled event', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(
+          WhatsOnSection(
+            featuredEvent: _event(),
+            onTapEvent: (_) {},
+            onViewAll: () {},
+          ),
+        ),
+      );
+      expect(find.text('CANCELLED'), findsNothing);
     });
 
     testWidgets('long event name and city at 320px — no overflow', (

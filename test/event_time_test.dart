@@ -203,7 +203,6 @@ void main() {
       timezone: tz,
       countryCode: 'NL',
       eventType: EventType.festival,
-      status: EventStatus.upcoming,
       createdAt: DateTime.utc(2026, 1, 1),
     );
 
@@ -336,7 +335,6 @@ void main() {
         timezone: 'Asia/Tokyo',
         countryCode: 'JP',
         eventType: EventType.festival,
-        status: EventStatus.upcoming,
         createdAt: DateTime.utc(2026, 1, 1),
       );
       final tripOn31st = trip(
@@ -357,7 +355,6 @@ void main() {
         timezone: 'America/New_York',
         countryCode: 'US',
         eventType: EventType.festival,
-        status: EventStatus.upcoming,
         createdAt: DateTime.utc(2026, 1, 1),
       );
       final tripOn28th = trip(
@@ -394,7 +391,6 @@ void main() {
         timezone: 'Europe/Amsterdam',
         countryCode: 'NL',
         eventType: EventType.festival,
-        status: EventStatus.upcoming,
         createdAt: DateTime.utc(2026, 1, 1),
       );
       final later = Event(
@@ -405,7 +401,6 @@ void main() {
         timezone: 'Asia/Tokyo',
         countryCode: 'NL',
         eventType: EventType.festival,
-        status: EventStatus.upcoming,
         createdAt: DateTime.utc(2026, 1, 1),
       );
       final result = eventsMatchingTrip([later, earlier], trip);

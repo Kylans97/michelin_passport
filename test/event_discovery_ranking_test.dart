@@ -23,7 +23,6 @@ Event _event({required String id, required DateTime startAt, String? city}) =>
       countryCode: 'NL',
       city: city,
       eventType: EventType.dinner,
-      status: EventStatus.upcoming,
       createdAt: DateTime.utc(2026, 1, 1),
     );
 

@@ -25,7 +25,7 @@ Event _event({
   DateTime? startDate,
   DateTime? endDate,
   String? timezone = 'UTC',
-  EventStatus status = EventStatus.upcoming,
+  DateTime? cancelledAt,
 }) => Event(
   id: id,
   name: name,
@@ -36,7 +36,7 @@ Event _event({
   timezone: timezone,
   countryCode: 'NL',
   eventType: EventType.dinner,
-  status: status,
+  cancelledAt: cancelledAt,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 
@@ -118,7 +118,7 @@ void main() {
         id: 'cancelled',
         startAt: _utc(DateTime(2026, 10, 19, 18)),
         endAt: _utc(DateTime(2026, 10, 19, 22)),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime.utc(2026, 1, 1),
       );
       final result = upcomingHostedEvents([
         cancelled,

@@ -27,7 +27,6 @@ Event _event({
   city: city,
   imageUrl: imageUrl,
   eventType: EventType.festival,
-  status: EventStatus.upcoming,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 

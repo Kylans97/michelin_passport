@@ -30,7 +30,6 @@ Event _event({
   endDate: startDate ?? DateTime.utc(2026, 9, 10),
   countryCode: countryCode,
   eventType: eventType,
-  status: EventStatus.upcoming,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 

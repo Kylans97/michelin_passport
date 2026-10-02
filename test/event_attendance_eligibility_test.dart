@@ -16,7 +16,7 @@ Event _event({
   String id = 'evt-1',
   required DateTime startAt,
   required DateTime endAt,
-  EventStatus status = EventStatus.upcoming,
+  DateTime? cancelledAt,
   String? timezone,
 }) => Event(
   id: id,
@@ -26,7 +26,7 @@ Event _event({
   timezone: timezone,
   countryCode: 'NL',
   eventType: EventType.festival,
-  status: status,
+  cancelledAt: cancelledAt,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 
@@ -72,7 +72,7 @@ void main() {
       final event = _event(
         startAt: now.subtract(const Duration(days: 2)),
         endAt: now.subtract(const Duration(days: 1)),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime.utc(2026, 1, 1),
       );
       expect(
         resolveAttendanceUiState(
@@ -195,7 +195,7 @@ void main() {
       final event = _event(
         startAt: now.subtract(const Duration(days: 2)),
         endAt: now.subtract(const Duration(days: 1)),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime.utc(2026, 1, 1),
       );
       expect(
         resolveAttendanceUiState(
@@ -213,7 +213,7 @@ void main() {
       final event = _event(
         startAt: now.subtract(const Duration(days: 2)),
         endAt: now.subtract(const Duration(days: 1)),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime.utc(2026, 1, 1),
       );
       expect(
         resolveAttendanceUiState(
@@ -231,7 +231,7 @@ void main() {
       final event = _event(
         startAt: now.add(const Duration(days: 1)),
         endAt: now.add(const Duration(days: 2)),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime.utc(2026, 1, 1),
       );
       expect(
         resolveAttendanceUiState(
@@ -250,7 +250,7 @@ void main() {
       final event = _event(
         startAt: now.add(const Duration(days: 1)),
         endAt: now.add(const Duration(days: 2)),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime.utc(2026, 1, 1),
       );
       expect(
         resolveAttendanceUiState(
@@ -396,7 +396,7 @@ void main() {
       final event = _event(
         startAt: now.subtract(const Duration(days: 3)),
         endAt: now.subtract(const Duration(days: 2)),
-        status: EventStatus.cancelled,
+        cancelledAt: DateTime.utc(2026, 1, 1),
       );
       final result = mostRecentEligibleAttendancePromptEvent(
         pastGoingEvents: [event],
@@ -475,7 +475,6 @@ void main() {
       String id = 'evt-1',
       required String startDate,
       required String endDate,
-      EventStatus status = EventStatus.upcoming,
     }) => Event(
       id: id,
       name: 'Test Event',
@@ -492,7 +491,6 @@ void main() {
       timezone: 'Europe/Amsterdam',
       countryCode: 'NL',
       eventType: EventType.dinner,
-      status: status,
       createdAt: DateTime.utc(2026, 1, 1),
     );
 

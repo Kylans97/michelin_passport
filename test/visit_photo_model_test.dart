@@ -79,7 +79,6 @@ void main() {
       timezone: 'Europe/Amsterdam',
       countryCode: 'NL',
       eventType: EventType.dinner,
-      status: EventStatus.completed,
       createdAt: DateTime.utc(2026, 1, 1),
     );
 

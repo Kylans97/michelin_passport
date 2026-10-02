@@ -165,7 +165,6 @@ Event _event({String id = 'e1', String name = "'t Preuvenemint"}) => Event(
   countryCode: 'NL',
   city: 'Maastricht',
   eventType: EventType.festival,
-  status: EventStatus.upcoming,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 

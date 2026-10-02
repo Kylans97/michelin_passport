@@ -97,7 +97,6 @@ Event _event({
   latitude: latitude,
   longitude: longitude,
   eventType: EventType.festival,
-  status: EventStatus.completed,
   createdAt: DateTime.utc(2026, 1, 1),
 );
 
