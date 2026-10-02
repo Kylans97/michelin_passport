@@ -402,6 +402,14 @@ Future verified host types (Restaurant, Hotel, Private Chef, later Winery, Bar) 
 | Mantelier controlled | publication approval, editorial promotion, host verification, recognition, curation status | Service role / admin only, same as every other moderation field in this schema |
 | User owned | Interested, Going, Attendance, rating, photos, comment | The attending user, via the plain-RLS ownership pattern already used for `event_attendance`/`visits` |
 
+**Added during the self-management build (20261008120000) — a requirement on the not-yet-built edit-notification trigger (build order step 7), recorded here while the reasoning is fresh rather than left implicit:**
+
+A host may delete a participant link (`event_restaurants`/`event_hotels`/`event_chefs`) from their own already-published event with no approval gate at all — removing a link asserts nothing new about a third party, so it needs none, by the same reasoning that lets a host cancel their own event unilaterally. This is deliberate and accepted, not an oversight: see §29/the 20261008120000 migration's own comments.
+
+But accepting that means a host can delete a link that was already admin-approved and live — a co-host deliberately attached during review can later be un-attached by the host alone, with nothing stopping them. That is fine *as long as it is not silent*. The edit-notification trigger (decision 8, step 7) was scoped to "name what changed" on `events` field edits; it must also fire on a participant **removal** specifically (a delete on any of the three join tables for a published event), not only on column diffs on `events` itself — otherwise a deliberately-attached, already-approved co-participant can disappear from a published event and nothing surfaces it. A participant **addition** already surfaces itself by construction (it lands pending, in the review queue, per §29) — it's only removal of something already live that has no other signal pointing at it.
+
+Also knowingly accepted at this scale (see the 20261008120000 migration's own comment): a host can insert pending links to any number of canonical venues, each invisible until reviewed, each landing in the same queue. At thirteen users this isn't worth rate-limiting; the mitigation is the same one used everywhere else in this model — revocation of the host's own manager/organiser grant if the privilege is abused.
+
 ## 20. Publication vs. lifecycle vs. availability state machines
 
 Three independent axes, never collapsed into one enum — directly extending the exact reasoning `FUTURE_PRODUCT_ARCHITECTURE.md` §3.3-3.4 already worked out for a simpler version of this problem (Navigation/RLS audit §6), with one axis (availability) added:
