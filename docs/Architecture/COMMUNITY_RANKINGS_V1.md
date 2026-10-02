@@ -256,3 +256,28 @@ violates `events_country_code_fkey` on a fresh shadow-database bootstrap.
 This is not caused by, or related to, this migration; it affects any
 attempt at a fully-fresh local reset and is worth its own separate fix,
 not undertaken here.)
+
+## 16. Future direction, not a commitment (2026-10-02) — a friends dinner ranking
+
+Under consideration, not scheduled: ranking friends against each other by
+Michelin stars eaten, per year and in total — distinct from this
+document's own Restaurant Rankings (venue-level, community-wide) and from
+the separate, already-built-but-unconsumed `venue_ratings`/
+`venue_community_rankings` tables, neither of which this would reuse.
+Checked against the live schema rather than assumed: `visits.stars_at_visit`
+already exists, is populated correctly today on every restaurant visit
+(confirmed directly against production: 10/10 restaurant visits have it
+set, 0/3 hotel visits do, which is correct — hotels use `keys_at_visit`
+instead), and `visits.visited_on` gives the year for free — so "stars per
+year and in total" is a `sum`/`group by` over data that already exists,
+not a new column or a new write path. The one piece of real prior art is
+`FriendProfileStats.totalStars` (`lib/features/friends/friend_profile_data.dart`),
+which already computes a related but different number for a single
+friend's own profile: one count per unique restaurant, using that
+restaurant's stars at its most recent visit — deliberately avoiding
+double-counting a repeat visit to the same place. A ranking framed as
+"who has eaten the most stars" would need its own decision on that same
+question (every dining experience counted, or once per restaurant) before
+it could reuse or diverge from that precedent, plus how it interacts with
+a visit's own visibility/privacy setting when comparing across more than
+one friend at once. Not designed further here.
