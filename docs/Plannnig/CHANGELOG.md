@@ -14,6 +14,16 @@ The format follows Keep a Changelog.
 - Database organisation
 - Architecture documentation
 
+### Fixed
+
+- 2026-10-02 — `claims_*.review_note` was written by `reject_venue_claim`
+  but `get_notifications()` never surfaced it: a claimant whose venue
+  claim was rejected saw "not approved" with no reason anywhere in the
+  app. Carried through the same way `venue_about_submissions`/
+  `venue_photo_submissions`' own rejection notes already were. Applied
+  after the 1.1.0+12 build, so it sits here rather than in that
+  release's own section, per CLAUDE.md's migration-naming/changelog rule.
+
 ---
 
 ## v1.1.0 — 2026-10-02
