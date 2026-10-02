@@ -201,3 +201,108 @@ If `flutter run` hangs on "Dart VM Service was not discovered" or times out on
 Xcode/lldb debug-session lock, not a project problem — quit Xcode, kill any
 lingering `lldb`/`lldb-rpc-server` processes, and retry. Seen and resolved
 this way during this project's own development, not hypothetical.
+
+---
+
+## 6. Releasing to TestFlight via Transporter
+
+Ten uploads have gone out this way before this document existed — the
+procedure lived entirely in one person's head. **Recorded here from the
+first run actually walked through while writing this section** (2026-10-08,
+version 1.1.0 build 12, Xcode 26.6, Flutter 3.44.3), not from memory
+afterward: exit code 0, real timings, real file sizes, below.
+
+### Prerequisite — signing must already resolve
+
+Covered in §1's "iOS signing" above: automatic signing
+(`CODE_SIGN_STYLE = Automatic`), team `QMF89BFNGF`, needs the right Apple ID
+signed into Xcode (Settings → Accounts) and nothing else — no checked-in
+`.p12`/`.mobileprovision`/`ExportOptions.plist` exists or is needed. Confirmed
+again on this run: the build resolved signing with no prompt, no manual step.
+
+### The command
+
+From the repo root, after bumping `version:` in `pubspec.yaml` (the one and
+only place the build/version numbers live — `flutter build ipa` reads
+`CFBundleShortVersionString`/`CFBundleVersion` from it directly, no separate
+Xcode project edit):
+
+```
+flutter build ipa
+```
+
+That's the whole command — no flags needed. Two things worth knowing about
+why no flags are required:
+
+- **Export method defaults to `app-store`**, which is exactly what an
+  App Store Connect/TestFlight upload needs. `flutter build ipa --help`
+  also offers `ad-hoc`/`development` via `--export-method`, irrelevant here.
+- **`flutter build ipa` auto-generates its own `ExportOptions.plist`**
+  (written to `build/ios/ipa/ExportOptions.plist`, confirmed by reading it
+  after this run: `method: app-store-connect`, `signingStyle: automatic`,
+  `teamID: QMF89BFNGF`) — this is a **build artifact**, not something to
+  hand-author or commit. `build/` is already outside version control
+  (`git status` shows nothing under it after a build), so this file and
+  the whole archive/IPA never touch git.
+
+### What it did, this run
+
+```
+Archiving app.mantelier...
+Automatically signing iOS for device deployment using specified development team in Xcode project: QMF89BFNGF
+Running Xcode build...
+Xcode archive done.                                         57,4s
+✓ Built build/ios/archive/Runner.xcarchive (185.9MB)
+
+[✓] App Settings Validation
+    • Version Number: 1.1.0
+    • Build Number: 12
+    • Display Name: Mantelier
+    • Deployment Target: 13.0
+    • Bundle Identifier: app.mantelier
+
+Building App Store IPA...                                          31,2s
+✓ Built IPA to build/ios/ipa (24.0MB)
+```
+
+Confirmed valid afterward (`unzip -l`, not just trusting the success
+message): a well-formed zip with the expected `Payload/Runner.app/`
+structure inside.
+
+### Where the file Transporter wants actually is
+
+**`build/ios/ipa/Mantelier.ipa`** — named after the app's Display Name
+("Mantelier"), *not* `Runner.ipa`. Open the Transporter app and drag this
+exact file in (Flutter's own success message states the same path/pattern:
+`build/ios/ipa/*.ipa`). The sibling files in that directory
+(`ExportOptions.plist`, `DistributionSummary.plist`, `Packaging.log`) are
+build metadata, not needed by Transporter.
+
+The non-interactive alternative Flutter also prints —
+`xcrun altool --upload-app --type ios -f build/ios/ipa/*.ipa --apiKey ... --apiIssuer ...`
+— was not exercised this run (Transporter is the established path here);
+noted in case a future scripted/CI upload ever needs it.
+
+### Disk cost — the real worry going in, smaller than feared
+
+This machine was at **16.0 GB free of 245 GB (93% full)** immediately
+before this run (`df -H /` / `diskutil info /`, the Data volume figure —
+the plain `df -h /` system-volume number reads misleadingly low on APFS
+and should not be trusted alone). After archive + IPA export: **15 GB
+free** — roughly **1 GB** consumed total, not the feared double-digit-GB
+archive. Breakdown: the `.xcarchive` itself is 178 MB on disk, the IPA
+23 MB, the rest is incremental `DerivedData` growth
+(`~/Library/Developer/Xcode/DerivedData`, largest component
+`ModuleCache.noindex` at 139 MB plus a `Runner-*` build folder at 351 MB —
+already-cached toolchain output, not re-downloaded per build). A full
+clean build from an empty DerivedData would cost more than this
+incremental one did; that cost has not been separately measured.
+
+### Nothing surprised this run beyond the above
+
+No signing prompt, no missing-Podfile issue (confirmed: this project still
+has no `ios/Podfile` and the build didn't need one), no space failure. If a
+future run **does** fail for space, the standing instruction is: stop,
+report exactly what got left behind (a partial `.xcarchive`, a partial
+`build/ios/ipa`), and do not clear space or retry in the same session —
+decide that deliberately, separately, not as a reflex.
