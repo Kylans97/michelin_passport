@@ -387,6 +387,9 @@ class _VenueClaimContent extends StatelessWidget {
     final showContactLine =
         notification.type == AppNotificationType.venueClaimReceived ||
         notification.type == AppNotificationType.venueClaimRejected;
+    final note = notification.type == AppNotificationType.venueClaimRejected
+        ? notification.claimReviewNote?.trim()
+        : null;
 
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
@@ -403,6 +406,16 @@ class _VenueClaimContent extends StatelessWidget {
                   description,
                   style: CsTypography.body.copyWith(color: AppColors.forestGreen),
                 ),
+                if (note != null && note.isNotEmpty) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    '"$note"',
+                    style: CsTypography.body.copyWith(
+                      color: AppColors.taupe,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
                 if (showContactLine) ...[
                   const SizedBox(height: CsSpacing.xs),
                   GestureDetector(

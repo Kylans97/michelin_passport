@@ -94,11 +94,14 @@ class AppNotification {
   final DateTime? inviteExpiresAt;
 
   // subjectId doubles as the claim id when subjectType == 'venue_claim' —
-  // same convention as inviteVenueId above.
+  // same convention as inviteVenueId above. claimReviewNote mirrors
+  // submissionReviewNote's own rule below — only ever non-null on a
+  // rejected (or blocked) claim, written by reject_venue_claim.
   final String? claimVenueType;
   final String? claimVenueId;
   final String? claimVenueName;
   final String? claimVenueCity;
+  final String? claimReviewNote;
 
   // subjectId doubles as the submission id when subjectType ==
   // 'venue_about_submission'/'venue_photo_submission' — same convention
@@ -137,6 +140,7 @@ class AppNotification {
     this.claimVenueId,
     this.claimVenueName,
     this.claimVenueCity,
+    this.claimReviewNote,
     this.submissionVenueType,
     this.submissionVenueId,
     this.submissionVenueName,
@@ -171,6 +175,7 @@ class AppNotification {
     claimVenueId: row['claim_venue_id'] as String?,
     claimVenueName: row['claim_venue_name'] as String?,
     claimVenueCity: row['claim_venue_city'] as String?,
+    claimReviewNote: row['claim_review_note'] as String?,
     submissionVenueType: row['submission_venue_type'] as String?,
     submissionVenueId: row['submission_venue_id'] as String?,
     submissionVenueName: row['submission_venue_name'] as String?,

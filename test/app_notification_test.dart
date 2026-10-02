@@ -50,6 +50,27 @@ Map<String, dynamic> _submissionRow({
   'submission_review_note': reviewNote,
 };
 
+Map<String, dynamic> _claimRow({required String type, String? reviewNote}) => {
+  'id': 'notif-4',
+  'type': type,
+  'subject_type': 'venue_claim',
+  'subject_id': 'claim-1',
+  'is_read': false,
+  'created_at': '2026-01-04T00:00:00Z',
+  'other_user_id': null,
+  'other_username': null,
+  'other_display_name': null,
+  'other_avatar_url': null,
+  'listing_subject_type': null,
+  'listing_name': null,
+  'listing_city': null,
+  'claim_venue_type': 'restaurant',
+  'claim_venue_id': 'r1',
+  'claim_venue_name': 'Flore',
+  'claim_venue_city': 'Amsterdam',
+  'claim_review_note': reviewNote,
+};
+
 Map<String, dynamic> _listingRow() => {
   'id': 'notif-2',
   'type': 'missing_listing_added',
@@ -170,6 +191,33 @@ void main() {
       expect(n.subjectType, 'venue_photo_submission');
       expect(n.submissionVenueName, 'Flore');
       expect(n.submissionReviewNote, isNull);
+    });
+
+    test('maps a venue-claim-rejected row, including the reviewer\'s own '
+        'note', () {
+      final n = AppNotification.fromRow(
+        _claimRow(
+          type: 'venue_claim_rejected',
+          reviewNote: 'Could not verify ownership of this listing.',
+        ),
+      );
+      expect(n.type, AppNotificationType.venueClaimRejected);
+      expect(n.claimVenueName, 'Flore');
+      expect(n.claimVenueCity, 'Amsterdam');
+      expect(
+        n.claimReviewNote,
+        'Could not verify ownership of this listing.',
+      );
+    });
+
+    test('maps a venue-claim-approved row — no review note on an approval',
+        () {
+      final n = AppNotification.fromRow(
+        _claimRow(type: 'venue_claim_approved'),
+      );
+      expect(n.type, AppNotificationType.venueClaimApproved);
+      expect(n.claimVenueName, 'Flore');
+      expect(n.claimReviewNote, isNull);
     });
   });
 

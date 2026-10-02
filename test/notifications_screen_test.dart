@@ -103,6 +103,7 @@ Widget _venueClaimRow({
   required IconData icon,
   bool showContactLine = false,
   VoidCallback? onEmailTap,
+  String? note,
 }) => Padding(
   padding: const EdgeInsets.symmetric(vertical: 8),
   child: Row(
@@ -118,6 +119,16 @@ Widget _venueClaimRow({
               description,
               style: CsTypography.body.copyWith(color: AppColors.forestGreen),
             ),
+            if (note != null) ...[
+              const SizedBox(height: 4),
+              Text(
+                '"$note"',
+                style: CsTypography.body.copyWith(
+                  color: AppColors.taupe,
+                  fontStyle: FontStyle.italic,
+                ),
+              ),
+            ],
             if (showContactLine) ...[
               const SizedBox(height: 4),
               GestureDetector(
@@ -339,6 +350,32 @@ void main() {
       );
       expect(find.textContaining('Questions about your claim?'), findsOneWidget);
     });
+
+    testWidgets(
+      "a rejected row also shows the reviewer's own reason — the rejection "
+      'notification must carry why, not just that it happened, same '
+      'requirement as the submission-review rows below',
+      (tester) async {
+        await tester.pumpWidget(
+          _wrap(
+            _venueClaimRow(
+              description: 'Your claim for Flore Amsterdam was not approved.',
+              icon: Icons.storefront_outlined,
+              showContactLine: true,
+              note: 'Could not verify ownership of this listing.',
+            ),
+          ),
+        );
+        expect(
+          find.text('Your claim for Flore Amsterdam was not approved.'),
+          findsOneWidget,
+        );
+        expect(
+          find.text('"Could not verify ownership of this listing."'),
+          findsOneWidget,
+        );
+      },
+    );
 
     testWidgets('approved row shows the success copy but no contact line '
         '— nothing to ask once the claim has already succeeded', (
