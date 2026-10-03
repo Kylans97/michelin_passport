@@ -119,6 +119,84 @@ function formatAmsterdamTime(iso: string): string {
   }).format(new Date(iso));
 }
 
+// content_type = 'photo' is the one genuinely ambiguous case: content_id
+// alone doesn't say which of three photo tables a reported photo lives
+// in (restaurant_photos/hotel_photos/private_chef_photos — ReportRating
+// and ReportProfile each resolve unambiguously to one table, visits/
+// profiles, so they need no equivalent resolution). Tries all three
+// candidate tables in parallel (mirroring get_notifications()'s own
+// three-way coalesce for claim_venue_*, just in TypeScript instead of
+// SQL) and, on a match, resolves the owning venue's name too — so the
+// email tells the admin "Flore" directly rather than leaving a second
+// lookup to do by hand. No schema change: this is three reads against
+// tables that already exist, same as the dashboard link it supplements.
+interface PhotoContext {
+  venueLabel: string;
+  venueName: string;
+  venueCode: string;
+}
+
+const PHOTO_TABLES: ReadonlyArray<{
+  table: string;
+  fkColumn: string;
+  venueView: string;
+  nameColumn: string;
+  codeColumn: string;
+  venueLabel: string;
+}> = [
+  {
+    table: 'restaurant_photos',
+    fkColumn: 'restaurant_id',
+    venueView: 'restaurants_full',
+    nameColumn: 'name',
+    codeColumn: 'restaurant_code',
+    venueLabel: 'restaurant',
+  },
+  {
+    table: 'hotel_photos',
+    fkColumn: 'hotel_id',
+    venueView: 'hotels_full',
+    nameColumn: 'name',
+    codeColumn: 'hotel_code',
+    venueLabel: 'hotel',
+  },
+  {
+    table: 'private_chef_photos',
+    fkColumn: 'private_chef_id',
+    venueView: 'private_chefs_full',
+    nameColumn: 'display_name',
+    codeColumn: 'slug',
+    venueLabel: 'private chef',
+  },
+];
+
+async function resolvePhotoContext(
+  admin: NotifyContentReportAdminClient,
+  photoId: string,
+): Promise<PhotoContext | null> {
+  const photoLookups = await Promise.all(
+    PHOTO_TABLES.map((candidate) =>
+      admin.from(candidate.table).select(candidate.fkColumn).eq('id', photoId).maybeSingle()
+    ),
+  );
+
+  for (let i = 0; i < PHOTO_TABLES.length; i++) {
+    const candidate = PHOTO_TABLES[i];
+    const venueId = photoLookups[i].data?.[candidate.fkColumn] as string | undefined;
+    if (!venueId) continue;
+
+    const venueResult = await admin.from(candidate.venueView)
+      .select(`${candidate.nameColumn}, ${candidate.codeColumn}`).eq('id', venueId).maybeSingle();
+    return {
+      venueLabel: candidate.venueLabel,
+      venueName: (venueResult.data?.[candidate.nameColumn] as string | undefined) ??
+        'Unknown venue',
+      venueCode: (venueResult.data?.[candidate.codeColumn] as string | undefined) ?? 'unknown',
+    };
+  }
+  return null;
+}
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -192,6 +270,16 @@ export async function handleRequest(
     (profileResult.data?.username as string | undefined) ?? 'Unknown reporter';
   const reporterEmail = userResult.data.user?.email ?? 'unknown';
 
+  // Only 'photo' needs this — see resolvePhotoContext's own doc comment.
+  const photoContext = report.content_type === 'photo'
+    ? await resolvePhotoContext(admin, report.content_id)
+    : null;
+  const whatLine = photoContext
+    ? `${photoContext.venueLabel}: ${photoContext.venueName} (${photoContext.venueCode})`
+    : report.content_type === 'photo'
+    ? 'Could not locate this photo in restaurant_photos/hotel_photos/private_chef_photos — it may already have been removed.'
+    : null;
+
   const submittedAt = formatAmsterdamTime(report.created_at);
   const link = dashboardLink(report.id);
   const details = report.details && report.details.trim().length > 0 ? report.details : null;
@@ -204,12 +292,16 @@ Reporter: ${reporterName}
 Account email: ${reporterEmail}
 Content type: ${report.content_type}
 Content id: ${report.content_id}
-Reason: ${report.reason}
+${whatLine ? `What: ${whatLine}\n` : ''}Reason: ${report.reason}
 Details: ${details ?? '—'}
 
 Submitted: ${submittedAt} (Europe/Amsterdam)
 
 Review in the dashboard: ${link}`;
+
+  const whatLineHtml = whatLine
+    ? `<tr><td><strong>What</strong></td><td>${escapeHtml(whatLine)}</td></tr>`
+    : '';
 
   const html = `
     <p>A new <strong>${escapeHtml(report.content_type)}</strong> report was submitted.</p>
@@ -218,6 +310,7 @@ Review in the dashboard: ${link}`;
       <tr><td><strong>Account email</strong></td><td>${escapeHtml(reporterEmail)}</td></tr>
       <tr><td><strong>Content type</strong></td><td>${escapeHtml(report.content_type)}</td></tr>
       <tr><td><strong>Content id</strong></td><td>${escapeHtml(report.content_id)}</td></tr>
+      ${whatLineHtml}
       <tr><td><strong>Reason</strong></td><td>${escapeHtml(report.reason)}</td></tr>
       <tr><td><strong>Details</strong></td><td>${details ? escapeHtml(details) : '—'}</td></tr>
     </table>

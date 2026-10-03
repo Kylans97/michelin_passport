@@ -43,6 +43,15 @@ interface FakeOptions {
   profileError?: string;
   accountEmail?: string | null;
   userError?: string;
+  // Which of the three photo tables (if any) "knows" the reported photo
+  // id, and the venue row its own `_full` view resolves to. Omitted
+  // entirely (the default) means none of the three tables has a match —
+  // the "could not locate this photo" fallback path.
+  photoTable?: 'restaurant_photos' | 'hotel_photos' | 'private_chef_photos';
+  photoFkColumn?: string;
+  photoFkValue?: string;
+  venueView?: string;
+  venueRow?: Record<string, unknown>;
 }
 
 function fakeAdmin(opts: FakeOptions = {}): {
@@ -72,6 +81,15 @@ function fakeAdmin(opts: FakeOptions = {}): {
                         : opts.profile,
                       error: null,
                     });
+                  }
+                  if (table === opts.photoTable) {
+                    return Promise.resolve({
+                      data: { [opts.photoFkColumn!]: opts.photoFkValue },
+                      error: null,
+                    });
+                  }
+                  if (table === opts.venueView) {
+                    return Promise.resolve({ data: opts.venueRow ?? null, error: null });
                   }
                   return Promise.resolve({ data: null, error: null });
                 },
@@ -248,6 +266,76 @@ Deno.test('a profile with no display_name falls back to username, then to a gene
   const { sendEmail: sendB, calls: callsB } = fakeSendEmail();
   await handleRequest(req(), adminNoProfile, sendB, SECRET);
   assertStringIncludes(callsB[0].text, 'Unknown reporter');
+});
+
+// ============================================================
+// Photo context resolution — the "three places to look" fix. A photo
+// report's content_id alone doesn't say which of three tables it lives
+// in; these prove the email actually tells the admin which one, and
+// names the venue, rather than leaving that lookup to do by hand.
+// ============================================================
+
+Deno.test('a restaurant photo report resolves and names the restaurant', async () => {
+  const { admin } = fakeAdmin({
+    photoTable: 'restaurant_photos',
+    photoFkColumn: 'restaurant_id',
+    photoFkValue: 'r1',
+    venueView: 'restaurants_full',
+    venueRow: { name: 'Flore', restaurant_code: 'FLR-NL-001' },
+  });
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(req(), admin, sendEmail, SECRET);
+  assertEquals(res.status, 200);
+  assertStringIncludes(calls[0].text, 'What: restaurant: Flore (FLR-NL-001)');
+});
+
+Deno.test('a hotel photo report resolves and names the hotel, not the restaurant table', async () => {
+  const { admin } = fakeAdmin({
+    photoTable: 'hotel_photos',
+    photoFkColumn: 'hotel_id',
+    photoFkValue: 'h1',
+    venueView: 'hotels_full',
+    venueRow: { name: 'Château Neercanne', hotel_code: 'CHN-NL-001' },
+  });
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(req(), admin, sendEmail, SECRET);
+  assertEquals(res.status, 200);
+  assertStringIncludes(calls[0].text, 'What: hotel: Château Neercanne (CHN-NL-001)');
+});
+
+Deno.test('a private chef photo report resolves display_name/slug, not name/code', async () => {
+  const { admin } = fakeAdmin({
+    photoTable: 'private_chef_photos',
+    photoFkColumn: 'private_chef_id',
+    photoFkValue: 'c1',
+    venueView: 'private_chefs_full',
+    venueRow: { display_name: 'Lucas', slug: 'lucas' },
+  });
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(req(), admin, sendEmail, SECRET);
+  assertEquals(res.status, 200);
+  assertStringIncludes(calls[0].text, 'What: private chef: Lucas (lucas)');
+});
+
+Deno.test('a photo id matching none of the three tables states that plainly, rather than a silent blank', async () => {
+  const { admin } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(req(), admin, sendEmail, SECRET);
+  assertEquals(res.status, 200);
+  assertStringIncludes(calls[0].text, 'Could not locate this photo');
+});
+
+Deno.test('a rating report never attempts photo-table resolution — no "What:" line at all', async () => {
+  const { admin } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(
+    req({ body: { ...VALID_REPORT, content_type: 'rating' } }),
+    admin,
+    sendEmail,
+    SECRET,
+  );
+  assertEquals(res.status, 200);
+  assertEquals(calls[0].text.includes('What:'), false);
 });
 
 Deno.test('a Resend failure is reported as a 502 and never thrown as an unhandled error', async () => {
