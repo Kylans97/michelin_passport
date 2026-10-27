@@ -127,7 +127,69 @@ move.
 
 ---
 
-## 4. The countries seed gap — fixed in migration history, not yet proven by replay
+## 4. Fresh replay — proven locally on 2026-10-27, after closing two more gaps
+
+**Result first.** Run on the new machine on 2026-10-27, locally only:
+- With 89 files (the 88 then in history, plus one new backfill and one
+  corrected statement, both below), a database built from the migration
+  files alone **comes up clean**. Checked afterwards: 55 countries, the
+  one migration-inserted event on `Europe/Amsterdam` with no NULL
+  timezones, the member-number sequence at 1 and unused, 5 storage
+  buckets, 89 ledger rows.
+- Without the countries seed, replay fails exactly where predicted below:
+  `20260810160000_create_events.sql`, the 't Preuvenemint insert,
+  `Key (country_code)=(NL) is not present in table "countries"`. The
+  "line 172" detail wasn't confirmed: `supabase start` reports the
+  failing statement (16), not a line number.
+
+**How to run it — the method matters.** A bare `supabase/postgres` image
+replayed with `psql -v ON_ERROR_STOP=1` **cannot** do this test. The image
+has `auth`, the roles and vault, but no `storage.*` tables (those come from
+the storage service) and no pg_net, so it fails at migration 4
+(`add_visit_photos_storage`, `relation "storage.buckets" does not
+exist`). That's a limitation of the setup, not a migration bug. Use the full
+local stack, from a scratch copy of `supabase/` (`config.toml`,
+`seed.sql`, `migrations/`, `functions/` — **not** `.temp/`, so nothing is
+linked to production):
+```
+supabase start --workdir <scratch-copy> -x realtime,imgproxy,mailpit,postgres-meta,studio,edge-runtime,logflare,vector,supavisor
+supabase stop --workdir <scratch-copy> --no-backup
+```
+It stops at the first failing migration and prints the statement.
+`seed.sql` runs too, but it's comments only.
+
+**The two further gaps it found**, each only reachable once the previous
+one was fixed:
+1. **`events.timezone` backfill, migration 34.** `20260820130000` sets
+   `events.timezone` NOT NULL. The production backfill it depends on was a
+   separately approved out-of-band UPDATE, never in history, so a fresh
+   build's one event had a NULL timezone and the NOT NULL step was
+   rejected. Fixed by
+   `20260820125000_events_v2_timezone_backfill.sql`, placed between the
+   two timezone migrations under CLAUDE.md's in-between-backfill exception.
+   **Not yet applied to production** (`--include-all`, after a read-only
+   zero-rows check there).
+2. **`member_number` sequence, migration 68.**
+   `20260925120000_add_profiles_member_number.sql` called
+   `setval(seq, coalesce(max, 0))`, and 0 is below the sequence's minimum,
+   so it only ever failed on an empty `profiles` table. Corrected in place
+   under CLAUDE.md's correct-an-applied-migration exception, after proving
+   the new form identical to the original whenever profiles exist.
+   Nothing to apply.
+
+**Disaster-recovery note this surfaced.** A replay rebuilds *structure*,
+not data. Member numbers are printed on users' passports and must never be
+reused. If production were ever rebuilt and its data restored, the
+`profiles_member_number_seq` value has to be restored with it — a normal
+`pg_dump` with data does this. Restore the profiles but start the sequence
+fresh, and the next signup gets a number someone already holds; the unique
+constraint blocks it, so signups fail rather than reuse a number, but they
+still break.
+
+### History: the countries seed gap (2026-10-02)
+
+The record below is from before the replay could run. It's kept as written
+so the prediction can be checked against the result above.
 
 The gap itself: no migration in the first 83 ever seeded `public.countries` —
 it was populated by hand outside migration history at some point after the

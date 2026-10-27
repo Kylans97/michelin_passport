@@ -302,6 +302,42 @@ database controls. Preferred shape:
   it. The real date belongs in the migration's own header comment and
   the changelog entry, where it can actually be checked against git
   history; the filename's only job is sort order.
+- **The one exception: an in-between backfill.** When a from-scratch
+  replay fails because data was written to production out of band
+  between two migrations that are both already applied, the migration
+  that writes that data into history may take a timestamp *between*
+  those two — because appended after the highest one, it could never
+  run before the migration that needs it. This is the only case: the
+  backfill must be required by a later already-applied migration, must
+  be a no-op against production (verify that it matches zero rows there,
+  don't assume), and must say all of this in its own header, including
+  the real date it was written. It goes to production with `supabase db
+  push --include-all`, since plain `db push` doesn't see an
+  earlier-timestamped file as pending. Two exist:
+  `20260805141520_seed_countries.sql` (the countries seed
+  `20260810160000` needs) and `20260820125000_events_v2_timezone_
+  backfill.sql` (the `events.timezone` values `20260820130000`'s NOT
+  NULL needs). Anything else — new schema, new features, a fix nothing
+  earlier depends on — is named after the highest migration, full stop.
+- **An applied migration is not edited — with one narrow exception.**
+  Production never re-runs a migration, so an edited file is by
+  definition something production didn't run, and a fresh replay of it
+  can diverge from production silently. The only allowed edit is a
+  correction to a statement that **raises an error** on some input
+  production never had (an empty table, typically) and that produces
+  **exactly the same result as the original** on every input where the
+  original succeeded. Prove both halves by actually running the old and
+  new statements, not by reasoning about them, and record the proof. The
+  edit keeps the original statement quoted in a comment beside the new
+  one, with the real date and why it was needed; it gets a CHANGELOG
+  entry; and the file keeps its name. Anything that changes what the
+  migration does on production's own data is a new migration, never an
+  edit. One exists: `20260925120000_add_profiles_member_number.sql`'s
+  `setval`, which failed on an empty `profiles` table (value 0 is below
+  the sequence's minimum of 1) and now uses the three-argument form; on
+  any non-empty table it is exactly the `setval(seq, max, true)` that
+  production ran, so no member number, and nothing printed on a
+  passport, changed.
 - A column, table or RPC that a shipped build reads cannot be removed
   while that build is in the wild. Destructive changes go in three
   steps — add the new shape, migrate readers and ship, then remove the

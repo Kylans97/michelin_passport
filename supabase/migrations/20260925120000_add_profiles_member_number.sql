@@ -37,12 +37,29 @@ set member_number = ordered.rn
 from ordered
 where profiles.id = ordered.id;
 
--- Continue the sequence from the highest number just assigned (0 if the
--- table is somehow empty), so the next real signup gets the next number,
--- not a restart at 1.
+-- Continue the sequence from the highest number just assigned, so the
+-- next real signup gets the next number, not a restart at 1. On an empty
+-- table, leave the sequence at 1 marked unused (is_called = false), so
+-- the first signup gets 1.
+--
+-- Edited 2026-10-27, after this migration was already applied to
+-- production. The original statement was
+--   select setval('public.profiles_member_number_seq',
+--     coalesce((select max(member_number) from public.profiles), 0));
+-- which raises "value 0 is out of bounds" on an empty table — the
+-- sequence's minimum is 1 — so a from-scratch replay (shadow database,
+-- preview branch, disaster recovery) could never get past this file.
+-- Production had real profiles when it ran, so it never hit the error.
+-- Whenever max(member_number) is not null, this form is exactly
+-- setval(seq, max, true) — the call production actually ran — so no
+-- existing member number, and nothing printed on anyone's passport, is
+-- affected; production never re-runs an applied migration in any case.
+-- It differs only where the original raised an error. See CLAUDE.md's
+-- rule on correcting an already-applied migration.
 select setval(
   'public.profiles_member_number_seq',
-  coalesce((select max(member_number) from public.profiles), 0)
+  coalesce((select max(member_number) from public.profiles), 1),
+  (select max(member_number) from public.profiles) is not null
 );
 
 -- NOT NULL is deliberately NOT applied — 'test' and 'kylan2' keep

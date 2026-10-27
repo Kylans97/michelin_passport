@@ -13,6 +13,62 @@ The format follows Keep a Changelog.
 - Project documentation
 - Database organisation
 - Architecture documentation
+- 2026-10-02/03 — Admin email on every new content report, generic over
+  `content_type`: `20261010120000_add_content_report_admin_email_
+  notification.sql` (trigger `content_reports_notify_admin_on_insert` →
+  pg_net → new `notify-content-report` Edge Function → Resend, its own
+  `notify_content_report_webhook_secret`, warn-never-block like every
+  other `notify_admin_of_pending_*`). `content_reports` had carried
+  reports since September with no admin notification at all. A reported
+  photo's venue is resolved by name in the email (`c0ae732`), since
+  `content_id` alone doesn't say which of three photo tables it's in.
+  Applied after the 1.1.0+12 build, so it sits here. Its commit
+  (`9f81977`) says "not yet applied"; it was applied later, on a date
+  nothing recorded — this entry was missing until 2026-10-27, when the
+  state below was read back from production.
+  **Verified 2026-10-27, read-only:** remote ledger holds the migration
+  (88/88, no mismatch); trigger exists and is enabled; `anon` cannot
+  execute `notify_admin_of_pending_content_report()`; function deployed
+  (version 2, 2026-10-03 11:05, one minute after `c0ae732` — so very
+  likely that version, inferred from timing, not from comparing
+  source); `NOTIFY_CONTENT_REPORT_WEBHOOK_SECRET` and `RESEND_API_KEY`
+  set as function secrets, and the vault entry's value matches the
+  function secret (SHA-256 compared, no value read out); all 18 of the
+  function's deno tests pass.
+  **Not proven end to end.** Exactly one real report exists (a photo,
+  2026-10-11 01:31 UTC). pg_net no longer retains its response, and the
+  one response it does retain (200, 2026-10-13) can't be tied to it, so
+  whether that email reached `claimedvenues@mantelier.app` is unknown —
+  the inbox is the only remaining evidence.
+- 2026-10-27 — `20260820125000_events_v2_timezone_backfill.sql`: writes
+  the `events.timezone` backfill into migration history, so a
+  from-scratch replay can get past `20260820130000`'s NOT NULL. The
+  production backfill (4 events, Europe/Amsterdam) was a separately
+  approved out-of-band UPDATE and never in history, so a fresh build's
+  only migration-inserted event ('t Preuvenemint, NL) reached NOT NULL
+  with timezone NULL and failed. Matches `timezone is null and
+  country_code = 'NL'` only — no stable event code exists and name
+  matching is forbidden; any other NULL still fails loudly. Timestamp
+  deliberately sits between the two timezone migrations under
+  CLAUDE.md's new in-between-backfill exception. **Not applied to
+  production.** Needs `supabase db push --include-all`, and before that
+  a read-only check that it matches zero rows there (expected, since
+  the column is NOT NULL; not yet run).
+
+### Changed
+
+- 2026-10-27 — Minimum iOS raised from 13.0 to 15.0
+  (`IPHONEOS_DEPLOYMENT_TARGET`, all three Runner build configurations in
+  `ios/Runner.xcodeproj/project.pbxproj`). Forced by the toolchain, not
+  chosen: Xcode 27.1 on the new machine rejects anything below 15.0
+  ("supported deployment target versions is 15.0 to 27.1.x"), so
+  `flutter build ios --no-codesign --simulator` failed outright until it
+  moved; the old machine's Xcode 26.6 still accepted 13.0, which is why
+  1.1.0+12 shipped on it. Would recur on any machine with a newer Xcode.
+  The next build drops iOS 13 and 14 devices; nothing in the repo
+  recorded why 13.0 was originally chosen. Simulator build verified
+  after the change; a signed device build and `flutter build ipa` have
+  not been run yet.
 
 ### Fixed
 
@@ -23,6 +79,31 @@ The format follows Keep a Changelog.
   `venue_photo_submissions`' own rejection notes already were. Applied
   after the 1.1.0+12 build, so it sits here rather than in that
   release's own section, per CLAUDE.md's migration-naming/changelog rule.
+- 2026-10-27 — `20260925120000_add_profiles_member_number.sql`'s
+  `setval(seq, coalesce(max(member_number), 0))` raised "value 0 is out
+  of bounds" on an empty `profiles` table, since the sequence's minimum
+  is 1. Production had profiles when it ran, so only a fresh build hit
+  it, and every from-scratch replay died there. Edited in place to the
+  three-argument `setval(seq, coalesce(max, 1), max is not null)`, with
+  the original statement quoted in the file — the first use of
+  CLAUDE.md's new correct-an-applied-migration exception. Proven by
+  running both forms side by side in a throwaway Postgres 17: empty
+  table, the original errors and the new form gives 1; non-empty (max
+  7), identical sequence state (`last_value=7, is_called=true`) and the
+  same next value, 8. So no member number, and nothing printed on a
+  passport, changed. Nothing to apply: production never re-runs it.
+  Would recur in any migration that seeds a sequence from `max()` of a
+  table that can be empty.
+- 2026-10-27 — Fresh replay proof, the one `NEW_MACHINE_SETUP.md` §4
+  had owed since 2026-10-02, run locally via `supabase start` (full
+  stack). A bare `supabase/postgres` container can't do it: it has no
+  `storage.*` tables (the storage service creates them) and no pg_net,
+  so it fails at migration 4. The full stack found the two gaps above,
+  one after the other, beyond the known countries one. With both fixes,
+  all 89 files apply cleanly (55 countries, the one event on
+  Europe/Amsterdam, member sequence at 1 unused, 5 buckets). Without the
+  countries seed, replay fails exactly where §4 predicted. Nothing
+  touched production.
 
 ---
 
