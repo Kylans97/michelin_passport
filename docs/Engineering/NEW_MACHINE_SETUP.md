@@ -167,8 +167,8 @@ one was fixed:
    rejected. Fixed by
    `20260820125000_events_v2_timezone_backfill.sql`, placed between the
    two timezone migrations under CLAUDE.md's in-between-backfill exception.
-   **Not yet applied to production** (`--include-all`, after a read-only
-   zero-rows check there).
+   Applied to production 2026-10-27 (`--include-all`, after a read-only
+   check found it matched 0 rows there); ledger 89/89.
 2. **`member_number` sequence, migration 68.**
    `20260925120000_add_profiles_member_number.sql` called
    `setval(seq, coalesce(max, 0))`, and 0 is below the sequence's minimum,

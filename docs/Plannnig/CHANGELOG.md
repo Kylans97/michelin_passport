@@ -50,10 +50,14 @@ The format follows Keep a Changelog.
   country_code = 'NL'` only — no stable event code exists and name
   matching is forbidden; any other NULL still fails loudly. Timestamp
   deliberately sits between the two timezone migrations under
-  CLAUDE.md's new in-between-backfill exception. **Not applied to
-  production.** Needs `supabase db push --include-all`, and before that
-  a read-only check that it matches zero rows there (expected, since
-  the column is NOT NULL; not yet run).
+  CLAUDE.md's new in-between-backfill exception. **Applied to production
+  2026-10-27** with `supabase db push --include-all`, after a dry run
+  listed only this file. Beforehand, a read-only check found 0 of 28
+  events it would match (`timezone` already NOT NULL, no NULLs) and
+  only row-level triggers on `events`, so nothing could fire. Push
+  returned normally. Afterwards, verified directly: ledger 89/89 with no
+  mismatch, the version present, events unchanged (28, no NULL
+  timezones).
 
 ### Changed
 
