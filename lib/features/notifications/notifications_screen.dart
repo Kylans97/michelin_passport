@@ -14,6 +14,7 @@ import '../../data/repositories/notifications_repository.dart';
 import '../../data/repositories/venue_invite_repository.dart';
 import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
+import '../friends/widgets/friend_request_row.dart';
 import '../friends/widgets/identity_row.dart';
 
 /// The one venue-ops inbox this app has — reviewed manually alongside
@@ -278,35 +279,12 @@ class _NotificationRow extends StatelessWidget {
     ],
   );
 
-  // Same shape as _VenueInviteContent._receivedStatus: Accept/Decline only while the
-  // request is still pending, then what became of it. 'blocked' and a
-  // friendship that no longer exists (cancelled by the sender, or
-  // removed) show nothing rather than a guess at why.
-  Widget _friendRequestStatus() {
-    if (notification.friendRequestIsPending) {
-      return Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          TextButton(
-            onPressed: onDecline,
-            child: Text(
-              'Decline',
-              style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-            ),
-          ),
-          TextButton(
-            onPressed: onAccept,
-            child: Text(
-              'Accept',
-              style: CsTypography.metadata.copyWith(
-                color: AppColors.forestGreen,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      );
-    }
+  // Same shape as _VenueInviteContent._receivedStatus: Accept/Decline
+  // (FriendRequestRow, shared with FriendsScreen's Requests tab) only
+  // while the request is still pending, then what became of it.
+  // 'blocked' and a friendship that no longer exists (cancelled by the
+  // sender, or removed) show nothing rather than a guess at why.
+  Widget _friendRequestOutcome() {
     switch (notification.friendshipStatus) {
       case 'accepted':
         return Text(
@@ -326,12 +304,22 @@ class _NotificationRow extends StatelessWidget {
   Widget _content(BuildContext context) {
     switch (notification.type) {
       case AppNotificationType.friendRequestReceived:
+        if (notification.friendRequestIsPending) {
+          return FriendRequestRow(
+            label: notification.otherLabel,
+            username: notification.otherUsername,
+            avatarUrl: notification.otherAvatarUrl,
+            onTap: onTapOther,
+            onAccept: onAccept,
+            onDecline: onDecline,
+          );
+        }
         return IdentityRow(
           label: notification.otherLabel,
           username: notification.otherUsername,
           avatarUrl: notification.otherAvatarUrl,
           onTap: onTapOther,
-          trailing: _friendRequestStatus(),
+          trailing: _friendRequestOutcome(),
         );
       case AppNotificationType.friendRequestAccepted:
         return IdentityRow(

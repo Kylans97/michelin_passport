@@ -208,6 +208,25 @@ The format follows Keep a Changelog.
   320px-plus-1.6x overflow stays open. Would recur with
   any trigger added to a table that already has rows it should have
   fired for.
+- 2026-10-28 — The incoming friend request's Decline/Accept pair
+  overflowed by 75px at 320px width with 1.6x text, on both FriendsScreen
+  and NotificationsScreen. IdentityRow gives its trailing widget
+  unbounded width, so nothing ever made the pair give way. Both rows now
+  use one shared `FriendRequestRow`
+  (`lib/features/friends/widgets/friend_request_row.dart`): it measures
+  its own width, caps the actions at what's left after the avatar, gaps
+  and a 56px minimum for the name, and lets a `Wrap` stack Decline above
+  Accept, right-aligned, only when they don't fit (the `Wrap` then shrinks
+  to the wider button, so the name gets the space back). Thresholds
+  measured with the real Inter files google_fonts had cached in the
+  simulator, since tests render in a square-glyph font that makes
+  "Decline" 122px against 74px: no overflow at 320/375/390/402px across
+  1.0/1.3/1.6/2.0x; inline at 1.0x on every width (320px included, as
+  before), at 1.3–1.6x from 375px up, stacked otherwise. Tests now pump
+  the real row on both screens' suites, plus its own (stacking, 2.0x with
+  a long name, the name's minimum); full suite passes (2,431), analyzer
+  clean, simulator build installs. Not looked at signed in on a device.
+  Would recur with any IdentityRow trailing wider than one short label.
 
 ---
 

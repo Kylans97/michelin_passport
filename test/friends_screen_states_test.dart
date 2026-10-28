@@ -14,6 +14,7 @@ import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/core/widgets/cs_primary_button.dart';
 import 'package:michelin_passport/core/widgets/editorial_back_button.dart';
+import 'package:michelin_passport/features/friends/widgets/friend_request_row.dart';
 import 'package:michelin_passport/features/friends/widgets/identity_row.dart';
 
 // Mirrors _FriendsScreenState.build's outer shell (Friends Safe Area
@@ -78,20 +79,16 @@ Widget _friendsEmptyState({VoidCallback? onFindFriends}) => Column(
   ],
 );
 
-// Mirrors _IncomingTab's row in friends_screen.dart.
+// _IncomingTab's row is the real shared FriendRequestRow (no Supabase
+// dependency); its own layout cases live in friend_request_row_test.dart.
 Widget _incomingRequestRow({
   required VoidCallback onAccept,
   required VoidCallback onDecline,
-}) => IdentityRow(
+}) => FriendRequestRow(
   label: 'User B',
   username: 'userb',
-  trailing: Row(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-      TextButton(onPressed: onDecline, child: const Text('Decline')),
-      TextButton(onPressed: onAccept, child: const Text('Accept')),
-    ],
-  ),
+  onAccept: onAccept,
+  onDecline: onDecline,
 );
 
 Widget _outgoingRequestRow({required VoidCallback onCancel}) => IdentityRow(
@@ -216,10 +213,6 @@ void main() {
       expect(declined, isTrue);
     });
 
-    // Same two checks as every other IdentityRow-with-actions row in this
-    // suite. The two combined (320px AND 1.6x) overflow by 75px — so does
-    // NotificationsScreen's identical friend-request row — and that is not
-    // asserted here.
     testWidgets('320px width — no overflow', (tester) async {
       await tester.binding.setSurfaceSize(const Size(320, 844));
       await tester.pumpWidget(
@@ -229,7 +222,9 @@ void main() {
       await tester.binding.setSurfaceSize(null);
     });
 
-    testWidgets('1.6x text scale — no overflow', (tester) async {
+    testWidgets('320px width with 1.6x text — no overflow', (tester) async {
+      await tester.binding.setSurfaceSize(const Size(320, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
       await tester.pumpWidget(
         MaterialApp(
           home: MediaQuery(

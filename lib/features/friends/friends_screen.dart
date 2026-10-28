@@ -11,6 +11,7 @@ import '../../data/repositories/friendship_repository.dart';
 import '../../models/friendship.dart';
 import 'add_friend_screen.dart';
 import 'friend_profile_screen.dart';
+import 'widgets/friend_request_row.dart';
 import 'widgets/identity_row.dart';
 
 /// Friends — accepted friends plus incoming/outgoing requests. Deliberately
@@ -462,35 +463,13 @@ class _IncomingTab extends StatelessWidget {
           return Column(
             children: requests
                 .map(
-                  (r) => IdentityRow(
+                  (r) => FriendRequestRow(
                     label: r.label,
                     username: r.username,
                     avatarUrl: r.avatarUrl,
                     onTap: () => onTapRequester(r),
-                    trailing: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        TextButton(
-                          onPressed: () => onDecline(r),
-                          child: Text(
-                            'Decline',
-                            style: CsTypography.metadata.copyWith(
-                              color: AppColors.taupe,
-                            ),
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () => onAccept(r),
-                          child: Text(
-                            'Accept',
-                            style: CsTypography.metadata.copyWith(
-                              color: AppColors.forestGreen,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                    onAccept: () => onAccept(r),
+                    onDecline: () => onDecline(r),
                   ),
                 )
                 .toList(),
