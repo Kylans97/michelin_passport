@@ -8,6 +8,7 @@ import '../../core/analytics/supabase_analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
+import '../../core/utils/phone_utils.dart';
 import '../../core/utils/venue_lifecycle.dart';
 import '../../core/widgets/personal_photos_preview.dart';
 import '../../core/widgets/section_divider.dart';
@@ -475,6 +476,15 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     }
   }
 
+  // See RestaurantDetailScreen._openCall — only ever wired up with a tel:
+  // URI buildTelUri already resolved, so failing silently matches
+  // _openUrl/_openMaps.
+  Future<void> _openCall(Uri uri) async {
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final hotel = widget.hotel;
@@ -484,14 +494,20 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     final latestStay = _stays.isEmpty ? null : _stays.first;
     final hasMichelinLink = michelinUrl != null && michelinUrl.isNotEmpty;
     final hasWebsiteLink = websiteUrl != null && websiteUrl.isNotEmpty;
-    // See the identical note in restaurant_detail_screen.dart. Hotel has
-    // no `phone` field yet, so there is no Call action to suppress here.
+    // See the identical note in restaurant_detail_screen.dart.
     final lifecycleState = resolveLifecycleState(
       status: hotel.status,
       isExpired: hotel.isExpired,
     );
     final websiteSuppressed =
         lifecycleState == VenueLifecycleState.permanentlyClosed;
+    final callSuppressed =
+        lifecycleState == VenueLifecycleState.permanentlyClosed ||
+        lifecycleState == VenueLifecycleState.temporarilyClosed;
+    // Same "presence of a usable tel: URI" signal as RestaurantDetailScreen.
+    final telUri = (hotel.phone ?? '').isEmpty || callSuppressed
+        ? null
+        : buildTelUri(hotel.phone!);
     // Wired to venue_about_current (via _loadAboutText/_aboutText) — an
     // approved submission, or null/hidden when nothing has been approved
     // yet. See _aboutText's own doc comment.
@@ -557,10 +573,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                             trackAs: AnalyticsLinkDestination.website,
                           )
                         : null,
-                    // No `phone` field exists on Hotel today — a prepared
-                    // seam, not a missing feature: see VenueUtilityActions'
-                    // own doc comment.
-                    onCall: null,
+                    onCall: telUri == null ? null : () => _openCall(telUri),
                     onOpenMichelin: hasMichelinLink
                         ? () => _openUrl(michelinUrl)
                         : null,

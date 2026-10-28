@@ -35,6 +35,9 @@ import 'search_query.dart';
 // matching comment.
 // cover_photo_url (20261006120000_add_cover_photo_url_to_full_views.sql) —
 // see restaurantFullColumns' own matching comment.
+// phone (20261012130000_add_hotel_phone.sql) — same deployment-ordering
+// hazard as restaurants' phone: that migration must be applied before a
+// build carrying this list ships, or every hotels_full select fails.
 const hotelFullColumns =
     'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
@@ -42,7 +45,7 @@ const hotelFullColumns =
     'worlds_50_best_rank, worlds_50_best_year, starts_on, ends_on, '
     'parent_venue_type, parent_venue_id, opening_weekdays, is_expired, '
     'status, status_since, status_note, created_at, missing_listing_report_id, '
-    'cover_photo_url';
+    'cover_photo_url, phone';
 
 class HotelRepository {
   HotelRepository(this._client);

@@ -58,12 +58,14 @@ stop and say so rather than working around it.
 - Anything else that looks like a relationship is a view.
 
 ### Hotel scope — three rules, mutually exclusive by construction
-1. `hotels` holds **only** MICHELIN Key hotels. No stub rows for unkeyed
-   properties, ever.
-2. `hotel_restaurants` holds only verified links to Key hotels already in
+1. `hotels` holds **only** MICHELIN Key hotels and hotels ranked on The
+   World's 50 Best Hotels (1–100), Key or not — the latter widened by
+   decision on 2026-10-28, `michelin_keys` NULL when no Key is confirmed.
+   No stub rows for any other property, ever.
+2. `hotel_restaurants` holds only verified links to hotels already in
    `hotels`.
-3. A restaurant in a **non-Key** hotel stores the property in
-   `restaurants.property_name` — no hotel row, no link row.
+3. A restaurant in a hotel that is **not in `hotels`** stores the property
+   in `restaurants.property_name` — no hotel row, no link row.
 
 `property_name` is free text and **must never be joined on**.
 
@@ -257,7 +259,11 @@ database controls. Preferred shape:
 
 ## Constraints on agent behaviour
 
-- Never commit or push unless explicitly asked.
+- Commit and push finished work to the session's own feature branch
+  without asking (decided 2026-10-28). Never push to `main` or any other
+  branch, and never merge, without being explicitly asked. Committing a
+  migration or prepared SQL file is not applying it — production writes
+  still follow the rules below.
 - Never create migrations or write to Supabase as a side effect of another
   task. Say what a migration would need to do and stop.
 - A session that applies a migration ends by confirming the migration is

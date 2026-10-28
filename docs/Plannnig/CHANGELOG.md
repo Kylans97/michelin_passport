@@ -13,6 +13,19 @@ The format follows Keep a Changelog.
 - Project documentation
 - Database organisation
 - Architecture documentation
+- 2026-10-28 — Hotel phone numbers, from user feedback asking for a phone
+  on every World's 50 Best venue. `20261012130000_add_hotel_phone.sql`
+  adds `hotels.phone` and appends it to `hotels_full` (the follow-up
+  `20260819120000_add_restaurant_phone.sql` named); `Hotel.phone`,
+  `hotelFullColumns` and a Call action on `HotelDetailScreen`, wired exactly
+  like the restaurant one (hidden when closed or no usable number).
+  `20261012120000_add_worlds_50_best_countries_and_cities.sql` adds the
+  countries/cities the missing World's 50 Best venues need. **Prepared, not
+  applied** — apply order and the catalogue data that goes with them in
+  `supabase/data/enrichment/worlds_50_best_2025_2026/W50B_COMPLETION_REPORT.md`.
+  The hotel migration must be applied before a build carrying the new
+  `hotelFullColumns` ships. Not compiled here (no Flutter SDK in the
+  session).
 - 2026-10-02/03 — Admin email on every new content report, generic over
   `content_type`: `20261010120000_add_content_report_admin_email_
   notification.sql` (trigger `content_reports_notify_admin_on_insert` →

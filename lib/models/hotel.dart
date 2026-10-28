@@ -51,6 +51,12 @@ class Hotel {
   // value, reserved for the future booking action this field enables.
   final String? bookingUrl;
 
+  // Human-readable international format (e.g. "+33 1 43 16 30 30") --
+  // not a URI. Mirrors Restaurant.phone; added by
+  // 20261012130000_add_hotel_phone.sql. See lib/core/utils/phone_utils.dart
+  // for deriving a tel: URI from this at call time. Nullable.
+  final String? phone;
+
   // Derived by hotels_full from a left join against hotel_restaurants,
   // grouped server-side — never a second query per hotel.
   final bool hasMichelinRestaurant;
@@ -117,6 +123,7 @@ class Hotel {
     this.michelinUrl,
     this.websiteUrl,
     this.bookingUrl,
+    this.phone,
     required this.hasMichelinRestaurant,
     required this.restaurantCount,
     this.worlds50BestRank,
@@ -168,6 +175,7 @@ class Hotel {
     michelinUrl: json['michelin_url'] as String?,
     websiteUrl: json['website_url'] as String?,
     bookingUrl: json['booking_url'] as String?,
+    phone: json['phone'] as String?,
     hasMichelinRestaurant: (json['has_michelin_restaurant'] as bool?) ?? false,
     restaurantCount: (json['restaurant_count'] as num?)?.toInt() ?? 0,
     worlds50BestRank: (json['worlds_50_best_rank'] as num?)?.toInt(),
