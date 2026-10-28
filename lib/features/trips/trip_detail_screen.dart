@@ -378,7 +378,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                       ),
                       children: [
                         _TripHeader(
-                          eyebrow: startLabel ?? 'YOUR TRIP',
+                          eyebrow: startLabel?.toUpperCase() ?? 'YOUR TRIP',
                           title: _trip.title,
                           destination: hasCity
                               ? '$_destinationLabel · $city'

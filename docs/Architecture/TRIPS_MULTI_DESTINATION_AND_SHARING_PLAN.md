@@ -1,9 +1,28 @@
 # Trips: multiple destinations and shared trips (plan)
 
-Status: **proposal, waiting for product-owner review.** No migration has been
-written or applied. Written 2026-10-28 on `feature/trips-redesign`, against
+Status: **proposal, product-owner decisions recorded 2026-10-28 (§0); waiting
+for the go-ahead to write the migration.** No migration has been written or
+applied. Written 2026-10-28 on `feature/trips-redesign`, against
 `main` at `e46c282` (ledger: 102 migrations, last `20261019130000`;
 `feature/editorial-selection` holds an unapplied `20261020120000`).
+
+## 0. Product-owner decisions (2026-10-28)
+
+1. **The trip title is free text; a destination is not.** A destination has
+   to be found in the app (a catalogue country, optionally a catalogue
+   city), since otherwise there are no hotels or restaurants to offer
+   there. No free-text destination label.
+2. **Events, multi-country:** a trip proposes events in **each** of its
+   destination countries, for the dates the user is in that country.
+3. **Leg dates are required once a trip has more than one destination.**
+   The user says where they will be on which dates. A single-destination
+   trip's leg is simply the whole trip.
+4. **Any member of a trip can invite** (accepted members, not only the
+   owner).
+5. **Unfriending:** the unfriended person stays on **past** trips and is
+   removed from **future** trips.
+
+These replace §7's open questions; the sections below are updated to match.
 
 Three requests, one data model:
 
@@ -79,8 +98,11 @@ create table public.planned_trip_destinations (
   country_code  char(2) not null references public.countries(country_code),
   -- Optional narrowing to one catalogue city. NULL = the whole country.
   city_id       uuid references public.cities(id),
-  -- Optional dates for this leg; must sit inside the trip's own range
-  -- (enforced by trigger, since a CHECK can't see planned_trips).
+  -- This leg's dates; must sit inside the trip's own range (enforced by
+  -- trigger, since a CHECK can't see planned_trips). Required whenever the
+  -- trip has more than one destination (decision 3, enforced by
+  -- save_trip_destinations); NULL only on a single-destination trip, where
+  -- the leg is the whole trip.
   start_date    date,
   end_date      date,
   created_at    timestamptz not null default now(),
@@ -102,25 +124,27 @@ Why this shape:
   `city_id in (<city destinations>) or country_code in (<whole-country destinations>)`.
   Nothing joins on a name or on `property_name`.
 - **`city_id` is the curated catalogue city**, unlike `planned_trips.city`.
-  The original free-text decision ("a trip destination isn't restricted to
-  catalogue cities") still holds: a destination with no catalogue city is
-  simply a whole-country destination. The trade-off: a destination like
-  "Lake Como" can't be stored as such. If that matters, add a display-only
-  `label text`, never joined or matched. **Question 1** below.
-- **Leg dates are optional.** "Known date ≠ known time" applies in spirit:
-  no leg dates are invented. Without them a leg just spans the whole trip.
+  Decision 1 reverses the original free-text choice for destinations: a
+  destination is always something the catalogue knows, a country or a
+  catalogue city, because that's what the pickers can offer venues for.
+  There is no free-text label column. (The trip *title* stays free text.)
+- **Leg dates:** required on a multi-destination trip (decision 3), so a
+  stay or visit always falls in a known leg. Never invented: the user
+  enters them, and the UI won't save a second destination without them.
 - `position` gives an itinerary order; the lowest one is the trip's primary
   destination (see §4).
 
 ### 3.2 `planned_venues`: no new column
 
 A stay or visit already has its own dates, and its venue already has a
-`country_code`/`city_id`. Which leg it belongs to is derived, not stored:
-same `city_id` (or `country_code` for a whole-country leg), tie-broken by
-dates when a trip returns to the same place. A stored `destination_id`
-would be a second source of truth that can disagree with the venue's own
-location, the same failure mode `is_in_hotel` had (DATABASE_ARCHITECTURE
-§5). **Question 2** below, in case per-leg grouping should be stored.
+`country_code`/`city_id`. Since every leg of a multi-destination trip now
+has dates (decision 3), which leg a plan belongs to is derived, not stored:
+the leg whose place matches the venue (`city_id`, or `country_code` for a
+whole-country leg) and whose dates contain the plan's start date. A stored
+`destination_id` would be a second source of truth that can disagree with
+the venue's own location, the same failure mode `is_in_hotel` had
+(DATABASE_ARCHITECTURE §5). Defaults follow from the same rule: a stay
+added under a leg starts with that leg's dates, not the whole trip's.
 
 ### 3.3 `planned_trip_members` (new, for sharing)
 
@@ -152,14 +176,35 @@ create index on public.planned_trip_members (user_id, status);
 | Function | Does |
 |---|---|
 | `is_trip_member(trip_id uuid) returns boolean`, stable | owner, or an `accepted` member. Used by RLS so policies don't recurse into `planned_trip_members`' own policies. |
-| `invite_to_trip(trip_id uuid, friend_id uuid)` | caller must be the owner; `is_friend(friend_id)` must hold and neither side has blocked the other (`friendships.status = 'blocked'`); inserts/re-opens a `pending` row; writes a `trip_invite_received` notification. |
+| `invite_to_trip(trip_id uuid, friend_id uuid)` | caller must be a member (`is_trip_member`: the owner or any accepted member, decision 4); the invitee must be the **caller's** friend (`is_friend(friend_id)`) and neither side has blocked the other; inserts/re-opens a `pending` row with `invited_by = auth.uid()`; writes a `trip_invite_received` notification. |
 | `respond_to_trip_invite(member_id uuid, accept boolean)` | caller must be the invitee; sets `accepted`/`declined` + `responded_at`; on accept notifies the owner (`trip_invite_accepted`). |
 | `leave_trip(trip_id uuid)` | a member removes themself; **their own** `planned_venues` on that trip get `trip_id = null` (kept as standalone plans, same as deleting a trip does today). |
 | `remove_trip_member(member_id uuid)` | owner removes a member; same detaching of that member's own plans. |
 | `save_trip_destinations(trip_id uuid, destinations jsonb)` | owner replaces the destination list atomically and keeps `planned_trips.country_code` equal to the position-0 destination (§4). |
 
-`invite_to_trip` is **owner only in V1**: members can't invite onward.
-**Question 3** below.
+### 3.4a Unfriending (decision 5)
+
+Unfriending is a client `delete` on `friendships` (RLS `friendships_delete`,
+`FriendshipRepository.removeFriendship`); blocking is `block_user()`, which
+sets `status = 'blocked'`. An `AFTER DELETE` trigger, plus an
+`AFTER UPDATE … WHEN (new.status = 'blocked')` trigger, on `friendships`
+(`SECURITY DEFINER`, its own `revoke execute … from public, anon`) does this
+for the two people A and B:
+
+- On every trip **owned by A** whose `end_date >= current_date` (not yet
+  over), remove B's membership row (any status), and the reverse for trips
+  owned by B. B's own plans on those trips are detached (`trip_id = null`),
+  the same as `leave_trip`.
+- Trips that have already ended are untouched, so B stays on past trips.
+
+"Today" is `current_date` in the database's timezone; a trip ending today
+counts as current, so nobody is removed mid-trip on its last day.
+
+**Not covered:** A and B are both members of a third person C's trip. One
+reading of decision 5 removes neither, since the trip isn't either of
+theirs. The other removes whoever B was invited by A. The proposal above
+does neither: it only acts on trips the unfriending pair own. To confirm
+(§7).
 
 ### 3.5 RLS
 
@@ -236,13 +281,21 @@ creating it.
   `MemberAvatar`s, "Invite friends" opening a friends-only picker.
 - Trips list: a "Shared with you" marker; pending invitations shown at the
   top of Trips (accept/decline) as well as in Notifications.
-- **Event matching:** `eventMatchesTrip` runs per destination: dates overlap
-  the leg (or the trip if the leg has no dates) **and** `country_code`
-  matches. The current city refinement compares free-text names. For
-  `city_id` destinations, keep it only if events gain a `city_id`
-  (separate change); otherwise match on country + dates. **Question 4.**
+- **Event matching (decision 2):** `eventMatchesTrip` runs per leg: the
+  event's dates overlap **that leg's** dates (the whole trip's for a
+  single-destination trip) **and** its `country_code` is the leg's. So a
+  trip through France then Italy proposes French events during the French
+  dates and Italian events during the Italian ones, and the screen fetches
+  events for every distinct leg country, not just the first.
+  City narrowing: events have no `city_id`, only free-text `city`, and
+  comparing that with a catalogue city name would be matching on a name.
+  So legs match on country + dates, and today's free-text city comparison
+  is dropped for legs. It could come back if events gain a `city_id`
+  (separate change).
   Step 8A's order and "filtering before ranking" are unchanged: trip
   relevance is just computed over every leg of every trip the user is on.
+- Create/Edit Trip enforces decision 3: adding a second destination
+  requires dates on every leg, inside the trip's range.
 
 ---
 
@@ -266,20 +319,15 @@ creating it.
 
 ---
 
-## 7. Questions for the product owner
+## 7. Still open
 
-1. **Non-catalogue places.** Is a destination limited to a country plus,
-   optionally, a catalogue city, or should it also carry a free display
-   label ("Lake Como", "Provence")? A label is display only and never
-   used for matching or scoping.
-2. **Per-leg grouping:** derive it from each venue's own location and
-   dates (proposed), or let the user assign a stay/visit to a leg
-   explicitly (a stored `destination_id`)?
-3. **Who can invite:** owner only (proposed), or any accepted member?
-   And can members add destinations, or only the owner?
-4. **Event matching per destination:** country + dates only for
-   catalogue-city destinations (proposed), or keep today's free-text
-   city-name comparison until events have a `city_id`?
-5. **Unfriending:** does removing a friend also remove them from shared
-   trips, or does membership stand on its own once accepted (proposed:
-   it stands, the owner can remove)?
+1. **Unfriending inside someone else's trip** (§3.4a): when A and B are both
+   members of C's trip and A unfriends B, the proposal changes nothing.
+   Should it instead remove B if A invited B?
+2. **Who can remove members:** the proposal lets only the owner remove
+   others (any member can leave). Should the member who sent an invite
+   also be able to withdraw it while it's still pending?
+3. **Overlapping legs:** may two legs share dates (a day trip from Paris to
+   Reims, say), or must legs follow each other without overlap? The
+   proposal allows overlap and lets the place decide which leg a plan
+   belongs to.

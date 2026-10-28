@@ -278,6 +278,15 @@ void main() {
       expect(find.text('17 OCT 2026'), findsOneWidget);
     });
 
+    testWidgets('a stay within one month shows a compact single-line range', (
+      tester,
+    ) async {
+      await tester.pumpWidget(
+        _wrap(PlannedVenueRow(item: _plannedHotel(), onTap: () {})),
+      );
+      expect(find.text('16–19 OCT 2026'), findsOneWidget);
+    });
+
     testWidgets('shows a Michelin star row for a starred restaurant', (
       tester,
     ) async {

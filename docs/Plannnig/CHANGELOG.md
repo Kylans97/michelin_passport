@@ -22,6 +22,9 @@ The format follows Keep a Changelog.
   `country_code` (never a name, never `property_name`). In Create Trip they
   stay disabled until a destination is chosen, and changing the destination
   drops picks from another country.
+- A stay's date eyebrow uses the shortest unambiguous range
+  ("27–30 Nov 2026") so it fits on one line; Trip Detail's start label
+  ("IN 30 DAYS") is uppercase like the other eyebrows.
 - `CsPlaceCard` gains an optional `onLongPress` (null by default, so
   existing cards are unchanged).
 
@@ -39,8 +42,11 @@ The format follows Keep a Changelog.
 
 ### Planned (not applied)
 - Multi-destination trips and shared trips: data-model and migration plan in
-  `docs/Architecture/TRIPS_MULTI_DESTINATION_AND_SHARING_PLAN.md`, waiting
-  for review. No migration written.
+  `docs/Architecture/TRIPS_MULTI_DESTINATION_AND_SHARING_PLAN.md`, with the
+  product owner's decisions of 2026-10-28 recorded (catalogue-only
+  destinations, required leg dates, events per leg country, any member can
+  invite, unfriending removes from future trips only). Three small points
+  still open; no migration written.
 
 ---
 

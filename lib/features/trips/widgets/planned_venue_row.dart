@@ -25,14 +25,22 @@ const _monthNames = [
   'Dec',
 ];
 
+// "17 Oct 2026", "27–30 Nov 2026", "30 Nov – 2 Dec 2026", or with both
+// years only when a stay crosses New Year — the shortest unambiguous form,
+// so a stay's range fits the card's eyebrow on one line.
 String _formatPlanDate(ResolvedPlannedVenue item) {
   final start = item.plan.startDate;
   final end = item.plan.endDate;
-  final startLabel =
-      '${start.day} ${_monthNames[start.month - 1]} ${start.year}';
-  if (end == null) return startLabel;
-  return '$startLabel – ${end.day} ${_monthNames[end.month - 1]} '
-      '${end.year}';
+  String full(DateTime d) => '${d.day} ${_monthNames[d.month - 1]} ${d.year}';
+  if (end == null ||
+      (end.year == start.year &&
+          end.month == start.month &&
+          end.day == start.day)) {
+    return full(start);
+  }
+  if (start.year != end.year) return '${full(start)} – ${full(end)}';
+  if (start.month == end.month) return '${start.day}–${full(end)}';
+  return '${start.day} ${_monthNames[start.month - 1]} – ${full(end)}';
 }
 
 // "Paris, 🇫🇷 France" — the same location line Passport's own cards use;
