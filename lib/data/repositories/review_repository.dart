@@ -1,5 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/event.dart';
 import '../../models/review_item.dart';
+import 'events_repository.dart';
 import 'venue_photo_submission_repository.dart'
     show venuePhotoSubmissionsBucket;
 
@@ -80,4 +82,27 @@ class ReviewRepository {
     'admin_reject_venue_photo',
     params: {'p_submission_id': item.itemId, 'p_review_note': note},
   );
+
+  /// Publishes a submitted event and tells the venue.
+  Future<void> approveEvent(ReviewItem item) => _client.rpc(
+    'admin_approve_event',
+    params: {'p_event_id': item.eventId},
+  );
+
+  /// Sends a submitted event back with a note — or, for a live one, takes
+  /// it offline. The venue sees the note either way.
+  Future<void> rejectEvent(ReviewItem item, String note) => _client.rpc(
+    'admin_reject_event',
+    params: {'p_event_id': item.eventId, 'p_review_note': note},
+  );
+
+  /// Clears a change to a live event from the queue.
+  Future<void> markEventEditSeen(ReviewItem item) => _client.rpc(
+    'admin_mark_event_edit_seen',
+    params: {'p_edit_id': item.itemId},
+  );
+
+  /// The event itself, in any status. Admins may read unpublished events
+  /// (events_admin_read).
+  Future<Event?> loadEvent(String eventId) => EventsRepository(_client).loadEventById(eventId);
 }

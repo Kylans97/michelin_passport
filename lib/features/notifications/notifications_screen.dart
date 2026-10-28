@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../events/event_detail_screen.dart';
 import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/analytics_service.dart';
@@ -374,6 +375,9 @@ class _NotificationRow extends StatelessWidget {
       case AppNotificationType.venuePhotoApproved:
       case AppNotificationType.venuePhotoRejected:
         return _VenueSubmissionContent(notification: notification);
+      case AppNotificationType.eventApproved:
+      case AppNotificationType.eventRejected:
+        return _EventReviewContent(notification: notification);
     }
   }
 }
@@ -545,6 +549,69 @@ class _VenueSubmissionContent extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// A venue's own event was approved or not (20261018130000). Approved:
+/// it's live, and tapping opens its page. Not approved: the reviewer's
+/// note, the same way a rejected about text or photo shows one; the
+/// venue edits and resubmits from My venues → Events.
+class _EventReviewContent extends StatelessWidget {
+  final AppNotification notification;
+  const _EventReviewContent({required this.notification});
+
+  @override
+  Widget build(BuildContext context) {
+    final isRejected = notification.type == AppNotificationType.eventRejected;
+    final name = notification.eventName ?? 'Your event';
+    final at = notification.eventVenueName == null ? '' : ' at ${notification.eventVenueName}';
+    final description = isRejected
+        ? '"$name"$at was not approved.'
+        : '"$name"$at is now live.';
+    final note = notification.eventReviewNote?.trim();
+
+    final content = Padding(
+      padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(
+            isRejected ? Icons.event_busy_outlined : Icons.event_available_outlined,
+            color: AppColors.forestGreen,
+            size: 20,
+          ),
+          const SizedBox(width: CsSpacing.md),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(description, style: CsTypography.body.copyWith(color: AppColors.forestGreen)),
+                if (isRejected && note != null && note.isNotEmpty) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    '"$note"',
+                    style: CsTypography.body.copyWith(
+                      color: AppColors.taupe,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+    if (isRejected) return content;
+    return InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => EventDetailScreen(eventId: notification.subjectId),
+        ),
+      ),
+      child: content,
     );
   }
 }

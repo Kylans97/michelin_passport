@@ -10,6 +10,64 @@ The format follows Keep a Changelog.
 
 ### Added
 
+- 2026-10-28 — Venue events, phase 3: the app. It reads only the
+  `20261018130000` RPCs; none of it works until that migration is
+  applied.
+  - **Events screen** (My venues → a venue → Events): every event the
+    venue hosts, from `get_venue_events`, so every active manager sees
+    the same list.
+    - It groups them as awaiting review, not approved (with the
+      reviewer's note), live, past and cancelled.
+    - "Create an event" opens the form, and tapping an event edits it.
+    - The landing page's summary counts upcoming, awaiting review and
+      not approved.
+  - **The event form** (`VenueEventFormScreen`):
+    - name, description, one of the 7 V1 types, and tags from
+      `event_tags`;
+    - a date, an optional end date, an optional start time, and an end
+      time only once there is a start. A time left out is sent as
+      nothing and shown as "not given", never guessed;
+    - "At {venue}", where the server copies the venue's verified
+      location, or a place, city, country and a map pin
+      (`PickEventLocationScreen`, OpenStreetMap);
+    - the timezone comes from the country, and a country with several
+      zones is asked;
+    - ticket link, admission type and admission note.
+
+    The form checks the server's own rules first: the window up to one
+    year ahead, with "today" in the event's timezone; an end before the
+    start on one day; https only. A refusal from the server is shown in
+    its own words. A live event says "changes go live straight away", and
+    a rejected one shows the note and "Save and resubmit". Cancelling
+    asks for confirmation first.
+  - **Review:** the queue gains EVENTS and CHANGES TO LIVE EVENTS, listed
+    by event name. `ReviewEventScreen` handles both:
+    - **a submitted event** shows its details as entered and "Preview
+      the event page", which opens the real `EventDetailScreen`. The
+      admin chooses Approve and publish, or Reject with a note;
+    - **a change to a live event** shows each changed field, old → new,
+      with a value left empty shown as "not given". The admin chooses
+      Mark as seen, or Take offline with a note.
+  - **Notifications:**
+    - `event_approved` opens the event's page, and `event_rejected` shows
+      the note;
+    - the list and the unread count read the `_v2` functions, falling
+      back to the old ones while a server doesn't have `_v2` yet;
+    - **a type this build doesn't know is skipped** (`tryFromRow`), no
+      longer a reason the whole list fails to load. The next new type
+      can't empty the screen again.
+  - **Event times:** venues may submit date-only or start-only events.
+    This was decided by the product owner on 2026-10-28, over the time
+    audit's earlier rule that host events need both times. The audit's
+    "Host-Created Events" section is marked superseded in place, and
+    `satisfiesHostCreatedEventTimeRequirement` stays unused with a note
+    saying why.
+  - **Tests:** 20 new; the existing venue tests now run against the new
+    repository. 2,511 tests pass and analyze is clean.
+
+    **Not tried on the simulator:** the screens need the phase 3
+    migrations, which aren't on production yet.
+
 - 2026-10-28 — Venue events, phase 3 of
   `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`: the database
   half. The design and the six decisions taken are in

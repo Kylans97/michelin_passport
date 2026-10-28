@@ -11,7 +11,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart' as dotenv_pkg;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:michelin_passport/data/repositories/events_repository.dart';
+import 'package:michelin_passport/data/repositories/venue_events_repository.dart';
 import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_about_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_photo_submission_repository.dart';
@@ -24,6 +24,7 @@ import 'package:michelin_passport/features/profile/venue_photos_screen.dart';
 import 'package:michelin_passport/features/profile/venue_profile_screen.dart';
 import 'package:michelin_passport/features/restaurants/restaurant_detail_screen.dart';
 import 'package:michelin_passport/models/event.dart';
+import 'package:michelin_passport/models/venue_event.dart';
 import 'package:michelin_passport/models/managed_venue.dart';
 import 'package:michelin_passport/models/private_chef.dart';
 import 'package:michelin_passport/models/photo_framing.dart';
@@ -151,11 +152,17 @@ VenueAboutSubmission _submission(VenueAboutSubmissionStatus status) => VenueAbou
   submittedAt: DateTime(2026, 9, 1),
 );
 
+// A month from today, so "upcoming" never goes stale.
+final _inAMonth = () {
+  final d = DateTime.now().add(const Duration(days: 30));
+  return DateTime.utc(d.year, d.month, d.day);
+}();
+
 Event _event(String id, {String name = 'Test Event'}) => Event(
   id: id,
   name: name,
-  startDate: DateTime.utc(2026, 12, 1),
-  endDate: DateTime.utc(2026, 12, 1),
+  startDate: _inAMonth,
+  endDate: _inAMonth,
   timezone: 'Europe/Amsterdam',
   countryCode: 'NL',
   eventType: EventType.dinner,
@@ -163,30 +170,21 @@ Event _event(String id, {String name = 'Test Event'}) => Event(
   createdAt: DateTime.utc(2026, 1, 1),
 );
 
-class _FakeEventsRepository extends EventsRepository {
-  _FakeEventsRepository({this.events = const [], this.error}) : super(_dummyClient());
+class _FakeEventsRepository extends VenueEventsRepository {
+  _FakeEventsRepository({List<Event> events = const [], List<VenueEvent>? venueEvents, this.error})
+    : venueEvents = venueEvents ?? [for (final e in events) VenueEvent(event: e, status: VenueEventStatus.live)],
+      super(_dummyClient());
 
-  final List<Event> events;
+  final List<VenueEvent> venueEvents;
   final Object? error;
   final loadedFor = <String>[];
 
-  Future<List<Event>> _load(String kind) async {
+  @override
+  Future<List<VenueEvent>> loadVenueEvents(ManagedVenue venue) async {
     if (error != null) throw error!;
-    loadedFor.add(kind);
-    return events;
+    loadedFor.add('${venue.venueTypeWireValue}:${venue.id}');
+    return venueEvents;
   }
-
-  @override
-  Future<List<Event>> loadHostedEventsForRestaurant(String restaurantId, {DateTime? now}) =>
-      _load('restaurant:$restaurantId');
-
-  @override
-  Future<List<Event>> loadHostedEventsForHotel(String hotelId, {DateTime? now}) =>
-      _load('hotel:$hotelId');
-
-  @override
-  Future<List<Event>> loadHostedEventsForChef(String chefId, {DateTime? now}) =>
-      _load('chef:$chefId');
 }
 
 // The about text: VenueProfileScreen.
@@ -226,7 +224,7 @@ Future<void> _pumpLanding(
   VenueAboutRepository repo, {
   ManagedVenue? venue,
   VenuePhotoSubmissionRepository? photoRepo,
-  EventsRepository? eventsRepo,
+  VenueEventsRepository? eventsRepo,
   List<NavigatorObserver> observers = const [],
 }) async {
   await tester.pumpWidget(
@@ -954,7 +952,7 @@ void main() {
         venue: ManagedPrivateChef(PrivateChef.fromJson({'id': 'c1', 'display_name': 'Chef Amara'})),
         eventsRepo: events,
       );
-      expect(events.loadedFor, ['chef:c1']);
+      expect(events.loadedFor, ['private_chef:c1']);
       expect(find.text('Chef Amara'), findsOneWidget);
     });
 
@@ -972,7 +970,7 @@ void main() {
         MaterialApp(
           home: VenueEventsScreen(
             venue: _venue(),
-            eventsRepo: _FakeEventsRepository(events: [_event('e1', name: 'Four Hands Dinner')]),
+            repository: _FakeEventsRepository(events: [_event('e1', name: 'Four Hands Dinner')]),
           ),
         ),
       );
@@ -982,10 +980,11 @@ void main() {
 
     testWidgets('none upcoming says so plainly', (tester) async {
       await tester.pumpWidget(
-        MaterialApp(home: VenueEventsScreen(venue: _venue(), eventsRepo: _FakeEventsRepository())),
+        MaterialApp(home: VenueEventsScreen(venue: _venue(), repository: _FakeEventsRepository())),
       );
       await tester.pumpAndSettle();
-      expect(find.text('No upcoming events at Flore Amsterdam.'), findsOneWidget);
+      expect(find.textContaining('No events yet.'), findsOneWidget);
+      expect(find.text('Create an event'), findsOneWidget);
     });
 
     testWidgets('a failed load says so, never the raw error', (tester) async {
@@ -993,7 +992,7 @@ void main() {
         MaterialApp(
           home: VenueEventsScreen(
             venue: _venue(),
-            eventsRepo: _FakeEventsRepository(error: Exception('boom')),
+            repository: _FakeEventsRepository(error: Exception('boom')),
           ),
         ),
       );

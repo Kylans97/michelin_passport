@@ -7,17 +7,17 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/utils/mailto_uri.dart';
 import '../../core/widgets/framed_image.dart';
 import '../../core/widgets/subtle_text_action.dart';
-import '../../data/repositories/events_repository.dart';
+import '../../data/repositories/venue_events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/venue_photo_submission_repository.dart';
-import '../../models/event.dart';
 import '../../models/managed_venue.dart';
 import '../../models/private_chef_photo.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/venue_about_submission.dart';
+import '../../models/venue_event.dart';
 import '../../models/venue_photo_submission_status.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
@@ -70,7 +70,7 @@ class VenueManagementScreen extends StatefulWidget {
   // Optional DI seams, matching every other screen in this feature.
   final VenueAboutRepository? aboutRepo;
   final VenuePhotoSubmissionRepository? photoRepo;
-  final EventsRepository? eventsRepo;
+  final VenueEventsRepository? eventsRepo;
 
   // Owner preview only — the fresh venue re-fetch _openPreview does
   // alongside its existing photo/about-text fetches. Same DI-seam
@@ -110,7 +110,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   late final _aboutRepo = widget.aboutRepo ?? VenueAboutRepository(Supabase.instance.client);
   late final _photoRepo =
       widget.photoRepo ?? VenuePhotoSubmissionRepository(Supabase.instance.client);
-  late final _eventsRepo = widget.eventsRepo ?? EventsRepository(Supabase.instance.client);
+  late final _eventsRepo =
+      widget.eventsRepo ?? VenueEventsRepository(Supabase.instance.client);
   late final _restaurantRepo =
       widget.restaurantRepo ?? RestaurantRepository(Supabase.instance.client);
   late final _hotelRepo = widget.hotelRepo ?? HotelRepository(Supabase.instance.client);
@@ -121,7 +122,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   // row's summary line — every row stays tappable either way.
   late Future<_AboutSummary> _aboutFuture;
   late Future<_PhotosSummary> _photosFuture;
-  late Future<List<Event>> _eventsFuture;
+  late Future<List<VenueEvent>> _eventsFuture;
 
   bool _previewLoading = false;
   String? _previewError;
@@ -154,7 +155,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
           openSubmissions: r[1] as List<VenuePhotoSubmissionSummary>,
         ),
       );
-      _eventsFuture = VenueEventsScreen.loadFor(widget.venue, _eventsRepo);
+      _eventsFuture = _eventsRepo.loadVenueEvents(widget.venue);
     });
   }
 
@@ -381,13 +382,15 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                 ),
               ),
             ),
-            FutureBuilder<List<Event>>(
+            FutureBuilder<List<VenueEvent>>(
               future: _eventsFuture,
               builder: (context, snap) => _SectionRow(
                 title: 'Events',
-                summary: snap.hasData ? _eventsLine(snap.data!) : null,
+                summary: snap.hasData
+                    ? VenueEventsScreen.summary(snap.data!, DateTime.now())
+                    : null,
                 onTap: () => _open(
-                  VenueEventsScreen(venue: widget.venue, eventsRepo: widget.eventsRepo),
+                  VenueEventsScreen(venue: widget.venue, repository: widget.eventsRepo),
                 ),
               ),
             ),
@@ -488,11 +491,6 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
     ].join(' · ');
   }
 
-  static String _eventsLine(List<Event> events) => switch (events.length) {
-    0 => 'None upcoming',
-    1 => '1 upcoming',
-    final n => '$n upcoming',
-  };
 
   // One restrained line, not a card or a section of its own — the same
   // register as everything else on this screen. Sends to the one

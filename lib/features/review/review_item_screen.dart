@@ -87,13 +87,17 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
       ReviewKind.venueClaim => widget.repository.approveClaim(_item),
       ReviewKind.venueAbout => widget.repository.approveAbout(_item),
       ReviewKind.venuePhoto => widget.repository.approvePhoto(_item),
+      // Events open ReviewEventScreen, never this one.
+      ReviewKind.venueEvent || ReviewKind.venueEventEdit => throw StateError(
+        'Events are reviewed in ReviewEventScreen.',
+      ),
     },
   );
 
   Future<void> _reject() async {
     final note = await showDialog<String>(
       context: context,
-      builder: (_) => const _RejectDialog(),
+      builder: (_) => const RejectWithNoteDialog(),
     );
     if (note == null || note.trim().isEmpty) return;
     await _decide(
@@ -109,6 +113,9 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
         ReviewKind.venuePhoto => widget.repository.rejectPhoto(
           _item,
           note.trim(),
+        ),
+        ReviewKind.venueEvent || ReviewKind.venueEventEdit => throw StateError(
+          'Events are reviewed in ReviewEventScreen.',
         ),
       },
     );
@@ -297,6 +304,7 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
   }
 
   List<Widget> _body() => switch (_item.kind) {
+    ReviewKind.venueEvent || ReviewKind.venueEventEdit => const [],
     ReviewKind.venueClaim => [
       _field('Role', _item.claimRole),
       _field('Business email', _item.claimBusinessEmail),
@@ -484,13 +492,17 @@ class _PhotoFrames extends StatelessWidget {
   }
 }
 
-class _RejectDialog extends StatefulWidget {
-  const _RejectDialog();
+/// Asks for the note a venue receives with a rejection. Pops the note,
+/// or null. Shared with ReviewEventScreen ("Take offline" uses its own
+/// [title]).
+class RejectWithNoteDialog extends StatefulWidget {
+  final String title;
+  const RejectWithNoteDialog({super.key, this.title = 'Reject'});
   @override
-  State<_RejectDialog> createState() => _RejectDialogState();
+  State<RejectWithNoteDialog> createState() => _RejectWithNoteDialogState();
 }
 
-class _RejectDialogState extends State<_RejectDialog> {
+class _RejectWithNoteDialogState extends State<RejectWithNoteDialog> {
   final _controller = TextEditingController();
 
   @override
@@ -504,7 +516,7 @@ class _RejectDialogState extends State<_RejectDialog> {
     return AlertDialog(
       backgroundColor: AppColors.warmWhite,
       title: Text(
-        'Reject',
+        widget.title,
         style: CsTypography.placeTitle.copyWith(
           color: AppColors.forestGreen,
           fontSize: 20,
@@ -542,7 +554,7 @@ class _RejectDialogState extends State<_RejectDialog> {
               ? null
               : () => Navigator.pop(context, _controller.text),
           child: Text(
-            'Reject',
+            widget.title,
             style: CsTypography.bodyMedium.copyWith(color: AppColors.error),
           ),
         ),
