@@ -108,6 +108,39 @@ The format follows Keep a Changelog.
   Europe/Amsterdam, member sequence at 1 unused, 5 buckets). Without the
   countries seed, replay fails exactly where §4 predicted. Nothing
   touched production.
+- 2026-10-28 — `visit-photos` behaved differently in production from a
+  database rebuilt from migration history. The bucket was first made by
+  hand in the dashboard on 2026-07-27 (15 MiB, jpeg/png/webp/heic plus
+  `image/heif`) along with four owner-only "Users can … own stored visit
+  photos" policies on `storage.objects`, one of them UPDATE.
+  `20260807120000` then inserted the bucket with `on conflict do
+  nothing`, so production kept the dashboard settings and the migration's
+  own (10 MiB, no heif, no update policy) never took effect there. Found
+  by the 2026-10-28 schema diff, which matched everything else migrations
+  create. `20261011120000_converge_visit_photos_storage_to_migrations.sql`
+  moves production toward history rather than the reverse: no update
+  policy is the documented design (`20260825170000`'s header), the other
+  three policies duplicate `visit_photos_read`/`_insert`/`_delete`, the
+  app never sends heif, never upserts or moves an object (none of it in
+  git history either), and compresses every pick well under 10 MiB.
+  It drops the four policies (`if exists`) and resets the bucket limits.
+  Proven locally only: with production's state recreated (hashes of all
+  17 `storage.objects` policies and the bucket matched production's), it
+  converges exactly to a fresh replay's state; re-running it changes
+  nothing; a fresh replay of all 90 files applies cleanly and is
+  identical. Through the storage API afterwards, overwrite, `image/heif`
+  and an 11 MiB upload are refused, normal uploads, reads and deletes
+  work, and an 11 MiB object stored beforehand stays readable. **Not yet
+  applied to production.** A read-only check of production's 11 existing
+  `visit-photos` objects (2026-10-28) found none over 10 MiB and none of
+  type heif — largest 912,712 bytes, only `image/jpeg` recorded — so the
+  looser dashboard limits were never actually used. Two of the 11 carry
+  no metadata at all (no size, no mimetype, no version, no `photos` row,
+  both created at the identical instant 2026-08-13 06:39:01 UTC, two path
+  segments deep rather than the app's three); where they came from is
+  unknown, nothing in the repo inserts into `storage.objects`, and the
+  bucket limits can't affect them either way. Would recur with any
+  bucket or policy created in the dashboard rather than in a migration.
 
 ---
 
