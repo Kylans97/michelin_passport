@@ -166,6 +166,25 @@ The format follows Keep a Changelog.
       5, `verify_jwt` still off). A missing or wrong secret gets 401, so
       the smoke test sent no email.
     - The phase 3 build is on the same branch and not yet released.
+    - **Tried on the simulator** against production, signed in as the
+      test manager `@test` (Flore):
+      - the landing page shows "1 upcoming";
+      - Events lists Flore's events, grouped as live and past;
+      - "Create an event" loads the 6 tags and "Times are in
+        Europe/Amsterdam.";
+      - a date-only event, "TEST please ignore", was submitted at Flore.
+        Production stored it as `submitted`, with `start_at`/`end_at`
+        and `start_time` null, Flore's own address and coordinates, and
+        a host link with `is_venue`. The admin email call returned 200;
+      - the event showed under Awaiting review, and reopened in the
+        form with nothing guessed;
+      - cancelling it asked for confirmation first; it is now
+        `cancelled` and no longer in the review queue.
+
+      The test event stays in `events` as a cancelled row. Not tried:
+      the admin side (Review, approve or reject, the event
+      notifications), a live edit, or the map pin. Signing in as an
+      admin needs the product owner.
 
 - 2026-10-28 — A landing page per managed venue, phase 2 of
   `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. My Venues
