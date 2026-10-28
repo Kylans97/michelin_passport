@@ -186,6 +186,69 @@ fresh, and the next signup gets a number someone already holds; the unique
 constraint blocks it, so signups fail rather than reuse a number, but they
 still break.
 
+### Schema diff against production — method, first run 2026-10-28
+
+CLAUDE.md asks for this at each version bump: production against what the
+migrations actually build, not just the ledger. It reuses the replay
+above. It's two halves, because the CLI dump leaves out storage and auth,
+and that's where the only drift turned out to be.
+
+**Half 1 — the CLI dump, both sides.** From the repo (linked) and the
+scratch copy:
+```
+supabase start --workdir <scratch-copy> -x realtime,imgproxy,mailpit,postgres-meta,studio,edge-runtime,logflare,vector,supavisor
+supabase db dump --linked -f prod_schema.sql
+supabase db dump --local --workdir <scratch-copy> -f local_schema.sql
+diff -u prod_schema.sql local_schema.sql
+```
+Know what this covers and what it doesn't. `db dump` runs `pg_dump
+--schema-only`, excluding `auth`, `storage`, `net`, `extensions`, `vault`,
+`supabase_migrations` and the other platform schemas. It then comments out
+grants and revokes on those schemas, and deletes every comment line. So
+filtered lines turn up as **blank lines** in the diff, not as statements.
+`supabase db dump --dry-run` prints the exact script if you need to see
+what was filtered. On 2026-10-28, with 89 migrations, the two dumps were
+identical apart from 6 blank lines. Those were filtered grants on
+`net.http_get`/`http_post`: the newer local pg_net (0.20.4, against
+production's 0.20.3) writes them out explicitly, while production keeps
+the default ACL. Same access on both sides. Checked separately: the ACLs
+on all 775 extension-owned functions in `public` matched.
+
+**Half 2 — storage and auth, compared directly.** Run the same query on
+both sides (`supabase db query --linked -f q.sql` for production; `psql`
+on 127.0.0.1:54322 locally) and diff the output:
+- `storage.buckets`: id, name, public, `file_size_limit`,
+  `allowed_mime_types`;
+- `pg_policies` for schemas `storage` and `auth`: an md5 of permissive,
+  cmd, roles, qual and with_check, so a changed expression shows up
+  without dumping it;
+- non-internal triggers on `auth.users`, `storage.objects` and
+  `storage.buckets` (`pg_get_triggerdef`);
+- `relrowsecurity`/`relforcerowsecurity` on `storage.objects` and
+  `storage.buckets`.
+
+On 2026-10-28 this found the one real drift. The `visit-photos` bucket
+was 15 MiB with `image/heif` in production but 10 MiB without heif in
+history. Production also had four dashboard-created "Users can … own
+stored visit photos" policies, one of them UPDATE, none of them in
+history. All of it dated from the bucket's hand creation on 2026-07-27;
+`20260807120000`'s `on conflict do nothing` never overrode it.
+`20261011120000_converge_visit_photos_storage_to_migrations.sql` closed
+it, applied 2026-10-28; afterwards production's bucket and all 12
+`storage.objects` policies hashed identical to a fresh replay.
+
+**Expected noise, not drift.** These differ by platform version, not by
+migration, so don't chase them:
+- the pg_net version and its explicit-vs-default grants;
+- the owner of the `pg_stat_statements` views;
+- a `storage.buckets` trigger `enforce_versioning_status_transition`
+  that only the newer local storage service creates.
+
+**Not covered by either half:** production's exposed API schemas (a
+dashboard setting, `config.toml` only governs the local stack), and data.
+
+Finish with `supabase stop --workdir <scratch-copy> --no-backup`.
+
 ### History: the countries seed gap (2026-10-02)
 
 The record below is from before the replay could run. It's kept as written

@@ -265,14 +265,24 @@ database controls. Preferred shape:
   remote in agreement. Not optional, not conditional on being asked.
 - A schema diff — production against what the local migrations actually
   produce, not just the migration ledger — runs at each version bump,
-  before the push. `supabase db diff --linked` currently cannot do this:
-  its shadow-database bootstrap replays every migration from empty, and
-  nothing in migration history seeds `public.countries`, so any migration
-  with a real `country_code` fails its foreign key and the bootstrap
-  never completes. Until that gap is closed, do the diff by hand instead —
-  `supabase db dump --linked` for production's schema, a disposable local
-  Postgres with migrations replayed directly via `psql`, then `diff` the
-  two dumps.
+  before the push. Do it by hand, the way that worked on 2026-10-28
+  (full steps in `docs/Engineering/NEW_MACHINE_SETUP.md` §4): replay
+  every migration with `supabase start` on a scratch copy of `supabase/`
+  without `.temp/`, then `supabase db dump --linked` against `supabase db
+  dump --local` of that stack, and `diff` the two. A bare
+  `supabase/postgres` container replayed via `psql` **cannot** stand in
+  for the stack: it has no `storage.*` tables and no pg_net, so it fails
+  at migration 4. The dump covers only the schemas the CLI doesn't treat
+  as platform-managed — it leaves out `storage` and `auth` entirely and
+  strips grants on `net`, `extensions` and the rest — so it is **half
+  the diff, not all of it**. The other half compares directly: buckets,
+  policies on `storage.objects`, triggers on `auth.users`/
+  `storage.objects`/`storage.buckets`, and RLS on the storage tables.
+  That half is exactly where the one real drift turned out to be (the
+  dashboard-made `visit-photos` bucket and policies, closed by
+  `20261011120000`). The countries seed that once made `supabase db diff
+  --linked` impossible is now in history; whether it works now hasn't
+  been retried, and it wouldn't cover storage or auth either.
 - `supabase db push --linked` can hang after printing "Applying
   migration..." even though the migration already committed successfully —
   observed directly (20261007120000, CLI 2.111.0). The failure mode this
