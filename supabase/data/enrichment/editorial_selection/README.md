@@ -40,4 +40,6 @@ scope rule in `docs/Architecture/Michelin_Database/DATABASE_ARCHITECTURE.md`.
 | Field | Why |
 |---|---|
 | Cuisine | Neither restaurant has a MICHELIN description, so there is no source to map to `cuisine_id` without guessing. |
-| Tacite's Instagram | Not found on its site. |
+
+Tacite's Instagram (`tacite.amsterdam`) was supplied by the product owner on
+2026-10-28. It is not linked from the venue's own site.
