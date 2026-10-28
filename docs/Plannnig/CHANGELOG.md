@@ -8,6 +8,56 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.3.0 (14) — 2026-10-29
+
+Built from `release/1.3.0`. Every database change below was applied to
+production before this build, so the build only adds the screens that use
+them. Installed 1.2.0 (13) builds keep working against the same database:
+the trips migration keeps `planned_trips.country_code`/`city` in step for
+them, and the Selection and 50 Best columns are additions they don't read.
+Ledger at the version bump: 107 migrations, local and remote in agreement.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay of
+all 107 migrations, 2026-10-29:
+- **The replay:** all 107 files applied with no error, giving 107 ledger
+  rows.
+- **`supabase db dump`, both sides:** identical apart from 6 blank lines,
+  the platform statements the CLI filters out.
+- **Storage and auth, compared directly:** all 5 buckets, 13
+  `storage.objects` policies, 8 triggers and RLS on both storage tables
+  are identical.
+- **Expected noise:** the one extra local trigger,
+  `enforce_versioning_status_transition`, comes from the newer local
+  storage service, not from drift.
+- **Before the bump:** `flutter analyze` was clean and all 2,560 tests
+  passed, on `main` after merging `feature/trips-redesign` and
+  `feature/editorial-selection`.
+
+**In this release, for testers:**
+- **Trips, restyled and multi-destination.**
+  - **Destinations:** a trip can cover several countries and cities, each
+    leg with its own stays, dining and events.
+  - **Shared trips:** invite friends onto a trip.
+  - **Pickers:** "Add stay" and "Add restaurant" offer only venues in that
+    leg's destination.
+- **Mantelier Selection.** Our own picks, as "Mantelier's latest" on
+  Explore and a Selection guide on Guides. Tacite and Petit Péché are the
+  first two.
+- **Guide links.**
+  - **World's 50 Best:** a "50 Best" link to the venue's own page.
+  - **Gault&Millau:** the restaurant's awards and a link to its page.
+  - **Award History:** shows MICHELIN, World's 50 Best and Gault&Millau
+    side by side.
+- **Catalogue:**
+  - MICHELIN Spain 2026 (296 starred), Belgium & Luxembourg 2026 and
+    Monaco;
+  - more World's 50 Best history, including 51–100 ranks;
+  - QA fixes: Kjolle's location, the Plaza Athénée rename and Peru hotel
+    phones.
+
 ### Added
 
 - 2026-10-28 — The editorial Selection ("Mantelier Selection"), a fourth
