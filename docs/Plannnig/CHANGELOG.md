@@ -184,8 +184,18 @@ The format follows Keep a Changelog.
     Venues. The 2 failing are `live_view_full_columns_test` against
     production, which lacks the new view columns until this is applied.
   - **Rollout order: migration first** — the new build selects the card
-    columns by name. **Not yet applied to production.** Not seen on the
-    simulator for the same reason: its build talks to production.
+    columns by name.
+  - **Applied to production 2026-10-28** with plain `supabase db push
+    --linked` (ledger 94/94). A read-only snapshot before and after shows
+    the photo tables, submissions and both full views unchanged; every
+    photo is at the defaults (no card chosen, centred card crop) and
+    every venue's card equals its cover. All 74 definitions and ACLs are
+    identical to the fresh replay's; `set_venue_card_photo` is SECURITY
+    DEFINER, executable by `authenticated` only (not anon, not PUBLIC);
+    `approve_venue_photo` stays dashboard-only. `live_view_full_columns_
+    test` passes against production and the full suite is green (2,467).
+    Not yet seen on the simulator; the app change ships with the next
+    build.
 
 ### Changed
 
