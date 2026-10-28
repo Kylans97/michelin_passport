@@ -12,6 +12,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_about_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_photo_submission_repository.dart';
+import 'package:michelin_passport/features/profile/adjust_photo_framing_screen.dart';
 import 'package:michelin_passport/features/profile/venue_management_screen.dart';
 import 'package:michelin_passport/features/restaurants/restaurant_detail_screen.dart';
 import 'package:michelin_passport/models/managed_venue.dart';
@@ -418,7 +419,8 @@ void main() {
       expect(find.byIcon(Icons.keyboard_arrow_up_rounded), findsNothing);
     });
 
-    testWidgets('the first published photo is tagged "Appears first", others are not', (
+    testWidgets('the first published photo is tagged "Cover", the others offer '
+        '"Make cover"', (
       tester,
     ) async {
       await _pump(
@@ -431,7 +433,53 @@ void main() {
           ],
         ),
       );
-      expect(find.text('Appears first'), findsOneWidget);
+      expect(find.text('Cover'), findsOneWidget);
+      expect(find.text('Make cover'), findsOneWidget);
+      expect(find.text('Adjust framing'), findsNWidgets(2));
+      expect(
+        find.textContaining('cards in Explore, search and Passport'),
+        findsOneWidget,
+      );
+    });
+
+    testWidgets('"Make cover" moves that photo to the front through '
+        'reorder_venue_photos, keeping the rest in order', (tester) async {
+      _ReorderCall? received;
+      await _pump(
+        tester,
+        _FakeVenueAboutRepository(),
+        photoRepo: _FakeVenuePhotoSubmissionRepository(
+          published: const [
+            PublishedVenuePhoto(id: 'p1', imageUrl: 'https://example.test/1.jpg', displayOrder: 0),
+            PublishedVenuePhoto(id: 'p2', imageUrl: 'https://example.test/2.jpg', displayOrder: 1),
+            PublishedVenuePhoto(id: 'p3', imageUrl: 'https://example.test/3.jpg', displayOrder: 2),
+          ],
+          onReorder: (call) => received = call,
+        ),
+      );
+      await tester.ensureVisible(find.text('Make cover').last);
+      await tester.tap(find.text('Make cover').last);
+      await tester.pumpAndSettle();
+      expect(received?.photoIds, ['p3', 'p1', 'p2']);
+    });
+
+    testWidgets('"Adjust framing" opens the framing screen for that photo', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        _FakeVenueAboutRepository(),
+        photoRepo: _FakeVenuePhotoSubmissionRepository(
+          published: const [
+            PublishedVenuePhoto(id: 'p1', imageUrl: 'https://example.test/1.jpg', displayOrder: 0),
+          ],
+        ),
+      );
+      await tester.ensureVisible(find.text('Adjust framing'));
+      await tester.tap(find.text('Adjust framing'));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(find.byType(AdjustPhotoFramingScreen), findsOneWidget);
     });
 
     testWidgets("the first photo's move-up control is disabled, the last photo's "

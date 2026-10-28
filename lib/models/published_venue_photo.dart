@@ -1,3 +1,5 @@
+import 'photo_framing.dart';
+
 /// One row from whichever of restaurant_photos/hotel_photos/
 /// private_chef_photos matches a venue's type — the APPROVED/published
 /// set, never venue_photo_submissions. Deliberately its own small model
@@ -11,12 +13,14 @@ class PublishedVenuePhoto {
   final String imageUrl;
   final String? altText;
   final int displayOrder;
+  final PhotoFraming framing;
 
   const PublishedVenuePhoto({
     required this.id,
     required this.imageUrl,
     this.altText,
     required this.displayOrder,
+    this.framing = PhotoFraming.center,
   });
 
   factory PublishedVenuePhoto.fromJson(Map<String, dynamic> json) => PublishedVenuePhoto(
@@ -24,5 +28,6 @@ class PublishedVenuePhoto {
     imageUrl: (json['image_url'] as String?) ?? '',
     altText: json['alt_text'] as String?,
     displayOrder: (json['display_order'] as num?)?.toInt() ?? 0,
+    framing: PhotoFraming.fromJson(json),
   );
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../theme/app_spacing.dart';
 import 'cs_image_placeholder.dart';
+import '../../models/photo_framing.dart';
+import 'framed_image.dart';
 
 /// A photo-first thumbnail slot for a discovery card (Explore) — shared by
 /// [RestaurantTile] and [HotelTile], so this one widget covers both.
@@ -26,6 +28,11 @@ class VenueThumbnail extends StatelessWidget {
   final double? height;
   final BorderRadius? borderRadius;
 
+  /// The manager's framing for this photo — Restaurant/Hotel.coverFraming
+  /// for a cover. Centred by default, as every thumbnail was before
+  /// framing existed.
+  final PhotoFraming framing;
+
   const VenueThumbnail({
     super.key,
     required this.imageUrl,
@@ -33,6 +40,7 @@ class VenueThumbnail extends StatelessWidget {
     this.width,
     this.height,
     this.borderRadius,
+    this.framing = PhotoFraming.center,
   });
 
   // ~15% larger than CsImagePlaceholder's own 0.40 default (0.40 × 1.15).
@@ -59,14 +67,18 @@ class VenueThumbnail extends StatelessWidget {
       child: SizedBox(
         width: w,
         height: h,
-        child: Image.network(
-          imageUrl!,
-          fit: BoxFit.cover,
-          errorBuilder: (_, _, _) => CsImagePlaceholder(
-            width: w,
-            height: h,
-            borderRadius: radius,
-            logoScale: _logoScale,
+        child: FramedImage(
+          framing: framing,
+          builder: (alignment) => Image.network(
+            imageUrl!,
+            fit: BoxFit.cover,
+            alignment: alignment,
+            errorBuilder: (_, _, _) => CsImagePlaceholder(
+              width: w,
+              height: h,
+              borderRadius: radius,
+              logoScale: _logoScale,
+            ),
           ),
         ),
       ),

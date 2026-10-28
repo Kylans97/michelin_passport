@@ -145,9 +145,26 @@ stop and say so rather than working around it.
   `hotel_photos` / `private_chef_photos`), never on submissions, and
   changes only through the `reorder_venue_photos` RPC — never a direct
   client-side `display_order` write.
-- A manager may change only `display_order` on their venue's published
-  photos. A `BEFORE UPDATE` trigger enforces that restriction, since RLS
-  itself cannot restrict which columns an update touches.
+- A manager may change only the **order** and the **framing** of their
+  venue's published photos — never the image itself (`image_url`) or its
+  `alt_text`. Framing is a focus point (`focus_x`/`focus_y`, 0–1) plus a
+  zoom factor (`zoom`, 1–4); it is presentation of the same verified
+  photo, not new content, so it goes live with no review. Order changes
+  only through `reorder_venue_photos`, framing only through
+  `set_venue_photo_framing` — never a direct client-side write to either.
+  A `BEFORE UPDATE` trigger refuses every direct manager write to
+  `image_url`, `alt_text`, `focus_x`, `focus_y` and `zoom`, since RLS
+  itself cannot restrict which columns an update touches. Framing set at
+  upload travels on the submission and is carried across by
+  `approve_venue_photo`. *Revised 2026-10-28 (was: "only
+  `display_order`"), decided by the product owner so managers can frame
+  their own photos without a re-review; introduced by
+  `20261014120000_add_venue_photo_framing.sql`.*
+- The cover photo every card shows (Explore, search, Passport, Wishlist,
+  Rankings, Guides) is a venue's lowest-`display_order` published photo
+  — `restaurants_full`/`hotels_full.cover_photo_url` plus its
+  `cover_focus_x`/`cover_focus_y`/`cover_zoom`. Choosing a cover means
+  reordering; there is no separate cover column.
 - A manager's "Preview my page" (`VenueManagementScreen._openPreview`)
   renders the **real** `RestaurantDetailScreen`/`HotelDetailScreen`/
   `PrivateChefDetailScreen`, given their pending content via optional

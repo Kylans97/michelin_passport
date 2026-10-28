@@ -1,5 +1,6 @@
 import 'hotel.dart';
 import 'restaurant.dart';
+import 'photo_framing.dart';
 
 /// A single venue a user can build personal history against — a restaurant
 /// or a hotel — kept as genuinely separate domain objects (never forcing
@@ -20,6 +21,9 @@ sealed class PassportVenue {
   /// Null for the large majority of venues; every renderer falls back to
   /// the branded placeholder in that case.
   String? get coverImageUrl;
+
+  /// The manager's framing of that cover photo.
+  PhotoFraming get coverFraming;
 }
 
 class RestaurantVenue extends PassportVenue {
@@ -34,6 +38,8 @@ class RestaurantVenue extends PassportVenue {
 
   @override
   String? get coverImageUrl => restaurant.coverImageUrl;
+  @override
+  PhotoFraming get coverFraming => restaurant.coverFraming;
 }
 
 class HotelVenue extends PassportVenue {
@@ -48,4 +54,6 @@ class HotelVenue extends PassportVenue {
 
   @override
   String? get coverImageUrl => hotel.coverImageUrl;
+  @override
+  PhotoFraming get coverFraming => hotel.coverFraming;
 }

@@ -231,6 +231,7 @@ class _FiftyBestHotelGuideScreenState extends State<FiftyBestHotelGuideScreen> {
                     return GuideVenueCard(
                       title: entry.hotel.name,
                       imageUrl: entry.hotel.coverImageUrl,
+                      imageFraming: entry.hotel.coverFraming,
                       metadataLine: Text(
                         '#${entry.rank} · ${entry.year}',
                         style: CsTypography.metadata.copyWith(

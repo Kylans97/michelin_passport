@@ -3,6 +3,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../models/photo_framing.dart';
 
 /// One result in a Guide catalogue's browsing list — a compact editorial
 /// index row, the same visual family as [GuideDestinationRow] on the
@@ -46,6 +47,9 @@ class GuideVenueCard extends StatelessWidget {
   /// Null renders the branded placeholder.
   final String? imageUrl;
 
+  /// The manager's framing of that cover — Restaurant/Hotel.coverFraming.
+  final PhotoFraming imageFraming;
+
   final VoidCallback onTap;
 
   const GuideVenueCard({
@@ -58,6 +62,7 @@ class GuideVenueCard extends StatelessWidget {
     this.flagEmoji = '',
     this.recognitionSemanticLabel,
     this.imageUrl,
+    this.imageFraming = PhotoFraming.center,
     required this.onTap,
   });
 
@@ -95,7 +100,11 @@ class GuideVenueCard extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                VenueThumbnail(imageUrl: imageUrl, size: 52),
+                VenueThumbnail(
+                  imageUrl: imageUrl,
+                  framing: imageFraming,
+                  size: 52,
+                ),
                 const SizedBox(width: CsSpacing.md),
                 Expanded(
                   child: Column(

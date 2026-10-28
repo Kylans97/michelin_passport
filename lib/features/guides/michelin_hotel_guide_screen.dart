@@ -177,6 +177,7 @@ class _MichelinHotelGuideScreenState extends State<MichelinHotelGuideScreen> {
                       return GuideVenueCard(
                         title: hotel.name,
                         imageUrl: hotel.coverImageUrl,
+                        imageFraming: hotel.coverFraming,
                         inlineRecognition: KeyRow(count: keys, size: 12),
                         cityName: hotel.cityName,
                         countryName: hotel.countryName,

@@ -5,6 +5,8 @@ import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../models/private_chef.dart';
 import '../private_chef_descriptors.dart';
+import '../../../core/widgets/framed_image.dart';
+import '../../../models/photo_framing.dart';
 
 /// The Private Chefs landing's editorial discovery card (Step 2C) —
 /// replaces the compact circular-avatar [PrivateChefRow]/[PrivateChefAvatar]
@@ -23,6 +25,9 @@ class PrivateChefDiscoveryCard extends StatelessWidget {
   /// photo, matching Chef Detail's own hero-image priority).
   final String? coverImageUrl;
 
+  /// The chef's framing of that cover photo.
+  final PhotoFraming coverFraming;
+
   /// Pre-formatted "City, Country" (already resolved to a full country
   /// name where possible), or null — matches [PrivateChefHero.location]'s
   /// own "caller already assembled the string" convention.
@@ -34,6 +39,7 @@ class PrivateChefDiscoveryCard extends StatelessWidget {
     super.key,
     required this.chef,
     required this.coverImageUrl,
+    this.coverFraming = PhotoFraming.center,
     required this.location,
     required this.onTap,
   });
@@ -69,7 +75,7 @@ class PrivateChefDiscoveryCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _ChefCoverPhoto(imageUrl: coverImageUrl),
+              _ChefCoverPhoto(imageUrl: coverImageUrl, framing: coverFraming),
               const SizedBox(height: CsSpacing.md),
               Text(
                 chef.displayName,
@@ -110,8 +116,9 @@ class PrivateChefDiscoveryCard extends StatelessWidget {
 /// avatar (Step 2C §10).
 class _ChefCoverPhoto extends StatelessWidget {
   final String? imageUrl;
+  final PhotoFraming framing;
 
-  const _ChefCoverPhoto({required this.imageUrl});
+  const _ChefCoverPhoto({required this.imageUrl, required this.framing});
 
   // Portrait, editorial — significantly taller than the 16:9/1:1 shapes
   // used for venue/event photography elsewhere in this app, matching the
@@ -124,7 +131,10 @@ class _ChefCoverPhoto extends StatelessWidget {
   // than a single sensible default (Step 2C §5 — a controlled alignment,
   // not a destructive crop of the source image). A general default for
   // portrait chef photography, not tuned to any one chef's photo.
-  static const Alignment _focalAlignment = Alignment(0, -0.3);
+  //
+  // Since 20261014120000 the chef can frame each photo; an untouched
+  // (centred) photo keeps this card's own long-standing placement,
+  // Alignment(0, -0.3) — PhotoFraming.chefCardDefault.
 
   @override
   Widget build(BuildContext context) {
@@ -140,12 +150,15 @@ class _ChefCoverPhoto extends StatelessWidget {
       aspectRatio: _aspectRatio,
       child: ClipRRect(
         borderRadius: radius,
-        child: Image.network(
-          url,
-          fit: BoxFit.cover,
-          alignment: _focalAlignment,
-          errorBuilder: (_, _, _) =>
-              CsImagePlaceholder(borderRadius: radius, logoScale: 0.28),
+        child: FramedImage(
+          framing: framing.forChefCard,
+          builder: (alignment) => Image.network(
+            url,
+            fit: BoxFit.cover,
+            alignment: alignment,
+            errorBuilder: (_, _, _) =>
+                CsImagePlaceholder(borderRadius: radius, logoScale: 0.28),
+          ),
         ),
       ),
     );

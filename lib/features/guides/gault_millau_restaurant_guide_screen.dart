@@ -163,6 +163,7 @@ class _GaultMillauRestaurantGuideScreenState
                       return GuideVenueCard(
                         title: entry.restaurant.name,
                         imageUrl: entry.restaurant.coverImageUrl,
+                        imageFraming: entry.restaurant.coverFraming,
                         metadataLine: GuideGaultMillauMark(award: entry.award),
                         cityName: entry.restaurant.cityName,
                         countryName: entry.restaurant.countryName,

@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/photo_framing.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/venue_photo_submission_status.dart';
 import '../services/venue_photo_pipeline.dart';
@@ -106,12 +107,17 @@ class VenuePhotoSubmissionRepository {
   /// 5-photo cap — `venue_photo_submissions_replacement_check` rejects
   /// the insert otherwise. Left null when the venue has fewer than 5
   /// published photos.
+  ///
+  /// [framing] is how the manager positioned/zoomed the photo in the
+  /// upload frame preview; approve_venue_photo carries it onto the
+  /// published row (20261014120000).
   Future<Map<String, dynamic>> submit({
     required String userId,
     required String venueType,
     required String venueId,
     required Uint8List rawBytes,
     String? replacesPhotoId,
+    PhotoFraming framing = PhotoFraming.center,
   }) async {
     final validation = validateVenuePhoto(rawBytes);
     if (validation is VenuePhotoValidationRejected) {
@@ -143,6 +149,9 @@ class VenuePhotoSubmissionRepository {
             'storage_path': storagePath,
             'phash': phash,
             'replaces_photo_id': ?replacesPhotoId,
+            'focus_x': framing.focusX,
+            'focus_y': framing.focusY,
+            'zoom': framing.zoom,
           })
           .select()
           .single();
@@ -189,7 +198,7 @@ class VenuePhotoSubmissionRepository {
   }) async {
     final rows = await _client
         .from(_publishedTableFor(venueType))
-        .select('id, image_url, alt_text, display_order')
+        .select('id, image_url, alt_text, display_order, focus_x, focus_y, zoom')
         .eq(_venueColumnFor(venueType), venueId)
         .order('display_order');
     return [
@@ -215,7 +224,8 @@ class VenuePhotoSubmissionRepository {
     final rows = await _client
         .from('venue_photo_submissions')
         .select(
-          'id, storage_path, status, review_note, submitted_at, replaces_photo_id',
+          'id, storage_path, status, review_note, submitted_at, replaces_photo_id, '
+          'focus_x, focus_y, zoom',
         )
         .eq('user_id', userId)
         .eq('venue_type', venueType)
@@ -259,5 +269,25 @@ class VenuePhotoSubmissionRepository {
   }) => _client.rpc(
     'reorder_venue_photos',
     params: {'p_venue_type': venueType, 'p_venue_id': venueId, 'p_photo_ids': photoIds},
+  );
+
+  /// Re-frames one PUBLISHED photo via set_venue_photo_framing — live
+  /// straight away, no review: framing is presentation of the same
+  /// verified photo, and the RPC refuses anyone who isn't an active
+  /// manager of the photo's own venue (20261014120000). Never a direct
+  /// UPDATE — a trigger refuses those.
+  Future<void> setPhotoFraming({
+    required String venueType,
+    required String photoId,
+    required PhotoFraming framing,
+  }) => _client.rpc(
+    'set_venue_photo_framing',
+    params: {
+      'p_venue_type': venueType,
+      'p_photo_id': photoId,
+      'p_focus_x': framing.focusX,
+      'p_focus_y': framing.focusY,
+      'p_zoom': framing.zoom,
+    },
   );
 }

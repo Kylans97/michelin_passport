@@ -2,6 +2,7 @@ import '../../models/event.dart';
 import '../../models/event_chronology.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
+import '../../models/photo_framing.dart';
 
 /// Explore's Discovery-mode "what to surface" logic — pure, deterministic,
 /// presentation-only selectors over already-loaded catalogue/event data.
@@ -91,6 +92,7 @@ sealed class FreshFindItem {
   String get cityName;
   String get flagEmoji;
   String? get coverImageUrl;
+  PhotoFraming get coverFraming;
 }
 
 class FreshFindRestaurant extends FreshFindItem {
@@ -107,6 +109,8 @@ class FreshFindRestaurant extends FreshFindItem {
   String get flagEmoji => restaurant.flagEmoji;
   @override
   String? get coverImageUrl => restaurant.coverImageUrl;
+  @override
+  PhotoFraming get coverFraming => restaurant.coverFraming;
 }
 
 class FreshFindHotel extends FreshFindItem {
@@ -123,6 +127,8 @@ class FreshFindHotel extends FreshFindItem {
   String get flagEmoji => hotel.flagEmoji;
   @override
   String? get coverImageUrl => hotel.coverImageUrl;
+  @override
+  PhotoFraming get coverFraming => hotel.coverFraming;
 }
 
 class FreshFindEvent extends FreshFindItem {
@@ -139,6 +145,8 @@ class FreshFindEvent extends FreshFindItem {
   String get flagEmoji => '';
   @override
   String? get coverImageUrl => event.imageUrl;
+  @override
+  PhotoFraming get coverFraming => PhotoFraming.center;
 }
 
 /// "Fresh Finds" — restaurants/hotels/events added because someone

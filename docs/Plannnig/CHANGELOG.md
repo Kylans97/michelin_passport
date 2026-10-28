@@ -58,6 +58,70 @@ The format follows Keep a Changelog.
   returned normally. Afterwards, verified directly: ledger 89/89 with no
   mismatch, the version present, events unchanged (28, no NULL
   timezones).
+- 2026-10-28 — Venue managers can frame their own photos and choose the
+  cover. Until now every venue photo was a plain centred crop:
+  `focus_x`/`focus_y` had existed on the published photo tables since
+  20260828130000, but nothing wrote or read them, and there was no zoom.
+  - **Framing.** A focus point plus a zoom factor (1–4) per photo, set in
+    a drag/pinch editor that shows the real header frame with the card
+    frame updating beneath it. At upload it replaces the old read-only
+    `VenuePhotoFramePreview` (removed) and travels on the submission;
+    on a published photo, My Venues' new "Adjust framing" saves it
+    straight away through `set_venue_photo_framing`, with no re-review.
+    Applied by one shared `FramedImage` in the detail heroes and every
+    card (Explore, search, Passport, Wishlist, Rankings, Guides, private
+    chefs), using news_articles' existing focus semantics (cover
+    alignment, zoomed around the same point). Private chef photos nobody
+    has framed keep exactly their old hero (−0.8) and card (−0.3)
+    placements.
+  - **Cover.** The first photo is labelled "Cover", with a line saying
+    it's the one on cards in Explore, search and Passport; "Make cover"
+    on any other photo moves it to the front through the existing
+    `reorder_venue_photos`.
+  - **`20261014120000_add_venue_photo_framing.sql`:**
+    - adds `zoom` to the three photo tables and `focus_x`/`focus_y`/`zoom`
+      to `venue_photo_submissions`; existing rows default to centred, 1x,
+      so nothing that shows today changes;
+    - adds `set_venue_photo_framing()` (SECURITY DEFINER,
+      `is_active_venue_manager()` as the only permission source,
+      `revoke … from public, anon`);
+    - extends the column-lock trigger to `zoom`, so direct client writes
+      to the image, alt text, focus or zoom are still refused;
+    - makes `approve_venue_photo` carry the submission's framing across
+      (same signature, so its dashboard-only ACL is kept);
+    - adds `cover_focus_x`/`cover_focus_y`/`cover_zoom` to
+      `restaurants_full`/`hotels_full` (derived from 20261006120000's
+      definitions, new columns appended).
+  - **Settled decision revised, on purpose.** CLAUDE.md said a manager
+    may change only `display_order` on published photos; the product
+    owner decided on 2026-10-28 that framing should be adjustable without
+    review, since it presents the same verified photo rather than adding
+    content. The rule now reads "order and framing, never the image or
+    its alt text", both through their RPCs only; CLAUDE.md also records
+    that the cover is simply the lowest-`display_order` photo.
+  - **Proven locally only.** On a replay of the existing 92 migrations,
+    with a manager, a restaurant and two published photos, then the
+    migration applied: existing photos stayed 0.5/0.5/1; the manager's
+    RPC call worked; another user, out-of-range values and direct UPDATEs
+    were refused; reordering still worked and the view's cover columns
+    followed the cover; a submission framed 0.7/0.25/2.5 published with
+    exactly those values; anon and PUBLIC hold no EXECUTE on the new
+    RPC. A fresh replay of all 93 files gave identical definitions for
+    the functions, views, columns and checks (39 objects). Analyzer
+    clean; 2,449 tests pass, including new ones for the model, the
+    framed image, the editor's drag maths on a real image (and that the
+    page scroll can't take a drag inside the frame), the Adjust screen,
+    and Cover/Make cover. The 2 failing are `live_view_full_columns_test`
+    against production, which lacks the new view columns until this is
+    applied — exactly what that guard is for.
+  - **Rollout order: migration first.** The new build selects the new
+    columns by name, so against a database without them photos would
+    fail to load; installed builds select their own lists and are
+    unaffected. **Not yet applied to production.**
+  - **Not covered:** the feature hasn't been seen signed in on a device
+    (the simulator build talks to production); friend tiles fed by the
+    friend RPCs (visits, wishlist, profile overview) still show covers
+    centred, since those RPCs don't return framing.
 
 ### Changed
 

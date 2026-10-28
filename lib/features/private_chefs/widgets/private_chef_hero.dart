@@ -8,6 +8,8 @@ import '../../../core/widgets/hero_photo_chevron.dart';
 import '../../../models/content_report.dart';
 import '../../../models/private_chef_photo.dart';
 import '../../reports/widgets/report_content_sheet.dart';
+import '../../../core/widgets/framed_image.dart';
+import '../../../models/photo_framing.dart';
 
 /// Chef Detail's hero — a parallel, trimmed sibling of [VenueDetailHero],
 /// not a reuse of it: that widget hard-requires wishlist state
@@ -362,6 +364,7 @@ class _PhotoGallery extends StatelessWidget {
       return _HeroImage(
         url: photos.first.imageUrl,
         semanticLabel: photos.first.altText,
+        framing: photos.first.framing.forChef,
       );
     }
     return PageView.builder(
@@ -371,6 +374,7 @@ class _PhotoGallery extends StatelessWidget {
       itemBuilder: (context, index) => _HeroImage(
         url: photos[index].imageUrl,
         semanticLabel: photos[index].altText,
+        framing: photos[index].framing.forChef,
       ),
     );
   }
@@ -394,23 +398,35 @@ class _PhotoGallery extends StatelessWidget {
 /// shape, different crop math, deliberately not shared). Not a
 /// device-model-specific pixel value — a general top-biased default for
 /// any portrait hero photo in this landscape box.
+///
+/// Since 20261014120000 the chef can frame each photo themselves;
+/// [framing] is that, already resolved through PhotoFraming.forChef, so
+/// an untouched photo keeps exactly this top-biased placement
+/// (PhotoFraming.chefDefault is the old Alignment(0, -0.8)). The profile
+/// image has no framing of its own and always uses that default.
 class _HeroImage extends StatelessWidget {
   final String url;
   final String? semanticLabel;
+  final PhotoFraming framing;
 
-  const _HeroImage({required this.url, this.semanticLabel});
-
-  static const Alignment _focalAlignment = Alignment(0, -0.8);
+  const _HeroImage({
+    required this.url,
+    this.semanticLabel,
+    this.framing = PhotoFraming.chefDefault,
+  });
 
   @override
   Widget build(BuildContext context) => Semantics(
     image: true,
     label: semanticLabel,
-    child: Image.network(
-      url,
-      fit: BoxFit.cover,
-      alignment: _focalAlignment,
-      errorBuilder: (_, _, _) => const _NoPhotoBackground(),
+    child: FramedImage(
+      framing: framing,
+      builder: (alignment) => Image.network(
+        url,
+        fit: BoxFit.cover,
+        alignment: alignment,
+        errorBuilder: (_, _, _) => const _NoPhotoBackground(),
+      ),
     ),
   );
 }

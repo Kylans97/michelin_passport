@@ -211,7 +211,10 @@ class PrivateChefRepository {
   Future<List<PrivateChefPhoto>> getChefPhotos(String privateChefId) async {
     final rows = await _client
         .from('private_chef_photos')
-        .select('id, private_chef_id, image_url, alt_text, display_order')
+        .select(
+          'id, private_chef_id, image_url, alt_text, display_order, '
+          'focus_x, focus_y, zoom',
+        )
         .eq('private_chef_id', privateChefId)
         .order('display_order');
     return [
@@ -235,7 +238,10 @@ class PrivateChefRepository {
     if (privateChefIds.isEmpty) return {};
     final rows = await _client
         .from('private_chef_photos')
-        .select('id, private_chef_id, image_url, alt_text, display_order')
+        .select(
+          'id, private_chef_id, image_url, alt_text, display_order, '
+          'focus_x, focus_y, zoom',
+        )
         .inFilter('private_chef_id', privateChefIds)
         .order('private_chef_id')
         .order('display_order');

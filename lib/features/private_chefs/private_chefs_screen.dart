@@ -14,6 +14,7 @@ import 'private_chef_grouping.dart';
 import 'private_chef_location.dart';
 import 'widgets/private_chef_discovery_card.dart';
 import 'widgets/private_chef_states.dart';
+import '../../models/photo_framing.dart';
 
 /// Private Chefs landing — an editorial discovery collection (Step 2C),
 /// not a directory/search-results list: chefs are grouped by country under
@@ -195,6 +196,7 @@ class _PrivateChefsScreenState extends State<PrivateChefsScreen> {
   Widget _chefCard(PrivateChef chef) => PrivateChefDiscoveryCard(
     chef: chef,
     coverImageUrl: _coverPhotos[chef.id]?.imageUrl,
+    coverFraming: _coverPhotos[chef.id]?.framing ?? PhotoFraming.center,
     location: formatChefLocation(
       city: chef.homeCity,
       countryCode: chef.homeCountryCode,

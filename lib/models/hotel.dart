@@ -1,3 +1,5 @@
+import 'photo_framing.dart';
+
 // Maps a row from `public.hotels_full` (see
 // supabase/migrations/20260805141519_production_schema_v1.sql, and
 // supabase/migrations/20260807150000_hotel_michelin_keys_nullable.sql /
@@ -102,6 +104,10 @@ class Hotel {
   // identical field on Restaurant for full semantics.
   final String? coverImageUrl;
 
+  // How the manager framed that cover photo (cover_focus_x/cover_focus_y/
+  // cover_zoom, 20261014120000). Centred when there is no cover.
+  final PhotoFraming coverFraming;
+
   const Hotel({
     required this.id,
     required this.hotelCode,
@@ -135,6 +141,7 @@ class Hotel {
     this.stampArtworkUrl,
     this.stampArtworkApproved = false,
     this.coverImageUrl,
+    this.coverFraming = PhotoFraming.center,
   });
 
   /// True when the hotel currently holds a confirmed MICHELIN Key value.
@@ -196,5 +203,6 @@ class Hotel {
     stampArtworkUrl: json['stamp_artwork_url'] as String?,
     stampArtworkApproved: (json['stamp_artwork_approved'] as bool?) ?? false,
     coverImageUrl: json['cover_photo_url'] as String?,
+    coverFraming: PhotoFraming.fromJson(json, prefix: 'cover_'),
   );
 }

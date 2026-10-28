@@ -192,6 +192,7 @@ class _MichelinRestaurantGuideScreenState
                       return GuideVenueCard(
                         title: restaurant.name,
                         imageUrl: restaurant.coverImageUrl,
+                        imageFraming: restaurant.coverFraming,
                         inlineRecognition: StarRow(count: stars, size: 12),
                         cityName: restaurant.cityName,
                         countryName: restaurant.countryName,

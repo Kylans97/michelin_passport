@@ -70,7 +70,10 @@ class RestaurantTile extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            VenueThumbnail(imageUrl: restaurant.coverImageUrl),
+            VenueThumbnail(
+              imageUrl: restaurant.coverImageUrl,
+              framing: restaurant.coverFraming,
+            ),
             const SizedBox(width: 14),
             Expanded(
               child: Column(

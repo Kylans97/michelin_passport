@@ -63,7 +63,8 @@ const restaurantFullColumns =
     'property_name, is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank, '
     'is_hall_of_fame, starts_on, ends_on, parent_venue_type, '
     'parent_venue_id, opening_weekdays, is_expired, status, status_since, '
-    'status_note, created_at, missing_listing_report_id, cover_photo_url';
+    'status_note, created_at, missing_listing_report_id, cover_photo_url, '
+    'cover_focus_x, cover_focus_y, cover_zoom';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);
@@ -85,7 +86,9 @@ class RestaurantRepository {
   Future<List<PublishedVenuePhoto>> getPhotos(String restaurantId) async {
     final rows = await _client
         .from('restaurant_photos')
-        .select('id, image_url, alt_text, display_order')
+        .select(
+          'id, image_url, alt_text, display_order, focus_x, focus_y, zoom',
+        )
         .eq('restaurant_id', restaurantId)
         .order('display_order');
     return [

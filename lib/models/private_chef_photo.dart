@@ -1,3 +1,5 @@
+import 'photo_framing.dart';
+
 // Maps a row from `public.private_chef_photos` (see
 // supabase/migrations/20260818120000_add_private_chef_photos_and_biography_limit.sql).
 // A small, admin-curated Detail-hero gallery — up to 5 rows per chef,
@@ -11,6 +13,7 @@ class PrivateChefPhoto {
   final String imageUrl;
   final String? altText;
   final int displayOrder;
+  final PhotoFraming framing;
 
   const PrivateChefPhoto({
     required this.id,
@@ -18,6 +21,7 @@ class PrivateChefPhoto {
     required this.imageUrl,
     this.altText,
     this.displayOrder = 0,
+    this.framing = PhotoFraming.center,
   });
 
   factory PrivateChefPhoto.fromJson(Map<String, dynamic> json) =>
@@ -27,5 +31,6 @@ class PrivateChefPhoto {
         imageUrl: (json['image_url'] as String?) ?? '',
         altText: json['alt_text'] as String?,
         displayOrder: (json['display_order'] as num?)?.toInt() ?? 0,
+        framing: PhotoFraming.fromJson(json),
       );
 }

@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import '../../features/reports/widgets/report_content_sheet.dart';
 import '../../models/content_report.dart';
+import '../../models/photo_framing.dart';
 import '../../models/published_venue_photo.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_spacing.dart';
 import '../theme/cs_typography.dart';
 import 'editorial_back_button.dart';
+import 'framed_image.dart';
 import 'follow_toggle_button.dart';
 import 'hero_photo_chevron.dart';
 
@@ -64,6 +66,12 @@ class VenueDetailHero extends StatefulWidget {
   /// trusts [imageUrls] itself to be in display_order.
   final List<PublishedVenuePhoto> photos;
 
+  /// The manager's framing for each of [imageUrls], same order — the
+  /// photos' own framing, or the cover's for the single cover-photo
+  /// fallback. Missing entries render centred, as every photo did before
+  /// framing existed (20261014120000).
+  final List<PhotoFraming> imageFramings;
+
   /// Owner preview only — mirrors PrivateChefHero's own `isPreview` and
   /// its Report action exactly, rather than this hero's existing
   /// screen-owns-the-inertness pattern (Wishlist/Follow): unlike those
@@ -112,6 +120,7 @@ class VenueDetailHero extends StatefulWidget {
     this.expandedHeight = 300,
     this.imageUrls = const [],
     this.photos = const [],
+    this.imageFramings = const [],
     this.isPreview = false,
     required this.isWishlisted,
     required this.wishlistSaving,
@@ -184,6 +193,10 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
     );
   }
 
+  PhotoFraming _framingAt(int index) => index < widget.imageFramings.length
+      ? widget.imageFramings[index]
+      : PhotoFraming.center;
+
   @override
   Widget build(BuildContext context) {
     final imageUrls = widget.imageUrls;
@@ -243,26 +256,34 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
                 controller: _pageController,
                 itemCount: imageUrls.length,
                 onPageChanged: _onGalleryPageChanged,
-                itemBuilder: (context, index) => Image.network(
-                  imageUrls[index],
-                  fit: BoxFit.cover,
-                  loadingBuilder: (_, child, progress) =>
-                      progress == null ? child : _FallbackGradient(isClosed: isClosed),
-                  errorBuilder: (_, _, _) => _FallbackGradient(isClosed: isClosed),
+                itemBuilder: (context, index) => FramedImage(
+                  framing: _framingAt(index),
+                  builder: (alignment) => Image.network(
+                    imageUrls[index],
+                    fit: BoxFit.cover,
+                    alignment: alignment,
+                    loadingBuilder: (_, child, progress) =>
+                        progress == null ? child : _FallbackGradient(isClosed: isClosed),
+                    errorBuilder: (_, _, _) => _FallbackGradient(isClosed: isClosed),
+                  ),
                 ),
               )
             else if (hasPhoto)
-              Image.network(
-                imageUrls.first,
-                fit: BoxFit.cover,
-                // While it loads, the same gradient the no-photo state
-                // uses — never a spinner or a blank frame.
-                loadingBuilder: (_, child, progress) =>
-                    progress == null ? child : _FallbackGradient(isClosed: isClosed),
-                // A failed load falls back to the exact same gradient the
-                // no-photo state uses — never a broken-image icon, and
-                // never a different treatment than "no photo yet".
-                errorBuilder: (_, _, _) => _FallbackGradient(isClosed: isClosed),
+              FramedImage(
+                framing: _framingAt(0),
+                builder: (alignment) => Image.network(
+                  imageUrls.first,
+                  fit: BoxFit.cover,
+                  alignment: alignment,
+                  // While it loads, the same gradient the no-photo state
+                  // uses — never a spinner or a blank frame.
+                  loadingBuilder: (_, child, progress) =>
+                      progress == null ? child : _FallbackGradient(isClosed: isClosed),
+                  // A failed load falls back to the exact same gradient the
+                  // no-photo state uses — never a broken-image icon, and
+                  // never a different treatment than "no photo yet".
+                  errorBuilder: (_, _, _) => _FallbackGradient(isClosed: isClosed),
+                ),
               )
             else
               _FallbackGradient(isClosed: isClosed),
