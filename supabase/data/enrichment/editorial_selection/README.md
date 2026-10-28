@@ -4,7 +4,7 @@ Prepared 2026-10-28. Nothing here is applied.
 
 The Selection ("Mantelier Selection" in the app) is the fourth way a
 restaurant enters the catalogue, added by
-`supabase/migrations/20261020120000_add_editorial_selection.sql`. See the
+`supabase/migrations/20261023120000_add_editorial_selection.sql`. See the
 scope rule in `docs/Architecture/Michelin_Database/DATABASE_ARCHITECTURE.md`.
 
 | File | What it is |

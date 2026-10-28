@@ -11,6 +11,7 @@ import '../../core/widgets/country_filter_control.dart';
 import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/cs_search_field.dart';
 import '../../core/widgets/floating_nav_bar.dart';
+import '../../data/repositories/editorial_selection_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
@@ -71,6 +72,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
   late final _restaurantRepo = RestaurantRepository(Supabase.instance.client);
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
+  late final _selectionRepo = EditorialSelectionRepository(
+    Supabase.instance.client,
+  );
 
   String _query = '';
   Timer? _debounce;
@@ -96,6 +100,11 @@ class _ExploreScreenState extends State<ExploreScreen> {
   late final Future<List<Restaurant>> _discoveryRestaurantsFuture =
       _restaurantRepo.getAll();
   late final Future<List<Hotel>> _discoveryHotelsFuture = _hotelRepo.getAll();
+  // The Selection, newest first. A failure leaves the section out rather
+  // than failing Explore, like every other discovery section.
+  late final Future<List<SelectionEntry>> _selectionFuture = _selectionRepo
+      .loadCurrent()
+      .catchError((Object _) => const <SelectionEntry>[]);
 
   // Search mode's country picker options — doesn't depend on the query or
   // any other filter, only on which countries exist in each catalogue.
@@ -356,6 +365,22 @@ class _ExploreScreenState extends State<ExploreScreen> {
           featuredEvent: selectFeaturedEvent(snap.data ?? const []),
           onTapEvent: _openEvent,
           onViewAll: _openEventsScreen,
+        ),
+      ),
+    ),
+    // Directly below What's On (product owner, 2026-10-28): the newest
+    // restaurants in our own Selection.
+    SliverToBoxAdapter(
+      child: FutureBuilder<List<SelectionEntry>>(
+        future: _selectionFuture,
+        builder: (context, snap) => MantelierLatestSection(
+          restaurants: [
+            for (final entry in (snap.data ?? const <SelectionEntry>[]).take(
+              mantelierLatestCount,
+            ))
+              entry.restaurant,
+          ],
+          onTapRestaurant: _openRestaurant,
         ),
       ),
     ),

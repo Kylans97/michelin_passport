@@ -14,7 +14,7 @@ The format follows Keep a Changelog.
   way into the catalogue next to a MICHELIN star, World's 50 Best and the
   hall of fame, decided by the product owner so restaurants we choose
   ourselves can be listed without an award. **Prepared, not applied.**
-  - **`20261020120000_add_editorial_selection.sql`:** widens
+  - **`20261023120000_add_editorial_selection.sql`:** widens
     `restaurants.inclusion_reason` with `editorial_selection`, and adds
     `public.editorial_selections` (one row per entry, `removed_on` instead
     of deleting, at most one current entry per restaurant). Public read,
@@ -26,7 +26,24 @@ The format follows Keep a Changelog.
     `supabase/data/enrichment/editorial_selection/`: Tacite and Petit
     Péché, Amsterdam. Google Place IDs still to be found before apply.
   - Scope rule updated in `DATABASE_ARCHITECTURE.md`, `START_HERE.md` and
-    `CLAUDE.md`. No app code reads the Selection yet.
+    `CLAUDE.md`. The product owner then dropped the restriction outright
+    (2026-10-28: the catalogue is no longer limited to MICHELIN, World's 50
+    Best and Gault&Millau restaurants); `CLAUDE.md` now says so.
+  - Renumbered to `20261023120000` before apply: `20261019140000`,
+    `20261019150000`, `20261021120000` and `20261022120000` were applied in
+    between. Re-tested on a full local replay of production's exact
+    migration set, seeded with restaurants carrying every
+    `inclusion_reason` value in use: the constraint accepts every existing
+    row, the prepared insert gives `rest_1840` Tacite and `rest_1841`
+    Petit Péché, and `restaurants_full` shows both.
+  - **App:** "Mantelier's latest" on Explore, directly below What's On (the
+    eight newest Selection restaurants), and a "Mantelier Selection" family
+    on Guides above MICHELIN, opening a catalogue of every Selection
+    restaurant with on-device search and a country filter. The label is
+    forest green, never gold; a starred Selection restaurant still shows
+    its stars. Reads `editorial_selections` (`removed_on is null`), never
+    `inclusion_reason`, and leaves the Selection out when the table doesn't
+    exist yet.
 
 ---
 

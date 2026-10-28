@@ -289,6 +289,66 @@ class WorthTheJourneySection extends StatelessWidget {
   }
 }
 
+/// How many Selection restaurants "Mantelier's latest" shows on Explore;
+/// the full Selection lives in Guides.
+const mantelierLatestCount = 8;
+
+/// "MANTELIER'S LATEST" — the newest restaurants in our own editorial
+/// Selection, directly below What's On. Same horizontal ivory cards as
+/// [WorthTheJourneySection], each labelled "Mantelier Selection" in forest
+/// green (editorial judgement, never gold). Renders nothing until there is
+/// at least one Selection restaurant.
+class MantelierLatestSection extends StatelessWidget {
+  final List<Restaurant> restaurants;
+  final ValueChanged<Restaurant> onTapRestaurant;
+
+  const MantelierLatestSection({
+    super.key,
+    required this.restaurants,
+    required this.onTapRestaurant,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (restaurants.isEmpty) return const SizedBox.shrink();
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(0, CsSpacing.section, 0, 0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: CsSpacing.pageHorizontal,
+            ),
+            child: const _DiscoverySectionHeader(
+              title: "MANTELIER'S LATEST",
+              subtitle: 'New to our own Selection.',
+            ),
+          ),
+          const SizedBox(height: CsSpacing.base),
+          SizedBox(
+            height: 340,
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(
+                horizontal: CsSpacing.pageHorizontal,
+              ),
+              itemCount: restaurants.length,
+              separatorBuilder: (_, _) => const SizedBox(width: CsSpacing.md),
+              itemBuilder: (context, i) => ExploreDiscoveryRestaurantCard(
+                restaurant: restaurants[i],
+                inSelection: true,
+                onTap: () => onTapRestaurant(restaurants[i]),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 /// The hotel discovery section — mirrors [WorthTheJourneySection] exactly,
 /// with [ExploreDiscoveryHotelCard]'s image-left layout giving it a
 /// distinct rhythm from the restaurant row above rather than repeating the

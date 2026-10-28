@@ -47,8 +47,8 @@ void main() {
         );
         expect(backIcon.color, AppColors.ivory);
 
-        // One ivory-decorated Container per family block — Michelin,
-        // World's 50 Best, Gault&Millau.
+        // One ivory-decorated Container per family block — Mantelier
+        // Selection, Michelin, World's 50 Best, Gault&Millau.
         final ivoryBlocks = tester
             .widgetList<Container>(find.byType(Container))
             .where((c) {
@@ -56,7 +56,7 @@ void main() {
               return decoration is BoxDecoration &&
                   decoration.color == AppColors.ivory;
             });
-        expect(ivoryBlocks.length, 3);
+        expect(ivoryBlocks.length, 4);
       },
     );
 
@@ -90,10 +90,20 @@ void main() {
         find.text('Distinctive restaurants recognised by Gault&Millau.'),
         findsOneWidget,
       );
-      // 'Restaurants' now appears three times total (Michelin, World's 50
-      // Best, Gault&Millau) — confirming the third family's destination is
-      // actually present, not just its title.
-      expect(find.text('Restaurants'), findsNWidgets(3));
+      // 'Restaurants' appears four times total (Mantelier Selection,
+      // Michelin, World's 50 Best, Gault&Millau) — confirming the
+      // Gault&Millau destination is actually present, not just its title.
+      expect(find.text('Restaurants'), findsNWidgets(4));
+    });
+
+    testWidgets('renders the Mantelier Selection first, above the external '
+        'guides', (tester) async {
+      await tester.pumpWidget(_wrap(const GuidesScreen()));
+      expect(find.text('MANTELIER SELECTION'), findsOneWidget);
+      expect(find.text('Chosen by our own editors.'), findsOneWidget);
+      final selection = tester.getTopLeft(find.text('MANTELIER SELECTION')).dy;
+      final michelin = tester.getTopLeft(find.text('MICHELIN GUIDE')).dy;
+      expect(selection, lessThan(michelin));
     });
 
     testWidgets('shows no fake venue/ranking content', (tester) async {

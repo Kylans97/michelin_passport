@@ -7,12 +7,13 @@
 -- supabase/data/enrichment/editorial_selection/.
 --
 -- Written 2026-10-28 as 20261017130000; renumbered the same day to
--- 20261020120000, after the highest migration on main (20261019130000),
--- because migrations applied to production since then sort above the old
--- number. Never applied under either name. The number is sort order, not
--- a date.
+-- 20261020120000, and again to 20261023120000 before it was applied,
+-- because 20261019140000, 20261019150000, 20261021120000 and
+-- 20261022120000 were applied to production in between and sort above
+-- the earlier numbers. Never applied under either earlier name. The
+-- number is sort order, not a date.
 --
--- PREPARED — NOT APPLIED. Do not push until reviewed.
+-- PREPARED — NOT APPLIED.
 --
 -- Shown in the app as "Mantelier Selection" (per country: "Mantelier
 -- Selection Netherlands"). The brand name stays out of every identifier
