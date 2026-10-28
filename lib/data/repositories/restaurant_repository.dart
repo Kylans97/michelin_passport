@@ -61,7 +61,7 @@ import 'search_query.dart';
 // restaurants_full select fails.
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
-    'city_name, region, country_code, country_name, flag_emoji, address, '
+    'city_id, city_name, region, country_code, country_name, flag_emoji, address, '
     'google_place_id, michelin_url, website_url, booking_url, phone, '
     'property_name, is_in_hotel, hotel_id, hotel_name, worlds_50_best_rank, '
     'is_hall_of_fame, starts_on, ends_on, parent_venue_type, '
@@ -146,6 +146,42 @@ class RestaurantRepository {
   // selected. Explore never passes this (defaults false), so its "All"
   // restaurant search — which intentionally includes unstarred
   // restaurants — is unaffected.
+  /// Trips' venue pickers: [query] (same per-word matching as [search])
+  /// limited to a trip's destinations — venues in any of [cityIds] or in
+  /// any of [countryCodes] (whole-country legs). Keyed on catalogue codes
+  /// and ids only, never on a name, never on `property_name`. Sorted A→Z
+  /// (`ascending` explicit — postgrest-dart's default is descending).
+  Future<List<Restaurant>> searchInPlaces(
+    String query, {
+    List<String> countryCodes = const [],
+    List<String> cityIds = const [],
+  }) async {
+    if (countryCodes.isEmpty && cityIds.isEmpty) return [];
+    var builder = _client
+        .from('restaurants_full')
+        .select(restaurantFullColumns);
+    for (final filter in buildIlikeOrFilters(query, [
+      'name',
+      'city_name',
+      'country_name',
+    ])) {
+      builder = builder.or(filter);
+    }
+    builder = builder.or(
+      [
+        if (cityIds.isNotEmpty) 'city_id.in.(${cityIds.join(',')})',
+        if (countryCodes.isNotEmpty)
+          'country_code.in.(${countryCodes.join(',')})',
+      ].join(','),
+    );
+    final rows = await builder
+        .order('is_expired', ascending: true)
+        .order('name', ascending: true);
+    return (rows as List)
+        .map((row) => Restaurant.fromJson(row as Map<String, dynamic>))
+        .toList();
+  }
+
   Future<List<Restaurant>> search(
     String query, {
     int? stars,

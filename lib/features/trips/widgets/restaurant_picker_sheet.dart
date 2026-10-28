@@ -1,174 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../../../core/constants/app_colors.dart';
+import '../../../core/widgets/star_row.dart';
 import '../../../data/repositories/restaurant_repository.dart';
 import '../../../models/restaurant.dart';
+import 'venue_picker_sheet.dart';
 
-/// Searchable single-restaurant picker, live against the existing
+/// Searchable single-restaurant picker for a trip, live against the
 /// restaurant catalogue (RestaurantRepository.search()). Adding several
-/// restaurants to a trip means opening this sheet once per restaurant
-/// (matching the single-select sheet pattern used everywhere else in this
-/// app — CountryPickerSheet, HotelPickerSheet — rather than introducing a
-/// one-off multi-select checklist UI); [excludeIds] hides restaurants
-/// already added to the trip so the same one can't be picked twice. Used
-/// by both Create Trip's "Restaurants to visit" and Trip Detail's "Add
-/// restaurant" so a trip's restaurants are always normalized references
-/// (planned_venues.entity_id -> restaurants_full.id), never copied data.
+/// restaurants means opening this once per restaurant — the single-select
+/// sheet pattern used everywhere else in this app; [excludeIds] hides
+/// restaurants already on the trip so the same one can't be picked twice.
+/// Used by both Create Trip and Trip Detail so a trip's restaurants are
+/// always normalized references (planned_venues.entity_id ->
+/// restaurants_full.id), never copied data.
+///
+/// Destination-scoped (2026-10-28): only restaurants in the trip's
+/// destinations are offered — catalogue city ids for city legs, country
+/// codes for whole-country legs, filtered server-side, never on a name and
+/// never on `property_name`. [destinationLabel] is display
+/// only.
 Future<Restaurant?> showRestaurantPickerSheet(
   BuildContext context, {
   required RestaurantRepository repo,
+  required List<String> countryCodes,
+  List<String> cityIds = const [],
+  required String destinationLabel,
   Set<String> excludeIds = const {},
 }) {
-  return showModalBottomSheet<Restaurant>(
-    context: context,
-    isScrollControlled: true,
-    backgroundColor: Colors.transparent,
-    builder: (_) => _RestaurantPickerSheet(repo: repo, excludeIds: excludeIds),
+  return showTripVenuePicker<Restaurant>(
+    context,
+    title: 'Add a restaurant',
+    scopeLabel: 'Restaurants in $destinationLabel',
+    hintText: 'Search restaurants, cities…',
+    emptyMessage: 'No restaurants in $destinationLabel in the catalogue yet.',
+    search: (query) => repo.searchInPlaces(
+      query,
+      countryCodes: countryCodes,
+      cityIds: cityIds,
+    ),
+    exclude: (restaurant) => excludeIds.contains(restaurant.id),
+    describe: (restaurant) => TripVenuePickerRow(
+      title: restaurant.name,
+      subtitle: restaurant.cityName,
+      imageUrl: restaurant.cardImageUrl,
+      framing: restaurant.cardFraming,
+      awardRow: restaurant.hasMichelinStar
+          ? StarRow(count: restaurant.michelinStars!, size: 12)
+          : null,
+    ),
   );
-}
-
-class _RestaurantPickerSheet extends StatefulWidget {
-  final RestaurantRepository repo;
-  final Set<String> excludeIds;
-  const _RestaurantPickerSheet({required this.repo, required this.excludeIds});
-
-  @override
-  State<_RestaurantPickerSheet> createState() => _RestaurantPickerSheetState();
-}
-
-class _RestaurantPickerSheetState extends State<_RestaurantPickerSheet> {
-  String _query = '';
-  late Future<List<Restaurant>> _future = widget.repo.search('');
-
-  void _onQueryChanged(String value) {
-    setState(() {
-      _query = value;
-      _future = widget.repo.search(value);
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      top: false,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(
-          maxHeight: MediaQuery.of(context).size.height * 0.75,
-        ),
-        child: Container(
-          decoration: const BoxDecoration(
-            color: AppColors.brandGreenLight,
-            borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const SizedBox(height: 14),
-              Container(
-                width: 36,
-                height: 4,
-                decoration: BoxDecoration(
-                  color: AppColors.textOnDark.withValues(alpha: 0.3),
-                  borderRadius: BorderRadius.circular(2),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(24, 20, 24, 12),
-                child: TextField(
-                  autofocus: true,
-                  onChanged: _onQueryChanged,
-                  // A light-filled search field (the app's global
-                  // InputDecorationTheme fills every TextField with
-                  // AppColors.surface by default) reads as a quiet "island"
-                  // on the sheet's dark canvas — the same treatment the
-                  // date/country/venue-picker rows in CreateTripSheet use —
-                  // rather than fighting the theme's default fill.
-                  style: GoogleFonts.inter(
-                    color: AppColors.textPrimary,
-                    fontSize: 14,
-                  ),
-                  decoration: InputDecoration(
-                    hintText: 'Search restaurants, cities…',
-                    hintStyle: GoogleFonts.inter(
-                      color: AppColors.textSecondary,
-                      fontSize: 14,
-                    ),
-                    prefixIcon: const Icon(Icons.search_rounded),
-                  ),
-                ),
-              ),
-              Flexible(
-                child: FutureBuilder<List<Restaurant>>(
-                  future: _future,
-                  builder: (context, snap) {
-                    if (snap.connectionState == ConnectionState.waiting) {
-                      return const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 32),
-                        child: Center(
-                          child: CircularProgressIndicator(
-                            color: AppColors.gold,
-                            strokeWidth: 1.5,
-                          ),
-                        ),
-                      );
-                    }
-                    final restaurants = [
-                      for (final r in snap.data ?? const <Restaurant>[])
-                        if (!widget.excludeIds.contains(r.id)) r,
-                    ];
-                    if (restaurants.isEmpty) {
-                      return Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 32),
-                        child: Center(
-                          child: Text(
-                            _query.isEmpty
-                                ? 'No restaurants in the catalogue yet'
-                                : 'No restaurants found',
-                            style: GoogleFonts.inter(
-                              color: AppColors.secondaryOnDark,
-                              fontSize: 13,
-                            ),
-                          ),
-                        ),
-                      );
-                    }
-                    return ListView.builder(
-                      shrinkWrap: true,
-                      padding: const EdgeInsets.fromLTRB(12, 0, 12, 20),
-                      itemCount: restaurants.length,
-                      itemBuilder: (context, i) {
-                        final restaurant = restaurants[i];
-                        return ListTile(
-                          onTap: () => Navigator.pop(context, restaurant),
-                          leading: Text(
-                            restaurant.flagEmoji,
-                            style: const TextStyle(fontSize: 20),
-                          ),
-                          title: Text(
-                            restaurant.name,
-                            style: GoogleFonts.inter(
-                              color: AppColors.textOnDark,
-                              fontSize: 14.5,
-                              fontWeight: FontWeight.w500,
-                            ),
-                          ),
-                          subtitle: Text(
-                            '${restaurant.cityName}, ${restaurant.countryName}',
-                            style: GoogleFonts.inter(
-                              color: AppColors.secondaryOnDark,
-                              fontSize: 12.5,
-                            ),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }

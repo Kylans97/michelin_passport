@@ -12,6 +12,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/utils/mailto_uri.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/notifications_repository.dart';
+import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/venue_invite_repository.dart';
 import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
@@ -71,6 +72,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   );
   late final _friendRepo = FriendshipRepository(Supabase.instance.client);
   late final _venueInviteRepo = VenueInviteRepository(Supabase.instance.client);
+  late final _tripsRepo = PlannedTripsRepository(Supabase.instance.client);
   late final AnalyticsService _analytics =
       widget.analytics ?? SupabaseAnalyticsService(Supabase.instance.client);
 
@@ -134,6 +136,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               entityId: n.inviteVenueId,
             ),
           );
+        case AppNotificationType.tripInviteReceived:
+          await _tripsRepo.respondToTripInvite(
+            memberId: n.subjectId,
+            accept: true,
+          );
         default:
           return;
       }
@@ -157,6 +164,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               entityType: _inviteEntityType(n),
               entityId: n.inviteVenueId,
             ),
+          );
+        case AppNotificationType.tripInviteReceived:
+          await _tripsRepo.respondToTripInvite(
+            memberId: n.subjectId,
+            accept: false,
           );
         default:
           return;
@@ -378,6 +390,14 @@ class _NotificationRow extends StatelessWidget {
       case AppNotificationType.eventApproved:
       case AppNotificationType.eventRejected:
         return _EventReviewContent(notification: notification);
+      case AppNotificationType.tripInviteReceived:
+      case AppNotificationType.tripInviteAccepted:
+        return _TripInviteContent(
+          notification: notification,
+          onTapOther: onTapOther,
+          onAccept: onAccept,
+          onDecline: onDecline,
+        );
     }
   }
 }
@@ -737,6 +757,98 @@ class _VenueInviteContent extends StatelessWidget {
       default:
         return const SizedBox.shrink();
     }
+  }
+}
+
+/// A trip invitation, or a friend saying yes to one. The invitee answers
+/// here (respond_to_trip_invite) or from the top of Trips; once answered,
+/// or once the invitation is withdrawn, the row just states what happened.
+class _TripInviteContent extends StatelessWidget {
+  final AppNotification notification;
+  final VoidCallback? onTapOther;
+  final VoidCallback onAccept;
+  final VoidCallback onDecline;
+
+  const _TripInviteContent({
+    required this.notification,
+    required this.onTapOther,
+    required this.onAccept,
+    required this.onDecline,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final trip = notification.tripTitle ?? 'a trip';
+    final isReceived =
+        notification.type == AppNotificationType.tripInviteReceived;
+    final status = notification.tripMemberStatus;
+    final description = isReceived
+        ? 'Invited you to $trip'
+        : 'Is coming on $trip';
+
+    Widget outcome() {
+      if (status == 'pending') {
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextButton(
+              onPressed: onDecline,
+              child: Text(
+                'Decline',
+                style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+              ),
+            ),
+            TextButton(
+              onPressed: onAccept,
+              child: Text(
+                'Join trip',
+                style: CsTypography.metadata.copyWith(
+                  color: AppColors.forestGreen,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        );
+      }
+      final text = switch (status) {
+        'accepted' => 'You joined',
+        'declined' => 'You declined',
+        _ => 'No longer open',
+      };
+      return Text(
+        text,
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        IdentityRow(
+          label: notification.otherLabel,
+          username: isReceived ? notification.otherUsername : null,
+          avatarUrl: notification.otherAvatarUrl,
+          onTap: onTapOther,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 56, bottom: CsSpacing.sm),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                description,
+                style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+              ),
+              if (isReceived) ...[
+                const SizedBox(height: 6),
+                outcome(),
+              ],
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
 

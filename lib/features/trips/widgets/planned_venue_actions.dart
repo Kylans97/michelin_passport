@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import '../../../core/constants/app_colors.dart';
 import '../../../data/repositories/planned_trips_repository.dart';
 import '../../../models/planned_venue.dart';
 import '../../../models/resolved_planned_venue.dart';
 import '../../planning/widgets/plan_venue_sheet.dart';
+import 'trip_chrome.dart';
 
 /// Edit / cancel / delete for one planned venue — shared by
 /// PlannedTripsScreen's standalone "PLANNED VISITS" list and
@@ -19,56 +18,28 @@ Future<bool> showPlannedVenueActions(
   required String userId,
   required PlannedTripsRepository repo,
 }) async {
-  final action = await showModalBottomSheet<String>(
-    context: context,
-    backgroundColor: AppColors.brandGreenLight,
-    shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
-    ),
-    builder: (context) => SafeArea(
-      top: false,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: 8),
-          ListTile(
-            leading: const Icon(
-              Icons.edit_outlined,
-              color: AppColors.textOnDark,
-            ),
-            title: Text(
-              'Edit plan',
-              style: GoogleFonts.inter(color: AppColors.textOnDark),
-            ),
-            onTap: () => Navigator.pop(context, 'edit'),
-          ),
-          if (item.plan.status == PlannedVenueStatus.planned)
-            ListTile(
-              leading: const Icon(
-                Icons.cancel_outlined,
-                color: AppColors.secondaryOnDark,
-              ),
-              title: Text(
-                'Cancel plan',
-                style: GoogleFonts.inter(color: AppColors.textOnDark),
-              ),
-              onTap: () => Navigator.pop(context, 'cancel'),
-            ),
-          ListTile(
-            leading: const Icon(
-              Icons.delete_outline_rounded,
-              color: AppColors.error,
-            ),
-            title: Text(
-              'Delete',
-              style: GoogleFonts.inter(color: AppColors.error),
-            ),
-            onTap: () => Navigator.pop(context, 'delete'),
-          ),
-          const SizedBox(height: 8),
-        ],
+  final action = await showTripActionSheet<String>(
+    context,
+    title: item.venue.name,
+    actions: [
+      const TripSheetAction(
+        value: 'edit',
+        label: 'Edit plan',
+        icon: Icons.edit_outlined,
       ),
-    ),
+      if (item.plan.status == PlannedVenueStatus.planned)
+        const TripSheetAction(
+          value: 'cancel',
+          label: 'Cancel plan',
+          icon: Icons.cancel_outlined,
+        ),
+      const TripSheetAction(
+        value: 'delete',
+        label: 'Delete',
+        icon: Icons.delete_outline_rounded,
+        destructive: true,
+      ),
+    ],
   );
 
   if (!context.mounted || action == null) return false;
@@ -96,48 +67,15 @@ Future<bool> showPlannedVenueActions(
       return true;
     case 'delete':
       if (!context.mounted) return false;
-      final confirmed = await showDialog<bool>(
-        context: context,
-        builder: (context) => AlertDialog(
-          backgroundColor: AppColors.brandGreenLight,
-          title: Text(
-            'Delete this plan?',
-            style: GoogleFonts.cormorantGaramond(
-              color: AppColors.textOnDark,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-          content: Text(
+      final confirmed = await showTripConfirmDialog(
+        context,
+        title: 'Delete this plan?',
+        message:
             'This removes the planned visit/stay only — the venue itself '
             'is never affected.',
-            style: GoogleFonts.inter(
-              color: AppColors.secondaryOnDark,
-              fontSize: 14,
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.pop(context, false),
-              child: Text(
-                'Cancel',
-                style: GoogleFonts.inter(color: AppColors.secondaryOnDark),
-              ),
-            ),
-            TextButton(
-              onPressed: () => Navigator.pop(context, true),
-              child: Text(
-                'Delete',
-                style: GoogleFonts.inter(
-                  color: AppColors.error,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ],
-        ),
+        confirmLabel: 'Delete',
       );
-      if (confirmed == true) {
+      if (confirmed) {
         await repo.deletePlannedVenue(
           userId: userId,
           plannedVenueId: item.plan.id,

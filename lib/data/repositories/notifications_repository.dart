@@ -13,33 +13,41 @@ class NotificationsRepository {
 
   final SupabaseClient _client;
 
-  /// Reads the _v2 functions (20261018130000), which include event
-  /// notifications. Falls back to the originals while a server doesn't
-  /// have _v2 yet (PostgREST's "function not found", PGRST202), so this
-  /// build works on either side of that migration. A row of a type this
-  /// build doesn't know is skipped, never a reason to fail the whole list.
+  /// Reads the newest functions this server has: _v3 (20261022120000,
+  /// adds trip invitations), else _v2 (20261018130000, adds event
+  /// notifications), else the originals — each step down on PostgREST's
+  /// "function not found" (PGRST202), so this build works on any side of
+  /// those migrations. A row of a type this build doesn't know is skipped,
+  /// never a reason to fail the whole list.
   Future<List<AppNotification>> getNotifications() async {
-    final rows = await _rpcWithFallback('get_notifications_v2', 'get_notifications');
+    final rows = await _rpcWithFallback(const [
+      'get_notifications_v3',
+      'get_notifications_v2',
+      'get_notifications',
+    ]);
     return [
       for (final r in rows as List) ?AppNotification.tryFromRow(r as Map<String, dynamic>),
     ];
   }
 
   Future<int> getUnreadCount() async {
-    final result = await _rpcWithFallback(
+    final result = await _rpcWithFallback(const [
+      'get_unread_notification_count_v3',
       'get_unread_notification_count_v2',
       'get_unread_notification_count',
-    );
+    ]);
     return result as int;
   }
 
-  Future<dynamic> _rpcWithFallback(String name, String fallback) async {
-    try {
-      return await _client.rpc(name);
-    } on PostgrestException catch (e) {
-      if (e.code != 'PGRST202') rethrow;
-      return _client.rpc(fallback);
+  Future<dynamic> _rpcWithFallback(List<String> names) async {
+    for (final name in names.take(names.length - 1)) {
+      try {
+        return await _client.rpc(name);
+      } on PostgrestException catch (e) {
+        if (e.code != 'PGRST202') rethrow;
+      }
     }
+    return _client.rpc(names.last);
   }
 
   Future<void> markAsRead(String notificationId) async {

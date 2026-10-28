@@ -41,9 +41,87 @@ The format follows Keep a Changelog.
     build from here on is safe.
   - **Not replay-tested:** no Docker on this machine. The view columns
     were checked against production instead.
-  - **Next push:** `feature/editorial-selection`'s unapplied
-    `20261020120000` now sorts before an applied migration, so it needs
-    `supabase db push --include-all`. The two touch different objects.
+- **Multi-destination trips.** Create/Edit Trip holds a list of destinations:
+  a catalogue country, optionally narrowed to a catalogue city (new city
+  picker, by `cities.id`), with Arrive/Leave dates required once there's more
+  than one. Saved atomically through `save_trip_destinations`.
+- **Trip Detail by leg.** A multi-destination trip shows one section per
+  leg with its own stays and dining, and an "Elsewhere" section for plans
+  outside every destination. A leg's "Add stay"/"Add" pickers are scoped to
+  that leg (city id or country code), and new plans default to its dates.
+- **Events per leg** (decision 2). Events are fetched for every destination
+  country and matched on each leg's own dates and country, in Trip Detail,
+  on the featured trip card and in discovery ranking's trip signal, which now
+  names the matching leg's city.
+- **Shared trips.** A "Travelling with" row and sheet on Trip Detail.
+  Any member invites their own friends; the owner removes anyone; whoever
+  sent a pending invite can withdraw it; members can leave. Other members'
+  plans show read-only with "Added by …". Open invitations appear at the top
+  of Trips and in Notifications (Join trip / Decline), read through
+  `get_notifications_v3`.
+- Catalogue venues now carry `city_id` (`Restaurant.cityId`/`Hotel.cityId`).
+  The scoped `searchInPlaces` sorts A→Z.
+- **Works before the migration too.** Against a server without
+  20261022120000, Trips behaves exactly as the single-
+  destination, owner-only build: the repository falls back on PostgREST's
+  "not found" errors and hides destinations and sharing. Verified against
+  production on the simulator.
+- Verified end to end on the simulator against a local stack with the
+  migration (`docs/Engineering/checks/trips_local_fixtures.sql`: local-only
+  test accounts and fake venues). Checked: accept an invitation, create a
+  two-leg trip with a city, legs, Elsewhere, per-leg events (an Italian
+  event during the French dates correctly excluded), the leg-scoped picker,
+  another member's read-only plan, the members sheet, and Edit pre-fill.
+
+### Changed
+
+- **Trips restyled** (Passport → Trips, Trip Detail, Create/Edit Trip, the
+  venue pickers). The sections follow Explore's header pattern, and planned
+  stays and visits are now the same ivory photo cards Passport uses
+  (`CsPlaceCard` with the venue's card photo). Trip Detail gets a display-scale
+  header with the destination and a pull-quote for notes. Dialogs, action
+  sheets and snackbars are shared across Trips (`trip_chrome.dart`). Gold
+  appears only on stars and Keys: removed from the Add/Change actions, the
+  focus underline, spinners and the forest-green snackbars.
+- **Pickers scoped to the trip's destination.** "Add stay"/"Add restaurant"
+  offer only venues in the trip's own country, filtered server-side on
+  `country_code` (never a name, never `property_name`). In Create Trip they
+  stay disabled until a destination is chosen, and changing the destination
+  drops picks from another country.
+- A stay's date eyebrow uses the shortest unambiguous range
+  ("27–30 Nov 2026") so it fits on one line; Trip Detail's start label
+  ("IN 30 DAYS") is uppercase like the other eyebrows.
+- `CsPlaceCard` gains an optional `onLongPress` (null by default, so
+  existing cards are unchanged).
+
+### Database
+
+- **Applied 2026-10-28: `20261022120000_add_trip_destinations_and_members.sql`.**
+  Several destinations per trip (`planned_trip_destinations`: a catalogue
+  country plus an optional catalogue city, with leg dates required once
+  there's more than one) and shared trips (`planned_trip_members`, plus
+  invite/respond/leave/remove RPCs). Any member can invite their own
+  friends. Unfriending or blocking removes the other person from your trips
+  that haven't ended yet; past trips are untouched.
+  Installed 1.2.0 builds keep working: `planned_trips.country_code`/`city`
+  stay in step with the first destination, and they never see shared trips
+  or the new notification types (`get_notifications_v3`/`_count_v3` are the
+  only readers that include them).
+  A plan can now only be attached to a trip you're on; before, any trip id
+  was accepted.
+  Verified in production after the apply:
+  - ledger row present; both tables exist with RLS on;
+  - all 5 existing trips have a first destination; the 16 planned venues are untouched;
+  - anon can execute none of the 16 new functions;
+  - the 8 client RPCs are callable by `authenticated`, the internal helpers are not;
+  - all 7 triggers are present.
+  `supabase migration list --linked` agrees, 106/106. That's measured with
+  main and `feature/guide-sources`' applied `20261021120000`; this branch
+  alone lacks those three files until it's merged.
+  Checks: `docs/Engineering/checks/trip_destinations_and_members_checks.sql`,
+  44/44 on a fresh replay of production's exact migration set, and again on
+  a replay seeded with five pre-existing trips.
+  Plan: `docs/Architecture/TRIPS_MULTI_DESTINATION_AND_SHARING_PLAN.md`.
 
 ### Fixed
 
@@ -70,6 +148,36 @@ The format follows Keep a Changelog.
   absolute http(s) values (`GaultMillauAward.profileUrl`). The data was
   then corrected on 2026-10-28 (QA-244): placeholders to NULL, 7 real
   pages filled.
+
+- **"Change hotel" deleted every stay on the trip.** Trip Detail assumed one
+  hotel per trip, but `planned_venues` allows several, and a second stay
+  planned from the venue's own Plan sheet was silently removed. "Add stay"
+  now only adds; each stay is removed on its own.
+- **Countries listed Z→A in Create Trip, and the pickers listed venues Z→A.**
+  postgrest-dart's `.order()` defaults to descending: `loadAllCountries`
+  now passes `ascending: true`, and the pickers sort by name. The shared
+  `RestaurantRepository.search`/`HotelRepository.search` still order
+  `name` descending for every other caller (left alone here, logged as a
+  follow-up), the same trap their own comment already warns about.
+
+- **Migration filename collision, caught before apply.** This migration was
+  written as `20261021120000`, but `feature/guide-sources` independently took
+  the same version (`add_worlds_50_best_urls`) and applied it first; the
+  ledger keys on the version alone. Renamed to `20261022120000` before it
+  ever ran. It would recur whenever two branches pick "the next" timestamp
+  without checking the remote ledger and every branch first.
+- **First production apply failed and rolled back; no data or schema
+  changed.** The backfill (one destination per existing trip) ran before
+  the RLS section, so each inserted row queued a deferred date-check trigger,
+  and Postgres refuses `ALTER TABLE … enable row level security` on a table
+  with pending trigger events (SQLSTATE 55006). Local replays had passed
+  because they had no trips to backfill; production had 5.
+  Rollback verified in production: no new tables, functions or triggers;
+  no ledger row; the `planned_trips` policy unchanged. Fixed by moving the
+  backfill to the end of the migration, then re-tested on a replay seeded
+  with five trips before re-applying. The lesson: a local replay with empty
+  user tables doesn't exercise a migration's backfill path. Seed
+  representative rows before applying anything that backfills.
 
 ---
 

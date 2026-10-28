@@ -42,6 +42,11 @@ class CsPlaceCard extends StatelessWidget {
   final Widget? fullWidthFooter;
 
   final VoidCallback onTap;
+
+  /// Optional secondary gesture — Trips uses it for a planned venue's
+  /// edit/cancel/delete sheet. Null (the default) registers no long-press
+  /// recogniser at all, so every existing card behaves exactly as before.
+  final VoidCallback? onLongPress;
   final double imageSize;
 
   const CsPlaceCard({
@@ -55,6 +60,7 @@ class CsPlaceCard extends StatelessWidget {
     this.bookmark,
     this.fullWidthFooter,
     required this.onTap,
+    this.onLongPress,
     this.imageSize = 96,
   });
 
@@ -64,6 +70,7 @@ class CsPlaceCard extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
         onTap: onTap,
+        onLongPress: onLongPress,
         borderRadius: BorderRadius.circular(CsRadius.card),
         child: Container(
           padding: const EdgeInsets.all(CsSpacing.cardPadding),

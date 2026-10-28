@@ -41,7 +41,7 @@ import 'search_query.dart';
 // worlds_50_best_url (20261021120000_add_worlds_50_best_urls.sql) — same
 // ordering hazard: the migration must be live before this ships.
 const hotelFullColumns =
-    'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
+    'id, hotel_code, name, michelin_keys, city_id, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
     'website_url, booking_url, has_michelin_restaurant, restaurant_count, '
     'worlds_50_best_rank, worlds_50_best_year, starts_on, ends_on, '
@@ -118,6 +118,40 @@ class HotelRepository {
   // Michelin Hotels catalogue (Step 2B). Explore never passes this
   // (defaults false), so its own "All" hotel search — which intentionally
   // includes Key-less hotels — is unaffected.
+  /// Trips' venue pickers: [query] (same per-word matching as [search])
+  /// limited to a trip's destinations — venues in any of [cityIds] or in
+  /// any of [countryCodes] (whole-country legs). Keyed on catalogue codes
+  /// and ids only, never on a name, never on `property_name`. Sorted A→Z
+  /// (`ascending` explicit — postgrest-dart's default is descending).
+  Future<List<Hotel>> searchInPlaces(
+    String query, {
+    List<String> countryCodes = const [],
+    List<String> cityIds = const [],
+  }) async {
+    if (countryCodes.isEmpty && cityIds.isEmpty) return [];
+    var builder = _client.from('hotels_full').select(hotelFullColumns);
+    for (final filter in buildIlikeOrFilters(query, [
+      'name',
+      'city_name',
+      'country_name',
+    ])) {
+      builder = builder.or(filter);
+    }
+    builder = builder.or(
+      [
+        if (cityIds.isNotEmpty) 'city_id.in.(${cityIds.join(',')})',
+        if (countryCodes.isNotEmpty)
+          'country_code.in.(${countryCodes.join(',')})',
+      ].join(','),
+    );
+    final rows = await builder
+        .order('is_expired', ascending: true)
+        .order('name', ascending: true);
+    return (rows as List)
+        .map((row) => Hotel.fromJson(row as Map<String, dynamic>))
+        .toList();
+  }
+
   Future<List<Hotel>> search(
     String query, {
     int? keys,
