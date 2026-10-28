@@ -14,6 +14,7 @@ import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
 import 'package:michelin_passport/core/widgets/cs_primary_button.dart';
 import 'package:michelin_passport/core/widgets/editorial_back_button.dart';
+import 'package:michelin_passport/features/friends/widgets/friend_request_row.dart';
 import 'package:michelin_passport/features/friends/widgets/identity_row.dart';
 
 // Mirrors _FriendsScreenState.build's outer shell (Friends Safe Area
@@ -76,6 +77,18 @@ Widget _friendsEmptyState({VoidCallback? onFindFriends}) => Column(
     const SizedBox(height: CsSpacing.xl),
     CsPrimaryButton(label: 'Find friends', onTap: onFindFriends ?? () {}),
   ],
+);
+
+// _IncomingTab's row is the real shared FriendRequestRow (no Supabase
+// dependency); its own layout cases live in friend_request_row_test.dart.
+Widget _incomingRequestRow({
+  required VoidCallback onAccept,
+  required VoidCallback onDecline,
+}) => FriendRequestRow(
+  label: 'User B',
+  username: 'userb',
+  onAccept: onAccept,
+  onDecline: onDecline,
 );
 
 Widget _outgoingRequestRow({required VoidCallback onCancel}) => IdentityRow(
@@ -175,10 +188,57 @@ void main() {
     });
   });
 
-  // "FriendsScreen incoming request row" coverage moved to
-  // notifications_screen_test.dart — incoming requests no longer render
-  // in FriendsScreen at all (Notifications V1); see _RequestsTab's own
-  // doc comment in friends_screen.dart for why.
+  // Incoming requests render on FriendsScreen's Requests tab again
+  // (2026-10-28), alongside NotificationsScreen's own row — see
+  // _IncomingTab's doc comment in friends_screen.dart.
+  group('FriendsScreen incoming request row', () {
+    testWidgets('shows Decline and Accept and fires each callback', (
+      tester,
+    ) async {
+      var accepted = false;
+      var declined = false;
+      await tester.pumpWidget(
+        _wrap(
+          _incomingRequestRow(
+            onAccept: () => accepted = true,
+            onDecline: () => declined = true,
+          ),
+        ),
+      );
+      expect(find.text('Decline'), findsOneWidget);
+      expect(find.text('Accept'), findsOneWidget);
+      await tester.tap(find.text('Accept'));
+      expect(accepted, isTrue);
+      await tester.tap(find.text('Decline'));
+      expect(declined, isTrue);
+    });
+
+    testWidgets('320px width — no overflow', (tester) async {
+      await tester.binding.setSurfaceSize(const Size(320, 844));
+      await tester.pumpWidget(
+        _wrap(_incomingRequestRow(onAccept: () {}, onDecline: () {})),
+      );
+      expect(tester.takeException(), isNull);
+      await tester.binding.setSurfaceSize(null);
+    });
+
+    testWidgets('320px width with 1.6x text — no overflow', (tester) async {
+      await tester.binding.setSurfaceSize(const Size(320, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MediaQuery(
+            data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
+            child: Scaffold(
+              backgroundColor: AppColors.ivory,
+              body: _incomingRequestRow(onAccept: () {}, onDecline: () {}),
+            ),
+          ),
+        ),
+      );
+      expect(tester.takeException(), isNull);
+    });
+  });
 
   group('FriendsScreen outgoing request row', () {
     testWidgets('shows Cancel and fires the cancel callback', (tester) async {

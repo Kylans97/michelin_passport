@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_typography.dart';
+import 'package:michelin_passport/features/friends/widgets/friend_request_row.dart';
 import 'package:michelin_passport/features/friends/widgets/identity_row.dart';
 import 'package:michelin_passport/features/notifications/notifications_screen.dart'
     show claimQuestionMailtoUri;
@@ -44,17 +45,13 @@ Widget _friendRequestReceivedRow({
       padding: const EdgeInsets.only(top: 12, right: 4),
       child: _unreadDot(visible: !isRead),
     ),
+    // The real shared row (FriendRequestRow has no Supabase dependency).
     Expanded(
-      child: IdentityRow(
+      child: FriendRequestRow(
         label: 'Kylan',
         username: 'kylan',
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextButton(onPressed: onDecline, child: const Text('Decline')),
-            TextButton(onPressed: onAccept, child: const Text('Accept')),
-          ],
-        ),
+        onAccept: onAccept,
+        onDecline: onDecline,
       ),
     ),
   ],
@@ -236,6 +233,27 @@ void main() {
       await tester.tap(find.text('Decline'));
       expect(declined, isTrue);
       expect(accepted, isFalse);
+    });
+
+    // With the unread dot beside it, at the size that used to overflow.
+    testWidgets('320px with 1.6x text — no overflow', (tester) async {
+      await tester.binding.setSurfaceSize(const Size(320, 844));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MediaQuery(
+            data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
+            child: Scaffold(
+              backgroundColor: AppColors.warmWhite,
+              body: _friendRequestReceivedRow(
+                onAccept: () {},
+                onDecline: () {},
+              ),
+            ),
+          ),
+        ),
+      );
+      expect(tester.takeException(), isNull);
     });
 
     testWidgets('shows the unread dot when unread, hides it when read', (

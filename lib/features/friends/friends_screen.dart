@@ -11,6 +11,7 @@ import '../../data/repositories/friendship_repository.dart';
 import '../../models/friendship.dart';
 import 'add_friend_screen.dart';
 import 'friend_profile_screen.dart';
+import 'widgets/friend_request_row.dart';
 import 'widgets/identity_row.dart';
 
 /// Friends — accepted friends plus incoming/outgoing requests. Deliberately
@@ -23,8 +24,13 @@ import 'widgets/identity_row.dart';
 /// docs/Architecture/COMMUNITY_FRIENDS_UX.md for why "Friends" (not
 /// "Community") stays the visible label this step, and for the broader
 /// information-architecture direction this screen is one part of.
+///
+/// [openRequests] opens on the Requests tab instead of Friends — Profile
+/// passes it when its Friends row is showing a pending-request count, so
+/// tapping "1 request" lands on that request rather than the friends list.
 class FriendsScreen extends StatefulWidget {
-  const FriendsScreen({super.key});
+  final bool openRequests;
+  const FriendsScreen({super.key, this.openRequests = false});
 
   @override
   State<FriendsScreen> createState() => _FriendsScreenState();
@@ -34,6 +40,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
   late final _repo = FriendshipRepository(Supabase.instance.client);
 
   late Future<List<Friendship>> _friendsFuture;
+  late Future<List<FriendRequest>> _incomingFuture;
   late Future<List<FriendRequest>> _outgoingFuture;
 
   @override
@@ -45,6 +52,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
   void _load() {
     setState(() {
       _friendsFuture = _repo.getFriends();
+      _incomingFuture = _repo.getIncomingRequests();
       _outgoingFuture = _repo.getOutgoingRequests();
     });
   }
@@ -63,9 +71,27 @@ class _FriendsScreenState extends State<FriendsScreen> {
     );
   }
 
-  // Accept/decline for INCOMING requests moved to NotificationsScreen —
-  // see _RequestsTab's own doc comment for why this tab no longer shows
-  // that section at all.
+  // Same RPCs as NotificationsScreen's Accept/Decline. Either screen can
+  // answer a request; the RPC itself refuses one that's no longer pending.
+  Future<void> _acceptIncoming(FriendRequest request) async {
+    try {
+      await _repo.acceptRequest(request.friendshipId);
+      _load();
+    } catch (_) {
+      _showSnack('Could not accept. Please try again.', isError: true);
+      _load();
+    }
+  }
+
+  Future<void> _declineIncoming(FriendRequest request) async {
+    try {
+      await _repo.declineRequest(request.friendshipId);
+      _load();
+    } catch (_) {
+      _showSnack('Could not decline. Please try again.', isError: true);
+      _load();
+    }
+  }
 
   Future<void> _cancelOutgoing(FriendRequest request) async {
     try {
@@ -152,7 +178,8 @@ class _FriendsScreenState extends State<FriendsScreen> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.light,
       child: DefaultTabController(
-        length: 2,
+        length: 3,
+        initialIndex: widget.openRequests ? 1 : 0,
         child: Scaffold(
           backgroundColor: AppColors.deepGreen,
           body: Column(
@@ -208,6 +235,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
                         unselectedLabelStyle: CsTypography.bodyMedium,
                         tabs: const [
                           Tab(text: 'Friends'),
+                          Tab(text: 'Requests'),
                           Tab(text: 'Sent'),
                         ],
                       ),
@@ -227,6 +255,12 @@ class _FriendsScreenState extends State<FriendsScreen> {
                           onTapFriend: (f) => _openProfile(f.friendId),
                           onRemove: _removeFriend,
                           onFindFriends: _openAddFriend,
+                        ),
+                        _IncomingTab(
+                          future: _incomingFuture,
+                          onAccept: _acceptIncoming,
+                          onDecline: _declineIncoming,
+                          onTapRequester: (r) => _openProfile(r.otherUserId),
                         ),
                         _RequestsTab(
                           outgoingFuture: _outgoingFuture,
@@ -367,13 +401,87 @@ class _FriendsTab extends StatelessWidget {
   );
 }
 
-// Incoming requests moved to NotificationsScreen (Notifications V1) —
-// they now arrive as friend_request_received notifications there, with
-// the same working Accept/Decline. This tab kept its name ("Sent" is
-// really just this tab's own content now) but dropped the INCOMING
-// section entirely rather than showing it in two places at once. Nothing
-// else currently surfaces "your request is still pending", so the
-// outgoing/SENT section stays exactly as it was.
+// Incoming requests, back on this screen as their own tab (2026-10-28)
+// after Notifications V1 had moved them out entirely. Notifications keeps
+// its own Accept/Decline row too: the move left Profile's "1 request" —
+// which counts get_incoming_friend_requests — opening a screen that
+// showed no incoming request at all, and Notifications marks everything
+// read on open, so a request left unanswered had no visible trace
+// anywhere after the first look. Reads get_incoming_friend_requests, the
+// same source as Profile's count, so the two can't disagree; this also
+// covers pending requests from before Notifications existed, which have
+// no notification row.
+class _IncomingTab extends StatelessWidget {
+  final Future<List<FriendRequest>> future;
+  final ValueChanged<FriendRequest> onAccept;
+  final ValueChanged<FriendRequest> onDecline;
+  final ValueChanged<FriendRequest> onTapRequester;
+
+  const _IncomingTab({
+    required this.future,
+    required this.onAccept,
+    required this.onDecline,
+    required this.onTapRequester,
+  });
+
+  @override
+  Widget build(BuildContext context) => ListView(
+    padding: const EdgeInsets.fromLTRB(
+      CsSpacing.pageHorizontal,
+      CsSpacing.md,
+      CsSpacing.pageHorizontal,
+      CsSpacing.section,
+    ),
+    children: [
+      FutureBuilder<List<FriendRequest>>(
+        future: future,
+        builder: (context, snap) {
+          if (snap.connectionState == ConnectionState.waiting) {
+            return const Padding(
+              padding: EdgeInsets.symmetric(vertical: CsSpacing.md),
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: AppColors.forestGreen,
+                  strokeWidth: 1.5,
+                ),
+              ),
+            );
+          }
+          if (snap.hasError) {
+            return Text(
+              'Could not load requests',
+              style: CsTypography.body.copyWith(color: AppColors.taupe),
+            );
+          }
+          final requests = snap.data ?? [];
+          if (requests.isEmpty) {
+            return Text(
+              'No requests waiting',
+              style: CsTypography.body.copyWith(color: AppColors.taupe),
+            );
+          }
+          return Column(
+            children: requests
+                .map(
+                  (r) => FriendRequestRow(
+                    label: r.label,
+                    username: r.username,
+                    avatarUrl: r.avatarUrl,
+                    onTap: () => onTapRequester(r),
+                    onAccept: () => onAccept(r),
+                    onDecline: () => onDecline(r),
+                  ),
+                )
+                .toList(),
+          );
+        },
+      ),
+    ],
+  );
+}
+
+// Outgoing requests only — the "Sent" tab. Nothing else surfaces "your
+// request is still pending".
 class _RequestsTab extends StatelessWidget {
   final Future<List<FriendRequest>> outgoingFuture;
   final ValueChanged<FriendRequest> onCancelOutgoing;

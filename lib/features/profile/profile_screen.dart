@@ -219,10 +219,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
     if (changed == true) _load();
   }
 
-  void _openFriends() async {
+  // [openRequests] when the row is showing "N requests", so the tap lands
+  // on the Requests tab rather than the friends list.
+  void _openFriends({bool openRequests = false}) async {
     await Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => const FriendsScreen()),
+      MaterialPageRoute(
+        builder: (_) => FriendsScreen(openRequests: openRequests),
+      ),
     );
     _load();
   }
@@ -359,7 +363,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       return _FriendsEntryRow(
                         friendCount: summary?.friendCount,
                         pendingCount: summary?.pendingCount,
-                        onTap: _openFriends,
+                        onTap: () => _openFriends(
+                          openRequests: (summary?.pendingCount ?? 0) > 0,
+                        ),
                       );
                     },
                   ),

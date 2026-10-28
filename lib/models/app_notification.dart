@@ -115,6 +115,14 @@ class AppNotification {
   final String? submissionVenueCity;
   final String? submissionReviewNote;
 
+  // The friendship's CURRENT status when subjectType == 'friendship'
+  // (20261012120000): 'pending'/'accepted'/'declined'/'blocked', or null
+  // once the friendship row is gone (cancelled by the sender, or
+  // removed). [hasFriendshipStatus] is false when the server predates
+  // that column — the only way to tell "no such column" from "row gone".
+  final String? friendshipStatus;
+  final bool hasFriendshipStatus;
+
   const AppNotification({
     required this.id,
     required this.type,
@@ -146,6 +154,8 @@ class AppNotification {
     this.submissionVenueName,
     this.submissionVenueCity,
     this.submissionReviewNote,
+    this.friendshipStatus,
+    this.hasFriendshipStatus = false,
   });
 
   factory AppNotification.fromRow(Map<String, dynamic> row) => AppNotification(
@@ -181,7 +191,16 @@ class AppNotification {
     submissionVenueName: row['submission_venue_name'] as String?,
     submissionVenueCity: row['submission_venue_city'] as String?,
     submissionReviewNote: row['submission_review_note'] as String?,
+    friendshipStatus: row['friendship_status'] as String?,
+    hasFriendshipStatus: row.containsKey('friendship_status'),
   );
+
+  /// Whether a friend_request_received row should still offer
+  /// Accept/Decline. Against a server that predates friendship_status it
+  /// keeps the old always-offer behaviour, so this build and that
+  /// migration can ship in either order.
+  bool get friendRequestIsPending =>
+      !hasFriendshipStatus || friendshipStatus == 'pending';
 
   /// True only for a still-`pending` invite whose [inviteExpiresAt] has
   /// passed — never a stored status, computed at read time (see

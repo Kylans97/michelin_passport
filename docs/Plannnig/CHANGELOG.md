@@ -160,6 +160,89 @@ The format follows Keep a Changelog.
   unknown, nothing in the repo inserts into `storage.objects`, and the
   bucket limits can't affect them either way. Would recur with any
   bucket or policy created in the dashboard rather than in a migration.
+- 2026-10-28 — An incoming friend request could be impossible to find.
+  Profile's Friends row counts `get_incoming_friend_requests` ("1
+  request") and opened the Friends screen, but Notifications V1 had
+  moved incoming requests off that screen entirely — its tabs were
+  Friends and Sent, and Sent lists only requests you sent. The request
+  lived only in Notifications, which marks everything read on open, so
+  after one look nothing pointed to it any more. Reported by the
+  developer's own account (request of 2026-10-08, its notification
+  present and already read). Incoming requests are back on Friends as a
+  Requests tab between Friends and Sent, with the same Accept/Decline
+  RPCs as Notifications (which keeps its own row), reading the same RPC
+  as Profile's count so the two can't disagree; Profile's row opens
+  straight onto Requests when it shows a count. Analyzer clean, full
+  suite passes (2,420), simulator build launches; not exercised signed
+  in, since the simulator build talks to production. Found alongside,
+  not fixed: 4 pending requests from 2026-09-23 have no notification at
+  all (the trigger arrived 2026-09-24 with no backfill) — the new tab
+  shows them, Notifications never will; an answered request's
+  notification keeps its Accept/Decline, and tapping it then fails, now
+  more reachable with two places to answer; and the Accept/Decline pair
+  overflows at 320px width combined with 1.6x text, on both screens.
+  Would recur whenever an action moves between screens while a count
+  elsewhere still points at the old one.
+- 2026-10-28 — Two of the gaps found alongside the entry above. **(1)** A
+  friend request's notification kept Accept/Decline after the request was
+  accepted, declined, cancelled or removed; tapping either made the RPC
+  raise "no longer available", which NotificationsScreen never caught, so
+  nothing visible happened. `20261012120000_add_friendship_status_to_
+  notifications.sql` recreates `get_notifications()` with one more
+  column, `friendship_status` (from the `friendships` join it already
+  had; NULL once the row is gone), the same pattern as `invite_status`.
+  The row now offers Accept/Decline only while pending, then "You
+  accepted"/"You declined", nothing for blocked or gone; `_accept`/
+  `_decline` catch the error, say so and reload (invites too).
+  `AppNotification` tells a missing column from a NULL value, so a server
+  without the column keeps the old always-offer behaviour and build and
+  migration can ship in either order; builds already out ignore the extra
+  column. **(2)** The 4 pending requests from 2026-09-23, sent before the
+  notification trigger existed, had no notification at all.
+  `20261013120000_backfill_pre_trigger_friend_request_notifications.sql`
+  inserts one for every pending friendship without one, dated with the
+  friendship's own `created_at` and unread; it matches 0 rows on a fresh
+  replay. Proven locally only: with production's situation recreated
+  (pending, accepted, declined, sender-cancelled, and two pre-trigger
+  requests in both directions), the backfill inserted exactly the two
+  missing notifications to the right recipients at their original dates,
+  re-running either migration changed nothing, `get_notifications()`
+  returned the right status per row as each user, only `authenticated`/
+  `service_role` hold EXECUTE (not anon or PUBLIC), and a fresh replay of
+  all 92 files gives an identical function definition and ACL. Analyzer
+  clean, full suite passes (2,424). Not exercised: the app against the
+  new function end to end, and the row's three states in the simulator.
+  **Applied to production 2026-10-28** with plain `supabase db push
+  --linked` (ledger 92/92). A read-only count just before still found
+  exactly 4 pending requests without a notification, all 2026-09-23.
+  Afterwards: 0 left; notifications went from 8 to 12, the 4 new ones
+  each dated with its friendship's own `created_at`, unread, addressed to
+  the request's recipient (3 distinct people); `get_notifications()`'s
+  definition hash and ACL identical to the fresh replay's, with no
+  EXECUTE for anon or PUBLIC. The app change ships with the next build;
+  until then, installed builds ignore the new column. The
+  320px-plus-1.6x overflow stays open. Would recur with
+  any trigger added to a table that already has rows it should have
+  fired for.
+- 2026-10-28 — The incoming friend request's Decline/Accept pair
+  overflowed by 75px at 320px width with 1.6x text, on both FriendsScreen
+  and NotificationsScreen. IdentityRow gives its trailing widget
+  unbounded width, so nothing ever made the pair give way. Both rows now
+  use one shared `FriendRequestRow`
+  (`lib/features/friends/widgets/friend_request_row.dart`): it measures
+  its own width, caps the actions at what's left after the avatar, gaps
+  and a 56px minimum for the name, and lets a `Wrap` stack Decline above
+  Accept, right-aligned, only when they don't fit (the `Wrap` then shrinks
+  to the wider button, so the name gets the space back). Thresholds
+  measured with the real Inter files google_fonts had cached in the
+  simulator, since tests render in a square-glyph font that makes
+  "Decline" 122px against 74px: no overflow at 320/375/390/402px across
+  1.0/1.3/1.6/2.0x; inline at 1.0x on every width (320px included, as
+  before), at 1.3–1.6x from 375px up, stacked otherwise. Tests now pump
+  the real row on both screens' suites, plus its own (stacking, 2.0x with
+  a long name, the name's minimum); full suite passes (2,431), analyzer
+  clean, simulator build installs. Not looked at signed in on a device.
+  Would recur with any IdentityRow trailing wider than one short label.
 
 ---
 
