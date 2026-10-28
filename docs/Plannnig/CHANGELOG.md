@@ -117,7 +117,20 @@ The format follows Keep a Changelog.
   - **Rollout order: migration first.** The new build selects the new
     columns by name, so against a database without them photos would
     fail to load; installed builds select their own lists and are
-    unaffected. **Not yet applied to production.**
+    unaffected.
+  - **Applied to production 2026-10-28** with plain `supabase db push
+    --linked` (ledger 93/93). A read-only snapshot before and after shows
+    the photo tables, submissions and both full views unchanged (5
+    restaurant, 0 hotel, 1 private chef photo, 6 submissions, 1,363
+    restaurants, 775 hotels); every existing photo is at 0.5/0.5/1, the
+    one cover is centred, and venues without a cover have null cover
+    framing. All 39 definitions and their ACLs (functions, views,
+    columns, checks) are identical to the fresh replay's;
+    `set_venue_photo_framing` is SECURITY DEFINER and executable by
+    `authenticated` only (not anon, not PUBLIC); `approve_venue_photo`
+    stays dashboard-only. `live_view_full_columns_test` now passes
+    against production, and the full suite is green (2,451). The app
+    change ships with the next build.
   - **Not covered:** the feature hasn't been seen signed in on a device
     (the simulator build talks to production); friend tiles fed by the
     friend RPCs (visits, wishlist, profile overview) still show covers
