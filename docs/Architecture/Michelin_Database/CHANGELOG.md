@@ -6,6 +6,41 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — Catalogue data applied: MICHELIN France 2026 and Peru (QA-220–QA-225)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, following `supabase/data/enrichment/APPLY_FR_PE_2026.md` |
+| Migrations | `20261019120000_add_fr_2026_star_cities` (82 FR cities), `20261019130000_add_pe_key_hotel_cities` (5 PE cities). Ledger 100 → 102, local and remote in agreement |
+| Data files | Three prepared files, each one transaction with its own guards, run in the guide's order; none aborted |
+
+Before anything was written, every pre-write check in the three files was rerun read-only against production with the files' own data, and all passed (recorded in the apply guide). Each file's effect was then measured as before/after counts against production.
+
+**Cities.** FR 329 → 411, PE 2 → 7. Peru's new rows follow MICHELIN's destinations, so "Arequipa" and "City of Arequipa" are separate cities.
+
+**MICHELIN France 2026** (`michelin_fr_stars_2026/prepared_fr_stars_2026.sql`). Source: MICHELIN's 2026 full list (16 March 2026) and the live listing, matched one-to-one.
+
+- No relabel: the August import already held the 2026 edition.
+- **QA-220:** 14 star counts corrected in place, each old value asserted first. Spot check: Maison Lameloise, Le Coquillage and L'Oustau de Baumanière are now three-star; Le Suquet is one-star.
+- **QA-223:** 410 `michelin_url` values set to MICHELIN's canonical page.
+- 173 restaurants added, `rest_1405`–`rest_1577`, each with a current 2026 star row; 148 of them with a confirmed phone.
+- The file's closing checks passed, and were re-checked afterwards: exactly **652** starred, **30 / 80 / 542**. Every starred FR restaurant has exactly one current star row agreeing with `michelin_stars`, none lacks a city, and all 652 appear in `restaurants_full`.
+- Not changed, logged: **QA-221** (13 withdrawn since March; the six in production keep their 2026 stars), **QA-222** (`rest_0972` rename waits for a decision), **QA-224** (Monaco out of scope).
+
+**France phones** (`prepared_fr_phone_backfill.sql`): 385 existing restaurants, filling only empty values. FR restaurants with a phone: 151 → 536 (148 of the 151 came from the stars file). **QA-225:** numbers left empty on purpose, with the reason per row.
+
+**Peru** (`michelin_pe_2026/prepared_pe_keys_and_w50b.sql`):
+
+- 14 MICHELIN Key hotels added, `hotel_804`–`hotel_817`. Peru now has 15 Key hotels: **1 three-Key, 4 two-Key, 10 one-Key**, each with exactly one current Key row (guide year 2026) agreeing with the hotel row.
+- Palacio Nazarenas (`hotel_745`): its missing Key row added, and `michelin_url` moved to MICHELIN's current page.
+- Central added as `rest_1578` (`hall_of_fame`), with 11 World's 50 Best rows: ten ranked years (2013–2023, no 2020 list) and its 2024 hall-of-fame row. Hall-of-fame rows: 6 → 7.
+- Mil (`rest_1381`): its 2024 rank added (No. 73).
+- Phones: two new hotels (Hotel B, explora Valle Sagrado). The rest stay empty under the confirmed-on-own-site rule; the three Belmond hotels wait for a decision on using their own local line.
+
+Not done here: Google Place IDs for the 173 French restaurants and 14 Peruvian hotels (no Places API key), and the `qa_issues.csv` statuses of QA-220–QA-225, which are unchanged.
+
+---
+
 # 2026-10-28 — Country timezones applied (QA-226)
 
 | | |

@@ -1,8 +1,9 @@
 # Applying France 2026 and Peru to production
 
 Branch `data/fr-pe-2026`, which merges the France preparation
-(`claude/michelin-fr-2026`, `27c715b`) with the Peru preparation. **Nothing in
-it has been applied.** Each prepared SQL file is one transaction with its own
+(`claude/michelin-fr-2026`, `27c715b`) with the Peru preparation. **Applied
+to production on 2026-10-28**, in the order below; results in the
+Michelin_Database CHANGELOG. Each prepared SQL file is one transaction with its own
 checks: on any problem it aborts and changes nothing.
 
 ## 0. Checked against production first (read-only, 2026-10-28)

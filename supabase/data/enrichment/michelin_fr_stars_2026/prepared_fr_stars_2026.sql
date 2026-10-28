@@ -1,4 +1,4 @@
--- PREPARED -- NOT APPLIED.
+-- APPLIED to production 2026-10-28 (APPLY_FR_PE_2026.md).
 --
 -- MICHELIN Guide France 2026 (announced 16 March 2026): complete and correct
 -- the French catalogue against MICHELIN's own selection. Written 2026-10-28.

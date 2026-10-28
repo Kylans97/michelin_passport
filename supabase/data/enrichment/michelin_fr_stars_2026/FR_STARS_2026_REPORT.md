@@ -1,6 +1,6 @@
 # MICHELIN Guide France 2026: completion, corrections and phones (2026-10-28)
 
-Status: **PREPARED, NOT APPLIED.** Nothing in this folder has touched production.
+Status: **APPLIED 2026-10-28.** See the Michelin_Database CHANGELOG and `../APPLY_FR_PE_2026.md`.
 
 | File | What it does |
 |---|---|

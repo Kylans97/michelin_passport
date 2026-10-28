@@ -1,7 +1,7 @@
 # Peru: MICHELIN Keys and World's 50 Best (2026-10-28)
 
-Status: **PREPARED, NOT APPLIED.** Nothing in this folder has touched
-production. Committed on `data/fr-pe-2026`; apply with `../APPLY_FR_PE_2026.md`.
+Status: **APPLIED 2026-10-28.** See the Michelin_Database CHANGELOG.
+Applied via `../APPLY_FR_PE_2026.md`.
 
 | File | What it does |
 |---|---|

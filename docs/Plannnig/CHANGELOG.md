@@ -10,6 +10,22 @@ The format follows Keep a Changelog.
 
 ### Added
 
+- 2026-10-28 — MICHELIN France 2026 and Peru catalogue data, with two
+  migrations. Data details and QA ids are in the Michelin_Database
+  CHANGELOG.
+  - **Migrations:** `20261019120000_add_fr_2026_star_cities` (82 FR
+    cities) and `20261019130000_add_pe_key_hotel_cities` (5 PE cities),
+    only `public.cities` rows. Ledger 100 → 102.
+  - **Data files** (`supabase/data/enrichment/APPLY_FR_PE_2026.md`):
+    - France: 14 star corrections, 410 MICHELIN URLs, 173 new starred
+      restaurants and 533 phones. France is now 652 starred: 30 / 80 / 542.
+    - Peru: 14 Key hotels (Peru now 15: 1 / 4 / 10), Palacio Nazarenas'
+      Key row, and Central and Mil's World's 50 Best history.
+  - **Checked before and after:** every pre-write check was rerun read-only
+    against production with the files' own data first; afterwards the
+    counts, award rows and `_full` views were verified on production.
+  - **Applied 2026-10-28.** No app code changed.
+
 - 2026-10-28 — Venue events, phase 3: the app. It reads only the
   `20261018130000` RPCs; none of it works until that migration is
   applied.

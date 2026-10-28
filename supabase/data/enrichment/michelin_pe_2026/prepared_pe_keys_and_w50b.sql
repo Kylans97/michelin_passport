@@ -1,4 +1,4 @@
--- PREPARED -- NOT APPLIED.
+-- APPLIED to production 2026-10-28 (APPLY_FR_PE_2026.md).
 --
 -- Peru: MICHELIN Keys and World's 50 Best, written 2026-10-28.
 --

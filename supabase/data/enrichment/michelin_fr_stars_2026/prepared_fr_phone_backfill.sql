@@ -1,4 +1,4 @@
--- PREPARED -- NOT APPLIED.
+-- APPLIED to production 2026-10-28 (APPLY_FR_PE_2026.md).
 --
 -- Phone numbers for MICHELIN-starred restaurants in France already in
 -- production, written 2026-10-28. Input: production export of every FR
