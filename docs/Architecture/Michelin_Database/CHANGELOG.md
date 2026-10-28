@@ -6,6 +6,95 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — World's 50 Best history, batch 2: 13 Top 50 rank-years, 2017–2019 and 2022 (QA-250)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, from branch `data/w50b-history-gaps` |
+| Data file | `worlds_50_best_history_batch_2/apply_top_50_rank_years.sql`: one transaction; the identity, free-slot, free-year and exact-count guards all passed |
+| Migrations | none |
+
+**Source.** The archived `theworlds50best.com/previous-list` page holds
+every year from 2002 to 2019 in one timeline. Each year's block was
+accepted only by its heading, its known No.1, and an exact match against
+every row we already held for that year. 2016 is excluded: the official
+block is mis-numbered (two No.22s, two No.23s, no No.18 or No.37).
+
+**Proof per row.** Year-specific archived entry pages for 2017–2019
+(`/The-List-<year>/…`) state the rank, and identity comes from our phone,
+own website or street address on that page. Le Clarence 2022 matched by
+address, checked by hand: "31 Av." vs our "31 Avenue".
+
+**Rows added:**
+
+- Mirazur 2017 No.4, 2018 No.3, 2019 No.1.
+- The Clove Club 2017 No.26, 2018 No.33, 2019 No.27.
+- Alléno Paris au Pavillon Ledoyen 2017 No.31, 2018 No.29, 2019 No.25.
+- Nerua 2019 No.32, A Casa do Porco 2019 No.39 and Leo 2019 No.49.
+- Le Clarence 2022 No.28.
+
+**Before.** A read-only dry run: 13/13 codes carried the expected name,
+and no place or restaurant-year was taken. The table held 872 rows.
+
+**After.** 885 rows (+13), and all 13 are present as `top_50`. Current
+ranks are unchanged.
+
+**Open, not changed:**
+
+- **Name-only matches:** 61 older Top 50 places
+  (`top_50_name_city_review.csv`) and 53 places at 51–100 for 2021–2024
+  (QA-249) match only by name and city. They wait for a rule decision.
+- **Not covered:** 51–100 for 2013–2019.
+- **QA-251:** Mirazur (No.1 in 2019) has no Hall of Fame row and reads
+  `is_hall_of_fame = false`.
+
+---
+
+# 2026-10-28 — World's 50 Best history: 29 missing Top 50 rank-years, 2021–2024 (QA-246)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, from branch `data/w50b-history-gaps` |
+| Data file | `worlds_50_best_history_2021_2024/apply_top_50_rank_years.sql`: one transaction; the identity, free-slot, free-year and exact-count guards all passed |
+| Migrations | none |
+
+**Finding.** `worlds_50_best` was accurate but incomplete. For 2021–2024
+every rank we held matched the official list, but only 56/60/68/65 of the
+100 places were held. Restaurants often had only their latest appearance.
+
+**Source.** Archived official lists (`theworlds50best.com/list/1-50`,
+Wayback snapshots from 2021-11-09, 2022-09-04, 2023-09-05 and
+2024-10-02). Each snapshot's No.1 fixes its year. The live the50.com
+previous-list pages ignore the year, so they couldn't be used.
+
+**Proof per row.** The official entry page states that exact year and
+rank. Identity comes from that page's phone, own website or street
+address, or, for 3 rows, from the restaurant's own verified the50.com
+profile stating the same rank-year. Never from the name.
+
+**Before.** A read-only dry run:
+
+- 29/29 codes carried the expected name.
+- No (year, rank) place and no restaurant-year was already taken.
+- The table held 843 rows.
+
+**After.** Checked directly:
+
+- **Rows:** 872 (+29), and all 29 are present as `top_50`.
+- **Places held** for 2021–2024: 63 / 69 / 75 / 71.
+- **Current ranks unchanged:** `restaurants_full.worlds_50_best_rank` still
+  reads the 2025 list. A Casa do Porco now reads 2021 No.17, 2022 No.7,
+  2023 No.12, 2024 No.27 and 2025 No.83.
+
+**Open, not changed:**
+
+- **Le Clarence 2022:** its entry page shows none of our contact details.
+- **QA-249:** 55 places at 51–100 can be matched only by name.
+- **QA-250:** every year other than 2021–2024 is unchecked.
+- **QA-247:** resolved, no change (Le Calandre 2023 is No.41, as stored).
+
+---
+
 # 2026-10-28 — Guide source links applied: World's 50 Best URLs, Gault&Millau URLs and toques (QA-244–QA-248)
 
 | | |
