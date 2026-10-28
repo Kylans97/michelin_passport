@@ -196,9 +196,16 @@ The format follows Keep a Changelog.
   all 92 files gives an identical function definition and ACL. Analyzer
   clean, full suite passes (2,424). Not exercised: the app against the
   new function end to end, and the row's three states in the simulator.
-  **Not yet applied to production**; before applying, re-run the
-  read-only count of pending friendships with no notification (4 on
-  2026-10-28). The 320px-plus-1.6x overflow stays open. Would recur with
+  **Applied to production 2026-10-28** with plain `supabase db push
+  --linked` (ledger 92/92). A read-only count just before still found
+  exactly 4 pending requests without a notification, all 2026-09-23.
+  Afterwards: 0 left; notifications went from 8 to 12, the 4 new ones
+  each dated with its friendship's own `created_at`, unread, addressed to
+  the request's recipient (3 distinct people); `get_notifications()`'s
+  definition hash and ACL identical to the fresh replay's, with no
+  EXECUTE for anon or PUBLIC. The app change ships with the next build;
+  until then, installed builds ignore the new column. The
+  320px-plus-1.6x overflow stays open. Would recur with
   any trigger added to a table that already has rows it should have
   fired for.
 
