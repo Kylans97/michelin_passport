@@ -5,6 +5,7 @@
 import { assertEquals, assertStringIncludes } from 'jsr:@std/assert@1';
 import {
   type EmailMessage,
+  formatEventWhen,
   handleRequest,
   type NotifySubmissionAdminClient,
   type SubmissionPayload,
@@ -36,6 +37,33 @@ const VALID_PHOTO_PAYLOAD: SubmissionPayload = {
     submitted_at: '2026-09-29T13:00:00Z',
     storage_path: 'venue-photo-submissions/chef-1/abc123.jpg',
     replaces_photo_id: null,
+  },
+};
+
+// An events row as notify_admin_of_venue_event sends it: the events row
+// (to_jsonb) plus the host venue, submitter in submitted_by.
+const VALID_EVENT_PAYLOAD: SubmissionPayload = {
+  submission_type: 'events',
+  row: {
+    id: 'event-1',
+    submitted_by: 'user-1',
+    venue_type: 'restaurant',
+    venue_id: 'restaurant-1',
+    submitted_at: '2026-10-28T13:00:00+00:00',
+    reviewed_at: null,
+    name: 'Four Hands Dinner',
+    description: 'Two kitchens, one evening.\nSix courses.',
+    event_type: 'dinner',
+    start_date: '2026-11-14',
+    end_date: '2026-11-14',
+    start_time: '19:30:00',
+    end_time: '23:00:00',
+    timezone: 'Europe/Amsterdam',
+    venue_name: 'Flore',
+    address: 'Amstel 1',
+    city: 'Amsterdam',
+    country_code: 'NL',
+    ticket_url: 'https://flore.example/tickets',
   },
 };
 
@@ -397,4 +425,120 @@ Deno.test('a Resend failure is reported as a 502 and never thrown as an unhandle
   const { sendEmail } = fakeSendEmail({ ok: false, error: 'Resend responded 500' });
   const res = await handleRequest(req({ body: VALID_ABOUT_PAYLOAD }), admin, sendEmail, SECRET);
   assertEquals(res.status, 502);
+});
+
+// ---------- events (venue events phase 3) ----------
+
+Deno.test('an event submission sends one email with its name, when, where and description', async () => {
+  const { admin, fromCalls, getUserByIdCalls } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(req({ body: VALID_EVENT_PAYLOAD }), admin, sendEmail, SECRET);
+  assertEquals(res.status, 200);
+  assertEquals(calls.length, 1);
+  const email = calls[0];
+  assertEquals(email.to, 'claimedvenues@mantelier.app');
+  assertEquals(email.subject, 'New event submitted: Four Hands Dinner — Flore Amsterdam (FLR-NL-001)');
+  assertStringIncludes(email.text, 'When: Sat, 14 Nov 2026, 19:30–23:00 (Europe/Amsterdam)');
+  assertStringIncludes(email.text, 'Where: Flore, Amstel 1, Amsterdam, NL');
+  assertStringIncludes(email.text, 'Tickets: https://flore.example/tickets');
+  assertStringIncludes(email.text, 'Two kitchens, one evening.\nSix courses.');
+  assertStringIncludes(email.html, 'Four Hands Dinner');
+  // The host venue is looked up like any other submission; the submitter
+  // comes from submitted_by.
+  assertEquals(fromCalls.includes('restaurants_full'), true);
+  assertEquals(getUserByIdCalls, ['user-1']);
+});
+
+Deno.test('an event resubmitted after a rejection says so', async () => {
+  const { admin } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  const body = {
+    ...VALID_EVENT_PAYLOAD,
+    row: { ...VALID_EVENT_PAYLOAD.row, reviewed_at: '2026-10-27T10:00:00+00:00' },
+  };
+  await handleRequest(req({ body }), admin, sendEmail, SECRET);
+  assertStringIncludes(calls[0].subject, 'Event resubmitted: Four Hands Dinner');
+  assertStringIncludes(calls[0].text, 'reviewed before and has been edited and resubmitted');
+});
+
+Deno.test('the event dashboard link points at public.events and the event id', async () => {
+  const { admin } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  await handleRequest(req({ body: VALID_EVENT_PAYLOAD }), admin, sendEmail, SECRET);
+  const decoded = decodeURIComponent(calls[0].text);
+  assertStringIncludes(decoded, 'from public.events where');
+  assertStringIncludes(decoded, "id = 'event-1'");
+});
+
+Deno.test('an event without submitted_by, or without its name/date/timezone, is rejected with 400', async () => {
+  const { admin } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  for (
+    const row of [
+      { ...VALID_EVENT_PAYLOAD.row, submitted_by: null },
+      { ...VALID_EVENT_PAYLOAD.row, name: undefined },
+      { ...VALID_EVENT_PAYLOAD.row, start_date: undefined },
+      { ...VALID_EVENT_PAYLOAD.row, timezone: undefined },
+      { ...VALID_EVENT_PAYLOAD.row, venue_type: undefined },
+    ]
+  ) {
+    const res = await handleRequest(
+      req({ body: { submission_type: 'events', row } }),
+      admin,
+      sendEmail,
+      SECRET,
+    );
+    assertEquals(res.status, 400);
+  }
+  assertEquals(calls.length, 0);
+});
+
+Deno.test('an event still needs the webhook secret', async () => {
+  const { admin, fromCalls } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(
+    req({ body: VALID_EVENT_PAYLOAD, secret: null }),
+    admin,
+    sendEmail,
+    SECRET,
+  );
+  assertEquals(res.status, 401);
+  assertEquals(fromCalls.length, 0);
+  assertEquals(calls.length, 0);
+});
+
+// The time model: show exactly what the venue gave, never fill in a time.
+const whenRow = (over: Record<string, unknown>) =>
+  ({ ...VALID_EVENT_PAYLOAD.row, ...over }) as SubmissionPayload['row'];
+
+Deno.test('formatEventWhen: a date-only event shows no time at all', () => {
+  const when = formatEventWhen(whenRow({ start_time: null, end_time: null }));
+  assertEquals(when, 'Sat, 14 Nov 2026 (no time given)');
+});
+
+Deno.test('formatEventWhen: a known start with an unknown end says "from", not an end time', () => {
+  assertEquals(
+    formatEventWhen(whenRow({ end_time: null })),
+    'Sat, 14 Nov 2026, from 19:30 (Europe/Amsterdam)',
+  );
+});
+
+Deno.test('formatEventWhen: a multi-day event shows both dates, with times only where known', () => {
+  assertEquals(
+    formatEventWhen(whenRow({ end_date: '2026-11-16', start_time: null, end_time: null })),
+    'Sat, 14 Nov 2026 – Mon, 16 Nov 2026 (no time given)',
+  );
+  assertEquals(
+    formatEventWhen(whenRow({ end_date: '2026-11-15', start_time: '22:00:00', end_time: '02:00:00' })),
+    'Sat, 14 Nov 2026, 22:00 – Sun, 15 Nov 2026, 02:00 (Europe/Amsterdam)',
+  );
+});
+
+Deno.test('formatEventWhen: the calendar date is never shifted by a timezone', () => {
+  // An Auckland event on the 14th stays on the 14th, whatever the server's
+  // own clock or the event's offset from UTC.
+  assertEquals(
+    formatEventWhen(whenRow({ timezone: 'Pacific/Auckland', start_time: null, end_time: null })),
+    'Sat, 14 Nov 2026 (no time given)',
+  );
 });

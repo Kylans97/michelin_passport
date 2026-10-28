@@ -5,6 +5,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../data/repositories/review_repository.dart';
 import '../../models/review_item.dart';
+import 'review_event_screen.dart';
 import 'review_item_screen.dart';
 
 /// Everything waiting for an admin, grouped by kind and oldest first —
@@ -31,7 +32,9 @@ class _ReviewQueueScreenState extends State<ReviewQueueScreen> {
 
   Future<void> _reload() async {
     final next = _repo.loadQueue();
-    setState(() => _future = next);
+    setState(() {
+      _future = next;
+    });
     await next;
   }
 
@@ -39,7 +42,9 @@ class _ReviewQueueScreenState extends State<ReviewQueueScreen> {
     final decided = await Navigator.push<bool>(
       context,
       MaterialPageRoute(
-        builder: (_) => ReviewItemScreen(item: item, repository: _repo),
+        builder: (_) => item.kind.isEvent
+            ? ReviewEventScreen(item: item, repository: _repo)
+            : ReviewItemScreen(item: item, repository: _repo),
       ),
     );
     if (decided == true && mounted) _reload();
@@ -99,7 +104,7 @@ class _ReviewQueueScreenState extends State<ReviewQueueScreen> {
                         bottom: CsSpacing.sm,
                       ),
                       child: Text(
-                        '${kind.label.toUpperCase()}S · '
+                        '${kind.heading} · '
                         '${items.where((i) => i.kind == kind).length}',
                         style: CsTypography.eyebrow.copyWith(
                           color: AppColors.taupe,
@@ -149,14 +154,18 @@ class _QueueRow extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    where,
+                    item.kind.isEvent ? (item.eventName ?? 'Untitled event') : where,
                     style: CsTypography.bodyMedium.copyWith(
                       color: AppColors.forestGreen,
                     ),
                   ),
                   const SizedBox(height: 2),
                   Text(
-                    '${item.submitterLabel} · ${_ago(item.submittedAt)}',
+                    [
+                      if (item.kind.isEvent) where,
+                      item.submitterLabel,
+                      _ago(item.submittedAt),
+                    ].join(' · '),
                     style: CsTypography.metadata.copyWith(
                       color: AppColors.taupe,
                     ),

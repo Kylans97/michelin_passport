@@ -6,8 +6,11 @@
 -- first two entries are Tacite and Petit Péché, Amsterdam, prepared in
 -- supabase/data/enrichment/editorial_selection/.
 --
--- Written 2026-10-28. Named after the highest existing migration
--- (20261017120000), not after a date.
+-- Written 2026-10-28 as 20261017130000; renumbered the same day to
+-- 20261020120000, after the highest migration on main (20261019130000),
+-- because migrations applied to production since then sort above the old
+-- number. Never applied under either name. The number is sort order, not
+-- a date.
 --
 -- PREPARED — NOT APPLIED. Do not push until reviewed.
 --

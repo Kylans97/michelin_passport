@@ -200,7 +200,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
         builder: (_) => ReviewQueueScreen(repository: _reviewRepo),
       ),
     );
-    if (mounted) setState(() => _reviewCountFuture = _loadReviewCount());
+    if (mounted) {
+      setState(() {
+        _reviewCountFuture = _loadReviewCount();
+      });
+    }
   }
 
   // Same external-browser pattern RestaurantDetailScreen/HotelDetailScreen

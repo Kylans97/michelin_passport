@@ -2,7 +2,7 @@
 -- editorial Selection. Values from candidates.csv in this folder.
 --
 -- PREPARED — NOT APPLIED. Written 2026-10-28. Run only after:
---   1. 20261017130000_add_editorial_selection.sql is applied;
+--   1. 20261020120000_add_editorial_selection.sql is applied;
 --   2. candidates.csv is reviewed (Petit Péché's spelling and seasonal
 --      status especially);
 --   3. the Google Place IDs are found and verified (find-place-id), and

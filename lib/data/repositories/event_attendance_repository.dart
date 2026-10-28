@@ -1,3 +1,4 @@
+import 'events_repository.dart' show publishedEventsOnly;
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/utils/event_time.dart';
 import '../../models/event.dart';
@@ -221,7 +222,11 @@ class EventAttendanceRepository {
     ];
     if (eventIds.isEmpty) return [];
 
-    final rows = await _client.from('events').select().inFilter('id', eventIds);
+    final rows = await _client
+        .from('events')
+        .select()
+        .eq('moderation_status', publishedEventsOnly)
+        .inFilter('id', eventIds);
     final now = DateTime.now().toUtc();
     final events =
         [
@@ -274,7 +279,11 @@ class EventAttendanceRepository {
     ];
     if (eventIds.isEmpty) return [];
 
-    final rows = await _client.from('events').select().inFilter('id', eventIds);
+    final rows = await _client
+        .from('events')
+        .select()
+        .eq('moderation_status', publishedEventsOnly)
+        .inFilter('id', eventIds);
     final now = DateTime.now().toUtc();
     return [
           for (final row in rows as List)

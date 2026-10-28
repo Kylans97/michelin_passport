@@ -164,7 +164,7 @@ At launch seven rows carry NULL: six in Peru, Chile and Colombia, where MICHELIN
 1. it holds at least one MICHELIN star;
 2. it appears on the current World's 50 Best list — the full 1–100 ranking, the extended 51–100 included (decided 2026-10-28);
 3. it is a member of the World's 50 Best **Best of the Best** hall of fame;
-4. it is in our own editorial **Selection** (`editorial_selections`, shown in the app as "Mantelier Selection") — added by decision of the product owner on 2026-10-28, migration `20261017130000_add_editorial_selection.sql`.
+4. it is in our own editorial **Selection** (`editorial_selections`, shown in the app as "Mantelier Selection") — added by decision of the product owner on 2026-10-28, migration `20261020120000_add_editorial_selection.sql`.
 
 The third condition is deliberately narrow. It admits only restaurants that have been ranked No.1, currently eleven, growing by one a year — not every restaurant that has ever appeared in the top 50, which would admit several hundred. Hall of fame members are ineligible for the annual ranking by construction, so without this clause the most celebrated restaurants in the list's history would be the ones it excluded.
 

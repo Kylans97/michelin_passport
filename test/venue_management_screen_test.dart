@@ -1,4 +1,6 @@
-// Covers VenueManagementScreen via its own DI seam (aboutRepo), mirroring
+// Covers a venue's management screens — the landing page
+// (VenueManagementScreen) and its Profile, Photos and Events screens —
+// via their DI seams, mirroring
 // the exact fake-repository-over-a-dummy-SupabaseClient convention
 // claim_venue_flow_test.dart/my_venues_screen_test.dart already
 // established for this feature — the screen never touches
@@ -9,15 +11,23 @@ import 'package:flutter_dotenv/flutter_dotenv.dart' as dotenv_pkg;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:michelin_passport/data/repositories/venue_events_repository.dart';
 import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_about_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_photo_submission_repository.dart';
+import 'package:michelin_passport/core/widgets/framed_image.dart';
 import 'package:michelin_passport/features/profile/adjust_photo_framing_screen.dart';
 import 'package:michelin_passport/features/profile/card_photo_screen.dart';
+import 'package:michelin_passport/features/profile/venue_events_screen.dart';
 import 'package:michelin_passport/features/profile/venue_management_screen.dart';
+import 'package:michelin_passport/features/profile/venue_photos_screen.dart';
+import 'package:michelin_passport/features/profile/venue_profile_screen.dart';
 import 'package:michelin_passport/features/restaurants/restaurant_detail_screen.dart';
+import 'package:michelin_passport/models/event.dart';
+import 'package:michelin_passport/models/venue_event.dart';
 import 'package:michelin_passport/models/managed_venue.dart';
 import 'package:michelin_passport/models/private_chef.dart';
+import 'package:michelin_passport/models/photo_framing.dart';
 import 'package:michelin_passport/models/published_venue_photo.dart';
 import 'package:michelin_passport/models/restaurant.dart';
 import 'package:michelin_passport/models/venue_about_submission.dart';
@@ -135,18 +145,96 @@ class _FakeRestaurantRepository extends RestaurantRepository {
   }
 }
 
+VenueAboutSubmission _submission(VenueAboutSubmissionStatus status) => VenueAboutSubmission(
+  id: 's1',
+  aboutText: 'Draft text',
+  status: status,
+  submittedAt: DateTime(2026, 9, 1),
+);
+
+// A month from today, so "upcoming" never goes stale.
+final _inAMonth = () {
+  final d = DateTime.now().add(const Duration(days: 30));
+  return DateTime.utc(d.year, d.month, d.day);
+}();
+
+Event _event(String id, {String name = 'Test Event'}) => Event(
+  id: id,
+  name: name,
+  startDate: _inAMonth,
+  endDate: _inAMonth,
+  timezone: 'Europe/Amsterdam',
+  countryCode: 'NL',
+  eventType: EventType.dinner,
+  admissionType: EventAdmissionType.unknown,
+  createdAt: DateTime.utc(2026, 1, 1),
+);
+
+class _FakeEventsRepository extends VenueEventsRepository {
+  _FakeEventsRepository({List<Event> events = const [], List<VenueEvent>? venueEvents, this.error})
+    : venueEvents = venueEvents ?? [for (final e in events) VenueEvent(event: e, status: VenueEventStatus.live)],
+      super(_dummyClient());
+
+  final List<VenueEvent> venueEvents;
+  final Object? error;
+  final loadedFor = <String>[];
+
+  @override
+  Future<List<VenueEvent>> loadVenueEvents(ManagedVenue venue) async {
+    if (error != null) throw error!;
+    loadedFor.add('${venue.venueTypeWireValue}:${venue.id}');
+    return venueEvents;
+  }
+}
+
+// The about text: VenueProfileScreen.
 Future<void> _pump(
   WidgetTester tester,
   VenueAboutRepository repo, {
+  ManagedVenue? venue,
+}) async {
+  await tester.pumpWidget(
+    MaterialApp(home: VenueProfileScreen(venue: venue ?? _venue(), aboutRepo: repo)),
+  );
+  await tester.pumpAndSettle();
+}
+
+// Photos: VenuePhotosScreen. Same signature as _pump so the moved tests
+// read unchanged; the about repository is unused here.
+Future<void> _pumpPhotos(
+  WidgetTester tester,
+  VenueAboutRepository _, {
   ManagedVenue? venue,
   VenuePhotoSubmissionRepository? photoRepo,
 }) async {
   await tester.pumpWidget(
     MaterialApp(
+      home: VenuePhotosScreen(
+        venue: venue ?? _venue(),
+        photoRepo: photoRepo ?? _FakeVenuePhotoSubmissionRepository(),
+      ),
+    ),
+  );
+  await tester.pumpAndSettle();
+}
+
+// The landing page: VenueManagementScreen.
+Future<void> _pumpLanding(
+  WidgetTester tester,
+  VenueAboutRepository repo, {
+  ManagedVenue? venue,
+  VenuePhotoSubmissionRepository? photoRepo,
+  VenueEventsRepository? eventsRepo,
+  List<NavigatorObserver> observers = const [],
+}) async {
+  await tester.pumpWidget(
+    MaterialApp(
+      navigatorObservers: observers,
       home: VenueManagementScreen(
         venue: venue ?? _venue(),
         aboutRepo: repo,
         photoRepo: photoRepo ?? _FakeVenuePhotoSubmissionRepository(),
+        eventsRepo: eventsRepo ?? _FakeEventsRepository(),
       ),
     ),
   );
@@ -173,15 +261,14 @@ void main() {
     );
   });
 
-  group('VenueManagementScreen — loading/error', () {
+  group('VenueProfileScreen — loading/error', () {
     testWidgets('shows a loading spinner before the future resolves', (tester) async {
       final repo = _FakeVenueAboutRepository();
       await tester.pumpWidget(
         MaterialApp(
-          home: VenueManagementScreen(
+          home: VenueProfileScreen(
             venue: _venue(),
             aboutRepo: repo,
-            photoRepo: _FakeVenuePhotoSubmissionRepository(),
           ),
         ),
       );
@@ -195,7 +282,7 @@ void main() {
     });
   });
 
-  group('VenueManagementScreen — current text', () {
+  group('VenueProfileScreen — current text', () {
     testWidgets('shows the current approved text when one exists', (tester) async {
       await _pump(tester, _FakeVenueAboutRepository(currentText: 'A quiet corner of Amsterdam.'));
       expect(find.text('A quiet corner of Amsterdam.'), findsWidgets);
@@ -213,7 +300,7 @@ void main() {
     });
   });
 
-  group('VenueManagementScreen — pending/rejected status', () {
+  group('VenueProfileScreen — pending/rejected status', () {
     testWidgets('shows a pending banner when the latest submission is pending', (tester) async {
       await _pump(
         tester,
@@ -310,7 +397,7 @@ void main() {
     });
   });
 
-  group('VenueManagementScreen — review is explained before writing', () {
+  group('VenueProfileScreen — review is explained before writing', () {
     testWidgets('the "before you submit" explanation is visible immediately, before any text '
         'is entered — not only after submitting', (tester) async {
       await _pump(tester, _FakeVenueAboutRepository());
@@ -322,7 +409,7 @@ void main() {
     });
   });
 
-  group('VenueManagementScreen — the length limit is the real constraint, not a picked number', () {
+  group('VenueProfileScreen — the length limit is the real constraint, not a picked number', () {
     testWidgets('the text field enforces venueAboutTextMaxLength, not a hardcoded literal', (
       tester,
     ) async {
@@ -333,7 +420,7 @@ void main() {
     });
   });
 
-  group('VenueManagementScreen — fields a manager must never edit are simply absent', () {
+  group('VenueProfileScreen — fields a manager must never edit are simply absent', () {
     testWidgets('no verified-data field (address, phone, website, stars, Keys, cuisine, '
         'status) appears anywhere on this screen', (tester) async {
       await _pump(tester, _FakeVenueAboutRepository(currentText: 'Some about text'));
@@ -351,7 +438,7 @@ void main() {
     });
   });
 
-  group('VenueManagementScreen — submitting', () {
+  group('VenueProfileScreen — submitting', () {
     testWidgets('submitting empty text shows an inline error, never calls the repository', (
       tester,
     ) async {
@@ -411,18 +498,18 @@ void main() {
     });
   });
 
-  group('VenueManagementScreen — photos', () {
+  group('VenuePhotosScreen — photos', () {
     testWidgets('no published photos shows a plain empty line, no reorder controls', (
       tester,
     ) async {
-      await _pump(tester, _FakeVenueAboutRepository());
+      await _pumpPhotos(tester, _FakeVenueAboutRepository());
       expect(find.text('No photos published yet.'), findsOneWidget);
       expect(find.byIcon(Icons.keyboard_arrow_up_rounded), findsNothing);
     });
 
     testWidgets('the first published photo is tagged "Cover"; there is no '
         '"Make cover" any more — the arrows reorder', (tester) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -440,7 +527,7 @@ void main() {
 
     testWidgets('a Card photo section sits below the photos and above the '
         'submissions: "Same as your cover" until one is chosen', (tester) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -470,7 +557,7 @@ void main() {
 
     testWidgets('a chosen card photo reads "Your chosen photo", and Change '
         'opens the Card photo screen', (tester) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -489,7 +576,7 @@ void main() {
     });
 
     testWidgets('no photos, no Card photo section', (tester) async {
-      await _pump(tester, _FakeVenueAboutRepository());
+      await _pumpPhotos(tester, _FakeVenueAboutRepository());
       expect(find.text('CARD PHOTO'), findsNothing);
     });
 
@@ -497,7 +584,7 @@ void main() {
         'never collapsing to a spinner (which threw the page back to the top)', (
       tester,
     ) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -522,7 +609,7 @@ void main() {
     testWidgets('"Adjust framing" opens the framing screen for that photo', (
       tester,
     ) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -540,7 +627,7 @@ void main() {
 
     testWidgets("the first photo's move-up control is disabled, the last photo's "
         'move-down control is disabled', (tester) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -565,7 +652,7 @@ void main() {
     testWidgets('moving the second photo up calls reorder_venue_photos with the full new '
         'order, never a direct display_order write', (tester) async {
       _ReorderCall? received;
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -585,7 +672,7 @@ void main() {
     });
 
     testWidgets('a reorder failure shows a generic message', (tester) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -605,7 +692,7 @@ void main() {
     testWidgets('a pending submission shows "Awaiting review" and no ordering control', (
       tester,
     ) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -625,7 +712,7 @@ void main() {
 
     testWidgets('a rejected submission shows "Not approved" and the reviewer\'s own note, '
         'so the reason actually reaches the manager', (tester) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -647,7 +734,7 @@ void main() {
     testWidgets('a pending submission\'s thumbnail resolves through the signed-URL map, '
         'keyed by its own storage_path — the bucket is private, so a raw path can never '
         'be rendered directly', (tester) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -670,7 +757,7 @@ void main() {
     testWidgets('a rejected submission with no note shows the status but no note line', (
       tester,
     ) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -692,7 +779,7 @@ void main() {
       final chef = ManagedPrivateChef(
         PrivateChef.fromJson({'id': 'c1', 'display_name': 'Chef Amara'}),
       );
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         venue: chef,
@@ -711,7 +798,7 @@ void main() {
     testWidgets('the restaurant management screen never shows the chef-only portrait rule', (
       tester,
     ) async {
-      await _pump(
+      await _pumpPhotos(
         tester,
         _FakeVenueAboutRepository(),
         photoRepo: _FakeVenuePhotoSubmissionRepository(
@@ -728,9 +815,8 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           navigatorObservers: [observer],
-          home: VenueManagementScreen(
+          home: VenuePhotosScreen(
             venue: _venue(),
-            aboutRepo: _FakeVenueAboutRepository(),
             photoRepo: _FakeVenuePhotoSubmissionRepository(),
           ),
         ),
@@ -740,6 +826,179 @@ void main() {
       await tester.ensureVisible(find.text('Add a photo'));
       await tester.tap(find.text('Add a photo'));
       expect(observer.pushed.length, 1);
+    });
+  });
+
+  group('VenueManagementScreen — landing page', () {
+    twoPhotos() => _FakeVenuePhotoSubmissionRepository(
+      published: const [
+        PublishedVenuePhoto(id: 'p1', imageUrl: 'https://example.test/1.jpg', displayOrder: 0),
+        PublishedVenuePhoto(
+          id: 'p2',
+          imageUrl: 'https://example.test/2.jpg',
+          displayOrder: 1,
+          isCard: true,
+          cardFraming: PhotoFraming(focusX: 0.2, focusY: 0.7, zoom: 2),
+        ),
+      ],
+      openSubmissions: [
+        VenuePhotoSubmissionSummary(
+          id: 's1',
+          storagePath: 'restaurant/r1/u1/a.jpg',
+          status: VenuePhotoSubmissionStatus.pending,
+          submittedAt: DateTime(2026, 9, 1),
+        ),
+      ],
+    );
+
+    testWidgets('shows Profile, Photos and Events with a one-line summary each, and '
+        'none of the editing controls themselves', (tester) async {
+      await _pumpLanding(
+        tester,
+        _FakeVenueAboutRepository(
+          currentText: 'Old text',
+          latestSubmission: _submission(VenueAboutSubmissionStatus.pending),
+        ),
+        photoRepo: twoPhotos(),
+        eventsRepo: _FakeEventsRepository(events: [_event('e1'), _event('e2')]),
+      );
+      expect(find.text('Flore Amsterdam'), findsOneWidget);
+      expect(find.text('Amsterdam · Restaurant'), findsOneWidget);
+      expect(find.text('Profile'), findsOneWidget);
+      expect(find.text('Awaiting review'), findsOneWidget);
+      expect(find.text('Photos'), findsOneWidget);
+      expect(find.text('2 photos · 1 awaiting review'), findsOneWidget);
+      expect(find.text('Events'), findsOneWidget);
+      expect(find.text('2 upcoming'), findsOneWidget);
+      expect(find.text('Preview my page'), findsOneWidget);
+      expect(find.byType(TextField), findsNothing);
+      expect(find.text('Add a photo'), findsNothing);
+    });
+
+    testWidgets('the header shows the card photo with its card crop', (tester) async {
+      await _pumpLanding(tester, _FakeVenueAboutRepository(), photoRepo: twoPhotos());
+      final framed = tester.widget<FramedImage>(find.byType(FramedImage));
+      expect(framed.framing, const PhotoFraming(focusX: 0.2, focusY: 0.7, zoom: 2));
+    });
+
+    testWidgets('no photos: no header image, and the Photos line says so', (tester) async {
+      await _pumpLanding(tester, _FakeVenueAboutRepository(currentText: 'Text'));
+      expect(find.byType(FramedImage), findsNothing);
+      expect(find.text('No photos published yet'), findsOneWidget);
+      expect(find.text('Published'), findsOneWidget);
+      expect(find.text('None upcoming'), findsOneWidget);
+    });
+
+    testWidgets('a rejected about text reads "Not approved"', (tester) async {
+      await _pumpLanding(
+        tester,
+        _FakeVenueAboutRepository(
+          latestSubmission: _submission(VenueAboutSubmissionStatus.rejected),
+        ),
+      );
+      expect(find.text('Not approved'), findsOneWidget);
+    });
+
+    testWidgets('no about text at all reads "Nothing published yet"', (tester) async {
+      await _pumpLanding(tester, _FakeVenueAboutRepository());
+      expect(find.text('Nothing published yet'), findsOneWidget);
+    });
+
+    testWidgets('a failed lookup blanks only its own summary, never the page, and the '
+        'row still opens', (tester) async {
+      await _pumpLanding(
+        tester,
+        _FakeVenueAboutRepository(loadError: Exception('boom')),
+        eventsRepo: _FakeEventsRepository(error: Exception('boom')),
+      );
+      expect(find.textContaining('boom'), findsNothing);
+      expect(find.text('No photos published yet'), findsOneWidget);
+      expect(find.text('None upcoming'), findsNothing);
+      await tester.tap(find.text('Events'));
+      await tester.pumpAndSettle();
+      expect(find.byType(VenueEventsScreen), findsOneWidget);
+    });
+
+    for (final (row, screen) in [
+      ('Profile', VenueProfileScreen),
+      ('Photos', VenuePhotosScreen),
+      ('Events', VenueEventsScreen),
+    ]) {
+      testWidgets('tapping $row opens its own screen', (tester) async {
+        await _pumpLanding(tester, _FakeVenueAboutRepository());
+        await tester.tap(find.text(row));
+        await tester.pumpAndSettle();
+        expect(find.byType(screen), findsOneWidget);
+      });
+    }
+
+    testWidgets('coming back from a section reloads every summary', (tester) async {
+      final events = _FakeEventsRepository();
+      await _pumpLanding(tester, _FakeVenueAboutRepository(), eventsRepo: events);
+      expect(events.loadedFor.length, 1);
+      await tester.tap(find.text('Events'));
+      await tester.pumpAndSettle();
+      await tester.pageBack();
+      await tester.pumpAndSettle();
+      // Once for the landing, once for the Events screen, once on return.
+      expect(events.loadedFor.length, 3);
+    });
+
+    testWidgets('a private chef loads the events it hosts as a chef', (tester) async {
+      final events = _FakeEventsRepository();
+      await _pumpLanding(
+        tester,
+        _FakeVenueAboutRepository(),
+        venue: ManagedPrivateChef(PrivateChef.fromJson({'id': 'c1', 'display_name': 'Chef Amara'})),
+        eventsRepo: events,
+      );
+      expect(events.loadedFor, ['private_chef:c1']);
+      expect(find.text('Chef Amara'), findsOneWidget);
+    });
+
+    testWidgets('no verified-data field appears on the landing page either', (tester) async {
+      await _pumpLanding(tester, _FakeVenueAboutRepository(currentText: 'Some about text'));
+      for (final forbidden in ['Address', 'Phone', 'Website', 'MICHELIN', 'Cuisine', 'Place ID']) {
+        expect(find.textContaining(forbidden), findsNothing, reason: '"$forbidden" must not appear');
+      }
+    });
+  });
+
+  group('VenueEventsScreen', () {
+    testWidgets('lists the upcoming events the venue hosts', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: VenueEventsScreen(
+            venue: _venue(),
+            repository: _FakeEventsRepository(events: [_event('e1', name: 'Four Hands Dinner')]),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Four Hands Dinner'), findsOneWidget);
+    });
+
+    testWidgets('none upcoming says so plainly', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(home: VenueEventsScreen(venue: _venue(), repository: _FakeEventsRepository())),
+      );
+      await tester.pumpAndSettle();
+      expect(find.textContaining('No events yet.'), findsOneWidget);
+      expect(find.text('Create an event'), findsOneWidget);
+    });
+
+    testWidgets('a failed load says so, never the raw error', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: VenueEventsScreen(
+            venue: _venue(),
+            repository: _FakeEventsRepository(error: Exception('boom')),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Could not load events. Pull down to try again.'), findsOneWidget);
+      expect(find.textContaining('boom'), findsNothing);
     });
   });
 
@@ -756,6 +1015,7 @@ void main() {
             venue: _venue(),
             aboutRepo: _FakeVenueAboutRepository(),
             photoRepo: _FakeVenuePhotoSubmissionRepository(),
+            eventsRepo: _FakeEventsRepository(),
             restaurantRepo: restaurantRepo,
           ),
         ),
@@ -813,7 +1073,7 @@ void main() {
       'a restrained line names the shared venue-ops inbox — the one '
       'contact point on this screen',
       (tester) async {
-        await _pump(tester, _FakeVenueAboutRepository());
+        await _pumpLanding(tester, _FakeVenueAboutRepository());
         expect(
           find.textContaining('Questions about your page?'),
           findsOneWidget,
