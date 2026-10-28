@@ -8,6 +8,40 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.2.0 (13) — 2026-10-28
+
+Built from `release/1.2.0`. Every database change below was applied to
+production before this build, so the build only adds the screens that use
+them; installed 1.1.0 (12) builds keep working against the same database.
+Ledger at the version bump: 102 migrations, local and remote in agreement.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay of
+all 102 migrations, 2026-10-28:
+- `supabase db dump`, both sides: identical apart from 6 blank lines, the
+  platform statements the CLI filters out.
+- Storage and auth, compared directly: all 5 buckets, 13 `storage.objects`
+  policies, 8 triggers and RLS on both storage tables identical. The one
+  extra local trigger, `enforce_versioning_status_transition`, comes from
+  the newer local storage service: expected noise, not drift.
+
+**In this release, for testers:**
+- **Venue events.** A venue's managers create, edit and cancel their own
+  events from My venues → a venue → Events. New events are reviewed first;
+  edits to a live event go live straight away and are recorded for the
+  admins.
+- **A landing page per managed venue** with Profile, Photos and Events.
+- **In-app review for admins**: claims, about texts, photos, events and
+  changes to live events, with a real preview.
+- **Photo framing and a separate card photo** for venue managers.
+- **Friend requests** have their own Requests tab.
+- **Catalogue:** MICHELIN Netherlands 2026, France 2026 (652 starred),
+  Peru's 15 Key hotels, the completed World's 50 Best lists, phone numbers
+  and Google Place IDs.
+- **Minimum iOS raised to 15.0.**
+
 ### Added
 
 - 2026-10-28 — MICHELIN France 2026 and Peru catalogue data, with two
