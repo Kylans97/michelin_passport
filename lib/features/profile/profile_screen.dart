@@ -16,6 +16,7 @@ import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/notifications_repository.dart';
 import '../../data/repositories/profile_repository.dart';
+import '../../data/repositories/review_repository.dart';
 import '../../data/repositories/venue_manager_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/managed_venue.dart';
@@ -25,6 +26,7 @@ import '../../models/venue_entry.dart';
 import '../claims/claim_venue_screen.dart';
 import '../friends/friends_screen.dart';
 import '../notifications/notifications_screen.dart';
+import '../review/review_queue_screen.dart';
 import 'change_avatar_sheet.dart';
 import 'change_password_screen.dart';
 import 'delete_account_screen.dart';
@@ -86,6 +88,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
   // stated reasoning just above.
   late Future<List<ManagedVenue>> _managedVenuesFuture;
 
+  // Admins only (20261017120000): the Review row and how much is waiting.
+  // Null when the user is not an admin, so the row stays hidden; any
+  // failure reads the same way.
+  late final _reviewRepo = ReviewRepository(Supabase.instance.client);
+  late Future<int?> _reviewCountFuture;
+
+  Future<int?> _loadReviewCount() async {
+    if (!await _reviewRepo.isAdmin()) return null;
+    try {
+      return (await _reviewRepo.loadQueue()).length;
+    } catch (_) {
+      return 0;
+    }
+  }
+
   // Loaded once, not re-fetched on pull-to-refresh (_load) — the running
   // build's own version/build number can't change at runtime.
   late final Future<PackageInfo> _packageInfoFuture = PackageInfo.fromPlatform();
@@ -145,6 +162,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       _unreadNotificationCountFuture = _notificationsRepo.getUnreadCount();
       _managedVenuesFuture = _venueManagerRepo.loadMyManagedVenues();
+      _reviewCountFuture = _loadReviewCount();
     });
   }
 
@@ -174,6 +192,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
     context,
     MaterialPageRoute(builder: (_) => const MyVenuesScreen()),
   );
+
+  Future<void> _openReview() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => ReviewQueueScreen(repository: _reviewRepo),
+      ),
+    );
+    if (mounted) setState(() => _reviewCountFuture = _loadReviewCount());
+  }
 
   // Same external-browser pattern RestaurantDetailScreen/HotelDetailScreen
   // already use for venue links — never an in-app webview. Apple requires
@@ -443,6 +471,19 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         icon: Icons.dashboard_outlined,
                         label: 'My venues',
                         onTap: _openMyVenues,
+                      );
+                    },
+                  ),
+                  FutureBuilder<int?>(
+                    future: _reviewCountFuture,
+                    builder: (context, reviewSnap) {
+                      final waiting = reviewSnap.data;
+                      if (waiting == null) return const SizedBox.shrink();
+                      return _SettingsRow(
+                        icon: Icons.fact_check_outlined,
+                        label: 'Review',
+                        badgeCount: waiting,
+                        onTap: _openReview,
                       );
                     },
                   ),

@@ -10,6 +10,58 @@ The format follows Keep a Changelog.
 
 ### Added
 
+- 2026-10-28 — In-app review for admins, phase 1 of
+  `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. Reviewing a
+  venue claim, an about text or a photo meant finding the row in the
+  Supabase dashboard and running SQL by hand, or `curl` with a secret for
+  a photo, with no way to see what the submission would look like. Now:
+  - **Profile → Review**, shown only to admins, with the number waiting.
+    The queue groups everything by kind, oldest first. Each item opens
+    with what's needed to decide:
+    - **claim:** the claimant's details;
+    - **about text:** the text, plus "Preview the venue page", which
+      opens the real detail screen with it in place;
+    - **photo:** the photo in its real header and card frames with its
+      framing, plus the same page preview.
+    Approve, or reject with a note the venue receives through the
+    notifications that already existed.
+  - **`20261017120000_add_in_app_review.sql`:**
+    - `public.admins` (RLS on, no client policy and no grant — admins are
+      added by hand in the dashboard) and `is_admin()`;
+    - `get_review_queue()`;
+    - admin-only wrappers that call the existing dashboard functions with
+      `auth.uid()` as the reviewer — the originals keep their
+      dashboard-only ACL as the fallback;
+    - an admin read policy on the private `venue-photo-submissions`
+      bucket, for the preview.
+    Every new SECURITY DEFINER function carries its `revoke … from
+    public, anon`.
+  - **`publish-venue-photo`** also accepts an admin's own login. On that
+    path the reviewer is always the caller (a `reviewed_by` in the body is
+    ignored); the secret path is unchanged. 22 deno tests pass (5 new).
+  - **Settled decision revised, on purpose.** CLAUDE.md said "There is no
+    in-app admin identity and none is planned"; the product owner decided
+    on 2026-10-28 to review in the app, and that an admin may approve
+    their own submissions. The rule now names `is_admin()` as the single
+    source of review permission. `VENUE_CLAIM_OPERATIONS.md` keeps its
+    snippets, marked as the fallback, and says how to add an admin.
+  - **Proven locally only.** On a replay of the 97 existing migrations
+    with an admin, a manager and a member, then this one: `is_admin()` is
+    true only for the admin; the queue showed a claim, an about text and a
+    photo with venue, city and submitter, and refused the other two; every
+    admin action refused a non-admin; approving the about text made it
+    current, the claim approval granted the manager permission, the photo
+    rejection stored its note, and each recorded the admin as reviewer;
+    the venue got all four notifications; a second approval of the same
+    item was refused; nobody could insert into `admins` from the app;
+    anon and PUBLIC hold no EXECUTE on any new function. A fresh replay
+    of all 98 files gave identical definitions. Analyzer clean; 2,476
+    tests pass (9 new). Not yet seen on the simulator: it needs this
+    applied, an admin row and the function deployed.
+  - **Rollout order:** the migration, then the admin row, then deploy
+    `publish-venue-photo`, then the build. Installed builds are
+    unaffected — they don't call any of this. **Not yet applied or
+    deployed.**
 - Project documentation
 - Database organisation
 - Architecture documentation

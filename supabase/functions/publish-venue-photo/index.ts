@@ -89,6 +89,15 @@
 // PUBLISH_VENUE_PHOTO_WEBHOOK_SECRET) before doing anything else — its
 // own secret, never reused from the other two functions'.
 //
+// SECOND WAY IN, ADMIN LOGIN (20261017120000, 2026-10-28): the in-app
+// Review screen calls this with the admin's own JWT instead of the
+// secret. The function asks the database whether that login is an admin
+// (is_admin(), run AS that user), and the reviewer recorded is then that
+// user — never a reviewed_by from the request body, which this path
+// ignores, so an admin cannot attribute an approval to someone else.
+// Anything that is neither the right secret nor an admin's login is 401
+// before anything is read. The secret path is unchanged.
+//
 // approve_venue_photo itself is UNCHANGED and still callable by hand
 // from the SQL Editor exactly as documented — this function is a layer
 // on top of it, not a replacement. If this function is ever down, the
@@ -205,6 +214,10 @@ async function objectExistsAt(
   return data.some((f) => f.name === basename(path));
 }
 
+/// Given a request's bearer token, returns that user's id if they are an
+/// admin, else null. Injected, like the client, so tests need no network.
+export type AdminResolver = (jwt: string) => Promise<string | null>;
+
 /// Testable core — accepts an injected client so tests can supply a
 /// hand-rolled fake (no mocking framework), mirroring notify-venue-claim/
 /// notify-venue-submission's own convention exactly.
@@ -212,16 +225,25 @@ export async function handleRequest(
   req: Request,
   admin: PublishPhotoAdminClient,
   webhookSecret: string | undefined,
+  resolveAdmin?: AdminResolver,
 ): Promise<Response> {
   if (req.method !== 'POST') {
     return jsonResponse({ error: 'Method not allowed' }, 405);
   }
 
   // Checked before anything else, including body parsing — same
-  // reasoning as notify-venue-claim/notify-venue-submission.
+  // reasoning as notify-venue-claim/notify-venue-submission. Either the
+  // right secret, or an admin's own login; nothing else gets past here.
   const providedSecret = req.headers.get('x-webhook-secret');
-  if (!webhookSecret || providedSecret !== webhookSecret) {
-    return jsonResponse({ error: 'Unauthorized' }, 401);
+  const secretOk = !!webhookSecret && providedSecret === webhookSecret;
+  let adminUserId: string | null = null;
+  if (!secretOk) {
+    const auth = req.headers.get('authorization') ?? '';
+    const jwt = auth.toLowerCase().startsWith('bearer ') ? auth.slice(7).trim() : '';
+    if (jwt && resolveAdmin) adminUserId = await resolveAdmin(jwt);
+    if (!adminUserId) {
+      return jsonResponse({ error: 'Unauthorized' }, 401);
+    }
   }
 
   let body: { submission_id?: unknown; reviewed_by?: unknown };
@@ -232,7 +254,8 @@ export async function handleRequest(
   }
 
   const submissionId = body?.submission_id;
-  const reviewedBy = body?.reviewed_by;
+  // On the admin path the reviewer is always the caller.
+  const reviewedBy = adminUserId ?? body?.reviewed_by;
   if (typeof submissionId !== 'string' || typeof reviewedBy !== 'string') {
     return jsonResponse({ error: 'submission_id and reviewed_by are both required' }, 400);
   }
@@ -336,9 +359,25 @@ Deno.serve((req) => {
   // notify-venue-submission's own wiring line — scoped to this one line
   // only; handleRequest's own signature and every test's hand-rolled
   // fake stay fully structurally typed with no cast anywhere else.
+  // Asks the database, as the caller, whether they are an admin — the
+  // same is_admin() every admin RPC checks — and who they are.
+  const anonKey = Deno.env.get('SUPABASE_ANON_KEY')!;
+  const resolveAdmin: AdminResolver = async (jwt) => {
+    const asCaller = createClient(supabaseUrl, anonKey, {
+      auth: { autoRefreshToken: false, persistSession: false },
+      global: { headers: { Authorization: `Bearer ${jwt}` } },
+    });
+    const { data: userData, error: userError } = await asCaller.auth.getUser(jwt);
+    if (userError || !userData?.user) return null;
+    const { data: isAdmin, error } = await asCaller.rpc('is_admin');
+    if (error || isAdmin !== true) return null;
+    return userData.user.id;
+  };
+
   return handleRequest(
     req,
     admin as unknown as PublishPhotoAdminClient,
     Deno.env.get('PUBLISH_VENUE_PHOTO_WEBHOOK_SECRET'),
+    resolveAdmin,
   );
 });
