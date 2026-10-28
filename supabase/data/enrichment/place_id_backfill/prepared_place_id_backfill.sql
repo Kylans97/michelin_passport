@@ -5,11 +5,20 @@
 -- Best ranked hotels, 15 NL restaurants) plus hotel_801 Singita from
 -- ../worlds_50_best_2025_2026/prepared_w50b_new_venues_import.sql.
 -- Evidence per row: placeid_results.csv (Places API (New) searchText,
--- distance measured against the stored coordinates).
+-- distance measured against the stored coordinates). Summary: RESULTS.md.
 --
--- Only `confirmed` rows are here: right record type (lodging for hotels,
--- the restaurant itself for restaurants) and under 100 m. 69 hotels +
--- 8 restaurants. `unclear`/`blocked` rows are deliberately absent.
+-- Only `confirmed` rows: 73 hotels + 14 restaurants in Step 1, Singita
+-- in Step 2. Most are under 100 m with the right record type. Exceptions,
+-- each double-checked against the venue's own site and OpenStreetMap and
+-- explained per row in placeid_results.csv:
+--   hotel_693 Cipriani (130 m), hotel_727 Desa Potato Head (101 m),
+--   hotel_760 Jumeirah Marsa Al Arab (140 m) -- both points on the same
+--     property; hotel_748 Amangalla (496 m) -- OUR coordinates are wrong;
+--   rest_0784/0789/0790/0791 -- Google's only record is a combined
+--     hotel-restaurant listing; accepted on the owner's instruction.
+-- Left out: hotel_704 (mainland China), rest_0781 Graphite (no Google
+-- record), hotel_744 Six Senses Zighy Bay (Google pin 1.57 km off; see the
+-- commented-out optional block at the end).
 --
 -- Fills only empty values (`google_place_id is null`) -- never overwrites;
 -- a row that already holds a different ID is reported (NOTICE) and left.
@@ -32,6 +41,7 @@ insert into _pid_hotels values
     ('hotel_690', 'ChIJ-XKhYh9hLxMR6SM6GuN3HM4'),  -- 22 m, Bulgari Roma
     ('hotel_691', 'ChIJeQnHJxBUKhMRqEIwEupVmuk'),  -- 15 m, Four Seasons Firenze
     ('hotel_692', 'ChIJQ3xyRgaMGGARUS7IVQTZRQY'),  -- 17 m, Hoshinoya Tokyo
+    ('hotel_693', 'ChIJ0U-xZiqufkcRAVmQKP082-Y'),  -- 130 m, Hotel Cipriani
     ('hotel_694', 'ChIJ-adrLpFcKBMRez6Ri5tz168'),  -- 18 m, Hotel Il Pellicano
     ('hotel_695', 'ChIJWZUzp3jq9pQRaUqL9AJx9Fg'),  -- 20 m, Hotel das Cataratas
     ('hotel_696', 'ChIJ4-TBnmknhEcRu-kvLumZm4Y'),  -- 45 m, Passalacqua
@@ -58,6 +68,7 @@ insert into _pid_hotels values
     ('hotel_722', 'ChIJkYZj_SyDbTkR7voZS5otyPM'),  -- 84 m, Amanbagh
     ('hotel_724', 'ChIJlyF9yTa3bTkROi8TUsAfzaE'),  -- 0 m, The Johri
     ('hotel_726', 'ChIJ____b8DR5zsRVz_XpIUEKcA'),  -- 20 m, The Taj Mahal Palace
+    ('hotel_727', 'ChIJ4f9QNY9H0i0REbMfgG5iI18'),  -- 101 m, Desa Potato Head
     ('hotel_728', 'ChIJI_3sXcMi0i0RLXYUYYo7eT4'),  -- 27 m, Mandapa
     ('hotel_729', 'ChIJ3_Tt_a-dTCwRCqPx7ZsYgSs'),  -- 0 m, Nihi Sumba
     ('hotel_730', 'ChIJWXZGfiJxTDAR84FmKVf47oI'),  -- 29 m, The Datai
@@ -73,6 +84,7 @@ insert into _pid_hotels values
     ('hotel_743', 'ChIJU41t9Vz3a20R3-cXhoaaX1o'),  -- 79 m, Huka Lodge
     ('hotel_745', 'ChIJUdl-FnPWbZERCN5OJ4PGa7o'),  -- 45 m, Palacio Nazarenas
     ('hotel_746', 'ChIJ2ZmgHnFnzB0RObLO5XspkIw'),  -- 4 m, Mount Nelson
+    ('hotel_748', 'ChIJmyNMRrtz4ToR1N8_DiW-ckU'),  -- 496 m, Amangalla
     ('hotel_749', 'ChIJaSlfs091DowRpAapQXu2czo'),  -- 42 m, Eden Rock
     ('hotel_750', 'ChIJ5dbUPWqdX0YRmE5enY3QHQk'),  -- 0 m, Ett Hem
     ('hotel_751', 'ChIJJ2BaV9if4jARiNLkIi1g87I'),  -- 67 m, Aman Nai Lert
@@ -83,6 +95,7 @@ insert into _pid_hotels values
     ('hotel_757', 'ChIJbw__g9-b4jAR3iYpzC9gRoI'),  -- 74 m, The Siam
     ('hotel_758', 'ChIJybTpQuxvvhQRvHMQvLA1YMk'),  -- 0 m, Maçakızı
     ('hotel_759', 'ChIJyTL-aggVXz4R4cAwRc0Ydsw'),  -- 93 m, Atlantis The Royal
+    ('hotel_760', 'ChIJ7yNA5vtrXz4RHHx0-yTRgJk'),  -- 140 m, Jumeirah Marsa Al Arab
     ('hotel_761', 'ChIJiyZtnNlpXz4Rmopi1CKIQR8'),  -- 86 m, The Lana
     ('hotel_762', 'ChIJcZY1XAAFdkgRieYQg6UqpzQ'),  -- 26 m, Claridge's
     ('hotel_763', 'ChIJZUrLFl_PdkgRnQzTVFzh6P8'),  -- 15 m, Estelle Manor
@@ -119,21 +132,22 @@ update public.hotels t set google_place_id = p.place_id
   from _pid_hotels p
  where t.hotel_code = p.code and t.google_place_id is null;
 
-
 create temp table _pid_restaurants (code text primary key, place_id text not null unique) on commit drop;
 insert into _pid_restaurants values
     ('rest_0780', 'ChIJoZbs8dMzxkcR01gwFw7uBBY'),  -- 18 m, Basiliek
+    ('rest_0782', 'ChIJ_bFKjRC3xUcRl7uUWFhXr5c'),  -- 6 m, Zheng
     ('rest_0783', 'ChIJu61sS84JxkcR9DvNepP2cfU'),  -- 5 m, Daalder
+    ('rest_0784', 'ChIJTdKgQhxaz0cRFaMdTHA5JEA'),  -- 9 m, Merlet
     ('rest_0785', 'ChIJx7KqLHnAxUcRPeqNspXmcWs'),  -- 2 m, Latour
     ('rest_0786', 'ChIJXy6mMnZnyEcRYnSX9uz9RL4'),  -- 8 m, Restaurant Smink
     ('rest_0787', 'ChIJ6XzF2T4pyEcRaa6_ZE0fvA8'),  -- 3 m, De Vlindertuin
+    ('rest_0788', 'ChIJ1dkJZYT9t0cRk_Vw74UwBJo'),  -- 2 m, De Woage
+    ('rest_0789', 'ChIJz271mAzxx0cRKfqfufb6wls'),  -- 43 m, De Swarte Ruijter
+    ('rest_0790', 'ChIJj7leFQMOuEcRw98L7cjYynE'),  -- 8 m, 't Lansink
+    ('rest_0791', 'ChIJKYzZQvQXuEcRCLnglJqempA'),  -- 68 m, De Bloemenbeek
     ('rest_0792', 'ChIJB5b9InSHxkcRJ9Q3glPUDTk'),  -- 8 m, De Gieser Wildeman
     ('rest_0793', 'ChIJ0eloBkzBxUcRUuFnYqJ_gjI'),  -- 18 m, De Moerbei
     ('rest_0794', 'ChIJWdF0Qu45z0cRlfiYb_UsJk0');  -- 8 m, Bij Jef
--- Also confirmed, but outside the handoff scope -- add to the list above
--- only once approved:
---    ('rest_0782', 'ChIJ_bFKjRC3xUcRl7uUWFhXr5c'),  -- 6 m, Zheng (outside the 13 named in the handoff)
---    ('rest_0788', 'ChIJ1dkJZYT9t0cRk_Vw74UwBJo'),  -- 2 m, De Woage (outside the 13 named in the handoff)
 
 do $$
 declare bad text;
@@ -166,7 +180,7 @@ begin;
 
 create temp table _pid_singita (code text primary key, place_id text not null unique) on commit drop;
 insert into _pid_singita values
-    ('hotel_801', 'ChIJe2Oep6s93R4RhzCjx_VIOq0');  -- 25 m, Singita – Kruger National Park (Lebombo record, not Sweni)
+    ('hotel_801', 'ChIJe2Oep6s93R4RhzCjx_VIOq0');  -- 25 m, Singita Lebombo Lodge
 
 do $$
 declare bad text;
@@ -191,3 +205,29 @@ update public.hotels t set google_place_id = p.place_id
  where t.hotel_code = p.code and t.google_place_id is null;
 
 commit;
+
+-- ============================================================
+-- OPTIONAL -- commented out; each needs an explicit decision
+-- ============================================================
+--
+-- (a) Amangalla coordinate correction. Our stored point (6.03306, 80.21667)
+--     is outside Galle Fort, on Wakwella Road; the official address is
+--     10 Church Street, inside the fort ramparts. Google's pin and
+--     OpenStreetMap's building outline agree on 6.0286114, 80.2170010
+--     (OSM way 136845382). A data correction: log it in the Michelin_Database
+--     CHANGELOG with a QA id before running.
+--
+-- update public.hotels
+--    set location = ST_SetSRID(ST_MakePoint(80.2170010, 6.0286114), 4326)::geography
+--  where hotel_code = 'hotel_748';
+--
+-- (b) Six Senses Zighy Bay Place ID. The record is the resort's own listing
+--     (links to sixsenses.com, the only candidate) but Google's pin sits at
+--     the clifftop restaurant, 1,571 m from our (correct-looking) beach
+--     coordinates -- past the 500 m rule. Run only if you accept the record
+--     despite its pin; our coordinates stay as they are.
+--
+-- update public.hotels set google_place_id = 'ChIJzWx5aPUr9D4RCUtY4UglHAE'
+--  where hotel_code = 'hotel_744' and google_place_id is null
+--    and not exists (select 1 from public.hotels
+--                     where google_place_id = 'ChIJzWx5aPUr9D4RCUtY4UglHAE');
