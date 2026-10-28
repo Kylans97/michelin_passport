@@ -6,6 +6,38 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — QA follow-ups applied: Kjolle, Plaza Athénée, Monaco, Peru hotel phones (QA-222, QA-224, QA-227, QA-230)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, following `supabase/data/enrichment/APPLY_QA_2026-10-28.md` |
+| Migrations | None. Ledger unchanged at 102 |
+| Data files | Four prepared files, each one transaction with its own guards; none aborted |
+
+All four files' guards were checked read-only against production before anything was written. Afterwards each effect was re-read from production.
+
+**Kjolle** (`kjolle_location/prepared_kjolle_location.sql`, **QA-227**). `rest_0135`'s point moves from the rounded (-12.145, -77.0211), 856 m away, to (-12.1525709, -77.0225397). That is its building, Av. Pedro de Osma 301 in Barranco: OSM node 6228532187, the point Central (`rest_1578`) already uses. Its `google_place_id` is unchanged and still unchecked, since there is no Places API key.
+
+**Plaza Athénée** (`michelin_fr_stars_2026/prepared_plaza_athenee_rename.sql`, **QA-222**). The product owner decided this is a rename, not a closure. `rest_0972` "Jean Imbert au Plaza Athénée" becomes "La Grande Table du Plaza Athénée", and `michelin_url` moves to MICHELIN's current page. Its one star, its single current star row and its link to `hotel_713` are unchanged, as re-checked.
+
+**Monaco** (`michelin_mc_2026/prepared_mc_stars_2026.sql`, **QA-224**). The product owner brought Monaco into scope.
+- **Restaurants:** 9 added, `rest_1579`–`rest_1587`, from MICHELIN's 2026 selection, with `inclusion_reason` `michelin_star`. MICHELIN's live Monaco listing ("1-9 of 9") and each restaurant page agree on **1 / 3 / 5**.
+- **Star rows:** each restaurant has exactly one current 2026 star row agreeing with `michelin_stars`, as re-checked.
+- **City:** all nine use the existing MC city "Monte Carlo"; no city was added. All nine appear in `restaurants_full`.
+- **Hotel links:** three `exact` links where MICHELIN's address names the Key hotel. Le Louis XV and Le Grill link to the Hôtel de Paris (`hotel_193`), and Les Ambassadeurs to the Métropole (`hotel_194`).
+- **Phones:** 7 of 9 are confirmed on the restaurant's own site. Le Louis XV and Robuchon Monaco stay empty.
+- **Elsa** (`rest_1583`) is at Monte-Carlo Beach, which is in Roquebrune-Cap-Martin, France. MICHELIN files it under Monaco, so it is stored as MC. Logged with the two empty phones as **QA-231**, which stays open.
+
+**Peru hotel phones** (`michelin_pe_2026/prepared_pe_hotel_phones.sql`, **QA-230**). The product owner's rule: the hotel's own local line, otherwise the group line its own site shows. Only empty values were filled.
+- **Own local line:** Las Casitas, Monasterio, Miraflores Park and Rio Sagrado.
+- **Andean group line:** Titilaka, CIRQA, Atemporal and Fausto.
+- **Inkaterra group line:** Inkaterra Hacienda Urubamba and La Casona.
+- **Still empty:** Antigua Casona San Blas (`hotel_815`) and Tambo del Inka (`hotel_817`). Neither has an own site that could be reached.
+
+The 15 Peruvian Key hotels now hold 13 phones.
+
+---
+
 # 2026-10-28 — Catalogue data applied: MICHELIN France 2026 and Peru (QA-220–QA-225)
 
 | | |
