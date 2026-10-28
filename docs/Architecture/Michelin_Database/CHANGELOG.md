@@ -6,6 +6,31 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — Country timezones prepared (QA-226)
+
+| | |
+|---|---|
+| Status | Prepared, **not applied** |
+| Migration | `20261018120000_add_country_timezones` |
+| Source | IANA time zone database, tzdata 2025b, `zone.tab`, read from `/usr/share/zoneinfo/zone.tab` on 2026-10-28 |
+| Reason | Venue events (phase 3) need a timezone for every event, but no venue and no country stored one. |
+
+**What it adds.** `countries.timezones text[]`, holding every zone `zone.tab` lists for each of the 58 countries in `public.countries`. The values were generated from the file, not typed.
+
+- 44 countries have one zone. The event form uses it as the default.
+- 14 have several: AR, AU, BR, CL, CN, DE, EC, ES, ID, MX, MY, NZ, PT and US. The form asks for these instead of assuming one. Spain, for example, lists Europe/Madrid, Africa/Ceuta and Atlantic/Canary.
+- France has only Europe/Paris, because IANA gives its overseas regions their own country codes.
+
+**Checks.**
+
+- All 149 distinct zones exist in production's `pg_timezone_names` (read-only, 2026-10-28). The migration also refuses, by itself, any zone its Postgres doesn't know.
+- Verified on a full local replay from empty: every country got its zones, and the column became NOT NULL with at least one entry.
+- Any later migration that adds a country must give it its zones.
+
+The venue event RPCs (`20261018130000`) refuse a timezone that isn't in the event country's list.
+
+---
+
 # 2026-10-28 — Catalogue data applied: MICHELIN Netherlands 2026, World's 50 Best completion, phones, Place IDs (QA-209, QA-216, QA-218)
 
 | | |

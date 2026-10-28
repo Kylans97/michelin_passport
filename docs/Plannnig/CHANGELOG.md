@@ -10,6 +10,80 @@ The format follows Keep a Changelog.
 
 ### Added
 
+- 2026-10-28 — Venue events, phase 3 of
+  `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`: the database
+  half. The design and the six decisions taken are in
+  `docs/Architecture/VENUE_EVENTS_PHASE_3_DESIGN.md`. There are two
+  migrations; no app code changes yet.
+  - **`20261018120000_add_country_timezones`:**
+    - adds `countries.timezones`, every IANA zone for each country
+      (tzdata 2025b `zone.tab`; QA-226, see the Michelin_Database
+      CHANGELOG);
+    - with one zone, the event form uses it as the default; with
+      several, the form asks.
+  - **`20261018130000_add_venue_event_submission`, what a venue calls:**
+    - venues write events only through `submit_venue_event`,
+      `update_venue_event` and `cancel_venue_event`, and read their own
+      with `get_venue_events`;
+    - the rights are those of any active manager of a host venue, not
+      "whoever submitted it";
+    - submitting creates the event as `submitted`, with its host link and
+      tags, in one transaction;
+    - editing a rejected event resubmits it;
+    - editing a live event keeps it live and records the change in
+      `event_edits`; an unchanged save records nothing;
+    - "held at the venue" copies the venue's own verified location.
+  - **Same migration, the rules:** one validation function serves both
+    submit and update:
+    - the 7 V1 types, and only tags that exist;
+    - start and end dates from today up to one year ahead, with "today"
+      in the event's own timezone;
+    - an end time only with a start time, and on a single day the end
+      after the start (00:00 means the end of that day);
+    - coordinates, and a timezone from the event country's own list;
+    - `start_at`/`end_at` are set only from a known time, never invented.
+  - **Same migration, what an admin calls:**
+    - `admin_approve_event`, and `admin_reject_event`, which needs a note
+      and also takes a live event offline;
+    - `admin_mark_event_edit_seen`;
+    - each sends `event_approved`/`event_rejected` to the submitter;
+    - `get_review_queue()` gains the kinds `venue_event` and
+      `venue_event_edit`; installed builds skip kinds they don't know;
+    - admins can read events that aren't published yet, for the review
+      preview;
+    - `events` gains `submitted_at`, `reviewed_at`, `reviewed_by` and
+      `review_note`.
+  - **Same migration, policies dropped:** the loose write policies on
+    `events` and its link tables, all keyed on `submitted_by`. They were
+    an open insert and update with no window or field checks, plus the
+    unused participant-link policies. Nothing wrote through them:
+    production's 28 events have no `submitted_by`, and every app query on
+    these tables is a read (checked 2026-10-28).
+  - **Notifications for the new build:** `get_notifications_v2()` and
+    `get_unread_notification_count_v2()` include the event types (see
+    Fixed for why the old functions hide them).
+  - **Proof:** on a local stack, all 100 migrations replayed from empty,
+    and a 53-check scenario passes:
+    - permissions: non-managers, revoked managers, members and anon are
+      refused;
+    - each form rule, including a timezone edge (Auckland's "today");
+    - unknown times stay null;
+    - "held at the venue" ignores the location the app sent;
+    - resubmit, edit history and cancel;
+    - admin approve and reject with their notifications, and both new
+      queue kinds;
+    - direct table writes are refused, even for an admin.
+
+    Every new `SECURITY DEFINER` function is closed to anon and PUBLIC,
+    checked with `has_function_privilege`. The internal helpers are
+    closed to `authenticated` too. The old `get_notifications()` result
+    type is identical to production's.
+  - **Not yet applied.** Still to do:
+    - `notify-venue-submission` has to learn the `events` payload; until
+      then an event's admin email fails softly and the submission still
+      goes through;
+    - the phase 3 build itself.
+
 - 2026-10-28 — A landing page per managed venue, phase 2 of
   `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. My Venues
   used to open one long screen with the about text and every photo
@@ -338,6 +412,28 @@ The format follows Keep a Changelog.
   not been run yet.
 
 ### Fixed
+
+- 2026-10-28 — Two gaps found while drafting phase 3, both closed in
+  `20261018130000`:
+  - **The six event tags existed only in production.** They were
+    inserted 2026-08-22 outside any migration, so a fresh replay had none
+    and tags could never be assigned there. The migration seeds
+    production's exact rows, ids included, with `on conflict do nothing`;
+    on production that is a no-op, since all six ids are present
+    (checked). Tag validation reads `event_tags` instead of a hardcoded
+    list, so a missing tag is an error rather than being silently
+    dropped. Would recur whenever reference data is entered by hand in
+    the dashboard.
+  - **Installed builds throw on a notification type they don't know**
+    (`AppNotificationType.fromWire`). One `event_approved` row would have
+    made the whole Notifications screen fail to load on every current
+    build. `get_notifications()` and `get_unread_notification_count()`
+    now return only the types those builds know, and the phase 3 build
+    reads the `_v2` functions. `_v2` was built from production's live
+    definition, which has one more column (`friendship_status`) than the
+    migration first read for it. The phase 3 build should also make the
+    parser skip unknown types, so the next new type can't cause this
+    again.
 
 - 2026-10-02 — `claims_*.review_note` was written by `reject_venue_claim`
   but `get_notifications()` never surfaced it: a claimant whose venue
