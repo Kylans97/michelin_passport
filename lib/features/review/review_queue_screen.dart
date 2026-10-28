@@ -32,7 +32,9 @@ class _ReviewQueueScreenState extends State<ReviewQueueScreen> {
 
   Future<void> _reload() async {
     final next = _repo.loadQueue();
-    setState(() => _future = next);
+    setState(() {
+      _future = next;
+    });
     await next;
   }
 

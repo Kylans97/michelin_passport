@@ -44,6 +44,15 @@ String _dateOnly(DateTime date) =>
     '${date.month.toString().padLeft(2, '0')}-'
     '${date.day.toString().padLeft(2, '0')}';
 
+/// The one moderation_status any list of events shows. RLS alone isn't
+/// enough: since 20261018130000, admins (events_admin_read) and an event's
+/// own submitter (events_own_submission_read) can also read submitted,
+/// rejected and archived rows, which would otherwise leak into Explore,
+/// What's On, hosted events and wishlists for exactly those people. Only
+/// [EventsRepository.loadEventById] reads without it, so the admin review
+/// preview can open an event before it's published.
+const publishedEventsOnly = 'published';
+
 /// Events V2 Step 8B — filters a raw list of Events down to the ones that
 /// belong in a reverse-host "EVENTS" section on a Restaurant/Hotel/
 /// Private Chef Detail page: not cancelled, and not yet ended per the
@@ -146,7 +155,10 @@ class EventsRepository {
     Set<EventType>? eventTypes,
     String query = '',
   }) async {
-    var builder = _client.from('events').select();
+    // Published only, explicitly: RLS also lets admins and an event's own
+    // submitter read unpublished rows (20261018130000), and those must
+    // never reach a discovery list. See [publishedEventsOnly].
+    var builder = _client.from('events').select().eq('moderation_status', publishedEventsOnly);
     // name/city/venue_name — the textual fields a person would actually
     // type. No country_name here: events only stores country_code (no
     // denormalized name column, unlike restaurants_full/hotels_full), so a
@@ -191,6 +203,7 @@ class EventsRepository {
     final rows = await _client
         .from('events')
         .select()
+        .eq('moderation_status', publishedEventsOnly)
         .eq('country_code', countryCode)
         .order('start_date', ascending: true);
     return [
@@ -203,7 +216,10 @@ class EventsRepository {
   // RestaurantRepository.getCountries()/HotelRepository.getCountries(),
   // sharing the same countries-join helper.
   Future<List<VenueCountry>> getCountries() async {
-    final rows = await _client.from('events').select('country_code');
+    final rows = await _client
+        .from('events')
+        .select('country_code')
+        .eq('moderation_status', publishedEventsOnly);
     final presentCodes = <String>{
       for (final row in rows as List)
         if ((row['country_code'] as String?)?.isNotEmpty ?? false)
@@ -234,7 +250,11 @@ class EventsRepository {
   /// callers resolving a wishlist can skip whatever isn't returned.
   Future<List<Event>> loadEventsByIds(List<String> eventIds) async {
     if (eventIds.isEmpty) return const [];
-    final rows = await _client.from('events').select().inFilter('id', eventIds);
+    final rows = await _client
+        .from('events')
+        .select()
+        .eq('moderation_status', publishedEventsOnly)
+        .inFilter('id', eventIds);
     return [
       for (final row in rows as List)
         Event.fromJson(row as Map<String, dynamic>),
@@ -431,7 +451,11 @@ class EventsRepository {
       for (final row in relRows as List) row['event_id'] as String,
     ];
     if (eventIds.isEmpty) return const [];
-    final rows = await _client.from('events').select().inFilter('id', eventIds);
+    final rows = await _client
+        .from('events')
+        .select()
+        .eq('moderation_status', publishedEventsOnly)
+        .inFilter('id', eventIds);
     final events = [
       for (final row in rows as List)
         Event.fromJson(row as Map<String, dynamic>),

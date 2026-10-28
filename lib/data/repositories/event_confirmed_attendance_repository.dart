@@ -1,3 +1,4 @@
+import 'events_repository.dart' show publishedEventsOnly;
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/event.dart';
 import '../../models/event_chronology.dart';
@@ -329,6 +330,7 @@ class EventConfirmedAttendanceRepository {
     final eventRows = await _client
         .from('events')
         .select()
+        .eq('moderation_status', publishedEventsOnly)
         .inFilter('id', eventIds);
     final eventsById = {
       for (final row in eventRows as List)

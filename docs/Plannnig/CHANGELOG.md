@@ -181,10 +181,19 @@ The format follows Keep a Changelog.
       - cancelling it asked for confirmation first; it is now
         `cancelled` and no longer in the review queue.
 
-      The test event stays in `events` as a cancelled row. Not tried:
-      the admin side (Review, approve or reject, the event
-      notifications), a live edit, or the map pin. Signing in as an
-      admin needs the product owner.
+      The test event stays in `events` as a cancelled row.
+    - **Admin side, signed in as `@kylan`:**
+      - a second test event, "TEST review please ignore", was submitted
+        as `@test`;
+      - Review showed it under EVENTS · 1;
+      - the review screen showed its details;
+      - "Preview the event page" opened the real event page of the
+        unpublished event;
+      - Reject with a note stored `rejected`, the note, `@kylan` as
+        reviewer, and an `event_rejected` notification to `@test`.
+
+      This found the two bugs under Fixed. Still not tried: approving, a
+      live edit, the map pin, and `@test` reading that notification.
 
 - 2026-10-28 — A landing page per managed venue, phase 2 of
   `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. My Venues
@@ -514,6 +523,39 @@ The format follows Keep a Changelog.
   not been run yet.
 
 ### Fixed
+
+- 2026-10-28 — Two bugs found trying the phase 3 review side on the
+  simulator as the admin `@kylan`, both fixed on `feature/venue-events`:
+  - **Unpublished events showed in an admin's discovery lists.** After
+    `@kylan` rejected the test event "TEST review please ignore", it
+    still appeared in Explore's What's On. Every events list query
+    (Explore, What's On, a country's events, hosted events, wishlists,
+    friends' and past attendance) relied on RLS alone. Since
+    `20261018130000`, RLS also lets admins (`events_admin_read`) and an
+    event's own submitter (`events_own_submission_read`) read submitted,
+    rejected and archived rows. A submitter would have seen their own
+    unapproved event in Explore the same way.
+    - Every list now filters `moderation_status = 'published'` itself
+      (`publishedEventsOnly`), so admins and submitters see exactly what
+      everyone else sees. Regular users and anon were never affected.
+    - Only `loadEventById` stays unfiltered, so the review preview can
+      open an event before it's published.
+    - **Production:** no change needed, because the policies are
+      correct. The shipped build has the same unfiltered queries, but
+      until today no unpublished event existed for anyone to see.
+    - **Test:** `events_published_only_test.dart` records the real REST
+      requests and checks each one.
+    - **Would recur** whenever a new read policy widens access to
+      events. Lists must say what they list rather than inherit RLS.
+  - **The review queue never reloaded** after a decision or a pull to
+    refresh, in debug builds. `setState(() => _future = next)` returns
+    the Future, which Flutter rejects in debug mode, so the state never
+    changed. The decision itself saved; only the list stayed stale.
+    - Fixed there, in the Profile review badge (`_reviewCountFuture`),
+      and in `EventsScreen._reload`, which had the same shape.
+    - Release builds skip that check, so shipped builds were unaffected.
+      It is the same mistake that broke `VenueEventsScreen` during phase
+      3 and was caught by its tests.
 
 - 2026-10-28 — Two gaps found while drafting phase 3, both closed in
   `20261018130000`:
