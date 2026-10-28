@@ -77,9 +77,10 @@ The format follows Keep a Changelog.
       shows with a badge of 2; the queue loads production's pending Flore
       about text and photo, and the photo item shows the private
       submission (signed URL, so the admin storage policy works) in both
-      the header and card frames. No decision was taken in this check:
-      approve/reject, and the Edge Function's admin-JWT publish path,
-      haven't run against production yet.
+      the header and card frames. The product owner then approved both
+      from the app (photo 15:59:28, about text 15:59:57 UTC), each
+      recorded with `@kylan` as reviewer — the first production run of
+      the admin wrappers and of the Edge Function's admin-JWT publish.
     - **Coordination:** a parallel session's branch
       (`feature/editorial-selection`) builds on this commit and carries
       `20261017130000`. It was confirmed unapplied before this push, so
