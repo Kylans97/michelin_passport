@@ -15,6 +15,10 @@ The format follows Keep a Changelog.
   World's 50 Best. App only, no schema change. A plan for World's 50 Best
   page links (no URL is stored yet) is in
   `docs/Architecture/GUIDE_SOURCE_LINKS_PLAN.md`.
+- Prepared, not applied: migration `20261021120000_add_worlds_50_best_urls`
+  (a `worlds_50_best_url` column on `restaurants`/`hotels`, appended to
+  both `_full` views) and verified staging data in
+  `supabase/data/enrichment/guide_source_links/`. Production is unchanged.
 
 ### Fixed
 - Near-miss: 8 `gault_millau_awards.gault_millau_url` values in production

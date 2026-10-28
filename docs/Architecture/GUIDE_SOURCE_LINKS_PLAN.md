@@ -44,7 +44,33 @@ World's 50 Best years (2010–2021). It has no hero rank badge because its
 last ranking was 2021 and `restaurants_full.worlds_50_best_rank` reads only
 the latest list year. That is correct, not a bug.
 
-## Missing data — proposed, awaiting review
+## Status, 2026-10-28 (after the go-ahead to prepare)
+
+Prepared and committed, **not applied**. Production is unchanged.
+- Migration `supabase/migrations/20261021120000_add_worlds_50_best_urls.sql`
+  adds `worlds_50_best_url` to `restaurants` and `hotels` and appends it to
+  `restaurants_full`/`hotels_full`. A static check against production
+  confirms both views keep all 47/43 live columns in place and only
+  append the new one. It was not replay-tested: this machine has no
+  Docker for a local stack.
+- Data, sourced and verified, in
+  `supabase/data/enrichment/guide_source_links/` (method in its README):
+  113/143 restaurant and 123/134 hotel World's 50 Best URLs, 7/8 Austrian
+  Gault&Millau URLs, 21 toque counts. `apply_guide_source_links.sql` does
+  all of it in one transaction with row-count guards, and a read-only dry
+  run matched every count.
+- The site is now **the50.com**; `theworlds50best.com` 301-redirects
+  there. Per-venue profiles (`discovery/Establishments/...`) also exist
+  for venues no longer ranked, so they are what's stored.
+- New findings: QA-232 to QA-236 in `supabase/data/qa_issues.csv`.
+  Notably, Award History is missing 9 verified-restaurant rank-years
+  (QA-234), and profile rank lines can contradict the official lists
+  (QA-235).
+
+Order to go live: apply the migration → run the data SQL → ship the app
+change below. The app change can't merge before the migration is live.
+
+## Missing data — original proposal
 
 ### 1. World's 50 Best venue pages (needs a migration + data)
 
