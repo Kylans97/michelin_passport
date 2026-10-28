@@ -35,7 +35,7 @@ import 'search_query.dart';
 // matching comment.
 // cover_photo_url (20261006120000_add_cover_photo_url_to_full_views.sql) —
 // see restaurantFullColumns' own matching comment.
-// phone (20261014130000_add_hotel_phone.sql) — same deployment-ordering
+// phone (20261016130000_add_hotel_phone.sql) — same deployment-ordering
 // hazard as restaurants' phone: that migration must be applied before a
 // build carrying this list ships, or every hotels_full select fails.
 const hotelFullColumns =
@@ -45,7 +45,8 @@ const hotelFullColumns =
     'worlds_50_best_rank, worlds_50_best_year, starts_on, ends_on, '
     'parent_venue_type, parent_venue_id, opening_weekdays, is_expired, '
     'status, status_since, status_note, created_at, missing_listing_report_id, '
-    'cover_photo_url, phone';
+    'cover_photo_url, cover_focus_x, cover_focus_y, cover_zoom, card_photo_url, '
+    'card_focus_x, card_focus_y, card_zoom, phone';
 
 class HotelRepository {
   HotelRepository(this._client);
@@ -59,9 +60,14 @@ class HotelRepository {
   Future<List<PublishedVenuePhoto>> getPhotos(String hotelId) async {
     final rows = await _client
         .from('hotel_photos')
-        .select('id, image_url, alt_text, display_order')
+        .select(
+          'id, image_url, alt_text, display_order, focus_x, focus_y, zoom, is_card, card_focus_x, card_focus_y, card_zoom',
+        )
         .eq('hotel_id', hotelId)
-        .order('display_order');
+        // ascending: postgrest-dart's order() defaults to DESCENDING, which put
+        // the highest display_order first — the reverse of the cover every card
+        // shows (restaurants_full/hotels_full take the lowest).
+        .order('display_order', ascending: true);
     return [
       for (final row in rows as List)
         PublishedVenuePhoto.fromJson(row as Map<String, dynamic>),

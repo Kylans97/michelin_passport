@@ -7,6 +7,7 @@ import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/utils/mailto_uri.dart';
 import '../../core/widgets/cs_primary_button.dart';
+import '../../core/widgets/framed_image.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
@@ -21,6 +22,8 @@ import '../../models/venue_photo_submission_status.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
+import 'adjust_photo_framing_screen.dart';
+import 'card_photo_screen.dart';
 import 'upload_venue_photo_screen.dart';
 import 'venue_preview_photo_merge.dart';
 
@@ -63,14 +66,14 @@ Uri venueQuestionMailtoUri(String venueName) =>
 /// (validate -> strip EXIF -> hash -> upload -> insert). Ordering reads
 /// restaurant_photos/hotel_photos/private_chef_photos' own display_order
 /// directly and writes ONLY through reorder_venue_photos() — never a
-/// direct display_order UPDATE from this client. There is deliberately
-/// NO interactive "position within the frame" control anywhere in this
-/// feature: no schema field exists to persist one into (venue_photo_
-/// submissions has no focus_x/focus_y at all, and the APPROVED tables'
-/// own focus_x/focus_y is never read by any rendering code today — see
-/// UploadVenuePhotoScreen/VenuePhotoFramePreview's own doc comments) —
-/// that's a schema decision left to be made deliberately, not one this
-/// UI task should make by building around it.
+/// direct display_order UPDATE from this client. Framing (focus point +
+/// zoom, 20261014120000) is set at upload in UploadVenuePhotoScreen and
+/// can be changed on a published photo through AdjustPhotoFramingScreen
+/// — live at once, via set_venue_photo_framing, never a direct UPDATE.
+/// The first photo is the cover (it leads the page); the arrows reorder.
+/// The small cards show the Card photo instead (20261015120000) — the
+/// cover unless the manager chose another approved photo, with its own
+/// crop — set in CardPhotoScreen from the section below the photo list.
 ///
 /// What this screen does NOT show, and why: address, coordinates, Place
 /// ID, phone, website, MICHELIN stars/Keys, cuisine, and opening status
@@ -224,6 +227,34 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
     }
   }
 
+  Future<void> _chooseCardPhoto(List<PublishedVenuePhoto> published) async {
+    final saved = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => CardPhotoScreen(
+          venue: widget.venue,
+          photos: published,
+          repository: widget.photoRepo,
+        ),
+      ),
+    );
+    if (saved == true && mounted) _loadPhotos();
+  }
+
+  Future<void> _adjustFraming(PublishedVenuePhoto photo) async {
+    final saved = await Navigator.push<bool>(
+      context,
+      MaterialPageRoute(
+        builder: (_) => AdjustPhotoFramingScreen(
+          venue: widget.venue,
+          photo: photo,
+          repository: widget.photoRepo,
+        ),
+      ),
+    );
+    if (saved == true && mounted) _loadPhotos();
+  }
+
   Future<void> _addPhoto(List<PublishedVenuePhoto> published) async {
     final added = await Navigator.push<bool>(
       context,
@@ -345,6 +376,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                     id: mergedPhotos[i].id,
                     imageUrl: mergedPhotos[i].imageUrl,
                     displayOrder: i,
+                    framing: mergedPhotos[i].framing,
                   ),
               ],
               isPreview: true,
@@ -359,6 +391,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                     id: mergedPhotos[i].id,
                     imageUrl: mergedPhotos[i].imageUrl,
                     displayOrder: i,
+                    framing: mergedPhotos[i].framing,
                   ),
               ],
               isPreview: true,
@@ -375,6 +408,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                     privateChefId: chef.id,
                     imageUrl: mergedPhotos[i].imageUrl,
                     displayOrder: i,
+                    framing: mergedPhotos[i].framing,
                   ),
               ],
               isPreview: true,
@@ -652,7 +686,12 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
     return FutureBuilder<_PhotosState>(
       future: _photosFuture,
       builder: (context, snap) {
-        if (snap.connectionState == ConnectionState.waiting) {
+        // Spinner only on the FIRST load. A reload (after a reorder, Make
+        // cover, a framing save or a new photo) keeps showing the previous
+        // list — FutureBuilder carries the last data into the new future's
+        // waiting state — so the page doesn't collapse to a spinner and
+        // throw the manager back to the top mid-reorder.
+        if (snap.connectionState == ConnectionState.waiting && !snap.hasData) {
           return const Center(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: CsSpacing.lg),
@@ -677,7 +716,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
             Text(
               state.published.isEmpty
                   ? 'No photos published yet.'
-                  : 'The first photo below is the one that appears first on the venue\'s page.',
+                  : 'Your cover is the first photo: it leads your page.',
               style: CsTypography.body.copyWith(color: AppColors.taupe),
             ),
             if (isPrivateChef && state.published.isNotEmpty) ...[
@@ -700,13 +739,24 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                   canMoveUp: i > 0,
                   canMoveDown: i < state.published.length - 1,
                   busy: _reordering,
+                  isPrivateChef: isPrivateChef,
                   onMoveUp: () => _movePhoto(state.published, i, -1),
                   onMoveDown: () => _movePhoto(state.published, i, 1),
+                  onAdjustFraming: () => _adjustFraming(state.published[i]),
                 ),
             ],
             if (_photosError != null) ...[
               const SizedBox(height: CsSpacing.sm),
               Text(_photosError!, style: CsTypography.metadata.copyWith(color: AppColors.error)),
+            ],
+            if (state.published.isNotEmpty) ...[
+              const SizedBox(height: CsSpacing.lg),
+              _CardPhotoSection(
+                published: state.published,
+                isPrivateChef: isPrivateChef,
+                busy: _reordering,
+                onChange: () => _chooseCardPhoto(state.published),
+              ),
             ],
             if (state.openSubmissions.isNotEmpty) ...[
               const SizedBox(height: CsSpacing.lg),
@@ -787,14 +837,19 @@ class _StatusBanner extends StatelessWidget {
 /// "which photo comes first" is never ambiguous), and up/down controls
 /// that call VenueManagementScreen's own _movePhoto, which goes through
 /// reorder_venue_photos — this row never writes display_order itself.
+/// One published photo: its thumbnail (with the manager's header framing
+/// applied), "Cover" on the first, Adjust framing (live straight away,
+/// see AdjustPhotoFramingScreen), and the move arrows.
 class _PublishedPhotoRow extends StatelessWidget {
   final PublishedVenuePhoto photo;
   final bool isFirst;
   final bool canMoveUp;
   final bool canMoveDown;
   final bool busy;
+  final bool isPrivateChef;
   final VoidCallback onMoveUp;
   final VoidCallback onMoveDown;
+  final VoidCallback onAdjustFraming;
 
   const _PublishedPhotoRow({
     required this.photo,
@@ -802,9 +857,17 @@ class _PublishedPhotoRow extends StatelessWidget {
     required this.canMoveUp,
     required this.canMoveDown,
     required this.busy,
+    required this.isPrivateChef,
     required this.onMoveUp,
     required this.onMoveDown,
+    required this.onAdjustFraming,
   });
+
+  static final _actionStyle = TextButton.styleFrom(
+    padding: EdgeInsets.zero,
+    minimumSize: const Size(0, 32),
+    alignment: Alignment.centerLeft,
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -814,25 +877,45 @@ class _PublishedPhotoRow extends StatelessWidget {
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
-            child: Image.network(
-              photo.imageUrl,
+            child: SizedBox(
               width: 56,
               height: 56,
-              fit: BoxFit.cover,
-              errorBuilder: (_, _, _) => const SizedBox(width: 56, height: 56),
+              child: FramedImage(
+                framing: isPrivateChef ? photo.framing.forChef : photo.framing,
+                builder: (alignment) => Image.network(
+                  photo.imageUrl,
+                  fit: BoxFit.cover,
+                  alignment: alignment,
+                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                ),
+              ),
             ),
           ),
           const SizedBox(width: CsSpacing.sm),
           Expanded(
-            child: isFirst
-                ? Text(
-                    'Appears first',
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (isFirst)
+                  Text(
+                    'Cover',
                     style: CsTypography.body.copyWith(
                       color: AppColors.forestGreen,
                       fontWeight: FontWeight.w600,
                     ),
-                  )
-                : const SizedBox.shrink(),
+                  ),
+                TextButton(
+                  onPressed: busy ? null : onAdjustFraming,
+                  style: _actionStyle,
+                  child: Text(
+                    'Adjust framing',
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.taupe,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
           IconButton(
             onPressed: busy || !canMoveUp ? null : onMoveUp,
@@ -848,6 +931,78 @@ class _PublishedPhotoRow extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+/// The Card photo: what the small cards (Explore, search, Passport…)
+/// show — the flagged card photo, else the cover — at card size with its
+/// card crop, and "Change" into CardPhotoScreen.
+class _CardPhotoSection extends StatelessWidget {
+  final List<PublishedVenuePhoto> published;
+  final bool isPrivateChef;
+  final bool busy;
+  final VoidCallback onChange;
+
+  const _CardPhotoSection({
+    required this.published,
+    required this.isPrivateChef,
+    required this.busy,
+    required this.onChange,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final card = CardPhotoScreen.currentCardPhoto(published)!;
+    final chosen = published.any((p) => p.isCard);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text('CARD PHOTO', style: CsTypography.eyebrow.copyWith(color: AppColors.taupe)),
+        const SizedBox(height: CsSpacing.sm),
+        Text(
+          'The small photo on cards in Explore, search and Passport.',
+          style: CsTypography.body.copyWith(color: AppColors.taupe),
+        ),
+        const SizedBox(height: CsSpacing.sm),
+        Row(
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: SizedBox(
+                width: 56,
+                height: isPrivateChef ? 70 : 56,
+                child: FramedImage(
+                  framing: isPrivateChef ? card.cardFraming.forChefCard : card.cardFraming,
+                  builder: (alignment) => Image.network(
+                    card.imageUrl,
+                    fit: BoxFit.cover,
+                    alignment: alignment,
+                    errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(width: CsSpacing.sm),
+            Expanded(
+              child: Text(
+                chosen ? 'Your chosen photo' : 'Same as your cover',
+                style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+              ),
+            ),
+            TextButton(
+              onPressed: busy ? null : onChange,
+              child: Text(
+                'Change',
+                style: CsTypography.metadata.copyWith(
+                  color: AppColors.forestGreen,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
     );
   }
 }

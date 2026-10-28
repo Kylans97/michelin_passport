@@ -3,7 +3,7 @@
 -- supabase/data/enrichment/michelin_nl_stars_2026/prepared_nl_stars_2026.sql.
 --
 -- Written 2026-10-28. Filename timestamp is a sequence number only (named
--- after the highest existing migration, 20261014130000), not this date.
+-- after the highest existing migration, 20261016130000), not this date.
 --
 -- Adds ONLY public.cities rows -- no restaurant, award or other row. Checked
 -- against production on 2026-10-28 (read-only query run by the user): these

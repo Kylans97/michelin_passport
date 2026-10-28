@@ -1,8 +1,8 @@
 -- World's 50 Best catalogue completion: countries and cities prerequisite.
 --
 -- Written 2026-10-28. Filename timestamp is a sequence number only (named
--- after the highest existing migration, 20261013120000 -- the
--- friend-request backfill, already applied), not this date.
+-- after the highest existing migration, 20261015120000 -- the
+-- venue card photo, already applied), not this date.
 --
 -- Adds ONLY public.countries and public.cities rows -- no venue, award or
 -- ranking row. It is the prerequisite for

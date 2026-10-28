@@ -1,3 +1,5 @@
+import 'photo_framing.dart';
+
 // Maps a row from `public.restaurants_full` (see
 // supabase/migrations/20260805141519_production_schema_v1.sql). Only fields
 // the view actually exposes are modelled — see that view's SELECT list
@@ -131,6 +133,19 @@ class Restaurant {
   // already in hand.
   final String? coverImageUrl;
 
+  // How the manager framed that cover photo (cover_focus_x/cover_focus_y/
+  // cover_zoom, 20261014120000). Centred when there is no cover.
+  final PhotoFraming coverFraming;
+
+  // The photo the venue chose for the small cards (card_photo_url,
+  // 20261015120000 — its flagged card photo, else the cover) and its
+  // card crop. Every card uses these; only the detail hero uses the
+  // cover. [cardImageUrl] falls back to the cover when no card photo is
+  // known (a server without the column, or a model built without it).
+  final String? cardPhotoUrl;
+  final PhotoFraming cardFraming;
+  String? get cardImageUrl => cardPhotoUrl ?? coverImageUrl;
+
   // No latitude/longitude here. `location` is PostGIS
   // geography(Point,4326); over PostgREST it comes back as an EWKB hex
   // string, not GeoJSON or a {lat, lng} pair, and decoding that client-side
@@ -180,6 +195,9 @@ class Restaurant {
     this.stampArtworkUrl,
     this.stampArtworkApproved = false,
     this.coverImageUrl,
+    this.coverFraming = PhotoFraming.center,
+    this.cardPhotoUrl,
+    this.cardFraming = PhotoFraming.center,
   });
 
   /// True when the restaurant currently holds at least one Michelin star.
@@ -243,5 +261,10 @@ class Restaurant {
     stampArtworkUrl: json['stamp_artwork_url'] as String?,
     stampArtworkApproved: (json['stamp_artwork_approved'] as bool?) ?? false,
     coverImageUrl: json['cover_photo_url'] as String?,
+    coverFraming: PhotoFraming.fromJson(json, prefix: 'cover_'),
+    cardPhotoUrl: json['card_photo_url'] as String?,
+    cardFraming: json['card_photo_url'] != null
+        ? PhotoFraming.fromJson(json, prefix: 'card_')
+        : PhotoFraming.center,
   );
 }

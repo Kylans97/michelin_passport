@@ -123,7 +123,7 @@ class _CommonBar extends StatelessWidget {
                       Positioned(
                         left: i * 24.0,
                         child: RoundVenueThumbnail(
-                          photoUrl: shown[i].coverImageUrl,
+                          photoUrl: shown[i].cardImageUrl,
                           venueName: shown[i].name,
                         ),
                       ),

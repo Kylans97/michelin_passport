@@ -17,6 +17,7 @@ import 'package:michelin_passport/data/repositories/venue_photo_submission_repos
 import 'package:michelin_passport/features/profile/upload_venue_photo_screen.dart';
 import 'package:michelin_passport/features/profile/widgets/venue_photo_picker.dart';
 import 'package:michelin_passport/models/managed_venue.dart';
+import 'package:michelin_passport/models/photo_framing.dart';
 import 'package:michelin_passport/models/private_chef.dart';
 import 'package:michelin_passport/models/published_venue_photo.dart';
 import 'package:michelin_passport/models/restaurant.dart';
@@ -41,7 +42,12 @@ SupabaseClient _dummyClient() => SupabaseClient(
   authOptions: const AuthClientOptions(autoRefreshToken: false),
 );
 
-typedef _SubmitCall = ({String venueType, String venueId, String? replacesPhotoId});
+typedef _SubmitCall = ({
+  String venueType,
+  String venueId,
+  String? replacesPhotoId,
+  PhotoFraming framing,
+});
 
 class _FakeVenuePhotoSubmissionRepository extends VenuePhotoSubmissionRepository {
   _FakeVenuePhotoSubmissionRepository({this.submitError, this.failOnCallNumber, this.onSubmit})
@@ -65,13 +71,19 @@ class _FakeVenuePhotoSubmissionRepository extends VenuePhotoSubmissionRepository
     required String venueId,
     required Uint8List rawBytes,
     String? replacesPhotoId,
+    PhotoFraming framing = PhotoFraming.center,
   }) async {
     _calls++;
     if (submitError != null) throw submitError!;
     if (failOnCallNumber != null && _calls == failOnCallNumber) {
       throw Exception('simulated upload failure');
     }
-    onSubmit?.call((venueType: venueType, venueId: venueId, replacesPhotoId: replacesPhotoId));
+    onSubmit?.call((
+      venueType: venueType,
+      venueId: venueId,
+      replacesPhotoId: replacesPhotoId,
+      framing: framing,
+    ));
     return {'id': 'new-submission-$_calls'};
   }
 }
@@ -233,7 +245,8 @@ void main() {
       await _pump(tester, pickPhotos: _pickerReturning([_validBytes]));
       await _tapChoose(tester);
       expect(find.text('AS THE HEADER'), findsOneWidget);
-      expect(find.text('AS A CARD'), findsOneWidget);
+      // The card crop is set separately, in CardPhotoScreen.
+      expect(find.text('AS A CARD'), findsNothing);
       expect(find.text('Submit for review'), findsOneWidget);
       // Exactly one photo: no "photo X of Y" progress clutter.
       expect(find.textContaining('PHOTO 1 OF'), findsNothing);

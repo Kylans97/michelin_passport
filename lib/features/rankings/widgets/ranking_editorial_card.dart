@@ -4,6 +4,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../models/photo_framing.dart';
 
 /// PASSPORT — RANKING UI REDESIGN V1 (Color Hierarchy Correction pass):
 /// the shared horizontal, editorial ranking row built once and reused by
@@ -39,6 +40,7 @@ import '../../../core/widgets/venue_thumbnail.dart';
 class RankingEditorialCard extends StatelessWidget {
   final int rank;
   final String? imageUrl;
+  final PhotoFraming imageFraming;
   final String title;
   final String subtitle;
   final Widget? recognition;
@@ -50,6 +52,7 @@ class RankingEditorialCard extends StatelessWidget {
     super.key,
     required this.rank,
     required this.imageUrl,
+    this.imageFraming = PhotoFraming.center,
     required this.title,
     required this.subtitle,
     this.recognition,
@@ -127,7 +130,11 @@ class RankingEditorialCard extends StatelessWidget {
                     top: 0,
                     bottom: 0,
                     width: imageWidth,
-                    child: _RankedImage(rank: rank, imageUrl: imageUrl),
+                    child: _RankedImage(
+                      rank: rank,
+                      imageUrl: imageUrl,
+                      framing: imageFraming,
+                    ),
                   ),
                 ],
               );
@@ -241,7 +248,12 @@ class _CardContent extends StatelessWidget {
 class _RankedImage extends StatelessWidget {
   final int rank;
   final String? imageUrl;
-  const _RankedImage({required this.rank, required this.imageUrl});
+  final PhotoFraming framing;
+  const _RankedImage({
+    required this.rank,
+    required this.imageUrl,
+    required this.framing,
+  });
 
   static const _leftCorners = BorderRadius.only(
     topLeft: Radius.circular(CsRadius.card),
@@ -254,6 +266,7 @@ class _RankedImage extends StatelessWidget {
     children: [
       VenueThumbnail(
         imageUrl: imageUrl,
+        framing: framing,
         width: double.infinity,
         height: double.infinity,
         borderRadius: _leftCorners,

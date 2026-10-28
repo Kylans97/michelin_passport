@@ -56,6 +56,9 @@ class HotelHero extends StatelessWidget {
     return VenueDetailHero(
       title: hotel.name,
       imageUrls: imageUrls,
+      imageFramings: photos.isNotEmpty
+          ? [for (final p in photos) p.framing]
+          : [hotel.coverFraming],
       photos: photos,
       isPreview: isPreview,
       primaryRecognition: hotel.hasMichelinKeys

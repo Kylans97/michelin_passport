@@ -211,9 +211,14 @@ class PrivateChefRepository {
   Future<List<PrivateChefPhoto>> getChefPhotos(String privateChefId) async {
     final rows = await _client
         .from('private_chef_photos')
-        .select('id, private_chef_id, image_url, alt_text, display_order')
+        .select(
+          'id, private_chef_id, image_url, alt_text, display_order, '
+          'focus_x, focus_y, zoom, is_card, card_focus_x, card_focus_y, card_zoom',
+        )
         .eq('private_chef_id', privateChefId)
-        .order('display_order');
+        // ascending: order() defaults to DESCENDING — see
+        // RestaurantRepository.getPhotos.
+        .order('display_order', ascending: true);
     return [
       for (final row in rows as List)
         PrivateChefPhoto.fromJson(row as Map<String, dynamic>),
@@ -235,17 +240,26 @@ class PrivateChefRepository {
     if (privateChefIds.isEmpty) return {};
     final rows = await _client
         .from('private_chef_photos')
-        .select('id, private_chef_id, image_url, alt_text, display_order')
+        .select(
+          'id, private_chef_id, image_url, alt_text, display_order, '
+          'focus_x, focus_y, zoom, is_card, card_focus_x, card_focus_y, card_zoom',
+        )
         .inFilter('private_chef_id', privateChefIds)
-        .order('private_chef_id')
-        .order('display_order');
+        .order('private_chef_id', ascending: true)
+        // ascending: order() defaults to DESCENDING — see
+        // RestaurantRepository.getPhotos.
+        .order('display_order', ascending: true);
     final coverByChefId = <String, PrivateChefPhoto>{};
     for (final row in rows as List) {
       final photo = PrivateChefPhoto.fromJson(row as Map<String, dynamic>);
-      // Rows arrive display_order-ascending within each chef, so the
-      // first one seen per chef is always the cover — putIfAbsent skips
-      // every later (higher-display_order) row for that same chef.
-      coverByChefId.putIfAbsent(photo.privateChefId, () => photo);
+      // The chef's chosen card photo (is_card, 20261015120000) wins;
+      // otherwise rows arrive display_order-ascending within each chef,
+      // so the first one seen is the cover and putIfAbsent keeps it.
+      if (photo.isCard) {
+        coverByChefId[photo.privateChefId] = photo;
+      } else {
+        coverByChefId.putIfAbsent(photo.privateChefId, () => photo);
+      }
     }
     return coverByChefId;
   }

@@ -85,6 +85,9 @@ class RestaurantHero extends StatelessWidget {
     return VenueDetailHero(
       title: restaurant.name,
       imageUrls: imageUrls,
+      imageFramings: photos.isNotEmpty
+          ? [for (final p in photos) p.framing]
+          : [restaurant.coverFraming],
       photos: photos,
       isPreview: isPreview,
       primaryRecognition: restaurant.hasMichelinStar

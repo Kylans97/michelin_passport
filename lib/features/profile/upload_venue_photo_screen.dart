@@ -10,7 +10,8 @@ import '../../data/repositories/venue_photo_submission_repository.dart';
 import '../../data/services/venue_photo_pipeline.dart';
 import '../../models/managed_venue.dart';
 import '../../models/published_venue_photo.dart';
-import 'widgets/venue_photo_frame_preview.dart';
+import '../../models/photo_framing.dart';
+import 'widgets/photo_framing_editor.dart';
 import 'widgets/venue_photo_picker.dart';
 
 /// One or more photos, from pick through submission — pushed from
@@ -72,6 +73,21 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
   List<StagedVenuePhoto> _staged = [];
   List<String> _rejectedReasons = [];
   int _currentIndex = 0;
+
+  // The framing chosen for each staged photo, by index into [_staged];
+  // absent means untouched (the venue type's default). Cleared whenever
+  // a new set is picked.
+  Map<int, PhotoFraming> _framings = {};
+
+  PhotoFraming _storable(PhotoFraming framing) =>
+      widget.venue.venueTypeWireValue == 'private_chef'
+      ? framing.storedForChef
+      : framing;
+
+  PhotoFraming get _defaultFraming =>
+      widget.venue.venueTypeWireValue == 'private_chef'
+      ? PhotoFraming.chefDefault
+      : PhotoFraming.center;
   String? _replacesPhotoId;
   bool _submitting = false;
   bool _submitted = false;
@@ -117,6 +133,7 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
       _staged = valid;
       _rejectedReasons = reasons;
       _currentIndex = 0;
+      _framings = {};
       _replacesPhotoId = null;
       _submitError = null;
     });
@@ -154,7 +171,8 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
     var successes = 0;
     var failures = 0;
     final permanentMessages = <String>{};
-    for (final photo in _staged) {
+    for (var i = 0; i < _staged.length; i++) {
+      final photo = _staged[i];
       try {
         await _repo.submit(
           userId: userId,
@@ -162,6 +180,7 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
           venueId: widget.venue.id,
           rawBytes: photo.bytes,
           replacesPhotoId: _staged.length == 1 ? _replacesPhotoId : null,
+          framing: _storable(_framings[i] ?? _defaultFraming),
         );
         successes++;
       } on StateError catch (e) {
@@ -308,9 +327,15 @@ class _UploadVenuePhotoScreenState extends State<UploadVenuePhotoScreen> {
           Text('PHOTO ${_currentIndex + 1} OF $total', style: CsTypography.eyebrow.copyWith(color: AppColors.taupe)),
           const SizedBox(height: CsSpacing.sm),
         ],
-        VenuePhotoFramePreview(
+        PhotoFramingEditor(
+          // Keyed per photo so stepping to the next one starts from that
+          // photo's own framing, not the previous one's gesture state.
+          key: ValueKey(_currentIndex),
           image: MemoryImage(current.bytes),
           venueTypeWireValue: widget.venue.venueTypeWireValue,
+          initial: _framings[_currentIndex] ?? _defaultFraming,
+          defaultFraming: _defaultFraming,
+          onChanged: (framing) => _framings[_currentIndex] = framing,
         ),
         const SizedBox(height: CsSpacing.md),
         TextButton(

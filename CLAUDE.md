@@ -147,9 +147,33 @@ stop and say so rather than working around it.
   `hotel_photos` / `private_chef_photos`), never on submissions, and
   changes only through the `reorder_venue_photos` RPC — never a direct
   client-side `display_order` write.
-- A manager may change only `display_order` on their venue's published
-  photos. A `BEFORE UPDATE` trigger enforces that restriction, since RLS
-  itself cannot restrict which columns an update touches.
+- A manager may change only the **order**, the **framing**, and **which
+  approved photo is the card photo** of their venue's published photos —
+  never the image itself (`image_url`) or its `alt_text`. Framing is a
+  focus point plus a zoom factor, kept twice per photo: the header crop
+  (`focus_x`/`focus_y`/`zoom`) and the card crop (`card_focus_x`/
+  `card_focus_y`/`card_zoom`); focus 0–1, zoom 1–4. It is presentation of
+  the same verified photo, not new content, so it goes live with no
+  review. Order changes only through `reorder_venue_photos`, header
+  framing only through `set_venue_photo_framing`, the card photo and its
+  crop only through `set_venue_card_photo` — never a direct client-side
+  write to any of them. A `BEFORE UPDATE` trigger refuses every direct
+  manager write to `image_url`, `alt_text` and all the framing and card
+  columns, since RLS itself cannot restrict which columns an update
+  touches. Header framing set at upload travels on the submission and is
+  carried across by `approve_venue_photo`, which also keeps a replaced
+  card photo the card photo. *Revised 2026-10-28 twice, both decided by
+  the product owner (was: "only `display_order`"): framing without a
+  re-review (`20261014120000_add_venue_photo_framing.sql`), then a
+  separate card photo (`20261015120000_add_venue_card_photo.sql`).*
+- The **cover** is a venue's lowest-`display_order` published photo; it
+  leads the detail page (`restaurants_full`/`hotels_full.cover_photo_url`
+  plus `cover_focus_x`/`cover_focus_y`/`cover_zoom`). Choosing a cover
+  means reordering; there is no separate cover column. The **card
+  photo** — what every card shows (Explore, search, Passport, Wishlist,
+  Rankings, Guides, the chef card) — is the photo flagged `is_card` (at
+  most one per venue), else the cover: `card_photo_url` plus
+  `card_focus_x`/`card_focus_y`/`card_zoom` on the same views.
 - A manager's "Preview my page" (`VenueManagementScreen._openPreview`)
   renders the **real** `RestaurantDetailScreen`/`HotelDetailScreen`/
   `PrivateChefDetailScreen`, given their pending content via optional

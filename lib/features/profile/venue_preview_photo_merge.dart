@@ -1,3 +1,4 @@
+import '../../models/photo_framing.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/venue_photo_submission_status.dart';
 
@@ -15,8 +16,13 @@ import '../../models/venue_photo_submission_status.dart';
 class MergedPreviewPhoto {
   final String id;
   final String imageUrl;
+  final PhotoFraming framing;
 
-  const MergedPreviewPhoto({required this.id, required this.imageUrl});
+  const MergedPreviewPhoto({
+    required this.id,
+    required this.imageUrl,
+    this.framing = PhotoFraming.center,
+  });
 }
 
 /// Merges a venue's currently-published photos with the signed-in
@@ -71,7 +77,11 @@ List<MergedPreviewPhoto> mergePreviewPhotoOrder({
 }) {
   final result = [
     for (final photo in published)
-      MergedPreviewPhoto(id: photo.id, imageUrl: photo.imageUrl),
+      MergedPreviewPhoto(
+        id: photo.id,
+        imageUrl: photo.imageUrl,
+        framing: photo.framing,
+      ),
   ];
   final indexByPublishedId = {
     for (var i = 0; i < published.length; i++) published[i].id: i,
@@ -87,7 +97,11 @@ List<MergedPreviewPhoto> mergePreviewPhotoOrder({
     final signedUrl = pendingSignedUrls[submission.storagePath];
     if (signedUrl == null) continue;
 
-    final entry = MergedPreviewPhoto(id: submission.id, imageUrl: signedUrl);
+    final entry = MergedPreviewPhoto(
+      id: submission.id,
+      imageUrl: signedUrl,
+      framing: submission.framing,
+    );
     final replacesIndex = submission.replacesPhotoId == null
         ? null
         : indexByPublishedId[submission.replacesPhotoId];

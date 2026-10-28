@@ -1,7 +1,7 @@
 -- Hotel phone parity with restaurants.phone.
 --
 -- Written 2026-10-28. Filename timestamp is a sequence number only (named
--- after the highest existing migration, 20261014120000), not this date.
+-- after the highest existing migration, 20261016120000), not this date.
 --
 -- 20260819120000_add_restaurant_phone.sql deliberately added `phone` to
 -- restaurants only and named hotel parity as a separate follow-up; this is
@@ -13,12 +13,13 @@
 --     international form (e.g. "+33 1 43 16 30 30"); the Flutter app
 --     derives a tel: URI at call time via lib/core/utils/phone_utils.dart.
 --   - hotels_full is redefined with CREATE OR REPLACE and `phone` appended
---     as the LAST output column, after cover_photo_url. Every existing
+--     as the LAST output column, after card_zoom. Every existing
 --     column keeps its name and ordinal position, so CREATE OR REPLACE is
 --     legal and the view's existing grants are preserved (no drop view --
 --     see the restaurant migration's header for why that matters). The
---     select list below is 20261006120000_add_cover_photo_url_to_full_views
---     .sql's hotels_full verbatim, plus h.phone.
+--     select list below is 20261015120000_add_venue_card_photo.sql's
+--     hotels_full verbatim (the definition production runs today), plus
+--     h.phone.
 --   - No RLS change: hotels' table-level public-read select policy has no
 --     column restriction, so it covers the new column like every other.
 --     No client write grant -- this stays a service_role-managed catalogue
@@ -79,6 +80,13 @@ select
   h.opening_weekdays,
   h.missing_listing_report_id,
   cover.image_url as cover_photo_url,
+  cover.focus_x as cover_focus_x,
+  cover.focus_y as cover_focus_y,
+  cover.zoom as cover_zoom,
+  card.image_url as card_photo_url,
+  card.card_focus_x,
+  card.card_focus_y,
+  card.card_zoom,
   h.phone
 from public.hotels h
 join public.cities ci on ci.id = h.city_id
@@ -92,11 +100,18 @@ left join public.worlds_50_best_hotels w
   on w.hotel_id = h.id
  and w.year = (select max(year) from public.worlds_50_best_hotels where rank is not null)
 left join lateral (
-  select hp.image_url
+  select hp.image_url, hp.focus_x, hp.focus_y, hp.zoom
   from public.hotel_photos hp
   where hp.hotel_id = h.id
   order by hp.display_order
   limit 1
-) cover on true;
+) cover on true
+left join lateral (
+  select hp.image_url, hp.card_focus_x, hp.card_focus_y, hp.card_zoom
+  from public.hotel_photos hp
+  where hp.hotel_id = h.id
+  order by hp.is_card desc, hp.display_order
+  limit 1
+) card on true;
 
 commit;

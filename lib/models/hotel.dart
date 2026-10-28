@@ -1,3 +1,5 @@
+import 'photo_framing.dart';
+
 // Maps a row from `public.hotels_full` (see
 // supabase/migrations/20260805141519_production_schema_v1.sql, and
 // supabase/migrations/20260807150000_hotel_michelin_keys_nullable.sql /
@@ -53,7 +55,7 @@ class Hotel {
 
   // Human-readable international format (e.g. "+33 1 43 16 30 30") --
   // not a URI. Mirrors Restaurant.phone; added by
-  // 20261014130000_add_hotel_phone.sql. See lib/core/utils/phone_utils.dart
+  // 20261016130000_add_hotel_phone.sql. See lib/core/utils/phone_utils.dart
   // for deriving a tel: URI from this at call time. Nullable.
   final String? phone;
 
@@ -108,6 +110,19 @@ class Hotel {
   // identical field on Restaurant for full semantics.
   final String? coverImageUrl;
 
+  // How the manager framed that cover photo (cover_focus_x/cover_focus_y/
+  // cover_zoom, 20261014120000). Centred when there is no cover.
+  final PhotoFraming coverFraming;
+
+  // The photo the venue chose for the small cards (card_photo_url,
+  // 20261015120000 — its flagged card photo, else the cover) and its
+  // card crop. Every card uses these; only the detail hero uses the
+  // cover. [cardImageUrl] falls back to the cover when no card photo is
+  // known (a server without the column, or a model built without it).
+  final String? cardPhotoUrl;
+  final PhotoFraming cardFraming;
+  String? get cardImageUrl => cardPhotoUrl ?? coverImageUrl;
+
   const Hotel({
     required this.id,
     required this.hotelCode,
@@ -142,6 +157,9 @@ class Hotel {
     this.stampArtworkUrl,
     this.stampArtworkApproved = false,
     this.coverImageUrl,
+    this.coverFraming = PhotoFraming.center,
+    this.cardPhotoUrl,
+    this.cardFraming = PhotoFraming.center,
   });
 
   /// True when the hotel currently holds a confirmed MICHELIN Key value.
@@ -204,5 +222,10 @@ class Hotel {
     stampArtworkUrl: json['stamp_artwork_url'] as String?,
     stampArtworkApproved: (json['stamp_artwork_approved'] as bool?) ?? false,
     coverImageUrl: json['cover_photo_url'] as String?,
+    coverFraming: PhotoFraming.fromJson(json, prefix: 'cover_'),
+    cardPhotoUrl: json['card_photo_url'] as String?,
+    cardFraming: json['card_photo_url'] != null
+        ? PhotoFraming.fromJson(json, prefix: 'card_')
+        : PhotoFraming.center,
   );
 }

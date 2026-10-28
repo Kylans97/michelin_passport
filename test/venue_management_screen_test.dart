@@ -12,6 +12,8 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_about_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_photo_submission_repository.dart';
+import 'package:michelin_passport/features/profile/adjust_photo_framing_screen.dart';
+import 'package:michelin_passport/features/profile/card_photo_screen.dart';
 import 'package:michelin_passport/features/profile/venue_management_screen.dart';
 import 'package:michelin_passport/features/restaurants/restaurant_detail_screen.dart';
 import 'package:michelin_passport/models/managed_venue.dart';
@@ -418,7 +420,81 @@ void main() {
       expect(find.byIcon(Icons.keyboard_arrow_up_rounded), findsNothing);
     });
 
-    testWidgets('the first published photo is tagged "Appears first", others are not', (
+    testWidgets('the first published photo is tagged "Cover"; there is no '
+        '"Make cover" any more — the arrows reorder', (tester) async {
+      await _pump(
+        tester,
+        _FakeVenueAboutRepository(),
+        photoRepo: _FakeVenuePhotoSubmissionRepository(
+          published: const [
+            PublishedVenuePhoto(id: 'p1', imageUrl: 'https://example.test/1.jpg', displayOrder: 0),
+            PublishedVenuePhoto(id: 'p2', imageUrl: 'https://example.test/2.jpg', displayOrder: 1),
+          ],
+        ),
+      );
+      expect(find.text('Cover'), findsOneWidget);
+      expect(find.text('Make cover'), findsNothing);
+      expect(find.text('Adjust framing'), findsNWidgets(2));
+      expect(find.text('Your cover is the first photo: it leads your page.'), findsOneWidget);
+    });
+
+    testWidgets('a Card photo section sits below the photos and above the '
+        'submissions: "Same as your cover" until one is chosen', (tester) async {
+      await _pump(
+        tester,
+        _FakeVenueAboutRepository(),
+        photoRepo: _FakeVenuePhotoSubmissionRepository(
+          published: const [
+            PublishedVenuePhoto(id: 'p1', imageUrl: 'https://example.test/1.jpg', displayOrder: 0),
+            PublishedVenuePhoto(id: 'p2', imageUrl: 'https://example.test/2.jpg', displayOrder: 1),
+          ],
+          openSubmissions: [
+            VenuePhotoSubmissionSummary(
+              id: 's1',
+              storagePath: 'x/y.jpg',
+              status: VenuePhotoSubmissionStatus.pending,
+              submittedAt: DateTime(2026, 10, 28),
+            ),
+          ],
+        ),
+      );
+      expect(find.text('CARD PHOTO'), findsOneWidget);
+      expect(find.text('Same as your cover'), findsOneWidget);
+      final card = tester.getTopLeft(find.text('CARD PHOTO')).dy;
+      expect(card, greaterThan(tester.getTopLeft(find.text('Cover')).dy));
+      expect(
+        card,
+        lessThan(tester.getTopLeft(find.text('AWAITING OR NOT APPROVED')).dy),
+      );
+    });
+
+    testWidgets('a chosen card photo reads "Your chosen photo", and Change '
+        'opens the Card photo screen', (tester) async {
+      await _pump(
+        tester,
+        _FakeVenueAboutRepository(),
+        photoRepo: _FakeVenuePhotoSubmissionRepository(
+          published: const [
+            PublishedVenuePhoto(id: 'p1', imageUrl: 'https://example.test/1.jpg', displayOrder: 0),
+            PublishedVenuePhoto(id: 'p2', imageUrl: 'https://example.test/2.jpg', displayOrder: 1, isCard: true),
+          ],
+        ),
+      );
+      expect(find.text('Your chosen photo'), findsOneWidget);
+      await tester.ensureVisible(find.text('Change'));
+      await tester.tap(find.text('Change'));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(find.byType(CardPhotoScreen), findsOneWidget);
+    });
+
+    testWidgets('no photos, no Card photo section', (tester) async {
+      await _pump(tester, _FakeVenueAboutRepository());
+      expect(find.text('CARD PHOTO'), findsNothing);
+    });
+
+    testWidgets('a reorder keeps the photo list on screen while it reloads, '
+        'never collapsing to a spinner (which threw the page back to the top)', (
       tester,
     ) async {
       await _pump(
@@ -431,7 +507,35 @@ void main() {
           ],
         ),
       );
-      expect(find.text('Appears first'), findsOneWidget);
+      final down = find.byIcon(Icons.keyboard_arrow_down_rounded).first;
+      await tester.ensureVisible(down);
+      final before = tester.getTopLeft(down).dy;
+      await tester.tap(down);
+      // Mid-reload: one frame after the tap, before the reload resolves.
+      await tester.pump();
+      expect(find.text('Cover'), findsOneWidget);
+      expect(find.byType(CircularProgressIndicator), findsNothing);
+      await tester.pumpAndSettle();
+      expect(tester.getTopLeft(find.byIcon(Icons.keyboard_arrow_down_rounded).first).dy, before);
+    });
+
+    testWidgets('"Adjust framing" opens the framing screen for that photo', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        _FakeVenueAboutRepository(),
+        photoRepo: _FakeVenuePhotoSubmissionRepository(
+          published: const [
+            PublishedVenuePhoto(id: 'p1', imageUrl: 'https://example.test/1.jpg', displayOrder: 0),
+          ],
+        ),
+      );
+      await tester.ensureVisible(find.text('Adjust framing'));
+      await tester.tap(find.text('Adjust framing'));
+      await tester.pump();
+      await tester.pump(const Duration(milliseconds: 500));
+      expect(find.byType(AdjustPhotoFramingScreen), findsOneWidget);
     });
 
     testWidgets("the first photo's move-up control is disabled, the last photo's "

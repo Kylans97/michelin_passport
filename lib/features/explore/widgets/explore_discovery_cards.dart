@@ -10,6 +10,8 @@ import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../events/event_date_format.dart';
 import '../discovery_selectors.dart' show FreshFindItem, FreshFindRestaurant, FreshFindHotel, FreshFindEvent;
+import '../../../core/widgets/framed_image.dart';
+import '../../../models/photo_framing.dart';
 
 String _locationOf({required String flagEmoji, required String cityName}) =>
     [if (flagEmoji.isNotEmpty) flagEmoji, cityName].join('  ');
@@ -122,17 +124,26 @@ class ExploreFeaturedEventCard extends StatelessWidget {
 class _DiscoveryImage extends StatelessWidget {
   final String? imageUrl;
   final double logoScale;
-  const _DiscoveryImage({required this.imageUrl, this.logoScale = 0.3});
+  final PhotoFraming framing;
+  const _DiscoveryImage({
+    required this.imageUrl,
+    this.logoScale = 0.3,
+    this.framing = PhotoFraming.center,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (imageUrl == null || imageUrl!.isEmpty) {
       return CsImagePlaceholder(logoScale: logoScale);
     }
-    return Image.network(
-      imageUrl!,
-      fit: BoxFit.cover,
-      errorBuilder: (_, _, _) => CsImagePlaceholder(logoScale: logoScale),
+    return FramedImage(
+      framing: framing,
+      builder: (alignment) => Image.network(
+        imageUrl!,
+        fit: BoxFit.cover,
+        alignment: alignment,
+        errorBuilder: (_, _, _) => CsImagePlaceholder(logoScale: logoScale),
+      ),
     );
   }
 }
@@ -223,7 +234,8 @@ class ExploreDiscoveryRestaurantCard extends StatelessWidget {
               AspectRatio(
                 aspectRatio: 4 / 3,
                 child: _DiscoveryImage(
-                  imageUrl: restaurant.coverImageUrl,
+                  imageUrl: restaurant.cardImageUrl,
+                  framing: restaurant.cardFraming,
                   logoScale: 0.32,
                 ),
               ),
@@ -319,7 +331,8 @@ class ExploreDiscoveryHotelCard extends StatelessWidget {
                   width: 72,
                   height: 72,
                   child: _DiscoveryImage(
-                    imageUrl: hotel.coverImageUrl,
+                    imageUrl: hotel.cardImageUrl,
+                    framing: hotel.cardFraming,
                     logoScale: 0.34,
                   ),
                 ),
@@ -428,7 +441,8 @@ class ExploreFreshFindCard extends StatelessWidget {
               AspectRatio(
                 aspectRatio: 4 / 3,
                 child: _DiscoveryImage(
-                  imageUrl: item.coverImageUrl,
+                  imageUrl: item.cardImageUrl,
+                  framing: item.cardFraming,
                   logoScale: 0.32,
                 ),
               ),

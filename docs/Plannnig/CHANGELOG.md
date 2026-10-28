@@ -14,18 +14,18 @@ The format follows Keep a Changelog.
 - Database organisation
 - Architecture documentation
 - 2026-10-28 — Hotel phone numbers, from user feedback asking for a phone
-  on every World's 50 Best venue. `20261014130000_add_hotel_phone.sql`
+  on every World's 50 Best venue. `20261016130000_add_hotel_phone.sql`
   adds `hotels.phone` and appends it to `hotels_full` (the follow-up
   `20260819120000_add_restaurant_phone.sql` named); `Hotel.phone`,
   `hotelFullColumns` and a Call action on `HotelDetailScreen`, wired exactly
   like the restaurant one (hidden when closed or no usable number).
-  `20261014120000_add_worlds_50_best_countries_and_cities.sql` adds the
+  `20261016120000_add_worlds_50_best_countries_and_cities.sql` adds the
   countries/cities the missing World's 50 Best venues need. **Prepared, not
   applied** — apply order and the catalogue data that goes with them in
   `supabase/data/enrichment/worlds_50_best_2025_2026/W50B_COMPLETION_REPORT.md`.
   The hotel migration must be applied before a build carrying the new
   `hotelFullColumns` ships. Not compiled here (no Flutter SDK in the
-  session). Same day: `20261014140000_add_nl_2026_star_cities.sql` adds
+  session). Same day: `20261016140000_add_nl_2026_star_cities.sql` adds
   the five NL cities the MICHELIN Gids Nederland 2026 update needs
   (`supabase/data/enrichment/michelin_nl_stars_2026/`); also prepared,
   not applied.
@@ -74,6 +74,144 @@ The format follows Keep a Changelog.
   returned normally. Afterwards, verified directly: ledger 89/89 with no
   mismatch, the version present, events unchanged (28, no NULL
   timezones).
+- 2026-10-28 — Venue managers can frame their own photos and choose the
+  cover. Until now every venue photo was a plain centred crop:
+  `focus_x`/`focus_y` had existed on the published photo tables since
+  20260828130000, but nothing wrote or read them, and there was no zoom.
+  - **Framing.** A focus point plus a zoom factor (1–4) per photo, set in
+    a drag/pinch editor that shows the real header frame with the card
+    frame updating beneath it. At upload it replaces the old read-only
+    `VenuePhotoFramePreview` (removed) and travels on the submission;
+    on a published photo, My Venues' new "Adjust framing" saves it
+    straight away through `set_venue_photo_framing`, with no re-review.
+    Applied by one shared `FramedImage` in the detail heroes and every
+    card (Explore, search, Passport, Wishlist, Rankings, Guides, private
+    chefs), using news_articles' existing focus semantics (cover
+    alignment, zoomed around the same point). Private chef photos nobody
+    has framed keep exactly their old hero (−0.8) and card (−0.3)
+    placements.
+  - **Cover.** The first photo is labelled "Cover", with a line saying
+    it's the one on cards in Explore, search and Passport; "Make cover"
+    on any other photo moves it to the front through the existing
+    `reorder_venue_photos`.
+  - **`20261014120000_add_venue_photo_framing.sql`:**
+    - adds `zoom` to the three photo tables and `focus_x`/`focus_y`/`zoom`
+      to `venue_photo_submissions`; existing rows default to centred, 1x,
+      so nothing that shows today changes;
+    - adds `set_venue_photo_framing()` (SECURITY DEFINER,
+      `is_active_venue_manager()` as the only permission source,
+      `revoke … from public, anon`);
+    - extends the column-lock trigger to `zoom`, so direct client writes
+      to the image, alt text, focus or zoom are still refused;
+    - makes `approve_venue_photo` carry the submission's framing across
+      (same signature, so its dashboard-only ACL is kept);
+    - adds `cover_focus_x`/`cover_focus_y`/`cover_zoom` to
+      `restaurants_full`/`hotels_full` (derived from 20261006120000's
+      definitions, new columns appended).
+  - **Settled decision revised, on purpose.** CLAUDE.md said a manager
+    may change only `display_order` on published photos; the product
+    owner decided on 2026-10-28 that framing should be adjustable without
+    review, since it presents the same verified photo rather than adding
+    content. The rule now reads "order and framing, never the image or
+    its alt text", both through their RPCs only; CLAUDE.md also records
+    that the cover is simply the lowest-`display_order` photo.
+  - **Proven locally only.** On a replay of the existing 92 migrations,
+    with a manager, a restaurant and two published photos, then the
+    migration applied: existing photos stayed 0.5/0.5/1; the manager's
+    RPC call worked; another user, out-of-range values and direct UPDATEs
+    were refused; reordering still worked and the view's cover columns
+    followed the cover; a submission framed 0.7/0.25/2.5 published with
+    exactly those values; anon and PUBLIC hold no EXECUTE on the new
+    RPC. A fresh replay of all 93 files gave identical definitions for
+    the functions, views, columns and checks (39 objects). Analyzer
+    clean; 2,449 tests pass, including new ones for the model, the
+    framed image, the editor's drag maths on a real image (and that the
+    page scroll can't take a drag inside the frame), the Adjust screen,
+    and Cover/Make cover. The 2 failing are `live_view_full_columns_test`
+    against production, which lacks the new view columns until this is
+    applied — exactly what that guard is for.
+  - **Rollout order: migration first.** The new build selects the new
+    columns by name, so against a database without them photos would
+    fail to load; installed builds select their own lists and are
+    unaffected.
+  - **Applied to production 2026-10-28** with plain `supabase db push
+    --linked` (ledger 93/93). A read-only snapshot before and after shows
+    the photo tables, submissions and both full views unchanged (5
+    restaurant, 0 hotel, 1 private chef photo, 6 submissions, 1,363
+    restaurants, 775 hotels); every existing photo is at 0.5/0.5/1, the
+    one cover is centred, and venues without a cover have null cover
+    framing. All 39 definitions and their ACLs (functions, views,
+    columns, checks) are identical to the fresh replay's;
+    `set_venue_photo_framing` is SECURITY DEFINER and executable by
+    `authenticated` only (not anon, not PUBLIC); `approve_venue_photo`
+    stays dashboard-only. `live_view_full_columns_test` now passes
+    against production, and the full suite is green (2,451). The app
+    change ships with the next build.
+  - **Not covered:** the feature hasn't been seen signed in on a device
+    (the simulator build talks to production); friend tiles fed by the
+    friend RPCs (visits, wishlist, profile overview) still show covers
+    centred, since those RPCs don't return framing.
+- 2026-10-28 — A venue's card photo: which of its approved photos shows
+  on the small cards, with its own crop, separate from the cover that
+  leads the detail page. Asked for by the product owner (a restaurant may
+  want a different photo, or a different crop, for the small picture).
+  - **My Venues.** A Card photo section sits between the photo list and
+    "Awaiting or not approved": the card photo at card size with its card
+    crop, "Same as your cover" or "Your chosen photo", and Change into a
+    new CardPhotoScreen — pick from the approved photos (cover labelled),
+    frame it in an editable 1:1 card (4:5 for private chefs) with
+    Explore's 4:3 card previewed beneath, Save live with no review;
+    "Follow my cover" clears the choice. "Make cover" is gone from the
+    photo rows (the top photo says Cover; the arrows reorder), and the
+    header editor (Adjust framing, upload) now shows only the header —
+    its card preview had shown a crop the card no longer uses.
+  - **Every card** (Explore, search, Passport, Wishlist, Rankings,
+    Guides, the chef card, the friend tiles) now shows the card photo
+    and card crop; only the detail hero uses the cover. With no choice,
+    or against a server without the columns, the card is the cover.
+  - **`20261015120000_add_venue_card_photo.sql`:**
+    - adds `is_card` (at most one per venue, partial unique index) and
+      `card_focus_x`/`card_focus_y`/`card_zoom` to the three photo
+      tables — a card crop on every photo, so even the cover can be
+      cropped differently for the card; defaults keep today's cards;
+    - adds `set_venue_card_photo()` (SECURITY DEFINER,
+      `is_active_venue_manager()`, `revoke … from public, anon`); a null
+      photo means "follow the cover";
+    - extends the column-lock trigger to the four new columns;
+    - makes `approve_venue_photo` keep a replaced card photo the card
+      photo (its crop reset for the new image);
+    - adds `card_photo_url`/`card_focus_x`/`card_focus_y`/`card_zoom` to
+      `restaurants_full`/`hotels_full` (flagged first, then lowest
+      position), leaving `cover_photo_url` unchanged so installed builds
+      keep showing the cover on cards until they update.
+  - **CLAUDE.md:** the photo rule now reads "order, framing and which
+    approved photo is the card photo, never the image or its alt text",
+    with header and card crops, the three RPCs and both migrations named.
+  - **Proven locally only.** On a replay of the 93 existing migrations
+    with a manager, a restaurant and two published photos, then this
+    one: no choice gives the cover; choosing another photo with a crop
+    works; re-choosing keeps one flag; follow-the-cover clears it;
+    another user, a foreign photo, out-of-range values and direct
+    UPDATEs were refused; an approved replacement of the card photo kept
+    the flag; anon and PUBLIC hold no EXECUTE. A fresh replay of all 94
+    files gave identical definitions (74 objects). Analyzer clean; 2,465
+    tests pass, including new ones for CardPhotoScreen, the card fields,
+    the editor's header and card modes, and the section's place on My
+    Venues. The 2 failing are `live_view_full_columns_test` against
+    production, which lacks the new view columns until this is applied.
+  - **Rollout order: migration first** — the new build selects the card
+    columns by name.
+  - **Applied to production 2026-10-28** with plain `supabase db push
+    --linked` (ledger 94/94). A read-only snapshot before and after shows
+    the photo tables, submissions and both full views unchanged; every
+    photo is at the defaults (no card chosen, centred card crop) and
+    every venue's card equals its cover. All 74 definitions and ACLs are
+    identical to the fresh replay's; `set_venue_card_photo` is SECURITY
+    DEFINER, executable by `authenticated` only (not anon, not PUBLIC);
+    `approve_venue_photo` stays dashboard-only. `live_view_full_columns_
+    test` passes against production and the full suite is green (2,467).
+    Not yet seen on the simulator; the app change ships with the next
+    build.
 
 ### Changed
 
@@ -243,6 +381,46 @@ The format follows Keep a Changelog.
   a long name, the name's minimum); full suite passes (2,431), analyzer
   clean, simulator build installs. Not looked at signed in on a device.
   Would recur with any IdentityRow trailing wider than one short label.
+- 2026-10-28 — Three problems found trying photo framing on the simulator
+  with the developer's test venue, each fixed:
+  - **Every venue photo list was sorted backwards.** postgrest-dart's
+    `order()` defaults to `ascending: false`, so the five
+    `.order('display_order')` photo queries (`RestaurantRepository`/
+    `HotelRepository.getPhotos`, `PrivateChefRepository.getChefPhotos`/
+    `getCoverPhotos`, `VenuePhotoSubmissionRepository.loadPublishedPhotos`)
+    returned the highest position first, while the cards'
+    `restaurants_full`/`hotels_full` cover takes the lowest. My Venues'
+    "first photo" (now "Cover") was therefore never the photo on the
+    cards, the detail gallery opened on the last photo, and each reorder
+    from My Venues wrote the reverse of what the screen showed. Now
+    `ascending: true` on all five. Not fixed, same class: every other
+    unqualified `.order('name')` and the chef history/education
+    `display_order` lists also sort descending. Would recur with any new
+    `order()` call that leaves `ascending` out.
+  - **The framing editor's header frame didn't match the real hero.**
+    VenueDetailHero/PrivateChefHero are SliverAppBars, so on a device the
+    header is the full screen width by expandedHeight (300/320) plus the
+    status bar, with the status bar and toolbar drawn over its top. The
+    editor showed a fixed 300px frame at page width — a different shape —
+    so a face framed there landed higher, half under the status bar, on
+    the detail page. The frame now has the hero's exact proportions,
+    scaled to the page, with that covered strip shaded. The status bar
+    comes from `View.of(context).padding`, not MediaQuery: the editor sits
+    under an AppBar, which zeroes MediaQuery's top padding (the first
+    attempt read 0 there — caught on the simulator, now covered by a
+    test that runs it under an AppBar).
+  - **My Venues jumped to the top after every reorder.** Each reload
+    swapped the photo list for a spinner, collapsing the page; the
+    spinner now shows only on the first load, and a reload keeps the
+    previous list on screen. This is how two of the test taps landed on
+    the wrong row and briefly reordered the test venue's photos; the
+    original order and framing were restored through the app and
+    verified against production.
+  Analyzer clean, full suite passes (2,453), including a test that fails
+  without the reload fix (checked by reverting it). Seen on the
+  simulator: My Venues, the gallery and the search card now agree on the
+  cover; the editor frame measures 326pt on a 402pt phone, (300 + 62) ×
+  0.9, with a 106pt strip.
 
 ---
 

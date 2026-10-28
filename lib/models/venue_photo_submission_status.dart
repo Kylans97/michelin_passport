@@ -1,3 +1,5 @@
+import 'photo_framing.dart';
+
 /// `pending`/`approved`/`rejected` — matches venue_photo_submissions' own
 /// status CHECK constraint exactly. Mirrors VenueAboutSubmissionStatus's
 /// own shape (no `blocked` fourth value here either, for the same
@@ -36,6 +38,10 @@ class VenuePhotoSubmissionSummary {
   /// venue_preview_photo_merge.dart).
   final String? replacesPhotoId;
 
+  /// How the manager framed the photo at upload (20261014120000), so the
+  /// owner preview shows a pending photo exactly as it will publish.
+  final PhotoFraming framing;
+
   const VenuePhotoSubmissionSummary({
     required this.id,
     required this.storagePath,
@@ -43,6 +49,7 @@ class VenuePhotoSubmissionSummary {
     this.reviewNote,
     required this.submittedAt,
     this.replacesPhotoId,
+    this.framing = PhotoFraming.center,
   });
 
   factory VenuePhotoSubmissionSummary.fromJson(Map<String, dynamic> json) =>
@@ -53,5 +60,6 @@ class VenuePhotoSubmissionSummary {
         reviewNote: json['review_note'] as String?,
         submittedAt: DateTime.parse(json['submitted_at'] as String),
         replacesPhotoId: json['replaces_photo_id'] as String?,
+        framing: PhotoFraming.fromJson(json),
       );
 }
