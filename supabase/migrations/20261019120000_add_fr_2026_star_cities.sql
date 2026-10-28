@@ -1,7 +1,6 @@
--- PROPOSED MIGRATION -- not in supabase/migrations, not applied.
--- Move to supabase/migrations/<next sequence number>_add_fr_2026_star_cities.sql
--- only with the product owner's go-ahead (CLAUDE.md: no migrations as a side
--- effect of another task).
+-- Moved into supabase/migrations on 2026-10-28 with the product owner's
+-- go-ahead. Not yet applied. Filename timestamp is a sequence number only
+-- (named after the highest existing migration, 20261018130000), not a date.
 --
 -- MICHELIN Guide France 2026: city-only prerequisite for 110 of the 173
 -- restaurants in supabase/data/enrichment/michelin_fr_stars_2026/

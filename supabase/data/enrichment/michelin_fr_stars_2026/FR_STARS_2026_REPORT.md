@@ -4,7 +4,7 @@ Status: **PREPARED, NOT APPLIED.** Nothing in this folder has touched production
 
 | File | What it does |
 |---|---|
-| `proposed_migration_add_fr_2026_star_cities.sql` | 82 French cities the new restaurants need. **Not in `supabase/migrations/` yet**: it needs your go-ahead first. |
+| `supabase/migrations/20261019120000_add_fr_2026_star_cities.sql` | 82 French cities the new restaurants need. Moved into `supabase/migrations/` with your go-ahead, 2026-10-28; not applied. |
 | `prepared_fr_stars_2026.sql` | 14 star corrections, 410 `michelin_url` fixes, and 173 new restaurants (`rest_1405`–`rest_1577`) with 2026 award rows |
 | `prepared_fr_phone_backfill.sql` | 385 confirmed phones for French restaurants already in production |
 

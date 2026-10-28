@@ -38,7 +38,7 @@
 --   3. 173 restaurants added (rest_1405..rest_1577), each with a 2026 award row.
 --
 -- PREREQUISITE: every new restaurant's city must exist in FR. 82 do not yet:
--- proposed_migration_add_fr_2026_star_cities.sql. The file aborts and names
+-- supabase/migrations/20261019120000_add_fr_2026_star_cities.sql. The file aborts and names
 -- any missing city.
 --
 -- One transaction; every check raises, rolling the whole file back.
