@@ -54,8 +54,8 @@ found is mostly hotel groups whose sites block automated access (QA-201).
 
 | # | File | What |
 |---|---|---|
-| 1 | `supabase/migrations/20261012120000_add_worlds_50_best_countries_and_cities.sql` | 3 countries (EC, PA, VN), 16 cities |
-| 2 | `supabase/migrations/20261012130000_add_hotel_phone.sql` | `hotels.phone` + `hotels_full.phone` |
+| 1 | `supabase/migrations/20261014120000_add_worlds_50_best_countries_and_cities.sql` | 3 countries (EC, PA, VN), 16 cities |
+| 2 | `supabase/migrations/20261014130000_add_hotel_phone.sql` | `hotels.phone` + `hotels_full.phone` |
 | 3 | `prepared_w50b_new_venues_import.sql` (this folder) | 26 restaurants, 22 hotels, 49 ranking rows, 32 award_history rows |
 | 4 | `prepared_w50b_phone_backfill.sql` (this folder) | 151 phone numbers, fills empty values only |
 | 5 | App build with `lib/` changes | Hotel model `phone`, `hotelFullColumns`, Call action on hotel detail |

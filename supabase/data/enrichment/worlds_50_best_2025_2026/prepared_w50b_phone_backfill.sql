@@ -13,7 +13,7 @@
 -- phone columns use, derived from the researched E.164 value.
 --
 -- Fills only empty values (`phone is null`) -- never overwrites a number
--- someone has already set. Prerequisite: 20261012130000_add_hotel_phone.sql.
+-- someone has already set. Prerequisite: 20261014130000_add_hotel_phone.sql.
 -- One transaction; aborts if any code fails to match a row.
 
 begin;

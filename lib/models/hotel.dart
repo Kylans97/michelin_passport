@@ -53,7 +53,7 @@ class Hotel {
 
   // Human-readable international format (e.g. "+33 1 43 16 30 30") --
   // not a URI. Mirrors Restaurant.phone; added by
-  // 20261012130000_add_hotel_phone.sql. See lib/core/utils/phone_utils.dart
+  // 20261014130000_add_hotel_phone.sql. See lib/core/utils/phone_utils.dart
   // for deriving a tel: URI from this at call time. Nullable.
   final String? phone;
 

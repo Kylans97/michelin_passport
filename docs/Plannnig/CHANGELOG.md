@@ -14,18 +14,18 @@ The format follows Keep a Changelog.
 - Database organisation
 - Architecture documentation
 - 2026-10-28 — Hotel phone numbers, from user feedback asking for a phone
-  on every World's 50 Best venue. `20261012130000_add_hotel_phone.sql`
+  on every World's 50 Best venue. `20261014130000_add_hotel_phone.sql`
   adds `hotels.phone` and appends it to `hotels_full` (the follow-up
   `20260819120000_add_restaurant_phone.sql` named); `Hotel.phone`,
   `hotelFullColumns` and a Call action on `HotelDetailScreen`, wired exactly
   like the restaurant one (hidden when closed or no usable number).
-  `20261012120000_add_worlds_50_best_countries_and_cities.sql` adds the
+  `20261014120000_add_worlds_50_best_countries_and_cities.sql` adds the
   countries/cities the missing World's 50 Best venues need. **Prepared, not
   applied** — apply order and the catalogue data that goes with them in
   `supabase/data/enrichment/worlds_50_best_2025_2026/W50B_COMPLETION_REPORT.md`.
   The hotel migration must be applied before a build carrying the new
   `hotelFullColumns` ships. Not compiled here (no Flutter SDK in the
-  session). Same day: `20261012140000_add_nl_2026_star_cities.sql` adds
+  session). Same day: `20261014140000_add_nl_2026_star_cities.sql` adds
   the five NL cities the MICHELIN Gids Nederland 2026 update needs
   (`supabase/data/enrichment/michelin_nl_stars_2026/`); also prepared,
   not applied.

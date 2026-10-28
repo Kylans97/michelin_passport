@@ -15,8 +15,8 @@
 -- whole file back.
 --
 -- PREREQUISITES (checked below, the file aborts if either is missing):
---   1. supabase/migrations/20261012120000_add_worlds_50_best_countries_and_cities.sql
---   2. supabase/migrations/20261012130000_add_hotel_phone.sql
+--   1. supabase/migrations/20261014120000_add_worlds_50_best_countries_and_cities.sql
+--   2. supabase/migrations/20261014130000_add_hotel_phone.sql
 --
 -- SOURCES, all in this folder:
 --   - identity (address, coordinates, Google Place ID): the September
@@ -77,7 +77,7 @@ begin
   end if;
   if not exists (select 1 from information_schema.columns
                   where table_schema = 'public' and table_name = 'hotels' and column_name = 'phone') then
-    raise exception 'hotels.phone missing -- apply 20261012130000_add_hotel_phone.sql first';
+    raise exception 'hotels.phone missing -- apply 20261014130000_add_hotel_phone.sql first';
   end if;
   if not exists (select 1 from public.award_history
                   where award_type = 'michelin_stars' and is_current and guide_year = 2026) then

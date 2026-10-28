@@ -1,7 +1,7 @@
 -- Hotel phone parity with restaurants.phone.
 --
 -- Written 2026-10-28. Filename timestamp is a sequence number only (named
--- after the highest existing migration, 20261012120000), not this date.
+-- after the highest existing migration, 20261014120000), not this date.
 --
 -- 20260819120000_add_restaurant_phone.sql deliberately added `phone` to
 -- restaurants only and named hotel parity as a separate follow-up; this is

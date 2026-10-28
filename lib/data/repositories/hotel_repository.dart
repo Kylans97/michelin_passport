@@ -35,7 +35,7 @@ import 'search_query.dart';
 // matching comment.
 // cover_photo_url (20261006120000_add_cover_photo_url_to_full_views.sql) —
 // see restaurantFullColumns' own matching comment.
-// phone (20261012130000_add_hotel_phone.sql) — same deployment-ordering
+// phone (20261014130000_add_hotel_phone.sql) — same deployment-ordering
 // hazard as restaurants' phone: that migration must be applied before a
 // build carrying this list ships, or every hotels_full select fails.
 const hotelFullColumns =
