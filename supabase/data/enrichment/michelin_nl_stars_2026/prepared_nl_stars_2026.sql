@@ -37,7 +37,9 @@
 --      reserved block (rest_1369..1395); the two can be applied in either
 --      order.
 --
--- PREREQUISITE: every new restaurant's city must exist (checked below; abort
+-- PREREQUISITE: supabase/migrations/20261012140000_add_nl_2026_star_cities.sql
+-- (Mierlo, Veeningen, Kortgene, Schin op Geul, Hoog Soeren). Every new
+-- restaurant's city must exist (checked below; abort
 -- names any that do not). One transaction; every check raises, rolling the
 -- whole file back. Re-running after success aborts at the first check.
 

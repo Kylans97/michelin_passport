@@ -71,6 +71,11 @@ from (values ('Valkenburg'),('Delft'),('Loenen aan de Vecht'),('Mierlo'),('Veeni
 
 A town that shows 0 needs a city row, which is a small migration.
 
+**Result (user, 2026-10-28):** Mierlo, Veeningen, Kortgene, Schin op Geul and
+Hoog Soeren returned 0. They are added by
+`supabase/migrations/20261012140000_add_nl_2026_star_cities.sql`, which must be
+applied (`supabase db push --linked`) before this file is run.
+
 ## Order with the other prepared files
 
 The codes do not collide. The World's 50 Best import reserves `rest_1369`–`1395`
