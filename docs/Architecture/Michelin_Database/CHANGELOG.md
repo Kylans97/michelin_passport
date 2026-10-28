@@ -6,6 +6,42 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-29 — World's 50 Best history, 2002–2017: 51 Top 50 rank-years matched by name and city (QA-250)
+
+| | |
+|---|---|
+| Applied | 2026-10-29, to production, from branch `data/w50b-history-older` |
+| Data file | `worlds_50_best_history_older_name_match/apply_top_50_rank_years.sql`: one transaction; the identity, free-slot, free-year and exact-count guards all passed |
+| Migrations | none |
+
+**Rule exception, decided by the product owner on 2026-10-29.** For
+2002–2017 the archive keeps the official lists (name and city) but no
+entry pages, so no phone, website or address can prove identity. These
+rows are matched by **name and city**. The exception covers this file
+only. 51–100 for 2021–2024 (QA-249) still need more, and search, dedupe
+and linking still key on code + country.
+
+**Same restaurant, not just same name.** All 61 candidates were checked by
+hand.
+
+- **Applied: 51.** Each has the same name and city, or is the same
+  restaurant at a new address: Troisgros, Guy Savoy, La Colombe and
+  Astrance.
+- **Excluded: 5.**
+  - "Les Ambassadeurs" ×3 matched "ES" by accident.
+  - "Alain Ducasse" 2005/06 is Ducasse au Plaza Athénée.
+- **Held: 5.**
+  - "Le Meurice" ×3 is Alléno's era, before Ducasse's restaurant there.
+  - "Le Jardin des Sens" ×2: continuity with our row isn't confirmed.
+
+**Before.** A read-only dry run: 51/51 codes carried the expected name,
+with no taken places or years. The table held 885 rows.
+
+**After.** 936 rows (+51), and all 51 are present as `top_50`. Current
+ranks are unchanged.
+
+---
+
 # 2026-10-28 — World's 50 Best history, batch 2: 13 Top 50 rank-years, 2017–2019 and 2022 (QA-250)
 
 | | |
