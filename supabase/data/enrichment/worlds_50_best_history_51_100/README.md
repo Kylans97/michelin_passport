@@ -1,6 +1,8 @@
 # World's 50 Best 51–100 history, 2021–2024 (QA-249)
 
-2026-10-29, `data/w50b-history-older`. **Not applied.**
+2026-10-29, `data/w50b-history-older`. **Applied to production 2026-10-29**:
+39 rows inserted, all guards passed (936 → 975 rows), and recorded in
+the Michelin_Database CHANGELOG.
 
 ## Proof: stricter than name and city
 

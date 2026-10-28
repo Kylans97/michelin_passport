@@ -6,6 +6,42 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-29 — World's 50 Best 51–100 history, 2021–2024: 39 rank-years (QA-249)
+
+| | |
+|---|---|
+| Applied | 2026-10-29, to production, from branch `data/w50b-history-older` |
+| Data file | `worlds_50_best_history_51_100/apply_51_100_rank_years.sql`: one transaction; the identity, free-slot, free-year and exact-count guards all passed |
+| Migrations | none |
+
+**Proof, the strict rule (not name).** Each year's official 51–100
+announcement story on the50.com (2021, 2023 and 2024) links every ranked
+entry to its the50.com profile. A rank-year was applied only when that
+linked profile is ours:
+
+- **27:** it equals the `worlds_50_best_url` already proven by phone,
+  website or address.
+- **12:** the profile shows our phone, own website or street address.
+
+Each rank also matches the official list for that year.
+
+**Before.** A read-only dry run: 39/39 codes carried the expected name,
+with no taken places or years. The table held 936 rows.
+
+**After.** 975 rows (+39), and all 39 are present as `extended_51_100`.
+2021–2024 now hold 74 / 70 / 88 / 86 of 100 places; the rest are
+restaurants outside our catalogue, plus the open items below. Current
+ranks are unchanged.
+
+**Open, not changed (QA-249):**
+
+- **2022 ×10:** that year's story has no profile links.
+- **La Colombe 2021/2023:** the linked profile no longer exists.
+- **Labyrinth 2024:** the link differs from our proven URL.
+- **Mountain 2024:** not linked.
+
+---
+
 # 2026-10-29 — World's 50 Best history, 2002–2017: 51 Top 50 rank-years matched by name and city (QA-250)
 
 | | |
