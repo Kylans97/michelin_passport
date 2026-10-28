@@ -106,6 +106,15 @@ app depends on. Separately, those 8 restaurants' real pages on
 above. "guessed slug 404'd" is a reminder that a slug must never be
 guessed.
 
-### 3. Hotels and Gault&Millau
+### 3. Toque counts missing on Benelux/CH rows (data, no migration)
+
+On the simulator check, De Librije's own Gault&Millau page shows
+**19.5/20 with 5 toques**, but its row has `toque_count` NULL, as does
+every BE, CH and NL row except GEM. The app shows only the score, so
+nothing is wrong on screen; the toques simply aren't in the data. Fill
+them per restaurant from each row's own `gault_millau_url` page, the same
+way, and log the source in the Michelin_Database CHANGELOG.
+
+### 4. Hotels and Gault&Millau
 
 Gault&Millau has no hotel table, and nothing here calls for one.

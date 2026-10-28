@@ -120,12 +120,17 @@ class _UtilityAction extends StatelessWidget {
           children: [
             Icon(icon, color: AppColors.forestGreen, size: 20),
             const SizedBox(height: CsSpacing.xs),
-            Text(
-              label,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: CsTypography.smallLabel.copyWith(
-                color: AppColors.forestGreen,
+            // Scales down rather than truncating: with all five actions on
+            // a 402pt phone, "Gault&Millau" otherwise reads "Gault&Mill…".
+            // Every shorter label keeps its full size.
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                label,
+                maxLines: 1,
+                style: CsTypography.smallLabel.copyWith(
+                  color: AppColors.forestGreen,
+                ),
               ),
             ),
           ],
