@@ -192,8 +192,18 @@ The format follows Keep a Changelog.
       - Reject with a note stored `rejected`, the note, `@kylan` as
         reviewer, and an `event_rejected` notification to `@test`.
 
-      This found the two bugs under Fixed. Still not tried: approving, a
-      live edit, the map pin, and `@test` reading that notification.
+      This found the two bugs under Fixed.
+    - **Back as `@test`, with the fixes in:**
+      - Explore doesn't show the rejected event;
+      - the Notifications badge counted 1 (through `_v2`);
+      - the list showed '"TEST review please ignore" at Flore was not
+        approved.' with the note, alongside every older notification;
+      - Flore's landing page read "1 upcoming · 1 not approved";
+      - Events listed it under NOT APPROVED with the note;
+      - the form opened with "Saving your changes sends it back for
+        review." (closed without saving).
+
+      Still not tried: approving, a live edit, and the map pin.
 
 - 2026-10-28 — A landing page per managed venue, phase 2 of
   `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. My Venues
