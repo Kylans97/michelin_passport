@@ -13,7 +13,20 @@ The format follows Keep a Changelog.
 - 2026-10-28 — The editorial Selection ("Mantelier Selection"), a fourth
   way into the catalogue next to a MICHELIN star, World's 50 Best and the
   hall of fame, decided by the product owner so restaurants we choose
-  ourselves can be listed without an award. **Prepared, not applied.**
+  ourselves can be listed without an award. **Applied to production
+  2026-10-28**, with Tacite (`rest_1840`) and Petit Péché (`rest_1841`),
+  Amsterdam, as its first two entries.
+  - Verified in production after the apply: ledger row present; the check
+    constraint lists all six values; RLS on `editorial_selections`; `anon`
+    can read but not write, `authenticated` can't write. Both restaurants
+    inserted in one statement (`prepared_insert.sql` step 1), and
+    `restaurants_full` returns both: Amsterdam, NL, `michelin_stars` NULL,
+    `open`. Google Place IDs left NULL until found.
+  - Checked on the simulator against production: "Mantelier's latest"
+    below What's On with both restaurants; "Mantelier Selection" first on
+    Guides, opening a two-restaurant catalogue; Tacite's detail page with
+    no empty star row. The Explore "Collections" line now names the
+    Selection first.
   - **`20261023120000_add_editorial_selection.sql`:** widens
     `restaurants.inclusion_reason` with `editorial_selection`, and adds
     `public.editorial_selections` (one row per entry, `removed_on` instead

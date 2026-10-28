@@ -1,6 +1,6 @@
 # Editorial Selection — first entries
 
-Prepared 2026-10-28. Nothing here is applied.
+Prepared 2026-10-28. **Applied 2026-10-28**: the migration, then step 1 of `prepared_insert.sql` (Tacite `rest_1840`, Petit Péché `rest_1841`). Google Place IDs are still NULL; find them with find-place-id and update the rows.
 
 The Selection ("Mantelier Selection" in the app) is the fourth way a
 restaurant enters the catalogue, added by

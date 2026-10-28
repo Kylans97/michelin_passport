@@ -11,9 +11,7 @@
 -- because 20261019140000, 20261019150000, 20261021120000 and
 -- 20261022120000 were applied to production in between and sort above
 -- the earlier numbers. Never applied under either earlier name. The
--- number is sort order, not a date.
---
--- PREPARED — NOT APPLIED.
+-- number is sort order, not a date. Applied to production 2026-10-28.
 --
 -- Shown in the app as "Mantelier Selection" (per country: "Mantelier
 -- Selection Netherlands"). The brand name stays out of every identifier

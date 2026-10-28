@@ -344,7 +344,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
           children: [
             GuideDestinationRow(
               label: 'Collections',
-              descriptor: "Michelin, World's 50 Best & Gault&Millau.",
+              descriptor: "Our Selection, Michelin, World's 50 Best & Gault&Millau.",
               onTap: _openGuides,
               surface: CsSurface.dark,
             ),
