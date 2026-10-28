@@ -24,11 +24,18 @@ import '../theme/cs_typography.dart';
 /// Hotel's own day-phone-data-lands change would only touch its call site.
 /// Existing URL-generation logic is untouched — this widget only ever
 /// receives already-resolved callbacks.
+///
+/// [onOpenGaultMillau] is the guide-page counterpart of [onOpenMichelin]:
+/// the restaurant's own Gault&Millau page, wired only when its stored
+/// `gault_millau_url` is a real URL (see GaultMillauAward.profileUrl).
+/// There is no World's 50 Best equivalent yet — no per-venue 50 Best URL
+/// is stored anywhere.
 class VenueUtilityActions extends StatelessWidget {
   final VoidCallback onOpenMaps;
   final VoidCallback? onOpenWebsite;
   final VoidCallback? onCall;
   final VoidCallback? onOpenMichelin;
+  final VoidCallback? onOpenGaultMillau;
 
   const VenueUtilityActions({
     super.key,
@@ -36,6 +43,7 @@ class VenueUtilityActions extends StatelessWidget {
     this.onOpenWebsite,
     this.onCall,
     this.onOpenMichelin,
+    this.onOpenGaultMillau,
   });
 
   @override
@@ -71,6 +79,14 @@ class VenueUtilityActions extends StatelessWidget {
               icon: Icons.menu_book_rounded,
               label: 'Michelin',
               onTap: onOpenMichelin!,
+            ),
+          ),
+        if (onOpenGaultMillau != null)
+          Expanded(
+            child: _UtilityAction(
+              icon: Icons.auto_stories_rounded,
+              label: 'Gault&Millau',
+              onTap: onOpenGaultMillau!,
             ),
           ),
       ],

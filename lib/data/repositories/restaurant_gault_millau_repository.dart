@@ -94,6 +94,21 @@ class RestaurantGaultMillauRepository {
     return sortGaultMillauEntries(entries);
   }
 
+  /// Every recorded edition for one restaurant, newest guide year first —
+  /// the single-venue read Restaurant Detail (current award + link) and
+  /// Award History (every edition) share. Empty for a restaurant
+  /// Gault&Millau has never recognised.
+  Future<List<GaultMillauAward>> loadForRestaurant(String restaurantId) async {
+    final rows = await _client
+        .from('gault_millau_awards')
+        .select(_awardColumns)
+        .eq('restaurant_id', restaurantId)
+        .order('guide_year', ascending: false);
+    return (rows as List)
+        .map((row) => GaultMillauAward.fromJson(row as Map<String, dynamic>))
+        .toList();
+  }
+
   /// Countries represented among restaurants with a current Gault&Millau
   /// award — never the entire restaurant catalogue, and never a hardcoded
   /// launch-market list, so the picker can only ever offer a country that

@@ -20,6 +20,7 @@ import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
 import '../profile/widgets/owner_preview_marker.dart';
 import '../../data/repositories/award_history_repository.dart';
+import '../../data/repositories/restaurant_gault_millau_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
@@ -30,6 +31,7 @@ import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
+import '../../models/gault_millau_award.dart';
 import '../../models/passport_venue.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
@@ -118,6 +120,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _awardHistoryRepo = AwardHistoryRepository(
     Supabase.instance.client,
   );
+  late final _gaultMillauRepo = RestaurantGaultMillauRepository(
+    Supabase.instance.client,
+  );
   late final _plannedTripsRepo = PlannedTripsRepository(
     Supabase.instance.client,
   );
@@ -148,6 +153,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // Starts false (action hidden) rather than showing then hiding it, since
   // most restaurants resolve this within a single indexed round trip.
   bool _hasAwardHistory = false;
+
+  // The latest Gault&Millau edition (gault_millau_awards, its own table —
+  // never on restaurants_full). Drives the hero badge and the Gault&Millau
+  // utility action. Same "starts hidden, only set on success" shape as
+  // _hasAwardHistory: null means nothing to show, never "no award".
+  GaultMillauAward? _gaultMillauAward;
 
   // Events V2 Step 8B — starts empty (section hidden) rather than showing
   // a loading/empty state, same "not yet resolved = hidden" convention as
@@ -188,6 +199,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     // turns off what belongs to the viewer).
     _loadPersonalState();
     _checkAwardHistory();
+    _loadGaultMillau();
     _loadHostedEvents();
     if (widget.aboutTextOverride != null) {
       _aboutText = widget.aboutTextOverride;
@@ -255,6 +267,18 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         ),
       ),
     );
+  }
+
+  Future<void> _loadGaultMillau() async {
+    try {
+      final awards = await _gaultMillauRepo.loadForRestaurant(
+        widget.restaurant.id,
+      );
+      if (!mounted || awards.isEmpty) return;
+      setState(() => _gaultMillauAward = awards.first);
+    } catch (_) {
+      // Leave the badge and action hidden on a failed lookup.
+    }
   }
 
   Future<void> _checkAwardHistory() async {
@@ -494,7 +518,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   Future<void> _openUrl(String url, {AnalyticsLinkDestination? trackAs}) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
-      final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
+      final launched = await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
       if (launched && trackAs != null) {
         _analytics.track(
           AnalyticsEvent.venueBookingLinkOpened,
@@ -590,6 +617,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     final latestVisit = _visits.isEmpty ? null : _visits.first;
     final hasMichelinLink = michelinUrl != null && michelinUrl.isNotEmpty;
     final hasWebsiteLink = websiteUrl != null && websiteUrl.isNotEmpty;
+    // Only a stored, well-formed URL — the "not found" research
+    // placeholders some rows carry read as no link (see profileUrl).
+    final gaultMillauUrl = _gaultMillauAward?.profileUrl;
     // Venue lifecycle (DATA_UPDATE_PROCESS.md §7): Directions and the
     // Michelin link stay available in every state — you still want to
     // know where a closed venue was, and the guide listing is still the
@@ -634,6 +664,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
             isFollowing: _isFollowing,
             followBusy: _followBusy,
             onTapFollow: _toggleFollow,
+            gaultMillauAward: _gaultMillauAward,
           ),
           SliverToBoxAdapter(
             child: Padding(
@@ -684,6 +715,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     onOpenMichelin: hasMichelinLink
                         ? () => _openUrl(michelinUrl)
                         : null,
+                    onOpenGaultMillau: gaultMillauUrl == null
+                        ? null
+                        : () => _openUrl(gaultMillauUrl),
                   ),
 
                   const SectionDivider(),
@@ -831,7 +865,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     );
     return widget.isPreview
         ? OwnerPreviewMarker(
-            subtitle: widget.previewIsStale ? 'Showing your last saved details' : null,
+            subtitle: widget.previewIsStale
+                ? 'Showing your last saved details'
+                : null,
             child: scaffold,
           )
         : scaffold;

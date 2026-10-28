@@ -53,7 +53,24 @@ class GaultMillauAward {
   // "H!P" — display-only, never parsed back into score/toqueCount.
   final String? distinctionLabel;
 
+  // Raw column value — NOT always a URL. Eight production rows (AT, the
+  // 2026 import) carry the research placeholder "not found" (one reads
+  // "not found (guessed slug 404'd)") instead of NULL. Never link this
+  // directly; use [profileUrl].
   final String? gaultMillauUrl;
+
+  /// [gaultMillauUrl] only when it is an absolute http(s) URL — the
+  /// restaurant's own Gault&Millau page as recorded at import. A
+  /// placeholder, blank or malformed value reads as null (no link shown),
+  /// never as something to repair or build from the name.
+  String? get profileUrl {
+    final raw = gaultMillauUrl?.trim();
+    if (raw == null || raw.isEmpty) return null;
+    final uri = Uri.tryParse(raw);
+    if (uri == null || !uri.hasAuthority) return null;
+    if (uri.scheme != 'https' && uri.scheme != 'http') return null;
+    return raw;
+  }
 
   const GaultMillauAward({
     required this.restaurantId,

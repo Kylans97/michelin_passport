@@ -8,6 +8,21 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- Restaurant Detail shows the latest Gault&Millau award as a hero badge
+  and links to the restaurant's own Gault&Millau page from the utility
+  row. Award History gains a Gault&Millau section beside MICHELIN and
+  World's 50 Best. App only, no schema change. A plan for World's 50 Best
+  page links (no URL is stored yet) is in
+  `docs/Architecture/GUIDE_SOURCE_LINKS_PLAN.md`.
+
+### Fixed
+- Near-miss: 8 `gault_millau_awards.gault_millau_url` values in production
+  are the import's `"not found"` placeholder text, not NULL. Linking the
+  column directly would have opened a broken URL. The app now links only
+  absolute http(s) values (`GaultMillauAward.profileUrl`). The data
+  cleanup is proposed in the plan above and has not been applied.
+
 ---
 
 ## v1.2.0 (13) — 2026-10-28

@@ -6,16 +6,19 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../core/widgets/star_row.dart';
 import '../../data/repositories/award_history_repository.dart';
+import '../../data/repositories/restaurant_gault_millau_repository.dart';
 import '../../models/award_transition.dart';
+import '../../models/gault_millau_award.dart';
 import '../../models/restaurant.dart';
 import 'award_history/michelin_history_view_model.dart';
 import 'award_history/worlds_50_best_history_view_model.dart';
+import 'widgets/gault_millau_history_section.dart';
 import 'widgets/michelin_award_timeline.dart';
 import 'widgets/worlds_50_best_history_section.dart';
 
 /// The historical companion to Restaurant Detail's current-recognition
 /// hero: Michelin star transitions over time, every World's 50 Best ranked
-/// year, and Hall of Fame status. Restaurant Detail keeps showing *current*
+/// year, Hall of Fame status, and every Gault&Millau edition. Restaurant Detail keeps showing *current*
 /// state as it always has — nothing here ever substitutes for that, it's
 /// reachable only via the "Award history" action.
 ///
@@ -39,6 +42,9 @@ class AwardHistoryScreen extends StatefulWidget {
 
 class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
   late final _repo = AwardHistoryRepository(Supabase.instance.client);
+  late final _gaultMillauRepo = RestaurantGaultMillauRepository(
+    Supabase.instance.client,
+  );
 
   bool _loading = true;
   bool _loadError = false;
@@ -48,6 +54,7 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
     extendedYears: [],
     hallOfFameYear: null,
   );
+  List<GaultMillauAward> _gaultMillau = [];
 
   @override
   void initState() {
@@ -68,12 +75,17 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
       final worlds50BestFuture = _repo.loadWorlds50BestHistory(
         widget.restaurant.id,
       );
+      final gaultMillauFuture = _gaultMillauRepo.loadForRestaurant(
+        widget.restaurant.id,
+      );
       final michelinHistory = await michelinFuture;
       final worlds50BestHistory = await worlds50BestFuture;
+      final gaultMillau = await gaultMillauFuture;
       if (!mounted) return;
       setState(() {
         _michelinTransitions = detectAwardTransitions(michelinHistory);
         _worlds50Best = Worlds50BestHistorySummary.of(worlds50BestHistory);
+        _gaultMillau = gaultMillau;
         _loading = false;
       });
     } catch (_) {
@@ -93,7 +105,9 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
     final hasWorlds50Best =
         _worlds50Best.topFiftyYears.isNotEmpty ||
         _worlds50Best.extendedYears.isNotEmpty;
-    final hasAnything = hasMichelin || hasWorlds50Best || hasHallOfFame;
+    final hasGaultMillau = _gaultMillau.isNotEmpty;
+    final hasAnything =
+        hasMichelin || hasWorlds50Best || hasHallOfFame || hasGaultMillau;
 
     return Scaffold(
       backgroundColor: AppColors.deepGreen,
@@ -209,6 +223,20 @@ class _AwardHistoryScreenState extends State<AwardHistoryScreen> {
                               HallOfFameBadge(
                                 inductionYear: _worlds50Best.hallOfFameYear,
                               ),
+                            ],
+                            if (hasGaultMillau) ...[
+                              if (hasMichelin ||
+                                  hasWorlds50Best ||
+                                  hasHallOfFame)
+                                const SizedBox(height: CsSpacing.xxl),
+                              Text(
+                                'GAULT&MILLAU',
+                                style: CsTypography.eyebrow.copyWith(
+                                  color: AppColors.secondaryOnDark,
+                                ),
+                              ),
+                              const SizedBox(height: CsSpacing.md),
+                              GaultMillauHistorySection(awards: _gaultMillau),
                             ],
                           ],
                         ],
