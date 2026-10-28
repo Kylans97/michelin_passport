@@ -1,0 +1,31 @@
+year,rank,list_type,code,name,official_name,official_city,apply,evidence,source
+2021,17,top_50,rest_1386,A Casa do Porco,A Casa do Porco,"São Paulo, Brazil",yes,entry_page_slot + phone website,https://web.archive.org/web/20211005183538/https://www.theworlds50best.com/the-list/11-20/A-Casa-Do-Porco.html
+2021,32,top_50,rest_1388,The Clove Club,The Clove Club,"London, UK",yes,entry_page_slot + phone website address,https://web.archive.org/web/20211006004323/https://www.theworlds50best.com/the-list/31-40/The-Clove-Club.html
+2021,34,top_50,rest_1391,Burnt Ends,Burnt Ends,Singapore,yes,entry_page_slot + phone website,https://web.archive.org/web/20211109/https://www.theworlds50best.com/the-list/31-40/Burnt-Ends.html
+2021,36,top_50,rest_0165,Hof van Cleve,Hof Van Cleve,"Kruishoutem, Belgium",yes,entry_page_slot + phone address,https://web.archive.org/web/20211109/https://www.theworlds50best.com/the-list/31-40/Hof-Van-Cleve.html
+2021,41,top_50,rest_1410,Alléno Paris au Pavillon Ledoyen,Alléno Paris au Pavillon Ledoyen,"Paris, France",yes,entry_page_slot + website address,https://web.archive.org/web/20211109/https://www.theworlds50best.com/the-list/41-50/Alleno-Paris-Au-Pavillon-Ledoyen.html
+2021,45,top_50,rest_1373,Nobelhart & Schmutzig,Nobelhart & Schmutzig,"Berlin, Germany",yes,entry_page_slot + phone website,https://web.archive.org/web/20211109/https://www.theworlds50best.com/the-list/41-50/Nobelhart-and-Schmutzig.html
+2021,46,top_50,rest_1382,Leo,Leo,"Bogotá, Colombia",yes,entry_page_slot + phone website,https://web.archive.org/web/20211109/https://www.theworlds50best.com/the-list/41-50/Leo.html
+2022,7,top_50,rest_1386,A Casa do Porco,A Casa do Porco,São Paulo,yes,entry_page_slot + phone website,https://web.archive.org/web/20220904/https://www.theworlds50best.com/the-list/1-10/a-casa-do-porco.html
+2022,17,top_50,rest_1373,Nobelhart & Schmutzig,Nobelhart & Schmutzig,Berlin,yes,entry_page_slot + phone website,https://web.archive.org/web/20220904/https://www.theworlds50best.com/the-list/11-20/nobelhart-and-schmutzig.html
+2022,23,top_50,rest_0837,The Jane,The Jane,Antwerp,yes,entry_page_slot + phone,https://web.archive.org/web/20220904/https://www.theworlds50best.com/the-list/21-30/the-jane.html
+2022,27,top_50,rest_0165,Hof van Cleve,Hof Van Cleve,Kruishoutem,yes,entry_page_slot + phone address,https://web.archive.org/web/20220904/https://www.theworlds50best.com/the-list/21-30/hof-van-cleve.html
+2022,28,top_50,,,Le Clarence,Paris,no,no contact match on the entry page,https://web.archive.org/web/20220904/https://www.theworlds50best.com/the-list/21-30/le-clarence.html
+2022,35,top_50,rest_1388,The Clove Club,The Clove Club,London,yes,official_list_slot + own verified profile states this rank-year (identity: guide_source_links),https://web.archive.org/web/20220904/https://www.theworlds50best.com/list/1-50
+2022,37,top_50,rest_1385,Fyn,Fyn,Cape Town,yes,entry_page_slot + website address,https://web.archive.org/web/20220904/https://www.theworlds50best.com/the-list/31-40/fyn.html
+2022,38,top_50,rest_0474,Jordnær,Jordnær,Copenhagen,yes,entry_page_slot + phone address,https://web.archive.org/web/20220904/https://www.theworlds50best.com/the-list/31-40/jordnaer.html
+2022,47,top_50,rest_1384,Oteque,Oteque,Rio de Janeiro,yes,entry_page_slot + phone website address,https://web.archive.org/web/20220904/https://www.theworlds50best.com/the-list/41-50/oteque.html
+2022,48,top_50,rest_1382,Leo,Leo,Bogotá,yes,entry_page_slot + phone website,https://web.archive.org/web/20220904/https://www.theworlds50best.com/the-list/41-50/leo.html
+2023,12,top_50,rest_1386,A Casa do Porco,A Casa do Porco,São Paulo,yes,entry_page_slot + phone website,https://web.archive.org/web/20230905/https://www.theworlds50best.com/the-list/11-20/a-casa-do-porco.html
+2023,33,top_50,rest_1370,El Chato,El Chato,Bogotá,yes,entry_page_slot + website,https://web.archive.org/web/20230905/https://www.theworlds50best.com/the-list/31-40/el-chato.html
+2023,38,top_50,rest_1388,The Clove Club,The Clove Club,London,yes,entry_page_slot + phone website,https://web.archive.org/web/20230905/https://www.theworlds50best.com/the-list/31-40/the-clove-club.html
+2023,39,top_50,rest_0837,The Jane,The Jane,Antwerp,yes,entry_page_slot + phone,https://web.archive.org/web/20230905/https://www.theworlds50best.com/the-list/31-40/the-jane.html
+2023,43,top_50,rest_1382,Leo,Leo,Bogotá,yes,entry_page_slot + phone website,https://web.archive.org/web/20230905/https://www.theworlds50best.com/the-list/41-50/leo.html
+2023,45,top_50,rest_1373,Nobelhart & Schmutzig,Nobelhart & Schmutzig,Berlin,yes,entry_page_slot + phone website address,https://web.archive.org/web/20230905/https://www.theworlds50best.com/the-list/41-50/nobelhart-and-schmutzig.html
+2023,48,top_50,rest_0913,La Grenouillère,La Grenouillère,La Madelaine-sous-Montreuil,yes,entry_page_slot + phone address,https://web.archive.org/web/20230905/https://www.theworlds50best.com/the-list/41-50/la-grenouillere.html
+2024,25,top_50,rest_1370,El Chato,El Chato,Bogotá,yes,entry_page_slot + website,https://web.archive.org/web/20240719143017/https://www.theworlds50best.com/the-list/21-30/el-chato.html
+2024,27,top_50,rest_1386,A Casa do Porco,A Casa do Porco,São Paulo,yes,entry_page_slot + phone website,https://web.archive.org/web/20241002/https://www.theworlds50best.com/the-list/21-30/a-casa-do-porco.html
+2024,36,top_50,rest_0837,The Jane,The Jane,Antwerp,yes,entry_page_slot + phone,https://web.archive.org/web/20241002/https://www.theworlds50best.com/the-list/31-40/the.html
+2024,37,top_50,rest_1384,Oteque,Oteque,Rio de Janeiro,yes,official_list_slot + own verified profile states this rank-year (identity: guide_source_links),https://web.archive.org/web/20241002/https://www.theworlds50best.com/list/1-50
+2024,43,top_50,rest_1373,Nobelhart & Schmutzig,Nobelhart & Schmutzig,Berlin,yes,official_list_slot + own verified profile states this rank-year (identity: guide_source_links),https://web.archive.org/web/20241002/https://www.theworlds50best.com/list/1-50
+2024,49,top_50,rest_1371,La Colombe,La Colombe,Cape Town,yes,entry_page_slot + phone,https://web.archive.org/web/20241002/https://www.theworlds50best.com/the-list/41-50/la-colombe.html
