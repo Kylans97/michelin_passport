@@ -8,6 +8,38 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+
+- 2026-10-28 — Catalogue: MICHELIN Spain 2026 and Belgium & Luxembourg 2026.
+  - **Migrations:** `20261019140000_add_es_2026_star_cities` (123 ES towns)
+    and `20261019150000_add_be_2026_star_cities` (7 BE cities).
+  - **Applied 2026-10-28,** after the v1.2.0 (13) build, so they are
+    recorded here rather than in that section. Both went out in one
+    `supabase db push --linked`, Spain sorting first; the ledger went from
+    102 to 104/104, with local and remote in agreement. The data files
+    (`michelin_es_stars/`, `michelin_be_lu_stars_2026/` and the Belgian
+    Place IDs) were then run. Details are in the Michelin_Database CHANGELOG.
+  - **No app change:** installed builds read the new rows as they are.
+
+### Fixed
+
+- 2026-10-28 — Near-miss, caught before anything was applied. The
+  Belgian update had picked `rest_1405`–`1417` for its new restaurants
+  while France 2026 took the same codes on production. Its Place ID file
+  checked only that each code existed, so it would have written Belgian
+  Google records onto 13 French starred restaurants (Paul Bocuse among
+  them).
+  - **Renumbering:** Belgium was renumbered to `rest_1827`–`1839`.
+  - **New guard:** every prepared Place ID file, and the Spanish file,
+    now stops unless each code is the restaurant it was researched for,
+    identified by its MICHELIN page.
+  - **Why it would recur:** codes are picked as "the next free one" on a
+    branch, while other branches pick from the same range. Only an
+    identity check at apply time catches a code that someone else has
+    taken since.
+  - **Checked after the apply:** `rest_1405`–`1417` are still 13 French
+    rows.
+
 ---
 
 ## v1.2.0 (13) — 2026-10-28
@@ -357,10 +389,6 @@ all 102 migrations, 2026-10-28:
       `20261017130000`. It was confirmed unapplied before this push, so
       only this migration went out.
 
-- 2026-10-28 — `20261019150000_add_be_2026_star_cities.sql` adds the seven
-  BE cities the MICHELIN Belgium & Luxembourg 2026 star update needs
-  (`supabase/data/enrichment/michelin_be_lu_stars_2026/`). **Prepared, not
-  applied.**
 - Project documentation
 - Database organisation
 - Architecture documentation

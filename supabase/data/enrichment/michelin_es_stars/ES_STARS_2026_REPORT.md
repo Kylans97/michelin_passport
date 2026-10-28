@@ -1,6 +1,6 @@
 # MICHELIN Guide Spain 2026: catalogue completion, Place IDs and phones (2026-10-28)
 
-Status: **PREPARED, NOT APPLIED.** Run, in order:
+Status: **APPLIED 2026-10-28** (ledger 104/104; see the Michelin_Database CHANGELOG). Run, in order:
 
 1. `supabase/migrations/20261019140000_add_es_2026_star_cities.sql` (123 towns)
 2. `prepared_es_stars_2026.sql` (one transaction; aborts on any check)
