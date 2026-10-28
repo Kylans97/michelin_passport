@@ -1,0 +1,2378 @@
+[
+ {
+  "tier": 3,
+  "city": "Alba",
+  "name": "Piazza Duomo",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Brunico",
+  "name": "Atelier Moessmer Norbert Niederkofler",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Brusaporto",
+  "name": "Da Vittorio",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Castel di Sangro",
+  "name": "Reale",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Firenze",
+  "name": "Enoteca Pinchiorri",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Milano",
+  "name": "Enrico Bartolini al Mudec",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Modena",
+  "name": "Osteria Francescana",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Nerano",
+  "name": "Quattro Passi",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Orta San Giulio",
+  "name": "Villa Crespi",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Roma",
+  "name": "La Pergola",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Rubano",
+  "name": "Le Calandre",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Runate",
+  "name": "Dal Pescatore",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Senigallia",
+  "name": "Uliassi",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Serralunga d'Alba",
+  "name": "La Rei Natura by Michelangelo Mammoliti",
+  "new": true
+ },
+ {
+  "tier": 3,
+  "city": "Verona",
+  "name": "Casa Perbellini 12 Apostoli",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Anacapri",
+  "name": "L'Olivo",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Bergamo",
+  "name": "Villa Elena",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Brusciano",
+  "name": "Taverna Estia",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Castellammare di Stabia",
+  "name": "Piazzetta Milù",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Cervere",
+  "name": "Antica Corona Reale",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Cioccaro",
+  "name": "Locanda Sant'Uffizio Enrico Bartolini",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Colle di Val d'Elsa",
+  "name": "Arnolfo",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Cornaredo",
+  "name": "D'O",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Firenze",
+  "name": "Santa Elisabetta",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Gargnano",
+  "name": "Villa Feltrinelli",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Godia",
+  "name": "Agli Amici",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Imola",
+  "name": "San Domenico",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Ischia",
+  "name": "daní maison",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Isola Vulcano",
+  "name": "I Tenerumi",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Licata",
+  "name": "La Madia",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Longiano",
+  "name": "Magnolia",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Lonigo",
+  "name": "La Peca",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Lughetto",
+  "name": "Antica Osteria Cera",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Marzocca",
+  "name": "Madonnina del Pescatore",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Milano",
+  "name": "Andrea Aprea",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Milano",
+  "name": "Verso Capitaneo",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Milano",
+  "name": "Seta by Antonio Guida",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Montalcino",
+  "name": "Campo del Drago",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Montemerano",
+  "name": "Caino",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Napoli",
+  "name": "George Restaurant",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Oppeano",
+  "name": "Famiglia Rana",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Ragusa",
+  "name": "Duomo",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Roma",
+  "name": "Il Pagliaccio",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Roma",
+  "name": "Acquolina",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Roma",
+  "name": "Enoteca La Torre",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Sarentino",
+  "name": "Terra The Magic Place",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Taormina",
+  "name": "St. George by Heinz Beck",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Telese",
+  "name": "Krèsios",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Tirolo",
+  "name": "Castel fine dining",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Trieste",
+  "name": "Harry's Piccolo",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Venezia",
+  "name": "Glam Enrico Bartolini",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Viareggio",
+  "name": "Il Piccolo Principe",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Vico Equense",
+  "name": "Torre del Saracino",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Rossella Venezia",
+  "name": "Famiglia Rana",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Civitella Casanova",
+  "name": "La Bandiera",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Guardiagrele",
+  "name": "Villa Maiella",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Salvo Marina",
+  "name": "Al Metrò",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sant'Omero",
+  "name": "Zunica 1880 a Villa Corallo",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Lavello",
+  "name": "Don Alfonso 1890 San Barbato",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Matera",
+  "name": "Vitantonio Lombardo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Lamezia Terme",
+  "name": "Abbruzzino Oltre",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Marina di Gioiosa Ionica",
+  "name": "Gambero Rosso",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Giovanni in Fiore",
+  "name": "Hyle",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Santa Cristina d'Aspromonte",
+  "name": "Qafiz",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Strongoli",
+  "name": "Dattilo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Amalfi",
+  "name": "Sensi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Amalfi",
+  "name": "La Caravella dal 1959",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Amalfi",
+  "name": "Glicine",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Amalfi",
+  "name": "Alici",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ariano Irpino",
+  "name": "Maeba Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bacoli",
+  "name": "Caracol",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Baronissi",
+  "name": "Cetaria",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Capri",
+  "name": "Le Monzù",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Conca dei Marini",
+  "name": "Il Refettorio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Eboli",
+  "name": "Il Papavero",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Forio",
+  "name": "Isola di Ischia - Umberto a Mare",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Furore",
+  "name": "Bluh Furore",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Gragnano",
+  "name": "O Me O Il Mare",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Lacco Ameno",
+  "name": "Indaco",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Marina del Cantone",
+  "name": "Taverna del Capitano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Massa Lubrense",
+  "name": "Relais Blu",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Napoli",
+  "name": "ARIA",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Napoli",
+  "name": "Veritas",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Napoli",
+  "name": "Il Ristorante Alain Ducasse Napoli",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Nola",
+  "name": "Re Santi e Leoni",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Paestum",
+  "name": "Tre Olivi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Paestum",
+  "name": "Le Trabe",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pompei",
+  "name": "President",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Positano",
+  "name": "Zass",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Positano",
+  "name": "Li Galli",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Praiano",
+  "name": "Un Piano nel Cielo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ravello",
+  "name": "Rossellinis",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ravello",
+  "name": "Il Flauto di Pan",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sant'Agata sui Due Golfi",
+  "name": "Don Alfonso 1890",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sant'Agnello",
+  "name": "Don Geppi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Somma Vesuviana",
+  "name": "Contaminazioni Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sorrento",
+  "name": "Il Buco",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sorrento",
+  "name": "Terrazza Bosquet",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sorrento",
+  "name": "Lorelei",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Squille",
+  "name": "Marotta",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Telese Terme",
+  "name": "La Locanda del Borgo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ticciano",
+  "name": "Cannavacciuolo Countryside",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vallesaccarda",
+  "name": "Oasis - Sapori Antichi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vico Equense",
+  "name": "Antica Osteria Nonna Rosa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vietri sul Mare",
+  "name": "Volta del Fuenti by Michele De Blasio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bagno di Romagna",
+  "name": "Ristorante del Lago",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bologna",
+  "name": "I Portici",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Borgonovo Val Tidone",
+  "name": "La Palta",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Castel Maggiore",
+  "name": "Iacobucci",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cesenatico",
+  "name": "La Buca",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cesenatico",
+  "name": "Ancòra",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Codigoro",
+  "name": "La Zanzara",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fiorano Modenese",
+  "name": "Alto",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Maranello",
+  "name": "Cavallino",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Modena",
+  "name": "L'Erba del Re",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Modena",
+  "name": "Al Gatto Verde",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Parma",
+  "name": "Inkiostro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pennabilli",
+  "name": "Il Piastrino",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Polesine Parmense",
+  "name": "Antica Corte Pallavicina",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rimini",
+  "name": "Da Lucio",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Rimini",
+  "name": "Abocar Due Cucine",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rimini",
+  "name": "Guido",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rubbianino",
+  "name": "Ca' Matilde",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rubiera",
+  "name": "Osteria del Viandante",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Piero in Bagno",
+  "name": "Da Gorini",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sasso Marconi",
+  "name": "Casa Mazzucchelli",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Savigno",
+  "name": "Trattoria da Amerigo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cormons",
+  "name": "Trattoria al Cacciatore – La Subida",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dolegna del Collio",
+  "name": "L'Argine a Vencò",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ruda",
+  "name": "Osteria Altran",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Quirino",
+  "name": "La Primula",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sappada",
+  "name": "Laite",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Acuto",
+  "name": "Colline Ciociare",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ariccia",
+  "name": "Sintesi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fiumicino",
+  "name": "Il Tino",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fiumicino",
+  "name": "Pascucci al Porticciolo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Genazzano",
+  "name": "Marco Bottega Ristorante",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Labico",
+  "name": "Antonello Colonna Labico",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pontinia",
+  "name": "Mater1apr1ma",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ponza",
+  "name": "Acqua Pazza",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rivodutri",
+  "name": "La Trota",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Pulejo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Orma Roma",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "INEO",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Pipero Roma",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Il Convivio Troiani",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Per Me Giulio Terrinoni",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Achilli al Parlamento",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Imàgo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Moma",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "La Terrazza",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Marco Martini Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Aroma",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "All'Oro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Glass Hostaria",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Zia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Roma",
+  "name": "Idylio by Apreda",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Tivoli",
+  "name": "Al Madrigale | Nuova Cucina Rurale",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Trevinano",
+  "name": "La Parolina",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Alassio",
+  "name": "Nove",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Andora",
+  "name": "Vignamare",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cavi di Lavagna",
+  "name": "Impronta d'Acqua",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dolcedo",
+  "name": "Equilibrio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Genova",
+  "name": "Il Marin",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Genova",
+  "name": "San Giorgio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Imperia",
+  "name": "Sarri",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Noli",
+  "name": "Vescovado",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Portofino",
+  "name": "Cracco Portofino",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Sanremo",
+  "name": "Paolo e Barbara",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sestri Levante",
+  "name": "Rezzano Cucina e Vino",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Ventimiglia",
+  "name": "Casa Buono",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Albavilla",
+  "name": "Il Cantuccio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Albiate",
+  "name": "Grow Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bergamo",
+  "name": "Impronte",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Borgonato",
+  "name": "Due Colombe",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Calvisano",
+  "name": "Al Gambero",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cavernago",
+  "name": "Il Saraceno",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cernobbio",
+  "name": "Materia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Como",
+  "name": "Kitchen",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Concesio",
+  "name": "Miramonti l'Altro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cornaredo",
+  "name": "Olmo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Desenzano del Garda",
+  "name": "Esplanade",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fagnano Olona",
+  "name": "Acquerello",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fasano del Garda",
+  "name": "Lido 84",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fasano del Garda",
+  "name": "Il Fagiano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Gargnano",
+  "name": "La Tortuga",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Limone sul Garda",
+  "name": "Senso Lake Garda Alfio Ghezzi",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Lodi",
+  "name": "La Coldana",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Lomazzo",
+  "name": "Trattoria contemporanea",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madesimo",
+  "name": "Il Cantinone e Sport Hotel Alpina",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Manerba del Garda",
+  "name": "Capriccio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Mantello",
+  "name": "La Preséf",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Cracco in Galleria",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Berton",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Sadler",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Contraste",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Iyo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Il Luogo Aimo e Nadia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Sine by Di Pinto",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Moebius Sperimentale",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Iyo Kaiseki",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Anima",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Procaccini",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Abba",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Horto",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Milano",
+  "name": "Joia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Monza",
+  "name": "Il Circolino",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Olgiate Olona",
+  "name": "Acqua",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Oltressenda Alta",
+  "name": "Contrada Bricconi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Origgio",
+  "name": "Olio",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Ponte San Pietro",
+  "name": "Cucina Cereda",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pralboino",
+  "name": "Leon d'Oro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pudiano",
+  "name": "Sedicesimo Secolo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Puegnago sul Garda",
+  "name": "Casa Leali",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Saronno",
+  "name": "sui generis.",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sirmione",
+  "name": "La Rucola 2.0",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sirmione",
+  "name": "La Speranzina Restaurant & Relais",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sirmione",
+  "name": "Tancredi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sorisole",
+  "name": "Assonica",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torno",
+  "name": "Il Sereno Al Lago",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torrazza Coste",
+  "name": "Villa Naj",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Trescore Balneario",
+  "name": "LoRo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Treviglio",
+  "name": "San Martino",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vigevano",
+  "name": "I Castagni",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Villa d'Almè",
+  "name": "Osteria della Brughiera",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Villa di Chiavenna",
+  "name": "Lanterna Verde",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Olio",
+  "name": "Ioris Premoli",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Gabicce Monte",
+  "name": "Dalla Gioconda",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Loreto",
+  "name": "Andreina",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Montemonaco",
+  "name": "Il Tiglio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pesaro",
+  "name": "Nostrano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Porto San Giorgio",
+  "name": "Retroscena",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Recanati",
+  "name": "Casa Bertini",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Agnone",
+  "name": "Locanda Mammì",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Alba",
+  "name": "Locanda del Pilone",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Asti",
+  "name": "Cannavacciuolo Le Cattedrali Asti",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Canale",
+  "name": "All'Enoteca",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Domodossola",
+  "name": "Atelier",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Monforte d'Alba",
+  "name": "FRE",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Monforte d'Alba",
+  "name": "Borgo Sant'Anna",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Novello Massimo",
+  "name": "Camia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Orta San Giulio",
+  "name": "Andrea Monesi - Locanda di Orta",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pettenasco",
+  "name": "Cannavacciuolo by the Lake",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pinerolo",
+  "name": "Trattoria Zappatori",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Piobesi d'Alba",
+  "name": "21.9",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pollone",
+  "name": "Il Patio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Priocca",
+  "name": "Il Centro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Maurizio Canavese",
+  "name": "La Credenza",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Santo Stefano Belbo",
+  "name": "Il Ristorante di Guido da Costigliole",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Serralunga d'Alba",
+  "name": "Guidoristorante",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Soriso",
+  "name": "Al Sorriso",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Tigliole",
+  "name": "Ca' Vittoria",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torino",
+  "name": "Andrea Larossa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torino",
+  "name": "Cannavacciuolo Bistrot",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torino",
+  "name": "Condividere",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torino",
+  "name": "Del Cambio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torino",
+  "name": "Vintage 1997",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torino",
+  "name": "Carignano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torino",
+  "name": "Piano35",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torino",
+  "name": "Unforgettable",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Treiso",
+  "name": "La Ciau del Tornavento",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Venaria",
+  "name": "Reale Dolce Stil Novo alla Reggia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vernante",
+  "name": "Nazionale",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Carovigno",
+  "name": "Dissapore di Andrea Catalano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Lecce",
+  "name": "Primo Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Manduria",
+  "name": "Casamatta",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Polignano a Mare",
+  "name": "Pashà",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Putignano",
+  "name": "Angelo Sabatelli",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Savelletri",
+  "name": "Due Camini",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Trani",
+  "name": "Casa Sgarra",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Trani",
+  "name": "Quintessenza",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Baia Sardinia",
+  "name": "Capogiro",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Porto Cervo",
+  "name": "Italo Bassi Confusion Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pula",
+  "name": "Fradis Minoris",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Pantaleo",
+  "name": "Il Fuoco Sacro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Teodoro",
+  "name": "Gusto by Sadler",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Archi",
+  "name": "Zash",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bagheria",
+  "name": "Lìmù",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bagheria",
+  "name": "I Pupi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Catania",
+  "name": "Coria",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Catania",
+  "name": "Sapio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Isola Vulcano",
+  "name": "Il Cappero",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Linguaglossa",
+  "name": "Shalai",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Malfa",
+  "name": "Signum",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Marina di Ragusa",
+  "name": "Votavota",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Noto",
+  "name": "Crocifisso",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Palermo",
+  "name": "Mec Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ragusa",
+  "name": "Locanda Don Serafino",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Siracusa",
+  "name": "Cortile Spirito Santo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Taormina",
+  "name": "La Capinera",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Taormina",
+  "name": "Otto Geleng",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Taormina",
+  "name": "Principe Cerami",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Taormina",
+  "name": "Vineria Modì",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Terrasini",
+  "name": "Il Bavaglino",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Arezzo",
+  "name": "Octavin",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Badia",
+  "name": "A Passignano Osteria di Passignano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Casanova di Terricciola",
+  "name": "Cannavacciuolo Vineyard",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Castelnuovo Berardenga",
+  "name": "Il Visibilio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Castelnuovo Berardenga",
+  "name": "L'Asinello",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Castelnuovo Berardenga",
+  "name": "Contrada",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Castelnuovo Berardenga",
+  "name": "Il Poggio Rosso",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Castiglione della Pescaia",
+  "name": "La Trattoria Enrico Bartolini",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Chiusdino",
+  "name": "Saporium",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fiesole",
+  "name": "Serrae Villa Fiesole",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Firenze",
+  "name": "Atto di Vito Mollica",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Firenze",
+  "name": "Luca's by Paulo Airaudo",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Firenze",
+  "name": "Gucci Osteria da Massimo Bottura",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Firenze",
+  "name": "Il Palagio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Firenze",
+  "name": "Borgo San Jacopo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Firenze",
+  "name": "Saporium Firenze",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Forte dei Marmi",
+  "name": "Lorenzo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Forte dei Marmi",
+  "name": "Lux Lucis",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Forte dei Marmi",
+  "name": "La Magnolia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Forte dei Marmi",
+  "name": "Sciabola",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Forte dei Marmi",
+  "name": "Bistrot",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fosdinovo",
+  "name": "Locanda de Banchieri",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Gaiole in Chianti",
+  "name": "Il Pievano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ghirlanda",
+  "name": "Bracali",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Marina di Bibbona",
+  "name": "La Pineta",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Marina di Grosseto",
+  "name": "Gabbiano 3.0",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Marlia",
+  "name": "Butterfly",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Montalcino",
+  "name": "La Sala dei Grappoli",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Montepulciano",
+  "name": "Osmosi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Porto Ercole",
+  "name": "Il Pellicano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Prato",
+  "name": "Paca",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Casciano dei Bagni",
+  "name": "Castello di Fighine",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Gimignano",
+  "name": "Linfa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Martino",
+  "name": "Il Falconiere",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Seggiano",
+  "name": "Silene",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Tavarnelle Val di Pesa",
+  "name": "La Torre",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Viareggio",
+  "name": "Romano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Viareggio",
+  "name": "Lunasia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vinci",
+  "name": "Atman",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Arco",
+  "name": "Peter Brunel Ristorante Gourmet",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Badia",
+  "name": "Porcino",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Bressanone",
+  "name": "Apostelstube",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Castelbello",
+  "name": "Kuppelrain",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cavalese",
+  "name": "El Molin",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Corvara in Badia",
+  "name": "La Stüa de Michil - Simone Cantafio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dobbiaco",
+  "name": "Tilia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Lagundo",
+  "name": "Luisl Stube",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madonna di Campiglio",
+  "name": "Stube Hermitage",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madonna di Campiglio",
+  "name": "Dolomieu",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madonna di Campiglio",
+  "name": "Il Gallo Cedrone",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Merano",
+  "name": "Sissi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Merano",
+  "name": "In Viaggio - Claudio Melis",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Merano",
+  "name": "Prezioso",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Moena",
+  "name": "Malga Panna",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Molini",
+  "name": "Schöneck",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Mules",
+  "name": "Gourmetstube Einhorn",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Nova Levante",
+  "name": "Johannesstube",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ortisei",
+  "name": "Anna Stuben",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pinzolo",
+  "name": "Grual",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ravina",
+  "name": "Locanda Margon",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Martino in Passiria",
+  "name": "Quellenhof Gourmetstube 1897",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "San Michele",
+  "name": "Zur Rose",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Michele",
+  "name": "Osteria Acquarol",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Selva di Val Gardena",
+  "name": "Alpenroyal Gourmet",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Selva di Val Gardena",
+  "name": "Suinsom",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Capodacqua",
+  "name": "Une",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Norcia",
+  "name": "Vespasia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Perugia",
+  "name": "Ada",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torgiano",
+  "name": "Elementi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Aosta",
+  "name": "Paolo Griffa al Caffè Nazionale",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Aosta",
+  "name": "Vecchio Ristoro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Breuil Cervinia",
+  "name": "Wood",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cogne",
+  "name": "Le Petit Bellevue",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Altissimo",
+  "name": "Casin del Gamba",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Arzignano",
+  "name": "Damini Macelleria & Affini",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Asiago",
+  "name": "La Tana Gourmet",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barbarano Vicentino",
+  "name": "Aqua Crua",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Borgoricco",
+  "name": "Storie d'Amore",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Brenzone sul Garda",
+  "name": "Nin",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cavaion Veronese",
+  "name": "Oseleta",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Corrubbio",
+  "name": "Amistà",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cortina d'Ampezzo",
+  "name": "Tivoli",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cortina d'Ampezzo",
+  "name": "SanBrite",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Malcesine Vecchia",
+  "name": "Malcesine",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Malo",
+  "name": "La Favellina",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Mazzorbo",
+  "name": "Venissa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Oderzo",
+  "name": "Gellivs",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Plois",
+  "name": "Dolada",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pontelongo",
+  "name": "Lazzaro 1915",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Puos d'Alpago",
+  "name": "Locanda San Lorenzo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Schio",
+  "name": "Spinechile",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Scorzè",
+  "name": "San Martino",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Venezia",
+  "name": "Quadri",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Venezia",
+  "name": "Local",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Venezia",
+  "name": "Oro Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Venezia",
+  "name": "Agli Amici Dopolavoro",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Venezia",
+  "name": "Wistèria",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Venezia",
+  "name": "Palais Royal Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Verona",
+  "name": "Iris Ristorante",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Verona",
+  "name": "Il Desco",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vicenza",
+  "name": "Matteo Grandi in Basilica",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Continua ad esplorare",
+  "name": "Articoli che potrebbero piacerti",
+  "new": false
+ }
+]

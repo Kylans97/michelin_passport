@@ -1,0 +1,2048 @@
+[
+ {
+  "tier": 3,
+  "city": "Baiersbronn",
+  "name": "Restaurant Bareiss",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Baiersbronn",
+  "name": "Schwarzwaldstube",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Berlin",
+  "name": "Rutz",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Dreis",
+  "name": "Waldhotel Sonnora",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Grassau",
+  "name": "ES:SENZ",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Hamburg",
+  "name": "Restaurant Haerlin",
+  "new": true
+ },
+ {
+  "tier": 3,
+  "city": "Hamburg",
+  "name": "The Table Kevin Fehling",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "München",
+  "name": "JAN",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "München",
+  "name": "Tohru in der Schreiberei",
+  "new": true
+ },
+ {
+  "tier": 3,
+  "city": "Perl",
+  "name": "Victor's Fine Dining by christian bau",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Piesport",
+  "name": "schanz. restaurant.",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Wolfsburg",
+  "name": "Aqua",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Augsburg",
+  "name": "AUGUST",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Berchtesgaden",
+  "name": "PUR",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Bergisch Gladbach",
+  "name": "Vendôme",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Berlin",
+  "name": "CODA Dessert Dining",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Berlin",
+  "name": "FACIL",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Berlin",
+  "name": "Horváth",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Berlin",
+  "name": "Tim Raue",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Deidesheim",
+  "name": "L.A. Jordan",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Donaueschingen",
+  "name": "Ösch Noir",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Frankfurt am Main",
+  "name": "Lafleur",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Glücksburg",
+  "name": "Meierei Dirk Luther",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Hamburg",
+  "name": "100/200 Kitchen",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Hamburg",
+  "name": "bianc",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Hamburg",
+  "name": "Lakeside",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Hannover",
+  "name": "Jante",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Hannover",
+  "name": "Votum",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Karlsruhe",
+  "name": "sein",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Koblenz",
+  "name": "Gotthardt's by Yannick Noack",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Köln",
+  "name": "Ox & Klee",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Konstanz",
+  "name": "Ophelia",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Krün",
+  "name": "IKIGAI",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Mannheim",
+  "name": "OPUS V",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "München",
+  "name": "Alois - Dallmayr Fine Dining",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "München",
+  "name": "Atelier",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "München",
+  "name": "KOMU",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "München",
+  "name": "Tantris",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Münster",
+  "name": "Coeur D'Artichaut",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Neuenahr-Ahrweiler, Bad",
+  "name": "Steinheuers Restaurant",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Neunburg vorm Wald",
+  "name": "Obendorfers Eisvogel",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Nürnberg",
+  "name": "Essigbrätlein",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Nürnberg",
+  "name": "etz",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Peterstal-Griesbach, Bad",
+  "name": "Le Pavillon",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Rottach-Egern",
+  "name": "Gourmetrestaurant Dichter",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Rust",
+  "name": "ammolite - The Lighthouse Restaurant",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Saarbrücken",
+  "name": "Esplanade",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Saarbrücken",
+  "name": "GästeHaus Klaus Erfort",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Saarlouis",
+  "name": "LOUIS restaurant",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Sankt Ingbert",
+  "name": "ATAMA by Martin Stopp",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Stuttgart",
+  "name": "Speisemeisterei",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Sulzburg",
+  "name": "Hirschen",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Sylt / Rantum",
+  "name": "Söl'ring Hof",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Teisnach",
+  "name": "Oswald's Gourmetstube",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Wachenheim an der Weinstraße",
+  "name": "Intense",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Wangels",
+  "name": "Courtier",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Wernigerode",
+  "name": "Pietsch",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Wirsberg",
+  "name": "AURA by Alexander Herrmann & Tobias Bätz",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Zweiflingen",
+  "name": "Le Cerf",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Aachen",
+  "name": "La Bécasse",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Aachen",
+  "name": "Sankt Benedikt",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Aerzen",
+  "name": "HILMAR",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Amtzell",
+  "name": "Schattbuch",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Andernach",
+  "name": "PURS NEW NORDIC JAPANESE CUISINE",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Aschau im Chiemgau",
+  "name": "Restaurant Residenz Heinz Winkler",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Asperg",
+  "name": "Schwabenstube",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Aue",
+  "name": "Bad Schlema - St. Andreas",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Auerbach in der Oberpfalz",
+  "name": "SoulFood",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Augsburg",
+  "name": "Alte Liebe",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Augsburg",
+  "name": "Nose & Belly",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Augsburg",
+  "name": "Sartory",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Baden-Baden",
+  "name": "Le Jardin de France im Stahlbad",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Baden-Baden",
+  "name": "Maltes hidden kitchen",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Baiersbronn",
+  "name": "1789",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Baiersbronn",
+  "name": "Schlossberg",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Bandol sur mer",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Bieberbau",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Bonvivant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Bricole",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Cookies Cream",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "GOLVET",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "hallmann & klee",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Hugos",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Irma la Douce",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Lorenz Adlon Esszimmer",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Loumi",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Matthias",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "Nobelhart & Schmutzig",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "pars Restaurant",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "prism",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "SKYKITCHEN",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Berlin",
+  "name": "tulus lotrek",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bernried",
+  "name": "Schwingshackl ESSKULTUR",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bietigheim-Bissingen",
+  "name": "Maerz - Das Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Birkweiler",
+  "name": "St. Laurentiushof - Schockes Küche",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bischofswiesen",
+  "name": "Solo Du",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Blankenhain",
+  "name": "Masters",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Blankenhain",
+  "name": "The First",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Blieskastel",
+  "name": "Hämmerle's Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bonn",
+  "name": "halbedel's Gasthaus",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bonn",
+  "name": "Yunico",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Burghausen",
+  "name": "restaurant|271",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cuxhaven",
+  "name": "Sterneck",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Darmstadt",
+  "name": "OX",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Darscheid",
+  "name": "Kucher's Gourmet",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Deggendorf",
+  "name": "edl.eins",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Deidesheim",
+  "name": "Schwarzer Hahn",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dermbach",
+  "name": "BjörnsOx",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Doberan, Bad",
+  "name": "Friedrich Franz",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Donaueschingen",
+  "name": "die burg",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dorsten",
+  "name": "Goldener Anker",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dorsten",
+  "name": "Rosin",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dortmund",
+  "name": "SchwarzGold",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Dortmund",
+  "name": "The Stage",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dresden",
+  "name": "elements",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dresden",
+  "name": "Genuss-Atelier",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dresden",
+  "name": "Heiderand",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Duggendorf",
+  "name": "DIE GOURMET STUBE im Gasthaus Hummel",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Duisburg",
+  "name": "Mod by Sven Nöthel",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Düsseldorf",
+  "name": "1876 Daniel Dal-Ben",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Düsseldorf",
+  "name": "Agata's",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Düsseldorf",
+  "name": "Im Schiffchen",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Düsseldorf",
+  "name": "Jae",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Düsseldorf",
+  "name": "La Vie by Thomas Bühner",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Düsseldorf",
+  "name": "Nagaya",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Düsseldorf",
+  "name": "Setzkasten",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Düsseldorf",
+  "name": "Yoshi by Nagaya",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Düsseldorf",
+  "name": "Zwanzig23 by Lukas Jakobi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Efringen-Kirchen",
+  "name": "Traube",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Eggenstein-Leopoldshafen",
+  "name": "Das garbo zum Löwen",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ehningen",
+  "name": "Landhaus Feckl",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Eltville am Rhein",
+  "name": "Jean",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Endingen am Kaiserstuhl",
+  "name": "Merkles Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Erfurt",
+  "name": "Clara - Restaurant im Kaisersaal",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Erkelenz",
+  "name": "Troyka",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Essen",
+  "name": "Chefs Atelier",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Essen",
+  "name": "Hannappel",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Essen",
+  "name": "Kettner's Kamota",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ettlingen",
+  "name": "Erbprinz",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Falkensee",
+  "name": "Sawito",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Feldberger Seenlandschaft",
+  "name": "Alte Schule - Klassenzimmer",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fellbach",
+  "name": "Oettinger's Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Flensburg",
+  "name": "Das Grace",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Föhr / Wyk",
+  "name": "Alt Wyk",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frankenberg (Eder)",
+  "name": "Philipp Soldan",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frankfurt am Main",
+  "name": "bidlabu",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frankfurt am Main",
+  "name": "Carmelo Greco",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frankfurt am Main",
+  "name": "Erno's Bistro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frankfurt am Main",
+  "name": "MAIN TOWER Restaurant & Lounge",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frankfurt am Main",
+  "name": "Masa Japanese Cuisine",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frankfurt am Main",
+  "name": "Restaurant Villa Merton",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frankfurt am Main",
+  "name": "Seven Swans",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frankfurt am Main",
+  "name": "Sommerfeld",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Frasdorf",
+  "name": "Michaels Leitenberg",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Frasdorf",
+  "name": "Restaurant Karner",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Freiburg im Breisgau",
+  "name": "Colombi Restaurant Zirbelstube",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Freiburg im Breisgau",
+  "name": "Eichhalde",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Freiburg im Breisgau",
+  "name": "Hawara",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Freiburg im Breisgau",
+  "name": "Jacobi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Freiburg im Breisgau",
+  "name": "Zur Wolfshöhle",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fulda",
+  "name": "Christian & Friends, Tastekitchen",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Gernsbach",
+  "name": "Werners Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Grenzach-Wyhlen",
+  "name": "Eckert | Fine Dining",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Gummersbach",
+  "name": "Mühlenhelle",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Halle (Saale)",
+  "name": "Speiseberg",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Haltern am See",
+  "name": "Ratsstuben",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "Atlantic Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "GLORIE",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "haebel",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "Heimatjuwel",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "Jellyfish",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "Koer",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "Landhaus Scherrer",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "Petit Amour",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "Piment",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "THE LISBETH",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hamburg",
+  "name": "Zeik",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hannover",
+  "name": "Handwerk",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hannover",
+  "name": "Marie",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Hayingen",
+  "name": "Restaurant 1950",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Heidelberg",
+  "name": "Oben",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Herleshausen",
+  "name": "La Vallée Verte",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hersfeld, Bad",
+  "name": "L'étable",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Illschwang",
+  "name": "Cheval Blanc",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Karlsruhe",
+  "name": "TAWA YAMA FINE",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Kernen im Remstal",
+  "name": "Malathounis",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Kiel",
+  "name": "Ahlmanns",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Kirchdorf (Kreis Mühldorf am Inn)",
+  "name": "Christian's Restaurant - Gasthof Grainer",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Kirchheim an der Weinstraße",
+  "name": "Schwarz Gourmet",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Kissingen, Bad",
+  "name": "Laudensacks Gourmet Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Knittelsheim",
+  "name": "irori",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Koblenz",
+  "name": "Schiller's Manufaktur",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Koblenz",
+  "name": "Verbene",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Köln",
+  "name": "La Cuisine Rademacher",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Köln",
+  "name": "La Société",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Köln",
+  "name": "Le Moissonnier Bistro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Köln",
+  "name": "maximilian lorenz",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Köln",
+  "name": "Pottkind",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Köln",
+  "name": "Sahila - The Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Köln",
+  "name": "taku",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Köln",
+  "name": "Zur Tant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Königsbronn",
+  "name": "Ursprung",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Kötzing, Bad",
+  "name": "Leos by Stephan Brandl",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Krakow am See",
+  "name": "Ich weiß ein Haus am See",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Kreuzwertheim",
+  "name": "La Boucherie",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Krozingen, Bad",
+  "name": "Storchen",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Lahr",
+  "name": "Adler",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Landsberg am Lech",
+  "name": "Lech-Line",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Langenau",
+  "name": "HOCHZWEI",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Langenzenn",
+  "name": "Keidenzeller Hof",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Leipzig",
+  "name": "Frieda",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Leipzig",
+  "name": "Kuultivo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Leipzig",
+  "name": "Stadtpfeiffer",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Limburg an der Lahn",
+  "name": "360°",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Lindau im Bodensee",
+  "name": "KARRisma",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Lindau im Bodensee",
+  "name": "VILLINO",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Lübeck",
+  "name": "Wullenwever",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Mainz",
+  "name": "FAVORITE restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Mainz",
+  "name": "Steins Traube",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Mannheim",
+  "name": "Dobler's",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Marburg",
+  "name": "MARBURGER Esszimmer",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Markt Indersdorf",
+  "name": "MIND",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Maßweiler",
+  "name": "Borst",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Meerbusch",
+  "name": "Anthony's Kitchen",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Meersburg",
+  "name": "Casala - das Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Meisenheim",
+  "name": "Meisenheimer Hof",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Mittenwald",
+  "name": "Das Marktrestaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "München",
+  "name": "1804 Hirschau",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "München",
+  "name": "Brothers",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "München",
+  "name": "Gabelspiel",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "München",
+  "name": "Les Deux",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "München",
+  "name": "Mountain Hub Gourmet",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "München",
+  "name": "Showroom",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "München",
+  "name": "Sparkling Bistro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "München",
+  "name": "Tantris DNA",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "München",
+  "name": "Werneckhof Sigi Schelling",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Münster (Westfalen)",
+  "name": "BOK Restaurant Brust oder Keule",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Münster (Westfalen)",
+  "name": "Spitzner",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Naurath/Wald",
+  "name": "Rüssel's Landhaus",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Neuenahr-Ahrweiler, Bad",
+  "name": "Restaurant Brogsitter - Historisches Gasthaus Sanct Peter",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Neuhausen (Enzkreis)",
+  "name": "Alte Baiz",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Neuhütten",
+  "name": "Le temple",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Neu-Ulm",
+  "name": "Stephans Stuben by Marco Langer",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Nideggen",
+  "name": "Burg Nideggen - Brockel Schlimbach",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Niederwinkling",
+  "name": "Buchner Welchenberg 1658",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Norderney (Insel)",
+  "name": "Seesteg",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Nördlingen",
+  "name": "Wirtshaus Meyers Keller",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Nürnberg",
+  "name": "Entenstuben",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Nürnberg",
+  "name": "Tisane",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Nürnberg",
+  "name": "Veles",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Nürnberg",
+  "name": "Waidwerk",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Nürnberg",
+  "name": "Wonka",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Nürnberg",
+  "name": "ZweiSinn Meiers | Fine Dining",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Oberstdorf",
+  "name": "ESS ATELIER STRAUSS",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Odenthal",
+  "name": "Zur Post",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ofterschwang",
+  "name": "Silberdistel",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Öhningen",
+  "name": "Falconera",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Osnabrück",
+  "name": "Friedrich",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Osnabrück",
+  "name": "IKO",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Osnabrück",
+  "name": "Kesselhaus",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Paderborn",
+  "name": "Balthasar",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Passau",
+  "name": "Marcel von Winckelmann",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Perasdorf",
+  "name": "Gasthaus Jakob",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pfronten",
+  "name": "PAVO",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pirmasens",
+  "name": "Die Brasserie",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pleiskirchen",
+  "name": "Restaurant Alexander Huber",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Potsdam",
+  "name": "kochZIMMER in der Gaststätte zur Ratswaage",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Prien am Chiemsee",
+  "name": "Wachter Foodbar",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pulheim",
+  "name": "Gut Lärchenhof",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Radebeul",
+  "name": "Atelier Sanssouci",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ravensburg",
+  "name": "Kaisersaal",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Regensburg",
+  "name": "Aska",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Regensburg",
+  "name": "Ontra's Gourmetstube",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Regensburg",
+  "name": "ROTER HAHN by Maximilian Schmidt",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Regensburg",
+  "name": "Storstad",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rheda-Wiedenbrück",
+  "name": "Reuter",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rostock",
+  "name": "Gourmet-Restaurant Der Butt",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rothenburg ob der Tauber",
+  "name": "Mittermeier",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rottach-Egern",
+  "name": "Haubentaucher",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Rottach-Egern",
+  "name": "Restaurant Überfahrt",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Rügen / Binz",
+  "name": "freustil",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sachsa, Bad",
+  "name": "Joseph's Fine Dining",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Säckingen, Bad",
+  "name": "Genuss-Apotheke",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Salach",
+  "name": "Gourmetrestaurant \"fine dining RS\"",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sankt Ingbert",
+  "name": "midi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sankt Wendel",
+  "name": "Restaurant Kunz",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Scharbeutz",
+  "name": "DiVa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Schirgiswalde-Kirschau",
+  "name": "JUWEL",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Schluchsee",
+  "name": "Mühle",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Schmallenberg",
+  "name": "Hofstube Deimann",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Schorndorf",
+  "name": "Gourmetrestaurant Nico Burkhardt",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Schriesheim",
+  "name": "Raro im Mühlenhof",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Schwäbisch Hall",
+  "name": "Eisenbahn",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Schwäbisch Hall",
+  "name": "Rebers Pflug",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Schwendi",
+  "name": "Esszimmer im Oberschwäbischen Hof",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Selzen",
+  "name": "Kaupers Restaurant im Kapellenhof",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Simmershofen",
+  "name": "Winzerhof Stahl",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sobernheim, Bad",
+  "name": "Jungborn",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sommerhausen",
+  "name": "Philipp",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sonnenbühl",
+  "name": "Hirsch",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Starnberg",
+  "name": "Aubergine",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Stuttgart",
+  "name": "5 (Fünf)",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Stuttgart",
+  "name": "Délice",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Stuttgart",
+  "name": "Der Zauberlehrling",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Stuttgart",
+  "name": "Hegel Eins",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Stuttgart",
+  "name": "Hupperts",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Stuttgart",
+  "name": "Wielandshöhe",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Stuttgart",
+  "name": "ZUR WEINSTEIGE",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sylt / Hörnum",
+  "name": "KAI3",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sylt / Keitum",
+  "name": "Tipken's by Nils Henkel",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sylt / Tinnum",
+  "name": "BODENDORF'S",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Teinach-Zavelstein, Bad",
+  "name": "Gourmetrestaurant Berlins Krone",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Timmendorfer Strand",
+  "name": "Orangerie",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Trier",
+  "name": "Bagatelle",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Trittenheim",
+  "name": "Wein- und Tafelhaus",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Tuttlingen",
+  "name": "ANIMA",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Übersee",
+  "name": "June",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Uhingen",
+  "name": "Restaurant auf Schloss Filseck",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ulm (Donau)",
+  "name": "bi:braud",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ulm (Donau)",
+  "name": "Seestern",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Usedom / Heringsdorf",
+  "name": "Kulmeck by Tom Wickboldt",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Usedom / Heringsdorf",
+  "name": "The O'ROOM",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vaihingen an der Enz",
+  "name": "Lamm Rosswag",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Velbert",
+  "name": "Haus Stemberg",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vogtsburg im Kaiserstuhl",
+  "name": "Schwarzer Adler",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Volkach",
+  "name": "Weinstock",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Waiblingen",
+  "name": "Bachofer",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Waldbronn",
+  "name": "Schwitzer's Gourmet-Restaurant",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Waldenbuch",
+  "name": "Gasthof Krone",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Waldkirchen",
+  "name": "Johanns",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Weigenheim",
+  "name": "Le Frankenberg",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Weikersheim",
+  "name": "Laurentius",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Weinstadt",
+  "name": "Cédric",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Weisenheim am Berg",
+  "name": "Admiral",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Weißenbrunn",
+  "name": "Gasthof Alex",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Werder (Havel)",
+  "name": "Alte Überfahrt",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Wernigerode",
+  "name": "Zeitwerk",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Wiesbaden",
+  "name": "Ente",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Wuppertal",
+  "name": "Shiraz",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Würzburg",
+  "name": "KUNO 1408",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Würzburg",
+  "name": "MiZAR",
+  "new": true
+ }
+]
