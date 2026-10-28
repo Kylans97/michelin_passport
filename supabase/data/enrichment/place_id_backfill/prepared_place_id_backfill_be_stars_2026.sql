@@ -33,6 +33,9 @@ insert into _pid_be_2026 values
     ('rest_1415', 'ChIJm6VJcdcBwUcRDiojP78doF8'),  -- 7 m, Philippe Fauchet
     ('rest_1416', 'ChIJ17v_QcenxEcR8tP55_pRpaA'),  -- 111 m, Sensum Gent
     ('rest_1417', 'ChIJkamNxyxfwEcRvJCwxs-BJf4');  -- 12 m, Un Max de Goût
+
+do $$
+declare bad text;
 begin
   select string_agg(p.code, ', ') into bad from _pid_be_2026 p
    where not exists (select 1 from public.restaurants t where t.restaurant_code = p.code);
