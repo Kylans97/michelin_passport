@@ -1,0 +1,647 @@
+name,city,stars,michelin_url,is_new_2026,source_page
+Troisgros - Le Bois sans Feuilles,Ouches,3,https://guide.michelin.com/en/auvergne-rhone-alpes/ouches/restaurant/troisgros-le-bois-sans-feuilles,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Assiette Champenoise,Reims,3,https://guide.michelin.com/en/grand-est/reims/restaurant/assiette-champenoise,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Épicure,Paris,3,https://guide.michelin.com/en/ile-de-france/paris/restaurant/epicure,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Le Gabriel - La Réserve Paris,Paris,3,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-gabriel476630,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Le Petit Nice,Marseille,3,https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/le-petit-nice,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Flocons de Sel,Megève,3,https://guide.michelin.com/en/auvergne-rhone-alpes/megve/restaurant/flocons-de-sel,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Maison Lameloise,Chagny,3,https://guide.michelin.com/en/bourgogne-franche-comte/chagny/restaurant/maison-lameloise,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Les Prés d'Eugénie - Michel Guérard,Eugénie-les-Bains,3,https://guide.michelin.com/en/nouvelle-aquitaine/eugnie-les-bains/restaurant/les-pres-d-eugenie-michel-guerard,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Duende,Nîmes,2,https://guide.michelin.com/en/occitanie/nimes/restaurant/duende,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Lalique,Bommes,2,https://guide.michelin.com/en/nouvelle-aquitaine/bommes/restaurant/lalique,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table de Pavie,Saint-Emilion,2,https://guide.michelin.com/en/nouvelle-aquitaine/saint-milion/restaurant/la-table-de-pavie,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Côte d'Or,Saulieu,2,https://guide.michelin.com/en/bourgogne-franche-comte/saulieu/restaurant/la-cote-d-or,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Villa René Lalique,Wingen-sur-Moder,2,https://guide.michelin.com/en/grand-est/wingen-sur-moder/restaurant/villa-rene-lalique,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+L'Auberge de Saint-Rémy - Fanny Rey & Jonathan Wahid,Saint-Rémy-de-Provence,2,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-rmy-de-provence/restaurant/l-auberge-de-saint-remy-fanny-rey-and-jonathan-wahid,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+René et Maxime Meilleur,Saint-Martin-de-Belleville,2,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-martin-de-belleville/restaurant/rene-et-maxime-meilleur,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Voile - La Réserve Ramatuelle,Ramatuelle,2,https://guide.michelin.com/en/provence-alpes-cote-dazur/ramatuelle/restaurant/la-voile,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+L'Oiseau Blanc,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-oiseau-blanc,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Restaurant Le Meurice Alain Ducasse,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-meurice-alain-ducasse,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Maison Aribert,Uriage-les-Bains,2,https://guide.michelin.com/en/auvergne-rhone-alpes/uriage-les-bains/restaurant/maison-aribert,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Côte Saint-Jacques,Joigny,2,https://guide.michelin.com/en/bourgogne-franche-comte/joigny/restaurant/la-cote-saint-jacques,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Le Parc Les Crayères,Reims,2,https://guide.michelin.com/en/grand-est/reims/restaurant/le-parc-les-crayeres,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table de Franck Putelat,Carcassonne,2,https://guide.michelin.com/en/occitanie/carcassonne/restaurant/la-table-de-franck-putelat,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Le Skiff Club,Pyla-sur-Mer,2,https://guide.michelin.com/en/nouvelle-aquitaine/pyla-sur-mer/restaurant/le-skiff-club,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table d'Olivier Nasti,Kaysersberg,2,https://guide.michelin.com/en/grand-est/kaysersberg/restaurant/la-table-d-olivier-nasti,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table de Christophe Dufossé,Busnes,2,https://guide.michelin.com/en/hauts-de-france/busnes/restaurant/la-table-de-christophe-dufoss%C3%A9,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table de Yoann Conte,Veyrier-du-Lac,2,https://guide.michelin.com/en/auvergne-rhone-alpes/veyrier-du-lac/restaurant/la-table-de-yoann-conte,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Christophe Hay - Fleur de Loire,Blois,2,https://guide.michelin.com/en/centre-val-de-loire/blois/restaurant/christophe-hay-fleur-de-loire,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Trente-Trois,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/trente-trois,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table du Cap Estel,Èze-Bord-de-Mer,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/ze-bord-de-mer/restaurant/la-table-du-cap-estel,yes,https://guide.michelin.com/en/fr/restaurants/all-starred
+L'Oursin - Hôtel Les Roches,Le Lavandou,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/le-lavandou/restaurant/l-oursin-hotel-les-roches,yes,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table d'Armante,Saint-Gervais-les-Bains,1,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-gervais-les-bains/restaurant/la-table-d-armante,yes,https://guide.michelin.com/en/fr/restaurants/all-starred
+Colette,Saint-Tropez,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-tropez/restaurant/colette-1192024,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Le Royal,Champillon,1,https://guide.michelin.com/en/grand-est/champillon/restaurant/le-royal,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table de l'Ours,Val-d'Isère,1,https://guide.michelin.com/en/auvergne-rhone-alpes/val-d-isre/restaurant/la-table-de-l-ours,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Anne,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/anne,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table de Cédric Béchade - L'Auberge Basque,Saint-Pée-sur-Nivelle,1,https://guide.michelin.com/en/nouvelle-aquitaine/saint-pe-sur-nivelle/restaurant/la-table-de-cedric-bechade-l-auberge-basque,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table de Pierre,Saint-Paul-de-Vence,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-paul-de-vence/restaurant/la-table-de-pierre,yes,https://guide.michelin.com/en/fr/restaurants/all-starred
+Relais de la Poste,Magescq,1,https://guide.michelin.com/en/nouvelle-aquitaine/magescq/restaurant/relais-de-la-poste11709,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Dyades au Domaine des Étangs,Massignac,1,https://guide.michelin.com/en/nouvelle-aquitaine/massignac/restaurant/dyades-au-domaine-des-etangs,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Les Fresques - Hôtel Royal,Évian-les-Bains,1,https://guide.michelin.com/en/auvergne-rhone-alpes/evian-les-bains/restaurant/les-fresques400460,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Fontevraud L'Ermitage,Fontevraud-l'Abbaye,1,https://guide.michelin.com/en/pays-de-la-loire/fontevraud-l-abbaye/restaurant/fontevraud-l-ermitage,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Le Baudelaire,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-baudelaire,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Bellefeuille - Saint James Paris,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/bellefeuille-saint-james-paris,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Le Chantecler,Nice,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/le-chantecler,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Les Loges,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/les-loges,yes,https://guide.michelin.com/en/fr/restaurants/all-starred
+Le Chabichou by Stéphane Buron,Courchevel,1,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/le-chabichou-by-stephane-buron,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+Alcôve,Vinay,1,https://guide.michelin.com/en/grand-est/vinay/restaurant/alcove,yes,https://guide.michelin.com/en/fr/restaurants/all-starred
+Pourquoi Pas,Dinard,1,https://guide.michelin.com/en/bretagne/dinard/restaurant/pourquoi-pas,no,https://guide.michelin.com/en/fr/restaurants/all-starred
+La Table de Xavier Mathieu,Joucas,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/joucas/restaurant/la-table-de-xavier-mathieu,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Château Eza,Èze,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/ze/restaurant/chateau-eza,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Le Restaurant des Rois - La Réserve de Beaulieu,Beaulieu-sur-Mer,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/beaulieu-sur-mer/restaurant/restaurant-des-rois,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Les Oliviers,Bandol,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/bandol/restaurant/les-oliviers122360,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Notes,Cognac,1,https://guide.michelin.com/en/nouvelle-aquitaine/cognac/restaurant/notes,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+La Grande Table du Plaza Athénée,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/la-grande-du-plaza-athenee,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+La Table de l'Orangerie - Château de Fonscolombe,Le Puy-Sainte-Réparade,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/le-puy-sainte-rparade/restaurant/la-table-de-l-orangerie-chateau-de-fonscolombe,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Ducasse au Château de Versailles - Le Grand Contrôle,Versailles,1,https://guide.michelin.com/en/ile-de-france/versailles/restaurant/ducasse-au-chateau-de-versailles-le-grand-controle,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Lavandin - Château Les Oliviers de Salettes,Charols,1,https://guide.michelin.com/en/auvergne-rhone-alpes/charols/restaurant/lavandin-chateau-les-oliviers-de-salettes,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Kei,Paris,3,https://guide.michelin.com/en/ile-de-france/paris/restaurant/kei,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+AM par Alexandre Mazzia,Marseille,3,https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/am-par-alexandre-mazzia,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+La Villa Madie,Cassis,3,https://guide.michelin.com/en/provence-alpes-cote-dazur/cassis/restaurant/la-villa-madie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+La Pyramide - Maison Henriroux,Vienne,2,https://guide.michelin.com/en/auvergne-rhone-alpes/vienne/restaurant/la-pyramide-maison-henriroux,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+La Scène,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/la-scene,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Le Grand Restaurant - Jean-François Piège,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-grand-restaurant-jean-francois-piege,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Maison Rostang,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/maison-rostang,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Mère Brazier,Lyon,2,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/mere-brazier,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Le Taillevent,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-taillevent,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Flaveur,Nice,2,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/flaveur,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Alliance,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/alliance,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Marsan par Hélène Darroze,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/marsan-par-helene-darroze,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Le Clarence,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-clarence,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+David Toutain,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/david-toutain,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+La Table Lionel Giraud,Narbonne,2,https://guide.michelin.com/en/occitanie/narbonne/restaurant/la-table-lionel-giraud,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Paul Bocuse,Collonges-au-Mont-d'Or,2,https://guide.michelin.com/en/auvergne-rhone-alpes/collonges-au-mont-d-or/restaurant/paul-bocuse,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Le Neuvième Art,Lyon,2,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/le-neuvieme-art,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Slalom 1850,Courchevel,2,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/slalom-1850,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Cédric Burtin,Saint-Rémy,2,https://guide.michelin.com/en/bourgogne-franche-comte/saint-rmy/restaurant/cedric-burtin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+La Villa Archange,Le Cannet,2,https://guide.michelin.com/en/provence-alpes-cote-dazur/le-cannet/restaurant/villa-archange,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Blanc,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/blanc-1211547,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Héritages,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/heritages,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Pantagruel,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pantagruel,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Erre,Chassy,1,https://guide.michelin.com/en/bourgogne-franche-comte/chassy_1527287/restaurant/erre,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Auffo,Marseille,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/auffo,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Irwin,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/irwin,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Mareluna,Théoule-sur-Mer,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/thoule-sur-mer/restaurant/mareluna,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Maison Avoise,Issy-les-Moulineaux,1,https://guide.michelin.com/en/ile-de-france/issy-les-moulineaux/restaurant/maison-avoise,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Le Charlie,Porticcio,1,https://guide.michelin.com/en/corse/porticcio/restaurant/le-charlie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Chez Jeannette,Flassans-sur-Issole,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/flassans-sur-issole_1505557/restaurant/chez-jeannette,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Garrigue,Ansouis,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/ansouis/restaurant/garrigue,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Geoélia,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/geoelia,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Nuance,Plomeur,1,https://guide.michelin.com/en/bretagne/plomeur_1568548/restaurant/nuance-1215929,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Origines Restaurant,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/origines-restaurant,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Gaya par Pierre Gagnaire,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/gaya-par-pierre-gagnaire,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+NESO,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/neso,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+La Table - Christophe Hay,Ardon,1,https://guide.michelin.com/en/centre-val-de-loire/ardon/restaurant/la-table-christophe-hay,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Imperial Treasure,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/imperial-treasure1186891,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+Miraflores,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/miraflores-1190862,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/2
+La Chapelle - Château Saint-Jean,Montluçon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/montluon/restaurant/la-chapelle,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Le Faham,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-faham,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Le Restaurant du Cerisier,Lille,1,https://guide.michelin.com/en/hauts-de-france/lille/restaurant/le-restaurant-du-cerisier,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+L'Orchidée,Ensisheim,1,https://guide.michelin.com/en/grand-est/ensisheim/restaurant/l-orchidee,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Reflet d'Obione,Montpellier,1,https://guide.michelin.com/en/occitanie/montpellier/restaurant/reflet-d-obione,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+La Maison de Pierre,Hasparren,1,https://guide.michelin.com/en/nouvelle-aquitaine/hasparren/restaurant/la-maison-de-pierre,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+L'Évidence,Montbazon,1,https://guide.michelin.com/en/centre-val-de-loire/montbazon/restaurant/l-evidence,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Le Jardin Secret,La Wantzenau,1,https://guide.michelin.com/en/grand-est/la-wantzenau/restaurant/le-jardin-secret,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Dan B.,Ventabren,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/ventabren/restaurant/dan-b,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Automne,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/automne,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+La Table d'Uzès,Uzès,1,https://guide.michelin.com/en/occitanie/uzs/restaurant/la-table-d-uzes,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Avel Vor,Port-Louis,1,https://guide.michelin.com/en/bretagne/fr-port-louis/restaurant/avel-vor,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Pilgrim,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pilgrim1000208,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+La Source,Saint-Galmier,1,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-galmier/restaurant/la-source,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Likoké,Les Vans,1,https://guide.michelin.com/en/auvergne-rhone-alpes/les-vans/restaurant/likoke,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Le Relais de la Poste,La Wantzenau,1,https://guide.michelin.com/en/grand-est/la-wantzenau/restaurant/relais-de-la-poste,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Faventia,Tourrettes,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/tourrettes/restaurant/faventia,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Les Explorateurs - Hôtel Pashmina,Val-Thorens,1,https://guide.michelin.com/en/auvergne-rhone-alpes/val-thorens/restaurant/les-explorateurs,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+L'Or Bleu,Théoule-sur-Mer,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/thoule-sur-mer/restaurant/l-or-bleu,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Les Jardins,Parnac,1,https://guide.michelin.com/en/occitanie/parnac/restaurant/les-jardins,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Contraste,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/contraste1186546,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Anona,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/anona,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+La Table de Tourrel,Saint-Rémy-de-Provence,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-rmy-de-provence/restaurant/la-table-de-tourrel,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+La Table de L'Incomparable,Tresserve,1,https://guide.michelin.com/en/auvergne-rhone-alpes/tresserve/restaurant/la-table-de-l-incomparable,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Substance,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/substance,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Ochre,Rueil-Malmaison,1,https://guide.michelin.com/en/ile-de-france/rueil-malmaison/restaurant/ochre,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Fleur de Pavé,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/fleur-de-pave,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Baieta,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/baieta,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+La Huchette,Replonges,1,https://guide.michelin.com/en/auvergne-rhone-alpes/replonges/restaurant/la-huchette,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+L'Ours,Vincennes,1,https://guide.michelin.com/en/ile-de-france/vincennes/restaurant/l-ours,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Les Foudres,Cognac,1,https://guide.michelin.com/en/nouvelle-aquitaine/cognac/restaurant/les-foudres,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Guillaume Scheer - Les Plaisirs Gourmands,Strasbourg,1,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/les-plaisirs-gourmands,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+L'Écrin de Yohann Chapuis,Tournus,1,https://guide.michelin.com/en/bourgogne-franche-comte/tournus/restaurant/l-ecrin-de-yohann-chapuis,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Le Pressoir,Saint-Avé,1,https://guide.michelin.com/en/bretagne/saint-av/restaurant/le-pressoir,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+L'Almandin,Saint-Cyprien,1,https://guide.michelin.com/en/occitanie/saint-cyprien/restaurant/l-almandin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Le Saint Placide,Saint-Malo,1,https://guide.michelin.com/en/bretagne/saint-malo/restaurant/le-st-placide,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+L'Aparté,Montrabé,1,https://guide.michelin.com/en/occitanie/montrab/restaurant/l-aparte,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Auberge de Clochemerle,Vaux-en-Beaujolais,1,https://guide.michelin.com/en/auvergne-rhone-alpes/vaux-en-beaujolais/restaurant/auberge-de-clochemerle,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Au Crocodile,Strasbourg,1,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/au-crocodile,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+1741,Strasbourg,1,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/1741,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Villa9Trois,Montreuil,1,https://guide.michelin.com/en/ile-de-france/montreuil-ile-de-france/restaurant/villa9trois,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+La Table de La Butte,Plouider,1,https://guide.michelin.com/en/bretagne/plouider/restaurant/la-table-de-la-butte,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Nori,Roscoff,1,https://guide.michelin.com/en/bretagne/roscoff/restaurant/nori,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Le Panoramique - Domaine de la Corniche,Rolleboise,1,https://guide.michelin.com/en/ile-de-france/rolleboise/restaurant/le-panoramique-domaine-de-la-corniche,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Jacques Faussat,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/jacques-faussat,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Comice,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/comice,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Zostera,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/zostera,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Astrance,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/astrance,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/3
+Qui Plume la Lune,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/qui-plume-la-lune,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Le Gindreau,Saint-Médard,1,https://guide.michelin.com/en/occitanie/saint-mdard/restaurant/le-gindreau,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Frédéric Simonin,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/frederic-simonin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Nomicos,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/nomicos,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Le Millénaire,Reims,1,https://guide.michelin.com/en/grand-est/reims/restaurant/le-millenaire,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+La Grande Cascade,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/la-grande-cascade,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Agapé,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/agape,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Neige d'Été,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/neige-d-ete,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+L'Escarbille,Meudon,1,https://guide.michelin.com/en/ile-de-france/meudon/restaurant/l-escarbille,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Pastis Restaurant,Montpellier,1,https://guide.michelin.com/en/occitanie/montpellier/restaurant/pastis-restaurant,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Ar Men Du,Névez,1,https://guide.michelin.com/en/bretagne/nevez/restaurant/ar-men-du,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Restaurant H,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/restaurant-h,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+La Bastide de Moustiers,Moustiers-Sainte-Marie,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/moustiers-sainte-marie/restaurant/la-bastide-de-moustiers,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+La Nouvelle Auberge,Wihr-au-Val,1,https://guide.michelin.com/en/grand-est/wihr-au-val/restaurant/la-nouvelle-auberge,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+L'Arôme,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-arome174292,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Pur' - Jean-François Rouquette,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pur-jean-francois-rouquette,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Nakatani,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/nakatani,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Le Clair de la Plume,Grignan,1,https://guide.michelin.com/en/auvergne-rhone-alpes/grignan/restaurant/le-clair-de-la-plume,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Loiseau des Ducs,Dijon,1,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/loiseau-des-ducs,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Yoshinori,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/yoshinori,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Armani Ristorante,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/armani-ristorante,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Thierry Schwartz - Table Naturelle,Obernai,1,https://guide.michelin.com/en/grand-est/obernai/restaurant/thierry-schwartz-table-naturelle,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Sushi B,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/sushi-b514232,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Le Violon d'Ingres,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-violon-d-ingres5989,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+La Licorne Royale,Lyons-la-Forêt,1,https://guide.michelin.com/en/normandie/lyons-la-fort/restaurant/la-licorne-royale,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Le Grand Cerf,Montchenot,1,https://guide.michelin.com/en/grand-est/montchenot/restaurant/le-grand-cerf,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+L'Odas,Rouen,1,https://guide.michelin.com/en/normandie/rouen/restaurant/l-odas,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Gordon Ramsay au Trianon,Versailles,1,https://guide.michelin.com/en/ile-de-france/versailles/restaurant/gordon-ramsay-au-trianon,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+L'Archeste,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-archeste,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Pertinence,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pertinence,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Mavrommatis,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/mavrommatis,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Auguste,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/auguste,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Quinsou,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/quinsou,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+L'Atelier de Joël Robuchon - Étoile,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-atelier-de-joel-robuchon-etoile,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+114 Faubourg,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/114-faubourg,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+L'Atlantide 1874 - Maison Guého,Nantes,1,https://guide.michelin.com/en/pays-de-la-loire/nantes/restaurant/l-atlantide-1874-maison-gueho,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Bessem,Mandelieu-La Napoule,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/mandelieu-la-napoule/restaurant/bessem,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Lasserre,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/lasserre,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Jin,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/jin,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+"Une Table, au Sud",Marseille,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/une-table-au-sud,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+La Réserve Rimbaud,Montpellier,1,https://guide.michelin.com/en/occitanie/montpellier/restaurant/la-reserve-rimbaud,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Cheval Blanc,Lembach,1,https://guide.michelin.com/en/grand-est/lembach/restaurant/cheval-blanc-4111,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+L'Atelier des Augustins,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/l-atelier-des-augustins,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+La Chapelle Saint-Martin,Nieul,1,https://guide.michelin.com/en/nouvelle-aquitaine/nieul_1470595/restaurant/chapelle-saint-martin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Briketenia,Guéthary,1,https://guide.michelin.com/en/nouvelle-aquitaine/guthary/restaurant/briketenia,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+La Marande,Montbellet,1,https://guide.michelin.com/en/bourgogne-franche-comte/montbellet/restaurant/la-marande,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Au Gourmet,Drusenheim,1,https://guide.michelin.com/en/grand-est/drusenheim/restaurant/au-gourmet,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Radio,Chamalières,1,https://guide.michelin.com/en/auvergne-rhone-alpes/chamalires/restaurant/radio10778,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/4
+Les Fresques - Château des Vigiers,Monestier,1,https://guide.michelin.com/en/nouvelle-aquitaine/monestier/restaurant/les-fresques,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Têtedoie,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/tetedoie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Table de Courcelles - Château de Courcelles,Courcelles-sur-Vesle,1,https://guide.michelin.com/en/hauts-de-france/courcelles-sur-vesle/restaurant/la-table-de-courcelles-chateau-de-courcelles,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Le Jardin de Berne,Flayosc,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/flayosc/restaurant/le-jardin-de-berne,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Le Grand Cap,Leucate,1,https://guide.michelin.com/en/occitanie/leucate/restaurant/le-grand-cap,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Passagère - Hôtel Belles Rives,Juan-les-Pins,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/juan-les-pins/restaurant/la-passagere,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Le 1862 - Les Glycines,Les Eyzies-de-Tayac-Sireuil,1,https://guide.michelin.com/en/nouvelle-aquitaine/les-eyzies-de-tayac/restaurant/le-1862,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Ô Flaveurs,Douvaine,1,https://guide.michelin.com/en/auvergne-rhone-alpes/douvaine/restaurant/o-flaveurs,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Verrière,Olmeto,1,https://guide.michelin.com/en/corse/olmeto/restaurant/la-verriere,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Hostellerie la Montagne,Colombey-les-Deux-Églises,1,https://guide.michelin.com/en/grand-est/colombey-les-deux-glises/restaurant/hostellerie-la-montagne,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Jean-Claude Leclerc,Clermont-Ferrand,1,https://guide.michelin.com/en/auvergne-rhone-alpes/clermont-ferrand/restaurant/jean-claude-leclerc,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Palme d'Or,Cannes,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/cannes/restaurant/la-palme-d-or,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Le Prince Noir - Vivien Durand,Lormont,1,https://guide.michelin.com/en/nouvelle-aquitaine/lormont/restaurant/le-prince-noir-vivien-durand,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Bastide,Bonnieux,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/bonnieux/restaurant/la-bastide-10332,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Clos du Cèdre,Beaune,1,https://guide.michelin.com/en/bourgogne-franche-comte/beaune/restaurant/le-clos-du-cedre,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Les Trois Rochers,Combrit,1,https://guide.michelin.com/en/bretagne/combrit/restaurant/les-trois-rochers,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+L'Arnsbourg,Baerenthal,1,https://guide.michelin.com/en/grand-est/baerenthal/restaurant/l-arnsbourg,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Chassagnette,Arles,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/arles/restaurant/la-chassagnette,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Hostellerie de la Pointe Saint-Mathieu,Plougonvelin,1,https://guide.michelin.com/en/bretagne/plougonvelin/restaurant/hostellerie-de-la-pointe-st-mathieu,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Soléna,Bordeaux,1,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/solena,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Ed.Em,Chassagne-Montrachet,1,https://guide.michelin.com/en/bourgogne-franche-comte/chassagne-montrachet/restaurant/ed-em,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Bonne Étape,Château-Arnoux-Saint-Auban,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/chteau-arnoux/restaurant/la-bonne-etape,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Le Saint-James,Bouliac,1,https://guide.michelin.com/en/nouvelle-aquitaine/bouliac/restaurant/le-saint-james,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Jean-Marc Pérochon,Bretignolles-sur-Mer,1,https://guide.michelin.com/en/pays-de-la-loire/brtignolles-sur-mer/restaurant/jean-marc-perochon,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Auprès du Clocher,Pommard,1,https://guide.michelin.com/en/bourgogne-franche-comte/pommard/restaurant/aupres-du-clocher,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Chez Michèle,Languimberg,1,https://guide.michelin.com/en/grand-est/languimberg/restaurant/chez-michele,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Le Vivier,L'Isle-sur-la-Sorgue,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/l-isle-sur-la-sorgue/restaurant/le-vivier3857,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Petite Maison de Cucuron,Cucuron,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/cucuron/restaurant/la-petite-maison-de-cucuron,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Ribaudière,Bourg-Charente,1,https://guide.michelin.com/en/nouvelle-aquitaine/bourg-charente/restaurant/la-ribaudiere,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+L'Atelier du Peintre,Colmar,1,https://guide.michelin.com/en/grand-est/colmar/restaurant/l-atelier-du-peintre,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Table de Chaintré,Chaintré,1,https://guide.michelin.com/en/bourgogne-franche-comte/chaintr/restaurant/la-table-de-chaintre,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Le Mascaret,Blainville-sur-Mer,1,https://guide.michelin.com/en/normandie/blainville-sur-mer/restaurant/le-mascaret,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Les Terraillers,Biot,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/biot/restaurant/les-terraillers,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+En Marge,Aureville,1,https://guide.michelin.com/en/occitanie/aureville/restaurant/en-marge,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Renaissance,Argentan,1,https://guide.michelin.com/en/normandie/argentan/restaurant/la-renaissance433,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Les Pêcheurs,Antibes,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/antibes/restaurant/les-pecheurs,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Restaurant Julien Binz,Ammerschwihr,1,https://guide.michelin.com/en/grand-est/ammerschwihr/restaurant/julien-binz,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Le Puits du Trésor,Lastours,1,https://guide.michelin.com/en/occitanie/lastours/restaurant/le-puits-du-tresor,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Vous,Megève,1,https://guide.michelin.com/en/auvergne-rhone-alpes/megve/restaurant/vous,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Géosmine,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/geosmine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Onor,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/onor,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Ithurria,Ainhoa,1,https://guide.michelin.com/en/nouvelle-aquitaine/ainhoa/restaurant/ithurria,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Émilie & Thomas - Moulin de Cambelong,Conques-en-Rouergue,1,https://guide.michelin.com/en/occitanie/conques/restaurant/emilie-thomas-moulin-de-cambelong,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+L'Orangerie,Eugénie-les-Bains,1,https://guide.michelin.com/en/nouvelle-aquitaine/eugnie-les-bains/restaurant/l-orangerie-1209337,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Château de Pray,Amboise,1,https://guide.michelin.com/en/centre-val-de-loire/amboise/restaurant/chateau-de-pray,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Séchex Nous,Margencel,1,https://guide.michelin.com/en/auvergne-rhone-alpes/margencel/restaurant/sechex-nous,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+La Table de Pierre Reboul,Aix-en-Provence,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/aix-en-provence/restaurant/la-table-de-pierre-reboul,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Omar Dhiab,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/omar-dhiab,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/5
+Rouge,Nîmes,1,https://guide.michelin.com/en/occitanie/nimes/restaurant/rouge-1200806,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+La Maison Despouès,Puylausic,1,https://guide.michelin.com/en/occitanie/puylausic_1498483/restaurant/la-maison-despoues,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Sergent Recruteur,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-sergent-recruteur,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Accents Table Bourse,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/accents-table-bourse,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Cercle Guiraud,Sauternes,1,https://guide.michelin.com/en/nouvelle-aquitaine/sauternes/restaurant/le-cercle-guiraud,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Saint Hilaire,Saint-Hilaire-de-Brethmas,1,https://guide.michelin.com/en/occitanie/saint-hilaire-de-brethmas_3915683/restaurant/le-saint-hilaire-1208787,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Ōrtensia,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/ortensia-1202241,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Lore Ttipia - Auberge Ostape,Bidarray,1,https://guide.michelin.com/en/nouvelle-aquitaine/bidarray/restaurant/lore-ttipia-auberge-ostape,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Alpage,Courchevel,1,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/alpage,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Nhome,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/nhome,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Jardin des Sens,Montpellier,1,https://guide.michelin.com/en/occitanie/montpellier/restaurant/jardin-des-sens,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Ruche,Gambais,1,https://guide.michelin.com/en/ile-de-france/gambais/restaurant/ruche,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Granite,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/granite,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+La Vague d'Or - Cheval Blanc St-Tropez,Saint-Tropez,3,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-tropez/restaurant/la-vague-d-or-cheval-blanc-st-tropez,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Pic,Valence,3,https://guide.michelin.com/en/auvergne-rhone-alpes/valence/restaurant/pic,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Christopher Coutanceau,La Rochelle,3,https://guide.michelin.com/en/nouvelle-aquitaine/la-rochelle/restaurant/christopher-coutanceau,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Cinq,Paris,3,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-cinq6102,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Restaurant Marcon,Saint-Bonnet-le-Froid,3,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-bonnet-le-froid/restaurant/restaurant-marcon,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le 1947 à Cheval Blanc,Courchevel,3,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/le-1947,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Les Morainières,Jongieux,3,https://guide.michelin.com/en/auvergne-rhone-alpes/jongieux/restaurant/les-morainieres,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Coquillage,Saint-Méloir-des-Ondes,3,https://guide.michelin.com/en/bretagne/saint-mloir-des-ondes/restaurant/le-coquillage,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Auberge du Vieux Puits,Fontjoncouse,3,https://guide.michelin.com/en/occitanie/fontjoncouse/restaurant/auberge-du-vieux-puits,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+L'Oustau de Baumanière,Les Baux-de-Provence,3,https://guide.michelin.com/en/provence-alpes-cote-dazur/les-baux-de-provence/restaurant/l-oustau-de-baumaniere,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Clos des Sens,Annecy,3,https://guide.michelin.com/en/auvergne-rhone-alpes/annecy/restaurant/le-clos-des-sens,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+La Marine,L'Herbaudière,3,https://guide.michelin.com/en/pays-de-la-loire/l-herbaudire/restaurant/la-marine3780,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+La Table du Castellet,Le Castellet,3,https://guide.michelin.com/en/provence-alpes-cote-dazur/le-castellet/restaurant/la-table-du-castellet,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Plénitude - Cheval Blanc Paris,Paris,3,https://guide.michelin.com/en/ile-de-france/paris/restaurant/plenitude-cheval-blanc-paris,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Bulle d'Osier,Langres,2,https://guide.michelin.com/en/grand-est/langres/restaurant/bulle-d-osier,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Hakuba,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/hakuba,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Jean Sulpice,Talloires-Montmin,2,https://guide.michelin.com/en/auvergne-rhone-alpes/talloires-montmin/restaurant/jean-sulpice,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Georges Blanc,Vonnas,2,https://guide.michelin.com/en/auvergne-rhone-alpes/vonnas/restaurant/georges-blanc,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Maison Ronan Kervarrec,Saint-Grégoire,2,https://guide.michelin.com/en/bretagne/saint-grgoire/restaurant/maison-ronan-kervarrec,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+La Grenouillère,La Madelaine-sous-Montreuil,2,https://guide.michelin.com/en/hauts-de-france/la-madelaine-sous-montreuil/restaurant/la-grenouillere,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Anne de Bretagne,La Plaine-sur-Mer,2,https://guide.michelin.com/en/pays-de-la-loire/la-plaine-sur-mer/restaurant/anne-de-bretagne,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+L'Auberge des Glazicks,Plomodiern,2,https://guide.michelin.com/en/bretagne/plomodiern/restaurant/l-auberge-des-glazicks,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Corot,Ville-d'Avray,2,https://guide.michelin.com/en/ile-de-france/ville-d-avray/restaurant/le-corot,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+La Chèvre d'Or,Èze,2,https://guide.michelin.com/en/provence-alpes-cote-dazur/ze/restaurant/la-chevre-d-or,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Pré - Xavier Beaudiment,Clermont-Ferrand,2,https://guide.michelin.com/en/auvergne-rhone-alpes/clermont-ferrand/restaurant/le-pre-xavier-beaudiment,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Casadelmar,Porto-Vecchio,2,https://guide.michelin.com/en/corse/porto-vecchio/restaurant/casadelmar,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+La Grand'Vigne - Les Sources de Caudalie,Martillac,2,https://guide.michelin.com/en/nouvelle-aquitaine/martillac/restaurant/la-grand-vigne,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+William Frachot,Dijon,2,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/william-frachot,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Auberge de l'Ill,Illhaeusern,2,https://guide.michelin.com/en/grand-est/illhaeusern/restaurant/auberge-de-l-ill,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Serge Vieira,Chaudes-Aigues,2,https://guide.michelin.com/en/auvergne-rhone-alpes/chaudes-aigues/restaurant/serge-vieira,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Frédéric Doucet,Charolles,2,https://guide.michelin.com/en/bourgogne-franche-comte/charolles/restaurant/frederic-doucet,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Pressoir d'Argent - Gordon Ramsay,Bordeaux,2,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/le-pressoir-d-argent-gordon-ramsay,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+La Table des Amis,Bonnieux,2,https://guide.michelin.com/en/provence-alpes-cote-dazur/bonnieux/restaurant/la-table-des-amis,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Sylvestre Wahid - Les Grandes Alpes,Courchevel,2,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/sylvestre-wahid-les-grandes-alpes,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+Le Puy Tilleul,Tournemire,1,https://guide.michelin.com/en/auvergne-rhone-alpes/tournemire/restaurant/le-puy-tilleul,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/6
+L'Altitude,Courchevel,1,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/l-altitude,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Favori - Les Sources de Cheverny,Cheverny,1,https://guide.michelin.com/en/centre-val-de-loire/cheverny/restaurant/le-favori-les-sources-de-cheverny,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+L'Oursin,Carry-le-Rouet,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/carry-le-rouet_1505150/restaurant/l-oursin,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+La Table - Domaine du Liziec,Vannes,1,https://guide.michelin.com/en/bretagne/vannes/restaurant/la-table-domaine-du-liziec,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+La Cheneaudière - Le Feuillage,Colroy-la-Roche,1,https://guide.michelin.com/en/grand-est/colroy-la-roche/restaurant/la-cheneaudiere-le-feuillage,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Art - Château de la Gaude,Aix-en-Provence,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/aix-en-provence/restaurant/le-art-chateau-de-la-gaude,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Aux Terrasses,Tournus,1,https://guide.michelin.com/en/bourgogne-franche-comte/tournus/restaurant/aux-terrasses,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Cèdre de Montcaud,Sabran,1,https://guide.michelin.com/en/occitanie/sabran/restaurant/le-cedre-de-montcaud,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Cap,Saint-Jean-Cap-Ferrat,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-jean-cap-ferrat/restaurant/le-cap,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Manoir de Lan-Kerellec,Trébeurden,1,https://guide.michelin.com/en/bretagne/trbeurden/restaurant/manoir-de-lan-kerellec,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Espadon,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/espadon,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Logis de la Cadène,Saint-Emilion,1,https://guide.michelin.com/en/nouvelle-aquitaine/saint-milion/restaurant/logis-de-la-cadene,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le George,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-george,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Il Carpaccio,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/il-carpaccio300866,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Feuillée - Le Couvent des Minimes,Mane,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/mane/restaurant/le-feuillee-le-couvent-des-minimes,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Cin5 - Au Cœur du Village,La Clusaz,1,https://guide.michelin.com/en/auvergne-rhone-alpes/la-clusaz/restaurant/le-cinq,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Georges,Chartres,1,https://guide.michelin.com/en/centre-val-de-loire/chartres/restaurant/le-georges,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Albert 1er,Chamonix Mont-Blanc,1,https://guide.michelin.com/en/auvergne-rhone-alpes/chamonix-mont-blanc/restaurant/albert-1er,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+L'Aupiho - Domaine de Manville,Les Baux-de-Provence,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/les-baux-de-provence/restaurant/l-aupiho,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+La Palmeraie - Château de Valmer,La Croix-Valmer,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/la-croix-valmer/restaurant/la-palmeraie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Louroc - Hôtel du Cap-Eden-Roc,Antibes,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/antibes/restaurant/louroc,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+La Rotonde des Trésoms,Annecy,1,https://guide.michelin.com/en/auvergne-rhone-alpes/annecy/restaurant/la-rotonde-des-tresoms,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Ezia,Montlivault,1,https://guide.michelin.com/en/centre-val-de-loire/montlivault/restaurant/ezia,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Suquet - Sébastien Bras,Laguiole,1,https://guide.michelin.com/en/occitanie/laguiole/restaurant/le-suquet-sebastien-bras,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Tout-Paris,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-tout-paris,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Pré Catelan,Paris,3,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-pre-catelan,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Pierre Gagnaire,Paris,3,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pierre-gagnaire6112,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Arpège,Paris,3,https://guide.michelin.com/en/ile-de-france/paris/restaurant/arpege,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Alléno Paris au Pavillon Ledoyen,Paris,3,https://guide.michelin.com/en/ile-de-france/paris/restaurant/alleno-paris-au-pavillon-ledoyen,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Mirazur,Menton,3,https://guide.michelin.com/en/provence-alpes-cote-dazur/menton/restaurant/mirazur,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Arbane,Reims,2,https://guide.michelin.com/en/grand-est/reims/restaurant/arbane,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Ekaitza,Ciboure,2,https://guide.michelin.com/en/nouvelle-aquitaine/ciboure/restaurant/ekaitza,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+L'Auberge de Montmin,Talloires-Montmin,2,https://guide.michelin.com/en/auvergne-rhone-alpes/talloires-montmin/restaurant/l-auberge-de-montmin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+L'Abysse Paris,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-abysse-paris,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Py-r,Toulouse,2,https://guide.michelin.com/en/occitanie/toulouse/restaurant/py-r,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Racine,Reims,2,https://guide.michelin.com/en/grand-est/reims/restaurant/racine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+L'Orangerie,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-orangerie505878,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Guy Savoy,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/guy-savoy,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Table - Bruno Verjus,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/table-bruno-verjus,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Takao Takano,Lyon,2,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/takao-takano,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+La Fourchette des Ducs,Obernai,2,https://guide.michelin.com/en/grand-est/obernai/restaurant/la-fourchette-des-ducs,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Michel Kayser - Restaurant Alexandre,Garons,2,https://guide.michelin.com/en/occitanie/garons/restaurant/michel-kayser-restaurant-alexandre,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+La Merise,Laubach,2,https://guide.michelin.com/en/grand-est/laubach/restaurant/la-merise,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+L'Ambroisie,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-ambroisie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Le Jules Verne,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-jules-verne,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+JY'S,Colmar,2,https://guide.michelin.com/en/grand-est/colmar/restaurant/jy-s,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Maison Benoît Vidal,Annecy,2,https://guide.michelin.com/en/auvergne-rhone-alpes/annecy/restaurant/maison-benoit-vidal,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Rozó,Marcq-en-Barœul,2,https://guide.michelin.com/en/hauts-de-france/marcq-en-barul/restaurant/rozo-1202595,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/7
+Maison Nouvelle,Bordeaux,2,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/maison-nouvelle,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Virtus,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/virtus,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Cyril Attrazic,Aumont-Aubrac,2,https://guide.michelin.com/en/occitanie/aumont-aubrac/restaurant/cyril-attrazic,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Sushi Yoshinaga,Paris,2,https://guide.michelin.com/en/ile-de-france/paris/restaurant/sushi-yoshinaga,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Shanael,Toulon,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/toulon/restaurant/shanael,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Harmonie,Villeneuve-d'Ascq,1,https://guide.michelin.com/en/hauts-de-france/villeneuve-d-ascq_1550830/restaurant/harmonie-1245894,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Maison Ruggieri Palais Royal,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/maison-ruggieri-palais-royal,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+HANADA,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/hanada,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Holodeck,Floressas,1,https://guide.michelin.com/en/occitanie/floressas_1492997/restaurant/holodeck,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+L'Écailler,La Flotte,1,https://guide.michelin.com/en/nouvelle-aquitaine/la-flotte/restaurant/l-ecailler,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Ombellule,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/ombellule,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Maison Medard,Boulleret,1,https://guide.michelin.com/en/centre-val-de-loire/boulleret/restaurant/maison-medard,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Fario,Céret,1,https://guide.michelin.com/en/occitanie/cret/restaurant/fario-1215907,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Ineffable,Barbentane,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/barbentane_1504843/restaurant/ineffable,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Amicis,Bordeaux,1,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/amicis,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+L'Étape Dorée,Saint-Genis-Laval,1,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-genis-laval_1515236/restaurant/l-etape-doree,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+JU - Maison de Cuisine,Bonnieux,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/bonnieux/restaurant/ju-maison-de-cuisine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Freia,Nantes,1,https://guide.michelin.com/en/pays-de-la-loire/nantes/restaurant/freia,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Mandibule,Alixan,1,https://guide.michelin.com/en/auvergne-rhone-alpes/alixan_1509150/restaurant/mandibule,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Yozora,Metz,1,https://guide.michelin.com/en/grand-est/metz/restaurant/yozora,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+FIEF,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/fief,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Arbore & Sens,Loches,1,https://guide.michelin.com/en/centre-val-de-loire/loches/restaurant/arbore-sens,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Le Petit Léon,Saint-Léon-sur-Vézère,1,https://guide.michelin.com/en/nouvelle-aquitaine/saint-leon-sur-vezere/restaurant/le-petit-leon,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Monsieur Dior by Yannick Alléno,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/monsieur-dior-by-yannick-alleno,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+L'Écorce,Toulouse,1,https://guide.michelin.com/en/occitanie/toulouse/restaurant/l-ecorce-1243609,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Chalet Flachaire,Abondance,1,https://guide.michelin.com/en/auvergne-rhone-alpes/abondance_1509103/restaurant/chalet-flachaire,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+La Belle Vie,Saint-Hilaire-d'Ozilhan,1,https://guide.michelin.com/en/occitanie/saint-hilaire-d-ozilhan_1503960/restaurant/la-belle-vie,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Le Camélia,Bry,1,https://guide.michelin.com/en/hauts-de-france/bry_1545291/restaurant/le-camelia-1242759,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Épicentre,Nice,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/epicentre-1218827,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+La Table d'Aurélien Largeau,Biarritz,1,https://guide.michelin.com/en/nouvelle-aquitaine/biarritz/restaurant/la-table-d-aurelien-largeau,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Timilìa,Metz,1,https://guide.michelin.com/en/grand-est/metz/restaurant/timilia,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Amâlia,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/amalia,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Alexis Baudin,Malling,1,https://guide.michelin.com/en/grand-est/malling/restaurant/alexis-baudin,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Prévelle,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/prevelle,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Le M - Domaine de Montagne,Ventron,1,https://guide.michelin.com/en/grand-est/ventron_1536962/restaurant/le-m-domaine-de-montagne,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Maison Pellestor Veyrier,Colomiers,1,https://guide.michelin.com/en/occitanie/colomiers/restaurant/maison-pellestor-veyrier,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Lueurs,Bouchemaine,1,https://guide.michelin.com/en/pays-de-la-loire/bouchemaine_1570563/restaurant/lueurs,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Maltacina,Saint-Théoffrey,1,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-theoffrey_1515526/restaurant/maltacina,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Aldehyde,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/aldehyde,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Arnaud Donckele & Maxime Frédéric at Louis Vuitton,Saint-Tropez,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-tropez/restaurant/arnaud-donckele-maxime-frederic-at-louis-vuitton,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Kern,Seytroux,1,https://guide.michelin.com/en/auvergne-rhone-alpes/seytroux_1515695/restaurant/kern,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Acte 2 Yannick Delpech,Toulouse,1,https://guide.michelin.com/en/occitanie/toulouse/restaurant/acte-2-yannick-delpech,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Villa Pinewood,Payrin-Augmontel,1,https://guide.michelin.com/en/occitanie/payrin-augmontel/restaurant/villa-pinewood,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Racines - Bruno Cirino,Nice,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/racines-bruno-cirino,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Monique,Calvisson,1,https://guide.michelin.com/en/occitanie/calvisson_1500992/restaurant/monique-1213895,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+L'Abissiou,Les Sables d’Olonne,1,https://guide.michelin.com/en/pays-de-la-loire/les-sables-d-olonne/restaurant/l-abissiou,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+La Table d'Asten,Binic,1,https://guide.michelin.com/en/bretagne/binic/restaurant/la-table-d-asten,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+Auberge Sauvage,Servon,1,https://guide.michelin.com/en/normandie/servon/restaurant/auberge-sauvage,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/8
+CIBO,Dijon,1,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/cibo,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Solstice,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/solstice,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+L'Embrun,Brest,1,https://guide.michelin.com/en/bretagne/brest/restaurant/l-embrun,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+La Terrasse - Cheval Blanc St-Tropez,Saint-Tropez,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-tropez/restaurant/la-terrasse-cheval-blanc-st-tropez,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Bacôve,Saint-Omer,1,https://guide.michelin.com/en/hauts-de-france/saint-omer/restaurant/bacove,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Maison Desamy,Mareuil-sur-Lay-Dissais,1,https://guide.michelin.com/en/pays-de-la-loire/mareuil-sur-lay/restaurant/maison-desamy,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+MoSuke,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/mosuke,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Burgundy by Matthieu,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/burgundy-by-mathieu,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Pavyllon Paris,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pavyllon-paris,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Cent33,Bordeaux,1,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/le-cent-33,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Oxte,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/oxte,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Le Kléber - La Maison Bonnet,Grane,1,https://guide.michelin.com/en/auvergne-rhone-alpes/grane/restaurant/le-kleber-la-maison-bonnet,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+La Magdeleine - Mathias Dandine,Gémenos,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/gmenos/restaurant/la-magdeleine-mathias-dandine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Les Reflets,La Roche-sur-Yon,1,https://guide.michelin.com/en/pays-de-la-loire/la-roche-sur-yon/restaurant/les-reflets,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Villa Salone,Salon-de-Provence,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/salon-de-provence/restaurant/villa-salone,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+L'Auberge de Lucinges,Lucinges,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lucinges/restaurant/l-auberge-de-lucinges,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Mont Blanc Restaurant & Goûter,Hauteluce,1,https://guide.michelin.com/en/auvergne-rhone-alpes/hauteluce/restaurant/mont-blanc-restaurant-gouter,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Ambroisie,Saint-Didier-de-la-Tour,1,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-didier-de-la-tour/restaurant/ambroisie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Michel Sarran,Toulouse,1,https://guide.michelin.com/en/occitanie/toulouse/restaurant/michel-sarran,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+La Pomme d'Api,Saint-Pol-de-Léon,1,https://guide.michelin.com/en/bretagne/saint-pol-de-lon/restaurant/la-pomme-d-api,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Auberge de Montfleury,Saint-Germain,1,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-germain/restaurant/auberge-de-montfleury,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+La Cachette,Valence,1,https://guide.michelin.com/en/auvergne-rhone-alpes/valence/restaurant/la-cachette,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Frédéric Molina à Forêt Ivre,Vailly,1,https://guide.michelin.com/en/auvergne-rhone-alpes/vailly/restaurant/frederic-molina-a-foret-ivre,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Le K,Montenach,1,https://guide.michelin.com/en/grand-est/montenach/restaurant/le-k,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Le Mas Bottero,Saint-Cannat,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-cannat/restaurant/le-mas-bottero,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Umami,Strasbourg,1,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/umami202668,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Auberge du Pont,Pont-du-Château,1,https://guide.michelin.com/en/auvergne-rhone-alpes/pont-du-chteau/restaurant/auberge-du-pont37415,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Restaurant de la Loire,Pouilly-sous-Charlieu,1,https://guide.michelin.com/en/auvergne-rhone-alpes/pouilly-sous-charlieu/restaurant/restaurant-de-la-loire,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+La Pomme d'Or,Sancerre,1,https://guide.michelin.com/en/centre-val-de-loire/sancerre/restaurant/la-pomme-d-or,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Villa de l'Étang Blanc,Seignosse,1,https://guide.michelin.com/en/nouvelle-aquitaine/seignosse/restaurant/villa-de-l-etang-blanc,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Stéphane Tournié - Les Jardins de l'Opéra,Toulouse,1,https://guide.michelin.com/en/occitanie/toulouse/restaurant/stephane-tournie-les-jardins-de-l-opera,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Les Trois Soleils de Montal,Saint-Céré,1,https://guide.michelin.com/en/occitanie/saint-cr/restaurant/les-trois-soleils-de-montal,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+L'Aspérule,Dijon,1,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/l-asperule,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Pollen,Avignon,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/avignon/restaurant/pollen1000267,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Le Prieuré,Villeneuve-lès-Avignon,1,https://guide.michelin.com/en/occitanie/villeneuve-ls-avignon/restaurant/le-prieure13557,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+L'Opidom,Fondettes,1,https://guide.michelin.com/en/centre-val-de-loire/fondettes/restaurant/l-opidom,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Le Pavillon - Hôtel Westminster,Le Touquet-Paris-Plage,1,https://guide.michelin.com/en/hauts-de-france/le-touquet-paris-plage/restaurant/le-pavillon9000,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Le Vieux Logis,Trémolat,1,https://guide.michelin.com/en/nouvelle-aquitaine/trmolat/restaurant/le-vieux-logis,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Auberge Saint-Walfrid,Sarreguemines,1,https://guide.michelin.com/en/grand-est/sarreguemines/restaurant/auberge-st-walfrid,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Le Hittau,Saint-Vincent-de-Tyrosse,1,https://guide.michelin.com/en/nouvelle-aquitaine/saint-vincent-de-tyrosse/restaurant/le-hittau,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+La Mare aux Oiseaux,Saint-Joachim,1,https://guide.michelin.com/en/pays-de-la-loire/saint-joachim/restaurant/la-mare-aux-oiseaux,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Les Funambules,Strasbourg,1,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/les-funambules,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Ursus,Tignes,1,https://guide.michelin.com/en/auvergne-rhone-alpes/tignes/restaurant/ursus,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+L'Auberge Saint Jean,Saint-Jean-de-Blaignac,1,https://guide.michelin.com/en/nouvelle-aquitaine/saint-jean-de-blaignac/restaurant/auberge-st-jean,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Ébullition,Montpellier,1,https://guide.michelin.com/en/occitanie/montpellier/restaurant/ebullition,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Choko Ona,Espelette,1,https://guide.michelin.com/en/nouvelle-aquitaine/espelette/restaurant/choko-ona,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Rustique,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/rustique,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Omija,Nantes,1,https://guide.michelin.com/en/pays-de-la-loire/nantes/restaurant/omija,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/9
+Shabour,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/shabour,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Louise,Lorient,1,https://guide.michelin.com/en/bretagne/lorient/restaurant/louise1000376,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Origines,Le Broc,1,https://guide.michelin.com/en/auvergne-rhone-alpes/le-broc/restaurant/origines,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Maison Decoret,Vichy,1,https://guide.michelin.com/en/auvergne-rhone-alpes/vichy/restaurant/maison-decoret,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+La Madeleine,Sens,1,https://guide.michelin.com/en/bourgogne-franche-comte/sens/restaurant/la-madeleine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Restaurant De Lauzun,Pézenas,1,https://guide.michelin.com/en/occitanie/pzenas/restaurant/restaurant-de-lauzun,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Les Agitateurs,Nice,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/les-agitateurs,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+La Table de Philippe Girardon,Chonas-l'Amballan,1,https://guide.michelin.com/en/auvergne-rhone-alpes/chonas-l-amballan/restaurant/la-table-de-philippe-girardon,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+En Pleine Nature,Quint-Fonsegrives,1,https://guide.michelin.com/en/occitanie/quint-fonsegrives/restaurant/en-pleine-nature,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Auberge Saint-Laurent,Sierentz,1,https://guide.michelin.com/en/grand-est/sierentz/restaurant/auberge-st-laurent,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+La Vieille Tour,Plérin,1,https://guide.michelin.com/en/bretagne/plerin/restaurant/la-vieille-tour7741,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Le Kaïku,Saint-Jean-de-Luz,1,https://guide.michelin.com/en/nouvelle-aquitaine/saint-jean-de-luz/restaurant/le-kaiku,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Lait Thym Sel,Angers,1,https://guide.michelin.com/en/pays-de-la-loire/angers/restaurant/lait-thym-sel,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Épithèque,Valence,1,https://guide.michelin.com/en/auvergne-rhone-alpes/valence/restaurant/epitheque,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Kasbür,Monswiller,1,https://guide.michelin.com/en/grand-est/monswiller/restaurant/kasbur,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Allium,Quimper,1,https://guide.michelin.com/en/bretagne/quimper/restaurant/allium,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Auberge du Pont d'Acigné,Noyal-sur-Vilaine,1,https://guide.michelin.com/en/bretagne/noyal-sur-vilaine/restaurant/auberge-du-pont-d-acigne,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+La Table du 11,Versailles,1,https://guide.michelin.com/en/ile-de-france/versailles/restaurant/la-table-du-11,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Tomy & Co,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/tomy-co,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+AT,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/at,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+La Tête en l'air,Vannes,1,https://guide.michelin.com/en/bretagne/vannes/restaurant/la-tete-en-l-air,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Maison Caillet,Valmont,1,https://guide.michelin.com/en/normandie/valmont/restaurant/maison-caillet,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Auberge Chez Guth,Steige,1,https://guide.michelin.com/en/grand-est/steige/restaurant/auberge-chez-guth,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Auberge Quintessence,Roubion,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/roubion/restaurant/auberge-quintessence,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Au Vieux Couvent,Rhinau,1,https://guide.michelin.com/en/grand-est/rhinau/restaurant/au-vieux-couvent,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Aux Pesked,Saint-Brieuc,1,https://guide.michelin.com/en/bretagne/saint-brieuc/restaurant/aux-pesked,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Maison Chenet - Entre Vigne et Garrigue,Pujaut,1,https://guide.michelin.com/en/occitanie/pujaut/restaurant/maison-chenet-entre-vigne-et-garrigue,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+La Promenade - Maison Dallais,Le Petit-Pressigny,1,https://guide.michelin.com/en/centre-val-de-loire/le-petit-pressigny/restaurant/la-promenade-maison-dallais,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+L'Or Q'idée,Pontoise,1,https://guide.michelin.com/en/ile-de-france/pontoise/restaurant/l-or-q-idee,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Alan Geaam,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/alan-geaam,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+La Galinette,Perpignan,1,https://guide.michelin.com/en/occitanie/perpignan/restaurant/la-galinette,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Restaurant Pierre Grein,Manosque,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/manosque/restaurant/restaurant-pierre-grein,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Lucas Carton,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/lucas-carton,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Divellec,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/divellec,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+ES,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/es,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Skab,Nîmes,1,https://guide.michelin.com/en/occitanie/nimes/restaurant/skab,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Le Refuge des Gourmets,Machilly,1,https://guide.michelin.com/en/auvergne-rhone-alpes/machilly/restaurant/le-refuge-des-gourmets,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Septime,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/septime,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Akrame,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/akrame507272,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Le Bon Accueil,Malbuisson,1,https://guide.michelin.com/en/bourgogne-franche-comte/malbuisson/restaurant/le-bon-accueil4521,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+L'Ekrin by Laurent Azoulay,Méribel,1,https://guide.michelin.com/en/auvergne-rhone-alpes/mribel/restaurant/l-ekrin-by-laurent-azoulay,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Auberge du Cep,Fleurie,1,https://guide.michelin.com/en/auvergne-rhone-alpes/fleurie/restaurant/auberge-du-cep,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+La Table de la Ferme,Sartène,1,https://guide.michelin.com/en/corse/sartene_1508622/restaurant/la-table-de-la-ferme,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Apicius,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/apicius6479,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Ze Kitchen Galerie,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/ze-kitchen-galerie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+La Maison dans le Parc,Nancy,1,https://guide.michelin.com/en/grand-est/nancy/restaurant/la-maison-dans-le-parc,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Le 7ème Continent,Rixheim,1,https://guide.michelin.com/en/grand-est/rixheim/restaurant/le-7eme-continent,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Aida,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/aida,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/10
+Relais Louis XIII,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/relais-louis-xiii,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+LuluRouget,Nantes,1,https://guide.michelin.com/en/pays-de-la-loire/nantes/restaurant/lulurouget,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Leclère,Montpellier,1,https://guide.michelin.com/en/occitanie/montpellier/restaurant/leclere,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+L'Auberge de Bagatelle,Le Mans,1,https://guide.michelin.com/en/pays-de-la-loire/le-mans/restaurant/l-auberge-de-bagatelle,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Le Cerf,Marlenheim,1,https://guide.michelin.com/en/grand-est/marlenheim/restaurant/le-cerf,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+L'Éveil des Sens,Mayenne,1,https://guide.michelin.com/en/pays-de-la-loire/mayenne/restaurant/l-eveil-des-sens,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Au 14 Février,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/au-14-fevrier281900,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Le Clocher des Pères,Saint-Martin-sur-la-Chambre,1,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-martin-sur-la-chambre/restaurant/le-clocher-des-peres,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Le Clos 1774,Romorantin-Lanthenay,1,https://guide.michelin.com/en/centre-val-de-loire/romorantin-lanthenay/restaurant/grand-hotel-du-lion-d-or,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Ima,Rennes,1,https://guide.michelin.com/en/bretagne/rennes/restaurant/ima,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+La Table du Gourmet,Riquewihr,1,https://guide.michelin.com/en/grand-est/riquewihr/restaurant/la-table-du-gourmet,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+L'Essentiel,Périgueux,1,https://guide.michelin.com/en/nouvelle-aquitaine/prigueux/restaurant/l-essentiel117707,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Racines,Rennes,1,https://guide.michelin.com/en/bretagne/rennes/restaurant/racines542026,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Le Raisin,Pont-de-Vaux,1,https://guide.michelin.com/en/auvergne-rhone-alpes/pont-de-vaux/restaurant/le-raisin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Les Cèdres,Granges-les-Beaumont,1,https://guide.michelin.com/en/auvergne-rhone-alpes/granges-les-beaumont/restaurant/les-cedres,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Frenchie,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/frenchie262795,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Auberge Grand'Maison,Mûr-de-Bretagne,1,https://guide.michelin.com/en/bretagne/mr-de-bretagne/restaurant/auberge-grand-maison,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Jérôme Nutile,Nîmes,1,https://guide.michelin.com/en/occitanie/nimes/restaurant/jerome-nutile,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+L'Aromate,Nice,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/l-aromate233368,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Il Cortile,Mulhouse,1,https://guide.michelin.com/en/grand-est/mulhouse/restaurant/il-cortile40020,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+JAN,Nice,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/jan,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Le Manoir de la Régate,Nantes,1,https://guide.michelin.com/en/pays-de-la-loire/nantes/restaurant/manoir-de-la-regate,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Tour d'Argent,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/tour-d-argent,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+L'O des Vignes,Fuissé,1,https://guide.michelin.com/en/bourgogne-franche-comte/fuiss/restaurant/l-o-des-vignes,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Saisons,Écully,1,https://guide.michelin.com/en/auvergne-rhone-alpes/cully/restaurant/saisons4469,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+L'Anthocyane,Lannion,1,https://guide.michelin.com/en/bretagne/lannion/restaurant/l-anthocyane,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Moulin de la Tardoire,Montbron,1,https://guide.michelin.com/en/nouvelle-aquitaine/montbron/restaurant/moulin-de-la-tardoire,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Côté Jardin,Gien,1,https://guide.michelin.com/en/centre-val-de-loire/gien/restaurant/cote-jardin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Quai des Saveurs,Hagondange,1,https://guide.michelin.com/en/grand-est/hagondange/restaurant/quai-des-saveurs,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Prairial,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/prairial,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Château de Courban,Courban,1,https://guide.michelin.com/en/bourgogne-franche-comte/courban/restaurant/chateau-de-courban,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+La Robe,Montaigu,1,https://guide.michelin.com/en/pays-de-la-loire/montaigu/restaurant/la-robe,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Le Colombier,Malataverne,1,https://guide.michelin.com/en/auvergne-rhone-alpes/malataverne/restaurant/le-colombier,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Auberge Frankenbourg,La Vancelle,1,https://guide.michelin.com/en/grand-est/la-vancelle/restaurant/auberge-frankenbourg,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Bruno,Lorgues,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/lorgues/restaurant/bruno,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Origine,Dijon,1,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/stephane-derbord,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+L'Axel,Fontainebleau,1,https://guide.michelin.com/en/ile-de-france/fontainebleau/restaurant/l-axel,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Auberge de la Brie,Couilly-Pont-aux-Dames,1,https://guide.michelin.com/en/ile-de-france/couilly-pont-aux-dames/restaurant/auberge-de-la-brie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Château de la Treyne,Lacave,1,https://guide.michelin.com/en/occitanie/lacave/restaurant/chateau-de-la-treyne,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+La Maison des Cariatides,Dijon,1,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/la-maison-des-cariatides,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Le Farçon,Courchevel,1,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/le-farcon,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Guy Lassausaie,Chasselay,1,https://guide.michelin.com/en/auvergne-rhone-alpes/chasselay/restaurant/guy-lassausaie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Jérôme Feck,Châlons-en-Champagne,1,https://guide.michelin.com/en/grand-est/chlons-en-champagne/restaurant/jerome-feck,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+L'Orée de la Forêt,Étouy,1,https://guide.michelin.com/en/hauts-de-france/touy/restaurant/l-oree-de-la-foret,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Le Pavillon des Boulevards,Bordeaux,1,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/le-pavillon-des-boulevards,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Le Pily,Cherbourg-en-Cotentin,1,https://guide.michelin.com/en/normandie/cherbourg-en-cotentin/restaurant/le-pily,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Auberge de la Charme,Prenois,1,https://guide.michelin.com/en/bourgogne-franche-comte/prenois/restaurant/auberge-de-la-charme,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+Château d'Adoménil,Lunéville,1,https://guide.michelin.com/en/grand-est/lunville/restaurant/chateau-d-adomenil,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/11
+La Chaumière,Dole,1,https://guide.michelin.com/en/bourgogne-franche-comte/dole/restaurant/la-chaumiere11044,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Auberge de la Mine,La Ferrière-aux-Étangs,1,https://guide.michelin.com/en/normandie/la-ferrire-aux-tangs/restaurant/auberge-de-la-mine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Château du Mont Joly,Sampans,1,https://guide.michelin.com/en/bourgogne-franche-comte/sampans/restaurant/chateau-du-mont-joly,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Alain Llorca,La Colle-sur-Loup,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/la-colle-sur-loup/restaurant/alain-llorca,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+La Table d'Hôtes - La Rôtisserie du Chambertin,Gevrey-Chambertin,1,https://guide.michelin.com/en/bourgogne-franche-comte/gevrey-chambertin/restaurant/la-table-dhotes-la-rotisserie-du-chambertin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Alchémille,Kaysersberg,1,https://guide.michelin.com/en/grand-est/kaysersberg/restaurant/l-alchemille,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Côté Cuisine,Carnac,1,https://guide.michelin.com/en/bretagne/carnac/restaurant/cote-cuisine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+L'Ostal,Clermont-Ferrand,1,https://guide.michelin.com/en/auvergne-rhone-alpes/clermont-ferrand/restaurant/l-ostal,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+La Table Breizh Café,Cancale,1,https://guide.michelin.com/en/bretagne/cancale/restaurant/la-table-breizh-cafe,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Granica,Cellettes,1,https://guide.michelin.com/en/centre-val-de-loire/cellettes/restaurant/granica,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Le Verbois,Chantilly,1,https://guide.michelin.com/en/hauts-de-france/chantilly/restaurant/le-verbois,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Le Moulin de l'Abbaye,Brantôme,1,https://guide.michelin.com/en/nouvelle-aquitaine/brantme/restaurant/le-moulin-de-l-abbaye,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Atmosphères,Le Bourget-du-Lac,1,https://guide.michelin.com/en/auvergne-rhone-alpes/le-bourget-du-lac/restaurant/atmospheres,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+L'Étang du Moulin,Bonnétage,1,https://guide.michelin.com/en/bourgogne-franche-comte/bonntage/restaurant/l-etang-du-moulin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Moulin d'Alotz,Arcangues,1,https://guide.michelin.com/en/nouvelle-aquitaine/arcangues/restaurant/moulin-d-alotz,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Les Frères Ibarboure,Bidart,1,https://guide.michelin.com/en/nouvelle-aquitaine/bidart/restaurant/les-freres-ibarboure,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Le Charlemagne,Pernand-Vergelesses,1,https://guide.michelin.com/en/bourgogne-franche-comte/pernand-vergelesses/restaurant/le-charlemagne,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Le Haut-Allier,Alleyras,1,https://guide.michelin.com/en/auvergne-rhone-alpes/alleyras/restaurant/le-haut-allier,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Maximin Hellio,Deauville,1,https://guide.michelin.com/en/normandie/deauville/restaurant/maximin-hellio,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+L'Essentiel,Deauville,1,https://guide.michelin.com/en/normandie/deauville/restaurant/l-essentiel255041,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+La Table de Nans,La Ciotat,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/la-ciotat/restaurant/la-table-de-nans,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Nicolas Carro - Hôtel de Carantec,Carantec,1,https://guide.michelin.com/en/bretagne/carantec/restaurant/nicolas-carro,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+La Balette,Collioure,1,https://guide.michelin.com/en/occitanie/collioure/restaurant/la-balette,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Granit - La Mécanique des Frères Bonano,Colombières-sur-Orb,1,https://guide.michelin.com/en/occitanie/colombires-sur-orb/restaurant/granit,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+La Table de la Bergerie,Bellevigne-en-Layon,1,https://guide.michelin.com/en/pays-de-la-loire/bellevigne-en-layon_7770388/restaurant/la-table-de-la-bergerie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+L'Émulsion,Saint-Alban-de-Roche,1,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-alban-de-roche/restaurant/l-emulsion327218,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+La Table d'Olivier,Brive-la-Gaillarde,1,https://guide.michelin.com/en/nouvelle-aquitaine/brive-la-gaillarde/restaurant/la-table-d-olivier,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+G.a. au Manoir de Rétival,Rives-en-Seine,1,https://guide.michelin.com/en/normandie/rives-en-seine_7770403/restaurant/g-a-au-manoir-de-retival,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+L'Oiseau Bleu,Bordeaux,1,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/l-oiseau-bleu,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+La Table d'Hôtes - Le Quatrième Mur,Bordeaux,1,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/la-table-d-hotes-le-quatrieme-mur,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Assa,Blois,1,https://guide.michelin.com/en/centre-val-de-loire/blois/restaurant/assa,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Les Genêts,Brem-sur-Mer,1,https://guide.michelin.com/en/pays-de-la-loire/brem-sur-mer/restaurant/les-genets,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Le Patio,Arcachon,1,https://guide.michelin.com/en/nouvelle-aquitaine/arcachon/restaurant/le-patio396,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+La Tour des Vents,Monbazillac,1,https://guide.michelin.com/en/nouvelle-aquitaine/monbazillac/restaurant/la-tour-des-vents,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+A Casa di Mà,Lumio,1,https://guide.michelin.com/en/corse/lumio/restaurant/a-casa-di-ma,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Auberge de la Forge,Lavalette,1,https://guide.michelin.com/en/occitanie/lavalette/restaurant/auberge-de-la-forge,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+L'Oustalet,Gigondas,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/gigondas/restaurant/l-oustalet,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Le Jardin des Plumes,Giverny,1,https://guide.michelin.com/en/normandie/giverny/restaurant/le-jardin-des-plumes,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+L'Inattendu - Domaine de Locguénolé,Kervignac,1,https://guide.michelin.com/en/bretagne/kervignac/restaurant/l-inattendu-domaine-de-locguenole,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Le Puits Saint Jacques,Pujaudran,1,https://guide.michelin.com/en/occitanie/pujaudran/restaurant/le-puits-st-jacques,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Toya,Faulquemont,1,https://guide.michelin.com/en/grand-est/faulquemont/restaurant/toya,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Les Ducs de Lorraine,Epinal,1,https://guide.michelin.com/en/grand-est/pinal/restaurant/les-ducs-de-lorraine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Haut Bonheur de la Table,Cassel,1,https://guide.michelin.com/en/hauts-de-france/cassel/restaurant/haut-bonheur-de-la-table,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Apicius,Clermont-Ferrand,1,https://guide.michelin.com/en/auvergne-rhone-alpes/clermont-ferrand/restaurant/apicius205570,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Le Carré d'Alethius,Charmes-sur-Rhône,1,https://guide.michelin.com/en/auvergne-rhone-alpes/charmes-sur-rhne/restaurant/le-carre-d-alethius,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Restaurant Girardin,Colmar,1,https://guide.michelin.com/en/grand-est/colmar/restaurant/restaurant-girardin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Lamartine,Le Bourget-du-Lac,1,https://guide.michelin.com/en/auvergne-rhone-alpes/le-bourget-du-lac/restaurant/lamartine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Château Blanchard,Chazelles-sur-Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/chazelles-sur-lyon/restaurant/chateau-blanchard,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/12
+Tentazioni,Bordeaux,1,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/tentazioni,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Auberge du Vert Mont,Boeschepe,1,https://guide.michelin.com/en/hauts-de-france/boeschepe/restaurant/auberge-du-vert-mont,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Auberge des Templiers,Boismorand,1,https://guide.michelin.com/en/centre-val-de-loire/boismorand/restaurant/auberge-des-templiers,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Le Pot d'Étain,Danjoutin,1,https://guide.michelin.com/en/bourgogne-franche-comte/danjoutin/restaurant/le-pot-d-etain,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Le Relais des Moines,Les Arcs,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/les-arcs/restaurant/le-relais-des-moines,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Auberge du XIIème Siècle,Saché,1,https://guide.michelin.com/en/centre-val-de-loire/sach/restaurant/auberge-du-xiie-siecle,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Auberge Pom'Poire,Azay-le-Rideau,1,https://guide.michelin.com/en/centre-val-de-loire/azay-le-rideau/restaurant/auberge-pom-poire,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Le Carmin,Beaune,1,https://guide.michelin.com/en/bourgogne-franche-comte/beaune/restaurant/le-carmin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+L'Impertinent,Biarritz,1,https://guide.michelin.com/en/nouvelle-aquitaine/biarritz/restaurant/l-impertinent,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Auberge Le Prieuré,Moirax,1,https://guide.michelin.com/en/nouvelle-aquitaine/moirax/restaurant/auberge-le-prieure,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Le Manoir du Lys,Bagnoles-de-l'Orne,1,https://guide.michelin.com/en/normandie/bagnoles-de-l-orne/restaurant/le-manoir-du-lys,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Belle de Mars,Marseille,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/belle-de-mars,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Symbiose,Cabourg,1,https://guide.michelin.com/en/normandie/cabourg/restaurant/symbiose-1211835,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Datil,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/datil,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Restaurant Hervé Busset,Rodez,1,https://guide.michelin.com/en/occitanie/rodez/restaurant/restaurant-herve-busset,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+La Table du Grapiot,Pupillin,1,https://guide.michelin.com/en/bourgogne-franche-comte/pupillin/restaurant/la-table-du-grapiot,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Circle,Lyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/lyon/restaurant/circle,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Palégrié Chez l'Henri,Autrans-Méaudre en Vercors,1,https://guide.michelin.com/en/auvergne-rhone-alpes/autrans/restaurant/palegrie-chez-l-henri,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Burnel,Rouvres-en-Xaintois,1,https://guide.michelin.com/en/grand-est/rouvres-en-xaintois_1543966/restaurant/burnel,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Vaisseau,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/vaisseau,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Maison Fantin Latour - Stéphane Froidevaux,Grenoble,1,https://guide.michelin.com/en/auvergne-rhone-alpes/grenoble/restaurant/maison-fantin-latour-stephane-froidevaux,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+La Bastide Bourrelly - Mathias Dandine,Calas-Cabriès,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/calas-cabries_1505051/restaurant/la-bastide-bourrelly-mathias-dandine,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Table de Levernois,Levernois,1,https://guide.michelin.com/en/bourgogne-franche-comte/levernois/restaurant/table-de-levernois,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+La Grange de Belle-Église,Belle-Église,1,https://guide.michelin.com/en/hauts-de-france/belle-glise/restaurant/la-grange-de-belle-eglise,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+L'Esquisse,Annecy,1,https://guide.michelin.com/en/auvergne-rhone-alpes/annecy/restaurant/l-esquisse,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Le Goût du Bonheur - La Fenière,Cadenet,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/cadenet/restaurant/le-gout-du-bonheur-la-feniere,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Le Valucien - Château de Vault-de-Lugny,Vault-de-Lugny,1,https://guide.michelin.com/en/bourgogne-franche-comte/vault-de-lugny/restaurant/le-valucien-chateau-de-vault-de-lugny,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Château d'Origny,Ouches,1,https://guide.michelin.com/en/auvergne-rhone-alpes/ouches/restaurant/chateau-d-origny,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Arborescence,Croix,1,https://guide.michelin.com/en/hauts-de-france/croix/restaurant/arborescence,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+La Table des Pères - Domaine du Château des Pères,Piré-Chancé,1,https://guide.michelin.com/en/bretagne/pire-chance/restaurant/la-table-des-peres-domaine-du-chateau-des-peres,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+La Bòria,Veyras,1,https://guide.michelin.com/en/auvergne-rhone-alpes/veyras/restaurant/la-boria-1200901,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Les Belles Perdrix de Troplong Mondot,Saint-Emilion,1,https://guide.michelin.com/en/nouvelle-aquitaine/saint-milion/restaurant/les-belles-perdrix-de-troplong-mondot,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Don Juan II,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/don-juan-ii,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Intuition,Saint-Lô,1,https://guide.michelin.com/en/normandie/saint-l/restaurant/intuition,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Maison Tiegezh,Guer,1,https://guide.michelin.com/en/bretagne/guer/restaurant/maison-tiegezh,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Chakaiseki Akiyoshi,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/chakaiseiki-akiyoshi,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Calice,Béziers,1,https://guide.michelin.com/en/occitanie/bziers/restaurant/calice,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Nacre,Arès,1,https://guide.michelin.com/en/nouvelle-aquitaine/ars/restaurant/nacre,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Asterales,Corrençon-en-Vercors,1,https://guide.michelin.com/en/auvergne-rhone-alpes/correnon-en-vercors/restaurant/asterales,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Étude,Aix-en-Provence,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/aix-en-provence/restaurant/etude-1207141,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Le 1201 - Abbaye de Villeneuve,Les Sorinières,1,https://guide.michelin.com/en/pays-de-la-loire/les-sorinieres/restaurant/le-1201-abbaye-de-villeneuve,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Les Cadets,Nantes,1,https://guide.michelin.com/en/pays-de-la-loire/nantes/restaurant/les-cadets,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Ressources,Bordeaux,1,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/ressources,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Cueillette,Altillac,1,https://guide.michelin.com/en/nouvelle-aquitaine/altillac/restaurant/cueillette,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+L'Impulsif,Châtel-Guyon,1,https://guide.michelin.com/en/auvergne-rhone-alpes/chatel-guyon/restaurant/l-impulsif,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+de:ja,Strasbourg,1,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/de-ja,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Sushi Shunei,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/sushi-shunei,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Agapes,Toulouse,1,https://guide.michelin.com/en/occitanie/toulouse/restaurant/agapes,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/13
+Vieux Pont,Belcastel,1,https://guide.michelin.com/en/occitanie/belcastel/restaurant/vieux-pont,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Le Gavrinis,Baden,1,https://guide.michelin.com/en/bretagne/baden/restaurant/le-gavrinis,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Le Chamarlenc,Puy-en-Velay,1,https://guide.michelin.com/en/auvergne-rhone-alpes/le-puy-en-velay/restaurant/le-chamarlenc,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Finestra by Italo Bassi,Bonifacio,1,https://guide.michelin.com/en/corse/bonifacio/restaurant/finestra-by-italo-bassi,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Ginko,Lille,1,https://guide.michelin.com/en/hauts-de-france/lille/restaurant/ginko,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Auberge de la Grive,Trosly-Loire,1,https://guide.michelin.com/en/hauts-de-france/trosly-loire_1550618/restaurant/auberge-de-la-grive,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+SEPT,Toulouse,1,https://guide.michelin.com/en/occitanie/toulouse/restaurant/sept-1207676,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+ONICE,Nice,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/onice,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Couleurs de Shimatani,La Ciotat,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/la-ciotat/restaurant/couleurs-de-shimatani,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+La Vieille Auberge,Villeneuve-le-Comte,1,https://guide.michelin.com/en/ile-de-france/villeneuve-le-comte_1553696/restaurant/la-vieille-auberge-1206650,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Aumì,Puymoyen,1,https://guide.michelin.com/en/nouvelle-aquitaine/puymoyen/restaurant/aumi,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Enfin,Barr,1,https://guide.michelin.com/en/grand-est/barr/restaurant/enfin,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+La Chabotterie,Montréverd,1,https://guide.michelin.com/en/pays-de-la-loire/montreverd/restaurant/la-chabotterie,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Auberge de la Roche,Valdeblore,1,https://guide.michelin.com/en/provence-alpes-cote-dazur/valdeblore/restaurant/auberge-de-la-roche-1203180,yes,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+L'Alter-Native,Béziers,1,https://guide.michelin.com/en/occitanie/bziers/restaurant/l-alter-native,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+AinTimiste,Poncin,1,https://guide.michelin.com/en/auvergne-rhone-alpes/poncin/restaurant/aintimiste,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+La Table Mirasol,Mont-de-Marsan,1,https://guide.michelin.com/en/nouvelle-aquitaine/mont-de-marsan/restaurant/la-table-mirasol,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Rosmadec Le Moulin,Pont-Aven,1,https://guide.michelin.com/en/bretagne/pont-aven/restaurant/moulin-de-rosmadec,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Mallory Gabsi,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/mallory-gabsi,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Pureté,Lille,1,https://guide.michelin.com/en/hauts-de-france/lille/restaurant/purete,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Épisodes,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/episodes,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
+Sola,Paris,1,https://guide.michelin.com/en/ile-de-france/paris/restaurant/sola,no,https://guide.michelin.com/en/fr/restaurants/all-starred/page/14
