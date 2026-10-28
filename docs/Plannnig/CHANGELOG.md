@@ -60,8 +60,30 @@ The format follows Keep a Changelog.
     applied, an admin row and the function deployed.
   - **Rollout order:** the migration, then the admin row, then deploy
     `publish-venue-photo`, then the build. Installed builds are
-    unaffected — they don't call any of this. **Not yet applied or
-    deployed.**
+    unaffected — they don't call any of this.
+  - **Applied 2026-10-28**, in that order:
+    - **Migration:** plain `supabase db push --linked` (ledger 97 → 98/98).
+      The 9 objects (7 functions, `admins`, the storage policy) are
+      identical to the fresh replay's, and only `authenticated` holds
+      EXECUTE on the new functions (not anon, not PUBLIC); the dashboard
+      originals remain uncallable from the app.
+    - **Admin row:** the product owner's account (`@kylan`) added by hand,
+      the only admin.
+    - **Edge Function:** `publish-venue-photo` deployed (version 4 → 5,
+      `verify_jwt` still off). Smoke-tested without side effects: no
+      login, and the anon key as a bearer, are both refused with 401.
+    - **App:** on the simulator, signed in as the non-admin `@test`, the
+      Review row correctly stays hidden. Signed in as `@kylan`, Review
+      shows with a badge of 2; the queue loads production's pending Flore
+      about text and photo, and the photo item shows the private
+      submission (signed URL, so the admin storage policy works) in both
+      the header and card frames. No decision was taken in this check:
+      approve/reject, and the Edge Function's admin-JWT publish path,
+      haven't run against production yet.
+    - **Coordination:** a parallel session's branch
+      (`feature/editorial-selection`) builds on this commit and carries
+      `20261017130000`. It was confirmed unapplied before this push, so
+      only this migration went out.
 - Project documentation
 - Database organisation
 - Architecture documentation
