@@ -1,0 +1,597 @@
+{
+ "overijssel/zwolle/restaurant/de-librije": {
+  "tier": 3,
+  "name": "De Librije",
+  "city": "Zwolle"
+ },
+ "noord-holland/amstelveen/restaurant/aan-de-poel": {
+  "tier": 2,
+  "name": "Aan de Poel",
+  "city": "Amstelveen"
+ },
+ "noord-holland/amsterdam/restaurant/ciel-bleu": {
+  "tier": 2,
+  "name": "Ciel Bleu",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/flore": {
+  "tier": 2,
+  "name": "Flore",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/restaurant-212": {
+  "tier": 2,
+  "name": "Restaurant 212",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/spectrum437663": {
+  "tier": 2,
+  "name": "Spectrum",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/vinkeles": {
+  "tier": 2,
+  "name": "Vinkeles",
+  "city": "Amsterdam"
+ },
+ "limburg/eijsden/restaurant/create-by-guido-braeken": {
+  "tier": 2,
+  "name": "Create by Guido Braeken",
+  "city": "Eijsden"
+ },
+ "noord-brabant/gemert/restaurant/gem-by-soenil-bahadoer": {
+  "tier": 2,
+  "name": "GEM. by Soenil Bahadour",
+  "city": "Gemert"
+ },
+ "overijssel/giethoorn/restaurant/de-lindenhof": {
+  "tier": 2,
+  "name": "De Lindenhof",
+  "city": "Giethoorn"
+ },
+ "gelderland/harderwijk/restaurant/t-nonnetje": {
+  "tier": 2,
+  "name": "'t Nonnetje",
+  "city": "Harderwijk"
+ },
+ "noord-brabant/heeze/restaurant/tribeca502881": {
+  "tier": 2,
+  "name": "Tribeca",
+  "city": "Heeze"
+ },
+ "zeeland/kruiningen/restaurant/inter-scaldes": {
+  "tier": 2,
+  "name": "Inter Scaldes",
+  "city": "Kruiningen"
+ },
+ "gelderland/nijmegen/restaurant/de-nieuwe-winkel": {
+  "tier": 2,
+  "name": "De Nieuwe Winkel",
+  "city": "Nijmegen"
+ },
+ "noord-holland/overveen/restaurant/de-bokkedoorns": {
+  "tier": 2,
+  "name": "De Bokkedoorns",
+  "city": "Overveen"
+ },
+ "limburg/reijmerstok/restaurant/brut172": {
+  "tier": 2,
+  "name": "Brut172",
+  "city": "Reijmerstok"
+ },
+ "zuid-holland/rotterdam/restaurant/fg-francois-geurds": {
+  "tier": 2,
+  "name": "FG - François Geurds",
+  "city": "Rotterdam"
+ },
+ "zuid-holland/rotterdam/restaurant/fred": {
+  "tier": 2,
+  "name": "Fred",
+  "city": "Rotterdam"
+ },
+ "zuid-holland/rotterdam/restaurant/parkheuvel": {
+  "tier": 2,
+  "name": "Parkheuvel",
+  "city": "Rotterdam"
+ },
+ "overijssel/staphorst/restaurant/de-groene-lantaarn": {
+  "tier": 2,
+  "name": "De Groene Lantaarn",
+  "city": "Staphorst"
+ },
+ "noord-brabant/waalre/restaurant/de-treeswijkhoeve": {
+  "tier": 2,
+  "name": "De Treeswijkhoeve",
+  "city": "Waalre"
+ },
+ "gelderland/aalten_2215824/restaurant/olde-marckt": {
+  "tier": 1,
+  "name": "Olde Marckt",
+  "city": "Aalten"
+ },
+ "groningen/aduard/restaurant/herberg-onder-de-linden": {
+  "tier": 1,
+  "name": "Herberg Onder de Linden",
+  "city": "Aduard"
+ },
+ "noord-holland/amsterdam/restaurant/bistro-de-la-mer": {
+  "tier": 1,
+  "name": "Bistro de la Mer",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/bolenius": {
+  "tier": 1,
+  "name": "Bolenius Rembrandtpark",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/bougainville": {
+  "tier": 1,
+  "name": "Bougainville",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/choux": {
+  "tier": 1,
+  "name": "Choux",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/cue": {
+  "tier": 1,
+  "name": "CUE",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/daalder-1200903": {
+  "tier": 1,
+  "name": "Daalder",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/de-juwelier": {
+  "tier": 1,
+  "name": "De Juwelier",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/de-kas": {
+  "tier": 1,
+  "name": "De Kas",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/lars-amsterdam": {
+  "tier": 1,
+  "name": "Lars Amsterdam",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/mos": {
+  "tier": 1,
+  "name": "MOS",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/restaurant-showw": {
+  "tier": 1,
+  "name": "Restaurant Showw",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/rijks-r": {
+  "tier": 1,
+  "name": "RIJKS®",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/ron-gastrobar": {
+  "tier": 1,
+  "name": "RON Gastrobar",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/sinne": {
+  "tier": 1,
+  "name": "Sinne",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/the-white-room-by-jacob-jan-boerma": {
+  "tier": 1,
+  "name": "The White Room by Jacob Jan Boerma",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/wils": {
+  "tier": 1,
+  "name": "Wils",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/yamazato115431": {
+  "tier": 1,
+  "name": "Yamazato",
+  "city": "Amsterdam"
+ },
+ "noord-holland/amsterdam/restaurant/zoldering": {
+  "tier": 1,
+  "name": "Zoldering",
+  "city": "Amsterdam"
+ },
+ "gelderland/apeldoorn/restaurant/zenith": {
+  "tier": 1,
+  "name": "Zenith",
+  "city": "Apeldoorn"
+ },
+ "fryslan/beetsterzwaag/restaurant/de-heeren-van-harinxma": {
+  "tier": 1,
+  "name": "De Heeren van Harinxma",
+  "city": "Beetsterzwaag"
+ },
+ "zuid-holland/bergambacht/restaurant/pieters-restaurant": {
+  "tier": 1,
+  "name": "Pieters Restaurant",
+  "city": "Bergambacht"
+ },
+ "overijssel/blokzijl/restaurant/kaatje-bij-de-sluis": {
+  "tier": 1,
+  "name": "Kaatje bij de Sluis",
+  "city": "Blokzijl"
+ },
+ "noord-brabant/breda/restaurant/wolfslaar": {
+  "tier": 1,
+  "name": "Restaurant Wolfslaar",
+  "city": "Breda"
+ },
+ "zeeland/breskens/restaurant/spetters": {
+  "tier": 1,
+  "name": "Spetters",
+  "city": "Breskens"
+ },
+ "zeeland/cadzand/restaurant/demain": {
+  "tier": 1,
+  "name": "Demain",
+  "city": "Cadzand"
+ },
+ "zuid-holland/capelle-aan-den-ijssel/restaurant/perceel": {
+  "tier": 1,
+  "name": "Perceel",
+  "city": "Capelle aan den IJssel"
+ },
+ "noord-holland/castricum/restaurant/apicius212340": {
+  "tier": 1,
+  "name": "Apicius",
+  "city": "Castricum"
+ },
+ "noord-brabant/cromvoirt/restaurant/noble-kitchen": {
+  "tier": 1,
+  "name": "Noble Kitchen",
+  "city": "Cromvoirt"
+ },
+ "zuid-holland/delft/restaurant/novaela": {
+  "tier": 1,
+  "name": "Novaela",
+  "city": "Delft"
+ },
+ "gelderland/doornenburg/restaurant/rijnzicht": {
+  "tier": 1,
+  "name": "Rijnzicht",
+  "city": "Doornenburg"
+ },
+ "utrecht/driebergen-rijsenburg/restaurant/la-provence212401": {
+  "tier": 1,
+  "name": "La Provence",
+  "city": "Driebergen-Rijsenburg"
+ },
+ "gelderland/duiven/restaurant/t-raedthuys": {
+  "tier": 1,
+  "name": "'t Raedthuys",
+  "city": "Duiven"
+ },
+ "noord-brabant/eindhoven/restaurant/wiesen": {
+  "tier": 1,
+  "name": "Wiesen",
+  "city": "Eindhoven"
+ },
+ "noord-brabant/eindhoven/restaurant/zarzo": {
+  "tier": 1,
+  "name": "Zarzo",
+  "city": "Eindhoven"
+ },
+ "overijssel/enschede/restaurant/joann": {
+  "tier": 1,
+  "name": "Joann",
+  "city": "Enschede"
+ },
+ "zeeland/goes/restaurant/codium": {
+  "tier": 1,
+  "name": "Codium",
+  "city": "Goes"
+ },
+ "zuid-holland/gouda/restaurant/lizz": {
+  "tier": 1,
+  "name": "LIZZ",
+  "city": "Gouda"
+ },
+ "overijssel/gramsbergen/restaurant/de-woage": {
+  "tier": 1,
+  "name": "De Woage",
+  "city": "Gramsbergen"
+ },
+ "groningen/groningen/restaurant/noor-1200050": {
+  "tier": 1,
+  "name": "Noor",
+  "city": "Groningen"
+ },
+ "limburg/gulpen/restaurant/l-atelier212517": {
+  "tier": 1,
+  "name": "Restaurant Atelier",
+  "city": "Gulpen"
+ },
+ "zuid-holland/den-haag/restaurant/calla-s115041": {
+  "tier": 1,
+  "name": "Calla’s",
+  "city": "Den Haag"
+ },
+ "noord-holland/haarlem/restaurant/ml": {
+  "tier": 1,
+  "name": "ML",
+  "city": "Haarlem"
+ },
+ "noord-holland/haarlem/restaurant/ratatouille-food-wine": {
+  "tier": 1,
+  "name": "Ratatouille Food & Wine",
+  "city": "Haarlem"
+ },
+ "gelderland/harderwijk/restaurant/basiliek-1203189": {
+  "tier": 1,
+  "name": "Basiliek",
+  "city": "Harderwijk"
+ },
+ "gelderland/heelsum/restaurant/de-kromme-dissel": {
+  "tier": 1,
+  "name": "De Kromme Dissel",
+  "city": "Heelsum"
+ },
+ "noord-holland/heemstede/restaurant/cheval-blanc212552": {
+  "tier": 1,
+  "name": "Cheval Blanc",
+  "city": "Heemstede"
+ },
+ "overijssel/hengelo/restaurant/t-lansink": {
+  "tier": 1,
+  "name": "'t Lansink",
+  "city": "Hengelo"
+ },
+ "overijssel/holten/restaurant/de-swarte-ruijter": {
+  "tier": 1,
+  "name": "De Swarte Ruijter",
+  "city": "Holten"
+ },
+ "zeeland/hoofdplaat/restaurant/de-kromme-watergang": {
+  "tier": 1,
+  "name": "De Kromme Watergang",
+  "city": "Hoofdplaat"
+ },
+ "noord-holland/den-hoorn/restaurant/bij-jef": {
+  "tier": 1,
+  "name": "Bij Jef",
+  "city": "Den Hoorn"
+ },
+ "utrecht/houten/restaurant/kasteel-heemstede": {
+  "tier": 1,
+  "name": "Restaurant Kasteel Heemstede",
+  "city": "Houten"
+ },
+ "gelderland/kerkdriel/restaurant/flicka": {
+  "tier": 1,
+  "name": "Flicka",
+  "city": "Kerkdriel"
+ },
+ "noord-brabant/leende_2216558/restaurant/sabero-1209599": {
+  "tier": 1,
+  "name": "Sabero",
+  "city": "Leende"
+ },
+ "utrecht/leersum/restaurant/voltaire": {
+  "tier": 1,
+  "name": "Voltaire",
+  "city": "Leersum"
+ },
+ "utrecht/linschoten/restaurant/de-burgemeester": {
+  "tier": 1,
+  "name": "Restaurant De Burgemeester",
+  "city": "Linschoten"
+ },
+ "utrecht/loenen-aan-de-vecht/restaurant/t-amsterdammertje": {
+  "tier": 1,
+  "name": "'t Amsterdammertje",
+  "city": "Loenen aan de Vecht"
+ },
+ "utrecht/loenen-aan-de-vecht/restaurant/tante-koosje": {
+  "tier": 1,
+  "name": "Tante Koosje",
+  "city": "Loenen aan de Vecht"
+ },
+ "overijssel/de-lutte/restaurant/de-bloemenbeek": {
+  "tier": 1,
+  "name": "De Bloemenbeek",
+  "city": "De Lutte"
+ },
+ "limburg/maasbracht/restaurant/da-vinci212741": {
+  "tier": 1,
+  "name": "Da Vinci",
+  "city": "Maasbracht"
+ },
+ "limburg/maastricht/restaurant/au-coin-des-bons-enfants": {
+  "tier": 1,
+  "name": "Au Coin des Bons Enfants",
+  "city": "Maastricht"
+ },
+ "limburg/maastricht/restaurant/beluga-loves-you": {
+  "tier": 1,
+  "name": "Beluga Loves You",
+  "city": "Maastricht"
+ },
+ "limburg/maastricht/restaurant/chateau-neercanne": {
+  "tier": 1,
+  "name": "Château Neercanne",
+  "city": "Maastricht"
+ },
+ "limburg/maastricht/restaurant/studio": {
+  "tier": 1,
+  "name": "Studio",
+  "city": "Maastricht"
+ },
+ "limburg/maastricht/restaurant/tout-a-fait": {
+  "tier": 1,
+  "name": "Tout à Fait",
+  "city": "Maastricht"
+ },
+ "zuid-holland/noordeloos/restaurant/de-gieser-wildeman": {
+  "tier": 1,
+  "name": "De Gieser Wildeman",
+  "city": "Noordeloos"
+ },
+ "zuid-holland/noordwijk-aan-zee/restaurant/latour": {
+  "tier": 1,
+  "name": "Latour",
+  "city": "Noordwijk aan Zee"
+ },
+ "zuid-holland/nootdorp/restaurant/calva": {
+  "tier": 1,
+  "name": "Restaurant Calva",
+  "city": "Nootdorp"
+ },
+ "noord-brabant/oisterwijk/restaurant/alma-1188023": {
+  "tier": 1,
+  "name": "Alma",
+  "city": "Oisterwijk"
+ },
+ "noord-brabant/oosterhout/restaurant/zout-citroen": {
+  "tier": 1,
+  "name": "Zout & Citroen",
+  "city": "Oosterhout"
+ },
+ "noord-brabant/ravenstein/restaurant/versaen": {
+  "tier": 1,
+  "name": "Versaen",
+  "city": "Ravenstein"
+ },
+ "zuid-holland/rijswijk/restaurant/t-ganzenest": {
+  "tier": 1,
+  "name": "'t Ganzenest",
+  "city": "Rijswijk"
+ },
+ "limburg/roermond/restaurant/one": {
+  "tier": 1,
+  "name": "ONE",
+  "city": "Roermond"
+ },
+ "noord-brabant/roosendaal/restaurant/restaurant-1857": {
+  "tier": 1,
+  "name": "Restaurant 1857",
+  "city": "Roosendaal"
+ },
+ "zuid-holland/rotterdam/restaurant/amarone": {
+  "tier": 1,
+  "name": "Amarone",
+  "city": "Rotterdam"
+ },
+ "zuid-holland/rotterdam/restaurant/joelia": {
+  "tier": 1,
+  "name": "Joelia",
+  "city": "Rotterdam"
+ },
+ "zuid-holland/rotterdam/restaurant/the-millen": {
+  "tier": 1,
+  "name": "The Millèn",
+  "city": "Rotterdam"
+ },
+ "zuid-holland/rotterdam/restaurant/zeezout": {
+  "tier": 1,
+  "name": "Zeezout",
+  "city": "Rotterdam"
+ },
+ "noord-holland/schoorl/restaurant/merlet": {
+  "tier": 1,
+  "name": "Merlet",
+  "city": "Schoorl"
+ },
+ "noord-brabant/sint-oedenrode/restaurant/odille": {
+  "tier": 1,
+  "name": "Odille",
+  "city": "Sint-Oedenrode"
+ },
+ "noord-brabant/sint-willebrord/restaurant/o-o": {
+  "tier": 1,
+  "name": "O&O",
+  "city": "Sint-Willebrord"
+ },
+ "noord-brabant/tilburg/restaurant/monarh": {
+  "tier": 1,
+  "name": "Monarh",
+  "city": "Tilburg"
+ },
+ "limburg/ubachsberg/restaurant/de-leuf": {
+  "tier": 1,
+  "name": "De Leuf",
+  "city": "Ubachsberg"
+ },
+ "utrecht/utrecht/restaurant/karel-5": {
+  "tier": 1,
+  "name": "Karel 5",
+  "city": "Utrecht"
+ },
+ "utrecht/utrecht/restaurant/maeve": {
+  "tier": 1,
+  "name": "Maeve",
+  "city": "Utrecht"
+ },
+ "zuid-holland/voorburg/restaurant/central-park": {
+  "tier": 1,
+  "name": "Central Park",
+  "city": "Voorburg"
+ },
+ "utrecht/vreeland/restaurant/de-nederlanden": {
+  "tier": 1,
+  "name": "De Nederlanden",
+  "city": "Vreeland"
+ },
+ "noord-brabant/vught/restaurant/sense306045": {
+  "tier": 1,
+  "name": "Sense",
+  "city": "Vught"
+ },
+ "zuid-holland/warmond/restaurant/de-moerbei": {
+  "tier": 1,
+  "name": "De Moerbei",
+  "city": "Warmond"
+ },
+ "zuid-holland/wateringen/restaurant/triptyque": {
+  "tier": 1,
+  "name": "Triptyque",
+  "city": "Wateringen"
+ },
+ "limburg/weert/restaurant/marrees": {
+  "tier": 1,
+  "name": "Marrees",
+  "city": "Weert"
+ },
+ "utrecht/wijk-bij-duurstede/restaurant/lutum": {
+  "tier": 1,
+  "name": "Lutum",
+  "city": "Wijk bij Duurstede"
+ },
+ "noord-brabant/nl-willemstad/restaurant/vista488719": {
+  "tier": 1,
+  "name": "Vista",
+  "city": "Willemstad"
+ },
+ "fryslan/wolvega/restaurant/restaurant-smink": {
+  "tier": 1,
+  "name": "Restaurant Smink",
+  "city": "Wolvega"
+ },
+ "drenthe/zuidlaren/restaurant/de-vlindertuin": {
+  "tier": 1,
+  "name": "De Vlindertuin",
+  "city": "Zuidlaren"
+ },
+ "overijssel/zwolle/restaurant/brass-boer-thuis": {
+  "tier": 1,
+  "name": "Brass Boer Thuis",
+  "city": "Zwolle"
+ },
+ "overijssel/zwolle/restaurant/restaurant-affect": {
+  "tier": 1,
+  "name": "Restaurant Affect",
+  "city": "Zwolle"
+ }
+}
