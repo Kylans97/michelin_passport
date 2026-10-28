@@ -1,7 +1,8 @@
 # World's 50 Best history gaps, 2021–2024 (QA-246)
 
-2026-10-28, `data/w50b-history-gaps`. **Not applied.** Production is
-unchanged until `apply_top_50_rank_years.sql` is reviewed and run.
+2026-10-28, `data/w50b-history-gaps`. **Applied to production
+2026-10-28** after review: 29 rows inserted, all guards passed (843 → 872
+rows). The record is the Michelin_Database CHANGELOG entry of that date.
 
 ## Finding
 
