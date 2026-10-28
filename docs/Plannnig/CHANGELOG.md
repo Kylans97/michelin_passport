@@ -144,6 +144,29 @@ The format follows Keep a Changelog.
   unknown, nothing in the repo inserts into `storage.objects`, and the
   bucket limits can't affect them either way. Would recur with any
   bucket or policy created in the dashboard rather than in a migration.
+- 2026-10-28 — An incoming friend request could be impossible to find.
+  Profile's Friends row counts `get_incoming_friend_requests` ("1
+  request") and opened the Friends screen, but Notifications V1 had
+  moved incoming requests off that screen entirely — its tabs were
+  Friends and Sent, and Sent lists only requests you sent. The request
+  lived only in Notifications, which marks everything read on open, so
+  after one look nothing pointed to it any more. Reported by the
+  developer's own account (request of 2026-10-08, its notification
+  present and already read). Incoming requests are back on Friends as a
+  Requests tab between Friends and Sent, with the same Accept/Decline
+  RPCs as Notifications (which keeps its own row), reading the same RPC
+  as Profile's count so the two can't disagree; Profile's row opens
+  straight onto Requests when it shows a count. Analyzer clean, full
+  suite passes (2,420), simulator build launches; not exercised signed
+  in, since the simulator build talks to production. Found alongside,
+  not fixed: 4 pending requests from 2026-09-23 have no notification at
+  all (the trigger arrived 2026-09-24 with no backfill) — the new tab
+  shows them, Notifications never will; an answered request's
+  notification keeps its Accept/Decline, and tapping it then fails, now
+  more reachable with two places to answer; and the Accept/Decline pair
+  overflows at 320px width combined with 1.6x text, on both screens.
+  Would recur whenever an action moves between screens while a count
+  elsewhere still points at the old one.
 
 ---
 

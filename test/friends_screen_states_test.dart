@@ -78,6 +78,22 @@ Widget _friendsEmptyState({VoidCallback? onFindFriends}) => Column(
   ],
 );
 
+// Mirrors _IncomingTab's row in friends_screen.dart.
+Widget _incomingRequestRow({
+  required VoidCallback onAccept,
+  required VoidCallback onDecline,
+}) => IdentityRow(
+  label: 'User B',
+  username: 'userb',
+  trailing: Row(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      TextButton(onPressed: onDecline, child: const Text('Decline')),
+      TextButton(onPressed: onAccept, child: const Text('Accept')),
+    ],
+  ),
+);
+
 Widget _outgoingRequestRow({required VoidCallback onCancel}) => IdentityRow(
   label: 'User C',
   username: 'userc',
@@ -175,10 +191,59 @@ void main() {
     });
   });
 
-  // "FriendsScreen incoming request row" coverage moved to
-  // notifications_screen_test.dart — incoming requests no longer render
-  // in FriendsScreen at all (Notifications V1); see _RequestsTab's own
-  // doc comment in friends_screen.dart for why.
+  // Incoming requests render on FriendsScreen's Requests tab again
+  // (2026-10-28), alongside NotificationsScreen's own row — see
+  // _IncomingTab's doc comment in friends_screen.dart.
+  group('FriendsScreen incoming request row', () {
+    testWidgets('shows Decline and Accept and fires each callback', (
+      tester,
+    ) async {
+      var accepted = false;
+      var declined = false;
+      await tester.pumpWidget(
+        _wrap(
+          _incomingRequestRow(
+            onAccept: () => accepted = true,
+            onDecline: () => declined = true,
+          ),
+        ),
+      );
+      expect(find.text('Decline'), findsOneWidget);
+      expect(find.text('Accept'), findsOneWidget);
+      await tester.tap(find.text('Accept'));
+      expect(accepted, isTrue);
+      await tester.tap(find.text('Decline'));
+      expect(declined, isTrue);
+    });
+
+    // Same two checks as every other IdentityRow-with-actions row in this
+    // suite. The two combined (320px AND 1.6x) overflow by 75px — so does
+    // NotificationsScreen's identical friend-request row — and that is not
+    // asserted here.
+    testWidgets('320px width — no overflow', (tester) async {
+      await tester.binding.setSurfaceSize(const Size(320, 844));
+      await tester.pumpWidget(
+        _wrap(_incomingRequestRow(onAccept: () {}, onDecline: () {})),
+      );
+      expect(tester.takeException(), isNull);
+      await tester.binding.setSurfaceSize(null);
+    });
+
+    testWidgets('1.6x text scale — no overflow', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: MediaQuery(
+            data: const MediaQueryData(textScaler: TextScaler.linear(1.6)),
+            child: Scaffold(
+              backgroundColor: AppColors.ivory,
+              body: _incomingRequestRow(onAccept: () {}, onDecline: () {}),
+            ),
+          ),
+        ),
+      );
+      expect(tester.takeException(), isNull);
+    });
+  });
 
   group('FriendsScreen outgoing request row', () {
     testWidgets('shows Cancel and fires the cancel callback', (tester) async {
