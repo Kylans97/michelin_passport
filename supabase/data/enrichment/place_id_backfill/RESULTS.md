@@ -94,3 +94,40 @@ Atelier's record links to wildatelier.nl rather than the echoput.nl page we
 hold as website_url. Rozewied announces a move in spring 2027 — re-check its
 Place ID then. Tested on a scratch Postgres: aborts before the import, fills
 9 after it, re-run is a no-op.
+
+## Third batch — MICHELIN Guide Belgium 2026 new stars (2026-10-28)
+
+Requested by the catalogue session. Files: `placeid_results_be_stars_2026.csv`,
+`prepared_place_id_backfill_be_stars_2026.sql` — run only after
+`../michelin_be_lu_stars_2026/prepared_be_lu_stars_2026.sql`; aborts until
+rest_1827..rest_1839 exist. Codes and coordinates taken from that SQL and
+checked row by row against its `new_restaurants.csv`.
+
+All 13 confirmed: one Google candidate each, the restaurant's own record,
+official site and MICHELIN address agreeing. 12 under 30 m; Sensum Gent at
+111 m with an exact address match. Finding: Google shows Héliport Brasserie
+(Liège) as CLOSED_TEMPORARILY; its site has no closure notice — human check.
+Tested on a scratch Postgres: aborts before the import, fills 13 after it,
+re-run is a no-op.
+
+## Identity guards (2026-10-28, later the same day)
+
+Production codes moved while these files waited. The catalogue session's
+unapplied Belgian codes (rest_1405..1417) were taken by France 2026, so a
+file keyed only on code could have written Place IDs onto the wrong
+restaurant. Every file here now refuses to run unless each code is still the
+exact row it was researched for:
+
+- **`prepared_place_id_backfill.sql`**
+  - Every hotel and restaurant code must still carry the country and name
+    from the production export.
+  - hotel_801 must be the South African Singita row, with Singita Lebombo's
+    MICHELIN page.
+- **`prepared_place_id_backfill_nl_stars_2026.sql`:** each code must be the
+  Dutch restaurant with the expected MICHELIN page.
+- **`prepared_place_id_backfill_be_stars_2026.sql`:** renumbered to
+  rest_1827..1839 by the catalogue session, with the same guard.
+
+Each was tested on a scratch Postgres, both on the success path and with a
+code pointing at a different row; the second case aborts with nothing
+applied.

@@ -6,6 +6,57 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — Catalogue data applied: MICHELIN Spain 2026 and Belgium & Luxembourg 2026 (QA-232–QA-243)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, from branch `claude/lucid-rubin-us4we5` (Spain, with the Belgian work merged in) |
+| Migrations | `20261019140000_add_es_2026_star_cities` (123 ES towns), `20261019150000_add_be_2026_star_cities` (7 BE cities), in one `db push`. Ledger 102 → 104, local and remote in agreement |
+| Data files | `michelin_es_stars/prepared_es_stars_2026.sql`, then `michelin_be_lu_stars_2026/prepared_be_lu_stars_2026.sql`, then `place_id_backfill/prepared_place_id_backfill_be_stars_2026.sql`. Each is one transaction with its own guards; none aborted |
+
+**Before.** Read-only checks against production first:
+
+- Only the two migrations were pending.
+- Codes `rest_1588`–`1839` were free; the highest code was `rest_1587`.
+- Spain held 57 restaurants (16/36/5), Belgium 120 (2/22/96) and Luxembourg 12 (2/10), as both files expect.
+
+**MICHELIN Spain 2026.** Source: MICHELIN's live listing and every restaurant's own page (296 read), reconciled with the 2026 full-list article (25 November 2025). See `ES_STARS_2026_REPORT.md`.
+
+- **Selection:** Spain now matches MICHELIN's live listing exactly, **16 / 37 / 243** (296 restaurants).
+- **Star rows:** every starred ES restaurant has exactly one current star row agreeing with `michelin_stars`. None lacks a city, and all 296 appear in `restaurants_full`.
+- **New restaurants:** 239 added, `rest_1588`–`rest_1826`, each with a MICHELIN URL. 235 of them have a confirmed Place ID and 232 a confirmed phone.
+- **Existing rows:** every ES restaurant now has a `michelin_url` (35 filled); the file also filled 46 empty phones.
+- **Hotel links:** Spain now has 23 hotel links, 13 of them new.
+- **Open:**
+  - **QA-232:** DiverXO and ABaC coordinates.
+  - **QA-233:** two pins more than 500 m from Google's record.
+  - **QA-234:** 10 one-stars MICHELIN has since removed from its site.
+  - **QA-235:** Cap Vermell's Key level.
+  - **QA-236:** Aponiente's phone.
+  - **QA-237:** phones still missing.
+  - **QA-238:** eight restaurants Google shows as temporarily closed.
+  - **QA-239:** two restaurants without their own Google record.
+
+**MICHELIN Belgium & Luxembourg 2026.** See `BE_LU_STARS_2026_REPORT.md`.
+
+- **Lost stars:** six restaurants starred in 2025 and absent from 2026: La Durée, Ralf Berendsen, Bar Bulot Zedelgem, Mémoire, Table d'Amis and Aurum by Gary Kirchens. Each now carries a closed 2025 row with its old value and a current 2026 row with `award_value` NULL; `michelin_stars` is NULL. Re-read for all six.
+- **QA-241:** Le Lys (`rest_1368`) has its missing current 2026 one-star row.
+- **MICHELIN URLs:** 16 filled.
+- **New restaurants:** 13 added, `rest_1827`–`rest_1839`, each with a 2026 row. All 13 got their confirmed Place ID from the second file.
+- **Selection:** Belgium is now **2 / 20 / 105** (133 restaurants) and Luxembourg **2 / 10**, MICHELIN's 2026 full list. Each starred restaurant has one matching current row.
+- **Open:**
+  - **QA-240:** La Paix, Kommilfoo and La Table de Manon keep their stars.
+  - **QA-242:** Philippe Fauchet's phone.
+  - **QA-243:** Héliport Brasserie is shown as temporarily closed on Google.
+
+**Near-miss.** This was caught and fixed before anything was applied.
+
+- **The collision:** the Belgian work had first picked `rest_1405`–`1417`, which France 2026 took on production. Its Place ID file checked only that each code existed, so it would have put Belgian Google records on 13 French restaurants.
+- **The fix:** Belgium was renumbered, and every prepared Place ID file now checks each code's MICHELIN page before writing.
+- **After the apply:** `rest_1405`–`1417` are still the same 13 French rows.
+
+---
+
 # 2026-10-28 — QA follow-ups applied: Kjolle, Plaza Athénée, Monaco, Peru hotel phones (QA-222, QA-224, QA-227, QA-230)
 
 | | |

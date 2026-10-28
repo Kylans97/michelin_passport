@@ -63,7 +63,7 @@ Flockhill Lodge, San Domenico Palace → Gritti Palace, and Arca, which the
 site files as a Bar. Many others are probably right (Arzak, Saison,
 Amangiri) but we hold neither a phone nor a website to prove them, and
 their address is written differently. They wait for a person, per
-QA-236.
+QA-248.
 
 Two hotel URLs (`url_kind=list_page`: Hotel Sacher Wien, Hôtel de Paris
 Monte-Carlo) point at the 2026 list page, because no profile was found for
@@ -85,12 +85,12 @@ is a `discovery_profile`, which also exists for venues no longer ranked.
 
 ## Findings, not changed here
 
-- **QA-234:** verified profiles show 9 World's 50 Best rank-years our
+- **QA-246:** verified profiles show 9 World's 50 Best rank-years our
   `worlds_50_best` table doesn't have (Hof van Cleve 2021/2022, Jordnær
   2022, Nobelhart & Schmutzig 2024, Leo 2023, Oteque 2024, Fyn 2022, The
   Clove Club 2022/2023). Award History is short of them. Unverified;
   see the next point.
-- **QA-235:** profile rank lines are not reliable on their own. A Casa do
+- **QA-247:** profile rank lines are not reliable on their own. A Casa do
   Porco's profile says No.25 in 2025; the official 2025 list says No.83,
   as we have. Mandarin Oriental Hong Kong (profile 42, list 41) and
   One&Only Mandarina (38 vs 39) are the same: our data matches the

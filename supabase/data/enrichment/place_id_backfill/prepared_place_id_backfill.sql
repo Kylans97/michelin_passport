@@ -35,6 +35,116 @@
 -- ============================================================
 begin;
 
+-- Identity guard (added 2026-10-28): every code below must still be the
+-- row exported from production for this queue (same country, same name).
+-- Codes are stable, but a guard costs nothing and stops a file written
+-- against one export from landing on a different row.
+create temp table _expect (tbl text, code text, country text, name text, primary key (tbl, code)) on commit drop;
+insert into _expect values
+    ('hotels', 'hotel_688', 'JP', 'Aman Tokyo'),
+    ('hotels', 'hotel_689', 'IT', 'Borgo Santandrea'),
+    ('hotels', 'hotel_690', 'IT', 'Bulgari Roma'),
+    ('hotels', 'hotel_691', 'IT', 'Four Seasons Firenze'),
+    ('hotels', 'hotel_692', 'JP', 'Hoshinoya Tokyo'),
+    ('hotels', 'hotel_693', 'IT', 'Hotel Cipriani'),
+    ('hotels', 'hotel_694', 'IT', 'Hotel Il Pellicano'),
+    ('hotels', 'hotel_695', 'BR', 'Hotel das Cataratas'),
+    ('hotels', 'hotel_696', 'IT', 'Passalacqua'),
+    ('hotels', 'hotel_697', 'BR', 'Rosewood São Paulo'),
+    ('hotels', 'hotel_699', 'JP', 'The Tokyo Edition Toranomon'),
+    ('hotels', 'hotel_700', 'AU', 'Capella Sydney'),
+    ('hotels', 'hotel_701', 'AU', 'Southern Ocean Lodge'),
+    ('hotels', 'hotel_702', 'AU', 'The Calile'),
+    ('hotels', 'hotel_704', 'CN', 'Mandarin Oriental Qianmen'),
+    ('hotels', 'hotel_705', 'MX', 'Four Seasons Tamarindo'),
+    ('hotels', 'hotel_707', 'FR', 'Cheval Blanc Paris'),
+    ('hotels', 'hotel_708', 'FR', 'Hôtel de Crillon'),
+    ('hotels', 'hotel_709', 'FR', 'Hôtel du Cap-Eden-Roc'),
+    ('hotels', 'hotel_710', 'FR', 'Hôtel du Couvent'),
+    ('hotels', 'hotel_711', 'FR', 'La Réserve Paris'),
+    ('hotels', 'hotel_712', 'FR', 'Le Bristol Paris'),
+    ('hotels', 'hotel_713', 'FR', 'Plaza Athénée'),
+    ('hotels', 'hotel_714', 'FR', 'The Maybourne Riviera'),
+    ('hotels', 'hotel_716', 'GR', 'Four Seasons Astir Palace Hotel Athens'),
+    ('hotels', 'hotel_717', 'HK', 'Four Seasons Hong Kong'),
+    ('hotels', 'hotel_718', 'HK', 'Mandarin Oriental Hong Kong'),
+    ('hotels', 'hotel_719', 'HK', 'Rosewood Hong Kong'),
+    ('hotels', 'hotel_720', 'HK', 'The Peninsula Hong Kong'),
+    ('hotels', 'hotel_721', 'HK', 'Upper House Hong Kong'),
+    ('hotels', 'hotel_722', 'IN', 'Amanbagh'),
+    ('hotels', 'hotel_724', 'IN', 'The Johri'),
+    ('hotels', 'hotel_726', 'IN', 'The Taj Mahal Palace'),
+    ('hotels', 'hotel_727', 'ID', 'Desa Potato Head'),
+    ('hotels', 'hotel_728', 'ID', 'Mandapa'),
+    ('hotels', 'hotel_729', 'ID', 'Nihi Sumba'),
+    ('hotels', 'hotel_730', 'MY', 'The Datai'),
+    ('hotels', 'hotel_731', 'MV', 'Soneva Fushi'),
+    ('hotels', 'hotel_734', 'MX', 'Chablé Yucatán'),
+    ('hotels', 'hotel_735', 'MX', 'Hotel Esencia'),
+    ('hotels', 'hotel_736', 'MX', 'Las Ventanas al Paraíso'),
+    ('hotels', 'hotel_737', 'MX', 'Maroma'),
+    ('hotels', 'hotel_738', 'MX', 'Montage Los Cabos'),
+    ('hotels', 'hotel_740', 'MX', 'Rosewood Mayakoba'),
+    ('hotels', 'hotel_741', 'MA', 'La Mamounia'),
+    ('hotels', 'hotel_742', 'MA', 'Royal Mansour'),
+    ('hotels', 'hotel_743', 'NZ', 'Huka Lodge'),
+    ('hotels', 'hotel_744', 'OM', 'Six Senses Zighy Bay'),
+    ('hotels', 'hotel_745', 'PE', 'Palacio Nazarenas'),
+    ('hotels', 'hotel_746', 'ZA', 'Mount Nelson'),
+    ('hotels', 'hotel_748', 'LK', 'Amangalla'),
+    ('hotels', 'hotel_749', 'BL', 'Eden Rock'),
+    ('hotels', 'hotel_750', 'SE', 'Ett Hem'),
+    ('hotels', 'hotel_751', 'TH', 'Aman Nai Lert'),
+    ('hotels', 'hotel_752', 'TH', 'Capella Bangkok'),
+    ('hotels', 'hotel_754', 'TH', 'Four Seasons Bangkok at Chao Phraya River'),
+    ('hotels', 'hotel_755', 'TH', 'Mandarin Oriental Bangkok'),
+    ('hotels', 'hotel_756', 'TH', 'Rosewood Bangkok'),
+    ('hotels', 'hotel_757', 'TH', 'The Siam'),
+    ('hotels', 'hotel_758', 'TR', 'Maçakızı'),
+    ('hotels', 'hotel_759', 'AE', 'Atlantis The Royal'),
+    ('hotels', 'hotel_760', 'AE', 'Jumeirah Marsa Al Arab'),
+    ('hotels', 'hotel_761', 'AE', 'The Lana'),
+    ('hotels', 'hotel_762', 'GB', 'Claridge''s'),
+    ('hotels', 'hotel_763', 'GB', 'Estelle Manor'),
+    ('hotels', 'hotel_764', 'GB', 'Gleneagles'),
+    ('hotels', 'hotel_766', 'GB', 'Raffles London at The OWO'),
+    ('hotels', 'hotel_767', 'GB', 'The Connaught'),
+    ('hotels', 'hotel_768', 'GB', 'The Emory'),
+    ('hotels', 'hotel_771', 'US', 'Aman New York'),
+    ('hotels', 'hotel_774', 'US', 'Four Seasons at The Surf Club'),
+    ('hotels', 'hotel_776', 'US', 'San Ysidro Ranch'),
+    ('hotels', 'hotel_779', 'US', 'The Fifth Avenue Hotel'),
+    ('hotels', 'hotel_780', 'US', 'The Greenwich Hotel'),
+    ('hotels', 'hotel_781', 'US', 'The Mark'),
+    ('restaurants', 'rest_0780', 'NL', 'Basiliek'),
+    ('restaurants', 'rest_0781', 'NL', 'Graphite by Peter Gast'),
+    ('restaurants', 'rest_0782', 'NL', 'Zheng'),
+    ('restaurants', 'rest_0783', 'NL', 'Daalder'),
+    ('restaurants', 'rest_0784', 'NL', 'Merlet'),
+    ('restaurants', 'rest_0785', 'NL', 'Latour'),
+    ('restaurants', 'rest_0786', 'NL', 'Restaurant Smink'),
+    ('restaurants', 'rest_0787', 'NL', 'De Vlindertuin'),
+    ('restaurants', 'rest_0788', 'NL', 'De Woage'),
+    ('restaurants', 'rest_0789', 'NL', 'De Swarte Ruijter'),
+    ('restaurants', 'rest_0790', 'NL', '''t Lansink'),
+    ('restaurants', 'rest_0791', 'NL', 'De Bloemenbeek'),
+    ('restaurants', 'rest_0792', 'NL', 'De Gieser Wildeman'),
+    ('restaurants', 'rest_0793', 'NL', 'De Moerbei'),
+    ('restaurants', 'rest_0794', 'NL', 'Bij Jef');
+
+do $$
+declare bad text;
+begin
+  select string_agg(e.code, ', ') into bad from _expect e
+   where e.tbl = 'hotels' and not exists (select 1 from public.hotels h
+          where h.hotel_code = e.code and h.country_code = e.country and h.name = e.name);
+  if bad is not null then raise exception 'hotels: code is not the exported row (country/name changed): %', bad; end if;
+  select string_agg(e.code, ', ') into bad from _expect e
+   where e.tbl = 'restaurants' and not exists (select 1 from public.restaurants r
+          where r.restaurant_code = e.code and r.country_code = e.country and r.name = e.name);
+  if bad is not null then raise exception 'restaurants: code is not the exported row (country/name changed): %', bad; end if;
+end $$;
+
 create temp table _pid_hotels (code text primary key, place_id text not null unique) on commit drop;
 insert into _pid_hotels values
     ('hotel_688', 'ChIJfV9KdPiLGGARn4ma2GUEoJo'),  -- 19 m, Aman Tokyo
@@ -210,6 +320,17 @@ commit;
 -- Step 3 -- run only after prepared_w50b_new_venues_import.sql
 -- ============================================================
 begin;
+
+do $$
+begin
+  -- Identity guard: hotel_801 must be the Singita row the W50B import creates
+  -- (South Africa, Singita Lebombo's MICHELIN page), not another hotel.
+  if exists (select 1 from public.hotels where hotel_code = 'hotel_801')
+     and not exists (select 1 from public.hotels where hotel_code = 'hotel_801' and country_code = 'ZA'
+                     and michelin_url = 'https://guide.michelin.com/en/hotels-stays/Mpumalanga-1/singita-lebombo-16240') then
+    raise exception 'hotel_801 is not the expected Singita row';
+  end if;
+end $$;
 
 create temp table _pid_singita (code text primary key, place_id text not null unique) on commit drop;
 insert into _pid_singita values

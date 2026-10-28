@@ -62,10 +62,10 @@ Prepared and committed, **not applied**. Production is unchanged.
 - The site is now **the50.com**; `theworlds50best.com` 301-redirects
   there. Per-venue profiles (`discovery/Establishments/...`) also exist
   for venues no longer ranked, so they are what's stored.
-- New findings: QA-232 to QA-236 in `supabase/data/qa_issues.csv`.
+- New findings: QA-244 to QA-248 in `supabase/data/qa_issues.csv`.
   Notably, Award History is missing 9 verified-restaurant rank-years
-  (QA-234), and profile rank lines can contradict the official lists
-  (QA-235).
+  (QA-246), and profile rank lines can contradict the official lists
+  (QA-247).
 
 Order to go live: apply the migration → run the data SQL → ship the app
 change below. The app change can't merge before the migration is live.

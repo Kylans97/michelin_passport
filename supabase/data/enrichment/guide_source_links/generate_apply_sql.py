@@ -30,7 +30,7 @@ out = f"""-- Prepared data update for the guide-source links. NOT APPLIED.
 
 begin;
 
--- 1. QA-232: the 8 Austrian "not found" placeholders become NULL.
+-- 1. QA-244: the 8 Austrian "not found" placeholders become NULL.
 do $$ declare n int; begin
   update public.gault_millau_awards set gault_millau_url = null
    where gault_millau_url is not null and gault_millau_url !~ '^https?://';
@@ -38,7 +38,7 @@ do $$ declare n int; begin
   if n <> 8 then raise exception 'placeholders: expected 8, got %', n; end if;
 end $$;
 
--- 2a. QA-232: the {len(at)} Austrian pages found in gaultmillau.at's own sitemap
+-- 2a. QA-244: the {len(at)} Austrian pages found in gaultmillau.at's own sitemap
 --     and verified (gault_millau_at_urls.csv). Obauer stays NULL.
 do $$ declare n int; begin
   update public.gault_millau_awards g set gault_millau_url = v.url
@@ -51,7 +51,7 @@ do $$ declare n int; begin
   if n <> {len(at)} then raise exception 'AT urls: expected {len(at)}, got %', n; end if;
 end $$;
 
--- 2b. QA-233: {len(tq)} toque counts read from each restaurant's own page, only
+-- 2b. QA-245: {len(tq)} toque counts read from each restaurant's own page, only
 --     where the page score equals ours (gault_millau_toques.csv).
 do $$ declare n int; begin
   update public.gault_millau_awards g set toque_count = v.toques

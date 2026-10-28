@@ -1,0 +1,155 @@
+-- MICHELIN Guide Spain 2026 (Guía MICHELIN España & Andorra 2026, announced
+-- 25 November 2025): city-only prerequisite for the 239 starred Spanish
+-- restaurants missing from the catalogue, added by
+-- supabase/data/enrichment/michelin_es_stars/prepared_es_stars_2026.sql.
+--
+-- Written 2026-10-28. Filename timestamp is a sequence number only (named
+-- after the highest existing migration on main, 20261019130000), not this
+-- date.
+--
+-- Adds ONLY public.cities rows. Checked against production's export of
+-- 2026-10-28 (read-only query run by the user; 67 ES cities): none of these
+-- 123 exists by name, compared accent- and case-insensitively. Names are
+-- MICHELIN's destination towns as printed on guide.michelin.com in Spanish
+-- (es/es), which is how production already writes Spanish towns (Sevilla,
+-- València, Xàbia); the English site's exonyms (Saragossa, Seville, Cadiz,
+-- Leon, Logrono) are not used. Places that already exist are reused by the
+-- prepared file, not added here: San Sebastian (Donostia), Sevilla, València,
+-- Malaga, La Coruña, Alicante (Alacant), Lasarte-Oria, Atxondo (Axpe).
+--
+-- region and postal_municipality are left NULL, matching every existing ES
+-- row. None of the 123 names repeats within this list.
+--
+-- Idempotent: ON CONFLICT targets cities_unique_key
+-- (country_code, name, coalesce(region, '')).
+
+begin;
+
+insert into public.cities (country_code, name, region)
+values
+  ('ES', 'Ainsa', NULL),
+  ('ES', 'Albacete', NULL),
+  ('ES', 'Alcalá del Valle', NULL),
+  ('ES', 'Alcanar', NULL),
+  ('ES', 'Alcossebre', NULL),
+  ('ES', 'Amorebieta', NULL),
+  ('ES', 'Ampuero', NULL),
+  ('ES', 'Anciles', NULL),
+  ('ES', 'Anglès', NULL),
+  ('ES', 'Arbúcies', NULL),
+  ('ES', 'Arriondas', NULL),
+  ('ES', 'Baeza', NULL),
+  ('ES', 'Barizo', NULL),
+  ('ES', 'Benavente', NULL),
+  ('ES', 'Benicarló', NULL),
+  ('ES', 'Benissa', NULL),
+  ('ES', 'Burgos', NULL),
+  ('ES', 'Calldetenes', NULL),
+  ('ES', 'Calp', NULL),
+  ('ES', 'Cambados', NULL),
+  ('ES', 'Cambrils', NULL),
+  ('ES', 'Canfranc-Estación', NULL),
+  ('ES', 'Carasa', NULL),
+  ('ES', 'Carcaixent', NULL),
+  ('ES', 'Cartagena', NULL),
+  ('ES', 'Casas-Ibáñez', NULL),
+  ('ES', 'Castelló d''Empúries', NULL),
+  ('ES', 'Castroverde de Campos', NULL),
+  ('ES', 'Chiclana de la Frontera', NULL),
+  ('ES', 'Cornudella de Montsant', NULL),
+  ('ES', 'Cuenca', NULL),
+  ('ES', 'Cádiz', NULL),
+  ('ES', 'Dima', NULL),
+  ('ES', 'Eivissa', NULL),
+  ('ES', 'El Ejido', NULL),
+  ('ES', 'El Masnou', NULL),
+  ('ES', 'Elche', NULL),
+  ('ES', 'Es Capdellà', NULL),
+  ('ES', 'Fuengirola', NULL),
+  ('ES', 'Galdakao', NULL),
+  ('ES', 'Gijón', NULL),
+  ('ES', 'Gimenells', NULL),
+  ('ES', 'Gombrèn', NULL),
+  ('ES', 'Haro', NULL),
+  ('ES', 'Hondarribia', NULL),
+  ('ES', 'Hoznayo', NULL),
+  ('ES', 'Illescas', NULL),
+  ('ES', 'Jaén', NULL),
+  ('ES', 'La Nucía', NULL),
+  ('ES', 'La Vall de Bianya', NULL),
+  ('ES', 'Las Palmas de Gran Canaria', NULL),
+  ('ES', 'León', NULL),
+  ('ES', 'Llagostera', NULL),
+  ('ES', 'Llanes', NULL),
+  ('ES', 'Llucmajor', NULL),
+  ('ES', 'Logroño', NULL),
+  ('ES', 'Los Rosales', NULL),
+  ('ES', 'Matapozuelos', NULL),
+  ('ES', 'Miranda de Ebro', NULL),
+  ('ES', 'Mogán', NULL),
+  ('ES', 'Mungia', NULL),
+  ('ES', 'Murcia', NULL),
+  ('ES', 'Muro', NULL),
+  ('ES', 'Navaleno', NULL),
+  ('ES', 'Olost', NULL),
+  ('ES', 'Ondara', NULL),
+  ('ES', 'Oropesa del Mar', NULL),
+  ('ES', 'Ortiguera', NULL),
+  ('ES', 'Ourense', NULL),
+  ('ES', 'Padrón', NULL),
+  ('ES', 'Palma', NULL),
+  ('ES', 'Palmanova', NULL),
+  ('ES', 'Pamplona', NULL),
+  ('ES', 'Patalavaca', NULL),
+  ('ES', 'Peralada', NULL),
+  ('ES', 'Playa Blanca', NULL),
+  ('ES', 'Playa de las Américas', NULL),
+  ('ES', 'Ponferrada', NULL),
+  ('ES', 'Port d''Alcúdia', NULL),
+  ('ES', 'Portbou', NULL),
+  ('ES', 'Pozuelo de Alarcón', NULL),
+  ('ES', 'Prendes', NULL),
+  ('ES', 'Puerto de la Cruz', NULL),
+  ('ES', 'Quintanilla de Onésimo', NULL),
+  ('ES', 'Ribadesella', NULL),
+  ('ES', 'Sagunt', NULL),
+  ('ES', 'Sagàs', NULL),
+  ('ES', 'Salinas', NULL),
+  ('ES', 'Salou', NULL),
+  ('ES', 'San Antonio de Benagéber', NULL),
+  ('ES', 'San Feliz', NULL),
+  ('ES', 'San Lorenzo de El Escorial', NULL),
+  ('ES', 'San Salvador de Poio', NULL),
+  ('ES', 'Sant Fruitós de Bages', NULL),
+  ('ES', 'Sant Josep de sa Talaia', NULL),
+  ('ES', 'Sant Julià de Ramis', NULL),
+  ('ES', 'Sant Martí Sarroca', NULL),
+  ('ES', 'Santa Coloma de Gramenet', NULL),
+  ('ES', 'Santa Cruz de Campezo', NULL),
+  ('ES', 'Sardas', NULL),
+  ('ES', 'Sardón de Duero', NULL),
+  ('ES', 'Sigüenza', NULL),
+  ('ES', 'Sober', NULL),
+  ('ES', 'Sort', NULL),
+  ('ES', 'Talavera de la Reina', NULL),
+  ('ES', 'Tella', NULL),
+  ('ES', 'Tolosa', NULL),
+  ('ES', 'Tomelloso', NULL),
+  ('ES', 'Torre de Juan Abad', NULL),
+  ('ES', 'Tox', NULL),
+  ('ES', 'Tramacastilla', NULL),
+  ('ES', 'Ulldecona', NULL),
+  ('ES', 'Valdemorillo', NULL),
+  ('ES', 'Valdemoro', NULL),
+  ('ES', 'Vall d''Alba', NULL),
+  ('ES', 'Vigo', NULL),
+  ('ES', 'Villanova', NULL),
+  ('ES', 'Vinaròs', NULL),
+  ('ES', 'Xerta', NULL),
+  ('ES', 'Yecla', NULL),
+  ('ES', 'Zaragoza', NULL),
+  ('ES', 'Zarza de Granadilla', NULL),
+  ('ES', 'Ávila', NULL)
+on conflict (country_code, name, coalesce(region, '')) do nothing;
+
+commit;
