@@ -10,6 +10,32 @@ The format follows Keep a Changelog.
 
 ### Added
 
+- 2026-10-28 — A landing page per managed venue, phase 2 of
+  `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. My Venues
+  used to open one long screen with the about text and every photo
+  control on it. Now:
+  - **The landing page** (`VenueManagementScreen`) shows the venue's
+    name with its card photo (card crop), then three rows, each with a
+    one-line summary: **Profile** ("Published", "Awaiting review", "Not
+    approved", "Nothing published yet"), **Photos** ("3 photos · 1
+    awaiting review") and **Events** ("2 upcoming"). Preview my page and
+    the contact line stay here. Coming back from any section reloads all
+    three summaries. A failed lookup only blanks its own summary; the row
+    still opens.
+  - **Profile** (`VenueProfileScreen`) and **Photos**
+    (`VenuePhotosScreen`) are the two halves of the old screen, moved
+    unchanged. Nothing was removed.
+  - **Events** (`VenueEventsScreen`) is new and read-only for now: the
+    upcoming events the venue hosts, the same list its public page shows
+    (`loadHostedEventsFor*`). Creating and editing events is phase 3, and
+    deliberately has no placeholder button here.
+  - Private chefs get the same page.
+  - **App only:** no migration, nothing new read from the database.
+  - **Tests:** the existing tests now run against the screen each one
+    covers. New tests cover the landing page (summaries, card photo,
+    failure isolation, navigation, reload on return, private chefs, no
+    verified-data fields) and the Events screen.
+
 - 2026-10-28 — In-app review for admins, phase 1 of
   `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. Reviewing a
   venue claim, an about text or a photo meant finding the row in the
