@@ -5,8 +5,6 @@ import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
-import '../../core/widgets/cs_section_title.dart';
-import '../../core/widgets/detail_hero.dart' show HeroIconButton;
 import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
@@ -25,7 +23,7 @@ import 'trip_schedule.dart';
 import 'widgets/create_trip_sheet.dart';
 import 'widgets/planned_venue_actions.dart';
 import 'widgets/planned_venue_row.dart';
-import 'widgets/trip_card.dart';
+import 'widgets/trip_chrome.dart';
 import 'widgets/trip_eyebrow.dart';
 import 'widgets/trip_hero_card.dart';
 
@@ -233,9 +231,8 @@ class _TripsBodyState extends State<TripsBody> {
       if (tripId != null) byTrip.putIfAbsent(tripId, () => []).add(v);
     }
 
-    int restaurantCountFor(String tripId) => (byTrip[tripId] ?? [])
-        .where((v) => v.venue is RestaurantVenue)
-        .length;
+    int restaurantCountFor(String tripId) =>
+        (byTrip[tripId] ?? []).where((v) => v.venue is RestaurantVenue).length;
     int hotelCountFor(String tripId) =>
         (byTrip[tripId] ?? []).where((v) => v.venue is HotelVenue).length;
 
@@ -259,24 +256,10 @@ class _TripsBodyState extends State<TripsBody> {
               CsSpacing.pageHorizontal,
               0,
             ),
-            child: Row(
-              children: [
-                const Expanded(
-                  child: CsSectionTitle(
-                    'YOUR TRIPS',
-                    color: AppColors.textOnDark,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                Tooltip(
-                  message: 'Create trip',
-                  child: HeroIconButton(
-                    icon: Icons.add_rounded,
-                    onTap: _createTrip,
-                  ),
-                ),
-              ],
+            child: TripSectionHeader(
+              title: 'YOUR TRIPS',
+              subtitle: 'Journeys planned around the table.',
+              trailing: TripTextAction(label: 'New trip', onTap: _createTrip),
             ),
           ),
           const SizedBox(height: CsSpacing.lg),
@@ -292,7 +275,7 @@ class _TripsBodyState extends State<TripsBody> {
                 ? _ErrorState(onRetry: _load)
                 : RefreshIndicator(
                     color: AppColors.textOnDark,
-                    backgroundColor: AppColors.brandGreenLight,
+                    backgroundColor: AppColors.greenSurface,
                     onRefresh: _load,
                     child: (upcoming.isEmpty && untripped.isEmpty)
                         ? _EmptyState(onCreateTrip: _createTrip)
@@ -342,12 +325,7 @@ class _TripsBodyState extends State<TripsBody> {
                                 const TripSectionLabel('PLANNED VISITS'),
                                 const SizedBox(height: CsSpacing.md),
                                 if (upcomingUntripped.isEmpty)
-                                  Text(
-                                    'Nothing planned yet.',
-                                    style: CsTypography.body.copyWith(
-                                      color: AppColors.secondaryOnDark,
-                                    ),
-                                  )
+                                  const TripEmptyLine('Nothing planned yet.')
                                 else
                                   for (
                                     var i = 0;
@@ -355,7 +333,7 @@ class _TripsBodyState extends State<TripsBody> {
                                     i++
                                   ) ...[
                                     if (i > 0)
-                                      const SizedBox(height: CsSpacing.sm),
+                                      const SizedBox(height: CsSpacing.md),
                                     PlannedVenueRow(
                                       item: upcomingUntripped[i],
                                       onTap: () =>
@@ -396,9 +374,8 @@ class _EmptyState extends StatelessWidget {
                 Text(
                   'No trips planned yet',
                   textAlign: TextAlign.center,
-                  style: CsTypography.placeTitle.copyWith(
+                  style: CsTypography.sectionTitle.copyWith(
                     color: AppColors.textOnDark,
-                    fontSize: 22,
                   ),
                 ),
                 const SizedBox(height: CsSpacing.sm),

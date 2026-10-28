@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
@@ -7,7 +6,7 @@ import '../../../core/theme/cs_surface_context.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/country_picker_sheet.dart';
 import '../../../core/widgets/cs_primary_button.dart';
-import '../../../core/widgets/editorial_back_button.dart';
+import '../../../core/widgets/sheet_dismiss_handle.dart';
 import '../../../data/repositories/hotel_repository.dart';
 import '../../../data/repositories/planned_trips_repository.dart';
 import '../../../data/repositories/restaurant_repository.dart';
@@ -17,6 +16,7 @@ import '../../../models/restaurant.dart';
 import '../../../models/venue_country.dart';
 import 'hotel_picker_sheet.dart';
 import 'restaurant_picker_sheet.dart';
+import 'trip_chrome.dart';
 import 'trip_eyebrow.dart';
 
 /// Opens the "Create trip"/"Edit trip" bottom sheet. Passing [existingTrip]
@@ -137,20 +137,43 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
     if (picked != null) setState(() => _endDate = picked);
   }
 
+  // Changing the destination drops any hotel/restaurant already picked
+  // outside it — the pickers only ever offer venues in the trip's own
+  // country (keyed on country_code, never a name), so a selection from
+  // the previous country would otherwise be the one way to bypass that.
   Future<void> _pickCountry(List<VenueCountry> countries) async {
     final picked = await showCountryPickerSheet(context, countries: countries);
-    if (picked != null) setState(() => _country = picked);
+    if (picked == null) return;
+    setState(() {
+      _country = picked;
+      if (_selectedHotel?.countryCode != picked.code) _selectedHotel = null;
+      _selectedRestaurants.removeWhere((r) => r.countryCode != picked.code);
+    });
   }
 
+  String _destinationLabel(VenueCountry country) =>
+      country.flag.isEmpty ? country.name : '${country.flag} ${country.name}';
+
   Future<void> _pickHotel() async {
-    final picked = await showHotelPickerSheet(context, repo: _hotelRepo);
+    final country = _country;
+    if (country == null) return;
+    final picked = await showHotelPickerSheet(
+      context,
+      repo: _hotelRepo,
+      countryCode: country.code,
+      destinationLabel: _destinationLabel(country),
+    );
     if (picked != null) setState(() => _selectedHotel = picked);
   }
 
   Future<void> _pickRestaurant() async {
+    final country = _country;
+    if (country == null) return;
     final picked = await showRestaurantPickerSheet(
       context,
       repo: _restaurantRepo,
+      countryCode: country.code,
+      destinationLabel: _destinationLabel(country),
       excludeIds: {for (final r in _selectedRestaurants) r.id},
     );
     if (picked != null) setState(() => _selectedRestaurants.add(picked));
@@ -254,8 +277,9 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
             color: AppColors.textOnDark.withValues(alpha: 0.2),
           ),
         ),
+        // Ivory, never gold — gold is reserved for stars and Keys.
         focusedBorder: const UnderlineInputBorder(
-          borderSide: BorderSide(color: AppColors.gold, width: 1.25),
+          borderSide: BorderSide(color: AppColors.textOnDark, width: 1.25),
         ),
       );
 
@@ -272,8 +296,10 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
           constraints: BoxConstraints(maxHeight: maxHeight),
           child: Container(
             decoration: const BoxDecoration(
-              color: AppColors.brandGreenLight,
-              borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
+              color: AppColors.greenSurface,
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(CsRadius.large),
+              ),
             ),
             child: SingleChildScrollView(
               padding: const EdgeInsets.fromLTRB(24, 14, 24, 28),
@@ -281,45 +307,33 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // An explicit, always-visible dismiss control — swipe-to-
-                  // dismiss (the sheet's default showModalBottomSheet
-                  // behaviour, still intact) was previously the only way
-                  // out, with no on-screen affordance. Same EditorialBackButton
-                  // treatment used for pushed screens, just the close glyph
-                  // instead of a back chevron — visible before any field is
-                  // touched, dismisses via Navigator.pop with no result
-                  // (matching what swipe-to-dismiss already returns), never
-                  // saves or writes anything.
-                  Row(
-                    children: [
-                      EditorialBackButton(
-                        icon: Icons.close_rounded,
-                        semanticLabel: 'Close',
-                        onTap: () => Navigator.pop(context),
-                      ),
-                      Expanded(
-                        child: Center(
-                          child: Container(
-                            width: 36,
-                            height: 4,
-                            decoration: BoxDecoration(
-                              color: AppColors.textOnDark.withValues(
-                                alpha: 0.3,
-                              ),
-                              borderRadius: BorderRadius.circular(2),
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Balances EditorialBackButton's own footprint so the
-                      // drag handle stays visually centered in the row.
-                      const SizedBox(width: 44),
-                    ],
+                  // Explicit Close plus the drag handle — the shared
+                  // SheetDismissHandle every dismissible sheet uses; pops
+                  // with no result, so it never saves anything.
+                  SheetDismissHandle(
+                    onClose: () => Navigator.pop(context),
+                    handleColor: AppColors.textOnDark.withValues(alpha: 0.3),
                   ),
-                  const SizedBox(height: 20),
+                  const SizedBox(height: CsSpacing.lg),
 
-                  TripSectionLabel(_isEditing ? 'EDIT TRIP' : 'CREATE TRIP'),
-                  const SizedBox(height: CsSpacing.md),
+                  Text(
+                    _isEditing ? 'Edit trip' : 'Plan a trip',
+                    style: CsTypography.sectionTitle.copyWith(
+                      color: AppColors.textOnDark,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    _isEditing
+                        ? 'Change the name, dates or destination.'
+                        : 'A destination and dates. The rest can follow.',
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.secondaryOnDark,
+                    ),
+                  ),
+                  const SizedBox(height: CsSpacing.xl),
+                  const TripSectionLabel('NAME'),
+                  const SizedBox(height: CsSpacing.xs),
                   TextField(
                     controller: _titleCtrl,
                     style: CsTypography.placeTitle.copyWith(
@@ -380,18 +394,25 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                   const SizedBox(height: CsSpacing.section),
 
                   if (!_isEditing) ...[
-                    const TripSectionLabel('PLAN FURTHER'),
+                    const TripSectionLabel('STAY & DINING'),
                     const SizedBox(height: CsSpacing.xs),
                     Text(
-                      'Add a hotel or restaurants now, or come back to it '
-                      'later.',
+                      _country == null
+                          ? 'Choose a destination first — you\'ll pick from '
+                                'its hotels and restaurants.'
+                          : 'Add a hotel or restaurants now, or come back to '
+                                'it later.',
                       style: CsTypography.metadata.copyWith(
                         color: AppColors.secondaryOnDark,
                       ),
                     ),
-                    const SizedBox(height: CsSpacing.md),
+                    const SizedBox(height: CsSpacing.sm),
                     if (_selectedHotel == null)
-                      _QuietAddAction(label: 'Add hotel', onTap: _pickHotel)
+                      TripTextAction(
+                        label: 'Add hotel',
+                        onTap: _pickHotel,
+                        enabled: _country != null,
+                      )
                     else
                       _SelectedVenueRow(
                         title: _selectedHotel!.name,
@@ -401,7 +422,8 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                         onChange: _pickHotel,
                         onRemove: () => setState(() => _selectedHotel = null),
                       ),
-                    const SizedBox(height: CsSpacing.md),
+                    if (_selectedHotel != null)
+                      const SizedBox(height: CsSpacing.md),
                     for (var i = 0; i < _selectedRestaurants.length; i++) ...[
                       _SelectedVenueRow(
                         title: _selectedRestaurants[i].name,
@@ -413,9 +435,10 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                       ),
                       const SizedBox(height: CsSpacing.sm),
                     ],
-                    _QuietAddAction(
+                    TripTextAction(
                       label: 'Add restaurant',
                       onTap: _pickRestaurant,
+                      enabled: _country != null,
                     ),
                     const SizedBox(height: CsSpacing.xl),
                   ],
@@ -452,9 +475,8 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                                 Expanded(
                                   child: Text(
                                     _error!,
-                                    style: GoogleFonts.inter(
+                                    style: CsTypography.metadata.copyWith(
                                       color: AppColors.error,
-                                      fontSize: 13,
                                     ),
                                   ),
                                 ),
@@ -634,32 +656,6 @@ class _BorderedRow extends StatelessWidget {
   );
 }
 
-/// "Add hotel"/"Add restaurant" — a quiet secondary action, not a form
-/// field: a plain text row with a small gold "+", so Hotel/Restaurants
-/// read as something to enrich the trip with later, not something the
-/// trip is incomplete without.
-class _QuietAddAction extends StatelessWidget {
-  final String label;
-  final VoidCallback onTap;
-  const _QuietAddAction({required this.label, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) => TextButton.icon(
-    onPressed: onTap,
-    icon: const Icon(Icons.add_rounded, size: 16, color: AppColors.gold),
-    label: Text(
-      label,
-      style: CsTypography.bodyMedium.copyWith(color: AppColors.gold),
-    ),
-    style: TextButton.styleFrom(
-      padding: EdgeInsets.zero,
-      minimumSize: const Size(0, 44),
-      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-      alignment: Alignment.centerLeft,
-    ),
-  );
-}
-
 /// A hotel or restaurant already picked for this trip — a plain row, not a
 /// card: name/location plus an optional "Change" (hotel only, since a trip
 /// has at most one) and a "Remove" affordance. [onChange] omitted means no
@@ -687,8 +683,11 @@ class _SelectedVenueRow extends StatelessWidget {
           children: [
             Text(
               title,
-              style: CsTypography.bodyMedium.copyWith(
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              style: CsTypography.placeTitle.copyWith(
                 color: AppColors.textOnDark,
+                fontSize: 18,
               ),
             ),
             const SizedBox(height: 2),
@@ -707,7 +706,7 @@ class _SelectedVenueRow extends StatelessWidget {
           child: Text(
             'Change',
             style: CsTypography.metadata.copyWith(
-              color: AppColors.gold,
+              color: AppColors.textOnDark,
               fontWeight: FontWeight.w600,
             ),
           ),

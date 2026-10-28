@@ -48,13 +48,14 @@ String tripVenueCountsLine({
   return parts.isEmpty ? 'No venues planned yet' : parts.join(' · ');
 }
 
-/// One trip in "UPCOMING" — title, date range, and a compact
-/// restaurants/hotels count line resolved by the caller (see
-/// PlannedTripsScreen, which groups ResolvedPlannedVenue by trip_id). A
-/// dark editorial card — quiet elevated surface on the deep-green canvas,
-/// rather than the light ivory card the rest of the app still uses —
-/// matching the same "card floating on dark canvas" language Explore's
-/// discovery cards already established.
+/// One trip in the full upcoming-trips list — title, date range, and a
+/// compact restaurants/hotels count line resolved by the caller (see
+/// TripsBody, which groups ResolvedPlannedVenue by trip_id).
+///
+/// Trips restyle (2026-10-28): an ivory card on the deep-green canvas —
+/// the same surface as [TripHeroCard] and every [CsPlaceCard], at a
+/// quieter scale — rather than a green panel that blended into the page.
+/// Deep green title, forest-green dates, taupe counts; never gold.
 class TripCard extends StatelessWidget {
   final PlannedTrip trip;
   final int restaurantCount;
@@ -80,15 +81,15 @@ class TripCard extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(CsRadius.card),
-        splashColor: AppColors.textOnDark.withValues(alpha: 0.06),
-        highlightColor: AppColors.textOnDark.withValues(alpha: 0.04),
+        splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
+        highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
         child: Container(
           width: double.infinity,
           padding: const EdgeInsets.all(CsSpacing.cardPadding),
           decoration: BoxDecoration(
-            color: AppColors.brandGreenLight,
+            color: AppColors.ivory,
             borderRadius: BorderRadius.circular(CsRadius.card),
-            border: Border.all(color: AppColors.subtleBorderDark, width: 0.5),
+            border: Border.all(color: AppColors.subtleBorderLight, width: 0.5),
           ),
           child: Row(
             children: [
@@ -101,14 +102,14 @@ class TripCard extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: CsTypography.placeTitle.copyWith(
-                        color: AppColors.textOnDark,
+                        color: AppColors.deepGreen,
                       ),
                     ),
                     const SizedBox(height: CsSpacing.xs),
                     Text(
                       formatTripDateRange(trip),
                       style: CsTypography.metadata.copyWith(
-                        color: AppColors.secondaryOnDark,
+                        color: AppColors.forestGreen,
                       ),
                     ),
                     const SizedBox(height: 6),
@@ -118,8 +119,7 @@ class TripCard extends StatelessWidget {
                         hotelCount: hotelCount,
                       ),
                       style: CsTypography.metadata.copyWith(
-                        color: AppColors.textOnDark,
-                        fontWeight: FontWeight.w600,
+                        color: AppColors.taupe,
                       ),
                     ),
                   ],
@@ -128,7 +128,7 @@ class TripCard extends StatelessWidget {
               const SizedBox(width: CsSpacing.sm),
               const Icon(
                 Icons.chevron_right_rounded,
-                color: AppColors.secondaryOnDark,
+                color: AppColors.forestGreen,
                 size: 22,
               ),
             ],

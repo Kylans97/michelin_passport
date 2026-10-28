@@ -105,7 +105,9 @@ class PlannedTripsRepository {
     final rows = await _client
         .from('countries')
         .select('country_code, name, flag_emoji')
-        .order('name');
+        // `ascending` must be explicit: postgrest-dart's .order() defaults
+        // to descending, which listed countries Z→A (Vietnam first).
+        .order('name', ascending: true);
     return [
       for (final row in rows as List)
         VenueCountry(

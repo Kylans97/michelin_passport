@@ -8,6 +8,40 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Trips restyled** (Passport → Trips, Trip Detail, Create/Edit Trip, the
+  venue pickers). The sections follow Explore's header pattern, and planned
+  stays and visits are now the same ivory photo cards Passport uses
+  (`CsPlaceCard` with the venue's card photo). Trip Detail gets a display-scale
+  header with the destination and a pull-quote for notes. Dialogs, action
+  sheets and snackbars are shared across Trips (`trip_chrome.dart`). Gold
+  appears only on stars and Keys: removed from the Add/Change actions, the
+  focus underline, spinners and the forest-green snackbars.
+- **Pickers scoped to the trip's destination.** "Add stay"/"Add restaurant"
+  offer only venues in the trip's own country, filtered server-side on
+  `country_code` (never a name, never `property_name`). In Create Trip they
+  stay disabled until a destination is chosen, and changing the destination
+  drops picks from another country.
+- `CsPlaceCard` gains an optional `onLongPress` (null by default, so
+  existing cards are unchanged).
+
+### Fixed
+- **"Change hotel" deleted every stay on the trip.** Trip Detail assumed one
+  hotel per trip, but `planned_venues` allows several, and a second stay
+  planned from the venue's own Plan sheet was silently removed. "Add stay"
+  now only adds; each stay is removed on its own.
+- **Countries listed Z→A in Create Trip, and the pickers listed venues Z→A.**
+  postgrest-dart's `.order()` defaults to descending: `loadAllCountries`
+  now passes `ascending: true`, and the pickers sort by name. The shared
+  `RestaurantRepository.search`/`HotelRepository.search` still order
+  `name` descending for every other caller (left alone here, logged as a
+  follow-up), the same trap their own comment already warns about.
+
+### Planned (not applied)
+- Multi-destination trips and shared trips: data-model and migration plan in
+  `docs/Architecture/TRIPS_MULTI_DESTINATION_AND_SHARING_PLAN.md`, waiting
+  for review. No migration written.
+
 ---
 
 ## v1.2.0 (13) — 2026-10-28

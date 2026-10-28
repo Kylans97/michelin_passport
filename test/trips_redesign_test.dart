@@ -271,8 +271,11 @@ void main() {
       await tester.pumpWidget(
         _wrap(PlannedVenueRow(item: _plannedRestaurant(), onTap: () {})),
       );
-      expect(find.textContaining('Test Restaurant · Paris'), findsOneWidget);
-      expect(find.textContaining('17 Oct 2026'), findsOneWidget);
+      expect(find.text('Test Restaurant'), findsOneWidget);
+      expect(find.textContaining('Paris'), findsOneWidget);
+      // The plan date is the card's eyebrow, uppercased like every other
+      // CsPlaceCard eyebrow.
+      expect(find.text('17 OCT 2026'), findsOneWidget);
     });
 
     testWidgets('shows a Michelin star row for a starred restaurant', (
@@ -308,7 +311,7 @@ void main() {
       expect(find.byIcon(Icons.vpn_key_rounded), findsNothing);
     });
 
-    testWidgets('cancelled status shows a strikethrough label', (tester) async {
+    testWidgets('cancelled status is labelled and dimmed', (tester) async {
       await tester.pumpWidget(
         _wrap(
           PlannedVenueRow(
@@ -318,13 +321,16 @@ void main() {
         ),
       );
       expect(find.text('Cancelled'), findsOneWidget);
-      final text = tester.widget<Text>(
-        find.textContaining('Test Restaurant · Paris'),
+      final opacity = tester.widget<Opacity>(
+        find.descendant(
+          of: find.byType(PlannedVenueRow),
+          matching: find.byType(Opacity),
+        ),
       );
-      expect(text.style?.decoration, TextDecoration.lineThrough);
+      expect(opacity.opacity, lessThan(1));
     });
 
-    testWidgets('completed status shows a label, no strikethrough', (
+    testWidgets('completed status shows a label and is not dimmed', (
       tester,
     ) async {
       await tester.pumpWidget(
@@ -336,10 +342,13 @@ void main() {
         ),
       );
       expect(find.text('Completed'), findsOneWidget);
-      final text = tester.widget<Text>(
-        find.textContaining('Test Restaurant · Paris'),
+      expect(
+        find.descendant(
+          of: find.byType(PlannedVenueRow),
+          matching: find.byType(Opacity),
+        ),
+        findsNothing,
       );
-      expect(text.style?.decoration, isNot(TextDecoration.lineThrough));
     });
 
     testWidgets('tap and long-press fire their callbacks', (tester) async {

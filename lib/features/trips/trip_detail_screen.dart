@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/constants/app_colors.dart';
@@ -15,24 +14,38 @@ import '../../models/event_trip_match.dart';
 import '../../models/passport_venue.dart';
 import '../../models/planned_trip.dart';
 import '../../models/resolved_planned_venue.dart';
+import '../../models/venue_country.dart';
 import '../events/event_detail_screen.dart';
 import '../events/widgets/event_card.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
+import 'trip_schedule.dart';
 import 'widgets/create_trip_sheet.dart';
 import 'widgets/hotel_picker_sheet.dart';
 import 'widgets/planned_venue_actions.dart';
 import 'widgets/planned_venue_row.dart';
 import 'widgets/restaurant_picker_sheet.dart';
-import 'widgets/trip_card.dart' show formatTripDateRange;
+import 'widgets/trip_card.dart' show formatTripDateRange, tripVenueCountsLine;
+import 'widgets/trip_chrome.dart';
 import 'widgets/trip_eyebrow.dart';
 
 /// A single trip: destination, dates, notes, and every planned restaurant/
 /// hotel attached to it. Editing/deleting the trip and each planned venue
-/// all live here — the most-used Trips screen, so it carries the full dark
-/// editorial canvas: a typography-led destination header, then STAY,
-/// DINING and WHAT'S ON as quiet, spacious sections rather than boxed
-/// cards.
+/// all live here.
+///
+/// Trips restyle (2026-10-28): a typography-led header on the deep-green
+/// canvas (a start eyebrow, the trip name at display scale, then the
+/// destination and dates), then STAY, DINING and WHAT'S ON as Explore-
+/// style section headers over the same ivory [CsPlaceCard]s Passport
+/// uses. No gold anywhere except stars and Keys on the cards themselves.
+///
+/// Stays: "Add stay" always adds — it no longer deletes every existing
+/// hotel first ("Change"), which silently threw away stays a user had
+/// planned through the venue's own Plan sheet. Each stay is removed on its
+/// own, and its dates edited through its long-press sheet.
+///
+/// Pickers are scoped to the trip's own country (`country_code`, never a
+/// name); see showHotelPickerSheet/showRestaurantPickerSheet.
 class TripDetailScreen extends StatefulWidget {
   final PlannedTrip trip;
   const TripDetailScreen({super.key, required this.trip});
@@ -62,6 +75,11 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   List<ResolvedPlannedVenue> _venues = [];
   List<Event> _matchingEvents = [];
 
+  // The trip's country, resolved from its code for display ("🇫🇷 France")
+  // — null until loaded, or if the lookup fails, in which case the header
+  // and pickers fall back to the bare code rather than failing the screen.
+  VenueCountry? _country;
+
   @override
   void initState() {
     super.initState();
@@ -76,12 +94,15 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
       // eventsMatchingTrip) — the user never has to manually attach an
       // event to a trip for it to show up here.
       final eventsFuture = _eventsRepo.loadEventsForCountry(_trip.countryCode);
+      final countryFuture = _resolveCountry(_trip.countryCode);
       final venues = await venuesFuture;
       final events = await eventsFuture;
+      final country = await countryFuture;
       if (!mounted) return;
       setState(() {
         _venues = venues.where((v) => v.plan.tripId == _trip.id).toList();
         _matchingEvents = eventsMatchingTrip(events, _trip);
+        _country = country;
         _loading = false;
       });
     } catch (_) {
@@ -90,19 +111,50 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     }
   }
 
-  void _showSnack(String message, {bool isError = false}) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          message,
-          style: GoogleFonts.inter(
-            color: AppColors.textPrimary,
-          ),
+  Future<VenueCountry?> _resolveCountry(String code) async {
+    try {
+      final countries = await _repo.loadAllCountries();
+      for (final c in countries) {
+        if (c.code.toUpperCase() == code.toUpperCase()) return c;
+      }
+    } catch (_) {
+      // Display-only — never a reason to fail the trip itself.
+    }
+    return null;
+  }
+
+  String get _destinationLabel {
+    final country = _country;
+    if (country == null) return _trip.countryCode.toUpperCase();
+    return country.flag.isEmpty
+        ? country.name
+        : '${country.flag} ${country.name}';
+  }
+
+  void _showSnack(String message, {bool isError = false}) =>
+      showTripSnackBar(context, message, isError: isError);
+
+  Future<void> _showTripActions() async {
+    final action = await showTripActionSheet<String>(
+      context,
+      title: _trip.title,
+      actions: const [
+        TripSheetAction(
+          value: 'edit',
+          label: 'Edit trip',
+          icon: Icons.edit_outlined,
         ),
-        backgroundColor: isError ? AppColors.error : AppColors.gold,
-        duration: const Duration(seconds: 2),
-      ),
+        TripSheetAction(
+          value: 'delete',
+          label: 'Delete trip',
+          icon: Icons.delete_outline_rounded,
+          destructive: true,
+        ),
+      ],
     );
+    if (!mounted) return;
+    if (action == 'edit') await _editTrip();
+    if (action == 'delete') await _deleteTrip();
   }
 
   Future<void> _editTrip() async {
@@ -125,52 +177,17 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   }
 
   Future<void> _deleteTrip() async {
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: AppColors.brandGreenLight,
-        title: Text(
-          'Delete this trip?',
-          style: GoogleFonts.cormorantGaramond(
-            color: AppColors.textOnDark,
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        content: Text(
-          _venues.isEmpty
-              ? 'This will permanently remove the trip.'
-              : 'This will permanently remove the trip. Your ${_venues.length} '
-                    'planned ${_venues.length == 1 ? 'venue' : 'venues'} will '
-                    'NOT be deleted — they\'ll just no longer belong to a trip.',
-          style: GoogleFonts.inter(
-            color: AppColors.secondaryOnDark,
-            fontSize: 14,
-            height: 1.5,
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: Text(
-              'Cancel',
-              style: GoogleFonts.inter(color: AppColors.secondaryOnDark),
-            ),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: Text(
-              'Delete trip',
-              style: GoogleFonts.inter(
-                color: AppColors.error,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      ),
+    final confirmed = await showTripConfirmDialog(
+      context,
+      title: 'Delete this trip?',
+      message: _venues.isEmpty
+          ? 'This will permanently remove the trip.'
+          : 'This will permanently remove the trip. Your ${_venues.length} '
+                'planned ${_venues.length == 1 ? 'venue' : 'venues'} will '
+                'not be deleted — they\'ll just no longer belong to a trip.',
+      confirmLabel: 'Delete trip',
     );
-    if (confirmed != true) return;
+    if (!confirmed) return;
     try {
       await _repo.deleteTrip(userId: _userId, tripId: _trip.id);
       if (!mounted) return;
@@ -220,23 +237,21 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     if (changed) _load();
   }
 
-  // "Change hotel" replaces rather than edits in place: planned_venues has
-  // no column for which venue a row addresses other than entity_id itself,
-  // and there is no update-entity_id method (see PlannedTripsRepository) —
-  // editing a plan only ever changes its dates/notes/status, never which
-  // venue it points to. Swapping hotels is therefore delete-old +
-  // create-new, both against the same normalized entity_id/trip_id shape
-  // Create Trip's own hotel picker writes.
-  Future<void> _addOrChangeHotel(List<ResolvedPlannedVenue> hotels) async {
-    final picked = await showHotelPickerSheet(context, repo: _hotelRepo);
+  // A stay defaults to the trip's own dates; its own check-in/check-out
+  // are edited afterwards through the long-press "Edit plan" sheet.
+  Future<void> _addHotel(List<ResolvedPlannedVenue> hotels) async {
+    final picked = await showHotelPickerSheet(
+      context,
+      repo: _hotelRepo,
+      countryCode: _trip.countryCode,
+      destinationLabel: _destinationLabel,
+      excludeIds: {
+        for (final h in hotels)
+          if (h.venue case HotelVenue(:final hotel)) hotel.id,
+      },
+    );
     if (picked == null) return;
     try {
-      for (final existing in hotels) {
-        await _repo.deletePlannedVenue(
-          userId: _userId,
-          plannedVenueId: existing.plan.id,
-        );
-      }
       await _repo.createPlannedVenue(
         userId: _userId,
         entityType: 'hotel',
@@ -248,10 +263,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
       _load();
     } catch (_) {
       if (!mounted) return;
-      _showSnack(
-        'Could not update the hotel. Please try again.',
-        isError: true,
-      );
+      _showSnack('Could not add that hotel. Please try again.', isError: true);
     }
   }
 
@@ -259,6 +271,8 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     final picked = await showRestaurantPickerSheet(
       context,
       repo: _restaurantRepo,
+      countryCode: _trip.countryCode,
+      destinationLabel: _destinationLabel,
       excludeIds: {
         for (final r in restaurants)
           if (r.venue case RestaurantVenue(:final restaurant)) restaurant.id,
@@ -285,49 +299,15 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
 
   Future<void> _removeVenue(ResolvedPlannedVenue item) async {
     final isHotel = item.venue is HotelVenue;
-    final confirmed = await showDialog<bool>(
-      context: context,
-      builder: (context) => AlertDialog(
-        backgroundColor: AppColors.brandGreenLight,
-        title: Text(
-          isHotel ? 'Remove this hotel?' : 'Remove this restaurant?',
-          style: GoogleFonts.cormorantGaramond(
-            color: AppColors.textOnDark,
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        content: Text(
+    final confirmed = await showTripConfirmDialog(
+      context,
+      title: isHotel ? 'Remove this stay?' : 'Remove this restaurant?',
+      message:
           'This only removes it from the trip — nothing is deleted from '
           'the catalogue.',
-          style: GoogleFonts.inter(
-            color: AppColors.secondaryOnDark,
-            fontSize: 14,
-            height: 1.5,
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context, false),
-            child: Text(
-              'Cancel',
-              style: GoogleFonts.inter(color: AppColors.secondaryOnDark),
-            ),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context, true),
-            child: Text(
-              'Remove',
-              style: GoogleFonts.inter(
-                color: AppColors.error,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ),
-        ],
-      ),
+      confirmLabel: 'Remove',
     );
-    if (confirmed != true) return;
+    if (!confirmed) return;
     try {
       await _repo.deletePlannedVenue(
         userId: _userId,
@@ -346,8 +326,10 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
         .where((v) => v.venue is RestaurantVenue)
         .toList();
     final hotels = _venues.where((v) => v.venue is HotelVenue).toList();
-    final hasCity = _trip.city != null && _trip.city!.isNotEmpty;
-    final hasNotes = _trip.notes != null && _trip.notes!.isNotEmpty;
+    final city = _trip.city?.trim();
+    final hasCity = city != null && city.isNotEmpty;
+    final hasNotes = _trip.notes != null && _trip.notes!.trim().isNotEmpty;
+    final startLabel = tripStartLabel(_trip.startDate);
 
     return Scaffold(
       backgroundColor: AppColors.deepGreen,
@@ -360,114 +342,16 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                 CsSpacing.base,
                 CsSpacing.sm,
                 CsSpacing.base,
-                CsSpacing.xl,
+                0,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const EditorialBackButton(),
-                      PopupMenuButton<String>(
-                        tooltip: 'Trip actions',
-                        color: AppColors.brandGreenLight,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(CsRadius.medium),
-                        ),
-                        icon: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: Colors.black.withValues(alpha: 0.24),
-                            shape: BoxShape.circle,
-                          ),
-                          child: const Icon(
-                            Icons.more_horiz_rounded,
-                            color: AppColors.textOnDark,
-                            size: 18,
-                          ),
-                        ),
-                        onSelected: (value) {
-                          if (value == 'edit') _editTrip();
-                          if (value == 'delete') _deleteTrip();
-                        },
-                        itemBuilder: (context) => [
-                          PopupMenuItem(
-                            value: 'edit',
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.edit_outlined,
-                                  color: AppColors.textOnDark,
-                                  size: 18,
-                                ),
-                                const SizedBox(width: CsSpacing.sm),
-                                Text(
-                                  'Edit trip',
-                                  style: GoogleFonts.inter(
-                                    color: AppColors.textOnDark,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          PopupMenuItem(
-                            value: 'delete',
-                            child: Row(
-                              children: [
-                                const Icon(
-                                  Icons.delete_outline_rounded,
-                                  color: AppColors.error,
-                                  size: 18,
-                                ),
-                                const SizedBox(width: CsSpacing.sm),
-                                Text(
-                                  'Delete trip',
-                                  style: GoogleFonts.inter(
-                                    color: AppColors.error,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: CsSpacing.xl),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: CsSpacing.sm,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const TripSectionLabel('YOUR TRIP'),
-                        const SizedBox(height: CsSpacing.xs),
-                        Text(
-                          _trip.title,
-                          style: CsTypography.screenTitle.copyWith(
-                            color: AppColors.textOnDark,
-                          ),
-                        ),
-                        const SizedBox(height: CsSpacing.sm),
-                        Text(
-                          formatTripDateRange(_trip),
-                          style: CsTypography.metadata.copyWith(
-                            color: AppColors.secondaryOnDark,
-                          ),
-                        ),
-                        if (hasCity) ...[
-                          const SizedBox(height: 2),
-                          Text(
-                            _trip.city!,
-                            style: CsTypography.metadata.copyWith(
-                              color: AppColors.secondaryOnDark,
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
+                  const EditorialBackButton(),
+                  EditorialBackButton(
+                    icon: Icons.more_horiz_rounded,
+                    semanticLabel: 'Trip actions',
+                    onTap: _showTripActions,
                   ),
                 ],
               ),
@@ -477,194 +361,218 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
             child: _loading
                 ? const Center(
                     child: CircularProgressIndicator(
-                      color: AppColors.gold,
+                      color: AppColors.textOnDark,
                       strokeWidth: 1.5,
                     ),
                   )
-                : ListView(
-                    padding: const EdgeInsets.fromLTRB(
-                      CsSpacing.pageHorizontal,
-                      0,
-                      CsSpacing.pageHorizontal,
-                      CsSpacing.section,
-                    ),
-                    children: [
-                      // Kept visually quiet when absent (omitted outright)
-                      // rather than showing an empty-state block — a trip
-                      // with no notes shouldn't look "broken".
-                      if (hasNotes) ...[
-                        const TripSectionLabel('NOTES'),
-                        const SizedBox(height: CsSpacing.sm),
-                        Text(
-                          _trip.notes!,
-                          style: CsTypography.body.copyWith(
-                            color: AppColors.textOnDark,
+                : RefreshIndicator(
+                    color: AppColors.textOnDark,
+                    backgroundColor: AppColors.greenSurface,
+                    onRefresh: _load,
+                    child: ListView(
+                      padding: const EdgeInsets.fromLTRB(
+                        CsSpacing.pageHorizontal,
+                        CsSpacing.lg,
+                        CsSpacing.pageHorizontal,
+                        CsSpacing.section,
+                      ),
+                      children: [
+                        _TripHeader(
+                          eyebrow: startLabel ?? 'YOUR TRIP',
+                          title: _trip.title,
+                          destination: hasCity
+                              ? '$_destinationLabel · $city'
+                              : _destinationLabel,
+                          dates: formatTripDateRange(_trip),
+                          counts: tripVenueCountsLine(
+                            restaurantCount: restaurants.length,
+                            hotelCount: hotels.length,
                           ),
                         ),
-                        const SizedBox(height: CsSpacing.xxl),
+
+                        // Omitted outright when absent rather than an
+                        // empty-state block — a trip with no notes
+                        // shouldn't look "broken".
+                        if (hasNotes) ...[
+                          const SizedBox(height: CsSpacing.xl),
+                          _TripNotes(notes: _trip.notes!.trim()),
+                        ],
+
+                        const SizedBox(height: CsSpacing.section),
+                        TripSectionHeader(
+                          title: 'STAY',
+                          subtitle: hotels.isEmpty
+                              ? 'Where you\'ll rest.'
+                              : hotels.length == 1
+                              ? '1 stay'
+                              : '${hotels.length} stays',
+                          trailing: TripTextAction(
+                            label: 'Add stay',
+                            onTap: () => _addHotel(hotels),
+                          ),
+                        ),
+                        const SizedBox(height: CsSpacing.base),
+                        if (hotels.isEmpty)
+                          const TripEmptyLine(
+                            'No hotel planned for this trip yet.',
+                          )
+                        else
+                          for (var i = 0; i < hotels.length; i++) ...[
+                            if (i > 0) const SizedBox(height: CsSpacing.md),
+                            _venueCard(hotels[i]),
+                          ],
+
+                        const SizedBox(height: CsSpacing.section),
+                        TripSectionHeader(
+                          title: 'DINING',
+                          subtitle: restaurants.isEmpty
+                              ? 'Tables worth the journey.'
+                              : restaurants.length == 1
+                              ? '1 restaurant'
+                              : '${restaurants.length} restaurants',
+                          trailing: TripTextAction(
+                            label: 'Add',
+                            onTap: () => _addRestaurant(restaurants),
+                          ),
+                        ),
+                        const SizedBox(height: CsSpacing.base),
+                        if (restaurants.isEmpty)
+                          const TripEmptyLine(
+                            'No restaurants planned for this trip yet.',
+                          )
+                        else
+                          for (var i = 0; i < restaurants.length; i++) ...[
+                            if (i > 0) const SizedBox(height: CsSpacing.md),
+                            _venueCard(restaurants[i]),
+                          ],
+
+                        // Omitted outright when empty rather than an
+                        // empty-state block — a trip with no matching
+                        // events shouldn't look "broken".
+                        if (_matchingEvents.isNotEmpty) ...[
+                          const SizedBox(height: CsSpacing.section),
+                          const TripSectionHeader(
+                            title: "WHAT'S ON",
+                            subtitle: 'Happening while you\'re there.',
+                          ),
+                          const SizedBox(height: CsSpacing.base),
+                          for (var i = 0; i < _matchingEvents.length; i++) ...[
+                            if (i > 0) const SizedBox(height: CsSpacing.md),
+                            EventCard(
+                              event: _matchingEvents[i],
+                              onTap: () => _openEvent(_matchingEvents[i]),
+                            ),
+                          ],
+                        ],
                       ],
-
-                      _SectionHeaderRow(
-                        label:
-                            'STAY'
-                            '${hotels.isNotEmpty ? ' (${hotels.length})' : ''}',
-                        actionLabel: hotels.isEmpty ? 'Add' : 'Change',
-                        onAction: () => _addOrChangeHotel(hotels),
-                      ),
-                      const SizedBox(height: CsSpacing.md),
-                      if (hotels.isEmpty)
-                        _EmptySlot(
-                          message: 'No hotel planned for this trip yet.',
-                        )
-                      else
-                        for (var i = 0; i < hotels.length; i++) ...[
-                          if (i > 0) const SizedBox(height: CsSpacing.sm),
-                          _RemovableVenueRow(
-                            item: hotels[i],
-                            onTap: () => _openVenue(hotels[i]),
-                            onLongPress: () => _showVenueActions(hotels[i]),
-                            onRemove: () => _removeVenue(hotels[i]),
-                          ),
-                        ],
-                      const SizedBox(height: CsSpacing.xxl),
-
-                      _SectionHeaderRow(
-                        label:
-                            'DINING'
-                            '${restaurants.isNotEmpty ? ' (${restaurants.length})' : ''}',
-                        actionLabel: 'Add',
-                        onAction: () => _addRestaurant(restaurants),
-                      ),
-                      const SizedBox(height: CsSpacing.md),
-                      if (restaurants.isEmpty)
-                        _EmptySlot(
-                          message: 'No restaurants planned for this trip yet.',
-                        )
-                      else
-                        for (var i = 0; i < restaurants.length; i++) ...[
-                          if (i > 0) const SizedBox(height: CsSpacing.sm),
-                          _RemovableVenueRow(
-                            item: restaurants[i],
-                            onTap: () => _openVenue(restaurants[i]),
-                            onLongPress: () =>
-                                _showVenueActions(restaurants[i]),
-                            onRemove: () => _removeVenue(restaurants[i]),
-                          ),
-                        ],
-
-                      // Kept visually quiet when empty (omitted outright,
-                      // per the task's explicit instruction) rather than
-                      // showing an empty-state block — a trip with no
-                      // matching events shouldn't look "broken".
-                      if (_matchingEvents.isNotEmpty) ...[
-                        const SizedBox(height: CsSpacing.xxl),
-                        const TripSectionLabel("WHAT'S ON"),
-                        const SizedBox(height: CsSpacing.md),
-                        for (var i = 0; i < _matchingEvents.length; i++) ...[
-                          if (i > 0) const SizedBox(height: CsSpacing.sm),
-                          EventCard(
-                            event: _matchingEvents[i],
-                            onTap: () => _openEvent(_matchingEvents[i]),
-                          ),
-                        ],
-                      ],
-                    ],
+                    ),
                   ),
           ),
         ],
       ),
     );
   }
+
+  // A planned venue card plus an always-visible "remove from trip" glyph
+  // in the card's own top-right slot — long-press still opens the fuller
+  // edit/cancel/delete sheet, but removing never depends on discovering
+  // that gesture first.
+  Widget _venueCard(ResolvedPlannedVenue item) => PlannedVenueRow(
+    item: item,
+    onTap: () => _openVenue(item),
+    onLongPress: () => _showVenueActions(item),
+    trailing: _RemoveGlyph(onTap: () => _removeVenue(item)),
+  );
 }
 
-class _EmptySlot extends StatelessWidget {
-  final String message;
-  const _EmptySlot({required this.message});
+class _TripHeader extends StatelessWidget {
+  final String eyebrow;
+  final String title;
+  final String destination;
+  final String dates;
+  final String counts;
+
+  const _TripHeader({
+    required this.eyebrow,
+    required this.title,
+    required this.destination,
+    required this.dates,
+    required this.counts,
+  });
 
   @override
-  Widget build(BuildContext context) => Padding(
-    padding: const EdgeInsets.symmetric(vertical: 4),
-    child: Text(
-      message,
-      style: CsTypography.body.copyWith(
-        color: AppColors.secondaryOnDark,
-        fontSize: 13,
+  Widget build(BuildContext context) => Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      TripSectionLabel(eyebrow),
+      const SizedBox(height: CsSpacing.sm),
+      Text(
+        title,
+        style: CsTypography.displayHero.copyWith(color: AppColors.textOnDark),
       ),
+      const SizedBox(height: CsSpacing.md),
+      Text(
+        destination,
+        style: CsTypography.bodyMedium.copyWith(color: AppColors.textOnDark),
+      ),
+      const SizedBox(height: 2),
+      Text(
+        dates,
+        style: CsTypography.metadata.copyWith(color: AppColors.secondaryOnDark),
+      ),
+      const SizedBox(height: CsSpacing.base),
+      const Divider(height: 1, color: AppColors.hairlineOnGreen),
+      const SizedBox(height: CsSpacing.md),
+      Text(
+        counts,
+        style: CsTypography.metadata.copyWith(color: AppColors.secondaryOnDark),
+      ),
+    ],
+  );
+}
+
+/// The trip's own notes — set off by a thin ivory rule on the left, like a
+/// pull quote, rather than boxed in a card.
+class _TripNotes extends StatelessWidget {
+  final String notes;
+  const _TripNotes({required this.notes});
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.only(left: CsSpacing.base),
+    decoration: const BoxDecoration(
+      border: Border(
+        left: BorderSide(color: AppColors.subtleBorderDark, width: 1),
+      ),
+    ),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const TripSectionLabel('NOTES'),
+        const SizedBox(height: CsSpacing.xs),
+        Text(
+          notes,
+          style: CsTypography.body.copyWith(color: AppColors.textOnDark),
+        ),
+      ],
     ),
   );
 }
 
-/// A section label ("DINING (2)") plus an explicit "Add"/"Change" action —
-/// the incremental-editing entry point this task adds, so building a
-/// trip's itinerary after creation is exactly as available as doing it
-/// during creation (see Create Trip's own hotel/restaurant pickers, which
-/// write to the same planned_venues shape).
-class _SectionHeaderRow extends StatelessWidget {
-  final String label;
-  final String actionLabel;
-  final VoidCallback onAction;
-  const _SectionHeaderRow({
-    required this.label,
-    required this.actionLabel,
-    required this.onAction,
-  });
-
-  @override
-  Widget build(BuildContext context) => Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      TripSectionLabel(label),
-      TextButton.icon(
-        onPressed: onAction,
-        icon: const Icon(Icons.add_rounded, size: 16),
-        label: Text(actionLabel, style: GoogleFonts.inter(fontSize: 13)),
-        style: TextButton.styleFrom(
-          foregroundColor: AppColors.gold,
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          minimumSize: Size.zero,
-          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        ),
-      ),
-    ],
-  );
-}
-
-/// [PlannedVenueRow] plus an explicit, always-visible remove action —
-/// long-press (see PlannedVenueRow's own "edit/cancel behind onLongPress"
-/// design) still opens the fuller action sheet, but "Remove restaurant"/
-/// "remove hotel" no longer requires discovering that gesture first.
-class _RemovableVenueRow extends StatelessWidget {
-  final ResolvedPlannedVenue item;
+class _RemoveGlyph extends StatelessWidget {
   final VoidCallback onTap;
-  final VoidCallback onLongPress;
-  final VoidCallback onRemove;
-  const _RemovableVenueRow({
-    required this.item,
-    required this.onTap,
-    required this.onLongPress,
-    required this.onRemove,
-  });
+  const _RemoveGlyph({required this.onTap});
 
   @override
-  Widget build(BuildContext context) => Row(
-    crossAxisAlignment: CrossAxisAlignment.center,
-    children: [
-      Expanded(
-        child: PlannedVenueRow(
-          item: item,
-          onTap: onTap,
-          onLongPress: onLongPress,
-        ),
-      ),
-      IconButton(
-        onPressed: onRemove,
-        icon: const Icon(
-          Icons.remove_circle_outline_rounded,
-          color: AppColors.secondaryOnDark,
-          size: 20,
-        ),
-        tooltip: 'Remove',
-      ),
-    ],
+  Widget build(BuildContext context) => SizedBox(
+    width: 44,
+    height: 44,
+    child: IconButton(
+      onPressed: onTap,
+      padding: EdgeInsets.zero,
+      constraints: const BoxConstraints.tightFor(width: 44, height: 44),
+      tooltip: 'Remove from trip',
+      icon: const Icon(Icons.close_rounded, color: AppColors.taupe, size: 18),
+    ),
   );
 }
