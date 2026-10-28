@@ -130,8 +130,11 @@ The format follows Keep a Changelog.
   nothing; a fresh replay of all 90 files applies cleanly and is
   identical. Through the storage API afterwards, overwrite, `image/heif`
   and an 11 MiB upload are refused, normal uploads, reads and deletes
-  work, and an 11 MiB object stored beforehand stays readable. **Not yet
-  applied to production.** A read-only check of production's 11 existing
+  work, and an 11 MiB object stored beforehand stays readable. **Applied
+  to production 2026-10-28** with plain `supabase db push --linked`
+  (ledger 90/90). Afterwards production's `visit-photos` bucket and all
+  12 `storage.objects` policies hash-identical to a fresh replay's, and
+  all 11 existing objects are still there. Beforehand, a read-only check of production's 11 existing
   `visit-photos` objects (2026-10-28) found none over 10 MiB and none of
   type heif — largest 912,712 bytes, only `image/jpeg` recorded — so the
   looser dashboard limits were never actually used. Two of the 11 carry
