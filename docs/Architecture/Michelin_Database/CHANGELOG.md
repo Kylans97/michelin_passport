@@ -6,6 +6,45 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — Guide source links applied: World's 50 Best URLs, Gault&Millau URLs and toques (QA-244–QA-248)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, from branch `feature/guide-sources` (main merged in first) |
+| Migration | `20261021120000_add_worlds_50_best_urls`: `worlds_50_best_url` (nullable, UNIQUE) on `restaurants` and `hotels`, appended to `restaurants_full`/`hotels_full`. Ledger 104 → 105, local and remote in agreement |
+| Data file | `guide_source_links/apply_guide_source_links.sql`: one transaction, every step guarded by its expected row count; none aborted |
+
+**Before.** Read-only checks against production first:
+
+- Only this migration was pending.
+- Every code in the data still named the venue it was researched for (113 + 123 + 7 + 22, none changed or missing).
+- Each step's `WHERE` clause matched exactly the expected rows (8 / 7 / 21 / 113 / 123).
+
+**World's 50 Best.** Source: the official site, now **the50.com** (`theworlds50best.com` redirects there), via its own sitemap. Method in `guide_source_links/README.md`.
+
+- **Proof:** a page was accepted only with the right type (Restaurant or Hotel) and country, plus a match that doesn't depend on the name: one of our own ranks, our phone, our own website, or our street and house number.
+- **Applied:** 113 of 143 restaurants and 123 of 134 hotels now carry `worlds_50_best_url`.
+- **Open:** 30 restaurants and 11 hotels are left NULL (QA-248).
+
+**Gault&Millau.**
+
+- **QA-244:** the 8 Austrian `"not found"` placeholders are NULL. Then 7 real gaultmillau.at pages were filled, each verified on title (city, Hauben, score) and on street and postcode; Obauer stays NULL. `gault_millau_url` now holds 40 real URLs and no placeholders.
+- **QA-245:** 21 Belgian and Dutch toque counts were filled from each restaurant's own page, only where the page score equals ours. `toque_count` went from 13 to 34 rows.
+
+**After.** Checked directly:
+
+- **Columns:** 113 / 123 URLs, and `restaurants_full` serves all 113.
+- **De Librije:** reads 19.5, 5 toques, with all three guide links.
+- **Views:** both keep `security_invoker`, and `anon` can read the new column, as with every catalogue column.
+
+**Open, not changed:**
+- **QA-246:** 9 World's 50 Best rank-years on verified profiles are missing from `worlds_50_best`, so Award History lacks them. They need confirming against each year's official list first.
+- **QA-247:** profile rank lines contradict the official lists in three places, and our data matches the lists. Le Calandre 2023 is unchecked.
+
+**Near-miss.** QA ids: this branch first numbered its issues QA-232 to QA-236, which main had already used for the Spanish and Belgian work. The clash was caught at the merge and renumbered to QA-244 to QA-248 before anything was applied.
+
+---
+
 # 2026-10-28 — Catalogue data applied: MICHELIN Spain 2026 and Belgium & Luxembourg 2026 (QA-232–QA-243)
 
 | | |

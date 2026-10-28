@@ -24,11 +24,19 @@ import '../theme/cs_typography.dart';
 /// Hotel's own day-phone-data-lands change would only touch its call site.
 /// Existing URL-generation logic is untouched — this widget only ever
 /// receives already-resolved callbacks.
+///
+/// [onOpenGaultMillau] is the guide-page counterpart of [onOpenMichelin]:
+/// the restaurant's own Gault&Millau page, wired only when its stored
+/// `gault_millau_url` is a real URL (see GaultMillauAward.profileUrl).
+/// [onOpenWorlds50Best] is the same for the venue's World's 50 Best page
+/// (`worlds_50_best_url`), on Restaurant and Hotel Detail alike.
 class VenueUtilityActions extends StatelessWidget {
   final VoidCallback onOpenMaps;
   final VoidCallback? onOpenWebsite;
   final VoidCallback? onCall;
   final VoidCallback? onOpenMichelin;
+  final VoidCallback? onOpenGaultMillau;
+  final VoidCallback? onOpenWorlds50Best;
 
   const VenueUtilityActions({
     super.key,
@@ -36,6 +44,8 @@ class VenueUtilityActions extends StatelessWidget {
     this.onOpenWebsite,
     this.onCall,
     this.onOpenMichelin,
+    this.onOpenGaultMillau,
+    this.onOpenWorlds50Best,
   });
 
   @override
@@ -73,6 +83,22 @@ class VenueUtilityActions extends StatelessWidget {
               onTap: onOpenMichelin!,
             ),
           ),
+        if (onOpenWorlds50Best != null)
+          Expanded(
+            child: _UtilityAction(
+              icon: Icons.emoji_events_outlined,
+              label: '50 Best',
+              onTap: onOpenWorlds50Best!,
+            ),
+          ),
+        if (onOpenGaultMillau != null)
+          Expanded(
+            child: _UtilityAction(
+              icon: Icons.auto_stories_rounded,
+              label: 'Gault&Millau',
+              onTap: onOpenGaultMillau!,
+            ),
+          ),
       ],
     );
   }
@@ -104,12 +130,17 @@ class _UtilityAction extends StatelessWidget {
           children: [
             Icon(icon, color: AppColors.forestGreen, size: 20),
             const SizedBox(height: CsSpacing.xs),
-            Text(
-              label,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: CsTypography.smallLabel.copyWith(
-                color: AppColors.forestGreen,
+            // Scales down rather than truncating: with all five actions on
+            // a 402pt phone, "Gault&Millau" otherwise reads "Gault&Mill…".
+            // Every shorter label keeps its full size.
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                label,
+                maxLines: 1,
+                style: CsTypography.smallLabel.copyWith(
+                  color: AppColors.forestGreen,
+                ),
               ),
             ),
           ],

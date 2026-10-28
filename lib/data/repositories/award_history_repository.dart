@@ -75,13 +75,14 @@ class AwardHistoryRepository {
     return result;
   }
 
-  /// A cheap existence check — two indexed `limit(1)` lookups run in
-  /// parallel, not a full history fetch — used only to decide whether
-  /// Restaurant Detail shows the "Award history" action at all. A
-  /// restaurant can have real historical rows (e.g. a past World's 50 Best
-  /// Hall of Fame induction) without any *current* award_history/
-  /// worlds_50_best_rank value, so this can't be derived from the
-  /// Restaurant model's own fields alone — see restaurant_detail_screen.dart.
+  /// A cheap existence check — three indexed `limit(1)` lookups run in
+  /// parallel (MICHELIN, World's 50 Best, Gault&Millau), not a full history
+  /// fetch — used only to decide whether Restaurant Detail shows the
+  /// "Award history" action at all. A restaurant can have real historical
+  /// rows (e.g. a past World's 50 Best Hall of Fame induction) without any
+  /// *current* award_history/worlds_50_best_rank value, so this can't be
+  /// derived from the Restaurant model's own fields alone — see
+  /// restaurant_detail_screen.dart.
   Future<bool> hasAnyHistory(String restaurantId) async {
     final michelinFuture = _client
         .from('award_history')
@@ -94,8 +95,17 @@ class AwardHistoryRepository {
         .select('id')
         .eq('restaurant_id', restaurantId)
         .limit(1);
-    final results = await Future.wait([michelinFuture, worlds50BestFuture]);
-    return (results[0] as List).isNotEmpty || (results[1] as List).isNotEmpty;
+    final gaultMillauFuture = _client
+        .from('gault_millau_awards')
+        .select('id')
+        .eq('restaurant_id', restaurantId)
+        .limit(1);
+    final results = await Future.wait([
+      michelinFuture,
+      worlds50BestFuture,
+      gaultMillauFuture,
+    ]);
+    return results.any((rows) => (rows as List).isNotEmpty);
   }
 
   /// Every recorded `worlds_50_best_hotels` row for one hotel (list_type

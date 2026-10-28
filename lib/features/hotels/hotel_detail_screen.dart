@@ -494,6 +494,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     final latestStay = _stays.isEmpty ? null : _stays.first;
     final hasMichelinLink = michelinUrl != null && michelinUrl.isNotEmpty;
     final hasWebsiteLink = websiteUrl != null && websiteUrl.isNotEmpty;
+    final worlds50BestUrl = (hotel.worlds50BestUrl?.isNotEmpty ?? false)
+        ? hotel.worlds50BestUrl!
+        : null;
     // See the identical note in restaurant_detail_screen.dart.
     final lifecycleState = resolveLifecycleState(
       status: hotel.status,
@@ -577,6 +580,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                     onOpenMichelin: hasMichelinLink
                         ? () => _openUrl(michelinUrl)
                         : null,
+                    onOpenWorlds50Best: worlds50BestUrl == null
+                        ? null
+                        : () => _openUrl(worlds50BestUrl),
                   ),
 
                   const SectionDivider(),

@@ -1,0 +1,9 @@
+restaurant_code,name,city,our_address,candidate_url,page_title,address_on_page,status,retrieved_on,note
+rest_0267,Döllerer,Golling an der Salzach,"Markt 56/A, 5440 Golling an der Salzach",https://www.gaultmillau.at/restaurant/dollerer,"Döllerer, Golling – 5 Hauben, 19/20 | Gault&Millau",True,verified,2026-10-28,
+rest_0275,Ikarus,Salzburg,"Wilhelm-Spazier-Straße 7A, 5020 Salzburg",https://www.gaultmillau.at/restaurant/ikarus-2,"Ikarus, Salzburg – 5 Hauben, 19/20 | Gault&Millau",True,verified,2026-10-28,
+rest_0282,Konstantin Filippou,Vienna,"Dominikanerbastei 17, 1010 Wien",https://www.gaultmillau.at/restaurant/konstantin-filippou-2,"Konstantin Filippou, Wien – 5 Hauben, 19/20 | Gault&Millau",True,verified,2026-10-28,
+rest_0283,Mraz & Sohn,Vienna,"Wallensteinstraße 59, 1200 Wien",https://www.gaultmillau.at/restaurant/mraz-sohn,"Mraz & Sohn, Wien – 4 Hauben, 18,5/20 | Gault&Millau",True,verified,2026-10-28,
+rest_0284,Silvio Nickol Gourmet Restaurant,Vienna,"Coburgbastei 4, 1010 Wien",https://www.gaultmillau.at/restaurant/silvio-nickol-gourmet-restaurant-2,"Silvio Nickol Gourmet Restaurant, Wien – 5 Hauben, 19/20 | Gault&Millau",True,verified,2026-10-28,
+rest_0269,Stüva,Ischgl,"Dorfstr. 73, 6561 Ischgl",https://www.gaultmillau.at/restaurant/stuva,"Stüva, Ischgl – 5 Hauben, 19/20 | Gault&Millau",True,verified,2026-10-28,"Page address ""Dorfstraße 73, 6561 Ischgl"" (schema.org PostalAddress) = ours ""Dorfstr. 73""; automatic check missed only the abbreviation. Checked by hand 2026-10-28."
+rest_0279,Taubenkobel,Schützen am Gebirge,"Hauptstraße 27/33, 7081 Schützen am Gebirge",https://www.gaultmillau.at/restaurant/taubenkobel,"Taubenkobel, Schützen am Gebirge – 4 Hauben, 18,5/20 | Gault&Millau",True,verified,2026-10-28,
+rest_0280,Obauer,Werfen,"Markt 46, 5450 Werfen",,,,no_candidate_in_sitemap,2026-10-28,"No Obauer page in gaultmillau.at providers.xml sitemap (2,239 URLs). Left NULL; not guessed."

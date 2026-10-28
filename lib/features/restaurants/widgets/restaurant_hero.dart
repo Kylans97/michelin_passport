@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../core/widgets/venue_detail_hero.dart';
+import '../../../models/gault_millau_award.dart';
 import '../../../models/published_venue_photo.dart';
+import '../../guides/widgets/guide_gault_millau_mark.dart';
 import '../../../models/restaurant.dart';
 
 class RestaurantHero extends StatelessWidget {
@@ -38,6 +40,13 @@ class RestaurantHero extends StatelessWidget {
   /// the Report action is unaffected.
   final bool isPreview;
 
+  /// The restaurant's latest Gault&Millau edition, loaded separately by
+  /// RestaurantDetailScreen (gault_millau_awards is its own table, never
+  /// folded onto restaurants_full). Null while loading or when the
+  /// restaurant has no Gault&Millau recognition — the badge is simply
+  /// absent, never "no award".
+  final GaultMillauAward? gaultMillauAward;
+
   const RestaurantHero({
     super.key,
     required this.restaurant,
@@ -50,6 +59,7 @@ class RestaurantHero extends StatelessWidget {
     this.followBusy = false,
     this.onTapFollow,
     this.isPreview = false,
+    this.gaultMillauAward,
   });
 
   @override
@@ -62,6 +72,9 @@ class RestaurantHero extends StatelessWidget {
     // stars/W50B/rank in BOTH the hero AND a full awards card below it).
     // Hall of Fame previously lived only in that now-removed card; the
     // capability survives, relocated here rather than silently dropped.
+    final gaultMillauText = gaultMillauAward == null
+        ? null
+        : formatGaultMillauDistinction(gaultMillauAward!);
     final secondaryBadges = <Widget>[
       if (restaurant.isHallOfFame)
         const VenueHeroBadge(
@@ -72,6 +85,11 @@ class RestaurantHero extends StatelessWidget {
         VenueHeroBadge(
           icon: Icons.emoji_events_rounded,
           label: "World's 50 Best · #${restaurant.worlds50BestRank}",
+        ),
+      if (gaultMillauText != null)
+        VenueHeroBadge(
+          icon: Icons.auto_stories_rounded,
+          label: 'Gault&Millau · $gaultMillauText',
         ),
       if (hasHotelBadge)
         VenueHeroBadge(icon: Icons.hotel_rounded, label: restaurant.hotelName!),
