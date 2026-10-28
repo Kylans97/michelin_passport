@@ -12,7 +12,7 @@ measured against the stored coordinates.
 | | Hotels | Restaurants |
 |---|---|---|
 | confirmed, in SQL Step 1 | 73 | 14 |
-| confirmed, Singita (SQL Step 2, after the W50B import) | 1 | — |
+| confirmed, Singita (SQL Step 3, after the W50B import) | 1 | — |
 | left out | 2 | 1 |
 
 Most confirmed rows are under 100 m with the right record type. Name
@@ -29,7 +29,8 @@ tracking tags, i.e. a listing the venue manages itself.
   site: 10 Church Street, "within the ramparts of Galle Fort". Google's pin
   and OSM's building outline agree on 6.0286, 80.2170; our stored point
   falls on a wine shop on Wakwella Road, outside the fort. Coordinate fix
-  prepared, commented out, in the SQL (needs a QA id first).
+  is Step 2 of the SQL (QA-209); once applied, record it in the
+  Michelin_Database CHANGELOG.
 - **hotel_693 Hotel Cipriani (130 m), hotel_727 Desa Potato Head (101 m),
   hotel_760 Jumeirah Marsa Al Arab (140 m)** — both points lie on the same
   property (Giudecca 10 compound; the Petitenget 51B complex, where ours is
@@ -47,11 +48,10 @@ tracking tags, i.e. a listing the venue manages itself.
   listing, but Google's pin sits at the clifftop restaurant (Sense on the
   Edge), 1.57 km from the beach. Our coordinates match OSM's hotel node on
   the bay and look right. Over the 500 m rule; offered commented out in the
-  SQL.
+  SQL (QA-211).
 - **hotel_704 Mandarin Oriental Qianmen** — mainland China, skipped by rule.
 - **rest_0781 Graphite by Peter Gast** — no Google business record (hidden
-  door speakeasy). MICHELIN gives Paardenstraat 11; we hold 15III — worth a
-  QA entry.
+  door speakeasy). MICHELIN gives Paardenstraat 11; we hold 15III (QA-210).
 
 ## Pattern
 
@@ -64,11 +64,17 @@ by Google as one hotel. Round-number stored coordinates (Amangalla's
 
 ## Tested
 
-Run against a scratch Postgres 16 with `hotels`/`restaurants` stubs seeded
-from the export: fills 73 + 14; a rerun is a no-op; an ID held by another row
-aborts with nothing applied; an unknown code aborts with nothing applied; an
-existing different ID is kept and reported; Step 2 aborts until hotel_801
-exists and fills it once it does. Not tested against the real schema
-(triggers, RLS) — the statements touch only `google_place_id`. Optional
-block (b) was run and fills hotel_744; optional block (a) was not run (no
-PostGIS in the scratch database).
+Run against a scratch Postgres 16 + PostGIS with `hotels`/`restaurants`
+stubs seeded from the export (hotels with their real stored coordinates):
+
+- Step 1 fills 73 + 14; a rerun is a no-op.
+- An ID held by another row, or an unknown code, aborts with nothing applied.
+- A row that already holds a different ID is kept and reported (NOTICE).
+- Step 2 moves Amangalla to the corrected point; on a rerun it skips with a
+  NOTICE, and it aborts if the point was moved elsewhere in the meantime.
+- Step 3 aborts until hotel_801 exists; after the W50B import, rerunning
+  the whole file fills Singita and leaves everything else unchanged.
+- The commented-out Zighy Bay statement fills hotel_744 when run.
+
+Not tested against the real schema (triggers, RLS, views). The statements
+touch only `google_place_id` and, for hotel_748, `location`.

@@ -8,16 +8,16 @@
 -- distance measured against the stored coordinates). Summary: RESULTS.md.
 --
 -- Only `confirmed` rows: 73 hotels + 14 restaurants in Step 1, Singita
--- in Step 2. Most are under 100 m with the right record type. Exceptions,
+-- in Step 3. Most are under 100 m with the right record type. Exceptions,
 -- each double-checked against the venue's own site and OpenStreetMap and
 -- explained per row in placeid_results.csv:
 --   hotel_693 Cipriani (130 m), hotel_727 Desa Potato Head (101 m),
 --   hotel_760 Jumeirah Marsa Al Arab (140 m) -- both points on the same
---     property; hotel_748 Amangalla (496 m) -- OUR coordinates are wrong;
+--     property; hotel_748 Amangalla (496 m) -- OUR coordinates are wrong, fixed in Step 2;
 --   rest_0784/0789/0790/0791 -- Google's only record is a combined
 --     hotel-restaurant listing; accepted on the owner's instruction.
 -- Left out: hotel_704 (mainland China), rest_0781 Graphite (no Google
--- record), hotel_744 Six Senses Zighy Bay (Google pin 1.57 km off; see the
+-- record; QA-210), hotel_744 Six Senses Zighy Bay (Google pin 1.57 km off; see the
 -- commented-out optional block at the end).
 --
 -- Fills only empty values (`google_place_id is null`) -- never overwrites;
@@ -26,8 +26,9 @@
 -- the same table (google_place_id is UNIQUE per table). Cross-table sharing
 -- with a restaurant row is allowed by design and not checked.
 --
--- Step 1 and Step 2 are separate transactions. Step 2 (Singita) aborts by
--- design until hotel_801 exists in production.
+-- Steps 1-3 are separate transactions. Step 2 corrects Amangalla's stored
+-- coordinates (QA-209). Step 3 (Singita) aborts by design until hotel_801
+-- exists in production, so it is last.
 
 -- ============================================================
 -- Step 1
@@ -174,7 +175,39 @@ update public.restaurants t set google_place_id = p.place_id
 commit;
 
 -- ============================================================
--- Step 2 -- run only after prepared_w50b_new_venues_import.sql
+-- Step 2 -- Amangalla coordinate correction (QA-209)
+-- ============================================================
+-- Our stored point (6.03306, 80.21667) is outside Galle Fort, on Wakwella
+-- Road; the official address is 10 Church Street, "within the ramparts of
+-- Galle Fort" (aman.com). Google's pin (6.028619, 80.217041) and
+-- OpenStreetMap's building outline (way 136845382, centre 6.0286114,
+-- 80.2170010) agree; the OSM value is used. Moves the point ~496 m.
+-- Skips if already corrected (safe to re-run the file); otherwise aborts
+-- unless exactly one row still holds the old point, so it can never
+-- overwrite a different, later correction.
+begin;
+
+do $$
+declare n int;
+begin
+  if exists (select 1 from public.hotels
+              where hotel_code = 'hotel_748'
+                and ST_DWithin(location, ST_SetSRID(ST_MakePoint(80.2170010, 6.0286114), 4326)::geography, 5)) then
+    raise notice 'hotel_748: already at the corrected point, skipped';
+    return;
+  end if;
+  update public.hotels
+     set location = ST_SetSRID(ST_MakePoint(80.2170010, 6.0286114), 4326)::geography
+   where hotel_code = 'hotel_748'
+     and ST_DWithin(location, ST_SetSRID(ST_MakePoint(80.21667, 6.03306), 4326)::geography, 5);
+  get diagnostics n = row_count;
+  if n <> 1 then raise exception 'hotel_748: expected 1 row at the old point, found %', n; end if;
+end $$;
+
+commit;
+
+-- ============================================================
+-- Step 3 -- run only after prepared_w50b_new_venues_import.sql
 -- ============================================================
 begin;
 
@@ -207,21 +240,10 @@ update public.hotels t set google_place_id = p.place_id
 commit;
 
 -- ============================================================
--- OPTIONAL -- commented out; each needs an explicit decision
+-- OPTIONAL -- commented out; needs an explicit decision (QA-211)
 -- ============================================================
 --
--- (a) Amangalla coordinate correction. Our stored point (6.03306, 80.21667)
---     is outside Galle Fort, on Wakwella Road; the official address is
---     10 Church Street, inside the fort ramparts. Google's pin and
---     OpenStreetMap's building outline agree on 6.0286114, 80.2170010
---     (OSM way 136845382). A data correction: log it in the Michelin_Database
---     CHANGELOG with a QA id before running.
---
--- update public.hotels
---    set location = ST_SetSRID(ST_MakePoint(80.2170010, 6.0286114), 4326)::geography
---  where hotel_code = 'hotel_748';
---
--- (b) Six Senses Zighy Bay Place ID. The record is the resort's own listing
+-- Six Senses Zighy Bay Place ID. The record is the resort's own listing
 --     (links to sixsenses.com, the only candidate) but Google's pin sits at
 --     the clifftop restaurant, 1,571 m from our (correct-looking) beach
 --     coordinates -- past the 500 m rule. Run only if you accept the record
