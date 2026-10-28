@@ -1,0 +1,481 @@
+code,name,city,prod_stars,michelin_2026,new_in_2026,match,michelin_name,michelin_url_now,action
+rest_0008,Anne,Paris,1,1,,url,Anne,https://guide.michelin.com/en/ile-de-france/paris/restaurant/anne,michelin_url corrected
+rest_0060,Le Gabriel - La Reserve Paris,Paris,3,3,,coords 124m + name,Le Gabriel - La Réserve Paris,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-gabriel476630,michelin_url corrected
+rest_0300,Table by Bruno Verjus,Paris,2,2,,coords 22m + name,Table - Bruno Verjus,https://guide.michelin.com/en/ile-de-france/paris/restaurant/table-bruno-verjus,michelin_url set
+rest_0304,Plénitude,Paris,3,3,,url,Plénitude - Cheval Blanc Paris,https://guide.michelin.com/en/ile-de-france/paris/restaurant/plenitude-cheval-blanc-paris,michelin_url corrected
+rest_0322,Septime,Paris,1,1,,coords 7m + name,Septime,https://guide.michelin.com/en/ile-de-france/paris/restaurant/septime,michelin_url set
+rest_0327,Arpège,Paris,3,3,,coords 5m + name,Arpège,https://guide.michelin.com/en/ile-de-france/paris/restaurant/arpege,michelin_url set
+rest_0895,Assiette Champenoise,Tinqueux,3,3,,coords 16m + name,Assiette Champenoise,https://guide.michelin.com/en/grand-est/reims/restaurant/assiette-champenoise,michelin_url set
+rest_0896,Le Royal,Champillon,1,1,,coords 38m + name,Le Royal,https://guide.michelin.com/en/grand-est/champillon/restaurant/le-royal,michelin_url set
+rest_0897,Alcôve,Vinay,1,1,yes,coords 37m + name,Alcôve,https://guide.michelin.com/en/grand-est/vinay/restaurant/alcove,michelin_url set
+rest_0898,Villa René Lalique,Wingen-sur-Moder,2,2,,coords 23m + name,Villa René Lalique,https://guide.michelin.com/en/grand-est/wingen-sur-moder/restaurant/villa-rene-lalique,michelin_url set
+rest_0899,Yozora,Metz,1,1,,coords 15m + name,Yozora,https://guide.michelin.com/en/grand-est/metz/restaurant/yozora,michelin_url set
+rest_0900,Les Voiles d'Or,Dieppe,1,1,,name+city (no URL stored; MICHELIN page gone),Les Voiles d'Or,,none: MICHELIN page withdrawn since March 2026 (QA)
+rest_0901,Harmonie,Villeneuve-d'Ascq,1,1,yes,coords 14m + name,Harmonie,https://guide.michelin.com/en/hauts-de-france/villeneuve-d-ascq_1550830/restaurant/harmonie-1245894,michelin_url set
+rest_0902,Villa9Trois,Montreuil,1,1,,coords 13m + name,Villa9Trois,https://guide.michelin.com/en/ile-de-france/montreuil-ile-de-france/restaurant/villa9trois,michelin_url set
+rest_0903,Bacôve,Saint-Omer,1,1,,coords 7m + name,Bacôve,https://guide.michelin.com/en/hauts-de-france/saint-omer/restaurant/bacove,michelin_url set
+rest_0904,L'Odas,Rouen,1,1,,coords 2m + name,L'Odas,https://guide.michelin.com/en/normandie/rouen/restaurant/l-odas,michelin_url set
+rest_0905,Arborescence,Croix,1,1,,url,Arborescence,https://guide.michelin.com/en/hauts-de-france/croix/restaurant/arborescence,michelin_url corrected
+rest_0906,Le Restaurant du Cerisier,Lille,1,1,,url,Le Restaurant du Cerisier,https://guide.michelin.com/en/hauts-de-france/lille/restaurant/le-restaurant-du-cerisier,michelin_url corrected
+rest_0907,Auberge du Vert Mont,Boeschepe,1,1,,url,Auberge du Vert Mont,https://guide.michelin.com/en/hauts-de-france/boeschepe/restaurant/auberge-du-vert-mont,michelin_url corrected
+rest_0908,Ginko,Lille,1,1,,url,Ginko,https://guide.michelin.com/en/hauts-de-france/lille/restaurant/ginko,michelin_url corrected
+rest_0909,Pureté,Lille,1,1,,url,Pureté,https://guide.michelin.com/en/hauts-de-france/lille/restaurant/purete,michelin_url corrected
+rest_0910,Haut Bonheur de la Table,Cassel,1,1,,url,Haut Bonheur de la Table,https://guide.michelin.com/en/hauts-de-france/cassel/restaurant/haut-bonheur-de-la-table,michelin_url corrected
+rest_0911,Le Camélia,Bry,1,1,yes,url,Le Camélia,https://guide.michelin.com/en/hauts-de-france/bry_1545291/restaurant/le-camelia-1242759,michelin_url corrected
+rest_0912,La Table de Christophe Dufossé,Busnes,2,2,,url,La Table de Christophe Dufossé,https://guide.michelin.com/en/hauts-de-france/busnes/restaurant/la-table-de-christophe-dufoss%C3%A9,michelin_url corrected
+rest_0913,La Grenouillère,La Madelaine-sous-Montreuil,2,2,,url,La Grenouillère,https://guide.michelin.com/en/hauts-de-france/la-madelaine-sous-montreuil/restaurant/la-grenouillere,michelin_url corrected
+rest_0914,Auberge de la Grive,Trosly-Loire,1,1,,url,Auberge de la Grive,https://guide.michelin.com/en/hauts-de-france/trosly-loire_1550618/restaurant/auberge-de-la-grive,michelin_url corrected
+rest_0915,Alexis Baudin,Malling,1,1,yes,url,Alexis Baudin,https://guide.michelin.com/en/grand-est/malling/restaurant/alexis-baudin,michelin_url corrected
+rest_0916,Le K,Montenach,1,1,,url,Le K,https://guide.michelin.com/en/grand-est/montenach/restaurant/le-k,none
+rest_0917,La Table de Courcelles - Château de Courcelles,Courcelles-sur-Vesle,1,1,,url,La Table de Courcelles - Château de Courcelles,https://guide.michelin.com/en/hauts-de-france/courcelles-sur-vesle/restaurant/la-table-de-courcelles-chateau-de-courcelles,michelin_url corrected
+rest_0918,Le Millénaire,Reims,1,1,,url,Le Millénaire,https://guide.michelin.com/en/grand-est/reims/restaurant/le-millenaire,none
+rest_0919,Arbane,Reims,1,2,yes,url,Arbane,https://guide.michelin.com/en/grand-est/reims/restaurant/arbane,stars 1 -> 2 (2026 row corrected); michelin_url corrected
+rest_0920,Racine,Reims,2,2,,url,Racine,https://guide.michelin.com/en/grand-est/reims/restaurant/racine,michelin_url corrected
+rest_0921,Le Parc Les Crayères,Reims,2,2,,url,Le Parc Les Crayères,https://guide.michelin.com/en/grand-est/reims/restaurant/le-parc-les-crayeres,michelin_url corrected
+rest_0922,Quai des Saveurs,Hagondange,1,1,,url,Quai des Saveurs,https://guide.michelin.com/en/grand-est/hagondange/restaurant/quai-des-saveurs,michelin_url corrected
+rest_0923,Le Grand Cerf,Montchenot,1,1,,url,Le Grand Cerf,https://guide.michelin.com/en/grand-est/montchenot/restaurant/le-grand-cerf,none
+rest_0924,L'Orée de la Forêt,Étouy,1,1,,url,L'Orée de la Forêt,https://guide.michelin.com/en/hauts-de-france/touy/restaurant/l-oree-de-la-foret,michelin_url corrected
+rest_0925,Jérôme Feck,Châlons-en-Champagne,1,1,,url,Jérôme Feck,https://guide.michelin.com/en/grand-est/chlons-en-champagne/restaurant/jerome-feck,michelin_url corrected
+rest_0926,Le Verbois,Chantilly,1,1,,url,Le Verbois,https://guide.michelin.com/en/hauts-de-france/chantilly/restaurant/le-verbois,none
+rest_0927,Auberge Saint-Walfrid,Sarreguemines,1,1,,url,Auberge Saint-Walfrid,https://guide.michelin.com/en/grand-est/sarreguemines/restaurant/auberge-st-walfrid,none
+rest_0928,La Grange de Belle-Église,Belle-Église,1,1,,url,La Grange de Belle-Église,https://guide.michelin.com/en/hauts-de-france/belle-glise/restaurant/la-grange-de-belle-eglise,michelin_url corrected
+rest_0929,La Licorne Royale,Lyons-la-Forêt,1,1,,url,La Licorne Royale,https://guide.michelin.com/en/normandie/lyons-la-fort/restaurant/la-licorne-royale,michelin_url corrected
+rest_0930,Auberge de la Brie,Couilly-Pont-aux-Dames,1,1,,url,Auberge de la Brie,https://guide.michelin.com/en/ile-de-france/couilly-pont-aux-dames/restaurant/auberge-de-la-brie,none
+rest_0931,La Maison dans le Parc,Nancy,1,1,,url,La Maison dans le Parc,https://guide.michelin.com/en/grand-est/nancy/restaurant/la-maison-dans-le-parc,michelin_url corrected
+rest_0932,La Vieille Auberge,Villeneuve-le-Comte,1,1,,url,La Vieille Auberge,https://guide.michelin.com/en/ile-de-france/villeneuve-le-comte_1553696/restaurant/la-vieille-auberge-1206650,michelin_url corrected
+rest_0933,Maison Caillet,Valmont,1,1,,url,La Maison Caillet,https://guide.michelin.com/en/normandie/valmont/restaurant/maison-caillet,michelin_url corrected
+rest_0934,L'Arnsbourg,Baerenthal,1,1,,url,L'Arnsbourg,https://guide.michelin.com/en/grand-est/baerenthal/restaurant/l-arnsbourg,michelin_url corrected
+rest_0935,Maison Rostang,Paris,2,2,,url,Maison Rostang,https://guide.michelin.com/en/ile-de-france/paris/restaurant/maison-rostang,michelin_url corrected
+rest_0936,Héritages,Paris,1,1,yes,url,Héritages,https://guide.michelin.com/en/ile-de-france/paris/restaurant/heritages,michelin_url corrected
+rest_0937,Irwin,Paris,1,1,yes,url,Irwin,https://guide.michelin.com/en/ile-de-france/paris/restaurant/irwin,michelin_url corrected
+rest_0938,NESO,Paris,1,1,,url,NESO,https://guide.michelin.com/en/ile-de-france/paris/restaurant/neso,michelin_url corrected
+rest_0939,Le Faham,Paris,1,1,,url,Le Faham,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-faham,michelin_url corrected
+rest_0940,Automne,Paris,1,1,,url,Automne,https://guide.michelin.com/en/ile-de-france/paris/restaurant/automne,none
+rest_0941,Contraste,Paris,1,1,,url,Contraste,https://guide.michelin.com/en/ile-de-france/paris/restaurant/contraste1186546,michelin_url corrected
+rest_0942,Anona,Paris,1,1,,url,Anona,https://guide.michelin.com/en/ile-de-france/paris/restaurant/anona,none
+rest_0943,Fleur de Pavé,Paris,1,1,,url,Fleur de Pavé,https://guide.michelin.com/en/ile-de-france/paris/restaurant/fleur-de-pave,michelin_url corrected
+rest_0944,L'Ours,Vincennes,1,1,,url,L'Ours,https://guide.michelin.com/en/ile-de-france/vincennes/restaurant/l-ours,michelin_url corrected
+rest_0945,Jacques Faussat,Paris,1,1,,url,Jacques Faussat,https://guide.michelin.com/en/ile-de-france/paris/restaurant/jacques-faussat,michelin_url corrected
+rest_0946,Qui Plume la Lune,Paris,1,1,,url,Qui Plume la Lune,https://guide.michelin.com/en/ile-de-france/paris/restaurant/qui-plume-la-lune,none
+rest_0947,Frédéric Simonin,Paris,1,1,,url,Frédéric Simonin,https://guide.michelin.com/en/ile-de-france/paris/restaurant/frederic-simonin,michelin_url corrected
+rest_0948,Agapé,Paris,1,1,,url,Agapé,https://guide.michelin.com/en/ile-de-france/paris/restaurant/agape,none
+rest_0949,Sushi B,Paris,1,1,,url,Sushi B,https://guide.michelin.com/en/ile-de-france/paris/restaurant/sushi-b514232,michelin_url corrected
+rest_0950,Chez Michèle,Languimberg,1,1,,url,Chez Michèle,https://guide.michelin.com/en/grand-est/languimberg/restaurant/chez-michele,none
+rest_0951,Géosmine,Paris,1,1,,url,Géosmine,https://guide.michelin.com/en/ile-de-france/paris/restaurant/geosmine,michelin_url corrected
+rest_0952,Onor,Paris,1,1,,url,Onor,https://guide.michelin.com/en/ile-de-france/paris/restaurant/onor,michelin_url corrected
+rest_0953,Omar Dhiab,Paris,1,1,,url,Omar Dhiab,https://guide.michelin.com/en/ile-de-france/paris/restaurant/omar-dhiab,none
+rest_0954,Accents Table Bourse,Paris,1,1,,url,Accents Table Bourse,https://guide.michelin.com/en/ile-de-france/paris/restaurant/accents-table-bourse,michelin_url corrected
+rest_0955,Maison Dubois,Paris,1,1,,url,Maison Dubois,,none: MICHELIN page withdrawn since March 2026 (QA)
+rest_0956,Nhome,Paris,1,1,,url,Nhome,https://guide.michelin.com/en/ile-de-france/paris/restaurant/nhome,michelin_url corrected
+rest_0957,Sushi Yoshinaga,Paris,2,2,,url,Sushi Yoshinaga,https://guide.michelin.com/en/ile-de-france/paris/restaurant/sushi-yoshinaga,michelin_url corrected
+rest_0958,Maison Ruggieri Palais Royal,Paris,1,1,yes,url,Maison Ruggieri Palais Royal,https://guide.michelin.com/en/ile-de-france/paris/restaurant/maison-ruggieri-palais-royal,none
+rest_0959,FIEF,Paris,1,1,,url,FIEF,https://guide.michelin.com/en/ile-de-france/paris/restaurant/fief,michelin_url corrected
+rest_0960,Shabour,Paris,1,1,,url,Shabour,https://guide.michelin.com/en/ile-de-france/paris/restaurant/shabour,michelin_url corrected
+rest_0961,Akrame,Paris,1,1,,url,Akrame,https://guide.michelin.com/en/ile-de-france/paris/restaurant/akrame507272,michelin_url corrected
+rest_0962,Frenchie,Paris,1,1,,url,Frenchie,https://guide.michelin.com/en/ile-de-france/paris/restaurant/frenchie262795,michelin_url corrected
+rest_0963,Datil,Paris,1,1,,url,Datil,https://guide.michelin.com/en/ile-de-france/paris/restaurant/datil,michelin_url corrected
+rest_0964,Vaisseau,Paris,1,1,,url,Vaisseau,https://guide.michelin.com/en/ile-de-france/paris/restaurant/vaisseau,michelin_url corrected
+rest_0965,Sushi Shunei,Paris,1,1,,url,Sushi Shunei,https://guide.michelin.com/en/ile-de-france/paris/restaurant/sushi-shunei,michelin_url corrected
+rest_0966,Épisodes,Paris,1,1,,url,Épisodes,https://guide.michelin.com/en/ile-de-france/paris/restaurant/episodes,michelin_url corrected
+rest_0967,Épicure,Paris,3,3,,url,Épicure,https://guide.michelin.com/en/ile-de-france/paris/restaurant/epicure,michelin_url corrected
+rest_0968,Restaurant Le Meurice Alain Ducasse,Paris,2,2,,url,Restaurant Le Meurice Alain Ducasse,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-meurice-alain-ducasse,michelin_url corrected
+rest_0969,Trente-Trois,Paris,1,1,,url,Trente-Trois,https://guide.michelin.com/en/ile-de-france/paris/restaurant/trente-trois,none
+rest_0970,Le Baudelaire,Paris,1,1,,url,Le Baudelaire,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-baudelaire,michelin_url corrected
+rest_0971,Bellefeuille - Saint James Paris,Paris,1,1,,url,Bellefeuille - Saint James Paris,https://guide.michelin.com/en/ile-de-france/paris/restaurant/bellefeuille-saint-james-paris,michelin_url corrected
+rest_0972,Jean Imbert au Plaza Athénée,Paris,1,1,,url,Jean Imbert au Plaza Athénée,https://guide.michelin.com/en/ile-de-france/paris/restaurant/la-grande-du-plaza-athenee,"none: held -- MICHELIN page is now 'La Grande Table du Plaza Athénée' (same address, same star); rename + michelin_url need a decision (QA)"
+rest_0973,Kei,Paris,3,3,,url,Kei,https://guide.michelin.com/en/ile-de-france/paris/restaurant/kei,michelin_url corrected
+rest_0974,La Scène,Paris,2,2,,url,La Scène,https://guide.michelin.com/en/ile-de-france/paris/restaurant/la-scene,michelin_url corrected
+rest_0975,Le Grand Restaurant - Jean-François Piège,Paris,2,2,,url,Le Grand Restaurant - Jean-François Piège,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-grand-restaurant-jean-francois-piege,michelin_url corrected
+rest_0976,Le Taillevent,Paris,2,2,,url,Le Taillevent,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-taillevent,michelin_url corrected
+rest_0977,Alliance,Paris,2,2,yes,url,Alliance,https://guide.michelin.com/en/ile-de-france/paris/restaurant/alliance,michelin_url corrected
+rest_0978,Marsan par Hélène Darroze,Paris,2,2,,url,Marsan par Hélène Darroze,https://guide.michelin.com/en/ile-de-france/paris/restaurant/marsan-par-helene-darroze,michelin_url corrected
+rest_0979,Le Clarence,Paris,2,2,,url,Le Clarence,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-clarence,none
+rest_0980,David Toutain,Paris,1,2,,url,David Toutain,https://guide.michelin.com/en/ile-de-france/paris/restaurant/david-toutain,stars 1 -> 2 (2026 row corrected); michelin_url corrected
+rest_0981,Pantagruel,Paris,1,1,,url,Pantagruel,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pantagruel,michelin_url corrected
+rest_0982,Origines Restaurant,Paris,1,1,,url,Origines Restaurant,https://guide.michelin.com/en/ile-de-france/paris/restaurant/origines-restaurant,michelin_url corrected
+rest_0983,Gaya par Pierre Gagnaire,Paris,2,1,,url,Gaya par Pierre Gagnaire,https://guide.michelin.com/en/ile-de-france/paris/restaurant/gaya-par-pierre-gagnaire,stars 2 -> 1 (2026 row corrected)
+rest_0984,Imperial Treasure,Paris,1,1,yes,url,Imperial Treasure,https://guide.michelin.com/en/ile-de-france/paris/restaurant/imperial-treasure1186891,michelin_url corrected
+rest_0985,Substance,Paris,1,1,,url,Substance,https://guide.michelin.com/en/ile-de-france/paris/restaurant/substance,michelin_url corrected
+rest_0986,Baieta,Paris,1,1,,url,Baieta,https://guide.michelin.com/en/ile-de-france/paris/restaurant/baieta,michelin_url corrected
+rest_0987,Zostera,Paris,1,1,yes,url,Zostera,https://guide.michelin.com/en/ile-de-france/paris/restaurant/zostera,michelin_url corrected
+rest_0988,Astrance,Paris,1,1,,url,Astrance,https://guide.michelin.com/en/ile-de-france/paris/restaurant/astrance,michelin_url corrected
+rest_0989,Restaurant H,Paris,1,1,,url,Restaurant H,https://guide.michelin.com/en/ile-de-france/paris/restaurant/restaurant-h,michelin_url corrected
+rest_0990,L'Arôme,Paris,1,1,,url,L'Arôme,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-arome174292,michelin_url corrected
+rest_0991,Yoshinori,Paris,1,1,,url,Yoshinori,https://guide.michelin.com/en/ile-de-france/paris/restaurant/yoshinori,michelin_url corrected
+rest_0992,Armani Ristorante,Paris,1,1,,url,Armani Ristorante,https://guide.michelin.com/en/ile-de-france/paris/restaurant/armani-ristorante,michelin_url corrected
+rest_0993,Le Violon d'Ingres,Paris,1,1,,url,Le Violon d'Ingres,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-violon-d-ingres5989,michelin_url corrected
+rest_0994,Pages,Paris,1,1,,url,Pages,,none: MICHELIN page withdrawn since March 2026 (QA)
+rest_0995,La Scène Thélème,Paris,1,1,,url,La Scène Thélème,,none: MICHELIN page withdrawn since March 2026 (QA)
+rest_0996,Pertinence,Paris,1,1,,url,Pertinence,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pertinence,michelin_url corrected
+rest_0997,Auguste,Paris,1,1,,url,Auguste,https://guide.michelin.com/en/ile-de-france/paris/restaurant/auguste,none
+rest_0998,114 Faubourg,Paris,1,1,,url,"114, Faubourg",https://guide.michelin.com/en/ile-de-france/paris/restaurant/114-faubourg,michelin_url corrected
+rest_0999,Lasserre,Paris,1,1,,url,Lasserre,https://guide.michelin.com/en/ile-de-france/paris/restaurant/lasserre,michelin_url corrected
+rest_1000,Jin,Paris,1,1,yes,url,Jin,https://guide.michelin.com/en/ile-de-france/paris/restaurant/jin,michelin_url corrected
+rest_1001,Le Sergent Recruteur,Paris,1,1,,url,Le Sergent Recruteur,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-sergent-recruteur,none
+rest_1002,Granite,Paris,1,1,,url,Granite,https://guide.michelin.com/en/ile-de-france/paris/restaurant/granite,michelin_url corrected
+rest_1003,Le Cinq,Paris,3,3,,url,Le Cinq,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-cinq6102,michelin_url corrected
+rest_1004,Hakuba,Paris,2,2,yes,url,Hakuba,https://guide.michelin.com/en/ile-de-france/paris/restaurant/hakuba,michelin_url corrected
+rest_1005,Espadon,Paris,1,1,,url,Espadon,https://guide.michelin.com/en/ile-de-france/paris/restaurant/espadon,michelin_url corrected
+rest_1006,Le George,Paris,1,1,,url,Le George,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-george,michelin_url corrected
+rest_1007,Il Carpaccio,Paris,1,1,,url,Il Carpaccio,https://guide.michelin.com/en/ile-de-france/paris/restaurant/il-carpaccio300866,michelin_url corrected
+rest_1008,Le Tout-Paris,Paris,1,1,,url,Le Tout-Paris,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-tout-paris,michelin_url corrected
+rest_1009,Pierre Gagnaire,Paris,3,3,,url,Pierre Gagnaire,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pierre-gagnaire6112,michelin_url corrected
+rest_1010,L'Abysse Paris,Paris,2,2,,url,L'Abysse Paris,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-abysse-paris,michelin_url corrected
+rest_1011,Guy Savoy,Paris,2,2,,url,Guy Savoy,https://guide.michelin.com/en/ile-de-france/paris/restaurant/guy-savoy,none
+rest_1012,L'Ambroisie,Paris,2,2,,url,L'Ambroisie,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-ambroisie,michelin_url corrected
+rest_1013,Virtus,Paris,2,2,yes,url,Virtus,https://guide.michelin.com/en/ile-de-france/paris/restaurant/virtus,michelin_url corrected
+rest_1014,HANADA,Paris,1,1,yes,url,HANADA,https://guide.michelin.com/en/ile-de-france/paris/restaurant/hanada,michelin_url corrected
+rest_1015,Monsieur Dior by Yannick Alléno,Paris,1,1,yes,url,Monsieur Dior by Yannick Alléno,https://guide.michelin.com/en/ile-de-france/paris/restaurant/monsieur-dior-by-yannick-alleno,michelin_url corrected
+rest_1016,Prévelle,Paris,1,1,yes,url,Prévelle,https://guide.michelin.com/en/ile-de-france/paris/restaurant/prevelle,none
+rest_1017,Aldehyde,Paris,1,1,,url,Aldehyde,https://guide.michelin.com/en/ile-de-france/paris/restaurant/aldehyde,michelin_url corrected
+rest_1018,Pavyllon Paris,Paris,1,1,,url,Pavyllon Paris,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pavyllon-paris,michelin_url corrected
+rest_1019,Oxte,Paris,1,1,,url,Oxte,https://guide.michelin.com/en/ile-de-france/paris/restaurant/oxte,michelin_url corrected
+rest_1020,Tomy & Co,Paris,1,1,,url,Tomy & Co,https://guide.michelin.com/en/ile-de-france/paris/restaurant/tomy-co,michelin_url corrected
+rest_1021,Alan Geaam,Paris,1,1,,url,Alan Geaam,https://guide.michelin.com/en/ile-de-france/paris/restaurant/alan-geaam,none
+rest_1022,Lucas Carton,Paris,1,1,,url,Lucas Carton,https://guide.michelin.com/en/ile-de-france/paris/restaurant/lucas-carton,michelin_url corrected
+rest_1023,Divellec,Paris,1,1,,url,Divellec,https://guide.michelin.com/en/ile-de-france/paris/restaurant/divellec,michelin_url corrected
+rest_1024,Ze Kitchen Galerie,Paris,1,1,,url,Ze Kitchen Galerie,https://guide.michelin.com/en/ile-de-france/paris/restaurant/ze-kitchen-galerie,none
+rest_1025,Relais Louis XIII,Paris,1,1,,url,Relais Louis XIII,https://guide.michelin.com/en/ile-de-france/paris/restaurant/relais-louis-xiii,michelin_url corrected
+rest_1026,Tour d'Argent,Paris,1,1,,url,Tour d'Argent,https://guide.michelin.com/en/ile-de-france/paris/restaurant/tour-d-argent,michelin_url corrected
+rest_1027,Don Juan II,Paris,1,1,,url,Don Juan II,https://guide.michelin.com/en/ile-de-france/paris/restaurant/don-juan-ii,michelin_url corrected
+rest_1028,Mallory Gabsi,Paris,1,1,,url,Mallory Gabsi,https://guide.michelin.com/en/ile-de-france/paris/restaurant/mallory-gabsi,michelin_url corrected
+rest_1029,Sola,Paris,1,1,,url,Sola,https://guide.michelin.com/en/ile-de-france/paris/restaurant/sola,michelin_url corrected
+rest_1030,Geoélia,Paris,1,1,yes,url,Geoélia,https://guide.michelin.com/en/ile-de-france/paris/restaurant/geoelia,michelin_url corrected
+rest_1031,Pilgrim,Paris,1,1,yes,url,Pilgrim,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pilgrim1000208,michelin_url corrected
+rest_1032,Ochre,Rueil-Malmaison,1,1,,url,Ochre,https://guide.michelin.com/en/ile-de-france/rueil-malmaison/restaurant/ochre,michelin_url corrected
+rest_1033,Comice,Paris,1,1,,url,Comice,https://guide.michelin.com/en/ile-de-france/paris/restaurant/comice,michelin_url corrected
+rest_1034,Neige d'Été,Paris,1,1,,url,Neige d'Été,https://guide.michelin.com/en/ile-de-france/paris/restaurant/neige-d-ete,michelin_url corrected
+rest_1035,Nakatani,Paris,1,1,,url,Nakatani,https://guide.michelin.com/en/ile-de-france/paris/restaurant/nakatani,michelin_url corrected
+rest_1036,L'Archeste,Paris,1,1,,url,L'Archeste,https://guide.michelin.com/en/ile-de-france/paris/restaurant/l-archeste,michelin_url corrected
+rest_1037,Quinsou,Paris,1,1,,url,Quinsou,https://guide.michelin.com/en/ile-de-france/paris/restaurant/quinsou,michelin_url corrected
+rest_1038,Le Jules Verne,Paris,1,2,,url,Le Jules Verne,https://guide.michelin.com/en/ile-de-france/paris/restaurant/le-jules-verne,stars 1 -> 2 (2026 row corrected); michelin_url corrected
+rest_1039,Solstice,Paris,1,1,,url,Solstice,https://guide.michelin.com/en/ile-de-france/paris/restaurant/solstice,michelin_url corrected
+rest_1040,MoSuke,Paris,1,1,,url,MoSuke,https://guide.michelin.com/en/ile-de-france/paris/restaurant/mosuke,michelin_url corrected
+rest_1041,Aida,Paris,1,1,,url,Aida,https://guide.michelin.com/en/ile-de-france/paris/restaurant/aida,michelin_url corrected
+rest_1042,Chakaiseki Akiyoshi,Paris,1,1,,url,Chakaiseiki Akiyoshi,https://guide.michelin.com/en/ile-de-france/paris/restaurant/chakaiseiki-akiyoshi,michelin_url corrected
+rest_1043,Maison Avoise,Issy-les-Moulineaux,1,1,,url,Maison Avoise,https://guide.michelin.com/en/ile-de-france/issy-les-moulineaux/restaurant/maison-avoise,michelin_url corrected
+rest_1044,L'Escarbille,Meudon,1,1,,url,L'Escarbille,https://guide.michelin.com/en/ile-de-france/meudon/restaurant/l-escarbille,michelin_url corrected
+rest_1045,Le Jardin des Plumes,Giverny,1,1,,url,Le Jardin des Plumes,https://guide.michelin.com/en/normandie/giverny/restaurant/le-jardin-des-plumes,michelin_url corrected
+rest_1046,Le Panoramique - Domaine de la Corniche,Rolleboise,1,1,,url,Le Panoramique - Domaine de la Corniche,https://guide.michelin.com/en/ile-de-france/rolleboise/restaurant/le-panoramique-domaine-de-la-corniche,michelin_url corrected
+rest_1047,Le Corot,Ville-d'Avray,1,2,yes,url,Le Corot,https://guide.michelin.com/en/ile-de-france/ville-d-avray/restaurant/le-corot,stars 1 -> 2 (2026 row corrected); michelin_url corrected
+rest_1048,La Merise,Laubach,2,2,,url,La Merise,https://guide.michelin.com/en/grand-est/laubach/restaurant/la-merise,michelin_url corrected
+rest_1049,Château d'Adoménil,Lunéville,1,1,,url,Château d'Adoménil,https://guide.michelin.com/en/grand-est/lunville/restaurant/chateau-d-adomenil,michelin_url corrected
+rest_1050,Ducasse au Château de Versailles - Le Grand Contrôle,Versailles,1,1,,url,Ducasse au Château de Versailles - Le Grand Contrôle,https://guide.michelin.com/en/ile-de-france/versailles/restaurant/ducasse-au-chateau-de-versailles-le-grand-controle,michelin_url corrected
+rest_1051,Gordon Ramsay au Trianon,Versailles,1,1,,url,Gordon Ramsay au Trianon,https://guide.michelin.com/en/ile-de-france/versailles/restaurant/gordon-ramsay-au-trianon,michelin_url corrected
+rest_1052,La Table du 11,Versailles,1,1,,url,La Table du 11,https://guide.michelin.com/en/ile-de-france/versailles/restaurant/la-table-du-11,michelin_url corrected
+rest_1053,Au Gourmet,Drusenheim,1,1,,url,Au Gourmet,https://guide.michelin.com/en/grand-est/drusenheim/restaurant/au-gourmet,michelin_url corrected
+rest_1054,Ruche,Gambais,1,1,yes,url,Ruche,https://guide.michelin.com/en/ile-de-france/gambais/restaurant/ruche,michelin_url corrected
+rest_1055,Burnel,Rouvres-en-Xaintois,1,1,,url,Burnel,https://guide.michelin.com/en/grand-est/rouvres-en-xaintois_1543966/restaurant/burnel,none
+rest_1056,Le Jardin Secret,La Wantzenau,1,1,,url,Le Jardin Secret,https://guide.michelin.com/en/grand-est/la-wantzenau/restaurant/le-jardin-secret,michelin_url corrected
+rest_1057,Le Relais de la Poste,La Wantzenau,1,1,,url,Le Relais de la Poste,https://guide.michelin.com/en/grand-est/la-wantzenau/restaurant/relais-de-la-poste,none
+rest_1058,Hostellerie la Montagne,Colombey-les-Deux-Églises,1,1,,url,Hostellerie la Montagne,https://guide.michelin.com/en/grand-est/colombey-les-deux-glises/restaurant/hostellerie-la-montagne,none
+rest_1059,Guillaume Scheer - Les Plaisirs Gourmands,Strasbourg,1,1,,url,Guillaume Scheer - Les Plaisirs Gourmands,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/les-plaisirs-gourmands,none
+rest_1060,Au Crocodile,Strasbourg,1,1,,url,Au Crocodile,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/au-crocodile,michelin_url corrected
+rest_1061,1741,Strasbourg,1,1,,url,1741,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/1741,michelin_url corrected
+rest_1062,Umami,Strasbourg,1,1,,url,Umami,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/umami202668,michelin_url corrected
+rest_1063,Les Funambules,Strasbourg,1,1,,url,Les Funambules,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/les-funambules,michelin_url corrected
+rest_1064,L'Axel,Fontainebleau,1,1,,url,L'Axel,https://guide.michelin.com/en/ile-de-france/fontainebleau/restaurant/l-axel,michelin_url corrected
+rest_1065,de:ja,Strasbourg,1,1,,url,de:ja,https://guide.michelin.com/en/grand-est/strasbourg/restaurant/de-ja,michelin_url corrected
+rest_1066,La Cheneaudière - Le Feuillage,Colroy-la-Roche,1,1,,url,La Cheneaudière - Le Feuillage,https://guide.michelin.com/en/grand-est/colroy-la-roche/restaurant/la-cheneaudiere-le-feuillage,michelin_url corrected
+rest_1067,Thierry Schwartz - Table Naturelle,Obernai,1,1,,url,Thierry Schwartz - Table Naturelle,https://guide.michelin.com/en/grand-est/obernai/restaurant/thierry-schwartz-table-naturelle,michelin_url corrected
+rest_1068,La Fourchette des Ducs,Obernai,2,2,,url,La Fourchette des Ducs,https://guide.michelin.com/en/grand-est/obernai/restaurant/la-fourchette-des-ducs,michelin_url corrected
+rest_1069,Maximin Hellio,Deauville,1,1,,url,Maximin Hellio,https://guide.michelin.com/en/normandie/deauville/restaurant/maximin-hellio,michelin_url corrected
+rest_1070,L'Essentiel,Deauville,1,1,,url,L'Essentiel,https://guide.michelin.com/en/normandie/deauville/restaurant/l-essentiel255041,michelin_url corrected
+rest_1071,Auberge Chez Guth,Steige,1,1,,url,Auberge Chez Guth,https://guide.michelin.com/en/grand-est/steige/restaurant/auberge-chez-guth,michelin_url corrected
+rest_1072,La Madeleine,Sens,1,1,,url,La Madeleine,https://guide.michelin.com/en/bourgogne-franche-comte/sens/restaurant/la-madeleine,michelin_url corrected
+rest_1073,Enfin,Barr,1,1,,url,Enfin,https://guide.michelin.com/en/grand-est/barr/restaurant/enfin,none
+rest_1074,Les Ducs de Lorraine,Épinal,1,1,,url,Les Ducs de Lorraine,https://guide.michelin.com/en/grand-est/pinal/restaurant/les-ducs-de-lorraine,michelin_url corrected
+rest_1075,Auberge Frankenbourg,La Vancelle,1,1,,url,Auberge Frankenbourg,https://guide.michelin.com/en/grand-est/la-vancelle/restaurant/auberge-frankenbourg,michelin_url corrected
+rest_1076,Symbiose,Cabourg,1,1,,url,Symbiose,https://guide.michelin.com/en/normandie/cabourg/restaurant/symbiose-1211835,michelin_url corrected
+rest_1077,Au Vieux Couvent,Rhinau,1,1,,url,Au Vieux Couvent,https://guide.michelin.com/en/grand-est/rhinau/restaurant/au-vieux-couvent,michelin_url corrected
+rest_1078,Château de Courban,Courban,1,1,,url,Château de Courban,https://guide.michelin.com/en/bourgogne-franche-comte/courban/restaurant/chateau-de-courban,michelin_url corrected
+rest_1079,Le Georges,Chartres,1,1,,url,Le Georges,https://guide.michelin.com/en/centre-val-de-loire/chartres/restaurant/le-georges,michelin_url corrected
+rest_1080,La Table du Gourmet,Riquewihr,1,1,,url,La Table du Gourmet,https://guide.michelin.com/en/grand-est/riquewihr/restaurant/la-table-du-gourmet,michelin_url corrected
+rest_1081,La Côte Saint-Jacques,Joigny,2,2,,url,La Côte Saint-Jacques,https://guide.michelin.com/en/bourgogne-franche-comte/joigny/restaurant/la-cote-saint-jacques,michelin_url corrected
+rest_1082,La Table d'Olivier Nasti,Kaysersberg,2,2,,url,La Table d'Olivier Nasti,https://guide.michelin.com/en/grand-est/kaysersberg/restaurant/la-table-d-olivier-nasti,michelin_url corrected
+rest_1083,Auberge de l'Ill,Illhaeusern,2,2,,url,Auberge de l'Ill,https://guide.michelin.com/en/grand-est/illhaeusern/restaurant/auberge-de-l-ill,michelin_url corrected
+rest_1084,Alchémille,Kaysersberg,1,1,,url,Alchémille,https://guide.michelin.com/en/grand-est/kaysersberg/restaurant/l-alchemille,michelin_url corrected
+rest_1085,Restaurant Julien Binz,Ammerschwihr,1,1,,url,Restaurant Julien Binz,https://guide.michelin.com/en/grand-est/ammerschwihr/restaurant/julien-binz,michelin_url corrected
+rest_1086,Bulle d'Osier,Langres,2,2,yes,url,Bulle d'Osier,https://guide.michelin.com/en/grand-est/langres/restaurant/bulle-d-osier,michelin_url corrected
+rest_1087,La Nouvelle Auberge,Wihr-au-Val,1,1,,url,La Nouvelle Auberge,https://guide.michelin.com/en/grand-est/wihr-au-val/restaurant/la-nouvelle-auberge,michelin_url corrected
+rest_1088,L'Atelier du Peintre,Colmar,1,1,,url,L'Atelier du Peintre,https://guide.michelin.com/en/grand-est/colmar/restaurant/l-atelier-du-peintre,michelin_url corrected
+rest_1089,JY'S,Colmar,2,2,,url,JY'S,https://guide.michelin.com/en/grand-est/colmar/restaurant/jy-s,michelin_url corrected
+rest_1090,Restaurant Girardin,Colmar,1,1,,url,Restaurant Girardin,https://guide.michelin.com/en/grand-est/colmar/restaurant/restaurant-girardin,michelin_url corrected
+rest_1091,Ivan Vautier,Caen,1,1,,url,Ivan Vautier,,none: MICHELIN page withdrawn since March 2026 (QA)
+rest_1092,Erre,Chassy,2,1,yes,url,Erre,https://guide.michelin.com/en/bourgogne-franche-comte/chassy_1527287/restaurant/erre,stars 2 -> 1 (2026 row corrected); michelin_url corrected
+rest_1093,Auberge des Templiers,Boismorand,1,1,,url,Auberge des Templiers,https://guide.michelin.com/en/centre-val-de-loire/boismorand/restaurant/auberge-des-templiers,michelin_url corrected
+rest_1094,L'Orchidée,Ensisheim,1,1,,url,L'Orchidée,https://guide.michelin.com/en/grand-est/ensisheim/restaurant/l-orchidee,michelin_url corrected
+rest_1095,La Renaissance,Argentan,1,1,,url,La Renaissance,https://guide.michelin.com/en/normandie/argentan/restaurant/la-renaissance433,none
+rest_1096,Il Cortile,Mulhouse,1,1,,url,Il Cortile,https://guide.michelin.com/en/grand-est/mulhouse/restaurant/il-cortile40020,michelin_url corrected
+rest_1097,Le 7ème Continent,Rixheim,1,1,,url,Le 7ème Continent,https://guide.michelin.com/en/grand-est/rixheim/restaurant/le-7eme-continent,none
+rest_1098,Côté Jardin,Gien,1,1,,url,Côté Jardin,https://guide.michelin.com/en/centre-val-de-loire/gien/restaurant/cote-jardin,michelin_url corrected
+rest_1099,Le Pily,Cherbourg-en-Cotentin,1,1,,url,Le Pily,https://guide.michelin.com/en/normandie/cherbourg-en-cotentin/restaurant/le-pily,michelin_url corrected
+rest_1100,Le Pot d'Étain,Danjoutin,1,1,,url,Le Pot d'Étain,https://guide.michelin.com/en/bourgogne-franche-comte/danjoutin/restaurant/le-pot-d-etain,michelin_url corrected
+rest_1101,Le Valucien - Château de Vault-de-Lugny,Vault-de-Lugny,1,1,,url,Le Valucien - Château de Vault-de-Lugny,https://guide.michelin.com/en/bourgogne-franche-comte/vault-de-lugny/restaurant/le-valucien-chateau-de-vault-de-lugny,michelin_url corrected
+rest_1102,Auberge Saint-Laurent,Sierentz,1,1,,url,Auberge St-Laurent,https://guide.michelin.com/en/grand-est/sierentz/restaurant/auberge-st-laurent,michelin_url corrected
+rest_1103,Auberge de la Charme,Prenois,1,1,,url,Auberge de la Charme,https://guide.michelin.com/en/bourgogne-franche-comte/prenois/restaurant/auberge-de-la-charme,michelin_url corrected
+rest_1104,Loiseau des Ducs,Dijon,1,1,,url,Loiseau des Ducs,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/loiseau-des-ducs,michelin_url corrected
+rest_1105,William Frachot,Dijon,2,2,,coords 11m + name,William Frachot,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/william-frachot,michelin_url corrected
+rest_1106,CIBO,Dijon,1,1,,url,CIBO,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/cibo,michelin_url corrected
+rest_1107,L'Aspérule,Dijon,1,1,,url,L'Aspérule,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/l-asperule,michelin_url corrected
+rest_1108,Origine,Dijon,1,1,,url,Origine,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/stephane-derbord,none
+rest_1109,La Maison des Cariatides,Dijon,1,1,yes,url,La Maison des Cariatides,https://guide.michelin.com/en/bourgogne-franche-comte/dijon/restaurant/la-maison-des-cariatides,none
+rest_1110,Auberge de la Mine,La Ferrière-aux-Étangs,1,1,,url,Auberge de la Mine,https://guide.michelin.com/en/normandie/la-ferrire-aux-tangs/restaurant/auberge-de-la-mine,michelin_url corrected
+rest_1111,La Côte d'Or,Saulieu,2,2,,url,La Côte d'Or,https://guide.michelin.com/en/bourgogne-franche-comte/saulieu/restaurant/la-cote-d-or,michelin_url corrected
+rest_1112,Maison Medard,Boulleret,1,1,,url,Maison Medard,https://guide.michelin.com/en/centre-val-de-loire/boulleret/restaurant/maison-medard,michelin_url corrected
+rest_1113,La Table d'Hôtes - La Rôtisserie du Chambertin,Gevrey-Chambertin,1,1,,url,La Table d'Hôtes - La Rôtisserie du Chambertin,https://guide.michelin.com/en/bourgogne-franche-comte/gevrey-chambertin/restaurant/la-table-dhotes-la-rotisserie-du-chambertin,none
+rest_1114,Ezia,Montlivault,1,1,,url,Ezia,https://guide.michelin.com/en/centre-val-de-loire/montlivault/restaurant/ezia,michelin_url corrected
+rest_1115,La Pomme d'Or,Sancerre,1,1,,url,La Pomme d'Or,https://guide.michelin.com/en/centre-val-de-loire/sancerre/restaurant/la-pomme-d-or,michelin_url corrected
+rest_1116,Le Mascaret,Blainville-sur-Mer,1,1,,url,Le Mascaret,https://guide.michelin.com/en/normandie/blainville-sur-mer/restaurant/le-mascaret,michelin_url corrected
+rest_1117,Château du Mont Joly,Sampans,1,1,,url,Château du Mont Joly,https://guide.michelin.com/en/bourgogne-franche-comte/sampans/restaurant/chateau-du-mont-joly,michelin_url corrected
+rest_1118,L'Auberge de Bagatelle,Le Mans,1,1,,url,L'Auberge de Bagatelle,https://guide.michelin.com/en/pays-de-la-loire/le-mans/restaurant/l-auberge-de-bagatelle,michelin_url corrected
+rest_1119,Christophe Hay - Fleur de Loire,Blois,2,2,,url,Christophe Hay - Fleur de Loire,https://guide.michelin.com/en/centre-val-de-loire/blois/restaurant/christophe-hay-fleur-de-loire,michelin_url corrected
+rest_1120,L'Étang du Moulin,Bonnétage,1,1,,url,L'Étang du Moulin,https://guide.michelin.com/en/bourgogne-franche-comte/bonntage/restaurant/l-etang-du-moulin,michelin_url corrected
+rest_1121,La Chaumière,Dole,1,1,,url,La Chaumière,https://guide.michelin.com/en/bourgogne-franche-comte/dole/restaurant/la-chaumiere11044,michelin_url corrected
+rest_1122,Clos du Cèdre,Beaune,1,1,,url,Clos du Cèdre,https://guide.michelin.com/en/bourgogne-franche-comte/beaune/restaurant/le-clos-du-cedre,michelin_url corrected
+rest_1123,Granica,Cellettes,1,1,,url,Granica,https://guide.michelin.com/en/centre-val-de-loire/cellettes/restaurant/granica,none
+rest_1124,Auprès du Clocher,Pommard,1,1,yes,url,Auprès du Clocher,https://guide.michelin.com/en/bourgogne-franche-comte/pommard/restaurant/aupres-du-clocher,michelin_url corrected
+rest_1125,L'Éveil des Sens,Mayenne,1,1,,url,L'Éveil des Sens,https://guide.michelin.com/en/pays-de-la-loire/mayenne/restaurant/l-eveil-des-sens,michelin_url corrected
+rest_1126,Le Carmin,Beaune,1,1,,url,Le Carmin,https://guide.michelin.com/en/bourgogne-franche-comte/beaune/restaurant/le-carmin,michelin_url corrected
+rest_1127,Table de Levernois,Levernois,1,1,,url,Table de Levernois,https://guide.michelin.com/en/bourgogne-franche-comte/levernois/restaurant/table-de-levernois,michelin_url corrected
+rest_1128,Grand Hôtel du Lion d'Or,Romorantin-Lanthenay,1,1,,url,Grand Hôtel du Lion d'Or,https://guide.michelin.com/en/centre-val-de-loire/romorantin-lanthenay/restaurant/grand-hotel-du-lion-d-or,michelin_url corrected
+rest_1129,Maison Lameloise,Chagny,2,3,,url,Maison Lameloise,https://guide.michelin.com/en/bourgogne-franche-comte/chagny/restaurant/maison-lameloise,stars 2 -> 3 (2026 row corrected); michelin_url corrected
+rest_1130,Auberge Sauvage,Servon,1,1,,url,Auberge Sauvage,https://guide.michelin.com/en/normandie/servon/restaurant/auberge-sauvage,michelin_url corrected
+rest_1131,La Table du Grapiot,Pupillin,1,1,yes,url,La Table du Grapiot,https://guide.michelin.com/en/bourgogne-franche-comte/pupillin/restaurant/la-table-du-grapiot,michelin_url corrected
+rest_1132,Château de Pray,Amboise,2,1,,url,Château de Pray,https://guide.michelin.com/en/centre-val-de-loire/amboise/restaurant/chateau-de-pray,stars 2 -> 1 (2026 row corrected); michelin_url corrected
+rest_1133,Cédric Burtin,Saint-Rémy,2,2,,url,Cédric Burtin,https://guide.michelin.com/en/bourgogne-franche-comte/saint-rmy/restaurant/cedric-burtin,michelin_url corrected
+rest_1134,Le Bon Accueil,Malbuisson,1,1,,url,Le Bon Accueil,https://guide.michelin.com/en/bourgogne-franche-comte/malbuisson/restaurant/le-bon-accueil4521,michelin_url corrected
+rest_1135,La Table Breizh Café,Cancale,1,1,,url,La Table Breizh Café,https://guide.michelin.com/en/bretagne/cancale/restaurant/la-table-breizh-cafe,michelin_url corrected
+rest_1136,Le Coquillage,Saint-Méloir-des-Ondes,2,3,,url,Le Coquillage,https://guide.michelin.com/en/bretagne/saint-mloir-des-ondes/restaurant/le-coquillage,stars 2 -> 3 (2026 row corrected); michelin_url corrected
+rest_1137,L'Opidom,Fondettes,1,1,,url,L'Opidom,https://guide.michelin.com/en/centre-val-de-loire/fondettes/restaurant/l-opidom,michelin_url corrected
+rest_1138,L'Évidence,Montbazon,1,1,,url,L'Évidence,https://guide.michelin.com/en/centre-val-de-loire/montbazon/restaurant/l-evidence,none
+rest_1139,Le Saint Placide,Saint-Malo,1,1,,url,Le Saint Placide,https://guide.michelin.com/en/bretagne/saint-malo/restaurant/le-st-placide,michelin_url corrected
+rest_1140,L'Écrin de Yohann Chapuis,Tournus,1,1,,url,L'Écrin de Yohann Chapuis,https://guide.michelin.com/en/bourgogne-franche-comte/tournus/restaurant/l-ecrin-de-yohann-chapuis,none
+rest_1141,Aux Terrasses,Tournus,1,1,,url,Aux Terrasses,https://guide.michelin.com/en/bourgogne-franche-comte/tournus/restaurant/aux-terrasses,none
+rest_1142,Arbore & Sens,Loches,1,1,,url,Arbore & Sens,https://guide.michelin.com/en/centre-val-de-loire/loches/restaurant/arbore-sens,none
+rest_1143,Auberge du XIIème Siècle,Saché,1,1,,url,Auberge du XIIème Siècle,https://guide.michelin.com/en/centre-val-de-loire/sach/restaurant/auberge-du-xiie-siecle,michelin_url corrected
+rest_1144,La Mare aux Oiseaux,Saint-Joachim,1,1,,url,La Mare aux Oiseaux,https://guide.michelin.com/en/pays-de-la-loire/saint-joachim/restaurant/la-mare-aux-oiseaux,none
+rest_1145,La Table - Domaine du Liziec,Vannes,1,1,yes,url,La Table - Domaine du Liziec,https://guide.michelin.com/en/bretagne/vannes/restaurant/la-table-domaine-du-liziec,michelin_url corrected
+rest_1146,La Source,Saint-Galmier,1,1,,url,La Source,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-galmier/restaurant/la-source,michelin_url corrected
+rest_1147,La Tête en l'air,Vannes,1,1,,url,La Tête en l'Air,https://guide.michelin.com/en/bretagne/vannes/restaurant/la-tete-en-l-air,michelin_url corrected
+rest_1148,Ambroisie,Saint-Didier-de-la-Tour,1,1,,url,Ambroisie,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-didier-de-la-tour/restaurant/ambroisie,michelin_url corrected
+rest_1149,La Chabotterie,Montréverd,1,1,,url,La Chabotterie,https://guide.michelin.com/en/pays-de-la-loire/montreverd/restaurant/la-chabotterie,michelin_url corrected
+rest_1150,La Pyramide - Maison Henriroux,Vienne,2,2,,url,La Pyramide - Maison Henriroux,https://guide.michelin.com/en/auvergne-rhone-alpes/vienne/restaurant/la-pyramide-maison-henriroux,michelin_url corrected
+rest_1151,La Chapelle Saint-Martin,Nieul,1,1,,url,La Chapelle Saint-Martin,https://guide.michelin.com/en/nouvelle-aquitaine/nieul_1470595/restaurant/chapelle-saint-martin,michelin_url corrected
+rest_1152,La Table de La Butte,Plouider,1,1,,url,La Table de La Butte,https://guide.michelin.com/en/bretagne/plouider/restaurant/la-table-de-la-butte,none
+rest_1153,L'Inattendu - Domaine de Locguénolé,Kervignac,1,1,,url,L'Inattendu - Domaine de Locguénolé,https://guide.michelin.com/en/bretagne/kervignac/restaurant/l-inattendu-domaine-de-locguenole,michelin_url corrected
+rest_1154,Côté Cuisine,Carnac,1,1,,url,Côté Cuisine,https://guide.michelin.com/en/bretagne/carnac/restaurant/cote-cuisine,michelin_url corrected
+rest_1155,Louise,Lorient,1,1,,url,Louise,https://guide.michelin.com/en/bretagne/lorient/restaurant/louise1000376,michelin_url corrected
+rest_1156,Les Reflets,La Roche-sur-Yon,1,1,,url,Les Reflets,https://guide.michelin.com/en/pays-de-la-loire/la-roche-sur-yon/restaurant/les-reflets,michelin_url corrected
+rest_1157,Le Sarkara,Courchevel,2,2,,url,Le Sarkara,,none: MICHELIN page withdrawn since March 2026 (QA)
+rest_1158,Sylvestre Wahid - Les Grandes Alpes,Courchevel,2,2,,url,Sylvestre Wahid - Les Grandes Alpes,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/sylvestre-wahid-les-grandes-alpes,michelin_url corrected
+rest_1159,Maison Desamy,Mareuil-sur-Lay-Dissais,1,1,,url,Maison Desamy,https://guide.michelin.com/en/pays-de-la-loire/mareuil-sur-lay/restaurant/maison-desamy,michelin_url corrected
+rest_1160,Ursus,Tignes,1,1,,url,Ursus,https://guide.michelin.com/en/auvergne-rhone-alpes/tignes/restaurant/ursus,michelin_url corrected
+rest_1161,La Table de l'Ours,Val-d'Isère,1,1,,url,La Table de l'Ours,https://guide.michelin.com/en/auvergne-rhone-alpes/val-d-isre/restaurant/la-table-de-l-ours,michelin_url corrected
+rest_1162,Alpage,Courchevel,1,1,,url,Alpage,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/alpage,michelin_url corrected
+rest_1163,Le 1947 à Cheval Blanc,Courchevel,3,3,,url,Le 1947 à Cheval Blanc,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/le-1947,michelin_url corrected
+rest_1164,La Marine,L'Herbaudière,3,3,,url,La Marine,https://guide.michelin.com/en/pays-de-la-loire/l-herbaudire/restaurant/la-marine3780,michelin_url corrected
+rest_1165,L'Altitude,Courchevel,2,1,yes,url,L'Altitude,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/l-altitude,stars 2 -> 1 (2026 row corrected); michelin_url corrected
+rest_1166,Le Clocher des Pères,Saint-Martin-sur-la-Chambre,1,1,,url,Le Clocher des Pères,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-martin-sur-la-chambre/restaurant/le-clocher-des-peres,none
+rest_1167,René et Maxime Meilleur,Saint-Martin-de-Belleville,2,2,,url,René et Maxime Meilleur,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-martin-de-belleville/restaurant/rene-et-maxime-meilleur,michelin_url corrected
+rest_1168,Rosmadec Le Moulin,Pont-Aven,1,1,,url,Rosmadec Le Moulin,https://guide.michelin.com/en/bretagne/pont-aven/restaurant/moulin-de-rosmadec,michelin_url corrected
+rest_1169,Dyades au Domaine des Étangs,Massignac,1,1,,url,Dyades au Domaine des Étangs,https://guide.michelin.com/en/nouvelle-aquitaine/massignac/restaurant/dyades-au-domaine-des-etangs,michelin_url corrected
+rest_1170,L'Auberge des Glazicks,Plomodiern,2,2,,url,L'Auberge des Glazicks,https://guide.michelin.com/en/bretagne/plomodiern/restaurant/l-auberge-des-glazicks,michelin_url corrected
+rest_1171,Les Explorateurs - Hôtel Pashmina,Val-Thorens,1,1,,url,Les Explorateurs - Hôtel Pashmina,https://guide.michelin.com/en/auvergne-rhone-alpes/val-thorens/restaurant/les-explorateurs,none
+rest_1172,L'Embrun,Brest,1,1,,url,L'Embrun,https://guide.michelin.com/en/bretagne/brest/restaurant/l-embrun,none
+rest_1173,Ar Men Du,Névez,1,1,,url,Ar Men Du,https://guide.michelin.com/en/bretagne/nevez/restaurant/ar-men-du,none
+rest_1174,Maison Fantin Latour - Stéphane Froidevaux,Grenoble,1,1,,url,Maison Fantin Latour - Stéphane Froidevaux,https://guide.michelin.com/en/auvergne-rhone-alpes/grenoble/restaurant/maison-fantin-latour-stephane-froidevaux,michelin_url corrected
+rest_1175,Allium,Quimper,1,1,,url,Allium,https://guide.michelin.com/en/bretagne/quimper/restaurant/allium,michelin_url corrected
+rest_1176,Les Genêts,Brem-sur-Mer,1,1,,url,Les Genêts,https://guide.michelin.com/en/pays-de-la-loire/brem-sur-mer/restaurant/les-genets,michelin_url corrected
+rest_1177,Restaurant Marcon,Saint-Bonnet-le-Froid,3,3,,url,Restaurant Marcon,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-bonnet-le-froid/restaurant/restaurant-marcon,michelin_url corrected
+rest_1178,Maison Aribert,Uriage-les-Bains,2,2,,url,Maison Aribert,https://guide.michelin.com/en/auvergne-rhone-alpes/uriage-les-bains/restaurant/maison-aribert,none
+rest_1179,Palégrié Chez l'Henri,Autrans-Méaudre en Vercors,1,1,,url,Palégrié Chez l'Henri,https://guide.michelin.com/en/auvergne-rhone-alpes/autrans/restaurant/palegrie-chez-l-henri,michelin_url corrected
+rest_1180,Les Trois Rochers,Combrit,1,1,,coords 49m + name,Les Trois Rochers,https://guide.michelin.com/en/bretagne/combrit/restaurant/les-trois-rochers,michelin_url set
+rest_1181,L'Abissiou,Les Sables-d'Olonne,1,1,,url,L'Abissiou,https://guide.michelin.com/en/pays-de-la-loire/les-sables-d-olonne/restaurant/l-abissiou,michelin_url corrected
+rest_1182,Les Cèdres,Granges-les-Beaumont,1,1,,url,Les Cèdres,https://guide.michelin.com/en/auvergne-rhone-alpes/granges-les-beaumont/restaurant/les-cedres,michelin_url corrected
+rest_1183,Hostellerie de la Pointe Saint-Mathieu,Plougonvelin,1,1,,url,Hostellerie de la Pointe St-Mathieu,https://guide.michelin.com/en/bretagne/plougonvelin/restaurant/hostellerie-de-la-pointe-st-mathieu,michelin_url corrected
+rest_1184,Christopher Coutanceau,La Rochelle,3,3,,url,Christopher Coutanceau,https://guide.michelin.com/en/nouvelle-aquitaine/la-rochelle/restaurant/christopher-coutanceau,michelin_url corrected
+rest_1185,Asterales,Corrençon-en-Vercors,1,1,,coords 29m + name,Asterales,https://guide.michelin.com/en/auvergne-rhone-alpes/correnon-en-vercors/restaurant/asterales,michelin_url set
+rest_1186,Le Chamarlenc,Le Puy-en-Velay,1,1,,url,Le Chamarlenc,https://guide.michelin.com/en/auvergne-rhone-alpes/le-puy-en-velay/restaurant/le-chamarlenc,michelin_url corrected
+rest_1187,L'Écailler,La Flotte,1,1,yes,url,L'Écailler,https://guide.michelin.com/en/nouvelle-aquitaine/la-flotte/restaurant/l-ecailler,michelin_url corrected
+rest_1188,Maltacina,Saint-Théoffrey,1,1,yes,url,Maltacina,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-theoffrey_1515526/restaurant/maltacina,none
+rest_1189,Mandibule,Alixan,1,1,yes,url,Mandibule,https://guide.michelin.com/en/auvergne-rhone-alpes/alixan_1509150/restaurant/mandibule,michelin_url corrected
+rest_1190,La Cachette,Valence,1,1,,url,La Cachette,https://guide.michelin.com/en/auvergne-rhone-alpes/valence/restaurant/la-cachette,none
+rest_1191,Épithèque,Valence,1,1,,url,Épithèque,https://guide.michelin.com/en/auvergne-rhone-alpes/valence/restaurant/epitheque,michelin_url corrected
+rest_1192,Pic,Valence,3,3,,url,Pic,https://guide.michelin.com/en/auvergne-rhone-alpes/valence/restaurant/pic,michelin_url corrected
+rest_1193,La Ribaudière,Bourg-Charente,1,1,,url,La Ribaudière,https://guide.michelin.com/en/nouvelle-aquitaine/bourg-charente/restaurant/la-ribaudiere,michelin_url corrected
+rest_1194,Le Puy Tilleul,Tournemire,1,1,yes,url,Le Puy Tilleul,https://guide.michelin.com/en/auvergne-rhone-alpes/tournemire/restaurant/le-puy-tilleul,michelin_url corrected
+rest_1195,Les Foudres,Cognac,1,1,,url,Les Foudres,https://guide.michelin.com/en/nouvelle-aquitaine/cognac/restaurant/les-foudres,michelin_url corrected
+rest_1196,Le Haut-Allier,Alleyras,1,1,,url,Le Haut-Allier,https://guide.michelin.com/en/auvergne-rhone-alpes/alleyras/restaurant/le-haut-allier,michelin_url corrected
+rest_1197,Notes,Cognac,1,1,yes,url,Notes,https://guide.michelin.com/en/nouvelle-aquitaine/cognac/restaurant/notes,michelin_url corrected
+rest_1198,Le Carré d'Alethius,Charmes-sur-Rhône,1,1,,url,Le Carré d'Alethius,https://guide.michelin.com/en/auvergne-rhone-alpes/charmes-sur-rhne/restaurant/le-carre-d-alethius,michelin_url corrected
+rest_1199,La Table d'Olivier,Brive-la-Gaillarde,1,1,,url,La Table d'Olivier,https://guide.michelin.com/en/nouvelle-aquitaine/brive-la-gaillarde/restaurant/la-table-d-olivier,michelin_url corrected
+rest_1200,Serge Vieira,Chaudes-Aigues,2,2,,url,Serge Vieira,https://guide.michelin.com/en/auvergne-rhone-alpes/chaudes-aigues/restaurant/serge-vieira,michelin_url corrected
+rest_1201,Le Kléber - La Maison Bonnet,Grane,1,1,,url,Le Kléber - La Maison Bonnet,https://guide.michelin.com/en/auvergne-rhone-alpes/grane/restaurant/le-kleber-la-maison-bonnet,michelin_url corrected
+rest_1202,Cueillette,Altillac,1,1,,url,Cueillette,https://guide.michelin.com/en/nouvelle-aquitaine/altillac/restaurant/cueillette,michelin_url corrected
+rest_1203,L'Essentiel,Périgueux,1,1,,url,L'Essentiel,https://guide.michelin.com/en/nouvelle-aquitaine/prigueux/restaurant/l-essentiel117707,michelin_url corrected
+rest_1204,Le Petit Léon,Saint-Léon-sur-Vézère,1,1,,url,Le Petit Léon,https://guide.michelin.com/en/nouvelle-aquitaine/saint-leon-sur-vezere/restaurant/le-petit-leon,michelin_url corrected
+rest_1205,Lavandin - Château Les Oliviers de Salettes,Charols,1,1,,url,Lavandin - Château Les Oliviers de Salettes,https://guide.michelin.com/en/auvergne-rhone-alpes/charols/restaurant/lavandin-chateau-les-oliviers-de-salettes,michelin_url corrected
+rest_1206,Le Suquet - Sébastien Bras,Laguiole,3,1,,url,Le Suquet - Sébastien Bras,https://guide.michelin.com/en/occitanie/laguiole/restaurant/le-suquet-sebastien-bras,stars 3 -> 1 (2026 row corrected); michelin_url corrected
+rest_1207,Auberge de Montfleury,Saint-Germain,1,1,,url,Auberge de Montfleury,https://guide.michelin.com/en/auvergne-rhone-alpes/saint-germain/restaurant/auberge-de-montfleury,michelin_url corrected
+rest_1208,Le 1862 - Les Glycines,Les Eyzies-de-Tayac-Sireuil,1,1,,url,Le 1862 - Les Glycines,https://guide.michelin.com/en/nouvelle-aquitaine/les-eyzies-de-tayac/restaurant/le-1862,michelin_url corrected
+rest_1209,Le Colombier,Malataverne,1,1,,url,Le Colombier,https://guide.michelin.com/en/auvergne-rhone-alpes/malataverne/restaurant/le-colombier,michelin_url corrected
+rest_1210,Le Clair de la Plume,Grignan,1,1,,url,Le Clair de la Plume,https://guide.michelin.com/en/auvergne-rhone-alpes/grignan/restaurant/le-clair-de-la-plume,michelin_url corrected
+rest_1211,Émilie & Thomas - Moulin de Cambelong,Conques-en-Rouergue,1,1,,url,Émilie & Thomas - Moulin de Cambelong,https://guide.michelin.com/en/occitanie/conques/restaurant/emilie-thomas-moulin-de-cambelong,michelin_url corrected
+rest_1212,Le Vieux Logis,Trémolat,1,1,,url,Le Vieux Logis,https://guide.michelin.com/en/nouvelle-aquitaine/trmolat/restaurant/le-vieux-logis,michelin_url corrected
+rest_1213,La Tour des Vents,Monbazillac,1,1,,url,La Tour des Vents,https://guide.michelin.com/en/nouvelle-aquitaine/monbazillac/restaurant/la-tour-des-vents,michelin_url corrected
+rest_1214,Les Fresques - Château des Vigiers,Monestier,1,1,,url,Les Fresques - Château des Vigiers,https://guide.michelin.com/en/nouvelle-aquitaine/monestier/restaurant/les-fresques,michelin_url corrected
+rest_1215,Restaurant Hervé Busset,Rodez,1,1,,url,Restaurant Hervé Busset,https://guide.michelin.com/en/occitanie/rodez/restaurant/restaurant-herve-busset,michelin_url corrected
+rest_1216,Vieux Pont,Belcastel,1,1,,url,Vieux Pont,https://guide.michelin.com/en/occitanie/belcastel/restaurant/vieux-pont,michelin_url corrected
+rest_1217,La Table de Pavie,Saint-Émilion,2,2,,url,La Table de Pavie,https://guide.michelin.com/en/nouvelle-aquitaine/saint-milion/restaurant/la-table-de-pavie,none
+rest_1218,Le Gindreau,Saint-Médard,1,1,,url,Le Gindreau,https://guide.michelin.com/en/occitanie/saint-mdard/restaurant/le-gindreau,michelin_url corrected
+rest_1219,Logis de la Cadène,Saint-Émilion,1,1,,url,Logis de la Cadène,https://guide.michelin.com/en/nouvelle-aquitaine/saint-milion/restaurant/logis-de-la-cadene,michelin_url corrected
+rest_1220,Le Cèdre de Montcaud,Sabran,1,1,,url,Le Cèdre de Montcaud,https://guide.michelin.com/en/occitanie/sabran/restaurant/le-cedre-de-montcaud,michelin_url corrected
+rest_1221,L'Oustalet,Gigondas,1,1,,url,L'Oustalet,https://guide.michelin.com/en/provence-alpes-cote-dazur/gigondas/restaurant/l-oustalet,michelin_url corrected
+rest_1222,L'Auberge Saint Jean,Saint-Jean-de-Blaignac,1,1,,url,L'Auberge Saint Jean,https://guide.michelin.com/en/nouvelle-aquitaine/saint-jean-de-blaignac/restaurant/auberge-st-jean,michelin_url corrected
+rest_1223,Le Prince Noir - Vivien Durand,Lormont,1,1,,url,Le Prince Noir - Vivien Durand,https://guide.michelin.com/en/nouvelle-aquitaine/lormont/restaurant/le-prince-noir-vivien-durand,michelin_url corrected
+rest_1224,Le Saint Hilaire,Saint-Hilaire-de-Brethmas,1,1,,url,Le Saint Hilaire,https://guide.michelin.com/en/occitanie/saint-hilaire-de-brethmas_3915683/restaurant/le-saint-hilaire-1208787,michelin_url corrected
+rest_1225,La Bonne Étape,Château-Arnoux-Saint-Auban,1,1,,url,La Bonne Étape,https://guide.michelin.com/en/provence-alpes-cote-dazur/chteau-arnoux/restaurant/la-bonne-etape,michelin_url corrected
+rest_1226,Holodeck,Floressas,1,1,yes,url,Holodeck,https://guide.michelin.com/en/occitanie/floressas_1492997/restaurant/holodeck,michelin_url corrected
+rest_1227,Maison Nouvelle,Bordeaux,2,2,,url,Maison Nouvelle,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/maison-nouvelle,none
+rest_1228,Cent33,Bordeaux,1,1,yes,url,Cent33,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/le-cent-33,michelin_url corrected
+rest_1229,L'Oiseau Bleu,Bordeaux,1,1,,url,L'Oiseau Bleu,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/l-oiseau-bleu,michelin_url corrected
+rest_1230,Le Pressoir d'Argent - Gordon Ramsay,Bordeaux,2,2,,url,Le Pressoir d'Argent - Gordon Ramsay,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/le-pressoir-d-argent-gordon-ramsay,michelin_url corrected
+rest_1231,Soléna,Bordeaux,1,1,,url,Soléna,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/solena,michelin_url corrected
+rest_1232,Le Saint-James,Bouliac,1,1,,url,Le Saint-James,https://guide.michelin.com/en/nouvelle-aquitaine/bouliac/restaurant/le-saint-james,michelin_url corrected
+rest_1233,Amicis,Bordeaux,1,1,,url,Amicis,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/amicis,michelin_url corrected
+rest_1234,Le Pavillon des Boulevards,Bordeaux,1,1,,url,Le Pavillon des Boulevards,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/le-pavillon-des-boulevards,michelin_url corrected
+rest_1235,La Table d'Hôtes - Le Quatrième Mur,Bordeaux,1,1,,coords 44m + name,La Table d'Hôtes - Le Quatrième Mur,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/la-table-d-hotes-le-quatrieme-mur,michelin_url corrected
+rest_1236,Tentazioni,Bordeaux,1,1,,url,Tentazioni,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/tentazioni,michelin_url corrected
+rest_1237,Ressources,Bordeaux,1,1,,url,Ressources,https://guide.michelin.com/en/nouvelle-aquitaine/bordeaux/restaurant/ressources,michelin_url corrected
+rest_1238,La Table d'Uzès,Uzès,1,1,,url,La Table d'Uzès,https://guide.michelin.com/en/occitanie/uzs/restaurant/la-table-d-uzes,michelin_url corrected
+rest_1239,Maison Chenet - Entre Vigne et Garrigue,Pujaut,1,1,,url,Maison Chenet - Entre Vigne et Garrigue,https://guide.michelin.com/en/occitanie/pujaut/restaurant/maison-chenet-entre-vigne-et-garrigue,michelin_url corrected
+rest_1240,La Belle Vie,Saint-Hilaire-d'Ozilhan,1,1,yes,url,La Belle Vie,https://guide.michelin.com/en/occitanie/saint-hilaire-d-ozilhan_1503960/restaurant/la-belle-vie,michelin_url corrected
+rest_1241,Auberge Quintessence,Roubion,1,1,,url,Auberge Quintessence,https://guide.michelin.com/en/provence-alpes-cote-dazur/roubion/restaurant/auberge-quintessence,michelin_url corrected
+rest_1242,Le Prieuré,Villeneuve-lès-Avignon,1,1,,url,Le Prieuré,https://guide.michelin.com/en/occitanie/villeneuve-ls-avignon/restaurant/le-prieure13557,michelin_url corrected
+rest_1243,La Table de Xavier Mathieu,Joucas,1,1,,url,La Table de Xaxier Mathieu,https://guide.michelin.com/en/provence-alpes-cote-dazur/joucas/restaurant/la-table-de-xavier-mathieu,michelin_url corrected
+rest_1244,Le Vivier,L'Isle-sur-la-Sorgue,1,1,,url,Le Vivier,https://guide.michelin.com/en/provence-alpes-cote-dazur/l-isle-sur-la-sorgue/restaurant/le-vivier3857,michelin_url corrected
+rest_1245,Le Feuillée - Le Couvent des Minimes,Mane,1,1,,url,Le Feuillée - Le Couvent des Minimes,https://guide.michelin.com/en/provence-alpes-cote-dazur/mane/restaurant/le-feuillee-le-couvent-des-minimes,michelin_url corrected
+rest_1246,Auberge de la Roche,Valdeblore,1,1,yes,url,Auberge de la Roche,https://guide.michelin.com/en/provence-alpes-cote-dazur/valdeblore/restaurant/auberge-de-la-roche-1203180,michelin_url corrected
+rest_1247,Ineffable,Barbentane,1,1,,url,Ineffable,https://guide.michelin.com/en/provence-alpes-cote-dazur/barbentane_1504843/restaurant/ineffable,michelin_url corrected
+rest_1248,La Table des Amis,Bonnieux,2,2,,url,La Table des Amis,https://guide.michelin.com/en/provence-alpes-cote-dazur/bonnieux/restaurant/la-table-des-amis,michelin_url corrected
+rest_1249,Duende,Nîmes,2,2,,url,Duende,https://guide.michelin.com/en/occitanie/nimes/restaurant/duende,michelin_url corrected
+rest_1250,Lalique,Bommes,2,2,,url,Lalique,https://guide.michelin.com/en/nouvelle-aquitaine/bommes/restaurant/lalique,michelin_url corrected
+rest_1251,Rouge,Nîmes,1,1,,url,Rouge,https://guide.michelin.com/en/occitanie/nimes/restaurant/rouge-1200806,michelin_url corrected
+rest_1252,Skab,Nîmes,2,1,,url,Skab,https://guide.michelin.com/en/occitanie/nimes/restaurant/skab,stars 2 -> 1 (2026 row corrected)
+rest_1253,JU - Maison de Cuisine,Bonnieux,1,1,,url,JU - Maison de Cuisine,https://guide.michelin.com/en/provence-alpes-cote-dazur/bonnieux/restaurant/ju-maison-de-cuisine,michelin_url corrected
+rest_1254,Restaurant Pierre Grein,Manosque,1,1,,url,Restaurant Pierre Grein,https://guide.michelin.com/en/provence-alpes-cote-dazur/manosque/restaurant/restaurant-pierre-grein,michelin_url corrected
+rest_1255,L'Auberge de Saint-Rémy - Fanny Rey & Jonathan Wahid,Saint-Rémy-de-Provence,2,2,,url,L'Auberge de Saint-Rémy - Fanny Rey & Jonathan Wahid,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-rmy-de-provence/restaurant/l-auberge-de-saint-remy-fanny-rey-and-jonathan-wahid,none
+rest_1256,La Bastide de Moustiers,Moustiers-Sainte-Marie,1,1,,url,La Bastide de Moustiers,https://guide.michelin.com/en/provence-alpes-cote-dazur/moustiers-sainte-marie/restaurant/la-bastide-de-moustiers,michelin_url corrected
+rest_1257,Nacre,Arès,1,1,,url,Nacre,https://guide.michelin.com/en/nouvelle-aquitaine/ars/restaurant/nacre,michelin_url corrected
+rest_1258,Monique,Calvisson,1,1,,url,Monique,https://guide.michelin.com/en/occitanie/calvisson_1500992/restaurant/monique-1213895,michelin_url corrected
+rest_1259,La Petite Maison de Cucuron,Cucuron,1,1,,url,La Petite Maison de Cucuron,https://guide.michelin.com/en/provence-alpes-cote-dazur/cucuron/restaurant/la-petite-maison-de-cucuron,michelin_url corrected
+rest_1260,Michel Kayser - Restaurant Alexandre,Garons,2,2,,url,Michel Kayser - Restaurant Alexandre,https://guide.michelin.com/en/occitanie/garons/restaurant/michel-kayser-restaurant-alexandre,michelin_url corrected
+rest_1261,L'Oustau de Baumanière,Les Baux-de-Provence,2,3,,url,L'Oustau de Baumanière,https://guide.michelin.com/en/provence-alpes-cote-dazur/les-baux-de-provence/restaurant/l-oustau-de-baumaniere,stars 2 -> 3 (2026 row corrected); michelin_url corrected
+rest_1262,Le Goût du Bonheur - La Fenière,Cadenet,1,1,,url,Le Goût du Bonheur - La Fenière,https://guide.michelin.com/en/provence-alpes-cote-dazur/cadenet/restaurant/le-gout-du-bonheur-la-feniere,michelin_url corrected
+rest_1263,Garrigue,Ansouis,1,1,yes,url,Garrigue,https://guide.michelin.com/en/provence-alpes-cote-dazur/ansouis/restaurant/garrigue,michelin_url corrected
+rest_1264,L'Aupiho - Domaine de Manville,Les Baux-de-Provence,1,1,,url,L'Aupiho - Domaine de Manville,https://guide.michelin.com/en/provence-alpes-cote-dazur/les-baux-de-provence/restaurant/l-aupiho,michelin_url corrected
+rest_1265,Le Patio,Arcachon,1,1,,url,Le Patio,https://guide.michelin.com/en/nouvelle-aquitaine/arcachon/restaurant/le-patio396,none
+rest_1266,Auberge Le Prieuré,Moirax,1,1,,url,Auberge Le Prieuré,https://guide.michelin.com/en/nouvelle-aquitaine/moirax/restaurant/auberge-le-prieure,michelin_url corrected
+rest_1267,La Table de l'Orangerie - Château de Fonscolombe,Le Puy-Sainte-Réparade,1,1,,url,La Table de l'Orangerie - Château de Fonscolombe,https://guide.michelin.com/en/provence-alpes-cote-dazur/le-puy-sainte-rparade/restaurant/la-table-de-l-orangerie-chateau-de-fonscolombe,michelin_url corrected
+rest_1268,Villa Salone,Salon-de-Provence,1,1,,url,Villa Salone,https://guide.michelin.com/en/provence-alpes-cote-dazur/salon-de-provence/restaurant/villa-salone,michelin_url corrected
+rest_1269,La Réserve Rimbaud,Montpellier,1,1,,url,La Réserve Rimbaud,https://guide.michelin.com/en/occitanie/montpellier/restaurant/la-reserve-rimbaud,michelin_url corrected
+rest_1270,Mirazur,Menton,3,3,,url,Mirazur,https://guide.michelin.com/en/provence-alpes-cote-dazur/menton/restaurant/mirazur,michelin_url corrected
+rest_1271,Le Mas Bottero,Saint-Cannat,1,1,,url,Le Mas Bottero,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-cannat/restaurant/le-mas-bottero,michelin_url corrected
+rest_1272,Reflet d'Obione,Montpellier,1,1,,url,Reflet d'Obione,https://guide.michelin.com/en/occitanie/montpellier/restaurant/reflet-d-obione,michelin_url corrected
+rest_1273,Pastis Restaurant,Montpellier,1,1,,url,Pastis Restaurant,https://guide.michelin.com/en/occitanie/montpellier/restaurant/pastis-restaurant,michelin_url corrected
+rest_1274,Jardin des Sens,Montpellier,1,1,,url,Jardin des Sens,https://guide.michelin.com/en/occitanie/montpellier/restaurant/jardin-des-sens,michelin_url corrected
+rest_1275,Ébullition,Montpellier,1,1,,url,Ébullition,https://guide.michelin.com/en/occitanie/montpellier/restaurant/ebullition,michelin_url corrected
+rest_1276,Leclère,Montpellier,1,1,,url,Leclere,https://guide.michelin.com/en/occitanie/montpellier/restaurant/leclere,none
+rest_1277,La Table du Cap Estel,Èze-Bord-de-Mer,1,1,yes,url,La Table du Cap Estel,https://guide.michelin.com/en/provence-alpes-cote-dazur/ze-bord-de-mer/restaurant/la-table-du-cap-estel,none
+rest_1278,La Table de Pierre,Saint-Paul-de-Vence,1,1,yes,url,La Table de Pierre,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-paul-de-vence/restaurant/la-table-de-pierre,michelin_url corrected
+rest_1279,Château Eza,Èze,1,1,,url,Château Eza,https://guide.michelin.com/en/provence-alpes-cote-dazur/ze/restaurant/chateau-eza,michelin_url corrected
+rest_1280,Flaveur,Nice,2,2,,url,Flaveur,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/flaveur,michelin_url corrected
+rest_1281,Alain Llorca,La Colle-sur-Loup,1,1,,url,Alain Llorca,https://guide.michelin.com/en/provence-alpes-cote-dazur/la-colle-sur-loup/restaurant/alain-llorca,michelin_url corrected
+rest_1282,La Chassagnette,Arles,1,1,,url,La Chassagnette,https://guide.michelin.com/en/provence-alpes-cote-dazur/arles/restaurant/la-chassagnette,none
+rest_1283,La Chèvre d'Or,Èze,2,2,,url,La Chèvre d'Or,https://guide.michelin.com/en/provence-alpes-cote-dazur/ze/restaurant/la-chevre-d-or,michelin_url corrected
+rest_1284,Le Art - Château de la Gaude,Aix-en-Provence,1,1,,url,Le Art,https://guide.michelin.com/en/provence-alpes-cote-dazur/aix-en-provence/restaurant/le-art-chateau-de-la-gaude,michelin_url corrected
+rest_1285,Racines - Bruno Cirino,Nice,1,1,,url,Racines - Bruno Cirino,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/racines-bruno-cirino,michelin_url corrected
+rest_1286,Le Chantecler,Nice,1,1,,url,Le Chantecler,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/le-chantecler,michelin_url corrected
+rest_1287,Le Restaurant des Rois - La Réserve de Beaulieu,Beaulieu-sur-Mer,1,1,,url,Le Restaurant des Rois - La Réserve de Beaulieu,https://guide.michelin.com/en/provence-alpes-cote-dazur/beaulieu-sur-mer/restaurant/restaurant-des-rois,michelin_url corrected
+rest_1288,Épicentre,Nice,1,1,yes,url,Épicentre,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/epicentre-1218827,michelin_url corrected
+rest_1289,Les Agitateurs,Nice,1,1,,url,Les Agitateurs,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/les-agitateurs,michelin_url corrected
+rest_1290,L'Aromate,Nice,1,1,,url,L'Aromate,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/l-aromate233368,michelin_url corrected
+rest_1291,ONICE,Nice,1,1,,url,ONICE,https://guide.michelin.com/en/provence-alpes-cote-dazur/nice/restaurant/onice,michelin_url corrected
+rest_1292,La Table de Pierre Reboul,Aix-en-Provence,1,1,,url,La Table de Pierre Reboul,https://guide.michelin.com/en/provence-alpes-cote-dazur/aix-en-provence/restaurant/la-table-de-pierre-reboul,michelin_url corrected
+rest_1293,Le Cap,Saint-Jean-Cap-Ferrat,1,1,,url,Le Cap,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-jean-cap-ferrat/restaurant/le-cap,none
+rest_1294,Étude,Aix-en-Provence,1,1,,url,Étude,https://guide.michelin.com/en/provence-alpes-cote-dazur/aix-en-provence/restaurant/etude-1207141,michelin_url corrected
+rest_1295,Faventia,Tourrettes,1,1,,url,Faventia,https://guide.michelin.com/en/provence-alpes-cote-dazur/tourrettes/restaurant/faventia,michelin_url corrected
+rest_1296,Les Terraillers,Biot,1,1,,url,Les Terraillers,https://guide.michelin.com/en/provence-alpes-cote-dazur/biot/restaurant/les-terraillers,michelin_url corrected
+rest_1297,Granit - La Mécanique des Frères Bonano,Colombières-sur-Orb,1,1,,url,Granit - La Mécanique des Frères Bonano,https://guide.michelin.com/en/occitanie/colombires-sur-orb/restaurant/granit,michelin_url corrected
+rest_1298,La Bastide Bourrelly - Mathias Dandine,Calas-Cabriès,1,1,,url,La Bastide Bourrelly - Mathias Dandine,https://guide.michelin.com/en/provence-alpes-cote-dazur/calas-cabries_1505051/restaurant/la-bastide-bourrelly-mathias-dandine,none
+rest_1299,Bessem,Mandelieu-la-Napoule,1,1,,url,Bessem,https://guide.michelin.com/en/provence-alpes-cote-dazur/mandelieu-la-napoule/restaurant/bessem,michelin_url corrected
+rest_1300,La Passagère - Hôtel Belles Rives,Juan-les-Pins,1,1,,url,La Passagère - Hôtel Belles Rives,https://guide.michelin.com/en/provence-alpes-cote-dazur/juan-les-pins/restaurant/la-passagere,none
+rest_1301,La Palme d'Or,Cannes,1,1,,url,La Palme d'Or,https://guide.michelin.com/en/provence-alpes-cote-dazur/cannes/restaurant/la-palme-d-or,michelin_url corrected
+rest_1302,Les Pêcheurs,Antibes,1,1,,url,Les Pêcheurs,https://guide.michelin.com/en/provence-alpes-cote-dazur/antibes/restaurant/les-pecheurs,michelin_url corrected
+rest_1303,Restaurant De Lauzun,Pézenas,1,1,,url,Restaurant De Lauzun,https://guide.michelin.com/en/occitanie/pzenas/restaurant/restaurant-de-lauzun,michelin_url corrected
+rest_1304,Louroc - Hôtel du Cap-Eden-Roc,Antibes,1,1,,url,Louroc - Hôtel du Cap-Eden-Roc,https://guide.michelin.com/en/provence-alpes-cote-dazur/antibes/restaurant/louroc,michelin_url corrected
+rest_1305,Bruno,Lorgues,1,1,,url,Bruno,https://guide.michelin.com/en/provence-alpes-cote-dazur/lorgues/restaurant/bruno,michelin_url corrected
+rest_1306,Mareluna,Théoule-sur-Mer,1,1,,url,Mareluna,https://guide.michelin.com/en/provence-alpes-cote-dazur/thoule-sur-mer/restaurant/mareluna,michelin_url corrected
+rest_1307,Villa Pinewood,Payrin-Augmontel,1,1,,url,Villa Pinewood,https://guide.michelin.com/en/occitanie/payrin-augmontel/restaurant/villa-pinewood,michelin_url corrected
+rest_1308,Auberge de la Forge,Lavalette,1,1,,url,Auberge de la Forge,https://guide.michelin.com/en/occitanie/lavalette/restaurant/auberge-de-la-forge,michelin_url corrected
+rest_1309,Chez Jeannette,Flassans-sur-Issole,1,1,,url,Chez Jeannette,https://guide.michelin.com/en/provence-alpes-cote-dazur/flassans-sur-issole_1505557/restaurant/chez-jeannette,michelin_url corrected
+rest_1310,L'Oursin,Carry-le-Rouet,1,1,yes,url,L'Oursin,https://guide.michelin.com/en/provence-alpes-cote-dazur/carry-le-rouet_1505150/restaurant/l-oursin,michelin_url corrected
+rest_1311,L'Écorce,Toulouse,1,1,yes,url,L'Écorce,https://guide.michelin.com/en/occitanie/toulouse/restaurant/l-ecorce-1243609,michelin_url corrected
+rest_1312,Maison Pellestor Veyrier,Colomiers,1,1,yes,url,Maison Pellestor Veyrier,https://guide.michelin.com/en/occitanie/colomiers/restaurant/maison-pellestor-veyrier,none
+rest_1313,Acte 2 Yannick Delpech,Toulouse,1,1,,url,Acte 2 Yannick Delpech,https://guide.michelin.com/en/occitanie/toulouse/restaurant/acte-2-yannick-delpech,michelin_url corrected
+rest_1314,Michel Sarran,Toulouse,1,1,,url,Michel Sarran,https://guide.michelin.com/en/occitanie/toulouse/restaurant/michel-sarran,michelin_url corrected
+rest_1315,Stéphane Tournié - Les Jardins de l'Opéra,Toulouse,1,1,,url,Stéphane Tournié - Les Jardins de l'Opéra,https://guide.michelin.com/en/occitanie/toulouse/restaurant/stephane-tournie-les-jardins-de-l-opera,michelin_url corrected
+rest_1316,En Pleine Nature,Quint-Fonsegrives,1,1,,url,En Pleine Nature,https://guide.michelin.com/en/occitanie/quint-fonsegrives/restaurant/en-pleine-nature,michelin_url corrected
+rest_1317,Agapes,Toulouse,1,1,yes,url,Agapes,https://guide.michelin.com/en/occitanie/toulouse/restaurant/agapes,michelin_url corrected
+rest_1318,SEPT,Toulouse,1,1,,url,SEPT,https://guide.michelin.com/en/occitanie/toulouse/restaurant/sept-1207676,michelin_url corrected
+rest_1319,Une Table au Sud,Marseille,1,1,,url,"Une Table, au Sud",https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/une-table-au-sud,michelin_url corrected
+rest_1320,La Magdeleine - Mathias Dandine,Gémenos,1,1,,url,La Magdeleine - Mathias Dandine,https://guide.michelin.com/en/provence-alpes-cote-dazur/gmenos/restaurant/la-magdeleine-mathias-dandine,michelin_url corrected
+rest_1321,Le Petit Nice,Marseille,3,3,,coords 16m + name,Le Petit Nice,https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/le-petit-nice,michelin_url set
+rest_1322,Auffo,Marseille,1,1,yes,url,Auffo,https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/auffo,michelin_url corrected
+rest_1323,Belle de Mars,Marseille,1,1,,url,Belle de Mars,https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/belle-de-mars,michelin_url corrected
+rest_1324,Calice,Béziers,1,1,,url,Calice,https://guide.michelin.com/en/occitanie/bziers/restaurant/calice,michelin_url corrected
+rest_1325,L'Alter-Native,Béziers,1,1,,url,L'Alter-Native,https://guide.michelin.com/en/occitanie/bziers/restaurant/l-alter-native,michelin_url corrected
+rest_1326,AM par Alexandre Mazzia,Marseille,3,3,,url,AM par Alexandre Mazzia,https://guide.michelin.com/en/provence-alpes-cote-dazur/marseille/restaurant/am-par-alexandre-mazzia,michelin_url corrected
+rest_1327,Le Puits Saint Jacques,Pujaudran,1,1,,url,Le Puits Saint Jacques,https://guide.michelin.com/en/occitanie/pujaudran/restaurant/le-puits-st-jacques,michelin_url corrected
+rest_1328,La Villa Madie,Cassis,3,3,,url,La Villa Madie,https://guide.michelin.com/en/provence-alpes-cote-dazur/cassis/restaurant/la-villa-madie,michelin_url corrected
+rest_1329,En Marge,Aureville,1,1,,url,En Marge,https://guide.michelin.com/en/occitanie/aureville/restaurant/en-marge,michelin_url corrected
+rest_1330,La Vague d'Or - Cheval Blanc St-Tropez,Saint-Tropez,3,3,,url,La Vague d'Or - Cheval Blanc St-Tropez,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-tropez/restaurant/la-vague-d-or-cheval-blanc-st-tropez,michelin_url corrected
+rest_1331,Arnaud Donckele & Maxime Frédéric at Louis Vuitton,Saint-Tropez,1,1,,url,Arnaud Donckele & Maxime Frédéric at Louis Vuitton,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-tropez/restaurant/arnaud-donckele-maxime-frederic-at-louis-vuitton,michelin_url corrected
+rest_1332,La Terrasse - Cheval Blanc St-Tropez,Saint-Tropez,1,1,,url,La Terrasse - Cheval Blanc St-Tropez,https://guide.michelin.com/en/provence-alpes-cote-dazur/saint-tropez/restaurant/la-terrasse-cheval-blanc-st-tropez,michelin_url corrected
+rest_1333,La Table de Nans,La Ciotat,1,1,,url,La Table de Nans,https://guide.michelin.com/en/provence-alpes-cote-dazur/la-ciotat/restaurant/la-table-de-nans,michelin_url corrected
+rest_1334,Couleurs de Shimatani,La Ciotat,1,1,,url,Couleurs de Shimatani,https://guide.michelin.com/en/provence-alpes-cote-dazur/la-ciotat/restaurant/couleurs-de-shimatani,michelin_url corrected
+rest_1335,La Table Mirasol,Mont-de-Marsan,1,1,,url,La Table Mirasol,https://guide.michelin.com/en/nouvelle-aquitaine/mont-de-marsan/restaurant/la-table-mirasol,michelin_url corrected
+rest_1336,La Voile - La Réserve Ramatuelle,Ramatuelle,1,2,,url,La Voile - La Réserve Ramatuelle,https://guide.michelin.com/en/provence-alpes-cote-dazur/ramatuelle/restaurant/la-voile,stars 1 -> 2 (2026 row corrected); michelin_url corrected
+rest_1337,Les Oliviers,Bandol,1,1,yes,url,Les Oliviers,https://guide.michelin.com/en/provence-alpes-cote-dazur/bandol/restaurant/les-oliviers122360,none
+rest_1338,La Palmeraie - Château de Valmer,La Croix-Valmer,1,1,,url,La Palmeraie - Château de Valmer,https://guide.michelin.com/en/provence-alpes-cote-dazur/la-croix-valmer/restaurant/la-palmeraie,michelin_url corrected
+rest_1339,L'Oursin - Hôtel Les Roches,Le Lavandou,1,1,yes,url,L'Oursin - Hôtel Les Roches,https://guide.michelin.com/en/provence-alpes-cote-dazur/le-lavandou/restaurant/l-oursin-hotel-les-roches,michelin_url corrected
+rest_1340,Shanael,Toulon,1,1,yes,url,Shanael,https://guide.michelin.com/en/provence-alpes-cote-dazur/toulon/restaurant/shanael,michelin_url corrected
+rest_1341,La Maison Despouès,Puylausic,1,1,,url,La Maison Despouè s,https://guide.michelin.com/en/occitanie/puylausic_1498483/restaurant/la-maison-despoues,michelin_url corrected
+rest_1342,La Table de Franck Putelat,Carcassonne,2,2,,url,La Table de Franck Putelat,https://guide.michelin.com/en/occitanie/carcassonne/restaurant/la-table-de-franck-putelat,michelin_url corrected
+rest_1343,Les Prés d'Eugénie - Michel Guérard,Eugénie-les-Bains,3,3,,url,Les Prés d'Eugénie - Michel Guérard,https://guide.michelin.com/en/nouvelle-aquitaine/eugnie-les-bains/restaurant/les-pres-d-eugenie-michel-guerard,none
+rest_1344,L'Orangerie,Eugénie-les-Bains,1,1,,url,L'Orangerie,https://guide.michelin.com/en/nouvelle-aquitaine/eugnie-les-bains/restaurant/l-orangerie-1209337,michelin_url corrected
+rest_1345,Auberge du Vieux Puits,Fontjoncouse,3,3,,url,Auberge du Vieux Puits,https://guide.michelin.com/en/occitanie/fontjoncouse/restaurant/auberge-du-vieux-puits,michelin_url corrected
+rest_1346,Relais de la Poste,Magescq,1,1,,url,Relais de la Poste,https://guide.michelin.com/en/nouvelle-aquitaine/magescq/restaurant/relais-de-la-poste11709,michelin_url corrected
+rest_1347,Villa de l'Étang Blanc,Seignosse,1,1,,url,Villa de l'Étang Blanc,https://guide.michelin.com/en/nouvelle-aquitaine/seignosse/restaurant/villa-de-l-etang-blanc,michelin_url corrected
+rest_1348,Le Hittau,Saint-Vincent-de-Tyrosse,1,1,,url,Le Hittau,https://guide.michelin.com/en/nouvelle-aquitaine/saint-vincent-de-tyrosse/restaurant/le-hittau,michelin_url corrected
+rest_1349,La Galinette,Perpignan,1,1,,url,La Galinette,https://guide.michelin.com/en/occitanie/perpignan/restaurant/la-galinette,michelin_url corrected
+rest_1350,L'Almandin,Saint-Cyprien,1,1,,url,L'Almandin,https://guide.michelin.com/en/occitanie/saint-cyprien/restaurant/l-almandin,michelin_url corrected
+rest_1351,La Table d'Aurélien Largeau,Biarritz,1,1,,url,La Table d'Aurélien Largeau,https://guide.michelin.com/en/nouvelle-aquitaine/biarritz/restaurant/la-table-d-aurelien-largeau,michelin_url corrected
+rest_1352,L'Impertinent,Biarritz,1,1,,url,L'Impertinent,https://guide.michelin.com/en/nouvelle-aquitaine/biarritz/restaurant/l-impertinent,michelin_url corrected
+rest_1353,La Maison de Pierre,Hasparren,1,1,,url,La Maison de Pierre,https://guide.michelin.com/en/nouvelle-aquitaine/hasparren/restaurant/la-maison-de-pierre,michelin_url corrected
+rest_1354,Moulin d'Alotz,Arcangues,1,1,,url,Moulin d'Alotz,https://guide.michelin.com/en/nouvelle-aquitaine/arcangues/restaurant/moulin-d-alotz,michelin_url corrected
+rest_1355,La Balette,Collioure,1,1,,url,La Balette,https://guide.michelin.com/en/occitanie/collioure/restaurant/la-balette,none
+rest_1356,Briketenia,Guéthary,1,1,,url,Brikéténia,https://guide.michelin.com/en/nouvelle-aquitaine/guthary/restaurant/briketenia,michelin_url corrected
+rest_1357,Les Frères Ibarboure,Bidart,1,1,,url,La Table des Frères Ibarboure,https://guide.michelin.com/en/nouvelle-aquitaine/bidart/restaurant/les-freres-ibarboure,michelin_url corrected
+rest_1358,Choko Ona,Espelette,1,1,,url,Choko Ona,https://guide.michelin.com/en/nouvelle-aquitaine/espelette/restaurant/choko-ona,michelin_url corrected
+rest_1359,La Table de Cédric Béchade - L'Auberge Basque,Saint-Pée-sur-Nivelle,1,1,,url,La Table de Cédric Béchade - L'Auberge Basque,https://guide.michelin.com/en/nouvelle-aquitaine/saint-pe-sur-nivelle/restaurant/la-table-de-cedric-bechade-l-auberge-basque,michelin_url corrected
+rest_1360,Le Kaïku,Saint-Jean-de-Luz,1,1,,url,Le Kaïku,https://guide.michelin.com/en/nouvelle-aquitaine/saint-jean-de-luz/restaurant/le-kaiku,michelin_url corrected
+rest_1361,Ekaitza,Ciboure,2,2,,url,Ekaitza,https://guide.michelin.com/en/nouvelle-aquitaine/ciboure/restaurant/ekaitza,michelin_url corrected
+rest_1362,Fario,Céret,1,1,,url,Fario,https://guide.michelin.com/en/occitanie/cret/restaurant/fario-1215907,michelin_url corrected
+rest_1363,Ithurria,Ainhoa,1,1,,url,Ithurria,https://guide.michelin.com/en/nouvelle-aquitaine/ainhoa/restaurant/ithurria,none
+rest_1364,Le Charlie,Porticcio,1,1,,url,Le Charlie,https://guide.michelin.com/en/corse/porticcio/restaurant/le-charlie,michelin_url corrected
+rest_1365,Casadelmar,Porto-Vecchio,2,2,,url,Casadelmar,https://guide.michelin.com/en/corse/porto-vecchio/restaurant/casadelmar,michelin_url corrected
+rest_1366,La Table de la Ferme,Sartène,1,1,,url,La Table de la Ferme,https://guide.michelin.com/en/corse/sartene_1508622/restaurant/la-table-de-la-ferme,michelin_url corrected
+rest_1367,Finestra by Italo Bassi,Bonifacio,1,1,,url,Finestra by Italo Bassi,https://guide.michelin.com/en/corse/bonifacio/restaurant/finestra-by-italo-bassi,michelin_url corrected
+rest_1383,Le Doyenné,Saint-Vrain,,,,url,,,none: not in the 2026 France list (not starred in production)
