@@ -171,11 +171,11 @@ Full procedure in `DATABASE_IMPORT_GUIDE.md`. The order is not negotiable; each 
 
 **Codes decide, names may only propose.** Four venue names collide inside a single country. La Brezza appears twice in Switzerland at different star counts because one chef cooks in each seasonally. Deduplication and joins key on the code; a name may generate a candidate for a human to confirm and nothing more. Search matches on name, and every result must show its city and country.
 
-**Three ways a restaurant qualifies.** At least one MICHELIN star, a place on the current World's 50 Best list, or membership of the Best of the Best hall of fame. The third is bounded at eleven restaurants and admits former No.1s only — not every restaurant that has ever ranked. Unstarred Guide entries, including Bib Gourmand, are out of scope.
+**Four ways a restaurant qualifies.** At least one MICHELIN star, a place on the current World's 50 Best list, membership of the Best of the Best hall of fame, or a place in our own editorial Selection (`editorial_selections`, "Mantelier Selection" in the app; added 2026-10-28). The third is bounded at eleven restaurants and admits former No.1s only — not every restaurant that has ever ranked. The fourth is chosen one restaurant at a time and is never an award. Unstarred Guide entries, including Bib Gourmand, are out of scope.
 
 **`michelin_stars` is NULL, never zero.** **A NULL `michelin_stars` means the venue does not currently hold a MICHELIN star.** It covers two situations: venues in countries where MICHELIN awards no stars, and venues inside a covered guide that are currently unstarred. `inclusion_reason` records why the row exists and is what distinguishes the two.
 
-It must never render as "no award" or as an empty star row — render the World's 50 Best rank instead.
+It must never render as "no award" or as an empty star row — render the World's 50 Best rank instead, or the Selection label.
 
 **Three hotel-scope rules, mutually exclusive.** `hotels` holds only Key hotels. `hotel_restaurants` holds only links to Key hotels already present. A restaurant in a non-Key hotel records the property in `property_name`, with no hotel row and no link. 33 restaurants are in the third case.
 

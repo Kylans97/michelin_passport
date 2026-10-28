@@ -208,6 +208,14 @@ stop and say so rather than working around it.
 No Bib Gourmand or unstarred MICHELIN Guide entries. No Green Star in award
 history. World's 50 Best is in scope.
 
+The one route in for a restaurant without a star or a ranking is our own
+editorial **Selection** (decided 2026-10-28): `inclusion_reason =
+'editorial_selection'`, current membership in `editorial_selections` where
+`removed_on is null`. Shown as "Mantelier Selection"; the brand name stays
+out of identifiers. It is editorial judgement, not an award — never gold,
+`michelin_stars` NULL when unstarred — and it is chosen one restaurant at a
+time, never a bulk import of unstarred Guide entries.
+
 ---
 
 ## Working standards

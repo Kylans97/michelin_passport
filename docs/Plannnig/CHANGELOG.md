@@ -10,6 +10,24 @@ The format follows Keep a Changelog.
 
 ### Added
 
+- 2026-10-28 — The editorial Selection ("Mantelier Selection"), a fourth
+  way into the catalogue next to a MICHELIN star, World's 50 Best and the
+  hall of fame, decided by the product owner so restaurants we choose
+  ourselves can be listed without an award. **Prepared, not applied.**
+  - **`20261017130000_add_editorial_selection.sql`:** widens
+    `restaurants.inclusion_reason` with `editorial_selection`, and adds
+    `public.editorial_selections` (one row per entry, `removed_on` instead
+    of deleting, at most one current entry per restaurant). Public read,
+    select-only grant to `anon`/`authenticated`, no client write. Replayed
+    on a throwaway local Postgres 17 against a stub `restaurants` table:
+    the constraint, the one-current-entry index, the date check and the
+    grants behave as intended; not replayed on the full Supabase stack.
+  - First two entries prepared in
+    `supabase/data/enrichment/editorial_selection/`: Tacite and Petit
+    Péché, Amsterdam. Google Place IDs still to be found before apply.
+  - Scope rule updated in `DATABASE_ARCHITECTURE.md`, `START_HERE.md` and
+    `CLAUDE.md`. No app code reads the Selection yet.
+
 - 2026-10-28 — In-app review for admins, phase 1 of
   `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. Reviewing a
   venue claim, an about text or a photo meant finding the row in the
