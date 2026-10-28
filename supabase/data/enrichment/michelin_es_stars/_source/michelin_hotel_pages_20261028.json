@@ -1,0 +1,272 @@
+{
+ "/en/hotels-stays/barcelona/abac-restaurant-hotel-1581": {
+  "h1": "ABaC Restaurant & Hotel",
+  "ld_name": "ABaC Restaurant & Hotel in Barcelona",
+  "lat": 41.410475,
+  "lon": 2.13687,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Avda. Tibidabo 1\",\"addressLocality\":\"Barcelona\",\"postalCode\":\"08022\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Catalonia\"}"
+ },
+ "/en/hotels-stays/barcelona/hotel-arts-barcelona-7408": {
+  "h1": "Hotel Arts Barcelona",
+  "ld_name": "Hotel Arts Barcelona in Barcelona",
+  "lat": 41.38598,
+  "lon": 2.196771,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Marina, 19-21\",\"addressLocality\":\"Barcelona\",\"postalCode\":\"08005\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Catalonia\"}"
+ },
+ "/en/hotels-stays/barcelona/intercontinental-barcelona-13471": {
+  "h1": "Intercontinental Barcelona",
+  "ld_name": "Intercontinental Barcelona in Barcelona",
+  "lat": 41.37279,
+  "lon": 2.15492,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Avenida Rius y Taulet, 1-3\",\"addressLocality\":\"Barcelona\",\"postalCode\":\"08004\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Catalonia\"}"
+ },
+ "/en/hotels-stays/barcelona/mandarin-oriental-barcelona-6386": {
+  "h1": "Mandarin Oriental, Barcelona",
+  "ld_name": "Mandarin Oriental, Barcelona in Barcelona",
+  "lat": 41.39109,
+  "lon": 2.16658,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"38-40, Passeig de Gràcia\",\"addressLocality\":\"Barcelona\",\"postalCode\":\"08007\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Catalonia\"}"
+ },
+ "/en/hotels-stays/barcelona/monument-hotel-8177": {
+  "h1": "Monument Hotel",
+  "ld_name": "Monument Hotel in Barcelona",
+  "lat": 41.393807,
+  "lon": 2.162249,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Passeig de Gràcia 75\",\"addressLocality\":\"Barcelona\",\"postalCode\":\"08008\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Catalonia\"}"
+ },
+ "/en/hotels-stays/barcelona/ohla-hotel-5435": {
+  "h1": "Ohla Barcelona",
+  "ld_name": "Ohla Barcelona in Barcelona",
+  "lat": 41.38723,
+  "lon": 2.174396,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Laietana 49\",\"addressLocality\":\"Barcelona\",\"postalCode\":\"08003\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Catalonia\"}"
+ },
+ "/en/hotels-stays/bilbao/tayko-bilbao-10425": {
+  "h1": "Tayko Bilbao",
+  "ld_name": "Tayko Bilbao in Bilbao",
+  "lat": 43.25798,
+  "lon": -2.92639,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Calle de la Ribera, 13\",\"addressLocality\":\"Bilbao\",\"postalCode\":\"48005\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Basque Country\"}"
+ },
+ "/en/hotels-stays/cadiz/gran-melia-sancti-petri-10267": {
+  "h1": "Palacio de Sancti Petri, Gran Meliá",
+  "ld_name": "Palacio de Sancti Petri, Gran Meliá in Cádiz",
+  "lat": 36.34713,
+  "lon": -6.16445,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Chiclana Costa S/N\",\"addressLocality\":\"Cádiz\",\"postalCode\":\"11139\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Andalusia\"}"
+ },
+ "/en/hotels-stays/gran-canaria/santa-catalina-a-royal-hideaway-hotel-13700": {
+  "h1": "Santa Catalina, a Royal Hideaway Hotel",
+  "ld_name": "Santa Catalina, a Royal Hideaway Hotel in Gran Canaria",
+  "lat": 28.12108,
+  "lon": -15.42818,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"León y Castillo, 227\",\"addressLocality\":\"Gran Canaria\",\"postalCode\":\"35005\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Canary Islands\"}"
+ },
+ "/en/hotels-stays/huesca/canfranc-estacion-a-royal-hideaway-hotel-13117": {
+  "h1": "Canfranc Estación, a Royal Hideaway Hotel",
+  "ld_name": "Canfranc Estación, a Royal Hideaway Hotel in Huesca",
+  "lat": 42.75104,
+  "lon": -0.51456,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Canfranc estación S/N\",\"addressLocality\":\"Huesca\",\"postalCode\":\"22880\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Aragón\"}"
+ },
+ "/en/hotels-stays/madrid/hotel-ritz-5865": {
+  "h1": "Mandarin Oriental Ritz, Madrid",
+  "ld_name": "Mandarin Oriental Ritz, Madrid in Madrid",
+  "lat": 40.415705,
+  "lon": -3.693547,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Plaza de la Lealtad 5\",\"addressLocality\":\"Madrid\",\"postalCode\":\"28014\",\"addressCountry\":\"ESP\"}"
+ },
+ "/en/hotels-stays/madrid/hotel-urban-5630": {
+  "h1": "Urban",
+  "ld_name": "Urban in Madrid",
+  "lat": 40.416322,
+  "lon": -3.698637,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Carrera de San Jeronimo 34\",\"addressLocality\":\"Madrid\",\"postalCode\":\"28014\",\"addressCountry\":\"ESP\"}"
+ },
+ "/en/hotels-stays/madrid/nh-collection-madrid-eurobuilding-10316": {
+  "h1": "NH Collection Madrid Eurobuilding",
+  "ld_name": "NH Collection Madrid Eurobuilding in Madrid",
+  "lat": 40.45829,
+  "lon": -3.68584,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Padre Damián, 23\",\"addressLocality\":\"Madrid\",\"postalCode\":\"28036\",\"addressCountry\":\"ESP\"}"
+ },
+ "/en/hotels-stays/majorca/cap-vermell-grand-hotel-118902-8439": {
+  "h1": "Cap Vermell Grand Hotel",
+  "ld_name": "Cap Vermell Grand Hotel in Mallorca",
+  "lat": 39.66901,
+  "lon": 3.438,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Urbanización Atalaya de Canyamel, Vial A, 12\",\"addressLocality\":\"Mallorca\",\"postalCode\":\"07589\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Balearic Islands\"}"
+ },
+ "/en/hotels-stays/majorca/castell-son-claret-10110": {
+  "h1": "Castell Son Claret",
+  "ld_name": "Castell Son Claret in Mallorca",
+  "lat": 39.592174,
+  "lon": 2.479584,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Carretera Es Capedellà-Galilea, Km 1,7\",\"addressLocality\":\"Mallorca\",\"postalCode\":\"07196\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Balearic Islands\"}"
+ },
+ "/en/hotels-stays/majorca/convent-de-la-missio-grand-luxury-boutique-hotel-6707-7476": {
+  "h1": "Convent de La Missió, Grand Luxury Boutique Hotel",
+  "ld_name": "Convent de La Missió, Grand Luxury Boutique Hotel in Mallorca",
+  "lat": 39.57373,
+  "lon": 2.65138,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Carrer de la Missió, 7A\",\"addressLocality\":\"Mallorca\",\"postalCode\":\"07003\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Balearic Islands\"}"
+ },
+ "/en/hotels-stays/majorca/el-llorenc-parc-de-la-mar-adults-only-9395": {
+  "h1": "El Llorenç Parc de la Mar",
+  "ld_name": "El Llorenç Parc de la Mar in Mallorca",
+  "lat": 39.565859,
+  "lon": 2.652967,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Plaça de Llorenç Villalonga, 4, Palma de Mallorca\",\"addressLocality\":\"Mallorca\",\"postalCode\":\"07001\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Balearic Islands\"}"
+ },
+ "/en/hotels-stays/majorca/es-princep-9273": {
+  "h1": "Es Princep",
+  "ld_name": "Es Princep in Mallorca",
+  "lat": 39.56564,
+  "lon": 2.65525,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Carrer de Bala Roja, 1\",\"addressLocality\":\"Mallorca\",\"postalCode\":\"07001\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Balearic Islands\"}"
+ },
+ "/en/hotels-stays/pontevedra/hotel-pepe-vieira-13404": {
+  "h1": "Pepe Vieira",
+  "ld_name": "Pepe Vieira in Pontevedra",
+  "lat": 42.409446,
+  "lon": -8.754191,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Camiño Serpe, s/n\",\"addressLocality\":\"Pontevedra\",\"postalCode\":\"36992\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Galicia\"}"
+ },
+ "/en/hotels-stays/ribadesella/villa-rosario-10432": {
+  "h1": "Villa Rosario Palacete",
+  "ld_name": "Villa Rosario Palacete in Ribadesella",
+  "lat": 43.4651,
+  "lon": -5.06907,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Dionisio Ruiz Sánchez, 6\",\"addressLocality\":\"Ribadesella\",\"postalCode\":\"33560\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Asturias\"}"
+ },
+ "/en/hotels-stays/san-sebastian/akelarre-8643": {
+  "h1": "Akelarre",
+  "ld_name": "Akelarre in San Sebastian",
+  "lat": 43.307342,
+  "lon": -2.044086,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Padre Orkolaga Ibilbidea, 56\",\"addressLocality\":\"San Sebastian\",\"postalCode\":\"20008 \",\"addressCountry\":\"ESP\",\"addressRegion\":\"Basque Country\"}"
+ },
+ "/en/hotels-stays/san-sebastian/hotel-luze-boutique-san-sebastian-15145": {
+  "h1": "Hotel Luze Boutique San Sebastián",
+  "ld_name": "Hotel Luze Boutique San Sebastián in San Sebastian",
+  "lat": 43.31165,
+  "lon": -2.027104,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Gudamendi, 21\",\"addressLocality\":\"San Sebastian\",\"postalCode\":\"20008\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Basque Country\"}"
+ },
+ "/en/hotels-stays/san-sebastian/hotel-maria-cristina-7470": {
+  "h1": "Hotel Maria Cristina",
+  "ld_name": "Hotel Maria Cristina in San Sebastian",
+  "lat": 43.32185,
+  "lon": -1.98,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Paseo Republica Argentina, 4\",\"addressLocality\":\"San Sebastian\",\"postalCode\":\"20004\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Basque Country\"}"
+ },
+ "/en/hotels-stays/siguenza/el-molino-de-alcuneza-9821": {
+  "h1": "El Molino de Alcuneza",
+  "ld_name": "El Molino de Alcuneza in Sigüenza",
+  "lat": 41.1058,
+  "lon": -2.604112,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"GU 128 Km 0,5\",\"addressLocality\":\"Sigüenza\",\"postalCode\":\"19264\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Castilla–La Mancha\"}"
+ },
+ "/en/hotels-stays/tarragona/villa-retiro-10474": {
+  "h1": "Villa Retiro",
+  "ld_name": "Villa Retiro in Tarragona",
+  "lat": 40.91201,
+  "lon": 0.4899,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Carrer dels Molins, 2\",\"addressLocality\":\"Tarragona\",\"postalCode\":\"43592\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Catalonia\"}"
+ },
+ "/en/hotels-stays/tenerife/bahia-del-duque-13701": {
+  "h1": "Bahia del Duque",
+  "ld_name": "Bahia del Duque in Tenerife",
+  "lat": 28.0939,
+  "lon": -16.74159,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Avenida Bruselas, s/n\",\"addressLocality\":\"Tenerife\",\"postalCode\":\"38660\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Canary Islands\"}"
+ },
+ "/en/hotels-stays/tenerife/royal-hideaway-corales-suites-10348": {
+  "h1": "Royal Hideaway Corales Resort",
+  "ld_name": "Royal Hideaway Corales Resort in Tenerife",
+  "lat": 28.10042,
+  "lon": -16.75241,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Avenida Virgen de Guadalupe 21, Playa La Enramada, La Caleta 38679\",\"addressLocality\":\"Tenerife\",\"postalCode\":\"38679\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Canary Islands\"}"
+ },
+ "/en/hotels-stays/tenerife/the-ritz-carlton-abama-8303": {
+  "h1": "The Ritz-Carlton Tenerife, Abama",
+  "ld_name": "The Ritz-Carlton Tenerife, Abama in Tenerife",
+  "lat": 28.17108,
+  "lon": -16.7981,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Ctra. Gral. TF-47, Km. 9, Guia de Isora\",\"addressLocality\":\"Tenerife\",\"postalCode\":\"38687\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Canary Islands\"}"
+ },
+ "/en/hotels-stays/torrenueva/la-caminera-9664": {
+  "h1": "Hotel La Caminera Club de Campo",
+  "ld_name": "Hotel La Caminera Club de Campo in Torrenueva",
+  "lat": 38.6666,
+  "lon": -3.30966,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Camino de Altamar, s/n\",\"addressLocality\":\"Torrenueva\",\"postalCode\":\"13740\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Castilla–La Mancha\"}"
+ },
+ "/en/hotels-stays/valladolid2/abadia-retuerta-ledomaine-10200": {
+  "h1": "Abadía Retuerta LeDomaine",
+  "ld_name": "Abadía Retuerta LeDomaine in Valladolid",
+  "lat": 41.6162515733,
+  "lon": -4.4105887913,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Abadía Retuerta N-122, km. 332,5\",\"addressLocality\":\"Valladolid\",\"postalCode\":\"47340\",\"addressCountry\":\"ESP\",\"addressRegion\":\"Castilla y León\"}"
+ }
+}

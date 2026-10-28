@@ -1,0 +1,1844 @@
+[
+ {
+  "tier": 3,
+  "city": "Arriondas",
+  "name": "Casa Marcial",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Barcelona",
+  "name": "ABaC",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Barcelona",
+  "name": "Cocina Hermanos Torres",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Barcelona",
+  "name": "Disfrutar",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Barcelona",
+  "name": "Lasarte",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Cáceres",
+  "name": "Atrio",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Córdoba",
+  "name": "Noor",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Dénia",
+  "name": "Quique Dacosta",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Donostia / San Sebastián",
+  "name": "Akelaŕe",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Donostia / San Sebastián",
+  "name": "Arzak",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "El Puerto de Santa María",
+  "name": "Aponiente",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Girona",
+  "name": "El Celler de Can Roca",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Larrabetzu",
+  "name": "Azurmendi",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Lasarte-Oria",
+  "name": "Martín Berasategui",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Madrid",
+  "name": "DiverXO",
+  "new": false
+ },
+ {
+  "tier": 3,
+  "city": "Villaverde de Pontones",
+  "name": "Cenador de Amós",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Adeje",
+  "name": "El Rincón de Juan Carlos",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Almansa",
+  "name": "Maralba",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Barcelona",
+  "name": "Aleia",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Barcelona",
+  "name": "Enigma",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Barcelona",
+  "name": "Cinc Sentits",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Barcelona",
+  "name": "Enoteca Paco Pérez",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Barcelona",
+  "name": "Mont Bar",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Bellvís",
+  "name": "La Boscana",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Canyamel",
+  "name": "Voro",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Chiclana de la Frontera",
+  "name": "Alevante",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Cocentaina",
+  "name": "L’Escaleta",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Corçà",
+  "name": "Bo.TiC",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Daroca de Rioja",
+  "name": "Venta Moncalvillo",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Donostia / San Sebastián",
+  "name": "Amelia by Paulo Airaudo",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "El Palmar",
+  "name": "Cabaña Buenavista",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Errenteria",
+  "name": "Mugaritz",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Ezcaray",
+  "name": "El Portal de Echaurren",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Guía de Isora",
+  "name": "M.B",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Jerez de la Frontera",
+  "name": "LÚ Cocina y Alma",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Llançà",
+  "name": "Miramar",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Madrid",
+  "name": "Coque",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Madrid",
+  "name": "Deessa",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Madrid",
+  "name": "DSTAgE",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Madrid",
+  "name": "Paco Roncero",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Madrid",
+  "name": "Ramón Freixa Atelier",
+  "new": true
+ },
+ {
+  "tier": 2,
+  "city": "Madrid",
+  "name": "Smoked Room",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Marbella",
+  "name": "Skina",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "O Grove",
+  "name": "Culler de Pau",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Olot",
+  "name": "Les Cols",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Raxó",
+  "name": "Pepe Vieria",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Ronda",
+  "name": "Bardal",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Santa Comba",
+  "name": "Retiro da Costiña",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Toledo",
+  "name": "Iván Cerdeño",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Urdaitz",
+  "name": "El Molino de Urdániz",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "València",
+  "name": "El Poblet",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "València",
+  "name": "Ricard Camarena",
+  "new": false
+ },
+ {
+  "tier": 2,
+  "city": "Xàbia",
+  "name": "BonAmb",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Soldeu",
+  "name": "Ibaya",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "A Coruña",
+  "name": "Árbore da Veira",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Adeje",
+  "name": "Donaire",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Adeje",
+  "name": "Haydée by Víctor Suárez",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Adeje",
+  "name": "Il Bocconcino by Royal Hideaway",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Adeje",
+  "name": "Nub",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Adeje",
+  "name": "San-Hô",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Aínsa",
+  "name": "Callizo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Alacant",
+  "name": "Baeza & Rufete",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Albacete",
+  "name": "Ababol",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Alcalá del Valle",
+  "name": "Mesón Sabor Andaluz",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Alcanar",
+  "name": "Citrus del Tancat",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Alcoseebre",
+  "name": "Atalaya",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Amorebieta-Etxano",
+  "name": "Boroa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Amorebieta-Etxano",
+  "name": "La Revelía",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Ampuero",
+  "name": "Solana",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Anciles",
+  "name": "Ansils",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Anglès",
+  "name": "L’Aliança d’Anglès",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Arbúcies",
+  "name": "Les Magnòlies",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Arriondas",
+  "name": "El Corral del Indianu",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ávila",
+  "name": "Barro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Axpe",
+  "name": "Etxebarri",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Axpe",
+  "name": "Txispa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Baeza",
+  "name": "Vandelvira",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Alkimia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Angle",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Atempo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Caelis",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "COME by Paco Méndez",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Dos Palillos",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Fishølogy",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Hisop",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Hofmann",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Kamikaze",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Koy Shunka",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "MAE Barcelona",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Moments",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Prodigi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Quirat",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "SCAPAR",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Slow & Low",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Suto",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Teatro kitchen & bar",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barcelona",
+  "name": "Via Veneto",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Barizo",
+  "name": "As Garzas",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Benavente",
+  "name": "El Ermitaño",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Benicarló",
+  "name": "Raúl Resino",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Benissa",
+  "name": "Casa Bernardi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bilbao",
+  "name": "Islares",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Bilbao",
+  "name": "Mina",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bilbao",
+  "name": "Nerua Guggenheim Bilbao",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bilbao",
+  "name": "Ola Martín Berasategui",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Bilbao",
+  "name": "Zarate",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Burgos",
+  "name": "Cobo Evolución",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Burgos",
+  "name": "Ricardo Temiño",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cádiz",
+  "name": "Código de Barra",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cádiz",
+  "name": "Mare",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Calldetenes",
+  "name": "Can Jubany",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Calp",
+  "name": "Audrey’s",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Calp",
+  "name": "Beat",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Calp",
+  "name": "Orobianco",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cambados",
+  "name": "Yayo Daporta",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cambrils",
+  "name": "Can Bosch",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cambrils",
+  "name": "Rincón de Diego",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Canfranc-Estación",
+  "name": "Canfranc Express",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Carasa",
+  "name": "Pico Velasco",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Carcaixent",
+  "name": "Origen",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cartagena",
+  "name": "Magoga",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Casas-Ibáñez",
+  "name": "Oba-",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Castelló d’Empúries",
+  "name": "Emporium",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Castroverde de Campos",
+  "name": "Lera",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Córdoba",
+  "name": "Choco",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Córdoba",
+  "name": "ReComiendo",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Cornudella de Montsant",
+  "name": "Quatre Molins",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Cuenca",
+  "name": "Casas Colgadas Restaurante",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dénia",
+  "name": "Peix & Brases",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Dima",
+  "name": "Garena",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Donostia",
+  "name": "San Sebastián – iBAi by Paulo Airaudo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Donostia",
+  "name": "San Sebastián – Itzuli",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Donostia",
+  "name": "San Sebastián – Kokotxa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Eivissa",
+  "name": "La Gaia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Eivissa",
+  "name": "Omakase by Walt",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "El Ejido",
+  "name": "La Costa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "El Masnou",
+  "name": "Tresmacarrons",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Elche",
+  "name": "La Finca",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Es Capdellà",
+  "name": "Sa Clastra",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fisterra",
+  "name": "Terra",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Fuengirola",
+  "name": "Sollo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Galdakao",
+  "name": "Andra Mari",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Getaria",
+  "name": "Elkano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Gijón",
+  "name": "Auga",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Gijón",
+  "name": "Marcos",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Gimenells",
+  "name": "Malena",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Girona",
+  "name": "Divinum",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Girona",
+  "name": "Massana",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Granada",
+  "name": "Faralá",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Gombrèn",
+  "name": "La Fonda Xesc",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Haro",
+  "name": "Nublo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hondarribia",
+  "name": "Alameda",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Hoznayo",
+  "name": "La Bicicleta",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Huesca",
+  "name": "Lillas Pastia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Huesca",
+  "name": "Tatau",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Illescas",
+  "name": "El Bohío",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Jaén",
+  "name": "Bagá",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Jaén",
+  "name": "Dama Juana",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Jaén",
+  "name": "Malak",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Jaén",
+  "name": "Radis",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Jerez de la Frontera",
+  "name": "Mantúa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "La Nucia",
+  "name": "El Xato",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "La Vall de Bianya",
+  "name": "Ca l’Enric",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Larrabetzu",
+  "name": "Eneko",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Las Palmas de Gran Canaria",
+  "name": "Muxgo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Las Palmas de Gran Canaria",
+  "name": "Poemas by Hermanos Padrón",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Las Palmas de Gran Canaria",
+  "name": "Tabaiba",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "León",
+  "name": "Cocinandos",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "León",
+  "name": "Pablo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Llagostera",
+  "name": "Els Tinars",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Llanes",
+  "name": "El Retiro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Llucmajor",
+  "name": "Andreu Genestra",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Logroño",
+  "name": "Ajonegro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Logroño",
+  "name": "Ikaro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Logroño",
+  "name": "Kiro Sushi",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Los Rosales",
+  "name": "Ochando",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "A’Barra",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "CEBO",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Chispa Bistró",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Clos Madrid",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Corral de la Morería Gastronómico",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Desde 1911",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "El Invernadero",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "EMi",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Èter",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Gaytán",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Gofio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "La Tasquería",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "OSA",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Pabú",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Quimbaya",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "RavioXO",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Ricardo Sanz Wellington",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Saddle",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Santerra",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Sen Omakase",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Toki",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Ugo Chan",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "VelascoAbellà",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Madrid",
+  "name": "Yugo The Bunker",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Málaga",
+  "name": "Blossom",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Málaga",
+  "name": "José Carlos García",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Málaga",
+  "name": "Kaleja",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Málaga",
+  "name": "Palodú",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Marbella",
+  "name": "BACK",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Marbella",
+  "name": "Messina",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Marbella",
+  "name": "Nintai",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Matapozuelos",
+  "name": "La Botica de Matapozuelos",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Miranda de Ebro",
+  "name": "Alejandro Serrano",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Miranda de Ebro",
+  "name": "Erre de Roca",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Mogán",
+  "name": "Los Guayres",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Mungia",
+  "name": "Bakea",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Murcia",
+  "name": "Almo de Juan Guillamón",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Murcia",
+  "name": "Frases",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Muro",
+  "name": "Fusion19",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Navaleno",
+  "name": "La Lobita",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Olost",
+  "name": "Sala",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ondara",
+  "name": "Casa Pepa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Oropesa del Mar",
+  "name": "Llavor",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Ortiguera",
+  "name": "Ferpel Gastronómico",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ourense",
+  "name": "Ceibe",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ourense",
+  "name": "Nova",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ourense",
+  "name": "Miguel González",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Oviedo",
+  "name": "NM",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Padrón",
+  "name": "O’Pazo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Palma",
+  "name": "DINS Santi Taura",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Palma",
+  "name": "Marc Fosh",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Palma",
+  "name": "Zaranda",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Palmanova",
+  "name": "Es Fum",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pamplona",
+  "name": "Europa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pamplona",
+  "name": "Kabo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pamplona",
+  "name": "Rodero",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Patalavaca",
+  "name": "La Aquarela",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Peñafiel",
+  "name": "Ambivium",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Peralada",
+  "name": "Castell Perelada",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Playa de las Américas",
+  "name": "Taste 1973",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Playa Blanca",
+  "name": "Kamezí",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ponferrada",
+  "name": "Mu•na",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pontevedra",
+  "name": "Eirado",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Portbou",
+  "name": "Voramar",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Port d’Alcúdia",
+  "name": "Maca de Castro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Pozuelo de Alarcón",
+  "name": "Ancestral",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Prendes",
+  "name": "Casa Gerardo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Puerto de la Cruz (Islas Canarias)",
+  "name": "El Taller Seve Díaz",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Quintanilla de Onésimo",
+  "name": "Taller Arzuaga",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ribadesella",
+  "name": "Ayalga",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sagàs",
+  "name": "Els Casals",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sagunt",
+  "name": "Arrels",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Salamanca",
+  "name": "En la Parra",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Salamanca",
+  "name": "Víctor Gutiérrez",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Salinas",
+  "name": "Real Balneario",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Salou",
+  "name": "Deliranto",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Antonio de Benagéber",
+  "name": "Simposio",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "San Feliz",
+  "name": "Monte",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Lorenzo de El Escorial",
+  "name": "Montia",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "San Salvador de Poio",
+  "name": "Solla",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sant Fruitós de Bages",
+  "name": "L’Ó",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sant Josep de sa Talaia",
+  "name": "Unic",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sant Julià de Ramis",
+  "name": "Esperit Roca",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sant Martí Sarroca",
+  "name": "Casa Nova",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Santa Coloma de Gramenet",
+  "name": "Lluerna",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Santa Cruz de Campezo",
+  "name": "ARREA!",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Santander",
+  "name": "Casona del Judío",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Santander",
+  "name": "El Serbal",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Santiago de Compostela",
+  "name": "A Tafona",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Santiago de Compostela",
+  "name": "Casa Marcelo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Santiago de Compostela",
+  "name": "Simpar",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sardas",
+  "name": "La Era de los Nogales",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sardón de Duero",
+  "name": "Refectorio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sevilla",
+  "name": "Abantal",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sevilla",
+  "name": "Cañabota",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sigüenza",
+  "name": "El Doncel",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sigüenza",
+  "name": "El Molino de Alcuneza",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sober",
+  "name": "Vértigo",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Sóller",
+  "name": "Béns d’Avall",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Sort",
+  "name": "Fogony",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Talavera de la Reina",
+  "name": "Raíces-Carlos Maldonado",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Tella",
+  "name": "Casa Rubén",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Tolosa",
+  "name": "Ama",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Tomelloso",
+  "name": "Epílogo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torre de Juan Abad",
+  "name": "Coto de Quevedo Evolución",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Torrenueva",
+  "name": "Retama",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Tox",
+  "name": "Regueiro",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Tramacastilla",
+  "name": "Hospedería El Batán",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ulldecona",
+  "name": "L’Antic Molí",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Ulldecona",
+  "name": "Les Moles",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Valdemorillo",
+  "name": "La Casa de Manolo Franco",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Valdemoro",
+  "name": "Chirón",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "València",
+  "name": "Fierro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "València",
+  "name": "Fraula",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "València",
+  "name": "Kaido Sushi Bar",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "València",
+  "name": "La Salita",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "València",
+  "name": "Lienzo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "València",
+  "name": "Riff",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vall d’Alba",
+  "name": "Cal Paradís",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Valladolid",
+  "name": "Alquimia – Laboratorio",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Valladolid",
+  "name": "Trigo",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Villanova",
+  "name": "Casa Arcas",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vigo",
+  "name": "Maruja Limón",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vigo",
+  "name": "Silabario",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Vinaròs",
+  "name": "Rubén Miralles",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Xàbia",
+  "name": "Tula",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Xerta",
+  "name": "Villa Retiro",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Yecla",
+  "name": "Barahonda",
+  "new": true
+ },
+ {
+  "tier": 1,
+  "city": "Zaragoza",
+  "name": "Gente Rara",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Zaragoza",
+  "name": "La Prensa",
+  "new": false
+ },
+ {
+  "tier": 1,
+  "city": "Zarza de Granadilla",
+  "name": "Versátil",
+  "new": false
+ }
+]
