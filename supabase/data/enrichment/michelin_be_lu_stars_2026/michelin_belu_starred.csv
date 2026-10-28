@@ -1,0 +1,137 @@
+name,city,country_code,stars,michelin_url,is_new,source_page
+Zilte,Antwerpen,BE,3,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/t-zilte,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Boury,Roeselare,BE,3,https://guide.michelin.com/en/west-vlaanderen/roeselare/restaurant/boury,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Hertog Jan at Botanic,Antwerpen,BE,2,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/hertog-jan-at-botanic,no,https://guide.michelin.com/en/be/restaurants/all-starred
+The Jane,Antwerpen,BE,2,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/the-jane-1244485,yes,https://guide.michelin.com/en/be/restaurants/all-starred
+L'Eau Vive,Arbre,BE,2,https://guide.michelin.com/en/namur/arbre/restaurant/l-eau-vive,no,https://guide.michelin.com/en/be/restaurants/all-starred
+d'Eugénie à Emilie,Baudour,BE,2,https://guide.michelin.com/en/hainaut/baudour/restaurant/d-eugenie-a-emilie,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Castor,Beveren-Leie,BE,2,https://guide.michelin.com/en/west-vlaanderen/beveren-leie/restaurant/castor,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Bozar Restaurant,Brussels,BE,2,https://guide.michelin.com/en/bruxelles-capitale/bruxelles/restaurant/bozar-restaurant,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Nuance,Duffel,BE,2,https://guide.michelin.com/en/antwerpen/duffel/restaurant/nuance,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Vrijmoed,Gent,BE,2,https://guide.michelin.com/en/oost-vlaanderen/gent/restaurant/vrijmoed,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Bartholomeus,Heist,BE,2,https://guide.michelin.com/en/west-vlaanderen/heist/restaurant/bartholomeus,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Cuines 33,Knokke,BE,2,https://guide.michelin.com/en/west-vlaanderen/knokke/restaurant/cuines-33,yes,https://guide.michelin.com/en/be/restaurants/all-starred
+Hof van Cleve - Floris Van Der Veken,Kruishoutem,BE,2,https://guide.michelin.com/en/oost-vlaanderen/kruishoutem/restaurant/hof-van-cleve,no,https://guide.michelin.com/en/be/restaurants/all-starred
+L'air du temps,Liernu,BE,2,https://guide.michelin.com/en/namur/liernu/restaurant/l-air-du-temps371956,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Cuchara,Lommel,BE,2,https://guide.michelin.com/en/be-limburg/lommel/restaurant/cuchara,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Slagmolen,Opglabbeek,BE,2,https://guide.michelin.com/en/be-limburg/opglabbeek/restaurant/slagmolen,no,https://guide.michelin.com/en/be/restaurants/all-starred
+La Table de Maxime,Our,BE,2,https://guide.michelin.com/en/be-luxembourg/our/restaurant/la-table-de-maxime,no,https://guide.michelin.com/en/be/restaurants/all-starred
+De Jonkman,Sint-Kruis,BE,2,https://guide.michelin.com/en/west-vlaanderen/sint-kruis/restaurant/de-jonkman,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Sir Kwinten,Sint-Kwintens-Lennik,BE,2,https://guide.michelin.com/en/vlaams-brabant/sint-kwintens-lennik/restaurant/sir-kwinten,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Maison Colette,Tongerlo,BE,2,https://guide.michelin.com/en/antwerpen/tongerlo_1063046/restaurant/maison-colette,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Le Chalet de la Forêt,Uccle,BE,2,https://guide.michelin.com/en/bruxelles-capitale/uccle/restaurant/le-chalet-de-la-foret,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Kelderman,Aalst,BE,1,https://guide.michelin.com/en/oost-vlaanderen/aalst/restaurant/kelderman,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+'t Fornuis,Antwerpen,BE,1,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/t-fornuis,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Bistrot du Nord,Antwerpen,BE,1,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/bistrot-du-nord,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Fine Fleur,Antwerpen,BE,1,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/fine-fleur,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Misera,Antwerpen,BE,1,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/misera,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Nathan,Antwerpen,BE,1,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/nathan,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Nebo,Antwerpen,BE,1,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/nebo-1197020,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Pont-Neuf,Antwerpen,BE,1,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/pont-neuf,no,https://guide.michelin.com/en/be/restaurants/all-starred
+The Butcher's son,Antwerpen,BE,1,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/the-butcher-s-son,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+La Grappe d'Or,Arlon,BE,1,https://guide.michelin.com/en/be-luxembourg/arlon/restaurant/la-grappe-d-or-1203424,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Hofke van Bazel,Bazel,BE,1,https://guide.michelin.com/en/oost-vlaanderen/bazel/restaurant/hofke-van-bazel,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Chai Gourmand,Beuzet,BE,1,https://guide.michelin.com/en/namur/beuzet/restaurant/chai-gourmand,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Les Gourmands,Blaregnies,BE,1,https://guide.michelin.com/en/hainaut/blaregnies/restaurant/les-gourmands,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Bloesem,Borgerhout,BE,1,https://guide.michelin.com/en/antwerpen/borgerhout/restaurant/bloesem,yes,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Pré de chez vous,Bouge,BE,1,https://guide.michelin.com/en/namur/bouge/restaurant/pre-de-chez-vous,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Maison Marit,Braine-l'Alleud,BE,1,https://guide.michelin.com/en/brabant-wallon/braine-l-alleud/restaurant/maison-marit,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Philippe Meyers,Braine-l'Alleud,BE,1,https://guide.michelin.com/en/brabant-wallon/braine-l-alleud/restaurant/philippe-meyers,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Bistro Racine,Braine-le-Château,BE,1,https://guide.michelin.com/en/brabant-wallon/braine-le-chteau/restaurant/bistro-racine,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Sans Cravate,Brugge,BE,1,https://guide.michelin.com/en/west-vlaanderen/brugge/restaurant/sans-cravate,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Zet'Joe by Geert Van Hecke,Brugge,BE,1,https://guide.michelin.com/en/west-vlaanderen/brugge/restaurant/zet-joe-by-geert-van-hecke,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Barge,Brussels,BE,1,https://guide.michelin.com/en/bruxelles-capitale/bruxelles/restaurant/barge,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Comme chez Soi,Brussels,BE,1,https://guide.michelin.com/en/bruxelles-capitale/bruxelles/restaurant/comme-chez-soi113872,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Eliane,Brussels,BE,1,https://guide.michelin.com/en/bruxelles-capitale/bruxelles/restaurant/eliane,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+La Villa in the Sky,Brussels,BE,1,https://guide.michelin.com/en/bruxelles-capitale/bruxelles/restaurant/la-villa-in-the-sky,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Un Max de Goût,Comblain-au-Pont,BE,1,https://guide.michelin.com/en/liege/comblain-au-pont/restaurant/un-max-de-gout,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+De Zuidkant,Damme,BE,1,https://guide.michelin.com/en/west-vlaanderen/damme/restaurant/de-zuidkant,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Le Beau Rivage by Curtis,Dave,BE,1,https://guide.michelin.com/en/namur/dave_1063818/restaurant/le-beau-rivage-by-curtis,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Subtiel,De Panne,BE,1,https://guide.michelin.com/en/west-vlaanderen/de-panne/restaurant/subtiel,yes,https://guide.michelin.com/en/be/restaurants/all-starred
+Hostellerie Vivendum,Dilsen,BE,1,https://guide.michelin.com/en/be-limburg/dilsen/restaurant/hostellerie-vivendum,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Le Grand Verre,Durbuy,BE,1,https://guide.michelin.com/en/be-luxembourg/durbuy/restaurant/le-grand-verre,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Hostellerie St-Nicolas,Elverdinge,BE,1,https://guide.michelin.com/en/west-vlaanderen/elverdinge/restaurant/hostellerie-st-nicolas,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+La Grange d'Hamois,Emptinne,BE,1,https://guide.michelin.com/en/namur/emptinne/restaurant/la-grange-d-hamois,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Le Vieux Château,Flobecq,BE,1,https://guide.michelin.com/en/hainaut/flobecq/restaurant/le-vieux-chateau,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Le Roannay,Francorchamps,BE,1,https://guide.michelin.com/en/liege/francorchamps/restaurant/le-roannay,no,https://guide.michelin.com/en/be/restaurants/all-starred
+La Belle,Geel,BE,1,https://guide.michelin.com/en/antwerpen/geel/restaurant/la-belle,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+De Kristalijn,Genk,BE,1,https://guide.michelin.com/en/be-limburg/genk/restaurant/de-kristalijn,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+La Botte,Genk,BE,1,https://guide.michelin.com/en/be-limburg/genk/restaurant/la-botte,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+OAK,Gent,BE,1,https://guide.michelin.com/en/oost-vlaanderen/gent/restaurant/oak,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Publiek,Gent,BE,1,https://guide.michelin.com/en/oost-vlaanderen/gent/restaurant/publiek,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Moscou By Danny Horseele,Gentbrugge,BE,1,https://guide.michelin.com/en/oost-vlaanderen/gentbrugge_1064169/restaurant/moscou-by-danny-horseele,yes,https://guide.michelin.com/en/be/restaurants/all-starred
+JER,Hasselt,BE,1,https://guide.michelin.com/en/be-limburg/hasselt/restaurant/jer,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Ogst,Hasselt,BE,1,https://guide.michelin.com/en/be-limburg/hasselt/restaurant/ogst,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Couvert Couvert,Heverlee,BE,1,https://guide.michelin.com/en/vlaams-brabant/heverlee/restaurant/couvert-couvert,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+EST,Heverlee,BE,1,https://guide.michelin.com/en/vlaams-brabant/heverlee/restaurant/est-1242817,yes,https://guide.michelin.com/en/be/restaurants/all-starred
+Hof Ter Hulst,Hulshout,BE,1,https://guide.michelin.com/en/antwerpen/hulshout/restaurant/hof-ter-hulst,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Kamo,Ixelles,BE,1,https://guide.michelin.com/en/bruxelles-capitale/ixelles/restaurant/kamo,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+humus x hortense,Ixelles,BE,1,https://guide.michelin.com/en/bruxelles-capitale/ixelles/restaurant/humus-x-hortense,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Aux petits oignons,Jodoigne,BE,1,https://guide.michelin.com/en/brabant-wallon/jodoigne/restaurant/aux-petits-oignons,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Boo Raan,Knokke,BE,1,https://guide.michelin.com/en/west-vlaanderen/knokke/restaurant/boo-raan,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Sel Gris,Knokke,BE,1,https://guide.michelin.com/en/west-vlaanderen/knokke/restaurant/sel-gris,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Vintage,Kontich,BE,1,https://guide.michelin.com/en/antwerpen/kontich/restaurant/vintage,yes,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Atelier Noun,Leefdaal,BE,1,https://guide.michelin.com/en/vlaams-brabant/leefdaal/restaurant/atelier-noun,yes,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+EED,Leuven,BE,1,https://guide.michelin.com/en/vlaams-brabant/leuven/restaurant/eed,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+EssenCiel,Leuven,BE,1,https://guide.michelin.com/en/vlaams-brabant/leuven/restaurant/essenciel,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+De Pastorie,Lichtaart,BE,1,https://guide.michelin.com/en/antwerpen/lichtaart/restaurant/de-pastorie209876,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Neon,Lier,BE,1,https://guide.michelin.com/en/antwerpen/lier/restaurant/neon,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Héliport Brasserie,Liège,BE,1,https://guide.michelin.com/en/liege/liege/restaurant/heliport-brasserie,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+¡Toma!,Liège,BE,1,https://guide.michelin.com/en/liege/liege/restaurant/toma,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Le Julien,Lotenhulle,BE,1,https://guide.michelin.com/en/oost-vlaanderen/lotenhulle_1064911/restaurant/le-julien,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Bistrot Blaise,Marche-en-Famenne,BE,1,https://guide.michelin.com/en/be-luxembourg/marche-en-famenne/restaurant/bistrot-blaise,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Arabelle Meirlaen,Marchin,BE,1,https://guide.michelin.com/en/liege/marchin/restaurant/arabelle-meirlaen,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Les Pieds dans le Plat,Marenne,BE,1,https://guide.michelin.com/en/be-luxembourg/marenne/restaurant/les-pieds-dans-le-plat,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Rebelle,Marke,BE,1,https://guide.michelin.com/en/west-vlaanderen/marke/restaurant/rebelle548550,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Vol-Ver,Marke,BE,1,https://guide.michelin.com/en/west-vlaanderen/marke/restaurant/vol-ver,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Tinèlle,Mechelen,BE,1,https://guide.michelin.com/en/antwerpen/mechelen/restaurant/tinelle,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+La Roseraie Modave,Modave,BE,1,https://guide.michelin.com/en/liege/modave_1065092/restaurant/la-roseraie,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Attablez-vous,Namur,BE,1,https://guide.michelin.com/en/namur/namur/restaurant/attablez-vous,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+'t Korennaer,Nieuwkerken-Waas,BE,1,https://guide.michelin.com/en/oost-vlaanderen/nieuwkerken-waas/restaurant/t-korennaer,no,https://guide.michelin.com/en/be/restaurants/all-starred
+De Bakermat,Ninove,BE,1,https://guide.michelin.com/en/oost-vlaanderen/ninove/restaurant/de-bakermat,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+La Table-Lasne by Alain Bianchin,Ohain,BE,1,https://guide.michelin.com/en/brabant-wallon/ohain/restaurant/la-table-lasne-by-alain-bianchin,yes,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+HAUT,Oostende,BE,1,https://guide.michelin.com/en/west-vlaanderen/oostende/restaurant/haut,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Modest,Opglabbeek,BE,1,https://guide.michelin.com/en/be-limburg/opglabbeek/restaurant/modest,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Willem Hiele,Oudenburg,BE,1,https://guide.michelin.com/en/west-vlaanderen/oudenburg/restaurant/willem-hiele-1203519,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Benoit en Bernard Dewitte,Ouwegem,BE,1,https://guide.michelin.com/en/oost-vlaanderen/ouwegem/restaurant/benoit-en-bernard-dewitte,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Le Gastronome,Paliseul,BE,1,https://guide.michelin.com/en/be-luxembourg/paliseul/restaurant/le-gastronome,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+l'Impératif d'Éole,Quévy-le-Grand,BE,1,https://guide.michelin.com/en/hainaut/quevy-le-grand_1065568/restaurant/l-imperatif-d-eole,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Vicomté,Roucourt,BE,1,https://guide.michelin.com/en/hainaut/roucourt/restaurant/vicomte,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Quadras,Saint Vith,BE,1,https://guide.michelin.com/en/liege/sankt-vith/restaurant/quadras,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Zur Post,Saint Vith,BE,1,https://guide.michelin.com/en/liege/sankt-vith/restaurant/zur-post210392,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Philippe Fauchet,Saint-Georges-sur-Meuse,BE,1,https://guide.michelin.com/en/liege/saint-georges-sur-meuse/restaurant/philippe-fauchet,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Au Gré du Vent,Seneffe,BE,1,https://guide.michelin.com/en/hainaut/seneffe/restaurant/au-gre-du-vent,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+L'Envie,Sint-Denijs,BE,1,https://guide.michelin.com/en/west-vlaanderen/sint-denijs/restaurant/l-envie,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Sensum Gent,Sint-Denijs-Westrem,BE,1,https://guide.michelin.com/en/west-vlaanderen/sint-denijs-westrem/restaurant/sensum-1194348,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Carcasse,Sint-Idesbald,BE,1,https://guide.michelin.com/en/west-vlaanderen/sint-idesbald/restaurant/carcasse,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Centpourcent,Sint-Katelijne-Waver,BE,1,https://guide.michelin.com/en/antwerpen/sint-katelijne-waver/restaurant/centpourcent,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Goffin,Sint-Kruis,BE,1,https://guide.michelin.com/en/west-vlaanderen/sint-kruis/restaurant/goffin,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Agnes,Sint-Martens-Bodegem,BE,1,https://guide.michelin.com/en/vlaams-brabant/sint-martens-bodegem/restaurant/agnes-1207215,yes,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Le Coq aux Champs,Soheit-Tinlot,BE,1,https://guide.michelin.com/en/liege/soheit-tinlot/restaurant/le-coq-aux-champs,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Hoeve De Bies,St-Martens-Voeren,BE,1,https://guide.michelin.com/en/be-limburg/st-martens-voeren/restaurant/hoeve-de-bies,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+'t Stoveke,Strombeek-Bever,BE,1,https://guide.michelin.com/en/vlaams-brabant/strombeek-bever/restaurant/t-stoveke,no,https://guide.michelin.com/en/be/restaurants/all-starred
+l'Essentiel,Temploux,BE,1,https://guide.michelin.com/en/namur/temploux/restaurant/l-essentiel210192,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Melchior,Tienen,BE,1,https://guide.michelin.com/en/vlaams-brabant/tienen/restaurant/melchior,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Alter,Tongeren,BE,1,https://guide.michelin.com/en/be-limburg/tongeren/restaurant/altermezzo,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+De Mijlpaal,Tongeren,BE,1,https://guide.michelin.com/en/be-limburg/tongeren/restaurant/de-mijlpaal,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Hert,Turnhout,BE,1,https://guide.michelin.com/en/antwerpen/turnhout/restaurant/hert,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Arden,Villers-sur-Lesse,BE,1,https://guide.michelin.com/en/namur/villers-sur-lesse/restaurant/arden,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Sense,Waasmunster,BE,1,https://guide.michelin.com/en/oost-vlaanderen/waasmunster/restaurant/sense-1192293,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Da Mimmo,Woluwe-Saint-Lambert,BE,1,https://guide.michelin.com/en/bruxelles-capitale/woluwe-saint-lambert/restaurant/da-mimmo209466,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Menssa,Woluwe-Saint-Pierre,BE,1,https://guide.michelin.com/en/bruxelles-capitale/woluwe-saint-pierre/restaurant/menssa,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Komaf,Wommelgem,BE,1,https://guide.michelin.com/en/vlaams-gewest/wommelgem_1063155/restaurant/komaf,yes,https://guide.michelin.com/en/be/restaurants/all-starred/page/2
+Le Cor de Chasse,Wéris,BE,1,https://guide.michelin.com/en/be-luxembourg/wris/restaurant/le-cor-de-chasse,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Fleur de Lin,Zele,BE,1,https://guide.michelin.com/en/oost-vlaanderen/zele/restaurant/fleur-de-lin,no,https://guide.michelin.com/en/be/restaurants/all-starred
+Innesto,Zonhoven,BE,1,https://guide.michelin.com/en/be-limburg/zonhoven/restaurant/innesto,no,https://guide.michelin.com/en/be/restaurants/all-starred/page/3
+Louis Linster,Frisange,LU,2,https://guide.michelin.com/en/luxembourg/frisange/restaurant/lea-linster,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+Ma Langue Sourit,Oetrange,LU,2,https://guide.michelin.com/en/luxembourg/oetrange/restaurant/ma-langue-sourit,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+Fields by René Mathieu,Findel,LU,1,https://guide.michelin.com/en/luxembourg/findel/restaurant/fields-by-rene-mathieu,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+Archibald De Prince,Lauterborn,LU,1,https://guide.michelin.com/en/grevenmacher/lauterborn/restaurant/archibald-de-prince,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+Grünewald Chef’s Table,Luxembourg,LU,1,https://guide.michelin.com/en/luxembourg/luxembourg/restaurant/grunewald-chef-s-table,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+La Villa de Camille et Julien,Luxembourg,LU,1,https://guide.michelin.com/en/luxembourg/luxembourg/restaurant/la-villa-de-camille-et-julien,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+Le Lys,Luxembourg,LU,1,https://guide.michelin.com/en/luxembourg/luxembourg/restaurant/le-lys-1241469,yes,https://guide.michelin.com/en/lu/restaurants/all-starred
+Mosconi,Luxembourg,LU,1,https://guide.michelin.com/en/luxembourg/luxembourg/restaurant/mosconi,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+Ryôdô,Luxembourg,LU,1,https://guide.michelin.com/en/luxembourg/luxembourg/restaurant/ryodo,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+Fani,Roeser,LU,1,https://guide.michelin.com/en/luxembourg/roeser/restaurant/fani,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+Guillou Campagne,Schouweiler,LU,1,https://guide.michelin.com/en/luxembourg/schouweiler/restaurant/guillou-campagne,no,https://guide.michelin.com/en/lu/restaurants/all-starred
+Apdikt,Steinfort,LU,1,https://guide.michelin.com/en/luxembourg/steinfort/restaurant/apdikt,no,https://guide.michelin.com/en/lu/restaurants/all-starred

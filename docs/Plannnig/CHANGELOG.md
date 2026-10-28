@@ -10,6 +10,10 @@ The format follows Keep a Changelog.
 
 ### Added
 
+- 2026-10-28 — `20261016150000_add_be_2026_star_cities.sql` adds the seven
+  BE cities the MICHELIN Belgium & Luxembourg 2026 star update needs
+  (`supabase/data/enrichment/michelin_be_lu_stars_2026/`). **Prepared, not
+  applied.**
 - Project documentation
 - Database organisation
 - Architecture documentation
