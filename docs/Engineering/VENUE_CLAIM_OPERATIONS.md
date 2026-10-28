@@ -1,5 +1,26 @@
 # Venue claim and submission operations
 
+> **Fallback since 2026-10-28.** Review now happens in the app: Profile →
+> **Review**, shown only to admins (`20261017120000_add_in_app_review.sql`,
+> CLAUDE.md "Venue permissions"). There you see every pending claim,
+> about text and photo with the real preview, and approve or reject with
+> a note; photos publish through `publish-venue-photo` with your own
+> login, so no secret and no reviewer id is needed. Everything below
+> still works exactly as written and stays the fallback — for when the
+> app or the Edge Function is down, or for a correction the app has no
+> screen for.
+>
+> **Adding an admin** is the one step that stays here on purpose
+> (`public.admins` has no client policy or grant):
+>
+> ```sql
+> insert into public.admins (user_id, note)
+> select id, 'added <date> by <who>' from public.profiles where username = '<username>';
+> ```
+>
+> Removing one is `delete from public.admins where user_id = '<id>';`.
+> Check with `select * from public.admins;`.
+
 One-line SQL, run in the Supabase Dashboard's SQL Editor, for every
 approve/reject decision a human reviewer makes: a venue claim, a
 venue-supplied "about" text submission, or a venue-supplied photo
@@ -23,9 +44,11 @@ are `SECURITY DEFINER` and revoked from `public`, `anon`, and
 `approve_venue_photo` — see the Photo submissions section below) is now
 the normal way to publish a photo, closing a real gap the SQL function
 alone couldn't: it derives the destination itself instead of trusting a
-human-supplied URL. There is still no in-app admin identity and none is
-planned; review continues to happen entirely through this file and the
-Dashboard.
+human-supplied URL. *(Superseded 2026-10-28: "There is still no in-app
+admin identity and none is planned; review continues to happen entirely
+through this file and the Dashboard." Review is now in the app — see the
+note at the top. The six functions are unchanged and still dashboard-
+only; the app calls admin-only wrappers around them.)*
 
 ## Finding your own `profiles.id`
 

@@ -1,0 +1,205 @@
+{
+ "monaco-region/monaco/restaurant/le-louis-xv-alain-ducasse-a-l-hotel-de-paris": {
+  "key": "monaco-region/monaco/restaurant/le-louis-xv-alain-ducasse-a-l-hotel-de-paris",
+  "status": 200,
+  "final": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/le-louis-xv-alain-ducasse-a-l-hotel-de-paris",
+  "name": "Le Louis XV - Alain Ducasse à l'Hôtel de Paris",
+  "street": "Place du Casino",
+  "postcode": "98000",
+  "locality": "Monaco",
+  "country": "MCO",
+  "phone": "+377 98 06 88 64",
+  "lat": 43.7391839,
+  "lng": 7.4271047,
+  "cuisine": "Mediterranean Cuisine",
+  "star": "Three Stars: Exceptional cuisine",
+  "award_year": "2026",
+  "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/le-louis-xv-alain-ducasse-a-l-hotel-de-paris",
+  "website": "https://www.ducasse-paris.com/nos-adresses/",
+  "closed_banner": false,
+  "tels": [
+   "+377 98 06 88 64"
+  ]
+ },
+ "monaco-region/monaco/restaurant/l-abysse-monte-carlo": {
+  "key": "monaco-region/monaco/restaurant/l-abysse-monte-carlo",
+  "status": 200,
+  "final": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/l-abysse-monte-carlo",
+  "name": "L'Abysse Monte-Carlo",
+  "street": "1 square Beaumarchais",
+  "postcode": "98000",
+  "locality": "Monaco",
+  "country": "MCO",
+  "phone": "+377 98 06 94 94",
+  "lat": 43.7384886,
+  "lng": 7.4259282,
+  "cuisine": "Japanese",
+  "star": "Two Stars: Excellent cooking",
+  "award_year": "2026",
+  "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/l-abysse-monte-carlo",
+  "website": "https://www.montecarlosbm.com/fr/restaurant/labysse-monte-carlo",
+  "closed_banner": false,
+  "tels": [
+   "+377 98 06 94 94"
+  ]
+ },
+ "monaco-region/monaco/restaurant/les-ambassadeurs-by-christophe-cussac": {
+  "key": "monaco-region/monaco/restaurant/les-ambassadeurs-by-christophe-cussac",
+  "status": 200,
+  "final": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/les-ambassadeurs-by-christophe-cussac",
+  "name": "Les Ambassadeurs by Christophe Cussac",
+  "street": "Hôtel Métropole Monte-Carlo, 4 avenue de la Madone",
+  "postcode": "98000",
+  "locality": "Monaco",
+  "country": "MCO",
+  "phone": "+377 93 15 15 10",
+  "lat": 43.7405056,
+  "lng": 7.4275615,
+  "cuisine": "Mediterranean Cuisine",
+  "star": "Two Stars: Excellent cooking",
+  "award_year": "2026",
+  "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/les-ambassadeurs-by-christophe-cussac",
+  "website": "https://www.metropole.com/fr/restaurant-bar",
+  "closed_banner": false,
+  "tels": [
+   "+377 93 15 15 10"
+  ]
+ },
+ "monaco-region/monaco/restaurant/le-blue-bay": {
+  "key": "monaco-region/monaco/restaurant/le-blue-bay",
+  "status": 404,
+  "final": null
+ },
+ "monaco-region/monaco/restaurant/elsa7519": {
+  "key": "monaco-region/monaco/restaurant/elsa7519",
+  "status": 200,
+  "final": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/elsa-marcel-ravin",
+  "name": "Elsa Marcel Ravin",
+  "street": "Monte-Carlo Beach, avenue Princesse-Grace, Roquebrune-Cap-Martin",
+  "postcode": "98000",
+  "locality": "Monaco",
+  "country": "MCO",
+  "phone": "+377 98 06 50 05",
+  "lat": 43.7506541,
+  "lng": 7.4443181,
+  "cuisine": "Mediterranean Cuisine",
+  "star": "One Star: High quality cooking",
+  "award_year": "2026",
+  "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/elsa-marcel-ravin",
+  "website": "https://www.montecarlosbm.com/fr/restaurant-monaco/elsa",
+  "closed_banner": false,
+  "tels": [
+   "+377 98 06 50 05"
+  ]
+ },
+ "monaco-region/monaco/restaurant/le-grill9786": {
+  "key": "monaco-region/monaco/restaurant/le-grill9786",
+  "status": 200,
+  "final": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/le-grill9786",
+  "name": "Le Grill",
+  "street": "Hôtel de Paris Monte-Carlo, place du Casino",
+  "postcode": "98000",
+  "locality": "Monaco",
+  "country": "MCO",
+  "phone": "+377 98 06 88 88",
+  "lat": 43.7393665,
+  "lng": 7.4271,
+  "cuisine": "Classic Cuisine",
+  "star": "One Star: High quality cooking",
+  "award_year": "2026",
+  "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/le-grill9786",
+  "website": "https://www.montecarlosbm.com/fr/restaurant-monaco/le-grill",
+  "closed_banner": false,
+  "tels": [
+   "+377 98 06 88 88"
+  ]
+ },
+ "monaco-region/monaco/restaurant/yannick-alleno-a-l-hotel-hermitage": {
+  "key": "monaco-region/monaco/restaurant/yannick-alleno-a-l-hotel-hermitage",
+  "status": 200,
+  "final": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/pavyllon-monte-carlo",
+  "name": "Pavyllon Monte-Carlo, un restaurant de Yannick Alléno",
+  "street": "Square Beaumarchais",
+  "postcode": "98000",
+  "locality": "Monaco",
+  "country": "MCO",
+  "phone": "+377 98 06 98 98",
+  "lat": 43.7384624,
+  "lng": 7.4258682,
+  "cuisine": "Modern Cuisine",
+  "star": "One Star: High quality cooking",
+  "award_year": "2026",
+  "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/pavyllon-monte-carlo",
+  "website": "https://www.montecarlosbm.com/fr/restaurant-monaco/pavyllon-monte-carlo-restaurant-yannick-alleno",
+  "closed_banner": false,
+  "tels": [
+   "+377 98 06 98 98"
+  ]
+ },
+ "monaco-region/monaco/restaurant/robuchon-monaco": {
+  "key": "monaco-region/monaco/restaurant/robuchon-monaco",
+  "status": 200,
+  "final": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/robuchon-monaco",
+  "name": "Robuchon Monaco",
+  "street": "Esplanade du Portier",
+  "postcode": "98000",
+  "locality": "Monaco",
+  "country": "MCO",
+  "phone": "+377 99 92 44 73",
+  "lat": 43.742019,
+  "lng": 7.4302288,
+  "cuisine": "Modern Cuisine",
+  "star": "One Star: High quality cooking",
+  "award_year": "2026",
+  "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/robuchon-monaco",
+  "website": "https://robuchonmonaco.com/",
+  "closed_banner": false,
+  "tels": [
+   "+377 99 92 44 73"
+  ]
+ },
+ "monaco-region/monaco/restaurant/la-table-d-antonio-salvatore-au-rampoldi": {
+  "key": "monaco-region/monaco/restaurant/la-table-d-antonio-salvatore-au-rampoldi",
+  "status": 200,
+  "final": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/la-table-d-antonio-salvatore-au-rampoldi",
+  "name": "La Table d'Antonio Salvatore au Rampoldi",
+  "street": "3 avenue des Spélugues",
+  "postcode": "98000",
+  "locality": "Monaco",
+  "country": "MCO",
+  "phone": "+377 93 30 70 44",
+  "lat": 43.7403707,
+  "lng": 7.4278965,
+  "cuisine": "Italian",
+  "star": "One Star: High quality cooking",
+  "award_year": "2026",
+  "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/la-table-d-antonio-salvatore-au-rampoldi",
+  "website": "https://rampoldi.mc/la-table-dantonio-salvatore/",
+  "closed_banner": false,
+  "tels": [
+   "+377 93 30 70 44"
+  ]
+ },
+ "monaco-region/monaco/restaurant/blue-bay-marcel-ravin": {
+  "key": "monaco-region/monaco/restaurant/blue-bay-marcel-ravin",
+  "status": 200,
+  "final": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/blue-bay-marcel-ravin",
+  "name": "Blue Bay Marcel Ravin",
+  "street": "40 avenue Princesse-Grace",
+  "postcode": "98000",
+  "locality": "Monaco",
+  "country": "MCO",
+  "phone": "+377 98 06 00 35",
+  "lat": 43.7488966,
+  "lng": 7.4379746,
+  "cuisine": "Creative",
+  "star": "Two Stars: Excellent cooking",
+  "award_year": "2026",
+  "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/blue-bay-marcel-ravin",
+  "website": "https://www.montecarlosbm.com/fr/restaurant-monaco/le-blue-bay",
+  "closed_banner": false,
+  "tels": [
+   "+377 98 06 00 35"
+  ]
+ }
+}

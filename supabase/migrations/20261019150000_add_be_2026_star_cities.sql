@@ -2,8 +2,10 @@
 -- 13 starred Belgian restaurants missing from the catalogue, added by
 -- supabase/data/enrichment/michelin_be_lu_stars_2026/prepared_be_lu_stars_2026.sql.
 --
--- Written 2026-10-28. Filename timestamp is a sequence number only (named
--- after the highest existing migration, 20261016140000), not this date.
+-- Written 2026-10-28. Filename timestamp is a sequence number only, not this
+-- date. First named 20261016150000; renumbered the same day, before it was
+-- applied, to sort after main's applied 20261019130000 and the Spain 2026
+-- migration prepared as 20261019140000 on another branch.
 --
 -- Adds ONLY public.cities rows. Checked against production on 2026-10-28
 -- (read-only query run by the user): these seven returned 0 matches by exact

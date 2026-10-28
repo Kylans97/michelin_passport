@@ -59,6 +59,13 @@ class EventLocalTime implements Comparable<EventLocalTime> {
   String toString() => 'EventLocalTime(${format()})';
 }
 
+/// SUPERSEDED 2026-10-28 (product owner): venues do NOT have to give both
+/// times. submit_venue_event/update_venue_event (20261018130000) and
+/// VenueEventFormScreen allow a date-only or start-only event, so this
+/// rule is deliberately not used there. Kept, unused, as the record of
+/// the earlier decision (EVENT_TIME_PRECISION_ARCHITECTURE_AUDIT.md,
+/// Host-Created Events, marked superseded in place).
+///
 /// Events V2 Time Precision — the future host-submission workstream's own
 /// validation rule (architecture audit §"Host-Created Events": a
 /// Restaurant/Hotel/Private Chef submitting their own Event must provide

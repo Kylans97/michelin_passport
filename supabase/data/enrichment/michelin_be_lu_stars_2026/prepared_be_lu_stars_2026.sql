@@ -29,15 +29,15 @@
 --   3. michelin_url filled for 16 restaurants that had none (same
 --      restaurant, same stars; matched by MICHELIN page, checked by eye).
 --   4. 13 restaurants starred in 2026 (and before) but missing from the
---      catalogue added (rest_1405..rest_1417), each with a 2026 award_history
+--      catalogue added (rest_1827..rest_1839), each with a 2026 award_history
 --      row. Their awards before 2026 are not recorded -- the same launch
 --      limitation as every seeded row.
 --   KEPT unchanged ('rest_0798', 'rest_0836', 'rest_0890' -- Kommilfoo, La Paix, La Table de Manon): in the
 --   2026 edition with stars, but MICHELIN removed their pages after May with
 --   no reason given. User decision 2026-10-28: keep the stars, log, revisit
---   (QA log).
+--   (QA-240).
 --
--- PREREQUISITE: supabase/migrations/20261016150000_add_be_2026_star_cities.sql.
+-- PREREQUISITE: supabase/migrations/20261019150000_add_be_2026_star_cities.sql.
 -- One transaction; every check raises, rolling the whole file back. A
 -- re-run after success aborts at the first check.
 
@@ -47,8 +47,8 @@ do $$
 begin
   if exists (select 1 from public.restaurants
               where restaurant_code ~ '^rest_[0-9]+$'
-                and substring(restaurant_code from 6)::int between 1405 and 1404 + 13) then
-    raise exception 'codes rest_1405..rest_1417 are no longer free -- re-check';
+                and substring(restaurant_code from 6)::int between 1827 and 1826 + 13) then
+    raise exception 'codes rest_1827..rest_1839 are no longer free -- re-check';
   end if;
   if exists (select 1 from public.award_history ah
                join public.restaurants r on r.id = ah.entity_id
@@ -128,19 +128,19 @@ create temp table _new (code text, name text, stars smallint, city text, address
                         lon float8, lat float8, michelin_url text, website_url text,
                         phone text, property_name text) on commit drop;
 insert into _new values
-    ('rest_1405', '''t Stoveke', 1::smallint, 'Strombeek-Bever', 'Jetsestraat 52, 1853 Strombeek-Bever', 4.3507766, 50.9049469, 'https://guide.michelin.com/en/vlaams-brabant/strombeek-bever/restaurant/t-stoveke', 'https://www.tstoveke.be/', '+32 2 267 67 25', NULL),
-    ('rest_1406', 'Couvert Couvert', 1::smallint, 'Heverlee', 'Sint-Jansbergsesteenweg 171, 3001 Heverlee', 4.6596864, 50.8629609, 'https://guide.michelin.com/en/vlaams-brabant/heverlee/restaurant/couvert-couvert', 'https://couvertcouvert.be/', '+32 16 29 69 79', NULL),
-    ('rest_1407', 'De Bakermat', 1::smallint, 'Ninove', 'Leopoldlaan 95, 9400 Ninove', 4.0203277, 50.8262371, 'https://guide.michelin.com/en/oost-vlaanderen/ninove/restaurant/de-bakermat', 'https://www.debakermatninove.be/', '+32 54 25 80 25', NULL),
-    ('rest_1408', 'EED', 1::smallint, 'Leuven', 'Vaartstraat 14, 3000 Leuven', 4.7024848, 50.880639, 'https://guide.michelin.com/en/vlaams-brabant/leuven/restaurant/eed', 'https://eedleuven.be/', '+32 16 19 06 14', NULL),
-    ('rest_1409', 'EssenCiel', 1::smallint, 'Leuven', 'Bondgenotenlaan 114, 3000 Leuven', 4.711476, 50.8805967, 'https://guide.michelin.com/en/vlaams-brabant/leuven/restaurant/essenciel', 'https://www.essenciel.be/', '+32 474 26 18 64', NULL),
-    ('rest_1410', 'Héliport Brasserie', 1::smallint, 'Liège', 'allée des Érables, 4000 Liège', 5.5961592, 50.5789946, 'https://guide.michelin.com/en/liege/liege/restaurant/heliport-brasserie', 'https://www.heliportbrasserie.be/', '+32 4 366 28 20', NULL),
-    ('rest_1411', 'La Roseraie Modave', 1::smallint, 'Modave', 'route de Limet 80, 4577 Modave', 5.2866657, 50.4541319, 'https://guide.michelin.com/en/liege/modave_1065092/restaurant/la-roseraie', 'https://www.laroseraiemodave.com/', '+32 85 41 13 60', NULL),
-    ('rest_1412', 'Menssa', 1::smallint, 'Woluwe-Saint-Pierre', 'Avenue de Tervueren 453, 1150 Woluwe-Saint-Pierre', 4.4466158, 50.8228567, 'https://guide.michelin.com/en/bruxelles-capitale/woluwe-saint-pierre/restaurant/menssa', 'https://www.menssa.be/', '+32 2 346 66 15', NULL),
-    ('rest_1413', 'Nebo', 1::smallint, 'Antwerp', 'Panamarenkoplein 5, 2000 Antwerpen', 4.3829209, 51.2051513, 'https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/nebo-1197020', 'https://www.restaurantnebo.be/', '+32 3 272 45 00', NULL),
-    ('rest_1414', 'OAK', 1::smallint, 'Ghent', 'Burgstraat 16, 9000 Gent', 3.7190482, 51.0566815, 'https://guide.michelin.com/en/oost-vlaanderen/gent/restaurant/oak', 'https://oakgent.be/', '+32 9 353 90 50', NULL),
-    ('rest_1415', 'Philippe Fauchet', 1::smallint, 'Saint-Georges-sur-Meuse', 'rue de Warfée 62, 4470 Saint-Georges-sur-Meuse', 5.37086, 50.6096146, 'https://guide.michelin.com/en/liege/saint-georges-sur-meuse/restaurant/philippe-fauchet', 'https://philippefauchet.be/', NULL, NULL),
-    ('rest_1416', 'Sensum Gent', 1::smallint, 'Sint-Denijs-Westrem', 'Kortrijksesteenweg 1026, 9051 Sint-Denijs-Westrem', 3.7029908, 51.0236852, 'https://guide.michelin.com/en/west-vlaanderen/sint-denijs-westrem/restaurant/sensum-1194348', 'https://sensumgent.be/', '+32 9 246 11 46', NULL),
-    ('rest_1417', 'Un Max de Goût', 1::smallint, 'Comblain-au-Pont', 'quai de l''Ourthe 17, 4170 Comblain-au-Pont', 5.5785763, 50.4767771, 'https://guide.michelin.com/en/liege/comblain-au-pont/restaurant/un-max-de-gout', 'https://maxdegout.be/', '+32 4 369 17 08', NULL);
+    ('rest_1827', '''t Stoveke', 1::smallint, 'Strombeek-Bever', 'Jetsestraat 52, 1853 Strombeek-Bever', 4.3507766, 50.9049469, 'https://guide.michelin.com/en/vlaams-brabant/strombeek-bever/restaurant/t-stoveke', 'https://www.tstoveke.be/', '+32 2 267 67 25', NULL),
+    ('rest_1828', 'Couvert Couvert', 1::smallint, 'Heverlee', 'Sint-Jansbergsesteenweg 171, 3001 Heverlee', 4.6596864, 50.8629609, 'https://guide.michelin.com/en/vlaams-brabant/heverlee/restaurant/couvert-couvert', 'https://couvertcouvert.be/', '+32 16 29 69 79', NULL),
+    ('rest_1829', 'De Bakermat', 1::smallint, 'Ninove', 'Leopoldlaan 95, 9400 Ninove', 4.0203277, 50.8262371, 'https://guide.michelin.com/en/oost-vlaanderen/ninove/restaurant/de-bakermat', 'https://www.debakermatninove.be/', '+32 54 25 80 25', NULL),
+    ('rest_1830', 'EED', 1::smallint, 'Leuven', 'Vaartstraat 14, 3000 Leuven', 4.7024848, 50.880639, 'https://guide.michelin.com/en/vlaams-brabant/leuven/restaurant/eed', 'https://eedleuven.be/', '+32 16 19 06 14', NULL),
+    ('rest_1831', 'EssenCiel', 1::smallint, 'Leuven', 'Bondgenotenlaan 114, 3000 Leuven', 4.711476, 50.8805967, 'https://guide.michelin.com/en/vlaams-brabant/leuven/restaurant/essenciel', 'https://www.essenciel.be/', '+32 474 26 18 64', NULL),
+    ('rest_1832', 'Héliport Brasserie', 1::smallint, 'Liège', 'allée des Érables, 4000 Liège', 5.5961592, 50.5789946, 'https://guide.michelin.com/en/liege/liege/restaurant/heliport-brasserie', 'https://www.heliportbrasserie.be/', '+32 4 366 28 20', NULL),
+    ('rest_1833', 'La Roseraie Modave', 1::smallint, 'Modave', 'route de Limet 80, 4577 Modave', 5.2866657, 50.4541319, 'https://guide.michelin.com/en/liege/modave_1065092/restaurant/la-roseraie', 'https://www.laroseraiemodave.com/', '+32 85 41 13 60', NULL),
+    ('rest_1834', 'Menssa', 1::smallint, 'Woluwe-Saint-Pierre', 'Avenue de Tervueren 453, 1150 Woluwe-Saint-Pierre', 4.4466158, 50.8228567, 'https://guide.michelin.com/en/bruxelles-capitale/woluwe-saint-pierre/restaurant/menssa', 'https://www.menssa.be/', '+32 2 346 66 15', NULL),
+    ('rest_1835', 'Nebo', 1::smallint, 'Antwerp', 'Panamarenkoplein 5, 2000 Antwerpen', 4.3829209, 51.2051513, 'https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/nebo-1197020', 'https://www.restaurantnebo.be/', '+32 3 272 45 00', NULL),
+    ('rest_1836', 'OAK', 1::smallint, 'Ghent', 'Burgstraat 16, 9000 Gent', 3.7190482, 51.0566815, 'https://guide.michelin.com/en/oost-vlaanderen/gent/restaurant/oak', 'https://oakgent.be/', '+32 9 353 90 50', NULL),
+    ('rest_1837', 'Philippe Fauchet', 1::smallint, 'Saint-Georges-sur-Meuse', 'rue de Warfée 62, 4470 Saint-Georges-sur-Meuse', 5.37086, 50.6096146, 'https://guide.michelin.com/en/liege/saint-georges-sur-meuse/restaurant/philippe-fauchet', 'https://philippefauchet.be/', NULL, NULL),
+    ('rest_1838', 'Sensum Gent', 1::smallint, 'Sint-Denijs-Westrem', 'Kortrijksesteenweg 1026, 9051 Sint-Denijs-Westrem', 3.7029908, 51.0236852, 'https://guide.michelin.com/en/west-vlaanderen/sint-denijs-westrem/restaurant/sensum-1194348', 'https://sensumgent.be/', '+32 9 246 11 46', NULL),
+    ('rest_1839', 'Un Max de Goût', 1::smallint, 'Comblain-au-Pont', 'quai de l''Ourthe 17, 4170 Comblain-au-Pont', 5.5785763, 50.4767771, 'https://guide.michelin.com/en/liege/comblain-au-pont/restaurant/un-max-de-gout', 'https://maxdegout.be/', '+32 4 369 17 08', NULL);
 
 do $$
 declare bad text;

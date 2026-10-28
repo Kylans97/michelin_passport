@@ -27,7 +27,12 @@ enum AppNotificationType {
   venueAboutApproved,
   venueAboutRejected,
   venuePhotoApproved,
-  venuePhotoRejected;
+  venuePhotoRejected,
+  // A venue's own event (20261018130000): admin_approve_event /
+  // admin_reject_event notify the submitter. Only get_notifications_v2
+  // returns these; get_notifications() hides them from older builds.
+  eventApproved,
+  eventRejected;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -43,8 +48,20 @@ enum AppNotificationType {
     'venue_about_rejected' => AppNotificationType.venueAboutRejected,
     'venue_photo_approved' => AppNotificationType.venuePhotoApproved,
     'venue_photo_rejected' => AppNotificationType.venuePhotoRejected,
+    'event_approved' => AppNotificationType.eventApproved,
+    'event_rejected' => AppNotificationType.eventRejected,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
+
+  /// [fromWire], but null for a type this build doesn't know — a newer
+  /// server's — so the list skips that one row instead of failing whole.
+  static AppNotificationType? tryFromWire(String value) {
+    try {
+      return fromWire(value);
+    } on ArgumentError {
+      return null;
+    }
+  }
 }
 
 /// One row from `get_notifications()` — already joined with per-type
@@ -123,6 +140,14 @@ class AppNotification {
   final String? friendshipStatus;
   final bool hasFriendshipStatus;
 
+  // subjectId doubles as the event id when subjectType == 'event'
+  // (get_notifications_v2). eventReviewNote is only ever set on a
+  // rejected event — the note admin_reject_event requires.
+  final String? eventName;
+  final DateTime? eventStartDate;
+  final String? eventReviewNote;
+  final String? eventVenueName;
+
   const AppNotification({
     required this.id,
     required this.type,
@@ -156,7 +181,17 @@ class AppNotification {
     this.submissionReviewNote,
     this.friendshipStatus,
     this.hasFriendshipStatus = false,
+    this.eventName,
+    this.eventStartDate,
+    this.eventReviewNote,
+    this.eventVenueName,
   });
+
+  /// [fromRow], but null for a notification type this build doesn't know.
+  static AppNotification? tryFromRow(Map<String, dynamic> row) {
+    if (AppNotificationType.tryFromWire(row['type'] as String) == null) return null;
+    return AppNotification.fromRow(row);
+  }
 
   factory AppNotification.fromRow(Map<String, dynamic> row) => AppNotification(
     id: row['id'] as String,
@@ -193,6 +228,12 @@ class AppNotification {
     submissionReviewNote: row['submission_review_note'] as String?,
     friendshipStatus: row['friendship_status'] as String?,
     hasFriendshipStatus: row.containsKey('friendship_status'),
+    eventName: row['event_name'] as String?,
+    eventStartDate: row['event_start_date'] == null
+        ? null
+        : DateTime.parse('${row['event_start_date']}T00:00:00Z'),
+    eventReviewNote: row['event_review_note'] as String?,
+    eventVenueName: row['event_venue_name'] as String?,
   );
 
   /// Whether a friend_request_received row should still offer

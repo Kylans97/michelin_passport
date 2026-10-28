@@ -127,11 +127,24 @@ stop and say so rather than working around it.
   were migrated onto it.
 - Active access is the absence of revocation: **`revoked_at is null`**.
   There is deliberately no `status` column.
-- Granting a permission from an approved claim is manual SQL run against
-  the dashboard (snippets in `docs/Engineering/VENUE_CLAIM_OPERATIONS.md`).
-  There is no in-app admin identity and none is planned — review happens
-  through the dashboard with `service_role`, the same pattern every other
-  manual approval in this schema already uses.
+- **Review happens in the app**, by the small, explicit set of admins
+  listed in `public.admins`. `is_admin()` is the **single source of that
+  permission**, the way `is_active_venue_manager()` is for venue edits.
+  Every review action — approving or rejecting a claim, an about text, a
+  photo, and later an event — is a `SECURITY DEFINER` RPC (or, for photo
+  publishing, the `publish-venue-photo` Edge Function) that checks
+  `is_admin()` and records `auth.uid()` as the reviewer. There is no
+  client write to any moderation column, and no client policy or grant on
+  `public.admins`: admins are added by hand in the dashboard, the one step
+  that stays there on purpose. Approving a claim grants the manager
+  permission in the same call. An admin may approve their own
+  submissions. The dashboard functions with `service_role` and the
+  snippets in `docs/Engineering/VENUE_CLAIM_OPERATIONS.md` remain as the
+  **fallback**, not the normal path. *Revised 2026-10-28 (was: "There is
+  no in-app admin identity and none is planned — review happens through
+  the dashboard with `service_role`"), decided by the product owner;
+  introduced by `20261017120000_add_in_app_review.sql`. Plan:
+  `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`.*
 
 ### Venue-supplied content
 - **Only factual, verified data originates from us**: MICHELIN stars,

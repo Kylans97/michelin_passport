@@ -8,9 +8,356 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.2.0 (13) — 2026-10-28
+
+Built from `release/1.2.0`. Every database change below was applied to
+production before this build, so the build only adds the screens that use
+them; installed 1.1.0 (12) builds keep working against the same database.
+Ledger at the version bump: 102 migrations, local and remote in agreement.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay of
+all 102 migrations, 2026-10-28:
+- `supabase db dump`, both sides: identical apart from 6 blank lines, the
+  platform statements the CLI filters out.
+- Storage and auth, compared directly: all 5 buckets, 13 `storage.objects`
+  policies, 8 triggers and RLS on both storage tables identical. The one
+  extra local trigger, `enforce_versioning_status_transition`, comes from
+  the newer local storage service: expected noise, not drift.
+
+**In this release, for testers:**
+- **Venue events.** A venue's managers create, edit and cancel their own
+  events from My venues → a venue → Events. New events are reviewed first;
+  edits to a live event go live straight away and are recorded for the
+  admins.
+- **A landing page per managed venue** with Profile, Photos and Events.
+- **In-app review for admins**: claims, about texts, photos, events and
+  changes to live events, with a real preview.
+- **Photo framing and a separate card photo** for venue managers.
+- **Friend requests** have their own Requests tab.
+- **Catalogue:** MICHELIN Netherlands 2026, France 2026 (652 starred),
+  Peru's 15 Key hotels, the completed World's 50 Best lists, phone numbers
+  and Google Place IDs.
+- **Minimum iOS raised to 15.0.**
+
 ### Added
 
-- 2026-10-28 — `20261016150000_add_be_2026_star_cities.sql` adds the seven
+- 2026-10-28 — MICHELIN France 2026 and Peru catalogue data, with two
+  migrations. Data details and QA ids are in the Michelin_Database
+  CHANGELOG.
+  - **Migrations:** `20261019120000_add_fr_2026_star_cities` (82 FR
+    cities) and `20261019130000_add_pe_key_hotel_cities` (5 PE cities),
+    only `public.cities` rows. Ledger 100 → 102.
+  - **Data files** (`supabase/data/enrichment/APPLY_FR_PE_2026.md`):
+    - France: 14 star corrections, 410 MICHELIN URLs, 173 new starred
+      restaurants and 533 phones. France is now 652 starred: 30 / 80 / 542.
+    - Peru: 14 Key hotels (Peru now 15: 1 / 4 / 10), Palacio Nazarenas'
+      Key row, and Central and Mil's World's 50 Best history.
+  - **Checked before and after:** every pre-write check was rerun read-only
+    against production with the files' own data first; afterwards the
+    counts, award rows and `_full` views were verified on production.
+  - **Applied 2026-10-28.** No app code changed.
+
+- 2026-10-28 — Venue events, phase 3: the app. It reads only the
+  `20261018130000` RPCs; none of it works until that migration is
+  applied.
+  - **Events screen** (My venues → a venue → Events): every event the
+    venue hosts, from `get_venue_events`, so every active manager sees
+    the same list.
+    - It groups them as awaiting review, not approved (with the
+      reviewer's note), live, past and cancelled.
+    - "Create an event" opens the form, and tapping an event edits it.
+    - The landing page's summary counts upcoming, awaiting review and
+      not approved.
+  - **The event form** (`VenueEventFormScreen`):
+    - name, description, one of the 7 V1 types, and tags from
+      `event_tags`;
+    - a date, an optional end date, an optional start time, and an end
+      time only once there is a start. A time left out is sent as
+      nothing and shown as "not given", never guessed;
+    - "At {venue}", where the server copies the venue's verified
+      location, or a place, city, country and a map pin
+      (`PickEventLocationScreen`, OpenStreetMap);
+    - the timezone comes from the country, and a country with several
+      zones is asked;
+    - ticket link, admission type and admission note.
+
+    The form checks the server's own rules first: the window up to one
+    year ahead, with "today" in the event's timezone; an end before the
+    start on one day; https only. A refusal from the server is shown in
+    its own words. A live event says "changes go live straight away", and
+    a rejected one shows the note and "Save and resubmit". Cancelling
+    asks for confirmation first.
+  - **Review:** the queue gains EVENTS and CHANGES TO LIVE EVENTS, listed
+    by event name. `ReviewEventScreen` handles both:
+    - **a submitted event** shows its details as entered and "Preview
+      the event page", which opens the real `EventDetailScreen`. The
+      admin chooses Approve and publish, or Reject with a note;
+    - **a change to a live event** shows each changed field, old → new,
+      with a value left empty shown as "not given". The admin chooses
+      Mark as seen, or Take offline with a note.
+  - **Notifications:**
+    - `event_approved` opens the event's page, and `event_rejected` shows
+      the note;
+    - the list and the unread count read the `_v2` functions, falling
+      back to the old ones while a server doesn't have `_v2` yet;
+    - **a type this build doesn't know is skipped** (`tryFromRow`), no
+      longer a reason the whole list fails to load. The next new type
+      can't empty the screen again.
+  - **Event times:** venues may submit date-only or start-only events.
+    This was decided by the product owner on 2026-10-28, over the time
+    audit's earlier rule that host events need both times. The audit's
+    "Host-Created Events" section is marked superseded in place, and
+    `satisfiesHostCreatedEventTimeRequirement` stays unused with a note
+    saying why.
+  - **Tests:** 20 new; the existing venue tests now run against the new
+    repository. 2,511 tests pass and analyze is clean.
+
+    **Not tried on the simulator:** the screens need the phase 3
+    migrations, which aren't on production yet.
+
+- 2026-10-28 — Venue events, phase 3 of
+  `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`: the database
+  half. The design and the six decisions taken are in
+  `docs/Architecture/VENUE_EVENTS_PHASE_3_DESIGN.md`. There are two
+  migrations; no app code changes yet.
+  - **`20261018120000_add_country_timezones`:**
+    - adds `countries.timezones`, every IANA zone for each country
+      (tzdata 2025b `zone.tab`; QA-226, see the Michelin_Database
+      CHANGELOG);
+    - with one zone, the event form uses it as the default; with
+      several, the form asks.
+  - **`20261018130000_add_venue_event_submission`, what a venue calls:**
+    - venues write events only through `submit_venue_event`,
+      `update_venue_event` and `cancel_venue_event`, and read their own
+      with `get_venue_events`;
+    - the rights are those of any active manager of a host venue, not
+      "whoever submitted it";
+    - submitting creates the event as `submitted`, with its host link and
+      tags, in one transaction;
+    - editing a rejected event resubmits it;
+    - editing a live event keeps it live and records the change in
+      `event_edits`; an unchanged save records nothing;
+    - "held at the venue" copies the venue's own verified location.
+  - **Same migration, the rules:** one validation function serves both
+    submit and update:
+    - the 7 V1 types, and only tags that exist;
+    - start and end dates from today up to one year ahead, with "today"
+      in the event's own timezone;
+    - an end time only with a start time, and on a single day the end
+      after the start (00:00 means the end of that day);
+    - coordinates, and a timezone from the event country's own list;
+    - `start_at`/`end_at` are set only from a known time, never invented.
+  - **Same migration, what an admin calls:**
+    - `admin_approve_event`, and `admin_reject_event`, which needs a note
+      and also takes a live event offline;
+    - `admin_mark_event_edit_seen`;
+    - each sends `event_approved`/`event_rejected` to the submitter;
+    - `get_review_queue()` gains the kinds `venue_event` and
+      `venue_event_edit`; installed builds skip kinds they don't know;
+    - admins can read events that aren't published yet, for the review
+      preview;
+    - `events` gains `submitted_at`, `reviewed_at`, `reviewed_by` and
+      `review_note`.
+  - **Same migration, policies dropped:** the loose write policies on
+    `events` and its link tables, all keyed on `submitted_by`. They were
+    an open insert and update with no window or field checks, plus the
+    unused participant-link policies. Nothing wrote through them:
+    production's 28 events have no `submitted_by`, and every app query on
+    these tables is a read (checked 2026-10-28).
+  - **Notifications for the new build:** `get_notifications_v2()` and
+    `get_unread_notification_count_v2()` include the event types (see
+    Fixed for why the old functions hide them).
+  - **Proof:** on a local stack, all 100 migrations replayed from empty,
+    and a 53-check scenario passes:
+    - permissions: non-managers, revoked managers, members and anon are
+      refused;
+    - each form rule, including a timezone edge (Auckland's "today");
+    - unknown times stay null;
+    - "held at the venue" ignores the location the app sent;
+    - resubmit, edit history and cancel;
+    - admin approve and reject with their notifications, and both new
+      queue kinds;
+    - direct table writes are refused, even for an admin.
+
+    Every new `SECURITY DEFINER` function is closed to anon and PUBLIC,
+    checked with `has_function_privilege`. The internal helpers are
+    closed to `authenticated` too. The old `get_notifications()` result
+    type is identical to production's.
+  - **`notify-venue-submission` understands `events`.** The submitter
+    comes from `submitted_by`, and the host venue is looked up like any
+    other submission. The email gives the name, type, date, location,
+    ticket link and the description verbatim. It shows only the times the
+    venue gave: "Sat, 14 Nov 2026 (no time given)", "from 19:30", or a
+    range, plus the event's timezone. The calendar date is never shifted.
+    A previously reviewed event is marked "Event resubmitted". 9 new
+    tests; all 29 pass.
+  - **Applied and deployed 2026-10-28**, from `feature/venue-events`:
+    - **Checked first** (read-only): production still had the 58
+      countries the migration covers, all 6 tag ids, and 28 events with
+      none written from the app.
+    - **Migrations:** plain `supabase db push --linked`, ledger 98 →
+      100/100, local and remote in agreement.
+    - **Verified on production** (read-only):
+      - every country has its zones (44 with one);
+      - still 6 tags and 28 published events, and no `event_edits`;
+      - no write policy left on `events` or its link tables, and the
+        four admin read policies are in place;
+      - no new function is executable by anon or PUBLIC, and the
+        internal helpers aren't executable by `authenticated`;
+      - `get_notifications()`'s result type is unchanged.
+    - **Compared with a fresh local replay:** 39 objects identical. That
+      covers every new or changed function with its grants, the new
+      table and columns, the countries' zones and the tags, the three
+      constraints, and every policy on the events tables.
+    - **Edge Function:** `notify-venue-submission` deployed (version 4 →
+      5, `verify_jwt` still off). A missing or wrong secret gets 401, so
+      the smoke test sent no email.
+    - The phase 3 build is on the same branch and not yet released.
+    - **Tried on the simulator** against production, signed in as the
+      test manager `@test` (Flore):
+      - the landing page shows "1 upcoming";
+      - Events lists Flore's events, grouped as live and past;
+      - "Create an event" loads the 6 tags and "Times are in
+        Europe/Amsterdam.";
+      - a date-only event, "TEST please ignore", was submitted at Flore.
+        Production stored it as `submitted`, with `start_at`/`end_at`
+        and `start_time` null, Flore's own address and coordinates, and
+        a host link with `is_venue`. The admin email call returned 200;
+      - the event showed under Awaiting review, and reopened in the
+        form with nothing guessed;
+      - cancelling it asked for confirmation first; it is now
+        `cancelled` and no longer in the review queue.
+
+      The test event stays in `events` as a cancelled row.
+    - **Admin side, signed in as `@kylan`:**
+      - a second test event, "TEST review please ignore", was submitted
+        as `@test`;
+      - Review showed it under EVENTS · 1;
+      - the review screen showed its details;
+      - "Preview the event page" opened the real event page of the
+        unpublished event;
+      - Reject with a note stored `rejected`, the note, `@kylan` as
+        reviewer, and an `event_rejected` notification to `@test`.
+
+      This found the two bugs under Fixed.
+    - **Back as `@test`, with the fixes in:**
+      - Explore doesn't show the rejected event;
+      - the Notifications badge counted 1 (through `_v2`);
+      - the list showed '"TEST review please ignore" at Flore was not
+        approved.' with the note, alongside every older notification;
+      - Flore's landing page read "1 upcoming · 1 not approved";
+      - Events listed it under NOT APPROVED with the note;
+      - the form opened with "Saving your changes sends it back for
+        review." (closed without saving).
+
+      Still not tried: approving, a live edit, and the map pin.
+
+- 2026-10-28 — A landing page per managed venue, phase 2 of
+  `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. My Venues
+  used to open one long screen with the about text and every photo
+  control on it. Now:
+  - **The landing page** (`VenueManagementScreen`) shows the venue's
+    name with its card photo (card crop), then three rows, each with a
+    one-line summary: **Profile** ("Published", "Awaiting review", "Not
+    approved", "Nothing published yet"), **Photos** ("3 photos · 1
+    awaiting review") and **Events** ("2 upcoming"). Preview my page and
+    the contact line stay here. Coming back from any section reloads all
+    three summaries. A failed lookup only blanks its own summary; the row
+    still opens.
+  - **Profile** (`VenueProfileScreen`) and **Photos**
+    (`VenuePhotosScreen`) are the two halves of the old screen, moved
+    unchanged. Nothing was removed.
+  - **Events** (`VenueEventsScreen`) is new and read-only for now: the
+    upcoming events the venue hosts, the same list its public page shows
+    (`loadHostedEventsFor*`). Creating and editing events is phase 3, and
+    deliberately has no placeholder button here.
+  - Private chefs get the same page.
+  - **App only:** no migration, nothing new read from the database.
+  - **Tests:** the existing tests now run against the screen each one
+    covers. New tests cover the landing page (summaries, card photo,
+    failure isolation, navigation, reload on return, private chefs, no
+    verified-data fields) and the Events screen.
+
+- 2026-10-28 — In-app review for admins, phase 1 of
+  `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. Reviewing a
+  venue claim, an about text or a photo meant finding the row in the
+  Supabase dashboard and running SQL by hand, or `curl` with a secret for
+  a photo, with no way to see what the submission would look like. Now:
+  - **Profile → Review**, shown only to admins, with the number waiting.
+    The queue groups everything by kind, oldest first. Each item opens
+    with what's needed to decide:
+    - **claim:** the claimant's details;
+    - **about text:** the text, plus "Preview the venue page", which
+      opens the real detail screen with it in place;
+    - **photo:** the photo in its real header and card frames with its
+      framing, plus the same page preview.
+    Approve, or reject with a note the venue receives through the
+    notifications that already existed.
+  - **`20261017120000_add_in_app_review.sql`:**
+    - `public.admins` (RLS on, no client policy and no grant — admins are
+      added by hand in the dashboard) and `is_admin()`;
+    - `get_review_queue()`;
+    - admin-only wrappers that call the existing dashboard functions with
+      `auth.uid()` as the reviewer — the originals keep their
+      dashboard-only ACL as the fallback;
+    - an admin read policy on the private `venue-photo-submissions`
+      bucket, for the preview.
+    Every new SECURITY DEFINER function carries its `revoke … from
+    public, anon`.
+  - **`publish-venue-photo`** also accepts an admin's own login. On that
+    path the reviewer is always the caller (a `reviewed_by` in the body is
+    ignored); the secret path is unchanged. 22 deno tests pass (5 new).
+  - **Settled decision revised, on purpose.** CLAUDE.md said "There is no
+    in-app admin identity and none is planned"; the product owner decided
+    on 2026-10-28 to review in the app, and that an admin may approve
+    their own submissions. The rule now names `is_admin()` as the single
+    source of review permission. `VENUE_CLAIM_OPERATIONS.md` keeps its
+    snippets, marked as the fallback, and says how to add an admin.
+  - **Proven locally only.** On a replay of the 97 existing migrations
+    with an admin, a manager and a member, then this one: `is_admin()` is
+    true only for the admin; the queue showed a claim, an about text and a
+    photo with venue, city and submitter, and refused the other two; every
+    admin action refused a non-admin; approving the about text made it
+    current, the claim approval granted the manager permission, the photo
+    rejection stored its note, and each recorded the admin as reviewer;
+    the venue got all four notifications; a second approval of the same
+    item was refused; nobody could insert into `admins` from the app;
+    anon and PUBLIC hold no EXECUTE on any new function. A fresh replay
+    of all 98 files gave identical definitions. Analyzer clean; 2,476
+    tests pass (9 new). Not yet seen on the simulator: it needs this
+    applied, an admin row and the function deployed.
+  - **Rollout order:** the migration, then the admin row, then deploy
+    `publish-venue-photo`, then the build. Installed builds are
+    unaffected — they don't call any of this.
+  - **Applied 2026-10-28**, in that order:
+    - **Migration:** plain `supabase db push --linked` (ledger 97 → 98/98).
+      The 9 objects (7 functions, `admins`, the storage policy) are
+      identical to the fresh replay's, and only `authenticated` holds
+      EXECUTE on the new functions (not anon, not PUBLIC); the dashboard
+      originals remain uncallable from the app.
+    - **Admin row:** the product owner's account (`@kylan`) added by hand,
+      the only admin.
+    - **Edge Function:** `publish-venue-photo` deployed (version 4 → 5,
+      `verify_jwt` still off). Smoke-tested without side effects: no
+      login, and the anon key as a bearer, are both refused with 401.
+    - **App:** on the simulator, signed in as the non-admin `@test`, the
+      Review row correctly stays hidden. Signed in as `@kylan`, Review
+      shows with a badge of 2; the queue loads production's pending Flore
+      about text and photo, and the photo item shows the private
+      submission (signed URL, so the admin storage policy works) in both
+      the header and card frames. The product owner then approved both
+      from the app (photo 15:59:28, about text 15:59:57 UTC), each
+      recorded with `@kylan` as reviewer — the first production run of
+      the admin wrappers and of the Edge Function's admin-JWT publish.
+    - **Coordination:** a parallel session's branch
+      (`feature/editorial-selection`) builds on this commit and carries
+      `20261017130000`. It was confirmed unapplied before this push, so
+      only this migration went out.
+
+- 2026-10-28 — `20261019150000_add_be_2026_star_cities.sql` adds the seven
   BE cities the MICHELIN Belgium & Luxembourg 2026 star update needs
   (`supabase/data/enrichment/michelin_be_lu_stars_2026/`). **Prepared, not
   applied.**
@@ -241,6 +588,61 @@ The format follows Keep a Changelog.
   not been run yet.
 
 ### Fixed
+
+- 2026-10-28 — Two bugs found trying the phase 3 review side on the
+  simulator as the admin `@kylan`, both fixed on `feature/venue-events`:
+  - **Unpublished events showed in an admin's discovery lists.** After
+    `@kylan` rejected the test event "TEST review please ignore", it
+    still appeared in Explore's What's On. Every events list query
+    (Explore, What's On, a country's events, hosted events, wishlists,
+    friends' and past attendance) relied on RLS alone. Since
+    `20261018130000`, RLS also lets admins (`events_admin_read`) and an
+    event's own submitter (`events_own_submission_read`) read submitted,
+    rejected and archived rows. A submitter would have seen their own
+    unapproved event in Explore the same way.
+    - Every list now filters `moderation_status = 'published'` itself
+      (`publishedEventsOnly`), so admins and submitters see exactly what
+      everyone else sees. Regular users and anon were never affected.
+    - Only `loadEventById` stays unfiltered, so the review preview can
+      open an event before it's published.
+    - **Production:** no change needed, because the policies are
+      correct. The shipped build has the same unfiltered queries, but
+      until today no unpublished event existed for anyone to see.
+    - **Test:** `events_published_only_test.dart` records the real REST
+      requests and checks each one.
+    - **Would recur** whenever a new read policy widens access to
+      events. Lists must say what they list rather than inherit RLS.
+  - **The review queue never reloaded** after a decision or a pull to
+    refresh, in debug builds. `setState(() => _future = next)` returns
+    the Future, which Flutter rejects in debug mode, so the state never
+    changed. The decision itself saved; only the list stayed stale.
+    - Fixed there, in the Profile review badge (`_reviewCountFuture`),
+      and in `EventsScreen._reload`, which had the same shape.
+    - Release builds skip that check, so shipped builds were unaffected.
+      It is the same mistake that broke `VenueEventsScreen` during phase
+      3 and was caught by its tests.
+
+- 2026-10-28 — Two gaps found while drafting phase 3, both closed in
+  `20261018130000`:
+  - **The six event tags existed only in production.** They were
+    inserted 2026-08-22 outside any migration, so a fresh replay had none
+    and tags could never be assigned there. The migration seeds
+    production's exact rows, ids included, with `on conflict do nothing`;
+    on production that is a no-op, since all six ids are present
+    (checked). Tag validation reads `event_tags` instead of a hardcoded
+    list, so a missing tag is an error rather than being silently
+    dropped. Would recur whenever reference data is entered by hand in
+    the dashboard.
+  - **Installed builds throw on a notification type they don't know**
+    (`AppNotificationType.fromWire`). One `event_approved` row would have
+    made the whole Notifications screen fail to load on every current
+    build. `get_notifications()` and `get_unread_notification_count()`
+    now return only the types those builds know, and the phase 3 build
+    reads the `_v2` functions. `_v2` was built from production's live
+    definition, which has one more column (`friendship_status`) than the
+    migration first read for it. The phase 3 build should also make the
+    parser skip unknown types, so the next new type can't cause this
+    again.
 
 - 2026-10-02 — `claims_*.review_note` was written by `reject_venue_claim`
   but `get_notifications()` never surfaced it: a claimant whose venue

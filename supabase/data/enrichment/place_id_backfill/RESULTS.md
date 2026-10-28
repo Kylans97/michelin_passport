@@ -100,7 +100,7 @@ Place ID then. Tested on a scratch Postgres: aborts before the import, fills
 Requested by the catalogue session. Files: `placeid_results_be_stars_2026.csv`,
 `prepared_place_id_backfill_be_stars_2026.sql` — run only after
 `../michelin_be_lu_stars_2026/prepared_be_lu_stars_2026.sql`; aborts until
-rest_1405..rest_1417 exist. Codes and coordinates taken from that SQL and
+rest_1827..rest_1839 exist. Codes and coordinates taken from that SQL and
 checked row by row against its `new_restaurants.csv`.
 
 All 13 confirmed: one Google candidate each, the restaurant's own record,
