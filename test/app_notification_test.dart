@@ -144,6 +144,45 @@ void main() {
       expect(n.listingName, isNull);
     });
 
+    // friendship_status arrived in 20261012120000; _friendshipRow itself
+    // stays without it, the shape an older server still returns.
+    group('friend request status', () {
+      AppNotification withStatus(String? status) => AppNotification.fromRow({
+        ..._friendshipRow(type: 'friend_request_received'),
+        'friendship_status': status,
+      });
+
+      test('pending offers Accept/Decline', () {
+        final n = withStatus('pending');
+        expect(n.friendshipStatus, 'pending');
+        expect(n.friendRequestIsPending, isTrue);
+      });
+
+      test('accepted, declined and blocked do not', () {
+        for (final status in ['accepted', 'declined', 'blocked']) {
+          final n = withStatus(status);
+          expect(n.friendshipStatus, status);
+          expect(n.friendRequestIsPending, isFalse, reason: status);
+        }
+      });
+
+      test('a friendship row that no longer exists (null) does not', () {
+        final n = withStatus(null);
+        expect(n.hasFriendshipStatus, isTrue);
+        expect(n.friendshipStatus, isNull);
+        expect(n.friendRequestIsPending, isFalse);
+      });
+
+      test('a server without the column keeps the old always-offer '
+          'behaviour', () {
+        final n = AppNotification.fromRow(
+          _friendshipRow(type: 'friend_request_received'),
+        );
+        expect(n.hasFriendshipStatus, isFalse);
+        expect(n.friendRequestIsPending, isTrue);
+      });
+    });
+
     test('maps a missing-listing-added row, including listing context', () {
       final n = AppNotification.fromRow(_listingRow());
       expect(n.type, AppNotificationType.missingListingAdded);

@@ -167,6 +167,40 @@ The format follows Keep a Changelog.
   overflows at 320px width combined with 1.6x text, on both screens.
   Would recur whenever an action moves between screens while a count
   elsewhere still points at the old one.
+- 2026-10-28 — Two of the gaps found alongside the entry above. **(1)** A
+  friend request's notification kept Accept/Decline after the request was
+  accepted, declined, cancelled or removed; tapping either made the RPC
+  raise "no longer available", which NotificationsScreen never caught, so
+  nothing visible happened. `20261012120000_add_friendship_status_to_
+  notifications.sql` recreates `get_notifications()` with one more
+  column, `friendship_status` (from the `friendships` join it already
+  had; NULL once the row is gone), the same pattern as `invite_status`.
+  The row now offers Accept/Decline only while pending, then "You
+  accepted"/"You declined", nothing for blocked or gone; `_accept`/
+  `_decline` catch the error, say so and reload (invites too).
+  `AppNotification` tells a missing column from a NULL value, so a server
+  without the column keeps the old always-offer behaviour and build and
+  migration can ship in either order; builds already out ignore the extra
+  column. **(2)** The 4 pending requests from 2026-09-23, sent before the
+  notification trigger existed, had no notification at all.
+  `20261013120000_backfill_pre_trigger_friend_request_notifications.sql`
+  inserts one for every pending friendship without one, dated with the
+  friendship's own `created_at` and unread; it matches 0 rows on a fresh
+  replay. Proven locally only: with production's situation recreated
+  (pending, accepted, declined, sender-cancelled, and two pre-trigger
+  requests in both directions), the backfill inserted exactly the two
+  missing notifications to the right recipients at their original dates,
+  re-running either migration changed nothing, `get_notifications()`
+  returned the right status per row as each user, only `authenticated`/
+  `service_role` hold EXECUTE (not anon or PUBLIC), and a fresh replay of
+  all 92 files gives an identical function definition and ACL. Analyzer
+  clean, full suite passes (2,424). Not exercised: the app against the
+  new function end to end, and the row's three states in the simulator.
+  **Not yet applied to production**; before applying, re-run the
+  read-only count of pending friendships with no notification (4 on
+  2026-10-28). The 320px-plus-1.6x overflow stays open. Would recur with
+  any trigger added to a table that already has rows it should have
+  fired for.
 
 ---
 

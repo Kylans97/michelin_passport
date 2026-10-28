@@ -99,42 +99,68 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
         _ => null,
       };
 
+  void _showError(String message) {
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          message,
+          style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
+        ),
+        backgroundColor: AppColors.error,
+        duration: const Duration(seconds: 2),
+      ),
+    );
+  }
+
+  // Both RPCs raise when the request/invite is no longer pending (answered
+  // elsewhere — a friend request can also be answered on FriendsScreen's
+  // Requests tab). Previously uncaught, so a tap did nothing visible; now
+  // it says so and reloads, which brings the row's current status in.
   Future<void> _accept(AppNotification n) async {
-    switch (n.type) {
-      case AppNotificationType.friendRequestReceived:
-        await _friendRepo.acceptRequest(n.subjectId);
-      case AppNotificationType.venueInviteReceived:
-        await _venueInviteRepo.acceptInvite(n.subjectId);
-        _analytics.track(
-          AnalyticsEvent.venueInviteAccepted,
-          AnalyticsProperties(
-            inviteId: n.subjectId,
-            entityType: _inviteEntityType(n),
-            entityId: n.inviteVenueId,
-          ),
-        );
-      default:
-        return;
+    try {
+      switch (n.type) {
+        case AppNotificationType.friendRequestReceived:
+          await _friendRepo.acceptRequest(n.subjectId);
+        case AppNotificationType.venueInviteReceived:
+          await _venueInviteRepo.acceptInvite(n.subjectId);
+          _analytics.track(
+            AnalyticsEvent.venueInviteAccepted,
+            AnalyticsProperties(
+              inviteId: n.subjectId,
+              entityType: _inviteEntityType(n),
+              entityId: n.inviteVenueId,
+            ),
+          );
+        default:
+          return;
+      }
+    } catch (_) {
+      _showError('Could not accept. Please try again.');
     }
     _load();
   }
 
   Future<void> _decline(AppNotification n) async {
-    switch (n.type) {
-      case AppNotificationType.friendRequestReceived:
-        await _friendRepo.declineRequest(n.subjectId);
-      case AppNotificationType.venueInviteReceived:
-        await _venueInviteRepo.declineInvite(n.subjectId);
-        _analytics.track(
-          AnalyticsEvent.venueInviteDeclined,
-          AnalyticsProperties(
-            inviteId: n.subjectId,
-            entityType: _inviteEntityType(n),
-            entityId: n.inviteVenueId,
-          ),
-        );
-      default:
-        return;
+    try {
+      switch (n.type) {
+        case AppNotificationType.friendRequestReceived:
+          await _friendRepo.declineRequest(n.subjectId);
+        case AppNotificationType.venueInviteReceived:
+          await _venueInviteRepo.declineInvite(n.subjectId);
+          _analytics.track(
+            AnalyticsEvent.venueInviteDeclined,
+            AnalyticsProperties(
+              inviteId: n.subjectId,
+              entityType: _inviteEntityType(n),
+              entityId: n.inviteVenueId,
+            ),
+          );
+        default:
+          return;
+      }
+    } catch (_) {
+      _showError('Could not decline. Please try again.');
     }
     _load();
   }
@@ -252,6 +278,51 @@ class _NotificationRow extends StatelessWidget {
     ],
   );
 
+  // Same shape as _VenueInviteContent._receivedStatus: Accept/Decline only while the
+  // request is still pending, then what became of it. 'blocked' and a
+  // friendship that no longer exists (cancelled by the sender, or
+  // removed) show nothing rather than a guess at why.
+  Widget _friendRequestStatus() {
+    if (notification.friendRequestIsPending) {
+      return Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          TextButton(
+            onPressed: onDecline,
+            child: Text(
+              'Decline',
+              style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+            ),
+          ),
+          TextButton(
+            onPressed: onAccept,
+            child: Text(
+              'Accept',
+              style: CsTypography.metadata.copyWith(
+                color: AppColors.forestGreen,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+        ],
+      );
+    }
+    switch (notification.friendshipStatus) {
+      case 'accepted':
+        return Text(
+          'You accepted',
+          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+        );
+      case 'declined':
+        return Text(
+          'You declined',
+          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+        );
+      default:
+        return const SizedBox.shrink();
+    }
+  }
+
   Widget _content(BuildContext context) {
     switch (notification.type) {
       case AppNotificationType.friendRequestReceived:
@@ -260,30 +331,7 @@ class _NotificationRow extends StatelessWidget {
           username: notification.otherUsername,
           avatarUrl: notification.otherAvatarUrl,
           onTap: onTapOther,
-          trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextButton(
-                onPressed: onDecline,
-                child: Text(
-                  'Decline',
-                  style: CsTypography.metadata.copyWith(
-                    color: AppColors.taupe,
-                  ),
-                ),
-              ),
-              TextButton(
-                onPressed: onAccept,
-                child: Text(
-                  'Accept',
-                  style: CsTypography.metadata.copyWith(
-                    color: AppColors.forestGreen,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          trailing: _friendRequestStatus(),
         );
       case AppNotificationType.friendRequestAccepted:
         return IdentityRow(
