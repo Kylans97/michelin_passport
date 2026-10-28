@@ -377,7 +377,9 @@ class _EventsScreenState extends State<EventsScreen> {
   // protection for a rapid Location -> Date -> Search -> Filters-Apply
   // sequence (Correction Pass §19): only the newest request's result can
   // ever reach setState, regardless of network ordering.
-  void _reload() => setState(() => _discoveryFuture = _fetchDiscoveryList());
+  void _reload() => setState(() {
+    _discoveryFuture = _fetchDiscoveryList();
+  });
 
   // Clears ALL FOUR discovery dimensions at once (Correction Pass §21/
   // §22) — the one unambiguous, always-safe recovery action offered from

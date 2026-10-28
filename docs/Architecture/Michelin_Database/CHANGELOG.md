@@ -6,6 +6,105 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — QA follow-ups applied: Kjolle, Plaza Athénée, Monaco, Peru hotel phones (QA-222, QA-224, QA-227, QA-230)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, following `supabase/data/enrichment/APPLY_QA_2026-10-28.md` |
+| Migrations | None. Ledger unchanged at 102 |
+| Data files | Four prepared files, each one transaction with its own guards; none aborted |
+
+All four files' guards were checked read-only against production before anything was written. Afterwards each effect was re-read from production.
+
+**Kjolle** (`kjolle_location/prepared_kjolle_location.sql`, **QA-227**). `rest_0135`'s point moves from the rounded (-12.145, -77.0211), 856 m away, to (-12.1525709, -77.0225397). That is its building, Av. Pedro de Osma 301 in Barranco: OSM node 6228532187, the point Central (`rest_1578`) already uses. Its `google_place_id` is unchanged and still unchecked, since there is no Places API key.
+
+**Plaza Athénée** (`michelin_fr_stars_2026/prepared_plaza_athenee_rename.sql`, **QA-222**). The product owner decided this is a rename, not a closure. `rest_0972` "Jean Imbert au Plaza Athénée" becomes "La Grande Table du Plaza Athénée", and `michelin_url` moves to MICHELIN's current page. Its one star, its single current star row and its link to `hotel_713` are unchanged, as re-checked.
+
+**Monaco** (`michelin_mc_2026/prepared_mc_stars_2026.sql`, **QA-224**). The product owner brought Monaco into scope.
+- **Restaurants:** 9 added, `rest_1579`–`rest_1587`, from MICHELIN's 2026 selection, with `inclusion_reason` `michelin_star`. MICHELIN's live Monaco listing ("1-9 of 9") and each restaurant page agree on **1 / 3 / 5**.
+- **Star rows:** each restaurant has exactly one current 2026 star row agreeing with `michelin_stars`, as re-checked.
+- **City:** all nine use the existing MC city "Monte Carlo"; no city was added. All nine appear in `restaurants_full`.
+- **Hotel links:** three `exact` links where MICHELIN's address names the Key hotel. Le Louis XV and Le Grill link to the Hôtel de Paris (`hotel_193`), and Les Ambassadeurs to the Métropole (`hotel_194`).
+- **Phones:** 7 of 9 are confirmed on the restaurant's own site. Le Louis XV and Robuchon Monaco stay empty.
+- **Elsa** (`rest_1583`) is at Monte-Carlo Beach, which is in Roquebrune-Cap-Martin, France. MICHELIN files it under Monaco, so it is stored as MC. Logged with the two empty phones as **QA-231**, which stays open.
+
+**Peru hotel phones** (`michelin_pe_2026/prepared_pe_hotel_phones.sql`, **QA-230**). The product owner's rule: the hotel's own local line, otherwise the group line its own site shows. Only empty values were filled.
+- **Own local line:** Las Casitas, Monasterio, Miraflores Park and Rio Sagrado.
+- **Andean group line:** Titilaka, CIRQA, Atemporal and Fausto.
+- **Inkaterra group line:** Inkaterra Hacienda Urubamba and La Casona.
+- **Still empty:** Antigua Casona San Blas (`hotel_815`) and Tambo del Inka (`hotel_817`). Neither has an own site that could be reached.
+
+The 15 Peruvian Key hotels now hold 13 phones.
+
+---
+
+# 2026-10-28 — Catalogue data applied: MICHELIN France 2026 and Peru (QA-220–QA-225)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, following `supabase/data/enrichment/APPLY_FR_PE_2026.md` |
+| Migrations | `20261019120000_add_fr_2026_star_cities` (82 FR cities), `20261019130000_add_pe_key_hotel_cities` (5 PE cities). Ledger 100 → 102, local and remote in agreement |
+| Data files | Three prepared files, each one transaction with its own guards, run in the guide's order; none aborted |
+
+Before anything was written, every pre-write check in the three files was rerun read-only against production with the files' own data, and all passed (recorded in the apply guide). Each file's effect was then measured as before/after counts against production.
+
+**Cities.** FR 329 → 411, PE 2 → 7. Peru's new rows follow MICHELIN's destinations, so "Arequipa" and "City of Arequipa" are separate cities.
+
+**MICHELIN France 2026** (`michelin_fr_stars_2026/prepared_fr_stars_2026.sql`). Source: MICHELIN's 2026 full list (16 March 2026) and the live listing, matched one-to-one.
+
+- No relabel: the August import already held the 2026 edition.
+- **QA-220:** 14 star counts corrected in place, each old value asserted first. Spot check: Maison Lameloise, Le Coquillage and L'Oustau de Baumanière are now three-star; Le Suquet is one-star.
+- **QA-223:** 410 `michelin_url` values set to MICHELIN's canonical page.
+- 173 restaurants added, `rest_1405`–`rest_1577`, each with a current 2026 star row; 148 of them with a confirmed phone.
+- The file's closing checks passed, and were re-checked afterwards: exactly **652** starred, **30 / 80 / 542**. Every starred FR restaurant has exactly one current star row agreeing with `michelin_stars`, none lacks a city, and all 652 appear in `restaurants_full`.
+- Not changed, logged: **QA-221** (13 withdrawn since March; the six in production keep their 2026 stars), **QA-222** (`rest_0972` rename waits for a decision), **QA-224** (Monaco out of scope).
+
+**France phones** (`prepared_fr_phone_backfill.sql`): 385 existing restaurants, filling only empty values. FR restaurants with a phone: 151 → 536 (148 of the 151 came from the stars file). **QA-225:** numbers left empty on purpose, with the reason per row.
+
+**Peru** (`michelin_pe_2026/prepared_pe_keys_and_w50b.sql`):
+
+- 14 MICHELIN Key hotels added, `hotel_804`–`hotel_817`. Peru now has 15 Key hotels: **1 three-Key, 4 two-Key, 10 one-Key**, each with exactly one current Key row (guide year 2026) agreeing with the hotel row.
+- Palacio Nazarenas (`hotel_745`): its missing Key row added, and `michelin_url` moved to MICHELIN's current page.
+- Central added as `rest_1578` (`hall_of_fame`), with 11 World's 50 Best rows: ten ranked years (2013–2023, no 2020 list) and its 2024 hall-of-fame row. Hall-of-fame rows: 6 → 7.
+- Mil (`rest_1381`): its 2024 rank added (No. 73).
+- Phones: two new hotels (Hotel B, explora Valle Sagrado). The rest stay empty under the confirmed-on-own-site rule; the three Belmond hotels wait for a decision on using their own local line.
+
+Not done here: Google Place IDs for the 173 French restaurants and 14 Peruvian hotels (no Places API key), and the `qa_issues.csv` statuses of QA-220–QA-225, which are unchanged.
+
+---
+
+# 2026-10-28 — Country timezones applied (QA-226)
+
+| | |
+|---|---|
+| Status | **Applied** 2026-10-28, to production (ledger 98 → 100 with `20261018130000`, local and remote in agreement) |
+| Migration | `20261018120000_add_country_timezones` |
+| Source | IANA time zone database, tzdata 2025b, `zone.tab`, read from `/usr/share/zoneinfo/zone.tab` on 2026-10-28 |
+| Reason | Venue events (phase 3) need a timezone for every event, but no venue and no country stored one. |
+
+**What it adds.** `countries.timezones text[]`, holding every zone `zone.tab` lists for each of the 58 countries in `public.countries`. The values were generated from the file, not typed.
+
+- 44 countries have one zone. The event form uses it as the default.
+- 14 have several: AR, AU, BR, CL, CN, DE, EC, ES, ID, MX, MY, NZ, PT and US. The form asks for these instead of assuming one. Spain, for example, lists Europe/Madrid, Africa/Ceuta and Atlantic/Canary.
+- France has only Europe/Paris, because IANA gives its overseas regions their own country codes.
+
+**Checks.**
+
+- All 149 distinct zones exist in production's `pg_timezone_names` (read-only, 2026-10-28). The migration also refuses, by itself, any zone its Postgres doesn't know.
+- Verified on a full local replay from empty: every country got its zones, and the column became NOT NULL with at least one entry.
+- Any later migration that adds a country must give it its zones.
+
+The venue event RPCs (`20261018130000`) refuse a timezone that isn't in the event country's list.
+
+**After applying** (read-only):
+
+- All 58 countries have zones: 44 with one, 14 with several.
+- The zones are identical to a fresh local replay's (one md5 over every country's list).
+
+Not done here: QA-226's status in `qa_issues.csv` is still Open.
+
+---
+
 # 2026-10-28 — Catalogue data applied: MICHELIN Netherlands 2026, World's 50 Best completion, phones, Place IDs (QA-209, QA-216, QA-218)
 
 | | |

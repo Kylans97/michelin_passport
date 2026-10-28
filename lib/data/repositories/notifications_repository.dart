@@ -13,16 +13,33 @@ class NotificationsRepository {
 
   final SupabaseClient _client;
 
+  /// Reads the _v2 functions (20261018130000), which include event
+  /// notifications. Falls back to the originals while a server doesn't
+  /// have _v2 yet (PostgREST's "function not found", PGRST202), so this
+  /// build works on either side of that migration. A row of a type this
+  /// build doesn't know is skipped, never a reason to fail the whole list.
   Future<List<AppNotification>> getNotifications() async {
-    final rows = await _client.rpc('get_notifications');
-    return (rows as List)
-        .map((r) => AppNotification.fromRow(r as Map<String, dynamic>))
-        .toList();
+    final rows = await _rpcWithFallback('get_notifications_v2', 'get_notifications');
+    return [
+      for (final r in rows as List) ?AppNotification.tryFromRow(r as Map<String, dynamic>),
+    ];
   }
 
   Future<int> getUnreadCount() async {
-    final result = await _client.rpc('get_unread_notification_count');
+    final result = await _rpcWithFallback(
+      'get_unread_notification_count_v2',
+      'get_unread_notification_count',
+    );
     return result as int;
+  }
+
+  Future<dynamic> _rpcWithFallback(String name, String fallback) async {
+    try {
+      return await _client.rpc(name);
+    } on PostgrestException catch (e) {
+      if (e.code != 'PGRST202') rethrow;
+      return _client.rpc(fallback);
+    }
   }
 
   Future<void> markAsRead(String notificationId) async {

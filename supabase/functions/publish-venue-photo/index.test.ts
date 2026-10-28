@@ -302,3 +302,57 @@ Deno.test('a hotel submission derives its destination under hotel/, and a privat
   };
   assertEquals(destinationPathFor(chefSubmission), 'private_chef/chef-1/111_222.jpg');
 });
+
+// ---- Admin login path (20261017120000) ----
+
+function adminReq(jwt: string | null, body?: unknown): Request {
+  const headers = new Headers({ 'Content-Type': 'application/json' });
+  if (jwt !== null) headers.set('Authorization', `Bearer ${jwt}`);
+  return new Request('http://localhost/publish-venue-photo', {
+    method: 'POST',
+    headers,
+    body: JSON.stringify(body ?? { submission_id: VALID_SUBMISSION.id }),
+  });
+}
+
+const resolver = (map: Record<string, string>) => (jwt: string) => Promise.resolve(map[jwt] ?? null);
+
+Deno.test('an admin login, with no secret, publishes and records that admin as the reviewer', async () => {
+  const { admin, rpcCalls } = fakeAdmin();
+  const res = await handleRequest(adminReq('admin-jwt'), admin, SECRET, resolver({ 'admin-jwt': 'admin-user-1' }));
+  assertEquals(res.status, 200);
+  assertEquals(rpcCalls.length, 1);
+  assertEquals(rpcCalls[0].params.p_reviewed_by, 'admin-user-1');
+});
+
+Deno.test('on the admin path a reviewed_by in the body is ignored — the reviewer is always the caller', async () => {
+  const { admin, rpcCalls } = fakeAdmin();
+  const res = await handleRequest(
+    adminReq('admin-jwt', { submission_id: VALID_SUBMISSION.id, reviewed_by: 'someone-else' }),
+    admin,
+    SECRET,
+    resolver({ 'admin-jwt': 'admin-user-1' }),
+  );
+  assertEquals(res.status, 200);
+  assertEquals(rpcCalls[0].params.p_reviewed_by, 'admin-user-1');
+});
+
+Deno.test('a login that is not an admin is rejected before anything is read', async () => {
+  const { admin, copyCalls, rpcCalls } = fakeAdmin();
+  const res = await handleRequest(adminReq('member-jwt'), admin, SECRET, resolver({}));
+  assertEquals(res.status, 401);
+  assertEquals(copyCalls.length, 0);
+  assertEquals(rpcCalls.length, 0);
+});
+
+Deno.test('no secret and no login is rejected', async () => {
+  const { admin } = fakeAdmin();
+  const res = await handleRequest(adminReq(null), admin, SECRET, resolver({ 'admin-jwt': 'admin-user-1' }));
+  assertEquals(res.status, 401);
+});
+
+Deno.test('without a resolver (the old wiring) a login alone is still rejected', async () => {
+  const { admin } = fakeAdmin();
+  const res = await handleRequest(adminReq('admin-jwt'), admin, SECRET);
+  assertEquals(res.status, 401);
+});

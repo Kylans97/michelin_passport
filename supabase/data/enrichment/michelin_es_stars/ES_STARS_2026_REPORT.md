@@ -163,5 +163,9 @@ were copied, including the partial unique index on current award rows.
   names and 23 links.
 - **Re-runs:** the migration changes nothing on a second run, and the file
   aborts at the first check.
+- **Identity guard:** each of the 57 existing codes must still carry its
+  exported name, so the fills can only reach the restaurant they were
+  researched for. Renaming one row in the test makes the whole file abort
+  with nothing applied.
 
 It was not run against the real database or a full migration replay.

@@ -33,16 +33,24 @@ applied row by row.
 | Change | Restaurants |
 |---|---|
 | **Lost their star.** The 2026 row becomes 2025 (value unchanged, closed), a 2026 row with no star is added, and `michelin_stars` is set to NULL. | La Durée (2), Ralf Berendsen (2; the chef moved to SUIS, NL), Bar Bulot Zedelgem, Mémoire, Table d'Amis, Aurum by Gary Kirchens |
-| **Missing history row added** (QA-221) | Le Lys |
+| **Missing history row added** (QA-241) | Le Lys |
 | **`michelin_url` filled in** for 16 restaurants that had none. Same restaurant, same stars. | Bartholomeus, Cuchara, Slagmolen, De Jonkman, Sir Kwinten, Maison Colette, L'Eau Vive, d'Eugénie à Emilie, La Table de Maxime, Kelderman, Sense, Goffin, Hostellerie St-Nicolas, L'air du temps, The Jane, Comme chez Soi |
-| **Starred but missing from the catalogue; added** as `rest_1405`–`rest_1417`, each with a 2026 row | Nebo, OAK, Sensum Gent, Couvert Couvert, EED, EssenCiel, De Bakermat, 't Stoveke, Menssa, Héliport Brasserie, La Roseraie Modave, Un Max de Goût, Philippe Fauchet |
-| **Kept as they are** (user decision; QA-220) | La Paix (2), Kommilfoo, La Table de Manon. All three are in the 2026 edition with stars, but their pages were removed after May. |
+| **Starred but missing from the catalogue; added** as `rest_1827`–`rest_1839`, each with a 2026 row | Nebo, OAK, Sensum Gent, Couvert Couvert, EED, EssenCiel, De Bakermat, 't Stoveke, Menssa, Héliport Brasserie, La Roseraie Modave, Un Max de Goût, Philippe Fauchet |
+| **Kept as they are** (user decision; QA-240) | La Paix (2), Kommilfoo, La Table de Manon. All three are in the 2026 edition with stars, but their pages were removed after May. |
 
 None of the 13 newly added restaurants sits inside a hotel.
 
 - Philippe Fauchet goes in without a phone, because its site and MICHELIN
-  disagree (QA-222).
-- None of the 13 has a Google Place ID yet.
+  disagree (QA-242).
+- Their Google Place IDs are in
+  `../place_id_backfill/prepared_place_id_backfill_be_stars_2026.sql`. It runs
+  after this file, and it checks that each code is the Belgian restaurant with
+  the expected MICHELIN page.
+- **Renumbered before applying.** These 13 were first numbered `rest_1405`–`1417`.
+  France 2026 (applied the same day) took those codes, so they moved to
+  `rest_1827`–`1839`, after Monaco (`1579`–`1587`) and Spain (`1588`–`1826`,
+  prepared). The migration moved from `20261016150000` to `20261019150000`,
+  and the QA ids from 220–223 to 240–243.
 - Their stars before 2026 are not recorded. This is the same launch
   limitation as every seeded row.
 
@@ -52,7 +60,7 @@ Atelier Noun, Agnes, Komaf, La Table-Lasne and Le Lys at one.
 
 ## Before running
 
-Apply `supabase/migrations/20261016150000_add_be_2026_star_cities.sql` first.
+Apply `supabase/migrations/20261019150000_add_be_2026_star_cities.sql` first.
 It adds the seven towns that do not exist yet.
 
 New restaurants use production's own spelling for existing towns: Antwerp,

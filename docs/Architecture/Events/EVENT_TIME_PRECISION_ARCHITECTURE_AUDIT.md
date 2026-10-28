@@ -346,6 +346,15 @@ described under Sorting, substituted in place of today's single
 
 ## HOST-CREATED EVENTS
 
+> **Superseded 2026-10-28, decided by the product owner.** A venue
+> submitting its own event does **not** have to give exact times: like
+> editorial events, it may be date-only, give a start time with no end,
+> or be fully timed, and an unknown time is never filled in. The
+> validation still lives at the submission boundary, as recommended
+> below: `validate_venue_event()`, used by `submit_venue_event` and
+> `update_venue_event` (`20261018130000`), plus the event form. Only the
+> rule itself changed. The text below is kept as it was written.
+
 Recommend validation at the **application/submission-boundary layer**, not
 a blanket table-level `CHECK` constraint on `events` itself — a table-wide
 constraint requiring `start_time`/`end_time` `NOT NULL` would incorrectly
