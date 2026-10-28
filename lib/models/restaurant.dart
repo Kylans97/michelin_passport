@@ -41,6 +41,11 @@ class Restaurant {
   final String cityName;
   final String? region;
   final String countryCode;
+
+  // The catalogue city's id (cities.id) — the key Trips uses to tell which
+  // destination a planned venue belongs to, never the city's name. Null
+  // when a query didn't select it.
+  final String? cityId;
   final String countryName;
   final String flagEmoji;
 
@@ -168,6 +173,7 @@ class Restaurant {
     required this.cityName,
     this.region,
     required this.countryCode,
+    this.cityId,
     required this.countryName,
     required this.flagEmoji,
     required this.address,
@@ -224,6 +230,7 @@ class Restaurant {
     cityName: (json['city_name'] as String?) ?? '',
     region: json['region'] as String?,
     countryCode: (json['country_code'] as String?) ?? '',
+    cityId: json['city_id'] as String?,
     countryName: (json['country_name'] as String?) ?? '',
     flagEmoji: (json['flag_emoji'] as String?) ?? '',
     address: (json['address'] as String?) ?? '',

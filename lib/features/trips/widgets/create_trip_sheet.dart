@@ -13,7 +13,10 @@ import '../../../data/repositories/restaurant_repository.dart';
 import '../../../models/hotel.dart';
 import '../../../models/planned_trip.dart';
 import '../../../models/restaurant.dart';
+import '../../../models/trip_destination.dart';
 import '../../../models/venue_country.dart';
+import '../trip_legs.dart';
+import 'city_picker_sheet.dart';
 import 'hotel_picker_sheet.dart';
 import 'restaurant_picker_sheet.dart';
 import 'trip_chrome.dart';
@@ -55,10 +58,22 @@ class _CreateTripSheet extends StatefulWidget {
   State<_CreateTripSheet> createState() => _CreateTripSheetState();
 }
 
+/// One destination being edited. [country] is null only while the user
+/// hasn't chosen yet; [city] null means the whole country.
+class _LegDraft {
+  VenueCountry? country;
+  CatalogueCity? city;
+  DateTime? start;
+  DateTime? end;
+  _LegDraft({this.country, this.city, this.start, this.end});
+}
+
 class _CreateTripSheetState extends State<_CreateTripSheet> {
   late final _titleCtrl = TextEditingController(
     text: widget.existingTrip?.title ?? '',
   );
+  // Only used against a server without 20261021120000, where the trip's
+  // city is still the original free-text field.
   late final _cityCtrl = TextEditingController(
     text: widget.existingTrip?.city ?? '',
   );
@@ -72,7 +87,11 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
   late DateTime _endDate =
       widget.existingTrip?.endDate ??
       DateTime.now().add(const Duration(days: 33));
-  VenueCountry? _country;
+
+  // At least one leg, always. Several only when the server has
+  // destinations (decision 3: each then needs its own dates).
+  final List<_LegDraft> _legs = [_LegDraft()];
+  List<VenueCountry> _countries = const [];
 
   // Optional hotel + restaurants to seed the trip with on creation — see
   // Trip Detail for the same picks made incrementally after the trip
@@ -90,17 +109,43 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
   late final Future<List<VenueCountry>> _countriesFuture = widget.repo
       .loadAllCountries()
       .then((countries) {
-        // Pre-select the existing trip's country once the list resolves —
-        // done here (not in initState) since it depends on this future.
-        final existingCode = widget.existingTrip?.countryCode;
-        if (existingCode != null && mounted) {
-          final match = countries.where((c) => c.code == existingCode);
-          if (match.isNotEmpty) setState(() => _country = match.first);
-        }
+        // Pre-fill the existing trip's destinations once the list
+        // resolves — done here (not in initState) since it depends on
+        // this future.
+        if (mounted) setState(() => _prefill(countries));
         return countries;
       });
 
   bool get _isEditing => widget.existingTrip != null;
+  bool get _multiAllowed => widget.repo.sharedTripsAvailable;
+  bool get _isMulti => _legs.length > 1;
+
+  void _prefill(List<VenueCountry> countries) {
+    _countries = countries;
+    final trip = widget.existingTrip;
+    if (trip == null) return;
+    VenueCountry? byCode(String code) {
+      for (final c in countries) {
+        if (c.code.toUpperCase() == code.toUpperCase()) return c;
+      }
+      return null;
+    }
+
+    final legs = effectiveLegs(trip);
+    _legs
+      ..clear()
+      ..addAll([
+        for (final leg in legs)
+          _LegDraft(
+            country: byCode(leg.countryCode),
+            city: leg.cityId == null
+                ? null
+                : (id: leg.cityId!, name: leg.cityName ?? '', region: null),
+            start: leg.startDate,
+            end: leg.endDate,
+          ),
+      ]);
+  }
 
   @override
   void dispose() {
@@ -108,6 +153,66 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
     _cityCtrl.dispose();
     _notesCtrl.dispose();
     super.dispose();
+  }
+
+  String _countryLabel(VenueCountry country) =>
+      country.flag.isEmpty ? country.name : '${country.flag} ${country.name}';
+
+  String _countryLabelForCode(String code) {
+    for (final c in _countries) {
+      if (c.code.toUpperCase() == code.toUpperCase()) return _countryLabel(c);
+    }
+    return code;
+  }
+
+  /// The chosen legs as destinations; dates only on a multi-leg trip.
+  List<TripDestination> get _destinations => [
+    for (final leg in _legs)
+      if (leg.country != null)
+        TripDestination(
+          countryCode: leg.country!.code,
+          cityId: leg.city?.id,
+          cityName: leg.city?.name,
+          startDate: _isMulti ? leg.start : null,
+          endDate: _isMulti ? leg.end : null,
+        ),
+  ];
+
+  String get _scopeLabel =>
+      _destinations.map((d) => legLabel(d, _countryLabelForCode)).join(' · ');
+
+  bool _inPlaces(String countryCode, String? cityId) => _destinations.any(
+    (d) => d.cityId != null
+        ? d.cityId == cityId
+        : d.countryCode.toUpperCase() == countryCode.toUpperCase(),
+  );
+
+  // Any change to the destinations drops picks that are no longer in one
+  // of them — the pickers only offer venues there (codes, never names),
+  // so a stale selection would be the one way around that.
+  void _dropOutOfScopePicks() {
+    if (_selectedHotel case final hotel?
+        when !_inPlaces(hotel.countryCode, hotel.cityId)) {
+      _selectedHotel = null;
+    }
+    _selectedRestaurants.removeWhere(
+      (r) => !_inPlaces(r.countryCode, r.cityId),
+    );
+  }
+
+  /// The dates a pick defaults to: its destination's, else the trip's.
+  (DateTime, DateTime) _datesFor(String countryCode, String? cityId) {
+    if (_isMulti) {
+      for (final leg in _legs) {
+        final country = leg.country;
+        if (country == null || leg.start == null || leg.end == null) continue;
+        final matches = leg.city != null
+            ? leg.city!.id == cityId
+            : country.code.toUpperCase() == countryCode.toUpperCase();
+        if (matches) return (leg.start!, leg.end!);
+      }
+    }
+    return (_startDate, _endDate);
   }
 
   Future<void> _pickStartDate() async {
@@ -137,60 +242,120 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
     if (picked != null) setState(() => _endDate = picked);
   }
 
-  // Changing the destination drops any hotel/restaurant already picked
-  // outside it — the pickers only ever offer venues in the trip's own
-  // country (keyed on country_code, never a name), so a selection from
-  // the previous country would otherwise be the one way to bypass that.
-  Future<void> _pickCountry(List<VenueCountry> countries) async {
-    final picked = await showCountryPickerSheet(context, countries: countries);
+  // Leg dates are chosen inside the trip's own range.
+  Future<void> _pickLegDate(int i, {required bool start}) async {
+    final leg = _legs[i];
+    final first = start ? _startDate : (leg.start ?? _startDate);
+    final current = start ? leg.start : leg.end;
+    var initial = current ?? first;
+    if (initial.isBefore(first)) initial = first;
+    if (initial.isAfter(_endDate)) initial = _endDate;
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: initial,
+      firstDate: first,
+      lastDate: _endDate,
+    );
     if (picked == null) return;
     setState(() {
-      _country = picked;
-      if (_selectedHotel?.countryCode != picked.code) _selectedHotel = null;
-      _selectedRestaurants.removeWhere((r) => r.countryCode != picked.code);
+      if (start) {
+        leg.start = picked;
+        if (leg.end != null && leg.end!.isBefore(picked)) leg.end = picked;
+      } else {
+        leg.end = picked;
+      }
     });
   }
 
-  String _destinationLabel(VenueCountry country) =>
-      country.flag.isEmpty ? country.name : '${country.flag} ${country.name}';
+  Future<void> _pickCountry(int i, List<VenueCountry> countries) async {
+    final picked = await showCountryPickerSheet(context, countries: countries);
+    if (picked == null) return;
+    setState(() {
+      final leg = _legs[i];
+      if (leg.country?.code != picked.code) leg.city = null;
+      leg.country = picked;
+      _dropOutOfScopePicks();
+    });
+  }
+
+  Future<void> _pickCity(int i) async {
+    final country = _legs[i].country;
+    if (country == null) return;
+    final choice = await showTripCityPicker(
+      context,
+      countryLabel: _countryLabel(country),
+      cities: widget.repo.loadCities(country.code),
+    );
+    if (choice == null) return;
+    setState(() {
+      _legs[i].city = choice.city;
+      _dropOutOfScopePicks();
+    });
+  }
+
+  void _addLeg() => setState(() => _legs.add(_LegDraft()));
+
+  void _removeLeg(int i) => setState(() {
+    _legs.removeAt(i);
+    _dropOutOfScopePicks();
+  });
 
   Future<void> _pickHotel() async {
-    final country = _country;
-    if (country == null) return;
+    final scope = legScope(_destinations);
+    if (scope.countryCodes.isEmpty && scope.cityIds.isEmpty) return;
     final picked = await showHotelPickerSheet(
       context,
       repo: _hotelRepo,
-      countryCode: country.code,
-      destinationLabel: _destinationLabel(country),
+      countryCodes: scope.countryCodes,
+      cityIds: scope.cityIds,
+      destinationLabel: _scopeLabel,
     );
     if (picked != null) setState(() => _selectedHotel = picked);
   }
 
   Future<void> _pickRestaurant() async {
-    final country = _country;
-    if (country == null) return;
+    final scope = legScope(_destinations);
+    if (scope.countryCodes.isEmpty && scope.cityIds.isEmpty) return;
     final picked = await showRestaurantPickerSheet(
       context,
       repo: _restaurantRepo,
-      countryCode: country.code,
-      destinationLabel: _destinationLabel(country),
+      countryCodes: scope.countryCodes,
+      cityIds: scope.cityIds,
+      destinationLabel: _scopeLabel,
       excludeIds: {for (final r in _selectedRestaurants) r.id},
     );
     if (picked != null) setState(() => _selectedRestaurants.add(picked));
   }
 
-  Future<void> _save() async {
-    final title = _titleCtrl.text.trim();
-    if (title.isEmpty) {
-      setState(() => _error = 'Give this trip a name.');
-      return;
-    }
-    if (_country == null) {
-      setState(() => _error = 'Choose a country.');
-      return;
+  String? _validate(String title) {
+    if (title.isEmpty) return 'Give this trip a name.';
+    if (_legs.any((l) => l.country == null)) {
+      return _isMulti
+          ? 'Choose a country for every destination.'
+          : 'Choose a country.';
     }
     if (_endDate.isBefore(_startDate)) {
-      setState(() => _error = 'End date must be on or after the start date.');
+      return 'End date must be on or after the start date.';
+    }
+    if (_isMulti) {
+      for (var i = 0; i < _legs.length; i++) {
+        final leg = _legs[i];
+        if (leg.start == null || leg.end == null) {
+          return 'Say when you\'ll be in each destination.';
+        }
+        if (leg.start!.isBefore(_startDate) || leg.end!.isAfter(_endDate)) {
+          return 'Each destination\'s dates must fall within the trip.';
+        }
+      }
+    }
+    return null;
+  }
+
+  Future<void> _save() async {
+    final title = _titleCtrl.text.trim();
+    final problem = _validate(title);
+    if (problem != null) {
+      setState(() => _error = problem);
       return;
     }
 
@@ -199,50 +364,85 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
       _error = null;
     });
     try {
-      final city = _cityCtrl.text.trim();
       final notes = _notesCtrl.text.trim();
+      final destinations = _destinations;
+      final first = destinations.first;
+      // With destinations on the server the first one is the trip's
+      // country/city (save_trip_destinations keeps them in step);
+      // without, the free-text city field is still the trip's city.
+      final city = _multiAllowed ? first.cityName : _cityCtrl.text.trim();
       if (_isEditing) {
-        await widget.repo.updateTrip(
-          userId: widget.userId,
-          tripId: widget.existingTrip!.id,
-          title: title,
-          startDate: _startDate,
-          endDate: _endDate,
-          countryCode: _country!.code,
-          city: city.isEmpty ? null : city,
-          notes: notes.isEmpty ? null : notes,
-        );
+        final tripId = widget.existingTrip!.id;
+        if (_multiAllowed) {
+          await widget.repo.saveTripDestinations(
+            tripId: tripId,
+            startDate: _startDate,
+            endDate: _endDate,
+            destinations: destinations,
+          );
+          await widget.repo.updateTripDetails(
+            userId: widget.userId,
+            tripId: tripId,
+            title: title,
+            notes: notes.isEmpty ? null : notes,
+          );
+        } else {
+          await widget.repo.updateTrip(
+            userId: widget.userId,
+            tripId: tripId,
+            title: title,
+            startDate: _startDate,
+            endDate: _endDate,
+            countryCode: first.countryCode,
+            city: (city == null || city.isEmpty) ? null : city,
+            notes: notes.isEmpty ? null : notes,
+          );
+        }
       } else {
         final trip = await widget.repo.createTrip(
           userId: widget.userId,
           title: title,
           startDate: _startDate,
           endDate: _endDate,
-          countryCode: _country!.code,
-          city: city.isEmpty ? null : city,
+          countryCode: first.countryCode,
+          city: (city == null || city.isEmpty) ? null : city,
           notes: notes.isEmpty ? null : notes,
         );
+        if (_multiAllowed) {
+          await widget.repo.saveTripDestinations(
+            tripId: trip.id,
+            startDate: _startDate,
+            endDate: _endDate,
+            destinations: destinations,
+          );
+        }
         // Normalized references only (entity_id -> hotels_full/
         // restaurants_full), never copied venue data — same
         // planned_venues shape Trip Detail's own add-venue actions use.
+        // Each defaults to its own destination's dates.
         final hotel = _selectedHotel;
         if (hotel != null) {
+          final (start, end) = _datesFor(hotel.countryCode, hotel.cityId);
           await widget.repo.createPlannedVenue(
             userId: widget.userId,
             entityType: 'hotel',
             entityId: hotel.id,
             tripId: trip.id,
-            startDate: _startDate,
-            endDate: _endDate,
+            startDate: start,
+            endDate: end,
           );
         }
         for (final restaurant in _selectedRestaurants) {
+          final (start, _) = _datesFor(
+            restaurant.countryCode,
+            restaurant.cityId,
+          );
           await widget.repo.createPlannedVenue(
             userId: widget.userId,
             entityType: 'restaurant',
             entityId: restaurant.id,
             tripId: trip.id,
-            startDate: _startDate,
+            startDate: start,
           );
         }
       }
@@ -261,8 +461,6 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
   // sheet's dark canvas — explicitly overrides the app's global
   // InputDecorationTheme (filled: true, fillColor: AppColors.surface),
   // which would otherwise still paint an ivory box behind the hairline.
-  // Used for Trip name/City/Notes: fields that don't need to read as
-  // "cards" the way a tappable picker row does.
   InputDecoration _underlineDecoration(String hint, {TextStyle? hintStyle}) =>
       InputDecoration(
         filled: false,
@@ -283,10 +481,84 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
         ),
       );
 
+  Widget _legEditor(int i, List<VenueCountry> countries, bool loading) {
+    final leg = _legs[i];
+    final country = leg.country;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (_isMulti) ...[
+          Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Destination ${i + 1}',
+                  style: CsTypography.placeTitle.copyWith(
+                    color: AppColors.textOnDark,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              IconButton(
+                onPressed: () => _removeLeg(i),
+                tooltip: 'Remove destination',
+                icon: const Icon(
+                  Icons.close_rounded,
+                  color: AppColors.secondaryOnDark,
+                  size: 18,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: CsSpacing.xs),
+        ],
+        _BorderedRow(
+          onTap: countries.isEmpty ? null : () => _pickCountry(i, countries),
+          child: Text(
+            country == null
+                ? (loading ? 'Loading countries…' : 'Choose a country')
+                : _countryLabel(country),
+            style: CsTypography.bodyMedium.copyWith(
+              color: country == null
+                  ? AppColors.secondaryOnDark
+                  : AppColors.textOnDark,
+            ),
+          ),
+        ),
+        if (_multiAllowed && country != null) ...[
+          const SizedBox(height: CsSpacing.sm),
+          _BorderedRow(
+            onTap: () => _pickCity(i),
+            child: Text(
+              leg.city?.name ?? 'The whole country',
+              style: CsTypography.bodyMedium.copyWith(
+                color: leg.city == null
+                    ? AppColors.secondaryOnDark
+                    : AppColors.textOnDark,
+              ),
+            ),
+          ),
+        ],
+        if (_isMulti) ...[
+          const SizedBox(height: CsSpacing.sm),
+          _TripDateRangeRow(
+            fromLabel: 'ARRIVE',
+            toLabel: 'LEAVE',
+            startDate: leg.start,
+            endDate: leg.end,
+            onTapStart: () => _pickLegDate(i, start: true),
+            onTapEnd: () => _pickLegDate(i, start: false),
+          ),
+        ],
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final bottomInset = MediaQuery.of(context).viewInsets.bottom;
     final maxHeight = MediaQuery.of(context).size.height * 0.92;
+    final hasDestination = _destinations.isNotEmpty;
 
     return Padding(
       padding: EdgeInsets.only(bottom: bottomInset),
@@ -325,7 +597,7 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                   const SizedBox(height: 2),
                   Text(
                     _isEditing
-                        ? 'Change the name, dates or destination.'
+                        ? 'Change the name, dates or destinations.'
                         : 'A destination and dates. The rest can follow.',
                     style: CsTypography.metadata.copyWith(
                       color: AppColors.secondaryOnDark,
@@ -340,7 +612,7 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                       color: AppColors.textOnDark,
                     ),
                     decoration: _underlineDecoration(
-                      'Trip name, e.g. Maastricht',
+                      'Trip name, e.g. Autumn in Burgundy',
                       hintStyle: CsTypography.placeTitle.copyWith(
                         color: AppColors.secondaryOnDark,
                       ),
@@ -358,50 +630,62 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                   ),
                   const SizedBox(height: CsSpacing.xl),
 
-                  const TripSectionLabel('DESTINATION'),
+                  TripSectionLabel(_isMulti ? 'DESTINATIONS' : 'DESTINATION'),
+                  if (_isMulti) ...[
+                    const SizedBox(height: CsSpacing.xs),
+                    Text(
+                      'Say when you\'ll be in each one.',
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.secondaryOnDark,
+                      ),
+                    ),
+                  ],
                   const SizedBox(height: CsSpacing.sm),
                   FutureBuilder<List<VenueCountry>>(
                     future: _countriesFuture,
                     builder: (context, snap) {
                       final countries = snap.data ?? [];
-                      return _BorderedRow(
-                        onTap: countries.isEmpty
-                            ? null
-                            : () => _pickCountry(countries),
-                        child: Text(
-                          _country == null
-                              ? (snap.connectionState == ConnectionState.waiting
-                                    ? 'Loading countries…'
-                                    : 'Choose a country')
-                              : '${_country!.flag}  ${_country!.name}',
-                          style: CsTypography.bodyMedium.copyWith(
-                            color: _country == null
-                                ? AppColors.secondaryOnDark
-                                : AppColors.textOnDark,
-                          ),
-                        ),
+                      final loading =
+                          snap.connectionState == ConnectionState.waiting;
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          for (var i = 0; i < _legs.length; i++) ...[
+                            if (i > 0) const SizedBox(height: CsSpacing.lg),
+                            _legEditor(i, countries, loading),
+                          ],
+                        ],
                       );
                     },
                   ),
-                  const SizedBox(height: CsSpacing.md),
-                  TextField(
-                    controller: _cityCtrl,
-                    style: CsTypography.body.copyWith(
-                      color: AppColors.textOnDark,
+                  if (_multiAllowed) ...[
+                    const SizedBox(height: CsSpacing.xs),
+                    TripTextAction(
+                      label: 'Add another destination',
+                      onTap: _addLeg,
+                      enabled: _legs.last.country != null,
                     ),
-                    decoration: _underlineDecoration('City'),
-                  ),
+                  ] else ...[
+                    const SizedBox(height: CsSpacing.md),
+                    TextField(
+                      controller: _cityCtrl,
+                      style: CsTypography.body.copyWith(
+                        color: AppColors.textOnDark,
+                      ),
+                      decoration: _underlineDecoration('City'),
+                    ),
+                  ],
                   const SizedBox(height: CsSpacing.section),
 
                   if (!_isEditing) ...[
                     const TripSectionLabel('STAY & DINING'),
                     const SizedBox(height: CsSpacing.xs),
                     Text(
-                      _country == null
-                          ? 'Choose a destination first — you\'ll pick from '
-                                'its hotels and restaurants.'
-                          : 'Add a hotel or restaurants now, or come back to '
-                                'it later.',
+                      hasDestination
+                          ? 'Add a hotel or restaurants now, or come back to '
+                                'it later.'
+                          : 'Choose a destination first — you\'ll pick from '
+                                'its hotels and restaurants.',
                       style: CsTypography.metadata.copyWith(
                         color: AppColors.secondaryOnDark,
                       ),
@@ -411,7 +695,7 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                       TripTextAction(
                         label: 'Add hotel',
                         onTap: _pickHotel,
-                        enabled: _country != null,
+                        enabled: hasDestination,
                       )
                     else
                       _SelectedVenueRow(
@@ -438,7 +722,7 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
                     TripTextAction(
                       label: 'Add restaurant',
                       onTap: _pickRestaurant,
-                      enabled: _country != null,
+                      enabled: hasDestination,
                     ),
                     const SizedBox(height: CsSpacing.xl),
                   ],
@@ -511,16 +795,20 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
 /// premium travel-planning form doesn't need every field to look like a
 /// white card.
 class _TripDateRangeRow extends StatelessWidget {
-  final DateTime startDate;
-  final DateTime endDate;
+  final DateTime? startDate;
+  final DateTime? endDate;
   final VoidCallback onTapStart;
   final VoidCallback onTapEnd;
+  final String fromLabel;
+  final String toLabel;
 
   const _TripDateRangeRow({
     required this.startDate,
     required this.endDate,
     required this.onTapStart,
     required this.onTapEnd,
+    this.fromLabel = 'FROM',
+    this.toLabel = 'TO',
   });
 
   @override
@@ -532,7 +820,11 @@ class _TripDateRangeRow extends StatelessWidget {
     child: Row(
       children: [
         Expanded(
-          child: _DateHalf(label: 'FROM', date: startDate, onTap: onTapStart),
+          child: _DateHalf(
+            label: fromLabel,
+            date: startDate,
+            onTap: onTapStart,
+          ),
         ),
         Icon(
           Icons.arrow_forward_rounded,
@@ -540,7 +832,7 @@ class _TripDateRangeRow extends StatelessWidget {
           color: AppColors.secondaryOnDark.withValues(alpha: 0.7),
         ),
         Expanded(
-          child: _DateHalf(label: 'TO', date: endDate, onTap: onTapEnd),
+          child: _DateHalf(label: toLabel, date: endDate, onTap: onTapEnd),
         ),
       ],
     ),
@@ -549,7 +841,7 @@ class _TripDateRangeRow extends StatelessWidget {
 
 class _DateHalf extends StatelessWidget {
   final String label;
-  final DateTime date;
+  final DateTime? date;
   final VoidCallback onTap;
 
   const _DateHalf({
@@ -584,9 +876,11 @@ class _DateHalf extends StatelessWidget {
             ),
             const SizedBox(height: 2),
             Text(
-              _formatDate(date),
+              date == null ? 'Choose' : _formatDate(date!),
               style: CsTypography.bodyMedium.copyWith(
-                color: AppColors.textOnDark,
+                color: date == null
+                    ? AppColors.secondaryOnDark
+                    : AppColors.textOnDark,
               ),
             ),
           ],

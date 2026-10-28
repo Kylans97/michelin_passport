@@ -10,15 +10,16 @@ import 'venue_picker_sheet.dart';
 /// (planned_venues.entity_id -> hotels_full.id), never a copy of hotel
 /// data.
 ///
-/// Destination-scoped (2026-10-28): only hotels in the trip's own country
-/// are offered — filtered server-side on `country_code`, the catalogue's
-/// stable code, never on a city or country name. [destinationLabel] is
+/// Destination-scoped (2026-10-28): only hotels in the trip's destinations
+/// are offered — catalogue city ids for city legs, country codes for
+/// whole-country legs, filtered server-side, never on a name. [destinationLabel] is
 /// display only ("🇫🇷 France"). [excludeIds] hides hotels already on the
 /// trip.
 Future<Hotel?> showHotelPickerSheet(
   BuildContext context, {
   required HotelRepository repo,
-  required String countryCode,
+  required List<String> countryCodes,
+  List<String> cityIds = const [],
   required String destinationLabel,
   Set<String> excludeIds = const {},
 }) {
@@ -28,12 +29,11 @@ Future<Hotel?> showHotelPickerSheet(
     scopeLabel: 'Hotels in $destinationLabel',
     hintText: 'Search hotels, cities…',
     emptyMessage: 'No hotels in $destinationLabel in the catalogue yet.',
-    // Sorted A→Z here: the shared catalogue search orders by name without
-    // `ascending: true`, which postgrest-dart treats as descending.
-    search: (query) async => (await repo.search(
+    search: (query) => repo.searchInPlaces(
       query,
-      countryCode: countryCode,
-    ))..sort((a, b) => a.name.toLowerCase().compareTo(b.name.toLowerCase())),
+      countryCodes: countryCodes,
+      cityIds: cityIds,
+    ),
     exclude: (hotel) => excludeIds.contains(hotel.id),
     describe: (hotel) => TripVenuePickerRow(
       title: hotel.name,

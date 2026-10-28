@@ -6,6 +6,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/events_repository.dart';
+import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
@@ -14,11 +15,14 @@ import '../../models/event_trip_match.dart';
 import '../../models/passport_venue.dart';
 import '../../models/planned_trip.dart';
 import '../../models/resolved_planned_venue.dart';
+import '../../models/trip_destination.dart';
+import '../../models/trip_member.dart';
 import '../../models/venue_country.dart';
 import '../events/event_detail_screen.dart';
 import '../events/widgets/event_card.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
+import 'trip_legs.dart';
 import 'trip_schedule.dart';
 import 'widgets/create_trip_sheet.dart';
 import 'widgets/hotel_picker_sheet.dart';
@@ -28,24 +32,25 @@ import 'widgets/restaurant_picker_sheet.dart';
 import 'widgets/trip_card.dart' show formatTripDateRange, tripVenueCountsLine;
 import 'widgets/trip_chrome.dart';
 import 'widgets/trip_eyebrow.dart';
+import 'widgets/trip_members_sheet.dart';
 
-/// A single trip: destination, dates, notes, and every planned restaurant/
-/// hotel attached to it. Editing/deleting the trip and each planned venue
-/// all live here.
+/// A single trip: its destinations, dates, notes, who's travelling, and
+/// every planned restaurant/hotel on it. A typography-led header on the
+/// deep-green canvas, then — for a single-destination trip — STAY, DINING
+/// and WHAT'S ON as Explore-style sections over the same ivory
+/// [CsPlaceCard]s Passport uses; for a multi-destination trip
+/// (20261021120000) one section per leg, each with its own stays and
+/// dining. Gold only on stars and Keys.
 ///
-/// Trips restyle (2026-10-28): a typography-led header on the deep-green
-/// canvas (a start eyebrow, the trip name at display scale, then the
-/// destination and dates), then STAY, DINING and WHAT'S ON as Explore-
-/// style section headers over the same ivory [CsPlaceCard]s Passport
-/// uses. No gold anywhere except stars and Keys on the cards themselves.
+/// Shared trips: every member sees everyone's plans (planned_venues_select)
+/// but edits only their own; only the owner edits the trip itself or its
+/// destinations; any member invites their own friends; a member can leave.
+/// Against a server without that migration the screen is the single-
+/// destination, owner-only screen it was before
+/// ([PlannedTripsRepository.sharedTripsAvailable]).
 ///
-/// Stays: "Add stay" always adds — it no longer deletes every existing
-/// hotel first ("Change"), which silently threw away stays a user had
-/// planned through the venue's own Plan sheet. Each stay is removed on its
-/// own, and its dates edited through its long-press sheet.
-///
-/// Pickers are scoped to the trip's own country (`country_code`, never a
-/// name); see showHotelPickerSheet/showRestaurantPickerSheet.
+/// Pickers are scoped to the destinations (codes and ids, never names) —
+/// the whole trip's, or one leg's when added from that leg.
 class TripDetailScreen extends StatefulWidget {
   final PlannedTrip trip;
   const TripDetailScreen({super.key, required this.trip});
@@ -67,6 +72,9 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   late final RestaurantRepository _restaurantRepo = RestaurantRepository(
     Supabase.instance.client,
   );
+  late final FriendshipRepository _friendsRepo = FriendshipRepository(
+    Supabase.instance.client,
+  );
 
   String get _userId => Supabase.instance.client.auth.currentUser?.id ?? '';
 
@@ -74,11 +82,14 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   bool _loading = true;
   List<ResolvedPlannedVenue> _venues = [];
   List<Event> _matchingEvents = [];
+  List<TripMember> _members = [];
 
-  // The trip's country, resolved from its code for display ("🇫🇷 France")
-  // — null until loaded, or if the lookup fails, in which case the header
-  // and pickers fall back to the bare code rather than failing the screen.
-  VenueCountry? _country;
+  // Country code -> country, for display only ("🇫🇷 France"). A missing
+  // entry falls back to the bare code rather than failing the screen.
+  Map<String, VenueCountry> _countries = {};
+
+  bool get _isOwner => _trip.userId == _userId;
+  bool get _sharing => _repo.sharedTripsAvailable;
 
   @override
   void initState() {
@@ -89,20 +100,40 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   Future<void> _load() async {
     setState(() => _loading = true);
     try {
-      final venuesFuture = _repo.loadResolvedPlannedVenues(_userId);
-      // Country-scoped fetch, then pure-function matching client-side (see
-      // eventsMatchingTrip) — the user never has to manually attach an
-      // event to a trip for it to show up here.
-      final eventsFuture = _eventsRepo.loadEventsForCountry(_trip.countryCode);
-      final countryFuture = _resolveCountry(_trip.countryCode);
+      final trip = await _repo.loadTrip(_trip.id) ?? _trip;
+      final legs = effectiveLegs(trip);
+      final countriesFuture = _loadCountries();
+      // Every plan on the trip, other members' included, once the server
+      // has shared trips; before that, the caller's own plans only.
+      final venuesFuture = _sharing
+          ? _repo.loadResolvedPlannedVenuesForTrips([trip.id])
+          : _repo
+                .loadResolvedPlannedVenues(_userId)
+                .then((v) => v.where((p) => p.plan.tripId == trip.id).toList());
+      final membersFuture = _sharing
+          ? _repo
+                .loadTripMembers(trip.id)
+                .catchError((Object _) => <TripMember>[])
+          : Future.value(const <TripMember>[]);
+      // Decision 2: events in every destination country, matched per leg
+      // by eventsMatchingTrip — never a second matching definition.
+      final eventCountries = {for (final l in legs) l.countryCode};
+      final eventsFuture = Future.wait([
+        for (final code in eventCountries)
+          _eventsRepo.loadEventsForCountry(code),
+      ]).then((lists) => [for (final l in lists) ...l]);
+
       final venues = await venuesFuture;
+      final members = await membersFuture;
       final events = await eventsFuture;
-      final country = await countryFuture;
+      final countries = await countriesFuture;
       if (!mounted) return;
       setState(() {
-        _venues = venues.where((v) => v.plan.tripId == _trip.id).toList();
-        _matchingEvents = eventsMatchingTrip(events, _trip);
-        _country = country;
+        _trip = trip;
+        _venues = venues;
+        _members = members;
+        _matchingEvents = eventsMatchingTrip(events, trip);
+        _countries = countries;
         _loading = false;
       });
     } catch (_) {
@@ -111,24 +142,44 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     }
   }
 
-  Future<VenueCountry?> _resolveCountry(String code) async {
+  Future<Map<String, VenueCountry>> _loadCountries() async {
     try {
       final countries = await _repo.loadAllCountries();
-      for (final c in countries) {
-        if (c.code.toUpperCase() == code.toUpperCase()) return c;
-      }
+      return {for (final c in countries) c.code.toUpperCase(): c};
     } catch (_) {
-      // Display-only — never a reason to fail the trip itself.
+      return {};
     }
-    return null;
   }
 
-  String get _destinationLabel {
-    final country = _country;
-    if (country == null) return _trip.countryCode.toUpperCase();
+  String _countryLabel(String code) {
+    final country = _countries[code.toUpperCase()];
+    if (country == null) return code.toUpperCase();
     return country.flag.isEmpty
         ? country.name
         : '${country.flag} ${country.name}';
+  }
+
+  String _legName(TripDestination leg) => legLabel(leg, _countryLabel);
+
+  /// The header's destination line: "🇫🇷 France · Paris" for one leg
+  /// (keeping a legacy free-text city when there's no catalogue one),
+  /// "Paris → 🇮🇹 Italy" across several.
+  String get _destinationLine {
+    final legs = effectiveLegs(_trip);
+    if (legs.length > 1) return legs.map(_legName).join('  →  ');
+    final leg = legs.first;
+    if (leg.cityName != null) return _legName(leg);
+    final city = _trip.city?.trim();
+    final country = _countryLabel(leg.countryCode);
+    return (city != null && city.isNotEmpty) ? '$country · $city' : country;
+  }
+
+  String? _addedBy(ResolvedPlannedVenue item) {
+    if (item.plan.userId == _userId) return null;
+    for (final m in _members) {
+      if (m.userId == item.plan.userId) return m.label;
+    }
+    return 'a fellow traveller';
   }
 
   void _showSnack(String message, {bool isError = false}) =>
@@ -138,23 +189,58 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     final action = await showTripActionSheet<String>(
       context,
       title: _trip.title,
-      actions: const [
-        TripSheetAction(
-          value: 'edit',
-          label: 'Edit trip',
-          icon: Icons.edit_outlined,
-        ),
-        TripSheetAction(
-          value: 'delete',
-          label: 'Delete trip',
-          icon: Icons.delete_outline_rounded,
-          destructive: true,
-        ),
+      actions: [
+        if (_isOwner)
+          const TripSheetAction(
+            value: 'edit',
+            label: 'Edit trip',
+            icon: Icons.edit_outlined,
+          ),
+        if (_sharing)
+          const TripSheetAction(
+            value: 'members',
+            label: 'Travelling with',
+            icon: Icons.group_outlined,
+          ),
+        if (_isOwner)
+          const TripSheetAction(
+            value: 'delete',
+            label: 'Delete trip',
+            icon: Icons.delete_outline_rounded,
+            destructive: true,
+          )
+        else
+          const TripSheetAction(
+            value: 'leave',
+            label: 'Leave trip',
+            icon: Icons.logout_rounded,
+            destructive: true,
+          ),
       ],
     );
     if (!mounted) return;
-    if (action == 'edit') await _editTrip();
-    if (action == 'delete') await _deleteTrip();
+    switch (action) {
+      case 'edit':
+        await _editTrip();
+      case 'members':
+        await _openMembers();
+      case 'delete':
+        await _deleteTrip();
+      case 'leave':
+        await _leaveTrip();
+    }
+  }
+
+  Future<void> _openMembers() async {
+    final changed = await showTripMembersSheet(
+      context,
+      tripId: _trip.id,
+      ownerId: _trip.userId,
+      currentUserId: _userId,
+      repo: _repo,
+      friendsRepo: _friendsRepo,
+    );
+    if (changed) _load();
   }
 
   Future<void> _editTrip() async {
@@ -164,27 +250,25 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
       repo: _repo,
       existingTrip: _trip,
     );
-    if (saved == true) {
-      final trips = await _repo.loadTrips(_userId);
-      final updated = trips.where((t) => t.id == _trip.id);
-      if (updated.isNotEmpty && mounted) {
-        setState(() => _trip = updated.first);
-        // Country/dates may have changed — re-run event matching against
-        // the updated trip, not the stale one.
-        await _load();
-      }
-    }
+    // Destinations/dates may have changed — _load re-reads the trip and
+    // re-runs event matching against it, not the stale one.
+    if (saved == true) await _load();
   }
 
   Future<void> _deleteTrip() async {
+    final own = _venues.where((v) => v.plan.userId == _userId).length;
+    final shared = _members.any((m) => m.status != TripMemberStatus.owner);
     final confirmed = await showTripConfirmDialog(
       context,
       title: 'Delete this trip?',
-      message: _venues.isEmpty
-          ? 'This will permanently remove the trip.'
-          : 'This will permanently remove the trip. Your ${_venues.length} '
-                'planned ${_venues.length == 1 ? 'venue' : 'venues'} will '
-                'not be deleted — they\'ll just no longer belong to a trip.',
+      message: [
+        'This will permanently remove the trip',
+        if (shared) ' for everyone on it',
+        '.',
+        if (own > 0)
+          ' Your $own planned ${own == 1 ? 'venue' : 'venues'} will not be '
+              'deleted — they\'ll just no longer belong to a trip.',
+      ].join(),
       confirmLabel: 'Delete trip',
     );
     if (!confirmed) return;
@@ -195,6 +279,26 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     } catch (_) {
       if (!mounted) return;
       _showSnack('Could not delete trip. Please try again.', isError: true);
+    }
+  }
+
+  Future<void> _leaveTrip() async {
+    final confirmed = await showTripConfirmDialog(
+      context,
+      title: 'Leave this trip?',
+      message:
+          'You\'ll no longer see it or its plans. Your own plans stay yours, '
+          'no longer part of the trip.',
+      confirmLabel: 'Leave trip',
+    );
+    if (!confirmed) return;
+    try {
+      await _repo.leaveTrip(_trip.id);
+      if (!mounted) return;
+      Navigator.pop(context, true);
+    } catch (_) {
+      if (!mounted) return;
+      _showSnack('Could not leave the trip. Please try again.', isError: true);
     }
   }
 
@@ -237,28 +341,34 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     if (changed) _load();
   }
 
-  // A stay defaults to the trip's own dates; its own check-in/check-out
-  // are edited afterwards through the long-press "Edit plan" sheet.
-  Future<void> _addHotel(List<ResolvedPlannedVenue> hotels) async {
+  // [legs] is the picker's scope: one leg when added from that leg's
+  // section, else every leg. A new stay/visit starts on its leg's dates.
+  Future<void> _addHotel(
+    List<TripDestination> legs,
+    List<ResolvedPlannedVenue> existing,
+  ) async {
+    final scope = legScope(legs);
     final picked = await showHotelPickerSheet(
       context,
       repo: _hotelRepo,
-      countryCode: _trip.countryCode,
-      destinationLabel: _destinationLabel,
+      countryCodes: scope.countryCodes,
+      cityIds: scope.cityIds,
+      destinationLabel: legs.map(_legName).join(' · '),
       excludeIds: {
-        for (final h in hotels)
+        for (final h in existing)
           if (h.venue case HotelVenue(:final hotel)) hotel.id,
       },
     );
     if (picked == null) return;
+    final leg = legs.length == 1 ? legs.first : null;
     try {
       await _repo.createPlannedVenue(
         userId: _userId,
         entityType: 'hotel',
         entityId: picked.id,
         tripId: _trip.id,
-        startDate: _trip.startDate,
-        endDate: _trip.endDate,
+        startDate: leg == null ? _trip.startDate : legStart(_trip, leg),
+        endDate: leg == null ? _trip.endDate : legEnd(_trip, leg),
       );
       _load();
     } catch (_) {
@@ -267,25 +377,31 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     }
   }
 
-  Future<void> _addRestaurant(List<ResolvedPlannedVenue> restaurants) async {
+  Future<void> _addRestaurant(
+    List<TripDestination> legs,
+    List<ResolvedPlannedVenue> existing,
+  ) async {
+    final scope = legScope(legs);
     final picked = await showRestaurantPickerSheet(
       context,
       repo: _restaurantRepo,
-      countryCode: _trip.countryCode,
-      destinationLabel: _destinationLabel,
+      countryCodes: scope.countryCodes,
+      cityIds: scope.cityIds,
+      destinationLabel: legs.map(_legName).join(' · '),
       excludeIds: {
-        for (final r in restaurants)
+        for (final r in existing)
           if (r.venue case RestaurantVenue(:final restaurant)) restaurant.id,
       },
     );
     if (picked == null) return;
+    final leg = legs.length == 1 ? legs.first : null;
     try {
       await _repo.createPlannedVenue(
         userId: _userId,
         entityType: 'restaurant',
         entityId: picked.id,
         tripId: _trip.id,
-        startDate: _trip.startDate,
+        startDate: leg == null ? _trip.startDate : legStart(_trip, leg),
       );
       _load();
     } catch (_) {
@@ -320,14 +436,131 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     }
   }
 
+  // A planned venue card. The user's own plans get an always-visible
+  // "remove from trip" glyph plus the long-press edit sheet; other
+  // members' plans are read-only and say who added them.
+  Widget _venueCard(ResolvedPlannedVenue item) {
+    final mine = item.plan.userId == _userId;
+    return PlannedVenueRow(
+      item: item,
+      onTap: () => _openVenue(item),
+      onLongPress: mine ? () => _showVenueActions(item) : null,
+      trailing: mine ? _RemoveGlyph(onTap: () => _removeVenue(item)) : null,
+      addedBy: _addedBy(item),
+    );
+  }
+
+  List<Widget> _venueList(List<ResolvedPlannedVenue> items, String empty) => [
+    if (items.isEmpty)
+      TripEmptyLine(empty)
+    else
+      for (var i = 0; i < items.length; i++) ...[
+        if (i > 0) const SizedBox(height: CsSpacing.md),
+        _venueCard(items[i]),
+      ],
+  ];
+
+  /// STAY and DINING for one leg (or the whole single-destination trip).
+  /// [compact] uses small eyebrow headers under a leg's own title.
+  List<Widget> _stayAndDining({
+    required List<TripDestination> scope,
+    required List<ResolvedPlannedVenue> plans,
+    required bool compact,
+  }) {
+    final hotels = plans.where((v) => v.venue is HotelVenue).toList();
+    final restaurants = plans.where((v) => v.venue is RestaurantVenue).toList();
+    Widget header(String title, String subtitle, Widget action) => compact
+        ? Row(
+            children: [
+              Expanded(child: TripSectionLabel(title)),
+              action,
+            ],
+          )
+        : TripSectionHeader(title: title, subtitle: subtitle, trailing: action);
+
+    return [
+      header(
+        'STAY',
+        hotels.isEmpty
+            ? 'Where you\'ll rest.'
+            : hotels.length == 1
+            ? '1 stay'
+            : '${hotels.length} stays',
+        TripTextAction(
+          label: 'Add stay',
+          onTap: () => _addHotel(scope, hotels),
+        ),
+      ),
+      SizedBox(height: compact ? CsSpacing.sm : CsSpacing.base),
+      ..._venueList(hotels, 'No hotel planned here yet.'),
+      SizedBox(height: compact ? CsSpacing.xl : CsSpacing.section),
+      header(
+        'DINING',
+        restaurants.isEmpty
+            ? 'Tables worth the journey.'
+            : restaurants.length == 1
+            ? '1 restaurant'
+            : '${restaurants.length} restaurants',
+        TripTextAction(
+          label: 'Add',
+          onTap: () => _addRestaurant(scope, restaurants),
+        ),
+      ),
+      SizedBox(height: compact ? CsSpacing.sm : CsSpacing.base),
+      ..._venueList(restaurants, 'No restaurants planned here yet.'),
+    ];
+  }
+
+  List<Widget> _legSections() {
+    final legs = effectiveLegs(_trip);
+    if (legs.length == 1) {
+      return _stayAndDining(scope: legs, plans: _venues, compact: false);
+    }
+    final byLeg = <int, List<ResolvedPlannedVenue>>{};
+    final elsewhere = <ResolvedPlannedVenue>[];
+    for (final v in _venues) {
+      final i = legIndexForPlan(_trip, v);
+      if (i == null) {
+        elsewhere.add(v);
+      } else {
+        byLeg.putIfAbsent(i, () => []).add(v);
+      }
+    }
+    return [
+      for (var i = 0; i < legs.length; i++) ...[
+        if (i > 0) const SizedBox(height: CsSpacing.section),
+        TripSectionHeader(
+          title: _legName(legs[i]),
+          subtitle: formatLegDateRange(
+            legStart(_trip, legs[i]),
+            legEnd(_trip, legs[i]),
+          ),
+        ),
+        const SizedBox(height: CsSpacing.lg),
+        ..._stayAndDining(
+          scope: [legs[i]],
+          plans: byLeg[i] ?? const [],
+          compact: true,
+        ),
+      ],
+      if (elsewhere.isNotEmpty) ...[
+        const SizedBox(height: CsSpacing.section),
+        const TripSectionHeader(
+          title: 'ELSEWHERE',
+          subtitle: 'Planned outside this trip\'s destinations.',
+        ),
+        const SizedBox(height: CsSpacing.base),
+        ..._venueList(elsewhere, ''),
+      ],
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
-    final restaurants = _venues
+    final restaurantCount = _venues
         .where((v) => v.venue is RestaurantVenue)
-        .toList();
-    final hotels = _venues.where((v) => v.venue is HotelVenue).toList();
-    final city = _trip.city?.trim();
-    final hasCity = city != null && city.isNotEmpty;
+        .length;
+    final hotelCount = _venues.where((v) => v.venue is HotelVenue).length;
     final hasNotes = _trip.notes != null && _trip.notes!.trim().isNotEmpty;
     final startLabel = tripStartLabel(_trip.startDate);
 
@@ -380,15 +613,21 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                         _TripHeader(
                           eyebrow: startLabel?.toUpperCase() ?? 'YOUR TRIP',
                           title: _trip.title,
-                          destination: hasCity
-                              ? '$_destinationLabel · $city'
-                              : _destinationLabel,
+                          destination: _destinationLine,
                           dates: formatTripDateRange(_trip),
                           counts: tripVenueCountsLine(
-                            restaurantCount: restaurants.length,
-                            hotelCount: hotels.length,
+                            restaurantCount: restaurantCount,
+                            hotelCount: hotelCount,
                           ),
                         ),
+                        if (_sharing) ...[
+                          const SizedBox(height: CsSpacing.md),
+                          TripCompanionsRow(
+                            members: _members,
+                            currentUserId: _userId,
+                            onTap: _openMembers,
+                          ),
+                        ],
 
                         // Omitted outright when absent rather than an
                         // empty-state block — a trip with no notes
@@ -399,52 +638,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                         ],
 
                         const SizedBox(height: CsSpacing.section),
-                        TripSectionHeader(
-                          title: 'STAY',
-                          subtitle: hotels.isEmpty
-                              ? 'Where you\'ll rest.'
-                              : hotels.length == 1
-                              ? '1 stay'
-                              : '${hotels.length} stays',
-                          trailing: TripTextAction(
-                            label: 'Add stay',
-                            onTap: () => _addHotel(hotels),
-                          ),
-                        ),
-                        const SizedBox(height: CsSpacing.base),
-                        if (hotels.isEmpty)
-                          const TripEmptyLine(
-                            'No hotel planned for this trip yet.',
-                          )
-                        else
-                          for (var i = 0; i < hotels.length; i++) ...[
-                            if (i > 0) const SizedBox(height: CsSpacing.md),
-                            _venueCard(hotels[i]),
-                          ],
-
-                        const SizedBox(height: CsSpacing.section),
-                        TripSectionHeader(
-                          title: 'DINING',
-                          subtitle: restaurants.isEmpty
-                              ? 'Tables worth the journey.'
-                              : restaurants.length == 1
-                              ? '1 restaurant'
-                              : '${restaurants.length} restaurants',
-                          trailing: TripTextAction(
-                            label: 'Add',
-                            onTap: () => _addRestaurant(restaurants),
-                          ),
-                        ),
-                        const SizedBox(height: CsSpacing.base),
-                        if (restaurants.isEmpty)
-                          const TripEmptyLine(
-                            'No restaurants planned for this trip yet.',
-                          )
-                        else
-                          for (var i = 0; i < restaurants.length; i++) ...[
-                            if (i > 0) const SizedBox(height: CsSpacing.md),
-                            _venueCard(restaurants[i]),
-                          ],
+                        ..._legSections(),
 
                         // Omitted outright when empty rather than an
                         // empty-state block — a trip with no matching
@@ -472,17 +666,6 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
       ),
     );
   }
-
-  // A planned venue card plus an always-visible "remove from trip" glyph
-  // in the card's own top-right slot — long-press still opens the fuller
-  // edit/cancel/delete sheet, but removing never depends on discovering
-  // that gesture first.
-  Widget _venueCard(ResolvedPlannedVenue item) => PlannedVenueRow(
-    item: item,
-    onTap: () => _openVenue(item),
-    onLongPress: () => _showVenueActions(item),
-    trailing: _RemoveGlyph(onTap: () => _removeVenue(item)),
-  );
 }
 
 class _TripHeader extends StatelessWidget {

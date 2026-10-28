@@ -32,7 +32,12 @@ enum AppNotificationType {
   // admin_reject_event notify the submitter. Only get_notifications_v2
   // returns these; get_notifications() hides them from older builds.
   eventApproved,
-  eventRejected;
+  eventRejected,
+  // Shared trips (20261021120000): invite_to_trip notifies the invitee,
+  // respond_to_trip_invite the inviter when they accept. Only
+  // get_notifications_v3 returns these.
+  tripInviteReceived,
+  tripInviteAccepted;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -50,6 +55,8 @@ enum AppNotificationType {
     'venue_photo_rejected' => AppNotificationType.venuePhotoRejected,
     'event_approved' => AppNotificationType.eventApproved,
     'event_rejected' => AppNotificationType.eventRejected,
+    'trip_invite_received' => AppNotificationType.tripInviteReceived,
+    'trip_invite_accepted' => AppNotificationType.tripInviteAccepted,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
 
@@ -148,6 +155,17 @@ class AppNotification {
   final String? eventReviewNote;
   final String? eventVenueName;
 
+  // subjectId doubles as the planned_trip_members id when subjectType ==
+  // 'planned_trip_member' (get_notifications_v3) — what
+  // respond_to_trip_invite takes. tripMemberStatus is the membership's
+  // CURRENT status ('pending'/'accepted'/'declined'), or null once it's
+  // gone (withdrawn, removed, trip deleted).
+  final String? tripId;
+  final String? tripTitle;
+  final DateTime? tripStartDate;
+  final DateTime? tripEndDate;
+  final String? tripMemberStatus;
+
   const AppNotification({
     required this.id,
     required this.type,
@@ -185,6 +203,11 @@ class AppNotification {
     this.eventStartDate,
     this.eventReviewNote,
     this.eventVenueName,
+    this.tripId,
+    this.tripTitle,
+    this.tripStartDate,
+    this.tripEndDate,
+    this.tripMemberStatus,
   });
 
   /// [fromRow], but null for a notification type this build doesn't know.
@@ -234,6 +257,15 @@ class AppNotification {
         : DateTime.parse('${row['event_start_date']}T00:00:00Z'),
     eventReviewNote: row['event_review_note'] as String?,
     eventVenueName: row['event_venue_name'] as String?,
+    tripId: row['trip_id'] as String?,
+    tripTitle: row['trip_title'] as String?,
+    tripStartDate: row['trip_start_date'] == null
+        ? null
+        : DateTime.parse(row['trip_start_date'] as String),
+    tripEndDate: row['trip_end_date'] == null
+        ? null
+        : DateTime.parse(row['trip_end_date'] as String),
+    tripMemberStatus: row['trip_member_status'] as String?,
   );
 
   /// Whether a friend_request_received row should still offer

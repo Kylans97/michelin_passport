@@ -58,22 +58,20 @@ Hotel _hotel(String id, String name) => Hotel(
 class _RecordingRestaurantRepository extends RestaurantRepository {
   _RecordingRestaurantRepository() : super(_dummyClient());
 
-  final List<String?> countryCodes = [];
+  final List<List<String>> countryCodes = [];
+  final List<List<String>> cityIds = [];
 
   @override
-  Future<List<Restaurant>> search(
+  Future<List<Restaurant>> searchInPlaces(
     String query, {
-    int? stars,
-    bool starsOnly = false,
-    bool worlds50BestOnly = false,
-    bool hallOfFameOnly = false,
-    String? countryCode,
+    List<String> countryCodes = const [],
+    List<String> cityIds = const [],
   }) async {
-    countryCodes.add(countryCode);
-    // Deliberately Z→A, the order the shared search really returns.
+    this.countryCodes.add(countryCodes);
+    this.cityIds.add(cityIds);
     return [
-      _restaurant('r2', 'Le Nouveau', stars: 2),
       _restaurant('r3', 'Auberge du Test'),
+      _restaurant('r2', 'Le Nouveau', stars: 2),
       _restaurant('r1', 'Already On Trip', stars: 1),
     ];
   }
@@ -82,17 +80,15 @@ class _RecordingRestaurantRepository extends RestaurantRepository {
 class _RecordingHotelRepository extends HotelRepository {
   _RecordingHotelRepository() : super(_dummyClient());
 
-  final List<String?> countryCodes = [];
+  final List<List<String>> countryCodes = [];
 
   @override
-  Future<List<Hotel>> search(
+  Future<List<Hotel>> searchInPlaces(
     String query, {
-    int? keys,
-    bool keysOnly = false,
-    bool worlds50BestOnly = false,
-    String? countryCode,
+    List<String> countryCodes = const [],
+    List<String> cityIds = const [],
   }) async {
-    countryCodes.add(countryCode);
+    this.countryCodes.add(countryCodes);
     return [_hotel('h1', 'Hôtel Test')];
   }
 }
@@ -124,8 +120,9 @@ Widget _app(Widget child) => MaterialApp(
 
 void main() {
   group('Destination-scoped pickers', () {
-    testWidgets('restaurant picker searches by the trip country code and '
-        'hides restaurants already on the trip', (tester) async {
+    testWidgets('restaurant picker searches the trip\'s destinations by '
+        'city id and country code, and hides restaurants already on the '
+        'trip', (tester) async {
       final repo = _RecordingRestaurantRepository();
       Restaurant? picked;
       await tester.pumpWidget(
@@ -134,8 +131,9 @@ void main() {
             open: (context) => showRestaurantPickerSheet(
               context,
               repo: repo,
-              countryCode: 'FR',
-              destinationLabel: '🇫🇷 France',
+              countryCodes: const ['IT'],
+              cityIds: const ['city-paris'],
+              destinationLabel: 'Paris, 🇫🇷 France · 🇮🇹 Italy',
               excludeIds: {'r1'},
             ),
             onResult: (r) => picked = r,
@@ -145,11 +143,19 @@ void main() {
       await tester.tap(find.text('open'));
       await tester.pumpAndSettle();
 
-      expect(repo.countryCodes, ['FR']);
-      expect(find.text('Restaurants in 🇫🇷 France'), findsOneWidget);
+      expect(repo.countryCodes, [
+        ['IT'],
+      ]);
+      expect(repo.cityIds, [
+        ['city-paris'],
+      ]);
+      expect(
+        find.text('Restaurants in Paris, 🇫🇷 France · 🇮🇹 Italy'),
+        findsOneWidget,
+      );
       expect(find.text('Already On Trip'), findsNothing);
       expect(find.text('Le Nouveau'), findsOneWidget);
-      // Listed A→Z regardless of the order the search returned.
+      // Shown in the order the (A→Z) search returned.
       expect(
         tester.getTopLeft(find.text('Auberge du Test')).dy,
         lessThan(tester.getTopLeft(find.text('Le Nouveau')).dy),
@@ -158,14 +164,17 @@ void main() {
       // Typing keeps the same country scope.
       await tester.enterText(find.byType(TextField), 'nou');
       await tester.pumpAndSettle();
-      expect(repo.countryCodes, ['FR', 'FR']);
+      expect(repo.countryCodes, [
+        ['IT'],
+        ['IT'],
+      ]);
 
       await tester.tap(find.text('Le Nouveau'));
       await tester.pumpAndSettle();
       expect(picked?.id, 'r2');
     });
 
-    testWidgets('hotel picker searches by the trip country code', (
+    testWidgets('hotel picker searches by the destination country code', (
       tester,
     ) async {
       final repo = _RecordingHotelRepository();
@@ -176,7 +185,7 @@ void main() {
             open: (context) => showHotelPickerSheet(
               context,
               repo: repo,
-              countryCode: 'FR',
+              countryCodes: const ['FR'],
               destinationLabel: '🇫🇷 France',
             ),
             onResult: (h) => picked = h,
@@ -186,7 +195,9 @@ void main() {
       await tester.tap(find.text('open'));
       await tester.pumpAndSettle();
 
-      expect(repo.countryCodes, ['FR']);
+      expect(repo.countryCodes, [
+        ['FR'],
+      ]);
       expect(find.text('Hotels in 🇫🇷 France'), findsOneWidget);
       // The Key row is the only gold on the sheet.
       expect(find.byIcon(Icons.vpn_key_rounded), findsNWidgets(2));

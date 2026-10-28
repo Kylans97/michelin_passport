@@ -272,6 +272,11 @@ creating it.
 
 ## 5. App changes that follow
 
+*Built 2026-10-28 on `feature/trips-redesign`, as described below. Not
+built: a "Shared with you" marker on trip cards (shared trips simply appear
+among the user's trips), and per-leg picker chips (each leg's own section
+has its own scoped Add actions instead).*
+
 - `PlannedTrip` gains `destinations` and `members`; `loadTrips` drops
   `.eq('user_id')` and relies on RLS (own + shared).
 - Create/Edit Trip: a destination list (country → optional city from

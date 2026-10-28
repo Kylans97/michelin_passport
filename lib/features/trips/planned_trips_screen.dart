@@ -13,12 +13,14 @@ import '../../models/event_trip_match.dart';
 import '../../models/passport_venue.dart';
 import '../../models/planned_trip.dart';
 import '../../models/resolved_planned_venue.dart';
+import '../../models/trip_member.dart';
 import '../events/event_detail_screen.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'all_upcoming_trips_screen.dart';
 import 'planned_visit_schedule.dart';
 import 'trip_detail_screen.dart';
+import 'trip_legs.dart';
 import 'trip_schedule.dart';
 import 'widgets/create_trip_sheet.dart';
 import 'widgets/planned_venue_actions.dart';
@@ -26,6 +28,7 @@ import 'widgets/planned_venue_row.dart';
 import 'widgets/trip_chrome.dart';
 import 'widgets/trip_eyebrow.dart';
 import 'widgets/trip_hero_card.dart';
+import 'widgets/trip_invitation_card.dart';
 
 /// My Planned Trips: the single next upcoming trip (with its venue counts
 /// and, if one overlaps, a matching event) as the clear focal point, then
@@ -88,7 +91,13 @@ class _TripsBodyState extends State<TripsBody> {
   bool _loading = true;
   bool _loadError = false;
   List<PlannedTrip> _trips = [];
+  List<TripInvitation> _invitations = [];
   List<ResolvedPlannedVenue> _plannedVenues = [];
+
+  // Every plan on the user's trips, other members' included — only for
+  // the trips' venue counts. PLANNED VISITS keeps reading [_plannedVenues],
+  // the user's own plans.
+  List<ResolvedPlannedVenue> _tripVenues = [];
 
   // The soonest upcoming trip's own matching event, if any — see
   // eventsMatchingTrip, the exact function TripDetailScreen's "WHAT'S ON"
@@ -108,20 +117,35 @@ class _TripsBodyState extends State<TripsBody> {
       _loadError = false;
     });
     try {
-      final tripsFuture = _repo.loadTrips(_userId);
+      final overviewFuture = _repo.loadTripsOverview(_userId);
       final venuesFuture = _repo.loadResolvedPlannedVenues(_userId);
-      final trips = await tripsFuture;
+      final overview = await overviewFuture;
+      final trips = overview.trips;
       final venues = await venuesFuture;
+      final tripVenues = _repo.sharedTripsAvailable
+          ? await _repo.loadResolvedPlannedVenuesForTrips([
+              for (final t in trips) t.id,
+            ])
+          : [
+              for (final v in venues)
+                if (v.plan.tripId != null) v,
+            ];
 
       Event? matchingEvent;
       final upcoming = upcomingTrips(trips);
       if (upcoming.isNotEmpty) {
         final featured = upcoming.first;
         try {
-          final events = await _eventsRepo.loadEventsForCountry(
-            featured.countryCode,
-          );
-          final matches = eventsMatchingTrip(events, featured);
+          // Every destination country's events, matched per leg.
+          final lists = await Future.wait([
+            for (final code in {
+              for (final leg in effectiveLegs(featured)) leg.countryCode,
+            })
+              _eventsRepo.loadEventsForCountry(code),
+          ]);
+          final matches = eventsMatchingTrip([
+            for (final l in lists) ...l,
+          ], featured);
           if (matches.isNotEmpty) matchingEvent = matches.first;
         } catch (_) {
           // The event overlay is a subtle bonus, never a reason to fail
@@ -134,7 +158,9 @@ class _TripsBodyState extends State<TripsBody> {
       if (!mounted) return;
       setState(() {
         _trips = trips;
+        _invitations = overview.invitations;
         _plannedVenues = venues;
+        _tripVenues = tripVenues;
         _matchingEvent = matchingEvent;
         _loading = false;
       });
@@ -154,6 +180,28 @@ class _TripsBodyState extends State<TripsBody> {
       repo: _repo,
     );
     if (saved == true) _load();
+  }
+
+  Future<void> _respond(TripInvitation invite, bool accept) async {
+    try {
+      await _repo.respondToTripInvite(
+        memberId: invite.memberId,
+        accept: accept,
+      );
+      if (!mounted) return;
+      showTripSnackBar(
+        context,
+        accept ? 'You\'re on ${invite.tripTitle}.' : 'Invitation declined.',
+      );
+      _load();
+    } catch (_) {
+      if (!mounted) return;
+      showTripSnackBar(
+        context,
+        'Could not answer the invitation. Please try again.',
+        isError: true,
+      );
+    }
   }
 
   void _openTrip(PlannedTrip trip) async {
@@ -226,7 +274,7 @@ class _TripsBodyState extends State<TripsBody> {
     final upcomingUntripped = upcomingPlannedVenues(untripped);
 
     final byTrip = <String, List<ResolvedPlannedVenue>>{};
-    for (final v in _plannedVenues) {
+    for (final v in _tripVenues) {
       final tripId = v.plan.tripId;
       if (tripId != null) byTrip.putIfAbsent(tripId, () => []).add(v);
     }
@@ -277,7 +325,10 @@ class _TripsBodyState extends State<TripsBody> {
                     color: AppColors.textOnDark,
                     backgroundColor: AppColors.greenSurface,
                     onRefresh: _load,
-                    child: (upcoming.isEmpty && untripped.isEmpty)
+                    child:
+                        (upcoming.isEmpty &&
+                            untripped.isEmpty &&
+                            _invitations.isEmpty)
                         ? _EmptyState(onCreateTrip: _createTrip)
                         : ListView(
                             padding: EdgeInsets.fromLTRB(
@@ -287,6 +338,19 @@ class _TripsBodyState extends State<TripsBody> {
                               floatingNavClearance(context),
                             ),
                             children: [
+                              if (_invitations.isNotEmpty) ...[
+                                const TripSectionLabel('INVITATIONS'),
+                                const SizedBox(height: CsSpacing.md),
+                                for (final invite in _invitations) ...[
+                                  TripInvitationCard(
+                                    invitation: invite,
+                                    onRespond: (accept) =>
+                                        _respond(invite, accept),
+                                  ),
+                                  const SizedBox(height: CsSpacing.md),
+                                ],
+                                const SizedBox(height: CsSpacing.xl),
+                              ],
                               if (featuredTrip != null) ...[
                                 const TripSectionLabel('UPCOMING'),
                                 const SizedBox(height: CsSpacing.md),

@@ -40,6 +40,39 @@ The format follows Keep a Changelog.
   `name` descending for every other caller (left alone here, logged as a
   follow-up), the same trap their own comment already warns about.
 
+### Added (needs migration 20261021120000 — not applied)
+- **Multi-destination trips.** Create/Edit Trip holds a list of destinations:
+  a catalogue country, optionally narrowed to a catalogue city (new city
+  picker, by `cities.id`), with Arrive/Leave dates required once there's more
+  than one. Saved atomically through `save_trip_destinations`.
+- **Trip Detail by leg.** A multi-destination trip shows one section per
+  leg with its own stays and dining, and an "Elsewhere" section for plans
+  outside every destination. A leg's "Add stay"/"Add" pickers are scoped to
+  that leg (city id or country code), and new plans default to its dates.
+- **Events per leg** (decision 2). Events are fetched for every destination
+  country and matched on each leg's own dates and country, in Trip Detail,
+  on the featured trip card and in discovery ranking's trip signal, which now
+  names the matching leg's city.
+- **Shared trips.** A "Travelling with" row and sheet on Trip Detail.
+  Any member invites their own friends; the owner removes anyone; whoever
+  sent a pending invite can withdraw it; members can leave. Other members'
+  plans show read-only with "Added by …". Open invitations appear at the top
+  of Trips and in Notifications (Join trip / Decline), read through
+  `get_notifications_v3`.
+- Catalogue venues now carry `city_id` (`Restaurant.cityId`/`Hotel.cityId`).
+  The scoped `searchInPlaces` sorts A→Z.
+- **Works before the migration too.** Against a server without
+  20261021120000 (production today), Trips behaves exactly as the single-
+  destination, owner-only build: the repository falls back on PostgREST's
+  "not found" errors and hides destinations and sharing. Verified against
+  production on the simulator.
+- Verified end to end on the simulator against a local stack with the
+  migration (`docs/Engineering/checks/trips_local_fixtures.sql`: local-only
+  test accounts and fake venues). Checked: accept an invitation, create a
+  two-leg trip with a city, legs, Elsewhere, per-leg events (an Italian
+  event during the French dates correctly excluded), the leg-scoped picker,
+  another member's read-only plan, the members sheet, and Edit pre-fill.
+
 ### Planned (not applied)
 - **Migration `20261021120000_add_trip_destinations_and_members.sql`,
   written and tested locally, not applied.** Several destinations per trip

@@ -84,12 +84,17 @@ class PlannedVenueRow extends StatelessWidget {
   final VoidCallback? onLongPress;
   final Widget? trailing;
 
+  /// On a shared trip, who planned this when it wasn't the current user —
+  /// shown as a quiet "Added by …" line. Null for the user's own plans.
+  final String? addedBy;
+
   const PlannedVenueRow({
     super.key,
     required this.item,
     required this.onTap,
     this.onLongPress,
     this.trailing,
+    this.addedBy,
   });
 
   @override
@@ -133,9 +138,12 @@ class PlannedVenueRow extends StatelessWidget {
       title: venue.name,
       subtitle: location,
       awardRow: distinction,
-      footer: (isCompleted || isCancelled)
+      footer: (isCompleted || isCancelled || addedBy != null)
           ? Text(
-              item.plan.status.label,
+              [
+                if (isCompleted || isCancelled) item.plan.status.label,
+                if (addedBy != null) 'Added by $addedBy',
+              ].join(' · '),
               style: CsTypography.smallLabel.copyWith(color: AppColors.taupe),
             )
           : null,

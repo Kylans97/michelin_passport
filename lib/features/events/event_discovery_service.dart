@@ -162,7 +162,10 @@ class EventDiscoveryService {
       final result = <String, String?>{};
       for (final trip in trips) {
         for (final event in eventsMatchingTrip(events, trip)) {
-          result.putIfAbsent(event.id, () => _tripDestinationLabel(trip));
+          result.putIfAbsent(
+            event.id,
+            () => _tripDestinationLabel(trip, event),
+          );
         }
       }
       return result;
@@ -171,7 +174,13 @@ class EventDiscoveryService {
     }
   }
 
-  String? _tripDestinationLabel(PlannedTrip trip) {
+  // A multi-destination trip names the leg the event falls in (its
+  // catalogue city, if it has one); otherwise the trip's own city.
+  String? _tripDestinationLabel(PlannedTrip trip, Event event) {
+    if (trip.destinations.isNotEmpty) {
+      final city = firstLegMatchingEvent(event, trip)?.cityName?.trim();
+      return (city != null && city.isNotEmpty) ? city : null;
+    }
     final city = trip.city?.trim();
     return (city != null && city.isNotEmpty) ? city : null;
   }

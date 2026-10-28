@@ -1,7 +1,14 @@
+import 'trip_destination.dart';
+
 // Maps a row from `public.planned_trips` (see
-// supabase/migrations/20260810120000_create_planned_trips.sql — additive,
-// not yet applied). A trip is a higher-level grouping a planned venue may
-// optionally belong to; see PlannedVenue.
+// supabase/migrations/20260810120000_create_planned_trips.sql). A trip is
+// a higher-level grouping a planned venue may optionally belong to; see
+// PlannedVenue.
+//
+// [destinations] (20261021120000) is loaded separately and attached by
+// PlannedTripsRepository; empty means "not loaded" — a server without
+// that migration, or a hand-built trip — in which case [countryCode]/
+// [city] remain the trip's one destination, exactly as before.
 class PlannedTrip {
   final String id;
   final String userId;
@@ -15,6 +22,7 @@ class PlannedTrip {
   final String? city;
   final String? notes;
   final DateTime createdAt;
+  final List<TripDestination> destinations;
 
   const PlannedTrip({
     required this.id,
@@ -26,7 +34,24 @@ class PlannedTrip {
     this.city,
     this.notes,
     required this.createdAt,
+    this.destinations = const [],
   });
+
+  /// More than one leg — leg dates then always exist.
+  bool get isMultiDestination => destinations.length > 1;
+
+  PlannedTrip withDestinations(List<TripDestination> legs) => PlannedTrip(
+    id: id,
+    userId: userId,
+    title: title,
+    startDate: startDate,
+    endDate: endDate,
+    countryCode: countryCode,
+    city: city,
+    notes: notes,
+    createdAt: createdAt,
+    destinations: legs,
+  );
 
   factory PlannedTrip.fromJson(Map<String, dynamic> json) => PlannedTrip(
     id: json['id'].toString(),
