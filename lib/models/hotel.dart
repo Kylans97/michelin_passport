@@ -44,6 +44,11 @@ class Hotel {
 
   final String? googlePlaceId;
   final String? michelinUrl;
+
+  // The venue's own World's 50 Best page (the50.com), verified at import
+  // — 20261021120000_add_worlds_50_best_urls.sql. Null when none could be
+  // proven; never built from the name.
+  final String? worlds50BestUrl;
   final String? websiteUrl;
 
   // hotels_full exposes this via its own `h.*` — the underlying
@@ -136,6 +141,7 @@ class Hotel {
     required this.address,
     this.googlePlaceId,
     this.michelinUrl,
+    this.worlds50BestUrl,
     this.websiteUrl,
     this.bookingUrl,
     this.phone,
@@ -191,6 +197,7 @@ class Hotel {
     address: (json['address'] as String?) ?? '',
     googlePlaceId: json['google_place_id'] as String?,
     michelinUrl: json['michelin_url'] as String?,
+    worlds50BestUrl: json['worlds_50_best_url'] as String?,
     websiteUrl: json['website_url'] as String?,
     bookingUrl: json['booking_url'] as String?,
     phone: json['phone'] as String?,

@@ -1,8 +1,9 @@
 # Guide source links — staging
 
-2026-10-28, `feature/guide-sources`. Staging only. **Nothing here has been
-written to Supabase**, and the migration it needs
-(`20261021120000_add_worlds_50_best_urls.sql`) is committed but not applied.
+2026-10-28, `feature/guide-sources`. **Applied to production 2026-10-28**:
+migration `20261021120000_add_worlds_50_best_urls.sql` first, then
+`apply_guide_source_links.sql`, with every guard passing. The record is
+the Michelin_Database CHANGELOG entry of that date.
 Plan: `docs/Architecture/GUIDE_SOURCE_LINKS_PLAN.md`.
 
 | File | What | Rows to apply |

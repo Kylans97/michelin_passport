@@ -38,6 +38,8 @@ import 'search_query.dart';
 // phone (20261016130000_add_hotel_phone.sql) — same deployment-ordering
 // hazard as restaurants' phone: that migration must be applied before a
 // build carrying this list ships, or every hotels_full select fails.
+// worlds_50_best_url (20261021120000_add_worlds_50_best_urls.sql) — same
+// ordering hazard: the migration must be live before this ships.
 const hotelFullColumns =
     'id, hotel_code, name, michelin_keys, city_name, region, country_code, '
     'country_name, flag_emoji, address, google_place_id, michelin_url, '
@@ -46,7 +48,7 @@ const hotelFullColumns =
     'parent_venue_type, parent_venue_id, opening_weekdays, is_expired, '
     'status, status_since, status_note, created_at, missing_listing_report_id, '
     'cover_photo_url, cover_focus_x, cover_focus_y, cover_zoom, card_photo_url, '
-    'card_focus_x, card_focus_y, card_zoom, phone';
+    'card_focus_x, card_focus_y, card_zoom, phone, worlds_50_best_url';
 
 class HotelRepository {
   HotelRepository(this._client);

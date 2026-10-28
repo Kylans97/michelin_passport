@@ -44,9 +44,12 @@ World's 50 Best years (2010–2021). It has no hero rank badge because its
 last ranking was 2021 and `restaurants_full.worlds_50_best_rank` reads only
 the latest list year. That is correct, not a bug.
 
-## Status, 2026-10-28 (after the go-ahead to prepare)
+## Status, 2026-10-28: applied
 
-Prepared and committed, **not applied**. Production is unchanged.
+Migration and data applied to production on 2026-10-28 after review.
+Ledger 105/105. The app shows a "50 Best" link on Restaurant and Hotel
+Detail; checked on the simulator on De Librije. The notes below are the
+prepared state, kept as the record.
 - Migration `supabase/migrations/20261021120000_add_worlds_50_best_urls.sql`
   adds `worlds_50_best_url` to `restaurants` and `hotels` and appends it to
   `restaurants_full`/`hotels_full`. A static check against production

@@ -617,6 +617,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     final latestVisit = _visits.isEmpty ? null : _visits.first;
     final hasMichelinLink = michelinUrl != null && michelinUrl.isNotEmpty;
     final hasWebsiteLink = websiteUrl != null && websiteUrl.isNotEmpty;
+    final worlds50BestUrl = (restaurant.worlds50BestUrl?.isNotEmpty ?? false)
+        ? restaurant.worlds50BestUrl!
+        : null;
     // Only a stored, well-formed URL — the "not found" research
     // placeholders some rows carry read as no link (see profileUrl).
     final gaultMillauUrl = _gaultMillauAward?.profileUrl;
@@ -715,6 +718,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                     onOpenMichelin: hasMichelinLink
                         ? () => _openUrl(michelinUrl)
                         : null,
+                    onOpenWorlds50Best: worlds50BestUrl == null
+                        ? null
+                        : () => _openUrl(worlds50BestUrl),
                     onOpenGaultMillau: gaultMillauUrl == null
                         ? null
                         : () => _openUrl(gaultMillauUrl),

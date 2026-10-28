@@ -28,14 +28,15 @@ import '../theme/cs_typography.dart';
 /// [onOpenGaultMillau] is the guide-page counterpart of [onOpenMichelin]:
 /// the restaurant's own Gault&Millau page, wired only when its stored
 /// `gault_millau_url` is a real URL (see GaultMillauAward.profileUrl).
-/// There is no World's 50 Best equivalent yet — no per-venue 50 Best URL
-/// is stored anywhere.
+/// [onOpenWorlds50Best] is the same for the venue's World's 50 Best page
+/// (`worlds_50_best_url`), on Restaurant and Hotel Detail alike.
 class VenueUtilityActions extends StatelessWidget {
   final VoidCallback onOpenMaps;
   final VoidCallback? onOpenWebsite;
   final VoidCallback? onCall;
   final VoidCallback? onOpenMichelin;
   final VoidCallback? onOpenGaultMillau;
+  final VoidCallback? onOpenWorlds50Best;
 
   const VenueUtilityActions({
     super.key,
@@ -44,6 +45,7 @@ class VenueUtilityActions extends StatelessWidget {
     this.onCall,
     this.onOpenMichelin,
     this.onOpenGaultMillau,
+    this.onOpenWorlds50Best,
   });
 
   @override
@@ -79,6 +81,14 @@ class VenueUtilityActions extends StatelessWidget {
               icon: Icons.menu_book_rounded,
               label: 'Michelin',
               onTap: onOpenMichelin!,
+            ),
+          ),
+        if (onOpenWorlds50Best != null)
+          Expanded(
+            child: _UtilityAction(
+              icon: Icons.emoji_events_outlined,
+              label: '50 Best',
+              onTap: onOpenWorlds50Best!,
             ),
           ),
         if (onOpenGaultMillau != null)

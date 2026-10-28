@@ -27,10 +27,23 @@ The format follows Keep a Changelog.
   World's 50 Best. App only, no schema change. A plan for World's 50 Best
   page links (no URL is stored yet) is in
   `docs/Architecture/GUIDE_SOURCE_LINKS_PLAN.md`.
-- Prepared, not applied: migration `20261021120000_add_worlds_50_best_urls`
-  (a `worlds_50_best_url` column on `restaurants`/`hotels`, appended to
-  both `_full` views) and verified staging data in
-  `supabase/data/enrichment/guide_source_links/`. Production is unchanged.
+- 2026-10-28 — World's 50 Best links. Restaurant and Hotel Detail get a
+  "50 Best" action that opens the venue's own the50.com page.
+  - **Migration:** `20261021120000_add_worlds_50_best_urls` adds
+    `worlds_50_best_url` to `restaurants`/`hotels` and appends it to both
+    `_full` views.
+  - **Applied 2026-10-28,** after the v1.2.0 (13) build. Ledger 104 → 105,
+    local and remote in agreement. Then
+    `guide_source_links/apply_guide_source_links.sql` filled 113
+    restaurant and 123 hotel URLs, plus the Gault&Millau fixes below.
+  - **Order matters:** a build carrying the new column lists must not ship
+    to a database without the migration. The migration is live, so any
+    build from here on is safe.
+  - **Not replay-tested:** no Docker on this machine. The view columns
+    were checked against production instead.
+  - **Next push:** `feature/editorial-selection`'s unapplied
+    `20261020120000` now sorts before an applied migration, so it needs
+    `supabase db push --include-all`. The two touch different objects.
 
 ### Fixed
 
@@ -54,8 +67,9 @@ The format follows Keep a Changelog.
 - Near-miss: 8 `gault_millau_awards.gault_millau_url` values in production
   are the import's `"not found"` placeholder text, not NULL. Linking the
   column directly would have opened a broken URL. The app now links only
-  absolute http(s) values (`GaultMillauAward.profileUrl`). The data
-  cleanup is proposed in the plan above and has not been applied.
+  absolute http(s) values (`GaultMillauAward.profileUrl`). The data was
+  then corrected on 2026-10-28 (QA-244): placeholders to NULL, 7 real
+  pages filled.
 
 ---
 

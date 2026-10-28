@@ -56,6 +56,9 @@ import 'search_query.dart';
 // a LATERAL join onto restaurant_photos, resolved server-side once for
 // every caller of this constant rather than a second query per surface.
 // Null for the large majority of restaurants; see Restaurant.coverImageUrl.
+// worlds_50_best_url (20261021120000_add_worlds_50_best_urls.sql) — that
+// migration must be live before a build carrying this list ships, or every
+// restaurants_full select fails.
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_name, region, country_code, country_name, flag_emoji, address, '
@@ -65,7 +68,7 @@ const restaurantFullColumns =
     'parent_venue_id, opening_weekdays, is_expired, status, status_since, '
     'status_note, created_at, missing_listing_report_id, cover_photo_url, '
     'cover_focus_x, cover_focus_y, cover_zoom, card_photo_url, card_focus_x, '
-    'card_focus_y, card_zoom';
+    'card_focus_y, card_zoom, worlds_50_best_url';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);

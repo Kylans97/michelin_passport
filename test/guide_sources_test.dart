@@ -11,6 +11,7 @@ import 'package:michelin_passport/core/widgets/venue_utility_actions.dart';
 import 'package:michelin_passport/features/restaurants/widgets/gault_millau_history_section.dart';
 import 'package:michelin_passport/features/restaurants/widgets/restaurant_hero.dart';
 import 'package:michelin_passport/models/gault_millau_award.dart';
+import 'package:michelin_passport/models/hotel.dart';
 import 'package:michelin_passport/models/restaurant.dart';
 
 GaultMillauAward _award({
@@ -79,6 +80,75 @@ void main() {
       expect(_award(url: '   ').profileUrl, isNull);
       expect(_award(url: '/en/restaurants/x').profileUrl, isNull);
       expect(_award(url: 'mailto:info@example.com').profileUrl, isNull);
+    });
+  });
+
+  group("worlds_50_best_url", () {
+    const url =
+        'https://www.the50.com/discovery/Establishments/Netherlands/Zwolle/De-Librije.html';
+
+    test('restaurants and hotels read it from their _full view', () {
+      expect(
+        Restaurant.fromJson({
+          'id': 'r1',
+          'name': 'De Librije',
+          'worlds_50_best_url': url,
+        }).worlds50BestUrl,
+        url,
+      );
+      expect(
+        Hotel.fromJson({
+          'id': 'h1',
+          'name': 'Raffles',
+          'worlds_50_best_url': 'https://www.the50.com/x.html',
+        }).worlds50BestUrl,
+        'https://www.the50.com/x.html',
+      );
+    });
+
+    test('absent column (an older server) reads as no link', () {
+      expect(
+        Restaurant.fromJson({'id': 'r1', 'name': 'X'}).worlds50BestUrl,
+        isNull,
+      );
+      expect(Hotel.fromJson({'id': 'h1', 'name': 'X'}).worlds50BestUrl, isNull);
+    });
+  });
+
+  group('VenueUtilityActions — 50 Best action', () {
+    testWidgets('all six actions fit at 320pt; 50 Best fires only its own '
+        'callback', (tester) async {
+      var best = 0;
+      var gm = 0;
+      await tester.pumpWidget(
+        _wrap(
+          VenueUtilityActions(
+            onOpenMaps: () {},
+            onOpenWebsite: () {},
+            onCall: () {},
+            onOpenMichelin: () {},
+            onOpenWorlds50Best: () => best++,
+            onOpenGaultMillau: () => gm++,
+          ),
+          width: 320,
+        ),
+      );
+      expect(tester.takeException(), isNull);
+      await tester.tap(find.text('50 Best'));
+      expect(best, 1);
+      expect(gm, 0);
+    });
+
+    testWidgets('icon is forest-green, never gold', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          VenueUtilityActions(onOpenMaps: () {}, onOpenWorlds50Best: () {}),
+        ),
+      );
+      final icon = tester.widget<Icon>(
+        find.byIcon(Icons.emoji_events_outlined),
+      );
+      expect(icon.color, AppColors.forestGreen);
     });
   });
 
