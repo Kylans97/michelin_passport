@@ -77,7 +77,11 @@ class FriendWishlistTile extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                VenueThumbnail(imageUrl: v.coverImageUrl, size: 52),
+                VenueThumbnail(
+                  imageUrl: v.cardImageUrl,
+                  framing: v.cardFraming,
+                  size: 52,
+                ),
                 const SizedBox(width: CsSpacing.md),
                 Expanded(
                   child: Column(

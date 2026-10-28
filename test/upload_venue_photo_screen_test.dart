@@ -245,7 +245,8 @@ void main() {
       await _pump(tester, pickPhotos: _pickerReturning([_validBytes]));
       await _tapChoose(tester);
       expect(find.text('AS THE HEADER'), findsOneWidget);
-      expect(find.text('AS A CARD'), findsOneWidget);
+      // The card crop is set separately, in CardPhotoScreen.
+      expect(find.text('AS A CARD'), findsNothing);
       expect(find.text('Submit for review'), findsOneWidget);
       // Exactly one photo: no "photo X of Y" progress clutter.
       expect(find.textContaining('PHOTO 1 OF'), findsNothing);

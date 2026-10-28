@@ -64,7 +64,8 @@ const restaurantFullColumns =
     'is_hall_of_fame, starts_on, ends_on, parent_venue_type, '
     'parent_venue_id, opening_weekdays, is_expired, status, status_since, '
     'status_note, created_at, missing_listing_report_id, cover_photo_url, '
-    'cover_focus_x, cover_focus_y, cover_zoom';
+    'cover_focus_x, cover_focus_y, cover_zoom, card_photo_url, card_focus_x, '
+    'card_focus_y, card_zoom';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);
@@ -87,7 +88,7 @@ class RestaurantRepository {
     final rows = await _client
         .from('restaurant_photos')
         .select(
-          'id, image_url, alt_text, display_order, focus_x, focus_y, zoom',
+          'id, image_url, alt_text, display_order, focus_x, focus_y, zoom, is_card, card_focus_x, card_focus_y, card_zoom',
         )
         .eq('restaurant_id', restaurantId)
         // ascending: postgrest-dart's order() defaults to DESCENDING, which put

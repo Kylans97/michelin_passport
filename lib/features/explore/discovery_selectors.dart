@@ -91,8 +91,8 @@ sealed class FreshFindItem {
   String get name;
   String get cityName;
   String get flagEmoji;
-  String? get coverImageUrl;
-  PhotoFraming get coverFraming;
+  String? get cardImageUrl;
+  PhotoFraming get cardFraming;
 }
 
 class FreshFindRestaurant extends FreshFindItem {
@@ -108,9 +108,9 @@ class FreshFindRestaurant extends FreshFindItem {
   @override
   String get flagEmoji => restaurant.flagEmoji;
   @override
-  String? get coverImageUrl => restaurant.coverImageUrl;
+  String? get cardImageUrl => restaurant.cardImageUrl;
   @override
-  PhotoFraming get coverFraming => restaurant.coverFraming;
+  PhotoFraming get cardFraming => restaurant.cardFraming;
 }
 
 class FreshFindHotel extends FreshFindItem {
@@ -126,9 +126,9 @@ class FreshFindHotel extends FreshFindItem {
   @override
   String get flagEmoji => hotel.flagEmoji;
   @override
-  String? get coverImageUrl => hotel.coverImageUrl;
+  String? get cardImageUrl => hotel.cardImageUrl;
   @override
-  PhotoFraming get coverFraming => hotel.coverFraming;
+  PhotoFraming get cardFraming => hotel.cardFraming;
 }
 
 class FreshFindEvent extends FreshFindItem {
@@ -144,9 +144,9 @@ class FreshFindEvent extends FreshFindItem {
   @override
   String get flagEmoji => '';
   @override
-  String? get coverImageUrl => event.imageUrl;
+  String? get cardImageUrl => event.imageUrl;
   @override
-  PhotoFraming get coverFraming => PhotoFraming.center;
+  PhotoFraming get cardFraming => PhotoFraming.center;
 }
 
 /// "Fresh Finds" — restaurants/hotels/events added because someone

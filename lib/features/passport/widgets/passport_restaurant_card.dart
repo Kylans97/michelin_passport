@@ -53,8 +53,8 @@ class PassportRestaurantCard extends StatelessWidget {
 
     return CsPlaceCard(
       image: VenueThumbnail(
-        imageUrl: restaurant.coverImageUrl,
-        framing: restaurant.coverFraming,
+        imageUrl: restaurant.cardImageUrl,
+        framing: restaurant.cardFraming,
         width: 96,
         height: 96,
         borderRadius: const BorderRadius.all(Radius.circular(CsRadius.medium)),

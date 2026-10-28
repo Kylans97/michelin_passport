@@ -248,8 +248,8 @@ class _FiftyBestRestaurantGuideScreenState
                     final entry = _results![index];
                     return GuideVenueCard(
                       title: entry.restaurant.name,
-                      imageUrl: entry.restaurant.coverImageUrl,
-                      imageFraming: entry.restaurant.coverFraming,
+                      imageUrl: entry.restaurant.cardImageUrl,
+                      imageFraming: entry.restaurant.cardFraming,
                       metadataLine: Text(
                         '#${entry.rank} · ${entry.year}',
                         style: CsTypography.metadata.copyWith(

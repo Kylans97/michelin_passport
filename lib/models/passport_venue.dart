@@ -20,10 +20,10 @@ sealed class PassportVenue {
   /// The venue's cover photo — restaurants_full/hotels_full.cover_photo_url.
   /// Null for the large majority of venues; every renderer falls back to
   /// the branded placeholder in that case.
-  String? get coverImageUrl;
+  String? get cardImageUrl;
 
   /// The manager's framing of that cover photo.
-  PhotoFraming get coverFraming;
+  PhotoFraming get cardFraming;
 }
 
 class RestaurantVenue extends PassportVenue {
@@ -37,9 +37,9 @@ class RestaurantVenue extends PassportVenue {
   String get countryCode => restaurant.countryCode;
 
   @override
-  String? get coverImageUrl => restaurant.coverImageUrl;
+  String? get cardImageUrl => restaurant.cardImageUrl;
   @override
-  PhotoFraming get coverFraming => restaurant.coverFraming;
+  PhotoFraming get cardFraming => restaurant.cardFraming;
 }
 
 class HotelVenue extends PassportVenue {
@@ -53,7 +53,7 @@ class HotelVenue extends PassportVenue {
   String get countryCode => hotel.countryCode;
 
   @override
-  String? get coverImageUrl => hotel.coverImageUrl;
+  String? get cardImageUrl => hotel.cardImageUrl;
   @override
-  PhotoFraming get coverFraming => hotel.coverFraming;
+  PhotoFraming get cardFraming => hotel.cardFraming;
 }

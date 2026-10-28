@@ -162,8 +162,8 @@ class _GaultMillauRestaurantGuideScreenState
                       final entry = _results![index];
                       return GuideVenueCard(
                         title: entry.restaurant.name,
-                        imageUrl: entry.restaurant.coverImageUrl,
-                        imageFraming: entry.restaurant.coverFraming,
+                        imageUrl: entry.restaurant.cardImageUrl,
+                        imageFraming: entry.restaurant.cardFraming,
                         metadataLine: GuideGaultMillauMark(award: entry.award),
                         cityName: entry.restaurant.cityName,
                         countryName: entry.restaurant.countryName,

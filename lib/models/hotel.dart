@@ -108,6 +108,15 @@ class Hotel {
   // cover_zoom, 20261014120000). Centred when there is no cover.
   final PhotoFraming coverFraming;
 
+  // The photo the venue chose for the small cards (card_photo_url,
+  // 20261015120000 — its flagged card photo, else the cover) and its
+  // card crop. Every card uses these; only the detail hero uses the
+  // cover. [cardImageUrl] falls back to the cover when no card photo is
+  // known (a server without the column, or a model built without it).
+  final String? cardPhotoUrl;
+  final PhotoFraming cardFraming;
+  String? get cardImageUrl => cardPhotoUrl ?? coverImageUrl;
+
   const Hotel({
     required this.id,
     required this.hotelCode,
@@ -142,6 +151,8 @@ class Hotel {
     this.stampArtworkApproved = false,
     this.coverImageUrl,
     this.coverFraming = PhotoFraming.center,
+    this.cardPhotoUrl,
+    this.cardFraming = PhotoFraming.center,
   });
 
   /// True when the hotel currently holds a confirmed MICHELIN Key value.
@@ -204,5 +215,9 @@ class Hotel {
     stampArtworkApproved: (json['stamp_artwork_approved'] as bool?) ?? false,
     coverImageUrl: json['cover_photo_url'] as String?,
     coverFraming: PhotoFraming.fromJson(json, prefix: 'cover_'),
+    cardPhotoUrl: json['card_photo_url'] as String?,
+    cardFraming: json['card_photo_url'] != null
+        ? PhotoFraming.fromJson(json, prefix: 'card_')
+        : PhotoFraming.center,
   );
 }

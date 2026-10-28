@@ -199,7 +199,7 @@ class VenuePhotoSubmissionRepository {
     final rows = await _client
         .from(_publishedTableFor(venueType))
         .select(
-          'id, image_url, alt_text, display_order, focus_x, focus_y, zoom',
+          'id, image_url, alt_text, display_order, focus_x, focus_y, zoom, is_card, card_focus_x, card_focus_y, card_zoom',
         )
         .eq(_venueColumnFor(venueType), venueId)
         // ascending: postgrest-dart's order() defaults to DESCENDING, which put
@@ -274,6 +274,27 @@ class VenuePhotoSubmissionRepository {
   }) => _client.rpc(
     'reorder_venue_photos',
     params: {'p_venue_type': venueType, 'p_venue_id': venueId, 'p_photo_ids': photoIds},
+  );
+
+  /// Sets the venue's card photo — the one on the small cards — and its
+  /// card crop, via set_venue_card_photo (20261015120000); live straight
+  /// away, no review. [photoId] null clears the choice, so the cards
+  /// follow the cover (the first photo) again; [framing] is ignored then.
+  Future<void> setCardPhoto({
+    required String venueType,
+    required String venueId,
+    required String? photoId,
+    PhotoFraming framing = PhotoFraming.center,
+  }) => _client.rpc(
+    'set_venue_card_photo',
+    params: {
+      'p_venue_type': venueType,
+      'p_venue_id': venueId,
+      'p_photo_id': photoId,
+      'p_focus_x': photoId == null ? null : framing.focusX,
+      'p_focus_y': photoId == null ? null : framing.focusY,
+      'p_zoom': photoId == null ? null : framing.zoom,
+    },
   );
 
   /// Re-frames one PUBLISHED photo via set_venue_photo_framing — live

@@ -64,8 +64,8 @@ class HotelTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             VenueThumbnail(
-              imageUrl: hotel.coverImageUrl,
-              framing: hotel.coverFraming,
+              imageUrl: hotel.cardImageUrl,
+              framing: hotel.cardFraming,
             ),
             const SizedBox(width: 14),
             Expanded(

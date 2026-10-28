@@ -42,6 +42,9 @@ class PhotoFraming {
   /// centred so the hero and the card each keep their own default.
   PhotoFraming get storedForChef => this == chefDefault ? center : this;
 
+  /// The same for a chef photo's CARD crop, left at [chefCardDefault].
+  PhotoFraming get storedForChefCard => this == chefCardDefault ? center : this;
+
   static const double minZoom = 1;
   static const double maxZoom = 4;
 

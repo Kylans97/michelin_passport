@@ -196,7 +196,7 @@ class _PrivateChefsScreenState extends State<PrivateChefsScreen> {
   Widget _chefCard(PrivateChef chef) => PrivateChefDiscoveryCard(
     chef: chef,
     coverImageUrl: _coverPhotos[chef.id]?.imageUrl,
-    coverFraming: _coverPhotos[chef.id]?.framing ?? PhotoFraming.center,
+    coverFraming: _coverPhotos[chef.id]?.cardFraming ?? PhotoFraming.center,
     location: formatChefLocation(
       city: chef.homeCity,
       countryCode: chef.homeCountryCode,

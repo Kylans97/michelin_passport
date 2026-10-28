@@ -135,6 +135,57 @@ The format follows Keep a Changelog.
     (the simulator build talks to production); friend tiles fed by the
     friend RPCs (visits, wishlist, profile overview) still show covers
     centred, since those RPCs don't return framing.
+- 2026-10-28 — A venue's card photo: which of its approved photos shows
+  on the small cards, with its own crop, separate from the cover that
+  leads the detail page. Asked for by the product owner (a restaurant may
+  want a different photo, or a different crop, for the small picture).
+  - **My Venues.** A Card photo section sits between the photo list and
+    "Awaiting or not approved": the card photo at card size with its card
+    crop, "Same as your cover" or "Your chosen photo", and Change into a
+    new CardPhotoScreen — pick from the approved photos (cover labelled),
+    frame it in an editable 1:1 card (4:5 for private chefs) with
+    Explore's 4:3 card previewed beneath, Save live with no review;
+    "Follow my cover" clears the choice. "Make cover" is gone from the
+    photo rows (the top photo says Cover; the arrows reorder), and the
+    header editor (Adjust framing, upload) now shows only the header —
+    its card preview had shown a crop the card no longer uses.
+  - **Every card** (Explore, search, Passport, Wishlist, Rankings,
+    Guides, the chef card, the friend tiles) now shows the card photo
+    and card crop; only the detail hero uses the cover. With no choice,
+    or against a server without the columns, the card is the cover.
+  - **`20261015120000_add_venue_card_photo.sql`:**
+    - adds `is_card` (at most one per venue, partial unique index) and
+      `card_focus_x`/`card_focus_y`/`card_zoom` to the three photo
+      tables — a card crop on every photo, so even the cover can be
+      cropped differently for the card; defaults keep today's cards;
+    - adds `set_venue_card_photo()` (SECURITY DEFINER,
+      `is_active_venue_manager()`, `revoke … from public, anon`); a null
+      photo means "follow the cover";
+    - extends the column-lock trigger to the four new columns;
+    - makes `approve_venue_photo` keep a replaced card photo the card
+      photo (its crop reset for the new image);
+    - adds `card_photo_url`/`card_focus_x`/`card_focus_y`/`card_zoom` to
+      `restaurants_full`/`hotels_full` (flagged first, then lowest
+      position), leaving `cover_photo_url` unchanged so installed builds
+      keep showing the cover on cards until they update.
+  - **CLAUDE.md:** the photo rule now reads "order, framing and which
+    approved photo is the card photo, never the image or its alt text",
+    with header and card crops, the three RPCs and both migrations named.
+  - **Proven locally only.** On a replay of the 93 existing migrations
+    with a manager, a restaurant and two published photos, then this
+    one: no choice gives the cover; choosing another photo with a crop
+    works; re-choosing keeps one flag; follow-the-cover clears it;
+    another user, a foreign photo, out-of-range values and direct
+    UPDATEs were refused; an approved replacement of the card photo kept
+    the flag; anon and PUBLIC hold no EXECUTE. A fresh replay of all 94
+    files gave identical definitions (74 objects). Analyzer clean; 2,465
+    tests pass, including new ones for CardPhotoScreen, the card fields,
+    the editor's header and card modes, and the section's place on My
+    Venues. The 2 failing are `live_view_full_columns_test` against
+    production, which lacks the new view columns until this is applied.
+  - **Rollout order: migration first** — the new build selects the card
+    columns by name. **Not yet applied to production.** Not seen on the
+    simulator for the same reason: its build talks to production.
 
 ### Changed
 

@@ -15,12 +15,20 @@ class PublishedVenuePhoto {
   final int displayOrder;
   final PhotoFraming framing;
 
+  /// Whether the venue chose this photo for its small cards, and its crop
+  /// there (is_card/card_focus_x/card_focus_y/card_zoom, 20261015120000)
+  /// — separate from [framing], which is the header crop.
+  final bool isCard;
+  final PhotoFraming cardFraming;
+
   const PublishedVenuePhoto({
     required this.id,
     required this.imageUrl,
     this.altText,
     required this.displayOrder,
     this.framing = PhotoFraming.center,
+    this.isCard = false,
+    this.cardFraming = PhotoFraming.center,
   });
 
   factory PublishedVenuePhoto.fromJson(Map<String, dynamic> json) => PublishedVenuePhoto(
@@ -29,5 +37,7 @@ class PublishedVenuePhoto {
     altText: json['alt_text'] as String?,
     displayOrder: (json['display_order'] as num?)?.toInt() ?? 0,
     framing: PhotoFraming.fromJson(json),
+    isCard: (json['is_card'] as bool?) ?? false,
+    cardFraming: PhotoFraming.fromJson(json, prefix: 'card_'),
   );
 }

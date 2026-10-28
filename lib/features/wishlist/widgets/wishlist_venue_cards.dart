@@ -39,8 +39,8 @@ class WishlistRestaurantCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) => CsPlaceCard(
     image: VenueThumbnail(
-      imageUrl: restaurant.coverImageUrl,
-      framing: restaurant.coverFraming,
+      imageUrl: restaurant.cardImageUrl,
+      framing: restaurant.cardFraming,
       width: 96,
       height: 96,
       borderRadius: const BorderRadius.all(Radius.circular(CsRadius.medium)),
@@ -81,8 +81,8 @@ class WishlistHotelCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) => CsPlaceCard(
     image: VenueThumbnail(
-      imageUrl: hotel.coverImageUrl,
-      framing: hotel.coverFraming,
+      imageUrl: hotel.cardImageUrl,
+      framing: hotel.cardFraming,
       width: 96,
       height: 96,
       borderRadius: const BorderRadius.all(Radius.circular(CsRadius.medium)),

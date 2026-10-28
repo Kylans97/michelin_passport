@@ -39,6 +39,7 @@ Future<List<PhotoFraming>> _pump(
   String venueType = 'restaurant',
   PhotoFraming initial = PhotoFraming.center,
   PhotoFraming defaultFraming = PhotoFraming.center,
+  PhotoFramingTarget target = PhotoFramingTarget.header,
 }) async {
   final changes = <PhotoFraming>[];
   await _precache(tester);
@@ -50,6 +51,7 @@ Future<List<PhotoFraming>> _pump(
         body: SingleChildScrollView(
           child: PhotoFramingEditor(
             image: _wideImage,
+            target: target,
             venueTypeWireValue: venueType,
             initial: initial,
             defaultFraming: defaultFraming,
@@ -66,39 +68,71 @@ Future<List<PhotoFraming>> _pump(
 Finder get _headerFrame => find.bySemanticsLabel('Photo position and zoom');
 
 void main() {
-  testWidgets('restaurant: 300px header, 1:1 card', (tester) async {
+  // The header crop and the card crop are independent (20261015120000),
+  // so each mode shows only its own frames.
+  testWidgets('header mode: the 300px header only — no card preview', (
+    tester,
+  ) async {
     await _pump(tester);
-    expect(
-      tester
-          .widgetList<SizedBox>(find.byType(SizedBox))
-          .any((b) => b.height == 300),
-      isTrue,
-    );
-    expect(
-      tester.widget<AspectRatio>(find.byType(AspectRatio)).aspectRatio,
-      1.0,
-    );
+    expect(tester.getSize(_headerFrame).height, 300);
     expect(find.text('AS THE HEADER'), findsOneWidget);
-    expect(find.text('AS A CARD'), findsOneWidget);
+    expect(find.text('AS A CARD'), findsNothing);
+    expect(find.byType(AspectRatio), findsNothing);
   });
 
-  testWidgets('private chef: 320px header, 4:5 card', (tester) async {
+  testWidgets('private chef header mode: 320px', (tester) async {
     await _pump(
       tester,
       venueType: 'private_chef',
       initial: PhotoFraming.chefDefault,
       defaultFraming: PhotoFraming.chefDefault,
     );
-    expect(
-      tester
-          .widgetList<SizedBox>(find.byType(SizedBox))
-          .any((b) => b.height == 320),
-      isTrue,
-    );
+    expect(tester.getSize(_headerFrame).height, 320);
+  });
+
+  testWidgets('card mode: an editable 1:1 card with Explore\'s 4:3 card '
+      'beneath, and no header', (tester) async {
+    await _pump(tester, target: PhotoFramingTarget.card);
+    final frame = tester.getSize(_headerFrame);
+    expect(frame.width, frame.height);
+    expect(find.text('AS A CARD'), findsOneWidget);
+    expect(find.text('IN EXPLORE'), findsOneWidget);
+    expect(find.text('AS THE HEADER'), findsNothing);
     expect(
       tester.widget<AspectRatio>(find.byType(AspectRatio)).aspectRatio,
-      4 / 5,
+      4 / 3,
     );
+  });
+
+  testWidgets('private chef card mode: an editable 4:5 card, no Explore '
+      'card', (tester) async {
+    await _pump(
+      tester,
+      venueType: 'private_chef',
+      target: PhotoFramingTarget.card,
+      initial: PhotoFraming.chefCardDefault,
+      defaultFraming: PhotoFraming.chefCardDefault,
+    );
+    final frame = tester.getSize(_headerFrame);
+    expect(frame.height / frame.width, closeTo(5 / 4, 1e-9));
+    expect(find.text('IN EXPLORE'), findsNothing);
+  });
+
+  testWidgets('card mode zooms and drags the card crop like the header', (
+    tester,
+  ) async {
+    final changes = await _pump(tester, target: PhotoFramingTarget.card);
+    tester.widget<Slider>(find.byType(Slider)).onChanged!(2);
+    await tester.pump();
+    expect(changes.last.zoom, 2);
+    await tester.drag(
+      _headerFrame,
+      const Offset(-40, 0),
+      touchSlopX: 0,
+      touchSlopY: 0,
+    );
+    await tester.pump();
+    expect(changes.last.focusX, greaterThan(0.5));
   });
 
   testWidgets('on a phone the header has the real hero\'s shape: full width '
@@ -200,16 +234,16 @@ void main() {
     expect(tester.widget<TextButton>(reset).onPressed, isNull);
   });
 
-  testWidgets('a chef photo left untouched previews as the card really shows '
-      'it, not at the hero default', (tester) async {
+  testWidgets('a chef card left untouched starts where the card really '
+      'shows it', (tester) async {
     await _pump(
       tester,
       venueType: 'private_chef',
-      initial: PhotoFraming.chefDefault,
-      defaultFraming: PhotoFraming.chefDefault,
+      target: PhotoFramingTarget.card,
+      initial: PhotoFraming.chefCardDefault,
+      defaultFraming: PhotoFraming.chefCardDefault,
     );
-    final images = tester.widgetList<Image>(find.byType(Image)).toList();
-    expect(images.first.alignment, PhotoFraming.chefDefault.alignment);
-    expect(images.last.alignment, PhotoFraming.chefCardDefault.alignment);
+    final image = tester.widget<Image>(find.byType(Image));
+    expect(image.alignment, PhotoFraming.chefCardDefault.alignment);
   });
 }

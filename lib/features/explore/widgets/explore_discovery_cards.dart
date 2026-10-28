@@ -234,8 +234,8 @@ class ExploreDiscoveryRestaurantCard extends StatelessWidget {
               AspectRatio(
                 aspectRatio: 4 / 3,
                 child: _DiscoveryImage(
-                  imageUrl: restaurant.coverImageUrl,
-                  framing: restaurant.coverFraming,
+                  imageUrl: restaurant.cardImageUrl,
+                  framing: restaurant.cardFraming,
                   logoScale: 0.32,
                 ),
               ),
@@ -331,8 +331,8 @@ class ExploreDiscoveryHotelCard extends StatelessWidget {
                   width: 72,
                   height: 72,
                   child: _DiscoveryImage(
-                    imageUrl: hotel.coverImageUrl,
-                    framing: hotel.coverFraming,
+                    imageUrl: hotel.cardImageUrl,
+                    framing: hotel.cardFraming,
                     logoScale: 0.34,
                   ),
                 ),
@@ -441,8 +441,8 @@ class ExploreFreshFindCard extends StatelessWidget {
               AspectRatio(
                 aspectRatio: 4 / 3,
                 child: _DiscoveryImage(
-                  imageUrl: item.coverImageUrl,
-                  framing: item.coverFraming,
+                  imageUrl: item.cardImageUrl,
+                  framing: item.cardFraming,
                   logoScale: 0.32,
                 ),
               ),

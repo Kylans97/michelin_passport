@@ -7,10 +7,12 @@ import '../../../core/widgets/framed_image.dart';
 import '../../../models/photo_framing.dart';
 
 /// Lets a venue manager position and zoom one photo: drag to move, pinch
-/// (or the slider) to zoom, inside the real header frame, with the card
-/// frame beneath updating live. One [PhotoFraming] drives both, exactly
-/// as FramedImage applies it everywhere the photo is shown — so what is
-/// set here is what visitors see.
+/// (or the slider) to zoom, inside the real frame it will be shown in.
+/// [target] picks which crop is being set — the photo's header crop
+/// (focus_x/focus_y/zoom) or its card crop (card_focus_x/card_focus_y/
+/// card_zoom, 20261015120000). The two are independent, so each mode
+/// shows only its own frames: a header crop never pretends to be what
+/// the small card shows.
 ///
 /// The header frame has the real hero's shape: VenueDetailHero and
 /// PrivateChefHero are SliverAppBars, so on a device they are the full
@@ -20,8 +22,11 @@ import '../../../models/photo_framing.dart';
 /// page's width and shades that covered strip, so what sits clear of it
 /// here sits clear of it on the real page. (Until 2026-10-28 this was a
 /// fixed 300px frame at page width — a different aspect ratio, so a face
-/// framed here landed higher, under the status bar, on the device.) Card
-/// frame: 1:1 (VenueThumbnail; private chef 4:5, PrivateChefDiscoveryCard).
+/// framed here landed higher, under the status bar, on the device.)
+///
+/// The card frame is VenueThumbnail's 1:1 (private chef: 4:5,
+/// PrivateChefDiscoveryCard), with Explore's 4:3 discovery card beneath
+/// for restaurants and hotels, since one card crop serves both.
 ///
 /// [defaultFraming] is where an untouched photo sits and what Reset goes
 /// back to: centred for restaurants and hotels; for private chefs, high
@@ -31,8 +36,11 @@ import '../../../models/photo_framing.dart';
 /// Dragging moves the photo with the finger: the editor reads the image's
 /// own pixel size so it can turn a drag into the right focus change (see
 /// [_panBy]); until that size is known a drag does nothing.
+enum PhotoFramingTarget { header, card }
+
 class PhotoFramingEditor extends StatefulWidget {
   final ImageProvider image;
+  final PhotoFramingTarget target;
   final String venueTypeWireValue;
   final PhotoFraming initial;
   final PhotoFraming defaultFraming;
@@ -41,6 +49,7 @@ class PhotoFramingEditor extends StatefulWidget {
   const PhotoFramingEditor({
     super.key,
     required this.image,
+    this.target = PhotoFramingTarget.header,
     required this.venueTypeWireValue,
     required this.initial,
     this.defaultFraming = PhotoFraming.center,
@@ -133,12 +142,6 @@ class _PhotoFramingEditorState extends State<PhotoFramingEditor> {
     );
   }
 
-  // Mirrors how the card will really render it: a chef photo left at its
-  // default is stored as untouched, and the chef card shows an untouched
-  // photo at its own default (PhotoFraming.storedForChef/forChefCard).
-  PhotoFraming get _cardFraming =>
-      _isChef ? _framing.storedForChef.forChefCard : _framing;
-
   Widget _image(Alignment alignment) => Image(
     image: widget.image,
     fit: BoxFit.cover,
@@ -151,7 +154,43 @@ class _PhotoFramingEditorState extends State<PhotoFramingEditor> {
 
   @override
   Widget build(BuildContext context) {
-    final cardAspectRatio = _isChef ? 4 / 5 : 1.0;
+    final isHeader = widget.target == PhotoFramingTarget.header;
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _label(isHeader ? 'AS THE HEADER' : 'AS A CARD'),
+        const SizedBox(height: CsSpacing.xs),
+        Text(
+          isHeader
+              ? 'Drag to position, pinch to zoom. The shaded strip sits '
+                    'behind the status bar and buttons.'
+              : 'Drag to position, pinch to zoom.',
+          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+        ),
+        const SizedBox(height: CsSpacing.sm),
+        if (isHeader) _headerFrame(context) else _cardFrame(),
+        const SizedBox(height: CsSpacing.sm),
+        _zoomRow(),
+        if (!isHeader && !_isChef) ...[
+          const SizedBox(height: CsSpacing.md),
+          _label('IN EXPLORE'),
+          const SizedBox(height: CsSpacing.sm),
+          SizedBox(
+            width: 200,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: AspectRatio(
+                aspectRatio: 4 / 3,
+                child: FramedImage(framing: _framing, builder: _image),
+              ),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+
+  Widget _headerFrame(BuildContext context) {
     final screenWidth = MediaQuery.sizeOf(context).width;
     // The device's own status bar, from the view itself: this editor sits
     // under a Scaffold/AppBar, which removes the top padding from
@@ -159,147 +198,125 @@ class _PhotoFramingEditorState extends State<PhotoFramingEditor> {
     // has no AppBar above it, so it does extend under the status bar.
     final view = View.of(context);
     final statusBar = view.padding.top / view.devicePixelRatio;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _label('AS THE HEADER'),
-        const SizedBox(height: CsSpacing.xs),
-        Text(
-          'Drag to position, pinch to zoom. The shaded strip sits behind '
-          'the status bar and buttons.',
-          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-        ),
-        const SizedBox(height: CsSpacing.sm),
-        LayoutBuilder(
-          builder: (context, constraints) {
-            // The real hero is screenWidth x (expandedHeight + status bar);
-            // scaled to this page's width, same shape.
-            final scale = screenWidth <= 0
-                ? 1.0
-                : constraints.maxWidth / screenWidth;
-            final box = Size(
-              constraints.maxWidth,
-              (_heroExpandedHeight + statusBar) * scale,
-            );
-            final coveredStrip = (statusBar + kToolbarHeight) * scale;
-            return Semantics(
-              label: 'Photo position and zoom',
-              // Claims every touch inside the frame straight away, so the
-              // screen's own scroll view can't take a vertical drag meant
-              // for the photo; the page still scrolls from outside it.
-              child: RawGestureDetector(
-                gestures: {
-                  _EagerScaleGestureRecognizer:
-                      GestureRecognizerFactoryWithHandlers<
-                        _EagerScaleGestureRecognizer
-                      >(_EagerScaleGestureRecognizer.new, (recognizer) {
-                        recognizer.onStart = (_) {
-                          _zoomAtGestureStart = _framing.zoom;
-                        };
-                        recognizer.onUpdate = (details) {
-                          if (details.pointerCount > 1) {
-                            _set(
-                              _framing.copyWith(
-                                zoom: _zoomAtGestureStart * details.scale,
-                              ),
-                            );
-                          }
-                          _panBy(details.focalPointDelta, box);
-                        };
-                      }),
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: SizedBox(
-                    width: box.width,
-                    height: box.height,
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        FramedImage(framing: _framing, builder: _image),
-                        Positioned(
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          height: coveredStrip,
-                          child: IgnorePointer(
-                            child: DecoratedBox(
-                              key: const ValueKey('covered-strip'),
-                              decoration: BoxDecoration(
-                                color: Colors.black.withValues(alpha: 0.32),
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: AppColors.ivory.withValues(
-                                      alpha: 0.6,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // The real hero is screenWidth x (expandedHeight + status bar);
+        // scaled to this page's width, same shape.
+        final scale = screenWidth <= 0
+            ? 1.0
+            : constraints.maxWidth / screenWidth;
+        final box = Size(
+          constraints.maxWidth,
+          (_heroExpandedHeight + statusBar) * scale,
+        );
+        final coveredStrip = (statusBar + kToolbarHeight) * scale;
+        return _interactive(
+          box,
+          Stack(
+            fit: StackFit.expand,
+            children: [
+              FramedImage(framing: _framing, builder: _image),
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                height: coveredStrip,
+                child: IgnorePointer(
+                  child: DecoratedBox(
+                    key: const ValueKey('covered-strip'),
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.32),
+                      border: Border(
+                        bottom: BorderSide(
+                          color: AppColors.ivory.withValues(alpha: 0.6),
                         ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
               ),
-            );
-          },
-        ),
-        const SizedBox(height: CsSpacing.sm),
-        Row(
-          children: [
-            const Icon(
-              Icons.zoom_out_rounded,
-              size: 18,
-              color: AppColors.taupe,
-            ),
-            Expanded(
-              child: Slider(
-                value: _framing.zoom,
-                min: PhotoFraming.minZoom,
-                max: PhotoFraming.maxZoom,
-                activeColor: AppColors.forestGreen,
-                label: 'Zoom',
-                semanticFormatterCallback: (v) =>
-                    'Zoom ${v.toStringAsFixed(1)} times',
-                onChanged: (v) => _set(_framing.copyWith(zoom: v)),
-              ),
-            ),
-            const Icon(Icons.zoom_in_rounded, size: 18, color: AppColors.taupe),
-            const SizedBox(width: CsSpacing.sm),
-            TextButton(
-              onPressed: _framing == widget.defaultFraming
-                  ? null
-                  : () => _set(widget.defaultFraming),
-              child: Text(
-                'Reset',
-                style: CsTypography.metadata.copyWith(
-                  color: _framing == widget.defaultFraming
-                      ? AppColors.taupe.withValues(alpha: 0.5)
-                      : AppColors.forestGreen,
-                ),
-              ),
-            ),
-          ],
-        ),
-        const SizedBox(height: CsSpacing.md),
-        _label('AS A CARD'),
-        const SizedBox(height: CsSpacing.sm),
-        SizedBox(
-          width: 160,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: AspectRatio(
-              aspectRatio: cardAspectRatio,
-              child: FramedImage(framing: _cardFraming, builder: _image),
-            ),
+            ],
           ),
-        ),
-      ],
+        );
+      },
     );
   }
+
+  // The card frame at a comfortable editing size: 1:1, or 4:5 for a chef.
+  Widget _cardFrame() => LayoutBuilder(
+    builder: (context, constraints) {
+      final width = constraints.maxWidth * 0.72;
+      final box = Size(width, _isChef ? width * 5 / 4 : width);
+      return _interactive(box, FramedImage(framing: _framing, builder: _image));
+    },
+  );
+
+  Widget _interactive(Size box, Widget child) => Semantics(
+    label: 'Photo position and zoom',
+    // Claims every touch inside the frame straight away, so the screen's
+    // own scroll view can't take a vertical drag meant for the photo; the
+    // page still scrolls from outside it.
+    child: RawGestureDetector(
+      gestures: {
+        _EagerScaleGestureRecognizer:
+            GestureRecognizerFactoryWithHandlers<_EagerScaleGestureRecognizer>(
+              _EagerScaleGestureRecognizer.new,
+              (recognizer) {
+                recognizer.onStart = (_) {
+                  _zoomAtGestureStart = _framing.zoom;
+                };
+                recognizer.onUpdate = (details) {
+                  if (details.pointerCount > 1) {
+                    _set(
+                      _framing.copyWith(
+                        zoom: _zoomAtGestureStart * details.scale,
+                      ),
+                    );
+                  }
+                  _panBy(details.focalPointDelta, box);
+                };
+              },
+            ),
+      },
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(12),
+        child: SizedBox(width: box.width, height: box.height, child: child),
+      ),
+    ),
+  );
+
+  Widget _zoomRow() => Row(
+    children: [
+      const Icon(Icons.zoom_out_rounded, size: 18, color: AppColors.taupe),
+      Expanded(
+        child: Slider(
+          value: _framing.zoom,
+          min: PhotoFraming.minZoom,
+          max: PhotoFraming.maxZoom,
+          activeColor: AppColors.forestGreen,
+          label: 'Zoom',
+          semanticFormatterCallback: (v) =>
+              'Zoom ${v.toStringAsFixed(1)} times',
+          onChanged: (v) => _set(_framing.copyWith(zoom: v)),
+        ),
+      ),
+      const Icon(Icons.zoom_in_rounded, size: 18, color: AppColors.taupe),
+      const SizedBox(width: CsSpacing.sm),
+      TextButton(
+        onPressed: _framing == widget.defaultFraming
+            ? null
+            : () => _set(widget.defaultFraming),
+        child: Text(
+          'Reset',
+          style: CsTypography.metadata.copyWith(
+            color: _framing == widget.defaultFraming
+                ? AppColors.taupe.withValues(alpha: 0.5)
+                : AppColors.forestGreen,
+          ),
+        ),
+      ),
+    ],
+  );
 
   Widget _label(String text) =>
       Text(text, style: CsTypography.eyebrow.copyWith(color: AppColors.taupe));

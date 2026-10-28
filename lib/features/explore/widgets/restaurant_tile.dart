@@ -71,8 +71,8 @@ class RestaurantTile extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             VenueThumbnail(
-              imageUrl: restaurant.coverImageUrl,
-              framing: restaurant.coverFraming,
+              imageUrl: restaurant.cardImageUrl,
+              framing: restaurant.cardFraming,
             ),
             const SizedBox(width: 14),
             Expanded(
