@@ -53,17 +53,23 @@
 -- code is left unused for it.
 --
 -- CODES are fixed (the staged ones), not computed: production's highest
--- codes were rest_1368 / hotel_781 on 2026-10-28, and the first check below
--- aborts if that has changed, so a concurrent addition can never be
--- silently renumbered around.
+-- codes were rest_1368 / hotel_781 on 2026-10-28. The first check aborts if
+-- any code in this file's restaurant block (rest_1369..1395) is already
+-- taken, or if the hotel maximum is no longer hotel_781, so a concurrent
+-- addition can never be silently renumbered around.
 
 begin;
 
 do $$
 begin
-  if (select max(substring(restaurant_code from 6)::int) from public.restaurants
-       where restaurant_code ~ '^rest_[0-9]+$') <> 1368 then
-    raise exception 'restaurants changed since 2026-10-28 (max code is no longer rest_1368) -- re-check before applying';
+  -- rest_1369..rest_1395 is this file's reserved block (rest_1392 stays
+  -- unused for Meet the Bund). Other prepared files take codes above it
+  -- (prepared_nl_stars_2026.sql uses rest_1396+), so the guard checks the
+  -- block, not the maximum -- the two can be applied in either order.
+  if exists (select 1 from public.restaurants
+              where restaurant_code ~ '^rest_[0-9]+$'
+                and substring(restaurant_code from 6)::int between 1369 and 1395) then
+    raise exception 'restaurant codes rest_1369..rest_1395 are no longer free -- re-check before applying';
   end if;
   if (select max(substring(hotel_code from 7)::int) from public.hotels
        where hotel_code ~ '^hotel_[0-9]+$') <> 781 then
