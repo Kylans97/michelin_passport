@@ -94,3 +94,18 @@ Atelier's record links to wildatelier.nl rather than the echoput.nl page we
 hold as website_url. Rozewied announces a move in spring 2027 — re-check its
 Place ID then. Tested on a scratch Postgres: aborts before the import, fills
 9 after it, re-run is a no-op.
+
+## Third batch — MICHELIN Guide Belgium 2026 new stars (2026-10-28)
+
+Requested by the catalogue session. Files: `placeid_results_be_stars_2026.csv`,
+`prepared_place_id_backfill_be_stars_2026.sql` — run only after
+`../michelin_be_lu_stars_2026/prepared_be_lu_stars_2026.sql`; aborts until
+rest_1405..rest_1417 exist. Codes and coordinates taken from that SQL and
+checked row by row against its `new_restaurants.csv`.
+
+All 13 confirmed: one Google candidate each, the restaurant's own record,
+official site and MICHELIN address agreeing. 12 under 30 m; Sensum Gent at
+111 m with an exact address match. Finding: Google shows Héliport Brasserie
+(Liège) as CLOSED_TEMPORARILY; its site has no closure notice — human check.
+Tested on a scratch Postgres: aborts before the import, fills 13 after it,
+re-run is a no-op.
