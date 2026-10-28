@@ -20,15 +20,23 @@ The format follows Keep a Changelog.
   `hotelFullColumns` and a Call action on `HotelDetailScreen`, wired exactly
   like the restaurant one (hidden when closed or no usable number).
   `20261016120000_add_worlds_50_best_countries_and_cities.sql` adds the
-  countries/cities the missing World's 50 Best venues need. **Prepared, not
-  applied** — apply order and the catalogue data that goes with them in
-  `supabase/data/enrichment/worlds_50_best_2025_2026/W50B_COMPLETION_REPORT.md`.
-  The hotel migration must be applied before a build carrying the new
-  `hotelFullColumns` ships. Not compiled here (no Flutter SDK in the
-  session). Same day: `20261016140000_add_nl_2026_star_cities.sql` adds
-  the five NL cities the MICHELIN Gids Nederland 2026 update needs
-  (`supabase/data/enrichment/michelin_nl_stars_2026/`); also prepared,
-  not applied.
+  countries/cities the missing World's 50 Best venues need. Same day:
+  `20261016140000_add_nl_2026_star_cities.sql` adds the five NL cities the
+  MICHELIN Gids Nederland 2026 update needs
+  (`supabase/data/enrichment/michelin_nl_stars_2026/`). **Applied to
+  production 2026-10-28**, all three with plain `supabase db push --linked`
+  following `supabase/data/enrichment/APPLY_2026-10-28.md` (ledger 94 →
+  97/97, no hang). Checked afterwards: 3 countries and 16 + 5 cities
+  present, `hotels.phone` and `hotels_full.phone` present, `hotels_full`'s
+  grants unchanged. The seven catalogue files from the same guide then ran
+  in order, none aborting; their results, measured against production, are
+  in the Michelin_Database CHANGELOG (World's 50 Best completion, NL 2026
+  stars at 1/20/98, phones for 318 restaurants and 103 hotels, Place IDs,
+  QA-209/216/218). `live_view_full_columns_test` now passes against
+  production, so a build carrying the new `hotelFullColumns` can ship.
+  Compiled and tested on the branch afterwards: analyzer clean, full suite
+  passes (2,467). Not yet seen in the app: a hotel's and an Amsterdam
+  restaurant's Call button, Azurite's page, De Librije's award history.
 - 2026-10-02/03 — Admin email on every new content report, generic over
   `content_type`: `20261010120000_add_content_report_admin_email_
   notification.sql` (trigger `content_reports_notify_admin_on_insert` →

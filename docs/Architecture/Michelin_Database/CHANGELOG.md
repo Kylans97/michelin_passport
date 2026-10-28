@@ -6,6 +6,49 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — Catalogue data applied: MICHELIN Netherlands 2026, World's 50 Best completion, phones, Place IDs (QA-209, QA-216, QA-218)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, following `supabase/data/enrichment/APPLY_2026-10-28.md` |
+| Migrations | `20261016120000_add_worlds_50_best_countries_and_cities`, `20261016130000_add_hotel_phone`, `20261016140000_add_nl_2026_star_cities` — ledger 94 → 97, local and remote in agreement |
+| Data files | Seven prepared files, each one transaction with its own guards, run in the guide's order; none aborted |
+
+Each file's effect was measured as before/after counts against production, not taken from the file's own description.
+
+**Reference data.** 3 countries (EC, PA, VN) and 16 cities for the World's 50 Best venues; 5 NL cities (Mierlo, Veeningen, Kortgene, Schin op Geul, Hoog Soeren) for the new Dutch stars. `hotels.phone` added (nullable text, no format constraint), appended to `hotels_full`; the view's grants are unchanged.
+
+**World's 50 Best completion** (`worlds_50_best_2025_2026/prepared_w50b_new_venues_import.sql`). 26 restaurants and 22 hotels added, with 49 ranking rows (26 restaurant, 23 hotel) and 32 `award_history` rows. The ranked lists are now complete: restaurants 2025 at 99, hotels 2025 and 2026 at 100 each. Scope per the same day's 1–100 rule (entry below).
+
+**MICHELIN Netherlands 2026** (`michelin_nl_stars_2026/prepared_nl_stars_2026.sql`), the first application of the QA-217 rule:
+
+- The NL launch rows were relabelled `guide_year` 2026 → 2025 with values unchanged: 118 rows. The file checked first that exactly 120 Dutch 2026 star rows existed and no 2025 ones did.
+- 8 restaurants lost their star: their 2025 row became non-current, a 2026 row with `award_value` NULL was written as current, and `michelin_stars` was set to NULL.
+- **QA-216:** Graphite by Peter Gast (`rest_0781`) and Zheng (`rest_0782`) appear in neither MICHELIN's 2025 nor 2026 full list. Their 2026 row is now NULL and current, and `michelin_stars` NULL. Before this, Zheng's `michelin_stars` was already NULL with no row recording why, and Graphite still showed one star.
+- 18 MICHELIN URLs updated.
+- 9 new starred restaurants, `rest_1396`–`rest_1404`, each with a 2026 star row.
+- The file's closing checks passed: exactly **1 / 20 / 98** starred (119), and every NL restaurant has exactly one current star row, agreeing with `michelin_stars`. Spot check: De Librije's history reads 1993:1, 1999:2, 2004:3, 2025:3.
+
+**QA-218**, new restaurants left incomplete on purpose: SUIS (`rest_1403`) has its phone left NULL, because its own site and MICHELIN disagree between a Belgian and a Dutch mobile; MICHELIN's postcode 6305 AH is kept. Rozewied (`rest_1402`) stays at Hoofdstraat 35 until it moves in March/April 2027. Both remain open.
+
+**Phones.**
+
+| File | Rows filled |
+|---|---|
+| `worlds_50_best_2025_2026/prepared_w50b_phone_backfill.sql` | 69 restaurants, 82 hotels |
+| `michelin_nl_phones/prepared_nl_phone_backfill.sql` | 100 restaurants |
+| `michelin_be_lu_phones/prepared_be_lu_phone_backfill.sql` | 115 restaurants |
+
+The BE/LU file lists 117 numbers but only fills empty fields; 2 of its restaurants already held the identical number from the W50B file run just before. Checked afterwards: all 117 now carry exactly the file's number. The 15 BE/LU restaurants left out stay open under QA-215. Totals after all files: 318 restaurants and 103 hotels with a phone (before: 1 and 0).
+
+**Place IDs** (`place_id_backfill/`). The main file: 74 hotels (73 plus Singita – Kruger National Park, which only exists after the W50B import) and 14 NL restaurants. The nine new NL restaurants: 9 more. Totals: 914 restaurants, 787 hotels. No duplicate Place ID within either table, and no duplicate code.
+
+**QA-209**, Amangalla (`hotel_748`, Galle): the coordinates moved from (6.03306, 80.21667), a wine shop outside the fort, to (6.02861, 80.21700) — OpenStreetMap's building outline at 10 Church Street, within Galle Fort's ramparts, agreeing with Google's pin.
+
+Not done here: the `qa_issues.csv` statuses of QA-209, QA-216 and QA-218 are unchanged.
+
+---
+
 # 2026-10-28 — `guide_year` launch label (QA-217)
 
 | | |
@@ -15,7 +58,7 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 Both documents now say the launch label can be wrong for a country, and give the rule decided by the user. Before a country's next update, check MICHELIN's own edition label. If it collides, relabel that country's launch rows to the edition they actually reflect, with values unchanged. Then write the new edition's rows on change only. Never overwrite a launch value to make room.
 
-The Netherlands data that applies this is prepared in `supabase/data/enrichment/michelin_nl_stars_2026/` and has **not been applied yet**. The data entry (QA-216, QA-218) is written here when it is.
+The Netherlands data that applies this is prepared in `supabase/data/enrichment/michelin_nl_stars_2026/` and has **not been applied yet**. The data entry (QA-216, QA-218) is written here when it is. *(Applied the same day; see the entry above.)*
 
 Same day, `DATABASE_ARCHITECTURE.md` scope rule: condition 2 ("on the current World's 50 Best list") now says it means the full 1–100 ranking, the extended 51–100 included. This was the user's decision when completing the 2025 restaurant list (`supabase/data/enrichment/worlds_50_best_2025_2026/`). Hotels were widened the same day in `CLAUDE.md`: ranked hotels are in scope with or without a Key.
 
