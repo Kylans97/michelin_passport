@@ -162,7 +162,7 @@ At launch seven rows carry NULL: six in Peru, Chile and Colombia, where MICHELIN
 **Scope rule.** A restaurant qualifies for a row if it meets any of three conditions:
 
 1. it holds at least one MICHELIN star;
-2. it appears on the current World's 50 Best list;
+2. it appears on the current World's 50 Best list — the full 1–100 ranking, the extended 51–100 included (decided 2026-10-28);
 3. it is a member of the World's 50 Best **Best of the Best** hall of fame.
 
 The third condition is deliberately narrow. It admits only restaurants that have been ranked No.1, currently eleven, growing by one a year — not every restaurant that has ever appeared in the top 50, which would admit several hundred. Hall of fame members are ineligible for the annual ranking by construction, so without this clause the most celebrated restaurants in the list's history would be the ones it excluded.
@@ -216,7 +216,9 @@ CREATE UNIQUE INDEX ON award_history (entity_type, entity_id, award_type) WHERE 
 
 A row is created when an award changes, not on a schedule. A venue whose award has not moved since 2026 therefore carries one row, reading 2026, however many guide editions have published since.
 
-The rows seeded at launch all carry `guide_year = 2026`. That is a launch limitation, not historical truth: the awards these venues held before 2026 were not recoverable when the catalogue was built. A query of the form "how long has this venue held three stars" returns 2026 for every seeded venue and is only meaningful for changes recorded after launch. State that in the interface or do not build the feature.
+The rows seeded at launch all carry `guide_year = 2026`. That is a launch limitation, not historical truth: the awards these venues held before 2026 were not recoverable when the catalogue was built. A query of the form "how long has this venue held three stars" returns the launch year for every seeded venue and is only meaningful for changes recorded after launch. State that in the interface or do not build the feature.
+
+**The launch label can be wrong for a country.** `2026` was stamped on every seeded row whichever edition its value actually came from. Where a country's seeded values are an earlier edition's, and MICHELIN later publishes an edition it labels 2026, the unique key leaves no room for the real 2026 rows. The rule, decided 2026-10-28 (QA-217): before a country's next update, check the edition label MICHELIN itself prints on that selection. If it collides, first relabel that country's launch rows to the edition they actually reflect, verified against MICHELIN's own list for that edition, with values unchanged. Then apply the new edition as usual, writing rows only on change. Never overwrite a launch row's value to make room. The Netherlands was the first case: its launch rows hold the MICHELIN Gids Nederland 2025 values and were relabelled 2025 before the 2026 selection (announced 5 October 2026) was applied (`supabase/data/enrichment/michelin_nl_stars_2026/`).
 
 MICHELIN publishes roughly fifteen guide jurisdictions with independent ceremony dates, so award changes are a near-continuous stream rather than an annual event. The moment a new guide overwrites `restaurants.michelin_stars`, the previous value is unrecoverable — a backup restores a row, not a field's timeline.
 

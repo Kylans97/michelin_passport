@@ -6,6 +6,21 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — `guide_year` launch label (QA-217)
+
+| | |
+|---|---|
+| Files | `DATABASE_ARCHITECTURE.md` (award_history, `guide_year`); `DATA_UPDATE_PROCESS.md` (same paragraph) |
+| Reason | MICHELIN labels the Netherlands selection of 5 October 2026 as the 2026 edition. The Dutch rows seeded at launch also carry `guide_year = 2026`, but hold the 2025 edition's values (verified against MICHELIN's 2025 full list). The unique key left no room for real 2026 rows. |
+
+Both documents now say the launch label can be wrong for a country, and give the rule decided by the user. Before a country's next update, check MICHELIN's own edition label. If it collides, relabel that country's launch rows to the edition they actually reflect, with values unchanged. Then write the new edition's rows on change only. Never overwrite a launch value to make room.
+
+The Netherlands data that applies this is prepared in `supabase/data/enrichment/michelin_nl_stars_2026/` and has **not been applied yet**. The data entry (QA-216, QA-218) is written here when it is.
+
+Same day, `DATABASE_ARCHITECTURE.md` scope rule: condition 2 ("on the current World's 50 Best list") now says it means the full 1–100 ranking, the extended 51–100 included. This was the user's decision when completing the 2025 restaurant list (`supabase/data/enrichment/worlds_50_best_2025_2026/`). Hotels were widened the same day in `CLAUDE.md`: ranked hotels are in scope with or without a Key.
+
+---
+
 # Pass 2 — maintainability audit
 
 ## P1 — Profile bootstrap documented
