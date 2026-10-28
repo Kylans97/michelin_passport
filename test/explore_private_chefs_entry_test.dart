@@ -19,7 +19,7 @@ import 'package:michelin_passport/core/theme/cs_surface_context.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_destination_row.dart';
 
 const _guidesLabel = 'Browse the Guides';
-const _guidesDescriptor = "Michelin, World's 50 Best & Gault&Millau.";
+const _guidesDescriptor = "Our Selection, Michelin, World's 50 Best & Gault&Millau.";
 const _chefsLabel = 'Private Chefs';
 const _chefsDescriptor = 'Exceptional chefs, selected for private dining.';
 

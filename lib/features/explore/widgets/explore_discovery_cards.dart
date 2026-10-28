@@ -196,9 +196,19 @@ class _CancelledBadge extends StatelessWidget {
 /// for a horizontally-scrolling row. Shows only what's essential for a
 /// discovery browse (name, location, Michelin distinction, World's 50 Best
 /// where genuinely relevant) — never a dense catalogue-row treatment.
+/// The Selection's name in the app. The brand name is still being
+/// settled, so it lives in this one constant and never in an identifier
+/// or the database.
+const mantelierSelectionLabel = 'Mantelier Selection';
+
 class ExploreDiscoveryRestaurantCard extends StatelessWidget {
   final Restaurant restaurant;
   final VoidCallback onTap;
+
+  /// In our own editorial Selection — shown as a "Mantelier Selection"
+  /// line when there's no star or World's 50 Best rank to show instead.
+  /// Forest green, never gold: editorial judgement, not an award.
+  final bool inSelection;
 
   static const double width = 200;
 
@@ -206,6 +216,7 @@ class ExploreDiscoveryRestaurantCard extends StatelessWidget {
     super.key,
     required this.restaurant,
     required this.onTap,
+    this.inSelection = false,
   });
 
   @override
@@ -269,6 +280,17 @@ class ExploreDiscoveryRestaurantCard extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         style: CsTypography.metadata.copyWith(
                           color: AppColors.mutedBrassOnLight,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ] else if (inSelection) ...[
+                      const SizedBox(height: CsSpacing.xs),
+                      Text(
+                        mantelierSelectionLabel,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: CsTypography.metadata.copyWith(
+                          color: AppColors.forestGreen,
                           fontWeight: FontWeight.w600,
                         ),
                       ),

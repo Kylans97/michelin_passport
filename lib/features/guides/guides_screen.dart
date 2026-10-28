@@ -8,6 +8,7 @@ import 'fifty_best_restaurant_guide_screen.dart';
 import 'gault_millau_restaurant_guide_screen.dart';
 import 'michelin_hotel_guide_screen.dart';
 import 'michelin_restaurant_guide_screen.dart';
+import 'selection_restaurant_guide_screen.dart';
 import 'widgets/guide_destination_row.dart';
 import 'widgets/guide_family_section.dart';
 
@@ -92,6 +93,20 @@ class _GuidesBody extends StatelessWidget {
           // (Step 1A) — one repeated unit of forest-green canvas, so the
           // page reads as composed rather than using a bespoke one-off gap
           // just for the header.
+          const SizedBox(height: CsSpacing.section),
+          // Our own Selection first, above the external guides (product
+          // owner, 2026-10-28). The brand name lives only in this label.
+          GuideFamilySection(
+            title: 'MANTELIER SELECTION',
+            destinations: [
+              GuideDestinationRow(
+                label: 'Restaurants',
+                descriptor: 'Chosen by our own editors.',
+                onTap: () =>
+                    _open(context, const SelectionRestaurantGuideScreen()),
+              ),
+            ],
+          ),
           const SizedBox(height: CsSpacing.section),
           GuideFamilySection(
             title: 'MICHELIN GUIDE',

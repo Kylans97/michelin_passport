@@ -10,6 +10,53 @@ The format follows Keep a Changelog.
 
 ### Added
 
+- 2026-10-28 — The editorial Selection ("Mantelier Selection"), a fourth
+  way into the catalogue next to a MICHELIN star, World's 50 Best and the
+  hall of fame, decided by the product owner so restaurants we choose
+  ourselves can be listed without an award. **Applied to production
+  2026-10-28**, with Tacite (`rest_1840`) and Petit Péché (`rest_1841`),
+  Amsterdam, as its first two entries.
+  - Verified in production after the apply: ledger row present; the check
+    constraint lists all six values; RLS on `editorial_selections`; `anon`
+    can read but not write, `authenticated` can't write. Both restaurants
+    inserted in one statement (`prepared_insert.sql` step 1), and
+    `restaurants_full` returns both: Amsterdam, NL, `michelin_stars` NULL,
+    `open`. Google Place IDs left NULL until found.
+  - Checked on the simulator against production: "Mantelier's latest"
+    below What's On with both restaurants; "Mantelier Selection" first on
+    Guides, opening a two-restaurant catalogue; Tacite's detail page with
+    no empty star row. The Explore "Collections" line now names the
+    Selection first.
+  - **`20261023120000_add_editorial_selection.sql`:** widens
+    `restaurants.inclusion_reason` with `editorial_selection`, and adds
+    `public.editorial_selections` (one row per entry, `removed_on` instead
+    of deleting, at most one current entry per restaurant). Public read,
+    select-only grant to `anon`/`authenticated`, no client write. Replayed
+    on a throwaway local Postgres 17 against a stub `restaurants` table:
+    the constraint, the one-current-entry index, the date check and the
+    grants behave as intended; not replayed on the full Supabase stack.
+  - First two entries prepared in
+    `supabase/data/enrichment/editorial_selection/`: Tacite and Petit
+    Péché, Amsterdam. Google Place IDs still to be found before apply.
+  - Scope rule updated in `DATABASE_ARCHITECTURE.md`, `START_HERE.md` and
+    `CLAUDE.md`. The product owner then dropped the restriction outright
+    (2026-10-28: the catalogue is no longer limited to MICHELIN, World's 50
+    Best and Gault&Millau restaurants); `CLAUDE.md` now says so.
+  - Renumbered to `20261023120000` before apply: `20261019140000`,
+    `20261019150000`, `20261021120000` and `20261022120000` were applied in
+    between. Re-tested on a full local replay of production's exact
+    migration set, seeded with restaurants carrying every
+    `inclusion_reason` value in use: the constraint accepts every existing
+    row, the prepared insert gives `rest_1840` Tacite and `rest_1841`
+    Petit Péché, and `restaurants_full` shows both.
+  - **App:** "Mantelier's latest" on Explore, directly below What's On (the
+    eight newest Selection restaurants), and a "Mantelier Selection" family
+    on Guides above MICHELIN, opening a catalogue of every Selection
+    restaurant with on-device search and a country filter. The label is
+    forest green, never gold; a starred Selection restaurant still shows
+    its stars. Reads `editorial_selections` (`removed_on is null`), never
+    `inclusion_reason`, and leaves the Selection out when the table doesn't
+    exist yet.
 - 2026-10-28 — Catalogue: MICHELIN Spain 2026 and Belgium & Luxembourg 2026.
   - **Migrations:** `20261019140000_add_es_2026_star_cities` (123 ES towns)
     and `20261019150000_add_be_2026_star_cities` (7 BE cities).

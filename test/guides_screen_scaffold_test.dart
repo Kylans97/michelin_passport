@@ -50,7 +50,7 @@ void main() {
       expect(find.text('MICHELIN GUIDE'), findsOneWidget);
       expect(find.text("THE WORLD'S 50 BEST"), findsOneWidget);
       expect(find.text('GAULT&MILLAU'), findsOneWidget);
-      expect(find.text('Restaurants'), findsNWidgets(3));
+      expect(find.text('Restaurants'), findsNWidgets(4));
       expect(find.text('Hotels'), findsNWidgets(2));
     });
   });

@@ -27,7 +27,7 @@ import 'package:michelin_passport/core/theme/cs_surface_context.dart';
 import 'package:michelin_passport/features/guides/widgets/guide_destination_row.dart';
 
 const _label = 'Collections';
-const _descriptor = "Michelin, World's 50 Best & Gault&Millau.";
+const _descriptor = "Our Selection, Michelin, World's 50 Best & Gault&Millau.";
 
 Widget _wrap(Widget child) => MaterialApp(
   home: Scaffold(backgroundColor: AppColors.deepGreen, body: child),

@@ -157,19 +157,22 @@ Zero is not used because it would assert that MICHELIN assessed the venue and aw
 
 At launch seven rows carry NULL: six in Peru, Chile and Colombia, where MICHELIN awards no stars at all, and one — Wing, Hong Kong — inside a covered guide and unstarred.
 
-**Interface contract, non-negotiable:** a null star count must never render as "no award" or as an empty star row. Render the World's 50 Best rank instead. Maido was the best restaurant in the world in 2025.
+**Interface contract, non-negotiable:** a null star count must never render as "no award" or as an empty star row. Render the World's 50 Best rank instead, or the Selection label for a Selection restaurant. Maido was the best restaurant in the world in 2025.
 
-**Scope rule.** A restaurant qualifies for a row if it meets any of three conditions:
+**Scope rule.** A restaurant qualifies for a row if it meets any of four conditions:
 
 1. it holds at least one MICHELIN star;
 2. it appears on the current World's 50 Best list — the full 1–100 ranking, the extended 51–100 included (decided 2026-10-28);
-3. it is a member of the World's 50 Best **Best of the Best** hall of fame.
+3. it is a member of the World's 50 Best **Best of the Best** hall of fame;
+4. it is in our own editorial **Selection** (`editorial_selections`, shown in the app as "Mantelier Selection") — added by decision of the product owner on 2026-10-28, migration `20261023120000_add_editorial_selection.sql`.
 
 The third condition is deliberately narrow. It admits only restaurants that have been ranked No.1, currently eleven, growing by one a year — not every restaurant that has ever appeared in the top 50, which would admit several hundred. Hall of fame members are ineligible for the annual ranking by construction, so without this clause the most celebrated restaurants in the list's history would be the ones it excluded.
 
+The Selection is editorial judgement, not an award: it is never rendered in gold, and a Selection restaurant without a star carries `michelin_stars` NULL like any other unstarred row. It is a deliberate, named list chosen one restaurant at a time — not a route for unstarred Guide entries in bulk.
+
 Unstarred MICHELIN Guide entries, including Bib Gourmand, are out of scope. `inclusion_reason` already permits `bib_gourmand` so that admitting them later needs no migration.
 
-`inclusion_reason` carries one value per row, matching the three qualifying conditions above plus the reserved fourth. It records the **primary** reason the row exists, not the complete set: a restaurant holding three stars and a current ranking reads `michelin_star`. To find current World's 50 Best restaurants, query the `worlds_50_best` table — filtering `inclusion_reason` returns only those that would not otherwise qualify.
+`inclusion_reason` carries one value per row, matching the four qualifying conditions above (`editorial_selection` for the fourth) plus the reserved `bib_gourmand` and `gault_millau`. It records the **primary** reason the row exists, not the complete set: a restaurant holding three stars and a current ranking reads `michelin_star`. To find current World's 50 Best restaurants, query the `worlds_50_best` table — filtering `inclusion_reason` returns only those that would not otherwise qualify. The same holds for the Selection: current membership is `editorial_selections` where `removed_on` is null, never `inclusion_reason`.
 
 ### 3.4 `hotel_restaurants`
 

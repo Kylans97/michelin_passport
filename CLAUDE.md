@@ -208,6 +208,17 @@ stop and say so rather than working around it.
 No Bib Gourmand or unstarred MICHELIN Guide entries. No Green Star in award
 history. World's 50 Best is in scope.
 
+**The catalogue is no longer limited to MICHELIN, World's 50 Best and
+Gault&Millau restaurants** (product owner, 2026-10-28: "this also means
+dropping the rules for only michelin star, 50 best or gault millau
+restaurants"). Any restaurant Mantelier chooses can be added, through our
+own editorial **Selection**: `inclusion_reason = 'editorial_selection'`,
+current membership in `editorial_selections` where `removed_on is null`.
+Shown as "Mantelier Selection"; the brand name stays out of identifiers.
+It is editorial judgement, not an award — never gold, `michelin_stars`
+NULL when unstarred — and every Selection restaurant is chosen
+individually and verified like any other catalogue row.
+
 ---
 
 ## Working standards
