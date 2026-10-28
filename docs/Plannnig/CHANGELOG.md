@@ -304,6 +304,46 @@ The format follows Keep a Changelog.
   a long name, the name's minimum); full suite passes (2,431), analyzer
   clean, simulator build installs. Not looked at signed in on a device.
   Would recur with any IdentityRow trailing wider than one short label.
+- 2026-10-28 — Three problems found trying photo framing on the simulator
+  with the developer's test venue, each fixed:
+  - **Every venue photo list was sorted backwards.** postgrest-dart's
+    `order()` defaults to `ascending: false`, so the five
+    `.order('display_order')` photo queries (`RestaurantRepository`/
+    `HotelRepository.getPhotos`, `PrivateChefRepository.getChefPhotos`/
+    `getCoverPhotos`, `VenuePhotoSubmissionRepository.loadPublishedPhotos`)
+    returned the highest position first, while the cards'
+    `restaurants_full`/`hotels_full` cover takes the lowest. My Venues'
+    "first photo" (now "Cover") was therefore never the photo on the
+    cards, the detail gallery opened on the last photo, and each reorder
+    from My Venues wrote the reverse of what the screen showed. Now
+    `ascending: true` on all five. Not fixed, same class: every other
+    unqualified `.order('name')` and the chef history/education
+    `display_order` lists also sort descending. Would recur with any new
+    `order()` call that leaves `ascending` out.
+  - **The framing editor's header frame didn't match the real hero.**
+    VenueDetailHero/PrivateChefHero are SliverAppBars, so on a device the
+    header is the full screen width by expandedHeight (300/320) plus the
+    status bar, with the status bar and toolbar drawn over its top. The
+    editor showed a fixed 300px frame at page width — a different shape —
+    so a face framed there landed higher, half under the status bar, on
+    the detail page. The frame now has the hero's exact proportions,
+    scaled to the page, with that covered strip shaded. The status bar
+    comes from `View.of(context).padding`, not MediaQuery: the editor sits
+    under an AppBar, which zeroes MediaQuery's top padding (the first
+    attempt read 0 there — caught on the simulator, now covered by a
+    test that runs it under an AppBar).
+  - **My Venues jumped to the top after every reorder.** Each reload
+    swapped the photo list for a spinner, collapsing the page; the
+    spinner now shows only on the first load, and a reload keeps the
+    previous list on screen. This is how two of the test taps landed on
+    the wrong row and briefly reordered the test venue's photos; the
+    original order and framing were restored through the app and
+    verified against production.
+  Analyzer clean, full suite passes (2,453), including a test that fails
+  without the reload fix (checked by reverting it). Seen on the
+  simulator: My Venues, the gallery and the search card now agree on the
+  cover; the editor frame measures 326pt on a 402pt phone, (300 + 62) ×
+  0.9, with a 106pt strip.
 
 ---
 

@@ -198,9 +198,14 @@ class VenuePhotoSubmissionRepository {
   }) async {
     final rows = await _client
         .from(_publishedTableFor(venueType))
-        .select('id, image_url, alt_text, display_order, focus_x, focus_y, zoom')
+        .select(
+          'id, image_url, alt_text, display_order, focus_x, focus_y, zoom',
+        )
         .eq(_venueColumnFor(venueType), venueId)
-        .order('display_order');
+        // ascending: postgrest-dart's order() defaults to DESCENDING, which put
+        // the highest display_order first — the reverse of the cover every card
+        // shows (restaurants_full/hotels_full take the lowest).
+        .order('display_order', ascending: true);
     return [
       for (final row in rows as List)
         PublishedVenuePhoto.fromJson(row as Map<String, dynamic>),

@@ -216,7 +216,9 @@ class PrivateChefRepository {
           'focus_x, focus_y, zoom',
         )
         .eq('private_chef_id', privateChefId)
-        .order('display_order');
+        // ascending: order() defaults to DESCENDING — see
+        // RestaurantRepository.getPhotos.
+        .order('display_order', ascending: true);
     return [
       for (final row in rows as List)
         PrivateChefPhoto.fromJson(row as Map<String, dynamic>),
@@ -243,8 +245,10 @@ class PrivateChefRepository {
           'focus_x, focus_y, zoom',
         )
         .inFilter('private_chef_id', privateChefIds)
-        .order('private_chef_id')
-        .order('display_order');
+        .order('private_chef_id', ascending: true)
+        // ascending: order() defaults to DESCENDING — see
+        // RestaurantRepository.getPhotos.
+        .order('display_order', ascending: true);
     final coverByChefId = <String, PrivateChefPhoto>{};
     for (final row in rows as List) {
       final photo = PrivateChefPhoto.fromJson(row as Map<String, dynamic>);

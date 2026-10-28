@@ -463,6 +463,31 @@ void main() {
       expect(received?.photoIds, ['p3', 'p1', 'p2']);
     });
 
+    testWidgets('a reorder keeps the photo list on screen while it reloads, '
+        'never collapsing to a spinner (which threw the page back to the top)', (
+      tester,
+    ) async {
+      await _pump(
+        tester,
+        _FakeVenueAboutRepository(),
+        photoRepo: _FakeVenuePhotoSubmissionRepository(
+          published: const [
+            PublishedVenuePhoto(id: 'p1', imageUrl: 'https://example.test/1.jpg', displayOrder: 0),
+            PublishedVenuePhoto(id: 'p2', imageUrl: 'https://example.test/2.jpg', displayOrder: 1),
+          ],
+        ),
+      );
+      await tester.ensureVisible(find.text('Make cover'));
+      final before = tester.getTopLeft(find.text('Make cover')).dy;
+      await tester.tap(find.text('Make cover'));
+      // Mid-reload: one frame after the tap, before the reload resolves.
+      await tester.pump();
+      expect(find.text('Cover'), findsOneWidget);
+      expect(find.byType(CircularProgressIndicator), findsNothing);
+      await tester.pumpAndSettle();
+      expect(tester.getTopLeft(find.text('Make cover')).dy, before);
+    });
+
     testWidgets('"Adjust framing" opens the framing screen for that photo', (
       tester,
     ) async {

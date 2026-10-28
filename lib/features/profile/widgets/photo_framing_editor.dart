@@ -12,10 +12,16 @@ import '../../../models/photo_framing.dart';
 /// as FramedImage applies it everywhere the photo is shown — so what is
 /// set here is what visitors see.
 ///
-/// Frame sizes are the real ones: header full width x 300px
-/// (VenueDetailHero.expandedHeight; private chef 320px,
-/// PrivateChefHero), card 1:1 (VenueThumbnail; private chef 4:5,
-/// PrivateChefDiscoveryCard).
+/// The header frame has the real hero's shape: VenueDetailHero and
+/// PrivateChefHero are SliverAppBars, so on a device they are the full
+/// screen width by expandedHeight (300; private chef 320) PLUS the status
+/// bar, with the status bar and toolbar (back button, actions) drawn over
+/// the top of the photo. The editor scales that exact shape down to the
+/// page's width and shades that covered strip, so what sits clear of it
+/// here sits clear of it on the real page. (Until 2026-10-28 this was a
+/// fixed 300px frame at page width — a different aspect ratio, so a face
+/// framed here landed higher, under the status bar, on the device.) Card
+/// frame: 1:1 (VenueThumbnail; private chef 4:5, PrivateChefDiscoveryCard).
 ///
 /// [defaultFraming] is where an untouched photo sits and what Reset goes
 /// back to: centred for restaurants and hotels; for private chefs, high
@@ -140,10 +146,19 @@ class _PhotoFramingEditorState extends State<PhotoFramingEditor> {
     gaplessPlayback: true,
   );
 
+  // VenueDetailHero / PrivateChefHero's own expandedHeight defaults.
+  double get _heroExpandedHeight => _isChef ? 320.0 : 300.0;
+
   @override
   Widget build(BuildContext context) {
-    final headerHeight = _isChef ? 320.0 : 300.0;
     final cardAspectRatio = _isChef ? 4 / 5 : 1.0;
+    final screenWidth = MediaQuery.sizeOf(context).width;
+    // The device's own status bar, from the view itself: this editor sits
+    // under a Scaffold/AppBar, which removes the top padding from
+    // MediaQuery (padding and viewPadding both read 0 here). The real hero
+    // has no AppBar above it, so it does extend under the status bar.
+    final view = View.of(context);
+    final statusBar = view.padding.top / view.devicePixelRatio;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -151,13 +166,23 @@ class _PhotoFramingEditorState extends State<PhotoFramingEditor> {
         _label('AS THE HEADER'),
         const SizedBox(height: CsSpacing.xs),
         Text(
-          'Drag to position, pinch to zoom.',
+          'Drag to position, pinch to zoom. The shaded strip sits behind '
+          'the status bar and buttons.',
           style: CsTypography.metadata.copyWith(color: AppColors.taupe),
         ),
         const SizedBox(height: CsSpacing.sm),
         LayoutBuilder(
           builder: (context, constraints) {
-            final box = Size(constraints.maxWidth, headerHeight);
+            // The real hero is screenWidth x (expandedHeight + status bar);
+            // scaled to this page's width, same shape.
+            final scale = screenWidth <= 0
+                ? 1.0
+                : constraints.maxWidth / screenWidth;
+            final box = Size(
+              constraints.maxWidth,
+              (_heroExpandedHeight + statusBar) * scale,
+            );
+            final coveredStrip = (statusBar + kToolbarHeight) * scale;
             return Semantics(
               label: 'Photo position and zoom',
               // Claims every touch inside the frame straight away, so the
@@ -189,7 +214,33 @@ class _PhotoFramingEditorState extends State<PhotoFramingEditor> {
                   child: SizedBox(
                     width: box.width,
                     height: box.height,
-                    child: FramedImage(framing: _framing, builder: _image),
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        FramedImage(framing: _framing, builder: _image),
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          height: coveredStrip,
+                          child: IgnorePointer(
+                            child: DecoratedBox(
+                              key: const ValueKey('covered-strip'),
+                              decoration: BoxDecoration(
+                                color: Colors.black.withValues(alpha: 0.32),
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColors.ivory.withValues(
+                                      alpha: 0.6,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

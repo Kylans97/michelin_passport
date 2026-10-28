@@ -674,7 +674,12 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
     return FutureBuilder<_PhotosState>(
       future: _photosFuture,
       builder: (context, snap) {
-        if (snap.connectionState == ConnectionState.waiting) {
+        // Spinner only on the FIRST load. A reload (after a reorder, Make
+        // cover, a framing save or a new photo) keeps showing the previous
+        // list — FutureBuilder carries the last data into the new future's
+        // waiting state — so the page doesn't collapse to a spinner and
+        // throw the manager back to the top mid-reorder.
+        if (snap.connectionState == ConnectionState.waiting && !snap.hasData) {
           return const Center(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: CsSpacing.lg),

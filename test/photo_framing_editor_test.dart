@@ -101,6 +101,41 @@ void main() {
     );
   });
 
+  testWidgets('on a phone the header has the real hero\'s shape: full width '
+      'x (300 + status bar), scaled to the page, with the covered strip '
+      'shaded — even under an AppBar, which hides the status bar from '
+      'MediaQuery', (tester) async {
+    await _precache(tester);
+    tester.view
+      ..devicePixelRatio = 1
+      ..physicalSize = const Size(402, 1400)
+      ..padding = const FakeViewPadding(top: 62);
+    addTearDown(tester.view.reset);
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(title: const Text('Adjust framing')),
+          body: SingleChildScrollView(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: PhotoFramingEditor(
+              image: _wideImage,
+              venueTypeWireValue: 'restaurant',
+              initial: PhotoFraming.center,
+              onChanged: (_) {},
+            ),
+          ),
+        ),
+      ),
+    );
+    await tester.pump();
+    const scale = 362 / 402;
+    final frame = tester.getSize(_headerFrame);
+    expect(frame.width, 362);
+    expect(frame.height, closeTo((300 + 62) * scale, 0.01));
+    final strip = tester.getSize(find.byKey(const ValueKey('covered-strip')));
+    expect(strip.height, closeTo((62 + kToolbarHeight) * scale, 0.01));
+  });
+
   testWidgets('dragging the photo up 20px moves the focus down by 20/100', (
     tester,
   ) async {
