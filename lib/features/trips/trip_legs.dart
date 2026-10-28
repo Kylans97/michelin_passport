@@ -5,7 +5,7 @@ import '../../models/resolved_planned_venue.dart';
 import '../../models/trip_destination.dart';
 
 /// Pure helpers for a trip's legs (planned_trip_destinations,
-/// 20261021120000) — no Supabase, so they're testable on their own.
+/// 20261022120000) — no Supabase, so they're testable on their own.
 
 /// The trip's legs; a trip whose destinations weren't loaded (a server
 /// without that migration) has exactly one, its own country.

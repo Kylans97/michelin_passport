@@ -40,7 +40,7 @@ The format follows Keep a Changelog.
   `name` descending for every other caller (left alone here, logged as a
   follow-up), the same trap their own comment already warns about.
 
-### Added (needs migration 20261021120000 — not applied)
+### Added (migration 20261022120000, applied to production 2026-10-28)
 - **Multi-destination trips.** Create/Edit Trip holds a list of destinations:
   a catalogue country, optionally narrowed to a catalogue city (new city
   picker, by `cities.id`), with Arrive/Leave dates required once there's more
@@ -62,7 +62,7 @@ The format follows Keep a Changelog.
 - Catalogue venues now carry `city_id` (`Restaurant.cityId`/`Hotel.cityId`).
   The scoped `searchInPlaces` sorts A→Z.
 - **Works before the migration too.** Against a server without
-  20261021120000 (production today), Trips behaves exactly as the single-
+  20261022120000, Trips behaves exactly as the single-
   destination, owner-only build: the repository falls back on PostgREST's
   "not found" errors and hides destinations and sharing. Verified against
   production on the simulator.
@@ -73,25 +73,53 @@ The format follows Keep a Changelog.
   event during the French dates correctly excluded), the leg-scoped picker,
   another member's read-only plan, the members sheet, and Edit pre-fill.
 
-### Planned (not applied)
-- **Migration `20261021120000_add_trip_destinations_and_members.sql`,
-  written and tested locally, not applied.** Several destinations per trip
-  (`planned_trip_destinations`: a catalogue country plus an optional
-  catalogue city, with leg dates required once there's more than one) and
-  shared trips (`planned_trip_members`, plus invite/respond/leave/remove
-  RPCs). Any member can invite their own friends. Unfriending or blocking
-  removes the other person from your trips that haven't ended yet; past
-  trips are untouched.
+### Database
+- **Applied 2026-10-28: `20261022120000_add_trip_destinations_and_members.sql`.**
+  Several destinations per trip (`planned_trip_destinations`: a catalogue
+  country plus an optional catalogue city, with leg dates required once
+  there's more than one) and shared trips (`planned_trip_members`, plus
+  invite/respond/leave/remove RPCs). Any member can invite their own
+  friends. Unfriending or blocking removes the other person from your trips
+  that haven't ended yet; past trips are untouched.
   Installed 1.2.0 builds keep working: `planned_trips.country_code`/`city`
   stay in step with the first destination, and they never see shared trips
   or the new notification types (`get_notifications_v3`/`_count_v3` are the
   only readers that include them).
-  RLS covers both new tables, and anon can execute none of the new
-  functions (`has_function_privilege` checked). A plan can now only be
-  attached to a trip you're on; before, any trip id was accepted.
+  A plan can now only be attached to a trip you're on; before, any trip id
+  was accepted.
+  Verified in production after the apply:
+  - ledger row present; both tables exist with RLS on;
+  - all 5 existing trips have a first destination; the 16 planned venues are untouched;
+  - anon can execute none of the 16 new functions;
+  - the 8 client RPCs are callable by `authenticated`, the internal helpers are not;
+  - all 7 triggers are present.
+  `supabase migration list --linked` agrees, 106/106. That's measured with
+  main and `feature/guide-sources`' applied `20261021120000`; this branch
+  alone lacks those three files until it's merged.
   Checks: `docs/Engineering/checks/trip_destinations_and_members_checks.sql`,
-  44/44 on a fresh local replay of all 103 migrations.
+  44/44 on a fresh replay of production's exact migration set, and again on
+  a replay seeded with five pre-existing trips.
   Plan: `docs/Architecture/TRIPS_MULTI_DESTINATION_AND_SHARING_PLAN.md`.
+
+### Fixed
+- **Migration filename collision, caught before apply.** This migration was
+  written as `20261021120000`, but `feature/guide-sources` independently took
+  the same version (`add_worlds_50_best_urls`) and applied it first; the
+  ledger keys on the version alone. Renamed to `20261022120000` before it
+  ever ran. It would recur whenever two branches pick "the next" timestamp
+  without checking the remote ledger and every branch first.
+- **First production apply failed and rolled back; no data or schema
+  changed.** The backfill (one destination per existing trip) ran before
+  the RLS section, so each inserted row queued a deferred date-check trigger,
+  and Postgres refuses `ALTER TABLE … enable row level security` on a table
+  with pending trigger events (SQLSTATE 55006). Local replays had passed
+  because they had no trips to backfill; production had 5.
+  Rollback verified in production: no new tables, functions or triggers;
+  no ledger row; the `planned_trips` policy unchanged. Fixed by moving the
+  backfill to the end of the migration, then re-tested on a replay seeded
+  with five trips before re-applying. The lesson: a local replay with empty
+  user tables doesn't exercise a migration's backfill path. Seed
+  representative rows before applying anything that backfills.
 
 ---
 

@@ -13,7 +13,7 @@ class NotificationsRepository {
 
   final SupabaseClient _client;
 
-  /// Reads the newest functions this server has: _v3 (20261021120000,
+  /// Reads the newest functions this server has: _v3 (20261022120000,
   /// adds trip invitations), else _v2 (20261018130000, adds event
   /// notifications), else the originals — each step down on PostgREST's
   /// "function not found" (PGRST202), so this build works on any side of

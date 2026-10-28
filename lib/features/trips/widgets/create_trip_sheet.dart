@@ -72,7 +72,7 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
   late final _titleCtrl = TextEditingController(
     text: widget.existingTrip?.title ?? '',
   );
-  // Only used against a server without 20261021120000, where the trip's
+  // Only used against a server without 20261022120000, where the trip's
   // city is still the original free-text field.
   late final _cityCtrl = TextEditingController(
     text: widget.existingTrip?.city ?? '',

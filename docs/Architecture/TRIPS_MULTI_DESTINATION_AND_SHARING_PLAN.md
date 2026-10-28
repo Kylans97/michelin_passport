@@ -1,11 +1,13 @@
 # Trips: multiple destinations and shared trips (plan)
 
-Status: **migration written, NOT applied.**
-`supabase/migrations/20261021120000_add_trip_destinations_and_members.sql`
-(2026-10-28), tested on a fresh local replay of all 103 migrations with
-`docs/Engineering/checks/trip_destinations_and_members_checks.sql`: 44/44
-checks pass. Product-owner decisions in §0; the three remaining points in §7
-were settled as proposed. Written 2026-10-28 on `feature/trips-redesign`, against
+Status: **applied to production 2026-10-28** as
+`supabase/migrations/20261022120000_add_trip_destinations_and_members.sql`
+(renamed from 20261021120000 before applying: feature/guide-sources had
+taken that version). The first apply failed on a backfill/RLS ordering
+issue and rolled back cleanly; see the changelog. Checks:
+`docs/Engineering/checks/trip_destinations_and_members_checks.sql`, 44/44.
+Product-owner decisions in §0; the three remaining points in §7 were
+settled as proposed. The app side is built on `feature/trips-redesign`. Written 2026-10-28 on `feature/trips-redesign`, against
 `main` at `e46c282` (ledger: 102 migrations, last `20261019130000`;
 `feature/editorial-selection` holds an unapplied `20261020120000`).
 
@@ -362,7 +364,7 @@ has its own scoped Add actions instead).*
 - Internal helpers (`delete_trip_membership`, `detach_member_plans`) are
   callable by no client role; trigger functions likewise have no grants.
 
-**Before applying:** re-check that `20261021120000` still sorts after every
+**Before applying:** re-check that `20261022120000` still sorts after every
 migration on every branch, then apply with `supabase db push --linked` and
 confirm `supabase migration list --linked`. The app work in §5 is a separate
 build; until it ships, production behaves exactly as now for 1.2.0 users,

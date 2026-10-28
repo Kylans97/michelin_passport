@@ -1,4 +1,4 @@
-// Multi-destination trips (20261021120000): leg helpers, per-leg event
+// Multi-destination trips (20261022120000): leg helpers, per-leg event
 // matching (decision 2), and the new trip/notification models. Pure — no
 // Supabase.
 import 'package:flutter_test/flutter_test.dart';

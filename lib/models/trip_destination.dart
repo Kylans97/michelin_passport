@@ -1,5 +1,5 @@
 // Maps a row from `public.planned_trip_destinations` (see
-// supabase/migrations/20261021120000_add_trip_destinations_and_members.sql).
+// supabase/migrations/20261022120000_add_trip_destinations_and_members.sql).
 // One leg of a trip: a catalogue country, optionally narrowed to one
 // catalogue city — always codes/ids the catalogue knows, never a free-text
 // place, so the stay/restaurant pickers can key on them.

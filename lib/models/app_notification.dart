@@ -33,7 +33,7 @@ enum AppNotificationType {
   // returns these; get_notifications() hides them from older builds.
   eventApproved,
   eventRejected,
-  // Shared trips (20261021120000): invite_to_trip notifies the invitee,
+  // Shared trips (20261022120000): invite_to_trip notifies the invitee,
   // respond_to_trip_invite the inviter when they accept. Only
   // get_notifications_v3 returns these.
   tripInviteReceived,

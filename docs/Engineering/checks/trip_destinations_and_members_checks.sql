@@ -1,10 +1,10 @@
--- Checks for supabase/migrations/20261021120000_add_trip_destinations_and_members.sql.
+-- Checks for supabase/migrations/20261022120000_add_trip_destinations_and_members.sql.
 -- Run against a LOCAL stack only (it creates auth users and rows), never
 -- production: supabase start on a scratch copy of supabase/, then
 --   psql <local DB_URL> -q -f this-file 2>&1 | grep -E 'PASS|FAIL'
 -- 2026-10-28: 44/44 PASS on a fresh replay of all 103 migrations.
 
--- Local-stack tests for 20261021120000. Each check prints PASS/FAIL.
+-- Local-stack tests for 20261022120000. Each check prints PASS/FAIL.
 \set ON_ERROR_STOP off
 \pset pager off
 set client_min_messages = warning;

@@ -1,5 +1,5 @@
 // One row of `public.get_trip_members()` (see
-// supabase/migrations/20261021120000_add_trip_destinations_and_members.sql):
+// supabase/migrations/20261022120000_add_trip_destinations_and_members.sql):
 // the trip's owner plus everyone invited to or on it (declined
 // invitations excluded). Members needn't be friends with each other, so
 // names come from that security-definer RPC, never a profiles read.

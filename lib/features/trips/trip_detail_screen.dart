@@ -39,7 +39,7 @@ import 'widgets/trip_members_sheet.dart';
 /// deep-green canvas, then — for a single-destination trip — STAY, DINING
 /// and WHAT'S ON as Explore-style sections over the same ivory
 /// [CsPlaceCard]s Passport uses; for a multi-destination trip
-/// (20261021120000) one section per leg, each with its own stays and
+/// (20261022120000) one section per leg, each with its own stays and
 /// dining. Gold only on stars and Keys.
 ///
 /// Shared trips: every member sees everyone's plans (planned_venues_select)

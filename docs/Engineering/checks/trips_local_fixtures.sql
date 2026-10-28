@@ -1,5 +1,5 @@
 -- LOCAL STACK ONLY — never production. Fixtures for checking shared,
--- multi-destination trips (20261021120000) in the app against a scratch
+-- multi-destination trips (20261022120000) in the app against a scratch
 -- `supabase start` stack: two test accounts who are friends, two cities
 -- the migrations don't seed, and a handful of clearly fake venues.
 -- Test credentials (local accounts only, valid nowhere else):

@@ -42,7 +42,7 @@ import 'trip_destination.dart';
 ///    the task's explicit requirement.
 ///
 /// Rules 2–4 apply only to a trip whose destinations weren't loaded (a
-/// server without 20261021120000). A trip WITH destinations matches per
+/// server without 20261022120000). A trip WITH destinations matches per
 /// leg instead — see [firstLegMatchingEvent].
 bool eventMatchesTrip(Event event, PlannedTrip trip) {
   if (event.isCancelled) return false;
@@ -70,7 +70,7 @@ bool eventMatchesTrip(Event event, PlannedTrip trip) {
   return true;
 }
 
-/// Multi-destination trips (20261021120000, decision 2): an event matches
+/// Multi-destination trips (20261022120000, decision 2): an event matches
 /// when it overlaps one leg's own dates (the whole trip's, for a leg
 /// without dates) AND is in that leg's country. No city comparison per
 /// leg: events carry only a free-text city, and comparing it with a

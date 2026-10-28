@@ -5,7 +5,7 @@ import 'trip_destination.dart';
 // a higher-level grouping a planned venue may optionally belong to; see
 // PlannedVenue.
 //
-// [destinations] (20261021120000) is loaded separately and attached by
+// [destinations] (20261022120000) is loaded separately and attached by
 // PlannedTripsRepository; empty means "not loaded" — a server without
 // that migration, or a hand-built trip — in which case [countryCode]/
 // [city] remain the trip's one destination, exactly as before.

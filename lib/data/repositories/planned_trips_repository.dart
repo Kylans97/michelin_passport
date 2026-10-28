@@ -20,9 +20,9 @@ typedef TripsOverview = ({
 
 /// CRUD for `public.planned_trips` / `public.planned_venues` (see
 /// supabase/migrations/20260810120000_create_planned_trips.sql), plus
-/// destinations and members (20261021120000).
+/// destinations and members (20261022120000).
 ///
-/// Works on either side of 20261021120000: when the server doesn't have
+/// Works on either side of 20261022120000: when the server doesn't have
 /// planned_trip_destinations/planned_trip_members yet (PostgREST's "table
 /// not found"), reads fall back to the original owner-only trips with no
 /// loaded destinations and [sharedTripsAvailable] turns false, so the
@@ -32,7 +32,7 @@ class PlannedTripsRepository {
 
   final SupabaseClient _client;
 
-  /// False once a read has shown the server predates 20261021120000.
+  /// False once a read has shown the server predates 20261022120000.
   bool sharedTripsAvailable = true;
 
   static bool _isMissingSchema(PostgrestException e) =>

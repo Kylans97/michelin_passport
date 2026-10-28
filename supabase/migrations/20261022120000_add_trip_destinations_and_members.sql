@@ -1,10 +1,14 @@
 -- Trips: several destinations per trip, and trips shared with friends.
 --
--- Written 2026-10-28 on feature/trips-redesign. NOT applied. Plan and the
--- product owner's decisions: docs/Architecture/
--- TRIPS_MULTI_DESTINATION_AND_SHARING_PLAN.md. Filename: the highest
--- migration on any branch when this was written was 20261020120000
--- (feature/editorial-selection, unapplied); this sorts after it.
+-- Written 2026-10-28 on feature/trips-redesign; applied to production
+-- 2026-10-28. Plan and the product owner's decisions: docs/Architecture/
+-- TRIPS_MULTI_DESTINATION_AND_SHARING_PLAN.md.
+--
+-- Filename: written as 20261021120000, renamed before it was ever applied
+-- because feature/guide-sources independently took 20261021120000
+-- (add_worlds_50_best_urls) and applied it first. Renamed to sort after the
+-- highest migration in production and on every branch at apply time
+-- (20261021120000); see CLAUDE.md on filename timestamps.
 --
 -- Additive for the shipped 1.2.0 (13) build, which reads/writes
 -- planned_trips.country_code (NOT NULL) and city and filters every trips/
@@ -223,16 +227,6 @@ create trigger planned_trips_sync_first_destination
   for each row
   when (new.country_code is distinct from old.country_code)
   execute function public.sync_first_trip_destination();
-
--- Backfill: one whole-country destination for every existing trip.
--- Free-text planned_trips.city is NOT mapped to a city_id — that would be
--- matching on a name. It stays on planned_trips.city, still shown.
-insert into public.planned_trip_destinations (trip_id, position, country_code)
-select t.id, 0, t.country_code
-  from public.planned_trips t
- where not exists (
-   select 1 from public.planned_trip_destinations d where d.trip_id = t.id
- );
 
 -- ============================================================
 -- 4. Saving destinations (owner only)
@@ -896,5 +890,26 @@ create policy planned_venues_update on public.planned_venues
     user_id = auth.uid()
     and (trip_id is null or public.is_trip_member(trip_id))
   );
+
+-- ============================================================
+-- 9. Backfill: one whole-country destination for every existing trip
+-- ============================================================
+--
+-- Last, deliberately: each inserted row queues a deferred
+-- planned_trip_destinations_leg_dates check, and Postgres refuses any
+-- ALTER TABLE on a table with pending trigger events (SQLSTATE 55006). The
+-- first production apply (2026-10-28) placed this right after section 3
+-- and failed on section 8's `enable row level security` for exactly that
+-- reason — production had 5 trips, the local replay had none. Rolled back
+-- in full (verified); nothing was applied. With the backfill last, the
+-- queued checks simply run at commit.
+-- Free-text planned_trips.city is NOT mapped to a city_id — that would be
+-- matching on a name. It stays on planned_trips.city, still shown.
+insert into public.planned_trip_destinations (trip_id, position, country_code)
+select t.id, 0, t.country_code
+  from public.planned_trips t
+ where not exists (
+   select 1 from public.planned_trip_destinations d where d.trip_id = t.id
+ );
 
 commit;
