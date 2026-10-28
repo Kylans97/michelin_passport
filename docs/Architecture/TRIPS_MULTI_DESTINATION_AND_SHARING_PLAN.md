@@ -1,8 +1,11 @@
 # Trips: multiple destinations and shared trips (plan)
 
-Status: **proposal, product-owner decisions recorded 2026-10-28 (§0); waiting
-for the go-ahead to write the migration.** No migration has been written or
-applied. Written 2026-10-28 on `feature/trips-redesign`, against
+Status: **migration written, NOT applied.**
+`supabase/migrations/20261021120000_add_trip_destinations_and_members.sql`
+(2026-10-28), tested on a fresh local replay of all 103 migrations with
+`docs/Engineering/checks/trip_destinations_and_members_checks.sql`: 44/44
+checks pass. Product-owner decisions in §0; the three remaining points in §7
+were settled as proposed. Written 2026-10-28 on `feature/trips-redesign`, against
 `main` at `e46c282` (ledger: 102 migrations, last `20261019130000`;
 `feature/editorial-selection` holds an unapplied `20261020120000`).
 
@@ -319,15 +322,43 @@ creating it.
 
 ---
 
-## 7. Still open
+## 7. Settled as proposed (2026-10-28)
 
-1. **Unfriending inside someone else's trip** (§3.4a): when A and B are both
-   members of C's trip and A unfriends B, the proposal changes nothing.
-   Should it instead remove B if A invited B?
-2. **Who can remove members:** the proposal lets only the owner remove
-   others (any member can leave). Should the member who sent an invite
-   also be able to withdraw it while it's still pending?
-3. **Overlapping legs:** may two legs share dates (a day trip from Paris to
-   Reims, say), or must legs follow each other without overlap? The
-   proposal allows overlap and lets the place decide which leg a plan
-   belongs to.
+1. **Unfriending inside someone else's trip:** nothing changes; the trigger
+   only acts on trips owned by one of the two people.
+2. **Withdrawing invites:** the owner can remove anyone; whoever sent an
+   invite can withdraw it while it's still pending (`remove_trip_member`).
+3. **Overlapping legs:** allowed; the place decides which leg a plan is in.
+
+## 8. What the migration does, beyond §3
+
+- **Saving is one call.** `save_trip_destinations(trip, start, end, legs)`
+  updates the trip's dates and replaces its legs atomically. The
+  leg-inside-trip check is a deferred constraint trigger on both tables,
+  so it runs once at commit and the order of the two writes doesn't matter.
+- **`planned_trips.city` follows the first leg.** Saving destinations sets
+  it to the first leg's catalogue city name (or null for a whole-country
+  leg), because the installed build still displays it. This overwrites the
+  old free-text city when the trip is saved from the new build.
+- **Installed build narrowing a multi-leg trip's dates** past a leg gets an
+  error, rather than the leg being silently clamped.
+- **Notifications** follow the existing versioning pattern:
+  `get_notifications_v3()` and `get_unread_notification_count_v3()` include
+  the trip types. v2 now reads through v3 minus the trip types, so v1
+  (which reads v2) and both older counts never show them to installed
+  builds.
+- **`get_trip_members(trip)`** returns the owner (status `owner`) and every
+  non-declined member with their username/display name/avatar. Members
+  needn't be friends with each other, so the app can't rely on `profiles`
+  RLS for that list.
+- **Removing someone from a trip** (leave, remove, unfriend, block) also
+  deletes the notifications about that membership, and detaches their own
+  plans on that trip into standalone plans.
+- Internal helpers (`delete_trip_membership`, `detach_member_plans`) are
+  callable by no client role; trigger functions likewise have no grants.
+
+**Before applying:** re-check that `20261021120000` still sorts after every
+migration on every branch, then apply with `supabase db push --linked` and
+confirm `supabase migration list --linked`. The app work in §5 is a separate
+build; until it ships, production behaves exactly as now for 1.2.0 users,
+apart from the backfilled destination rows.

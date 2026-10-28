@@ -41,12 +41,24 @@ The format follows Keep a Changelog.
   follow-up), the same trap their own comment already warns about.
 
 ### Planned (not applied)
-- Multi-destination trips and shared trips: data-model and migration plan in
-  `docs/Architecture/TRIPS_MULTI_DESTINATION_AND_SHARING_PLAN.md`, with the
-  product owner's decisions of 2026-10-28 recorded (catalogue-only
-  destinations, required leg dates, events per leg country, any member can
-  invite, unfriending removes from future trips only). Three small points
-  still open; no migration written.
+- **Migration `20261021120000_add_trip_destinations_and_members.sql`,
+  written and tested locally, not applied.** Several destinations per trip
+  (`planned_trip_destinations`: a catalogue country plus an optional
+  catalogue city, with leg dates required once there's more than one) and
+  shared trips (`planned_trip_members`, plus invite/respond/leave/remove
+  RPCs). Any member can invite their own friends. Unfriending or blocking
+  removes the other person from your trips that haven't ended yet; past
+  trips are untouched.
+  Installed 1.2.0 builds keep working: `planned_trips.country_code`/`city`
+  stay in step with the first destination, and they never see shared trips
+  or the new notification types (`get_notifications_v3`/`_count_v3` are the
+  only readers that include them).
+  RLS covers both new tables, and anon can execute none of the new
+  functions (`has_function_privilege` checked). A plan can now only be
+  attached to a trip you're on; before, any trip id was accepted.
+  Checks: `docs/Engineering/checks/trip_destinations_and_members_checks.sql`,
+  44/44 on a fresh local replay of all 103 migrations.
+  Plan: `docs/Architecture/TRIPS_MULTI_DESTINATION_AND_SHARING_PLAN.md`.
 
 ---
 
