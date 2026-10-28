@@ -34,6 +34,15 @@
 // that triggered it. Failures are surfaced only via `console.error` (->
 // Supabase Edge Function logs) and this function's own HTTP status.
 //
+// EVENTS (venue events phase 3, 20261018130000): submit_venue_event and
+// update_venue_event (on a resubmit) call notify_admin_of_venue_event(),
+// which sends `submission_type: 'events'` with the events row plus the
+// host venue's venue_type/venue_id — an events row has neither, and its
+// submitter is `submitted_by`, not `user_id`. A row that was reviewed
+// before (reviewed_at set) is a resubmission and says so. The date is
+// shown with exactly the times the venue gave: an unknown time is never
+// filled in, the same rule the events model itself keeps.
+//
 // Photo submissions deliberately never embed or link the image itself:
 // venue-photo-submissions is a private storage bucket, and the image
 // must be reviewed in the dashboard — this email identifies the
@@ -71,23 +80,40 @@ export interface NotifySubmissionAdminClient {
   };
 }
 
-export type SubmissionType = 'venue_about_submissions' | 'venue_photo_submissions';
+export type SubmissionType = 'venue_about_submissions' | 'venue_photo_submissions' | 'events';
 export type VenueType = 'restaurant' | 'hotel' | 'private_chef';
 
 // The venue_about_submissions/venue_photo_submissions row, sent verbatim
 // as the trigger's own to_jsonb(new) — same reasoning as ClaimPayload:
 // avoids a second, redundant lookup here, and is exactly the state at
-// insert time.
+// insert time. For 'events' it is the events row plus venue_type/
+// venue_id, and the submitter is submitted_by instead of user_id.
 export interface SubmissionRow {
   id: string;
-  user_id: string;
+  user_id?: string;
   venue_type: VenueType;
   venue_id: string;
-  status: string;
+  status?: string;
   submitted_at: string;
   about_text?: string;
   storage_path?: string;
   replaces_photo_id?: string | null;
+  // events only
+  submitted_by?: string | null;
+  reviewed_at?: string | null;
+  name?: string;
+  description?: string | null;
+  event_type?: string;
+  start_date?: string;
+  end_date?: string;
+  start_time?: string | null;
+  end_time?: string | null;
+  timezone?: string;
+  venue_name?: string | null;
+  address?: string | null;
+  city?: string | null;
+  country_code?: string;
+  ticket_url?: string | null;
 }
 
 export interface SubmissionPayload {
@@ -150,6 +176,39 @@ function formatAmsterdamTime(iso: string): string {
   }).format(new Date(iso));
 }
 
+// An event's calendar date(s) are already local to the event, so they are
+// formatted as plain dates (UTC, no shifting). Times are shown only when
+// the venue gave them; nothing is filled in for an unknown one.
+function formatLocalDate(isoDate: string): string {
+  return new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'UTC',
+    weekday: 'short',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric',
+  }).format(new Date(`${isoDate}T00:00:00Z`));
+}
+
+export function formatEventWhen(row: SubmissionRow): string {
+  const startTime = row.start_time ? row.start_time.slice(0, 5) : null;
+  const endTime = row.end_time ? row.end_time.slice(0, 5) : null;
+  const start = formatLocalDate(row.start_date as string);
+  const multiDay = !!row.end_date && row.end_date !== row.start_date;
+  let when: string;
+  if (multiDay) {
+    const end = formatLocalDate(row.end_date as string);
+    when = `${start}${startTime ? `, ${startTime}` : ''} – ${end}${endTime ? `, ${endTime}` : ''}`;
+  } else if (startTime && endTime) {
+    when = `${start}, ${startTime}–${endTime}`;
+  } else if (startTime) {
+    when = `${start}, from ${startTime}`;
+  } else {
+    when = start;
+  }
+  if (!startTime) return `${when} (no time given)`;
+  return `${when} (${row.timezone})`;
+}
+
 function escapeHtml(value: string): string {
   return value
     .replace(/&/g, '&amp;')
@@ -188,16 +247,19 @@ export async function handleRequest(
 
   if (
     payload?.submission_type !== 'venue_about_submissions' &&
-    payload?.submission_type !== 'venue_photo_submissions'
+    payload?.submission_type !== 'venue_photo_submissions' &&
+    payload?.submission_type !== 'events'
   ) {
     return jsonResponse({ error: 'Unknown submission_type' }, 400);
   }
 
+  const isEvent = payload.submission_type === 'events';
   const row = payload.row;
+  const submitterId = isEvent ? row?.submitted_by : row?.user_id;
   if (
     !row ||
     typeof row.id !== 'string' ||
-    typeof row.user_id !== 'string' ||
+    typeof submitterId !== 'string' ||
     typeof row.venue_type !== 'string' ||
     !(row.venue_type in VENUE_LOOKUP) ||
     typeof row.venue_id !== 'string' ||
@@ -211,6 +273,13 @@ export async function handleRequest(
   if (payload.submission_type === 'venue_photo_submissions' && typeof row.storage_path !== 'string') {
     return jsonResponse({ error: 'Missing storage_path' }, 400);
   }
+  if (
+    isEvent &&
+    (typeof row.name !== 'string' || typeof row.start_date !== 'string' ||
+      typeof row.timezone !== 'string')
+  ) {
+    return jsonResponse({ error: 'Missing event fields' }, 400);
+  }
 
   const venueLookup = VENUE_LOOKUP[row.venue_type];
 
@@ -223,8 +292,8 @@ export async function handleRequest(
       .select(`${venueLookup.nameColumn}, ${venueLookup.codeColumn}`)
       .eq('id', row.venue_id)
       .maybeSingle(),
-    admin.from('profiles').select('display_name, username').eq('id', row.user_id).maybeSingle(),
-    admin.auth.admin.getUserById(row.user_id),
+    admin.from('profiles').select('display_name, username').eq('id', submitterId).maybeSingle(),
+    admin.auth.admin.getUserById(submitterId),
   ]);
 
   if (venueResult.error) {
@@ -238,14 +307,14 @@ export async function handleRequest(
   if (profileResult.error) {
     console.error('notify-venue-submission: profile lookup failed', {
       submissionId: row.id,
-      userId: row.user_id,
+      userId: submitterId,
       message: profileResult.error.message,
     });
   }
   if (userResult.error) {
     console.error('notify-venue-submission: account email lookup failed', {
       submissionId: row.id,
-      userId: row.user_id,
+      userId: submitterId,
       message: userResult.error.message,
     });
   }
@@ -262,11 +331,34 @@ export async function handleRequest(
   const link = dashboardLink(payload.submission_type, row.id);
 
   const isAbout = payload.submission_type === 'venue_about_submissions';
-  const subject = isAbout
+  const isResubmission = isEvent && !!row.reviewed_at;
+  const kindLabel = isEvent ? 'event' : isAbout ? '"about" text' : 'photo';
+  const subject = isEvent
+    ? `${isResubmission ? 'Event resubmitted' : 'New event submitted'}: ${row.name} — ${venueName} (${venueIdentifier})`
+    : isAbout
     ? `New "about" text submitted: ${venueName} (${venueIdentifier})`
     : `New venue photo submitted: ${venueName} (${venueIdentifier})`;
 
-  const contentTextLines = isAbout
+  const eventWhen = isEvent ? formatEventWhen(row) : '';
+  const eventWhere = isEvent
+    ? [row.venue_name, row.address, row.city, row.country_code].filter((v) => !!v).join(', ')
+    : '';
+
+  const contentTextLines = isEvent
+    ? [
+      `Event: ${row.name}`,
+      `Type: ${row.event_type ?? 'unknown'}`,
+      `When: ${eventWhen}`,
+      `Where: ${eventWhere}`,
+      `Tickets: ${row.ticket_url ?? '—'}`,
+      ...(isResubmission ? ['', 'This event was reviewed before and has been edited and resubmitted.'] : []),
+      '',
+      'Description:',
+      '"""',
+      row.description ?? '',
+      '"""',
+    ]
+    : isAbout
     ? [
       'Submitted text:',
       '"""',
@@ -282,7 +374,7 @@ export async function handleRequest(
       '(venue-photo-submissions is a private bucket).',
     ];
 
-  const text = `A new ${isAbout ? '"about" text' : 'photo'} submission was made for ${venueName} (${venueIdentifier}).
+  const text = `A new ${kindLabel} submission was made for ${venueName} (${venueIdentifier}).
 
 Venue type: ${row.venue_type}
 Submitted by: ${displayName} (${accountEmail ?? 'unknown email'})
@@ -292,7 +384,23 @@ ${contentTextLines.join('\n')}
 
 Review in the dashboard: ${link}`;
 
-  const contentHtml = isAbout
+  const contentHtml = isEvent
+    ? `
+      <table cellpadding="4" cellspacing="0">
+        <tr><td><strong>Event</strong></td><td>${escapeHtml(row.name as string)}</td></tr>
+        <tr><td><strong>Type</strong></td><td>${escapeHtml(row.event_type ?? 'unknown')}</td></tr>
+        <tr><td><strong>When</strong></td><td>${escapeHtml(eventWhen)}</td></tr>
+        <tr><td><strong>Where</strong></td><td>${escapeHtml(eventWhere)}</td></tr>
+        <tr><td><strong>Tickets</strong></td><td>${escapeHtml(row.ticket_url ?? '—')}</td></tr>
+      </table>
+      ${
+      isResubmission
+        ? '<p><em>This event was reviewed before and has been edited and resubmitted.</em></p>'
+        : ''
+    }
+      <p style="white-space:pre-wrap;">${escapeHtml(row.description ?? '')}</p>
+    `
+    : isAbout
     ? `<p style="white-space:pre-wrap;">${escapeHtml(row.about_text as string)}</p>`
     : `
       <table cellpadding="4" cellspacing="0">
@@ -307,9 +415,7 @@ Review in the dashboard: ${link}`;
     `;
 
   const html = `
-    <p>A new ${
-    isAbout ? '"about" text' : 'photo'
-  } submission was made for <strong>${escapeHtml(venueName)}</strong> (${
+    <p>A new ${kindLabel} submission was made for <strong>${escapeHtml(venueName)}</strong> (${
     escapeHtml(venueIdentifier)
   }).</p>
     <table cellpadding="4" cellspacing="0">

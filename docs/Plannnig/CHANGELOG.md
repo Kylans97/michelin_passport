@@ -78,11 +78,18 @@ The format follows Keep a Changelog.
     checked with `has_function_privilege`. The internal helpers are
     closed to `authenticated` too. The old `get_notifications()` result
     type is identical to production's.
-  - **Not yet applied.** Still to do:
-    - `notify-venue-submission` has to learn the `events` payload; until
-      then an event's admin email fails softly and the submission still
-      goes through;
-    - the phase 3 build itself.
+  - **`notify-venue-submission` understands `events`.** The submitter
+    comes from `submitted_by`, and the host venue is looked up like any
+    other submission. The email gives the name, type, date, location,
+    ticket link and the description verbatim. It shows only the times the
+    venue gave: "Sat, 14 Nov 2026 (no time given)", "from 19:30", or a
+    range, plus the event's timezone. The calendar date is never shifted.
+    A previously reviewed event is marked "Event resubmitted". 9 new
+    tests; all 29 pass.
+  - **Not yet applied or deployed.** Rollout order: the two migrations,
+    then deploy `notify-venue-submission` (deploying it early is
+    harmless, because it handles the old payloads exactly as before),
+    then the phase 3 build. The build is still to do.
 
 - 2026-10-28 — A landing page per managed venue, phase 2 of
   `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. My Venues
