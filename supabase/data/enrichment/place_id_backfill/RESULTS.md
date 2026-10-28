@@ -78,3 +78,19 @@ stubs seeded from the export (hotels with their real stored coordinates):
 
 Not tested against the real schema (triggers, RLS, views). The statements
 touch only `google_place_id` and, for hotel_748, `location`.
+
+## Second batch — MICHELIN Gids Nederland 2026 new stars (2026-10-28)
+
+Requested by the catalogue session (branch `claude/upbeat-ramanujan-4kedct`).
+Files: `placeid_results_nl_stars_2026.csv`,
+`prepared_place_id_backfill_nl_stars_2026.sql` — run only after
+`../michelin_nl_stars_2026/prepared_nl_stars_2026.sql`; aborts until
+rest_1396..rest_1404 exist.
+
+All 9 confirmed, each the restaurant's own record linking to its own site.
+8 under 50 m; Ambrozijn at 102 m with an exact address match. Nassau and Wild
+Atelier resolve to the restaurant, not Hotel Prinsenhof / De Echoput. Wild
+Atelier's record links to wildatelier.nl rather than the echoput.nl page we
+hold as website_url. Rozewied announces a move in spring 2027 — re-check its
+Place ID then. Tested on a scratch Postgres: aborts before the import, fills
+9 after it, re-run is a no-op.
