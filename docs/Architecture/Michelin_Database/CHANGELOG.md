@@ -6,11 +6,11 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
-# 2026-10-28 — Country timezones prepared (QA-226)
+# 2026-10-28 — Country timezones applied (QA-226)
 
 | | |
 |---|---|
-| Status | Prepared, **not applied** |
+| Status | **Applied** 2026-10-28, to production (ledger 98 → 100 with `20261018130000`, local and remote in agreement) |
 | Migration | `20261018120000_add_country_timezones` |
 | Source | IANA time zone database, tzdata 2025b, `zone.tab`, read from `/usr/share/zoneinfo/zone.tab` on 2026-10-28 |
 | Reason | Venue events (phase 3) need a timezone for every event, but no venue and no country stored one. |
@@ -28,6 +28,13 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 - Any later migration that adds a country must give it its zones.
 
 The venue event RPCs (`20261018130000`) refuse a timezone that isn't in the event country's list.
+
+**After applying** (read-only):
+
+- All 58 countries have zones: 44 with one, 14 with several.
+- The zones are identical to a fresh local replay's (one md5 over every country's list).
+
+Not done here: QA-226's status in `qa_issues.csv` is still Open.
 
 ---
 

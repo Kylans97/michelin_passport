@@ -144,10 +144,28 @@ The format follows Keep a Changelog.
     range, plus the event's timezone. The calendar date is never shifted.
     A previously reviewed event is marked "Event resubmitted". 9 new
     tests; all 29 pass.
-  - **Not yet applied or deployed.** Rollout order: the two migrations,
-    then deploy `notify-venue-submission` (deploying it early is
-    harmless, because it handles the old payloads exactly as before),
-    then the phase 3 build. The build is still to do.
+  - **Applied and deployed 2026-10-28**, from `feature/venue-events`:
+    - **Checked first** (read-only): production still had the 58
+      countries the migration covers, all 6 tag ids, and 28 events with
+      none written from the app.
+    - **Migrations:** plain `supabase db push --linked`, ledger 98 →
+      100/100, local and remote in agreement.
+    - **Verified on production** (read-only):
+      - every country has its zones (44 with one);
+      - still 6 tags and 28 published events, and no `event_edits`;
+      - no write policy left on `events` or its link tables, and the
+        four admin read policies are in place;
+      - no new function is executable by anon or PUBLIC, and the
+        internal helpers aren't executable by `authenticated`;
+      - `get_notifications()`'s result type is unchanged.
+    - **Compared with a fresh local replay:** 39 objects identical. That
+      covers every new or changed function with its grants, the new
+      table and columns, the countries' zones and the tags, the three
+      constraints, and every policy on the events tables.
+    - **Edge Function:** `notify-venue-submission` deployed (version 4 →
+      5, `verify_jwt` still off). A missing or wrong secret gets 401, so
+      the smoke test sent no email.
+    - The phase 3 build is on the same branch and not yet released.
 
 - 2026-10-28 — A landing page per managed venue, phase 2 of
   `docs/Architecture/VENUE_EVENTS_AND_ADMIN_REVIEW_PLAN.md`. My Venues
