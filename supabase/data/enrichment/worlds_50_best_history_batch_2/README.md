@@ -1,6 +1,8 @@
 # World's 50 Best history, batch 2: 2002–2019 and Le Clarence (QA-250)
 
-2026-10-28, `data/w50b-history-gaps`. **Not applied.** Follows
+2026-10-28, `data/w50b-history-gaps`. **Applied to production
+2026-10-28** after review: 13 rows inserted, all guards passed (872 → 885
+rows); recorded in the Michelin_Database CHANGELOG. Follows
 `../worlds_50_best_history_2021_2024/` (batch 1, applied), with the same
 proof standard.
 

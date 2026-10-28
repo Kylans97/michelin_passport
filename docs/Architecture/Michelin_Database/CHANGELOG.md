@@ -6,6 +6,50 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-28 — World's 50 Best history, batch 2: 13 Top 50 rank-years, 2017–2019 and 2022 (QA-250)
+
+| | |
+|---|---|
+| Applied | 2026-10-28, to production, from branch `data/w50b-history-gaps` |
+| Data file | `worlds_50_best_history_batch_2/apply_top_50_rank_years.sql`: one transaction; the identity, free-slot, free-year and exact-count guards all passed |
+| Migrations | none |
+
+**Source.** The archived `theworlds50best.com/previous-list` page holds
+every year from 2002 to 2019 in one timeline. Each year's block was
+accepted only by its heading, its known No.1, and an exact match against
+every row we already held for that year. 2016 is excluded: the official
+block is mis-numbered (two No.22s, two No.23s, no No.18 or No.37).
+
+**Proof per row.** Year-specific archived entry pages for 2017–2019
+(`/The-List-<year>/…`) state the rank, and identity comes from our phone,
+own website or street address on that page. Le Clarence 2022 matched by
+address, checked by hand: "31 Av." vs our "31 Avenue".
+
+**Rows added:**
+
+- Mirazur 2017 No.4, 2018 No.3, 2019 No.1.
+- The Clove Club 2017 No.26, 2018 No.33, 2019 No.27.
+- Alléno Paris au Pavillon Ledoyen 2017 No.31, 2018 No.29, 2019 No.25.
+- Nerua 2019 No.32, A Casa do Porco 2019 No.39 and Leo 2019 No.49.
+- Le Clarence 2022 No.28.
+
+**Before.** A read-only dry run: 13/13 codes carried the expected name,
+and no place or restaurant-year was taken. The table held 872 rows.
+
+**After.** 885 rows (+13), and all 13 are present as `top_50`. Current
+ranks are unchanged.
+
+**Open, not changed:**
+
+- **Name-only matches:** 61 older Top 50 places
+  (`top_50_name_city_review.csv`) and 53 places at 51–100 for 2021–2024
+  (QA-249) match only by name and city. They wait for a rule decision.
+- **Not covered:** 51–100 for 2013–2019.
+- **QA-251:** Mirazur (No.1 in 2019) has no Hall of Fame row and reads
+  `is_hall_of_fame = false`.
+
+---
+
 # 2026-10-28 — World's 50 Best history: 29 missing Top 50 rank-years, 2021–2024 (QA-246)
 
 | | |
