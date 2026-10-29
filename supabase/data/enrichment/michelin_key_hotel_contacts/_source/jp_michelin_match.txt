@@ -1,0 +1,119 @@
+# MICHELIN match for the 118 JP Key hotels, 2026-10-29 (2 already had michelin_url and are not changed). Columns: hotel_code number | path under https://guide.michelin.com/en/hotels-stays/ | metres from stored location to MICHELIN's JSON-LD geo | metres to the next-nearest MICHELIN Japan hotel, or h/<id> when read through MICHELIN's /h/<id> short link | MICHELIN postcode (equal to the stored postcode in every row except hotel_688, whose stored address has none) | Keys on the page | telephone as MICHELIN prints it.
+573|Nanyo/yamagata-the-takinami-14299|11|102|999-2211|1|+81 238-43-6111|
+574|miyakojima/rosewood-miyakojima-14863|14|7680|906-0008|2|+81 980-79-8899|
+575|osaka1/patina-osaka-14861|18|1477|540-0007|1|+81 6-6941-8888|
+576|Kami%20Amakusa/tayuta-15424|124|6294|861-6102|1|+81 50-1706-5284|
+577|tokyo/fairmont-tokyo-15406|9|733|105-0023|1|+81 367220281|
+578|kirishima/myoken-ishiharaso-15243|66|100|899-5113|1|+81 995-77-2111|
+579|unzen1/ryotei-hanzuiryo-13984|29|1220|854-0621|1|0957-73-2111|
+580|kyoto/banyan-tree-higashiyama-kyoto-14282|23|225|605-0861|1|+81 75 531 0500|
+581|miyota-cho-kitasaku-gun/the-hiramatsu-karuizawa-miyota-13939|92|8659|389-0201|2|0267-31-5680|
+582|Yamanouchi/shoraiso-14284|6|20532|381-0401|1|+81 269-33-2114|
+583|hakone/espacio-the-hakone-geihinkan-rin-poh-ki-ryu-14280|10|1418|250-0404|1|(0460)87-9200|
+584|Otake/simose-art-garden-villa-14272|82|4284|739-0622|1|+81-8-2793-1600|
+585|Oyama/fuji-speedway-hotel-14253|97|5216|410-1308|1|+81 550-20-1234|
+586|izu/fugaku-gunjo-14307|1|3729|410-3303|1|050-5805-9386|
+587|Shima/the-hiramatsu-hotels-resorts-kashikojima-13376|9|1589|517-0501|1|+81 599-65-7001|
+588|nagoya/tiad-autograph-collection-13321|6|954|460-0008|1|+81 52-252-2288|
+589|kutchancho/setsu-niseko-13383|2|347|044-0080|1|+81 136-55-7882|
+590|kutchancho/muwa-niseko-13937|1|268|044-0080|1|+81 136-23-0955|
+591|hakone/the-hiramatsu-hotels-resorts-sengokuhara-13436|38|463|250-0631|1|+81 460-83-8981|
+592|Awara/beniya-kofuyuden-13385|39|4116|910-4104|1|+81 776-77-2333|
+593|kutchancho/sansui-niseko-13372|11|279|044-0080|1|+81 136-22-2000|
+594|nara/fufu-nara-13938|25|515|630-8301|1|+81 570-011-722|
+596|onomichi/ryokan-onomichi-nishivama-13396|4|4168|722-0052|1|+81 848-37-3145|
+597|karuizawamachi/fufu-karuizawa-yokou-no-kaze-13391|91|2137|389-0111|1||
+598|Ginoza/the-hiramatsu-ginoza-13377|23|7768|904-1301|1|+81 98-968-5600|
+599|yokohama/the-kahala-hotel-resort-yokohama-13371|49|730|220-0012|1|+81 45-522-0008|
+600|Nakijin/one-suite-the-grand-13390|150|930|905-0406|1|+81 980-51-5770|
+601|kyoto-prefecture/garrya-nijo-castle-kyoto-banyan-tree-group-12785|20|435|604-8305|1|+81 75-366-5806|
+602|nikko/fufu-nikko-13437|8|8256|321-1435|2|+81 570-011-722|
+603|hakone/hakone-gora-karaku-13439|13|311|250-0408|1|+81 460-83-8860|
+604|Shiojiri/byaku-narai-13531|1|34457|399-6303|1|0264-34-3001|
+605|fukuoka/the-ritz-carlton-fukuoka-13322|11|470|810-0041|1|+81 92-401-8888|
+606|naoshima/naoshima-ryokan-roka-13528|7|1272|761-3110|1|087-899-2356|
+608|yufu1/enowa-13213|46|1209|879-5102|2|+81 977-28-8310|
+611|nanjo/hyakuna-garan-8930|52|32198|901-0603|1|+81 98-949-1011|
+612|izumo/izumo-hotel-the-cliff-13394|17|66671|699-0901|1|+81 853 86 3300|
+613|goto/okcs-retreat-goto-ray-12784|120|95763|853-0023|1|+81 959-78-5551|
+614|nara/jw-marriott-hotel-nara-12571|31|2580|630-8013|1|+81 742-36-6000|
+615|kyoto-prefecture/four-seasons-hotel-kyoto-13516|48|214|605-0932|1|81 75 541 8288|
+616|hakone/fufu-hakone-13389|3|267|250-0408|1|+810460-87-0523 // +81 0557-86-3646 (central rsvn) // +81 570-0117-22|
+617|ishigaki-island/jusandi-8006|141|10784|907-0451|2|+81 980-88-2833|
+618|osaka1/conrad-osaka-8734|24|188|530-0005|1|+81 6-6222-0111|
+619|kyoto/fufu-kyoto-13865|96|289|606-8437|1|+81 570-011-722|
+620|osaka1/w-osaka-11937|15|628|542-0081|1|81 664845355|
+621|Fujikawaguchiko/fufu-kawaguchiko-12055|37|1839|401-0304|2|+81 570-011-722|
+622|nikko/the-ritz-carlton-nikko-11907|11|8242|321-1661|2|+81 288-25-6666|
+623|nago/the-ritz-carlton-okinawa-8457|77|1666|905-0026|1|+81 980 43 5555|
+624|tokyo/the-aoyama-grand-hotel-13862|19|1210|107-0061|1||
+625|hatsukaichi/sekitei-3681|8|4222|739-0454|2|+81 829-55-0601|
+626|takayama1/wanosato-6564|40|8717|509-3505|1|+81 577 53 2321|
+627|izu/ochiairou-murakami-6663|17|399|410-3206|1|+81 558-85-0014|
+628|niigata-prefecture/satoyama-jujo-7822|6|29557|949-6361|1|+81(0)25 783 6777|
+629|kyoto-prefecture/suiran-kyoto-11795|25|319|616-8385|1|+81 75-872-0101|
+630|Kutchan/zaborin-ryokan-8795|135|423|044-0084|2|+81 136 23 0003|
+631|matsuyama1/setouchi-retreat-by-onko-chrishin-8075|45|18532|790-2641|1|+81 89-977-9500|
+632|onna/halekulani-okinawa-11475|66|1593|904-0401|2|81 98-953-8600|
+633|osaka1/four-seasons-hotel-osaka-14295|18|218|530-0003|1|81-6-6676-8682|
+634|tokyo/andaz-tokyo-7174|48|423|105-0001|1|+81 (0)3.6830.7720|
+635|tokyo/the-okura-tokyo-11478|25|264|105-0001|1|81 3-3582-0111|
+636|kyoto-prefecture/hotel-the-celestine-kyoto-gion-8835|30|180|605-0811|1|+81 75-532-3111|
+637|tokyo/four-seasons-hotel-tokyo-at-marunouchi-7346|30|217|100-6277|1|+81 3 5222 7222|
+638|tokyo/shangrila-tokyo-6735|18|109|100-8283|1|81367397888|
+639|kyoto-prefecture/hiiragiya-7587|30|392|604-8094|1|+81752211136|
+640|tokyo/the-prince-gallery-tokyo-kioicho-a-luxury-collection-hotel-8450|75|341|102-8585|1|+81-(0)3-3234-1111|
+641|tokyo/mandarin-oriental-tokyo-6225|42|474|103-8328|1|+81.(3).3270.8800|
+642|tokyo/the-peninsula-tokyo-5745|10|442|100-0006|1|+ 81 3 6270 2888|
+643|kyoto-prefecture/the-mitsui-kyoto-11869|12|240|604-0051|3|+81 75-468-3100|
+644|tokyo/the-ritz-carlton-tokyo-7342|12|778|107-6245|1|+81-3-3423-8000|
+645|osaka1/the-ritz-carlton-osaka-7284|26|278|530-0001|1|81-6-6343-7000|
+646|kyoto-prefecture/the-ritz-carlton-kyoto-7457|36|490|604-0902|1|+81 75 746 5555|
+647|tokyo/bvlgari-hotel-tokyo-13107|76|145|104-0028|3|+81 3-6262-3333|
+648|kyoto/the-hotel-seiryu-kyoto-kiyomizu-13867|47|264|605-0862|1|+81 75-532-1111|
+649|numazu/numazu-club-7913|179|14685|410-0849|1|81 559546611|
+650|kyoto/roku-kyoto-12343|11|512|603-8451|1|81 75 320 0111|
+651|nisekocho/higashiyama-niseko-village-a-ritz-carlton-reserve-11963|345|1495|048-1522|1|+ 81 136 44 3491|
+652|kirishima/gajoen-14006|41|108|899-6507|2|+81 995-77-2114|
+654|yufu1/yufuin-tamanoyu-14506|10|474|879-5102|1|+81-977-84-2158|
+655|Takeo/onyado-chikurintei-15370|24|10034|843-0022|2|+81 954-23-0210|
+656|Nanyo/osteria-sincerita-15369|26|66|999-2211|1|+81 238-43-7800|
+657|yokohama/intercontinental-yokohama-pier-8-11492|16|1052|231-0001|1|81 45-307-1111|
+658|kyoto-prefecture/park-hyatt-kyoto-9433|18|234|605-0826|1|+81 75 531 1234|
+659|tokyo/four-seasons-hotel-tokyo-at-otemachi-12943|87|150|100-0004|3|81-3-68100600|
+660|kyoto-prefecture/ugenta-6875|36|7844|601-1112|1|+81 75 741 2146|
+661|tokyo/the-tokyo-station-hotel-6748|294|325|100-0005|1|+81-3-5220-1111|
+662|mie-prefecture/oyado-the-earth-6607|10|16841|517-0026|1|+81 599-21-8181|
+663|nagato/bettei-otozure-3691|34|264|759-4103|1|+ 81 837-25-3377|
+664|kyoto/muni-kyoto-11908|21|323|616-8385|0|+81 75-863-1110|
+665|hakone/gora-kadan-64357-2371|18|310|250-0408|3|+81 460-82-3331 (Central rsvn +81-3-6722-0321)|
+666|izu/arcana-izu-1281|32|409|410-3206|1|+81 558-85-2700|
+667|kyoto/ace-hotel-kyoto-11701|32|192|604-8185|1|+81752299000|
+668|tokyo/trunkhotel-yoyogi-park-13365|6|866|151-0063|1|+81 03-5454-3210|
+669|kyoto/genji-kyoto-12683|0|137|600-8113|1|+81 75 365 3001|
+670|minakami/bettei-senjuan-3671|94|29585|379-1619|1|+81-278-20-4141|
+671|karuizawamachi/shishi-iwa-house-karuizawa-13384|9|1122|389-0111|1|+81267316658|
+672|yufu1/kamenoibesso-13983|55|410|879-5102|2|+81-977-84-3166|
+673|Tachikawa/auberge-tokito-14466|20|24149|190-0022|1|+81 42-525-8888|
+674|tokyo/hotel-new-otani-tokyo-executive-house-zen-5535|0|304|102-8578|1|+81332651111|
+675|osaka1/intercontinental-osaka-10779|138|454|530-0011|1|+81 6-6374-5700|
+676|tokyo/k5-120190-10724|7|414|103-0026|1|+81-03-5962-3485|
+677|ishikawa-prefecture/beniya-mukayu-7221|0|231|922-0242|1|+81-(0)761-77-1340|
+678|toyooka/nishimuraya-honkan-ryokan-hyogo-8603|30|35030|669-6101|2|+81-796-32-2211|
+679|kyoto-prefecture/aman-kyoto-9333|0|501|603-8458|2|+81 3-4577-7920|
+680|Shima/amanemu-8553|228|2414|517-0403|3|0120 951 125|
+681|tokyo/janu-tokyo-13417|10|558|106-0041|2|+81 34 577 7917|
+682|onomichi/azumi-setoda-13824|0|72|722-2411|1|+81845237911|
+683|kyoto/dusit-thani-kyoto-13366|29|338|600-8327|1|+81 75-343-7150|
+684|kyoto-prefecture/six-senses-kyoto-13660|28|108|605-0932|1|+81 75 531 0700|
+685|tokyo/bellustar-tokyo-13392|23|460|160-0021|1|+81 3-6233-8800|
+686|nagoya/the-tower-hotel-nagoya-13381|11|949|460-0003|1|+81 52-953-4450|
+687|kyoto-prefecture/kanamean-nishitomiya-8768|0|326|604-8064|2|+81 75 211 2411|
+688|tokyo/aman-tokyo-7804|116|242|100-0004|2|(94) 11 743 4000 / +81 3-5224-3333|
+785|tokyo/park-hyatt-tokyo-3141|70|170|163-1055|1|+81 3-5322-1234|
+792|tokyo/palace-hotel-tokyo-7686|22|262|100-0005|3|+81 3-3211-5211|
+595|nasu/nasu-mukunone-auberge-13877|12|h/13877|325-0303|0|+81 287-73-8169|
+607|karuizawamachi/fufu-kyu-karuizawa-seiyou-no-mori-13395|2744|h/13395|389-0102|1|0570-0117-22|
+609|kaga/araya-totoan-3661|259|h/3661|922-0242|1|+81 (0761)77-0010|
+610|kutchancho/park-hyatt-niseko-hanazono-11905|541|h/11905|044-0082|1|+81 1 36 27 1233|
+653|kyoto-prefecture/hoshinoya-kyoto-7458|1099|h/7458|616-0007|1|+81-(0)50-3786-0066|
