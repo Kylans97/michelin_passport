@@ -6,6 +6,53 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-29 — Catalogue data applied: MICHELIN Germany 2026 and Italy 2026 (QA-252–QA-259)
+
+| | |
+|---|---|
+| Applied | 2026-10-29, to production, from branch `claude/lucid-rubin-us4we5` (carried on `data/de-it-2026`) |
+| Migration | `20261023130000_add_de_it_2026_star_cities` (330 towns). Ledger 107 → 108, local and remote in agreement |
+| Data files | `michelin_de_it/prepared_de_it_stars_2026.sql`, then `michelin_de_it/prepared_aqua_closure.sql`. Each is one transaction with its own guards; neither aborted |
+
+**Before.** Read-only checks against production first, all matching what the file was built from:
+
+- 60 German and 58 Italian restaurants, none of them updated since the export of 2026-10-29 06:31 UTC.
+- Germany at 12/47/1 and Italy at 15/37/6 stars.
+- Codes `rest_1842`–`2444` free; the highest code was `rest_1841`.
+- Only the new migration pending.
+
+**Germany** (MICHELIN Germany 2026, announced 23 June 2026).
+
+- **QA-252, relabel:** the launch rows held 2025 values labelled 2026, the same case as the Netherlands. They are now 2025, which gives Germany 60 rows for 2025.
+- **L.A. Jordan:** 2 → 3 stars.
+- **Lost stars:** Aqua, bianc and Courtier each carry a current 2026 row with no star.
+- **New restaurants:** 281 added.
+- **Selection:** Germany is now exactly MICHELIN's live list, **12 / 48 / 278**.
+
+**Italy** (MICHELIN Italia 2026).
+
+- **QA-254:** Tre Olivi corrected 2 → 1.
+- **New restaurants:** 322 added.
+- **QA-255:** Quattro Passi (3), Santa Elisabetta (2) and Lido 84 (1) keep their stars. They are in the 2026 article but no longer on MICHELIN's site; recheck at Italy 2027 (12 November 2026).
+- **Selection:** Italy is now **15 / 38 / 327**, MICHELIN's live list plus those three.
+
+**Both countries.** Checked after the apply:
+
+- **New rows:** 603 restaurants, `rest_1842`–`rest_2444`. 580 of them have a Place ID and 570 a phone.
+- **Hotel links:** 66 across Germany and Italy.
+- **Star rows:** every starred restaurant has exactly one current star row agreeing with `michelin_stars`, and none lacks a city.
+- **Detail view:** all 341 German and 380 Italian restaurants appear in `restaurants_full`.
+- **Total:** the catalogue now holds 2,397 starred restaurants.
+
+**Aqua's closure (QA-253).** The product owner chose to enable the optional step that the generated file leaves commented out.
+
+- **How it ran:** from its own file, `prepared_aqua_closure.sql`, guarded on the main file having run, so the generated file stays as reviewed.
+- **Result:** `rest_0186` is `permanently_closed`, with the note "Closed after 25 years; last services March 2026 (exact date not confirmed)".
+- **Closing date:** `status_since` stays NULL rather than a guessed date.
+- **Courtier** stays open: the timing of its reported closure is unclear.
+
+---
+
 # 2026-10-29 — World's 50 Best 51–100 history, 2021–2024: 39 rank-years (QA-249)
 
 | | |

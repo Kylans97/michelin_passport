@@ -1,6 +1,6 @@
 # Germany & Italy: MICHELIN completion, Place IDs and phones (research 2026-10-29)
 
-Status: **PREPARED, NOT APPLIED** (2026-10-29). Generated from production's
+Status: **APPLIED 2026-10-29** (ledger 108/108, plus `prepared_aqua_closure.sql`; see the Michelin_Database CHANGELOG). Generated from production's
 export of 2026-10-29 06:31 UTC. To apply, run in order:
 
 1. `supabase/migrations/20261023130000_add_de_it_2026_star_cities.sql`

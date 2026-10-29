@@ -8,6 +8,18 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- 2026-10-29 — Catalogue: MICHELIN Germany 2026 and Italy 2026.
+  - **Migration:** `20261023130000_add_de_it_2026_star_cities` (330 DE/IT
+    towns), applied with plain `supabase db push --linked`.
+  - **Ledger:** 107 → 108/108, local and remote in agreement.
+  - **Data:** then `michelin_de_it/prepared_de_it_stars_2026.sql` and
+    `prepared_aqua_closure.sql`. Details are in the Michelin_Database
+    CHANGELOG.
+  - **No app change** is needed to show the new rows. However, the
+    catalogue now holds 2,397 starred restaurants, so builds without the
+    row-cap fix on `release/1.3.0` still show only the first 1000 in Guides.
+
 ---
 
 ## v1.3.0 (15) — 2026-10-29
