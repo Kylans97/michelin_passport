@@ -122,20 +122,53 @@ its MICHELIN pin (within 150 m), never by name.
 
 ## Next step (needs the export)
 
-1. Match production's DE/IT rows to MICHELIN:
-   - by `michelin_url`;
-   - otherwise by coordinates plus a name check, as for Spain.
-2. Write a cities migration for the new towns, named after the highest
-   migration on main at that time.
-3. Write the prepared SQL, with the same guards as Spain:
-   - codes must be free, and each existing code must still carry its
-     exported name;
-   - post-conditions: DE 12/48/278, IT 14/37/326.
+The SQL is generated, not hand-written, by `build_prepared_de_it.py`:
 
-   It includes:
-   - the Germany relabel;
-   - losses;
-   - new rows with their history, Place IDs and phones;
-   - fill-only updates on existing rows;
-   - hotel links.
-4. Test it on a scratch Postgres + PostGIS seeded from the export.
+```
+python3 build_prepared_de_it.py <export.json> <first_free_code> <migration_name> <qa_first_id>
+```
+
+- **`export.json`** is the JSON cell from `export_de_it_query.sql`.
+- **`first_free_code`** must be above production's maximum *and* above every
+  code claimed by unapplied files on any branch. Check with
+  `git grep` across branches.
+- **`migration_name`** is named after the highest migration on main.
+
+It writes `match_report.csv`, which lists every judgement call:
+
+- matches made by coordinates or Place ID;
+- losses;
+- kept rows;
+- import errors;
+- stored coordinates that are off;
+- hotel mismatches.
+
+It also writes `prepared_de_it_stars_2026.sql` and the cities migration.
+Review the report before applying anything.
+
+**How existing rows are matched to MICHELIN**, never by name alone:
+
+1. MICHELIN slug and town segment;
+2. otherwise the same Google Place ID;
+3. otherwise coordinates within 200 m with a name check, or within 1 km
+   with a near-exact name.
+
+**Tested 2026-10-29** on a scratch PostgreSQL 16 + PostGIS database seeded
+with a *simulated* export built from the launch seed (`restaurants_master.csv`:
+59 DE and 58 IT rows, 270 hotels, 25 links). The outputs of that run were
+deleted.
+
+- **Without the migration**, the file aborts with nothing applied.
+- **With the migration:**
+  - DE ends at 12/48/278 with 3 losses (Aqua, bianc and Courtier, which
+    need confirming), and every launch row is verified and relabelled 2025.
+  - IT ends at 15/38/327: MICHELIN's live listing plus Lido 84, Quattro
+    Passi and Santa Elisabetta, which are kept and need confirming.
+    Tre Olivi is corrected to 1.
+  - Each restaurant has one current row that agrees with
+    `michelin_stars`.
+- **A re-run aborts.**
+
+The real export will differ: rows have been added since launch. The run is
+repeated on it and the output reviewed before anything is committed for
+apply.
