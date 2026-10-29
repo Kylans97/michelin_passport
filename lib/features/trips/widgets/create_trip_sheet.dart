@@ -81,12 +81,17 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
     text: widget.existingTrip?.notes ?? '',
   );
 
-  late DateTime _startDate =
-      widget.existingTrip?.startDate ??
-      DateTime.now().add(const Duration(days: 30));
-  late DateTime _endDate =
-      widget.existingTrip?.endDate ??
-      DateTime.now().add(const Duration(days: 33));
+  // Calendar days only. The defaults used to keep the current time of
+  // day, so a destination starting on the trip's first (default) day
+  // compared as "before" the trip and failed the leg check.
+  late DateTime _startDate = DateUtils.dateOnly(
+    widget.existingTrip?.startDate ??
+        DateTime.now().add(const Duration(days: 30)),
+  );
+  late DateTime _endDate = DateUtils.dateOnly(
+    widget.existingTrip?.endDate ??
+        DateTime.now().add(const Duration(days: 33)),
+  );
 
   // At least one leg, always. Several only when the server has
   // destinations (decision 3: each then needs its own dates).
@@ -343,8 +348,14 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
         if (leg.start == null || leg.end == null) {
           return 'Say when you\'ll be in each destination.';
         }
-        if (leg.start!.isBefore(_startDate) || leg.end!.isAfter(_endDate)) {
-          return 'Each destination\'s dates must fall within the trip.';
+        // Compared as calendar days, never instants.
+        final start = DateUtils.dateOnly(leg.start!);
+        final end = DateUtils.dateOnly(leg.end!);
+        if (start.isBefore(_startDate) || end.isAfter(_endDate)) {
+          final name = leg.country?.name ?? 'Destination ${i + 1}';
+          return '$name (${_formatDate(start)} – ${_formatDate(end)}) is '
+              'outside the trip\'s dates, ${_formatDate(_startDate)} – '
+              '${_formatDate(_endDate)}. Adjust one of them.';
         }
       }
     }
@@ -452,7 +463,9 @@ class _CreateTripSheetState extends State<_CreateTripSheet> {
       if (!mounted) return;
       setState(() {
         _saving = false;
-        _error = 'Could not save trip: $error';
+        _error = error is PostgrestException
+            ? 'Could not save trip: ${error.message}'
+            : 'Could not save trip. Please try again.';
       });
     }
   }

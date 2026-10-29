@@ -29,6 +29,17 @@ The format follows Keep a Changelog.
   existing cards are unchanged).
 
 ### Fixed
+- **Splitting a trip into destinations could be refused with "must fall
+  within the trip".** Create Trip's default dates kept the current time of
+  day (`now + 30 days`), and the destination check compared full
+  timestamps. A destination starting on the trip's default first day
+  (midnight) therefore counted as before the trip. Dates in the sheet are
+  now calendar days, and the comparison is by day. Reported on a
+  10 Nov – 1 Dec trip split in two. The exact steps weren't reproduced, but
+  this path was, in `test/create_trip_leg_dates_test.dart`; that path also
+  covers new trips, kept default end dates and edits. The message now
+  names the destination and both date ranges. A server-side refusal shows
+  the server's own text, not a raw exception.
 - **"Change hotel" deleted every stay on the trip.** Trip Detail assumed one
   hotel per trip, but `planned_venues` allows several, and a second stay
   planned from the venue's own Plan sheet was silently removed. "Add stay"
