@@ -4,6 +4,7 @@ import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import 'country_lookup.dart';
+import 'fetch_all_rows.dart';
 import 'restaurant_repository.dart' show restaurantFullColumns;
 import 'search_query.dart';
 
@@ -76,15 +77,17 @@ class HotelRepository {
     ];
   }
 
-  // Full catalogue ordered by name.
+  // Full catalogue ordered by name, past PostgREST's row cap (see
+  // fetchAllRows).
   Future<List<Hotel>> getAll() async {
-    final rows = await _client
-        .from('hotels_full')
-        .select(hotelFullColumns)
-        .order('name');
-    return (rows as List)
-        .map((row) => Hotel.fromJson(row as Map<String, dynamic>))
-        .toList();
+    final rows = await fetchAllRows(
+      () => _client
+          .from('hotels_full')
+          .select(hotelFullColumns)
+          .order('name')
+          .order('id', ascending: true),
+    );
+    return rows.map(Hotel.fromJson).toList();
   }
 
   // A single hotel by id, or null if it doesn't exist (or isn't visible
@@ -129,27 +132,32 @@ class HotelRepository {
     List<String> cityIds = const [],
   }) async {
     if (countryCodes.isEmpty && cityIds.isEmpty) return [];
-    var builder = _client.from('hotels_full').select(hotelFullColumns);
-    for (final filter in buildIlikeOrFilters(query, [
-      'name',
-      'city_name',
-      'country_name',
-    ])) {
-      builder = builder.or(filter);
+    PostgrestFilterBuilder<PostgrestList> filtered() {
+      var builder = _client.from('hotels_full').select(hotelFullColumns);
+      for (final filter in buildIlikeOrFilters(query, [
+        'name',
+        'city_name',
+        'country_name',
+      ])) {
+        builder = builder.or(filter);
+      }
+      return builder.or(
+        [
+          if (cityIds.isNotEmpty) 'city_id.in.(${cityIds.join(',')})',
+          if (countryCodes.isNotEmpty)
+            'country_code.in.(${countryCodes.join(',')})',
+        ].join(','),
+      );
     }
-    builder = builder.or(
-      [
-        if (cityIds.isNotEmpty) 'city_id.in.(${cityIds.join(',')})',
-        if (countryCodes.isNotEmpty)
-          'country_code.in.(${countryCodes.join(',')})',
-      ].join(','),
+
+    // Paged past the row cap, like RestaurantRepository.searchInPlaces.
+    final rows = await fetchAllRows(
+      () => filtered()
+          .order('is_expired', ascending: true)
+          .order('name', ascending: true)
+          .order('id', ascending: true),
     );
-    final rows = await builder
-        .order('is_expired', ascending: true)
-        .order('name', ascending: true);
-    return (rows as List)
-        .map((row) => Hotel.fromJson(row as Map<String, dynamic>))
-        .toList();
+    return rows.map(Hotel.fromJson).toList();
   }
 
   Future<List<Hotel>> search(
@@ -159,29 +167,32 @@ class HotelRepository {
     bool worlds50BestOnly = false,
     String? countryCode,
   }) async {
-    var builder = _client.from('hotels_full').select(hotelFullColumns);
+    PostgrestFilterBuilder<PostgrestList> filtered() {
+      var builder = _client.from('hotels_full').select(hotelFullColumns);
 
-    // One .or() call per word in [query] — mirrors
-    // RestaurantRepository.search() exactly; see buildIlikeOrFilters()'s
-    // doc comment for why chained .or() calls AND together instead of
-    // overwriting, and why a single-word query is unaffected.
-    for (final filter in buildIlikeOrFilters(query, [
-      'name',
-      'city_name',
-      'country_name',
-    ])) {
-      builder = builder.or(filter);
-    }
-    if (keys != null) {
-      builder = builder.eq('michelin_keys', keys);
-    } else if (keysOnly) {
-      builder = builder.not('michelin_keys', 'is', null);
-    }
-    if (worlds50BestOnly) {
-      builder = builder.not('worlds_50_best_rank', 'is', null);
-    }
-    if (countryCode != null) {
-      builder = builder.eq('country_code', countryCode);
+      // One .or() call per word in [query] — mirrors
+      // RestaurantRepository.search() exactly; see buildIlikeOrFilters()'s
+      // doc comment for why chained .or() calls AND together instead of
+      // overwriting, and why a single-word query is unaffected.
+      for (final filter in buildIlikeOrFilters(query, [
+        'name',
+        'city_name',
+        'country_name',
+      ])) {
+        builder = builder.or(filter);
+      }
+      if (keys != null) {
+        builder = builder.eq('michelin_keys', keys);
+      } else if (keysOnly) {
+        builder = builder.not('michelin_keys', 'is', null);
+      }
+      if (worlds50BestOnly) {
+        builder = builder.not('worlds_50_best_rank', 'is', null);
+      }
+      if (countryCode != null) {
+        builder = builder.eq('country_code', countryCode);
+      }
+      return builder;
     }
 
     // Pop-ups: SQL-side sort, is_expired as the primary key — see
@@ -194,14 +205,21 @@ class HotelRepository {
     // secondary key, mirroring RestaurantRepository.search() exactly,
     // including the same `ascending: true` footgun this avoids
     // (PostgrestTransformBuilder.order() defaults to descending).
-    final rows = worlds50BestOnly
-        ? await builder
-              .order('is_expired', ascending: true)
-              .order('worlds_50_best_rank', ascending: true)
-        : await builder.order('is_expired', ascending: true).order('name');
-    return (rows as List)
-        .map((row) => Hotel.fromJson(row as Map<String, dynamic>))
-        .toList();
+    //
+    // Paged past PostgREST's row cap, `id` last for stable pages — see
+    // RestaurantRepository.search() and fetchAllRows.
+    final rows = await fetchAllRows(
+      () => worlds50BestOnly
+          ? filtered()
+                .order('is_expired', ascending: true)
+                .order('worlds_50_best_rank', ascending: true)
+                .order('id', ascending: true)
+          : filtered()
+                .order('is_expired', ascending: true)
+                .order('name')
+                .order('id', ascending: true),
+    );
+    return rows.map(Hotel.fromJson).toList();
   }
 
   // Countries that have at least one hotel, for the filter chips. Two
@@ -215,13 +233,18 @@ class HotelRepository {
   // never passes this (defaults false), so its own country list is
   // unaffected.
   Future<List<VenueCountry>> getCountries({bool keysOnly = false}) async {
-    var query = _client.from('hotels_full').select('country_code');
-    if (keysOnly) {
-      query = query.not('michelin_keys', 'is', null);
-    }
-    final hotelRows = await query;
+    //
+    // Paged past PostgREST's row cap, like RestaurantRepository.
+    // getCountries() — hotels are close to 1000 rows.
+    final hotelRows = await fetchAllRows(() {
+      var query = _client.from('hotels_full').select('country_code, id');
+      if (keysOnly) {
+        query = query.not('michelin_keys', 'is', null);
+      }
+      return query.order('id', ascending: true);
+    });
     final presentCodes = <String>{
-      for (final row in hotelRows as List)
+      for (final row in hotelRows)
         if ((row['country_code'] as String?)?.isNotEmpty ?? false)
           row['country_code'] as String,
     };

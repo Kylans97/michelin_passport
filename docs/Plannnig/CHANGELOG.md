@@ -15,6 +15,30 @@ The format follows Keep a Changelog.
   on the trip. On a real phone the old line didn't read as the way to
   invite, so the feature went unfound.
 
+### Fixed
+- **Guides' MICHELIN catalogue said "1000 places" while production holds
+  1,797 starred restaurants.**
+  - **Cause:** PostgREST returns at most `max_rows` (1000) rows per
+    request and says nothing when it truncates. `RestaurantRepository.search`
+    read the whole catalogue in one request, so it stopped at row 1000
+    once the Spain and Belgium imports took the catalogue past 1000.
+  - **Fix:** every unbounded catalogue read now pages through
+    `fetchAllRows`, 1000 at a time, with `id` as a unique last sort key so
+    pages can't skip or repeat rows. That covers `search`, `getAll`,
+    `searchInPlaces` and `getCountries` on both repositories.
+  - **Hidden side effect:** the country pickers had the same bug. They
+    read one `country_code` per row, so any country whose rows fell
+    after row 1000 dropped out of the picker.
+  - **Hotels:** 811 rows, under the cap for now. They are paged the same
+    way before Germany and Italy push them closer.
+  - **Verified:** on the simulator against production, the catalogue shows
+    "1797 places". `test/fetch_all_rows_test.dart` runs against a fake
+    server that caps at 1000 like PostgREST; its country test fails
+    without the fix. Analyze clean, 2,572 tests pass.
+  - **Why it would recur:** any new query over the catalogue that skips
+    `fetchAllRows` works in testing and breaks silently once the table
+    passes 1000 rows.
+
 ---
 
 ## v1.3.0 (15) — 2026-10-29
