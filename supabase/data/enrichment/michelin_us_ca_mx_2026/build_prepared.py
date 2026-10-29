@@ -289,9 +289,15 @@ def country(CC, X, first_code, first_hcode, shared):
         launch = cur['year'] == 2026 and not cur.get('announced_on')
         if gy == 2025 and launch:
             if any(h['year'] == 2025 for h in hist):
-                optional_rows.append((e, cur, [h for h in hist if h['year'] == 2025][0], m))
-                report.append(dict(country=CC, code=e['code'], name=e['name'], kind='2026 LAUNCH ROW BEFORE A 2026 EDITION',
-                                   detail=f"MICHELIN's current edition for this guide is 2025 ({s}); production holds 2025 = {[h['value'] for h in hist if h['year'] == 2025][0]} (not current) and a launch row 2026 = {cur['value']} (current). Relabelling would collide; left untouched, optional fix commented out at the end"))
+                h25 = [h for h in hist if h['year'] == 2025][0]
+                if h25['value'] == s and cur['value'] == s:
+                    # decided by the product owner, 2026-10-30 (QA-301): make 2025 current, drop the launch row
+                    optional_rows.append((e, cur, h25, m))
+                    report.append(dict(country=CC, code=e['code'], name=e['name'], kind='2026 LAUNCH ROW DROPPED, 2025 MADE CURRENT',
+                                       detail=f"MICHELIN's current edition for this guide is 2025 ({s}); production held 2025 = {h25['value']} (not current, history pass) and a launch row 2026 = {cur['value']} (current, no announced_on) that predates any 2026 edition. Relabelling would collide, so the launch row is deleted and 2025 made current (product owner, 2026-10-30; QA-301)"))
+                else:
+                    report.append(dict(country=CC, code=e['code'], name=e['name'], kind='2025 ROW DISAGREES',
+                                       detail=f"2025 = {h25['value']}, launch 2026 = {cur['value']}, MICHELIN 2025 = {s}; left untouched -- decide by hand"))
             elif cur['value'] == s:
                 relabel.append(e['code'])
                 report.append(dict(country=CC, code=e['code'], name=e['name'], kind='LAUNCH ROW RELABELLED 2026 -> 2025',
@@ -411,7 +417,7 @@ def country(CC, X, first_code, first_hcode, shared):
 
     cnt = collections.Counter(int(r['stars']) for r in research)
     keycnt = collections.Counter(h['keys'] for h in hotel_by_mid.values())
-    summary = dict(existing=len(ex), matched=len(matched), relabelled_2025=len(relabel), changes=len(changes), losses=len(losses),
+    summary = dict(existing=len(ex), matched=len(matched), relabelled_2025=len(relabel), launch_rows_dropped=len(optional_rows), changes=len(changes), losses=len(losses),
                    corrections=len(corrections), new=len(new), new_phones=sum(1 for x in new if x['r']['phone']), new_place_ids=0,
                    property_names=len(prop_new), links=len(new_links), fills=len(fills),
                    new_hotels=len(new_hotels), new_hotel_phones=sum(1 for h in new_hotels if h['phone']),
@@ -511,6 +517,30 @@ update public.award_history ah set guide_year = 2025
  where r.id = ah.entity_id and ah.entity_type = 'restaurant' and ah.award_type = 'michelin_stars'
    and ah.guide_year = 2026 and ah.is_current and ah.announced_on is null
    and r.restaurant_code = any(array[{', '.join(q(c) for c in relabel)}]);""")
+    if optional_rows:
+        codes = ', '.join(q(e['code']) for e, cur, h25, m in optional_rows)
+        P.append(f"""-- {CC} 2a'. launch rows 2026 that predate any 2026 edition, where a 2025 row already exists
+--     (relabelling would collide): drop the launch row, make 2025 current (values agree with
+--     MICHELIN's live 2025 page; product owner, 2026-10-30, QA-301). The delete comes first:
+--     only one current row per entity and award type is allowed.
+create temp table _drop26_{cc} (code text primary key, value smallint) on commit drop;
+insert into _drop26_{cc} values
+{(','+chr(10)).join(f"    ({q(e['code'])}, {cur['value']})" for e, cur, h25, m in optional_rows)};
+do $$
+declare n int;
+begin
+  select count(*) into n from _drop26_{cc} d join public.restaurants r on r.restaurant_code = d.code
+    join public.award_history ah on ah.entity_type = 'restaurant' and ah.entity_id = r.id and ah.award_type = 'michelin_stars'
+   where (ah.guide_year = 2026 and ah.is_current and ah.announced_on is null and ah.award_value = d.value)
+      or (ah.guide_year = 2025 and not ah.is_current and ah.award_value = d.value);
+  if n <> {2 * len(optional_rows)} then raise exception '{CC}: launch-row fix expected {2 * len(optional_rows)} rows (2026 current + 2025 not current), found %', n; end if;
+end $$;
+delete from public.award_history ah using public.restaurants r, _drop26_{cc} d
+ where r.restaurant_code = d.code and ah.entity_id = r.id and ah.entity_type = 'restaurant' and ah.award_type = 'michelin_stars'
+   and ah.guide_year = 2026 and ah.is_current and ah.announced_on is null and ah.award_value = d.value;
+update public.award_history ah set is_current = true from public.restaurants r, _drop26_{cc} d
+ where r.restaurant_code = d.code and ah.entity_id = r.id and ah.entity_type = 'restaurant' and ah.award_type = 'michelin_stars'
+   and ah.guide_year = 2025 and not ah.is_current and ah.award_value = d.value;""")
     if changes or losses:
         rows = [(c, s, y, a) for c, s, _, y, a in changes] + [(c, None, 2026, None) for c in losses]
         P.append(f"""-- {CC} 2b. changes and losses: close the current row, open the guide year's row
@@ -601,8 +631,7 @@ select h.id, r.id, l.confidence, l.evidence, now()
 on conflict (hotel_id, restaurant_id) do nothing;""")
     lost_codes = [h['code'] for h in lost_keys]
     excl = f" and hotel_code <> all(array[{', '.join(q(c) for c in lost_codes)}])" if lost_codes else ''
-    keep26 = {m['michelin_url'] for e, cur, h25, m in optional_rows}   # their current row stays the 2026 launch row
-    years = collections.Counter((2026 if r['michelin_url'] in keep26 else int(r['guide_year']), int(r['stars'])) for r in research)
+    years = collections.Counter((int(r['guide_year']), int(r['stars'])) for r in research)
     P.append(f"""-- {CC} post-conditions: MICHELIN's live {CC} listings (every guide) and the 2026 {CC} Keys
 do $$
 declare n int;
@@ -655,18 +684,6 @@ end $$;""")
 --  where hotel_code = '{h['code']}' and name = {q(h['name'])} and country_code = '{CC}' and michelin_keys = {h['keys']};
 -- insert into public.award_history (entity_type, entity_id, guide_year, award_type, award_value, is_current, announced_on)
 -- select 'hotel', id, {KEY_YEAR}, 'michelin_keys', NULL, true, date '{ANNOUNCED_KEYS}' from public.hotels where hotel_code = '{h['code']}';
-"""
-    for e, cur, h25, m in optional_rows:
-        optional += f"""
--- {e['code']} {e['name']}: MICHELIN's current edition for this restaurant is the 2025 {m['guide'].split(' 2025')[0]}
--- ({m['stars']} star(s), dateAwarded 2025; the 2026 ceremony is 14 Dec 2026). Production holds a 2025 row
--- ({h25['value']}, not current) from the history pass and a launch row 2026 = {cur['value']} (current, no
--- announced_on), which predates any 2026 edition. If confirmed, make 2025 current and drop the launch row:
---
--- update public.award_history set is_current = true where entity_type = 'restaurant' and award_type = 'michelin_stars'
---    and guide_year = 2025 and award_value = {h25['value']} and entity_id = (select id from public.restaurants where restaurant_code = '{e['code']}');
--- delete from public.award_history where entity_type = 'restaurant' and award_type = 'michelin_stars' and guide_year = 2026
---    and announced_on is null and award_value = {cur['value']} and entity_id = (select id from public.restaurants where restaurant_code = '{e['code']}');
 """
     return dict(P=P, report=report, towns=sorted(newtowns, key=lambda t: (t[0], t[1] or '')), summary=summary, cnt=cnt, keycnt=keycnt,
                 next_code=code, next_hcode=hcode, optional=optional, years=years)

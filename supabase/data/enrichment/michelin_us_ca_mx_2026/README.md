@@ -11,19 +11,19 @@ Status: **PREPARED — NOT APPLIED.** Generated from production's export of
 
 Review `match_report.csv` first (rows labelled by country). Decided by the
 product owner on 2026-10-30: the **CA country row** goes in (below), and the
-hotel area towns stay, as for the UK (QA-306). Still for review: Sushi Sho's
-optional block (QA-301), Harbor House Inn (QA-307) and Rosewood Mayakoba's
-match (QA-309).
+hotel area towns stay, as for the UK (QA-306), and Sushi Sho's 2026 launch
+row is dropped with its 2025 row made current (QA-301). Still for review:
+Harbor House Inn (QA-307) and Rosewood Mayakoba's match (QA-309).
 
 | After applying | United States (US) | Canada (CA) | Mexico (MX) |
 |---|---|---|---|
 | Stars (3/2/1) | 16/40/223, exactly MICHELIN's live listing | 0/3/36, exactly MICHELIN's live listing | 0/2/27, exactly MICHELIN's live listing |
-| … current rows by guide year | 2025: 5/22/87 (Northeast Cities); 2026: 11/18/136 (Sushi Sho's 2026 launch row left, QA-301) | 2026: all | 2026: all |
+| … current rows by guide year | 2025: 6/22/87 (Northeast Cities); 2026: 10/18/136 | 2026: all | 2026: all |
 | Restaurants before → added | 51 → +228 (`rest_3001`–`rest_3228`) | 0 → +39 (`rest_3229`–`rest_3267`) | 6 → +24 (`rest_3268`–`rest_3291`) |
 | … new with a phone | 156 | 30 | 11 |
 | … new with `property_name` | 1 (Le Coucou: 11 Howard) | 0 | 1 (Olivea Farm to Table: Casa Olivea) |
 | … with a Google Place ID | **0** (QA-300) | **0** | **0** |
-| Existing restaurants | 26 launch rows relabelled 2026 → 2025, 24 verified 2026; fill-only: 33 phones, 47 websites, 45 MICHELIN urls | — | 5 verified 2026; fill-only: 3 websites, 1 MICHELIN url; Arca (World's 50 Best, unstarred) untouched |
+| Existing restaurants | 26 launch rows relabelled 2026 → 2025, Sushi Sho's dropped (2025 made current), 24 verified 2026; fill-only: 33 phones, 47 websites, 45 MICHELIN urls | — | 5 verified 2026; fill-only: 3 websites, 1 MICHELIN url; Arca (World's 50 Best, unstarred) untouched |
 | Key hotels (3/2/1) | 15/78/266 = 359, exactly MICHELIN's 2026 Keys | 2/8/32 = 42, exactly | 3/21/73 = 97 (article: 98; QA-305) |
 | Key hotels added | 349 (`hotel_1501`–`hotel_1849`) | 42 (`hotel_1850`–`hotel_1891`) | 90 (`hotel_1892`–`hotel_1981`) |
 | … with website / phone | 266 / 269 | 33 / 32 | 58 / 61 |
@@ -113,8 +113,10 @@ A region/year pair not in `build_research.py`'s `GUIDES` stops the build.
   (`guide_year 2026`, `announced_on` NULL). Where MICHELIN's current edition is
   2026 (California, Florida, Mexico) all 29 agree with the live page: verified,
   left as is. Where it is the Northeast Cities 2025 edition, 26 agree with the
-  2025 value and are **relabelled 2025** (Germany's precedent); Sushi Sho
-  already has a 2025 history row, so it is left with an optional fix (QA-301).
+  2025 value and are **relabelled 2025** (Germany's precedent). Sushi Sho
+  already has a 2025 history row (3, not current), so relabelling would
+  collide: its launch row is **deleted and the 2025 row made current**
+  (product owner, 2026-10-30; QA-301), guarded on both rows' exact values.
   No changes, corrections or losses.
 - **Hotels:** 13 by MICHELIN's numeric hotel id; Amangiri, The Beverly Hills
   Hotel, The Fifth Avenue Hotel and Rosewood Mayakoba (no stored url) by
@@ -232,7 +234,7 @@ with the real export plus production's highest codes and a current 2026 Key row:
 - **File without the migration:** aborts, nothing applied.
 - **Migration + file:** applies; the counts in the table above, 9 links, CA
   country row with 23 zones, Eleven Madison Park 2012 → 2025 (current),
-  Sushi Sho 2025 / 2026 (current, untouched), new rows with their guide's date.
+  Sushi Sho 2025 only (current; launch row gone), new rows with their guide's date.
 - **Re-run of the file:** aborts. **Re-run of the migration:** no-op.
 - **A renamed existing row:** aborts the whole file.
 - **A restaurant code in the file's range taken:** aborts.
