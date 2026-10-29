@@ -9,10 +9,11 @@ Status: **PREPARED — NOT APPLIED.** Generated from production's export of
 2. `prepared_us_ca_mx_stars_2026.sql` (one transaction for all three countries;
    aborts on any check), with `supabase db query --linked -f <absolute path>`
 
-Review `match_report.csv` first (rows labelled by country). Decisions waiting
-for you: the new **CA country row** (below), Sushi Sho's optional block (QA-301),
-the hotel area towns (QA-306), Harbor House Inn (QA-307) and Rosewood
-Mayakoba's match (QA-309).
+Review `match_report.csv` first (rows labelled by country). Decided by the
+product owner on 2026-10-30: the **CA country row** goes in (below), and the
+hotel area towns stay, as for the UK (QA-306). Still for review: Sushi Sho's
+optional block (QA-301), Harbor House Inn (QA-307) and Rosewood Mayakoba's
+match (QA-309).
 
 | After applying | United States (US) | Canada (CA) | Mexico (MX) |
 |---|---|---|---|
@@ -34,7 +35,7 @@ Every starred US/CA/MX restaurant ends with exactly one current
 counts above; every Key hotel with exactly one current 2026 `michelin_keys`
 row agreeing with `michelin_keys`. All are post-conditions in the file.
 
-## The new CA `countries` row — call-out for review
+## The new CA `countries` row (approved by the product owner, 2026-10-30)
 
 Production has no `countries` row for CA (read-only check 2026-10-29) and held
 no CA restaurant, hotel or city. The migration inserts it first, as
@@ -186,7 +187,8 @@ MICHELIN's town names. Restaurant towns from the restaurant pages (Brooklyn,
 Queens, Québec, Montréal); Mexico City's alcaldías go to production's
 "Mexico City", Chocholá to production's "Chocholá, Yucatán". Hotel towns are
 the hotel page's locality, often an area in the US (Los Angeles Area,
-Napa / Sonoma Valleys, Island of Maui …; 29 such towns), as for GB (QA-306);
+Napa / Sonoma Valleys, Island of Maui …; 29 such towns), as for GB; kept by
+the product owner's decision of 2026-10-30 (QA-306);
 "Washington D.C." goes to production's Washington (District of Columbia).
 Cities resolve on (name, region); `region` is set only where one name is in
 two states (Greensboro GA/NC, Portland ME/OR, Wilmington DE/NC, Washington
