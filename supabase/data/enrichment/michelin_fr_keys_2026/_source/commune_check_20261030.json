@@ -1,0 +1,6711 @@
+{
+ "read_at": "2026-10-29T23:41:50Z",
+ "source": "https://geo.api.gouv.fr/communes (lat/lon -> commune; nom -> exact-name communes)",
+ "hotels": {
+  "hotel_2001": {
+   "name": "Airelles Château de Versailles, Le Grand Contrôle",
+   "city": "Versailles",
+   "postcode": "78000",
+   "pin_commune": {
+    "nom": "Versailles",
+    "code": "78646",
+    "codesPostaux": [
+     "78000"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Versailles",
+     "code": "78646",
+     "codesPostaux": [
+      "78000"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2002": {
+   "name": "Airelles Gordes, La Bastide",
+   "city": "Gordes",
+   "postcode": "84220",
+   "pin_commune": {
+    "nom": "Gordes",
+    "code": "84050",
+    "codesPostaux": [
+     "84220"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Gordes",
+     "code": "84050",
+     "codesPostaux": [
+      "84220"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2003": {
+   "name": "Baumanière",
+   "city": "Les Baux-de-Provence",
+   "postcode": "13520",
+   "pin_commune": {
+    "nom": "Les Baux-de-Provence",
+    "code": "13011",
+    "codesPostaux": [
+     "13520"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Les Baux-de-Provence",
+     "code": "13011",
+     "codesPostaux": [
+      "13520"
+     ],
+     "_score": 0.1386773998783204
+    }
+   ]
+  },
+  "hotel_2004": {
+   "name": "Château de la Chèvre d'Or",
+   "city": "Èze",
+   "postcode": "06360",
+   "pin_commune": {
+    "nom": "Èze",
+    "code": "06059",
+    "codesPostaux": [
+     "06360"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Èze",
+     "code": "06059",
+     "codesPostaux": [
+      "06360"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2005": {
+   "name": "Cheval Blanc Courchevel",
+   "city": "Courchevel",
+   "postcode": "73121",
+   "pin_commune": {
+    "nom": "Courchevel",
+    "code": "73227",
+    "codesPostaux": [
+     "73120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Courchevel",
+     "code": "73227",
+     "codesPostaux": [
+      "73120"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_707": {
+   "name": "Cheval Blanc Paris",
+   "city": "Paris",
+   "postcode": "75001",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2006": {
+   "name": "Domaine Les Crayères",
+   "city": "Reims",
+   "postcode": "51100",
+   "pin_commune": {
+    "nom": "Reims",
+    "code": "51454",
+    "codesPostaux": [
+     "51100"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Reims",
+     "code": "51454",
+     "codesPostaux": [
+      "51100"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2007": {
+   "name": "Four Seasons Hotel George V, Paris",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2008": {
+   "name": "Four Seasons Resort Megève",
+   "city": "Megève",
+   "postcode": "74120",
+   "pin_commune": {
+    "nom": "Megève",
+    "code": "74173",
+    "codesPostaux": [
+     "74120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Megève",
+     "code": "74173",
+     "codesPostaux": [
+      "74120"
+     ],
+     "_score": 0.739517248275684
+    }
+   ]
+  },
+  "hotel_2009": {
+   "name": "Grand-Hôtel du Cap-Ferrat, A Four Seasons Hotel",
+   "city": "Saint-Jean-Cap-Ferrat",
+   "postcode": "06230",
+   "pin_commune": {
+    "nom": "Saint-Jean-Cap-Ferrat",
+    "code": "06121",
+    "codesPostaux": [
+     "06230"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Jean-Cap-Ferrat",
+     "code": "06121",
+     "codesPostaux": [
+      "06230"
+     ],
+     "_score": 0.28882997157891566
+    }
+   ]
+  },
+  "hotel_709": {
+   "name": "Hôtel du Cap-Eden-Roc",
+   "city": "Antibes",
+   "postcode": "06160",
+   "pin_commune": {
+    "nom": "Antibes",
+    "code": "06004",
+    "codesPostaux": [
+     "06160",
+     "06600"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Antibes",
+     "code": "06004",
+     "codesPostaux": [
+      "06160",
+      "06600"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2010": {
+   "name": "Hôtel & Spa du Castellet",
+   "city": "Le Castellet",
+   "postcode": "83330",
+   "pin_commune": {
+    "nom": "Le Castellet",
+    "code": "83035",
+    "codesPostaux": [
+     "83330"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Le Castellet",
+     "code": "04041",
+     "codesPostaux": [
+      "04700"
+     ],
+     "_score": 0.08119492925618063
+    },
+    {
+     "nom": "Le Castellet",
+     "code": "83035",
+     "codesPostaux": [
+      "83330"
+     ],
+     "_score": 0.08119492925618063
+    }
+   ]
+  },
+  "hotel_711": {
+   "name": "La Réserve Paris",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2011": {
+   "name": "La Réserve Ramatuelle",
+   "city": "Ramatuelle",
+   "postcode": "83350",
+   "pin_commune": {
+    "nom": "Ramatuelle",
+    "code": "83101",
+    "codesPostaux": [
+     "83350"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Ramatuelle",
+     "code": "83101",
+     "codesPostaux": [
+      "83350"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_712": {
+   "name": "Le Bristol Paris",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2012": {
+   "name": "Le Couvent des Minimes",
+   "city": "Mane",
+   "postcode": "04300",
+   "pin_commune": {
+    "nom": "Mane",
+    "code": "04111",
+    "codesPostaux": [
+     "04300"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Mane",
+     "code": "04111",
+     "codesPostaux": [
+      "04300"
+     ],
+     "_score": 0.5287707473245892
+    },
+    {
+     "nom": "Mane",
+     "code": "31315",
+     "codesPostaux": [
+      "31260"
+     ],
+     "_score": 0.5287707473245892
+    }
+   ]
+  },
+  "hotel_2013": {
+   "name": "Le K2 Palace",
+   "city": "Courchevel",
+   "postcode": "73120",
+   "pin_commune": {
+    "nom": "Courchevel",
+    "code": "73227",
+    "codesPostaux": [
+     "73120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Courchevel",
+     "code": "73227",
+     "codesPostaux": [
+      "73120"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2014": {
+   "name": "Le Meurice, Dorchester Collection",
+   "city": "Paris",
+   "postcode": "75001",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_713": {
+   "name": "Le Plaza Athénée",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2015": {
+   "name": "Les Sources de Caudalie",
+   "city": "Martillac",
+   "postcode": "33650",
+   "pin_commune": {
+    "nom": "Martillac",
+    "code": "33274",
+    "codesPostaux": [
+     "33650"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Martillac",
+     "code": "33274",
+     "codesPostaux": [
+      "33650"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2016": {
+   "name": "Maison Villeroy",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_791": {
+   "name": "Ritz Paris",
+   "city": "Paris",
+   "postcode": "75041",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2017": {
+   "name": "Royal Champagne",
+   "city": "Champillon",
+   "postcode": "51160",
+   "pin_commune": {
+    "nom": "Champillon",
+    "code": "51119",
+    "codesPostaux": [
+     "51160"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Champillon",
+     "code": "51119",
+     "codesPostaux": [
+      "51160"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2018": {
+   "name": "Saint James Paris",
+   "city": "Paris",
+   "postcode": "75116",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2019": {
+   "name": "Villa La Coste",
+   "city": "Le Puy-Sainte-Réparade",
+   "postcode": "13610",
+   "pin_commune": {
+    "nom": "Le Puy-Sainte-Réparade",
+    "code": "13080",
+    "codesPostaux": [
+     "13610"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Le Puy-Sainte-Réparade",
+     "code": "13080",
+     "codesPostaux": [
+      "13610"
+     ],
+     "_score": 0.11055266974259174
+    }
+   ]
+  },
+  "hotel_2020": {
+   "name": "Airelles Saint-Tropez, Château de la Messardière",
+   "city": "Saint-Tropez",
+   "postcode": "83990",
+   "pin_commune": {
+    "nom": "Saint-Tropez",
+    "code": "83119",
+    "codesPostaux": [
+     "83990"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Tropez",
+     "code": "83119",
+     "codesPostaux": [
+      "83990"
+     ],
+     "_score": 0.43596136930918256
+    }
+   ]
+  },
+  "hotel_2021": {
+   "name": "Aman Le Melezin",
+   "city": "Courchevel",
+   "postcode": "73120",
+   "pin_commune": {
+    "nom": "Courchevel",
+    "code": "73227",
+    "codesPostaux": [
+     "73120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Courchevel",
+     "code": "73227",
+     "codesPostaux": [
+      "73120"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2022": {
+   "name": "Bvlgari Hôtel Paris",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2023": {
+   "name": "Castelbrac",
+   "city": "Dinard",
+   "postcode": "35800",
+   "pin_commune": {
+    "nom": "Dinard",
+    "code": "35093",
+    "codesPostaux": [
+     "35800"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Dinard",
+     "code": "35093",
+     "codesPostaux": [
+      "35800"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2024": {
+   "name": "Château de la Gaude",
+   "city": "Aix-en-Provence",
+   "postcode": "13100",
+   "pin_commune": {
+    "nom": "Aix-en-Provence",
+    "code": "13001",
+    "codesPostaux": [
+     "13080",
+     "13090",
+     "13100",
+     "13290",
+     "13540"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Aix-en-Provence",
+     "code": "13001",
+     "codesPostaux": [
+      "13080",
+      "13090",
+      "13100",
+      "13290",
+      "13540"
+     ],
+     "_score": 0.23064250985516463
+    }
+   ]
+  },
+  "hotel_2025": {
+   "name": "Chateau de Montcaud",
+   "city": "Sabran",
+   "postcode": "30200",
+   "pin_commune": {
+    "nom": "Sabran",
+    "code": "30225",
+    "codesPostaux": [
+     "30200"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Sabran",
+     "code": "30225",
+     "codesPostaux": [
+      "30200"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2026": {
+   "name": "Château du Grand-Lucé",
+   "city": "Le Grand-Lucé",
+   "postcode": "72150",
+   "pin_commune": {
+    "nom": "Le Grand-Lucé",
+    "code": "72143",
+    "codesPostaux": [
+     "72150"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Le Grand-Lucé",
+     "code": "72143",
+     "codesPostaux": [
+      "72150"
+     ],
+     "_score": 0.08591616325231788
+    }
+   ]
+  },
+  "hotel_2027": {
+   "name": "Château Eza",
+   "city": "Èze",
+   "postcode": "06360",
+   "pin_commune": {
+    "nom": "Èze",
+    "code": "06059",
+    "codesPostaux": [
+     "06360"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Èze",
+     "code": "06059",
+     "codesPostaux": [
+      "06360"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2028": {
+   "name": "Château Lafaurie Peyraguey",
+   "city": "Bommes",
+   "postcode": "33210",
+   "pin_commune": {
+    "nom": "Bommes",
+    "code": "33060",
+    "codesPostaux": [
+     "33210"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Bommes",
+     "code": "33060",
+     "codesPostaux": [
+      "33210"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2029": {
+   "name": "Château Richeux - Les Maisons de Bricourt",
+   "city": "Saint-Méloir-des-Ondes",
+   "postcode": "35350",
+   "pin_commune": {
+    "nom": "Saint-Méloir-des-Ondes",
+    "code": "35299",
+    "codesPostaux": [
+     "35350"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Méloir-des-Ondes",
+     "code": "35299",
+     "codesPostaux": [
+      "35350"
+     ],
+     "_score": 0.32970253805844624
+    }
+   ]
+  },
+  "hotel_2030": {
+   "name": "Cheval Blanc St-Tropez",
+   "city": "Saint-Tropez",
+   "postcode": "83990",
+   "pin_commune": null,
+   "city_is_commune": [
+    {
+     "nom": "Saint-Tropez",
+     "code": "83119",
+     "codesPostaux": [
+      "83990"
+     ],
+     "_score": 0.43596136930918256
+    }
+   ]
+  },
+  "hotel_2031": {
+   "name": "Coquillade - Provence",
+   "city": "Gargas",
+   "postcode": "84400",
+   "pin_commune": {
+    "nom": "Gargas",
+    "code": "84047",
+    "codesPostaux": [
+     "84400"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Gargas",
+     "code": "31211",
+     "codesPostaux": [
+      "31620"
+     ],
+     "_score": 1
+    },
+    {
+     "nom": "Gargas",
+     "code": "84047",
+     "codesPostaux": [
+      "84400"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2032": {
+   "name": "Domaine des Étangs - Auberge Collection",
+   "city": "Massignac",
+   "postcode": "16310",
+   "pin_commune": {
+    "nom": "Massignac",
+    "code": "16212",
+    "codesPostaux": [
+     "16310"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Massignac",
+     "code": "16212",
+     "codesPostaux": [
+      "16310"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2033": {
+   "name": "Domaine Le Mouflon D'Or",
+   "city": "Zonza",
+   "postcode": "20124",
+   "pin_commune": {
+    "nom": "Zonza",
+    "code": "2A362",
+    "codesPostaux": [
+     "20124",
+     "20144"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Zonza",
+     "code": "2A362",
+     "codesPostaux": [
+      "20124",
+      "20144"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_708": {
+   "name": "Hotel de Crillon, A Rosewood Hotel",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2034": {
+   "name": "Hotel du Palais",
+   "city": "Biarritz",
+   "postcode": "64200",
+   "pin_commune": {
+    "nom": "Biarritz",
+    "code": "64122",
+    "codesPostaux": [
+     "64200"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Biarritz",
+     "code": "64122",
+     "codesPostaux": [
+      "64200"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2035": {
+   "name": "J.K. Place Paris",
+   "city": "Paris",
+   "postcode": "75007",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2036": {
+   "name": "La Cheneaudière",
+   "city": "Colroy-la-Roche",
+   "postcode": "67420",
+   "pin_commune": {
+    "nom": "Colroy-la-Roche",
+    "code": "67076",
+    "codesPostaux": [
+     "67420"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Colroy-la-Roche",
+     "code": "67076",
+     "codesPostaux": [
+      "67420"
+     ],
+     "_score": 0.06594593712084751
+    }
+   ]
+  },
+  "hotel_2037": {
+   "name": "La Ferme Saint-Siméon",
+   "city": "Honfleur",
+   "postcode": "14600",
+   "pin_commune": {
+    "nom": "Honfleur",
+    "code": "14333",
+    "codesPostaux": [
+     "14600"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Honfleur",
+     "code": "14333",
+     "codesPostaux": [
+      "14600"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2038": {
+   "name": "La Mirande",
+   "city": "Avignon",
+   "postcode": "84000",
+   "pin_commune": {
+    "nom": "Avignon",
+    "code": "84007",
+    "codesPostaux": [
+     "84000",
+     "84140"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Avignon",
+     "code": "84007",
+     "codesPostaux": [
+      "84000",
+      "84140"
+     ],
+     "_score": 0.7023032555791131
+    }
+   ]
+  },
+  "hotel_2039": {
+   "name": "L'Apogée Courchevel",
+   "city": "Courchevel",
+   "postcode": "73120",
+   "pin_commune": {
+    "nom": "Courchevel",
+    "code": "73227",
+    "codesPostaux": [
+     "73120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Courchevel",
+     "code": "73227",
+     "codesPostaux": [
+      "73120"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2040": {
+   "name": "La Réserve de Beaulieu",
+   "city": "Beaulieu-sur-Mer",
+   "postcode": "06310",
+   "pin_commune": {
+    "nom": "Beaulieu-sur-Mer",
+    "code": "06011",
+    "codesPostaux": [
+     "06310"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Beaulieu-sur-Mer",
+     "code": "06011",
+     "codesPostaux": [
+      "06310"
+     ],
+     "_score": 0.12289396718070268
+    }
+   ]
+  },
+  "hotel_2041": {
+   "name": "Le Domaine de Beaulieu",
+   "city": "Busnes",
+   "postcode": "62350",
+   "pin_commune": {
+    "nom": "Busnes",
+    "code": "62190",
+    "codesPostaux": [
+     "62350"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Busnes",
+     "code": "62190",
+     "codesPostaux": [
+      "62350"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2042": {
+   "name": "Le Domaine du Mas de Pierre",
+   "city": "Saint-Paul-de-Vence",
+   "postcode": "06570",
+   "pin_commune": {
+    "nom": "Saint-Paul-de-Vence",
+    "code": "06128",
+    "codesPostaux": [
+     "06570"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Paul-de-Vence",
+     "code": "06128",
+     "codesPostaux": [
+      "06570"
+     ],
+     "_score": 0.13308367060545276
+    }
+   ]
+  },
+  "hotel_2043": {
+   "name": "Le K2 Chogori",
+   "city": "Val-d'Isère",
+   "postcode": "73150",
+   "pin_commune": {
+    "nom": "Val-d'Isère",
+    "code": "73304",
+    "codesPostaux": [
+     "73150"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Val-d'Isère",
+     "code": "73304",
+     "codesPostaux": [
+      "73150"
+     ],
+     "_score": 0.1196884185817527
+    }
+   ]
+  },
+  "hotel_2044": {
+   "name": "Le Negresco",
+   "city": "Nice",
+   "postcode": "06000",
+   "pin_commune": {
+    "nom": "Nice",
+    "code": "06088",
+    "codesPostaux": [
+     "06000",
+     "06100",
+     "06200",
+     "06300"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Nice",
+     "code": "06088",
+     "codesPostaux": [
+      "06000",
+      "06100",
+      "06200",
+      "06300"
+     ],
+     "_score": 0.7599852989094803
+    }
+   ]
+  },
+  "hotel_2045": {
+   "name": "Le Royal Monceau - Raffles Paris",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2046": {
+   "name": "Les Prés d’Eugenie",
+   "city": "Eugénie-les-Bains",
+   "postcode": "40320",
+   "pin_commune": {
+    "nom": "Eugénie-les-Bains",
+    "code": "40097",
+    "codesPostaux": [
+     "40320"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Eugénie-les-Bains",
+     "code": "40097",
+     "codesPostaux": [
+      "40320"
+     ],
+     "_score": 0.2124124352056992
+    }
+   ]
+  },
+  "hotel_2047": {
+   "name": "Les Roches Blanches",
+   "city": "Cassis",
+   "postcode": "13260",
+   "pin_commune": {
+    "nom": "Cassis",
+    "code": "13022",
+    "codesPostaux": [
+     "13260"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Cassis",
+     "code": "13022",
+     "codesPostaux": [
+      "13260"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2048": {
+   "name": "Les Sources de Cheverny",
+   "city": "Cheverny",
+   "postcode": "41700",
+   "pin_commune": {
+    "nom": "Cheverny",
+    "code": "41050",
+    "codesPostaux": [
+     "41700"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Cheverny",
+     "code": "41050",
+     "codesPostaux": [
+      "41700"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2049": {
+   "name": "Les Sources de Vougeot",
+   "city": "Gilly-lès-Cîteaux",
+   "postcode": "21640",
+   "pin_commune": {
+    "nom": "Gilly-lès-Cîteaux",
+    "code": "21297",
+    "codesPostaux": [
+     "21640"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Gilly-lès-Cîteaux",
+     "code": "21297",
+     "codesPostaux": [
+      "21640"
+     ],
+     "_score": 0.23254291454926126
+    }
+   ]
+  },
+  "hotel_2050": {
+   "name": "Lily of The Valley",
+   "city": "La Croix-Valmer",
+   "postcode": "83420",
+   "pin_commune": {
+    "nom": "La Croix-Valmer",
+    "code": "83048",
+    "codesPostaux": [
+     "83420"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "La Croix-Valmer",
+     "code": "83048",
+     "codesPostaux": [
+      "83420"
+     ],
+     "_score": 0.0696421036720155
+    }
+   ]
+  },
+  "hotel_2051": {
+   "name": "Mandarin Oriental Lutetia, Paris",
+   "city": "Paris",
+   "postcode": "75006",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2052": {
+   "name": "Nolinski Paris - Evok Collection",
+   "city": "Paris",
+   "postcode": "75001",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2053": {
+   "name": "Rosewood Courchevel Le Jardin Alpin",
+   "city": "Courchevel",
+   "postcode": "73120",
+   "pin_commune": {
+    "nom": "Courchevel",
+    "code": "73227",
+    "codesPostaux": [
+     "73120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Courchevel",
+     "code": "73227",
+     "codesPostaux": [
+      "73120"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_714": {
+   "name": "The Maybourne Riviera",
+   "city": "Roquebrune-Cap-Martin",
+   "postcode": "06190",
+   "pin_commune": {
+    "nom": "Roquebrune-Cap-Martin",
+    "code": "06104",
+    "codesPostaux": [
+     "06190"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Roquebrune-Cap-Martin",
+     "code": "06104",
+     "codesPostaux": [
+      "06190"
+     ],
+     "_score": 0.28808876186883253
+    }
+   ]
+  },
+  "hotel_2054": {
+   "name": "The Peninsula Paris",
+   "city": "Paris",
+   "postcode": "75116",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2055": {
+   "name": "Troisgros",
+   "city": "Ouches",
+   "postcode": "42115",
+   "pin_commune": {
+    "nom": "Ouches",
+    "code": "42162",
+    "codesPostaux": [
+     "42155"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Ouches",
+     "code": "42162",
+     "codesPostaux": [
+      "42155"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2056": {
+   "name": "Airelles Courchevel",
+   "city": "Courchevel",
+   "postcode": "73120",
+   "pin_commune": {
+    "nom": "Courchevel",
+    "code": "73227",
+    "codesPostaux": [
+     "73120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Courchevel",
+     "code": "73227",
+     "codesPostaux": [
+      "73120"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2057": {
+   "name": "Airelles Val d'Isère",
+   "city": "Val-d'Isère",
+   "postcode": "73150",
+   "pin_commune": {
+    "nom": "Val-d'Isère",
+    "code": "73304",
+    "codesPostaux": [
+     "73150"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Val-d'Isère",
+     "code": "73304",
+     "codesPostaux": [
+      "73150"
+     ],
+     "_score": 0.1196884185817527
+    }
+   ]
+  },
+  "hotel_2058": {
+   "name": "Altapura",
+   "city": "Val-Thorens",
+   "postcode": "73440",
+   "pin_commune": {
+    "nom": "Les Belleville",
+    "code": "73257",
+    "codesPostaux": [
+     "73440",
+     "73600"
+    ]
+   },
+   "city_is_commune": []
+  },
+  "hotel_2059": {
+   "name": "Anne de Bretagne",
+   "city": "La Plaine-sur-Mer",
+   "postcode": "44770",
+   "pin_commune": {
+    "nom": "La Plaine-sur-Mer",
+    "code": "44126",
+    "codesPostaux": [
+     "44770"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "La Plaine-sur-Mer",
+     "code": "44126",
+     "codesPostaux": [
+      "44770"
+     ],
+     "_score": 0.05327708918042927
+    }
+   ]
+  },
+  "hotel_2060": {
+   "name": "Arev St. Tropez",
+   "city": "Saint-Tropez",
+   "postcode": "83990",
+   "pin_commune": {
+    "nom": "Saint-Tropez",
+    "code": "83119",
+    "codesPostaux": [
+     "83990"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Tropez",
+     "code": "83119",
+     "codesPostaux": [
+      "83990"
+     ],
+     "_score": 0.43596136930918256
+    }
+   ]
+  },
+  "hotel_2061": {
+   "name": "Armancette",
+   "city": "Saint-Gervais-les-Bains",
+   "postcode": "74170",
+   "pin_commune": {
+    "nom": "Saint-Gervais-les-Bains",
+    "code": "74236",
+    "codesPostaux": [
+     "74170"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Gervais-les-Bains",
+     "code": "74236",
+     "codesPostaux": [
+      "74170"
+     ],
+     "_score": 0.18008691526550522
+    }
+   ]
+  },
+  "hotel_2062": {
+   "name": "Auberge du Jeu de Paume",
+   "city": "Chantilly",
+   "postcode": "60500",
+   "pin_commune": {
+    "nom": "Chantilly",
+    "code": "60141",
+    "codesPostaux": [
+     "60500"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Chantilly",
+     "code": "60141",
+     "codesPostaux": [
+      "60500"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2063": {
+   "name": "Auberge du Père Bise",
+   "city": "Talloires-Montmin",
+   "postcode": "74290",
+   "pin_commune": {
+    "nom": "Talloires-Montmin",
+    "code": "74275",
+    "codesPostaux": [
+     "74210",
+     "74290"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Talloires-Montmin",
+     "code": "74275",
+     "codesPostaux": [
+      "74210",
+      "74290"
+     ],
+     "_score": 0.9999999999999998
+    }
+   ]
+  },
+  "hotel_2064": {
+   "name": "Auberge La Fenière",
+   "city": "Cadenet",
+   "postcode": "84160",
+   "pin_commune": {
+    "nom": "Cadenet",
+    "code": "84026",
+    "codesPostaux": [
+     "84160"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Cadenet",
+     "code": "84026",
+     "codesPostaux": [
+      "84160"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2065": {
+   "name": "Au Cœur du Village",
+   "city": "La Clusaz",
+   "postcode": "74220",
+   "pin_commune": {
+    "nom": "La Clusaz",
+    "code": "74080",
+    "codesPostaux": [
+     "74220"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "La Clusaz",
+     "code": "74080",
+     "codesPostaux": [
+      "74220"
+     ],
+     "_score": 0.059816891102477905
+    }
+   ]
+  },
+  "hotel_2066": {
+   "name": "Balzac",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2067": {
+   "name": "Brach Paris - Evok Collection",
+   "city": "Paris",
+   "postcode": "75016",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2068": {
+   "name": "Brindos, Lac & Château",
+   "city": "Biarritz",
+   "postcode": "64600",
+   "pin_commune": {
+    "nom": "Anglet",
+    "code": "64024",
+    "codesPostaux": [
+     "64600"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Biarritz",
+     "code": "64122",
+     "codesPostaux": [
+      "64200"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2069": {
+   "name": "Capelongue, Beaumier Hotel",
+   "city": "Bonnieux",
+   "postcode": "84480",
+   "pin_commune": {
+    "nom": "Bonnieux",
+    "code": "84020",
+    "codesPostaux": [
+     "84480"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Bonnieux",
+     "code": "84020",
+     "codesPostaux": [
+      "84480"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2070": {
+   "name": "Casadelmar",
+   "city": "Porto-Vecchio",
+   "postcode": "20137",
+   "pin_commune": {
+    "nom": "Porto-Vecchio",
+    "code": "2A247",
+    "codesPostaux": [
+     "20137"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Porto-Vecchio",
+     "code": "2A247",
+     "codesPostaux": [
+      "20137"
+     ],
+     "_score": 0.9999999999999998
+    }
+   ]
+  },
+  "hotel_2071": {
+   "name": "Chais Monnet",
+   "city": "Cognac",
+   "postcode": "16100",
+   "pin_commune": {
+    "nom": "Cognac",
+    "code": "16102",
+    "codesPostaux": [
+     "16100"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Cognac",
+     "code": "16102",
+     "codesPostaux": [
+      "16100"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2072": {
+   "name": "Château de Berne",
+   "city": "Lorgues",
+   "postcode": "83780",
+   "pin_commune": {
+    "nom": "Flayosc",
+    "code": "83058",
+    "codesPostaux": [
+     "83780"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Lorgues",
+     "code": "83072",
+     "codesPostaux": [
+      "83510"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2073": {
+   "name": "Château de Fonscolombe",
+   "city": "Le Puy-Sainte-Réparade",
+   "postcode": "13610",
+   "pin_commune": {
+    "nom": "Le Puy-Sainte-Réparade",
+    "code": "13080",
+    "codesPostaux": [
+     "13610"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Le Puy-Sainte-Réparade",
+     "code": "13080",
+     "codesPostaux": [
+      "13610"
+     ],
+     "_score": 0.11055266974259174
+    }
+   ]
+  },
+  "hotel_2074": {
+   "name": "Chateau De Germigney",
+   "city": "Port-Lesney",
+   "postcode": "39600",
+   "pin_commune": {
+    "nom": "Port-Lesney",
+    "code": "39439",
+    "codesPostaux": [
+     "39330",
+     "39600"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Port-Lesney",
+     "code": "39439",
+     "codesPostaux": [
+      "39330",
+      "39600"
+     ],
+     "_score": 0.4195946790215815
+    }
+   ]
+  },
+  "hotel_2075": {
+   "name": "Chateau de la Resle",
+   "city": "Montigny-la-Resle",
+   "postcode": "89230",
+   "pin_commune": {
+    "nom": "Montigny-la-Resle",
+    "code": "89265",
+    "codesPostaux": [
+     "89230"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Montigny-la-Resle",
+     "code": "89265",
+     "codesPostaux": [
+      "89230"
+     ],
+     "_score": 0.07054719451438418
+    }
+   ]
+  },
+  "hotel_2076": {
+   "name": "Chateau de la Treyne",
+   "city": "Lacave",
+   "postcode": "46200",
+   "pin_commune": {
+    "nom": "Lacave",
+    "code": "46144",
+    "codesPostaux": [
+     "46200"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Lacave",
+     "code": "09148",
+     "codesPostaux": [
+      "09160"
+     ],
+     "_score": 1
+    },
+    {
+     "nom": "Lacave",
+     "code": "46144",
+     "codesPostaux": [
+      "46200"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2077": {
+   "name": "Château de Maubreuil",
+   "city": "Nantes",
+   "postcode": "44470",
+   "pin_commune": {
+    "nom": "Carquefou",
+    "code": "44026",
+    "codesPostaux": [
+     "44470"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Nantes",
+     "code": "44109",
+     "codesPostaux": [
+      "44000",
+      "44100",
+      "44200",
+      "44300"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2078": {
+   "name": "Château de Mercuès",
+   "city": "Mercuès",
+   "postcode": "46090",
+   "pin_commune": {
+    "nom": "Mercuès",
+    "code": "46191",
+    "codesPostaux": [
+     "46090"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Mercuès",
+     "code": "46191",
+     "codesPostaux": [
+      "46090"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2079": {
+   "name": "Château des Fleurs",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2080": {
+   "name": "Château de Théoule",
+   "city": "Théoule-sur-Mer",
+   "postcode": "06590",
+   "pin_commune": {
+    "nom": "Théoule-sur-Mer",
+    "code": "06138",
+    "codesPostaux": [
+     "06590"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Théoule-sur-Mer",
+     "code": "06138",
+     "codesPostaux": [
+      "06590"
+     ],
+     "_score": 0.14959589996228126
+    }
+   ]
+  },
+  "hotel_2081": {
+   "name": "Château de Valmer",
+   "city": "La Croix-Valmer",
+   "postcode": "83420",
+   "pin_commune": {
+    "nom": "La Croix-Valmer",
+    "code": "83048",
+    "codesPostaux": [
+     "83420"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "La Croix-Valmer",
+     "code": "83048",
+     "codesPostaux": [
+      "83420"
+     ],
+     "_score": 0.0696421036720155
+    }
+   ]
+  },
+  "hotel_2082": {
+   "name": "Château de Vault de Lugny",
+   "city": "Vault-de-Lugny",
+   "postcode": "89200",
+   "pin_commune": {
+    "nom": "Vault-de-Lugny",
+    "code": "89433",
+    "codesPostaux": [
+     "89200"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Vault-de-Lugny",
+     "code": "89433",
+     "codesPostaux": [
+      "89200"
+     ],
+     "_score": 0.16908972269281294
+    }
+   ]
+  },
+  "hotel_2083": {
+   "name": "Château du Palanquey",
+   "city": "Saint-Émilion",
+   "postcode": "33350",
+   "pin_commune": {
+    "nom": "Sainte-Colombe",
+    "code": "33390",
+    "codesPostaux": [
+     "33350"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Émilion",
+     "code": "33394",
+     "codesPostaux": [
+      "33330"
+     ],
+     "_score": 0.43596136930918256
+    }
+   ]
+  },
+  "hotel_2084": {
+   "name": "Château Louise de La Vallière",
+   "city": "Reugny",
+   "postcode": "37380",
+   "pin_commune": {
+    "nom": "Reugny",
+    "code": "37194",
+    "codesPostaux": [
+     "37380"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Reugny",
+     "code": "03213",
+     "codesPostaux": [
+      "03190"
+     ],
+     "_score": 1
+    },
+    {
+     "nom": "Reugny",
+     "code": "37194",
+     "codesPostaux": [
+      "37380"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2085": {
+   "name": "Château Saint-Martin",
+   "city": "Vence",
+   "postcode": "06140",
+   "pin_commune": {
+    "nom": "Vence",
+    "code": "06157",
+    "codesPostaux": [
+     "06140"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Vence",
+     "code": "06157",
+     "codesPostaux": [
+      "06140"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2086": {
+   "name": "Château & Village Castigno",
+   "city": "Assignan",
+   "postcode": "34360",
+   "pin_commune": {
+    "nom": "Assignan",
+    "code": "34015",
+    "codesPostaux": [
+     "34360"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Assignan",
+     "code": "34015",
+     "codesPostaux": [
+      "34360"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2087": {
+   "name": "Château Voltaire",
+   "city": "Paris",
+   "postcode": "75001",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2088": {
+   "name": "Cheval Blanc Lembach",
+   "city": "Lembach",
+   "postcode": "67510",
+   "pin_commune": {
+    "nom": "Lembach",
+    "code": "67263",
+    "codesPostaux": [
+     "67510"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Lembach",
+     "code": "67263",
+     "codesPostaux": [
+      "67510"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2089": {
+   "name": "Clos Vauban",
+   "city": "Langres",
+   "postcode": "52200",
+   "pin_commune": {
+    "nom": "Langres",
+    "code": "52269",
+    "codesPostaux": [
+     "52200"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Langres",
+     "code": "52269",
+     "codesPostaux": [
+      "52200"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2090": {
+   "name": "COMO Le Montrachet",
+   "city": "Puligny-Montrachet",
+   "postcode": "21190",
+   "pin_commune": {
+    "nom": "Chassagne-Montrachet",
+    "code": "21150",
+    "codesPostaux": [
+     "21190"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Puligny-Montrachet",
+     "code": "21512",
+     "codesPostaux": [
+      "21190"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2091": {
+   "name": "Crillon le Brave",
+   "city": "Crillon-le-Brave",
+   "postcode": "84410",
+   "pin_commune": {
+    "nom": "Crillon-le-Brave",
+    "code": "84041",
+    "codesPostaux": [
+     "84410"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Crillon-le-Brave",
+     "code": "84041",
+     "codesPostaux": [
+      "84410"
+     ],
+     "_score": 0.12083090944977928
+    }
+   ]
+  },
+  "hotel_2092": {
+   "name": "Domaine de Biar",
+   "city": "Montpellier",
+   "postcode": "34880",
+   "pin_commune": {
+    "nom": "Lavérune",
+    "code": "34134",
+    "codesPostaux": [
+     "34880"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Montpellier",
+     "code": "34172",
+     "codesPostaux": [
+      "34000",
+      "34070",
+      "34080",
+      "34090"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2093": {
+   "name": "Domaine de Fontenille - Fontenille Collection",
+   "city": "Lauris",
+   "postcode": "84360",
+   "pin_commune": {
+    "nom": "Lauris",
+    "code": "84065",
+    "codesPostaux": [
+     "84360"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Lauris",
+     "code": "84065",
+     "codesPostaux": [
+      "84360"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2094": {
+   "name": "Domaine de Locguénolé",
+   "city": "Kervignac",
+   "postcode": "56700",
+   "pin_commune": {
+    "nom": "Kervignac",
+    "code": "56094",
+    "codesPostaux": [
+     "56700"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Kervignac",
+     "code": "56094",
+     "codesPostaux": [
+      "56700"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2095": {
+   "name": "Domaine de Manville",
+   "city": "Les Baux-de-Provence",
+   "postcode": "13520",
+   "pin_commune": {
+    "nom": "Les Baux-de-Provence",
+    "code": "13011",
+    "codesPostaux": [
+     "13520"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Les Baux-de-Provence",
+     "code": "13011",
+     "codesPostaux": [
+      "13520"
+     ],
+     "_score": 0.1386773998783204
+    }
+   ]
+  },
+  "hotel_2096": {
+   "name": "Domaine de Murtoli (L'Hôtel de la Ferme)",
+   "city": "Sartène",
+   "postcode": "20100",
+   "pin_commune": {
+    "nom": "Sartène",
+    "code": "2A272",
+    "codesPostaux": [
+     "20100"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Sartène",
+     "code": "2A272",
+     "codesPostaux": [
+      "20100"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2097": {
+   "name": "Domaine de Primard - Fontenille Collection",
+   "city": "Guainville",
+   "postcode": "28260",
+   "pin_commune": {
+    "nom": "Garennes-sur-Eure",
+    "code": "27278",
+    "codesPostaux": [
+     "27780"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Guainville",
+     "code": "28187",
+     "codesPostaux": [
+      "28260"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2098": {
+   "name": "Domaine de Rochevilaine",
+   "city": "Billiers",
+   "postcode": "56190",
+   "pin_commune": {
+    "nom": "Billiers",
+    "code": "56018",
+    "codesPostaux": [
+     "56190"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Billiers",
+     "code": "56018",
+     "codesPostaux": [
+      "56190"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2099": {
+   "name": "Domaine de Rymska",
+   "city": "Saint-Jean-de-Trézy",
+   "postcode": "71490",
+   "pin_commune": {
+    "nom": "Saint-Jean-de-Trézy",
+    "code": "71431",
+    "codesPostaux": [
+     "71490"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Jean-de-Trézy",
+     "code": "71431",
+     "codesPostaux": [
+      "71490"
+     ],
+     "_score": 0.15032840617246404
+    }
+   ]
+  },
+  "hotel_2100": {
+   "name": "Domaine des Andéols",
+   "city": "Saint Saturnin",
+   "postcode": "84490",
+   "pin_commune": {
+    "nom": "Saint-Saturnin-lès-Apt",
+    "code": "84118",
+    "codesPostaux": [
+     "84490"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Saturnin",
+     "code": "15213",
+     "codesPostaux": [
+      "15190"
+     ],
+     "_score": 0.3545303117919146
+    },
+    {
+     "nom": "Saint-Saturnin",
+     "code": "16348",
+     "codesPostaux": [
+      "16290"
+     ],
+     "_score": 0.3545303117919146
+    },
+    {
+     "nom": "Saint-Saturnin",
+     "code": "18234",
+     "codesPostaux": [
+      "18370"
+     ],
+     "_score": 0.3545303117919146
+    },
+    {
+     "nom": "Saint-Saturnin",
+     "code": "48181",
+     "codesPostaux": [
+      "48500"
+     ],
+     "_score": 0.3545303117919146
+    },
+    {
+     "nom": "Saint-Saturnin",
+     "code": "51516",
+     "codesPostaux": [
+      "51260"
+     ],
+     "_score": 0.3545303117919146
+    },
+    {
+     "nom": "Saint-Saturnin",
+     "code": "63396",
+     "codesPostaux": [
+      "63450"
+     ],
+     "_score": 0.3545303117919146
+    },
+    {
+     "nom": "Saint-Saturnin",
+     "code": "72320",
+     "codesPostaux": [
+      "72650"
+     ],
+     "_score": 0.3545303117919146
+    }
+   ]
+  },
+  "hotel_2101": {
+   "name": "Domaine de Verchant",
+   "city": "Montpellier",
+   "postcode": "34170",
+   "pin_commune": {
+    "nom": "Castelnau-le-Lez",
+    "code": "34057",
+    "codesPostaux": [
+     "34170"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Montpellier",
+     "code": "34172",
+     "codesPostaux": [
+      "34000",
+      "34070",
+      "34080",
+      "34090"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2102": {
+   "name": "Domaine La Ferme HI Bride",
+   "city": "Villelaure",
+   "postcode": "84530",
+   "pin_commune": {
+    "nom": "Villelaure",
+    "code": "84147",
+    "codesPostaux": [
+     "84530"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Villelaure",
+     "code": "84147",
+     "codesPostaux": [
+      "84530"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2103": {
+   "name": "Dominique Colonna",
+   "city": "Corte",
+   "postcode": "20250",
+   "pin_commune": {
+    "nom": "Corte",
+    "code": "2B096",
+    "codesPostaux": [
+     "20250"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Corte",
+     "code": "2B096",
+     "codesPostaux": [
+      "20250"
+     ],
+     "_score": 0.8110158060860817
+    }
+   ]
+  },
+  "hotel_2104": {
+   "name": "Fleur de Loire",
+   "city": "Blois",
+   "postcode": "41000",
+   "pin_commune": {
+    "nom": "Blois",
+    "code": "41018",
+    "codesPostaux": [
+     "41000"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Blois",
+     "code": "41018",
+     "codesPostaux": [
+      "41000"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2105": {
+   "name": "Flocons de Sel",
+   "city": "Megève",
+   "postcode": "74120",
+   "pin_commune": {
+    "nom": "Megève",
+    "code": "74173",
+    "codesPostaux": [
+     "74120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Megève",
+     "code": "74173",
+     "codesPostaux": [
+      "74120"
+     ],
+     "_score": 0.739517248275684
+    }
+   ]
+  },
+  "hotel_2106": {
+   "name": "Fontevraud l'Ermitage",
+   "city": "Fontevraud-l'Abbaye",
+   "postcode": "49590",
+   "pin_commune": {
+    "nom": "Fontevraud-l'Abbaye",
+    "code": "49140",
+    "codesPostaux": [
+     "49590"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Fontevraud-l'Abbaye",
+     "code": "49140",
+     "codesPostaux": [
+      "49590"
+     ],
+     "_score": 1.0000000000000002
+    }
+   ]
+  },
+  "hotel_2107": {
+   "name": "Georges Blanc",
+   "city": "Vonnas",
+   "postcode": "01540",
+   "pin_commune": {
+    "nom": "Vonnas",
+    "code": "01457",
+    "codesPostaux": [
+     "01540"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Vonnas",
+     "code": "01457",
+     "codesPostaux": [
+      "01540"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2108": {
+   "name": "Grand Hotel de Cala Rossa",
+   "city": "Porto-Vecchio",
+   "postcode": "20137",
+   "pin_commune": {
+    "nom": "Lecci",
+    "code": "2A139",
+    "codesPostaux": [
+     "20137"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Porto-Vecchio",
+     "code": "2A247",
+     "codesPostaux": [
+      "20137"
+     ],
+     "_score": 0.9999999999999998
+    }
+   ]
+  },
+  "hotel_2109": {
+   "name": "Grand Hotel de Courtoisville",
+   "city": "Saint-Malo",
+   "postcode": "35400",
+   "pin_commune": {
+    "nom": "Saint-Malo",
+    "code": "35288",
+    "codesPostaux": [
+     "35400"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Malo",
+     "code": "35288",
+     "codesPostaux": [
+      "35400"
+     ],
+     "_score": 0.2991073624748728
+    }
+   ]
+  },
+  "hotel_2110": {
+   "name": "Grand Hôtel du Palais Royal",
+   "city": "Paris",
+   "postcode": "75001",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2111": {
+   "name": "Grand Powers",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2112": {
+   "name": "Grands Boulevards Experimental",
+   "city": "Paris",
+   "postcode": "75002",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2113": {
+   "name": "Ha(a)ïtza",
+   "city": "Pyla-sur-Mer",
+   "postcode": "33115",
+   "pin_commune": {
+    "nom": "La Teste-de-Buch",
+    "code": "33529",
+    "codesPostaux": [
+     "33115",
+     "33260"
+    ]
+   },
+   "city_is_commune": []
+  },
+  "hotel_2114": {
+   "name": "Hostellerie Cèdre",
+   "city": "Beaune",
+   "postcode": "21200",
+   "pin_commune": {
+    "nom": "Beaune",
+    "code": "21054",
+    "codesPostaux": [
+     "21200"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Beaune",
+     "code": "21054",
+     "codesPostaux": [
+      "21200"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2115": {
+   "name": "Hostellerie de Levernois",
+   "city": "Levernois",
+   "postcode": "21200",
+   "pin_commune": {
+    "nom": "Levernois",
+    "code": "21347",
+    "codesPostaux": [
+     "21200"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Levernois",
+     "code": "21347",
+     "codesPostaux": [
+      "21200"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2116": {
+   "name": "Hôtel de la Plage",
+   "city": "Plonévez-Porzay",
+   "postcode": "29550",
+   "pin_commune": {
+    "nom": "Plonévez-Porzay",
+    "code": "29176",
+    "codesPostaux": [
+     "29550"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Plonévez-Porzay",
+     "code": "29176",
+     "codesPostaux": [
+      "29550"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2117": {
+   "name": "Hotel de Pavie",
+   "city": "Saint-Émilion",
+   "postcode": "33330",
+   "pin_commune": {
+    "nom": "Saint-Émilion",
+    "code": "33394",
+    "codesPostaux": [
+     "33330"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Émilion",
+     "code": "33394",
+     "codesPostaux": [
+      "33330"
+     ],
+     "_score": 0.43596136930918256
+    }
+   ]
+  },
+  "hotel_2118": {
+   "name": "Hotel des Berges",
+   "city": "Illhaeusern",
+   "postcode": "68970",
+   "pin_commune": {
+    "nom": "Illhaeusern",
+    "code": "68153",
+    "codesPostaux": [
+     "68970"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Illhaeusern",
+     "code": "68153",
+     "codesPostaux": [
+      "68970"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2119": {
+   "name": "Hôtel de Tourrel",
+   "city": "Saint-Rémy-de-Provence",
+   "postcode": "13210",
+   "pin_commune": {
+    "nom": "Saint-Rémy-de-Provence",
+    "code": "13100",
+    "codesPostaux": [
+     "13210"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Rémy-de-Provence",
+     "code": "13100",
+     "codesPostaux": [
+      "13210"
+     ],
+     "_score": 0.14133131074739946
+    }
+   ]
+  },
+  "hotel_710": {
+   "name": "Hotel du Couvent, a Luxury Collection Hotel",
+   "city": "Nice",
+   "postcode": "06300",
+   "pin_commune": {
+    "nom": "Nice",
+    "code": "06088",
+    "codesPostaux": [
+     "06000",
+     "06100",
+     "06200",
+     "06300"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Nice",
+     "code": "06088",
+     "codesPostaux": [
+      "06000",
+      "06100",
+      "06200",
+      "06300"
+     ],
+     "_score": 0.7599852989094803
+    }
+   ]
+  },
+  "hotel_2120": {
+   "name": "Hôtel Restaurant Origines par Adrien Descouls",
+   "city": "Le Broc",
+   "postcode": "63500",
+   "pin_commune": {
+    "nom": "Le Broc",
+    "code": "63054",
+    "codesPostaux": [
+     "63500"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Le Broc",
+     "code": "06025",
+     "codesPostaux": [
+      "06510"
+     ],
+     "_score": 0.08506370618566153
+    },
+    {
+     "nom": "Le Broc",
+     "code": "63054",
+     "codesPostaux": [
+      "63500"
+     ],
+     "_score": 0.08506370618566153
+    }
+   ]
+  },
+  "hotel_2121": {
+   "name": "Hotel Sainte Victoire Vauvenargues",
+   "city": "Aix-en-Provence",
+   "postcode": "13126",
+   "pin_commune": {
+    "nom": "Vauvenargues",
+    "code": "13111",
+    "codesPostaux": [
+     "13126"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Aix-en-Provence",
+     "code": "13001",
+     "codesPostaux": [
+      "13080",
+      "13090",
+      "13100",
+      "13290",
+      "13540"
+     ],
+     "_score": 0.23064250985516463
+    }
+   ]
+  },
+  "hotel_2122": {
+   "name": "InterContinental Lyon - Hotel Dieu",
+   "city": "Lyon",
+   "postcode": "69002",
+   "pin_commune": {
+    "nom": "Lyon",
+    "code": "69123",
+    "codesPostaux": [
+     "69001",
+     "69002",
+     "69003",
+     "69004",
+     "69005",
+     "69006",
+     "69007",
+     "69008",
+     "69009"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Lyon",
+     "code": "69123",
+     "codesPostaux": [
+      "69001",
+      "69002",
+      "69003",
+      "69004",
+      "69005",
+      "69006",
+      "69007",
+      "69008",
+      "69009"
+     ],
+     "_score": 0.5380120153607925
+    }
+   ]
+  },
+  "hotel_2123": {
+   "name": "La Bastide de Marie",
+   "city": "Ménerbes",
+   "postcode": "84560",
+   "pin_commune": {
+    "nom": "Ménerbes",
+    "code": "84073",
+    "codesPostaux": [
+     "84560"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Ménerbes",
+     "code": "84073",
+     "codesPostaux": [
+      "84560"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2124": {
+   "name": "La Bastide de Moustiers",
+   "city": "Moustiers-Sainte-Marie",
+   "postcode": "04360",
+   "pin_commune": {
+    "nom": "Moustiers-Sainte-Marie",
+    "code": "04135",
+    "codesPostaux": [
+     "04360"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Moustiers-Sainte-Marie",
+     "code": "04135",
+     "codesPostaux": [
+      "04360"
+     ],
+     "_score": 0.5123652905746047
+    }
+   ]
+  },
+  "hotel_2125": {
+   "name": "La Bonne Étape",
+   "city": "Château-Arnoux-Saint-Auban",
+   "postcode": "04160",
+   "pin_commune": {
+    "nom": "Château-Arnoux-Saint-Auban",
+    "code": "04049",
+    "codesPostaux": [
+     "04160",
+     "04600"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Château-Arnoux-Saint-Auban",
+     "code": "04049",
+     "codesPostaux": [
+      "04160",
+      "04600"
+     ],
+     "_score": 0.3626344304790298
+    }
+   ]
+  },
+  "hotel_2126": {
+   "name": "La Bouitte",
+   "city": "Saint-Martin-de-Belleville",
+   "postcode": "73440",
+   "pin_commune": {
+    "nom": "Les Belleville",
+    "code": "73257",
+    "codesPostaux": [
+     "73440",
+     "73600"
+    ]
+   },
+   "city_is_commune": []
+  },
+  "hotel_2127": {
+   "name": "La Chartreuse du Bignac",
+   "city": "Saint-Nexans",
+   "postcode": "24520",
+   "pin_commune": {
+    "nom": "Saint-Nexans",
+    "code": "24472",
+    "codesPostaux": [
+     "24520"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Nexans",
+     "code": "24472",
+     "codesPostaux": [
+      "24520"
+     ],
+     "_score": 0.43596136930918256
+    }
+   ]
+  },
+  "hotel_2128": {
+   "name": "La Co(o)rniche",
+   "city": "Pyla-sur-Mer",
+   "postcode": "33115",
+   "pin_commune": {
+    "nom": "La Teste-de-Buch",
+    "code": "33529",
+    "codesPostaux": [
+     "33115",
+     "33260"
+    ]
+   },
+   "city_is_commune": []
+  },
+  "hotel_2129": {
+   "name": "La Dimora Hôtel & SPA",
+   "city": "Oletta",
+   "postcode": "20232",
+   "pin_commune": {
+    "nom": "Oletta",
+    "code": "2B185",
+    "codesPostaux": [
+     "20232"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Oletta",
+     "code": "2B185",
+     "codesPostaux": [
+      "20232"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2130": {
+   "name": "La Fantaisie",
+   "city": "Paris",
+   "postcode": "75009",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2131": {
+   "name": "La Grée des Landes",
+   "city": "Cournon",
+   "postcode": "56200",
+   "pin_commune": {
+    "nom": "Cournon",
+    "code": "56044",
+    "codesPostaux": [
+     "56200"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Cournon",
+     "code": "56044",
+     "codesPostaux": [
+      "56200"
+     ],
+     "_score": 0.6606049532262421
+    }
+   ]
+  },
+  "hotel_2132": {
+   "name": "La Grenouillère",
+   "city": "La Madelaine-sous-Montreuil",
+   "postcode": "62170",
+   "pin_commune": {
+    "nom": "La Madelaine-sous-Montreuil",
+    "code": "62535",
+    "codesPostaux": [
+     "62170"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "La Madelaine-sous-Montreuil",
+     "code": "62535",
+     "codesPostaux": [
+      "62170"
+     ],
+     "_score": 0.07645000966742876
+    }
+   ]
+  },
+  "hotel_2133": {
+   "name": "La Maison des Têtes",
+   "city": "Colmar",
+   "postcode": "68000",
+   "pin_commune": {
+    "nom": "Colmar",
+    "code": "68066",
+    "codesPostaux": [
+     "68000"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Colmar",
+     "code": "68066",
+     "codesPostaux": [
+      "68000"
+     ],
+     "_score": 0.7395172482756841
+    }
+   ]
+  },
+  "hotel_2134": {
+   "name": "La Maison d'Estournel",
+   "city": "Saint-Estèphe",
+   "postcode": "33180",
+   "pin_commune": {
+    "nom": "Saint-Estèphe",
+    "code": "33395",
+    "codesPostaux": [
+     "33180"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Estèphe",
+     "code": "24398",
+     "codesPostaux": [
+      "24360"
+     ],
+     "_score": 0.40382542165134466
+    },
+    {
+     "nom": "Saint-Estèphe",
+     "code": "33395",
+     "codesPostaux": [
+      "33180"
+     ],
+     "_score": 0.40382542165134466
+    }
+   ]
+  },
+  "hotel_2135": {
+   "name": "La Maison d'Uzès",
+   "city": "Uzès",
+   "postcode": "30700",
+   "pin_commune": {
+    "nom": "Uzès",
+    "code": "30334",
+    "codesPostaux": [
+     "30700"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Uzès",
+     "code": "30334",
+     "codesPostaux": [
+      "30700"
+     ],
+     "_score": 0.739517248275684
+    }
+   ]
+  },
+  "hotel_2136": {
+   "name": "La Nauve",
+   "city": "Cognac",
+   "postcode": "16100",
+   "pin_commune": {
+    "nom": "Cognac",
+    "code": "16102",
+    "codesPostaux": [
+     "16100"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Cognac",
+     "code": "16102",
+     "codesPostaux": [
+      "16100"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2137": {
+   "name": "La Ponche",
+   "city": "Saint-Tropez",
+   "postcode": "83990",
+   "pin_commune": {
+    "nom": "Saint-Tropez",
+    "code": "83119",
+    "codesPostaux": [
+     "83990"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Tropez",
+     "code": "83119",
+     "codesPostaux": [
+      "83990"
+     ],
+     "_score": 0.43596136930918256
+    }
+   ]
+  },
+  "hotel_2138": {
+   "name": "L'Auberge Basque",
+   "city": "Saint-Pée-sur-Nivelle",
+   "postcode": "64310",
+   "pin_commune": {
+    "nom": "Saint-Pée-sur-Nivelle",
+    "code": "64495",
+    "codesPostaux": [
+     "64310"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Pée-sur-Nivelle",
+     "code": "64495",
+     "codesPostaux": [
+      "64310"
+     ],
+     "_score": 0.32298747271414435
+    }
+   ]
+  },
+  "hotel_2139": {
+   "name": "La Villa Calvi",
+   "city": "Calvi",
+   "postcode": "20260",
+   "pin_commune": {
+    "nom": "Calvi",
+    "code": "2B050",
+    "codesPostaux": [
+     "20260"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Calvi",
+     "code": "2B050",
+     "codesPostaux": [
+      "20260"
+     ],
+     "_score": 0.590361571053798
+    }
+   ]
+  },
+  "hotel_2140": {
+   "name": "Le Ballu",
+   "city": "Paris",
+   "postcode": "75009",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2141": {
+   "name": "Le Brittany",
+   "city": "Roscoff",
+   "postcode": "29680",
+   "pin_commune": {
+    "nom": "Roscoff",
+    "code": "29239",
+    "codesPostaux": [
+     "29680"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Roscoff",
+     "code": "29239",
+     "codesPostaux": [
+      "29680"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2142": {
+   "name": "Le Burgundy",
+   "city": "Paris",
+   "postcode": "75001",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2143": {
+   "name": "Le Chambard",
+   "city": "Kaysersberg",
+   "postcode": "68240",
+   "pin_commune": {
+    "nom": "Kaysersberg Vignoble",
+    "code": "68162",
+    "codesPostaux": [
+     "68240"
+    ]
+   },
+   "city_is_commune": []
+  },
+  "hotel_2144": {
+   "name": "Le Clair de la Plume",
+   "city": "Grignan",
+   "postcode": "26230",
+   "pin_commune": {
+    "nom": "Grignan",
+    "code": "26146",
+    "codesPostaux": [
+     "26230"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Grignan",
+     "code": "26146",
+     "codesPostaux": [
+      "26230"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2145": {
+   "name": "Le Clos des Sens",
+   "city": "Annecy",
+   "postcode": "74940",
+   "pin_commune": {
+    "nom": "Annecy",
+    "code": "74010",
+    "codesPostaux": [
+     "74000",
+     "74370",
+     "74600",
+     "74940",
+     "74960"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Annecy",
+     "code": "74010",
+     "codesPostaux": [
+      "74000",
+      "74370",
+      "74600",
+      "74940",
+      "74960"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2146": {
+   "name": "Le Domaine de la Klauss",
+   "city": "Montenach",
+   "postcode": "57480",
+   "pin_commune": {
+    "nom": "Montenach",
+    "code": "57479",
+    "codesPostaux": [
+     "57480"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Montenach",
+     "code": "57479",
+     "codesPostaux": [
+      "57480"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2147": {
+   "name": "Le Grand Mazarin",
+   "city": "Paris",
+   "postcode": "75004",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2148": {
+   "name": "Le Hameau Albert 1er",
+   "city": "Chamonix Mont-Blanc",
+   "postcode": "74402",
+   "pin_commune": {
+    "nom": "Chamonix-Mont-Blanc",
+    "code": "74056",
+    "codesPostaux": [
+     "74400"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Chamonix-Mont-Blanc",
+     "code": "74056",
+     "codesPostaux": [
+      "74400"
+     ],
+     "_score": 0.0955986140567757
+    }
+   ]
+  },
+  "hotel_2149": {
+   "name": "Le K2 Altitude",
+   "city": "Courchevel",
+   "postcode": "73120",
+   "pin_commune": {
+    "nom": "Courchevel",
+    "code": "73227",
+    "codesPostaux": [
+     "73120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Courchevel",
+     "code": "73227",
+     "codesPostaux": [
+      "73120"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2150": {
+   "name": "Le K2 Djola",
+   "city": "Courchevel",
+   "postcode": "73120",
+   "pin_commune": {
+    "nom": "Courchevel",
+    "code": "73227",
+    "codesPostaux": [
+     "73120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Courchevel",
+     "code": "73227",
+     "codesPostaux": [
+      "73120"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2151": {
+   "name": "Le Kaila",
+   "city": "Méribel",
+   "postcode": "73550",
+   "pin_commune": {
+    "nom": "Les Allues",
+    "code": "73015",
+    "codesPostaux": [
+     "73550"
+    ]
+   },
+   "city_is_commune": []
+  },
+  "hotel_2152": {
+   "name": "Le Mas les Eydins",
+   "city": "Bonnieux",
+   "postcode": "84480",
+   "pin_commune": {
+    "nom": "Bonnieux",
+    "code": "84020",
+    "codesPostaux": [
+     "84480"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Bonnieux",
+     "code": "84020",
+     "codesPostaux": [
+      "84480"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2153": {
+   "name": "Le Moulin de l'Abbaye",
+   "city": "Brantôme",
+   "postcode": "24310",
+   "pin_commune": {
+    "nom": "Brantôme en Périgord",
+    "code": "24064",
+    "codesPostaux": [
+     "24310",
+     "24460",
+     "24530"
+    ]
+   },
+   "city_is_commune": []
+  },
+  "hotel_2154": {
+   "name": "Le Pavillon De La Reine",
+   "city": "Paris",
+   "postcode": "75003",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2155": {
+   "name": "Le Petit Nice",
+   "city": "Marseille",
+   "postcode": "13007",
+   "pin_commune": {
+    "nom": "Marseille",
+    "code": "13055",
+    "codesPostaux": [
+     "13001",
+     "13002",
+     "13003",
+     "13004",
+     "13005",
+     "13006",
+     "13007",
+     "13008",
+     "13009",
+     "13010",
+     "13011",
+     "13012",
+     "13013",
+     "13014",
+     "13015",
+     "13016"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Marseille",
+     "code": "13055",
+     "codesPostaux": [
+      "13001",
+      "13002",
+      "13003",
+      "13004",
+      "13005",
+      "13006",
+      "13007",
+      "13008",
+      "13009",
+      "13010",
+      "13011",
+      "13012",
+      "13013",
+      "13014",
+      "13015",
+      "13016"
+     ],
+     "_score": 0.502343721159989
+    }
+   ]
+  },
+  "hotel_2156": {
+   "name": "Le Phébus",
+   "city": "Joucas",
+   "postcode": "84220",
+   "pin_commune": {
+    "nom": "Joucas",
+    "code": "84057",
+    "codesPostaux": [
+     "84220"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Joucas",
+     "code": "84057",
+     "codesPostaux": [
+      "84220"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2157": {
+   "name": "Le Prieuré",
+   "city": "Villeneuve-lès-Avignon",
+   "postcode": "30400",
+   "pin_commune": {
+    "nom": "Villeneuve-lès-Avignon",
+    "code": "30351",
+    "codesPostaux": [
+     "30400"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Villeneuve-lès-Avignon",
+     "code": "30351",
+     "codesPostaux": [
+      "30400"
+     ],
+     "_score": 0.1926099600164159
+    }
+   ]
+  },
+  "hotel_2158": {
+   "name": "Le Relais Bernard Loiseau",
+   "city": "Saulieu",
+   "postcode": "21210",
+   "pin_commune": {
+    "nom": "Saulieu",
+    "code": "21584",
+    "codesPostaux": [
+     "21210"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saulieu",
+     "code": "21584",
+     "codesPostaux": [
+      "21210"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2159": {
+   "name": "Les Bains",
+   "city": "Paris",
+   "postcode": "75003",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2160": {
+   "name": "Les Barmes de l'Ours",
+   "city": "Val-d'Isère",
+   "postcode": "73150",
+   "pin_commune": {
+    "nom": "Val-d'Isère",
+    "code": "73304",
+    "codesPostaux": [
+     "73150"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Val-d'Isère",
+     "code": "73304",
+     "codesPostaux": [
+      "73150"
+     ],
+     "_score": 0.1196884185817527
+    }
+   ]
+  },
+  "hotel_2161": {
+   "name": "Les Fermes de Marie",
+   "city": "Megève",
+   "postcode": "74120",
+   "pin_commune": {
+    "nom": "Megève",
+    "code": "74173",
+    "codesPostaux": [
+     "74120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Megève",
+     "code": "74173",
+     "codesPostaux": [
+      "74120"
+     ],
+     "_score": 0.739517248275684
+    }
+   ]
+  },
+  "hotel_2162": {
+   "name": "Les Frères Ibarboure",
+   "city": "Bidart",
+   "postcode": "64210",
+   "pin_commune": {
+    "nom": "Bidart",
+    "code": "64125",
+    "codesPostaux": [
+     "64210"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Bidart",
+     "code": "64125",
+     "codesPostaux": [
+      "64210"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2163": {
+   "name": "Les Haras",
+   "city": "Strasbourg",
+   "postcode": "67000",
+   "pin_commune": {
+    "nom": "Strasbourg",
+    "code": "67482",
+    "codesPostaux": [
+     "67000",
+     "67100",
+     "67200"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Strasbourg",
+     "code": "67482",
+     "codesPostaux": [
+      "67000",
+      "67100",
+      "67200"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2164": {
+   "name": "Les Hauts de Loire",
+   "city": "Veuzain-sur-Loire",
+   "postcode": "41150",
+   "pin_commune": {
+    "nom": "Veuzain-sur-Loire",
+    "code": "41167",
+    "codesPostaux": [
+     "41150"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Veuzain-sur-Loire",
+     "code": "41167",
+     "codesPostaux": [
+      "41150"
+     ],
+     "_score": 0.31609100563013814
+    }
+   ]
+  },
+  "hotel_2165": {
+   "name": "Les Hortensias du Lac - Fontenille Collection",
+   "city": "Soorts-Hossegor",
+   "postcode": "40150",
+   "pin_commune": {
+    "nom": "Soorts-Hossegor",
+    "code": "40304",
+    "codesPostaux": [
+     "40150"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Soorts-Hossegor",
+     "code": "40304",
+     "codesPostaux": [
+      "40150"
+     ],
+     "_score": 0.9999999999999998
+    }
+   ]
+  },
+  "hotel_2166": {
+   "name": "Les Lodges Sainte-Victoire",
+   "city": "Aix-en-Provence",
+   "postcode": "13100",
+   "pin_commune": {
+    "nom": "Le Tholonet",
+    "code": "13109",
+    "codesPostaux": [
+     "13100"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Aix-en-Provence",
+     "code": "13001",
+     "codesPostaux": [
+      "13080",
+      "13090",
+      "13100",
+      "13290",
+      "13540"
+     ],
+     "_score": 0.23064250985516463
+    }
+   ]
+  },
+  "hotel_2167": {
+   "name": "Les Lumières Versailles",
+   "city": "Versailles",
+   "postcode": "78000",
+   "pin_commune": {
+    "nom": "Versailles",
+    "code": "78646",
+    "codesPostaux": [
+     "78000"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Versailles",
+     "code": "78646",
+     "codesPostaux": [
+      "78000"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2168": {
+   "name": "Les Pins de Cesar",
+   "city": "Saint-Jouin-Bruneval",
+   "postcode": "76280",
+   "pin_commune": {
+    "nom": "Saint-Jouin-Bruneval",
+    "code": "76595",
+    "codesPostaux": [
+     "76280"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Jouin-Bruneval",
+     "code": "76595",
+     "codesPostaux": [
+      "76280"
+     ],
+     "_score": 0.5406430078453301
+    }
+   ]
+  },
+  "hotel_2169": {
+   "name": "Les Regalia",
+   "city": "Porto-Vecchio",
+   "postcode": "20144",
+   "pin_commune": {
+    "nom": "Zonza",
+    "code": "2A362",
+    "codesPostaux": [
+     "20124",
+     "20144"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Porto-Vecchio",
+     "code": "2A247",
+     "codesPostaux": [
+      "20137"
+     ],
+     "_score": 0.9999999999999998
+    }
+   ]
+  },
+  "hotel_2170": {
+   "name": "Les Roches",
+   "city": "Le Lavandou",
+   "postcode": "83980",
+   "pin_commune": {
+    "nom": "Le Lavandou",
+    "code": "83070",
+    "codesPostaux": [
+     "83980"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Le Lavandou",
+     "code": "83070",
+     "codesPostaux": [
+      "83980"
+     ],
+     "_score": 0.09078839428840589
+    }
+   ]
+  },
+  "hotel_2171": {
+   "name": "Le Vieux Castillon",
+   "city": "Castillon-du-Gard",
+   "postcode": "30210",
+   "pin_commune": {
+    "nom": "Castillon-du-Gard",
+    "code": "30073",
+    "codesPostaux": [
+     "30210"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Castillon-du-Gard",
+     "code": "30073",
+     "codesPostaux": [
+      "30210"
+     ],
+     "_score": 0.185185968624604
+    }
+   ]
+  },
+  "hotel_2172": {
+   "name": "Le Vieux Logis",
+   "city": "Trémolat",
+   "postcode": "24510",
+   "pin_commune": {
+    "nom": "Trémolat",
+    "code": "24558",
+    "codesPostaux": [
+     "24510"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Trémolat",
+     "code": "24558",
+     "codesPostaux": [
+      "24510"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2173": {
+   "name": "Logis de la Cadène",
+   "city": "Saint-Émilion",
+   "postcode": "33330",
+   "pin_commune": {
+    "nom": "Saint-Émilion",
+    "code": "33394",
+    "codesPostaux": [
+     "33330"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Émilion",
+     "code": "33394",
+     "codesPostaux": [
+      "33330"
+     ],
+     "_score": 0.43596136930918256
+    }
+   ]
+  },
+  "hotel_2174": {
+   "name": "Loire Valley Lodges",
+   "city": "Esvres-sur-Indre",
+   "postcode": "37320",
+   "pin_commune": {
+    "nom": "Esvres",
+    "code": "37104",
+    "codesPostaux": [
+     "37320"
+    ]
+   },
+   "city_is_commune": []
+  },
+  "hotel_2175": {
+   "name": "Madame Rêve",
+   "city": "Paris",
+   "postcode": "75001",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2176": {
+   "name": "Maison Albar - Le Victoria",
+   "city": "Nice",
+   "postcode": "06000",
+   "pin_commune": {
+    "nom": "Nice",
+    "code": "06088",
+    "codesPostaux": [
+     "06000",
+     "06100",
+     "06200",
+     "06300"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Nice",
+     "code": "06088",
+     "codesPostaux": [
+      "06000",
+      "06100",
+      "06200",
+      "06300"
+     ],
+     "_score": 0.7599852989094803
+    }
+   ]
+  },
+  "hotel_2177": {
+   "name": "Maison Albar - L’Imperator",
+   "city": "Nîmes",
+   "postcode": "30900",
+   "pin_commune": {
+    "nom": "Nîmes",
+    "code": "30189",
+    "codesPostaux": [
+     "30000",
+     "30900"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Nîmes",
+     "code": "30189",
+     "codesPostaux": [
+      "30000",
+      "30900"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2178": {
+   "name": "Maison Aribert",
+   "city": "Uriage-les-Bains",
+   "postcode": "38410",
+   "pin_commune": {
+    "nom": "Saint-Martin-d'Uriage",
+    "code": "38422",
+    "codesPostaux": [
+     "38410"
+    ]
+   },
+   "city_is_commune": []
+  },
+  "hotel_2179": {
+   "name": "Maison Barrière Vendôme",
+   "city": "Paris",
+   "postcode": "75001",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2180": {
+   "name": "Maison Bouvier - Les Suites",
+   "city": "Tignes",
+   "postcode": "73320",
+   "pin_commune": {
+    "nom": "Tignes",
+    "code": "73296",
+    "codesPostaux": [
+     "73320"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Tignes",
+     "code": "73296",
+     "codesPostaux": [
+      "73320"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2181": {
+   "name": "Maison Douce Époque - Deauville",
+   "city": "Benerville-sur-Mer",
+   "postcode": "14910",
+   "pin_commune": {
+    "nom": "Benerville-sur-Mer",
+    "code": "14059",
+    "codesPostaux": [
+     "14910"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Benerville-sur-Mer",
+     "code": "14059",
+     "codesPostaux": [
+      "14910"
+     ],
+     "_score": 0.14959589996228126
+    }
+   ]
+  },
+  "hotel_2182": {
+   "name": "Maison Maubreuil",
+   "city": "Nantes",
+   "postcode": "44000",
+   "pin_commune": {
+    "nom": "Nantes",
+    "code": "44109",
+    "codesPostaux": [
+     "44000",
+     "44100",
+     "44200",
+     "44300"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Nantes",
+     "code": "44109",
+     "codesPostaux": [
+      "44000",
+      "44100",
+      "44200",
+      "44300"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2183": {
+   "name": "Maison Proust",
+   "city": "Paris",
+   "postcode": "75003",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2184": {
+   "name": "Maison Soclo",
+   "city": "Toulouse",
+   "postcode": "31000",
+   "pin_commune": {
+    "nom": "Toulouse",
+    "code": "31555",
+    "codesPostaux": [
+     "31000",
+     "31100",
+     "31200",
+     "31300",
+     "31400",
+     "31500"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Toulouse",
+     "code": "31555",
+     "codesPostaux": [
+      "31000",
+      "31100",
+      "31200",
+      "31300",
+      "31400",
+      "31500"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2185": {
+   "name": "Manoir de Lan-Kerellec",
+   "city": "Trébeurden",
+   "postcode": "22560",
+   "pin_commune": {
+    "nom": "Trébeurden",
+    "code": "22343",
+    "codesPostaux": [
+     "22560"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Trébeurden",
+     "code": "22343",
+     "codesPostaux": [
+      "22560"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2186": {
+   "name": "Marinca",
+   "city": "Olmeto",
+   "postcode": "20113",
+   "pin_commune": {
+    "nom": "Olmeto",
+    "code": "2A189",
+    "codesPostaux": [
+     "20113"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Olmeto",
+     "code": "2A189",
+     "codesPostaux": [
+      "20113"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2187": {
+   "name": "Monsieur George",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2188": {
+   "name": "Norman",
+   "city": "Paris",
+   "postcode": "75008",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2189": {
+   "name": "Pic",
+   "city": "Valence",
+   "postcode": "26000",
+   "pin_commune": {
+    "nom": "Valence",
+    "code": "26362",
+    "codesPostaux": [
+     "26000"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Valence",
+     "code": "16392",
+     "codesPostaux": [
+      "16460"
+     ],
+     "_score": 1
+    },
+    {
+     "nom": "Valence",
+     "code": "26362",
+     "codesPostaux": [
+      "26000"
+     ],
+     "_score": 1
+    },
+    {
+     "nom": "Valence",
+     "code": "82186",
+     "codesPostaux": [
+      "82400"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2190": {
+   "name": "Providence",
+   "city": "Paris",
+   "postcode": "75010",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2191": {
+   "name": "Pulitzer Paris",
+   "city": "Paris",
+   "postcode": "75009",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2192": {
+   "name": "Relais Christine",
+   "city": "Paris",
+   "postcode": "75006",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2193": {
+   "name": "Relais de la Poste",
+   "city": "Magescq",
+   "postcode": "40140",
+   "pin_commune": {
+    "nom": "Magescq",
+    "code": "40168",
+    "codesPostaux": [
+     "40140"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Magescq",
+     "code": "40168",
+     "codesPostaux": [
+      "40140"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2194": {
+   "name": "Richer De Belleval",
+   "city": "Montpellier",
+   "postcode": "34000",
+   "pin_commune": {
+    "nom": "Montpellier",
+    "code": "34172",
+    "codesPostaux": [
+     "34000",
+     "34070",
+     "34080",
+     "34090"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Montpellier",
+     "code": "34172",
+     "codesPostaux": [
+      "34000",
+      "34070",
+      "34080",
+      "34090"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2195": {
+   "name": "Royal - Evian Resort",
+   "city": "Évian-les-Bains",
+   "postcode": "74500",
+   "pin_commune": {
+    "nom": "Évian-les-Bains",
+    "code": "74119",
+    "codesPostaux": [
+     "74500"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Évian-les-Bains",
+     "code": "74119",
+     "codesPostaux": [
+      "74500"
+     ],
+     "_score": 0.22055252359581545
+    }
+   ]
+  },
+  "hotel_2196": {
+   "name": "Royal Hainaut",
+   "city": "Valenciennes",
+   "postcode": "59300",
+   "pin_commune": {
+    "nom": "Valenciennes",
+    "code": "59606",
+    "codesPostaux": [
+     "59300"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Valenciennes",
+     "code": "59606",
+     "codesPostaux": [
+      "59300"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2197": {
+   "name": "Royal-Riviera",
+   "city": "Saint-Jean-Cap-Ferrat",
+   "postcode": "06230",
+   "pin_commune": {
+    "nom": "Saint-Jean-Cap-Ferrat",
+    "code": "06121",
+    "codesPostaux": [
+     "06230"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Jean-Cap-Ferrat",
+     "code": "06121",
+     "codesPostaux": [
+      "06230"
+     ],
+     "_score": 0.28882997157891566
+    }
+   ]
+  },
+  "hotel_2198": {
+   "name": "SAX Paris, LXR Hotels & Resorts",
+   "city": "Paris",
+   "postcode": "75007",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2199": {
+   "name": "Shangri-La Paris",
+   "city": "Paris",
+   "postcode": "75116",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2200": {
+   "name": "Soho House Paris",
+   "city": "Paris",
+   "postcode": "75009",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2201": {
+   "name": "Terre Blanche",
+   "city": "Tourrettes",
+   "postcode": "83440",
+   "pin_commune": {
+    "nom": "Tourrettes",
+    "code": "83138",
+    "codesPostaux": [
+     "83440"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Tourrettes",
+     "code": "83138",
+     "codesPostaux": [
+      "83440"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2202": {
+   "name": "Toile Blanche",
+   "city": "Saint-Paul-de-Vence",
+   "postcode": "06570",
+   "pin_commune": {
+    "nom": "Saint-Paul-de-Vence",
+    "code": "06128",
+    "codesPostaux": [
+     "06570"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Saint-Paul-de-Vence",
+     "code": "06128",
+     "codesPostaux": [
+      "06570"
+     ],
+     "_score": 0.13308367060545276
+    }
+   ]
+  },
+  "hotel_2203": {
+   "name": "Version Maquis Citadelle",
+   "city": "Bonifacio",
+   "postcode": "20169",
+   "pin_commune": {
+    "nom": "Bonifacio",
+    "code": "2A041",
+    "codesPostaux": [
+     "20169"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Bonifacio",
+     "code": "2A041",
+     "codesPostaux": [
+      "20169"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2204": {
+   "name": "Villa-des-Prés",
+   "city": "Paris",
+   "postcode": "75006",
+   "pin_commune": {
+    "nom": "Paris",
+    "code": "75056",
+    "codesPostaux": [
+     "75001",
+     "75002",
+     "75003",
+     "75004",
+     "75005",
+     "75006",
+     "75007",
+     "75008",
+     "75009",
+     "75010",
+     "75011",
+     "75012",
+     "75013",
+     "75014",
+     "75015",
+     "75016",
+     "75017",
+     "75018",
+     "75019",
+     "75020",
+     "75116"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Paris",
+     "code": "75056",
+     "codesPostaux": [
+      "75001",
+      "75002",
+      "75003",
+      "75004",
+      "75005",
+      "75006",
+      "75007",
+      "75008",
+      "75009",
+      "75010",
+      "75011",
+      "75012",
+      "75013",
+      "75014",
+      "75015",
+      "75016",
+      "75017",
+      "75018",
+      "75019",
+      "75020",
+      "75116"
+     ],
+     "_score": 0.43268583708592734
+    }
+   ]
+  },
+  "hotel_2205": {
+   "name": "Villa Florentine",
+   "city": "Lyon",
+   "postcode": "69005",
+   "pin_commune": {
+    "nom": "Lyon",
+    "code": "69123",
+    "codesPostaux": [
+     "69001",
+     "69002",
+     "69003",
+     "69004",
+     "69005",
+     "69006",
+     "69007",
+     "69008",
+     "69009"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Lyon",
+     "code": "69123",
+     "codesPostaux": [
+      "69001",
+      "69002",
+      "69003",
+      "69004",
+      "69005",
+      "69006",
+      "69007",
+      "69008",
+      "69009"
+     ],
+     "_score": 0.5380120153607925
+    }
+   ]
+  },
+  "hotel_2206": {
+   "name": "Villa Gallici",
+   "city": "Aix-en-Provence",
+   "postcode": "13100",
+   "pin_commune": {
+    "nom": "Aix-en-Provence",
+    "code": "13001",
+    "codesPostaux": [
+     "13080",
+     "13090",
+     "13100",
+     "13290",
+     "13540"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Aix-en-Provence",
+     "code": "13001",
+     "codesPostaux": [
+      "13080",
+      "13090",
+      "13100",
+      "13290",
+      "13540"
+     ],
+     "_score": 0.23064250985516463
+    }
+   ]
+  },
+  "hotel_2207": {
+   "name": "Villa Grand Voile Christopher Coutanceau",
+   "city": "La Rochelle",
+   "postcode": "17000",
+   "pin_commune": {
+    "nom": "La Rochelle",
+    "code": "17300",
+    "codesPostaux": [
+     "17000"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "La Rochelle",
+     "code": "17300",
+     "codesPostaux": [
+      "17000"
+     ],
+     "_score": 0.05661687939654053
+    },
+    {
+     "nom": "La Rochelle",
+     "code": "70450",
+     "codesPostaux": [
+      "70120"
+     ],
+     "_score": 0.05661687939654053
+    }
+   ]
+  },
+  "hotel_2208": {
+   "name": "Villa Haute Guais",
+   "city": "Dinard",
+   "postcode": "35800",
+   "pin_commune": {
+    "nom": "Dinard",
+    "code": "35093",
+    "codesPostaux": [
+     "35800"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Dinard",
+     "code": "35093",
+     "codesPostaux": [
+      "35800"
+     ],
+     "_score": 1
+    }
+   ]
+  },
+  "hotel_2209": {
+   "name": "Villa Maïa",
+   "city": "Lyon",
+   "postcode": "69005",
+   "pin_commune": {
+    "nom": "Lyon",
+    "code": "69123",
+    "codesPostaux": [
+     "69001",
+     "69002",
+     "69003",
+     "69004",
+     "69005",
+     "69006",
+     "69007",
+     "69008",
+     "69009"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Lyon",
+     "code": "69123",
+     "codesPostaux": [
+      "69001",
+      "69002",
+      "69003",
+      "69004",
+      "69005",
+      "69006",
+      "69007",
+      "69008",
+      "69009"
+     ],
+     "_score": 0.5380120153607925
+    }
+   ]
+  },
+  "hotel_2210": {
+   "name": "Villa René Lalique",
+   "city": "Wingen-sur-Moder",
+   "postcode": "67290",
+   "pin_commune": {
+    "nom": "Wingen-sur-Moder",
+    "code": "67538",
+    "codesPostaux": [
+     "67290"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Wingen-sur-Moder",
+     "code": "67538",
+     "codesPostaux": [
+      "67290"
+     ],
+     "_score": 0.3437161235591179
+    }
+   ]
+  },
+  "hotel_2211": {
+   "name": "Zannier Le Chalet",
+   "city": "Megève",
+   "postcode": "74120",
+   "pin_commune": {
+    "nom": "Megève",
+    "code": "74173",
+    "codesPostaux": [
+     "74120"
+    ]
+   },
+   "city_is_commune": [
+    {
+     "nom": "Megève",
+     "code": "74173",
+     "codesPostaux": [
+      "74120"
+     ],
+     "_score": 0.739517248275684
+    }
+   ]
+  }
+ }
+}

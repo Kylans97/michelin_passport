@@ -32,10 +32,11 @@ Rules (README.md):
   * a link only when MICHELIN's restaurant page says "Stay at the hotel" for a French
     Key hotel (identity by MICHELIN hotel id); `exact` within 100 m, else `campus`;
     over LINK_MAX_M it is held back for review;
-  * towns: the hotel page's locality, written as production's city when it is the same
-    name (accent-, case-, space-, hyphen- and St/Saint-insensitive); when the article
-    names a different town for the hotel and that town is already a production city,
-    the article's town (both are MICHELIN's; reported); TOWN_FIX for the rest.
+  * towns: the commune the hotel stands in. TOWN_FIX where MICHELIN names another commune
+    (pin commune from geo.api.gouv.fr, confirmed on the hotel's own site); else the town of the
+    restaurant MICHELIN links to the hotel; else the hotel page's locality, in production's
+    spelling when it is the same name, or the Key article's spelling for a new town. Checked
+    against _source/commune_check_20261030.json; TOWN_KEEP records the three exceptions.
 """
 import csv, json, math, os, re, sys, unicodedata, collections
 
@@ -46,8 +47,43 @@ ANNOUNCED_KEYS = '2026-09-18'   # "Clefs MICHELIN 2026 : ... la liste complète 
 EXPECT = (25, 38, 157)          # France (FRA) Key pages, 3/2/1; the article's links less its 3 Monaco hotels
 LINK_MAX_M = 1000
 K = {'One': 1, 'Two': 2, 'Three': 3}
-# Locality on the hotel page that is not a town; the replacement is MICHELIN's own wording elsewhere
-TOWN_FIX = {}
+# Hotels whose MICHELIN town is a different commune from the one they stand in. Each was found by the
+# commune at the hotel's MICHELIN pin (geo.api.gouv.fr, _source/commune_check_20261030.json) and confirmed by
+# the address printed on the hotel's own site (website_source_url, read 2026-10-30), which is also the address
+# stored. id -> (official commune name, address as on the hotel's site)
+TOWN_FIX = {
+    '15073': ('Anglet', '1 Allée du Château, 64600 Anglet'),                          # MICHELIN: Biarritz
+    '9950': ('Flayosc', 'Chemin des Imberts, 83780 Flayosc'),                         # article: Lorgues
+    '12454': ('Carquefou', 'Allée de Maubreuil, 44470 Carquefou'),                    # MICHELIN: Nantes
+    '9121': ('Sainte-Colombe', '2 lieu-dit Palanquey, 33350 Sainte-Colombe'),         # MICHELIN: Saint-Émilion
+    '7945': ('Lavérune', 'Chemin du Mas de Biar, 34880 Lavérune'),                    # MICHELIN: Montpellier
+    '211': ('Saint-Saturnin-lès-Apt', 'Les Andéols, 84490 Saint-Saturnin-lès-Apt'),   # MICHELIN: Saint Saturnin
+    '6027': ('Castelnau-le-Lez', '1 boulevard Philippe Lamour, 34170 Castelnau-le-Lez'),  # MICHELIN: Montpellier
+    '7332': ('Lecci', 'Route de Cala Rossa, 20137 Lecci'),                            # article: Porto-Vecchio
+    '9426': ('Vauvenargues', '33 avenue des Maquisards, 13126 Vauvenargues'),         # MICHELIN: Aix-en-Provence
+    '10047': ('Le Tholonet', '2250 route Cézanne, 13100 Le Tholonet'),                # MICHELIN: Aix-en-Provence
+    '15016': ('Zonza', 'Lieu-dit Pinarello, 20124 Zonza'),                            # MICHELIN: Porto Vecchio
+}
+# Hotels whose town comes from the linked restaurant or the Key article, where MICHELIN's hotel address
+# names another town: the address as printed on the hotel's own site (read 2026-10-30), naming the commune.
+ADDRESS_FIX = {
+    '11439': '736 Chemin des Crêtes, 83350 Ramatuelle',                                  # MICHELIN: Saint-Tropez
+    '6023': 'Chemin de Smith Haut Lafitte, 33650 Martillac',                             # MICHELIN: Bordeaux; site: Bordeaux-Martillac
+    '6479': '9 rue de la République, 51160 Champillon',                                  # MICHELIN: Épernay
+    '8645': '2750 Route de la Cride, 13610 Le Puy-Sainte-Réparade',                      # MICHELIN: Aix-en-Provence
+    '7394': '334 Rue René Vielle, 40320 Eugénie-les-Bains',                              # MICHELIN: Biarritz
+    '12201': '23 route de Fougère, 41700 Cheverny',                                      # MICHELIN: Centre-Val de Loire
+    '9079': 'Route de Saint-Canadet, 13610 Le Puy-Sainte-Réparade',                      # MICHELIN: Aix-en-Provence
+    '7279': 'La Treyne, 46200 Lacave',                                                   # MICHELIN: Souillac
+    '16381': '19 rue de la Grenouillère, 62170 La Madelaine-sous-Montreuil',             # MICHELIN: Bp 2, Montreuil-sur-Mer
+    '6037': '7 Place du Chapitre, 30400 Villeneuve-lès-Avignon',                         # MICHELIN: Avignon
+}
+# The pin falls in another commune, but MICHELIN and the hotel's own site agree on the town: kept.
+TOWN_KEEP = {
+    '9955': "COMO Le Montrachet: pin falls in the neighbouring commune of Chassagne-Montrachet; MICHELIN and comohotels.com both print 10 place du Pasquier de la Fontaine, 21190 Puligny(-Montrachet)",
+    '11840': "Domaine de Primard: pin falls in the neighbouring commune of Garennes-sur-Eure (Eure); MICHELIN and the hotel's site both print Route départementale 16, 28260 Guainville",
+    '13558': "Cheval Blanc St-Tropez: the pin falls outside every commune polygon (no commune returned for it); MICHELIN and the hotel give Plage de la Bouillabaisse, 83990 Saint-Tropez",
+}
 # MICHELIN hotel pins shown wrong by two independent sources; the hotel row takes the verified point
 COORD_FIX = {
     '11438': (45.4094877, 6.6338696,
@@ -103,14 +139,30 @@ def main():
     ex_h = {hid(h['michelin_url']): h for h in hotels}
     hurl_in_use = set(X.get('hotel_michelin_urls_in_use') or [])
     report, newtowns = [], set()
+    _cc = json.load(open(os.path.join(HERE, '_source/commune_check_20261030.json')))['hotels']
+    _by_name = {v['name']: v['pin_commune'] for v in _cc.values()}
+    pin_commune = {id: _by_name.get(p['h1']) for id, p in pages.items()}
 
     def town(id, loc):
-        loc = TOWN_FIX.get(id, loc)
         at = art_town.get(id, '')
-        if at and n(at) != n(loc) and n(at) in city_by_n and not at.startswith('Paris'):
+        if id in TOWN_FIX:
+            report.append(dict(code='', name=pages[id]['h1'], kind='TOWN CORRECTED TO COMMUNE',
+                               detail=f"MICHELIN's hotel page '{loc}'{f', article {at!r}' if at else ''}; the pin is in the commune of {TOWN_FIX[id][0]} (geo.api.gouv.fr) and the hotel's own site prints '{TOWN_FIX[id][1]}' -- {TOWN_FIX[id][0]} used, with that address"))
+            loc = TOWN_FIX[id][0]
+            if n(loc) in city_by_n:
+                return city_by_n[n(loc)]
+            city_by_n[n(loc)] = loc
+            newtowns.add(loc)
+            return loc
+        pc = (pin_commune.get(id) or {}).get('nom')
+        if at and pc and n(at) != n(loc) and n(at) == n(pc):
             report.append(dict(code='', name=pages[id]['h1'], kind='TOWN FROM ARTICLE',
-                               detail=f"hotel page locality '{loc}', MICHELIN's Key article town '{at}' (an existing city) -- article town used"))
-            return city_by_n[n(at)]
+                               detail=f"hotel page locality '{loc}'; MICHELIN's Key article prints '{at}', the commune the pin is in (geo.api.gouv.fr) -- article town used"))
+            loc = city_by_n.get(n(at), at)
+            if n(loc) not in city_by_n:
+                city_by_n[n(loc)] = loc
+                newtowns.add(loc)
+            return loc
         if n(loc) in city_by_n:
             if at and n(at) != n(loc) and not at.startswith('Paris') and at not in ('Alsace', 'Centre-Val de Loire'):
                 report.append(dict(code='', name=pages[id]['h1'], kind='TOWN DIFFERS FROM ARTICLE',
@@ -138,7 +190,7 @@ def main():
             continue
         assert art_tier.get(id) == keys, (id, p['h1'], keys, art_tier.get(id))
         keyh.append(dict(id=id, name=p['h1'], keys=keys, loc=a['addressLocality'], postcode=(a.get('postalCode') or '').strip(),
-                         address=', '.join(x for x in (a.get('streetAddress'), ' '.join(y for y in ((a.get('postalCode') or '').strip(), a['addressLocality']) if y)) if x and x.strip()),
+                         address=TOWN_FIX[id][1] if id in TOWN_FIX else ADDRESS_FIX[id] if id in ADDRESS_FIX else ', '.join(x for x in (a.get('streetAddress'), ' '.join(y for y in ((a.get('postalCode') or '').strip(), a['addressLocality']) if y)) if x and x.strip()),
                          lat=COORD_FIX[id][0] if id in COORD_FIX else float(ld['geo']['latitude']),
                          lon=COORD_FIX[id][1] if id in COORD_FIX else float(ld['geo']['longitude']), michelin_url=ld['url'],
                          michelin_phone=ld.get('telephone')))
@@ -278,7 +330,7 @@ def main():
     rest_city = {r['code']: r['city'] for r in X['restaurants']}
     for h in new_hotels:
         rc = sorted({rest_city[r] for hc, r, c, ev in new_links if hc == h['code']})
-        if len(rc) == 1:
+        if len(rc) == 1 and h['mid'] not in TOWN_FIX:
             h['town'] = rc[0]
             if n(rc[0]) != n(h['loc']):
                 report.append(dict(code=h['code'], name=h['name'], kind='TOWN FROM LINKED RESTAURANT',
@@ -286,6 +338,24 @@ def main():
         else:
             assert len(rc) <= 1, (h['name'], rc)
             h['town'] = town(h['mid'], h['loc'])
+    # every new hotel's town must be the commune at its pin, a place inside it that is not itself a commune
+    # (Val Thorens, Pyla-sur-Mer, Méribel), or a recorded TOWN_KEEP
+    cc_ = json.load(open(os.path.join(HERE, '_source/commune_check_20261030.json')))['hotels']
+    bad = []
+    for h in new_hotels:
+        c = next((v for v in cc_.values() if v['name'] == h['name']), None)
+        assert c, h['name']
+        pc = c['pin_commune']
+        same_named = c['city_is_commune'] if c['city'] == h['town'] else None
+        if h['mid'] in TOWN_KEEP or (pc and n(pc['nom']) == n(h['town'])):
+            continue
+        if same_named is None:   # the town changed after the check was taken: it must be the pin's commune
+            bad.append((h['name'], h['town'], pc and pc['nom']))
+        elif same_named:
+            bad.append((h['name'], h['town'], pc and pc['nom']))
+    assert not bad, bad
+    for id, why in TOWN_KEEP.items():
+        report.append(dict(code=hotel_by_mid[id]['code'], name=hotel_by_mid[id]['name'], kind='TOWN KEPT (PIN IN ANOTHER COMMUNE)', detail=why))
     town_by_code = {h['code']: h['town'] for h in new_hotels}
     for o in out:
         if o['code'] in town_by_code:

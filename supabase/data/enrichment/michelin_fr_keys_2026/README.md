@@ -3,12 +3,14 @@
 Status: **PREPARED, NOT APPLIED.** Generated from production's read-only export of
 2026-10-29 23:01 UTC, re-checked unchanged on 2026-10-30. To apply, in order:
 
-1. `supabase/migrations/20261023190000_add_fr_key_hotel_cities.sql` (35 French towns),
+1. `supabase/migrations/20261023190000_add_fr_key_hotel_cities.sql` (43 French towns),
    with `supabase db push --linked`. It sorts after the unapplied migrations other
    branches hold (150000 CN, 160000 US/CA/MX, 170000 HK/MO/TW, 180000 CH/AT/Nordics),
    so push those first or use `--include-all` knowingly.
 2. `prepared_fr_key_hotels.sql` (one transaction; aborts on any check),
    with `supabase db query --linked -f <absolute path>`.
+3. `prepared_mc_key_hotels.sql` (Monaco; independent of 1 and 2, see Monaco below),
+   the same way.
 
 Review `match_report.csv` and the open questions below first.
 
@@ -117,28 +119,71 @@ the hotel's pin, else `campus`; over 1 km it would be held.
   written (QA-355). No linked restaurant carries a `property_name`, so nothing
   needs clearing; the file aborts if one appears before apply.
 
-## Towns
+## Towns (QA-353, closed)
 
-In order: (1) a hotel MICHELIN links from a starred restaurant takes that
-restaurant's town (10, e.g. Les Prés d'Eugénie → Eugénie-les-Bains, not the
-page's Biarritz; Les Sources de Cheverny → Cheverny, not "Centre-Val de
-Loire"); (2) the Key article's town when it differs and is already a
-production city (5, e.g. Château de la Treyne → Lacave); (3) the hotel page's
-locality, in production's spelling when it is the same name (accent-, case-,
-space-, hyphen- and St/Saint-insensitive), or the article's spelling for a new
-town ("Menerbes" → "Ménerbes"). 35 new towns. Open cases are in QA-353.
+Each hotel goes in the commune it actually stands in; new towns are added
+where needed (product owner, 2026-10-30). MICHELIN's hotel pages often name a
+neighbouring, better-known town (Biarritz for Eugénie-les-Bains, Aix for Le
+Tholonet), so every new hotel's pin was looked up against the official commune
+boundaries (geo.api.gouv.fr, `_source/commune_check_20261030.json`), and the
+generator refuses to build if a hotel's town disagrees with its pin's commune
+without a recorded reason. In order:
+
+1. **`TOWN_FIX` (11):** MICHELIN names another commune; the pin's commune is
+   confirmed by the address on the hotel's own site, which is stored: Brindos
+   → Anglet, Château de Berne → Flayosc, Château de Maubreuil → Carquefou,
+   Château du Palanquey → Sainte-Colombe, Domaine de Biar → Lavérune, Domaine
+   des Andéols → Saint-Saturnin-lès-Apt, Domaine de Verchant →
+   Castelnau-le-Lez, Cala Rossa → Lecci, Sainte Victoire → Vauvenargues, Les
+   Lodges Sainte-Victoire → Le Tholonet, Les Regalia → Zonza.
+2. **The linked restaurant's town (10):** e.g. Les Prés d'Eugénie →
+   Eugénie-les-Bains, Les Sources de Cheverny → Cheverny (the page says
+   "Centre-Val de Loire"), Royal Champagne → Champillon.
+3. **The Key article's town, when it is the pin's commune (3):** Villa La
+   Coste → Le Puy-Sainte-Réparade, Château de la Treyne → Lacave, Le Prieuré →
+   Villeneuve-lès-Avignon.
+4. **Otherwise the hotel page's locality**, in production's spelling when it
+   is the same name (accent-, case-, space-, hyphen- and St/Saint-insensitive),
+   or the article's spelling for a new town ("Menerbes" → "Ménerbes"). A
+   locality inside a commune stays when production already uses it for
+   restaurants (Val Thorens, Pyla-sur-Mer, Méribel, Uriage-les-Bains).
+
+`ADDRESS_FIX` (10): where (2) or (3) moved a hotel but MICHELIN's address
+still names the other town, the hotel's own site's address is stored (e.g.
+"334 Rue René Vielle, 40320 Eugénie-les-Bains", not "…40320 Biarritz").
+
+`TOWN_KEEP` (3): the pin falls in a neighbouring commune but MICHELIN and the
+hotel's site agree on the town: COMO Le Montrachet (Puligny-Montrachet),
+Domaine de Primard (Guainville), Cheval Blanc St-Tropez (pin outside every
+commune polygon). 43 new towns in all.
 
 ## Open questions for review
 
-1. **Towns (QA-353):** Cournon vs La Gacilly, Veuzain-sur-Loire vs Onzain,
-   Nantes vs Carquefou (Château de Maubreuil), Aix-en-Provence vs Vauvenargues,
-   "Saint Saturnin" spelling; Brindos (Anglet) and Domaine de Verchant
-   (Castelnau-le-Lez) per their own sites.
-2. **`property_name` for the 14 non-Key hosts (QA-355)** — fill or leave.
-3. **Restaurant points off (QA-352)** — four corrections, not prepared.
-4. **Monaco:** MICHELIN's French article includes 3 Monaco Keys (Hôtel de Paris
-   3, Hôtel Métropole 2, Hermitage 1). They are MC, outside this file; whether
-   the MC rows carry them was not checked here.
+1. **`property_name` for the 14 non-Key hosts (QA-355)** — fill or leave.
+2. **Restaurant points off (QA-352)** — four corrections, not prepared.
+
+## Monaco (QA-357)
+
+MICHELIN's French Key article includes Monaco's three Keys. Production
+(read 2026-10-30, `_source/production_mc_export_20261030.json`) holds Hôtel de
+Paris (3) and Hotel Metropole (2), each with a correct current 2026 Key row,
+but **not Hermitage Monte-Carlo (1 Key, new in 2026)**; neither existing row
+has a `michelin_url`, and Metropole has no phone or website.
+`prepared_mc_key_hotels.sql` (hand-written, guarded, one transaction):
+
+- adds Hermitage Monte-Carlo as `hotel_2212` (Monte Carlo; Square
+  Beaumarchais; MICHELIN pin; website and +377 98 06 40 00 read on
+  montecarlosbm.com's Hermitage page) with its 2026 Key row;
+- fills `michelin_url` on both existing hotels, and Metropole's phone
+  (+377 93 15 15 15) and website (metropole.com), both read on its own site;
+- links L'Abysse Monte-Carlo to Hermitage (`campus`: MICHELIN's "Stay at the
+  hotel"; its pin, 1 square Beaumarchais, 213 m from the hotel's). MICHELIN's
+  pages confirm the three existing Monaco links (Le Louis XV and Le Grill →
+  Hôtel de Paris, Les Ambassadeurs → Metropole); Pavyllon, Robuchon, Elsa and
+  Rampoldi show no hotel, and Blue Bay's is the non-Key Monte Carlo Bay.
+
+Post-conditions: Monaco 1/1/1 Keys, one matching Key row each, every Monaco
+hotel with a `michelin_url`, 4 Monaco links.
 
 ## How the files are built
 
@@ -155,9 +200,9 @@ the migration. `export_fr_query.sql` produced the export
 **Codes and ids.** Production's highest hotel code is `hotel_956`. Claimed by
 parallel work (shared notes and `git grep` across all remote branches,
 2026-10-30): CN/HK/MO/TW `hotel_957`–`hotel_1029`, US/CA/MX `hotel_1501`–`hotel_1981`,
-CH/AT/Nordics `hotel_2501`–`hotel_2700`. This file uses `hotel_2001`–`hotel_2211`
+CH/AT/Nordics `hotel_2501`–`hotel_2700`. These files use `hotel_2001`–`hotel_2212`
 (claimed up to `hotel_2400`) and aborts if any is taken. Migration
-`20261023190000` (180000 is CH/AT/Nordics'). QA ids QA-350–QA-356 (QA-300–309
+`20261023190000` (180000 is CH/AT/Nordics'). QA ids QA-350–QA-357 (QA-300–309
 US/CA/MX, QA-360+ CH/AT/Nordics).
 
 ## Tested (2026-10-30)
@@ -169,12 +214,16 @@ production's columns, constraints, unique and partial indexes and the
 seeded with the real export and production's one French Key row:
 
 - **Migration + file:** applies; FR 25/38/157 + Carlton, 221 FR hotels, 220
-  current Key rows, 83 links (69 exact, 14 campus), 446 FR cities, Le Bristol's
-  phone filled.
+  current French Key rows, 83 French links (69 exact, 14 campus), 454 FR
+  cities, the corrected towns and addresses, Le Bristol's phone filled.
 - **Re-run of the file:** aborts. **Re-run of the migration:** no-op.
 - **Without the migration:** aborts, nothing applied.
 - **Renamed existing hotel / a code in range taken / a `property_name` on a
   linked restaurant / a non-2026 current Key row:** each aborts the whole file.
+- **Monaco file** (seeded with the Monaco export as well): applies after the
+  French files and on its own; Monaco 1/1/1, 4 links, all three URLs set,
+  Metropole's phone and website filled. Re-run aborts; a changed Key on an
+  existing Monaco hotel aborts.
 
 Not run against the real database, and not a full migration replay (PostGIS,
 RLS and the other tables were not reproduced).
