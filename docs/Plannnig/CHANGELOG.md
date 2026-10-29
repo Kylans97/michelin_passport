@@ -54,9 +54,15 @@ The format follows Keep a Changelog.
     It never falls back to OpenStreetMap's servers. **`MAPTILER_KEY` must
     be in the `.env` of whatever build ships this**, or managers can't set
     an event location on the map.
-  - Not yet checked against MapTiler itself: without a key, every request
-    returns 403, so the style name and tile URL are unconfirmed until a key
-    exists.
+  - The key is restricted on MapTiler's side to the user-agent the picker
+    sends, `flutter_map (app.mantelier)` (set by `userAgentPackageName`),
+    with no HTTP origins listed, since a native app sends none. This is a
+    deterrent, not real security: the header is easy to copy. Checked
+    2026-10-30: a tile request with that user-agent returns 200, the same
+    request as `curl` returns 403.
+  - Checked in the iOS simulator through a throwaway entry point that opens
+    the picker directly, since the test account manages no venue: street
+    tiles of Amsterdam load sharp, with the credit visible.
 
 ---
 
