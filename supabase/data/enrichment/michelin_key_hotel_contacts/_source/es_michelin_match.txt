@@ -1,0 +1,110 @@
+# MICHELIN match for the 109 ES Key hotels, 2026-10-29. Columns: hotel_code number | MICHELIN path under https://guide.michelin.com/en/hotels-stays/ | metres from stored location to MICHELIN's JSON-LD geo | metres to the next-nearest MICHELIN Spain hotel | MICHELIN postcode | Keys on the page | telephone as MICHELIN prints it. Rows 473/527/549 came from MICHELIN's /h/<id> short links (not in the Spain listing), distance computed by hand.
+461|majorca/son-bunyola-hotel-villas-15063|47|10592|07191|1|+34 871 62 06 02
+462|minorca/faustino-gran-relais-chateaux-7714|27|107|07760|1|0034-971 48 91 91
+463|madrid/only-you-hotel-atocha-8400|17|916|28014|0|+34 914 09 78 76
+464|madrid/the-westin-palace-madrid-9482|4|104|28014|1|+34.91.360.8000
+465|majorca/nobis-hotel-palma-13514|0|136|07003|1|+34 871 555 800
+466|majorca/castillo-h-son-vida-9796|74|4740|07013|1|+34 971 49 34 93
+467|valencia/room-mate-helen-berger-12466|25|245|46003|1|+34 960 47 91 36
+468|barcelona/seventy-barcelona-13713|46|209|08037|1|+34 930 121 270
+469|barcelona/hotel-boutique-mirlo-barcelona-12598|9|379|08022|1|+34 931 42 59 29
+470|madrid/four-seasons-hotel-madrid-13597|21|44|28014|2|+34 910 883 333
+471|malaga/la-zambra-resort-13703|63|11571|29650|1|+34 951 311 234
+472|valencia/only-you-hotel-valencia-13039|7|235|46002|1|+34 963 98 10 00
+474|majorca/el-llorenc-parc-de-la-mar-adults-only-9395|17|81|07001|1|+34971677770
+475|majorca/hotel-can-ferrereta-12001|9|553|07650|2|34 971 905 905
+476|majorca/sant-francesc-hotel-singular-10853|10|93|07001|1|+34 971 495 131
+477|barcelona/ohla-eixample-8735|14|227|08008|0|+34 937 37 79 77
+478|minorca/torralbenc-6993|25|3605|07730|1|+34 971 377 211
+479|minorca/cristine-bedfor-12081|8|370|7702|1|+34 971 635 502
+480|caceres-1/atrio-restaurante-hotel-6598|58|87250|10003|3|+34927242928
+481|pontevedra/hotel-pepe-vieira-13404|35|2532|36992|2|986 741 378 – 679 705 762
+482|barcelona/monument-hotel-8177|3|98|08008|1|+34 935 482 000
+483|majorca/convent-de-la-missio-grand-luxury-boutique-hotel-6707-7476|13|248|07003|1|+34.971.227.347
+484|valladolid2/abadia-retuerta-ledomaine-10200|30|12495|47340|3|+34 983 68 03 68
+485|briones/hotel-santa-maria-briones-13146|0|6140|26330|1|622563479
+486|barcelona/wittmore-hotel-13856|0|140|08002|1|+34 937 378 312
+487|sevilla/cavalta-boutique-hotel-123845-13803|0|692|41010|1|+34 955 44 20 10
+488|barcelona/mercer-hotel-barcelona-6912|68|185|08002|1|+34 93 310 74 80
+489|majorca/es-raco-darta-11990|1031|4934|07579|1|+34971836673 / +34686288250
+490|barcelona/antiga-casa-buenavista-12122|4|269|08001|1|+34 933 30 30 30
+491|tarragona/terra-dominicata-hotel-winery-8962|195|1715|43379|3|+34 877 91 22 92
+492|barcelona/alma-barcelona-6441|25|114|08008|1|+ 34 932 16 44 90
+493|sevilla/coolrooms-palacio-villapanes-5-gl-3421|38|40|41003|1|+34954502063
+494|madrid/the-principal-madrid-7791|13|185|28004|0|+34 91 521 87 43
+495|granada/hotel-cortijo-del-marques-9276|0|20040|18220|1|+34 958 34 00 77
+496|majorca/finca-serena-mallorca-9136|0|4120|07230|1|+34 971 18 17 58
+497|bilbao/the-artist-grand-hotel-of-art-1271|88|212|48009|1|+34.944.253.300
+498|marbella/finca-cortesin-2721|0|17571|29690|1|+34 952 93 78 00
+499|salamanca4/castillo-del-buen-amor-11820|0|14884|37799|1|+34 923 35 50 02
+500|costa-brava/can-mascort-eco-hotel-13021|0|4833|17200|1|+34 623 18 88 28
+501|minorca/can-alberti-1740-hotel-boutique-12462|0|362|07701|1|+34 971 35 42 10
+502|salamanca4/hotel-rector-5135|22|195|37008|1|+34923218482
+503|formentera/teranka-formentera-13664|0|574|07872|1|Tel: +34 871 873 030
+504|minorca/cap-menorca-relais-chateaux-14161|0|475|07730|1|+34 971 489 191
+505|madrid/brach-madrid-evok-collection-13593|3|91|28013|1|+34 915 46 36 39
+506|majorca/cap-rocat-6377|37|11584|07609|2|00 34 971 747 878
+507|majorca/la-residencia-a-belmond-hotel-mallorca-6384|6|1302|07179|2|+34.971.63.90.11
+508|san-sebastian/akelarre-8643|15|1445|20008|2|+34 943 311 208
+509|madrid/hotel-unico-madrid-2911|17|229|28001|1|+34 91 781 01 73
+510|majorca/castell-son-claret-10110|0|6778|07196|1|+34 971 13 86 20
+511|majorca/es-princep-9273|2|115|07001|1|+34 971 72 00 00
+512|teruel/la-torre-del-visco-9765|3137|7027|44587|1|+34 978 76 90 15
+513|madrid/urso-hotel-spa-madrid-7607|12|416|28004|1|+34 914 444 458
+514|cordoba-1/hospes-palacio-del-bailio-301|19|400|14001|1|+34 957 498 993
+515|barcelona/the-one-barcelona-8519|0|78|08037|1|+34 932 14 20 70
+516|majorca/can-bordoy-grand-house-garden-9143|7|41|07012|1|+34 871 87 12 02
+517|barcelona/almanac-barcelona-9002|11|175|08007|1|+34 930 18 70 00
+518|sevilla/hotel-mercer-sevilla-8527|11|77|41003|1|+34 95 422 30 04
+519|teruel/torre-del-marques-hotel-spa-winery-11626|0|5542|44652|3|+34 978 870 600
+520|majorca/hotel-can-cera-6753|7|70|07001|2|+34971715012
+521|santiago-de-compostela/hotel-spa-relais-chateaux-a-quinta-da-auga-3601|34|2692|15706|1|+34 981 53 46 36
+522|gran-canaria/santa-catalina-a-royal-hideaway-hotel-13700|26|42945|35005|1|+34928243040
+523|huesca/canfranc-estacion-a-royal-hideaway-hotel-13117|47|27126|22880|2|+34 974 56 19 00
+524|tenerife/bahia-del-duque-13701|74|1286|38660|1|+34 922 74 69 32
+525|girona/sants-metges-hotel-esperit-roca-10423|130|5483|17481|2|+34 872 20 14 41
+526|torrenueva/la-caminera-9664|115|76004|13740|1|+34 926 34 47 33
+528|minorca/rural-sant-ignasi-15147|10|3485|07760|1|+34 666 52 88 80
+529|madrid/only-you-boutique-hotel-madrid-8366|6|338|28004|1|+34 910 05 27 46
+530|majorca/predi-son-jaumell-9788|36|4085|07580|1|+34 971 81 87 96
+531|girona/hotel-mas-lazuli-7693|207|9501|17494|1|+34 872 222 220
+532|madrid/ac-santo-mauro-200|23|385|28010|1|+34.(0)91.3196900
+533|alicante/vivood-landscape-hotel-10247|37|14311|03516|1|+34 966 31 85 85
+534|granada/seda-club-hotel-13304|10|340|18001|1|+34858160161
+535|barcelona/hotel-arts-barcelona-7408|123|127|08005|1|+34 93 2211000
+536|majorca/sa-creu-nova-petit-palais-art-spa-8732|7|8756|07630|1|+34 871 51 53 45
+537|barcelona/abac-restaurant-hotel-1581|46|350|08022|1|+34 933 196 600
+538|majorca/son-brull-hotel-spa-8464|7|1507|07460|1|+34971535353
+539|majorca/cap-vermell-grand-hotel-118902-8439|132|1891|07589|2|+34 871 81 1234
+540|madrid/hotel-ritz-5865|80|180|28014|3|+34.91.701.6767
+541|barcelona/mandarin-oriental-barcelona-6386|9|83|08007|2|+34 93 151 88 88
+542|san-sebastian/hotel-maria-cristina-7470|10|466|20004|1|+34943437600
+543|madrid/hotel-villa-magna-5307|35|233|28046|2|+34 91 587 1234
+544|elciego/hotel-marques-de-riscal-7425|33|5588|01340|1|(34)(945) 180880
+545|tenerife/royal-hideaway-corales-suites-10348|14|1272|38679|1|+34 922 75 79 00
+546|granada/la-almunia-del-valle-9642|295|7991|18193|1|+34 958 30 80 10
+547|marbella/anantara-villa-padierna-palace-benahavis-marbella-resort-8770|0|9786|29679|1|+34952889150
+548|ibiza/petunia-ibiza-a-beaumier-hotel-12256|22|9420|07830|1|+34 971 808 197
+550|majorca/hotel-lavenida-8574|42|2913|07100|1|+34 971 63 40 75
+551|garraf/little-beach-house-barcelona-13093|0|24280|08871|0|+34 935 22 15 52
+552|majorca/fontsanta-thermal-spa-wellness-14062|91|4279|07639|1|0034971655016
+553|sevilla/vincci-seleccion-unuk-5-gl-13699|13|162|41004|1|+34 955 266 499
+554|marbella/la-fonda-heritage-hotel-relais-chateaux-13663|3|34|29601|1|00 34 952 12 38 40
+555|madrid/gran-hotel-ingles-11161|13|106|28014|1|+34 913 60 00 01
+556|valencia/caro-hotel-13702|6|417|46003|1|+34 963 059 000
+557|el-hierro/hotel-puntagrande-14081|0|124396|38911|1|+34611285983
+558|marbella/marbella-club-hotel-5985|0|594|29602|2|+34952822211
+559|barcelona/serras-barcelona-12051|13|130|08002|1|+34-931-691868 / +34 936 068 697
+560|san-sebastian/lasala-plaza-hotel-119438-8902|16|535|20003|1|+34 943 54 70 00
+561|barcelona/yurbban-passage-hotel-spa-11009|5|25|08010|0|+34 938 82 89 77
+562|costa-brava/mas-de-torrent-hotel-spa-7200|109|5314|17123|2|+34 972 30 32 92
+563|san-sebastian/hotel-villa-favorita-adults-only-11631|4|274|20007|1|+34 843 931 111
+564|madrid/coolrooms-atocha-11111|1|109|28012|1|+34 910 88 77 80
+565|madrid/gran-melia-palacio-de-los-duques-8808|6|340|28013|1|+34 912 76 47 47 / 1-929-207-1078
+566|la-coruna/casa-beatnik-hotel-13030|4|14320|15885|2|076 556 75 75
+567|girona/peralada-9668|1259|8277|17491|1|+34 972 53 88 30
+568|majorca/boutique-hotel-posada-terra-santa-9261|0|128|07001|1|+34 971 21 47 42
+569|barcelona/soho-house-barcelona-13089|10|226|08002|1|+34 932 20 46 00
+473|Santander/helguera-palacio-boutique-antique-13204|~5|-|39679|1|+34 942945051
+527|Alcaidesa/fairmont-la-hacienda-costa-del-sol-15148|~55|-|11310|1|+34 856 29 08 11
+549|Luces/coolrooms-palacio-de-luces-12682|~25|-|33328|1|+34 985 85 00 80
