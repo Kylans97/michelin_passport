@@ -1,0 +1,4818 @@
+{
+"read": "2026-10-29",
+"log": [
+[
+"switzerland",
+1,
+200,
+52,
+"Switzerland : 1-48 of 177 hotels"
+],
+[
+"switzerland",
+2,
+200,
+52,
+"Switzerland : 49-96 of 177 hotels"
+],
+[
+"switzerland",
+3,
+200,
+52,
+"Switzerland : 97-144 of 177 hotels"
+],
+[
+"switzerland",
+4,
+200,
+37,
+"Switzerland : 145-177 of 177 hotels"
+],
+[
+"austria",
+1,
+200,
+52,
+"Austria : 1-48 of 178 hotels"
+],
+[
+"austria",
+2,
+200,
+52,
+"Austria : 49-96 of 178 hotels"
+],
+[
+"austria",
+3,
+200,
+52,
+"Austria : 97-144 of 178 hotels"
+],
+[
+"austria",
+4,
+200,
+38,
+"Austria : 145-178 of 178 hotels"
+],
+[
+"denmark",
+1,
+200,
+40,
+"Denmark : 1-36 of 36 hotels"
+],
+[
+"sweden",
+1,
+200,
+49,
+"Sweden : 1-45 of 45 hotels"
+],
+[
+"norway",
+1,
+200,
+35,
+"Norway : 1-31 of 31 hotels"
+],
+[
+"finland",
+1,
+200,
+29,
+"Finland : 1-25 of 25 hotels"
+],
+[
+"iceland",
+1,
+200,
+32,
+"Iceland : 1-28 of 28 hotels"
+],
+[
+"faroe-islands",
+1,
+200,
+5,
+"Faroe Islands : 1-1 of 1 hotels"
+],
+[
+"greenland",
+1,
+404,
+4,
+"Unfortunately there are no selected hotels in the area you've searched for."
+]
+],
+"columns": [
+"michelin_url",
+"michelin_id",
+"name",
+"city",
+"card_country",
+"distinction",
+"listing"
+],
+"rows": [
+[
+"https://guide.michelin.com/en/hotels-stays/vals/7132-hotel-8526",
+"8526",
+"7132 Hotel",
+"Vals",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/la-reserve-geneve-hotel-spa-6471",
+"6471",
+"La Reserve Genève",
+"Geneva",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/crans-montana/lecrans-hotel-spa-7890",
+"7890",
+"LeCrans Hotel & Spa",
+"Crans-Montana",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lausanne/lausanne-palace-and-spa-98",
+"98",
+"Lausanne Palace",
+"Lausanne",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/saas-fee/the-capra-8404",
+"8404",
+"The Capra",
+"Saas-Fee",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/st-moritz/carlton-hotel-st-moritz-6969",
+"6969",
+"Carlton Hotel St. Moritz",
+"St. Moritz",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/adelboden/the-cambrian-6747",
+"6747",
+"The Cambrian",
+"Adelboden",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/basel/boutique-design-hotel-volkshaus-basel-11801",
+"11801",
+"Boutique & Design Hotel Volkshaus Basel",
+"Basel",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lausanne/beaurivage-palace-6965",
+"6965",
+"Beau-Rivage Palace",
+"Lausanne",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/crans-montana/six-senses-crans-montana-12936",
+"12936",
+"Six Senses Crans-Montana",
+"Crans-Montana",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/arosa/tschuggen-grand-hotel-6401",
+"6401",
+"Tschuggen Grand Hotel",
+"Arosa",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lugano/swiss-diamond-hotel-lugano-8653",
+"8653",
+"Swiss Diamond Hotel Lugano",
+"Lugano",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/st-moritz/nira-alpina-6700",
+"6700",
+"Nira Alpina",
+"St. Moritz",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/verbier/experimental-chalet-3851",
+"3851",
+"Experimental Chalet",
+"Verbier",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gstaad/le-grand-bellevue-8791",
+"8791",
+"Le Grand Bellevue",
+"Gstaad",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/crans-montana/crans-ambassador-11675",
+"11675",
+"Crans Ambassador",
+"Crans-Montana",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/basel/hotel-marthof-13062",
+"13062",
+"Hotel Märthof Basel",
+"Basel",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/adelboden/the-brecon-14380",
+"14380",
+"The Brecon ",
+"Adelboden",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/ascona/hotel-eden-roc-10096",
+"10096",
+"Hotel Eden Roc",
+"Ascona",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/davos/alpengold-hotel-9555",
+"9555",
+"AlpenGold Hotel",
+"Davos",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/wengen/grand-hotel-belvedere-14017",
+"14017",
+"Grand Hotel Belvedere",
+"Wengen",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/villars-sur-ollon/chalet-royalp-9804",
+"9804",
+"Chalet RoyAlp Hotel & Spa",
+"Villars-sur-Ollon",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/verbier/no14-verbier-15058",
+"15058",
+"No.14 Verbier ",
+"Verbier",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lugano/grand-hotel-villa-castagnola-125366-15215",
+"15215",
+"Grand Hotel Villa Castagnola",
+"Lugano",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/andermatt/the-chedi-andermatt-7567",
+"7567",
+"The Chedi Andermatt",
+"Andermatt",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gstaad/gstaad-palace-7981",
+"7981",
+"Gstaad Palace",
+"Gstaad",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/widder-hotel-521",
+"521",
+"Widder Hotel",
+"Zurich",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/la-reserve-eden-au-lac-zurich-10745",
+"10745",
+" La Réserve Eden au Lac Zurich",
+"Zurich",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lugano/villa-principe-leopoldo-7982",
+"7982",
+"Villa Principe Leopoldo",
+"Lugano",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/grand-hotel-zermatterhof-7399",
+"7399",
+"Grand Hotel Zermatterhof",
+"Zermatt",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/st-moritz/giardino-mountain-6917",
+"6917",
+"Giardino Mountain",
+"St. Moritz",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/St.-Gallen/einstein-stgallen-8557",
+"8557",
+"Einstein St. Gallen",
+"St. Gallen",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Regensberg/boutique-hotel-restaurant-krone-regensberg-8082",
+"8082",
+"Boutique Hotel Restaurant Krone Regensberg",
+"Regensberg",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gstaad/huus-gstaad-8458",
+"8458",
+"Huus Gstaad",
+"Gstaad",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/25hours-hotel-zurich-west-6769",
+"6769",
+"25hours Hotel Zurich West",
+"Zurich",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/eastwest-geneva-1851",
+"1851",
+"Eastwest Geneva",
+"Geneva",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/st-moritz/kulm-hotel-st-moritz-7325",
+"7325",
+"Kulm Hotel St. Moritz",
+"St. Moritz",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/locarno/giardino-lago-6916",
+"6916",
+"Giardino Lago",
+"Locarno",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/25hours-hotel-langstrasse-8488",
+"8488",
+"25hours Hotel Langstrasse",
+"Zurich",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/boutique-hotel-matthiol-9528",
+"9528",
+"Boutique Hotel Matthiol",
+"Zermatt",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vaud/le-mirador-resort-spa-7787",
+"7787",
+"Le Mirador Resort & Spa",
+"Vaud",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Vevey-2/grand-hotel-du-lac-vevey-9205",
+"9205",
+"Grand Hotel du Lac Vevey",
+"Vevey",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/ameron-zurich-hamburg-bellerive-au-lac-12494",
+"12494",
+"AMERON Zurich Bellerive au Lac",
+"Zurich",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/beau-rivage-geneva-9048",
+"9048",
+"Beau-Rivage Genève",
+"Geneva",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/mittelland/landgasthof-kreuz-kappel-9249",
+"9249",
+"Landgasthof Kreuz Kappel",
+"Mittelland",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bern/hotel-bellevue-palace-bern-10697",
+"10697",
+"Hotel Bellevue Palace Bern",
+"Bern",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bern/eiger-murren-swiss-quality-hotel-7171",
+"7171",
+"Hotel Eiger Mürren",
+"Bern",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/ascona/giardino-ascona-6918",
+"6918",
+"Giardino Ascona",
+"Ascona",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/davos/ameron-swiss-mountain-10720",
+"10720",
+"AMERON Davos Swiss Mountain Resort",
+"Davos",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/st-moritz/grace-la-margna-st-moritz-13575",
+"13575",
+"Grace La Margna St. Moritz",
+"St. Moritz",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/ascona/castello-del-sole-beach-resort-spa-13889",
+"13889",
+"Castello del Sole Beach Resort & Spa",
+"Ascona",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Gonten/huus-lowen-1878-14505",
+"14505",
+"HUUS LÖWEN 1878",
+"Gonten",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/davos/hotel-seehof-davos-14219",
+"14219",
+"Hotel Seehof Davos",
+"Davos",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/chandolin/chandolin-boutique-hotel-14825",
+"14825",
+"Chandolin Boutique Hotel",
+"Chandolin",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/intercontinental-geneve-16528",
+"16528",
+"InterContinental Genève",
+"Geneva",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/martigny/hotel-borsari-16486",
+"16486",
+"Hotel Borsari",
+"Martigny",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Gonten/huus-quell-16244",
+"16244",
+"HUUS QUELL",
+"Gonten",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/mama-shelter-zurich-15632",
+"15632",
+"Mama Shelter Zurich",
+"Zurich",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/klosters/hotel-vereina-klosters-15322",
+"15322",
+"Hotel Vereina Klosters ",
+"Klosters",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lugano/luganodante-boutique-lifestyle-hotel-15260",
+"15260",
+"LuganoDante Boutique & Lifestyle Hotel",
+"Lugano",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/wengen/braunbar-hotel-spa-15068",
+"15068",
+"Braunbär Hotel & Spa",
+"Wengen",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/the-dolder-grand-471",
+"471",
+"The Dolder Grand",
+"Zurich",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/st-moritz/badrutts-palace-hotel-7322",
+"7322",
+"Badrutt's Palace Hotel",
+"St. Moritz",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/the-omnia-7496",
+"7496",
+"The Omnia",
+"Zermatt",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/baur-au-lac-6394",
+"6394",
+"Baur au Lac",
+"Zurich",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/pontresina/grand-hotel-kronenhof-8906",
+"8906",
+"Grand Hotel Kronenhof",
+"Pontresina",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/hotel-de-la-paix-geneva-6263",
+"6263",
+"The Ritz-Carlton Hotel de la Paix, Geneva",
+"Geneva",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/burgenstock/burgenstock-9744",
+"9744",
+"Bürgenstock Hotel & Alpine Spa",
+"Burgenstock",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/basel/hotel-les-trois-rois-6395",
+"6395",
+"Hotel Les Trois Rois",
+"Basel",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/schweizerhof-zermatt-9080",
+"9080",
+"Schweizerhof Zermatt",
+"Zermatt",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/mandarin-oriental-geneva-6399",
+"6399",
+"Mandarin Oriental Geneva",
+"Geneva",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vitznau/park-hotel-vitznau-11122",
+"11122",
+"Park Hotel Vitznau",
+"Vitznau",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/interlaken/victoria-jungfrau-grand-hotel-spa-5984",
+"5984",
+"Victoria-Jungfrau Grand Hotel & Spa",
+"Interlaken",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lugano/splendide-royal-10502",
+"10502",
+"Splendide Royal Lugano",
+"Lugano",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/backstage-hotel-vernissage-10707",
+"10707",
+"Backstage Hotel Vernissage",
+"Zermatt",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/the-woodward-auberge-collection-12243",
+"12243",
+"The Woodward, Auberge Collection",
+"Geneva",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/locarno/hotel-belvedere-locarno-10658",
+"10658",
+"Hotel Belvedere Locarno",
+"Locarno",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/four-seasons-hotel-des-bergues-geneva-11435",
+"11435",
+"Four Seasons Hotel des Bergues Geneva",
+"Geneva",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Bad-Ragaz/grand-resort-bad-ragaz-12501",
+"12501",
+"Grand Resort Bad Ragaz",
+"Bad Ragaz",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/spiez/hotel-eden-spiez-7082",
+"7082",
+"Hotel Eden Spiez",
+"Spiez",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lausanne/royal-savoy-hotel-spa-10483",
+"10483",
+"Royal Savoy Hotel & Spa ",
+"Lausanne",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/F%C3%BCrstenau/casa-caminada-9871",
+"9871",
+"Casa Caminada",
+"Fürstenau",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lugano/the-view-lugano-10031",
+"10031",
+"The View Lugano",
+"Lugano",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/crans-montana/hostellerie-du-pas-de-lours-10189",
+"10189",
+"Hostellerie du Pas de l'Ours",
+"Crans-Montana",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/solothurn/la-couronne-9903",
+"9903",
+"La Couronne",
+"Solothurn",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/crans-montana/guarda-golf-hotel-residences-6831",
+"6831",
+"Guarda Golf Hôtel & Résidences",
+"Crans-Montana",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Champex-Lac/au-club-alpin-13044",
+"13044",
+"Au Club Alpin",
+"Champex-Lac",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/crans-montana/aida-hotel-spa-adult-onlyrelais-chateaux-12508",
+"12508",
+"Aïda Hôtel & Spa",
+"Crans-Montana",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/neuchatel/hotel-palafitte-7053",
+"7053",
+"Hotel Palafitte",
+"Neuchâtel",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/burgenstock/hotel-villa-honegg-6835",
+"6835",
+"Hotel Villa Honegg",
+"Burgenstock",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/b2-hotel-zurich-7584",
+"7584",
+"B2 Hotel Zurich",
+"Zurich",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/basel/nomad-design-lifestyle-hotel-8105",
+"8105",
+"Nomad Design & Lifestyle Hotel",
+"Basel",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/hotel-longemalle-122460-12414",
+"12414",
+"Hôtel Longemalle",
+"Geneva",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/hotel-zermama-zermatt-9530",
+"9530",
+"Hotel ZERMAMA Zermatt",
+"Zermatt",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/luzern/art-deco-hotel-montana-8386",
+"8386",
+"Art Deco Hotel Montana",
+"Luzern",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/basel/krafft-basel-7915",
+"7915",
+"Krafft Basel",
+"Basel",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/arosa/valsana-hotel-arosa-9152",
+"9152",
+"Valsana Hotel Arosa",
+"Arosa",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/hotel-dangleterre-7551",
+"7551",
+"Hotel d'Angleterre Geneva",
+"Geneva",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/les-giettes/whitepod-11314",
+"11314",
+"Whitepod",
+"Les Giettes",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vitznau/vitznauerhof-10190",
+"10190",
+"Vitznauerhof",
+"Vitznau",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/matterhorn-focus-10451",
+"10451",
+"Matterhorn FOCUS",
+"Zermatt",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/park-hyatt-zurich-7185",
+"7185",
+"Park Hyatt Zurich",
+"Zurich",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/mont-cervin-palace-7401",
+"7401",
+"Mont Cervin Palace",
+"Zermatt",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lausanne/hotel-le-chateau-douchy-10740",
+"10740",
+"Château d'Ouchy",
+"Lausanne",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/frutt/frutt-lodge-spa-9726",
+"9726",
+"Frutt Mountain Resort",
+"Frutt",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/22-summits-boutique-hotel-10722",
+"10722",
+"22 SUMMITS Boutique Hotel",
+"Zermatt",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Morcote/relais-castello-di-morcote-14051",
+"14051",
+"Relais Castello di Morcote",
+"Morcote",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/laax/rocksresort-11367",
+"11367",
+"Rocksresort",
+"Laax",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/st-moritz/suvretta-house-10858",
+"10858",
+"Suvretta House",
+"St. Moritz",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/les-armures-10672",
+"10672",
+"Hôtel Les Armures",
+"Geneva",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/unique-hotel-post-11051",
+"11051",
+"Unique Hotel Post",
+"Zermatt",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gstaad/the-alpina-gstaad-7179",
+"7179",
+"The Alpina Gstaad",
+"Gstaad",
+"ch",
+"THREE_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/luzern/mandarin-oriental-palace-luzern-13203",
+"13203",
+"Mandarin Oriental Palace Luzern",
+"Luzern",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/rougemont/hotel-de-rougemont-10871",
+"10871",
+"Hotel de Rougemont & Spa",
+"Rougemont",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/verbier/w-verbier-10553",
+"10553",
+"W Verbier",
+"Verbier",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/klosters/hotel-piz-buin-klosters-10475",
+"10475",
+"Hotel Piz Buin Klosters",
+"Klosters",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Le-Brassus/hotel-des-horlogers-12667",
+"12667",
+"Hôtel des Horlogers",
+"Le Brassus",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/wengen/schonegg-10476",
+"10476",
+"Schönegg",
+"Wengen",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/grindelwald/bergwelt-grindelwald-alpine-design-resort-13588",
+"13588",
+"Bergwelt Grindelwald - Alpine Design Resort",
+"Grindelwald",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/sils-maria/margna-9931",
+"9931",
+"Parkhotel Margna",
+"Sils Maria",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/st-moritz/kempinski-grand-hotel-des-bains-7167",
+"7167",
+"Kempinski Grand Hotel Des Bains",
+"St. Moritz",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/hotel-bella-vista-zermatt-10664",
+"10664",
+"Hotel Bella Vista Zermatt",
+"Zermatt",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/brail/in-lain-hotel-cadonau-9675",
+"9675",
+"IN LAIN Hotel Cadonau",
+"Brail",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/basel/der-teufelhof-basel-10816",
+"10816",
+"Gast - und Kulturhaus Der Teufelhof Basel",
+"Basel",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/ascona/art-hotel-riposo-10528",
+"10528",
+"Art Hotel Riposo",
+"Ascona",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/s-chanf/villa-flor-9976",
+"9976",
+"Villa Flor",
+"S-chanf",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/grindelwald/boutique-hotel-glacier-13989",
+"13989",
+"Boutique Hotel Glacier",
+"Grindelwald",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/storchen-zurich-13893",
+"13893",
+"Storchen Zürich",
+"Zurich",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/cervo-mountain-boutique-resort-12506",
+"12506",
+"CERVO Mountain Resort",
+"Zermatt",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lenk/lenkerhof-10611",
+"10611",
+"Lenkerhof",
+"Lenk",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gstaad/ultima-gstaad-9716",
+"9716",
+"Ultima Gstaad",
+"Gstaad",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/montreux/fairmont-le-montreux-palace-13882",
+"13882",
+"Fairmont Le Montreux Palace",
+"Montreux",
+"ch",
+"TWO_KEYS",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bern/hotel-schweizerhof-bern-spa-10468",
+"10468",
+"Hotel Schweizerhof Bern & Spa",
+"Bern",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gstaad/hotel-olden-ag-10542",
+"10542",
+"Hotel Olden",
+"Gstaad",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/mandarin-oriental-savoy-13895",
+"13895",
+"Mandarin Oriental Savoy Zurich",
+"Zurich",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vals/house-of-architects-14201",
+"14201",
+"House of Architects",
+"Vals",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/verbier/cordee-des-alpes-11359",
+"11359",
+"Cordée des Alpes",
+"Verbier",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/monte-rosa-boutique-hotel-10941",
+"10941",
+"Monte Rosa Boutique Hotel",
+"Zermatt",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/alex-lake-12699",
+"12699",
+"Alex Lake Zürich",
+"Zurich",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/tschiertschen/the-alpina-10116",
+"10116",
+"The Alpina",
+"Tschiertschen",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/verbier/hotel-farinet-11227",
+"11227",
+"Hotel Farinet",
+"Verbier",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/burgenstock/waldhotel-10206",
+"10206",
+"Waldhotel by Bürgenstock",
+"Burgenstock",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gstaad/hotel-spitzhorn-10197",
+"10197",
+"Hotel Spitzhorn",
+"Gstaad",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Rougemont-1/hotel-valrose-rougemont-12763",
+"12763",
+"Hotel-Restaurant Valrose",
+"Rougemont",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/F%C3%BCrstenau/schloss-schauenstein-14136",
+"14136",
+"Schloss Schauenstein",
+"Fürstenau",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/meisterschwanden/hotel-seerose-classic-elements-350",
+"350",
+"Seerose Resort & Spa",
+"Meisterschwanden",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bubendorf/bad-bubendorf-10641",
+"10641",
+"Bad Bubendorf",
+"Bubendorf",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/pontresina/hotel-albris-10445",
+"10445",
+"Hotel Albris",
+"Pontresina",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Vevey-2/hotel-des-trois-couronnes-spa-14083",
+"14083",
+"Hôtel Des Trois Couronnes & Spa",
+"Vevey",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/ruschlikon/hotel-belvoir-lake-view-spa-10677",
+"10677",
+"Hotel Belvoir Lake View & Spa",
+"Ruschlikon",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/luzern/hotel-schweizerhof-luzern-10448",
+"10448",
+"Hotel Schweizerhof Luzern",
+"Luzern",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Villars-sur-Ollon-1/villars-palace-13896",
+"13896",
+"Villars Palace",
+"Villars-sur-Ollon",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/arosa/belarosa-10630",
+"10630",
+"BelArosa",
+"Arosa",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/la-punt-chamues-ch/gasthaus-krone-9856",
+"9856",
+"Krone Säumerei am Inn",
+"La Punt-Chamues-ch",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zurich/the-home-hotel-zurich-14353",
+"14353",
+"The Home Hotel Zurich",
+"Zurich",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/locarno/corippo-hotel-diffuso-13977",
+"13977",
+"Corippo Hotel Diffuso",
+"Locarno",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Muri/hotel-caspar-12673",
+"12673",
+"Hotel Caspar",
+"Muri",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/M%C3%BCrren/hotel-murren-palace-14378",
+"14378",
+"Hotel Mürren Palace",
+"Mürren",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/crans-montana/chetzeron-14363",
+"14363",
+"Chetzeron",
+"Crans-Montana",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/basel/art-house-basel-14360",
+"14360",
+"Art House Basel",
+"Basel",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Thoune/boutique-hotel-schlossberg-14368",
+"14368",
+"Boutique Hotel Schlossberg",
+"Thoune",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Vermes/chateau-de-raymontpierre-17664",
+"17664",
+"Château de Raymontpierre",
+"Vermes",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/zermatt/hotel-welschen-17273",
+"17273",
+"Hotel Welschen",
+"Zermatt",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/sw-pontresina/sporthotel-pontresina-17180",
+"17180",
+"Sporthotel Pontresina",
+"Pontresina",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/appenzell/dorfhus-gupf-17071",
+"17071",
+"Dorfhus Gupf",
+"Appenzell",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/interlaken/salzano-hotel-spa-restaurant-16873",
+"16873",
+"SALZANO Hotel - Spa - Restaurant",
+"Interlaken",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/h%C3%A9r%C3%A9mence/eringer-hotel-16667",
+"16667",
+"Eringer Hotel",
+"Hérémence",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/hotel-rotary-geneva-mgallery-16252",
+"16252",
+"Hotel Rotary Geneva - MGallery",
+"Geneva",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/hood-hotel-16250",
+"16250",
+"HOOD Hotel",
+"Geneva",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/marmont-hotel-16248",
+"16248",
+"Marmont Hotel",
+"Geneva",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/citizenm-geneva-16246",
+"16246",
+"citizenM Geneva",
+"Geneva",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gstaad/miiro-the-mansard-15888",
+"15888",
+"Miiro The Mansard",
+"Gstaad",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/geneva/mercure-geneva-airport-15801",
+"15801",
+"Mercure Geneva Airport",
+"Geneva",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Eich/sonne-seehotel-15490",
+"15490",
+"Sonne Seehotel",
+"Eich",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/luzern/cascada-boutique-hotel-15489",
+"15489",
+"Cascada Boutique Hotel",
+"Luzern",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Engelberg/kempinski-palace-engelberg-15080",
+"15080",
+"Kempinski Palace Engelberg",
+"Engelberg",
+"ch",
+"ONE_KEY",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/sils-maria/hotel-waldhaus-sils-15079",
+"15079",
+"Hotel Waldhaus Sils",
+"Sils Maria",
+"ch",
+"SELECTED",
+"switzerland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lech-am-arlberg/rote-wand-gourmet-hotel-453",
+"453",
+"Rote Wand Gourmet Hotel",
+"Lech am Arlberg",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/grand-ferdinand-vienna-8000",
+"8000",
+"Grand Ferdinand Vienna",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/altstadt-vienna-103791-821",
+"821",
+"Altstadt Vienna",
+"Vienna",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/hotel-sans-souci-wien-6879",
+"6879",
+"Hotel Sans Souci, Vienna",
+"Vienna",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/the-guesthouse-vienna-7507",
+"7507",
+"The Guesthouse Vienna",
+"Vienna",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/salzburg/hotel-goldgasse-118432-7998",
+"7998",
+"Hotel Goldgasse",
+"Salzburg",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Techelsberg/hotel-schloss-seefels-13778",
+"13778",
+"Hotel Schloss Seefels",
+"Techelsberg",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/salzburg/hotel-stein-8828",
+"8828",
+"Hotel Stein",
+"Salzburg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lech-am-arlberg/post-lech-arlberg-8984",
+"8984",
+"Post Lech Arlberg",
+"Lech am Arlberg",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/styria/hideaway-hotel-montestyria-chalets-suiten-13556",
+"13556",
+"Hideaway Hotel Montestyria Chalets & Suiten",
+"Styria",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bad-gastein/the-comodo-bad-gastein-13137",
+"13137",
+"The Comodo Bad Gastein",
+"Bad Gastein",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/styria/the-old-school-guesthouse-14431",
+"14431",
+"The Old School Guesthouse",
+"Styria",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Neustift-im-Stubaital-2/relais-chateaux-spa-hotel-jagdhof-13892",
+"13892",
+"SPA Hotel Jagdhof",
+"Neustift im Stubaital",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/salzburg/hotel-villa-auersperg-14386",
+"14386",
+"Hotel & Villa Auersperg",
+"Salzburg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Hochgurgl/hotel-riml-13952",
+"13952",
+"Hotel Riml",
+"Hochgurgl",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/almanac-palais-vienna-15270",
+"15270",
+"Almanac Palais Vienna",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/grossarl/hotel-nesslerhof-14817",
+"14817",
+"Hotel Nesslerhof",
+"Grossarl",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/so-vienna-6249",
+"6249",
+"SO/ Vienna",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/anantara-palais-hansen-vienna-hotel-15401",
+"15401",
+"Anantara Palais Hansen Vienna Hotel",
+"Vienna",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/hotel-sacher-wien-6301",
+"6301",
+"Hotel Sacher Wien",
+"Vienna",
+"at",
+"THREE_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/25hours-hotel-at-museumsquartier-6298",
+"6298",
+"25hours Hotel at MuseumsQuartier",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/leogang/mama-thresl-7906",
+"7906",
+"mama thresl",
+"Leogang",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/buxbaum-boutique-hotel-2561",
+"2561",
+"Buxbaum Boutique Hotel",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/salzburg/hotel-sacher-salzburg-6300",
+"6300",
+"Hotel Sacher Salzburg",
+"Salzburg",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/zoku-vienna-12064",
+"12064",
+"Zoku Vienna",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kitzbuhel/hotel-kitzhof-mountain-design-resort-6642",
+"6642",
+"Hotel Kitzhof Mountain Design Resort",
+"Kitzbühel",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/graetzlhotel-belvedere-7602",
+"7602",
+"Graetzlhotel Belvedere",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/the-amauris-vienna-123383-13550",
+"13550",
+"The Amauris Vienna",
+"Vienna",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kitzbuhel/tennerhof-8339",
+"8339",
+"Tennerhof",
+"Kitzbühel",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/graetzlhotel-karmelitermarkt-8544",
+"8544",
+"Graetzlhotel Karmelitermarkt",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kitzbuhel/q-hotel-maria-theresia-7192",
+"7192",
+"Q! Hotel Maria Theresia",
+"Kitzbühel",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/innsbruck/boutiquehotel-weisses-rossl-13775",
+"13775",
+"Boutiquehotel Weisses Rössl",
+"Innsbruck",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lunz-am-see/refugium-lunz-13643",
+"13643",
+"Refugium Lunz",
+"Lunz am See",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/salzburg/design-hotel-zum-hirschen-salzburg-14661",
+"14661",
+"Design Hotel zum Hirschen Salzburg",
+"Salzburg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Finkenberg/stock-resort-14175",
+"14175",
+"STOCK resort",
+"Finkenberg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/St.-Anton-am-Arlberg/arpuria-hidden-luxury-mountain-home-14187",
+"14187",
+"Arpuria - hidden luxury mountain home",
+"St. Anton am Arlberg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/miiro-spittelberg-17662",
+"17662",
+"Miiro Spittelberg",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/leogang/hotel-der-lowe-17628",
+"17628",
+"Hotel Der Löwe",
+"Leogang",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/M%C3%BChlbach-am-Hochk%C3%B6nig/stiegnhaus-17618",
+"17618",
+"stieg'nhaus ",
+"Mühlbach am Hochkönig",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/styria/johann-schladming-16714",
+"16714",
+"JOHANN Schladming",
+"Styria",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/miiro-palais-rudolf-16606",
+"16606",
+"Miiro Palais Rudolf",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Traunkirchen/das-traunsee-das-hotel-zum-see-16232",
+"16232",
+"Das Traunsee - Das Hotel zum See",
+"Traunkirchen",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/hotel-motto-vienna-12509",
+"12509",
+"Hotel MOTTO, Vienna",
+"Vienna",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/the-ritz-carlton-vienna-7672",
+"7672",
+"The Ritz-Carlton, Vienna",
+"Vienna",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/leogang/naturehotel-forsthofgut-13780",
+"13780",
+"Naturhotel Forsthofgut",
+"Leogang",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/graz/schlossberghotel-das-kunsthotel-7268",
+"7268",
+"Schlossberghotel - Das Kunsthotel",
+"Graz",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kitzbuhel/schwarzer-adler-kitzbuhel-13942",
+"13942",
+"Schwarzer Adler Kitzbühel",
+"Kitzbühel",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lech-am-arlberg/burg-vital-resort-13884",
+"13884",
+"Burg Vital Resort",
+"Lech am Arlberg",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/See/boutique-hotel-und-chalets-bergwiesengluck-14512",
+"14512",
+"Boutique Hotel und Chalets Bergwiesenglück",
+"See",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Ischgl-2/schlosshotel-ischgl-13941",
+"13941",
+"Schlosshotel Ischgl",
+"Ischgl",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/afiesl/genieerhotel-bergergut-16963",
+"16963",
+"Genießerhotel BERGERGUT",
+"Afiesl",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/mandarin-oriental-vienna-15740",
+"15740",
+"Mandarin Oriental Vienna",
+"Vienna",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Damuls/alpenstern-genieerhotel-15613",
+"15613",
+"Alpenstern Genießerhotel",
+"Damuls",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lech-am-arlberg/hotel-chalet-aurelio-15496",
+"15496",
+"Hotel & Chalet Aurelio",
+"Lech am Arlberg",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/hotel-daniel-vienna-7079",
+"7079",
+"Hotel Daniel Vienna",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/hotel-imperial-9475",
+"9475",
+"Hotel Imperial",
+"Vienna",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/park-hyatt-vienna-7641",
+"7641",
+"Park Hyatt Vienna",
+"Vienna",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/hyatt-regency-vienna-9364",
+"9364",
+"Hyatt Regency Vienna",
+"Vienna",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/salzburg/hotel-goldener-hirsch-7439",
+"7439",
+"Hotel Goldener Hirsch",
+"Salzburg",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/salzburg/arthotel-blaue-gans-8337",
+"8337",
+"Arthotel Blaue Gans",
+"Salzburg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/tyrol/dasposthotel-7799",
+"7799",
+"DasPosthotel",
+"Tyrol",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/graz/grand-hotel-wiesler-7503",
+"7503",
+"Grand Hotel Wiesler",
+"Graz",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/rosewood-vienna-12721",
+"12721",
+"Rosewood Vienna",
+"Vienna",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/le-meridien-vienna-11036",
+"11036",
+"Le Meridien Vienna",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Achenkirch/das-kronthaler-7903",
+"7903",
+"Das Kronthaler",
+"Achenkirch",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/hotel-josefine-12995",
+"12995",
+"Hotel Josefine",
+"Vienna",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/hof-bei-salzburg/rosewood-schloss-fuschl-13887",
+"13887",
+"Rosewood Schloss Fuschl",
+"Hof bei Salzburg",
+"at",
+"THREE_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/hotel-topazz-lamee-6641",
+"6641",
+"Hotel Topazz Lameé",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/the-harmonie-vienna-8773",
+"8773",
+"The Harmonie Vienna, BW Premier Collection",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/velden-am-worthersee/schloss-velden-8806",
+"8806",
+"Falkensteiner Schlosshotel Velden",
+"Velden am Wörthersee",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Hirschegg/a-rosa-ifen-hotel-kleinwalsertal-10390",
+"10390",
+"A-ROSA Ifen Hotel Kleinwalsertal",
+"Hirschegg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/graz/hotel-daniel-graz-7212",
+"7212",
+"Hotel Daniel Graz",
+"Graz",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/ScheffauamWildenKaiser/kaiserlodge-14022",
+"14022",
+"Kaiserlodge",
+"Scheffau am Wilden Kaiser",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/hinterglemm/wiesergut-11392",
+"11392",
+"Wiesergut",
+"Hinterglemm",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lech-am-arlberg/hotel-goldener-berg-11267",
+"11267",
+"Hotel Goldener Berg",
+"Lech am Arlberg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/langenlois/loisium-wine-spa-resort-langenlois-7014",
+"7014",
+"LOISIUM Wine & Spa Resort Langenlois",
+"Langenlois",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/grossarl/das-edelweiss-salzburg-mountain-resort-13576",
+"13576",
+"DAS EDELWEISS - Salzburg Mountain Resort",
+"Grossarl",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/solden/bergland-hotel-solden-11394",
+"11394",
+"Bergland Design und Wellnesshotel",
+"Sölden",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bad-gastein/das-regina-boutiquehotel-bad-gastein-7837",
+"7837",
+"Das Regina Boutiquehotel Bad Gastein",
+"Bad Gastein",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/solden/das-central-11028",
+"11028",
+"Das Central",
+"Sölden",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/grossarl/family-nature-resort-moar-gut-13886",
+"13886",
+"Family Nature Resort Moar Gut",
+"Grossarl",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kitzbuhel/grand-tirolia-kitzbuhel-13885",
+"13885",
+"Grand Tirolia Kitzbühel",
+"Kitzbühel",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kitzbuhel/schlosshotel-kitzbuhel-the-spa-momentum-11221",
+"11221",
+"Schlosshotel Kitzbühel - THE SPA MOMENTUM",
+"Kitzbühel",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/innsbruck/altstadthotel-weies-kreuz-13776",
+"13776",
+"Altstadthotel Weißes Kreuz",
+"Innsbruck",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/telfs-buchen/interalpen-hotel-tyrol-11264",
+"11264",
+"Interalpen Hotel Tyrol",
+"Telfs-Buchen",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/tyrol/hochleger-luxus-chalet-refugium-am-berg-7902",
+"7902",
+"HochLeger Luxus Chalet Refugium am Berg",
+"Tyrol",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/maria-alm/die-hochkonigin-mountain-resort-14169",
+"14169",
+"die HOCHKÖNIGIN Mountain Resort",
+"Maria Alm",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Mittersill/gut-sonnberghof-14188",
+"14188",
+"Gut Sonnberghof",
+"Mittersill",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Mayrhofen/zillergrundrock-luxury-mountain-resort-14171",
+"14171",
+"ZillergrundRock Luxury Mountain Resort",
+"Mayrhofen",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/furth-bei-gottweig/malat-weingut-und-hotel-10767",
+"10767",
+"MALAT Weingut und Hotel",
+"Furth bei Göttweig",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/graz/hotel-das-weitzer-10733",
+"10733",
+"Hotel Das Weitzer",
+"Graz",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kitzbuhel/maierl-alm-chalets-8448",
+"8448",
+"Maierl-Alm & Chalets",
+"Kitzbühel",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/L%C3%A4ngenfeld/naturhotel-waldklause-14170",
+"14170",
+"Naturhotel Waldklause",
+"Längenfeld",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lech-am-arlberg/hotel-almhof-schneider-13955",
+"13955",
+"Hotel Almhof Schneider",
+"Lech am Arlberg",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Haus-im-Ennstal/natur-und-wellnesshotel-hoflehner-14182",
+"14182",
+"Natur- und Wellnesshotel Höflehner",
+"Haus im Ennstal",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Andau/scheiblhofer-the-resort-14172",
+"14172",
+"Scheiblhofer THE RESORT",
+"Andau",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/leogang/hotel-krallerhof-13891",
+"13891",
+"Hotel Krallerhof",
+"Leogang",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Uderns/sportresidenz-zillertal-14213",
+"14213",
+"Sportresidenz Zillertal",
+"Uderns",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Bregenz/kleiner-lowe-stadthotel-bregenz-14035",
+"14035",
+"kleiner Löwe – Stadthotel Bregenz",
+"Bregenz",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vorarlberg/genieer-romantikhotel-das-schiff-13771",
+"13771",
+"Genießer - & Romantikhotel DAS SCHIFF",
+"Vorarlberg",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/St.-Anton-am-Arlberg/hotel-tannenhof-13560",
+"13560",
+"Hotel Tannenhof",
+"St. Anton am Arlberg",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Hochgurgl/top-hotel-hochgurgl-13949",
+"13949",
+"TOP Hotel Hochgurgl",
+"Hochgurgl",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Tux/aktiv-wellnesshotel-bergfried-14211",
+"14211",
+"Aktiv & Wellnesshotel Bergfried",
+"Tux",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Achenkirch/posthotel-achenkirch-14177",
+"14177",
+"Posthotel Achenkirch",
+"Achenkirch",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/solden/die-berge-lifestyle-hotel-13948",
+"13948",
+"die Berge Lifestyle Hotel",
+"Sölden",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/solden/alpenparks-the-secret-solden-13944",
+"13944",
+"AlpenParks The Secret Sölden",
+"Sölden",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Freistadt/hotel-freigold-14167",
+"14167",
+"Hotel FREIGOLD",
+"Freistadt",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/salzburg/schloss-monchstein-14144",
+"14144",
+"Schloss Mönchstein",
+"Salzburg",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/lech-am-arlberg/severins-the-alpine-retreat-13940",
+"13940",
+"Severins – The Alpine Retreat",
+"Lech am Arlberg",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/innsbruck/stage-12-hotel-by-penz-13770",
+"13770",
+"STAGE 12 Hotel by Penz",
+"Innsbruck",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/hof-bei-salzburg/wellnesshotel-ebners-waldhof-am-see-14181",
+"14181",
+"Wellnesshotel Ebner's Waldhof am See",
+"Hof bei Salzburg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Seefeld/alpin-resort-sacher-13890",
+"13890",
+"Alpin Resort Sacher",
+"Seefeld",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Pamhagen/vila-vita-pannonia-14189",
+"14189",
+"Vila Vita Pannonia",
+"Pamhagen",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Obsteig/holzleiten-bio-wellness-hotel-14168",
+"14168",
+"Holzleiten Bio Wellness Hotel",
+"Obsteig",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gran/bergblick-13951",
+"13951",
+"Bergblick",
+"Grän",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/obergurgl/the-crystal-vaya-unique-13945",
+"13945",
+"The Crystal VAYA Unique",
+"Obergurgl",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Neustift-im-Stubaital-2/living-spa-vitalhotel-edelweiss-14186",
+"14186",
+"Living & Spa Vitalhotel Edelweiss",
+"Neustift im Stubaital",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Jochberg/kempinski-hotel-das-tirol-14214",
+"14214",
+"Kempinski Hotel Das Tirol",
+"Jochberg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Lermoos/mohr-life-resort-14185",
+"14185",
+"Mohr Life Resort",
+"Lermoos",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Kaprun/soulsisters-hotel-14183",
+"14183",
+"SOULSISTERS' Hotel",
+"Kaprun",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Bad%20H%C3%A4ring/panorama-royal-14176",
+"14176",
+"Panorama Royal",
+"Bad Häring",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kitzbuhel/bio-hotel-stanglwirt-14583",
+"14583",
+"Bio-Hotel Stanglwirt",
+"Kitzbühel",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/St.-Anton-am-Arlberg/hotel-gletscherblick-14209",
+"14209",
+"Hotel Gletscherblick",
+"St. Anton am Arlberg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Saalfelden%20am%20Steinernen%20Meer/ritzenhof-hotel-spa-am-see-14190",
+"14190",
+"Ritzenhof Hotel & Spa am See",
+"Saalfelden am Steinernen Meer",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/obergurgl/alpen-wellness-resort-hochfirst-13947",
+"13947",
+"Alpen-Wellness Resort Hochfirst",
+"Obergurgl",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/leogang/naturresort-puradies-14509",
+"14509",
+"Naturresort PURADIES",
+"Leogang",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Bad%20Tatzmannsdorf/adults-only-hotel-reiters-supreme-14228",
+"14228",
+"Hotel Reiters Supreme",
+"Bad Tatzmannsdorf",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Untertauern/alpin-life-resort-lurzerhof-14191",
+"14191",
+"Alpin Life Resort Lürzerhof",
+"Untertauern",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Kaltenbach/das-kaltenbach-14180",
+"14180",
+"Das Kaltenbach",
+"Kaltenbach",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Fladnitz-an-der-Teichalm/almwellness-hotel-pierer-14179",
+"14179",
+"Almwellness Hotel Pierer",
+"Fladnitz an der Teichalm",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Hall-in-Tirol/hotel-kontor-14042",
+"14042",
+"Hotel Kontor",
+"Hall in Tirol",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Bezau/hotel-post-bezau-14511",
+"14511",
+"Hotel Post Bezau",
+"Bezau",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Wagrain/almmonte-praclarum-suites-design-hotel-14212",
+"14212",
+"ALMMONTE PRÄCLARUM SUITES Design Hotel",
+"Wagrain",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Lavant/dolomitengolf-suites-14208",
+"14208",
+"Dolomitengolf Suites",
+"Lavant",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Berwang/hotel-singer-relais-chateaux-14174",
+"14174",
+"Hotel Singer",
+"Berwang",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/fiss/schlosshotel-fiss-13950",
+"13950",
+"Schlosshotel Fiss",
+"Fiss",
+"at",
+"TWO_KEYS",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Ischgl-2/gourmethotel-yscla-13943",
+"13943",
+"Gourmethotel Yscla",
+"Ischgl",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kitzbuhel/hotel-weisses-roessl-14225",
+"14225",
+"Hotel Weisses Roessl",
+"Kitzbühel",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Ischgl-2/hotel-trofana-royal-resort-13883",
+"13883",
+"Hotel Trofana Royal Resort",
+"Ischgl",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Schruns-Tschagguns/lowen-hotel-montafon-14682",
+"14682",
+"Löwen Hotel Montafon",
+"Schruns-Tschagguns",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Tux/hotel-alpin-spa-tuxerhof-14178",
+"14178",
+"Hotel Alpin Spa Tuxerhof",
+"Tux",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/obergurgl/bellevue-13946",
+"13946",
+"Hotel Bellevue Obergurgl",
+"Obergurgl",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/zola-hotel-palais-de-boheme-adults-only-14954",
+"14954",
+"Zola Hotel - Palais de Bohème",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/imperial-riding-school-autograph-collection-14946",
+"14946",
+"Imperial Riding School, Autograph Collection",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/ischgl/elizabeth-arthotel-14514",
+"14514",
+"Elizabeth Arthotel",
+"Ischgl",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Obertauern/hotel-das-kohlmayr-17452",
+"17452",
+"Hotel Das Kohlmayr",
+"Obertauern",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/flachau/loj-our-kind-of-placec-17451",
+"17451",
+"loj - our kind of place",
+"Flachau",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vorderwei%C3%9Fenbach/hotel-guglwald-17449",
+"17449",
+"Hotel Guglwald",
+"Vorderweißenbach",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Mayrhofen/elisabethhotel-private-retreat-17440",
+"17440",
+"ElisabethHotel Premium Private Retreat- Adults only",
+"Mayrhofen",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Sankt-Veit-im-Pongau/sonnhof-by-vitus-winkler-17431",
+"17431",
+"Sonnhof by Vitus Winkler",
+"Sankt Veit im Pongau",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/weissensee/strandhotel-am-weissensee-17272",
+"17272",
+"Strandhotel am Weissensee",
+"Weissensee",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/the-companion-vienna-17183",
+"17183",
+"The Companion Vienna",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/schwarzenberg/hirschen-fine-hotel-restaurant-spa-17057",
+"17057",
+"Hirschen - Fine Hotel, Restaurant & Spa",
+"Schwarzenberg",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/weissensee/neusacherhof-16976",
+"16976",
+"Neusacherhof",
+"Weissensee",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/badvigaun/neuwirt-hotel-wirtshaus-16970",
+"16970",
+"Neuwirt. Hotel & Wirtshaus",
+"Bad Vigaun",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/obergurgl/gourmet-wine-hotel-austria-16874",
+"16874",
+"Gourmet & Wine Hotel Austria",
+"Obergurgl",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/styria/lieperts-cafe-dinner-rooms-16827",
+"16827",
+"Lieperts Café Dinner Rooms",
+"Styria",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/solden/hotel-schone-aussicht-16810",
+"16810",
+"Hotel Schöne Aussicht",
+"Sölden",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/ScheffauamWildenKaiser/hotel-leitenhof-16809",
+"16809",
+"Hotel Leitenhof",
+"Scheffau am Wilden Kaiser",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/tyrol/feelfree-nature-resort-16749",
+"16749",
+"Feelfree Nature Resort",
+"Tyrol",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/the-weekend-16735",
+"16735",
+"The Weekend",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/feuersbrunn/morwald-hotel-am-wagram-16620",
+"16620",
+"Mörwald Hotel am Wagram",
+"Feuersbrunn",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/laa-an-der-thaya/therme-laa-16598",
+"16598",
+"Therme Laa",
+"Laa an der Thaya",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/austria/residenz-velich-16585",
+"16585",
+"Residenz Velich",
+"Austria",
+"",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Mayrhofen/alpine-hideaway-zillertalerhof-16578",
+"16578",
+"Alpine Hideaway ZILLERTALERHOF",
+"Mayrhofen",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/obergurgl/hotel-gotthard-zeit-16508",
+"16508",
+"Hotel Gotthard - Zeit",
+"Obergurgl",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/St.-Anton-am-Arlberg/ullrhaus-st-anton-16324",
+"16324",
+"Ullrhaus - St. Anton",
+"St. Anton am Arlberg",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/fiss/das-marent-15634",
+"15634",
+"Das Marent",
+"Fiss",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/hotell-palais-mailberger-hof-15473",
+"15473",
+"Palais Mailberger Hof",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/a-by-adina-vienna-danube-15376",
+"15376",
+"A by Adina Vienna Danube",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vienna/jaz-in-the-city-vienna-15256",
+"15256",
+"Jaz in the City Vienna",
+"Vienna",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Ehrwald/eriro-15205",
+"15205",
+"Eriro",
+"Ehrwald",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Zell%20am%20See/hotel-salzburgerhof-15077",
+"15077",
+"Hotel Salzburgerhof",
+"Zell am See",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Obermieming/alpenresort-schwarz-14562",
+"14562",
+"Alpenresort Schwarz",
+"Obermieming",
+"at",
+"ONE_KEY",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Ellmau/hotel-kaiserhof-in-ellmau-14387",
+"14387",
+"Hotel Kaiserhof in Ellmau",
+"Ellmau",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Mondsee/apollo-achtquartier-das-hotel-am-mondsee-14210",
+"14210",
+"Apollo AchtQuartier Das Hotel am Mondsee",
+"Mondsee",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Brand/valavier-aktivresort-14173",
+"14173",
+"Valavier Aktivresort",
+"Brand",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Mayrhofen/hubers-boutiquehotel-13644",
+"13644",
+"Huber's Boutiquehotel",
+"Mayrhofen",
+"at",
+"SELECTED",
+"austria"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/dangleterre-copenhagen-7705",
+"7705",
+"Hotel d'Angleterre",
+"Copenhagen",
+"dk",
+"TWO_KEYS",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/hotel-sanders-8985",
+"8985",
+"Hotel Sanders",
+"Copenhagen",
+"dk",
+"ONE_KEY",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/nobis-hotel-copenhagen-8688",
+"8688",
+"Nobis Hotel Copenhagen",
+"Copenhagen",
+"dk",
+"ONE_KEY",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/andersen-hotel-6501",
+"6501",
+"Andersen Hotel",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/absalon-hotel-7997",
+"7997",
+"Absalon Hotel",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Allinge/allinge-badehotel-12098",
+"12098",
+"Allinge Badehotel",
+"Allinge",
+"dk",
+"ONE_KEY",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Hellerup/park-lane-copenhagen-14537",
+"14537",
+"Park Lane Copenhagen",
+"Hellerup",
+"dk",
+"ONE_KEY",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Tisvilde/helenekilde-badehotel-128406-17182",
+"17182",
+"Helenekilde Badehotel",
+"Tisvilde",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/coco-hotel-122473-12427",
+"12427",
+"Coco Hotel",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/nimb-6318",
+"6318",
+"Nimb",
+"Copenhagen",
+"dk",
+"ONE_KEY",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/25hours-hotel-indre-by-12530",
+"12530",
+"25hours Hotel Indre By",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/zoku-copenhagen-12038",
+"12038",
+"Zoku Copenhagen  ",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/nh-copenhagen-grand-joanne-13725",
+"13725",
+"NH Copenhagen Grand Joanne",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/hotel-bella-grande-14402",
+"14402",
+"Hotel Bella Grande",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/25hours-hotel-paper-island-13999",
+"13999",
+"25hours Hotel Paper Island",
+"Copenhagen",
+"dk",
+"ONE_KEY",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/aarhus/villa-provence-hotel-aarhus-10377",
+"10377",
+"Villa Provence Hotel Aarhus",
+"Aarhus",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/hotel-petra-17128",
+"17128",
+"Hotel Petra",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/herman-k-125076-14766",
+"14766",
+"Herman K",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/aarhus/hotel-royal-14576",
+"14576",
+"Hotel Royal",
+"Aarhus",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/H%C3%B8rve/dragsholm-slot-13460",
+"13460",
+"Dragsholm Slot",
+"Hørve",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Millinge/falsled-kro-15345",
+"15345",
+"Falsled Kro",
+"Millinge",
+"dk",
+"ONE_KEY",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/1-hotel-copenhagen-151",
+"151",
+"1 Hotel Copenhagen",
+"Copenhagen",
+"dk",
+"ONE_KEY",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/villa-copenhagen-120153-12202",
+"12202",
+"Villa Copenhagen",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/kong-arthur-10438",
+"10438",
+"Hotel Kong Arthur",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/hotel-hans-6686",
+"6686",
+"Hotel Hans",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/copenhagen/manon-les-suites-guldsmeden-12749",
+"12749",
+"Manon Les Suites Guldsmeden",
+"Copenhagen",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/aarhus/hotel-oasia-aarhus-10156",
+"10156",
+"Hotel Oasia Aarhus",
+"Aarhus",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/aarhus/scandic-the-mayor-10344",
+"10344",
+"Scandic The Mayor",
+"Aarhus",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/aarhus/first-hotel-atlantic-10270",
+"10270",
+"First Hotel Atlantic",
+"Aarhus",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/S%C3%B8nderborg/hotel-arnkilhus-17262",
+"17262",
+"Hotel Arnkilhus",
+"Sønderborg",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Nordborg/dyvig-badehotel-17259",
+"17259",
+"Dyvig Badehotel",
+"Nordborg",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/S%C3%B8nderborg/alsik-hotel-spa-17257",
+"17257",
+"Alsik Hotel & Spa",
+"Sønderborg",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Gudhjem/melsted-badehotel-16542",
+"16542",
+"Melsted Badehotel",
+"Gudhjem",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Zealand/rox-resort-16319",
+"16319",
+"Rox Resort",
+"Zealand",
+"dk",
+"SELECTED",
+"denmark"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/villa-dagmar-11620",
+"11620",
+"Villa Dagmar",
+"Stockholm",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/hotel-diplomat-stockholm-7834",
+"7834",
+"Hotel Diplomat",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gothenburg/hotel-riverton-12555",
+"12555",
+"Hotel Riverton ",
+"Gothenburg",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/stockholm-stadshotell-15159",
+"15159",
+"Stockholm Stadshotell",
+"Stockholm",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/villa-dahlia-15140",
+"15140",
+"Villa Dahlia",
+"Stockholm",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/ett-hem-7183",
+"7183",
+"Ett Hem",
+"Stockholm",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/berns-hotel-6180",
+"6180",
+"Berns Hotel",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/nobis-hotel-stockholm-6391",
+"6391",
+"Nobis Hotel Stockholm",
+"Stockholm",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/miss-clara-by-nobis-7230",
+"7230",
+"Miss Clara by Nobis",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/hotel-j-6389",
+"6389",
+"Hotel J Stockholm",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/hotel-skeppsholmen-6390",
+"6390",
+"Hotel Skeppsholmen",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/stallmastaregarden-6662",
+"6662",
+"Stallmästaregården",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/nordic-light-hotel-6392",
+"6392",
+"Nordic Light Hotel",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/lydmar-hotel-5807",
+"5807",
+"Lydmar Hotel",
+"Stockholm",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/hotel-at-six-8825",
+"8825",
+"Hotel At Six",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/bank-hotel-122824-12734",
+"12734",
+"Bank Hotel",
+"Stockholm",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/backstage-hotel-10563",
+"10563",
+"Backstage Hotel",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/hotel-kungstradgarden-16322",
+"16322",
+"Hotel Kungsträdgården",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/harads/treehotel-11346",
+"11346",
+"Treehotel",
+"Harads",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/grand-hotel-stockholm-8262",
+"8262",
+"Grand Hotel Stockholm",
+"Stockholm",
+"se",
+"TWO_KEYS",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/radisson-collection-strand-hotel-stockholm-5971",
+"5971",
+"Radisson Collection, Strand Hotel, Stockholm",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/story-hotel-stockholm-stureplan-8694",
+"8694",
+"Story Hotel Stockholm Stureplan",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/blique-by-nobis-10266",
+"10266",
+"Blique by Nobis",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/jukkasjarvi/the-ice-hotel-10778",
+"10778",
+"ICEHOTEL",
+"Jukkasjärvi",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/hotel-frantz-12056",
+"12056",
+"Hotel Frantz",
+"Stockholm",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/are/copperhill-mountain-lodge-8343",
+"8343",
+"Copperhill Mountain Lodge",
+"Åre",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/hobo-hotel-10255",
+"10255",
+"Hobo Hotel",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/jarfalla/gorvalns-slott-7923",
+"7923",
+"Görvälns Slott",
+"Jarfalla",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/downtown-camper-by-scandic-11019",
+"11019",
+"Downtown Camper by Scandic",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/sheraton-121162-10434",
+"10434",
+"Sheraton Stockholm Hotel",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/malmo/story-studio-malmo-10547",
+"10547",
+"Story Studio Malmö",
+"Malmö",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gothenburg/hotel-pigalle-10406",
+"10406",
+"Hotel Pigalle",
+"Gothenburg",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gothenburg/dorsia-10287",
+"10287",
+"Dorsia Hotel & Restaurant",
+"Gothenburg",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vasteras/steam-hotel-11054",
+"11054",
+"Steam Hotel",
+"Västerås",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/malmo/hotel-mjs-9880",
+"9880",
+"Hotel MJ's",
+"Malmö",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/gothenburg/hotel-flora-9782",
+"9782",
+"Hotel Flora Göteborg",
+"Gothenburg",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Ume%C3%A5/stora-hotellet-12701",
+"12701",
+"Stora Hotellet",
+"Umeå",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/malmo/best-western-plus-hotel-noble-house-10435",
+"10435",
+"Best Western Plus Hotel Noble House",
+"Malmö",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/M%C3%B6rbyl%C3%A5nga/eco-by-strandnara-12480",
+"12480",
+"Eco by StrandNara",
+"Mörbylånga",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/huskvarna/huskvarna-stadshotell-11263",
+"11263",
+"Huskvarna Stadshotell",
+"Huskvarna",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Hind%C3%A5s/hjortviken-country-club-15391",
+"15391",
+"Hjortviken Country Club",
+"Hindås",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/harads/arctic-bath-15340",
+"15340",
+"Arctic Bath",
+"Harads",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Glumsl%C3%B6v/maryhill-estate-15203",
+"15203",
+"Maryhill Estate",
+"Glumslöv",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/reisen-15142",
+"15142",
+"Hôtel Reisen, part of The Unbound Collection by Hyatt",
+"Stockholm",
+"se",
+"SELECTED",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stockholm/ruth-15141",
+"15141",
+"Ruth",
+"Stockholm",
+"se",
+"ONE_KEY",
+"sweden"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kristiansand/boen-gard-13218",
+"13218",
+"Boen Gård",
+"Kristiansand",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/sofiemyr/the-well-13648",
+"13648",
+"The Well ",
+"Sofiemyr",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stavanger/eilert-smith-hotel-9301",
+"9301",
+"Eilert Smith Hotel",
+"Stavanger",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/trondheim/britannia-hotel-10216",
+"10216",
+"Britannia Hotel",
+"Trondheim",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/alesund/storfjord-hotel-380",
+"380",
+"Storfjord Hotel",
+"Alesund",
+"no",
+"TWO_KEYS",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/oslo/the-thief-6745",
+"6745",
+"The Thief",
+"Oslo",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/solvorn/walaker-hotel-12720",
+"12720",
+"Walaker Hotel",
+"Solvorn",
+"no",
+"TWO_KEYS",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bergen/bergen-brs-hotel-11453",
+"11453",
+"Bergen Børs Hotel",
+"Bergen",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/klofta/lily-country-club-13574",
+"13574",
+"Lily Country Club",
+"Klofta",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Norangsfjorden/hotel-union-ye-15407",
+"15407",
+"Hotel Union Øye",
+"Norangsfjorden",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/herdla/lilly-lindenberg-15364",
+"15364",
+"Lilløy Lindenberg",
+"Herdla",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stavanger/hotel-victoria-125883-14997",
+"14997",
+"Hotel Victoria",
+"Stavanger",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Valldal/juvet-12187",
+"12187",
+"Juvet Landscape Hotel",
+"Valldal",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/manshausen-island/manshausen-11007",
+"11007",
+"Manshausen",
+"Manshausen Island",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/norway/hotel-continental-7193",
+"7193",
+"Hotel Continental",
+"Norway",
+"",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/oslo/amerikalinjen-11131",
+"11131",
+"Amerikalinjen",
+"Oslo",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/oslo/hotel-christiania-teater-8917",
+"8917",
+"Hotel Christiania Teater",
+"Oslo",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/oslo/sommerro-13136",
+"13136",
+"Sommerro",
+"Oslo",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/norway/hotel-brosundet-11243",
+"11243",
+"Hotel Brosundet",
+"Norway",
+"",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bergen/zander-k-hotel-11452",
+"11452",
+"Zander K Hotel",
+"Bergen",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/skulestadmo/elva-hotel-13307",
+"13307",
+"Elva Hotel",
+"Skulestadmo",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bekkjarvik/beckerwyc-house-17629",
+"17629",
+"Beckerwyc House",
+"Bekkjarvik",
+"no",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/sandhaland/panoramahyttene-16276",
+"16276",
+"Panoramahyttene",
+"Sandhaland",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Ballstad/hattvika-lodge-15711",
+"15711",
+"Hattvika Lodge",
+"Ballstad",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/bekkjarvik/bekkjarvik-gjestgiveri-15674",
+"15674",
+"Bekkjarvik Gjestgiveri",
+"Bekkjarvik",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/norway/nusfjord-village-resort-15615",
+"15615",
+"Nusfjord Village & Resort",
+"Norway",
+"",
+"ONE_KEY",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/oslo/karl-johan-hotel-15442",
+"15442",
+"Karl Johan Hotel",
+"Oslo",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stavanger/thon-partner-stavanger-forum-hotel-14996",
+"14996",
+"Thon Partner Stavanger Forum Hotel",
+"Stavanger",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/sandnes/gamlavrket-gjstgiveri-tracteringssted-14995",
+"14995",
+"GamlaVærket Gjæstgiveri & Tracteringssted",
+"Sandnes",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stavanger/radisson-blu-atlantic-hotel-stavanger-14994",
+"14994",
+"Radisson Blu Atlantic Hotel, Stavanger",
+"Stavanger",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/stavanger/ydalir-hotel-14993",
+"14993",
+"Ydalir Hotel",
+"Stavanger",
+"no",
+"SELECTED",
+"norway"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Rovaniemi/skyra-retreat-17271",
+"17271",
+"Skyra Retreat",
+"Rovaniemi",
+"fi",
+"ONE_KEY",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/hotel-kamp-7621",
+"7621",
+"Hotel Kämp",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/hotel-f6-8695",
+"8695",
+"Hotel F6",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/porvoo/runo-hotel-porvoo-13645",
+"13645",
+"RUNO Hotel Porvoo",
+"Porvoo",
+"fi",
+"ONE_KEY",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/saariselka/valo-ice-cube-villas-16414",
+"16414",
+"VALO Ice Cube Villas",
+"Saariselkä",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/hotel-indigo-helsinki-boulevard-15438",
+"15438",
+"Hotel Indigo Helsinki - Boulevard",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/nh-collection-helsinki-grand-hansa-14792",
+"14792",
+"NH Collection Helsinki Grand Hansa",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/klaus-k-6322",
+"6322",
+"Klaus K",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Rovaniemi/arctic-treehouse-hotel-12304",
+"12304",
+"Arctic Treehouse Hotel",
+"Rovaniemi",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/saariselka/kakslauttanen-hotel-11000",
+"11000",
+"Kakslauttanen Arctic Resort",
+"Saariselkä",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/hotel-st-george-8927",
+"8927",
+"Hotel St. George Helsinki",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/hotel-haven-7415",
+"7415",
+"Hotel Haven",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/hotel-fabian-8027",
+"8027",
+"Hotel Fabian",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/hotel-lilla-roberts-8026",
+"8026",
+"Hotel Lilla Roberts",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/scandic-paasi-8918",
+"8918",
+"Scandic Paasi",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/waldorf-astoria-helsinki-13290",
+"13290",
+"Waldorf Astoria Helsinki",
+"Helsinki",
+"fi",
+"ONE_KEY",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/tampere/lapland-hotel-tampere-10927",
+"10927",
+"Lapland Hotel Tampere",
+"Tampere",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/hobo-helsinki-11361",
+"11361",
+"Hobo Helsinki",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/hotel-u14-autograph-collection-15445",
+"15445",
+"Hotel U14, Autograph Collection",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/solo-sokos-hotel-pier-4-helsinki-15443",
+"15443",
+"Solo Sokos Hotel Pier 4",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/scandic-helsinki-hub-15440",
+"15440",
+"Scandic Helsinki Hub",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/lapland-hotels-bulevardi-15439",
+"15439",
+"Lapland Hotels Bulevardi",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/radisson-red-helsinki-15437",
+"15437",
+"Radisson RED Helsinki",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/clarion-mestari-15436",
+"15436",
+"Clarion Hotel Mestari",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/helsinki/solo-sokos-hotel-torni-helsinki-15435",
+"15435",
+"Solo Sokos Hotel Torni",
+"Helsinki",
+"fi",
+"SELECTED",
+"finland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/hvolsvollur/umi-hotel-9090",
+"9090",
+"UMI Hotel",
+"Hvolsvöllur",
+"is",
+"ONE_KEY",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/selfoss/360-hotel-spa-12479",
+"12479",
+"360 Hotel & Spa",
+"Selfoss",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/fljot/eleven-deplar-farm-17220",
+"17220",
+"Eleven Deplar Farm",
+"Fljót",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/akureyri/hotel-akureyri-16710",
+"16710",
+"Hotel Akureyri",
+"Akureyri",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vik/black-beach-suites-16445",
+"16445",
+"Black Beach Suites",
+"Vík",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/hvolsvollur/harmony-seljalandsfoss-16230",
+"16230",
+"Harmony Seljalandsfoss",
+"Hvolsvöllur",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/selfoss/black-sand-hotel-15759",
+"15759",
+"Black Sand Hotel",
+"Selfoss",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/selfoss/ion-adventure-hotel-7019",
+"7019",
+"ION Adventure Hotel",
+"Selfoss",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/reykjavik/101-hotel-6186",
+"6186",
+"101 Hotel",
+"Reykjavik",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/grindavik/the-retreat-at-blue-lagoon-iceland-11065",
+"11065",
+"The Retreat at Blue Lagoon Iceland",
+"Grindavik",
+"is",
+"TWO_KEYS",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/akureyri/akureyri-8018",
+"8018",
+"Akureyri - Berjaya Iceland Hotels",
+"Akureyri",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/reykjavik/the-reykjavik-edition-12473",
+"12473",
+"The Reykjavik EDITION",
+"Reykjavik",
+"is",
+"ONE_KEY",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/vik/hotel-vik-i-myrdal-8017",
+"8017",
+"Hotel Vik i Myrdal",
+"Vík",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/hella/hotel-ranga-7564",
+"7564",
+"Hotel Ranga",
+"Hella",
+"is",
+"ONE_KEY",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Hverager%C3%B0i/the-greenhouse-hotel-12645",
+"12645",
+"The Greenhouse Hotel",
+"Hveragerði",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/reykjavik/kvosin-downtown-hotel-7225",
+"7225",
+"Kvosin Downtown Hotel",
+"Reykjavik",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/reykjavik/apotek-hotel-reykjavik-11001",
+"11001",
+"Apótek Hotel Reykjavík",
+"Reykjavik",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Budir/hotel-budir-12663",
+"12663",
+"Hotel Budir",
+"Budir",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Hnappavellir/fosshotel-glacier-lagoon-12452",
+"12452",
+"Fosshotel Glacier Lagoon",
+"Hnappavellir",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/reykjavik/sand-hotel-10530",
+"10530",
+"Sand Hotel",
+"Reykjavik",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/H%C3%B6fn/fosshotel-vatnajokull-12644",
+"12644",
+"Fosshótel Vatnajökull",
+"Höfn",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/reykjavik/reykjavik-residence-apartment-hotel-11411",
+"11411",
+"Reykjavik Residence Apartment Hotel",
+"Reykjavik",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/reykjavik/centerhotel-thingholt-11414",
+"11414",
+"Thingholt by Center Hotels",
+"Reykjavik",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Kerlingarfjoll/highland-base-kerlingarfjoll-13848",
+"13848",
+"Highland Base Kerlingarfjöll",
+"Kerlingarfjoll",
+"is",
+"ONE_KEY",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/reykjavik/ion-city-14347",
+"14347",
+"Ion City",
+"Reykjavik",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/grindavik/silica-hotel-at-blue-lagoon-iceland-17278",
+"17278",
+"Silica Hotel at Blue Lagoon Iceland",
+"Grindavik",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/selfoss/torfhus-retreat-16865",
+"16865",
+"Torfhús Retreat",
+"Selfoss",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/reykjavik/hotel-reykjavik-saga-16514",
+"16514",
+"Hotel Reykjavik Saga",
+"Reykjavik",
+"is",
+"SELECTED",
+"iceland"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/t%C3%B3rshavn/hotel-froyar-129223-17258",
+"17258",
+"Hotel Føroyar",
+"Tórshavn",
+"fo",
+"SELECTED",
+"faroe-islands"
+]
+],
+"other_cards_not_counted": [
+[
+"https://guide.michelin.com/en/hotels-stays/Faeroe%20Islands/havgrim-seaside-hotel-1948-17260",
+"fo"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/Faeroe%20Islands/hotel-brandan-17261",
+"fo"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406",
+"us"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050",
+"fr"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908",
+"jp"
+],
+[
+"https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463",
+"fr"
+]
+]
+}

@@ -1,0 +1,61 @@
+{
+  "_read_me": "By-hand judgements read by build_prepared.py, each with its evidence (research 2026-10-30). QA ids in README.md.",
+  "restaurants": {
+    "rest_0240": {
+      "evidence": "QA-361: MICHELIN Switzerland 2025 lists 'Arosa (GR) - La Brezza' among the two-star restaurants (_source/michelin_article_ch_all_starred_2025_de.txt) and its live page gives Two Stars, dateAwarded 2025; the launch row's 3 matches no MICHELIN edition"
+    },
+    "rest_0243": {
+      "edition_value": 2,
+      "outcome": "keep",
+      "evidence": "QA-362: 'Bad Ragaz (SG) - IGNIV by Andreas Caminada' is two-star in MICHELIN Switzerland 2025 (_source/michelin_article_ch_all_starred_2025_de.txt); its MICHELIN page /en/sankt-gallen-region/bad-ragaz/restaurant/igniv-by-andreas-caminada returns 404 and it is not in the live listing (2026-10-30). Kept at the 2025 value: a loss would need the 2026 edition (2 Nov 2026), and 404 alone does not prove closure"
+    },
+    "rest_0245": {
+      "edition_value": 2,
+      "outcome": "keep",
+      "evidence": "QA-362: 'Basel (BS) - Stucki - Tanja Grandits' is two-star in MICHELIN Switzerland 2025; its MICHELIN page /en/basel-stadt/basel/restaurant/stucki-tanja-grandits returns 404 and it is not in the live listing (2026-10-30). Kept at the 2025 value until the 2026 edition"
+    },
+    "rest_0251": {
+      "edition_value": 2,
+      "outcome": "keep",
+      "evidence": "QA-362: 'Lenzburg (AG) - Skin's - the restaurant' is two-star in MICHELIN Switzerland 2025; its MICHELIN page /en/aargau-region/lenzburg/restaurant/skin-s-the-restaurant returns 404 and it is not in the live listing (2026-10-30). Kept at the 2025 value until the 2026 edition"
+    },
+    "rest_0142": {
+      "michelin_url": "https://guide.michelin.com/en/skane/simrishamn_2683288/restaurant/vyn",
+      "match_evidence": "QA-364: stored phone +46 414 204 00 is exactly the number on MICHELIN's VYN page; MICHELIN's pin and address (Höga vägen 72, 272 92 Simrishamn) are 2,359 m from the stored Fiskaregatan 2, Skillinge point, so the restaurant moved; stored address and point left for review"
+    },
+    "rest_0482": {
+      "outcome": "keep",
+      "evidence": "QA-363: Aloë (2 stars in production, launch row labelled 2026) is not in MICHELIN's 2026 Nordic list (_source/michelin_article_nordic_full_list_2026.txt) and its MICHELIN page /en/stockholm-region/stockholm/restaurant/aloe returns 404. Its 2025 value could not be verified (no 2025 full list found on MICHELIN's site; the Internet Archive refused the lookup, HTTP 429), so the relabel the QA-217 rule needs is not proven. Left untouched for a decision; README gives the block"
+    }
+  },
+  "hotels": {
+    "hotel_73": {
+      "launch_row": "relabel",
+      "year": 2025,
+      "evidence": "QA-366: MICHELIN 'All the Key Hotels in Switzerland: The Full 2025 Selection' (8 Oct 2025, _source/michelin_article_ch_key_hotels.txt) lists 'Lausanne: Beau-Rivage Palace among the Two-Key hotels' -- the launch row's value"
+    },
+    "hotel_81": {
+      "launch_row": "relabel",
+      "year": 2025,
+      "evidence": "QA-366: MICHELIN 'All the Key Hotels in Switzerland: The Full 2025 Selection' (8 Oct 2025, _source/michelin_article_ch_key_hotels.txt) lists 'St. Moritz: Kulm Hotel St. Moritz among the Two-Key hotels' -- the launch row's value"
+    },
+    "hotel_52": {
+      "launch_row": "relabel",
+      "year": 2025,
+      "evidence": "QA-366: MICHELIN 'All the Key Hotels in Switzerland: The Full 2025 Selection' (8 Oct 2025, _source/michelin_article_ch_key_hotels.txt) lists 'Geneva: Beau-Rivage Geneva among the Three-Key hotels' -- the launch row's value"
+    },
+    "hotel_67": {
+      "launch_row": "relabel",
+      "year": 2025,
+      "evidence": "QA-366: MICHELIN 'All the Key Hotels in Switzerland: The Full 2025 Selection' (8 Oct 2025, _source/michelin_article_ch_key_hotels.txt) lists 'Ennetbürgen: Hotel Villa Honegg among the Two-Key hotels' -- the launch row's value"
+    },
+    "hotel_123": {
+      "launch_row": "relabel",
+      "year": 2025,
+      "evidence": "QA-366: MICHELIN 'All the Key Hotels in Austria: The Full 2025 Selection' (_source/michelin_article_keys_at_2025.txt) lists 'Fiss: Schlosshotel Fiss' among the One-Key hotels -- the launch row's value"
+    }
+  },
+  "stay_exclude": {
+    "https://guide.michelin.com/en/ticino/ascona/restaurant/ecco": "QA-374: MICHELIN's Ecco (Ascona) page says 'Stay at the hotel' -> Giardino Mountain (/en/hotels-stays/st-moritz/giardino-mountain-6917), a hotel in St. Moritz, about 100 km away; the same link sits on Ecco St. Moritz's page, so it is MICHELIN's error on the Ascona page. No property_name, no link"
+  }
+}
