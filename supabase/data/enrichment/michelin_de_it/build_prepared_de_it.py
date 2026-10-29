@@ -162,7 +162,15 @@ def main():
                 if len(v25) > 1:
                     v25 = [a for a in v25 if n(a['city'])[:4] in (n(e['city'])[:4], n(m['city'])[:4] if m else '')] or v25
                 launch = cur['year'] == 2026 and not cur.get('announced_on')
-                if launch:
+                has2025 = any(h['year'] == 2025 for h in (e.get('history') or []))
+                if launch and has2025:
+                    # A later history pass already recorded the 2025 edition for this
+                    # restaurant; relabelling would collide with that row. The launch row
+                    # then stands as the 2026 value (true when MICHELIN 2026 agrees).
+                    report.append(dict(country=CC, code=e['code'], name=e['name'], kind='2025 ROW ALREADY PRESENT',
+                                       detail=f"history pass recorded 2025 = {[h['value'] for h in e['history'] if h['year'] == 2025][0]}; launch 2026 row ({cur['value']}) kept as the 2026 value, not relabelled"))
+                    base = cur['value']
+                elif launch:
                     if len(v25) == 1 and v25[0]['tier'] == cur['value']:
                         relabel.append(e['code'])
                         base = cur['value']
@@ -175,7 +183,12 @@ def main():
                 if m:
                     s26 = int(m['stars'])
                     if s26 != base:
-                        changes.append((e['code'], s26, base))
+                        if e['code'] in relabel or cur['year'] != 2026:
+                            changes.append((e['code'], s26, base))
+                        else:  # current row already labelled 2026 and not relabelled: correct it in place
+                            corrections.append((e['code'], s26, base))
+                            report.append(dict(country=CC, code=e['code'], name=e['name'], kind='IMPORT ERROR CORRECTED',
+                                               detail=f"2026 row holds {base}, MICHELIN 2026 gives {s26}"))
                 else:
                     if base is not None:
                         losses.append(e['code'])
@@ -463,7 +476,29 @@ commit;
 
 begin;
 """
-    open(os.path.join(HERE, 'prepared_de_it_stars_2026.sql'), 'w').write(head + '\n'.join(sql_parts) + '\n\ncommit;\n')
+    optional = '''
+
+-- ============================================================
+-- OPTIONAL -- commented out; needs an explicit decision
+-- ============================================================
+-- Aqua (rest_0186, Wolfsburg) closed: "Nach 25 Jahren: Drei-Sterne-Restaurant
+-- 'Aqua' in Wolfsburg schliesst", last services in March 2026 (ms-aktuell.de;
+-- chef Sven Elverfeld's own announcement via foodle.pro); MICHELIN's page now
+-- returns "Restaurant not found". The exact last day is not confirmed, so
+-- status_since stays NULL rather than a guessed date. The loss itself
+-- (2026 = NULL) is already in the file above; this only sets the status.
+--
+-- update public.restaurants
+--    set status = 'permanently_closed',
+--        status_note = 'Closed after 25 years; last services March 2026 (exact date not confirmed)',
+--        updated_at = now()
+--  where restaurant_code = 'rest_0186' and name = 'Aqua' and country_code = 'DE';
+--
+-- Courtier (rest_0230, Weissenhaus) is reported permanently closed after its
+-- chefs left (tageskarte.io), but the timing is unclear and one listing still
+-- shows reviews from April 2026 -- logged, not prepared.
+'''
+    open(os.path.join(HERE, 'prepared_de_it_stars_2026.sql'), 'w').write(head + '\n'.join(sql_parts) + '\n\ncommit;\n' + optional)
     print(json.dumps(summary, indent=1))
     print('new towns:', len(towns), '| report rows:', len(report), collections.Counter(r['kind'] for r in report))
     print('expected counts:', {k: dict(v) for k, v in expected.items()}, '| next free code:', code)

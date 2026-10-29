@@ -1,9 +1,38 @@
 # Germany & Italy: MICHELIN completion, Place IDs and phones (research 2026-10-29)
 
-Status: **research complete; SQL not yet written**. Writing it needs
-production's current Germany/Italy rows: run `export_de_it_query.sql` in
-the Supabase SQL Editor (read-only, one JSON cell), download the result as
-CSV and upload it to the session.
+Status: **PREPARED, NOT APPLIED** (2026-10-29). Generated from production's
+export of 2026-10-29 06:31 UTC. To apply, run in order:
+
+1. `supabase/migrations/20261023130000_add_de_it_2026_star_cities.sql`
+   (330 towns)
+2. `prepared_de_it_stars_2026.sql` (one transaction; aborts on any check)
+
+Review `match_report.csv` first. The decisions waiting for you are QA-253
+(the three German losses and Aqua's closure, which is optional and
+commented out) and QA-255 (three Italian rows kept).
+
+| After applying | Germany | Italy |
+|---|---|---|
+| Stars (3/2/1) | 12/48/278, exactly MICHELIN's live 2026 | 15/38/327: MICHELIN's live 2026 plus 3 kept (QA-255) |
+| Restaurants added (rest_1842–rest_2444) | 281 | 322 |
+| Place ID / phone, all starred rows | 336 / 316 | 362 / 362 |
+| Hotel links (25 → 66) | +15 | +26 |
+
+Germany's launch rows are relabelled 2025 (58 rows; Haerlin and Tohru
+already had a 2025 row from the history pass, so theirs are left alone).
+L.A. Jordan goes 2 → 3. Aqua, bianc and Courtier are written as losses
+(QA-252, QA-253). In Italy, Tre Olivi is corrected 2 → 1 (QA-254).
+
+**Tested on the real export,** loaded into a scratch Postgres 16 + PostGIS
+database:
+
+- **Without the migration**, the file aborts with nothing applied.
+- **With it**, the counts above hold, and every row's history checks out.
+- **Re-runs:** the migration is idempotent, and a re-run of the prepared file
+  aborts.
+- **A renamed existing row** aborts the whole file.
+
+It was not run against the real database or a full migration replay.
 
 ## What MICHELIN shows (guide.michelin.com, read 2026-10-29)
 
