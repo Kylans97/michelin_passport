@@ -8,6 +8,38 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **My Map is now a 3D globe.** The map behind Passport's top-right corner
+  was a flat `flutter_map` view. It is now a globe drawn in Flutter
+  (`lib/features/map/globe/`). It shows the same places as before (visited
+  restaurants, hotel stays, events with confirmed attendance) with the same
+  All / Restaurants / Hotels / Events filters, and a pin tap still opens
+  the preview sheet that leads to the venue or event detail.
+  - Drag spins it with inertia, and pinch zooms from the whole world down
+    to about 250 km across.
+  - It turns slowly while idle. Any touch stops it, and it starts again
+    after 12 seconds untouched, but only when zoomed out. Reduced motion
+    turns it off.
+  - Tapping a pin flies the globe to it, then opens the preview sheet.
+  - Pins within a finger's width of each other merge into a numbered
+    marker. Tapping it flies in until they separate. When zooming can't
+    separate them (one address, or one city at maximum zoom), it opens a
+    short list of those places, and each one opens its preview sheet.
+  - Countries with at least one pin under the current filter are drawn in
+    full ivory and the rest are muted. This keys on the stored
+    `country_code`, never on the coordinate. All 59 codes in production
+    `countries` exist in the outline data (checked 2026-10-30).
+  - The first view shows the whole globe turned towards the user's places.
+    Choosing a filter flies in to frame them.
+- **No map tiles, no API key, works offline.** The outlines are Natural
+  Earth 1:50m countries (public domain, v5.1.2), simplified and bundled as
+  `assets/globe/countries.bin` (212 KB) by
+  `scripts/build_globe_outlines.py`. My Map no longer requests tiles from
+  `tile.openstreetmap.org`. OpenStreetMap's tile usage policy doesn't allow
+  a published app to load its tiles directly at volume, so this also
+  removes a compliance risk. `flutter_map` stays as a dependency because
+  the event location picker still uses it.
+
 ---
 
 ## v1.3.0 (16) — 2026-10-29

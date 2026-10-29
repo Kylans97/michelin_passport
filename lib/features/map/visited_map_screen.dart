@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
@@ -16,17 +14,11 @@ import '../../models/venue_entry.dart';
 import '../explore/models/explore_filters.dart' show ExploreVenueType;
 import '../passport/passport_view_model.dart';
 import 'models/map_filter_type.dart';
+import 'globe/globe_view.dart';
 import 'models/map_pin.dart';
 import 'widgets/event_map_preview_sheet.dart';
-import 'widgets/venue_pin.dart';
+import 'widgets/map_cluster_sheet.dart';
 import 'widgets/venue_preview_sheet.dart';
-
-// Roughly centered on the world, zoomed out enough to show every populated
-// continent — used only when there are no pins to fit to, so the map never
-// defaults to any particular country.
-const _worldCenter = LatLng(20, 0);
-const _worldZoom = 1.6;
-const _singlePinZoom = 12.0;
 
 /// "My Map": every restaurant the user has visited, every hotel they've
 /// stayed at, and (Events V2 Step 5) every Event they have a CONFIRMED
@@ -41,6 +33,11 @@ const _singlePinZoom = 12.0;
 /// resolve. Interested/Going Event intent is deliberately never plotted —
 /// only confirmed history belongs on a map of "every place you've
 /// experienced."
+///
+/// Drawn as a 3D globe ([GlobeView]) rather than a tiled 2D map: the
+/// country outlines are bundled with the app, so My Map loads no map tiles,
+/// costs no egress, needs no API key and works offline. Countries with at
+/// least one visible pin are drawn lit (see [GlobePainter]).
 ///
 /// No GPS/location permission is used or requested: every coordinate shown
 /// comes from the venues/Events themselves (restaurants_full/hotels_full/
@@ -61,7 +58,7 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   late final MapRepository _mapRepo = MapRepository(Supabase.instance.client);
   late final EventConfirmedAttendanceRepository _eventsRepo =
       EventConfirmedAttendanceRepository(Supabase.instance.client);
-  final _mapController = MapController();
+  final _globeController = GlobeController();
 
   List<VenueEntry>? _entries; // null until the first load completes.
   List<EventAttendanceEntry>? _eventEntries; // null until the first load.
@@ -70,7 +67,7 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   // MapRepository — see that class for why coordinates are never part of
   // the shared Restaurant/Hotel column lists. Empty (not null) both while
   // loading and if the coordinate migration hasn't been applied yet; either
-  // way the map itself still renders, just without pins.
+  // way the globe itself still renders, just without pins.
   Map<String, (double, double)> _restaurantCoords = {};
   Map<String, (double, double)> _hotelCoords = {};
 
@@ -127,7 +124,12 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
         _loading = false;
         _loadError = false;
       });
-      WidgetsBinding.instance.addPostFrameCallback((_) => _fitCamera());
+      // The first view keeps the whole globe in sight, turned towards the
+      // user's places, and lets the idle rotation carry on; choosing a
+      // filter is what flies in to frame them.
+      WidgetsBinding.instance.addPostFrameCallback(
+        (_) => _globeController.showWholeGlobeAround(_visiblePoints),
+      );
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -171,31 +173,30 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       if (_filter.matches(pin.type)) pin,
   ];
 
-  List<LatLng> get _visiblePoints => [
-    for (final pin in _visiblePins) LatLng(pin.latitude, pin.longitude),
+  List<(double, double)> get _visiblePoints => [
+    for (final pin in _visiblePins) (pin.latitude, pin.longitude),
   ];
 
-  void _fitCamera() {
-    final points = _visiblePoints;
-    if (points.isEmpty) {
-      _mapController.move(_worldCenter, _worldZoom);
-    } else if (points.length == 1) {
-      _mapController.move(points.first, _singlePinZoom);
-    } else {
-      _mapController.fitCamera(
-        CameraFit.bounds(
-          bounds: LatLngBounds.fromPoints(points),
-          padding: const EdgeInsets.fromLTRB(40, 120, 40, 60),
-          maxZoom: 14,
-        ),
-      );
-    }
-  }
+  /// Countries lit on the globe: those of the pins the active filter shows,
+  /// by their stored country code.
+  Set<String> get _visitedCountryCodes => {
+    for (final pin in _visiblePins)
+      if (pin.countryCode.isNotEmpty) pin.countryCode.toUpperCase(),
+  };
 
   void _onSelectFilter(MapFilterType type) {
     setState(() => _filter = type);
-    WidgetsBinding.instance.addPostFrameCallback((_) => _fitCamera());
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) => _globeController.fitTo(_visiblePoints),
+    );
   }
+
+  void _onClusterTap(BuildContext context, List<MapPin> pins) =>
+      showMapClusterSheet(
+        context,
+        pins,
+        onSelect: (pin) => _onPinTap(context, pin),
+      );
 
   void _onPinTap(BuildContext context, MapPin pin) {
     switch (pin) {
@@ -295,52 +296,22 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
           ),
           Expanded(
             child: ColoredBox(
-              color: AppColors.background,
+              color: AppColors.deepGreen,
               child: Stack(
                 children: [
                   Positioned.fill(
-                    child: FlutterMap(
-                      mapController: _mapController,
-                      options: MapOptions(
-                        initialCenter: _worldCenter,
-                        initialZoom: _worldZoom,
-                        interactionOptions: const InteractionOptions(
-                          flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
-                        ),
-                      ),
-                      children: [
-                        TileLayer(
-                          urlTemplate:
-                              'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          userAgentPackageName: 'app.mantelier',
-                          // A tile request failing (no connectivity, a rate
-                          // limit) just leaves that tile blank — flutter_map
-                          // already swallows the error internally, so
-                          // there's nothing further to do here to keep the
-                          // screen from crashing.
-                          maxZoom: 19,
-                        ),
-                        MarkerLayer(
-                          markers: [
-                            for (final pin in plottable)
-                              Marker(
-                                point: LatLng(pin.latitude, pin.longitude),
-                                width: VenuePin.size,
-                                height: VenuePin.size,
-                                child: VenuePin(
-                                  type: pin.type,
-                                  onTap: () => _onPinTap(context, pin),
-                                ),
-                              ),
-                          ],
-                        ),
-                      ],
+                    child: GlobeView(
+                      controller: _globeController,
+                      pins: plottable,
+                      visitedCountryCodes: _visitedCountryCodes,
+                      onPinTap: (pin) => _onPinTap(context, pin),
+                      onClusterTap: (pins) => _onClusterTap(context, pins),
                     ),
                   ),
                   if (_loading)
                     const Center(
                       child: CircularProgressIndicator(
-                        color: AppColors.forestGreen,
+                        color: AppColors.ivory,
                         strokeWidth: 2,
                       ),
                     )
@@ -382,8 +353,8 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
 
 /// Bottom-anchored subtle message overlay — used both for the true empty
 /// state (no visits/stays at all) and load-error/no-coordinates cases. Never
-/// blocks the map itself; it sits on top, map remains visible and pannable
-/// underneath.
+/// blocks the globe itself; it sits on top, globe remains visible and
+/// spinnable underneath.
 class _MapMessage extends StatelessWidget {
   final IconData icon;
   final String message;
