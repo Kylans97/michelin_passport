@@ -197,9 +197,11 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
             icon: Icons.edit_outlined,
           ),
         if (_sharing)
-          const TripSheetAction(
+          TripSheetAction(
             value: 'members',
-            label: 'Travelling with',
+            label: _members.any((m) => m.userId != _userId)
+                ? 'Travelling with'
+                : 'Invite friends',
             icon: Icons.group_outlined,
           ),
         if (_isOwner)

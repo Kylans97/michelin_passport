@@ -8,6 +8,13 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- Trip Detail: a trip with nobody else on it or invited now shows
+  "Invite friends" (with an add-person icon) where it said "Just you so
+  far", and the ⋯ menu item reads "Invite friends" until someone else is
+  on the trip. On a real phone the old line didn't read as the way to
+  invite, so the feature went unfound.
+
 ---
 
 ## v1.3.0 (15) — 2026-10-29

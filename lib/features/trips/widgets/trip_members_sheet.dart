@@ -44,8 +44,12 @@ class TripCompanionsRow extends StatelessWidget {
     final pending = members
         .where((m) => m.status == TripMemberStatus.pending)
         .length;
+    // Nobody else on the trip or invited yet: say what the row does, so
+    // inviting a friend is findable rather than hidden behind a status line.
+    final alone = others.isEmpty && pending == 0;
     final names = others.map((m) => m.label).toList();
     final line = switch (names.length) {
+      _ when alone => 'Invite friends',
       0 => 'Just you so far',
       1 => 'With ${names[0]}',
       2 => 'With ${names[0]} and ${names[1]}',
@@ -55,7 +59,7 @@ class TripCompanionsRow extends StatelessWidget {
 
     return Semantics(
       button: true,
-      label: 'Travelling with. $line$pendingLine',
+      label: alone ? 'Invite friends' : 'Travelling with. $line$pendingLine',
       excludeSemantics: true,
       child: InkWell(
         onTap: onTap,
@@ -64,6 +68,14 @@ class TripCompanionsRow extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: CsSpacing.xs),
           child: Row(
             children: [
+              if (alone) ...[
+                const Icon(
+                  Icons.person_add_alt_1_outlined,
+                  color: AppColors.textOnDark,
+                  size: 18,
+                ),
+                const SizedBox(width: CsSpacing.sm),
+              ],
               if (others.isNotEmpty) ...[
                 FriendsStack(
                   friends: [
