@@ -1,0 +1,127 @@
+# MICHELIN match for the 126 DE Key hotels, 2026-10-29 (4 already had michelin_url and are not changed). Columns: hotel_code number | path under https://guide.michelin.com/en/hotels-stays/ | metres from stored location to MICHELIN's JSON-LD geo | metres to the next-nearest MICHELIN Germany hotel, or h/<id> when read through MICHELIN's /h/<id> short link | postcode | Keys on the page | telephone as MICHELIN prints it | street as MICHELIN prints it.
+100|frankfurt/sofitel-frankfurt-opera-10487|18|375|60313|2|+49 69 2566950|Opernplatz 16
+101|heiligendamm/alter-meierhof-9510|19|2895|24960|2|+49 (0) 4631 6199 - 0|Uferstrasse 1
+102|gonnesweiler/seezeitlodge-hotel-spa-10204|30|35397|66625|1|+49 6852 80980|Am Bostalsee 1
+103|Grassau/das-achental-resort-13234|33|6852|83224|2|+49 8641 4010|Mietenkamerstrasse 65
+104|hamburg/hotel-louis-c-jacob-5860|13|2421|22609|2|+49 40 82255-0|Elbchaussee 401-403
+105|Horben/luisenhohe-gesundheitsresort-schwarzwald-13954|253|5670|79289|2|+49 761 137 33-0|Luisenhöhestraße 14
+106|kranzbach/das-kranzbach-hotel-wellness-retreat-6329|45|2403|82493|2|+49 (0)8823 92 8000|Kranzbach 1
+107|munich/mandarin-oriental-munich-6339|33|126|80331|2|+49.89.290.980|Neuturmstrasse 1
+108|munich/the-charles-hotel-a-rocco-forte-hotel-6327|9|346|80333|2|+49 (0) 89 544 555-0|Sophienstrasse 28
+109|munich/rosewood-munich-13281|10|143|80333|2|+49 89 8000190|1 Kardinal-Faulhaber-Straße
+110|Ofterschwang/sonnenalp-resort-13908|0|564|87527|2|+4983212720|Sonnenalp 1
+111|reit-im-winkl/gut-steinbach-9534|7|13295|83242|2|+49 8640 8070|Steinbachweg 10
+112|R%C3%B6hrnbach/wellness-sport-hotel-jagdhof-13953|9|9602|94133|2|+49858291594601|Putzgartenstraße 2
+113|rottach-egern/park-hotel-egerner-hofe-9909|22|444|83700|2|+49 8022 6660|Aribostraße 19–26
+114|saarbrucken/esplanade-saarbrucken-11693|8|19951|66111|1|+49 (0) 681 84 49 91 20|5 Nauwieserstraße
+115|saarlouis/la-maison-120708-9980|11|19933|66740|2|+49 6831 89440440|Prälat-Subtil-Ring 22
+116|Norderney-1/seesteg-norderney-13450|69|518|26548|2|+49 4932 893600|Damenpfad 36A
+117|sylt/relais-chateaux-landhaus-stricker-9908|18|2406|25980|2|+49 4651 88990|Boy-Nielsen-Str. 10
+118|sylt/solring-hof-13906|10|1070|25980|2|+49 4651 8362 00|1 Am Sandwall
+158|munich/cortiina-hotel-6328|19|106|80331|1|+49 (89)24 22 49-0|Ledererstrasse 8
+159|munich/hotel-vier-jahreszeiten-kempinski-7403|13|229|80539|1|+49 89 2125 2799|Maximilianstrasse 17
+160|berlin/hotel-adlon-kempinski-6421|85|397|10117|1|+49 30 2261 0|Unter den Linden 77
+161|munich/bayerischer-hof-munich-7400|40|106|80333|1|+49.8921200 / +492120900|Promenadeplatz 2-6
+162|cologne/excelsior-hotel-ernst-6247|6|423|50667|1|+49 221 2701|Trankgasse 1-5/Domplatz
+163|berlin/the-mandala-hotel-5051|0|164|10785|1|+49.30590051271|Potsdamer Strasse 3
+164|berlin/wilmina-hotel-12967|12|40|10627|1|+49 30 2018050|Kantstraße 79
+165|berlin/chateau-royal-berlin-13125|0|317|10117|1|+49 030 23456770|Neustädtische Kirchstrasse 3
+166|berlin/das-stue-116913-6744|12|715|10787|1|+49 30 311 7220|Drakestrasse 1
+167|berlin/hotel-oraniaberlin-8798|0|1029|10999|1|+49 30 69539680|Oranienstraße 40
+168|gernsbach/schloss-eberstein-9637|10|7540|76593|0|+49 7224 995950|Schloss Eberstein 1
+169|schwangau/ameron-neuschwanstein-alpsee-resort-spa-10723|78|2437|87645|0|+49 8362 30700|21 Alpseestraße
+170|geisenheim/relais-chateaux-hotel-burg-schwarzenstein-9762|158|16965|65366|1|+49 6722 99500|Rosengasse 32
+171|hornbach/kloster-hornbach-7242|0|89|66500|0|+496338910100|1 Im Klosterbezirk
+172|naumburg/gasthof-zufriedenheit-8617|10|38487|06618|1|+49 3445 7912051|Steinweg 26
+173|bad-reichenhall/villa-sonnenhof-boutique-hotel-12516|0|13172|83457|1|+49 (0) 177 89 33 285|Sonnenstr. 11, Bayerisch Gmain
+174|rotenburg-an-der-wumme/hotel-landhaus-wachtelhof-13910|6|38304|27356|1|+4942618530|Gerberstr. 6
+175|Bensberg/althoff-grandhotel-schloss-bensberg-6333|0|6657|51429|1|+49.2204.420|Kadettenstraße
+176|Bad-Doberan/grand-hotel-heiligendamm-7440|20|17093|18209|1|+49 38203 7400|Prof. Dr. Vogel-Str. 6
+177|hamburg/landhaus-flottbek-9934|17|2623|22607|1|+49 40 8227410|Baron-Voght-Str. 179
+178|rothenburg-ob-der-tauber/villa-mittermeier-9736|13|25980|91541|0|+49 9861 94540|Vorm Würzburger Tor 7
+179|konstanz/riva-10089|69|811|78464|1|+49 7531 363090|Seestraße 25
+180|munich/hotel-munchen-palace-6336|148|1446|81675|1|004989419710|Trogerstraße 21, 81675
+181|berlin/hotel-zoo-7579|6|252|10719|1|+49 30 884370|Kurfürstendamm 25
+183|aerzen/schlosshotel-munchhausen-124408-14589|0|34697|31855|1|+49 5154 70600|Schwöbber 9
+184|scheidegg/alpenloge-hotel-14604|0|6023|88175|1|+4983819123600|Kirchenanger 6
+185|norten-hardenberg/relais-chateaux-hardenberg-burghotel-14231|0|9137|37176|1|+49 5503 9810|Hinterhaus 11A
+197|Kaikenried/wellnesshotel-oswald-14510|25|7520|94244|1|+49 (0)9923 8410-0|Am Platzl 2
+198|hellengerst/hanusel-hof-10088|11|15969|87480|0|+49 8378 92000|Helingerstraße 5
+199|Kirschau/hotel-bei-schumann-13912|113|37209|02681|1|+4935925200|Bautzener Str. 74
+200|Grainet/huttenhof-wellnesshotel-luxus-bergchalets-adults-only-14423|43|12155|94143|2|+49 8585 9605690|Hobelsberg 23
+201|%C3%9Cbersee/chiemgauhof-lakeside-retreat-15121|20|6811|83236|2|+49 8642 3179800|Julius-Exter-Promenade 21
+202|baden-baden/steigenberger-icon-europaischer-hof-baden-baden-15113|17|241|76530|2|+49 7221 40470|Kaiserallee 2
+203|oberallgau/hubertus-mountain-refugio-allgau-116503-11339|13|9724|87538|1|49(0)-8328-9200|Dorf 5
+204|hohen-demzin/schlosshotel-burg-schlitz-13902|16|24793|17166|1|+49 (0) 39 96 - 12 70 0|Burg Schlitz
+205|Norderney-1/1884-norderney-13426|21|602|26548|1|+49 4932 5219900|3-4 Am Weststrand
+206|sylt/hof-galerie-9696|23|1772|25980|1|+49 4651 957050|Serkwai 1
+207|schmallenberg/hotel-deimann-13911|32|7244|57392|1|+49 2975 - 810|Winkhausen 5
+208|Bad-Sachsa/roligio-wellness-resort-romantischer-winkel-13898|27|15156|37441|1|+49 (0)5523 304-0|Bismarckstraße 23
+209|augsburg/hotel-maximlians-13894|8|46647|86150|1|+49 821 5036 0|Maximilianstrasse 40
+210|hinterzarten/parkhotel-adler-13485|54|344|79856|1|+49 7652 1270|Adlerplatz 3
+211|Dierhagen/strandhotel-fischland-12418|122|1010|18347|0|49 38226 520|Ernst-Moritz-Arndt-Str. 6
+212|binz/villa-nixe-9689|41|335|18609|1|+49 38393 666200|Strandpromenade 10
+214|Flensburg-1/das-james-12429|361|3122|24944|1|+49 461 1672360|30 Fördepromenade
+215|lubben/strandhaus-spreewald-11318|32|19147|15907|1|+49035467364|Ernst-von-Houwald-Damm 16
+216|baden-baden/maison-messmer-13899|11|242|76530|1|+49 7221 3012 0|Werderstraße 1
+217|munich/do-co-hotel-munich-13907|14|162|80331|1|+49 89 69313780|Filserbräugasse 1
+218|munster/mauritzhof-hotel-munster-11040|7|2368|48143|1|+49 251 41 72 0|Eisenbahnstrasse 17
+219|kressbronn-am-bodensee/boutique-hotel-friesinger-10612|22|2287|88079|1|+49 7543 9398787|Bahnhofstr. 5
+220|dusseldorf/steigenberger-parkhotel-10311|8|156|40212|1|+49 211 13810|Königsallee 1a
+221|oberstaufen/dashochgrat-9859|19|562|87534|0|+49 8386 9914620|Rothenfelsstraße 6
+222|ostseebad-sellin/roewers-privathotel-9778|16|5432|18586|1|+49 38303 1220|Wilhelmstraße 34
+223|oberstdorf/exquisit-9633|13|201|87561|1|+49 8322 96330|Lorettostraße 20
+224|Breitenburg/hotel-breitenburg-12398|0|34119|25524|1|+49 4828 7843400|Gut Osterholz 1, Steinburg
+225|oberammergau/maximilian-10149|20|11128|82487|1|+49 8822 948740|Ettaler Straße 5
+226|frankfurt/jumeirah-frankfurt-6742|12|484|60313|1|+ 49 69 297 237 0|Thurn-und-Taxis-Platz 2
+227|lieser-1/lieser-castle-autograph-collection-13905|5|1971|54470|1|+49 6531 98 69 90|Moselstrasse 33
+228|garmisch-partenkirchen/das-graseck-12287|33|3886|82467|1|+49 8821 943240|Graseck 4
+229|pfronten/das-burghotel-falkenstein-9542|4|9757|87459|1|+49 8363 914540|1 Auf dem Falkenstein
+23|baiersbronn/hotel-bareiss-13547|73|2967|72270|3||Hermine-Bareiss-Weg 1
+230|garmisch-partenkirchen/staudacherhof-8778|1|865|82467|0|+49 8821 929-0|Höllentalstraße 48
+231|berchtesgaden/kulturhof-stanggass-13014|0|4324|83483|1|+49 8652 95850|111 Berchtesgadener Straße
+232|oberstaufen/haubers-naturresort-9987|4|1294|87534|0|+49 8386 93305|34 Meerau
+233|schwangau/das-rubezahl-9777|11|1240|87645|1|+49 8362 8888|Am Ehberg 31
+234|dresden/gewandhaus-dresden-10221|20|386|01067|0|+49 351 49490|Ringstr. 1
+235|sylt/landhaus-severins-morsum-kliff-9624|15|1791|25980|1|+49 4651 4606880|Nösistig 13
+236|baiersbronn/hotel-engel-obertal-wellness-genuss-resort-13901|0|3418|72270|1|+49 (7449) 850|28 Rechtmurgstraße
+237|munich/koenigshof-a-luxury-collection-hotel-munich-14009|3|245|80335|1|+49 89 858407040|Karlsplatz 25
+238|frankenberg/die-sonne-frankenberg-10275|3|7990|35066|1|+49 6451 7500|Marktplatz 2-4
+239|bad-teinach-zavelstein/hotel-kronelamm-im-schwarzwald-10653|9|26150|75385|1|+49 7053 92940|Marktplatz 2-3
+24|baiersbronn/hotel-traube-tonbach-8972|25|2897|72270|3|+49 7442 4920|Tonbachstraße 237
+240|oberstaufen/alpenkonig-10428|10|577|87534|1|+49 8386 93450|25 Kalzhofer Straße
+241|nonnenhorn/torkel-9885|7|2294|88149|1|+49 8382 98620|Seehalde 14
+242|berlin/hotel-am-steinplatz-7589|13|522|10623|1|+49 (0)30 55 4444 0|Steinplatz 4
+243|heidelberg/heidelberg-suites-6334|6|611|69120|1|+49 6221 655 65 -0|Neuenheimer Landstrasse 12
+244|munich/andaz-munich-schwabinger-tor-11143|235|1335|80804|1|+49 89 9042191234|Leopoldstrasse 170
+245|munich/beyond-by-geisel-10259|26|61|80331|1|+49 89 700746700|Marienplatz 22
+246|garmisch-partenkirchen/werdenfelserei-10421|6|858|82467|1|+49 8821 6869390|Alleestr. 28
+247|hamburg/tortue-10548|21|264|20355|1|+49 40 33441400|Stadthausbrücke 10
+248|rottach-egern/hotel-bachmair-weissach-8250|26|925|83700|0|+49 (0) 8022/278-0|Wiesseer Str. 1
+249|Frickenhausen/hotel-weingut-meintzinger-12725|13|14263|97252|1|+49 9331 - 87110|Babenbergplatz 4
+25|elmau/schloss-elmau-luxury-spa-retreat-cultural-hideaway-7287|11|2397|82493|3|+49-8823-18-0|In Elmau 2
+250|konigsbronn/widmanns-lowen-10072|42|22304|89551|1|+49 7328 96270|Struthstr. 17
+251|bad-peterstal-griesbach/dollenberg-9697|32|8580|77740|1|+49 7806 780|Dollenberg 3
+252|andernach/purs-10038|6|14610|56626|2|+49 2632 9586750|Steinweg 30-32
+253|dresden/villa-sorgenfrei-9948|88|7081|01445|1|+49 351 7956660|Augustusweg 48
+254|heidelberg/der-europaische-hof-heidelberg-9816|15|845|69117|1|+49 6221 5150|Friedrich-Ebert-Anlage 1
+255|durbach/rebstock-9681|18|1328|77770|1|+49 781 4820|Halbgütle 30
+256|wolfsburg/the-ritz-carlton-wolfsburg-8297|11|52649|38440|1|+49.5361.607000|Parkstraße 1
+257|immenstaad-am-bodensee/heinzler-10127|25|6735|88090|1|+49 7545 93190|Strandbadstraße 3
+26|hamburg/fairmont-hotel-vier-jahreszeiten-12464|25|320|20354|3|494034940|Neuer Jungfernstieg 9-14
+27|hamburg/the-fontenay-11121|13|999|20354|3|49 4060566050|Fontenay 10
+28|rottach-egern/althoff-seehotel-uberfahrt-6183|30|425|83700|3|+49 (0)80 22 / 669 0|Ueberfahrtstr. 10
+88|bad-saarow/villa-contessa-13900|4|690|15526|2|033631-58018|Seestraße 18
+89|berchtesgaden/kempinski-hotel-berchtesgaden-9705|18|4331|83471|2|+49 8652 97550|Hintereck 1
+91|berlin/patrick-hellmann-schlosshotel-4892|3|3336|14193|2|+49.30.895.840|Brahmsstrasse 10
+92|berlin/telegraphenamt-13032|0|371|10117|2|+49 (0)30 9940590|Monbijoustr. 11
+93|berlin/the-ritz-carlton-berlin-9027|33|190|10785|2|+49 30 337777|Potsdamer Platz 3
+94|blankenhain/spa-golf-hotel-weimarer-land-10109|913|11600|99444|2|+49 36459 61640|Weimarer Str. 60
+95|deidesheim/ketschauer-hof-9918|15|276|67146|1|+49 6326 70000|Ketschauerhofstraße 1
+96|donaueschingen/der-oschberghof-9835|47|31124|78166|2|+49 771 840 / +49 771 84-612|Golfplatz 1
+97|dresden/bulow-palais-10183|140|1003|01097|2|+49 351 80030|Königsstr. 14
+98|dresden/hotel-taschenbergpalais-kempinski-dresden-7389|33|139|01067|2|4935149120|Taschenberg 3
+99|dusseldorf/breidenbacher-hof-dusseldorf-11443|6|154|40212|2|+49 211 - 160 900|Königsallee 11
+90|berlin/hotel-de-rome-6335|106|h/6335|10117|0|49304606090|Behrenstraße 37
+182|Neunburg%20v.%20W.%20%E2%80%93%20Hofenstetten/landhotel-birkenhof-9764|7|h/9764|92431|2|+49 9439 9500|Hofenstetten 55
+213|dusseldorf/the-wellem-13904|51|h/13904|40213|1|+49 211 547650622|Mühlenstrasse 34
