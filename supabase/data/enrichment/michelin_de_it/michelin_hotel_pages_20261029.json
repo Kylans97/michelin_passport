@@ -1,0 +1,929 @@
+{
+ "/en/hotels-stays/Bad-Doberan/grand-hotel-heiligendamm-7440": {
+  "h1": "Grand Hotel Heiligendamm",
+  "ld_name": "Grand Hotel Heiligendamm in Bad Doberan",
+  "lat": 54.143773,
+  "lon": 11.84328,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Prof. Dr. Vogel-Str. 6\",\"addressLocality\":\"Bad Doberan\",\"postalCode\":\"18209\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Ostsee\"}"
+ },
+ "/en/hotels-stays/Barberino-Tavarnelle/como-castello-del-nero-64674-7130": {
+  "h1": "COMO Castello del Nero",
+  "ld_name": "COMO Castello del Nero in Barberino Tavarnelle",
+  "lat": 43.562815,
+  "lon": 11.1725,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Strada Spicciano, 7\",\"addressLocality\":\"Barberino Tavarnelle\",\"postalCode\":\"50028\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/Bensberg/althoff-grandhotel-schloss-bensberg-6333": {
+  "h1": "Althoff Grandhotel Schloss Bensberg",
+  "ld_name": "Althoff Grandhotel Schloss Bensberg in Bensberg",
+  "lat": 50.966916,
+  "lon": 7.162146,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Kadettenstraße\",\"addressLocality\":\"Bensberg\",\"postalCode\":\"51429\",\"addressCountry\":\"DEU\",\"addressRegion\":\"North Rhine-Westphalia\"}"
+ },
+ "/en/hotels-stays/Castelnuovo-Berardenga/borgo-san-felice-resort-7244": {
+  "h1": "Borgo San Felice Resort",
+  "ld_name": "Borgo San Felice Resort in Castelnuovo Berardenga",
+  "lat": 43.388364,
+  "lon": 11.458569,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Località San Felice\",\"addressLocality\":\"Castelnuovo Berardenga\",\"postalCode\":\"53019\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/Modena/casa-maria-luigia-13611": {
+  "h1": "Casa Maria Luigia",
+  "ld_name": "Casa Maria Luigia in Modena",
+  "lat": 44.61085,
+  "lon": 10.979785,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Stradello Bonaghino 56, San Damaso\",\"addressLocality\":\"Modena\",\"postalCode\":\"41126\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Emilia Romagna\"}"
+ },
+ "/en/hotels-stays/Neunburg%20v.%20W.%20%E2%80%93%20Hofenstetten/landhotel-birkenhof-9764": {
+  "h1": "Der Birkenhof Spa & Genuss Resort",
+  "ld_name": "Der Birkenhof Spa & Genuss Resort in Neunburg v. W. – Hofenstetten",
+  "lat": 49.3383,
+  "lon": 12.26199,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Hofenstetten 55\",\"addressLocality\":\"Neunburg v. W. – Hofenstetten\",\"postalCode\":\"92431\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Bavaria\"}"
+ },
+ "/en/hotels-stays/Sarentino/terra-the-magic-place-9303": {
+  "h1": "Terra - The Magic Place",
+  "ld_name": "Terra - The Magic Place in Sarentino",
+  "lat": 46.65161,
+  "lon": 11.322367,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Prati 21\",\"addressLocality\":\"Sarentino\",\"postalCode\":\"39058\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Alps / Dolomites\"}"
+ },
+ "/en/hotels-stays/amalfi/borgo-santandrea-12461": {
+  "h1": "Borgo Santandrea",
+  "ld_name": "Borgo Santandrea in Amalfi",
+  "lat": 40.619738,
+  "lon": 14.576782,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Giovanni Augustariccio 33\",\"addressLocality\":\"Amalfi\",\"postalCode\":\"84011\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/amalfi/hotel-santa-caterina-5501": {
+  "h1": "Santa Caterina",
+  "ld_name": "Santa Caterina in Amalfi",
+  "lat": 40.62951,
+  "lon": 14.592861,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"SS Amalfitana 9\",\"addressLocality\":\"Amalfi\",\"postalCode\":\"84011\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/andernach/purs-10038": {
+  "h1": "Hotel PURS",
+  "ld_name": "Hotel PURS in Andernach",
+  "lat": 50.43895,
+  "lon": 7.39735,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Steinweg 30-32\",\"addressLocality\":\"Andernach\",\"postalCode\":\"56626\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Rheinland-Pfalz\"}"
+ },
+ "/en/hotels-stays/bad-kissingen/laudensacks-parkhotel-9966": {
+  "h1": "Laudensacks Parkhotel",
+  "ld_name": "Laudensacks Parkhotel in Bad Kissingen",
+  "lat": 50.19077,
+  "lon": 10.07761,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Kurhausstraße 28\",\"addressLocality\":\"Bad Kissingen\",\"postalCode\":\"97688\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Bavaria\"}"
+ },
+ "/en/hotels-stays/bad-peterstal-griesbach/dollenberg-9697": {
+  "h1": "Hotel Dollenberg",
+  "ld_name": "Hotel Dollenberg in Bad Peterstal-Griesbach",
+  "lat": 48.45739,
+  "lon": 8.25068,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Dollenberg 3\",\"addressLocality\":\"Bad Peterstal-Griesbach\",\"postalCode\":\"77740\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/bad-teinach-zavelstein/hotel-kronelamm-im-schwarzwald-10653": {
+  "h1": "Hotel Kronelamm im Schwarzwald",
+  "ld_name": "Hotel Kronelamm im Schwarzwald in Bad Teinach-Zavelstein",
+  "lat": 48.69393,
+  "lon": 8.68888,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Marktplatz 2-3\",\"addressLocality\":\"Bad Teinach-Zavelstein\",\"postalCode\":\"75385\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/badia/badia-hill-15400": {
+  "h1": "Badia Hill",
+  "ld_name": "Badia Hill in Badia",
+  "lat": 46.6066574011,
+  "lon": 11.8948208116,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Strada Damèz 2A\",\"addressLocality\":\"Badia\",\"postalCode\":\"39036\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Alps / Dolomites\"}"
+ },
+ "/en/hotels-stays/baiersbronn/hotel-bareiss-13547": {
+  "h1": "Hotel Bareiss",
+  "ld_name": "Hotel Bareiss in Baiersbronn",
+  "lat": 48.520984,
+  "lon": 8.326893,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Hermine-Bareiss-Weg 1\",\"addressLocality\":\"Baiersbronn\",\"postalCode\":\"72270\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/baiersbronn/hotel-traube-tonbach-8972": {
+  "h1": "Hotel Traube Tonbach",
+  "ld_name": "Hotel Traube Tonbach in Baiersbronn",
+  "lat": 48.536847,
+  "lon": 8.358502,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Tonbachstraße 237\",\"addressLocality\":\"Baiersbronn\",\"postalCode\":\"72270\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/berchtesgaden/kempinski-hotel-berchtesgaden-9705": {
+  "h1": "Kempinski Hotel Berchtesgaden",
+  "ld_name": "Kempinski Hotel Berchtesgaden in Berchtesgaden",
+  "lat": 47.6338,
+  "lon": 13.0465,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Hintereck 1\",\"addressLocality\":\"Berchtesgaden\",\"postalCode\":\"83471\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Bavaria\"}"
+ },
+ "/en/hotels-stays/berlin/hotel-adlon-kempinski-6421": {
+  "h1": "Hotel Adlon Kempinski",
+  "ld_name": "Hotel Adlon Kempinski in Berlin",
+  "lat": 52.516696,
+  "lon": 13.381436,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Unter den Linden 77\",\"addressLocality\":\"Berlin\",\"postalCode\":\"10117\",\"addressCountry\":\"DEU\"}"
+ },
+ "/en/hotels-stays/berlin/the-mandala-hotel-5051": {
+  "h1": "The Mandala Hotel",
+  "ld_name": "The Mandala Hotel in Berlin",
+  "lat": 52.508981,
+  "lon": 13.373682,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Potsdamer Strasse 3\",\"addressLocality\":\"Berlin\",\"postalCode\":\"10785\",\"addressCountry\":\"DEU\"}"
+ },
+ "/en/hotels-stays/blankenhain/spa-golf-hotel-weimarer-land-10109": {
+  "h1": "Spa & Golf Hotel Weimarer Land",
+  "ld_name": "Spa & Golf Hotel Weimarer Land in Blankenhain",
+  "lat": 50.86775,
+  "lon": 11.33673,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Weimarer Str. 60\",\"addressLocality\":\"Blankenhain\",\"postalCode\":\"99444\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Thuringia\"}"
+ },
+ "/en/hotels-stays/bonn/kameha-grand-6337": {
+  "h1": "Kameha Grand",
+  "ld_name": "Kameha Grand in Bonn",
+  "lat": 50.716962,
+  "lon": 7.154084,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Am Bonner Bogen 1\",\"addressLocality\":\"Bonn\",\"postalCode\":\"53227\",\"addressCountry\":\"DEU\",\"addressRegion\":\"North Rhine-Westphalia\"}"
+ },
+ "/en/hotels-stays/brufa/borgobrufa-spa-resort-10684": {
+  "h1": "Borgobrufa SPA Resort",
+  "ld_name": "Borgobrufa SPA Resort  in Brufa",
+  "lat": 43.05555,
+  "lon": 12.46639,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via del Colle 38\",\"addressLocality\":\"Brufa\",\"postalCode\":\"06089\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Umbria\"}"
+ },
+ "/en/hotels-stays/capri/jumeirah-capri-palace-1463-6205": {
+  "h1": "Jumeirah Capri Palace",
+  "ld_name": "Jumeirah Capri Palace in Capri",
+  "lat": 40.55583,
+  "lon": 14.22183,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Capodimonte 14\",\"addressLocality\":\"Capri\",\"postalCode\":\"80071\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/capri/punta-tragara-3511": {
+  "h1": "Punta Tragara",
+  "ld_name": "Punta Tragara in Capri",
+  "lat": 40.547263,
+  "lon": 14.249438,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Tragara 57\",\"addressLocality\":\"Capri\",\"postalCode\":\"80073\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/castiglione-della-pescaia/landana-2751": {
+  "h1": "L’Andana",
+  "ld_name": "L’Andana in Castiglione della Pescaia",
+  "lat": 42.797393,
+  "lon": 10.972716,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Località Badiola\",\"addressLocality\":\"Castiglione della Pescaia\",\"postalCode\":\"58043\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/cavaion-veronese/villa-cordevigo-7106": {
+  "h1": "Villa Cordevigo",
+  "ld_name": "Villa Cordevigo in Cavaion Veronese",
+  "lat": 45.524916,
+  "lon": 10.791439,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Località Cordevigo 1\",\"addressLocality\":\"Cavaion Veronese\",\"postalCode\":\"37010\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Veneto\"}"
+ },
+ "/en/hotels-stays/chiusdino/borgo-santo-pietro-7004": {
+  "h1": "Borgo Santo Pietro",
+  "ld_name": "Borgo Santo Pietro in Chiusdino",
+  "lat": 43.143248,
+  "lon": 11.128451,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Località Palazzetto 110 \",\"addressLocality\":\"Chiusdino\",\"postalCode\":\"53012\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/cogne/bellevue-hotel-spa-8179": {
+  "h1": "Bellevue Hotel & Spa",
+  "ld_name": "Bellevue Hotel & Spa in Cogne",
+  "lat": 45.60668,
+  "lon": 7.355519,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Rue Grand Paradis 22\",\"addressLocality\":\"Cogne\",\"postalCode\":\"11012\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Valle d'Aosta\"}"
+ },
+ "/en/hotels-stays/cologne/excelsior-hotel-ernst-6247": {
+  "h1": "Excelsior Hotel Ernst",
+  "ld_name": "Excelsior Hotel Ernst in Cologne",
+  "lat": 50.941886,
+  "lon": 6.95647,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Trankgasse 1-5/Domplatz\",\"addressLocality\":\"Cologne\",\"postalCode\":\"50667\",\"addressCountry\":\"DEU\",\"addressRegion\":\"North Rhine-Westphalia\"}"
+ },
+ "/en/hotels-stays/cortona/relais-il-falconiere-5783": {
+  "h1": "Relais Il Falconiere",
+  "ld_name": "Relais Il Falconiere in Cortona",
+  "lat": 43.290277,
+  "lon": 11.971407,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Loc. San Martino a Bocena 370\",\"addressLocality\":\"Cortona\",\"postalCode\":\"52044\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/corvara-in-badia/la-perla-7817": {
+  "h1": "La Perla",
+  "ld_name": "La Perla in Corvara in Badia",
+  "lat": 46.54709,
+  "lon": 11.87691,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Strada Col Alt 105\",\"addressLocality\":\"Corvara in Badia\",\"postalCode\":\"39033\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Alps / Dolomites\"}"
+ },
+ "/en/hotels-stays/donaueschingen/der-oschberghof-9835": {
+  "h1": "Der Öschberghof",
+  "ld_name": "Der Öschberghof in Donaueschingen",
+  "lat": 47.96567,
+  "lon": 8.54681,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Golfplatz 1\",\"addressLocality\":\"Donaueschingen\",\"postalCode\":\"78166\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/dresden/villa-sorgenfrei-9948": {
+  "h1": "Hotel Villa Sorgenfrei & Restaurant Atelier Sanssouci",
+  "ld_name": "Hotel Villa Sorgenfrei & Restaurant Atelier Sanssouci  in Dresden",
+  "lat": 51.10854,
+  "lon": 13.67363,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Augustusweg 48\",\"addressLocality\":\"Dresden\",\"postalCode\":\"01445\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Saxony\"}"
+ },
+ "/en/hotels-stays/elmau/schloss-elmau-luxury-spa-retreat-cultural-hideaway-7287": {
+  "h1": "Schloss Elmau Luxury Spa Retreat & Cultural Hideaway",
+  "ld_name": "Schloss Elmau Luxury Spa Retreat & Cultural Hideaway in Elmau",
+  "lat": 47.462007,
+  "lon": 11.186617,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"In Elmau 2\",\"addressLocality\":\"Elmau\",\"postalCode\":\"82493\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Bavaria\"}"
+ },
+ "/en/hotels-stays/fiesole/hotel-villa-fiesole-7163": {
+  "h1": "FH55 Hotel Villa Fiesole",
+  "ld_name": "FH55 Hotel Villa Fiesole in Fiesole",
+  "lat": 43.801982,
+  "lon": 11.297998,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Beato Angelico 35\",\"addressLocality\":\"Fiesole\",\"postalCode\":\"50014\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/florence/four-seasons-hotel-firenze-7654": {
+  "h1": "Four Seasons Hotel Firenze",
+  "ld_name": "Four Seasons Hotel Firenze in Florence",
+  "lat": 43.77702,
+  "lon": 11.26637,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Borgo Pinti 99\",\"addressLocality\":\"Florence\",\"postalCode\":\"50121\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/florence/hotel-la-gemma-13120": {
+  "h1": "La Gemma",
+  "ld_name": "La Gemma in Florence",
+  "lat": 43.77072,
+  "lon": 11.25408,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via dei Cavalieri 2/C\",\"addressLocality\":\"Florence\",\"postalCode\":\"50123\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/florence/hotel-lungarno-7072": {
+  "h1": "Hotel Lungarno",
+  "ld_name": "Hotel Lungarno  in Florence",
+  "lat": 43.767699,
+  "lon": 11.252269,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Borgo San Jacopo 14\",\"addressLocality\":\"Florence\",\"postalCode\":\"50125\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/florence/palazzo-portinari-salviati-residenza-depoca-12716": {
+  "h1": "Palazzo Portinari Salviati Residenza D'Epoca",
+  "ld_name": "Palazzo Portinari Salviati Residenza D'Epoca in Florence",
+  "lat": 43.77151,
+  "lon": 11.25739,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via del Corso 6\",\"addressLocality\":\"Florence\",\"postalCode\":\"50122\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/forte-dei-marmi/principe-forte-dei-marmi-6768": {
+  "h1": "Principe Forte dei Marmi",
+  "ld_name": "Principe Forte dei Marmi in Forte dei Marmi",
+  "lat": 43.951704,
+  "lon": 10.175872,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Viale Ammiraglio Morin, 67\",\"addressLocality\":\"Forte dei Marmi\",\"postalCode\":\"55042\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/frankenberg/die-sonne-frankenberg-10275": {
+  "h1": "Hotel Die Sonne Frankenberg",
+  "ld_name": "Hotel Die Sonne Frankenberg in Frankenberg",
+  "lat": 51.05902,
+  "lon": 8.80159,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Marktplatz 2-4\",\"addressLocality\":\"Frankenberg\",\"postalCode\":\"35066\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Hesse\"}"
+ },
+ "/en/hotels-stays/gaiole-in-chianti/castello-di-spaltenna-9611": {
+  "h1": "Castello di Spaltenna",
+  "ld_name": "Castello di Spaltenna in Gaiole in Chianti",
+  "lat": 43.46558,
+  "lon": 11.42996,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Spaltenna 13, Località Pieve di Spaltenna\",\"addressLocality\":\"Gaiole in Chianti\",\"postalCode\":\"53013\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/gernsbach/schloss-eberstein-9637": {
+  "h1": "Schloss Eberstein",
+  "ld_name": "Schloss Eberstein in Gernsbach",
+  "lat": 48.74961,
+  "lon": 8.34267,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Schloss Eberstein 1\",\"addressLocality\":\"Gernsbach\",\"postalCode\":\"76593\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/grenzach-wyhlen/eckert-9779": {
+  "h1": "Hotel Eckert",
+  "ld_name": "Hotel Eckert in Grenzach-Wyhlen",
+  "lat": 47.55321,
+  "lon": 7.65845,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Basler Str. 20\",\"addressLocality\":\"Grenzach-Wyhlen\",\"postalCode\":\"79639\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/hamburg/atlantic-hamburg-10604": {
+  "h1": "Hotel Atlantic Hamburg",
+  "ld_name": "Hotel Atlantic Hamburg in Hamburg",
+  "lat": 53.55736,
+  "lon": 10.0047,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"An der Alster 72-79\",\"addressLocality\":\"Hamburg\",\"postalCode\":\"20099\",\"addressCountry\":\"DEU\"}"
+ },
+ "/en/hotels-stays/hamburg/fairmont-hotel-vier-jahreszeiten-12464": {
+  "h1": "Hotel Vier Jahreszeiten",
+  "ld_name": "Hotel Vier Jahreszeiten in Hamburg",
+  "lat": 53.555404,
+  "lon": 9.991647,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Neuer Jungfernstieg 9-14\",\"addressLocality\":\"Hamburg\",\"postalCode\":\"20354\",\"addressCountry\":\"DEU\"}"
+ },
+ "/en/hotels-stays/hamburg/the-fontenay-11121": {
+  "h1": "The Fontenay",
+  "ld_name": "The Fontenay in Hamburg",
+  "lat": 53.56541,
+  "lon": 9.99771,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Fontenay 10\",\"addressLocality\":\"Hamburg\",\"postalCode\":\"20354\",\"addressCountry\":\"DEU\"}"
+ },
+ "/en/hotels-stays/heiligendamm/alter-meierhof-9510": {
+  "h1": "Alter Meierhof",
+  "ld_name": "Alter Meierhof in Heiligendamm",
+  "lat": 54.82289,
+  "lon": 9.5004,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Uferstrasse 1\",\"addressLocality\":\"Heiligendamm\",\"postalCode\":\"24960\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Ostsee\"}"
+ },
+ "/en/hotels-stays/isola-d-ischia/albergo-della-regina-isabella-8939": {
+  "h1": "Albergo Della Regina Isabella",
+  "ld_name": "Albergo Della Regina Isabella in Island of Ischia",
+  "lat": 40.754417,
+  "lon": 13.885136,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Piazza Santa Restituta, 1, Lacco Ameno\",\"addressLocality\":\"Island of Ischia\",\"postalCode\":\"80076\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Campania\"}"
+ },
+ "/en/hotels-stays/kiel/kieler-kaufmann-9904": {
+  "h1": "Romantik Hotel Kieler Kaufmann",
+  "ld_name": "Romantik Hotel Kieler Kaufmann in Kiel",
+  "lat": 54.33876,
+  "lon": 10.15141,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Niemannsweg 102\",\"addressLocality\":\"Kiel\",\"postalCode\":\"24105\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Schleswig-Holstein\"}"
+ },
+ "/en/hotels-stays/konigsbronn/widmanns-lowen-10072": {
+  "h1": "Widmann's Löwen",
+  "ld_name": "Widmann's Löwen in Königsbronn",
+  "lat": 48.72952,
+  "lon": 10.06542,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Struthstr. 17\",\"addressLocality\":\"Königsbronn\",\"postalCode\":\"89551\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/konstanz/riva-10089": {
+  "h1": "RIVA - Das Hotel am Bodensee",
+  "ld_name": "RIVA - Das Hotel am Bodensee in Konstanz",
+  "lat": 47.66689,
+  "lon": 9.18796,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Seestraße 25\",\"addressLocality\":\"Konstanz\",\"postalCode\":\"78464\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/limone-sul-garda/eala-my-lakeside-dream-12272": {
+  "h1": "EALA My Lakeside Dream",
+  "ld_name": "EALA My Lakeside Dream in Limone sul Garda",
+  "lat": 45.82454,
+  "lon": 10.81269,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via IV Novembre 86\",\"addressLocality\":\"Limone sul Garda\",\"postalCode\":\"25010\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lake Garda\"}"
+ },
+ "/en/hotels-stays/madonnadicampiglio/biohotel-hermitage-7592": {
+  "h1": "Biohotel Hermitage",
+  "ld_name": "Biohotel Hermitage in Madonna di Campiglio",
+  "lat": 46.211022,
+  "lon": 10.823672,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Castelletto Inferiore 69\",\"addressLocality\":\"Madonna di Campiglio\",\"postalCode\":\"38086\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Alps / Dolomites\"}"
+ },
+ "/en/hotels-stays/madonnadicampiglio/dv-chalet-3771": {
+  "h1": "DV Chalet",
+  "ld_name": "DV Chalet in Madonna di Campiglio",
+  "lat": 46.223311,
+  "lon": 10.825932,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Castelletto Inferiore 10\",\"addressLocality\":\"Madonna di Campiglio\",\"postalCode\":\"38086\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Alps / Dolomites\"}"
+ },
+ "/en/hotels-stays/massa-lubrense/relais-blu-6648": {
+  "h1": "Relais Blu",
+  "ld_name": "Relais Blu in Massa Lubrense",
+  "lat": 40.589415,
+  "lon": 14.330238,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Roncato, 60\",\"addressLocality\":\"Massa Lubrense\",\"postalCode\":\"80061\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/meisenheim/meisenheimer-hof-10343": {
+  "h1": "Meisenheimer Hof",
+  "ld_name": "Meisenheimer Hof in Meisenheim",
+  "lat": 49.70727,
+  "lon": 7.6703,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Obergasse 33\",\"addressLocality\":\"Meisenheim\",\"postalCode\":\"55590\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Rheinland-Pfalz\"}"
+ },
+ "/en/hotels-stays/merano/castel-fragsburg-8195": {
+  "h1": "Castel Fragsburg",
+  "ld_name": "Castel Fragsburg in Merano",
+  "lat": 46.63751,
+  "lon": 11.191431,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Fragsburg 3\",\"addressLocality\":\"Merano\",\"postalCode\":\"39012\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Alps / Dolomites\"}"
+ },
+ "/en/hotels-stays/milan/mandarin-oriental-milan-7813": {
+  "h1": "Mandarin Oriental Milan",
+  "ld_name": "Mandarin Oriental Milan in Milan",
+  "lat": 45.4695,
+  "lon": 9.19105,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Andegari, 9\",\"addressLocality\":\"Milan\",\"postalCode\":\"20121\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lombardy\"}"
+ },
+ "/en/hotels-stays/milan/milano-verticale-una-esperienze-12758": {
+  "h1": "Milano Verticale | UNA Esperienze",
+  "ld_name": "Milano Verticale | UNA Esperienze in Milan",
+  "lat": 45.48167,
+  "lon": 9.18874,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Carlo De Cristoforis 6\",\"addressLocality\":\"Milan\",\"postalCode\":\"20124\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lombardy\"}"
+ },
+ "/en/hotels-stays/montalcino/castello-banfi-il-borgo-116850-6678": {
+  "h1": "Castello Banfi - Il Borgo",
+  "ld_name": "Castello Banfi - Il Borgo in Montalcino",
+  "lat": 42.98003,
+  "lon": 11.398805,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Castello di Poggio alle Mura 1\",\"addressLocality\":\"Montalcino\",\"postalCode\":\"53024\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/montalcino/castiglion-del-bosco-a-rosewood-hotel-5137": {
+  "h1": "Castiglion del Bosco, A Rosewood Hotel",
+  "ld_name": "Castiglion del Bosco, A Rosewood Hotel in Montalcino",
+  "lat": 43.084198,
+  "lon": 11.42209,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Località Castiglion del Bosco\",\"addressLocality\":\"Montalcino\",\"postalCode\":\"53024\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/munich/bayerischer-hof-munich-7400": {
+  "h1": "Bayerischer Hof Munich",
+  "ld_name": "Bayerischer Hof Munich in Munich",
+  "lat": 48.14029,
+  "lon": 11.5732,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Promenadeplatz 2-6\",\"addressLocality\":\"Munich\",\"postalCode\":\"80333\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Bavaria\"}"
+ },
+ "/en/hotels-stays/naples1/grand-hotel-parkers-5563": {
+  "h1": "Grand Hotel Parker's",
+  "ld_name": "Grand Hotel Parker's in Naples",
+  "lat": 40.83679,
+  "lon": 14.22957,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Corso Vittorio Emanuele 135\",\"addressLocality\":\"Naples\",\"postalCode\":\"80121\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Campania\"}"
+ },
+ "/en/hotels-stays/nennig/victors-residenz-hotel-schloss-berg-9737": {
+  "h1": "Victor's Residenz - Hotel Schloss Berg",
+  "ld_name": "Victor's Residenz - Hotel Schloss Berg in Nennig",
+  "lat": 49.53581,
+  "lon": 6.38689,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Schloßstraße 27-29\",\"addressLocality\":\"Nennig\",\"postalCode\":\"66706\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Saarland\"}"
+ },
+ "/en/hotels-stays/norcia/palazzo-seneca-9612": {
+  "h1": "Palazzo Seneca",
+  "ld_name": "Palazzo Seneca in Norcia",
+  "lat": 42.79263,
+  "lon": 13.09216,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Cesare Battisti 12\",\"addressLocality\":\"Norcia\",\"postalCode\":\"06046\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Umbria\"}"
+ },
+ "/en/hotels-stays/orta-san-giulio1/villa-crespi-5809": {
+  "h1": "Villa Crespi",
+  "ld_name": "Villa Crespi in Orta San Giulio",
+  "lat": 45.796462,
+  "lon": 8.416182,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via G. Fava 18\",\"addressLocality\":\"Orta San Giulio\",\"postalCode\":\"28016\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lake Orta\"}"
+ },
+ "/en/hotels-stays/ortisei-1/gardena-grodnerhof-hotel-spa-13142": {
+  "h1": "Gardena Grödnerhof Hotel & Spa",
+  "ld_name": "Gardena Grödnerhof Hotel & Spa in Ortisei",
+  "lat": 46.572253,
+  "lon": 11.671086,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Vidalong 3\",\"addressLocality\":\"Ortisei\",\"postalCode\":\"39046\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Alps / Dolomites\"}"
+ },
+ "/en/hotels-stays/pettenasco1/laqua-by-the-lake-12450": {
+  "h1": "Laqua by the Lake",
+  "ld_name": "Laqua by the Lake in Pettenasco",
+  "lat": 45.820172,
+  "lon": 8.404998,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Legro 33/35\",\"addressLocality\":\"Pettenasco\",\"postalCode\":\"28028\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lake Orta\"}"
+ },
+ "/en/hotels-stays/porto-ercole/il-pellicano-7456": {
+  "h1": "Il Pellicano",
+  "ld_name": "Il Pellicano in Porto Ercole",
+  "lat": 42.37376,
+  "lon": 11.18749,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Località Sbarcatello\",\"addressLocality\":\"Porto Ercole\",\"postalCode\":\"58019\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/positano/hotel-villa-franca-positano-8472": {
+  "h1": "Hotel Villa Franca Positano",
+  "ld_name": "Hotel Villa Franca Positano in Positano",
+  "lat": 40.628349,
+  "lon": 14.484234,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Viale Pasitea 318\",\"addressLocality\":\"Positano\",\"postalCode\":\"84017\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/positano/il-san-pietro-di-positano-7453": {
+  "h1": "Il San Pietro di Positano",
+  "ld_name": "Il San Pietro di Positano in Positano",
+  "lat": 40.62337,
+  "lon": 14.50387,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Laurito, 2\",\"addressLocality\":\"Positano\",\"postalCode\":\"84017\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/praiano/casa-angelina-1201": {
+  "h1": "Casa Angelina",
+  "ld_name": "Casa Angelina in Praiano",
+  "lat": 40.614514,
+  "lon": 14.52171,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via G. Capriglione 147\",\"addressLocality\":\"Praiano\",\"postalCode\":\"84010\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/ravello/palazzo-avino-7367": {
+  "h1": "Palazzo Avino",
+  "ld_name": "Palazzo Avino in Ravello",
+  "lat": 40.651,
+  "lon": 14.61308,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via San Giovanni del Toro 28\",\"addressLocality\":\"Ravello\",\"postalCode\":\"84010\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/riposto/zash-10961": {
+  "h1": "ZASH",
+  "ld_name": "ZASH in Riposto",
+  "lat": 37.70839,
+  "lon": 15.19988,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Strada Provinciale 2 I-II N 60\",\"addressLocality\":\"Riposto\",\"addressCountry\":\"ITA\"}"
+ },
+ "/en/hotels-stays/rome/anantara-palazzo-naiadi-rome-hotel-6214": {
+  "h1": "Anantara Palazzo Naiadi Rome",
+  "ld_name": "Anantara Palazzo Naiadi Rome in Rome",
+  "lat": 41.90199,
+  "lon": 12.49608,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Piazza della Repubblica 47\",\"addressLocality\":\"Rome\",\"postalCode\":\"00185\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lazio\"}"
+ },
+ "/en/hotels-stays/rome/hassler-roma-13240": {
+  "h1": "Hassler Roma",
+  "ld_name": "Hassler Roma in Rome",
+  "lat": 41.906022,
+  "lon": 12.483757,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Piazza Trinità dei Monti, 6\",\"addressLocality\":\"Rome\",\"postalCode\":\"00187\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lazio\"}"
+ },
+ "/en/hotels-stays/rome/hotel-eden-7218": {
+  "h1": "Hotel Eden, Dorchester Collection",
+  "ld_name": "Hotel Eden, Dorchester Collection in Rome",
+  "lat": 41.906529,
+  "lon": 12.486369,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Ludovisi 49\",\"addressLocality\":\"Rome\",\"postalCode\":\"00187\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lazio\"}"
+ },
+ "/en/hotels-stays/rome/palazzo-manfredi-6280": {
+  "h1": "Palazzo Manfredi",
+  "ld_name": "Palazzo Manfredi in Rome",
+  "lat": 41.8904,
+  "lon": 12.494609,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Labicana 125\",\"addressLocality\":\"Rome\",\"postalCode\":\"00184\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lazio\"}"
+ },
+ "/en/hotels-stays/rome/the-first-luxury-art-hotel-rome-6540": {
+  "h1": "The First Arte, Rome",
+  "ld_name": "The First Arte, Rome in Rome",
+  "lat": 41.908708,
+  "lon": 12.47578,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via del Vantaggio 14\",\"addressLocality\":\"Rome\",\"postalCode\":\"00186\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lazio\"}"
+ },
+ "/en/hotels-stays/rothenburg-ob-der-tauber/villa-mittermeier-9736": {
+  "h1": "Villa Mittermeier",
+  "ld_name": "Villa Mittermeier in Rothenburg ob der Tauber",
+  "lat": 49.38007,
+  "lon": 10.18493,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Vorm Würzburger Tor 7\",\"addressLocality\":\"Rothenburg ob der Tauber\",\"postalCode\":\"91541\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Bavaria\"}"
+ },
+ "/en/hotels-stays/rottach-egern/park-hotel-egerner-hofe-9909": {
+  "h1": "Parkhotel Egerner Höfe",
+  "ld_name": "Parkhotel Egerner Höfe in Rottach-Egern",
+  "lat": 47.69426,
+  "lon": 11.75393,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Aribostraße 19–26\",\"addressLocality\":\"Rottach-Egern\",\"postalCode\":\"83700\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Bavaria\"}"
+ },
+ "/en/hotels-stays/saarbrucken/esplanade-saarbrucken-11693": {
+  "h1": "Esplanade Saarbrücken",
+  "ld_name": "Esplanade Saarbrücken in Saarbrücken",
+  "lat": 49.234977,
+  "lon": 6.999668,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"5 Nauwieserstraße\",\"addressLocality\":\"Saarbrücken\",\"postalCode\":\"66111 \",\"addressCountry\":\"DEU\",\"addressRegion\":\"Saarland\"}"
+ },
+ "/en/hotels-stays/saarlouis/la-maison-120708-9980": {
+  "h1": "La Maison",
+  "ld_name": "La Maison in Saarlouis",
+  "lat": 49.31727,
+  "lon": 6.75541,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Prälat-Subtil-Ring 22\",\"addressLocality\":\"Saarlouis\",\"postalCode\":\"66740\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Saarland\"}"
+ },
+ "/en/hotels-stays/salina/hotel-signum-1101": {
+  "h1": "Hotel Signum",
+  "ld_name": "Hotel Signum in Salina",
+  "lat": 38.581102,
+  "lon": 14.834684,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Pastifico 12, Malfa\",\"addressLocality\":\"Salina\",\"postalCode\":\"98050\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Aeolian Islands\"}"
+ },
+ "/en/hotels-stays/san-pietro-in-cariano/byblos-art-hotel-villa-amista-164": {
+  "h1": "Byblos Art Hotel Villa Amistà",
+  "ld_name": "Byblos Art Hotel Villa Amistà in San Pietro in Cariano",
+  "lat": 45.48867,
+  "lon": 10.900649,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Cedrare, 78\",\"addressLocality\":\"San Pietro in Cariano\",\"postalCode\":\"37020\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Veneto\"}"
+ },
+ "/en/hotels-stays/savelletri-di-fasano/borgo-egnazia-5839": {
+  "h1": "Borgo Egnazia",
+  "ld_name": "Borgo Egnazia in Savelletri di Fasano",
+  "lat": 40.875191,
+  "lon": 17.397339,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Contrada Masciola\",\"addressLocality\":\"Savelletri di Fasano\",\"postalCode\":\"di\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Puglia\"}"
+ },
+ "/en/hotels-stays/sorrento-2/grand-hotel-excelsior-vittoria-6718": {
+  "h1": "Grand Hotel Excelsior Vittoria",
+  "ld_name": "Grand Hotel Excelsior Vittoria in Sorrento",
+  "lat": 40.628575,
+  "lon": 14.375942,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Piazza Tasso 34\",\"addressLocality\":\"Sorrento\",\"postalCode\":\"80067\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Amalfi Coast\"}"
+ },
+ "/en/hotels-stays/stuttgart/der-zauberlehrling-11044": {
+  "h1": "Der Zauberlehrling",
+  "ld_name": "Der Zauberlehrling in Stuttgart",
+  "lat": 48.77412,
+  "lon": 9.18428,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Rosenstrasse 38\",\"addressLocality\":\"Stuttgart\",\"postalCode\":\"70182\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Baden-Wurttemberg\"}"
+ },
+ "/en/hotels-stays/sylt/budersand-hotel-golf-spa-sylt-9695": {
+  "h1": "BUDERSAND Hotel – Golf & Spa - Sylt",
+  "ld_name": "BUDERSAND Hotel – Golf & Spa - Sylt in Sylt",
+  "lat": 54.76135,
+  "lon": 8.29644,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Am Kai 3\",\"addressLocality\":\"Sylt\",\"postalCode\":\"25997\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Schleswig-Holstein\"}"
+ },
+ "/en/hotels-stays/sylt/relais-chateaux-landhaus-stricker-9908": {
+  "h1": "Landhaus Stricker",
+  "ld_name": "Landhaus Stricker in Sylt",
+  "lat": 54.90055,
+  "lon": 8.33295,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Boy-Nielsen-Str. 10\",\"addressLocality\":\"Sylt\",\"postalCode\":\"25980\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Schleswig-Holstein\"}"
+ },
+ "/en/hotels-stays/sylt/severins-10244": {
+  "h1": "Severin's Resort & Spa",
+  "ld_name": "Severin's Resort & Spa in Sylt",
+  "lat": 54.8907,
+  "lon": 8.37829,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Am Tipkenhoog 18\",\"addressLocality\":\"Sylt\",\"postalCode\":\"25980\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Schleswig-Holstein\"}"
+ },
+ "/en/hotels-stays/taormina/grand-hotel-timeo-a-belmond-hotel-taormina-8362": {
+  "h1": "Grand Hotel Timeo, A Belmond Hotel, Taormina",
+  "ld_name": "Grand Hotel Timeo, A Belmond Hotel, Taormina in Taormina",
+  "lat": 37.85245,
+  "lon": 15.29112,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Teatro Greco 59\",\"addressLocality\":\"Taormina\",\"postalCode\":\"98039\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Sicily\"}"
+ },
+ "/en/hotels-stays/taormina/san-domenico-palace-hotel-7330": {
+  "h1": "San Domenico Palace, Taormina, A Four Seasons Hotel",
+  "ld_name": "San Domenico Palace, Taormina, A Four Seasons Hotel in Taormina",
+  "lat": 37.850321,
+  "lon": 15.283935,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Piazza San Domenico 5\",\"addressLocality\":\"Taormina\",\"postalCode\":\"98039\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Sicily\"}"
+ },
+ "/en/hotels-stays/taormina/the-ashbee-hotel-6450": {
+  "h1": "The Ashbee Hotel",
+  "ld_name": "The Ashbee Hotel in Taormina",
+  "lat": 37.855419,
+  "lon": 15.290014,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Viale San Pancrazio 46\",\"addressLocality\":\"Taormina\",\"postalCode\":\"98039\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Sicily\"}"
+ },
+ "/en/hotels-stays/torno-1/il-sereno-8365": {
+  "h1": "Il Sereno",
+  "ld_name": "Il Sereno in Torno",
+  "lat": 45.85877,
+  "lon": 9.117444,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Torrazza 10\",\"addressLocality\":\"Torno\",\"postalCode\":\"22020\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Lake Como\"}"
+ },
+ "/en/hotels-stays/venice/cipriani-a-belmond-hotel-venice-7365": {
+  "h1": "Hotel Cipriani, A Belmond Hotel, Venice",
+  "ld_name": "Hotel Cipriani, A Belmond Hotel, Venice in Venice",
+  "lat": 45.42756,
+  "lon": 12.34033,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Giudecca 10\",\"addressLocality\":\"Venice\",\"postalCode\":\"30133\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Veneto\"}"
+ },
+ "/en/hotels-stays/venice/palazzo-venart-10174": {
+  "h1": "Palazzo Venart Luxury Hotel",
+  "ld_name": "Palazzo Venart Luxury Hotel in Venice",
+  "lat": 45.4413,
+  "lon": 12.32989,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Calle Tron, 1961\",\"addressLocality\":\"Venice\",\"postalCode\":\"30135\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Veneto\"}"
+ },
+ "/en/hotels-stays/venice/venissa-wine-resort-14138": {
+  "h1": "Venissa Wine Resort",
+  "ld_name": "Venissa Wine Resort in Venice",
+  "lat": 45.48859,
+  "lon": 12.41092,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Fondamenta di Santa Caterina 3, Isola di Mazzorbo\",\"addressLocality\":\"Venice\",\"postalCode\":\"30142\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Veneto\"}"
+ },
+ "/en/hotels-stays/viareggio/grand-hotel-principe-di-piemonte-6817": {
+  "h1": "Grand Hotel Principe di Piemonte",
+  "ld_name": "Grand Hotel Principe di Piemonte in Viareggio",
+  "lat": 43.881527,
+  "lon": 10.235481,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Piazza Giacomo Puccini 1\",\"addressLocality\":\"Viareggio\",\"postalCode\":\"55049\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/viareggio/plaza-e-de-russie-10387": {
+  "h1": "Plaza e de Russie",
+  "ld_name": "Plaza e de Russie in Viareggio",
+  "lat": 43.86766,
+  "lon": 10.24352,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Piazza d'Azeglio 1\",\"addressLocality\":\"Viareggio\",\"postalCode\":\"55049\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Tuscany\"}"
+ },
+ "/en/hotels-stays/vulcano/therasia-resort-8826": {
+  "h1": "Therasia Resort Sea & Spa",
+  "ld_name": "Therasia Resort Sea & Spa in Vulcano",
+  "lat": 38.430342,
+  "lon": 14.95647,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Località Vulcanello\",\"addressLocality\":\"Vulcano\",\"postalCode\":\"98050\",\"addressCountry\":\"ITA\",\"addressRegion\":\"Aeolian Islands\"}"
+ },
+ "/en/hotels-stays/warnemunde/yachthafenresidenz-hohe-dune-10366": {
+  "h1": "Yachthafenresidenz Hohe Düne",
+  "ld_name": "Yachthafenresidenz Hohe Düne in Warnemünde",
+  "lat": 54.17943,
+  "lon": 12.09841,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Am Yachthafen 1\",\"addressLocality\":\"Warnemünde\",\"postalCode\":\"18119\",\"addressCountry\":\"DEU\",\"addressRegion\":\"Mecklenburg-Vorpommern\"}"
+ }
+}
