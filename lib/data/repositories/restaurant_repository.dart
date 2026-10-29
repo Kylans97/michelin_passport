@@ -3,6 +3,7 @@ import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import 'country_lookup.dart';
+import 'fetch_all_rows.dart';
 import 'search_query.dart';
 
 // Explicit column list matching public.restaurants_full as it exists on the
@@ -121,15 +122,17 @@ class RestaurantRepository {
     return Restaurant.fromJson(row);
   }
 
-  // Full catalogue ordered by name.
+  // Full catalogue ordered by name, past PostgREST's row cap (see
+  // fetchAllRows).
   Future<List<Restaurant>> getAll() async {
-    final rows = await _client
-        .from('restaurants_full')
-        .select(restaurantFullColumns)
-        .order('name');
-    return (rows as List)
-        .map((row) => Restaurant.fromJson(row as Map<String, dynamic>))
-        .toList();
+    final rows = await fetchAllRows(
+      () => _client
+          .from('restaurants_full')
+          .select(restaurantFullColumns)
+          .order('name')
+          .order('id', ascending: true),
+    );
+    return rows.map(Restaurant.fromJson).toList();
   }
 
   // Search with optional Michelin star, award and country filters.
@@ -157,29 +160,35 @@ class RestaurantRepository {
     List<String> cityIds = const [],
   }) async {
     if (countryCodes.isEmpty && cityIds.isEmpty) return [];
-    var builder = _client
-        .from('restaurants_full')
-        .select(restaurantFullColumns);
-    for (final filter in buildIlikeOrFilters(query, [
-      'name',
-      'city_name',
-      'country_name',
-    ])) {
-      builder = builder.or(filter);
+    PostgrestFilterBuilder<PostgrestList> filtered() {
+      var builder = _client
+          .from('restaurants_full')
+          .select(restaurantFullColumns);
+      for (final filter in buildIlikeOrFilters(query, [
+        'name',
+        'city_name',
+        'country_name',
+      ])) {
+        builder = builder.or(filter);
+      }
+      return builder.or(
+        [
+          if (cityIds.isNotEmpty) 'city_id.in.(${cityIds.join(',')})',
+          if (countryCodes.isNotEmpty)
+            'country_code.in.(${countryCodes.join(',')})',
+        ].join(','),
+      );
     }
-    builder = builder.or(
-      [
-        if (cityIds.isNotEmpty) 'city_id.in.(${cityIds.join(',')})',
-        if (countryCodes.isNotEmpty)
-          'country_code.in.(${countryCodes.join(',')})',
-      ].join(','),
+
+    // A whole-country leg in France or Spain alone matches hundreds of
+    // rows, so page past the row cap (see fetchAllRows).
+    final rows = await fetchAllRows(
+      () => filtered()
+          .order('is_expired', ascending: true)
+          .order('name', ascending: true)
+          .order('id', ascending: true),
     );
-    final rows = await builder
-        .order('is_expired', ascending: true)
-        .order('name', ascending: true);
-    return (rows as List)
-        .map((row) => Restaurant.fromJson(row as Map<String, dynamic>))
-        .toList();
+    return rows.map(Restaurant.fromJson).toList();
   }
 
   Future<List<Restaurant>> search(
@@ -190,46 +199,49 @@ class RestaurantRepository {
     bool hallOfFameOnly = false,
     String? countryCode,
   }) async {
-    var builder = _client
-        .from('restaurants_full')
-        .select(restaurantFullColumns);
+    PostgrestFilterBuilder<PostgrestList> filtered() {
+      var builder = _client
+          .from('restaurants_full')
+          .select(restaurantFullColumns);
 
-    // One .or() call per word in [query] — "Flore Amsterdam" must match a
-    // venue with "Flore" in one field and "Amsterdam" in another, not just
-    // a single field containing the whole two-word string. Each call
-    // appends its own `or=` query param (postgrest-dart never overwrites a
-    // repeated one), and PostgREST ANDs all top-level params together, so
-    // a row has to satisfy every word's group — see
-    // buildIlikeOrFilters()'s own doc comment for the full reasoning. A
-    // single-word query loops exactly once, producing the identical filter
-    // buildIlikeOrFilter() would have built — unchanged single-word search.
-    for (final filter in buildIlikeOrFilters(query, [
-      'name',
-      'city_name',
-      'country_name',
-    ])) {
-      builder = builder.or(filter);
-    }
-    if (stars != null) {
-      builder = builder.eq('michelin_stars', stars);
-    } else if (starsOnly) {
-      builder = builder.not('michelin_stars', 'is', null);
-    }
-    if (worlds50BestOnly) {
-      builder = builder.not('worlds_50_best_rank', 'is', null);
-    }
-    if (hallOfFameOnly) {
-      // is_hall_of_fame, not inclusion_reason — inclusion_reason is
-      // creation provenance only and is never actually set to
-      // 'hall_of_fame' by the import path (every current Hall of Fame
-      // member also holds a Michelin star, so import always picks
-      // 'michelin_star' instead); filtering on it here previously matched
-      // zero real restaurants. is_hall_of_fame is the authoritative,
-      // correctly-derived column — see restaurants_full's definition.
-      builder = builder.eq('is_hall_of_fame', true);
-    }
-    if (countryCode != null) {
-      builder = builder.eq('country_code', countryCode);
+      // One .or() call per word in [query] — "Flore Amsterdam" must match a
+      // venue with "Flore" in one field and "Amsterdam" in another, not just
+      // a single field containing the whole two-word string. Each call
+      // appends its own `or=` query param (postgrest-dart never overwrites a
+      // repeated one), and PostgREST ANDs all top-level params together, so
+      // a row has to satisfy every word's group — see
+      // buildIlikeOrFilters()'s own doc comment for the full reasoning. A
+      // single-word query loops exactly once, producing the identical filter
+      // buildIlikeOrFilter() would have built — unchanged single-word search.
+      for (final filter in buildIlikeOrFilters(query, [
+        'name',
+        'city_name',
+        'country_name',
+      ])) {
+        builder = builder.or(filter);
+      }
+      if (stars != null) {
+        builder = builder.eq('michelin_stars', stars);
+      } else if (starsOnly) {
+        builder = builder.not('michelin_stars', 'is', null);
+      }
+      if (worlds50BestOnly) {
+        builder = builder.not('worlds_50_best_rank', 'is', null);
+      }
+      if (hallOfFameOnly) {
+        // is_hall_of_fame, not inclusion_reason — inclusion_reason is
+        // creation provenance only and is never actually set to
+        // 'hall_of_fame' by the import path (every current Hall of Fame
+        // member also holds a Michelin star, so import always picks
+        // 'michelin_star' instead); filtering on it here previously matched
+        // zero real restaurants. is_hall_of_fame is the authoritative,
+        // correctly-derived column — see restaurants_full's definition.
+        builder = builder.eq('is_hall_of_fame', true);
+      }
+      if (countryCode != null) {
+        builder = builder.eq('country_code', countryCode);
+      }
+      return builder;
     }
 
     // Pop-ups: a SQL-side sort key, not a client-side re-sort — the
@@ -253,14 +265,22 @@ class RestaurantRepository {
     // (descending), not true, so an unqualified .order('worlds_50_best_
     // rank') silently rendered #50 first, and an unqualified
     // .order('is_expired') would put expired results FIRST.
-    final rows = worlds50BestOnly
-        ? await builder
-              .order('is_expired', ascending: true)
-              .order('worlds_50_best_rank', ascending: true)
-        : await builder.order('is_expired', ascending: true).order('name');
-    return (rows as List)
-        .map((row) => Restaurant.fromJson(row as Map<String, dynamic>))
-        .toList();
+    //
+    // Paged past PostgREST's row cap, with `id` as the unique last key that
+    // keeps pages stable (see fetchAllRows): Guides' MICHELIN catalogue
+    // alone is well over 1000 restaurants.
+    final rows = await fetchAllRows(
+      () => worlds50BestOnly
+          ? filtered()
+                .order('is_expired', ascending: true)
+                .order('worlds_50_best_rank', ascending: true)
+                .order('id', ascending: true)
+          : filtered()
+                .order('is_expired', ascending: true)
+                .order('name')
+                .order('id', ascending: true),
+    );
+    return rows.map(Restaurant.fromJson).toList();
   }
 
   // Countries that have at least one restaurant, for the filter chips.
@@ -275,13 +295,19 @@ class RestaurantRepository {
   // unstarred. Explore never passes this (defaults false), so its own
   // country list is unaffected.
   Future<List<VenueCountry>> getCountries({bool starsOnly = false}) async {
-    var query = _client.from('restaurants_full').select('country_code');
-    if (starsOnly) {
-      query = query.not('michelin_stars', 'is', null);
-    }
-    final restaurantRows = await query;
+    //
+    // One country_code per restaurant, so this crosses PostgREST's row cap
+    // too: paged (see fetchAllRows), or countries whose rows come after row
+    // 1000 silently drop out of the picker.
+    final restaurantRows = await fetchAllRows(() {
+      var query = _client.from('restaurants_full').select('country_code, id');
+      if (starsOnly) {
+        query = query.not('michelin_stars', 'is', null);
+      }
+      return query.order('id', ascending: true);
+    });
     final presentCodes = <String>{
-      for (final row in restaurantRows as List)
+      for (final row in restaurantRows)
         if ((row['country_code'] as String?)?.isNotEmpty ?? false)
           row['country_code'] as String,
     };
