@@ -1,0 +1,571 @@
+{
+ "https://guide.michelin.com/en/hotels-stays/shanghai/the-puli-shanghai-4541": {
+  "query": "The PuLi Shanghai",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shanghai/amanyangyun-8554": {
+  "query": "Amanyangyun",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/lijiang/amandayan-7974": {
+  "query": "Amandayan",
+  "results": [
+   {
+    "display_name": "丽江大研安缦酒店, 29, 狮山路, 新华社区, 大研街道, 黄山上段, 古城区, 丽江市, 云南省, 674100, 中国",
+    "lat": "26.8774135",
+    "lon": "100.2307096",
+    "osm_type": "way",
+    "osm_id": 995083937,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/shanghai/capella-shanghai-11050": {
+  "query": "Capella Shanghai, Jian Ye Li",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/Chongqing/intercontinental-chongqing-raffles-city-12868": {
+  "query": "InterContinental Chongqing Raffles City",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/beijing/rosewood-beijing-7249": {
+  "query": "Rosewood Beijing",
+  "results": [
+   {
+    "display_name": "北京瑰丽酒店, 1, 朝阳门外大街, 呼家楼街道, 朝阳区, 北京市, 100004, 中国",
+    "lat": "39.9188259",
+    "lon": "116.4545206",
+    "osm_type": "node",
+    "osm_id": 13851754401,
+    "class": "leisure",
+    "type": "resort",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/shanghai/the-peninsula-shanghai-5858": {
+  "query": "The Peninsula Shanghai",
+  "results": [
+   {
+    "display_name": "半岛饭店, 32, 中山东一路, 外滩源, 外滩街道, 上海市, 黄浦区, 上海市, 200002, 中国",
+    "lat": "31.2432569",
+    "lon": "121.4847583",
+    "osm_type": "way",
+    "osm_id": 177929887,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/shanghai/the-middle-house-8864": {
+  "query": "Upper House Shanghai",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/guilin/yangshuo-sugar-house-9233": {
+  "query": "Yangshuo Sugar House",
+  "results": [
+   {
+    "display_name": "阳朔糖舍度假酒店 - Yangshuo Sugar House, 东陵路, 石板桥村, 阳朔县, 桂林市, 广西壮族自治区, 541900, 中国",
+    "lat": "24.7845703",
+    "lon": "110.5136953",
+    "osm_type": "node",
+    "osm_id": 13645149401,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/chengdu/six-senses-qing-cheng-mountain-7985": {
+  "query": "Six Senses Qing Cheng Mountain",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/chengdu/upper-house-chengdu-7876": {
+  "query": "Upper House Chengdu",
+  "results": [
+   {
+    "display_name": "居舍, 东糠市街, 锦官驿街道, 锦江区, 成都市, 四川省, 610014, 中国",
+    "lat": "30.6540180",
+    "lon": "104.0819273",
+    "osm_type": "node",
+    "osm_id": 14232237332,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/suzhou/kimpton-bamboo-grove-suzhou-12832": {
+  "query": "Kimpton Bamboo Grove Suzhou",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/Jiuzhaigou/intercontinental-resort-jiuzhai-paradise-12846": {
+  "query": "InterContinental Resort Jiuzhai Paradise",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/Chongqing/regent-chongqing-12811": {
+  "query": "Regent Chongqing",
+  "results": [
+   {
+    "display_name": "重庆丽晶酒店, 金沙门路, 江北, 江北城街道, 两江新区, 重庆市, 400010, 中国",
+    "lat": "29.5740074",
+    "lon": "106.5668725",
+    "osm_type": "way",
+    "osm_id": 705956169,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/lingshui/capella-tufu-bay-11866": {
+  "query": "Capella Tufu Bay",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/Quanzhou/intercontinental-quanzhou-12843": {
+  "query": "InterContinental Quanzhou",
+  "results": [
+   {
+    "display_name": "InterContinental Quanzhou, 1005, 丰海路, 海景社区, 法石社区, 临海街道, 泉州市, 丰泽区, 泉州市, 福建省, 362000, 中国",
+    "lat": "24.8748008",
+    "lon": "118.6341710",
+    "osm_type": "node",
+    "osm_id": 6054763235,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/lijiang/intercontinental-lijiang-ancient-town-resort-12855": {
+  "query": "InterContinental Lijiang Ancient Town Resort",
+  "results": [
+   {
+    "display_name": "丽江和府洲际度假酒店, 兴文巷, 七一社区, 祥和街道, 丽江古城, 古城区, 丽江市, 云南省, 674100, 中国",
+    "lat": "26.8697302",
+    "lon": "100.2362448",
+    "osm_type": "way",
+    "osm_id": 984793063,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/beijing/the-puxuan-hotel-spa-9032": {
+  "query": "The PuXuan Hotel and Spa",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/hangzhou/four-seasons-hotel-hangzhou-at-west-lake-8860": {
+  "query": "Four Seasons Hotel Hangzhou at West Lake",
+  "results": [
+   {
+    "display_name": "杭州西子湖四季酒店, 5号, 灵隐路, 仁寿山, 灵隐街道, 西湖区, 杭州市, 浙江省, 310013, 中国",
+    "lat": "30.2537563",
+    "lon": "120.1240730",
+    "osm_type": "way",
+    "osm_id": 976000575,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/xian/sofitel-legend-peoples-grand-hotel-xian-7709": {
+  "query": "Sofitel Legend Peoples Grand Hotel Xi'an",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/sanya/park-hyatt-sanya-sunny-bay-resort-7809": {
+  "query": "Park Hyatt Sanya Sunny Bay Resort",
+  "results": [
+   {
+    "display_name": "三亚太阳湾柏悦酒店, 5, 太阳湾路, 龙溪别墅, 亚龙湾街道, 吉阳区, 三亚市, 海南省, 572000, 中国",
+    "lat": "18.1906818",
+    "lon": "109.6061302",
+    "osm_type": "node",
+    "osm_id": 5261300784,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/tian-he/rosewood-guangzhou-11778": {
+  "query": "Rosewood Guangzhou",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/beijing/the-peninsula-beijing-5235": {
+  "query": "The Peninsula Beijing",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shanghai/mandarin-oriental-shanghai-6929": {
+  "query": "Mandarin Oriental Shanghai",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shangrila/banyan-tree-ringha-6790": {
+  "query": "Banyan Tree Ringha",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shanghai/the-shanghai-edition-121740-11679": {
+  "query": "The Shanghai EDITION",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shanghai/waldorf-astoria-shanghai-on-the-bund-6803": {
+  "query": "Waldorf Astoria Shanghai on the Bund",
+  "results": [
+   {
+    "display_name": "华尔道夫酒店, 中山东一路, 新北门, 外滩街道, 上海市, 黄浦区, 上海市, 200002, 中国",
+    "lat": "31.2357244",
+    "lon": "121.4863049",
+    "osm_type": "way",
+    "osm_id": 178410327,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   },
+   {
+    "display_name": "华尔道夫酒店, 2, 中山东一路, 新北门, 外滩街道, 上海市, 黄浦区, 上海市, 200002, 中国",
+    "lat": "31.2357915",
+    "lon": "121.4865459",
+    "osm_type": "node",
+    "osm_id": 14321547002,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/shanghai/the-sukhothai-shanghai-121741-11680": {
+  "query": "The Sukhothai Shanghai",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shanghai/bulgari-hotel-shanghai-12400": {
+  "query": "Bvlgari Hotel Shanghai",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/beijing/hotel-eclat-beijing-6713": {
+  "query": "Hotel Éclat Beijing",
+  "results": [
+   {
+    "display_name": "Hotel Eclat, 东大桥路, 朝外街道, 朝阳区, 北京市, 100004, 中国",
+    "lat": "39.9179390",
+    "lon": "116.4433988",
+    "osm_type": "node",
+    "osm_id": 3389372655,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/chaoyang/bulgari-hotel-beijing-122447-12401": {
+  "query": "Bvlgari Hotel Beijing",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shenzhen/park-hyatt-shenzhen-11790": {
+  "query": "Park Hyatt Shenzhen",
+  "results": [
+   {
+    "display_name": "深圳柏悦酒店, 5023号, 益田路, 福安社区, 福田街道, 福田区, 深圳市, 广东省, 518048, 中国",
+    "lat": "22.5345784",
+    "lon": "114.0506139",
+    "osm_type": "node",
+    "osm_id": 7243051038,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/beijing/mandarin-oriental-wangfujing-10424": {
+  "query": "Mandarin Oriental Wangfujing",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/guangzhou/four-season-guangzhou-7784": {
+  "query": "Four Seasons Hotel Guangzhou",
+  "results": [
+   {
+    "display_name": "广州四季酒店, 5号, 珠江西路, 猎德街道, 天河区, 广州市, 广东省, 510623, 中国",
+    "lat": "23.1204288",
+    "lon": "113.3179702",
+    "osm_type": "node",
+    "osm_id": 2695708505,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/beijing/shangri-la-shougang-park-beijing-12631": {
+  "query": "Shangri-La Shougang Park, Beijing",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/sanya/1-hotel-haitang-bay-sanya-12104": {
+  "query": "1 Hotel Haitang Bay",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shenzhen/mandarin-oriental-shenzhen-13280": {
+  "query": "Mandarin Oriental Shenzhen",
+  "results": [
+   {
+    "display_name": "深圳文华东方酒店, 5001号, 皇岗路, 莲花一村社区, 华富街道, 福田区, 深圳市, 广东省, 518000, 中国",
+    "lat": "22.5602154",
+    "lon": "114.0667411",
+    "osm_type": "node",
+    "osm_id": 13277560154,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/beijing/waldorf-astoria-beijing-7153": {
+  "query": "Waldorf Astoria Beijing",
+  "results": [
+   {
+    "display_name": "华尔道夫酒店, 5-15, 金鱼胡同, 王府井社区, 东华门街道, 首都功能核心区, 东城区, 北京市, 100006, 中国",
+    "lat": "39.9145988",
+    "lon": "116.4077835",
+    "osm_type": "way",
+    "osm_id": 457743832,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/shenzhen/andaz-shenzhen-bay-12386": {
+  "query": "Andaz Shenzhen Bay",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/Jiuzhaigou/rissai-valley-a-ritz-carlton-reserve-13589": {
+  "query": "Rissai Valley, a Ritz-Carlton Reserve",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/Changsha/park-hyatt-changsha-14223": {
+  "query": "Park Hyatt Changsha",
+  "results": [
+   {
+    "display_name": "长沙柏悦酒店, 尚德街, 定王台街道, 长沙市, 芙蓉区, 长沙市, 湖南省, 410005, 中国",
+    "lat": "28.1959364",
+    "lon": "112.9745538",
+    "osm_type": "node",
+    "osm_id": 12077020678,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/dongcheng/mandarin-oriental-qianmen-14975": {
+  "query": "Mandarin Oriental Qianmen",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/beijing/xitan-hotel-beijing-14977": {
+  "query": "Xitan Hotel Beijing",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/Chongqing/banyan-tree-chongqing-beibei-14976": {
+  "query": "Banyan Tree Chongqing Beibei",
+  "results": [
+   {
+    "display_name": "悦榕庄, 渝南路, 北温泉街道, 运河村, 澄江镇, 北碚区, 重庆市, 400702, 中国",
+    "lat": "29.8587621",
+    "lon": "106.3766488",
+    "osm_type": "node",
+    "osm_id": 4000697772,
+    "class": "leisure",
+    "type": "resort",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/shenzhen/raffles-shenzhen-14978": {
+  "query": "Raffles Shenzhen",
+  "results": [
+   {
+    "display_name": "深圳来福士广场, 2163, 南海大道, 登良社区, 南山街道, 南山区, 深圳市, 广东省, 518054, 中国",
+    "lat": "22.5148226",
+    "lon": "113.9207242",
+    "osm_type": "way",
+    "osm_id": 565467992,
+    "class": "amenity",
+    "type": "retail",
+    "error": null
+   },
+   {
+    "display_name": "来福士, 南海公园地下车道, 登良社区, 南山街道, 南山区, 深圳市, 广东省, 518000, 中国",
+    "lat": "22.5147640",
+    "lon": "113.9207686",
+    "osm_type": "way",
+    "osm_id": 565467994,
+    "class": "shop",
+    "type": "mall",
+    "error": null
+   },
+   {
+    "display_name": "深圳雅诗阁来福士广场服务公寓, 22, 登良路, 登良花园, 登良社区, 南山街道, 南山区, 深圳市, 广东省, 518064, 中国",
+    "lat": "22.5142975",
+    "lon": "113.9205766",
+    "osm_type": "way",
+    "osm_id": 565467996,
+    "class": "building",
+    "type": "apartments",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/pudong/waldorf-astoria-shanghai-qiantan-17520": {
+  "query": "Waldorf Astoria Shanghai Qiantan",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/beijing/yanbai-villa-beijing-17187": {
+  "query": "Yanbai Villa, Beijing",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/huangpu/the-st-regis-on-the-bund-shanghai-17153": {
+  "query": "The St. Regis on the Bund, Shanghai",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/pudong/j-hotel-shanghai-tower-17152": {
+  "query": "J Hotel, Shanghai Tower",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shenzhen/the-stregis-shenzhen-baoan-16762": {
+  "query": "The St. Regis Shenzhen Bao'an",
+  "results": [
+   {
+    "display_name": "深圳前海华侨城瑞吉酒店, 1088号, 兴业路, 宝安中心区, 海旺社区, 新安街道, 宝安区, 深圳市, 广东省, 518101, 中国",
+    "lat": "22.5539267",
+    "lon": "113.8756296",
+    "osm_type": "node",
+    "osm_id": 13260938888,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/Deqin/deqin-meri-poodom-16267": {
+  "query": "Deqin Meri Poodom",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/shenzhen/the-st-regis-shenzhen-16123": {
+  "query": "The St. Regis Shenzhen",
+  "results": [
+   {
+    "display_name": "深圳瑞吉酒店, 5016号, 深南东路, 蔡屋围, 人民桥社区, 桂园街道, 罗湖区, 深圳市, 广东省, 518001, 中国",
+    "lat": "22.5455293",
+    "lon": "114.1015763",
+    "osm_type": "node",
+    "osm_id": 7237506976,
+    "class": "tourism",
+    "type": "hotel",
+    "error": null
+   }
+  ]
+ },
+ "https://guide.michelin.com/en/hotels-stays/sanya/the-sanya-edition-126838-15675": {
+  "query": "The Sanya EDITION",
+  "results": []
+ },
+ "https://guide.michelin.com/en/hotels-stays/nanjing/yihe-mansions-10840": {
+  "query": "The Yihe Mansions",
+  "results": []
+ },
+ "_extra_queries": {
+  "The PuXuan Hotel Beijing": [],
+  "Capella Shanghai": [],
+  "嘉佩乐": [
+   {
+    "display_name": "澳門銀河 嘉佩樂 (興建中) Capella at Galaxy Macau (Constuction), 聖母灣 Baía de Nossa Senhora da Esperança, 路氹填海區 Zona do Aterro de Cotai, 澳門 Macau, 中国",
+    "lat": "22.1476847",
+    "lon": "113.5534194",
+    "osm_type": "way",
+    "osm_id": 641090416,
+    "class": "landuse",
+    "type": "construction"
+   },
+   {
+    "display_name": "佩佳乐(广东)新材料科技有限公司, 肇庆高新技术产业开发区, 四会市, 肇庆市, 三水区, 广东省, 中国",
+    "lat": "23.3254138",
+    "lon": "112.8567230",
+    "osm_type": "way",
+    "osm_id": 1466162351,
+    "class": "landuse",
+    "type": "industrial"
+   },
+   {
+    "display_name": "潍坊佳乐家农产品加工配送中心有限公司, 开元街道, 寒亭区, 潍坊市, 山东省, 中国",
+    "lat": "36.7936569",
+    "lon": "119.1668329",
+    "osm_type": "way",
+    "osm_id": 493821132,
+    "class": "landuse",
+    "type": "industrial"
+   }
+  ],
+  "璞瑄酒店": [
+   {
+    "display_name": "颐庭酒店, 高新大道, 昆明新城高新技术产业基地, 马金铺街道, 呈贡区, 昆明市, 云南省, 中国",
+    "lat": "24.7895909",
+    "lon": "102.8038090",
+    "osm_type": "node",
+    "osm_id": 13525731266,
+    "class": "tourism",
+    "type": "guest_house"
+   },
+   {
+    "display_name": "佳宾酒店, 马澄路, 昆明新城高新技术产业基地, 马金铺街道, 呈贡区, 昆明市, 云南省, 中国",
+    "lat": "24.7882717",
+    "lon": "102.8039901",
+    "osm_type": "node",
+    "osm_id": 13525731050,
+    "class": "tourism",
+    "type": "guest_house"
+   },
+   {
+    "display_name": "东悦酒店, 高新大道, 昆明新城高新技术产业基地, 马金铺街道, 呈贡区, 昆明市, 云南省, 中国",
+    "lat": "24.7893316",
+    "lon": "102.8033987",
+    "osm_type": "node",
+    "osm_id": 13525731238,
+    "class": "tourism",
+    "type": "guest_house"
+   }
+  ],
+  "建业里": [
+   {
+    "display_name": "建业里, 振兴街道, 汉沽管理区, 丰南区, 唐山市, 河北省, 中国",
+    "lat": "39.3622549",
+    "lon": "117.8766215",
+    "osm_type": "way",
+    "osm_id": 1175961747,
+    "class": "landuse",
+    "type": "residential"
+   },
+   {
+    "display_name": "建业里, 新湾, 新洲区, 武汉市, 湖北省, 中国",
+    "lat": "30.8538010",
+    "lon": "114.7968039",
+    "osm_type": "way",
+    "osm_id": 947982510,
+    "class": "landuse",
+    "type": "residential"
+   },
+   {
+    "display_name": "Jian Yeli, 枫林桥, 天平路街道, 徐汇区, 上海市, 中国",
+    "lat": "31.2056075",
+    "lon": "121.4472027",
+    "osm_type": "way",
+    "osm_id": 493698006,
+    "class": "landuse",
+    "type": "residential"
+   }
+  ],
+  "The Langham Shanghai Xintiandi": []
+ }
+}

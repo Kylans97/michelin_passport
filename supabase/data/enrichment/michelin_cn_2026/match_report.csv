@@ -1,0 +1,195 @@
+code,name,kind,detail
+hotel_704,Mandarin Oriental Qianmen,HOTEL matched by MICHELIN id,"14975; stored point 563 m from MICHELIN's raw (GCJ-02) pin, 97 m from it converted to WGS-84 -- stored point not changed (QA, README Coordinates)"
+hotel_704,Mandarin Oriental Qianmen,KEY CHANGE,None -> 3: MICHELIN's page carries 3 Key(s) and MICHELIN's 2026 Three-Key article lists it as a new Three-Key hotel
+hotel_796,Mandarin Oriental Shenzhen,HOTEL matched by MICHELIN id,"13280; stored point 121 m from MICHELIN's raw (GCJ-02) pin, 717 m from it converted to WGS-84 -- stored point not changed (QA, README Coordinates)"
+hotel_800,The Peninsula Shanghai,HOTEL matched by MICHELIN id,"5858; stored point 25 m from MICHELIN's raw (GCJ-02) pin, 455 m from it converted to WGS-84 -- stored point not changed (QA, README Coordinates)"
+rest_0471,Xin Rong Ji (Xinyuan South Road),matched by coordinates 42 m (GCJ-02 shift applied) + name,"MICHELIN 'Xin Rong Ji (Xinyuan South Road)' https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/xin-rong-ji-xinyuan-south-road; MICHELIN address '1F, East Tower, Genesis Beijing, 8 Xinyuan South Road, Chaoyang, Beijing', stored '1F, Qi Hao East Tower, 8 Xinyuan South Road, Chaoyang District, Beijing 100027'; stored point 547 m from MICHELIN's pin, 42 m from it shifted to GCJ-02 (stored point is GCJ-02; not changed, QA)"
+rest_0472,King's Joy,matched by coordinates 10 m (GCJ-02 shift applied) + name,"MICHELIN 'King's Joy' https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/king-s-joy; MICHELIN address '2 Wudaoying Hutong, Dongcheng, Beijing 100007', stored '2 Wudaoying Hutong, Dongcheng District, Beijing 100011'; stored point 550 m from MICHELIN's pin, 10 m from it shifted to GCJ-02 (stored point is GCJ-02; not changed, QA)"
+rest_1375,Fu He Hui,matched by michelin slug,"MICHELIN 'Fu He Hui' https://guide.michelin.com/en/shanghai-municipality/shanghai/restaurant/fu-he-hui; MICHELIN address '1037 Yuyuan Road, Changning, Shanghai', stored '1037 Yu Yuan Lu, Chang Ning Qu, Shang Hai Shi, China, 200085'; stored point 487 m from MICHELIN's pin, 3 m from it shifted to GCJ-02 (stored point is GCJ-02; not changed, QA)"
+rest_0471,Xin Rong Ji (Xinyuan South Road),CURRENT ROW VERIFIED,"current row 2026 = 3; MICHELIN Beijing 2027 gives 3 -- unchanged, no action (DATA_UPDATE_PROCESS §3)"
+rest_0472,King's Joy,CURRENT ROW VERIFIED,"current row 2026 = 2; MICHELIN Beijing 2027 gives 2 -- unchanged, no action (DATA_UPDATE_PROCESS §3)"
+rest_1375,Fu He Hui,CURRENT ROW VERIFIED,"current row 2026 = 2; MICHELIN Shanghai 2026 gives 2 -- unchanged, no action (DATA_UPDATE_PROCESS §3)"
+rest_2692,Fu Chun Ju,KEY HOTEL HOST NOT LINKED,"MICHELIN's address '3F, The Puxuan Hotel, 1 Wangfujing Street, Dongcheng, Beijing 100006' names The PuXuan Hotel and Spa (hotel_993, address 'No.1 WangFuJing Street, Beijing 100006'), but the two MICHELIN points are 2167 m apart -- no link, no property_name; decide by hand"
+rest_2724,le Comptoir de Pierre Gagnaire,COORDINATES FROM HOST HOTEL,"MICHELIN's restaurant pin is 2.2 km from Capella Shanghai, Jian Ye Li, which its own address names (480 West Jianguo Road); the hotel's point (converted) is 57 m from OpenStreetMap's Jian Ye Li. Hotel point used. 2026-10-29."
+rest_2799,Yi Long Court,COORDINATES FROM HOST HOTEL,"MICHELIN's restaurant pin (31.22, 121.46 area) is 2.2 km from The Peninsula Shanghai, which its own address names (2F, The Peninsula Hotel, 32 Zhongshan Dong Yi Road); the hotel's point (MICHELIN hotel pin, GCJ-02 converted) is 62 m from OpenStreetMap's The Peninsula (way 177929887). Hotel point used. 2026-10-29."
+rest_2813,Zijin Mansion,COORDINATES FROM HOST HOTEL,"MICHELIN's restaurant pin is 571 m from OpenStreetMap's Waldorf Astoria Beijing (way 457743832, 5-15 Jinyu Hutong), which its own address names; the hotel's point (converted) is 144 m from it. Hotel point used. 2026-10-29."
+rest_0471,Xin Rong Ji (Xinyuan South Road),FILL (only empty fields),"{""michelin_url"": ""https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/xin-rong-ji-xinyuan-south-road""}"
+rest_0472,King's Joy,FILL (only empty fields),"{""website_url"": ""https://www.kingsjoy.com"", ""michelin_url"": ""https://guide.michelin.com/en/beijing-municipality/beijing/restaurant/king-s-joy""}"
+rest_2660,Amazing Chinese Cuisine (Changning),PHONE HELD BACK,MICHELIN +86 21 6262 5677: MICHELIN only; not found on official site -- held back
+rest_2662,Bao Li Xuan,PHONE HELD BACK,MICHELIN +86 21 3606 7788: MICHELIN only; official site unreachable -- held back
+rest_2663,BingSheng Mansion (Xiancun Road),PHONE HELD BACK,"MICHELIN +86 20 3803 5000: official site prints +86 20 3803 5888, MICHELIN +86 20 3803 5000 -- held back for a decision"
+rest_2666,Cai Yi Xuan,PHONE HELD BACK,MICHELIN +86 10 5695 8520: MICHELIN only; official site unreachable -- held back
+rest_2666,Cai Yi Xuan,property_name,"Four Seasons Hotel (MICHELIN address: 2F, Four Seasons Hotel, 48 Liangmaqiao Road, Chaoyang, Beijing)"
+rest_2667,Canton 8 (Huangpu),PHONE HELD BACK,MICHELIN +86 21 6733 7123: MICHELIN only; MICHELIN links no official site -- held back
+rest_2669,Carved Dragons (Jiaojiang),PHONE HELD BACK,MICHELIN +86 576 8888 0111: MICHELIN only; MICHELIN links no official site -- held back
+rest_2670,Chaimen Hui,PHONE HELD BACK,MICHELIN +86 28 8080 3377: MICHELIN only; MICHELIN links no official site -- held back
+rest_2671,Chao Shang Chao (Chaoyang),PHONE HELD BACK,MICHELIN +86 10 8596 2666: MICHELIN only; MICHELIN links no official site -- held back
+rest_2672,Chao Shang Chao,PHONE HELD BACK,MICHELIN +86 136 3344 5527: MICHELIN only; MICHELIN links no official site -- held back
+rest_2673,Chao Shang Chao (Xicheng),PHONE HELD BACK,MICHELIN +86 10 6609 1266: MICHELIN only; MICHELIN links no official site -- held back
+rest_2675,Cheng Long Hang (Huangpu),PHONE HELD BACK,MICHELIN +86 21 6321 2010: MICHELIN only; MICHELIN links no official site -- held back
+rest_2676,Cheng Yuan,PHONE HELD BACK,MICHELIN +86 180 5259 5088: MICHELIN only; MICHELIN links no official site -- held back
+rest_2677,China Banquet,PHONE HELD BACK,MICHELIN +86 22 2530 3999: MICHELIN only; MICHELIN links no official site -- held back
+rest_2678,Chōwa,PHONE HELD BACK,MICHELIN +86 199 2841 9546: MICHELIN only; not found on official site -- held back
+rest_2679,Co-,PHONE HELD BACK,MICHELIN +86 191 0287 9730: MICHELIN only; MICHELIN links no official site -- held back
+rest_2680,Da Dong (Xuhui),PHONE HELD BACK,MICHELIN +86 21 5466 5758: MICHELIN only; official site unreachable -- held back
+rest_2682,Dai Yuet Heen,property_name,"The Ritz-Carlton (MICHELIN address: 39F, The Ritz-Carlton, 18 Zhongshan Road, Xuanwu, Nanjing 210018)"
+rest_2683,Dingshan · Jiangyan,PHONE HELD BACK,MICHELIN +86 512 6563 0333: MICHELIN only; MICHELIN links no official site -- held back
+rest_2684,Ensue,property_name,"Futian Shangri-La Hotel (MICHELIN address: 40F, Futian Shangri-La Hotel, 4088 Yitian Road, Futian, Shenzhen)"
+rest_2685,Fabula,PHONE HELD BACK,MICHELIN +86 131 8434 3001: MICHELIN only; not found on official site -- held back
+rest_2686,Fang Xiang Jing,PHONE HELD BACK,MICHELIN +86 28 6460 1181: MICHELIN only; MICHELIN links no official site -- held back
+rest_2687,Fleurs Et Festin,PHONE HELD BACK,MICHELIN +86 592 608 0068: MICHELIN only; MICHELIN links no official site -- held back
+rest_2688,Focus by Bill Yue,PHONE HELD BACK,MICHELIN +86 151 7917 8573: MICHELIN only; MICHELIN links no official site -- held back
+rest_2689,Fu 1015,PHONE HELD BACK,MICHELIN +86 21 5237 9778: MICHELIN only; MICHELIN links no official site -- held back
+rest_2690,Fu 1039,PHONE HELD BACK,MICHELIN +86 21 5237 1878: MICHELIN only; MICHELIN links no official site -- held back
+rest_2691,Fu 1088,PHONE HELD BACK,MICHELIN +86 21 5239 7878: MICHELIN only; MICHELIN links no official site -- held back
+rest_2693,Fu Rong Huang,PHONE HELD BACK,MICHELIN +86 28 8734 6868: MICHELIN only; MICHELIN links no official site -- held back
+rest_2694,Fumée,PHONE HELD BACK,MICHELIN +86 191 2931 7184: MICHELIN only; MICHELIN links no official site -- held back
+rest_2695,Furong,PHONE HELD BACK,MICHELIN +86 10 6600 7175: MICHELIN only; not found on official site -- held back
+rest_2696,Gastro Esthetics at DaDong,PHONE HELD BACK,MICHELIN +86 21 3253 2299: MICHELIN only; official site unreachable -- held back
+rest_2697,Gastro Esthetics DaDong,PHONE HELD BACK,MICHELIN +86 51690328: MICHELIN only; official site unreachable -- held back
+rest_2698,Giada Garden,PHONE HELD BACK,MICHELIN +86 10 6505 7671: MICHELIN only; not found on official site -- held back
+rest_2698,Giada Garden,property_name,"China World Hotel (MICHELIN address: 3F, China World Hotel, 1 Jianguomenwai Street, Chaoyang, Beijing)"
+rest_2699,Guiyu (Xihu),PHONE HELD BACK,MICHELIN +86 571 8797 7677: MICHELIN only; MICHELIN links no official site -- held back
+rest_2700,Hangzhou House,PHONE HELD BACK,MICHELIN +86 571 8797 3776: MICHELIN only; MICHELIN links no official site -- held back
+rest_2700,Hangzhou House,property_name,"Amanfayun (MICHELIN address: Building EX4, Amandayun, 22 Fayun Lane, Xihu Street, Xihu, Hangzhou)"
+rest_2701,Hatter,PHONE HELD BACK,MICHELIN +86 178 5088 4813: MICHELIN only; MICHELIN links no official site -- held back
+rest_2702,Hokkien Cuisine,PHONE HELD BACK,MICHELIN +86 28 6011 6969: MICHELIN only; MICHELIN links no official site -- held back
+rest_2703,Hokklo,PHONE HELD BACK,MICHELIN +86 592 537 3333: MICHELIN only; official site unreachable -- held back
+rest_2703,Hokklo,property_name,"Waldorf Astoria Hotel (MICHELIN address: 6F, Waldorf Astoria Hotel, 1 Lianhua North Road, Siming, Xiamen)"
+rest_2704,Hongtu Hall,PHONE HELD BACK,"MICHELIN +86 20 8188 6968: MICHELIN number on official site, but the White Swan Hotel switchboard (restaurant extension 30865) -- held back"
+rest_2704,Hongtu Hall,property_name,"White Swan Hotel (MICHELIN address: 2F, White Swan Hotel, 1 Shamian South Street, Liwan, Guangzhou)"
+rest_2705,Huaiyang Delights (Jingan),PHONE HELD BACK,MICHELIN +86 21 5230 0312: MICHELIN only; MICHELIN links no official site -- held back
+rest_2706,Il Ristorante - Niko Romito,PHONE HELD BACK,MICHELIN +86 10 8555 8585: MICHELIN only; official site unreachable -- held back
+rest_2707,Il Ristorante - Niko Romito,PHONE HELD BACK,MICHELIN +86 21 3606 7788: MICHELIN only; official site unreachable -- held back
+rest_2711,Jade River,PHONE HELD BACK,"MICHELIN +86 20 8188 6968: MICHELIN number on official site, but the White Swan Hotel switchboard (restaurant extension 30880) -- held back"
+rest_2711,Jade River,property_name,"White Swan Hotel (MICHELIN address: 3F, White Swan Hotel, 1 Shamian South Street, Liwan, Guangzhou)"
+rest_2712,Ji Pin Court,PHONE HELD BACK,MICHELIN +86 21 6469 9969: MICHELIN only; MICHELIN links no official site -- held back
+rest_2713,Jiang by Chef Fei,property_name,"Mandarin Oriental Hotel (MICHELIN address: 3F, Mandarin Oriental Hotel, 389 Tianhe Road, Tianhe, Guangzhou)"
+rest_2714,Jiangnan Wok ‧ Rong,PHONE HELD BACK,MICHELIN +86 591 8798 8888: MICHELIN only; not found on official site -- held back
+rest_2714,Jiangnan Wok ‧ Rong,property_name,"Shangri-La Hotel (MICHELIN address: 2F, Shangri-La Hotel, 9 Xinquan South Road, Gulou, Fuzhou)"
+rest_2715,Jiangnan Wok · Yun,PHONE HELD BACK,MICHELIN +86 177 5100 1196: MICHELIN only; not found on official site -- held back
+rest_2715,Jiangnan Wok · Yun,property_name,"Shangri-La (MICHELIN address: 42F, Shangri-La, 329 Zhongyang Road, Gulou, Nanjing)"
+rest_2717,Jin Sha,PHONE HELD BACK,MICHELIN +86 571 8113 5188: MICHELIN only; official site unreachable -- held back
+rest_2718,Jin Xuan,property_name,"The Ritz-Carlton Pudong (MICHELIN address: 53F, The Ritz-Carlton Pudong, 8 Century Avenue, Pudong, Shanghai)"
+rest_2719,Jingji,PHONE HELD BACK,MICHELIN +86 10 5969 5698: MICHELIN only; MICHELIN links no official site -- held back
+rest_2719,Jingji,property_name,"The Ritz-Carlton Hotel (MICHELIN address: 2F, The Ritz-Carlton Hotel, 83A Jianguo Road, Chaoyang, Beijing)"
+rest_2720,Lai Heen,property_name,"The Ritz-Carlton Hotel (MICHELIN address: 3F, The Ritz-Carlton Hotel, 3 Xing An Road, Zhujiang New Town, Tianhe, Guangzhou)"
+rest_2721,Lamdre,PHONE HELD BACK,MICHELIN +86 10 8597 8888: MICHELIN only; MICHELIN links no official site -- held back
+rest_2722,Lao Bian Jiu Jia (Jindai Road),PHONE HELD BACK,MICHELIN +86 576 8422 2872: MICHELIN only; MICHELIN links no official site -- held back
+rest_2723,Lao Zheng Xing,PHONE HELD BACK,MICHELIN +86 21 6322 2624: MICHELIN only; MICHELIN links no official site -- held back
+rest_2724,le Comptoir de Pierre Gagnaire,PHONE HELD BACK,MICHELIN +86 21 5466 9928: MICHELIN only; official site unreachable -- held back
+rest_2725,L'éclat 19,PHONE HELD BACK,MICHELIN +86 571 8676 7979: MICHELIN only; MICHELIN links no official site -- held back
+rest_2725,L'éclat 19,property_name,"Vallie Hotel (MICHELIN address: Inside Vallie Hotel, 85-3 Zhijiang Road, Xihu, Hangzhou)"
+rest_2730,Ling Long,PHONE HELD BACK,MICHELIN +86 21 2329 0313: MICHELIN only; not found on official site -- held back
+rest_2732,Longjing Manor,PHONE HELD BACK,MICHELIN +86 571 8788 8777: MICHELIN only; MICHELIN links no official site -- held back
+rest_2733,Lu Shang Lu,PHONE HELD BACK,MICHELIN +86 10 8718 5556: MICHELIN only; MICHELIN links no official site -- held back
+rest_2734,Lu Style (Anding Road),PHONE HELD BACK,MICHELIN +86 10 6441 3777: MICHELIN only; MICHELIN links no official site -- held back
+rest_2735,Lu Style (Huangpu),PHONE HELD BACK,MICHELIN +86 21 5309 9977: MICHELIN only; MICHELIN links no official site -- held back
+rest_2737,Mansion Cuisine by Jingyan,PHONE HELD BACK,MICHELIN +86 10 8663 2999: MICHELIN only; MICHELIN links no official site -- held back
+rest_2738,Ma's Kitchen (Jinjiang),PHONE HELD BACK,MICHELIN +86 28 6423 1923: MICHELIN only; MICHELIN links no official site -- held back
+rest_2739,Meet the Bund (Zhongshan Dong Er Road),PHONE HELD BACK,MICHELIN +86 21 6377 7668: MICHELIN only; MICHELIN links no official site -- held back
+rest_2740,Meng Du Hui,PHONE HELD BACK,MICHELIN +86 25 8669 0777: MICHELIN only; MICHELIN links no official site -- held back
+rest_2742,Ming Court (Minhang),property_name,"Cordis Hotel (MICHELIN address: B1 Level, Cordis Hotel, 333 Shenhong Road, Minhang, Shanghai)"
+rest_2743,MO Jasmine,PHONE HELD BACK,MICHELIN +86 10 8582 1919: MICHELIN only; MICHELIN links no official site -- held back
+rest_2744,Moose (Changning),PHONE HELD BACK,MICHELIN +86 21 6205 5058: MICHELIN only; MICHELIN links no official site -- held back
+rest_2745,Moose (Pudong),PHONE HELD BACK,MICHELIN +86 21 5877 5707: MICHELIN only; MICHELIN links no official site -- held back
+rest_2747,Obscura,PHONE HELD BACK,MICHELIN +86 191 2147 1147: MICHELIN only; official site unreachable -- held back
+rest_2750,Oriental Sense & Palate,PHONE HELD BACK,MICHELIN +86 21 5464 1319: MICHELIN only; MICHELIN links no official site -- held back
+rest_2751,Pin Ning Fu,property_name,"The Ritz-Carlton (MICHELIN address: 39F, The Ritz-Carlton, 18 Zhongshan Road, Xuanwu, Nanjing)"
+rest_2752,Pingjiangsong,PHONE HELD BACK,MICHELIN +86 512 6610 9077: MICHELIN only; MICHELIN links no official site -- held back
+rest_2753,Poetry‧Wine (Dongsanhuan Middle Road),PHONE HELD BACK,MICHELIN +86 10 8777 4188: MICHELIN only; MICHELIN links no official site -- held back
+rest_2754,Qing You Yu,PHONE HELD BACK,MICHELIN +86 595 2276 6798: MICHELIN only; MICHELIN links no official site -- held back
+rest_2755,Ren He Guan (Xuhui),PHONE HELD BACK,MICHELIN +86 21 6403 0731: MICHELIN only; MICHELIN links no official site -- held back
+rest_2756,Rong Pao,PHONE HELD BACK,MICHELIN +86 10 6616 6636: MICHELIN only; MICHELIN links no official site -- held back
+rest_2756,Rong Pao,property_name,"The Ritz-Carlton Hotel (MICHELIN address: 2F, The Ritz-Carlton Hotel, 83A Jianguo Road, Chaoyang, Beijing)"
+rest_2757,Ru Yuan,PHONE HELD BACK,MICHELIN +86 571 8707 9088: MICHELIN only; MICHELIN links no official site -- held back
+rest_2758,Sense,PHONE HELD BACK,MICHELIN +86 175 5729 2077: MICHELIN only; MICHELIN links no official site -- held back
+rest_2759,Seventh Son,PHONE HELD BACK,MICHELIN +86 10 8571 6888: MICHELIN only; not found on official site -- held back
+rest_2760,Seventh Son,PHONE HELD BACK,MICHELIN +86 21 6266 3969: MICHELIN only; not found on official site -- held back
+rest_2761,Shang Palace,PHONE HELD BACK,MICHELIN +86 514 8512 8888: MICHELIN only; not found on official site -- held back
+rest_2761,Shang Palace,property_name,"Shangri La Hotel (MICHELIN address: 1F, Shangri La Hotel, 472 Wenchang West Road, Hanjiang, Yangzhou 225009)"
+rest_2762,Shanghai Cuisine,PHONE HELD BACK,MICHELIN +86 10 6539 8660: MICHELIN only; MICHELIN links no official site -- held back
+rest_2763,Sheng Yong Xing (Chaoyang),PHONE HELD BACK,MICHELIN +86 10 6464 0968: MICHELIN only; MICHELIN links no official site -- held back
+rest_2764,Sheng Yong Xing (Huangpu),PHONE HELD BACK,MICHELIN +86 21 6330 2885: MICHELIN only; MICHELIN links no official site -- held back
+rest_2765,Silver Pot,PHONE HELD BACK,MICHELIN +86 28 6577 7598: MICHELIN only; MICHELIN links no official site -- held back
+rest_2766,Sole,PHONE HELD BACK,MICHELIN +86 21 6268 2888: MICHELIN only; MICHELIN links no official site -- held back
+rest_2767,Song,PHONE HELD BACK,MICHELIN +86 20 8741 2345: MICHELIN only; MICHELIN links no official site -- held back
+rest_2768,Song,PHONE HELD BACK,MICHELIN +86 571 6095 2959: MICHELIN only; official site unreachable -- held back
+rest_2768,Song,property_name,"Four Seasons Hotel at Hangzhou Center (MICHELIN address: 8F, Four Seasons Hotel at Hangzhou Center, 493 Zhongshan North Road, Gongshu, Hangzhou)"
+rest_2769,Stiller,property_name,"LN Garden Hotel (MICHELIN address: 2F, LN Garden Hotel, 368 Huanshi East Road, Yuexiu, Guangzhou)"
+rest_2770,Suyab Courtyard・Pickmoon Gourmet,PHONE HELD BACK,MICHELIN +86 138 0294 5901: MICHELIN only; MICHELIN links no official site -- held back
+rest_2771,Taian Table,property_name,"LN Garden Hotel (MICHELIN address: 2F, LN Garden Hotel, 368 Huanshi East Road, Yuexiu, Guangzhou)"
+rest_2773,T'ang Court,property_name,"The Langham Xintiandi (MICHELIN address: 5F, The Langham Xintiandi, 99 Madang Road, Huangpu, Shanghai)"
+rest_2775,The Beijing Kitchen (Jianguo Road),PHONE HELD BACK,MICHELIN +86 10 6530 7905: MICHELIN only; MICHELIN links no official site -- held back
+rest_2776,The Georg,PHONE HELD BACK,MICHELIN +86 186 1833 7710: MICHELIN only; MICHELIN links no official site -- held back
+rest_2777,The Hall,PHONE HELD BACK,"MICHELIN +86 28 8611 6567: official site prints +86 173 8185 4709, MICHELIN +86 28 8611 6567 -- held back for a decision"
+rest_2779,The House of Rong,PHONE HELD BACK,MICHELIN +86 21 6289 1717: MICHELIN only; not found on official site -- held back
+rest_2780,Tou Zao,PHONE HELD BACK,MICHELIN +86 191 2133 7327: MICHELIN only; MICHELIN links no official site -- held back
+rest_2782,Vivant by Johnny Pham,PHONE HELD BACK,"MICHELIN +86 189 3092 2673: official site prints +86 153 1796 9030, MICHELIN +86 189 3092 2673 -- held back for a decision"
+rest_2783,Wenru No.9,PHONE HELD BACK,MICHELIN +86 591 8856 7888: MICHELIN only; MICHELIN links no official site -- held back
+rest_2784,Wild Yeast,PHONE HELD BACK,MICHELIN +86 177 9983 6669: MICHELIN only; MICHELIN links no official site -- held back
+rest_2785,Wisca (Haizhu),PHONE HELD BACK,MICHELIN +86 20 3438 1188: MICHELIN only; official site unreachable -- held back
+rest_2786,Wu You Xian,PHONE HELD BACK,MICHELIN +86 158 0072 2498: MICHELIN only; MICHELIN links no official site -- held back
+rest_2787,Xi Ding Jia Yan,PHONE HELD BACK,MICHELIN +86 512 8717 1888: MICHELIN only; MICHELIN links no official site -- held back
+rest_2788,Xin Ji,PHONE HELD BACK,MICHELIN +86 20 8332 0833: MICHELIN only; MICHELIN links no official site -- held back
+rest_2789,Xin Rong Ji,PHONE HELD BACK,MICHELIN +86 28 6810 2828: MICHELIN only; not found on official site -- held back
+rest_2790,Xin Rong Ji,PHONE HELD BACK,MICHELIN +86 755 2868 1277: MICHELIN only; MICHELIN links no official site -- held back
+rest_2791,Xin Rong Ji,PHONE HELD BACK,MICHELIN +86 571 8886 3777: MICHELIN only; not found on official site -- held back
+rest_2792,Xin Rong Ji (Jianguomenwai Street),PHONE HELD BACK,MICHELIN +86 10 8517 1789: MICHELIN only; MICHELIN links no official site -- held back
+rest_2793,Xin Rong Ji (Jiaojiang),PHONE HELD BACK,MICHELIN +86 576 8831 3777: MICHELIN only; not found on official site -- held back
+rest_2794,Xin Rong Ji (Jinrong Street),PHONE HELD BACK,MICHELIN +86 10 6618 0567: MICHELIN only; MICHELIN links no official site -- held back
+rest_2795,Xin Rong Ji (Linhai),PHONE HELD BACK,MICHELIN +86 576 8511 6777: MICHELIN only; not found on official site -- held back
+rest_2796,Xin Rong Ji (West Nanjing Road),PHONE HELD BACK,MICHELIN +86 21 5386 1717: MICHELIN only; not found on official site -- held back
+rest_2797,Xu's Cuisine,PHONE HELD BACK,MICHELIN +86 28 8529 1388: MICHELIN only; MICHELIN links no official site -- held back
+rest_2798,Yanyu (Jiahe Road),PHONE HELD BACK,MICHELIN +86 592 806 6917: MICHELIN only; MICHELIN links no official site -- held back
+rest_2799,Yi Long Court,PHONE HELD BACK,MICHELIN +86 21 2327 6742: MICHELIN only; official site unreachable -- held back
+rest_2801,Yong Fu (Huangpu),property_name,"Jin Jiang Hotel (MICHELIN address: 11-12F, Cathay Building, Jin Jiang Hotel, 59 South Maoming Road, Huangpu, Shanghai)"
+rest_2802,Yong,PHONE HELD BACK,MICHELIN +86 181 2798 9805: MICHELIN only; MICHELIN links no official site -- held back
+rest_2804,Young Art · Yong Ya He Xian (Tongzilin East Road),PHONE HELD BACK,MICHELIN +86 28 8519 9019: MICHELIN only; MICHELIN links no official site -- held back
+rest_2805,Yu Garden,PHONE HELD BACK,MICHELIN +86 136 1003 6888: MICHELIN only; MICHELIN links no official site -- held back
+rest_2806,Yu Yue Heen,PHONE HELD BACK,MICHELIN +86 20 8883 3371: MICHELIN only; official site unreachable -- held back
+rest_2807,Yu Zhi Lan,PHONE HELD BACK,MICHELIN +86 189 8084 1966: MICHELIN only; MICHELIN links no official site -- held back
+rest_2808,Yu Zhi Lan,PHONE HELD BACK,MICHELIN +86 180 5716 2771: MICHELIN only; MICHELIN links no official site -- held back
+rest_2809,Yue Hai Tang,PHONE HELD BACK,MICHELIN +86 21 5858 7977: MICHELIN only; MICHELIN links no official site -- held back
+rest_2811,Zhiguan Courtyard,PHONE HELD BACK,MICHELIN +86 10 6559 9899: MICHELIN only; MICHELIN links no official site -- held back
+rest_2812,Zhou She (Minhang),PHONE HELD BACK,MICHELIN +86 21 3463 6976: MICHELIN only; MICHELIN links no official site -- held back
+rest_2813,Zijin Mansion,PHONE HELD BACK,MICHELIN +86 10 8520 8989: MICHELIN only; official site unreachable -- held back
+rest_2814,Zinan,PHONE HELD BACK,MICHELIN +86 28 6906 9999: MICHELIN only; MICHELIN links no official site -- held back
+rest_2706,Il Ristorante - Niko Romito,HOTEL LINK (exact),"hotel_959: MICHELIN restaurant page address '1F, Bvlgari Hotel, Building 2, Courtyard 8, Xinyuan South Road, Chaoyang, Beijing' places it in Bvlgari Hotel Beijing; MICHELIN's Key hotel page (2 Key(s)) gives 'Building 2, Courtyard No 8, Xinyuan South Road, Beijing 100027' (same street number); points 84 m apart. 2026-10-29."
+rest_2707,Il Ristorante - Niko Romito,HOTEL LINK (exact),"hotel_960: MICHELIN restaurant page address '47F, Bvlgari Hotel, Lane 108, North Shanxi Road, Jingan, Shanghai' places it in Bvlgari Hotel Shanghai; MICHELIN's Key hotel page (2 Key(s)) gives 'Lane 108 North Shanxi Road, Shanghai 200085' (same street number); points 103 m apart. 2026-10-29."
+rest_2717,Jin Sha,HOTEL LINK (exact),"hotel_962: MICHELIN restaurant page address '1F, Four Seasons Hotel at West Lake, 5 Lingyin Road, Xihu, Hangzhou 310013' places it in Four Seasons Hotel Hangzhou at West Lake; MICHELIN's Key hotel page (2 Key(s)) gives '5 Lingyin Road, Hangzhou 310013' (same street number); points 202 m apart. 2026-10-29."
+rest_2724,le Comptoir de Pierre Gagnaire,HOTEL LINK (exact),"hotel_961: MICHELIN restaurant page address 'Capella, Jian Ye Li, 480 West Jianguo Road, Xuhui, Shanghai 200031' places it in Capella Shanghai, Jian Ye Li; MICHELIN's Key hotel page (2 Key(s)) gives '480 West Jianguo Road, Shanghai 200031' (same street number); points 0 m apart (restaurant takes the hotel point, MICHELIN restaurant pin wrong: see coord_note). 2026-10-29."
+rest_2730,Ling Long,HOTEL LINK (exact),"hotel_1004: MICHELIN restaurant page address '105, 1F, Waldorf Astoria Hotel, 2 Zhongshan Dong Yi Road, Huangpu, Shanghai' places it in Waldorf Astoria Shanghai on the Bund; MICHELIN's Key hotel page (1 Key(s)) gives 'No.2 Zhongshan Dong Yi Road, Huang Pu District, Shanghai 200002' (same street number); points 145 m apart. 2026-10-29."
+rest_2731,Lingnan House,HOTEL LINK (exact),"hotel_965: MICHELIN restaurant page address '5F, Rosewood Hotel, 6 Zhujiang East Road, Tianhe, Guangzhou' places it in Rosewood Guangzhou; MICHELIN's Key hotel page (2 Key(s)) gives 'No. 6 Zhujiang Road East, Tianhe District, Guangzhou 510623' (same street number); points 156 m apart. 2026-10-29."
+rest_2741,Mi Xun Teahouse,HOTEL LINK (exact),"hotel_1001: MICHELIN restaurant page address 'Upper House, 81 Bitieshi Street, Jinjiang, Chengdu 610021' places it in Upper House Chengdu; MICHELIN's Key hotel page (1 Key(s)) gives 'No.81 Bitieshi Street, Jinjiang District, Chengdu 610021' (same street number); points 70 m apart. 2026-10-29."
+rest_2749,Opus 388,HOTEL LINK (exact),"hotel_796: MICHELIN restaurant page address '77F, Mandarin Oriental, Block A, UpperHills, 5001 Huanggang Road, Futian, Shenzhen' places it in Mandarin Oriental Shenzhen; MICHELIN's Key hotel page (2 Key(s)) gives 'UpperHills Block A, No. 5001 Huanggang Road, Futian District, Guangdong, Shenzhen 518038' (same street number); points 212 m apart. 2026-10-29."
+rest_2774,The Bay by Chef Fei,HOTEL LINK (exact),"hotel_796: MICHELIN restaurant page address '1F, Mandarin Oriental, 5001 Huanggang Road, Futian, Shenzhen' places it in Mandarin Oriental Shenzhen; MICHELIN's Key hotel page (2 Key(s)) gives 'UpperHills Block A, No. 5001 Huanggang Road, Futian District, Guangdong, Shenzhen 518038' (same street number); points 213 m apart. 2026-10-29."
+rest_2778,The House of Dynasties,HOTEL LINK (exact),"hotel_964: MICHELIN restaurant page address '4F, Rosewood Hotel, Jing Guang Centre, Hujialou, 1 Chaoyangmenwai Street, Chaoyang, Beijing' places it in Rosewood Beijing; MICHELIN's Key hotel page (2 Key(s)) gives 'Jing Guang Centre, Hujialou, Beijing 100020' (the same street address); points 33 m apart. 2026-10-29."
+rest_2799,Yi Long Court,HOTEL LINK (exact),"hotel_800: MICHELIN restaurant page address '2F, The Peninsula Hotel, Bund 32, 32 Zhongshan Dong Yi Road, Huangpu, Shanghai' places it in The Peninsula Shanghai; MICHELIN's Key hotel page (2 Key(s)) gives 'No. 32 The Bund, 32 Zhongshan, Dong Yi Road, Shanghai 200002' (same street number); points 0 m apart (restaurant takes the hotel point, MICHELIN restaurant pin wrong: see coord_note). 2026-10-29."
+rest_2803,Yong Yi Ting,HOTEL LINK (exact),"hotel_981: MICHELIN restaurant page address 'LG Level, Mandarin Oriental Pudong, 111 South Pudong Road, Pudong, Shanghai' places it in Mandarin Oriental Shanghai; MICHELIN's Key hotel page (1 Key(s)) gives '111 Pudong Road (S), Pudong District, Shanghai 200120' (same street number); points 111 m apart. 2026-10-29."
+rest_2806,Yu Yue Heen,HOTEL LINK (exact),"hotel_974: MICHELIN restaurant page address '71F, Four Seasons Hotel, 5 Zhujiang West Road, Zhujiang New Town, Tianhe, Guangzhou' places it in Four Seasons Hotel Guangzhou; MICHELIN's Key hotel page (1 Key(s)) gives '5 Zhujiang West Road, Zhujiang New Town, Guangzhou 510623' (same street number); points 56 m apart. 2026-10-29."
+rest_2810,Yun Jing,HOTEL LINK (exact),"hotel_986: MICHELIN restaurant page address '70F, Raffles Shenzhen, T7, One Shenzhen Bay, 3008 Zhongxin Road, Nanshan, Shenzhen' places it in Raffles Shenzhen; MICHELIN's Key hotel page (1 Key(s)) gives 'T7, No.1 Shenzhen Bay, No. 3008, Zhongxin Road, Nanshan District, Shenzhen 518054' (same street number); points 31 m apart. 2026-10-29."
+rest_2813,Zijin Mansion,HOTEL LINK (exact),"hotel_1003: MICHELIN restaurant page address '3F, Waldorf Astoria Hotel, 5-15 Jinyu Hutong, Dongcheng, Beijing' places it in Waldorf Astoria Beijing; MICHELIN's Key hotel page (1 Key(s)) gives '5-15 Jinyu Hutong, Dongcheng, Beijing 100006' (same street number); points 0 m apart (restaurant takes the hotel point, MICHELIN restaurant pin wrong: see coord_note). 2026-10-29."
+hotel_959,Bvlgari Hotel Beijing,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_960,Bvlgari Hotel Shanghai,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_961,"Capella Shanghai, Jian Ye Li",HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_962,Four Seasons Hotel Hangzhou at West Lake,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_967,1 Hotel Haitang Bay,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_969,Andaz Shenzhen Bay,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_970,Banyan Tree Chongqing Beibei,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_971,Banyan Tree Ringha,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_972,Capella Tufu Bay,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_973,Deqin Meri Poodom,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_974,Four Seasons Hotel Guangzhou,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_983,Park Hyatt Changsha,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_984,Park Hyatt Sanya Sunny Bay Resort,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_985,Park Hyatt Shenzhen,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_988,"Shangri-La Shougang Park, Beijing",HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_989,Six Senses Qing Cheng Mountain,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_991,The Peninsula Beijing,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_1000,The Yihe Mansions,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_1003,Waldorf Astoria Beijing,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_1004,Waldorf Astoria Shanghai on the Bund,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_1005,Waldorf Astoria Shanghai Qiantan,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_1006,"Yanbai Villa, Beijing",HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
+hotel_1007,Yangshuo Sugar House,HOTEL CONTACT MISSING,no website; no phone -- see cn_key_hotels_2026.csv
