@@ -1,0 +1,139 @@
+# MICHELIN match for the 138 AT/CH/BE/HU/PL/HR Key hotels, 2026-10-29 (9 already had michelin_url and are not changed; each stored URL has the same MICHELIN page id as the match). Columns: hotel_code number | path under https://guide.michelin.com/en/hotels-stays/ | metres from stored location to MICHELIN's JSON-LD geo | metres to the next-nearest MICHELIN hotel in these six listings, or h/<id> when read through MICHELIN's /h/<id> short link | MICHELIN postcode | Keys on the page | telephone as MICHELIN prints it | country.
+119|Achenkirch/das-kronthaler-7903|4|2104|6215|1|+43 (0) 5246 6389|AT
+120|Andau/scheiblhofer-the-resort-14172|801|11554|7163|1|+43 2176 2610800|AT
+121|bad-gastein/the-comodo-bad-gastein-13137|61|1060|5640|1|+43 6434 30432|AT
+122|Ehrwald/eriro-15205|0|6598|6632|1|+43 5673 40506|AT
+123|fiss/schlosshotel-fiss-13950|24|1043|6533|2|+4354766397|AT
+124|Freistadt/hotel-freigold-14167|50|25849|4240|1|+43 7942 22334|AT
+125|gran/bergblick-13951|25|18461|6673|1|0043567563960|AT
+126|vorarlberg/genieer-romantikhotel-das-schiff-13771|0|9501|6952|1|+43 5513 6220-0|AT
+127|innsbruck/boutiquehotel-weisses-rossl-13775|12|95|6020|1|+435125830570|AT
+128|ischgl/elizabeth-arthotel-14514|13|477|6561|1|+43 5444 5411|AT
+129|Ischgl-2/hotel-trofana-royal-resort-13883|18|73|6561|1|+435444600|AT
+130|Ischgl-2/schlosshotel-ischgl-13941|27|111|6561|1||AT
+131|kitzbuhel/hotel-kitzhof-mountain-design-resort-6642|19|617|6370|1|+435356632110|AT
+132|kitzbuhel/hotel-weisses-roessl-14225|22|160|6370|1|+43 6138 2306|AT
+133|kitzbuhel/schwarzer-adler-kitzbuhel-13942|29|41|6370|1||AT
+134|lech-am-arlberg/post-lech-arlberg-8984|16|282|6764|1|+43 5583 22060|AT
+135|lech-am-arlberg/burg-vital-resort-13884|7|223|6764|1|+4355833140|AT
+136|lech-am-arlberg/rote-wand-gourmet-hotel-453|23|2447|6764|1|+43 5583 34350|AT
+137|leogang/hotel-krallerhof-13891|13|537|5771|1|004365838246|AT
+138|leogang/mama-thresl-7906|1|157|5771|1|+43 6583 20800|AT
+139|leogang/naturehotel-forsthofgut-13780|76|229|5771|1|+43 6583 8561|AT
+140|maria-alm/die-hochkonigin-mountain-resort-14169|15|4475|5761|1|+43 6584 7447|AT
+141|styria/hideaway-hotel-montestyria-chalets-suiten-13556|0|23947|8630|1|0043388293080|AT
+142|Mayrhofen/zillergrundrock-luxury-mountain-resort-14171|47|1485|6290|1|+43 5285 62377|AT
+143|Neustift-im-Stubaital-2/relais-chateaux-spa-hotel-jagdhof-13892|25|3770|6167|1|+43 5226 2666-0|AT
+144|Obermieming/alpenresort-schwarz-14562|17|7611|6414|1|+43 5264 52120|AT
+145|Obsteig/holzleiten-bio-wellness-hotel-14168|34|7630|6416|1|+43 5264 8244|AT
+146|furth-bei-gottweig/malat-weingut-und-hotel-10767|15|11448|3511|1|+43 2732 82934|AT
+29|hof-bei-salzburg/rosewood-schloss-fuschl-13887|140|3433|5322|3|+43622939980|AT
+30|vienna/hotel-sacher-wien-6301|34|135|1010|3|+43 1 51 45 60|AT
+31|grossarl/das-edelweiss-salzburg-mountain-resort-13576|91|291|5611|2|+43 6414 3000|AT
+32|grossarl/family-nature-resort-moar-gut-13886|75|3205|5611|2|+43 (0)6414/318|AT
+33|Hochgurgl/top-hotel-hochgurgl-13949|12|78|6456|2|+43 5256 6265|AT
+34|kitzbuhel/grand-tirolia-kitzbuhel-13885|33|2394|6370|2|+43 5356 6661 5|AT
+35|L%C3%A4ngenfeld/naturhotel-waldklause-14170|9|10657|6444|2|+43 5253 5455|AT
+36|lech-am-arlberg/hotel-almhof-schneider-13955|78|119|6764|2|+43 5583 3500-0|AT
+37|lech-am-arlberg/severins-the-alpine-retreat-13940|8|1445|6764|2|+435583339070|AT
+38|obergurgl/alpen-wellness-resort-hochfirst-13947|447|h/13947|6456|2|+43525663250|AT
+39|salzburg/schloss-monchstein-14144|14|563|5020|2|+43 662 8485550|AT
+40|St.-Anton-am-Arlberg/hotel-tannenhof-13560|21|h/13560|6580|2|+43 5446 30311|AT
+41|Techelsberg/hotel-schloss-seefels-13778|69|6369|9212|2|0043 4272 2377 901|AT
+42|Tux/aktiv-wellnesshotel-bergfried-14211|71|1790|6293|2|+43 5287 87239|AT
+43|velden-am-worthersee/schloss-velden-8806|14|6407|9220|2|+43 4274 52000-0|AT
+44|vienna/hotel-imperial-9475|30|156|1015|2|+43.1.501100|AT
+45|vienna/hotel-sans-souci-wien-6879|19|150|1070|2|+43-1-5222520|AT
+46|vienna/park-hyatt-vienna-7641|20|141|1010|2|+43 1 22740 1234|AT
+47|vienna/rosewood-vienna-12721|9|151|1010|2|43 1 7999888|AT
+48|vienna/the-amauris-vienna-123383-13550|15|162|1010|2|+4312212232|AT
+147|ghent/pillows-grand-boutique-hotel-reylof-ghent-8011|4|331|9000|1|+32092354070|BE
+148|Sint-Truiden/kasteel-van-ordingen-15346|178|7772|3800|1|+32 11 58 68 18|BE
+149|bruges/boutiquehotel-t-fraeyhuis-14721|6|233|8000|1|+32 50 96 03 01|BE
+150|bruges/dukes-palace-brugge-14722|9|121|8000|1|+32 50 44 78 88|BE
+151|lanaken/domaine-la-butte-aux-bois-9801|55|9746|3620|1|+32 89 73 97 70|BE
+152|rochefort/chateau-de-vignee-12584|307|17377|5580|1|+32 84 69 00 50|BE
+153|brussels/corinthia-grand-hotel-astoria-brussels-14567|16|523|1000|2|+32 2 593 10 00|BE
+154|ghent/1898-the-post-8744|22|341|9000|1|+32 9 391 53 79|BE
+155|antwerp/hotel-de-witte-lelie-6284|22|79|2000|1|+32/3.226.19.66|BE
+156|bruges/the-notary-13020|17|121|8000|1|+32 50 89 64 46|BE
+157|antwerp/flora-123463-13288|2|50|2000|1|0032472033066|BE
+18|antwerp/botanic-sanctuary-antwerp-12582|53|280|2000|2|+32 3 269 00 00|BE
+19|brussels/juliana-hotel-brussels-13998|1|236|1000|2|+3222140800|BE
+20|brussels/hotel-amigo-5901|30|289|1000|1|+32.2.547.4747|BE
+21|bruges/hotel-van-cleef-10436|13|133|8000|1|+32 50 34 64 14|BE
+49|Bad-Ragaz/grand-resort-bad-ragaz-12501|201|21754||3|+41 81 303 30 30|CH
+50|basel/hotel-les-trois-rois-6395|9|183|4001|3|+41612605050|CH
+51|burgenstock/burgenstock-9744|436|h/9744|6363|3|+41 41 612 60 00|CH
+52|geneva/beau-rivage-geneva-9048|4|99|1201|2|+41 22 716 66 66|CH
+53|geneva/the-woodward-auberge-collection-12243|10|303|1201|3|+41 22 901 37 00|CH
+54|gstaad/the-alpina-gstaad-7179|77|206|3870|3||CH
+55|st-moritz/badrutts-palace-hotel-7322|46|164|7500|3|+41.81.837.10.00|CH
+56|st-moritz/carlton-hotel-st-moritz-6969|4|128|7500|3|+41 (0)81 836 70 00|CH
+57|zurich/baur-au-lac-6394|33|244|8001|3|+41 (0)44 220 50 20|CH
+570|vaud/le-mirador-resort-spa-7787|39|3034|1801|1|+41 (0) 21 925 1111|CH
+571|lausanne/royal-savoy-hotel-spa-10483|8|464|1006|1|+41 21 614 88 88|CH
+572|Vevey-2/grand-hotel-du-lac-vevey-9205|18|297|1800|1|+41 21 925 06 06|CH
+58|andermatt/the-chedi-andermatt-7567|33|25185|6490|2|+41 41 888 7488|CH
+59|arosa/tschuggen-grand-hotel-6401|107|705|7050|2|+41 (0)81 378 9999|CH
+60|arosa/valsana-hotel-arosa-9152|21|611|7050|2|+41 81 378 63 63|CH
+61|ascona/castello-del-sole-beach-resort-spa-13889|54|265|6612|2|+41 91 791 02 02|CH
+62|ascona/hotel-eden-roc-10096|34|751|6612|2|+41 91 785 71 71|CH
+63|bern/hotel-bellevue-palace-bern-10697|13|502|3011|2|+41 31 320 45 45|CH
+64|crans-montana/guarda-golf-hotel-residences-6831|150|522|3963|2|+41 27 486 2000|CH
+65|crans-montana/hostellerie-du-pas-de-lours-10189|7|335|3963|2|+41 27 485 93 33|CH
+66|crans-montana/lecrans-hotel-spa-7890|13|687|3963|2|+41 (0)27 486 60 60|CH
+67|burgenstock/hotel-villa-honegg-6835|39|1393|6373|1|+ 41 41 618 32 00|CH
+68|geneva/four-seasons-hotel-des-bergues-geneva-11435|22|154|1201|2|41 412 290 87 400|CH
+69|geneva/hotel-de-la-paix-geneva-6263|20|162|1211|2|+41 (0) 22 909 6000|CH
+70|gstaad/gstaad-palace-7981|124|241|3780|2|+41 33 748 50 00|CH
+71|gstaad/le-grand-bellevue-8791|12|179|3780|2|+41337480000|CH
+72|interlaken/victoria-jungfrau-grand-hotel-spa-5984|19|2303|3800|2|+41 33 828 26 10 / +41 33 828 28 28|CH
+73|lausanne/beaurivage-palace-6965|152|253|1006|3|+41 21 613 3333|CH
+74|lausanne/lausanne-palace-and-spa-98|0|902|1003|2|+41 (0) 21 331 3131|CH
+75|lugano/villa-principe-leopoldo-7982|4|492|6900|2|0041 91 985 88 55|CH
+76|luzern/mandarin-oriental-palace-luzern-13203|1|143|6006|2|+41 41 588 20 88|CH
+77|montreux/fairmont-le-montreux-palace-13882|808|4699|CH-1820|2|+41.219621212|CH
+78|pontresina/grand-hotel-kronenhof-8906|2|235|7504|2|+41 81 830 30 30|CH
+79|Regensberg/boutique-hotel-restaurant-krone-regensberg-8082|29|11236|8158|2|+41 44 855 20 20|CH
+80|saas-fee/the-capra-8404|8|16680|3906|2|+41 27 958 13 58|CH
+81|st-moritz/kulm-hotel-st-moritz-7325|22|195|7500|3|+41818368000|CH
+82|st-moritz/suvretta-house-10858|41|1027|7500|2|41 81 836 36 36|CH
+83|vals/7132-hotel-8526|28|63|7132|2|+41 58 7132 000|CH
+84|vitznau/park-hotel-vitznau-11122|12|878|6354|2|41 41 399 6060|CH
+85|zermatt/cervo-mountain-boutique-resort-12506|72|185|3920|2|+41 27 968 12 12|CH
+86|zermatt/matterhorn-focus-10451|46|248|3920|2|+41 27 966 24 24|CH
+87|zurich/la-reserve-eden-au-lac-zurich-10745|17|78|8008|2|+41 44 266 25 25|CH
+258|Stari-Grad/maslina-resort-12293|0|10647|21460|1|+385 21 888 700|HR
+259|dugi-otok/villa-nai-33-12045|286|18966|23282|3|+385 91 3005625|HR
+260|dubrovnik/hotel-villa-dubrovnik-7107|107|741|20000|2|+385.20.422.933|HR
+261|cavtat/hotel-supetar-14324|18|9524|20210|1|+38520300305|HR
+262|Orebi%C4%87/villa-korta-katarina-winery-15415|23|2164|20250|1|+385 20 414 489|HR
+263|zagreb/esplanade-zagreb-hotel-6198|22|724|10000|1|+385-1-45 66 666|HR
+264|Buje/san-canzian-hotel-residences-12309|3|12548|52460|1|+385 52 853 897|HR
+265|Bale/meneghetti-wine-hotel-and-winery-12301|28|11076|52211|1|+385 52 528 800|HR
+266|rovinj/grand-park-hotel-rovinj-by-maistra-collection-13815|49|315|52210|1|+385 52 808 000|HR
+267|hvar/palace-elisabeth-hvar-hotel-15344|27|276|21450|1|+385 21 750 400|HR
+268|Tata/platan-manor-13561|23|35179|2890|1|+36304449055|HU
+269|budapest/hotel-clark-budapest-9054|27|600|1013|1|+36 1 610 4890|HU
+270|budapest/kozmo-hotel-suites-spa-12004|2|612|1082|1|+36 1 576 1098 /  +36 1 701 6300|HU
+271|budapest/kimpton-bem-budapest-14261|43|1060|1027|1|+36 1 883 9880|HU
+272|budapest/anantara-new-york-palace-budapest-7674|12|856|1073|1|+36 1 886 6111|HU
+273|budapest/verno-house-13047|0|325|1051|1|+36 1 886 1120|HU
+274|budapest/four-seasons-hotel-gresham-palace-budapest-6348|23|335|1051|2|36 (1) 268.6000|HU
+275|budapest/matild-palace-a-luxury-collection-hotel-12094|44|125|1056|2|+36 1 550 5000|HU
+276|budapest/dorothea-hotel-budapest-autograph-collection-13598|4|286|1051|1|+36 1-884-5100|HU
+277|budapest/parisi-udvar-hotel-budapest-120059-9359|24|172|1052|1|+36 1 576 1600|HU
+278|budapest/w-budapest-14320|14|205|1061|1|+36 1 253 3100|HU
+279|Balatonf%C3%BCred/hotel-petit-bois-15109|9|546|8230|1|+36 30 258 9371|HU
+306|szklarskapor%C4%99ba/jaskolka-dom-i-spa-14254|66|14399|58-580|2|+48537106055|PL
+307|leba/zamek-leba-14325|16|11301|84-360|1|+48 59 863 51 20|PL
+308|warsaw/raffles-europejski-warsaw-123592-13408|40|90|00-071|2|+48 22 255 95 00|PL
+309|krakow/hotel-copernicus-11432|6|75|31-002|2|(+48 12) 424 34 02|PL
+310|krakow/stardom-house-13818|11|251|31-058|1|+48 12 201 57 00|PL
+311|Wroc%C5%82aw/hotel-altus-palace-14783|0|409|50-005|1|+48 71 747 50 00|PL
+312|Ciekocinko/paac-ciekocinko-hotel-resort-wellness-14836|168|3959|84-210|1|+48 608 002 220|PL
+313|warsaw/hotel-bristol-a-luxury-collection-hotel-warsaw-6369|19|66|00-325|1|+48 22 551 1000|PL
+314|Zakopane/enhotel-13961|7|1983|34-500|2|+48 662 222 333|PL
+315|Gdynia/relais-chateaux-hotel-quadrille-adults-only-14010|20|4502|81-547|2|+48 583510300|PL
+316|krakow/h15-luxury-palace-14828|32|62|31-017|1|+48 12 371 15 15|PL
