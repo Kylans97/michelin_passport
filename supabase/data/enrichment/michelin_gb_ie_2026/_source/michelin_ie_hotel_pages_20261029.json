@@ -1,0 +1,2116 @@
+{
+"read": "2026-10-29",
+"listing": "https://guide.michelin.com/en/hotels-stays/ireland (2 pages, \"Ireland : 59 hotels\") plus the Irish Key hotels linked from the 2026 UK & Ireland Key article",
+"urls": [
+"/en/hotels-stays/dublin/the-westbury-hotel-5613",
+"/en/hotels-stays/kenmare/sheen-falls-lodge-7910",
+"/en/hotels-stays/killarney/the-victoria-9218",
+"/en/hotels-stays/cork/hayfield-manor-14551",
+"/en/hotels-stays/kenmare/park-hotel-kenmare-14370",
+"/en/hotels-stays/glaslough/castle-leslie-estate-15012",
+"/en/hotels-stays/kilmessan/the-station-house-hotel-16696",
+"/en/hotels-stays/ballyvaughan/gregans-castle-hotel-183",
+"/en/hotels-stays/ardmore/the-cliff-house-hotel-8099",
+"/en/hotels-stays/dublin/dylan-hotel-207",
+"/en/hotels-stays/Straffan-2/the-k-club-7197",
+"/en/hotels-stays/cashel/cashel-palace-13079",
+"/en/hotels-stays/limerick/no-1-pery-square-5477",
+"/en/hotels-stays/Ballyfin/ballyfin-demesne-13986",
+"/en/hotels-stays/cork/the-river-lee-hotel-5771",
+"/en/hotels-stays/celbridge/cliff-at-lyon-13647",
+"/en/hotels-stays/cork/the-montenotte-hotel-8713",
+"/en/hotels-stays/dublin/intercontinental-dublin-12860",
+"/en/hotels-stays/cong/ashford-castle-14742",
+"/en/hotels-stays/dublin/anantara-the-marker-dublin-hotel-14560",
+"/en/hotels-stays/Ballybunion/teach-de-broc-14029",
+"/en/hotels-stays/killarney/great-southern-killarney-16947",
+"/en/hotels-stays/killarney/the-europe-hotel-resort-128054-16850",
+"/en/hotels-stays/ballyfarnon/kilronan-castle-estate-and-spa-15309",
+"/en/hotels-stays/connemara/ballynahinch-castle-hotel-15157",
+"/en/hotels-stays/Gorey/marlfield-house-hotel-15149",
+"/en/hotels-stays/dublin/the-merrion-5739",
+"/en/hotels-stays/county-cork/castlemartyr-resort-11433",
+"/en/hotels-stays/thomastown/mount-juliet-hotel-8370",
+"/en/hotels-stays/newmarket-on-fergus/dromoland-castle-11720",
+"/en/hotels-stays/dublin/the-alex-122463-12417",
+"/en/hotels-stays/galway-city/the-g-hotel-galway-7570",
+"/en/hotels-stays/Adare/adare-manor-13606",
+"/en/hotels-stays/galway-city/the-dean-galway-12708",
+"/en/hotels-stays/killarney/aghadoe-heights-hotel-spa-438",
+"/en/hotels-stays/dublin/number-31-10827",
+"/en/hotels-stays/donegal-town/lough-eske-castle-120908-10180",
+"/en/hotels-stays/dublin/the-fitzwilliam-hotel-dublin-7637",
+"/en/hotels-stays/county-mayo/mount-falcon-country-house-hotel-8317",
+"/en/hotels-stays/killarney/muckross-park-hotel-spa-10771",
+"/en/hotels-stays/dublin/the-mont-dublin-14103",
+"/en/hotels-stays/dublin/the-college-green-hotel-dublin-autograph-collection-8286",
+"/en/hotels-stays/dublin/wilder-townhouse-dublin-14114",
+"/en/hotels-stays/clonakilty/inchydoney-island-lodge-and-spa-9622",
+"/en/hotels-stays/dublin/the-shelbourne-autograph-collection-14101",
+"/en/hotels-stays/killarney/the-killarney-park-14099",
+"/en/hotels-stays/ballygawley/castle-dargan-11246",
+"/en/hotels-stays/barna/twelve-9891",
+"/en/hotels-stays/aspen/the-little-nell-7406",
+"/en/hotels-stays/chagny/maison-lameloise-10050",
+"/en/hotels-stays/paris/la-demeure-montaigne-12463",
+"/en/hotels-stays/kyoto/muni-kyoto-11908",
+"/en/hotels-stays/dublin/the-chancery-hotel-17176",
+"/en/hotels-stays/dublin/the-green-17065",
+"/en/hotels-stays/dublin/the-davenport-17064",
+"/en/hotels-stays/dublin/townhouse-on-the-green-17063",
+"/en/hotels-stays/dublin/the-grafton-17061",
+"/en/hotels-stays/maynooth/carton-house-a-fairmont-managed-hotel-16838",
+"/en/hotels-stays/Enniskerry/powerscourt-hotel-resort-spa-16521",
+"/en/hotels-stays/galway-city/glenlo-abbey-hotel-128187-1-16364",
+"/en/hotels-stays/dublin/the-hoxton-dublin-15896",
+"/en/hotels-stays/dublin/the-dean-dublin-docklands-15812",
+"/en/hotels-stays/dublin/the-leinster-15193"
+],
+"log": [
+[
+1,
+200,
+"Ireland : 1-48 of 59 hotels"
+],
+[
+2,
+200,
+"Ireland : 49-59 of 59 hotels"
+],
+[
+3,
+404,
+"97-59 of 59 Hotels"
+]
+],
+"pages": [
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-westbury-hotel-5613",
+"status": 200,
+"h1": "The Westbury Hotel",
+"restaurants": [
+"/en/dublin/dublin/restaurant/amai-by-viktor",
+"/en/dublin/dublin/restaurant/dion",
+"/en/dublin/dublin/restaurant/kaldero",
+"/en/dublin/dublin/restaurant/amy-austin",
+"/en/dublin/dublin/restaurant/comet",
+"/en/dublin/dublin/restaurant/glovers-alley"
+],
+"ld": {
+"name": "The Westbury Hotel in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "2 Balfe Street",
+"addressLocality": "Dublin",
+"postalCode": "D02 CH66",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.341405,
+"longitude": -6.26137
+},
+"telephone": "+35316791122",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-westbury-hotel-5613",
+"numberOfRooms": 201
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/kenmare/sheen-falls-lodge-7910",
+"status": 200,
+"h1": "Sheen Falls Lodge",
+"restaurants": [
+"/en/kerry/kenmare/restaurant/the-falls-restaurant",
+"/en/kerry/kenmare/restaurant/landline",
+"/en/kerry/kenmare/restaurant/mulcahys"
+],
+"ld": {
+"name": "Sheen Falls Lodge in Kenmare",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Gortnadullagh",
+"addressLocality": "Kenmare",
+"postalCode": "V93 HR27",
+"addressCountry": "IRL",
+"addressRegion": "County Kerry"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 51.873322,
+"longitude": -9.564127
+},
+"telephone": "+ 353 (0) 64 6641600",
+"award": {
+"@type": "Award",
+"awardFor": "Two MICHELIN Keys · An exceptional stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/kenmare/sheen-falls-lodge-7910",
+"numberOfRooms": 72
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/the-victoria-9218",
+"status": 200,
+"h1": "The Victoria",
+"restaurants": [
+"/en/kerry/kenmare/restaurant/mulcahys",
+"/en/kerry/kenmare/restaurant/landline",
+"/en/kerry/kenmare/restaurant/the-falls-restaurant"
+],
+"ld": {
+"name": "The Victoria in Killarney",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Muckross Road",
+"addressLocality": "Killarney",
+"postalCode": "V93 K0FE",
+"addressCountry": "IRL",
+"addressRegion": "County Kerry"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.043314,
+"longitude": -9.499785
+},
+"telephone": "+353 64 663 5430",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/the-victoria-9218",
+"numberOfRooms": 33
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/cork/hayfield-manor-14551",
+"status": 200,
+"h1": "Hayfield Manor",
+"restaurants": [
+"/en/cork/cork/restaurant/ichigo-ichie-bistro-natural-wine",
+"/en/cork/cork/restaurant/goldie",
+"/en/cork/cork/restaurant/the-glass-curtain"
+],
+"ld": {
+"name": "Hayfield Manor in Cork",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Perrott Avenue, College Road",
+"addressLocality": "Cork",
+"postalCode": "T12HT97",
+"addressCountry": "IRL",
+"addressRegion": "County Cork"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 51.891146,
+"longitude": -8.489625
+},
+"telephone": "00353214845900",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/cork/hayfield-manor-14551",
+"numberOfRooms": 87
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/kenmare/park-hotel-kenmare-14370",
+"status": 200,
+"h1": "Park Hotel Kenmare",
+"restaurants": [
+"/en/kerry/kenmare/restaurant/landline",
+"/en/kerry/kenmare/restaurant/mulcahys",
+"/en/kerry/kenmare/restaurant/the-falls-restaurant"
+],
+"ld": {
+"name": "Park Hotel Kenmare in Kenmare",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": " Shelbourne Street",
+"addressLocality": "Kenmare",
+"postalCode": "V93 X3XY",
+"addressCountry": "IRL",
+"addressRegion": "County Kerry"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 51.876795,
+"longitude": -9.583941
+},
+"telephone": "+35306441200",
+"award": {
+"@type": "Award",
+"awardFor": "Two MICHELIN Keys · An exceptional stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/kenmare/park-hotel-kenmare-14370",
+"numberOfRooms": 46
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/glaslough/castle-leslie-estate-15012",
+"status": 200,
+"h1": "Castle Leslie Estate",
+"restaurants": [],
+"ld": {
+"name": "Castle Leslie Estate in Glaslough",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Castle Leslie Estate",
+"addressLocality": "Glaslough",
+"postalCode": "H18 FY04",
+"addressCountry": "IRL",
+"addressRegion": "County Monaghan"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 54.3203961678,
+"longitude": -6.8899350779
+},
+"telephone": "+3534788100",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/glaslough/castle-leslie-estate-15012",
+"numberOfRooms": 71
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/kilmessan/the-station-house-hotel-16696",
+"status": 200,
+"h1": "The Station House Hotel",
+"restaurants": [],
+"ld": {
+"name": "The Station House Hotel in Kilmessan",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Main Street, Kilmessan",
+"addressLocality": "Kilmessan",
+"addressCountry": "IRL",
+"addressRegion": "County Meath"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.564006,
+"longitude": -6.667371
+},
+"telephone": "00353469025239",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/kilmessan/the-station-house-hotel-16696",
+"numberOfRooms": 19
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/ballyvaughan/gregans-castle-hotel-183",
+"status": 200,
+"h1": "Gregans Castle Hotel",
+"restaurants": [
+"/en/clare/ballyvaughan/restaurant/gregans-castle",
+"/en/clare/doolin/restaurant/oar",
+"/en/clare/doolin/restaurant/homestead-cottage",
+"/en/galway/bearna_1894368/restaurant/blackthorn"
+],
+"ld": {
+"name": "Gregans Castle Hotel in Ballyvaughan",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Corkscrew Hill",
+"addressLocality": "Ballyvaughan",
+"postalCode": "H91 CF60",
+"addressCountry": "IRL",
+"addressRegion": "County Galway"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.077116,
+"longitude": -9.18419
+},
+"telephone": "+353.65.707.7005",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/ballyvaughan/gregans-castle-hotel-183",
+"numberOfRooms": 20
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/ardmore/the-cliff-house-hotel-8099",
+"status": 200,
+"h1": "Cliff House Hotel",
+"restaurants": [
+"/en/waterford/ardmore/restaurant/house",
+"/en/waterford/dungarvan/restaurant/tannery"
+],
+"ld": {
+"name": "Cliff House Hotel in Ardmore",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Middle Road, Dysert, Ardmore",
+"addressLocality": "Ardmore",
+"postalCode": "P36 DK38",
+"addressCountry": "IRL",
+"addressRegion": "County Waterford"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 51.948659,
+"longitude": -7.715251
+},
+"telephone": "+353 24 87800",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/ardmore/the-cliff-house-hotel-8099",
+"numberOfRooms": 39
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/dylan-hotel-207",
+"status": 200,
+"h1": "Dylan Hotel",
+"restaurants": [
+"/en/dublin/dublin/restaurant/jean-georges-at-the-leinster",
+"/en/dublin/dublin/restaurant/foret",
+"/en/dublin/dublin/restaurant/forest-avenue-1198717",
+"/en/dublin/dublin/restaurant/the-old-spot",
+"/en/dublin/dublin/restaurant/osteria-lucio",
+"/en/dublin/dublin/restaurant/mae"
+],
+"ld": {
+"name": "Dylan Hotel in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Eastmoreland Place",
+"addressLocality": "Dublin",
+"postalCode": "D04 W521",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.334025,
+"longitude": -6.242113
+},
+"telephone": "+353.1.660.3000",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/dylan-hotel-207",
+"numberOfRooms": 72
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/Straffan-2/the-k-club-7197",
+"status": 200,
+"h1": "The K Club",
+"restaurants": [
+"/en/kildare/maynooth/restaurant/the-morrison-room",
+"/en/kildare/naas/restaurant/neighbourhood",
+"/en/kildare/kildare/restaurant/brown-bear"
+],
+"ld": {
+"name": "The K Club in Straffan",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Churchfield",
+"addressLocality": "Straffan",
+"postalCode": "W23 YX53",
+"addressCountry": "IRL",
+"addressRegion": "County Kildare"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.31143,
+"longitude": -6.61478
+},
+"telephone": "+353.1.6017200",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/Straffan-2/the-k-club-7197",
+"numberOfRooms": 128
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/cashel/cashel-palace-13079",
+"status": 200,
+"h1": "Cashel Palace",
+"restaurants": [
+"/en/north-tipperary/cashel/restaurant/the-bishop-s-buttery",
+"/en/north-tipperary/cashel/restaurant/chez-hans"
+],
+"ld": {
+"name": "Cashel Palace in Cashel",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Cashel Palace Hotel Main Street",
+"addressLocality": "Cashel",
+"postalCode": "E25 EF61",
+"addressCountry": "IRL",
+"addressRegion": "County Tipperary"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.517538,
+"longitude": -7.889108
+},
+"telephone": "06262002",
+"award": {
+"@type": "Award",
+"awardFor": "Two MICHELIN Keys · An exceptional stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/cashel/cashel-palace-13079",
+"numberOfRooms": 42
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/limerick/no-1-pery-square-5477",
+"status": 200,
+"h1": "No. 1 Pery Square",
+"restaurants": [
+"/en/limerick/limerick/restaurant/east-room-at-plassey-house",
+"/en/limerick/adare/restaurant/the-oak-room",
+"/en/limerick/adare/restaurant/1826"
+],
+"ld": {
+"name": "No. 1 Pery Square in Limerick",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "No. 1 Pery Square, Georgian Quarter",
+"addressLocality": "Limerick",
+"addressCountry": "IRL",
+"addressRegion": "Shannon / Limerick area"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.658119,
+"longitude": -8.6296
+},
+"telephone": "+353 61 402402",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/limerick/no-1-pery-square-5477",
+"numberOfRooms": 20
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/Ballyfin/ballyfin-demesne-13986",
+"status": 200,
+"h1": "Ballyfin Demesne",
+"restaurants": [
+"/en/laois/ballyfin/restaurant/ballyfin",
+"/en/laois/abbeyleix_1896998/restaurant/bramley"
+],
+"ld": {
+"name": "Ballyfin Demesne in Ballyfin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Ballyfin Demesne",
+"addressLocality": "Ballyfin",
+"postalCode": "R32 PN34",
+"addressCountry": "IRL",
+"addressRegion": "County Laois"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.058151,
+"longitude": -7.431137
+},
+"telephone": "+353 5787 55866",
+"award": {
+"@type": "Award",
+"awardFor": "Three MICHELIN Keys · An extraordinary stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/Ballyfin/ballyfin-demesne-13986",
+"numberOfRooms": 20
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/cork/the-river-lee-hotel-5771",
+"status": 200,
+"h1": "The River Lee Hotel",
+"restaurants": [
+"/en/cork/cork/restaurant/ichigo-ichie-bistro-natural-wine",
+"/en/cork/cork/restaurant/goldie",
+"/en/cork/cork/restaurant/the-glass-curtain"
+],
+"ld": {
+"name": "The River Lee Hotel in Cork",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Western Road",
+"addressLocality": "Cork",
+"postalCode": "T12 X2AH",
+"addressCountry": "IRL",
+"addressRegion": "County Cork"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 51.89608,
+"longitude": -8.48463
+},
+"telephone": "+353 (0)21 425 2700",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/cork/the-river-lee-hotel-5771",
+"numberOfRooms": 182
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/celbridge/cliff-at-lyon-13647",
+"status": 200,
+"h1": "Cliff at Lyons",
+"restaurants": [
+"/en/kildare/maynooth/restaurant/the-morrison-room",
+"/en/kildare/naas/restaurant/neighbourhood",
+"/en/dublin/dublin/restaurant/orwell-road",
+"/en/dublin/dublin/restaurant/grano",
+"/en/dublin/dublin/restaurant/bastible",
+"/en/dublin/dublin/restaurant/matsukawa"
+],
+"ld": {
+"name": "Cliff at Lyons in Celbridge",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Lyons Road",
+"addressLocality": "Celbridge",
+"postalCode": "W23 F8KP",
+"addressCountry": "IRL",
+"addressRegion": "County Kildare"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.306524,
+"longitude": -6.541953
+},
+"telephone": "35316303500",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/celbridge/cliff-at-lyon-13647",
+"numberOfRooms": 29
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/cork/the-montenotte-hotel-8713",
+"status": 200,
+"h1": "The Montenotte Hotel",
+"restaurants": [
+"/en/cork/cork/restaurant/the-glass-curtain",
+"/en/cork/cork/restaurant/goldie",
+"/en/cork/cork/restaurant/ichigo-ichie-bistro-natural-wine"
+],
+"ld": {
+"name": "The Montenotte Hotel in Cork",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Middle Glanmire Road",
+"addressLocality": "Cork",
+"postalCode": "T23E9DX",
+"addressCountry": "IRL",
+"addressRegion": "County Cork"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 51.904641,
+"longitude": -8.451993
+},
+"telephone": "+353 21 453 0050",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/cork/the-montenotte-hotel-8713",
+"numberOfRooms": 116
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/intercontinental-dublin-12860",
+"status": 200,
+"h1": "InterContinental Dublin",
+"restaurants": [
+"/en/dublin/dublin/restaurant/mae",
+"/en/dublin/dublin/restaurant/the-old-spot",
+"/en/dublin/dublin/restaurant/parrilla",
+"/en/dublin/dublin/restaurant/china-hunan",
+"/en/dublin/dublin/restaurant/osteria-lucio",
+"/en/dublin/dublin/restaurant/forest-avenue-1198717"
+],
+"ld": {
+"name": "InterContinental Dublin in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Simmonscourt Road",
+"addressLocality": "Dublin",
+"postalCode": "D04 A9K8",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.32656,
+"longitude": -6.22588
+},
+"telephone": "+353 1 665 4000",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/intercontinental-dublin-12860",
+"numberOfRooms": 215
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/cong/ashford-castle-14742",
+"status": 200,
+"h1": "Ashford Castle",
+"restaurants": [
+"/en/galway/cong/restaurant/george-v"
+],
+"ld": {
+"name": "Ashford Castle in Cong",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Ashford Castle Dr, Ashford Or Cappacorcoge",
+"addressLocality": "Cong",
+"addressCountry": "IRL",
+"addressRegion": "County Mayo"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.53473,
+"longitude": -9.28486
+},
+"telephone": null,
+"award": {
+"@type": "Award",
+"awardFor": "Two MICHELIN Keys · An exceptional stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/cong/ashford-castle-14742",
+"numberOfRooms": 83
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/anantara-the-marker-dublin-hotel-14560",
+"status": 200,
+"h1": "Anantara The Marker Dublin Hotel",
+"restaurants": [
+"/en/dublin/dublin/restaurant/osteria-lucio",
+"/en/dublin/dublin/restaurant/allta-1212785",
+"/en/dublin/dublin/restaurant/note",
+"/en/dublin/dublin/restaurant/jean-georges-at-the-leinster",
+"/en/dublin/dublin/restaurant/the-old-spot",
+"/en/dublin/dublin/restaurant/pig-s-ear"
+],
+"ld": {
+"name": "Anantara The Marker Dublin Hotel in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Grand Canal Square, Docklands ",
+"addressLocality": "Dublin",
+"postalCode": " D02 CK38",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.344559,
+"longitude": -6.239037
+},
+"telephone": "+4402034990217",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/anantara-the-marker-dublin-hotel-14560",
+"numberOfRooms": 187
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/Ballybunion/teach-de-broc-14029",
+"status": 200,
+"h1": "Teach de Broc",
+"restaurants": [],
+"ld": {
+"name": "Teach de Broc in Ballybunion",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Teach de Broc",
+"addressLocality": "Ballybunion",
+"postalCode": "V31 C971",
+"addressCountry": "IRL",
+"addressRegion": "County Kerry"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.494356,
+"longitude": -9.672922
+},
+"telephone": "003536827581",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/Ballybunion/teach-de-broc-14029",
+"numberOfRooms": 15
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/great-southern-killarney-16947",
+"status": 200,
+"h1": "Great Southern Killarney",
+"restaurants": [],
+"ld": {
+"name": "Great Southern Killarney in Killarney",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Town Centre",
+"addressLocality": "Killarney",
+"postalCode": ".",
+"addressCountry": "IRL",
+"addressRegion": "County Kerry"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.059208,
+"longitude": -9.504064
+},
+"telephone": "+353 646638000",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/great-southern-killarney-16947",
+"numberOfRooms": 177
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/the-europe-hotel-resort-128054-16850",
+"status": 200,
+"h1": "The Europe Hotel & Resort",
+"restaurants": [],
+"ld": {
+"name": "The Europe Hotel & Resort in Killarney",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Fossa, Killarney",
+"addressLocality": "Killarney",
+"addressCountry": "IRL",
+"addressRegion": "County Kerry"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.067174,
+"longitude": -9.572493
+},
+"telephone": "0858011369",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/the-europe-hotel-resort-128054-16850",
+"numberOfRooms": 180
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/ballyfarnon/kilronan-castle-estate-and-spa-15309",
+"status": 200,
+"h1": "Kilronan Castle Estate and Spa",
+"restaurants": [
+"/en/leitrim/carrick-on-shannon/restaurant/oarsman"
+],
+"ld": {
+"name": "Kilronan Castle Estate and Spa in Ballyfarnon",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Castletenison Demesne, ",
+"addressLocality": "Ballyfarnon",
+"postalCode": "F52 R867",
+"addressCountry": "IRL",
+"addressRegion": "County Roscommon"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 54.0633729156,
+"longitude": -8.1812389737
+},
+"telephone": "071 961 8000",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/ballyfarnon/kilronan-castle-estate-and-spa-15309",
+"numberOfRooms": 85
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/connemara/ballynahinch-castle-hotel-15157",
+"status": 200,
+"h1": "Ballynahinch Castle Hotel",
+"restaurants": [
+"/en/galway/ballynahinch/restaurant/owenmore"
+],
+"ld": {
+"name": "Ballynahinch Castle Hotel in Connemara",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Recess",
+"addressLocality": "Connemara",
+"postalCode": "H91F4A7",
+"addressCountry": "IRL",
+"addressRegion": "County Galway"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.4602440121,
+"longitude": -9.8623581135
+},
+"telephone": "00 353 95 31006",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/connemara/ballynahinch-castle-hotel-15157",
+"numberOfRooms": 48
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/Gorey/marlfield-house-hotel-15149",
+"status": 200,
+"h1": "Marlfield House Hotel",
+"restaurants": [
+"/en/wexford/gorey/restaurant/the-duck",
+"/en/wexford/gorey/restaurant/table-forty-one"
+],
+"ld": {
+"name": "Marlfield House Hotel in Gorey",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Courtown Road",
+"addressLocality": "Gorey",
+"postalCode": "Y25DK23",
+"addressCountry": "IRL",
+"addressRegion": "County Wexford"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.6688836301,
+"longitude": -6.2752163644
+},
+"telephone": "00 353 53 9421124",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/Gorey/marlfield-house-hotel-15149",
+"numberOfRooms": 26
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-merrion-5739",
+"status": 200,
+"h1": "The Merrion",
+"restaurants": [
+"/en/dublin/dublin/restaurant/patrick-guilbaud",
+"/en/dublin/dublin/restaurant/etto",
+"/en/dublin/dublin/restaurant/peploe-s",
+"/en/dublin/dublin/restaurant/one-pico",
+"/en/dublin/dublin/restaurant/dax",
+"/en/dublin/dublin/restaurant/pig-s-ear"
+],
+"ld": {
+"name": "The Merrion in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Upper Merrion Street",
+"addressLocality": "Dublin",
+"postalCode": "D02 KF79",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.33849,
+"longitude": -6.25296
+},
+"telephone": "+353.(0)1.603.0600",
+"award": {
+"@type": "Award",
+"awardFor": "Two MICHELIN Keys · An exceptional stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-merrion-5739",
+"numberOfRooms": 145
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/county-cork/castlemartyr-resort-11433",
+"status": 200,
+"h1": "Castlemartyr Resort",
+"restaurants": [
+"/en/cork/castlemartyr/restaurant/terre-1203607"
+],
+"ld": {
+"name": "Castlemartyr Resort in County Cork",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Castlemartyr",
+"addressLocality": "County Cork",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 51.91138,
+"longitude": -8.06326
+},
+"telephone": "353 21 4644050",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/county-cork/castlemartyr-resort-11433",
+"numberOfRooms": 103
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/thomastown/mount-juliet-hotel-8370",
+"status": 200,
+"h1": "Mount Juliet Hotel",
+"restaurants": [
+"/en/kilkenny/thomastown/restaurant/lady-helen",
+"/en/kilkenny/kilkenny/restaurant/campagne",
+"/en/wexford/new-ross_1934328/restaurant/bearu"
+],
+"ld": {
+"name": "Mount Juliet Hotel in Thomastown",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Estate, Mount Juliet",
+"addressLocality": "Thomastown",
+"postalCode": "R95 E096",
+"addressCountry": "IRL",
+"addressRegion": "County Kilkenny"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.528441,
+"longitude": -7.138882
+},
+"telephone": "353567773000",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/thomastown/mount-juliet-hotel-8370",
+"numberOfRooms": 124
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/newmarket-on-fergus/dromoland-castle-11720",
+"status": 200,
+"h1": "Dromoland Castle",
+"restaurants": [],
+"ld": {
+"name": "Dromoland Castle in Newmarket on Fergus",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Dromoland",
+"addressLocality": "Newmarket on Fergus",
+"postalCode": "V95 ATD3",
+"addressCountry": "IRL",
+"addressRegion": "Shannon / Limerick area"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.76081,
+"longitude": -8.8982
+},
+"telephone": "+353.61368144",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/newmarket-on-fergus/dromoland-castle-11720",
+"numberOfRooms": 75
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-alex-122463-12417",
+"status": 200,
+"h1": "The Alex",
+"restaurants": [
+"/en/dublin/dublin/restaurant/note",
+"/en/dublin/dublin/restaurant/pig-s-ear",
+"/en/dublin/dublin/restaurant/jean-georges-at-the-leinster",
+"/en/dublin/dublin/restaurant/patrick-guilbaud",
+"/en/dublin/dublin/restaurant/library-street",
+"/en/dublin/dublin/restaurant/etto"
+],
+"ld": {
+"name": "The Alex in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "41-47 Fenian Street",
+"addressLocality": "Dublin",
+"postalCode": "D02 H678",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.34184,
+"longitude": -6.24933
+},
+"telephone": "+353 1 607 3700",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-alex-122463-12417",
+"numberOfRooms": 103
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/galway-city/the-g-hotel-galway-7570",
+"status": 200,
+"h1": "The G Hotel Galway",
+"restaurants": [
+"/en/galway/galway/restaurant/aniar",
+"/en/galway/galway/restaurant/darog",
+"/en/galway/galway/restaurant/the-universal",
+"/en/galway/galway/restaurant/kai",
+"/en/galway/galway/restaurant/the-pullman",
+"/en/galway/bearna_1894368/restaurant/blackthorn"
+],
+"ld": {
+"name": "The G Hotel Galway in Galway City",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Old Dublin Road",
+"addressLocality": "Galway City",
+"postalCode": "H91 VOHR",
+"addressCountry": "IRL",
+"addressRegion": "County Galway"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.28156,
+"longitude": -9.03225
+},
+"telephone": "+353 91 865200",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/galway-city/the-g-hotel-galway-7570",
+"numberOfRooms": 101
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/Adare/adare-manor-13606",
+"status": 200,
+"h1": "Adare Manor",
+"restaurants": [
+"/en/limerick/adare/restaurant/the-oak-room",
+"/en/limerick/adare/restaurant/1826",
+"/en/limerick/limerick/restaurant/east-room-at-plassey-house"
+],
+"ld": {
+"name": "Adare Manor in Adare",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Adare Manor Golf Club",
+"addressLocality": "Adare",
+"addressCountry": "IRL",
+"addressRegion": "County Limerick"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.564648,
+"longitude": -8.777695
+},
+"telephone": "+353 61 605 200",
+"award": {
+"@type": "Award",
+"awardFor": "Three MICHELIN Keys · An extraordinary stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/Adare/adare-manor-13606",
+"numberOfRooms": 103
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/galway-city/the-dean-galway-12708",
+"status": 200,
+"h1": "The Dean Galway",
+"restaurants": [
+"/en/galway/galway/restaurant/aniar",
+"/en/galway/galway/restaurant/darog",
+"/en/galway/galway/restaurant/the-universal",
+"/en/galway/galway/restaurant/kai",
+"/en/galway/galway/restaurant/the-pullman",
+"/en/galway/bearna_1894368/restaurant/blackthorn"
+],
+"ld": {
+"name": "The Dean Galway in Galway City",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "80 Prospect Hill",
+"addressLocality": "Galway City",
+"postalCode": "H91 T9C4",
+"addressCountry": "IRL",
+"addressRegion": "County Galway"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.27669,
+"longitude": -9.04755
+},
+"telephone": "+353 91 749 200",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/galway-city/the-dean-galway-12708",
+"numberOfRooms": 100
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/aghadoe-heights-hotel-spa-438",
+"status": 200,
+"h1": "Aghadoe Heights Hotel & Spa",
+"restaurants": [],
+"ld": {
+"name": "Aghadoe Heights Hotel & Spa in Killarney",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "1 Aghadoe Road",
+"addressLocality": "Killarney",
+"addressCountry": "IRL",
+"addressRegion": "County Kerry"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.07696,
+"longitude": -9.5563
+},
+"telephone": "+353 64 663 1766",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/aghadoe-heights-hotel-spa-438",
+"numberOfRooms": 73
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/number-31-10827",
+"status": 200,
+"h1": "Number 31",
+"restaurants": [
+"/en/dublin/dublin/restaurant/dax",
+"/en/dublin/dublin/restaurant/foret",
+"/en/dublin/dublin/restaurant/forest-avenue-1198717",
+"/en/dublin/dublin/restaurant/etto",
+"/en/dublin/dublin/restaurant/patrick-guilbaud",
+"/en/dublin/dublin/restaurant/peploe-s"
+],
+"ld": {
+"name": "Number 31 in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "31 Leeson Close",
+"addressLocality": "Dublin",
+"postalCode": "D02 CP70",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.33351,
+"longitude": -6.25374
+},
+"telephone": "+44 1242 822939",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/number-31-10827",
+"numberOfRooms": 22
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/donegal-town/lough-eske-castle-120908-10180",
+"status": 200,
+"h1": "Lough Eske Castle",
+"restaurants": [],
+"ld": {
+"name": "Lough Eske Castle in Donegal Town",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Lough Eske Castle Road",
+"addressLocality": "Donegal Town",
+"postalCode": "F94 HX59",
+"addressCountry": "IRL",
+"addressRegion": "County Donegal"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 54.68921,
+"longitude": -8.06419
+},
+"telephone": "+353 74 972 5100",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/donegal-town/lough-eske-castle-120908-10180",
+"numberOfRooms": 117
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-fitzwilliam-hotel-dublin-7637",
+"status": 200,
+"h1": "The Fitzwilliam Hotel Dublin",
+"restaurants": [
+"/en/dublin/dublin/restaurant/glovers-alley",
+"/en/dublin/dublin/restaurant/kaldero",
+"/en/dublin/dublin/restaurant/comet",
+"/en/dublin/dublin/restaurant/amai-by-viktor",
+"/en/dublin/dublin/restaurant/peploe-s",
+"/en/dublin/dublin/restaurant/dion"
+],
+"ld": {
+"name": "The Fitzwilliam Hotel Dublin in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "2. St. Stephen's Green",
+"addressLocality": "Dublin",
+"postalCode": "2",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.33935,
+"longitude": -6.26142
+},
+"telephone": "+353 1 478 7000",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-fitzwilliam-hotel-dublin-7637",
+"numberOfRooms": 139
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/county-mayo/mount-falcon-country-house-hotel-8317",
+"status": 200,
+"h1": "Mount Falcon Country House Hotel",
+"restaurants": [],
+"ld": {
+"name": "Mount Falcon Country House Hotel in County Mayo",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Foxford Road, Ballina",
+"addressLocality": "County Mayo",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 54.05944,
+"longitude": -9.1541
+},
+"telephone": "00353 (0)96 74472",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/county-mayo/mount-falcon-country-house-hotel-8317",
+"numberOfRooms": 32
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/muckross-park-hotel-spa-10771",
+"status": 200,
+"h1": "Muckross Park Hotel & Spa",
+"restaurants": [
+"/en/kerry/kenmare/restaurant/mulcahys",
+"/en/kerry/kenmare/restaurant/landline",
+"/en/kerry/kenmare/restaurant/the-falls-restaurant"
+],
+"ld": {
+"name": "Muckross Park Hotel & Spa in Killarney",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Muckross Road",
+"addressLocality": "Killarney",
+"postalCode": "V93 NH5W",
+"addressCountry": "IRL",
+"addressRegion": "County Kerry"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.02499,
+"longitude": -9.48952
+},
+"telephone": "353 64 662 3400",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/muckross-park-hotel-spa-10771",
+"numberOfRooms": 70
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-mont-dublin-14103",
+"status": 200,
+"h1": "The Mont Dublin",
+"restaurants": [
+"/en/dublin/dublin/restaurant/note",
+"/en/dublin/dublin/restaurant/pig-s-ear",
+"/en/dublin/dublin/restaurant/patrick-guilbaud",
+"/en/dublin/dublin/restaurant/library-street",
+"/en/dublin/dublin/restaurant/jean-georges-at-the-leinster",
+"/en/dublin/dublin/restaurant/etto"
+],
+"ld": {
+"name": "The Mont Dublin in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "1-4 Merrion Street Lower",
+"addressLocality": "Dublin",
+"postalCode": "D02 H525",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.34148,
+"longitude": -6.25069
+},
+"telephone": "+353 1 607 3800",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-mont-dublin-14103",
+"numberOfRooms": 96
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-college-green-hotel-dublin-autograph-collection-8286",
+"status": 200,
+"h1": "The College Green Hotel, Autograph Collection",
+"restaurants": [
+"/en/dublin/dublin/restaurant/d-olier-street",
+"/en/dublin/dublin/restaurant/pichet",
+"/en/dublin/dublin/restaurant/kicky-s",
+"/en/dublin/dublin/restaurant/dion",
+"/en/dublin/dublin/restaurant/library-street",
+"/en/dublin/dublin/restaurant/pig-s-ear"
+],
+"ld": {
+"name": "The College Green Hotel, Autograph Collection in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "At College Green, 35-39 Westmoreland Street",
+"addressLocality": "Dublin",
+"postalCode": "D02 HR67",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.34559,
+"longitude": -6.25891
+},
+"telephone": "+353 (0)1 645 1000",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-college-green-hotel-dublin-autograph-collection-8286",
+"numberOfRooms": 163
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/wilder-townhouse-dublin-14114",
+"status": 200,
+"h1": "The Wilder Townhouse",
+"restaurants": [
+"/en/dublin/dublin/restaurant/dax",
+"/en/dublin/dublin/restaurant/foret",
+"/en/dublin/dublin/restaurant/forest-avenue-1198717",
+"/en/dublin/dublin/restaurant/richmond",
+"/en/dublin/dublin/restaurant/pickle",
+"/en/dublin/dublin/restaurant/delahunt"
+],
+"ld": {
+"name": "The Wilder Townhouse in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "22 Adelaide Rd., Saint Kevin's",
+"addressLocality": "Dublin",
+"postalCode": "D02 ET61",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.33244,
+"longitude": -6.25748
+},
+"telephone": "+353 1 969 6598",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/wilder-townhouse-dublin-14114",
+"numberOfRooms": 42
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/clonakilty/inchydoney-island-lodge-and-spa-9622",
+"status": 200,
+"h1": "Inchydoney Island Lodge and Spa",
+"restaurants": [
+"/en/cork/dunmore/restaurant/adrift"
+],
+"ld": {
+"name": "Inchydoney Island Lodge and Spa in Clonakilty",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Inchydoney Island",
+"addressLocality": "Clonakilty",
+"postalCode": "P85 X258",
+"addressCountry": "IRL",
+"addressRegion": "County Cork"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 51.59721,
+"longitude": -8.86204
+},
+"telephone": "+353 23 883 3143",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/clonakilty/inchydoney-island-lodge-and-spa-9622",
+"numberOfRooms": 70
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-shelbourne-autograph-collection-14101",
+"status": 200,
+"h1": "The Shelbourne, Autograph Collection",
+"restaurants": [
+"/en/dublin/dublin/restaurant/peploe-s",
+"/en/dublin/dublin/restaurant/etto",
+"/en/dublin/dublin/restaurant/one-pico",
+"/en/dublin/dublin/restaurant/patrick-guilbaud",
+"/en/dublin/dublin/restaurant/comet",
+"/en/dublin/dublin/restaurant/library-street"
+],
+"ld": {
+"name": "The Shelbourne, Autograph Collection in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "27 St. Stephen's Green",
+"addressLocality": "Dublin",
+"postalCode": "D02 K224",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.33892,
+"longitude": -6.25617
+},
+"telephone": "+353 1 663 4500",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-shelbourne-autograph-collection-14101",
+"numberOfRooms": 265
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/the-killarney-park-14099",
+"status": 200,
+"h1": "The Killarney Park",
+"restaurants": [],
+"ld": {
+"name": "The Killarney Park in Killarney",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Town Centre",
+"addressLocality": "Killarney",
+"addressCountry": "IRL",
+"addressRegion": "County Kerry"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 52.05793,
+"longitude": -9.50487
+},
+"telephone": "+353 64 663 5555",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/killarney/the-killarney-park-14099",
+"numberOfRooms": 69
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/ballygawley/castle-dargan-11246",
+"status": 200,
+"h1": "Castle Dargan",
+"restaurants": [],
+"ld": {
+"name": "Castle Dargan in Ballygawley",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Ballygawley",
+"addressLocality": "Ballygawley",
+"addressCountry": "IRL",
+"addressRegion": "County Siglo"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 54.19347,
+"longitude": -8.43875
+},
+"telephone": "+353 (0)71 911 8080",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/ballygawley/castle-dargan-11246",
+"numberOfRooms": 46
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/barna/twelve-9891",
+"status": 200,
+"h1": "The Twelve Hotel",
+"restaurants": [
+"/en/galway/bearna_1894368/restaurant/blackthorn",
+"/en/galway/galway/restaurant/kai",
+"/en/galway/galway/restaurant/the-universal",
+"/en/galway/galway/restaurant/the-pullman",
+"/en/galway/galway/restaurant/darog",
+"/en/galway/galway/restaurant/aniar"
+],
+"ld": {
+"name": "The Twelve Hotel in Barna",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Barna Village",
+"addressLocality": "Barna",
+"postalCode": "H91 Y3KA",
+"addressCountry": "IRL",
+"addressRegion": "County Galway"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.25131,
+"longitude": -9.1522
+},
+"telephone": "+353 91 597 000",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/barna/twelve-9891",
+"numberOfRooms": 69
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406",
+"status": 200,
+"h1": "The Little Nell",
+"restaurants": [
+"/en/colorado/aspen_1262302/restaurant/element-47",
+"/en/colorado/aspen_1262302/restaurant/bosq-1206081",
+"/en/colorado/aspen_1262302/restaurant/prospect-1206112",
+"/en/colorado/aspen_1262302/restaurant/mawa-s-kitchen"
+],
+"ld": {
+"name": "The Little Nell in Aspen",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "675 East Durant Avenue",
+"addressLocality": "Aspen",
+"postalCode": "81611",
+"addressCountry": "USA",
+"addressRegion": "Colorado"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 39.18664,
+"longitude": -106.81722
+},
+"telephone": "+1.970.920.4600",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406",
+"numberOfRooms": 92
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050",
+"status": 200,
+"h1": "Maison Lameloise",
+"restaurants": [
+"/en/bourgogne-franche-comte/chagny/restaurant/maison-lameloise",
+"/en/bourgogne-franche-comte/chassagne-montrachet/restaurant/ed-em",
+"/en/bourgogne-franche-comte/santenay/restaurant/l-ouillette",
+"/en/bourgogne-franche-comte/puligny-montrachet/restaurant/le-montrachet",
+"/en/bourgogne-franche-comte/puligny-montrachet/restaurant/olivier-leflaive",
+"/en/bretagne/fr-saint-aubin/restaurant/prosper"
+],
+"ld": {
+"name": "Maison Lameloise in Chagny",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "36, place d'Armes",
+"addressLocality": "Chagny",
+"postalCode": "71150",
+"addressCountry": "FRA",
+"addressRegion": "Bourgogne-Franche-Comté"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 46.90774,
+"longitude": 4.75292
+},
+"telephone": "+33 (0)3 85 876 565",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050",
+"numberOfRooms": 16
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463",
+"status": 200,
+"h1": "La Demeure Montaigne",
+"restaurants": [
+"/en/ile-de-france/paris/restaurant/zeffirino-1216581",
+"/en/ile-de-france/paris/restaurant/il-ristorante-niko-romito-1199507",
+"/en/ile-de-france/paris/restaurant/la-grande-du-plaza-athenee",
+"/en/ile-de-france/paris/restaurant/le-relais-plaza",
+"/en/ile-de-france/paris/restaurant/le-cinq6102",
+"/en/ile-de-france/paris/restaurant/l-orangerie505878"
+],
+"ld": {
+"name": "La Demeure Montaigne in Paris",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "18 rue Clément Marot",
+"addressLocality": "Paris",
+"postalCode": "75008",
+"addressCountry": "FRA",
+"addressRegion": "Île-de-France"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 48.86778,
+"longitude": 2.303184
+},
+"telephone": "+33 1 53 57 49 50",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463",
+"numberOfRooms": 92
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908",
+"status": 200,
+"h1": "MUNI KYOTO",
+"restaurants": [
+"/en/kyoto-region/kyoto/restaurant/shigetsu",
+"/en/kyoto-region/kyoto/restaurant/tempura-hashimoto",
+"/en/kyoto-region/kyoto/restaurant/okina",
+"/en/kyoto-region/kyoto/restaurant/wavie",
+"/en/kyoto-region/kyoto/restaurant/ramenya-fujitora",
+"/en/kyoto-region/kyoto/restaurant/ajiro-honten"
+],
+"ld": {
+"name": "MUNI KYOTO in Kyoto",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "3 Sagatenryuji Susukinobabacho, Ukyo-ku",
+"addressLocality": "Kyoto",
+"postalCode": "616-8385",
+"addressCountry": "JPN",
+"addressRegion": "Kyoto Prefecture"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 35.01414,
+"longitude": 135.67675
+},
+"telephone": "+81 75-863-1110",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908",
+"numberOfRooms": 21
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-chancery-hotel-17176",
+"status": 200,
+"h1": "The Chancery Hotel",
+"restaurants": [
+"/en/dublin/dublin/restaurant/uno-mas1154733",
+"/en/dublin/dublin/restaurant/big-fan",
+"/en/dublin/dublin/restaurant/amy-austin",
+"/en/dublin/dublin/restaurant/kicky-s",
+"/en/dublin/dublin/restaurant/kaldero",
+"/en/dublin/dublin/restaurant/amai-by-viktor"
+],
+"ld": {
+"name": "The Chancery Hotel in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "21 Ship Street Great, Dublin Castle",
+"addressLocality": "Dublin",
+"postalCode": "Dublin 2",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.341661,
+"longitude": -6.2677
+},
+"telephone": null,
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-chancery-hotel-17176",
+"numberOfRooms": 150
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-green-17065",
+"status": 200,
+"h1": "The Green",
+"restaurants": [
+"/en/dublin/dublin/restaurant/la-gordita",
+"/en/dublin/dublin/restaurant/glovers-alley",
+"/en/dublin/dublin/restaurant/kaldero",
+"/en/dublin/dublin/restaurant/big-fan",
+"/en/dublin/dublin/restaurant/mister-s",
+"/en/dublin/dublin/restaurant/delahunt"
+],
+"ld": {
+"name": "The Green in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Stephens Green",
+"addressLocality": "Dublin",
+"postalCode": "D2",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.337514,
+"longitude": -6.263048
+},
+"telephone": null,
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-green-17065",
+"numberOfRooms": 99
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-davenport-17064",
+"status": 200,
+"h1": "The Davenport",
+"restaurants": [
+"/en/dublin/dublin/restaurant/note",
+"/en/dublin/dublin/restaurant/pig-s-ear",
+"/en/dublin/dublin/restaurant/jean-georges-at-the-leinster",
+"/en/dublin/dublin/restaurant/patrick-guilbaud",
+"/en/dublin/dublin/restaurant/library-street",
+"/en/dublin/dublin/restaurant/etto"
+],
+"ld": {
+"name": "The Davenport in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Merrion Square",
+"addressLocality": "Dublin",
+"postalCode": "D2",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.341678,
+"longitude": -6.250037
+},
+"telephone": null,
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-davenport-17064",
+"numberOfRooms": 115
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/townhouse-on-the-green-17063",
+"status": 200,
+"h1": "Townhouse on the Green",
+"restaurants": [
+"/en/dublin/dublin/restaurant/peploe-s",
+"/en/dublin/dublin/restaurant/comet",
+"/en/dublin/dublin/restaurant/one-pico",
+"/en/dublin/dublin/restaurant/etto",
+"/en/dublin/dublin/restaurant/glovers-alley",
+"/en/dublin/dublin/restaurant/patrick-guilbaud"
+],
+"ld": {
+"name": "Townhouse on the Green in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "22 St Stephen's Green",
+"addressLocality": "Dublin",
+"postalCode": "D2",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.339187,
+"longitude": -6.257233
+},
+"telephone": null,
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/townhouse-on-the-green-17063",
+"numberOfRooms": 9
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-grafton-17061",
+"status": 200,
+"h1": "The Grafton",
+"restaurants": [
+"/en/dublin/dublin/restaurant/amy-austin",
+"/en/dublin/dublin/restaurant/kaldero",
+"/en/dublin/dublin/restaurant/uno-mas1154733",
+"/en/dublin/dublin/restaurant/big-fan",
+"/en/dublin/dublin/restaurant/amai-by-viktor",
+"/en/dublin/dublin/restaurant/dion"
+],
+"ld": {
+"name": "The Grafton in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "31/32  Stephen's Street Lower Johnsons Place",
+"addressLocality": "Dublin",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.341009,
+"longitude": -6.263739
+},
+"telephone": null,
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-grafton-17061",
+"numberOfRooms": 128
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/maynooth/carton-house-a-fairmont-managed-hotel-16838",
+"status": 200,
+"h1": "Carton House, A Fairmont Managed Hotel",
+"restaurants": [
+"/en/kildare/maynooth/restaurant/the-morrison-room",
+"/en/dublin/dublin/restaurant/grano",
+"/en/dublin/dublin/restaurant/vada",
+"/en/dublin/dublin/restaurant/matsukawa",
+"/en/dublin/dublin/restaurant/borgo",
+"/en/kildare/naas/restaurant/neighbourhood"
+],
+"ld": {
+"name": "Carton House, A Fairmont Managed Hotel in Maynooth",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Carton Demesne",
+"addressLocality": "Maynooth",
+"postalCode": "W23 TD98",
+"addressCountry": "IRL",
+"addressRegion": "County Kildare"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.390316,
+"longitude": -6.567936
+},
+"telephone": "+353 1 ",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/maynooth/carton-house-a-fairmont-managed-hotel-16838",
+"numberOfRooms": 169
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/Enniskerry/powerscourt-hotel-resort-spa-16521",
+"status": 200,
+"h1": "Powerscourt Hotel Resort & Spa",
+"restaurants": [
+"/en/wicklow/bray_1896407/restaurant/grain-store-at-killruddery",
+"/en/wicklow/greystones/restaurant/caladh",
+"/en/wicklow/greystones/restaurant/chakra-by-jaipur",
+"/en/dun-laoghaire-rathdown/blackrock/restaurant/volpe-nera",
+"/en/dun-laoghaire-rathdown/dun-laoghaire/restaurant/rasam",
+"/en/dublin/dublin/restaurant/ananda"
+],
+"ld": {
+"name": "Powerscourt Hotel Resort & Spa in Enniskerry",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Powerscourt Estate",
+"addressLocality": "Enniskerry",
+"addressCountry": "IRL",
+"addressRegion": "County Wicklow"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.185118,
+"longitude": -6.180024
+},
+"telephone": "0035312748888",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/Enniskerry/powerscourt-hotel-resort-spa-16521",
+"numberOfRooms": 198
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/galway-city/glenlo-abbey-hotel-128187-1-16364",
+"status": 200,
+"h1": "Glenlo Abbey Hotel",
+"restaurants": [
+"/en/galway/galway/restaurant/the-pullman",
+"/en/galway/galway/restaurant/kai",
+"/en/galway/galway/restaurant/the-universal",
+"/en/galway/galway/restaurant/aniar",
+"/en/galway/galway/restaurant/darog",
+"/en/galway/bearna_1894368/restaurant/blackthorn"
+],
+"ld": {
+"name": "Glenlo Abbey Hotel in Galway City",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Bushypark",
+"addressLocality": "Galway City",
+"addressCountry": "IRL",
+"addressRegion": "County Galway"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.3004653882,
+"longitude": -9.0986518221
+},
+"telephone": "+353 91 519 600",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/galway-city/glenlo-abbey-hotel-128187-1-16364",
+"numberOfRooms": 73
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-hoxton-dublin-15896",
+"status": 200,
+"h1": "The Hoxton, Dublin",
+"restaurants": [
+"/en/dublin/dublin/restaurant/kicky-s",
+"/en/dublin/dublin/restaurant/pichet",
+"/en/dublin/dublin/restaurant/amy-austin",
+"/en/dublin/dublin/restaurant/uno-mas1154733",
+"/en/dublin/dublin/restaurant/amai-by-viktor",
+"/en/dublin/dublin/restaurant/dion"
+],
+"ld": {
+"name": "The Hoxton, Dublin in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "1-5 Exchequer Street",
+"addressLocality": "Dublin",
+"postalCode": "D02 E044",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.343095,
+"longitude": -6.263909
+},
+"telephone": "+353 1 263 5020",
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-hoxton-dublin-15896",
+"numberOfRooms": 129
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-dean-dublin-docklands-15812",
+"status": 200,
+"h1": "The Dean Dublin Docklands",
+"restaurants": [
+"/en/dublin/dublin/restaurant/allta-1212785",
+"/en/dublin/dublin/restaurant/osteria-lucio",
+"/en/dublin/dublin/restaurant/the-old-spot",
+"/en/dublin/dublin/restaurant/jean-georges-at-the-leinster",
+"/en/dublin/dublin/restaurant/note",
+"/en/dublin/dublin/restaurant/pig-s-ear"
+],
+"ld": {
+"name": "The Dean Dublin Docklands in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "81 – 82 North Wall Quay ",
+"addressLocality": "Dublin",
+"postalCode": "D01XR83",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.347147,
+"longitude": -6.230424
+},
+"telephone": null,
+"award": null,
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-dean-dublin-docklands-15812",
+"numberOfRooms": 94
+}
+},
+{
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-leinster-15193",
+"status": 200,
+"h1": "The Leinster",
+"restaurants": [
+"/en/dublin/dublin/restaurant/jean-georges-at-the-leinster",
+"/en/dublin/dublin/restaurant/note",
+"/en/dublin/dublin/restaurant/osteria-lucio",
+"/en/dublin/dublin/restaurant/patrick-guilbaud",
+"/en/dublin/dublin/restaurant/etto",
+"/en/dublin/dublin/restaurant/pig-s-ear"
+],
+"ld": {
+"name": "The Leinster in Dublin",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "7 Mount Street Lower",
+"addressLocality": "Dublin",
+"addressCountry": "IRL"
+},
+"geo": {
+"@type": "GeoCoordinates",
+"latitude": 53.339146,
+"longitude": -6.245468
+},
+"telephone": "+353 1 233 6000",
+"award": {
+"@type": "Award",
+"awardFor": "One MICHELIN Key · A very special stay",
+"awardedBy": {
+"@type": "Organization",
+"name": "Michelin"
+}
+},
+"url": "https://guide.michelin.com/en/hotels-stays/dublin/the-leinster-15193",
+"numberOfRooms": 55
+}
+}
+]
+}
