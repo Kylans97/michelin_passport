@@ -1,0 +1,13 @@
+ref,website_url,phone,phone_as_listed,address_on_site,notes
+new_7295,https://www.fourseasons.com/paris/,+33 1 49 52 70 00,+33 1 49 52 70 00,"31, Avenue George V, 75008 Paris",matches MICHELIN
+new_9865,https://www.fourseasons.com/megeve/,+33 4 50 21 12 11,+33 (0)4 50 21 12 11,"373 Chemin des Follières, Megève 74120",matches MICHELIN; site says the resort is closed for the season from 6 September
+new_6476,https://www.fourseasons.com/capferrat/,+33 4 93 76 50 50,33 (0) 4 93 76 50 50,"71 Boulevard du Général de Gaulle, 06230 Saint-Jean Cap-Ferrat",matches MICHELIN
+new_8069,https://www.peninsula.com/en/paris/5-star-luxury-hotel-16th-arrondissement,+33 1 58 12 28 88,+33 (0)1 58 12 28 88,"19 Avenue Kléber, 75116 Paris",matches MICHELIN; the page also prints a Hong Kong +852 line (not used)
+new_6071,https://www.dorchestercollection.com/paris/le-meurice,+33 1 44 58 10 10,+33 (0)1 44 58 10 10,"228 rue de Rivoli, 75001 Paris",matches MICHELIN; beside info.LMP@; +33 1 87 16 44 50 is labelled ROOM RESERVATIONS (not used)
+new_12626,https://www.bulgarihotels.com/en_US/paris,+33 1 81 72 10 00,+33 1 81 72 10 00,"30 Av. George V, Paris",matches MICHELIN
+new_5455,https://www.shangri-la.com/paris/shangrila/,+33 1 53 67 19 98,(33 1) 5367 1998,"10, avenue d'Iéna, Paris 75116","matches MICHELIN; printed as ""Phone:"" beside paris@shangri-la.com"
+new_6519,https://www.lenegresco.com/,+33 4 93 16 64 00,+33 (0) 4 93 16 64 00,"37, Promenade des Anglais Nice",matches MICHELIN; the site also prints +33 4 93 16 64 50 (not used)
+new_9972,https://www.oetkerhotels.com/hotels/lapogee-courchevel/,+33 4 79 04 01 04,+33 4 79 04 01 04,5 Rue Emile Allais - Jardin Alpin 73120 Courchevel,matches MICHELIN; oetkercollection.com now redirects to oetkerhotels.com
+new_15410,https://www.hilton.com/en/hotels/paretol-sax-paris/,+33 1 81 69 07 40,+33 1 81 69 07 40,"55 avenue de Saxe, Paris, 75007",matches MICHELIN; Hilton page also prints the LXR US line (not used)
+new_7509,https://www.oetkerhotels.com/hotels/chateau-saint-martin/,+33 4 93 58 02 02,+33 4 93 58 02 02,2490 Avenue des Templiers 06140 Vence,matches MICHELIN
+hotel_712,,+33 1 53 43 43 00,+33 1 53 43 43 00,"112 rue du Faubourg Saint-Honoré, 75008 Paris","matches MICHELIN; website already set in production (oetkercollection.com URL, which now redirects to oetkerhotels.com)"
