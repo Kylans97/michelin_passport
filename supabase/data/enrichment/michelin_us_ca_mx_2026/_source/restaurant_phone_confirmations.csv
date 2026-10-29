@@ -1,0 +1,129 @@
+michelin_url,name,phone,certainty,phone_source_url,notes
+https://guide.michelin.com/en/baja-california-sur/cabo-san-lucas_2059129/restaurant/cocina-de-autor-los-cabos,Cocina de Autor Los Cabos,+52 624 104 9826,differs,https://loscabos.grandvelas.com/dining/cocina-de-autor,Resort dining page PHONE block (01-624-104-9826); MICHELIN number has Puerto Vallarta code 322; resort toll-free 888 505 8406 ignored
+https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sumibiyaki-arashi,Sumibiyaki Arashi,,not_found,,No phone; OpenTable booking only
+https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sushi-hyun,Sushi Hyun,,site_unreachable,https://www.sushihyun.com/,"Squarespace ""Website Expired"" page, later 404"
+https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sushi-masuda-1214860,Sushi Masuda,,not_found,,No phone on home page; Tock booking
+https://guide.michelin.com/en/california/beverly-hills/restaurant/nozawa-bar,Nozawa Bar,,site_unreachable,https://www.nozawabar.com/,HTTP 403 to automated fetch
+https://guide.michelin.com/en/california/calistoga/restaurant/auro,Auro,+1 707 709 2160,differs,https://www.auronapavalley.com/,"Site prints 707-709-2160 (tel link and structured data, Four Seasons Napa Valley); MICHELIN has 707-709-2100"
+https://guide.michelin.com/en/california/carmel-by-the-sea/restaurant/aubergine,Aubergine,+1 831 624 8578,confirmed,https://www.auberginecarmel.com/,Printed in footer and reservations section
+https://guide.michelin.com/en/california/carmel-by-the-sea/restaurant/chez-noir,Chez Noir,,not_found,,"Site says ""we do not have a phone"""
+https://guide.michelin.com/en/california/culver-city/restaurant/vespertine,Vespertine,,not_found,,No phone on site; OpenTable only
+https://guide.michelin.com/en/california/encino/restaurant/pasta-bar,Pasta|Bar,,not_found,,pastabarencino.com redirects (301) to SevenRooms Pasta|Bar Los Angeles page; no own site read
+https://guide.michelin.com/en/california/encino/restaurant/shin-sushi,Shin Sushi,,not_found,,No website in input
+https://guide.michelin.com/en/california/la-jolla/restaurant/lucien,Lucien,+1 619 786 3082,confirmed,https://luciensd.com/,Header address block
+https://guide.michelin.com/en/california/laguna-beach/restaurant/r-o-rebel-omakase,R|O-Rebel Omakase,,not_found,,Email and OpenTable only
+https://guide.michelin.com/en/california/long-beach/restaurant/heritage-1196790,Heritage,+1 562 343 1068,confirmed,https://heritagerestaurant.fullbellyfoodgroup.com/,Footer; site has an expired SSL certificate (fetched with cert check off); footer address says 2032 E 7th Street
+https://guide.michelin.com/en/california/los-alamos/restaurant/bell-s,Bell's,,not_found,,"Site says Bell's does not have a phone (MICHELIN 718 number is NY area code, likely wrong)"
+https://guide.michelin.com/en/california/oakland/restaurant/commis,Commis,+1 510 653 3902,confirmed,https://commisrestaurant.com/info/,Info page / site structured data
+https://guide.michelin.com/en/california/oakland/restaurant/sun-moon-studio,Sun Moon Studio,,not_found,,Email only
+https://guide.michelin.com/en/california/palo-alto/restaurant/protege,Protégé,,not_found,,Site says no phone service (MICHELIN number not on site)
+https://guide.michelin.com/en/california/paso-robles/restaurant/six-test-kitchen,Six Test Kitchen,,not_found,,Tock only
+https://guide.michelin.com/en/california/san-francisco/restaurant/atelier-crenn,Atelier Crenn,+1 415 440 0460,differs,https://www.ateliercrenn.com/contactus/,Contact page text; MICHELIN has 415-440-0462
+https://guide.michelin.com/en/california/san-francisco/restaurant/benu,Benu,,not_found,,"Home page is a bare shell, no phone seen"
+https://guide.michelin.com/en/california/san-francisco/restaurant/naides,Restaurant Naides,,not_found,,No phone
+https://guide.michelin.com/en/california/san-francisco/restaurant/ssal,Ssal,,not_found,,No phone on site; OpenTable
+https://guide.michelin.com/en/california/santa-barbara/restaurant/silvers-omakase,Silvers Omakase,,not_found,,Email only
+https://guide.michelin.com/en/california/torrance/restaurant/sushi-i-naba,Sushi Inaba,,not_found,,No phone on site; site name is sushiinabamanhattanbeach.com but address Torrance matches
+https://guide.michelin.com/en/california/us-los-angeles/restaurant/corridor-109,Corridor 109,,not_found,,Tock only
+https://guide.michelin.com/en/california/us-los-angeles/restaurant/hayato,Hayato,,not_found,,No phone
+https://guide.michelin.com/en/california/us-los-angeles/restaurant/kojima-1248017,KOJIMA,,not_found,,Square site returned no content to fetch
+https://guide.michelin.com/en/california/us-los-angeles/restaurant/mori-nozomi,Mori Nozomi,,not_found,,No phone on home page; location page not readable
+https://guide.michelin.com/en/california/us-los-angeles/restaurant/sushi-kaneyoshi,Sushi Kaneyoshi,+1 213 277 2388,differs,https://www.kaneyoshi.us/,tel link +12132772388; MICHELIN has 213-277-2588
+https://guide.michelin.com/en/california/west-hollywood/restaurant/somni,Somni,,not_found,,Empty tel: link in footer; email only
+https://guide.michelin.com/en/california/yountville/restaurant/the-french-laundry,The French Laundry,+1 707 944 2380,confirmed,https://www.thomaskeller.com/yountville-california/french-laundry/info-directions,Info & directions page
+https://guide.michelin.com/en/ciudad-de-mexico/alvaro-obregon_2003790/restaurant/sud-777,Sud 777,,not_found,,No phone on site (MICHELIN +55 5578 4777 not present)
+https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/esquina-comun,Esquina Común,,not_found,,"Only an Instagram link given, not an official site"
+https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/expendio-de-maiz,Expendio de Maíz,,not_found,,No phone on site
+https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/gaba,Gaba,,not_found,,No phone on site
+https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/la-once-mil,La Once Mil,,not_found,,No website in input
+https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/pujol,Pujol,,site_unreachable,https://pujol.com.mx/,HTTP 429 rate limited; not read
+https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/quintonil,Quintonil,+52 55 5280 1660,differs,https://quintonil.com/,"Site prints three numbers: 55 5280 1660, 55 5280 0254, 55 5282 0724; MICHELIN 55 5280 2680 not present"
+https://guide.michelin.com/en/colorado/aspen_1262302/restaurant/bosq-1206081,Bosq,,not_found,,Email and OpenTable only
+https://guide.michelin.com/en/colorado/denver_1261491/restaurant/bruto,Brutø,,not_found,,Home page only offers OpenTable; no phone
+https://guide.michelin.com/en/colorado/denver_1261491/restaurant/margot-1241646,Margot,+1 720 390 8785,confirmed,https://www.margotdenver.com/sctx-faq,FAQ page; home page prints no phone
+https://guide.michelin.com/en/colorado/denver_1261491/restaurant/milpero,Milpero,,not_found,,No phone
+https://guide.michelin.com/en/colorado/denver_1261491/restaurant/the-wolf-s-tailor,The Wolf's Tailor,,not_found,,Home page shows only name; no phone
+https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/albi,Albi,,not_found,,Email only
+https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/bresca,Bresca,+1 771 210 3168,differs,https://www.brescadc.com/,"Only number on site (header, footer, structured data); 771 is not a DC area code, treat with suspicion; MICHELIN has 202-518-7926"
+https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/jont,Jônt,+1 202 773 9989,confirmed,https://www.jontdc.com/faq/,FAQ page
+https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/oyster-oyster,Oyster Oyster,,not_found,,"Resy and contact form, no phone"
+https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/sushi-nakazawa1160153,Sushi Nakazawa Washington DC,,not_found,,sushinakazawa.com home page shows no DC details or phone
+https://guide.michelin.com/en/florida/coral-gables/restaurant/shingo,Shingo,,not_found,,Email only
+https://guide.michelin.com/en/florida/fort-lauderdale_2883737/restaurant/chef-s-counter-at-maass,Chef's Counter at MAASS,,not_found,,"Site gives email and OpenTable; MICHELIN number looks like Four Seasons hotel line, not on site"
+https://guide.michelin.com/en/florida/miami-beach/restaurant/stubborn-seed,Stubborn Seed,,site_unreachable,https://stubbornseed.com/,HTTP 403 to automated fetch
+https://guide.michelin.com/en/florida/miami/restaurant/boia-de,Boia De,,not_found,,Resy only
+https://guide.michelin.com/en/florida/miami/restaurant/hiden,Hiden,,not_found,,Email and Tock only
+https://guide.michelin.com/en/florida/miami/restaurant/le-jardinier-miami,Le Jardinier Miami,,not_found,,Email only
+https://guide.michelin.com/en/florida/miami/restaurant/ogawa-1204468,Ogawa,,not_found,,Email and Tock only
+https://guide.michelin.com/en/florida/north-miami_2883821/restaurant/mutra,Mutra,,site_unreachable,https://mutramiami.com/,HTTP 429 rate limited; not read
+https://guide.michelin.com/en/florida/orlando/restaurant/camille,Camille,+1 321 972 1822,confirmed,https://camilleorlando.com/faq-1,tel: link on FAQ page
+https://guide.michelin.com/en/florida/orlando/restaurant/kadence,Kadence,,not_found,,Email only (MICHELIN (321) 444-8095 not on site)
+https://guide.michelin.com/en/florida/orlando/restaurant/sorekara,Sorekara,,not_found,,Email only
+https://guide.michelin.com/en/florida/tampa/restaurant/ebbe,Ebbe,,not_found,,No phone seen
+https://guide.michelin.com/en/florida/west-palm-beach_2883871/restaurant/emelina,Emelina,,not_found,,Tock/email only
+https://guide.michelin.com/en/florida/winter-park/restaurant/omo-by-jont,Ômo by Jônt,+1 321 972 5225,confirmed,https://www.omobyjont.com/information/,Information page
+https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/omakase-table,Omakase Table,+1 404 205 5876,differs,https://www.omakasetableatl.com/,"Only in Wix site metadata (businessPhone), not visible text; MICHELIN has 470-404-5245; site lists Buckhead and West Midtown locations"
+https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/so-fox,So. Fox,,not_found,https://www.sofoxatl.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/illinois/chicago/restaurant/alinea,Alinea,,not_found,https://www.alinearestaurant.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/illinois/chicago/restaurant/esme,Esmé,,not_found,https://www.esmechicago.com/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/illinois/chicago/restaurant/ever,Ever,,not_found,https://www.ever-restaurant.com/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/illinois/chicago/restaurant/feld,Feld,,not_found,https://www.feldrestaurant.com/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/illinois/chicago/restaurant/indienne,Indienne,,not_found,https://indiennechicago.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/illinois/chicago/restaurant/kasama,Kasama,,not_found,https://www.kasamachicago.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/illinois/chicago/restaurant/next,Next,,not_found,https://www.nextrestaurant.com/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/illinois/chicago/restaurant/smyth,Smyth,,not_found,https://www.smythchicago.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/jalisco/guadalajara_2011748/restaurant/xokol,Xokol,,site_unreachable,,No official website in MICHELIN data
+https://guide.michelin.com/en/louisiana/new-orleans_2906000/restaurant/dakar-nola,Dakar NOLA,,not_found,https://www.dakarnola.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/massachusetts/boston_2914838/restaurant/311-omakase,311 Omakase,,not_found,https://311boston.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/nevada/las-vegas_2935077/restaurant/l-atelier-de-joel-robuchon-las-vegas,L'Atelier de Joël Robuchon Las Vegas,,site_unreachable,,MGM site returned nothing to curl; WebFetch not permitted for host
+https://guide.michelin.com/en/nevada/las-vegas_2935077/restaurant/restaurant-de-joel-robuchon,Restaurant de Joël Robuchon,,site_unreachable,,MGM site returned nothing to curl; WebFetch not permitted for host
+https://guide.michelin.com/en/new-york-state/brooklyn/restaurant/restaurant-yuu,Restaurant Yuu,,not_found,https://www.yuunewyork.com/restaurantyuu/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/brooklyn/restaurant/the-four-horsemen,The Four Horsemen,,not_found,https://www.fourhorsemenbk.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/atera,Atera,,not_found,https://ateranyc.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/atomix,Atomix,,not_found,https://www.atomixnyc.com/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/bar-miller,Bar Miller,,not_found,https://www.barmiller.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/bridges-1216261,Bridges,,not_found,https://www.bridges-nyc.com/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/chef-s-table-at-brooklyn-fare,Chef's Table at Brooklyn Fare,,not_found,https://www.brooklynfare.com/chefs-table/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/corima,Corima,,not_found,https://corimanyc.com/,Site only has placeholder +1-000-000-0000; MICHELIN number not on site.
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/crown-shy,Crown Shy,,not_found,https://www.crownshy.nyc/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/estela,Estela,,site_unreachable,,curl returned empty and WebFetch got HTTP 429; not verified
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/frevo,Frevo,,not_found,https://frevonyc.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/icca,Icca,,site_unreachable,,No official website in MICHELIN data
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/l%E2%80%99abeille,L’Abeille,+1 212 542 3898,confirmed,https://www.labeille.nyc/info,
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/le-coucou,Le Coucou,+1 212 271 4252,confirmed,https://lecoucou.com/,
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/le-pavillon-1192744,Le Pavillon,+1 212 662 1000,confirmed,https://lepavillonnyc.com/,
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/muku,Muku,+1 212 542 3896,confirmed,https://www.restaurantmuku.nyc/info,
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/noda,Noda,,not_found,https://www.noda.nyc/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/odo,Odo,,not_found,https://www.odo.nyc/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/per-se,Per Se,+1 212 823 9335,confirmed,https://www.thomaskeller.com/new-york-new-york/per-se/gift-experiences,Printed on Per Se gift-experiences page on thomaskeller.com as the number to call.
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/rezdora-osteria-emiliana,Rezdôra,,not_found,https://www.rezdora.nyc/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/saga,Saga,+1 212 339 3963,confirmed,https://www.saga-nyc.com/,
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/semma,Semma,,not_found,https://www.semma.nyc/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/sushi-nakazawa,Sushi Nakazawa New York,,not_found,https://www.sushinakazawa.com/new-york,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/sushi-sho-1213976,Sushi Sho,,site_unreachable,,No official website in MICHELIN data
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/torrisi,Torrisi,,not_found,https://www.torrisinyc.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/tsukimi,Tsukimi,,not_found,https://www.tsukimi.nyc/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/new-york-state/new-york/restaurant/yingtao,YingTao,+1 914 496 5055,differs,https://yingtaonyc.com/,"Site prints +1 (914) 496-5055 (calls Tue-Sun 2-5pm); MICHELIN has 845 236 6577, not on site."
+https://guide.michelin.com/en/new-york-state/queens/restaurant/meju,Meju,,not_found,https://mejunyc.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/new-york-state/tarrytown/restaurant/blue-hill-at-stone-barns,Blue Hill at Stone Barns,+1 914 366 9606,differs,https://www.bluehillfarm.com/faq,Site prints 914-366-9606 x226 only for private/corporate events; reservations by email. MICHELIN 914 366 9600 not on site. Contact page also gives NYC (212) 539-1776 for Blue Hill NYC (different venue).
+https://guide.michelin.com/en/nuevo-leon/monterrey_2041973/restaurant/koli-cocina-de-origen,KOLI Cocina de Origen,+52 81 1605 6890,differs,https://www.koli.mx/,"Number is in site's contact/chat widget (Phone channel, likely WhatsApp); MICHELIN 81 9688 7333 not on site."
+https://guide.michelin.com/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/levadura-de-olla-restaurante,Levadura de Olla Restaurante,,not_found,https://www.levaduradeolla.mx/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/ontario/creemore_1244926/restaurant/the-pine-1209935,The Pine,,not_found,https://www.thepinecreemore.ca/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/ontario/toronto/restaurant/danico,DaNico,,not_found,https://www.danicotoronto.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/ontario/toronto/restaurant/don-alfonso-1890-toronto,Don Alfonso 1890,,not_found,https://www.donalfonsotoronto.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/ontario/toronto/restaurant/restaurant-20-victoria,Restaurant 20 Victoria,,site_unreachable,,Site is a Tock page; Cloudflare challenge/403 for curl and WebFetch
+https://guide.michelin.com/en/pennsylvania/philadelphia_2942787/restaurant/her-place-supper-club,Her Place Supper Club,,not_found,https://www.herplacephilly.com/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/quebec/quebec_2434166/restaurant/kebec-club-prive,Kebec Club Privé,,site_unreachable,,Cloudflare challenge/403 for curl and WebFetch
+https://guide.michelin.com/en/quebec/rimouski_2986917/restaurant/narval,Narval,,not_found,https://restaurantnarval.ca/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/quebec/saint-mathieu-du-parc_2434226/restaurant/auberge-saint-mathieu,Auberge Saint-Mathieu,+1 819 532 3397,confirmed,https://auberge-st-mathieu-du-lac.com/,
+https://guide.michelin.com/en/quintana-roo/playa-del-carmen_2068368/restaurant/cocina-de-autor-riviera-maya,Cocina de Autor Riviera Maya,+52 984 877 4400,confirmed,https://rivieramaya.grandvelas.com/faqs,"Resort/concierge number printed on resort FAQ page, not a dedicated restaurant line."
+https://guide.michelin.com/en/quintana-roo/playa-del-carmen_2068368/restaurant/ha-1208266,HA',+52 984 159 1600,confirmed,https://www.hotelxcaretmexico.com/en/ha-restaurant/,"Printed on HA' page for reservations (Xcaret hotel line); verified via WebFetch, curl is Access Denied."
+https://guide.michelin.com/en/quintana-roo/playa-del-carmen_2068368/restaurant/le-chique,Le Chique,,site_unreachable,,MICHELIN links only an Instagram page; no official site
+https://guide.michelin.com/en/tennessee/nashville_2790527/restaurant/locust,Locust,,not_found,https://www.locustnashville.com/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/texas/austin_2958315/restaurant/kappo-kappo,Kappo Kappo,,not_found,https://www.kappokappo.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/texas/fort-worth_2954653/restaurant/goldee-s,Goldee’s Bar-B•Q,,not_found,https://goldeesbbq.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/texas/houston_2986624/restaurant/le-jardinier-houston,Le Jardinier Houston,,not_found,https://www.lejardinier-houston.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/texas/houston_2986624/restaurant/tatemo,Tatemó,,not_found,https://www.tatemohtx.com/,No phone printed on site (home plus contact/reservation pages checked)
+https://guide.michelin.com/en/texas/spring_2986734/restaurant/corkscrew-bbq,CorkScrew BBQ,,not_found,https://www.corkscreworders.com/,No phone printed on site (home plus contact/reservation pages checked); MICHELIN number not on site
+https://guide.michelin.com/en/yucatan/chochola_2067346/restaurant/ixi-im,Ixi'im,,not_found,https://yucatan.chablehotels.com/contact/,"Hotel pages only: Chable Yucatan main +52 55 4161 4262, toll-free US +1 844 424 2253 (central lines, not restaurant's own). MICHELIN 999 747 1386 not on site."
+https://guide.michelin.com/en/yucatan/merida_2068208/restaurant/la-barra-de-huniik,La Barra de Huniik,,site_unreachable,,MICHELIN links only an Instagram page; no official site

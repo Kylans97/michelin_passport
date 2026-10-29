@@ -1,0 +1,2084 @@
+{
+"https://guide.michelin.com/en/baja-california-sur/cabo-san-lucas_2059129/restaurant/cocina-de-autor-los-cabos": {
+"phone": "+52 322 176 0227",
+"hit": null,
+"home_status": 200,
+"bytes": 448471
+},
+"https://guide.michelin.com/en/baja-california/el-porvenir_2059721/restaurant/lunario": {
+"phone": "+52 646 156 8469",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 360173
+},
+"https://guide.michelin.com/en/baja-california/ensenada_2059847/restaurant/olivea-farm-to-table": {
+"phone": "+52 646 383 6402",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1470182
+},
+"https://guide.michelin.com/en/baja-california/valle-de-guadalupe_7770290/restaurant/animalon": {
+"phone": "+52 664 375 2658",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 225685
+},
+"https://guide.michelin.com/en/baja-california/valle-de-guadalupe_7770290/restaurant/conchas-de-piedra": {
+"phone": "+52 646 162 8306",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 23271
+},
+"https://guide.michelin.com/en/baja-california/valle-de-guadalupe_7770290/restaurant/damiana": {
+"phone": "+52 646 345 6950",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 24888
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/annalena": {
+"phone": "+1 778-379-4052",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 89669
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/burdock-co": {
+"phone": "+1 604-879-0077",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 4582501
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/iden-quanjude-beijing-duck-house": {
+"phone": "+1 236-477-7777",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 342186
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/kissa-tanto": {
+"phone": "+1 778-379-8078",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 82737
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/masayoshi": {
+"phone": "+1 604-428-6272",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 251491
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/okeya-kyujiro": {
+"phone": "+1 778-999-1038",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 265382
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/published-on-main": {
+"phone": "+1 604-423-4840",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 755522
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/st-lawrence": {
+"phone": "+1 604-620-3800",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 696107
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sumibiyaki-arashi": {
+"phone": "+1 604-568-0522",
+"hit": null,
+"home_status": 200,
+"bytes": 74517
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sushi-hyun": {
+"phone": "+1 778-788-0795",
+"hit": null,
+"home_status": 404,
+"bytes": 0
+},
+"https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sushi-masuda-1214860": {
+"phone": "+1 604-816-3312",
+"hit": null,
+"home_status": 200,
+"bytes": 561412
+},
+"https://guide.michelin.com/en/california/atherton/restaurant/selby-s": {
+"phone": "+1 650-546-7700",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 316082
+},
+"https://guide.michelin.com/en/california/beverly-hills/restaurant/miura-1246958": {
+"phone": "+1 424-204-9584",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 59203
+},
+"https://guide.michelin.com/en/california/beverly-hills/restaurant/nozawa-bar": {
+"phone": "+1 424-216-6158",
+"hit": null,
+"home_status": 403,
+"bytes": 0
+},
+"https://guide.michelin.com/en/california/calistoga/restaurant/auro": {
+"phone": "+1 707-709-2100",
+"hit": null,
+"home_status": 200,
+"bytes": 213243
+},
+"https://guide.michelin.com/en/california/carlsbad/restaurant/jeune-et-jolie": {
+"phone": "+1 760-637-5266",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 916109
+},
+"https://guide.michelin.com/en/california/carlsbad/restaurant/lilo": {
+"phone": "+1 442-303-8245",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 901852
+},
+"https://guide.michelin.com/en/california/carmel-by-the-sea/restaurant/aubergine": {
+"phone": "+1 831-624-8578",
+"hit": null,
+"home_status": 200,
+"bytes": 3526
+},
+"https://guide.michelin.com/en/california/carmel-by-the-sea/restaurant/chez-noir": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 1054594
+},
+"https://guide.michelin.com/en/california/culver-city/restaurant/vespertine": {
+"phone": "+1 323-320-4023",
+"hit": null,
+"home_status": 200,
+"bytes": 23393
+},
+"https://guide.michelin.com/en/california/elk/restaurant/harbor-house": {
+"phone": "+1 707-877-3203",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 3178142
+},
+"https://guide.michelin.com/en/california/encino/restaurant/pasta-bar": {
+"phone": "+1 818-208-1805",
+"hit": null,
+"home_status": "<urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version ",
+"bytes": 0
+},
+"https://guide.michelin.com/en/california/encino/restaurant/shin-sushi": {
+"phone": "+1 818-616-4148",
+"hit": null,
+"home_status": null,
+"bytes": 0
+},
+"https://guide.michelin.com/en/california/geyserville/restaurant/cyrus": {
+"phone": "+1 707-723-5999",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 2411230
+},
+"https://guide.michelin.com/en/california/healdsburg/restaurant/singlethread": {
+"phone": "+1 707-723-4646",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 141083
+},
+"https://guide.michelin.com/en/california/healdsburg/restaurant/troubadour": {
+"phone": "+1 707-756-3972",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1449953
+},
+"https://guide.michelin.com/en/california/la-jolla/restaurant/lucien": {
+"phone": "+1 619-786-3082",
+"hit": null,
+"home_status": 403,
+"bytes": 0
+},
+"https://guide.michelin.com/en/california/laguna-beach/restaurant/r-o-rebel-omakase": {
+"phone": "+1 949-664-3186",
+"hit": null,
+"home_status": 200,
+"bytes": 44679
+},
+"https://guide.michelin.com/en/california/long-beach/restaurant/heritage-1196790": {
+"phone": "+1 562-343-1068",
+"hit": null,
+"home_status": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certi",
+"bytes": 0
+},
+"https://guide.michelin.com/en/california/los-alamos/restaurant/bell-s": {
+"phone": "+1 718-986-0286",
+"hit": null,
+"home_status": 200,
+"bytes": 616975
+},
+"https://guide.michelin.com/en/california/montecito/restaurant/caruso-s": {
+"phone": "+1 805-303-6167",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 466459
+},
+"https://guide.michelin.com/en/california/oakland/restaurant/commis": {
+"phone": "+1 510-653-3902",
+"hit": null,
+"home_status": "The read operation timed out",
+"bytes": 0
+},
+"https://guide.michelin.com/en/california/oakland/restaurant/sun-moon-studio": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 593108
+},
+"https://guide.michelin.com/en/california/palo-alto/restaurant/protege": {
+"phone": "+1 707-312-0931",
+"hit": null,
+"home_status": 200,
+"bytes": 156395
+},
+"https://guide.michelin.com/en/california/paso-robles/restaurant/six-test-kitchen": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 62654
+},
+"https://guide.michelin.com/en/california/paso-robles/restaurant/the-restaurant-at-justin": {
+"phone": "+1 805-591-3224",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1312285
+},
+"https://guide.michelin.com/en/california/rutherford/restaurant/auberge-du-soleil": {
+"phone": "+1 707-967-3111",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 734446
+},
+"https://guide.michelin.com/en/california/saint-helena/restaurant/press": {
+"phone": "+1 707-967-0550",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 198724
+},
+"https://guide.michelin.com/en/california/san-anselmo/restaurant/madcap": {
+"phone": "+1 415-453-9898",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 484931
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/7-adams": {
+"phone": "+1 415-655-9154",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 3419661
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/acquerello": {
+"phone": "+1 415-567-5432",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 178074
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/angler-sf": {
+"phone": "+1 415-872-9442",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 282687
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/atelier-crenn": {
+"phone": "+1 415-440-0462",
+"hit": null,
+"home_status": 200,
+"bytes": 71807
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/benu": {
+"phone": "+1 415-685-4860",
+"hit": null,
+"home_status": 200,
+"bytes": 367739
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/birdsong": {
+"phone": "+1 415-369-9161",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 254581
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/californios": {
+"phone": "+1 415-757-0994",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 46054
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/hilda-and-jesse": {
+"phone": "+1 415-872-7023",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 405758
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/kiln-1210355": {
+"phone": "+1 415-982-9722",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 515022
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/kin-khao": {
+"phone": "+1 415-362-7456",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 336937
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/lazy-bear": {
+"phone": "+1 415-874-9921",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 101621
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/mister-jiu%E2%80%99s": {
+"phone": "+1 415-857-9688",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1283589
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/naides": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 127813
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/nari": {
+"phone": "+1 415-868-6274",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 205080
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/niku-steakhouse": {
+"phone": "+1 415-829-7817",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 738848
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/nisei": {
+"phone": "+1 415-827-6898",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 160590
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/quince": {
+"phone": "+1 415-775-8500",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 107214
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/saison": {
+"phone": "+1 415-828-7990",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 388837
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/san-ho-won": {
+"phone": "+1 415-868-4479",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 861259
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/sons-daughters": {
+"phone": "+1 415-994-7933",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 260944
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/sorrel": {
+"phone": "+1 415-525-3765",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 155584
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/ssal": {
+"phone": "+1 415-814-2704",
+"hit": null,
+"home_status": 200,
+"bytes": 666429
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/state-bird-provisions": {
+"phone": "+1 415-795-1272",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 616996
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/the-progress": {
+"phone": "+1 415-673-1294",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 831713
+},
+"https://guide.michelin.com/en/california/san-francisco/restaurant/wolfsbane": {
+"phone": "+1 415-961-4017",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 209766
+},
+"https://guide.michelin.com/en/california/san-mateo/restaurant/wakuriya": {
+"phone": "+1 650-286-0410",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 134465
+},
+"https://guide.michelin.com/en/california/santa-barbara/restaurant/silvers-omakase": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 140708
+},
+"https://guide.michelin.com/en/california/santa-monica/restaurant/citrin": {
+"phone": "+1 310-395-0881",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 446250
+},
+"https://guide.michelin.com/en/california/santa-monica/restaurant/melisse": {
+"phone": "+1 310-395-0881",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 446250
+},
+"https://guide.michelin.com/en/california/santa-monica/restaurant/seline": {
+"phone": "+1 424-744-8811",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 537938
+},
+"https://guide.michelin.com/en/california/saratoga/restaurant/plumed-horse": {
+"phone": "+1 408-867-4711",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 4150546
+},
+"https://guide.michelin.com/en/california/sonoma/restaurant/enclos": {
+"phone": "+1 707-387-1724",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 201126
+},
+"https://guide.michelin.com/en/california/torrance/restaurant/sushi-i-naba": {
+"phone": "+1 310-686-1878",
+"hit": null,
+"home_status": 200,
+"bytes": 499308
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/corridor-109": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 390173
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/hayato": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 107509
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/holbox": {
+"phone": "+1 213-986-9972",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 190200
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/kali": {
+"phone": "+1 323-871-4160",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 257495
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/kato": {
+"phone": "+1 213-797-5770",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 176242
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/kojima-1248017": {
+"phone": "+1 424-248-0116",
+"hit": null,
+"home_status": 200,
+"bytes": 45558
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/lielle": {
+"phone": "+1 213-376-6574",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 2744002
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/meteora": {
+"phone": "+1 323-402-4311",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 118677
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/mori-nozomi": {
+"phone": "+1 424-273-1146",
+"hit": null,
+"home_status": 200,
+"bytes": 1804699
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/n-naka": {
+"phone": "+1 310-836-6252",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 90469
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/orsa-winston": {
+"phone": "+1 213-687-0300",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 67769
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/osteria-mozza": {
+"phone": "+1 323-297-0100",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 263385
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/providence": {
+"phone": "+1 323-460-4170",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 98745
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/restaurant-ki": {
+"phone": "+1 213-786-3154",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 83537
+},
+"https://guide.michelin.com/en/california/us-los-angeles/restaurant/sushi-kaneyoshi": {
+"phone": "+1 213-277-2588",
+"hit": null,
+"home_status": 200,
+"bytes": 85086
+},
+"https://guide.michelin.com/en/california/us-sacramento/restaurant/localis": {
+"phone": "+1 916-737-7699",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 473745
+},
+"https://guide.michelin.com/en/california/us-sacramento/restaurant/the-kitchen-559371": {
+"phone": "+1 916-568-7171",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 64045
+},
+"https://guide.michelin.com/en/california/us-san-diego/restaurant/addison": {
+"phone": "+1 858-314-1900",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 104365
+},
+"https://guide.michelin.com/en/california/us-san-diego/restaurant/soichi": {
+"phone": "+1 619-677-2220",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 867341
+},
+"https://guide.michelin.com/en/california/west-hollywood/restaurant/somni": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 270672
+},
+"https://guide.michelin.com/en/california/woodside/restaurant/the-village-pub": {
+"phone": "+1 650-851-9888",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 488031
+},
+"https://guide.michelin.com/en/california/yountville/restaurant/the-french-laundry": {
+"phone": "+1 707-944-2380",
+"hit": null,
+"home_status": 200,
+"bytes": 115567
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/alvaro-obregon_2003790/restaurant/sud-777": {
+"phone": "+55 5578 4777",
+"hit": null,
+"home_status": 200,
+"bytes": 454495
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/em": {
+"phone": "+52 55 6450 1302",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 134379
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/esquina-comun": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 510271
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/expendio-de-maiz": {
+"phone": "+52 55 6508 2722",
+"hit": null,
+"home_status": 200,
+"bytes": 310535
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/gaba": {
+"phone": "+55 9107 8494",
+"hit": null,
+"home_status": 200,
+"bytes": 282251
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/masala-y-maiz": {
+"phone": "+52 55 1313 8260",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 382970
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/maximo": {
+"phone": "+55 5264 4291",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 257336
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/rosetta": {
+"phone": "+52 55 5533 7804",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 120521
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/la-once-mil": {
+"phone": null,
+"hit": null,
+"home_status": null,
+"bytes": 0
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/pujol": {
+"phone": "+52 55 5545 4111",
+"hit": null,
+"home_status": 429,
+"bytes": 0
+},
+"https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/quintonil": {
+"phone": "+52 55 5280 2680",
+"hit": null,
+"home_status": 200,
+"bytes": 350264
+},
+"https://guide.michelin.com/en/colorado/aspen_1262302/restaurant/bosq-1206081": {
+"phone": "+1 970-710-7299",
+"hit": null,
+"home_status": 200,
+"bytes": 1279533
+},
+"https://guide.michelin.com/en/colorado/boulder_1261512/restaurant/frasca-food-and-wine": {
+"phone": "+1 303-442-6966",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 157146
+},
+"https://guide.michelin.com/en/colorado/denver_1261491/restaurant/alma-fonda-fina": {
+"phone": "+1 303-455-9463",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 381477
+},
+"https://guide.michelin.com/en/colorado/denver_1261491/restaurant/beckon": {
+"phone": "+1 303-749-0020",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 740827
+},
+"https://guide.michelin.com/en/colorado/denver_1261491/restaurant/bruto": {
+"phone": "+1 720-325-2195",
+"hit": null,
+"home_status": 200,
+"bytes": 16696
+},
+"https://guide.michelin.com/en/colorado/denver_1261491/restaurant/kizaki": {
+"phone": "+1 720-512-2753",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 42709
+},
+"https://guide.michelin.com/en/colorado/denver_1261491/restaurant/margot-1241646": {
+"phone": "+1 720-390-8785",
+"hit": null,
+"home_status": 200,
+"bytes": 342364
+},
+"https://guide.michelin.com/en/colorado/denver_1261491/restaurant/mezcaleria-alma": {
+"phone": "+1 303-484-1471",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1396061
+},
+"https://guide.michelin.com/en/colorado/denver_1261491/restaurant/milpero": {
+"phone": "+1 909-821-2750",
+"hit": null,
+"home_status": 200,
+"bytes": 258904
+},
+"https://guide.michelin.com/en/colorado/denver_1261491/restaurant/the-wolf-s-tailor": {
+"phone": "+1 720-456-6705",
+"hit": null,
+"home_status": 200,
+"bytes": 20869
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/albi": {
+"phone": "+1 202-921-9592",
+"hit": null,
+"home_status": 200,
+"bytes": 155915
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/bresca": {
+"phone": "+1 202-518-7926",
+"hit": null,
+"home_status": 200,
+"bytes": 86568
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/causa": {
+"phone": "+1 202-629-3942",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 31153
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/elcielo-d-c": {
+"phone": "+1 202-569-9855",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 473071
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/fiola": {
+"phone": "+1 202-628-2888",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 408739
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/imperfecto-the-chef-s-table": {
+"phone": "+1 202-964-1012",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 100163
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/jont": {
+"phone": "+1 202-773-9989",
+"hit": null,
+"home_status": 200,
+"bytes": 30869
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/little-pearl": {
+"phone": "+1 202-618-1868",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 24537
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/masseria": {
+"phone": "+1 202-608-1330",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 800672
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/minibar": {
+"phone": "+1 202-393-0812",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 165056
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/mita": {
+"phone": "+1 202-929-7792",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1627880
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/omakase-at-barracks-row": {
+"phone": "+1 202-481-1640",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 94758
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/oyster-oyster": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 164574
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/pineapple-and-pearls": {
+"phone": "+1 202-595-7375",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 110612
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/rania": {
+"phone": "+1 202-804-6434",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 84135
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/rooster-owl": {
+"phone": "+1 202-915-9004",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 252330
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/rose-s-luxury": {
+"phone": "+1 202-580-8889",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 120845
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/sushi-nakazawa1160153": {
+"phone": "+1 202-289-3515",
+"hit": null,
+"home_status": 200,
+"bytes": 5622
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/the-dabney": {
+"phone": "+1 202-240-2660",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 41591
+},
+"https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/xiquet": {
+"phone": "+1 202-913-4671",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 175779
+},
+"https://guide.michelin.com/en/florida/coral-gables/restaurant/shingo": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 365221
+},
+"https://guide.michelin.com/en/florida/fort-lauderdale_2883737/restaurant/chef-s-counter-at-maass": {
+"phone": "+1 954-256-0000",
+"hit": null,
+"home_status": 200,
+"bytes": 53273
+},
+"https://guide.michelin.com/en/florida/miami-beach/restaurant/stubborn-seed": {
+"phone": "+1 786-322-5211",
+"hit": null,
+"home_status": 403,
+"bytes": 0
+},
+"https://guide.michelin.com/en/florida/miami/restaurant/ariete": {
+"phone": "+1 305-363-7993",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 160502
+},
+"https://guide.michelin.com/en/florida/miami/restaurant/boia-de": {
+"phone": "+1 786-209-6310",
+"hit": null,
+"home_status": 200,
+"bytes": 102636
+},
+"https://guide.michelin.com/en/florida/miami/restaurant/cote-miami": {
+"phone": "+1 305-434-4668",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 918745
+},
+"https://guide.michelin.com/en/florida/miami/restaurant/elcielo-miami": {
+"phone": "+1 786-694-9525",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 467580
+},
+"https://guide.michelin.com/en/florida/miami/restaurant/hiden": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 341136
+},
+"https://guide.michelin.com/en/florida/miami/restaurant/l-atelier-de-joel-robuchon-miami": {
+"phone": "+1 305-402-9070",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 142305
+},
+"https://guide.michelin.com/en/florida/miami/restaurant/le-jardinier-miami": {
+"phone": "+1 305-402-9060",
+"hit": null,
+"home_status": 200,
+"bytes": 634540
+},
+"https://guide.michelin.com/en/florida/miami/restaurant/los-felix": {
+"phone": "+1 786-391-1598",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 493996
+},
+"https://guide.michelin.com/en/florida/miami/restaurant/ogawa-1204468": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 88920
+},
+"https://guide.michelin.com/en/florida/north-miami_2883821/restaurant/mutra": {
+"phone": "+1 786-860-1213",
+"hit": null,
+"home_status": 200,
+"bytes": 296254
+},
+"https://guide.michelin.com/en/florida/orlando/restaurant/camille": {
+"phone": "+1 321-972-1822",
+"hit": null,
+"home_status": 200,
+"bytes": 174245
+},
+"https://guide.michelin.com/en/florida/orlando/restaurant/kadence": {
+"phone": "(321) 444-8095",
+"hit": null,
+"home_status": 200,
+"bytes": 214045
+},
+"https://guide.michelin.com/en/florida/orlando/restaurant/sorekara": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 553279
+},
+"https://guide.michelin.com/en/florida/orlando/restaurant/victoria-albert-s": {
+"phone": "+1 407-939-3862",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1364819
+},
+"https://guide.michelin.com/en/florida/surfside/restaurant/the-surf-club-restaurant": {
+"phone": "+1 305-768-9440",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 392624
+},
+"https://guide.michelin.com/en/florida/tampa/restaurant/ebbe": {
+"phone": "+1 813-284-8276",
+"hit": null,
+"home_status": 200,
+"bytes": 6997
+},
+"https://guide.michelin.com/en/florida/tampa/restaurant/kosen": {
+"phone": "+1 813-999-1720",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 625579
+},
+"https://guide.michelin.com/en/florida/tampa/restaurant/koya": {
+"phone": "+1 813-284-7423",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 309419
+},
+"https://guide.michelin.com/en/florida/tampa/restaurant/rocca": {
+"phone": "+1 813-906-5445",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 850050
+},
+"https://guide.michelin.com/en/florida/west-palm-beach_2883871/restaurant/emelina": {
+"phone": null,
+"hit": null,
+"home_status": 308,
+"bytes": 0
+},
+"https://guide.michelin.com/en/florida/winter-park/restaurant/omo-by-jont": {
+"phone": "+1 321-972-5225",
+"hit": null,
+"home_status": 200,
+"bytes": 39551
+},
+"https://guide.michelin.com/en/florida/winter-park/restaurant/soseki": {
+"phone": "+1 407-619-3952",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 591632
+},
+"https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/atlas": {
+"phone": "+1 404-600-6471",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1391722
+},
+"https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/bacchanalia-1196004": {
+"phone": "+1 404-365-0410",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1544813
+},
+"https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/hayakawa": {
+"phone": "+1 770-986-0010",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 241033
+},
+"https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/lazy-betty": {
+"phone": "+1 470-851-1199",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 3006444
+},
+"https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/mujo": {
+"phone": "+1 404-400-6832",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1168623
+},
+"https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/o-by-brush": {
+"phone": "+1 678-898-3239",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1864970
+},
+"https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/omakase-table": {
+"phone": "+1 470-404-5245",
+"hit": null,
+"home_status": 200,
+"bytes": 1598511
+},
+"https://guide.michelin.com/en/georgia/atlanta_2884144/restaurant/so-fox": {
+"phone": "+1 404-341-9374",
+"hit": null,
+"home_status": 200,
+"bytes": 380545
+},
+"https://guide.michelin.com/en/georgia/guy_7770503/restaurant/uberto-restaurant": {
+"phone": "+1 770-884-4434",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 173574
+},
+"https://guide.michelin.com/en/georgia/marietta_2884138/restaurant/spring-1210096": {
+"phone": "+1 678-540-2777",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 155593
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/alinea": {
+"phone": "+1 312-867-0110",
+"hit": null,
+"home_status": 200,
+"bytes": 535863
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/boka": {
+"phone": "+1 312-337-6070",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 121889
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/carino": {
+"phone": "+1 312-722-6838",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 199853
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/el-ideas": {
+"phone": "+1 312-226-8144",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 185153
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/elske": {
+"phone": "+1 312-733-1314",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 64238
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/esme": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 2220366
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/ever": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 88841
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/feld": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 587147
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/galit": {
+"phone": "+1 773-360-8755",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 530052
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/indienne": {
+"phone": "+1 312-291-9427",
+"hit": null,
+"home_status": 200,
+"bytes": 1931885
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/kasama": {
+"phone": "+1 773-697-3790",
+"hit": null,
+"home_status": 200,
+"bytes": 260391
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/mako": {
+"phone": "+1 312-988-0687",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 362945
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/moody-tongue": {
+"phone": "+1 312-600-5111",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 295348
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/next": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 509702
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/oriole": {
+"phone": "+1 312-877-5339",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 231668
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/schwa": {
+"phone": "+1 773-252-1466",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 625677
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/sepia": {
+"phone": "+1 312-441-1920",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 520151
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/smyth": {
+"phone": "+1 773-913-3773",
+"hit": null,
+"home_status": 200,
+"bytes": 85333
+},
+"https://guide.michelin.com/en/illinois/chicago/restaurant/topolobampo": {
+"phone": "+1 312-661-1434",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 146607
+},
+"https://guide.michelin.com/en/jalisco/guadalajara_2011748/restaurant/alcalde-1243800": {
+"phone": "+52 33 3615 7400",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 19320
+},
+"https://guide.michelin.com/en/jalisco/guadalajara_2011748/restaurant/xokol": {
+"phone": "+52 33 4651 7554",
+"hit": null,
+"home_status": null,
+"bytes": 0
+},
+"https://guide.michelin.com/en/louisiana/new-orleans_2906000/restaurant/dakar-nola": {
+"phone": "+1 504-493-9396",
+"hit": null,
+"home_status": 200,
+"bytes": 102816
+},
+"https://guide.michelin.com/en/louisiana/new-orleans_2906000/restaurant/emeril-s": {
+"phone": "+1 504-528-9393",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 210210
+},
+"https://guide.michelin.com/en/louisiana/new-orleans_2906000/restaurant/saint-germain": {
+"phone": "+1 504-218-8729",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 458604
+},
+"https://guide.michelin.com/en/louisiana/new-orleans_2906000/restaurant/zasu": {
+"phone": "+1 504-267-3233",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 30545
+},
+"https://guide.michelin.com/en/massachusetts/boston_2914838/restaurant/311-omakase": {
+"phone": "+1 781-831-0311",
+"hit": null,
+"home_status": 200,
+"bytes": 820235
+},
+"https://guide.michelin.com/en/nevada/las-vegas_2935077/restaurant/e-by-jose-andres": {
+"phone": "+1 702-698-7950",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 5562
+},
+"https://guide.michelin.com/en/nevada/las-vegas_2935077/restaurant/guy-savoy-las-vegas": {
+"phone": "+1 702-731-7286",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 799968
+},
+"https://guide.michelin.com/en/nevada/las-vegas_2935077/restaurant/l-atelier-de-joel-robuchon-las-vegas": {
+"phone": "+1 702-891-7358",
+"hit": null,
+"home_status": "[Errno 60] Operation timed out",
+"bytes": 0
+},
+"https://guide.michelin.com/en/nevada/las-vegas_2935077/restaurant/restaurant-de-joel-robuchon": {
+"phone": "+1 702-891-7925",
+"hit": null,
+"home_status": "[Errno 60] Operation timed out",
+"bytes": 0
+},
+"https://guide.michelin.com/en/new-york-state/brooklyn/restaurant/aska": {
+"phone": "+1 929-337-6792",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 2476176
+},
+"https://guide.michelin.com/en/new-york-state/brooklyn/restaurant/francie": {
+"phone": "+1 718-218-7572",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 224796
+},
+"https://guide.michelin.com/en/new-york-state/brooklyn/restaurant/oxomoco": {
+"phone": "+1 646-688-4180",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 652692
+},
+"https://guide.michelin.com/en/new-york-state/brooklyn/restaurant/restaurant-yuu": {
+"phone": "+1 347-422-0270",
+"hit": null,
+"home_status": 200,
+"bytes": 101857
+},
+"https://guide.michelin.com/en/new-york-state/brooklyn/restaurant/shota-omakase": {
+"phone": "+1 929-989-6979",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1374539
+},
+"https://guide.michelin.com/en/new-york-state/brooklyn/restaurant/the-four-horsemen": {
+"phone": "+1 718-599-4900",
+"hit": null,
+"home_status": 200,
+"bytes": 51937
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/63-clinton": {
+"phone": "+1 917-663-6223",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 442038
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/aquavit": {
+"phone": "+1 212-307-7311",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 173047
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/atera": {
+"phone": "+1 212-226-1444",
+"hit": null,
+"home_status": 200,
+"bytes": 57640
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/atomix": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 187947
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/bar-miller": {
+"phone": "+1 201-304-7937",
+"hit": null,
+"home_status": 200,
+"bytes": 451798
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/blue-hill": {
+"phone": "+1 212-539-1776",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 60087
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/bom": {
+"phone": "+1 212-256-1368",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 899289
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/bridges-1216261": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 37251
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/cafe-boulud": {
+"phone": "+1 212-772-2600",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 239039
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/casa-mono": {
+"phone": "+1 212-253-2773",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 153764
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/cesar": {
+"phone": "+1 212-220-5152",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 417345
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/chef-s-table-at-brooklyn-fare": {
+"phone": "+1 718-243-0050",
+"hit": null,
+"home_status": 200,
+"bytes": 2471
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/corima": {
+"phone": "+1 646-964-4836",
+"hit": null,
+"home_status": 308,
+"bytes": 0
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/cote": {
+"phone": "+1 212-401-7886",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 918745
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/crown-shy": {
+"phone": "+1 212-517-1932",
+"hit": null,
+"home_status": 200,
+"bytes": 125888
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/daniel": {
+"phone": "+1 212-288-0033",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 75127
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/dirt-candy": {
+"phone": "+1 212-228-7732",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 324712
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/eleven-madison-park": {
+"phone": "+1 212-889-0905",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 788511
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/essential-by-christophe": {
+"phone": "+1 646-478-7928",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 185491
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/estela": {
+"phone": "+1 212-219-7693",
+"hit": null,
+"home_status": 200,
+"bytes": 107462
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/frevo": {
+"phone": "+1 646-455-0804",
+"hit": null,
+"home_status": 200,
+"bytes": 101655
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/gabriel-kreuther": {
+"phone": "+1 212-257-5826",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1593114
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/gramercy-tavern": {
+"phone": "+1 212-477-0777",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 283981
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/huso-1218089": {
+"phone": "+1 917-891-1837",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 161619
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/icca": {
+"phone": "+1 646-649-3415",
+"hit": null,
+"home_status": null,
+"bytes": 0
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/jean-georges": {
+"phone": "+1 212-299-3900",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 207695
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/jeju-noodle-bar": {
+"phone": "+1 646-666-0947",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 122438
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/joji": {
+"phone": "+1 212-597-9025",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 212597
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/joo-ok-1214822": {
+"phone": "+1 332-733-3841",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 400354
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/jua": {
+"phone": "+1 646-590-1598",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 765581
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/jungsik-new-york": {
+"phone": "+1 212-219-0900",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 274116
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/kochi": {
+"phone": "+1 646-478-7308",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 360052
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/kosaka": {
+"phone": "+1 212-727-1709",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1609629
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/l%E2%80%99abeille": {
+"phone": "+1 212-542-3898",
+"hit": null,
+"home_status": 200,
+"bytes": 938676
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/le-bernardin": {
+"phone": "+1 212-554-1515",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 149386
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/le-coucou": {
+"phone": "+1 212-271-4252",
+"hit": null,
+"home_status": "<urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version ",
+"bytes": 0
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/le-pavillon-1192744": {
+"phone": "+1 212-662-1000",
+"hit": null,
+"home_status": 308,
+"bytes": 0
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/mari": {
+"phone": "+1 646-649-3545",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 97484
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/masa": {
+"phone": "+1 212-823-9807",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 190024
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/muku": {
+"phone": "+1 212-542-3896",
+"hit": null,
+"home_status": 200,
+"bytes": 1098559
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/noda": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 76420
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/noksu": {
+"phone": "+1 626-657-8420",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 121816
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/noz17": {
+"phone": "+1 917-338-1792",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 43320
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/odo": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 1393519
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/oiji-mi": {
+"phone": "+1 212-256-1259",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 692260
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/per-se": {
+"phone": "+1 212-823-9335",
+"hit": null,
+"home_status": 200,
+"bytes": 80021
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/rezdora-osteria-emiliana": {
+"phone": "+1 646-692-9090",
+"hit": null,
+"home_status": 200,
+"bytes": 130868
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/saga": {
+"phone": "+1 212-339-3963",
+"hit": null,
+"home_status": "<urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version ",
+"bytes": 0
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/semma": {
+"phone": "+1 212-373-8900",
+"hit": null,
+"home_status": 200,
+"bytes": 331688
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/shmone": {
+"phone": "+1 646-438-9815",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1175178
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/sushi-nakazawa": {
+"phone": "+1 212-924-2212",
+"hit": null,
+"home_status": 200,
+"bytes": 5645
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/sushi-noz": {
+"phone": "+1 917-338-1792",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 18514
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/sushi-sho-1213976": {
+"phone": "+1 646-863-2023",
+"hit": null,
+"home_status": null,
+"bytes": 0
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/tempura-matsui": {
+"phone": "+1 212-986-8885",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 352148
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/the-modern": {
+"phone": "+1 212-333-1220",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 218376
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/torien": {
+"phone": "+1 646-669-9946",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 96471
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/torrisi": {
+"phone": "+1 212-254-3000",
+"hit": null,
+"home_status": 308,
+"bytes": 0
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/tsukimi": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 357621
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/tuome": {
+"phone": "+1 646-833-7811",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 176202
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/yamada": {
+"phone": "+1 646-429-8759",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 721698
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/yingtao": {
+"phone": "+1 845-236-6577",
+"hit": null,
+"home_status": 200,
+"bytes": 388893
+},
+"https://guide.michelin.com/en/new-york-state/new-york/restaurant/yoshino-1185037": {
+"phone": "+1 917-444-1988",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 437431
+},
+"https://guide.michelin.com/en/new-york-state/north-salem/restaurant/la-bastide-by-andrea-calstier": {
+"phone": "+1 914-485-1518",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 426712
+},
+"https://guide.michelin.com/en/new-york-state/queens/restaurant/meju": {
+"phone": "+1 718-806-1636",
+"hit": null,
+"home_status": 200,
+"bytes": 157718
+},
+"https://guide.michelin.com/en/new-york-state/tarrytown/restaurant/blue-hill-at-stone-barns": {
+"phone": "+1 914-366-9600",
+"hit": null,
+"home_status": 200,
+"bytes": 60087
+},
+"https://guide.michelin.com/en/north-carolina/charlotte_2987283/restaurant/counter": {
+"phone": "+1 980-292-2090",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 305733
+},
+"https://guide.michelin.com/en/nuevo-leon/monterrey_2041973/restaurant/koli-cocina-de-origen": {
+"phone": "+52 81 9688 7333",
+"hit": null,
+"home_status": 200,
+"bytes": 397230
+},
+"https://guide.michelin.com/en/nuevo-leon/san-pedro-garza-garcia_2042888/restaurant/pangea": {
+"phone": "+52 81 8114 6601",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 830658
+},
+"https://guide.michelin.com/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/levadura-de-olla-restaurante": {
+"phone": "+52 951 269 9068",
+"hit": null,
+"home_status": 200,
+"bytes": 110499
+},
+"https://guide.michelin.com/en/oaxaca/oaxaca-de-juarez_2056768/restaurant/los-danzantes-oaxaca": {
+"phone": "+52 951 656 9096",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 85724
+},
+"https://guide.michelin.com/en/ontario/creemore_1244926/restaurant/the-pine-1209935": {
+"phone": "+1 705-466-2888",
+"hit": null,
+"home_status": 200,
+"bytes": 1211455
+},
+"https://guide.michelin.com/en/ontario/lincoln_1246046/restaurant/restaurant-pearl-morissette": {
+"phone": "+1 905-562-7709",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 64423
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/akin-1212180": {
+"phone": "+1 416-363-0151",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 2167977
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/alo": {
+"phone": "+1 416-260-2222",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 122099
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/danico": {
+"phone": "+1 647-715-1200",
+"hit": null,
+"home_status": 200,
+"bytes": 12836
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/don-alfonso-1890-toronto": {
+"phone": "+1 416-214-5888",
+"hit": null,
+"home_status": 200,
+"bytes": 8609
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/edulis": {
+"phone": "+1 416-703-4222",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 145277
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/enigma-yorkville": {
+"phone": "+1 416-323-3332",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 56722
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/kaiseki-yu-zen-hashimoto": {
+"phone": "+1 416-444-7100",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1437301
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/kappo-sato": {
+"phone": "+1 416-488-6868",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 30061
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/osteria-giulia": {
+"phone": "+1 416-964-8686",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 242842
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/quetzal": {
+"phone": "+1 647-347-3663",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 42353
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/restaurant-20-victoria": {
+"phone": "+1 416-804-6066",
+"hit": null,
+"home_status": 403,
+"bytes": 0
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/shoushin": {
+"phone": "+1 416-488-9400",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 261663
+},
+"https://guide.michelin.com/en/ontario/toronto/restaurant/sushi-masaki-saito": {
+"phone": "+1 416-924-0888",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 588790
+},
+"https://guide.michelin.com/en/pennsylvania/philadelphia_2942787/restaurant/friday-saturday-sunday": {
+"phone": "+1 215-546-4232",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 186323
+},
+"https://guide.michelin.com/en/pennsylvania/philadelphia_2942787/restaurant/her-place-supper-club": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 128941
+},
+"https://guide.michelin.com/en/pennsylvania/philadelphia_2942787/restaurant/provenance": {
+"phone": "+1 445-223-8333",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 138301
+},
+"https://guide.michelin.com/en/quebec/montreal_2433514/restaurant/hoogan-et-beaufort": {
+"phone": "+1 514-903-1233",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 123917
+},
+"https://guide.michelin.com/en/quebec/montreal_2433514/restaurant/jerome-ferrer-europea": {
+"phone": "+1 514-398-9229",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 148374
+},
+"https://guide.michelin.com/en/quebec/montreal_2433514/restaurant/mastard": {
+"phone": "+1 514-843-2152",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 17270
+},
+"https://guide.michelin.com/en/quebec/montreal_2433514/restaurant/sabayon": {
+"phone": "+1 514-503-1883",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 540595
+},
+"https://guide.michelin.com/en/quebec/montreal_2433514/restaurant/sushi-nishinokaze": {
+"phone": "+1 438-558-6558",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 29072
+},
+"https://guide.michelin.com/en/quebec/quebec_2434166/restaurant/arvi": {
+"phone": "+1 581-742-4202",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 19088
+},
+"https://guide.michelin.com/en/quebec/quebec_2434166/restaurant/kebec-club-prive": {
+"phone": "+1 819-342-2030",
+"hit": null,
+"home_status": 403,
+"bytes": 0
+},
+"https://guide.michelin.com/en/quebec/quebec_2434166/restaurant/laurie-raphael": {
+"phone": "+1 418-692-4555",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 256561
+},
+"https://guide.michelin.com/en/quebec/quebec_2434166/restaurant/le-clan": {
+"phone": "+1 418-692-0333",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 179012
+},
+"https://guide.michelin.com/en/quebec/quebec_2434166/restaurant/legende": {
+"phone": "+1 418-614-2555",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 123763
+},
+"https://guide.michelin.com/en/quebec/quebec_2434166/restaurant/taniere": {
+"phone": "+1 418-872-4386",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 168894
+},
+"https://guide.michelin.com/en/quebec/rimouski_2986917/restaurant/narval": {
+"phone": "+1 581-246-4818",
+"hit": null,
+"home_status": 200,
+"bytes": 93712
+},
+"https://guide.michelin.com/en/quebec/saint-mathieu-du-parc_2434226/restaurant/auberge-saint-mathieu": {
+"phone": "+1 819-532-3397",
+"hit": null,
+"home_status": "<urlopen error [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version ",
+"bytes": 0
+},
+"https://guide.michelin.com/en/quintana-roo/playa-del-carmen_2068368/restaurant/cocina-de-autor-riviera-maya": {
+"phone": "+52 984 877 4400",
+"hit": null,
+"home_status": 200,
+"bytes": 430339
+},
+"https://guide.michelin.com/en/quintana-roo/playa-del-carmen_2068368/restaurant/ha-1208266": {
+"phone": "+52 984 159 1600",
+"hit": null,
+"home_status": 403,
+"bytes": 0
+},
+"https://guide.michelin.com/en/quintana-roo/playa-del-carmen_2068368/restaurant/le-chique": {
+"phone": "+52 998 872 8450",
+"hit": null,
+"home_status": 200,
+"bytes": 510285
+},
+"https://guide.michelin.com/en/south-carolina/charleston_2952029/restaurant/malagon-mercado-y-taperia": {
+"phone": "+1 843-926-0475",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 554997
+},
+"https://guide.michelin.com/en/south-carolina/charleston_2952029/restaurant/vern-s": {
+"phone": "+1 843-509-4104",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 213686
+},
+"https://guide.michelin.com/en/south-carolina/charleston_2952029/restaurant/wild-common": {
+"phone": "+1 843-817-7311",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 2649270
+},
+"https://guide.michelin.com/en/south-carolina/greenville_2952122/restaurant/scoundrel": {
+"phone": "+1 864-283-0095",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1521587
+},
+"https://guide.michelin.com/en/tennessee/nashville_2790527/restaurant/bastion-1214985": {
+"phone": "+1 615-490-8434",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 836923
+},
+"https://guide.michelin.com/en/tennessee/nashville_2790527/restaurant/locust": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 163151
+},
+"https://guide.michelin.com/en/tennessee/nashville_2790527/restaurant/the-catbird-seat": {
+"phone": "+1 615-810-8200",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 777645
+},
+"https://guide.michelin.com/en/texas/austin_2958315/restaurant/barley-swine": {
+"phone": "+1 512-394-8150",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 823661
+},
+"https://guide.michelin.com/en/texas/austin_2958315/restaurant/craft-omakase": {
+"phone": "+1 512-887-8889",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 16609
+},
+"https://guide.michelin.com/en/texas/austin_2958315/restaurant/fabrik": {
+"phone": "+1 512-222-9816",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1155708
+},
+"https://guide.michelin.com/en/texas/austin_2958315/restaurant/hestia": {
+"phone": "+1 512-333-0737",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 122585
+},
+"https://guide.michelin.com/en/texas/austin_2958315/restaurant/interstellar-bbq": {
+"phone": "+1 512-382-6248",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 106186
+},
+"https://guide.michelin.com/en/texas/austin_2958315/restaurant/kappo-kappo": {
+"phone": "+1 512-628-1441",
+"hit": null,
+"home_status": 200,
+"bytes": 1117144
+},
+"https://guide.michelin.com/en/texas/austin_2958315/restaurant/leroy-and-lewis-barbecue": {
+"phone": "+1 512-945-9882",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 805902
+},
+"https://guide.michelin.com/en/texas/dallas_2954570/restaurant/mamani": {
+"phone": "+1 469-455-1435",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 73091
+},
+"https://guide.michelin.com/en/texas/dallas_2954570/restaurant/tatsu-dallas": {
+"phone": "+1 469-271-7710",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1512888
+},
+"https://guide.michelin.com/en/texas/fort-worth_2954653/restaurant/goldee-s": {
+"phone": "+1 817-480-4131",
+"hit": null,
+"home_status": 200,
+"bytes": 330748
+},
+"https://guide.michelin.com/en/texas/houston_2986624/restaurant/bcn-taste-tradition": {
+"phone": "+1 832-834-3411",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 242268
+},
+"https://guide.michelin.com/en/texas/houston_2986624/restaurant/le-jardinier-houston": {
+"phone": "+1 713-714-3015",
+"hit": null,
+"home_status": 200,
+"bytes": 509081
+},
+"https://guide.michelin.com/en/texas/houston_2986624/restaurant/march": {
+"phone": "+1 832-380-2481",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 12212
+},
+"https://guide.michelin.com/en/texas/houston_2986624/restaurant/musaafer": {
+"phone": "+1 713-242-8087",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 522192
+},
+"https://guide.michelin.com/en/texas/houston_2986624/restaurant/tatemo": {
+"phone": null,
+"hit": null,
+"home_status": 200,
+"bytes": 462664
+},
+"https://guide.michelin.com/en/texas/san-antonio_2958156/restaurant/isidore": {
+"phone": "+1 210-756-7359",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 85404
+},
+"https://guide.michelin.com/en/texas/san-antonio_2958156/restaurant/mixtli": {
+"phone": "+1 726-238-1046",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 125710
+},
+"https://guide.michelin.com/en/texas/san-antonio_2958156/restaurant/nicosi": {
+"phone": "+1 210-759-0088",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 77752
+},
+"https://guide.michelin.com/en/texas/spring_2986734/restaurant/corkscrew-bbq": {
+"phone": "+1 832-745-3064",
+"hit": null,
+"home_status": 200,
+"bytes": 67750
+},
+"https://guide.michelin.com/en/utah/south-salt-lake_2960184/restaurant/monte-1247517": {
+"phone": "+1 801-577-0551",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 432173
+},
+"https://guide.michelin.com/en/virginia/washington_2960879/restaurant/the-inn-at-little-washington": {
+"phone": "+1 540-675-3800",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 461392
+},
+"https://guide.michelin.com/en/yucatan/chochola_2067346/restaurant/ixi-im": {
+"phone": "+52 999 747 1386",
+"hit": null,
+"home_status": 200,
+"bytes": 571104
+},
+"https://guide.michelin.com/en/yucatan/merida_2068208/restaurant/huniik": {
+"phone": "+52 999 912 6244",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 9629
+},
+"https://guide.michelin.com/en/yucatan/merida_2068208/restaurant/la-barra-de-huniik": {
+"phone": "+52 961 162 3881",
+"hit": null,
+"home_status": 200,
+"bytes": 510274
+}
+}
