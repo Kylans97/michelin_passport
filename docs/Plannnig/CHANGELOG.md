@@ -39,6 +39,24 @@ The format follows Keep a Changelog.
   a published app to load its tiles directly at volume, so this also
   removes a compliance risk. `flutter_map` stays as a dependency because
   the event location picker still uses it.
+- **The event location picker now uses MapTiler tiles.** It was the last
+  screen loading tiles straight from `tile.openstreetmap.org`, and it showed
+  none of the credit those tiles require. It keeps `flutter_map` and works
+  exactly as before (tap to drop the pin, "Use this location"), now with
+  MapTiler's Streets map (`streets-v2`, sharp tiles on high-density
+  screens) and the required "© MapTiler © OpenStreetMap contributors"
+  credit, each name linking to its copyright page.
+  - The key is a MapTiler client key, read from `MAPTILER_KEY` in `.env`
+    (`MapTilerConfig`, `lib/core/maps/`). It is public by design, like the
+    anon key. On MapTiler's free plan a copied key can only use up the
+    monthly allowance, after which tiles stop: there is no bill.
+  - With no key, the picker says the map can't be shown and offers no pin.
+    It never falls back to OpenStreetMap's servers. **`MAPTILER_KEY` must
+    be in the `.env` of whatever build ships this**, or managers can't set
+    an event location on the map.
+  - Not yet checked against MapTiler itself: without a key, every request
+    returns 403, so the style name and tile URL are unconfirmed until a key
+    exists.
 
 ---
 
