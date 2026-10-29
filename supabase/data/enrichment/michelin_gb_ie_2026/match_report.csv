@@ -1,0 +1,98 @@
+country,code,name,kind,detail
+JE,,Bohemia,EXCLUDED (Crown Dependency),"1 star(s), Saint Helier -- in MICHELIN's UK listing but not the UK; production has no JE country row; not added"
+GG,,Vraic,EXCLUDED (Crown Dependency),"1 star(s), Vale -- in MICHELIN's UK listing but not the UK; production has no GG country row; not added"
+GB,hotel_763,Estelle Manor,KEY NOT IN MICHELIN 2026,"production michelin_keys = 1; MICHELIN's page https://guide.michelin.com/us/en/hotels-stays/north-leigh/estelle-manor-13559 carries no Key and the 2026 UK & Ireland Key article does not list it -- left untouched, needs a decision (hotel scope rule 1)"
+GB,rest_0004,Alain Ducasse at The Dorchester,matched by michelin slug,MICHELIN 'Alain Ducasse at The Dorchester' https://guide.michelin.com/en/greater-london/london/restaurant/alain-ducasse-at-the-dorchester; stored point 130 m from MICHELIN's; stored url https://guide.michelin.com/nl/nl/greater-london/london/restaurant/alain-ducasse-at-the-dorchester
+GB,rest_0305,Ikoyi,matched by michelin slug,MICHELIN 'Ikoyi' https://guide.michelin.com/en/greater-london/london/restaurant/ikoyi; stored point 6 m from MICHELIN's; stored url https://guide.michelin.com/us/en/greater-london/london/restaurant/ikoyi
+GB,rest_0329,Kol,matched by michelin slug,MICHELIN 'KOL' https://guide.michelin.com/en/greater-london/london/restaurant/kol; stored point 3 m from MICHELIN's; stored url https://guide.michelin.com/us/en/greater-london/london/restaurant/kol
+GB,rest_1380,Mountain,matched by michelin slug,MICHELIN 'Mountain' https://guide.michelin.com/en/greater-london/london/restaurant/mountain; stored point 2 m from MICHELIN's; stored url https://guide.michelin.com/en/greater-london/london/restaurant/mountain
+GB,rest_1388,The Clove Club,matched by michelin slug,MICHELIN 'The Clove Club' https://guide.michelin.com/en/greater-london/london/restaurant/the-clove-club; stored point 1 m from MICHELIN's; stored url https://guide.michelin.com/en/greater-london/london/restaurant/the-clove-club
+GB,rest_0004,Alain Ducasse at The Dorchester,2026 ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+GB,rest_0305,Ikoyi,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+GB,rest_0329,Kol,2026 ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+GB,rest_1380,Mountain,2026 ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+GB,rest_1388,The Clove Club,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+GB,rest_2448,64 Goodge Street,property_name,Boringdon Hall
+GB,rest_2450,Àclèaf,property_name,Boringdon Hall
+GB,rest_2457,Ambassadors Clubhouse,PHONE HELD BACK,"MICHELIN +44 20 3319 8100: official site prints +44 7367 106141, MICHELIN +44 20 3319 8100 -- held back for a decision"
+GB,rest_2458,Angler,property_name,South Place Hotel
+GB,rest_2462,AVERY,PHONE HELD BACK,MICHELIN +44 131 563 4470: MICHELIN only; not found on official site -- held back
+GB,rest_2465,Ben Wilkinson at The Pass,property_name,South Lodge Hotel & Spa
+GB,rest_2472,Bybrook,property_name,The Manor House
+GB,rest_2483,Cycene,PHONE HELD BACK,"MICHELIN +44 20 7739 9733: MICHELIN number on official site, but printed only on Blue Mountain School's about page as the building's general number -- held back"
+GB,rest_2484,Da Terra,property_name,"Town Hall Hotel, East London"
+GB,rest_2485,Dining Room at The Goring,property_name,The Goring
+GB,rest_2492,Evelyn's Table,PHONE HELD BACK,MICHELIN +44 7921 336010: MICHELIN only; not found on official site -- held back
+GB,rest_2493,FIFTY TWO,PHONE HELD BACK,"MICHELIN +44 1423 871350: official site prints +44 1423 844822, MICHELIN +44 1423 871350 -- held back for a decision"
+GB,rest_2503,Gymkhana,PHONE HELD BACK,"MICHELIN +44 20 3011 5900: official site prints +44 7455 702883, MICHELIN +44 20 3011 5900 -- held back for a decision"
+GB,rest_2515,Interlude,PHONE HELD BACK,"MICHELIN +44 1403 289490: official site prints +44 330 123 5894, MICHELIN +44 1403 289490 -- held back for a decision"
+GB,rest_2518,JÖRO,PHONE HELD BACK,MICHELIN +44 114 698 0627: MICHELIN only; not found on official site -- held back
+GB,rest_2520,Killiecrankie House,property_name,Killiecrankie House
+GB,rest_2521,Kitchen Table,PHONE HELD BACK,MICHELIN +44 20 3011 5770: MICHELIN only; not found on official site -- held back
+GB,rest_2524,Labombe by Trivet,property_name,COMO Metropolitan London
+GB,rest_2536,mana,PHONE HELD BACK,MICHELIN +44 161 392 7294: MICHELIN only; not found on official site -- held back
+GB,rest_2539,Mauro Colagreco at Raffles London at The OWO,PHONE HELD BACK,"MICHELIN +44 20 3907 7520: official site prints +44 20 3907 7500, MICHELIN +44 20 3907 7520 -- held back for a decision"
+GB,rest_2544,Morston Hall,property_name,Morston Hall
+GB,rest_2548,Northcote,property_name,Northcote
+GB,rest_2555,Osip,PHONE HELD BACK,"MICHELIN +44 1749 813322: official site prints +44 1749 987277, MICHELIN +44 1749 813322 -- held back for a decision"
+GB,rest_2563,Pied à Terre,PHONE HELD BACK,"MICHELIN +44 20 7636 1178: official site prints +44 20 4600 7467, MICHELIN +44 20 7636 1178 -- held back for a decision"
+GB,rest_2568,Quilon,property_name,"Taj 51 Buckingham Gate, Suites and Residences London"
+GB,rest_2581,Sabor,PHONE HELD BACK,MICHELIN +44 20 3319 8130: MICHELIN only; not found on official site -- held back
+GB,rest_2587,SOLSTICE BY KENNY ATKINSON,PHONE HELD BACK,MICHELIN +44 191 222 1722: MICHELIN only; not found on official site -- held back
+GB,rest_2592,Stark,PHONE HELD BACK,MICHELIN +44 1206 616430: MICHELIN only; not found on official site -- held back
+GB,rest_2594,Sushi Kanesaka,PHONE HELD BACK,"MICHELIN +44 20 7493 4545: official site prints +44 20 7319 7466, MICHELIN +44 20 7493 4545 -- held back for a decision"
+GB,rest_2596,The Barn,property_name,Moor Hall
+GB,rest_2610,The Peat Inn,property_name,The Peat Inn
+GB,rest_2620,Tom Brown at The Capital,property_name,"The Capital Hotel, Apartments & Townhouse"
+GB,rest_2623,Trivet,property_name,COMO Metropolitan London
+GB,rest_2631,Wild Honey St James,PHONE HELD BACK,"MICHELIN +44 20 7389 7820: official site prints +44 20 7747 2200, MICHELIN +44 20 7389 7820 -- held back for a decision"
+GB,rest_2634,Woven by Adam Smith,PHONE HELD BACK,"MICHELIN +44 1344 876600: official site prints +44 1344 756784, MICHELIN +44 1344 876600 -- held back for a decision"
+GB,rest_2445,1887,HOTEL LINK (exact),hotel_934: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key The Torridon)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 54 m from the restaurant's. 2026-10-29.
+GB,rest_2446,1890 by Gordon Ramsay,HOTEL LINK (exact),hotel_770: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key The Savoy)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 10 m from the restaurant's. 2026-10-29.
+GB,rest_2454,Alex Dilling at Hotel Café Royal,HOTEL LINK (exact),"hotel_841: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/hotel-cafe-royal-6562 (Hotel Café Royal), a 2-Key hotel; restaurant pin 33 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2470,Brooklands by Claude Bosi,HOTEL LINK (exact),"hotel_820: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/the-peninsula-london-13543 (The Peninsula London), a 3-Key hotel; restaurant pin 15 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2476,Cedar Tree by Hrishikesh Desai,HOTEL LINK (exact),hotel_882: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Farlam Hall Hotel & Restaurant)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 36 m from the restaurant's. 2026-10-29.
+GB,rest_2486,Dinner by Heston Blumenthal,HOTEL LINK (exact),"hotel_819: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/mandarin-oriental-hyde-park-5897 (Mandarin Oriental Hyde Park), a 3-Key hotel; restaurant pin 7 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2495,Forest Side,HOTEL LINK (exact),"hotel_884: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/grasmere/forest-side-hotel-9823 (Forest Side Hotel), a 1-Key hotel; restaurant pin 11 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2499,Gidleigh Park,HOTEL LINK (exact),"hotel_831: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/chagford/gidleigh-park-9514 (Gidleigh Park), a 2-Key hotel; restaurant pin 93 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2501,Grace & Savour,HOTEL LINK (campus),hotel_838: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Hampton Manor)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 434 m from the restaurant's. 2026-10-29.
+GB,rest_2502,Gravetye Manor,HOTEL LINK (exact),hotel_835: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Gravetye Manor)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 0 m from the restaurant's. 2026-10-29.
+GB,rest_2504,Hambleton Hall,HOTEL LINK (campus),"hotel_837: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/rutland/hambelton-hall-14155 (Hambleton Hall), a 2-Key hotel; restaurant pin 111 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2507,Hélène Darroze at The Connaught,HOTEL LINK (exact),"hotel_767: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/the-connaught-5891 (The Connaught), a 3-Key hotel; restaurant pin 31 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2515,Interlude,HOTEL LINK (exact),"hotel_897: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/Horsham/leonardslee-house-at-leonardslee-lakes-gardens-14640 (Leonardslee House at Leonardslee Lakes & Gardens), a 1-Key hotel; restaurant pin 85 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2534,LYLA,HOTEL LINK (exact),hotel_900: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key LYLA Restaurant & Rooms)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 2 m from the restaurant's. 2026-10-29.
+GB,rest_2535,Lympstone Manor,HOTEL LINK (campus),"hotel_843: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/exmouth/lympstone-manor-10176 (Lympstone Manor), a 2-Key hotel; restaurant pin 269 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2539,Mauro Colagreco at Raffles London at The OWO,HOTEL LINK (exact),hotel_766: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Raffles London at The OWO)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 28 m from the restaurant's. 2026-10-29.
+GB,rest_2543,Moor Hall,HOTEL LINK (campus),"hotel_845: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/Aughton/moor-hall-14561 (Moor Hall), a 2-Key hotel; restaurant pin 160 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2551,Olive Tree,HOTEL LINK (exact),hotel_931: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key The Queensberry Hotel)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 5 m from the restaurant's. 2026-10-29.
+GB,rest_2554,Ormer Mayfair,HOTEL LINK (exact),"hotel_883: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/flemings-mayfair-117983-7699 (Flemings Mayfair), a 1-Key hotel; restaurant pin 23 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2559,Pavyllon London,HOTEL LINK (exact),"hotel_830: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/four-seasons-hotel-london-at-park-lane-13569 (Four Seasons Hotel London at Park Lane), a 2-Key hotel; restaurant pin 42 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2569,Restaurant Andrew Fairlie,HOTEL LINK (campus),"hotel_764: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/auchterarder/the-gleneagles-hotel-11426 (The Gleneagles Hotel), a 3-Key hotel; restaurant pin 158 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2572,Restaurant Hywel Jones by Lucknam Park,HOTEL LINK (campus),"hotel_818: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/colerne/lucknam-park-emblems-collection-8423 (Lucknam Park, Emblems Collection), a 3-Key hotel; restaurant pin 265 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2582,Shaun Rankin at Grantley Hall,HOTEL LINK (exact),"hotel_834: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/ripon/grantley-hall-uk-9557 (Grantley Hall), a 2-Key hotel; restaurant pin 18 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2589,SOURCE at Gilpin Hotel,HOTEL LINK (campus),"hotel_832: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/windermere/gilpin-lodge-country-house-hotel-8351 (Gilpin Hotel & Lake House), a 2-Key hotel; restaurant pin 103 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2594,Sushi Kanesaka,HOTEL LINK (exact),"hotel_821: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/45-park-lane-5944 (45 Park Lane, Dorchester Collection), a 2-Key hotel; restaurant pin 27 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2601,The Dining Room,HOTEL LINK (campus),"hotel_861: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/malmesbury/whatley-manor-hotel-and-spa-9574 (Whatley Manor Hotel and Spa), a 2-Key hotel; restaurant pin 307 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2611,The Ritz Restaurant,HOTEL LINK (exact),"hotel_856: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/the-ritz-london-14535 (The Ritz London), a 2-Key hotel; restaurant pin 55 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2613,The Samling,HOTEL LINK (exact),"hotel_858: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/ambleside_1/the-samling-64288-11728 (The Samling Hotel), a 2-Key hotel; restaurant pin 27 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2615,The Tudor Pass,HOTEL LINK (exact),hotel_891: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Great Fosters)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 18 m from the restaurant's. 2026-10-29.
+GB,rest_2631,Wild Honey St James,HOTEL LINK (exact),"hotel_919: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/sofitel-london-st-james-5887 (Sofitel London St James), a 1-Key hotel; restaurant pin 52 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,rest_2634,Woven by Adam Smith,HOTEL LINK (campus),hotel_828: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Coworth Park)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 427 m from the restaurant's. 2026-10-29.
+GB,rest_0004,rest_0004,HOTEL LINK (exact),"hotel_852: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/london/the-dorchester-194 (The Dorchester, Dorchester Collection), a 2-Key hotel; restaurant pin 39 m from the hotel's MICHELIN pin. 2026-10-29."
+GB,hotel_854,The Lanesborough,HOTEL CONTACT MISSING,no website; no phone -- see gb_key_hotels_2026.csv
+GB,hotel_883,Flemings Mayfair,HOTEL CONTACT MISSING,no website; no phone -- see gb_key_hotels_2026.csv
+GB,hotel_908,Padstow Townhouse,HOTEL CONTACT MISSING,no phone -- see gb_key_hotels_2026.csv
+GB,hotel_914,Redchurch Townhouse,HOTEL CONTACT MISSING,no phone -- see gb_key_hotels_2026.csv
+GB,hotel_926,The Grandtully Hotel by Ballintaggart,HOTEL CONTACT MISSING,no website; no phone -- see gb_key_hotels_2026.csv
+IE,rest_2648,House,property_name,Cliff House Hotel
+IE,rest_2649,Lady Helen,property_name,Mount Juliet Hotel
+IE,rest_2651,LIGИUM,PHONE HELD BACK,MICHELIN +353 87 330 0559: MICHELIN only; not found on official site -- held back
+IE,rest_2655,The Morrison Room,PHONE HELD BACK,"MICHELIN +353 1 505 2000: MICHELIN number on official site, but the Carton House hotel switchboard, which the restaurant page gives for reservations -- held back"
+IE,rest_2655,The Morrison Room,property_name,"Carton House, A Fairmont Managed Hotel"
+IE,rest_2637,Ballyfin,HOTEL LINK (exact),hotel_939: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Ballyfin Demesne)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 67 m from the restaurant's. 2026-10-29.
+IE,rest_2646,Glovers Alley,HOTEL LINK (exact),hotel_952: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Fitzwilliam Hotel Dublin)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 7 m from the restaurant's. 2026-10-29.
+IE,rest_2652,Patrick Guilbaud,HOTEL LINK (exact),"hotel_944: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/dublin/the-merrion-5739 (The Merrion), a 2-Key hotel; restaurant pin 5 m from the hotel's MICHELIN pin. 2026-10-29."
+IE,rest_2653,Terre,HOTEL LINK (campus),"hotel_945: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/county-cork/castlemartyr-resort-11433 (Castlemartyr Resort), a 1-Key hotel; restaurant pin 251 m from the hotel's MICHELIN pin. 2026-10-29."
+IE,rest_2654,The Bishop's Buttery,HOTEL LINK (exact),hotel_941: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Cashel Palace)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 34 m from the restaurant's. 2026-10-29.
+IE,rest_2656,The Oak Room,HOTEL LINK (campus),hotel_938: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Adare Manor)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 115 m from the restaurant's. 2026-10-29.
+IE,rest_2657,The Pullman,HOTEL LINK (exact),hotel_948: MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key Glenlo Abbey Hotel)'; the hotel row's pin (gb/ie_key_hotels_2026.csv) 41 m from the restaurant's. 2026-10-29.

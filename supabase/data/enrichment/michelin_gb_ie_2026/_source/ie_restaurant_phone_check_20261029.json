@@ -1,0 +1,140 @@
+{
+"https://guide.michelin.com/en/dublin/dublin/restaurant/patrick-guilbaud": {
+"phone": "+353 1 676 4192",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 97030
+},
+"https://guide.michelin.com/en/cork/castlemartyr/restaurant/terre-1203607": {
+"phone": "+353 21 421 9053",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 47975
+},
+"https://guide.michelin.com/en/dun-laoghaire-rathdown/blackrock/restaurant/Liath": {
+"phone": "+353 1 212 3676",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 689213
+},
+"https://guide.michelin.com/en/dublin/dublin/restaurant/chapter-one-by-mickael-viljanen": {
+"phone": "+353 1 873 2266",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 507763
+},
+"https://guide.michelin.com/en/cork/ie-baltimore/restaurant/dede": {
+"phone": "+353 28 48248",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 76402
+},
+"https://guide.michelin.com/en/dublin/dublin/restaurant/glovers-alley": {
+"phone": "+353 1 244 0733",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 264880
+},
+"https://guide.michelin.com/en/dublin/dublin/restaurant/bastible": {
+"phone": "+353 1 473 7409",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 1674837
+},
+"https://guide.michelin.com/en/dublin/dublin/restaurant/d-olier-street": {
+"phone": "+353 1 902 0720",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 770572
+},
+"https://guide.michelin.com/en/waterford/ardmore/restaurant/house": {
+"phone": "+353 24 87800",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 318789
+},
+"https://guide.michelin.com/en/cork/kinsale/restaurant/bastion": {
+"phone": "+353 21 470 9696",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 19304
+},
+"https://guide.michelin.com/en/kilkenny/thomastown/restaurant/lady-helen": {
+"phone": "+353 56 777 3000",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 192254
+},
+"https://guide.michelin.com/en/kilkenny/kilkenny/restaurant/campagne": {
+"phone": "+353 56 777 2858",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 50402
+},
+"https://guide.michelin.com/en/cork/ballydehob/restaurant/chestnut": {
+"phone": "+353 28 25766",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 145089
+},
+"https://guide.michelin.com/en/limerick/adare/restaurant/the-oak-room": {
+"phone": "+353 61 605 200",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 2302258
+},
+"https://guide.michelin.com/en/galway/galway/restaurant/the-pullman": {
+"phone": "+353 91 519 600",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 375744
+},
+"https://guide.michelin.com/en/galway/galway/restaurant/aniar": {
+"phone": "+353 91 535 947",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 103535
+},
+"https://guide.michelin.com/en/clare/doolin/restaurant/homestead-cottage": {
+"phone": "+353 65 679 4133",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 309077
+},
+"https://guide.michelin.com/en/north-tipperary/cashel/restaurant/the-bishop-s-buttery": {
+"phone": "+353 62 62002",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 586893
+},
+"https://guide.michelin.com/en/laois/ballyfin/restaurant/ballyfin": {
+"phone": "+353 57 875 5866",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 105009
+},
+"https://guide.michelin.com/en/dublin/dublin/restaurant/forest-avenue-1198717": {
+"phone": "+353 1 667 8337",
+"hit": null,
+"home_status": 200,
+"bytes": 4415
+},
+"https://guide.michelin.com/en/galway/bullaun/restaurant/lignum": {
+"phone": "+353 87 330 0559",
+"hit": null,
+"home_status": 200,
+"bytes": 695786
+},
+"https://guide.michelin.com/en/kildare/maynooth/restaurant/the-morrison-room": {
+"phone": "+353 1 505 2000",
+"hit": null,
+"home_status": 403,
+"bytes": 0
+},
+"https://guide.michelin.com/en/dublin/dublin/restaurant/variety-jones": {
+"phone": "+353 1 567 1164",
+"hit": "on official site",
+"home_status": 200,
+"bytes": 86171
+}
+}
