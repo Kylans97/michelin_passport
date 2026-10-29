@@ -12,8 +12,9 @@ Status: **PREPARED — NOT APPLIED.** Generated from production's export of
 Review `match_report.csv` first (rows labelled by country). Decided by the
 product owner on 2026-10-30: the **CA country row** goes in (below), and the
 hotel area towns stay, as for the UK (QA-306), and Sushi Sho's 2026 launch
-row is dropped with its 2025 row made current (QA-301). Still for review:
-Harbor House Inn (QA-307) and Rosewood Mayakoba's match (QA-309).
+row is dropped with its 2025 row made current (QA-301), Harbor House Inn is
+linked to its inn after a check on the inn's own site (QA-307), and Rosewood
+Mayakoba's match stands (QA-309). Nothing else waits on a decision.
 
 | After applying | United States (US) | Canada (CA) | Mexico (MX) |
 |---|---|---|---|
@@ -28,7 +29,7 @@ Harbor House Inn (QA-307) and Rosewood Mayakoba's match (QA-309).
 | Key hotels added | 349 (`hotel_1501`–`hotel_1849`) | 42 (`hotel_1850`–`hotel_1891`) | 90 (`hotel_1892`–`hotel_1981`) |
 | … with website / phone | 266 / 269 | 33 / 32 | 58 / 61 |
 | Existing hotels | 10 matched; San Ysidro Ranch gains 1 Key; fills: Hotel Bel-Air phone, 3 MICHELIN urls | — | 7 matched; Rosewood Mayakoba gains 2 Keys (+phone, website, url); Montage Los Cabos phone |
-| Hotel links (0 before) | 8 (6 exact, 2 campus) | 0 | 1 (exact) |
+| Hotel links (0 before) | 9 (7 exact, 2 campus) | 0 | 1 (exact) |
 
 Every starred US/CA/MX restaurant ends with exactly one current
 `michelin_stars` row agreeing with `michelin_stars`, and the per-guide-year
@@ -176,7 +177,14 @@ fewer than for the UK. `exact` within 100 m, else `campus`. SingleThread and
 The Inn at Little Washington had `property_name` set to their own inn; the
 link replaces it (hotel scope rule 3), guarded on the stored value. A
 "Stay at the hotel" link to a non-Key hotel goes in `property_name`.
-Harbor House Inn is left for a decision (QA-307).
+
+One link is by hand (`VERIFIED_LINKS` in `build_prepared.py`, QA-307):
+**Harbor House Inn**. MICHELIN gives no "Stay at the hotel" link, but the
+site MICHELIN's restaurant page links to, theharborhouseinn.com, is one
+business for the inn and the two-star restaurant (one address, one phone,
+"our Michelin-starred restaurant" beside the inn's 11 rooms; read
+2026-10-30); pins 97 m apart, `exact`. Its `property_name` gives way to the
+link like the two above. Linked on the product owner's go-ahead.
 
 ### Place IDs — not done (QA-300)
 
@@ -232,7 +240,7 @@ indexes, `updated_at` triggers), PostGIS stubbed (geography as text), seeded
 with the real export plus production's highest codes and a current 2026 Key row:
 
 - **File without the migration:** aborts, nothing applied.
-- **Migration + file:** applies; the counts in the table above, 9 links, CA
+- **Migration + file:** applies; the counts in the table above, 10 links, CA
   country row with 23 zones, Eleven Madison Park 2012 → 2025 (current),
   Sushi Sho 2025 only (current; launch row gone), new rows with their guide's date.
 - **Re-run of the file:** aborts. **Re-run of the migration:** no-op.

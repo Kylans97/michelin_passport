@@ -58,6 +58,18 @@ TOWN_FIX = {('MX', 'Cuauhtémoc'): 'Mexico City', ('MX', 'Miguel Hildalgo'): 'Me
 # same town segment, and only when exactly one MICHELIN page qualifies.
 
 
+# Links verified by hand on the venue's own site after MICHELIN gave no "Stay at the hotel"
+# link (product owner's go-ahead, 2026-10-30). restaurant michelin_url -> (hotel michelin_url, evidence)
+VERIFIED_LINKS = {
+    'https://guide.michelin.com/en/california/elk/restaurant/harbor-house': (
+        'https://guide.michelin.com/en/hotels-stays/Elk/harbor-house-124019-13822',
+        "QA-307: theharborhouseinn.com, the site MICHELIN's restaurant page links to, is one business for the inn "
+        "and the restaurant: titled 'Two Michelin Star Restaurant in Mendocino | Harbor House Inn', one address "
+        "(5600 South Highway 1, Elk, CA 95432) and one phone for both, 'our Michelin-starred restaurant' beside the "
+        "inn's 11 rooms and cottages. Read 2026-10-30; restaurant pin {d} m from the hotel's MICHELIN pin."),
+}
+
+
 def n(s):
     return re.sub(r'[^a-z0-9 ]', '', unicodedata.normalize('NFKD', s or '').encode('ascii', 'ignore').decode().lower())
 
@@ -323,6 +335,11 @@ def country(CC, X, first_code, first_hcode, shared):
 
     def host_for(r, code):
         """-> ('link', hotel, confidence, evidence) | ('property', name, None, evidence) | (None,...)"""
+        v = VERIFIED_LINKS.get(r['michelin_url'])
+        if v and hid(v[0]) in hotel_by_mid:
+            h = hotel_by_mid[hid(v[0])]
+            d = dist(float(r['lat']), float(r['lon']), h['lat'], h['lon'])
+            return ('link', h, 'exact' if d <= 100 else 'campus', v[1].format(d=d))
         sid = hid(r['stay_hotel_url']) if r['stay_hotel_url'] else None
         if sid and sid in hotel_by_mid:
             h = hotel_by_mid[sid]
