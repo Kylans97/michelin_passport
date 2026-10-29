@@ -10,8 +10,11 @@ Status: **PREPARED — NOT APPLIED.** Generated from production's export of
    with `supabase db query --linked -f <absolute path>`
 
 Review `match_report.csv` first (GB and IE rows are labelled by country).
-Decisions waiting for you: **the new IE country row** (below), QA-281
-(Estelle Manor's Key) and QA-282 (Channel Islands). Ireland was added to
+Still for review at apply: **the new IE country row** (below). Decided by the
+product owner on 2026-10-29, following the proposals here: Estelle Manor stays
+at 1 Key with the optional loss block commented out (QA-281), the Channel
+Islands stay out (QA-282), the hotel area towns stay (QA-286), and Gravetye
+Manor was checked and linked (QA-285). Ireland was added to
 scope by the product owner on 2026-10-29.
 
 | After applying | United Kingdom (GB) | Ireland (IE) |
@@ -24,7 +27,7 @@ scope by the product owner on 2026-10-29.
 | Key hotels (3/2/1) | 9/42/78, exactly MICHELIN's 2026 Keys; plus Estelle Manor, left at 1 for a decision (QA-281) | 2/5/12, exactly MICHELIN's 2026 Keys |
 | Key hotels added | 120 (`hotel_818`–`hotel_937`) | 19 (`hotel_938`–`hotel_956`) |
 | … with website / phone | 117 / 115 | 19 / 19 |
-| Hotel links (0 before) | 31 (22 exact, 9 campus) | 7 (5 exact, 2 campus) |
+| Hotel links (0 before) | 32 (23 exact, 9 campus) | 7 (5 exact, 2 campus) |
 | Existing rows filled (fill-only) | phones for The Newt, The Savoy, NoMad; websites for Ikoyi and KOL; phone for Alain Ducasse | — |
 
 Every GB and IE restaurant ends with exactly one current `michelin_stars`
@@ -145,9 +148,16 @@ Never by name alone. A link needs one of:
   is built from). 22 GB + 2 IE.
 - MICHELIN's 2026 star article says **"Inside the …-MICHELIN-Key <hotel>"**
   for this restaurant's own entry, and that hotel's MICHELIN pin is within
-  500 m with a matching name. 9 GB + 5 IE (Mauro Colagreco at The OWO, 1890
+  500 m with a matching name. 10 GB + 5 IE (Mauro Colagreco at The OWO, 1890
   at The Savoy, Woven at Coworth Park, The Oak Room at Adare Manor, …).
-  Gravetye Manor's two pins are 1.85 km apart, so no link (QA-285).
+
+**Gravetye Manor (QA-285, resolved).** MICHELIN's restaurant and hotel pins
+were 1,854 m apart. The hotel's own site gives one address (Vowels Lane,
+West Hoathly, RH19 4LJ) and one phone for the hotel and "our dining room";
+OpenStreetMap's Gravetye Manor hotel (way 177959405) is 6 m from MICHELIN's
+*restaurant* pin. So MICHELIN's hotel pin (rounded to 4 decimals) is the wrong
+one: the new hotel row takes the restaurant pin (`COORD_FIX` in
+`build_key_hotels.py`), and the restaurant is linked `exact`.
 
 `exact` when the two pins are within 100 m, else `campus`. A host hotel
 MICHELIN shows without a Key (a "Stay at the hotel" link to a non-Key page,
@@ -201,7 +211,7 @@ triggers for `countries`, `cities`, `restaurants`, `hotels`,
 seeded with the real export:
 
 - **Migration + file:** applies; GB 10/23/163 and 9/42/78 (+Estelle Manor),
-  IE 0/5/18 and 2/5/12, IE country row with `{Europe/Dublin}`, 38 links,
+  IE 0/5/18 and 2/5/12, IE country row with `{Europe/Dublin}`, 39 links,
   one current award row each.
 - **Without the migration:** aborts, nothing applied.
 - **Re-run of the file:** aborts. **Re-run of the migration:** no-op.

@@ -255,7 +255,7 @@ def country(CC, X, first_code, first_hcode):
             if len(ok) == 1:
                 d, s, h = ok[0]
                 return ('link', h, 'exact' if d <= 100 else 'campus',
-                        f"MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key {a[2]})'; that hotel's MICHELIN pin {d} m from the restaurant's. 2026-10-29.")
+                        f"MICHELIN 'Every MICHELIN-Star Restaurant in Great Britain & Ireland 2026': '(Inside the ...-MICHELIN-Key {a[2]})'; the hotel row's pin (gb/ie_key_hotels_2026.csv) {d} m from the restaurant's. 2026-10-29.")
             report.append(dict(country=CC, code=code, name=r['name'], kind='ARTICLE HOST NOT LINKED',
                                detail=f"article says inside Key hotel '{a[2]}', but {len(ok)} Key hotel(s) within 500 m with a matching name (nearest: {cands[0][2]['name']} {cands[0][0]} m) -- no link, no property_name"))
             return (None, None, None, None)
