@@ -1,0 +1,151 @@
+# MICHELIN match for the 150 IT Key hotels without michelin_url, 2026-10-29. Columns: hotel_code number | path under https://guide.michelin.com/en/hotels-stays/ | metres from stored location to MICHELIN's JSON-LD geo | metres to the next-nearest MICHELIN Italy hotel, or h/<id> when found through MICHELIN's /h/<id> short link (not in the Italy listing) | postcode | Keys on the page | telephone as MICHELIN prints it | street as MICHELIN prints it.
+317|amalfi/hotel-santa-caterina-5501|11|202|84011|2|+39 089 871012|SS Amalfitana 9
+318|torno-1/il-sereno-8365|39|3356|22020|2|+39 031-5477-800|Via Torrazza 10
+319|praiano/casa-angelina-1201|1|1799|84010|1|+390898131333|Via G. Capriglione 147
+320|positano/il-san-pietro-di-positano-7453|16|1692|84017|3|+39.089.87.54.55|Via Laurito, 2
+321|florence/hotel-brunelleschi-5427|12|90|50122|1|+39 055 27370|Piazza Santa Elisabetta 3
+322|massa-lubrense/art-hotel-villa-fiorella-8477|281|2622|80061|1|+39 081 878 9832|Via Vincenzo Maggio 5
+324|san-giustino-valdarno/il-borro-6248|138|15894|52024|2|+39 055 977053|Località Borro
+325|rome/hotel-vilon-11138|5|43|00186|1|+39 06 878187|Via dell'Arancio 69
+326|noto/country-house-villadorata-8021|0|3853|96017|1|+39 392 202 2910|Contrada Portelle
+327|sorrento-2/grand-hotel-excelsior-vittoria-6718|48|237|80067|1|+39.081.80.71.044|Piazza Tasso 34
+328|venice/aman-venice-7277|33|169|30125|3|+39 041 2707333|Calle Tiepolo 1364
+329|merano/castel-fragsburg-8195|2|1913|39012|2|+39 0473 244071|Via Fragsburg 3
+330|san-pietro-in-cariano/byblos-art-hotel-villa-amista-164|170|9067|37020|1|+39.045.685.5555|Via Cedrare, 78
+331|florence/hotel-lungarno-7072|65|129|50125|1|+39 055 27261|Borgo San Jacopo 14
+332|vulcano/therasia-resort-8826|0|19251|98050|2|+39 090 9852555|Località Vulcanello
+333|isola-d-ischia/botania-relais-spa-8827|55|437|80075|1|+39 081 997978|Via Provinciale Lacco, 284, Forio d'Ischia
+334|viareggio/grand-hotel-principe-di-piemonte-6817|13|9161|55049|2|+3905844011|Piazza Giacomo Puccini 1
+335|1menfi/la-foresteria-planeta-estate-9200|0|35685|92013|1|+39 0925 1955460|Km 91 SP79
+336|rome/hassler-roma-13240|4|171|00187|1|+390669934301|Piazza Trinità dei Monti, 6
+337|schnals-1/goldene-rose-karthaus-11678|5|20466|39020|1|+39 0473 679130|Karthaus/Certosa 29
+338|lisciano-niccone/reschio-hotel-12069|0|13356|06060|3|+39 075 844362|Tabaccaia di Reschio
+339|florence/riva-lofts-florence-206|76|1052|50142|1|+39 055 7130272|Via Baccio Bandinelli 98
+340|sorrento-2/la-minervetta-197|39|736|80067|2|+39.081.877.4455|Via Capo 25
+353|savelletri-di-fasano/masseria-torre-coccaro-158|2|985|72015|1|+39.080.482.9310|Contrada Coccaro 8
+354|venice/londra-palace-venezia-4291|4|146|30122|1|+39.041.5200533|Riva degli Schiavoni 4171
+356|rome/hotel-locarno-9355|8|22|00186|1|+39 06 361 0841|Via della Penna, 22
+357|piegaro/i-borghi-delleremo-13468|0|13226|06066|2|+393669072048|Vocabolo Crocicchia
+358|milan/vico-milano-12446|161|527|20123|1|+39 02 4941 8437|Corso Genova 11
+361|costa-smeralda/cascioni-eco-retreat-11994|0|4820|07021|1|+39 0789 387537|SP 59 bis, Arzachena
+362|menaggio/grand-hotel-victoria-122062-12002|13|3857|22017|2|+39 0344 32003|Viale Benedetto Castelli 9
+363|conca-dei-marini/monastero-santa-rosa-9680|4|1654|84010|1|+39 089 832 1199|Via Roma 2
+364|sorrento-2/mediterraneo-sorrento-13496|4|788|80065|1|+390818781352|Corso Marion Crawford 85
+366|cremolino/nordelaia-12646|246|19122|15010|1|+390143038045|Via Piazze 14/16
+367|gagliano-del-capo/palazzo-daniele-9160|46|27599|73034|1|+39 3388705555|Corso Umberto I, 60
+368|rome/six-senses-rome-12916|0|42|00187|1|+39 06 8681 4000|P.za S. Marcello
+369|florence/villa-cora-79|49|886|50125|2|+39 055 22 87 90|Viale Machiavelli 18
+370|capri/jk-place-capri-2071|19|97|80073|3|+39-081-8384001|Via Marina Grande 225
+371|zafferana-etnea/monaci-delle-terre-nere-6782|0|6269|95019|1|+39 095 708 3638|Via Pietralunga sn
+372|florence/velonas-jungle-luxury-suites-8551|8|284|50123|1|+39 055 27 41 536|Via Montebello 86
+373|montepulciano/precise-tale-poggio-alla-sala-13465|0|4570|53045|1|+39 0578 820001|10 Via Poggio alla Sala
+374|rome/jk-place-roma-7112|14|36|00186|1|+39-06982634|Via di Monte d'Oro 30
+376|torre-canne-di-fasano/canne-bianche-lifestyle-hotel-8117|0|4798|72015|1|+39 080 4829839|32 Via Appia Antica
+377|polizzi-generosa/susafa-7958|45|35891|90028|1|(+39) 091 7487477|Contrada Susafa
+378|venice/il-palazzo-experimental-9199|4|401|30123|1|+39 041 098 0200|Fondamenta Zattere al Ponte Lungo 1412
+379|venice/hotel-metropole-venice-5972|7|136|30122|1|+39041 520 5044|Riva degli Schiavoni 4149
+380|civita-di-bagnoregio/corte-della-maesta-8446|0|10000|01022|3|+39 335 879 3077|Vicolo della Maestà
+381|matera/sextantio-le-grotte-della-civita-3251|52|134|75100|1|+39 0835 332744|Via Civita 28, Sasso Barisano
+382|como/palazzo-albriccci-peregrini-9019|2|4102|22100|1|+39 3312305764|Via Giuseppe Rovelli 28
+383|florence/grand-hotel-minerva-8879|10|104|50123|1|+39 055 27230|Piazza di Santa Maria Novella 16
+385|cinigiano/castello-di-vicarello-216|11|13082|58044|1|+39 0564 990718 / +39 0564 990447|Via Vicarello 1
+386|santo-stefano-di-sessanio/sextantio-442|3|51641|67020|1|0039 0862 899112|Via Principe Umberto
+387|capalbio/locanda-rossa-5387|24|14804|58011|1|+39-0564 890462|Strada Capalbio , Pescia Fiorentina 11b
+388|montalcino/villa-le-prata-residenza-del-vescovo-12200|35|7016|53024|1|+39 0577 847130|SP 103, Località Le Prata 261
+389|champoluc/aethos-monterosa-9146|28|17400|11020|0|+390125938300|Strada Regionale 45, 16
+390|venice/nolinski-venezia-122640-12796|0|270|30124|2|+39 041 406 2459|Calle Larga XXII Marzo 2032
+391|rome/palazzo-talia-14584|2|197|00187|2|+39 06692521|Largo del Nazareno 25
+392|merano/villa-eden-the-longeviti-retreat-11064|15|2709|39012|2|+39 0473 236583|Via Winkel 68
+393|cortona/monastero-di-cortona-13669|0|1999|52044|1|+39 0575 1785839|Via del Salvatore
+394|buggiano-castello/la-monastica-resort-spa-14165|2|21546|51011|1|+39 057230585|Via Santa Scolastica 5
+395|castiglioncello-del-trinoro/monteverdi-tuscany-123854-14194|11|10178|53047|2|+39.0578.268.146|Via di Mezzo 2
+396|verona/vista-verona-122675-12594|21|473|37121|1|+39 045 1117 0880|Corticella Leoni 3
+397|rome/palazzo-ripetta-14263|4|41|00186|1|+39 06 3231144|Via di Ripetta 231
+399|porto-ercole/la-roqqa-15292|14|9711|58018|1|+39 0564 195 0290|Via Panoramica 7
+401|milan/portrait-milano-12981|0|488|20121|2|+39 02 50043661|Corso Venezia 11
+402|amalfi/hotel-miramalfi-13667|2|194|84011|1|+39 089 871588|Via Salvatore Quasimodo 3
+403|alpe-di-siusi/alpina-dolomites-10766|53|5210|39040|1|+39 0471 796 004|Via Compatsch 62/3
+404|san-cassiano/rosa-alpina-5857|57|210|39030|2|+39 0471 849 500|Strada Micura de Rue 20
+405|lecce/la-fiermontina-palazzo-bozzi-corso-13345|0|293|73100|2|+39 0832 1560335|Via Umberto I 38
+406|milan/casa-cipriani-milano-13289|0|504|20121|1|+39 3783040131|Via Palestro 24
+407|orvieto/palazzo-petrvs-14609|3|4117|05018|1|+390763967230|Via del Duomo 23
+408|pienza/casa-newton-14794|3|2929|53026|1|+390578810043|Loc. Villa Borghetto 43
+409|capri/la-palma-capri-an-oetker-collection-hotel-13850|25|165|80073|1|+39 081 837 0133|Via Vittorio Emanuele 39
+410|florence/collegio-alla-querce-auberge-collection-14427|294|1385|50133|3|+39 055 404 9000|Via delle Forbici 21/B
+411|sant-omero/villa-corallo-14215|9|51649|64027|1|+390861887002|Via Metella Nuova 37
+413|syracuse/donna-coraly-country-boutique-hotel-9860|77|8567|96100|1|+39 338 637 6121|Contrada San Michele
+414|florence/villa-la-massa-6576|121|3872|50012|2|+39 055.626.11|Via della Massa 24
+415|venice/corte-di-gabriela-6834|9|189|30124|1|+39 041 5235077|Calle degli Avvocati 3836
+416|boschetto-vecchio/borgo-dei-conti-resort-7114|39|13249|06132|1|+39 075 600 338|Strada Montepetriolo 26
+417|riva-del-garda/lido-palace-7990|0|3868|38066|1|00390464021899|Viale Carducci 10
+419|arco-lake-garda/vivere-suites-and-rooms-5275|11|3878|38062|1|+390464514786|Via Gobbi 30
+420|san-cassiano/lagacio-hotel-mountain-residence-4341|38|298|39030|1|+39 0471 849503|Micurá de Rü 48
+421|cagliari/casa-clat-13425|6|67814|09124|1|+39 070 15 256 371 /  Reservation +39 070 70 50 292 / WhatsApp +39 340 502 7156|Viale Regina Margherita 55/57
+422|kaltern/lake-spa-hotel-seeleiten-13154|0|1067|39052|1|0039 0471 960200|Strada del Vino 30
+423|lecce/la-fiermontina-luxury-home-10935|1|293|73100|1|+39 0832 302481|Piazzetta Scipione De Summa 4
+424|florence/stella-ditalia-14322|2|19|50123|1|+39 055 010 6659|Via de' Tornabuoni  7
+426|rome/portrait-roma-6216|25|66|00187|1|+39 06 6938 0742|Via Bocca di Leone 23
+427|savelletri-di-fasano/masseria-calderisi-11915|0|983|72015|1|+39 080 433 4340|Strada Comunale Sarzano 12/A
+429|gargnano/lefay-resort-spa-lago-di-garda-5131|76|8928|25084|1|+39 0365 241800|Via Feltrinelli 136
+430|cutrofiano/critabianca-11885|0|8408|73020|1|0039-3317668648|SP 278 Cutrofiano-Collepasso km 1,57
+431|noto/masseria-della-volpe-7995|0|4776|96017|1|(+39) 0931.85.60.55|Contrada Casale
+432|rome/singer-palace-hotel-roma-8957|2|42|00186|1|+39 066976161/+39 3490816300(managers mobile)|Via Alessandro Specchi 10
+433|noto/seven-rooms-villadorata-8020|4|3858|96017|1|+39 0931 835 575|Via Cavour 53
+434|pinzolo/lefay-resort-spa-dolomiti-11169|131|6583|38086|2|+39 0465 768800|Via Alpe di Grual 16
+435|torrita-di-siena/siena-house-7129|13|6250|53049|1|+39 3494138388|Pietrabianca 140
+436|syracuse/lume-13038|4|1563|96100|1|+39 3280330316|Via Larga 30, IVA 01997100894
+437|salina/hotel-signum-1101|216|448|98050|1|00390909844222|Via Pastifico 12, Malfa
+438|milan/grand-hotel-et-de-milan-5467|24|191|20121|2|+39.02.723.141|Via Manzoni 29
+439|forte-dei-marmi/principe-forte-dei-marmi-6768|27|1272|55042|1|+390584783636|Viale Ammiraglio Morin, 67
+440|orta-san-giulio1/villa-crespi-5809|11|2278|28016|1|+39 0322 911902|Via G. Fava 18
+441|bagnolo-di-lonigo/la-barchessa-di-villa-pisani-8793|32|18317|36045|1|+39 0444 83 12 07|Via Risaie 1/3
+442|cogne/bellevue-hotel-spa-8179|0|33375|11012|2|+39 0165 74825|Rue Grand Paradis 22
+443|ostuni/paragon-700-boutique-hotel-spa-12280|1|517|72017|1|+39 0831 369219|Largo Michele Ayroldi Carissimo 14
+444|ortisei-1/gardena-grodnerhof-hotel-spa-13142|197|754|39046|1|+39 0471 796315|Via Vidalong 3
+445|portofino/splendido-mare-a-belmond-hotel-portofino-14249|27|304|16034|2|+390185267802|Via Roma 2
+446|florence/the-place-firenze-2021|23|127|50123|1|+39.055.2645181|Piazza Santa Maria Novella 7
+447|tremezzina/grand-hotel-tremezzo-5411|12|2524|22019|2|+39034442491|Via Statale 5401
+448|cernobbio/villa-deste-7331|2|3321|22012|2|+39 031 443 8011|Via Regina 40
+449|torrita-di-siena/lupaia-8678|5|2644|53049|1|+390577668028|Località Lupaia 74
+450|castiglione-della-pescaia/landana-2751|0|16774|58043|1|+39 0564 944800|Località Badiola
+451|vico-equense/hotel-capo-la-gala-5863|8|5882|80069|1|+39 081 801 5758|Via Luigi Serio 8
+452|savelletri-di-fasano/borgo-egnazia-5839|0|1595|di|2|+39 080 225 5000|Contrada Masciola
+454|capri/capri-tiberio-palace-6877|21|129|80073|1|+39 081 97.87.111|Via Croce 11-15
+455|chiusdino/borgo-santo-pietro-7004|0|23292|53012|3|+39 0577 75 12 22|Località Palazzetto 110
+456|montalcino/castello-banfi-il-borgo-116850-6678|4|8880|53024|1|+390577877700|Castello di Poggio alle Mura 1
+457|massa-lubrense/relais-blu-6648|31|2440|80061|1|0039 0818789552|Via Roncato, 60
+458|ravello/palazzo-avino-7367|9|786|84010|1|+39.089.818.181|Via San Giovanni del Toro 28
+459|rome/the-first-luxury-art-hotel-rome-6540|10|46|00186|1|+39 06 4561 7070|Via del Vantaggio 14
+342|taormina/villa-santandrea-a-belmond-hotel-taormina-mare-124593-15176|33|861|98039|2|+39 0942 627 1200|Via Nazionale 137
+343|positano/le-sirenuse-6213|4|84|84017|1|+39.089.875.066|Via Colombo 30
+344|capri/jumeirah-capri-palace-1463-6205|11|319|80071|2|+39.081.978.0111|Via Capodimonte 14
+347|santa-margherita-ligure/grand-hotel-miramare-6228|43|447|16038|1|+39 0185287013|Via Milite Ignoto 30
+348|sorrento-2/bellevue-syrene-1820-441|9|179|80067|2|+390818781024|Piazza della Vittoria 5
+349|portofino/belmond-hotel-splendido-7337|212|357|16034|3|+39 0185 2353 00|Salita Baratta 16
+350|milan/palazzo-parigi-8056|29|326|20121|1|+39 02 625625|Corso di Porta Nuova 1
+351|venice/violino-doro-14205|0|49|30124|1|+39 041 277 0841|Calle Larga XXII Marzo 2091
+352|averlengo/san-luis-retreat-hotel-lodges-15409|18|2271||1|+39 0473 279570|Via Verano 5
+375|montaione/castelfalfi-8779|309|5654|50050|2|+39 0571 891000|Località Castelfalfi
+398|soprabolzano1/adler-lodge-ritten-13915|626|2582|39054|1|+39 0471 155 1700|Lichtenstern 20
+689|amalfi/borgo-santandrea-12461|87|198|84011|3|+39 089 831148|Via Giovanni Augustariccio 33
+690|rome/bulgari-hotel-roma-13135|35|192|00186|3|+39 06 3608 0400|Piazza Augusto Imperatore 10
+691|florence/four-seasons-hotel-firenze-7654|7|232|50121|3|3905526261|Borgo Pinti 99
+693|venice/cipriani-a-belmond-hotel-venice-7365|20|106|30133|3|+39 041 240 801|Giudecca 10
+694|porto-ercole/il-pellicano-7456|5|2514|58019|1|+39.0564.85.81.11|Località Sbarcatello
+696|moltrasio/passalacqua-13418|126|1501|22010|3|+39 031 44311|Via Besana 59
+323|Barberino-Tavarnelle/como-castello-del-nero-64674-7130|1723|h/7130|50028|1|+39 055 80 64 70|Strada Spicciano, 7
+341|Siculiana/adler-sicilia-15289|39|h/15289|92010|2|+39 0922 178 8700|Contrada Salsa
+345|casole-d-Elsa/castello-di-casole-a-belmond-hotel-tuscany-6433|27|h/6433|53031|2|39.0577.961501|Località Querceto
+346|Modena/casa-maria-luigia-13611|94|h/13611|41126|3|+39 059 469054|Stradello Bonaghino 56, San Damaso
+355|Bernalda/palazzo-margherita-6923|12|h/6923|75012|1|+39 0835 549060|Corso Umberto 64
+359|Camaiore-1/locanda-al-colle-5743|27|h/5743|55041|1|+39 0584 915 195|via la Stretta 231, Loc. Capezzano Pianore
+360|Umbertide/vocabolo-moscatelli-boutique-hotel-restaurant-13119|0|h/13119|06019|1|+39 075 5455815|Via del Refari 2, Calzolaro
+365|foiano-%20della-chiana/villa-fontelunga-84|286|h/84|52045|1|+39 0575 660410|Via Cunicchio 5
+384|Castelnuovo-Berardenga/castel-monastero-5253|4529|h/5253|53019|1|+39 0577 570570|Località Monastero d'Ombrone 19
+400|Cerreto%20Guidi/villa-petriolo-15287|2|h/15287|50050|1|+39 0571 177 1225|Via di Petriolo 7
+412|Niscemi/wine-relais-feudi-del-pisciotto-15291|195|h/15291|93015|1|+39 0933 193 5186|Contrada Pisciotto
+418|Scala/palazzo-pascal-12185|83|h/12185|84010|1|+39 089 858312 / +39 338 8322343|Piazza Minuta 1
+425|Gavorrano-1/conti-di-san-bonifacio-7060|13|h/7060|58023|1|+39 0566 80006|Località Casteani, 1
+428|Locorotondo/ottolire-resort-9432|20|h/9432|70010|1|00390804434370|SC 107, Contrada Papariello Serafino 59
+453|Castelnuovo-Berardenga/borgo-san-felice-resort-7244|37|h/7244|53019|2|+3905773964|Località San Felice
+460|Sarentino/terra-the-magic-place-9303|22|h/9303|39058|1|+390471623055|Prati 21
