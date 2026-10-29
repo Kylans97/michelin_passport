@@ -10,6 +10,28 @@ The format follows Keep a Changelog.
 
 ---
 
+## v1.3.0 (15) — 2026-10-29
+
+Built from `release/1.3.0`: 1.3.0 (14) plus one app fix. No database change;
+the ledger is still 107 migrations, local and remote in agreement. No
+migration was added since (14)'s schema diff, so that diff still stands.
+
+### Fixed
+- **Splitting a trip into destinations could be refused with "Each
+  destination's dates must fall within the trip".** Create Trip's default
+  dates kept the current time of day (`now + 30 days`), and the
+  destination check compared full timestamps. A destination lining up with
+  a default trip date therefore counted as outside the trip. Dates in the
+  sheet are now calendar days and compared by day. If a destination really
+  is outside the trip, the message names it and both date ranges. A
+  database refusal shows the database's own text. Reported on 1.3.0 (14)
+  with a 10 Nov – 1 Dec trip split in two. Those exact steps weren't
+  reproduced; the failing path is covered in
+  `test/create_trip_leg_dates_test.dart`. (Cherry-picked from
+  `feature/trips-redesign`, `8ae87c5`.)
+
+---
+
 ## v1.3.0 (14) — 2026-10-29
 
 Built from `release/1.3.0`. Every database change below was applied to
