@@ -8,6 +8,32 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.3.0 (16) — 2026-10-29
+
+Built from `main`, after merging `release/1.3.0` and `data/de-it-2026`.
+This is 1.3.0 (15) plus two app changes: the 1000-row catalogue fix and
+"Invite friends" on Trip Detail. It goes out alongside the MICHELIN
+Germany and Italy 2026 import, which is already live. That import added
+one migration (`20261023130000`), so the ledger at the version bump is
+108 migrations, local and remote in agreement. The import's data is live
+on 14 and 15 too, but only this build shows past the first 1000 places.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay of
+all 108 migrations, 2026-10-29:
+- **The replay:** all 108 files applied with no error.
+- **`supabase db dump`, both sides:** identical apart from the same 6 blank
+  lines (platform statements the CLI filters out).
+- **Storage and auth, compared directly:** all 5 buckets, 13
+  `storage.objects` policies, triggers and RLS on both storage tables are
+  identical.
+- **Expected noise:** the only extra row is the local-only
+  `enforce_versioning_status_transition` trigger.
+- **Before the bump:** `flutter analyze` was clean and all 2,572 tests
+  passed on the merged tree.
+
 ### Added
 - 2026-10-29 — Catalogue: MICHELIN Germany 2026 and Italy 2026.
   - **Migration:** `20261023130000_add_de_it_2026_star_cities` (330 DE/IT
