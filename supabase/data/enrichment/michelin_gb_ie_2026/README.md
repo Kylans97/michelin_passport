@@ -1,6 +1,6 @@
 # United Kingdom & Ireland: MICHELIN 2026 stars and Keys (research 2026-10-29)
 
-Status: **PREPARED — NOT APPLIED.** Generated from production's export of
+Status: **APPLIED 2026-10-29** (ledger 109/109; see the Michelin_Database CHANGELOG). Generated from production's export of
 2026-10-29 19:55 UTC. To apply, run in order:
 
 1. `supabase/migrations/20261023140000_add_gb_ie_2026_star_and_key_cities.sql`

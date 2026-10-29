@@ -1,6 +1,6 @@
 # Contact fields — MICHELIN Key hotels, Spain (2026-10-29)
 
-Status: **PREPARED — NOT APPLIED.**
+Status: **APPLIED 2026-10-29** (see the Michelin_Database CHANGELOG).
 
 | File | What it is |
 |---|---|

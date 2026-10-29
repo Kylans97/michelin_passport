@@ -6,6 +6,64 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-29 — Catalogue data applied: MICHELIN United Kingdom and Ireland 2026 (QA-280–QA-288)
+
+| | |
+|---|---|
+| Applied | 2026-10-29, to production, from branch `claude/stoic-austin-e5e924` (carried on `release/1.3.0-16`) |
+| Migration | `20261023140000_add_gb_ie_2026_star_and_key_cities`: the `countries` row for Ireland (`IE`, `{Europe/Dublin}`), then 132 GB and 24 IE towns. Ledger 108 → 109, local and remote in agreement |
+| Data file | `michelin_gb_ie_2026/prepared_gb_ie_stars_2026.sql`, one transaction with its own guards and post-conditions; it did not abort |
+
+Applied after the Key hotel contact files below; the two touch different countries' rows. Ireland was added to scope by the product owner on 2026-10-29, and the new `countries` row was approved with it.
+
+**Checked after the apply** (read-only):
+
+- **UK stars:** 10 / 23 / 163, MICHELIN's live 2026 UK listing without the Channel Islands (QA-282).
+- **Ireland stars:** 0 / 5 / 18, MICHELIN's live 2026 listing.
+- **UK Keys:** 9 / 42 / 79. That is MICHELIN's 9 / 42 / 78 plus Estelle Manor (`hotel_763`), left at 1 Key with its optional loss block not run (QA-281).
+- **Ireland Keys:** 2 / 5 / 12.
+- **New rows:** 214 restaurants, `rest_2445`–`rest_2658` (191 GB, 23 IE), and 139 Key hotels, `hotel_818`–`hotel_956` (120 GB, 19 IE).
+- **Hotel links:** 39 in GB and IE, none before. Gravetye Manor's hotel row takes the verified point; MICHELIN's hotel pin was 1.85 km off (QA-285).
+- **Award rows:** every GB/IE starred restaurant and Key hotel (except Estelle Manor) has exactly one current award row agreeing with its column, and no new restaurant lacks a city.
+- **Totals:** the catalogue now holds 2,611 starred restaurants and 950 hotels.
+
+**Not done:**
+
+- **Place IDs (QA-280):** no Google Place ID was looked up for the 353 new rows; they are NULL rather than guessed.
+- **Phones (QA-283, QA-284):** held back or missing phones are listed in the README.
+
+---
+
+# 2026-10-29 — Contact fields applied: MICHELIN Key hotels in ten countries (QA-260–QA-279)
+
+| | |
+|---|---|
+| Applied | 2026-10-29, to production, from branch `claude/kind-rubin-d65c44` (carried on `release/1.3.0-16`) |
+| Data files | `michelin_key_hotel_contacts/prepared_{es,it,de,jp,at,ch,be,hu,pl,hr}_hotel_contacts.sql`, one guarded transaction per country, in that order; none aborted. No migration |
+
+Fill-only: each file sets `phone`, `website_url` and `michelin_url` only where they were empty, keyed on `hotel_code` + country. Evidence per hotel is in `<cc>_hotels_all.csv`, and the method is in `ES_REPORT.md`.
+
+**Checked after the apply.** The empty fields left per country match each report exactly:
+
+| | Key hotels | No phone | No website | No MICHELIN link |
+|---|---|---|---|---|
+| Spain | 109 | 3 | 0 | 0 |
+| Italy | 155 | 4 | 1 | 0 |
+| Germany | 126 | 3 | 3 | 0 |
+| Japan | 118 | 17 | 14 | 0 |
+| Austria, Switzerland, Belgium, Hungary, Poland, Croatia | 138 | 2 | 2 | 0 |
+| **Total** | **646** | **29** | **20** | **0** |
+
+Before the apply these ten countries had 619 hotels without a phone, 609 without a website and 626 without a MICHELIN link.
+
+**Still open:**
+
+- **QA-268:** 12 German hotels show no Key on their live MICHELIN page. They keep their Key here, and the change is recorded for a decision.
+- **Japan:** the seven Fufu hotels' sites were under maintenance, so they stay blank.
+- **Other blanks:** the rest are listed in each country's report.
+
+---
+
 # 2026-10-29 — Catalogue data applied: MICHELIN Germany 2026 and Italy 2026 (QA-252–QA-259)
 
 | | |

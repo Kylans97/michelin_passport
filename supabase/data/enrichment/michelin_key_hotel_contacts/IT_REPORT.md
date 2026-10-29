@@ -1,6 +1,6 @@
 # Contact fields — MICHELIN Key hotels, Italy (2026-10-29)
 
-Status: **PREPARED — NOT APPLIED.** This pass uses the same method and
+Status: **APPLIED 2026-10-29** (see the Michelin_Database CHANGELOG). This pass uses the same method and
 rules as Spain (`ES_REPORT.md`). Only the differences are written out here.
 
 | File | What it is |
