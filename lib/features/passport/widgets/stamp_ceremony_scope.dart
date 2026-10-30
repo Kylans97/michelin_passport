@@ -1,5 +1,14 @@
-import 'dart:math' as math;
 import 'package:flutter/widgets.dart';
+
+/// Where the ceremony's stamp ended up on its page, filled in by the
+/// stamp itself: [key] sits on the stamp's own (unrotated) artwork box,
+/// so its render box gives the stamper a target and a size, and [ink] is
+/// the ink colour the page chose for it — what the stamper's rubber face
+/// and the ink pad take on.
+class StampCeremonyTarget {
+  final GlobalKey key = GlobalKey(debugLabel: 'stamp ceremony target');
+  Color? ink;
+}
 
 /// Marks one stamp in the subtree below as the one a stamp ceremony is
 /// pressing in (see stamp_ceremony.dart). [PassportStampWidget] looks this
@@ -11,18 +20,22 @@ import 'package:flutter/widgets.dart';
 class StampCeremonyScope extends InheritedWidget {
   final String stampId;
 
-  /// 0 → 1 over the press itself. At 0 the stamp is not yet on the page.
+  /// 0 → 1 from the moment the rubber stamp touches the page. At 0 the
+  /// impression is not on the page yet.
   final Animation<double> press;
 
-  /// True swaps the press (drop in, rotation easing out, ink settling)
-  /// for a plain fade, honouring the system's reduce-motion setting.
+  /// True swaps the impression's ink transfer for a plain fade, honouring
+  /// the system's reduce-motion setting.
   final bool reducedMotion;
+
+  final StampCeremonyTarget target;
 
   const StampCeremonyScope({
     super.key,
     required this.stampId,
     required this.press,
     required this.reducedMotion,
+    required this.target,
     required super.child,
   });
 
@@ -31,17 +44,18 @@ class StampCeremonyScope extends InheritedWidget {
   static StampCeremonyScope? maybeOf(BuildContext context) =>
       context.getInheritedWidgetOfExactType<StampCeremonyScope>();
 
-  // The stamp lands in the first 60% of the press; the rest is the ink
-  // settling from full strength back to a stamp's normal 0.9 opacity.
-  static const _landing = Interval(0, 0.6, curve: Curves.easeOutCubic);
-  static const _inkIn = Interval(0, 0.25, curve: Curves.easeOut);
-  static const _inkSettle = Interval(0.6, 1, curve: Curves.easeInOut);
+  // The rubber stamp has already brought the motion; the impression only
+  // has to land. Ink transfers almost at once, the paper gives a hair
+  // (1.03 → 1), and the ink then settles from full strength to a stamp's
+  // normal 0.9 opacity as it soaks in.
+  static const _inkIn = Interval(0, 0.12, curve: Curves.easeOut);
+  static const _give = Interval(0, 0.4, curve: Curves.easeOutCubic);
+  static const _inkSettle = Interval(0.4, 1, curve: Curves.easeInOut);
 
-  static const double startScale = 1.2;
-  static const double startExtraDegrees = 6;
+  static const double startScale = 1.03;
 
   /// Wraps [child] (the stamp, already rotated to its own resting angle)
-  /// in the press transform for [t].
+  /// in the impression for [t].
   static Widget pressed({
     required double t,
     required bool reducedMotion,
@@ -50,18 +64,15 @@ class StampCeremonyScope extends InheritedWidget {
     if (reducedMotion) {
       return Opacity(opacity: 0.9 * t.clamp(0.0, 1.0), child: child);
     }
-    final landed = _landing.transform(t);
-    final opacity = t < 0.6
+    if (t <= 0) return Opacity(opacity: 0, child: child);
+    final opacity = t < 0.4
         ? _inkIn.transform(t)
         : 1 - 0.1 * _inkSettle.transform(t);
     return Opacity(
       opacity: opacity.clamp(0.0, 1.0),
       child: Transform.scale(
-        scale: startScale - (startScale - 1) * landed,
-        child: Transform.rotate(
-          angle: startExtraDegrees * (1 - landed) * math.pi / 180,
-          child: child,
-        ),
+        scale: startScale - (startScale - 1) * _give.transform(t),
+        child: child,
       ),
     );
   }
@@ -70,5 +81,6 @@ class StampCeremonyScope extends InheritedWidget {
   bool updateShouldNotify(StampCeremonyScope oldWidget) =>
       stampId != oldWidget.stampId ||
       press != oldWidget.press ||
-      reducedMotion != oldWidget.reducedMotion;
+      reducedMotion != oldWidget.reducedMotion ||
+      target != oldWidget.target;
 }

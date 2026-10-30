@@ -12,6 +12,7 @@ import 'passport_stamp_source.dart';
 import 'widgets/passport_booklet_view.dart';
 import 'widgets/passport_cover.dart' show PassportCoverFace;
 import 'widgets/stamp_ceremony_scope.dart';
+import 'widgets/stamp_ceremony_stamper.dart';
 
 /// A Passport stamp that has just been earned — constructible ONLY from a
 /// row the database has already confirmed: a saved `visits` row (a
@@ -82,12 +83,15 @@ Future<void> celebrateNewStamp(
 
   final OwnPassport passport;
   try {
-    passport = await (load ?? () => loadOwnPassport(Supabase.instance.client))();
+    passport =
+        await (load ?? () => loadOwnPassport(Supabase.instance.client))();
   } catch (_) {
     return;
   }
   final volume = passport.volumes.isEmpty ? null : passport.volumes.first;
-  final pageIndex = volume == null ? null : stampCeremonyPageIndex(volume, stamp.id);
+  final pageIndex = volume == null
+      ? null
+      : stampCeremonyPageIndex(volume, stamp.id);
   if (volume == null || pageIndex == null || !context.mounted) return;
 
   StampCeremony._shown.add(stamp.id);
@@ -125,13 +129,16 @@ int? stampCeremonyPageIndex(PassportVolume volume, String stampId) {
 ///
 /// 1. the green backdrop fades in over the current screen;
 /// 2. the cover swings open onto the page before the stamp's page;
-/// 3. one page turn to the stamp's page;
-/// 4. the stamp presses in (see [StampCeremonyScope.pressed]), with one
-///    medium haptic on contact;
+/// 3. one page turn to the stamp's page, while a small wooden rubber
+///    stamp fades in over an ink pad beside the book;
+/// 4. the stamper dips into the pad (its rubber face takes on the stamp's
+///    own ink), lifts, travels over the page and presses down; on contact
+///    the real impression appears (see [StampCeremonyScope.pressed]) with
+///    one medium haptic, and the stamper lifts away;
 /// 5. a short hold, the cover closes, the backdrop fades out, and the
 ///    route pops.
 ///
-/// About 2.7s in all; a tap anywhere (or a back gesture) skips straight
+/// About 3.1s in all; a tap anywhere (or a back gesture) skips straight
 /// to a quick fade out. Under reduce motion there is no flip and no page
 /// turn: the open booklet fades in already on the stamp's page, the stamp
 /// fades in, a hold, a fade out.
@@ -151,9 +158,12 @@ class StampCeremonyOverlay extends StatefulWidget {
 
   static const backdropDuration = Duration(milliseconds: 200);
   static const skipFadeDuration = Duration(milliseconds: 150);
-  static const pageTurnDuration = Duration(milliseconds: 380);
+
+  /// The stamper's whole run, page turn included — see [StamperPath] for
+  /// its phases; it touches the page at [StamperPath.contact] of this.
+  static const stamperDuration = Duration(milliseconds: 1400);
   static const pressDuration = Duration(milliseconds: 450);
-  static const holdDuration = Duration(milliseconds: 550);
+  static const holdDuration = Duration(milliseconds: 450);
   static const reducedPressDuration = Duration(milliseconds: 400);
   static const reducedHoldDuration = Duration(milliseconds: 1000);
 
@@ -174,6 +184,15 @@ class _StampCeremonyOverlayState extends State<StampCeremonyOverlay>
   );
   late final _press = AnimationController(vsync: this)
     ..addListener(_hapticOnContact);
+  late final _stamper = AnimationController(
+    vsync: this,
+    duration: StampCeremonyOverlay.stamperDuration,
+  )..addListener(_pressOnContact);
+
+  final _target = StampCeremonyTarget();
+  final _stackKey = GlobalKey();
+  // Sized once, from the real stamp, the first time it can be measured.
+  double? _stamperWidth;
 
   bool _started = false;
   bool _finishing = false;
@@ -201,13 +220,20 @@ class _StampCeremonyOverlayState extends State<StampCeremonyOverlay>
     _backdrop.dispose();
     _flip.dispose();
     _press.dispose();
+    _stamper.dispose();
     super.dispose();
   }
 
   void _hapticOnContact() {
-    if (_hapticFired || _press.value < 0.5) return;
+    if (_hapticFired || _press.value <= 0) return;
     _hapticFired = true;
     HapticFeedback.mediumImpact();
+  }
+
+  void _pressOnContact() {
+    if (_press.isAnimating || _press.value > 0) return;
+    if (_stamper.value < StamperPath.contact || _finishing) return;
+    _press.forward();
   }
 
   /// False once the ceremony was skipped (or torn down) mid-step.
@@ -233,8 +259,7 @@ class _StampCeremonyOverlayState extends State<StampCeremonyOverlay>
     } else {
       if (!await _play(_flip.forward())) return;
       setState(() => _turnTo = {widget.stampId});
-      if (!await _wait(StampCeremonyOverlay.pageTurnDuration)) return;
-      if (!await _play(_press.forward())) return;
+      if (!await _play(_stamper.forward())) return;
       if (!await _wait(StampCeremonyOverlay.holdDuration)) return;
       if (!await _play(_flip.reverse())) return;
     }
@@ -246,6 +271,7 @@ class _StampCeremonyOverlayState extends State<StampCeremonyOverlay>
     _finishing = true;
     _flip.stop();
     _press.stop();
+    _stamper.stop();
     try {
       await _backdrop
           .animateBack(
@@ -286,60 +312,70 @@ class _StampCeremonyOverlayState extends State<StampCeremonyOverlay>
             child: Material(
               color: AppColors.deepGreen,
               child: SafeArea(
-                child: Center(
-                  child: IgnorePointer(
-                    child: ExcludeSemantics(
-                      child: StampCeremonyScope(
-                        stampId: widget.stampId,
-                        press: _press,
-                        reducedMotion: _reduceMotion,
-                        child: LayoutBuilder(
-                          builder: (context, constraints) {
-                            final bookSize = _bookSize(constraints);
-                            return _reduceMotion
-                                ? PassportOpenBookFrame(
-                                    volume: widget.volume,
-                                    holderName: passport.holderName,
-                                    avatarUrl: passport.avatarUrl,
-                                    memberNumber: passport.memberNumber,
-                                    size: bookSize,
-                                    countryNameByCode: passport.countryNameByCode,
-                                    newStampIds: const {},
-                                    includeNextStampSlot: true,
-                                    includeBackCoverPage: true,
-                                    initialPage: widget.stampPageIndex,
-                                    onPageChanged: _ignore,
-                                    onTapStamp: _ignore,
-                                    onTapNextStamp: _noop,
-                                    onOpenAllVisits: _ignore,
-                                    onClose: _noop,
-                                  )
-                                : PassportFlipBook(
-                                    controller: _flip,
-                                    isOpen: true,
-                                    coverVolumes: [widget.volume],
-                                    openVolume: widget.volume,
-                                    memberNumber: passport.memberNumber,
-                                    holderName: passport.holderName,
-                                    avatarUrl: passport.avatarUrl,
-                                    bookSize: bookSize,
-                                    countryNameByCode: passport.countryNameByCode,
-                                    newStampIds: _turnTo,
-                                    includeNextStampSlot: true,
-                                    includeBackCoverPage: true,
-                                    initialPage: widget.stampPageIndex - 1,
-                                    onPageChanged: _ignore,
-                                    onTapStamp: _ignore,
-                                    onTapNextStamp: _noop,
-                                    onOpenAllVisits: _ignore,
-                                    onOpen: _ignore,
-                                    onClose: _noop,
-                                  );
-                          },
+                child: Stack(
+                  key: _stackKey,
+                  fit: StackFit.expand,
+                  children: [
+                    Center(
+                      child: IgnorePointer(
+                        child: ExcludeSemantics(
+                          child: StampCeremonyScope(
+                            stampId: widget.stampId,
+                            press: _press,
+                            reducedMotion: _reduceMotion,
+                            target: _target,
+                            child: LayoutBuilder(
+                              builder: (context, constraints) {
+                                final bookSize = _bookSize(constraints);
+                                return _reduceMotion
+                                    ? PassportOpenBookFrame(
+                                        volume: widget.volume,
+                                        holderName: passport.holderName,
+                                        avatarUrl: passport.avatarUrl,
+                                        memberNumber: passport.memberNumber,
+                                        size: bookSize,
+                                        countryNameByCode:
+                                            passport.countryNameByCode,
+                                        newStampIds: const {},
+                                        includeNextStampSlot: true,
+                                        includeBackCoverPage: true,
+                                        initialPage: widget.stampPageIndex,
+                                        onPageChanged: _ignore,
+                                        onTapStamp: _ignore,
+                                        onTapNextStamp: _noop,
+                                        onOpenAllVisits: _ignore,
+                                        onClose: _noop,
+                                      )
+                                    : PassportFlipBook(
+                                        controller: _flip,
+                                        isOpen: true,
+                                        coverVolumes: [widget.volume],
+                                        openVolume: widget.volume,
+                                        memberNumber: passport.memberNumber,
+                                        holderName: passport.holderName,
+                                        avatarUrl: passport.avatarUrl,
+                                        bookSize: bookSize,
+                                        countryNameByCode:
+                                            passport.countryNameByCode,
+                                        newStampIds: _turnTo,
+                                        includeNextStampSlot: true,
+                                        includeBackCoverPage: true,
+                                        initialPage: widget.stampPageIndex - 1,
+                                        onPageChanged: _ignore,
+                                        onTapStamp: _ignore,
+                                        onTapNextStamp: _noop,
+                                        onOpenAllVisits: _ignore,
+                                        onOpen: _ignore,
+                                        onClose: _noop,
+                                      );
+                              },
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    if (!_reduceMotion) _stamperLayer(),
+                  ],
                 ),
               ),
             ),
@@ -349,18 +385,70 @@ class _StampCeremonyOverlayState extends State<StampCeremonyOverlay>
     );
   }
 
+  /// The ink pad and the rubber stamp, over the book. Positions are read
+  /// from the last laid-out frame: the real stamp's artwork box (through
+  /// [StampCeremonyTarget.key]) gives the target and the stamper's size.
+  Widget _stamperLayer() => Positioned.fill(
+    child: IgnorePointer(
+      child: AnimatedBuilder(
+        animation: _stamper,
+        builder: (context, _) {
+          final stack =
+              _stackKey.currentContext?.findRenderObject() as RenderBox?;
+          if (stack == null || !stack.hasSize || _stamper.value == 0) {
+            return const SizedBox.shrink();
+          }
+          final size = stack.size;
+          var target = size.center(Offset.zero);
+          final stamp =
+              _target.key.currentContext?.findRenderObject() as RenderBox?;
+          if (stamp != null && stamp.attached && stamp.hasSize) {
+            target = stack.globalToLocal(
+              stamp.localToGlobal(stamp.size.center(Offset.zero)),
+            );
+            _stamperWidth ??= (stamp.size.width * 0.85).clamp(96.0, 168.0);
+          }
+          // Not until the real stamp has been measured: sizing the pad
+          // from a guess and then correcting it would make it jump.
+          final width = _stamperWidth;
+          if (width == null) return const SizedBox.shrink();
+          final padSize = StamperPainter.padSize(width);
+          final pad = Offset(
+            size.width - 16 - padSize.width / 2,
+            size.height - 12 - padSize.height / 2,
+          );
+          final pose = StamperPath(pad: pad, target: target).at(_stamper.value);
+          // Positioned.fill already makes this exactly the stack's size.
+          return CustomPaint(
+            painter: StamperPainter(
+              pose: pose,
+              pad: pad,
+              width: width,
+              ink: _target.ink ?? AppColors.deepGreen,
+              padOpacity: pose.opacity,
+            ),
+          );
+        },
+      ),
+    ),
+  );
+
   static void _ignore(Object? _) {}
   static void _noop() {}
 
   // The Passport tab's own sizing (PassportBookletView._bookWidth — 92% of
   // the width inside the page margin, clamped), additionally capped so
   // the whole open book plus its topbar and page dots fits the height.
-  static const _aspect = PassportCoverFace.baseHeight / PassportCoverFace.baseWidth;
+  static const _aspect =
+      PassportCoverFace.baseHeight / PassportCoverFace.baseWidth;
   static const _pageDotsAllowance = 40.0;
 
   Size _bookSize(BoxConstraints constraints) {
-    final byWidth = ((constraints.maxWidth - 2 * CsSpacing.pageHorizontal) * 0.92)
-        .clamp(240.0, 480.0);
+    final byWidth =
+        ((constraints.maxWidth - 2 * CsSpacing.pageHorizontal) * 0.92).clamp(
+          240.0,
+          480.0,
+        );
     final byHeight =
         (constraints.maxHeight -
             PassportOpenBookFrame.topbarAllowance -

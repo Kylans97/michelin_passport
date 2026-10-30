@@ -98,6 +98,9 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
         : stampPainterFor(widget.variant, data);
 
     final ceremony = _ceremony;
+    // Tell the ceremony's stamper which ink this page gave the stamp; the
+    // key below gives it where the stamp sits and how big it is.
+    ceremony?.target.ink = widget.ink.color;
     return Semantics(
       label: widget.semanticLabel,
       button: true,
@@ -122,6 +125,7 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
               customBorder: const CircleBorder(),
               child: ExcludeSemantics(
                 child: SizedBox.fromSize(
+                  key: ceremony?.target.key,
                   size: size,
                   child: Stack(
                     // Non-positioned children of a loose (the default)

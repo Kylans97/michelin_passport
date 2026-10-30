@@ -11,12 +11,14 @@ The format follows Keep a Changelog.
 ### Added
 - **Stamp ceremony.** When a member earns a new Passport stamp, their own
   Passport opens full screen over the screen they are on. The real cover
-  swings open, the book turns one page to where the stamp lands, and the
-  stamp presses in: it drops from 1.2× while easing out its last 6° of
-  rotation, the ink lands at full strength and settles to 90%, and one
-  medium haptic fires on contact. The book then closes and the member is
-  back where they were. The whole ceremony takes about 2.6s, and a tap
-  skips it. Under reduce motion there is no flip and no page turn: the
+  swings open, and the book turns one page to where the stamp lands. A
+  small wooden rubber stamp appears over an ink pad beside the book. It
+  dips into the pad, and its rubber face takes on the stamp's own ink
+  colour. It then lifts, arcs over the page and presses down. On contact,
+  the real impression appears at full strength, one medium haptic fires,
+  and the ink settles to 90%. The stamper lifts away, the book closes, and
+  the member is back where they were. The whole ceremony takes about
+  3.1s, and a tap skips it. Under reduce motion there is no flip and no page turn: the
   open book fades in already on the right page, and the stamp fades in.
   - It is one entry point, `celebrateNewStamp`
     (`lib/features/passport/stamp_ceremony.dart`), called from all five
@@ -31,7 +33,11 @@ The format follows Keep a Changelog.
     sheet.
   - It runs on the real booklet (`PassportFlipBook`, cover, pages and
     stamp painters), not a replica. The stamp being pressed hands its
-    entrance to a `StampCeremonyScope`.
+    entrance to a `StampCeremonyScope`, and it reports its position and
+    ink to the stamper through that scope. The stamper and pad
+    (`stamp_ceremony_stamper.dart`) are the only new artwork. They are
+    decoration around the impression; the impression itself is still the
+    stamp's own painter.
   - Trigger rules:
     - An `EarnedStamp` can only be built from a saved `Visit` or a saved
       `EventConfirmedAttendance`, so Interested/Going and failed saves
@@ -59,6 +65,12 @@ The format follows Keep a Changelog.
   overlay now provides its own `Material`, and a test checks the
   inherited text style. That test fails without the fix. This would recur
   for any booklet widget shown from a new route.
+- **Near-miss: the stamper drew nothing on the device.** Its `CustomPaint`
+  was given the Stack's own `Size` object, which trips Flutter's "size
+  assigned inappropriately" layout assertion. Nothing painted, while the
+  impression underneath still landed on time, so it looked like a timing
+  problem. `Positioned.fill` already sizes the layer, and the argument is
+  gone. A test now checks that the stamper is on screen during its run.
 
 ### Known limits
 - "Once per stamp" is per app session. Re-confirming an event that was

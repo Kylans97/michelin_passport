@@ -26,6 +26,7 @@ import 'package:michelin_passport/features/passport/stamp_ceremony.dart';
 import 'package:michelin_passport/features/passport/widgets/passport_booklet_view.dart';
 import 'package:michelin_passport/features/passport/widgets/passport_cover.dart';
 import 'package:michelin_passport/features/passport/widgets/passport_stamp.dart';
+import 'package:michelin_passport/features/passport/widgets/stamp_ceremony_stamper.dart';
 import 'package:michelin_passport/models/event.dart';
 import 'package:michelin_passport/models/event_confirmed_attendance.dart';
 import 'package:michelin_passport/models/passport_venue.dart';
@@ -149,6 +150,9 @@ Future<void> _pumpFor(WidgetTester tester, int ms) async {
 }
 
 final _ceremony = find.byType(StampCeremonyOverlay);
+final _stamper = find.byWidgetPredicate(
+  (w) => w is CustomPaint && w.painter is StamperPainter,
+);
 
 double _stampOpacity(WidgetTester tester, String stampId) {
   final stamp = find.byWidgetPredicate(
@@ -182,8 +186,9 @@ void main() {
 
   group('celebrateNewStamp — trigger rules', () {
     testWidgets(
-      'a confirmed visit opens the real booklet, presses the stamp once '
-      'with one haptic, and returns to the same screen untouched',
+      'a confirmed visit opens the real booklet, the rubber stamp presses '
+      'the stamp on contact with one haptic, and it returns to the same '
+      'screen untouched',
       (tester) async {
         final context = await _pumpHome(tester);
         final homeState = _homeKey.currentState;
@@ -206,20 +211,28 @@ void main() {
           isNot(TextDecoration.underline),
         );
 
-        // Backdrop (200) + cover open (450) + page turn (380): the stamp
-        // is on its page but not yet pressed.
+        // Backdrop (200) + cover open (450), then the stamper's run: the
+        // page has turned and the rubber stamp is out, over its ink pad
+        // or on its way, but nothing is on the page yet.
         await _pumpFor(tester, 1050);
+        expect(_stamper, findsOneWidget);
         expect(_stampOpacity(tester, 'v-new'), 0);
         expect(haptics, isEmpty);
 
-        // The press (450, plus a frame of slack per step before it): ink
-        // lands and settles at a stamp's usual 0.9.
-        await _pumpFor(tester, 600);
+        // Still in the air just before contact (at 80% of the 1400ms run,
+        // ~1770ms in): no impression, no haptic.
+        await _pumpFor(tester, 650);
+        expect(_stampOpacity(tester, 'v-new'), 0);
+        expect(haptics, isEmpty);
+
+        // Contact: the impression lands with the one haptic, and its ink
+        // settles at a stamp's usual 0.9.
+        await _pumpFor(tester, 700);
         expect(_stampOpacity(tester, 'v-new'), closeTo(0.9, 0.001));
         expect(haptics, ['HapticFeedbackType.mediumImpact']);
 
         // Hold, close, fade out — then it is gone.
-        await _pumpFor(tester, 1300);
+        await _pumpFor(tester, 1000);
         await tester.pumpAndSettle();
         await done;
 
@@ -383,6 +396,7 @@ void main() {
         expect(find.byType(PassportFlipBook), findsNothing);
         expect(find.byType(PassportCoverFace), findsNothing);
         expect(find.byType(PassportOpenBookFrame), findsOneWidget);
+        expect(_stamper, findsNothing);
 
         // After the backdrop (200), the stamp is on the page, unpressed.
         await _pumpFor(tester, 200);
@@ -411,5 +425,35 @@ void main() {
         expect(_ceremony, findsNothing);
       },
     );
+  });
+
+  group('StamperPath', () {
+    const path = StamperPath(pad: Offset(300, 700), target: Offset(150, 250));
+
+    test('starts hovering over the ink pad, uninked', () {
+      final p = path.at(0.05);
+      expect(p.ground, const Offset(300, 700));
+      expect(p.height, greaterThan(0));
+      expect(p.inked, 0);
+    });
+
+    test('touches the pad on the dip and comes away inked', () {
+      expect(path.at(0.26).height, closeTo(0, 0.001));
+      expect(path.at(0.3).inked, 1);
+      expect(path.at(0.3).ground, const Offset(300, 700));
+    });
+
+    test('is in the air until contact, then touching exactly on the stamp', () {
+      expect(path.at(StamperPath.contact - 0.02).height, greaterThan(0));
+      final p = path.at(StamperPath.contact);
+      expect(p.height, 0);
+      expect(p.ground, const Offset(150, 250));
+    });
+
+    test('lifts away and fades out by the end', () {
+      final p = path.at(1);
+      expect(p.height, greaterThan(0));
+      expect(p.opacity, 0);
+    });
   });
 }
