@@ -62,6 +62,25 @@
                     android:scheme="https"
                     android:host="mantelier.app"
                     android:pathPrefix="/auth/reset-password"/>
+                <!-- Sign-up confirmation — exact path, so /auth/confirmed
+                     (where resent links land, web-only) never matches. -->
+                <data
+                    android:scheme="https"
+                    android:host="mantelier.app"
+                    android:path="/auth/confirm"/>
+            </intent-filter>
+            <!-- mantelier:// — what the "Open Mantelier" buttons on
+                 mantelier.app/auth/* link to. A Universal Link / App Link
+                 tapped on its own domain stays in the browser, so those
+                 pages can't reopen the app with an https link. Safe to
+                 leave unverified: every link this scheme carries is a PKCE
+                 code, useless to any other app without this install's
+                 stored code verifier. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="mantelier" android:host="auth"/>
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

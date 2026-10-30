@@ -158,6 +158,94 @@ The format follows Keep a Changelog.
   "The highest migration" has to be checked across all branches, not taken
   from a brief.
 
+- **mantelier.app's "Nights we're watching" list is current again.** The
+  three hard-coded events, from August and September 2026, were replaced
+  on 2026-10-30 with the next three published, uncancelled events in
+  production, read with the anon key: 9 Nov (Amsterdam), 22 Nov (Schoorl)
+  and 24–25 Dec (Eijsden). The 1 Nov dinner in Aalten was left out
+  because it was two days away. Names, dates and cities are exactly as
+  stored. The list is still static, so it goes stale again after 9 Nov.
+  On screens narrower than 480px the date now sits above the name, since
+  the real names wrapped to five lines beside it.
+- **A confirmation landing page and a way back from an expired link.**
+  `site/auth/confirm.html`, served at `https://mantelier.app/auth/confirm`
+  and (through `site/_redirects`) at `/auth/confirmed`, in the same branded
+  style as `reset-password.html`. It says the account is confirmed when the
+  link worked. When the link has expired or was already used, it says so
+  and tells the person what to do next. `/auth/confirm` is now a Universal
+  Link (AASA, and the Android intent filter), so with the app installed the
+  link opens Mantelier, which signs the person in with the PKCE code and
+  shows the welcome flow. `/auth/confirmed` is deliberately web-only (see
+  Fixed).
+- **A `mantelier://` URL scheme** (iOS `CFBundleURLTypes`, Android intent
+  filter on host `auth`). The "Open Mantelier" buttons on
+  `/auth/confirm` and `/auth/reset-password` now use it. On
+  `/auth/confirm` the button links to `mantelier://auth/confirm?code=…`.
+  On `/auth/reset-password` it links to the same path, query and fragment
+  on the new scheme. supabase_flutter's PKCE handling reads `?code=`
+  whatever the scheme. Checked in the iOS simulator: `simctl openurl
+  "mantelier://auth/confirm?code=…"` asks "Open in Mantelier?" and
+  brings the app to the front with no crash. The probe code was bogus
+  and the simulator was already signed in, so this showed the scheme
+  works, not a sign-in through it. Builds up to 1.4.0 (17) don't
+  register the scheme, so on those Safari reports an invalid address.
+- **"Send a new confirmation link" on sign-in.** When sign-in is refused
+  with `email_not_confirmed`, LoginScreen offers to resend the confirmation
+  (`AuthRepository.resendSignupConfirmation`).
+
+### Fixed
+- **New users saw "server not available" after tapping the confirmation
+  link, although the account had been created and confirmed.**
+  `AuthRepository.signUp()` passed no `emailRedirectTo`, so GoTrue sent the
+  user to the project's Site URL after confirming. In production that was
+  still Supabase's default `http://localhost:3000`. This was verified on
+  2026-10-30 with a read-only probe: a GET to production's
+  `/auth/v1/verify` with an invalid token returns a `303` to
+  `http://localhost:3000#error=…`. The same probe with
+  `redirect_to=https://mantelier.app/auth/reset-password`, which is on the
+  allow-list, returns a `303` to that URL. GoTrue confirms the email
+  *before* it redirects, so the account was always fine. The phone was
+  sent to `localhost`, where nothing answers. `signUp()` now passes
+  `https://mantelier.app/auth/confirm`. This needed the production Auth
+  changes and site deploy below, both done on 2026-10-30.
+  - **Near-miss:** gotrue-dart's `resend()` sends no PKCE code challenge,
+    so a resent confirmation comes back with implicit-flow tokens. In PKCE
+    mode, supabase_flutter ignores those tokens. Sent to the Universal
+    Link, the resent link would have opened the app to a silent sign-in
+    screen. Resends therefore go to the web-only `/auth/confirmed`.
+  - **Near-miss:** the "Open Mantelier" buttons on the confirm and
+    reset-password pages did nothing. The product owner found this while
+    testing on 2026-10-30. Both linked to the page's own https URL, and
+    iOS never hands a Universal Link to the app when it is tapped on its
+    own domain, so the tap only reloaded the page. `reset-password.html`
+    has done this since 2026-09-24, where its comment claimed the
+    opposite. Both buttons now use `mantelier://` (see Added).
+  - **Near-miss:** supabase_flutter reports a failed link only as an error
+    on `onAuthStateChange`. AuthGate's subscription had no `onError`, so
+    an expired link left a silent sign-in screen. AuthGate now shows a
+    notice for the two link failures it can identify (`otp_expired`, and a
+    missing PKCE verifier or flow state). It deliberately ignores every
+    other stream error, such as a failed session refresh, because the
+    same stream carries errors that have nothing to do with a link.
+  - **Production Auth settings, for the product owner** (Dashboard →
+    Authentication → URL Configuration): set **Site URL** to
+    `https://mantelier.app/auth/confirm`, which also fixes 1.4.0 (17) and
+    older builds because they send no redirect. Add
+    `https://mantelier.app/auth/confirm` and
+    `https://mantelier.app/auth/confirmed` to **Redirect URLs**. Then
+    deploy `site/` (`auth/confirm.html`, `_redirects` and the updated
+    `.well-known/apple-app-site-association`) to mantelier.app.
+    `supabase/config.toml` lists the same redirect URLs for the local
+    stack only.
+  - **Done, 2026-10-30.** The product owner changed both dashboard
+    settings. The `/verify` probe now redirects to
+    `https://mantelier.app/auth/confirm`, and accepts `/auth/confirmed`.
+    `site/` was deployed with `wrangler pages deploy … --project-name
+    mantelier --branch main`. mantelier.app serves `/auth/confirm`,
+    `/auth/confirmed` (through the rewrite) and the new AASA, and Apple's
+    AASA CDN already has the `/auth/confirm` entry. A full sign-up on a
+    device has not been run yet.
+
 ---
 
 ## v1.4.0 (17) — 2026-10-30

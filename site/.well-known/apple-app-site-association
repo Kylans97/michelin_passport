@@ -4,7 +4,8 @@
       {
         "appID": "QMF89BFNGF.app.mantelier",
         "components": [
-          { "/": "/auth/reset-password" }
+          { "/": "/auth/reset-password" },
+          { "/": "/auth/confirm" }
         ]
       }
     ]

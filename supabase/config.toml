@@ -166,7 +166,7 @@ site_url = "http://127.0.0.1:3000"
 # any redirectTo not on this list, falling back to site_url instead, so
 # leaving this out would silently break password recovery rather than
 # error loudly.
-additional_redirect_urls = ["https://127.0.0.1:3000", "https://mantelier.app/auth/reset-password"]
+additional_redirect_urls = ["https://127.0.0.1:3000", "https://mantelier.app/auth/reset-password", "https://mantelier.app/auth/confirm", "https://mantelier.app/auth/confirmed"]
 # How long tokens are valid for, in seconds. Defaults to 3600 (1 hour), maximum 604,800 (1 week).
 jwt_expiry = 3600
 # JWT issuer URL. If not set, defaults to auth.external_url.
