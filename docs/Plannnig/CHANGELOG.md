@@ -8,6 +8,48 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.1 (19) — 2026-10-30
+
+Built from `main`, after merging three branches into `release/1.5.1`:
+- `claude/venue-follow-team`: the Follow pill, one wishlist heart, one
+  notification flow after a follow, and the venue team;
+- `claude/friends-activity-globe`: Friends' Activity, a friend's globe,
+  friends who've been on venue pages, unclipped friend-profile avatars,
+  and Community Rankings for restaurants, hotels and events with one
+  Filters button;
+- `claude/venue-guide-links`: the guide pages moved out of the venue
+  action row.
+
+Numbered 1.5.1 at the product owner's request, though it carries new
+features. Three migrations went to production on 2026-10-30, after
+1.5.0 (18) and before this build: `20261030160000`, `20261030170000` and
+`20261030180000`. Ledger at the version bump: 120 migrations, local and
+remote in agreement.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay
+of all 120 migrations, 2026-10-30:
+- **Replay:** all 120 migrations applied cleanly from scratch, so the
+  `20261030170000` rename (it was first written to sort before
+  `20261030160000`, see its own entry) replays in the same order
+  production ran.
+- **`supabase db dump`:** identical on both sides apart from blank
+  lines.
+- **Storage and auth, compared directly:** buckets, `storage.objects`
+  policies, triggers and RLS on both storage tables are identical, apart
+  from the expected local-only `enforce_versioning_status_transition`
+  trigger.
+- **`anon` execute:** false on production for all three new
+  `SECURITY DEFINER` functions (`remove_venue_team_member`,
+  `admin_approve_venue_team`, `admin_reject_venue_team`), checked with
+  `has_function_privilege`.
+- **Before the build:** `flutter analyze` was clean and all 2,707 tests
+  passed on the merged tree.
+
+No manual steps outside the repo for this build.
+
 ### Added
 - **The team on a venue's page.** A restaurant or hotel can show its
   chef and its manager ("Restaurant manager" / "Hotel manager"), each a
