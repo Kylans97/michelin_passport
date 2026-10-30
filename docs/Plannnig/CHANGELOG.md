@@ -42,6 +42,17 @@ The format follows Keep a Changelog.
   and empty states name the friend, and it records no `screenOpened`
   (that event stays "my map").
 
+- **Friends who've been, on Restaurant and Hotel Detail** (2026-10-30).
+  Under the city line, a few overlapping friend faces and one line ("Anna
+  & Bas have been here", "Anna, Bas & 2 other friends have been here").
+  **No scores, by product-owner decision:** the venue page stays calm,
+  and a friend's verdict is one tap further, on their profile. One friend
+  opens their profile directly; several open a short list first. Only
+  visits a friend marked `friends` count. The query reads `user_id` alone
+  (`FriendActivityRepository.loadFriendsWhoVisited`), with no migration.
+  The row renders nothing until at least one friend has been, and is left
+  out of a manager's "Preview my page" because it is personal state.
+
 ### Fixed
 - **Friend Profile avatars were clipped.** The box holding the two
   overlapping avatars was 54pt high, but each avatar sits in a 3pt ring,

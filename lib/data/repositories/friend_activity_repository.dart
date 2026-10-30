@@ -86,6 +86,32 @@ class FriendActivityRepository {
     );
   }
 
+  /// The friends who have been to one restaurant or hotel, most recent
+  /// visit first — Restaurant/Hotel Detail's "friends who've been" row.
+  /// Same RLS as [load]: a friend counts only through a visit they marked
+  /// `friends`, so this never reveals a private visit, and never a score
+  /// (only `user_id` and the date are read).
+  Future<List<Friendship>> loadFriendsWhoVisited({
+    required String entityType,
+    required String entityId,
+  }) async {
+    final friends = await _friends.getFriends();
+    if (friends.isEmpty) return const [];
+    final byId = {for (final f in friends) f.friendId: f};
+    final rows = await _client
+        .from('visits')
+        .select('user_id')
+        .eq('entity_type', entityType)
+        .eq('entity_id', entityId)
+        .inFilter('user_id', byId.keys.toList())
+        .order('visited_on', ascending: false);
+    final seen = <String>{};
+    return [
+      for (final row in (rows as List).cast<Map<String, dynamic>>())
+        if (seen.add(row['user_id'] as String)) ?byId[row['user_id']],
+    ];
+  }
+
   Future<Map<String, Event>> _eventsById(Set<String> ids) async {
     if (ids.isEmpty) return {};
     final rows = await _client

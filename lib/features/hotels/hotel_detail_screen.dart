@@ -47,6 +47,7 @@ import 'widgets/hotel_restaurants_card.dart';
 import 'widgets/hotel_stays_card.dart';
 import '../notifications/push_prompt_sheet.dart';
 import '../notifications/push_service.dart';
+import '../friends/widgets/venue_friends_been_row.dart';
 
 const _signInMessage = 'Sign in to save stays and wishlist hotels.';
 
@@ -603,6 +604,13 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                     const SizedBox(height: CsSpacing.sm),
                     AwardHistoryAction(onTap: _openAwardHistory),
                   ],
+                  // Friends who've been — faces only, no scores. Personal
+                  // state, so left out of the manager's preview.
+                  if (!widget.isPreview && isAuthenticated)
+                    VenueFriendsBeenRow(
+                      entityType: 'hotel',
+                      entityId: hotel.id,
+                    ),
 
                   const SectionDivider(),
 
