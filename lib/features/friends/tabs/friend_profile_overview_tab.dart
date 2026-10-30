@@ -84,6 +84,7 @@ class FriendProfileOverviewTab extends StatelessWidget {
               ),
           ],
         ),
+        const SizedBox(height: CsSpacing.sm),
         if (recent.isEmpty)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: CsSpacing.lg),

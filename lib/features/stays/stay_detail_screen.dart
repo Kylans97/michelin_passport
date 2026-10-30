@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/theme/cs_spacing.dart';
+import '../../core/theme/cs_typography.dart';
+import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/key_row.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/hotel.dart';
 import '../../models/visit.dart';
 import '../photos/widgets/visit_photos_section.dart';
-import '../restaurants/widgets/detail_section.dart';
-import '../visits/widgets/rating_display_row.dart';
 
 const _monthNames = [
   'January',
@@ -66,7 +67,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
           message,
           style: GoogleFonts.inter(color: AppColors.textPrimary),
         ),
-        backgroundColor: isError ? AppColors.error : AppColors.gold,
+        backgroundColor: isError ? AppColors.error : AppColors.forestGreen,
         duration: const Duration(seconds: 2),
       ),
     );
@@ -184,11 +185,12 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
     final notes = stay.notes;
 
     return Scaffold(
-      backgroundColor: AppColors.background,
+      backgroundColor: AppColors.ivory,
       appBar: AppBar(
-        backgroundColor: AppColors.background,
+        backgroundColor: AppColors.ivory,
+        surfaceTintColor: Colors.transparent,
         elevation: 0,
-        foregroundColor: AppColors.textPrimary,
+        foregroundColor: AppColors.forestGreen,
         actions: [
           if (!_isOwner)
             const SizedBox.shrink()
@@ -199,7 +201,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                 width: 20,
                 height: 20,
                 child: CircularProgressIndicator(
-                  color: AppColors.gold,
+                  color: AppColors.forestGreen,
                   strokeWidth: 2,
                 ),
               ),
@@ -256,17 +258,19 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(20, 0, 20, 40),
+        padding: const EdgeInsets.fromLTRB(
+          CsSpacing.pageHorizontal,
+          0,
+          CsSpacing.pageHorizontal,
+          CsSpacing.xxl,
+        ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               hotel.name,
-              style: GoogleFonts.playfairDisplay(
-                color: AppColors.textPrimary,
-                fontSize: 26,
-                fontWeight: FontWeight.w700,
-                height: 1.15,
+              style: CsTypography.screenTitle.copyWith(
+                color: AppColors.forestGreen,
               ),
             ),
             const SizedBox(height: 10),
@@ -274,10 +278,8 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
               children: [
                 Text(
                   _formatStayDate(stay.visitedOn),
-                  style: GoogleFonts.inter(
-                    color: AppColors.textSecondary,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
+                  style: CsTypography.metadata.copyWith(
+                    color: AppColors.taupe,
                   ),
                 ),
                 if (keys != null && keys > 0) ...[
@@ -289,7 +291,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                   stay.visibility == VisitVisibility.friends
                       ? Icons.lock_open_rounded
                       : Icons.lock_outline_rounded,
-                  color: AppColors.textSecondary,
+                  color: AppColors.taupe,
                   size: 13,
                 ),
                 const SizedBox(width: 3),
@@ -297,8 +299,8 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                   stay.visibility == VisitVisibility.friends
                       ? 'Visible to friends'
                       : 'Private',
-                  style: GoogleFonts.inter(
-                    color: AppColors.textSecondary,
+                  style: CsTypography.metadata.copyWith(
+                    color: AppColors.taupe,
                     fontSize: 12,
                   ),
                 ),
@@ -306,36 +308,44 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
             ),
             const SizedBox(height: 32),
 
-            const SectionLabel('RATINGS'),
-            const SizedBox(height: 18),
-            RatingDisplayRow(label: 'Overall', value: stay.rating),
-            const SizedBox(height: 20),
-            RatingDisplayRow(label: 'Service', value: stay.serviceRating),
-            const SizedBox(height: 20),
-            RatingDisplayRow(label: 'Room', value: stay.roomRating),
-            const SizedBox(height: 20),
-            RatingDisplayRow(label: 'Experience', value: stay.experienceRating),
-            const SizedBox(height: 20),
-            RatingDisplayRow(label: 'Value', value: stay.valueRating),
+            Text(
+              'SCORES',
+              style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+            ),
+            const SizedBox(height: CsSpacing.md),
+            // The same forest-green rings as the venue page's own
+            // "SCORES (Your latest stay)" strip — never gold, which is for
+            // MICHELIN stars and Keys only.
+            VenueScoreStrip(
+              dimensions: [
+                ScoreDimension(label: 'Overall', value: stay.rating),
+                ScoreDimension(label: 'Service', value: stay.serviceRating),
+                ScoreDimension(label: 'Room', value: stay.roomRating),
+                ScoreDimension(label: 'Experience', value: stay.experienceRating),
+                ScoreDimension(label: 'Value', value: stay.valueRating),
+              ],
+            ),
 
             if (notes != null && notes.isNotEmpty) ...[
               const SizedBox(height: 32),
-              const SectionLabel('NOTES'),
+              Text(
+              'NOTES',
+              style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+            ),
               const SizedBox(height: 10),
-              DetailCard(
-                child: Text(
-                  notes,
-                  style: GoogleFonts.inter(
-                    color: AppColors.textPrimary,
-                    fontSize: 14,
-                    height: 1.5,
-                  ),
+              Text(
+                notes,
+                style: CsTypography.body.copyWith(
+                  color: AppColors.forestGreen,
                 ),
               ),
             ],
 
             const SizedBox(height: 32),
-            const SectionLabel('PHOTOS'),
+            Text(
+              'PHOTOS',
+              style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+            ),
             const SizedBox(height: 10),
             VisitPhotosSection(
               visitId: stay.id,

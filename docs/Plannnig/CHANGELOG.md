@@ -67,6 +67,25 @@ The format follows Keep a Changelog.
   checked in the simulator: no restaurant meets the ranking threshold in
   production yet, so the screen shows its empty state there.
 
+- **Friend verdicts and visit/stay detail in the green-and-ivory design**
+  (2026-10-30, at the product owner's request).
+  - Friend Profile → "{NAME}'S VERDICTS" (and its "All →" list) were a
+    dark tile with a gold border and a 40pt score. They are now the same
+    ivory `RankingEditorialCard` that My Rankings uses, without a rank.
+    Each card shows the photo, name, stars or Keys, city, then "8/10 ·
+    Visited 23 Sep" (the year only when it isn't this year). An unrated
+    visit shows no score. `RankingEditorialCard` now takes an optional
+    `rank` and an optional `scoreText` for this; every existing caller
+    passes both, so nothing else changes.
+  - Visit Detail and Stay Detail (reached from a verdict, Passport and
+    the activity feed) used ten-segment gold bars and a gold "8/10". They
+    are now ivory with the forest-green score rings the venue page
+    already shows (`VenueScoreStrip`). The headings are taupe eyebrows,
+    the title uses the editorial serif, and the spinner and snackbar are
+    no longer gold. These are the viewer's own visits too, so their
+    Passport detail changes the same way. `RatingDisplayRow`, the
+    gold-bar widget, had no other users and is removed.
+
 ### Fixed
 - **Friend Profile avatars were clipped.** The box holding the two
   overlapping avatars was 54pt high, but each avatar sits in a 3pt ring,
