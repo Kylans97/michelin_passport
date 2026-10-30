@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest_all.dart' as tz_data;
 import 'app.dart';
 import 'core/supabase/supabase_config.dart';
+import 'features/notifications/push_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -38,6 +39,10 @@ void main() async {
     // ignore: deprecated_member_use
     anonKey: SupabaseConfig.anonKey,
   );
+
+  // Registers this device for push once a session exists, and routes
+  // taps. Never asks for permission here — see PushService.
+  PushService.instance.start();
 
   runApp(const TablePassportApp());
 }

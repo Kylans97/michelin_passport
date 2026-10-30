@@ -15,6 +15,8 @@ import 'widgets/friend_request_row.dart';
 import 'widgets/identity_row.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/screen_usage.dart';
+import '../notifications/push_prompt_sheet.dart';
+import '../notifications/push_service.dart';
 
 /// Friends — accepted friends plus incoming/outgoing requests. Deliberately
 /// small: no follower/following counts, no "people you may know," no
@@ -80,6 +82,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
     try {
       await _repo.acceptRequest(request.friendshipId);
       _load();
+      if (mounted) PushService.instance.askAfter(context, const FriendsPrompt());
     } catch (_) {
       _showSnack('Could not accept. Please try again.', isError: true);
       _load();

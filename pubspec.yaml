@@ -71,6 +71,11 @@ dependencies:
   # implementation of the standard algorithm instead.
   image: ^4.9.2
   photo_manager: ^3.12.0
+  # Push notifications: remembers that the person said "Not now" to the
+  # app's own pre-prompt, so it is never asked twice. Was already a
+  # transitive dependency of supabase_flutter (and a dev dependency here)
+  # — promoted to a direct one, the same as package_info_plus above.
+  shared_preferences: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -84,9 +89,10 @@ dev_dependencies:
   flutter_lints: ^6.0.0
   # Test-only, for friend_profile_screen_navigation_test.dart's fake
   # Supabase.initialize (MockClient + SharedPreferences.setMockInitialValues)
-  # — both were already transitive dependencies of supabase_flutter itself.
+  # — already a transitive dependency of supabase_flutter itself.
+  # shared_preferences, the other half of that, is now a regular
+  # dependency (see above).
   http: ^1.2.0
-  shared_preferences: ^2.3.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
