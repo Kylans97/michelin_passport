@@ -19,6 +19,18 @@ The format follows Keep a Changelog.
   link opens Mantelier, which signs the person in with the PKCE code and
   shows the welcome flow. `/auth/confirmed` is deliberately web-only (see
   Fixed).
+- **A `mantelier://` URL scheme** (iOS `CFBundleURLTypes`, Android intent
+  filter on host `auth`). The "Open Mantelier" buttons on
+  `/auth/confirm` and `/auth/reset-password` now use it. On
+  `/auth/confirm` the button links to `mantelier://auth/confirm?code=…`.
+  On `/auth/reset-password` it links to the same path, query and fragment
+  on the new scheme. supabase_flutter's PKCE handling reads `?code=`
+  whatever the scheme. Checked in the iOS simulator: `simctl openurl
+  "mantelier://auth/confirm?code=…"` asks "Open in Mantelier?" and
+  brings the app to the front with no crash. The probe code was bogus
+  and the simulator was already signed in, so this showed the scheme
+  works, not a sign-in through it. Builds up to 1.4.0 (17) don't
+  register the scheme, so on those Safari reports an invalid address.
 - **"Send a new confirmation link" on sign-in.** When sign-in is refused
   with `email_not_confirmed`, LoginScreen offers to resend the confirmation
   (`AuthRepository.resendSignupConfirmation`).
@@ -43,6 +55,13 @@ The format follows Keep a Changelog.
     mode, supabase_flutter ignores those tokens. Sent to the Universal
     Link, the resent link would have opened the app to a silent sign-in
     screen. Resends therefore go to the web-only `/auth/confirmed`.
+  - **Near-miss:** the "Open Mantelier" buttons on the confirm and
+    reset-password pages did nothing. The product owner found this while
+    testing on 2026-10-30. Both linked to the page's own https URL, and
+    iOS never hands a Universal Link to the app when it is tapped on its
+    own domain, so the tap only reloaded the page. `reset-password.html`
+    has done this since 2026-09-24, where its comment claimed the
+    opposite. Both buttons now use `mantelier://` (see Added).
   - **Near-miss:** supabase_flutter reports a failed link only as an error
     on `onAuthStateChange`. AuthGate's subscription had no `onError`, so
     an expired link left a silent sign-in screen. AuthGate now shows a

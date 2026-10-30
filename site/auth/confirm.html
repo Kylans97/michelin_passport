@@ -113,8 +113,8 @@
   // /auth/confirm is also a Universal Link (see .well-known/
   // apple-app-site-association): with the app installed iOS normally opens
   // the app instead of this page, and the app signs the person in with the
-  // ?code=. This page is the fallback — another device, no app, or iOS
-  // declining to hand a redirect to the app. /auth/confirmed (rewritten to
+  // ?code=. This page is the fallback — another device, or iOS declining to
+  // hand a redirect to the app. /auth/confirmed (rewritten to
   // this same file by _redirects, deliberately NOT a Universal Link) is
   // where resent links land: those carry implicit-flow tokens the app
   // doesn't consume, so they always show this page.
@@ -136,10 +136,14 @@
       fallback.textContent = '';
     }
   } else if (query.get('code')) {
-    // A fresh, explicit tap on a Universal-Link URL is honoured by iOS even
-    // when the redirect that landed here was not — same retry as
-    // reset-password.html. The app exchanges the code and signs in.
-    openApp.href = window.location.href;
+    // The app's own mantelier:// scheme, not this page's https URL: iOS
+    // never hands a Universal Link to the app when it's tapped on its own
+    // domain, so linking back to window.location.href only reloaded this
+    // page. The app's PKCE handling picks up the ?code= from either
+    // scheme and signs the person in (builds after 1.4.0 (17); older ones
+    // don't register the scheme). Only shown with a code: there's nothing
+    // to hand the app otherwise.
+    openApp.href = 'mantelier://auth/confirm' + window.location.search;
     openApp.hidden = false;
   }
 
