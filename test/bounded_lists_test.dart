@@ -72,7 +72,7 @@ void main() {
       final page = await repo.getNotifications(offset: 50);
 
       final q = requests.single.url.queryParameters;
-      expect(requests.single.url.path, endsWith('/rpc/get_notifications_v3'));
+      expect(requests.single.url.path, endsWith('/rpc/get_notifications_v4'));
       expect(q['order'], 'created_at.desc.nullslast,id.desc.nullslast');
       expect(q['offset'], '50');
       expect(q['limit'], '$notificationsPageSize');
@@ -91,7 +91,7 @@ void main() {
     test('an older server version is paged the same way', () async {
       final repo = NotificationsRepository(
         clientWith(
-          (r) async => r.url.path.endsWith('_v3')
+          (r) async => r.url.path.endsWith('_v4') || r.url.path.endsWith('_v3')
               ? notFound(r)
               : json([notificationRow(1)], r),
         ),
