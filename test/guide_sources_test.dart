@@ -7,7 +7,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
-import 'package:michelin_passport/core/widgets/venue_utility_actions.dart';
+import 'package:michelin_passport/core/widgets/venue_guide_links.dart';
 import 'package:michelin_passport/features/restaurants/widgets/gault_millau_history_section.dart';
 import 'package:michelin_passport/features/restaurants/widgets/restaurant_hero.dart';
 import 'package:michelin_passport/models/gault_millau_award.dart';
@@ -115,18 +115,32 @@ void main() {
     });
   });
 
-  group('VenueUtilityActions — 50 Best action', () {
-    testWidgets('all six actions fit at 320pt; 50 Best fires only its own '
-        'callback', (tester) async {
+  group('VenueGuideLinks — guide pages beside Award history', () {
+    testWidgets('renders nothing when no guide page is known', (tester) async {
+      const links = VenueGuideLinks();
+      expect(links.hasAny, isFalse);
+      await tester.pumpWidget(_wrap(links));
+      expect(find.byType(InkWell), findsNothing);
+    });
+
+    testWidgets('only the guides with a real URL appear', (tester) async {
+      await tester.pumpWidget(
+        _wrap(VenueGuideLinks(onOpenMichelin: () {})),
+      );
+      expect(find.text('MICHELIN Guide'), findsOneWidget);
+      expect(find.text("World's 50 Best"), findsNothing);
+      expect(find.text('Gault&Millau'), findsNothing);
+    });
+
+    testWidgets('all three wrap without overflow at 320pt and each fires '
+        'only its own callback', (tester) async {
+      var michelin = 0;
       var best = 0;
       var gm = 0;
       await tester.pumpWidget(
         _wrap(
-          VenueUtilityActions(
-            onOpenMaps: () {},
-            onOpenWebsite: () {},
-            onCall: () {},
-            onOpenMichelin: () {},
+          VenueGuideLinks(
+            onOpenMichelin: () => michelin++,
             onOpenWorlds50Best: () => best++,
             onOpenGaultMillau: () => gm++,
           ),
@@ -134,59 +148,21 @@ void main() {
         ),
       );
       expect(tester.takeException(), isNull);
-      await tester.tap(find.text('50 Best'));
-      expect(best, 1);
-      expect(gm, 0);
-    });
-
-    testWidgets('icon is forest-green, never gold', (tester) async {
-      await tester.pumpWidget(
-        _wrap(
-          VenueUtilityActions(onOpenMaps: () {}, onOpenWorlds50Best: () {}),
-        ),
-      );
-      final icon = tester.widget<Icon>(
-        find.byIcon(Icons.emoji_events_outlined),
-      );
-      expect(icon.color, AppColors.forestGreen);
-    });
-  });
-
-  group('VenueUtilityActions — Gault&Millau action', () {
-    testWidgets('absent unless a callback is wired', (tester) async {
-      await tester.pumpWidget(
-        _wrap(VenueUtilityActions(onOpenMaps: () {}, onOpenMichelin: () {})),
-      );
-      expect(find.text('Gault&Millau'), findsNothing);
-    });
-
-    testWidgets('five actions fit at 320pt and Gault&Millau fires only its '
-        'own callback', (tester) async {
-      var gm = 0;
-      var michelin = 0;
-      await tester.pumpWidget(
-        _wrap(
-          VenueUtilityActions(
-            onOpenMaps: () {},
-            onOpenWebsite: () {},
-            onCall: () {},
-            onOpenMichelin: () => michelin++,
-            onOpenGaultMillau: () => gm++,
-          ),
-          width: 320,
-        ),
-      );
-      expect(tester.takeException(), isNull);
+      await tester.tap(find.text("World's 50 Best"));
+      expect([michelin, best, gm], [0, 1, 0]);
       await tester.tap(find.text('Gault&Millau'));
-      expect(gm, 1);
-      expect(michelin, 0);
+      expect([michelin, best, gm], [0, 1, 1]);
+      await tester.tap(find.text('MICHELIN Guide'));
+      expect([michelin, best, gm], [1, 1, 1]);
     });
 
-    testWidgets('icon is forest-green, never gold', (tester) async {
+    testWidgets('forest-green, never gold', (tester) async {
       await tester.pumpWidget(
-        _wrap(VenueUtilityActions(onOpenMaps: () {}, onOpenGaultMillau: () {})),
+        _wrap(VenueGuideLinks(onOpenGaultMillau: () {})),
       );
-      final icon = tester.widget<Icon>(find.byIcon(Icons.auto_stories_rounded));
+      final label = tester.widget<Text>(find.text('Gault&Millau'));
+      expect(label.style?.color, AppColors.forestGreen);
+      final icon = tester.widget<Icon>(find.byIcon(Icons.north_east_rounded));
       expect(icon.color, AppColors.forestGreen);
     });
   });
