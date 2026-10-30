@@ -95,6 +95,11 @@ HOSTS = {
     G + 'fujian-province/fuzhou_1026814/restaurant/jiangnan-wok%E2%80%A7rong': ('property', 'Shangri-La Hotel'),
     G + 'fujian-province/xiamen_1031934/restaurant/hokklo': ('property', 'Waldorf Astoria Hotel'),
 }
+# MICHELIN's website link no longer leads to the restaurant; its own page on the host hotel's site
+# (found 2026-10-30 in the built-in browser on The Peninsula Shanghai's dining page).
+WEBSITE_FIX = {
+    G + 'shanghai-municipality/shanghai/restaurant/yi-long-court': 'https://www.peninsula.com/en/shanghai/hotel-fine-dining/yi-long-court',
+}
 # Restaurant pin more than 300 m from its (OpenStreetMap-confirmed) Key hotel: take the hotel's point.
 COORD_FIX = {
     G + 'shanghai-municipality/shanghai/restaurant/yi-long-court': ('5858',
@@ -148,7 +153,7 @@ def main():
         rows.append(dict(name=ld['name'], stars=STARS[ld['starRating'].split()[0]], city=town, selection=sel,
                          guide_year=year, announced_on=ann, address=addr, lat=ld['latitude'], lon=ld['longitude'],
                          coord_note=COORD_FIX[p['url']][1] if p['url'] in COORD_FIX else None,
-                         michelin_url=p['url'], michelin_id=p['listing'][0], website=p.get('website'),
+                         michelin_url=p['url'], michelin_id=p['listing'][0], website=WEBSITE_FIX.get(p['url'], p.get('website')),
                          cuisine=ld.get('servesCuisine'), phone=phone, phone_source=src, michelin_phone=mp,
                          place_id=None, place_certainty='not searched',
                          place_note='no Places API access in this session (QA, README)',
