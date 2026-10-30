@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confirm your email — Mantelier</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#16302A">
+
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" href="/favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ivory: #F4F0E7;
+    --green: #16302A;
+    --line: rgba(244, 240, 231, 0.22);
+    --muted: rgba(244, 240, 231, 0.62);
+
+    --display: "Cormorant Garamond", Georgia, serif;
+    --body: "IBM Plex Sans", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--green);
+    color: var(--ivory);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 14vh 28px 60px;
+    text-align: center;
+  }
+
+  .mark { display: block; width: 64px; height: 64px; margin: 0 auto 28px; }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(26px, 6vw, 32px);
+    line-height: 1.2;
+    margin: 0 0 14px;
+  }
+
+  p {
+    color: var(--muted);
+    margin: 0 0 8px;
+  }
+
+  .button {
+    display: inline-block;
+    margin-top: 28px;
+    padding: 14px 32px;
+    background: var(--ivory);
+    color: var(--green);
+    font-family: var(--body);
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    border-radius: 14px;
+  }
+
+  .button[hidden] { display: none; }
+
+  .fallback {
+    margin-top: 22px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+</style>
+</head>
+
+<body>
+<main class="wrap">
+
+
+  <svg class="mark" viewBox="0 0 256 256" role="img" aria-label="Mantelier">
+    <path d="M119 109 129 602 153 600 143 109Q142 57 160.5 34.5Q179 12 228 12Q230 12 230.0 6.0Q230 0 228 0Q206 0 182.5 1.0Q159 2 131 2Q105 2 82.0 1.0Q59 0 39 0Q37 0 37.0 6.0Q37 12 39 12Q81 12 99.5 34.5Q118 57 119 109ZM812 12Q815 12 815.0 6.0Q815 0 812 0Q788 0 757.5 1.0Q727 2 694 2Q662 2 634.5 1.0Q607 0 585 0Q583 0 583.0 6.0Q583 12 585 12Q635 12 649.0 25.0Q663 38 661 81L642 564L675 610L415 7Q414 3 407.0 3.0Q400 3 398 7L147 542Q113 613 46 613Q44 613 44.0 619.0Q44 625 46 625Q62 625 80.5 624.0Q99 623 111 623Q127 623 140.5 624.0Q154 625 161 625Q175 625 183.0 616.0Q191 607 207 573L435 93L404 41L648 600Q653 612 661.0 618.5Q669 625 678 625Q684 625 694.0 624.0Q704 623 718 623Q745 623 762.0 624.0Q779 625 798 625Q800 625 800.0 619.0Q800 613 798 613Q750 613 727.0 599.0Q704 585 706 544L726 81Q727 52 733.0 37.0Q739 22 757.5 17.0Q776 12 812 12Z" transform="translate(78.7350,150.0000) scale(0.118000,-0.118000)" fill="#F4F0E7"/>
+    <path d="M64 164 Q64 193 128 193 Q192 193 192 164" fill="none" stroke="#F4F0E7" stroke-width="2.6"/>
+  </svg>
+
+  <h1 id="title">Your account is confirmed</h1>
+  <p id="message">Your email address is confirmed. Open Mantelier and sign in with your email and password.</p>
+
+  <a id="open-app" class="button" href="#" hidden>Open Mantelier</a>
+
+  <p id="fallback" class="fallback">If the app doesn't open, open Mantelier yourself and sign in — your account is ready.</p>
+
+</main>
+
+<script>
+  // Where the sign-up confirmation email lands (AuthRepository.
+  // signupConfirmationRedirectUrl, and the Site URL for builds that predate
+  // it). GoTrue's /verify has already confirmed the email BEFORE it
+  // redirects here, so a ?code=… or #access_token=… means the account is
+  // confirmed whatever happens next; only #error=… means the link itself
+  // failed. GoTrue reports an already-used link and an expired one with the
+  // same otp_expired code, so the copy covers both.
+  //
+  // /auth/confirm is also a Universal Link (see .well-known/
+  // apple-app-site-association): with the app installed iOS normally opens
+  // the app instead of this page, and the app signs the person in with the
+  // ?code=. This page is the fallback — another device, no app, or iOS
+  // declining to hand a redirect to the app. /auth/confirmed (rewritten to
+  // this same file by _redirects, deliberately NOT a Universal Link) is
+  // where resent links land: those carry implicit-flow tokens the app
+  // doesn't consume, so they always show this page.
+  var query = new URLSearchParams(window.location.search);
+  var hash = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+  var title = document.getElementById('title');
+  var message = document.getElementById('message');
+  var fallback = document.getElementById('fallback');
+  var openApp = document.getElementById('open-app');
+
+  if (hash.get('error') || hash.get('error_code')) {
+    if (hash.get('error_code') === 'otp_expired') {
+      title.textContent = 'This link has expired or was already used';
+      message.textContent = 'If you already confirmed your email, your account is ready — open Mantelier and sign in.';
+      fallback.textContent = "Not confirmed yet? Sign in from the app and choose \u201cSend a new confirmation link\u201d.";
+    } else {
+      title.textContent = "We couldn't confirm your email";
+      message.textContent = 'Something went wrong with this link. Open Mantelier and sign in — if your email still needs confirming, the app will offer to send a new link.';
+      fallback.textContent = '';
+    }
+  } else if (query.get('code')) {
+    // A fresh, explicit tap on a Universal-Link URL is honoured by iOS even
+    // when the redirect that landed here was not — same retry as
+    // reset-password.html. The app exchanges the code and signs in.
+    openApp.href = window.location.href;
+    openApp.hidden = false;
+  }
+
+  // Never leave implicit-flow tokens sitting in the address bar or history.
+  if (hash.get('access_token')) {
+    history.replaceState(null, '', window.location.pathname);
+  }
+</script>
+
+</body>
+</html>

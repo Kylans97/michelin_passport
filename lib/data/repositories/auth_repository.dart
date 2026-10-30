@@ -18,6 +18,16 @@ class AuthRepository {
   static const _passwordRecoveryRedirectUrl =
       'https://mantelier.app/auth/reset-password';
 
+  // Where the sign-up confirmation email lands — the same Universal Link
+  // arrangement as above, on its own path. Without an explicit
+  // emailRedirectTo GoTrue falls back to the project's Site URL, which in
+  // production was still Supabase's default http://localhost:3000: the
+  // account got confirmed, then the phone's browser showed "cannot connect
+  // to the server". Must also be on the redirect allow-list, or GoTrue
+  // silently falls back to the Site URL again.
+  static const signupConfirmationRedirectUrl =
+      'https://mantelier.app/auth/confirm';
+
   // ── Current state ─────────────────────────────────────────────────────────
 
   User? get currentUser => _client.auth.currentUser;
@@ -47,6 +57,7 @@ class AuthRepository {
         email: email,
         password: password,
         data: {'display_name': displayName, 'username': username},
+        emailRedirectTo: signupConfirmationRedirectUrl,
       );
       // Supabase returns a user even when email confirmation is required;
       // a null user means the request itself failed.
@@ -86,6 +97,28 @@ class AuthRepository {
 
   Future<void> signIn({required String email, required String password}) async {
     await _client.auth.signInWithPassword(email: email, password: password);
+  }
+
+  // ── Resend sign-up confirmation ─────────────────────────────────────────
+  //
+  // For an account whose confirmation link expired or never arrived —
+  // offered by LoginScreen when sign-in fails with email_not_confirmed.
+  //
+  // Lands on a different, web-only path from signUp()'s: gotrue-dart's
+  // resend() sends no PKCE code challenge (GoTrue's /resend accepts one,
+  // the client just never passes it), so the new link comes back as an
+  // implicit-flow #access_token that supabase_flutter, in PKCE mode,
+  // ignores. Opening the app with it would show the sign-in screen with no
+  // explanation; the web page says the account is confirmed instead.
+  static const resentConfirmationRedirectUrl =
+      'https://mantelier.app/auth/confirmed';
+
+  Future<void> resendSignupConfirmation(String email) async {
+    await _client.auth.resend(
+      type: OtpType.signup,
+      email: email,
+      emailRedirectTo: resentConfirmationRedirectUrl,
+    );
   }
 
   // ── Sign out ──────────────────────────────────────────────────────────────

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/widgets/branded_splash.dart';
 import '../onboarding/onboarding_gate.dart';
+import 'auth_link_notice.dart';
 import 'login_screen.dart';
 import 'reset_password_screen.dart';
 
@@ -64,26 +65,41 @@ class _AuthGateState extends State<AuthGate> {
   Session? _session;
   bool _passwordRecoveryPending = false;
 
+  // Set when an emailed link opened the app but didn't produce a session —
+  // supabase_flutter reports that only as an error on this same stream
+  // (see auth_link_notice.dart). Without a handler here the error went
+  // nowhere and the person was left on a silent LoginScreen, after a link
+  // that had in fact confirmed their account. Cleared by the next session.
+  AuthLinkNotice? _linkNotice;
+
   @override
   void initState() {
     super.initState();
     final stream =
         widget.authStateChanges ??
         Supabase.instance.client.auth.onAuthStateChange;
-    _subscription = stream.listen((data) {
-      setState(() {
-        _hasEvent = true;
-        _session = data.session;
-        switch (data.event) {
-          case AuthChangeEvent.passwordRecovery:
-            _passwordRecoveryPending = true;
-          case AuthChangeEvent.signedOut:
-            _passwordRecoveryPending = false;
-          default:
-            break;
-        }
-      });
-    });
+    _subscription = stream.listen(
+      (data) {
+        setState(() {
+          _hasEvent = true;
+          _session = data.session;
+          switch (data.event) {
+            case AuthChangeEvent.passwordRecovery:
+              _passwordRecoveryPending = true;
+            case AuthChangeEvent.signedOut:
+              _passwordRecoveryPending = false;
+            default:
+              break;
+          }
+          if (data.session != null) _linkNotice = null;
+        });
+      },
+      onError: (Object error) {
+        final notice = authLinkNoticeFor(error);
+        if (notice == null || !mounted) return;
+        setState(() => _linkNotice = notice);
+      },
+    );
   }
 
   @override
@@ -99,7 +115,7 @@ class _AuthGateState extends State<AuthGate> {
       return const ResetPasswordScreen();
     }
     final session = _session;
-    if (session == null) return const LoginScreen();
+    if (session == null) return LoginScreen(notice: _linkNotice?.message);
     // OnboardingGate owns "has THIS account completed the welcome flow" —
     // a separate concern from auth state, kept out of this class so it
     // doesn't grow a third sticky flag alongside password recovery.

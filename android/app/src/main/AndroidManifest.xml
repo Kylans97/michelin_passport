@@ -62,6 +62,12 @@
                     android:scheme="https"
                     android:host="mantelier.app"
                     android:pathPrefix="/auth/reset-password"/>
+                <!-- Sign-up confirmation — exact path, so /auth/confirmed
+                     (where resent links land, web-only) never matches. -->
+                <data
+                    android:scheme="https"
+                    android:host="mantelier.app"
+                    android:path="/auth/confirm"/>
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

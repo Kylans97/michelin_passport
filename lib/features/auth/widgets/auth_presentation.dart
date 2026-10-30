@@ -102,6 +102,44 @@ class AuthErrorBanner extends StatelessWidget {
   );
 }
 
+/// The neutral sibling of [AuthErrorBanner] — for news that isn't a
+/// failure of what the person just typed (a link that already confirmed
+/// their email, a confirmation link on its way). Ivory hairline, no red.
+class AuthNoticeBanner extends StatelessWidget {
+  final String message;
+  const AuthNoticeBanner({super.key, required this.message});
+
+  @override
+  Widget build(BuildContext context) => Container(
+    padding: const EdgeInsets.all(CsSpacing.md),
+    decoration: BoxDecoration(
+      color: AppColors.textOnDark.withValues(alpha: 0.06),
+      borderRadius: BorderRadius.circular(12),
+      border: Border.all(
+        color: AppColors.textOnDark.withValues(alpha: 0.28),
+        width: 0.5,
+      ),
+    ),
+    child: Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Icon(
+          Icons.mark_email_read_outlined,
+          color: AppColors.secondaryOnDark,
+          size: 16,
+        ),
+        const SizedBox(width: CsSpacing.sm),
+        Expanded(
+          child: Text(
+            message,
+            style: CsTypography.metadata.copyWith(color: AppColors.textOnDark),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
 /// "New to Mantelier? / Create an account →" (or the Sign up
 /// equivalent, "Already a member? / Sign in →") — one quiet editorial
 /// link, never a second button competing with the primary CTA.
