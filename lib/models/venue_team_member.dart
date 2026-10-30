@@ -1,7 +1,7 @@
 import 'venue_about_submission.dart';
 
 /// The two people a restaurant or hotel can show on its page
-/// (venue_team_submissions.role, 20261030150000).
+/// (venue_team_submissions.role, 20261030170000).
 enum VenueTeamRole {
   manager,
   chef;

@@ -24,8 +24,8 @@ The format follows Keep a Changelog.
   chefs have no Team row: their page is the chef. "Preview my page"
   shows pending team changes through a new `teamOverride` on
   `RestaurantDetailScreen`/`HotelDetailScreen`, same as the about text.
-- **Migration `20261030150000_add_venue_team.sql` — written, not
-  applied.** `venue_team_submissions` (RLS on; insert only by an active
+- **Migration `20261030170000_add_venue_team.sql` — applied to
+  production 2026-10-30.** `venue_team_submissions` (RLS on; insert only by an active
   venue manager via `is_active_venue_manager()`, only as pending — the
   insert grant covers the content columns alone; no client update or
   delete; `anon` may read only the columns the view needs, never who
@@ -46,6 +46,18 @@ The format follows Keep a Changelog.
   pair), and the admin email on a new submission (`notify-venue-
   submission` rejects submission types it doesn't know, so it needs a
   function change and deploy first).
+  Written as `20261030150000`; renamed to `20261030170000` before the
+  apply because `20261030160000_add_hotel_and_event_rankings.sql`
+  (branch `claude/friends-activity-globe`) reached production first,
+  and a migration is named after the highest one. The two touch no
+  shared object, so replay order cannot change the result. Verified on
+  production after `db push`: table with RLS on, view present, `anon`
+  has no execute on the four functions and no select on `user_id`,
+  `authenticated` has execute, `get_review_queue()` returns the team
+  columns, zero rows. `supabase migration list --linked` showed 119/119
+  in agreement with `20261030160000` present locally; on this branch
+  alone that file is missing until `claude/friends-activity-globe`
+  lands, so the list shows it remote-only until then.
 
 ### Changed
 - **Follow is a labelled pill.** The hero's Follow control was a

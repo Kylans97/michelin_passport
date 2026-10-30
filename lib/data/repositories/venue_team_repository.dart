@@ -1,7 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/venue_team_member.dart';
 
-/// Mirrors venue_team_submissions' CHECKs (20261030150000).
+/// Mirrors venue_team_submissions' CHECKs (20261030170000).
 const venueTeamNameMaxLength = 80;
 const venueTeamBioMaxLength = 280;
 

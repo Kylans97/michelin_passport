@@ -17,7 +17,7 @@ enum ReviewKind {
   venueEventEdit,
 
   /// A name and short text for a venue's chef or manager
-  /// (20261030150000).
+  /// (20261030170000).
   venueTeam;
 
   static ReviewKind? fromWire(String value) => switch (value) {
