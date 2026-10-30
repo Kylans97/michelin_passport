@@ -40,65 +40,71 @@ class RankingsRepository {
         .toList();
   }
 
-  /// Community Rankings' full list for one [kind], with the recognition
-  /// [filter] applied in SQL. Restaurants read `restaurant_rankings`;
-  /// hotels and events read `hotel_rankings` / `event_rankings`
-  /// (20261030160000). Every view returns aggregates only, from 3 members.
+  /// Community Rankings' full list for one [kind], best first. Country
+  /// and recognition filters are applied in the app
+  /// ([applyCommunityFilters]); the lists only hold venues with 3+
+  /// members. Restaurants read `restaurant_rankings`, hotels and events
+  /// `hotel_rankings` / `event_rankings` (20261030160000).
   ///
-  /// Until 20261030160000 is applied the two new views don't exist and
-  /// restaurant_rankings lacks the appended columns: restaurants then fall
-  /// back to the original column list (no photo, no World's 50 Best
-  /// filter), and hotels/events come back empty — the screen's own empty
-  /// state, never an error over the whole tab.
-  Future<List<CommunityRankedVenue>> getCommunityRanking({
-    required CommunityRankingKind kind,
-    CommunityRecognitionFilter filter = CommunityRecognitionFilter.all,
-  }) async {
+  /// Each read tries the newest column set first and steps back on a
+  /// PostgREST error, so the screen works before 20261030180000
+  /// (country_code) is applied — the country filter simply has nothing to
+  /// offer then — and restaurants still load on a database without
+  /// 20261030160000 at all.
+  Future<List<CommunityRankedVenue>> getCommunityRanking(
+    CommunityRankingKind kind,
+  ) async {
     switch (kind) {
       case CommunityRankingKind.restaurants:
-        try {
-          return await _restaurantRanking(filter, _restaurantColumns);
-        } on PostgrestException {
-          if (filter == CommunityRecognitionFilter.worlds50Best) return [];
-          return _restaurantRanking(filter, _legacyRestaurantColumns);
-        }
+        return _firstThatLoads(
+          'restaurant_rankings',
+          const [
+            '$_restaurantColumns, country_code',
+            _restaurantColumns,
+            _legacyRestaurantColumns,
+          ],
+          'total_visits',
+          CommunityRankedVenue.restaurantFromJson,
+        );
       case CommunityRankingKind.hotels:
-        try {
-          var builder = _client.from('hotel_rankings').select(_hotelColumns);
-          builder = switch (filter) {
-            CommunityRecognitionFilter.all => builder,
-            CommunityRecognitionFilter.worlds50Best => builder.not(
-              'worlds_50_best_rank',
-              'is',
-              null,
-            ),
-            _ => builder.eq('michelin_keys', _count(filter)),
-          };
-          final rows = await builder
-              .order('community_rating', ascending: false)
-              .order('total_stays', ascending: false);
-          return [
-            for (final row in (rows as List).cast<Map<String, dynamic>>())
-              CommunityRankedVenue.hotelFromJson(row),
-          ];
-        } on PostgrestException {
-          return [];
-        }
+        return _firstThatLoads(
+          'hotel_rankings',
+          const ['$_hotelColumns, country_code', _hotelColumns],
+          'total_stays',
+          CommunityRankedVenue.hotelFromJson,
+        );
       case CommunityRankingKind.events:
-        try {
-          final rows = await _client
-              .from('event_rankings')
-              .select(_eventColumns)
-              .order('community_rating', ascending: false)
-              .order('total_attendees', ascending: false);
-          return [
-            for (final row in (rows as List).cast<Map<String, dynamic>>())
-              CommunityRankedVenue.eventFromJson(row),
-          ];
-        } on PostgrestException {
-          return [];
-        }
+        return _firstThatLoads(
+          'event_rankings',
+          const [_eventColumns],
+          'total_attendees',
+          CommunityRankedVenue.eventFromJson,
+        );
     }
+  }
+
+  Future<List<CommunityRankedVenue>> _firstThatLoads(
+    String view,
+    List<String> columnSets,
+    String countColumn,
+    CommunityRankedVenue Function(Map<String, dynamic>) fromJson,
+  ) async {
+    for (final columns in columnSets) {
+      try {
+        final rows = await _client
+            .from(view)
+            .select(columns)
+            .order('community_rating', ascending: false)
+            .order(countColumn, ascending: false);
+        return [
+          for (final row in (rows as List).cast<Map<String, dynamic>>())
+            fromJson(row),
+        ];
+      } on PostgrestException {
+        continue;
+      }
+    }
+    return [];
   }
 
   static const _legacyRestaurantColumns =
@@ -114,34 +120,4 @@ class RankingsRepository {
   static const _eventColumns =
       'event_id, name, city, country_code, start_date, end_date, image_url, '
       'community_rating, total_attendees';
-
-  static int _count(CommunityRecognitionFilter filter) => switch (filter) {
-    CommunityRecognitionFilter.one => 1,
-    CommunityRecognitionFilter.two => 2,
-    CommunityRecognitionFilter.three => 3,
-    _ => 0,
-  };
-
-  Future<List<CommunityRankedVenue>> _restaurantRanking(
-    CommunityRecognitionFilter filter,
-    String columns,
-  ) async {
-    var builder = _client.from('restaurant_rankings').select(columns);
-    builder = switch (filter) {
-      CommunityRecognitionFilter.all => builder,
-      CommunityRecognitionFilter.worlds50Best => builder.not(
-        'worlds_50_best_rank',
-        'is',
-        null,
-      ),
-      _ => builder.eq('michelin_stars', _count(filter)),
-    };
-    final rows = await builder
-        .order('community_rating', ascending: false)
-        .order('total_visits', ascending: false);
-    return [
-      for (final row in (rows as List).cast<Map<String, dynamic>>())
-        CommunityRankedVenue.restaurantFromJson(row),
-    ];
-  }
 }

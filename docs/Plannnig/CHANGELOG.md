@@ -100,6 +100,34 @@ The format follows Keep a Changelog.
   tests pass. In the simulator only the chips and empty state are
   checked, because no venue clears the threshold yet.
 
+- **Community Rankings, layout B: one Filters button** (2026-10-30,
+  chosen by the product owner from four visual options). This replaces
+  the earlier two permanent chip rows, following CLAUDE.md's UI
+  principle. The page now has one quiet "Filters" pill ("Filters · 2"
+  when something narrows the list) and a one-line summary beside it
+  ("Restaurants · Italy · ★★"). The list itself is calm editorial rows
+  with hairlines between them: a serif rank, a small framed photo, the
+  name, the city with stars or Keys (the only gold), any World's 50 Best
+  rank, and the score over "N members". The ivory sheet holds TYPE,
+  COUNTRY (only countries the list actually contains), RECOGNITION
+  (stars, Keys or World's 50 Best; not shown for events), Reset, and a
+  full-width "Show N places". Closing the sheet changes nothing. Each
+  type's list loads once and is filtered in the app
+  (`applyCommunityFilters`), because it only holds venues with 3+
+  members. A failed load offers Retry.
+
+  **Needs migration `20261030180000_add_country_to_rankings.sql` for the
+  country filter — prepared, NOT applied.** It appends `country_code` to
+  `restaurant_rankings` and `hotel_rankings` (`event_rankings` already
+  has it). Rows, order and grants are unchanged. Until it is applied the
+  repository steps back to the current columns, and the COUNTRY section
+  simply doesn't appear. A period filter (last 12 months) is left out on
+  purpose: it needs an RPC rather than a view.
+
+  Checked in the simulator with temporary demo rows (not committed),
+  because no venue in production clears the threshold yet.
+  Analyze and all 2,700 tests pass.
+
 - **Friend verdicts and visit/stay detail in the green-and-ivory design**
   (2026-10-30, at the product owner's request).
   - Friend Profile → "{NAME}'S VERDICTS" (and its "All →" list) were a

@@ -86,6 +86,10 @@ class CommunityRankedVenue {
   final String city;
   final String countryFlag;
 
+  /// ISO code, for the country filter. Empty when the view doesn't carry
+  /// it yet (before 20261030180000).
+  final String countryCode;
+
   /// Restaurants: MICHELIN stars (0 for none). Null otherwise.
   final int? stars;
 
@@ -109,6 +113,7 @@ class CommunityRankedVenue {
     required this.name,
     required this.city,
     this.countryFlag = '',
+    this.countryCode = '',
     this.stars,
     this.keys,
     this.worlds50BestRank,
@@ -127,6 +132,7 @@ class CommunityRankedVenue {
         name: (json['name'] as String?) ?? '',
         city: (json['city'] as String?) ?? '',
         countryFlag: (json['country_flag'] as String?) ?? '',
+        countryCode: (json['country_code'] as String?) ?? '',
         stars: (json['michelin_stars'] as int?) ?? 0,
         worlds50BestRank: json['worlds_50_best_rank'] as int?,
         communityRating: ((json['community_rating'] as num?) ?? 0).toDouble(),
@@ -142,6 +148,7 @@ class CommunityRankedVenue {
         name: (json['name'] as String?) ?? '',
         city: (json['city'] as String?) ?? '',
         countryFlag: (json['country_flag'] as String?) ?? '',
+        countryCode: (json['country_code'] as String?) ?? '',
         keys: json['michelin_keys'] as int?,
         worlds50BestRank: json['worlds_50_best_rank'] as int?,
         communityRating: ((json['community_rating'] as num?) ?? 0).toDouble(),
@@ -156,10 +163,73 @@ class CommunityRankedVenue {
         id: json['event_id'].toString(),
         name: (json['name'] as String?) ?? '',
         city: (json['city'] as String?) ?? '',
+        countryCode: (json['country_code'] as String?) ?? '',
         communityRating: ((json['community_rating'] as num?) ?? 0).toDouble(),
         memberCount: (json['total_attendees'] as int?) ?? 0,
         imageUrl: json['image_url'] as String?,
         startDate: DateTime.tryParse((json['start_date'] as String?) ?? ''),
         endDate: DateTime.tryParse((json['end_date'] as String?) ?? ''),
       );
+}
+
+/// What the Community Rankings Filters sheet has chosen. [kind] picks the
+/// list; [countryCode] (null = any) and [recognition] narrow it, applied
+/// in the app over the already-loaded list ([applyCommunityFilters]) —
+/// the lists only hold venues with 3+ members, so they stay short.
+class CommunityRankingFilters {
+  final CommunityRankingKind kind;
+  final String? countryCode;
+  final CommunityRecognitionFilter recognition;
+
+  const CommunityRankingFilters({
+    this.kind = CommunityRankingKind.restaurants,
+    this.countryCode,
+    this.recognition = CommunityRecognitionFilter.all,
+  });
+
+  /// How many narrowing filters are on — the "Filters · 2" count. The kind
+  /// is always set, so it never counts.
+  int get activeCount =>
+      (countryCode == null ? 0 : 1) +
+      (recognition == CommunityRecognitionFilter.all ? 0 : 1);
+
+  CommunityRankingFilters copyWith({
+    CommunityRankingKind? kind,
+    String? Function()? countryCode,
+    CommunityRecognitionFilter? recognition,
+  }) => CommunityRankingFilters(
+    kind: kind ?? this.kind,
+    countryCode: countryCode == null ? this.countryCode : countryCode(),
+    recognition: recognition ?? this.recognition,
+  );
+}
+
+/// [venues] narrowed by [filters]' country and recognition, ranks kept in
+/// order. Stars count for restaurants and Keys for hotels; events have no
+/// recognition, so that filter is ignored for them.
+List<CommunityRankedVenue> applyCommunityFilters(
+  List<CommunityRankedVenue> venues,
+  CommunityRankingFilters filters,
+) {
+  bool matchesRecognition(CommunityRankedVenue v) {
+    final count = v.kind == CommunityRankingKind.hotels
+        ? (v.keys ?? 0)
+        : (v.stars ?? 0);
+    return switch (filters.recognition) {
+      CommunityRecognitionFilter.all => true,
+      _ when v.kind == CommunityRankingKind.events => true,
+      CommunityRecognitionFilter.one => count == 1,
+      CommunityRecognitionFilter.two => count == 2,
+      CommunityRecognitionFilter.three => count == 3,
+      CommunityRecognitionFilter.worlds50Best => v.worlds50BestRank != null,
+    };
+  }
+
+  final country = filters.countryCode?.toUpperCase();
+  return [
+    for (final v in venues)
+      if ((country == null || v.countryCode.toUpperCase() == country) &&
+          matchesRecognition(v))
+        v,
+  ];
 }
