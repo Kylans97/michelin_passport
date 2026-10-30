@@ -45,6 +45,11 @@ sealed class MapPin {
   String get subtitle;
   double get latitude;
   double get longitude;
+
+  /// ISO 3166-1 alpha-2, as stored (`'NL'`, `'FR'`) — what the globe's
+  /// visited-country tint keys on. Empty when the record has none, which
+  /// simply tints nothing; never inferred from the coordinate.
+  String get countryCode;
 }
 
 class RestaurantMapPin extends MapPin {
@@ -70,6 +75,8 @@ class RestaurantMapPin extends MapPin {
   String get title => restaurant.name;
   @override
   String get subtitle => '${restaurant.cityName}, ${restaurant.countryName}';
+  @override
+  String get countryCode => restaurant.countryCode;
 }
 
 class HotelMapPin extends MapPin {
@@ -93,6 +100,8 @@ class HotelMapPin extends MapPin {
   MapPinType get type => MapPinType.hotel;
   @override
   String get title => hotel.name;
+  @override
+  String get countryCode => hotel.countryCode;
   @override
   String get subtitle => '${hotel.cityName}, ${hotel.countryName}';
 }
@@ -123,6 +132,8 @@ class EventMapPin extends MapPin {
   MapPinType get type => MapPinType.event;
   @override
   String get title => entry.event.name;
+  @override
+  String get countryCode => entry.event.countryCode;
   @override
   String get subtitle {
     final venueName = entry.event.venueName;

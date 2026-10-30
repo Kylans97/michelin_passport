@@ -106,6 +106,9 @@ flutter:
     - assets/branding/mark-small-green-ink.svg
     - assets/branding/wordmark-ivory.svg
     - assets/branding/wordmark-deepgreen.svg
+    # My Map's globe outlines (Natural Earth 1:50m, public domain) — built
+    # by scripts/build_globe_outlines.py.
+    - assets/globe/countries.bin
     - .env
 
   # To add assets to your application, add an assets section, like this:
