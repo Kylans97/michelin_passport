@@ -4,7 +4,6 @@ import '../../models/passport_venue.dart';
 import '../../models/restaurant.dart';
 import '../../models/venue_entry.dart';
 import '../../models/visit.dart';
-import '../../models/visited_restaurant.dart';
 import 'hotel_repository.dart' show hotelFullColumns;
 import 'photo_repository.dart';
 import 'restaurant_repository.dart' show restaurantFullColumns;
@@ -410,59 +409,6 @@ class VisitedRepository {
   // DATABASE_ARCHITECTURE.md section 4), so these resolve restaurant rows
   // in a second query instead of a single embedded select.
 
-  // Returns all restaurants the user has visited, most recently visited
-  // first. A restaurant visited more than once appears once, at its most
-  // recent visit date.
-  Future<List<Restaurant>> getVisited(String userId) async {
-    final visitRows = await _fetchRestaurantVisitRows(userId);
-    if (visitRows.isEmpty) return [];
-
-    final restaurantsById = await _resolveRestaurantsByIds(
-      visitRows.map((row) => row['entity_id'] as String),
-    );
-    final seen = <String>{};
-    final result = <Restaurant>[];
-    for (final row in visitRows) {
-      final id = row['entity_id'] as String;
-      final restaurant = restaurantsById[id];
-      if (restaurant != null && seen.add(id)) result.add(restaurant);
-    }
-    return result;
-  }
-
-  // Returns one entry per visit (not deduplicated) with its rating, notes
-  // and date, most recently visited first.
-  Future<List<VisitedRestaurant>> getVisitedWithRatings(String userId) async {
-    final visitRows = await _fetchRestaurantVisitRows(userId);
-    if (visitRows.isEmpty) return [];
-
-    final restaurantsById = await _resolveRestaurantsByIds(
-      visitRows.map((row) => row['entity_id'] as String),
-    );
-    return [
-      for (final row in visitRows)
-        if (restaurantsById[row['entity_id'] as String] != null)
-          VisitedRestaurant(
-            restaurant: restaurantsById[row['entity_id'] as String]!,
-            personalRating: (row['rating'] as num?)?.toDouble(),
-            notes: row['notes'] as String?,
-            visitedAt: DateTime.tryParse(row['visited_on'] as String),
-          ),
-    ];
-  }
-
-  Future<List<Map<String, dynamic>>> _fetchRestaurantVisitRows(
-    String userId,
-  ) async {
-    final rows = await _client
-        .from('visits')
-        .select('entity_id, rating, notes, visited_on')
-        .eq('user_id', userId)
-        .eq('entity_type', _restaurantEntity)
-        .order('visited_on', ascending: false);
-    return (rows as List).cast<Map<String, dynamic>>();
-  }
-
   Future<Map<String, Restaurant>> _resolveRestaurantsByIds(
     Iterable<String> ids,
   ) async {
@@ -478,3 +424,12 @@ class VisitedRepository {
     };
   }
 }
+
+/// The restaurants in [entries], most recently visited first, once each —
+/// what Profile's Journey Stats count. Derived from the Passport load
+/// Profile already makes, instead of a second visits + restaurants_full
+/// download of the same rows (the removed getVisited()).
+List<Restaurant> visitedRestaurantsOf(List<VenueEntry> entries) => [
+  for (final entry in entries)
+    if (entry.venue case RestaurantVenue(:final restaurant)) restaurant,
+];

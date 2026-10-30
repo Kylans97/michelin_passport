@@ -217,9 +217,10 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
 
     var coverPhotos = <String, String>{};
     try {
-      coverPhotos = await _photoRepo.loadCoverPhotoUrlsForVisits(
-        visits.map((v) => v.visit.id).toList(),
-      );
+      // Only the verdicts Overview shows; the All screen loads its own.
+      coverPhotos = await _photoRepo.loadCoverPhotoUrlsForVisits([
+        for (final v in visits.take(friendVerdictPreviewCount)) v.visit.id,
+      ]);
     } catch (_) {
       // Photo rows just fall back to PhotoOrTile's own tile — never
       // blocks the rest of the screen.

@@ -132,18 +132,34 @@ class PhotoRepository {
   // (confirmed directly against the live `storage.objects` policies, not
   // assumed), so a visit that reached this screen at all is guaranteed to
   // already satisfy both.
+  //
+  // Callers pass only the visits on screen (Overview's three, then the All
+  // screen's rows a chunk at a time): every cover is now a signed request
+  // of its own (see resolveThumbnailUrls), and get_visit_cover_photos
+  // (20261030120000) returns one row per visit instead of every public
+  // photo. Before that migration is applied, PGRST202 falls back to the
+  // old every-photo query, which picks the same cover.
   Future<Map<String, String>> loadCoverPhotoUrlsForVisits(
     List<String> visitIds,
   ) async {
     if (visitIds.isEmpty) return {};
-    final rows = await _client
-        .from('photos')
-        .select('visit_id, storage_path')
-        .inFilter('visit_id', visitIds)
-        .eq('is_public', true)
-        .order('taken_at', ascending: false);
+    List rows;
+    try {
+      rows = await _client.rpc(
+        'get_visit_cover_photos',
+        params: {'p_visit_ids': visitIds},
+      ) as List;
+    } on PostgrestException catch (e) {
+      if (e.code != 'PGRST202') rethrow;
+      rows = await _client
+          .from('photos')
+          .select('visit_id, storage_path')
+          .inFilter('visit_id', visitIds)
+          .eq('is_public', true)
+          .order('taken_at', ascending: false);
+    }
     final pathByVisitId = <String, String>{};
-    for (final row in rows as List) {
+    for (final row in rows) {
       final map = row as Map<String, dynamic>;
       final visitId = map['visit_id'] as String?;
       if (visitId == null) continue;

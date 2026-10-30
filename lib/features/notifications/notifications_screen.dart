@@ -78,6 +78,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   late Future<List<AppNotification>> _future;
 
+  // Older pages, appended as the list reaches its end — see
+  // NotificationsRepository.getNotifications. [_load] starts over.
+  List<AppNotification> _older = const [];
+  bool _hasMore = false;
+  bool _loadingMore = false;
+  int _serverOffset = 0;
+
   @override
   void initState() {
     super.initState();
@@ -86,14 +93,39 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
 
   void _load() {
     setState(() {
-      _future = _notificationsRepo.getNotifications().then((notifications) {
+      _older = const [];
+      _hasMore = false;
+      _future = _notificationsRepo.getNotifications().then((page) {
         // Fire-and-forget: the caller doesn't need to wait for this to
         // render the list, and a failure here shouldn't block viewing
-        // notifications that already loaded successfully.
+        // notifications that already loaded successfully. Marks every
+        // unread row, paged in or not, exactly as before paging.
         _notificationsRepo.markAllAsRead().catchError((_) {});
-        return notifications;
+        _hasMore = page.hasMore;
+        _serverOffset = notificationsPageSize;
+        return page.notifications;
       });
     });
+  }
+
+  Future<void> _loadMore() async {
+    if (_loadingMore || !_hasMore) return;
+    _loadingMore = true;
+    try {
+      final page = await _notificationsRepo.getNotifications(
+        offset: _serverOffset,
+      );
+      if (!mounted) return;
+      setState(() {
+        _older = [..._older, ...page.notifications];
+        _hasMore = page.hasMore;
+        _serverOffset += notificationsPageSize;
+      });
+    } catch (_) {
+      // The list so far stays; reaching the end again retries.
+    } finally {
+      _loadingMore = false;
+    }
   }
 
   AnalyticsEntityType? _inviteEntityType(AppNotification n) =>
@@ -211,7 +243,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               ),
             );
           }
-          final notifications = snap.data ?? [];
+          final notifications = [...?snap.data, ..._older];
           if (notifications.isEmpty) {
             return Center(
               child: Padding(
@@ -250,9 +282,11 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               horizontal: CsSpacing.pageHorizontal,
               vertical: CsSpacing.md,
             ),
-            itemCount: notifications.length,
+            itemCount: notifications.length + (_hasMore ? 1 : 0),
             separatorBuilder: (_, _) => const SizedBox(height: 4),
-            itemBuilder: (_, i) => _NotificationRow(
+            itemBuilder: (_, i) => i == notifications.length
+                ? _LoadMoreRow(onVisible: _loadMore)
+                : _NotificationRow(
               notification: notifications[i],
               onAccept: () => _accept(notifications[i]),
               onDecline: () => _decline(notifications[i]),
@@ -265,6 +299,40 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       ),
     );
   }
+}
+
+/// The end of a list with older pages: asks for the next one as soon as
+/// it's built (i.e. scrolled into view) and shows a quiet spinner meanwhile.
+class _LoadMoreRow extends StatefulWidget {
+  final Future<void> Function() onVisible;
+
+  const _LoadMoreRow({required this.onVisible});
+
+  @override
+  State<_LoadMoreRow> createState() => _LoadMoreRowState();
+}
+
+class _LoadMoreRowState extends State<_LoadMoreRow> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) => widget.onVisible());
+  }
+
+  @override
+  Widget build(BuildContext context) => const Padding(
+    padding: EdgeInsets.symmetric(vertical: CsSpacing.md),
+    child: Center(
+      child: SizedBox(
+        width: 18,
+        height: 18,
+        child: CircularProgressIndicator(
+          color: AppColors.forestGreen,
+          strokeWidth: 1.5,
+        ),
+      ),
+    ),
+  );
 }
 
 class _NotificationRow extends StatelessWidget {
