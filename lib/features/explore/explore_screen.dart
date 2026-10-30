@@ -95,11 +95,19 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   // Discovery content — each independent, loaded once at first mount, not
   // re-fetched while typing (Discovery mode has no filters of its own).
+  // Restaurants and hotels are only the rows each section can show, not the
+  // catalogue: the whole of both was about 1 MB per mount (2026-10-30). The
+  // selectors below still make the final pick, so what shows is unchanged.
   late final Future<List<Event>> _discoveryEventsFuture = _eventsRepo
       .loadEvents(from: DateTime.now());
   late final Future<List<Restaurant>> _discoveryRestaurantsFuture =
-      _restaurantRepo.getAll();
-  late final Future<List<Hotel>> _discoveryHotelsFuture = _hotelRepo.getAll();
+      _restaurantRepo.getDiscoveryCandidates();
+  late final Future<List<Hotel>> _discoveryHotelsFuture = _hotelRepo
+      .getDiscoveryCandidates();
+  late final Future<List<Restaurant>> _freshRestaurantsFuture =
+      _restaurantRepo.getFreshFindCandidates();
+  late final Future<List<Hotel>> _freshHotelsFuture = _hotelRepo
+      .getFreshFindCandidates();
   // The Selection, newest first. A failure leaves the section out rather
   // than failing Explore, like every other discovery section.
   late final Future<List<SelectionEntry>> _selectionFuture = _selectionRepo
@@ -385,15 +393,15 @@ class _ExploreScreenState extends State<ExploreScreen> {
       ),
     ),
     // Above Worth the Journey/Stay a Little Longer, deliberately — see
-    // FreshFindsSection's own doc comment. Waits on all three discovery
-    // futures (restaurants/hotels/events already loaded for the sections
-    // below it, no new query) via Future.wait so it never flashes empty
-    // then pops in once each future resolves at a different time.
+    // FreshFindsSection's own doc comment. Waits on its restaurant/hotel
+    // candidates and the discovery events via Future.wait so it never
+    // flashes empty then pops in once each future resolves at a different
+    // time.
     SliverToBoxAdapter(
       child: FutureBuilder<List<Object>>(
         future: Future.wait([
-          _discoveryRestaurantsFuture,
-          _discoveryHotelsFuture,
+          _freshRestaurantsFuture,
+          _freshHotelsFuture,
           _discoveryEventsFuture,
         ]),
         builder: (context, snap) {
