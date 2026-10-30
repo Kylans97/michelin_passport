@@ -12,8 +12,28 @@ The format follows Keep a Changelog.
 - 2026-10-30 — Push notifications (iOS, APNs directly, no Firebase), with
   per-type toggles. Two kinds push: a friend request received, and a new
   event from a restaurant, hotel or private chef the person follows.
-  **Prepared, not applied:** migration `20261030130000`, the `send-push`
-  Edge Function, and the APNs secrets are not in production yet.
+  **Applied to production 2026-10-30**, after build 1.4.0 (17), so the
+  server side is live but no shipped build registers devices or shows the
+  settings yet. That needs the next build.
+  - **Secrets:** the five function secrets (`APNS_KEY_P8`, `APNS_KEY_ID`,
+    `APNS_TEAM_ID`, `APNS_BUNDLE_ID`, `SEND_PUSH_WEBHOOK_SECRET`) and the
+    vault secret `send_push_webhook_secret` were set by the product owner.
+    The key is team-scoped, Sandbox & Production.
+  - **Deploy:** `send-push` deployed. A probe without the secret returns 401,
+    and a GET returns 405, so `verify_jwt = false` took effect.
+  - **Apply:** one plain `supabase db push --linked`, which applied only
+    `20261030130000`. The ledger now has 116 rows, local and remote in
+    agreement.
+  - **Ledger note:** production already had `20261023200000` (from
+    `claude/usage-tracking`, applied but not merged), and `db push`
+    refuses to run while a remote migration has no local file. That file
+    was copied into this branch byte for byte from its own branch first;
+    it changed nothing in production.
+  - **Checked on production:** RLS is on both new tables, and all five
+    triggers exist. `has_function_privilege('anon', …)` is false for all
+    eight new functions. `authenticated` can't call the fan-out but can
+    register. The vault secret is present. v1–v4 and the unread counts all
+    execute.
   - **Migration `20261030130000_add_push_notifications.sql`:**
     - `push_devices` (APNs tokens): RLS lets the owner read and delete
       only. Writes go only through `register_push_device` /
@@ -74,7 +94,7 @@ The format follows Keep a Changelog.
       false for all six new functions).
   - **Not tested:**
     - a full-stack replay (Docker was not running);
-    - section 6 against the real views;
+    - section 6 with a signed-in user (it executes on production with none);
     - a real APNs delivery, including whether the Edge runtime's fetch
       speaks HTTP/2 to APNs. That is the first thing to check after the
       deploy.
