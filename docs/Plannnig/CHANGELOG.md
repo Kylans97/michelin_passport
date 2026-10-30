@@ -116,13 +116,24 @@ The format follows Keep a Changelog.
   (`applyCommunityFilters`), because it only holds venues with 3+
   members. A failed load offers Retry.
 
-  **Needs migration `20261030180000_add_country_to_rankings.sql` for the
-  country filter — prepared, NOT applied.** It appends `country_code` to
-  `restaurant_rankings` and `hotel_rankings` (`event_rankings` already
-  has it). Rows, order and grants are unchanged. Until it is applied the
-  repository steps back to the current columns, and the COUNTRY section
-  simply doesn't appear. A period filter (last 12 months) is left out on
-  purpose: it needs an RPC rather than a view.
+  **Migration `20261030180000_add_country_to_rankings.sql`, applied to
+  production on 2026-10-30 at the product owner's request.** It appends
+  `country_code` to `restaurant_rankings` and `hotel_rankings`
+  (`event_rankings` already had it). Rows, order and grants are
+  unchanged. A period filter (last 12 months) is left out on purpose: it
+  needs an RPC rather than a view.
+  - **Before the apply:** both view SELECTs ran read-only against
+    production without error (0 rows: nothing clears 3 members yet).
+    Production already had `20261030170000` (venue team), which this
+    branch doesn't carry. Its file was copied unchanged from
+    `claude/venue-follow-team` for the push only, then removed; it is not
+    committed here.
+  - **After the apply:** checked directly. `restaurant_rankings` (14
+    columns) is selectable by anon and authenticated, as before.
+    `hotel_rankings` (14) and `event_rankings` (9) are selectable by
+    authenticated only. All three have `country_code`. `supabase
+    migration list --linked` shows 120/120, local and remote in
+    agreement.
 
   Checked in the simulator with temporary demo rows (not committed),
   because no venue in production clears the threshold yet.

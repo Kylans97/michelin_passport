@@ -1,7 +1,7 @@
 -- Country on the Community Rankings views, for the screen's Filters sheet.
 --
--- Written 2026-10-30. NOT YET APPLIED — prepared for review; apply with
--- `supabase db push --linked` once the product owner approves.
+-- Written 2026-10-30. Applied to production 2026-10-30 with
+-- `supabase db push --linked`, at the product owner's request.
 --
 -- Named after 20261030170000_add_venue_team.sql, the highest migration on
 -- any branch when this was written.
