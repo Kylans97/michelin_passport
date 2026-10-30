@@ -14,7 +14,11 @@ its secrets exist, so nothing goes out half-configured.
    service (APNs)**, Continue, Register. **Download the `.p8` once**:
    Apple never offers it again. Note the **Key ID** on that page and your
    **Team ID** (top right of the portal, or Membership details).
-   One key serves sandbox and production, and every app on the team.
+   Choose environment **Sandbox & Production**. A Production-only key
+   works for TestFlight and App Store builds but makes every push to an
+   Xcode-run build fail with `InvalidProviderToken` (403), which send-push
+   logs and does not retry. Done 2026-10-30: key "Mantelier Push",
+   team-scoped, team `QMF89BFNGF` (environment still to confirm).
 3. In Xcode, automatic signing picks up the new capability next build.
    The repo already carries `aps-environment` in
    `ios/Runner/RunnerProfile.entitlements` (`development`; an App Store or
@@ -30,11 +34,15 @@ Generate one webhook secret and use it in both places:
 openssl rand -hex 32
 ```
 
-Function secrets (the `.p8` contents go in as-is, newlines included):
+Function secrets, five of them: `APNS_KEY_P8`, `APNS_KEY_ID`,
+`APNS_TEAM_ID`, `APNS_BUNDLE_ID`, `SEND_PUSH_WEBHOOK_SECRET`. Either
+Dashboard → Edge Functions → Secrets (paste the whole `.p8`, BEGIN/END
+lines included), or the CLI below, which reads the file so the key never
+passes through a terminal paste, chat or the repo:
 
 ```bash
 supabase secrets set --project-ref wcmxugunvwsrulcpeyrc \
-  APNS_KEY_ID=<key id> APNS_TEAM_ID=<team id> APNS_BUNDLE_ID=app.mantelier \
+  APNS_KEY_ID=<key id> APNS_TEAM_ID=QMF89BFNGF APNS_BUNDLE_ID=app.mantelier \
   SEND_PUSH_WEBHOOK_SECRET=<secret> APNS_KEY_P8="$(cat AuthKey_<key id>.p8)"
 ```
 
