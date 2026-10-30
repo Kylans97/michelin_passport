@@ -1,0 +1,1075 @@
+{
+ "columns": [
+  {
+   "c": "id",
+   "def": "gen_random_uuid()",
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "award_history",
+   "type": "uuid"
+  },
+  {
+   "c": "entity_type",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "award_history",
+   "type": "text"
+  },
+  {
+   "c": "entity_id",
+   "def": null,
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "award_history",
+   "type": "uuid"
+  },
+  {
+   "c": "guide_year",
+   "def": null,
+   "dtype": "smallint",
+   "null": "NO",
+   "t": "award_history",
+   "type": "int2"
+  },
+  {
+   "c": "award_type",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "award_history",
+   "type": "text"
+  },
+  {
+   "c": "award_value",
+   "def": null,
+   "dtype": "smallint",
+   "null": "YES",
+   "t": "award_history",
+   "type": "int2"
+  },
+  {
+   "c": "is_current",
+   "def": "false",
+   "dtype": "boolean",
+   "null": "NO",
+   "t": "award_history",
+   "type": "bool"
+  },
+  {
+   "c": "announced_on",
+   "def": null,
+   "dtype": "date",
+   "null": "YES",
+   "t": "award_history",
+   "type": "date"
+  },
+  {
+   "c": "id",
+   "def": "gen_random_uuid()",
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "cities",
+   "type": "uuid"
+  },
+  {
+   "c": "country_code",
+   "def": null,
+   "dtype": "character",
+   "null": "NO",
+   "t": "cities",
+   "type": "bpchar"
+  },
+  {
+   "c": "name",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "cities",
+   "type": "text"
+  },
+  {
+   "c": "postal_municipality",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "cities",
+   "type": "text"
+  },
+  {
+   "c": "region",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "cities",
+   "type": "text"
+  },
+  {
+   "c": "michelin_guide_edition",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "cities",
+   "type": "text"
+  },
+  {
+   "c": "country_code",
+   "def": null,
+   "dtype": "character",
+   "null": "NO",
+   "t": "countries",
+   "type": "bpchar"
+  },
+  {
+   "c": "name",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "countries",
+   "type": "text"
+  },
+  {
+   "c": "flag_emoji",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "countries",
+   "type": "text"
+  },
+  {
+   "c": "timezones",
+   "def": null,
+   "dtype": "ARRAY",
+   "null": "NO",
+   "t": "countries",
+   "type": "_text"
+  },
+  {
+   "c": "id",
+   "def": "gen_random_uuid()",
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "hotel_restaurants",
+   "type": "uuid"
+  },
+  {
+   "c": "hotel_id",
+   "def": null,
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "hotel_restaurants",
+   "type": "uuid"
+  },
+  {
+   "c": "restaurant_id",
+   "def": null,
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "hotel_restaurants",
+   "type": "uuid"
+  },
+  {
+   "c": "link_confidence",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "hotel_restaurants",
+   "type": "text"
+  },
+  {
+   "c": "evidence",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "hotel_restaurants",
+   "type": "text"
+  },
+  {
+   "c": "verified_at",
+   "def": null,
+   "dtype": "timestamp with time zone",
+   "null": "YES",
+   "t": "hotel_restaurants",
+   "type": "timestamptz"
+  },
+  {
+   "c": "id",
+   "def": "gen_random_uuid()",
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "hotels",
+   "type": "uuid"
+  },
+  {
+   "c": "hotel_code",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "name",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "michelin_keys",
+   "def": null,
+   "dtype": "smallint",
+   "null": "YES",
+   "t": "hotels",
+   "type": "int2"
+  },
+  {
+   "c": "city_id",
+   "def": null,
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "hotels",
+   "type": "uuid"
+  },
+  {
+   "c": "country_code",
+   "def": null,
+   "dtype": "character",
+   "null": "NO",
+   "t": "hotels",
+   "type": "bpchar"
+  },
+  {
+   "c": "address",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "location",
+   "def": null,
+   "dtype": "USER-DEFINED",
+   "null": "NO",
+   "t": "hotels",
+   "type": "geography"
+  },
+  {
+   "c": "google_place_id",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "michelin_url",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "website_url",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "booking_url",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "status",
+   "def": "'open'::venue_status",
+   "dtype": "USER-DEFINED",
+   "null": "NO",
+   "t": "hotels",
+   "type": "venue_status"
+  },
+  {
+   "c": "status_since",
+   "def": null,
+   "dtype": "date",
+   "null": "YES",
+   "t": "hotels",
+   "type": "date"
+  },
+  {
+   "c": "status_note",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "created_at",
+   "def": "now()",
+   "dtype": "timestamp with time zone",
+   "null": "NO",
+   "t": "hotels",
+   "type": "timestamptz"
+  },
+  {
+   "c": "updated_at",
+   "def": "now()",
+   "dtype": "timestamp with time zone",
+   "null": "NO",
+   "t": "hotels",
+   "type": "timestamptz"
+  },
+  {
+   "c": "starts_on",
+   "def": null,
+   "dtype": "date",
+   "null": "YES",
+   "t": "hotels",
+   "type": "date"
+  },
+  {
+   "c": "ends_on",
+   "def": null,
+   "dtype": "date",
+   "null": "YES",
+   "t": "hotels",
+   "type": "date"
+  },
+  {
+   "c": "parent_venue_type",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "parent_venue_id",
+   "def": null,
+   "dtype": "uuid",
+   "null": "YES",
+   "t": "hotels",
+   "type": "uuid"
+  },
+  {
+   "c": "opening_weekdays",
+   "def": null,
+   "dtype": "ARRAY",
+   "null": "YES",
+   "t": "hotels",
+   "type": "_int2"
+  },
+  {
+   "c": "missing_listing_report_id",
+   "def": null,
+   "dtype": "uuid",
+   "null": "YES",
+   "t": "hotels",
+   "type": "uuid"
+  },
+  {
+   "c": "phone",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "worlds_50_best_url",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "hotels",
+   "type": "text"
+  },
+  {
+   "c": "id",
+   "def": "gen_random_uuid()",
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "uuid"
+  },
+  {
+   "c": "restaurant_code",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "name",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "michelin_stars",
+   "def": null,
+   "dtype": "smallint",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "int2"
+  },
+  {
+   "c": "inclusion_reason",
+   "def": "'michelin_star'::text",
+   "dtype": "text",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "cuisine_id",
+   "def": null,
+   "dtype": "smallint",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "int2"
+  },
+  {
+   "c": "city_id",
+   "def": null,
+   "dtype": "uuid",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "uuid"
+  },
+  {
+   "c": "country_code",
+   "def": null,
+   "dtype": "character",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "bpchar"
+  },
+  {
+   "c": "address",
+   "def": null,
+   "dtype": "text",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "location",
+   "def": null,
+   "dtype": "USER-DEFINED",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "geography"
+  },
+  {
+   "c": "google_place_id",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "michelin_url",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "website_url",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "booking_url",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "property_name",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "status",
+   "def": "'open'::venue_status",
+   "dtype": "USER-DEFINED",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "venue_status"
+  },
+  {
+   "c": "status_since",
+   "def": null,
+   "dtype": "date",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "date"
+  },
+  {
+   "c": "status_note",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "created_at",
+   "def": "now()",
+   "dtype": "timestamp with time zone",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "timestamptz"
+  },
+  {
+   "c": "updated_at",
+   "def": "now()",
+   "dtype": "timestamp with time zone",
+   "null": "NO",
+   "t": "restaurants",
+   "type": "timestamptz"
+  },
+  {
+   "c": "phone",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "starts_on",
+   "def": null,
+   "dtype": "date",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "date"
+  },
+  {
+   "c": "ends_on",
+   "def": null,
+   "dtype": "date",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "date"
+  },
+  {
+   "c": "parent_venue_type",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "text"
+  },
+  {
+   "c": "parent_venue_id",
+   "def": null,
+   "dtype": "uuid",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "uuid"
+  },
+  {
+   "c": "opening_weekdays",
+   "def": null,
+   "dtype": "ARRAY",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "_int2"
+  },
+  {
+   "c": "missing_listing_report_id",
+   "def": null,
+   "dtype": "uuid",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "uuid"
+  },
+  {
+   "c": "worlds_50_best_url",
+   "def": null,
+   "dtype": "text",
+   "null": "YES",
+   "t": "restaurants",
+   "type": "text"
+  }
+ ],
+ "constraints": [
+  {
+   "def": "CHECK (((parent_venue_type IS NULL) OR (parent_venue_type = ANY (ARRAY['restaurant'::text, 'hotel'::text, 'private_chef'::text]))))",
+   "name": "restaurants_parent_venue_type_check",
+   "t": "restaurants"
+  },
+  {
+   "def": "CHECK (((opening_weekdays IS NULL) OR (opening_weekdays <@ ARRAY[(1)::smallint, (2)::smallint, (3)::smallint, (4)::smallint, (5)::smallint, (6)::smallint, (7)::smallint])))",
+   "name": "restaurants_opening_weekdays_check",
+   "t": "restaurants"
+  },
+  {
+   "def": "CHECK (((ends_on IS NULL) OR (starts_on IS NOT NULL)))",
+   "name": "restaurants_ends_on_requires_starts_on",
+   "t": "restaurants"
+  },
+  {
+   "def": "CHECK (((parent_venue_type IS NULL) = (parent_venue_id IS NULL)))",
+   "name": "restaurants_parent_venue_paired",
+   "t": "restaurants"
+  },
+  {
+   "def": "CHECK (((parent_venue_type IS DISTINCT FROM 'restaurant'::text) OR (parent_venue_id IS DISTINCT FROM id)))",
+   "name": "restaurants_parent_not_self",
+   "t": "restaurants"
+  },
+  {
+   "def": "CHECK (((parent_venue_type IS NULL) OR (parent_venue_type = ANY (ARRAY['restaurant'::text, 'hotel'::text, 'private_chef'::text]))))",
+   "name": "hotels_parent_venue_type_check",
+   "t": "hotels"
+  },
+  {
+   "def": "CHECK (((opening_weekdays IS NULL) OR (opening_weekdays <@ ARRAY[(1)::smallint, (2)::smallint, (3)::smallint, (4)::smallint, (5)::smallint, (6)::smallint, (7)::smallint])))",
+   "name": "hotels_opening_weekdays_check",
+   "t": "hotels"
+  },
+  {
+   "def": "CHECK (((ends_on IS NULL) OR (starts_on IS NOT NULL)))",
+   "name": "hotels_ends_on_requires_starts_on",
+   "t": "hotels"
+  },
+  {
+   "def": "CHECK (((parent_venue_type IS NULL) = (parent_venue_id IS NULL)))",
+   "name": "hotels_parent_venue_paired",
+   "t": "hotels"
+  },
+  {
+   "def": "CHECK (((parent_venue_type IS DISTINCT FROM 'hotel'::text) OR (parent_venue_id IS DISTINCT FROM id)))",
+   "name": "hotels_parent_not_self",
+   "t": "hotels"
+  },
+  {
+   "def": "FOREIGN KEY (city_id) REFERENCES cities(id)",
+   "name": "restaurants_city_id_fkey",
+   "t": "restaurants"
+  },
+  {
+   "def": "FOREIGN KEY (country_code) REFERENCES countries(country_code)",
+   "name": "restaurants_country_code_fkey",
+   "t": "restaurants"
+  },
+  {
+   "def": "PRIMARY KEY (country_code)",
+   "name": "countries_pkey",
+   "t": "countries"
+  },
+  {
+   "def": "UNIQUE (name)",
+   "name": "countries_name_key",
+   "t": "countries"
+  },
+  {
+   "def": "PRIMARY KEY (id)",
+   "name": "cities_pkey",
+   "t": "cities"
+  },
+  {
+   "def": "FOREIGN KEY (country_code) REFERENCES countries(country_code)",
+   "name": "cities_country_code_fkey",
+   "t": "cities"
+  },
+  {
+   "def": "CHECK (((michelin_keys >= 1) AND (michelin_keys <= 3)))",
+   "name": "hotels_michelin_keys_check",
+   "t": "hotels"
+  },
+  {
+   "def": "PRIMARY KEY (id)",
+   "name": "hotels_pkey",
+   "t": "hotels"
+  },
+  {
+   "def": "UNIQUE (hotel_code)",
+   "name": "hotels_hotel_code_key",
+   "t": "hotels"
+  },
+  {
+   "def": "UNIQUE (google_place_id)",
+   "name": "hotels_google_place_id_key",
+   "t": "hotels"
+  },
+  {
+   "def": "UNIQUE (michelin_url)",
+   "name": "hotels_michelin_url_key",
+   "t": "hotels"
+  },
+  {
+   "def": "FOREIGN KEY (city_id) REFERENCES cities(id)",
+   "name": "hotels_city_id_fkey",
+   "t": "hotels"
+  },
+  {
+   "def": "FOREIGN KEY (country_code) REFERENCES countries(country_code)",
+   "name": "hotels_country_code_fkey",
+   "t": "hotels"
+  },
+  {
+   "def": "CHECK (((michelin_stars IS NULL) OR ((michelin_stars >= 1) AND (michelin_stars <= 3))))",
+   "name": "michelin_stars_valid",
+   "t": "restaurants"
+  },
+  {
+   "def": "PRIMARY KEY (id)",
+   "name": "restaurants_pkey",
+   "t": "restaurants"
+  },
+  {
+   "def": "UNIQUE (restaurant_code)",
+   "name": "restaurants_restaurant_code_key",
+   "t": "restaurants"
+  },
+  {
+   "def": "UNIQUE (google_place_id)",
+   "name": "restaurants_google_place_id_key",
+   "t": "restaurants"
+  },
+  {
+   "def": "UNIQUE (michelin_url)",
+   "name": "restaurants_michelin_url_key",
+   "t": "restaurants"
+  },
+  {
+   "def": "FOREIGN KEY (cuisine_id) REFERENCES cuisines(id)",
+   "name": "restaurants_cuisine_id_fkey",
+   "t": "restaurants"
+  },
+  {
+   "def": "CHECK ((link_confidence = ANY (ARRAY['exact'::text, 'campus'::text, 'manual_review'::text])))",
+   "name": "hotel_restaurants_link_confidence_check",
+   "t": "hotel_restaurants"
+  },
+  {
+   "def": "PRIMARY KEY (id)",
+   "name": "hotel_restaurants_pkey",
+   "t": "hotel_restaurants"
+  },
+  {
+   "def": "UNIQUE (hotel_id, restaurant_id)",
+   "name": "hotel_restaurants_hotel_id_restaurant_id_key",
+   "t": "hotel_restaurants"
+  },
+  {
+   "def": "FOREIGN KEY (hotel_id) REFERENCES hotels(id) ON DELETE CASCADE",
+   "name": "hotel_restaurants_hotel_id_fkey",
+   "t": "hotel_restaurants"
+  },
+  {
+   "def": "FOREIGN KEY (restaurant_id) REFERENCES restaurants(id) ON DELETE CASCADE",
+   "name": "hotel_restaurants_restaurant_id_fkey",
+   "t": "hotel_restaurants"
+  },
+  {
+   "def": "CHECK ((entity_type = ANY (ARRAY['hotel'::text, 'restaurant'::text])))",
+   "name": "award_history_entity_type_check",
+   "t": "award_history"
+  },
+  {
+   "def": "CHECK ((award_type = ANY (ARRAY['michelin_keys'::text, 'michelin_stars'::text])))",
+   "name": "award_history_award_type_check",
+   "t": "award_history"
+  },
+  {
+   "def": "PRIMARY KEY (id)",
+   "name": "award_history_pkey",
+   "t": "award_history"
+  },
+  {
+   "def": "UNIQUE (entity_type, entity_id, guide_year, award_type)",
+   "name": "award_history_entity_type_entity_id_guide_year_award_type_key",
+   "t": "award_history"
+  },
+  {
+   "def": "CHECK ((cardinality(timezones) >= 1))",
+   "name": "countries_timezones_not_empty",
+   "t": "countries"
+  },
+  {
+   "def": "FOREIGN KEY (missing_listing_report_id) REFERENCES missing_listing_reports(id) ON DELETE SET NULL",
+   "name": "restaurants_missing_listing_report_id_fkey",
+   "t": "restaurants"
+  },
+  {
+   "def": "FOREIGN KEY (missing_listing_report_id) REFERENCES missing_listing_reports(id) ON DELETE SET NULL",
+   "name": "hotels_missing_listing_report_id_fkey",
+   "t": "hotels"
+  },
+  {
+   "def": "UNIQUE (worlds_50_best_url)",
+   "name": "restaurants_worlds_50_best_url_key",
+   "t": "restaurants"
+  },
+  {
+   "def": "UNIQUE (worlds_50_best_url)",
+   "name": "hotels_worlds_50_best_url_key",
+   "t": "hotels"
+  },
+  {
+   "def": "CHECK ((inclusion_reason = ANY (ARRAY['michelin_star'::text, 'worlds_50_best'::text, 'hall_of_fame'::text, 'bib_gourmand'::text, 'gault_millau'::text, 'editorial_selection'::text])))",
+   "name": "inclusion_reason_valid",
+   "t": "restaurants"
+  }
+ ],
+ "enums": [
+  {
+   "labels": [
+    "open",
+    "temporarily_closed",
+    "permanently_closed"
+   ],
+   "type": "venue_status"
+  }
+ ],
+ "indexes": [
+  {
+   "def": "CREATE UNIQUE INDEX award_history_pkey ON public.award_history USING btree (id)",
+   "name": "award_history_pkey",
+   "t": "award_history"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX award_history_entity_type_entity_id_guide_year_award_type_key ON public.award_history USING btree (entity_type, entity_id, guide_year, award_type)",
+   "name": "award_history_entity_type_entity_id_guide_year_award_type_key",
+   "t": "award_history"
+  },
+  {
+   "def": "CREATE INDEX award_history_entity_idx ON public.award_history USING btree (entity_type, entity_id)",
+   "name": "award_history_entity_idx",
+   "t": "award_history"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX award_history_current_uidx ON public.award_history USING btree (entity_type, entity_id, award_type) WHERE is_current",
+   "name": "award_history_current_uidx",
+   "t": "award_history"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX cities_pkey ON public.cities USING btree (id)",
+   "name": "cities_pkey",
+   "t": "cities"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX cities_unique_key ON public.cities USING btree (country_code, name, COALESCE(region, ''::text))",
+   "name": "cities_unique_key",
+   "t": "cities"
+  },
+  {
+   "def": "CREATE INDEX cities_country_region_idx ON public.cities USING btree (country_code, region)",
+   "name": "cities_country_region_idx",
+   "t": "cities"
+  },
+  {
+   "def": "CREATE INDEX cities_guide_edition_idx ON public.cities USING btree (michelin_guide_edition)",
+   "name": "cities_guide_edition_idx",
+   "t": "cities"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX countries_pkey ON public.countries USING btree (country_code)",
+   "name": "countries_pkey",
+   "t": "countries"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX countries_name_key ON public.countries USING btree (name)",
+   "name": "countries_name_key",
+   "t": "countries"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX hotel_restaurants_pkey ON public.hotel_restaurants USING btree (id)",
+   "name": "hotel_restaurants_pkey",
+   "t": "hotel_restaurants"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX hotel_restaurants_hotel_id_restaurant_id_key ON public.hotel_restaurants USING btree (hotel_id, restaurant_id)",
+   "name": "hotel_restaurants_hotel_id_restaurant_id_key",
+   "t": "hotel_restaurants"
+  },
+  {
+   "def": "CREATE INDEX hotel_restaurants_restaurant_idx ON public.hotel_restaurants USING btree (restaurant_id)",
+   "name": "hotel_restaurants_restaurant_idx",
+   "t": "hotel_restaurants"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX hotels_pkey ON public.hotels USING btree (id)",
+   "name": "hotels_pkey",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX hotels_hotel_code_key ON public.hotels USING btree (hotel_code)",
+   "name": "hotels_hotel_code_key",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX hotels_google_place_id_key ON public.hotels USING btree (google_place_id)",
+   "name": "hotels_google_place_id_key",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX hotels_michelin_url_key ON public.hotels USING btree (michelin_url)",
+   "name": "hotels_michelin_url_key",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE INDEX hotels_location_gix ON public.hotels USING gist (location)",
+   "name": "hotels_location_gix",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE INDEX hotels_country_keys_idx ON public.hotels USING btree (country_code, michelin_keys)",
+   "name": "hotels_country_keys_idx",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE INDEX hotels_city_idx ON public.hotels USING btree (city_id)",
+   "name": "hotels_city_idx",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE INDEX hotels_name_trgm_idx ON public.hotels USING gin (name gin_trgm_ops)",
+   "name": "hotels_name_trgm_idx",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE INDEX hotels_status_idx ON public.hotels USING btree (status) WHERE (status <> 'open'::venue_status)",
+   "name": "hotels_status_idx",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE INDEX hotels_parent_venue_idx ON public.hotels USING btree (parent_venue_type, parent_venue_id) WHERE (parent_venue_id IS NOT NULL)",
+   "name": "hotels_parent_venue_idx",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE INDEX hotels_ends_on_idx ON public.hotels USING btree (ends_on) WHERE (ends_on IS NOT NULL)",
+   "name": "hotels_ends_on_idx",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE INDEX hotels_missing_listing_report_idx ON public.hotels USING btree (created_at DESC) WHERE (missing_listing_report_id IS NOT NULL)",
+   "name": "hotels_missing_listing_report_idx",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX hotels_worlds_50_best_url_key ON public.hotels USING btree (worlds_50_best_url)",
+   "name": "hotels_worlds_50_best_url_key",
+   "t": "hotels"
+  },
+  {
+   "def": "CREATE INDEX restaurants_parent_venue_idx ON public.restaurants USING btree (parent_venue_type, parent_venue_id) WHERE (parent_venue_id IS NOT NULL)",
+   "name": "restaurants_parent_venue_idx",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX restaurants_pkey ON public.restaurants USING btree (id)",
+   "name": "restaurants_pkey",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX restaurants_restaurant_code_key ON public.restaurants USING btree (restaurant_code)",
+   "name": "restaurants_restaurant_code_key",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX restaurants_google_place_id_key ON public.restaurants USING btree (google_place_id)",
+   "name": "restaurants_google_place_id_key",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX restaurants_michelin_url_key ON public.restaurants USING btree (michelin_url)",
+   "name": "restaurants_michelin_url_key",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE INDEX restaurants_location_gix ON public.restaurants USING gist (location)",
+   "name": "restaurants_location_gix",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE INDEX restaurants_country_stars_idx ON public.restaurants USING btree (country_code, michelin_stars)",
+   "name": "restaurants_country_stars_idx",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE INDEX restaurants_city_idx ON public.restaurants USING btree (city_id)",
+   "name": "restaurants_city_idx",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE INDEX restaurants_name_trgm_idx ON public.restaurants USING gin (name gin_trgm_ops)",
+   "name": "restaurants_name_trgm_idx",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE INDEX restaurants_status_idx ON public.restaurants USING btree (status) WHERE (status <> 'open'::venue_status)",
+   "name": "restaurants_status_idx",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE INDEX restaurants_ends_on_idx ON public.restaurants USING btree (ends_on) WHERE (ends_on IS NOT NULL)",
+   "name": "restaurants_ends_on_idx",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE INDEX restaurants_missing_listing_report_idx ON public.restaurants USING btree (created_at DESC) WHERE (missing_listing_report_id IS NOT NULL)",
+   "name": "restaurants_missing_listing_report_idx",
+   "t": "restaurants"
+  },
+  {
+   "def": "CREATE UNIQUE INDEX restaurants_worlds_50_best_url_key ON public.restaurants USING btree (worlds_50_best_url)",
+   "name": "restaurants_worlds_50_best_url_key",
+   "t": "restaurants"
+  }
+ ],
+ "trigger_fns": [
+  {
+   "def": "CREATE OR REPLACE FUNCTION public.set_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nbegin\n  new.updated_at := now();\n  return new;\nend;\n$function$\n",
+   "name": "set_updated_at"
+  },
+  {
+   "def": "CREATE OR REPLACE FUNCTION public.set_updated_at()\n RETURNS trigger\n LANGUAGE plpgsql\nAS $function$\nbegin\n  new.updated_at := now();\n  return new;\nend;\n$function$\n",
+   "name": "set_updated_at"
+  }
+ ],
+ "triggers": [
+  {
+   "action": "EXECUTE FUNCTION set_updated_at()",
+   "event": "UPDATE",
+   "name": "restaurants_updated_at",
+   "t": "restaurants",
+   "timing": "BEFORE"
+  },
+  {
+   "action": "EXECUTE FUNCTION set_updated_at()",
+   "event": "UPDATE",
+   "name": "hotels_updated_at",
+   "t": "hotels",
+   "timing": "BEFORE"
+  }
+ ]
+}

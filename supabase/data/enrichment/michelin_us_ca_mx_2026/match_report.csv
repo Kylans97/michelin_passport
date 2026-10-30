@@ -1,0 +1,362 @@
+country,code,name,kind,detail
+US,hotel_771,Aman New York,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'Aman New York' https://guide.michelin.com/en/hotels-stays/nyc/aman-new-york-13416, 3 Key(s); stored point 14 m from MICHELIN's"
+US,hotel_772,Amangiri,HOTEL MATCHED,"by coordinates 4 m + name (production row has no michelin_url): MICHELIN 'Amangiri' https://guide.michelin.com/en/hotels-stays/lake-powell/amangiri-7009, 3 Key(s); stored point 4 m from MICHELIN's"
+US,hotel_775,Hotel Bel-Air,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'Hotel Bel-Air, Dorchester Collection' https://guide.michelin.com/en/hotels-stays/los-angeles-area/hotel-belair-5941, 3 Key(s); stored point 171 m from MICHELIN's"
+US,hotel_777,The Beverly Hills Hotel,HOTEL MATCHED,"by coordinates 106 m + name (production row has no michelin_url): MICHELIN 'The Beverly Hills Hotel, Dorchester Collection' https://guide.michelin.com/en/hotels-stays/los-angeles-area/the-beverly-hills-hotel-5896, 3 Key(s); stored point 106 m from MICHELIN's"
+US,hotel_774,Four Seasons at The Surf Club,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'Four Seasons Hotel at The Surf Club' https://guide.michelin.com/en/hotels-stays/miami/four-seasons-hotel-at-the-surf-club-12443, 2 Key(s); stored point 25 m from MICHELIN's"
+US,hotel_778,The Carlyle,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'The Carlyle, A Rosewood Hotel' https://guide.michelin.com/en/hotels-stays/nyc/the-carlyle-186, 2 Key(s); stored point 28 m from MICHELIN's"
+US,hotel_779,The Fifth Avenue Hotel,HOTEL MATCHED,"by coordinates 98 m + name (production row has no michelin_url): MICHELIN 'The Fifth Avenue Hotel' https://guide.michelin.com/en/hotels-stays/nyc/the-fifth-avenue-hotel-13538, 2 Key(s); stored point 98 m from MICHELIN's"
+US,hotel_781,The Mark,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'The Mark Hotel' https://guide.michelin.com/en/hotels-stays/nyc/the-mark-hotel-5617, 2 Key(s); stored point 7 m from MICHELIN's"
+US,hotel_776,San Ysidro Ranch,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'San Ysidro Ranch' https://guide.michelin.com/en/hotels-stays/santa-barbara/san-ysidro-ranch-7575, 1 Key(s); stored point 340 m from MICHELIN's"
+US,hotel_776,San Ysidro Ranch,KEY CHANGE,"None -> 1 (MICHELIN 2026 Keys, 18 Sep 2026)"
+US,hotel_780,The Greenwich Hotel,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'The Greenwich Hotel' https://guide.michelin.com/en/hotels-stays/nyc/the-greenwich-hotel-6079, 1 Key(s); stored point 25 m from MICHELIN's"
+US,hotel_773,Equinox Hotel New York,HOTEL WITHOUT KEY (World's 50 Best),no MICHELIN Key in 2026; left untouched
+US,rest_0045,Eleven Madison Park,matched by michelin slug,michelin slug: MICHELIN 'Eleven Madison Park' https://guide.michelin.com/en/new-york-state/new-york/restaurant/eleven-madison-park; stored point 28 m from MICHELIN's; stored url https://guide.michelin.com/nl/nl/new-york-state/new-york/restaurant/eleven-madison-park
+US,rest_0053,Jungsik New York,matched by michelin slug,michelin slug: MICHELIN 'Jungsik New York' https://guide.michelin.com/en/new-york-state/new-york/restaurant/jungsik-new-york; stored point 87 m from MICHELIN's; stored url https://guide.michelin.com/nl/nl/new-york-state/new-york/restaurant/jungsik-new-york
+US,rest_0059,Le Bernardin,matched by michelin slug,michelin slug: MICHELIN 'Le Bernardin' https://guide.michelin.com/en/new-york-state/new-york/restaurant/le-bernardin; stored point 27 m from MICHELIN's; stored url https://guide.michelin.com/nl/nl/new-york-state/new-york/restaurant/le-bernardin
+US,rest_0080,Per Se,matched by michelin slug,michelin slug: MICHELIN 'Per Se' https://guide.michelin.com/en/new-york-state/new-york/restaurant/per-se; stored point 89 m from MICHELIN's; stored url https://guide.michelin.com/nl/nl/new-york-state/new-york/restaurant/per-se
+US,rest_0102,Sushi Sho,matched by michelin slug without MICHELIN's numeric id suffix,michelin slug without MICHELIN's numeric id suffix (sushi-sho -> sushi-sho-1213976): MICHELIN 'Sushi Sho' https://guide.michelin.com/en/new-york-state/new-york/restaurant/sushi-sho-1213976; stored point 1118 m from MICHELIN's; stored url https://guide.michelin.com/nl/nl/new-york-state/new-york/restaurant/sushi-sho
+US,rest_0102,Sushi Sho,STORED COORDINATES OFF,"stored point 1118 m from MICHELIN's (stored address '253 W 51st St, New York, NY 10019'; MICHELIN '3 E. 41st St., New York 10017') -- left as is"
+US,rest_0302,Atomix,matched by michelin slug,michelin slug: MICHELIN 'Atomix' https://guide.michelin.com/en/new-york-state/new-york/restaurant/atomix; stored point 8 m from MICHELIN's; stored url https://guide.michelin.com/us/en/new-york-state/new-york/restaurant/atomix
+US,rest_0735,The French Laundry,matched by coordinates 20 m + name,coordinates 20 m + name: MICHELIN 'The French Laundry' https://guide.michelin.com/en/california/yountville/restaurant/the-french-laundry; stored point 20 m from MICHELIN's; stored url None
+US,rest_0736,SingleThread,matched by coordinates 5 m + name,coordinates 5 m + name: MICHELIN 'SingleThread' https://guide.michelin.com/en/california/healdsburg/restaurant/singlethread; stored point 5 m from MICHELIN's; stored url None
+US,rest_0737,Benu,matched by coordinates 14 m + name,coordinates 14 m + name: MICHELIN 'Benu' https://guide.michelin.com/en/california/san-francisco/restaurant/benu; stored point 14 m from MICHELIN's; stored url None
+US,rest_0738,Atelier Crenn,matched by coordinates 9 m + name,coordinates 9 m + name: MICHELIN 'Atelier Crenn' https://guide.michelin.com/en/california/san-francisco/restaurant/atelier-crenn; stored point 9 m from MICHELIN's; stored url None
+US,rest_0739,Quince,matched by coordinates 9 m + name,coordinates 9 m + name: MICHELIN 'Quince' https://guide.michelin.com/en/california/san-francisco/restaurant/quince; stored point 9 m from MICHELIN's; stored url None
+US,rest_0740,Californios,matched by coordinates 11 m + name,coordinates 11 m + name: MICHELIN 'Californios' https://guide.michelin.com/en/california/san-francisco/restaurant/californios; stored point 11 m from MICHELIN's; stored url None
+US,rest_0741,Enclos,matched by coordinates 8 m + name,coordinates 8 m + name: MICHELIN 'Enclos' https://guide.michelin.com/en/california/sonoma/restaurant/enclos; stored point 8 m from MICHELIN's; stored url None
+US,rest_0742,Addison,matched by coordinates 35 m + name,coordinates 35 m + name: MICHELIN 'Addison' https://guide.michelin.com/en/california/us-san-diego/restaurant/addison; stored point 35 m from MICHELIN's; stored url None
+US,rest_0743,Providence,matched by coordinates 18 m + name,coordinates 18 m + name: MICHELIN 'Providence' https://guide.michelin.com/en/california/us-los-angeles/restaurant/providence; stored point 18 m from MICHELIN's; stored url None
+US,rest_0744,Somni,matched by coordinates 36 m + name,coordinates 36 m + name: MICHELIN 'Somni' https://guide.michelin.com/en/california/west-hollywood/restaurant/somni; stored point 36 m from MICHELIN's; stored url None
+US,rest_0745,Smyth,matched by coordinates 10 m + name,coordinates 10 m + name: MICHELIN 'Smyth' https://guide.michelin.com/en/illinois/chicago/restaurant/smyth; stored point 10 m from MICHELIN's; stored url None
+US,rest_0746,Saison,matched by coordinates 19 m + name,coordinates 19 m + name: MICHELIN 'Saison' https://guide.michelin.com/en/california/san-francisco/restaurant/saison; stored point 19 m from MICHELIN's; stored url None
+US,rest_0747,Acquerello,matched by coordinates 16 m + name,coordinates 16 m + name: MICHELIN 'Acquerello' https://guide.michelin.com/en/california/san-francisco/restaurant/acquerello; stored point 16 m from MICHELIN's; stored url None
+US,rest_0748,Birdsong,matched by coordinates 14 m + name,coordinates 14 m + name: MICHELIN 'Birdsong' https://guide.michelin.com/en/california/san-francisco/restaurant/birdsong; stored point 14 m from MICHELIN's; stored url None
+US,rest_0749,Lazy Bear,matched by coordinates 19 m + name,coordinates 19 m + name: MICHELIN 'Lazy Bear' https://guide.michelin.com/en/california/san-francisco/restaurant/lazy-bear; stored point 19 m from MICHELIN's; stored url None
+US,rest_0750,Sons & Daughters,matched by coordinates 4 m + name,coordinates 4 m + name: MICHELIN 'Sons & Daughters' https://guide.michelin.com/en/california/san-francisco/restaurant/sons-daughters; stored point 4 m from MICHELIN's; stored url None
+US,rest_0751,Kiln,matched by coordinates 16 m + name,coordinates 16 m + name: MICHELIN 'Kiln' https://guide.michelin.com/en/california/san-francisco/restaurant/kiln-1210355; stored point 16 m from MICHELIN's; stored url None
+US,rest_0752,Commis,matched by coordinates 4 m + name,coordinates 4 m + name: MICHELIN 'Commis' https://guide.michelin.com/en/california/oakland/restaurant/commis; stored point 4 m from MICHELIN's; stored url None
+US,rest_0753,Aubergine,matched by coordinates 15 m + name,coordinates 15 m + name: MICHELIN 'Aubergine' https://guide.michelin.com/en/california/carmel-by-the-sea/restaurant/aubergine; stored point 15 m from MICHELIN's; stored url None
+US,rest_0754,Vespertine,matched by coordinates 20 m + name,coordinates 20 m + name: MICHELIN 'Vespertine' https://guide.michelin.com/en/california/culver-city/restaurant/vespertine; stored point 20 m from MICHELIN's; stored url None
+US,rest_0755,Harbor House Inn,matched by coordinates 44 m + name,coordinates 44 m + name: MICHELIN 'Harbor House Inn' https://guide.michelin.com/en/california/elk/restaurant/harbor-house; stored point 44 m from MICHELIN's; stored url None
+US,rest_0756,Hayato,matched by coordinates 8 m + name,coordinates 8 m + name: MICHELIN 'Hayato' https://guide.michelin.com/en/california/us-los-angeles/restaurant/hayato; stored point 8 m from MICHELIN's; stored url None
+US,rest_0757,Kato,matched by coordinates 355 m + name,coordinates 355 m + name: MICHELIN 'Kato' https://guide.michelin.com/en/california/us-los-angeles/restaurant/kato; stored point 355 m from MICHELIN's; stored url None
+US,rest_0758,Mélisse,matched by coordinates 21 m + name,coordinates 21 m + name: MICHELIN 'Mélisse' https://guide.michelin.com/en/california/santa-monica/restaurant/melisse; stored point 21 m from MICHELIN's; stored url None
+US,rest_0759,Aquavit,matched by coordinates 15 m + name,coordinates 15 m + name: MICHELIN 'Aquavit' https://guide.michelin.com/en/new-york-state/new-york/restaurant/aquavit; stored point 15 m from MICHELIN's; stored url None
+US,rest_0760,Aska,matched by coordinates 20 m + name,coordinates 20 m + name: MICHELIN 'Aska' https://guide.michelin.com/en/new-york-state/brooklyn/restaurant/aska; stored point 20 m from MICHELIN's; stored url None
+US,rest_0761,Atera,matched by coordinates 6 m + name,coordinates 6 m + name: MICHELIN 'Atera' https://guide.michelin.com/en/new-york-state/new-york/restaurant/atera; stored point 6 m from MICHELIN's; stored url None
+US,rest_0762,Blue Hill at Stone Barns,matched by coordinates 396 m + name,coordinates 396 m + name: MICHELIN 'Blue Hill at Stone Barns' https://guide.michelin.com/en/new-york-state/tarrytown/restaurant/blue-hill-at-stone-barns; stored point 396 m from MICHELIN's; stored url None
+US,rest_0763,César,matched by coordinates 8 m + name,coordinates 8 m + name: MICHELIN 'César' https://guide.michelin.com/en/new-york-state/new-york/restaurant/cesar; stored point 8 m from MICHELIN's; stored url None
+US,rest_0764,Chef's Table at Brooklyn Fare,matched by coordinates 5 m + name,coordinates 5 m + name: MICHELIN 'Chef's Table at Brooklyn Fare' https://guide.michelin.com/en/new-york-state/new-york/restaurant/chef-s-table-at-brooklyn-fare; stored point 5 m from MICHELIN's; stored url None
+US,rest_0765,Gabriel Kreuther,matched by coordinates 75 m + name,coordinates 75 m + name: MICHELIN 'Gabriel Kreuther' https://guide.michelin.com/en/new-york-state/new-york/restaurant/gabriel-kreuther; stored point 75 m from MICHELIN's; stored url None
+US,rest_0766,Jean-Georges,matched by coordinates 3 m + name,coordinates 3 m + name: MICHELIN 'Jean-Georges' https://guide.michelin.com/en/new-york-state/new-york/restaurant/jean-georges; stored point 3 m from MICHELIN's; stored url None
+US,rest_0767,Joo Ok,matched by coordinates 19 m + name,coordinates 19 m + name: MICHELIN 'Joo Ok' https://guide.michelin.com/en/new-york-state/new-york/restaurant/joo-ok-1214822; stored point 19 m from MICHELIN's; stored url None
+US,rest_0768,odo,matched by coordinates 78 m + name,coordinates 78 m + name: MICHELIN 'Odo' https://guide.michelin.com/en/new-york-state/new-york/restaurant/odo; stored point 78 m from MICHELIN's; stored url None
+US,rest_0769,Saga,matched by coordinates 41 m + name,coordinates 41 m + name: MICHELIN 'Saga' https://guide.michelin.com/en/new-york-state/new-york/restaurant/saga; stored point 41 m from MICHELIN's; stored url None
+US,rest_0770,Sushi Noz,matched by coordinates 13 m + name,coordinates 13 m + name: MICHELIN 'Sushi Noz' https://guide.michelin.com/en/new-york-state/new-york/restaurant/sushi-noz; stored point 13 m from MICHELIN's; stored url None
+US,rest_0771,The Modern,matched by coordinates 40 m + name,coordinates 40 m + name: MICHELIN 'The Modern' https://guide.michelin.com/en/new-york-state/new-york/restaurant/the-modern; stored point 40 m from MICHELIN's; stored url None
+US,rest_0772,Alinea,matched by coordinates 20 m + name,coordinates 20 m + name: MICHELIN 'Alinea' https://guide.michelin.com/en/illinois/chicago/restaurant/alinea; stored point 20 m from MICHELIN's; stored url None
+US,rest_0773,Ever,matched by coordinates 10 m + name,coordinates 10 m + name: MICHELIN 'Ever' https://guide.michelin.com/en/illinois/chicago/restaurant/ever; stored point 10 m from MICHELIN's; stored url None
+US,rest_0774,Kasama,matched by coordinates 7 m + name,coordinates 7 m + name: MICHELIN 'Kasama' https://guide.michelin.com/en/illinois/chicago/restaurant/kasama; stored point 7 m from MICHELIN's; stored url None
+US,rest_0775,Oriole,matched by coordinates 18 m + name,coordinates 18 m + name: MICHELIN 'Oriole' https://guide.michelin.com/en/illinois/chicago/restaurant/oriole; stored point 18 m from MICHELIN's; stored url None
+US,rest_0776,Jônt,matched by coordinates 11 m + name,coordinates 11 m + name: MICHELIN 'Jônt' https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/jont; stored point 11 m from MICHELIN's; stored url None
+US,rest_0777,minibar by José Andrés,matched by coordinates 24 m + name,coordinates 24 m + name: MICHELIN 'minibar by José Andrés' https://guide.michelin.com/en/district-of-columbia/washington-dc/restaurant/minibar; stored point 24 m from MICHELIN's; stored url None
+US,rest_0778,The Inn at Little Washington,matched by coordinates 37 m + name,coordinates 37 m + name: MICHELIN 'The Inn at Little Washington' https://guide.michelin.com/en/virginia/washington_2960879/restaurant/the-inn-at-little-washington; stored point 37 m from MICHELIN's; stored url None
+US,rest_0779,L'Atelier de Joël Robuchon,matched by coordinates 34 m + name,coordinates 34 m + name: MICHELIN 'L'Atelier de Joël Robuchon Miami' https://guide.michelin.com/en/florida/miami/restaurant/l-atelier-de-joel-robuchon-miami; stored point 34 m from MICHELIN's; stored url None
+US,rest_0045,Eleven Madison Park,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 3 agrees"
+US,rest_0053,Jungsik New York,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 3 agrees"
+US,rest_0059,Le Bernardin,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 3 agrees"
+US,rest_0080,Per Se,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 3 agrees"
+US,rest_0102,Sushi Sho,"2026 LAUNCH ROW DROPPED, 2025 MADE CURRENT","MICHELIN's current edition for this guide is 2025 (3); production held 2025 = 3 (not current, history pass) and a launch row 2026 = 3 (current, no announced_on) that predates any 2026 edition. Relabelling would collide, so the launch row is deleted and 2025 made current (product owner, 2026-10-30; QA-301)"
+US,rest_0302,Atomix,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0735,The French Laundry,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0736,SingleThread,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0737,Benu,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0738,Atelier Crenn,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0739,Quince,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0740,Californios,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0741,Enclos,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0742,Addison,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0743,Providence,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0744,Somni,2026 ROW VERIFIED,current row 2026 = 3 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0745,Smyth,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 3 agrees"
+US,rest_0746,Saison,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0747,Acquerello,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0748,Birdsong,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0749,Lazy Bear,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0750,Sons & Daughters,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0751,Kiln,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0752,Commis,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0753,Aubergine,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0754,Vespertine,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0755,Harbor House Inn,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0756,Hayato,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0757,Kato,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0758,Mélisse,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide California 2026); left as is
+US,rest_0759,Aquavit,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0760,Aska,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0761,Atera,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0762,Blue Hill at Stone Barns,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0763,César,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0764,Chef's Table at Brooklyn Fare,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0765,Gabriel Kreuther,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0766,Jean-Georges,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0767,Joo Ok,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0768,odo,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0769,Saga,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0770,Sushi Noz,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0771,The Modern,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0772,Alinea,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0773,Ever,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0774,Kasama,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0775,Oriole,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0776,Jônt,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0777,minibar by José Andrés,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0778,The Inn at Little Washington,LAUNCH ROW RELABELLED 2026 -> 2025,"MICHELIN Guide Northeast Cities 2025 (New York, Chicago, Washington DC, Boston, Philadelphia) is MICHELIN's current edition for this restaurant (dateAwarded 2025; next ceremony 14 Dec 2026); value 2 agrees"
+US,rest_0779,L'Atelier de Joël Robuchon,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide Florida 2026); left as is
+US,rest_0736,SingleThread,property_name -> hotel link,"stored property_name 'SingleThread Farm'; the host is now in `hotels` (hotel_1510 SingleThread Inn), so the link replaces it (hotel scope rule 3)"
+US,rest_0738,Atelier Crenn,STORED PHONE DIFFERS,stored +1 415-440-0460 vs MICHELIN +1 415-440-0462 -- stored kept
+US,rest_0755,Harbor House Inn,property_name -> hotel link,"stored property_name 'Harbor House Inn'; the host is now in `hotels` (hotel_1661 Harbor House Inn), so the link replaces it (hotel scope rule 3)"
+US,rest_0778,The Inn at Little Washington,property_name -> hotel link,"stored property_name 'The Inn at Little Washington'; the host is now in `hotels` (hotel_1556 The Inn at Little Washington), so the link replaces it (hotel scope rule 3)"
+US,rest_3001,311 Omakase,PHONE HELD BACK,MICHELIN +1 781-831-0311: MICHELIN only; not found on official site -- held back
+US,rest_3003,Albi,PHONE HELD BACK,MICHELIN +1 202-921-9592: MICHELIN only; not found on official site -- held back
+US,rest_3009,Auro,PHONE HELD BACK,"MICHELIN +1 707-709-2100: official site prints +1 707 709 2160, MICHELIN +1 707-709-2100 -- held back for a decision"
+US,rest_3011,Bar Miller,PHONE HELD BACK,MICHELIN +1 201-304-7937: MICHELIN only; not found on official site -- held back
+US,rest_3016,Bell's,PHONE HELD BACK,MICHELIN +1 718-986-0286: MICHELIN only; not found on official site -- held back
+US,rest_3017,Boia De,PHONE HELD BACK,MICHELIN +1 786-209-6310: MICHELIN only; not found on official site -- held back
+US,rest_3020,Bosq,PHONE HELD BACK,MICHELIN +1 970-710-7299: MICHELIN only; not found on official site -- held back
+US,rest_3021,Bresca,PHONE HELD BACK,"MICHELIN +1 202-518-7926: official site prints +1 771 210 3168, MICHELIN +1 202-518-7926 -- held back for a decision"
+US,rest_3023,Brutø,PHONE HELD BACK,MICHELIN +1 720-325-2195: MICHELIN only; not found on official site -- held back
+US,rest_3030,Chef's Counter at MAASS,PHONE HELD BACK,MICHELIN +1 954-256-0000: MICHELIN only; not found on official site -- held back
+US,rest_3033,Corima,PHONE HELD BACK,MICHELIN +1 646-964-4836: MICHELIN only; official site unreachable -- held back
+US,rest_3034,CorkScrew BBQ,PHONE HELD BACK,MICHELIN +1 832-745-3064: MICHELIN only; not found on official site -- held back
+US,rest_3040,Crown Shy,PHONE HELD BACK,MICHELIN +1 212-517-1932: MICHELIN only; not found on official site -- held back
+US,rest_3042,Dakar NOLA,PHONE HELD BACK,MICHELIN +1 504-493-9396: MICHELIN only; not found on official site -- held back
+US,rest_3046,Ebbe,PHONE HELD BACK,MICHELIN +1 813-284-8276: MICHELIN only; not found on official site -- held back
+US,rest_3055,Estela,PHONE HELD BACK,MICHELIN +1 212-219-7693: MICHELIN only; not found on official site -- held back
+US,rest_3062,Frevo,PHONE HELD BACK,MICHELIN +1 646-455-0804: MICHELIN only; not found on official site -- held back
+US,rest_3065,Goldee’s Bar-B•Q,PHONE HELD BACK,MICHELIN +1 817-480-4131: MICHELIN only; not found on official site -- held back
+US,rest_3075,Icca,PHONE HELD BACK,MICHELIN +1 646-649-3415: MICHELIN only; official site unreachable -- held back
+US,rest_3077,Indienne,PHONE HELD BACK,MICHELIN +1 312-291-9427: MICHELIN only; not found on official site -- held back
+US,rest_3084,Kadence,PHONE HELD BACK,MICHELIN (321) 444-8095: MICHELIN only; not found on official site -- held back
+US,rest_3086,Kappo Kappo,PHONE HELD BACK,MICHELIN +1 512-628-1441: MICHELIN only; not found on official site -- held back
+US,rest_3090,KOJIMA,PHONE HELD BACK,MICHELIN +1 424-248-0116: MICHELIN only; not found on official site -- held back
+US,rest_3096,L'Atelier de Joël Robuchon Las Vegas,PHONE HELD BACK,MICHELIN +1 702-891-7358: MICHELIN only; official site unreachable -- held back
+US,rest_3098,Le Coucou,property_name,11 Howard
+US,rest_3099,Le Jardinier Houston,PHONE HELD BACK,MICHELIN +1 713-714-3015: MICHELIN only; not found on official site -- held back
+US,rest_3100,Le Jardinier Miami,PHONE HELD BACK,MICHELIN +1 305-402-9060: MICHELIN only; not found on official site -- held back
+US,rest_3119,Meju,PHONE HELD BACK,MICHELIN +1 718-806-1636: MICHELIN only; not found on official site -- held back
+US,rest_3122,Milpero,PHONE HELD BACK,MICHELIN +1 909-821-2750: MICHELIN only; not found on official site -- held back
+US,rest_3129,Mori Nozomi,PHONE HELD BACK,MICHELIN +1 424-273-1146: MICHELIN only; not found on official site -- held back
+US,rest_3133,Mutra,PHONE HELD BACK,MICHELIN +1 786-860-1213: MICHELIN only; not found on official site -- held back
+US,rest_3143,Nozawa Bar,PHONE HELD BACK,MICHELIN +1 424-216-6158: MICHELIN only; official site unreachable -- held back
+US,rest_3148,Omakase Table,PHONE HELD BACK,"MICHELIN +1 470-404-5245: official site prints +1 404 205 5876, MICHELIN +1 470-404-5245 -- held back for a decision"
+US,rest_3154,Pasta|Bar,PHONE HELD BACK,MICHELIN +1 818-208-1805: MICHELIN only; official site unreachable -- held back
+US,rest_3158,Protégé,PHONE HELD BACK,MICHELIN +1 707-312-0931: MICHELIN only; not found on official site -- held back
+US,rest_3161,Restaurant de Joël Robuchon,PHONE HELD BACK,MICHELIN +1 702-891-7925: MICHELIN only; official site unreachable -- held back
+US,rest_3165,Restaurant Yuu,PHONE HELD BACK,MICHELIN +1 347-422-0270: MICHELIN only; not found on official site -- held back
+US,rest_3166,Rezdôra,PHONE HELD BACK,MICHELIN +1 646-692-9090: MICHELIN only; not found on official site -- held back
+US,rest_3169,R|O-Rebel Omakase,PHONE HELD BACK,MICHELIN +1 949-664-3186: MICHELIN only; not found on official site -- held back
+US,rest_3177,Semma,PHONE HELD BACK,MICHELIN +1 212-373-8900: MICHELIN only; not found on official site -- held back
+US,rest_3179,Shin Sushi,PHONE HELD BACK,MICHELIN +1 818-616-4148: MICHELIN only; official site unreachable -- held back
+US,rest_3186,So. Fox,PHONE HELD BACK,MICHELIN +1 404-341-9374: MICHELIN only; not found on official site -- held back
+US,rest_3192,Ssal,PHONE HELD BACK,MICHELIN +1 415-814-2704: MICHELIN only; not found on official site -- held back
+US,rest_3194,Stubborn Seed,PHONE HELD BACK,MICHELIN +1 786-322-5211: MICHELIN only; official site unreachable -- held back
+US,rest_3196,Sushi Inaba,PHONE HELD BACK,MICHELIN +1 310-686-1878: MICHELIN only; not found on official site -- held back
+US,rest_3197,Sushi Kaneyoshi,PHONE HELD BACK,"MICHELIN +1 213-277-2588: official site prints +1 213 277 2388, MICHELIN +1 213-277-2588 -- held back for a decision"
+US,rest_3198,Sushi Nakazawa New York,PHONE HELD BACK,MICHELIN +1 212-924-2212: MICHELIN only; not found on official site -- held back
+US,rest_3199,Sushi Nakazawa Washington DC,PHONE HELD BACK,MICHELIN +1 202-289-3515: MICHELIN only; not found on official site -- held back
+US,rest_3205,The Four Horsemen,PHONE HELD BACK,MICHELIN +1 718-599-4900: MICHELIN only; not found on official site -- held back
+US,rest_3211,The Wolf's Tailor,PHONE HELD BACK,MICHELIN +1 720-456-6705: MICHELIN only; not found on official site -- held back
+US,rest_3214,Torrisi,PHONE HELD BACK,MICHELIN +1 212-254-3000: MICHELIN only; official site unreachable -- held back
+US,rest_3226,YingTao,PHONE HELD BACK,"MICHELIN +1 845-236-6577: official site prints +1 914 496 5055, MICHELIN +1 845-236-6577 -- held back for a decision"
+US,rest_3007,Atlas,HOTEL LINK (exact),"hotel_1823: MICHELIN restaurant page address 'The St. Regis Atlanta, 88 W. Paces Ferry Rd. NW, Atlanta 30305' names the 1-Key hotel 'The St. Regis Atlanta', whose MICHELIN pin is 55 m from the restaurant's. 2026-10-29."
+US,rest_3008,Auberge du Soleil,HOTEL LINK (campus),"hotel_1501: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/napa-sonoma-valleys/auberge-du-soleil-auberge-collection-7246 (Auberge du Soleil, Auberge Collection), a 3-Key hotel; restaurant pin 485 m from the hotel's MICHELIN pin. 2026-10-29."
+US,rest_3009,Auro,HOTEL LINK (exact),"hotel_1653: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/napa-sonoma-valleys/four-seasons-resort-napa-valley-12465 (Four Seasons Resort Napa Valley), a 1-Key hotel; restaurant pin 100 m from the hotel's MICHELIN pin. 2026-10-29."
+US,rest_3027,Caruso's,HOTEL LINK (campus),"hotel_1546: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/santa-barbara/rosewood-miramar-beach-11139 (Rosewood Miramar Beach), a 2-Key hotel; restaurant pin 313 m from the hotel's MICHELIN pin. 2026-10-29."
+US,rest_3086,Kappo Kappo,HOTEL LINK (exact),"hotel_1600: MICHELIN restaurant page address 'Austin Proper Hotel, 600 W. 2nd St., Austin 78701' names the 1-Key hotel 'Austin Proper Hotel', whose MICHELIN pin is 45 m from the restaurant's. 2026-10-29."
+US,rest_3209,The Surf Club Restaurant,HOTEL LINK (exact),"hotel_774: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/miami/four-seasons-hotel-at-the-surf-club-12443 (Four Seasons Hotel at The Surf Club), a 2-Key hotel; restaurant pin 99 m from the hotel's MICHELIN pin. 2026-10-29."
+US,rest_0736,SingleThread,HOTEL LINK (exact),"hotel_1510: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/napa-sonoma-valleys/singlethread-inn-13698 (SingleThread Inn), a 3-Key hotel; restaurant pin 50 m from the hotel's MICHELIN pin. 2026-10-29."
+US,rest_0755,Harbor House Inn,HOTEL LINK (exact),"hotel_1661: QA-307: theharborhouseinn.com, the site MICHELIN's restaurant page links to, is one business for the inn and the restaurant: titled 'Two Michelin Star Restaurant in Mendocino | Harbor House Inn', one address (5600 South Highway 1, Elk, CA 95432) and one phone for both, 'our Michelin-starred restaurant' beside the inn's 11 rooms and cottages. Read 2026-10-30; restaurant pin 97 m from the hotel's MICHELIN pin."
+US,rest_0778,The Inn at Little Washington,HOTEL LINK (exact),"hotel_1556: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/washington-1/inn-at-little-washington-8355 (The Inn at Little Washington), a 2-Key hotel; restaurant pin 26 m from the hotel's MICHELIN pin. 2026-10-29."
+US,hotel_1512,Alila Ventana Big Sur,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1516,Bernardus Lodge & Spa,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1517,"Beverly Wilshire, Beverly Hills (A Four Seasons Hotel)",HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1526,Dunton Hot Springs,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1529,Four Seasons Hotel Nashville,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1530,Four Seasons Hotel Philadelphia at Comcast Center,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1531,Four Seasons Hotel San Francisco at Embarcadero,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1532,Four Seasons Resort Hualalai,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1538,Montage Healdsburg,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1539,Montage Laguna Beach,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1542,One&Only Moonlight Basin,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1544,Pendry Manhattan West,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1551,The Breakers Palm Beach,HOTEL CONTACT MISSING,no phone -- see us_key_hotels_2026.csv
+US,hotel_1558,The Jefferson,HOTEL CONTACT MISSING,no website;  -- see us_key_hotels_2026.csv
+US,hotel_1563,The Loutrel,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1569,The Peninsula Beverly Hills,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1570,The Peninsula Chicago,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1571,"The Resort at Kapalua Bay, Maui",HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1574,The Setai Miami Beach,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1575,The Stavrand,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1578,The Vineta Hotel,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1582,Waldorf Astoria New York,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1609,Blind Tiger Portland – Carleton Street,HOTEL CONTACT MISSING,no phone -- see us_key_hotels_2026.csv
+US,hotel_1610,Blind Tiger Portland – Danforth Street,HOTEL CONTACT MISSING,no phone -- see us_key_hotels_2026.csv
+US,hotel_1630,Edgewood Tahoe,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1641,Fontainebleau Las Vegas,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1643,Four Seasons Denver,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1644,Four Seasons Hotel Austin,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1645,Four Seasons Hotel Boston,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1646,Four Seasons Hotel Chicago,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1647,Four Seasons Hotel Las Vegas,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1648,Four Seasons Hotel Minneapolis,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1649,Four Seasons Hotel New Orleans,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1650,"Four Seasons Hotel One Dalton Street, Boston",HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1651,Four Seasons Resort Lana'i,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1652,Four Seasons Resort Maui at Wailea,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1653,Four Seasons Resort Napa Valley,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1654,Four Seasons Resort Oahu at Ko Olina,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1655,Four Seasons Resort Palm Beach,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1656,Four Seasons Resort Scottsdale at Troon North,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1657,Four Seasons Vail,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1658,"Goldener Hirsch, Auberge Collection",HOTEL CONTACT MISSING,no website;  -- see us_key_hotels_2026.csv
+US,hotel_1672,Hotel Daphne,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1673,Hotel Drisco,HOTEL CONTACT MISSING,no website;  -- see us_key_hotels_2026.csv
+US,hotel_1676,Hotel Greystone,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1681,Hotel Saint Augustine,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1690,Inn at Thorn Hill,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1691,Inns of Aurora,HOTEL CONTACT MISSING,no website;  -- see us_key_hotels_2026.csv
+US,hotel_1696,Lake Nona Wave Hotel,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1697,Le Petit Pali Brentwood,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1698,Le Petit Pali St Helena,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1699,Lotte Hotel Seattle,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1700,Lumière by Dunton,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1705,"Mayflower Inn & Spa, Auberge Collection",HOTEL CONTACT MISSING,no phone -- see us_key_hotels_2026.csv
+US,hotel_1708,Montage Big Sky,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1709,Montage Deer Valley,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1710,Montage Palmetto Bluff,HOTEL CONTACT MISSING,no website;  -- see us_key_hotels_2026.csv
+US,hotel_1719,Park Hyatt Chicago,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1720,Pendry Baltimore,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1722,Pendry Natirar,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1723,Pendry Park City,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1724,Pendry Washington DC – The Wharf,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1728,Post House,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1731,Quercus,HOTEL CONTACT MISSING,no website;  -- see us_key_hotels_2026.csv
+US,hotel_1733,Regent Santa Monica Beach,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1745,Six Bells Countryside Inn,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1751,Southall Farm and Inn,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1753,"Stanly Ranch, Auberge Collection",HOTEL CONTACT MISSING,no website;  -- see us_key_hotels_2026.csv
+US,hotel_1754,Stein Eriksen Lodge,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1763,The Bowery Hotel,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1770,"The Cloudveil, Autograph Collection",HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1771,The Collector - Luxury Inn & Gardens,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1778,"The Elizabeth Hotel, Autograph Collection",HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1779,The Fearrington House Inn,HOTEL CONTACT MISSING,no website;  -- see us_key_hotels_2026.csv
+US,hotel_1791,The LaFayette Hotel and Club,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1792,The Lincoln Hotel,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1795,The Ludlow Hotel,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1800,The Mining Exchange,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1802,The Moore,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1806,The Peninsula New York,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1818,"The Ritz-Carlton Residences, Waikiki Beach",HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1823,The St. Regis Atlanta,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1829,The Wall Street Hotel,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1830,The Wauwinet,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1835,The Woodstock Inn & Resort,HOTEL CONTACT MISSING,no phone -- see us_key_hotels_2026.csv
+US,hotel_1843,W New York - Union Square,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1844,Waldorf Astoria Chicago,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+US,hotel_1845,Waldorf Astoria Las Vegas,HOTEL CONTACT MISSING,no website; no phone -- see us_key_hotels_2026.csv
+CA,rest_3235,DaNico,PHONE HELD BACK,MICHELIN +1 647-715-1200: MICHELIN only; not found on official site -- held back
+CA,rest_3236,Don Alfonso 1890,PHONE HELD BACK,MICHELIN +1 416-214-5888: MICHELIN only; not found on official site -- held back
+CA,rest_3244,Kebec Club Privé,PHONE HELD BACK,MICHELIN +1 819-342-2030: MICHELIN only; official site unreachable -- held back
+CA,rest_3251,Narval,PHONE HELD BACK,MICHELIN +1 581-246-4818: MICHELIN only; not found on official site -- held back
+CA,rest_3256,Restaurant 20 Victoria,PHONE HELD BACK,MICHELIN +1 416-804-6066: MICHELIN only; official site unreachable -- held back
+CA,rest_3261,Sumibiyaki Arashi,PHONE HELD BACK,MICHELIN +1 604-568-0522: MICHELIN only; not found on official site -- held back
+CA,rest_3262,Sushi Hyun,PHONE HELD BACK,MICHELIN +1 778-788-0795: MICHELIN only; official site unreachable -- held back
+CA,rest_3264,Sushi Masuda,PHONE HELD BACK,MICHELIN +1 604-816-3312: MICHELIN only; not found on official site -- held back
+CA,rest_3267,The Pine,PHONE HELD BACK,MICHELIN +1 705-466-2888: MICHELIN only; not found on official site -- held back
+CA,hotel_1854,Four Seasons Hotel Montreal,HOTEL CONTACT MISSING,no website; no phone -- see ca_key_hotels_2026.csv
+CA,hotel_1855,Four Seasons Hotel Toronto,HOTEL CONTACT MISSING,no website; no phone -- see ca_key_hotels_2026.csv
+CA,hotel_1856,Four Seasons Resort and Residences Whistler,HOTEL CONTACT MISSING,no website; no phone -- see ca_key_hotels_2026.csv
+CA,hotel_1862,Belvedere Hotel - Kingston,HOTEL CONTACT MISSING,no phone -- see ca_key_hotels_2026.csv
+CA,hotel_1878,Merrill House,HOTEL CONTACT MISSING,no website; no phone -- see ca_key_hotels_2026.csv
+CA,hotel_1879,"Muir, a Luxury Collection Hotel, Halifax",HOTEL CONTACT MISSING,no website; no phone -- see ca_key_hotels_2026.csv
+CA,hotel_1881,Park Hyatt Toronto,HOTEL CONTACT MISSING,no website; no phone -- see ca_key_hotels_2026.csv
+CA,hotel_1883,"Shangri-La Hotel, Toronto",HOTEL CONTACT MISSING,no website; no phone -- see ca_key_hotels_2026.csv
+CA,hotel_1884,"The Dorian, Autograph Collection",HOTEL CONTACT MISSING,no website; no phone -- see ca_key_hotels_2026.csv
+CA,hotel_1885,The Lodge at Bow Lake,HOTEL CONTACT MISSING,no website;  -- see ca_key_hotels_2026.csv
+CA,hotel_1889,The Smith Hotel,HOTEL CONTACT MISSING,no phone -- see ca_key_hotels_2026.csv
+MX,hotel_735,Hotel Esencia,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'Hotel Esencia' https://guide.michelin.com/en/hotels-stays/playa-del-carmen/hotel-esencia-2171, 3 Key(s); stored point 0 m from MICHELIN's"
+MX,hotel_782,One&Only Mandarina,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'One&Only Mandarina' https://guide.michelin.com/en/hotels-stays/Lo-de-Marcos/oneonly-mandarina-12145, 3 Key(s); stored point 0 m from MICHELIN's"
+MX,hotel_734,Chablé Yucatán,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'Chablé Yucatan' https://guide.michelin.com/en/hotels-stays/chochola/chable-yucatan-8415, 2 Key(s); stored point 27 m from MICHELIN's"
+MX,hotel_736,Las Ventanas al Paraíso,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'Las Ventanas al Paraiso, A Rosewood Resort' https://guide.michelin.com/en/hotels-stays/los-cabos/las-ventanas-al-paraiso-a-rosewood-resort-7368, 2 Key(s); stored point 236 m from MICHELIN's"
+MX,hotel_737,Maroma,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'Maroma, A Belmond Hotel, Riviera Maya' https://guide.michelin.com/en/hotels-stays/punta-maroma/maroma-a-belmond-hotel-riviera-maya-2971, 2 Key(s); stored point 11 m from MICHELIN's"
+MX,hotel_738,Montage Los Cabos,HOTEL MATCHED,"by MICHELIN hotel id: MICHELIN 'Montage Los Cabos' https://guide.michelin.com/en/hotels-stays/los-cabos/montage-los-cabos-8741, 2 Key(s); stored point 0 m from MICHELIN's"
+MX,hotel_740,Rosewood Mayakoba,HOTEL MATCHED,"by coordinates 394 m + name (production row has no michelin_url): MICHELIN 'Rosewood Mayakoba' https://guide.michelin.com/en/hotels-stays/playa-del-carmen/rosewood-mayakoba-7323, 2 Key(s); stored point 394 m from MICHELIN's"
+MX,hotel_740,Rosewood Mayakoba,KEY CHANGE,"None -> 2 (MICHELIN 2026 Keys, 18 Sep 2026)"
+MX,hotel_705,Four Seasons Tamarindo,HOTEL WITHOUT KEY (World's 50 Best),no MICHELIN Key in 2026; left untouched
+MX,rest_0132,Quintonil,matched by michelin slug,michelin slug: MICHELIN 'Quintonil' https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/quintonil; stored point 20 m from MICHELIN's; stored url https://guide.michelin.com/nl/nl/ciudad-de-mexico/miguel-hidalgo/restaurant/quintonil
+MX,rest_0133,Pujol,matched by michelin slug,michelin slug: MICHELIN 'Pujol' https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/pujol; stored point 6 m from MICHELIN's; stored url https://guide.michelin.com/nl/nl/ciudad-de-mexico/miguel-hidalgo/restaurant/pujol
+MX,rest_0328,Rosetta,matched by coordinates 8 m + name,coordinates 8 m + name: MICHELIN 'Rosetta' https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/rosetta; stored point 8 m from MICHELIN's; stored url None
+MX,rest_1369,Alcalde,matched by michelin slug,michelin slug: MICHELIN 'Alcalde' https://guide.michelin.com/en/jalisco/guadalajara_2011748/restaurant/alcalde-1243800; stored point 9 m from MICHELIN's; stored url https://guide.michelin.com/en/jalisco/guadalajara_2011748/restaurant/alcalde-1243800
+MX,rest_1390,Huniik,matched by michelin slug,michelin slug: MICHELIN 'Huniik' https://guide.michelin.com/en/yucatan/merida_2068208/restaurant/huniik; stored point 11 m from MICHELIN's; stored url https://guide.michelin.com/en/yucatan/merida_2068208/restaurant/huniik
+MX,rest_0132,Quintonil,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide Mexico 2026); left as is
+MX,rest_0133,Pujol,2026 ROW VERIFIED,current row 2026 = 2 agrees with MICHELIN's live page (MICHELIN Guide Mexico 2026); left as is
+MX,rest_0328,Rosetta,2026 ROW VERIFIED,current row 2026 = 1 agrees with MICHELIN's live page (MICHELIN Guide Mexico 2026); left as is
+MX,rest_1369,Alcalde,2026 ROW VERIFIED,current row 2026 = 1 agrees with MICHELIN's live page (MICHELIN Guide Mexico 2026); left as is
+MX,rest_1377,Arca,NOT STARRED (left as is),inclusion_reason worlds_50_best; no star history; not in MICHELIN's starred listing
+MX,rest_1390,Huniik,2026 ROW VERIFIED,current row 2026 = 1 agrees with MICHELIN's live page (MICHELIN Guide Mexico 2026); left as is
+MX,rest_0132,Quintonil,STORED PHONE DIFFERS,stored +52 55 5280 1660 vs MICHELIN +52 55 5280 2680 -- stored kept
+MX,rest_3269,Cocina de Autor Los Cabos,PHONE HELD BACK,"MICHELIN +52 322 176 0227: official site prints +52 624 104 9826, MICHELIN +52 322 176 0227 -- held back for a decision"
+MX,rest_3270,Cocina de Autor Riviera Maya,PHONE HELD BACK,"MICHELIN +52 984 877 4400: MICHELIN number on official site, but the Grand Velas Riviera Maya resort/concierge line (resort FAQ page), not the restaurant's own (the Germany/Italy rule: hotel switchboards are left out) -- held back"
+MX,rest_3275,Expendio de Maíz,PHONE HELD BACK,MICHELIN +52 55 6508 2722: MICHELIN only; not found on official site -- held back
+MX,rest_3276,Gaba,PHONE HELD BACK,MICHELIN +55 9107 8494: MICHELIN only; not found on official site -- held back
+MX,rest_3278,Ixi'im,PHONE HELD BACK,MICHELIN +52 999 747 1386: MICHELIN only; not found on official site -- held back
+MX,rest_3279,KOLI Cocina de Origen,PHONE HELD BACK,"MICHELIN +52 81 9688 7333: official site prints +52 81 1605 6890, MICHELIN +52 81 9688 7333 -- held back for a decision"
+MX,rest_3280,La Barra de Huniik,PHONE HELD BACK,MICHELIN +52 961 162 3881: MICHELIN only; not found on official site -- held back
+MX,rest_3282,Le Chique,PHONE HELD BACK,MICHELIN +52 998 872 8450: MICHELIN only; not found on official site -- held back
+MX,rest_3283,Levadura de Olla Restaurante,PHONE HELD BACK,MICHELIN +52 951 269 9068: MICHELIN only; not found on official site -- held back
+MX,rest_3288,Olivea Farm to Table,property_name,Casa Olivea
+MX,rest_3290,Sud 777,PHONE HELD BACK,MICHELIN +55 5578 4777: MICHELIN only; not found on official site -- held back
+MX,rest_3291,Xokol,PHONE HELD BACK,MICHELIN +52 33 4651 7554: MICHELIN only; official site unreachable -- held back
+MX,rest_3278,Ixi'im,HOTEL LINK (exact),"hotel_734: MICHELIN restaurant page address 'Chablé Yucatán, Tablaje #642, San Antonio Chablé, Chocholá 97816' names the 2-Key hotel 'Chablé Yucatán', whose MICHELIN pin is 81 m from the restaurant's. 2026-10-29."
+MX,hotel_1892,Xinalani,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1893,Banyan Tree Mayakoba,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1899,Four Seasons Resort Punta Mita,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1901,One&Only Palmilla Resort,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1902,Palmaïa-The House of AïA: All Inclusive Wellness Resort,HOTEL CONTACT MISSING,no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1903,Playa Viva,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1907,Waldorf Astoria Los Cabos Pedregal,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1910,Amomoxtli,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1912,Banyan Tree Cabo Marqués,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1913,Banyan Tree Puebla,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1914,BE Destination Tulum,HOTEL CONTACT MISSING,no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1915,BellView Boutique Hotel,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1916,Boca de Agua Bacalar,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1917,Brick Hotel,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1919,Cala de Mar Resort & Spa Ixtapa,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1922,Casa Hormiga,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1929,Chablé Maroma,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1930,Colima 71 - Casa de Arte Hotel,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1932,Desierto Azul,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1933,El Cielo Resort Valle de Guadalupe,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1934,Galopina,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1942,Hotel CIGNO,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1944,Hotel San Cristóbal,HOTEL CONTACT MISSING,no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1945,Hotel Sevilla,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1948,L'Ôtel - Casa Arca,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1953,Maison Celeste,HOTEL CONTACT MISSING,no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1956,NABOA Hotel Tulum,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1957,Nima Local House Hotel & Spa,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1960,Nômade Temple Holbox,HOTEL CONTACT MISSING,no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1961,OCTAVIA CASA,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1962,Our Habitas Bacalar,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1963,Paradero Todos Santos – Exclusive Experiences,HOTEL CONTACT MISSING,no website;  -- see mx_key_hotels_2026.csv
+MX,hotel_1969,St. Regis Punta Mita Resort,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1970,"The Cape, a Thompson Hotel",HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1971,"The St. Regis Kanai Resort, Riviera Maya",HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1974,TreeHouse Boutique Hotel,HOTEL CONTACT MISSING,no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1975,UMA Casa,HOTEL CONTACT MISSING,no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1979,Volga,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
+MX,hotel_1980,Waldorf Astoria Riviera Maya,HOTEL CONTACT MISSING,no website; no phone -- see mx_key_hotels_2026.csv
