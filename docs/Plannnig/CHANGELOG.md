@@ -8,7 +8,71 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
----
+### Added
+- **The team on a venue's page.** A restaurant or hotel can show its
+  chef and its manager ("Restaurant manager" / "Hotel manager"), each a
+  name and an optional short text (80 / 280 characters), under "THE
+  TEAM" below the about text. A manager edits them in Manage venue →
+  Team (`VenueTeamScreen`); like an about text, a new name or text waits
+  for an admin before it shows (decided 2026-10-30: it is new
+  descriptive copy from the venue, not presentation of something already
+  reviewed), and the outcome, with a rejection's note, shows on the Team
+  screen. Taking someone off the page needs no review and happens at
+  once; it also withdraws anything still waiting for that role, so it
+  cannot reappear on approval. Admins review it in the existing queue
+  (new kind `venue_team`, heading TEAM), with Preview page. Private
+  chefs have no Team row: their page is the chef. "Preview my page"
+  shows pending team changes through a new `teamOverride` on
+  `RestaurantDetailScreen`/`HotelDetailScreen`, same as the about text.
+- **Migration `20261030150000_add_venue_team.sql` — written, not
+  applied.** `venue_team_submissions` (RLS on; insert only by an active
+  venue manager via `is_active_venue_manager()`, only as pending — the
+  insert grant covers the content columns alone; no client update or
+  delete; `anon` may read only the columns the view needs, never who
+  submitted), the `venue_team_current` view, `remove_venue_team_member`,
+  `admin_approve_venue_team` / `admin_reject_venue_team`, and
+  `get_review_queue()` recreated with the `venue_team` kind and
+  `team_role`/`team_name`/`team_bio` appended (installed builds skip
+  kinds they don't know). Every new `SECURITY DEFINER` function has its
+  own `revoke execute ... from public, anon`. Checked 2026-10-30 on a
+  fresh full-stack replay of all 118 migrations: `anon` has no execute
+  on any of the four functions (`has_function_privilege`), a manager can
+  insert pending but not approved rows and cannot update, a non-manager
+  cannot insert or remove, a non-admin cannot approve or read the queue,
+  approve/reject/remove behave as described, and `anon` sees only
+  approved, not removed rows and cannot read `user_id`. Not in this
+  migration, on purpose: a notification to the venue on approval or
+  rejection (new notification types need a new `get_notifications_vN`
+  pair), and the admin email on a new submission (`notify-venue-
+  submission` rejects submission types it doesn't know, so it needs a
+  function change and deploy first).
+
+### Changed
+- **Follow is a labelled pill.** The hero's Follow control was a
+  person-add glyph that only went from outline to filled, which on a
+  photo did not read as a change, so people couldn't tell whether they
+  followed a venue. It is now "+ Follow" (translucent, ivory outline) or
+  "✓ Following" (solid ivory, forest green), on Restaurant, Hotel and
+  Private Chef pages. Following is optimistic: the pill flips on tap and
+  flips back, with an error snackbar, if the write fails. The success
+  snackbars ("Following X" / "Unfollowed X") are gone — the pill is the
+  feedback — and so is `followSnackMessage`.
+- **One wishlist heart everywhere.** The wishlist and Passport cards
+  showed a bookmark to remove (or add) what the Detail pages add with a
+  heart. `PassportCardBookmark` now draws the same heart: filled means on
+  the wishlist, a tap takes it off. Event Interested keeps its bookmark.
+- **Notifications after a follow: one sheet, in sync with Settings.**
+  The first follow on a device where iOS has never been asked now shows
+  one sheet ("You follow X — want a notification when they announce an
+  event?") instead of a snackbar plus a sheet. Saying yes there, and
+  then yes to iOS, also switches on "Events from venues you follow" in
+  Notification settings (and "Friend requests" for the friends prompt),
+  so the two can't disagree. In Notification settings the switches now
+  show what actually reaches the phone (off until iOS allows it), and
+  turning one on before iOS was asked is what asks iOS — the separate
+  "Turn on notifications" button above already-on-looking toggles is
+  gone. A no in iOS saves nothing.
+
 
 ## v1.5.0 (18) — 2026-10-30
 

@@ -132,14 +132,14 @@ void main() {
       expect(find.byIcon(Icons.star_rounded), findsNWidgets(2));
       // Passport UI Polish V2 — bookmark and the (now single-line) rating
       // footer icon. "Last visit"/calendar icon are gone entirely.
-      expect(find.byIcon(Icons.bookmark_outline_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.favorite_border_rounded), findsOneWidget);
       expect(find.byIcon(Icons.star_outline_rounded), findsOneWidget);
       expect(find.textContaining('Last visit'), findsNothing);
       expect(find.byIcon(Icons.calendar_today_outlined), findsNothing);
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('the bookmark shows outline when not wishlisted and filled '
+    testWidgets('the heart shows outline when not wishlisted and filled '
         'when wishlisted', (tester) async {
       final stats = PassportVenueStats.from(RestaurantVenue(_restaurant()), [
         _visit(visitedOn: DateTime(2026, 1, 1)),
@@ -154,8 +154,8 @@ void main() {
           ),
         ),
       );
-      expect(find.byIcon(Icons.bookmark_outline_rounded), findsOneWidget);
-      expect(find.byIcon(Icons.bookmark_rounded), findsNothing);
+      expect(find.byIcon(Icons.favorite_border_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.favorite_rounded), findsNothing);
 
       await tester.pumpWidget(
         _wrap(
@@ -167,11 +167,11 @@ void main() {
           ),
         ),
       );
-      expect(find.byIcon(Icons.bookmark_rounded), findsOneWidget);
-      expect(find.byIcon(Icons.bookmark_outline_rounded), findsNothing);
+      expect(find.byIcon(Icons.favorite_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.favorite_border_rounded), findsNothing);
     });
 
-    testWidgets('tapping the bookmark fires onToggleWishlist and does NOT '
+    testWidgets('tapping the heart fires onToggleWishlist and does NOT '
         'also fire the card\'s own onTap (navigation) — if it had, this '
         'would crash: RestaurantDetailScreen is Supabase-eager and there '
         'is no session in this test', (tester) async {
@@ -189,7 +189,7 @@ void main() {
           ),
         ),
       );
-      await tester.tap(find.byIcon(Icons.bookmark_outline_rounded));
+      await tester.tap(find.byIcon(Icons.favorite_border_rounded));
       await tester.pump();
       expect(toggled, isTrue);
       expect(tester.takeException(), isNull);
@@ -402,14 +402,14 @@ void main() {
       expect(find.textContaining('10.0'), findsOneWidget);
       expect(find.textContaining('1 stay'), findsOneWidget);
       expect(find.byIcon(Icons.vpn_key_rounded), findsNWidgets(3));
-      expect(find.byIcon(Icons.bookmark_outline_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.favorite_border_rounded), findsOneWidget);
       expect(find.byIcon(Icons.star_outline_rounded), findsOneWidget);
       expect(find.textContaining('Last stay'), findsNothing);
       expect(find.byIcon(Icons.calendar_today_outlined), findsNothing);
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('the bookmark shows outline when not wishlisted and filled '
+    testWidgets('the heart shows outline when not wishlisted and filled '
         'when wishlisted', (tester) async {
       final stats = PassportVenueStats.from(HotelVenue(_hotel()), [
         _visit(
@@ -428,11 +428,11 @@ void main() {
           ),
         ),
       );
-      expect(find.byIcon(Icons.bookmark_rounded), findsOneWidget);
-      expect(find.byIcon(Icons.bookmark_outline_rounded), findsNothing);
+      expect(find.byIcon(Icons.favorite_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.favorite_border_rounded), findsNothing);
     });
 
-    testWidgets('tapping the bookmark fires onToggleWishlist', (tester) async {
+    testWidgets('tapping the heart fires onToggleWishlist', (tester) async {
       var toggled = false;
       final stats = PassportVenueStats.from(HotelVenue(_hotel()), [
         _visit(
@@ -451,7 +451,7 @@ void main() {
           ),
         ),
       );
-      await tester.tap(find.byIcon(Icons.bookmark_outline_rounded));
+      await tester.tap(find.byIcon(Icons.favorite_border_rounded));
       expect(toggled, isTrue);
     });
 

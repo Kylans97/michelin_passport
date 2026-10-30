@@ -375,7 +375,7 @@ void main() {
         ),
       );
       expect(find.byType(FollowToggleButton), findsOneWidget);
-      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsOneWidget);
+      expect(find.text('Following'), findsOneWidget);
       await tester.tap(find.byType(FollowToggleButton));
       expect(tapped, isTrue);
     });

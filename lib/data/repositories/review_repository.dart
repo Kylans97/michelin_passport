@@ -84,6 +84,16 @@ class ReviewRepository {
   );
 
   /// Publishes a submitted event and tells the venue.
+  Future<void> approveTeam(ReviewItem item) => _client.rpc(
+    'admin_approve_venue_team',
+    params: {'p_submission_id': item.itemId},
+  );
+
+  Future<void> rejectTeam(ReviewItem item, String note) => _client.rpc(
+    'admin_reject_venue_team',
+    params: {'p_submission_id': item.itemId, 'p_review_note': note},
+  );
+
   Future<void> approveEvent(ReviewItem item) => _client.rpc(
     'admin_approve_event',
     params: {'p_event_id': item.eventId},

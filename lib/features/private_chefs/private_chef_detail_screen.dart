@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -31,7 +32,6 @@ import 'widgets/private_chef_experience_section.dart';
 import 'widgets/private_chef_hero.dart';
 import 'widgets/private_chef_provenance_row.dart';
 import 'widgets/private_chef_states.dart';
-import '../notifications/push_prompt_sheet.dart';
 import '../notifications/push_service.dart';
 
 /// Chef Detail — takes only [chefId] and resolves it internally (matching
@@ -352,9 +352,8 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     );
   }
 
-  // Events V2 Step 6 — mirrors RestaurantDetailScreen._toggleFollow /
-  // HotelDetailScreen._toggleFollow exactly. Non-optimistic; analytics
-  // fires only after the write succeeds.
+  // Events V2 Step 6 — mirrors RestaurantDetailScreen._toggleFollow
+  // exactly: optimistic, analytics only after the write succeeds.
   Future<void> _toggleFollow() async {
     // Preview: the Follow control stays visible (a visitor sees it) but
     // does nothing — see widget.isPreview's own doc comment.
@@ -368,8 +367,14 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     }
     if (_followBusy) return;
 
+    // Optimistic: the pill flips now and flips back if the write fails,
+    // so the state is visible the moment it is tapped. [_followBusy]
+    // only blocks a second tap while the write is in flight.
     final wasFollowing = _isFollowing;
-    setState(() => _followBusy = true);
+    setState(() {
+      _isFollowing = !wasFollowing;
+      _followBusy = true;
+    });
     try {
       if (wasFollowing) {
         await _followRepo.unfollowPrivateChef(
@@ -383,19 +388,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
         );
       }
       if (!mounted) return;
-      setState(() {
-        _isFollowing = !wasFollowing;
-        _followBusy = false;
-      });
-      _showSnack(
-        followSnackMessage(
-          wasFollowing: wasFollowing,
-          entityName: chef.displayName,
-        ),
-      );
-      if (!wasFollowing) {
-        PushService.instance.askAfter(context, FollowedVenuePrompt(chef.displayName));
-      }
+      setState(() => _followBusy = false);
       _analytics.track(
         wasFollowing
             ? AnalyticsEvent.followRemoved
@@ -405,9 +398,17 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
           entityId: chef.id,
         ),
       );
+      if (!wasFollowing) {
+        // The one place a follow can lead to notifications: a single
+        // explanation the first time, nothing after (PushService).
+        unawaited(PushService.instance.offerAfterFollow(context, chef.displayName));
+      }
     } catch (_) {
       if (!mounted) return;
-      setState(() => _followBusy = false);
+      setState(() {
+        _isFollowing = wasFollowing;
+        _followBusy = false;
+      });
       _showSnack('Could not update. Please try again.', isError: true);
     }
   }

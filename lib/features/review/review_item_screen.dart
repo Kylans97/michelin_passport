@@ -10,10 +10,12 @@ import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/review_repository.dart';
+import '../../data/repositories/venue_team_repository.dart';
 import '../../models/photo_framing.dart';
 import '../../models/private_chef_photo.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/review_item.dart';
+import '../../models/venue_team_member.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
@@ -88,6 +90,7 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
       ReviewKind.venueClaim => widget.repository.approveClaim(_item),
       ReviewKind.venueAbout => widget.repository.approveAbout(_item),
       ReviewKind.venuePhoto => widget.repository.approvePhoto(_item),
+      ReviewKind.venueTeam => widget.repository.approveTeam(_item),
       // Events open ReviewEventScreen, never this one.
       ReviewKind.venueEvent || ReviewKind.venueEventEdit => throw StateError(
         'Events are reviewed in ReviewEventScreen.',
@@ -115,6 +118,10 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
           _item,
           note.trim(),
         ),
+        ReviewKind.venueTeam => widget.repository.rejectTeam(
+          _item,
+          note.trim(),
+        ),
         ReviewKind.venueEvent || ReviewKind.venueEventEdit => throw StateError(
           'Events are reviewed in ReviewEventScreen.',
         ),
@@ -130,6 +137,8 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
     final signed = withPhoto ? await _signedUrl : null;
     if (!mounted) return;
     final about = _item.kind == ReviewKind.venueAbout ? _item.aboutText : null;
+    final team = await _previewTeam(client);
+    if (!mounted) return;
     final Widget page;
     switch (_item.venueType) {
       case 'restaurant':
@@ -142,6 +151,7 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
         page = RestaurantDetailScreen(
           restaurant: venue,
           aboutTextOverride: about,
+          teamOverride: team,
           photosOverride: photos,
           isPreview: true,
         );
@@ -155,6 +165,7 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
         page = HotelDetailScreen(
           hotel: venue,
           aboutTextOverride: about,
+          teamOverride: team,
           photosOverride: photos,
           isPreview: true,
         );
@@ -194,6 +205,22 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
     }
     if (!mounted) return;
     await Navigator.push(context, MaterialPageRoute(builder: (_) => page));
+  }
+
+  // A team submission shown in its place on the page: the venue's current
+  // team with this role replaced. Null (load the live team) for any other
+  // kind.
+  Future<List<VenueTeamMember>?> _previewTeam(SupabaseClient client) async {
+    final role = VenueTeamRole.fromWire(_item.teamRole);
+    if (_item.kind != ReviewKind.venueTeam || role == null) return null;
+    final current = await VenueTeamRepository(
+      client,
+    ).loadCurrent(venueType: _item.venueType, venueId: _item.venueId);
+    return VenueTeamMember.ordered([
+      for (final m in current)
+        if (m.role != role) m,
+      VenueTeamMember(role: role, name: _item.teamName ?? '', bio: _item.teamBio),
+    ]);
   }
 
   List<PublishedVenuePhoto> _merge(
@@ -316,6 +343,16 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
         'Approving makes them a manager of this venue.',
         style: CsTypography.metadata.copyWith(color: AppColors.taupe),
       ),
+    ],
+    ReviewKind.venueTeam => [
+      _field(
+        'Role',
+        VenueTeamRole.fromWire(_item.teamRole)?.labelFor(_item.venueType) ?? _item.teamRole,
+      ),
+      _field('Name', _item.teamName),
+      _field('Their text', _item.teamBio),
+      const SizedBox(height: CsSpacing.md),
+      _previewButton(() => _previewPage()),
     ],
     ReviewKind.venueAbout => [
       _label('NEW ABOUT TEXT'),

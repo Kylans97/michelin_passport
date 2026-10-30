@@ -62,7 +62,7 @@ void main() {
       expect(find.text('NL'), findsOneWidget);
     });
 
-    testWidgets('the bookmark is filled (already-saved state) — tapping it '
+    testWidgets('the heart is filled (already-saved state) — tapping it '
         'fires onRemove, not card navigation', (tester) async {
       var removed = false;
       await tester.pumpWidget(
@@ -70,20 +70,20 @@ void main() {
           EventWishlistCard(event: _event(), onRemove: () => removed = true),
         ),
       );
-      expect(find.byIcon(Icons.bookmark_rounded), findsOneWidget);
-      expect(find.byIcon(Icons.bookmark_outline_rounded), findsNothing);
-      await tester.tap(find.byIcon(Icons.bookmark_rounded));
+      expect(find.byIcon(Icons.favorite_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.favorite_border_rounded), findsNothing);
+      await tester.tap(find.byIcon(Icons.favorite_rounded));
       expect(removed, isTrue);
     });
 
-    testWidgets('never renders a heart icon — the card uses the same '
-        'bookmark-remove convention as the restaurant/hotel wishlist '
-        'cards, not the Detail-screen heart', (tester) async {
+    testWidgets('uses the wishlist heart, the same glyph Event Detail '
+        'adds it with — never the Interested bookmark', (tester) async {
       await tester.pumpWidget(
         _wrap(EventWishlistCard(event: _event(), onRemove: () {})),
       );
-      expect(find.byIcon(Icons.favorite_rounded), findsNothing);
-      expect(find.byIcon(Icons.favorite_border_rounded), findsNothing);
+      expect(find.byIcon(Icons.favorite_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.bookmark_rounded), findsNothing);
+      expect(find.byIcon(Icons.bookmark_border_rounded), findsNothing);
     });
 
     testWidgets('renders as a tappable card (navigation entry point)', (

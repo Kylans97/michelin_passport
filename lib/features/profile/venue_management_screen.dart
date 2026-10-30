@@ -13,12 +13,14 @@ import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/venue_photo_submission_repository.dart';
+import '../../data/repositories/venue_team_repository.dart';
 import '../../models/managed_venue.dart';
 import '../../models/private_chef_photo.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/venue_about_submission.dart';
 import '../../models/venue_event.dart';
 import '../../models/venue_photo_submission_status.dart';
+import '../../models/venue_team_member.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
@@ -27,6 +29,7 @@ import 'venue_events_screen.dart';
 import 'venue_photos_screen.dart';
 import 'venue_preview_photo_merge.dart';
 import 'venue_profile_screen.dart';
+import 'venue_team_screen.dart';
 import '../../core/widgets/app_network_image.dart';
 
 /// The one venue-ops inbox this app has — same address
@@ -49,7 +52,9 @@ Uri venueQuestionMailtoUri(String venueName) =>
     mailtoUri(_kVenueQuestionsEmail, subject: 'Venue question — $venueName');
 
 /// A venue's landing page, reached from My Venues: the venue's name and
-/// card photo, then Profile (VenueProfileScreen, the about text), Photos
+/// card photo, then Profile (VenueProfileScreen, the about text), Team
+/// (VenueTeamScreen, restaurants and hotels only: the chef and manager
+/// on the page), Photos
 /// (VenuePhotosScreen, order, framing and the card photo) and Events
 /// (VenueEventsScreen), each with a one-line summary, then Preview my
 /// page and the contact line. Venue events plan phase 2: the same
@@ -72,6 +77,7 @@ class VenueManagementScreen extends StatefulWidget {
   final VenueAboutRepository? aboutRepo;
   final VenuePhotoSubmissionRepository? photoRepo;
   final VenueEventsRepository? eventsRepo;
+  final VenueTeamRepository? teamRepo;
 
   // Owner preview only — the fresh venue re-fetch _openPreview does
   // alongside its existing photo/about-text fetches. Same DI-seam
@@ -86,6 +92,7 @@ class VenueManagementScreen extends StatefulWidget {
     this.aboutRepo,
     this.photoRepo,
     this.eventsRepo,
+    this.teamRepo,
     this.restaurantRepo,
     this.hotelRepo,
     this.privateChefRepo,
@@ -101,6 +108,12 @@ class _AboutSummary {
   const _AboutSummary({required this.currentText, required this.latestSubmission});
 }
 
+class _TeamSummary {
+  final List<VenueTeamMember> current;
+  final Map<VenueTeamRole, VenueTeamSubmission> mine;
+  const _TeamSummary({required this.current, required this.mine});
+}
+
 class _PhotosSummary {
   final List<PublishedVenuePhoto> published;
   final List<VenuePhotoSubmissionSummary> openSubmissions;
@@ -113,17 +126,22 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       widget.photoRepo ?? VenuePhotoSubmissionRepository(Supabase.instance.client);
   late final _eventsRepo =
       widget.eventsRepo ?? VenueEventsRepository(Supabase.instance.client);
+  late final _teamRepo = widget.teamRepo ?? VenueTeamRepository(Supabase.instance.client);
   late final _restaurantRepo =
       widget.restaurantRepo ?? RestaurantRepository(Supabase.instance.client);
   late final _hotelRepo = widget.hotelRepo ?? HotelRepository(Supabase.instance.client);
   late final _privateChefRepo =
       widget.privateChefRepo ?? PrivateChefRepository(Supabase.instance.client);
 
-  // Three separate summaries, so one failing lookup only blanks its own
+  // Separate summaries, so one failing lookup only blanks its own
   // row's summary line — every row stays tappable either way.
   late Future<_AboutSummary> _aboutFuture;
   late Future<_PhotosSummary> _photosFuture;
   late Future<List<VenueEvent>> _eventsFuture;
+  // Restaurants and hotels only; null for a private chef.
+  Future<_TeamSummary>? _teamFuture;
+
+  bool get _hasTeam => widget.venue.venueTypeWireValue != 'private_chef';
 
   bool _previewLoading = false;
   String? _previewError;
@@ -157,11 +175,22 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
         ),
       );
       _eventsFuture = _eventsRepo.loadVenueEvents(widget.venue);
+      _teamFuture = _hasTeam ? _loadTeam(type, id) : null;
     });
   }
 
+  Future<_TeamSummary> _loadTeam(String type, String id) => Future.wait([
+    _teamRepo.loadCurrent(venueType: type, venueId: id),
+    _teamRepo.loadMyLatestSubmissions(venueType: type, venueId: id),
+  ]).then(
+    (r) => _TeamSummary(
+      current: r[0] as List<VenueTeamMember>,
+      mine: r[1] as Map<VenueTeamRole, VenueTeamSubmission>,
+    ),
+  );
+
   // Every sub-screen can change what its row summarises, so coming back
-  // from any of them reloads all three.
+  // from any of them reloads them all.
   Future<void> _open(Widget screen) async {
     await Navigator.push(context, MaterialPageRoute(builder: (_) => screen));
     if (mounted) _loadSummaries();
@@ -236,10 +265,17 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
         venueType: cachedVenue.venueTypeWireValue,
         venueId: cachedVenue.id,
       );
+      final teamFuture = _hasTeam
+          ? _loadTeam(cachedVenue.venueTypeWireValue, cachedVenue.id)
+          : null;
       final freshVenue = await freshVenueFuture;
       final published = await publishedFuture;
       final openSubmissions = await openSubmissionsFuture;
       final pendingAbout = await pendingAboutFuture;
+      final team = await teamFuture;
+      final teamOverride = team == null
+          ? null
+          : previewTeam(current: team.current, mine: team.mine);
       final signedUrls = await _photoRepo.resolveDisplayUrls([
         for (final s in openSubmissions) s.storagePath,
       ]);
@@ -272,6 +308,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
             ManagedRestaurant(:final restaurant) => RestaurantDetailScreen(
               restaurant: restaurant,
               aboutTextOverride: aboutOverride,
+              teamOverride: teamOverride,
               photosOverride: [
                 for (var i = 0; i < mergedPhotos.length; i++)
                   PublishedVenuePhoto(
@@ -287,6 +324,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
             ManagedHotel(:final hotel) => HotelDetailScreen(
               hotel: hotel,
               aboutTextOverride: aboutOverride,
+              teamOverride: teamOverride,
               photosOverride: [
                 for (var i = 0; i < mergedPhotos.length; i++)
                   PublishedVenuePhoto(
@@ -373,6 +411,19 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                 ),
               ),
             ),
+            if (_teamFuture != null)
+              FutureBuilder<_TeamSummary>(
+                future: _teamFuture,
+                builder: (context, snap) => _SectionRow(
+                  title: 'Team',
+                  summary: snap.hasData
+                      ? VenueTeamScreen.summary(snap.data!.current, snap.data!.mine)
+                      : null,
+                  onTap: () => _open(
+                    VenueTeamScreen(venue: widget.venue, teamRepo: widget.teamRepo),
+                  ),
+                ),
+              ),
             FutureBuilder<_PhotosSummary>(
               future: _photosFuture,
               builder: (context, snap) => _SectionRow(

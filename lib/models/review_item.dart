@@ -14,7 +14,11 @@ enum ReviewKind {
 
   /// A change a venue made to its live event: already live, shown so an
   /// admin sees it, and can take the event offline if it's wrong.
-  venueEventEdit;
+  venueEventEdit,
+
+  /// A name and short text for a venue's chef or manager
+  /// (20261030150000).
+  venueTeam;
 
   static ReviewKind? fromWire(String value) => switch (value) {
     'venue_claim' => ReviewKind.venueClaim,
@@ -22,6 +26,7 @@ enum ReviewKind {
     'venue_photo' => ReviewKind.venuePhoto,
     'venue_event' => ReviewKind.venueEvent,
     'venue_event_edit' => ReviewKind.venueEventEdit,
+    'venue_team' => ReviewKind.venueTeam,
     _ => null,
   };
 
@@ -31,6 +36,7 @@ enum ReviewKind {
     ReviewKind.venuePhoto => 'Photo',
     ReviewKind.venueEvent => 'Event',
     ReviewKind.venueEventEdit => 'Change to a live event',
+    ReviewKind.venueTeam => 'Team',
   };
 
   /// The queue's group heading.
@@ -40,6 +46,7 @@ enum ReviewKind {
     ReviewKind.venuePhoto => 'PHOTOS',
     ReviewKind.venueEvent => 'EVENTS',
     ReviewKind.venueEventEdit => 'CHANGES TO LIVE EVENTS',
+    ReviewKind.venueTeam => 'TEAM',
   };
 
   bool get isEvent => this == venueEvent || this == venueEventEdit;
@@ -86,6 +93,11 @@ class ReviewItem {
   final DateTime? eventStartDate;
   final List<ReviewEventChange> eventChanges;
 
+  // venueTeam
+  final String? teamRole;
+  final String? teamName;
+  final String? teamBio;
+
   const ReviewItem({
     required this.kind,
     required this.itemId,
@@ -109,6 +121,9 @@ class ReviewItem {
     this.eventName,
     this.eventStartDate,
     this.eventChanges = const [],
+    this.teamRole,
+    this.teamName,
+    this.teamBio,
   });
 
   /// Null for a kind this build doesn't know yet (a newer server), so
@@ -150,6 +165,9 @@ class ReviewItem {
             (entry.value as Map?)?['new'],
           ),
       ]..sort((a, b) => a.field.compareTo(b.field)),
+      teamRole: json['team_role'] as String?,
+      teamName: json['team_name'] as String?,
+      teamBio: json['team_bio'] as String?,
     );
   }
 }

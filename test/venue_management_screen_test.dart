@@ -15,6 +15,7 @@ import 'package:michelin_passport/data/repositories/venue_events_repository.dart
 import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_about_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_photo_submission_repository.dart';
+import 'package:michelin_passport/data/repositories/venue_team_repository.dart';
 import 'package:michelin_passport/core/widgets/framed_image.dart';
 import 'package:michelin_passport/features/profile/adjust_photo_framing_screen.dart';
 import 'package:michelin_passport/features/profile/card_photo_screen.dart';
@@ -22,6 +23,7 @@ import 'package:michelin_passport/features/profile/venue_events_screen.dart';
 import 'package:michelin_passport/features/profile/venue_management_screen.dart';
 import 'package:michelin_passport/features/profile/venue_photos_screen.dart';
 import 'package:michelin_passport/features/profile/venue_profile_screen.dart';
+import 'package:michelin_passport/features/profile/venue_team_screen.dart';
 import 'package:michelin_passport/features/restaurants/restaurant_detail_screen.dart';
 import 'package:michelin_passport/models/event.dart';
 import 'package:michelin_passport/models/venue_event.dart';
@@ -32,6 +34,7 @@ import 'package:michelin_passport/models/published_venue_photo.dart';
 import 'package:michelin_passport/models/restaurant.dart';
 import 'package:michelin_passport/models/venue_about_submission.dart';
 import 'package:michelin_passport/models/venue_photo_submission_status.dart';
+import 'package:michelin_passport/models/venue_team_member.dart';
 
 SupabaseClient _dummyClient() => SupabaseClient(
   'https://test.supabase.co',
@@ -187,6 +190,68 @@ class _FakeEventsRepository extends VenueEventsRepository {
   }
 }
 
+class _FakeTeamRepository extends VenueTeamRepository {
+  _FakeTeamRepository({
+    this.current = const [],
+    Map<VenueTeamRole, VenueTeamSubmission>? mine,
+  }) : mine = mine ?? {},
+       super(_dummyClient());
+
+  List<VenueTeamMember> current;
+  Map<VenueTeamRole, VenueTeamSubmission> mine;
+  final submitted = <({VenueTeamRole role, String name, String? bio})>[];
+  final removed = <VenueTeamRole>[];
+  int loads = 0;
+
+  @override
+  Future<List<VenueTeamMember>> loadCurrent({
+    required String venueType,
+    required String venueId,
+  }) async {
+    loads++;
+    return current;
+  }
+
+  @override
+  Future<Map<VenueTeamRole, VenueTeamSubmission>> loadMyLatestSubmissions({
+    required String venueType,
+    required String venueId,
+  }) async => mine;
+
+  @override
+  Future<void> submit({
+    required String venueType,
+    required String venueId,
+    required VenueTeamRole role,
+    required String name,
+    String? bio,
+  }) async {
+    submitted.add((role: role, name: name, bio: bio));
+    mine = {
+      ...mine,
+      role: VenueTeamSubmission(
+        id: 's${submitted.length}',
+        role: role,
+        name: name,
+        bio: bio,
+        status: VenueAboutSubmissionStatus.pending,
+        submittedAt: DateTime.utc(2026, 10, 30),
+      ),
+    };
+  }
+
+  @override
+  Future<void> remove({
+    required String venueType,
+    required String venueId,
+    required VenueTeamRole role,
+  }) async {
+    removed.add(role);
+    current = [for (final m in current) if (m.role != role) m];
+    mine = {};
+  }
+}
+
 // The about text: VenueProfileScreen.
 Future<void> _pump(
   WidgetTester tester,
@@ -225,6 +290,7 @@ Future<void> _pumpLanding(
   ManagedVenue? venue,
   VenuePhotoSubmissionRepository? photoRepo,
   VenueEventsRepository? eventsRepo,
+  VenueTeamRepository? teamRepo,
   List<NavigatorObserver> observers = const [],
 }) async {
   await tester.pumpWidget(
@@ -235,6 +301,7 @@ Future<void> _pumpLanding(
         aboutRepo: repo,
         photoRepo: photoRepo ?? _FakeVenuePhotoSubmissionRepository(),
         eventsRepo: eventsRepo ?? _FakeEventsRepository(),
+        teamRepo: teamRepo ?? _FakeTeamRepository(),
       ),
     ),
   );
@@ -936,6 +1003,7 @@ void main() {
       final events = _FakeEventsRepository();
       await _pumpLanding(tester, _FakeVenueAboutRepository(), eventsRepo: events);
       expect(events.loadedFor.length, 1);
+      await tester.ensureVisible(find.text('Events'));
       await tester.tap(find.text('Events'));
       await tester.pumpAndSettle();
       await tester.pageBack();
@@ -961,6 +1029,114 @@ void main() {
       for (final forbidden in ['Address', 'Phone', 'Website', 'MICHELIN', 'Cuisine', 'Place ID']) {
         expect(find.textContaining(forbidden), findsNothing, reason: '"$forbidden" must not appear');
       }
+    });
+  });
+
+  group('Team', () {
+    testWidgets('the landing page shows Team for a restaurant, with its summary', (tester) async {
+      await _pumpLanding(
+        tester,
+        _FakeVenueAboutRepository(),
+        teamRepo: _FakeTeamRepository(
+          current: const [VenueTeamMember(role: VenueTeamRole.chef, name: 'Jonnie Boer')],
+          mine: {
+            VenueTeamRole.manager: VenueTeamSubmission(
+              id: 's1',
+              role: VenueTeamRole.manager,
+              name: 'Thérèse Boer',
+              status: VenueAboutSubmissionStatus.pending,
+              submittedAt: DateTime.utc(2026, 10, 30),
+            ),
+          },
+        ),
+      );
+      expect(find.text('Team'), findsOneWidget);
+      expect(find.text('1 person shown · 1 awaiting review'), findsOneWidget);
+    });
+
+    testWidgets('a private chef has no Team row', (tester) async {
+      final team = _FakeTeamRepository();
+      await _pumpLanding(
+        tester,
+        _FakeVenueAboutRepository(),
+        venue: ManagedPrivateChef(PrivateChef.fromJson({'id': 'c1', 'display_name': 'Chef Amara'})),
+        teamRepo: team,
+      );
+      expect(find.text('Team'), findsNothing);
+      expect(team.loads, 0);
+    });
+
+    testWidgets('submitting a name sends it for review and shows that it waits', (tester) async {
+      final team = _FakeTeamRepository();
+      await tester.pumpWidget(
+        MaterialApp(home: VenueTeamScreen(venue: _venue(), teamRepo: team)),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('CHEF'), findsOneWidget);
+      expect(find.text('RESTAURANT MANAGER'), findsOneWidget);
+      expect(find.text('Remove from page'), findsNothing);
+
+      await tester.enterText(find.byType(TextField).at(0), '  Jonnie Boer ');
+      await tester.enterText(find.byType(TextField).at(1), 'Chef-owner since 1989.');
+      await tester.tap(find.text('Submit for review').first);
+      await tester.pumpAndSettle();
+
+      expect(team.submitted.single.role, VenueTeamRole.chef);
+      expect(team.submitted.single.name, 'Jonnie Boer');
+      expect(team.submitted.single.bio, 'Chef-owner since 1989.');
+      expect(find.textContaining('is awaiting review'), findsOneWidget);
+      expect(find.text('Remove from page'), findsOneWidget);
+    });
+
+    testWidgets('an empty name is refused before anything is sent', (tester) async {
+      final team = _FakeTeamRepository();
+      await tester.pumpWidget(
+        MaterialApp(home: VenueTeamScreen(venue: _venue(), teamRepo: team)),
+      );
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Submit for review').first);
+      await tester.pumpAndSettle();
+      expect(team.submitted, isEmpty);
+      expect(find.text('Add a name before submitting.'), findsOneWidget);
+    });
+
+    testWidgets('removing someone asks first, then takes them off', (tester) async {
+      final team = _FakeTeamRepository(
+        current: const [VenueTeamMember(role: VenueTeamRole.chef, name: 'Jonnie Boer')],
+      );
+      await tester.pumpWidget(
+        MaterialApp(home: VenueTeamScreen(venue: _venue(), teamRepo: team)),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('On your page: Jonnie Boer'), findsOneWidget);
+      await tester.tap(find.text('Remove from page'));
+      await tester.pumpAndSettle();
+      expect(find.text('Remove the chef?'), findsOneWidget);
+      await tester.tap(find.text('Remove'));
+      await tester.pumpAndSettle();
+      expect(team.removed, [VenueTeamRole.chef]);
+      expect(find.text('On your page: Jonnie Boer'), findsNothing);
+    });
+
+    testWidgets('a rejection shows its note', (tester) async {
+      final team = _FakeTeamRepository(
+        mine: {
+          VenueTeamRole.chef: VenueTeamSubmission(
+            id: 's1',
+            role: VenueTeamRole.chef,
+            name: 'J. Boer',
+            status: VenueAboutSubmissionStatus.rejected,
+            submittedAt: DateTime.utc(2026, 10, 30),
+            reviewNote: 'Please use the full name.',
+          ),
+        },
+      );
+      await tester.pumpWidget(
+        MaterialApp(home: VenueTeamScreen(venue: _venue(), teamRepo: team)),
+      );
+      await tester.pumpAndSettle();
+      expect(find.textContaining("wasn't approved"), findsOneWidget);
+      expect(find.text('Please use the full name.'), findsOneWidget);
     });
   });
 
@@ -1016,6 +1192,7 @@ void main() {
             aboutRepo: _FakeVenueAboutRepository(),
             photoRepo: _FakeVenuePhotoSubmissionRepository(),
             eventsRepo: _FakeEventsRepository(),
+            teamRepo: _FakeTeamRepository(),
             restaurantRepo: restaurantRepo,
           ),
         ),

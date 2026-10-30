@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -14,6 +15,7 @@ import '../../core/widgets/personal_photos_preview.dart';
 import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_about_section.dart';
+import '../../core/widgets/venue_team_section.dart';
 import '../../core/widgets/venue_lifecycle_banner.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
@@ -25,6 +27,8 @@ import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
+import '../../data/repositories/venue_team_repository.dart';
+import '../../models/venue_team_member.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
@@ -45,7 +49,6 @@ import 'widgets/hotel_hero.dart';
 import 'widgets/hotel_info_card.dart';
 import 'widgets/hotel_restaurants_card.dart';
 import 'widgets/hotel_stays_card.dart';
-import '../notifications/push_prompt_sheet.dart';
 import '../notifications/push_service.dart';
 
 const _signInMessage = 'Sign in to save stays and wishlist hotels.';
@@ -59,6 +62,9 @@ class HotelDetailScreen extends StatefulWidget {
   /// Owner preview only — see RestaurantDetailScreen.aboutTextOverride's
   /// own doc comment, identical reasoning.
   final String? aboutTextOverride;
+
+  /// Owner preview only — see RestaurantDetailScreen.teamOverride.
+  final List<VenueTeamMember>? teamOverride;
 
   /// Owner preview only — see RestaurantDetailScreen.photosOverride's own
   /// doc comment, identical reasoning.
@@ -78,6 +84,7 @@ class HotelDetailScreen extends StatefulWidget {
     super.key,
     required this.hotel,
     this.aboutTextOverride,
+    this.teamOverride,
     this.photosOverride,
     this.isPreview = false,
     this.previewIsStale = false,
@@ -101,6 +108,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   );
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
   late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
+  late final _venueTeamRepo = VenueTeamRepository(Supabase.instance.client);
   late final Future<List<Restaurant>> _linkedRestaurantsFuture =
       widget.hotel.hasMichelinRestaurant
       ? _hotelRepo.getLinkedRestaurants(widget.hotel.id)
@@ -140,6 +148,10 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   // treats as "nothing to show."
   String? _aboutText;
 
+  // The venue's approved team (venue_team_current). Same "starts empty,
+  // only ever set on success" shape as _aboutText.
+  List<VenueTeamMember> _team = const [];
+
   // Mirrors RestaurantDetailScreen's _photos exactly — the hotel's full
   // published-photo set, one venue/one query, independent of hotel_hero
   // .dart's coverImageUrl fallback.
@@ -169,6 +181,11 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     } else {
       _loadAboutText();
     }
+    if (widget.teamOverride != null) {
+      _team = widget.teamOverride!;
+    } else {
+      _loadTeam();
+    }
     if (widget.photosOverride != null) {
       _photos = widget.photosOverride!;
     } else {
@@ -185,6 +202,19 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       // Leave the hero on its single cover photo (or gradient) on a
       // failed lookup — same reasoning as every other enhancement-content
       // load on this screen.
+    }
+  }
+
+  Future<void> _loadTeam() async {
+    try {
+      final team = await _venueTeamRepo.loadCurrent(
+        venueType: 'hotel',
+        venueId: widget.hotel.id,
+      );
+      if (!mounted) return;
+      setState(() => _team = team);
+    } catch (_) {
+      // Leave the section hidden on a failed lookup, like the about text.
     }
   }
 
@@ -333,9 +363,8 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     }
   }
 
-  // Events V2 Step 6 — mirrors _toggleWishlist/RestaurantDetailScreen
-  // ._toggleFollow exactly. Non-optimistic; analytics fires only after
-  // the write succeeds.
+  // Events V2 Step 6 — mirrors RestaurantDetailScreen._toggleFollow
+  // exactly: optimistic, analytics only after the write succeeds.
   Future<void> _toggleFollow() async {
     // Preview: same as _toggleWishlist — inert, not hidden.
     if (widget.isPreview) return;
@@ -346,8 +375,14 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     }
     if (_followBusy) return;
 
+    // Optimistic: the pill flips now and flips back if the write fails,
+    // so the state is visible the moment it is tapped. [_followBusy]
+    // only blocks a second tap while the write is in flight.
     final wasFollowing = _isFollowing;
-    setState(() => _followBusy = true);
+    setState(() {
+      _isFollowing = !wasFollowing;
+      _followBusy = true;
+    });
     try {
       if (wasFollowing) {
         await _followRepo.unfollowHotel(userId: uid, hotelId: widget.hotel.id);
@@ -355,19 +390,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         await _followRepo.followHotel(userId: uid, hotelId: widget.hotel.id);
       }
       if (!mounted) return;
-      setState(() {
-        _isFollowing = !wasFollowing;
-        _followBusy = false;
-      });
-      _showSnack(
-        followSnackMessage(
-          wasFollowing: wasFollowing,
-          entityName: widget.hotel.name,
-        ),
-      );
-      if (!wasFollowing) {
-        PushService.instance.askAfter(context, FollowedVenuePrompt(widget.hotel.name));
-      }
+      setState(() => _followBusy = false);
       _analytics.track(
         wasFollowing
             ? AnalyticsEvent.followRemoved
@@ -377,9 +400,17 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
           entityId: widget.hotel.id,
         ),
       );
+      if (!wasFollowing) {
+        // The one place a follow can lead to notifications: a single
+        // explanation the first time, nothing after (PushService).
+        unawaited(PushService.instance.offerAfterFollow(context, widget.hotel.name));
+      }
     } catch (_) {
       if (!mounted) return;
-      setState(() => _followBusy = false);
+      setState(() {
+        _isFollowing = wasFollowing;
+        _followBusy = false;
+      });
       _showSnack('Could not update. Please try again.', isError: true);
     }
   }
@@ -676,6 +707,11 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                   if (aboutText != null) ...[
                     const SectionDivider(),
                     VenueAboutSection(text: aboutText),
+                  ],
+
+                  if (_team.isNotEmpty) ...[
+                    const SectionDivider(),
+                    VenueTeamSection(members: _team, venueType: 'hotel'),
                   ],
 
                   const SectionDivider(),

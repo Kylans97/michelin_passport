@@ -1,18 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-/// Events V2 Step 6 UX correction — the success-feedback snackbar text
-/// shown after a Follow/Unfollow write actually succeeds. A pure,
-/// top-level function (no `this`, no Supabase) specifically so the exact
-/// wording is unit-testable without pumping any of the three
-/// Supabase-eager Detail screens that call it — Restaurant, Hotel, and
-/// Private Chef all share this single implementation rather than each
-/// re-deriving the same "Following X" / "Unfollowed X" ternary inline, so
-/// the three screens can never drift apart on phrasing.
-String followSnackMessage({
-  required bool wasFollowing,
-  required String entityName,
-}) => wasFollowing ? 'Unfollowed $entityName' : 'Following $entityName';
-
 // public.follows_restaurants / follows_hotels / follows_private_chefs —
 // Events V2 Step 1 database foundation (dedicated typed tables, not a
 // polymorphic `follows`; see EVENTS_V2_ARCHITECTURE.md §15.2), unused by

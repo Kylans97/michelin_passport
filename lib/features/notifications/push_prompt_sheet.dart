@@ -40,9 +40,11 @@ class PushPromptSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final (title, body) = switch (reason) {
+      // Shown in place of a "Following" snackbar, so it says that first.
       FollowedVenuePrompt(:final venueName) => (
-        'Hear about new events',
-        'We can let you know when $venueName announces an event.',
+        'You follow $venueName',
+        'Their new events will show up first in Events. Want a notification '
+            'on your phone when they announce one?',
       ),
       FriendsPrompt() => (
         'Know when friends reach out',

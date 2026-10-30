@@ -299,9 +299,9 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      await _tap(tester, find.byIcon(Icons.person_add_alt_1_outlined));
+      await _tap(tester, find.text('Follow'));
 
-      expect(find.byIcon(Icons.person_add_alt_1_outlined), findsOneWidget);
+      expect(find.text('Follow'), findsOneWidget);
       expect(find.byType(SnackBar), findsNothing);
       expect(tester.takeException(), isNull);
     });
@@ -383,9 +383,9 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      await _tap(tester, find.byIcon(Icons.person_add_alt_1_outlined));
+      await _tap(tester, find.text('Follow'));
 
-      expect(find.byIcon(Icons.person_add_alt_1_outlined), findsOneWidget);
+      expect(find.text('Follow'), findsOneWidget);
       expect(find.byType(SnackBar), findsNothing);
       expect(tester.takeException(), isNull);
     });
@@ -444,9 +444,9 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      await _tap(tester, find.byIcon(Icons.person_add_alt_1_outlined));
+      await _tap(tester, find.text('Follow'));
 
-      expect(find.byIcon(Icons.person_add_alt_1_outlined), findsOneWidget);
+      expect(find.text('Follow'), findsOneWidget);
       expect(find.byType(SnackBar), findsNothing);
       expect(tester.takeException(), isNull);
     });

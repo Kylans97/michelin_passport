@@ -57,11 +57,15 @@ void main() {
     expect(find.text('Could not update. Please try again.'), findsOneWidget);
   });
 
-  testWidgets('never asked: offers Turn on, which goes to iOS directly', (tester) async {
+  testWidgets('never asked: the switches read off, and turning one on goes to iOS '
+      'and keeps it on once allowed', (tester) async {
     var status = PushAuthorization.notDetermined;
     var requested = 0;
+    final saved = <NotificationPreferences>[];
     await tester.pumpWidget(
       _wrap(
+        prefs: const NotificationPreferences(followedVenueEvents: false),
+        save: (p) async => saved.add(p),
         statusFn: () async => status,
         request: () async {
           requested++;
@@ -71,10 +75,34 @@ void main() {
       ),
     );
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Turn on notifications'));
+    expect(find.text('Turn on notifications'), findsNothing);
+    expect(tester.widgetList<Switch>(find.byType(Switch)).map((s) => s.value), [false, false]);
+
+    await tester.tap(find.byType(Switch).last);
     await tester.pumpAndSettle();
     expect(requested, 1);
-    expect(find.text('Turn on notifications'), findsNothing);
+    expect(saved, [const NotificationPreferences()]);
+    expect(tester.widgetList<Switch>(find.byType(Switch)).map((s) => s.value), [true, true]);
+  });
+
+  testWidgets('never asked, and iOS says no: nothing is saved', (tester) async {
+    var status = PushAuthorization.notDetermined;
+    final saved = <NotificationPreferences>[];
+    await tester.pumpWidget(
+      _wrap(
+        save: (p) async => saved.add(p),
+        statusFn: () async => status,
+        request: () async {
+          status = PushAuthorization.denied;
+          return false;
+        },
+      ),
+    );
+    await tester.pumpAndSettle();
+    await tester.tap(find.byType(Switch).first);
+    await tester.pumpAndSettle();
+    expect(saved, isEmpty);
+    expect(find.textContaining('turned off for this app in iOS Settings'), findsOneWidget);
   });
 
   testWidgets('turned off in iOS: one line and Open Settings, no toggles', (tester) async {
