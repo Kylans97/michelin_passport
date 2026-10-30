@@ -1,7 +1,7 @@
 -- Community Rankings for hotels and events, and recognition beyond stars.
 --
--- Written 2026-10-30. NOT YET APPLIED — prepared for review; apply with
--- `supabase db push --linked` once the product owner approves.
+-- Written 2026-10-30. Applied to production 2026-10-30 with
+-- `supabase db push --linked`, at the product owner's request.
 --
 -- Named after 20261030150000_add_venue_team.sql, which another branch
 -- (claude/venue-follow-team) already carries, so this sorts after it on

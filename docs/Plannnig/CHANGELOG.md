@@ -69,22 +69,34 @@ The format follows Keep a Changelog.
   rule `restaurant_rankings` already used). The separate, unused
   `venue_ratings` system is untouched.
 
-  **Needs migration `20261030160000_add_hotel_and_event_rankings.sql` —
-  prepared, NOT applied.** It appends `worlds_50_best_rank` and the
-  card-photo columns to `restaurant_rankings`, leaving its rows and order
-  the same. Build 1.5.0 (18) selects named columns from that view, so
-  appending is invisible to it. It also adds `hotel_rankings` and
-  `event_rankings` with the same shape and threshold. Both are owner-
-  privileged views that return aggregates only, never a user id, and are
-  readable by `authenticated` only. Until the migration is applied, the
-  app falls back on its own: restaurants use the original columns (no
-  photo, and an empty World's 50 Best filter), and Hotels and Events show
-  the empty state. Not verified against a database: there is no Docker on
-  this machine for a local replay, and a read-only check of the views'
-  SELECTs against production was refused by the session's permission
-  check. Run both before applying. Analyze and all 2,699 tests pass. In
-  the simulator only the chips and empty state are checked, because no
-  venue clears the threshold yet.
+  **Migration `20261030160000_add_hotel_and_event_rankings.sql`, applied
+  to production on 2026-10-30 at the product owner's request.** It
+  appends `worlds_50_best_rank` and the card-photo columns to
+  `restaurant_rankings`, leaving its rows and order the same. Build 1.5.0
+  (18) selects named columns from that view, so appending is invisible
+  to it. It also adds `hotel_rankings` and `event_rankings` with the same
+  shape and threshold: owner-privileged views that return aggregates
+  only, never a user id. Until a build with this screen ships, nothing
+  reads the new views.
+  - **Before the apply:** there was no Docker for a local replay. The
+    three view SELECTs ran read-only against production without error
+    (0 rows each: no venue clears 3 members yet), and the ledger showed
+    117/117 with only this file pending.
+  - **After the apply:** checked directly. `restaurant_rankings` keeps
+    its anon + authenticated select and now has 13 columns.
+    `hotel_rankings` (13) and `event_rankings` (9) are selectable by
+    `authenticated` and not by `anon`. `supabase migration list --linked`
+    shows 118/118, local and remote in agreement.
+  - **Ordering caveat:** `20261030150000_add_venue_team.sql`
+    (`claude/venue-follow-team`) is not applied yet and now sorts
+    *before* an applied migration. It needs `supabase db push --linked
+    --include-all` when it goes out. The two touch no common object, so
+    replay order between them doesn't change the result.
+
+  Until a build with this screen ships, the app falls back on its own if
+  a view is missing, so it is safe in either order. Analyze and all 2,699
+  tests pass. In the simulator only the chips and empty state are
+  checked, because no venue clears the threshold yet.
 
 - **Friend verdicts and visit/stay detail in the green-and-ivory design**
   (2026-10-30, at the product owner's request).
