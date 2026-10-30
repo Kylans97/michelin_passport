@@ -53,6 +53,20 @@ The format follows Keep a Changelog.
   The row renders nothing until at least one friend has been, and is left
   out of a manager's "Preview my page" because it is personal state.
 
+### Changed
+- **Community Rankings list in the green-and-ivory design** (2026-10-30).
+  This list (Community → "See full ranking") still used the old style:
+  dark cards, a gold `#1` and a gold score in Playfair, and gold-tinted
+  star chips. Each row is now the same ivory `RankingEditorialCard` that
+  My Rankings uses, on the deep-green canvas. The rank sits on the image,
+  then the name, the stars (the only gold left), and the city; the
+  community score and visit count are in forest green. The filters are
+  the shared `CsFilterChip`, left-aligned under the title, and the
+  spinner is ivory. The data and the star filter are unchanged. A new
+  test asserts that no text in the list is gold. The cards could not be
+  checked in the simulator: no restaurant meets the ranking threshold in
+  production yet, so the screen shows its empty state there.
+
 ### Fixed
 - **Friend Profile avatars were clipped.** The box holding the two
   overlapping avatars was 54pt high, but each avatar sits in a 3pt ring,

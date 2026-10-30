@@ -71,14 +71,14 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      expect(find.text('#1'), findsOneWidget);
+      expect(find.text('1'), findsOneWidget);
       expect(find.text('First Place'), findsOneWidget);
       expect(find.text('9.5'), findsOneWidget);
-      expect(find.text('5 visits'), findsOneWidget);
-      expect(find.text('#2'), findsOneWidget);
+      expect(find.text('· 5 visits'), findsOneWidget);
+      expect(find.text('2'), findsOneWidget);
       expect(find.text('Second Place'), findsOneWidget);
       expect(find.text('9.0'), findsOneWidget);
-      expect(find.text('10 visits'), findsOneWidget);
+      expect(find.text('· 10 visits'), findsOneWidget);
 
       // Preserves backend order — First Place above Second Place.
       final firstY = tester.getTopLeft(find.text('First Place')).dy;
@@ -140,6 +140,27 @@ void main() {
       );
       expect(errorText.style?.color, AppColors.secondaryOnDark);
       expect(errorText.style?.color, isNot(AppColors.textSecondary));
+    });
+  });
+
+  group('CommunityRankingsTab — design', () {
+    testWidgets('no text is gold: gold is for MICHELIN stars and Keys '
+        'only, and the score reads in forest green', (tester) async {
+      await tester.pumpWidget(
+        _wrap(
+          loadCommunityRankings: ({stars}) async => [
+            _entry(id: 'r1', name: 'First Place', rating: 9.5, visits: 5),
+          ],
+        ),
+      );
+      await tester.pumpAndSettle();
+      for (final text in tester.widgetList<Text>(find.byType(Text))) {
+        expect(text.style?.color, isNot(AppColors.gold));
+      }
+      expect(
+        tester.widget<Text>(find.text('9.5')).style?.color,
+        AppColors.forestGreen,
+      );
     });
   });
 
