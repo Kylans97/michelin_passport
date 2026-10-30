@@ -41,6 +41,7 @@ import 'widgets/event_card.dart';
 import 'widgets/event_date_control.dart';
 import 'widgets/event_filter_sheet.dart';
 import 'widgets/event_location_control.dart';
+import '../../core/analytics/screen_usage.dart';
 
 /// Culinary Events discovery — standalone events, multi-venue events,
 /// festivals, tastings.
@@ -182,6 +183,7 @@ class _EventsScreenState extends State<EventsScreen> {
   @override
   void initState() {
     super.initState();
+    trackScreenOpened(AnalyticsScreen.events);
     _discoveryFuture = _fetchDiscoveryList();
     _loadPromptEvent();
   }

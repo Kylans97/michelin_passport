@@ -29,6 +29,7 @@ import 'tabs/friend_profile_passport_tab.dart';
 import 'tabs/friend_profile_together_tab.dart';
 import 'widgets/friend_profile_header.dart';
 import 'widgets/friend_profile_plan_dinner_sheet.dart';
+import '../../core/analytics/screen_usage.dart';
 
 /// One (venue, visit) pair — [VenueEntry] groups every visit under its
 /// venue for Passport's own grouped display; this screen instead flattens
@@ -170,6 +171,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
   @override
   void initState() {
     super.initState();
+    trackScreenOpened(AnalyticsScreen.friendProfile);
     _tabController = TabController(length: 3, vsync: this);
     _load();
   }

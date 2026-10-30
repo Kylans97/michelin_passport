@@ -13,6 +13,8 @@ import 'add_friend_screen.dart';
 import 'friend_profile_screen.dart';
 import 'widgets/friend_request_row.dart';
 import 'widgets/identity_row.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/screen_usage.dart';
 
 /// Friends — accepted friends plus incoming/outgoing requests. Deliberately
 /// small: no follower/following counts, no "people you may know," no
@@ -46,6 +48,7 @@ class _FriendsScreenState extends State<FriendsScreen> {
   @override
   void initState() {
     super.initState();
+    trackScreenOpened(AnalyticsScreen.friends);
     _load();
   }
 

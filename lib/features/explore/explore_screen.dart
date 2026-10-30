@@ -2,7 +2,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/analytics_service.dart';
+import '../../core/analytics/screen_usage.dart';
+import '../../core/analytics/supabase_analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
@@ -78,6 +82,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   String _query = '';
   Timer? _debounce;
+  // Persists only the usage events (search/filter happened — never the
+  // query or the filter value); see SupabaseAnalyticsService.
+  late final AnalyticsService _usage = SupabaseAnalyticsService.ofInstance();
+  bool _searchUsageTracked = false;
 
   ExploreSearchType _searchType = ExploreSearchType.all;
   RestaurantAwardFilter _restaurantAward = RestaurantAwardFilter.all;
@@ -139,7 +147,10 @@ class _ExploreScreenState extends State<ExploreScreen> {
   void _onQueryChanged(String value) {
     setState(() => _query = value);
     _debounce?.cancel();
-    if (value.trim().isEmpty) return;
+    if (value.trim().isEmpty) {
+      _searchUsageTracked = false;
+      return;
+    }
     _debounce = Timer(const Duration(milliseconds: 300), _runSearch);
   }
 
@@ -153,6 +164,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
         _searching = false;
         _searchError = false;
       });
+      // One search per query typed from an empty field — the debounce
+      // re-runs this on every pause while typing, which would otherwise
+      // count "tom", "toma", "tomas" as three searches.
+      if (!_searchUsageTracked) {
+        _searchUsageTracked = true;
+        _usage.track(AnalyticsEvent.exploreSearchPerformed);
+      }
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -229,21 +247,25 @@ class _ExploreScreenState extends State<ExploreScreen> {
   }
 
   void _onSearchTypeChanged(ExploreSearchType type) {
+    _usage.track(AnalyticsEvent.exploreFilterApplied);
     setState(() => _searchType = type);
     if (_isSearching) _runSearch();
   }
 
   void _onCountryChanged(VenueCountry? country) {
+    _usage.track(AnalyticsEvent.exploreFilterApplied);
     setState(() => _country = country);
     if (_isSearching) _runSearch();
   }
 
   void _onRestaurantAwardChanged(RestaurantAwardFilter filter) {
+    _usage.track(AnalyticsEvent.exploreFilterApplied);
     setState(() => _restaurantAward = filter);
     if (_isSearching) _runSearch();
   }
 
   void _onHotelKeysChanged(HotelKeysFilter filter) {
+    _usage.track(AnalyticsEvent.exploreFilterApplied);
     setState(() => _hotelKeys = filter);
     if (_isSearching) _runSearch();
   }
@@ -288,10 +310,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
   // toward Collections this phase calls for. A future Collections-specific
   // screen (Mantelier's own curated selections, alongside these
   // externally-sourced guides) is explicitly deferred, not built here.
-  void _openGuides() => Navigator.push(
-    context,
-    MaterialPageRoute(builder: (_) => const GuidesScreen()),
-  );
+  void _openGuides() {
+    trackScreenOpened(AnalyticsScreen.guides);
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (_) => const GuidesScreen()),
+    );
+  }
 
   // Private Chefs Step 2: a second compact, permanent navigation row,
   // directly mirroring "Browse the Guides" — a distinct destination

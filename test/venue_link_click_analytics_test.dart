@@ -115,8 +115,8 @@ void main() {
   });
 
   group('SupabaseAnalyticsService.track — synchronous guard behaviour', () {
-    test('ignores every event other than venueBookingLinkOpened, never '
-        'touches the client', () {
+    test('ignores events outside its persisted set, never touches the '
+        'client', () {
       final service = SupabaseAnalyticsService(_dummyClient);
       expect(
         () => service.track(
@@ -128,7 +128,10 @@ void main() {
         ),
         returnsNormally,
       );
-      expect(() => service.track(AnalyticsEvent.eventOpened), returnsNormally);
+      expect(
+        () => service.track(AnalyticsEvent.eventGoingAdded),
+        returnsNormally,
+      );
     });
 
     test('identify/resetIdentity are no-ops that never throw', () {

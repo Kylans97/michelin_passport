@@ -23,6 +23,9 @@ void main() {
         AnalyticsEvent.eventGoingRemoved: 'event_going_removed',
         AnalyticsEvent.ticketLinkOpened: 'ticket_link_opened',
         AnalyticsEvent.venueBookingLinkOpened: 'venue_booking_link_opened',
+        AnalyticsEvent.venuePhoneTapped: 'venue_phone_tapped',
+        AnalyticsEvent.venueDirectionsOpened: 'venue_directions_opened',
+        AnalyticsEvent.venueDetailOpened: 'venue_detail_opened',
         AnalyticsEvent.eventAttendancePrompted: 'event_attendance_prompted',
         AnalyticsEvent.eventAttendanceConfirmed: 'event_attendance_confirmed',
         AnalyticsEvent.eventAttendanceDenied: 'event_attendance_denied',
@@ -45,6 +48,9 @@ void main() {
         AnalyticsEvent.venueInviteSent: 'venue_invite_sent',
         AnalyticsEvent.venueInviteAccepted: 'venue_invite_accepted',
         AnalyticsEvent.venueInviteDeclined: 'venue_invite_declined',
+        AnalyticsEvent.screenOpened: 'screen_opened',
+        AnalyticsEvent.exploreSearchPerformed: 'explore_search_performed',
+        AnalyticsEvent.exploreFilterApplied: 'explore_filter_applied',
       };
 
       for (final event in AnalyticsEvent.values) {

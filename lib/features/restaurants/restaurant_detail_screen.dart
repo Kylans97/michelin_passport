@@ -129,15 +129,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
   late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
   // Events V2 Step 6 — never wired into a constructor param (matching
-  // EventDetailScreen's own established seam). Restaurant/Hotel Detail
-  // are the only two screens using SupabaseAnalyticsService instead of
-  // the production-safe Noop default — see that class's own doc comment
-  // for why: the narrow venue-link-click-tracking path only, not the
-  // general analytics vendor decision (still unmade, still Noop
-  // everywhere else).
-  late final AnalyticsService _analytics = SupabaseAnalyticsService(
-    Supabase.instance.client,
-  );
+  // EventDetailScreen's own established seam). SupabaseAnalyticsService
+  // persists only its own narrow set (page opens, website/Call/Directions
+  // taps here) — see that class's own doc comment; everything else this
+  // screen tracks is still discarded.
+  late final AnalyticsService _analytics = SupabaseAnalyticsService.ofInstance();
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -193,6 +189,16 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   @override
   void initState() {
     super.initState();
+    // A visitor's page open — never a manager's own preview.
+    if (!widget.isPreview) {
+      _analytics.track(
+        AnalyticsEvent.venueDetailOpened,
+        AnalyticsProperties(
+          entityType: AnalyticsEntityType.restaurant,
+          entityId: widget.restaurant.id,
+        ),
+      );
+    }
     // Award history/hosted events are venue-level content a real visitor
     // sees, so they always load, preview or not — only _loadPersonalState
     // itself is gated (see its own doc comment for why: isPreview only
@@ -504,8 +510,26 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       uri = Uri.parse('https://www.google.com/maps/search/?api=1&query=$query');
     }
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+      final launched = await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
+      if (launched) _trackVenueAction(AnalyticsEvent.venueDirectionsOpened);
     }
+  }
+
+  // Call / Directions, after launchUrl returned true — the same boundary
+  // as the website link below. Never from a manager's own preview.
+  void _trackVenueAction(AnalyticsEvent event) {
+    if (widget.isPreview) return;
+    _analytics.track(
+      event,
+      AnalyticsProperties(
+        entityType: AnalyticsEntityType.restaurant,
+        entityId: widget.restaurant.id,
+        sourceScreen: AnalyticsVenueDetailScreen.restaurantDetail,
+      ),
+    );
   }
 
   // [trackAs] null (the default, e.g. the Michelin link) means "never
@@ -522,7 +546,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         uri,
         mode: LaunchMode.externalApplication,
       );
-      if (launched && trackAs != null) {
+      if (launched && trackAs != null && !widget.isPreview) {
         _analytics.track(
           AnalyticsEvent.venueBookingLinkOpened,
           AnalyticsProperties(
@@ -544,7 +568,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // still the right behaviour if it ever happens.
   Future<void> _openCall(Uri uri) async {
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+      final launched = await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
+      if (launched) _trackVenueAction(AnalyticsEvent.venuePhoneTapped);
     }
   }
 

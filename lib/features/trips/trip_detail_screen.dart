@@ -33,6 +33,7 @@ import 'widgets/trip_card.dart' show formatTripDateRange, tripVenueCountsLine;
 import 'widgets/trip_chrome.dart';
 import 'widgets/trip_eyebrow.dart';
 import 'widgets/trip_members_sheet.dart';
+import '../../core/analytics/screen_usage.dart';
 
 /// A single trip: its destinations, dates, notes, who's travelling, and
 /// every planned restaurant/hotel on it. A typography-led header on the
@@ -94,6 +95,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   @override
   void initState() {
     super.initState();
+    trackScreenOpened(AnalyticsScreen.tripDetail);
     _load();
   }
 

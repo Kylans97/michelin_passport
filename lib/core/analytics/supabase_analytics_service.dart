@@ -10,13 +10,19 @@ import 'analytics_service.dart';
 /// tracking — NOT the general analytics vendor this app's "no vendor
 /// selected" contract (EVENTS_V2_ANALYTICS_CONTRACT.md) is waiting on.
 /// This implementation only ever writes [AnalyticsEvent.venueBookingLinkOpened],
-/// [AnalyticsEvent.newsArticleOpened], and [AnalyticsEvent.venueInviteSent]/
-/// `Accepted`/`Declined`; every other [AnalyticsEvent] is silently
-/// ignored, matching the explicit "alleen dit, niet de volledige
-/// analyticslaag" scope this class was built under. Injected only on
-/// Restaurant/Hotel Detail, News Article Detail, the "suggest going
-/// together" sheet, and Notifications' accept/decline handlers — every
-/// other screen still uses [NoopAnalyticsService].
+/// [AnalyticsEvent.venuePhoneTapped], [AnalyticsEvent.venueDirectionsOpened],
+/// [AnalyticsEvent.venueDetailOpened], [AnalyticsEvent.newsArticleOpened],
+/// [AnalyticsEvent.venueInviteSent]/`Accepted`/`Declined`, and the app-usage
+/// set ([AnalyticsEvent.screenOpened], [AnalyticsEvent.exploreSearchPerformed],
+/// [AnalyticsEvent.exploreFilterApplied], [AnalyticsEvent.eventOpened]) to
+/// `app_usage_events`
+/// (20261023200000_add_venue_action_and_app_usage_tracking.sql); every
+/// other [AnalyticsEvent] is silently ignored, matching the explicit "alleen dit, niet de volledige
+/// analyticslaag" scope this class was built under. Injected on
+/// Restaurant/Hotel/Private Chef/Event Detail, News Article Detail,
+/// Explore, the "suggest going together" sheet, Notifications' accept/
+/// decline handlers, and (via `trackScreenOpened`) the tab bar and a few
+/// pushed screens — every other screen still uses [NoopAnalyticsService].
 ///
 /// Writes to `public.venue_link_clicks`
 /// (supabase/migrations/20260829120000_add_venue_link_click_tracking.sql),
@@ -28,13 +34,20 @@ import 'analytics_service.dart';
 /// ("deze data is van mij, niet van de gebruiker"). This service only
 /// ever inserts; it never reads any of them back.
 class SupabaseAnalyticsService implements AnalyticsService {
-  SupabaseAnalyticsService(this._client);
+  SupabaseAnalyticsService(SupabaseClient client) : _clientOf = (() => client);
 
-  final SupabaseClient _client;
+  /// Resolves `Supabase.instance.client` only when an insert actually
+  /// runs, inside its own try — so a screen can track from initState even
+  /// where Supabase isn't initialised (widget tests), without that ever
+  /// failing the screen.
+  SupabaseAnalyticsService.ofInstance()
+    : _clientOf = (() => Supabase.instance.client);
+
+  final SupabaseClient Function() _clientOf;
 
   // No identified-user state is kept: every inserted row's user_id comes
   // straight from the live Supabase auth session at insert time
-  // (_client.auth.currentUser), never from a locally-cached identity —
+  // (the client's auth.currentUser), never from a locally-cached identity —
   // there is nothing for identify()/resetIdentity() to do here.
   @override
   void identify(String userInternalId) {}
@@ -52,6 +65,19 @@ class SupabaseAnalyticsService implements AnalyticsService {
     switch (event) {
       case AnalyticsEvent.venueBookingLinkOpened:
         _trackVenueBookingLinkOpened(properties);
+      case AnalyticsEvent.venuePhoneTapped:
+        _trackVenueAction('phone', properties);
+      case AnalyticsEvent.venueDirectionsOpened:
+        _trackVenueAction('directions', properties);
+      case AnalyticsEvent.venueDetailOpened:
+        _trackVenueDetailOpened(properties);
+      case AnalyticsEvent.screenOpened:
+        _trackScreenOpened(properties);
+      case AnalyticsEvent.exploreSearchPerformed:
+      case AnalyticsEvent.exploreFilterApplied:
+        unawaited(_insertUsageEvent(eventName: event.wireName));
+      case AnalyticsEvent.eventOpened:
+        _trackEventOpened(properties);
       case AnalyticsEvent.newsArticleOpened:
         _trackNewsArticleOpened(properties);
       case AnalyticsEvent.venueInviteSent:
@@ -94,9 +120,74 @@ class SupabaseAnalyticsService implements AnalyticsService {
       _insertClick(
         venueType: venueType,
         venueId: venueId,
-        destination: destination,
+        destination: destination.wireName,
         sourceScreen: sourceScreen,
         eventId: properties?.eventId,
+      ),
+    );
+  }
+
+  // Call / Directions — same table and boundary as the website link, the
+  // destination fixed by the event itself rather than a property.
+  void _trackVenueAction(String destination, AnalyticsProperties? properties) {
+    final venueType = properties?.entityType;
+    final venueId = properties?.entityId;
+    final sourceScreen = properties?.sourceScreen;
+
+    assert(
+      venueType != null && venueId != null && sourceScreen != null,
+      'venue $destination action requires entityType, entityId and '
+      'sourceScreen',
+    );
+    if (venueType == null || venueId == null || sourceScreen == null) return;
+
+    unawaited(
+      _insertClick(
+        venueType: venueType,
+        venueId: venueId,
+        destination: destination,
+        sourceScreen: sourceScreen,
+      ),
+    );
+  }
+
+  void _trackVenueDetailOpened(AnalyticsProperties? properties) {
+    final venueType = properties?.entityType;
+    final venueId = properties?.entityId;
+
+    assert(
+      venueType != null && venueId != null,
+      'venueDetailOpened requires entityType and entityId',
+    );
+    if (venueType == null || venueId == null) return;
+
+    unawaited(_insertVenuePageOpen(venueType: venueType, venueId: venueId));
+  }
+
+  void _trackScreenOpened(AnalyticsProperties? properties) {
+    final screen = properties?.screen;
+
+    assert(screen != null, 'screenOpened requires screen');
+    if (screen == null) return;
+
+    unawaited(
+      _insertUsageEvent(
+        eventName: AnalyticsEvent.screenOpened.wireName,
+        screen: screen.wireName,
+      ),
+    );
+  }
+
+  void _trackEventOpened(AnalyticsProperties? properties) {
+    final eventId = properties?.entityId;
+
+    assert(eventId != null, 'eventOpened requires entityId (the event id)');
+    if (eventId == null) return;
+
+    unawaited(
+      _insertUsageEvent(
+        eventName: AnalyticsEvent.eventOpened.wireName,
+        eventId: eventId,
       ),
     );
   }
@@ -140,11 +231,12 @@ class SupabaseAnalyticsService implements AnalyticsService {
     required AnalyticsEntityType venueType,
     required String venueId,
   }) async {
-    final userId = _client.auth.currentUser?.id;
-    if (userId == null) return; // Signed out — RLS would reject it anyway.
-
     try {
-      await _client.from('venue_invite_events').insert({
+      final client = _clientOf();
+      final userId = client.auth.currentUser?.id;
+      if (userId == null) return; // Signed out — RLS would reject it anyway.
+
+      await client.from('venue_invite_events').insert({
         'user_id': userId,
         'invite_id': inviteId,
         'action': action,
@@ -157,22 +249,65 @@ class SupabaseAnalyticsService implements AnalyticsService {
     }
   }
 
-  Future<void> _insertClick({
+  Future<void> _insertVenuePageOpen({
     required AnalyticsEntityType venueType,
     required String venueId,
-    required AnalyticsLinkDestination destination,
-    required AnalyticsVenueDetailScreen sourceScreen,
-    String? eventId,
   }) async {
-    final userId = _client.auth.currentUser?.id;
-    if (userId == null) return; // Signed out — RLS would reject it anyway.
-
     try {
-      await _client.from('venue_link_clicks').insert({
+      final client = _clientOf();
+      final userId = client.auth.currentUser?.id;
+      if (userId == null) return; // Signed out — RLS would reject it anyway.
+
+      await client.from('venue_page_opens').insert({
         'user_id': userId,
         'venue_type': venueType.wireName,
         'venue_id': venueId,
-        'destination': destination.wireName,
+      });
+    } catch (error, stackTrace) {
+      debugPrint('VENUE PAGE OPEN TRACK FAILED: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
+  }
+
+  Future<void> _insertUsageEvent({
+    required String eventName,
+    String? screen,
+    String? eventId,
+  }) async {
+    try {
+      final client = _clientOf();
+      final userId = client.auth.currentUser?.id;
+      if (userId == null) return; // Signed out — RLS would reject it anyway.
+
+      await client.from('app_usage_events').insert({
+        'user_id': userId,
+        'event_name': eventName,
+        'screen': ?screen,
+        'event_id': ?eventId,
+      });
+    } catch (error, stackTrace) {
+      debugPrint('APP USAGE EVENT TRACK FAILED: $error');
+      debugPrintStack(stackTrace: stackTrace);
+    }
+  }
+
+  Future<void> _insertClick({
+    required AnalyticsEntityType venueType,
+    required String venueId,
+    required String destination,
+    required AnalyticsVenueDetailScreen sourceScreen,
+    String? eventId,
+  }) async {
+    try {
+      final client = _clientOf();
+      final userId = client.auth.currentUser?.id;
+      if (userId == null) return; // Signed out — RLS would reject it anyway.
+
+      await client.from('venue_link_clicks').insert({
+        'user_id': userId,
+        'venue_type': venueType.wireName,
+        'venue_id': venueId,
+        'destination': destination,
         'source_screen': sourceScreen.wireName,
         'event_id': ?eventId,
       });
@@ -183,16 +318,17 @@ class SupabaseAnalyticsService implements AnalyticsService {
   }
 
   Future<void> _insertNewsArticleOpen({required String articleId}) async {
-    final userId = _client.auth.currentUser?.id;
-    if (userId == null) return; // Signed out — RLS would reject it anyway.
-
     try {
+      final client = _clientOf();
+      final userId = client.auth.currentUser?.id;
+      if (userId == null) return; // Signed out — RLS would reject it anyway.
+
       // Plain insert, no .select() — news_article_opens has no select
       // policy for authenticated by design ("deze data is van mij"), and
       // requesting a returned representation (Prefer: return=
       // representation) would need one; a bare insert only needs the
       // insert policy's own WITH CHECK to pass.
-      await _client.from('news_article_opens').insert({
+      await client.from('news_article_opens').insert({
         'user_id': userId,
         'article_id': articleId,
       });

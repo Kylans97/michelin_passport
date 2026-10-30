@@ -8,6 +8,53 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+
+- **Usage tracking for venue actions and feature use** (2026-10-30, not
+  yet applied to production). Migration
+  `20261023200000_add_venue_action_and_app_usage_tracking.sql`:
+  `venue_link_clicks` accepts `phone` and `directions` destinations and a
+  `private_chef_detail` source screen; new `venue_page_opens` (with
+  internal and k≥5 shareable stats views) and `app_usage_events` (an
+  allowlist of `screen_opened`, `explore_search_performed`,
+  `explore_filter_applied`, `event_opened`, with an internal stats
+  view). Same ownership model as `venue_link_clicks`: insert-only for the
+  user themself, never readable by any client role. App side:
+  - new events `venuePhoneTapped`, `venueDirectionsOpened`,
+    `venueDetailOpened`, `screenOpened`, `exploreSearchPerformed` and
+    `exploreFilterApplied`;
+  - Restaurant, Hotel and Private Chef Detail record page opens, Call and
+    Directions; Private Chef Detail now also records website taps;
+  - Event Detail records `eventOpened` on landing, so opens from any
+    surface count (EventsScreen's own feed-tap call stays Noop, so
+    nothing is counted twice);
+  - the tab bar and the Events, Guides, Map, Friends, Friend profile,
+    Notifications and Trip screens record `screenOpened`;
+  - Explore counts one search for each query typed into an empty field,
+    and each filter change. The query text and filter values are never
+    stored.
+
+  Replayed from scratch on a local stack (all 115 migrations), with RLS
+  and CHECKs exercised there: own-user insert accepted, another user's
+  id, unknown destination/event and screen-shape violations rejected,
+  authenticated reads return 0 rows, both views denied, anon insert
+  denied.
+
+### Changed
+
+- `SupabaseAnalyticsService.ofInstance()` resolves the Supabase client
+  only inside each insert's own try, so a screen can track from
+  `initState` where Supabase isn't initialised (widget tests) without
+  failing. Every insert now reads the signed-in user inside that try
+  too.
+
+### Fixed
+
+- A manager's "Preview my page" no longer records a website tap on
+  Restaurant/Hotel Detail. It previously did, since `isPreview` only
+  gated personal state, so a manager could inflate their own venue's
+  click counts.
+
 ---
 
 ## v1.4.0 (17) — 2026-10-30

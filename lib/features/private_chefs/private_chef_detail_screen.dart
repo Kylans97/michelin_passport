@@ -4,6 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/analytics_service.dart';
+import '../../core/analytics/supabase_analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -125,9 +126,10 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
   late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
   // Events V2 Step 6 — never wired into a constructor param (matching
-  // EventDetailScreen's own established seam); no vendor is selected yet,
-  // so this is always the production-safe no-op today.
-  final AnalyticsService _analytics = const NoopAnalyticsService();
+  // EventDetailScreen's own established seam). SupabaseAnalyticsService
+  // persists only its own narrow set (the page open and the website tap
+  // here) — see that class's own doc comment; follows stay discarded.
+  late final AnalyticsService _analytics = SupabaseAnalyticsService.ofInstance();
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -163,6 +165,16 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   @override
   void initState() {
     super.initState();
+    // A visitor's page open — never the chef's own preview.
+    if (!widget.isPreview) {
+      _analytics.track(
+        AnalyticsEvent.venueDetailOpened,
+        AnalyticsProperties(
+          entityType: AnalyticsEntityType.privateChef,
+          entityId: widget.chefId,
+        ),
+      );
+    }
     _load();
     _loadHostedEvents();
     if (widget.aboutTextOverride != null) {
@@ -301,11 +313,27 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     }
   }
 
-  Future<void> _openUrl(String url) async {
+  // [trackAs] null (Instagram) means "never track this open" — see
+  // RestaurantDetailScreen._openUrl, identical boundary.
+  Future<void> _openUrl(String url, {AnalyticsLinkDestination? trackAs}) async {
     final uri = Uri.tryParse(url);
     if (uri == null) return;
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+      final launched = await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+      );
+      if (launched && trackAs != null && !widget.isPreview) {
+        _analytics.track(
+          AnalyticsEvent.venueBookingLinkOpened,
+          AnalyticsProperties(
+            entityType: AnalyticsEntityType.privateChef,
+            entityId: widget.chefId,
+            linkDestination: trackAs,
+            sourceScreen: AnalyticsVenueDetailScreen.privateChefDetail,
+          ),
+        );
+      }
     }
   }
 
@@ -501,7 +529,12 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
           onTapInstagram: hasInstagram
               ? () => _openUrl(chef.instagramUrl!)
               : null,
-          onTapWebsite: hasWebsite ? () => _openUrl(chef.websiteUrl!) : null,
+          onTapWebsite: hasWebsite
+              ? () => _openUrl(
+                  chef.websiteUrl!,
+                  trackAs: AnalyticsLinkDestination.website,
+                )
+              : null,
         ),
       // Events V2 Step 8B — appended after CONNECT, the least disruptive
       // placement relative to this screen's own documented canonical

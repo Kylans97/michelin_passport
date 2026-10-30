@@ -138,11 +138,48 @@ enum AnalyticsLinkDestination {
 /// is, not this property bag.
 enum AnalyticsVenueDetailScreen {
   restaurantDetail,
-  hotelDetail;
+  hotelDetail,
+  privateChefDetail;
 
   String get wireName => switch (this) {
     AnalyticsVenueDetailScreen.restaurantDetail => 'restaurant_detail',
     AnalyticsVenueDetailScreen.hotelDetail => 'hotel_detail',
+    AnalyticsVenueDetailScreen.privateChefDetail => 'private_chef_detail',
+  };
+}
+
+/// [AnalyticsEvent.screenOpened] only, REQUIRED — which tab or pushed
+/// screen became visible. Matches `app_usage_events.screen`'s own CHECK
+/// constraint exactly
+/// (20261023200000_add_venue_action_and_app_usage_tracking.sql); extend
+/// both together, in a new migration.
+enum AnalyticsScreen {
+  explore,
+  passport,
+  news,
+  community,
+  profile,
+  events,
+  guides,
+  map,
+  friends,
+  friendProfile,
+  notifications,
+  tripDetail;
+
+  String get wireName => switch (this) {
+    AnalyticsScreen.explore => 'explore',
+    AnalyticsScreen.passport => 'passport',
+    AnalyticsScreen.news => 'news',
+    AnalyticsScreen.community => 'community',
+    AnalyticsScreen.profile => 'profile',
+    AnalyticsScreen.events => 'events',
+    AnalyticsScreen.guides => 'guides',
+    AnalyticsScreen.map => 'map',
+    AnalyticsScreen.friends => 'friends',
+    AnalyticsScreen.friendProfile => 'friend_profile',
+    AnalyticsScreen.notifications => 'notifications',
+    AnalyticsScreen.tripDetail => 'trip_detail',
   };
 }
 
@@ -204,6 +241,7 @@ class AnalyticsProperties {
     this.sourceScreen,
     this.eventId,
     this.inviteId,
+    this.screen,
   });
 
   /// The catalogue entity type this action concerns (Follow's target,
@@ -308,6 +346,10 @@ class AnalyticsProperties {
   /// new one-off pair per event.
   final String? inviteId;
 
+  /// [AnalyticsEvent.screenOpened] only, REQUIRED. See [AnalyticsScreen]'s
+  /// own doc comment.
+  final AnalyticsScreen? screen;
+
   /// Serializes to wire-safe key/value pairs — every enum becomes its
   /// [wireName], every null field is omitted entirely rather than sent as
   /// an explicit null. Used by [DebugPrintAnalyticsService] today, and is
@@ -338,6 +380,7 @@ class AnalyticsProperties {
     put('results_count', resultsCount);
     put('would_recommend', wouldRecommend);
     put('link_destination', linkDestination?.wireName);
+    put('screen', screen?.wireName);
     put('source_screen', sourceScreen?.wireName);
     put('event_id', eventId);
     put('invite_id', inviteId);

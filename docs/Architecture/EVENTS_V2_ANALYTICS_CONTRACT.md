@@ -98,6 +98,20 @@ Means **only** "the user opened the external ticket/booking destination from Man
 
 **The narrow exception to §2/§18's "analytics is never persisted server-side" default**: `venue_booking_link_opened` is the one event in this taxonomy that IS written to a Supabase table (`public.venue_link_clicks`, `supabase/migrations/20260829120000_add_venue_link_click_tracking.sql`) via a dedicated `SupabaseAnalyticsService` (`lib/core/analytics/supabase_analytics_service.dart`), injected only on Restaurant/Hotel Detail — every other screen, and every other event, still goes through `NoopAnalyticsService`. This is a deliberate, narrow build (a host/venue click-through reporting need), not the general analytics vendor decision described in §3/§20, which remains unmade. `venue_link_clicks` itself has no select policy for `anon` or `authenticated` at all — it is not user-readable data, and the only path any of it can leave that table is `public.venue_link_click_stats`, an aggregating, k-anonymity-suppressed view (rows with fewer than `venue_link_click_min_unique_users()` distinct clickers are omitted entirely) not currently granted to any client role either — see that migration's own header for the full reasoning.
 
+### Venue actions, page opens and app usage (added 2026-10-30)
+
+| Event | When | Persisted to |
+|---|---|---|
+| `venue_phone_tapped` | Call on Restaurant/Hotel Detail, after `launchUrl` returns `true` | `venue_link_clicks`, destination `phone` |
+| `venue_directions_opened` | Directions on Restaurant/Hotel Detail, after `launchUrl` returns `true` | `venue_link_clicks`, destination `directions` |
+| `venue_detail_opened` | Restaurant/Hotel/Private Chef Detail opened by a visitor (never in "Preview my page") | `venue_page_opens` |
+| `screen_opened` | A tab or one of the tracked pushed screens became visible; carries `screen` | `app_usage_events` |
+| `explore_search_performed` | First successful Explore search for a query typed into an empty field | `app_usage_events` |
+| `explore_filter_applied` | An Explore search filter changed | `app_usage_events` |
+| `event_opened` | Now also persisted, fired from Event Detail's own `initState` | `app_usage_events` (with `event_id`) |
+
+Call and Directions are separate events rather than new `link_destination` values, so `venue_booking_link_opened` keeps its meaning (§19). No search query, filter value or other free text is ever persisted. Features that already write their own rows (visits, wishlist, follows, attendance, trips) are counted from those tables, not duplicated here. Migration: `20261023200000_add_venue_action_and_app_usage_tracking.sql`.
+
 ### Attendance
 
 | Event | When |

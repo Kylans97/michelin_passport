@@ -51,6 +51,27 @@ enum AnalyticsEvent {
   /// sourceScreen] — all three REQUIRED; see `SupabaseAnalyticsService`.
   venueBookingLinkOpened,
 
+  /// Fired after a venue's Call action actually launched the dialler
+  /// (`launchUrl` returned true) — same boundary as
+  /// [venueBookingLinkOpened]. Written to `venue_link_clicks` with
+  /// destination `phone`. Carries [AnalyticsProperties.entityType]/
+  /// [AnalyticsProperties.entityId] and [AnalyticsProperties.sourceScreen],
+  /// all REQUIRED. A separate event rather than a new
+  /// [AnalyticsLinkDestination] value, so [venueBookingLinkOpened] keeps
+  /// meaning "website or booking link" (§19: no silent reinterpretation).
+  venuePhoneTapped,
+
+  /// Fired after a venue's Directions action actually opened Maps — same
+  /// boundary and required properties as [venuePhoneTapped]; written with
+  /// destination `directions`.
+  venueDirectionsOpened,
+
+  /// Fired once when a visitor opens a Restaurant, Hotel or Private Chef
+  /// Detail screen — never in a manager's "Preview my page". Carries
+  /// [AnalyticsProperties.entityType]/[AnalyticsProperties.entityId], both
+  /// REQUIRED. Written to `venue_page_opens`.
+  venueDetailOpened,
+
   // ── Attendance ─────────────────────────────────────────────────────────
   eventAttendancePrompted,
   eventAttendanceConfirmed,
@@ -120,7 +141,20 @@ enum AnalyticsEvent {
 
   /// Fired only after `decline_venue_invite` succeeds — same required
   /// properties as [venueInviteSent].
-  venueInviteDeclined;
+  venueInviteDeclined,
+
+  // ── App usage ──────────────────────────────────────────────────────────
+  /// A tab or pushed screen became visible. Carries
+  /// [AnalyticsProperties.screen], REQUIRED. Written to `app_usage_events`.
+  screenOpened,
+
+  /// An Explore search ran with a non-empty query. Never carries the
+  /// query text — only the fact that a search happened.
+  exploreSearchPerformed,
+
+  /// An Explore search filter (type, country, stars, Keys) changed. Never
+  /// carries the chosen value.
+  exploreFilterApplied;
 
   /// The canonical `snake_case` wire name — the only place any of these
   /// strings is spelled out. A future provider adapter (or the debug
@@ -140,6 +174,9 @@ enum AnalyticsEvent {
     AnalyticsEvent.eventGoingRemoved => 'event_going_removed',
     AnalyticsEvent.ticketLinkOpened => 'ticket_link_opened',
     AnalyticsEvent.venueBookingLinkOpened => 'venue_booking_link_opened',
+    AnalyticsEvent.venuePhoneTapped => 'venue_phone_tapped',
+    AnalyticsEvent.venueDirectionsOpened => 'venue_directions_opened',
+    AnalyticsEvent.venueDetailOpened => 'venue_detail_opened',
     AnalyticsEvent.eventAttendancePrompted => 'event_attendance_prompted',
     AnalyticsEvent.eventAttendanceConfirmed => 'event_attendance_confirmed',
     AnalyticsEvent.eventAttendanceDenied => 'event_attendance_denied',
@@ -161,6 +198,9 @@ enum AnalyticsEvent {
     AnalyticsEvent.venueInviteSent => 'venue_invite_sent',
     AnalyticsEvent.venueInviteAccepted => 'venue_invite_accepted',
     AnalyticsEvent.venueInviteDeclined => 'venue_invite_declined',
+    AnalyticsEvent.screenOpened => 'screen_opened',
+    AnalyticsEvent.exploreSearchPerformed => 'explore_search_performed',
+    AnalyticsEvent.exploreFilterApplied => 'explore_filter_applied',
   };
 }
 

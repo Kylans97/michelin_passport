@@ -18,6 +18,7 @@ import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
 import '../friends/widgets/friend_request_row.dart';
 import '../friends/widgets/identity_row.dart';
+import '../../core/analytics/screen_usage.dart';
 
 /// The one venue-ops inbox this app has — reviewed manually alongside
 /// whatever it's about. Originally just claim questions (PART 1 of the
@@ -81,6 +82,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
   @override
   void initState() {
     super.initState();
+    trackScreenOpened(AnalyticsScreen.notifications);
     _load();
   }
 

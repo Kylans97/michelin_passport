@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/analytics_service.dart';
+import '../../core/analytics/supabase_analytics_service.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -150,7 +151,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   // the production-safe default. Swapping the implementation here is the
   // one place a future provider gets wired in; no other line in this
   // screen would need to change.
-  final AnalyticsService _analytics = const NoopAnalyticsService();
+  // SupabaseAnalyticsService persists only eventOpened from this screen
+  // (to app_usage_events); every other event tracked here is still
+  // discarded — see that class's own doc comment.
+  late final AnalyticsService _analytics = SupabaseAnalyticsService.ofInstance();
 
   bool _loading = true;
   bool _loadError = false;
@@ -206,6 +210,16 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   @override
   void initState() {
     super.initState();
+    // Fired here, on landing, so an open from any surface counts — not
+    // only EventsScreen's feed tap (whose own eventOpened stays Noop, so
+    // nothing is counted twice).
+    _analytics.track(
+      AnalyticsEvent.eventOpened,
+      AnalyticsProperties(
+        entityType: AnalyticsEntityType.event,
+        entityId: widget.eventId,
+      ),
+    );
     _load();
   }
 

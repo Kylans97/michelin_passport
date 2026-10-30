@@ -19,6 +19,8 @@ import 'models/map_pin.dart';
 import 'widgets/event_map_preview_sheet.dart';
 import 'widgets/map_cluster_sheet.dart';
 import 'widgets/venue_preview_sheet.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/screen_usage.dart';
 
 /// "My Map": every restaurant the user has visited, every hotel they've
 /// stayed at, and (Events V2 Step 5) every Event they have a CONFIRMED
@@ -78,6 +80,7 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   @override
   void initState() {
     super.initState();
+    trackScreenOpened(AnalyticsScreen.map);
     _load();
   }
 

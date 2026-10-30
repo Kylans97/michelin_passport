@@ -9,6 +9,8 @@ import 'features/explore/explore_screen.dart';
 import 'features/news/news_screen.dart';
 import 'features/passport/passport_screen.dart';
 import 'features/profile/profile_screen.dart';
+import 'core/analytics/analytics_properties.dart';
+import 'core/analytics/screen_usage.dart';
 
 class TablePassportApp extends StatelessWidget {
   const TablePassportApp({super.key});
@@ -38,6 +40,27 @@ class _MainNavigation extends StatefulWidget {
 
 class _MainNavigationState extends State<_MainNavigation> {
   int _index = 0;
+
+  static const _tabScreens = [
+    AnalyticsScreen.explore,
+    AnalyticsScreen.passport,
+    AnalyticsScreen.news,
+    AnalyticsScreen.community,
+    AnalyticsScreen.profile,
+  ];
+
+  // The first tab counts as opened on launch, so explore screen_opened
+  // doubles as an "app opened" signal.
+  @override
+  void initState() {
+    super.initState();
+    trackScreenOpened(_tabScreens[_index]);
+  }
+
+  void _selectTab(int i) {
+    if (i != _index) trackScreenOpened(_tabScreens[i]);
+    setState(() => _index = i);
+  }
 
   // Navigation & Information Architecture V2 — the long-term product
   // structure: five destinations answering five different user questions
@@ -105,7 +128,7 @@ class _MainNavigationState extends State<_MainNavigation> {
             alignment: Alignment.bottomCenter,
             child: FloatingNavBar(
               selectedIndex: _index,
-              onDestinationSelected: (i) => setState(() => _index = i),
+              onDestinationSelected: _selectTab,
               destinations: _destinations,
             ),
           ),
