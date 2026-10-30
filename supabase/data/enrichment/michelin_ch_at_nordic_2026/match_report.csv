@@ -1,0 +1,491 @@
+country,code,name,kind,detail
+CH,hotel_55,Badrutt's Palace Hotel,hotel matched by MICHELIN id,"7322; stored point 46 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+CH,hotel_55,Badrutt's Palace Hotel,2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_57,Baur au Lac,hotel matched by MICHELIN id,"6394; stored point 33 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+CH,hotel_57,Baur au Lac,2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_73,Beau-Rivage Palace,hotel matched by MICHELIN id,"6965; stored point 152 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 2"
+CH,hotel_73,Beau-Rivage Palace,KEY CHANGE (launch row relabelled),"launch row 2026 = 2 is MICHELIN's 2025 Key (QA-366: MICHELIN 'All the Key Hotels in Switzerland: The Full 2025 Selection' (8 Oct 2025, _source/michelin_article_ch_key_hotels.txt) lists 'Lausanne: Beau-Rivage Palace among the Two-Key hotels' -- the launch row's value); relabelled 2025; 2026 = 3"
+CH,hotel_51,Bürgenstock Resort,hotel matched by MICHELIN id,"9744; stored point 436 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+CH,hotel_51,Bürgenstock Resort,2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_56,Carlton Hotel St. Moritz,hotel matched by MICHELIN id,"6969; stored point 4 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+CH,hotel_56,Carlton Hotel St. Moritz,2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_49,Grand Resort Bad Ragaz,hotel matched by MICHELIN id,"12501; stored point 201 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+CH,hotel_49,Grand Resort Bad Ragaz,2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_50,Hotel Les Trois Rois,hotel matched by MICHELIN id,"6395; stored point 9 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+CH,hotel_50,Hotel Les Trois Rois,2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_81,Kulm Hotel St. Moritz,hotel matched by MICHELIN id,"7325; stored point 22 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 2"
+CH,hotel_81,Kulm Hotel St. Moritz,KEY CHANGE (launch row relabelled),"launch row 2026 = 2 is MICHELIN's 2025 Key (QA-366: MICHELIN 'All the Key Hotels in Switzerland: The Full 2025 Selection' (8 Oct 2025, _source/michelin_article_ch_key_hotels.txt) lists 'St. Moritz: Kulm Hotel St. Moritz among the Two-Key hotels' -- the launch row's value); relabelled 2025; 2026 = 3"
+CH,hotel_54,The Alpina Gstaad,hotel matched by MICHELIN id,"7179; stored point 77 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+CH,hotel_54,The Alpina Gstaad,2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_53,"The Woodward, Auberge Collection",hotel matched by MICHELIN id,"12243; stored point 10 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+CH,hotel_53,"The Woodward, Auberge Collection",2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_83,7132 Hotel,hotel matched by MICHELIN id,"8526; stored point 28 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_83,7132 Hotel,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_52,Beau-Rivage Geneva,hotel matched by MICHELIN id,"9048; stored point 4 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 3"
+CH,hotel_52,Beau-Rivage Geneva,KEY CHANGE (launch row relabelled),"launch row 2026 = 3 is MICHELIN's 2025 Key (QA-366: MICHELIN 'All the Key Hotels in Switzerland: The Full 2025 Selection' (8 Oct 2025, _source/michelin_article_ch_key_hotels.txt) lists 'Geneva: Beau-Rivage Geneva among the Three-Key hotels' -- the launch row's value); relabelled 2025; 2026 = 2"
+CH,hotel_79,Boutique Hotel Restaurant Krone Regensberg,hotel matched by MICHELIN id,"8082; stored point 29 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_79,Boutique Hotel Restaurant Krone Regensberg,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_61,Castello del Sole Beach Resort & Spa,hotel matched by MICHELIN id,"13889; stored point 54 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_61,Castello del Sole Beach Resort & Spa,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_85,CERVO Mountain Resort,hotel matched by MICHELIN id,"12506; stored point 72 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_85,CERVO Mountain Resort,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_77,Fairmont Le Montreux Palace,hotel matched by MICHELIN id,"13882; stored point 808 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_77,Fairmont Le Montreux Palace,STORED HOTEL COORDINATES OFF,matched by MICHELIN id 13882; stored point 808 m from MICHELIN's
+CH,hotel_77,Fairmont Le Montreux Palace,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_68,Four Seasons Hotel des Bergues,hotel matched by MICHELIN id,"11435; stored point 22 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_68,Four Seasons Hotel des Bergues,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_78,Grand Hotel Kronenhof,hotel matched by MICHELIN id,"8906; stored point 2 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_78,Grand Hotel Kronenhof,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_70,Gstaad Palace,hotel matched by MICHELIN id,"7981; stored point 124 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_70,Gstaad Palace,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_64,Guarda Golf Hotel & Residences,hotel matched by MICHELIN id,"6831; stored point 150 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_64,Guarda Golf Hotel & Residences,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_65,Hostellerie du Pas de l'Ours,hotel matched by MICHELIN id,"10189; stored point 7 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_65,Hostellerie du Pas de l'Ours,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_63,Hotel Bellevue Palace Bern,hotel matched by MICHELIN id,"10697; stored point 13 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_63,Hotel Bellevue Palace Bern,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_62,Hotel Eden Roc,hotel matched by MICHELIN id,"10096; stored point 34 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_62,Hotel Eden Roc,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_87,La Réserve Eden au Lac Zurich,hotel matched by MICHELIN id,"10745; stored point 17 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_87,La Réserve Eden au Lac Zurich,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_74,Lausanne Palace,hotel matched by MICHELIN id,"98; stored point 0 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_74,Lausanne Palace,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_71,Le Grand Bellevue,hotel matched by MICHELIN id,"8791; stored point 12 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_71,Le Grand Bellevue,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_66,LeCrans Hotel & Spa,hotel matched by MICHELIN id,"7890; stored point 13 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_66,LeCrans Hotel & Spa,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_76,"Mandarin Oriental Palace, Luzern",hotel matched by MICHELIN id,"13203; stored point 1 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_76,"Mandarin Oriental Palace, Luzern",2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_86,Matterhorn FOCUS,hotel matched by MICHELIN id,"10451; stored point 46 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_86,Matterhorn FOCUS,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_84,Park Hotel Vitznau,hotel matched by MICHELIN id,"11122; stored point 12 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_84,Park Hotel Vitznau,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_82,Suvretta House,hotel matched by MICHELIN id,"10858; stored point 41 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_82,Suvretta House,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_80,The Capra,hotel matched by MICHELIN id,"8404; stored point 8 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_80,The Capra,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_58,The Chedi Andermatt,hotel matched by MICHELIN id,"7567; stored point 33 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_58,The Chedi Andermatt,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_69,"The Ritz-Carlton Hotel de la Paix, Geneva",hotel matched by MICHELIN id,"6263; stored point 20 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_69,"The Ritz-Carlton Hotel de la Paix, Geneva",2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_59,Tschuggen Grand Hotel,hotel matched by MICHELIN id,"6401; stored point 107 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_59,Tschuggen Grand Hotel,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_60,Valsana Hotel & Appartements,hotel matched by MICHELIN id,"9152; stored point 21 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_60,Valsana Hotel & Appartements,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_72,Victoria-Jungfrau Grand Hotel & Spa,hotel matched by MICHELIN id,"5984; stored point 19 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_72,Victoria-Jungfrau Grand Hotel & Spa,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_75,Villa Principe Leopoldo,hotel matched by MICHELIN id,"7982; stored point 4 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+CH,hotel_75,Villa Principe Leopoldo,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_572,Grand Hôtel du Lac,hotel matched by MICHELIN id,"9205; stored point 18 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+CH,hotel_572,Grand Hôtel du Lac,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_67,Hotel Villa Honegg,hotel matched by MICHELIN id,"6835; stored point 39 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 2"
+CH,hotel_67,Hotel Villa Honegg,KEY CHANGE (launch row relabelled),"launch row 2026 = 2 is MICHELIN's 2025 Key (QA-366: MICHELIN 'All the Key Hotels in Switzerland: The Full 2025 Selection' (8 Oct 2025, _source/michelin_article_ch_key_hotels.txt) lists 'Ennetbürgen: Hotel Villa Honegg among the Two-Key hotels' -- the launch row's value); relabelled 2025; 2026 = 1"
+CH,hotel_570,Le Mirador Resort & Spa,hotel matched by MICHELIN id,"7787; stored point 39 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+CH,hotel_570,Le Mirador Resort & Spa,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+CH,hotel_571,Royal Savoy Hotel & Spa,hotel matched by MICHELIN id,"10483; stored point 8 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+CH,hotel_571,Royal Savoy Hotel & Spa,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+CH,rest_0234,Memories,matched by michelin slug,MICHELIN 'Sven Wassmer Memories' https://guide.michelin.com/en/sankt-gallen-region/bad-ragaz/restaurant/memories; stored point 70 m from MICHELIN's; stored url https://guide.michelin.com/en/sankt-gallen-region/bad-ragaz/restaurant/memories
+CH,rest_0235,Cheval Blanc by Peter Knogl,matched by michelin slug,MICHELIN 'Cheval Blanc by Peter Knogl' https://guide.michelin.com/en/basel-stadt/basel/restaurant/cheval-blanc-by-peter-knogl; stored point 15 m from MICHELIN's; stored url https://guide.michelin.com/us/en/basel-stadt/basel/restaurant/cheval-blanc-by-peter-knogl
+CH,rest_0236,Restaurant de l'Hôtel de Ville,matched by michelin slug,MICHELIN 'Restaurant de l'Hôtel de Ville' https://guide.michelin.com/en/vaud/crissier/restaurant/restaurant-de-l-hotel-de-ville; stored point 14 m from MICHELIN's; stored url https://guide.michelin.com/us/en/vaud/crissier/restaurant/restaurant-de-l-hotel-de-ville
+CH,rest_0237,Schloss Schauenstein,matched by coordinates 14 m + name,MICHELIN 'Schloss Schauenstein' https://guide.michelin.com/en/graubunden/frstenau/restaurant/schloss-schauenstein; stored point 14 m from MICHELIN's; stored url None
+CH,rest_0238,IGNIV by Andreas Caminada,matched by coordinates 23 m + name,MICHELIN 'IGNIV by Andreas Caminada' https://guide.michelin.com/en/uri/andermatt/restaurant/igniv-by-andreas-caminada-1207200; stored point 23 m from MICHELIN's; stored url None
+CH,rest_0239,The Japanese Restaurant,matched by coordinates 21 m + name,MICHELIN 'The Japanese Restaurant' https://guide.michelin.com/en/uri/andermatt/restaurant/the-japanese-restaurant; stored point 21 m from MICHELIN's; stored url None
+CH,rest_0240,La Brezza,matched by coordinates 7 m + name,MICHELIN 'La Brezza' https://guide.michelin.com/en/graubunden/arosa/restaurant/la-brezza-1191835; stored point 7 m from MICHELIN's; stored url None
+CH,rest_0241,La Brezza,matched by coordinates 54 m + name,MICHELIN 'La Brezza' https://guide.michelin.com/en/ticino/ascona/restaurant/la-brezza; stored point 54 m from MICHELIN's; stored url None
+CH,rest_0242,Ecco,matched by coordinates 12 m + name,MICHELIN 'Ecco' https://guide.michelin.com/en/ticino/ascona/restaurant/ecco; stored point 12 m from MICHELIN's; stored url None
+CH,rest_0244,roots,matched by coordinates 12 m + name,MICHELIN 'roots' https://guide.michelin.com/en/basel-stadt/basel/restaurant/roots568552; stored point 12 m from MICHELIN's; stored url None
+CH,rest_0246,Mammertsberg,matched by coordinates 14 m + name,MICHELIN 'Mammertsberg' https://guide.michelin.com/en/thurgau/freidorf/restaurant/mammertsberg-1200885; stored point 14 m from MICHELIN's; stored url None
+CH,rest_0247,L'Atelier Robuchon,matched by coordinates 25 m + name,MICHELIN 'L'Atelier Robuchon' https://guide.michelin.com/en/geneve-region/geneve/restaurant/l-atelier-robuchon; stored point 25 m from MICHELIN's; stored url None
+CH,rest_0248,La Table du Lausanne Palace,matched by coordinates 51 m + name,MICHELIN 'La Table du Lausanne Palace' https://guide.michelin.com/en/vaud/lausanne/restaurant/la-table-du-lausanne-palace; stored point 51 m from MICHELIN's; stored url None
+CH,rest_0249,Pic Beau-Rivage Palace,matched by coordinates 62 m + name,MICHELIN 'Pic Beau-Rivage Palace' https://guide.michelin.com/en/vaud/lausanne/restaurant/anne-sophie-pic; stored point 62 m from MICHELIN's; stored url None
+CH,rest_0250,Maison Wenger,matched by coordinates 18 m + name,MICHELIN 'Maison Wenger' https://guide.michelin.com/en/jura/le-noirmont/restaurant/maison-wenger; stored point 18 m from MICHELIN's; stored url None
+CH,rest_0252,Colonnade,matched by coordinates 13 m + name,MICHELIN 'Colonnade' https://guide.michelin.com/en/luzern-region/luzern/restaurant/colonnade; stored point 13 m from MICHELIN's; stored url None
+CH,rest_0253,Einstein Gourmet,matched by coordinates 12 m + name,MICHELIN 'Einstein Gourmet' https://guide.michelin.com/en/sankt-gallen-region/sankt-gallen/restaurant/einstein-gourmet; stored point 12 m from MICHELIN's; stored url None
+CH,rest_0254,Da Vittorio - St. Moritz,matched by coordinates 31 m + name,MICHELIN 'Da Vittorio - St. Moritz' https://guide.michelin.com/en/graubunden/sankt-moritz/restaurant/da-vittorio384903; stored point 31 m from MICHELIN's; stored url None
+CH,rest_0255,Ecco St. Moritz,matched by coordinates 24 m + name,MICHELIN 'Ecco St. Moritz' https://guide.michelin.com/en/graubunden/sankt-moritz/restaurant/ecco-st-moritz; stored point 24 m from MICHELIN's; stored url None
+CH,rest_0256,Gilles Varone,matched by coordinates 14 m + name,MICHELIN 'Gilles Varone' https://guide.michelin.com/en/valais/saviese_1157070/restaurant/gilles-varone; stored point 14 m from MICHELIN's; stored url None
+CH,rest_0257,Magdalena,matched by coordinates 8 m + name,MICHELIN 'Magdalena' https://guide.michelin.com/en/schwyz/schwyz/restaurant/magdalena; stored point 8 m from MICHELIN's; stored url None
+CH,rest_0258,7132 Silver,matched by coordinates 4 m + name,MICHELIN '7132 Silver' https://guide.michelin.com/en/graubunden/vals/restaurant/7132-silver; stored point 4 m from MICHELIN's; stored url None
+CH,rest_0259,focus ATELIER,matched by coordinates 7 m + name,MICHELIN 'focus ATELIER' https://guide.michelin.com/en/luzern-region/vitznau/restaurant/focus; stored point 7 m from MICHELIN's; stored url None
+CH,rest_0260,Taverne zum Schäfli,matched by coordinates 14 m + name,MICHELIN 'Taverne zum Schäfli' https://guide.michelin.com/en/thurgau/wigoltingen/restaurant/taverne-zum-schafli; stored point 14 m from MICHELIN's; stored url None
+CH,rest_0261,IGNIV Zürich by Andreas Caminada,matched by coordinates 4 m + name,MICHELIN 'IGNIV Zürich by Andreas Caminada' https://guide.michelin.com/en/zurich-region/zurich/restaurant/igniv-zurich-by-andreas-caminada; stored point 4 m from MICHELIN's; stored url None
+CH,rest_0262,The Counter,matched by coordinates 7 m + name,MICHELIN 'The Counter' https://guide.michelin.com/en/zurich-region/zurich/restaurant/the-counter; stored point 7 m from MICHELIN's; stored url None
+CH,rest_0263,The Restaurant,matched by coordinates 5 m + name,MICHELIN 'The Restaurant' https://guide.michelin.com/en/zurich-region/zurich/restaurant/the-restaurant196194; stored point 5 m from MICHELIN's; stored url None
+CH,rest_0264,Widder Restaurant,matched by coordinates 6 m + name,MICHELIN 'Widder Restaurant' https://guide.michelin.com/en/zurich-region/zurich/restaurant/widder-restaurant; stored point 6 m from MICHELIN's; stored url None
+CH,rest_0234,Memories,LAUNCH ROW RELABELLED 2026 -> 2025,value 3 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0235,Cheval Blanc by Peter Knogl,LAUNCH ROW RELABELLED 2026 -> 2025,value 3 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0236,Restaurant de l'Hôtel de Ville,LAUNCH ROW RELABELLED 2026 -> 2025,value 3 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0237,Schloss Schauenstein,LAUNCH ROW RELABELLED 2026 -> 2025,value 3 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0238,IGNIV by Andreas Caminada,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0239,The Japanese Restaurant,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0240,La Brezza,IMPORT ERROR CORRECTED (and relabelled 2025),"launch row 2026 = 3; MICHELIN Switzerland 2025 gives 2 (QA-361: MICHELIN Switzerland 2025 lists 'Arosa (GR) - La Brezza' among the two-star restaurants (_source/michelin_article_ch_all_starred_2025_de.txt) and its live page gives Two Stars, dateAwarded 2025; the launch row's 3 matches no MICHELIN edition)"
+CH,rest_0241,La Brezza,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0242,Ecco,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0243,IGNIV by Andreas Caminada,LAUNCH ROW RELABELLED 2026 -> 2025,"value 2 = MICHELIN Switzerland 2025 (QA-362: 'Bad Ragaz (SG) - IGNIV by Andreas Caminada' is two-star in MICHELIN Switzerland 2025 (_source/michelin_article_ch_all_starred_2025_de.txt); its MICHELIN page /en/sankt-gallen-region/bad-ragaz/restaurant/igniv-by-andreas-caminada returns 404 and it is not in the live listing (2026-10-30). Kept at the 2025 value: a loss would need the 2026 edition (2 Nov 2026), and 404 alone does not prove closure); values unchanged"
+CH,rest_0243,IGNIV by Andreas Caminada,"KEPT (in the 2025 edition, no longer live)","QA-362: 'Bad Ragaz (SG) - IGNIV by Andreas Caminada' is two-star in MICHELIN Switzerland 2025 (_source/michelin_article_ch_all_starred_2025_de.txt); its MICHELIN page /en/sankt-gallen-region/bad-ragaz/restaurant/igniv-by-andreas-caminada returns 404 and it is not in the live listing (2026-10-30). Kept at the 2025 value: a loss would need the 2026 edition (2 Nov 2026), and 404 alone does not prove closure"
+CH,rest_0244,roots,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0245,Stucki - Tanja Grandits,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (QA-362: 'Basel (BS) - Stucki - Tanja Grandits' is two-star in MICHELIN Switzerland 2025; its MICHELIN page /en/basel-stadt/basel/restaurant/stucki-tanja-grandits returns 404 and it is not in the live listing (2026-10-30). Kept at the 2025 value until the 2026 edition); values unchanged
+CH,rest_0245,Stucki - Tanja Grandits,"KEPT (in the 2025 edition, no longer live)",QA-362: 'Basel (BS) - Stucki - Tanja Grandits' is two-star in MICHELIN Switzerland 2025; its MICHELIN page /en/basel-stadt/basel/restaurant/stucki-tanja-grandits returns 404 and it is not in the live listing (2026-10-30). Kept at the 2025 value until the 2026 edition
+CH,rest_0246,Mammertsberg,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0247,L'Atelier Robuchon,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0248,La Table du Lausanne Palace,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0249,Pic Beau-Rivage Palace,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0250,Maison Wenger,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0251,Skin's - the restaurant,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (QA-362: 'Lenzburg (AG) - Skin's - the restaurant' is two-star in MICHELIN Switzerland 2025; its MICHELIN page /en/aargau-region/lenzburg/restaurant/skin-s-the-restaurant returns 404 and it is not in the live listing (2026-10-30). Kept at the 2025 value until the 2026 edition); values unchanged
+CH,rest_0251,Skin's - the restaurant,"KEPT (in the 2025 edition, no longer live)",QA-362: 'Lenzburg (AG) - Skin's - the restaurant' is two-star in MICHELIN Switzerland 2025; its MICHELIN page /en/aargau-region/lenzburg/restaurant/skin-s-the-restaurant returns 404 and it is not in the live listing (2026-10-30). Kept at the 2025 value until the 2026 edition
+CH,rest_0252,Colonnade,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0253,Einstein Gourmet,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0254,Da Vittorio - St. Moritz,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0255,Ecco St. Moritz,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0256,Gilles Varone,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0257,Magdalena,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0258,7132 Silver,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0259,focus ATELIER,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0260,Taverne zum Schäfli,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0261,IGNIV Zürich by Andreas Caminada,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0262,The Counter,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0263,The Restaurant,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,rest_0264,Widder Restaurant,LAUNCH ROW RELABELLED 2026 -> 2025,value 2 = MICHELIN Switzerland 2025 (live 2025 page); values unchanged
+CH,,Ecco,STAY LINK NOT USED,"QA-374: MICHELIN's Ecco (Ascona) page says 'Stay at the hotel' -> Giardino Mountain (/en/hotels-stays/st-moritz/giardino-mountain-6917), a hotel in St. Moritz, about 100 km away; the same link sits on Ecco St. Moritz's page, so it is MICHELIN's error on the Ascona page. No property_name, no link"
+CH,rest_0235,Cheval Blanc by Peter Knogl,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/us/en/basel-stadt/basel/restaurant/cheval-blanc-by-peter-knogl vs https://guide.michelin.com/en/basel-stadt/basel/restaurant/cheval-blanc-by-peter-knogl -- stored kept
+CH,rest_0236,Restaurant de l'Hôtel de Ville,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/us/en/vaud/crissier/restaurant/restaurant-de-l-hotel-de-ville vs https://guide.michelin.com/en/vaud/crissier/restaurant/restaurant-de-l-hotel-de-ville -- stored kept
+CH,rest_3516,Capri,PHONE HELD BACK,"MICHELIN +41 27 966 87 00: official site prints +41 27 966 88 88, MICHELIN +41 27 966 87 00 -- held back for a decision"
+CH,rest_3519,Chesa Stüva Colani,PHONE HELD BACK,"MICHELIN +41 81 854 18 88: official site prints +41 76 606 72 16, MICHELIN +41 81 854 18 88 -- held back for a decision"
+CH,rest_3566,OZ,PHONE HELD BACK,MICHELIN +41 81 632 10 89: MICHELIN only; not found on official site -- held back
+CH,rest_3566,OZ,property_name,Casa Caminada
+CH,rest_3587,The Japanese at Gütsch,PHONE HELD BACK,"MICHELIN +41 41 888 74 66: official site prints +41 41 888 74 88, MICHELIN +41 41 888 74 66 -- held back for a decision"
+CH,rest_3592,Tsé Fung,PHONE HELD BACK,"MICHELIN +41 22 959 88 88: official site prints +41 22 959 58 88, MICHELIN +41 22 959 88 88 -- held back for a decision"
+CH,rest_3503,After Seven,HOTEL LINK (exact),"hotel_2508: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/zermatt/backstage-hotel-vernissage-10707 (Backstage Hotel Vernissage), a 1-Key hotel; restaurant pin 4 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3509,Au 1465,HOTEL LINK (exact),"hotel_2506: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/Champex-Lac/au-club-alpin-13044 (Au Club Alpin), a 1-Key hotel; restaurant pin 19 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3526,Eden Kitchen & Bar,HOTEL LINK (exact),"hotel_87: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/zurich/la-reserve-eden-au-lac-zurich-10745 (La Réserve Eden au Lac Zurich), a 2-Key hotel; restaurant pin 5 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3534,I Due Sud,HOTEL LINK (exact),"hotel_2539: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/lugano/splendide-royal-10502 (Splendide Royal Lugano), a 1-Key hotel; restaurant pin 31 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3535,Il Lago,HOTEL LINK (exact),"hotel_68: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/geneva/four-seasons-hotel-des-bergues-geneva-11435 (Four Seasons Hotel des Bergues Geneva), a 2-Key hotel; restaurant pin 29 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3550,LeMontBlanc,HOTEL LINK (exact),"hotel_66: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/crans-montana/lecrans-hotel-spa-7890 (LeCrans Hotel & Spa), a 2-Key hotel; restaurant pin 6 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3554,L'OURS,HOTEL LINK (exact),"hotel_65: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/crans-montana/hostellerie-du-pas-de-lours-10189 (Hostellerie du Pas de l'Ours), a 2-Key hotel; restaurant pin 9 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3568,Radius by Stefan Beer,HOTEL LINK (exact),"hotel_72: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/interlaken/victoria-jungfrau-grand-hotel-spa-5984 (Victoria-Jungfrau Grand Hotel & Spa), a 2-Key hotel; restaurant pin 60 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3588,THE VIEW,HOTEL LINK (exact),"hotel_2544: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/lugano/the-view-lugano-10031 (The View Lugano), a 1-Key hotel; restaurant pin 62 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3592,Tsé Fung,HOTEL LINK (exact),"hotel_2532: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/geneva/la-reserve-geneve-hotel-spa-6471 (La Reserve Genève), a 1-Key hotel; restaurant pin 21 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_3594,verve by sven,HOTEL LINK (campus),"hotel_49: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/Bad-Ragaz/grand-resort-bad-ragaz-12501 (Grand Resort Bad Ragaz), a 3-Key hotel; restaurant pin 200 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_0263,The Restaurant,HOTEL LINK (exact),"hotel_2502: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/zurich/the-dolder-grand-471 (The Dolder Grand), a 2-Key hotel; restaurant pin 25 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,rest_0264,Widder Restaurant,HOTEL LINK (exact),"hotel_2503: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/zurich/widder-hotel-521 (Widder Hotel), a 2-Key hotel; restaurant pin 7 m from the hotel's MICHELIN pin. 2026-10-30."
+CH,hotel_2501,Six Senses Crans-Montana,NEW KEY HOTEL,"2 Key(s), Crans-Montana; website and phone not researched (NULL)"
+CH,hotel_2502,The Dolder Grand,NEW KEY HOTEL,"2 Key(s), Zurich; website and phone not researched (NULL)"
+CH,hotel_2503,Widder Hotel,NEW KEY HOTEL,"2 Key(s), Zurich; website and phone not researched (NULL)"
+CH,hotel_2504,22 SUMMITS Boutique Hotel,NEW KEY HOTEL,"1 Key(s), Zermatt; website and phone not researched (NULL)"
+CH,hotel_2505,AMERON Davos Swiss Mountain Resort,NEW KEY HOTEL,"1 Key(s), Davos; website and phone not researched (NULL)"
+CH,hotel_2506,Au Club Alpin,NEW KEY HOTEL,"1 Key(s), Champex-Lac; website and phone not researched (NULL)"
+CH,hotel_2507,Aïda Hôtel & Spa,NEW KEY HOTEL,"1 Key(s), Crans-Montana; website and phone not researched (NULL)"
+CH,hotel_2508,Backstage Hotel Vernissage,NEW KEY HOTEL,"1 Key(s), Zermatt; website and phone not researched (NULL)"
+CH,hotel_2509,Bergwelt Grindelwald - Alpine Design Resort,NEW KEY HOTEL,"1 Key(s), Grindelwald; website and phone not researched (NULL)"
+CH,hotel_2510,Boutique Hotel Glacier,NEW KEY HOTEL,"1 Key(s), Grindelwald; website and phone not researched (NULL)"
+CH,hotel_2511,Boutique Hotel Matthiol,NEW KEY HOTEL,"1 Key(s), Zermatt; website and phone not researched (NULL)"
+CH,hotel_2512,Chalet RoyAlp Hotel & Spa,NEW KEY HOTEL,"1 Key(s), Villars-sur-Ollon; website and phone not researched (NULL)"
+CH,hotel_2513,Cordée des Alpes,NEW KEY HOTEL,"1 Key(s), Verbier; website and phone not researched (NULL)"
+CH,hotel_2514,Frutt Mountain Resort,NEW KEY HOTEL,"1 Key(s), Frutt; website and phone not researched (NULL)"
+CH,hotel_2515,Giardino Ascona,NEW KEY HOTEL,"1 Key(s), Ascona; website and phone not researched (NULL)"
+CH,hotel_2516,Giardino Lago,NEW KEY HOTEL,"1 Key(s), Locarno; website and phone not researched (NULL)"
+CH,hotel_2517,Grace La Margna St. Moritz,NEW KEY HOTEL,"1 Key(s), St. Moritz; website and phone not researched (NULL)"
+CH,hotel_2518,Grand Hotel Zermatterhof,NEW KEY HOTEL,"1 Key(s), Zermatt; website and phone not researched (NULL)"
+CH,hotel_2519,Hotel d'Angleterre Geneva,NEW KEY HOTEL,"1 Key(s), Geneva; website and phone not researched (NULL)"
+CH,hotel_2520,Hotel de Rougemont & Spa,NEW KEY HOTEL,"1 Key(s), Rougemont; website and phone not researched (NULL)"
+CH,hotel_2521,Hotel Eiger Mürren,NEW KEY HOTEL,"1 Key(s), Bern; website and phone not researched (NULL)"
+CH,hotel_2522,Hotel Märthof Basel,NEW KEY HOTEL,"1 Key(s), Basel; website and phone not researched (NULL)"
+CH,hotel_2523,Hotel Palafitte,NEW KEY HOTEL,"1 Key(s), Neuchâtel; website and phone not researched (NULL)"
+CH,hotel_2524,Hotel Piz Buin Klosters,NEW KEY HOTEL,"1 Key(s), Klosters; website and phone not researched (NULL)"
+CH,hotel_2525,Hotel Schweizerhof Bern & Spa,NEW KEY HOTEL,"1 Key(s), Bern; website and phone not researched (NULL)"
+CH,hotel_2526,Hotel Welschen,NEW KEY HOTEL,"1 Key(s), Zermatt; website and phone not researched (NULL)"
+CH,hotel_2527,HUUS QUELL,NEW KEY HOTEL,"1 Key(s), Gonten; website and phone not researched (NULL)"
+CH,hotel_2528,Hôtel Les Armures,NEW KEY HOTEL,"1 Key(s), Geneva; website and phone not researched (NULL)"
+CH,hotel_2529,IN LAIN Hotel Cadonau,NEW KEY HOTEL,"1 Key(s), Brail; website and phone not researched (NULL)"
+CH,hotel_2530,Kempinski Grand Hotel Des Bains,NEW KEY HOTEL,"1 Key(s), St. Moritz; website and phone not researched (NULL)"
+CH,hotel_2531,Kempinski Palace Engelberg,NEW KEY HOTEL,"1 Key(s), Engelberg; website and phone not researched (NULL)"
+CH,hotel_2532,La Reserve Genève,NEW KEY HOTEL,"1 Key(s), Geneva; website and phone not researched (NULL)"
+CH,hotel_2533,Mandarin Oriental Savoy Zurich,NEW KEY HOTEL,"1 Key(s), Zurich; website and phone not researched (NULL)"
+CH,hotel_2534,Miiro The Mansard,NEW KEY HOTEL,"1 Key(s), Gstaad; website and phone not researched (NULL)"
+CH,hotel_2535,Mont Cervin Palace,NEW KEY HOTEL,"1 Key(s), Zermatt; website and phone not researched (NULL)"
+CH,hotel_2536,Relais Castello di Morcote,NEW KEY HOTEL,"1 Key(s), Morcote; website and phone not researched (NULL)"
+CH,hotel_2537,Schloss Schauenstein,NEW KEY HOTEL,"1 Key(s), Fürstenau; website and phone not researched (NULL)"
+CH,hotel_2538,Seerose Resort & Spa,NEW KEY HOTEL,"1 Key(s), Meisterschwanden; website and phone not researched (NULL)"
+CH,hotel_2539,Splendide Royal Lugano,NEW KEY HOTEL,"1 Key(s), Lugano; website and phone not researched (NULL)"
+CH,hotel_2540,Storchen Zürich,NEW KEY HOTEL,"1 Key(s), Zurich; website and phone not researched (NULL)"
+CH,hotel_2541,The Brecon,NEW KEY HOTEL,"1 Key(s), Adelboden; website and phone not researched (NULL)"
+CH,hotel_2542,The Cambrian,NEW KEY HOTEL,"1 Key(s), Adelboden; website and phone not researched (NULL)"
+CH,hotel_2543,The Omnia,NEW KEY HOTEL,"1 Key(s), Zermatt; website and phone not researched (NULL)"
+CH,hotel_2544,The View Lugano,NEW KEY HOTEL,"1 Key(s), Lugano; website and phone not researched (NULL)"
+CH,hotel_2545,Ultima Gstaad,NEW KEY HOTEL,"1 Key(s), Gstaad; website and phone not researched (NULL)"
+CH,hotel_2546,Villars Palace,NEW KEY HOTEL,"1 Key(s), Villars-sur-Ollon; website and phone not researched (NULL)"
+CH,hotel_2547,Waldhotel by Bürgenstock,NEW KEY HOTEL,"1 Key(s), Bürgenstock; website and phone not researched (NULL)"
+AT,hotel_30,Hotel Sacher Wien,hotel matched by MICHELIN id,"6301; stored point 34 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+AT,hotel_30,Hotel Sacher Wien,2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_29,Rosewood Schloss Fuschl,hotel matched by MICHELIN id,"13887; stored point 140 m from MICHELIN's; MICHELIN 2026 3 Key(s), production 3"
+AT,hotel_29,Rosewood Schloss Fuschl,2026 KEY ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_42,Aktiv & Wellnesshotel Bergfried,hotel matched by MICHELIN id,"14211; stored point 71 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_42,Aktiv & Wellnesshotel Bergfried,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_38,Alpen-Wellness Resort Hochfirst,hotel matched by MICHELIN id,"13947; stored point 447 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_38,Alpen-Wellness Resort Hochfirst,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_31,DAS EDELWEISS - Salzburg Mountain Resort,hotel matched by MICHELIN id,"13576; stored point 91 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_31,DAS EDELWEISS - Salzburg Mountain Resort,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_43,Falkensteiner Schlosshotel Velden,hotel matched by MICHELIN id,"8806; stored point 14 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_43,Falkensteiner Schlosshotel Velden,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_32,Family Nature Resort Moar Gut,hotel matched by MICHELIN id,"13886; stored point 75 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_32,Family Nature Resort Moar Gut,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_34,Grand Tirolia Kitzbühel,hotel matched by MICHELIN id,"13885; stored point 33 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_34,Grand Tirolia Kitzbühel,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_36,Hotel Almhof Schneider,hotel matched by MICHELIN id,"13955; stored point 78 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_36,Hotel Almhof Schneider,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_44,Hotel Imperial,hotel matched by MICHELIN id,"9475; stored point 30 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_44,Hotel Imperial,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_45,Hotel Sans Souci Wien,hotel matched by MICHELIN id,"6879; stored point 19 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_45,Hotel Sans Souci Wien,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_41,Hotel Schloss Seefels,hotel matched by MICHELIN id,"13778; stored point 69 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_41,Hotel Schloss Seefels,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_40,Hotel Tannenhof,hotel matched by MICHELIN id,"13560; stored point 21 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_40,Hotel Tannenhof,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_35,Naturhotel Waldklause,hotel matched by MICHELIN id,"14170; stored point 9 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_35,Naturhotel Waldklause,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_46,Park Hyatt Vienna,hotel matched by MICHELIN id,"7641; stored point 20 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_46,Park Hyatt Vienna,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_47,Rosewood Vienna,hotel matched by MICHELIN id,"12721; stored point 9 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_47,Rosewood Vienna,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_39,Schloss Mönchstein,hotel matched by MICHELIN id,"14144; stored point 14 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_39,Schloss Mönchstein,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_123,Schlosshotel Fiss,hotel matched by MICHELIN id,"13950; stored point 24 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 1"
+AT,hotel_123,Schlosshotel Fiss,KEY CHANGE (launch row relabelled),launch row 2026 = 1 is MICHELIN's 2025 Key (QA-366: MICHELIN 'All the Key Hotels in Austria: The Full 2025 Selection' (_source/michelin_article_keys_at_2025.txt) lists 'Fiss: Schlosshotel Fiss' among the One-Key hotels -- the launch row's value); relabelled 2025; 2026 = 2
+AT,hotel_37,Severins – The Alpine Retreat,hotel matched by MICHELIN id,"13940; stored point 8 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_37,Severins – The Alpine Retreat,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_48,The Amauris Vienna,hotel matched by MICHELIN id,"13550; stored point 15 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_48,The Amauris Vienna,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_33,TOP Hotel Hochgurgl,hotel matched by MICHELIN id,"13949; stored point 12 m from MICHELIN's; MICHELIN 2026 2 Key(s), production 2"
+AT,hotel_33,TOP Hotel Hochgurgl,2026 KEY ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_144,Alpenresort Schwarz,hotel matched by MICHELIN id,"14562; stored point 17 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_144,Alpenresort Schwarz,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_125,Bergblick,hotel matched by MICHELIN id,"13951; stored point 25 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_125,Bergblick,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_127,Boutique Hotel Weisses Rössl,hotel matched by MICHELIN id,"13775; stored point 12 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_127,Boutique Hotel Weisses Rössl,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_135,Burg Vital Resort,hotel matched by MICHELIN id,"13884; stored point 7 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_135,Burg Vital Resort,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_119,Das Kronthaler,hotel matched by MICHELIN id,"7903; stored point 4 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_119,Das Kronthaler,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_140,die HOCHKÖNIGIN Mountain Resort,hotel matched by MICHELIN id,"14169; stored point 15 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_140,die HOCHKÖNIGIN Mountain Resort,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_128,Elizabeth Arthotel,hotel matched by MICHELIN id,"14514; stored point 13 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_128,Elizabeth Arthotel,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_122,Eriro,hotel matched by MICHELIN id,"15205; stored point 0 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_122,Eriro,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_126,Genießer- & Romantikhotel DAS SCHIFF,hotel matched by MICHELIN id,"13771; stored point 0 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_126,Genießer- & Romantikhotel DAS SCHIFF,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_141,Hideaway Hotel Montestyria Chalets & Suiten,hotel matched by MICHELIN id,"13556; stored point 0 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_141,Hideaway Hotel Montestyria Chalets & Suiten,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_145,Holzleiten Bio Wellness Hotel,hotel matched by MICHELIN id,"14168; stored point 34 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_145,Holzleiten Bio Wellness Hotel,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_124,Impulshotel FREIGOLD,hotel matched by MICHELIN id,"14167; stored point 50 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_124,Impulshotel FREIGOLD,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_131,Hotel Kitzhof Mountain Design Resort,hotel matched by MICHELIN id,"6642; stored point 19 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_131,Hotel Kitzhof Mountain Design Resort,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_137,Hotel Krallerhof,hotel matched by MICHELIN id,"13891; stored point 13 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_137,Hotel Krallerhof,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_129,Hotel Trofana Royal Resort,hotel matched by MICHELIN id,"13883; stored point 18 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_129,Hotel Trofana Royal Resort,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_132,Hotel Weisses Roessl,hotel matched by MICHELIN id,"14225; stored point 22 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_132,Hotel Weisses Roessl,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_146,MALAT Weingut und Hotel,hotel matched by MICHELIN id,"10767; stored point 15 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_146,MALAT Weingut und Hotel,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_138,mama thresl,hotel matched by MICHELIN id,"7906; stored point 1 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_138,mama thresl,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_139,Naturhotel Forsthofgut,hotel matched by MICHELIN id,"13780; stored point 76 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_139,Naturhotel Forsthofgut,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_134,Post Lech Arlberg,hotel matched by MICHELIN id,"8984; stored point 16 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_134,Post Lech Arlberg,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_136,Walch's Rote Wand Gourmet Hotel,hotel matched by MICHELIN id,"453; stored point 23 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_136,Walch's Rote Wand Gourmet Hotel,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_120,Scheiblhofer THE RESORT,hotel matched by MICHELIN id,"14172; stored point 801 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_120,Scheiblhofer THE RESORT,STORED HOTEL COORDINATES OFF,matched by MICHELIN id 14172; stored point 801 m from MICHELIN's
+AT,hotel_120,Scheiblhofer THE RESORT,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_130,Schlosshotel Ischgl,hotel matched by MICHELIN id,"13941; stored point 27 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_130,Schlosshotel Ischgl,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_133,Schwarzer Adler - Adults Only,hotel matched by MICHELIN id,"13942; stored point 29 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_133,Schwarzer Adler - Adults Only,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_143,Spa Hotel Jagdhof,hotel matched by MICHELIN id,"13892; stored point 25 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_143,Spa Hotel Jagdhof,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_121,The Comodo Bad Gastein,hotel matched by MICHELIN id,"13137; stored point 61 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_121,The Comodo Bad Gastein,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,hotel_142,ZillergrundRock Luxury Mountain Resort,hotel matched by MICHELIN id,"14171; stored point 47 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+AT,hotel_142,ZillergrundRock Luxury Mountain Resort,2026 KEY ROW VERIFIED,launch row 2026 = 1 agrees with MICHELIN's live 2026 page; left as is
+AT,rest_0265,Restaurant Amador,matched by michelin slug,MICHELIN 'Amador' https://guide.michelin.com/en/vienna/wien/restaurant/amador; stored point 12 m from MICHELIN's; stored url https://guide.michelin.com/us/en/vienna/wien/restaurant/amador
+AT,rest_0266,Steirereck im Stadtpark,matched by michelin slug,MICHELIN 'Steirereck im Stadtpark' https://guide.michelin.com/en/vienna/wien/restaurant/steirereck-im-stadtpark; stored point 14 m from MICHELIN's; stored url https://guide.michelin.com/us/en/vienna/wien/restaurant/steirereck-im-stadtpark
+AT,rest_0267,Döllerer,matched by coordinates 13 m + name,MICHELIN 'Döllerer' https://guide.michelin.com/en/salzburg-region/golling-an-der-salzach_1039956/restaurant/dollerer; stored point 13 m from MICHELIN's; stored url None
+AT,rest_0268,Schwarzer Adler,matched by coordinates 11 m + name,MICHELIN 'Schwarzer Adler' https://guide.michelin.com/en/tirol/hall-in-tirol_1040546/restaurant/schwarzer-adler-109176; stored point 11 m from MICHELIN's; stored url None
+AT,rest_0269,Stüva,matched by coordinates 33 m + name,MICHELIN 'Stüva' https://guide.michelin.com/en/tirol/ischgl_1041328/restaurant/stuva-104899; stored point 33 m from MICHELIN's; stored url None
+AT,rest_0270,Griggeler Stuba,matched by coordinates 26 m + name,MICHELIN 'Griggeler Stuba' https://guide.michelin.com/en/vorarlberg/lech-am-arlberg_7770322/restaurant/griggeler-stuba; stored point 26 m from MICHELIN's; stored url None
+AT,rest_0271,Rote Wand Chef's Table,matched by coordinates 4 m + name,MICHELIN 'Rote Wand Chef's Table' https://guide.michelin.com/en/vorarlberg/lech-am-arlberg_7770322/restaurant/rote-wand-chef-s-table; stored point 4 m from MICHELIN's; stored url None
+AT,rest_0272,Landhaus Bacher,matched by coordinates 13 m + name,MICHELIN 'Landhaus Bacher' https://guide.michelin.com/en/niederosterreich/mautern-an-der-donau_1050463/restaurant/landhaus-bacher; stored point 13 m from MICHELIN's; stored url None
+AT,rest_0273,Restaurant 141 by Joachim Jaud,matched by coordinates 81 m + name,MICHELIN 'Restaurant 141 by Joachim Jaud' https://guide.michelin.com/en/tirol/mieming_7770405/restaurant/restaurant-141-by-joachim-jaud; stored point 81 m from MICHELIN's; stored url None
+AT,rest_0274,Ois,matched by coordinates 13 m + name,MICHELIN 'Ois' https://guide.michelin.com/en/oberosterreich/neufelden_1043292/restaurant/ois; stored point 13 m from MICHELIN's; stored url None
+AT,rest_0275,Ikarus,matched by coordinates 16 m + name,MICHELIN 'Ikarus' https://guide.michelin.com/en/salzburg-region/salzburg/restaurant/ikarus; stored point 16 m from MICHELIN's; stored url None
+AT,rest_0276,SENNS.Restaurant,matched by coordinates 14 m + name,MICHELIN 'SENNS.Restaurant' https://guide.michelin.com/en/salzburg-region/salzburg/restaurant/senns-restaurant; stored point 14 m from MICHELIN's; stored url None
+AT,rest_0277,Gourmetrestaurant Tannenhof,matched by coordinates 22 m + name,MICHELIN 'Gourmetrestaurant Tannenhof' https://guide.michelin.com/en/tirol/sankt-anton-am-arlberg_1045218/restaurant/gourmetrestaurant-tannenhof; stored point 22 m from MICHELIN's; stored url None
+AT,rest_0278,Kräuterreich by Vitus Winkler,matched by coordinates 11 m + name,MICHELIN 'Kräuterreich by Vitus Winkler' https://guide.michelin.com/en/salzburg-region/sankt-veit-im-pongau_1045495/restaurant/krauterreich-by-vitus-winkler; stored point 11 m from MICHELIN's; stored url None
+AT,rest_0279,Taubenkobel,matched by coordinates 8 m + name,MICHELIN 'Taubenkobel' https://guide.michelin.com/en/burgenland/schutzen-am-gebirge_1051731/restaurant/taubenkobel; stored point 8 m from MICHELIN's; stored url None
+AT,rest_0280,Obauer,matched by coordinates 17 m + name,MICHELIN 'Obauer' https://guide.michelin.com/en/salzburg-region/werfen_1047689/restaurant/obauer; stored point 17 m from MICHELIN's; stored url None
+AT,rest_0281,Doubek,matched by coordinates 14 m + name,MICHELIN 'Doubek' https://guide.michelin.com/en/vienna/wien/restaurant/doubek; stored point 14 m from MICHELIN's; stored url None
+AT,rest_0282,Konstantin Filippou,matched by coordinates 3 m + name,MICHELIN 'Konstantin Filippou' https://guide.michelin.com/en/vienna/wien/restaurant/konstantin-filippou; stored point 3 m from MICHELIN's; stored url None
+AT,rest_0283,Mraz & Sohn,matched by coordinates 9 m + name,MICHELIN 'Mraz & Sohn' https://guide.michelin.com/en/vienna/wien/restaurant/mraz-sohn; stored point 9 m from MICHELIN's; stored url None
+AT,rest_0284,Silvio Nickol Gourmet Restaurant,matched by coordinates 30 m + name,MICHELIN 'Silvio Nickol Gourmet Restaurant' https://guide.michelin.com/en/vienna/wien/restaurant/silvio-nickol-gourmet-restaurant; stored point 30 m from MICHELIN's; stored url None
+AT,rest_0265,Restaurant Amador,2026 ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0266,Steirereck im Stadtpark,2026 ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0267,Döllerer,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0268,Schwarzer Adler,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0269,Stüva,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0270,Griggeler Stuba,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0271,Rote Wand Chef's Table,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0272,Landhaus Bacher,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0273,Restaurant 141 by Joachim Jaud,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0274,Ois,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0275,Ikarus,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0276,SENNS.Restaurant,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0277,Gourmetrestaurant Tannenhof,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0278,Kräuterreich by Vitus Winkler,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0279,Taubenkobel,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0280,Obauer,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0281,Doubek,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0282,Konstantin Filippou,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0283,Mraz & Sohn,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0284,Silvio Nickol Gourmet Restaurant,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+AT,rest_0265,Restaurant Amador,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/us/en/vienna/wien/restaurant/amador vs https://guide.michelin.com/en/vienna/wien/restaurant/amador -- stored kept
+AT,rest_0266,Steirereck im Stadtpark,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/us/en/vienna/wien/restaurant/steirereck-im-stadtpark vs https://guide.michelin.com/en/vienna/wien/restaurant/steirereck-im-stadtpark -- stored kept
+AT,rest_3638,Heurigenhof Bründlmayer,PHONE HELD BACK,MICHELIN +43 2734 2883: MICHELIN only; official site unreachable -- held back
+AT,rest_3652,Lukas Kapeller,PHONE HELD BACK,"MICHELIN +43 676 3047477: official site prints +43 7252 21118, MICHELIN +43 676 3047477 -- held back for a decision"
+AT,rest_3662,Pramerl & the Wolf,PHONE HELD BACK,MICHELIN +43 1 9464139: MICHELIN only; official site unreachable -- held back
+AT,rest_3666,Rouge Noir,PHONE HELD BACK,"MICHELIN +43 664 2178570: MICHELIN number on official site, but printed only in the /kontakt page's meta description, not on the visible page (by-hand check 2026-10-30) -- held back"
+AT,rest_3680,Zimmerl,PHONE HELD BACK,MICHELIN +43 2842 24184: MICHELIN only; not found on official site -- held back
+AT,rest_3622,Edvard,HOTEL LINK (exact),"hotel_2548: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/vienna/anantara-palais-hansen-vienna-hotel-15401 (Anantara Palais Hansen Vienna Hotel), a 2-Key hotel; restaurant pin 56 m from the hotel's MICHELIN pin. 2026-10-30."
+AT,rest_3649,Les Deux Kitzbühel - Brasserie & Bar,HOTEL LINK (campus),"hotel_133: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/kitzbuhel/schwarzer-adler-kitzbuhel-13942 (Schwarzer Adler Kitzbühel), a 1-Key hotel; restaurant pin 415 m from the hotel's MICHELIN pin. 2026-10-30."
+AT,rest_3669,Schlossherrnstube,HOTEL LINK (exact),"hotel_130: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/Ischgl-2/schlosshotel-ischgl-13941 (Schlosshotel Ischgl), a 1-Key hotel; restaurant pin 50 m from the hotel's MICHELIN pin. 2026-10-30."
+AT,hotel_2548,Anantara Palais Hansen Vienna Hotel,NEW KEY HOTEL,"2 Key(s), Vienna; website and phone not researched (NULL)"
+AT,hotel_2549,Mandarin Oriental Vienna,NEW KEY HOTEL,"2 Key(s), Vienna; website and phone not researched (NULL)"
+AT,hotel_2550,AlpenParks The Secret Sölden,NEW KEY HOTEL,"1 Key(s), Sölden; website and phone not researched (NULL)"
+AT,hotel_2551,Alpin Resort Sacher,NEW KEY HOTEL,"1 Key(s), Seefeld; website and phone not researched (NULL)"
+AT,hotel_2552,Altstadt Vienna,NEW KEY HOTEL,"1 Key(s), Vienna; website and phone not researched (NULL)"
+AT,hotel_2553,Das Central,NEW KEY HOTEL,"1 Key(s), Sölden; website and phone not researched (NULL)"
+AT,hotel_2554,DasPosthotel,NEW KEY HOTEL,"1 Key(s), Tyrol; website and phone not researched (NULL)"
+AT,hotel_2555,Genießerhotel BERGERGUT,NEW KEY HOTEL,"1 Key(s), Afiesl; website and phone not researched (NULL)"
+AT,hotel_2556,Hotel & Chalet Aurelio,NEW KEY HOTEL,"1 Key(s), Lech am Arlberg; website and phone not researched (NULL)"
+AT,hotel_2557,Hotel Alpin Spa Tuxerhof,NEW KEY HOTEL,"1 Key(s), Tux; website and phone not researched (NULL)"
+AT,hotel_2558,Hotel Goldener Hirsch,NEW KEY HOTEL,"1 Key(s), Salzburg; website and phone not researched (NULL)"
+AT,hotel_2559,Hotel Goldgasse,NEW KEY HOTEL,"1 Key(s), Salzburg; website and phone not researched (NULL)"
+AT,hotel_2560,Hotel Josefine,NEW KEY HOTEL,"1 Key(s), Vienna; website and phone not researched (NULL)"
+AT,hotel_2561,"Hotel MOTTO, Vienna",NEW KEY HOTEL,"1 Key(s), Vienna; website and phone not researched (NULL)"
+AT,hotel_2562,Hotel Nesslerhof,NEW KEY HOTEL,"1 Key(s), Grossarl; website and phone not researched (NULL)"
+AT,hotel_2563,Hotel Sacher Salzburg,NEW KEY HOTEL,"1 Key(s), Salzburg; website and phone not researched (NULL)"
+AT,hotel_2564,Hotel Schöne Aussicht,NEW KEY HOTEL,"1 Key(s), Sölden; website and phone not researched (NULL)"
+AT,hotel_2565,Hyatt Regency Vienna,NEW KEY HOTEL,"1 Key(s), Vienna; website and phone not researched (NULL)"
+AT,hotel_2566,Lieperts Café Dinner Rooms,NEW KEY HOTEL,"1 Key(s), Leutschach an der Weinstraße; website and phone not researched (NULL)"
+AT,hotel_2567,Neuwirt. Hotel & Wirtshaus,NEW KEY HOTEL,"1 Key(s), Bad Vigaun; website and phone not researched (NULL)"
+AT,hotel_2568,Sportresidenz Zillertal,NEW KEY HOTEL,"1 Key(s), Uderns; website and phone not researched (NULL)"
+AT,hotel_2569,The Guesthouse Vienna,NEW KEY HOTEL,"1 Key(s), Vienna; website and phone not researched (NULL)"
+AT,hotel_2570,"The Ritz-Carlton, Vienna",NEW KEY HOTEL,"1 Key(s), Vienna; website and phone not researched (NULL)"
+AT,hotel_2571,Ullrhaus - St. Anton,NEW KEY HOTEL,"1 Key(s), St. Anton am Arlberg; website and phone not researched (NULL)"
+DK,rest_0297,Alchemist,matched by michelin slug,MICHELIN 'Alchemist' https://guide.michelin.com/en/capital-region/copenhagen/restaurant/alchemist; stored point 68 m from MICHELIN's; stored url https://guide.michelin.com/gb/en/capital-region/copenhagen/restaurant/alchemist
+DK,rest_0323,Kadeau,matched by michelin slug,MICHELIN 'Kadeau Copenhagen' https://guide.michelin.com/en/capital-region/copenhagen/restaurant/kadeau-copenhagen; stored point 10 m from MICHELIN's; stored url https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/kadeau-copenhagen
+DK,rest_0473,Geranium,matched by michelin slug,MICHELIN 'Geranium' https://guide.michelin.com/en/capital-region/copenhagen/restaurant/geranium; stored point 31 m from MICHELIN's; stored url https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/geranium
+DK,rest_0474,Jordnær,matched by michelin slug,MICHELIN 'Jordnær' https://guide.michelin.com/en/capital-region/gentofte_1373269/restaurant/jordnaer; stored point 18 m from MICHELIN's; stored url https://guide.michelin.com/gb/en/capital-region/gentofte_1373269/restaurant/jordnaer
+DK,rest_0475,a|o|c,matched by coordinates 15 m + name,MICHELIN 'a|o|c' https://guide.michelin.com/en/capital-region/copenhagen/restaurant/a%E2%80%9Ao%E2%80%9Ac; stored point 15 m from MICHELIN's; stored url None
+DK,rest_0476,Koan,matched by coordinates 16 m + name,MICHELIN 'Koan' https://guide.michelin.com/en/capital-region/copenhagen/restaurant/koan; stored point 16 m from MICHELIN's; stored url None
+DK,rest_0477,Kong Hans Kælder,matched by coordinates 10 m + name,MICHELIN 'Kong Hans Kælder' https://guide.michelin.com/en/capital-region/copenhagen/restaurant/kong-hans-kaelder; stored point 10 m from MICHELIN's; stored url None
+DK,rest_0478,Frederikshøj,matched by coordinates 8 m + name,MICHELIN 'Frederikshøj' https://guide.michelin.com/en/central-denmark/aarhus/restaurant/frederikshoj; stored point 8 m from MICHELIN's; stored url None
+DK,rest_0479,Henne Kirkeby Kro,matched by coordinates 3 m + name,MICHELIN 'Henne Kirkeby Kro' https://guide.michelin.com/en/southern-denmark/henne/restaurant/henne-kirkeby-kro; stored point 3 m from MICHELIN's; stored url None
+DK,rest_0297,Alchemist,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+DK,rest_0323,Kadeau,2026 ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+DK,rest_0473,Geranium,2026 ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+DK,rest_0474,Jordnær,2026 ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+DK,rest_0475,a|o|c,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+DK,rest_0476,Koan,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+DK,rest_0477,Kong Hans Kælder,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+DK,rest_0478,Frederikshøj,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+DK,rest_0479,Henne Kirkeby Kro,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+DK,rest_0297,Alchemist,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/gb/en/capital-region/copenhagen/restaurant/alchemist vs https://guide.michelin.com/en/capital-region/copenhagen/restaurant/alchemist -- stored kept
+DK,rest_0323,Kadeau,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/kadeau-copenhagen vs https://guide.michelin.com/en/capital-region/copenhagen/restaurant/kadeau-copenhagen -- stored kept
+DK,rest_0473,Geranium,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/us/en/capital-region/copenhagen/restaurant/geranium vs https://guide.michelin.com/en/capital-region/copenhagen/restaurant/geranium -- stored kept
+DK,rest_0474,Jordnær,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/gb/en/capital-region/gentofte_1373269/restaurant/jordnaer vs https://guide.michelin.com/en/capital-region/gentofte_1373269/restaurant/jordnaer -- stored kept
+DK,rest_3686,ARO,PHONE HELD BACK,MICHELIN +45 42 83 23 15: MICHELIN only; not found on official site -- held back
+DK,rest_3691,Dragsholm Slot Gourmet,property_name,Dragsholm Slot
+DK,rest_3700,Marchal,HOTEL LINK (exact),"hotel_2572: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/copenhagen/dangleterre-copenhagen-7705 (Hotel d'Angleterre), a 2-Key hotel; restaurant pin 22 m from the hotel's MICHELIN pin. 2026-10-30."
+DK,hotel_2572,Hotel d'Angleterre,NEW KEY HOTEL,"2 Key(s), Copenhagen; website and phone not researched (NULL)"
+DK,hotel_2573,1 Hotel Copenhagen,NEW KEY HOTEL,"1 Key(s), Copenhagen; website and phone not researched (NULL)"
+DK,hotel_2574,25hours Hotel Paper Island,NEW KEY HOTEL,"1 Key(s), Copenhagen; website and phone not researched (NULL)"
+DK,hotel_2575,Allinge Badehotel,NEW KEY HOTEL,"1 Key(s), Allinge; website and phone not researched (NULL)"
+DK,hotel_2576,Falsled Kro,NEW KEY HOTEL,"1 Key(s), Millinge; website and phone not researched (NULL)"
+DK,hotel_2577,Hotel Sanders,NEW KEY HOTEL,"1 Key(s), Copenhagen; website and phone not researched (NULL)"
+DK,hotel_2578,Nimb,NEW KEY HOTEL,"1 Key(s), Copenhagen; website and phone not researched (NULL)"
+DK,hotel_2579,Nobis Hotel Copenhagen,NEW KEY HOTEL,"1 Key(s), Copenhagen; website and phone not researched (NULL)"
+DK,hotel_2580,Park Lane Copenhagen,NEW KEY HOTEL,"1 Key(s), Hellerup; website and phone not researched (NULL)"
+FO,rest_0480,PAZ,matched by coordinates 27 m + name,MICHELIN 'PAZ' https://guide.michelin.com/en/faroe-islands/torshavn/restaurant/paz; stored point 27 m from MICHELIN's; stored url None
+FO,rest_0480,PAZ,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+SE,hotel_750,Ett Hem,hotel matched by MICHELIN id,"7183; stored point 10 m from MICHELIN's; MICHELIN 2026 1 Key(s), production 1"
+SE,rest_0142,Vyn,"matched by decision: QA-364: stored phone +46 414 204 00 is exactly the number on MICHELIN's VYN page; MICHELIN's pin and address (Höga vägen 72, 272 92 Simrishamn) are 2,359 m from the stored Fiskaregatan 2, Skillinge point, so the restaurant moved; stored address and point left for review",MICHELIN 'VYN' https://guide.michelin.com/en/skane/simrishamn_2683288/restaurant/vyn; stored point 2359 m from MICHELIN's; stored url None
+SE,rest_0142,Vyn,STORED COORDINATES OFF,stored point is 2359 m from MICHELIN's
+SE,rest_0321,Frantzén,matched by michelin slug,MICHELIN 'Frantzén' https://guide.michelin.com/en/stockholm-region/stockholm/restaurant/frantzen; stored point 71 m from MICHELIN's; stored url https://guide.michelin.com/us/en/stockholm-region/stockholm/restaurant/frantzen
+SE,rest_0481,AIRA,matched by coordinates 8 m + name,MICHELIN 'AIRA' https://guide.michelin.com/en/stockholm-region/stockholm/restaurant/aira; stored point 8 m from MICHELIN's; stored url None
+SE,rest_0483,Signum,matched by coordinates 23 m + name,MICHELIN 'Signum' https://guide.michelin.com/en/vastra-gotaland/molnlycke_2675596/restaurant/signum-1205585; stored point 23 m from MICHELIN's; stored url None
+SE,rest_0484,Vollmers,matched by coordinates 5 m + name,MICHELIN 'Vollmers' https://guide.michelin.com/en/skane/malmo/restaurant/vollmers; stored point 5 m from MICHELIN's; stored url None
+SE,rest_0142,Vyn,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+SE,rest_0321,Frantzén,2026 ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+SE,rest_0481,AIRA,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+SE,rest_0482,Aloë,KEPT (not live),"QA-363: Aloë (2 stars in production, launch row labelled 2026) is not in MICHELIN's 2026 Nordic list (_source/michelin_article_nordic_full_list_2026.txt) and its MICHELIN page /en/stockholm-region/stockholm/restaurant/aloe returns 404. Its 2025 value could not be verified (no 2025 full list found on MICHELIN's site; the Internet Archive refused the lookup, HTTP 429), so the relabel the QA-217 rule needs is not proven. Left untouched for a decision; README gives the block"
+SE,rest_0483,Signum,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+SE,rest_0484,Vollmers,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+SE,rest_0321,Frantzén,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/us/en/stockholm-region/stockholm/restaurant/frantzen vs https://guide.michelin.com/en/stockholm-region/stockholm/restaurant/frantzen -- stored kept
+SE,rest_3724,Knystaforsen,PHONE HELD BACK,MICHELIN +46 345 104 51: MICHELIN only; official site unreachable -- held back
+SE,rest_3728,PM & Vänner Restaurant,PHONE HELD BACK,"MICHELIN +46 470 75 97 10: official site prints +46 470 75 97 00, MICHELIN +46 470 75 97 10 -- held back for a decision"
+SE,hotel_2581,Grand Hotel Stockholm,NEW KEY HOTEL,"2 Key(s), Stockholm; website and phone not researched (NULL)"
+SE,hotel_2582,Arctic Bath,NEW KEY HOTEL,"1 Key(s), Harads; website and phone not researched (NULL)"
+SE,hotel_2583,Bank Hotel,NEW KEY HOTEL,"1 Key(s), Stockholm; website and phone not researched (NULL)"
+SE,hotel_2584,Hotel Frantz,NEW KEY HOTEL,"1 Key(s), Stockholm; website and phone not researched (NULL)"
+SE,hotel_2585,Lydmar Hotel,NEW KEY HOTEL,"1 Key(s), Stockholm; website and phone not researched (NULL)"
+SE,hotel_2586,Nobis Hotel Stockholm,NEW KEY HOTEL,"1 Key(s), Stockholm; website and phone not researched (NULL)"
+SE,hotel_2587,Ruth,NEW KEY HOTEL,"1 Key(s), Stockholm; website and phone not researched (NULL)"
+SE,hotel_2588,Stockholm Stadshotell,NEW KEY HOTEL,"1 Key(s), Stockholm; website and phone not researched (NULL)"
+SE,hotel_2589,Villa Dagmar,NEW KEY HOTEL,"1 Key(s), Stockholm; website and phone not researched (NULL)"
+SE,hotel_2590,Villa Dahlia,NEW KEY HOTEL,"1 Key(s), Stockholm; website and phone not researched (NULL)"
+NO,rest_0430,Maaemo,matched by coordinates 25 m + name,MICHELIN 'Maaemo' https://guide.michelin.com/en/oslo-region/oslo/restaurant/maaemo-1194933; stored point 25 m from MICHELIN's; stored url None
+NO,rest_0431,RE-NAA,matched by michelin slug,MICHELIN 'RE-NAA' https://guide.michelin.com/en/rogaland/stavanger/restaurant/re-naa; stored point 2 m from MICHELIN's; stored url https://guide.michelin.com/us/en/rogaland/stavanger/restaurant/re-naa
+NO,rest_0432,Kontrast,matched by coordinates 24 m + name,MICHELIN 'Kontrast' https://guide.michelin.com/en/oslo-region/oslo/restaurant/kontrast; stored point 24 m from MICHELIN's; stored url None
+NO,rest_0430,Maaemo,2026 ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+NO,rest_0431,RE-NAA,2026 ROW VERIFIED,launch row 2026 = 3 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+NO,rest_0432,Kontrast,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+NO,rest_0431,RE-NAA,STORED MICHELIN URL DIFFERS,stored https://guide.michelin.com/us/en/rogaland/stavanger/restaurant/re-naa vs https://guide.michelin.com/en/rogaland/stavanger/restaurant/re-naa -- stored kept
+NO,rest_3733,Credo,PHONE HELD BACK,MICHELIN +47 954 37 028: MICHELIN only; not found on official site -- held back
+NO,rest_3739,Kvitnes Gård,PHONE HELD BACK,MICHELIN +47 469 08 005: MICHELIN only; official site unreachable -- held back
+NO,rest_3741,Mirabelle by Ørjan Johannessen,PHONE HELD BACK,MICHELIN +47 404 51 614: MICHELIN only; not found on official site -- held back
+NO,rest_3746,SAVAGE,PHONE HELD BACK,MICHELIN +47 967 19 826: MICHELIN only; not found on official site -- held back
+NO,rest_3747,Speilsalen,HOTEL LINK (exact),"hotel_2596: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/trondheim/britannia-hotel-10216 (Britannia Hotel), a 1-Key hotel; restaurant pin 26 m from the hotel's MICHELIN pin. 2026-10-30."
+NO,rest_0431,RE-NAA,HOTEL LINK (exact),"hotel_2597: MICHELIN restaurant page 'Stay at the hotel' -> https://guide.michelin.com/en/hotels-stays/stavanger/eilert-smith-hotel-9301 (Eilert Smith Hotel), a 1-Key hotel; restaurant pin 14 m from the hotel's MICHELIN pin. 2026-10-30."
+NO,hotel_2591,Storfjord Hotel,NEW KEY HOTEL,"2 Key(s), Alesund; website and phone not researched (NULL)"
+NO,hotel_2592,Walaker Hotel,NEW KEY HOTEL,"2 Key(s), Solvorn; website and phone not researched (NULL)"
+NO,hotel_2593,Amerikalinjen,NEW KEY HOTEL,"1 Key(s), Oslo; website and phone not researched (NULL)"
+NO,hotel_2594,Beckerwyc House,NEW KEY HOTEL,"1 Key(s), Bekkjarvik; website and phone not researched (NULL)"
+NO,hotel_2595,Boen Gård,NEW KEY HOTEL,"1 Key(s), Kristiansand; website and phone not researched (NULL)"
+NO,hotel_2596,Britannia Hotel,NEW KEY HOTEL,"1 Key(s), Trondheim; website and phone not researched (NULL)"
+NO,hotel_2597,Eilert Smith Hotel,NEW KEY HOTEL,"1 Key(s), Stavanger; website and phone not researched (NULL)"
+NO,hotel_2598,Elva Hotel,NEW KEY HOTEL,"1 Key(s), Skulestadmo; website and phone not researched (NULL)"
+NO,hotel_2599,Hotel Brosundet,NEW KEY HOTEL,"1 Key(s), Norway; website and phone not researched (NULL)"
+NO,hotel_2600,Hotel Continental,NEW KEY HOTEL,"1 Key(s), Oslo; website and phone not researched (NULL)"
+NO,hotel_2601,Hotel Union Øye,NEW KEY HOTEL,"1 Key(s), Norangsfjorden; website and phone not researched (NULL)"
+NO,hotel_2602,Juvet Landscape Hotel,NEW KEY HOTEL,"1 Key(s), Valldal; website and phone not researched (NULL)"
+NO,hotel_2603,Lilløy Lindenberg,NEW KEY HOTEL,"1 Key(s), Herdla; website and phone not researched (NULL)"
+NO,hotel_2604,Manshausen,NEW KEY HOTEL,"1 Key(s), Manshausen Island; website and phone not researched (NULL)"
+NO,hotel_2605,Nusfjord Village & Resort,NEW KEY HOTEL,"1 Key(s), Norway; website and phone not researched (NULL)"
+NO,hotel_2606,Sommerro,NEW KEY HOTEL,"1 Key(s), Oslo; website and phone not researched (NULL)"
+FI,rest_0433,Palace,matched by coordinates 12 m + name,MICHELIN 'Palace' https://guide.michelin.com/en/uusimaa/helsinki/restaurant/palace; stored point 12 m from MICHELIN's; stored url None
+FI,rest_0433,Palace,2026 ROW VERIFIED,launch row 2026 = 2 agrees with MICHELIN's live 2026 page; left as is (announced_on stays NULL)
+FI,hotel_2607,RUNO Hotel Porvoo,NEW KEY HOTEL,"1 Key(s), Porvoo; website and phone not researched (NULL)"
+FI,hotel_2608,Skyra Retreat,NEW KEY HOTEL,"1 Key(s), Rovaniemi; website and phone not researched (NULL)"
+FI,hotel_2609,Waldorf Astoria Helsinki,NEW KEY HOTEL,"1 Key(s), Helsinki; website and phone not researched (NULL)"
+IS,rest_3759,Moss,PHONE HELD BACK,MICHELIN +354 420 8700: MICHELIN only; official site unreachable -- held back
+IS,rest_3760,ÓX,PHONE HELD BACK,MICHELIN +354 779 0399: MICHELIN only; not found on official site -- held back
+IS,hotel_2610,The Retreat at Blue Lagoon Iceland,NEW KEY HOTEL,"2 Key(s), Grindavík; website and phone not researched (NULL)"
+IS,hotel_2611,Highland Base Kerlingarfjöll,NEW KEY HOTEL,"1 Key(s), Kerlingarfjoll; website and phone not researched (NULL)"
+IS,hotel_2612,Hotel Ranga,NEW KEY HOTEL,"1 Key(s), Hella; website and phone not researched (NULL)"
+IS,hotel_2613,The Reykjavik EDITION,NEW KEY HOTEL,"1 Key(s), Reykjavík; website and phone not researched (NULL)"
+IS,hotel_2614,UMI Hotel,NEW KEY HOTEL,"1 Key(s), Hvolsvöllur; website and phone not researched (NULL)"
