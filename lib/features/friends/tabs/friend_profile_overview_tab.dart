@@ -3,14 +3,15 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
 import '../../../models/passport_venue.dart';
+import '../../map/visited_map_screen.dart';
 import '../friend_profile_all_visits_screen.dart';
 import '../friend_profile_data.dart';
 import '../friend_profile_screen.dart' show openVisitDetail;
 import '../widgets/friend_profile_verdict_row.dart';
 import '../widgets/friend_profile_widgets.dart';
 
-/// Tab 1 (default): the "in common, one line" bar, then the friend's
-/// latest 3 verdicts.
+/// Tab 1 (default): the "in common, one line" bar, the way into the
+/// friend's globe, then the friend's latest 3 verdicts.
 class FriendProfileOverviewTab extends StatelessWidget {
   final FriendProfileLayoutData data;
   final VoidCallback onPlanTapped;
@@ -36,8 +37,22 @@ class FriendProfileOverviewTab extends StatelessWidget {
       children: [
         if (shared.isNotEmpty) ...[
           _CommonBar(count: shared.length, venues: shared, onTap: onPlanTapped),
-          const SizedBox(height: CsSpacing.xl),
+          const SizedBox(height: CsSpacing.sm),
         ],
+        _MapBar(
+          friendName: data.friendName,
+          countries: data.stats.countries,
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => VisitedMapScreen(
+                userId: data.identity.id,
+                ownerName: data.friendName,
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: CsSpacing.xl),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -69,6 +84,7 @@ class FriendProfileOverviewTab extends StatelessWidget {
               ),
           ],
         ),
+        const SizedBox(height: CsSpacing.sm),
         if (recent.isEmpty)
           Padding(
             padding: const EdgeInsets.symmetric(vertical: CsSpacing.lg),
@@ -160,4 +176,88 @@ class _CommonBar extends StatelessWidget {
       ),
     );
   }
+}
+
+/// One quiet line into the friend's globe — the same [VisitedMapScreen]
+/// the viewer's own Passport opens, pointed at the friend.
+class _MapBar extends StatelessWidget {
+  final String friendName;
+  final int countries;
+  final VoidCallback onTap;
+
+  const _MapBar({
+    required this.friendName,
+    required this.countries,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => Semantics(
+    button: true,
+    label: "Open $friendName's map",
+    child: Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(2),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+          decoration: BoxDecoration(
+            color: AppColors.greenSurface,
+            borderRadius: BorderRadius.circular(2),
+          ),
+          child: ExcludeSemantics(
+            child: Row(
+              children: [
+                Container(
+                  width: 34,
+                  height: 34,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: AppColors.hairlineOnGreen),
+                  ),
+                  alignment: Alignment.center,
+                  child: const Icon(
+                    Icons.public_rounded,
+                    color: AppColors.textOnDark,
+                    size: 18,
+                  ),
+                ),
+                const SizedBox(width: CsSpacing.sm),
+                Expanded(
+                  child: Text.rich(
+                    TextSpan(
+                      style: CsTypography.editorialBody.copyWith(
+                        color: AppColors.secondaryOnDark,
+                        fontSize: 13,
+                      ),
+                      children: [
+                        if (countries > 0) ...[
+                          TextSpan(
+                            text:
+                                '$countries ${countries == 1 ? 'country' : 'countries'} ',
+                            style: const TextStyle(color: AppColors.textOnDark),
+                          ),
+                          TextSpan(text: "on $friendName's globe"),
+                        ] else
+                          TextSpan(text: "$friendName's globe"),
+                      ],
+                    ),
+                    maxLines: 2,
+                  ),
+                ),
+                const SizedBox(width: CsSpacing.sm),
+                Text(
+                  'Map →',
+                  style: CsTypography.editorialLabel().copyWith(
+                    color: AppColors.textOnDark,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    ),
+  );
 }

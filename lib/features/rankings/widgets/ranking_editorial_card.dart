@@ -38,19 +38,23 @@ import '../../../models/photo_framing.dart';
 /// hold a photo, so the fallback monogram occupies exactly the same frame
 /// a photo would rather than collapsing the layout around its absence.
 class RankingEditorialCard extends StatelessWidget {
-  final int rank;
+  /// Null for a list that isn't a ranking (Friend Profile's verdicts):
+  /// the image then carries no rank badge.
+  final int? rank;
   final String? imageUrl;
   final PhotoFraming imageFraming;
   final String title;
   final String subtitle;
   final Widget? recognition;
-  final String scoreText;
+  /// Null when there is no score to show (an unrated visit) — the line
+  /// then holds [visitText] alone, never a fabricated number.
+  final String? scoreText;
   final String visitText;
   final VoidCallback onTap;
 
   const RankingEditorialCard({
     super.key,
-    required this.rank,
+    this.rank,
     required this.imageUrl,
     this.imageFraming = PhotoFraming.center,
     required this.title,
@@ -150,7 +154,7 @@ class _CardContent extends StatelessWidget {
   final String title;
   final String subtitle;
   final Widget? recognition;
-  final String scoreText;
+  final String? scoreText;
   final String visitText;
 
   const _CardContent({
@@ -192,7 +196,9 @@ class _CardContent extends StatelessWidget {
           ),
           if (recognition != null) ...[
             const SizedBox(width: CsSpacing.sm),
-            recognition!,
+            // Flexible so a wider recognition (stars plus a World's 50
+            // Best rank) shares the line instead of overflowing it.
+            Flexible(child: recognition!),
           ],
         ],
       ),
@@ -216,17 +222,19 @@ class _CardContent extends StatelessWidget {
           // restaurant/hotel name (22px) the way its previous 19px bold
           // treatment did. Formatting itself is untouched — still exactly
           // `entry.averageScore.toStringAsFixed(1)`.
-          Text(
-            scoreText,
-            style: CsTypography.metadata.copyWith(
-              color: AppColors.forestGreen,
-              fontWeight: FontWeight.w700,
+          if (scoreText case final score?) ...[
+            Text(
+              score,
+              style: CsTypography.metadata.copyWith(
+                color: AppColors.forestGreen,
+                fontWeight: FontWeight.w700,
+              ),
             ),
-          ),
-          const SizedBox(width: CsSpacing.xs),
+            const SizedBox(width: CsSpacing.xs),
+          ],
           Flexible(
             child: Text(
-              '· $visitText',
+              scoreText == null ? visitText : '· $visitText',
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: CsTypography.metadata.copyWith(
@@ -246,7 +254,7 @@ class _CardContent extends StatelessWidget {
 /// integrated directly onto the image rather than floating above a
 /// separate placeholder column.
 class _RankedImage extends StatelessWidget {
-  final int rank;
+  final int? rank;
   final String? imageUrl;
   final PhotoFraming framing;
   const _RankedImage({
@@ -271,7 +279,8 @@ class _RankedImage extends StatelessWidget {
         height: double.infinity,
         borderRadius: _leftCorners,
       ),
-      Positioned(top: 8, left: 8, child: _RankBadge(rank: rank)),
+      if (rank case final rank?)
+        Positioned(top: 8, left: 8, child: _RankBadge(rank: rank)),
     ],
   );
 }

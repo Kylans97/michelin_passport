@@ -58,6 +58,49 @@ The format follows Keep a Changelog.
   in agreement with `20261030160000` present locally; on this branch
   alone that file is missing until `claude/friends-activity-globe`
   lands, so the list shows it remote-only until then.
+- **Friends' Activity on Community → Friends** (2026-10-30). The section
+  was a placeholder line; it now shows what friends have shared, merged
+  across friends and newest first: a visit or stay (each one a Passport
+  stamp, with its 1–10 score when given), Interested or Going for an
+  event that hasn't ended and isn't cancelled, and confirmed attendance
+  ("collected a Passport stamp at"). Milestones sit on the visit that
+  reached them, in small caps: first venue in a new country (not the
+  very first stamp), the 10th/25th/50th/100th/… distinct MICHELIN-starred
+  restaurant (stars at the visit, repeat visits don't count), and the
+  first three-star restaurant. Five items preview, "All activity" opens
+  the full list. Rows open the friend's visit, or the event. Visit dates
+  are calendar dates and render as dates only; event dates use
+  `formatEventDateRange`, in the event's own timezone.
+
+  **No migration, no new visibility.** `FriendActivityRepository` reads
+  `visits`, `event_attendance` and `event_confirmed_attendance` directly,
+  filtered to the caller's friends, so the existing RLS decides what
+  comes back: only rows the friend marked `friends`, nothing after an
+  unfriend or a block. Milestones are counted over those same visible
+  visits only, so a private visit can't surface as "10th starred". Five
+  queries in all, regardless of how many friends
+  (`VisitedRepository.loadPassportVenuesForUsers` is the batched
+  version of `loadPassportVenues`). Personal community-ranking scores
+  (`venue_ratings`) are deliberately left out: they are owner-only by
+  design (`20260828120000`), and showing them would reverse that
+  decision.
+- **A friend's globe** (2026-10-30). Friend Profile → Overview has a
+  "N countries on {Name}'s globe · Map →" line that opens the same
+  `VisitedMapScreen` as My Map, given the friend's `userId`: their
+  friends-visible visits, stays and confirmed event attendance. Titles
+  and empty states name the friend, and it records no `screenOpened`
+  (that event stays "my map").
+
+- **Friends who've been, on Restaurant and Hotel Detail** (2026-10-30).
+  Under the city line, a few overlapping friend faces and one line ("Anna
+  & Bas have been here", "Anna, Bas & 2 other friends have been here").
+  **No scores, by product-owner decision:** the venue page stays calm,
+  and a friend's verdict is one tap further, on their profile. One friend
+  opens their profile directly; several open a short list first. Only
+  visits a friend marked `friends` count. The query reads `user_id` alone
+  (`FriendActivityRepository.loadFriendsWhoVisited`), with no migration.
+  The row renders nothing until at least one friend has been, and is left
+  out of a manager's "Preview my page" because it is personal state.
 
 ### Changed
 - **Follow is a labelled pill.** The hero's Follow control was a
@@ -84,7 +127,119 @@ The format follows Keep a Changelog.
   turning one on before iOS was asked is what asks iOS — the separate
   "Turn on notifications" button above already-on-looking toggles is
   gone. A no in iOS saves nothing.
+- **Community Rankings redesigned: restaurants, hotels and events,
+  beyond stars** (2026-10-30, product owner). The screen (Community → "See
+  full ranking") was restaurants-only, filtered by star count, in the old
+  dark-and-gold style. It now has one row of kinds (Restaurants · Hotels ·
+  Events) and, for restaurants and hotels, one quiet recognition row: All,
+  ★/★★/★★★ (Keys for hotels) or World's 50 Best. Each row is the ivory
+  `RankingEditorialCard` with the venue's card photo, the stars or Keys
+  (the only gold), a "50 Best #n" when it has one, the community score in
+  forest green, and "· N members". Hotel rows open Hotel Detail and event
+  rows open Event Detail. Decided by the product owner: the score is the
+  overall score members give a visit, stay or confirmed event, each
+  member's latest per venue, and a venue appears from 3 members (the
+  rule `restaurant_rankings` already used). The separate, unused
+  `venue_ratings` system is untouched.
 
+  **Migration `20261030160000_add_hotel_and_event_rankings.sql`, applied
+  to production on 2026-10-30 at the product owner's request.** It
+  appends `worlds_50_best_rank` and the card-photo columns to
+  `restaurant_rankings`, leaving its rows and order the same. Build 1.5.0
+  (18) selects named columns from that view, so appending is invisible
+  to it. It also adds `hotel_rankings` and `event_rankings` with the same
+  shape and threshold: owner-privileged views that return aggregates
+  only, never a user id. Until a build with this screen ships, nothing
+  reads the new views.
+  - **Before the apply:** there was no Docker for a local replay. The
+    three view SELECTs ran read-only against production without error
+    (0 rows each: no venue clears 3 members yet), and the ledger showed
+    117/117 with only this file pending.
+  - **After the apply:** checked directly. `restaurant_rankings` keeps
+    its anon + authenticated select and now has 13 columns.
+    `hotel_rankings` (13) and `event_rankings` (9) are selectable by
+    `authenticated` and not by `anon`. `supabase migration list --linked`
+    shows 118/118, local and remote in agreement.
+  - **Ordering:** `claude/venue-follow-team` renamed its unapplied
+    `20261030150000_add_venue_team.sql` to `20261030170000` (content
+    unchanged) so that it sorts after this one, and applied it. The
+    production ledger is now 119/119. This migration's header still
+    says it was "named after 20261030150000_add_venue_team.sql". That
+    file no longer exists, and the header stays as it is, because an
+    applied migration is not edited.
+
+  Until a build with this screen ships, the app falls back on its own if
+  a view is missing, so it is safe in either order. Analyze and all 2,699
+  tests pass. In the simulator only the chips and empty state are
+  checked, because no venue clears the threshold yet.
+
+- **Community Rankings, layout B: one Filters button** (2026-10-30,
+  chosen by the product owner from four visual options). This replaces
+  the earlier two permanent chip rows, following CLAUDE.md's UI
+  principle. The page now has one quiet "Filters" pill ("Filters · 2"
+  when something narrows the list) and a one-line summary beside it
+  ("Restaurants · Italy · ★★"). The list itself is calm editorial rows
+  with hairlines between them: a serif rank, a small framed photo, the
+  name, the city with stars or Keys (the only gold), any World's 50 Best
+  rank, and the score over "N members". The ivory sheet holds TYPE,
+  COUNTRY (only countries the list actually contains), RECOGNITION
+  (stars, Keys or World's 50 Best; not shown for events), Reset, and a
+  full-width "Show N places". Closing the sheet changes nothing. Each
+  type's list loads once and is filtered in the app
+  (`applyCommunityFilters`), because it only holds venues with 3+
+  members. A failed load offers Retry.
+
+  **Migration `20261030180000_add_country_to_rankings.sql`, applied to
+  production on 2026-10-30 at the product owner's request.** It appends
+  `country_code` to `restaurant_rankings` and `hotel_rankings`
+  (`event_rankings` already had it). Rows, order and grants are
+  unchanged. A period filter (last 12 months) is left out on purpose: it
+  needs an RPC rather than a view.
+  - **Before the apply:** both view SELECTs ran read-only against
+    production without error (0 rows: nothing clears 3 members yet).
+    Production already had `20261030170000` (venue team), which this
+    branch doesn't carry. Its file was copied unchanged from
+    `claude/venue-follow-team` for the push only, then removed; it is not
+    committed here.
+  - **After the apply:** checked directly. `restaurant_rankings` (14
+    columns) is selectable by anon and authenticated, as before.
+    `hotel_rankings` (14) and `event_rankings` (9) are selectable by
+    authenticated only. All three have `country_code`. `supabase
+    migration list --linked` shows 120/120, local and remote in
+    agreement.
+
+  Checked in the simulator with temporary demo rows (not committed),
+  because no venue in production clears the threshold yet.
+  Analyze and all 2,700 tests pass.
+
+- **Friend verdicts and visit/stay detail in the green-and-ivory design**
+  (2026-10-30, at the product owner's request).
+  - Friend Profile → "{NAME}'S VERDICTS" (and its "All →" list) were a
+    dark tile with a gold border and a 40pt score. They are now the same
+    ivory `RankingEditorialCard` that My Rankings uses, without a rank.
+    Each card shows the photo, name, stars or Keys, city, then "8/10 ·
+    Visited 23 Sep" (the year only when it isn't this year). An unrated
+    visit shows no score. `RankingEditorialCard` now takes an optional
+    `rank` and an optional `scoreText` for this; every existing caller
+    passes both, so nothing else changes.
+  - Visit Detail and Stay Detail (reached from a verdict, Passport and
+    the activity feed) used ten-segment gold bars and a gold "8/10". They
+    are now ivory with the forest-green score rings the venue page
+    already shows (`VenueScoreStrip`). The headings are taupe eyebrows,
+    the title uses the editorial serif, and the spinner and snackbar are
+    no longer gold. These are the viewer's own visits too, so their
+    Passport detail changes the same way. `RatingDisplayRow`, the
+    gold-bar widget, had no other users and is removed.
+
+### Fixed
+- **Friend Profile avatars were clipped.** The box holding the two
+  overlapping avatars was 54pt high, but each avatar sits in a 3pt ring,
+  so the Stack cut 3pt off the bottom and right of both circles at every
+  screen size. The box now includes the ring, and the Stack no longer
+  clips. A widget test checks both avatars sit inside it at 320, 390 and
+  1024pt wide; it fails against the old header.
+
+---
 
 ## v1.5.0 (18) — 2026-10-30
 

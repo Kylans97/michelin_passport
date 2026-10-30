@@ -126,17 +126,23 @@ class _OverlappingAvatars extends StatelessWidget {
 
   static const _size = 54.0;
   static const _overlap = 12.0;
+  // Each avatar sits inside a [_Ring] that adds this much on every side.
+  // The box below must include it, or the Stack clips the bottom and
+  // right edge of both circles.
+  static const _ringWidth = _Ring.padding;
+  static const _outer = _size + _ringWidth * 2;
 
   @override
   Widget build(BuildContext context) => ExcludeSemantics(
     child: SizedBox(
-      width: _size * 2 - _overlap,
-      height: _size,
+      width: _outer * 2 - _overlap,
+      height: _outer,
       child: Stack(
+        clipBehavior: Clip.none,
         children: [
           // The viewer sits BEHIND the friend — drawn first, offset right.
           Positioned(
-            left: _size - _overlap,
+            left: _outer - _overlap,
             child: _Ring(
               child: FriendProfileAvatar(
                 photoUrl: myPhoto,
@@ -171,9 +177,11 @@ class _Ring extends StatelessWidget {
   final Widget child;
   const _Ring({required this.child});
 
+  static const double padding = 3;
+
   @override
   Widget build(BuildContext context) => Container(
-    padding: const EdgeInsets.all(3),
+    padding: const EdgeInsets.all(padding),
     decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.deepGreen),
     child: child,
   );

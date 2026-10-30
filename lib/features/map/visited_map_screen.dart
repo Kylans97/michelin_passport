@@ -46,8 +46,23 @@ import '../../core/analytics/screen_usage.dart';
 /// events), never from the device's current position, and never inferred
 /// from a linked venue when an Event's own coordinates are missing — see
 /// [eventMapPins]'s own doc comment.
+///
+/// Given [userId], the same globe shows a friend's places instead of the
+/// viewer's own (Friend Profile → "{Name}'s map"). Nothing here widens what
+/// is visible: both loads below are plain table reads, so RLS returns only
+/// the visits and confirmed attendances that friend marked `friends`, and
+/// none at all once the friendship ends or is blocked.
 class VisitedMapScreen extends StatefulWidget {
-  const VisitedMapScreen({super.key});
+  /// Whose places to plot; null means the signed-in user.
+  final String? userId;
+
+  /// The friend's display name, used in the title and empty states. Only
+  /// read when [userId] is set.
+  final String? ownerName;
+
+  const VisitedMapScreen({super.key, this.userId, this.ownerName});
+
+  bool get _isFriend => userId != null;
 
   @override
   State<VisitedMapScreen> createState() => _VisitedMapScreenState();
@@ -80,13 +95,16 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
   @override
   void initState() {
     super.initState();
-    trackScreenOpened(AnalyticsScreen.map);
+    if (!widget._isFriend) trackScreenOpened(AnalyticsScreen.map);
     _load();
   }
 
   Future<void> _load() async {
     try {
-      final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
+      final uid =
+          widget.userId ??
+          Supabase.instance.client.auth.currentUser?.id ??
+          '';
       // Kicked off immediately, alongside the venue-entries load below —
       // fully independent of it (Event confirmed attendance has no
       // dependency on restaurant/hotel ids), so it runs concurrently rather
@@ -187,6 +205,11 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
       if (pin.countryCode.isNotEmpty) pin.countryCode.toUpperCase(),
   };
 
+  String get _ownerName {
+    final name = widget.ownerName?.trim();
+    return (name == null || name.isEmpty) ? 'Your friend' : name;
+  }
+
   void _onSelectFilter(MapFilterType type) {
     setState(() => _filter = type);
     WidgetsBinding.instance.addPostFrameCallback(
@@ -254,14 +277,16 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          'My Map',
+                          widget._isFriend ? "$_ownerName's Map" : 'My Map',
                           style: CsTypography.screenTitle.copyWith(
                             color: AppColors.ivory,
                           ),
                         ),
                         const SizedBox(height: CsSpacing.xs),
                         Text(
-                          "Every place you've experienced.",
+                          widget._isFriend
+                              ? 'Every place $_ownerName has shared with you.'
+                              : "Every place you've experienced.",
                           style: CsTypography.body.copyWith(
                             color: AppColors.secondaryOnDark,
                           ),
@@ -321,7 +346,9 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                   else if (_loadError)
                     _MapMessage(
                       icon: Icons.wifi_off_rounded,
-                      message: 'Could not load your visited venues.',
+                      message: widget._isFriend
+                          ? "Could not load $_ownerName's places."
+                          : 'Could not load your visited venues.',
                       actionLabel: 'Retry',
                       onAction: () {
                         setState(() => _loading = true);
@@ -329,9 +356,11 @@ class _VisitedMapScreenState extends State<VisitedMapScreen> {
                       },
                     )
                   else if (!hasAnyHistory)
-                    const _MapMessage(
+                    _MapMessage(
                       icon: Icons.explore_outlined,
-                      message: 'Your map is waiting for its first destination.',
+                      message: widget._isFriend
+                          ? "$_ownerName hasn't shared any places yet."
+                          : 'Your map is waiting for its first destination.',
                     )
                   else if (plottable.isEmpty)
                     _MapMessage(
