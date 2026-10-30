@@ -1,4 +1,8 @@
-// Events V2 Step 6 — covers FollowToggleButton
+// Events V2 Step 6 — covers FollowToggleButton. Revised 2026-10-30: a
+// labelled pill ("Follow" / "Following") replaced the person-add glyph,
+// whose outline-vs-filled change did not read on device.
+//
+// Originally: covers FollowToggleButton
 // (lib/core/widgets/follow_toggle_button.dart): unselected/selected/busy
 // states, semantics, accessibility, and the "no gold, distinct from
 // Wishlist's heart" visual requirements.
@@ -29,8 +33,8 @@ Widget _wrap(Widget child, {double width = 390, double textScale = 1.0}) =>
 
 void main() {
   group('FollowToggleButton — states', () {
-    testWidgets('not following: outline person-add icon, deepGreen/ivory, '
-        'no gold', (tester) async {
+    testWidgets('not following: a translucent pill reading "Follow" with '
+        'a plus, ivory on green, no gold', (tester) async {
       await tester.pumpWidget(
         _wrap(
           const FollowToggleButton(
@@ -41,17 +45,15 @@ void main() {
           ),
         ),
       );
-      expect(find.byIcon(Icons.person_add_alt_1_outlined), findsOneWidget);
-      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsNothing);
-      final icon = tester.widget<Icon>(
-        find.byIcon(Icons.person_add_alt_1_outlined),
-      );
+      expect(find.text('Follow'), findsOneWidget);
+      expect(find.text('Following'), findsNothing);
+      final icon = tester.widget<Icon>(find.byIcon(Icons.add_rounded));
       expect(icon.color, AppColors.textOnDark);
       expect(icon.color, isNot(AppColors.gold));
     });
 
-    testWidgets('following: filled person-add icon — state conveyed by '
-        'shape, not just color', (tester) async {
+    testWidgets('following: a solid ivory pill reading "Following" with a '
+        'check — state spelled out, not just a filled glyph', (tester) async {
       await tester.pumpWidget(
         _wrap(
           const FollowToggleButton(
@@ -62,30 +64,29 @@ void main() {
           ),
         ),
       );
-      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsOneWidget);
-      expect(find.byIcon(Icons.person_add_alt_1_outlined), findsNothing);
+      expect(find.text('Following'), findsOneWidget);
+      expect(find.byIcon(Icons.check_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.add_rounded), findsNothing);
+      final icon = tester.widget<Icon>(find.byIcon(Icons.check_rounded));
+      expect(icon.color, AppColors.forestGreen);
+      final box = tester.widget<AnimatedContainer>(find.byType(AnimatedContainer));
+      expect((box.decoration as ShapeDecoration).color, AppColors.ivory);
     });
 
-    testWidgets('busy: shows a spinner instead of either icon, never gold', (
-      tester,
-    ) async {
+    testWidgets('busy: keeps showing the state (no spinner) — the screens '
+        'update optimistically', (tester) async {
       await tester.pumpWidget(
         _wrap(
           const FollowToggleButton(
-            isFollowing: false,
+            isFollowing: true,
             busy: true,
             onTap: null,
             entityName: 'Parkheuvel',
           ),
         ),
       );
-      expect(find.byType(CircularProgressIndicator), findsOneWidget);
-      expect(find.byIcon(Icons.person_add_alt_1_outlined), findsNothing);
-      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsNothing);
-      final indicator = tester.widget<CircularProgressIndicator>(
-        find.byType(CircularProgressIndicator),
-      );
-      expect(indicator.color, isNot(AppColors.gold));
+      expect(find.byType(CircularProgressIndicator), findsNothing);
+      expect(find.text('Following'), findsOneWidget);
     });
 
     testWidgets('never uses the bell/notification icon family — the '
@@ -226,8 +227,8 @@ void main() {
       expect(find.bySemanticsLabel(RegExp('Notification')), findsNothing);
     });
 
-    testWidgets('following: semantic label reads "Unfollow {name}", never '
-        '"Notifications on"', (tester) async {
+    testWidgets('following: semantic label says it follows and how to '
+        'unfollow, never "Notifications on"', (tester) async {
       await tester.pumpWidget(
         _wrap(
           const FollowToggleButton(
@@ -238,7 +239,10 @@ void main() {
           ),
         ),
       );
-      expect(find.bySemanticsLabel('Unfollow Parkheuvel'), findsOneWidget);
+      expect(
+        find.bySemanticsLabel('Following Parkheuvel. Tap to unfollow'),
+        findsOneWidget,
+      );
       expect(find.bySemanticsLabel(RegExp('Notification')), findsNothing);
     });
 

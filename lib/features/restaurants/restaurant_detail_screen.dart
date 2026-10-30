@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,6 +16,7 @@ import '../../core/widgets/personal_photos_preview.dart';
 import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_about_section.dart';
+import '../../core/widgets/venue_team_section.dart';
 import '../../core/widgets/venue_lifecycle_banner.dart';
 import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/venue_utility_actions.dart';
@@ -28,6 +30,8 @@ import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
+import '../../data/repositories/venue_team_repository.dart';
+import '../../models/venue_team_member.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../data/repositories/wishlist_repository.dart';
 import '../../models/event.dart';
@@ -48,7 +52,6 @@ import 'widgets/award_history_action.dart';
 import 'widgets/restaurant_hero.dart';
 import 'widgets/restaurant_info_card.dart';
 import 'widgets/restaurant_visits_card.dart';
-import '../notifications/push_prompt_sheet.dart';
 import '../notifications/push_service.dart';
 
 const _signInMessage = 'Sign in to save visits and wishlist restaurants.';
@@ -61,6 +64,12 @@ class RestaurantDetailScreen extends StatefulWidget {
   /// manager's own pending submission, or a test's fixture text. Null
   /// (every existing call site) is the live page, unchanged.
   final String? aboutTextOverride;
+
+  /// Owner preview only. When supplied, replaces the live approved team
+  /// (venue_team_current) and skips that fetch — the manager's pending
+  /// names and texts merged over the published ones. Null is the live
+  /// page, unchanged.
+  final List<VenueTeamMember>? teamOverride;
 
   /// Owner preview only. When supplied, replaces the venue's own
   /// published photo set and skips that fetch entirely — see
@@ -104,6 +113,7 @@ class RestaurantDetailScreen extends StatefulWidget {
     super.key,
     required this.restaurant,
     this.aboutTextOverride,
+    this.teamOverride,
     this.photosOverride,
     this.isPreview = false,
     this.previewIsStale = false,
@@ -131,6 +141,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   );
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
   late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
+  late final _venueTeamRepo = VenueTeamRepository(Supabase.instance.client);
   // Events V2 Step 6 — never wired into a constructor param (matching
   // EventDetailScreen's own established seam). SupabaseAnalyticsService
   // persists only its own narrow set (page opens, website/Call/Directions
@@ -177,6 +188,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // field.
   String? _aboutText;
 
+  // The venue's approved team (venue_team_current). Same "starts empty,
+  // only ever set on success" shape as _aboutText.
+  List<VenueTeamMember> _team = const [];
+
   // The venue's full published-photo set, in display_order — one venue,
   // one query, independent of restaurant_hero.dart's coverImageUrl
   // fallback (see RestaurantHero.photos' own doc comment for why this
@@ -215,6 +230,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     } else {
       _loadAboutText();
     }
+    if (widget.teamOverride != null) {
+      _team = widget.teamOverride!;
+    } else {
+      _loadTeam();
+    }
     if (widget.photosOverride != null) {
       _photos = widget.photosOverride!;
     } else {
@@ -231,6 +251,19 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       // Leave the hero on its single cover photo (or gradient) on a
       // failed lookup — same reasoning as every other enhancement-content
       // load on this screen.
+    }
+  }
+
+  Future<void> _loadTeam() async {
+    try {
+      final team = await _venueTeamRepo.loadCurrent(
+        venueType: 'restaurant',
+        venueId: widget.restaurant.id,
+      );
+      if (!mounted) return;
+      setState(() => _team = team);
+    } catch (_) {
+      // Leave the section hidden on a failed lookup, like the about text.
     }
   }
 
@@ -410,12 +443,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     }
   }
 
-  // Events V2 Step 6. Non-optimistic, matching _toggleWishlist and
-  // EventDetailScreen._handleIntentTap's own documented rationale: state
-  // only flips after the write succeeds, so a failure never needs a
-  // rollback — clearing _followBusy alone already restores the correct
-  // (unchanged) state. Analytics fires only after the write succeeds, per
-  // AnalyticsService.track's own mandatory successful-write rule.
+  // Events V2 Step 6; optimistic since 2026-10-30 (the pill must read
+  // as followed the moment it is tapped). Analytics fires only after the
+  // write succeeds, per AnalyticsService.track's own successful-write
+  // rule.
   Future<void> _toggleFollow() async {
     // Preview: same as _toggleWishlist — inert, not hidden.
     if (widget.isPreview) return;
@@ -426,8 +457,14 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     }
     if (_followBusy) return;
 
+    // Optimistic: the pill flips now and flips back if the write fails,
+    // so the state is visible the moment it is tapped. [_followBusy]
+    // only blocks a second tap while the write is in flight.
     final wasFollowing = _isFollowing;
-    setState(() => _followBusy = true);
+    setState(() {
+      _isFollowing = !wasFollowing;
+      _followBusy = true;
+    });
     try {
       if (wasFollowing) {
         await _followRepo.unfollowRestaurant(
@@ -441,19 +478,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         );
       }
       if (!mounted) return;
-      setState(() {
-        _isFollowing = !wasFollowing;
-        _followBusy = false;
-      });
-      _showSnack(
-        followSnackMessage(
-          wasFollowing: wasFollowing,
-          entityName: widget.restaurant.name,
-        ),
-      );
-      if (!wasFollowing) {
-        PushService.instance.askAfter(context, FollowedVenuePrompt(widget.restaurant.name));
-      }
+      setState(() => _followBusy = false);
       _analytics.track(
         wasFollowing
             ? AnalyticsEvent.followRemoved
@@ -463,9 +488,17 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           entityId: widget.restaurant.id,
         ),
       );
+      if (!wasFollowing) {
+        // The one place a follow can lead to notifications: a single
+        // explanation the first time, nothing after (PushService).
+        unawaited(PushService.instance.offerAfterFollow(context, widget.restaurant.name));
+      }
     } catch (_) {
       if (!mounted) return;
-      setState(() => _followBusy = false);
+      setState(() {
+        _isFollowing = wasFollowing;
+        _followBusy = false;
+      });
       _showSnack('Could not update. Please try again.', isError: true);
     }
   }
@@ -817,6 +850,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   if (aboutText != null) ...[
                     const SectionDivider(),
                     VenueAboutSection(text: aboutText),
+                  ],
+
+                  if (_team.isNotEmpty) ...[
+                    const SectionDivider(),
+                    VenueTeamSection(members: _team, venueType: 'restaurant'),
                   ],
 
                   const SectionDivider(),

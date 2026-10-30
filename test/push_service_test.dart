@@ -68,9 +68,11 @@ void main() {
   late _FakeNative native;
   late _FakeStore store;
   late PushService service;
+  late List<PushPromptReason> enabled;
 
   setUp(() {
     SharedPreferences.setMockInitialValues({});
+    enabled = [];
     native = _FakeNative();
     store = _FakeStore();
     TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
@@ -80,6 +82,7 @@ void main() {
       store: store,
       appVersion: () async => '1.5.0+18',
       markRead: (_) async {},
+      enablePreference: (reason) async => enabled.add(reason),
     );
   });
 
@@ -151,14 +154,26 @@ void main() {
 
     testWidgets('offers the app sheet first, and iOS prompt only on Turn on', (tester) async {
       await pumpAsker(tester);
-      expect(find.text('Hear about new events'), findsOneWidget);
-      expect(find.textContaining('Hof van Cleve announces an event'), findsOneWidget);
+      expect(find.text('You follow Hof van Cleve'), findsOneWidget);
+      expect(find.textContaining('when they announce one'), findsOneWidget);
       expect(native.calls, isNot(contains('requestAuthorization')));
+      expect(enabled, isEmpty);
 
       await tester.tap(find.text('Turn on notifications'));
       await tester.pumpAndSettle();
       expect(native.calls, contains('requestAuthorization'));
       expect(store.registered.single['token'], _token);
+      // The settings toggle follows the yes.
+      expect(enabled.single, isA<FollowedVenuePrompt>());
+    });
+
+    testWidgets('a no in iOS leaves the settings toggle alone', (tester) async {
+      native.grant = false;
+      await pumpAsker(tester);
+      await tester.tap(find.text('Turn on notifications'));
+      await tester.pumpAndSettle();
+      expect(native.calls, contains('requestAuthorization'));
+      expect(enabled, isEmpty);
     });
 
     testWidgets('Not now is remembered and never asked again', (tester) async {
@@ -169,7 +184,8 @@ void main() {
 
       await tester.tap(find.text('Follow'));
       await tester.pumpAndSettle();
-      expect(find.text('Hear about new events'), findsNothing);
+      expect(find.text('You follow Hof van Cleve'), findsNothing);
+      expect(enabled, isEmpty);
     });
 
     testWidgets('shows nothing once iOS has already been answered', (tester) async {

@@ -665,7 +665,7 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(find.byType(FollowToggleButton), findsOneWidget);
-      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsOneWidget);
+      expect(find.text('Following'), findsOneWidget);
 
       await tester.tap(find.byType(FollowToggleButton));
       expect(followTapped, isTrue);
@@ -1005,7 +1005,7 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.byIcon(Icons.person_add_alt_1_rounded), findsOneWidget);
+      expect(find.text('Following'), findsOneWidget);
       await tester.tap(find.byType(FollowToggleButton));
       expect(tapped, isTrue);
     });
@@ -1027,7 +1027,7 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.byIcon(Icons.person_add_alt_1_outlined), findsOneWidget);
+      expect(find.text('Follow'), findsOneWidget);
       await tester.tap(find.byType(FollowToggleButton));
       expect(tapped, isTrue);
     });

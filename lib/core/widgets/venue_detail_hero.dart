@@ -244,11 +244,15 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
         if (widget.onTapFollow != null)
           Padding(
             padding: const EdgeInsets.only(right: CsSpacing.sm),
-            child: FollowToggleButton(
-              isFollowing: widget.isFollowing,
-              busy: widget.followBusy,
-              onTap: widget.onTapFollow,
-              entityName: title,
+            // Centred: the pill is shorter than the toolbar, and an
+            // action is otherwise laid out at the toolbar's full height.
+            child: Center(
+              child: FollowToggleButton(
+                isFollowing: widget.isFollowing,
+                busy: widget.followBusy,
+                onTap: widget.onTapFollow,
+                entityName: title,
+              ),
             ),
           ),
       ],

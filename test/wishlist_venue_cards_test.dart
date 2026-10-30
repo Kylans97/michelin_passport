@@ -117,7 +117,7 @@ void main() {
       expect(find.byType(StarRow), findsNothing);
     });
 
-    testWidgets('the bookmark is filled (already-saved state) — tapping '
+    testWidgets('the heart is filled (already-saved state) — tapping '
         'it fires onRemove, not card navigation', (tester) async {
       var removed = false;
       final restaurant = _restaurant();
@@ -129,9 +129,9 @@ void main() {
           ),
         ),
       );
-      expect(find.byIcon(Icons.bookmark_rounded), findsOneWidget);
-      expect(find.byIcon(Icons.bookmark_outline_rounded), findsNothing);
-      await tester.tap(find.byIcon(Icons.bookmark_rounded));
+      expect(find.byIcon(Icons.favorite_rounded), findsOneWidget);
+      expect(find.byIcon(Icons.favorite_border_rounded), findsNothing);
+      await tester.tap(find.byIcon(Icons.favorite_rounded));
       expect(removed, isTrue);
     });
 
@@ -234,13 +234,13 @@ void main() {
       expect(find.byType(KeyRow), findsNothing);
     });
 
-    testWidgets('tapping the filled bookmark fires onRemove', (tester) async {
+    testWidgets('tapping the filled heart fires onRemove', (tester) async {
       var removed = false;
       final hotel = _hotel();
       await tester.pumpWidget(
         _wrap(WishlistHotelCard(hotel: hotel, onRemove: () => removed = true)),
       );
-      await tester.tap(find.byIcon(Icons.bookmark_rounded));
+      await tester.tap(find.byIcon(Icons.favorite_rounded));
       expect(removed, isTrue);
     });
 

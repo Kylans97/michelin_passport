@@ -15,6 +15,12 @@ import '../../../core/theme/cs_typography.dart';
 /// never toggles the bookmark (nested InkWells resolve to the innermost
 /// hit target; this is standard Flutter gesture-arena behavior, not a
 /// workaround). Ivory/forest-green only — no gold.
+///
+/// The wishlist heart, the same glyph the Detail heroes use to add a
+/// venue or event to the wishlist (revised 2026-10-30: it was a bookmark
+/// here, so the control that removes something looked unrelated to the
+/// one that added it). Filled means on the wishlist; a tap takes it off.
+/// The class keeps its old name so its many call sites stay put.
 class PassportCardBookmark extends StatelessWidget {
   final bool isWishlisted;
   final VoidCallback onTap;
@@ -46,8 +52,8 @@ class PassportCardBookmark extends StatelessWidget {
           alignment: Alignment.center,
           child: Icon(
             isWishlisted
-                ? Icons.bookmark_rounded
-                : Icons.bookmark_outline_rounded,
+                ? Icons.favorite_rounded
+                : Icons.favorite_border_rounded,
             color: AppColors.forestGreen,
             size: 16,
           ),

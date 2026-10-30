@@ -48,9 +48,13 @@ class _RepositoryDeviceStore implements PushDeviceStore {
 /// - **Asking.** Never at launch. The first time a push would mean
 ///   something — following a venue, sending or accepting a friend request
 ///   — [askAfter] shows the app's own calm sheet, and only "Turn on" leads
-///   to iOS's prompt, which iOS shows once per install. "Not now" is
-///   remembered and never asked again; Notification settings still offers
-///   it ([requestFromSettings]).
+///   to iOS's prompt, which iOS shows once per install. A yes there also
+///   switches on the matching toggle in Notification settings, so the
+///   sheet and the settings can never disagree (someone who turned
+///   "Events from venues you follow" off and then says yes after a follow
+///   gets it back on). "Not now" is remembered and never asked again;
+///   Notification settings still offers it. For a follow the sheet is
+///   the only feedback — the screens show no snackbar beside it.
 /// - **Taps.** A friend request opens Notifications; a followed venue's
 ///   event opens that event and marks its notification read.
 ///
@@ -63,13 +67,15 @@ class PushService {
     Future<SharedPreferences> Function()? preferences,
     Future<String?> Function()? appVersion,
     Future<void> Function(String notificationId)? markRead,
+    Future<void> Function(PushPromptReason reason)? enablePreference,
   }) : _channel = channel ?? PushChannel(),
        _store = store ?? _RepositoryDeviceStore(),
        _preferences = preferences ?? SharedPreferences.getInstance,
        _appVersion = appVersion ?? _platformAppVersion,
        _markRead =
            markRead ??
-           ((id) => NotificationsRepository(Supabase.instance.client).markAsRead(id));
+           ((id) => NotificationsRepository(Supabase.instance.client).markAsRead(id)),
+       _enablePreference = enablePreference ?? _enableStoredPreference;
 
   static final PushService instance = PushService();
 
@@ -80,6 +86,7 @@ class PushService {
   final Future<SharedPreferences> Function() _preferences;
   final Future<String?> Function() _appVersion;
   final Future<void> Function(String notificationId) _markRead;
+  final Future<void> Function(PushPromptReason reason) _enablePreference;
 
   final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -151,11 +158,17 @@ class PushService {
       if (!context.mounted) return;
       final accepted = await showPushPromptSheet(context, reason);
       await prefs.setBool(promptAnsweredKey, true);
-      if (accepted == true) await requestFromSettings();
+      if (accepted == true && await requestFromSettings()) {
+        await _enablePreference(reason);
+      }
     } catch (_) {
       // Never let an offer break the action it followed.
     }
   }
+
+  /// Same as [askAfter] for a venue the person just followed.
+  Future<void> offerAfterFollow(BuildContext context, String venueName) =>
+      askAfter(context, FollowedVenuePrompt(venueName));
 
   /// Shows iOS's prompt directly — the person asked for it — and
   /// registers on a yes.
@@ -202,6 +215,21 @@ class PushService {
       default:
         return null;
     }
+  }
+
+  // Switches on the push toggle that matches what the person just said
+  // yes to, leaving the other one as it was.
+  static Future<void> _enableStoredPreference(PushPromptReason reason) async {
+    final client = Supabase.instance.client;
+    final uid = client.auth.currentUser?.id;
+    if (uid == null) return;
+    final repo = PushRepository(client);
+    final current = await repo.getPreferences(uid);
+    final next = switch (reason) {
+      FollowedVenuePrompt() => current.copyWith(followedVenueEvents: true),
+      FriendsPrompt() => current.copyWith(friendRequests: true),
+    };
+    if (next != current) await repo.savePreferences(uid, next);
   }
 
   static Future<String?> _platformAppVersion() async {

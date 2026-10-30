@@ -4,9 +4,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/push/push_channel.dart';
 import '../../core/theme/cs_spacing.dart';
-import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
-import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/push_repository.dart';
 import '../../models/notification_preferences.dart';
@@ -15,11 +13,18 @@ import 'push_service.dart';
 /// Profile → Notification settings: one toggle per kind of push, nothing
 /// else. What iOS allows decides what is shown above them:
 ///
-/// - never asked: a single "Turn on notifications" action (the person
-///   asked, so this goes straight to iOS's prompt);
+/// - never asked: the toggles, all off — nothing reaches the phone yet —
+///   and switching one on is what asks iOS (the person asked, so this
+///   goes straight to iOS's prompt). One control, not a "Turn on" button
+///   above toggles that already read as on (revised 2026-10-30);
 /// - turned off in iOS Settings: one quiet line and a way there, instead
 ///   of toggles that would do nothing;
 /// - allowed: just the toggles.
+///
+/// A switch shows what actually reaches the phone: on only when iOS
+/// allows it and the stored preference is on. The sheet a follow can
+/// show (PushService.askAfter) writes the same preference, so the two
+/// always agree.
 ///
 /// The toggles only decide push. The in-app Notifications list always
 /// shows everything. Non-optimistic, like PrivacySettingsScreen: a switch
@@ -134,10 +139,22 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
     }
   }
 
-  Future<void> _turnOn() async {
+  // A switch flipped on before iOS was ever asked: ask now, and keep the
+  // preference only if iOS said yes — otherwise the switch would read as
+  // on for something that can never arrive.
+  Future<void> _turnOnThen(NotificationPreferences next) async {
     final request = widget.requestPermission ?? PushService.instance.requestFromSettings;
-    await request();
+    final granted = await request();
     await _refreshStatus();
+    if (granted && mounted) await _save(next);
+  }
+
+  void _change(NotificationPreferences next, bool turningOn) {
+    if (turningOn && _status == PushAuthorization.notDetermined) {
+      _turnOnThen(next);
+    } else {
+      _save(next);
+    }
   }
 
   Future<void> _openSystemSettings() async {
@@ -188,6 +205,7 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
 
   Widget _body() {
     final prefs = _prefs!;
+    final allowed = _status == PushAuthorization.authorized;
     if (_status == PushAuthorization.denied) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -214,27 +232,26 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
       children: [
         if (_status == PushAuthorization.notDetermined) ...[
           Text(
-            'Get a notification on your phone for the things below.',
+            'Get a notification on your phone for the things below. Turning '
+            'one on asks iOS for permission.',
             style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
           ),
-          const SizedBox(height: CsSpacing.base),
-          CsPrimaryButton(label: 'Turn on notifications', surface: CsSurface.dark, onTap: _turnOn),
           const SizedBox(height: CsSpacing.xxl),
         ],
         _ToggleRow(
           title: 'Friend requests',
           subtitle: 'When someone sends you a friend request.',
-          value: prefs.friendRequests,
+          value: allowed && prefs.friendRequests,
           busy: _saving,
-          onChanged: (v) => _save(prefs.copyWith(friendRequests: v)),
+          onChanged: (v) => _change(prefs.copyWith(friendRequests: v), v),
         ),
         const SizedBox(height: CsSpacing.xl),
         _ToggleRow(
           title: 'Events from venues you follow',
           subtitle: 'When a restaurant, hotel or chef you follow announces an event.',
-          value: prefs.followedVenueEvents,
+          value: allowed && prefs.followedVenueEvents,
           busy: _saving,
-          onChanged: (v) => _save(prefs.copyWith(followedVenueEvents: v)),
+          onChanged: (v) => _change(prefs.copyWith(followedVenueEvents: v), v),
         ),
         if (_saveError != null) ...[
           const SizedBox(height: CsSpacing.sm),
