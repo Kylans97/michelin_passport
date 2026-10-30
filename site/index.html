@@ -138,6 +138,14 @@
 
   .where { font-size: 13px; color: var(--muted); grid-column: 2; }
 
+  /* Real event names run long ("Four Hands Dinner: Merlet x Restaurant
+     Joann"); beside the date column they wrapped to five lines on a phone.
+     Narrow screens stack the date above the name instead. */
+  @media (max-width: 480px) {
+    .ledger li { grid-template-columns: 1fr; }
+    .where { grid-column: 1; }
+  }
+
   .ledger-label {
     font-family: var(--util);
     font-size: 11px;
@@ -251,19 +259,19 @@
   <p class="ledger-label">Nights we're watching</p>
   <ul class="ledger">
     <li>
-      <span class="when">27–30 Aug 2026</span>
-      <span class="what">'t Preuvenemint</span>
-      <span class="where">Maastricht, NL</span>
-    </li>
-    <li>
-      <span class="when">30 Aug 2026</span>
-      <span class="what">VanOost Sundays</span>
+      <span class="when">9 Nov 2026</span>
+      <span class="what">4 Hands Dinner: Bas van Kranen x Sebastian Frank</span>
       <span class="where">Amsterdam, NL</span>
     </li>
     <li>
-      <span class="when">20 Sep 2026</span>
-      <span class="what">Club Leroy bij Parkheuvel</span>
-      <span class="where">Rotterdam, NL</span>
+      <span class="when">22 Nov 2026</span>
+      <span class="what">Four Hands Dinner: Merlet x Restaurant Joann</span>
+      <span class="where">Schoorl, NL</span>
+    </li>
+    <li>
+      <span class="when">24–25 Dec 2026</span>
+      <span class="what">Dîner Dansant</span>
+      <span class="where">Eijsden, NL</span>
     </li>
   </ul>
 

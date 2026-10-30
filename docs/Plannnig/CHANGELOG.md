@@ -9,6 +9,15 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
+- **mantelier.app's "Nights we're watching" list is current again.** The
+  three hard-coded events, from August and September 2026, were replaced
+  on 2026-10-30 with the next three published, uncancelled events in
+  production, read with the anon key: 9 Nov (Amsterdam), 22 Nov (Schoorl)
+  and 24–25 Dec (Eijsden). The 1 Nov dinner in Aalten was left out
+  because it was two days away. Names, dates and cities are exactly as
+  stored. The list is still static, so it goes stale again after 9 Nov.
+  On screens narrower than 480px the date now sits above the name, since
+  the real names wrapped to five lines beside it.
 - **A confirmation landing page and a way back from an expired link.**
   `site/auth/confirm.html`, served at `https://mantelier.app/auth/confirm`
   and (through `site/_redirects`) at `/auth/confirmed`, in the same branded
