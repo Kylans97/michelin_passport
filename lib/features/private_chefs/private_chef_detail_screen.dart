@@ -30,6 +30,8 @@ import 'widgets/private_chef_experience_section.dart';
 import 'widgets/private_chef_hero.dart';
 import 'widgets/private_chef_provenance_row.dart';
 import 'widgets/private_chef_states.dart';
+import '../notifications/push_prompt_sheet.dart';
+import '../notifications/push_service.dart';
 
 /// Chef Detail — takes only [chefId] and resolves it internally (matching
 /// [EventDetailScreen]'s `eventId`-only convention, not Restaurant/Hotel
@@ -363,6 +365,9 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
           entityName: chef.displayName,
         ),
       );
+      if (!wasFollowing) {
+        PushService.instance.askAfter(context, FollowedVenuePrompt(chef.displayName));
+      }
       _analytics.track(
         wasFollowing
             ? AnalyticsEvent.followRemoved

@@ -1,8 +1,7 @@
 /// The notification types this app can create today — wire values match
 /// `notifications.type`'s own CHECK constraint exactly (see the
-/// migration). `push` is a separate, later project; this enum is purely
-/// about what's already stored, not about how it might one day be
-/// delivered outside the app.
+/// migration). Push (20261030130000) delivers some of these to the phone
+/// as well; this enum is about what's stored, which is the same either way.
 enum AppNotificationType {
   friendRequestReceived,
   friendRequestAccepted,
@@ -37,7 +36,11 @@ enum AppNotificationType {
   // respond_to_trip_invite the inviter when they accept. Only
   // get_notifications_v3 returns these.
   tripInviteReceived,
-  tripInviteAccepted;
+  tripInviteAccepted,
+  // A venue the recipient follows published an event (20261030130000):
+  // fanned out to the host venue's followers. Only get_notifications_v4
+  // returns it.
+  followedVenueEvent;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -57,6 +60,7 @@ enum AppNotificationType {
     'event_rejected' => AppNotificationType.eventRejected,
     'trip_invite_received' => AppNotificationType.tripInviteReceived,
     'trip_invite_accepted' => AppNotificationType.tripInviteAccepted,
+    'followed_venue_event' => AppNotificationType.followedVenueEvent,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
 

@@ -118,6 +118,29 @@ void main() {
         AppNotificationType.fromWire('venue_photo_rejected'),
         AppNotificationType.venuePhotoRejected,
       );
+      expect(
+        AppNotificationType.fromWire('followed_venue_event'),
+        AppNotificationType.followedVenueEvent,
+      );
+    });
+
+    test('a followed venue event reads its event and host venue', () {
+      final n = AppNotification.tryFromRow({
+        'id': 'notif-9',
+        'type': 'followed_venue_event',
+        'subject_type': 'event',
+        'subject_id': 'event-1',
+        'is_read': false,
+        'created_at': '2026-10-30T00:00:00Z',
+        'event_name': 'Four Hands Dinner',
+        'event_start_date': '2026-11-14',
+        'event_venue_name': 'Hof van Cleve',
+      });
+      expect(n, isNotNull);
+      expect(n!.type, AppNotificationType.followedVenueEvent);
+      expect(n.subjectId, 'event-1');
+      expect(n.eventName, 'Four Hands Dinner');
+      expect(n.eventVenueName, 'Hof van Cleve');
     });
 
     test('throws on an unrecognized value rather than silently defaulting',

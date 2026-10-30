@@ -8,6 +8,85 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- 2026-10-30 — Push notifications (iOS, APNs directly, no Firebase), with
+  per-type toggles. Two kinds push: a friend request received, and a new
+  event from a restaurant, hotel or private chef the person follows.
+  **Prepared, not applied:** migration `20261030130000`, the `send-push`
+  Edge Function, and the APNs secrets are not in production yet.
+  - **Migration `20261030130000_add_push_notifications.sql`:**
+    - `push_devices` (APNs tokens): RLS lets the owner read and delete
+      only. Writes go only through `register_push_device` /
+      `unregister_push_device`, because a device signing in to another
+      account has to take over a token row that RLS would never let it
+      touch.
+    - `notification_preferences`: one row per person, owner-only RLS. No
+      row means both toggles on (iOS's own prompt is the real opt-in).
+      The toggles affect push only, never the in-app list.
+    - A new notification type, `followed_venue_event`. Deferred constraint
+      triggers on `events` and the three link tables call
+      `fan_out_followed_venue_event` at commit, so the host link always
+      exists by then:
+      - recipients are the followers of the event's **host** venue
+        (decided 2026-10-30), through approved host links only;
+      - the host's own active managers and past or cancelled events are
+        skipped;
+      - a partial unique index stops a republished event from notifying
+        anyone twice;
+      - the 28 already-published events never fire.
+    - `notifications_push_on_insert`, a statement-level trigger, hands
+      push-worthy ids to `send-push` through pg_net, 500 per call. It is
+      best-effort, the same as `notify-venue-claim`, and reads its webhook
+      secret from vault (`send_push_webhook_secret`, set out of band).
+    - `get_notifications_v4` / `get_unread_notification_count_v4` return
+      the new type. v4 is v3's body copied verbatim (diffed). v3, v2, v1
+      and their counts now filter the type out, so 1.4.0 and older never
+      see a row they can't render or count.
+    - Every new `SECURITY DEFINER` function has its own
+      `revoke execute … from public, anon`. The fan-out is revoked from
+      `authenticated` too.
+  - **Edge Function `send-push`** (`verify_jwt = false`, x-webhook-secret):
+    - reads the notifications, preferences and tokens with service_role;
+    - signs its own ES256 APNs token from the `.p8` key;
+    - deletes tokens APNs reports as gone, and retries a BadDeviceToken
+      once on the other APNs environment, correcting the stored one.
+  - **App:**
+    - `PushNotificationsPlugin` in `AppDelegate.swift` (no push SDK);
+    - the `aps-environment` entitlement;
+    - `PushService`, which registers the token whenever iOS allows it and
+      unregisters it before sign-out;
+    - a pre-prompt sheet shown once, after the first venue follow or
+      friend request sent or accepted. iOS's prompt only follows
+      "Turn on", and "Not now" is remembered (`shared_preferences`, now a
+      direct dependency);
+    - Profile → Notification settings with the two toggles;
+    - a tapped push opens the event or the Notifications list;
+    - the in-app list shows the new type.
+  - **Tested:**
+    - 18 Deno tests for `send-push`, including signing a JWT and verifying
+      it.
+    - New Flutter tests for `PushService`, the settings screen and the
+      model. The full suite passes: 2,613 tests.
+    - Sections 1–5 of the migration ran against a scratch Postgres 17 with
+      stub tables: 29 scenario checks pass (fan-out paths, dedupe,
+      managers, past and cancelled events, pending host links, missing
+      secret, token takeover, RLS, `has_function_privilege('anon', …)`
+      false for all six new functions).
+  - **Not tested:**
+    - a full-stack replay (Docker was not running);
+    - section 6 against the real views;
+    - a real APNs delivery, including whether the Edge runtime's fetch
+      speaks HTTP/2 to APNs. That is the first thing to check after the
+      deploy.
+
+### Fixed
+- 2026-10-30 — Near-miss: the migration was first named `20261023210000`,
+  after `claude/usage-tracking`'s `20261023200000` as briefed. A check of
+  every remote branch found `claude/launch-egress` already at
+  `20261030120000`, so it was renamed `20261030130000` before any commit.
+  "The highest migration" has to be checked across all branches, not taken
+  from a brief.
+
 ---
 
 ## v1.4.0 (17) — 2026-10-30

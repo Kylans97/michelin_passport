@@ -18,6 +18,8 @@ import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
 import '../friends/widgets/friend_request_row.dart';
 import '../friends/widgets/identity_row.dart';
+import 'push_prompt_sheet.dart';
+import 'push_service.dart';
 
 /// The one venue-ops inbox this app has — reviewed manually alongside
 /// whatever it's about. Originally just claim questions (PART 1 of the
@@ -126,6 +128,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       switch (n.type) {
         case AppNotificationType.friendRequestReceived:
           await _friendRepo.acceptRequest(n.subjectId);
+          if (mounted) PushService.instance.askAfter(context, const FriendsPrompt());
         case AppNotificationType.venueInviteReceived:
           await _venueInviteRepo.acceptInvite(n.subjectId);
           _analytics.track(
@@ -390,6 +393,8 @@ class _NotificationRow extends StatelessWidget {
       case AppNotificationType.eventApproved:
       case AppNotificationType.eventRejected:
         return _EventReviewContent(notification: notification);
+      case AppNotificationType.followedVenueEvent:
+        return _FollowedVenueEventContent(notification: notification);
       case AppNotificationType.tripInviteReceived:
       case AppNotificationType.tripInviteAccepted:
         return _TripInviteContent(
@@ -632,6 +637,47 @@ class _EventReviewContent extends StatelessWidget {
         ),
       ),
       child: content,
+    );
+  }
+}
+
+/// A venue the person follows published an event (20261030130000).
+/// Tapping opens the event, the same as a push for it does.
+class _FollowedVenueEventContent extends StatelessWidget {
+  final AppNotification notification;
+  const _FollowedVenueEventContent({required this.notification});
+
+  @override
+  Widget build(BuildContext context) {
+    final venue = notification.eventVenueName ?? 'A venue you follow';
+    final name = notification.eventName;
+    final description = name == null
+        ? '$venue announced a new event.'
+        : '$venue announced "$name".';
+
+    return InkWell(
+      onTap: () => Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => EventDetailScreen(eventId: notification.subjectId),
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Icon(Icons.event_outlined, color: AppColors.forestGreen, size: 20),
+            const SizedBox(width: CsSpacing.md),
+            Expanded(
+              child: Text(
+                description,
+                style: CsTypography.body.copyWith(color: AppColors.forestGreen),
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

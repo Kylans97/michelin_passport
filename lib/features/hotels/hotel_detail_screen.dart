@@ -44,6 +44,8 @@ import 'widgets/hotel_hero.dart';
 import 'widgets/hotel_info_card.dart';
 import 'widgets/hotel_restaurants_card.dart';
 import 'widgets/hotel_stays_card.dart';
+import '../notifications/push_prompt_sheet.dart';
+import '../notifications/push_service.dart';
 
 const _signInMessage = 'Sign in to save stays and wishlist hotels.';
 
@@ -356,6 +358,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
           entityName: widget.hotel.name,
         ),
       );
+      if (!wasFollowing) {
+        PushService.instance.askAfter(context, FollowedVenuePrompt(widget.hotel.name));
+      }
       _analytics.track(
         wasFollowing
             ? AnalyticsEvent.followRemoved

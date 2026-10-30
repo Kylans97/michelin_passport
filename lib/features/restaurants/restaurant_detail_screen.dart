@@ -47,6 +47,8 @@ import 'widgets/award_history_action.dart';
 import 'widgets/restaurant_hero.dart';
 import 'widgets/restaurant_info_card.dart';
 import 'widgets/restaurant_visits_card.dart';
+import '../notifications/push_prompt_sheet.dart';
+import '../notifications/push_service.dart';
 
 const _signInMessage = 'Sign in to save visits and wishlist restaurants.';
 
@@ -442,6 +444,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           entityName: widget.restaurant.name,
         ),
       );
+      if (!wasFollowing) {
+        PushService.instance.askAfter(context, FollowedVenuePrompt(widget.restaurant.name));
+      }
       _analytics.track(
         wasFollowing
             ? AnalyticsEvent.followRemoved

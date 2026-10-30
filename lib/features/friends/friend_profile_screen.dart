@@ -29,6 +29,8 @@ import 'tabs/friend_profile_passport_tab.dart';
 import 'tabs/friend_profile_together_tab.dart';
 import 'widgets/friend_profile_header.dart';
 import 'widgets/friend_profile_plan_dinner_sheet.dart';
+import '../notifications/push_prompt_sheet.dart';
+import '../notifications/push_service.dart';
 
 /// One (venue, visit) pair — [VenueEntry] groups every visit under its
 /// venue for Passport's own grouped display; this screen instead flattens
@@ -266,6 +268,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
     try {
       await _repo.sendRequest(widget.userId);
       _load();
+      if (mounted) PushService.instance.askAfter(context, const FriendsPrompt());
     } on PostgrestException catch (e) {
       _showSnack(e.message, isError: true);
     }
@@ -275,6 +278,7 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
     try {
       await _repo.acceptRequest(friendshipId);
       _load();
+      if (mounted) PushService.instance.askAfter(context, const FriendsPrompt());
     } on PostgrestException catch (e) {
       _showSnack(e.message, isError: true);
     }

@@ -9,6 +9,7 @@ import 'features/explore/explore_screen.dart';
 import 'features/news/news_screen.dart';
 import 'features/passport/passport_screen.dart';
 import 'features/profile/profile_screen.dart';
+import 'features/notifications/push_service.dart';
 
 class TablePassportApp extends StatelessWidget {
   const TablePassportApp({super.key});
@@ -19,6 +20,7 @@ class TablePassportApp extends StatelessWidget {
       title: 'Mantelier',
       debugShowCheckedModeBanner: false,
       theme: AppTheme.mantelier,
+      navigatorKey: PushService.instance.navigatorKey,
       navigatorObservers: [appRouteObserver],
       // AuthGate shows LoginScreen when there is no session,
       // and the tab scaffold when the user is authenticated.

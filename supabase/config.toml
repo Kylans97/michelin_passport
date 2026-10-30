@@ -431,6 +431,14 @@ verify_jwt = false
 [functions.notify-content-report]
 verify_jwt = false
 
+# send-push is called only by the notifications insert trigger via pg_net
+# (see 20261030130000_add_push_notifications.sql) — same reasoning as
+# notify-venue-claim above: no user JWT in that calling context, so this
+# checks its own shared secret (x-webhook-secret, compared against the
+# SEND_PUSH_WEBHOOK_SECRET function secret) instead.
+[functions.send-push]
+verify_jwt = false
+
 [analytics]
 enabled = true
 port = 54327

@@ -34,6 +34,8 @@ import 'journey_card.dart';
 import 'journey_metrics.dart';
 import 'my_venues_screen.dart';
 import 'privacy_settings_screen.dart';
+import '../notifications/notification_settings_screen.dart';
+import '../notifications/push_service.dart';
 
 /// My Profile — PROFILE UI REDESIGN V1.
 ///
@@ -166,7 +168,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
-  Future<void> _signOut() async => _authRepo.signOut();
+  // Unregister this device's push token first, while the session can
+  // still prove whose token it is.
+  Future<void> _signOut() async {
+    await PushService.instance.unregisterBeforeSignOut();
+    await _authRepo.signOut();
+  }
 
   void _openDeleteAccount() => Navigator.push(
     context,
@@ -176,6 +183,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void _openChangePassword() => Navigator.push(
     context,
     MaterialPageRoute(builder: (_) => const ChangePasswordScreen()),
+  );
+
+  void _openNotificationSettings() => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => const NotificationSettingsScreen()),
   );
 
   void _openPrivacySettings() => Navigator.push(
@@ -440,6 +452,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         }
                       },
                     ),
+                  ),
+                  _SettingsRow(
+                    icon: Icons.tune_rounded,
+                    label: 'Notification settings',
+                    onTap: _openNotificationSettings,
                   ),
                   _SettingsRow(
                     icon: Icons.lock_outline_rounded,
