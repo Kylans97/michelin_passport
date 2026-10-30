@@ -37,12 +37,10 @@ const _liningFigures = [FontFeature.enable('lnum')];
 /// 1's own still-warm search results rather than needing to re-show
 /// anything.
 ///
-/// Returns true once a visit has actually been saved — the caller (see
-/// `PassportCollectionBody._addVisit`) reloads on true and lets the
-/// already-built new-stamp entrance animation/auto-scroll
-/// (`PassportOpenBookPager`'s own `newStampIds` diffing) pick it up from
-/// there; nothing new needed for "jumps to the right page, stamps in."
-/// False if the sheet was dismissed at any point without saving.
+/// Returns the saved visit/stay once one has actually been saved — the
+/// caller (see `PassportCollectionBody._addVisit`) hands it to
+/// `celebrateNewStamp` and then reloads. Null if the sheet was dismissed
+/// at any point without saving, or the save failed.
 ///
 /// "From your events" (step 1's other shortcut section, alongside "From
 /// your wishlist") resolves through `event_restaurants`/`event_hotels`
@@ -51,17 +49,16 @@ const _liningFigures = [FontFeature.enable('lnum')];
 /// exactly the same shape `news_article_restaurants`/`news_article_hotels`
 /// mirrored this same week. See [EventsRepository.loadVenuesForEvents]
 /// and EDITORIAL_REDESIGN_TRACKING.md for the full note.
-Future<bool> showAddVisitFlow(
+Future<Visit?> showAddVisitFlow(
   BuildContext context, {
   required String userId,
-}) async {
-  final result = await showModalBottomSheet<bool>(
+}) {
+  return showModalBottomSheet<Visit>(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
     builder: (_) => _AddVisitSheet(userId: userId),
   );
-  return result ?? false;
 }
 
 enum _VenueType { restaurant, hotel }
@@ -260,9 +257,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
         return;
       }
 
+      final Visit saved;
       switch (venue) {
         case RestaurantVenue(:final restaurant):
-          await _visitedRepo.markVisited(
+          saved = await _visitedRepo.markVisited(
             userId: widget.userId,
             restaurantId: restaurant.id,
             visitedOn: _visitedOn,
@@ -275,7 +273,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
             starsAtVisit: restaurant.michelinStars,
           );
         case HotelVenue(:final hotel):
-          await _visitedRepo.markHotelStay(
+          saved = await _visitedRepo.markHotelStay(
             userId: widget.userId,
             hotelId: hotel.id,
             visitedOn: _visitedOn,
@@ -289,7 +287,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
           );
       }
       if (!mounted) return;
-      Navigator.pop(context, true);
+      Navigator.pop(context, saved);
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -343,7 +341,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                             ? _SheetTextButton(
                                 label: 'Cancel',
                                 onGreen: onGreen,
-                                onTap: () => Navigator.pop(context, false),
+                                onTap: () => Navigator.pop(context),
                               )
                             : _SheetTextButton(
                                 label: '‹ Back',

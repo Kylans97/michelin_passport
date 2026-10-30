@@ -26,6 +26,7 @@ import '../../models/event_location_context.dart';
 import '../../models/event_relevance_reason.dart';
 import '../../models/event_tag.dart';
 import '../../models/venue_country.dart';
+import '../passport/stamp_ceremony.dart';
 import '../reports/widgets/report_missing_listing_sheet.dart';
 import 'attendance_prompt_dismissal.dart';
 import 'current_location_provider.dart';
@@ -267,6 +268,10 @@ class _EventsScreenState extends State<EventsScreen> {
       } catch (_) {
         // Attendance remains authoritative regardless (§18/§19).
       }
+      // Same order as EventDetailScreen._confirmAttendance: the Passport
+      // stamp first, then the optional rating sheet.
+      if (!mounted) return;
+      await celebrateNewStamp(context, EarnedStamp.attendance(confirmed));
       if (!mounted) return;
       final details = await showAttendanceDetailsSheet(
         context: context,

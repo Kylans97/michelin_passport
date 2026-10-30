@@ -7,10 +7,7 @@ import '../../../core/navigation/route_observer.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/widgets/cs_primary_button.dart' show CsSecondaryButton;
 import '../../../core/widgets/floating_nav_bar.dart';
-import '../../../data/repositories/country_lookup.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
-import '../../../data/repositories/profile_repository.dart';
-import '../../../data/repositories/visited_repository.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../../models/venue_entry.dart';
@@ -21,6 +18,8 @@ import '../models/passport_stamp_item.dart';
 import '../passport_all_visits_screen.dart';
 import '../passport_booklet_data.dart';
 import '../passport_filter_type.dart';
+import '../own_passport_loader.dart';
+import '../stamp_ceremony.dart';
 import 'add_visit_flow.dart';
 import 'passport_booklet_view.dart';
 
@@ -44,16 +43,10 @@ class PassportCollectionBody extends StatefulWidget {
 
 class _PassportCollectionBodyState extends State<PassportCollectionBody>
     with RouteAware {
-  late final _visitedRepo = VisitedRepository(Supabase.instance.client);
-  late final _eventAttendanceRepo = EventConfirmedAttendanceRepository(
-    Supabase.instance.client,
-  );
-  late final _profileRepo = ProfileRepository(Supabase.instance.client);
-
   List<PassportVolume> _volumes = [];
 
-  // The raw, un-capped loads _volumes is built from — kept alongside it
-  // for PassportAllVisitsScreen (point 5's "volledige lijst van alle
+  // The raw, un-capped loads _volumes is built from (see OwnPassport) —
+  // kept alongside it for PassportAllVisitsScreen (point 5's "volledige lijst van alle
   // bezoeken"), which deliberately shows the user's WHOLE history, not
   // just what buildPassportVolumes keeps inside the booklet's 5-year
   // window. See _openAllVisits below.
@@ -115,63 +108,26 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
 
   Future<void> _load() async {
     try {
-      final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
-      final entries = await _visitedRepo.loadPassportVenues(uid);
-      var eventEntries = <EventAttendanceEntry>[];
-      try {
-        eventEntries = await _eventAttendanceRepo.loadPassportEventAttendance(
-          uid,
-        );
-      } catch (_) {
-        // Never fails the rest of Passport — same precedent as before.
-      }
-
-      var name = 'Member';
-      String? avatarUrl;
-      int? memberNumber;
-      try {
-        // `visited` only feeds UserProfile's own current-award stats,
-        // which this screen never reads (it computes ENTRIES/COUNTRIES/
-        // STARS itself from stars-at-visit, not current award) — so an
-        // empty list here avoids a second restaurant load for fields
-        // that would go unused.
-        final profile = await _profileRepo.getProfile(
-          userId: uid,
-          visited: const [],
-        );
-        name = profile.name;
-        avatarUrl = await _profileRepo.resolveAvatarUrl(profile.avatarPath);
-        memberNumber = profile.memberNumber;
-      } catch (_) {
-        // Cover/data page still render with the 'Member' + initials
-        // fallback — a profile-load failure never blocks Passport itself.
-      }
-
-      var countryNameByCode = <String, String>{};
-      try {
-        final countries = await getAllCountries(Supabase.instance.client);
-        countryNameByCode = {for (final c in countries) c.code: c.name};
-      } catch (_) {
-        // Never fails the rest of Passport — stamp semantics labels fall
-        // back to the bare country code (see stampSemanticLabel).
-      }
-
+      final passport = await loadOwnPassport(Supabase.instance.client);
       if (!mounted) return;
-      final volumes = buildPassportVolumes(
-        entries: entries,
-        eventEntries: eventEntries,
-      );
+      final volumes = passport.volumes;
       final allIds = _allStampIds(volumes);
-      final newIds = _hasLoadedOnce ? allIds.difference(_knownStampIds) : <String>{};
+      // A stamp a ceremony already pressed in (see stamp_ceremony.dart)
+      // isn't stamped in a second time here.
+      final newIds = _hasLoadedOnce
+          ? allIds
+                .difference(_knownStampIds)
+                .difference(StampCeremony.celebratedIds)
+          : <String>{};
 
       setState(() {
         _volumes = volumes;
-        _entries = entries;
-        _eventEntries = eventEntries;
-        _holderName = name;
-        _avatarUrl = avatarUrl;
-        _memberNumber = memberNumber;
-        _countryNameByCode = countryNameByCode;
+        _entries = passport.entries;
+        _eventEntries = passport.eventEntries;
+        _holderName = passport.holderName;
+        _avatarUrl = passport.avatarUrl;
+        _memberNumber = passport.memberNumber;
+        _countryNameByCode = passport.countryNameByCode;
         _newStampIds = newIds;
         _knownStampIds = allIds;
         _hasLoadedOnce = true;
@@ -230,16 +186,14 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   Future<void> _addVisit() async {
     final uid = Supabase.instance.client.auth.currentUser?.id ?? '';
     final saved = await showAddVisitFlow(context, userId: uid);
-    // Reload only — never resets `_isOpen`/`_openVolumeIndex`/
-    // `_bookPageIndex` (those live inside PassportBookletView's own
-    // State, untouched by this widget's setState). The empty slot only
-    // ever appears on an already-open volume that will itself contain
-    // the new stamp (today's date, no future dates allowed — see
-    // add_visit_flow.dart's own date picker), so staying on the same
-    // volume is already correct; PassportOpenBookPager's existing
-    // newStampIds diffing (built in Round 2) picks up the new id from
-    // this reload and animates/auto-scrolls to it on its own.
-    if (saved && mounted) _load();
+    if (saved == null || !mounted) return;
+    // The ceremony first, then the reload. Neither resets `_isOpen`/
+    // `_openVolumeIndex`/`_bookPageIndex` (those live inside
+    // PassportBookletView's own State, untouched by this widget's
+    // setState), so the member comes back to the same open page they
+    // tapped "Add your next stamp" on, with the new stamp now in the book.
+    await celebrateNewStamp(context, EarnedStamp.visit(saved));
+    if (mounted) _load();
   }
 
   @override
