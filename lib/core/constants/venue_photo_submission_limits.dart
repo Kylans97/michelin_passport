@@ -14,6 +14,14 @@ const int maxVenuePhotoSubmissionBytes = 5 * 1024 * 1024;
 /// `min(width, height)`, independent of orientation.
 const int minVenuePhotoShortSidePx = 1200;
 
+/// The longest edge a venue photo is stored at. Above it a photo is scaled
+/// down before upload: the original was re-encoded at full resolution, so a
+/// 5 MB phone JPEG could come out larger than [maxVenuePhotoSubmissionBytes]
+/// (also the bucket's own limit), and every published original is what the
+/// full-screen gallery downloads. 2560 keeps the shorter side at 1440 px or
+/// more for every accepted aspect ratio, above [minVenuePhotoShortSidePx].
+const int maxVenuePhotoLongEdgePx = 2560;
+
 /// "een beeldverhouding tussen 3:4 en 16:9" — both bounds expressed as
 /// long-side/short-side (orientation-independent): 3:4 -> 4/3 ≈ 1.333,
 /// 16:9 ≈ 1.778. A ratio outside this range is rejected in EITHER
