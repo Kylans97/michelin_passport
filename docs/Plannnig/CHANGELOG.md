@@ -8,6 +8,37 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.4.0 (17) — 2026-10-30
+
+Built from `main`, after merging `claude/passport-globe` into
+`release/1.4.0`. The app change is the 3D globe for My Map, plus MapTiler
+tiles for the event location picker. A minor version bump, because the
+globe is a visible new feature. The five MICHELIN imports below were
+applied to production before this build. Ledger at the version bump: 114
+migrations, local and remote in agreement.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay of
+all 114 migrations, 2026-10-30:
+- **The replay:** all 114 files applied with no error, giving 114 ledger
+  rows.
+- **`supabase db dump`, both sides:** identical apart from the same 6 blank
+  lines (platform statements the CLI filters out).
+- **Storage and auth, compared directly:** all 5 buckets, 13
+  `storage.objects` policies, triggers and RLS on both storage tables are
+  identical.
+- **Expected noise:** the only extra row is the local-only
+  `enforce_versioning_status_transition` trigger.
+- **Before the build:**
+  - `flutter analyze` was clean and all 2,595 tests passed on the merged
+    tree.
+  - My Map was checked in the iOS simulator against production: the globe
+    spins with inertia, the visited countries are highlighted, and pins
+    cluster.
+  - The build's `.env` carries `MAPTILER_KEY`.
+
 ### Added
 - 2026-10-30 — Catalogue: five MICHELIN imports, applied to production.
   None needs an app change; build 1.3.0 (16) pages past PostgREST's
@@ -25,8 +56,7 @@ The format follows Keep a Changelog.
     hotels and 317 hotel links.
   - **Not filled:** none of the new rows has a Google Place ID (QA-289,
     QA-300, QA-350 and the CH/AT/Nordic equivalent).
-  - **Schema diff:** not re-run, because this isn't a version bump. The
-    next bump's diff covers these migrations.
+  - **Schema diff:** covered by this release's version-bump diff above.
 
 ### Changed
 - **My Map is now a 3D globe.** The map behind Passport's top-right corner
