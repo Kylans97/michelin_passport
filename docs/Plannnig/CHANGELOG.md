@@ -20,7 +20,8 @@ The format follows Keep a Changelog.
   | Explore, each mount (measured) | 985 KB gzipped (all 3,480 restaurants + 1,830 hotels) | ~5 KB (9 + 9 rows) |
   | Venue photo on a card (one 1536x2048 original, measured) | 1.6 MB | 69 KB at 512, 274 KB at 1024 |
   | Visit-photo tile (estimated) | the 1600 px upload, ~300–400 KB | unchanged until the switch below is on, then a 512 px copy, ~40–70 KB |
-  | Own avatar (estimated) | up to 1024 px, ~150 KB | unchanged until the switch is on, then a 384 px copy, ~25 KB |
+  | Own avatar (measured, one avatar) | 285 KB | unchanged until the switch is on, then a 384 px copy, 33 KB |
+  | Flore's card photo / a news card (measured in the simulator) | 353 KB / 279 KB | 28 KB at 512 / 168 KB at 1536 |
   | The same photo seen again | downloaded again (new signed URL each time) | from disk, for 30 days |
   | Notifications | whole history | 50 per page |
 
@@ -86,6 +87,22 @@ The format follows Keep a Changelog.
     All visits loads 20 rows' covers at a time as they appear.
   - **Profile** derives its Journey Stats from the Passport load it already
     makes, instead of downloading the visits and restaurants twice.
+  - **Checked in the iOS simulator against production, read-only**
+    (2026-10-30, signed in by the product owner):
+    - Worth the Journey and Stay a Little Longer show three-star
+      restaurants and three-Key hotels in World's 50 Best rank order.
+    - Search, a restaurant detail page and Profile (4 places, 4 countries,
+      2 friends) load.
+    - Flore's card photo renders from the 512 variant.
+    - The image cache's index stored a real signed avatar under
+      `…/render/image/sign/profile-photos/…#height:384,width:384,resize:undefined`,
+      which confirms the token claim the key reads.
+    - After a relaunch, the avatar (re-signed with a new token) and the
+      news image came from disk: the same cached files were touched, and
+      nothing was downloaded again.
+    - Not exercised: Notifications (opening it marks everything read, a
+      write), Friend Profile's All visits, and venue photo upload (a
+      write).
   - **Not paged, on purpose:** Passport venues and events, friends, and
     event attendance. Their totals and the "friends going" logic need every
     row.
