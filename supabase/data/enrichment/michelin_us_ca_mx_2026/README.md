@@ -1,6 +1,6 @@
 # United States, Canada & Mexico: MICHELIN stars and 2026 Keys (research 2026-10-29)
 
-Status: **PREPARED — NOT APPLIED.** Generated from production's export of
+Status: **APPLIED 2026-10-30** (ledger 114/114; see the Michelin_Database CHANGELOG). Generated from production's export of
 2026-10-29 22:28 UTC. To apply, run in order:
 
 1. `supabase/migrations/20261023160000_add_us_ca_mx_2026_star_and_key_cities.sql`

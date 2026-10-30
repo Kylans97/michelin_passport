@@ -1,6 +1,6 @@
 # Mainland China: MICHELIN stars and Keys (research 2026-10-29)
 
-Status: **PREPARED, NOT APPLIED.** Generated from production's export of
+Status: **APPLIED 2026-10-30** (ledger 114/114; see the Michelin_Database CHANGELOG). Generated from production's export of
 2026-10-29 22:53 UTC (unchanged from the 22:22 export the research started
 from). Revised 2026-10-30 after the product owner's decision on coordinates
 ("google in China is not very accurate sadly, let's use hotel and restaurant

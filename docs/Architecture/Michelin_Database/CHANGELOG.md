@@ -6,6 +6,54 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-30 — Catalogue data applied: China, Hong Kong/Macau/Taiwan, North America, Switzerland/Austria/Nordics, French and Monaco Key hotels (QA-289–QA-309, QA-350–QA-357, QA-360–QA-374)
+
+| | |
+|---|---|
+| Applied | 2026-10-30, to production, from `claude/jolly-engelbart-47d9a4` (CN, HK/MO/TW), `claude/elated-knuth-3e077d` (US/CA/MX), `claude/modest-dirac-1bfb27` (CH/AT/Nordics) and `claude/priceless-wozniak-e16428` (FR, MC), carried on `data/batch-2026-10-30` |
+| Migrations | `20261023150000` CN, `20261023160000` US/CA/MX (adds the **Canada** `countries` row), `20261023170000` HK/MO/TW, `20261023180000` CH/AT/Nordics (adds the **Iceland** `countries` row), `20261023190000` FR towns. One `db push`, in filename order. Ledger 109 → 114, local and remote in agreement |
+| Data files | In the same order: `michelin_cn_2026/prepared_cn_stars_2026.sql`, `michelin_us_ca_mx_2026/prepared_us_ca_mx_stars_2026.sql`, `michelin_hk_mo_tw_2026/prepared_hk_mo_tw_stars_2026.sql`, `michelin_ch_at_nordic_2026/prepared_ch_at_nordic_stars_2026.sql`, `michelin_fr_keys_2026/prepared_fr_key_hotels.sql`, `michelin_fr_keys_2026/prepared_mc_key_hotels.sql`. Each is one transaction with its own guards and post-conditions; none aborted |
+
+The product owner decided to wait for China and apply all five imports together, in migration order. Switzerland is applied on its **2025** edition (QA-360); the 2026 edition is announced on 2 November 2026 and becomes a set of changes then.
+
+**Checked after the apply** (read-only). Stars and Keys are 3/2/1 per country, each as its README states:
+
+| | Stars | Keys | Hotel links |
+|---|---|---|---|
+| China | 4/24/131 | 2/11/41 | 15 |
+| Hong Kong | 7/13/57 | 1/4/5 | 15 |
+| Macau | 2/6/13 | 1/4/4 | 7 |
+| Taiwan | 3/9/49 | 0/1/7 | 2 |
+| United States | 16/40/223 | 15/78/266 | 9 |
+| Canada | 0/3/36 | 2/8/32 | 0 |
+| Mexico | 0/2/27 | 3/21/73 | 1 |
+| Switzerland (2025 edition) | 4/27/103 | 10/31/48 | 26 |
+| Austria | 2/19/78 | 2/21/49 | 7 |
+| Denmark | 3/6/32 | 0/1/8 | 1 |
+| Sweden | 1/5/18 | 0/1/10 | 0 |
+| Norway | 2/2/17 | 0/2/14 | 2 |
+| Finland | 0/2/6 | 0/0/3 | 0 |
+| Faroe Islands | 0/1/0 | — | 0 |
+| Iceland | 0/0/3 | 0/1/4 | 0 |
+| France (Keys added; stars unchanged) | 30/80/542 | 25/38/157 | 83 |
+| Monaco (Hermitage Monte-Carlo added) | 1/3/5 | 1/1/1 | 4 |
+
+- **Award rows:** in every country above, every starred restaurant and Key hotel has exactly one current award row agreeing with its column.
+- **Cities:** no restaurant or hotel lacks a city.
+- **Totals:** the catalogue now holds 3,439 starred restaurants, 1,830 hotels and 317 hotel links.
+
+**Still open:**
+
+- **Place IDs:** none of the new rows has a Google Place ID (QA-289, QA-300, QA-350, and the CH/AT/Nordic README).
+- **QA-299:** about a third of the Chinese addresses can't be confirmed on the venue's own site, since many have no website.
+- **QA-362:** IGNIV Bad Ragaz, Stucki and Skin's are kept at 2025 = 2; the 2 November pass settles them.
+- **QA-363:** Aloë (Stockholm) is left at 2 stars, pending its 2025 value.
+- **QA-368:** the new CH/AT/Nordic Key hotels have no website or phone yet.
+- **QA-292 and QA-305:** China's 55th Key and Mexico's 98th, which MICHELIN's articles count but its live listing doesn't show.
+- **QA rows:** QA-360–374, which the CH/AT/Nordic README cites, were added to `qa_issues.csv` from that branch (b566df8).
+
+---
+
 # 2026-10-29 — Catalogue data applied: MICHELIN United Kingdom and Ireland 2026 (QA-280–QA-288)
 
 | | |

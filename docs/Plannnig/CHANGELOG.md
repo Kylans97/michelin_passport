@@ -8,6 +8,41 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- 2026-10-30 — Catalogue: five MICHELIN imports, applied to production.
+  None needs an app change; build 1.3.0 (16) pages past PostgREST's
+  1000-row cap, so it shows them in full. Details are in the
+  Michelin_Database CHANGELOG.
+  - **Migrations:** `20261023150000` (CN), `20261023160000` (US/CA/MX,
+    adds the `countries` row for Canada), `20261023170000` (HK/MO/TW),
+    `20261023180000` (CH/AT/Nordics, adds the `countries` row for Iceland)
+    and `20261023190000` (FR Key hotel towns). All five went in one plain
+    `supabase db push --linked`, in filename order.
+  - **Ledger:** 109 → 114/114, local and remote in agreement.
+  - **Data:** one guarded file per import, applied in the same order, then
+    Monaco's Key hotel file. None aborted.
+  - **Totals:** the catalogue now holds 3,439 starred restaurants, 1,830
+    hotels and 317 hotel links.
+  - **Not filled:** none of the new rows has a Google Place ID (QA-289,
+    QA-300, QA-350 and the CH/AT/Nordic equivalent).
+  - **Schema diff:** not re-run, because this isn't a version bump. The
+    next bump's diff covers these migrations.
+
+### Fixed
+- **Near-miss: a merge script committed conflict markers.** While merging
+  the import branches, a helper script checked that each branch only
+  appended rows to `qa_issues.csv`. When that check failed for one branch
+  it raised, but the shell carried on, staged the file with conflict
+  markers still in it, and committed the merge. It was caught before
+  anything was pushed, and the file was rebuilt from the branch's own
+  appended rows.
+  - **Why it would recur:** a script that raises doesn't stop the commands
+    after it unless the shell is told to, so any merge helper should stop
+    on its first error.
+  - **Also found:** the CH/AT/Nordic branch cited QA-360–374 in its README
+    but had not added those rows to `qa_issues.csv`. That branch added them
+    afterwards (b566df8), and they are carried here.
+
 ---
 
 ## v1.3.0 (16) — 2026-10-29

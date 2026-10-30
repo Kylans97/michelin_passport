@@ -1,6 +1,6 @@
 # Switzerland, Austria & the Nordic Countries: MICHELIN stars and 2026 Keys (research 2026-10-30)
 
-Status: **PREPARED — NOT APPLIED.** Generated from production's export of
+Status: **APPLIED 2026-10-30** (ledger 114/114; see the Michelin_Database CHANGELOG). Generated from production's export of
 2026-10-29 23:12 UTC (`export_ch_at_nordic_query.sql`). To apply, run in order:
 
 1. `supabase/migrations/20261023180000_add_ch_at_nordic_star_and_key_cities.sql`

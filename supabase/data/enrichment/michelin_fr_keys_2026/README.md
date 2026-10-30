@@ -1,6 +1,6 @@
 # France: MICHELIN Key hotels 2026 (research 2026-10-30)
 
-Status: **PREPARED, NOT APPLIED.** Generated from production's read-only export of
+Status: **APPLIED 2026-10-30** (ledger 114/114; see the Michelin_Database CHANGELOG). Generated from production's read-only export of
 2026-10-29 23:01 UTC, re-checked unchanged on 2026-10-30. To apply, in order:
 
 1. `supabase/migrations/20261023190000_add_fr_key_hotel_cities.sql` (43 French towns),

@@ -1,6 +1,6 @@
 # Hong Kong, Macau, Taiwan: MICHELIN stars and Keys (research 2026-10-29/30)
 
-Status: **PREPARED, NOT APPLIED.** This pass was added to scope by the product
+Status: **APPLIED 2026-10-30** (ledger 114/114; see the Michelin_Database CHANGELOG). This pass was added to scope by the product
 owner on 2026-10-29 ("yes let's do them next after China"). The files were
 generated from production's export of 2026-10-29 23:11 UTC, which was unchanged
 from the 22:55 export the research started from. Apply in order:
