@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:timezone/data/latest_all.dart' as tz_data;
 import 'app.dart';
 import 'core/supabase/supabase_config.dart';
+import 'core/widgets/app_network_image.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,5 +40,6 @@ void main() async {
     anonKey: SupabaseConfig.anonKey,
   );
 
+  enableImageDiskCache();
   runApp(const TablePassportApp());
 }

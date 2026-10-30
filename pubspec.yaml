@@ -71,6 +71,14 @@ dependencies:
   # implementation of the standard algorithm instead.
   image: ^4.9.2
   photo_manager: ^3.12.0
+  # Disk cache for every remote image, keyed on the storage path rather than
+  # the signed URL — see lib/core/widgets/app_network_image.dart. Photo
+  # egress is this project's main cost risk; without it every screen
+  # re-downloaded every photo on every visit.
+  cached_network_image: ^3.4.1
+  # Imported directly by app_network_image.dart for its CacheManager config;
+  # already the transitive dependency cached_network_image builds on.
+  flutter_cache_manager: ^3.4.1
 
 dev_dependencies:
   flutter_test:

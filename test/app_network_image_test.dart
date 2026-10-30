@@ -1,10 +1,14 @@
 // Photo egress is this project's main cost risk. Every card used to load
-// the full original (a 1.6 MB venue photo for a 120 pt tile). These tests
-// pin the slot-sized variant URL that replaced it.
+// the full original (a 1.6 MB venue photo for a 120 pt tile) and nothing
+// was cached, because signed URLs change on every load. These tests pin
+// the three things that fixed it: the slot-sized variant URL, the cache key
+// that survives a new token, and the cache validity that ignores Storage's
+// `no-cache` for its immutable paths.
 
 import 'dart:convert';
 
 import 'package:flutter/widgets.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
@@ -15,6 +19,12 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 const _base = 'https://proj.supabase.co/storage/v1';
 const _venuePhoto = '$_base/object/public/catalogue-media/restaurant/r1/a.jpg';
+
+String _jwt(Map<String, Object> payload) {
+  String part(Object o) =>
+      base64Url.encode(utf8.encode(jsonEncode(o))).replaceAll('=', '');
+  return '${part({'alg': 'HS256'})}.${part(payload)}.signature';
+}
 
 // The test binding answers every image fetch with a 400; only the URL
 // matters here.
@@ -49,6 +59,84 @@ void main() {
         isNull,
       );
       expect(storageVariantUrl('https://example.com/a.jpg', 512), isNull);
+    });
+  });
+
+  group('imageCacheKey', () {
+    test('a signed object keys on its path, not its token', () {
+      final a = imageCacheKey(
+        '$_base/object/sign/visit-photos/u/v/a.jpg?token=one',
+      );
+      final b = imageCacheKey(
+        '$_base/object/sign/visit-photos/u/v/a.jpg?token=two',
+      );
+      expect(a, b);
+      expect(a, '$_base/object/sign/visit-photos/u/v/a.jpg');
+    });
+
+    test('a signed render keys on its path plus its signed transformation, '
+        'so a thumbnail never stands in for the original', () {
+      String signed(String transformations, int iat) =>
+          '$_base/render/image/sign/visit-photos/u/v/a.jpg?token=${_jwt({'url': 'visit-photos/u/v/a.jpg', 'transformations': transformations, 'iat': iat})}';
+      final small1 = imageCacheKey(signed('width:512,height:512', 1));
+      final small2 = imageCacheKey(signed('width:512,height:512', 2));
+      final large = imageCacheKey(signed('width:1024,height:1024', 1));
+      expect(small1, small2);
+      expect(small1, isNot(large));
+      expect(
+        small1,
+        isNot(
+          imageCacheKey('$_base/object/sign/visit-photos/u/v/a.jpg?token=x'),
+        ),
+      );
+    });
+
+    test('an unreadable render token keys on the full URL (never shared)', () {
+      const url = '$_base/render/image/sign/visit-photos/a.jpg?token=garbage';
+      expect(imageCacheKey(url), url);
+    });
+
+    test('public and external URLs are their own key', () {
+      expect(imageCacheKey(_venuePhoto), _venuePhoto);
+      expect(
+        imageCacheKey('https://example.com/a.jpg'),
+        'https://example.com/a.jpg',
+      );
+    });
+  });
+
+  group('ImmutableStorageFileService', () {
+    FileService serviceAnswering(String cacheControl) =>
+        ImmutableStorageFileService(
+          inner: HttpFileService(
+            httpClient: MockClient(
+              (request) async => http.Response(
+                'img',
+                200,
+                headers: {'cache-control': cacheControl},
+              ),
+            ),
+          ),
+        );
+
+    test('keeps a Storage file for 30 days despite no-cache', () async {
+      final response = await serviceAnswering(
+        'private, no-cache',
+      ).get('$_base/object/sign/visit-photos/a.jpg?token=t');
+      expect(
+        response.validTill.difference(DateTime.now()).inDays,
+        closeTo(30, 1),
+      );
+    });
+
+    test('leaves any other host to its own headers', () async {
+      final response = await serviceAnswering(
+        'no-cache',
+      ).get('https://example.com/a.jpg');
+      expect(
+        response.validTill.difference(DateTime.now()).inSeconds,
+        lessThanOrEqualTo(1),
+      );
     });
   });
 
