@@ -119,12 +119,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   void _load() {
     setState(() {
-      _profileFuture = _visitedRepo
-          .getVisited(_uid)
-          .then(
-            (visited) =>
-                _profileRepo.getProfile(userId: _uid, visited: visited),
-          );
+      // One Passport load feeds both the profile's Journey Stats and the
+      // journey card below.
+      final passportVenues = _visitedRepo.loadPassportVenues(_uid);
+      _profileFuture = passportVenues.then(
+        (entries) => _profileRepo.getProfile(
+          userId: _uid,
+          visited: visitedRestaurantsOf(entries),
+        ),
+      );
 
       // Chained off the profile load — avatarPath is only known once the
       // profile row itself has loaded. resolveAvatarUrl returns null
@@ -138,7 +141,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       // combined (see journey_metrics.dart) — just these same two lists,
       // no Trips query needed anymore now the card no longer shows one.
       _journeyFuture = Future.wait([
-        _visitedRepo.loadPassportVenues(_uid),
+        passportVenues,
         _eventAttendanceRepo.loadPassportEventAttendance(_uid),
       ]).then(
         (results) => computeJourneyMetrics(

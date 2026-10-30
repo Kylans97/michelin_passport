@@ -32,6 +32,7 @@ import 'widgets/friend_profile_plan_dinner_sheet.dart';
 import '../../core/analytics/screen_usage.dart';
 import '../notifications/push_prompt_sheet.dart';
 import '../notifications/push_service.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// One (venue, visit) pair — [VenueEntry] groups every visit under its
 /// venue for Passport's own grouped display; this screen instead flattens
@@ -220,9 +221,10 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
 
     var coverPhotos = <String, String>{};
     try {
-      coverPhotos = await _photoRepo.loadCoverPhotoUrlsForVisits(
-        visits.map((v) => v.visit.id).toList(),
-      );
+      // Only the verdicts Overview shows; the All screen loads its own.
+      coverPhotos = await _photoRepo.loadCoverPhotoUrlsForVisits([
+        for (final v in visits.take(friendVerdictPreviewCount)) v.visit.id,
+      ]);
     } catch (_) {
       // Photo rows just fall back to PhotoOrTile's own tile — never
       // blocks the rest of the screen.
@@ -686,7 +688,7 @@ class _Hero extends StatelessWidget {
                   alignment: Alignment.center,
                   child: (identity.avatarUrl != null && identity.avatarUrl!.isNotEmpty)
                       ? ClipOval(
-                          child: Image.network(
+                          child: AppNetworkImage(
                             identity.avatarUrl!,
                             width: 96,
                             height: 96,

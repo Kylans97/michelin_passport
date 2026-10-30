@@ -12,6 +12,7 @@ import '../../events/event_date_format.dart';
 import '../discovery_selectors.dart' show FreshFindItem, FreshFindRestaurant, FreshFindHotel, FreshFindEvent;
 import '../../../core/widgets/framed_image.dart';
 import '../../../models/photo_framing.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 String _locationOf({required String flagEmoji, required String cityName}) =>
     [if (flagEmoji.isNotEmpty) flagEmoji, cityName].join('  ');
@@ -138,8 +139,9 @@ class _DiscoveryImage extends StatelessWidget {
     }
     return FramedImage(
       framing: framing,
-      builder: (alignment) => Image.network(
+      builder: (alignment) => AppNetworkImage(
         imageUrl!,
+        zoom: framing.zoom,
         fit: BoxFit.cover,
         alignment: alignment,
         errorBuilder: (_, _, _) => CsImagePlaceholder(logoScale: logoScale),

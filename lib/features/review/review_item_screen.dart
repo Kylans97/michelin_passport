@@ -17,6 +17,7 @@ import '../../models/review_item.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// One item from the review queue, with what an admin needs to decide:
 /// the claim's details, the about text, or the photo in its real header
@@ -441,7 +442,7 @@ class _PhotoFrames extends StatelessWidget {
             ),
           );
         }
-        return _frames(NetworkImage(snap.data!));
+        return _frames(appImageProvider(snap.data!));
       },
     );
   }

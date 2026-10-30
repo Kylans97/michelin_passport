@@ -51,6 +51,9 @@ class _AttendancePhotosSectionState extends State<AttendancePhotosSection> {
 
   List<VisitPhoto>? _photos;
   Map<String, String> _urls = {};
+  // What the tiles show: the small copy, else the original. The viewer
+  // keeps [_urls].
+  Map<String, String> _thumbnailUrls = {};
   bool _loading = true;
   bool _uploading = false;
   bool _loadError = false;
@@ -65,13 +68,16 @@ class _AttendancePhotosSectionState extends State<AttendancePhotosSection> {
     if (!_uploading) setState(() => _loading = _photos == null);
     try {
       final photos = await _repo.loadPhotosForAttendance(widget.attendanceId);
-      final urls = await _repo.resolveDisplayUrls([
-        for (final p in photos) p.storagePath,
-      ]);
+      final paths = [for (final p in photos) p.storagePath];
+      final (urls, thumbnails) = await (
+        _repo.resolveDisplayUrls(paths),
+        _repo.resolveThumbnailUrls(paths),
+      ).wait;
       if (!mounted) return;
       setState(() {
         _photos = photos;
         _urls = urls;
+        _thumbnailUrls = {...urls, ...thumbnails};
         _loading = false;
         _loadError = false;
       });
@@ -307,7 +313,7 @@ class _AttendancePhotosSectionState extends State<AttendancePhotosSection> {
         if (photos.isNotEmpty) ...[
           VisitPhotoGrid(
             photos: photos,
-            urls: _urls,
+            urls: _thumbnailUrls,
             onTapPhoto: _openViewer,
             onDeletePhoto: _confirmDelete,
           ),

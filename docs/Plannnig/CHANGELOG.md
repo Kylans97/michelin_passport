@@ -321,6 +321,128 @@ The format follows Keep a Changelog.
   simulator check used a throwaway preview with fixture stamps rather
   than a real save, so nothing was written to production.
 
+### Changed
+- 2026-10-30 — **Download traffic cut before the App Store launch.**
+  Supabase bills egress, and it is the binding cost at launch. The
+  database itself has room for thousands of daily users. Measured figures
+  come from read-only requests against production on 2026-10-30; the
+  others are estimates.
+
+  | | Before | After |
+  |---|---|---|
+  | Explore, each mount (measured) | 985 KB gzipped (all 3,480 restaurants + 1,830 hotels) | ~5 KB (9 + 9 rows) |
+  | Venue photo on a card (one 1536x2048 original, measured) | 1.6 MB | 69 KB at 512, 274 KB at 1024 |
+  | Visit-photo tile (estimated) | the 1600 px upload, ~300–400 KB | unchanged until the switch below is on, then a 512 px copy, ~40–70 KB |
+  | Own avatar (measured, one avatar) | 285 KB | unchanged until the switch is on, then a 384 px copy, 33 KB |
+  | Flore's card photo / a news card (measured in the simulator) | 353 KB / 279 KB | 28 KB at 512 / 168 KB at 1536 |
+  | The same photo seen again | downloaded again (new signed URL each time) | from disk, for 30 days |
+  | Notifications | whole history | 50 per page |
+
+  Rough per active user per day: about 1 MB of catalogue per app start
+  plus several MB of photos before, against tens of KB of catalogue and a
+  few hundred KB of photos, mostly first views, after. That should be
+  about an order of magnitude more users per GB. It is an estimate, not a
+  measurement of real sessions.
+  - **Explore** fetches only the rows its sections can show. The server
+    sorts on stars or Keys, then World's 50 Best rank. It returns the whole
+    tie group when that group runs past eighth place, so the existing
+    selectors still choose by name, and what Explore shows is unchanged.
+    Fresh Finds reads only reported rows. `getAll()` is gone from both
+    repositories.
+  - **Every image goes through `AppNetworkImage`**
+    (`lib/core/widgets/app_network_image.dart`) instead of `Image.network`.
+    A public Storage photo comes from the render endpoint, sized to its slot
+    times the pixel ratio and framing zoom, in six shared sizes. It is
+    contain-fit: width alone keeps the original height and distorts the
+    photo, measured on production. Focus-point framing still crops on the
+    device. The full-screen viewers, the framing editors and admin review
+    keep the original. The project is on Pro (the product owner confirmed
+    it on 2026-10-30), which the render endpoint needs.
+  - **Member photos are not transformed yet.** Visit, stay and attendance
+    photos and avatars have signed transformed copies built and tested,
+    but they are behind `memberPhotoTransformsEnabled`, which is off. The
+    product owner hasn't decided, and the comparison below argues against
+    it. While the switch is off, those photos show the cached original,
+    exactly as before.
+  - **Cost comparison for member photos** (Pro pricing from Supabase's
+    docs, 2026-10-30): transformations are $5 per 1,000 distinct origin
+    images per billing cycle after 100. Storage is $0.0213 per GB after
+    100 GB, and egress is $0.09 per GB after 250 GB. The usage figures are
+    assumptions, not data: each active member logs 3 visits a month with
+    4 photos each, and views about 30 distinct member photos a month.
+    Each tile view saves about 300 KB once per device, since caching
+    covers repeats.
+
+    | 5,000 monthly members | Transforms | Small copy uploaded alongside |
+    |---|---|---|
+    | Running cost | ~150,000 origin images: **~$750/month** | +0.6 MB storage per member a month (3 GB/month in all), inside the 100 GB quota: **~$0** |
+    | Egress saved | ~75 GB/month, ~$7 | the same ~75 GB, ~$7 |
+    | Build work | none (built, behind the switch) | resize at upload, a second object per photo, delete both together, older photos fall back to the original |
+
+    At 1,000 members, transforms cost about $150 a month. Either way the
+    egress saved is a few dollars, because caching already removes the
+    repeat views. Transforms would cost about 100 times what they save. A
+    small copy costs almost nothing, but it is real work for little gain.
+    For avatars, setting the picker's existing `maxWidth` from 1024 to
+    512 gets most of the saving with no new mechanism. Venue photos stay
+    on transforms: they are a catalogue, not per member (6 today; 5,000 of
+    them would be about $25 a month).
+  - **Disk cache** (`cached_network_image`). A signed URL is keyed on its
+    bucket and path, plus the `transformations` claim of its token, so a
+    thumbnail never stands in for an original. Storage answers
+    `private, no-cache`, which would have made every view revalidate. Its
+    paths are never reused, so cached entries stay valid for 30 days.
+  - **Notifications** load 50 at a time, newest first, and the rest as the
+    list reaches its end. The ordering and range are applied to the
+    existing RPC result, so no server change is needed. The unread badge
+    still comes from its own count.
+  - **Friend Profile** loads covers for the three verdicts it shows, and
+    All visits loads 20 rows' covers at a time as they appear.
+  - **Profile** derives its Journey Stats from the Passport load it already
+    makes, instead of downloading the visits and restaurants twice.
+  - **Checked in the iOS simulator against production, read-only**
+    (2026-10-30, signed in by the product owner):
+    - Worth the Journey and Stay a Little Longer show three-star
+      restaurants and three-Key hotels in World's 50 Best rank order.
+    - Search, a restaurant detail page and Profile (4 places, 4 countries,
+      2 friends) load.
+    - Flore's card photo renders from the 512 variant.
+    - The image cache's index stored a real signed avatar under
+      `…/render/image/sign/profile-photos/…#height:384,width:384,resize:undefined`,
+      which confirms the token claim the key reads.
+    - After a relaunch, the avatar (re-signed with a new token) and the
+      news image came from disk: the same cached files were touched, and
+      nothing was downloaded again.
+    - Not exercised: Notifications (opening it marks everything read, a
+      write), Friend Profile's All visits, and venue photo upload (a
+      write).
+  - **Not paged, on purpose:** Passport venues and events, friends, and
+    event attendance. Their totals and the "friends going" logic need every
+    row.
+
+### Fixed
+- 2026-10-30 — **A PNG venue photo was stored as `.jpg` with
+  `image/jpeg`, and could exceed the 5 MiB limit.** The pipeline
+  re-encoded every photo at full resolution, so a file that passed the
+  5 MiB check could come out larger. That limit is also the bucket's own.
+  `prepareVenuePhoto` now returns the bytes together with their real
+  extension and content type. It caps the long edge at 2560 px and steps
+  down 15% at a time while the file is still too big, never below the
+  1200 px short side. Only a PNG that cannot fit even then becomes a JPEG,
+  and it is labelled as one. `publish-venue-photo` copies the object, so
+  the published photo keeps the right type.
+
+### Not applied
+- `20261030120000_add_get_visit_cover_photos.sql`: one cover per visit
+  (`DISTINCT ON`, `SECURITY INVOKER` so `photos_read` RLS still applies,
+  `revoke ... from public, anon`), plus an index on
+  `photos (visit_id, taken_at desc nulls last)`, which `photos` had none
+  of. It was written and checked against a scratch PG 17. It picks the
+  same cover as the old query, which postgrest-dart sends as
+  `taken_at.desc.nullslast`, not Postgres' own DESC default, and anon
+  cannot execute it. It is **not applied to production.** Until it is, the
+  client falls back to the old query on PGRST202.
+
 ---
 
 ## v1.4.0 (17) — 2026-10-30

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../models/visit_photo.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// Fullscreen, swipeable photo viewer. MVP scope only: no likes, comments,
 /// captions editing, or delete-from-here — delete stays on the grid (long
@@ -61,7 +62,7 @@ class _PhotoViewerScreenState extends State<PhotoViewerScreen> {
                     size: 40,
                   )
                 : InteractiveViewer(
-                    child: Image.network(url, fit: BoxFit.contain),
+                    child: AppNetworkImage(url, original: true, fit: BoxFit.contain),
                   ),
           );
         },

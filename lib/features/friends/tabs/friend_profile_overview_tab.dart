@@ -24,7 +24,7 @@ class FriendProfileOverviewTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final shared = data.sharedWishlistVenues;
-    final recent = data.visits.take(3).toList();
+    final recent = data.visits.take(friendVerdictPreviewCount).toList();
 
     return ListView(
       padding: const EdgeInsets.fromLTRB(
@@ -47,7 +47,7 @@ class FriendProfileOverviewTab extends StatelessWidget {
                 color: AppColors.secondaryOnDark,
               ),
             ),
-            if (data.visits.length > 3)
+            if (data.visits.length > friendVerdictPreviewCount)
               GestureDetector(
                 onTap: () => Navigator.push(
                   context,

@@ -124,19 +124,23 @@ class VenuePhotoSubmissionRepository {
       throw VenuePhotoRejectedException(validation);
     }
 
-    final cleanBytes = stripExifFromVenuePhoto(rawBytes);
-    final phash = computeVenuePhotoHash(cleanBytes);
+    final prepared = prepareVenuePhoto(rawBytes);
+    final phash = computeVenuePhotoHash(prepared.bytes);
 
     final uniqueId =
         '${DateTime.now().microsecondsSinceEpoch}_${_random.nextInt(1 << 32)}';
-    final storagePath = '$venueType/$venueId/$userId/$uniqueId.jpg';
+    // Extension and content type come from the prepared bytes: a PNG was
+    // stored as `.jpg`, `image/jpeg` until 2026-10-30, and publish-venue-
+    // photo copies both onto the published object.
+    final storagePath =
+        '$venueType/$venueId/$userId/$uniqueId.${prepared.extension}';
 
     await _client.storage
         .from(venuePhotoSubmissionsBucket)
         .uploadBinary(
           storagePath,
-          cleanBytes,
-          fileOptions: const FileOptions(contentType: 'image/jpeg'),
+          prepared.bytes,
+          fileOptions: FileOptions(contentType: prepared.contentType),
         );
 
     try {

@@ -108,6 +108,20 @@ VenuePhotoValidation validateVenuePhoto(Uint8List bytes) {
   return const VenuePhotoValidationOk();
 }
 
+/// A venue photo ready to upload: its bytes, and the extension and content
+/// type those bytes actually are — kept together so the storage path and
+/// the upload's content type can never disagree with the file again (a PNG
+/// used to be stored as `.jpg`, `image/jpeg`).
+class PreparedVenuePhoto {
+  const PreparedVenuePhoto(this.bytes, {required this.isPng});
+
+  final Uint8List bytes;
+  final bool isPng;
+
+  String get extension => isPng ? 'png' : 'jpg';
+  String get contentType => isPng ? 'image/png' : 'image/jpeg';
+}
+
 /// Layer 1 — "Dit is niet optioneel": always returns freshly re-encoded
 /// bytes with no EXIF metadata, regardless of what the source carried.
 /// Decoding then re-encoding through the `image` package does not
@@ -115,23 +129,71 @@ VenuePhotoValidation validateVenuePhoto(Uint8List bytes) {
 /// explicitly cleared before encoding anyway rather than relying on that
 /// implicit behaviour — GPS coordinates (a submitter's home address, for
 /// a chef uploading from their kitchen) must never survive this step by
-/// accident.
+/// accident. (The JPEG decoder bakes EXIF orientation into the pixels
+/// first, so clearing it never turns a photo on its side.)
 ///
 /// Re-encodes as the same format it decoded (JPEG stays JPEG, PNG stays
 /// PNG) — [validateVenuePhoto] already guarantees the input is one of
-/// the two, so this never needs a third branch.
-Uint8List stripExifFromVenuePhoto(Uint8List bytes) {
+/// the two — at most [maxVenuePhotoLongEdgePx] on its long edge, and no
+/// larger than [maxBytes]: when the encoded file is still too big, the long
+/// edge steps down 15% at a time, never below the size at which the short
+/// side reaches [minVenuePhotoShortSidePx]. A PNG too detailed to fit even
+/// there becomes a JPEG (and says so via [PreparedVenuePhoto.isPng]) rather
+/// than being refused by the bucket.
+PreparedVenuePhoto prepareVenuePhoto(
+  Uint8List bytes, {
+  int maxBytes = maxVenuePhotoSubmissionBytes,
+}) {
   final decoder = img.findDecoderForData(bytes);
   final decoded = img.decodeImage(bytes);
   if (decoded == null) {
-    throw ArgumentError('Cannot strip EXIF: bytes are not a decodable image.');
+    throw ArgumentError('Cannot prepare: bytes are not a decodable image.');
   }
   decoded.exif.clear();
-
   final isPng = decoder is img.PngDecoder;
-  return Uint8List.fromList(
-    isPng ? img.encodePng(decoded) : img.encodeJpg(decoded, quality: 92),
+
+  final longSide = math.max(decoded.width, decoded.height);
+  final shortSide = math.min(decoded.width, decoded.height);
+  final minLongEdge = math.min(
+    longSide,
+    (minVenuePhotoShortSidePx * longSide / shortSide).ceil(),
   );
+
+  Uint8List encode(img.Image image, {required bool png, int quality = 92}) =>
+      Uint8List.fromList(
+        png ? img.encodePng(image) : img.encodeJpg(image, quality: quality),
+      );
+
+  var longEdge = math.min(longSide, maxVenuePhotoLongEdgePx);
+  while (true) {
+    final encoded = encode(_fitLongEdge(decoded, longEdge), png: isPng);
+    if (encoded.lengthInBytes <= maxBytes) {
+      return PreparedVenuePhoto(encoded, isPng: isPng);
+    }
+    final next = (longEdge * 0.85).floor();
+    if (longEdge == minLongEdge) break;
+    longEdge = math.max(next, minLongEdge);
+  }
+  final smallest = _fitLongEdge(decoded, minLongEdge);
+  return PreparedVenuePhoto(
+    encode(smallest, png: false, quality: 85),
+    isPng: false,
+  );
+}
+
+img.Image _fitLongEdge(img.Image image, int longEdge) {
+  if (math.max(image.width, image.height) <= longEdge) return image;
+  return image.width >= image.height
+      ? img.copyResize(
+          image,
+          width: longEdge,
+          interpolation: img.Interpolation.average,
+        )
+      : img.copyResize(
+          image,
+          height: longEdge,
+          interpolation: img.Interpolation.average,
+        );
 }
 
 // ============================================================
@@ -176,10 +238,7 @@ String computeVenuePhotoHash(Uint8List bytes) {
 
   final matrix = List.generate(
     _dctSize,
-    (y) => List.generate(
-      _dctSize,
-      (x) => small.getPixel(x, y).r.toDouble(),
-    ),
+    (y) => List.generate(_dctSize, (x) => small.getPixel(x, y).r.toDouble()),
   );
 
   final dct = _dct2d(matrix);
@@ -208,7 +267,9 @@ String computeVenuePhotoHash(Uint8List bytes) {
 /// itself read under RLS.
 int hammingDistance(String a, String b) {
   if (a.length != b.length) {
-    throw ArgumentError('Hashes must be the same length (${a.length} vs ${b.length}).');
+    throw ArgumentError(
+      'Hashes must be the same length (${a.length} vs ${b.length}).',
+    );
   }
   var distance = 0;
   for (var i = 0; i < a.length; i++) {
@@ -221,10 +282,7 @@ int hammingDistance(String a, String b) {
 /// to cache across calls; a submission flow hashes exactly one photo.
 List<List<double>> _buildDctCosTable(int n) => List.generate(
   n,
-  (k) => List.generate(
-    n,
-    (i) => math.cos(math.pi / n * (i + 0.5) * k),
-  ),
+  (k) => List.generate(n, (i) => math.cos(math.pi / n * (i + 0.5) * k)),
 );
 
 List<double> _dct1d(List<double> x, List<List<double>> cosTable) {

@@ -55,6 +55,11 @@ extension FriendProfileVisitDisplay on FriendVenueVisit {
 ///   RESTAURANT venue's stars at its most recent visit, summed once per
 ///   venue, never once per visit. Restricted to restaurants — a hotel's
 ///   Keys are a different award.
+/// How many verdicts Friend Profile's Overview previews — and so how many
+/// cover photos it loads up front (FriendProfileAllVisitsScreen loads the
+/// rest as its rows appear).
+const friendVerdictPreviewCount = 3;
+
 class FriendProfileStats {
   final int stamps;
   final int countries;

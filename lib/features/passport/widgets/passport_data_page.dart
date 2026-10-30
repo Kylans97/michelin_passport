@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_masthead_logo.dart';
 import '../passport_booklet_data.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 // Cormorant Garamond falls back to oldstyle figures (varying
 // height/baseline, designed to blend into lowercase text) unless this
@@ -395,7 +396,7 @@ class _PassportIdPhoto extends StatelessWidget {
                 ),
               ),
             )
-          : Image.network(
+          : AppNetworkImage(
               url,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) => Center(

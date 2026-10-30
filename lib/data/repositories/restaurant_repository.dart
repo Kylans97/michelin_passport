@@ -4,6 +4,7 @@ import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import 'country_lookup.dart';
 import 'fetch_all_rows.dart';
+import 'fetch_leaders.dart';
 import 'search_query.dart';
 
 // Explicit column list matching public.restaurants_full as it exists on the
@@ -122,16 +123,34 @@ class RestaurantRepository {
     return Restaurant.fromJson(row);
   }
 
-  // Full catalogue ordered by name, past PostgREST's row cap (see
-  // fetchAllRows).
-  Future<List<Restaurant>> getAll() async {
-    final rows = await fetchAllRows(
-      () => _client
-          .from('restaurants_full')
-          .select(restaurantFullColumns)
-          .order('name')
-          .order('id', ascending: true),
+  // Explore's Worth the Journey candidates: the restaurants that can rank
+  // in the top [limit] by current stars then World's 50 Best rank. The
+  // caller still picks with selectDiscoveryRestaurants (see
+  // fetchLeaderCandidates for why the server doesn't decide alone).
+  Future<List<Restaurant>> getDiscoveryCandidates({int limit = 8}) async {
+    final rows = await fetchLeaderCandidates(
+      select: () =>
+          _client.from('restaurants_full').select(restaurantFullColumns),
+      primaryKey: 'michelin_stars',
+      secondaryKey: 'worlds_50_best_rank',
+      limit: limit,
     );
+    return rows.map(Restaurant.fromJson).toList();
+  }
+
+  // Explore's Fresh Finds candidates: the newest [limit] restaurants added
+  // from a missing-listing report — the only restaurants selectFreshFinds
+  // ever keeps, so fetching just these shows exactly what it showed when
+  // it filtered the whole catalogue.
+  Future<List<Restaurant>> getFreshFindCandidates({int limit = 10}) async {
+    final rows = await _client
+        .from('restaurants_full')
+        .select(restaurantFullColumns)
+        .not('missing_listing_report_id', 'is', null)
+        .not('created_at', 'is', null)
+        .order('created_at', ascending: false)
+        .order('id', ascending: true)
+        .limit(limit);
     return rows.map(Restaurant.fromJson).toList();
   }
 

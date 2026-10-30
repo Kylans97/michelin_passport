@@ -7,6 +7,7 @@ import '../../core/widgets/floating_nav_bar.dart';
 import '../../data/repositories/news_repository.dart';
 import '../../models/news_article.dart';
 import 'news_article_detail_screen.dart';
+import '../../core/widgets/app_network_image.dart';
 
 const _monthNames = [
   'January',
@@ -210,7 +211,7 @@ class _NewsArticleCard extends StatelessWidget {
               if (hasImage)
                 AspectRatio(
                   aspectRatio: 16 / 9,
-                  child: Image.network(
+                  child: AppNetworkImage(
                     article.imageUrl!,
                     fit: BoxFit.cover,
                     // Same per-article crop focus as the detail screen's

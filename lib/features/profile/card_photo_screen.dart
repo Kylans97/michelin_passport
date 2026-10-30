@@ -11,6 +11,7 @@ import '../../models/managed_venue.dart';
 import '../../models/photo_framing.dart';
 import '../../models/published_venue_photo.dart';
 import 'widgets/photo_framing_editor.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// The venue's card photo: which of its APPROVED photos shows on the
 /// small cards (Explore, search, Passport, Wishlist, Rankings, Guides) and
@@ -88,7 +89,7 @@ class _CardPhotoScreenState extends State<CardPhotoScreen> {
   String? _error;
 
   ImageProvider _imageOf(PublishedVenuePhoto p) =>
-      widget.imageFor?.call(p) ?? NetworkImage(p.imageUrl);
+      widget.imageFor?.call(p) ?? appImageProvider(p.imageUrl);
 
   bool get _changed {
     final selected = _selected;

@@ -7,6 +7,7 @@
 import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:image/image.dart' as img;
+import 'package:michelin_passport/core/constants/venue_photo_submission_limits.dart';
 import 'package:michelin_passport/data/services/venue_photo_pipeline.dart';
 
 Uint8List _jpeg(int width, int height, {int r = 120, int g = 90, int b = 60}) {
@@ -40,7 +41,8 @@ void main() {
       // length before ever attempting to decode, so the padding never
       // needs to be valid image data.
       final bytes = _jpeg(1600, 1200);
-      final oversized = Uint8List(6 * 1024 * 1024)..setRange(0, bytes.length, bytes);
+      final oversized = Uint8List(6 * 1024 * 1024)
+        ..setRange(0, bytes.length, bytes);
       final result = validateVenuePhoto(oversized);
       expect(result, isA<VenuePhotoValidationRejected>());
       expect(
@@ -98,7 +100,7 @@ void main() {
     });
   });
 
-  group('stripExifFromVenuePhoto', () {
+  group('prepareVenuePhoto', () {
     test('removes EXIF metadata (including GPS) that was present in '
         'the source', () {
       final image = img.Image(width: 1600, height: 1200);
@@ -112,25 +114,98 @@ void main() {
       final decodedSource = img.decodeImage(withExif)!;
       expect(decodedSource.exif.isEmpty, isFalse);
 
-      final stripped = stripExifFromVenuePhoto(withExif);
+      final stripped = prepareVenuePhoto(withExif).bytes;
       final decodedStripped = img.decodeImage(stripped)!;
       expect(decodedStripped.exif.isEmpty, isTrue);
     });
 
     test('re-encodes as the same format it decoded (JPEG stays JPEG, '
         'PNG stays PNG)', () {
-      final strippedJpeg = stripExifFromVenuePhoto(_jpeg(1600, 1200));
+      final strippedJpeg = prepareVenuePhoto(_jpeg(1600, 1200)).bytes;
       expect(img.findDecoderForData(strippedJpeg), isA<img.JpegDecoder>());
 
-      final strippedPng = stripExifFromVenuePhoto(_png(1600, 1200));
+      final strippedPng = prepareVenuePhoto(_png(1600, 1200)).bytes;
       expect(img.findDecoderForData(strippedPng), isA<img.PngDecoder>());
     });
 
     test('preserves visual content — decoded dimensions unchanged', () {
-      final stripped = stripExifFromVenuePhoto(_jpeg(1600, 1200));
+      final stripped = prepareVenuePhoto(_jpeg(1600, 1200)).bytes;
       final decoded = img.decodeImage(stripped)!;
       expect(decoded.width, 1600);
       expect(decoded.height, 1200);
+    });
+  });
+
+  group('prepareVenuePhoto — type and size (2026-10-30)', () {
+    // Pixel noise: compresses badly, the way a real photo does, so a size
+    // limit actually bites. A flat fill compresses to almost nothing.
+    img.Image noise(int width, int height) {
+      final image = img.Image(width: width, height: height);
+      var seed = 7;
+      for (final p in image) {
+        seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+        p
+          ..r = seed & 0xff
+          ..g = (seed >> 8) & 0xff
+          ..b = (seed >> 16) & 0xff;
+      }
+      return image;
+    }
+
+    test('a PNG is uploaded as a PNG, a JPEG as a JPEG', () {
+      final png = prepareVenuePhoto(_png(1600, 1200));
+      expect(png.extension, 'png');
+      expect(png.contentType, 'image/png');
+      expect(img.findDecoderForData(png.bytes), isA<img.PngDecoder>());
+
+      final jpeg = prepareVenuePhoto(_jpeg(1600, 1200));
+      expect(jpeg.extension, 'jpg');
+      expect(jpeg.contentType, 'image/jpeg');
+      expect(img.findDecoderForData(jpeg.bytes), isA<img.JpegDecoder>());
+    });
+
+    test('caps the long edge, keeping the aspect ratio', () {
+      final landscape = img.decodeImage(
+        prepareVenuePhoto(_jpeg(4000, 3000)).bytes,
+      )!;
+      expect(
+        [landscape.width, landscape.height],
+        [maxVenuePhotoLongEdgePx, 1920],
+      );
+
+      final portrait = img.decodeImage(
+        prepareVenuePhoto(_jpeg(2250, 3000)).bytes,
+      )!;
+      expect(
+        [portrait.width, portrait.height],
+        [1920, maxVenuePhotoLongEdgePx],
+      );
+    });
+
+    test('steps down until the file fits the limit, never below the '
+        'minimum short side', () {
+      final source = Uint8List.fromList(img.encodePng(noise(2400, 1800)));
+      // ~3 bytes per noise pixel: 13 MB at full size, fits after two steps.
+      const limit = 7 * 1024 * 1024;
+      final prepared = prepareVenuePhoto(source, maxBytes: limit);
+      final out = img.decodeImage(prepared.bytes)!;
+
+      expect(prepared.bytes.lengthInBytes, lessThanOrEqualTo(limit));
+      expect(prepared.isPng, isTrue);
+      expect(out.width, lessThan(2400));
+      expect(out.height, greaterThanOrEqualTo(minVenuePhotoShortSidePx));
+    });
+
+    test('a PNG that cannot fit at the minimum size becomes a JPEG, and '
+        'says so', () {
+      final source = Uint8List.fromList(img.encodePng(noise(1600, 1200)));
+      final prepared = prepareVenuePhoto(source, maxBytes: 1024 * 1024);
+      final out = img.decodeImage(prepared.bytes)!;
+
+      expect(prepared.isPng, isFalse);
+      expect(prepared.contentType, 'image/jpeg');
+      expect(img.findDecoderForData(prepared.bytes), isA<img.JpegDecoder>());
+      expect(out.height, minVenuePhotoShortSidePx);
     });
   });
 
@@ -191,7 +266,13 @@ void main() {
         'distance)', () {
       final a = img.Image(width: 1600, height: 1200);
       img.fill(a, color: img.ColorRgb8(10, 10, 10));
-      img.fillCircle(a, x: 400, y: 300, radius: 250, color: img.ColorRgb8(240, 240, 240));
+      img.fillCircle(
+        a,
+        x: 400,
+        y: 300,
+        radius: 250,
+        color: img.ColorRgb8(240, 240, 240),
+      );
 
       final b = img.Image(width: 1600, height: 1200);
       img.fill(b, color: img.ColorRgb8(240, 240, 240));

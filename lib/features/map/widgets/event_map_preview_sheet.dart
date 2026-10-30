@@ -5,6 +5,7 @@ import '../../../core/constants/app_colors.dart';
 import '../../events/event_date_format.dart';
 import '../../events/event_detail_screen.dart';
 import '../models/map_pin.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// The bottom sheet shown when an Event pin is tapped — Events V2 Step 5
 /// §9. Deliberately its own small component rather than folding Event into
@@ -53,7 +54,7 @@ class _EventMapPreviewSheet extends StatelessWidget {
               if (hasImage) ...[
                 ClipRRect(
                   borderRadius: BorderRadius.circular(14),
-                  child: Image.network(
+                  child: AppNetworkImage(
                     event.imageUrl!,
                     height: 120,
                     width: double.infinity,

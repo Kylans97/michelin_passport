@@ -13,6 +13,7 @@ import '../../models/published_venue_photo.dart';
 import '../../models/photo_framing.dart';
 import 'widgets/photo_framing_editor.dart';
 import 'widgets/venue_photo_picker.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// One or more photos, from pick through submission — pushed from
 /// VenueManagementScreen's own Photos section (see that screen's doc
@@ -525,7 +526,7 @@ class _ReplacementRow extends StatelessWidget {
             const SizedBox(width: CsSpacing.sm),
             ClipRRect(
               borderRadius: BorderRadius.circular(6),
-              child: Image.network(
+              child: AppNetworkImage(
                 photo.imageUrl,
                 width: 44,
                 height: 44,

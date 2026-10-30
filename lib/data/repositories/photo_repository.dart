@@ -40,10 +40,29 @@ const _photoColumns =
 
 final _random = Random();
 
+/// Whether member photos (visit/stay/attendance photos and avatars) are
+/// shown as Storage-transformed copies. Off until the product owner
+/// decides: Pro bills transformations per distinct origin image per month
+/// ($5 per 1,000 after 100), and member photos, unlike the catalogue's
+/// venue photos, grow with every member. The cost comparison against
+/// uploading a small copy alongside each photo is in the 2026-10-30
+/// changelog entry. Off, tiles and covers show the (1600 px, cached)
+/// original, exactly as before that pass.
+const memberPhotoTransformsEnabled = false;
+
+/// Long edge of a visit photo's grid/tile copy — a 84-120 pt tile at 3x
+/// with room for cover cropping. Uploads are already capped at 1600 px.
+const visitPhotoThumbnailEdge = 512;
+
 class PhotoRepository {
-  PhotoRepository(this._client);
+  PhotoRepository(this._client, {bool? memberPhotoTransforms})
+    : transformsMemberPhotos =
+          memberPhotoTransforms ?? memberPhotoTransformsEnabled;
 
   final SupabaseClient _client;
+
+  /// See [memberPhotoTransformsEnabled]; a parameter only for tests.
+  final bool transformsMemberPhotos;
 
   // Every photo attached to one visit/stay, newest-taken first. Loaded by
   // visit_id — never by the venue's id — so repeat visits/stays to the
@@ -78,6 +97,40 @@ class PhotoRepository {
     };
   }
 
+  // Signed URLs for smaller copies of the same photos, for grids, tiles
+  // and covers — never the full-screen viewer, which keeps
+  // [resolveDisplayUrls]. Fit inside [longEdge] x [longEdge] with the
+  // photo's own aspect ratio (resize=contain), so the tile's BoxFit.cover
+  // crops exactly as it did on the original. One request per path:
+  // Storage's batch signing endpoint takes no transform, but each request
+  // is a few hundred bytes against a 300-400 KB original saved. A path that
+  // fails to sign is left out; callers fall back to the original's URL.
+  // Empty, with no request, while [transformsMemberPhotos] is off.
+  Future<Map<String, String>> resolveThumbnailUrls(
+    List<String> storagePaths, {
+    int longEdge = visitPhotoThumbnailEdge,
+    int expiresInSeconds = 3600,
+  }) async {
+    if (!transformsMemberPhotos) return {};
+    final bucket = _client.storage.from(visitPhotosBucket);
+    final signed = await Future.wait([
+      for (final path in storagePaths.toSet())
+        bucket
+            .createSignedUrl(
+              path,
+              expiresInSeconds,
+              transform: TransformOptions(
+                width: longEdge,
+                height: longEdge,
+                resize: ResizeMode.contain,
+              ),
+            )
+            .then<MapEntry<String, String>?>((url) => MapEntry(path, url))
+            .catchError((Object _) => null),
+    ]);
+    return Map.fromEntries(signed.nonNulls);
+  }
+
   // One signed cover-photo URL per visit id — its most-recently-taken
   // photo, if any — batched the same way
   // EventConfirmedAttendanceRepository._coverPhotoPaths batches event
@@ -96,24 +149,47 @@ class PhotoRepository {
   // (confirmed directly against the live `storage.objects` policies, not
   // assumed), so a visit that reached this screen at all is guaranteed to
   // already satisfy both.
+  //
+  // Callers pass only the visits on screen (Overview's three, then the All
+  // screen's rows a chunk at a time): every cover is now a signed request
+  // of its own (see resolveThumbnailUrls), and get_visit_cover_photos
+  // (20261030120000) returns one row per visit instead of every public
+  // photo. Before that migration is applied, PGRST202 falls back to the
+  // old every-photo query, which picks the same cover.
   Future<Map<String, String>> loadCoverPhotoUrlsForVisits(
     List<String> visitIds,
   ) async {
     if (visitIds.isEmpty) return {};
-    final rows = await _client
-        .from('photos')
-        .select('visit_id, storage_path')
-        .inFilter('visit_id', visitIds)
-        .eq('is_public', true)
-        .order('taken_at', ascending: false);
+    List rows;
+    try {
+      rows =
+          await _client.rpc(
+                'get_visit_cover_photos',
+                params: {'p_visit_ids': visitIds},
+              )
+              as List;
+    } on PostgrestException catch (e) {
+      if (e.code != 'PGRST202') rethrow;
+      rows = await _client
+          .from('photos')
+          .select('visit_id, storage_path')
+          .inFilter('visit_id', visitIds)
+          .eq('is_public', true)
+          .order('taken_at', ascending: false);
+    }
     final pathByVisitId = <String, String>{};
-    for (final row in rows as List) {
+    for (final row in rows) {
       final map = row as Map<String, dynamic>;
       final visitId = map['visit_id'] as String?;
       if (visitId == null) continue;
       pathByVisitId.putIfAbsent(visitId, () => map['storage_path'] as String);
     }
-    final urlByPath = await resolveDisplayUrls(pathByVisitId.values.toList());
+    // Covers are small tiles, never the viewer — the thumbnail copy when
+    // member-photo transforms are on, else one batch of originals.
+    final paths = pathByVisitId.values.toList();
+    final urlByPath = transformsMemberPhotos
+        ? await resolveThumbnailUrls(paths)
+        : await resolveDisplayUrls(paths);
     return {
       for (final entry in pathByVisitId.entries)
         if (urlByPath[entry.value] != null) entry.key: urlByPath[entry.value]!,

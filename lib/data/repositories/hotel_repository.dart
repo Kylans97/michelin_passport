@@ -5,6 +5,7 @@ import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
 import 'country_lookup.dart';
 import 'fetch_all_rows.dart';
+import 'fetch_leaders.dart';
 import 'restaurant_repository.dart' show restaurantFullColumns;
 import 'search_query.dart';
 
@@ -77,19 +78,6 @@ class HotelRepository {
     ];
   }
 
-  // Full catalogue ordered by name, past PostgREST's row cap (see
-  // fetchAllRows).
-  Future<List<Hotel>> getAll() async {
-    final rows = await fetchAllRows(
-      () => _client
-          .from('hotels_full')
-          .select(hotelFullColumns)
-          .order('name')
-          .order('id', ascending: true),
-    );
-    return rows.map(Hotel.fromJson).toList();
-  }
-
   // A single hotel by id, or null if it doesn't exist (or isn't visible
   // under RLS). Used to resolve the real Hotel before navigating there from
   // Restaurant Detail — never construct a Hotel from a restaurant row's
@@ -104,6 +92,33 @@ class HotelRepository {
     final list = rows as List;
     if (list.isEmpty) return null;
     return Hotel.fromJson(list.first as Map<String, dynamic>);
+  }
+
+  // Explore's Stay a Little Longer candidates — RestaurantRepository.
+  // getDiscoveryCandidates() with Keys in place of stars; the caller picks
+  // with selectDiscoveryHotels.
+  Future<List<Hotel>> getDiscoveryCandidates({int limit = 8}) async {
+    final rows = await fetchLeaderCandidates(
+      select: () => _client.from('hotels_full').select(hotelFullColumns),
+      primaryKey: 'michelin_keys',
+      secondaryKey: 'worlds_50_best_rank',
+      limit: limit,
+    );
+    return rows.map(Hotel.fromJson).toList();
+  }
+
+  // Explore's Fresh Finds candidates — see RestaurantRepository.
+  // getFreshFindCandidates().
+  Future<List<Hotel>> getFreshFindCandidates({int limit = 10}) async {
+    final rows = await _client
+        .from('hotels_full')
+        .select(hotelFullColumns)
+        .not('missing_listing_report_id', 'is', null)
+        .not('created_at', 'is', null)
+        .order('created_at', ascending: false)
+        .order('id', ascending: true)
+        .limit(limit);
+    return rows.map(Hotel.fromJson).toList();
   }
 
   // Search with optional Michelin Keys, World's 50 Best and country

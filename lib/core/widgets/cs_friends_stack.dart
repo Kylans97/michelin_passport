@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_spacing.dart';
 import '../theme/cs_typography.dart';
+import 'app_network_image.dart';
 
 /// One person [FriendsStack] can show — a photo when available, initials
 /// otherwise. [id] is what determines the deterministic fallback color
@@ -145,7 +146,7 @@ class _Avatar extends StatelessWidget {
         border: Border.all(color: ringColor, width: 2),
       ),
       child: (photo != null && photo.isNotEmpty)
-          ? Image.network(
+          ? AppNetworkImage(
               photo,
               fit: BoxFit.cover,
               errorBuilder: (_, _, _) => _Initials(text: friend.initials, size: size),

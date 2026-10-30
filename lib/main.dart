@@ -5,6 +5,7 @@ import 'package:timezone/data/latest_all.dart' as tz_data;
 import 'app.dart';
 import 'core/supabase/supabase_config.dart';
 import 'features/notifications/push_service.dart';
+import 'core/widgets/app_network_image.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -44,5 +45,6 @@ void main() async {
   // taps. Never asks for permission here — see PushService.
   PushService.instance.start();
 
+  enableImageDiskCache();
   runApp(const TablePassportApp());
 }

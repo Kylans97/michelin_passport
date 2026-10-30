@@ -10,6 +10,7 @@ import '../../../models/private_chef_photo.dart';
 import '../../reports/widgets/report_content_sheet.dart';
 import '../../../core/widgets/framed_image.dart';
 import '../../../models/photo_framing.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// Chef Detail's hero — a parallel, trimmed sibling of [VenueDetailHero],
 /// not a reuse of it: that widget hard-requires wishlist state
@@ -421,8 +422,9 @@ class _HeroImage extends StatelessWidget {
     label: semanticLabel,
     child: FramedImage(
       framing: framing,
-      builder: (alignment) => Image.network(
+      builder: (alignment) => AppNetworkImage(
         url,
+        zoom: framing.zoom,
         fit: BoxFit.cover,
         alignment: alignment,
         errorBuilder: (_, _, _) => const _NoPhotoBackground(),

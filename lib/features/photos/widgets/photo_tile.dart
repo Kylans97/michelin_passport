@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// One square thumbnail in a [VisitPhotoGrid]. [url] is a signed URL
 /// (resolved in a batch by PhotoRepository.resolveDisplayUrls) — null while
@@ -37,7 +38,7 @@ class PhotoTile extends StatelessWidget {
               onLongPress: onDelete,
               child: url == null
                   ? const _TileIcon(Icons.image_outlined)
-                  : Image.network(
+                  : AppNetworkImage(
                       url!,
                       fit: BoxFit.cover,
                       loadingBuilder: (context, child, progress) =>
