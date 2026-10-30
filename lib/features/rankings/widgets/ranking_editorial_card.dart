@@ -196,7 +196,9 @@ class _CardContent extends StatelessWidget {
           ),
           if (recognition != null) ...[
             const SizedBox(width: CsSpacing.sm),
-            recognition!,
+            // Flexible so a wider recognition (stars plus a World's 50
+            // Best rank) shares the line instead of overflowing it.
+            Flexible(child: recognition!),
           ],
         ],
       ),

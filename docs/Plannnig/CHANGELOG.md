@@ -54,18 +54,37 @@ The format follows Keep a Changelog.
   out of a manager's "Preview my page" because it is personal state.
 
 ### Changed
-- **Community Rankings list in the green-and-ivory design** (2026-10-30).
-  This list (Community → "See full ranking") still used the old style:
-  dark cards, a gold `#1` and a gold score in Playfair, and gold-tinted
-  star chips. Each row is now the same ivory `RankingEditorialCard` that
-  My Rankings uses, on the deep-green canvas. The rank sits on the image,
-  then the name, the stars (the only gold left), and the city; the
-  community score and visit count are in forest green. The filters are
-  the shared `CsFilterChip`, left-aligned under the title, and the
-  spinner is ivory. The data and the star filter are unchanged. A new
-  test asserts that no text in the list is gold. The cards could not be
-  checked in the simulator: no restaurant meets the ranking threshold in
-  production yet, so the screen shows its empty state there.
+- **Community Rankings redesigned: restaurants, hotels and events,
+  beyond stars** (2026-10-30, product owner). The screen (Community → "See
+  full ranking") was restaurants-only, filtered by star count, in the old
+  dark-and-gold style. It now has one row of kinds (Restaurants · Hotels ·
+  Events) and, for restaurants and hotels, one quiet recognition row: All,
+  ★/★★/★★★ (Keys for hotels) or World's 50 Best. Each row is the ivory
+  `RankingEditorialCard` with the venue's card photo, the stars or Keys
+  (the only gold), a "50 Best #n" when it has one, the community score in
+  forest green, and "· N members". Hotel rows open Hotel Detail and event
+  rows open Event Detail. Decided by the product owner: the score is the
+  overall score members give a visit, stay or confirmed event, each
+  member's latest per venue, and a venue appears from 3 members (the
+  rule `restaurant_rankings` already used). The separate, unused
+  `venue_ratings` system is untouched.
+
+  **Needs migration `20261030160000_add_hotel_and_event_rankings.sql` —
+  prepared, NOT applied.** It appends `worlds_50_best_rank` and the
+  card-photo columns to `restaurant_rankings`, leaving its rows and order
+  the same. Build 1.5.0 (18) selects named columns from that view, so
+  appending is invisible to it. It also adds `hotel_rankings` and
+  `event_rankings` with the same shape and threshold. Both are owner-
+  privileged views that return aggregates only, never a user id, and are
+  readable by `authenticated` only. Until the migration is applied, the
+  app falls back on its own: restaurants use the original columns (no
+  photo, and an empty World's 50 Best filter), and Hotels and Events show
+  the empty state. Not verified against a database: there is no Docker on
+  this machine for a local replay, and a read-only check of the views'
+  SELECTs against production was refused by the session's permission
+  check. Run both before applying. Analyze and all 2,699 tests pass. In
+  the simulator only the chips and empty state are checked, because no
+  venue clears the threshold yet.
 
 - **Friend verdicts and visit/stay detail in the green-and-ivory design**
   (2026-10-30, at the product owner's request).
