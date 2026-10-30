@@ -1,0 +1,54 @@
+ref	name	city	address	current_phone	current_website	michelin_phone	michelin_url
+new_6017	Château Eza	Eze	Rue de la Pise, 06360 Eze			+33 4 93 41 12 24	https://guide.michelin.com/en/hotels-stays/eze/chateau-eza-6017
+new_9933	Château de la Chèvre d'Or	Eze	Rue du Barri, 06360 Eze			+33 4 92 10 66 66	https://guide.michelin.com/en/hotels-stays/eze/la-chevre-dor-9933
+new_9950	Château de Berne	Flayosc	Chemin des Imberts, 83780 Flayosc			+33 4 94 60 49 79	https://guide.michelin.com/en/hotels-stays/flayosc/chateau-de-berne-9950
+new_10994	Fontevraud l'Ermitage	Fontevraud-l'Abbaye	38 rue Saint-Jean-de-l’Habit, Le Prieuré St-Lazare, 49590 Fontevraud-l'Abbaye			+33 2 46 46 10 10	https://guide.michelin.com/en/hotels-stays/fontevraud-labbaye/fontevraud-lhotel-10994
+new_9809	Coquillade - Provence	Gargas	Rte du Perrotet, 84400 Gargas			+33 4 90 74 71 71	https://guide.michelin.com/en/hotels-stays/gargas/coquillade-provence-9809
+new_17202	Les Sources de Vougeot	Gilly-lès-Cîteaux	2 Place du Château, Château de Gilly, 21640 Gilly-lès-Cîteaux			+33(0)3 80 23 22 22	https://guide.michelin.com/en/hotels-stays/Gilly-l%C3%A8s-C%C3%AEteaux/les-sources-de-vougeot-17202
+new_6874	Airelles Gordes, La Bastide	Gordes	61 rue de la Combe, 84220 Gordes			+33 4 90 72 12 12	https://guide.michelin.com/en/hotels-stays/gordes/airelles-gordes-la-bastide-6874
+new_10042	Le Clair de la Plume	Grignan	2 Pl. du Mail, 26230 Grignan			+33 4 75 91 81 30	https://guide.michelin.com/en/hotels-stays/grignan/le-clair-de-la-plume-10042
+new_11840	Domaine de Primard - Fontenille Collection	Guainville	Route départementale 16, 28260 Guainville			+33 2 36 58 10 08	https://guide.michelin.com/en/hotels-stays/guainville/domaine-de-primard-11840
+new_6038	La Ferme Saint-Siméon	Honfleur	20 Rte Adolphe Marais, 14600 Honfleur			+33 2 31 81 78 00	https://guide.michelin.com/en/hotels-stays/honfleur/la-ferme-saint-simeon-6038
+new_10177	Hotel des Berges	Illhaeusern	4 rue de Collonges-au-Mont-d'Or, 68970 Illhaeusern			+33 3 89 71 87 87	https://guide.michelin.com/en/hotels-stays/illhaeusern/hotel-des-berges-120905-10177
+new_11451	Le Phébus	Joucas	220 route de Murs, 84220 Joucas			+33 4 90 05 78 83	https://guide.michelin.com/en/hotels-stays/joucas/le-phebus-spa-11451
+new_15463	Le Chambard	Kaysersberg	9-13 rue du Général de Gaulle, 68240 Kaysersberg			+33 3 89 47 10 17	https://guide.michelin.com/en/hotels-stays/Kaysersberg/hotel-le-chambard-15463
+new_14160	Domaine de Locguénolé	Kervignac	Le Hingair, Route de Port Louis, 56700 Kervignac			+33(0)297767676	https://guide.michelin.com/en/hotels-stays/kervignac/domaine-de-locguenole-spa-14160
+new_10708	Au Cœur du Village	La Clusaz	26 montée du Château, 74220 La Clusaz			+33 4 50 01 50 01	https://guide.michelin.com/en/hotels-stays/la-clusaz/au-cur-du-village-10708
+new_9170	Château de Valmer	La Croix-Valmer	81 boulevard de Gigaro, 83420 La Croix-Valmer			+33 4 94 55 15 15	https://guide.michelin.com/en/hotels-stays/la-croix-valmer/hotel-chateau-de-valmer-9170
+new_9994	Lily of The Valley	La Croix-Valmer	Colline Saint-Michel, Boulevard Abel Faivre, Quartier de Gigaro, 83420 La Croix-Valmer			+33 4 22 73 22 00	https://guide.michelin.com/en/hotels-stays/la-croix-valmer/lily-of-the-valley-9994
+new_7032	Anne de Bretagne	La Plaine-sur-Mer	163 boulevard de la Tara, 44770 La Plaine-sur-Mer			+33 2 40 21 54 72	https://guide.michelin.com/en/hotels-stays/la-plaine-sur-mer/anne-de-bretagne-7032
+new_13034	Villa Grand Voile Christopher Coutanceau	La Rochelle	12 Rue de la Cloche, 17000 La Rochelle			+33 5 46 44 81 14	https://guide.michelin.com/en/hotels-stays/la-rochelle/villa-grand-voile-13034
+new_16518	Clos Vauban	Langres	1 Place du Colonel de Grouchy, 52200 Langres			0325860054	https://guide.michelin.com/en/hotels-stays/langres/clos-vauban-16518
+new_8025	Domaine de Fontenille - Fontenille Collection	Lauris	Rte de Roquefraiche, 84360 Lauris			+33 4 13 98 00 00	https://guide.michelin.com/en/hotels-stays/lauris/domaine-de-fontenille-8025
+new_13354	Hôtel Restaurant Origines par Adrien Descouls	Le Broc	Rue du Clos de la Chaux, 63500 Le Broc			+33 4 73 71 71 71	https://guide.michelin.com/en/hotels-stays/le-broc/hotel-restaurant-origines-par-adrien-descouls-13354
+new_9346	Hôtel & Spa du Castellet	Le Castellet	3001 route des Hauts-du-Camp, 83330 Le Castellet			+33 4 94 98 37 77	https://guide.michelin.com/en/hotels-stays/le-castellet/hotel-spa-du-castellet-9346
+new_9381	Château du Grand-Lucé	Le Grand Lucé	7 place du Château, 72150 Le Grand Lucé			+33 2 55 48 40 40	https://guide.michelin.com/en/hotels-stays/le-grand-luce/chateau-du-grand-luce-9381
+new_15570	Les Roches	Le Lavandou	1 Avenue des 3 Dauphins, 83980 Le Lavandou			+33 (0)4 83 69 33 50	https://guide.michelin.com/en/hotels-stays/le-lavandou/hotel-les-roches-relais-chateaux-15570
+new_7332	Grand Hotel de Cala Rossa	Lecci	Route de Cala Rossa, 20137 Lecci			+33 4 95 71 61 51	https://guide.michelin.com/en/hotels-stays/Lecci/grand-hotel-de-cala-rossa-7332
+new_12935	Cheval Blanc Lembach	Lembach	4 Rue de Wissembourg, 67510  Lembach			+33 3 88 94 41 86	https://guide.michelin.com/en/hotels-stays/lembach/cheval-blanc-lembach-12935
+new_7833	Baumanière	Les Baux de Provence	D27, Mas de Baumanière, 13520 Les Baux de Provence			+33 4 90 54 33 07	https://guide.michelin.com/en/hotels-stays/les-baux-de-provence/baumaniere-les-baux-de-provence-7833
+new_7924	Domaine de Manville	Les Baux de Provence	D27, 13520 Les Baux de Provence			+33 4 90 54 40 20	https://guide.michelin.com/en/hotels-stays/les-baux-de-provence/domaine-de-manville-7924
+new_9651	Hostellerie de Levernois	Levernois	Rue Du Golf, 21200 Levernois			+33 3 80 24 73 58	https://guide.michelin.com/en/hotels-stays/levernois/hostellerie-de-levernois-9651
+new_12854	InterContinental Lyon - Hotel Dieu	Lyon	20 quai Jules Courmont, 69002 Lyon			+33 4 26 99 23 23	https://guide.michelin.com/en/hotels-stays/lyon/intercontinental-lyon-hotel-dieu-12854
+new_8273	Villa Florentine	Lyon	25-27 montée Saint-Barthélémy, 69005 Lyon			+33 4 72 56 56 56	https://guide.michelin.com/en/hotels-stays/lyon/villa-florentine-8273
+new_10122	Villa Maïa	Lyon	8 rue du Professeur Pierre Marion, 69005 Lyon			+33 4 78 16 01 01	https://guide.michelin.com/en/hotels-stays/lyon/villa-maia-120850-10122
+new_9565	Relais de la Poste	Magescq	24 avenue de Maremne, 40140 Magescq			+33 5 58 47 70 25	https://guide.michelin.com/en/hotels-stays/magescq/relais-de-la-poste-9565
+new_6026	Le Couvent des Minimes	Mane	Chemin des Jeux de Mai, 04300 Mane			+33 4 92 74 77 77	https://guide.michelin.com/en/hotels-stays/mane/le-couvent-des-minimes-hotel-spa-6026
+new_6007	Le Petit Nice	Marseille	156 Cor Président John Fitzgerald Kennedy, Corniche J.F. Kennedy, 13007 Marseille			+33 4 91 59 25 92	https://guide.michelin.com/en/hotels-stays/marseille/le-petit-nice-passedat-6007
+new_168	Domaine des Étangs - Auberge Collection	Massignac	Domaine des Étangs, 16310 Massignac			+33 5 45 61 85 00	https://guide.michelin.com/en/hotels-stays/massignac/domaine-des-etangs-auberge-collection-168
+new_11442	Flocons de Sel	Megève	1775 route du Leutaz, 74120 Megève			+33 4 50 21 49 99	https://guide.michelin.com/en/hotels-stays/megeve/flocons-de-sel-11442
+new_9865	Four Seasons Resort Megève	Megève	373 chemin des Follières, Mont d'Arbois, 74120 Megève			+33-4-50211211	https://guide.michelin.com/en/hotels-stays/megeve/four-seasons-resort-megeve-9865
+new_1811	Les Fermes de Marie	Megève	163 Chem. des Épis, 74120 Megève			+33 4 50 93 03 10	https://guide.michelin.com/en/hotels-stays/megeve/les-fermes-de-marie-1811
+new_8234	Zannier Le Chalet	Megève	367 route du Crêt, 74120 Megève			+33 4 50 21 01 01	https://guide.michelin.com/en/hotels-stays/megeve/zannier-le-chalet-8234
+new_42	La Bastide de Marie	Menerbes	64 Chem. des Peirelles, Quatier de la Verrerie, 84560 Menerbes			+33 4 90 72 30 20	https://guide.michelin.com/en/hotels-stays/menerbes/la-bastide-de-marie-42
+new_6012	Château de Mercuès	Mercuès	Rue du Château, 46090 Mercuès			+33 5 65 20 00 01	https://guide.michelin.com/en/hotels-stays/mercues/chateau-de-mercues-6012
+new_9981	Le Domaine de la Klauss	Montenach	2 impasse du Klaussberg, 57480 Montenach			+33 3 82 83 19 75	https://guide.michelin.com/en/hotels-stays/montenach/domaine-de-la-klauss-9981
+new_7140	Chateau de la Resle	Montigny la Resle	La Resle, 89230 Montigny la Resle			+33 6 86 11 29 22	https://guide.michelin.com/en/hotels-stays/montigny-la-resle/chateau-de-la-resle-7140
+new_7945	Domaine de Biar	Montpellier	Chemin du Mas de Biar, Lavérune, 34880 Montpellier			+33 4 67 65 70 06	https://guide.michelin.com/en/hotels-stays/montpellier/domaine-de-biar-7945
+new_6027	Domaine de Verchant	Montpellier	1 boulevard Philippe Lamour, 34170 Montpellier			+33 4 67 07 26 00	https://guide.michelin.com/en/hotels-stays/montpellier/domaine-de-verchant-6027
+new_14714	Richer De Belleval	Montpellier	Place de la Carnougue, 34000 Montpellier			+33 4 99 66 18 18	https://guide.michelin.com/en/hotels-stays/montpellier/hotel-richer-de-belleval-14714
+new_16381	La Grenouillère	Montreuil-sur-Mer	Bp 2, 62170 Montreuil-sur-Mer			+33 3 21 06 07 22 	https://guide.michelin.com/en/hotels-stays/montreuil-sur-mer/la-grenouillere-16381
+new_6808	La Bastide de Moustiers	Moustiers Sainte-Marie	511 Chem. de Quinson, 04360 Moustiers Sainte-Marie			+33 4 92 70 47 47	https://guide.michelin.com/en/hotels-stays/moustiers-sainte-marie/la-bastide-de-moustiers-6808
+new_8396	Le Kaila	Méribel	124 Rue des Jeux Olympiques, 73550 Méribel			+33 4 79 41 69 30	https://guide.michelin.com/en/hotels-stays/meribel/le-kaila-8396
+new_12454	Château de Maubreuil	Nantes	Allée de Maubreuil, 44470 Nantes			+33 2 21 70 03 70	https://guide.michelin.com/en/hotels-stays/nantes/chateau-de-maubreuil-12454
+new_16336	Maison Maubreuil	Nantes	6 Rue du Roi Albert, 44000 Nantes				https://guide.michelin.com/en/hotels-stays/nantes/maison-maubreuil-16336

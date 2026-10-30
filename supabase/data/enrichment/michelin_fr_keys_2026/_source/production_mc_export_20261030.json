@@ -1,0 +1,134 @@
+{
+ "cities": [
+  "Monte Carlo"
+ ],
+ "hotels": [
+  {
+   "address": "Place du Casino, 98000 Monaco",
+   "city": "Monte Carlo",
+   "code": "hotel_193",
+   "keys": 3,
+   "lat": 43.739005,
+   "lon": 7.427464,
+   "name": "Hôtel de Paris Monte-Carlo",
+   "phone": "+377 98 06 30 00",
+   "pid": "ChIJFY1s1ofCzRIRtwOFQihi098",
+   "url": null,
+   "web": "https://www.montecarlosbm.com/en/hotel-monaco/hotel-paris-monte-carlo"
+  },
+  {
+   "address": "4 Avenue de la Madone, 98000 Monaco",
+   "city": "Monte Carlo",
+   "code": "hotel_194",
+   "keys": 2,
+   "lat": 43.740932,
+   "lon": 7.427933,
+   "name": "Hotel Metropole Monte Carlo",
+   "phone": null,
+   "pid": "ChIJXegNVX3CzRIRrR3oUcS2iCU",
+   "url": null,
+   "web": null
+  }
+ ],
+ "links": [
+  {
+   "c": "exact",
+   "h": "hotel_193",
+   "r": "rest_1579"
+  },
+  {
+   "c": "exact",
+   "h": "hotel_194",
+   "r": "rest_1581"
+  },
+  {
+   "c": "exact",
+   "h": "hotel_193",
+   "r": "rest_1584"
+  }
+ ],
+ "restaurants": [
+  {
+   "code": "rest_1579",
+   "lat": 43.7391839,
+   "lon": 7.4271047,
+   "name": "Le Louis XV - Alain Ducasse à l'Hôtel de Paris",
+   "property": null,
+   "stars": 3,
+   "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/le-louis-xv-alain-ducasse-a-l-hotel-de-paris"
+  },
+  {
+   "code": "rest_1580",
+   "lat": 43.7384886,
+   "lon": 7.4259282,
+   "name": "L'Abysse Monte-Carlo",
+   "property": null,
+   "stars": 2,
+   "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/l-abysse-monte-carlo"
+  },
+  {
+   "code": "rest_1581",
+   "lat": 43.7405056,
+   "lon": 7.4275615,
+   "name": "Les Ambassadeurs by Christophe Cussac",
+   "property": null,
+   "stars": 2,
+   "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/les-ambassadeurs-by-christophe-cussac"
+  },
+  {
+   "code": "rest_1582",
+   "lat": 43.7488966,
+   "lon": 7.4379746,
+   "name": "Blue Bay Marcel Ravin",
+   "property": null,
+   "stars": 2,
+   "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/blue-bay-marcel-ravin"
+  },
+  {
+   "code": "rest_1583",
+   "lat": 43.7506541,
+   "lon": 7.4443181,
+   "name": "Elsa Marcel Ravin",
+   "property": null,
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/elsa-marcel-ravin"
+  },
+  {
+   "code": "rest_1584",
+   "lat": 43.7393665,
+   "lon": 7.4271,
+   "name": "Le Grill",
+   "property": null,
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/le-grill9786"
+  },
+  {
+   "code": "rest_1585",
+   "lat": 43.7384624,
+   "lon": 7.4258682,
+   "name": "Pavyllon Monte-Carlo, un restaurant de Yannick Alléno",
+   "property": null,
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/pavyllon-monte-carlo"
+  },
+  {
+   "code": "rest_1586",
+   "lat": 43.742019,
+   "lon": 7.4302288,
+   "name": "Robuchon Monaco",
+   "property": null,
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/robuchon-monaco"
+  },
+  {
+   "code": "rest_1587",
+   "lat": 43.7403707,
+   "lon": 7.4278965,
+   "name": "La Table d'Antonio Salvatore au Rampoldi",
+   "property": null,
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/monaco-region/monaco/restaurant/la-table-d-antonio-salvatore-au-rampoldi"
+  }
+ ],
+ "url_in_use": 0
+}
