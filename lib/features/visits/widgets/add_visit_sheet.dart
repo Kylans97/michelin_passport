@@ -18,16 +18,16 @@ import 'visit_privacy_toggle.dart';
 /// Opens the "log a visit" bottom sheet for [restaurant] and inserts a new
 /// row via [visitedRepository] on save, uploading any staged photos against
 /// the newly created visit id via [photoRepository] once the visit itself
-/// is safely saved. Returns a [SaveOutcome] once saved, or null if the
+/// is safely saved. Returns a [SavedVisit] once saved, or null if the
 /// sheet was dismissed without saving.
-Future<SaveOutcome?> showAddVisitSheet(
+Future<SavedVisit?> showAddVisitSheet(
   BuildContext context, {
   required Restaurant restaurant,
   required String userId,
   required VisitedRepository visitedRepository,
   required PhotoRepository photoRepository,
 }) {
-  return showModalBottomSheet<SaveOutcome>(
+  return showModalBottomSheet<SavedVisit>(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
@@ -180,7 +180,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     if (!mounted) return;
     Navigator.pop(
       context,
-      photoFailures > 0 ? SaveOutcome.savedWithPhotoErrors : SaveOutcome.saved,
+      SavedVisit(
+        visit,
+        photoFailures > 0 ? SaveOutcome.savedWithPhotoErrors : SaveOutcome.saved,
+      ),
     );
   }
 

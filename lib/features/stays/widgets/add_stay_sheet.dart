@@ -18,7 +18,7 @@ import '../../visits/widgets/visit_privacy_toggle.dart';
 /// Opens the "log a stay" bottom sheet for [hotel] and inserts a new hotel
 /// stay row via [visitedRepository] on save, uploading any staged photos
 /// against the newly created stay id via [photoRepository] once the stay
-/// itself is safely saved. Returns a [SaveOutcome] once saved, or null if
+/// itself is safely saved. Returns a [SavedVisit] once saved, or null if
 /// the sheet was dismissed without saving.
 ///
 /// Five rating dimensions (UI Consistency Step 1E — Mantelier's hotel
@@ -31,14 +31,14 @@ import '../../visits/widgets/visit_privacy_toggle.dart';
 /// supabase/migrations/20260816120000_add_hotel_room_experience_ratings.sql
 /// — NOT deployed to production as of this change. Saving a stay with
 /// either rated will fail against production until that migration ships.
-Future<SaveOutcome?> showAddStaySheet(
+Future<SavedVisit?> showAddStaySheet(
   BuildContext context, {
   required Hotel hotel,
   required String userId,
   required VisitedRepository visitedRepository,
   required PhotoRepository photoRepository,
 }) {
-  return showModalBottomSheet<SaveOutcome>(
+  return showModalBottomSheet<SavedVisit>(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
@@ -184,7 +184,10 @@ class _AddStaySheetState extends State<_AddStaySheet> {
     if (!mounted) return;
     Navigator.pop(
       context,
-      photoFailures > 0 ? SaveOutcome.savedWithPhotoErrors : SaveOutcome.saved,
+      SavedVisit(
+        stay,
+        photoFailures > 0 ? SaveOutcome.savedWithPhotoErrors : SaveOutcome.saved,
+      ),
     );
   }
 

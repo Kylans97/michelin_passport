@@ -33,6 +33,7 @@ import '../../models/passport_venue.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
 import '../../models/save_outcome.dart';
+import '../passport/stamp_ceremony.dart';
 import '../../models/visit.dart';
 import '../events/event_detail_screen.dart';
 import '../events/widgets/hosted_events_section.dart';
@@ -423,9 +424,13 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       photoRepository: _photoRepo,
     );
     if (result != null && mounted) {
+      // Same order as RestaurantDetailScreen._openAddVisitSheet: the
+      // stamp first, then this screen catches up underneath it.
+      await celebrateNewStamp(context, EarnedStamp.visit(result.visit));
+      if (!mounted) return;
       await _refreshStays();
       if (!mounted) return;
-      final photoErrors = result == SaveOutcome.savedWithPhotoErrors;
+      final photoErrors = result.outcome == SaveOutcome.savedWithPhotoErrors;
       _showSnack(
         photoErrors
             ? 'Stay saved, but some photos could not be uploaded.'

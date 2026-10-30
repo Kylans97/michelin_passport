@@ -6,6 +6,7 @@ import '../models/passport_stamp_award.dart';
 import '../models/passport_stamp_item.dart';
 import '../utils/passport_stamp_style.dart';
 import 'passport_stamp_painters.dart';
+import 'stamp_ceremony_scope.dart';
 
 /// One ink stamp: dispatches to the right [CustomPainter] for [variant],
 /// rotates it by [rotationDegrees], and — when [isNew] — plays the "just
@@ -15,6 +16,10 @@ import 'passport_stamp_painters.dart';
 /// that differs from the previous stamp on the same page needs to know
 /// what that previous stamp was, which only the page-level layout, not
 /// one stamp in isolation, has visibility into.
+///
+/// Inside a [StampCeremonyScope] naming this stamp, the ceremony owns the
+/// entrance instead (and its own haptic): [isNew]'s short animation is
+/// skipped, and the stamp stays off the page until the ceremony presses it.
 class PassportStampWidget extends StatefulWidget {
   final PassportStampItem item;
   final StampVariant variant;
@@ -52,10 +57,15 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
     CurvedAnimation(parent: _controller, curve: Curves.easeOut),
   );
 
+  StampCeremonyScope? get _ceremony {
+    final scope = StampCeremonyScope.maybeOf(context);
+    return scope != null && scope.stampId == widget.item.id ? scope : null;
+  }
+
   @override
   void initState() {
     super.initState();
-    if (widget.isNew) {
+    if (widget.isNew && _ceremony == null) {
       HapticFeedback.lightImpact();
       _controller.forward();
     } else {
@@ -87,15 +97,22 @@ class _PassportStampWidgetState extends State<PassportStampWidget>
         ? VerifiedVenueStampPainter(data)
         : stampPainterFor(widget.variant, data);
 
+    final ceremony = _ceremony;
     return Semantics(
       label: widget.semanticLabel,
       button: true,
       child: AnimatedBuilder(
-        animation: _controller,
-        builder: (context, child) => Opacity(
-          opacity: widget.isNew ? _opacity.value : 0.9,
-          child: Transform.scale(scale: widget.isNew ? _scale.value : 1, child: child),
-        ),
+        animation: ceremony?.press ?? _controller,
+        builder: (context, child) => ceremony != null
+            ? StampCeremonyScope.pressed(
+                t: ceremony.press.value,
+                reducedMotion: ceremony.reducedMotion,
+                child: child!,
+              )
+            : Opacity(
+                opacity: widget.isNew ? _opacity.value : 0.9,
+                child: Transform.scale(scale: widget.isNew ? _scale.value : 1, child: child),
+              ),
         child: Transform.rotate(
           angle: widget.rotationDegrees * math.pi / 180,
           child: Material(

@@ -8,6 +8,70 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Stamp ceremony.** When a member earns a new Passport stamp, their own
+  Passport opens full screen over the screen they are on. The real cover
+  swings open, the book turns one page to where the stamp lands, and the
+  stamp presses in: it drops from 1.2× while easing out its last 6° of
+  rotation, the ink lands at full strength and settles to 90%, and one
+  medium haptic fires on contact. The book then closes and the member is
+  back where they were. The whole ceremony takes about 2.6s, and a tap
+  skips it. Under reduce motion there is no flip and no page turn: the
+  open book fades in already on the right page, and the stamp fades in.
+  - It is one entry point, `celebrateNewStamp`
+    (`lib/features/passport/stamp_ceremony.dart`), called from all five
+    places a stamp is earned:
+    - Log visit on the restaurant page;
+    - Log stay on the hotel page;
+    - the Passport's "Add your next stamp" flow;
+    - the event page's attendance confirmation (both "Yes" and "Add to
+      Passport");
+    - the Events feed's post-event prompt.
+  - For events it runs after the confirmation, before the optional rating
+    sheet.
+  - It runs on the real booklet (`PassportFlipBook`, cover, pages and
+    stamp painters), not a replica. The stamp being pressed hands its
+    entrance to a `StampCeremonyScope`.
+  - Trigger rules:
+    - An `EarnedStamp` can only be built from a saved `Visit` or a saved
+      `EventConfirmedAttendance`, so Interested/Going and failed saves
+      have nothing to pass.
+    - The stamp must be in the freshly loaded booklet, so a back-dated
+      visit outside the 5-year window gets no ceremony.
+    - It shows once per stamp per app session.
+    - It never throws, because the stamp is already saved by the time it
+      runs.
+  - The Passport tab no longer replays its own "just stamped" entrance for
+    a stamp the ceremony already pressed.
+  - The two Add sheets and the Passport add flow now return the saved row
+    (`SavedVisit`, `Visit?`) instead of a bare outcome or bool.
+  - `loadOwnPassport` (`own_passport_loader.dart`) is the Passport tab's
+    load, moved out of `PassportCollectionBody` so the ceremony and the
+    tab read exactly the same booklet.
+  - No schema or Supabase changes.
+
+### Fixed
+- **Near-miss: the ceremony route rendered every booklet label with
+  Flutter's yellow-underlined debug text style.** A pushed route has no
+  Scaffold, and therefore no `Material`, above it. The Passport tab
+  inherits one, so the shared booklet widgets had never needed their own.
+  The widget tests passed; it was the simulator that showed it. The
+  overlay now provides its own `Material`, and a test checks the
+  inherited text style. That test fails without the fix. This would recur
+  for any booklet widget shown from a new route.
+
+### Known limits
+- "Once per stamp" is per app session. Re-confirming an event that was
+  already confirmed in an earlier session would show the ceremony again,
+  because `confirmAttendance` returns the existing row. Neither event
+  surface offers confirmation once attendance exists, so this was not
+  guarded against further.
+- The five call sites were not pumped in widget tests: they build their
+  repositories against `Supabase.instance.client`, the same limitation as
+  `add_visit_sheet_shell_test.dart`. They were checked by reading. The
+  simulator check used a throwaway preview with fixture stamps rather
+  than a real save, so nothing was written to production.
+
 ---
 
 ## v1.4.0 (17) — 2026-10-30

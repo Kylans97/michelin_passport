@@ -30,6 +30,7 @@ import '../../models/going_member_count.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
 import '../hotels/hotel_detail_screen.dart';
+import '../passport/stamp_ceremony.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'friends_going_view_model.dart';
 import 'going_member_count_format.dart';
@@ -559,6 +560,12 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         // best-effort cleanup succeeded.
       }
     }
+
+    // The Passport stamp this attendance just earned, pressed in before
+    // the optional rating sheet — never for Interested/Going, which never
+    // reach this method.
+    if (!mounted) return;
+    await celebrateNewStamp(context, EarnedStamp.attendance(confirmed));
 
     if (!mounted) return;
     final details = await showAttendanceDetailsSheet(
