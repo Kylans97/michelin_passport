@@ -250,7 +250,10 @@ void main() {
     test(
       'visit photo tiles get a contain-fit copy; a failure is left out',
       () async {
-        final repo = PhotoRepository(client(failing: {'b.jpg'}));
+        final repo = PhotoRepository(
+          client(failing: {'b.jpg'}),
+          memberPhotoTransforms: true,
+        );
         final urls = await repo.resolveThumbnailUrls([
           'u/v/a.jpg',
           'u/v/b.jpg',
@@ -265,8 +268,19 @@ void main() {
       },
     );
 
+    test('member-photo transforms are off until the product owner decides: '
+        'no thumbnail requests, avatar signed without a transform', () async {
+      expect(memberPhotoTransformsEnabled, isFalse);
+      final photos = PhotoRepository(client());
+      expect(await photos.resolveThumbnailUrls(['u/v/a.jpg']), isEmpty);
+      expect(signBodies, isEmpty);
+
+      await ProfileRepository(client()).resolveAvatarUrl('u/1.jpg');
+      expect(signBodies.single.containsKey('transform'), isFalse);
+    });
+
     test('the avatar URL is a small copy, not the stored file', () async {
-      final repo = ProfileRepository(client());
+      final repo = ProfileRepository(client(), avatarTransforms: true);
       final url = await repo.resolveAvatarUrl('u/1.jpg');
       expect(url, contains('/render/image/sign/'));
       expect(signBodies.single['transform'], {

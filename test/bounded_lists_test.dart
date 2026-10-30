@@ -104,13 +104,19 @@ void main() {
   });
 
   group('visit covers', () {
-    // Signing answers with a render URL naming the path, so a cover's URL
-    // shows which photo was picked.
+    // Signing answers with a URL naming the path, so a cover's URL shows
+    // which photo was picked. Member-photo transforms are off by default,
+    // so covers are signed in one batch.
     http.Response sign(http.Request r) {
-      final path = r.url.path.split('/object/sign/visit-photos/').last;
-      return json({
-        'signedURL': '/render/image/sign/visit-photos/$path?token=t',
-      }, r);
+      final paths = (jsonDecode(r.body) as Map)['paths'] as List;
+      return json([
+        for (final path in paths)
+          {
+            'path': path,
+            'signedURL': '/object/sign/visit-photos/$path?token=t',
+            'error': null,
+          },
+      ], r);
     }
 
     test('read one cover per visit from get_visit_cover_photos', () async {

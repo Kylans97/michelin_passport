@@ -342,11 +342,11 @@ class EventConfirmedAttendanceRepository {
     ];
     final coverPathByAttendanceId = await _coverPhotoPaths(attendanceIds);
     // A Passport card cover, not the viewer: a copy sized for a full-width
-    // card rather than the original.
-    final coverUrls = await _photoRepo.resolveThumbnailUrls(
-      coverPathByAttendanceId.values.toList(),
-      longEdge: 1024,
-    );
+    // card when member-photo transforms are on, else the original.
+    final coverPaths = coverPathByAttendanceId.values.toList();
+    final coverUrls = _photoRepo.transformsMemberPhotos
+        ? await _photoRepo.resolveThumbnailUrls(coverPaths, longEdge: 1024)
+        : await _photoRepo.resolveDisplayUrls(coverPaths);
 
     final entries = [
       for (final row in attendanceRows)

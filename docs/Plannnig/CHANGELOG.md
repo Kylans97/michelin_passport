@@ -19,8 +19,8 @@ The format follows Keep a Changelog.
   |---|---|---|
   | Explore, each mount (measured) | 985 KB gzipped (all 3,480 restaurants + 1,830 hotels) | ~5 KB (9 + 9 rows) |
   | Venue photo on a card (one 1536x2048 original, measured) | 1.6 MB | 69 KB at 512, 274 KB at 1024 |
-  | Visit-photo tile (estimated) | the 1600 px upload, ~300–400 KB | 512 px copy, ~40–70 KB |
-  | Own avatar (estimated) | up to 1024 px, ~150 KB | 384 px copy, ~25 KB |
+  | Visit-photo tile (estimated) | the 1600 px upload, ~300–400 KB | unchanged until the switch below is on, then a 512 px copy, ~40–70 KB |
+  | Own avatar (estimated) | up to 1024 px, ~150 KB | unchanged until the switch is on, then a 384 px copy, ~25 KB |
   | The same photo seen again | downloaded again (new signed URL each time) | from disk, for 30 days |
   | Notifications | whole history | 50 per page |
 
@@ -41,12 +41,38 @@ The format follows Keep a Changelog.
     times the pixel ratio and framing zoom, in six shared sizes. It is
     contain-fit: width alone keeps the original height and distorts the
     photo, measured on production. Focus-point framing still crops on the
-    device. Visit-photo tiles and Passport event covers use signed
-    contain-fit copies, and the own avatar a 384 px copy. The full-screen
-    viewers, the framing editors and admin review keep the original. The
-    render endpoint needs the Pro plan. Production answers it, but which
-    plan the project is on still needs the product owner's confirmation.
-    On Pro, transformations are billed per origin image.
+    device. The full-screen viewers, the framing editors and admin review
+    keep the original. The project is on Pro (the product owner confirmed
+    it on 2026-10-30), which the render endpoint needs.
+  - **Member photos are not transformed yet.** Visit, stay and attendance
+    photos and avatars have signed transformed copies built and tested,
+    but they are behind `memberPhotoTransformsEnabled`, which is off. The
+    product owner hasn't decided, and the comparison below argues against
+    it. While the switch is off, those photos show the cached original,
+    exactly as before.
+  - **Cost comparison for member photos** (Pro pricing from Supabase's
+    docs, 2026-10-30): transformations are $5 per 1,000 distinct origin
+    images per billing cycle after 100. Storage is $0.0213 per GB after
+    100 GB, and egress is $0.09 per GB after 250 GB. The usage figures are
+    assumptions, not data: each active member logs 3 visits a month with
+    4 photos each, and views about 30 distinct member photos a month.
+    Each tile view saves about 300 KB once per device, since caching
+    covers repeats.
+
+    | 5,000 monthly members | Transforms | Small copy uploaded alongside |
+    |---|---|---|
+    | Running cost | ~150,000 origin images: **~$750/month** | +0.6 MB storage per member a month (3 GB/month in all), inside the 100 GB quota: **~$0** |
+    | Egress saved | ~75 GB/month, ~$7 | the same ~75 GB, ~$7 |
+    | Build work | none (built, behind the switch) | resize at upload, a second object per photo, delete both together, older photos fall back to the original |
+
+    At 1,000 members, transforms cost about $150 a month. Either way the
+    egress saved is a few dollars, because caching already removes the
+    repeat views. Transforms would cost about 100 times what they save. A
+    small copy costs almost nothing, but it is real work for little gain.
+    For avatars, setting the picker's existing `maxWidth` from 1024 to
+    512 gets most of the saving with no new mechanism. Venue photos stay
+    on transforms: they are a catalogue, not per member (6 today; 5,000 of
+    them would be about $25 a month).
   - **Disk cache** (`cached_network_image`). A signed URL is keyed on its
     bucket and path, plus the `transformations` claim of its token, so a
     thumbnail never stands in for an original. Storage answers

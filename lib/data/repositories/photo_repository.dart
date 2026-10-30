@@ -40,14 +40,29 @@ const _photoColumns =
 
 final _random = Random();
 
+/// Whether member photos (visit/stay/attendance photos and avatars) are
+/// shown as Storage-transformed copies. Off until the product owner
+/// decides: Pro bills transformations per distinct origin image per month
+/// ($5 per 1,000 after 100), and member photos, unlike the catalogue's
+/// venue photos, grow with every member. The cost comparison against
+/// uploading a small copy alongside each photo is in the 2026-10-30
+/// changelog entry. Off, tiles and covers show the (1600 px, cached)
+/// original, exactly as before that pass.
+const memberPhotoTransformsEnabled = false;
+
 /// Long edge of a visit photo's grid/tile copy — a 84-120 pt tile at 3x
 /// with room for cover cropping. Uploads are already capped at 1600 px.
 const visitPhotoThumbnailEdge = 512;
 
 class PhotoRepository {
-  PhotoRepository(this._client);
+  PhotoRepository(this._client, {bool? memberPhotoTransforms})
+    : transformsMemberPhotos =
+          memberPhotoTransforms ?? memberPhotoTransformsEnabled;
 
   final SupabaseClient _client;
+
+  /// See [memberPhotoTransformsEnabled]; a parameter only for tests.
+  final bool transformsMemberPhotos;
 
   // Every photo attached to one visit/stay, newest-taken first. Loaded by
   // visit_id — never by the venue's id — so repeat visits/stays to the
@@ -90,11 +105,13 @@ class PhotoRepository {
   // Storage's batch signing endpoint takes no transform, but each request
   // is a few hundred bytes against a 300-400 KB original saved. A path that
   // fails to sign is left out; callers fall back to the original's URL.
+  // Empty, with no request, while [transformsMemberPhotos] is off.
   Future<Map<String, String>> resolveThumbnailUrls(
     List<String> storagePaths, {
     int longEdge = visitPhotoThumbnailEdge,
     int expiresInSeconds = 3600,
   }) async {
+    if (!transformsMemberPhotos) return {};
     final bucket = _client.storage.from(visitPhotosBucket);
     final signed = await Future.wait([
       for (final path in storagePaths.toSet())
@@ -145,10 +162,12 @@ class PhotoRepository {
     if (visitIds.isEmpty) return {};
     List rows;
     try {
-      rows = await _client.rpc(
-        'get_visit_cover_photos',
-        params: {'p_visit_ids': visitIds},
-      ) as List;
+      rows =
+          await _client.rpc(
+                'get_visit_cover_photos',
+                params: {'p_visit_ids': visitIds},
+              )
+              as List;
     } on PostgrestException catch (e) {
       if (e.code != 'PGRST202') rethrow;
       rows = await _client
@@ -165,8 +184,12 @@ class PhotoRepository {
       if (visitId == null) continue;
       pathByVisitId.putIfAbsent(visitId, () => map['storage_path'] as String);
     }
-    // Covers are small tiles, never the viewer — the thumbnail copy.
-    final urlByPath = await resolveThumbnailUrls(pathByVisitId.values.toList());
+    // Covers are small tiles, never the viewer — the thumbnail copy when
+    // member-photo transforms are on, else one batch of originals.
+    final paths = pathByVisitId.values.toList();
+    final urlByPath = transformsMemberPhotos
+        ? await resolveThumbnailUrls(paths)
+        : await resolveDisplayUrls(paths);
     return {
       for (final entry in pathByVisitId.entries)
         if (urlByPath[entry.value] != null) entry.key: urlByPath[entry.value]!,

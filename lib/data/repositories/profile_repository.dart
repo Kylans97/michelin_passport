@@ -9,6 +9,7 @@ import '../../models/venue_country.dart';
 // elsewhere by keeping country_lookup.dart's helpers as free functions
 // rather than static methods.
 import 'country_lookup.dart' as country_lookup;
+import 'photo_repository.dart' show memberPhotoTransformsEnabled;
 
 /// Long edge of the avatar copy every avatar slot shows (largest: Profile's
 /// ~120 pt circle at 3x). Centre-cropped square, matching MemberAvatar's own
@@ -27,9 +28,13 @@ const avatarBucket = 'profile-photos';
 final _avatarRandom = Random();
 
 class ProfileRepository {
-  ProfileRepository(this._client);
+  ProfileRepository(this._client, {bool? avatarTransforms})
+    : _avatarTransforms = avatarTransforms ?? memberPhotoTransformsEnabled;
 
   final SupabaseClient _client;
+
+  // See memberPhotoTransformsEnabled; a parameter only for tests.
+  final bool _avatarTransforms;
 
   Future<UserProfile> getProfile({
     required String userId,
@@ -284,10 +289,12 @@ class ProfileRepository {
             expiresInSeconds,
             // Avatars show at most ~120 pt, as a centred circle crop; the
             // stored file is up to 1024 px.
-            transform: const TransformOptions(
-              width: avatarDisplayEdge,
-              height: avatarDisplayEdge,
-            ),
+            transform: _avatarTransforms
+                ? const TransformOptions(
+                    width: avatarDisplayEdge,
+                    height: avatarDisplayEdge,
+                  )
+                : null,
           );
     } catch (_) {
       return null;
