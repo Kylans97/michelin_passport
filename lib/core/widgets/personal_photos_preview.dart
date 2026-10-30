@@ -5,6 +5,7 @@ import '../../features/photos/photo_viewer_screen.dart';
 import '../../models/visit_photo.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_spacing.dart';
+import 'app_network_image.dart';
 
 /// A compact, read-only preview of the most recent visit/stay's photos —
 /// the "personal photos" slice of Restaurant/Hotel Detail's hierarchy.
@@ -25,6 +26,9 @@ class _PersonalPhotosPreviewState extends State<PersonalPhotosPreview> {
   late final _repo = PhotoRepository(Supabase.instance.client);
   List<VisitPhoto>? _photos;
   Map<String, String> _urls = {};
+  // What the tiles show: the small copy, else the original. The viewer
+  // keeps [_urls].
+  Map<String, String> _thumbnailUrls = {};
 
   @override
   void initState() {
@@ -41,13 +45,16 @@ class _PersonalPhotosPreviewState extends State<PersonalPhotosPreview> {
   Future<void> _load() async {
     try {
       final photos = await _repo.loadPhotosForVisit(widget.latestVisitId);
-      final urls = await _repo.resolveDisplayUrls([
-        for (final p in photos) p.storagePath,
-      ]);
+      final paths = [for (final p in photos) p.storagePath];
+      final (urls, thumbnails) = await (
+        _repo.resolveDisplayUrls(paths),
+        _repo.resolveThumbnailUrls(paths),
+      ).wait;
       if (!mounted) return;
       setState(() {
         _photos = photos;
         _urls = urls;
+        _thumbnailUrls = {...urls, ...thumbnails};
       });
     } catch (_) {
       // A failed preview load just leaves the strip empty — the real
@@ -67,7 +74,7 @@ class _PersonalPhotosPreviewState extends State<PersonalPhotosPreview> {
         itemCount: photos.length,
         separatorBuilder: (_, _) => const SizedBox(width: CsSpacing.sm),
         itemBuilder: (context, i) {
-          final url = _urls[photos[i].storagePath];
+          final url = _thumbnailUrls[photos[i].storagePath];
           return ClipRRect(
             borderRadius: BorderRadius.circular(CsRadius.small),
             child: GestureDetector(
@@ -86,7 +93,7 @@ class _PersonalPhotosPreviewState extends State<PersonalPhotosPreview> {
                 height: 84,
                 child: url == null
                     ? const ColoredBox(color: AppColors.warmWhite)
-                    : Image.network(
+                    : AppNetworkImage(
                         url,
                         fit: BoxFit.cover,
                         errorBuilder: (_, _, _) =>

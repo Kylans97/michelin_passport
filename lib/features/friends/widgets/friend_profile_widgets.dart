@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// Photo, or an initial in Cormorant — this screen's own small identity
 /// component (distinct from [FriendsStack]'s multi-avatar stack).
@@ -46,7 +47,7 @@ class FriendProfileAvatar extends StatelessWidget {
         border: Border.all(color: ringColor, width: 1),
       ),
       child: (photo != null && photo.isNotEmpty)
-          ? Image.network(
+          ? AppNetworkImage(
               photo,
               fit: BoxFit.cover,
               errorBuilder: (_, _, _) => _InitialGlyph(
@@ -124,7 +125,7 @@ class PhotoOrTile extends StatelessWidget {
           border: Border.all(color: AppColors.gold600, width: 1),
         ),
         child: (photo != null && photo.isNotEmpty)
-            ? Image.network(
+            ? AppNetworkImage(
                 photo,
                 fit: BoxFit.cover,
                 errorBuilder: (_, _, _) => _TileInitial(venueName: venueName),
@@ -185,7 +186,7 @@ class RoundVenueThumbnail extends StatelessWidget {
         border: Border.all(color: AppColors.gold600, width: 1),
       ),
       child: (photo != null && photo.isNotEmpty)
-          ? Image.network(
+          ? AppNetworkImage(
               photo,
               fit: BoxFit.cover,
               errorBuilder: (_, _, _) => Center(

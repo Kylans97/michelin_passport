@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// COMMUNITY & FRIENDS FOUNDATION V1 — the shared editorial section-title
 /// style every major Community/Friends section uses, promoted from
@@ -187,7 +188,7 @@ class CommunityAvatarCircle extends StatelessWidget {
       alignment: Alignment.center,
       child: (url != null && url.isNotEmpty)
           ? ClipOval(
-              child: Image.network(
+              child: AppNetworkImage(
                 url,
                 width: size,
                 height: size,

@@ -40,6 +40,10 @@ const _photoColumns =
 
 final _random = Random();
 
+/// Long edge of a visit photo's grid/tile copy — a 84-120 pt tile at 3x
+/// with room for cover cropping. Uploads are already capped at 1600 px.
+const visitPhotoThumbnailEdge = 512;
+
 class PhotoRepository {
   PhotoRepository(this._client);
 
@@ -78,6 +82,38 @@ class PhotoRepository {
     };
   }
 
+  // Signed URLs for smaller copies of the same photos, for grids, tiles
+  // and covers — never the full-screen viewer, which keeps
+  // [resolveDisplayUrls]. Fit inside [longEdge] x [longEdge] with the
+  // photo's own aspect ratio (resize=contain), so the tile's BoxFit.cover
+  // crops exactly as it did on the original. One request per path:
+  // Storage's batch signing endpoint takes no transform, but each request
+  // is a few hundred bytes against a 300-400 KB original saved. A path that
+  // fails to sign is left out; callers fall back to the original's URL.
+  Future<Map<String, String>> resolveThumbnailUrls(
+    List<String> storagePaths, {
+    int longEdge = visitPhotoThumbnailEdge,
+    int expiresInSeconds = 3600,
+  }) async {
+    final bucket = _client.storage.from(visitPhotosBucket);
+    final signed = await Future.wait([
+      for (final path in storagePaths.toSet())
+        bucket
+            .createSignedUrl(
+              path,
+              expiresInSeconds,
+              transform: TransformOptions(
+                width: longEdge,
+                height: longEdge,
+                resize: ResizeMode.contain,
+              ),
+            )
+            .then<MapEntry<String, String>?>((url) => MapEntry(path, url))
+            .catchError((Object _) => null),
+    ]);
+    return Map.fromEntries(signed.nonNulls);
+  }
+
   // One signed cover-photo URL per visit id — its most-recently-taken
   // photo, if any — batched the same way
   // EventConfirmedAttendanceRepository._coverPhotoPaths batches event
@@ -113,7 +149,8 @@ class PhotoRepository {
       if (visitId == null) continue;
       pathByVisitId.putIfAbsent(visitId, () => map['storage_path'] as String);
     }
-    final urlByPath = await resolveDisplayUrls(pathByVisitId.values.toList());
+    // Covers are small tiles, never the viewer — the thumbnail copy.
+    final urlByPath = await resolveThumbnailUrls(pathByVisitId.values.toList());
     return {
       for (final entry in pathByVisitId.entries)
         if (urlByPath[entry.value] != null) entry.key: urlByPath[entry.value]!,

@@ -10,6 +10,11 @@ import '../../models/venue_country.dart';
 // rather than static methods.
 import 'country_lookup.dart' as country_lookup;
 
+/// Long edge of the avatar copy every avatar slot shows (largest: Profile's
+/// ~120 pt circle at 3x). Centre-cropped square, matching MemberAvatar's own
+/// BoxFit.cover in a circle.
+const avatarDisplayEdge = 384;
+
 // PROFILE UI REDESIGN V1 — the private Storage bucket profile photos are
 // uploaded to. NOT YET CREATED in production — see the proposed
 // migration `20260825170000_add_profile_avatar.sql` and
@@ -274,7 +279,16 @@ class ProfileRepository {
     try {
       return await _client.storage
           .from(avatarBucket)
-          .createSignedUrl(avatarPath, expiresInSeconds);
+          .createSignedUrl(
+            avatarPath,
+            expiresInSeconds,
+            // Avatars show at most ~120 pt, as a centred circle crop; the
+            // stored file is up to 1024 px.
+            transform: const TransformOptions(
+              width: avatarDisplayEdge,
+              height: avatarDisplayEdge,
+            ),
+          );
     } catch (_) {
       return null;
     }

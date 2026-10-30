@@ -117,9 +117,7 @@ void main() {
         for (var i = 30; i < 160; i++) restaurant(i, stars: 3),
         for (var i = 160; i < 3000; i++) restaurant(i, stars: i % 3),
       ];
-      final repo = RestaurantRepository(
-        clientWith({'restaurants_full': rows}),
-      );
+      final repo = RestaurantRepository(clientWith({'restaurants_full': rows}));
       final candidates = await repo.getDiscoveryCandidates();
       final all = rows.map(Restaurant.fromJson).toList();
 
@@ -131,35 +129,34 @@ void main() {
       expect(rowsServed, 9);
     });
 
-    test('fetch the whole tie group when it straddles the eighth place, '
-        'so the client-side name order decides, not the server collation', () async {
-      // Two ranked three-stars, then 200 unranked three-stars whose names
-      // sort differently by code unit (Dart) than by id (server).
-      final rows = [
-        restaurant(0, stars: 3, rank: 1),
-        restaurant(1, stars: 3, rank: 2),
-        for (var i = 2; i < 202; i++)
-          restaurant(
-            i,
-            stars: 3,
-            name: i.isEven ? 'Ébène $i' : 'auberge $i',
-          ),
-        restaurant(202, stars: 3, name: 'Alpha'),
-        for (var i = 203; i < 1500; i++) restaurant(i, stars: 2, rank: 3),
-      ];
-      final repo = RestaurantRepository(
-        clientWith({'restaurants_full': rows}),
-      );
-      final candidates = await repo.getDiscoveryCandidates();
-      final all = rows.map(Restaurant.fromJson).toList();
+    test(
+      'fetch the whole tie group when it straddles the eighth place, '
+      'so the client-side name order decides, not the server collation',
+      () async {
+        // Two ranked three-stars, then 200 unranked three-stars whose names
+        // sort differently by code unit (Dart) than by id (server).
+        final rows = [
+          restaurant(0, stars: 3, rank: 1),
+          restaurant(1, stars: 3, rank: 2),
+          for (var i = 2; i < 202; i++)
+            restaurant(i, stars: 3, name: i.isEven ? 'Ébène $i' : 'auberge $i'),
+          restaurant(202, stars: 3, name: 'Alpha'),
+          for (var i = 203; i < 1500; i++) restaurant(i, stars: 2, rank: 3),
+        ];
+        final repo = RestaurantRepository(
+          clientWith({'restaurants_full': rows}),
+        );
+        final candidates = await repo.getDiscoveryCandidates();
+        final all = rows.map(Restaurant.fromJson).toList();
 
-      final picked = ids(selectDiscoveryRestaurants(candidates));
-      expect(picked, ids(selectDiscoveryRestaurants(all)));
-      expect(picked, contains('r00202')); // 'Alpha', last by id
-      expect(requests, hasLength(2));
-      expect(requests.last.queryParameters['michelin_stars'], 'eq.3');
-      expect(requests.last.queryParameters['worlds_50_best_rank'], 'is.null');
-    });
+        final picked = ids(selectDiscoveryRestaurants(candidates));
+        expect(picked, ids(selectDiscoveryRestaurants(all)));
+        expect(picked, contains('r00202')); // 'Alpha', last by id
+        expect(requests, hasLength(2));
+        expect(requests.last.queryParameters['michelin_stars'], 'eq.3');
+        expect(requests.last.queryParameters['worlds_50_best_rank'], 'is.null');
+      },
+    );
 
     test('handle a catalogue with fewer starred rows than the limit', () async {
       final rows = [
@@ -167,9 +164,7 @@ void main() {
         restaurant(1, stars: 0),
         for (var i = 2; i < 20; i++) restaurant(i),
       ];
-      final repo = RestaurantRepository(
-        clientWith({'restaurants_full': rows}),
-      );
+      final repo = RestaurantRepository(clientWith({'restaurants_full': rows}));
       final candidates = await repo.getDiscoveryCandidates();
       final all = rows.map(Restaurant.fromJson).toList();
 
@@ -179,40 +174,44 @@ void main() {
       );
     });
 
-    test('return everything when the catalogue is smaller than the limit',
-        () async {
-      final rows = [for (var i = 0; i < 5; i++) restaurant(i, stars: 2)];
-      final repo = RestaurantRepository(
-        clientWith({'restaurants_full': rows}),
-      );
-      expect(await repo.getDiscoveryCandidates(), hasLength(5));
-      expect(requests, hasLength(1));
-    });
-  });
-
-  test('Stay a Little Longer candidates match the full-catalogue pick',
+    test(
+      'return everything when the catalogue is smaller than the limit',
       () async {
-    final rows = [
-      for (var i = 0; i < 1830; i++)
-        {
-          'id': 'h${i.toString().padLeft(5, '0')}',
-          'name': 'Hotel ${1830 - i}',
-          'michelin_keys': i < 116 ? 3 : (i < 900 ? (i % 2) + 1 : null),
-          'worlds_50_best_rank': i % 40 == 0 ? i ~/ 40 + 1 : null,
-        },
-    ];
-    final repo = HotelRepository(clientWith({'hotels_full': rows}));
-    final candidates = await repo.getDiscoveryCandidates();
-    final all = rows.map(Hotel.fromJson).toList();
-
-    // Only three ranked three-Key hotels, so the unranked three-Key tie
-    // group (113 rows) comes back too — still a fraction of 1,830.
-    expect(rowsServed, 9 + 113);
-    expect(
-      ids(selectDiscoveryHotels(candidates)),
-      ids(selectDiscoveryHotels(all)),
+        final rows = [for (var i = 0; i < 5; i++) restaurant(i, stars: 2)];
+        final repo = RestaurantRepository(
+          clientWith({'restaurants_full': rows}),
+        );
+        expect(await repo.getDiscoveryCandidates(), hasLength(5));
+        expect(requests, hasLength(1));
+      },
     );
   });
+
+  test(
+    'Stay a Little Longer candidates match the full-catalogue pick',
+    () async {
+      final rows = [
+        for (var i = 0; i < 1830; i++)
+          {
+            'id': 'h${i.toString().padLeft(5, '0')}',
+            'name': 'Hotel ${1830 - i}',
+            'michelin_keys': i < 116 ? 3 : (i < 900 ? (i % 2) + 1 : null),
+            'worlds_50_best_rank': i % 40 == 0 ? i ~/ 40 + 1 : null,
+          },
+      ];
+      final repo = HotelRepository(clientWith({'hotels_full': rows}));
+      final candidates = await repo.getDiscoveryCandidates();
+      final all = rows.map(Hotel.fromJson).toList();
+
+      // Only three ranked three-Key hotels, so the unranked three-Key tie
+      // group (113 rows) comes back too — still a fraction of 1,830.
+      expect(rowsServed, 9 + 113);
+      expect(
+        ids(selectDiscoveryHotels(candidates)),
+        ids(selectDiscoveryHotels(all)),
+      );
+    },
+  );
 
   test('Fresh Finds candidates are the newest reported rows only', () async {
     final rows = [
@@ -221,7 +220,8 @@ void main() {
         restaurant(
           i,
           reportId: 'm$i',
-          createdAt: '2026-10-${(i - 1999).toString().padLeft(2, '0')}T00:00:00Z',
+          createdAt:
+              '2026-10-${(i - 1999).toString().padLeft(2, '0')}T00:00:00Z',
         ),
     ];
     final repo = RestaurantRepository(clientWith({'restaurants_full': rows}));

@@ -6,6 +6,7 @@ import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../models/event.dart';
 import '../../../models/event_relevance_reason.dart';
 import '../event_date_format.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// One event in the discovery list — an atmospheric banner image (fixed
 /// 16:9, BoxFit.cover) across the top when [Event.imageUrl] is populated,
@@ -127,7 +128,7 @@ class _EventImage extends StatelessWidget {
     if (imageUrl == null || imageUrl!.isEmpty) {
       return const CsImagePlaceholder();
     }
-    return Image.network(
+    return AppNetworkImage(
       imageUrl!,
       fit: BoxFit.cover,
       errorBuilder: (_, _, _) => const CsImagePlaceholder(),

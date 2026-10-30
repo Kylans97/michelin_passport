@@ -27,6 +27,7 @@ import 'venue_events_screen.dart';
 import 'venue_photos_screen.dart';
 import 'venue_preview_photo_merge.dart';
 import 'venue_profile_screen.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// The one venue-ops inbox this app has — same address
 /// notifications_screen.dart's own _kClaimQuestionsEmail already sends
@@ -439,8 +440,9 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                 height: isPrivateChef ? 90 : 72,
                 child: FramedImage(
                   framing: isPrivateChef ? card.cardFraming.forChefCard : card.cardFraming,
-                  builder: (alignment) => Image.network(
+                  builder: (alignment) => AppNetworkImage(
                     card.imageUrl,
+                    zoom: (isPrivateChef ? card.cardFraming.forChefCard : card.cardFraming).zoom,
                     fit: BoxFit.cover,
                     alignment: alignment,
                     errorBuilder: (_, _, _) => const SizedBox.shrink(),

@@ -341,8 +341,11 @@ class EventConfirmedAttendanceRepository {
       for (final row in attendanceRows) row['id'] as String,
     ];
     final coverPathByAttendanceId = await _coverPhotoPaths(attendanceIds);
-    final coverUrls = await _photoRepo.resolveDisplayUrls(
+    // A Passport card cover, not the viewer: a copy sized for a full-width
+    // card rather than the original.
+    final coverUrls = await _photoRepo.resolveThumbnailUrls(
       coverPathByAttendanceId.values.toList(),
+      longEdge: 1024,
     );
 
     final entries = [

@@ -42,6 +42,7 @@ import 'widgets/event_friends_going_section.dart';
 import 'widgets/event_friends_interested_section.dart';
 import 'widgets/event_intent_controls.dart';
 import 'widgets/event_meta_section.dart';
+import '../../core/widgets/app_network_image.dart';
 
 // Smaller than CsImagePlaceholder's own 0.4 default: a hero is a much
 // larger, wider area than a card thumbnail, so the same relative scale
@@ -842,7 +843,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
 
     final hasImage = event.imageUrl != null && event.imageUrl!.isNotEmpty;
     final backgroundImage = hasImage
-        ? Image.network(
+        ? AppNetworkImage(
             event.imageUrl!,
             fit: BoxFit.cover,
             errorBuilder: (_, _, _) =>

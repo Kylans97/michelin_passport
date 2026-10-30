@@ -13,6 +13,7 @@ import '../../models/venue_photo_submission_status.dart';
 import 'adjust_photo_framing_screen.dart';
 import 'card_photo_screen.dart';
 import 'upload_venue_photo_screen.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// Photos, reached from a venue's landing page (VenueManagementScreen).
 /// Split out of the former one-screen VenueManagementScreen unchanged
@@ -365,8 +366,9 @@ class _PublishedPhotoRow extends StatelessWidget {
               height: 56,
               child: FramedImage(
                 framing: isPrivateChef ? photo.framing.forChef : photo.framing,
-                builder: (alignment) => Image.network(
+                builder: (alignment) => AppNetworkImage(
                   photo.imageUrl,
+                  zoom: (isPrivateChef ? photo.framing.forChef : photo.framing).zoom,
                   fit: BoxFit.cover,
                   alignment: alignment,
                   errorBuilder: (_, _, _) => const SizedBox.shrink(),
@@ -462,7 +464,7 @@ class _CardPhotoSection extends StatelessWidget {
                   framing: isPrivateChef
                       ? card.cardFraming.forChefCard
                       : card.cardFraming,
-                  builder: (alignment) => Image.network(
+                  builder: (alignment) => AppNetworkImage(
                     card.imageUrl,
                     fit: BoxFit.cover,
                     alignment: alignment,
@@ -518,7 +520,7 @@ class _OpenSubmissionRow extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: imageUrl == null
                 ? const SizedBox(width: 56, height: 56)
-                : Image.network(
+                : AppNetworkImage(
                     imageUrl!,
                     width: 56,
                     height: 56,

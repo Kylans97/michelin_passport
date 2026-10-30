@@ -3,6 +3,7 @@ import '../theme/app_spacing.dart';
 import 'cs_image_placeholder.dart';
 import '../../models/photo_framing.dart';
 import 'framed_image.dart';
+import 'app_network_image.dart';
 
 /// A photo-first thumbnail slot for a discovery card (Explore) — shared by
 /// [RestaurantTile] and [HotelTile], so this one widget covers both.
@@ -69,8 +70,9 @@ class VenueThumbnail extends StatelessWidget {
         height: h,
         child: FramedImage(
           framing: framing,
-          builder: (alignment) => Image.network(
+          builder: (alignment) => AppNetworkImage(
             imageUrl!,
+            zoom: framing.zoom,
             fit: BoxFit.cover,
             alignment: alignment,
             errorBuilder: (_, _, _) => CsImagePlaceholder(

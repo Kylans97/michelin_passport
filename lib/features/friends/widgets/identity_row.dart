@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// A small avatar+name+@username row — the one visual shape shared by the
 /// Friends list, incoming/outgoing requests, search results, and the
@@ -116,7 +117,7 @@ class _RowAvatar extends StatelessWidget {
       alignment: Alignment.center,
       child: (url != null && url.isNotEmpty)
           ? ClipOval(
-              child: Image.network(
+              child: AppNetworkImage(
                 url,
                 width: 44,
                 height: 44,

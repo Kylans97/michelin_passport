@@ -29,6 +29,7 @@ import 'tabs/friend_profile_passport_tab.dart';
 import 'tabs/friend_profile_together_tab.dart';
 import 'widgets/friend_profile_header.dart';
 import 'widgets/friend_profile_plan_dinner_sheet.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// One (venue, visit) pair — [VenueEntry] groups every visit under its
 /// venue for Passport's own grouped display; this screen instead flattens
@@ -680,7 +681,7 @@ class _Hero extends StatelessWidget {
                   alignment: Alignment.center,
                   child: (identity.avatarUrl != null && identity.avatarUrl!.isNotEmpty)
                       ? ClipOval(
-                          child: Image.network(
+                          child: AppNetworkImage(
                             identity.avatarUrl!,
                             width: 96,
                             height: 96,

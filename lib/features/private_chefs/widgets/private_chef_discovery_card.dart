@@ -7,6 +7,7 @@ import '../../../models/private_chef.dart';
 import '../private_chef_descriptors.dart';
 import '../../../core/widgets/framed_image.dart';
 import '../../../models/photo_framing.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// The Private Chefs landing's editorial discovery card (Step 2C) —
 /// replaces the compact circular-avatar [PrivateChefRow]/[PrivateChefAvatar]
@@ -152,8 +153,9 @@ class _ChefCoverPhoto extends StatelessWidget {
         borderRadius: radius,
         child: FramedImage(
           framing: framing.forChefCard,
-          builder: (alignment) => Image.network(
+          builder: (alignment) => AppNetworkImage(
             url,
+            zoom: framing.forChefCard.zoom,
             fit: BoxFit.cover,
             alignment: alignment,
             errorBuilder: (_, _, _) =>

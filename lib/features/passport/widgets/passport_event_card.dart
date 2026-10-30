@@ -8,6 +8,7 @@ import '../../../core/widgets/cs_place_card.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../events/event_date_format.dart';
 import '../../events/event_detail_screen.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// One confirmed-attendance Event in the Passport list — Events V2 Step 4
 /// §15. Built on the same [CsPlaceCard] shell as
@@ -35,7 +36,7 @@ class PassportEventCard extends StatelessWidget {
     if (coverUrl != null && coverUrl.isNotEmpty) {
       return ClipRRect(
         borderRadius: radius,
-        child: Image.network(
+        child: AppNetworkImage(
           coverUrl,
           fit: BoxFit.cover,
           errorBuilder: (_, _, _) => _fallbackImage(eventImageUrl, radius),
@@ -47,7 +48,7 @@ class PassportEventCard extends StatelessWidget {
 
   Widget _fallbackImage(String? eventImageUrl, BorderRadius radius) {
     if (eventImageUrl != null && eventImageUrl.isNotEmpty) {
-      return Image.network(
+      return AppNetworkImage(
         eventImageUrl,
         fit: BoxFit.cover,
         errorBuilder: (_, _, _) => CsImagePlaceholder(borderRadius: radius),

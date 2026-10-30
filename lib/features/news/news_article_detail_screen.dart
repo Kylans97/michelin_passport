@@ -19,6 +19,7 @@ import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'news_screen.dart' show formatNewsDate;
+import '../../core/widgets/app_network_image.dart';
 
 /// Takes an already-loaded [NewsArticle] — no second fetch-by-id round
 /// trip, matching Restaurant/Hotel Detail's "caller already has the
@@ -129,7 +130,7 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
             expandedHeight: hasImage ? 240 : kToolbarHeight,
             flexibleSpace: hasImage
                 ? FlexibleSpaceBar(
-                    background: Image.network(
+                    background: AppNetworkImage(
                       article.imageUrl!,
                       fit: BoxFit.cover,
                       // Per-article crop focus (news_articles.focus_x/

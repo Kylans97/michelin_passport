@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_typography.dart';
+import 'app_network_image.dart';
 
 /// PROFILE UI REDESIGN V1 — the ONE canonical Mantelier member avatar.
 /// Intended to become the single mechanism every member/social surface
@@ -58,7 +59,7 @@ class MemberAvatar extends StatelessWidget {
       alignment: Alignment.center,
       child: (url != null && url.isNotEmpty)
           ? ClipOval(
-              child: Image.network(
+              child: AppNetworkImage(
                 url,
                 width: size,
                 height: size,

@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import '../../features/reports/widgets/report_content_sheet.dart';
 import '../../models/content_report.dart';
@@ -10,6 +12,7 @@ import 'editorial_back_button.dart';
 import 'framed_image.dart';
 import 'follow_toggle_button.dart';
 import 'hero_photo_chevron.dart';
+import 'app_network_image.dart';
 
 /// The current-generation hero for Restaurant/Hotel Detail (UI Consistency
 /// Step 1) — a fresh, Cs-token-based primitive, deliberately NOT a
@@ -168,7 +171,10 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
     // works, that photo's own Image.network just falls back to the
     // gradient via errorBuilder when its page is actually built.
     precacheImage(
-      NetworkImage(widget.imageUrls[nextIndex]),
+      appImageProvider(
+        widget.imageUrls[nextIndex],
+        longEdgePx: _variantSize(_framingAt(nextIndex)),
+      ),
       context,
       onError: (_, _) {},
     );
@@ -192,6 +198,15 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
       curve: Curves.easeOutCubic,
     );
   }
+
+  // One variant size for the shown photo and the precached next one, so
+  // the precache fills the cache entry the page then reads — measured from
+  // the screen, since the hero spans it at [VenueDetailHero.expandedHeight].
+  int _variantSize(PhotoFraming framing) => displayImageSizeFor(
+    context,
+    math.max(MediaQuery.sizeOf(context).width, widget.expandedHeight),
+    zoom: framing.zoom,
+  );
 
   PhotoFraming _framingAt(int index) => index < widget.imageFramings.length
       ? widget.imageFramings[index]
@@ -258,8 +273,9 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
                 onPageChanged: _onGalleryPageChanged,
                 itemBuilder: (context, index) => FramedImage(
                   framing: _framingAt(index),
-                  builder: (alignment) => Image.network(
+                  builder: (alignment) => AppNetworkImage(
                     imageUrls[index],
+                    longEdgePx: _variantSize(_framingAt(index)),
                     fit: BoxFit.cover,
                     alignment: alignment,
                     loadingBuilder: (_, child, progress) =>
@@ -271,8 +287,9 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
             else if (hasPhoto)
               FramedImage(
                 framing: _framingAt(0),
-                builder: (alignment) => Image.network(
+                builder: (alignment) => AppNetworkImage(
                   imageUrls.first,
+                  longEdgePx: _variantSize(_framingAt(0)),
                   fit: BoxFit.cover,
                   alignment: alignment,
                   // While it loads, the same gradient the no-photo state

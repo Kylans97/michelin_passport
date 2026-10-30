@@ -10,6 +10,7 @@ import '../../models/managed_venue.dart';
 import '../../models/photo_framing.dart';
 import '../../models/published_venue_photo.dart';
 import 'widgets/photo_framing_editor.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// Re-frames one of a venue's PUBLISHED photos — pushed from
 /// VenueManagementScreen's photo rows. Saving goes live straight away
@@ -111,7 +112,7 @@ class _AdjustPhotoFramingScreenState extends State<AdjustPhotoFramingScreen> {
             ),
             const SizedBox(height: CsSpacing.md),
             PhotoFramingEditor(
-              image: widget.image ?? NetworkImage(widget.photo.imageUrl),
+              image: widget.image ?? appImageProvider(widget.photo.imageUrl),
               venueTypeWireValue: widget.venue.venueTypeWireValue,
               initial: _start,
               defaultFraming: _isChef

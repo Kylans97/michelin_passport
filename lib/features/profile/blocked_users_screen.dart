@@ -6,6 +6,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../models/blocked_user.dart';
+import '../../core/widgets/app_network_image.dart';
 
 /// Privacy → Blocked users — the other half of blocking (Apple's own
 /// requirement: a block affordance must not ship without this list, or
@@ -227,7 +228,7 @@ class _BlockedUserRow extends StatelessWidget {
         backgroundColor: AppColors.ivory,
         backgroundImage:
             (user.avatarUrl != null && user.avatarUrl!.isNotEmpty)
-            ? NetworkImage(user.avatarUrl!)
+            ? appImageProvider(user.avatarUrl!)
             : null,
         child: (user.avatarUrl == null || user.avatarUrl!.isEmpty)
             ? Text(

@@ -8,6 +8,7 @@ import '../../../models/going_member_count.dart';
 import '../../events/event_date_format.dart';
 import '../../events/going_member_count_format.dart';
 import 'community_shared.dart';
+import '../../../core/widgets/app_network_image.dart';
 
 /// COMMUNITY V1 UI REFINEMENT — a compact, editorial "Upcoming Events"
 /// preview reusing the existing Events infrastructure: [events] arrives
@@ -187,7 +188,7 @@ class _EventThumbnail extends StatelessWidget {
     }
     return ClipRRect(
       borderRadius: radius,
-      child: Image.network(
+      child: AppNetworkImage(
         imageUrl!,
         width: _EventPreviewRow._thumbnailSize,
         height: _EventPreviewRow._thumbnailSize,
