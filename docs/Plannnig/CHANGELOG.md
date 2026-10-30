@@ -36,9 +36,8 @@ The format follows Keep a Changelog.
   allow-list, returns a `303` to that URL. GoTrue confirms the email
   *before* it redirects, so the account was always fine. The phone was
   sent to `localhost`, where nothing answers. `signUp()` now passes
-  `https://mantelier.app/auth/confirm`. **This needs production Auth
-  changes, which are not made yet** (see below). Until they are, GoTrue
-  rejects the new redirect and falls back to the same Site URL.
+  `https://mantelier.app/auth/confirm`. This needed the production Auth
+  changes and site deploy below, both done on 2026-10-30.
   - **Near-miss:** gotrue-dart's `resend()` sends no PKCE code challenge,
     so a resent confirmation comes back with implicit-flow tokens. In PKCE
     mode, supabase_flutter ignores those tokens. Sent to the Universal
@@ -61,6 +60,14 @@ The format follows Keep a Changelog.
     `.well-known/apple-app-site-association`) to mantelier.app.
     `supabase/config.toml` lists the same redirect URLs for the local
     stack only.
+  - **Done, 2026-10-30.** The product owner changed both dashboard
+    settings. The `/verify` probe now redirects to
+    `https://mantelier.app/auth/confirm`, and accepts `/auth/confirmed`.
+    `site/` was deployed with `wrangler pages deploy … --project-name
+    mantelier --branch main`. mantelier.app serves `/auth/confirm`,
+    `/auth/confirmed` (through the rewrite) and the new AASA, and Apple's
+    AASA CDN already has the `/auth/confirm` entry. A full sign-up on a
+    device has not been run yet.
 
 ---
 
