@@ -2,7 +2,10 @@
 
 Status: **PREPARED, NOT APPLIED.** Generated from production's export of
 2026-10-29 22:53 UTC (unchanged from the 22:22 export the research started
-from). To apply, run in order:
+from). Revised 2026-10-30 after the product owner's decision on coordinates
+("google in China is not very accurate sadly, let's use hotel and restaurant
+own websites to confirm the actual address"): see "Coordinates" and
+"Addresses on the venue's own site". To apply, run in order:
 
 1. `supabase/migrations/20261023150000_add_cn_2026_star_and_key_cities.sql`
    (21 towns), with `supabase db push --linked`
@@ -11,7 +14,9 @@ from). To apply, run in order:
 
 Review `match_report.csv` first. **The decisions waiting for you:**
 
-- **The coordinate datum (QA-290).** This one matters most. See "Coordinates" below.
+- **The five corrected points (QA-290).** Decided; check the list in "Coordinates".
+- **Addresses not confirmed on the venue's own site (QA-299)**, including
+  Banyan Tree Chongqing Beibei, whose page has disappeared from banyantree.com.
 - **Fu Chun Ju (QA-291).** It is not linked to The PuXuan.
 - **Amanfayun (QA-292).** It is MICHELIN's missing 55th Key.
 - **Phones held back for venues without a website (QA-289).**
@@ -25,7 +30,9 @@ Review `match_report.csv` first. **The decisions waiting for you:**
 | … with a Google Place ID | **0** (QA-289) |
 | Key hotels (3/2/1) | 2/11/41, exactly MICHELIN's live Key listing (the 2026 reveal says 55: QA-292) |
 | Key hotels added | 51 (`hotel_957`–`hotel_1007`) |
-| … with website / phone | 28 / 28 |
+| … with website / phone | 41 / 41 |
+| Addresses confirmed on the venue's own site | restaurants 67 of 159 (80 have no website), Key hotels 44 of 54 (QA-299) |
+| Existing points corrected (GCJ-02 → WGS-84) | 5: Xin Rong Ji (Xinyuan South Road), King's Joy, Fu He Hui, Mandarin Oriental Shenzhen, The Peninsula Shanghai |
 | Key change on an existing hotel | Mandarin Oriental Qianmen (`hotel_704`): NULL → 3 Keys, plus its 2026 Key row |
 | Hotel links (0 before) | 15, all `exact` |
 | Existing rows filled (fill-only) | `michelin_url` for Xin Rong Ji (Xinyuan South Road) and King's Joy; King's Joy's website |
@@ -94,7 +101,7 @@ links. The `countries` row exists, with `{Asia/Shanghai, Asia/Urumqi}`.
   2026 Three-Key article lists it among the new Three-Key hotels, so the file
   sets 3 and adds the 2026 row. The update is NULL-safe (`is not distinct from`).
 
-## Coordinates: GCJ-02 (QA-290), the decision that matters most
+## Coordinates: GCJ-02 (QA-290, decided 2026-10-30)
 
 Mainland Chinese maps use **GCJ-02**, a legally mandated obfuscation of WGS-84
 that shifts points by roughly 300–700 m. `location` is `geography` SRID 4326
@@ -116,9 +123,17 @@ What this pass found:
   resort area, a mall OSM returns for "Raffles Shenzhen", and Hotel Éclat (410 m).
   Results: `_source/osm_nominatim_key_hotels_20261029.json`. **New hotel rows
   take the converted point.** The raw pin is kept in `cn_key_hotels_2026.csv`.
-- **Existing rows are not changed** (fill-only). Converting the six existing
-  CN points is a separate decision, and so is any later Place ID pass: Google's
-  China coordinates must not be copied without conversion.
+- **Five existing points are corrected** (decided by the product owner on
+  2026-10-30). Section 5a of the file moves each to MICHELIN's WGS-84 point:
+  the restaurant pin for Xin Rong Ji (Xinyuan South Road), King's Joy and Fu He
+  Hui, and the converted hotel pin for Mandarin Oriental Shenzhen and The
+  Peninsula Shanghai. All five addresses agree with MICHELIN's, and the two
+  hotels' addresses are confirmed on their own sites. The update is guarded on
+  the exported point (6 decimals) and aborts if it has changed.
+- **Mandarin Oriental Qianmen is left as it is.** Its stored point is 97 m from
+  MICHELIN's converted pin and 563 m from the raw one, so it is already WGS-84.
+- **A later Place ID pass in China** must not copy Google's coordinates without
+  conversion.
 - Hong Kong, Macau and Taiwan have no offset.
 
 **Wrong pins (QA-291).** Three restaurants inside Key hotels have MICHELIN pins
@@ -172,19 +187,65 @@ all 54 carry a Key: 2/11/41.
 - **Website and phone** were researched per hotel with
   `_source/research_brief_cn_hotels.md`, adapted from the UK brief. Raw results
   are in `cn_key_hotel_contacts_research.csv`.
-  - 28 of 51 are confirmed on the hotel's own page, matched on name, city and
-    address.
+  - 41 of 51 are confirmed on the hotel's own page, matched on name, city and
+    address. 28 came from the first pass with curl and WebFetch. 13 more came on
+    2026-10-30 in the built-in browser, where the brand site had refused curl
+    (Bvlgari, Capella, Four Seasons, Peninsula, Shangri-La, Six Senses,
+    Waldorf Astoria, Banyan Tree Ringha).
   - IHG and Marriott properties are confirmed on the brands' China mirrors
     (ihg.com.cn, marriott.com.cn). The international URL is in the notes.
-  - The other 23 refused automated access (hyatt, fourseasons, bulgarihotels,
-    capella, banyantree, sixsenses, peninsula, shangri-la, plus hilton timeouts)
-    or have no site of their own (Yanbai Villa, Deqin Meri Poodom). They stay
-    NULL (QA-289).
+  - The other 10 stay NULL (QA-289). hyatt.com shows only a bot check, even in
+    a browser: the three Park Hyatts, Andaz Shenzhen Bay, and Yangshuo Sugar
+    House via alilahotels.com. The Yihe Mansions returns 403. Banyan Tree
+    Chongqing Beibei's page is gone, and 1 Hotel Haitang Bay is renamed. Yanbai
+    Villa and Deqin Meri Poodom have no site of their own.
   - Raffles Shenzhen's only number is its reservations line. It is kept and
     labelled, as for the UK.
   - The PuXuan's and Xitan's own sites print a different number from MICHELIN's.
     The hotel's own number is carried (QA-293).
   - 1 Hotel Haitang Bay now trades as "Sunshine Yi Hotel" (QA-293).
+
+## Addresses on the venue's own site (QA-299)
+
+Requested by the product owner on 2026-10-30. Every mainland China venue's
+address was checked against its own website, not against Google, whose China
+data is GCJ-02. The brief is `_source/research_brief_cn_addresses.md`, and the
+results are in `_source/cn_address_confirmations.csv`, one row per venue with
+the address as the site prints it and the page.
+
+**Restaurants (159):**
+
+- **67 confirmed:** the site gives the same street number and road as MICHELIN.
+  - 21 of these came from the official-site pages fetched for the phone check.
+  - 46 came from the built-in browser, which renders JavaScript.
+  - Chinese-language addresses count, e.g. 金和东路20号 for "20 Jinhe East Road".
+- **1 differs:** The Hall. Its site says "No. 8 Shamao Street", while MICHELIN
+  says "8 Zhongshamao Street". It is probably the same road; MICHELIN's address
+  and pin are kept.
+- **7 print no street address:** Taian Table (Shanghai) sends it with the
+  booking. Blackswan, Old Tower and The House of Dynasties give only a building.
+  Chōwa, Canton Table and Ambré Ciel give none.
+- **4 sites are unreachable:** the three Da Dong rows (dadongdadong.com has
+  lapsed) and Wisca.
+- **80 have no official website** on MICHELIN (WeChat or booking apps only).
+  Their address is MICHELIN's.
+
+**Key hotels (54):**
+
+- **44 confirmed:** 28 in the first contacts pass, 13 in the browser, and the
+  3 production hotels.
+- **10 unreachable:** see "Key hotels".
+
+**Worth checking (QA-299):**
+
+- **Banyan Tree Chongqing Beibei:** its brand page is a 404, and it is not among
+  banyantree.com/china's 17 properties. MICHELIN still gives it a Key.
+- **Yi Long Court:** its restaurant page now redirects to The Peninsula
+  Shanghai's home page.
+
+No address or point was changed on the strength of a website alone.
+MICHELIN's addresses stand, and the five point corrections rest on the
+datum evidence above.
 
 ## Restaurant phones (QA-289)
 
@@ -237,12 +298,15 @@ unique and partial indexes and triggers for `countries`, `cities`,
 re-checked against production's catalog for this pass), and is seeded with the
 real CN export plus the CN hotels' real Key rows.
 
-- **Migration + file:** applies. The result is:
+- **Migration + file:** applies (re-run 2026-10-30 with the point corrections). The result is:
   - CN at 4/24/131 stars and 2/11/41 Keys;
   - 24 cities and 15 links;
   - new award rows of 2026 by 9 Apr 2026 (75), 18 Aug 2026 (27) and
     21 Nov 2025 (7), and of 2027 by 3 Sep 2026 (15) and 27 Oct 2026 (32);
-  - Qianmen at 3 with one current Key row.
+  - Qianmen at 3 with one current Key row;
+  - the five corrected points at MICHELIN's WGS-84 position, and Qianmen's
+    point unchanged.
+- **A stored point changed since the export:** aborts the whole file.
 - **Without the migration:** aborts, nothing applied.
 - **Re-run of the file:** aborts. **Re-run of the migration:** no-op.
 - **A renamed existing row, or a code in range already taken:** aborts the
@@ -268,4 +332,4 @@ These are MICHELIN live counts on 2026-10-29, against production
 - **The engineering CHANGELOG** (`docs/Plannnig/CHANGELOG.md`) and the
   **Michelin_Database CHANGELOG** are written when the files are applied, as for
   GB/IE.
-- **New QA ids:** QA-289–QA-294.
+- **New QA ids:** QA-289–QA-294 and QA-299 (QA-295–298 are the HK/MO/TW pass).

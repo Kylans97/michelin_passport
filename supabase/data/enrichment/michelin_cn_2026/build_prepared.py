@@ -124,7 +124,7 @@ def main():
     # ---- hotels: existing matched by MICHELIN id; the rest are new
     ex_h = {hid(h['michelin_url']): h for h in hotels if h['country'] == CC}
     hotel_by_mid = {}
-    new_hotels, key_changes, hotel_fills = [], [], []
+    new_hotels, key_changes, hotel_fills, point_fixes = [], [], [], []
     hcode = first_hcode
     for k in keyh:
         mid = k['michelin_id']
@@ -137,6 +137,14 @@ def main():
             dg = dist(h['lat'], h['lon'], k['michelin_lat'], k['michelin_lon'])
             report.append(dict(code=h['code'], name=h['name'], kind='HOTEL matched by MICHELIN id',
                                detail=f"{mid}; stored point {dg} m from MICHELIN's raw (GCJ-02) pin, {d} m from it converted to WGS-84 -- stored point not changed (QA, README Coordinates)"))
+            dr = dist(h['lat'], h['lon'], k['michelin_lat'], k['michelin_lon'])
+            if d > 25 and dr < d:
+                # the stored point sits with MICHELIN's raw GCJ-02 pin, i.e. it is GCJ-02 (from Google);
+                # the WGS-84 point is MICHELIN's pin converted. A stored point already near the converted
+                # pin (Mandarin Oriental Qianmen, 97 m) is left alone.
+                # (README "Coordinates", decided by the product owner 2026-10-30)
+                point_fixes.append(('hotels', 'hotel_code', h['code'], h['name'], h['lat'], h['lon'], float(k['lat']), float(k['lon']),
+                                    f"MICHELIN hotel pin {k['michelin_lat']}, {k['michelin_lon']} (GCJ-02) converted; stored point {dr} m from the raw pin, {d} m from the converted one"))
             if h['keys'] != keys:
                 key_changes.append((h['code'], keys, h['keys']))
                 report.append(dict(code=h['code'], name=h['name'], kind='KEY CHANGE',
@@ -267,6 +275,10 @@ def main():
         m = matched.get(e['code'])
         if not m:
             continue
+        d = dist(e['lat'], e['lon'], m['lat'], m['lon'])
+        if d > 25:
+            point_fixes.append(('restaurants', 'restaurant_code', e['code'], e['name'], e['lat'], e['lon'], float(m['lat']), float(m['lon']),
+                                f"MICHELIN restaurant pin (WGS-84); {d} m from the stored (GCJ-02, Google) point"))
         f = dict(code=e['code'])
         f['phone'] = m['phone'] if not e.get('phone') and m['phone'] else None
         f['website_url'] = m['website'] if not e.get('website_url') and m['website'] else None
@@ -295,9 +307,25 @@ def main():
             report.append(dict(code=h['code'], name=h['name'], kind='HOTEL CONTACT MISSING',
                                detail=('no website; ' if not h['website_url'] else '') + ('no phone' if not h['phone'] else '') + ' -- see cn_key_hotels_2026.csv'))
 
+    # address check on the venue's own site (_source/cn_address_confirmations.csv; product owner 2026-10-30)
+    addr = {r['ref']: r for r in csv.DictReader(open(os.path.join(HERE, '_source/cn_address_confirmations.csv')))}
+    code_of = {x['r']['michelin_url']: x['code'] for x in new}
+    code_of.update({m['michelin_url']: c for c, m in matched.items()})
+    hcode_of = {('new_' + mid if h['new'] else h['code']): h['code'] for mid, h in hotel_by_mid.items()}
+    addr_cnt = collections.Counter()
+    for ref, a in addr.items():
+        c = code_of.get(ref) or hcode_of.get(ref)
+        if not c:
+            continue
+        addr_cnt[(a['kind'], a['certainty'])] += 1
+        if a['certainty'] != 'confirmed':
+            report.append(dict(code=c, name=a['name'], kind=f"ADDRESS {a['certainty'].upper()} ON OWN SITE",
+                               detail=f"MICHELIN '{a['michelin_address']}'" + (f"; site '{a['site_address']}'" if a['site_address'] else '') + (f" ({a['source_url']})" if a['source_url'] else '') + (f": {a['notes']}" if a['notes'] else '')))
     cnt = collections.Counter(int(r['stars']) for r in research)
     keycnt = collections.Counter(h['keys'] for h in hotel_by_mid.values())
-    summary = dict(existing=len(ex), matched=len(matched), changes=len(changes), corrections=len(corrections),
+    for t, col, c, nm, la0, lo0, la, lo, why in point_fixes:
+        report.append(dict(code=c, name=nm, kind='POINT CORRECTED (GCJ-02 -> WGS-84)', detail=f"{la0}, {lo0} -> {la}, {lo}: {why}"))
+    summary = dict(address_on_own_site={f'{k}_{c}': n for (k, c), n in sorted(addr_cnt.items())}, point_fixes=len(point_fixes), existing=len(ex), matched=len(matched), changes=len(changes), corrections=len(corrections),
                    new=len(new), new_phones=sum(1 for x in new if x['r']['phone']), new_websites=sum(1 for x in new if x['r']['website']),
                    new_place_ids=0, property_names=len(prop_new), links=len(new_links), fills=len(fills),
                    new_hotels=len(new_hotels), new_hotel_phones=sum(1 for h in new_hotels if h['phone']),
@@ -434,6 +462,27 @@ select x.code, x.name, x.stars, 'michelin_star',
 insert into public.award_history (entity_type, entity_id, guide_year, award_type, award_value, is_current, announced_on)
 select 'restaurant', r.id, x.guide_year, 'michelin_stars', x.stars, true, x.announced_on
   from _new_cn x join public.restaurants r on r.restaurant_code = x.code;""")
+    if point_fixes:
+        P.append(f"""-- 5a. existing CN rows: production's points are Google's GCJ-02 (about 500 m off on the app's
+--     OpenStreetMap tiles); each takes MICHELIN's WGS-84 point (README "Coordinates"; product owner,
+--     2026-10-30: "google in China is not very accurate"). Guarded on the exported point (6 decimals).
+create temp table _pt_cn (tbl text, code text, name text, lat0 float8, lon0 float8, lat float8, lon float8) on commit drop;
+insert into _pt_cn values
+{(','+chr(10)).join(f"    ({q(t)}, {q(c)}, {q(nm)}, {la0}, {lo0}, {la}, {lo})" for t, col, c, nm, la0, lo0, la, lo, why in point_fixes)};
+do $$
+declare n int;
+begin
+  select count(*) into n from _pt_cn p
+   where (p.tbl = 'restaurants' and not exists (select 1 from public.restaurants r where r.restaurant_code = p.code and r.name = p.name
+            and round(ST_Y(r.location::geometry)::numeric, 6) = round(p.lat0::numeric, 6) and round(ST_X(r.location::geometry)::numeric, 6) = round(p.lon0::numeric, 6)))
+      or (p.tbl = 'hotels' and not exists (select 1 from public.hotels h where h.hotel_code = p.code and h.name = p.name
+            and round(ST_Y(h.location::geometry)::numeric, 6) = round(p.lat0::numeric, 6) and round(ST_X(h.location::geometry)::numeric, 6) = round(p.lon0::numeric, 6)));
+  if n <> 0 then raise exception '% CN points changed since the export -- re-check', n; end if;
+end $$;
+update public.restaurants r set location = ST_SetSRID(ST_MakePoint(p.lon, p.lat), 4326)::geography, updated_at = now()
+  from _pt_cn p where p.tbl = 'restaurants' and r.restaurant_code = p.code;
+update public.hotels h set location = ST_SetSRID(ST_MakePoint(p.lon, p.lat), 4326)::geography, updated_at = now()
+  from _pt_cn p where p.tbl = 'hotels' and h.hotel_code = p.code;""")
     if fills:
         P.append(f"""-- 5. existing restaurants, fill-only (never overwrites)
 create temp table _fill_cn (code text primary key, phone text, website_url text, michelin_url text, property_name text) on commit drop;
