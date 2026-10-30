@@ -433,7 +433,7 @@ The format follows Keep a Changelog.
   the published photo keeps the right type.
 
 ### Not applied
-- `20261030120000_add_get_visit_cover_photos.sql`: one cover per visit
+- `20261030140000_add_get_visit_cover_photos.sql` (written as `20261030120000`, renamed before it was applied, see Fixed): one cover per visit
   (`DISTINCT ON`, `SECURITY INVOKER` so `photos_read` RLS still applies,
   `revoke ... from public, anon`), plus an index on
   `photos (visit_id, taken_at desc nulls last)`, which `photos` had none

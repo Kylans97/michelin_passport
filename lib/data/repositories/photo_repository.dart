@@ -153,7 +153,7 @@ class PhotoRepository {
   // Callers pass only the visits on screen (Overview's three, then the All
   // screen's rows a chunk at a time): every cover is now a signed request
   // of its own (see resolveThumbnailUrls), and get_visit_cover_photos
-  // (20261030120000) returns one row per visit instead of every public
+  // (20261030140000) returns one row per visit instead of every public
   // photo. Before that migration is applied, PGRST202 falls back to the
   // old every-photo query, which picks the same cover.
   Future<Map<String, String>> loadCoverPhotoUrlsForVisits(

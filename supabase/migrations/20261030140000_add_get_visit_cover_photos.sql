@@ -3,6 +3,13 @@
 -- Written 2026-10-30 (launch egress pass). NOT YET APPLIED — prepared for
 -- review; apply with `supabase db push --linked` once approved.
 --
+-- Renamed 2026-10-30, before it was applied anywhere, from
+-- 20261030120000: 20261030130000 (push notifications) was named after this
+-- file but reached production first, so under its old name a fresh replay
+-- would have run this one first while production ran it second. The two
+-- touch no common object, but the filename is the replay order, so it now
+-- sorts after the migration production already has.
+--
 -- Until now PhotoRepository.loadCoverPhotoUrlsForVisits selected EVERY
 -- public photo of every visit it was given, newest first, and kept the
 -- first per visit client-side. A visit has no photo maximum, so the rows
