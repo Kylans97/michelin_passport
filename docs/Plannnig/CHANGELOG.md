@@ -10,8 +10,9 @@ The format follows Keep a Changelog.
 
 ### Added
 
-- **Usage tracking for venue actions and feature use** (2026-10-30, not
-  yet applied to production). Migration
+- **Usage tracking for venue actions and feature use** (2026-10-30;
+  migration applied to production the same day, at the product owner's
+  request, ahead of the build that sends the new events). Migration
   `20261023200000_add_venue_action_and_app_usage_tracking.sql`:
   `venue_link_clicks` accepts `phone` and `directions` destinations and a
   `private_chef_detail` source screen; new `venue_page_opens` (with
@@ -38,7 +39,11 @@ The format follows Keep a Changelog.
   and CHECKs exercised there: own-user insert accepted, another user's
   id, unknown destination/event and screen-shape violations rejected,
   authenticated reads return 0 rows, both views denied, anon insert
-  denied.
+  denied. After the apply, production was checked directly: both tables
+  with RLS on and only their insert policy, all three views present and
+  not selectable by `authenticated`, no anon insert, the widened CHECKs
+  in place, the 3 existing click rows intact, and `supabase migration
+  list --linked` at 115/115 local = remote.
 
 ### Changed
 
