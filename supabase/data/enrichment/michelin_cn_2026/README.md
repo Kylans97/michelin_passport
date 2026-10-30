@@ -25,7 +25,7 @@ Review `match_report.csv` first. **The decisions waiting for you:**
 |---|---|
 | Stars (3/2/1) | 4/24/131, exactly MICHELIN's live "Chinese Mainland" listing |
 | Restaurants added | 156 (`rest_2659`–`rest_2814`) |
-| … with a phone / website | 40 / 78 |
+| … with a phone / website | 41 / 78 |
 | … with `property_name` (non-Key host hotel) | 24 |
 | … with a Google Place ID | **0** (QA-289) |
 | Key hotels (3/2/1) | 2/11/41, exactly MICHELIN's live Key listing (the 2026 reveal says 55: QA-292) |
@@ -240,8 +240,11 @@ the address as the site prints it and the page.
 
 - **Banyan Tree Chongqing Beibei:** its brand page is a 404, and it is not among
   banyantree.com/china's 17 properties. MICHELIN still gives it a Key.
-- **Yi Long Court:** its restaurant page now redirects to The Peninsula
-  Shanghai's home page.
+- **Yi Long Court is open.** MICHELIN's website link now redirects to The
+  Peninsula Shanghai's home page, but the hotel's dining page lists the
+  restaurant with its own page (2/F, One MICHELIN Star, +86 21 2327 6742). That
+  page is now its website (`WEBSITE_FIX` in `build_research.py`), and its phone
+  is confirmed.
 
 No address or point was changed on the strength of a website alone.
 MICHELIN's addresses stand, and the five point corrections rest on the
@@ -254,7 +257,7 @@ site:
 
 - **29** were confirmed by the automated check (`check_restaurant_phones.py`,
   national +86 form).
-- **11** were confirmed by hand (`_source/cn_restaurant_phone_confirmations.csv`,
+- **12** were confirmed by hand (Yi Long Court on 2026-10-30, on the hotel's own dining page) (`_source/cn_restaurant_phone_confirmations.csv`,
   brief `_source/research_brief_cn_restaurant_phones.md`).
 - **Held back:** 3 sites print a different number (Vivant, The Hall, BingSheng
   Mansion). 2 are the White Swan Hotel switchboard with an extension (Hongtu
