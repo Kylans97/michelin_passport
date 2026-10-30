@@ -8,6 +8,85 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- 2026-10-30 — **Download traffic cut before the App Store launch.**
+  Supabase bills egress, and it is the binding cost at launch. The
+  database itself has room for thousands of daily users. Measured figures
+  come from read-only requests against production on 2026-10-30; the
+  others are estimates.
+
+  | | Before | After |
+  |---|---|---|
+  | Explore, each mount (measured) | 985 KB gzipped (all 3,480 restaurants + 1,830 hotels) | ~5 KB (9 + 9 rows) |
+  | Venue photo on a card (one 1536x2048 original, measured) | 1.6 MB | 69 KB at 512, 274 KB at 1024 |
+  | Visit-photo tile (estimated) | the 1600 px upload, ~300–400 KB | 512 px copy, ~40–70 KB |
+  | Own avatar (estimated) | up to 1024 px, ~150 KB | 384 px copy, ~25 KB |
+  | The same photo seen again | downloaded again (new signed URL each time) | from disk, for 30 days |
+  | Notifications | whole history | 50 per page |
+
+  Rough per active user per day: about 1 MB of catalogue per app start
+  plus several MB of photos before, against tens of KB of catalogue and a
+  few hundred KB of photos, mostly first views, after. That should be
+  about an order of magnitude more users per GB. It is an estimate, not a
+  measurement of real sessions.
+  - **Explore** fetches only the rows its sections can show. The server
+    sorts on stars or Keys, then World's 50 Best rank. It returns the whole
+    tie group when that group runs past eighth place, so the existing
+    selectors still choose by name, and what Explore shows is unchanged.
+    Fresh Finds reads only reported rows. `getAll()` is gone from both
+    repositories.
+  - **Every image goes through `AppNetworkImage`**
+    (`lib/core/widgets/app_network_image.dart`) instead of `Image.network`.
+    A public Storage photo comes from the render endpoint, sized to its slot
+    times the pixel ratio and framing zoom, in six shared sizes. It is
+    contain-fit: width alone keeps the original height and distorts the
+    photo, measured on production. Focus-point framing still crops on the
+    device. Visit-photo tiles and Passport event covers use signed
+    contain-fit copies, and the own avatar a 384 px copy. The full-screen
+    viewers, the framing editors and admin review keep the original. The
+    render endpoint needs the Pro plan. Production answers it, but which
+    plan the project is on still needs the product owner's confirmation.
+    On Pro, transformations are billed per origin image.
+  - **Disk cache** (`cached_network_image`). A signed URL is keyed on its
+    bucket and path, plus the `transformations` claim of its token, so a
+    thumbnail never stands in for an original. Storage answers
+    `private, no-cache`, which would have made every view revalidate. Its
+    paths are never reused, so cached entries stay valid for 30 days.
+  - **Notifications** load 50 at a time, newest first, and the rest as the
+    list reaches its end. The ordering and range are applied to the
+    existing RPC result, so no server change is needed. The unread badge
+    still comes from its own count.
+  - **Friend Profile** loads covers for the three verdicts it shows, and
+    All visits loads 20 rows' covers at a time as they appear.
+  - **Profile** derives its Journey Stats from the Passport load it already
+    makes, instead of downloading the visits and restaurants twice.
+  - **Not paged, on purpose:** Passport venues and events, friends, and
+    event attendance. Their totals and the "friends going" logic need every
+    row.
+
+### Fixed
+- 2026-10-30 — **A PNG venue photo was stored as `.jpg` with
+  `image/jpeg`, and could exceed the 5 MiB limit.** The pipeline
+  re-encoded every photo at full resolution, so a file that passed the
+  5 MiB check could come out larger. That limit is also the bucket's own.
+  `prepareVenuePhoto` now returns the bytes together with their real
+  extension and content type. It caps the long edge at 2560 px and steps
+  down 15% at a time while the file is still too big, never below the
+  1200 px short side. Only a PNG that cannot fit even then becomes a JPEG,
+  and it is labelled as one. `publish-venue-photo` copies the object, so
+  the published photo keeps the right type.
+
+### Not applied
+- `20261030120000_add_get_visit_cover_photos.sql`: one cover per visit
+  (`DISTINCT ON`, `SECURITY INVOKER` so `photos_read` RLS still applies,
+  `revoke ... from public, anon`), plus an index on
+  `photos (visit_id, taken_at desc nulls last)`, which `photos` had none
+  of. It was written and checked against a scratch PG 17. It picks the
+  same cover as the old query, which postgrest-dart sends as
+  `taken_at.desc.nullslast`, not Postgres' own DESC default, and anon
+  cannot execute it. It is **not applied to production.** Until it is, the
+  client falls back to the old query on PGRST202.
+
 ---
 
 ## v1.4.0 (17) — 2026-10-30
