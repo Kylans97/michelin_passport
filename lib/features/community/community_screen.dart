@@ -8,7 +8,9 @@ import '../../core/widgets/floating_nav_bar.dart';
 import '../../core/widgets/star_row.dart';
 import '../../core/widgets/venue_thumbnail.dart';
 import '../../data/repositories/event_social_repository.dart';
+import '../../data/repositories/country_lookup.dart';
 import '../../data/repositories/events_repository.dart';
+import '../../data/repositories/friend_activity_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/rankings_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
@@ -25,6 +27,9 @@ import '../friends/friends_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'community_rankings_screen.dart';
 import 'dining_together_screen.dart';
+import 'friends_activity.dart';
+import 'friends_activity_screen.dart';
+import 'widgets/friend_activity_row.dart';
 import 'widgets/community_events_preview.dart';
 import 'widgets/community_local_tab_bar.dart';
 import 'widgets/community_ranking_preview.dart';
@@ -59,6 +64,8 @@ class CommunityScreen extends StatefulWidget {
   final Future<List<Event>> Function()? loadUpcomingEvents;
   final Future<GoingMemberCount> Function(String eventId)? loadGoingMemberCount;
   final Future<List<Friendship>> Function()? loadFriends;
+  final Future<List<FriendActivity>> Function(List<Friendship> friends)?
+  loadFriendActivity;
 
   const CommunityScreen({
     super.key,
@@ -67,6 +74,7 @@ class CommunityScreen extends StatefulWidget {
     this.loadUpcomingEvents,
     this.loadGoingMemberCount,
     this.loadFriends,
+    this.loadFriendActivity,
   });
 
   @override
@@ -96,7 +104,10 @@ class _CommunityScreenState extends State<CommunityScreen> {
       _bodies.putIfAbsent(
         tab,
         () => tab == CommunityTopTab.friends
-            ? _FriendsTabBody(loadFriends: widget.loadFriends)
+            ? _FriendsTabBody(
+                loadFriends: widget.loadFriends,
+                loadFriendActivity: widget.loadFriendActivity,
+              )
             : _CommunityTabBody(
                 loadCommunityRankings: widget.loadCommunityRankings,
                 getRestaurantById: widget.getRestaurantById,
@@ -529,7 +540,9 @@ class _HottestPlacesRestaurantCard extends StatelessWidget {
 
 class _FriendsTabBody extends StatefulWidget {
   final Future<List<Friendship>> Function()? loadFriends;
-  const _FriendsTabBody({this.loadFriends});
+  final Future<List<FriendActivity>> Function(List<Friendship> friends)?
+  loadFriendActivity;
+  const _FriendsTabBody({this.loadFriends, this.loadFriendActivity});
 
   @override
   State<_FriendsTabBody> createState() => _FriendsTabBodyState();
@@ -537,6 +550,10 @@ class _FriendsTabBody extends StatefulWidget {
 
 class _FriendsTabBodyState extends State<_FriendsTabBody> {
   late final Future<List<Friendship>> _friendsFuture = _load();
+  late final Future<_FriendActivityData> _activityFuture = _loadActivity();
+
+  /// How many items the FRIENDS tab previews before "All activity →".
+  static const _activityPreviewCount = 5;
 
   Future<List<Friendship>> _load() async {
     try {
@@ -548,6 +565,41 @@ class _FriendsTabBodyState extends State<_FriendsTabBody> {
       return const [];
     }
   }
+
+  // Never throws: an activity hiccup shows the quiet empty line, never an
+  // error over the rest of the tab. Zero friends never touches the network.
+  Future<_FriendActivityData> _loadActivity() async {
+    final friends = await _friendsFuture;
+    if (friends.isEmpty) return const _FriendActivityData([], {});
+    try {
+      final load =
+          widget.loadFriendActivity ??
+          (friends) => FriendActivityRepository(
+            Supabase.instance.client,
+          ).load(friends: friends);
+      final activity = await load(friends);
+      var countryNameByCode = <String, String>{};
+      if (activity.isNotEmpty && widget.loadFriendActivity == null) {
+        try {
+          final countries = await getAllCountries(Supabase.instance.client);
+          countryNameByCode = {for (final c in countries) c.code: c.name};
+        } catch (_) {}
+      }
+      return _FriendActivityData(activity, countryNameByCode);
+    } catch (_) {
+      return const _FriendActivityData([], {});
+    }
+  }
+
+  void _openAllActivity(_FriendActivityData data) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => FriendsActivityScreen(
+        activity: data.activity,
+        countryNameByCode: data.countryNameByCode,
+      ),
+    ),
+  );
 
   void _openFriendProfile(Friendship friend) => Navigator.push(
     context,
@@ -596,14 +648,39 @@ class _FriendsTabBodyState extends State<_FriendsTabBody> {
         const SizedBox(height: CsSpacing.section),
         CommunitySectionTitle("Friends' Activity"),
         const SizedBox(height: CsSpacing.sm),
-        // Cross-friend activity aggregation is a genuinely new capability
-        // — every existing repository (VisitedRepository/WishlistRepository/
-        // EventAttendanceRepository) answers "one friend's own activity,"
-        // never "everyone I follow, merged and sorted." Building that is
-        // explicitly out of this pass's scope (Foundation V1 §10) — a
-        // restrained foundation empty state, never fabricated activity.
-        const CommunityEmptyNote(
-          message: 'Activity from your friends will appear here.',
+        // Derived from what friends already share with you — see
+        // FriendActivityRepository. Empty (no friends, or nothing shared
+        // yet) keeps the restrained line, never fabricated activity.
+        FutureBuilder<_FriendActivityData>(
+          future: _activityFuture,
+          builder: (context, snap) {
+            if (snap.connectionState != ConnectionState.done) {
+              return const _SectionLoading();
+            }
+            final data = snap.data ?? const _FriendActivityData([], {});
+            if (data.activity.isEmpty) {
+              return const CommunityEmptyNote(
+                message: 'Activity from your friends will appear here.',
+              );
+            }
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                for (final item in data.activity.take(_activityPreviewCount))
+                  FriendActivityRow(
+                    activity: item,
+                    countryNameByCode: data.countryNameByCode,
+                  ),
+                if (data.activity.length > _activityPreviewCount) ...[
+                  const SizedBox(height: CsSpacing.xs),
+                  CommunityActionLink(
+                    label: 'All activity',
+                    onTap: () => _openAllActivity(data),
+                  ),
+                ],
+              ],
+            );
+          },
         ),
         const SizedBox(height: CsSpacing.section),
         CommunitySectionTitle("Friends' Top Visited"),
@@ -617,4 +694,10 @@ class _FriendsTabBodyState extends State<_FriendsTabBody> {
       ],
     ),
   );
+}
+
+class _FriendActivityData {
+  final List<FriendActivity> activity;
+  final Map<String, String> countryNameByCode;
+  const _FriendActivityData(this.activity, this.countryNameByCode);
 }

@@ -8,6 +8,48 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Friends' Activity on Community → Friends** (2026-10-30). The section
+  was a placeholder line; it now shows what friends have shared, merged
+  across friends and newest first: a visit or stay (each one a Passport
+  stamp, with its 1–10 score when given), Interested or Going for an
+  event that hasn't ended and isn't cancelled, and confirmed attendance
+  ("collected a Passport stamp at"). Milestones sit on the visit that
+  reached them, in small caps: first venue in a new country (not the
+  very first stamp), the 10th/25th/50th/100th/… distinct MICHELIN-starred
+  restaurant (stars at the visit, repeat visits don't count), and the
+  first three-star restaurant. Five items preview, "All activity" opens
+  the full list. Rows open the friend's visit, or the event. Visit dates
+  are calendar dates and render as dates only; event dates use
+  `formatEventDateRange`, in the event's own timezone.
+
+  **No migration, no new visibility.** `FriendActivityRepository` reads
+  `visits`, `event_attendance` and `event_confirmed_attendance` directly,
+  filtered to the caller's friends, so the existing RLS decides what
+  comes back: only rows the friend marked `friends`, nothing after an
+  unfriend or a block. Milestones are counted over those same visible
+  visits only, so a private visit can't surface as "10th starred". Five
+  queries in all, regardless of how many friends
+  (`VisitedRepository.loadPassportVenuesForUsers` is the batched
+  version of `loadPassportVenues`). Personal community-ranking scores
+  (`venue_ratings`) are deliberately left out: they are owner-only by
+  design (`20260828120000`), and showing them would reverse that
+  decision.
+- **A friend's globe** (2026-10-30). Friend Profile → Overview has a
+  "N countries on {Name}'s globe · Map →" line that opens the same
+  `VisitedMapScreen` as My Map, given the friend's `userId`: their
+  friends-visible visits, stays and confirmed event attendance. Titles
+  and empty states name the friend, and it records no `screenOpened`
+  (that event stays "my map").
+
+### Fixed
+- **Friend Profile avatars were clipped.** The box holding the two
+  overlapping avatars was 54pt high, but each avatar sits in a 3pt ring,
+  so the Stack cut 3pt off the bottom and right of both circles at every
+  screen size. The box now includes the ring, and the Stack no longer
+  clips. A widget test checks both avatars sit inside it at 320, 390 and
+  1024pt wide; it fails against the old header.
+
 ---
 
 ## v1.5.0 (18) — 2026-10-30

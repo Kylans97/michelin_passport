@@ -390,6 +390,64 @@ class VisitedRepository {
     ];
   }
 
+  // [loadPassportVenues] for several users at once, keyed by user id —
+  // Friends' Activity reads every friend's Passport in the same three
+  // queries rather than three per friend. Only rows RLS lets the caller
+  // read come back: for a friend, the visits they marked `friends`.
+  Future<Map<String, List<VenueEntry>>> loadPassportVenuesForUsers(
+    List<String> userIds,
+  ) async {
+    if (userIds.isEmpty) return {};
+    final rows = await _client
+        .from('visits')
+        .select(_visitColumns)
+        .inFilter('user_id', userIds)
+        .order('visited_on', ascending: false);
+    final visits = [
+      for (final row in (rows as List).cast<Map<String, dynamic>>())
+        Visit.fromJson(row),
+    ];
+    if (visits.isEmpty) return {};
+
+    final restaurantsByIdFuture = _resolveRestaurantsByIds([
+      for (final v in visits)
+        if (v.entityType != _hotelEntity) v.entityId,
+    ]);
+    final hotelsByIdFuture = _resolveHotelsByIds([
+      for (final v in visits)
+        if (v.entityType == _hotelEntity) v.entityId,
+    ]);
+    final restaurantsById = await restaurantsByIdFuture;
+    final hotelsById = await hotelsByIdFuture;
+
+    // user id → venue key → visits, newest first by the query's own order.
+    final grouped = <String, Map<String, (PassportVenue, List<Visit>)>>{};
+    for (final visit in visits) {
+      final PassportVenue? venue = visit.entityType == _hotelEntity
+          ? switch (hotelsById[visit.entityId]) {
+              final hotel? => HotelVenue(hotel),
+              null => null,
+            }
+          : switch (restaurantsById[visit.entityId]) {
+              final restaurant? => RestaurantVenue(restaurant),
+              null => null,
+            };
+      if (venue == null) continue;
+      grouped
+          .putIfAbsent(visit.userId, () => {})
+          .putIfAbsent('${visit.entityType}:${visit.entityId}', () => (venue, []))
+          .$2
+          .add(visit);
+    }
+    return {
+      for (final MapEntry(key: userId, value: byVenue) in grouped.entries)
+        userId: [
+          for (final (venue, venueVisits) in byVenue.values)
+            VenueEntry(venue: venue, visits: venueVisits),
+        ],
+    };
+  }
+
   Future<Map<String, Hotel>> _resolveHotelsByIds(Iterable<String> ids) async {
     final idList = ids.toSet().toList();
     if (idList.isEmpty) return {};
