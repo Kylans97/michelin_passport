@@ -87,11 +87,13 @@ The format follows Keep a Changelog.
     `hotel_rankings` (13) and `event_rankings` (9) are selectable by
     `authenticated` and not by `anon`. `supabase migration list --linked`
     shows 118/118, local and remote in agreement.
-  - **Ordering caveat:** `20261030150000_add_venue_team.sql`
-    (`claude/venue-follow-team`) is not applied yet and now sorts
-    *before* an applied migration. It needs `supabase db push --linked
-    --include-all` when it goes out. The two touch no common object, so
-    replay order between them doesn't change the result.
+  - **Ordering:** `claude/venue-follow-team` renamed its unapplied
+    `20261030150000_add_venue_team.sql` to `20261030170000` (content
+    unchanged) so that it sorts after this one, and applied it. The
+    production ledger is now 119/119. This migration's header still
+    says it was "named after 20261030150000_add_venue_team.sql". That
+    file no longer exists, and the header stays as it is, because an
+    applied migration is not edited.
 
   Until a build with this screen ships, the app falls back on its own if
   a view is missing, so it is safe in either order. Analyze and all 2,699
