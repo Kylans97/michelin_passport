@@ -103,6 +103,18 @@ The format follows Keep a Changelog.
   out of a manager's "Preview my page" because it is personal state.
 
 ### Changed
+- **Restaurant and Hotel Detail: guide pages moved out of the action
+  row.** On a venue with every recognition (De Librije, 2026-10-30) the
+  `VenueUtilityActions` row had grown to six icons side by side —
+  Directions, Website, Call, Michelin, 50 Best and Gault&Millau — with
+  the last label shrunk to fit. The row is now only the practical
+  Directions · Website · Call; the venue's own MICHELIN Guide, World's
+  50 Best and Gault&Millau pages are quiet text links (new
+  `VenueGuideLinks`, north-east arrow for "leaves the app") directly
+  under Award history, with the awards they describe. Each still appears
+  only when its URL is real. No link was removed and no tracking
+  changed (guide-page taps were never tracked; Website and Call still
+  are).
 - **Follow is a labelled pill.** The hero's Follow control was a
   person-add glyph that only went from outline to filled, which on a
   photo did not read as a change, so people couldn't tell whether they

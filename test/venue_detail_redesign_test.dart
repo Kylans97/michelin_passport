@@ -1035,84 +1035,61 @@ void main() {
 
   group('VenueUtilityActions — utility action row (Step 1D §7-11)', () {
     testWidgets('only Directions when nothing else is available — no dead '
-        'Call/Michelin button, and Share is never offered at all (lower '
-        'priority than Michelin for this product, not added this pass)', (
+        'Call button, and Share is never offered at all', (
       tester,
     ) async {
       await tester.pumpWidget(_wrap(VenueUtilityActions(onOpenMaps: () {})));
       expect(find.text('Directions'), findsOneWidget);
-      expect(find.text('Michelin'), findsNothing);
       expect(find.text('Website'), findsNothing);
       expect(find.text('Call'), findsNothing);
       expect(find.text('Share'), findsNothing);
     });
 
-    testWidgets('3-item layout: Directions + Website + Michelin when '
-        'phone is unavailable — today\'s real Restaurant/Hotel Detail '
-        'shape', (tester) async {
-      await tester.pumpWidget(
-        _wrap(
-          VenueUtilityActions(
-            onOpenMaps: () {},
-            onOpenWebsite: () {},
-            onOpenMichelin: () {},
-          ),
-          width: 320,
-        ),
-      );
-      expect(find.text('Directions'), findsOneWidget);
-      expect(find.text('Website'), findsOneWidget);
-      expect(find.text('Michelin'), findsOneWidget);
-      expect(find.text('Call'), findsNothing);
-      expect(tester.takeException(), isNull);
-    });
-
-    testWidgets('4-item layout rebalances automatically once phone data '
-        'exists: Directions + Website + Call + Michelin', (tester) async {
+    testWidgets('full row is exactly Directions + Website + Call — the '
+        'guide pages live in VenueGuideLinks, never here', (tester) async {
       await tester.pumpWidget(
         _wrap(
           VenueUtilityActions(
             onOpenMaps: () {},
             onOpenWebsite: () {},
             onCall: () {},
-            onOpenMichelin: () {},
           ),
           width: 320,
         ),
       );
-      for (final label in ['Directions', 'Website', 'Call', 'Michelin']) {
+      for (final label in ['Directions', 'Website', 'Call']) {
         expect(find.text(label), findsOneWidget);
+      }
+      for (final label in ['Michelin', '50 Best', 'Gault&Millau']) {
+        expect(find.text(label), findsNothing);
       }
       expect(tester.takeException(), isNull);
     });
 
-    testWidgets('tapping Michelin fires only its own callback', (tester) async {
-      var michelinCalls = 0;
+    testWidgets('tapping Call fires only its own callback', (tester) async {
       var callCalls = 0;
+      var mapsCalls = 0;
       await tester.pumpWidget(
         _wrap(
           VenueUtilityActions(
-            onOpenMaps: () {},
+            onOpenMaps: () => mapsCalls++,
             onCall: () => callCalls++,
-            onOpenMichelin: () => michelinCalls++,
           ),
         ),
       );
-      await tester.tap(find.text('Michelin'));
-      expect(michelinCalls, 1);
-      expect(callCalls, 0);
+      await tester.tap(find.text('Call'));
+      expect(callCalls, 1);
+      expect(mapsCalls, 0);
     });
 
-    testWidgets('Michelin icon/text is forest-green, never gold', (
-      tester,
-    ) async {
+    testWidgets('Call icon/text is forest-green, never gold', (tester) async {
       await tester.pumpWidget(
-        _wrap(VenueUtilityActions(onOpenMaps: () {}, onOpenMichelin: () {})),
+        _wrap(VenueUtilityActions(onOpenMaps: () {}, onCall: () {})),
       );
-      final icon = tester.widget<Icon>(find.byIcon(Icons.menu_book_rounded));
+      final icon = tester.widget<Icon>(find.byIcon(Icons.call_rounded));
       expect(icon.color, AppColors.forestGreen);
       expect(icon.color, isNot(AppColors.gold));
-      final label = tester.widget<Text>(find.text('Michelin'));
+      final label = tester.widget<Text>(find.text('Call'));
       expect(label.style?.color, isNot(AppColors.gold));
     });
 
@@ -1136,22 +1113,22 @@ void main() {
       expect(websiteCalls, 0);
     });
 
-    testWidgets('labels never wrap at 320px, even with all 4 actions '
-        'present (§7 — the previous generation wrapped "Michelin"/'
-        '"Website")', (tester) async {
+    testWidgets('labels never wrap at 320px, even with all 3 actions '
+        'present (§7 — an earlier generation wrapped "Website")', (
+      tester,
+    ) async {
       await tester.pumpWidget(
         _wrap(
           VenueUtilityActions(
             onOpenMaps: () {},
             onOpenWebsite: () {},
             onCall: () {},
-            onOpenMichelin: () {},
           ),
           width: 320,
         ),
       );
       expect(tester.takeException(), isNull);
-      for (final label in ['Directions', 'Website', 'Call', 'Michelin']) {
+      for (final label in ['Directions', 'Website', 'Call']) {
         final size = tester.getSize(find.text(label));
         // A single-line label's rendered height stays at one line's worth
         // — a wrapped two-line label would roughly double it.

@@ -18,6 +18,7 @@ import '../../core/widgets/venue_about_section.dart';
 import '../../core/widgets/venue_team_section.dart';
 import '../../core/widgets/venue_lifecycle_banner.dart';
 import '../../core/widgets/venue_score_strip.dart';
+import '../../core/widgets/venue_guide_links.dart';
 import '../../core/widgets/venue_utility_actions.dart';
 import '../profile/widgets/owner_preview_marker.dart';
 import '../../data/repositories/award_history_repository.dart';
@@ -589,6 +590,13 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     // yet. See _aboutText's own doc comment.
     final aboutText = _aboutText;
 
+    final guideLinks = VenueGuideLinks(
+      onOpenMichelin: hasMichelinLink ? () => _openUrl(michelinUrl) : null,
+      onOpenWorlds50Best: worlds50BestUrl == null
+          ? null
+          : () => _openUrl(worlds50BestUrl),
+    );
+
     final scaffold = Scaffold(
       backgroundColor: AppColors.ivory,
       body: CustomScrollView(
@@ -635,6 +643,12 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                     const SizedBox(height: CsSpacing.sm),
                     AwardHistoryAction(onTap: _openAwardHistory),
                   ],
+                  // The venue's own guide pages, as quiet text links with
+                  // the awards rather than in the practical action row.
+                  if (guideLinks.hasAny) ...[
+                    if (!_hasAwardHistory) const SizedBox(height: CsSpacing.sm),
+                    guideLinks,
+                  ],
                   // Friends who've been — faces only, no scores. Personal
                   // state, so left out of the manager's preview.
                   if (!widget.isPreview && isAuthenticated)
@@ -645,7 +659,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
 
                   const SectionDivider(),
 
-                  // ── Venue utilities — Directions/Website/Michelin only.
+                  // ── Venue utilities — Directions/Website/Call only.
                   // Wishlist lives solely in the hero; there is no second
                   // Wishlist control here (UI Consistency Step 1E).
                   VenueUtilityActions(
@@ -657,12 +671,6 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                           )
                         : null,
                     onCall: telUri == null ? null : () => _openCall(telUri),
-                    onOpenMichelin: hasMichelinLink
-                        ? () => _openUrl(michelinUrl)
-                        : null,
-                    onOpenWorlds50Best: worlds50BestUrl == null
-                        ? null
-                        : () => _openUrl(worlds50BestUrl),
                   ),
 
                   const SectionDivider(),

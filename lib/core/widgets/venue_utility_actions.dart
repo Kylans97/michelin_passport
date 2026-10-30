@@ -5,47 +5,37 @@ import '../theme/cs_typography.dart';
 
 /// The compact "icon above label" utility row shared by Restaurant and
 /// Hotel Detail, per the Clove Club reference's "DIRECTIONS · WEBSITE ·
-/// CALL · [X]" pattern (UI Consistency Step 1D — final action alignment):
-/// Mantelier uses Michelin Guide as its fourth action instead of
-/// Share, since Michelin is more valuable to this product and there is no
-/// existing share infrastructure (`share_plus` is not a dependency — Share
-/// is deliberately not offered anywhere in this app today).
+/// CALL" pattern (UI Consistency Step 1D — final action alignment). Share
+/// is deliberately not offered (`share_plus` is not a dependency).
 ///
 /// Only real, currently-available actions are ever shown — never a dead/
 /// disabled button pretending to be real. [onOpenMaps] is the only
-/// required callback (every venue can always be located); [onOpenWebsite],
-/// [onCall], and [onOpenMichelin] are each omitted individually when that
+/// required callback (every venue can always be located); [onOpenWebsite]
+/// and [onCall] are each omitted individually when that
 /// action isn't available. [onCall] was a prepared seam until Restaurant
 /// Enrichment Step 1D added `phone` to [Restaurant] — RestaurantDetailScreen
 /// now wires a real callback whenever `buildTelUri` resolves one; Hotel
 /// Detail still passes `null` (no `phone` field on [Hotel] yet, a natural
 /// future follow-up, not implemented in Step 1D). The row already renders
-/// correctly with 2, 3, or 4 actions and rebalances automatically, so
+/// correctly with 1, 2 or 3 actions and rebalances automatically, so
 /// Hotel's own day-phone-data-lands change would only touch its call site.
 /// Existing URL-generation logic is untouched — this widget only ever
 /// receives already-resolved callbacks.
 ///
-/// [onOpenGaultMillau] is the guide-page counterpart of [onOpenMichelin]:
-/// the restaurant's own Gault&Millau page, wired only when its stored
-/// `gault_millau_url` is a real URL (see GaultMillauAward.profileUrl).
-/// [onOpenWorlds50Best] is the same for the venue's World's 50 Best page
-/// (`worlds_50_best_url`), on Restaurant and Hotel Detail alike.
+/// The guide pages (MICHELIN, World's 50 Best, Gault&Millau) used to be
+/// actions here too, and on a venue with every award the row grew to six.
+/// They moved to VenueGuideLinks beside Award history (2026-10-30), so
+/// this row is only ever the practical Directions · Website · Call.
 class VenueUtilityActions extends StatelessWidget {
   final VoidCallback onOpenMaps;
   final VoidCallback? onOpenWebsite;
   final VoidCallback? onCall;
-  final VoidCallback? onOpenMichelin;
-  final VoidCallback? onOpenGaultMillau;
-  final VoidCallback? onOpenWorlds50Best;
 
   const VenueUtilityActions({
     super.key,
     required this.onOpenMaps,
     this.onOpenWebsite,
     this.onCall,
-    this.onOpenMichelin,
-    this.onOpenGaultMillau,
-    this.onOpenWorlds50Best,
   });
 
   @override
@@ -73,30 +63,6 @@ class VenueUtilityActions extends StatelessWidget {
               icon: Icons.call_rounded,
               label: 'Call',
               onTap: onCall!,
-            ),
-          ),
-        if (onOpenMichelin != null)
-          Expanded(
-            child: _UtilityAction(
-              icon: Icons.menu_book_rounded,
-              label: 'Michelin',
-              onTap: onOpenMichelin!,
-            ),
-          ),
-        if (onOpenWorlds50Best != null)
-          Expanded(
-            child: _UtilityAction(
-              icon: Icons.emoji_events_outlined,
-              label: '50 Best',
-              onTap: onOpenWorlds50Best!,
-            ),
-          ),
-        if (onOpenGaultMillau != null)
-          Expanded(
-            child: _UtilityAction(
-              icon: Icons.auto_stories_rounded,
-              label: 'Gault&Millau',
-              onTap: onOpenGaultMillau!,
             ),
           ),
       ],
@@ -130,9 +96,8 @@ class _UtilityAction extends StatelessWidget {
           children: [
             Icon(icon, color: AppColors.forestGreen, size: 20),
             const SizedBox(height: CsSpacing.xs),
-            // Scales down rather than truncating: with all five actions on
-            // a 402pt phone, "Gault&Millau" otherwise reads "Gault&Mill…".
-            // Every shorter label keeps its full size.
+            // Scales down rather than truncating, should a label ever be
+            // too wide for its share of a narrow phone.
             FittedBox(
               fit: BoxFit.scaleDown,
               child: Text(
