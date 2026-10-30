@@ -8,8 +8,49 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
-### Added
+---
 
+## v1.5.0 (18) — 2026-10-30
+
+Built from `main`, after merging six branches into `release/1.5.0`:
+- `claude/usage-tracking`: usage tracking;
+- `claude/push-notifications` (PR #5): push notifications;
+- `claude/fix-signup-confirmation`: the sign-up confirmation fix;
+- `claude/passport-stamp-ceremony-e750d7` (PR #4): the Passport stamp
+  ceremony;
+- `claude/launch-egress`: the download-traffic work;
+- `claude/jolly-engelbart-47d9a4`: the Yi Long Court data fix.
+
+A minor version bump, because push notifications and the stamp ceremony
+are visible new features. Three migrations went to production on
+2026-10-30, after 1.4.0 (17) and before this build: `20261023200000`,
+`20261030130000` and `20261030140000`, plus the Yi Long Court
+correction. Ledger at the version bump: 117 migrations, local and remote
+in agreement.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay of
+all 117 migrations, 2026-10-30:
+- **Before the apply:** the only difference was the pending
+  `20261030140000`: `get_visit_cover_photos`, its grants and the new
+  `photos` index.
+- **After the apply:** `supabase db dump` is identical on both sides
+  apart from the same 6 blank lines.
+- **Storage and auth, compared directly:** buckets, `storage.objects`
+  policies, triggers and RLS on both storage tables are identical, apart
+  from the expected local-only `enforce_versioning_status_transition`
+  trigger.
+- **Before the build:** `flutter analyze` was clean and all 2,681 tests
+  passed on the merged tree.
+
+**Manual steps outside the repo, already done:**
+- the Supabase Auth Site URL and redirect URLs, and the mantelier.app
+  site deploy, for sign-up;
+- the APNs key "Mantelier Push" (team-scoped, Sandbox & Production);
+- Push Notifications enabled on the `app.mantelier` App ID;
+- the five `send-push` secrets.
+
+### Added
 - **Usage tracking for venue actions and feature use** (2026-10-30;
   migration applied to production the same day, at the product owner's
   request, ahead of the build that sends the new events). Migration
@@ -44,21 +85,6 @@ The format follows Keep a Changelog.
   not selectable by `authenticated`, no anon insert, the widened CHECKs
   in place, the 3 existing click rows intact, and `supabase migration
   list --linked` at 115/115 local = remote.
-
-### Changed
-
-- `SupabaseAnalyticsService.ofInstance()` resolves the Supabase client
-  only inside each insert's own try, so a screen can track from
-  `initState` where Supabase isn't initialised (widget tests) without
-  failing. Every insert now reads the signed-in user inside that try
-  too.
-
-### Fixed
-
-- A manager's "Preview my page" no longer records a website tap on
-  Restaurant/Hotel Detail. It previously did, since `isPreview` only
-  gated personal state, so a manager could inflate their own venue's
-  click counts.
 
 - 2026-10-30 — Push notifications (iOS, APNs directly, no Firebase), with
   per-type toggles. Two kinds push: a friend request received, and a new
@@ -150,23 +176,6 @@ The format follows Keep a Changelog.
       speaks HTTP/2 to APNs. That is the first thing to check after the
       deploy.
 
-### Fixed
-- 2026-10-30 — Near-miss: the migration was first named `20261023210000`,
-  after `claude/usage-tracking`'s `20261023200000` as briefed. A check of
-  every remote branch found `claude/launch-egress` already at
-  `20261030120000`, so it was renamed `20261030130000` before any commit.
-  "The highest migration" has to be checked across all branches, not taken
-  from a brief.
-
-- **mantelier.app's "Nights we're watching" list is current again.** The
-  three hard-coded events, from August and September 2026, were replaced
-  on 2026-10-30 with the next three published, uncancelled events in
-  production, read with the anon key: 9 Nov (Amsterdam), 22 Nov (Schoorl)
-  and 24–25 Dec (Eijsden). The 1 Nov dinner in Aalten was left out
-  because it was two days away. Names, dates and cities are exactly as
-  stored. The list is still static, so it goes stale again after 9 Nov.
-  On screens narrower than 480px the date now sits above the name, since
-  the real names wrapped to five lines beside it.
 - **A confirmation landing page and a way back from an expired link.**
   `site/auth/confirm.html`, served at `https://mantelier.app/auth/confirm`
   and (through `site/_redirects`) at `/auth/confirmed`, in the same branded
@@ -177,6 +186,7 @@ The format follows Keep a Changelog.
   link opens Mantelier, which signs the person in with the PKCE code and
   shows the welcome flow. `/auth/confirmed` is deliberately web-only (see
   Fixed).
+
 - **A `mantelier://` URL scheme** (iOS `CFBundleURLTypes`, Android intent
   filter on host `auth`). The "Open Mantelier" buttons on
   `/auth/confirm` and `/auth/reset-password` now use it. On
@@ -189,62 +199,10 @@ The format follows Keep a Changelog.
   and the simulator was already signed in, so this showed the scheme
   works, not a sign-in through it. Builds up to 1.4.0 (17) don't
   register the scheme, so on those Safari reports an invalid address.
+
 - **"Send a new confirmation link" on sign-in.** When sign-in is refused
   with `email_not_confirmed`, LoginScreen offers to resend the confirmation
   (`AuthRepository.resendSignupConfirmation`).
-
-### Fixed
-- **New users saw "server not available" after tapping the confirmation
-  link, although the account had been created and confirmed.**
-  `AuthRepository.signUp()` passed no `emailRedirectTo`, so GoTrue sent the
-  user to the project's Site URL after confirming. In production that was
-  still Supabase's default `http://localhost:3000`. This was verified on
-  2026-10-30 with a read-only probe: a GET to production's
-  `/auth/v1/verify` with an invalid token returns a `303` to
-  `http://localhost:3000#error=…`. The same probe with
-  `redirect_to=https://mantelier.app/auth/reset-password`, which is on the
-  allow-list, returns a `303` to that URL. GoTrue confirms the email
-  *before* it redirects, so the account was always fine. The phone was
-  sent to `localhost`, where nothing answers. `signUp()` now passes
-  `https://mantelier.app/auth/confirm`. This needed the production Auth
-  changes and site deploy below, both done on 2026-10-30.
-  - **Near-miss:** gotrue-dart's `resend()` sends no PKCE code challenge,
-    so a resent confirmation comes back with implicit-flow tokens. In PKCE
-    mode, supabase_flutter ignores those tokens. Sent to the Universal
-    Link, the resent link would have opened the app to a silent sign-in
-    screen. Resends therefore go to the web-only `/auth/confirmed`.
-  - **Near-miss:** the "Open Mantelier" buttons on the confirm and
-    reset-password pages did nothing. The product owner found this while
-    testing on 2026-10-30. Both linked to the page's own https URL, and
-    iOS never hands a Universal Link to the app when it is tapped on its
-    own domain, so the tap only reloaded the page. `reset-password.html`
-    has done this since 2026-09-24, where its comment claimed the
-    opposite. Both buttons now use `mantelier://` (see Added).
-  - **Near-miss:** supabase_flutter reports a failed link only as an error
-    on `onAuthStateChange`. AuthGate's subscription had no `onError`, so
-    an expired link left a silent sign-in screen. AuthGate now shows a
-    notice for the two link failures it can identify (`otp_expired`, and a
-    missing PKCE verifier or flow state). It deliberately ignores every
-    other stream error, such as a failed session refresh, because the
-    same stream carries errors that have nothing to do with a link.
-  - **Production Auth settings, for the product owner** (Dashboard →
-    Authentication → URL Configuration): set **Site URL** to
-    `https://mantelier.app/auth/confirm`, which also fixes 1.4.0 (17) and
-    older builds because they send no redirect. Add
-    `https://mantelier.app/auth/confirm` and
-    `https://mantelier.app/auth/confirmed` to **Redirect URLs**. Then
-    deploy `site/` (`auth/confirm.html`, `_redirects` and the updated
-    `.well-known/apple-app-site-association`) to mantelier.app.
-    `supabase/config.toml` lists the same redirect URLs for the local
-    stack only.
-  - **Done, 2026-10-30.** The product owner changed both dashboard
-    settings. The `/verify` probe now redirects to
-    `https://mantelier.app/auth/confirm`, and accepts `/auth/confirmed`.
-    `site/` was deployed with `wrangler pages deploy … --project-name
-    mantelier --branch main`. mantelier.app serves `/auth/confirm`,
-    `/auth/confirmed` (through the rewrite) and the new AASA, and Apple's
-    AASA CDN already has the `/auth/confirm` entry. A full sign-up on a
-    device has not been run yet.
 
 - **Stamp ceremony.** When a member earns a new Passport stamp, their own
   Passport opens full screen over the screen they are on. The real cover
@@ -293,35 +251,13 @@ The format follows Keep a Changelog.
     tab read exactly the same booklet.
   - No schema or Supabase changes.
 
-### Fixed
-- **Near-miss: the ceremony route rendered every booklet label with
-  Flutter's yellow-underlined debug text style.** A pushed route has no
-  Scaffold, and therefore no `Material`, above it. The Passport tab
-  inherits one, so the shared booklet widgets had never needed their own.
-  The widget tests passed; it was the simulator that showed it. The
-  overlay now provides its own `Material`, and a test checks the
-  inherited text style. That test fails without the fix. This would recur
-  for any booklet widget shown from a new route.
-- **Near-miss: the stamper drew nothing on the device.** Its `CustomPaint`
-  was given the Stack's own `Size` object, which trips Flutter's "size
-  assigned inappropriately" layout assertion. Nothing painted, while the
-  impression underneath still landed on time, so it looked like a timing
-  problem. `Positioned.fill` already sizes the layer, and the argument is
-  gone. A test now checks that the stamper is on screen during its run.
-
-### Known limits
-- "Once per stamp" is per app session. Re-confirming an event that was
-  already confirmed in an earlier session would show the ceremony again,
-  because `confirmAttendance` returns the existing row. Neither event
-  surface offers confirmation once attendance exists, so this was not
-  guarded against further.
-- The five call sites were not pumped in widget tests: they build their
-  repositories against `Supabase.instance.client`, the same limitation as
-  `add_visit_sheet_shell_test.dart`. They were checked by reading. The
-  simulator check used a throwaway preview with fixture stamps rather
-  than a real save, so nothing was written to production.
-
 ### Changed
+- `SupabaseAnalyticsService.ofInstance()` resolves the Supabase client
+  only inside each insert's own try, so a screen can track from
+  `initState` where Supabase isn't initialised (widget tests) without
+  failing. Every insert now reads the signed-in user inside that try
+  too.
+
 - 2026-10-30 — **Download traffic cut before the App Store launch.**
   Supabase bills egress, and it is the binding cost at launch. The
   database itself has room for thousands of daily users. Measured figures
@@ -420,7 +356,108 @@ The format follows Keep a Changelog.
     event attendance. Their totals and the "friends going" logic need every
     row.
 
+- `20261030140000_add_get_visit_cover_photos.sql` (written as `20261030120000`, renamed before it was applied, see Fixed): one cover per visit
+  (`DISTINCT ON`, `SECURITY INVOKER` so `photos_read` RLS still applies,
+  `revoke ... from public, anon`), plus an index on
+  `photos (visit_id, taken_at desc nulls last)`, which `photos` had none
+  of. It was written and checked against a scratch PG 17. It picks the
+  same cover as the old query, which postgrest-dart sends as
+  `taken_at.desc.nullslast`, not Postgres' own DESC default, and anon
+  cannot execute it. **Applied to production 2026-10-30**, with this build's version bump,
+  at the product owner's request; the client still falls back to the old
+  query on PGRST202 for any server without it.
+
 ### Fixed
+- A manager's "Preview my page" no longer records a website tap on
+  Restaurant/Hotel Detail. It previously did, since `isPreview` only
+  gated personal state, so a manager could inflate their own venue's
+  click counts.
+
+- 2026-10-30 — Near-miss: the migration was first named `20261023210000`,
+  after `claude/usage-tracking`'s `20261023200000` as briefed. A check of
+  every remote branch found `claude/launch-egress` already at
+  `20261030120000`, so it was renamed `20261030130000` before any commit.
+  "The highest migration" has to be checked across all branches, not taken
+  from a brief.
+
+- **mantelier.app's "Nights we're watching" list is current again.** The
+  three hard-coded events, from August and September 2026, were replaced
+  on 2026-10-30 with the next three published, uncancelled events in
+  production, read with the anon key: 9 Nov (Amsterdam), 22 Nov (Schoorl)
+  and 24–25 Dec (Eijsden). The 1 Nov dinner in Aalten was left out
+  because it was two days away. Names, dates and cities are exactly as
+  stored. The list is still static, so it goes stale again after 9 Nov.
+  On screens narrower than 480px the date now sits above the name, since
+  the real names wrapped to five lines beside it.
+
+- **New users saw "server not available" after tapping the confirmation
+  link, although the account had been created and confirmed.**
+  `AuthRepository.signUp()` passed no `emailRedirectTo`, so GoTrue sent the
+  user to the project's Site URL after confirming. In production that was
+  still Supabase's default `http://localhost:3000`. This was verified on
+  2026-10-30 with a read-only probe: a GET to production's
+  `/auth/v1/verify` with an invalid token returns a `303` to
+  `http://localhost:3000#error=…`. The same probe with
+  `redirect_to=https://mantelier.app/auth/reset-password`, which is on the
+  allow-list, returns a `303` to that URL. GoTrue confirms the email
+  *before* it redirects, so the account was always fine. The phone was
+  sent to `localhost`, where nothing answers. `signUp()` now passes
+  `https://mantelier.app/auth/confirm`. This needed the production Auth
+  changes and site deploy below, both done on 2026-10-30.
+  - **Near-miss:** gotrue-dart's `resend()` sends no PKCE code challenge,
+    so a resent confirmation comes back with implicit-flow tokens. In PKCE
+    mode, supabase_flutter ignores those tokens. Sent to the Universal
+    Link, the resent link would have opened the app to a silent sign-in
+    screen. Resends therefore go to the web-only `/auth/confirmed`.
+  - **Near-miss:** the "Open Mantelier" buttons on the confirm and
+    reset-password pages did nothing. The product owner found this while
+    testing on 2026-10-30. Both linked to the page's own https URL, and
+    iOS never hands a Universal Link to the app when it is tapped on its
+    own domain, so the tap only reloaded the page. `reset-password.html`
+    has done this since 2026-09-24, where its comment claimed the
+    opposite. Both buttons now use `mantelier://` (see Added).
+  - **Near-miss:** supabase_flutter reports a failed link only as an error
+    on `onAuthStateChange`. AuthGate's subscription had no `onError`, so
+    an expired link left a silent sign-in screen. AuthGate now shows a
+    notice for the two link failures it can identify (`otp_expired`, and a
+    missing PKCE verifier or flow state). It deliberately ignores every
+    other stream error, such as a failed session refresh, because the
+    same stream carries errors that have nothing to do with a link.
+  - **Production Auth settings, for the product owner** (Dashboard →
+    Authentication → URL Configuration): set **Site URL** to
+    `https://mantelier.app/auth/confirm`, which also fixes 1.4.0 (17) and
+    older builds because they send no redirect. Add
+    `https://mantelier.app/auth/confirm` and
+    `https://mantelier.app/auth/confirmed` to **Redirect URLs**. Then
+    deploy `site/` (`auth/confirm.html`, `_redirects` and the updated
+    `.well-known/apple-app-site-association`) to mantelier.app.
+    `supabase/config.toml` lists the same redirect URLs for the local
+    stack only.
+  - **Done, 2026-10-30.** The product owner changed both dashboard
+    settings. The `/verify` probe now redirects to
+    `https://mantelier.app/auth/confirm`, and accepts `/auth/confirmed`.
+    `site/` was deployed with `wrangler pages deploy … --project-name
+    mantelier --branch main`. mantelier.app serves `/auth/confirm`,
+    `/auth/confirmed` (through the rewrite) and the new AASA, and Apple's
+    AASA CDN already has the `/auth/confirm` entry. A full sign-up on a
+    device has not been run yet.
+
+- **Near-miss: the ceremony route rendered every booklet label with
+  Flutter's yellow-underlined debug text style.** A pushed route has no
+  Scaffold, and therefore no `Material`, above it. The Passport tab
+  inherits one, so the shared booklet widgets had never needed their own.
+  The widget tests passed; it was the simulator that showed it. The
+  overlay now provides its own `Material`, and a test checks the
+  inherited text style. That test fails without the fix. This would recur
+  for any booklet widget shown from a new route.
+
+- **Near-miss: the stamper drew nothing on the device.** Its `CustomPaint`
+  was given the Stack's own `Size` object, which trips Flutter's "size
+  assigned inappropriately" layout assertion. Nothing painted, while the
+  impression underneath still landed on time, so it looked like a timing
+  problem. `Positioned.fill` already sizes the layer, and the argument is
+  gone. A test now checks that the stamper is on screen during its run.
+
 - 2026-10-30 — **A PNG venue photo was stored as `.jpg` with
   `image/jpeg`, and could exceed the 5 MiB limit.** The pipeline
   re-encoded every photo at full resolution, so a file that passed the
@@ -432,16 +469,40 @@ The format follows Keep a Changelog.
   and it is labelled as one. `publish-venue-photo` copies the object, so
   the published photo keeps the right type.
 
-### Not applied
-- `20261030140000_add_get_visit_cover_photos.sql` (written as `20261030120000`, renamed before it was applied, see Fixed): one cover per visit
-  (`DISTINCT ON`, `SECURITY INVOKER` so `photos_read` RLS still applies,
-  `revoke ... from public, anon`), plus an index on
-  `photos (visit_id, taken_at desc nulls last)`, which `photos` had none
-  of. It was written and checked against a scratch PG 17. It picks the
-  same cover as the old query, which postgrest-dart sends as
-  `taken_at.desc.nullslast`, not Postgres' own DESC default, and anon
-  cannot execute it. It is **not applied to production.** Until it is, the
-  client falls back to the old query on PGRST202.
+- 2026-10-30 — **Near-miss: two migrations reached production out of
+  filename order.** `20261030130000` (push notifications) was named after
+  launch-egress's `20261030120000` but was applied first, from its own
+  branch. Applied as named, a fresh replay would have run them in the
+  opposite order from production. They touch no common object, but
+  filename order is replay order, so the unapplied one was renamed
+  `20261030140000` before it went anywhere. The push migration's header,
+  already applied, still says it was named after `20261030120000`; it is
+  left as it is.
+
+- 2026-10-30 — **Merging launch-egress's notification paging with push
+  notifications' `get_notifications_v4`.** Each branch rewrote
+  `NotificationsRepository.getNotifications`, and git could not combine
+  them. The merged version pages the result and asks for v4 first, then
+  falls back through v3, v2 and v1. Two paging tests still expected v3
+  first and were updated.
+
+- 2026-10-30 — **Near-miss: Yi Long Court's website and phone were
+  confirmed after the China import was applied**, so merging the data
+  branch alone would never have reached production. Written as its own
+  guarded correction and applied with this build (Michelin_Database
+  CHANGELOG, QA-299).
+
+### Known limits
+- "Once per stamp" is per app session. Re-confirming an event that was
+  already confirmed in an earlier session would show the ceremony again,
+  because `confirmAttendance` returns the existing row. Neither event
+  surface offers confirmation once attendance exists, so this was not
+  guarded against further.
+- The five call sites were not pumped in widget tests: they build their
+  repositories against `Supabase.instance.client`, the same limitation as
+  `add_visit_sheet_shell_test.dart`. They were checked by reading. The
+  simulator check used a throwaway preview with fixture stamps rather
+  than a real save, so nothing was written to production.
 
 ---
 

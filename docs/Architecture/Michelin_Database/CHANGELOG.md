@@ -6,6 +6,20 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-30 — Yi Long Court website and phone (QA-299)
+
+| | |
+|---|---|
+| Applied | 2026-10-30, to production, at the product owner's request, from `release/1.5.0` (the change itself is commit `eaea651` on `claude/jolly-engelbart-47d9a4`) |
+| Data file | `michelin_cn_2026/prepared_yi_long_court_correction.sql` |
+| Row | `rest_2799` Yi Long Court (CN, Shanghai) |
+
+The China import above was applied before this confirmation was made, so production kept the older website (a URL that now redirects to The Peninsula Shanghai's home page) and no phone. The hotel's own dining page lists the restaurant with its own page (2/F, One MICHELIN Star, +86 21 2327 6742), recorded in `_source/cn_restaurant_phone_confirmations.csv`. Website set to `https://www.peninsula.com/en/shanghai/hotel-fine-dining/yi-long-court`, phone to `+86 21 2327 6742`. The update was guarded on the row still holding the old website and no phone; checked afterwards with a read-only query. Stars, address and point are unchanged.
+
+**Near-miss:** a correction committed to a data branch after that branch's import had been applied never reaches production by merging alone. It was found only because the release merge listed `claude/jolly-engelbart-47d9a4` as one commit ahead of main.
+
+---
+
 # 2026-10-30 — Catalogue data applied: China, Hong Kong/Macau/Taiwan, North America, Switzerland/Austria/Nordics, French and Monaco Key hotels (QA-289–QA-309, QA-350–QA-357, QA-360–QA-374)
 
 | | |
