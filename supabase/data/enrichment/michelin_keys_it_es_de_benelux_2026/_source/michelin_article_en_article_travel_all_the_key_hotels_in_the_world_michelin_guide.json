@@ -1,0 +1,933 @@
+{
+ "meta": {
+  "url": "https://guide.michelin.com/en/article/travel/all-the-key-hotels-in-the-world-michelin-guide",
+  "final_url": "https://guide.michelin.com/en/article/travel/all-the-key-hotels-in-the-world-michelin-guide",
+  "status": 200,
+  "title": "The 2026 MICHELIN Key Hotels: A Guide to the Global Selection",
+  "date_published": "2026-09-18T12:00",
+  "date_modified": "2026-10-20T09:35",
+  "read": "2026-10-31 (curl)"
+ },
+ "edition": 2026,
+ "links": [
+  {
+   "heading": "The 2026 MICHELIN Key Hotels: A Guide to the Global Selection",
+   "prefix": "le content-mobile-full\">",
+   "href": "https://guide.michelin.com/h/12128",
+   "text": ""
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "p: 2.5em;\">Editor’s Picks: Highlights from the New Selection",
+   "href": "https://guide.michelin.com/h/15190",
+   "text": "Nekajui, a Ritz-Carlton Reserve, Costa Rica"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "d via a wooden suspension bridge that hangs across a ravine.",
+   "href": "https://guide.michelin.com/h/17023",
+   "text": "Cataloochee Ranch, North Carolina, USA:"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "ochee Ranch, North Carolina, USA : With its sister hotel the",
+   "href": "https://guide.michelin.com/h/17025",
+   "text": "Swag"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": ", with upscale, modern-rustic cabins and a newly opened spa.",
+   "href": "https://guide.michelin.com/h/15571",
+   "text": "Hotel Sevilla, Mérida, Mexico"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "North America",
+   "href": "https://guide.michelin.com/en/hotels-stays/usa?&amp;distinction=all-keys",
+   "text": "United States"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ion=all-keys\" target=\"_blank\">United States – 359 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/mexico?&amp;distinction=all-keys",
+   "text": "Mexico"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Mexico – 98 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/canada?&amp;distinction=all-keys",
+   "text": "Canada"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ls> Central America",
+   "href": "https://guide.michelin.com/en/hotels-stays/costa-rica?&amp;distinction=all-keys",
+   "text": "Costa Rica"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "inction=all-keys\" target=\"_blank\">Costa Rica – 23 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/belize?&amp;distinction=all-keys",
+   "text": "Belize"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Belize – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/guatemala?&amp;distinction=all-keys",
+   "text": "Guatemala"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Guatemala – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/panama?&amp;distinction=all-keys",
+   "text": "Panama"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Panama – 4 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/honduras?&amp;distinction=all-keys",
+   "text": "Honduras"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Honduras – 2 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/nicaragua?&amp;distinction=all-keys",
+   "text": "Nicaragua"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "> Caribbean Islands",
+   "href": "https://guide.michelin.com/en/hotels-stays/st-barthelemy?&amp;distinction=all-keys",
+   "text": "Saint-Barthélemy"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "on=all-keys\" target=\"_blank\">Saint-Barthélemy – 9 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/jamaica?&amp;distinction=all-keys",
+   "text": "Jamaica"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Jamaica – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/turks-and-caicos-islands?&amp;distinction=all-keys",
+   "text": "Turks and Caicos Islands"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "eys\" target=\"_blank\">Turks and Caicos Islands – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/bahamas?&amp;distinction=all-keys",
+   "text": "Bahamas"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Bahamas – 4 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/dominican-republic?&amp;distinction=all-keys",
+   "text": "Dominican Republic"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "=all-keys\" target=\"_blank\">Dominican Republic – 4 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/antigua-barbuda?&amp;distinction=all-keys",
+   "text": "Antigua and Barbuda"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "all-keys\" target=\"_blank\">Antigua and Barbuda – 4 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/grenada?&amp;distinction=all-keys",
+   "text": "Grenada"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Grenada – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/st-lucia?&amp;distinction=all-keys",
+   "text": "St. Lucia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "stinction=all-keys\" target=\"_blank\">St. Lucia – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/anguilla?&amp;distinction=all-keys",
+   "text": "Anguilla"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ckground-color: rgb(255, 255, 255);\">Anguilla – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/cayman-islands?&amp;distinction=all-keys",
+   "text": "Cayman Islands"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "tion=all-keys\" target=\"_blank\">Cayman Islands – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/bermuda?&amp;distinction=all-keys",
+   "text": "Bermuda"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Bermuda – 2 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/puerto-rico?&amp;distinction=all-keys",
+   "text": "Puerto Rico"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "inction=all-keys\" target=\"_blank\">Puerto Rico – 2 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/aruba?&amp;distinction=all-keys",
+   "text": "Aruba"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "=\"background-color: rgb(255, 255, 255);\">Aruba – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/barbados?&amp;distinction=all-keys",
+   "text": "Barbados"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Barbados – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/Sint-Eustatius?&amp;distinction=all-keys",
+   "text": "Bonaire, Sint Eustatius and Saba"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "rget=\"_blank\">Bonaire, Sint Eustatius and Saba – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/british-virgin-islands?&amp;distinction=all-keys",
+   "text": "British Virgin Islands"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "l-keys\" target=\"_blank\">British Virgin Islands – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/dominica?&amp;distinction=all-keys",
+   "text": "Dominica"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Dominica – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/st-martin?&amp;distinction=all-keys",
+   "text": "Saint Martin"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "round-color: rgb(255, 255, 255);\">Saint Martin – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/nevis?&amp;distinction=all-keys",
+   "text": "St. Kitts & Nevis"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "on=all-keys\" target=\"_blank\">St. Kitts & Nevis – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/st-vincent-and-grenadines?&amp;distinction=all-keys",
+   "text": "St. Vincent & the Grenadines"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "\" target=\"_blank\">St. Vincent & the Grenadines – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/us-virgin-islands?&amp;distinction=all-keys",
+   "text": "U.S. Virgin Islands"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "tas Editor’s Picks: Highlights from the New Selection",
+   "href": "https://guide.michelin.com/h/6365",
+   "text": "Las Casitas, Peru"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "lection Las Casitas, Peru :",
+   "href": "https://guide.michelin.com/en/hotels-stays/machu-picchu?arr=2025-10-10&amp;dep=2025-10-11&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Machu Picchu"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "cover the Andes that's by no stretch any less unforgettable.",
+   "href": "https://guide.michelin.com/h/4251",
+   "text": "explora Rapa Nui, Rapa Nui, Chile"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": " statues and endless more archaeological and cultural sites.",
+   "href": "https://guide.michelin.com/h/16656",
+   "text": "Cinco Quintas Hotel Boutique, Cartagena, Colombia"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "bold; margin: 0;\"> Browse by destination",
+   "href": "https://guide.michelin.com/en/hotels-stays/brazil?&amp;distinction=all-keys",
+   "text": "Brazil"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Brazil – 22 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/chile?&amp;distinction=all-keys",
+   "text": "Chile"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Chile – 20 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/argentina?&amp;distinction=all-keys",
+   "text": "Argentina"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "tinction=all-keys\" target=\"_blank\">Argentina – 16 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/peru?&amp;distinction=all-keys",
+   "text": "Peru"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "?&distinction=all-keys\" target=\"_blank\">Peru – 15 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/colombia?&amp;distinction=all-keys",
+   "text": "Colombia"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Colombia – 11 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/ecuador?&amp;distinction=all-keys",
+   "text": "Ecuador"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Ecuador – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/uruguay?&amp;distinction=all-keys",
+   "text": "Uruguay"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "a. Editor’s Picks: Highlights from the New Selection",
+   "href": "https://guide.michelin.com/h/12461",
+   "text": "Borgo Santandrea, Amalfi Coast, Italy"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "s one of eight new Three-Key hotels named in Europe in 2026.",
+   "href": "https://guide.michelin.com/h/17202",
+   "text": "Les Sources de Vougeot, Burgundy, France"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "lie spa crafted from the château’s historic vaulted cellars.",
+   "href": "https://guide.michelin.com/h/16403",
+   "text": "Park Hotel Sonnenhof, Vaduz, Liechtenstein:"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "h3> Northern Europe",
+   "href": "https://guide.michelin.com/en/hotels-stays/uk?&amp;distinction=all-keys",
+   "text": "United Kingdom"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "on=all-keys\" target=\"_blank\">United Kingdom – 131 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/ireland?&amp;distinction=all-keys",
+   "text": "Ireland"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Ireland – 19 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/norway?&amp;distinction=all-keys",
+   "text": "Norway"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Norway – 16 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/sweden?&amp;distinction=all-keys",
+   "text": "Sweden"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Sweden – 11 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/denmark?&amp;distinction=all-keys",
+   "text": "Denmark"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Denmark – 9 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/iceland?&amp;distinction=all-keys",
+   "text": "Iceland"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Iceland – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/finland?&amp;distinction=all-keys",
+   "text": "Finland"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Finland – 3 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/latvia?&amp;distinction=all-keys",
+   "text": "Latvia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Latvia – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/estonia?&amp;distinction=all-keys",
+   "text": "Estonia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Estonia – 2 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/lithuania?&amp;distinction=all-keys",
+   "text": "Lithuania"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ils> Western Europe",
+   "href": "https://guide.michelin.com/en/hotels-stays/france?&amp;distinction=all-keys",
+   "text": "France"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">France – 220 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/germany?&amp;distinction=all-keys",
+   "text": "Germany"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Germany – 130 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/switzerland?&amp;distinction=all-keys",
+   "text": "Switzerland"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "nction=all-keys\" target=\"_blank\">Switzerland – 89 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/austria?&amp;distinction=all-keys",
+   "text": "Austria"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Austria – 72 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/netherlands?&amp;distinction=all-keys",
+   "text": "Netherlands"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "nction=all-keys\" target=\"_blank\">Netherlands – 18 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/belgium?&amp;distinction=all-keys",
+   "text": "Belgium"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Belgium – 18 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/monaco?&amp;distinction=all-keys",
+   "text": "Monaco"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Monaco – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/luxembourg?&amp;distinction=all-keys",
+   "text": "Luxembourg"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "tinction=all-keys\" target=\"_blank\">Luxembourg – 2 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/Liechtenstein?distinction=all-keys",
+   "text": "Liechtenstein"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ls> Southern Europe",
+   "href": "https://guide.michelin.com/en/hotels-stays/italy?&amp;distinction=all-keys",
+   "text": "Italy"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Italy – 224 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/spain?&amp;distinction=all-keys",
+   "text": "Spain"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Spain – 122 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/greece?&amp;distinction=all-keys",
+   "text": "Greece"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Greece – 74 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/portugal?&amp;distinction=all-keys",
+   "text": "Portugal"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Portugal – 69 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/turkey?&amp;amp;distinction=all-keys",
+   "text": "Türkiye"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Türkiye – 23 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/croatia?&amp;distinction=all-keys",
+   "text": "Croatia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Croatia – 12 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/malta?&amp;distinction=all-keys",
+   "text": "Malta"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "?&distinction=all-keys\" target=\"_blank\">Malta – 6 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/slovenia?&amp;distinction=all-keys",
+   "text": "Slovenia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Slovenia – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/montenegro?&amp;distinction=all-keys",
+   "text": "Montenegro"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "tinction=all-keys\" target=\"_blank\">Montenegro – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/serbia?&amp;distinction=all-keys",
+   "text": "Serbia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "background-color: rgb(255, 255, 255);\">Serbia – 4 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/andorra?&amp;distinction=all-keys",
+   "text": "Andorra"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Andorra – 4 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/cyprus?&amp;distinction=all-keys",
+   "text": "Cyprus"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ils> Eastern Europe",
+   "href": "https://guide.michelin.com/en/hotels-stays/poland?&amp;distinction=all-keys",
+   "text": "Poland"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ackground-color: rgb(255, 255, 255);\">Poland – 14 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/hungary?&amp;distinction=all-keys",
+   "text": "Hungary"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Hungary – 12 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/czech-republic?&amp;distinction=all-keys",
+   "text": "Czech Republic"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ion=all-keys\" target=\"_blank\">Czech Republic – 11 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/georgia?&amp;distinction=all-keys",
+   "text": "Georgia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Georgia – 6 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/romania?&amp;distinction=all-keys",
+   "text": "Romania"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Romania – 6 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/bulgaria?&amp;distinction=all-keys",
+   "text": "Bulgaria"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Bulgaria – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/slovakia?&amp;distinction=all-keys",
+   "text": "Slovakia"
+  },
+  {
+   "heading": "Africa",
+   "prefix": "periments in the world, from hotels that make their homes on",
+   "href": "https://guide.michelin.com/h/12260",
+   "text": "high-altitude suspended train lines"
+  },
+  {
+   "heading": "Africa",
+   "prefix": "mes on high-altitude suspended train lines to ghostly,",
+   "href": "https://guide.michelin.com/h/11788",
+   "text": "shipwreck-dotted coastlines"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "fez Editor’s Picks: Highlights from the New Selection",
+   "href": "https://guide.michelin.com/h/14629",
+   "text": "Delaire Graff Estate, Stellenbosch, South Africa"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "This is the place to be for premium tastings and vine views.",
+   "href": "https://guide.michelin.com/h/16611",
+   "text": "One&Only Gorilla's Nest, Kinigi, Rwanda:"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "nist Dian Fossey spent years studying the mountain gorillas.",
+   "href": "https://guide.michelin.com/h/15392",
+   "text": "Riad Mayfez Suites & Spa, Fes, Morocco:"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "bold; margin: 0;\"> Browse by destination",
+   "href": "https://guide.michelin.com/en/hotels-stays/south-africa?&amp;distinction=all-keys",
+   "text": "South Africa"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "und-color: rgb(255, 255, 255);\">South Africa – 32 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/morocco?&amp;distinction=all-keys",
+   "text": "Morocco"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Morocco – 31 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/egypt?&amp;distinction=all-keys",
+   "text": "Egypt"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Egypt – 13 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/seychelles?&amp;distinction=all-keys",
+   "text": "Seychelles"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "tinction=all-keys\" target=\"_blank\">Seychelles – 7 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/kenya?&amp;distinction=all-keys",
+   "text": "Kenya"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "?&distinction=all-keys\" target=\"_blank\">Kenya – 7 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/mauritius?&amp;distinction=all-keys",
+   "text": "Mauritius"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Mauritius – 6 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/rwanda?&amp;distinction=all-keys",
+   "text": "Rwanda"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Rwanda - 4 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/namibia?&amp;distinction=all-keys",
+   "text": "Namibia"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Namibia – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/tanzania?&amp;distinction=all-keys",
+   "text": "Tanzania"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Tanzania – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/zimbabwe?&amp;distinction=all-keys",
+   "text": "Zimbabwe"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Zimbabwe – 2 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/benin?&amp;distinction=all-keys",
+   "text": "Benin"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "n?&distinction=all-keys\" target=\"_blank\">Benin – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/botswana?&amp;distinction=all-keys",
+   "text": "Botswana"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Botswana – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/mozambique?&amp;distinction=all-keys",
+   "text": "Mozambique"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Mozambique – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/tunisia?&amp;distinction=all-keys",
+   "text": "Tunisia"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Tunisia – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/zambia?&amp;distinction=all-keys",
+   "text": "Zambia"
+  },
+  {
+   "heading": "Asia",
+   "prefix": "veal, Asia features the rare hotel to debut with Three Keys:",
+   "href": "https://guide.michelin.com/h/16237",
+   "text": "Soneva Secret"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "ia. Editor’s Picks: Highlights from the New Selection",
+   "href": "https://guide.michelin.com/h/10491",
+   "text": "City of Dreams - Morpheus, Cotai, Macau"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "e to a rooftop pool, spa and plenty of high-end restaurants.",
+   "href": "https://guide.michelin.com/h/15596",
+   "text": "Shinta Mani Wild, Ou Bak Rothed Commune, Cambodia:"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": " know of where guests have the option to arrive via zipline.",
+   "href": "https://guide.michelin.com/h/15708",
+   "text": "Ayan Zalaat, Ulaanbaatar, Mongolia:"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "n Central Asia",
+   "href": "https://guide.michelin.com/en/hotels-stays/kazakhstan?&amp;distinction=all-keys",
+   "text": "Kazakhstan"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "tinction=all-keys\" target=\"_blank\">Kazakhstan – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/uzbekistan?&amp;distinction=all-keys",
+   "text": "Uzbekistan"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "kground-color: rgb(255, 255, 255);\">Uzbekistan – 1 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/mongolia?&amp;distinction=all-keys",
+   "text": "Mongolia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "/details> East Asia",
+   "href": "https://guide.michelin.com/en/hotels-stays/japan?&amp;distinction=all-keys",
+   "text": "Japan"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "distinction=all-keys\" target=\"_blank\">Japan – 145 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/china?&amp;distinction=all-keys",
+   "text": "Mainland China"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ion=all-keys\" target=\"_blank\">Mainland China – 55 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/hong-kong?&amp;distinction=all-keys",
+   "text": "Hong Kong"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Hong Kong – 9 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/macau?&amp;distinction=all-keys",
+   "text": "Macau"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "?&distinction=all-keys\" target=\"_blank\">Macau - 9 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/korea?&amp;distinction=all-keys",
+   "text": "South Korea"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "inction=all-keys\" target=\"_blank\">South Korea – 8 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/taiwan?&amp;distinction=all-keys",
+   "text": "Taiwan"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "etails> Middle East",
+   "href": "https://guide.michelin.com/en/hotels-stays/uae?&amp;amp;distinction=all-keys",
+   "text": "United Arab Emirates"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "l-keys\" target=\"_blank\">United Arab Emirates – 25 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/saudi-arabia?&amp;amp;distinction=all-keys",
+   "text": "Saudi Arabia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ction=all-keys\" target=\"_blank\">Saudi Arabia – 17 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/qatar?&amp;amp;distinction=all-keys",
+   "text": "Qatar"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": ";distinction=all-keys\" target=\"_blank\">Qatar – 11 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/jordan?&amp;amp;distinction=all-keys",
+   "text": "Jordan"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "background-color: rgb(255, 255, 255);\">Jordan – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/Azerbaijan?distinction=1-key-michelin%2C2-keys-michelin",
+   "text": "Azerbaijan"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "2C2-keys-michelin\" target=\"_blank\">Azerbaijan – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/bahrain?&amp;amp;distinction=all-keys",
+   "text": "Bahrain"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": ";distinction=all-keys\" target=\"_blank\">Bahrain – 3 Key hotel",
+   "href": "https://guide.michelin.com/en/hotels-stays/oman?&amp;amp;distinction=all-keys",
+   "text": "Oman"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "=\"background-color: rgb(255, 255, 255);\">Oman – 3 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/kuwait?&amp;amp;distinction=all-keys",
+   "text": "Kuwait"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "background-color: rgb(255, 255, 255);\">Kuwait – 2 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/armenia?&amp;amp;distinction=all-keys",
+   "text": "Armenia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "ils> Southeast Asia",
+   "href": "https://guide.michelin.com/en/hotels-stays/thailand?&amp;distinction=all-keys",
+   "text": "Thailand"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Thailand – 71 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/indonesia?&amp;distinction=all-keys",
+   "text": "Indonesia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "tinction=all-keys\" target=\"_blank\">Indonesia – 47 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/vietnam?&amp;distinction=all-keys",
+   "text": "Vietnam"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Vietnam – 21 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/cambodia?&amp;distinction=all-keys",
+   "text": "Cambodia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Cambodia – 12 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/singapore?&amp;distinction=all-keys",
+   "text": "Singapore"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "tinction=all-keys\" target=\"_blank\">Singapore – 11 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/malaysia?&amp;distinction=all-keys",
+   "text": "Malaysia"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "istinction=all-keys\" target=\"_blank\">Malaysia – 9 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/philippines?&amp;distinction=all-keys",
+   "text": "Philippines"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "inction=all-keys\" target=\"_blank\">Philippines – 9 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/laos?&amp;distinction=all-keys",
+   "text": "Laos"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "s?&distinction=all-keys\" target=\"_blank\">Laos – 2 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/myanmar?&amp;distinction=all-keys",
+   "text": "Myanmar"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "details> South Asia",
+   "href": "https://guide.michelin.com/en/hotels-stays/india?&amp;distinction=all-keys",
+   "text": "India"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">India – 47 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/maldives?&amp;distinction=all-keys",
+   "text": "Maldives"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "stinction=all-keys\" target=\"_blank\">Maldives – 15 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/sri-lanka?&amp;distinction=all-keys",
+   "text": "Sri Lanka"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "tinction=all-keys\" target=\"_blank\">Sri Lanka – 12 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/bhutan?&amp;distinction=all-keys",
+   "text": "Bhutan"
+  },
+  {
+   "heading": "Browse by region or destination",
+   "prefix": "&distinction=all-keys\" target=\"_blank\">Bhutan – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/nepal?&amp;distinction=all-keys",
+   "text": "Nepal"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "Editor’s Picks: Highlights from the New Selection",
+   "href": "https://guide.michelin.com/h/6254",
+   "text": "Southern Ocean Lodge, Kangaroo Island, Australia"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "tralia : One of the two new Three-Keys in Oceania along with",
+   "href": "https://guide.michelin.com/h/14944",
+   "text": "Saffire Freycinet"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": " rugged locale excellent for wildlife and nature excursions.",
+   "href": "https://guide.michelin.com/h/6112",
+   "text": "Rosewood Matakauri, Queenstown, New Zealand"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "to helicopter tours — or, simply, visits to the private spa.",
+   "href": "https://guide.michelin.com/h/14730",
+   "text": ""
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": ", simply, visits to the private spa.",
+   "href": "https://guide.michelin.com/h/16386",
+   "text": "The Porter House Hotel, Sydney, Australia"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "/b> The Porter House Hotel, Sydney, Australia",
+   "href": "https://guide.michelin.com/h/16386",
+   "text": ":"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "mary>",
+   "href": "https://guide.michelin.com/en/hotels-stays/australia?&amp;distinction=all-keys",
+   "text": "Australia"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "tinction=all-keys\" target=\"_blank\">Australia – 54 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/new-zealand?&amp;distinction=all-keys",
+   "text": "New Zealand"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "nction=all-keys\" target=\"_blank\">New Zealand – 28 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/french-polynesia?&amp;distinction=all-keys",
+   "text": "French Polynesia"
+  },
+  {
+   "heading": "Editor’s Picks: Highlights from the New Selection",
+   "prefix": "on=all-keys\" target=\"_blank\">French Polynesia – 5 Key hotels",
+   "href": "https://guide.michelin.com/en/hotels-stays/fiji?&amp;distinction=all-keys",
+   "text": "Fiji"
+  }
+ ],
+ "text": " The 2026 MICHELIN Key Hotels: A Guide to the Global Selection Restaurants Hotels Travel Guides Magazine My Lists Restaurants Hotels MICHELIN Guide Plus Travel Guides Best-of Guides Magazine Contact us Subscribe to our newsletter TheFork prefered partnership TheFork partner restaurants Global - English - EUR Travel 9 minutes 18 September 2026 The 2026 MICHELIN Key Hotels: A Guide to the Global Selection Inspectors just unveiled the global MICHELIN Keys for 2026. Use this guide to explore the best hotels on every continent, country by country. MICHELIN Keys Editor's Pick Hotels Share The new MICHELIN Keys are here. After a year-long search for new additions, Inspectors have awarded nearly 500 hotels with their very first Key distinctions and more than 80 with upgrades. 10 countries earned their very first representation in the Key selection. And 18 new Three-Keys take their place at the very top of the selection. With total numbers now spanning 155 Three-Keys, 657 Two-Keys and 2,020 One-Keys, Inspectors find a hotel scene in 2026 ready to meet an increasingly flexible and open-minded modern traveler. No longer do hotel guests hit the road strictly for business or leisure, but increasingly for both, laptops in hand. Rough-luxury experiences, from tented rooms to trailers in the wilderness, are increasingly popular. And deeply private accommodations, from tiny, five-room-or-less hotels to private villas, are in high demand. The hotel equivalent of the MICHELIN Star for restaurants is now entering its third year. Each of the more than 9,000 hotels in our selection meets Inspectors’ rigorous criteria. The Keys are the most outstanding. The best way to get to know them is to explore them yourself. Browse the 2026 MICHELIN Key Hotels by Destination North America South America Europe Africa Asia Oceania Clayoquot Wilderness Lodge in Canada, the rare glamping hotel in the world with Three Keys. North & Central America + Caribbean Updated MICHELIN Keys in the United States, Mexico, Canada — and 100-plus brand-new Key hotels and promotions across nearly a dozen countries and territories. The United States, Mexico and Canada now boast nearly 500 Key hotels between them, while Inspectors also added many special properties across Central America and the Caribbean — with the hotel scene in Costa Rica a particular standout for 2026. This small country in Central America earned the only new Three-Key hotel in the Americas, as well as four new One-Key and three new Two-Key hotels. In this cluster of the Western Hemisphere, the best hotels are often surprising in form and function. This is where you'll find plenty of wilderness glamping and jungle eco-lodges, in addition to sleek city boutiques and affordable countryside gems. In this section, too: more than twenty Three-Key hotels. Hotel Sevilla, a new One-Key hotel in Mérida, Mexico, that restores a 16th-century colonial villa. © Hotel Sevilla Editor’s Picks: Highlights from the New Selection Nekajui, a Ritz-Carlton Reserve, Costa Rica : Central America's latest Three-Key hotel is set on Peninsula Papagayo, some 1,400 acres of tropical forest and pristine beaches where you'll find some of the greatest hotels in the world. In 2026, Inspectors name Nekajuj the very best of them: a central lodge orbited by a constellation of rooms, suites and villas — some of which are reached via a wooden suspension bridge that hangs across a ravine. Cataloochee Ranch, North Carolina, USA : With its sister hotel the Swag , Cataloochee ranch is one of two hotels on the outskirts of the Great Smoky Mountain National Park to earn Two Keys this year. Fitting for its gorgeous wilderness setting, the Ranch — with a century of history and a recent renovation to its name — provides many chances for hiking and horseback riding, with upscale, modern-rustic cabins and a newly opened spa. Hotel Sevilla, Mérida, Mexico : A 16th-century villa in Mérida's historic center that was salvaged through brutalist design. A new One-Key in Mexico and one of the most creative historic restorations you’ll ever see. Browse by region or destination North America United States – 359 Key hotels Mexico – 98 Key hotels Canada – 42 Key hotels Central America Costa Rica – 23 Key hotels Belize – 5 Key hotels Guatemala – 5 Key hotels Panama – 4 Key hotels Honduras – 2 Key hotel Nicaragua – 1 Key hotel Caribbean Islands Saint-Barthélemy – 9 Key hotels Jamaica – 5 Key hotels Turks and Caicos Islands – 5 Key hotels Bahamas – 4 Key hotels Dominican Republic – 4 Key hotels Antigua and Barbuda – 4 Key hotels Grenada – 3 Key hotels St. Lucia – 3 Key hotels Anguilla – 3 Key hotels Cayman Islands – 3 Key hotels Bermuda – 2 Key hotels Puerto Rico – 2 Key hotels Aruba – 1 Key hotel Barbados – 1 Key hotel Bonaire, Sint Eustatius and Saba – 1 Key hotel British Virgin Islands – 1 Key hotel Dominica – 1 Key hotel Saint Martin – 1 Key hotel St. Kitts & Nevis – 1 Key hotel St. Vincent & the Grenadines – 1 Key hotel U.S. Virgin Islands – 1 Key hotel South America Updated MICHELIN Keys across the continent distinguish the best hotels in Brazil, Chile, Argentina and four more countries. In South America's flourishing hotel scene, the variety of styles, experiences and prices matches the continent's equally rich diversity of cultures and landscapes. Inspectors distinguished the best hotels here with 94 Key hotels across seven countries, including five Three-Key hotels — each retaining its top distinction first earned in 2025. You'll find MICHELIN Keys in the major cities, in the small towns along the coastlines and even in the farthest reaches of the continent, a stone's throw from Antarctica. For regions with both MICHELIN Keys and MICHELIN restaurants, look to Argentina and Brazil. Las Casitas retains its Three-Key distinction in Peru. © Las Casitas Editor’s Picks: Highlights from the New Selection Las Casitas, Peru : Machu Picchu has its own Key hotels, but the country's only Three Key, for a second consecutive year, is an awe-inspiring 20-acre estate in the Colca Valley. Las Casitas makes this a must-visit destination, a more under-the-radar way to discover the Andes that's by no stretch any less unforgettable. explora Rapa Nui, Rapa Nui, Chile : The Explora brand is known across the Southern Hemisphere for adventure hotels that pair wide varieties of on-the-ground explorations with all-inclusive experiences. On Rapa Nui, formerly Easter Island, their now Two-Key retreat is an unmatched way to visit the moai statues and endless more archaeological and cultural sites. Cinco Quintas Hotel Boutique, Cartagena, Colombia : One of five new Keys and promotions in Colombia, this One-Key sits inside the walled city of Cartagena's historic center, a beautiful mix of stylish modern design and historic architecture where larger parties might rent full floors or even the entire, 21-room boutique for privacy or celebration. Browse by destination Brazil – 22 Key hotels Chile – 20 Key hotels Argentina – 16 Key hotels Peru – 15 Key hotels Colombia – 11 Key hotels Ecuador – 5 Key hotels Uruguay – 5 Key hotels Europe More than 1,300 Keys, from the best hotels in the UK, France, Italy, Spain and Germany to more than 30 additional countries. A strong 2026 for hospitality in Europe: nearly 200 new Keys and promotions, including eight new Three-Key hotels. Inspectors also, for the first time, uncovered Key hotels in Slovakia and Liechtenstein. These brand-new additions join a continent with the highest count of Key hotels in the world. Well represented are all the biggest countries in Europe, including Austria, France, Germany, Ireland, Italy, Spain, Switzerland and the UK. And you'll find Inspector picks in nearly every category of travel here: from ski gems in Andorra, to beautiful wine estates in Georgia, to futuristic glass boxes in Norway. As of Sept. 18, 2026, Italy leads the continent with 224 Keys, followed by France with 220 and the United Kingdom with 131. One of Europe's newest Three-Key hotels: the Amalfi Coast's Borgo Santandrea. Editor’s Picks: Highlights from the New Selection Borgo Santandrea, Amalfi Coast, Italy : Promoted from Two-Keys, this Sixties modernist structure, thoroughly renovated and set directly into a seaside cliff, is one of eight new Three-Key hotels named in Europe in 2026. Les Sources de Vougeot, Burgundy, France : This extraordinary hotel in Burgundy was once a monastery building. After a recent renovation, it becomes one of a crop of excellent new Two-Key hotels in France, complete with a Caudalie spa crafted from the château’s historic vaulted cellars. Park Hotel Sonnenhof, Vaduz, Liechtenstein : A brand-new One Key and the first Key hotel in Liechtenstein. Family-owned and operated, come for the mountain views, the culinary program run by the chef-owner, and for this Alpine corner of one of the world's smallest countries. Browse by region or destination Northern Europe United Kingdom – 131 Key hotels Ireland – 19 Key hotels Norway – 16 Key hotels Sweden – 11 Key hotels Denmark – 9 Key hotels Iceland – 5 Key hotels Finland – 3 Key hotel Latvia – 3 Key hotels Estonia – 2 Key hotels Lithuania – 2 Key hotels Western Europe France – 220 Key hotels Germany – 130 Key hotels Switzerland – 89 Key hotels Austria – 72 Key hotels Netherlands – 18 Key hotels Belgium – 18 Key hotels Monaco – 3 Key hotels Luxembourg – 2 Key hotels Liechtenstein – 1 Key hotel Southern Europe Italy – 224 Key hotels Spain – 122 Key hotels Greece – 74 Key hotels Portugal – 69 Key hotels Türkiye – 23 Key hotels Croatia – 12 Key hotels Malta – 6 Key hotels Slovenia – 5 Key hotels Montenegro – 5 Key hotels Serbia – 4 Key hotels Andorra – 4 Key hotels Cyprus – 3 Key hotels Eastern Europe Poland – 14 Key hotels Hungary – 12 Key hotels Czech Republic – 11 Key hotels Georgia – 6 Key hotels Romania – 6 Key hotels Bulgaria – 5 Key hotels Slovakia - 2 Key hotels Africa The updated MICHELIN Keys in Africa distinguish the best hotels in Egypt, Kenya, Morocco, South Africa and 11 more countries — including four with their very first Keys. With the addition of the very first Keys in Benin, Botswana, Rwanda and Zimbabwe, Inspectors' best hotels in Africa now number over 100 in 15 countries. In the selection below, you'll find the expected luxury safari experiences of South Africa and Kenya, the historic riads of Morocco, and the beach resorts of Mauritius and the Seychelles. But the best hotels in Africa show too some of the boldest, most creative hospitality experiments in the world, from hotels that make their homes on high-altitude suspended train lines to ghostly, shipwreck-dotted coastlines . A new Three-Key joins this selection as well, for a total in 2026 of seven Three-Key hotels in four different countries in Africa. Riad Mayfez, a new One-Key riad in Fes, Morocco. © Riad Mayfez Editor’s Picks: Highlights from the New Selection Delaire Graff Estate, Stellenbosch, South Africa : Africa's newest Three-Key hotel is a wine estate in the Cape Winelands, its beautiful grounds decorated with the contemporary art and sculpture collection of its owner. This is the place to be for premium tastings and vine views. One&Only Gorilla's Nest, Kinigi, Rwanda : One of three Two-Key hotels to inaugurate the Rwanda Key selection, this one's for trekking in the foothills of the Virunga Mountains — the same setting where famed conservationist Dian Fossey spent years studying the mountain gorillas. Riad Mayfez Suites & Spa, Fes, Morocco : Inspectors have a deep respect for the purposeful architecture of the historic riad. But in Fez, Morocco, they find a superlative new One-Key that offers another take on the proven style — one that incorporates qualities of Art Deco as well as stylistic nods to the owner's beloved London. Browse by destination South Africa – 32 Key hotels Morocco – 31 Key hotels Egypt – 13 Key hotels Seychelles – 7 Key hotels Kenya – 7 Key hotels Mauritius – 6 Key hotels Rwanda - 4 Key hotels Namibia – 3 Key hotels Tanzania – 3 Key hotels Zimbabwe – 2 Key hotels Benin – 1 Key hotel Botswana – 1 Key hotel Mozambique – 1 Key hotel Tunisia – 1 Key hotel Zambia – 1 Key hotel Asia Updated MICHELIN Keys in Japan, Thailand, Mainland China, Cambodia, India, Vietnam and more top destinations. While most new Three-Key hotels in 2026 represent promotions from properties awarded with Two Keys in last year's reveal, Asia features the rare hotel to debut with Three Keys: Soneva Secret in the Maldives. This tremendous hotel joins a class of 34 Three-Key accommodations in Asia this year. The Three Keys may grab the most headlines, but on a continent home to everything from the most iconic cultural landmarks to the most understated beachside treasures, Keys across all distinctions lead the way to both bucket-list destinations and unsung discoveries, from the beaches of Thailand to the mountains of Bhutan and the foothills of the Himalayas. The City of Dreams - Morpheus in Macau, among the new Three-Key hotels in Asia. Editor’s Picks: Highlights from the New Selection City of Dreams - Morpheus, Cotai, Macau : Of the many futuristic buildings hosting phenomenal accommodations across Asia, the Three-Key City of Dreams - Morpheus may be the most futuristic and phenomenal of them all. The crisscrossing steel exterior is the work of the late, visionary architect Zaha Hadid, and its spaces are home to a rooftop pool, spa and plenty of high-end restaurants. Shinta Mani Wild, Ou Bak Rothed Commune, Cambodia : In order to preserve the indigenous forest, this Two-Key hotel sets its 15 tented suites and all of its public spaces on elevated platforms. Some more elevated than others — as of this writing, Shinta Mani Wild is the only hotel we know of where guests have the option to arrive via zipline. Ayan Zalaat, Ulaanbaatar, Mongolia : The first, and for now the only, Key hotel in Mongolia, is this 32-room accommodation in a protected valley at the edge of Ulaanbaatar. Mongolia is one of four countries to earn its first Keys in 2026 in Asia, along with Myanmar, Armenia and Kazakhstan. Browse by region or destination Central Asia Kazakhstan – 5 Key hotels Uzbekistan – 1 Key hotel Mongolia – 1 Key hotel East Asia Japan – 145 Key hotels Mainland China – 55 Key hotels Hong Kong – 9 Key hotels Macau - 9 Key hotels South Korea – 8 Key hotels Taiwan - 8 Key hotels Middle East United Arab Emirates – 25 Key hotels Saudi Arabia – 17 Key hotels Qatar – 11 Key hotels Jordan – 5 Key hotels Azerbaijan – 3 Key hotels Bahrain – 3 Key hotel Oman – 3 Key hotels Kuwait – 2 Key hotels Armenia – 1 Key hotel Southeast Asia Thailand – 71 Key hotels Indonesia – 47 Key hotels Vietnam – 21 Key hotels Cambodia – 12 Key hotels Singapore – 11 Key hotels Malaysia – 9 Key hotels Philippines – 9 Key hotels Laos – 2 Key hotels Myanmar – 1 Key hotel South Asia India – 47 Key hotels Maldives – 15 Key hotels Sri Lanka – 12 Key hotels Bhutan – 5 Key hotels Nepal – 3 Key hotels Oceania Updated Keys in Oceania, distinguishing the best hotels in Australia, New Zealand, Fiji and French Polynesia. The MICHELIN Keys in Oceania span the best hotels in Australia, New Zealand, Fiji and French Polynesia. But in this short list of destinations are 92 Key hotels — an increase of nearly a third from last year — and some of the most extraordinary experiences in the world. The Three-Key and Two-Key selections tend toward the remote island resorts of Bora Bora, the sublime architectural gems on the Australian coast or the spectacular rural estates of New Zealand. But you'll find too a wonderful range of hotels throughout the major cities, including a welcome collection of historic properties, underrated hidden finds and plenty of representation from all the world's renowned luxury brands. On Australia's Kangaroo Island, Three-Key Southern Ocean Lodge. © Southern Ocean Lodge Editor’s Picks: Highlights from the New Selection Southern Ocean Lodge, Kangaroo Island, Australia : One of the two new Three-Keys in Oceania along with Saffire Freycinet , the Southern Ocean Lodge is a shining example of creative modern architecture. In neutral tones and ample glass, it's set parallel to the ocean coastline in a remote and rugged locale excellent for wildlife and nature excursions. Rosewood Matakauri, Queenstown, New Zealand : The intimate New Zealand lodge is one of the greatest hotel forms in the hemisphere, and this Two-key boasts some of the best views in the country to go with everything from humble nature walks to helicopter tours — or, simply, visits to the private spa. The Porter House Hotel, Sydney, Australia : A mid-size hotel in Sydney that preserves the arresting exterior of an 1876-vintage tobacco warehouse, while also connecting it to a new, 36-storey tower. Today, a One-Key hotel with a bevy of modern comforts. Browse by destination Australia – 54 Key hotels New Zealand – 28 Key hotels French Polynesia – 5 Key hotels Fiji – 5 Key hotels Related articles: The Most Affordable Key Hotels in the World And the Winners Are: Four Standout Hotels Take Home MICHELIN’s Latest Special Category Awards Our Complete Hotel Guides — How to choose a hotel in Barcelona , London , New York City , Mexico City , Berlin and Paris Hero Image: Les Sources de Vougeot in Gilly-lès-Cîteaux, one of France's newest Two-Key hotels. © Les Sources de Vougeot Written by the MICHELIN Guide Discover more The Most Affordable Key Hotels in the World The Complete Guide to NYC Hotels 10 Essential Hotel Rooftops in the World’s Top Food Cities Travel Travel 6 min. São Paulo: 7 Ideas for Eating, Drinking and Getting to Know Brazil’s Largest City From coffee with breakfast to a late evening nightcap, here are seven ways to discover different sides of São Paulo including food, culture and neighborhoods with distinct identities. São Paulo Brazil Editor's Pick Travel 6 min. 8 Spellbinding Gothic-Inspired Design Hotels in the U.S. and Canada From an imposing château to a former church, these hotels are as moody and dramatic as they are stylish and sophisticated. Hotels Travel Travel 3 min. Vegan-Friendly Restaurants in London Embrace plant power with our selection of the best vegan restaurants in London – and discover where else to find proper plant-based options. Vegan London Restaurants Editor's Pick Travel 7 min. Warming Stays and Spa Days: The Cosiest Hotels in the UK Embrace the season with a stay at some of the warmest and most welcoming hotels across England, Scotland, Wales and Northern Ireland. Cosy Hotels Editor's Pick All articles of Travel Select check-in date S M T W T F S Dates Rates in EUR for 1 night, 1 guest Rates in EUR for 1 night, 1 guest Save MICHELIN Guide Magazine Travel The 2026 MICHELIN Key Hotels: A Guide to the Global Selection Be the first to get news and updates about the MICHELIN Guide Subscribe Michelin will process your personal data to manage your subscription, measure the performance of our campaigns and analyze your interactions with our communications. Your data can be shared with other Michelin affiliates (TabletHotels and Robert Parker) in order to know you better and with your consent, to sending you marketing offers. You can manage your communication preferences at any time or unsubscribe using the link included in all our emails. To exercise your privacy rights, contact us . Learn more about how Michelin manages your data here. Follow us Use the app to find the best restaurants and hotels everywhere Follow us MICHELIN Guide About the Guide Restaurants Hotels Hotels On Sale TheFork prefered partnership Contact Us Leave a review MICHELIN Guide Plus The Michelin Group The Michelin Company Michelin Tires ViaMichelin MICHELIN Guide selections Abu Dhabi Argentina Australia Austria Belgium Brazil Canada Chinese Mainland Croatia Czech Republic Denmark Dubai Estonia Finland France Germany Greece Hong Kong SAR Hungary Iceland Italy Japan Latvia Lithuania Luxembourg Macau SAR Malaysia Malta Mexico Netherlands New Zealand Norway Poland Portugal Qatar Republic of Ireland Saudi Arabia Serbia Singapore Slovenia South Korea Spain Sweden Switzerland Taiwan Region Thailand The Philippines Turkey United Kingdom USA Vietnam Copyright © 2026 MICHELIN Guide. All rights reserved. Terms of Use Your privacy choices Privacy Policy Legal Notice Accessibility Statement Display settings Customize your experience by easily adjusting display settings for territory, and currency to suit your preferences! Territory: USA France United Kingdom Italia Germany Thailand España Japan Taiwan Netherlands Abu Dhabi Argentina Australia Austria Belgium Brazil Canada Chinese Mainland Croatia Czech Republic Denmark Dubai Estonia Finland Global Greece Hong Kong Hungary Iceland Latvia Lithuania Luxembourg Macau Malaysia Malta Mexico New Zealand Norway Poland Portugal Qatar Republic of Ireland Saudi Arabia Serbia Singapore Slovenia South Korea Sweden Switzerland The Philippines Türkiye USA - Alabama (American South) USA - California USA - Chicago USA - Colorado USA - Georgia (American South) USA - Louisiana (American South) USA - Massachusetts USA - Mississippi (American South) USA - New York USA - North Carolina (American South) USA - Orlando, Miami, Tampa USA - Pennsylvania USA - South Carolina (American South) USA - Southwest USA - Tennessee (American South) USA - Washington DC Vietnam Language: English Currency: USD - US Dollar EUR - Euro GBP - Pound Sterling CAD - Canadian Dollar CHF - Swiss Franc JPY - Yen AED - UAE Dirham AUD - Australian Dollar BBD - Barbados Dollar BHD - Bahraini Dinar BMD - Bermudian Dollar BRL - Brazilian Real BSD - Bahamian Dollar CLP - Chilean Peso CNY - Yuan Renminbi COP - Colombian Peso DKK - Danish Krone DOP - Dominican Peso FJD - Fiji Dollar HKD - Hong Kong Dollar IDR - Rupiah INR - Indian Rupee ISK - Iceland Krona JMD - Jamaican Dollar KES - Kenyan Shilling KWD - Kuwaiti Dinar LKR - Sri Lanka Rupee MAD - Moroccan Dirham MUR - Mauritius Rupee MXN - Mexican Peso MYR - Malaysian Ringgit NOK - Norwegian Krone NZD - New Zealand Dollar OMR - Rial Omani PGK - Kina PHP - Philippine Peso PKR - Pakistan Rupee QAR - Qatari Rial SAR - Saudi Riyal SCR - Seychelles Rupee SEK - Swedish Krona SGD - Singapore Dollar THB - Baht TND - Tunisian Dinar TRL - Turkish Lira TTD - Trinidad and Tobago Dollar VEB - Bolivar XPF - CFP Franc ZAR - Rand Save Want to leave a review? Go to the \"Visited\" list under My Lists and tap the \"Review\" button to leave your comments from your visit × Reset View results Sort by: Not now Would you like to review this establishment? To share your experience, the MICHELIN Guide requires your consent to use cookies. Please note that reviews remain unavailable as long as cookies are declined. Agree and close "
+}

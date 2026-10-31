@@ -8,6 +8,39 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- 2026-10-31 — Catalogue: MICHELIN Key hotels 2026 for Italy, Spain,
+  Germany, Belgium, the Netherlands and Luxembourg, applied to production
+  after 1.5.4 (22). No app change needed: the Michelin Hotels guide
+  already lists only hotels with a current Key (`keysOnly`), and Explore's
+  search already includes hotels without one. Details are in the
+  Michelin_Database CHANGELOG.
+  - **Migration:** `20261031150000_add_it_es_de_benelux_key_hotel_cities.sql`
+    (27 towns), plain `supabase db push --linked`.
+  - **Ledger:** 123 → 124/124, local and remote in agreement.
+  - **Data:** `michelin_keys_it_es_de_benelux_2026/prepared_keys_it_es_de_benelux_2026.sql`,
+    one guarded transaction: 109 Key hotels added, 17 Key changes, 15 Key
+    import errors corrected, 18 lost Keys kept as history. Every country now
+    equals MICHELIN's 2026 Key list.
+  - **Schema diff:** none run here — this is a data-only migration (city
+    rows); the next version bump's diff covers it.
+
+### Changed
+- **A hotel that loses its MICHELIN Key stays in the catalogue** (product
+  owner, 2026-10-31, QA-387), the same as a restaurant that loses its
+  stars: `michelin_keys` NULL, a current `award_history` row with NULL,
+  the earlier Key kept as history, so members keep their stays. Hotel-scope
+  rule 1 in `CLAUDE.md` revised to match.
+
+### Fixed
+- **Near-miss:** the shared QA-id note was stale (it said QA-377 was free;
+  QA-377–382 were already taken), and MICHELIN overwrote its Spanish and
+  Benelux 2025 Key articles with the 2026 list. A first build relabelled a
+  Spanish hotel's launch row to 2024 for want of a 2025 list; that fallback
+  was removed and the 2025 list recovered from MICHELIN's own archived
+  page. Without that, launch rows would have been labelled with an edition
+  they didn't hold.
+
 ---
 
 ## v1.5.5 (23) — 2026-10-31

@@ -1,0 +1,880 @@
+{
+ "meta": {
+  "url": "https://guide.michelin.com/es/es/articulo/travel/los-primeros-hoteles-con-llave-michelin-todas-las-llaves-de-espana/",
+  "final_url": "https://guide.michelin.com/es/es/articulo/travel/los-primeros-hoteles-con-llave-michelin-todas-las-llaves-de-espana/",
+  "status": 200,
+  "title": "Los mejores hoteles de España: todas las Llaves MICHELIN",
+  "date_published": "2026-09-18T05:30",
+  "date_modified": "2026-09-18T12:10",
+  "read": "2026-10-31 (curl)"
+ },
+ "edition": 2026,
+ "links": [
+  {
+   "heading": "Entre la estética de antaño y el diseño radical",
+   "prefix": "moria: hay castillos reconvertidos, como el nuevo dos Llaves",
+   "href": "https://guide.michelin.com/h/10423",
+   "text": "Hotel Esperit Roca"
+  },
+  {
+   "heading": "Entre la estética de antaño y el diseño radical",
+   "prefix": "Hotel Esperit Roca ; palacios medievales del XII, como",
+   "href": "https://guide.michelin.com/h/16574",
+   "text": "Neri"
+  },
+  {
+   "heading": "Entre la estética de antaño y el diseño radical",
+   "prefix": "nk\">Neri ; o edificios vinculados a momentos concretos, como",
+   "href": "https://guide.michelin.com/h/11425",
+   "text": "Hotel Alfonso XIII"
+  },
+  {
+   "heading": "Entre la estética de antaño y el diseño radical",
+   "prefix": " etapas de la historia de la ciudad sin salir del vestíbulo.",
+   "href": "https://guide.michelin.com/h/16341",
+   "text": "Heritage Madrid"
+  },
+  {
+   "heading": "Entre la estética de antaño y el diseño radical",
+   "prefix": "el aire de una residencia privada de comienzos del s. XX; el",
+   "href": "https://guide.michelin.com/h/200",
+   "text": "Santo Mauro"
+  },
+  {
+   "heading": "Entre la estética de antaño y el diseño radical",
+   "prefix": " salones que recuerdan la vida aristocrática madrileña; y el",
+   "href": "https://guide.michelin.com/h/5865",
+   "text": "Mandarin Oriental Ritz"
+  },
+  {
+   "heading": "Entre la estética de antaño y el diseño radical",
+   "prefix": "amientos radicalmente contemporáneos. El mejor ejemplo es el",
+   "href": "https://guide.michelin.com/h/7425",
+   "text": "Hotel Marqués de Riscal"
+  },
+  {
+   "heading": "Entre la estética de antaño y el diseño radical",
+   "prefix": "ñedos de Rioja Alavesa. En un registro muy distinto se sitúa",
+   "href": "https://guide.michelin.com/h/10247",
+   "text": "VIVOOD Landscape Hotel"
+  },
+  {
+   "heading": "Hoteles en las Islas Baleares: del paisaje rural a la vida junto al mar",
+   "prefix": " ellas tres nuevos establecimientos con dos Llaves MICHELIN:",
+   "href": "https://guide.michelin.com/h/14683",
+   "text": "Four Seasons Resort Mallorca at Formentor"
+  },
+  {
+   "heading": "Hoteles en las Islas Baleares: del paisaje rural a la vida junto al mar",
+   "prefix": " isla y testigo privilegiado de generaciones de viajeros; el",
+   "href": "https://guide.michelin.com/h/16249",
+   "text": "Mandarin Oriental Punta Negra"
+  },
+  {
+   "heading": "Hoteles en las Islas Baleares: del paisaje rural a la vida junto al mar",
+   "prefix": "o de la estancia desde el amanecer hasta la puesta de sol; y",
+   "href": "https://guide.michelin.com/es/es/hotels-stays/majorca/cap-vermell-grand-hotel-118902-8439?arr=2024-05-20&amp;dep=2024-05-21",
+   "text": "Cap Vermell Grand Hotel"
+  },
+  {
+   "heading": "Hoteles en las Islas Baleares: del paisaje rural a la vida junto al mar",
+   "prefix": " y una relación especialmente estrecha con el paisaje rural.",
+   "href": "https://guide.michelin.com/h/15576",
+   "text": "Vestige Son Ermità"
+  },
+  {
+   "heading": "Hoteles en las Islas Baleares: del paisaje rural a la vida junto al mar",
+   "prefix": "e tiñen buena parte de la arquitectura menorquina. En Mahón,",
+   "href": "https://guide.michelin.com/h/12081",
+   "text": "Cristine Bedfor"
+  },
+  {
+   "heading": "Hoteles en las Islas Baleares: del paisaje rural a la vida junto al mar",
+   "prefix": " pesan tanto como los servicios ofrecidos. No lejos de allí,",
+   "href": "https://guide.michelin.com/h/14161",
+   "text": "Cap Menorca"
+  },
+  {
+   "heading": "Cuando el hotel y la gastronomía comparten protagonismo",
+   "prefix": "frecer también una mesa a la altura. Ejemplos destacados son",
+   "href": "https://guide.michelin.com/h/8643",
+   "text": "Akelarre"
+  },
+  {
+   "heading": "Cuando el hotel y la gastronomía comparten protagonismo",
+   "prefix": "sebastian/restaurante/akelare\" target=\"_blank\">Akelaŕe ); el",
+   "href": "https://guide.michelin.com/h/6598",
+   "text": "Hotel Restaurante Atrio"
+  },
+  {
+   "heading": "Cuando el hotel y la gastronomía comparten protagonismo",
+   "prefix": "aurante: Atrio ); el",
+   "href": "https://guide.michelin.com/h/8439",
+   "text": "Cap Vermell Grand Hotel"
+  },
+  {
+   "heading": "Cuando el hotel y la gastronomía comparten protagonismo",
+   "prefix": "te: Voro ); y el",
+   "href": "https://guide.michelin.com/h/10423",
+   "text": "Hotel Esperit Roca"
+  },
+  {
+   "heading": "Cuando el hotel y la gastronomía comparten protagonismo",
+   "prefix": " hospedajes vinculados al mundo del vino. El nuevo una Llave",
+   "href": "https://guide.michelin.com/h/13205",
+   "text": "Gran Hotel Mas d'en Bruno"
+  },
+  {
+   "heading": "Cuando el hotel y la gastronomía comparten protagonismo",
+   "prefix": ">Gran Hotel Mas d'en Bruno , en el Priorat, o el tres Llaves",
+   "href": "https://guide.michelin.com/h/11626",
+   "text": "Torre del Marqués,"
+  },
+  {
+   "heading": "Los hoteles con tres Llaves",
+   "prefix": "Cáceres:",
+   "href": "https://guide.michelin.com/h/6598",
+   "text": "Atrio Restaurante Hotel"
+  },
+  {
+   "heading": "Los hoteles con tres Llaves",
+   "prefix": "Cáceres: Atrio Restaurante Hotel Escaladei:",
+   "href": "https://guide.michelin.com/h/8962",
+   "text": "Terra Dominicata - Hotel & Winery"
+  },
+  {
+   "heading": "Los hoteles con tres Llaves",
+   "prefix": "Escaladei: Terra Dominicata - Hotel & Winery",
+   "href": "https://guide.michelin.com/en/hotels-stays/bordeaux/les-sources-de-caudalie-6023",
+   "text": ""
+  },
+  {
+   "heading": "Los hoteles con tres Llaves",
+   "prefix": "deaux/les-sources-de-caudalie-6023\" target=\"_blank\"> Madrid:",
+   "href": "https://guide.michelin.com/h/5865",
+   "text": "Mandarin Oriental Ritz, Madrid"
+  },
+  {
+   "heading": "Los hoteles con tres Llaves",
+   "prefix": "rid: Mandarin Oriental Ritz, Madrid Sardón de Duero:",
+   "href": "https://guide.michelin.com/h/10200",
+   "text": "Abadía Retuerta LeDomaine"
+  },
+  {
+   "heading": "Los hoteles con tres Llaves",
+   "prefix": "ón de Duero: Abadía Retuerta LeDomaine Teruel:",
+   "href": "https://guide.michelin.com/h/11626",
+   "text": "Torre del Marqués Hotel Spa & Winery"
+  },
+  {
+   "heading": "Los hoteles con tres Llaves",
+   "prefix": "r>Teruel: Torre del Marqués Hotel Spa & Winery",
+   "href": "https://guide.michelin.com/es/es/hotels-stays/valladolid2/abadia-retuerta-ledomaine-10200",
+   "text": ""
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "Barcelona:",
+   "href": "https://guide.michelin.com/h/6386",
+   "text": "Mandarin Oriental Barcelona"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": ">Barcelona: Mandarin Oriental Barcelona Cala Blava:",
+   "href": "https://guide.michelin.com/h/6377",
+   "text": "Cap Rocat"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "l Barcelona Cala Blava: Cap Rocat Canfranc:",
+   "href": "https://guide.michelin.com/h/13117",
+   "text": "Canfranc Estación, a Royal Hideaway Hotel"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "Canfranc Estación, a Royal Hideaway Hotel Canyamel:",
+   "href": "https://guide.michelin.com/h/8439",
+   "text": "Cap Vermell Grand Hotel"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "Vermell Grand Hotel – NOVEDAD Deià:",
+   "href": "https://guide.michelin.com/h/6384",
+   "text": "La Residencia, A Belmond Hotel, Mallorca"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "et=\"_blank\">La Residencia, A Belmond Hotel, Mallorca Girona:",
+   "href": "https://guide.michelin.com/h/10423",
+   "text": "Hotel Esperit Roca"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": " bold; background-color: rgb(156, 0, 0);\">NOVEDAD La Coruña:",
+   "href": "https://guide.michelin.com/h/13030",
+   "text": "Casa Beatnik Country House"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "n> La Coruña: Casa Beatnik Country House Madrid:",
+   "href": "https://guide.michelin.com/h/13597",
+   "text": "Four Seasons Hotel Madrid"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "e Madrid: Four Seasons Hotel Madrid Madrid:",
+   "href": "https://guide.michelin.com/h/5307",
+   "text": "Rosewood Villa Magna"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "/a> Madrid: Rosewood Villa Magna Mallorca:",
+   "href": "https://guide.michelin.com/h/14683",
+   "text": "Four Seasons Resort Mallorca at Formentor"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": ": bold; background-color: rgb(156, 0, 0);\">NOVEDAD Marbella:",
+   "href": "https://guide.michelin.com/h/5985",
+   "text": "Marbella Club Hotel"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "br>Marbella: Marbella Club Hotel Palma de Mallorca:",
+   "href": "https://guide.michelin.com/h/6753",
+   "text": "Hotel Can Cera"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "r>Palma de Mallorca: Hotel Can Cera Palmanova:",
+   "href": "https://guide.michelin.com/h/16249",
+   "text": "Mandarin Oriental Punta Negra, Mallorca"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "– NOVEDAD Raxó:",
+   "href": "https://guide.michelin.com/h/13404",
+   "text": "Hotel Pepe Vieira"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "AD Raxó: Hotel Pepe Vieira San Sebastián:",
+   "href": "https://guide.michelin.com/h/8643",
+   "text": "Akelarre"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "epe Vieira San Sebastián: Akelarre Santanyí:",
+   "href": "https://guide.michelin.com/h/12001",
+   "text": "Hotel Can Ferrereta"
+  },
+  {
+   "heading": "Los hoteles con dos Llaves",
+   "prefix": "rre Santanyí: Hotel Can Ferrereta Torrent:",
+   "href": "https://guide.michelin.com/h/7200",
+   "text": "Mas de Torrent"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Adeje:",
+   "href": "https://guide.michelin.com/h/13701",
+   "text": "Bahia del Duque"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Adeje: Bahia del Duque Adeje:",
+   "href": "https://guide.michelin.com/h/10348",
+   "text": "Royal Hideaway Corales Suites"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "r>Adeje: Royal Hideaway Corales Suites A Lama:",
+   "href": "https://guide.michelin.com/h/15316",
+   "text": "Villa Boutique 1880"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "lor: rgb(255, 255, 255); font-weight: bold;\">NOVEDAD Alaior:",
+   "href": "https://guide.michelin.com/h/6993",
+   "text": "Torralbenc"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": ";\">NOVEDAD Alaior: Torralbenc Alaior:",
+   "href": "https://guide.michelin.com/h/14161",
+   "text": "Cap Menorca"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "orralbenc Alaior: Cap Menorca Albolote:",
+   "href": "https://guide.michelin.com/h/9276",
+   "text": "Hotel Cortijo del Marqués"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "a> Albolote: Hotel Cortijo del Marqués Artà:",
+   "href": "https://guide.michelin.com/es/es/hotels-stays/majorca/es-raco-darta-11990",
+   "text": "Es Raco d'Artà"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "aco-darta-11990\" target=\"_blank\">Es Raco d'Artà Banyalbufar:",
+   "href": "https://guide.michelin.com/h/15063",
+   "text": "Son Bunyola Resort and Villas"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "yalbufar: Son Bunyola Resort and Villas Barcelona:",
+   "href": "https://guide.michelin.com/h/1581",
+   "text": "ABaC Restaurant & Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "br>Barcelona: ABaC Restaurant & Hotel Barcelona:",
+   "href": "https://guide.michelin.com/h/6441",
+   "text": "Alma Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "p; Hotel Barcelona: Alma Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/h/9002",
+   "text": "Almanac Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Barcelona: Almanac Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/h/12122",
+   "text": "Antiga Casa Buenavista"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "celona: Antiga Casa Buenavista Barcelona:",
+   "href": "https://guide.michelin.com/h/7408",
+   "text": "Hotel Arts Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "> Barcelona: Hotel Arts Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/h/12598",
+   "text": "Mirlo Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "a Barcelona: Mirlo Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/h/6912",
+   "text": "Mercer Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Barcelona: Mercer Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/h/6513",
+   "text": "METT Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "olor: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Barcelona:",
+   "href": "https://guide.michelin.com/h/5497",
+   "text": "Miramar Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "olor: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Barcelona:",
+   "href": "https://guide.michelin.com/h/8177",
+   "text": "Monument Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "/span> Barcelona: Monument Hotel Barcelona:",
+   "href": "https://guide.michelin.com/h/16574",
+   "text": "Neri"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "olor: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Barcelona:",
+   "href": "https://guide.michelin.com/h/12051",
+   "text": "Serras Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "br>Barcelona: Serras Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/h/13713",
+   "text": "Seventy Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "celona: Seventy Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/h/6387",
+   "text": "Sofitel Barcelona Skipper"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "olor: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Barcelona:",
+   "href": "https://guide.michelin.com/h/13089",
+   "text": "Soho House Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Barcelona: Soho House Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/h/8519",
+   "text": "The One Barcelona"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Barcelona: The One Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/h/13856",
+   "text": "Wittmore"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Barcelona: Wittmore Benimantell:",
+   "href": "https://guide.michelin.com/h/10247",
+   "text": "VIVOOD Landscape Hotel & Spa"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "tell: VIVOOD Landscape Hotel & Spa Bilbao:",
+   "href": "https://guide.michelin.com/h/1271",
+   "text": "The Artist Grand Hotel of Art"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Bilbao: The Artist Grand Hotel of Art Briones:",
+   "href": "https://guide.michelin.com/h/13146",
+   "text": "Hotel Santa María Briones"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "iones: Hotel Santa María Briones Cala Vadella:",
+   "href": "https://guide.michelin.com/h/12256",
+   "text": "Petunia Ibiza, Beaumier Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "nbsp; Petunia Ibiza, Beaumier Hotel Campos:",
+   "href": "https://guide.michelin.com/h/14062",
+   "text": "Fontsanta Thermal Spa & Wellness"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": ": Fontsanta Thermal Spa & Wellness Campos:",
+   "href": "https://guide.michelin.com/es/es/hotels-stays/majorca/sa-creu-nova-petit-palais-art-spa-8732",
+   "text": "Sa Creu Nova Petit Palais"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "a-8732\" target=\"_blank\">Sa Creu Nova Petit Palais Capdepera:",
+   "href": "https://guide.michelin.com/es/es/hotels-stays/majorca/predi-son-jaumell-9788",
+   "text": "Predi Son Jaumell"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "son-jaumell-9788\" target=\"_blank\">Predi Son Jaumell Casares:",
+   "href": "https://guide.michelin.com/es/es/hotels-stays/marbella/finca-cortesin-2721",
+   "text": "Finca Cortesin"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "-2721\" target=\"_blank\">Finca Cortesin Ciutadella de Menorca:",
+   "href": "https://guide.michelin.com/h/7714",
+   "text": "Faustino Gran"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "lla de Menorca: Faustino Gran Ciutadella de Menorca:",
+   "href": "https://guide.michelin.com/h/15147",
+   "text": "Rural Sant Ignasi"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "r>Ciutadella de Menorca: Rural Sant Ignasi Córdoba:",
+   "href": "https://guide.michelin.com/h/301",
+   "text": "Hospes Palacio Del Bailio"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "\"_blank\">Hospes Palacio Del Bailio Donostia / San Sebastián:",
+   "href": "https://guide.michelin.com/h/8902",
+   "text": "Lasala Plaza Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "blank\" style=\"\">Lasala Plaza Hotel Donostia / San Sebastián:",
+   "href": "https://guide.michelin.com/h/7470",
+   "text": "Hotel Maria Cristina"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "tián: Hotel Maria Cristina Donostia / San Sebastián:",
+   "href": "https://guide.michelin.com/h/11631",
+   "text": "Hotel Villa Favorita - Adults Only"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "astián: Hotel Villa Favorita - Adults Only Elciego:",
+   "href": "https://guide.michelin.com/h/7425",
+   "text": "Hotel Marques de Riscal, a Luxury Collection Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "otel Marques de Riscal, a Luxury Collection Hotel El Hierro:",
+   "href": "https://guide.michelin.com/h/14081",
+   "text": "Hotel Puntagrande"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "l Hierro: Hotel Puntagrande Es Caló de Sant Agusti:",
+   "href": "https://guide.michelin.com/h/13664",
+   "text": "Teranka Formentera"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "aló de Sant Agusti: Teranka Formentera Es Capdellà:",
+   "href": "https://guide.michelin.com/h/10110",
+   "text": "Castell Son Claret"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Es Capdellà: Castell Son Claret Ferreries:",
+   "href": "https://guide.michelin.com/h/15576",
+   "text": "Vestige Son Ermità"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "lor: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Formentera:",
+   "href": "https://guide.michelin.com/h/16333",
+   "text": "Dunas de Formentera"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Girona:",
+   "href": "https://guide.michelin.com/h/7693",
+   "text": "Hotel Mas Lazuli"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": ";\"> Girona: Hotel Mas Lazuli Girona:",
+   "href": "https://guide.michelin.com/h/15395",
+   "text": "Finca Victoria Hotel & Spa"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "el & Spa – NOVEDAD Granada:",
+   "href": "https://guide.michelin.com/h/13304",
+   "text": "Seda Club Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "5);\">NOVEDAD Granada: Seda Club Hotel Haro:",
+   "href": "https://guide.michelin.com/h/17124",
+   "text": "Palacio de Los Angeles"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "olor: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Lanzarote:",
+   "href": "https://guide.michelin.com/h/15265",
+   "text": "Hotel César Lanzarote"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": " 0); font-weight: bold;\">NOVEDAD Las Palmas de Gran Canaria:",
+   "href": "https://guide.michelin.com/h/13700",
+   "text": "Santa Catalina, a Royal Hideaway Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "aria: Santa Catalina, a Royal Hideaway Hotel Luces:",
+   "href": "https://guide.michelin.com/h/12682",
+   "text": "Palacio de Luces"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "tel Luces: Palacio de Luces Madrid:",
+   "href": "https://guide.michelin.com/h/13593",
+   "text": "Brach Madrid - Evok Collection"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "> Madrid: Brach Madrid - Evok Collection Madrid:",
+   "href": "https://guide.michelin.com/h/11111",
+   "text": "CoolRooms Palacio de Atocha"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Madrid: CoolRooms Palacio de Atocha Madrid:",
+   "href": "https://guide.michelin.com/h/11161",
+   "text": "Gran Hotel Inglés"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "de Atocha Madrid: Gran Hotel Inglés Madrid:",
+   "href": "https://guide.michelin.com/h/8808",
+   "text": "Palacio de los Duques, Gran Meliá"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "br>Madrid: Palacio de los Duques, Gran Meliá Madrid:",
+   "href": "https://guide.michelin.com/h/16341",
+   "text": "Heritage Madrid"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "ght: bold;\">NOVEDAD Madrid:",
+   "href": "https://guide.michelin.com/h/2911",
+   "text": "Unico"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "b(156, 0, 0);\"> Madrid: Unico Madrid:",
+   "href": "https://guide.michelin.com/h/8366",
+   "text": "Only YOU Boutique Hotel Madrid"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "id: Only YOU Boutique Hotel Madrid Madrid:",
+   "href": "https://guide.michelin.com/h/200",
+   "text": "Santo Mauro, a Luxury Collection Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "p; Santo Mauro, a Luxury Collection Hotel Madrid:",
+   "href": "https://guide.michelin.com/h/9482",
+   "text": "The Palace, A Luxury Collection Hotel, Madrid"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "blank\">The Palace, A Luxury Collection Hotel, Madrid Madrid:",
+   "href": "https://guide.michelin.com/h/7607",
+   "text": "URSO"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "n Hotel, Madrid Madrid: URSO Mahón:",
+   "href": "https://guide.michelin.com/h/12462",
+   "text": "Can Alberti 1740 Hotel Boutique"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "n: Can Alberti 1740 Hotel Boutique Mahón:",
+   "href": "https://guide.michelin.com/h/12081",
+   "text": "Cristine Bedfor Mahón"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "br>Mahón: Cristine Bedfor Mahón Marbella:",
+   "href": "https://guide.michelin.com/h/8770",
+   "text": "Anantara Villa Padierna Palace Benahavís Marbella Resort"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "ra Villa Padierna Palace Benahavís Marbella Resort Marbella:",
+   "href": "https://guide.michelin.com/h/17067",
+   "text": "Gran Marbella Resort & Beach Club"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "color: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Marbella:",
+   "href": "https://guide.michelin.com/h/13663",
+   "text": "La Fonda Heritage Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "n> Marbella: La Fonda Heritage Hotel Maspalomas:",
+   "href": "https://guide.michelin.com/h/16243",
+   "text": "Seaside Grand Hotel Residencia"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "nd-color: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Mijas:",
+   "href": "https://guide.michelin.com/h/13703",
+   "text": "La Zambra Resort"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "pan> Mijas: La Zambra Resort Monachil:",
+   "href": "https://guide.michelin.com/h/9642",
+   "text": "La Almunia del Valle"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Monachil: La Almunia del Valle Montecorto:",
+   "href": "https://guide.michelin.com/h/14220",
+   "text": "Finca La Donaira"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "color: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Montuïri:",
+   "href": "https://guide.michelin.com/h/9136",
+   "text": "Finca Serena Mallorca"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "ntuïri: Finca Serena Mallorca Palafrugell:",
+   "href": "https://guide.michelin.com/h/13021",
+   "text": "Can Mascort Eco Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "ugell: Can Mascort Eco Hotel Palma de Mallorca:",
+   "href": "https://guide.michelin.com/h/9143",
+   "text": "Can Bordoy Grand House & Garden"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "\"_blank\"> Can Bordoy Grand House & Garden Palma de Mallorca:",
+   "href": "https://guide.michelin.com/h/7476",
+   "text": "Convent de La Missió, Grand Luxury Boutique Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "de La Missió, Grand Luxury Boutique Hotel Palma de Mallorca:",
+   "href": "https://guide.michelin.com/h/9273",
+   "text": "Es Princep"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "de Mallorca: Es Princep Palma de Mallorca:",
+   "href": "https://guide.michelin.com/h/10853",
+   "text": "Sant Francesc Hotel Singular"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "get=\"_blank\">Sant Francesc Hotel Singular Palma de Mallorca:",
+   "href": "https://guide.michelin.com/h/9261",
+   "text": "Boutique Hotel Posada Terra Santa"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "_blank\">Boutique Hotel Posada Terra Santa Palma de Mallorca:",
+   "href": "https://guide.michelin.com/h/9796",
+   "text": "Castillo Hotel Son Vida, a Luxury Collection Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Hotel Son Vida, a Luxury Collection Hotel Palma de Mallorca:",
+   "href": "https://guide.michelin.com/h/9395",
+   "text": "El Llorenç Parc de la Mar"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "sp; El Llorenç Parc de la Mar Palma de Mallorca:",
+   "href": "https://guide.michelin.com/h/13514",
+   "text": "Nobis Hotel Palma"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "de Mallorca: Nobis Hotel Palma Peralada:",
+   "href": "https://guide.michelin.com/h/9668",
+   "text": "Hotel Peralada Wine Spa & Golf"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "sp; Hotel Peralada Wine Spa & Golf Pollensa:",
+   "href": "https://guide.michelin.com/h/8464",
+   "text": "Son Brull"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Golf Pollensa: Son Brull Salamanca:",
+   "href": "https://guide.michelin.com/h/5135",
+   "text": "Hotel Rector"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Brull Salamanca: Hotel Rector San Roque:",
+   "href": "https://guide.michelin.com/h/15148",
+   "text": "Fairmont La Hacienda Costa del Sol"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Fairmont La Hacienda Costa del Sol Santander:",
+   "href": "https://guide.michelin.com/h/13204",
+   "text": "Helguera Palacio Boutique & Antique"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": ">Helguera Palacio Boutique & Antique Santiago de Compostela:",
+   "href": "https://guide.michelin.com/h/3601",
+   "text": "A Quinta da Auga"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "ntiago de Compostela: A Quinta da Auga Sevilla:",
+   "href": "https://guide.michelin.com/h/13803",
+   "text": "Cavalta Boutique Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "a> Sevilla: Cavalta Boutique Hotel Sevilla:",
+   "href": "https://guide.michelin.com/h/3421",
+   "text": "CoolRooms Palacio Villapanés"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Sevilla: CoolRooms Palacio Villapanés Sevilla:",
+   "href": "https://guide.michelin.com/h/11425",
+   "text": "Hotel Alfonso XIII"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": ", 255); background-color: rgb(156, 0, 0);\"> NOVEDAD Sevilla:",
+   "href": "https://guide.michelin.com/h/8527",
+   "text": "Mercer Sevilla"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "/span> Sevilla: Mercer Sevilla Sevilla:",
+   "href": "https://guide.michelin.com/h/13699",
+   "text": "Vincci Selección Unuk"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "br>Sevilla: Vincci Selección Unuk Sóller:",
+   "href": "https://guide.michelin.com/h/8574",
+   "text": "Hotel L'Avenida"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "ión Unuk Sóller: Hotel L'Avenida Teruel:",
+   "href": "https://guide.michelin.com/h/9765",
+   "text": "La Torre del Visco"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "l L'Avenida Teruel: La Torre del Visco Topas:",
+   "href": "https://guide.michelin.com/h/11820",
+   "text": "Castillo del Buen Amor"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "co Topas: Castillo del Buen Amor Torrenueva:",
+   "href": "https://guide.michelin.com/h/9664",
+   "text": "Hotel La Caminera Club de Campo"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Hotel La Caminera Club de Campo Torroja del Priorat:",
+   "href": "https://guide.michelin.com/h/13205",
+   "text": "Gran Hotel Mas D'en Bruno"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "color: rgb(156, 0, 0); font-weight: bold;\">NOVEDAD Valencia:",
+   "href": "https://guide.michelin.com/h/13702",
+   "text": "Caro Hotel"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "Valencia: Caro Hotel Valencia:",
+   "href": "https://guide.michelin.com/h/12466",
+   "text": "Room Mate Helen Berger"
+  },
+  {
+   "heading": "Los hoteles con una Llave",
+   "prefix": "alencia: Room Mate Helen Berger Valencia:",
+   "href": "https://guide.michelin.com/h/13039",
+   "text": "Only YOU Hotel Valencia"
+  }
+ ],
+ "text": " Los mejores hoteles de España: todas las Llaves MICHELIN Restaurantes Hoteles Magazine Mis listas Restaurantes Hoteles Guía MICHELIN Plus Magazine Guías Best of Contacto Suscríbete a la Newsletter Colaboración para restaurantes en TheFork Restaurantes asociados a TheFork España - Español - EUR Viajes 5 minutos 18 septiembre 2026 Los mejores hoteles de España: todas las Llaves MICHELIN La Guía MICHELIN revela los hoteles españoles reconocidos con su máxima distinción hotelera en 2026, con 20 novedades. Descubre aquí todas las Llaves de España. España Llave MICHELIN Viajes Hoteles Selección del editor Compartir Al igual que las Estrellas MICHELIN para los restaurantes, las Llaves MICHELIN distinguen a los alojamientos más excepcionales del mundo. Seleccionados por los inspectores e inspectoras MICHELIN, los hoteles con el reconocimiento en España dibujan, además, un recorrido fascinante por el país: desde las calles señoriales de Madrid hasta los acantilados baleares, pasando por los viñedos del Priorat, los paisajes volcánicos de Canarias o las colinas de Rioja Alavesa. Cada establecimiento refleja, a su manera, el carácter del territorio en el que se encuentra y una forma distinta de viajar. En total, la selección de alojamientos de la Guía MICHELIN 2026 en España incluye 122 hoteles distinguidos: 5 con tres Llaves, 17 con dos (de los cuales cuatro estrenan con esta distinción) y 100 con una (con 16 novedades). Consulta la lista completa de establecimientos distinguidos en el país o descubre, a continuación, algunos de los aspectos más destacados de estos sorprendentes destinos. Entre la estética de antaño y el diseño radical Opulenta mezcla de estilo barroco y árabe en el casi centenario Hotel Alfonso XIII de Sevilla. © Hotel Alfonso XIII Muchas de las Llaves MICHELIN en España se esconden tras fachadas que han sobrevivido a siglos de historia. Son edificios que cambiaron de oficio sin renunciar a su memoria: hay castillos reconvertidos, como el nuevo dos Llaves Hotel Esperit Roca ; palacios medievales del XII, como Neri ; o edificios vinculados a momentos concretos, como Hotel Alfonso XIII , construido para la Exposición Iberoamericana de Sevilla de 1929. Esta huella del pasado resulta especialmente evidente en Madrid. Algunos alojamientos distinguidos de la capital ocupan mansiones del XIX y XX que permiten recorrer distintas etapas de la historia de la ciudad sin salir del vestíbulo. Heritage Madrid conserva el aire de una residencia privada de comienzos del s. XX; el Santo Mauro , instalado en una mansión neoclásica de 1895, mantiene jardines y salones que recuerdan la vida aristocrática madrileña; y el Mandarin Oriental Ritz continúa ocupando el lugar que ha tenido durante más de un siglo: el de gran salón de la capital. Claro que no todo son paredes centenarias: las Llaves también demuestran que algunas de las propuestas más interesantes del país han surgido desde planteamientos radicalmente contemporáneos. El mejor ejemplo es el Hotel Marqués de Riscal , una de las imágenes más reconocibles de la arquitectura de autor en España. Diseñado por Frank Gehry, sus características cintas de titanio parecen ondular sobre los viñedos de Rioja Alavesa. En un registro muy distinto se sitúa VIVOOD Landscape Hotel , en el interior de Alicante, donde las suites acristaladas funcionan como miradores habitables, abiertos a las montañas de la región. Hoteles en las Islas Baleares: del paisaje rural a la vida junto al mar Entre tierras de cultivo, huertos y senderos costeros, con el Mediterráneo menorquín en el horizonte, se alza Vestige Son Ermità. © Vestige Son Ermità Entre Mallorca, Menorca, Ibiza y Formentera, las Islas Baleares presentan una de las selecciones más diversas de hoteles con Llave MICHELIN en España. Sin embargo, bajo el mismo horizonte mediterráneo conviven paisajes y sensibilidades muy distintas. Mallorca concentra varias incorporaciones destacadas de las Llaves 2026, entre ellas tres nuevos establecimientos con dos Llaves MICHELIN: Four Seasons Resort Mallorca at Formentor , uno de los grandes clásicos de la isla y testigo privilegiado de generaciones de viajeros; el Mandarin Oriental Punta Negra , donde el mar marca el ritmo de la estancia desde el amanecer hasta la puesta de sol; y Cap Vermell Grand Hotel , inspirado en la disposición tradicional de los pueblos mallorquines. Mientras tanto, en Menorca y Formentera predominan los proyectos de escala más reducida y una relación especialmente estrecha con el paisaje rural. Vestige Son Ermità , por ejemplo, recupera los literalmente 'vestigios' de una antigua explotación agrícola, construida con piedra arenisca y cal, materiales que tiñen buena parte de la arquitectura menorquina. En Mahón, Cristine Bedfor propone una estancia difícil de encasillar, donde el diseño de interiores, el coleccionismo y el espíritu hogareño pesan tanto como los servicios ofrecidos. No lejos de allí, Cap Menorca ocupa una antigua instalación militar rehabilitada en uno de los extremos más apartados de la isla, rodeada por senderos costeros y acantilados. Cuando el hotel y la gastronomía comparten protagonismo En la cima de una montaña a las afueras de Girona, esta fortaleza restaurada del siglo XIX reúne el hotel boutique Esperit Roca, el restaurante homónimo, una destilería, una bodega y un espacio expositivo, todo ello bajo la impronta de los hermanos Roca. © Hotel Esperit Roca Las Llaves MICHELIN y las Estrellas MICHELIN se conceden de forma independiente. Sin embargo, en España existen numerosos casos en los que alojamiento y gastronomía forman parte de un mismo proyecto. No es casualidad: un alojamiento excepcional suele querer ofrecer también una mesa a la altura. Ejemplos destacados son Akelarre , en San Sebastián (restaurante: Akelaŕe ); el Hotel Restaurante Atrio , en Cáceres (restaurante: Atrio ); el Cap Vermell Grand Hotel , en Mallorca (restaurante: Voro ); y el Hotel Esperit Roca , en Girona, donde el célebre trío de hermanos que da nombre al establecimiento lidera el restaurante homónimo . Un capítulo aparte también merecen los hospedajes vinculados al mundo del vino. El nuevo una Llave Gran Hotel Mas d'en Bruno , en el Priorat, o el tres Llaves Torre del Marqués, en Matarraña, permiten dormir en paisajes dibujados durante generaciones por la vid. Entre terrazas de cultivo, bodegas históricas y caminos que atraviesan viñedos, el vino deja de ser únicamente una bebida para convertirse en una forma de entender el territorio. Haz clic para saltar a cada distinción: Tres Llaves Dos Llaves Una Llave Los hoteles con tres Llaves Rodeado de olivares y viñedos en la comarca aragonesa del Matarraña, Torre del Marqués Hotel Spa & Winery ocupa un magnífico edificio del siglo XVIII cuidadosamente restaurado. © Torre del Marqués Hotel Spa & Winery Cáceres: Atrio Restaurante Hotel Escaladei: Terra Dominicata - Hotel & Winery Madrid: Mandarin Oriental Ritz, Madrid Sardón de Duero: Abadía Retuerta LeDomaine Teruel: Torre del Marqués Hotel Spa & Winery Los hoteles con dos Llaves Mallorca es un verdadero reclamo para los amantes de los hoteles de primera categoría. Entre ellos, Four Seasons Resort Mallorca at Formentor es un clásico indiscutible. © Four Seasons Resort Mallorca at Formentor Barcelona: Mandarin Oriental Barcelona Cala Blava: Cap Rocat Canfranc: Canfranc Estación, a Royal Hideaway Hotel Canyamel: Cap Vermell Grand Hotel – NOVEDAD Deià: La Residencia, A Belmond Hotel, Mallorca Girona: Hotel Esperit Roca – NOVEDAD La Coruña: Casa Beatnik Country House Madrid: Four Seasons Hotel Madrid Madrid: Rosewood Villa Magna Mallorca: Four Seasons Resort Mallorca at Formentor – NOVEDAD Marbella: Marbella Club Hotel Palma de Mallorca: Hotel Can Cera Palmanova: Mandarin Oriental Punta Negra, Mallorca – NOVEDAD Raxó: Hotel Pepe Vieira San Sebastián: Akelarre Santanyí: Hotel Can Ferrereta Torrent: Mas de Torrent Los hoteles con una Llave En lo alto de un montículo a las afueras de Barcelona, con vistas a la ciudad, METT Barcelona alojó en otro tiempo a figuras como Ernest Hemingway y Jimmy Stewart. © METT Barcelona Adeje: Bahia del Duque Adeje: Royal Hideaway Corales Suites A Lama: Villa Boutique 1880 – NOVEDAD Alaior: Torralbenc Alaior: Cap Menorca Albolote: Hotel Cortijo del Marqués Artà: Es Raco d'Artà Banyalbufar: Son Bunyola Resort and Villas Barcelona: ABaC Restaurant & Hotel Barcelona: Alma Barcelona Barcelona: Almanac Barcelona Barcelona: Antiga Casa Buenavista Barcelona: Hotel Arts Barcelona Barcelona: Mirlo Barcelona Barcelona: Mercer Barcelona Barcelona: METT Barcelona – NOVEDAD Barcelona: Miramar Barcelona – NOVEDAD Barcelona: Monument Hotel Barcelona: Neri – NOVEDAD Barcelona: Serras Barcelona Barcelona: Seventy Barcelona Barcelona: Sofitel Barcelona Skipper – NOVEDAD Barcelona: Soho House Barcelona Barcelona: The One Barcelona Barcelona: Wittmore Benimantell: VIVOOD Landscape Hotel & Spa Bilbao: The Artist Grand Hotel of Art Briones: Hotel Santa María Briones Cala Vadella: Petunia Ibiza, Beaumier Hotel Campos: Fontsanta Thermal Spa & Wellness Campos: Sa Creu Nova Petit Palais Capdepera: Predi Son Jaumell Casares: Finca Cortesin Ciutadella de Menorca: Faustino Gran Ciutadella de Menorca: Rural Sant Ignasi Córdoba: Hospes Palacio Del Bailio Donostia / San Sebastián: Lasala Plaza Hotel Donostia / San Sebastián: Hotel Maria Cristina Donostia / San Sebastián: Hotel Villa Favorita - Adults Only Elciego: Hotel Marques de Riscal, a Luxury Collection Hotel El Hierro: Hotel Puntagrande Es Caló de Sant Agusti: Teranka Formentera Es Capdellà: Castell Son Claret Ferreries: Vestige Son Ermità – NOVEDAD Formentera: Dunas de Formentera – NOVEDAD Girona: Hotel Mas Lazuli Girona: Finca Victoria Hotel & Spa – NOVEDAD Granada: Seda Club Hotel Haro: Palacio de Los Angeles – NOVEDAD Lanzarote: Hotel César Lanzarote – NOVEDAD Las Palmas de Gran Canaria: Santa Catalina, a Royal Hideaway Hotel Luces: Palacio de Luces Madrid: Brach Madrid - Evok Collection Madrid: CoolRooms Palacio de Atocha Madrid: Gran Hotel Inglés Madrid: Palacio de los Duques, Gran Meliá Madrid: Heritage Madrid – NOVEDAD Madrid: Unico Madrid: Only YOU Boutique Hotel Madrid Madrid: Santo Mauro, a Luxury Collection Hotel Madrid: The Palace, A Luxury Collection Hotel, Madrid Madrid: URSO Mahón: Can Alberti 1740 Hotel Boutique Mahón: Cristine Bedfor Mahón Marbella: Anantara Villa Padierna Palace Benahavís Marbella Resort Marbella: Gran Marbella Resort & Beach Club – NOVEDAD Marbella: La Fonda Heritage Hotel Maspalomas: Seaside Grand Hotel Residencia – NOVEDAD Mijas: La Zambra Resort Monachil: La Almunia del Valle Montecorto: Finca La Donaira – NOVEDAD Montuïri: Finca Serena Mallorca Palafrugell: Can Mascort Eco Hotel Palma de Mallorca: Can Bordoy Grand House & Garden Palma de Mallorca: Convent de La Missió, Grand Luxury Boutique Hotel Palma de Mallorca: Es Princep Palma de Mallorca: Sant Francesc Hotel Singular Palma de Mallorca: Boutique Hotel Posada Terra Santa Palma de Mallorca: Castillo Hotel Son Vida, a Luxury Collection Hotel Palma de Mallorca: El Llorenç Parc de la Mar Palma de Mallorca: Nobis Hotel Palma Peralada: Hotel Peralada Wine Spa & Golf Pollensa: Son Brull Salamanca: Hotel Rector San Roque: Fairmont La Hacienda Costa del Sol Santander: Helguera Palacio Boutique & Antique Santiago de Compostela: A Quinta da Auga Sevilla: Cavalta Boutique Hotel Sevilla: CoolRooms Palacio Villapanés Sevilla: Hotel Alfonso XIII – NOVEDAD Sevilla: Mercer Sevilla Sevilla: Vincci Selección Unuk Sóller: Hotel L'Avenida Teruel: La Torre del Visco Topas: Castillo del Buen Amor Torrenueva: Hotel La Caminera Club de Campo Torroja del Priorat: Gran Hotel Mas D'en Bruno – NOVEDAD Valencia: Caro Hotel Valencia: Room Mate Helen Berger Valencia: Only YOU Hotel Valencia Leer también: Los hoteles con Llave MICHELIN 2026: una guía de la selección global Los hoteles más asequibles del mundo con Llave MICHELIN Los mejores hoteles de España en pueblos con encanto Imagen de cabecera: Cap Vermell Grand Hotel, ahora distinguido con dos Llaves MICHELIN, evoca un típico pueblo mallorquín, con construcciones bajas articuladas en torno a una plaza central. © Cap Vermell Grand Hotel Reserva tu estancia Selecciona tu destino / tus fechas de estancia No puedes reservar para más de 31 días. Elige primero un destino para ver las fechas disponibles 1 ¿A dónde? Fechas de estancia Viajero Habitación Adulto 1 Niños 0 Habitación 1 Anular Validar Reserva tu estancia Selecciona tu destino / tus fechas de estancia No puedes reservar para más de 31 días. Elige primero un destino para ver las fechas disponibles ¿A dónde? Buscar Escrito por Guía MICHELIN Viajes Viajes 6 min. Qué hacer en Huesca y dónde comer: 7 planes imprescindibles De las calles de Huesca a los cañones del Vero, siete paradas para descubrir la ciudad y sus alrededores, donde se entrelazan leyendas, paisajes y buena mesa. Viajes Gastronomía Selección del editor Viajes 6 min. Qué y dónde comer en Extremadura, según Toño Pérez Del ibérico de bellota a los huevos al pastor, el chef de Atrio (tres Estrellas MICHELIN) recorre los sabores, productores y direcciones que mejor explican la identidad gastronómica de Extremadura. Viajes Chefs Selección del editor Viajes 5 min. Dónde alojarse en València: los mejores hoteles de la ciudad Tercera ciudad más grande de España, abierta al Mediterráneo y cosmopolita como pocas, València atesora hoteles singulares rodeados de historia y concebidos para el máximo confort. Viajes España Hoteles Viajes 9 min. Destinos gastronómicos inesperados: pueblos con Estrellas MICHELIN A primera vista, las localidades de Bonnieux, en Francia; Aughton, en Reino Unido; y Baiersbronn, en Alemania, pueden parecer muy distintas entre sí. Sin embargo, estos destinos poco habituales comparten algo en común: todos se han convertido en lugares codiciados por amantes de la gastronomía de todo el mundo. Restaurantes Selección del editor Viajes Todos los artículos Viajes Seguir buscando: las historias que quieres leer Comer fuera 6 min. Bib Gourmand del mes: Regadera, en Córdoba El chef Adrián Caballero nos desvela las características de su cocina, elaborada desde el cariño y concebida en libertad, sin etiquetas, ensalzando siempre el producto andaluz. Selección del editor Guía MICHELIN Restaurantes Comer fuera 42 min. Los nuevos restaurantes del mes en la Guía MICHELIN España Descubre los restaurantes que acaban de entrar en la selección española. Gastronomía Guía MICHELIN España Nuevos restaurantes Comer fuera 5 min. Qué comer en Barcelona: platos tradicionales reinventados por restaurantes MICHELIN Del pa amb tomàquet a la crema catalana: descubre cómo algunos restaurantes MICHELIN de Barcelona reinterpretan grandes clásicos de la gastronomía catalana. Selección del editor Viajes Restaurantes Comer fuera 4 min. Bib Gourmand del mes: Las Tortillas de Gabino, en Madrid El chef Nino Redruello nos desvela los secretos ocultos tras el éxito de Las Tortillas de Gabino y del centenario grupo Familia La Ancha. Madrid Guía MICHELIN Restaurantes Viajes 5 min. Qué hacer en Albacete y dónde comer: 5 planes imprescindibles Descubre la provincia de Albacete, una de las menos conocidas de España, entre pueblos tallados en la roca y una cocina arraigada al territorio, lejos de las multitudes. Selección del editor Restaurantes Albacete Mindful Voices 6 min. 10 restaurantes donde una idea transforma toda la cocina Del mar a la huerta, de una raza autóctona a una planta invasora: 10 restaurantes cuyos chefs convierten ingredientes, recursos y tradiciones en propuestas gastronómicas con identidad propia. Chefs España Restaurantes Mindful Voices 8 min. Marc Segarra: cocinar la memoria de Castilla y León en Refectorio En el restaurante vallisoletano Refectorio (en Sardón de Duero), el chef catalán Marc Segarra articula su propuesta gastronómica en torno a un huerto de más de 8.000 metros cuadrados, una red de productores de Castilla y León y la recuperación de recetas históricas ligadas al territorio. Gastronomia Hoteles Selección del editor Viajes 11 min. Los hoteles con Llave MICHELIN 2026: una guía de la selección global Los inspectores acaban de presentar las Llaves MICHELIN de 2026 a escala mundial. Descubre con esta guía los mejores hoteles de cada continente, país por país. Selección del editor Viajes Llave MICHELIN Seleccione las fechas de su estancia d l m m j v s Fechas de estancia Tarifas en EUR para 1 noche, 1 huésped Tarifas en EUR para 1 noche, 1 huésped Guardar Guía MICHELIN Magazine Viajes Los mejores hoteles de España: todas las Llaves MICHELIN Sé el primero en recibir noticias y actualizaciones sobre la Guía MICHELIN Suscribirse Michelin procesará sus datos personales con el fin de gestionar su suscripción y evaluar la pertinencia y eficacia de nuestras campañas y analizar sus interacciones con nuestros comunicados. Sus datos personales podrán ser compartidos con las empresas asociadas a Michelin (TabletHotels y Robert Parker) con objeto de conocerle mejor y hacerle llegar, con su consentimiento, comunicados comerciales acorde con sus intereses. Usted dispone en todo momento de la posibilidad de gestionar sus preferencias o darse de baja. Para ejercer sus derechos, diríjase a nuestro servicio de atención al cliente . Más información sobre el tratamiento de datos por parte de Michelin aquí . Síguenos Sigue los mejores restaurantes y hoteles a través de nuestra app Síguenos Guía MICHELIN Acerca de la Guía MICHELIN Restaurantes Hoteles Ofertas de hoteles Colaboración para restaurantes en TheFork Contacto Da tu opinión Guía MICHELIN Plus The Michelin Group The Michelin Company Michelin Tires ViaMichelin Selecciones de la Guía MICHELIN Abu Dhabi Alemania Arabia Saudí Argentina Australia Austria Bélgica Brasil Canadá Catar China Continental Corea del Sur Croacia Dinamarca Dubái Eslovenia España Estados Unidos Estonia Filipinas Finlandia Francia Grecia Hong Kong RAE Hungría Irlanda Islandia Italia Japón Letonia Lituania Luxemburgo Macao RAE Malasia Malta Mexico Noruega Nueva Zelanda Países Bajos Polonia Portugal Región de Taiwán Reino Unido República Checa Serbia Singapur Suecia Suiza Tailandia Turquía Vietnam Copyright © 2026 MICHELIN Guide. Todos los derechos reservados. Condiciones de uso Tus opciones de privacidad Política de privacidad Aviso Legal Configuración de pantalla ¡Personaliza tu experiencia ajustando fácilmente la configuración de pantalla para territorio y moneda según tus preferencias! Territorio: USA France United Kingdom Italia Germany Thailand España Japan Taiwan Netherlands Abu Dhabi Argentina Australia Austria Belgium Brazil Canada Chinese Mainland Croatia Czech Republic Denmark Dubai Estonia Finland Global Greece Hong Kong Hungary Iceland Latvia Lithuania Luxembourg Macau Malaysia Malta Mexico New Zealand Norway Poland Portugal Qatar Republic of Ireland Saudi Arabia Serbia Singapore Slovenia South Korea Sweden Switzerland The Philippines Türkiye USA - Alabama (American South) USA - California USA - Chicago USA - Colorado USA - Georgia (American South) USA - Louisiana (American South) USA - Massachusetts USA - Mississippi (American South) USA - New York USA - North Carolina (American South) USA - Orlando, Miami, Tampa USA - Pennsylvania USA - South Carolina (American South) USA - Southwest USA - Tennessee (American South) USA - Washington DC Vietnam Idioma: Español Moneda: USD - US Dollar EUR - Euro GBP - Pound Sterling CAD - Canadian Dollar CHF - Swiss Franc JPY - Yen AED - UAE Dirham AUD - Australian Dollar BBD - Barbados Dollar BHD - Bahraini Dinar BMD - Bermudian Dollar BRL - Brazilian Real BSD - Bahamian Dollar CLP - Chilean Peso CNY - Yuan Renminbi COP - Colombian Peso DKK - Danish Krone DOP - Dominican Peso FJD - Fiji Dollar HKD - Hong Kong Dollar IDR - Rupiah INR - Indian Rupee ISK - Iceland Krona JMD - Jamaican Dollar KES - Kenyan Shilling KWD - Kuwaiti Dinar LKR - Sri Lanka Rupee MAD - Moroccan Dirham MUR - Mauritius Rupee MXN - Mexican Peso MYR - Malaysian Ringgit NOK - Norwegian Krone NZD - New Zealand Dollar OMR - Rial Omani PGK - Kina PHP - Philippine Peso PKR - Pakistan Rupee QAR - Qatari Rial SAR - Saudi Riyal SCR - Seychelles Rupee SEK - Swedish Krona SGD - Singapore Dollar THB - Baht TND - Tunisian Dinar TRL - Turkish Lira TTD - Trinidad and Tobago Dollar VEB - Bolivar XPF - CFP Franc ZAR - Rand Guardar ¿Quieres dejar una opinión? Ve a la lista \"Visitado\" en Mis listas y pulsa el botón \"Revisar\" para dejar los comentarios de tu visita × Reiniciar Mostrar resultados Ordenar por: Ahora no ¿Le gustaría valorar este establecimiento? Para compartir su experiencia, la Guía MICHELIN requiere su consentimiento para el uso de cookies. Tenga en cuenta que las opiniones no estarán disponibles mientras se rechacen las cookies. Aceptar y cerrar ",
+ "edition_note": "fetched as a 2025 candidate; MICHELIN republished it on 2026-09-18 with the 2026 selection, so it is 2026 evidence only"
+}

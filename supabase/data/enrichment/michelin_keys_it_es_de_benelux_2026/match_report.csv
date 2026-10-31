@@ -1,0 +1,541 @@
+country,code,name,kind,detail
+US,,The Little Nell,KEY CARD OF ANOTHER COUNTRY,"https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406 shown on the listings of belgium, germany, italy, luxembourg, netherlands, spain -- not handled here"
+IT,hotel_2701,"Airelles Palladio, Venezia",NEW KEY HOTEL,"MICHELIN id 17609, 3 Key(s), town Venice; MICHELIN 2025 article None"
+IT,hotel_328,Aman Venice,2026 KEY VERIFIED,MICHELIN id 7277; stored point 33 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+IT,hotel_689,Borgo Santandrea,KEY CHANGE 2 -> 3 (QA-383),MICHELIN id 12461; production 2 is MICHELIN's 2025 Key (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'Amalfi: Borgo Santandrea' under 'The TWO-KEY Hotels'); no Key row stored: a non-current 2025 row with that value is written; 2026 = 3 written
+IT,hotel_455,Borgo Santo Pietro,2026 KEY VERIFIED,MICHELIN id 7004; stored point 0 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+IT,hotel_690,Bulgari Roma,2026 KEY ROW ADDED (QA-390),"MICHELIN id 13135; production 3 = MICHELIN 2026; no michelin_keys row in award_history, one is written"
+IT,hotel_346,Casa Maria Luigia,2026 KEY VERIFIED,MICHELIN id 13611; stored point 94 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+IT,hotel_787,Castiglion del Bosco,2026 KEY VERIFIED,MICHELIN id 5137; stored point 27 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+IT,hotel_410,"Collegio alla Querce, Auberge Collection",KEY CHANGE 2 -> 3 (QA-383),"MICHELIN id 14427; production 2 is MICHELIN's 2025 Key (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'y Cogne: Bellevue Hotel & Spa Florence: Collegio alla Querce, Auberge Resorts Collection' under 'The TWO-KEY Hotels'); launch row 2026 relabelled 2025, non-current; 2026 = 3 written"
+IT,hotel_380,Corte della Maestà,KEY IMPORT ERROR 2 -> 3 (QA-384),"MICHELIN id 8446; launch row 2026 = 2, but MICHELIN gives 3 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'Chiusdino: Borgo Santo Pietro Civita di Bagnoregio: Corte della Maestà' under 'The THREE-KEY Hotels') and 3 in 2024 (michelin_article_my_en_article_travel_all_the_key_hotels_italy_michelin_guide_2024.json: 'JK Place Capri Civita di Bagnoregio: Corte della Maestà' under 'The Three Key Hotels') and 3 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 3"
+IT,hotel_691,Four Seasons Firenze,2026 KEY ROW ADDED (QA-390),"MICHELIN id 7654; production 3 = MICHELIN 2026; no michelin_keys row in award_history, one is written"
+IT,hotel_693,Hotel Cipriani,2026 KEY ROW ADDED (QA-390),"MICHELIN id 7365; production 3 = MICHELIN 2026; no michelin_keys row in award_history, one is written"
+IT,hotel_320,Il San Pietro di Positano,2026 KEY VERIFIED,MICHELIN id 7453; stored point 16 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+IT,hotel_370,J.K. Place Capri,2026 KEY VERIFIED,MICHELIN id 2071; stored point 19 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+IT,hotel_696,Passalacqua,2026 KEY ROW ADDED (QA-390),"MICHELIN id 13418; production 3 = MICHELIN 2026; no michelin_keys row in award_history, one is written"
+IT,hotel_338,Reschio Hotel,2026 KEY VERIFIED,MICHELIN id 12069; stored point 0 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+IT,hotel_784,San Domenico Palace,2026 KEY VERIFIED,MICHELIN id 7330; stored point 41 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+IT,hotel_349,"Splendido, A Belmond Hotel, Portofino",KEY CHANGE 2 -> 3 (QA-383),"MICHELIN id 7337; production 2 is MICHELIN's 2025 Key (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'omiti Plose: Forestis Dolomites Portofino: Splendido, A Belmond Hotel, Portofino' under 'The TWO-KEY Hotels'); launch row 2026 relabelled 2025, non-current; 2026 = 3 written"
+IT,hotel_341,ADLER Sicilia,2026 KEY VERIFIED,MICHELIN id 15289; stored point 39 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_404,Aman Rosa Alpina,2026 KEY VERIFIED,MICHELIN id 5857; stored point 57 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_442,Bellevue Hotel & Spa,2026 KEY VERIFIED,MICHELIN id 8179; stored point 0 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_348,Bellevue Syrene 1820,2026 KEY VERIFIED,MICHELIN id 441; stored point 9 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_452,Borgo Egnazia,2026 KEY VERIFIED,MICHELIN id 5839; stored point 0 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_453,Borgo San Felice Resort,KEY IMPORT ERROR 1 -> 2 (QA-384),"MICHELIN id 7244; launch row 2026 = 1, but MICHELIN gives 2 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'apri: Capri Palace Jumeirah Castelnuovo Berardenga: Hotel Borgo San Felice' under 'The TWO-KEY Hotels') and 2 in 2024 (michelin_article_my_en_article_travel_all_the_key_hotels_italy_michelin_guide_2024.json: 'Jumeirah Capri Palace Castelnuovo Berardenga: Hotel Borgo San Felice' under 'The Two Key Hotels') and 2 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 2"
+IT,hotel_2702,Bvlgari Hotel Milano,NEW KEY HOTEL,"MICHELIN id 6209, 2 Key(s), town Milan; MICHELIN 2025 article 2"
+IT,hotel_329,Castel Fragsburg,KEY IMPORT ERROR 1 -> 2 (QA-384),"MICHELIN id 8195; launch row 2026 = 1, but MICHELIN gives 2 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'io: Grand Hotel Victoria Concept & Spa Merano: Castel Fragsburg' under 'The TWO-KEY Hotels') and 2 in 2024 (michelin_article_my_en_article_travel_all_the_key_hotels_italy_michelin_guide_2024.json: 'Grand Hotel Victoria Merano: Castel Fragsburg' under 'The Two Key Hotels') and 2 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 2"
+IT,hotel_375,Castelfalfi,2026 KEY VERIFIED,MICHELIN id 8779; stored point 309 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_345,"Castello di Casole, A Belmond Hotel, Tuscany",2026 KEY VERIFIED,MICHELIN id 6433; stored point 27 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_2703,EALA My Lakeside Dream,NEW KEY HOTEL,"MICHELIN id 12272, 2 Key(s), town Limone sul Garda; MICHELIN 2025 article 2"
+IT,hotel_790,Forestis Dolomites,2026 KEY VERIFIED,MICHELIN id 11259; stored point 24 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_2704,Four Seasons Hotel Milano,NEW KEY HOTEL,"MICHELIN id 7386, 2 Key(s), town Milan; MICHELIN 2025 article 2"
+IT,hotel_438,Grand Hotel et de Milan,2026 KEY VERIFIED,MICHELIN id 5467; stored point 24 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_334,Grand Hotel Principe di Piemonte,2026 KEY VERIFIED,MICHELIN id 6817; stored point 13 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_2705,"Grand Hotel Timeo, A Belmond Hotel, Taormina",NEW KEY HOTEL,"MICHELIN id 8362, 2 Key(s), town Taormina; MICHELIN 2025 article 2"
+IT,hotel_447,Grand Hotel Tremezzo,2026 KEY VERIFIED,MICHELIN id 5411; stored point 12 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_362,Grand Hotel Victoria,2026 KEY VERIFIED,MICHELIN id 12002; stored point 13 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_2706,"Hotel de la Ville, a Rocco Forte Hotel",NEW KEY HOTEL,"MICHELIN id 12402, 2 Key(s), town Rome; MICHELIN 2025 article 2"
+IT,hotel_2707,"Hotel de Russie, a Rocco Forte Hotel",NEW KEY HOTEL,"MICHELIN id 6215, 2 Key(s), town Rome; MICHELIN 2025 article 2"
+IT,hotel_357,I Borghi dell'Eremo,2026 KEY VERIFIED,MICHELIN id 13468; stored point 0 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_324,Il Borro,2026 KEY VERIFIED,MICHELIN id 6248; stored point 138 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_318,Il Sereno,2026 KEY VERIFIED,MICHELIN id 8365; stored point 39 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_344,Capri Palace Jumeirah,2026 KEY VERIFIED,MICHELIN id 6205; stored point 11 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_405,La Fiermontina Palazzo Bozzi Corso,2026 KEY VERIFIED,MICHELIN id 13345; stored point 0 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_340,La Minervetta,2026 KEY VERIFIED,MICHELIN id 197; stored point 39 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_434,Lefay Resort & Spa Dolomiti,2026 KEY VERIFIED,MICHELIN id 11169; stored point 131 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_2708,Mandarin Oriental Milan,NEW KEY HOTEL,"MICHELIN id 7813, 2 Key(s), town Milan; MICHELIN 2025 article 2"
+IT,hotel_2709,"Masseria Torre Maizza, a Rocco Forte Hotel",NEW KEY HOTEL,"MICHELIN id 345, 2 Key(s), town Savelletri di Fasano; MICHELIN 2025 article 1"
+IT,hotel_395,Monteverdi Tuscany,2026 KEY VERIFIED,MICHELIN id 14194; stored point 11 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_390,Nolinski Venezia - Evok Collection,2026 KEY VERIFIED,MICHELIN id 12796; stored point 0 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_789,Orient Express La Minerva,2026 KEY VERIFIED,MICHELIN id 15216; stored point 8 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_2710,Palazzo Portinari Salviati Residenza D'Epoca,NEW KEY HOTEL,"MICHELIN id 12716, 2 Key(s), town Florence; MICHELIN 2025 article 2"
+IT,hotel_391,Palazzo Talia,KEY IMPORT ERROR 1 -> 2 (QA-384),"MICHELIN id 14584; launch row 2026 = 1, but MICHELIN gives 2 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'Roma Rome: Orient Express La Minerva Rome: Palazzo Talia' under 'The TWO-KEY Hotels'), no 2024 entry and 2 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 2"
+IT,hotel_401,Portrait Milano,2026 KEY VERIFIED,MICHELIN id 12981; stored point 0 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_317,Hotel Santa Caterina,KEY IMPORT ERROR 1 -> 2 (QA-384),"MICHELIN id 5501; launch row 2026 = 1, but MICHELIN gives 2 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'Amalfi: Borgo Santandrea Amalfi: Hotel Santa Caterina' under 'The TWO-KEY Hotels') and 2 in 2024 (michelin_article_my_en_article_travel_all_the_key_hotels_italy_michelin_guide_2024.json: 'Borgo Santandrea Amalfi: Hotel Santa Caterina' under 'The Two Key Hotels') and 2 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 2"
+IT,hotel_445,"Splendido Mare, A Belmond Hotel, Portofino",KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 14249; production 1 is MICHELIN's 2025 Key (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'ellicano Porto Ercole: La Roqqa Portofino: Splendido Mare, A Belmond Hotel, Portofino' under 'The ONE-KEY Hotels'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+IT,hotel_2711,"The Carlton, a Rocco Forte Hotel",NEW KEY HOTEL,"MICHELIN id 17504, 2 Key(s), town Milan; MICHELIN 2025 article None"
+IT,hotel_2712,"The Gritti Palace, a Luxury Collection Hotel, Venice",NEW KEY HOTEL,"MICHELIN id 11420, 2 Key(s), town Venice; MICHELIN 2025 article 2"
+IT,hotel_2713,The St. Regis Rome,NEW KEY HOTEL,"MICHELIN id 11709, 2 Key(s), town Rome; MICHELIN 2025 article 2"
+IT,hotel_332,Therasia Resort Sea & Spa,2026 KEY VERIFIED,MICHELIN id 8826; stored point 0 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_2714,Vetera Matera,NEW KEY HOTEL,"MICHELIN id 16256, 2 Key(s), town Matera; MICHELIN 2025 article None"
+IT,hotel_369,Villa Cora,2026 KEY VERIFIED,MICHELIN id 79; stored point 49 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_448,Villa d'Este,KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 7331; production 1 is MICHELIN's 2025 Key (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'Castiglione della Pescaia: L’Andana Cernobbio: Villa d'Este' under 'The ONE-KEY Hotels'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+IT,hotel_392,Villa Eden The Private Retreat,2026 KEY VERIFIED,MICHELIN id 11064; stored point 15 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_2715,"Villa Igiea, a Rocco Forte Hotel",NEW KEY HOTEL,"MICHELIN id 7855, 2 Key(s), town Palermo; MICHELIN 2025 article 2"
+IT,hotel_414,Villa La Massa,KEY IMPORT ERROR 1 -> 2 (QA-384),"MICHELIN id 6576; launch row 2026 = 1, but MICHELIN gives 2 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'idenza d'Epoca Florence: Villa Cora Florence: Villa La Massa' under 'The TWO-KEY Hotels') and 2 in 2024 (michelin_article_my_en_article_travel_all_the_key_hotels_italy_michelin_guide_2024.json: 'Villa Cora Florence: Villa La Massa' under 'The Two Key Hotels') and 2 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 2"
+IT,hotel_342,"Villa Sant'Andrea, A Belmond Hotel",2026 KEY VERIFIED,MICHELIN id 15176; stored point 33 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_797,Villa Treville,2026 KEY VERIFIED,MICHELIN id 15599; stored point 18 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+IT,hotel_398,ADLER Lodge RITTEN,STORED HOTEL COORDINATES OFF (QA-388),"matched by MICHELIN id 13915; stored point 626 m from MICHELIN's -- reported, not changed"
+IT,hotel_398,ADLER Lodge RITTEN,2026 KEY VERIFIED,MICHELIN id 13915; stored point 626 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2716,Anantara Palazzo Naiadi Rome,NEW KEY HOTEL,"MICHELIN id 6214, 1 Key(s), town Rome; MICHELIN 2025 article None"
+IT,hotel_2717,Ancora Cortina,NEW KEY HOTEL,"MICHELIN id 15753, 1 Key(s), town Cortina d'Ampezzo; MICHELIN 2025 article None"
+IT,hotel_2718,Ansitz Heufler by Norbert Niederkofler,NEW KEY HOTEL,"MICHELIN id 15754, 1 Key(s), town Rasen-Antholz; MICHELIN 2025 article None"
+IT,hotel_2719,Ansitz Steinbock,NEW KEY HOTEL,"MICHELIN id 15639, 1 Key(s), town Villandro; MICHELIN 2025 article None"
+IT,hotel_2720,Baglio Oneto,NEW KEY HOTEL,"MICHELIN id 16442, 1 Key(s), town Marsala; MICHELIN 2025 article None"
+IT,hotel_2721,Baglioni Masseria Muzza,NEW KEY HOTEL,"MICHELIN id 12710, 1 Key(s), town Otranto; MICHELIN 2025 article 1"
+IT,hotel_2722,Berghoferin Fine Hotel & Hideaway,NEW KEY HOTEL,"MICHELIN id 16796, 1 Key(s), town Redagno; MICHELIN 2025 article None"
+IT,hotel_416,Borgo dei Conti Resort,2026 KEY VERIFIED,MICHELIN id 7114; stored point 39 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_333,Botania Relais & Spa,2026 KEY VERIFIED,MICHELIN id 8827; stored point 55 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2723,Boutique Hotel Stresa,NEW KEY HOTEL,"MICHELIN id 16536, 1 Key(s), town Stresa; MICHELIN 2025 article None"
+IT,hotel_2724,Bra Hotel,NEW KEY HOTEL,"MICHELIN id 15349, 1 Key(s), town Bari; MICHELIN 2025 article None"
+IT,hotel_321,Brunelleschi Hotel,2026 KEY VERIFIED,MICHELIN id 5427; stored point 12 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_330,Byblos Art Hotel Villa Amistà,2026 KEY VERIFIED,MICHELIN id 164; stored point 170 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2725,Caesar Augustus,NEW KEY HOTEL,"MICHELIN id 1521, 1 Key(s), town Capri; MICHELIN 2025 article None"
+IT,hotel_376,Canne Bianche Lifestyle Hotel,2026 KEY VERIFIED,MICHELIN id 8117; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2726,Cape of Senses,NEW KEY HOTEL,"MICHELIN id 13719, 1 Key(s), town Torri del Benaco; MICHELIN 2025 article 1"
+IT,hotel_454,Capri Tiberio Palace,2026 KEY VERIFIED,MICHELIN id 6877; stored point 21 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2727,"Caruso, A Belmond Hotel, Amalfi Coast",NEW KEY HOTEL,"MICHELIN id 7370, 1 Key(s), town Ravello; MICHELIN 2025 article 1"
+IT,hotel_319,Casa Angelina,KEY IMPORT ERROR 2 -> 1 (QA-384),"MICHELIN id 1201; launch row 2026 = 2, but MICHELIN gives 1 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'l, Portofino Positano: Le Sirenuse Praiano: Casa Angelina' under 'The ONE-KEY Hotels') and 1 in 2024 (michelin_article_my_en_article_travel_all_the_key_hotels_italy_michelin_guide_2024.json: 'Le Sirenuse Praiano: Casa Angelina' under 'The One Key Hotels') and 1 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 1"
+IT,hotel_2728,"Casa Brera, a Luxury Collection Hotel, Milan",NEW KEY HOTEL,"MICHELIN id 16433, 1 Key(s), town Milan; MICHELIN 2025 article None"
+IT,hotel_406,Casa Cipriani Milano,2026 KEY VERIFIED,MICHELIN id 13289; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_421,Casa Clàt,2026 KEY VERIFIED,MICHELIN id 13425; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_408,Casa Newton,2026 KEY VERIFIED,MICHELIN id 14794; stored point 3 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_361,Cascioni Eco Retreat,2026 KEY VERIFIED,MICHELIN id 11994; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2729,Castel Badia,NEW KEY HOTEL,"MICHELIN id 15767, 1 Key(s), town San Lorenzo; MICHELIN 2025 article None"
+IT,hotel_2730,Castel Maurn,NEW KEY HOTEL,"MICHELIN id 15755, 1 Key(s), town San Lorenzo; MICHELIN 2025 article None"
+IT,hotel_384,Castel Monastero,STORED HOTEL COORDINATES OFF (QA-388),"matched by MICHELIN id 5253; stored point 4529 m from MICHELIN's -- reported, not changed"
+IT,hotel_384,Castel Monastero,2026 KEY VERIFIED,MICHELIN id 5253; stored point 4529 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_456,Castello Banfi - Il Borgo,2026 KEY VERIFIED,MICHELIN id 6678; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2731,Castello di Monterone,NEW KEY HOTEL,"MICHELIN id 9583, 1 Key(s), town Perugia; MICHELIN 2025 article 1"
+IT,hotel_385,Castello di Vicarello,2026 KEY VERIFIED,MICHELIN id 216; stored point 11 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2732,Ca’ di Dio,NEW KEY HOTEL,"MICHELIN id 12275, 1 Key(s), town Venice; MICHELIN 2025 article 1"
+IT,hotel_2733,Certosa di Maggiano,NEW KEY HOTEL,"MICHELIN id 16723, 1 Key(s), town Siena; MICHELIN 2025 article None"
+IT,hotel_403,COMO Alpina Dolomites,2026 KEY VERIFIED,MICHELIN id 10766; stored point 53 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_323,COMO Castello del Nero,STORED HOTEL COORDINATES OFF (QA-388),"matched by MICHELIN id 7130; stored point 1723 m from MICHELIN's -- reported, not changed"
+IT,hotel_323,COMO Castello del Nero,2026 KEY VERIFIED,MICHELIN id 7130; stored point 1723 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_425,Conti di San Bonifacio,2026 KEY VERIFIED,MICHELIN id 7060; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2734,Corinthia Rome,NEW KEY HOTEL,"MICHELIN id 17606, 1 Key(s), town Rome; MICHELIN 2025 article None"
+IT,hotel_415,Corte di Gabriela,2026 KEY VERIFIED,MICHELIN id 6834; stored point 9 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_326,Country House Villadorata,2026 KEY VERIFIED,MICHELIN id 8021; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_430,Critabianca,2026 KEY VERIFIED,MICHELIN id 11885; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2735,Dimora delle Balze,NEW KEY HOTEL,"MICHELIN id 8704, 1 Key(s), town Noto; MICHELIN 2025 article None"
+IT,hotel_413,Donna Coraly Country Boutique Hotel,2026 KEY VERIFIED,MICHELIN id 9860; stored point 77 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_444,Gardena Grödnerhof Hotel & Spa,2026 KEY VERIFIED,MICHELIN id 13142; stored point 197 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_337,Goldene Rose Karthaus,2026 KEY VERIFIED,MICHELIN id 11678; stored point 5 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_327,Grand Hotel Excelsior Vittoria,2026 KEY VERIFIED,MICHELIN id 6718; stored point 48 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2736,Grand Hotel Majestic,NEW KEY HOTEL,"MICHELIN id 14206, 1 Key(s), town Bologna; MICHELIN 2025 article None"
+IT,hotel_383,Grand Hotel Minerva,2026 KEY VERIFIED,MICHELIN id 8879; stored point 10 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_347,Grand Hotel Miramare,2026 KEY VERIFIED,MICHELIN id 6228; stored point 43 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2737,Grand Hotel Parker's,NEW KEY HOTEL,"MICHELIN id 5563, 1 Key(s), town Naples; MICHELIN 2025 article None"
+IT,hotel_336,Hassler Roma,KEY IMPORT ERROR 2 -> 1 (QA-384),"MICHELIN id 13240; launch row 2026 = 2, but MICHELIN gives 1 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'zzo Avino Riva del Garda: Lido Palace Rome: Hassler Roma' under 'The ONE-KEY Hotels') and 1 in 2024 (michelin_article_my_en_article_travel_all_the_key_hotels_italy_michelin_guide_2024.json: 'Lido Palace Rome: Hassler Roma' under 'The One Key Hotels') and 1 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 1"
+IT,hotel_451,Hotel Capo La Gala,2026 KEY VERIFIED,MICHELIN id 5863; stored point 8 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2738,"Hotel Eden, Dorchester Collection",NEW KEY HOTEL,"MICHELIN id 7218, 1 Key(s), town Rome; MICHELIN 2025 article 1"
+IT,hotel_356,Hotel Locarno,2026 KEY VERIFIED,MICHELIN id 9355; stored point 8 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_331,Hotel Lungarno,2026 KEY VERIFIED,MICHELIN id 7072; stored point 65 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_379,Hotel Metropole Venice,2026 KEY VERIFIED,MICHELIN id 5972; stored point 7 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_402,Hotel Miramalfi,2026 KEY VERIFIED,MICHELIN id 13667; stored point 2 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2739,"Hotel Principe di Savoia, Dorchester Collection",NEW KEY HOTEL,"MICHELIN id 6210, 1 Key(s), town Milan; MICHELIN 2025 article 1"
+IT,hotel_437,Hotel Signum,2026 KEY VERIFIED,MICHELIN id 1101; stored point 216 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_325,Hotel Vilòn,2026 KEY VERIFIED,MICHELIN id 11138; stored point 5 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_378,Il Palazzo Experimental,2026 KEY VERIFIED,MICHELIN id 9199; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_694,Hotel Il Pellicano,2026 KEY ROW ADDED (QA-390),"MICHELIN id 7456; production 1 = MICHELIN 2026; no michelin_keys row in award_history, one is written"
+IT,hotel_2740,Interno Marche,NEW KEY HOTEL,"MICHELIN id 16935, 1 Key(s), town Tolentino; MICHELIN 2025 article None"
+IT,hotel_374,J.K. Place Roma,KEY CHANGE 2 -> 1 (QA-383),"MICHELIN id 7112; production 2 is MICHELIN's 2025 Key (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'tofino: Splendido, A Belmond Hotel, Portofino Rome: JK Place Roma' under 'The TWO-KEY Hotels'); launch row 2026 relabelled 2025, non-current; 2026 = 1 written"
+IT,hotel_441,La Barchessa di Villa Pisani,2026 KEY VERIFIED,MICHELIN id 8793; stored point 32 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_423,La Fiermontina Luxury Home,2026 KEY VERIFIED,MICHELIN id 10935; stored point 1 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_335,La Foresteria Planeta Estate,2026 KEY VERIFIED,MICHELIN id 9200; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2741,La Minerva,NEW KEY HOTEL,"MICHELIN id 16530, 1 Key(s), town Capri; MICHELIN 2025 article None"
+IT,hotel_394,La Monastica Resort & Spa,2026 KEY VERIFIED,MICHELIN id 14165; stored point 2 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_409,"La Palma Capri, an Oetker Collection Hotel",KEY IMPORT ERROR 2 -> 1 (QA-384),"MICHELIN id 13850; launch row 2026 = 2, but MICHELIN gives 1 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'da Rossa Capri: Capri Tiberio Palace Capri: Hotel La Palma Capri, an Oetker Collection Hotel' under 'The ONE-KEY Hotels'), no 2024 entry and 1 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 1"
+IT,hotel_399,LA ROQQA,2026 KEY VERIFIED,MICHELIN id 15292; stored point 14 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_420,Lagació Hotel Mountain Residence,2026 KEY VERIFIED,MICHELIN id 4341; stored point 38 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_422,Lake Spa Hotel SEELEITEN,2026 KEY VERIFIED,MICHELIN id 13154; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2742,Laqua by the Lake,NEW KEY HOTEL,"MICHELIN id 12450, 1 Key(s), town Pettenasco; MICHELIN 2025 article 1"
+IT,hotel_343,Le Sirenuse,KEY IMPORT ERROR 2 -> 1 (QA-384),"MICHELIN id 6213; launch row 2026 = 2, but MICHELIN gives 1 in 2025 (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'Splendido Mare, A Belmond Hotel, Portofino Positano: Le Sirenuse' under 'The ONE-KEY Hotels') and 1 in 2024 (michelin_article_my_en_article_travel_all_the_key_hotels_italy_michelin_guide_2024.json: 'Il Pellicano Positano: Le Sirenuse' under 'The One Key Hotels') and 1 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 1"
+IT,hotel_429,Lefay Resort & Spa Lago di Garda,2026 KEY VERIFIED,MICHELIN id 5131; stored point 76 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2743,Leonardo Trulli Resort,NEW KEY HOTEL,"MICHELIN id 15300, 1 Key(s), town Locorotondo; MICHELIN 2025 article None"
+IT,hotel_417,Lido Palace,2026 KEY VERIFIED,MICHELIN id 7990; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_359,Locanda al Colle,2026 KEY VERIFIED,MICHELIN id 5743; stored point 27 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_387,Locanda Rossa,2026 KEY VERIFIED,MICHELIN id 5387; stored point 24 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_354,Londra Palace Venezia,2026 KEY VERIFIED,MICHELIN id 4291; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_436,Lùme,2026 KEY VERIFIED,MICHELIN id 13038; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_449,Lupaia,2026 KEY VERIFIED,MICHELIN id 8678; stored point 5 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_450,L'Andana,2026 KEY VERIFIED,MICHELIN id 2751; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2744,Maalot Roma,NEW KEY HOTEL,"MICHELIN id 13028, 1 Key(s), town Rome; MICHELIN 2025 article 1"
+IT,hotel_427,Masseria Calderisi,2026 KEY VERIFIED,MICHELIN id 11915; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_431,Masseria della Volpe,2026 KEY VERIFIED,MICHELIN id 7995; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_353,Masseria Torre Coccaro,2026 KEY VERIFIED,MICHELIN id 158; stored point 2 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_364,Mediterraneo Sorrento,2026 KEY VERIFIED,MICHELIN id 13496; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2745,Mezzatorre Hotel & Thermal Spa,NEW KEY HOTEL,"MICHELIN id 448, 1 Key(s), town Island of Ischia; MICHELIN 2025 article 1"
+IT,hotel_2746,Milla Montis,NEW KEY HOTEL,"MICHELIN id 12451, 1 Key(s), town Meransen; MICHELIN 2025 article 1"
+IT,hotel_371,Monaci delle Terre Nere,2026 KEY VERIFIED,MICHELIN id 6782; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_393,Monastero di Cortona,2026 KEY VERIFIED,MICHELIN id 13669; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_363,Monastero Santa Rosa,2026 KEY VERIFIED,MICHELIN id 9680; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_366,Nordelaia,2026 KEY VERIFIED,MICHELIN id 12646; stored point 246 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2747,Orient Express Venezia,NEW KEY HOTEL,"MICHELIN id 17607, 1 Key(s), town Venice; MICHELIN 2025 article None"
+IT,hotel_428,Ottolire Resort,2026 KEY VERIFIED,MICHELIN id 9432; stored point 20 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_382,Palazzo Albricci Peregrini,2026 KEY VERIFIED,MICHELIN id 9019; stored point 2 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_458,Palazzo Avino,2026 KEY VERIFIED,MICHELIN id 7367; stored point 9 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2748,Palazzo Boyl 1840,NEW KEY HOTEL,"MICHELIN id 16655, 1 Key(s), town Cagliari; MICHELIN 2025 article None"
+IT,hotel_367,Palazzo Daniele,2026 KEY VERIFIED,MICHELIN id 9160; stored point 46 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_355,Palazzo Margherita,2026 KEY VERIFIED,MICHELIN id 6923; stored point 12 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_350,Palazzo Parigi Hotel & Grand Spa,2026 KEY VERIFIED,MICHELIN id 8056; stored point 29 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_418,Palazzo Pascal,2026 KEY VERIFIED,MICHELIN id 12185; stored point 83 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_407,Palazzo Petrvs,2026 KEY VERIFIED,MICHELIN id 14609; stored point 3 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_397,Palazzo Ripetta,2026 KEY VERIFIED,MICHELIN id 14263; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2749,Palazzo Roma,NEW KEY HOTEL,"MICHELIN id 13777, 1 Key(s), town Rome; MICHELIN 2025 article 1"
+IT,hotel_2750,Palazzo Venart Luxury Hotel,NEW KEY HOTEL,"MICHELIN id 10174, 1 Key(s), town Venice; MICHELIN 2025 article 1"
+IT,hotel_443,Paragon 700 Boutique Hotel & SPA,2026 KEY VERIFIED,MICHELIN id 12280; stored point 1 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2751,Patria Palace,NEW KEY HOTEL,"MICHELIN id 15288, 1 Key(s), town Lecce; MICHELIN 2025 article 1"
+IT,hotel_2752,Pensione America,NEW KEY HOTEL,"MICHELIN id 15286, 1 Key(s), town Forte dei Marmi; MICHELIN 2025 article 1"
+IT,hotel_2753,Petra Segreta Resort & Spa,NEW KEY HOTEL,"MICHELIN id 6771, 1 Key(s), town Costa Smeralda; MICHELIN 2025 article None"
+IT,hotel_426,Portrait Roma,2026 KEY VERIFIED,MICHELIN id 6216; stored point 25 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_373,Precise Tale Poggio Alla Sala,2026 KEY VERIFIED,MICHELIN id 13465; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_439,Principe Forte dei Marmi,2026 KEY VERIFIED,MICHELIN id 6768; stored point 27 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2754,Punta Tragara,NEW KEY HOTEL,"MICHELIN id 3511, 1 Key(s), town Capri; MICHELIN 2025 article None"
+IT,hotel_457,Relais Blu,2026 KEY VERIFIED,MICHELIN id 6648; stored point 31 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2755,Relais Roncolo 1888,NEW KEY HOTEL,"MICHELIN id 16547, 1 Key(s), town Quattro Castella; MICHELIN 2025 article None"
+IT,hotel_2756,Resort Fontes Episcopi,NEW KEY HOTEL,"MICHELIN id 16777, 1 Key(s), town Aragona; MICHELIN 2025 article None"
+IT,hotel_339,Riva Lofts Florence,2026 KEY VERIFIED,MICHELIN id 206; stored point 76 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2757,"Romazzino, A Belmond Hotel, Costa Smeralda",NEW KEY HOTEL,"MICHELIN id 9920, 1 Key(s), town Costa Smeralda; MICHELIN 2025 article None"
+IT,hotel_352,San Luis Retreat Hotel & Lodges,2026 KEY VERIFIED,MICHELIN id 15409; stored point 18 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_433,Seven Rooms Villadorata,2026 KEY VERIFIED,MICHELIN id 8020; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_386,Sextantio,2026 KEY VERIFIED,MICHELIN id 442; stored point 3 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_381,Sextantio Le Grotte della Civita,2026 KEY VERIFIED,MICHELIN id 3251; stored point 52 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_435,Siena House,2026 KEY VERIFIED,MICHELIN id 7129; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_432,Singer Palace Hotel Roma,2026 KEY VERIFIED,MICHELIN id 8957; stored point 2 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_368,Six Senses Rome,2026 KEY VERIFIED,MICHELIN id 12916; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_424,Stella d'Italia,2026 KEY VERIFIED,MICHELIN id 14322; stored point 2 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2758,Sunny Valley Mountain Lodge,NEW KEY HOTEL,"MICHELIN id 16555, 1 Key(s), town Santa Caterina Valfurva; MICHELIN 2025 article None"
+IT,hotel_377,Susafa,2026 KEY VERIFIED,MICHELIN id 7958; stored point 45 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2759,Tenuta di Murlo,NEW KEY HOTEL,"MICHELIN id 16234, 1 Key(s), town Perugia; MICHELIN 2025 article None"
+IT,hotel_460,Terra - The Magic Place,2026 KEY VERIFIED,MICHELIN id 9303; stored point 22 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2760,The Ashbee Hotel,NEW KEY HOTEL,"MICHELIN id 6450, 1 Key(s), town Taormina; MICHELIN 2025 article None"
+IT,hotel_459,"The First Arte, Rome",2026 KEY VERIFIED,MICHELIN id 6540; stored point 10 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2761,The James Suite Hotel Firenze 1564,NEW KEY HOTEL,"MICHELIN id 16956, 1 Key(s), town Florence; MICHELIN 2025 article None"
+IT,hotel_2762,The Lake Como EDITION,NEW KEY HOTEL,"MICHELIN id 15522, 1 Key(s), town Griante Cadenabbia; MICHELIN 2025 article None"
+IT,hotel_446,The Place Firenze,2026 KEY VERIFIED,MICHELIN id 2021; stored point 23 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2763,The St. Regis Florence,NEW KEY HOTEL,"MICHELIN id 10184, 1 Key(s), town Florence; MICHELIN 2025 article 1"
+IT,hotel_2764,Torre Fiore Hotel Masseria,NEW KEY HOTEL,"MICHELIN id 15563, 1 Key(s), town Pisticci; MICHELIN 2025 article None"
+IT,hotel_2765,Umiltà 36,NEW KEY HOTEL,"MICHELIN id 13029, 1 Key(s), town Rome; MICHELIN 2025 article 1"
+IT,hotel_372,Velona's Jungle Luxury Suites,2026 KEY VERIFIED,MICHELIN id 8551; stored point 8 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_358,Vico Milano,2026 KEY VERIFIED,MICHELIN id 12446; stored point 161 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2766,Vigilius Mountain Resort,NEW KEY HOTEL,"MICHELIN id 2131, 1 Key(s), town Lana; MICHELIN 2025 article 1"
+IT,hotel_411,Villa Corallo,2026 KEY VERIFIED,MICHELIN id 14215; stored point 9 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2767,Villa Cortine,NEW KEY HOTEL,"MICHELIN id 8920, 1 Key(s), town Sirmione; MICHELIN 2025 article 1"
+IT,hotel_440,Villa Crespi,2026 KEY VERIFIED,MICHELIN id 5809; stored point 11 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_322,Villa Fiorella Art Hotel,2026 KEY VERIFIED,MICHELIN id 8477; stored point 281 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_365,Villa Fontelunga,2026 KEY VERIFIED,MICHELIN id 84; stored point 286 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2768,Villa Làrio,NEW KEY HOTEL,"MICHELIN id 8009, 1 Key(s), town Pognana Lario; MICHELIN 2025 article None"
+IT,hotel_388,Villa le Prata - Residenza del Vescovo,2026 KEY VERIFIED,MICHELIN id 12200; stored point 35 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_400,Villa Petriolo,2026 KEY VERIFIED,MICHELIN id 15287; stored point 2 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2769,"Villa San Michele, A Belmond Hotel, Florence",NEW KEY HOTEL,"MICHELIN id 7395, 1 Key(s), town Fiesole; MICHELIN 2025 article 1"
+IT,hotel_351,Violino D'Oro,2026 KEY VERIFIED,MICHELIN id 14205; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_2770,VISTA Ostuni,NEW KEY HOTEL,"MICHELIN id 15524, 1 Key(s), town Ostuni; MICHELIN 2025 article None"
+IT,hotel_396,Vista Verona,2026 KEY VERIFIED,MICHELIN id 12594; stored point 21 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_419,Vivere Suites and Rooms,2026 KEY VERIFIED,MICHELIN id 5275; stored point 11 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_360,Vocabolo Moscatelli Boutique Hotel & Restaurant,2026 KEY VERIFIED,MICHELIN id 13119; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_412,Wine Relais Feudi del Pisciotto,2026 KEY VERIFIED,MICHELIN id 15291; stored point 195 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+IT,hotel_389,Aethos Monterosa,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 9146; https://guide.michelin.com/en/hotels-stays/champoluc/aethos-monterosa-9146: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_en_article_travel_all_the_key_hotels_italy.json: 'e Cerreto Guidi: Villa Petriolo Champoluc: Aethos Monterosa' under 'The ONE-KEY Hotels'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+ES,hotel_484,Abadía Retuerta LeDomaine,2026 KEY VERIFIED,MICHELIN id 10200; stored point 30 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+ES,hotel_480,Atrio Restaurante Hotel,2026 KEY VERIFIED,MICHELIN id 6598; stored point 58 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+ES,hotel_540,"Mandarin Oriental Ritz, Madrid",2026 KEY VERIFIED,MICHELIN id 5865; stored point 80 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+ES,hotel_491,Terra Dominicata - Hotel & Winery,2026 KEY VERIFIED,MICHELIN id 8962; stored point 195 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+ES,hotel_519,Torre del Marqués Hotel Spa & Winery,KEY IMPORT ERROR 2 -> 3 (QA-384),"MICHELIN id 11626; launch row 2026 = 2, but MICHELIN gives 3 in 2025 (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'ón de Duero: Abadía Retuerta LeDomaine Teruel: Torre del Marqués Hotel Spa & Winery' under 'Los hoteles con tres Llaves') and 3 in 2024 (michelin_article_us_en_article_travel_all_the_key_hotels_spain_michelin_guide_2024.json: 'Mandarin Oriental Ritz, Madrid Sardoncillo: Torre del Marqués Hotel Spa & Winery' under 'The Three Key Hotels') and 3 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 3"
+ES,hotel_508,Akelarre,2026 KEY VERIFIED,MICHELIN id 8643; stored point 15 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+ES,hotel_520,Can Cera,KEY IMPORT ERROR 1 -> 2 (QA-384),"MICHELIN id 6753; launch row 2026 = 1, but MICHELIN gives 2 in 2025 (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'Marbella: Marbella Club Hotel Palma de Mallorca: Hotel Can Cera' under 'Los hoteles con dos Llaves') and 2 in 2024 (michelin_article_us_en_article_travel_all_the_key_hotels_spain_michelin_guide_2024.json: 'Marbella Club Hotel Palma de Mallorca: Hotel Can Cera' under 'The Two Key Hotels') and 2 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 2"
+ES,hotel_523,"Canfranc Estación, a Royal Hideaway Hotel",2026 KEY VERIFIED,MICHELIN id 13117; stored point 47 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+ES,hotel_506,Cap Rocat,KEY IMPORT ERROR 1 -> 2 (QA-384),"MICHELIN id 6377; launch row 2026 = 1, but MICHELIN gives 2 in 2025 (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'Barcelona: Mandarin Oriental Barcelona Cala Blava: Cap Rocat' under 'Los hoteles con dos Llaves') and 2 in 2024 (michelin_article_us_en_article_travel_all_the_key_hotels_spain_michelin_guide_2024.json: 'Mandarin Oriental Barcelona Cala Blava: Cap Rocat' under 'The Two Key Hotels') and 2 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 2"
+ES,hotel_539,Cap Vermell Grand Hotel,KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 8439; production 1 is MICHELIN's 2025 Key (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'Sa Creu Nova Petit Palais Art & Spa Canyamel: Cap Vermell Grand Hotel' under 'Los hoteles con una Llave'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+ES,hotel_566,Casa Beatnik Country House,KEY IMPORT ERROR 1 -> 2 (QA-384),"MICHELIN id 13030; launch row 2026 = 1, but MICHELIN gives 2 in 2025 (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'La Residencia, A Belmond Hotel, Mallorca La Coruña: Casa Beatnik Hotel' under 'Los hoteles con dos Llaves') and 2 in 2024 (michelin_article_us_en_article_travel_all_the_key_hotels_spain_michelin_guide_2024.json: 'A Coruña: Casa Beatnik Hotel' under 'The Two Key Hotels') and 2 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 2"
+ES,hotel_525,Esperit Roca,KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 10423; production 1 is MICHELIN's 2025 Key (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'Garraf: Little Beach House Barcelona Girona: Hotel Esperit Roca' under 'Los hoteles con una Llave'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+ES,hotel_470,Four Seasons Hotel Madrid,2026 KEY VERIFIED,MICHELIN id 13597; stored point 21 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+ES,hotel_2771,Four Seasons Resort Mallorca at Formentor,NEW KEY HOTEL,"MICHELIN id 14683, 2 Key(s), town Mallorca; MICHELIN 2025 article None"
+ES,hotel_475,Hotel Can Ferrereta,2026 KEY VERIFIED,MICHELIN id 12001; stored point 9 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+ES,hotel_507,"La Residencia, A Belmond Hotel, Mallorca",2026 KEY VERIFIED,MICHELIN id 6384; stored point 6 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+ES,hotel_2772,"Mandarin Oriental Punta Negra, Mallorca",NEW KEY HOTEL,"MICHELIN id 16249, 2 Key(s), town Mallorca; MICHELIN 2025 article None"
+ES,hotel_541,Mandarin Oriental Barcelona,2026 KEY VERIFIED,MICHELIN id 6386; stored point 9 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+ES,hotel_558,Marbella Club Hotel,KEY IMPORT ERROR 1 -> 2 (QA-384),"MICHELIN id 5985; launch row 2026 = 1, but MICHELIN gives 2 in 2025 (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'drid Madrid: Rosewood Villa Magna Marbella: Marbella Club Hotel' under 'Los hoteles con dos Llaves') and 2 in 2024 (michelin_article_us_en_article_travel_all_the_key_hotels_spain_michelin_guide_2024.json: 'Rosewood Villa Magna Marbella: Marbella Club Hotel' under 'The Two Key Hotels') and 2 in 2026: the launch value matches no edition; the 2026 row is corrected in place to 2"
+ES,hotel_562,Mas de Torrent,2026 KEY VERIFIED,MICHELIN id 7200; stored point 109 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+ES,hotel_481,Pepe Vieira,2026 KEY VERIFIED,MICHELIN id 13404; stored point 35 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+ES,hotel_543,Rosewood Villa Magna,2026 KEY VERIFIED,MICHELIN id 5307; stored point 35 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+ES,hotel_521,A Quinta da Auga,2026 KEY VERIFIED,MICHELIN id 3601; stored point 34 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_537,ABaC Restaurant & Hotel,2026 KEY VERIFIED,MICHELIN id 1581; stored point 46 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_492,Alma Barcelona,2026 KEY VERIFIED,MICHELIN id 6441; stored point 25 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_517,Almanac Barcelona,2026 KEY VERIFIED,MICHELIN id 9002; stored point 11 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_547,Anantara Villa Padierna Palace Benahavís Marbella Resort,2026 KEY VERIFIED,MICHELIN id 8770; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_490,Antiga Casa Buenavista,2026 KEY VERIFIED,MICHELIN id 12122; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_524,Bahia del Duque,2026 KEY VERIFIED,MICHELIN id 13701; stored point 74 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_568,Boutique Hotel Posada Terra Santa,2026 KEY VERIFIED,MICHELIN id 9261; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_505,Brach Madrid - Evok Collection,2026 KEY VERIFIED,MICHELIN id 13593; stored point 3 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_501,Can Alberti 1740 Hotel Boutique,2026 KEY VERIFIED,MICHELIN id 12462; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_516,Can Bordoy Grand House & Garden,2026 KEY VERIFIED,MICHELIN id 9143; stored point 7 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_500,Can Mascort Eco Hotel,2026 KEY VERIFIED,MICHELIN id 13021; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_504,Cap Menorca,2026 KEY VERIFIED,MICHELIN id 14161; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_556,Caro Hotel,2026 KEY VERIFIED,MICHELIN id 13702; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_510,Castell Son Claret,2026 KEY VERIFIED,MICHELIN id 10110; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_499,Castillo del Buen Amor,2026 KEY VERIFIED,MICHELIN id 11820; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_466,"Castillo Hotel Son Vida, a Luxury Collection Hotel",2026 KEY VERIFIED,MICHELIN id 9796; stored point 74 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_487,Cavalta Boutique Hotel,2026 KEY VERIFIED,MICHELIN id 13803; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_483,"Convent de La Missió, Grand Luxury Boutique Hotel",2026 KEY VERIFIED,MICHELIN id 7476; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_564,CoolRooms Palacio de Atocha,2026 KEY VERIFIED,MICHELIN id 11111; stored point 1 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_493,CoolRooms Palacio Villapanés,2026 KEY VERIFIED,MICHELIN id 3421; stored point 38 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_479,Cristine Bedfor Mahón,2026 KEY VERIFIED,MICHELIN id 12081; stored point 8 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2773,Dunas de Formentera,NEW KEY HOTEL,"MICHELIN id 16333, 1 Key(s), town Formentera; MICHELIN 2025 article None"
+ES,hotel_474,El Llorenç Parc de la Mar,2026 KEY VERIFIED,MICHELIN id 9395; stored point 17 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_511,Es Princep,2026 KEY VERIFIED,MICHELIN id 9273; stored point 2 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_489,Es Raco d'Artà,STORED HOTEL COORDINATES OFF (QA-388),"matched by MICHELIN id 11990; stored point 1031 m from MICHELIN's -- reported, not changed"
+ES,hotel_489,Es Raco d'Artà,2026 KEY VERIFIED,MICHELIN id 11990; stored point 1031 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_527,Fairmont La Hacienda Costa del Sol,2026 KEY VERIFIED,MICHELIN id 15148; stored point 55 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_462,Faustino Gran,2026 KEY VERIFIED,MICHELIN id 7714; stored point 27 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_498,Finca Cortesin,2026 KEY VERIFIED,MICHELIN id 2721; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2774,Finca La Donaira,NEW KEY HOTEL,"MICHELIN id 14220, 1 Key(s), town Montecorto; MICHELIN 2025 article None"
+ES,hotel_496,Finca Serena Mallorca,2026 KEY VERIFIED,MICHELIN id 9136; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2775,Finca Victoria Hotel & Spa,NEW KEY HOTEL,"MICHELIN id 15395, 1 Key(s), town Girona; MICHELIN 2025 article None"
+ES,hotel_552,Fontsanta Thermal Spa & Wellness,2026 KEY VERIFIED,MICHELIN id 14062; stored point 91 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_555,Gran Hotel Inglés,2026 KEY VERIFIED,MICHELIN id 11161; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2776,Gran Hotel Mas D'en Bruno,NEW KEY HOTEL,"MICHELIN id 13205, 1 Key(s), town Torroja del Priorat; MICHELIN 2025 article None"
+ES,hotel_2777,Gran Marbella Resort & Beach Club,NEW KEY HOTEL,"MICHELIN id 17067, 1 Key(s), town Marbella; MICHELIN 2025 article None"
+ES,hotel_473,Helguera Palacio Boutique & Antique,2026 KEY VERIFIED,MICHELIN id 13204; stored point 12 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2778,Heritage Madrid,NEW KEY HOTEL,"MICHELIN id 16341, 1 Key(s), town Madrid; MICHELIN 2025 article None"
+ES,hotel_514,Hospes Palacio Del Bailio,2026 KEY VERIFIED,MICHELIN id 301; stored point 19 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2779,Hotel Alfonso XIII,NEW KEY HOTEL,"MICHELIN id 11425, 1 Key(s), town Sevilla; MICHELIN 2025 article None"
+ES,hotel_535,Hotel Arts Barcelona,2026 KEY VERIFIED,MICHELIN id 7408; stored point 123 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2780,Hotel César Lanzarote,NEW KEY HOTEL,"MICHELIN id 15265, 1 Key(s), town Lanzarote; MICHELIN 2025 article None"
+ES,hotel_495,Hotel Cortijo del Marqués,2026 KEY VERIFIED,MICHELIN id 9276; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_550,Hotel L'Avenida,2026 KEY VERIFIED,MICHELIN id 8574; stored point 42 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_526,Hotel La Caminera Club de Campo,2026 KEY VERIFIED,MICHELIN id 9664; stored point 115 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_542,Hotel Maria Cristina,2026 KEY VERIFIED,MICHELIN id 7470; stored point 10 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_544,"Hotel Marques de Riscal, a Luxury Collection Hotel",2026 KEY VERIFIED,MICHELIN id 7425; stored point 33 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_531,Hotel Mas Lazuli,2026 KEY VERIFIED,MICHELIN id 7693; stored point 207 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_567,Hotel Peralada Wine Spa & Golf,STORED HOTEL COORDINATES OFF (QA-388),"matched by MICHELIN id 9668; stored point 1259 m from MICHELIN's -- reported, not changed"
+ES,hotel_567,Hotel Peralada Wine Spa & Golf,2026 KEY VERIFIED,MICHELIN id 9668; stored point 1259 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_557,Hotel Puntagrande,2026 KEY VERIFIED,MICHELIN id 14081; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_502,Hotel Rector,2026 KEY VERIFIED,MICHELIN id 5135; stored point 22 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_485,Hotel Santa María Briones,2026 KEY VERIFIED,MICHELIN id 13146; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_563,Hotel Villa Favorita - Adults Only,2026 KEY VERIFIED,MICHELIN id 11631; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_546,La Almunia del Valle,2026 KEY VERIFIED,MICHELIN id 9642; stored point 295 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_554,La Fonda Heritage,2026 KEY VERIFIED,MICHELIN id 13663; stored point 3 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_512,La Torre del Visco,STORED HOTEL COORDINATES OFF (QA-388),"matched by MICHELIN id 9765; stored point 3137 m from MICHELIN's -- reported, not changed"
+ES,hotel_512,La Torre del Visco,2026 KEY VERIFIED,MICHELIN id 9765; stored point 3137 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_471,La Zambra Resort,2026 KEY VERIFIED,MICHELIN id 13703; stored point 63 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_560,Lasala Plaza Hotel,2026 KEY VERIFIED,MICHELIN id 8902; stored point 16 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_488,Mercer Barcelona,2026 KEY VERIFIED,MICHELIN id 6912; stored point 68 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_518,Mercer Sevilla,2026 KEY VERIFIED,MICHELIN id 8527; stored point 11 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2781,METT Barcelona,NEW KEY HOTEL,"MICHELIN id 6513, 1 Key(s), town Barcelona; MICHELIN 2025 article None"
+ES,hotel_2782,Miramar Barcelona,NEW KEY HOTEL,"MICHELIN id 5497, 1 Key(s), town Barcelona; MICHELIN 2025 article None"
+ES,hotel_469,Mirlo Barcelona,2026 KEY VERIFIED,MICHELIN id 12598; stored point 9 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_482,Monument Hotel,2026 KEY VERIFIED,MICHELIN id 8177; stored point 3 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2783,Neri,NEW KEY HOTEL,"MICHELIN id 16574, 1 Key(s), town Barcelona; MICHELIN 2025 article None"
+ES,hotel_465,Nobis Hotel Palma,2026 KEY VERIFIED,MICHELIN id 13514; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_529,Only YOU Boutique Hotel Madrid,2026 KEY VERIFIED,MICHELIN id 8366; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_472,Only YOU Hotel Valencia,2026 KEY VERIFIED,MICHELIN id 13039; stored point 7 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2784,Palacio de los Ángeles,NEW KEY HOTEL,"MICHELIN id 17124, 1 Key(s), town Haro; MICHELIN 2025 article None"
+ES,hotel_565,"Palacio de los Duques, Gran Meliá",2026 KEY VERIFIED,MICHELIN id 8808; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_549,Palacio de Luces,2026 KEY VERIFIED,MICHELIN id 12682; stored point 25 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_548,"Petunia Ibiza, Beaumier Hotel",2026 KEY VERIFIED,MICHELIN id 12256; stored point 22 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_530,Predi Son Jaumell,2026 KEY VERIFIED,MICHELIN id 9788; stored point 36 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_467,Room Mate Helen Berger,2026 KEY VERIFIED,MICHELIN id 12466; stored point 25 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_545,Royal Hideaway Corales Suites,2026 KEY VERIFIED,MICHELIN id 10348; stored point 14 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_528,Rural Sant Ignasi,2026 KEY VERIFIED,MICHELIN id 15147; stored point 10 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_536,Sa Creu Nova Petit Palais,2026 KEY VERIFIED,MICHELIN id 8732; stored point 7 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_476,Sant Francesc Hotel Singular,2026 KEY VERIFIED,MICHELIN id 10853; stored point 10 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_522,"Santa Catalina, a Royal Hideaway Hotel",2026 KEY VERIFIED,MICHELIN id 13700; stored point 26 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_532,"Santo Mauro, a Luxury Collection Hotel",2026 KEY VERIFIED,MICHELIN id 200; stored point 23 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2785,Seaside Grand Hotel Residencia,NEW KEY HOTEL,"MICHELIN id 16243, 1 Key(s), town Gran Canaria; MICHELIN 2025 article None"
+ES,hotel_534,Seda Club Hotel,2026 KEY VERIFIED,MICHELIN id 13304; stored point 10 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_559,Serras Barcelona,2026 KEY VERIFIED,MICHELIN id 12051; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_468,Seventy Barcelona,2026 KEY VERIFIED,MICHELIN id 13713; stored point 46 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2786,Sofitel Barcelona Skipper,NEW KEY HOTEL,"MICHELIN id 6387, 1 Key(s), town Barcelona; MICHELIN 2025 article None"
+ES,hotel_569,Soho House Barcelona,2026 KEY VERIFIED,MICHELIN id 13089; stored point 10 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_538,Son Brull,2026 KEY VERIFIED,MICHELIN id 8464; stored point 7 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_461,Son Bunyola Hotel & Villas,2026 KEY VERIFIED,MICHELIN id 15063; stored point 47 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_503,Teranka Formentera,2026 KEY VERIFIED,MICHELIN id 13664; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_497,The Artist Grand Hotel of Art,2026 KEY VERIFIED,MICHELIN id 1271; stored point 88 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_515,The One Barcelona,2026 KEY VERIFIED,MICHELIN id 8519; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_464,"The Palace, A Luxury Collection Hotel, Madrid",2026 KEY VERIFIED,MICHELIN id 9482; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_478,Torralbenc,2026 KEY VERIFIED,MICHELIN id 6993; stored point 25 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_509,Unico,2026 KEY VERIFIED,MICHELIN id 2911; stored point 17 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_513,URSO,2026 KEY VERIFIED,MICHELIN id 7607; stored point 12 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_2787,Vestige Son Ermità,NEW KEY HOTEL,"MICHELIN id 15576, 1 Key(s), town Minorca; MICHELIN 2025 article None"
+ES,hotel_2788,Villa Boutique 1880,NEW KEY HOTEL,"MICHELIN id 15316, 1 Key(s), town A Lama; MICHELIN 2025 article None"
+ES,hotel_553,Vincci Selección Unuk,2026 KEY VERIFIED,MICHELIN id 13699; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_533,VIVOOD Landscape Hotel & Spa,2026 KEY VERIFIED,MICHELIN id 10247; stored point 37 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_486,Wittmore,2026 KEY VERIFIED,MICHELIN id 13856; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+ES,hotel_463,Only YOU Hotel Atocha,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 8400; https://guide.michelin.com/en/hotels-stays/madrid/only-you-hotel-atocha-8400: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'id: Only YOU Boutique Hotel Madrid Madrid: Only YOU Hotel Atocha' under 'Los hoteles con una Llave'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+ES,hotel_477,Ohla Eixample,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 8735; https://guide.michelin.com/en/hotels-stays/barcelona/ohla-eixample-8735: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'Barcelona: Monument Hotel Barcelona: Ohla Eixample' under 'Los hoteles con una Llave'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+ES,hotel_494,The Principal Madrid,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 7791; https://guide.michelin.com/en/hotels-stays/madrid/the-principal-madrid-7791: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'p; Santo Mauro, a Luxury Collection Hotel Madrid: The Principal Madrid' under 'Los hoteles con una Llave'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+ES,hotel_551,Little Beach House Barcelona,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 13093; https://guide.michelin.com/en/hotels-stays/garraf/little-beach-house-barcelona-13093: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'D Es Capdellà: Castell Son Claret Garraf: Little Beach House Barcelona' under 'Los hoteles con una Llave'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+ES,hotel_561,Yurbban Passage,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 11009; https://guide.michelin.com/en/hotels-stays/barcelona/yurbban-passage-hotel-spa-11009: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_wayback_20251128_es_es_articulo_travel_los_primeros_hoteles_con_llave_michelin_todas_las_llaves_de_espana.json: 'Barcelona: Wittmore Hotel Barcelona: Yurbban Passage Hotel & Spa' under 'Los hoteles con una Llave'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_28,Althoff Seehotel Überfahrt,2026 KEY VERIFIED,MICHELIN id 6183; stored point 30 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+DE,hotel_23,Hotel Bareiss,2026 KEY VERIFIED,MICHELIN id 13547; stored point 73 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+DE,hotel_24,Hotel Traube Tonbach,2026 KEY VERIFIED,MICHELIN id 8972; stored point 25 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+DE,hotel_26,Hotel Vier Jahreszeiten,2026 KEY VERIFIED,MICHELIN id 12464; stored point 25 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+DE,hotel_25,Schloss Elmau Luxury Spa Retreat & Cultural Hideaway,2026 KEY VERIFIED,MICHELIN id 7287; stored point 11 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+DE,hotel_27,The Fontenay,2026 KEY VERIFIED,MICHELIN id 11121; stored point 13 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+DE,hotel_101,Vitalhotel Alter Meierhof,2026 KEY VERIFIED,MICHELIN id 9510; stored point 19 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_99,Breidenbacher Hof Düsseldorf,2026 KEY VERIFIED,MICHELIN id 11443; stored point 6 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_2789,Brenners Park-Hotel & Spa,NEW KEY HOTEL,"MICHELIN id 6427, 2 Key(s), town Baden-Baden; MICHELIN 2025 article None"
+DE,hotel_2790,BUDERSAND Hotel – Golf & Spa - Sylt,NEW KEY HOTEL,"MICHELIN id 9695, 2 Key(s), town Sylt; MICHELIN 2025 article 2"
+DE,hotel_97,Bülow Palais,2026 KEY VERIFIED,MICHELIN id 10183; stored point 140 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_201,Chiemgauhof Lakeside Retreat,KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 15121; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'Sylt: Landhaus Severins Morsum Kliff Übersee: Chiemgauhof Lakeside Retreat' under 'THE ONE-KEY HOTELS'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+DE,hotel_103,Das Achental Resort,2026 KEY VERIFIED,MICHELIN id 13234; stored point 33 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_106,Das Kranzbach Hotel & Wellness Retreat,2026 KEY VERIFIED,MICHELIN id 6329; stored point 45 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_182,Der Birkenhof Spa & Genuss Resort,KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 9764; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'Hinterzarten: Parkhotel Adler Hofenstetten: Der Birkenhof Spa & Genuss Resort' under 'THE ONE-KEY HOTELS'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+DE,hotel_96,Der Öschberghof,2026 KEY VERIFIED,MICHELIN id 9835; stored point 47 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_111,Hotel Gut Steinbach,2026 KEY VERIFIED,MICHELIN id 9534; stored point 7 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_104,Hotel Louis C. Jacob,2026 KEY VERIFIED,MICHELIN id 5860; stored point 13 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_252,Hotel PURS,KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 10038; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'sp; Schlosshotel Münchhausen Andernach: Hotel PURS' under 'THE ONE-KEY HOTELS'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+DE,hotel_98,Kempinski Hotel Taschenbergpalais,2026 KEY VERIFIED,MICHELIN id 7389; stored point 33 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_200,Hüttenhof - Wellnesshotel & Luxus-Bergchalets,KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 14423; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'ein Gernsbach: Schloss Eberstein Grainet - Hüttenhof - Wellness Hotel & Luxury Mountain Chalets - Adults only' under 'THE ONE-KEY HOTELS'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+DE,hotel_89,Kempinski Hotel Berchtesgaden,2026 KEY VERIFIED,MICHELIN id 9705; stored point 18 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_115,La Maison,2026 KEY VERIFIED,MICHELIN id 9980; stored point 11 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_117,Landhaus Stricker,2026 KEY VERIFIED,MICHELIN id 9908; stored point 18 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_105,Luisenhöhe - Gesundheitsresort Schwarzwald,2026 KEY VERIFIED,MICHELIN id 13954; stored point 253 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_107,Mandarin Oriental Munich,2026 KEY VERIFIED,MICHELIN id 6339; stored point 33 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_113,Parkhotel Egerner Höfe,2026 KEY VERIFIED,MICHELIN id 9909; stored point 22 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_91,Patrick Hellmann Schlosshotel,2026 KEY VERIFIED,MICHELIN id 4892; stored point 3 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_109,Rosewood Munich,2026 KEY VERIFIED,MICHELIN id 13281; stored point 10 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_116,Seesteg Norderney,2026 KEY VERIFIED,MICHELIN id 13450; stored point 69 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_2791,Severin's Resort & Spa,NEW KEY HOTEL,"MICHELIN id 10244, 2 Key(s), town Sylt; MICHELIN 2025 article 2"
+DE,hotel_100,Sofitel Frankfurt Opera,2026 KEY VERIFIED,MICHELIN id 10487; stored point 18 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_118,Söl’ring Hof,2026 KEY VERIFIED,MICHELIN id 13906; stored point 10 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_110,Sonnenalp Resort,2026 KEY VERIFIED,MICHELIN id 13908; stored point 0 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_94,Spa & Golf Hotel Weimarer Land,STORED HOTEL COORDINATES OFF (QA-388),"matched by MICHELIN id 10109; stored point 913 m from MICHELIN's -- reported, not changed"
+DE,hotel_94,Spa & Golf Hotel Weimarer Land,2026 KEY VERIFIED,MICHELIN id 10109; stored point 913 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_202,Steigenberger Icon Europäischer Hof Baden Baden,KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 15113; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'Baden-Baden: Maison Messmer Baden-Baden: Steigenberger Icon Europäischer Hof' under 'THE ONE-KEY HOTELS'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+DE,hotel_92,Telegraphenamt,2026 KEY VERIFIED,MICHELIN id 13032; stored point 0 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_108,Rocco Forte Charles Hotel,2026 KEY VERIFIED,MICHELIN id 6327; stored point 9 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_93,"The Ritz-Carlton, Berlin",2026 KEY VERIFIED,MICHELIN id 9027; stored point 33 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_88,Villa Contessa,2026 KEY VERIFIED,MICHELIN id 13900; stored point 4 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_2792,Waldorf Astoria Berlin,NEW KEY HOTEL,"MICHELIN id 17522, 2 Key(s), town Berlin; MICHELIN 2025 article None"
+DE,hotel_2793,Weissenhaus Private Nature Luxury Resort,NEW KEY HOTEL,"MICHELIN id 10339, 2 Key(s), town Wangels; MICHELIN 2025 article 2"
+DE,hotel_112,Wellness & Sport Hotel Jagdhof,2026 KEY VERIFIED,MICHELIN id 13953; stored point 9 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+DE,hotel_205,1884 Norderney,2026 KEY VERIFIED,MICHELIN id 13426; stored point 21 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_184,Alpenloge Hotel,2026 KEY VERIFIED,MICHELIN id 14604; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_175,Althoff Grandhotel Schloss Bensberg,2026 KEY VERIFIED,MICHELIN id 6333; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_244,Andaz Munich Schwabinger Tor,2026 KEY VERIFIED,MICHELIN id 11143; stored point 235 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_161,Bayerischer Hof Munich,2026 KEY VERIFIED,MICHELIN id 7400; stored point 40 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_245,BEYOND by Geisel,2026 KEY VERIFIED,MICHELIN id 10259; stored point 26 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_219,Boutique-Hotel Friesinger,2026 KEY VERIFIED,MICHELIN id 10612; stored point 22 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_229,Boutiquehotel Blaue Burg Falkenstein,2026 KEY VERIFIED,MICHELIN id 9542; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_170,Burg Schwarzenstein,2026 KEY VERIFIED,MICHELIN id 9762; stored point 158 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_165,Château Royal Berlin,2026 KEY VERIFIED,MICHELIN id 13125; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_158,Cortiina Hotel,2026 KEY VERIFIED,MICHELIN id 6328; stored point 19 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_228,Das Graseck Mountain Hideaway & Healthcare,2026 KEY VERIFIED,MICHELIN id 12287; stored point 33 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_214,Das James,2026 KEY VERIFIED,MICHELIN id 12429; stored point 361 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_2794,Das König Ludwig Inspiration SPA,NEW KEY HOTEL,"MICHELIN id 16927, 1 Key(s), town Schwangau; MICHELIN 2025 article None"
+DE,hotel_233,Das Rübezahl,2026 KEY VERIFIED,MICHELIN id 9777; stored point 11 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_166,Das Stue,2026 KEY VERIFIED,MICHELIN id 6744; stored point 12 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_2795,Diepeschrather Mühle,NEW KEY HOTEL,"MICHELIN id 14837, 1 Key(s), town Bergisch Gladbach; MICHELIN 2025 article None"
+DE,hotel_217,Do & Co Hotel Munich,2026 KEY VERIFIED,MICHELIN id 13907; stored point 14 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_114,Esplanade Saarbrücken,KEY CHANGE 2 -> 1 (QA-383),"MICHELIN id 11693; production 2 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'Rottach-Egern: Parkhotel Egerner Höfe Saarbrücken: Esplanade Saarbrücken' under 'THE TWO-KEY HOTELS'); launch row 2026 relabelled 2025, non-current; 2026 = 1 written"
+DE,hotel_162,Excelsior Hotel Ernst,2026 KEY VERIFIED,MICHELIN id 6247; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_172,Gasthof Zufriedenheit,2026 KEY VERIFIED,MICHELIN id 8617; stored point 10 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_176,Grand Hotel Heiligendamm,2026 KEY VERIFIED,MICHELIN id 7440; stored point 20 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_243,Heidelberg Suites,2026 KEY VERIFIED,MICHELIN id 6334; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_206,Hof Galerie,2026 KEY VERIFIED,MICHELIN id 9696; stored point 23 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_249,Hotel / Weingut Meintzinger,2026 KEY VERIFIED,MICHELIN id 12725; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_160,Hotel Adlon Kempinski,2026 KEY VERIFIED,MICHELIN id 6421; stored point 85 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_240,Hotel Alpenkönig,2026 KEY VERIFIED,MICHELIN id 10428; stored point 10 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_199,Hotel BEI SCHUMANN,2026 KEY VERIFIED,MICHELIN id 13912; stored point 113 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_224,Hotel Breitenburg,2026 KEY VERIFIED,MICHELIN id 12398; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_207,Hotel Deimann,2026 KEY VERIFIED,MICHELIN id 13911; stored point 32 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_238,Hotel Die Sonne Frankenberg,2026 KEY VERIFIED,MICHELIN id 10275; stored point 3 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_251,Hotel Dollenberg,2026 KEY VERIFIED,MICHELIN id 9697; stored point 32 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_236,Hotel Engel Obertal - Wellness & Genuss Resort,2026 KEY VERIFIED,MICHELIN id 13901; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_254,Hotel Europäischer Hof Heidelberg,2026 KEY VERIFIED,MICHELIN id 9816; stored point 15 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_223,Hotel Exquisit,2026 KEY VERIFIED,MICHELIN id 9633; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_2796,Hotel Franks,NEW KEY HOTEL,"MICHELIN id 15013, 1 Key(s), town Oberstdorf; MICHELIN 2025 article None"
+DE,hotel_2797,Hotel Gut Immenhof,NEW KEY HOTEL,"MICHELIN id 13572, 1 Key(s), town Malente; MICHELIN 2025 article 1"
+DE,hotel_257,Hotel Heinzler am See,2026 KEY VERIFIED,MICHELIN id 10127; stored point 25 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_95,Hotel Ketschauer Hof,KEY CHANGE 2 -> 1 (QA-383),"MICHELIN id 9918; production 2 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'Cologne: Excelsior Hotel Ernst Deidesheim: Hotel Ketschauer Hof' under 'THE TWO-KEY HOTELS'); launch row 2026 relabelled 2025, non-current; 2026 = 1 written"
+DE,hotel_239,Hotel Kronelamm im Schwarzwald,2026 KEY VERIFIED,MICHELIN id 10653; stored point 9 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_174,Hotel Landhaus Wachtelhof,2026 KEY VERIFIED,MICHELIN id 13910; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_209,Hotel Maximilian's,2026 KEY VERIFIED,MICHELIN id 13894; stored point 8 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_180,Hotel München Palace,2026 KEY VERIFIED,MICHELIN id 6336; stored point 148 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_167,Hotel Orania.Berlin,2026 KEY VERIFIED,MICHELIN id 8798; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_197,Hotel Oswald Gourmet & Spa,2026 KEY VERIFIED,MICHELIN id 14510; stored point 25 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_255,Hotel Rebstock Durbach,2026 KEY VERIFIED,MICHELIN id 9681; stored point 18 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_241,Hotel Restaurant Spa Torkel,2026 KEY VERIFIED,MICHELIN id 9885; stored point 7 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_208,Hotel Romantischer Winkel - RoLigio® & Wellness Resort,2026 KEY VERIFIED,MICHELIN id 13898; stored point 27 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_159,Hotel Vier Jahreszeiten Kempinski,2026 KEY VERIFIED,MICHELIN id 7403; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_253,Hotel Villa Sorgenfrei & Restaurant Atelier Sanssouci,2026 KEY VERIFIED,MICHELIN id 9948; stored point 88 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_2798,Hotel VILLINO,NEW KEY HOTEL,"MICHELIN id 10250, 1 Key(s), town Lindau; MICHELIN 2025 article None"
+DE,hotel_181,HOTEL ZOO BERLIN,2026 KEY VERIFIED,MICHELIN id 7579; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_203,HUBERTUS Mountain Refugio Allgäu,2026 KEY VERIFIED,MICHELIN id 11339; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_226,JW Marriott Hotel Frankfurt,2026 KEY VERIFIED,MICHELIN id 6742; stored point 12 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_237,"Koenigshof, a Luxury Collection Hotel, Munich",2026 KEY VERIFIED,MICHELIN id 14009; stored point 3 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_231,Kulturhof Stanggass,2026 KEY VERIFIED,MICHELIN id 13014; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_177,Landhaus Flottbek Boutique Hotel,2026 KEY VERIFIED,MICHELIN id 9934; stored point 17 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_235,Landhaus Severin*s Morsum Kliff,2026 KEY VERIFIED,MICHELIN id 9624; stored point 15 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_227,"Lieser Castle, Autograph Collection",2026 KEY VERIFIED,MICHELIN id 13905; stored point 5 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_2799,Lifestyle Resort Zum Kurfürsten,NEW KEY HOTEL,"MICHELIN id 16894, 1 Key(s), town Bernkastel-Kues; MICHELIN 2025 article None"
+DE,hotel_216,Maison Messmer,2026 KEY VERIFIED,MICHELIN id 13899; stored point 11 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_218,Mauritzhof Hotel Münster,2026 KEY VERIFIED,MICHELIN id 11040; stored point 7 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_225,Maximilian,2026 KEY VERIFIED,MICHELIN id 10149; stored point 20 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_212,niXe Boutiquehotel & Spa,2026 KEY VERIFIED,MICHELIN id 9689; stored point 41 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_210,Parkhotel Adler,2026 KEY VERIFIED,MICHELIN id 13485; stored point 54 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_185,Hardenberg Burghotel,2026 KEY VERIFIED,MICHELIN id 14231; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_179,RIVA - Das Hotel am Bodensee,2026 KEY VERIFIED,MICHELIN id 10089; stored point 69 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_222,ROEWERS Privathotel,2026 KEY VERIFIED,MICHELIN id 9778; stored point 16 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_2800,Romantik Hotel Residenz am See,NEW KEY HOTEL,"MICHELIN id 13546, 1 Key(s), town Meersburg; MICHELIN 2025 article None"
+DE,hotel_242,"Roomers Berlin Steinplatz, Autograph Collection",2026 KEY VERIFIED,MICHELIN id 7589; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_204,Schlosshotel Burg Schlitz,2026 KEY VERIFIED,MICHELIN id 13902; stored point 16 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_183,Schlosshotel Münchhausen,2026 KEY VERIFIED,MICHELIN id 14589; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_102,Seezeitlodge Hotel & Spa,KEY CHANGE 2 -> 1 (QA-383),"MICHELIN id 10204; production 2 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'sburg: Vitalhotel Alter Meierhof Gonnesweiler: Seezeitlodge Hotel & Spa' under 'THE TWO-KEY HOTELS'); launch row 2026 relabelled 2025, non-current; 2026 = 1 written"
+DE,hotel_220,Steigenberger Icon Parkhotel Düsseldorf,2026 KEY VERIFIED,MICHELIN id 10311; stored point 8 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_215,Strandhaus Spreewald,2026 KEY VERIFIED,MICHELIN id 11318; stored point 32 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_2801,Strandhotel Dünenmeer - Adults only,NEW KEY HOTEL,"MICHELIN id 16229, 1 Key(s), town Dierhagen; MICHELIN 2025 article None"
+DE,hotel_2802,The Florentin by Althoff Collection,NEW KEY HOTEL,"MICHELIN id 15840, 1 Key(s), town Frankfurt am Main; MICHELIN 2025 article None"
+DE,hotel_163,The Mandala Hotel,2026 KEY VERIFIED,MICHELIN id 5051; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_256,The Ritz-Carlton Wolfsburg,2026 KEY VERIFIED,MICHELIN id 8297; stored point 11 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_213,The Wellem,2026 KEY VERIFIED,MICHELIN id 13904; stored point 51 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_247,Tortue Hamburg,2026 KEY VERIFIED,MICHELIN id 10548; stored point 21 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_173,Villa Sonnenhof Boutique Hotel,2026 KEY VERIFIED,MICHELIN id 12516; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_2803,Wald & Schlosshotel Friedrichsruhe,NEW KEY HOTEL,"MICHELIN id 10380, 1 Key(s), town Zweiflingen; MICHELIN 2025 article None"
+DE,hotel_2804,Wellness & Naturresort Reischlhof,NEW KEY HOTEL,"MICHELIN id 16818, 1 Key(s), town Wegscheid; MICHELIN 2025 article None"
+DE,hotel_246,Werdenfelserei,2026 KEY VERIFIED,MICHELIN id 10421; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_250,Widmann's Löwen,2026 KEY VERIFIED,MICHELIN id 10072; stored point 42 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_164,Wilmina Hotel,2026 KEY VERIFIED,MICHELIN id 12967; stored point 12 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+DE,hotel_168,Schloss Eberstein,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 9637; https://guide.michelin.com/en/hotels-stays/gernsbach/schloss-eberstein-9637: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: ': Burg & Gästehaus by Schwarzenstein Gernsbach: Schloss Eberstein' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_169,AMERON Neuschwanstein Alpsee Resort & Spa,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 10723; https://guide.michelin.com/en/hotels-stays/schwangau/ameron-neuschwanstein-alpsee-resort-spa-10723: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'tel Schmallenberg: Hotel Deimann Schwangau: AMERON Neuschwanstein Alpsee Resort & Spa' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_171,Kloster Hornbach,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 7242; https://guide.michelin.com/en/hotels-stays/hornbach/kloster-hornbach-7242: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'Hohen Demzin: Schlosshotel Burg Schlitz Hornbach: Kloster Hornbach' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_178,Villa Mittermeier,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 9736; https://guide.michelin.com/en/hotels-stays/rothenburg-ob-der-tauber/villa-mittermeier-9736: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'Hotel Landhaus Wachtelhof Rothenburg ob der Tauber: Villa Mittermeier' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_198,Hanusel Hof,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 10088; https://guide.michelin.com/en/hotels-stays/hellengerst/hanusel-hof-10088: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'Heiligendamm: Grand Hotel Heiligendamm Hellengerst: Hanusel Hof' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_211,Strandhotel Fischland,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 12418; https://guide.michelin.com/en/hotels-stays/Dierhagen/strandhotel-fischland-12418: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'ss Breitenburg: Hotel Breitenburg Dierhagen: Strandhotel Fischland' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_221,DAS.HOCHGRAT,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 9859; https://guide.michelin.com/en/hotels-stays/oberstaufen/dashochgrat-9859: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'Oberammergau: Maximilian Oberstaufen: DAS.HOCHGRAT' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_230,Staudacherhof,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 8778; https://guide.michelin.com/en/hotels-stays/garmisch-partenkirchen/staudacherhof-8778: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'aseck Mountain Hideaway & Healthcare Garmisch-Partenkirchen: Staudacherhof' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_232,Haubers Naturresort,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 9987; https://guide.michelin.com/en/hotels-stays/oberstaufen/haubers-naturresort-9987: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'lian Oberstaufen: DAS.HOCHGRAT Oberstaufen: Haubers Naturresort' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_234,Gewandhaus Dresden,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 10221; https://guide.michelin.com/en/hotels-stays/dresden/gewandhaus-dresden-10221: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'g Dierhagen: Strandhotel Fischland Dresden: Gewandhaus Dresden' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_248,Spa & Resort Bachmair Weissach,KEY LOST 1 -> NULL (QA-387),"MICHELIN id 8250; https://guide.michelin.com/en/hotels-stays/rottach-egern/hotel-bachmair-weissach-8250: page 200, no award on the page; production 1 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'urg ob der Tauber: Villa Mittermeier Rottach-Egern: Spa & Resort Bachmair Weissach' under 'THE ONE-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+DE,hotel_90,Hotel de Rome,KEY LOST 2 -> NULL (QA-387),"MICHELIN id 6335; https://guide.michelin.com/en/hotels-stays/berlin/hotel-de-rome-6335: page 200, no award on the page; production 2 is MICHELIN's 2025 Key (michelin_article_us_en_article_travel_all_the_key_hotels_germany_michelin_guide.json: 'esgaden Berlin: Hotel am Steinplatz Berlin: Hotel de Rome' under 'THE TWO-KEY HOTELS'); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"
+BE,hotel_18,Botanic Sanctuary Antwerp,2026 KEY VERIFIED,MICHELIN id 12582; stored point 53 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+BE,hotel_2805,Cobergher Hotel,NEW KEY HOTEL,"MICHELIN id 15640, 2 Key(s), town Kortrijk; MICHELIN 2025 article None"
+BE,hotel_153,Corinthia Grand Hotel Astoria Brussels,KEY CHANGE 1 -> 2 (QA-383),"MICHELIN id 14567; production 1 is MICHELIN's 2025 Key (michelin_article_wayback_20251013_be_nl_article_travel_alle_michelin_sleutels_in_de_benelux.json: 'The Notary Brussel: Corinthia Grand Hotel Astoria Brussels' under 'België:'); launch row 2026 relabelled 2025, non-current; 2026 = 2 written"
+BE,hotel_19,Juliana Hotel Brussels,2026 KEY VERIFIED,MICHELIN id 13998; stored point 1 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+BE,hotel_154,1898 The Post,2026 KEY VERIFIED,MICHELIN id 8744; stored point 22 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_149,Boutiquehotel 't Fraeyhuis,2026 KEY VERIFIED,MICHELIN id 14721; stored point 6 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_152,Château de Vignée,2026 KEY VERIFIED,MICHELIN id 12584; stored point 307 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_150,Dukes' Palace Brugge,2026 KEY VERIFIED,MICHELIN id 14722; stored point 9 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_2806,Faubourg 21,NEW KEY HOTEL,"MICHELIN id 17526, 1 Key(s), town Brussels; MICHELIN 2025 article None"
+BE,hotel_20,Hôtel Amigo,2026 KEY VERIFIED,MICHELIN id 5901; stored point 30 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_155,Hotel De Witte Lelie,2026 KEY VERIFIED,MICHELIN id 6284; stored point 22 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_157,Hotel Flora,2026 KEY VERIFIED,MICHELIN id 13288; stored point 2 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_21,Hotel Van Cleef,2026 KEY VERIFIED,MICHELIN id 10436; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_148,Kasteel van Ordingen,2026 KEY VERIFIED,MICHELIN id 15346; stored point 178 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_151,La Butte aux Bois,2026 KEY VERIFIED,MICHELIN id 9801; stored point 55 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_2807,La Réserve Knokke-Heist,NEW KEY HOTEL,"MICHELIN id 10240, 1 Key(s), town Knokke-Heist; MICHELIN 2025 article None"
+BE,hotel_147,Pillows Grand Boutique Hotel Reylof Ghent,2026 KEY VERIFIED,MICHELIN id 8011; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+BE,hotel_156,The Notary,2026 KEY VERIFIED,MICHELIN id 13020; stored point 17 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_17,De L'Europe,2026 KEY VERIFIED,MICHELIN id 5293; stored point 12 m from MICHELIN's; production 3 = MICHELIN 2026 3; launch row left as is
+NL,hotel_13,Château Neercanne,2026 KEY VERIFIED,MICHELIN id 15342; stored point 59 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+NL,hotel_14,TwentySeven,2026 KEY VERIFIED,MICHELIN id 9299; stored point 40 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+NL,hotel_12,Pillows Grand Boutique Hotel Maurits at the Park,2026 KEY VERIFIED,MICHELIN id 14777; stored point 31 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+NL,hotel_15,Rosewood Amsterdam,2026 KEY VERIFIED,MICHELIN id 14998; stored point 38 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+NL,hotel_16,Tivoli Doelen,2026 KEY VERIFIED,MICHELIN id 8433; stored point 16 m from MICHELIN's; production 2 = MICHELIN 2026 2; launch row left as is
+NL,hotel_02,Central Park,2026 KEY VERIFIED,MICHELIN id 13789; stored point 13 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_07,Château St. Gerlach,2026 KEY VERIFIED,MICHELIN id 11399; stored point 4 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_2808,De Durgerdam,NEW KEY HOTEL,"MICHELIN id 13133, 1 Key(s), town Amsterdam; MICHELIN 2025 article None"
+NL,hotel_10,De Plesman Hotel,2026 KEY VERIFIED,MICHELIN id 15198; stored point 36 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_11,Landgoed Hotel Het Roode Koper,2026 KEY VERIFIED,MICHELIN id 10015; stored point 446 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_08,Mooirivier,2026 KEY VERIFIED,MICHELIN id 9610; stored point 39 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_06,Pillows Grand Boutique Hotel Ter Borch,2026 KEY VERIFIED,MICHELIN id 8757; stored point 1 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_01,Pulitzer Amsterdam,2026 KEY VERIFIED,MICHELIN id 8062; stored point 77 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_04,Soho House,2026 KEY VERIFIED,MICHELIN id 13086; stored point 333 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_09,The Craftsmen,2026 KEY VERIFIED,MICHELIN id 14718; stored point 0 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_03,The Dylan,2026 KEY VERIFIED,MICHELIN id 17; stored point 24 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+NL,hotel_05,Van Oys Maastricht Retreat,2026 KEY VERIFIED,MICHELIN id 15061; stored point 133 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is
+LU,hotel_2809,Villa Pétrusse,NEW KEY HOTEL,"MICHELIN id 15165, 2 Key(s), town Luxembourg City; MICHELIN 2025 article None"
+LU,hotel_22,Le Place d'Armes,2026 KEY VERIFIED,MICHELIN id 11340; stored point 12 m from MICHELIN's; production 1 = MICHELIN 2026 1; launch row left as is

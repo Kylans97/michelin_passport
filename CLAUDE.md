@@ -61,7 +61,12 @@ stop and say so rather than working around it.
 1. `hotels` holds **only** MICHELIN Key hotels and hotels ranked on The
    World's 50 Best Hotels (1–100), Key or not — the latter widened by
    decision on 2026-10-28, `michelin_keys` NULL when no Key is confirmed.
-   No stub rows for any other property, ever.
+   A hotel that **held** a Key and loses it stays, exactly like a
+   restaurant that loses its stars: `michelin_keys` NULL, a current
+   `award_history` row with NULL for the new edition, the earlier Key kept
+   as history. Guides show only the current list; search, visits and the
+   Passport keep the hotel. *Revised 2026-10-31, decided by the product
+   owner (QA-387).* No stub rows for any other property, ever.
 2. `hotel_restaurants` holds only verified links to hotels already in
    `hotels`.
 3. A restaurant in a hotel that is **not in `hotels`** stores the property

@@ -1,0 +1,897 @@
+{
+ "meta": {
+  "url": "https://guide.michelin.com/us/en/article/travel/all-the-key-hotels-germany-michelin-guide",
+  "final_url": "https://guide.michelin.com/us/en/article/travel/all-the-key-hotels-germany-michelin-guide",
+  "status": 200,
+  "title": "All the Key Hotels in Germany: The Full 2025 Selection",
+  "date_published": "2025-10-08T09:00",
+  "date_modified": "2026-01-05T10:10",
+  "read": "2026-10-31 (curl)"
+ },
+ "edition": 2025,
+ "links": [
+  {
+   "heading": "Germany's Three-Key Hotels",
+   "prefix": "re located in Baiersbronn in the heart of the Black Forest (",
+   "href": "https://guide.michelin.com/h/13547",
+   "text": "Hotel Bareiss"
+  },
+  {
+   "heading": "Germany's Three-Key Hotels",
+   "prefix": "ronn in the heart of the Black Forest ( Hotel Bareiss ,",
+   "href": "https://guide.michelin.com/h/8972",
+   "text": "Hotel Traube Tonbach"
+  },
+  {
+   "heading": "Germany's Three-Key Hotels",
+   "prefix": "tel Bareiss , Hotel Traube Tonbach ), two in Hamburg (",
+   "href": "https://guide.michelin.com/h/12464",
+   "text": "Hotel Vier Jahreszeiten"
+  },
+  {
+   "heading": "Germany's Three-Key Hotels",
+   "prefix": "Tonbach ), two in Hamburg ( Hotel Vier Jahreszeiten ,",
+   "href": "https://guide.michelin.com/h/11121",
+   "text": "the Fontenay"
+  },
+  {
+   "heading": "Germany's Three-Key Hotels",
+   "prefix": "r Jahreszeiten , the Fontenay ), and two in Bavaria (",
+   "href": "https://guide.michelin.com/h/7287",
+   "text": "Schloss Elmau"
+  },
+  {
+   "heading": "Germany's Three-Key Hotels",
+   "prefix": "\">the Fontenay ), and two in Bavaria ( Schloss Elmau ,",
+   "href": "https://guide.michelin.com/h/6183",
+   "text": "Seehotel Überfahrt"
+  },
+  {
+   "heading": "The Transformation of Berlin",
+   "prefix": " from historic buildings that were originally post offices (",
+   "href": "https://guide.michelin.com/h/13032",
+   "text": "Hotel Telegraphenamt"
+  },
+  {
+   "heading": "The Transformation of Berlin",
+   "prefix": "ly post offices ( Hotel Telegraphenamt ), private homes (",
+   "href": "https://guide.michelin.com/h/4892",
+   "text": "Patrick Hellmann Schlosshotel"
+  },
+  {
+   "heading": "The Transformation of Berlin",
+   "prefix": "homes ( Patrick Hellmann Schlosshotel ) or even prisons (",
+   "href": "https://guide.michelin.com/h/12967",
+   "text": "Wilmina Hotel"
+  },
+  {
+   "heading": "The Transformation of Berlin",
+   "prefix": "w additions among the Key hotels in Berlin are the legendary",
+   "href": "https://guide.michelin.com/h/6421",
+   "text": "Hotel Adlon Kempinski"
+  },
+  {
+   "heading": "The Transformation of Berlin",
+   "prefix": "s in Berlin are the legendary Hotel Adlon Kempinski and",
+   "href": "https://guide.michelin.com/h/7579",
+   "text": "Hotel Zoo Berlin"
+  },
+  {
+   "heading": "The Importance of Location",
+   "prefix": "d service with an unrivaled address. See brand-new Keys like",
+   "href": "https://guide.michelin.com/h/124408-14589",
+   "text": "Schlosshotel Münchhausen"
+  },
+  {
+   "heading": "The Importance of Location",
+   "prefix": "w Keys like Schlosshotel Münchhausen ,",
+   "href": "https://guide.michelin.com/h/9697",
+   "text": "Hotel Dollenberg"
+  },
+  {
+   "heading": "The Importance of Location",
+   "prefix": "chlosshotel Münchhausen , Hotel Dollenberg , and",
+   "href": "https://guide.michelin.com/h/13572",
+   "text": "Hotel Gut Immenhof"
+  },
+  {
+   "heading": "THE THREE-KEY HOTELS",
+   "prefix": "Baiersbronn:",
+   "href": "https://guide.michelin.com/h/13547",
+   "text": "Hotel Bareiss"
+  },
+  {
+   "heading": "THE THREE-KEY HOTELS",
+   "prefix": "Baiersbronn: Hotel Bareiss Baiersbronn:",
+   "href": "https://guide.michelin.com/h/8972",
+   "text": "Hotel Traube Tonbach"
+  },
+  {
+   "heading": "THE THREE-KEY HOTELS",
+   "prefix": "ss Baiersbronn: Hotel Traube Tonbach Elmau:",
+   "href": "https://guide.michelin.com/h/7287",
+   "text": "Schloss Elmau Luxury Spa Retreat & Cultural Hideaway"
+  },
+  {
+   "heading": "THE THREE-KEY HOTELS",
+   "prefix": "chloss Elmau Luxury Spa Retreat & Cultural Hideaway Hamburg:",
+   "href": "https://guide.michelin.com/h/12464",
+   "text": "Hotel Vier Jahreszeiten"
+  },
+  {
+   "heading": "THE THREE-KEY HOTELS",
+   "prefix": "Hamburg: Hotel Vier Jahreszeiten Hamburg:",
+   "href": "https://guide.michelin.com/h/11121",
+   "text": "The Fontenay"
+  },
+  {
+   "heading": "THE THREE-KEY HOTELS",
+   "prefix": "eiten Hamburg: The Fontenay Rottach-Egern:",
+   "href": "https://guide.michelin.com/h/6183",
+   "text": "Althoff Seehotel Überfahrt"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Bad Saarow:",
+   "href": "https://guide.michelin.com/h/13900",
+   "text": "Villa Contessa"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Bad Saarow: Villa Contessa Baiersbronn:",
+   "href": "https://guide.michelin.com/h/13901",
+   "text": "Hotel Engel Obertal - Wellness & Genuss Resort"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "otel Engel Obertal - Wellness & Genuss Resort Berchtesgaden:",
+   "href": "https://guide.michelin.com/h/9705",
+   "text": "Kempinski Hotel Berchtesgaden"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "erchtesgaden: Kempinski Hotel Berchtesgaden Berlin:",
+   "href": "https://guide.michelin.com/h/7589",
+   "text": "Hotel am Steinplatz"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "esgaden Berlin: Hotel am Steinplatz Berlin:",
+   "href": "https://guide.michelin.com/h/6335",
+   "text": "Hotel de Rome"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "am Steinplatz Berlin: Hotel de Rome Berlin:",
+   "href": "https://guide.michelin.com/h/4892",
+   "text": "Patrick Hellmann Schlosshotel"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "> Berlin: Patrick Hellmann Schlosshotel Berlin:",
+   "href": "https://guide.michelin.com/h/13032",
+   "text": "Telegraphenamt"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "chlosshotel Berlin: Telegraphenamt Berlin:",
+   "href": "https://guide.michelin.com/h/9027",
+   "text": "The Ritz-Carlton, Berlin"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "> Berlin: The Ritz-Carlton, Berlin Blankenhain:",
+   "href": "https://guide.michelin.com/h/10109",
+   "text": "Spa & Golf Hotel Weimarer Land"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "nhain: Spa & Golf Hotel Weimarer Land Cologne:",
+   "href": "https://guide.michelin.com/h/6247",
+   "text": "Excelsior Hotel Ernst"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Cologne: Excelsior Hotel Ernst Deidesheim:",
+   "href": "https://guide.michelin.com/h/9918",
+   "text": "Hotel Ketschauer Hof"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "br>Deidesheim: Hotel Ketschauer Hof Donaueschingen:",
+   "href": "https://guide.michelin.com/h/9835",
+   "text": "Der Öschberghof"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "of Donaueschingen: Der Öschberghof Dresden:",
+   "href": "https://guide.michelin.com/h/10183",
+   "text": "Bülow Palais"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Öschberghof Dresden: Bülow Palais Dresden:",
+   "href": "https://guide.michelin.com/h/7389",
+   "text": "Kempinski Hotel Taschenbergpalais"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "sden: Kempinski Hotel Taschenbergpalais Dusseldorf:",
+   "href": "https://guide.michelin.com/h/11443",
+   "text": "Breidenbacher Hof Düsseldorf"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "usseldorf: Breidenbacher Hof Düsseldorf Frankfurt:",
+   "href": "https://guide.michelin.com/h/10487",
+   "text": "Sofitel Frankfurt Opera"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Frankfurt: Sofitel Frankfurt Opera Glücksburg:",
+   "href": "https://guide.michelin.com/h/9510",
+   "text": "Vitalhotel Alter Meierhof"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "sburg: Vitalhotel Alter Meierhof Gonnesweiler:",
+   "href": "https://guide.michelin.com/h/10204",
+   "text": "Seezeitlodge Hotel & Spa"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "onnesweiler: Seezeitlodge Hotel & Spa Grassau:",
+   "href": "https://guide.michelin.com/h/13234",
+   "text": "Das Achental Resort"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Spa Grassau: Das Achental Resort Hamburg:",
+   "href": "https://guide.michelin.com/h/5860",
+   "text": "Hotel Louis C. Jacob"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "esort Hamburg: Hotel Louis C. Jacob Horben:",
+   "href": "https://guide.michelin.com/h/13954",
+   "text": "Luisenhöhe - Gesundheitsresort Schwarzwald"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Luisenhöhe - Gesundheitsresort Schwarzwald Hörnum:",
+   "href": "https://guide.michelin.com/h/9695",
+   "text": "BUDERSAND Hotel - Golf & Spa"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Hörnum: BUDERSAND Hotel - Golf & Spa Kranzbach:",
+   "href": "https://guide.michelin.com/h/6329",
+   "text": "Das Kranzbach Hotel & Wellness Retreat"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Das Kranzbach Hotel & Wellness Retreat Munich:",
+   "href": "https://guide.michelin.com/h/6339",
+   "text": "Mandarin Oriental Munich"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "at Munich: Mandarin Oriental Munich Munich:",
+   "href": "https://guide.michelin.com/h/6327",
+   "text": "Rocco Forte Charles Hotel"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "h Munich: Rocco Forte Charles Hotel Munich:",
+   "href": "https://guide.michelin.com/h/13281",
+   "text": "Rosewood Munich"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "s Hotel Munich: Rosewood Munich Norderney:",
+   "href": "https://guide.michelin.com/h/13450",
+   "text": "Seesteg Norderney"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "/a> Norderney: Seesteg Norderney Ofterschwang:",
+   "href": "https://guide.michelin.com/h/13908",
+   "text": "Sonnenalp Resort"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Ofterschwang: Sonnenalp Resort Reit im Winkl:",
+   "href": "https://guide.michelin.com/h/9534",
+   "text": "Hotel Gut Steinbach"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "> Reit im Winkl: Hotel Gut Steinbach Röhrnbach:",
+   "href": "https://guide.michelin.com/h/13953",
+   "text": "Wellness & Sport Hotel Jagdhof"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "Wellness & Sport Hotel Jagdhof Rottach-Egern:",
+   "href": "https://guide.michelin.com/h/9909",
+   "text": "Parkhotel Egerner Höfe"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": ">Rottach-Egern: Parkhotel Egerner Höfe Saarbrücken:",
+   "href": "https://guide.michelin.com/h/11693",
+   "text": "Esplanade Saarbrücken"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "> Saarbrücken: Esplanade Saarbrücken Saarlouis:",
+   "href": "https://guide.michelin.com/h/120708-9980",
+   "text": "LA MAISON"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "arbrücken Saarlouis: LA MAISON Sylt:",
+   "href": "https://guide.michelin.com/h/9908",
+   "text": "Landhaus Stricker"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "nk\">LA MAISON Sylt: Landhaus Stricker Sylt:",
+   "href": "https://guide.michelin.com/h/10244",
+   "text": "Severin's Resort & Spa"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "ker Sylt: Severin's Resort & Spa Sylt:",
+   "href": "https://guide.michelin.com/h/13906",
+   "text": "Söl’ring Hof"
+  },
+  {
+   "heading": "THE TWO-KEY HOTELS",
+   "prefix": "t & Spa Sylt: Söl’ring Hof Weißenhaus:",
+   "href": "https://guide.michelin.com/h/10339",
+   "text": "Weissenhaus Private Nature Luxury Resort"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Aerzen:",
+   "href": "https://guide.michelin.com/h/124408-14589",
+   "text": "Schlosshotel Münchhausen"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "sp; Schlosshotel Münchhausen Andernach:",
+   "href": "https://guide.michelin.com/h/10038",
+   "text": "Hotel PURS"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ausen Andernach: Hotel PURS Augsburg:",
+   "href": "https://guide.michelin.com/h/13894",
+   "text": "Hotel Maximilian's"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "sburg: Hotel Maximilian's Bad Peterstal-Griesbach:",
+   "href": "https://guide.michelin.com/h/9697",
+   "text": "Hotel Dollenberg"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "-Griesbach: Hotel Dollenberg Bad Reichenhall:",
+   "href": "https://guide.michelin.com/h/12516",
+   "text": "Villa Sonnenhof Boutique Hotel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "enhall: Villa Sonnenhof Boutique Hotel Bad Sachsa:",
+   "href": "https://guide.michelin.com/h/13898",
+   "text": "RoLigio® & Wellness Resort Romantischer Winkel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": " Wellness Resort Romantischer Winkel Bad Teinach-Zavelstein:",
+   "href": "https://guide.michelin.com/h/10653",
+   "text": "Hotel Kronelamm im Schwarzwald"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": ">Bad Teinach-Zavelstein: Hotel Kronelamm im Schwarzwald",
+   "href": "https://guide.michelin.com/en/hotels-stays/bad-teinach-zavelstein/kronelamm-10653?arr=2024-11-05&amp;dep=2024-11-06",
+   "text": ""
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "arr=2024-11-05&dep=2024-11-06\" target=\"_blank\"> Baden-Baden:",
+   "href": "https://guide.michelin.com/h/13899",
+   "text": "Maison Messmer"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "> Baden-Baden: Maison Messmer Baden-Baden:",
+   "href": "https://guide.michelin.com/h/15113",
+   "text": "Steigenberger Icon Europäischer Hof"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "=\"_blank\">Steigenberger Icon Europäischer Hof Balderschwang:",
+   "href": "https://guide.michelin.com/h/11339",
+   "text": "HUBERTUS Mountain Refugio Allgäu"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "schwang: HUBERTUS Mountain Refugio Allgäu Bensberg:",
+   "href": "https://guide.michelin.com/h/6333",
+   "text": "Althoff Grandhotel Schloss Bensberg"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "nsberg: Althoff Grandhotel Schloss Bensberg Berlin:",
+   "href": "https://guide.michelin.com/h/3011",
+   "text": "Casa Camper Berlin"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ensberg Berlin: Casa Camper Berlin Berlin:",
+   "href": "https://guide.michelin.com/h/6421",
+   "text": "Hotel Adlon Kempinski"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "/a> Berlin: Hotel Adlon Kempinski Berlin:",
+   "href": "https://guide.michelin.com/h/13125",
+   "text": "Château Royal Berlin"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Berlin: Château Royal Berlin Berlin:",
+   "href": "https://guide.michelin.com/h/8798",
+   "text": "Hotel Orania.Berlin"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": ";Berlin Berlin: Hotel Orania.Berlin Berlin:",
+   "href": "https://guide.michelin.com/h/7579",
+   "text": "Hotel Zoo Berlin"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "/h/7579\" target=\"_blank\">Hotel Zoo Berlin Berlin:",
+   "href": "https://guide.michelin.com/h/7589",
+   "text": "Roomers Berlin Steinplatz, Autograph Collection"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ank\">Roomers Berlin Steinplatz, Autograph Collection Berlin:",
+   "href": "https://guide.michelin.com/h/6744",
+   "text": "So/ Berlin Das Stue"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "llection Berlin: So/ Berlin Das Stue Berlin:",
+   "href": "https://guide.michelin.com/h/5051",
+   "text": "The Mandala Hotel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Das Stue Berlin: The Mandala Hotel Berlin:",
+   "href": "https://guide.michelin.com/h/12967",
+   "text": "Wilmina Hotel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Mandala Hotel Berlin: Wilmina Hotel Binz:",
+   "href": "https://guide.michelin.com/h/9689",
+   "text": "niXe Boutiquehotel & Spa"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": ">Binz: niXe Boutiquehotel & Spa Bischofswiesen:",
+   "href": "https://guide.michelin.com/h/13014",
+   "text": "Kulturhof Stanggass"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "br>Bischofswiesen: Kulturhof Stanggass Breitenburg:",
+   "href": "https://guide.michelin.com/h/12398",
+   "text": "Hotel Breitenburg"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ss Breitenburg: Hotel Breitenburg Dierhagen:",
+   "href": "https://guide.michelin.com/h/12418",
+   "text": "Strandhotel Fischland"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "g Dierhagen: Strandhotel Fischland Dresden:",
+   "href": "https://guide.michelin.com/h/10221",
+   "text": "Gewandhaus Dresden"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "hland Dresden: Gewandhaus Dresden Dresden:",
+   "href": "https://guide.michelin.com/h/9948",
+   "text": "Hotel Villa Sorgenfrei & Restaurant Atelier Sanssouci"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "tel Villa Sorgenfrei & Restaurant Atelier Sanssouci Durbach:",
+   "href": "https://guide.michelin.com/h/9681",
+   "text": "Hotel Rebstock Durbach"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "/a> Durbach: Hotel Rebstock Durbach Dusseldorf:",
+   "href": "https://guide.michelin.com/h/10311",
+   "text": "Steigenberger Parkhotel Düsseldorf"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "rf: Steigenberger Parkhotel Düsseldorf Dusseldorf:",
+   "href": "https://guide.michelin.com/h/13904",
+   "text": "The Wellem"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "sseldorf Dusseldorf: The Wellem Flensburg:",
+   "href": "https://guide.michelin.com/h/12429",
+   "text": "Das James"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "e Wellem Flensburg: Das James Frankenberg:",
+   "href": "https://guide.michelin.com/h/10275",
+   "text": "Hotel Die Sonne Frankenberg"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "rankenberg: Hotel Die Sonne Frankenberg Frankfurt:",
+   "href": "https://guide.michelin.com/h/6742",
+   "text": "JW Marriott Hotel Frankfurt"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "rankfurt: JW Marriott Hotel Frankfurt Frickenhausen:",
+   "href": "https://guide.michelin.com/h/12725",
+   "text": "Hotel / Weingut Meintzinger"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "\"_blank\">Hotel / Weingut Meintzinger Garmisch-Partenkirchen:",
+   "href": "https://guide.michelin.com/h/12287",
+   "text": "Das Graseck Mountain Hideaway & Healthcare"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "aseck Mountain Hideaway & Healthcare Garmisch-Partenkirchen:",
+   "href": "https://guide.michelin.com/h/8778",
+   "text": "Staudacherhof"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "artenkirchen: Staudacherhof Garmisch-Partenkirchen:",
+   "href": "https://guide.michelin.com/h/10421",
+   "text": "Werdenfelserei"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Garmisch-Partenkirchen: Werdenfelserei Geisenheim:",
+   "href": "https://guide.michelin.com/h/9762",
+   "text": "Burg & Gästehaus by Schwarzenstein"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": ": Burg & Gästehaus by Schwarzenstein Gernsbach:",
+   "href": "https://guide.michelin.com/h/9637",
+   "text": "Schloss Eberstein"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ein Gernsbach: Schloss Eberstein Grainet -",
+   "href": "https://guide.michelin.com/h/14423",
+   "text": "Hüttenhof - Wellness Hotel & Luxury Mountain Chalets - Adults only"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "lness Hotel & Luxury Mountain Chalets - Adults only Hamburg:",
+   "href": "https://guide.michelin.com/h/9934",
+   "text": "Landhaus Flottbek Boutique Hotel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": ">Hamburg: Landhaus Flottbek Boutique Hotel Hamburg:",
+   "href": "https://guide.michelin.com/h/10548",
+   "text": "Tortue Hamburg"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Hotel Hamburg: Tortue Hamburg Heidelberg:",
+   "href": "https://guide.michelin.com/h/6334",
+   "text": "Heidelberg Suites"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "g Heidelberg: Heidelberg Suites Heidelberg:",
+   "href": "https://guide.michelin.com/h/9816",
+   "text": "Hotel Europäischer Hof Heidelberg"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "rg: Hotel Europäischer Hof Heidelberg Heiligendamm:",
+   "href": "https://guide.michelin.com/h/7440",
+   "text": "Grand Hotel Heiligendamm"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Heiligendamm: Grand Hotel Heiligendamm Hellengerst:",
+   "href": "https://guide.michelin.com/h/10088",
+   "text": "Hanusel Hof"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "amm Hellengerst: Hanusel Hof Hinterzarten:",
+   "href": "https://guide.michelin.com/h/13485",
+   "text": "Parkhotel Adler"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "r>Hinterzarten: Parkhotel Adler Hofenstetten:",
+   "href": "https://guide.michelin.com/h/9764",
+   "text": "Der Birkenhof Spa & Genuss Resort"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Der Birkenhof Spa & Genuss Resort Hohen Demzin:",
+   "href": "https://guide.michelin.com/h/13902",
+   "text": "Schlosshotel Burg Schlitz"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": ">Hohen Demzin: Schlosshotel Burg Schlitz Hornbach:",
+   "href": "https://guide.michelin.com/h/7242",
+   "text": "Kloster Hornbach"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": ">Hornbach: Kloster Hornbach Immenstaad am Bodensee:",
+   "href": "https://guide.michelin.com/h/10127",
+   "text": "Hotel Heinzler am See"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "aad am Bodensee: Hotel Heinzler am See Kaikenried:",
+   "href": "https://guide.michelin.com/h/14510",
+   "text": "Wellnesshotel Oswald"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "br>Kaikenried: Wellnesshotel Oswald Kirschau:",
+   "href": "https://guide.michelin.com/h/13912",
+   "text": "Hotel BEI SCHUMANN"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "nbsp; Kirschau: Hotel BEI SCHUMANN Königsbronn:",
+   "href": "https://guide.michelin.com/h/10072",
+   "text": "Widmann's Löwen"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ANN Königsbronn: Widmann's Löwen Konstanz:",
+   "href": "https://guide.michelin.com/h/10089",
+   "text": "RIVA - Das Hotel am Bodensee"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "_blank\">RIVA - Das Hotel am Bodensee Kressbronn am Bodensee:",
+   "href": "https://guide.michelin.com/h/10612",
+   "text": "Boutique-Hotel Friesinger"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ronn am Bodensee: Boutique-Hotel Friesinger Lieser:",
+   "href": "https://guide.michelin.com/h/13905",
+   "text": "Lieser Castle, Autograph Collection"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ieser: Lieser Castle, Autograph Collection Lübben:",
+   "href": "https://guide.michelin.com/h/11318",
+   "text": "Strandhaus Spreewald"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "tion Lübben: Strandhaus Spreewald Malente:",
+   "href": "https://guide.michelin.com/h/13572",
+   "text": "Hotel Gut Immenhof"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "d Malente: Hotel Gut Immenhof Munich:",
+   "href": "https://guide.michelin.com/h/11143",
+   "text": "Andaz Munich Schwabinger Tor"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "p; Munich: Andaz Munich Schwabinger Tor Munich:",
+   "href": "https://guide.michelin.com/h/7400",
+   "text": "Bayerischer Hof Munich"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Tor Munich: Bayerischer Hof Munich Munich:",
+   "href": "https://guide.michelin.com/h/10259",
+   "text": "BEYOND by Geisel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "of Munich Munich: BEYOND by Geisel Munich:",
+   "href": "https://guide.michelin.com/h/6328",
+   "text": "Cortiina Hotel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ND by Geisel Munich: Cortiina Hotel Munich:",
+   "href": "https://guide.michelin.com/h/13907",
+   "text": "Do & Co Hotel Munich"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "l Munich: Do & Co Hotel Munich Munich:",
+   "href": "https://guide.michelin.com/h/6336",
+   "text": "Hotel München Palace"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Munich Munich: Hotel München Palace Munich:",
+   "href": "https://guide.michelin.com/h/7403",
+   "text": "Hotel Vier Jahreszeiten Kempinski"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "r>Munich: Hotel Vier Jahreszeiten Kempinski Munich:",
+   "href": "https://guide.michelin.com/h/14009",
+   "text": "Koenigshof, a Luxury Collection Hotel, Munich"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "lank\">Koenigshof, a Luxury Collection Hotel, Munich Münster:",
+   "href": "https://guide.michelin.com/h/11040",
+   "text": "Mauritzhof Hotel Münster"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "/a> Münster: Mauritzhof Hotel Münster Naumburg:",
+   "href": "https://guide.michelin.com/h/8617",
+   "text": "Gasthof Zufriedenheit"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "/a> Naumburg: Gasthof Zufriedenheit Nonnenhorn:",
+   "href": "https://guide.michelin.com/h/9885",
+   "text": "Hotel Restaurant Spa Torkel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": ">Nonnenhorn: Hotel Restaurant Spa Torkel Norderney:",
+   "href": "https://guide.michelin.com/h/13426",
+   "text": "1884 Norderney"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Norderney: 1884 Norderney Nörten-Hardenberg:",
+   "href": "https://guide.michelin.com/h/14231",
+   "text": "Relais & Châteaux Hardenberg Burghotel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "_blank\">Relais & Châteaux Hardenberg Burghotel Oberammergau:",
+   "href": "https://guide.michelin.com/h/10149",
+   "text": "Maximilian"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "/a> Oberammergau: Maximilian Oberstaufen:",
+   "href": "https://guide.michelin.com/h/9859",
+   "text": "DAS.HOCHGRAT"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "lian Oberstaufen: DAS.HOCHGRAT Oberstaufen:",
+   "href": "https://guide.michelin.com/h/9987",
+   "text": "Haubers Naturresort"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "> Oberstaufen: Haubers Naturresort Oberstaufen:",
+   "href": "https://guide.michelin.com/h/10428",
+   "text": "Hotel Alpenkönig"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Oberstaufen: Hotel Alpenkönig Oberstdorf:",
+   "href": "https://guide.michelin.com/h/9633",
+   "text": "Hotel Exquisit"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "a> Oberstdorf: Hotel Exquisit Ostseebad Sellin:",
+   "href": "https://guide.michelin.com/h/9778",
+   "text": "ROEWERS Privathotel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Ostseebad Sellin: ROEWERS Privathotel Pfronten:",
+   "href": "https://guide.michelin.com/h/9542",
+   "text": "Boutiquehotel Blaue Burg Falkenstein"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Boutiquehotel Blaue Burg Falkenstein Rotenburg an der Wümme:",
+   "href": "https://guide.michelin.com/h/13910",
+   "text": "Hotel Landhaus Wachtelhof"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "\"_blank\">Hotel Landhaus Wachtelhof Rothenburg ob der Tauber:",
+   "href": "https://guide.michelin.com/h/9736",
+   "text": "Villa Mittermeier"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "urg ob der Tauber: Villa Mittermeier Rottach-Egern:",
+   "href": "https://guide.michelin.com/h/8250",
+   "text": "Spa & Resort Bachmair Weissach"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "gern: Spa & Resort Bachmair Weissach Scheidegg:",
+   "href": "https://guide.michelin.com/h/14604",
+   "text": "Alpenloge Hotel"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "h Scheidegg: Alpenloge Hotel Schmallenberg:",
+   "href": "https://guide.michelin.com/h/13911",
+   "text": "Hotel Deimann"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "tel Schmallenberg: Hotel Deimann Schwangau:",
+   "href": "https://guide.michelin.com/h/10723",
+   "text": "AMERON Neuschwanstein Alpsee Resort & Spa"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "_blank\">AMERON Neuschwanstein Alpsee Resort & Spa Schwangau:",
+   "href": "https://guide.michelin.com/h/9777",
+   "text": "Das Rübezahl"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "ort & Spa Schwangau: Das Rübezahl Sylt:",
+   "href": "https://guide.michelin.com/h/9696",
+   "text": "Hof Galerie"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "blank\">Das Rübezahl Sylt: Hof Galerie Sylt:",
+   "href": "https://guide.michelin.com/h/9624",
+   "text": "Landhaus Severins Morsum Kliff"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "Sylt: Landhaus Severins Morsum Kliff Übersee:",
+   "href": "https://guide.michelin.com/h/15121",
+   "text": "Chiemgauhof Lakeside Retreat"
+  },
+  {
+   "heading": "THE ONE-KEY HOTELS",
+   "prefix": "r>Übersee: Chiemgauhof Lakeside Retreat Wolfsburg:",
+   "href": "https://guide.michelin.com/h/8297",
+   "text": "The Ritz-Carlton, Wolfsburg"
+  }
+ ],
+ "text": " All the Key Hotels in Germany: The Full 2025 Selection Restaurants Hotels Travel Guides Magazine My Lists Restaurants Hotels MICHELIN Guide Plus Travel Guides Best-of Guides Magazine MICHELIN Guide Ceremony Contact us Subscribe to newsletter Booking partnership with OpenTable Booking partnership with Resy USA - English - USD Travel 3 minutes 08 October 2025 All the Key Hotels in Germany: The Full 2025 Selection The MICHELIN Guide announces top honors for German hotels in 2025. Hotels Editor's Pick MICHELIN Keys Germany Berlin Share The MICHELIN Guide's list of the most outstanding hotels in the world has been updated for 2025, and Germany's refresh includes a baker's dozen of new Keys. Like MICHELIN Stars, these accommodations stand out for their excellence across five distinct categories , as confirmed by our hard-working Inspectors. Germany's top-rated accommodations show off a varied landscape of rolling forested hills and dramatic mountain ranges. Berlin's dynamic cityscape features cutting-edge design perched on Prussian-era boulevards, complemented by a carefully considered approach to architecture. Read on for hotel highlights or jump directly to the list here . Browse by highlight or distinction: The Icons The Transformation of Berlin The Importance of Location All the Three Keys All the Two Keys All the One Keys Hotel Bareiss is a family-run, five‑star‑superior resort in the Black Forest. © Hotel Bareiss Germany's Three-Key Hotels All six 3-Key properties in Germany have confirmed their award this year. Two of them are located in Baiersbronn in the heart of the Black Forest ( Hotel Bareiss , Hotel Traube Tonbach ), two in Hamburg ( Hotel Vier Jahreszeiten , the Fontenay ), and two in Bavaria ( Schloss Elmau , Seehotel Überfahrt ). See more: The ins and outs of all our Three Key hotels in Germany Once a women's prison, Wilmina is a tranquil enclave in Berlin's busy center. © Wilmina Hotel The Transformation of Berlin Berlin is a melting pot of history, culture and architecture. While many historic buildings were destroyed in World War II, many managed to survive. This is what makes the Key hotels in the German capital so special - they were converted from historic buildings that were originally post offices ( Hotel Telegraphenamt ), private homes ( Patrick Hellmann Schlosshotel ) or even prisons ( Wilmina Hotel ) from the 19th century. New additions among the Key hotels in Berlin are the legendary Hotel Adlon Kempinski and Hotel Zoo Berlin . See more: Inside Wilmina, Berlin's Former Prison Turned One Key Hotel Read also: Historic Gems: 7 Storied Key Hotels in Berlin Set amid the dramatic Alps, Kulturhof Stanggass is known for its cutting-edge construction. © Kulturhof Stanggass The Importance of Location Fjords, Lake Chiemsee, nature parks and castle ruins: at these coveted addresses, location plays a major role in the appeal. From sunset on the lakefront to sweeping alpine panoramas, the newest MICHELIN Key hotels in Germany combine exceptional architecture, luxury, and service with an unrivaled address. See brand-new Keys like Schlosshotel Münchhausen , Hotel Dollenberg , and Hotel Gut Immenhof for proof. Warm, personalized service and made-to-order breakfast define your stay at Villa Sonnenhof. © Villa Sonnenhof. Click below to jump to each distinction: Three Keys Two Keys One Key THE THREE-KEY HOTELS An extraordinary stay. Black Forest beauty Hotel Traube Tonbach boasts Three Keys and multiple Stars. © Hotel Traube Tonbach Baiersbronn: Hotel Bareiss Baiersbronn: Hotel Traube Tonbach Elmau: Schloss Elmau Luxury Spa Retreat & Cultural Hideaway Hamburg: Hotel Vier Jahreszeiten Hamburg: The Fontenay Rottach-Egern: Althoff Seehotel Überfahrt THE TWO-KEY HOTELS An exceptional stay. The former castle of Empress Victoria is now one of Germany's top hotels. © Schlosshotel Kronberg Bad Saarow: Villa Contessa Baiersbronn: Hotel Engel Obertal - Wellness & Genuss Resort Berchtesgaden: Kempinski Hotel Berchtesgaden Berlin: Hotel am Steinplatz Berlin: Hotel de Rome Berlin: Patrick Hellmann Schlosshotel Berlin: Telegraphenamt Berlin: The Ritz-Carlton, Berlin Blankenhain: Spa & Golf Hotel Weimarer Land Cologne: Excelsior Hotel Ernst Deidesheim: Hotel Ketschauer Hof Donaueschingen: Der Öschberghof Dresden: Bülow Palais Dresden: Kempinski Hotel Taschenbergpalais Dusseldorf: Breidenbacher Hof Düsseldorf Frankfurt: Sofitel Frankfurt Opera Glücksburg: Vitalhotel Alter Meierhof Gonnesweiler: Seezeitlodge Hotel & Spa Grassau: Das Achental Resort Hamburg: Hotel Louis C. Jacob Horben: Luisenhöhe - Gesundheitsresort Schwarzwald Hörnum: BUDERSAND Hotel - Golf & Spa Kranzbach: Das Kranzbach Hotel & Wellness Retreat Munich: Mandarin Oriental Munich Munich: Rocco Forte Charles Hotel Munich: Rosewood Munich Norderney: Seesteg Norderney Ofterschwang: Sonnenalp Resort Reit im Winkl: Hotel Gut Steinbach Röhrnbach: Wellness & Sport Hotel Jagdhof Rottach-Egern: Parkhotel Egerner Höfe Saarbrücken: Esplanade Saarbrücken Saarlouis: LA MAISON Sylt: Landhaus Stricker Sylt: Severin's Resort & Spa Sylt: Söl’ring Hof Weißenhaus: Weissenhaus Private Nature Luxury Resort THE ONE-KEY HOTELS A very special stay. The Volkhardt family has been running Bayerischer Hof Munich, Munich's first luxury hotel, since 1897. © Daniel Schvarcz Aerzen: Schlosshotel Münchhausen Andernach: Hotel PURS Augsburg: Hotel Maximilian's Bad Peterstal-Griesbach: Hotel Dollenberg Bad Reichenhall: Villa Sonnenhof Boutique Hotel Bad Sachsa: RoLigio® & Wellness Resort Romantischer Winkel Bad Teinach-Zavelstein: Hotel Kronelamm im Schwarzwald Baden-Baden: Maison Messmer Baden-Baden: Steigenberger Icon Europäischer Hof Balderschwang: HUBERTUS Mountain Refugio Allgäu Bensberg: Althoff Grandhotel Schloss Bensberg Berlin: Casa Camper Berlin Berlin: Hotel Adlon Kempinski Berlin: Château Royal Berlin Berlin: Hotel Orania.Berlin Berlin: Hotel Zoo Berlin Berlin: Roomers Berlin Steinplatz, Autograph Collection Berlin: So/ Berlin Das Stue Berlin: The Mandala Hotel Berlin: Wilmina Hotel Binz: niXe Boutiquehotel & Spa Bischofswiesen: Kulturhof Stanggass Breitenburg: Hotel Breitenburg Dierhagen: Strandhotel Fischland Dresden: Gewandhaus Dresden Dresden: Hotel Villa Sorgenfrei & Restaurant Atelier Sanssouci Durbach: Hotel Rebstock Durbach Dusseldorf: Steigenberger Parkhotel Düsseldorf Dusseldorf: The Wellem Flensburg: Das James Frankenberg: Hotel Die Sonne Frankenberg Frankfurt: JW Marriott Hotel Frankfurt Frickenhausen: Hotel / Weingut Meintzinger Garmisch-Partenkirchen: Das Graseck Mountain Hideaway & Healthcare Garmisch-Partenkirchen: Staudacherhof Garmisch-Partenkirchen: Werdenfelserei Geisenheim: Burg & Gästehaus by Schwarzenstein Gernsbach: Schloss Eberstein Grainet - Hüttenhof - Wellness Hotel & Luxury Mountain Chalets - Adults only Hamburg: Landhaus Flottbek Boutique Hotel Hamburg: Tortue Hamburg Heidelberg: Heidelberg Suites Heidelberg: Hotel Europäischer Hof Heidelberg Heiligendamm: Grand Hotel Heiligendamm Hellengerst: Hanusel Hof Hinterzarten: Parkhotel Adler Hofenstetten: Der Birkenhof Spa & Genuss Resort Hohen Demzin: Schlosshotel Burg Schlitz Hornbach: Kloster Hornbach Immenstaad am Bodensee: Hotel Heinzler am See Kaikenried: Wellnesshotel Oswald Kirschau: Hotel BEI SCHUMANN Königsbronn: Widmann's Löwen Konstanz: RIVA - Das Hotel am Bodensee Kressbronn am Bodensee: Boutique-Hotel Friesinger Lieser: Lieser Castle, Autograph Collection Lübben: Strandhaus Spreewald Malente: Hotel Gut Immenhof Munich: Andaz Munich Schwabinger Tor Munich: Bayerischer Hof Munich Munich: BEYOND by Geisel Munich: Cortiina Hotel Munich: Do & Co Hotel Munich Munich: Hotel München Palace Munich: Hotel Vier Jahreszeiten Kempinski Munich: Koenigshof, a Luxury Collection Hotel, Munich Münster: Mauritzhof Hotel Münster Naumburg: Gasthof Zufriedenheit Nonnenhorn: Hotel Restaurant Spa Torkel Norderney: 1884 Norderney Nörten-Hardenberg: Relais & Châteaux Hardenberg Burghotel Oberammergau: Maximilian Oberstaufen: DAS.HOCHGRAT Oberstaufen: Haubers Naturresort Oberstaufen: Hotel Alpenkönig Oberstdorf: Hotel Exquisit Ostseebad Sellin: ROEWERS Privathotel Pfronten: Boutiquehotel Blaue Burg Falkenstein Rotenburg an der Wümme: Hotel Landhaus Wachtelhof Rothenburg ob der Tauber: Villa Mittermeier Rottach-Egern: Spa & Resort Bachmair Weissach Scheidegg: Alpenloge Hotel Schmallenberg: Hotel Deimann Schwangau: AMERON Neuschwanstein Alpsee Resort & Spa Schwangau: Das Rübezahl Sylt: Hof Galerie Sylt: Landhaus Severins Morsum Kliff Übersee: Chiemgauhof Lakeside Retreat Wolfsburg: The Ritz-Carlton, Wolfsburg Top Image: So/ Berlin Das Stue Ad Written by the MICHELIN Guide Travel Travel 6 min. 8 Spellbinding Gothic-Inspired Design Hotels in the U.S. and Canada From an imposing château to a former church, these hotels are as moody and dramatic as they are stylish and sophisticated. Hotels Travel Travel 3 min. Vegan-Friendly Restaurants in London Embrace plant power with our selection of the best vegan restaurants in London – and discover where else to find proper plant-based options. Vegan London Restaurants Editor's Pick Travel 3 min. The Country with the Most Key Hotels in Central America Inspectors found plenty of gems throughout the region in 2026. But Costa Rica is still the undisputed epicenter of Central American hospitality. MICHELIN Keys Hotels Costa Rica Travel 5 min. Where to Stay to Celebrate Samhain, Ireland's Original Version of Halloween With over 2,000 years of history, Samhain is the original Irish celebration marking the 31st October and 1st November – and at many locations around the country, the Samhain festivities are already in full swing. We take a look at the best places to visit and where to stay while you're here. Travel Hotels Editor's Pick All articles of Travel Keep Exploring - Stories we think you will enjoy reading Features 4 min. 6 Gourmet Ways to Enjoy Pumpkin in MICHELIN Guide Restaurants A quintessential autumn ingredient, pumpkin is often relegated to soups and gratins. But in the hands of MICHELIN Guide chefs, it takes on new forms. Discover six inventive interpretations of this versatile gourd, from Kyoto to France. Editor's Pick Restaurants Travel Dining Out 9 min. Where to Eat and Stay in Montréal, Neighborhood by Neighborhood From Old Montréal and the Sud-Ouest to Mile End and Little Italy, discover the MICHELIN Guide restaurants and hotels that put you at the heart of the city. Editor's Pick Canada Travel 4 min. The Best Hotels in Nashville — One-on-One Concerts and 8 Million Bees Only-in-Nashville moments in our breakdown of Inspectors' top five hotels in the city. Travel Hotels Nashville Travel 4 min. 10 Tips for Dining Out in London: A Guide for First-Time Visitors Explore the MICHELIN Inspectors’ list of everything you need to know before your trip to London. London Travel London Restaurants Travel 4 min. How a Ghost Town Transformed Into a Two-Key Luxury Hotel Dunton was founded in 1885 as a mining camp in the wilds of southwestern Colorado. It soon became a ghost town. Then it was turned into Dunton Hot Springs, a Two-Key hotel and one of the most remarkable you'll ever see. MICHELIN Keys Hotels Colorado Dining Out 2 min. Recipe: The Secret Twist That Makes Rolo’s Apple Tart So Good Chef de Cuisine Taylor Falco turns to brown butter to add toasted, nutty depth to the restaurant’s classic apple-and-custard tart. Editor's Pick New York pastry Travel 9 min. The Ultimate Colorado Road Trip for Food Lovers From Denver and Boulder to Aspen and Telluride, hit the road for MICHELIN Guide restaurants, standout hotels and some of the state’s most spectacular scenery. Colorado Editor's Pick Road Trip Dining Out 4 min. Where to Eat and Stay in Austin’s Top Food Neighborhoods From East Austin's creative restaurants to Downtown's luxury hotels and South Congress' eclectic charm, explore three of the city's most walkable neighborhoods. Austin Editor's Pick Texas Travel 3 min. All the Key Hotels in Mexico: From Jungle Treehouses to Brutalist Mansions The MICHELIN Guide's top honors for Mexican hotels in 2026. Hotels Travel MICHELIN Keys Select check-in date S M T W T F S Dates Rates in USD for 1 night, 1 guest Rates in USD for 1 night, 1 guest Save MICHELIN Guide Magazine Travel All the Key Hotels in Germany: The Full 2025 Selection Be the first to get news and updates about the MICHELIN Guide Subscribe Michelin will process your personal data to manage your subscription, measure the performance of our campaigns and analyze your interactions with our communications. Your data can be shared with other Michelin affiliates (TabletHotels and Robert Parker) in order to know you better and with your consent, to sending you marketing offers. You can manage your communication preferences at any time or unsubscribe using the link included in all our emails. To exercise your privacy rights, contact us . Learn more about how Michelin manages your data here. Follow us Use the app to find the best restaurants and hotels everywhere Follow us MICHELIN Guide About the Guide Restaurants Hotels Hotels On Sale Partners Contact Us Leave a review MICHELIN Guide Plus The Michelin Group The Michelin Company Michelin Tires ViaMichelin MICHELIN Guide selections Abu Dhabi Argentina Australia Austria Belgium Brazil Canada Chinese Mainland Croatia Czech Republic Denmark Dubai Estonia Finland France Germany Greece Hong Kong SAR Hungary Iceland Italy Japan Latvia Lithuania Luxembourg Macau SAR Malaysia Malta Mexico Netherlands New Zealand Norway Poland Portugal Qatar Republic of Ireland Saudi Arabia Serbia Singapore Slovenia South Korea Spain Sweden Switzerland Taiwan Region Thailand The Philippines Turkey United Kingdom USA Vietnam Copyright © 2026 MICHELIN Guide. All rights reserved. Terms of Use Your privacy choices Privacy Policy Legal Notice Accessibility Statement Display settings Customize your experience by easily adjusting display settings for territory, and currency to suit your preferences! Territory: USA France United Kingdom Italia Germany Thailand España Japan Taiwan Netherlands Abu Dhabi Argentina Australia Austria Belgium Brazil Canada Chinese Mainland Croatia Czech Republic Denmark Dubai Estonia Finland Global Greece Hong Kong Hungary Iceland Latvia Lithuania Luxembourg Macau Malaysia Malta Mexico New Zealand Norway Poland Portugal Qatar Republic of Ireland Saudi Arabia Serbia Singapore Slovenia South Korea Sweden Switzerland The Philippines Türkiye USA - Alabama (American South) USA - California USA - Chicago USA - Colorado USA - Georgia (American South) USA - Louisiana (American South) USA - Massachusetts USA - Mississippi (American South) USA - New York USA - North Carolina (American South) USA - Orlando, Miami, Tampa USA - Pennsylvania USA - South Carolina (American South) USA - Southwest USA - Tennessee (American South) USA - Washington DC Vietnam Language: English Currency: USD - US Dollar EUR - Euro GBP - Pound Sterling CAD - Canadian Dollar CHF - Swiss Franc JPY - Yen AED - UAE Dirham AUD - Australian Dollar BBD - Barbados Dollar BHD - Bahraini Dinar BMD - Bermudian Dollar BRL - Brazilian Real BSD - Bahamian Dollar CLP - Chilean Peso CNY - Yuan Renminbi COP - Colombian Peso DKK - Danish Krone DOP - Dominican Peso FJD - Fiji Dollar HKD - Hong Kong Dollar IDR - Rupiah INR - Indian Rupee ISK - Iceland Krona JMD - Jamaican Dollar KES - Kenyan Shilling KWD - Kuwaiti Dinar LKR - Sri Lanka Rupee MAD - Moroccan Dirham MUR - Mauritius Rupee MXN - Mexican Peso MYR - Malaysian Ringgit NOK - Norwegian Krone NZD - New Zealand Dollar OMR - Rial Omani PGK - Kina PHP - Philippine Peso PKR - Pakistan Rupee QAR - Qatari Rial SAR - Saudi Riyal SCR - Seychelles Rupee SEK - Swedish Krona SGD - Singapore Dollar THB - Baht TND - Tunisian Dinar TRL - Turkish Lira TTD - Trinidad and Tobago Dollar VEB - Bolivar XPF - CFP Franc ZAR - Rand Save Want to leave a review? Go to the \"Visited\" list under My Lists and tap the \"Review\" button to leave your comments from your visit × Reset View results Sort by: Not now Would you like to review this establishment? To share your experience, the MICHELIN Guide requires your consent to use cookies. Please note that reviews remain unavailable as long as cookies are declined. Agree and close "
+}

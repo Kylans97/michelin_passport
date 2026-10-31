@@ -1,0 +1,15 @@
+{
+  "_read_me": "By-hand judgements read by build_keys.py, each with its evidence (research 2026-10-31). QA ids in README.md.",
+  "hotels": {},
+  "towns": {
+    "https://guide.michelin.com/en/hotels-stays/frankfurt/the-florentin-by-althoff-collection-15840": {
+      "town": "Frankfurt am Main",
+      "evidence": "QA-386: page locality 'Frankfurt' (60596); production files Frankfurt's Key hotels (Sofitel Frankfurt Opera, JW Marriott Hotel Frankfurt) under 'Frankfurt am Main' -- the other row, 'Frankfurt on the Main', holds only restaurants; the two-row split is logged, not merged"
+    },
+    "https://guide.michelin.com/en/hotels-stays/weissenhaus/weissenhaus-private-nature-luxury-resort-10339": {
+      "town": "Wangels",
+      "evidence": "QA-386: page locality 'Weissenhaus' (Parkallee 1, 23758); production's Courtier restaurant at the same address, Parkallee 1, 23758 Wangels-Weißenhaus, is filed under 'Wangels', the municipality"
+    }
+  },
+  "not_duplicates": {}
+}

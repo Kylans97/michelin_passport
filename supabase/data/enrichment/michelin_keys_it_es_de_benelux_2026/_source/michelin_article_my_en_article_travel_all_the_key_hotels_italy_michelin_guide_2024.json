@@ -1,0 +1,951 @@
+{
+ "meta": {
+  "url": "https://guide.michelin.com/my/en/article/travel/all-the-key-hotels-italy-michelin-guide-2024",
+  "final_url": "https://guide.michelin.com/my/en/article/travel/all-the-key-hotels-italy-michelin-guide-2024",
+  "status": 200,
+  "title": "The First MICHELIN Key Hotels: All the Keys in Italy",
+  "date_published": "2024-05-07T09:00",
+  "date_modified": "2025-10-10T05:30",
+  "read": "2026-10-31 (curl)"
+ },
+ "edition": 2024,
+ "links": [
+  {
+   "heading": "Under 10 Rooms: The Tiny Keys Reign Across Italy",
+   "prefix": "at you’ll find places like these in the Tuscan countryside (",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/siena-house-7129?arr=2024-05-26&amp;dep=2024-05-27",
+   "text": "Siena House"
+  },
+  {
+   "heading": "Under 10 Rooms: The Tiny Keys Reign Across Italy",
+   "prefix": "r=2024-05-26&dep=2024-05-27\" target=\"_blank\">Siena House and",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/torrita-di-siena/follonico-suite-bb-5263?arr=2024-05-26&amp;dep=2024-05-27",
+   "text": "Follonico Suite B&B"
+  },
+  {
+   "heading": "Under 10 Rooms: The Tiny Keys Reign Across Italy",
+   "prefix": "h just six bedrooms), but don’t miss the gems in the cities.",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/milan/vico-milano-12446?arr=2024-05-26&amp;dep=2024-05-27",
+   "text": "Vico Milano"
+  },
+  {
+   "heading": "Pick One: A Castle or a Farmhouse Hotel in Tuscany",
+   "prefix": "ive way to handsome wine cellars and vineyard views. Look to",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/castello-di-casole-a-belmond-hotel-tuscany-6433?arr=2024-05-26&amp;dep=2024-05-27",
+   "text": "Castello di Casole"
+  },
+  {
+   "heading": "Pick One: A Castle or a Farmhouse Hotel in Tuscany",
+   "prefix": "world — but there’s nothing like the real thing. Hotels like",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/torrita-di-siena/lupaia-8678",
+   "text": "Lupaia"
+  },
+  {
+   "heading": "Pick One: A Castle or a Farmhouse Hotel in Tuscany",
+   "prefix": "ike Lupaia and",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/Gavorrano-1/conti-di-san-bonifacio-7060?q=Conti+di+San+Bonifacio&amp;hotelId=7060&amp;arr=2024-05-26&amp;dep=2024-05-27&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Conti di San Bonifacio"
+  },
+  {
+   "heading": "High Drama: Hotels on the Seaside of the Amalfi Coast",
+   "prefix": "ffsides tumble down into an endless Italian sea, hotels like",
+   "href": "https://guide.michelin.com/en/hotels-stays/Scala/palazzo-pascal-12185?arr=2024-05-26&amp;dep=2024-05-27",
+   "text": "Palazzo Pascal"
+  },
+  {
+   "heading": "High Drama: Hotels on the Seaside of the Amalfi Coast",
+   "prefix": "024-05-26&dep=2024-05-27\" target=\"_blank\">Palazzo Pascal and",
+   "href": "https://guide.michelin.com/en/hotels-stays/positano/le-sirenuse-6213?arr=2024-05-21&amp;dep=2024-05-22",
+   "text": "Le Sirenuse"
+  },
+  {
+   "heading": "High Drama: Hotels on the Seaside of the Amalfi Coast",
+   "prefix": "t served for centuries as aristocratic homes over the water.",
+   "href": "https://guide.michelin.com/en/hotels-stays/praiano/casa-angelina-1201?arr=2024-05-26&amp;dep=2024-05-27",
+   "text": "Casa Angelina"
+  },
+  {
+   "heading": "High Drama: Hotels on the Seaside of the Amalfi Coast",
+   "prefix": "2024-05-26&dep=2024-05-27\" target=\"_blank\">Casa Angelina and",
+   "href": "https://guide.michelin.com/en/hotels-stays/amalfi/borgo-santandrea-12461?arr=2024-05-26&amp;dep=2024-05-27",
+   "text": "Borgo Santandrea"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "Capri:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/capri/jk-place-capri-2071",
+   "text": "JK Place Capri"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "i-2071\" target=\"_blank\">JK Place Capri Civita di Bagnoregio:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/civita-di-bagnoregio/corte-della-maesta-8446",
+   "text": "Corte della Maestà"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "a-8446\" target=\"_blank\">Corte della Maestà Lisciano Niccone:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/lisciano-niccone/castello-di-reschio-12069?q=Castello+di+Reschio&amp;hotelId=12069&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Castello di Reschio"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "&nA=1&nC=0&nR=1\" target=\"_blank\">Castello di Reschio Modena:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/Modena/casa-maria-luigia-13611",
+   "text": "Casa Maria Luigia"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "-luigia-13611\" target=\"_blank\">Casa Maria Luigia Montalcino:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/rosewood-castiglion-del-bosco-5137",
+   "text": "Rosewood Castiglion Del Bosco"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "137\" target=\"_blank\">Rosewood Castiglion Del Bosco Positano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/positano/il-san-pietro-di-positano-7453",
+   "text": "Il San Pietro di Positano"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "tano-7453\" target=\"_blank\">Il San Pietro di Positano Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/aman-venice-7277",
+   "text": "Aman Venice"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "venice/aman-venice-7277\" target=\"_blank\">Aman Venice Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/cipriani-a-belmond-hotel-venice-7365",
+   "text": "Cipriani, A Belmond Hotel, Venice"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "Amalfi:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/amalfi/borgo-santandrea-12461",
+   "text": "Borgo Santandrea"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "o-santandrea-12461\" target=\"_blank\">Borgo Santandrea Amalfi:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/amalfi/hotel-santa-caterina-5501",
+   "text": "Hotel Santa Caterina"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "a-caterina-5501\" target=\"_blank\">Hotel Santa Caterina Capri:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/capri/capri-palace-hotel-spa-6205",
+   "text": "Jumeirah Capri Palace"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "arget=\"_blank\">Jumeirah Capri Palace Castelnuovo Berardenga:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/hotel-borgo-san-felice-7244",
+   "text": "Hotel Borgo San Felice"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "n-felice-7244\" target=\"_blank\">Hotel Borgo San Felice Cogne:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/cogne/bellevue-hotel-spa-8179",
+   "text": "Bellevue Hotel & Spa"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "tel-spa-8179\" target=\"_blank\">Bellevue Hotel & Spa Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/four-seasons-hotel-firenze-7654",
+   "text": "Four Seasons Hotel Firenze"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "e-7654\" target=\"_blank\">Four Seasons Hotel Firenze Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/palazzo-portinari-salviati-residenza-depoca-12716",
+   "text": "Palazzo Portinari Salviati Residenza D'Epoca"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "lank\">Palazzo Portinari Salviati Residenza D'Epoca Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/villa-cora-79",
+   "text": "Villa Cora"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "florence/villa-cora-79\" target=\"_blank\">Villa Cora Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/villa-la-massa-6576",
+   "text": "Villa La Massa"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "massa-6576\" target=\"_blank\">Villa La Massa Limone sul Garda:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/limone-sul-garda/eala-my-lakeside-dream-12272",
+   "text": "EALA My Lakeside Dream"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "eam-12272\" target=\"_blank\">EALA My Lakeside Dream Lipari ME:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/vulcano/therasia-resort-8826",
+   "text": "Therasia Resort"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "rasia-resort-8826\" target=\"_blank\">Therasia Resort Menaggio:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/menaggio/grand-hotel-victoria-concept-spa-12002?q=Grand+Hotel+Victoria+Concept+%26+Spa&amp;hotelId=12002&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Grand Hotel Victoria"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "nA=1&nC=0&nR=1\" target=\"_blank\">Grand Hotel Victoria Merano:",
+   "href": "https://guide.michelin.com/en/hotels-stays/merano/castel-fragsburg-8195?q=Castel+Fragsburg&amp;hotelId=8195&amp;arr=2024-06-04&amp;dep=2024-06-05&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Castel Fragsburg"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "-05&nA=1&nC=0&nR=1\" target=\"_blank\">Castel Fragsburg Merano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/merano/villa-eden-the-leading-park-retreat-11064",
+   "text": "Villa Eden The Leading Park Retreat"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "\" target=\"_blank\">Villa Eden The Leading Park Retreat Milan:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/milan/bulgari-hotel-milano-6209",
+   "text": "Bulgari Hotel Milano"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "tel-milano-6209\" target=\"_blank\">Bulgari Hotel Milano Milan:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/milan/grand-hotel-et-de-milan-5467",
+   "text": "Grand Hotel et de Milan"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "e-milan-5467\" target=\"_blank\">Grand Hotel et de Milan Milan:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/milan/portrait-milano-12981",
+   "text": "Portrait Milano"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "-milano-12981\" target=\"_blank\">Portrait Milano Montaione FI:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/montaione/castelfalfi-8779",
+   "text": "Castelfalfi"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "aione/castelfalfi-8779\" target=\"_blank\">Castelfalfi Piegaro:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/piegaro/i-borghi-delleremo-13468?q=I+Borghi+dell%27Eremo&amp;hotelId=13468&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "I Borghi dell'Eremo"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "A=1&nC=0&nR=1\" target=\"_blank\"> I Borghi dell'Eremo Pinzolo:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/pinzolo/lefay-resort-spa-dolomiti-11169",
+   "text": "Lefay Resort & Spa Dolomiti"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "ti-11169\" target=\"_blank\">Lefay Resort & Spa Dolomiti Plose:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/brixen/forestis-dolomites-11259",
+   "text": "Forestis Dolomites"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "is-dolomites-11259\" target=\"_blank\">Forestis Dolomites Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/hotel-vilon-11138",
+   "text": "Hotel Vilòn"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "Hotel Vilòn Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/jk-place-roma-7112",
+   "text": "JK Place Roma"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "ome/jk-place-roma-7112\" target=\"_blank\">JK Place Roma Siena:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/castello-di-casole-a-belmond-hotel-tuscany-6433",
+   "text": "Castello di Casole, A Belmond Hotel, Tuscany"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "lank\">Castello di Casole, A Belmond Hotel, Tuscany Sorrento:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sorrento-2/bellevue-syrene-1820-441",
+   "text": "Bellevue Syrene 1820"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "ene-1820-441\" target=\"_blank\">Bellevue Syrene 1820 Sorrento:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sorrento-2/la-minervetta-197",
+   "text": "La Minervetta"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "2/la-minervetta-197\" target=\"_blank\">La Minervetta Taormina:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/taormina/grand-hotel-timeo-a-belmond-hotel-taormina-8362",
+   "text": "Grand Hotel Timeo, A Belmond Hotel, Taormina"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "lank\">Grand Hotel Timeo, A Belmond Hotel, Taormina Taormina:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/taormina/san-domenico-palace-hotel-7330",
+   "text": "San Domenico Palace, Taormina, A Four Seasons Hotel"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "\">San Domenico Palace, Taormina, A Four Seasons Hotel Torno:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/torno-1/il-sereno-8365?q=Il+Sereno&amp;hotelId=8365&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Il Sereno"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "24-12-26&nA=1&nC=0&nR=1\" target=\"_blank\">Il Sereno Tremezzo:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/tremezzina/grand-hotel-tremezzo-5411?q=Grand+Hotel+Tremezzo&amp;hotelId=5411&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Grand Hotel Tremezzo"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "nA=1&nC=0&nR=1\" target=\"_blank\">Grand Hotel Tremezzo Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/hotel-gritti-palace-11420",
+   "text": "Hotel Gritti Palace"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "Arco:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/arco-lake-garda/vivere-suites-and-rooms-5275",
+   "text": "Vivere Suites and Rooms"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ooms-5275\" target=\"_blank\">Vivere Suites and Rooms Arenella:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/syracuse/donna-coraly-country-boutique-hotel-9860",
+   "text": "Donna Coraly Country Boutique Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": " target=\"_blank\">Donna Coraly Country Boutique Hotel Arezzo:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/arezzo/villa-fontelunga-84",
+   "text": "Villa Fontelunga"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "a-fontelunga-84\" target=\"_blank\">Villa Fontelunga Arzachena:",
+   "href": "https://guide.michelin.com/en/hotels-stays/costa-smeralda/cascioni-eco-retreat-11994?q=Cascioni+Eco+Retreat&amp;hotelId=11994&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Cascioni Eco Retreat"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "=1&nC=0&nR=1\" target=\"_blank\">Cascioni Eco Retreat Bernalda:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/Bernalda/palazzo-margherita-6923?q=Palazzo+Margherita&amp;hotelId=6923&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Palazzo Margherita"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "nA=1&nC=0&nR=1\" target=\"_blank\">Palazzo Margherita Cagliari:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/cagliari/casa-clat-13425",
+   "text": "Casa Clàt"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "cagliari/casa-clat-13425\" target=\"_blank\">Casa Clàt Caldaro:",
+   "href": "https://guide.michelin.com/en/hotels-stays/kaltern/lake-spa-hotel-seeleiten-13154?q=Lake+Spa+Hotel+SEELEITEN&amp;hotelId=13154&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Lake Spa Hotel SEELEITEN"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "C=0&nR=1\" target=\"_blank\">Lake Spa Hotel SEELEITEN Camaiore:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/Camaiore-1/locanda-al-colle-5743?q=Locanda+al+Colle&amp;hotelId=5743&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Locanda al Colle"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "6&nA=1&nC=0&nR=1\" target=\"_blank\">Locanda al Colle Capalbio:",
+   "href": "https://guide.michelin.com/en/hotels-stays/capalbio/locanda-rossa-5387?q=Locanda+Rossa&amp;hotelId=5387&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Locanda Rossa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "4-12-26&nA=1&nC=0&nR=1\" target=\"_blank\">Locanda Rossa Capri:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/capri/capri-tiberio-palace-6877",
+   "text": "Capri Tiberio Palace"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "lace-6877\" target=\"_blank\">Capri Tiberio Palace Castelrotto:",
+   "href": "https://guide.michelin.com/en/hotels-stays/castelrotto-1/alpina-dolomites-10766?q=COMO+Alpina+Dolomites&amp;hotelId=10766&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "COMO Alpina Dolomites"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "et=\"_blank\">COMO Alpina Dolomites Castiglione della Pescaia:",
+   "href": "https://guide.michelin.com/en/hotels-stays/castiglione-della-pescaia/landana-2751?q=L%E2%80%99Andana&amp;hotelId=2751&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "L’Andana"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "24-12-26&nA=1&nC=0&nR=1\" target=\"_blank\">L’Andana Cernobbio:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/cernobbio/villa-deste-7331?q=Villa+d%27Este&amp;hotelId=7331&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Villa d'Este"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "2-26&nA=1&nC=0&nR=1\" target=\"_blank\">Villa d'Este Chiusdino:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/borgo-santo-pietro-7004",
+   "text": "Borgo Santo Pietro"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "o-pietro-7004\" target=\"_blank\">Borgo Santo Pietro Cinigiano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/cinigiano/castello-di-vicarello-216",
+   "text": "Castello di Vicarello"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "icarello-216\" target=\"_blank\">Castello di Vicarello Como CO:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/como/palazzo-albriccci-peregrini-9019",
+   "text": "Palazzo Albricci Peregrini - Como"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "target=\"_blank\">Palazzo Albricci Peregrini - Como Cremolino:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/province-of-alessandria/nordelaia-12646",
+   "text": "Nordelaia"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ndria/nordelaia-12646\" target=\"_blank\">Nordelaia Cutrofiano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/cutrofiano/critabianca-11885",
+   "text": "Critabianca"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "iano/critabianca-11885\" target=\"_blank\">Critabianca Fiesole:",
+   "href": "https://guide.michelin.com/en/hotels-stays/fiesole/villa-san-michele-a-belmond-hotel-florence-7395?q=Villa+San+Michele%2C+A+Belmond+Hotel%2C+Florence&amp;hotelId=7395&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Villa San Michele, A Belmond Hotel, Florence"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "lank\">Villa San Michele, A Belmond Hotel, Florence Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/hotel-calimala-9429",
+   "text": "Ad Astra"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ence/hotel-calimala-9429\" target=\"_blank\">Ad Astra Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/ad-astra-7993",
+   "text": "Brunelleschi Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "/ad-astra-7993\" target=\"_blank\">Brunelleschi Hotel Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/hotel-calimala-9429",
+   "text": "Hotel Calimala"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "otel-calimala-9429\" target=\"_blank\">Hotel Calimala Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/riva-lofts-florence-206",
+   "text": "Hotel Lungarno"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "lofts-florence-206\" target=\"_blank\">Hotel Lungarno Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/riva-lofts-florence-206",
+   "text": "Riva Lofts Florence"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-florence-206\" target=\"_blank\">Riva Lofts Florence Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/torre-di-bellosguardo-10855",
+   "text": "Torre di Bellosguardo"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "uardo-10855\" target=\"_blank\">Torre di Bellosguardo Florence:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/florence/velonas-jungle-luxury-suites-8551",
+   "text": "Velona's Jungle Luxury Suites"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rget=\"_blank\">Velona's Jungle Luxury Suites Forio di Ischia:",
+   "href": "https://guide.michelin.com/en/hotels-stays/isola-d-ischia/mezzatorre-hotel-thermal-spa-448?q=Mezzatorre+Hotel+%26+Thermal+Spa&amp;hotelId=448&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Mezzatorre Hotel & Thermal Spa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "=1\" target=\"_blank\">Mezzatorre Hotel & Thermal Spa Forio NA:",
+   "href": "https://guide.michelin.com/en/hotels-stays/isola-d-ischia/botania-relais-spa-8827?q=Botania+Relais+%26+Spa&amp;hotelId=8827&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Botania Relais & Spa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "&nR=1\" target=\"_blank\">Botania Relais & Spa Forte dei Marmi:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/forte-dei-marmi/principe-forte-dei-marmi-6768",
+   "text": "Principe Forte dei Marmi"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rmi-6768\" target=\"_blank\">Principe Forte dei Marmi Gargnano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/gargnano/lefay-resort-spa-lago-di-garda-5131",
+   "text": "Lefay Resort & Spa Lago di Garda"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rget=\"_blank\">Lefay Resort & Spa Lago di Garda Gavorrano GR:",
+   "href": "https://guide.michelin.com/en/hotels-stays/Gavorrano-1/conti-di-san-bonifacio-7060?q=Conti+di+San+Bonifacio&amp;hotelId=7060&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Conti di San Bonifacio"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "=1\" target=\"_blank\">Conti di San Bonifacio Lake Orta Novara:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/lake-orta-1/villa-crespi-5809",
+   "text": "Villa Crespi"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "orta-1/villa-crespi-5809\" target=\"_blank\">Villa Crespi Lana:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/south-tyrol/vigilius-mountain-resort-2131",
+   "text": "Vigilius Mountain Resort"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "resort-2131\" target=\"_blank\">Vigilius Mountain Resort Lecce:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/lecce/la-fiermontina-palazzo-bozzi-corso-13345",
+   "text": "La Fiermontina Palazzo Bozzi Corso"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "5\" target=\"_blank\">La Fiermontina Palazzo Bozzi Corso Lecce:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/lecce/palazzo-de-noha-9467",
+   "text": "Palazzo de Noha"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "o-de-noha-9467\" target=\"_blank\">Palazzo de Noha Locorotondo:",
+   "href": "https://guide.michelin.com/en/hotels-stays/Locorotondo/ottolire-resort-9432?q=Ottolire+Resort&amp;hotelId=9432&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Ottolire Resort"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "&nR=1\" target=\"_blank\">Ottolire Resort Madonna di Campiglio:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/trento/biohotel-hermitage-7592",
+   "text": "Biohotel Hermitage"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-hermitage-7592\" target=\"_blank\">Biohotel Hermitage Maranza:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/south-tyrol/milla-montis-12451",
+   "text": "Milla Montis"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "a-montis-12451\" target=\"_blank\">Milla Montis Massa Lubrense:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sorrento-2/art-hotel-villa-fiorella-8477",
+   "text": "Art Hotel Villa Fiorella"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "77\" target=\"_blank\">Art Hotel Villa Fiorella Massa Lubrense:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/massa-lubrense/relais-blu-6648",
+   "text": "Relais Blu"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "lubrense/relais-blu-6648\" target=\"_blank\">Relais Blu Matera:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/matera/sextantio-le-grotte-della-civita-3251",
+   "text": "Sextantio Le Grotte della Civita"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "251\" target=\"_blank\">Sextantio Le Grotte della Civita Menfi:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sicily/la-foresteria-planeta-estate-9200",
+   "text": "La Foresteria Planeta Estate"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "te-9200\" target=\"_blank\">La Foresteria Planeta Estate Milan:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/milan/hotel-principe-di-savoia-6210",
+   "text": "Hotel Principe di Savoia, Dorchester Collection"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "lank\">Hotel Principe di Savoia, Dorchester Collection Milan:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/milan/mandarin-oriental-milan-7813",
+   "text": "Mandarin Oriental Milan"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "l-milan-7813\" target=\"_blank\">Mandarin Oriental Milan Milan:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/milan/vico-milano-12446",
+   "text": "Vico Milano"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "an/vico-milano-12446\" target=\"_blank\">Vico Milano Moltrasio:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/moltrasio/passalacqua-13418",
+   "text": "Passalacqua"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "o/passalacqua-13418\" target=\"_blank\">Passalacqua Montalcino:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/castello-banfi-il-borgo-relais-chateaux-6678",
+   "text": "Castello Banfi - Il Borgo Relais & Chateaux"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ank\">Castello Banfi - Il Borgo Relais & Chateaux Montalcino:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/montalcino/villa-le-prata-residenza-del-vescovo-12200",
+   "text": "Villa le Prata - Residenza del Vescovo"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "blank\">Villa le Prata - Residenza del Vescovo Montepulciano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/montepulciano/precise-tale-poggio-alla-sala-13465",
+   "text": "Precise Tale Poggio Alla Sala"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "a-13465\" target=\"_blank\">Precise Tale Poggio Alla Sala Noto:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/noto/country-house-villadorata-8021",
+   "text": "Country House Villadorata"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "dorata-8021\" target=\"_blank\">Country House Villadorata Noto:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/noto/seven-rooms-villadorata-8020",
+   "text": "Seven Rooms Villadorata"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "orata-8020\" target=\"_blank\">Seven Rooms Villadorata Ortisei:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/ortisei-1/gardena-grodnerhof-hotel-spa-13142?q=Gardena+Gr%C3%B6dnerhof+Hotel+%26+Spa&amp;hotelId=13142&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Gardena Grödnerhof Hotel & Spa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "nR=1\" target=\"_blank\">Gardena Grödnerhof Hotel & Spa Ostuni:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/ostuni/paragon-700-boutique-hotel-spa-12280",
+   "text": "Paragon 700 Boutique Hotel & SPA"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "0\" target=\"_blank\">Paragon 700 Boutique Hotel & SPA Otranto:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/Otranto/baglioni-masseria-muzza-12710",
+   "text": "Baglioni Masseria Muzza"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "uzza-12710\" target=\"_blank\">Baglioni Masseria Muzza Perugia:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/perugia/castello-di-monterone-9583",
+   "text": "Hotel Castello di Monterone"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "583\" target=\"_blank\">Hotel Castello di Monterone Pettenasco:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/lake-orta-1/laqua-by-the-lake-12450?q=Laqua+by+the+Lake&amp;hotelId=12450&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Laqua by the Lake"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "&nC=0&nR=1\" target=\"_blank\">Laqua by the Lake Pognana Làrio:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/pognana-lario/villa-lario-8009?q=Villa+L%C3%A0rio+Lake+Como&amp;hotelId=8009&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Villa Làrio Lake Como"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "R=1\" target=\"_blank\">Villa Làrio Lake Como Polizzi Generosa:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sicily/susafa-7958?q=Susafa&amp;hotelId=7958&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Susafa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "4-12-26&nA=1&nC=0&nR=1\" target=\"_blank\">Susafa Porto Ercole:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/porto-ercole/il-pellicano-7456",
+   "text": "Il Pellicano"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "le/il-pellicano-7456\" target=\"_blank\">Il Pellicano Positano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/positano/le-sirenuse-6213",
+   "text": "Le Sirenuse"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "itano/le-sirenuse-6213\" target=\"_blank\">Le Sirenuse Praiano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/praiano/casa-angelina-1201",
+   "text": "Casa Angelina"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "o/casa-angelina-1201\" target=\"_blank\">Casa Angelina Ravello:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/ravello/caruso-a-belmond-hotel-amalfi-coast-7370",
+   "text": "Caruso, A Belmond Hotel, Amalfi Coast"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "blank\">Caruso, A Belmond Hotel, Amalfi Coast Riva del Garda:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/riva-del-garda/lido-palace-7990",
+   "text": "Lido Palace"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "el-garda/lido-palace-7990\" target=\"_blank\">Lido Palace Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/hassler-roma-13240",
+   "text": "Hassler Roma"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "/rome/hassler-roma-13240\" target=\"_blank\">Hassler Roma Roma:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/hotel-eden-7218",
+   "text": "Hotel Eden, Dorchester Collection"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "218\" target=\"_blank\">Hotel Eden, Dorchester Collection Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/bulgari-hotel-roma-13135",
+   "text": "Bulgari Hotel Roma"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "i-hotel-roma-13135\" target=\"_blank\">Bulgari Hotel Roma Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/hotel-locarno-9355",
+   "text": "Hotel Locarno"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rome/hotel-locarno-9355\" target=\"_blank\">Hotel Locarno Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/maalot-roma-13028",
+   "text": "Maalot Roma"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "Maalot Roma Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/portrait-roma-6216",
+   "text": "Portrait Roma"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rome/portrait-roma-6216\" target=\"_blank\">Portrait Roma Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/rocco-forte-hotel-de-la-ville-12402",
+   "text": "Rocco Forte Hotel De La Ville"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "e-12402\" target=\"_blank\">Rocco Forte Hotel De La Ville Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/rocco-forte-hotel-de-russie-6215",
+   "text": "Rocco Forte Hotel de Russie"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ssie-6215\" target=\"_blank\">Rocco Forte Hotel de Russie Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/singer-palace-hotel-8957",
+   "text": "Singer Palace Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "palace-hotel-8957\" target=\"_blank\">Singer Palace Hotel Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/six-senses-rome-12916",
+   "text": "Six Senses Rome"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "six-senses-rome-12916\" target=\"_blank\">Six Senses Rome Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/the-hoxton-rome-12072",
+   "text": "The Hoxton, Rome"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "he-hoxton-rome-12072\" target=\"_blank\">The Hoxton, Rome Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/the-inn-at-the-roman-forum-3481",
+   "text": "The Inn at the Roman Forum"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "forum-3481\" target=\"_blank\">The Inn at the Roman Forum Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/st-regis-grand-hotel-rome-11709",
+   "text": "The St. Regis Rome"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "d-hotel-rome-11709\" target=\"_blank\">The St. Regis Rome Rome:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/rome/umilta-36-13029",
+   "text": "Umiltà 36"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ome/umilta-36-13029\" target=\"_blank\">Umiltà 36 San Cassiano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/south-tyrol/lagacio-hotel-mountain-residence-4341",
+   "text": "Lagació Hotel Mountain Residence"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ank\">Lagació Hotel Mountain Residence San Pietro In Cariano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/verona/byblos-art-hotel-villa-amista-164",
+   "text": "Byblos Art Hotel Villa Amista"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": " target=\"_blank\">Byblos Art Hotel Villa Amista Sant'Agnello:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sorrento-2/mediterraneo-sorrento-13496",
+   "text": "Mediterraneo Sorrento"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rget=\"_blank\">Mediterraneo Sorrento Santa Margherita Ligure:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/portofino/grand-hotel-miramare-6228",
+   "text": "Grand Hotel Miramare"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "get=\"_blank\">Grand Hotel Miramare Santo Stefano di Sessanio:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/santo-stefano-di-sessanio/sextantio-442",
+   "text": "Sextantio"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "sessanio/sextantio-442\" target=\"_blank\">Sextantio Sarentino:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/south-tyrol/terra-the-magic-place-9303",
+   "text": "Terra - The Magic Place"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "arget=\"_blank\">Terra - The Magic Place Savelletri di Fasano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/savelletri-di-fasano/borgo-egnazia-5839",
+   "text": "Borgo Egnazia"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ia-5839\" target=\"_blank\">Borgo Egnazia Savelletri di Fasano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/savelletri-di-fasano/masseria-calderisi-11915",
+   "text": "Masseria Calderisi"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "15\" target=\"_blank\">Masseria Calderisi Savelletri di Fasano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/savelletri-di-fasano/masseria-torre-coccaro-158",
+   "text": "Masseria Torre Coccaro"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "target=\"_blank\">Masseria Torre Coccaro Savelletri di Fasano:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/savelletri-di-fasano/masseria-torre-maizza-345",
+   "text": "Masseria Torre Maizza"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rre-maizza-345\" target=\"_blank\">Masseria Torre Maizza Scala:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/Scala/palazzo-pascal-12185",
+   "text": "Palazzo Pascal"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "alazzo-pascal-12185\" target=\"_blank\">Palazzo Pascal Schnals:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/schnals/goldene-rose-karthaus-11678",
+   "text": "Goldene Rose Karthaus"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "us-11678\" target=\"_blank\">Goldene Rose Karthaus Sirmione BS:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sirmione/villa-cortine-8920",
+   "text": "Villa Cortine"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "/villa-cortine-8920\" target=\"_blank\">Villa Cortine Sorrento:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sorrento-2/grand-hotel-excelsior-vittoria-6718",
+   "text": "Grand Hotel Excelsior Vittoria"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "lank\">Grand Hotel Excelsior Vittoria Tavarnelle Val di Pesa:",
+   "href": "https://guide.michelin.com/en/hotels-stays/Barberino-Tavarnelle/como-castello-del-nero-64674-7130?q=COMO+Castello+del+Nero&amp;hotelId=7130&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "COMO Castello del Nero"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "arget=\"_blank\">COMO Castello del Nero Torre Canne di Fasano:",
+   "href": "https://guide.michelin.com/en/hotels-stays/torre-canne-di-fasano/canne-bianche-lifestyle-hotel-8117?q=Canne+Bianche+Lifestyle+Hotel&amp;hotelId=8117&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Canne Bianche Lifestyle Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "get=\"_blank\">Canne Bianche Lifestyle Hotel Torri del Benaco:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/Torri-del-Benaco/cape-of-senses-13719",
+   "text": "Cape of Senses"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "nses-13719\" target=\"_blank\">Cape of Senses Torrita di Siena:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/follonico-suite-bb-5263",
+   "text": "Follonico Suite B&B"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-5263\" target=\"_blank\">Follonico Suite B&B Torrita di Siena:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/lupaia-8678",
+   "text": "Lupaia"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "/siena/lupaia-8678\" target=\"_blank\">Lupaia Torrita di Siena:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/siena/siena-house-7129",
+   "text": "Siena House"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ena/siena-house-7129\" target=\"_blank\">Siena House Umbertide:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/Umbertide/vocabolo-moscatelli-boutique-hotel-restaurant-13119?q=Vocabolo+Moscatelli+Boutique+Hotel+%26+Restaurant&amp;hotelId=13119&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Vocabolo Moscatelli Boutique Hotel & Restaurant"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ank\">Vocabolo Moscatelli Boutique Hotel & Restaurant Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/ca-di-dio-12275",
+   "text": "Ca’ di Dio"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "/venice/ca-di-dio-12275\" target=\"_blank\"> Ca’ di Dio Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/corte-di-gabriela-6834",
+   "text": "Corte di Gabriela"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-di-gabriela-6834\" target=\"_blank\">Corte di Gabriela Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/hotel-londra-palace-4291",
+   "text": "Hotel Londra Palace"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "dra-palace-4291\" target=\"_blank\">Hotel Londra Palace Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/il-palazzo-experimental-9199",
+   "text": "Il Palazzo Experimental"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "mental-9199\" target=\"_blank\">Il Palazzo Experimental Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/nolinski-venezia-122640-12796",
+   "text": "Nolinski Venezia"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "nezia-122640-12796\" target=\"_blank\">Nolinski Venezia Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/palazzo-maria-formosa-13221",
+   "text": "Palazzo Maria Formosa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "formosa-13221\" target=\"_blank\">Palazzo Maria Formosa Venice:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/venice/palazzo-venart-10174",
+   "text": "Palazzo Venart Luxury Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-10174\" target=\"_blank\">Palazzo Venart Luxury Hotel Vicenza:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/vicenza/la-barchessa-di-villa-pisani-8793",
+   "text": "La Barchessa di Villa Pisani"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "arget=\"_blank\">La Barchessa di Villa Pisani Zafferana Etnea:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sicily/monaci-delle-terre-nere-6782",
+   "text": "Monaci delle Terre Nere"
+  }
+ ],
+ "text": " The First MICHELIN Key Hotels: All the Keys in Italy Restaurants Hotels Magazine My Lists Restaurants Hotels MICHELIN Guide Plus Magazine Events Contact us Malaysia - English - MYR Travel 5 minutes 07 May 2024 The First MICHELIN Key Hotels: All the Keys in Italy The MICHELIN Guide announces top honors for Italian hotels in 2024. MICHELIN Keys Hotels Italy Florence Rome Share Looking for the latest Keys? Head here for our guide to the 2025 selection. On May 7, 2024, the MICHELIN Guide revealed the brand new One, Two, and Three Key distinctions for the most outstanding hotels in Italy. This announcement comes four years into a comprehensive refresh of our hotel selection. The MICHELIN Guide now includes over 5,000 hotels across the world, and not a single one is simply a room for the night. These are places that significantly add to your experience as a traveler, each vetted and judged excellent in five categories: architecture and interior design, quality and consistency of service, overall personality and character, value for the price, and a significant contribution to the guest experience in a particular setting. Which brings us back to the Keys. The culmination of countless hours of evaluation by our team of experts, the Key hotels below represent the highlights of our broader selection. Like the MICHELIN Stars for restaurants, the MICHELIN Keys are our most outstanding hotels. In total, the 2024 MICHELIN Guide hotel selection in Italy includes 8 Three Key hotels, 31 Two Key hotels, and 107 One Key hotels. Want to know more about the MICHELIN Key? Here’s everything you need to know . Or, head below to see all the Keys. Palazzo Pascal — Scala How To Look Through the List Jump straight to the list or take a deeper dive into select Key hotels. On this page, you’ll find every single one of our new Key distinctions, sorted by number of Keys and location in Italy. Click on any hotel to go straight to the hotel page to learn more about the nuts and bolts of each property. Alternatively, you can read any number of in-depth pieces about the aspects of the special craft that make up a Key hotel over on our magazine . While our anonymous selection team spends every day scouring the earth to vet favorite hotels and unearth hidden gems, our editorial team delves into the hotel craft by speaking directly to hoteliers. Step inside the crypt behind the hotel door in Rome. See the palazzo in Basilicata that just earned Francis Ford Coppola his latest accolade. Or take a look at all of Italys 3-Key hotels, in photos. Subscribe to our newsletter for more like this. Highlights of the Italy 2024 Key Hotel List Velona's Jungle Luxury Suites — Florence Under 10 Rooms: The Tiny Keys Reign Across Italy Expect: Bold, proprietor-driven design themes, special experiences, and hyper-personal service. The tiny hotels that pepper the cities and countryside might get lost on lists full of castles and palazzos, but these little boutiques with ten rooms or less are some the most creative and satisfying accommodations in all of Italy. It’s a given that you’ll find places like these in the Tuscan countryside ( Siena House and Follonico Suite B&B — both with just six bedrooms), but don’t miss the gems in the cities. Vico Milano is a seven room space filled with dazzling design furniture and contemporary art. Velona’s Jungle Luxury Suites is a pocket-sized jungle-themed luxury boutique full of animal-print upholstery and peacock-feather prints. Both are independently owned and marvelously compact. A Closer Look: 10 Key Hotels with 10 Rooms or Less in Italy Lupaia — Torrita di Siena Pick One: A Castle or a Farmhouse Hotel in Tuscany Two iconic options in Tuscany earned a bevy of Keys: the castle hotel and the classic farmhouse. The former speaks for itself — ancient fortifications that were once private residences, built to house the handsomely titled, and fortified against attack. Towers, turrets, and crenellations give way to handsome wine cellars and vineyard views. Look to Castello di Casole for a masterclass in how to convert a thousand-year-old estate into a historically preserved, contemporarily luxurious hotel. Meanwhile, the motif of the Tuscan farmhouse has been emulated throughout the world — but there’s nothing like the real thing. Hotels like Lupaia and Conti di San Bonifacio make farmhouse charm into nothing less than a work of art. Make Your Choice: The Key Decision in Italy Le Sirenuse - Positano High Drama: Hotels on the Seaside of the Amalfi Coast It’s profoundly satisfying to us that one of the most impressive places in the world has among the world’s most impressive hotels. On the Amalfi Coast, where natural cliffsides tumble down into an endless Italian sea, hotels like Palazzo Pascal and Le Sirenuse host guests in miraculous buildings that served for centuries as aristocratic homes over the water. Casa Angelina and Borgo Santandrea sport more modern builds. In either case, the views are perennially spectacular. Also read: High Drama in the Seaside Hotels of the Amalfi Coast Aman Venice Click below to jump to each distinction: Three Keys Two Keys One Key The Three Key Hotels Corte della Maestà — Civita di Bagnoregio Capri: JK Place Capri Civita di Bagnoregio: Corte della Maestà Lisciano Niccone: Castello di Reschio Modena: Casa Maria Luigia Montalcino: Rosewood Castiglion Del Bosco Positano: Il San Pietro di Positano Venice: Aman Venice Venice: Cipriani, A Belmond Hotel, Venice New York by The MICHELIN Guide – expert insights on where to dine, stay and explore The Two Key Hotels Castel Fragsburg — Merano Amalfi: Borgo Santandrea Amalfi: Hotel Santa Caterina Capri: Jumeirah Capri Palace Castelnuovo Berardenga: Hotel Borgo San Felice Cogne: Bellevue Hotel & Spa Florence: Four Seasons Hotel Firenze Florence: Palazzo Portinari Salviati Residenza D'Epoca Florence: Villa Cora Florence: Villa La Massa Limone sul Garda: EALA My Lakeside Dream Lipari ME: Therasia Resort Menaggio: Grand Hotel Victoria Merano: Castel Fragsburg Merano: Villa Eden The Leading Park Retreat Milan: Bulgari Hotel Milano Milan: Grand Hotel et de Milan Milan: Portrait Milano Montaione FI: Castelfalfi Piegaro: I Borghi dell'Eremo Pinzolo: Lefay Resort & Spa Dolomiti Plose: Forestis Dolomites Rome: Hotel Vilòn Rome: JK Place Roma Siena: Castello di Casole, A Belmond Hotel, Tuscany Sorrento: Bellevue Syrene 1820 Sorrento: La Minervetta Taormina: Grand Hotel Timeo, A Belmond Hotel, Taormina Taormina: San Domenico Palace, Taormina, A Four Seasons Hotel Torno: Il Sereno Tremezzo: Grand Hotel Tremezzo Venice: Hotel Gritti Palace The One Key Hotels Palazzo Margherita — Bernalda Arco: Vivere Suites and Rooms Arenella: Donna Coraly Country Boutique Hotel Arezzo: Villa Fontelunga Arzachena: Cascioni Eco Retreat Bernalda: Palazzo Margherita Cagliari: Casa Clàt Caldaro: Lake Spa Hotel SEELEITEN Camaiore: Locanda al Colle Capalbio: Locanda Rossa Capri: Capri Tiberio Palace Castelrotto: COMO Alpina Dolomites Castiglione della Pescaia: L’Andana Cernobbio: Villa d'Este Chiusdino: Borgo Santo Pietro Cinigiano: Castello di Vicarello Como CO: Palazzo Albricci Peregrini - Como Cremolino: Nordelaia Cutrofiano: Critabianca Fiesole: Villa San Michele, A Belmond Hotel, Florence Florence: Ad Astra Florence: Brunelleschi Hotel Florence: Hotel Calimala Florence: Hotel Lungarno Florence: Riva Lofts Florence Florence: Torre di Bellosguardo Florence: Velona's Jungle Luxury Suites Forio di Ischia: Mezzatorre Hotel & Thermal Spa Forio NA: Botania Relais & Spa Forte dei Marmi: Principe Forte dei Marmi Gargnano: Lefay Resort & Spa Lago di Garda Gavorrano GR: Conti di San Bonifacio Lake Orta Novara: Villa Crespi Lana: Vigilius Mountain Resort Lecce: La Fiermontina Palazzo Bozzi Corso Lecce: Palazzo de Noha Locorotondo: Ottolire Resort Madonna di Campiglio: Biohotel Hermitage Maranza: Milla Montis Massa Lubrense: Art Hotel Villa Fiorella Massa Lubrense: Relais Blu Matera: Sextantio Le Grotte della Civita Menfi: La Foresteria Planeta Estate Milan: Hotel Principe di Savoia, Dorchester Collection Milan: Mandarin Oriental Milan Milan: Vico Milano Moltrasio: Passalacqua Montalcino: Castello Banfi - Il Borgo Relais & Chateaux Montalcino: Villa le Prata - Residenza del Vescovo Montepulciano: Precise Tale Poggio Alla Sala Noto: Country House Villadorata Noto: Seven Rooms Villadorata Ortisei: Gardena Grödnerhof Hotel & Spa Ostuni: Paragon 700 Boutique Hotel & SPA Otranto: Baglioni Masseria Muzza Perugia: Hotel Castello di Monterone Pettenasco: Laqua by the Lake Pognana Làrio: Villa Làrio Lake Como Polizzi Generosa: Susafa Porto Ercole: Il Pellicano Positano: Le Sirenuse Praiano: Casa Angelina Ravello: Caruso, A Belmond Hotel, Amalfi Coast Riva del Garda: Lido Palace Rome: Hassler Roma Roma: Hotel Eden, Dorchester Collection Rome: Bulgari Hotel Roma Rome: Hotel Locarno Rome: Maalot Roma Rome: Portrait Roma Rome: Rocco Forte Hotel De La Ville Rome: Rocco Forte Hotel de Russie Rome: Singer Palace Hotel Rome: Six Senses Rome Rome: The Hoxton, Rome Rome: The Inn at the Roman Forum Rome: The St. Regis Rome Rome: Umiltà 36 San Cassiano: Lagació Hotel Mountain Residence San Pietro In Cariano: Byblos Art Hotel Villa Amista Sant'Agnello: Mediterraneo Sorrento Santa Margherita Ligure: Grand Hotel Miramare Santo Stefano di Sessanio: Sextantio Sarentino: Terra - The Magic Place Savelletri di Fasano: Borgo Egnazia Savelletri di Fasano: Masseria Calderisi Savelletri di Fasano: Masseria Torre Coccaro Savelletri di Fasano: Masseria Torre Maizza Scala: Palazzo Pascal Schnals: Goldene Rose Karthaus Sirmione BS: Villa Cortine Sorrento: Grand Hotel Excelsior Vittoria Tavarnelle Val di Pesa: COMO Castello del Nero Torre Canne di Fasano: Canne Bianche Lifestyle Hotel Torri del Benaco: Cape of Senses Torrita di Siena: Follonico Suite B&B Torrita di Siena: Lupaia Torrita di Siena: Siena House Umbertide: Vocabolo Moscatelli Boutique Hotel & Restaurant Venice: Ca’ di Dio Venice: Corte di Gabriela Venice: Hotel Londra Palace Venice: Il Palazzo Experimental Venice: Nolinski Venezia Venice: Palazzo Maria Formosa Venice: Palazzo Venart Luxury Hotel Vicenza: La Barchessa di Villa Pisani Zafferana Etnea: Monaci delle Terre Nere Hero Image: Castello di Reschio — Lisciano Niccone Written by the MICHELIN Guide Travel Travel 3 min. Vegan-Friendly Restaurants in London Embrace plant power with our selection of the best vegan restaurants in London – and discover where else to find proper plant-based options. Vegan London Restaurants Editor's Pick Travel 4 min. 10 Tips for Dining Out in London: A Guide for First-Time Visitors Explore the MICHELIN Inspectors’ list of everything you need to know before your trip to London. London Travel London Restaurants Travel 3 min. All the Key Hotels in Mexico: From Jungle Treehouses to Brutalist Mansions The MICHELIN Guide's top honors for Mexican hotels in 2026. Hotels Travel MICHELIN Keys Travel 5 min. New London Restaurants in the MICHELIN Guide Update your must-visit list with all the MICHELIN Guide’s new London restaurants, each one approved by our anonymous Inspectors. Live Updates London Restaurants Announcement All articles of Travel Keep Exploring - Stories we think you will enjoy reading MICHELIN Guide Ceremony 3 min. All the MICHELIN Key Hotels in South Australia A guide to all the MICHELIN-Key hotels in South Australia, both classic and quirky. South Australia MICHELIN Keys Hotels Travel 6 min. Every Three-Key Hotel in the World: A Guide to the Best of the Best The Three Keys are the best hotels in our selection, and 18 new picks just joined the list. Use this guide to explore every Three-Key in the world. Travel MICHELIN Keys Hotels Travel 5 min. Every MICHELIN Key Hotel in the UK & Ireland Explore the full list of hotels awarded One, Two or Three MICHELIN Keys in England, Scotland, Wales, Northern Ireland and the Republic of Ireland, including the 18 new Keys added at the 2026 Key Launch. Travel Hotels Editor's Pick Travel 1 min. All the MICHELIN Key Hotels in New Zealand The MICHELIN Guide unveils New Zealand’s most distinguished hotels of 2026. 2026 Hotels MICHELIN Keys Travel 3 min. The Most Affordable MICHELIN Keys Hotels in Vietnam There’s no shortage of affordable hotels in Vietnam, but these 5 MICHELIN-selected holiday getaways prove you don’t have to sacrifice style or amenities to stay within budget, with stays priced at under $200 a night. Vietnam Hotels affordable Travel 1 min. And the Winners Are: Four Standout Hotels Take Home MICHELIN’s 2026 Special Category Awards They're here: the winners of the MICHELIN Architecture & Design, Wellness, Local Gateway, and Opening of the Year awards for 2026. Editor's Pick Hotel Awards 2026 Hotels Travel 4 min. Exploring the Hotel as Gallery: 7 Japanese Art Hotels Luxury hotels take great pride in collections by contemporary artists, but at these seven Japanese hotels, devoted art galleries are the focal point. Hotels Japan Hotels Tokyo Travel 6 min. All the Key Hotels in the United States: The Full 2026 Selection The MICHELIN Guide announces top honors for United States hotels in 2026. Hotels MICHELIN Keys Travel Travel 8 min. The Most Affordable Key Hotels in the World Some MICHELIN-Key hotels can cost thousands per night. These are the others — affordable standouts of such quality and value they tend to inspire trips themselves. Travel Hotels Mexico Travel 9 min. The 2026 MICHELIN Key Hotels: A Guide to the Global Selection Inspectors just unveiled the global MICHELIN Keys for 2026. Use this guide to explore the best hotels on every continent, country by country. MICHELIN Keys Editor's Pick Hotels Travel 3 min. All the Key Hotels in Canada: The Full 2026 Selection The MICHELIN Guide announces top honors for Canadian hotels in 2026. Hotels MICHELIN Keys Toronto Travel 2 min. The 2026 MICHELIN Key Hotels: All the Key Hotels in Vietnam The MICHELIN Guide announces top honors for hotels in Vietnam in 2026. MICHELIN Keys Travel Hotels Select check-in date S M T W T F S Dates Rates in MYR for 1 night, 1 guest Rates in MYR for 1 night, 1 guest Save MICHELIN Guide Magazine Travel The First MICHELIN Key Hotels: All the Keys in Italy Use the app to find the best restaurants and hotels everywhere Follow us MICHELIN Guide About the Guide Restaurants Hotels Hotels On Sale Partners Contact Us Leave a review MICHELIN Guide Plus The Michelin Group The Michelin Company Michelin Tires ViaMichelin MICHELIN Guide selections Abu Dhabi Argentina Australia Austria Belgium Brazil Canada Chinese Mainland Croatia Czech Republic Denmark Dubai Estonia Finland France Germany Greece Hong Kong SAR Hungary Iceland Italy Japan Latvia Lithuania Luxembourg Macau SAR Malaysia Malta Mexico Netherlands New Zealand Norway Poland Portugal Qatar Republic of Ireland Saudi Arabia Serbia Singapore Slovenia South Korea Spain Sweden Switzerland Taiwan Region Thailand The Philippines Turkey United Kingdom USA Vietnam Copyright © 2026 MICHELIN Guide. All rights reserved. Terms of Use Your privacy choices Privacy Policy Legal Notice Accessibility Statement Display settings Customize your experience by easily adjusting display settings for territory, and currency to suit your preferences! Territory: USA France United Kingdom Italia Germany Thailand España Japan Taiwan Netherlands Abu Dhabi Argentina Australia Austria Belgium Brazil Canada Chinese Mainland Croatia Czech Republic Denmark Dubai Estonia Finland Global Greece Hong Kong Hungary Iceland Latvia Lithuania Luxembourg Macau Malaysia Malta Mexico New Zealand Norway Poland Portugal Qatar Republic of Ireland Saudi Arabia Serbia Singapore Slovenia South Korea Sweden Switzerland The Philippines Türkiye USA - Alabama (American South) USA - California USA - Chicago USA - Colorado USA - Georgia (American South) USA - Louisiana (American South) USA - Massachusetts USA - Mississippi (American South) USA - New York USA - North Carolina (American South) USA - Orlando, Miami, Tampa USA - Pennsylvania USA - South Carolina (American South) USA - Southwest USA - Tennessee (American South) USA - Washington DC Vietnam Language: English Currency: USD - US Dollar EUR - Euro GBP - Pound Sterling CAD - Canadian Dollar CHF - Swiss Franc JPY - Yen AED - UAE Dirham AUD - Australian Dollar BBD - Barbados Dollar BHD - Bahraini Dinar BMD - Bermudian Dollar BRL - Brazilian Real BSD - Bahamian Dollar CLP - Chilean Peso CNY - Yuan Renminbi COP - Colombian Peso DKK - Danish Krone DOP - Dominican Peso FJD - Fiji Dollar HKD - Hong Kong Dollar IDR - Rupiah INR - Indian Rupee ISK - Iceland Krona JMD - Jamaican Dollar KES - Kenyan Shilling KWD - Kuwaiti Dinar LKR - Sri Lanka Rupee MAD - Moroccan Dirham MUR - Mauritius Rupee MXN - Mexican Peso MYR - Malaysian Ringgit NOK - Norwegian Krone NZD - New Zealand Dollar OMR - Rial Omani PGK - Kina PHP - Philippine Peso PKR - Pakistan Rupee QAR - Qatari Rial SAR - Saudi Riyal SCR - Seychelles Rupee SEK - Swedish Krona SGD - Singapore Dollar THB - Baht TND - Tunisian Dinar TRL - Turkish Lira TTD - Trinidad and Tobago Dollar VEB - Bolivar XPF - CFP Franc ZAR - Rand Save Want to leave a review? Go to the \"Visited\" list under My Lists and tap the \"Review\" button to leave your comments from your visit × Reset View results Sort by: Not now Would you like to review this establishment? To share your experience, the MICHELIN Guide requires your consent to use cookies. Please note that reviews remain unavailable as long as cookies are declined. Agree and close "
+}
