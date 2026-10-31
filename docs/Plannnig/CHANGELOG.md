@@ -8,6 +8,49 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Friends' profile photos** (2026-10-31, product owner). Until now
+  only your own photo ever showed: every other member was initials,
+  because the `profile-photos` bucket was owner-only on purpose
+  (20260825170000, PROFILE_AVATAR_V1.md "Storage read visibility"), and
+  the identity RPCs only return the never-populated `avatar_url`. Real
+  photos, with initials as fallback, now show in the friends list, Your
+  Circle, friend requests (incoming and sent), Find friends search
+  (photo, name and @username, as `IdentityRow` already lays out),
+  notifications, Friends' Activity, a friend's profile header, trip
+  members, friends going/interested on events, and "friends who've
+  been". Blocked users keep initials.
+
+  How it works: the new `MemberAvatarRepository` asks
+  `get_member_avatar_paths` which of the listed members have a photo you
+  may see, signs those paths (with the same size transform as your own
+  photo), and caches the URLs for 50 minutes. `FriendshipRepository`,
+  `NotificationsRepository` and `loadTripMembers` merge them in;
+  `Friendship`, `FriendRequest` and `ProfileIdentity` gained
+  `withAvatar`. None of the existing RPCs changed, so build 1.5.0/1.5.1
+  are untouched.
+
+  **Needs migration `20261031120000_share_member_avatars.sql` —
+  prepared, NOT applied.** The photo rule is the identity rule
+  `search_profiles` already uses: you can see a member's photo when
+  there is no block between you AND (they are discoverable, OR you are
+  friends, OR a request is pending either way). A non-discoverable
+  member's photo stays hidden from strangers. The migration adds
+  `can_view_member_avatar(uuid)`, `get_member_avatar_paths(uuid[])` and
+  `can_view_member_avatar_object(text)` (all SECURITY DEFINER, each with
+  `revoke execute ... from public, anon` and a grant to `authenticated`),
+  plus an extra storage SELECT policy on `profile-photos` covering
+  exactly a visible member's current photo. The owner-only policy stays.
+  The visibility rule's SQL ran read-only against production without
+  error. There was no local replay (no Docker on this machine), and
+  `has_function_privilege` can only be checked after applying. Until it
+  is applied, the RPC is missing and everyone keeps initials. Checked in
+  the simulator in that state: Community → Friends, the feed and the
+  lists all load as before.
+  Analyze and all 2,710 tests pass (new model tests; the paged
+  notifications test now asserts only on the notifications call, since
+  the photo lookup follows it).
+
 ---
 
 ## v1.5.1 (19) — 2026-10-30

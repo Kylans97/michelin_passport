@@ -2,6 +2,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/blocked_user.dart';
 import '../../models/friendship.dart';
 import '../../models/profile_identity.dart';
+import 'member_avatar_repository.dart';
 
 /// Every friendship read/write goes through a Postgres RPC (Social
 /// Foundation Step 1 migration), never a raw `.from('friendships')`
@@ -15,30 +16,44 @@ import '../../models/profile_identity.dart';
 /// private-profile friend. Only `remove` is a direct table operation —
 /// removing a friendship is plain row ownership with no state-machine
 /// subtlety, and the RLS `friendships_delete` policy already allows it.
+///
+/// Every identity read is enriched with the member's photo through
+/// [MemberAvatarRepository] — the identity RPCs themselves still return
+/// only the never-populated `avatar_url` (so build 1.5.0 keeps working
+/// against them unchanged); photos that the viewer may not see, or every
+/// photo before 20261031120000 is applied, fall back to initials.
 class FriendshipRepository {
-  FriendshipRepository(this._client);
+  FriendshipRepository(this._client, {MemberAvatarRepository? avatars})
+    : _avatars = avatars ?? MemberAvatarRepository(_client);
 
   final SupabaseClient _client;
+  final MemberAvatarRepository _avatars;
 
   Future<List<Friendship>> getFriends() async {
     final rows = await _client.rpc('get_friends');
-    return (rows as List)
+    final friends = (rows as List)
         .map((r) => Friendship.fromRow(r as Map<String, dynamic>))
         .toList();
+    final urls = await _avatars.urlsFor(friends.map((f) => f.friendId));
+    return [for (final f in friends) f.withAvatar(urls[f.friendId])];
   }
 
   Future<List<FriendRequest>> getIncomingRequests() async {
     final rows = await _client.rpc('get_incoming_friend_requests');
-    return (rows as List)
-        .map((r) => FriendRequest.fromIncomingRow(r as Map<String, dynamic>))
-        .toList();
+    return _withRequestAvatars(
+      (rows as List)
+          .map((r) => FriendRequest.fromIncomingRow(r as Map<String, dynamic>))
+          .toList(),
+    );
   }
 
   Future<List<FriendRequest>> getOutgoingRequests() async {
     final rows = await _client.rpc('get_outgoing_friend_requests');
-    return (rows as List)
-        .map((r) => FriendRequest.fromOutgoingRow(r as Map<String, dynamic>))
-        .toList();
+    return _withRequestAvatars(
+      (rows as List)
+          .map((r) => FriendRequest.fromOutgoingRow(r as Map<String, dynamic>))
+          .toList(),
+    );
   }
 
   // Minimum 2 characters, matching search_profiles' own floor — the RPC
@@ -50,9 +65,18 @@ class FriendshipRepository {
       'search_profiles',
       params: {'query': query.trim()},
     );
-    return (rows as List)
+    final results = (rows as List)
         .map((r) => ProfileIdentity.fromRow(r as Map<String, dynamic>))
         .toList();
+    final urls = await _avatars.urlsFor(results.map((p) => p.id));
+    return [for (final p in results) p.withAvatar(urls[p.id])];
+  }
+
+  Future<List<FriendRequest>> _withRequestAvatars(
+    List<FriendRequest> requests,
+  ) async {
+    final urls = await _avatars.urlsFor(requests.map((r) => r.otherUserId));
+    return [for (final r in requests) r.withAvatar(urls[r.otherUserId])];
   }
 
   Future<ProfileIdentity?> getProfileIdentity(String userId) async {
@@ -62,7 +86,11 @@ class FriendshipRepository {
     );
     final list = rows as List;
     if (list.isEmpty) return null;
-    return ProfileIdentity.fromRow(list.first as Map<String, dynamic>);
+    final identity = ProfileIdentity.fromRow(
+      list.first as Map<String, dynamic>,
+    );
+    final urls = await _avatars.urlsFor([identity.id]);
+    return identity.withAvatar(urls[identity.id]);
   }
 
   // Every write RPC below throws a PostgrestException carrying the RPC's
@@ -99,6 +127,7 @@ class FriendshipRepository {
   // fixed column for it — see the RPC's own comment.
   Future<List<BlockedUser>> getBlockedUsers() async {
     final rows = await _client.rpc('get_blocked_users');
+    // No photo lookup: a block hides the photo both ways by design.
     return (rows as List)
         .map((r) => BlockedUser.fromRow(r as Map<String, dynamic>))
         .toList();
