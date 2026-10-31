@@ -4,9 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_editorial_glyphs.dart' show CsCountryLabel;
-import '../../../core/widgets/key_row.dart';
-import '../../../core/widgets/star_row.dart';
-import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../../data/repositories/events_repository.dart';
 import '../../../data/repositories/hotel_repository.dart';
@@ -25,6 +22,7 @@ import '../../visits/widgets/visit_privacy_toggle.dart';
 import '../models/passport_stamp_item.dart';
 import '../utils/passport_stamp_style.dart';
 import 'passport_stamp.dart';
+import 'venue_picker_parts.dart';
 
 // Cormorant Garamond falls back to oldstyle figures (varying height/
 // baseline) unless this feature is explicitly enabled — the same fix
@@ -606,13 +604,13 @@ class _Step1 extends StatelessWidget {
           const SizedBox(height: 18),
           Row(
             children: [
-              _TypeChip(
+              VenueTypeChip(
                 label: 'Restaurant',
                 selected: type == _VenueType.restaurant,
                 onTap: () => onTypeChanged(_VenueType.restaurant),
               ),
               const SizedBox(width: 10),
-              _TypeChip(
+              VenueTypeChip(
                 label: 'Hotel',
                 selected: type == _VenueType.hotel,
                 onTap: () => onTypeChanged(_VenueType.hotel),
@@ -653,13 +651,13 @@ class _Step1 extends StatelessWidget {
               const SizedBox(height: 16),
               const _SectionLabel('FROM YOUR WISHLIST'),
               const SizedBox(height: 8),
-              for (final v in wishlistForType) _VenueRow(venue: v, onTap: () => onSelect(v)),
+              for (final v in wishlistForType) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
             ],
             if (eventVenuesForType.isNotEmpty) ...[
               SizedBox(height: wishlistForType.isNotEmpty ? 24 : 16),
               const _SectionLabel('FROM YOUR EVENTS'),
               const SizedBox(height: 8),
-              for (final v in eventVenuesForType) _VenueRow(venue: v, onTap: () => onSelect(v)),
+              for (final v in eventVenuesForType) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
             ],
             if (!hasShortcuts && shortcutsLoaded) ...[
               const SizedBox(height: 32),
@@ -711,7 +709,7 @@ class _SearchResultsSection extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 8),
-        for (final v in results) _VenueRow(venue: v, onTap: () => onSelect(v)),
+        for (final v in results) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
       ],
     );
   }
@@ -731,108 +729,6 @@ class _SectionLabel extends StatelessWidget {
       letterSpacing: 10.5 * 0.1,
     ),
   );
-}
-
-class _TypeChip extends StatelessWidget {
-  final String label;
-  final bool selected;
-  final VoidCallback onTap;
-  const _TypeChip({required this.label, required this.selected, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) => Material(
-    color: selected ? AppColors.ivory : Colors.transparent,
-    borderRadius: BorderRadius.circular(999),
-    child: InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.circular(999),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 10),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(999),
-          border: selected ? null : Border.all(color: AppColors.hairlineOnGreen),
-        ),
-        child: Text(
-          label,
-          style: GoogleFonts.inter(
-            color: selected ? AppColors.forestGreen : AppColors.textOnDark,
-            fontSize: 13,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-      ),
-    ),
-  );
-}
-
-/// [52pt foto of initiaal-tile | naam + sterren/sleutels + Stad · LC | ›]
-/// — shared row shape for both the wishlist shortcuts and search results.
-class _VenueRow extends StatelessWidget {
-  final PassportVenue venue;
-  final VoidCallback onTap;
-  const _VenueRow({required this.venue, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    final award = switch (venue) {
-      RestaurantVenue(:final restaurant) =>
-        (restaurant.michelinStars ?? 0) > 0 ? StarRow(count: restaurant.michelinStars!, size: 12) : null,
-      HotelVenue(:final hotel) =>
-        (hotel.michelinKeys ?? 0) > 0 ? KeyRow(count: hotel.michelinKeys!, size: 12) : null,
-    };
-    final cityName = switch (venue) {
-      RestaurantVenue(:final restaurant) => restaurant.cityName,
-      HotelVenue(:final hotel) => hotel.cityName,
-    };
-    final countryCode = venue.countryCode;
-
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Row(
-            children: [
-              VenueThumbnail(imageUrl: venue.cardImageUrl, framing: venue.cardFraming, size: 52, borderRadius: const BorderRadius.all(Radius.circular(4))),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      _venueName(venue),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.cormorantGaramond(
-                        color: AppColors.textOnDark,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Row(
-                      children: [
-                        if (award != null) ...[award, const SizedBox(width: 6)],
-                        Flexible(
-                          child: CsCountryLabel(
-                            cityName: cityName,
-                            countryCode: countryCode,
-                            style: GoogleFonts.inter(color: AppColors.secondaryOnDark, fontSize: 12),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              const Icon(Icons.chevron_right_rounded, color: AppColors.secondaryOnDark, size: 20),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }
 
 // ── Step 2: details + live stamp preview ────────────────────────────────

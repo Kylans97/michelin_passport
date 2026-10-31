@@ -14,6 +14,7 @@ import '../events/events_screen.dart';
 import '../passport/widgets/passport_empty_state.dart';
 import 'event_wishlist_schedule.dart';
 import 'widgets/event_wishlist_card.dart';
+import 'widgets/add_to_wishlist_sheet.dart';
 import 'widgets/event_wishlist_empty_state.dart';
 import 'widgets/wishlist_venue_cards.dart';
 import 'wishlist_view_model.dart';
@@ -158,6 +159,22 @@ class _WishlistBodyState extends State<WishlistBody> {
     }
   }
 
+  Future<void> _openAdd() async {
+    final changed = await showAddToWishlistSheet(
+      context,
+      userId: _userId,
+      savedIds: {
+        for (final v in _venues ?? const <PassportVenue>[])
+          switch (v) {
+            RestaurantVenue(:final restaurant) => restaurant.id,
+            HotelVenue(:final hotel) => hotel.id,
+          },
+      },
+      startWithHotels: _venueType == WishlistVenueType.hotels,
+    );
+    if (changed && mounted) await _load();
+  }
+
   void _openExploreEvents() => Navigator.push(
     context,
     MaterialPageRoute(builder: (_) => const EventsScreen()),
@@ -218,9 +235,27 @@ class _WishlistBodyState extends State<WishlistBody> {
                   CsSpacing.pageHorizontal,
                   CsSpacing.md,
                 ),
-                child: const CsSectionTitle(
-                  'YOUR WISHLIST',
-                  color: AppColors.textOnDark,
+                child: Row(
+                  children: [
+                    const Expanded(
+                      child: CsSectionTitle(
+                        'YOUR WISHLIST',
+                        color: AppColors.textOnDark,
+                      ),
+                    ),
+                    // Save a restaurant or hotel without leaving Wishlist.
+                    // Events are saved from the events themselves.
+                    if (!isEvents && !_loading && !_loadError)
+                      TextButton.icon(
+                        onPressed: _openAdd,
+                        icon: const Icon(Icons.add_rounded, size: 18),
+                        label: const Text('Add'),
+                        style: TextButton.styleFrom(
+                          foregroundColor: AppColors.textOnDark,
+                          textStyle: CsTypography.bodyMedium,
+                        ),
+                      ),
+                  ],
                 ),
               ),
             ),

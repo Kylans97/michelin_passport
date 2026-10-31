@@ -41,6 +41,22 @@ The two items the pre-launch audit left open (2026-10-31).
   with 42501 "spatial_ref_sys is read-only for clients" while a read
   still returns 200.
 
+
+### Added
+
+- **Add to Wishlist from the Wishlist itself.** A tester asked where to
+  quickly save restaurants and hotels. Passport → Wishlist now has
+  "+ Add" beside YOUR WISHLIST (Restaurants and Hotels tabs; events are
+  saved from the events). It opens the same green picker as Passport → +
+  — Restaurant/Hotel chips, one search field, the same result rows — with
+  a heart at the end of each row: tap to save, tap again to remove, the
+  sheet staying open for several. Optimistic, flipping back with a
+  message if the write fails; the list reloads on Done when anything
+  changed. The row and chip moved out of `add_visit_flow.dart` into
+  `venue_picker_parts.dart` (`VenuePickerRow`, `VenueTypeChip`) so both
+  sheets share them. New `test/add_to_wishlist_sheet_test.dart`; checked
+  in the simulator (2026-10-31) by searching without saving.
+
 ---
 
 ## v1.5.3 (21) — 2026-10-31
