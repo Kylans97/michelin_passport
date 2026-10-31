@@ -1,0 +1,3 @@
+match,name,keys,card_keys,keys_2025,keys_2024,city,town,town_note,address,lat,lon,michelin_url,michelin_id,michelin_phone,date_awarded,address_country,listing
+hotel_2809,Villa Pétrusse,2,2,,,Luxembourg City,Luxembourg City,,"1, Avenue Marie-Thérèse, Ville Haute, 2132 Luxembourg City",49.608715,6.124798,https://guide.michelin.com/en/hotels-stays/luxembourg-city/villa-petrusse-15165,15165,+352 22 17 44,,LUX,luxembourg
+hotel_22,Le Place d’Armes,1,1,1,,Luxembourg City,,,"18 Place d'Armes, L-1136 Luxembourg City",49.61151,6.12893,https://guide.michelin.com/en/hotels-stays/luxembourg-city/le-place-darmes-11340,11340,+352 27 47 37,,LUX,luxembourg

@@ -1,0 +1,699 @@
+{
+ "meta": {
+  "url": "https://guide.michelin.com/us/en/article/travel/all-the-key-hotels-spain-michelin-guide-2024",
+  "final_url": "https://guide.michelin.com/us/en/article/travel/all-the-key-hotels-spain-michelin-guide-2024",
+  "status": 200,
+  "title": "The First MICHELIN Key Hotels: All the Keys in Spain",
+  "date_published": "2024-04-29T07:00",
+  "date_modified": "2025-10-10T05:30",
+  "read": "2026-10-31 (curl)"
+ },
+ "edition": 2024,
+ "links": [
+  {
+   "heading": "Remarkable Personality in the Balearic Islands",
+   "prefix": "ular, finds a bevy of options: from the small and historic (",
+   "href": "https://guide.michelin.com/en/hotels-stays/majorca/son-brull-hotel-spa-8464",
+   "text": "Son Brull Hotel & Spa"
+  },
+  {
+   "heading": "Remarkable Personality in the Balearic Islands",
+   "prefix": "rull-hotel-spa-8464\" target=\"_blank\">Son Brull Hotel & Spa ,",
+   "href": "https://guide.michelin.com/en/hotels-stays/majorca/hotel-can-ferrereta-12001",
+   "text": "Hotel Can Ferrereta"
+  },
+  {
+   "heading": "Remarkable Personality in the Balearic Islands",
+   "prefix": "l-can-ferrereta-12001\" target=\"_blank\">Hotel Can Ferrereta ,",
+   "href": "https://guide.michelin.com/en/hotels-stays/majorca/nobis-hotel-palma-13514",
+   "text": "Nobis Hotel Palma"
+  },
+  {
+   "heading": "Remarkable Personality in the Balearic Islands",
+   "prefix": "arget=\"_blank\">Nobis Hotel Palma ) to the stylish hotspots (",
+   "href": "https://guide.michelin.com/en/hotels-stays/majorca/es-princep-9273",
+   "text": "Es Princep"
+  },
+  {
+   "heading": "Remarkable Personality in the Balearic Islands",
+   "prefix": "tspots ( Es Princep and",
+   "href": "https://guide.michelin.com/en/hotels-stays/majorca/la-residencia-a-belmond-hotel-mallorca-6384",
+   "text": "La Residencia"
+  },
+  {
+   "heading": "Remarkable Personality in the Balearic Islands",
+   "prefix": "former cannon dugouts. On Minorca, check out Key hotels like",
+   "href": "https://guide.michelin.com/en/hotels-stays/minorca/torralbenc-6993",
+   "text": "Torralbenc"
+  },
+  {
+   "heading": "Remarkable Personality in the Balearic Islands",
+   "prefix": "e bones of an old farm; or, in the capital of Mahón, look at",
+   "href": "https://guide.michelin.com/en/hotels-stays/minorca/cristine-bedfor-12081",
+   "text": "Cristine Bedfor"
+  },
+  {
+   "heading": "Radical and Renewed Design",
+   "prefix": "argely in historic 19th or 20th century facades. Places like",
+   "href": "https://guide.michelin.com/en/hotels-stays/madrid/ac-santo-mauro-200",
+   "text": "Santo Mauro"
+  },
+  {
+   "heading": "Radical and Renewed Design",
+   "prefix": "Mauro , in a former Duke’s 1895 neoclassical mansion, or the",
+   "href": "https://guide.michelin.com/en/hotels-stays/madrid/hotel-ritz-5865",
+   "text": "Ritz"
+  },
+  {
+   "heading": "Radical and Renewed Design",
+   "prefix": " celebrate grand departures from such a style. The pinnacle:",
+   "href": "https://guide.michelin.com/en/hotels-stays/elciego/hotel-marques-de-riscal-7425",
+   "text": "Hotel Marques de Riscal"
+  },
+  {
+   "heading": "Radical and Renewed Design",
+   "prefix": "above its vineyards. See too the ultra-modern glass boxes at",
+   "href": "https://guide.michelin.com/en/hotels-stays/alicante/vivood-landscape-hotel-10247",
+   "text": "Vivood Landscape Hotel"
+  },
+  {
+   "heading": "Key Hotels with MICHELIN Star restaurants",
+   "prefix": "happens that several hotels in Spain sport both. Among them:",
+   "href": "https://guide.michelin.com/en/hotels-stays/san-sebastian/akelarre-8643",
+   "text": "Akelarre"
+  },
+  {
+   "heading": "Key Hotels with MICHELIN Star restaurants",
+   "prefix": "an-sebastian/restaurant/akelare\" target=\"_blank\">Akelarre ),",
+   "href": "https://guide.michelin.com/en/hotels-stays/caceres-1/atrio-restaurante-hotel-6598",
+   "text": "Atrio Restaurante Hotel"
+  },
+  {
+   "heading": "Key Hotels with MICHELIN Star restaurants",
+   "prefix": "restaurant: Atrio ), and",
+   "href": "https://guide.michelin.com/en/hotels-stays/pontevedra/pepe-vieira-hotel-relais-chateaux-13404?q=Pepe+Vieira+Hotel+Relais+%26+Ch%C3%A2teaux&amp;hotelId=13404&amp;arr=2024-06-18&amp;dep=2024-06-19&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Pepe Vieria Restaurant Hotel"
+  },
+  {
+   "heading": "Key Hotels with MICHELIN Star restaurants",
+   "prefix": "ated, we see too a strong crop of winery hotels. Places like",
+   "href": "https://guide.michelin.com/en/hotels-stays/tarragona/terra-dominicata-hotel-winery-8962",
+   "text": "Terra Dominicata"
+  },
+  {
+   "heading": "Key Hotels with MICHELIN Star restaurants",
+   "prefix": "minicata (a 12th century monastery with its own vintage) and",
+   "href": "https://guide.michelin.com/en/hotels-stays/teruel/torre-del-marques-hotel-spa-winery-11626",
+   "text": "Torre del Marques"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "Cáceres:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/caceres-1/atrio-restaurante-hotel-6598",
+   "text": "Atrio Restaurante Hotel"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "tel-6598\" target=\"_blank\">Atrio Restaurante Hotel Escaladei:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/tarragona/terra-dominicata-hotel-winery-8962",
+   "text": "Terra Dominicata - Hotel & Winery"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "nery-8962\" target=\"_blank\">Terra Dominicata - Hotel & Winery",
+   "href": "https://guide.michelin.com/en/hotels-stays/bordeaux/les-sources-de-caudalie-6023",
+   "text": ""
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "deaux/les-sources-de-caudalie-6023\" target=\"_blank\"> Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/hotel-ritz-5865",
+   "text": "Mandarin Oriental Ritz, Madrid"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": " target=\"_blank\">Mandarin Oriental Ritz, Madrid Sardoncillo:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/teruel/torre-del-marques-hotel-spa-winery-11626",
+   "text": "Torre del Marqués Hotel Spa & Winery"
+  },
+  {
+   "heading": "The Three Key Hotels",
+   "prefix": "target=\"_blank\">Torre del Marqués Hotel Spa & Winery Teruel:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/valladolid2/abadia-retuerta-ledomaine-10200",
+   "text": "Abadía Retuerta LeDomaine"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "A Coruña:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/la-coruna/casa-beatnik-hotel-13030",
+   "text": "Casa Beatnik Hotel"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "k-hotel-13030\" target=\"_blank\">Casa Beatnik Hotel Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/mandarin-oriental-barcelona-6386",
+   "text": "Mandarin Oriental Barcelona"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "386\" target=\"_blank\">Mandarin Oriental Barcelona Cala Blava:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/cap-rocat-6377",
+   "text": "Cap Rocat"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "rca/cap-rocat-6377\" target=\"_blank\">Cap Rocat Deià-Mallorca:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/la-residencia-a-belmond-hotel-mallorca-6384",
+   "text": "La Residencia, A Belmond Hotel, Mallorca"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "et=\"_blank\">La Residencia, A Belmond Hotel, Mallorca Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/four-seasons-hotel-madrid-13597",
+   "text": "Four Seasons Hotel Madrid"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "rid-13597\" target=\"_blank\">Four Seasons Hotel Madrid Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/hotel-villa-magna-5307",
+   "text": "Rosewood Villa Magna"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "a-magna-5307\" target=\"_blank\">Rosewood Villa Magna Marbella:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/marbella/marbella-club-hotel-5985",
+   "text": "Marbella Club Hotel"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "5985\" target=\"_blank\">Marbella Club Hotel Palma de Mallorca:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/hotel-can-cera-6753",
+   "text": "Hotel Can Cera"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "ca/hotel-can-cera-6753\" target=\"_blank\">Hotel Can Cera Poio:",
+   "href": "https://guide.michelin.com/en/hotels-stays/pontevedra/pepe-vieira-hotel-relais-chateaux-13404?q=Pepe+Vieira+Hotel+Relais+%26+Ch%C3%A2teaux&amp;hotelId=13404&amp;arr=2024-06-18&amp;dep=2024-06-19&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Pepe Vieira Restaurant & Hotel"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "arget=\"_blank\">Pepe Vieira Restaurant & Hotel San Sebastián:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/san-sebastian/akelarre-8643",
+   "text": "Akelarre"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "-sebastian/akelarre-8643\" target=\"_blank\">Akelarre Santanyí:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/hotel-can-ferrereta-12001",
+   "text": "Hotel Can Ferrereta"
+  },
+  {
+   "heading": "The Two Key Hotels",
+   "prefix": "errereta-12001\" target=\"_blank\">Hotel Can Ferrereta Torrent:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/girona/mas-de-torrent-hotel-spa-7200",
+   "text": "Mas de Torrent Hotel & Spa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "Adeje:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/tenerife/bahia-del-duque-13701",
+   "text": "Bahia del Duque"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ahia-del-duque-13701\" target=\"_blank\">Bahia del Duque Adeje:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/tenerife/royal-hideaway-corales-resort-10348",
+   "text": "Royal Hideaway Corales Resort"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "10348\" target=\"_blank\">Royal Hideaway Corales Resort Alaior:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/minorca/torralbenc-6993",
+   "text": "Torralbenc"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "inorca/torralbenc-6993\" target=\"_blank\">Torralbenc Albolote:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/granada/hotel-cortijo-del-marques-9276",
+   "text": "Hotel Cortijo del Marqués"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "arques-9276\" target=\"_blank\">Hotel Cortijo del Marqués Artà:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/es-raco-darta-11990",
+   "text": "Es Raco d'Artà"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-raco-darta-11990\" target=\"_blank\">Es Raco d'Artà Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/abac-restaurant-hotel-1581",
+   "text": "ABaC Restaurant & Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "tel-1581\" target=\"_blank\">ABaC Restaurant & Hotel Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/alma-barcelona-6441",
+   "text": "Alma Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ma-barcelona-6441\" target=\"_blank\">Alma Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/almanac-barcelona-9002",
+   "text": "Almanac Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "barcelona-9002\" target=\"_blank\">Almanac Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/antiga-casa-buenavista-12122",
+   "text": "Antiga Casa Buenavista"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "sta-12122\" target=\"_blank\">Antiga Casa Buenavista Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/hotel-arts-barcelona-7408",
+   "text": "Hotel Arts Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "celona-7408\" target=\"_blank\">Hotel Arts Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/en/hotels-stays/barcelona/hotel-boutique-mirlo-barcelona-12598",
+   "text": "Hotel Boutique Mirlo"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "elona-12598\" target=\"_blank\">Hotel Boutique Mirlo Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/mercer-hotel-barcelona-6912",
+   "text": "Mercer Hotel Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "lona-6912\" target=\"_blank\">Mercer Hotel Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/monument-hotel-8177",
+   "text": "Monument Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "nument-hotel-8177\" target=\"_blank\">Monument Hotel Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/ohla-eixample-8735",
+   "text": "Ohla Eixample"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ohla-eixample-8735\" target=\"_blank\">Ohla Eixample Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/serras-barcelona-12051",
+   "text": "Serras Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "barcelona-12051\" target=\"_blank\">Serras Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/en/hotels-stays/barcelona/seventy-barcelona-13713?q=&amp;hotelId=13713&amp;arr=2024-05-27&amp;dep=2024-05-28&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Seventy Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "nA=1&nC=0&nR=1\" target=\"_blank\">Seventy Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/soho-house-barcelona-13089",
+   "text": "Soho House Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "elona-13089\" target=\"_blank\">Soho House Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/the-one-barcelona-8519",
+   "text": "The One Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "barcelona-8519\" target=\"_blank\">The One Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/wittmore-hotel-adults-only-13856?q=Wittmore+Hotel+-+Adults+Only&amp;hotelId=13856&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Wittmore Hotel Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "=0&nR=1\" target=\"_blank\">Wittmore Hotel Barcelona Barcelona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/barcelona/yurbban-passage-hotel-spa-11009",
+   "text": "Yurbban Passage Hotel & Spa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "09\" target=\"_blank\">Yurbban Passage Hotel & Spa Benimantell:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/alicante/vivood-landscape-hotel-10247",
+   "text": "VIVOOD Landscape Hotel & Spa - Adults Only"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "\"_blank\">VIVOOD Landscape Hotel & Spa - Adults Only Briones:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/briones/hotel-santa-maria-briones-13146",
+   "text": "Hotel Santa María Briones"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "146\" target=\"_blank\">Hotel Santa María Briones Cala Vadella:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/ibiza/petunia-ibiza-a-beaumier-hotel-12256",
+   "text": "Petunia Ibiza, A Beaumier Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "256\" target=\"_blank\">Petunia Ibiza, A Beaumier Hotel Campos:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/sa-creu-nova-petit-palais-art-spa-8732",
+   "text": "Sa Creu Nova Petit Palais Art & Spa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "lank\">Sa Creu Nova Petit Palais Art & Spa Canfranc-Estación:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/huesca/canfranc-estacion-a-royal-hideaway-hotel-13117",
+   "text": "Canfranc Estación, a Royal Hideaway Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "_blank\">Canfranc Estación, a Royal Hideaway Hotel Capdepera:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/predi-son-jaumell-9788",
+   "text": "Predi Son Jaumell"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "son-jaumell-9788\" target=\"_blank\">Predi Son Jaumell Casares:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/marbella/finca-cortesin-2721",
+   "text": "Finca Cortesin"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "finca-cortesin-2721\" target=\"_blank\">Finca Cortesin Cordoba:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/cordoba-1/hospes-palacio-del-bailio-301",
+   "text": "Hospes Palacio Del Bailio"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "lio-301\" target=\"_blank\">Hospes Palacio Del Bailio Donostia:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/san-sebastian/lasala-plaza-hotel-8902",
+   "text": "Lasala Plaza Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "laza-hotel-8902\" target=\"_blank\">Lasala Plaza Hotel Elciego:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/elciego/hotel-marques-de-riscal-7425",
+   "text": "Hotel Marques de Riscal"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "scal-7425\" target=\"_blank\">Hotel Marques de Riscal Es Canar:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/ibiza/bless-hotel-ibiza-9120",
+   "text": "Bless Hotel Ibiza"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "l-ibiza-9120\" target=\"_blank\">Bless Hotel Ibiza Es Capdellà:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/castell-son-claret-10110",
+   "text": "Castell Son Claret"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "son-claret-10110\" target=\"_blank\">Castell Son Claret Garraf:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/garraf/little-beach-house-barcelona-13093",
+   "text": "Little Beach House Barcelona"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-13093\" target=\"_blank\">Little Beach House Barcelona Girona:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/girona/hotel-mas-lazuli-7693",
+   "text": "Hotel Mas Lazuli"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "l-mas-lazuli-7693\" target=\"_blank\">Hotel Mas Lazuli Granada:",
+   "href": "https://guide.michelin.com/en/hotels-stays/granada/seda-club-hotel-13304",
+   "text": "Seda Club Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": " target=\"_blank\">Seda Club Hotel Las Palmas de Gran Canaria:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/gran-canaria/santa-catalina-a-royal-hideaway-hotel-13700",
+   "text": "Santa Catalina, a Royal Hideaway Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "arget=\"_blank\">Santa Catalina, a Royal Hideaway Hotel Luces:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/Luces/coolrooms-palacio-de-luces-12682",
+   "text": "CoolRooms Palacio de Luces"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "es-12682\" target=\"_blank\">CoolRooms Palacio de Luces Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/coolrooms-atocha-11111",
+   "text": "CoolRooms Palacio de Atocha"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "a-11111\" target=\"_blank\">CoolRooms Palacio de Atocha Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/gran-hotel-ingles-11161",
+   "text": "Gran Hotel Inglés"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "otel-ingles-11161\" target=\"_blank\">Gran Hotel Inglés Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/gran-melia-palacio-de-los-duques-8808",
+   "text": "Gran Meliá Palacio de los Duques"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "08\" target=\"_blank\">Gran Meliá Palacio de los Duques Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/hotel-unico-madrid-2911",
+   "text": "Hotel Unico Madrid"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "nico-madrid-2911\" target=\"_blank\">Hotel Unico Madrid Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/only-you-boutique-hotel-madrid-8366",
+   "text": "Only YOU Boutique Hotel Madrid"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "8366\" target=\"_blank\">Only YOU Boutique Hotel Madrid Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/only-you-hotel-atocha-8400",
+   "text": "Only YOU Hotel Atocha"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "l-atocha-8400\" target=\"_blank\">Only YOU Hotel Atocha Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/ac-santo-mauro-200",
+   "text": "Santo Mauro, a Luxury Collection Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rget=\"_blank\">Santo Mauro, a Luxury Collection Hotel Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/the-principal-madrid-7791",
+   "text": "The Principal Madrid"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "al-madrid-7791\" target=\"_blank\">The Principal Madrid Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/the-westin-palace-madrid-9482",
+   "text": "The Westin Palace Madrid"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "adrid-9482\" target=\"_blank\">The Westin Palace Madrid Madrid:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/madrid/urso-hotel-spa-madrid-7607",
+   "text": "URSO Hotel & Spa Madrid"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-madrid-7607\" target=\"_blank\">URSO Hotel & Spa Madrid Mahón:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/minorca/can-alberti-1740-hotel-boutique-12462",
+   "text": "Can Alberti 1740 Hotel Boutique"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "2462\" target=\"_blank\">Can Alberti 1740 Hotel Boutique Mahón:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/minorca/cristine-bedfor-12081",
+   "text": "Cristine Bedfor"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "tine-bedfor-12081\" target=\"_blank\">Cristine Bedfor Mallorca:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/cap-vermell-grand-hotel-118902-8439",
+   "text": "Cap Vermell Grand Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "8902-8439\" target=\"_blank\">Cap Vermell Grand Hotel Marbella:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/marbella/anantara-villa-padierna-palace-benahavis-marbella-resort-8770",
+   "text": "Anantara Villa Padierna Palace Benahavís Marbella Resort"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "ra Villa Padierna Palace Benahavís Marbella Resort Marbella:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/marbella/nobu-hotel-marbella-8897",
+   "text": "Nobu Hotel Marbella"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-marbella-8897\" target=\"_blank\">Nobu Hotel Marbella Menorca:",
+   "href": "https://guide.michelin.com/en/hotels-stays/minorca/faustino-gran-relais-chateaux-7714?arr=2024-05-27&amp;dep=2024-05-28",
+   "text": "Hotel Can Faustino"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "27&dep=2024-05-28\" target=\"_blank\">Hotel Can Faustino Mijas:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/malaga/la-zambra-resort-13703",
+   "text": "La Zambra Resort"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "bra-resort-13703\" target=\"_blank\">La Zambra Resort Monachil:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/granada/la-almunia-del-valle-9642",
+   "text": "La Almunia del Valle"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "l-valle-9642\" target=\"_blank\">La Almunia del Valle Montuïri:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/finca-serena-mallorca-9136",
+   "text": "Finca Serena Mallorca"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rca-9136\" target=\"_blank\">Finca Serena Mallorca Palafrugell:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/costa-brava/can-mascort-eco-hotel-13021?q=Can+Mascort+Eco+Hotel&amp;hotelId=13021&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Can Mascort Eco Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "nA=1&nC=0&nR=1\" target=\"_blank\">Can Mascort Eco Hotel Palma:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/can-bordoy-grand-house-garden-9143",
+   "text": "Can Bordoy Grand House & Garden"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "143\" target=\"_blank\"> Can Bordoy Grand House & Garden Palma:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/es-princep-9273",
+   "text": "Es Princep"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "s/majorca/es-princep-9273\" target=\"_blank\">Es Princep Palma:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/sant-francesc-hotel-singular-10853",
+   "text": "Sant Francesc Hotel Singular"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "r-10853\" target=\"_blank\">Sant Francesc Hotel Singular Palma:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/boutique-hotel-posada-terra-santa-9261",
+   "text": "Boutique Hotel Posada Terra Santa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "61\" target=\"_blank\">Boutique Hotel Posada Terra Santa Palma:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/castillo-h-son-vida-9796",
+   "text": "Castillo Hotel Son Vida"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "on-vida-9796\" target=\"_blank\">Castillo Hotel Son Vida Palma:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/el-llorenc-parc-de-la-mar-adults-only-9395",
+   "text": "El Llorenç Parc de la Mar - Adults Only"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "rget=\"_blank\">El Llorenç Parc de la Mar - Adults Only Palma:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/nobis-hotel-palma-13514",
+   "text": "Nobis Hotel Palma"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "tel-palma-13514\" target=\"_blank\">Nobis Hotel Palma Peralada:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/girona/peralada-9668",
+   "text": "Hotel Peralada Wine Spa & Golf"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "68\" target=\"_blank\">Hotel Peralada Wine Spa & Golf Pollensa:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/son-brull-hotel-spa-8464",
+   "text": "Son Brull Hotel & Spa"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "l-spa-8464\" target=\"_blank\">Son Brull Hotel & Spa Salamanca:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/salamanca4/hotel-rector-5135",
+   "text": "Hotel Rector"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "tel-rector-5135\" target=\"_blank\">Hotel Rector San Sebastián:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/san-sebastian/hotel-maria-cristina-7470",
+   "text": "Hotel Maria Cristina"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "na-7470\" target=\"_blank\">Hotel Maria Cristina San Sebastián:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/san-sebastian/hotel-villa-favorita-121675-11631",
+   "text": "Hotel Villa Favorita - Adults Only"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "t=\"_blank\">Hotel Villa Favorita - Adults Only San Sebastián:",
+   "href": "https://guide.michelin.com/en/hotels-stays/san-sebastian/nobu-hotel-san-sebastian-123670-13489",
+   "text": "Nobu Hotel San Sebastián"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "0-13489\" target=\"_blank\">Nobu Hotel San Sebastián Santander:",
+   "href": "https://guide.michelin.com/en/hotels-stays/Santander/helguera-palacio-boutique-antique-13204",
+   "text": "Helguera Palacio Boutique & Antique"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": ">Helguera Palacio Boutique & Antique Santiago de Compostela:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/santiago-de-compostela/hotel-spa-relais-chateaux-a-quinta-da-auga-3601",
+   "text": "Hotel Spa Relais & Chateaux A Quinta da Auga"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "blank\">Hotel Spa Relais & Chateaux A Quinta da Auga Seville:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sevilla/coolrooms-palacio-villapanes-5-gl-3421?q=CoolRooms+Palacio+Villapan%C3%A9s+5+GL&amp;hotelId=3421&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "CoolRooms Palacio Villapanés"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "&nR=1\" target=\"_blank\">CoolRooms Palacio Villapanés Seville:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sevilla/hotel-mercer-sevilla-8527",
+   "text": "Hotel Mercer Sevilla"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "-sevilla-8527\" target=\"_blank\">Hotel Mercer Sevilla Seville:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/sevilla/hotel-vincci-seleccion-unuk-gl-13699?q=Hotel+Vincci+Selecci%C3%B3n+Unuk+GL&amp;hotelId=13699&amp;arr=2024-12-25&amp;dep=2024-12-26&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Unuk"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "&dep=2024-12-26&nA=1&nC=0&nR=1\" target=\"_blank\">Unuk Soller:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/majorca/hotel-lavenida-8574",
+   "text": "Hotel L'Avenida"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "tel-lavenida-8574\" target=\"_blank\">Hotel L'Avenida Valencia:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/valencia/caro-hotel-13702",
+   "text": "Caro Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "encia/caro-hotel-13702\" target=\"_blank\">Caro Hotel Valencia:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/valencia/helen-berger-boutique-hotel-12466",
+   "text": "Helen Berger Boutique Hotel"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "12466\" target=\"_blank\">Helen Berger Boutique Hotel Valencia:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/valencia/only-you-hotel-valencia-13039",
+   "text": "Only YOU Hotel Valencia"
+  },
+  {
+   "heading": "The One Key Hotels",
+   "prefix": "target=\"_blank\">Only YOU Hotel Valencia Villanueva de Tapia:",
+   "href": "https://guide.michelin.com/us/en/hotels-stays/granada/la-bobadilla-6777",
+   "text": "La Bobadilla"
+  }
+ ],
+ "text": " The First MICHELIN Key Hotels: All the Keys in Spain Restaurants Hotels Travel Guides Magazine My Lists Restaurants Hotels MICHELIN Guide Plus Travel Guides Best-of Guides Magazine MICHELIN Guide Ceremony Contact us Subscribe to newsletter Booking partnership with OpenTable Booking partnership with Resy USA - English - USD Travel 4 minutes 29 April 2024 The First MICHELIN Key Hotels: All the Keys in Spain The MICHELIN Guide announces top honors for Spanish hotels in 2024. Spain MICHELIN Keys Barcelona Hotels Madrid Share Looking for the latest Keys? Head here for our guide to the 2025 selection. On April 29, 2024, the MICHELIN Guide revealed the brand new One, Two, and Three Key distinctions for the most outstanding hotels in Spain. This announcement comes four years into a comprehensive refresh of our hotel selection. The MICHELIN Guide now includes over 5,000 hotels across the world, and not a single one is simply a room for the night. These are places that significantly add to your experience as a traveler, each vetted and judged excellent in five categories: architecture and interior design, quality and consistency of service, overall personality and character, value for the price, and a significant contribution to the guest experience in a particular setting. Which brings us back to the Keys. The culmination of countless hours of evaluation by our team of experts, the Key hotels below represent the highlights of our broader selection. Like the MICHELIN Stars for restaurants, the MICHELIN Keys are our most outstanding hotels. In total, the 2024 MICHELIN Guide hotel selection in Spain includes five Three Key hotels, 12 Two Key hotels, and 80 One Key hotels. Want to know more about the MICHELIN Key? Here’s everything you need to know . Or, head below to see all the Keys. Cap Rocat — Mallorca How To Look Through the List Jump straight to the list or take a deeper dive into select Key hotels. On this page, you’ll find every single one of our new Key distinctions, sorted by number of Keys and location in Spain. Click on any hotel to go straight to the hotel page to learn more about the nuts and bolts of each property. Alternatively, you can read any number of in-depth pieces about the aspects of the special craft that makes up a Key hotel over on our magazine . While our anonymous selection team spends every day scouring the world to vet favorite hotels and unearth hidden gems, our editorial team delves into the hotel craft by speaking directly to hoteliers. Look inside the Sentinel Suite of Mallorca's 2-Key fortress hotel. See what makes this 1-Key hotel among the best designed in the country. Or take a look at all of Spain's 3-Key hotels, in photos. Subscribe to our newsletter for more like this. Highlights of the Spain 2024 Key Hotel List Cristine Bedfor — Minorca Remarkable Personality in the Balearic Islands Between Mallorca, Minorca, and Ibiza, the Balearic Islands display some of greatest variety in Key hotel winners across any region in the country. Mallorca, in particular, finds a bevy of options: from the small and historic ( Son Brull Hotel & Spa , Hotel Can Ferrereta , Nobis Hotel Palma ) to the stylish hotspots ( Es Princep and La Residencia ). One jewel on the island that defies typical categorization: Cap Rocat, an ancient fortress expertly remade , where the top suites occupy former cannon dugouts. On Minorca, check out Key hotels like Torralbenc , a tasteful, intimate, high-end hotel built from the bones of an old farm; or, in the capital of Mahón, look at Cristine Bedfor — one of the most creative, high-concept design hotels in our collection. Also read: Every Three Key Hotel in Paris Mandarin Oriental Ritz — Madrid Radical and Renewed Design In Madrid, you’ll find Key hotels largely in historic 19th or 20th century facades. Places like Santo Mauro , in a former Duke’s 1895 neoclassical mansion, or the Ritz , a Belle Époque palace that dates back to King Alfonso XIII. These are remarkable, and mainstays of our Spanish collection — but we’re ecstatic too to celebrate grand departures from such a style. The pinnacle: Hotel Marques de Riscal , a state-of-the-art Frank Gehry building complete with titanium “hair” (Gehry’s words) swooping above its vineyards. See too the ultra-modern glass boxes at Vivood Landscape Hotel outside Alicante. Akelarre — San Sebastián Key Hotels with MICHELIN Star restaurants The Key hotel distinction and the MICHELIN Star for restaurants are decided independently of one another, but it so happens that several hotels in Spain sport both. Among them: Akelarre in San Sebastián (restaurant: Akelarre ), Atrio Restaurante Hotel in Cáceres (restaurant: Atrio ), and Pepe Vieria Restaurant Hotel in Poio (restaurant: Pepe Vieira ). Not unrelated, we see too a strong crop of winery hotels. Places like Terra Dominicata (a 12th century monastery with its own vintage) and Torre del Marques (an 18th century tower with views of the olive groves) are two of our most fascinating. Also read: The 5 Room Inn with 3 Keys and 3 Stars VIVOOD Landscape Hotel & Spa - Adults Only — Benimantell Click below to jump to each distinction: Three Keys Two Keys One Key The Three Key Hotels Torre del Marqués Hotel Spa & Winery — Teruel Cáceres: Atrio Restaurante Hotel Escaladei: Terra Dominicata - Hotel & Winery Madrid: Mandarin Oriental Ritz, Madrid Sardoncillo: Torre del Marqués Hotel Spa & Winery Teruel: Abadía Retuerta LeDomaine New York by The MICHELIN Guide – expert insights on where to dine, stay and explore The Two Key Hotels Marbella Club Hotel — Marbella A Coruña: Casa Beatnik Hotel Barcelona: Mandarin Oriental Barcelona Cala Blava: Cap Rocat Deià-Mallorca: La Residencia, A Belmond Hotel, Mallorca Madrid: Four Seasons Hotel Madrid Madrid: Rosewood Villa Magna Marbella: Marbella Club Hotel Palma de Mallorca: Hotel Can Cera Poio: Pepe Vieira Restaurant & Hotel San Sebastián: Akelarre Santanyí: Hotel Can Ferrereta Torrent: Mas de Torrent Hotel & Spa The One Key Hotels Soho House — Barcelona Adeje: Bahia del Duque Adeje: Royal Hideaway Corales Resort Alaior: Torralbenc Albolote: Hotel Cortijo del Marqués Artà: Es Raco d'Artà Barcelona: ABaC Restaurant & Hotel Barcelona: Alma Barcelona Barcelona: Almanac Barcelona Barcelona: Antiga Casa Buenavista Barcelona: Hotel Arts Barcelona Barcelona: Hotel Boutique Mirlo Barcelona: Mercer Hotel Barcelona Barcelona: Monument Hotel Barcelona: Ohla Eixample Barcelona: Serras Barcelona Barcelona: Seventy Barcelona Barcelona: Soho House Barcelona Barcelona: The One Barcelona Barcelona: Wittmore Hotel Barcelona Barcelona: Yurbban Passage Hotel & Spa Benimantell: VIVOOD Landscape Hotel & Spa - Adults Only Briones: Hotel Santa María Briones Cala Vadella: Petunia Ibiza, A Beaumier Hotel Campos: Sa Creu Nova Petit Palais Art & Spa Canfranc-Estación: Canfranc Estación, a Royal Hideaway Hotel Capdepera: Predi Son Jaumell Casares: Finca Cortesin Cordoba: Hospes Palacio Del Bailio Donostia: Lasala Plaza Hotel Elciego: Hotel Marques de Riscal Es Canar: Bless Hotel Ibiza Es Capdellà: Castell Son Claret Garraf: Little Beach House Barcelona Girona: Hotel Mas Lazuli Granada: Seda Club Hotel Las Palmas de Gran Canaria: Santa Catalina, a Royal Hideaway Hotel Luces: CoolRooms Palacio de Luces Madrid: CoolRooms Palacio de Atocha Madrid: Gran Hotel Inglés Madrid: Gran Meliá Palacio de los Duques Madrid: Hotel Unico Madrid Madrid: Only YOU Boutique Hotel Madrid Madrid: Only YOU Hotel Atocha Madrid: Santo Mauro, a Luxury Collection Hotel Madrid: The Principal Madrid Madrid: The Westin Palace Madrid Madrid: URSO Hotel & Spa Madrid Mahón: Can Alberti 1740 Hotel Boutique Mahón: Cristine Bedfor Mallorca: Cap Vermell Grand Hotel Marbella: Anantara Villa Padierna Palace Benahavís Marbella Resort Marbella: Nobu Hotel Marbella Menorca: Hotel Can Faustino Mijas: La Zambra Resort Monachil: La Almunia del Valle Montuïri: Finca Serena Mallorca Palafrugell: Can Mascort Eco Hotel Palma: Can Bordoy Grand House & Garden Palma: Es Princep Palma: Sant Francesc Hotel Singular Palma: Boutique Hotel Posada Terra Santa Palma: Castillo Hotel Son Vida Palma: El Llorenç Parc de la Mar - Adults Only Palma: Nobis Hotel Palma Peralada: Hotel Peralada Wine Spa & Golf Pollensa: Son Brull Hotel & Spa Salamanca: Hotel Rector San Sebastián: Hotel Maria Cristina San Sebastián: Hotel Villa Favorita - Adults Only San Sebastián: Nobu Hotel San Sebastián Santander: Helguera Palacio Boutique & Antique Santiago de Compostela: Hotel Spa Relais & Chateaux A Quinta da Auga Seville: CoolRooms Palacio Villapanés Seville: Hotel Mercer Sevilla Seville: Unuk Soller: Hotel L'Avenida Valencia: Caro Hotel Valencia: Helen Berger Boutique Hotel Valencia: Only YOU Hotel Valencia Villanueva de Tapia: La Bobadilla Hero Image: Marquès de Riscal — Elciego Ad Written by the MICHELIN Guide Travel Travel 6 min. 8 Spellbinding Gothic-Inspired Design Hotels in the U.S. and Canada From an imposing château to a former church, these hotels are as moody and dramatic as they are stylish and sophisticated. Hotels Travel Travel 3 min. Vegan-Friendly Restaurants in London Embrace plant power with our selection of the best vegan restaurants in London – and discover where else to find proper plant-based options. Vegan London Restaurants Editor's Pick Travel 3 min. The Country with the Most Key Hotels in Central America Inspectors found plenty of gems throughout the region in 2026. But Costa Rica is still the undisputed epicenter of Central American hospitality. MICHELIN Keys Hotels Costa Rica Travel 5 min. Where to Stay to Celebrate Samhain, Ireland's Original Version of Halloween With over 2,000 years of history, Samhain is the original Irish celebration marking the 31st October and 1st November – and at many locations around the country, the Samhain festivities are already in full swing. We take a look at the best places to visit and where to stay while you're here. Travel Hotels Editor's Pick All articles of Travel Keep Exploring - Stories we think you will enjoy reading Travel 4 min. The Best Hotels in Nashville — One-on-One Concerts and 8 Million Bees Only-in-Nashville moments in our breakdown of Inspectors' top five hotels in the city. Travel Hotels Nashville Travel 4 min. How a Ghost Town Transformed Into a Two-Key Luxury Hotel Dunton was founded in 1885 as a mining camp in the wilds of southwestern Colorado. It soon became a ghost town. Then it was turned into Dunton Hot Springs, a Two-Key hotel and one of the most remarkable you'll ever see. MICHELIN Keys Hotels Colorado Travel 3 min. All the Key Hotels in Mexico: From Jungle Treehouses to Brutalist Mansions The MICHELIN Guide's top honors for Mexican hotels in 2026. Hotels Travel MICHELIN Keys MICHELIN Guide Ceremony 3 min. All the MICHELIN Key Hotels in South Australia A guide to all the MICHELIN-Key hotels in South Australia, both classic and quirky. South Australia MICHELIN Keys Hotels Travel 4 min. Beyond the Cherry Blossoms: Japan's Lakeside Hotels Thrive in Autumn Sakura season is a long way off. Instead, one writer shares a local tip: head to the lake for poetic fall colors. Hotels Japan Travel Travel 5 min. In Photos: The Best Beach Hotels in Mexico Across thousands of miles of coastline, nestled between jungle and white sand, the pure beauty of Mexico's top beach hotels. Hotels Travel Mexico Travel 4 min. The Best Berkshires Hotels for a Fall Escape A long tradition of wellness makes the Berkshires hotel scene one of the richest in the Northeast. Hotels Travel Travel 8 min. The 9 Best Places to Spend Christmas Around the World For Foodies Winter time can be one of the most magical period of the year to travel — but where you go depends on what you crave. From mulled wine in Europe’s snow-coated Alpine villages and twinkling markets to sun-drenched tacos in Cabo and steaming bowls of ramen in Tokyo, these are some of the best places to spend Christmas around the world for food lovers. Travel Editor's Pick Christmas Travel 8 min. The 9 Best Food Festivals in France Worth Traveling For From lemon festivals to Champagne celebrations, discover nine of the best food festivals in France — and where to stay nearby. Hotels France Food Travel 6 min. Every Three-Key Hotel in the World: A Guide to the Best of the Best The Three Keys are the best hotels in our selection, and 18 new picks just joined the list. Use this guide to explore every Three-Key in the world. Travel MICHELIN Keys Hotels Select check-in date S M T W T F S Dates Rates in USD for 1 night, 1 guest Rates in USD for 1 night, 1 guest Save MICHELIN Guide Magazine Travel The First MICHELIN Key Hotels: All the Keys in Spain Be the first to get news and updates about the MICHELIN Guide Subscribe Michelin will process your personal data to manage your subscription, measure the performance of our campaigns and analyze your interactions with our communications. Your data can be shared with other Michelin affiliates (TabletHotels and Robert Parker) in order to know you better and with your consent, to sending you marketing offers. You can manage your communication preferences at any time or unsubscribe using the link included in all our emails. To exercise your privacy rights, contact us . Learn more about how Michelin manages your data here. Follow us Use the app to find the best restaurants and hotels everywhere Follow us MICHELIN Guide About the Guide Restaurants Hotels Hotels On Sale Partners Contact Us Leave a review MICHELIN Guide Plus The Michelin Group The Michelin Company Michelin Tires ViaMichelin MICHELIN Guide selections Abu Dhabi Argentina Australia Austria Belgium Brazil Canada Chinese Mainland Croatia Czech Republic Denmark Dubai Estonia Finland France Germany Greece Hong Kong SAR Hungary Iceland Italy Japan Latvia Lithuania Luxembourg Macau SAR Malaysia Malta Mexico Netherlands New Zealand Norway Poland Portugal Qatar Republic of Ireland Saudi Arabia Serbia Singapore Slovenia South Korea Spain Sweden Switzerland Taiwan Region Thailand The Philippines Turkey United Kingdom USA Vietnam Copyright © 2026 MICHELIN Guide. All rights reserved. Terms of Use Your privacy choices Privacy Policy Legal Notice Accessibility Statement Display settings Customize your experience by easily adjusting display settings for territory, and currency to suit your preferences! Territory: USA France United Kingdom Italia Germany Thailand España Japan Taiwan Netherlands Abu Dhabi Argentina Australia Austria Belgium Brazil Canada Chinese Mainland Croatia Czech Republic Denmark Dubai Estonia Finland Global Greece Hong Kong Hungary Iceland Latvia Lithuania Luxembourg Macau Malaysia Malta Mexico New Zealand Norway Poland Portugal Qatar Republic of Ireland Saudi Arabia Serbia Singapore Slovenia South Korea Sweden Switzerland The Philippines Türkiye USA - Alabama (American South) USA - California USA - Chicago USA - Colorado USA - Georgia (American South) USA - Louisiana (American South) USA - Massachusetts USA - Mississippi (American South) USA - New York USA - North Carolina (American South) USA - Orlando, Miami, Tampa USA - Pennsylvania USA - South Carolina (American South) USA - Southwest USA - Tennessee (American South) USA - Washington DC Vietnam Language: English Currency: USD - US Dollar EUR - Euro GBP - Pound Sterling CAD - Canadian Dollar CHF - Swiss Franc JPY - Yen AED - UAE Dirham AUD - Australian Dollar BBD - Barbados Dollar BHD - Bahraini Dinar BMD - Bermudian Dollar BRL - Brazilian Real BSD - Bahamian Dollar CLP - Chilean Peso CNY - Yuan Renminbi COP - Colombian Peso DKK - Danish Krone DOP - Dominican Peso FJD - Fiji Dollar HKD - Hong Kong Dollar IDR - Rupiah INR - Indian Rupee ISK - Iceland Krona JMD - Jamaican Dollar KES - Kenyan Shilling KWD - Kuwaiti Dinar LKR - Sri Lanka Rupee MAD - Moroccan Dirham MUR - Mauritius Rupee MXN - Mexican Peso MYR - Malaysian Ringgit NOK - Norwegian Krone NZD - New Zealand Dollar OMR - Rial Omani PGK - Kina PHP - Philippine Peso PKR - Pakistan Rupee QAR - Qatari Rial SAR - Saudi Riyal SCR - Seychelles Rupee SEK - Swedish Krona SGD - Singapore Dollar THB - Baht TND - Tunisian Dinar TRL - Turkish Lira TTD - Trinidad and Tobago Dollar VEB - Bolivar XPF - CFP Franc ZAR - Rand Save Want to leave a review? Go to the \"Visited\" list under My Lists and tap the \"Review\" button to leave your comments from your visit × Reset View results Sort by: Not now Would you like to review this establishment? To share your experience, the MICHELIN Guide requires your consent to use cookies. Please note that reviews remain unavailable as long as cookies are declined. Agree and close "
+}

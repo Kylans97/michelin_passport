@@ -1,0 +1,247 @@
+{
+ "meta": {
+  "url": "https://web.archive.org/web/20251013212742id_/https://guide.michelin.com/be/nl/article/travel/alle-michelin-sleutels-in-de-benelux",
+  "final_url": "https://web.archive.org/web/20251013212742id_/https://guide.michelin.com/be/nl/article/travel/alle-michelin-sleutels-in-de-benelux",
+  "status": 200,
+  "title": "Alle MICHELIN Sleutels in de Benelux",
+  "date_published": "2025-10-09T06:56",
+  "date_modified": "2025-10-09T07:00",
+  "read": "2026-10-31 (curl)",
+  "archived_at": "20251013212742"
+ },
+ "edition": 2025,
+ "links": [
+  {
+   "heading": "De drie Sleutel hotels",
+   "section": "De drie Sleutel hotels",
+   "prefix": "Amsterdam:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/amsterdam/de-leurope-amsterdam-5293?q=De+L%27Europe+Amsterdam&amp;hotelId=5293&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "De L'Europe Amsterdam"
+  },
+  {
+   "heading": "België:",
+   "section": "De twee Sleutel hotels",
+   "prefix": "België: Antwerpen:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/antwerp/botanic-sanctuary-antwerp-12582?q=&amp;hotelId=12582&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Botanic Sanctuary Antwerp"
+  },
+  {
+   "heading": "België:",
+   "section": "De twee Sleutel hotels",
+   "prefix": "25-11-05\" target=\"_blank\">Botanic Sanctuary Antwerp Brussel:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/brussels/juliana-hotel-brussels-13998?q=&amp;hotelId=13998&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Juliana Hotel Brussels"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De twee Sleutel hotels",
+   "prefix": "target=\"_blank\">Juliana Hotel Brussels Nederland: Amsterdam:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/amsterdam/hotel-twentyseven-amsterdam-9299?q=&amp;hotelId=9299&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Hotel TwentySeven Amsterdam"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De twee Sleutel hotels",
+   "prefix": "nR=1\" target=\"_blank\">Hotel TwentySeven Amsterdam Amsterdam:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/amsterdam/pillows-grand-boutique-hotel-maurits-at-the-park-14777?q=&amp;hotelId=14777&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Pillows Grand Boutique Hotel Maurits at the Park"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De twee Sleutel hotels",
+   "prefix": ">Pillows Grand Boutique Hotel Maurits at the Park Amsterdam:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/amsterdam/rosewood-amsterdam-14998?q=&amp;hotelId=14998&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Rosewood Amsterdam"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De twee Sleutel hotels",
+   "prefix": "ep=2025-11-05\" target=\"_blank\">Rosewood Amsterdam Amsterdam:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/amsterdam/tivoli-doelen-amsterdam-8433?q=&amp;hotelId=8433&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Tivoli Doelen Amsterdam"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De twee Sleutel hotels",
+   "prefix": "=0&nR=1\" target=\"_blank\">Tivoli Doelen Amsterdam Maastricht:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/maastricht/chateau-neercanne-15342?q=&amp;hotelId=15342&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Château Neercanne"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "België: Antwerpen:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/antwerp/hotel-de-witte-lelie-6284?q=&amp;hotelId=6284&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Hotel De Witte Lelie"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "=2025-11-05\" target=\"_blank\">Hotel De Witte Lelie Antwerpen:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/antwerp/flora-123463-13288?q=&amp;hotelId=13288&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Hotel Flora"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "Id=13288&nA=1&nC=0&nR=1\" target=\"_blank\">Hotel Flora Brugge:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/bruges/boutiquehotel-t-fraeyhuis-14721?q=Boutiquehotel+%27t+Fraeyhuis&amp;hotelId=14721&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Boutiquehotel ’t Fraeyhuis"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "25-11-05\" target=\"_blank\">Boutiquehotel ’t Fraeyhuis Brugge:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/bruges/dukes-palace-brugge-14722?q=&amp;hotelId=14722&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Dukes' Palace Brugge"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "dep=2025-11-05\" target=\"_blank\">Dukes' Palace Brugge Brugge:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/bruges/hotel-van-cleef-10436?q=&amp;hotelId=10436&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Hotel Van Cleef"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "1-04&dep=2025-11-05\" target=\"_blank\">Hotel Van Cleef Brugge:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/bruges/the-notary-13020?q=&amp;hotelId=13020&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "The Notary"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "Id=13020&nA=1&nC=0&nR=1\" target=\"_blank\">The Notary Brussel:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/brussels/corinthia-grand-hotel-astoria-brussels-14567?q=&amp;hotelId=14567&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Corinthia Grand Hotel Astoria Brussels"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "get=\"_blank\">Corinthia Grand Hotel Astoria Brussels Brussel:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/brussels/hotel-amigo-5901?q=H%C3%B4tel+Amigo&amp;hotelId=5901&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Hôtel Amigo"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "2025-11-04&dep=2025-11-05\" target=\"_blank\">Hôtel Amigo Gent:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/ghent/1898-the-post-8744?q=&amp;hotelId=8744&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "1898 The Post"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "25-11-04&dep=2025-11-05\" target=\"_blank\">1898 The Post Gent:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/ghent/pillows-grand-boutique-hotel-reylof-ghent-8011?q=&amp;hotelId=8011&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Pillows Grand Boutique Hotel Reylof Ghent"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "\"_blank\">Pillows Grand Boutique Hotel Reylof Ghent Lanaken :",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/lanaken/domaine-la-butte-aux-bois-9801?q=&amp;hotelId=9801&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Domaine La Butte aux Bois"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "0&nR=1\" target=\"_blank\">Domaine La Butte aux Bois Rochefort:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/rocherfort/chateau-de-vignee-12584?q=&amp;hotelId=12584&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Chateau de Vignée"
+  },
+  {
+   "heading": "België:",
+   "section": "De één Sleutel hotels",
+   "prefix": "1&nC=0&nR=1\" target=\"_blank\">Chateau de Vignée Sint-Truiden:",
+   "href": "https://guide.michelin.com/be/nl/hotels-stays/Sint-Truiden/kasteel-van-ordingen-15346?q=&amp;hotelId=15346&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Kasteel van Ordingen"
+  },
+  {
+   "heading": "Luxemburg:",
+   "section": "De één Sleutel hotels",
+   "prefix": "\" target=\"_blank\">Kasteel van Ordingen Luxemburg: Luxemburg:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/luxembourg-city/le-place-darmes-11340?q=Hotel+Le+Place+d%27Armes&amp;hotelId=11340&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Hôtel Le Place d’Armes"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "target=\"_blank\">Hôtel Le Place d’Armes Nederland: Amsterdam:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/amsterdam/hotel-pulitzer-amsterdam-8062?q=&amp;hotelId=8062&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Pulitzer Amsterdam"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "A=1&nC=0&nR=1\" target=\"_blank\">Pulitzer Amsterdam Amsterdam:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/amsterdam/soho-house-amsterdam-13086?q=Soho%C2%A0House%C2%A0Amsterdam&amp;hotelId=13086&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Soho House Amsterdam"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "=2025-11-05\" target=\"_blank\">Soho House Amsterdam Amsterdam:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/amsterdam/the-craftsmen-14718?q=&amp;hotelId=14718&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "The Craftsmen"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "-04&dep=2025-11-05\" target=\"_blank\">The Craftsmen Amsterdam:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/amsterdam/the-dylan-amsterdam-17?q=&amp;hotelId=17&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "The Dylan Amsterdam"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "dep=2025-11-05\" target=\"_blank\">The Dylan Amsterdam Dalfsen:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/dalfsen/mooirivier-9610?q=&amp;hotelId=9610&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Mooirivier"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "025-11-04&dep=2025-11-05\" target=\"_blank\">Mooirivier Ermelo:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/ermelo/het-roode-koper-10015?q=&amp;hotelId=10015&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Landgoed Hotel Het Roode Koper"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "\" target=\"_blank\">Landgoed Hotel Het Roode Koper Maastricht:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/maastricht/van-oys-maastricht-retreat-15061?q=&amp;hotelId=15061&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Van Oys Maastricht Retreat"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "-11-05\" target=\"_blank\">Van Oys Maastricht Retreat Den Haag:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/the-hague/de-plesman-hotel-the-hague-15198?q=&amp;hotelId=15198&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "De Plesman Hotel The Hague"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "1-05\" target=\"_blank\">De Plesman Hotel The Hague Valkenburg:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/valkenburg/chateau-st-gerlach-11399?q=&amp;hotelId=11399&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Château St. Gerlach"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "ep=2025-11-05\" target=\"_blank\">Château St. Gerlach Voorburg:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/the-hague/central-park-voorburg-13789?q=Central+Park+Voorburg+&amp;hotelId=13789&amp;nA=1&amp;nC=0&amp;nR=1",
+   "text": "Central Park Voorburg"
+  },
+  {
+   "heading": "Nederland:",
+   "section": "De één Sleutel hotels",
+   "prefix": "A=1&nC=0&nR=1\" target=\"_blank\">Central Park Voorburg Zwolle:",
+   "href": "https://guide.michelin.com/nl/nl/hotels-stays/zwolle/pillows-grand-boutique-hotel-ter-borch-zwolle-8757?q=&amp;hotelId=8757&amp;nA=1&amp;nC=0&amp;nR=1&amp;arr=2025-11-04&amp;dep=2025-11-05",
+   "text": "Pillows Grand Boutique Hotel Ter Borch Zwolle"
+  }
+ ],
+ "text": " Alle MICHELIN Sleutels in de Benelux Restaurants Hotels Magazine Favorieten Restaurants Hotels MICHELIN Gids Plus Best-of Guides Magazine Mijn favorieten Contact us Meld u aan voor de nieuwsbrief Bevoorrecht partnerschap TheFork TheFork partnerrestaurants België - Dutch - EUR Travel 1 minuut 09 oktober 2025 Alle MICHELIN Sleutels in de Benelux De MICHELIN Gids heeft de nieuwste onderscheidingen bekendgemaakt voor hotels in Nederland, België en Luxemburg. MICHELIN Sleutel Hotels MICHELIN Keys Editor's Pick Delen De MICHELIN Gids heeft op acht oktober 2025 één, twee of drie sleutels toegekend aan de meest opmerkelijke hotels in België, Luxemburg en Nederland. De MICHELIN Gids telt vandaag meer dan 7.000 hotels wereldwijd. Geen enkel hotel in die selectie beperkt zicht tot het bieden van een kamer voor de nacht. Elk hotel is beoordeeld op basis van vijf criteria: architectuur en interieurontwerp, kwaliteit en continuïteit van de service, persoonlijkheid en algehele uitstraling, prijs-kwaliteitverhouding en belangrijke bijdrage aan de lokale ervaring. De hotels die zijn bekroond met MICHELIN Sleutels, zijn talloze keren bezocht door onze inspecteurs en vormen het neusje van de zalm van onze selectie. Net zoals de MICHELIN Sterren de meest voortreffelijke restaurants onderscheiden, belonen de MICHELIN Sleutels onze beste hotels. ©Hotel Van Cleef In totaal omvat de selectie van hotels in de MICHELIN Gids 2025 voor de Benelux 1 hotel met 3 sleutels, 7 hotels met 2 sleutels en 25 hotels met 1 sleutel. In de Benelux bevinden de meeste Sleutels zich in de grote steden, waar gasten worden ondergedompeld in persoonlijke benaderingen van exclusiviteit en luxe. Wilt u meer informatie over de MICHELIN Sleutels? Hier vindt u alles wat u moet weten . Hieronder vindt u een overzicht van alle Sleutels. LEES OOK - MICHELIN inspecteurs vertellen: De L'Europe Amsterdam Ga naar: Drie Sleutels Twee Sleutels Een Sleutel De drie Sleutel hotels ©De L'Europe Amsterdam Amsterdam: De L'Europe Amsterdam De twee Sleutel hotels ©Botanic Sanctuary Antwerp België: Antwerpen: Botanic Sanctuary Antwerp Brussel: Juliana Hotel Brussels Nederland: Amsterdam: Hotel TwentySeven Amsterdam Amsterdam: Pillows Grand Boutique Hotel Maurits at the Park Amsterdam: Rosewood Amsterdam Amsterdam: Tivoli Doelen Amsterdam Maastricht: Château Neercanne De één Sleutel hotels ©Van Oys Maastricht Retreat België: Antwerpen: Hotel De Witte Lelie Antwerpen: Hotel Flora Brugge: Boutiquehotel ’t Fraeyhuis Brugge: Dukes' Palace Brugge Brugge: Hotel Van Cleef Brugge: The Notary Brussel: Corinthia Grand Hotel Astoria Brussels Brussel: Hôtel Amigo Gent: 1898 The Post Gent: Pillows Grand Boutique Hotel Reylof Ghent Lanaken : Domaine La Butte aux Bois Rochefort: Chateau de Vignée Sint-Truiden: Kasteel van Ordingen Luxemburg: Luxemburg: Hôtel Le Place d’Armes Nederland: Amsterdam: Pulitzer Amsterdam Amsterdam: Soho House Amsterdam Amsterdam: The Craftsmen Amsterdam: The Dylan Amsterdam Dalfsen: Mooirivier Ermelo: Landgoed Hotel Het Roode Koper Maastricht: Van Oys Maastricht Retreat Den Haag: De Plesman Hotel The Hague Valkenburg: Château St. Gerlach Voorburg: Central Park Voorburg Zwolle: Pillows Grand Boutique Hotel Ter Borch Zwolle Hoofdfoto ©Château Neercanne Geschreven door The MICHELIN Guide Travel Travel 10 minuten MICHELIN Sleutels: de meest betaalbare hotels in de wereld Onze selectie hotels met MICHELIN Sleutels belichaamt uitzonderlijkheid en excellentie, maar wist u dat er ook betaalbare pareltjes tussen zitten? En geloof ons, deze adressen zijn zeker een reis waard ... Hotels MICHELIN Sleutel Travel Travel 1 minuut Hier zijn de winnaars van de eerste MICHELIN Hotel Awards! Ze zijn er: de allereerste winnaars van de MICHELIN Awards voor Architecture & Design, Wellness, Local Gateway en Opening of the Year. Hotel Awards 2025 Bangkok Estonia Travel 2 minuten MICHELIN inspecteurs vertellen: De L’Europe Amsterdam De Nieuwe Doelenstraat 2, hartje Amsterdam. Voor de deur van het impressionante gebouw staan goedlachse portiers, strak in het pak, klaar om u binnen te loodsen in de wereld van De L’Europe Amsterdam. Welkom bij het enige hotel in de Benelux met drie MICHELIN Sleutels, uniek op vlak van hospitality en luxe in al zijn gedaantes. Editor's Pick MICHELIN Sleutel Amsterdam Alle artikelen van Travel Blijf ontdekken - Verhalen die u waarschijnlijk graag leest Travel 10 minuten De MICHELIN Sleutel hotels voor 2025: Een gids doorheen onze mondiale selectie Onze inspecteurs hebben vandaag de wereldwijde selectie MICHELIN Sleutels voor 2025 bekendgemaakt. Gebruik deze gids om de beste hotels op elk continent te ontdekken, land per land. Editor's Pick Travel MICHELIN Sleutel Michelin Guide Ceremony 4 minuten ​​Create by Guido Braeken en GEM. by Soenil Bahadoer bekroond met twee MICHELIN Sterren ​Soenil Bahadoer en Guido Braeken behoren met hun twee MICHELIN Sterren tot de top van de Nederlandse gastronomie. ​Vijf restaurants worden op hun beurt voor het eerst bekroond met een MICHELIN Ster en twee inspirerende restaurants worden opgenomen in de Green Star Community. Bib Gourmand Editor's Pick MICHELIN Guide Netherlands News & Views 1 minuut Negen nieuwe Bib Gourmand restaurants in de MICHELIN Gids Nederland 2025 Smulpapen en fijnproevers opgelet: de Nederlandse culinaire scene wordt de komende week uitvoerig in de bloemetjes gezet door de MICHELIN Gids. Een week voor de bekendmaking van de MICHELIN Sterren in Maastricht (op maandag zes oktober), kondigen we vandaag de nieuwe Bib Gourmand restaurants aan. Editie 2025 van de Nederlandse Gids wordt verrijkt met negen opwindende nieuwkomers. Bib Gourmand Editor's Pick MICHELIN Guide Netherlands Dining Out 2 minuten Bib Gourmand van de maand: Te Koop in Tilburg Wat er zoal te koop staat in deze Bib Gourmand? Zowat alles, behalve dan het personeel. Maar vooral een aantrekkelijk keuzemenu dat bol staat van veelzijdige gerechten met aandacht voor wereldse smaakmakers en groenten. Een gesprek met mede-eigenaar Marcel Soeterboek, chef Robin Verheijen en gastvrouw Jamie de Kok. Bib Gourmand Editor's Pick MICHELIN Guide Netherlands Travel 4 minuten MICHELIN inspecteurs klappen uit de biecht: op wereldreis Insecten op het menu, een pizza in een restaurant met twee MICHELIN Sterren of een geheime trap: onze inspecteurs komen voor heel wat verrassingen te staan tijdens hun internationale reizen. Lees verder en ontdek hun nieuwste verhalen. Inspecteurs Restaurants Editor's Pick Travel 3 minuten September 2025: ontdek nu de nieuwe hotels in de MICHELIN Gids selectie De hotelspecialisten van de MICHELIN Gids delen elke maand hun mooiste ontdekkingen over heel de wereld. Hotels Editor's Pick Travel Travel 2 minuten Augustus 2025: ontdek nu de nieuwe hotels in de MICHELIN Gids selectie De hotelspecialisten van de MICHELIN Gids delen elke maand hun mooiste ontdekkingen over heel de wereld. Hotels Editor's Pick New Travel 5 minuten Wat staat u te wachten in de meest prestigieuze hotels ter wereld? Van Dubai tot Hongkong en New York: reis met ons mee langs de meest extravagante en luxueuze hotels ter wereld. Hotels Editor's Pick Travel Travel 4 minuten 16 verborgen terrassen in Parijs, weg van de drukte Bent u op zoek naar een verborgen terras in Parijs voor de zomer of om het mooie seizoen na de vakantie nog even te verlengen? Ontdek nu onze geheime selectie, uitgetest en goedgekeurd. Vertrouwelijke rooftops met uitzicht over de daken, weelderige binnentuinen, boomrijke binnenplaatsen ver weg van de drukte ... Deze discrete adresjes, die het Grand Paris niet vergeten, zijn ideaal om in alle rust een drankje te drinken, te lunchen of te dineren in de open lucht. De beste verborgen terrassen van Parijs wachten op u! Paris Travel Editor's Pick Selecteer uw verblijfsdata Verblijfsdata Tarieven in EUR voor 1 nacht, 1 gast Tarieven in EUR voor 1 nacht, 1 gast Opslaan MICHELIN Gids Magazine Travel Alle MICHELIN Sleutels in de Benelux Gebruik de app om wereldwijd de beste restaurants en hotels te vinden Ontvang als eerste updates en nieuws van de MICHELIN Gids Inschrijven Michelin verwerkt uw gegevens om (i) uw inschrijving te beheren (ii) de prestaties van onze campagnes te meten en uw interacties met onze communicatie te analyseren. Uw gegevens kunnen worden gedeeld met andere aan Michelin gelieerde bedrijven (TabletHotels en Robert Parker) om u beter te leren kennen en u met uw toestemming marketingcommunicatie toe te sturen die aansluit bij uw interesses. U kunt op elk moment uw communicatievoorkeuren aanpassen of het abonnement beëindigen. U kunt gebruik maken van uw privacyrechten via: unser Kundenservice . Meer informatie over de verwerking van uw gegevens door Michelin vindt u hier . Volg ons MICHELIN Guide selections Abu Dhabi Argentinië België Brazilië Canada Denemarken Dubai Duitsland Estland Finland Frankrijk Griekenland Hongarije Ierland IJsland Italië Japan Kroatië Letland Litouwen Luxemburg Maleisië Malta Mexico Nederland Noorwegen Oostenrijk Polen Portugal Qatar Regio Taiwan SAR Hongkong SAR Macau Servië Singapore Slovenië Spanje Thailand Tsjechië Turks Vasteland China Verenigd Koninkrijk Verenigde Staten Vietnam Zuid-Korea Zweden Zwitserland Japan Kroatië Letland Litouwen Luxemburg Maleisië Malta Mexico Nederland Noorwegen Oostenrijk Polen Portugal Qatar Regio Taiwan SAR Hongkong SAR Macau Servië Singapore Slovenië Spanje Thailand Tsjechië Turks Vasteland China Verenigd Koninkrijk Verenigde Staten Vietnam Zuid-Korea Zweden Zwitserland MICHELIN Gids About the Guide Restaurants Hotels Bevoorrecht partnerschap TheFork Contact Us Laat een beoordeling achter The MICHELIN group The MICHELIN Company MICHELIN Tires ViaMichelin Gebruiksvoorwaarden Uw privacykeuzes Privacybeleid Wettelijke mededeling Weergave-instellingen Pas uw ervaring aan door eenvoudig de weergave-instellingen voor territorium en valuta aan te passen aan uw voorkeuren! Gebied: USA France United Kingdom Italia Germany Thailand España Japan Taiwan Netherlands Abu Dhabi Argentina Austria Belgium Brazil Canada China Mainland Croatia Czech Republic Denmark Dubai Estonia Finland Global Greece Hong Kong Hungary Iceland Latvia Lithuania Luxembourg Macau Malaysia Malta Mexico Norway Poland Portugal Qatar Republic of Ireland South Korea Serbia Singapore Slovenia Sweden Switzerland Türkiye USA - California USA - Chicago USA - Colorado USA - Georgia USA - New York USA - Orlando, Miami, Tampa USA - Washington DC Vietnam Taal: Français Dutch Valuta: USD - US Dollar EUR - Euro GBP - Pound Sterling CAD - Canadian Dollar CHF - Swiss Franc JPY - Yen AED - UAE Dirham AUD - Australian Dollar BBD - Barbados Dollar BHD - Bahraini Dinar BMD - Bermudian Dollar BRL - Brazilian Real BSD - Bahamian Dollar CLP - Chilean Peso CNY - Yuan Renminbi COP - Colombian Peso DKK - Danish Krone DOP - Dominican Peso FJD - Fiji Dollar HKD - Hong Kong Dollar IDR - Rupiah INR - Indian Rupee ISK - Iceland Krona JMD - Jamaican Dollar KES - Kenyan Shilling KWD - Kuwaiti Dinar LKR - Sri Lanka Rupee MAD - Moroccan Dirham MUR - Mauritius Rupee MXN - Mexican Peso MYR - Malaysian Ringgit NOK - Norwegian Krone NZD - New Zealand Dollar OMR - Rial Omani PGK - Kina PHP - Philippine Peso PKR - Pakistan Rupee QAR - Qatari Rial SAR - Saudi Riyal SCR - Seychelles Rupee SEK - Swedish Krona SGD - Singapore Dollar THB - Baht TND - Tunisian Dinar TRL - Turkish Lira TTD - Trinidad and Tobago Dollar VEB - Bolivar XPF - CFP Franc ZAR - Rand Opslaan Wilt u een beoordeling geven? Ga naar de lijst \"Bezocht\" onder Mijn lijsten en click op de \"Beoordelen\" knop om uw opmerkingen over uw bezoek achter te laten × Opnieuw instellen Toon resultaten Sorteer op: "
+}
