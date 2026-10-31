@@ -8,6 +8,23 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **From a visit or stay to its venue** (2026-10-31, product owner). On
+  Visit Detail and Stay Detail, opened from Friends' Activity, a friend's
+  verdicts or Passport, the venue name is now tappable, with a quiet taupe
+  chevron and no button chrome. A tap opens the real
+  `RestaurantDetailScreen` / `HotelDetailScreen` for the restaurant or
+  hotel the screen already holds, which was resolved by id from
+  `restaurants_full` / `hotels_full`, never by name. The link is turned
+  off (`linkToVenue: false`) when the visit was opened from that venue's
+  own page ("Your visits" / "Your stays"), so a tap never stacks the same
+  page twice. Event rows in Friends' Activity already open Event Detail
+  directly, so they needed nothing. No migration.
+  Checked in the simulator: Friends' Activity → "Test visited Flore" →
+  "Flore ›" → Flore's restaurant page. There is no widget test, because
+  both detail screens read the Supabase session at build time, as before.
+  Analyze and all 2,710 tests pass.
+
 ---
 
 ## v1.5.1 (19) — 2026-10-31

@@ -10,6 +10,7 @@ import '../../data/repositories/visited_repository.dart';
 import '../../models/hotel.dart';
 import '../../models/visit.dart';
 import '../photos/widgets/visit_photos_section.dart';
+import '../hotels/hotel_detail_screen.dart';
 
 const _monthNames = [
   'January',
@@ -39,9 +40,20 @@ String _formatStayDate(DateTime date) =>
 /// Hotel Detail's stay history immediately.
 class StayDetailScreen extends StatefulWidget {
   final Hotel hotel;
+
+  /// Whether the hotel name opens its detail page (2026-10-31, product
+  /// owner: from Friends' Activity / a friend's verdict you continue to the
+  /// venue). False when this screen was opened from that venue page
+  /// itself, so a tap never stacks the same page again.
+  final bool linkToVenue;
   final Visit stay;
 
-  const StayDetailScreen({super.key, required this.hotel, required this.stay});
+  const StayDetailScreen({
+    super.key,
+    required this.hotel,
+    required this.stay,
+    this.linkToVenue = true,
+  });
 
   @override
   State<StayDetailScreen> createState() => _StayDetailScreenState();
@@ -267,11 +279,16 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              hotel.name,
-              style: CsTypography.screenTitle.copyWith(
-                color: AppColors.forestGreen,
-              ),
+            _VenueTitle(
+              name: hotel.name,
+              onTap: widget.linkToVenue
+                  ? () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => HotelDetailScreen(hotel: hotel),
+                      ),
+                    )
+                  : null,
             ),
             const SizedBox(height: 10),
             Row(
@@ -353,6 +370,44 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
               entityId: stay.entityId,
               noun: 'stay',
               readOnly: !_isOwner,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// The hotel name as the screen title. With [onTap], it opens the hotel's
+/// own page: a quiet chevron beside the name, no button chrome.
+class _VenueTitle extends StatelessWidget {
+  final String name;
+  final VoidCallback? onTap;
+  const _VenueTitle({required this.name, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final title = Text(
+      name,
+      style: CsTypography.screenTitle.copyWith(color: AppColors.forestGreen),
+    );
+    if (onTap == null) return title;
+    return Semantics(
+      button: true,
+      label: 'Open $name',
+      excludeSemantics: true,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(CsRadius.small),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Flexible(child: title),
+            const SizedBox(width: CsSpacing.xs),
+            const Icon(
+              Icons.chevron_right_rounded,
+              color: AppColors.taupe,
+              size: 26,
             ),
           ],
         ),

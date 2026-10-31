@@ -64,7 +64,12 @@ class HotelStaysCard extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (_) =>
-                      StayDetailScreen(hotel: hotel, stay: stays[i]),
+                      StayDetailScreen(
+                    hotel: hotel,
+                    stay: stays[i],
+                    // Already on this hotel's page.
+                    linkToVenue: false,
+                  ),
                 ),
               );
               onReturn();

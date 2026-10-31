@@ -67,6 +67,8 @@ class RestaurantVisitsCard extends StatelessWidget {
                   builder: (_) => VisitDetailScreen(
                     restaurant: restaurant,
                     visit: visits[i],
+                    // Already on this restaurant's page.
+                    linkToVenue: false,
                   ),
                 ),
               );
