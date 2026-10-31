@@ -24,14 +24,22 @@ The two items the pre-launch audit left open (2026-10-31).
   says. Four new Deno tests (19 pass, run in `denoland/deno:2.1.4`).
   The real client is passed through a cast in `Deno.serve`: matching it
   structurally against the new `from().select().eq()` chain hit TS2589.
-  **Not yet deployed.**
+  **Deployed 2026-10-31** as version 14 (ACTIVE, verify_jwt on). Checked
+  live without deleting anything: no Authorization header → 401, the
+  anon key as bearer → 401 "Invalid or expired session". A real account
+  deletion end to end has not been run.
 - **Clients could write PostGIS's `spatial_ref_sys`.** Migration
   `20261031140000_block_client_writes_on_spatial_ref_sys.sql` adds
   statement-level triggers that refuse INSERT/UPDATE/DELETE/TRUNCATE
   from anon and authenticated; a REVOKE can't work because supabase_admin
   owns the table and made the grants. Tested on a full local replay of
   all 123 migrations: both roles are refused, reads and geography
-  distance still work, postgres still writes. **Prepared, not applied.**
+  distance still work, postgres still writes. **Applied 2026-10-31**
+  (ledger 123/123): both triggers exist on production, anon can't
+  execute the trigger function, SRID 4326 is intact, and through the
+  public REST API with the anon key a DELETE matching nothing is refused
+  with 42501 "spatial_ref_sys is read-only for clients" while a read
+  still returns 200.
 
 ---
 
