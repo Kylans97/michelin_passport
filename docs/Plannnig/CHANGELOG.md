@@ -8,6 +8,25 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.5 (23) — 2026-10-31
+
+1.5.4 (22) was archived at 17:03 on 2026-10-31 from `a557eeb` and sent
+to Apple, so this build carries what came after it:
+`claude/edit-visits`, fast-forwarded into `release/1.5.5`, and the 2026
+MICHELIN Key refresh (`claude/epic-lumiere-18d5b4`, catalogue data plus
+one migration, applied to production before this build).
+
+**Ledger: 124, local and remote in agreement.** The one migration
+added since 22, `20261031150000` (27 cities for the 2026 MICHELIN Key
+refresh), was applied to production from `claude/epic-lumiere-18d5b4`
+by the Key-refresh session; its file reached main first on its own,
+then the whole branch was merged (product owner, 2026-10-31, confirming
+QA-387). It only inserts `cities` rows, so the schema diff run for 21
+still covers the schema.
+`flutter analyze` clean and all 2,728 tests pass on this tree.
+
 ### Added
 - 2026-10-31 — Catalogue: MICHELIN Key hotels 2026 for Italy, Spain,
   Germany, Belgium, the Netherlands and Luxembourg, applied to production
@@ -25,46 +44,6 @@ The format follows Keep a Changelog.
   - **Schema diff:** none run here — this is a data-only migration (city
     rows); the next version bump's diff covers it.
 
-### Changed
-- **A hotel that loses its MICHELIN Key stays in the catalogue** (product
-  owner, 2026-10-31, QA-387), the same as a restaurant that loses its
-  stars: `michelin_keys` NULL, a current `award_history` row with NULL,
-  the earlier Key kept as history, so members keep their stays. Hotel-scope
-  rule 1 in `CLAUDE.md` revised to match.
-
-### Fixed
-- **Near-miss:** the shared QA-id note was stale (it said QA-377 was free;
-  QA-377–382 were already taken), and MICHELIN overwrote its Spanish and
-  Benelux 2025 Key articles with the 2026 list. A first build relabelled a
-  Spanish hotel's launch row to 2024 for want of a 2025 list; that fallback
-  was removed and the 2025 list recovered from MICHELIN's own archived
-  page. Without that, launch rows would have been labelled with an edition
-  they didn't hold.
-
----
-
-## v1.5.5 (23) — 2026-10-31
-
-1.5.4 (22) was archived at 17:03 on 2026-10-31 from `a557eeb` and sent
-to Apple, so this build carries what came after it:
-`claude/edit-visits`, fast-forwarded into `release/1.5.5`. App code only
-— no migration, Edge Function or site change in this tree since 21.
-
-**Ledger: 124, local and remote in agreement.** At the bump production
-held one migration main didn't: `20261031150000` (cities for the 2026
-MICHELIN Key refresh), applied from `claude/epic-lumiere-18d5b4` by the
-Key-refresh session. That file alone was brought onto main afterwards
-(product owner, 2026-10-31), unchanged, so `db push --dry-run` reports
-nothing pending. The rest of that branch — source data, scripts, the
-applied `prepared_keys_it_es_de_benelux_2026.sql`, its changelog and QA
-entries, and a revision of CLAUDE.md's hotel-scope rule (hotels that
-lose their Key stay, QA-387) — was not merged with it and still waits
-on that branch. The schema diff run for 21 still covers the schema;
-this migration only inserts 27 `cities` rows.
-`flutter analyze` clean and all 2,728 tests pass on this tree.
-
-### Added
-
 - **Edit a visit or stay** (tester feedback, 2026-10-31). A saved visit
   could only be deleted and logged again. Visit Detail and Stay Detail
   now have "Edit visit" / "Edit stay" in their menu, opening the same
@@ -81,10 +60,24 @@ this migration only inserts 27 `cities` rows.
   sheet opens filled in; cancelled without saving.
 
 ### Changed
+- **A hotel that loses its MICHELIN Key stays in the catalogue** (product
+  owner, 2026-10-31, QA-387), the same as a restaurant that loses its
+  stars: `michelin_keys` NULL, a current `award_history` row with NULL,
+  the earlier Key kept as history, so members keep their stays. Hotel-scope
+  rule 1 in `CLAUDE.md` revised to match.
 
 - **Notes placeholder: "Add a note about your experience…"** (was "A
   note for your passport…"; the tester's "Add a note about your
   evening…" was the old venue-page sheet, removed in 1.5.2 (20)).
+
+### Fixed
+- **Near-miss:** the shared QA-id note was stale (it said QA-377 was free;
+  QA-377–382 were already taken), and MICHELIN overwrote its Spanish and
+  Benelux 2025 Key articles with the 2026 list. A first build relabelled a
+  Spanish hotel's launch row to 2024 for want of a 2025 list; that fallback
+  was removed and the 2025 list recovered from MICHELIN's own archived
+  page. Without that, launch rows would have been labelled with an edition
+  they didn't hold.
 
 ---
 
