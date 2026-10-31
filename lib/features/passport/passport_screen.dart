@@ -234,7 +234,7 @@ class _MapButton extends StatelessWidget {
           ),
           alignment: Alignment.center,
           child: const Icon(
-            Icons.map_outlined,
+            Icons.public_outlined,
             color: AppColors.textOnDark,
             size: 20,
           ),

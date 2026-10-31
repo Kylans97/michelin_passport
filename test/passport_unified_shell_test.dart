@@ -283,12 +283,12 @@ void main() {
   });
 
   group('PassportScreen — map action', () {
-    testWidgets('the map button is present and restrained (no gold)', (
-      tester,
-    ) async {
+    testWidgets('the map button is a globe, present and restrained (no '
+        'gold)', (tester) async {
       final h = _Harness();
       await tester.pumpWidget(h.wrap());
-      final icon = tester.widget<Icon>(find.byIcon(Icons.map_outlined));
+      expect(find.byIcon(Icons.map_outlined), findsNothing);
+      final icon = tester.widget<Icon>(find.byIcon(Icons.public_outlined));
       expect(icon.color, isNot(AppColors.gold));
       expect(tester.takeException(), isNull);
     });

@@ -24,6 +24,12 @@ identical to production) still stands. `flutter analyze` clean and all
 
 ### Changed
 
+- **The Passport's map button is a globe.** It opens the spinning globe
+  of your places (My Map), so `Icons.map_outlined` became
+  `Icons.public_outlined`, the globe the stats panel already uses. The
+  tooltip stays "My Map", the screen's own title (product owner,
+  2026-10-31).
+
 - **Plan visit only offers trips that fit the venue** (tester feedback,
   2026-10-31). It listed every trip: a Dutch restaurant could go into a
   trip abroad, and every trip that had ended was there too. New
