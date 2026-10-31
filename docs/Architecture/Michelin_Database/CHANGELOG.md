@@ -6,6 +6,31 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-31 — MICHELIN Key hotels 2026: Italy, Spain, Germany, Belgium, the Netherlands, Luxembourg (QA-383–QA-391)
+
+| | |
+|---|---|
+| Applied | 2026-10-31, to production, at the product owner's request, from `claude/epic-lumiere-18d5b4` |
+| Migration | `20261031150000_add_it_es_de_benelux_key_hotel_cities.sql` (27 towns). Plain `supabase db push --linked`; ledger 123 → 124, local and remote in agreement |
+| Data file | `michelin_keys_it_es_de_benelux_2026/prepared_keys_it_es_de_benelux_2026.sql` (evidence: `match_report.csv`, `<cc>_key_hotels.csv`, `decisions.json`, `README.md`). One transaction, every check passed |
+| Rows | 109 hotels added (`hotel_2701`–`hotel_2809`); 17 Key changes; 15 Key corrections; 18 Keys lost; 5 missing Key rows written. No restaurant, link or `property_name` touched |
+
+Source: guide.michelin.com only — every Key card of the six country hotel listings (`data-distinction`), every Key hotel's own page (JSON-LD `award`, address, pin), and MICHELIN's Key articles for 2024, 2025 and 2026. Identity was MICHELIN's numeric hotel id in the stored `michelin_url`, never a name; all 424 stored hotels in these countries carry one. A re-export just before the apply was identical to the one the file was built from.
+
+- **Key changes (QA-383, 17):** the stored Key equalled the hotel's entry in MICHELIN's own 2025 country article, so the launch row (labelled 2026) held 2025 — the QA-217 collision, for Keys. Relabelled 2025 and closed, 2026 row written (`announced_on` 2026-09-18). IT 6, ES 2, DE 8, BE 1.
+- **Key import errors (QA-384, 15):** the stored Key matched no edition — MICHELIN's 2024 and 2025 articles and the 2026 page agree with each other and not with production (Hassler Roma and Le Sirenuse stored 2, MICHELIN 1 throughout; Borgo San Felice stored 1, MICHELIN 2; Torre del Marqués stored 2, MICHELIN 3; …). Corrected in place to 2026. IT 10, ES 5.
+- **Keys lost (QA-387, 18):** live MICHELIN page, no award in 2026; each held its stored Key in 2025. By the product owner's decision of 2026-10-31 the hotels **stay**, as a restaurant that loses its stars does: launch row relabelled 2025 and closed, current 2026 row with NULL, `michelin_keys` NULL, links kept. IT 1, ES 5, DE 12 (Hotel de Rome, two Keys, among them). `CLAUDE.md` hotel-scope rule 1 revised the same day; this folder's `DATABASE_ARCHITECTURE.md` still carries the old wording.
+- **New hotels (109, QA-385):** name = page `h1`; address, pin and URL = page JSON-LD. Website, phone and Place ID NULL. Towns as the page prints them (QA-386), except The Florentin → "Frankfurt am Main" and Weissenhaus → "Wangels", the rows production already uses there.
+- **Missing Key rows (QA-390):** five Italian Key hotels (Bulgari Roma, Four Seasons Firenze, Hotel Cipriani, Passalacqua, Il Pellicano) had no `michelin_keys` row at all; their 2026 row was written.
+
+**Checked after the apply** (read-only, against the staging files row by row): all 514 MICHELIN 2026 Key hotels present by id, each with its Key and exactly one current 2026 row; the 109 new rows' name, town, address and pin as staged; the 18 lost Keys each NULL with exactly a non-current 2025 row and a current 2026 NULL row and their links unchanged; the 17 changes each with a 2025 and a current 2026 row; the 406 untouched hotels byte-identical to the pre-apply export. Key hotels per country now equal MICHELIN 2026 exactly (3/2/1): IT 17/49/158, ES 5/17/100, DE 6/37/87, BE 0/4/14, NL 1/5/12, LU 0/1/1. The catalogue holds 1,939 hotels, 1,907 with a current Key. Snapshot: `_source/production_after_apply_20261031.json`.
+
+**Still open:** QA-385 (contacts and Place IDs of the new hotels), QA-386 (town naming: island and area localities, South Tyrol names, two Frankfurt rows), QA-388 (seven stored hotel pins 0.6–4.5 km off MICHELIN's), no hotel links derived for the new hotels.
+
+**Near-misses:** the shared `qa-ids.md` still said "next free QA-377" when the Gault&Millau Benelux session had used QA-377–QA-382 — caught by reading that session's note, so this pass took QA-383 on. MICHELIN's German 2025 article links two different hotels to id 7589, and its Spanish and Benelux Key articles were overwritten with the 2026 selection on 18 September 2026; the 2025 lists for those were read from the Internet Archive's raw captures of MICHELIN's own pages (QA-389, QA-391). The first build would have relabelled Cap Vermell to **2024** because no Spanish 2025 list had been found yet; the 2024 fallback was removed and the 2025 list found instead (it gives 1, so 2025).
+
+---
+
 # 2026-10-31 — Netherlands websites and phones (QA-375, QA-376)
 
 | | |

@@ -1,13 +1,21 @@
 # Italy, Spain, Germany, Belgium, the Netherlands, Luxembourg: MICHELIN Key hotels 2026 (research 2026-10-31)
 
-Status: **PREPARED, NOT APPLIED.** Generated from production's read-only export of
+Status: **APPLIED 2026-10-31** at the product owner's request (ledger 124/124;
+see the Michelin_Database CHANGELOG). Generated from production's read-only export of
 2026-10-31 12:42 UTC (`export_keys_query.sql`, saved as
-`_source/production_export_20261031.json`). To apply, in order:
+`_source/production_export_20261031.json`), re-exported identical at 15:20 UTC just
+before the apply; the state after is `_source/production_after_apply_20261031.json`.
+Applied in order:
 
 1. `supabase/migrations/20261031150000_add_it_es_de_benelux_key_hotel_cities.sql`
    (27 new towns), with `supabase db push --linked`.
-2. `prepared_keys_it_es_de_benelux_2026.sql` (one transaction; aborts on any
-   check), with `supabase db query --linked -f <absolute path>`.
+2. `prepared_keys_it_es_de_benelux_2026.sql` (one transaction; every check
+   passed), with `supabase db query --linked -f <absolute path>`.
+
+Checked afterwards, row by row against the staging files: all 514 MICHELIN Key
+hotels by id with their Key and one current 2026 row, the 109 new rows as staged,
+the 18 lost Keys and 17 changes with exactly the expected history, and the other
+406 hotels unchanged.
 
 Review `match_report.csv` and the decisions below first.
 
@@ -55,7 +63,7 @@ The app already behaves this way: the Michelin Hotels guide queries
 `michelin_keys is not null`, while Explore's search includes hotels without
 a Key, and visits keep `keys_at_visit`.
 
-## Decisions waiting for you
+## Open questions (applied as described; revisit if you disagree)
 
 - **QA-384 — 15 launch Keys match no MICHELIN edition.** For these,
   MICHELIN's 2024 article, its 2025 article and the live 2026 page agree with
