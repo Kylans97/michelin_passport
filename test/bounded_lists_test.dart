@@ -71,8 +71,17 @@ void main() {
       );
       final page = await repo.getNotifications(offset: 50);
 
-      final q = requests.single.url.queryParameters;
-      expect(requests.single.url.path, endsWith('/rpc/get_notifications_v4'));
+      // Photos are looked up after the page (get_member_avatar_paths);
+      // only the notification read itself is paged.
+      final reads = requests.where(
+        (r) => r.url.path.contains('/rpc/get_notifications'),
+      );
+      final q = reads.single.url.queryParameters;
+      expect(reads.single.url.path, endsWith('/rpc/get_notifications_v4'));
+      expect(
+        requests.last.url.path,
+        endsWith('/rpc/get_member_avatar_paths'),
+      );
       expect(q['order'], 'created_at.desc.nullslast,id.desc.nullslast');
       expect(q['offset'], '50');
       expect(q['limit'], '$notificationsPageSize');
@@ -97,9 +106,12 @@ void main() {
         ),
       );
       await repo.getNotifications(offset: 100);
-      expect(requests.last.url.path, endsWith('/rpc/get_notifications_v2'));
-      expect(requests.last.url.queryParameters['offset'], '100');
-      expect(requests.last.url.queryParameters['limit'], '50');
+      final read = requests.lastWhere(
+        (r) => r.url.path.contains('/rpc/get_notifications'),
+      );
+      expect(read.url.path, endsWith('/rpc/get_notifications_v2'));
+      expect(read.url.queryParameters['offset'], '100');
+      expect(read.url.queryParameters['limit'], '50');
     });
   });
 

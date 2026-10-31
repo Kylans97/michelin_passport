@@ -18,6 +18,16 @@ class Friendship {
     this.avatarUrl,
   });
 
+  /// This member with a resolved, signed photo URL (null keeps none) —
+  /// see MemberAvatarRepository.
+  Friendship withAvatar(String? url) => Friendship(
+    friendshipId: friendshipId,
+    friendId: friendId,
+    username: username,
+    displayName: displayName,
+    avatarUrl: url ?? avatarUrl,
+  );
+
   factory Friendship.fromRow(Map<String, dynamic> row) => Friendship(
     friendshipId: row['friendship_id'] as String,
     friendId: row['friend_id'] as String,
@@ -56,6 +66,17 @@ class FriendRequest {
     this.avatarUrl,
     required this.createdAt,
   });
+
+  /// This member with a resolved, signed photo URL (null keeps none) —
+  /// see MemberAvatarRepository.
+  FriendRequest withAvatar(String? url) => FriendRequest(
+    friendshipId: friendshipId,
+    otherUserId: otherUserId,
+    username: username,
+    displayName: displayName,
+    avatarUrl: url ?? avatarUrl,
+    createdAt: createdAt,
+  );
 
   factory FriendRequest.fromIncomingRow(Map<String, dynamic> row) =>
       FriendRequest(

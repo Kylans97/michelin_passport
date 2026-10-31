@@ -8,20 +8,11 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
-### Fixed
-
-- **Create your account showed the product owner's own username as the
-  example.** The Username field's placeholder was `kylan.s`, a real
-  person's handle, left in from development. It is now `jane.doe`,
-  matching the Name field's `Jane Doe`. Nothing else in the shipped app
-  carries a real name: the only other hit, `lib/data/mock/mock_user.dart`,
-  is imported nowhere in `lib/`, and the test fixtures never ship.
-
 ---
 
-## v1.5.1 (19) — 2026-10-30
+## v1.5.1 (19) — 2026-10-31
 
-Built from `main`, after merging three branches into `release/1.5.1`:
+Built from `main`, after merging five branches into `release/1.5.1`:
 - `claude/venue-follow-team`: the Follow pill, one wishlist heart, one
   notification flow after a follow, and the venue team;
 - `claude/friends-activity-globe`: Friends' Activity, a friend's globe,
@@ -29,13 +20,16 @@ Built from `main`, after merging three branches into `release/1.5.1`:
   and Community Rankings for restaurants, hotels and events with one
   Filters button;
 - `claude/venue-guide-links`: the guide pages moved out of the venue
-  action row.
+  action row;
+- `claude/neutral-username-hint` and `claude/friend-avatars` (2026-10-31,
+  after main had first been pushed at `a00d3e8`): a neutral username
+  example on sign-up, and friends' profile photos.
 
 Numbered 1.5.1 at the product owner's request, though it carries new
-features. Three migrations went to production on 2026-10-30, after
-1.5.0 (18) and before this build: `20261030160000`, `20261030170000` and
-`20261030180000`. Ledger at the version bump: 120 migrations, local and
-remote in agreement.
+features. Four migrations went to production after 1.5.0 (18) and
+before this build: `20261030160000`, `20261030170000` and
+`20261030180000` on 2026-10-30, `20261031120000` on 2026-10-31. Ledger
+at the build: 121 migrations, local and remote in agreement.
 
 **Schema diff at the version bump** (CLAUDE.md; method in
 `NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay
@@ -60,6 +54,52 @@ of all 120 migrations, 2026-10-30:
 No manual steps outside the repo for this build.
 
 ### Added
+- **Friends' profile photos** (2026-10-31, product owner). Until now
+  only your own photo ever showed: every other member was initials,
+  because the `profile-photos` bucket was owner-only on purpose
+  (20260825170000, PROFILE_AVATAR_V1.md "Storage read visibility"), and
+  the identity RPCs only return the never-populated `avatar_url`. Real
+  photos, with initials as fallback, now show in the friends list, Your
+  Circle, friend requests (incoming and sent), Find friends search
+  (photo, name and @username, as `IdentityRow` already lays out),
+  notifications, Friends' Activity, a friend's profile header, trip
+  members, friends going/interested on events, and "friends who've
+  been". Blocked users keep initials.
+
+  How it works: the new `MemberAvatarRepository` asks
+  `get_member_avatar_paths` which of the listed members have a photo you
+  may see, signs those paths (with the same size transform as your own
+  photo), and caches the URLs for 50 minutes. `FriendshipRepository`,
+  `NotificationsRepository` and `loadTripMembers` merge them in;
+  `Friendship`, `FriendRequest` and `ProfileIdentity` gained
+  `withAvatar`. None of the existing RPCs changed, so build 1.5.0/1.5.1
+  are untouched.
+
+  **Migration `20261031120000_share_member_avatars.sql` — applied to
+  production 2026-10-31**, before this build (its header still reads
+  "NOT YET APPLIED": it was written before the apply, and an applied
+  migration is not edited). The photo rule is the identity rule
+  `search_profiles` already uses: you can see a member's photo when
+  there is no block between you AND (they are discoverable, OR you are
+  friends, OR a request is pending either way). A non-discoverable
+  member's photo stays hidden from strangers. The migration adds
+  `can_view_member_avatar(uuid)`, `get_member_avatar_paths(uuid[])` and
+  `can_view_member_avatar_object(text)` (all SECURITY DEFINER, each with
+  `revoke execute ... from public, anon` and a grant to `authenticated`),
+  plus an extra storage SELECT policy on `profile-photos` covering
+  exactly a visible member's current photo. The owner-only policy stays.
+  The visibility rule's SQL ran read-only against production without
+  error before the apply. After it: `has_function_privilege` is false
+  for `anon` and PUBLIC and true for `authenticated` on all three
+  functions, and `profile_photos_read_visible_members` sits beside the
+  three owner policies. Before the apply the app was checked in the
+  simulator with the RPC missing: Community → Friends, the feed and the
+  lists all load as before, with initials. The photos themselves have
+  not been seen on a device yet — only one member in production has a
+  profile photo.
+  Analyze and all 2,710 tests pass (new model tests; the paged
+  notifications test now asserts only on the notifications call, since
+  the photo lookup follows it).
 - **The team on a venue's page.** A restaurant or hotel can show its
   chef and its manager ("Restaurant manager" / "Hotel manager"), each a
   name and an optional short text (80 / 280 characters), under "THE
@@ -295,6 +335,12 @@ No manual steps outside the repo for this build.
     gold-bar widget, had no other users and is removed.
 
 ### Fixed
+- **Create your account showed the product owner's own username as the
+  example.** The Username field's placeholder was `kylan.s`, a real
+  person's handle, left in from development. It is now `jane.doe`,
+  matching the Name field's `Jane Doe`. Nothing else in the shipped app
+  carries a real name: the only other hit, `lib/data/mock/mock_user.dart`,
+  is imported nowhere in `lib/`, and the test fixtures never ship.
 - **Friend Profile avatars were clipped.** The box holding the two
   overlapping avatars was 54pt high, but each avatar sits in a 3pt ring,
   so the Stack cut 3pt off the bottom and right of both circles at every

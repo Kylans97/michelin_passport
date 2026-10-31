@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/app_notification.dart';
+import 'member_avatar_repository.dart';
 
 /// Reads go through `get_notifications()`/`get_unread_notification_count()`
 /// (security definer — see their own comments in the migration for why a
@@ -55,10 +56,20 @@ class NotificationsRepository {
           .order('id', ascending: false)
           .range(offset, offset + notificationsPageSize - 1),
     );
-    final list = rows as List;
+    final list = (rows as List).cast<Map<String, dynamic>>();
+    // The RPCs carry only the never-populated avatar_url; the photo comes
+    // from MemberAvatarRepository, written into the row before parsing.
+    final urls = await MemberAvatarRepository(_client).urlsFor([
+      for (final r in list)
+        if (r['other_user_id'] case final String id) id,
+    ]);
     return NotificationsPage([
       for (final r in list)
-        ?AppNotification.tryFromRow(r as Map<String, dynamic>),
+        ?AppNotification.tryFromRow({
+          ...r,
+          if (urls[r['other_user_id']] case final String url)
+            'other_avatar_url': url,
+        }),
     ], hasMore: list.length == notificationsPageSize);
   }
 

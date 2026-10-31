@@ -10,6 +10,7 @@ import '../../models/trip_member.dart';
 import '../../models/venue_country.dart';
 import 'hotel_repository.dart' show hotelFullColumns;
 import 'restaurant_repository.dart' show restaurantFullColumns;
+import 'member_avatar_repository.dart';
 
 /// The current user's trips (own + shared with them and accepted) and the
 /// invitations they haven't answered yet.
@@ -234,9 +235,18 @@ class PlannedTripsRepository {
       'get_trip_members',
       params: {'p_trip_id': tripId},
     );
+    final list = (rows as List).cast<Map<String, dynamic>>();
+    // Photos follow the identity rule (MemberAvatarRepository): a
+    // co-member who is neither a friend nor discoverable keeps initials.
+    final urls = await MemberAvatarRepository(
+      _client,
+    ).urlsFor([for (final r in list) r['user_id'] as String]);
     return [
-      for (final row in rows as List)
-        TripMember.fromRow(row as Map<String, dynamic>),
+      for (final row in list)
+        TripMember.fromRow({
+          ...row,
+          if (urls[row['user_id']] case final String url) 'avatar_url': url,
+        }),
     ];
   }
 

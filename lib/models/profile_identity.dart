@@ -61,6 +61,17 @@ class ProfileIdentity {
     this.memberNumber,
   });
 
+  /// This member with a resolved, signed photo URL (null keeps none) —
+  /// see MemberAvatarRepository.
+  ProfileIdentity withAvatar(String? url) => ProfileIdentity(
+    id: id,
+    username: username,
+    displayName: displayName,
+    avatarUrl: url ?? avatarUrl,
+    relationshipStatus: relationshipStatus,
+    memberNumber: memberNumber,
+  );
+
   factory ProfileIdentity.fromRow(Map<String, dynamic> row) => ProfileIdentity(
     id: row['id'] as String,
     username: row['username'] as String?,
