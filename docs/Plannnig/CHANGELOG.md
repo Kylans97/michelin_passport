@@ -32,19 +32,22 @@ The format follows Keep a Changelog.
   sits above "Nights we're watching" rather than in the footer, in place
   of the curved divider that stood there.
 
-### Fixed
-- **The journey page's passport ran off the right edge at medium
-  widths.** Between the phone layout (≤860px) and roughly 1180px the
-  side column is narrower than the full-size open booklet (2 × 196px),
-  so its right page was cut off, as seen on mantelier.app/journey right
-  after it went live on 2026-10-31. Pages, stamps and cover lettering
-  now scale with the viewport in that range; checked at 900px and
-  1100px.
-- **The Arzak stamp's city line ran outside its oval.** "SAN
-  SEBASTIÁN · ES" was set at 6.6 units with wide letter-spacing near the
-  top of the inner ellipse, where the oval is narrowest, so it crossed
-  the rings. It is now smaller, tighter and lower, with the stars,
-  name and date moved down to match; measured inside the inner ring.
+- **From a visit or stay to its venue** (2026-10-31, product owner). On
+  Visit Detail and Stay Detail, opened from Friends' Activity, a friend's
+  verdicts or Passport, the venue name is now tappable, with a quiet taupe
+  chevron and no button chrome. A tap opens the real
+  `RestaurantDetailScreen` / `HotelDetailScreen` for the restaurant or
+  hotel the screen already holds, which was resolved by id from
+  `restaurants_full` / `hotels_full`, never by name. The link is turned
+  off (`linkToVenue: false`) when the visit was opened from that venue's
+  own page ("Your visits" / "Your stays"), so a tap never stacks the same
+  page twice. Event rows in Friends' Activity already open Event Detail
+  directly, so they needed nothing. No migration.
+  Checked in the simulator: Friends' Activity → "Test visited Flore" →
+  "Flore ›" → Flore's restaurant page. There is no widget test, because
+  both detail screens read the Supabase session at build time, as before.
+  Analyze and all 2,710 tests pass.
+
 
 ### Changed
 
@@ -75,7 +78,22 @@ The format follows Keep a Changelog.
   mapping, a swipe out and back, and that a tap still scores. Checked in
   the simulator (2026-10-31): a swipe from "—" gave 8/10.
 
+
 ### Fixed
+
+- **The journey page's passport ran off the right edge at medium
+  widths.** Between the phone layout (≤860px) and roughly 1180px the
+  side column is narrower than the full-size open booklet (2 × 196px),
+  so its right page was cut off, as seen on mantelier.app/journey right
+  after it went live on 2026-10-31. Pages, stamps and cover lettering
+  now scale with the viewport in that range; checked at 900px and
+  1100px.
+- **The Arzak stamp's city line ran outside its oval.** "SAN
+  SEBASTIÁN · ES" was set at 6.6 units with wide letter-spacing near the
+  top of the inner ellipse, where the oval is narrowest, so it crossed
+  the rings. It is now smaller, tighter and lower, with the stars,
+  name and date moved down to match; measured inside the inner ring.
+
 
 - **Passport → + → "Where did you go?": what you typed was nearly
   invisible.** The search field sits on the green step with ivory text,

@@ -10,6 +10,7 @@ import '../../data/repositories/visited_repository.dart';
 import '../../models/restaurant.dart';
 import '../../models/visit.dart';
 import '../photos/widgets/visit_photos_section.dart';
+import '../restaurants/restaurant_detail_screen.dart';
 
 const _monthNames = [
   'January',
@@ -39,11 +40,18 @@ String _formatVisitDate(DateTime date) =>
 /// refresh Restaurant Detail's visit history immediately.
 class VisitDetailScreen extends StatefulWidget {
   final Restaurant restaurant;
+
+  /// Whether the restaurant name opens its detail page (2026-10-31, product
+  /// owner: from Friends' Activity / a friend's verdict you continue to the
+  /// venue). False when this screen was opened from that venue page
+  /// itself, so a tap never stacks the same page again.
+  final bool linkToVenue;
   final Visit visit;
 
   const VisitDetailScreen({
     super.key,
     required this.restaurant,
+    this.linkToVenue = true,
     required this.visit,
   });
 
@@ -274,11 +282,16 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              restaurant.name,
-              style: CsTypography.screenTitle.copyWith(
-                color: AppColors.forestGreen,
-              ),
+            _VenueTitle(
+              name: restaurant.name,
+              onTap: widget.linkToVenue
+                  ? () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+                      ),
+                    )
+                  : null,
             ),
             const SizedBox(height: 10),
             Row(
@@ -375,6 +388,44 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
               entityId: visit.entityId,
               noun: 'visit',
               readOnly: !_isOwner,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// The restaurant name as the screen title. With [onTap], it opens the restaurant's
+/// own page: a quiet chevron beside the name, no button chrome.
+class _VenueTitle extends StatelessWidget {
+  final String name;
+  final VoidCallback? onTap;
+  const _VenueTitle({required this.name, this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final title = Text(
+      name,
+      style: CsTypography.screenTitle.copyWith(color: AppColors.forestGreen),
+    );
+    if (onTap == null) return title;
+    return Semantics(
+      button: true,
+      label: 'Open $name',
+      excludeSemantics: true,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(CsRadius.small),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Flexible(child: title),
+            const SizedBox(width: CsSpacing.xs),
+            const Icon(
+              Icons.chevron_right_rounded,
+              color: AppColors.taupe,
+              size: 26,
             ),
           ],
         ),
