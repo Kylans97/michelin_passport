@@ -8,6 +8,24 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **A journey page on the website.** `site/journey.html`, served at
+  `https://mantelier.app/journey`: a scroll story in which a fictional
+  traveller crosses a slowly spinning globe from Amsterdam to San
+  Sebastián, Florence and Tokyo, a friend joins at each stop, and a stamp
+  lands in a leather passport that turns its page along the way. It ends
+  on "Start your own journey." with the home page's waitlist form (same
+  `waitlist` table, same 409 handling), since the iPhone app isn't in the
+  App Store yet. The globe is a plain canvas drawing of the app's own
+  Natural Earth outlines (`assets/globe/countries.bin`, simplified to
+  ~5,400 points and inlined), so the page loads no library and fetches
+  no data. With `prefers-reduced-motion` it shows one still frame: the
+  whole route, every stamp, and the story as a plain list. The four
+  venues (Ciel Bleu ★★, Arzak ★★★, Four Seasons Firenze, 3 Keys,
+  Sézanne ★★★) were checked against production on 2026-10-31, not
+  only the 24 August export; the people and their dates are fictional
+  and the page says so. Nothing links to it from the home page yet.
+
 ---
 
 ## v1.5.1 (19) — 2026-10-31
