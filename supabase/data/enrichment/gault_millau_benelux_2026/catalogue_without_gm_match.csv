@@ -1,0 +1,37 @@
+restaurant_code,country_code,name,address,michelin_stars,status,production_gm,reason
+rest_0163,BE,La Durée,"Leenstraat 28, 8870 Izegem",NULL,open,,"no G&M profile matched on address, website or phone"
+rest_0167,BE,Ralf Berendsen,"Paalsteenlaan 90, 3620 Lanaken",NULL,open,,"no G&M profile matched on address, website or phone"
+rest_0173,BE,d'Eugénie à Emilie,"Pl. de la Résistance 1, 7331 Saint-Ghislain",2,open,,held for review: d'Eugénie à Émilie (MATCH_A3_CONTACT_AND_LOCATION)
+rest_0798,BE,Kommilfoo,"Vlaamse Kaai 17, 2000 Antwerpen, Belgium",1,open,,"no G&M profile matched on address, website or phone"
+rest_0802,BE,'t Fornuis,"Reyndersstraat 24, 2000 Antwerpen, Belgium",1,open,,held for review: 't Fornuis (MATCH_A3_CONTACT_AND_LOCATION)
+rest_0830,BE,Mémoire,"Dijver 7, 8000 Brugge, Belgium",NULL,open,,"no G&M profile matched on address, website or phone"
+rest_0836,BE,La Paix,"Rue Ropsy-Chaudron 49, 1070 Anderlecht, Belgium",2,open,,held for review: La Paix (REVIEW_SINGLE_SIGNAL_PHONE)
+rest_0840,BE,Table d'Amis,"Sint-Maartenskerkhof 8, 8500 Kortrijk, Belgium",NULL,open,,held for review: Chambres d'Amis (MATCH_B_ADDRESS_ONLY)
+rest_0846,BE,Aurum by Gary Kirchens,"Ordingen-Dorp 5, 3800 Sint-Truiden, Belgium",NULL,open,,"no G&M profile matched on address, website or phone"
+rest_0868,BE,l'Impératif d'Éole,"Grand'Route 58, 7040 Quévy-le-Grand, Belgium",1,open,,held for review: L' Impératif d'Éole (REVIEW_CODE_CLAIMED_BY_OTHER_GM); La Brasserie d’Éole (REVIEW_CODE_CLAIMED_BY_OTHER_GM)
+rest_0883,BE,La Table-Lasne by Alain Bianchin,"Rue du Try Bara 33, 1380 Lasne, Belgium",1,open,,held for review: La Table - Lasne (MATCH_A)
+rest_0889,BE,Le Grand Verre,"Place aux Foires 26, 6940 Durbuy, Belgium",1,open,,held for review: Le Grand Verre (REVIEW_PHONE_CONFLICT)
+rest_0890,BE,La Table de Manon,"Rue de Givet 79, 6940 Grandhan, Belgium",1,open,,"no G&M profile matched on address, website or phone"
+rest_0005,NL,Alma,"Lind 28, 5061 HT Oisterwijk",1,open,,held for review: Alma Bodega (REVIEW_CODE_CLAIMED_BY_OTHER_GM); Alma (REVIEW_CODE_CLAIMED_BY_OTHER_GM)
+rest_0027,NL,Create by Guido Braeken,"Laamsveldweg 3, 6245 NV Eijsden",2,open,,held for review: Create by Guido Braeken (REVIEW_SINGLE_SIGNAL_WEBSITE)
+rest_0028,NL,CUE,"Weesperzijde 15, 1091 EC Amsterdam",1,open,,held for review: CUE (REVIEW_SINGLE_SIGNAL_WEBSITE)
+rest_0031,NL,De Heeren van Harinxma,"Van Harinxmaweg 2, 9244 CJ Beetsterzwaag",1,open,,held for review: De Heeren van Harinxma (REVIEW_SINGLE_SIGNAL_WEBSITE)
+rest_0035,NL,De Kromme Watergang,"Havenweg 1, 4515 RK Hoofdplaat",1,open,,held for review: De Kromme Bistro (REVIEW_CODE_CLAIMED_BY_OTHER_GM); De Kromme Watergang (REVIEW_CODE_CLAIMED_BY_OTHER_GM)
+rest_0043,NL,Demain,"Visserijweg 1, 4506 CH Cadzand",NULL,open,,"no G&M profile matched on address, website or phone"
+rest_0062,NL,Lizz,"Lange Tiendeweg 34, 2801 KD Gouda",1,open,,held for review: Lizz (REVIEW_SINGLE_SIGNAL_WEBSITE)
+rest_0063,NL,Lutum,"Markt 35, 3961 BL Wijk bij Duurstede",1,open,,held for review: Lutum (REVIEW_SINGLE_SIGNAL_PHONE)
+rest_0070,NL,Nami,"Molenstraat 7, 5113 AL Cromvoirt",1,open,,held for review: Nami (MATCH_A2_WEBSITE_PHONE_ADDRESS_DIFFERS)
+rest_0095,NL,Ron Gastrobar,"Sophialaan 55, 1075 BP Amsterdam",1,open,,held for review: Ron Gastrobar (REVIEW_CODE_CLAIMED_BY_OTHER_GM); Ron Gastrobar Indonesia (REVIEW_CODE_CLAIMED_BY_OTHER_GM); Ron Gastrobar Indonesia (REVIEW_CODE_CLAIMED_BY_OTHER_GM); Ron Gastrobar Indonesia (REVIEW_CODE_CLAIMED_BY_OTHER_GM)
+rest_0098,NL,Sense,"Taalstraat 100, 5261 BH Vught",NULL,open,,"no G&M profile matched on address, website or phone"
+rest_0104,NL,t Ganzenest,"Haagweg 2, 2281 AT Rijswijk",1,open,,held for review: ‘T Ganzenest (REVIEW_SINGLE_SIGNAL_WEBSITE)
+rest_0114,NL,Vinkeles,"Keizersgracht 384, 1016 GA Amsterdam",2,open,,held for review: Vinkeles (REVIEW_SINGLE_SIGNAL_WEBSITE)
+rest_0115,NL,Vista,"Benedenkade 14, 4761 BA Willemstad",1,open,,held for review: Vista (REVIEW_SINGLE_SIGNAL_WEBSITE)
+rest_0116,NL,Voltaire,"Amerongerweg 1, 3951 AN Leersum",1,open,,held for review: Voltaire (REVIEW_SINGLE_SIGNAL_WEBSITE)
+rest_0144,NL,Spectrum,"Herengracht 542-556, 1017 CG Amsterdam",NULL,permanently_closed,,"no G&M profile matched on address, website or phone"
+rest_0149,NL,De Groene Lantaarn,"Gemeenteweg 364, 7951 PG Staphorst",NULL,permanently_closed,,"no G&M profile matched on address, website or phone"
+rest_0781,NL,Graphite by Peter Gast,"Paardenstraat 15III, 1017 CX Amsterdam",NULL,open,,"no G&M profile matched on address, website or phone"
+rest_1398,NL,Bij Sidney,"Kerkstraat 5, 3632 EL Loenen aan de Vecht",1,open,,"no G&M profile matched on address, website or phone"
+rest_1400,NL,Le Epifaan,"Bloemberg 5, 7924 PW Veeningen",1,open,,"no G&M profile matched on address, website or phone"
+rest_1403,NL,SUIS,"Strucht 77, 6305 AH Schin op Geul",2,open,,"no G&M profile matched on address, website or phone"
+rest_1840,NL,Tacite,"Cornelis Krusemanstraat 15, 1075 NB Amsterdam",NULL,open,,"no G&M profile matched on address, website or phone"
+rest_1841,NL,Petit Péché,"Nicolaas Beetsstraat 51h, 1053 RJ Amsterdam",NULL,open,,"no G&M profile matched on address, website or phone"
