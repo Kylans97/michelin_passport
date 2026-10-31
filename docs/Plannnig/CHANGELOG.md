@@ -26,6 +26,18 @@ The format follows Keep a Changelog.
   only the 24 August export; the people and their dates are fictional
   and the page says so. Nothing links to it from the home page yet.
 
+### Changed
+
+- **Scores can be swiped.** Every 1–10 score in the visit and stay
+  sheets (`RatingMeter`: overall, food, service, wine, value, room,
+  experience) took a tap per segment only. A horizontal drag now works
+  too: start on the "—" pill or anywhere on the meter, the score follows
+  the finger, and dragging back over the pill returns to "Not rated",
+  with a light selection haptic per step. Tapping is unchanged. New
+  `test/rating_meter_swipe_test.dart` covers the position-to-score
+  mapping, a swipe out and back, and that a tap still scores. Checked in
+  the simulator (2026-10-31): a swipe from "—" gave 8/10.
+
 ### Fixed
 
 - **Passport → + → "Where did you go?": what you typed was nearly
