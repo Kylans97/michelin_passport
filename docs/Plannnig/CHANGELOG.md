@@ -17,15 +17,17 @@ to Apple, so this build carries what came after it:
 `claude/edit-visits`, fast-forwarded into `release/1.5.5`. App code only
 — no migration, Edge Function or site change in this tree since 21.
 
-**Ledger at the version bump: not in agreement.** Production has 124
-migrations; main has 123. The extra one, `20261031150000` (cities for
-the 2026 MICHELIN Key refresh), was applied from
-`claude/epic-lumiere-18d5b4` by the Key-refresh session and is not on
-main yet. This build doesn't depend on it, but until that branch's
-migration file reaches main, `supabase db push` from main would see a
-remote-only migration and a from-scratch replay of main would lack its
-rows. Not merged here: that branch is another session's work. The
-schema diff run for 21 still covers everything main itself carries.
+**Ledger: 124, local and remote in agreement.** At the bump production
+held one migration main didn't: `20261031150000` (cities for the 2026
+MICHELIN Key refresh), applied from `claude/epic-lumiere-18d5b4` by the
+Key-refresh session. That file alone was brought onto main afterwards
+(product owner, 2026-10-31), unchanged, so `db push --dry-run` reports
+nothing pending. The rest of that branch — source data, scripts, the
+applied `prepared_keys_it_es_de_benelux_2026.sql`, its changelog and QA
+entries, and a revision of CLAUDE.md's hotel-scope rule (hotels that
+lose their Key stay, QA-387) — was not merged with it and still waits
+on that branch. The schema diff run for 21 still covers the schema;
+this migration only inserts 27 `cities` rows.
 `flutter analyze` clean and all 2,728 tests pass on this tree.
 
 ### Added
