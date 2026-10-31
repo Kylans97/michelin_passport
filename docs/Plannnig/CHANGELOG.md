@@ -26,6 +26,15 @@ The format follows Keep a Changelog.
   only the 24 August export; the people and their dates are fictional
   and the page says so. Nothing links to it from the home page yet.
 
+### Fixed
+- **The journey page's passport ran off the right edge at medium
+  widths.** Between the phone layout (≤860px) and roughly 1180px the
+  side column is narrower than the full-size open booklet (2 × 196px),
+  so its right page was cut off, as seen on mantelier.app/journey right
+  after it went live on 2026-10-31. Pages, stamps and cover lettering
+  now scale with the viewport in that range; checked at 900px and
+  1100px.
+
 ---
 
 ## v1.5.1 (19) — 2026-10-31

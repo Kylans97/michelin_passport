@@ -217,6 +217,15 @@
   .cta footer { margin-top: 28px; font-family: var(--util); font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
   .cta footer a { color: inherit; }
 
+  /* ---------- medium widths: the side column is too narrow for the full-size booklet ---------- */
+  @media (min-width: 861px) and (max-width: 1180px) {
+    :root { --page-w: clamp(140px, 15vw, 176px); --page-h: calc(var(--page-w) * 1.357); }
+    .stamp { width: calc(var(--page-w) * .53); height: calc(var(--page-w) * .53); }
+    .cover svg { width: 42px; height: 42px; }
+    .cover .cw { font-size: 12px; letter-spacing: .26em; text-indent: .26em; }
+    .cover .cs { font-size: 10px; }
+  }
+
   /* ---------- phone ---------- */
   @media (max-width: 860px) {
     :root { --page-w: 118px; --page-h: 160px; }
