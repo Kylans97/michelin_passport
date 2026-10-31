@@ -163,7 +163,11 @@ void main() {
       // rendered — proof _ProfileBody's own build() actually ran, not
       // just the loading/error branches above it.
       expect(find.text('Kylan'), findsOneWidget);
-      expect(find.text('@kylan'), findsOneWidget);
+      expect(find.text('@KYLAN'), findsOneWidget);
+      expect(
+        find.text('Start enjoying the Mantelier journey together.'),
+        findsOneWidget,
+      );
       expect(find.text('Add friend'), findsOneWidget);
     },
   );
