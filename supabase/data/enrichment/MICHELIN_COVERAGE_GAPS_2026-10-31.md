@@ -212,6 +212,10 @@ Een rij zonder ster wordt nooit gewist. Ze krijgt een eigen regel in
 
 ## Voorstel voor de volgorde van passes
 
+*Goedgekeurd door de product owner op 2026-10-31.* Die goedkeuring geldt
+voor de volgorde. Elke pass afzonderlijk, en elke apply naar productie,
+wordt nog steeds apart goedgekeurd.
+
 De volgorde weegt drie dingen: de grootte van het gat, Europa eerst
 (events zijn de hoofdpijler en Europees), en hoeveel werk er al klaar ligt.
 Een land dat al eerder een pass had, gaat sneller.
