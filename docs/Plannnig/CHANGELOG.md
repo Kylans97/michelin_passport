@@ -10,72 +10,63 @@ The format follows Keep a Changelog.
 
 ---
 
-## v1.5.1 (19) — 2026-10-31
+## v1.5.2 (20) — 2026-10-31
 
-Built from `main`, after merging nine branches into `release/1.5.1`:
-- `claude/venue-follow-team`: the Follow pill, one wishlist heart, one
-  notification flow after a follow, and the venue team;
-- `claude/friends-activity-globe`: Friends' Activity, a friend's globe,
-  friends who've been on venue pages, unclipped friend-profile avatars,
-  and Community Rankings for restaurants, hotels and events with one
-  Filters button;
-- `claude/venue-guide-links`: the guide pages moved out of the venue
-  action row;
-- `claude/neutral-username-hint` and `claude/friend-avatars` (2026-10-31,
-  after main had first been pushed at `a00d3e8`): a neutral username
-  example on sign-up, and friends' profile photos.
-- `claude/passport-search-contrast`, `claude/visit-venue-link`,
-  `claude/stranger-profile` and `claude/nl-venue-contacts` (2026-10-31,
-  after main was pushed at `8b78fc2`): a readable Passport search,
-  swipeable scores, one visit/stay screen everywhere, venue links from a
-  visit, the stranger profile, and the record of the NL contact data
-  apply (the data itself was already in production). Main had also
-  gained the website journey page (PRs #6, #7, #9, #10) in between;
-  those site-only entries are listed here because they reached main
-  before this build, though they ship with the site, not the app.
+1.5.1 (19) was archived at 16:25 on 2026-10-30 from `a00d3e8`
+("Prepare 1.5.1 (19)", committed three minutes earlier) and is live.
+Everything after it ships here. Built from `main`, after merging six
+branches into `release/1.5.1` on 2026-10-31:
+- `claude/neutral-username-hint`: a neutral username example on sign-up;
+- `claude/friend-avatars`: friends' profile photos;
+- `claude/passport-search-contrast`: a readable Passport search,
+  swipeable scores, and one visit/stay screen from every entry point;
+- `claude/visit-venue-link`: from a visit or stay to its venue;
+- `claude/stranger-profile`: the profile of someone who isn't a friend
+  yet;
+- `claude/nl-venue-contacts`: the record of the NL websites and phones
+  apply (QA-375, QA-376; the data itself was written to production on
+  2026-10-31 and needs no build).
+Main had also gained the website journey page (PRs #6, #7, #9, #10);
+those site-only entries are listed here because they reached main before
+this build, though they ship with the site, not the app.
 
-Numbered 1.5.1 at the product owner's request, though it carries new
-features. Four migrations went to production after 1.5.0 (18) and
-before this build: `20261030160000`, `20261030170000` and
-`20261030180000` on 2026-10-30, `20261031120000` on 2026-10-31. Ledger
-at the build: 121 migrations, local and remote in agreement.
+One migration went to production after 1.5.1 (19) and before this
+build: `20261031120000_share_member_avatars.sql` (2026-10-31). Ledger at
+the version bump: 121 migrations, local and remote in agreement.
 
 **Schema diff at the version bump** (CLAUDE.md; method in
-`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay,
-first of 120 migrations on 2026-10-30 and again of all 121 on 2026-10-31
-after `20261031120000` was applied, with the same result both times:
-- **Replay:** all migrations applied cleanly from scratch, so the
-  `20261030170000` rename (it was first written to sort before
-  `20261030160000`, see its own entry) replays in the same order
-  production ran.
+`NEW_MACHINE_SETUP.md` §4), 2026-10-31, after `20261031120000` was
+applied:
+- **Replay:** all 121 migrations applied cleanly from scratch on a
+  fresh full stack.
 - **`supabase db dump`:** identical on both sides apart from blank
   lines.
 - **Storage and auth, compared directly:** buckets, `storage.objects`
-  policies, triggers and RLS on both storage tables are identical
-  (including the new `profile_photos_read_visible_members`), apart from
-  the expected local-only `enforce_versioning_status_transition`
-  trigger.
-- **`anon` execute:** false on production for all six new
-  `SECURITY DEFINER` functions (`remove_venue_team_member`,
-  `admin_approve_venue_team`, `admin_reject_venue_team`,
-  `can_view_member_avatar`, `get_member_avatar_paths`,
-  `can_view_member_avatar_object`), checked with
-  `has_function_privilege`.
-- **Before the build:** `flutter analyze` was clean and all 2,710 tests
-  passed on the merged tree; after the last four branches, all 2,719.
-- **After the last four branches:** none adds a migration (still 121,
-  local and remote in agreement), and a fresh production dump plus the
-  storage/auth query are identical to the ones that matched the replay
-  earlier on 2026-10-31, so that diff still stands.
+  policies (including the new `profile_photos_read_visible_members`),
+  triggers and RLS on both storage tables are identical, apart from the
+  expected local-only `enforce_versioning_status_transition` trigger.
+- **`anon` execute:** false on production (and for PUBLIC), true for
+  `authenticated`, on `can_view_member_avatar`,
+  `get_member_avatar_paths` and `can_view_member_avatar_object`,
+  checked with `has_function_privilege`.
+- **Re-checked after the last four branches merged:** none adds a
+  migration, and a fresh production dump plus the storage/auth query
+  are identical to the ones that matched the replay.
+- **Before the build:** `flutter analyze` was clean and all 2,719 tests
+  passed on the merged tree.
 
-**Near-miss, 2026-10-31:** main was pushed at `d65f4fb`, the merge of
-both late branches, one commit before this paragraph was written — a
-failed text replacement stopped the commit but not the push that
-followed it in the same command. The code was complete and tested at
-`d65f4fb`; only this changelog text lagged, and it followed in the next
-commit. Chain a push to the commit it depends on with `&&`, never `;`.
-
-No manual steps outside the repo for this build.
+**Near-miss, 2026-10-31.** This work was first folded into the 1.5.1
+(19) section, on the assumption that 19 had not been archived yet. It
+had: the archive in `~/Library/Developer/Xcode/Archives` is dated
+2026-10-30 16:25, and 19 is live. Build 19 can't be reused, and its
+changelog section must say only what it carried, so everything after
+`a00d3e8` moved here and the 1.5.1 (19) section is back to that
+commit's own text. Check the archive list before treating a version as
+still open. Along the way main was once pushed at `d65f4fb`, one commit
+before its changelog text was written: a failed text replacement
+stopped the commit but not the push chained after it with `;`. The code
+was complete and tested there. Chain a push to the commit it depends on
+with `&&`.
 
 ### Added
 - **A journey page on the website.** `site/journey.html`, served at
@@ -100,7 +91,6 @@ No manual steps outside the repo for this build.
   `prefers-reduced-motion`). It is the home page's only link out, so it
   sits above "Nights we're watching" rather than in the footer, in place
   of the curved divider that stood there.
-
 - **From a visit or stay to its venue** (2026-10-31, product owner). On
   Visit Detail and Stay Detail, opened from Friends' Activity, a friend's
   verdicts or Passport, the venue name is now tappable, with a quiet taupe
@@ -116,7 +106,6 @@ No manual steps outside the repo for this build.
   "Flore ›" → Flore's restaurant page. There is no widget test, because
   both detail screens read the Supabase session at build time, as before.
   Analyze and all 2,710 tests pass.
-
 - **Friends' profile photos** (2026-10-31, product owner). Until now
   only your own photo ever showed: every other member was initials,
   because the `profile-photos` bucket was owner-only on purpose
@@ -163,6 +152,127 @@ No manual steps outside the repo for this build.
   Analyze and all 2,710 tests pass (new model tests; the paged
   notifications test now asserts only on the notifications call, since
   the photo lookup follows it).
+
+### Changed
+- **Profile of someone who isn't a friend yet, redesigned** (2026-10-31,
+  approved by the product owner from a simulator screenshot). It is
+  reached from Find friends, a request or a notification. The old screen
+  was half green and half ivory, with the identity sitting high and
+  left. It is now one deep-green page with everything centred (new
+  `NonFriendProfile`): the member's photo or initial in a hairline ring,
+  the name in the editorial serif, @USERNAME in small caps, a short rule,
+  an italic invitation line, one sentence on what friends share, and one
+  calm action.
+  - No relationship yet: "Start enjoying the Mantelier journey
+    together." and Add friend.
+  - Request sent: "Your invitation is on its way." and a quiet "✓ Request
+    sent".
+  - Request received: "{First name} would like to share the journey with
+    you." with Accept, and a quieter Decline beneath it.
+  - Your own profile: no invitation and no action.
+
+  Report and Block stay in the "⋯" menu. Only the minimal identity a
+  non-friend could already see is shown (photo, name, username); the
+  copy describes what friends share in general, never this member's
+  activity. The old `_NonFriendBody`/`_Hero`/`_RelationshipAction` are
+  removed. A new widget test covers the states and 320 pt; the navigation
+  test now expects `@KYLAN` and the invitation line. Analyze and all
+  2,715 tests pass.
+- **One screen to log a visit or stay, wherever you start.** Restaurant
+  and Hotel Detail's "Add your first visit" / "Add a stay" opened their
+  own older white sheets (`add_visit_sheet.dart`, `add_stay_sheet.dart`),
+  which looked nothing like Passport → + and, on their white card, left
+  an unrated score meter's segments invisible. Both pages now open the
+  Passport flow (`showAddVisitFlow(initialVenue: …)`) straight at its
+  stamp step, with "Cancel" and "LOG YOUR VISIT"/"LOG YOUR STAY" instead
+  of "‹ Back" and "STEP 2 OF 2". Nothing was dropped: the flow gained
+  what only the old sheets had — menu type (restaurants), "Visible to
+  friends" (off by default, as before) and photos (uploaded after the
+  visit saves, a failure reported and never undoing the visit) — so the
+  Passport route now records those too. It now returns a `SavedVisit`.
+  The two old sheets are removed; `MenuTypeSelector` moved to its own
+  file. The notes field is unfilled, like the search field, so it sits
+  between its hairlines instead of in a white box. Checked in the
+  simulator from De Librije (2026-10-31), cancelled without saving.
+- **Scores can be swiped.** Every 1–10 score in the visit and stay
+  sheets (`RatingMeter`: overall, food, service, wine, value, room,
+  experience) took a tap per segment only. A horizontal drag now works
+  too: start on the "—" pill or anywhere on the meter, the score follows
+  the finger, and dragging back over the pill returns to "Not rated",
+  with a light selection haptic per step. Tapping is unchanged. New
+  `test/rating_meter_swipe_test.dart` covers the position-to-score
+  mapping, a swipe out and back, and that a tap still scores. Checked in
+  the simulator (2026-10-31): a swipe from "—" gave 8/10.
+
+### Fixed
+- **The journey page's passport ran off the right edge at medium
+  widths.** Between the phone layout (≤860px) and roughly 1180px the
+  side column is narrower than the full-size open booklet (2 × 196px),
+  so its right page was cut off, as seen on mantelier.app/journey right
+  after it went live on 2026-10-31. Pages, stamps and cover lettering
+  now scale with the viewport in that range; checked at 900px and
+  1100px.
+- **The Arzak stamp's city line ran outside its oval.** "SAN
+  SEBASTIÁN · ES" was set at 6.6 units with wide letter-spacing near the
+  top of the inner ellipse, where the oval is narrowest, so it crossed
+  the rings. It is now smaller, tighter and lower, with the stars,
+  name and date moved down to match; measured inside the inner ring.
+- **Passport → + → "Where did you go?": what you typed was nearly
+  invisible.** The search field sits on the green step with ivory text,
+  but the app theme fills every `TextField` with ivory, so the text was
+  ivory on an ivory box. The field now sets `filled: false` and reads as
+  the underline on green it was designed as. Checked in the simulator
+  (2026-10-31); no widget test covers this sheet.
+- **Create your account showed the product owner's own username as the
+  example.** The Username field's placeholder was `kylan.s`, a real
+  person's handle, left in from development. It is now `jane.doe`,
+  matching the Name field's `Jane Doe`. Nothing else in the shipped app
+  carries a real name: the only other hit, `lib/data/mock/mock_user.dart`,
+  is imported nowhere in `lib/`, and the test fixtures never ship.
+
+---
+
+## v1.5.1 (19) — 2026-10-30
+
+Built from `main`, after merging three branches into `release/1.5.1`:
+- `claude/venue-follow-team`: the Follow pill, one wishlist heart, one
+  notification flow after a follow, and the venue team;
+- `claude/friends-activity-globe`: Friends' Activity, a friend's globe,
+  friends who've been on venue pages, unclipped friend-profile avatars,
+  and Community Rankings for restaurants, hotels and events with one
+  Filters button;
+- `claude/venue-guide-links`: the guide pages moved out of the venue
+  action row.
+
+Numbered 1.5.1 at the product owner's request, though it carries new
+features. Three migrations went to production on 2026-10-30, after
+1.5.0 (18) and before this build: `20261030160000`, `20261030170000` and
+`20261030180000`. Ledger at the version bump: 120 migrations, local and
+remote in agreement.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay
+of all 120 migrations, 2026-10-30:
+- **Replay:** all 120 migrations applied cleanly from scratch, so the
+  `20261030170000` rename (it was first written to sort before
+  `20261030160000`, see its own entry) replays in the same order
+  production ran.
+- **`supabase db dump`:** identical on both sides apart from blank
+  lines.
+- **Storage and auth, compared directly:** buckets, `storage.objects`
+  policies, triggers and RLS on both storage tables are identical, apart
+  from the expected local-only `enforce_versioning_status_transition`
+  trigger.
+- **`anon` execute:** false on production for all three new
+  `SECURITY DEFINER` functions (`remove_venue_team_member`,
+  `admin_approve_venue_team`, `admin_reject_venue_team`), checked with
+  `has_function_privilege`.
+- **Before the build:** `flutter analyze` was clean and all 2,707 tests
+  passed on the merged tree.
+
+No manual steps outside the repo for this build.
+
+### Added
 - **The team on a venue's page.** A restaurant or hotel can show its
   chef and its manager ("Restaurant manager" / "Hotel manager"), each a
   name and an optional short text (80 / 280 characters), under "THE
@@ -257,59 +367,6 @@ No manual steps outside the repo for this build.
   out of a manager's "Preview my page" because it is personal state.
 
 ### Changed
-- **Profile of someone who isn't a friend yet, redesigned** (2026-10-31,
-  approved by the product owner from a simulator screenshot). It is
-  reached from Find friends, a request or a notification. The old screen
-  was half green and half ivory, with the identity sitting high and
-  left. It is now one deep-green page with everything centred (new
-  `NonFriendProfile`): the member's photo or initial in a hairline ring,
-  the name in the editorial serif, @USERNAME in small caps, a short rule,
-  an italic invitation line, one sentence on what friends share, and one
-  calm action.
-  - No relationship yet: "Start enjoying the Mantelier journey
-    together." and Add friend.
-  - Request sent: "Your invitation is on its way." and a quiet "✓ Request
-    sent".
-  - Request received: "{First name} would like to share the journey with
-    you." with Accept, and a quieter Decline beneath it.
-  - Your own profile: no invitation and no action.
-
-  Report and Block stay in the "⋯" menu. Only the minimal identity a
-  non-friend could already see is shown (photo, name, username); the
-  copy describes what friends share in general, never this member's
-  activity. The old `_NonFriendBody`/`_Hero`/`_RelationshipAction` are
-  removed. A new widget test covers the states and 320 pt; the navigation
-  test now expects `@KYLAN` and the invitation line. Analyze and all
-  2,715 tests pass.
-
-
-- **One screen to log a visit or stay, wherever you start.** Restaurant
-  and Hotel Detail's "Add your first visit" / "Add a stay" opened their
-  own older white sheets (`add_visit_sheet.dart`, `add_stay_sheet.dart`),
-  which looked nothing like Passport → + and, on their white card, left
-  an unrated score meter's segments invisible. Both pages now open the
-  Passport flow (`showAddVisitFlow(initialVenue: …)`) straight at its
-  stamp step, with "Cancel" and "LOG YOUR VISIT"/"LOG YOUR STAY" instead
-  of "‹ Back" and "STEP 2 OF 2". Nothing was dropped: the flow gained
-  what only the old sheets had — menu type (restaurants), "Visible to
-  friends" (off by default, as before) and photos (uploaded after the
-  visit saves, a failure reported and never undoing the visit) — so the
-  Passport route now records those too. It now returns a `SavedVisit`.
-  The two old sheets are removed; `MenuTypeSelector` moved to its own
-  file. The notes field is unfilled, like the search field, so it sits
-  between its hairlines instead of in a white box. Checked in the
-  simulator from De Librije (2026-10-31), cancelled without saving.
-
-- **Scores can be swiped.** Every 1–10 score in the visit and stay
-  sheets (`RatingMeter`: overall, food, service, wine, value, room,
-  experience) took a tap per segment only. A horizontal drag now works
-  too: start on the "—" pill or anywhere on the meter, the score follows
-  the finger, and dragging back over the pill returns to "Not rated",
-  with a light selection haptic per step. Tapping is unchanged. New
-  `test/rating_meter_swipe_test.dart` covers the position-to-score
-  mapping, a swipe out and back, and that a tap still scores. Checked in
-  the simulator (2026-10-31): a swipe from "—" gave 8/10.
-
 - **Restaurant and Hotel Detail: guide pages moved out of the action
   row.** On a venue with every recognition (De Librije, 2026-10-30) the
   `VenueUtilityActions` row had grown to six icons side by side —
@@ -451,33 +508,6 @@ No manual steps outside the repo for this build.
     gold-bar widget, had no other users and is removed.
 
 ### Fixed
-- **The journey page's passport ran off the right edge at medium
-  widths.** Between the phone layout (≤860px) and roughly 1180px the
-  side column is narrower than the full-size open booklet (2 × 196px),
-  so its right page was cut off, as seen on mantelier.app/journey right
-  after it went live on 2026-10-31. Pages, stamps and cover lettering
-  now scale with the viewport in that range; checked at 900px and
-  1100px.
-- **The Arzak stamp's city line ran outside its oval.** "SAN
-  SEBASTIÁN · ES" was set at 6.6 units with wide letter-spacing near the
-  top of the inner ellipse, where the oval is narrowest, so it crossed
-  the rings. It is now smaller, tighter and lower, with the stars,
-  name and date moved down to match; measured inside the inner ring.
-
-
-- **Passport → + → "Where did you go?": what you typed was nearly
-  invisible.** The search field sits on the green step with ivory text,
-  but the app theme fills every `TextField` with ivory, so the text was
-  ivory on an ivory box. The field now sets `filled: false` and reads as
-  the underline on green it was designed as. Checked in the simulator
-  (2026-10-31); no widget test covers this sheet.
-
-- **Create your account showed the product owner's own username as the
-  example.** The Username field's placeholder was `kylan.s`, a real
-  person's handle, left in from development. It is now `jane.doe`,
-  matching the Name field's `Jane Doe`. Nothing else in the shipped app
-  carries a real name: the only other hit, `lib/data/mock/mock_user.dart`,
-  is imported nowhere in `lib/`, and the test fixtures never ship.
 - **Friend Profile avatars were clipped.** The box holding the two
   overlapping avatars was 54pt high, but each avatar sits in a 3pt ring,
   so the Stack cut 3pt off the bottom and right of both circles at every
