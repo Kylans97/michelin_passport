@@ -1,0 +1,3883 @@
+michelin_id,country_path,restaurant_country,stars,name,city
+1190141,ad,ad,1,Ibaya,Soldeu
+531684,ar,ar,2,Aramburu,Buenos Aires
+531944,ar,ar,1,Crizia,Buenos Aires
+532169,ar,ar,1,Don Julio,Buenos Aires
+532684,ar,ar,1,Azafrán,Mendoza
+532744,ar,ar,1,Brindillas,Mendoza
+551367,ar,ar,1,Casa Vigil,Mendoza
+1206958,ar,ar,1,Trescha,Buenos Aires
+1207154,ar,ar,1,La VidA,Mendoza
+1207155,ar,ar,1,Zonda Cocina de Paisaje,Mendoza
+1209250,ar,ar,1,Centauro,Mendoza
+1209742,ar,ar,1,Angélica Cocina Maestra,Mendoza
+1209837,ar,ar,1,Riccitelli Bistró,Mendoza
+1217199,ar,ar,1,Han,Buenos Aires
+1247785,ar,ar,1,Cal - Gastronomía Viva,Mendoza
+104685,at,at,1,Waldschänke,Grieskirchen
+104742,at,at,1,Pfefferschiff,Salzburg
+104898,at,at,1,Paznaunerstube,Ischgl
+104899,at,at,2,Stüva,Ischgl
+105049,at,at,2,Landhaus Bacher,Mautern an der Donau
+105167,at,at,1,Guth,Lauterach
+105219,at,at,2,Griggeler Stuba,Lech am Arlberg
+105301,at,at,1,Mangold,Lochau
+105361,at,at,1,Mesnerhaus,Mauterndorf
+105481,at,at,1,Hubertusstube,Neustift im Stubaital
+105701,at,at,1,Esszimmer,Salzburg
+105727,at,at,2,Ikarus,Salzburg
+105868,at,at,1,Thaller - Restaurant,Sankt Veit am Vogau
+105911,at,at,2,Taubenkobel,Schützen am Gebirge
+106074,at,at,1,Saziani,Straden
+106229,at,at,1,Tanglberg,Vorchdorf
+106306,at,at,2,Obauer,Werfen
+106381,at,at,2,Silvio Nickol Gourmet Restaurant,Vienna
+106382,at,at,3,Steirereck im Stadtpark,Vienna
+106455,at,at,2,Mraz & Sohn,Vienna
+107207,at,at,1,Kilian Stuba,Hirschegg
+107937,at,at,1,Ötztaler Stube,Sölden
+109176,at,at,2,Schwarzer Adler,Hall in Tirol
+109757,at,at,1,Heurigenhof Bründlmayer,Langenlois
+116361,at,at,1,The Glass Garden,Salzburg
+166921,at,at,1,Mörwald „Toni M.“,Feuersbrunn
+205556,at,at,1,Glasswing by Alexandru Simon,Vienna
+254861,at,at,1,Schlossherrnstube,Ischgl
+347995,at,at,1,TIAN,Vienna
+395138,at,at,1,Edvard,Vienna
+405344,at,at,2,Konstantin Filippou,Vienna
+434434,at,at,2,SENNS.Restaurant,Salzburg
+489481,at,at,3,Amador,Vienna
+517395,at,at,1,Pramerl & the Wolf,Vienna
+550678,at,at,1,[aend],Vienna
+562487,at,at,1,APRON,Vienna
+1181264,at,at,1,Herzig,Vienna
+1192424,at,at,2,Döllerer,Golling an der Salzach
+1204322,at,at,1,Z'SOM,Vienna
+1205026,at,at,1,Esszimmer - Everybody's Darling,Vienna
+1205066,at,at,1,JOLA,Vienna
+1212061,at,at,2,Doubek,Vienna
+1212332,at,at,2,Gourmetrestaurant Tannenhof,Sankt Anton am Arlberg
+1212333,at,at,1,Alpin Gourmet Stube,Sankt Anton am Arlberg
+1212337,at,at,1,Bruderherz Fine Dine,Fiss
+1212338,at,at,1,Gründler's Gourmet Stüberl,Achenkirch
+1212340,at,at,1,Beef Club,Fiss
+1212344,at,at,1,Gannerhof,Innervillgraten
+1212358,at,at,2,Rote Wand Chef's Table,Lech am Arlberg
+1212360,at,at,1,La Fenice,Lech am Arlberg
+1212364,at,at,1,Austria Stuben,Obergurgl
+1212407,at,at,1,Guat'z Essen,Stumm
+1212409,at,at,1,s'kammerli,Nauders
+1212417,at,at,1,Interalpen - Chef's Table,Telfs
+1212418,at,at,1,Bergfried - Chefs Table,Tux
+1212420,at,at,1,Die Geniesserstube im Alpenhof,Tux
+1212465,at,at,1,Kirchenwirt,Leogang
+1212475,at,at,1,dahoam by Andreas Herbst,Leogang
+1212477,at,at,1,Atelier Fischer,Sankt Gilgen
+1212478,at,at,2,Kräuterreich by Vitus Winkler,Sankt Veit im Pongau
+1212494,at,at,1,Zur goldenen Birn,Graz
+1212496,at,at,1,Artis,Graz
+1212679,at,at,1,Moritz,Grafenstein
+1212680,at,at,1,Gamskogelhütte Fine Dining by Stefan Lastin,Rennweg am Katschberg
+1212757,at,at,1,Les Deux Kitzbühel - Brasserie & Bar,Kitzbühel
+1212784,at,at,1,Die Forelle,Weissensee
+1212806,at,at,1,Hubert Wallner,Maria Wörth
+1212821,at,at,1,Esslokal,Hadersdorf am Kamp
+1212861,at,at,1,Gaumenkitzel,Kirchberg am Wechsel
+1212905,at,at,1,Paula,Sankt Wolfgang im Salzkammergut
+1212930,at,at,1,Lukas Restaurant,Schärding
+1212932,at,at,2,Ois,Neufelden
+1212934,at,at,1,Verdi,Linz
+1212939,at,at,1,RAU nature-based cuisine,Großraming
+1212944,at,at,1,Rossbarth,Linz
+1212974,at,at,1,Kliemstein Vino Vitis,Linz
+1212976,at,at,1,Kammer5,Ort im Innkreis
+1212989,at,at,1,Lukas Kapeller,Steyr
+1212990,at,at,1,Bootshaus,Traunkirchen
+1213050,at,at,1,Himmelreich,Zaußenberg
+1213071,at,at,1,Geiger Alm,Altaussee
+1213073,at,at,1,Geschwister Rauch - Restaurant,Bad Gleichenberg
+1213078,at,at,2,Die Weinbank - Restaurant,Ehrenhausen
+1213172,at,at,1,Sattlerhof,Gamlitz
+1213586,at,at,1,Lieperts,Leutschach an der Weinstraße
+1213587,at,at,1,Wörgötter - Fine Dining,Ligist
+1213592,at,at,1,Harald Irka am Pfarrhof - Fine Dine,Sankt Andrä im Sausal
+1213594,at,at,1,Broadmoar,Sankt Josef
+1213596,at,at,1,ZeitRAUM,Sankt Kathrein am Offenegg
+1214578,at,at,1,Rouge Noir,Weissensee
+1214579,at,at,2,Restaurant 141 by Joachim Jaud,Mieming
+1215752,at,at,1,Am Mahrbach,Königsdorf
+1216125,at,at,1,Lilli Fine Dining,Fehring
+1216877,at,at,1,RAR Fine Dining,Maria Alm
+1217658,at,at,1,Ullrs Gourmetstube,Sankt Anton am Arlberg
+1217741,at,at,1,Addiert,Vienna
+1240876,at,at,1,Genießerei am Markt -  Steiermark(t)dinner by Alexander Posch,Graz
+1242840,at,at,1,Zimmerl,Waidhofen an der Thaya
+1245488,at,at,1,Ansitz 12,Lienz
+1244914,au,au,1,Botanic,Adelaide
+1244917,au,au,1,arkhé,Adelaide
+1244925,au,au,1,Aurora at ILA,Adelaide
+1244927,au,au,2,Magill Estate Restaurant,Adelaide
+1244932,au,au,1,Hentley Farm,Seppeltsfield
+1244935,au,au,1,LVN Restaurant at Bird in Hand,Woodside
+1245427,au,au,1,Maxwell Restaurant,McLaren Vale
+1245924,au,au,1,Aptos,Stirling
+1246864,au,au,1,Anvers Restaurant,Kangarilla
+1246923,au,au,1,Skillogalee Barrel House,Sevenhill
+1247149,au,au,1,Esmay,Adelaide
+113872,be,be,1,Comme chez Soi,Brussels
+115217,be,be,1,'t Fornuis,Antwerpen
+172687,be,be,1,'t Stoveke,Strombeek-Bever
+209094,be,be,1,Kelderman,Aalst
+209198,be,be,1,Hofke van Bazel,Bazel
+209241,be,be,1,Les Gourmands,Blaregnies
+209267,be,be,1,Maison Marit,Braine-l'Alleud
+209268,be,be,1,Philippe Meyers,Braine-l'Alleud
+209353,be,be,1,Sans Cravate,Brugge
+209367,be,be,2,De Jonkman,Sint-Kruis
+209445,be,be,2,Le Chalet de la Forêt,Uccle
+209466,be,be,1,Da Mimmo,Woluwe-Saint-Lambert
+209570,be,be,1,De Zuidkant,Damme
+209598,be,be,1,Hostellerie Vivendum,Dilsen
+209675,be,be,1,De Kristalijn,Genk
+209681,be,be,1,La Botte,Genk
+209795,be,be,1,JER,Hasselt
+209829,be,be,1,Innesto,Zonhoven
+209836,be,be,1,Hof Ter Hulst,Hulshout
+209852,be,be,1,Hostellerie St-Nicolas,Elverdinge
+209876,be,be,1,De Pastorie,Lichtaart
+209929,be,be,1,Sel Gris,Knokke
+209930,be,be,2,Bartholomeus,Heist
+209968,be,be,2,Hof van Cleve - Floris Van Der Veken,Kruishoutem
+210001,be,be,1,Couvert Couvert,Heverlee
+210115,be,be,1,Les Pieds dans le Plat,Marenne
+210132,be,be,1,Centpourcent,Sint-Katelijne-Waver
+210192,be,be,1,l'Essentiel,Temploux
+210264,be,be,2,Slagmolen,Opglabbeek
+210282,be,be,1,Le Gastronome,Paliseul
+210323,be,be,2,L'Eau Vive,Arbre
+210384,be,be,1,Philippe Fauchet,Saint-Georges-sur-Meuse
+210392,be,be,1,Zur Post,Saint Vith
+210402,be,be,2,Sir Kwinten,Sint-Kwintens-Lennik
+210421,be,be,1,'t Korennaer,Nieuwkerken-Waas
+210428,be,be,1,Le Coq aux Champs,Soheit-Tinlot
+210474,be,be,1,De Mijlpaal,Tongeren
+210598,be,be,1,Benoit en Bernard Dewitte,Ouwegem
+210907,be,be,1,La Villa in the Sky,Brussels
+211087,be,be,1,La Roseraie Modave,Modave
+231216,be,be,2,Nuance,Duffel
+233191,be,be,1,Kamo,Ixelles
+254100,be,be,1,Aux petits oignons,Jodoigne
+259755,be,be,2,d'Eugénie à Emilie,Baudour
+261923,be,be,2,La Table de Maxime,Our
+269264,be,be,2,Vrijmoed,Gent
+275457,be,be,2,Cuchara,Lommel
+306344,be,be,2,Bozar Restaurant,Brussels
+313484,be,be,3,Boury,Roeselare
+319866,be,be,3,Zilte,Antwerpen
+325897,be,be,1,Alter,Tongeren
+330218,be,be,1,Goffin,Sint-Kruis
+356239,be,be,2,Cuines 33,Knokke
+359021,be,be,1,Bistrot du Nord,Antwerpen
+371937,be,be,1,Le Cor de Chasse,Wéris
+371956,be,be,2,L'air du temps,Liernu
+372756,be,be,1,Arabelle Meirlaen,Marchin
+385464,be,be,1,Au Gré du Vent,Seneffe
+386823,be,be,1,La Belle,Geel
+391826,be,be,1,Publiek,Gent
+404066,be,be,1,Héliport Brasserie,Liège
+417211,be,be,1,Fleur de Lin,Zele
+437442,be,be,1,Attablez-vous,Namur
+440448,be,be,1,De Bakermat,Ninove
+446549,be,be,1,Vol-Ver,Marke
+450399,be,be,1,OAK,Gent
+456100,be,be,1,Carcasse,Sint-Idesbald
+456120,be,be,1,Ogst,Hasselt
+485040,be,be,1,L'Envie,Sint-Denijs
+488679,be,be,2,Castor,Beveren-Leie
+506039,be,be,1,Quadras,Saint Vith
+509863,be,be,1,Bistro Racine,Braine-le-Château
+523867,be,be,1,Nathan,Antwerpen
+526280,be,be,1,Melchior,Tienen
+527137,be,be,1,Zet'Joe by Geert Van Hecke,Brugge
+528214,be,be,1,The Butcher's son,Antwerpen
+537346,be,be,1,humus x hortense,Ixelles
+548395,be,be,1,EED,Leuven
+548550,be,be,1,Rebelle,Marke
+548670,be,be,1,Boo Raan,Knokke
+1090864,be,be,1,Hoeve De Bies,St-Martens-Voeren
+1102847,be,be,1,Atelier Noun,Leefdaal
+1154465,be,be,1,Un Max de Goût,Comblain-au-Pont
+1154749,be,be,1,Tinèlle,Mechelen
+1154894,be,be,1,Le Vieux Château,Flobecq
+1160137,be,be,1,Hert,Turnhout
+1181344,be,be,1,EssenCiel,Leuven
+1186169,be,be,1,Chai Gourmand,Beuzet
+1188703,be,be,1,Barge,Brussels
+1191932,be,be,1,Arden,Villers-sur-Lesse
+1192293,be,be,1,Sense,Waasmunster
+1192483,be,be,1,Pont-Neuf,Antwerpen
+1194348,be,be,1,Sensum Gent,Sint-Denijs-Westrem
+1194349,be,be,2,Hertog Jan at Botanic,Antwerpen
+1194375,be,be,1,¡Toma!,Liège
+1195885,be,be,1,Vintage,Kontich
+1197020,be,be,1,Nebo,Antwerpen
+1197473,be,be,1,La Grange d'Hamois,Emptinne
+1198299,be,be,1,Le Grand Verre,Durbuy
+1198423,be,be,1,Fine Fleur,Antwerpen
+1200481,be,be,1,Pré de chez vous,Bouge
+1200686,be,be,1,Bistrot Blaise,Marche-en-Famenne
+1201040,be,be,1,Modest,Opglabbeek
+1203424,be,be,1,La Grappe d'Or,Arlon
+1203519,be,be,1,Willem Hiele,Oudenburg
+1203601,be,be,1,Misera,Antwerpen
+1204777,be,be,1,Le Roannay,Francorchamps
+1204961,be,be,1,Neon,Lier
+1205634,be,be,1,La Table-Lasne by Alain Bianchin,Ohain
+1206185,be,be,1,Menssa,Woluwe-Saint-Pierre
+1207215,be,be,1,Agnes,Sint-Martens-Bodegem
+1209431,be,be,1,l'Impératif d'Éole,Quévy-le-Grand
+1211631,be,be,1,Komaf,Wommelgem
+1213440,be,be,1,Vicomté,Roucourt
+1214239,be,be,1,Le Beau Rivage by Curtis,Dave
+1214246,be,be,1,HAUT,Oostende
+1214447,be,be,1,Bloesem,Borgerhout
+1216899,be,be,2,Maison Colette,Tongerlo
+1217173,be,be,1,Eliane,Brussels
+1217196,be,be,1,Le Julien,Lotenhulle
+1218331,be,be,1,Subtiel,De Panne
+1240888,be,be,1,Moscou By Danny Horseele,Gentbrugge
+1242817,be,be,1,EST,Heverlee
+1244485,be,be,2,The Jane,Antwerpen
+428535,br,br,1,Kinoshita,São Paulo
+428549,br,br,1,Jun Sakamoto,São Paulo
+428596,br,br,2,D.O.M.,São Paulo
+428597,br,br,1,Maní,São Paulo
+434573,br,br,1,Mee,Rio de Janeiro
+434753,br,br,2,Lasai,Rio de Janeiro
+436643,br,br,1,Kan Suke,São Paulo
+447270,br,br,3,Tuju,São Paulo
+479711,br,br,1,Picchi,São Paulo
+498425,br,br,2,Oro,Rio de Janeiro
+540343,br,br,1,Oteque,Rio de Janeiro
+543958,br,br,3,Evvai,São Paulo
+543966,br,br,1,Ryo Gastronomia,São Paulo
+544116,br,br,1,Tangará Jean-Georges,São Paulo
+1186326,br,br,1,Murakami,São Paulo
+1189316,br,br,1,Kuro,São Paulo
+1205967,br,br,1,Fame Osteria,São Paulo
+1210333,br,br,1,Oizumi Sushi,São Paulo
+1210798,br,br,1,San Omakase,Rio de Janeiro
+1212133,br,br,1,Kazuo,São Paulo
+1212190,br,br,1,KANOE,São Paulo
+1213062,br,br,1,Oseille,Rio de Janeiro
+1213068,br,br,1,Casa 201,Rio de Janeiro
+1218866,br,br,1,Madame Olympe,Rio de Janeiro
+549178,ca,ca,1,Alo,Toronto
+549421,ca,ca,1,Edulis,Toronto
+563623,ca,ca,1,Shoushin,Toronto
+565364,ca,ca,2,Restaurant Pearl Morissette,Lincoln
+565367,ca,ca,1,Don Alfonso 1890,Toronto
+1198872,ca,ca,2,AnnaLena,Vancouver
+1198889,ca,ca,1,Enigma Yorkville,Toronto
+1198891,ca,ca,1,Quetzal,Toronto
+1198908,ca,ca,1,Burdock & Co,Vancouver
+1198916,ca,ca,1,St. Lawrence,Vancouver
+1198922,ca,ca,1,iDen & QuanJuDe Beijing Duck House,Vancouver
+1198924,ca,ca,1,Kissa Tanto,Vancouver
+1198929,ca,ca,1,Masayoshi,Vancouver
+1198946,ca,ca,1,Sushi Masaki Saito,Toronto
+1199269,ca,ca,1,Published on Main,Vancouver
+1200365,ca,ca,1,Kaiseki Yu-zen Hashimoto,Toronto
+1200378,ca,ca,1,Restaurant 20 Victoria,Toronto
+1201734,ca,ca,1,Osteria Giulia,Toronto
+1206440,ca,ca,1,Kappo Sato,Toronto
+1206836,ca,ca,1,Okeya Kyujiro,Vancouver
+1209935,ca,ca,1,The Pine,Creemore
+1210611,ca,ca,1,DaNico,Toronto
+1211355,ca,ca,1,Sumibiyaki Arashi,Vancouver
+1212180,ca,ca,1,aKin,Toronto
+1214860,ca,ca,1,Sushi Masuda,Vancouver
+1215902,ca,ca,1,Mastard,Montréal
+1215904,ca,ca,1,Hoogan et Beaufort,Montréal
+1215923,ca,ca,1,Auberge Saint-Mathieu,Saint-Mathieu-du-Parc
+1215949,ca,ca,1,Kebec Club Privé,Québec
+1215956,ca,ca,1,Le Clan,Québec
+1215958,ca,ca,1,Légende,Québec
+1216135,ca,ca,1,ARVI,Québec
+1216408,ca,ca,2,Tanière³,Québec
+1216409,ca,ca,1,Laurie Raphaël,Québec
+1216698,ca,ca,1,Jérôme Ferrer - Europea,Montréal
+1217435,ca,ca,1,Sabayon,Montréal
+1218289,ca,ca,1,Narval,Rimouski
+1242789,ca,ca,1,Sushi Hyun,Vancouver
+1245066,ca,ca,1,Sushi Nishinokaze,Montréal
+114192,ch,ch,1,La Rôtisserie,Zurich
+114390,ch,ch,1,Bayview by Danny Khezzar,Geneva
+114414,ch,ch,1,L'Aparté,Geneva
+114640,ch,ch,1,Tsé Fung,Geneva
+171989,ch,ch,1,Il Lago,Geneva
+172004,ch,ch,1,Domaine de Châteauvieux,Satigny
+178658,ch,ch,1,Alpenblick - Stuba,Adelboden
+178755,ch,ch,1,Osteria dell'Enoteca,Losone
+178844,ch,ch,1,Locanda Orico,Bellinzona
+178933,ch,ch,1,Le Murenberg,Bubendorf
+178934,ch,ch,1,Löwen - Apriori,Bubikon
+179041,ch,ch,1,L'OURS,Crans-Montana
+179051,ch,ch,3,Restaurant de l'Hôtel de Ville,Crissier
+179187,ch,ch,1,Wirtshaus Zur Säge,Flüh
+179221,ch,ch,3,Schloss Schauenstein,Fürstenau
+179222,ch,ch,1,Truube,Gais
+179225,ch,ch,1,Sihlhalde,Gattikon
+179243,ch,ch,1,Le Cigalon,Thônex
+179404,ch,ch,1,Alpenblick,Wilderswil
+179504,ch,ch,2,Pic Beau-Rivage Palace,Lausanne
+179509,ch,ch,1,Le Berceau des Sens,Lausanne
+179572,ch,ch,1,Neue Blumenau,Lömmenschwil
+179640,ch,ch,1,Lucide,Lucerne
+179694,ch,ch,1,Schlüssel - Nidbergstube,Mels
+179704,ch,ch,1,Gasthaus Löwen,Menzingen
+179797,ch,ch,2,Maison Wenger,Le Noirmont
+179826,ch,ch,1,Restaurant de l'Hôtel de Ville,Ollon
+179829,ch,ch,1,Traube,Trimbach
+179910,ch,ch,1,Gasthaus Zum Gupf,Rehetobel
+180017,ch,ch,1,Segreto,Wittenbach
+180064,ch,ch,1,Villa Sommerlust,Schaffhausen
+180069,ch,ch,1,Sonne,Wengi bei Büren
+180151,ch,ch,1,Château Attisholz - Le feu,Riedholz
+180157,ch,ch,1,Du Cerf,Sonceboz
+180210,ch,ch,1,Panorama - Cayenne,Steffisburg
+180281,ch,ch,1,Auberge de la Croix Blanche,Villarepos
+180318,ch,ch,1,Sternen - Badstube,Wangen bei Dübendorf
+180366,ch,ch,2,Taverne zum Schäfli,Wigoltingen
+182391,ch,ch,1,Maihöfli by UniQuisine,Lucerne
+182422,ch,ch,1,Chesa Stüva Colani,Madulain
+182695,ch,ch,1,LeMontBlanc,Crans-Montana
+183589,ch,ch,1,Locanda Barbarossa,Ascona
+183591,ch,ch,2,La Brezza,Ascona
+183627,ch,ch,3,Cheval Blanc by Peter Knogl,Basel
+184254,ch,ch,1,I Due Sud,Lugano
+184468,ch,ch,1,LA CHAVALLERA in der Krone Säumerei am Inn,La Punt-Chamues-ch
+184497,ch,ch,1,Regina Montium,Rigi Kaltbad
+184567,ch,ch,2,Einstein Gourmet,Sankt Gallen
+184602,ch,ch,2,Ecco St. Moritz,Saint Moritz
+184726,ch,ch,1,Centric Dining,Thun
+184756,ch,ch,1,La Table d'Adrien,Verbier
+184794,ch,ch,2,focus ATELIER,Vitznau
+184870,ch,ch,1,Alpine Gourmet Prato Borni,Zermatt
+195782,ch,ch,2,Ecco,Ascona
+195973,ch,ch,1,Table de Mary,Cheseaux-Noréaz
+196006,ch,ch,1,EquiTable,Zurich
+196194,ch,ch,2,The Restaurant,Zurich
+256814,ch,ch,1,Capri,Zermatt
+270731,ch,ch,1,Zur Gedult,Burgdorf
+310725,ch,ch,1,Vivanda,Brail
+327918,ch,ch,1,Seerestaurant Belvédère,Hergiswil
+347172,ch,ch,1,Ackermannshof,Basel
+384903,ch,ch,2,Da Vittorio - St. Moritz,Saint Moritz
+391030,ch,ch,1,After Seven,Zermatt
+430422,ch,ch,2,The Japanese Restaurant,Andermatt
+461289,ch,ch,2,7132 Silver,Vals
+473933,ch,ch,1,THE VIEW,Lugano
+482140,ch,ch,1,Wirtschaft im FRANZ,Zurich
+510220,ch,ch,1,Aux Trois Amis,Ligerz
+513169,ch,ch,1,Jägerhof,Sankt Gallen
+525872,ch,ch,1,Tosca,Geneva
+527317,ch,ch,1,Restaurant LA,Basel
+528088,ch,ch,1,La Chaumière by Serge Labrosse,Troinex
+547750,ch,ch,1,Corso,Sankt Gallen
+553620,ch,ch,1,UniQuisine Atelier,Stansstad
+566413,ch,ch,1,Wein & Sein,Berne
+568552,ch,ch,2,roots,Basel
+1154587,ch,ch,1,Le Pérolles,Fribourg
+1154675,ch,ch,1,Brasserie Uno,Zermatt
+1157260,ch,ch,1,Fahr,Künten-Sulz
+1184739,ch,ch,3,Sven Wassmer Memories,Bad Ragaz
+1184740,ch,ch,1,verve by sven,Bad Ragaz
+1190160,ch,ch,2,IGNIV Zürich by Andreas Caminada,Zurich
+1190591,ch,ch,1,Neue Taverne,Zurich
+1190872,ch,ch,1,Shin,Zurich
+1190997,ch,ch,1,The Japanese at Gütsch,Andermatt
+1190998,ch,ch,1,GÜTSCH by Markus Neff,Andermatt
+1191538,ch,ch,2,Magdalena,Schwyz
+1191539,ch,ch,2,Widder Restaurant,Zurich
+1191554,ch,ch,1,Bad Balgach by Schützelhofer,Balgach
+1191835,ch,ch,2,La Brezza,Arosa
+1192030,ch,ch,1,KLE,Zurich
+1192226,ch,ch,1,META,Lugano
+1193699,ch,ch,2,La Table du Lausanne Palace,Lausanne
+1195769,ch,ch,1,Les Montagnards - Le Sommet,Broc
+1195868,ch,ch,1,Des Trois Tours,Fribourg
+1195873,ch,ch,1,Restaurant GERBER WYSS,Yverdon-les-Bains
+1195898,ch,ch,2,L'Atelier Robuchon,Geneva
+1195906,ch,ch,1,OZ,Fürstenau
+1196969,ch,ch,1,Stéphane Décotterd,Montreux
+1200146,ch,ch,1,Au 1465,Champex-Lac
+1200235,ch,ch,1,Eden Kitchen & Bar,Zurich
+1200254,ch,ch,1,Njørden,Aubonne
+1200257,ch,ch,1,La Micheline,Geneva
+1200388,ch,ch,1,Osteria Enoteca Cuntitt,Castel San Pietro
+1200885,ch,ch,2,Mammertsberg,Freidorf
+1201148,ch,ch,1,Radius by Stefan Beer,Interlaken
+1202971,ch,ch,1,La Croix d'Or,Ballaigues
+1203398,ch,ch,1,1910 Gourmet by Hausers,Grindelwald
+1203454,ch,ch,2,Colonnade,Lucerne
+1203456,ch,ch,1,Minamo,Lucerne
+1204200,ch,ch,2,Gilles Varone,Savièse
+1206773,ch,ch,1,Wiesner Mysterion - Wiesner - Zauber,Romoos
+1207137,ch,ch,1,Rosmarin,Lenzburg
+1207200,ch,ch,2,IGNIV by Andreas Caminada,Andermatt
+1209116,ch,ch,1,Birdy's by Achtien - The Nest,Brunnen
+1209159,ch,ch,1,ZOE,Berne
+1209387,ch,ch,1,Wöschi,Zurich
+1210757,ch,ch,1,F.P.Journe Le Restaurant,Geneva
+1211219,ch,ch,1,ORSINI,Zurich
+1211381,ch,ch,2,The Counter,Zurich
+1213061,ch,ch,1,Apollo,Davos Platz
+1214337,ch,ch,1,Arakel,Geneva
+1214588,ch,ch,1,Fiescherblick,Grindelwald
+1214910,ch,ch,1,Le Pont de Brent,Brent
+1216995,ch,ch,1,Talvo,Saint Moritz
+1217098,ch,ch,1,Soleil d’Or by David Geisser,Sankt Gallen
+1217854,ch,ch,1,de MATOS,Lucerne
+1218243,ch,ch,1,Du Bourg,Biel
+1218455,ch,ch,1,Soledì Restaurant,Lugano
+1242614,ch,ch,1,Sonnenberg le soir,Kriens
+506499,cn,cn,1,Cheng Long Hang (Huangpu),Shanghai
+506502,cn,cn,1,Da Dong (Xuhui),Shanghai
+506503,cn,cn,1,Gastro Esthetics at DaDong,Shanghai
+506521,cn,cn,2,Fu He Hui,Shanghai
+506522,cn,cn,1,Fu 1088,Shanghai
+506523,cn,cn,1,Fu 1039,Shanghai
+506524,cn,cn,1,Fu 1015,Shanghai
+506660,cn,cn,1,Seventh Son,Shanghai
+506679,cn,cn,1,Jin Xuan,Shanghai
+506682,cn,cn,2,Amazing Chinese Cuisine (Changning),Shanghai
+506688,cn,cn,1,Lao Zheng Xing,Shanghai
+506689,cn,cn,1,Lei Garden (Pudong),Shanghai
+506690,cn,cn,1,Lei Garden (Xuhui),Shanghai
+506702,cn,cn,2,8 ½ Otto e Mezzo Bombana,Shanghai
+506724,cn,cn,3,Taian Table,Shanghai
+506725,cn,cn,2,T'ang Court,Shanghai
+506732,cn,cn,2,Canton 8 (Huangpu),Shanghai
+506743,cn,cn,1,Yi Long Court,Shanghai
+506747,cn,cn,1,Yong Yi Ting,Shanghai
+506748,cn,cn,2,Imperial Treasure Fine Chinese Cuisine,Shanghai
+537028,cn,cn,1,le Comptoir de Pierre Gagnaire,Shanghai
+537127,cn,cn,1,Yong Fu (Huangpu),Shanghai
+558824,cn,cn,1,BingSheng Mansion (Xiancun Road),Guangzhou
+558843,cn,cn,1,BingSheng Private Kitchen (Tianhe East Road),Guangzhou
+559134,cn,cn,1,Hongtu Hall,Guangzhou
+559150,cn,cn,2,Imperial Treasure Fine Chinese Cuisine,Guangzhou
+559151,cn,cn,1,Jade River,Guangzhou
+559154,cn,cn,2,Jiang by Chef Fei,Guangzhou
+559155,cn,cn,1,Lai Heen,Guangzhou
+559158,cn,cn,1,Lei Garden (Yuexiu),Guangzhou
+559247,cn,cn,1,Wisca (Haizhu),Guangzhou
+559257,cn,cn,1,Yu Yue Heen,Guangzhou
+563683,cn,cn,1,Il Ristorante - Niko Romito,Shanghai
+563684,cn,cn,2,Ji Pin Court,Shanghai
+563686,cn,cn,1,Maison Lameloise,Shanghai
+563687,cn,cn,1,Moose (Changning),Shanghai
+563697,cn,cn,2,The House of Rong,Shanghai
+570505,cn,cn,1,Song,Guangzhou
+570569,cn,cn,2,Bao Li Xuan,Shanghai
+570570,cn,cn,2,Da Vittorio,Shanghai
+570576,cn,cn,1,Moose (Pudong),Shanghai
+570583,cn,cn,1,Xin Rong Ji (West Nanjing Road),Shanghai
+570629,cn,cn,1,Ming Court (Minhang),Shanghai
+1186697,cn,cn,1,Cai Yi Xuan,Beijing
+1186704,cn,cn,1,Gastro Esthetics DaDong,Beijing
+1186713,cn,cn,1,Fu Chun Ju,Beijing
+1186723,cn,cn,1,Il Ristorante - Niko Romito,Beijing
+1186733,cn,cn,2,King's Joy,Beijing
+1186737,cn,cn,1,Lei Garden (Jinbao Tower),Beijing
+1186743,cn,cn,1,Lu Style (Anding Road),Beijing
+1186752,cn,cn,1,Poetry‧Wine (Dongsanhuan Middle Road),Beijing
+1186794,cn,cn,1,Seventh Son,Beijing
+1186796,cn,cn,1,Shanghai Cuisine,Beijing
+1186797,cn,cn,1,Sheng Yong Xing (Chaoyang),Beijing
+1186803,cn,cn,1,The Beijing Kitchen (Jianguo Road),Beijing
+1186804,cn,cn,1,The Georg,Beijing
+1186810,cn,cn,1,Trb Hutong,Beijing
+1186815,cn,cn,1,Xin Rong Ji (Jinrong Street),Beijing
+1186816,cn,cn,3,Xin Rong Ji (Xinyuan South Road),Beijing
+1186817,cn,cn,1,Xin Rong Ji (Jianguomenwai Street),Beijing
+1186823,cn,cn,1,Zhiguan Courtyard,Beijing
+1186824,cn,cn,1,Zijin Mansion,Beijing
+1190416,cn,cn,1,Imperial Treasure Fine Teochew Cuisine,Guangzhou
+1190430,cn,cn,1,Lingnan House,Guangzhou
+1192026,cn,cn,1,Canton Table,Shanghai
+1192044,cn,cn,1,Meet the Bund (Zhongshan Dong Er Road),Shanghai
+1192182,cn,cn,2,Jingji,Beijing
+1192189,cn,cn,1,Ren He Guan (Xuhui),Shanghai
+1195975,cn,cn,2,Taian Table,Guangzhou
+1196007,cn,cn,1,Suyab Courtyard・Pickmoon Gourmet,Guangzhou
+1196150,cn,cn,2,Yu Zhi Lan,Chengdu
+1196222,cn,cn,1,Xu's Cuisine,Chengdu
+1196225,cn,cn,1,Stiller,Guangzhou
+1196226,cn,cn,1,Fu Rong Huang,Chengdu
+1196228,cn,cn,1,Young Art · Yong Ya He Xian (Tongzilin East Road),Chengdu
+1196234,cn,cn,1,Mi Xun Teahouse,Chengdu
+1196235,cn,cn,1,Chaimen Hui,Chengdu
+1196246,cn,cn,1,Silver Pot,Chengdu
+1196275,cn,cn,1,Ma's Kitchen (Jinjiang),Chengdu
+1196289,cn,cn,1,Fang Xiang Jing,Chengdu
+1196363,cn,cn,1,Obscura,Shanghai
+1196388,cn,cn,1,Oriental Sense & Palate,Shanghai
+1196394,cn,cn,1,Sheng Yong Xing (Huangpu),Shanghai
+1196616,cn,cn,1,Furong,Beijing
+1196639,cn,cn,1,Mansion Cuisine by Jingyan,Beijing
+1196672,cn,cn,3,Chao Shang Chao (Chaoyang),Beijing
+1199288,cn,cn,1,Xin Ji,Guangzhou
+1199323,cn,cn,1,Xin Rong Ji,Hangzhou
+1199339,cn,cn,1,Jin Sha,Hangzhou
+1199391,cn,cn,1,Hangzhou House,Hangzhou
+1199416,cn,cn,1,Longjing Manor,Hangzhou
+1199474,cn,cn,1,Guiyu (Xihu),Hangzhou
+1199479,cn,cn,2,Jie Xiang Lou,Hangzhou
+1199567,cn,cn,1,Pin Ning Fu,Nanjing
+1200089,cn,cn,1,Wu You Xian,Shanghai
+1203319,cn,cn,1,Yong,Guangzhou
+1203592,cn,cn,1,Lu Style (Huangpu),Shanghai
+1203637,cn,cn,1,MO Jasmine,Beijing
+1203639,cn,cn,2,Lu Shang Lu,Beijing
+1203723,cn,cn,1,Giada Garden,Beijing
+1203823,cn,cn,1,Yue Hai Tang,Shanghai
+1204015,cn,cn,1,Yong Fu (Hongkou),Shanghai
+1204063,cn,cn,1,Zhou She (Minhang),Shanghai
+1204153,cn,cn,1,Hokkien Cuisine,Chengdu
+1204189,cn,cn,1,Co-,Chengdu
+1204577,cn,cn,1,Wild Yeast,Hangzhou
+1205570,cn,cn,2,Tou Zao,Shanghai
+1206781,cn,cn,1,Ambré Ciel,Hangzhou
+1207940,cn,cn,3,Xin Rong Ji,Chengdu
+1208657,cn,cn,2,Lamdre,Beijing
+1209673,cn,cn,2,Ru Yuan,Hangzhou
+1209925,cn,cn,1,Narisawa,Shanghai
+1209951,cn,cn,1,Ling Long,Shanghai
+1210036,cn,cn,1,Chef 1996,Beijing
+1210781,cn,cn,1,Yu Garden,Guangzhou
+1212433,cn,cn,1,Chōwa,Guangzhou
+1212966,cn,cn,1,The House of Dynasties,Beijing
+1213472,cn,cn,1,The Hall,Chengdu
+1213613,cn,cn,1,Fleurs Et Festin,Xiamen
+1213625,cn,cn,1,Yanyu (Jiahe Road),Xiamen
+1213671,cn,cn,1,Hokklo,Xiamen
+1214084,cn,cn,1,Hatter,Fuzhou
+1214106,cn,cn,1,Wenru No.9,Fuzhou
+1214394,cn,cn,1,Qing You Yu,Quanzhou
+1214415,cn,cn,1,Chao Shang Chao (Xicheng),Beijing
+1215114,cn,cn,1,Sole,Shanghai
+1215415,cn,cn,1,Rong Pao,Beijing
+1215416,cn,cn,2,Blackswan,Beijing
+1215705,cn,cn,1,Jiangnan Wok ‧ Rong,Fuzhou
+1216378,cn,cn,1,Dai Yuet Heen,Nanjing
+1216395,cn,cn,1,Meng Du Hui,Nanjing
+1216419,cn,cn,1,Shang Palace,Yangzhou
+1216433,cn,cn,1,Pingjiangsong,Suzhou
+1216457,cn,cn,1,L'éclat 19,Hangzhou
+1216515,cn,cn,1,Dingshan · Jiangyan,Suzhou
+1216520,cn,cn,1,Sense,Hangzhou
+1216540,cn,cn,1,Cheng Yuan,Yangzhou
+1216566,cn,cn,1,Jiangnan Wok · Yun,Nanjing
+1217000,cn,cn,1,Song,Hangzhou
+1217657,cn,cn,1,Yu Zhi Lan,Hangzhou
+1219313,cn,cn,1,Vivant by Johnny Pham,Shanghai
+1243499,cn,cn,1,Ensue,Shenzhen
+1243502,cn,cn,1,Fumée,Shenzhen
+1244357,cn,cn,1,Xin Rong Ji (Jiaojiang),Taizhou
+1244373,cn,cn,1,Lao Bian Jiu Jia (Jindai Road),Taizhou
+1244386,cn,cn,1,Carved Dragons (Jiaojiang),Taizhou
+1244404,cn,cn,1,Xin Rong Ji (Linhai),Taizhou
+1244721,cn,cn,2,Yun Jing,Shenzhen
+1244722,cn,cn,1,Xin Rong Ji,Shenzhen
+1244756,cn,cn,1,Chao Shang Chao,Shenzhen
+1244768,cn,cn,1,Opus 388,Shenzhen
+1245176,cn,cn,1,Huaiyang Delights (Jingan),Shanghai
+1245238,cn,cn,1,Xi Ding Jia Yan,Suzhou
+1245581,cn,cn,1,Fabula,Shanghai
+1246996,cn,cn,1,Zinan,Chengdu
+1247546,cn,cn,1,Old Tower,Beijing
+1247568,cn,cn,2,The Bay by Chef Fei,Shenzhen
+1249451,cn,cn,1,Focus by Bill Yue,Chengdu
+1250692,cn,cn,1,China Banquet,Tianjin
+205770,cz,cz,1,La Degustation Bohême Bourgeoise,Prague
+377239,cz,cz,1,Casa De Carli,Prague
+464432,cz,cz,1,Field,Prague
+1208342,cz,cz,1,LEVITATE,Prague
+1211374,cz,cz,1,ESSENS,Hlohovec
+1211412,cz,cz,1,Entrée,Olomouc
+1211435,cz,cz,1,La Villa Restaurant,Zlín
+1211491,cz,cz,2,Restaurant Papilio,Vysoký Újezd
+1217876,cz,cz,1,Štangl,Prague
+70660,de,de,1,La Bécasse,Aachen
+70668,de,de,1,Sankt Benedikt,Aachen
+70874,de,de,1,Epicures,Aschau im Chiemgau
+70940,de,de,1,Le Jardin de France im Stahlbad,Baden-Baden
+70977,de,de,3,Restaurant Bareiss,Baiersbronn
+70987,de,de,1,Schlossberg,Baiersbronn
+71160,de,de,2,Vendôme,Bergisch Gladbach
+71246,de,de,1,Lorenz Adlon Esszimmer,Berlin
+71250,de,de,1,Hugos,Berlin
+71252,de,de,2,FACIL,Berlin
+71266,de,de,3,Rutz,Berlin
+71530,de,de,1,Buchner Welchenberg 1658,Niederwinkling
+71580,de,de,1,halbedel's Gasthaus,Bonn
+71950,de,de,1,Sterneck,Cuxhaven
+72005,de,de,1,Schwarzer Hahn,Deidesheim
+72087,de,de,1,Friedrich Franz,Bad Doberan
+72112,de,de,1,Goldener Anker,Dorsten
+72113,de,de,1,Rosin,Dorsten
+72269,de,de,1,1876 Daniel Dal-Ben,Düsseldorf
+72276,de,de,1,Im Schiffchen,Düsseldorf
+72486,de,de,1,Merkles Restaurant,Endingen am Kaiserstuhl
+72533,de,de,1,Clara - Restaurant im Kaisersaal,Erfurt
+72605,de,de,1,Hannappel,Essen
+72722,de,de,1,Alt Wyk,Wyk
+72801,de,de,1,Restaurant Villa Merton,Frankfurt on the Main
+72809,de,de,1,Erno's Bistro,Frankfurt on the Main
+72905,de,de,1,Eichhalde,Freiburg im Breisgau
+73402,de,de,1,Mühlenhelle,Gummersbach
+73514,de,de,3,Restaurant Haerlin,Hamburg
+73539,de,de,1,Landhaus Scherrer,Hamburg
+73559,de,de,1,Piment,Hamburg
+73822,de,de,1,Le temple,Neuhütten
+74406,de,de,1,Malathounis,Kernen im Remstal
+74438,de,de,1,Christian's Restaurant - Gasthof Grainer,Kirchdorf
+74566,de,de,1,taku,Cologne
+74572,de,de,1,La Société,Cologne
+74577,de,de,1,Le Moissonnier Bistro,Cologne
+74628,de,de,1,Zur Tant,Cologne
+74698,de,de,1,Ich weiß ein Haus am See,Krakow am See
+74746,de,de,1,Storchen,Bad Krozingen
+74954,de,de,1,Stadtpfeiffer,Leipzig
+75185,de,de,1,Wullenwever,Lübeck
+75262,de,de,1,Steins Traube,Mainz
+75298,de,de,1,Dobler's,Mannheim
+75369,de,de,1,Borst,Maßweiler
+75719,de,de,2,Tantris,Munich
+75934,de,de,2,Steinheuers Restaurant,Bad Neuenahr-Ahrweiler
+75937,de,de,1,Restaurant Brogsitter - Historisches Gasthaus Sanct Peter,Bad Neuenahr-Ahrweiler
+76045,de,de,1,Stephans Stuben by Marco Langer,Neu-Ulm
+76081,de,de,1,Wirtshaus Meyers Keller,Nördlingen
+76161,de,de,2,Essigbrätlein,Nuremberg
+76166,de,de,1,Wonka,Nuremberg
+76346,de,de,1,Philipp,Sommerhausen
+76355,de,de,1,Falconera,Öhningen
+76485,de,de,1,Balthasar,Paderborn
+76534,de,de,3,Victor's Fine Dining by christian bau,Perl
+76694,de,de,1,Gut Lärchenhof,Pulheim
+77069,de,de,2,Gourmetrestaurant Dichter,Rottach-Egern
+77186,de,de,2,GästeHaus Klaus Erfort,Saarbrücken
+77226,de,de,1,Genuss-Apotheke,Bad Säckingen
+77308,de,de,1,Restaurant Kunz,Sankt Wendel
+77546,de,de,1,Rebers Pflug,Schwäbisch Hall
+77605,de,de,1,"Gourmetrestaurant ""1751""",Schwerin
+77747,de,de,1,Hirsch,Sonnenbühl
+77786,de,de,1,Tante Anna,Sprockhövel
+77934,de,de,1,Délice,Stuttgart
+77962,de,de,1,Wielandshöhe,Stuttgart
+77973,de,de,2,Speisemeisterei,Stuttgart
+78032,de,de,2,Hirschen,Sulzburg
+78062,de,de,1,BODENDORF'S,Tinnum
+78167,de,de,1,Orangerie,Timmendorfer Strand
+78242,de,de,1,Bagatelle,Trier
+78255,de,de,1,Wein- und Tafelhaus,Trittenheim
+78257,de,de,1,Rüssel's Landhaus,Naurath/Wald
+78440,de,de,1,Haus Stemberg ANNO 1864,Velbert
+78491,de,de,1,Schwarzer Adler,Vogtsburg im Kaiserstuhl
+78518,de,de,1,Bachofer,Waiblingen
+78548,de,de,1,Gasthof Krone,Waldenbuch
+78842,de,de,1,Ente Wiesbaden - Pfortenhaus Kloster Eberbach,Eltville am Rhein
+78982,de,de,3,Waldhotel Sonnora,Dreis
+79390,de,de,1,Schwabenstube,Asperg
+79397,de,de,1,St. Andreas,Aue - Bad Schlema
+79403,de,de,1,Sartory,Augsburg
+79756,de,de,1,Schwingshackl ESSKULTUR,Bernried
+79798,de,de,1,Maerz - Das Restaurant,Bietigheim-Bissingen
+80214,de,de,1,Kucher's Gourmet,Darscheid
+80462,de,de,1,Landhaus Feckl,Ehningen
+80644,de,de,1,Erbprinz,Ettlingen
+80723,de,de,1,Philipp Soldan,Frankenberg
+80811,de,de,1,Colombi Restaurant Zirbelstube,Freiburg im Breisgau
+81057,de,de,2,Meierei Dirk Luther,Glücksburg
+81133,de,de,1,Eckert | Fine Dining,Grenzach-Wyhlen
+81964,de,de,1,Laudensacks Gourmet Restaurant,Bad Kissingen
+81986,de,de,1,Schiller's Manufaktur,Koblenz
+82171,de,de,1,Adler,Lahr
+82202,de,de,1,HOCHZWEI,Langenau
+82359,de,de,1,VILLINO,Lindau
+82495,de,de,1,FAVORITE restaurant,Mainz
+83223,de,de,1,Zur Post,Odenthal
+83229,de,de,2,Le Cerf,Zweiflingen
+83378,de,de,2,Le Pavillon,Bad Peterstal
+83505,de,de,1,Atelier Sanssouci,Radebeul
+83639,de,de,1,Reuter,Rheda-Wiedenbrück
+83780,de,de,1,Restaurant Überfahrt,Rottach-Egern
+84151,de,de,1,Eisenbahn,Schwäbisch Hall
+84426,de,de,1,Der Zauberlehrling,Stuttgart
+84427,de,de,1,ZUR WEINSTEIGE,Stuttgart
+84509,de,de,2,Söl'ring Hof,Rantum
+84551,de,de,1,Gourmetrestaurant Berlins Krone,Bad Teinach-Zavelstein
+84783,de,de,1,Lamm Rosswag,Vaihingen an der Enz
+85183,de,de,2,AURA by Alexander Herrmann & Tobias Bätz,Wirsberg
+85265,de,de,1,KUNO 1408,Würzburg
+86151,de,de,2,Horváth,Berlin
+89801,de,de,1,Zeik,Hamburg
+93014,de,de,1,Les Deux,Munich
+93106,de,de,1,Spitzner,Münster
+94559,de,de,1,Storstad,Regensburg
+96894,de,de,1,Restaurant auf Schloss Filseck,Uhingen
+99887,de,de,1,Werners Restaurant,Gernsbach
+100167,de,de,1,Ratsstuben,Haltern am See
+102550,de,de,1,freustil,Ostseebad Binz
+122205,de,de,2,IKIGAI,Krün
+164933,de,de,1,L'étable,Bad Hersfeld
+166357,de,de,3,L.A. Jordan,Deidesheim
+167333,de,de,1,Mittermeier,Rothenburg ob der Tauber
+168526,de,de,2,Obendorfers Eisvogel,Neunburg vorm Wald
+206355,de,de,1,Alte Schule - Klassenzimmer,Feldberger Seenlandschaft
+207713,de,de,1,Gourmet-Restaurant Der Butt,Rostock
+234188,de,de,1,DiVa,Scharbeutz
+234204,de,de,1,Hämmerle's Restaurant,Blieskastel
+258253,de,de,1,Seesteg,Norderney
+259836,de,de,1,KAI3,Hörnum
+262757,de,de,1,Nagaya,Düsseldorf
+263094,de,de,1,Silberdistel,Ofterschwang
+264090,de,de,1,Yunico,Bonn
+265290,de,de,1,Entenstuben,Nuremberg
+266202,de,de,1,Lohninger,Frankfurt on the Main
+274581,de,de,1,BOK Restaurant Brust oder Keule,Münster
+276398,de,de,1,Bandol sur mer,Berlin
+277978,de,de,2,Tim Raue,Berlin
+294736,de,de,2,Ophelia,Constance
+304644,de,de,1,Das Marktrestaurant,Mittenwald
+311485,de,de,1,Cookies Cream,Berlin
+314584,de,de,1,Kaupers Restaurant im Kapellenhof,Selzen
+327198,de,de,1,5,Stuttgart
+332461,de,de,2,Lafleur,Frankfurt on the Main
+337183,de,de,3,schanz. restaurant.,Piesport
+339721,de,de,1,ESS ATELIER STRAUSS,Oberstdorf
+344992,de,de,1,Jellyfish,Hamburg
+351459,de,de,1,elements,Dresden
+354452,de,de,1,Seven Swans,Frankfurt on the Main
+358982,de,de,1,Jean,Eltville am Rhein
+372716,de,de,1,Oettinger's Restaurant,Fellbach
+379196,de,de,2,Ammolite - House of Light,Rust
+388304,de,de,1,Aubergine,Starnberg
+398106,de,de,1,Restaurant Alexander Huber,Pleiskirchen
+398266,de,de,1,Keidenzeller Hof,Langenzenn
+399689,de,de,1,SoulFood,Auerbach in der Oberpfalz
+417650,de,de,1,Meisenheimer Hof,Meisenheim
+421720,de,de,2,OPUS V,Mannheim
+426123,de,de,1,Johanns,Waldkirchen
+427215,de,de,1,Zeitwerk,Wernigerode
+438511,de,de,1,Schwitzer's Gourmet-Restaurant,Waldbronn
+443189,de,de,1,Die Brasserie,Pirmasens
+457685,de,de,1,Hupperts,Stuttgart
+464293,de,de,1,Admiral,Weisenheim am Berg
+466614,de,de,2,Oswald's Gourmetstube,Teisnach
+469763,de,de,1,Nobelhart & Schmutzig,Berlin
+472666,de,de,1,Petit Amour,Hamburg
+473264,de,de,1,Tipken's by Nils Henkel,Keitum
+473443,de,de,1,Anthony's Kitchen,Meerbusch
+474033,de,de,3,The Table Kevin Fehling,Hamburg
+476235,de,de,2,Jante,Hanover
+484021,de,de,1,"Christian & Friends, Tastekitchen",Fulda
+488340,de,de,1,Genuss-Atelier,Dresden
+489321,de,de,1,PURS Nordic Japanese,Andernach
+491772,de,de,1,360°,Limburg an der Lahn
+495065,de,de,2,AUGUST,Augsburg
+496186,de,de,1,ZweiSinn Meiers | Fine Dining,Nuremberg
+497619,de,de,1,Das garbo zum Löwen,Eggenstein-Leopoldshafen
+502073,de,de,1,Heimatjuwel,Hamburg
+503171,de,de,1,Ahlmanns,Kiel
+506838,de,de,2,Ox & Klee,Cologne
+509902,de,de,1,Hofstube Deimann,Schmallenberg
+509922,de,de,1,ANIMA,Tuttlingen
+511580,de,de,1,Alte Überfahrt,Werder
+514852,de,de,1,tulus lotrek,Berlin
+520845,de,de,1,Yoshi by Nagaya,Düsseldorf
+523767,de,de,1,Leos by Stephan Brandl,Bad Kötzing
+524996,de,de,1,Haubentaucher,Rottach-Egern
+526192,de,de,2,Lakeside,Hamburg
+527643,de,de,1,GOLVET,Berlin
+528388,de,de,1,Oben,Heidelberg
+529860,de,de,1,Schwarz Gourmet,Kirchheim an der Weinstraße
+530805,de,de,2,sein,Karlsruhe
+533505,de,de,1,Gabelspiel,Munich
+535645,de,de,2,LOUIS restaurant,Saarlouis
+537169,de,de,1,La Vallée Verte,Herleshausen
+539722,de,de,2,ESPLANADE,Saarbrücken
+547708,de,de,1,Sparkling Bistro,Munich
+548009,de,de,1,Ursprung,Königsbronn
+549658,de,de,2,CODA,Berlin
+552200,de,de,1,Handwerk,Hanover
+552203,de,de,1,KARRisma,Lindau
+552220,de,de,2,100/200 Kitchen,Hamburg
+552880,de,de,1,hallmann & klee,Berlin
+554534,de,de,1,BjörnsOx,Dermbach
+554556,de,de,1,Cheval Blanc,Illschwang
+556275,de,de,1,die burg - fine dining,Donaueschingen
+556355,de,de,1,NeoBiota,Cologne
+557131,de,de,1,Waidwerk,Nuremberg
+562488,de,de,1,Seestern,Ulm
+562760,de,de,1,maximilian lorenz,Cologne
+565284,de,de,1,IKO,Osnabrück
+565887,de,de,1,HAEBEL,Hamburg
+566065,de,de,1,Verbene,Koblenz
+566926,de,de,2,Alois - Dallmayr Fine Dining,Munich
+567367,de,de,1,Agata's,Düsseldorf
+567906,de,de,1,Setzkasten,Düsseldorf
+568469,de,de,1,Gourmetrestaurant Nico Burkhardt,Schorndorf
+1154740,de,de,1,Maltes hidden kitchen,Baden-Baden
+1160085,de,de,1,La Cuisine Rademacher,Cologne
+1164848,de,de,1,PAVO,Pfronten
+1179710,de,de,1,Michaels Leitenberg,Frasdorf
+1179716,de,de,1,Kesselhaus,Osnabrück
+1179811,de,de,1,Frieda,Leipzig
+1181338,de,de,1,Weinstock,Volkach
+1181496,de,de,1,Traube,Efringen-Kirchen
+1183655,de,de,1,bidlabu,Frankfurt on the Main
+1183673,de,de,2,Pietsch,Wernigerode
+1184066,de,de,2,Ösch Noir,Donaueschingen
+1184735,de,de,1,Masters,Blankenhain
+1185731,de,de,1,Pottkind,Cologne
+1186043,de,de,1,Alte Baiz,Neuhausen
+1186893,de,de,1,Aska,Regensburg
+1187942,de,de,2,PUR,Berchtesgaden
+1189244,de,de,2,Coeur D'Artichaut,Münster
+1190076,de,de,1,Irma la Douce,Berlin
+1190619,de,de,1,Restaurant 1950,Hayingen
+1190908,de,de,1,Heiderand,Dresden
+1191770,de,de,1,Bricole,Berlin
+1191833,de,de,3,Schwarzwaldstube,Baiersbronn
+1191834,de,de,1,1789,Baiersbronn
+1191956,de,de,1,DIE GOURMET STUBE im Gasthaus Hummel,Duggendorf
+1192313,de,de,1,"Gourmetrestaurant ""fine dining RS""",Salach
+1192754,de,de,1,Kulmeck by Tom Wickboldt,Heringsdorf
+1193342,de,de,1,Shiraz,Wuppertal
+1193355,de,de,1,Mountain Hub Gourmet,Munich
+1194313,de,de,1,Sawito,Falkensee
+1194558,de,de,1,Mod by Sven Nöthel,Duisburg
+1194647,de,de,1,Das Grace,Flensburg
+1194853,de,de,1,OX,Darmstadt
+1194858,de,de,1,Werneckhof Sigi Schelling,Munich
+1194999,de,de,1,Troyka,Erkelenz
+1195298,de,de,2,Intense,Wachenheim an der Weinstraße
+1195341,de,de,2,Mühle,Schluchsee
+1195435,de,de,3,es:senz,Grassau
+1195566,de,de,1,Esszimmer im Oberschwäbischen Hof,Schwendi
+1195570,de,de,2,Votum,Hanover
+1195738,de,de,1,Speiseberg,Halle (saale)
+1195755,de,de,3,Tohru in der Schreiberei,Munich
+1195951,de,de,1,Nose & Belly,Augsburg
+1195952,de,de,1,Alte Liebe,Augsburg
+1196406,de,de,1,bi:braud,Ulm
+1196612,de,de,1,Tantris DNA,Munich
+1196872,de,de,1,Masa Japanese Cuisine,Frankfurt on the Main
+1196906,de,de,1,Restaurant Karner,Frasdorf
+1196950,de,de,1,Veles,Nuremberg
+1197308,de,de,1,Bonvivant,Berlin
+1197795,de,de,1,Sahila - The Restaurant,Cologne
+1198221,de,de,1,1804 Hirschau,Munich
+1198243,de,de,1,Tisane,Nuremberg
+1198269,de,de,2,etz,Nuremberg
+1198316,de,de,1,MAIN TOWER Restaurant & Lounge,Frankfurt on the Main
+1198697,de,de,1,Gasthof Alex,Weißenbrunn
+1198719,de,de,2,Atelier,Munich
+1198858,de,de,1,Zur Wolfshöhle,Freiburg im Breisgau
+1199778,de,de,1,Café GUPI,Weil am Rhein
+1199854,de,de,1,Schockes Küche,Birkweiler
+1200004,de,de,1,Kettner's Kamota,Essen
+1200655,de,de,1,Kuultivo,Leipzig
+1202274,de,de,1,Solo Du,Bischofswiesen
+1202895,de,de,1,Porte Neuf,Detmold
+1204033,de,de,1,Eatrenalin,Rust
+1204062,de,de,1,LECH-LINE,Landsberg am Lech
+1204064,de,de,1,Brothers,Munich
+1204299,de,de,1,Wachter Foodbar,Prien am Chiemsee
+1204321,de,de,3,JAN,Munich
+1204342,de,de,1,Marie,Hanover
+1204630,de,de,1,Cédric,Weinstadt
+1204788,de,de,1,Kaisersaal,Ravensburg
+1205382,de,de,1,The First,Blankenhain
+1205584,de,de,1,Jae,Düsseldorf
+1205728,de,de,1,Joseph's Fine Dining,Bad Sachsa
+1205891,de,de,1,SchwarzGold,Dortmund
+1206564,de,de,1,Harzfenster by Johannes Steingrüber,Seesen
+1207008,de,de,1,midi,Sankt Ingbert
+1207289,de,de,1,Winzerhof Stahl,Simmershofen
+1207304,de,de,1,edl.eins,Deggendorf
+1207906,de,de,1,Hawara,Freiburg im Breisgau
+1208435,de,de,1,Zwanzig23 by Lukas Jakobi,Düsseldorf
+1208868,de,de,1,Atlantic Restaurant,Hamburg
+1209340,de,de,1,LISBETH,Hamburg
+1209341,de,de,1,Jacobi,Freiburg im Breisgau
+1209534,de,de,1,Ontra's Gourmetstube,Regensburg
+1209789,de,de,1,Laesâ,Stuttgart
+1209794,de,de,1,MIND,Markt Indersdorf
+1209956,de,de,2,KOMU,Munich
+1210743,de,de,1,LA VIE by thomas bühner,Düsseldorf
+1211024,de,de,1,Koer,Hamburg
+1212214,de,de,1,pars Restaurant,Berlin
+1213101,de,de,1,Raro im Mühlenhof,Schriesheim
+1213476,de,de,1,GLORIE,Hamburg
+1213481,de,de,1,June,Übersee
+1213588,de,de,1,La Boucherie,Kreuzwertheim
+1213938,de,de,1,MiZAR,Würzburg
+1214302,de,de,1,Ostseelounge,Dierhagen
+1214649,de,de,1,Sommerfeld,Frankfurt on the Main
+1214842,de,de,1,irori,Knittelsheim
+1215781,de,de,1,Loumi,Berlin
+1215854,de,de,1,Schote,Bergisch Gladbach
+1216132,de,de,1,Matthias,Berlin
+1216361,de,de,2,Gotthardt's by Yannick Noack,Koblenz
+1216468,de,de,1,Marcel von Winckelmann,Passau
+1216632,de,de,1,Arc Restaurant,Hamburg
+1216734,de,de,1,Cølbo,Klingenberg am Main
+1216921,de,de,2,ATAMA by Martin Stopp,Sankt Ingbert
+1217602,de,de,1,Chefs Atelier,Essen
+1217913,de,de,1,Das Philippin,Rutesheim
+1218183,de,de,1,Teko by Lange Rodriguez,Essen
+1218863,de,de,2,THE CLOUD by Käfer,Munich
+1219102,de,de,1,Restaurant Mohn,Hohnhorst
+1240778,de,de,1,Theodor's,Bonn
+1241295,de,de,2,RAUSCH,Frankfurt on the Main
+1241480,de,de,1,Staderer,Eichstätt
+1242570,de,de,2,the dune,Frankfurt on the Main
+1244250,de,de,1,Dopamin,Saarburg
+1245339,de,de,1,The Tourist Trap,Mannheim
+112758,dk,dk,2,a|o|c,Copenhagen
+112769,dk,dk,2,Kong Hans Kælder,Copenhagen
+112784,dk,dk,1,formel B,Copenhagen
+113310,dk,dk,1,Søllerød Kro,Holte
+307051,dk,dk,3,Geranium,Copenhagen
+364793,dk,dk,3,Kadeau Copenhagen,Copenhagen
+407471,dk,dk,1,Marchal,Copenhagen
+446209,dk,dk,1,Substans,Aarhus
+446229,dk,dk,2,Frederikshøj,Aarhus
+446293,dk,dk,1,Gastromé,Aarhus
+467297,dk,dk,1,Frederiksminde,Præstø
+467305,dk,dk,2,Henne Kirkeby Kro,Henne
+467307,dk,dk,1,Ti Trin Ned,Fredericia
+467311,dk,dk,1,Dragsholm Slot Gourmet,Hørve
+467315,dk,dk,1,Villa Vest,Lønstrup
+478197,dk,dk,1,Kadeau Bornholm,Åkirkeby
+502019,dk,dk,1,Domestic,Aarhus
+535485,dk,dk,3,Jordnær,Gentofte
+564763,dk,dk,1,Alouette,Copenhagen
+1186019,dk,dk,1,Alimentum,Aalborg
+1186068,dk,dk,1,Sushi Anaba,Copenhagen
+1186492,dk,dk,2,Alchemist,Copenhagen
+1190011,dk,dk,1,LYST,Vejle
+1192283,dk,dk,1,ARO,Odense
+1192529,dk,dk,1,Syttende,Sønderborg
+1192763,dk,dk,1,The Samuel,Hellerup
+1197019,dk,dk,1,MOTA,Nykøbing Sjælland
+1200871,dk,dk,1,Jatak,Copenhagen
+1200874,dk,dk,2,Koan,Copenhagen
+1203650,dk,dk,1,Domæne,Herning
+1203718,dk,dk,1,Tri,Agger
+1212810,dk,dk,1,Aure,Copenhagen
+1215658,dk,dk,1,texture,Copenhagen
+1215743,dk,dk,1,Parsley Salon,Hellerup
+1217594,dk,dk,1,Pearl by Paul Proffitt,Kruså
+1218213,dk,dk,2,PAZ,Tórshavn
+1218515,dk,dk,1,akmē,Copenhagen
+1240766,dk,dk,1,Bach & Nurup,Aalborg
+1240769,dk,dk,1,Okê,Skagen
+1241136,dk,dk,1,Udtryk,Copenhagen
+1245835,dk,dk,1,Lille Mølle,Copenhagen
+1247868,dk,dk,1,ESSE,Copenhagen
+563141,ee,ee,1,NOA Chef’s Hall,Tallinn
+1198972,ee,ee,2,180° by Matthias Diether,Tallinn
+67467,es,es,2,Paco Roncero,Madrid
+67780,es,es,1,Hofmann,Barcelona
+67790,es,es,3,ABaC,Barcelona
+67959,es,es,1,Via Veneto,Barcelona
+67967,es,es,1,Hisop,Barcelona
+118398,es,es,1,Angle,Barcelona
+173177,es,es,1,Riff,Valencia
+173843,es,es,3,Lasarte,Barcelona
+203796,es,es,2,Cinc Sentits,Barcelona
+204150,es,es,2,Enoteca Paco Pérez,Barcelona
+217425,es,es,2,Maralba,Almansa
+217545,es,es,1,Boroa,Amorebieta
+217573,es,es,1,L'Aliança d'Anglès,Anglès
+217635,es,es,1,Les Magnòlies,Arbúcies
+217700,es,es,1,El Corral del Indianu,Arriondas
+217702,es,es,3,Casa Marcial,Arriondas
+217768,es,es,1,Etxebarri,Axpe
+218008,es,es,1,Maca de Castro,Port d'Alcúdia
+218432,es,es,1,Lluerna,Santa Coloma de Gramenet
+218530,es,es,1,El Ermitaño,Benavente
+218659,es,es,1,Nerua Guggenheim Bilbao,Bilbao
+218843,es,es,3,Atrio,Cáceres
+218953,es,es,1,Can Jubany,Calldetenes
+218974,es,es,1,Yayo Daporta,Cambados
+218990,es,es,1,Can Bosch,Cambrils
+218991,es,es,1,Rincón de Diego,Cambrils
+219581,es,es,2,L'Escaleta,Cocentaina
+219667,es,es,1,Choco,Córdoba
+219828,es,es,2,Venta Moncalvillo,Daroca de Rioja
+219860,es,es,3,Quique Dacosta,Dénia
+219890,es,es,1,Kokotxa,Donostia / San Sebastián
+219902,es,es,3,Arzak,Donostia / San Sebastián
+219922,es,es,3,Akelaŕe,Donostia / San Sebastián
+219944,es,es,1,La Costa,El Ejido
+219979,es,es,1,La Finca,Elche
+219990,es,es,2,Mugaritz,Errenteria
+220169,es,es,1,Andra Mari,Galdakao
+220227,es,es,1,Elkano,Getaria
+220295,es,es,1,Auga,Gijón
+220306,es,es,1,Massana,Girona
+220312,es,es,3,El Celler de Can Roca,Girona
+220318,es,es,1,La Fonda Xesc,Gombrèn
+220551,es,es,1,Alameda,Hondarribia
+220607,es,es,1,Lillas Pastia,Huesca
+220629,es,es,1,El Bohío,Illescas
+220786,es,es,3,Azurmendi,Larrabetzu
+220791,es,es,3,Martín Berasategui,Lasarte - Oria
+220835,es,es,1,Cocinandos,Leon
+220882,es,es,1,Els Tinars,Llagostera
+220890,es,es,2,Miramar,Llançà
+221436,es,es,1,As Garzas,Barizo
+221474,es,es,1,Messina,Marbella
+221482,es,es,2,Skina,Marbella
+221809,es,es,2,Cabaña Buenavista,El Palmar
+221899,es,es,1,El Xato,la Nucía
+221951,es,es,1,Sala,Olost
+221957,es,es,2,Les Cols,Olot
+221962,es,es,1,Casa Pepa,Ondara
+222147,es,es,1,Rodero,Pamplona
+222149,es,es,1,Europa,Pamplona
+222377,es,es,1,Solla,San Salvador de Poio
+222449,es,es,1,Casa Gerardo,Prendes
+222512,es,es,3,Aponiente,El Puerto de Santa María
+222768,es,es,1,Els Casals,Sagàs
+222821,es,es,1,Tayta by Víctor Gutiérrez,Salamanca
+222862,es,es,1,Real Balneario,Salinas
+223114,es,es,2,Retiro da Costiña,Santa Comba
+223252,es,es,1,Casa Marcelo,Santiago de Compostela
+223478,es,es,1,Abantal,Seville
+223530,es,es,1,El Doncel,Sigüenza
+223608,es,es,1,Fogony,Sort
+223985,es,es,1,Hospedería El Batán,Tramacastilla
+224050,es,es,1,Les Moles,Ulldecona
+224051,es,es,1,L'Antic Molí,Ulldecona
+224056,es,es,2,Molino de Urdániz,Urdaitz
+224077,es,es,1,Chirón,Valdemoro
+224157,es,es,1,Cal Paradís,Vall d'Alba
+224159,es,es,1,Ca l'Enric,La Vall de Bianya
+224475,es,es,3,Cenador de Amós,Villaverde de Pontones
+224684,es,es,1,La Prensa,Saragossa
+226406,es,es,1,O Eirado,Pontevedra
+226426,es,es,1,Barahonda,Yecla
+226699,es,es,1,Solana,Ampuero
+226975,es,es,1,Mina,Bilbao
+227109,es,es,1,Trigo,Valladolid
+227263,es,es,1,La Lobita,Navaleno
+227651,es,es,1,Es Fum,Palmanova
+228154,es,es,2,M.B,Guía de Isora
+228280,es,es,1,Empòrium,Castelló d'Empúries
+228550,es,es,2,El Portal de Echaurren,Ezcaray
+230383,es,es,1,Villa Retiro,Xerta
+231253,es,es,2,Pepe Vieira,Raxó
+232393,es,es,1,L'Ó,Sant Fruitós de Bages
+252969,es,es,1,Malena,Gimenells
+255384,es,es,1,La Aquarela,Patalavaca
+258636,es,es,2,Culler de Pau,O Grove
+263413,es,es,1,Peix & Brases,Dénia
+264824,es,es,1,A Tafona,Santiago de Compostela
+274782,es,es,1,Dos Palillos,Barcelona
+274798,es,es,1,La Botica de Matapozuelos,Matapozuelos
+275162,es,es,1,Moments,Barcelona
+282249,es,es,1,Marc Fosh,Palma
+303784,es,es,1,Koy Shunka,Barcelona
+326292,es,es,1,Tresmacarrons,El Masnou
+332258,es,es,1,El Retiro,Llanes
+342407,es,es,1,Casona del Judío,Santander
+354160,es,es,2,BonAmb,Xàbia
+364283,es,es,1,José Carlos García,Malaga
+366912,es,es,1,Eneko,Larrabetzu
+368160,es,es,1,Refectorio,Sardón de Duero
+383843,es,es,2,Flores Raras,Valencia
+389530,es,es,1,Los Guayres,Mogán
+396484,es,es,1,Nova,Ourense
+421178,es,es,1,Regueiro,Tox
+423514,es,es,1,Zarate,Bilbao
+437453,es,es,1,La Bicicleta,Hoznayo
+443589,es,es,3,DiverXO,Madrid
+443649,es,es,2,DSTAgE,Madrid
+459806,es,es,3,Disfrutar,Barcelona
+461366,es,es,1,Pablo,Leon
+465372,es,es,2,La Boscana,Bellvís
+468137,es,es,1,Raúl Resino,Benicarló
+468736,es,es,1,Sollo,Fuengirola
+468885,es,es,1,Audrey's,Calp
+469559,es,es,1,Magoga,Cartagena
+471282,es,es,2,Mont Bar,Barcelona
+474793,es,es,1,Maruja Limón,Vigo
+480699,es,es,1,Baeza & Rufete,Alacant
+481000,es,es,1,Yugo The Bunker,Madrid
+481742,es,es,3,Noor,Córdoba
+482061,es,es,1,La Tasquería,Madrid
+482939,es,es,1,Gofio,Madrid
+489642,es,es,1,Kiro Sushi,Logrono
+489741,es,es,1,Lera,Castroverde de Campos
+492322,es,es,1,Lienzo,Valencia
+497188,es,es,1,Ferpel Gastronómico,Ortiguera
+500769,es,es,1,Unic,Sant Josep de sa Talaia
+500987,es,es,1,Fusion19,Muro
+503071,es,es,1,Divinum,Girona
+504009,es,es,2,Alevante by Ángel León,Chiclana de la Frontera
+504019,es,es,1,El Molino de Alcuneza,Sigüenza
+504110,es,es,1,A'Barra,Madrid
+504209,es,es,1,Gaytán,Madrid
+504898,es,es,1,Castell Perelada,Peralada
+506019,es,es,1,Alkimia,Barcelona
+518337,es,es,1,En la Parra,Salamanca
+519925,es,es,2,Bardal,Ronda
+524978,es,es,1,Beat by José Manuel Miguel,Calp
+524981,es,es,1,Orobianco,Calp
+527103,es,es,1,Cañabota,Seville
+527947,es,es,1,Deliranto,Salou
+528039,es,es,1,Caelis,Barcelona
+530167,es,es,2,Enigma,Barcelona
+530178,es,es,2,Bo.TiC,Corçà
+530179,es,es,1,Tatau,Huesca
+530804,es,es,2,Coque,Madrid
+532581,es,es,2,Ricard Camarena Restaurant,Valencia
+532964,es,es,1,Ambivium,Peñafiel
+533048,es,es,1,Taller Arzuaga,Quintanilla de Onésimo
+533564,es,es,1,El Taller Seve Díaz,Puerto de la Cruz
+533865,es,es,1,Mesón Sabor Andaluz,Alcalá del Valle
+535945,es,es,1,brula,Eivissa
+536106,es,es,1,Raíces-Carlos Maldonado,Talavera de la Reina
+540822,es,es,1,BACK,Marbella
+547386,es,es,1,Clos Madrid,Madrid
+550038,es,es,1,Bagá,Jaén
+550340,es,es,1,Ikaro,Logrono
+553300,es,es,2,LÚ Cocina y Alma,Jerez de la Frontera
+555504,es,es,1,Fierro,Valencia
+555507,es,es,1,Mu•na,Ponferrada
+557011,es,es,3,Cocina Hermanos Torres,Barcelona
+557268,es,es,1,Atalaya,Alcossebre
+560920,es,es,1,Silabario,Vigo
+561745,es,es,1,Corral de la Morería Gastronómico,Madrid
+562125,es,es,1,El Invernadero,Madrid
+563745,es,es,1,Mantúa,Jerez de la Frontera
+563747,es,es,1,Callizo,Ainsa
+564363,es,es,1,Árbore da Veira,A Coruña
+1077227,es,es,1,Coto de Quevedo Evolución,Torre de Juan Abad
+1077240,es,es,1,Quatre Molins,Cornudella de Montsant
+1085201,es,es,1,ARREA!,Santa Cruz de Campezo
+1090843,es,es,1,Alquimia - Laboratorio,Valladolid
+1090883,es,es,1,Tula,Xàbia
+1154384,es,es,1,Ola Martín Berasategui,Bilbao
+1154481,es,es,1,Retama,Torrenueva
+1154554,es,es,1,Arrels,Sagunt
+1154693,es,es,1,Versátil,Zarza de Granadilla
+1154852,es,es,2,Voro,Canyamel
+1154936,es,es,1,Ajonegro,Logrono
+1154987,es,es,2,Iván Cerdeño,Toledo
+1159995,es,es,1,Voramar,Portbou
+1160046,es,es,1,Miguel González,Ourense
+1160055,es,es,1,Dama Juana,Jaén
+1184765,es,es,1,Saddle,Madrid
+1184828,es,es,1,Asador O'Pazo,Padrón
+1185083,es,es,1,La Casa de Manolo Franco,Valdemorillo
+1185103,es,es,1,DINS Santi Taura,Palma
+1185265,es,es,1,Poemas by Hermanos Padrón,Las Palmas de Gran Canaria
+1186270,es,es,1,Epílogo,Tomelloso
+1186563,es,es,1,Donaire,Adeje
+1186881,es,es,1,Almo de Juan Guillamón,Murcia
+1189239,es,es,1,Casa Arcas,Villanova
+1189510,es,es,1,Ayalga Villa Rosario,Ribadesella
+1190288,es,es,1,Palodú,Malaga
+1190422,es,es,1,Kaleja,Malaga
+1190765,es,es,1,Monte,San Feliz
+1191229,es,es,1,Faralá,Granada
+1191296,es,es,1,Taste 1973,Playa de las Américas
+1191398,es,es,2,Amelia by Paulo Airaudo,Donostia / San Sebastián
+1191480,es,es,1,Alejandro Serrano,Miranda de Ebro
+1191909,es,es,1,Zaranda,Palma
+1192181,es,es,1,La Salita,Valencia
+1192783,es,es,1,Código de Barra,Cadiz
+1193573,es,es,1,Quimbaya,Madrid
+1193633,es,es,1,ReComiendo,Córdoba
+1193684,es,es,1,Gente Rara,Saragossa
+1194339,es,es,1,Ceibe,Ourense
+1194656,es,es,1,Fraula,Valencia
+1194816,es,es,1,Garena,Dima
+1194862,es,es,1,Nub,Adeje
+1194880,es,es,2,El Rincón de Juan Carlos,Adeje
+1194958,es,es,1,Kaido Sushi Bar,Valencia
+1195113,es,es,1,Nintai,Marbella
+1195419,es,es,1,Tabaiba,Las Palmas de Gran Canaria
+1195627,es,es,1,Kamezí,Playa Blanca
+1195671,es,es,1,Nublo,Haro
+1195762,es,es,1,Èter,Madrid
+1196081,es,es,1,Montia,San Lorenzo de El Escorial
+1196425,es,es,1,Atempo,Barcelona
+1196919,es,es,2,Deessa,Madrid
+1196960,es,es,1,La Era de los Nogales,Sardas
+1196989,es,es,1,Quirat,Barcelona
+1197026,es,es,1,El Serbal,Santander
+1197125,es,es,2,Smoked Room,Madrid
+1197148,es,es,1,Sa Clastra,Es Capdellà
+1197921,es,es,1,Frases,Murcia
+1198535,es,es,1,Desde 1911,Madrid
+1198558,es,es,2,Aleia,Barcelona
+1198803,es,es,1,Ugo Chan,Madrid
+1199284,es,es,1,Rubén Miralles,Vinaròs
+1199745,es,es,1,Fishølogy,Barcelona
+1199746,es,es,1,Prodigi,Barcelona
+1199932,es,es,1,Muxgo,Las Palmas de Gran Canaria
+1199939,es,es,1,Casa Rubén,Tella
+1199950,es,es,1,San-Hô,Adeje
+1199959,es,es,1,Il Bocconcino by Royal Hideaway,Adeje
+1200223,es,es,1,Ababol,Albacete
+1200255,es,es,1,Cobo Evolución,Burgos
+1200386,es,es,1,RavioXO,Madrid
+1200978,es,es,1,Casa Nova,Sant Martí Sarroca
+1201120,es,es,1,Kabo,Pamplona
+1201177,es,es,1,Casa Bernardi,Benissa
+1201273,es,es,1,Suto,Barcelona
+1201841,es,es,1,Ama,Tolosa
+1201942,es,es,1,Malak,Jaén
+1201951,es,es,1,COME by Paco Méndez,Barcelona
+1202044,es,es,1,Oba-,Casas-Ibáñez
+1202609,es,es,1,Blossom,Malaga
+1203091,es,es,1,CEBO,Madrid
+1203462,es,es,1,Casas Colgadas Restaurante,Cuenca
+1203546,es,es,1,Vandelvira,Baeza
+1203547,es,es,1,Radis,Jaén
+1204019,es,es,1,Chispa Bistró,Madrid
+1204750,es,es,1,Islares,Bilbao
+1204867,es,es,1,Marcos,Gijón
+1205008,es,es,1,Vértigo,Sober
+1205025,es,es,1,Toki,Madrid
+1206016,es,es,1,Ochando,Los Rosales
+1206321,es,es,1,Simposio,San Antonio de Benagéber
+1206982,es,es,1,OSA,Madrid
+1207068,es,es,1,Kamikaze,Barcelona
+1207225,es,es,1,VelascoAbellà,Madrid
+1208233,es,es,1,Omakase by Walt,Eivissa
+1208394,es,es,1,Barro,Ávila
+1208494,es,es,1,Txispa,Axpe
+1208507,es,es,1,Andreu Genestra,Llucmajor
+1209862,es,es,1,Canfranc Express,Canfranc-Estación
+1210671,es,es,1,Ricardo Temiño,Burgos
+1211222,es,es,1,Citrus del Tancat,Alcanar
+1211425,es,es,1,MAE Barcelona,Barcelona
+1211601,es,es,1,Pabú,Madrid
+1212001,es,es,1,Pico Velasco,Carasa
+1212207,es,es,1,Bakea,Mungia
+1213265,es,es,1,Ansils,Anciles
+1213853,es,es,1,Mare,Cadiz
+1214049,es,es,1,Sen Omakase,Madrid
+1214085,es,es,1,iBAi by Paulo Airaudo,Donostia / San Sebastián
+1214142,es,es,1,Esperit Roca,Sant Julià de Ramis
+1214557,es,es,1,Origen,Carcaixent
+1214690,es,es,1,Llavor,Oropesa del Mar
+1217406,es,es,1,La Revelía,Amorebieta
+1217755,es,es,1,Haydée by Víctor Suárez,Adeje
+1240961,es,es,1,Itzuli,Donostia / San Sebastián
+1241234,es,es,1,Ancestral,Pozuelo de Alarcón
+1242633,es,es,2,Ramón Freixa Atelier,Madrid
+1243679,es,es,1,EMi,Madrid
+119682,fi,fi,1,Demo,Helsinki
+173845,fi,fi,1,Olo,Helsinki
+481859,fi,fi,1,Kaskis,Turku
+521038,fi,fi,2,Grön,Helsinki
+543488,fi,fi,2,Palace,Helsinki
+1194498,fi,fi,1,Finnjävel Salonki,Helsinki
+1198201,fi,fi,1,VÅR,Porvoo
+1249430,fi,fi,1,Boreal,Helsinki
+324,fr,fr,3,Le Clos des Sens,Annecy
+373,fr,fr,1,Louroc - Hôtel du Cap-Eden-Roc,Antibes
+396,fr,fr,1,Le Patio,Arcachon
+411,fr,fr,1,Le Relais des Moines,Les Arcs
+433,fr,fr,1,La Renaissance,Argentan
+466,fr,fr,1,La Chassagnette,Arles
+542,fr,fr,2,Cyril Attrazic,Aumont-Aubrac
+666,fr,fr,1,Auberge du XIIème Siècle,Saché
+671,fr,fr,1,L'Arnsbourg,Baerenthal
+701,fr,fr,1,Le Cèdre de Montcaud,Sabran
+815,fr,fr,3,L'Oustau de Baumanière,Les Baux-de-Provence
+878,fr,fr,1,Clos du Cèdre,Beaune
+911,fr,fr,1,Le Charlemagne,Pernand-Vergelesses
+920,fr,fr,1,Table de Levernois,Levernois
+959,fr,fr,1,Vieux Pont,Belcastel
+968,fr,fr,1,Le Pot d'Étain,Danjoutin
+971,fr,fr,1,La Grange de Belle-Église,Belle-Église
+1018,fr,fr,1,La Tour des Vents,Monbazillac
+1118,fr,fr,1,Moulin d'Alotz,Arcangues
+1128,fr,fr,1,Les Frères Ibarboure,Bidart
+1134,fr,fr,1,Les Terraillers,Biot
+1185,fr,fr,1,L'Étang du Moulin,Bonnétage
+1220,fr,fr,1,Le Pavillon des Boulevards,Bordeaux
+1228,fr,fr,1,L'Oiseau Bleu,Bordeaux
+1244,fr,fr,2,La Grand'Vigne - Les Sources de Caudalie,Martillac
+1342,fr,fr,1,Lamartine,Le Bourget-du-Lac
+1346,fr,fr,1,Atmosphères,Le Bourget-du-Lac
+1584,fr,fr,3,Le Coquillage,Saint-Méloir-des-Ondes
+1654,fr,fr,1,La Palme d'Or,Cannes
+1855,fr,fr,1,La Table de Chaintré,Chaintré
+1871,fr,fr,1,Jérôme Feck,Châlons-en-Champagne
+1896,fr,fr,2,Cédric Burtin,Saint-Rémy
+1983,fr,fr,1,Le Verbois,Chantilly
+2015,fr,fr,2,Frédéric Doucet,Charolles
+2033,fr,fr,1,Guy Lassausaie,Chasselay
+2215,fr,fr,1,L'Orée de la Forêt,Étouy
+2231,fr,fr,1,Jean-Claude Leclerc,Clermont-Ferrand
+2319,fr,fr,2,JY'S,Colmar
+2342,fr,fr,1,Hostellerie la Montagne,Colombey-les-Deux-Églises
+2528,fr,fr,1,A Casa di Mà,Lumio
+2605,fr,fr,1,Auberge de la Brie,Couilly-Pont-aux-Dames
+2728,fr,fr,1,La Petite Maison de Cucuron,Cucuron
+2859,fr,fr,1,Origine,Dijon
+2878,fr,fr,1,Auberge de la Charme,Prenois
+2976,fr,fr,1,Au Gourmet,Drusenheim
+3039,fr,fr,1,Les Ducs de Lorraine,Epinal
+3076,fr,fr,3,Les Prés d'Eugénie - Michel Guérard,Eugénie-les-Bains
+3206,fr,fr,1,Auberge de la Mine,La Ferrière-aux-Étangs
+3247,fr,fr,3,Auberge du Vieux Puits,Fontjoncouse
+3319,fr,fr,1,L'O des Vignes,Fuissé
+3403,fr,fr,1,Côté Jardin,Gien
+3780,fr,fr,3,La Marine,L'Herbaudière
+3838,fr,fr,2,Auberge de l'Ill,Illhaeusern
+3850,fr,fr,1,Le Puits Saint Jacques,Pujaudran
+3857,fr,fr,1,Le Vivier,L'Isle-sur-la-Sorgue
+3892,fr,fr,1,La Ribaudière,Bourg-Charente
+3916,fr,fr,1,La Passagère - Hôtel Belles Rives,Juan-les-Pins
+3930,fr,fr,1,Les Pêcheurs,Antibes
+4020,fr,fr,1,Chez Michèle,Languimberg
+4062,fr,fr,1,Le Puits du Trésor,Lastours
+4111,fr,fr,1,Cheval Blanc,Lembach
+4138,fr,fr,1,Auberge Frankenbourg,La Vancelle
+4259,fr,fr,1,Bruno,Lorgues
+4313,fr,fr,1,Le Goût du Bonheur - La Fenière,Cadenet
+4374,fr,fr,1,Les Loges,Lyon
+4403,fr,fr,2,Paul Bocuse,Collonges-au-Mont-d'Or
+4406,fr,fr,1,Têtedoie,Lyon
+4469,fr,fr,1,Saisons,Écully
+4486,fr,fr,1,Le Refuge des Gourmets,Machilly
+4521,fr,fr,1,Le Bon Accueil,Malbuisson
+4632,fr,fr,1,"Une Table, au Sud",Marseille
+4717,fr,fr,3,Flocons de Sel,Megève
+5062,fr,fr,2,La Grenouillère,La Madelaine-sous-Montreuil
+5207,fr,fr,1,La Nouvelle Auberge,Wihr-au-Val
+5212,fr,fr,1,Auberge Grand'Maison,Mûr-de-Bretagne
+5270,fr,fr,1,L'Atlantide 1874 - Maison Guého,Nantes
+5290,fr,fr,1,Le Manoir de la Régate,Nantes
+5321,fr,fr,2,La Table Lionel Giraud,Narbonne
+5433,fr,fr,1,Le Chantecler,Nice
+5487,fr,fr,2,Michel Kayser - Restaurant Alexandre,Garons
+5571,fr,fr,2,La Fourchette des Ducs,Obernai
+5573,fr,fr,1,Thierry Schwartz - Table Naturelle,Obernai
+5756,fr,fr,1,Espadon,Paris
+5757,fr,fr,2,Restaurant Le Meurice Alain Ducasse,Paris
+5821,fr,fr,2,L'Ambroisie,Paris
+5908,fr,fr,1,Tour d'Argent,Paris
+5911,fr,fr,1,Relais Louis XIII,Paris
+5912,fr,fr,2,Marsan par Hélène Darroze,Paris
+5916,fr,fr,1,Mavrommatis,Paris
+5936,fr,fr,1,Armani Ristorante,Paris
+5954,fr,fr,1,Ze Kitchen Galerie,Paris
+5986,fr,fr,3,Arpège,Paris
+5988,fr,fr,2,Le Jules Verne,Paris
+5989,fr,fr,1,Le Violon d'Ingres,Paris
+6102,fr,fr,3,Le Cinq,Paris
+6104,fr,fr,3,Alléno Paris au Pavillon Ledoyen,Paris
+6106,fr,fr,3,Épicure,Paris
+6107,fr,fr,2,Le Taillevent,Paris
+6108,fr,fr,1,Lucas Carton,Paris
+6109,fr,fr,1,Lasserre,Paris
+6112,fr,fr,3,Pierre Gagnaire,Paris
+6416,fr,fr,1,Zostera,Paris
+6423,fr,fr,1,Astrance,Paris
+6445,fr,fr,3,Le Pré Catelan,Paris
+6446,fr,fr,1,La Grande Cascade,Paris
+6477,fr,fr,2,Guy Savoy,Paris
+6478,fr,fr,2,Maison Rostang,Paris
+6479,fr,fr,1,Apicius,Paris
+6489,fr,fr,1,Jacques Faussat,Paris
+6813,fr,fr,1,Gordon Ramsay au Trianon,Versailles
+6824,fr,fr,2,Le Corot,Ville-d'Avray
+6909,fr,fr,1,La Galinette,Perpignan
+6938,fr,fr,1,La Promenade - Maison Dallais,Le Petit-Pressigny
+6993,fr,fr,2,L'Auberge des Glazicks,Plomodiern
+7051,fr,fr,1,Rosmadec Le Moulin,Pont-Aven
+7066,fr,fr,1,Le Raisin,Pont-de-Vaux
+7133,fr,fr,1,Restaurant de la Loire,Pouilly-sous-Charlieu
+7283,fr,fr,1,Le Millénaire,Reims
+7297,fr,fr,1,Le Grand Cerf,Montchenot
+7333,fr,fr,2,Maison Ronan Kervarrec,Saint-Grégoire
+7335,fr,fr,1,Auberge du Pont d'Acigné,Noyal-sur-Vilaine
+7353,fr,fr,1,Au Vieux Couvent,Rhinau
+7380,fr,fr,1,La Table du Gourmet,Riquewihr
+7447,fr,fr,3,Christopher Coutanceau,La Rochelle
+7498,fr,fr,1,Les Cèdres,Granges-les-Beaumont
+7738,fr,fr,1,Aux Pesked,Saint-Brieuc
+7741,fr,fr,1,La Vieille Tour,Plérin
+7780,fr,fr,1,L'Almandin,Saint-Cyprien
+7924,fr,fr,1,L'Auberge Saint Jean,Saint-Jean-de-Blaignac
+7939,fr,fr,1,Le Kaïku,Saint-Jean-de-Luz
+7974,fr,fr,1,La Mare aux Oiseaux,Saint-Joachim
+8083,fr,fr,1,Le Saint Placide,Saint-Malo
+8096,fr,fr,2,René et Maxime Meilleur,Saint-Martin-de-Belleville
+8113,fr,fr,1,Le Gindreau,Saint-Médard
+8129,fr,fr,1,Bacôve,Saint-Omer
+8169,fr,fr,1,La Pomme d'Api,Saint-Pol-de-Léon
+8319,fr,fr,1,Les Fresques - Château des Vigiers,Monestier
+8437,fr,fr,1,La Pomme d'Or,Sancerre
+8472,fr,fr,1,Auberge Saint-Walfrid,Sarreguemines
+8532,fr,fr,1,Kasbür,Monswiller
+8572,fr,fr,1,La Madeleine,Sens
+8624,fr,fr,1,Auberge Saint-Laurent,Sierentz
+8752,fr,fr,1,Le Jardin Secret,La Wantzenau
+8753,fr,fr,1,Le Relais de la Poste,La Wantzenau
+8962,fr,fr,1,Stéphane Tournié - Les Jardins de l'Opéra,Toulouse
+8963,fr,fr,1,Michel Sarran,Toulouse
+9000,fr,fr,1,Le Pavillon - Hôtel Westminster,Le Touquet-Paris-Plage
+9024,fr,fr,1,Ambroisie,Saint-Didier-de-la-Tour
+9031,fr,fr,1,L'Écrin de Yohann Chapuis,Tournus
+9032,fr,fr,1,Aux Terrasses,Tournus
+9182,fr,fr,2,Maison Aribert,Uriage-les-Bains
+9313,fr,fr,1,Maison Caillet,Valmont
+9346,fr,fr,1,Le Pressoir,Saint-Avé
+9400,fr,fr,1,Dan B.,Ventabren
+9470,fr,fr,1,Maison Decoret,Vichy
+9500,fr,fr,1,La Table de Philippe Girardon,Chonas-l'Amballan
+9571,fr,fr,1,Auberge de Montfleury,Saint-Germain
+9818,fr,fr,1,Ithurria,Ainhoa
+9836,fr,fr,1,La Table de Pierre Reboul,Aix-en-Provence
+9872,fr,fr,1,Le Haut-Allier,Alleyras
+9885,fr,fr,1,Château de Pray,Amboise
+9937,fr,fr,1,La Rotonde des Trésoms,Annecy
+10073,fr,fr,1,Le Valucien - Château de Vault-de-Lugny,Vault-de-Lugny
+10098,fr,fr,1,Le Gavrinis,Baden
+10110,fr,fr,1,Le Manoir du Lys,Bagnoles-de-l'Orne
+10198,fr,fr,1,Le Restaurant des Rois - La Réserve de Beaulieu,Beaulieu-sur-Mer
+10251,fr,fr,1,Les Trois Rochers,Combrit
+10282,fr,fr,1,Auberge des Templiers,Boismorand
+10332,fr,fr,1,La Bastide,Bonnieux
+10342,fr,fr,1,Le Saint-James,Bouliac
+10400,fr,fr,1,Le Moulin de l'Abbaye,Brantôme
+10517,fr,fr,1,Nicolas Carro - Hôtel de Carantec,Carantec
+10582,fr,fr,3,Maison Lameloise,Chagny
+10611,fr,fr,1,Albert 1er,Chamonix Mont-Blanc
+10665,fr,fr,1,Le Georges,Chartres
+10673,fr,fr,1,La Bonne Étape,Château-Arnoux-Saint-Auban
+10745,fr,fr,1,Château Blanchard,Chazelles-sur-Lyon
+10778,fr,fr,1,Radio,Chamalières
+10844,fr,fr,1,Hostellerie de la Pointe Saint-Mathieu,Plougonvelin
+10931,fr,fr,1,La Table de Courcelles - Château de Courcelles,Courcelles-sur-Vesle
+10938,fr,fr,1,Le Chabichou by Stéphane Buron,Courchevel
+10978,fr,fr,1,La Palmeraie - Château de Valmer,La Croix-Valmer
+11028,fr,fr,2,William Frachot,Dijon
+11044,fr,fr,1,La Chaumière,Dole
+11097,fr,fr,1,Alcôve,Vinay
+11131,fr,fr,1,Le 1862 - Les Glycines,Les Eyzies-de-Tayac-Sireuil
+11132,fr,fr,2,La Chèvre d'Or,Èze
+11133,fr,fr,1,Château Eza,Èze
+11371,fr,fr,1,L'Inattendu - Domaine de Locguénolé,Kervignac
+11454,fr,fr,2,La Côte Saint-Jacques,Joigny
+11463,fr,fr,1,La Table de Xavier Mathieu,Joucas
+11475,fr,fr,2,La Table d'Olivier Nasti,Kaysersberg
+11490,fr,fr,1,Château de la Treyne,Lacave
+11501,fr,fr,1,Le Suquet - Sébastien Bras,Laguiole
+11602,fr,fr,1,La Chapelle Saint-Martin,Nieul
+11668,fr,fr,1,Château d'Adoménil,Lunéville
+11709,fr,fr,1,Relais de la Poste,Magescq
+11749,fr,fr,1,Le Cerf,Marlenheim
+11752,fr,fr,3,Le Petit Nice,Marseille
+11927,fr,fr,1,Le Colombier,Malataverne
+12018,fr,fr,1,La Bastide de Moustiers,Moustiers-Sainte-Marie
+12242,fr,fr,1,Bellefeuille - Saint James Paris,Paris
+12407,fr,fr,2,Anne de Bretagne,La Plaine-sur-Mer
+12424,fr,fr,1,La Table de La Butte,Plouider
+12566,fr,fr,2,Le Parc Les Crayères,Reims
+12567,fr,fr,3,Assiette Champenoise,Reims
+12613,fr,fr,3,Troisgros - Le Bois sans Feuilles,Ouches
+12652,fr,fr,1,Le Panoramique - Domaine de la Corniche,Rolleboise
+12658,fr,fr,1,Le Clos 1774,Romorantin-Lanthenay
+12672,fr,fr,1,Nori,Roscoff
+12760,fr,fr,1,Les Trois Soleils de Montal,Saint-Céré
+12781,fr,fr,2,La Table de Pavie,Saint-Emilion
+12838,fr,fr,1,Le Cap,Saint-Jean-Cap-Ferrat
+12973,fr,fr,3,La Vague d'Or - Cheval Blanc St-Tropez,Saint-Tropez
+13081,fr,fr,2,La Côte d'Or,Saulieu
+13212,fr,fr,2,Jean Sulpice,Talloires-Montmin
+13334,fr,fr,1,Manoir de Lan-Kerellec,Trébeurden
+13344,fr,fr,1,Le Vieux Logis,Trémolat
+13417,fr,fr,3,Pic,Valence
+13518,fr,fr,2,La Pyramide - Maison Henriroux,Vienne
+13557,fr,fr,1,Le Prieuré,Villeneuve-lès-Avignon
+13587,fr,fr,2,Georges Blanc,Vonnas
+16132,fr,fr,3,Mirazur,Menton
+20567,fr,fr,1,L'Écailler,La Flotte
+21415,fr,fr,1,La Table d'Olivier,Brive-la-Gaillarde
+27793,fr,fr,1,La Réserve Rimbaud,Montpellier
+30248,fr,fr,1,La Table du Grapiot,Pupillin
+30528,fr,fr,1,Le Hittau,Saint-Vincent-de-Tyrosse
+34631,fr,fr,1,Avel Vor,Port-Louis
+37415,fr,fr,1,Auberge du Pont,Pont-du-Château
+40020,fr,fr,1,Il Cortile,Mulhouse
+40970,fr,fr,1,Auberge de Clochemerle,Vaux-en-Beaujolais
+41438,fr,fr,1,La Marande,Montbellet
+42466,fr,fr,1,Le Farçon,Courchevel
+42509,fr,fr,3,Les Morainières,Jongieux
+47160,fr,fr,1,G.a. au Manoir de Rétival,Rives-en-Seine
+51028,fr,fr,1,L'Oustalet,Gigondas
+54294,fr,fr,1,Ar Men Du,Névez
+54747,fr,fr,1,Faventia,Tourrettes
+63654,fr,fr,2,Casadelmar,Porto-Vecchio
+63762,fr,fr,1,Lore Ttipia - Auberge Ostape,Bidarray
+63830,fr,fr,1,Auberge Le Prieuré,Moirax
+64112,fr,fr,1,La Balette,Collioure
+65448,fr,fr,3,Restaurant Marcon,Saint-Bonnet-le-Froid
+66350,fr,fr,1,Auguste,Paris
+66439,fr,fr,1,Villa9Trois,Montreuil
+67670,fr,fr,1,La Table de l'Ours,Val-d'Isère
+69298,fr,fr,1,Pur' - Jean-François Rouquette,Paris
+69941,fr,fr,1,Ô Flaveurs,Douvaine
+70104,fr,fr,1,Granica,Cellettes
+70162,fr,fr,1,L'Ekrin by Laurent Azoulay,Méribel
+108123,fr,fr,1,Maison Fantin Latour - Stéphane Froidevaux,Grenoble
+114016,fr,fr,1,La Table de Pierre,Saint-Paul-de-Vence
+115663,fr,fr,1,Villa de l'Étang Blanc,Seignosse
+115884,fr,fr,1,L'Escarbille,Meudon
+117353,fr,fr,1,La Verrière,Olmeto
+117707,fr,fr,1,L'Essentiel,Périgueux
+118502,fr,fr,2,Christophe Hay - Fleur de Loire,Blois
+118773,fr,fr,1,La Cachette,Valence
+118886,fr,fr,2,La Table de Christophe Dufossé,Busnes
+118905,fr,fr,1,Jean-Marc Pérochon,Bretignolles-sur-Mer
+119794,fr,fr,1,Aida,Paris
+120897,fr,fr,1,Épithèque,Valence
+120905,fr,fr,2,La Table de Franck Putelat,Carcassonne
+122360,fr,fr,1,Les Oliviers,Bandol
+168074,fr,fr,1,Alain Llorca,La Colle-sur-Loup
+173430,fr,fr,1,Frédéric Molina à Forêt Ivre,Vailly
+174292,fr,fr,1,L'Arôme,Paris
+176359,fr,fr,1,Quai des Saveurs,Hagondange
+176983,fr,fr,3,Le 1947 à Cheval Blanc,Courchevel
+178193,fr,fr,3,La Villa Madie,Cassis
+178397,fr,fr,1,Haut Bonheur de la Table,Cassel
+185578,fr,fr,1,Le Prince Noir - Vivien Durand,Lormont
+196302,fr,fr,1,Le Mascaret,Blainville-sur-Mer
+198247,fr,fr,1,La Table de Cédric Béchade - L'Auberge Basque,Saint-Pée-sur-Nivelle
+200566,fr,fr,1,Auberge Pom'Poire,Azay-le-Rideau
+201088,fr,fr,1,Le Pily,Cherbourg-en-Cotentin
+202259,fr,fr,1,La Licorne Royale,Lyons-la-Forêt
+202668,fr,fr,1,Umami,Strasbourg
+204212,fr,fr,1,Château du Mont Joly,Sampans
+205570,fr,fr,1,Apicius,Clermont-Ferrand
+207569,fr,fr,1,La Maison dans le Parc,Nancy
+208295,fr,fr,1,Château de Courban,Courban
+231324,fr,fr,1,Agapé,Paris
+232620,fr,fr,1,Le Feuillée - Le Couvent des Minimes,Mane
+232797,fr,fr,2,Le Pressoir d'Argent - Gordon Ramsay,Bordeaux
+233368,fr,fr,1,L'Aromate,Nice
+235136,fr,fr,1,Briketenia,Guéthary
+235635,fr,fr,2,Mère Brazier,Lyon
+236497,fr,fr,1,Maison Chenet - Entre Vigne et Garrigue,Pujaut
+245086,fr,fr,1,Auberge du Vert Mont,Boeschepe
+254057,fr,fr,2,Le Pré - Xavier Beaudiment,Clermont-Ferrand
+255041,fr,fr,1,L'Essentiel,Deauville
+255271,fr,fr,1,Logis de la Cadène,Saint-Emilion
+256665,fr,fr,1,L'Atelier du Peintre,Colmar
+257322,fr,fr,2,Flaveur,Nice
+258222,fr,fr,2,Serge Vieira,Chaudes-Aigues
+259611,fr,fr,1,Auprès du Clocher,Pommard
+260388,fr,fr,1,Dyades au Domaine des Étangs,Massignac
+260677,fr,fr,1,L'Or Bleu,Théoule-sur-Mer
+262212,fr,fr,1,114 Faubourg,Paris
+262610,fr,fr,2,La Voile - La Réserve Ramatuelle,Ramatuelle
+262795,fr,fr,1,Frenchie,Paris
+263836,fr,fr,2,La Villa Archange,Le Cannet
+264476,fr,fr,2,Slalom 1850,Courchevel
+266168,fr,fr,1,Ursus,Tignes
+268292,fr,fr,1,La Table de la Bergerie,Bellevigne-en-Layon
+274697,fr,fr,1,L'Éveil des Sens,Mayenne
+280978,fr,fr,1,Frédéric Simonin,Paris
+281900,fr,fr,1,Au 14 Février,Lyon
+282070,fr,fr,1,La Table Breizh Café,Cancale
+286092,fr,fr,1,Le Carré d'Alethius,Charmes-sur-Rhône
+286100,fr,fr,1,Le Clair de la Plume,Grignan
+298215,fr,fr,2,La Table de Yoann Conte,Veyrier-du-Lac
+299525,fr,fr,1,Le Baudelaire,Paris
+300866,fr,fr,1,Il Carpaccio,Paris
+305485,fr,fr,1,Nomicos,Paris
+308504,fr,fr,1,L'Atelier de Joël Robuchon - Étoile,Paris
+318144,fr,fr,1,Sola,Paris
+318344,fr,fr,1,Le Cin5 - Au Cœur du Village,La Clusaz
+325113,fr,fr,3,Kei,Paris
+325232,fr,fr,1,Soléna,Bordeaux
+325678,fr,fr,1,Toya,Faulquemont
+326012,fr,fr,1,Le 7ème Continent,Rixheim
+327218,fr,fr,1,L'Émulsion,Saint-Alban-de-Roche
+338023,fr,fr,1,L'Esquisse,Annecy
+340828,fr,fr,1,Le Clocher des Pères,Saint-Martin-sur-la-Chambre
+344933,fr,fr,1,Septime,Paris
+345130,fr,fr,1,La Maison des Cariatides,Dijon
+355049,fr,fr,1,L'Axel,Fontainebleau
+358841,fr,fr,1,En Pleine Nature,Quint-Fonsegrives
+359342,fr,fr,1,Qui Plume la Lune,Paris
+367790,fr,fr,1,L'Impertinent,Biarritz
+370401,fr,fr,1,LuluRouget,Nantes
+372696,fr,fr,1,Skab,Nîmes
+375930,fr,fr,1,1741,Strasbourg
+376152,fr,fr,1,Pastis Restaurant,Montpellier
+376833,fr,fr,1,Côté Cuisine,Carnac
+380135,fr,fr,1,En Marge,Aureville
+380623,fr,fr,1,Le Sergent Recruteur,Paris
+393080,fr,fr,1,La Robe,Montaigu
+393968,fr,fr,1,Les Belles Perdrix de Troplong Mondot,Saint-Emilion
+398406,fr,fr,1,La Terrasse - Cheval Blanc St-Tropez,Saint-Tropez
+399589,fr,fr,1,La Table d'Uzès,Uzès
+400460,fr,fr,1,Les Fresques - Hôtel Royal,Évian-les-Bains
+401633,fr,fr,2,Py-r,Toulouse
+402223,fr,fr,1,Likoké,Les Vans
+403026,fr,fr,1,ES,Paris
+404726,fr,fr,1,L'Anthocyane,Lannion
+407110,fr,fr,2,Table - Bruno Verjus,Paris
+407112,fr,fr,1,Jin,Paris
+407977,fr,fr,2,Takao Takano,Lyon
+413864,fr,fr,1,Le Jardin des Plumes,Giverny
+414351,fr,fr,1,Ed.Em,Chassagne-Montrachet
+414353,fr,fr,1,Loiseau des Ducs,Dijon
+414372,fr,fr,1,Intuition,Saint-Lô
+420771,fr,fr,1,L'Odas,Rouen
+423659,fr,fr,1,La Table de Nans,La Ciotat
+424882,fr,fr,1,L'Opidom,Fondettes
+426515,fr,fr,1,Maison Tiegezh,Guer
+429487,fr,fr,1,Assa,Blois
+430007,fr,fr,2,L'Auberge de Saint-Rémy - Fanny Rey & Jonathan Wahid,Saint-Rémy-de-Provence
+433415,fr,fr,1,Les Genêts,Brem-sur-Mer
+437448,fr,fr,1,JAN,Nice
+441237,fr,fr,2,Le Neuvième Art,Lyon
+441239,fr,fr,1,L'Atelier des Augustins,Lyon
+442129,fr,fr,2,David Toutain,Paris
+442400,fr,fr,1,Fontevraud L'Ermitage,Fontevraud-l'Abbaye
+444623,fr,fr,1,L'Aupiho - Domaine de Manville,Les Baux-de-Provence
+444625,fr,fr,3,AM par Alexandre Mazzia,Marseille
+448600,fr,fr,1,Neige d'Été,Paris
+449125,fr,fr,2,L'Oiseau Blanc,Paris
+450779,fr,fr,1,Nakatani,Paris
+450900,fr,fr,1,Le Carmin,Beaune
+453259,fr,fr,1,AT,Paris
+463112,fr,fr,2,Le Grand Restaurant - Jean-François Piège,Paris
+464495,fr,fr,1,Auberge de la Forge,Lavalette
+472663,fr,fr,1,La Table du 11,Versailles
+473770,fr,fr,1,Moulin de la Tardoire,Montbron
+474220,fr,fr,1,Prairial,Lyon
+474533,fr,fr,1,Jérôme Nutile,Nîmes
+476576,fr,fr,1,Au Crocodile,Strasbourg
+476630,fr,fr,3,Le Gabriel - La Réserve Paris,Paris
+479813,fr,fr,1,Allium,Quimper
+481820,fr,fr,1,Alchémille,Kaysersberg
+482620,fr,fr,2,Villa René Lalique,Wingen-sur-Moder
+483379,fr,fr,1,Le George,Paris
+484180,fr,fr,1,Pourquoi Pas,Dinard
+484619,fr,fr,1,Auberge du Cep,Fleurie
+486501,fr,fr,1,L'Aparté,Montrabé
+487420,fr,fr,2,Le Clarence,Paris
+487619,fr,fr,1,Auberge Chez Guth,Steige
+488259,fr,fr,1,Maison Medard,Boulleret
+489160,fr,fr,1,L'Ostal,Clermont-Ferrand
+489523,fr,fr,2,Alliance,Paris
+491764,fr,fr,1,Les Explorateurs - Hôtel Pashmina,Val-Thorens
+493908,fr,fr,1,La Tête en l'air,Vannes
+495886,fr,fr,1,Maximin Hellio,Deauville
+498025,fr,fr,1,Le Jardin de Berne,Flayosc
+504298,fr,fr,2,Virtus,Paris
+505662,fr,fr,2,Le Skiff Club,Pyla-sur-Mer
+505878,fr,fr,2,L'Orangerie,Paris
+507272,fr,fr,1,Akrame,Paris
+507774,fr,fr,1,Le Grand Cap,Leucate
+507823,fr,fr,1,Restaurant H,Paris
+508644,fr,fr,1,Leclère,Montpellier
+508739,fr,fr,2,Racine,Reims
+509704,fr,fr,1,Restaurant Julien Binz,Ammerschwihr
+511500,fr,fr,1,Restaurant Pierre Grein,Manosque
+511764,fr,fr,1,La Table de la Ferme,Sartène
+514232,fr,fr,1,Sushi B,Paris
+515393,fr,fr,1,Restaurant Girardin,Colmar
+515432,fr,fr,1,Tomy & Co,Paris
+515672,fr,fr,1,Divellec,Paris
+515892,fr,fr,1,L'Archeste,Paris
+516654,fr,fr,1,Quinsou,Paris
+518257,fr,fr,2,La Merise,Laubach
+521183,fr,fr,1,Accents Table Bourse,Paris
+522788,fr,fr,1,Tentazioni,Bordeaux
+527883,fr,fr,1,Pertinence,Paris
+528031,fr,fr,1,Le K,Montenach
+529199,fr,fr,1,Alan Geaam,Paris
+533952,fr,fr,1,La Table d'Hôtes - La Rôtisserie du Chambertin,Gevrey-Chambertin
+534324,fr,fr,1,Auberge Quintessence,Roubion
+534329,fr,fr,1,Bessem,Mandelieu-La Napoule
+534332,fr,fr,1,Épisodes,Paris
+537996,fr,fr,1,L'Auberge de Bagatelle,Le Mans
+539866,fr,fr,1,L'Or Q'idée,Pontoise
+540523,fr,fr,1,La Table d'Hôtes - Le Quatrième Mur,Bordeaux
+540682,fr,fr,1,Granit - La Mécanique des Frères Bonano,Colombières-sur-Orb
+541546,fr,fr,1,Le Mas Bottero,Saint-Cannat
+542006,fr,fr,1,Ima,Rennes
+542026,fr,fr,1,Racines,Rennes
+542769,fr,fr,1,Comice,Paris
+543108,fr,fr,1,Yoshinori,Paris
+900001,fr,fr,1,La Source,Saint-Galmier
+900037,fr,fr,1,Lait Thym Sel,Angers
+900051,fr,fr,1,Les Funambules,Strasbourg
+1000106,fr,fr,1,Guillaume Scheer - Les Plaisirs Gourmands,Strasbourg
+1000112,fr,fr,1,Automne,Paris
+1000144,fr,fr,1,L'Orchidée,Ensisheim
+1000149,fr,fr,1,L'Évidence,Montbazon
+1000176,fr,fr,1,La Maison de Pierre,Hasparren
+1000191,fr,fr,1,La Table de Tourrel,Saint-Rémy-de-Provence
+1000208,fr,fr,1,Pilgrim,Paris
+1000227,fr,fr,1,NESO,Paris
+1000239,fr,fr,1,Baieta,Paris
+1000243,fr,fr,1,Oxte,Paris
+1000259,fr,fr,1,L'Ours,Vincennes
+1000267,fr,fr,1,Pollen,Avignon
+1000288,fr,fr,2,L'Abysse Paris,Paris
+1000331,fr,fr,2,Lalique,Bommes
+1000352,fr,fr,1,La Table - Christophe Hay,Ardon
+1000362,fr,fr,1,Anne,Paris
+1000376,fr,fr,1,Louise,Lorient
+1024389,fr,fr,1,L'Aspérule,Dijon
+1024398,fr,fr,1,Le Royal,Champillon
+1024410,fr,fr,1,Les Agitateurs,Nice
+1024413,fr,fr,1,Origines,Le Broc
+1024416,fr,fr,1,Restaurant De Lauzun,Pézenas
+1077203,fr,fr,1,Les Foudres,Cognac
+1102789,fr,fr,1,Gaya par Pierre Gagnaire,Paris
+1154692,fr,fr,1,Les Reflets,La Roche-sur-Yon
+1154762,fr,fr,1,Substance,Paris
+1155013,fr,fr,1,Cent33,Bordeaux
+1160189,fr,fr,1,Mont Blanc Restaurant & Goûter,Hauteluce
+1164861,fr,fr,1,L'Embrun,Brest
+1179872,fr,fr,1,Le Restaurant du Cerisier,Lille
+1183884,fr,fr,1,Le Art - Château de la Gaude,Aix-en-Provence
+1183966,fr,fr,1,L'Auberge de Lucinges,Lucinges
+1184103,fr,fr,1,Ochre,Rueil-Malmaison
+1184873,fr,fr,1,La Huchette,Replonges
+1184884,fr,fr,1,Fleur de Pavé,Paris
+1184892,fr,fr,1,La Chapelle - Château Saint-Jean,Montluçon
+1184980,fr,fr,1,Choko Ona,Espelette
+1184988,fr,fr,1,Le Kléber - La Maison Bonnet,Grane
+1185177,fr,fr,2,L'Auberge de Montmin,Talloires-Montmin
+1186020,fr,fr,1,La Table d'Armante,Saint-Gervais-les-Bains
+1186093,fr,fr,1,La Magdeleine - Mathias Dandine,Gémenos
+1186194,fr,fr,2,Duende,Nîmes
+1186239,fr,fr,1,Le Faham,Paris
+1186288,fr,fr,1,Solstice,Paris
+1186413,fr,fr,2,La Scène,Paris
+1186415,fr,fr,1,Origines Restaurant,Paris
+1186416,fr,fr,1,Pavyllon Paris,Paris
+1186512,fr,fr,1,Reflet d'Obione,Montpellier
+1186514,fr,fr,1,Anona,Paris
+1186515,fr,fr,1,Shabour,Paris
+1186546,fr,fr,1,Contraste,Paris
+1186680,fr,fr,1,Omija,Nantes
+1186891,fr,fr,1,Imperial Treasure,Paris
+1190862,fr,fr,1,Miraflores,Lyon
+1190896,fr,fr,1,Rustique,Lyon
+1191299,fr,fr,1,Villa Salone,Salon-de-Provence
+1191778,fr,fr,1,Burgundy by Matthieu,Lyon
+1191916,fr,fr,1,Ébullition,Montpellier
+1192024,fr,fr,1,Colette,Saint-Tropez
+1192058,fr,fr,1,CIBO,Dijon
+1192210,fr,fr,1,La Table de L'Incomparable,Tresserve
+1192474,fr,fr,1,Les Jardins,Parnac
+1192730,fr,fr,1,Le Favori - Les Sources de Cheverny,Cheverny
+1192731,fr,fr,1,Arbore & Sens,Loches
+1192760,fr,fr,1,Racines - Bruno Cirino,Nice
+1193334,fr,fr,1,Pantagruel,Paris
+1193371,fr,fr,1,MoSuke,Paris
+1193519,fr,fr,1,Trente-Trois,Paris
+1193542,fr,fr,1,FIEF,Paris
+1193545,fr,fr,1,Auberge Sauvage,Servon
+1193587,fr,fr,1,Le Petit Léon,Saint-Léon-sur-Vézère
+1193728,fr,fr,1,La Table d'Asten,Binic
+1193729,fr,fr,1,Maison Desamy,Mareuil-sur-Lay-Dissais
+1193734,fr,fr,1,L'Abissiou,Les Sables d’Olonne
+1193745,fr,fr,1,Villa Pinewood,Payrin-Augmontel
+1196324,fr,fr,2,Ekaitza,Ciboure
+1196929,fr,fr,1,AinTimiste,Poncin
+1197029,fr,fr,1,Sushi Shunei,Paris
+1197270,fr,fr,1,Jardin des Sens,Montpellier
+1197275,fr,fr,1,L'Alter-Native,Béziers
+1197279,fr,fr,1,La Table de l'Orangerie - Château de Fonscolombe,Le Puy-Sainte-Réparade
+1197312,fr,fr,1,La Chabotterie,Montréverd
+1197647,fr,fr,1,Pureté,Lille
+1198153,fr,fr,1,La Maison Despouès,Puylausic
+1198212,fr,fr,1,Ducasse au Château de Versailles - Le Grand Contrôle,Versailles
+1198272,fr,fr,1,Le Tout-Paris,Paris
+1198294,fr,fr,3,Plénitude - Cheval Blanc Paris,Paris
+1198315,fr,fr,1,Granite,Paris
+1198739,fr,fr,1,Lavandin - Château Les Oliviers de Salettes,Charols
+1199170,fr,fr,1,Don Juan II,Paris
+1199186,fr,fr,1,La Table Mirasol,Mont-de-Marsan
+1199371,fr,fr,2,Sylvestre Wahid - Les Grandes Alpes,Courchevel
+1199611,fr,fr,2,Maison Nouvelle,Bordeaux
+1199647,fr,fr,1,La Grande Table du Plaza Athénée,Paris
+1200806,fr,fr,1,Rouge,Nîmes
+1200901,fr,fr,1,La Bòria,Veyras
+1201380,fr,fr,1,de:ja,Strasbourg
+1201666,fr,fr,1,Mallory Gabsi,Paris
+1201779,fr,fr,1,Enfin,Barr
+1202241,fr,fr,1,Ōrtensia,Paris
+1202267,fr,fr,1,Ruche,Gambais
+1202595,fr,fr,2,Rozó,Marcq-en-Barœul
+1202911,fr,fr,1,Le 1201 - Abbaye de Villeneuve,Les Sorinières
+1203086,fr,fr,1,Les Cadets,Nantes
+1203180,fr,fr,1,Auberge de la Roche,Valdeblore
+1204009,fr,fr,1,Ezia,Montlivault
+1204016,fr,fr,1,L'Impulsif,Châtel-Guyon
+1204113,fr,fr,1,Aumì,Puymoyen
+1204118,fr,fr,1,La Table des Pères - Domaine du Château des Pères,Piré-Chancé
+1204361,fr,fr,1,Arborescence,Croix
+1204675,fr,fr,1,Cueillette,Altillac
+1204708,fr,fr,1,Château d'Origny,Ouches
+1204727,fr,fr,1,Ressources,Bordeaux
+1204801,fr,fr,1,Nhome,Paris
+1204881,fr,fr,1,Omar Dhiab,Paris
+1204939,fr,fr,1,Monsieur Dior by Yannick Alléno,Paris
+1204940,fr,fr,1,Couleurs de Shimatani,La Ciotat
+1205984,fr,fr,1,Alpage,Courchevel
+1206650,fr,fr,1,La Vieille Auberge,Villeneuve-le-Comte
+1207042,fr,fr,1,Onor,Paris
+1207141,fr,fr,1,Étude,Aix-en-Provence
+1207207,fr,fr,1,Chakaiseki Akiyoshi,Paris
+1207676,fr,fr,1,SEPT,Toulouse
+1207714,fr,fr,2,La Table des Amis,Bonnieux
+1207771,fr,fr,3,La Table du Castellet,Le Castellet
+1207866,fr,fr,1,ONICE,Nice
+1208108,fr,fr,1,Auberge de la Grive,Trosly-Loire
+1208274,fr,fr,1,Géosmine,Paris
+1208787,fr,fr,1,Le Saint Hilaire,Saint-Hilaire-de-Brethmas
+1208982,fr,fr,1,Asterales,Corrençon-en-Vercors
+1209337,fr,fr,1,L'Orangerie,Eugénie-les-Bains
+1209538,fr,fr,2,Sushi Yoshinaga,Paris
+1209701,fr,fr,1,Finestra by Italo Bassi,Bonifacio
+1209759,fr,fr,1,Émilie & Thomas - Moulin de Cambelong,Conques-en-Rouergue
+1209761,fr,fr,1,Restaurant Hervé Busset,Rodez
+1209912,fr,fr,1,Le Cercle Guiraud,Sauternes
+1209975,fr,fr,1,Notes,Cognac
+1209994,fr,fr,1,Le Chamarlenc,Puy-en-Velay
+1210229,fr,fr,1,La Bastide Bourrelly - Mathias Dandine,Calas-Cabriès
+1210252,fr,fr,1,Nacre,Arès
+1210663,fr,fr,1,Agapes,Toulouse
+1210708,fr,fr,1,Ginko,Lille
+1210771,fr,fr,1,Datil,Paris
+1210955,fr,fr,1,Palégrié Chez l'Henri,Autrans-Méaudre en Vercors
+1211272,fr,fr,1,Belle de Mars,Marseille
+1211277,fr,fr,1,Calice,Béziers
+1211286,fr,fr,1,Circle,Lyon
+1211547,fr,fr,2,Blanc,Paris
+1211770,fr,fr,2,Maison Benoît Vidal,Annecy
+1211835,fr,fr,1,Symbiose,Cabourg
+1212003,fr,fr,1,Vaisseau,Paris
+1212101,fr,fr,1,Burnel,Rouvres-en-Xaintois
+1212105,fr,fr,1,Séchex Nous,Margencel
+1212397,fr,fr,1,Vous,Megève
+1212698,fr,fr,1,L'Altitude,Courchevel
+1213403,fr,fr,1,Amâlia,Paris
+1213511,fr,fr,1,Freia,Nantes
+1213865,fr,fr,2,Hakuba,Paris
+1213895,fr,fr,1,Monique,Calvisson
+1214203,fr,fr,1,Kern,Seytroux
+1214338,fr,fr,1,Amicis,Bordeaux
+1214377,fr,fr,1,JU - Maison de Cuisine,Bonnieux
+1214404,fr,fr,1,Chez Jeannette,Flassans-sur-Issole
+1214420,fr,fr,2,Arbane,Reims
+1214520,fr,fr,1,Le Charlie,Porticcio
+1214736,fr,fr,1,Mareluna,Théoule-sur-Mer
+1214783,fr,fr,1,Timilìa,Metz
+1214801,fr,fr,1,Yozora,Metz
+1214853,fr,fr,1,L'Oursin,Carry-le-Rouet
+1214888,fr,fr,1,Ineffable,Barbentane
+1214978,fr,fr,1,Arnaud Donckele & Maxime Frédéric at Louis Vuitton,Saint-Tropez
+1215727,fr,fr,1,Acte 2 Yannick Delpech,Toulouse
+1215748,fr,fr,1,La Cheneaudière - Le Feuillage,Colroy-la-Roche
+1215861,fr,fr,1,Aldehyde,Paris
+1215869,fr,fr,1,Le Puy Tilleul,Tournemire
+1215907,fr,fr,1,Fario,Céret
+1215929,fr,fr,1,Nuance,Plomeur
+1216617,fr,fr,1,Maison Avoise,Issy-les-Moulineaux
+1216681,fr,fr,1,Mandibule,Alixan
+1216728,fr,fr,1,La Table d'Aurélien Largeau,Biarritz
+1216782,fr,fr,2,Bulle d'Osier,Langres
+1216851,fr,fr,1,Ombellule,Lyon
+1216893,fr,fr,1,L'Étape Dorée,Saint-Genis-Laval
+1217113,fr,fr,1,Maltacina,Saint-Théoffrey
+1217420,fr,fr,1,Lueurs,Bouchemaine
+1218611,fr,fr,1,La Table - Domaine du Liziec,Vannes
+1218785,fr,fr,1,Maison Pellestor Veyrier,Colomiers
+1218827,fr,fr,1,Épicentre,Nice
+1241400,fr,fr,1,La Table du Cap Estel,Èze-Bord-de-Mer
+1241420,fr,fr,1,Alexis Baudin,Malling
+1241527,fr,fr,1,Irwin,Paris
+1241679,fr,fr,1,La Belle Vie,Saint-Hilaire-d'Ozilhan
+1241731,fr,fr,1,Le M - Domaine de Montagne,Ventron
+1241788,fr,fr,1,Holodeck,Floressas
+1241875,fr,fr,1,Auffo,Marseille
+1241981,fr,fr,1,L'Oursin - Hôtel Les Roches,Le Lavandou
+1242233,fr,fr,1,Prévelle,Paris
+1242537,fr,fr,1,Geoélia,Paris
+1242583,fr,fr,1,Chalet Flachaire,Abondance
+1242759,fr,fr,1,Le Camélia,Bry
+1242987,fr,fr,1,HANADA,Paris
+1243609,fr,fr,1,L'Écorce,Toulouse
+1243656,fr,fr,1,Garrigue,Ansouis
+1244197,fr,fr,1,Erre,Chassy
+1245292,fr,fr,1,Héritages,Paris
+1245894,fr,fr,1,Harmonie,Villeneuve-d'Ascq
+1245906,fr,fr,1,Shanael,Toulon
+1246210,fr,fr,1,Maison Ruggieri Palais Royal,Paris
+69392,gb,gb,3,"Sketch, The Lecture Room and Library",London
+69398,gb,gb,1,Benares,London
+69405,gb,gb,1,Umu,London
+69433,gb,gb,1,Veeraswamy,London
+69472,gb,gb,2,The Ritz Restaurant,London
+69570,gb,gb,1,Pied à Terre,London
+69643,gb,gb,1,Amaya,London
+69646,gb,gb,1,Dining Room at The Goring,London
+69650,gb,gb,1,Quilon,London
+69945,gb,gb,3,Restaurant Gordon Ramsay,London
+70177,gb,gb,1,Martin Wishart,Leith
+120052,gb,gb,3,The Ledbury,London
+123592,gb,gb,1,River Café,London
+123657,gb,gb,1,Chez Bruce,London
+123665,gb,gb,1,La Trompette,London
+123706,gb,gb,1,St. JOHN,London
+173506,gb,gb,1,The Kitchin,Leith
+186314,gb,gb,1,Artichoke,Amersham
+186456,gb,gb,1,Olive Tree,Bath
+186493,gb,gb,1,Pipe and Glass,South Dalton
+186540,gb,gb,1,Northcote,Langho
+186643,gb,gb,3,Waterside Inn,Bray
+186645,gb,gb,1,Hinds Head,Bray
+186832,gb,gb,2,Midsummer House,Cambridge
+186833,gb,gb,1,Restaurant Twenty-Two,Cambridge
+186954,gb,gb,1,Bohemia,Saint Helier
+186989,gb,gb,1,Le Champignon Sauvage,Cheltenham
+186990,gb,gb,1,Lumière,Cheltenham
+187468,gb,gb,3,L'Enclume,Cartmel
+187611,gb,gb,1,Star Inn at Harome,Harome
+188092,gb,gb,1,Trinity,London
+188364,gb,gb,2,Hand and Flowers,Marlow
+188453,gb,gb,1,Nut Tree Inn,Murcott
+188580,gb,gb,2,Restaurant Sat Bains,Nottingham
+188670,gb,gb,1,Paul Ainsworth at No.6,Padstow
+189123,gb,gb,1,The Angel,Hetton
+189401,gb,gb,1,Elephant,Torquay
+189581,gb,gb,1,The Sportsman,Seasalter
+189679,gb,gb,1,Winteringham Fields,Winteringham
+189833,gb,gb,2,Restaurant Andrew Fairlie,Auchterarder
+190302,gb,gb,1,The Peat Inn,Peat Inn
+192344,gb,gb,1,The Samling,Ambleside
+192436,gb,gb,1,Restaurant Hywel Jones by Lucknam Park,Colerne
+192497,gb,gb,1,Morston Hall,Morston
+192657,gb,gb,1,Bybrook,Castle Combe
+192662,gb,gb,1,Gidleigh Park,Chagford
+192915,gb,gb,1,Gravetye Manor,East Grinstead
+193171,gb,gb,1,The Cottage in the Wood,Braithwaite
+193454,gb,gb,1,The Dining Room,Malmesbury
+193643,gb,gb,1,Hambleton Hall,Hambleton
+194857,gb,gb,2,Ynyshir,Machynlleth
+202386,gb,gb,1,The Neptune,Hunstanton
+207627,gb,gb,1,Black Swan,Oldstead
+214137,gb,gb,1,Walnut Tree,Llanddewi Skirrid
+214656,gb,gb,3,Alain Ducasse at The Dorchester,London
+233443,gb,gb,1,Rogan & Co,Cartmel
+234580,gb,gb,3,Hélène Darroze at The Connaught,London
+235288,gb,gb,1,Murano,London
+256306,gb,gb,1,Trishna,London
+256308,gb,gb,1,The Harwood Arms,London
+256499,gb,gb,1,The Boat,Lichfield
+258122,gb,gb,1,Cail Bruich,Glasgow City
+263297,gb,gb,1,Kitchen W8,London
+263897,gb,gb,1,Pea Porridge,Bury St Edmunds
+267922,gb,gb,1,Galvin La Chapelle,London
+284688,gb,gb,1,Pétrus by Gordon Ramsay,London
+304144,gb,gb,1,Woven by Adam Smith,Ascot
+328278,gb,gb,2,Dinner by Heston Blumenthal,London
+367282,gb,gb,2,Kitchen Table,London
+383404,gb,gb,1,Sosban & The Old Butchers,Menai Bridge
+383416,gb,gb,1,Timberyard,Edinburgh
+384405,gb,gb,1,Adam's,Birmingham
+389725,gb,gb,2,A. Wong,London
+392235,gb,gb,1,Angler,London
+395639,gb,gb,1,Dysart Petersham,London
+399109,gb,gb,1,OX,Belfast
+401807,gb,gb,2,The Clove Club,London
+402204,gb,gb,2,Restaurant Story,London
+410110,gb,gb,1,The Cross,Kenilworth
+411332,gb,gb,2,Gymkhana,London
+412850,gb,gb,1,Outlaw's Fish Kitchen,Port Isaac
+424521,gb,gb,1,The Whitebrook,Whitebrook
+428967,gb,gb,1,House of Tides,Newcastle Upon Tyne
+437826,gb,gb,1,Old Stamp House,Ambleside
+437882,gb,gb,1,Allium at Askham Hall,Askham
+446029,gb,gb,1,The Coach,Marlow
+451001,gb,gb,1,Lake Road Kitchen,Ambleside
+460346,gb,gb,1,The White Swan,Fence
+461593,gb,gb,1,John's House,Mountsorrel
+463172,gb,gb,1,Portland,London
+471115,gb,gb,1,The Muddlers Club,Belfast
+471541,gb,gb,1,Forest Side,Grasmere
+486623,gb,gb,3,The Fat Duck,Bray
+488930,gb,gb,3,Moor Hall,Aughton
+489200,gb,gb,1,Bulrush,City of Bristol
+490550,gb,gb,1,The Ninth,London
+501284,gb,gb,1,Beach House,Oxwich
+502587,gb,gb,1,Loch Bay,Isle of Skye
+503229,gb,gb,1,Ormer Mayfair,London
+503469,gb,gb,1,Wilsons,City of Bristol
+504069,gb,gb,1,Elystan Street,London
+514613,gb,gb,1,Jamavar,London
+519022,gb,gb,1,The Wilderness,Birmingham
+521823,gb,gb,1,Luca,London
+527950,gb,gb,1,JÖRO,Sheffield
+530320,gb,gb,1,Lympstone Manor,Lympstone
+530672,gb,gb,1,Stark,East Mersea
+530690,gb,gb,1,alchemilla,Nottingham
+541324,gb,gb,1,Pentonbridge Inn,Penton
+542588,gb,gb,2,Ikoyi,London
+545480,gb,gb,1,The Barn,Aughton
+546419,gb,gb,1,Frog by Adam Handling,London
+551291,gb,gb,3,CORE by Clare Smyth,London
+552962,gb,gb,1,Evelyn's Table,London
+555446,gb,gb,1,Dog and Gun Inn,Skelton
+555447,gb,gb,1,Fordwich Arms,Fordwich
+555475,gb,gb,1,HIDE,London
+555901,gb,gb,1,The Royal Oak,Whatcote
+556316,gb,gb,2,Opheem,Birmingham
+556504,gb,gb,1,Brat,London
+557328,gb,gb,1,Aulis,London
+559396,gb,gb,1,Sabor,London
+1077295,gb,gb,1,Caractère,London
+1090846,gb,gb,1,Interlude,Lower Beeding
+1090849,gb,gb,1,Roots,York
+1154290,gb,gb,1,mana,Manchester
+1154511,gb,gb,2,Da Terra,London
+1154781,gb,gb,1,Condita,Edinburgh
+1183631,gb,gb,1,Wild Honey St James,London
+1184110,gb,gb,2,hide and fox,Saltwood
+1184607,gb,gb,1,Casa Fofō,London
+1186430,gb,gb,2,Trivet,London
+1188132,gb,gb,1,Muse by Tom Aikens,London
+1189211,gb,gb,1,Akoko,London
+1190154,gb,gb,1,Forge,Middleton Tyas
+1190186,gb,gb,1,Shaun Rankin at Grantley Hall,Ripon
+1190934,gb,gb,1,Osip,Bruton
+1191303,gb,gb,1,Latymer,Bagshot
+1191312,gb,gb,1,Àclèaf,Plymouth
+1192303,gb,gb,1,heft,Newton in Cartmel
+1192554,gb,gb,1,Sollip,London
+1193677,gb,gb,1,Behind,London
+1194436,gb,gb,1,UNALOME by Graeme Cheevers,Glasgow City
+1195137,gb,gb,1,KOL,London
+1195396,gb,gb,1,Upstairs by Tom Shepherd,Lichfield
+1195729,gb,gb,2,The Glenturret Lalique,Crieff
+1196052,gb,gb,1,Home,Penarth
+1196227,gb,gb,1,Meadowsweet,Holt
+1196274,gb,gb,2,Humble Chicken,London
+1197068,gb,gb,1,SOLSTICE BY KENNY ATKINSON,Newcastle Upon Tyne
+1197434,gb,gb,1,Heron,Leith
+1198222,gb,gb,1,Grace & Savour,Hampton in Arden
+1198778,gb,gb,1,Pine,East Wallhouses
+1198899,gb,gb,1,Killiecrankie House,Killiecrankie
+1199856,gb,gb,1,sō–lō,Aughton
+1200582,gb,gb,1,1890 by Gordon Ramsay,London
+1203317,gb,gb,1,33 The Homend,Ledbury
+1204190,gb,gb,1,Ben Wilkinson at The Pass,Lower Beeding
+1204362,gb,gb,2,Alex Dilling at Hotel Café Royal,London
+1204793,gb,gb,1,Cycene,London
+1204973,gb,gb,1,The Tudor Pass,Egham
+1205294,gb,gb,1,Dorian,London
+1206391,gb,gb,1,Cedar Tree by Hrishikesh Desai,Brampton
+1206579,gb,gb,1,SOURCE at Gilpin Hotel,Bowness-on-Windermere
+1207025,gb,gb,1,Restaurant St. Barts,London
+1207734,gb,gb,1,mýse,Hovingham
+1209475,gb,gb,2,Brooklands by Claude Bosi,London
+1209805,gb,gb,1,Mountain,London
+1209876,gb,gb,1,64 Goodge Street,London
+1210030,gb,gb,1,LYLA,Edinburgh
+1210127,gb,gb,1,Sushi Kanesaka,London
+1210253,gb,gb,1,Pavyllon London,London
+1210872,gb,gb,1,Chishuru,London
+1210944,gb,gb,1,AVERY,Edinburgh
+1211512,gb,gb,1,Mauro Colagreco at Raffles London at The OWO,London
+1211678,gb,gb,1,Skof,Manchester
+1213456,gb,gb,1,Plates London,London
+1213970,gb,gb,1,Gorse,Cardiff
+1213973,gb,gb,1,OMA,London
+1214031,gb,gb,1,Lita,London
+1214946,gb,gb,1,Cornus,London
+1214958,gb,gb,1,Ambassadors Clubhouse,London
+1215080,gb,gb,2,Row on 5,London
+1215449,gb,gb,1,Starling,Esher
+1215726,gb,gb,1,FIFTY TWO,Harrogate
+1215791,gb,gb,1,1887,Torridon
+1215971,gb,gb,1,Restaurant Gordon Ramsay High,London
+1216638,gb,gb,1,AngloThai,London
+1218316,gb,gb,1,Vraic,Vale
+1218324,gb,gb,1,Kerfield Arms,London
+1240806,gb,gb,1,Tom Brown at The Capital,London
+1241870,gb,gb,1,Ugly Butterfly by Adam Handling,Newquay
+1242773,gb,gb,2,Bonheur by Matt Abé,London
+1242985,gb,gb,1,Legado,London
+1243050,gb,gb,1,Labombe by Trivet,London
+1243056,gb,gb,1,Maré by Rafael Cagali,Brighton and Hove
+1244302,gb,gb,1,Corenucopia by Clare Smyth,London
+1245013,gb,gb,1,Michael Caines at The Stafford,London
+112979,gr,gr,1,Spondi,Athens
+112983,gr,gr,1,Hytra,Athens
+350038,gr,gr,1,Botrini's,Athens
+475413,gr,gr,1,CTC Urban Gastronomy,Athens
+484289,gr,gr,1,Aleria,Athens
+569492,gr,gr,1,SENSE,Athens
+1185923,gr,gr,1,Tudor Hall,Athens
+1196439,gr,gr,1,Pelagos,Athens
+1199525,gr,gr,1,Soil,Athens
+1199824,gr,gr,1,Delta,Athens
+1200618,gr,gr,1,Hervé,Athens
+1202282,gr,gr,1,The Zillers Rooftop Gastronomy,Athens
+1204183,gr,gr,1,Simul,Athens
+1205654,gr,gr,1,Botrini's Santorini,Santorini
+1205739,gr,gr,1,Lauda,Santorini
+1205741,gr,gr,2,Lycabettus,Santorini
+1205782,gr,gr,1,Selene,Santorini
+1206642,gr,gr,1,Patio,Athens
+1207437,gr,gr,1,see|ds,Athens
+1210677,gr,gr,1,Makris Athens,Athens
+230658,hk,hk,2,Bo Innovation,Hong Kong
+230659,hk,hk,3,Caprice,Hong Kong
+230736,hk,hk,1,Fook Lam Moon (Wan Chai),Hong Kong
+230738,hk,hk,1,Gaddi's,Hong Kong
+230782,hk,hk,2,Lung King Heen,Hong Kong
+230785,hk,hk,1,Man Ho (Admiralty),Hong Kong
+230806,hk,hk,2,L'Atelier de Joël Robuchon,Hong Kong
+230814,hk,hk,1,Petrus,Hong Kong
+230829,hk,hk,1,Shang Palace,Hong Kong
+230835,hk,hk,1,Spring Moon,Hong Kong
+230837,hk,hk,1,Summer Palace,Hong Kong
+230897,hk,hk,3,T'ang Court,Hong Kong
+230989,hk,hk,2,Lai Ching Heen,Hong Kong
+258467,hk,hk,1,Liu Yuan Pavilion,Hong Kong
+258468,hk,hk,1,Loaf On,Hong Kong
+314218,hk,hk,3,8 1/2 Otto e Mezzo - Bombana,Hong Kong
+314221,hk,hk,1,Fu Ho,Hong Kong
+314259,hk,hk,1,Sun Tung Lok,Hong Kong
+314269,hk,hk,1,The Chairman,Hong Kong
+314281,hk,hk,1,Yat Lok (Central),Hong Kong
+352518,hk,hk,2,Tin Lung Heen,Hong Kong
+352519,hk,hk,1,Tosca di Angelo,Hong Kong
+380261,hk,hk,1,Pang's Kitchen,Hong Kong
+380306,hk,hk,3,Sushi Shikon,Hong Kong
+380308,hk,hk,2,Tate,Hong Kong
+380364,hk,hk,1,Zhejiang Heen,Hong Kong
+405764,hk,hk,1,Man Wah,Hong Kong
+416835,hk,hk,1,Duddell's,Hong Kong
+416951,hk,hk,1,Ho Hung Kee (Causeway Bay),Hong Kong
+417390,hk,hk,1,Seventh Son (Wan Chai),Hong Kong
+446675,hk,hk,1,China Tang,Hong Kong
+446709,hk,hk,1,Épure,Hong Kong
+446729,hk,hk,3,Forum,Hong Kong
+446850,hk,hk,1,Kam's Roast Goose,Hong Kong
+467735,hk,hk,1,Arcane,Hong Kong
+475135,hk,hk,3,Ta Vie,Hong Kong
+511280,hk,hk,1,Beefbar,Hong Kong
+512627,hk,hk,1,Vea,Hong Kong
+512631,hk,hk,1,Yat Tung Heen,Hong Kong
+545626,hk,hk,1,Imperial Treasure Fine Chinese Cuisine (Tsim Sha Tsui),Hong Kong
+545662,hk,hk,2,Ying Jee Club,Hong Kong
+567786,hk,hk,2,Arbor,Hong Kong
+567832,hk,hk,1,New Punjab Club,Hong Kong
+567848,hk,hk,1,Xin Rong Ji,Hong Kong
+568932,hk,hk,2,Octavium,Hong Kong
+569032,hk,hk,3,Amber,Hong Kong
+1184545,hk,hk,1,The Legacy House,Hong Kong
+1184858,hk,hk,1,Louise,Hong Kong
+1184875,hk,hk,2,L'Envol,Hong Kong
+1184876,hk,hk,2,Rùn,Hong Kong
+1184888,hk,hk,1,Ryota Kappou Modern,Hong Kong
+1185143,hk,hk,1,Roganic,Hong Kong
+1191514,hk,hk,1,Mono,Hong Kong
+1191531,hk,hk,1,Neighborhood,Hong Kong
+1191533,hk,hk,1,Yong Fu,Hong Kong
+1191544,hk,hk,1,Yardbird,Hong Kong
+1191550,hk,hk,1,Kappo Rin,Hong Kong
+1191719,hk,hk,1,Yè Shanghai (Tsim Sha Tsui),Hong Kong
+1192501,hk,hk,1,Chaat,Hong Kong
+1192507,hk,hk,1,Andō,Hong Kong
+1197307,hk,hk,1,Whey,Hong Kong
+1197395,hk,hk,1,Belon,Hong Kong
+1197437,hk,hk,1,I M Teppanyaki & Wine,Hong Kong
+1197866,hk,hk,1,Sushi Wadatsumi,Hong Kong
+1197938,hk,hk,1,Ami,Hong Kong
+1198262,hk,hk,1,Hansik Goo,Hong Kong
+1198381,hk,hk,1,Estro,Hong Kong
+1200897,hk,hk,1,Mora,Hong Kong
+1201133,hk,hk,1,Nagamoto,Hong Kong
+1202514,hk,hk,1,Godenya,Hong Kong
+1204102,hk,hk,1,Tuber Umberto Bombana,Hong Kong
+1204599,hk,hk,2,Noi by Paulo Airaudo,Hong Kong
+1210406,hk,hk,1,Feuille,Hong Kong
+1210713,hk,hk,1,Racines,Hong Kong
+1212068,hk,hk,1,Plaisance by Mauro Colagreco,Hong Kong
+1212171,hk,hk,2,Cristal Room by Anne-Sophie Pic,Hong Kong
+1219247,hk,hk,1,Sushi Takeshi,Hong Kong
+477418,hr,hr,1,Dubravkin Put,Zagreb
+480027,hr,hr,1,Boškinac,Novalja
+480046,hr,hr,1,Monte,Rovinj
+480078,hr,hr,1,Pelegrini,Sibenik
+480082,hr,hr,1,Restaurant 360,Dubrovnik
+480090,hr,hr,1,LD Restaurant,Korcula
+547912,hr,hr,1,Noel,Zagreb
+1193444,hr,hr,1,Nebo,Rijeka
+1193703,hr,hr,1,Cap Aureo,Rovinj
+1195903,hr,hr,1,Alfred Keller,Mali Lošinj
+1196580,hr,hr,2,Agli Amici Rovinj,Rovinj
+1198030,hr,hr,1,Korak,Jastrebarsko
+1216680,hr,hr,1,Krug,Split
+1247195,hr,hr,1,Harry’s Piccolo Poreč,Porec
+262697,hu,hu,1,Costes Restaurant,Budapest
+370956,hu,hu,1,Borkonyha Winekitchen,Budapest
+447174,hu,hu,1,Babel,Budapest
+547086,hu,hu,1,Pajta,Őriszentpéter
+555755,hu,hu,2,Stand,Budapest
+570328,hu,hu,1,Rumour by Rácz Jenő,Budapest
+1192425,hu,hu,1,essência,Budapest
+1196729,hu,hu,1,42,Esztergom
+1196768,hu,hu,1,Salt,Budapest
+70432,ie,ie,2,Patrick Guilbaud,Dublin City
+195195,ie,ie,1,The Pullman,Galway
+235814,ie,ie,1,Campagne,Kilkenny
+260805,ie,ie,1,House,Ardmore
+366187,ie,ie,1,Lady Helen,Thomastown
+367484,ie,ie,1,Aniar,Galway
+470401,ie,ie,1,Bastion,Kinsale
+491371,ie,ie,1,Bastible,Dublin City
+498457,ie,ie,2,Liath,Blackrock
+552341,ie,ie,1,Glovers Alley,Dublin City
+559348,ie,ie,1,The Oak Room,Adare
+559685,ie,ie,1,Chestnut,Ballydehob
+1183630,ie,ie,1,Variety Jones,Dublin City
+1192117,ie,ie,2,dede,Baltimore
+1193439,ie,ie,1,LIGИUM,Bullaun
+1196469,ie,ie,2,Chapter One by Mickael Viljanen,Dublin City
+1198717,ie,ie,1,Forest Avenue,Dublin City
+1201124,ie,ie,1,The Morrison Room,Maynooth
+1203607,ie,ie,2,Terre,Castlemartyr
+1204289,ie,ie,1,The Bishop's Buttery,Cashel
+1206270,ie,ie,1,D'Olier Street,Dublin City
+1209559,ie,ie,1,Homestead Cottage,Doolin
+1211586,ie,ie,1,Ballyfin,Ballyfin
+559763,is,is,1,Moss,Grindavík
+569272,is,is,1,ÓX,Reykjavík
+1186101,is,is,1,DILL,Reykjavík
+68949,it,it,1,Il Convivio Troiani,Rome
+68963,it,it,1,La Terrazza,Rome
+69016,it,it,3,La Pergola,Rome
+69160,it,it,1,Sadler,Milan
+69260,it,it,1,Joia,Milan
+118297,it,it,2,Il Pagliaccio,Rome
+123877,it,it,1,La Parolina,Trevinano
+123938,it,it,1,Colline Ciociare,Acuto
+124135,it,it,3,Piazza Duomo,Alba
+124136,it,it,1,Locanda del Pilone,Alba
+124197,it,it,1,Il Cantuccio,Albavilla
+124441,it,it,1,La Stüa de Michil - Simone Cantafio,Corvara in Badia
+124546,it,it,1,Casin del Gamba,Altissimo
+124596,it,it,1,La Caravella dal 1959,Amalfi
+124965,it,it,1,Vecchio Ristoro,Aosta
+125034,it,it,1,Zur Rose,San Michele
+126699,it,it,1,La Pineta,Marina di Bibbona
+127504,it,it,1,La Palta,Borgonovo Val Tidone
+128107,it,it,3,Da Vittorio,Brusaporto
+128109,it,it,2,Taverna Estia,Brusciano
+128395,it,it,1,Al Gambero,Calvisano
+128500,it,it,2,Antica Osteria Cera,Lughetto
+128675,it,it,1,All'Enoteca,Canale
+128768,it,it,3,Dal Pescatore Santini,Runate
+128950,it,it,2,L'Olivo,Anacapri
+129608,it,it,1,Kuppelrain,Castelbello
+130176,it,it,1,La Trattoria Enrico Bartolini,Castiglione della Pescaia
+130400,it,it,1,El Molin,Cavalese
+130438,it,it,1,Il Saraceno,Cavernago
+130682,it,it,2,Antica Corona Reale,Cervere
+130945,it,it,2,Magnolia,Longiano
+130947,it,it,1,La Buca,Cesenatico
+131617,it,it,1,La Bandiera,Civitella Casanova
+131620,it,it,1,Zunica 1880 a Villa Corallo,Sant'Omero
+131768,it,it,2,Arnolfo,Colle di Val d'Elsa
+132024,it,it,1,Miramonti l'Altro,Concesio
+132144,it,it,1,Trattoria al Cacciatore - La Subida,Cormons
+132267,it,it,1,Tivoli,Cortina d'Ampezzo
+132367,it,it,1,Il Falconiere,Cortona
+132874,it,it,1,Esplanade,Desenzano del Garda
+133137,it,it,1,Il Papavero,Eboli
+133536,it,it,1,Schöneck,Molini
+134313,it,it,3,Enoteca Pinchiorri,Florence
+135164,it,it,1,Lorenzo,Forte dei Marmi
+135165,it,it,1,Bistrot,Forte dei Marmi
+135448,it,it,1,Dalla Gioconda,Gabicce Monte
+135706,it,it,1,La Tortuga,Gargnano
+136659,it,it,1,Villa Maiella,Guardiagrele
+136759,it,it,2,San Domenico,Imola
+136937,it,it,1,Umberto a Mare,Forio
+138506,it,it,2,La Peca,Lonigo
+138521,it,it,1,Andreina,Loreto
+138694,it,it,1,Butterfly,Marlia
+138834,it,it,1,Il Cantinone e Sport Hotel Alpina,Madesimo
+139040,it,it,1,Vecchia Malcesine,Malcesine
+139132,it,it,1,Capriccio,Manerba del Garda
+139394,it,it,1,Gambero Rosso,Marina di Gioiosa Ionica
+139635,it,it,1,Taverna del Capitano,Marina del Cantone
+139707,it,it,1,Bracali,Ghirlanda
+139980,it,it,1,Sissi,Merano
+141150,it,it,1,Il Luogo Aimo e Nadia,Milan
+141517,it,it,3,Osteria Francescana,Modena
+141648,it,it,1,Malga Panna,Moena
+142369,it,it,2,Caino,Montemerano
+143624,it,it,1,Gellivs,Oderzo
+143798,it,it,3,Villa Crespi,Orta San Giulio
+143848,it,it,1,Anna Stuben,Ortisei
+144354,it,it,1,Le Trabe,Paestum
+144784,it,it,1,Il Piastrino,Pennabilli
+145511,it,it,1,Dolada,Plois
+146030,it,it,1,Il Patio,Biella
+146069,it,it,1,President,Pompei
+146788,it,it,1,Leon d'Oro,Pralboino
+146932,it,it,1,Il Centro,Priocca
+146994,it,it,1,Locanda San Lorenzo,Puos d'Alpago
+147227,it,it,1,Rossellinis,Ravello
+147978,it,it,1,Guido,Rimini
+148178,it,it,1,La Trota,Rivodutri
+150043,it,it,1,Due Colombe,Borgonato
+150111,it,it,3,Le Calandre,Rubano
+150122,it,it,1,Osteria del Viandante,Rubiera
+150129,it,it,1,Osteria Altran,Ruda
+151150,it,it,1,La Credenza,San Maurizio Canavese
+151300,it,it,1,La Primula,San Quirino
+151346,it,it,1,Paolo e Barbara,San Remo
+151521,it,it,1,Don Alfonso 1890,Sant'Agata sui Due Golfi
+151762,it,it,1,Il Ristorante di Guido da Costigliole,Santo Stefano Belbo
+151908,it,it,1,Laite,Sappada
+151934,it,it,2,Terra The Magic Place,Sarentino
+152043,it,it,1,Casa Mazzucchelli,Sasso Marconi
+152142,it,it,1,Trattoria da Amerigo,Savigno
+152354,it,it,1,San Martino,Scorzè
+152371,it,it,1,Silene,Seggiano
+152534,it,it,3,Uliassi,Senigallia
+152555,it,it,2,Madonnina del Pescatore,Marzocca
+152800,it,it,1,Rezzano Cucina e Vino,Sestri Levante
+153119,it,it,1,La Rucola 2.0,Sirmione
+153139,it,it,1,La Speranzina Restaurant & Relais,Sirmione
+153384,it,it,1,Al Sorriso,Soriso
+153435,it,it,1,Il Buco,Sorrento
+154030,it,it,1,Osteria di Passignano,Passignano
+154279,it,it,1,Ca' Vittoria,Tigliole
+154570,it,it,1,Del Cambio,Turin
+154574,it,it,1,Vintage 1997,Turin
+155232,it,it,1,La Ciau del Tornavento,Treiso
+155343,it,it,1,LoRo,Trescore Balneario
+155366,it,it,1,San Martino,Treviglio
+155717,it,it,2,Agli Amici,Godia
+155839,it,it,1,Vescovado,Noli
+156002,it,it,1,Oasis - Sapori Antichi,Vallesaccarda
+156535,it,it,1,Quadri,Venice
+157003,it,it,1,Nazionale,Vernante
+157087,it,it,1,Il Desco,Verona
+157362,it,it,1,Romano,Viareggio
+157536,it,it,1,Antica Osteria Nonna Rosa,Vico Equense
+157550,it,it,2,Torre del Saracino,Sorrento
+157634,it,it,1,I Castagni,Vigevano
+157751,it,it,1,Osteria della Brughiera,Villa d'Almè
+157754,it,it,1,Lanterna Verde,Villa di Chiavenna
+159609,it,it,2,La Madia,Licata
+160079,it,it,2,Duomo,Ragusa
+160082,it,it,1,Locanda Don Serafino,Ragusa
+160848,it,it,1,Caracol,Bacoli
+161231,it,it,1,Le Monzù,Capri
+161336,it,it,1,Poggio Rosso,Castelnuovo Berardenga
+161611,it,it,1,Le Petit Bellevue,Cogne
+161790,it,it,1,Atelier,Domodossola
+161932,it,it,1,Borgo San Jacopo,Florence
+162005,it,it,1,La Magnolia,Forte dei Marmi
+162066,it,it,1,Il Pievano,Gaiole in Chianti
+162099,it,it,1,Il Fagiano,Fasano del Garda
+162102,it,it,2,Villa Feltrinelli,Gargnano
+162469,it,it,1,Stube Hermitage,Madonna di Campiglio
+162615,it,it,1,Prezioso,Merano
+162883,it,it,1,Gourmetstube Einhorn,Mules
+163029,it,it,1,Tre Olivi,Paestum
+163087,it,it,2,Locanda Sant'Uffizio Enrico Bartolini,Cioccaro
+163265,it,it,1,Il Pellicano,Porto Ercole
+163300,it,it,1,Zass,Positano
+163379,it,it,1,Il Flauto di Pan,Ravello
+163546,it,it,1,Imàgo,Rome
+163920,it,it,1,Suinsom,Selva di Val Gardena
+164071,it,it,1,Terrazza Bosquet,Sorrento
+164202,it,it,2,Castel fine dining,Tirol
+164245,it,it,1,Carignano,Turin
+164329,it,it,2,Harry's Piccolo,Trieste
+164430,it,it,1,Oro Restaurant,Venice
+164495,it,it,2,Il Piccolo Principe,Viareggio
+164741,it,it,1,Signum,Malfa
+166500,it,it,1,La Torre,Tavarnelle Val di Pesa
+167020,it,it,1,La Capinera,Taormina
+167141,it,it,1,Principe Cerami,Taormina
+171577,it,it,1,L'Erba del Re,Modena
+173881,it,it,1,Ca' Matilde,Rubbianino
+177932,it,it,1,Pascucci al Porticciolo,Fiumicino
+186017,it,it,1,Relais Blu,Massa Lubrense
+197794,it,it,1,Acquerello,Fagnano Olona
+197918,it,it,1,Li Galli,Positano
+199559,it,it,1,Locanda Margon,Ravina
+206107,it,it,1,Glass Hostaria,Rome
+206673,it,it,1,Trattoria Zappatori,Pinerolo
+234519,it,it,1,Il Palagio,Florence
+234904,it,it,1,Dolce Stil Novo alla Reggia,Venaria Reale
+236635,it,it,1,I Portici,Bologna
+254876,it,it,1,Il Gallo Cedrone,Madonna di Campiglio
+254942,it,it,1,IYO,Milan
+255129,it,it,1,Dattilo,Strongoli
+256034,it,it,1,Al Metrò,San Salvo Marina
+256165,it,it,1,Damini Macelleria & Affini,Arzignano
+256344,it,it,1,Veritas,Naples
+256966,it,it,3,La Rei Natura by Michelangelo Mammoliti,Serralunga d'Alba
+257204,it,it,1,Vespasia,Norcia
+264805,it,it,1,Contrada,Castelnuovo Berardenga
+264952,it,it,1,Storie d'Amore,Borgoricco
+265531,it,it,1,Aroma,Rome
+266464,it,it,1,Antica Corte Pallavicina,Polesine Parmense
+266925,it,it,1,Lazzaro 1915,Pontelongo
+271421,it,it,1,Tancredi,Sirmione
+275339,it,it,1,Venissa,Mazzorbo
+295057,it,it,1,Alpenroyal Gourmet,Selva di Val Gardena
+298424,it,it,1,La Favellina,Malo
+305044,it,it,1,Tilia,Toblach
+318744,it,it,1,Marco Bottega Ristorante,Genazzano
+319557,it,it,1,La Preséf,Mantello
+320484,it,it,1,Achilli al Parlamento,Rome
+323889,it,it,1,Nove,Alassio
+325072,it,it,1,Johannesstube,Nova Levante
+325766,it,it,1,Kitchen,Como
+328919,it,it,1,Lux Lucis,Forte dei Marmi
+332376,it,it,1,Coria,Catania
+334119,it,it,1,Un Piano nel Cielo,Praiano
+336542,it,it,3,Reale,Castel di Sangro
+337639,it,it,1,Il Marin,Genoa
+349133,it,it,1,L'Asinello,Castelnuovo Berardenga
+350982,it,it,1,Inkiostro,Parma
+355975,it,it,1,Dolomieu,Madonna di Campiglio
+360083,it,it,1,La Zanzara,Codigoro
+360842,it,it,1,I Pupi,Bagheria
+361561,it,it,1,Guidoristorante,Serralunga d'Alba
+363223,it,it,2,Krèsios,Telese Terme
+363484,it,it,1,Andrea Monesi - Locanda di Orta,Orta San Giulio
+365786,it,it,2,Campo del Drago,Montalcino
+365827,it,it,1,Antonello Colonna Labico,Labico
+365994,it,it,1,Indaco,Lacco Ameno
+366016,it,it,1,Shalai,Linguaglossa
+367264,it,it,1,Il Refettorio,Conca dei Marini
+367722,it,it,1,Saporium,Chiusdino
+376776,it,it,1,Spinechile,Schio
+380546,it,it,1,Oseleta,Cavaion Veronese
+391105,it,it,1,Ristorante del Lago,Bagno di Romagna
+393940,it,it,1,Crocifisso,Noto
+393977,it,it,1,La Locanda del Borgo,Telese Terme
+402060,it,it,1,Il Cappero,Isola Vulcano
+402346,it,it,2,Enoteca La Torre,Rome
+415230,it,it,1,L'Argine a Vencò,Dolegna del Collio
+423027,it,it,1,Moma,Rome
+429627,it,it,1,Berton,Milan
+431176,it,it,1,Massimo Camia,Novello
+433503,it,it,1,Abocar Due Cucine,Rimini
+439039,it,it,2,St. George by Heinz Beck,Taormina
+439653,it,it,1,Sarri,Imperia
+440407,it,it,2,Piazzetta Milù,Castellammare di Stabia
+440535,it,it,1,Aqua Crua,Barbarano Vicentino
+458343,it,it,3,Casa Perbellini 12 Apostoli,Verona
+460913,it,it,1,Wood,Breuil Cervinia
+462528,it,it,1,Saporium Firenze,Florence
+462650,it,it,1,La Tana Gourmet,Asiago
+469523,it,it,1,La Sala dei Grappoli,Montalcino
+472707,it,it,1,Don Geppi,Sant' Agnello
+475673,it,it,1,Nostrano,Pesaro
+476818,it,it,2,Seta by Antonio Guida,Milan
+478337,it,it,3,Enrico Bartolini al Mudec,Milan
+479517,it,it,1,Contraste,Milan
+487299,it,it,1,All'Oro,Rome
+491395,it,it,1,Zash,Archi
+493840,it,it,1,Il Tino,Fiumicino
+495745,it,it,2,Villa Elena,Bergamo
+496136,it,it,1,Per Me Giulio Terrinoni,Rome
+496166,it,it,1,Pashà,Polignano a Mare
+496366,it,it,1,Local,Venice
+498881,it,it,1,21.9,Piobesi d'Alba
+499002,it,it,1,Amistà,Corrubbio
+500267,it,it,1,Lunasia,Viareggio
+500269,it,it,1,Primo Restaurant,Lecce
+500275,it,it,1,Fradis Minoris,Pula
+503771,it,it,2,daní maison,Ischia
+503934,it,it,1,Due Camini,Savelletri
+504378,it,it,2,D'O,Cornaredo
+504897,it,it,1,Piano35,Turin
+507312,it,it,1,D.one Ristorante Diffuso,Montepagano
+507732,it,it,1,Marco Martini Restaurant,Rome
+511146,it,it,1,Italo Bassi Confusion Restaurant,Porto Cervo
+519598,it,it,1,Materia,Cernobbio
+520322,it,it,1,Pipero Roma,Rome
+523282,it,it,1,Cucina Cereda,Ponte San Pietro
+526276,it,it,1,Angelo Sabatelli,Putignano
+526938,it,it,2,Glam Enrico Bartolini,Venice
+528060,it,it,1,Hyle,San Giovanni in Fiore
+529224,it,it,1,Luisl Stube,Algund
+529760,it,it,1,Qafiz,Santa Cristina d'Aspromonte
+532678,it,it,1,Quellenhof Gourmetstube 1897,Saint Martin in Passeier
+533025,it,it,2,ACQUOLINA | Nuova Cucina Mediterranea,Rome
+533893,it,it,1,Condividere,Turin
+533895,it,it,1,Casamatta,Manduria
+536205,it,it,1,Sensi,Amalfi
+538056,it,it,1,Locanda Mammì,Agnone
+538719,it,it,1,Cannavacciuolo Bistrot,Turin
+548309,it,it,1,Da Gorini,San Piero in Bagno
+548490,it,it,1,Impronta d'Acqua,Cavi di Lavagna
+553542,it,it,1,Sapio,Catania
+554414,it,it,1,Cracco in Galleria,Milan
+556096,it,it,1,Maeba Restaurant,Ariano Irpino
+556135,it,it,1,Votavota,Marina di Ragusa
+558763,it,it,1,Gucci Osteria da Massimo Bottura,Florence
+559004,it,it,1,Vitantonio Lombardo,Matera
+562345,it,it,1,San Giorgio,Genoa
+1077202,it,it,1,Zia,Rome
+1085221,it,it,1,Villa Naj,Torrazza Coste
+1090754,it,it,2,George Restaurant,Naples
+1102813,it,it,1,Casa Leali,Puegnago sul Garda
+1102814,it,it,1,SanBrite,Cortina d'Ampezzo
+1154505,it,it,1,Cetaria,Baronissi
+1154535,it,it,1,Sine by Di Pinto,Milan
+1154802,it,it,1,Mater1apr1ma,Pontinia
+1154911,it,it,1,In Viaggio - Claudio Melis,Merano
+1157210,it,it,1,FRE,Monforte d'Alba
+1157261,it,it,1,Il Tiglio,Montemonaco
+1179776,it,it,1,Glicine,Amalfi
+1181341,it,it,1,Otto Geleng,Taormina
+1183672,it,it,1,Idylio by Apreda,Rome
+1183678,it,it,1,Iacobucci,Castel Maggiore
+1184082,it,it,1,Apostelstube,Brixen
+1184432,it,it,1,Il Fuoco Sacro,San Pantaleo
+1186044,it,it,1,Moebius Sperimentale,Milan
+1186560,it,it,1,Borgo Sant'Anna,Monforte d'Alba
+1190091,it,it,1,IYO Kaiseki,Milan
+1190317,it,it,2,Famiglia Rana,Oppeano
+1190481,it,it,1,Osteria Acquarol,San Michele
+1190770,it,it,1,Retroscena,Porto San Giorgio
+1191172,it,it,1,Senso Lake Garda Alfio Ghezzi,Limone sul Garda
+1191319,it,it,1,Casa Buono,Ventimiglia
+1191494,it,it,1,Wistèria,Venice
+1191970,it,it,1,Re Santi e Leoni,Nola
+1192021,it,it,1,Paca,Carmignano
+1192022,it,it,1,Acqua Pazza,Ponza
+1192183,it,it,1,Linfa,San Gimignano
+1192213,it,it,1,Casa Sgarra,Trani
+1192559,it,it,1,Lorelei,Sorrento
+1192627,it,it,1,Vineria Modì,Taormina
+1192784,it,it,1,Alici,Amalfi
+1193689,it,it,1,Mec Restaurant,Palermo
+1194516,it,it,1,Assonica,Sorisole
+1195756,it,it,1,Cannavacciuolo Countryside,Ticciano
+1195788,it,it,1,Cavallino,Maranello
+1195965,it,it,1,Quintessenza,Trani
+1196120,it,it,1,Gusto by Sadler,San Teodoro
+1196419,it,it,1,Osmosi,Montepulciano
+1196521,it,it,1,Anima,Milan
+1196675,it,it,1,Cracco Portofino,Portofino
+1196801,it,it,1,Marotta,Squille
+1197135,it,it,1,Cortile Spirito Santo,Syracuse
+1197633,it,it,1,Grual,Pinzolo
+1197785,it,it,1,ARIA,Naples
+1198594,it,it,1,Elementi,Torgiano
+1199115,it,it,1,Sintesi,Ariccia
+1199116,it,it,1,Alto,Fiorano Modenese
+1199126,it,it,1,Da Lucio,Rimini
+1199328,it,it,2,I Tenerumi,Isola Vulcano
+1199710,it,it,1,Trattoria contemporanea,Lomazzo
+1199912,it,it,1,Une,Capodacqua
+1199953,it,it,1,Līmū,Bagheria
+1200012,it,it,1,Locanda de Banchieri,Fosdinovo
+1201186,it,it,1,Andrea Larossa,Turin
+1201542,it,it,1,Atto di Vito Mollica,Florence
+1201798,it,it,1,Il Sereno Al Lago,Torno
+1201898,it,it,1,Pulejo,Rome
+1201998,it,it,1,Acqua,Olgiate Olona
+1202455,it,it,1,Grow Restaurant,Albiate
+1202474,it,it,1,Volta del Fuenti by Michele De Blasio,Vietri sul Mare
+1202856,it,it,1,Vignamare,Andora
+1202926,it,it,1,Contrada Bricconi,Oltressenda Alta
+1202972,it,it,1,Casa Bertini,Recanati
+1202978,it,it,1,Il Visibilio,Castelnuovo Berardenga
+1203068,it,it,2,Andrea Aprea,Milan
+1203075,it,it,1,Cannavacciuolo Vineyard,Casanova di Terricciola
+1203766,it,it,1,Paolo Griffa al Caffè Nazionale,Aosta
+1204324,it,it,1,Porcino,Badia
+1204821,it,it,1,Horto,Milan
+1206064,it,it,1,Equilibrio,Dolcedo
+1206067,it,it,1,La Coldana,Lodi
+1206134,it,it,1,Dissapore di Andrea Catalano,Carovigno
+1206135,it,it,2,Verso Capitaneo,Milan
+1206991,it,it,1,Il Bavaglino,Terrasini
+1207728,it,it,1,Ada,Perugia
+1207982,it,it,1,Nin,Brenzone sul Garda
+1207984,it,it,1,sui generis.,Saronno
+1208040,it,it,1,Olio,Origgio
+1208126,it,it,1,Orma Roma,Rome
+1208598,it,it,1,INEO,Rome
+1209246,it,it,3,Atelier Moessmer Norbert Niederkofler,Brunico
+1209455,it,it,1,Luca's by Paulo Airaudo,Florence
+1209846,it,it,1,Bluh Furore,Furore
+1210228,it,it,1,Cannavacciuolo by the Lake,Pettenasco
+1211168,it,it,1,Capogiro,Baia Sardinia
+1211446,it,it,1,Iris Ristorante,Verona
+1211479,it,it,1,Al Gatto Verde,Modena
+1211632,it,it,1,Olmo,Cornaredo
+1212536,it,it,1,Serrae Villa Fiesole,Fiesole
+1212906,it,it,1,Cannavacciuolo Le Cattedrali Asti,Asti
+1213182,it,it,1,Abbruzzino Oltre,Lamezia Terme
+1213776,it,it,1,Ancòra,Cesenatico
+1214208,it,it,1,Il Ristorante Alain Ducasse Napoli,Naples
+1214261,it,it,1,O Me O Il Mare,Gragnano
+1214646,it,it,1,Procaccini,Milan
+1215606,it,it,1,Abba,Milan
+1215969,it,it,1,Sciabola,Forte dei Marmi
+1218304,it,it,1,Al Madrigale | Nuova Cucina Rurale,Tivoli
+1192874,jp,jp,1,Ayanokoji Karatsu,Kyoto
+1192881,jp,jp,3,Isshisoden Nakamura,Kyoto
+1192884,jp,jp,1,Gosho Iwasaki,Kyoto
+1192886,jp,jp,1,Vena,Kyoto
+1192887,jp,jp,1,Uozuya,Kyoto
+1192892,jp,jp,2,Ogata,Kyoto
+1192893,jp,jp,1,Ogawa,Kyoto
+1192894,jp,jp,1,Okina,Kyoto
+1192897,jp,jp,2,Otagi,Kyoto
+1192900,jp,jp,1,Oryori Mashita,Kyoto
+1192905,jp,jp,1,Kako Okamoto,Kyoto
+1192909,jp,jp,1,Kappo Hassun,Kyoto
+1192910,jp,jp,1,Kanamean Nishitomiya,Kyoto
+1192921,jp,jp,1,Gion Owatari,Kyoto
+1192922,jp,jp,1,Gion Okada,Kyoto
+1192923,jp,jp,1,Gion Kida,Kyoto
+1192924,jp,jp,3,Gion Sasaki,Kyoto
+1192926,jp,jp,2,Gion Nishikawa,Kyoto
+1192928,jp,jp,2,Gion Matayoshi,Kyoto
+1192930,jp,jp,2,Gion Maruyama,Kyoto
+1192932,jp,jp,3,Kikunoi Honten,Kyoto
+1192934,jp,jp,2,Kikunoi Roan,Kyoto
+1192936,jp,jp,1,Kinobu,Kyoto
+1192937,jp,jp,1,Kiyama,Kyoto
+1192939,jp,jp,2,Kyokaiseki Kichisen,Kyoto
+1192942,jp,jp,1,Kyo Seika,Kyoto
+1192944,jp,jp,1,Kyoboshi,Kyoto
+1192945,jp,jp,1,Kyoryori Fujimoto,Kyoto
+1192948,jp,jp,1,Gion Fukushi,Kyoto
+1192954,jp,jp,1,Kentan Horibe,Kyoto
+1192955,jp,jp,2,Kenninji Gion Maruyama,Kyoto
+1192956,jp,jp,2,Kodaiji Jugyuan,Kyoto
+1192957,jp,jp,2,Kodaiji Wakuden,Kyoto
+1192958,jp,jp,1,Kokyu,Kyoto
+1192959,jp,jp,1,Gokomachi Tagawa,Kyoto
+1192960,jp,jp,1,Godan Miyazawa,Kyoto
+1192967,jp,jp,2,Sanso Kyoyamato,Kyoto
+1192978,jp,jp,1,Shimmonzen Yonemura,Kyoto
+1192980,jp,jp,1,Sushi Kappo Nakaichi,Kyoto
+1192982,jp,jp,1,Sushi Matsumoto,Kyoto
+1192983,jp,jp,1,Sushi Rakumi,Kyoto
+1192986,jp,jp,2,Sumibi Kappo Ifuki,Kyoto
+1192988,jp,jp,1,SEN,Kyoto
+1192989,jp,jp,2,Sojiki Nakahigashi,Kyoto
+1192990,jp,jp,1,Sokkon Fujimoto,Kyoto
+1192994,jp,jp,1,TAKAYAMA,Kyoto
+1193006,jp,jp,1,Tozentei,Kyoto
+1193009,jp,jp,1,Torisaki,Kyoto
+1193010,jp,jp,1,Droit,Kyoto
+1193019,jp,jp,1,Nijojo Furuta,Kyoto
+1193021,jp,jp,1,Noguchi Tsunagu,Kyoto
+1193025,jp,jp,1,HANA-Kitcho,Kyoto
+1193027,jp,jp,2,Higashiyama Yoshihisa,Kyoto
+1193036,jp,jp,3,Hyotei,Kyoto
+1193037,jp,jp,1,Restaurant Hiramatsu Kodaiji,Kyoto
+1193046,jp,jp,1,VELROSIER,Kyoto
+1193053,jp,jp,3,Mizai,Kyoto
+1193055,jp,jp,3,Miyamaso,Kyoto
+1193056,jp,jp,1,Mirei,Kyoto
+1193058,jp,jp,1,Muromachi Wakuden,Kyoto
+1193067,jp,jp,2,Yusokuryori Mankamero,Kyoto
+1193079,jp,jp,1,LURRA˚,Kyoto
+1193083,jp,jp,1,Wagokoro Izumi,Kyoto
+1193086,jp,jp,2,Tenjimbashi Aoki,Osaka
+1193088,jp,jp,1,Ajikitcho Bumbuan,Osaka
+1193089,jp,jp,1,Ajikitcho Horieten,Osaka
+1193091,jp,jp,1,ad hoc,Osaka
+1193092,jp,jp,1,agnel d'or,Osaka
+1193095,jp,jp,1,Alarde,Osaka
+1193096,jp,jp,1,Ichiju Nisai Ueno Minoten,Osaka
+1193097,jp,jp,1,IDÉAL bistro,Osaka
+1193099,jp,jp,1,Iroha,Osaka
+1193100,jp,jp,1,Iwaki,Osaka
+1193112,jp,jp,1,Ñ,Osaka
+1193113,jp,jp,1,Oimatsu Kitagawa,Osaka
+1193114,jp,jp,2,Oimatsu Hisano,Osaka
+1193122,jp,jp,1,Oryori Horikawa,Osaka
+1193123,jp,jp,1,Kaishoku Shimizu,Osaka
+1193128,jp,jp,3,Kashiwaya Osaka Senriyama,Osaka
+1193133,jp,jp,2,KAHALA,Osaka
+1193150,jp,jp,2,Koryu,Osaka
+1193157,jp,jp,1,Chi-Fu,Osaka
+1193161,jp,jp,2,Shunsaiten Tsuchiya,Osaka
+1193166,jp,jp,1,Shinchi Yamamoto,Osaka
+1193167,jp,jp,1,Sui Oya,Osaka
+1193172,jp,jp,1,Sushidokoro Amano,Osaka
+1193176,jp,jp,2,Sushi Harasho,Osaka
+1193177,jp,jp,1,Sushi Hoshiyama,Osaka
+1193180,jp,jp,1,Sushi Murakami Jiro,Osaka
+1193187,jp,jp,1,Zeshin,Osaka
+1193198,jp,jp,3,Taian,Osaka
+1193215,jp,jp,1,Différence,Osaka
+1193218,jp,jp,1,Terada,Osaka
+1193219,jp,jp,2,Teruya,Osaka
+1193224,jp,jp,1,Torisho Ishii,Osaka
+1193230,jp,jp,1,Naniwaryori Yu,Osaka
+1193232,jp,jp,1,Nishino,Osaka
+1193237,jp,jp,3,HAJIME,Osaka
+1193242,jp,jp,1,Pierre,Osaka
+1193243,jp,jp,1,Higashichaya Nakamura,Osaka
+1193244,jp,jp,1,P greco,Osaka
+1193246,jp,jp,1,Hiraishi,Osaka
+1193247,jp,jp,2,Fujiya 1935,Osaka
+1193256,jp,jp,1,Masuda,Osaka
+1193259,jp,jp,2,Miyamoto,Osaka
+1193262,jp,jp,1,Yakitori Ichimatsu,Osaka
+1193266,jp,jp,2,Yugen,Osaka
+1193268,jp,jp,1,Nishishinsaibashi Yuno,Osaka
+1193270,jp,jp,1,Yoshiko,Osaka
+1193274,jp,jp,1,Yonemasu,Osaka
+1193277,jp,jp,1,Rakushin,Osaka
+1193278,jp,jp,2,La Cime,Osaka
+1193279,jp,jp,1,La Baie,Osaka
+1193280,jp,jp,1,La Bécasse,Osaka
+1193288,jp,jp,1,LE PONT DE CIEL,Osaka
+1193810,jp,jp,1,Oryori Yamada,Osaka
+1193820,jp,jp,2,Akasaka Kikunoi,Tokyo
+1193828,jp,jp,2,ASAHINA Gastronome,Tokyo
+1193830,jp,jp,3,Azabu Kadowaki,Tokyo
+1193831,jp,jp,1,Azabujuban Fukuda,Tokyo
+1193835,jp,jp,1,Héritage by Kei Kobayashi,Tokyo
+1193840,jp,jp,1,abysse,Tokyo
+1193862,jp,jp,1,itsuka,Tokyo
+1193869,jp,jp,2,ESqUISSE,Tokyo
+1193871,jp,jp,1,ESTERRE by Alain Ducasse,Tokyo
+1193872,jp,jp,1,Édition Koji Shimomura,Tokyo
+1193874,jp,jp,1,Edomae Shinsaku,Tokyo
+1193884,jp,jp,1,au deco,Tokyo
+1193889,jp,jp,1,Oniku Karyu,Tokyo
+1193890,jp,jp,2,HOMMAGE,Tokyo
+1193892,jp,jp,1,Oryori Tsuji,Tokyo
+1193893,jp,jp,1,Miyasaka,Tokyo
+1193898,jp,jp,3,Kagurazaka Ishikawa,Tokyo
+1193906,jp,jp,3,Kanda,Tokyo
+1193907,jp,jp,3,Quintessence,Tokyo
+1193908,jp,jp,2,Kioicho Fukudaya,Tokyo
+1193917,jp,jp,1,Kyobashi Tempura Fukamachi,Tokyo
+1193923,jp,jp,2,Ginza Kojyu,Tokyo
+1193924,jp,jp,2,Ginza Shinohara,Tokyo
+1193926,jp,jp,2,Ginza Fukuju,Tokyo
+1193933,jp,jp,2,Kutan,Tokyo
+1193934,jp,jp,1,CRAFTALE,Tokyo
+1193943,jp,jp,2,Kohaku,Tokyo
+1193950,jp,jp,3,Sazenka,Tokyo
+1193963,jp,jp,1,Jizozushi,Tokyo
+1193966,jp,jp,1,ShinoiS,Tokyo
+1193974,jp,jp,1,Jushu,Tokyo
+1193980,jp,jp,1,JO,Tokyo
+1193981,jp,jp,3,Joël Robuchon,Tokyo
+1193983,jp,jp,1,Shokuzen Abe,Tokyo
+1193985,jp,jp,1,Series,Tokyo
+1193987,jp,jp,1,Sincère,Tokyo
+1193991,jp,jp,1,Shimbashi Sasada,Tokyo
+1193994,jp,jp,2,Sukiyabashi Jiro Roppongiten,Tokyo
+1193997,jp,jp,2,Sushi Kanesaka,Tokyo
+1194000,jp,jp,1,Sushi Keita,Tokyo
+1194004,jp,jp,1,Sushidokoro Kiraku,Tokyo
+1194006,jp,jp,1,Sushi Hashimoto,Tokyo
+1194015,jp,jp,1,Sumibikappo SHIROSAKA,Tokyo
+1194016,jp,jp,1,ZURRIOLA,Tokyo
+1194018,jp,jp,2,Seizan,Tokyo
+1194019,jp,jp,1,Seiju,Tokyo
+1194020,jp,jp,1,Seisoka,Tokyo
+1194034,jp,jp,1,Daigo,Tokyo
+1194043,jp,jp,1,Tanimoto,Tokyo
+1194065,jp,jp,1,Tenoshima,Tokyo
+1194066,jp,jp,2,Den,Tokyo
+1194072,jp,jp,1,Tempura Ginya,Tokyo
+1194073,jp,jp,2,Tempura Kondo,Tokyo
+1194077,jp,jp,1,Tempura Maehira,Tokyo
+1194078,jp,jp,1,Tempura Miyashiro,Tokyo
+1194079,jp,jp,2,Tempura Motoyoshi,Tokyo
+1194080,jp,jp,1,TEN-MASA,Tokyo
+1194082,jp,jp,1,Tour D'argent Tokyo,Tokyo
+1194086,jp,jp,1,Dominique Bouchet Tokyo,Tokyo
+1194096,jp,jp,1,Towa,Tokyo
+1194111,jp,jp,1,Nabeno-Ism,Tokyo
+1194112,jp,jp,2,NARISAWA,Tokyo
+1194114,jp,jp,2,Nishiazabu Sushi Shin,Tokyo
+1194115,jp,jp,1,Nishiazabu Taku,Tokyo
+1194117,jp,jp,1,Nihombashi Sonoji,Tokyo
+1194123,jp,jp,1,Nogizaka Shin,Tokyo
+1194124,jp,jp,1,Nodaiwa Azabu Iikura Honten,Tokyo
+1194135,jp,jp,3,Harutaka,Tokyo
+1194143,jp,jp,2,Jingumae Higuchi,Tokyo
+1194154,jp,jp,1,FARO,Tokyo
+1194155,jp,jp,1,FUSHIKINO,Tokyo
+1194160,jp,jp,2,PRISMA,Tokyo
+1194163,jp,jp,2,Florilège,Tokyo
+1194164,jp,jp,1,BEIGE Alain Ducasse,Tokyo
+1194168,jp,jp,1,BOTTEGA,Tokyo
+1194174,jp,jp,1,MAKIYAKI GINZA ONODERA,Tokyo
+1194212,jp,jp,1,LA TABLE de Joël Robuchon,Tokyo
+1194213,jp,jp,1,LATURE,Tokyo
+1194216,jp,jp,1,L'ATELIER de Joël Robuchon,Tokyo
+1194218,jp,jp,1,L'AFFINAGE,Tokyo
+1194221,jp,jp,1,La Paix,Tokyo
+1194232,jp,jp,3,RyuGin,Tokyo
+1194233,jp,jp,2,Ryuzu,Tokyo
+1194239,jp,jp,1,le sputnik,Tokyo
+1194250,jp,jp,1,Les Saisons,Tokyo
+1194251,jp,jp,3,L'Effervescence,Tokyo
+1194252,jp,jp,1,Ren Mishina,Tokyo
+1194253,jp,jp,3,L'OSIER,Tokyo
+1194259,jp,jp,1,Waketokuyama,Tokyo
+1194307,jp,jp,1,Konoha,Osaka
+1194638,jp,jp,1,YUNiCO,Osaka
+1194657,jp,jp,2,Numata,Osaka
+1194687,jp,jp,1,a canto,Osaka
+1194689,jp,jp,2,Muromachi Yui,Kyoto
+1194937,jp,jp,2,Crony,Tokyo
+1195263,jp,jp,1,Ryoriya Maekawa,Kyoto
+1195296,jp,jp,1,Tempura Yaguchi,Tokyo
+1195299,jp,jp,1,Sharikimon Onozawa,Tokyo
+1195301,jp,jp,1,Sushi Ryujiro,Tokyo
+1195320,jp,jp,1,Sushi Masashi,Tokyo
+1195343,jp,jp,1,Shigeyuki,Tokyo
+1195369,jp,jp,2,Hakuun,Tokyo
+1195371,jp,jp,1,Sushi Matsuura,Tokyo
+1195400,jp,jp,1,Point,Osaka
+1195577,jp,jp,1,Ono,Osaka
+1195582,jp,jp,1,capi,Osaka
+1195587,jp,jp,1,cenci,Kyoto
+1195611,jp,jp,1,La Biographie···,Kyoto
+1195644,jp,jp,2,Ensui,Tokyo
+1195653,jp,jp,1,Sushi Kojima,Tokyo
+1195687,jp,jp,1,L'ARGENT,Tokyo
+1195706,jp,jp,1,Ryoriya Inaya,Osaka
+1195780,jp,jp,1,Sorahana,Tokyo
+1196238,jp,jp,1,est,Tokyo
+1196380,jp,jp,1,Oku,Tokyo
+1196392,jp,jp,1,Kenya,Kyoto
+1196393,jp,jp,1,KOKE,Kyoto
+1196454,jp,jp,1,Alchimiste,Tokyo
+1196642,jp,jp,1,Ten Yokota,Tokyo
+1196725,jp,jp,1,nôl,Tokyo
+1196749,jp,jp,1,Ajinotabibito Roman,Nara
+1196766,jp,jp,1,LA TRACE,Nara
+1196783,jp,jp,2,akordu,Nara
+1196787,jp,jp,1,Okada,Nara
+1196788,jp,jp,2,Tsukumo,Nara
+1196794,jp,jp,1,VILLA COMMUNICO,Nara
+1196799,jp,jp,1,Matsuki,Nara
+1196873,jp,jp,1,Wa Yamamura,Nara
+1196883,jp,jp,1,Koikiryori Aji Manso,Nara
+1197023,jp,jp,1,NéMo,Tokyo
+1197086,jp,jp,1,Da terra,Nara
+1197094,jp,jp,1,Naramachi Kuko,Nara
+1197106,jp,jp,2,Oryori Hanagaki,Nara
+1197121,jp,jp,1,GOKAN UOGIN,Nara
+1197124,jp,jp,1,Sushi Kawashima,Nara
+1197138,jp,jp,1,Ajinokaze Nishimura,Nara
+1197144,jp,jp,2,NARA NIKON,Nara
+1197158,jp,jp,1,Kaiseki Morimoto,Nara
+1197192,jp,jp,1,Oryori Hirooka,Nara
+1199370,jp,jp,1,Ginza Kousui,Tokyo
+1199506,jp,jp,1,PRESQU'ÎLE,Osaka
+1199532,jp,jp,1,Enyuan Kobayashi,Kyoto
+1200145,jp,jp,1,Yakumo Uezu,Tokyo
+1200221,jp,jp,1,Guchokuni,Tokyo
+1200230,jp,jp,1,Edomae Sushi Hanabusa,Tokyo
+1200246,jp,jp,1,l'élan,Tokyo
+1200259,jp,jp,1,amarantos,Tokyo
+1200289,jp,jp,1,PRUNIER,Tokyo
+1200357,jp,jp,1,Sushi Ichijo,Tokyo
+1201112,jp,jp,1,DODICI,Kyoto
+1201127,jp,jp,2,Ryō-shō,Kyoto
+1201188,jp,jp,1,Higashiyama Tsukasa,Kyoto
+1201369,jp,jp,1,Tenjaku,Kyoto
+1201432,jp,jp,1,Yakitori Torisen,Osaka
+1201502,jp,jp,1,Kamigatachuka SHINTANI,Osaka
+1201563,jp,jp,1,Sushi Sanshin,Osaka
+1201623,jp,jp,1,Matsuzushi Tanigawa,Osaka
+1201634,jp,jp,1,Fushimimachi Kakoiyama,Osaka
+1201836,jp,jp,1,Gucci Osteria da Massimo Bottura Tokyo,Tokyo
+1202086,jp,jp,1,Torakuro,Tokyo
+1202504,jp,jp,1,MONOLITH,Tokyo
+1202508,jp,jp,1,TROIS VISAGES,Tokyo
+1202541,jp,jp,3,Myojaku,Tokyo
+1202736,jp,jp,1,Ippei Hanten,Tokyo
+1204977,jp,jp,2,MAZ,Tokyo
+1205242,jp,jp,1,KushinGarando,Osaka
+1205317,jp,jp,1,anpeiji,Kyoto
+1205394,jp,jp,1,Kashiwaya Osaka Kitashinchi,Osaka
+1205410,jp,jp,1,SINAE,Osaka
+1205446,jp,jp,1,Miyawaki,Kyoto
+1205505,jp,jp,1,à plus,Nara
+1205525,jp,jp,1,Lega',Nara
+1205576,jp,jp,1,Koshikiryori Koki,Tokyo
+1205750,jp,jp,1,Yakitori Takahashi,Tokyo
+1207231,jp,jp,1,Ubuka,Tokyo
+1207429,jp,jp,1,L'ÉTERRE,Tokyo
+1207597,jp,jp,1,Ginza Kitagawa,Tokyo
+1207933,jp,jp,1,Mētis Roppongi,Tokyo
+1207954,jp,jp,1,Mutsukari,Tokyo
+1208307,jp,jp,1,Il Ristorante - Niko Romito,Tokyo
+1209245,jp,jp,1,PRIMO PASSO,Tokyo
+1209552,jp,jp,1,Hiroo Ishizaka,Tokyo
+1209573,jp,jp,1,Sushi Miura,Tokyo
+1209722,jp,jp,1,Piao-Xiang,Tokyo
+1210275,jp,jp,1,Miyagawacho Hotta,Kyoto
+1210299,jp,jp,1,Jean-Georges at The Shinmonzen,Kyoto
+1210350,jp,jp,1,Nijo Minami,Kyoto
+1210396,jp,jp,1,MASHIRO,Kyoto
+1210401,jp,jp,1,la bûche,Kyoto
+1210499,jp,jp,1,MOKO,Kyoto
+1210648,jp,jp,1,Tosara,Osaka
+1210691,jp,jp,1,Mizuno,Kyoto
+1211981,jp,jp,1,YOKOI,Kyoto
+1211986,jp,jp,2,Doppo,Kyoto
+1212432,jp,jp,2,Tokuha Motonari,Kyoto
+1212474,jp,jp,1,CYCLE by Mauro Colagreco,Tokyo
+1212661,jp,jp,1,apothéose,Tokyo
+1212685,jp,jp,1,hakunei,Tokyo
+1212808,jp,jp,1,Saucer,Tokyo
+1213170,jp,jp,1,Sanosushi,Tokyo
+1213189,jp,jp,1,hortensia,Tokyo
+1213248,jp,jp,1,Yotsuya Minemura,Tokyo
+1213450,jp,jp,1,Higashiyama Muku,Tokyo
+1213818,jp,jp,1,Sushi Yuki,Tokyo
+1214026,jp,jp,1,Katamachi Kawaguchi,Osaka
+1214102,jp,jp,1,Numata Sou,Osaka
+1214112,jp,jp,1,Germoglio,Kyoto
+1214400,jp,jp,1,Kappo Muroi,Tokyo
+1214666,jp,jp,1,Tsujifusa,Kyoto
+1214953,jp,jp,1,Yama,Tokyo
+1214967,jp,jp,1,Rooots Nakanoshima,Osaka
+1215272,jp,jp,1,Sushi Tanaka,Tokyo
+1215777,jp,jp,1,Nishitemma Ichigaya,Osaka
+1215790,jp,jp,1,shiro,Kyoto
+1216214,jp,jp,1,atelier HANADA,Osaka
+1216293,jp,jp,1,Nakamitsu,Kyoto
+1216573,jp,jp,1,milpa,Osaka
+1216644,jp,jp,1,Sushi Oya,Tokyo
+1216727,jp,jp,1,Kikunoi Sushi Ao,Kyoto
+1216918,jp,jp,1,Akasaka Shimabukuro,Tokyo
+1216928,jp,jp,1,EWIG,Tokyo
+1217103,jp,jp,1,MANOIR,Tokyo
+1217131,jp,jp,1,KHAO,Tokyo
+1217544,jp,jp,1,Sassa,Tokyo
+1217824,jp,jp,1,Hyakuyaku by Tokuyamazushi,Tokyo
+1218215,jp,jp,1,La Gloire,Tokyo
+1218291,jp,jp,1,KOGA,Kyoto
+1218506,jp,jp,1,SÉN,Nara
+1241425,jp,jp,1,Takumi Tatsuhiro,Tokyo
+1241924,jp,jp,1,mærge,Tokyo
+1242582,jp,jp,1,Manjuji Hakuran,Kyoto
+1242586,jp,jp,1,Hachi,Osaka
+1242613,jp,jp,1,Empathie,Osaka
+1242636,jp,jp,1,ima,Kyoto
+1243881,jp,jp,1,Sushi Shigenaga,Osaka
+1244196,jp,jp,1,Ukitacho Ima,Osaka
+1244424,jp,jp,1,MUBE,Kyoto
+1244492,jp,jp,1,Hoshino,Nara
+1245287,jp,jp,1,Korean Restaurant Byeoleeya,Kyoto
+1245582,jp,jp,1,Higashiyama Ogata,Kyoto
+511826,kr,kr,2,alla prima,Seoul
+511844,kr,kr,1,Bicena,Seoul
+511965,kr,kr,2,Jungsik,Seoul
+511972,kr,kr,2,Kwonsooksoo,Seoul
+511973,kr,kr,2,La Yeon,Seoul
+511975,kr,kr,1,L'Amitié,Seoul
+511985,kr,kr,3,Mingles,Seoul
+512018,kr,kr,2,Soigné,Seoul
+512043,kr,kr,1,Yu Yuan,Seoul
+512045,kr,kr,1,Zero Complex,Seoul
+548152,kr,kr,1,Exquisine,Seoul
+565605,kr,kr,1,Goryori Ken,Seoul
+565615,kr,kr,2,Mosu,Seoul
+565616,kr,kr,1,Muoki,Seoul
+570652,kr,kr,1,L'Amant Secret,Seoul
+570655,kr,kr,1,Muni,Seoul
+570656,kr,kr,2,Mitou,Seoul
+570659,kr,kr,1,Soseoul Hannam,Seoul
+570663,kr,kr,2,Evett,Seoul
+570665,kr,kr,1,Onjium,Seoul
+570674,kr,kr,1,Hakusi,Seoul
+1192575,kr,kr,1,Soul,Seoul
+1192592,kr,kr,1,7th Door,Seoul
+1194553,kr,kr,1,Palate,Busan
+1195183,kr,kr,1,YUN,Seoul
+1195338,kr,kr,1,Sushi Matsumoto,Seoul
+1199936,kr,kr,1,Gigas,Seoul
+1200922,kr,kr,2,Restaurant Allen,Seoul
+1201705,kr,kr,1,Solbam,Seoul
+1202660,kr,kr,1,Eatanic Garden,Seoul
+1202880,kr,kr,1,JUEUN,Seoul
+1202955,kr,kr,1,KANG MINCHUL Restaurant,Seoul
+1206188,kr,kr,1,y'east,Seoul
+1207362,kr,kr,1,Le DORER,Busan
+1207561,kr,kr,1,VINHO,Seoul
+1208705,kr,kr,1,Mori,Busan
+1209157,kr,kr,1,Fiotto,Busan
+1209158,kr,kr,1,Légume,Seoul
+1212873,kr,kr,1,GAGGEN by Choi Junho,Seoul
+1213112,kr,kr,1,Escondido,Seoul
+1215839,kr,kr,1,Tutoiement,Seoul
+1216489,kr,kr,2,Sosuheon,Seoul
+1240835,kr,kr,1,Collage,Seoul
+1241139,kr,kr,1,GiwaKang,Seoul
+1241613,kr,kr,1,SAN,Seoul
+1244365,kr,kr,1,Sushi Kanesaka,Seoul
+1208989,lt,lt,1,Džiaugsmas,Vilnius
+1209019,lt,lt,1,Nineteen18,Vilnius
+1213306,lt,lt,1,Red Brick,Radiškis
+1249514,lt,lt,1,Deep Roots,Vilnius
+114770,lu,lu,1,Mosconi,Luxembourg
+210667,lu,lu,2,Louis Linster,Frisange
+210726,lu,lu,1,Guillou Campagne,Schouweiler
+210792,lu,lu,2,Ma Langue Sourit,Oetrange
+520502,lu,lu,1,Fani,Roeser
+532986,lu,lu,1,Apdikt,Steinfort
+1191959,lu,lu,1,La Villa de Camille et Julien,Luxembourg
+1192197,lu,lu,1,Ryôdô,Luxembourg
+1211957,lu,lu,1,Grünewald Chef’s Table,Luxembourg
+1217044,lu,lu,1,Archibald De Prince,Lauterborn
+1217672,lu,lu,1,Fields by René Mathieu,Findel
+1241469,lu,lu,1,Le Lys,Luxembourg
+1204952,lv,lv,1,Max Cekot Kitchen,Riga
+1215546,lv,lv,1,JOHN Chef's Hall,Riga
+7519,mc,mc,1,Elsa Marcel Ravin,Monaco
+9785,mc,mc,3,Le Louis XV - Alain Ducasse à l'Hôtel de Paris,Monaco
+9786,mc,mc,1,Le Grill,Monaco
+9787,mc,mc,1,"Pavyllon Monte-Carlo, un restaurant de Yannick Alléno",Monaco
+118531,mc,mc,2,Blue Bay Marcel Ravin,Monaco
+1192647,mc,mc,1,La Table d'Antonio Salvatore au Rampoldi,Monaco
+1206520,mc,mc,2,Les Ambassadeurs by Christophe Cussac,Monaco
+1214416,mc,mc,2,L'Abysse Monte-Carlo,Monaco
+1241114,mc,mc,1,Robuchon Monaco,Monaco
+231081,mo,mo,3,Robuchon au Dôme,Macau
+231088,mo,mo,2,The Eight,Macau
+231092,mo,mo,1,Ying,Macau
+231093,mo,mo,2,Wing Lei,Macau
+256630,mo,mo,1,Zi Yat Heen,Macau
+417795,mo,mo,3,Jade Dragon,Macau
+475193,mo,mo,2,Feng Wei Ju,Macau
+475197,mo,mo,1,8 1/2 Otto e Mezzo - Bombana,Macau
+476398,mo,mo,1,Lai Heen,Macau
+512730,mo,mo,1,Pearl Dragon,Macau
+567859,mo,mo,2,Alain Ducasse at Morpheus,Macau
+1185894,mo,mo,1,Five Foot Road,Macau
+1204313,mo,mo,2,The Huaiyang Garden,Macau
+1204368,mo,mo,1,Palace Garden,Macau
+1209391,mo,mo,1,Sushi Kinetsu,Macau
+1210587,mo,mo,2,Chef Tam's Seasons,Macau
+1212351,mo,mo,1,Don Alfonso 1890,Macau
+1214683,mo,mo,1,Zuicho,Macau
+1215915,mo,mo,1,Aji,Macau
+1215974,mo,mo,1,Mizumi,Macau
+1215980,mo,mo,1,Sushi Kissho by Miyakawa,Macau
+1184167,mt,mt,1,De Mondion,Mdina
+1184172,mt,mt,1,Noni,Valletta
+1189537,mt,mt,1,Under Grain,Valletta
+1194537,mt,mt,1,Fernandõ Gastrotheque,Sliema
+1194568,mt,mt,2,ION Harbour by Simon Rogan,Valletta
+1205145,mt,mt,1,Rosamì,St. Julian's
+1215842,mt,mt,1,Le GV,Sliema
+1208187,mx,mx,1,Em,Cuauhtémoc
+1208195,mx,mx,2,Quintonil,Miguel Hildalgo
+1208201,mx,mx,2,Pujol,Miguel Hildalgo
+1208229,mx,mx,1,Máximo,Cuauhtémoc
+1208234,mx,mx,1,Sud 777,Álvaro Obregón
+1208262,mx,mx,1,Le Chique,Playa del Carmen
+1208266,mx,mx,1,HA',Playa del Carmen
+1208363,mx,mx,1,Lunario,El Porvenir
+1208368,mx,mx,1,Animalón,Valle de Guadalupe
+1208369,mx,mx,1,Conchas de Piedra,Valle de Guadalupe
+1208496,mx,mx,1,Pangea,San Pedro Garza García
+1208505,mx,mx,1,KOLI Cocina de Origen,Monterrey
+1208517,mx,mx,1,Los Danzantes Oaxaca,Oaxaca
+1208537,mx,mx,1,Levadura de Olla Restaurante,Oaxaca
+1208694,mx,mx,1,Rosetta,Cuauhtémoc
+1208933,mx,mx,1,Esquina Común,Cuauhtémoc
+1210966,mx,mx,1,Masala y Maíz,Cuauhtémoc
+1210979,mx,mx,1,Expendio de Maíz,Cuauhtémoc
+1211150,mx,mx,1,Gaba,Cuauhtémoc
+1211468,mx,mx,1,Cocina de Autor Los Cabos,Cabo San Lucas
+1211640,mx,mx,1,Damiana,Valle de Guadalupe
+1212086,mx,mx,1,Olivea Farm to Table,Ensenada
+1213125,mx,mx,1,Cocina de Autor Riviera Maya,Playa del Carmen
+1243800,mx,mx,1,Alcalde,Guadalajara
+1243805,mx,mx,1,Xokol,Guadalajara
+1245308,mx,mx,1,Huniik,Mérida
+1245309,mx,mx,1,Ixi'im,Chocholá
+1245564,mx,mx,1,La Once Mil,Miguel Hildalgo
+1249375,mx,mx,1,La Barra de Huniik,Mérida
+1201632,my,my,1,Au Jardin,George Town
+1201640,my,my,1,Auntie Gaik Lean's Old School Eatery,George Town
+1201833,my,my,1,DC. by Darren Chin,Kuala Lumpur
+1201858,my,my,1,Akar,Kuala Lumpur
+1201884,my,my,2,Dewakan,Kuala Lumpur
+1202285,my,my,1,Beta,Kuala Lumpur
+1213788,my,my,1,Terra Dining,Kuala Lumpur
+1214944,my,my,1,Molina,Kuala Lumpur
+1215028,my,my,1,Chim by Chef Noom,Kuala Lumpur
+114949,nl,nl,2,Restaurant Parkheuvel,Rotterdam
+114957,nl,nl,1,Zeezout,Rotterdam
+115041,nl,nl,1,Calla's,The Hague
+115197,nl,nl,1,The White Room by Jacob Jan Boerma,Amsterdam
+115263,nl,nl,2,Vinkeles,Amsterdam
+115430,nl,nl,2,Ciel Bleu,Amsterdam
+115431,nl,nl,1,Yamazato,Amsterdam
+203196,nl,nl,1,Amarone,Rotterdam
+212167,nl,nl,1,Ron Gastrobar,Amsterdam
+212184,nl,nl,1,Restaurant De Kas,Amsterdam
+212192,nl,nl,2,Aan de Poel,Amstelveen
+212229,nl,nl,1,'t Raedthuys,Duiven
+212245,nl,nl,1,De Heeren van Harinxma,Beetsterzwaag
+212284,nl,nl,1,Kaatje bij de Sluis,Blokzijl
+212308,nl,nl,1,Restaurant Wolfslaar,Breda
+212318,nl,nl,1,De Kromme Watergang,Hoofdplaat
+212340,nl,nl,1,Apicius,Castricum
+212401,nl,nl,1,La Provence,Driebergen-Rijsenburg
+212485,nl,nl,2,De Lindenhof,Giethoorn
+212514,nl,nl,1,Herberg Onder de Linden,Aduard
+212517,nl,nl,1,Restaurant Atelier,Gulpen
+212552,nl,nl,1,Cheval Blanc,Heemstede
+212555,nl,nl,2,De Bokkedoorns,Overveen
+212564,nl,nl,2,'t Nonnetje,Harderwijk
+212577,nl,nl,1,De Kromme Dissel,Heelsum
+212606,nl,nl,1,'t Lansink,Hengelo
+212645,nl,nl,1,De Swarte Ruijter,Holten
+212652,nl,nl,1,Restaurant Kasteel Heemstede,Houten
+212683,nl,nl,2,Inter Scaldes,Kruiningen
+212727,nl,nl,1,Tante Koosje,Loenen aan de Vecht
+212759,nl,nl,1,Tout à Fait,Maastricht
+212760,nl,nl,1,Au Coin des Bons Enfants,Maastricht
+212779,nl,nl,1,Beluga Loves You,Maastricht
+212788,nl,nl,1,Restaurant Château Neercanne,Maastricht
+212829,nl,nl,1,Restaurant De Burgemeester,Linschoten
+212865,nl,nl,1,De Gieser Wildeman,Noordeloos
+212879,nl,nl,1,Latour,Noordwijk aan Zee
+213024,nl,nl,1,O&O,Sint Willebrord
+213082,nl,nl,1,De Leuf,Ubachsberg
+213093,nl,nl,1,Karel 5,Utrecht
+213145,nl,nl,1,De Nederlanden,Vreeland
+213148,nl,nl,2,De Treeswijkhoeve,Waalre
+213181,nl,nl,1,Bij Jef,Den Hoorn
+213205,nl,nl,1,De Moerbei,Warmond
+213221,nl,nl,1,Lutum,Wijk bij Duurstede
+213283,nl,nl,1,De Vlindertuin,Zuidlaren
+213296,nl,nl,3,De Librije,Zwolle
+213448,nl,nl,1,Spetters,Breskens
+213794,nl,nl,1,De Bloemenbeek,De Lutte
+213917,nl,nl,1,Merlet,Schoorl
+233128,nl,nl,2,Fred,Rotterdam
+235199,nl,nl,2,FG - François Geurds,Rotterdam
+254479,nl,nl,1,Perceel,Capelle aan den IJssel
+256343,nl,nl,1,'t Amsterdammertje,Loenen aan de Vecht
+256723,nl,nl,1,Bolenius Rembrandtpark,Amsterdam
+326580,nl,nl,1,Wiesen,Eindhoven
+335286,nl,nl,1,Zout & Citroen,Oosterhout
+368581,nl,nl,1,ONE,Roermond
+395758,nl,nl,1,RIJKS®,Amsterdam
+417270,nl,nl,1,Zarzo,Eindhoven
+423504,nl,nl,1,Sinne,Amsterdam
+425341,nl,nl,1,Pieters Restaurant,Bergambacht
+450400,nl,nl,1,Versaen,Ravenstein
+460305,nl,nl,1,Central Park,Voorburg
+467779,nl,nl,1,Monarh,Tilburg
+468115,nl,nl,1,Joelia,Rotterdam
+474494,nl,nl,1,MOS,Amsterdam
+477175,nl,nl,1,Ratatouille Food & Wine,Haarlem
+488719,nl,nl,1,Vista,Willemstad
+502423,nl,nl,1,Choux,Amsterdam
+502881,nl,nl,2,Tribeca,Heeze
+527823,nl,nl,1,Voltaire,Leersum
+532572,nl,nl,1,Restaurant Calva,Nootdorp
+544250,nl,nl,1,Rijnzicht,Doornenburg
+548415,nl,nl,1,Nami,Cromvoirt
+550138,nl,nl,1,The Millèn,Rotterdam
+555495,nl,nl,1,Bougainville,Amsterdam
+558722,nl,nl,2,Restaurant 212,Amsterdam
+560903,nl,nl,1,ML,Haarlem
+1154275,nl,nl,1,Marrees,Weert
+1154434,nl,nl,1,Lars Amsterdam,Amsterdam
+1154700,nl,nl,1,Brass Boer Thuis,Zwolle
+1154701,nl,nl,1,Joann,Enschede
+1157095,nl,nl,1,Restaurant Smink,Wolvega
+1184006,nl,nl,1,Zoldering,Amsterdam
+1186121,nl,nl,1,Codium,Goes
+1186134,nl,nl,2,De Nieuwe Winkel,Nijmegen
+1186539,nl,nl,1,Wils,Amsterdam
+1188023,nl,nl,1,Alma,Oisterwijk
+1191678,nl,nl,2,Brut172,Reijmerstok
+1194623,nl,nl,1,Triptyque,Wateringen
+1194624,nl,nl,1,'t Ganzenest,Rijswijk
+1194716,nl,nl,1,Nassau,Groningen
+1195888,nl,nl,1,Studio,Maastricht
+1195891,nl,nl,1,Zenith,Apeldoorn
+1195911,nl,nl,1,LIZZ,Gouda
+1197629,nl,nl,2,Flore,Amsterdam
+1199891,nl,nl,1,Maeve,Utrecht
+1200024,nl,nl,1,Ambrozijn,Valkenburg
+1200050,nl,nl,1,Noor,Groningen
+1200981,nl,nl,1,Restaurant 1857,Roosendaal
+1201223,nl,nl,1,Bistro de la Mer,Amsterdam
+1203189,nl,nl,1,Basiliek,Harderwijk
+1205206,nl,nl,1,Odille,Sint-Oedenrode
+1206181,nl,nl,1,Rozewied,Kortgene
+1209599,nl,nl,1,Sabero,Leende
+1210157,nl,nl,1,Olde Marckt,Aalten
+1210256,nl,nl,1,Restaurant Affect,Zwolle
+1210792,nl,nl,1,Restaurant Showw,Amsterdam
+1212670,nl,nl,1,Novaela,Delft
+1217372,nl,nl,1,CUE,Amsterdam
+1217884,nl,nl,2,Create by Guido Braeken,Eijsden
+1240969,nl,nl,2,GEM. by Soenil Bahadoer,Gemert
+1241474,nl,nl,1,Wild Atelier,Hoog Soeren
+1242641,nl,nl,2,Azurite,Delft
+1243109,nl,nl,1,Bij Sidney,Loenen aan de Vecht
+1244394,nl,nl,1,De Cuijt,Mierlo
+1247834,nl,nl,2,SUIS,Schin op Geul
+1250424,nl,nl,1,Le Epifaan,Veeningen
+113191,no,no,1,Statholdergaarden,Oslo
+474096,no,no,2,Kontrast,Oslo
+479519,no,no,3,RE-NAA,Stavanger
+479557,no,no,1,Lysverket,Bergen
+500482,no,no,1,Sabi Omakase Stavanger,Stavanger
+535566,no,no,1,Sabi Omakase Oslo,Oslo
+553281,no,no,1,Speilsalen,Trondheim
+554228,no,no,1,FAGN,Trondheim
+1186394,no,no,1,Stallen,Oslo
+1186418,no,no,1,Under,Lindesnes
+1192264,no,no,1,K2,Stavanger
+1192282,no,no,1,Hot Shop,Oslo
+1192335,no,no,1,Kvitnes Gård,Kvitnes
+1194933,no,no,3,Maaemo,Oslo
+1202889,no,no,1,Mon Oncle,Oslo
+1205580,no,no,1,SAVAGE,Oslo
+1210805,no,no,1,Hermetikken,Stavanger
+1215015,no,no,1,Omakase by Sergey Pak,Bergen
+1219249,no,no,1,Mirabelle by Ørjan Johannessen,Bekkjarvik
+1240771,no,no,2,Gaptrast,Bergen
+1248105,no,no,1,Credo,Oslo
+1241033,nz,nz,1,Logan Brown,Wellington
+1241034,nz,nz,1,Jano Bistro,Wellington
+1241042,nz,nz,1,Rātā,Queenstown
+1241043,nz,nz,1,Sherwood,Queenstown
+1241044,nz,nz,1,Amisfield,Queenstown
+1241048,nz,nz,1,Paris Butter,Auckland
+1241055,nz,nz,1,Ahi.,Auckland
+1241069,nz,nz,1,Tala,Auckland
+1241075,nz,nz,1,Inati,Christchurch
+1241078,nz,nz,1,Tussock Hill,Christchurch
+1245503,nz,nz,1,Ortega,Wellington
+1246391,nz,nz,1,Mudbrick,Waiheke Island
+1247217,nz,nz,2,Essence,Queenstown
+1247537,nz,nz,1,Kika,Wānaka
+1248088,nz,nz,1,Tantalus Estate Restaurant,Waiheke Island
+1216029,ph,ph,1,Hapag,Makati - Metro Manila
+1216044,ph,ph,1,Gallery by Chele,Taguig - Metro Manila
+1216063,ph,ph,1,Kása Palma,Makati - Metro Manila
+1216080,ph,ph,1,Toyo Eatery,Makati - Metro Manila
+1216108,ph,ph,1,Inatô,Makati - Metro Manila
+1216111,ph,ph,2,Helm,Makati - Metro Manila
+1217738,ph,ph,1,Linamnam,Parañaque - Metro Manila
+1241027,ph,ph,1,Celera,Makati - Metro Manila
+1241241,ph,ph,1,Asador Alfonso,Cavite
+1252014,ph,ph,1,FLOW,Makati - Metro Manila
+485985,pl,pl,2,Bottiglieria 1881,Kraków
+487005,pl,pl,1,Rozbrat 20,Warsaw
+1191388,pl,pl,1,Muga,Poznań
+1198809,pl,pl,1,Giewont,Kościelisko
+1199252,pl,pl,1,NUTA,Warsaw
+1204297,pl,pl,1,hub.praga,Warsaw
+1210195,pl,pl,1,Arco by Paco Pérez,Gdańsk
+1219184,pl,pl,1,BABA,Wrocław
+1219253,pl,pl,1,Most,Wrocław
+1242062,pl,pl,1,Steampunk,Pszczyna
+1244421,pl,pl,1,Alon Omakase,Warsaw
+214828,pt,pt,2,Vila Joya,Albufeira
+215906,pt,pt,1,Herdade do Esporão,Reguengos de Monsaraz
+216595,pt,pt,1,Largo do Paço,Amarante
+216602,pt,pt,2,Ocean,Porches
+216627,pt,pt,1,G Pousada,Bragança
+216662,pt,pt,1,Fortaleza do Guincho,Cascais
+216831,pt,pt,1,William,Funchal
+216835,pt,pt,2,Il Gallo d'Oro,Funchal
+217054,pt,pt,1,Midori,Sintra
+257754,pt,pt,1,Feitoria,Lisbon
+296064,pt,pt,2,The Yeatman Gastronomic R.,Vila Nova de Gaia
+306208,pt,pt,1,dop,Porto
+311644,pt,pt,1,Pedro Lemos,Porto
+357840,pt,pt,2,Belcanto,Lisbon
+365067,pt,pt,1,Vista,Portimao
+378372,pt,pt,1,Gusto by Heinz Beck,Almancil
+449379,pt,pt,2,Casa de Chá da Boa Nova,Leça da Palmeira
+472583,pt,pt,1,Bon Bon,Lagoa
+473463,pt,pt,1,LAB by Sergi Arola,Sintra
+483580,pt,pt,2,Antiqvvm,Porto
+495726,pt,pt,2,Henrique Sá Pessoa,Lisbon
+495728,pt,pt,1,Loco,Lisbon
+500442,pt,pt,1,Kanazawa,Lisbon
+528188,pt,pt,1,Euskalduna Studio,Porto
+542187,pt,pt,1,A Cozinha,Guimaraes
+545905,pt,pt,1,Mesa de Lemos,Silgueiros
+555816,pt,pt,1,A Ver Tavira,Tavira
+1077231,pt,pt,1,Le Monument,Porto
+1077232,pt,pt,1,EPUR,Lisbon
+1077263,pt,pt,1,Ó Balcão,Santarém
+1090774,pt,pt,1,In Diferente,Porto
+1154326,pt,pt,2,Fifty Seconds,Lisbon
+1154759,pt,pt,1,SÁLA de João Sá,Lisbon
+1184214,pt,pt,1,Grenache,Lisbon
+1190608,pt,pt,1,Vila Foz,Porto
+1191346,pt,pt,1,Blind,Porto
+1194476,pt,pt,1,CURA,Lisbon
+1196985,pt,pt,1,Kappo,Cascais
+1198788,pt,pt,1,Alameda,Faro
+1199689,pt,pt,1,Kabuki Lisboa,Lisbon
+1201614,pt,pt,1,Encanto,Lisbon
+1202484,pt,pt,1,"Marlene,",Lisbon
+1206427,pt,pt,1,Vinha,Vila Nova de Gaia
+1208387,pt,pt,1,Desarma,Funchal
+1208493,pt,pt,1,Gastro by Elemento,Porto
+1208830,pt,pt,1,2Monkeys,Lisbon
+1213147,pt,pt,1,MAPA,Montemor-o-Novo
+1214539,pt,pt,1,Oculto,Vila do Conde
+1214668,pt,pt,1,YŌSO,Lisbon
+1215936,pt,pt,1,Éon,Porto
+1216037,pt,pt,1,Palatial,Braga
+1219170,pt,pt,1,Schistó,Peso da Régua
+1243612,pt,pt,1,A Cozinha do Paço,Évora
+1197472,qa,qa,1,Jamavar,Doha
+1213825,qa,qa,1,IDAM by Alain Ducasse,Doha
+1213877,qa,qa,1,Alba,Doha
+1186676,rs,rs,1,Langouste,Belgrade
+1212486,rs,rs,1,Fleur de Sel,Novi Slankamen
+113467,se,se,1,Operakällaren,Stockholm
+113635,se,se,1,28+,Gothenburg
+352195,se,se,1,Ekstedt,Stockholm
+409670,se,se,1,HOZE,Gothenburg
+431376,se,se,2,Vollmers,Malmo
+451239,se,se,1,Koka,Gothenburg
+451242,se,se,1,SK Mat & Människor,Gothenburg
+465733,se,se,1,Sushi Sho,Stockholm
+465737,se,se,1,ADAM ALBIN,Stockholm
+478098,se,se,1,PM & Vänner Restaurant,Växjö
+523342,se,se,1,Project,Gothenburg
+532347,se,se,3,Frantzén,Stockholm
+570168,se,se,1,Etoile,Stockholm
+1192266,se,se,2,AIRA,Stockholm
+1192333,se,se,1,ÄNG,Tvååker
+1193344,se,se,1,Nour,Stockholm
+1198160,se,se,1,Knystaforsen,Rydöbruk
+1203721,se,se,1,Dashi,Stockholm
+1205585,se,se,2,Signum,Mölnlycke
+1209889,se,se,1,Celeste,Stockholm
+1210020,se,se,1,Seafood Gastro,Stockholm
+1212220,se,se,1,ergo.,Stockholm
+1212325,se,se,2,VYN,Simrishamn
+501366,sg,sg,1,Buona Terra,Singapore
+501368,sg,sg,1,Candlenut,Singapore
+501371,sg,sg,1,Cherry Garden by Chef Fei,Singapore
+501446,sg,sg,1,CUT,Singapore
+501489,sg,sg,1,Iggy's,Singapore
+501495,sg,sg,1,Imperial Treasure Fine Teochew Cuisine (Orchard),Singapore
+501497,sg,sg,2,Jaan by Kirk Westaway,Singapore
+501506,sg,sg,1,Labyrinth,Singapore
+501509,sg,sg,1,Lei Garden,Singapore
+501510,sg,sg,3,Les Amis,Singapore
+501592,sg,sg,3,Odette,Singapore
+501607,sg,sg,2,Saint Pierre,Singapore
+501650,sg,sg,1,Shisen Hanten,Singapore
+501652,sg,sg,2,Shoukouwa,Singapore
+501658,sg,sg,1,Summer Palace,Singapore
+501659,sg,sg,1,Summer Pavilion,Singapore
+501660,sg,sg,1,Sushi Ichi,Singapore
+501679,sg,sg,1,Waku Ghin,Singapore
+501680,sg,sg,1,Whitegrass,Singapore
+501727,sg,sg,1,Hill Street Tai Hwa Pork Noodle,Singapore
+560366,sg,sg,1,Nouri,Singapore
+561746,sg,sg,1,Ma Cuisine,Singapore
+570537,sg,sg,1,Jag,Singapore
+570540,sg,sg,2,Meta,Singapore
+570545,sg,sg,2,Thevar,Singapore
+570549,sg,sg,3,Zén,Singapore
+1190387,sg,sg,2,Cloudstreet,Singapore
+1195638,sg,sg,1,Lerouy,Singapore
+1197344,sg,sg,1,Nae:um,Singapore
+1200572,sg,sg,1,Hamamoto,Singapore
+1200574,sg,sg,1,Marguerite,Singapore
+1200777,sg,sg,1,Burnt Ends,Singapore
+1204753,sg,sg,1,Born,Singapore
+1204758,sg,sg,1,Willow,Singapore
+1205554,sg,sg,2,Seroja,Singapore
+1205650,sg,sg,2,Sushi Sakuta,Singapore
+1209995,sg,sg,1,Pangium,Singapore
+1212874,sg,sg,1,Araya,Singapore
+1215894,sg,sg,1,Omakase @ Stevens,Singapore
+1218314,sg,sg,1,Yong Fu,Singapore
+1244862,sg,sg,1,Tenshima,Singapore
+1245415,sg,sg,1,Jin Ting Wan,Singapore
+1246701,sg,sg,1,Loca Niru,Singapore
+1247953,sg,sg,1,Sushi Kimura +,Singapore
+1249513,sg,sg,2,1887 by André,Singapore
+1160169,si,si,1,Gostilna Pri Lojzetu,Vipava
+1160171,si,si,1,Dam,Nova Gorica
+1160194,si,si,3,Hiša Franko,Kobarid
+1164806,si,si,1,Hiša Denk,Zgornja Kungota
+1164922,si,si,1,Pavus,Lasko
+1164925,si,si,1,Galerija okusov,Petrovče
+1179791,si,si,1,Grič,Šentjošt nad Horjulom
+1192531,si,si,1,COB,Portorož
+1199431,si,si,1,Hiša Linhart,Radovljica
+1202726,si,si,2,Milka,Kranjska Gora
+546908,th,th,1,Bo.lan,Bangkok
+546913,th,th,1,Chim by Siam Wisdom,Bangkok
+546918,th,th,1,80/20,Bangkok
+546919,th,th,1,"Elements, Inspired by Ciel Bleu",Bangkok
+546990,th,th,1,Le Du,Bangkok
+546991,th,th,2,Anne-Sophie Pic at Le Normandie,Bangkok
+546997,th,th,2,Mezzaluna,Bangkok
+546998,th,th,1,Nahm,Bangkok
+547010,th,th,1,Saneh Jaan,Bangkok
+547021,th,th,3,Sühring,Bangkok
+547603,th,th,1,Jay Fai,Bangkok
+565723,th,th,1,PRU,Phuket
+566237,th,th,2,R-Haan,Bangkok
+566269,th,th,3,Sorn,Bangkok
+566286,th,th,1,Suan Thip,Nonthaburi
+1184372,th,th,2,Chef's Table,Bangkok
+1190558,th,th,1,Mia,Bangkok
+1191110,th,th,1,Blue by Alain Ducasse,Bangkok
+1191242,th,th,1,Gaggan,Bangkok
+1192382,th,th,1,Nusara,Bangkok
+1194845,th,th,2,Gaa,Bangkok
+1194848,th,th,1,IGNIV,Bangkok
+1194863,th,th,2,Côte by Mauro Colagreco,Bangkok
+1194928,th,th,1,Aksorn,Bangkok
+1194955,th,th,1,Signature,Bangkok
+1200081,th,th,1,Haoma,Bangkok
+1200082,th,th,1,POTONG,Bangkok
+1200249,th,th,1,Wana Yook,Bangkok
+1200597,th,th,1,Resonance,Bangkok
+1200629,th,th,2,Baan Tepa,Bangkok
+1203838,th,th,1,Maison Dunand,Bangkok
+1205962,th,th,1,Samrub Samrub Thai,Bangkok
+1206365,th,th,1,Coda,Bangkok
+1208008,th,th,1,NAWA,Bangkok
+1208794,th,th,1,Sushi Saito,Bangkok
+1209812,th,th,1,Juksunchae,Bangkok
+1210057,th,th,2,INDDEE,Bangkok
+1210910,th,th,1,Aulis,Phang Nga
+1212985,th,th,1,AKKEE,Nonthaburi
+1213954,th,th,1,GOAT,Bangkok
+1214225,th,th,1,AVANT,Bangkok
+1240866,th,th,1,Cannubi by Umberto Bombana,Bangkok
+1241479,th,th,1,etcha,Bangkok
+1195473,tr,tr,1,Araka,Istanbul
+1195528,tr,tr,1,Mikla,Istanbul
+1195530,tr,tr,1,Neolokal,Istanbul
+1195531,tr,tr,1,Nicole,Istanbul
+1195553,tr,tr,2,TURK FATİH TUTAK,Istanbul
+1195854,tr,tr,1,Casa Lavanda,Istanbul
+1208004,tr,tr,1,OD Urla,Izmir
+1208172,tr,tr,1,Teruar Urla,Izmir
+1208202,tr,tr,1,Maçakızı,Bodrum
+1208228,tr,tr,1,Kitchen By Osman Sezener,Bodrum
+1208257,tr,tr,2,Vino Locale,Izmir
+1209151,tr,tr,1,Sankai by Nagaya,Istanbul
+1209180,tr,tr,1,Arkestra,Istanbul
+1213077,tr,tr,1,Araf İstanbul,Istanbul
+1213087,tr,tr,1,Narımor,Izmir
+1213287,tr,tr,1,Mezra Yalıkavak,Bodrum
+1213363,tr,tr,1,Revithia,Ürgüp
+550698,tw,tw,1,A Cut,Taipei
+550737,tw,tw,1,Ken Anhe,Taipei
+550738,tw,tw,1,Kitcho,Taipei
+550759,tw,tw,2,L'Atelier de Joël Robuchon,Taipei
+550771,tw,tw,1,Ming Fu,Taipei
+550772,tw,tw,1,Mipon,Taipei
+550774,tw,tw,1,Mume,Taipei
+550860,tw,tw,1,Silks House,Taipei
+550898,tw,tw,3,Taïrroir,Taipei
+550901,tw,tw,1,The Guest House,Taipei
+550918,tw,tw,1,Ya Ge,Taipei
+551660,tw,tw,1,Golden Formosa,Taipei
+551698,tw,tw,3,Le Palais,Taipei
+551800,tw,tw,1,Sushi Ryu,Taipei
+551804,tw,tw,1,Tien Hsiang Lo,Taipei
+569910,tw,tw,1,Impromptu by Paul Lee,Taipei
+569914,tw,tw,2,logy,Taipei
+569918,tw,tw,1,Mountain and Sea House,Taipei
+569919,tw,tw,2,Mudan,Taipei
+1188083,tw,tw,1,Sushi Akira,Taipei
+1188523,tw,tw,3,JL STUDIO,Taichung
+1189361,tw,tw,1,Sur-,Taichung
+1190910,tw,tw,2,Molino de Urdániz,Taipei
+1191642,tw,tw,1,Sushiyoshi,Taipei
+1193645,tw,tw,1,de nuit,Taipei
+1193698,tw,tw,1,T+T,Taipei
+1194393,tw,tw,1,Fujin Tree Taiwanese Cuisine & Champagne (Songshan),Taipei
+1195583,tw,tw,1,Oretachi No Nikuya,Taichung
+1197419,tw,tw,1,Sho,Kaohsiung
+1197951,tw,tw,1,Nibbon,Kaohsiung
+1198592,tw,tw,2,Yu Kapo,Taipei
+1199082,tw,tw,1,Shin Yeh Taiwanese Signature,Taipei
+1199426,tw,tw,1,L'Atelier par Yao,Taichung
+1204678,tw,tw,1,SENS,Taipei
+1204705,tw,tw,1,ZEA,Taipei
+1204755,tw,tw,1,INITA,Taipei
+1204773,tw,tw,1,Hosu,Taipei
+1206669,tw,tw,1,Ad Astra,Taipei
+1207602,tw,tw,1,Ban Bo,Taipei
+1207773,tw,tw,1,La Vie by Thomas Bühner,Taipei
+1208203,tw,tw,1,the FRONT HOUSE,Kaohsiung
+1208775,tw,tw,1,HAILI,Kaohsiung
+1210661,tw,tw,1,FRASSI,Taipei
+1210698,tw,tw,2,A,Taipei
+1210701,tw,tw,1,Wok by O'BOND,Taipei
+1213317,tw,tw,2,NOBUO,Taipei
+1213318,tw,tw,2,Eika,Taipei
+1213319,tw,tw,1,Motoichi,Taipei
+1213513,tw,tw,1,Circum-,Taipei
+1213886,tw,tw,1,YUENJI,Taichung
+1214088,tw,tw,1,GEN,Kaohsiung
+1216129,tw,tw,1,Kiku,Taipei
+1217008,tw,tw,1,aMaze,Taipei
+1217034,tw,tw,1,Chuan Ya,Taipei
+1218035,tw,tw,1,SHINEYU,Taichung
+1218995,tw,tw,1,Sushi Kajin,Taipei
+1241168,tw,tw,1,Sushi An,Hsinchu County
+1244468,tw,tw,1,Restaurant 12,Taipei
+1244470,tw,tw,2,Mizue,Taipei
+1246269,tw,tw,1,Hābu,Kaohsiung
+1246698,tw,tw,1,Yu Dao,Tainan
+68178,us,us,1,Daniel,New York
+68304,us,us,1,Café Boulud at Maison Barnes,New York
+68328,us,us,1,Casa Mono,New York
+68335,us,us,3,Eleven Madison Park,New York
+68584,us,us,2,Aquavit,New York
+69438,us,us,3,Le Bernardin,New York
+69452,us,us,3,Per Se,New York
+69616,us,us,1,Family Meal at Blue Hill,New York
+69756,us,us,2,Masa,New York
+69890,us,us,1,Gramercy Tavern,New York
+70381,us,us,2,Jean-Georges,New York
+113266,us,us,2,The Modern,New York
+122233,us,us,1,Auberge du Soleil,Rutherford
+122440,us,us,1,Press,Saint Helena
+122560,us,us,3,Quince,San Francisco
+122806,us,us,3,The French Laundry,Yountville
+123240,us,us,1,Plumed Horse,Saratoga
+123242,us,us,1,The Village Pub,Woodside
+123501,us,us,2,Acquerello,San Francisco
+259803,us,us,2,Commis,Oakland
+268970,us,us,2,Alinea,Chicago
+268977,us,us,1,Boka,Chicago
+269239,us,us,1,Schwa,Chicago
+269297,us,us,1,Topolobampo,Chicago
+273488,us,us,1,Sepia,Chicago
+283703,us,us,2,Chef's Table at Brooklyn Fare,New York
+283968,us,us,1,Wakuriya,San Mateo
+293062,us,us,2,Sons & Daughters,San Francisco
+293069,us,us,2,Saison,San Francisco
+325316,us,us,3,Atelier Crenn,San Francisco
+325324,us,us,3,Benu,San Francisco
+360775,us,us,3,Jungsik New York,New York
+365863,us,us,1,State Bird Provisions,San Francisco
+366502,us,us,2,Atera,New York
+374769,us,us,1,EL Ideas,Chicago
+405986,us,us,1,Estela,New York
+410318,us,us,1,Next,Chicago
+435810,us,us,1,Sushi Nakazawa New York,New York
+445271,us,us,1,Kin Khao,San Francisco
+468067,us,us,1,Tuome,New York
+468662,us,us,2,Lazy Bear,San Francisco
+471882,us,us,1,The Progress,San Francisco
+471907,us,us,3,Californios,San Francisco
+472167,us,us,1,Dirt Candy,New York
+474823,us,us,2,Gabriel Kreuther,New York
+476476,us,us,1,Tempura Matsui,New York
+498990,us,us,2,Oriole,Chicago
+499539,us,us,1,Fiola,Washington
+499964,us,us,1,Masseria,Washington
+499965,us,us,2,minibar by José Andrés,Washington
+499974,us,us,1,Pineapple and Pearls,Washington
+499990,us,us,1,Rose’s Luxury,Washington
+502397,us,us,1,The Dabney,Washington
+503271,us,us,1,Mister Jiu’s,San Francisco
+507098,us,us,2,The Inn at Little Washington,Washington
+510090,us,us,1,Kosaka,New York
+510102,us,us,1,Le Coucou,New York
+510111,us,us,2,Aska,Brooklyn
+513128,us,us,3,Smyth,Chicago
+524105,us,us,3,SingleThread,Healdsburg
+528996,us,us,1,Elske,Chicago
+536865,us,us,1,Cote,New York
+554164,us,us,1,Jeju Noodle Bar,New York
+558685,us,us,1,Madcap,San Anselmo
+559371,us,us,1,The Kitchen,Sacramento
+559372,us,us,1,Localis,Sacramento
+559386,us,us,2,Aubergine,Carmel-by-the-Sea
+559603,us,us,1,Nozawa Bar,Beverly Hills
+559610,us,us,3,Somni,West Hollywood
+559635,us,us,1,Orsa & Winston,Los Angeles
+559814,us,us,1,Kali,Los Angeles
+559827,us,us,1,Osteria Mozza,Los Angeles
+559844,us,us,3,Providence,Los Angeles
+560034,us,us,2,Mélisse,Santa Monica
+560068,us,us,2,Kato,Los Angeles
+560073,us,us,1,n/naka,Los Angeles
+560079,us,us,2,Vespertine,Culver City
+562386,us,us,1,Bresca,Washington
+562510,us,us,1,Noda,New York
+562513,us,us,2,Sushi Noz,New York
+562943,us,us,1,Sorrel,San Francisco
+563200,us,us,2,Atomix,New York
+563205,us,us,1,Oxomoco,Brooklyn
+563785,us,us,2,Birdsong,San Francisco
+563788,us,us,1,Protégé,Palo Alto
+564447,us,us,3,Addison,San Diego
+569592,us,us,1,Holbox,Los Angeles
+569657,us,us,2,Harbor House Inn,Elk
+569677,us,us,1,Angler SF,San Francisco
+569802,us,us,2,Hayato,Los Angeles
+569866,us,us,1,Shin Sushi,Encino
+1160151,us,us,1,The Four Horsemen,Brooklyn
+1160153,us,us,1,Sushi Nakazawa Washington DC,Washington
+1164753,us,us,1,Rooster & Owl,Washington
+1164895,us,us,2,Odo,New York
+1164948,us,us,2,Jônt,Washington
+1164949,us,us,1,Little Pearl,Washington
+1164955,us,us,1,Crown Shy,New York
+1179698,us,us,1,Mako,Chicago
+1179818,us,us,2,Blue Hill at Stone Barns,Tarrytown
+1181435,us,us,1,Galit,Chicago
+1183570,us,us,1,Soichi,San Diego
+1183662,us,us,1,Ssal,San Francisco
+1183686,us,us,1,Jeune et Jolie,Carlsbad
+1183937,us,us,1,Rezdôra,New York
+1184201,us,us,2,Saga,New York
+1184254,us,us,1,Frevo,New York
+1184656,us,us,1,Sushi Inaba,Torrance
+1184688,us,us,1,Niku Steakhouse,San Francisco
+1184711,us,us,2,Ever,Chicago
+1184762,us,us,1,Moody Tongue,Chicago
+1184914,us,us,1,Torien,New York
+1184921,us,us,1,Xiquet,Washington
+1185033,us,us,1,Tsukimi,New York
+1185037,us,us,1,Yoshino,New York
+1185069,us,us,1,Oyster Oyster,Washington
+1185180,us,us,1,Albi,Washington
+1185291,us,us,1,Selby's,Atherton
+1185781,us,us,1,Nari,San Francisco
+1186306,us,us,1,Auro,Calistoga
+1186485,us,us,1,Jua,New York
+1186551,us,us,1,Bell's,Los Alamos
+1188587,us,us,1,San Ho Won,San Francisco
+1189390,us,us,1,Kochi,New York
+1189550,us,us,1,Caruso's,Montecito
+1190971,us,us,2,Kasama,Chicago
+1191423,us,us,1,Cyrus,Geyserville
+1191604,us,us,1,Francie,Brooklyn
+1191690,us,us,1,The Restaurant at JUSTIN,Paso Robles
+1191704,us,us,1,Six Test Kitchen,Paso Robles
+1191941,us,us,1,Elcielo Washington DC,Washington
+1191950,us,us,1,Pasta|Bar,Encino
+1192744,us,us,1,Le Pavillon,New York
+1194423,us,us,1,Stubborn Seed,Miami Beach
+1194424,us,us,2,L'Atelier de Joël Robuchon Miami,Miami
+1194427,us,us,1,Elcielo Miami,Miami
+1194458,us,us,1,Kadence,Orlando
+1194761,us,us,1,Imperfecto: The Chef's Table,Washington
+1195793,us,us,1,Sushi Kaneyoshi,Los Angeles
+1195994,us,us,1,Atlas,Atlanta
+1196000,us,us,1,Hayakawa,Atlanta
+1196004,us,us,1,Bacchanalia,Atlanta
+1196006,us,us,1,Lazy Betty,Atlanta
+1196497,us,us,1,BCN Taste & Tradition,Houston
+1196499,us,us,1,Musaafer,Houston
+1196504,us,us,1,CorkScrew BBQ,Spring
+1196507,us,us,1,Le Jardinier Houston,Houston
+1196539,us,us,1,Citrin,Santa Monica
+1196563,us,us,1,Barley Swine,Austin
+1196564,us,us,1,Mixtli,San Antonio
+1196790,us,us,1,Heritage,Long Beach
+1196918,us,us,1,Esmé,Chicago
+1197301,us,us,1,Icca,New York
+1197311,us,us,1,The Surf Club Restaurant,Surfside
+1197315,us,us,1,Cote Miami,Miami
+1197316,us,us,1,Le Jardinier Miami,Miami
+1197759,us,us,1,Ariete,Miami
+1197832,us,us,1,Torrisi,New York
+1198091,us,us,1,Sixty Three Clinton,New York
+1198122,us,us,1,MITA,Washington
+1198347,us,us,1,Causa,Washington
+1198444,us,us,1,Noz 17,New York
+1198567,us,us,1,Semma,New York
+1198743,us,us,1,Soseki,Winter Park
+1198831,us,us,1,Boia De,Miami
+1199538,us,us,1,Hiden,Miami
+1199633,us,us,1,Nisei,San Francisco
+1199669,us,us,1,Mari,New York
+1199851,us,us,1,Los Félix,Miami
+1199872,us,us,1,L’Abeille,New York
+1199931,us,us,1,Rocca,Tampa
+1200038,us,us,1,Koya,Tampa
+1200106,us,us,1,Victoria & Albert's,Orlando
+1200213,us,us,1,Corridor 109,Los Angeles
+1201402,us,us,1,Restaurant Guy Savoy,Las Vegas
+1201404,us,us,1,L'Atelier de Joël Robuchon Las Vegas,Las Vegas
+1202646,us,us,1,R|O-Rebel Omakase,Laguna Beach
+1202653,us,us,1,Oiji Mi,New York
+1202987,us,us,1,Shmoné,New York
+1203008,us,us,1,Rania,Washington
+1203535,us,us,1,Meteora,Los Angeles
+1203596,us,us,1,Hilda and Jesse,San Francisco
+1203903,us,us,1,Essential by Christophe,New York
+1204329,us,us,1,Jōji,New York
+1204468,us,us,1,Ogawa,Miami
+1204469,us,us,1,Shingo,Coral Gables
+1204573,us,us,1,Chez Noir,Carmel-by-the-Sea
+1205005,us,us,1,Frasca Food and Wine,Boulder
+1205052,us,us,1,Brutø,Denver
+1205053,us,us,1,Beckon,Denver
+1205487,us,us,2,The Wolf's Tailor,Denver
+1205920,us,us,1,Feld,Chicago
+1206081,us,us,1,Bosq,Aspen
+1206191,us,us,1,Indienne,Chicago
+1206453,us,us,1,bōm,New York
+1206493,us,us,2,Sorekara,Orlando
+1206513,us,us,1,Kōsen,Tampa
+1206877,us,us,1,Dakar NOLA,New Orleans
+1207503,us,us,1,Meju,Queens
+1207749,us,us,1,Mujō,Atlanta
+1207797,us,us,1,March,Houston
+1207798,us,us,1,Tatemó,Houston
+1208102,us,us,1,Troubadour,Healdsburg
+1208679,us,us,1,Tatsu Dallas,Dallas
+1208771,us,us,1,YingTao,New York
+1209310,us,us,1,Restaurant Yuu,Brooklyn
+1209381,us,us,1,InterStellar BBQ,Austin
+1209382,us,us,1,LeRoy and Lewis Barbecue,Austin
+1209473,us,us,1,Goldee’s Bar-B•Q,Fort Worth
+1209656,us,us,1,Ebbe,Tampa
+1209780,us,us,1,Fabrik,Austin
+1209783,us,us,1,Hestia,Austin
+1210096,us,us,1,Spring,Marietta
+1210165,us,us,1,Nōksu,New York
+1210355,us,us,2,Kiln,San Francisco
+1210617,us,us,1,Omakase at Barracks Row,Washington
+1210849,us,us,1,Omakase Table,Atlanta
+1210902,us,us,1,Bar Miller,New York
+1211038,us,us,1,Camille,Orlando
+1211211,us,us,1,Shota Omakase,Brooklyn
+1211395,us,us,1,Chef's Counter at MAASS,Fort Lauderdale
+1211793,us,us,1,Zasu,New Orleans
+1211881,us,us,1,7 Adams,San Francisco
+1212278,us,us,1,O by Brush,Atlanta
+1212608,us,us,1,Corima,New York
+1212614,us,us,1,Cariño,Chicago
+1212797,us,us,1,La Bastide by Andrea Calstier,North Salem
+1212846,us,us,1,Ômo by Jônt,Winter Park
+1212922,us,us,1,Alma Fonda Fina,Denver
+1213700,us,us,1,Friday Saturday Sunday,Philadelphia
+1213705,us,us,1,Her Place Supper Club,Philadelphia
+1213976,us,us,3,Sushi Sho,New York
+1214098,us,us,1,Craft Omakase,Austin
+1214386,us,us,1,Silvers Omakase,Santa Barbara
+1214822,us,us,2,Joo Ok,New York
+1214951,us,us,1,Nicōsi,San Antonio
+1214983,us,us,1,The Catbird Seat,Nashville
+1214985,us,us,1,Bastion,Nashville
+1214987,us,us,2,Emeril’s,New Orleans
+1214988,us,us,1,Saint-Germain,New Orleans
+1214995,us,us,1,Counter,Charlotte
+1215047,us,us,1,Locust,Nashville
+1215124,us,us,1,Wild Common,Charleston
+1215130,us,us,1,Malagón Mercado y Taperia,Charleston
+1215182,us,us,2,César,New York
+1216261,us,us,1,Bridges,New York
+1216596,us,us,1,Vern's,Charleston
+1217483,us,us,1,Sun Moon Studio,Oakland
+1217753,us,us,3,Enclos,Sonoma
+1217962,us,us,1,Seline,Santa Monica
+1217963,us,us,1,Restaurant Ki,Los Angeles
+1217966,us,us,1,Mori Nozomi,Los Angeles
+1218089,us,us,1,Huso,New York
+1218419,us,us,1,311 Omakase,Boston
+1219216,us,us,1,Provenance,Philadelphia
+1219260,us,us,1,Isidore,San Antonio
+1240863,us,us,1,Lilo,Carlsbad
+1241104,us,us,1,Yamada,New York
+1241644,us,us,1,Kizaki,Denver
+1241646,us,us,1,Margot,Denver
+1241649,us,us,1,Mezcaleria Alma,Denver
+1241977,us,us,1,Scoundrel,Greenville
+1243269,us,us,1,Mutra,North Miami
+1243341,us,us,1,Mamani,Dallas
+1243511,us,us,1,Muku,New York
+1245234,us,us,1,Kappo Kappo,Austin
+1245955,us,us,1,é by José Andrés,Las Vegas
+1245958,us,us,2,Restaurant de Joël Robuchon,Las Vegas
+1246218,us,us,1,Lucien,La Jolla
+1246958,us,us,1,Miura,Beverly Hills
+1247028,us,us,1,Emelina,West Palm Beach
+1247302,us,us,1,Restaurant Naides,San Francisco
+1247517,us,us,1,Monte,South Salt Lake
+1247593,us,us,1,Wolfsbane,San Francisco
+1248011,us,us,1,Lielle,Los Angeles
+1248017,us,us,1,KOJIMA,Los Angeles
+1251385,us,us,1,Milpero,Denver
+1251414,us,us,1,Uberto Restaurant,Gay
+1252754,us,us,1,So. Fox,Atlanta
+1201413,vn,vn,1,Ănăn Saigon,Ho Chi Minh City
+1202045,vn,vn,1,Long Trieu,Ho Chi Minh City
+1202148,vn,vn,1,Gia,Hanoi
+1202288,vn,vn,1,Hibana by Koki,Hanoi
+1205986,vn,vn,1,Tầm Vị,Hanoi
+1207539,vn,vn,1,Coco Dining,Ho Chi Minh City
+1211041,vn,vn,1,Akuna,Ho Chi Minh City
+1211833,vn,vn,1,La Maison 1888,Da Nang
+1217538,vn,vn,1,CieL ,Ho Chi Minh City
+1245586,vn,vn,1,Upstairs,Ho Chi Minh City
+1247261,vn,vn,1,ONVIT,Hanoi
