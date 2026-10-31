@@ -5,7 +5,6 @@ import '../../core/analytics/analytics_properties.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
-import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/country_lookup.dart';
 import '../../data/repositories/friendship_repository.dart';
@@ -29,10 +28,10 @@ import 'tabs/friend_profile_passport_tab.dart';
 import 'tabs/friend_profile_together_tab.dart';
 import 'widgets/friend_profile_header.dart';
 import 'widgets/friend_profile_plan_dinner_sheet.dart';
+import 'widgets/non_friend_profile.dart';
 import '../../core/analytics/screen_usage.dart';
 import '../notifications/push_prompt_sheet.dart';
 import '../notifications/push_service.dart';
-import '../../core/widgets/app_network_image.dart';
 
 /// One (venue, visit) pair — [VenueEntry] groups every visit under its
 /// venue for Passport's own grouped display; this screen instead flattens
@@ -449,8 +448,11 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
               return const _ErrorState();
             }
             if (identity.relationshipStatus != RelationshipStatus.accepted) {
-              return _NonFriendBody(
+              return NonFriendProfile(
                 identity: identity,
+                isSelf:
+                    identity.id ==
+                    Supabase.instance.client.auth.currentUser?.id,
                 onSendRequest: _sendRequest,
                 onAccept: () async {
                   final friendshipId = await _incomingFriendshipId(identity.id);
@@ -583,253 +585,3 @@ class _SimpleBackRow extends StatelessWidget {
 
 // ── Non-friend / pending relationship — unchanged legacy UI ────────────
 // Out of scope for the editorial redesign (see this file's own class doc):
-// Friends' own list only ever opens this screen for an accepted friend,
-// so this path only matters for other entry points (e.g. search) this
-// task wasn't asked to touch.
-
-class _NonFriendBody extends StatelessWidget {
-  final ProfileIdentity identity;
-  final VoidCallback onSendRequest;
-  final VoidCallback onAccept;
-  final VoidCallback onDecline;
-  final VoidCallback onBlock;
-  final VoidCallback onReport;
-
-  const _NonFriendBody({
-    required this.identity,
-    required this.onSendRequest,
-    required this.onAccept,
-    required this.onDecline,
-    required this.onBlock,
-    required this.onReport,
-  });
-
-  @override
-  Widget build(BuildContext context) => CustomScrollView(
-    slivers: [
-      SliverToBoxAdapter(
-        child: SafeArea(
-          bottom: false,
-          child: _Hero(
-            identity: identity,
-            onSendRequest: onSendRequest,
-            onAccept: onAccept,
-            onDecline: onDecline,
-            onBlock: onBlock,
-            onReport: onReport,
-          ),
-        ),
-      ),
-      SliverFillRemaining(
-        hasScrollBody: false,
-        child: ColoredBox(
-          color: AppColors.ivory,
-          child: SafeArea(top: false, child: const SizedBox.shrink()),
-        ),
-      ),
-    ],
-  );
-}
-
-class _Hero extends StatelessWidget {
-  final ProfileIdentity identity;
-  final VoidCallback onSendRequest;
-  final VoidCallback onAccept;
-  final VoidCallback onDecline;
-  final VoidCallback onBlock;
-  final VoidCallback onReport;
-
-  const _Hero({
-    required this.identity,
-    required this.onSendRequest,
-    required this.onAccept,
-    required this.onDecline,
-    required this.onBlock,
-    required this.onReport,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final words = identity.label.trim().split(' ').where((w) => w.isNotEmpty);
-    final initials = words.isEmpty
-        ? '?'
-        : words.map((w) => w[0]).take(2).join().toUpperCase();
-
-    return ColoredBox(
-      color: AppColors.deepGreen,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.fromLTRB(CsSpacing.base, CsSpacing.sm, CsSpacing.base, 0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                EditorialBackButton(color: AppColors.ivory),
-                if (identity.id != Supabase.instance.client.auth.currentUser?.id)
-                  _ProfileOverflowMenu(onBlock: onBlock, onReport: onReport),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(
-              CsSpacing.pageHorizontal,
-              CsSpacing.sm,
-              CsSpacing.pageHorizontal,
-              CsSpacing.xl,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  width: 96,
-                  height: 96,
-                  decoration: const BoxDecoration(shape: BoxShape.circle, color: AppColors.ivory),
-                  alignment: Alignment.center,
-                  child: (identity.avatarUrl != null && identity.avatarUrl!.isNotEmpty)
-                      ? ClipOval(
-                          child: AppNetworkImage(
-                            identity.avatarUrl!,
-                            width: 96,
-                            height: 96,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, _, _) => Text(
-                              initials,
-                              style: CsTypography.screenTitle.copyWith(
-                                color: AppColors.forestGreen,
-                              ),
-                            ),
-                          ),
-                        )
-                      : Text(
-                          initials,
-                          style: CsTypography.screenTitle.copyWith(
-                            color: AppColors.forestGreen,
-                          ),
-                        ),
-                ),
-                const SizedBox(height: CsSpacing.lg),
-                Text(
-                  identity.displayName?.trim().isNotEmpty == true
-                      ? identity.displayName!
-                      : identity.label,
-                  textAlign: TextAlign.center,
-                  style: CsTypography.screenTitle.copyWith(color: AppColors.ivory),
-                ),
-                if (identity.username != null) ...[
-                  const SizedBox(height: 4),
-                  Text(
-                    '@${identity.username}',
-                    style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
-                  ),
-                ],
-                const SizedBox(height: CsSpacing.xl),
-                _RelationshipAction(
-                  status: identity.relationshipStatus,
-                  onSendRequest: onSendRequest,
-                  onAccept: onAccept,
-                  onDecline: onDecline,
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class _RelationshipAction extends StatelessWidget {
-  final RelationshipStatus status;
-  final VoidCallback onSendRequest;
-  final VoidCallback onAccept;
-  final VoidCallback onDecline;
-
-  const _RelationshipAction({
-    required this.status,
-    required this.onSendRequest,
-    required this.onAccept,
-    required this.onDecline,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    switch (status) {
-      case RelationshipStatus.none:
-        return SizedBox(
-          width: double.infinity,
-          child: CsPrimaryButton(
-            label: 'Add friend',
-            icon: Icons.person_add_alt_1_rounded,
-            onTap: onSendRequest,
-          ),
-        );
-      case RelationshipStatus.pendingSent:
-        return Text(
-          'Request sent',
-          style: CsTypography.bodyMedium.copyWith(color: AppColors.secondaryOnDark),
-        );
-      case RelationshipStatus.pendingReceived:
-        return Row(
-          children: [
-            Expanded(child: CsSecondaryButton(label: 'Decline', onTap: onDecline)),
-            const SizedBox(width: CsSpacing.md),
-            Expanded(child: CsPrimaryButton(label: 'Accept', onTap: onAccept)),
-          ],
-        );
-      case RelationshipStatus.accepted:
-        return const SizedBox.shrink();
-      case RelationshipStatus.declined:
-        return Text(
-          'Unavailable',
-          style: CsTypography.bodyMedium.copyWith(color: AppColors.secondaryOnDark),
-        );
-    }
-  }
-}
-
-class _ProfileOverflowMenu extends StatelessWidget {
-  final VoidCallback onBlock;
-  final VoidCallback onReport;
-
-  const _ProfileOverflowMenu({required this.onBlock, required this.onReport});
-
-  @override
-  Widget build(BuildContext context) => PopupMenuButton<String>(
-    color: AppColors.card,
-    onSelected: (value) {
-      if (value == 'block') onBlock();
-      if (value == 'report') onReport();
-    },
-    itemBuilder: (context) => [
-      const PopupMenuItem(
-        value: 'report',
-        child: Row(
-          children: [
-            Icon(Icons.flag_outlined, color: AppColors.textPrimary, size: 18),
-            SizedBox(width: 10),
-            Text('Report profile'),
-          ],
-        ),
-      ),
-      const PopupMenuItem(
-        value: 'block',
-        child: Row(
-          children: [
-            Icon(Icons.block_rounded, color: AppColors.error, size: 18),
-            SizedBox(width: 10),
-            Text('Block', style: TextStyle(color: AppColors.error)),
-          ],
-        ),
-      ),
-    ],
-    child: Material(
-      color: Colors.black.withValues(alpha: 0.24),
-      shape: const CircleBorder(),
-      child: const Padding(
-        padding: EdgeInsets.all(9),
-        child: Icon(Icons.more_horiz_rounded, color: AppColors.textOnDark, size: 19),
-      ),
-    ),
-  );
-}

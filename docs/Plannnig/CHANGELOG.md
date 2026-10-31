@@ -8,6 +8,32 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Profile of someone who isn't a friend yet, redesigned** (2026-10-31,
+  approved by the product owner from a simulator screenshot). It is
+  reached from Find friends, a request or a notification. The old screen
+  was half green and half ivory, with the identity sitting high and
+  left. It is now one deep-green page with everything centred (new
+  `NonFriendProfile`): the member's photo or initial in a hairline ring,
+  the name in the editorial serif, @USERNAME in small caps, a short rule,
+  an italic invitation line, one sentence on what friends share, and one
+  calm action.
+  - No relationship yet: "Start enjoying the Mantelier journey
+    together." and Add friend.
+  - Request sent: "Your invitation is on its way." and a quiet "✓ Request
+    sent".
+  - Request received: "{First name} would like to share the journey with
+    you." with Accept, and a quieter Decline beneath it.
+  - Your own profile: no invitation and no action.
+
+  Report and Block stay in the "⋯" menu. Only the minimal identity a
+  non-friend could already see is shown (photo, name, username); the
+  copy describes what friends share in general, never this member's
+  activity. The old `_NonFriendBody`/`_Hero`/`_RelationshipAction` are
+  removed. A new widget test covers the states and 320 pt; the navigation
+  test now expects `@KYLAN` and the invitation line. Analyze and all
+  2,715 tests pass.
+
 ### Added
 - **A journey page on the website.** `site/journey.html`, served at
   `https://mantelier.app/journey`: a scroll story in which a fictional
