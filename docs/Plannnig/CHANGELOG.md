@@ -26,6 +26,15 @@ The format follows Keep a Changelog.
   only the 24 August export; the people and their dates are fictional
   and the page says so. Nothing links to it from the home page yet.
 
+### Fixed
+
+- **Passport → + → "Where did you go?": what you typed was nearly
+  invisible.** The search field sits on the green step with ivory text,
+  but the app theme fills every `TextField` with ivory, so the text was
+  ivory on an ivory box. The field now sets `filled: false` and reads as
+  the underline on green it was designed as. Checked in the simulator
+  (2026-10-31); no widget test covers this sheet.
+
 ---
 
 ## v1.5.1 (19) — 2026-10-31
