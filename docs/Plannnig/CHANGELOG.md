@@ -8,6 +8,15 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Fixed
+
+- **Create your account showed the product owner's own username as the
+  example.** The Username field's placeholder was `kylan.s`, a real
+  person's handle, left in from development. It is now `jane.doe`,
+  matching the Name field's `Jane Doe`. Nothing else in the shipped app
+  carries a real name: the only other hit, `lib/data/mock/mock_user.dart`,
+  is imported nowhere in `lib/`, and the test fixtures never ship.
+
 ---
 
 ## v1.5.1 (19) — 2026-10-30

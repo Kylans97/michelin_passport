@@ -167,7 +167,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         label: 'Username',
                         controller: _usernameCtrl,
                         focusNode: _usernameFocus,
-                        hintText: 'kylan.s',
+                        hintText: 'jane.doe',
                         keyboardType: TextInputType.visiblePassword,
                         textInputAction: TextInputAction.next,
                         onFieldSubmitted: (_) => _emailFocus.requestFocus(),
