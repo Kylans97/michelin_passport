@@ -8,6 +8,20 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.4 (22) — 2026-10-31
+
+1.5.3 (21) was archived at 11:44 on 2026-10-31 from `307afb2`, so this
+build carries what came after it: `claude/wishlist-polish`, fast-forwarded
+into `release/1.5.4`, then `claude/follow-and-trips` (follow state, and
+Plan visit's trip list), fast-forwarded into main before 22 was
+archived. App code only — no migration, Edge Function or site change
+since 21; ledger still 123, local and remote in agreement,
+so the schema diff run for 21 (full replay of all 123 migrations,
+identical to production) still stands. `flutter analyze` clean and all
+2,728 tests pass on this tree.
+
 ### Changed
 
 - **Plan visit only offers trips that fit the venue** (tester feedback,
@@ -22,35 +36,6 @@ The format follows Keep a Changelog.
   Librije: of four trips (NL ended, two GB, AD) only "Maastricht · Ended"
   shows. Adding a venue to a trip already lived in Plan visit; nothing
   else about it changed.
-
-### Fixed
-
-- **Follow (and the wishlist heart) could show the wrong state on a
-  venue page** (tester: "I follow a restaurant, go back, and I'm not
-  following it any more"). Follows were saved — three new ones in
-  production that day — so the page's reading of them was at fault, in
-  two ways that both fit: Restaurant and Hotel Detail awaited visits,
-  wishlist and follow as one unit, so any one failing left all three at
-  "not yet"; and a tap made before that load returned was overwritten by
-  its stale answer. Each value now loads on its own, and a tap on Follow
-  or the heart wins over a load that started before it. Private Chef
-  Detail gets the same follow handling. Not reproduced on a device — the
-  normal follow, leave, return path showed Following correctly before
-  and after; this closes the two ways it can go wrong.
-
----
-
-## v1.5.4 (22) — 2026-10-31
-
-1.5.3 (21) was archived at 11:44 on 2026-10-31 from `307afb2`, so this
-build carries what came after it: `claude/wishlist-polish`, fast-forwarded
-into `release/1.5.4`. App code only — no migration, Edge Function or
-site change since 21; ledger still 123, local and remote in agreement,
-so the schema diff run for 21 (full replay of all 123 migrations,
-identical to production) still stands. `flutter analyze` clean and all
-2,724 tests pass on this tree.
-
-### Changed
 
 - **Wishlist → "+": rows open the place, events can be saved too.**
   Tester feedback on the new add sheet, 2026-10-31:
@@ -70,6 +55,21 @@ identical to production) still stands. `flutter analyze` clean and all
   Two new tests (events; opening on the Events tab); 2,724 pass.
   Checked in the simulator: the Event chip, upcoming-only results, and
   a row opening Event Detail; nothing saved.
+
+### Fixed
+
+- **Follow (and the wishlist heart) could show the wrong state on a
+  venue page** (tester: "I follow a restaurant, go back, and I'm not
+  following it any more"). Follows were saved — three new ones in
+  production that day — so the page's reading of them was at fault, in
+  two ways that both fit: Restaurant and Hotel Detail awaited visits,
+  wishlist and follow as one unit, so any one failing left all three at
+  "not yet"; and a tap made before that load returned was overwritten by
+  its stale answer. Each value now loads on its own, and a tap on Follow
+  or the heart wins over a load that started before it. Private Chef
+  Detail gets the same follow handling. Not reproduced on a device — the
+  normal follow, leave, return path showed Following correctly before
+  and after; this closes the two ways it can go wrong.
 
 ---
 
