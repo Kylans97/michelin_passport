@@ -192,7 +192,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
     // PassportBookletView's own State, untouched by this widget's
     // setState), so the member comes back to the same open page they
     // tapped "Add your next stamp" on, with the new stamp now in the book.
-    await celebrateNewStamp(context, EarnedStamp.visit(saved));
+    await celebrateNewStamp(context, EarnedStamp.visit(saved.visit));
     if (mounted) _load();
   }
 

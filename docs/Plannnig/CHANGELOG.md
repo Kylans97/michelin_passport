@@ -28,6 +28,23 @@ The format follows Keep a Changelog.
 
 ### Changed
 
+- **One screen to log a visit or stay, wherever you start.** Restaurant
+  and Hotel Detail's "Add your first visit" / "Add a stay" opened their
+  own older white sheets (`add_visit_sheet.dart`, `add_stay_sheet.dart`),
+  which looked nothing like Passport → + and, on their white card, left
+  an unrated score meter's segments invisible. Both pages now open the
+  Passport flow (`showAddVisitFlow(initialVenue: …)`) straight at its
+  stamp step, with "Cancel" and "LOG YOUR VISIT"/"LOG YOUR STAY" instead
+  of "‹ Back" and "STEP 2 OF 2". Nothing was dropped: the flow gained
+  what only the old sheets had — menu type (restaurants), "Visible to
+  friends" (off by default, as before) and photos (uploaded after the
+  visit saves, a failure reported and never undoing the visit) — so the
+  Passport route now records those too. It now returns a `SavedVisit`.
+  The two old sheets are removed; `MenuTypeSelector` moved to its own
+  file. The notes field is unfilled, like the search field, so it sits
+  between its hairlines instead of in a white box. Checked in the
+  simulator from De Librije (2026-10-31), cancelled without saving.
+
 - **Scores can be swiped.** Every 1–10 score in the visit and stay
   sheets (`RatingMeter`: overall, food, service, wine, value, room,
   experience) took a tap per segment only. A horizontal drag now works
