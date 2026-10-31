@@ -8,28 +8,15 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
-### Fixed
-
-- **The selected star or Key filter vanished in the MICHELIN guides**
-  (tester, 2026-10-31: "when something's off it's gone entirely"). The
-  guides' body is ivory, but their filter chips used `CsFilterChip`'s
-  dark-canvas default, so the selected chip was ivory on ivory and the
-  unselected ones were solid green — the reverse of what reads as
-  selected. Both guide screens now pass `surface: CsSurface.light`
-  (selected: deep green; unselected: light with a hairline). Checked in
-  the simulator with ★ selected. The same report about unrated score
-  bars was looked at too; the product owner judged those fine as they
-  are.
-
 ---
 
 ## v1.5.4 (22) — 2026-10-31
 
 1.5.3 (21) was archived at 11:44 on 2026-10-31 from `307afb2`, so this
 build carries what came after it: `claude/wishlist-polish`, fast-forwarded
-into `release/1.5.4`, then `claude/follow-and-trips` (follow state, and
-Plan visit's trip list), fast-forwarded into main before 22 was
-archived. App code only — no migration, Edge Function or site change
+into `release/1.5.4`, then `claude/follow-and-trips` (follow state, Plan visit's trip list,
+the globe button) and `claude/guide-chip-contrast` (the guides' filter
+chips), each fast-forwarded into main before 22 was archived. App code only — no migration, Edge Function or site change
 since 21; ledger still 123, local and remote in agreement,
 so the schema diff run for 21 (full replay of all 123 migrations,
 identical to production) still stands. `flutter analyze` clean and all
@@ -77,6 +64,16 @@ identical to production) still stands. `flutter analyze` clean and all
 
 ### Fixed
 
+- **The selected star or Key filter vanished in the MICHELIN guides**
+  (tester, 2026-10-31: "when something's off it's gone entirely"). The
+  guides' body is ivory, but their filter chips used `CsFilterChip`'s
+  dark-canvas default, so the selected chip was ivory on ivory and the
+  unselected ones were solid green — the reverse of what reads as
+  selected. Both guide screens now pass `surface: CsSurface.light`
+  (selected: deep green; unselected: light with a hairline). Checked in
+  the simulator with ★ selected. The same report about unrated score
+  bars was looked at too; the product owner judged those fine as they
+  are.
 - **Follow (and the wishlist heart) could show the wrong state on a
   venue page** (tester: "I follow a restaurant, go back, and I'm not
   following it any more"). Follows were saved — three new ones in
