@@ -6,6 +6,22 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-31 — Netherlands websites and phones (QA-375, QA-376)
+
+| | |
+|---|---|
+| Applied | 2026-10-31, to production, at the product owner's request, from `claude/nl-venue-contacts` |
+| Data file | `michelin_nl_contacts_2026/prepared_nl_contacts.sql` (evidence: `nl_contacts_research.csv`, `README.md`) |
+| Rows | NL only: 93 `restaurants.website_url`, 8 `restaurants.phone`, 17 `hotels.phone` (every NL Key hotel) |
+
+Prompted by Flore (`rest_0047`) having no website. A read-only export of every NL restaurant and hotel with an empty `website_url` or `phone` gave 120 rows; the two `permanently_closed` ones were skipped. Only empty fields were researched — existing values were recently added and, at the product owner's instruction, not re-checked. Every value was read on the venue's own site next to its own address. The websites found on 2026-10-28 (`michelin_nl_phones`) were fetched again on 2026-10-31 before use. Phones use the stored human-readable format (`+31 20 523 5235`). The SQL was guarded on code, `country_code = 'NL'` and the field still being empty, and was tested on a scratch PG17 first. Afterwards a read-only query matched 118 of 118 values; NL restaurants without a website went from 96 to 3, without a phone from 20 to 12, and NL hotels without a phone from 17 to 0.
+
+Left blank on purpose (13 fields): five restaurants that publish only a hotel or estate switchboard (Harinxma, Karel 5, LIZZ, Vinkeles, Voltaire — a product decision whether a switchboard belongs on a restaurant row), CUE (its site prints a number one digit short), Vista (number only on MICHELIN), and Demain, Sense and Graphite. All three MICHELIN pages for those last three return 404, yet production has them `open` — logged as QA-376, not changed. Stored addresses that differ from the venues' own sites (Bolenius, Nami, Studio, Affect, Vista, Sense) belong to QA-206 and were not changed either.
+
+**Near-misses:** the 2026-10-28 candidate for Restaurant Wolfslaar was the estate's page; the restaurant now has its own site and line (`restaurantwolfslaar.com`, `+31 76 201 4975`, not the estate's `076 560 8000`), which is what went in. The first apply attempt failed on the CLI's temporary login role (`password authentication failed for user "cli_login_postgres"`) before running anything. A read-only count confirmed production was unchanged before the retry, rather than assuming either way.
+
+---
+
 # 2026-10-30 — Yi Long Court website and phone (QA-299)
 
 | | |
