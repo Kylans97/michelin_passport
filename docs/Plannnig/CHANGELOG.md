@@ -45,8 +45,9 @@ The two items the pre-launch audit left open (2026-10-31).
 ### Added
 
 - **Add to Wishlist from the Wishlist itself.** A tester asked where to
-  quickly save restaurants and hotels. Passport → Wishlist now has
-  "+ Add" beside YOUR WISHLIST (Restaurants and Hotels tabs; events are
+  quickly save restaurants and hotels. Passport → Wishlist now has a
+  "+" beside YOUR WISHLIST (labelled "Add to wishlist" for VoiceOver;
+  Restaurants and Hotels tabs; events are
   saved from the events). It opens the same green picker as Passport → +
   — Restaurant/Hotel chips, one search field, the same result rows — with
   a heart at the end of each row: tap to save, tap again to remove, the

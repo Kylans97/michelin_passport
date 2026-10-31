@@ -246,14 +246,11 @@ class _WishlistBodyState extends State<WishlistBody> {
                     // Save a restaurant or hotel without leaving Wishlist.
                     // Events are saved from the events themselves.
                     if (!isEvents && !_loading && !_loadError)
-                      TextButton.icon(
+                      IconButton(
                         onPressed: _openAdd,
-                        icon: const Icon(Icons.add_rounded, size: 18),
-                        label: const Text('Add'),
-                        style: TextButton.styleFrom(
-                          foregroundColor: AppColors.textOnDark,
-                          textStyle: CsTypography.bodyMedium,
-                        ),
+                        icon: const Icon(Icons.add_rounded, size: 26),
+                        color: AppColors.textOnDark,
+                        tooltip: 'Add to wishlist',
                       ),
                   ],
                 ),
