@@ -24,7 +24,13 @@ The format follows Keep a Changelog.
   venues (Ciel Bleu ★★, Arzak ★★★, Four Seasons Firenze, 3 Keys,
   Sézanne ★★★) were checked against production on 2026-10-31, not
   only the 24 August export; the people and their dates are fictional
-  and the page says so. Nothing links to it from the home page yet.
+  and the page says so.
+- **A way to the journey page from the home page.** A card under the
+  waitlist form, "Explore your journey with us", links to `/journey`
+  with a small drawn globe whose route slowly runs (still under
+  `prefers-reduced-motion`). It is the home page's only link out, so it
+  sits above "Nights we're watching" rather than in the footer, in place
+  of the curved divider that stood there.
 
 ### Fixed
 - **The journey page's passport ran off the right edge at medium

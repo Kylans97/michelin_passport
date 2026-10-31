@@ -207,6 +207,63 @@
 
   .status[data-tone="bad"] { color: #E9B7A4; }
 
+  /* ---- the journey: the one link out to /journey ---- */
+
+  .journey {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 22px;
+    align-items: center;
+    margin: 48px 0 64px;
+    padding: 22px 24px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--green-lift);
+    color: var(--ivory);
+    text-decoration: none;
+    transition: background .2s ease, border-color .2s ease;
+  }
+
+  .journey:hover { background: #0E241F; border-color: rgba(247, 241, 222, 0.38); }
+  .journey:focus-visible { outline: 2px solid var(--ivory); outline-offset: 3px; }
+
+  .journey-globe { width: 96px; height: 96px; overflow: visible; }
+
+  .journey-route {
+    stroke-dasharray: 4 4;
+    animation: route 6s linear infinite;
+  }
+
+  @keyframes route { to { stroke-dashoffset: -64; } }
+
+  .journey-text { display: grid; gap: 6px; min-width: 0; }
+
+  .journey-label {
+    font-family: var(--util);
+    font-size: 11px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .journey-title { font-family: var(--display); font-size: 28px; line-height: 1.15; }
+
+  .journey-go {
+    font-family: var(--util);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  .journey-go span { display: inline-block; transition: transform .2s ease; }
+  .journey:hover .journey-go span { transform: translateX(4px); }
+
+  @media (max-width: 480px) {
+    .journey { grid-template-columns: 1fr; justify-items: start; padding: 20px; }
+    .journey-globe { width: 72px; height: 72px; }
+  }
+
   footer {
     margin-top: 72px;
     font-family: var(--util);
@@ -221,6 +278,8 @@
 
   @media (prefers-reduced-motion: reduce) {
     .hem { animation: none; stroke-dashoffset: 0; }
+    .journey-route { animation: none; }
+    .journey-go span { transition: none; }
   }
 </style>
 </head>
@@ -252,9 +311,24 @@
     <p class="status" id="status" role="status" aria-live="polite"></p>
   </form>
 
-  <svg class="rule" viewBox="0 0 128 26" aria-hidden="true">
-    <path d="M2 2 Q2 24 64 24 Q126 24 126 2" fill="none" stroke="#F4F0E7" stroke-opacity="0.22" stroke-width="1"/>
-  </svg>
+  <a class="journey" href="/journey">
+    <svg class="journey-globe" viewBox="0 0 96 96" aria-hidden="true">
+      <circle cx="48" cy="48" r="44" fill="#16302A" stroke="rgba(247, 241, 222, 0.30)" stroke-width="1"/>
+      <ellipse cx="48" cy="48" rx="18" ry="44" fill="none" stroke="rgba(247, 241, 222, 0.12)" stroke-width="1"/>
+      <ellipse cx="48" cy="48" rx="34" ry="44" fill="none" stroke="rgba(247, 241, 222, 0.08)" stroke-width="1"/>
+      <path d="M6 40 Q48 50 90 40" fill="none" stroke="rgba(247, 241, 222, 0.10)" stroke-width="1"/>
+      <path class="journey-route" d="M26 34 Q22 44 24 46 Q30 40 38 44 Q56 22 74 50" fill="none" stroke="#F4F0E7" stroke-opacity="0.85" stroke-width="1.4"/>
+      <circle cx="26" cy="34" r="2.6" fill="#F4F0E7"/>
+      <circle cx="24" cy="46" r="2.6" fill="#F4F0E7"/>
+      <circle cx="38" cy="44" r="2.6" fill="#F4F0E7"/>
+      <circle cx="74" cy="50" r="3.2" fill="#F4F0E7"/>
+    </svg>
+    <span class="journey-text">
+      <span class="journey-label">New · Amsterdam to Tokyo</span>
+      <span class="journey-title">Explore your journey with us</span>
+      <span class="journey-go">Take the journey <span>→</span></span>
+    </span>
+  </a>
 
   <p class="ledger-label">Nights we're watching</p>
   <ul class="ledger">
