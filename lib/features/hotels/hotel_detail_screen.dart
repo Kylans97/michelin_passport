@@ -25,7 +25,6 @@ import '../../data/repositories/award_history_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
-import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
@@ -44,7 +43,7 @@ import '../events/event_detail_screen.dart';
 import '../events/widgets/hosted_events_section.dart';
 import '../planning/widgets/plan_venue_sheet.dart';
 import '../restaurants/widgets/award_history_action.dart';
-import '../stays/widgets/add_stay_sheet.dart';
+import '../passport/widgets/add_visit_flow.dart';
 import 'award_history_screen.dart';
 import 'widgets/hotel_hero.dart';
 import 'widgets/hotel_info_card.dart';
@@ -99,7 +98,6 @@ class HotelDetailScreen extends StatefulWidget {
 class _HotelDetailScreenState extends State<HotelDetailScreen> {
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
   late final _visitedRepo = VisitedRepository(Supabase.instance.client);
-  late final _photoRepo = PhotoRepository(Supabase.instance.client);
   late final _wishlistRepo = WishlistRepository(Supabase.instance.client);
   late final _followRepo = FollowRepository(Supabase.instance.client);
   late final _plannedTripsRepo = PlannedTripsRepository(
@@ -460,12 +458,11 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       _showSnack(_signInMessage, isError: true);
       return;
     }
-    final result = await showAddStaySheet(
+    // The same sheet as Passport → +, opened at this hotel.
+    final result = await showAddVisitFlow(
       context,
-      hotel: widget.hotel,
       userId: uid,
-      visitedRepository: _visitedRepo,
-      photoRepository: _photoRepo,
+      initialVenue: HotelVenue(widget.hotel),
     );
     if (result != null && mounted) {
       // Same order as RestaurantDetailScreen._openAddVisitSheet: the

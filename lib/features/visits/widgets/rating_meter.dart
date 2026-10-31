@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 
@@ -7,6 +8,11 @@ import '../../../core/constants/app_colors.dart';
 /// pill. Used for every optional rating in the visit sheet (overall, food,
 /// service, wine, value — and room/experience for a hotel stay) so all
 /// dimensions share one consistent design.
+///
+/// Besides tapping a segment, a score can be swiped: a horizontal drag
+/// anywhere on the row, starting from the "—" pill or on the meter,
+/// follows the finger, and dragging back over the pill returns to "Not
+/// rated". A light selection haptic marks each step.
 class RatingMeter extends StatelessWidget {
   final String label;
   final int? value;
@@ -53,32 +59,62 @@ class RatingMeter extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 10),
-        Row(
-          children: [
-            _NotRatedPill(
-              selected: value == null,
-              onTap: () => onChanged(null),
+        LayoutBuilder(
+          builder: (context, constraints) => GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onHorizontalDragStart: (d) =>
+                _dragTo(d.localPosition.dx, constraints.maxWidth),
+            onHorizontalDragUpdate: (d) =>
+                _dragTo(d.localPosition.dx, constraints.maxWidth),
+            child: Row(
+              children: [
+                _NotRatedPill(
+                  selected: value == null,
+                  onTap: () => onChanged(null),
+                ),
+                const SizedBox(width: RatingMeter._pillGap),
+                Expanded(
+                  child: Row(
+                    children: [
+                      for (var i = 1; i <= 10; i++)
+                        Expanded(
+                          child: _MeterSegment(
+                            filled: value != null && i <= value!,
+                            isFirst: i == 1,
+                            isLast: i == 10,
+                            onTap: () => onChanged(i),
+                          ),
+                        ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            const SizedBox(width: 8),
-            Expanded(
-              child: Row(
-                children: [
-                  for (var i = 1; i <= 10; i++)
-                    Expanded(
-                      child: _MeterSegment(
-                        filled: value != null && i <= value!,
-                        isFirst: i == 1,
-                        isLast: i == 10,
-                        onTap: () => onChanged(i),
-                      ),
-                    ),
-                ],
-              ),
-            ),
-          ],
+          ),
         ),
       ],
     );
+  }
+
+  static const double _pillWidth = 32;
+  static const double _pillGap = 8;
+
+  /// The score under [dx] on a row [width] wide: null over the pill,
+  /// otherwise the segment under the finger, clamped to 1–10.
+  @visibleForTesting
+  static int? valueAt(double dx, double width) {
+    const meterStart = _pillWidth + _pillGap;
+    if (dx < meterStart) return null;
+    final meterWidth = width - meterStart;
+    if (meterWidth <= 0) return null;
+    return (((dx - meterStart) / meterWidth) * 10).floor().clamp(0, 9) + 1;
+  }
+
+  void _dragTo(double dx, double width) {
+    final next = valueAt(dx, width);
+    if (next == value) return;
+    HapticFeedback.selectionClick();
+    onChanged(next);
   }
 }
 
@@ -94,7 +130,7 @@ class _NotRatedPill extends StatelessWidget {
     child: AnimatedContainer(
       duration: const Duration(milliseconds: 180),
       curve: Curves.easeOutCubic,
-      width: 32,
+      width: RatingMeter._pillWidth,
       height: 32,
       alignment: Alignment.center,
       decoration: BoxDecoration(

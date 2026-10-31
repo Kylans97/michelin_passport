@@ -27,7 +27,6 @@ import '../../data/repositories/restaurant_gault_millau_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
-import '../../data/repositories/photo_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
@@ -47,7 +46,7 @@ import '../events/event_detail_screen.dart';
 import '../events/widgets/hosted_events_section.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../planning/widgets/plan_venue_sheet.dart';
-import '../visits/widgets/add_visit_sheet.dart';
+import '../passport/widgets/add_visit_flow.dart';
 import 'award_history_screen.dart';
 import 'widgets/award_history_action.dart';
 import 'widgets/restaurant_hero.dart';
@@ -131,7 +130,6 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _followRepo = FollowRepository(Supabase.instance.client);
   late final _hotelRepo = HotelRepository(Supabase.instance.client);
   late final _restaurantRepo = RestaurantRepository(Supabase.instance.client);
-  late final _photoRepo = PhotoRepository(Supabase.instance.client);
   late final _awardHistoryRepo = AwardHistoryRepository(
     Supabase.instance.client,
   );
@@ -516,12 +514,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       _showSnack(_signInMessage, isError: true);
       return;
     }
-    final result = await showAddVisitSheet(
+    // The same sheet as Passport → +, opened at this restaurant, so a
+    // visit is logged on one screen wherever it starts.
+    final result = await showAddVisitFlow(
       context,
-      restaurant: widget.restaurant,
       userId: uid,
-      visitedRepository: _visitedRepo,
-      photoRepository: _photoRepo,
+      initialVenue: RestaurantVenue(widget.restaurant),
     );
     if (result != null && mounted) {
       // The stamp first, then this screen catches up underneath it

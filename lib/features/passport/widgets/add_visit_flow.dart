@@ -10,12 +10,18 @@ import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../../data/repositories/events_repository.dart';
 import '../../../data/repositories/hotel_repository.dart';
+import '../../../data/repositories/photo_repository.dart';
 import '../../../data/repositories/restaurant_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
 import '../../../data/repositories/wishlist_repository.dart';
 import '../../../models/passport_venue.dart';
+import '../../../models/save_outcome.dart';
 import '../../../models/visit.dart';
+import '../../photos/staged_photo.dart';
+import '../../photos/widgets/staged_photo_picker.dart';
+import '../../visits/widgets/menu_type_selector.dart';
 import '../../visits/widgets/rating_meter.dart';
+import '../../visits/widgets/visit_privacy_toggle.dart';
 import '../models/passport_stamp_item.dart';
 import '../utils/passport_stamp_style.dart';
 import 'passport_stamp.dart';
@@ -49,15 +55,23 @@ const _liningFigures = [FontFeature.enable('lnum')];
 /// exactly the same shape `news_article_restaurants`/`news_article_hotels`
 /// mirrored this same week. See [EventsRepository.loadVenuesForEvents]
 /// and EDITORIAL_REDESIGN_TRACKING.md for the full note.
-Future<Visit?> showAddVisitFlow(
+///
+/// [initialVenue] opens the sheet straight at step 2 for that venue — how
+/// Restaurant and Hotel Detail log a visit or stay, so every way into
+/// logging one shows the same screen (decided 2026-10-31: the venue pages
+/// used their own older sheets, which looked different). With it, the
+/// leading control is "Cancel" rather than "‹ Back": there is no step 1
+/// to go back to.
+Future<SavedVisit?> showAddVisitFlow(
   BuildContext context, {
   required String userId,
+  PassportVenue? initialVenue,
 }) {
-  return showModalBottomSheet<Visit>(
+  return showModalBottomSheet<SavedVisit>(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    builder: (_) => _AddVisitSheet(userId: userId),
+    builder: (_) => _AddVisitSheet(userId: userId, initialVenue: initialVenue),
   );
 }
 
@@ -75,7 +89,8 @@ String _venueName(PassportVenue v) => switch (v) {
 
 class _AddVisitSheet extends StatefulWidget {
   final String userId;
-  const _AddVisitSheet({required this.userId});
+  final PassportVenue? initialVenue;
+  const _AddVisitSheet({required this.userId, this.initialVenue});
 
   @override
   State<_AddVisitSheet> createState() => _AddVisitSheetState();
@@ -90,6 +105,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     Supabase.instance.client,
   );
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
+  late final _photoRepo = PhotoRepository(Supabase.instance.client);
 
   int _step = 1;
   _VenueType _type = _VenueType.restaurant;
@@ -105,9 +121,9 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   PassportVenue? _selectedVenue;
   DateTime _visitedOn = DateTime.now();
 
-  // The exact same rating dimensions as the real, already-shipped flows
-  // this stamp-flow must match — add_visit_sheet.dart (restaurant) and
-  // add_stay_sheet.dart (hotel) — never a single generic "score" field.
+  // The same rating dimensions the venue pages' own sheets collected
+  // (add_visit_sheet.dart / add_stay_sheet.dart, removed 2026-10-31 when
+  // those pages moved onto this flow) — never a single generic "score".
   // Both share Overall/Service/Value; Food/Wine are restaurant-only,
   // Room/Experience are hotel-only. Corrected after shipping a single
   // RatingMeter that reused the right WIDGET but not the right per-type
@@ -123,13 +139,30 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   int? _roomRating;
   int? _experienceRating;
 
+  // Restaurant-only, like Food/Wine.
+  MenuType? _menuType;
+  // Off by default: a new visit is private until the member says
+  // otherwise, as on the venue pages' own sheets this replaced.
+  bool _friendsVisible = false;
+  final List<StagedPhoto> _stagedPhotos = [];
+  bool _pickingPhotos = false;
+
   final _notesCtrl = TextEditingController();
   bool _saving = false;
   String? _error;
 
+  bool get _openedAtVenue => widget.initialVenue != null;
+
   @override
   void initState() {
     super.initState();
+    final venue = widget.initialVenue;
+    if (venue != null) {
+      _selectedVenue = venue;
+      _type = venue is HotelVenue ? _VenueType.hotel : _VenueType.restaurant;
+      _step = 2;
+      return; // no venue picker, so no shortcuts to load
+    }
     _loadWishlist();
     _loadEventVenues();
   }
@@ -230,6 +263,21 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     if (picked != null) setState(() => _visitedOn = picked);
   }
 
+  Future<void> _addPhotos() async {
+    if (_pickingPhotos) return;
+    setState(() => _pickingPhotos = true);
+    try {
+      final picked = await pickStagedPhotos();
+      if (!mounted) return;
+      setState(() => _stagedPhotos.addAll(picked));
+    } catch (_) {
+      if (!mounted) return;
+      setState(() => _error = 'Could not open photo library.');
+    } finally {
+      if (mounted) setState(() => _pickingPhotos = false);
+    }
+  }
+
   Future<void> _save() async {
     final venue = _selectedVenue;
     if (venue == null || _saving) return;
@@ -257,6 +305,9 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
         return;
       }
 
+      final visibility = _friendsVisible
+          ? VisitVisibility.friends
+          : VisitVisibility.private;
       final Visit saved;
       switch (venue) {
         case RestaurantVenue(:final restaurant):
@@ -269,8 +320,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
             serviceRating: _serviceRating,
             wineRating: _wineRating,
             valueRating: _valueRating,
+            menuType: _menuType,
             notes: _notesCtrl.text.trim().isEmpty ? null : _notesCtrl.text.trim(),
             starsAtVisit: restaurant.michelinStars,
+            visibility: visibility,
           );
         case HotelVenue(:final hotel):
           saved = await _visitedRepo.markHotelStay(
@@ -284,10 +337,35 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
             valueRating: _valueRating,
             notes: _notesCtrl.text.trim().isEmpty ? null : _notesCtrl.text.trim(),
             keysAtVisit: hotel.michelinKeys,
+            visibility: visibility,
           );
       }
+
+      // Photos only once the visit row exists, and never undoing it: a
+      // failed upload is reported to the caller, the visit stays saved.
+      var photoFailures = 0;
+      for (final staged in _stagedPhotos) {
+        try {
+          await _photoRepo.uploadPhoto(
+            userId: widget.userId,
+            visitId: saved.id,
+            entityType: saved.entityType,
+            entityId: saved.entityId,
+            bytes: staged.bytes,
+            fileExtension: extensionOfXFile(staged.file),
+          );
+        } catch (_) {
+          photoFailures++;
+        }
+      }
       if (!mounted) return;
-      Navigator.pop(context, saved);
+      Navigator.pop(
+        context,
+        SavedVisit(
+          saved,
+          photoFailures > 0 ? SaveOutcome.savedWithPhotoErrors : SaveOutcome.saved,
+        ),
+      );
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -336,8 +414,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                       const SizedBox(height: 14),
                       _TopRow(
                         onGreen: onGreen,
-                        stepLabel: _step == 1 ? 'STEP 1 OF 2' : 'STEP 2 OF 2',
-                        leading: _step == 1
+                        stepLabel: _openedAtVenue
+                            ? (_type == _VenueType.hotel ? 'LOG YOUR STAY' : 'LOG YOUR VISIT')
+                            : (_step == 1 ? 'STEP 1 OF 2' : 'STEP 2 OF 2'),
+                        leading: _step == 1 || _openedAtVenue
                             ? _SheetTextButton(
                                 label: 'Cancel',
                                 onGreen: onGreen,
@@ -381,6 +461,14 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                                 onRoomRatingChanged: (v) => setState(() => _roomRating = v),
                                 experienceRating: _experienceRating,
                                 onExperienceRatingChanged: (v) => setState(() => _experienceRating = v),
+                                menuType: _menuType,
+                                onMenuTypeChanged: (v) => setState(() => _menuType = v),
+                                friendsVisible: _friendsVisible,
+                                onFriendsVisibleChanged: (v) => setState(() => _friendsVisible = v),
+                                stagedPhotos: _stagedPhotos,
+                                pickingPhotos: _pickingPhotos,
+                                onAddPhotos: _addPhotos,
+                                onRemovePhoto: (p) => setState(() => _stagedPhotos.remove(p)),
                                 notesCtrl: _notesCtrl,
                                 saving: _saving,
                                 error: _error,
@@ -539,6 +627,10 @@ class _Step1 extends StatelessWidget {
             cursorColor: AppColors.textOnDark,
             decoration: InputDecoration(
               isDense: true,
+              // The app theme fills every field with ivory; on this green
+              // step that put ivory text on an ivory box, all but
+              // unreadable. This field is an underline on green, unfilled.
+              filled: false,
               hintText: 'Search by name or city',
               hintStyle: GoogleFonts.cormorantGaramond(
                 color: AppColors.secondaryOnDark,
@@ -750,8 +842,7 @@ class _Step2 extends StatelessWidget {
   final DateTime visitedOn;
   final VoidCallback onPickDate;
 
-  // The exact rating dimensions add_visit_sheet.dart (restaurant) and
-  // add_stay_sheet.dart (hotel) each collect — never a single "score"
+  // The rating dimensions per venue type — never a single "score"
   // field. Which of these render depends on [venue]'s own type (see
   // build() below); a hotel never sees food/wine, a restaurant never sees
   // room/experience.
@@ -769,6 +860,15 @@ class _Step2 extends StatelessWidget {
   final ValueChanged<int?> onRoomRatingChanged;
   final int? experienceRating;
   final ValueChanged<int?> onExperienceRatingChanged;
+
+  final MenuType? menuType;
+  final ValueChanged<MenuType?> onMenuTypeChanged;
+  final bool friendsVisible;
+  final ValueChanged<bool> onFriendsVisibleChanged;
+  final List<StagedPhoto> stagedPhotos;
+  final bool pickingPhotos;
+  final VoidCallback onAddPhotos;
+  final ValueChanged<StagedPhoto> onRemovePhoto;
 
   final TextEditingController notesCtrl;
   final bool saving;
@@ -793,6 +893,14 @@ class _Step2 extends StatelessWidget {
     required this.onRoomRatingChanged,
     required this.experienceRating,
     required this.onExperienceRatingChanged,
+    required this.menuType,
+    required this.onMenuTypeChanged,
+    required this.friendsVisible,
+    required this.onFriendsVisibleChanged,
+    required this.stagedPhotos,
+    required this.pickingPhotos,
+    required this.onAddPhotos,
+    required this.onRemovePhoto,
     required this.notesCtrl,
     required this.saving,
     required this.error,
@@ -916,6 +1024,23 @@ class _Step2 extends StatelessWidget {
             const SizedBox(height: 14),
           ],
           RatingMeter(label: 'Value', value: valueRating, onChanged: onValueRatingChanged),
+          if (venue is RestaurantVenue) ...[
+            const SizedBox(height: 24),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: _FieldLabel('MENU'),
+            ),
+            const SizedBox(height: 10),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: MenuTypeSelector(value: menuType, onChanged: onMenuTypeChanged),
+            ),
+          ],
+          const SizedBox(height: 24),
+          VisitPrivacyToggle(
+            friendsVisible: friendsVisible,
+            onChanged: onFriendsVisibleChanged,
+          ),
           const SizedBox(height: 24),
           Container(height: 1, color: AppColors.hairlineOnPaper),
           TextField(
@@ -925,6 +1050,9 @@ class _Step2 extends StatelessWidget {
             style: GoogleFonts.inter(color: AppColors.textPrimary, fontSize: 14),
             decoration: InputDecoration(
               isDense: true,
+              // Unfilled, like the search field: the theme's fill would
+              // box this in between its two hairlines.
+              filled: false,
               contentPadding: const EdgeInsets.symmetric(vertical: 12),
               border: InputBorder.none,
               hintText: 'A note for your passport…',
@@ -936,6 +1064,18 @@ class _Step2 extends StatelessWidget {
             ),
           ),
           Container(height: 1, color: AppColors.hairlineOnPaper),
+          const SizedBox(height: 20),
+          Align(
+            alignment: Alignment.centerLeft,
+            child: _FieldLabel('PHOTOS'),
+          ),
+          const SizedBox(height: 10),
+          StagedPhotoPicker(
+            photos: stagedPhotos,
+            picking: pickingPhotos,
+            onAdd: onAddPhotos,
+            onRemove: onRemovePhoto,
+          ),
           const SizedBox(height: 20),
           if (error != null) ...[
             Text(
