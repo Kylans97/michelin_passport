@@ -144,6 +144,8 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   bool _error = false;
   bool _notFound = false;
   bool _isFollowing = false;
+  // Set once the member taps Follow here; see _load.
+  bool _followTouched = false;
   bool _followBusy = false;
 
   // Events V2 Step 8B — loaded independently of _load()'s own critical
@@ -289,12 +291,13 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       // (belongs to the viewer, not the venue), so it's skipped the same
       // way — see widget.isPreview's own doc comment.
       final uid = widget.isPreview ? null : _userId;
+      // A failed follow check is "not yet", never an error for the
+      // whole page — see RestaurantDetailScreen._loadPersonalState.
       final following = (chef == null || uid == null)
           ? false
-          : await _followRepo.isFollowingPrivateChef(
-              userId: uid,
-              privateChefId: chef.id,
-            );
+          : await _followRepo
+                .isFollowingPrivateChef(userId: uid, privateChefId: chef.id)
+                .catchError((Object _) => false);
       if (!mounted) return;
       setState(() {
         _chef = chef;
@@ -302,7 +305,8 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
         _education = education;
         _photos = photos;
         _countryNames = countryNames;
-        _isFollowing = following;
+        // A tap on Follow before this returned wins over its stale answer.
+        if (!_followTouched) _isFollowing = following;
         _loading = false;
         _notFound = chef == null;
       });
@@ -370,6 +374,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     // Optimistic: the pill flips now and flips back if the write fails,
     // so the state is visible the moment it is tapped. [_followBusy]
     // only blocks a second tap while the write is in flight.
+    _followTouched = true;
     final wasFollowing = _isFollowing;
     setState(() {
       _isFollowing = !wasFollowing;

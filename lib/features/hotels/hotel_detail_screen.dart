@@ -127,6 +127,10 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   bool _isWishlisted = false;
   bool _wishlistSaving = false;
   bool _isFollowing = false;
+  // Set once the member taps Follow / the heart on this screen; see
+  // _loadPersonalState.
+  bool _followTouched = false;
+  bool _wishlistTouched = false;
   bool _followBusy = false;
 
   // Catalogue data, not personal state — loaded regardless of sign-in.
@@ -300,14 +304,18 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         userId: uid,
         hotelId: widget.hotel.id,
       );
-      final stays = await staysFuture;
-      final wishlisted = await wishlistedFuture;
-      final following = await followingFuture;
+      // Each awaited on its own, and a tap before this returns wins —
+      // see RestaurantDetailScreen._loadPersonalState.
+      final stays = await _orNull(staysFuture);
+      final wishlisted = await _orNull(wishlistedFuture);
+      final following = await _orNull(followingFuture);
       if (!mounted) return;
       setState(() {
-        _stays = stays;
-        _isWishlisted = wishlisted;
-        _isFollowing = following;
+        if (stays != null) _stays = stays;
+        if (wishlisted != null && !_wishlistTouched) {
+          _isWishlisted = wishlisted;
+        }
+        if (following != null && !_followTouched) _isFollowing = following;
         _loadingPersonalState = false;
       });
     } catch (_) {
@@ -317,6 +325,11 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       setState(() => _loadingPersonalState = false);
     }
   }
+
+  // A personal-state value that failed to load is null, not an error for
+  // the whole page — see _loadPersonalState.
+  Future<T?> _orNull<T>(Future<T> f) =>
+      f.then<T?>((v) => v, onError: (Object _) => null);
 
   // Reloads just the stay history, e.g. after saving a new stay, so it
   // reflects the change immediately without leaving/reopening the screen.
@@ -344,6 +357,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     }
     if (_wishlistSaving) return;
 
+    _wishlistTouched = true;
     setState(() => _wishlistSaving = true);
     try {
       final nowWishlisted = await _wishlistRepo.toggleHotelWishlist(
@@ -378,6 +392,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     // Optimistic: the pill flips now and flips back if the write fails,
     // so the state is visible the moment it is tapped. [_followBusy]
     // only blocks a second tap while the write is in flight.
+    _followTouched = true;
     final wasFollowing = _isFollowing;
     setState(() {
       _isFollowing = !wasFollowing;

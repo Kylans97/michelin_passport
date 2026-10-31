@@ -9,6 +9,7 @@ import '../../../models/planned_venue.dart';
 import '../../restaurants/widgets/detail_section.dart';
 import '../../visits/widgets/date_card.dart';
 import '../../visits/widgets/save_button.dart';
+import '../trips_for_planning.dart';
 
 /// Opens the "Plan visit"/"Plan stay" bottom sheet for [venue]. Creates a
 /// new `planned_venues` row on save, unless [existingPlan] is given, in
@@ -243,7 +244,12 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                   FutureBuilder<List<PlannedTrip>>(
                     future: _tripsFuture,
                     builder: (context, snap) {
-                      final trips = snap.data ?? [];
+                      final trips = tripsForPlanning(
+                        snap.data ?? const [],
+                        countryCode: widget.venue.countryCode,
+                        today: DateTime.now(),
+                        keepTripId: widget.existingPlan?.tripId,
+                      );
                       if (snap.connectionState == ConnectionState.waiting) {
                         return const Padding(
                           padding: EdgeInsets.symmetric(vertical: 8),
@@ -259,8 +265,11 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                       }
                       if (trips.isEmpty) {
                         return Text(
-                          'No planned trips yet — this will be a '
-                          'standalone plan.',
+                          (snap.data ?? const []).isEmpty
+                              ? 'No planned trips yet — this will be a '
+                                    'standalone plan.'
+                              : 'No upcoming trip in this country — this '
+                                    'will be a standalone plan.',
                           style: GoogleFonts.inter(
                             color: AppColors.textSecondary,
                             fontSize: 13,
@@ -275,11 +284,13 @@ class _PlanVenueSheetState extends State<_PlanVenueSheet> {
                             selected: _tripId == null,
                             onTap: () => setState(() => _tripId = null),
                           ),
-                          for (final trip in trips) ...[
+                          for (final (:trip, :ended) in trips) ...[
                             const SizedBox(height: 8),
                             _TripOption(
                               title: trip.title,
-                              subtitle: _formatTripRange(trip),
+                              subtitle: ended
+                                  ? '${_formatTripRange(trip)} · Ended'
+                                  : _formatTripRange(trip),
                               selected: _tripId == trip.id,
                               onTap: () => setState(() => _tripId = trip.id),
                             ),

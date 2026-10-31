@@ -8,6 +8,36 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+
+- **Plan visit only offers trips that fit the venue** (tester feedback,
+  2026-10-31). It listed every trip: a Dutch restaurant could go into a
+  trip abroad, and every trip that had ended was there too. New
+  `tripsForPlanning` keeps trips with a destination in the venue's
+  country (the trip's own country or any leg), still to come or under
+  way, soonest first — plus only the most recently ended one there,
+  marked "Ended", for adding to a trip just after it. The trip a plan is
+  already in always stays. When trips exist but none fits: "No upcoming
+  trip in this country". Four unit tests. Checked in the simulator on De
+  Librije: of four trips (NL ended, two GB, AD) only "Maastricht · Ended"
+  shows. Adding a venue to a trip already lived in Plan visit; nothing
+  else about it changed.
+
+### Fixed
+
+- **Follow (and the wishlist heart) could show the wrong state on a
+  venue page** (tester: "I follow a restaurant, go back, and I'm not
+  following it any more"). Follows were saved — three new ones in
+  production that day — so the page's reading of them was at fault, in
+  two ways that both fit: Restaurant and Hotel Detail awaited visits,
+  wishlist and follow as one unit, so any one failing left all three at
+  "not yet"; and a tap made before that load returned was overwritten by
+  its stale answer. Each value now loads on its own, and a tap on Follow
+  or the heart wins over a load that started before it. Private Chef
+  Detail gets the same follow handling. Not reproduced on a device — the
+  normal follow, leave, return path showed Following correctly before
+  and after; this closes the two ways it can go wrong.
+
 ---
 
 ## v1.5.4 (22) — 2026-10-31

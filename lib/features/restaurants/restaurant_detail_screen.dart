@@ -156,6 +156,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   bool _isWishlisted = false;
   bool _wishlistSaving = false;
   bool _isFollowing = false;
+  // Set once the member taps Follow / the heart on this screen; see
+  // _loadPersonalState.
+  bool _followTouched = false;
+  bool _wishlistTouched = false;
   bool _followBusy = false;
   bool _loadingHotel = false;
 
@@ -361,14 +365,22 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         userId: uid,
         restaurantId: widget.restaurant.id,
       );
-      final visits = await visitsFuture;
-      final wishlisted = await wishlistedFuture;
-      final following = await followingFuture;
+      // Each awaited on its own (2026-10-31, tester: "I follow a
+      // restaurant, go back, and I'm not following it any more"). One
+      // failing query used to drop all three to "not yet", so a visits
+      // load error hid a real follow. And a tap on Follow or the heart
+      // before this returns wins: the stale "not yet" from a query that
+      // started before the tap must not overwrite it.
+      final visits = await _orNull(visitsFuture);
+      final wishlisted = await _orNull(wishlistedFuture);
+      final following = await _orNull(followingFuture);
       if (!mounted) return;
       setState(() {
-        _visits = visits;
-        _isWishlisted = wishlisted;
-        _isFollowing = following;
+        if (visits != null) _visits = visits;
+        if (wishlisted != null && !_wishlistTouched) {
+          _isWishlisted = wishlisted;
+        }
+        if (following != null && !_followTouched) _isFollowing = following;
         _loadingPersonalState = false;
       });
     } catch (_) {
@@ -378,6 +390,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       setState(() => _loadingPersonalState = false);
     }
   }
+
+  // A personal-state value that failed to load is null, not an error for
+  // the whole page — see _loadPersonalState.
+  Future<T?> _orNull<T>(Future<T> f) =>
+      f.then<T?>((v) => v, onError: (Object _) => null);
 
   // Reloads just the visit history, e.g. after saving a new visit, so it
   // reflects the change immediately without leaving/reopening the screen.
@@ -424,6 +441,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     }
     if (_wishlistSaving) return;
 
+    _wishlistTouched = true;
     setState(() => _wishlistSaving = true);
     try {
       final nowWishlisted = await _wishlistRepo.toggleWishlist(
@@ -460,6 +478,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     // Optimistic: the pill flips now and flips back if the write fails,
     // so the state is visible the moment it is tapped. [_followBusy]
     // only blocks a second tap while the write is in flight.
+    _followTouched = true;
     final wasFollowing = _isFollowing;
     setState(() {
       _isFollowing = !wasFollowing;
