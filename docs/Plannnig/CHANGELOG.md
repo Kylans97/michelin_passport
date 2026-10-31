@@ -8,6 +8,18 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.4 (22) — 2026-10-31
+
+1.5.3 (21) was archived at 11:44 on 2026-10-31 from `307afb2`, so this
+build carries what came after it: `claude/wishlist-polish`, fast-forwarded
+into `release/1.5.4`. App code only — no migration, Edge Function or
+site change since 21; ledger still 123, local and remote in agreement,
+so the schema diff run for 21 (full replay of all 123 migrations,
+identical to production) still stands. `flutter analyze` clean and all
+2,724 tests pass on this tree.
+
 ### Changed
 
 - **Wishlist → "+": rows open the place, events can be saved too.**
