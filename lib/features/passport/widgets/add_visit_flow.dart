@@ -539,6 +539,10 @@ class _Step1 extends StatelessWidget {
             cursorColor: AppColors.textOnDark,
             decoration: InputDecoration(
               isDense: true,
+              // The app theme fills every field with ivory; on this green
+              // step that put ivory text on an ivory box, all but
+              // unreadable. This field is an underline on green, unfilled.
+              filled: false,
               hintText: 'Search by name or city',
               hintStyle: GoogleFonts.cormorantGaramond(
                 color: AppColors.secondaryOnDark,
