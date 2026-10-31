@@ -16,7 +16,6 @@ import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/venue_invite_repository.dart';
 import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
-import '../friends/widgets/friend_request_row.dart';
 import '../friends/widgets/identity_row.dart';
 import '../../core/analytics/screen_usage.dart';
 import 'push_prompt_sheet.dart';
@@ -288,7 +287,12 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               vertical: CsSpacing.md,
             ),
             itemCount: notifications.length + (_hasMore ? 1 : 0),
-            separatorBuilder: (_, _) => const SizedBox(height: 4),
+            // A hairline from the text column on, so each notification
+            // reads as one unit without boxing the list in.
+            separatorBuilder: (_, _) => const Padding(
+              padding: EdgeInsets.only(left: 14 + 44 + CsSpacing.md),
+              child: Divider(height: 1, color: AppColors.subtleBorderLight),
+            ),
             itemBuilder: (_, i) => i == notifications.length
                 ? _LoadMoreRow(onVisible: _loadMore)
                 : _NotificationRow(
@@ -340,6 +344,173 @@ class _LoadMoreRowState extends State<_LoadMoreRow> {
   );
 }
 
+/// Every notification row has one shape (tidied 2026-10-31 — rows used
+/// to differ by a few points each, and some put their status beside the
+/// name and others below it):
+///
+///   [unread dot] [44pt avatar or icon] [title / what happened / status]
+///
+/// The text column always starts at the same x, so names, descriptions,
+/// quotes and buttons line up from one row to the next.
+class _NotificationTile extends StatelessWidget {
+  final bool unread;
+  final Widget leading;
+  final String? title;
+  final String description;
+  final String? quote;
+  final Widget? footer;
+  final VoidCallback? onTap;
+
+  const _NotificationTile({
+    required this.unread,
+    required this.leading,
+    this.title,
+    required this.description,
+    this.quote,
+    this.footer,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final body = Padding(
+      padding: const EdgeInsets.symmetric(vertical: CsSpacing.md),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 14,
+            height: 44,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: _UnreadDot(visible: unread),
+            ),
+          ),
+          leading,
+          const SizedBox(width: CsSpacing.md),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (title != null) ...[
+                  Text(
+                    title!,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: CsTypography.bodyMedium.copyWith(
+                      color: AppColors.forestGreen,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                ] else
+                  // No name line: centre a one-line description on the
+                  // 44pt leading circle instead of hanging at its top.
+                  const SizedBox(height: 11),
+                Text(
+                  description,
+                  style: CsTypography.body.copyWith(
+                    color: title != null
+                        ? AppColors.textSecondary
+                        : AppColors.forestGreen,
+                  ),
+                ),
+                if (quote != null && quote!.isNotEmpty) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    '"${quote!}"',
+                    style: CsTypography.body.copyWith(
+                      color: AppColors.taupe,
+                      fontStyle: FontStyle.italic,
+                    ),
+                  ),
+                ],
+                if (footer != null) ...[
+                  const SizedBox(height: CsSpacing.xs),
+                  footer!,
+                ],
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+    if (onTap == null) return body;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(CsRadius.medium),
+        splashColor: AppColors.forestGreen.withValues(alpha: 0.06),
+        highlightColor: AppColors.forestGreen.withValues(alpha: 0.04),
+        child: body,
+      ),
+    );
+  }
+}
+
+/// An icon in the same 44pt circle a member's avatar sits in, for the
+/// notifications that aren't from a person.
+class _IconCircle extends StatelessWidget {
+  final IconData icon;
+  const _IconCircle(this.icon);
+
+  @override
+  Widget build(BuildContext context) => Container(
+    width: 44,
+    height: 44,
+    decoration: BoxDecoration(
+      shape: BoxShape.circle,
+      color: AppColors.warmWhite,
+      border: Border.all(color: AppColors.subtleBorderLight),
+    ),
+    alignment: Alignment.center,
+    child: Icon(icon, color: AppColors.forestGreen, size: 20),
+  );
+}
+
+/// A quiet status line under a notification ("You accepted").
+Widget _statusText(String text) =>
+    Text(text, style: CsTypography.metadata.copyWith(color: AppColors.taupe));
+
+/// Decline / accept, under the description, left-aligned with the text.
+Widget _answerButtons({
+  required VoidCallback onDecline,
+  required VoidCallback onAccept,
+  String acceptLabel = 'Accept',
+}) => Row(
+  mainAxisSize: MainAxisSize.min,
+  children: [
+    TextButton(
+      onPressed: onAccept,
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
+        minimumSize: const Size(0, 32),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      child: Text(
+        acceptLabel,
+        style: CsTypography.metadata.copyWith(
+          color: AppColors.forestGreen,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    ),
+    const SizedBox(width: CsSpacing.lg),
+    TextButton(
+      onPressed: onDecline,
+      style: TextButton.styleFrom(
+        padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 6),
+        minimumSize: const Size(0, 32),
+        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+      ),
+      child: Text(
+        'Decline',
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+      ),
+    ),
+  ],
+);
+
 class _NotificationRow extends StatelessWidget {
   final AppNotification notification;
   final VoidCallback onAccept;
@@ -353,149 +524,237 @@ class _NotificationRow extends StatelessWidget {
     required this.onTapOther,
   });
 
-  @override
-  Widget build(BuildContext context) => Row(
-    crossAxisAlignment: CrossAxisAlignment.start,
-    children: [
-      Padding(
-        padding: const EdgeInsets.only(top: CsSpacing.md, right: CsSpacing.xs),
-        child: _UnreadDot(visible: !notification.isRead),
-      ),
-      Expanded(child: _content(context)),
-    ],
+  bool get _unread => !notification.isRead;
+
+  Widget get _avatar => IdentityAvatar(
+    label: notification.otherLabel,
+    avatarUrl: notification.otherAvatarUrl,
   );
 
-  // Same shape as _VenueInviteContent._receivedStatus: Accept/Decline
-  // (FriendRequestRow, shared with FriendsScreen's Requests tab) only
-  // while the request is still pending, then what became of it.
-  // 'blocked' and a friendship that no longer exists (cancelled by the
-  // sender, or removed) show nothing rather than a guess at why.
-  Widget _friendRequestOutcome() {
-    switch (notification.friendshipStatus) {
-      case 'accepted':
-        return Text(
-          'You accepted',
-          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-        );
-      case 'declined':
-        return Text(
-          'You declined',
-          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-        );
-      default:
-        return const SizedBox.shrink();
-    }
-  }
+  void _openEvent(BuildContext context) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => EventDetailScreen(eventId: notification.subjectId),
+    ),
+  );
 
-  Widget _content(BuildContext context) {
-    switch (notification.type) {
+  @override
+  Widget build(BuildContext context) {
+    final n = notification;
+    switch (n.type) {
+      // Accept/Decline only while the request is pending, then what became
+      // of it. 'blocked' and a friendship that no longer exists show no
+      // status rather than a guess at why.
       case AppNotificationType.friendRequestReceived:
-        if (notification.friendRequestIsPending) {
-          return FriendRequestRow(
-            label: notification.otherLabel,
-            username: notification.otherUsername,
-            avatarUrl: notification.otherAvatarUrl,
-            onTap: onTapOther,
-            onAccept: onAccept,
-            onDecline: onDecline,
-          );
-        }
-        return IdentityRow(
-          label: notification.otherLabel,
-          username: notification.otherUsername,
-          avatarUrl: notification.otherAvatarUrl,
+        return _NotificationTile(
+          unread: _unread,
+          leading: _avatar,
+          title: n.otherLabel,
+          description: 'Sent you a friend request',
           onTap: onTapOther,
-          trailing: _friendRequestOutcome(),
+          footer: n.friendRequestIsPending
+              ? _answerButtons(onDecline: onDecline, onAccept: onAccept)
+              : switch (n.friendshipStatus) {
+                  'accepted' => _statusText('You accepted'),
+                  'declined' => _statusText('You declined'),
+                  _ => null,
+                },
         );
       case AppNotificationType.friendRequestAccepted:
-        return IdentityRow(
-          label: notification.otherLabel,
-          username: null,
-          avatarUrl: notification.otherAvatarUrl,
+        return _NotificationTile(
+          unread: _unread,
+          leading: _avatar,
+          title: n.otherLabel,
+          description: 'Accepted your friend request',
           onTap: onTapOther,
-          trailing: Text(
-            'Accepted',
-            style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-          ),
         );
       case AppNotificationType.missingListingAdded:
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
-          child: Row(
-            children: [
-              const Icon(
-                Icons.storefront_outlined,
-                color: AppColors.forestGreen,
-                size: 20,
-              ),
-              const SizedBox(width: CsSpacing.md),
-              Expanded(
-                child: Text(
-                  '${notification.listingName ?? 'A place you reported'} '
-                  '${notification.listingCity != null ? "in ${notification.listingCity}" : ""} '
-                  'has been added.',
-                  style: CsTypography.body.copyWith(
-                    color: AppColors.forestGreen,
-                  ),
-                ),
-              ),
-            ],
-          ),
+        return _NotificationTile(
+          unread: _unread,
+          leading: const _IconCircle(Icons.storefront_outlined),
+          description:
+              '${n.listingName ?? 'A place you reported'}'
+              '${n.listingCity != null ? ' in ${n.listingCity}' : ''}'
+              ' has been added.',
         );
       case AppNotificationType.venueInviteReceived:
       case AppNotificationType.venueInviteAccepted:
       case AppNotificationType.venueInviteDeclined:
-        return _VenueInviteContent(
-          notification: notification,
-          onTapOther: onTapOther,
-          onAccept: onAccept,
-          onDecline: onDecline,
-        );
+        return _venueInvite();
       case AppNotificationType.venueClaimReceived:
       case AppNotificationType.venueClaimApproved:
       case AppNotificationType.venueClaimRejected:
-        return _VenueClaimContent(notification: notification);
+        return _venueClaim();
       case AppNotificationType.venueAboutApproved:
       case AppNotificationType.venueAboutRejected:
       case AppNotificationType.venuePhotoApproved:
       case AppNotificationType.venuePhotoRejected:
-        return _VenueSubmissionContent(notification: notification);
+        return _venueSubmission();
       case AppNotificationType.eventApproved:
       case AppNotificationType.eventRejected:
-        return _EventReviewContent(notification: notification);
+        final isRejected = n.type == AppNotificationType.eventRejected;
+        final name = n.eventName ?? 'Your event';
+        final at = n.eventVenueName == null ? '' : ' at ${n.eventVenueName}';
+        // Approved: it's live, and tapping opens it. Not approved: the
+        // reviewer's note; the venue edits and resubmits from My venues.
+        return _NotificationTile(
+          unread: _unread,
+          leading: _IconCircle(
+            isRejected
+                ? Icons.event_busy_outlined
+                : Icons.event_available_outlined,
+          ),
+          description: isRejected
+              ? '"$name"$at was not approved.'
+              : '"$name"$at is now live.',
+          quote: isRejected ? n.eventReviewNote?.trim() : null,
+          onTap: isRejected ? null : () => _openEvent(context),
+        );
       case AppNotificationType.followedVenueEvent:
-        return _FollowedVenueEventContent(notification: notification);
+        // A venue the person follows published an event; tapping opens
+        // it, the same as the push for it does.
+        final venue = n.eventVenueName ?? 'A venue you follow';
+        return _NotificationTile(
+          unread: _unread,
+          leading: const _IconCircle(Icons.event_outlined),
+          description: n.eventName == null
+              ? '$venue announced a new event.'
+              : '$venue announced "${n.eventName}".',
+          onTap: () => _openEvent(context),
+        );
       case AppNotificationType.tripInviteReceived:
       case AppNotificationType.tripInviteAccepted:
-        return _TripInviteContent(
-          notification: notification,
-          onTapOther: onTapOther,
-          onAccept: onAccept,
-          onDecline: onDecline,
-        );
+        return _tripInvite();
     }
+  }
+
+  // An expired invite is never hidden — only its buttons give way to a
+  // neutral "Expired", by explicit product requirement (a vanished
+  // invite reads as "I missed something", not "this lapsed").
+  Widget _venueInvite() {
+    final n = notification;
+    final venueName = n.inviteVenueName ?? 'a place';
+    final city = n.inviteVenueCity;
+    final isReceived = n.type == AppNotificationType.venueInviteReceived;
+    Widget? status;
+    if (isReceived) {
+      status = switch (n.inviteStatus) {
+        'pending' when n.inviteIsExpired => _statusText('Expired'),
+        'pending' => _answerButtons(onDecline: onDecline, onAccept: onAccept),
+        'accepted' => _statusText('You accepted'),
+        'declined' => _statusText('You declined'),
+        _ => null,
+      };
+    }
+    return _NotificationTile(
+      unread: _unread,
+      leading: _avatar,
+      title: n.otherLabel,
+      description: switch (n.type) {
+        AppNotificationType.venueInviteReceived =>
+          'Suggests going to $venueName${city != null ? ' in $city' : ''}',
+        AppNotificationType.venueInviteAccepted => 'Said yes to $venueName',
+        _ => "Can't make it to $venueName",
+      },
+      quote: isReceived ? n.inviteNote?.trim() : null,
+      footer: status,
+      onTap: onTapOther,
+    );
+  }
+
+  // A trip invitation, or a friend saying yes to one. The invitee
+  // answers here (respond_to_trip_invite) or from the top of Trips.
+  Widget _tripInvite() {
+    final n = notification;
+    final trip = n.tripTitle ?? 'a trip';
+    final isReceived = n.type == AppNotificationType.tripInviteReceived;
+    Widget? status;
+    if (isReceived) {
+      status = n.tripMemberStatus == 'pending'
+          ? _answerButtons(
+              onDecline: onDecline,
+              onAccept: onAccept,
+              acceptLabel: 'Join trip',
+            )
+          : _statusText(switch (n.tripMemberStatus) {
+              'accepted' => 'You joined',
+              'declined' => 'You declined',
+              _ => 'No longer open',
+            });
+    }
+    return _NotificationTile(
+      unread: _unread,
+      leading: _avatar,
+      title: n.otherLabel,
+      description: isReceived ? 'Invited you to $trip' : 'Is coming on $trip',
+      footer: status,
+      onTap: onTapOther,
+    );
+  }
+
+  // The claim lifecycle: a status update about the claimant's own
+  // request, nothing to act on here. A rejected AND a blocked claim share
+  // the same copy (see AppNotificationType.venueClaimRejected). Received
+  // and rejected carry the one contact point a claimant has: the mailto
+  // line.
+  Widget _venueClaim() {
+    final n = notification;
+    final venueName = n.claimVenueName ?? 'the venue you claimed';
+    final showContactLine =
+        n.type == AppNotificationType.venueClaimReceived ||
+        n.type == AppNotificationType.venueClaimRejected;
+    return _NotificationTile(
+      unread: _unread,
+      leading: _IconCircle(switch (n.type) {
+        AppNotificationType.venueClaimApproved => Icons.verified_outlined,
+        AppNotificationType.venueClaimRejected => Icons.storefront_outlined,
+        _ => Icons.hourglass_top_outlined,
+      }),
+      description: switch (n.type) {
+        AppNotificationType.venueClaimReceived =>
+          'Your claim for $venueName is being reviewed.',
+        AppNotificationType.venueClaimApproved =>
+          'Your claim for $venueName was approved — you can now manage '
+              'its page.',
+        _ => 'Your claim for $venueName was not approved.',
+      },
+      quote: n.type == AppNotificationType.venueClaimRejected
+          ? n.claimReviewNote?.trim()
+          : null,
+      footer: showContactLine ? _ClaimContactLine(venueName: venueName) : null,
+    );
+  }
+
+  // A manager's about text or photo was reviewed; a rejection carries the
+  // reviewer's note inline, as nowhere else shows a submission's review.
+  Widget _venueSubmission() {
+    final n = notification;
+    final venueName = n.submissionVenueName ?? 'your venue';
+    final isPhoto =
+        n.type == AppNotificationType.venuePhotoApproved ||
+        n.type == AppNotificationType.venuePhotoRejected;
+    final what = isPhoto ? 'photo' : 'about text';
+    final isRejected =
+        n.type == AppNotificationType.venueAboutRejected ||
+        n.type == AppNotificationType.venuePhotoRejected;
+    return _NotificationTile(
+      unread: _unread,
+      leading: _IconCircle(
+        isRejected ? Icons.storefront_outlined : Icons.verified_outlined,
+      ),
+      description: isRejected
+          ? 'Your $what for $venueName was not approved.'
+          : 'Your $what for $venueName is now live.',
+      quote: isRejected ? n.submissionReviewNote?.trim() : null,
+    );
   }
 }
 
-/// The three claim-lifecycle notifications share one read-only layout —
-/// no Accept/Decline, no "other person": a claim is a status update about
-/// the claimant's own request, not something to act on here (approval
-/// happens on the Supabase dashboard, by explicit product decision).
-/// [AppNotificationType.venueClaimRejected] covers both a rejected AND a
-/// blocked claim with the identical copy — see that enum case's own doc
-/// comment for why there's nothing here to tell the two apart.
-///
-/// The received/rejected rows only (not approved — nothing to ask once a
-/// claim has succeeded) also carry a "Questions about your claim?" mailto
-/// line, since this is the only screen in the app where a claimant sees
-/// their claim's status at all — there is no separate "my claims" screen
-/// to put it on instead, no in-app messaging, and no second email flow;
-/// this is the one contact point.
-class _VenueClaimContent extends StatelessWidget {
-  final AppNotification notification;
-  const _VenueClaimContent({required this.notification});
+class _ClaimContactLine extends StatelessWidget {
+  final String venueName;
+  const _ClaimContactLine({required this.venueName});
 
-  Future<void> _emailUs(String venueName) async {
+  Future<void> _emailUs() async {
     final uri = claimQuestionMailtoUri(venueName);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
@@ -503,469 +762,24 @@ class _VenueClaimContent extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
-    final venueName = notification.claimVenueName ?? 'the venue you claimed';
-    final description = switch (notification.type) {
-      AppNotificationType.venueClaimReceived =>
-        'Your claim for $venueName is being reviewed.',
-      AppNotificationType.venueClaimApproved =>
-        'Your claim for $venueName was approved — you can now manage its page.',
-      AppNotificationType.venueClaimRejected =>
-        'Your claim for $venueName was not approved.',
-      _ => '',
-    };
-    final icon = switch (notification.type) {
-      AppNotificationType.venueClaimApproved => Icons.verified_outlined,
-      AppNotificationType.venueClaimRejected => Icons.storefront_outlined,
-      _ => Icons.hourglass_top_outlined,
-    };
-    final showContactLine =
-        notification.type == AppNotificationType.venueClaimReceived ||
-        notification.type == AppNotificationType.venueClaimRejected;
-    final note = notification.type == AppNotificationType.venueClaimRejected
-        ? notification.claimReviewNote?.trim()
-        : null;
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, color: AppColors.forestGreen, size: 20),
-          const SizedBox(width: CsSpacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  description,
-                  style: CsTypography.body.copyWith(color: AppColors.forestGreen),
-                ),
-                if (note != null && note.isNotEmpty) ...[
-                  const SizedBox(height: 4),
-                  Text(
-                    '"$note"',
-                    style: CsTypography.body.copyWith(
-                      color: AppColors.taupe,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ],
-                if (showContactLine) ...[
-                  const SizedBox(height: CsSpacing.xs),
-                  GestureDetector(
-                    onTap: () => _emailUs(venueName),
-                    child: Text.rich(
-                      TextSpan(
-                        text: 'Questions about your claim? ',
-                        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-                        children: [
-                          TextSpan(
-                            text: _kClaimQuestionsEmail,
-                            style: CsTypography.metadata.copyWith(
-                              color: AppColors.forestGreen,
-                              decoration: TextDecoration.underline,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// The four submission-review notification types share one read-only
-/// layout, same shape as [_VenueClaimContent] — no Accept/Decline, no
-/// "other person": each is a status update about the manager's own
-/// submission, closing the loop notify_venue_submission_review() opened
-/// (a trigger on venue_about_submissions/venue_photo_submissions going
-/// pending -> approved/rejected — see that migration's own comment for
-/// why there is no "received" counterpart here, unlike claims).
-///
-/// The rejection notification carries the reviewer's own note inline —
-/// [AppNotification.submissionReviewNote] — the same place
-/// [_VenueInviteContent] shows [AppNotification.inviteNote], rather than
-/// pointing at a separate screen: there is no other screen a submission's
-/// review state is shown on today.
-class _VenueSubmissionContent extends StatelessWidget {
-  final AppNotification notification;
-  const _VenueSubmissionContent({required this.notification});
-
-  @override
-  Widget build(BuildContext context) {
-    final venueName = notification.submissionVenueName ?? 'your venue';
-    final isPhoto =
-        notification.type == AppNotificationType.venuePhotoApproved ||
-        notification.type == AppNotificationType.venuePhotoRejected;
-    final what = isPhoto ? 'photo' : 'about text';
-    final isRejected =
-        notification.type == AppNotificationType.venueAboutRejected ||
-        notification.type == AppNotificationType.venuePhotoRejected;
-    final description = isRejected
-        ? 'Your $what for $venueName was not approved.'
-        : 'Your $what for $venueName is now live.';
-    final icon = isRejected ? Icons.storefront_outlined : Icons.verified_outlined;
-    final note = notification.submissionReviewNote?.trim();
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, color: AppColors.forestGreen, size: 20),
-          const SizedBox(width: CsSpacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  description,
-                  style: CsTypography.body.copyWith(color: AppColors.forestGreen),
-                ),
-                if (isRejected && note != null && note.isNotEmpty) ...[
-                  const SizedBox(height: 4),
-                  Text(
-                    '"$note"',
-                    style: CsTypography.body.copyWith(
-                      color: AppColors.taupe,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ],
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-/// A venue's own event was approved or not (20261018130000). Approved:
-/// it's live, and tapping opens its page. Not approved: the reviewer's
-/// note, the same way a rejected about text or photo shows one; the
-/// venue edits and resubmits from My venues → Events.
-class _EventReviewContent extends StatelessWidget {
-  final AppNotification notification;
-  const _EventReviewContent({required this.notification});
-
-  @override
-  Widget build(BuildContext context) {
-    final isRejected = notification.type == AppNotificationType.eventRejected;
-    final name = notification.eventName ?? 'Your event';
-    final at = notification.eventVenueName == null ? '' : ' at ${notification.eventVenueName}';
-    final description = isRejected
-        ? '"$name"$at was not approved.'
-        : '"$name"$at is now live.';
-    final note = notification.eventReviewNote?.trim();
-
-    final content = Padding(
-      padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(
-            isRejected ? Icons.event_busy_outlined : Icons.event_available_outlined,
-            color: AppColors.forestGreen,
-            size: 20,
-          ),
-          const SizedBox(width: CsSpacing.md),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(description, style: CsTypography.body.copyWith(color: AppColors.forestGreen)),
-                if (isRejected && note != null && note.isNotEmpty) ...[
-                  const SizedBox(height: 4),
-                  Text(
-                    '"$note"',
-                    style: CsTypography.body.copyWith(
-                      color: AppColors.taupe,
-                      fontStyle: FontStyle.italic,
-                    ),
-                  ),
-                ],
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-    if (isRejected) return content;
-    return InkWell(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => EventDetailScreen(eventId: notification.subjectId),
-        ),
-      ),
-      child: content,
-    );
-  }
-}
-
-/// A venue the person follows published an event (20261030130000).
-/// Tapping opens the event, the same as a push for it does.
-class _FollowedVenueEventContent extends StatelessWidget {
-  final AppNotification notification;
-  const _FollowedVenueEventContent({required this.notification});
-
-  @override
-  Widget build(BuildContext context) {
-    final venue = notification.eventVenueName ?? 'A venue you follow';
-    final name = notification.eventName;
-    final description = name == null
-        ? '$venue announced a new event.'
-        : '$venue announced "$name".';
-
-    return InkWell(
-      onTap: () => Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => EventDetailScreen(eventId: notification.subjectId),
-        ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: CsSpacing.sm),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Icon(Icons.event_outlined, color: AppColors.forestGreen, size: 20),
-            const SizedBox(width: CsSpacing.md),
-            Expanded(
-              child: Text(
-                description,
-                style: CsTypography.body.copyWith(color: AppColors.forestGreen),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/// The three venue-invite notification types share one layout: the other
-/// participant's identity, then an indented line describing what
-/// happened, then (received only) either Accept/Decline or a status
-/// label. An expired invite is never hidden or removed — only its
-/// Accept/Decline buttons are replaced with a neutral "Expired" label,
-/// per explicit product requirement (an invite that silently vanished
-/// would read as "I missed something", not "this lapsed").
-class _VenueInviteContent extends StatelessWidget {
-  final AppNotification notification;
-  final VoidCallback? onTapOther;
-  final VoidCallback onAccept;
-  final VoidCallback onDecline;
-
-  const _VenueInviteContent({
-    required this.notification,
-    required this.onTapOther,
-    required this.onAccept,
-    required this.onDecline,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final venueName = notification.inviteVenueName ?? 'a place';
-    final city = notification.inviteVenueCity;
-    final note = notification.inviteNote?.trim();
-    final isReceived = notification.type == AppNotificationType.venueInviteReceived;
-
-    final description = switch (notification.type) {
-      AppNotificationType.venueInviteReceived =>
-        'Suggests going to $venueName${city != null ? ' in $city' : ''}',
-      AppNotificationType.venueInviteAccepted => 'Said yes to $venueName',
-      AppNotificationType.venueInviteDeclined => "Can't make it to $venueName",
-      _ => '',
-    };
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        IdentityRow(
-          label: notification.otherLabel,
-          username: isReceived ? notification.otherUsername : null,
-          avatarUrl: notification.otherAvatarUrl,
-          onTap: onTapOther,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 56,
-            bottom: CsSpacing.sm,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                description,
-                style: CsTypography.body.copyWith(color: AppColors.forestGreen),
-              ),
-              if (isReceived && note != null && note.isNotEmpty) ...[
-                const SizedBox(height: 4),
-                Text(
-                  '"$note"',
-                  style: CsTypography.body.copyWith(
-                    color: AppColors.taupe,
-                    fontStyle: FontStyle.italic,
-                  ),
-                ),
-              ],
-              if (isReceived) ...[
-                const SizedBox(height: 6),
-                _receivedStatus(context),
-              ],
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _receivedStatus(BuildContext context) {
-    switch (notification.inviteStatus) {
-      case 'pending':
-        if (notification.inviteIsExpired) {
-          return Text(
-            'Expired',
-            style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-          );
-        }
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextButton(
-              onPressed: onDecline,
-              child: Text(
-                'Decline',
-                style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-              ),
-            ),
-            TextButton(
-              onPressed: onAccept,
-              child: Text(
-                'Accept',
-                style: CsTypography.metadata.copyWith(
-                  color: AppColors.forestGreen,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ],
-        );
-      case 'accepted':
-        return Text(
-          'You accepted',
-          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-        );
-      case 'declined':
-        return Text(
-          'You declined',
-          style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-        );
-      default:
-        return const SizedBox.shrink();
-    }
-  }
-}
-
-/// A trip invitation, or a friend saying yes to one. The invitee answers
-/// here (respond_to_trip_invite) or from the top of Trips; once answered,
-/// or once the invitation is withdrawn, the row just states what happened.
-class _TripInviteContent extends StatelessWidget {
-  final AppNotification notification;
-  final VoidCallback? onTapOther;
-  final VoidCallback onAccept;
-  final VoidCallback onDecline;
-
-  const _TripInviteContent({
-    required this.notification,
-    required this.onTapOther,
-    required this.onAccept,
-    required this.onDecline,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final trip = notification.tripTitle ?? 'a trip';
-    final isReceived =
-        notification.type == AppNotificationType.tripInviteReceived;
-    final status = notification.tripMemberStatus;
-    final description = isReceived
-        ? 'Invited you to $trip'
-        : 'Is coming on $trip';
-
-    Widget outcome() {
-      if (status == 'pending') {
-        return Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextButton(
-              onPressed: onDecline,
-              child: Text(
-                'Decline',
-                style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-              ),
-            ),
-            TextButton(
-              onPressed: onAccept,
-              child: Text(
-                'Join trip',
-                style: CsTypography.metadata.copyWith(
-                  color: AppColors.forestGreen,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-          ],
-        );
-      }
-      final text = switch (status) {
-        'accepted' => 'You joined',
-        'declined' => 'You declined',
-        _ => 'No longer open',
-      };
-      return Text(
-        text,
+  Widget build(BuildContext context) => GestureDetector(
+    onTap: _emailUs,
+    child: Text.rich(
+      TextSpan(
+        text: 'Questions about your claim? ',
         style: CsTypography.metadata.copyWith(color: AppColors.taupe),
-      );
-    }
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        IdentityRow(
-          label: notification.otherLabel,
-          username: isReceived ? notification.otherUsername : null,
-          avatarUrl: notification.otherAvatarUrl,
-          onTap: onTapOther,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 56, bottom: CsSpacing.sm),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                description,
-                style: CsTypography.body.copyWith(color: AppColors.forestGreen),
-              ),
-              if (isReceived) ...[
-                const SizedBox(height: 6),
-                outcome(),
-              ],
-            ],
+        children: [
+          TextSpan(
+            text: _kClaimQuestionsEmail,
+            style: CsTypography.metadata.copyWith(
+              color: AppColors.forestGreen,
+              decoration: TextDecoration.underline,
+            ),
           ),
-        ),
-      ],
-    );
-  }
+        ],
+      ),
+    ),
+  );
 }
 
 class _UnreadDot extends StatelessWidget {

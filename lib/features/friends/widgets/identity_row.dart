@@ -98,6 +98,24 @@ class IdentityRow extends StatelessWidget {
   }
 }
 
+/// The 44pt round avatar [IdentityRow] uses — photo, else initials from
+/// [label] — for other lists that line up with it (Notifications).
+class IdentityAvatar extends StatelessWidget {
+  final String label;
+  final String? avatarUrl;
+  const IdentityAvatar({super.key, required this.label, this.avatarUrl});
+
+  @override
+  Widget build(BuildContext context) {
+    final source = label.startsWith('@') ? label.substring(1) : label;
+    final words = source.trim().split(' ').where((w) => w.isNotEmpty);
+    final initials = words.isEmpty
+        ? '?'
+        : words.map((w) => w[0]).take(2).join().toUpperCase();
+    return _RowAvatar(initials: initials, avatarUrl: avatarUrl);
+  }
+}
+
 class _RowAvatar extends StatelessWidget {
   final String initials;
   final String? avatarUrl;

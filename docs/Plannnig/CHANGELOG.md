@@ -8,6 +8,25 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+
+- **Notifications: one row shape, lined up** (product owner, 2026-10-31:
+  "messy, not quite in one line"). Rows drifted by a few points each —
+  `IdentityRow` adds 4pt of padding only when tappable, the invite and
+  trip descriptions were indented a fixed 56pt against a 60pt name,
+  icon-only rows used a bare 20pt icon — and friend requests put their
+  status beside the name while invites put it below. Every type now uses
+  one `_NotificationTile`: a fixed unread-dot column, a 44pt avatar or
+  an icon in the same 44pt circle, then name / what happened / status
+  or Decline–Accept, always from the same x; hairlines between rows
+  start at the text. Friend requests say what they are ("Sent you a
+  friend request", "Accepted your friend request") and answer with the
+  same buttons as invites. @usernames are dropped from this list (the
+  profile shows them). `IdentityAvatar` is the shared 44pt avatar. No
+  behaviour changed: same actions, same taps. This screen has no test
+  harness (it builds its own repositories); checked in the simulator
+  against the real notifications on one account, before and after.
+
 ---
 
 ## v1.5.4 (22) — 2026-10-31
