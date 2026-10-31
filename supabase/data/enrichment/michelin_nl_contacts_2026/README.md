@@ -1,6 +1,6 @@
 # Websites and phones — Netherlands, restaurants and Key hotels (2026-10-31)
 
-Status: **PREPARED — NOT APPLIED.**
+Status: **APPLIED 2026-10-31** (QA-375). 118 of 118 values verified in production afterwards.
 
 Prompted by Flore (`rest_0047`) having no website in the app.
 
@@ -76,8 +76,9 @@ Per-field evidence (value, E.164, source URL, how it was matched) is in
   2026-10-31, and none has a usable site of its own. Graphite was reported
   closed (QA-203). Demain looked closed on 2026-10-28 (QA-205). Sense has no
   site found and seems to have moved to Raadhuisstraat 1, Vught.
-  **Their stars and `status` in production may be stale. This needs a
-  separate review and is not fixed here.**
+  They already have no star in production (`michelin_stars` null), but
+  all three are still `open`. **That status may be stale. It needs a
+  separate review and is not fixed here (QA-376).**
 
 ## Findings, logged and not fixed
 
