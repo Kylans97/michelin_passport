@@ -8,70 +8,23 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
-The two items the pre-launch audit left open (2026-10-31).
-
-### Fixed
-
-- **Deleting an account left its venue photo submissions in Storage.**
-  `delete-account` purged the `{user_id}/` prefix in `visit-photos` and
-  `profile-photos`, but `venue-photo-submissions` keeps objects at
-  `{venue_type}/{venue_id}/{user_id}/…`, which no prefix purge reaches.
-  The function now reads the caller's `venue_photo_submissions` paths
-  and removes those objects before `deleteUser` (whose cascade deletes
-  the rows that hold the paths), under the same hard-precondition rule
-  as the other buckets: any failure leaves the account intact. Approved
-  photos already copied to `catalogue-media` stay, as the privacy policy
-  says. Four new Deno tests (19 pass, run in `denoland/deno:2.1.4`).
-  The real client is passed through a cast in `Deno.serve`: matching it
-  structurally against the new `from().select().eq()` chain hit TS2589.
-  **Deployed 2026-10-31** as version 14 (ACTIVE, verify_jwt on). Checked
-  live without deleting anything: no Authorization header → 401, the
-  anon key as bearer → 401 "Invalid or expired session". A real account
-  deletion end to end has not been run.
-- **Clients could write PostGIS's `spatial_ref_sys`.** Migration
-  `20261031140000_block_client_writes_on_spatial_ref_sys.sql` adds
-  statement-level triggers that refuse INSERT/UPDATE/DELETE/TRUNCATE
-  from anon and authenticated; a REVOKE can't work because supabase_admin
-  owns the table and made the grants. Tested on a full local replay of
-  all 123 migrations: both roles are refused, reads and geography
-  distance still work, postgres still writes. **Applied 2026-10-31**
-  (ledger 123/123): both triggers exist on production, anon can't
-  execute the trigger function, SRID 4326 is intact, and through the
-  public REST API with the anon key a DELETE matching nothing is refused
-  with 42501 "spatial_ref_sys is read-only for clients" while a read
-  still returns 200.
-
-
-### Added
-
-- **Add to Wishlist from the Wishlist itself.** A tester asked where to
-  quickly save restaurants and hotels. Passport → Wishlist now has a
-  "+" beside YOUR WISHLIST (labelled "Add to wishlist" for VoiceOver;
-  Restaurants and Hotels tabs; events are
-  saved from the events). It opens the same green picker as Passport → +
-  — Restaurant/Hotel chips, one search field, the same result rows — with
-  a heart at the end of each row: tap to save, tap again to remove, the
-  sheet staying open for several. Optimistic, flipping back with a
-  message if the write fails; the list reloads on Done when anything
-  changed. The row and chip moved out of `add_visit_flow.dart` into
-  `venue_picker_parts.dart` (`VenuePickerRow`, `VenueTypeChip`) so both
-  sheets share them. New `test/add_to_wishlist_sheet_test.dart`; checked
-  in the simulator (2026-10-31) by searching without saving.
-
 ---
 
 ## v1.5.3 (21) — 2026-10-31
 
 Built from `main` after merging `claude/launch-readiness` into
-`release/1.5.3`. The work of a pre-launch audit, 2026-10-31: three
+`release/1.5.3`, then `claude/launch-hardening` (the two items the audit
+left open) and `claude/wishlist-add` (adding to the Wishlist from the
+Wishlist), both fast-forwarded into main before 21 was archived. The work of a pre-launch audit, 2026-10-31: three
 read-only checks — security (production catalogs and the repo), App
 Store Review risks and links, and the privacy policy against what the
 app and backend actually do.
 
-One migration went to production after 1.5.2 (20) and before this
-build: `20261031130000_tighten_photo_ownership.sql`, applied 2026-10-31.
-Ledger at the version bump: 122 migrations, local and remote in
-agreement.
+Two migrations went to production after 1.5.2 (20) and before this
+build, both 2026-10-31: `20261031130000_tighten_photo_ownership.sql` and
+`20261031140000_block_client_writes_on_spatial_ref_sys.sql`. The
+`delete-account` Edge Function was redeployed (version 14). Ledger at
+the build: 123 migrations, local and remote in agreement.
 
 **Schema diff at the version bump** (CLAUDE.md; method in
 `NEW_MACHINE_SETUP.md` §4), 2026-10-31, after the apply:
@@ -85,6 +38,10 @@ agreement.
   trigger.
 - **Before the build:** `flutter analyze` was clean and all 2,718 tests
   passed on the merged tree.
+- **Again after `20261031140000` and the last two branches:** a fresh
+  replay of all 123 migrations, `supabase db dump` identical to
+  production, storage/auth identical apart from the same local-only
+  trigger; `flutter analyze` clean, all 2,722 tests pass.
 
 **Outside the app, done 2026-10-31:** `site/` deployed with `npx
 wrangler@3 pages deploy site --project-name mantelier --branch main`;
@@ -93,6 +50,19 @@ with their own titles, and `/`, `/journey`, `/auth/confirm` and
 `/auth/confirmed` still served.
 
 ### Added
+- **Add to Wishlist from the Wishlist itself.** A tester asked where to
+  quickly save restaurants and hotels. Passport → Wishlist now has a
+  "+" beside YOUR WISHLIST (labelled "Add to wishlist" for VoiceOver;
+  Restaurants and Hotels tabs; events are
+  saved from the events). It opens the same green picker as Passport → +
+  — Restaurant/Hotel chips, one search field, the same result rows — with
+  a heart at the end of each row: tap to save, tap again to remove, the
+  sheet staying open for several. Optimistic, flipping back with a
+  message if the write fails; the list reloads on Done when anything
+  changed. The row and chip moved out of `add_visit_flow.dart` into
+  `venue_picker_parts.dart` (`VenuePickerRow`, `VenueTypeChip`) so both
+  sheets share them. New `test/add_to_wishlist_sheet_test.dart`; checked
+  in the simulator (2026-10-31) by searching without saving.
 
 - **Terms and Support pages** (`site/terms.html`, `site/support.html`).
   `/terms` and `/support` returned 200 but were the home page served as a
@@ -145,6 +115,36 @@ with their own titles, and `/`, `/journey`, `/auth/confirm` and
 
 - `lib/data/mock/mock_user.dart`, an unused mock carrying the product
   owner's real name and an old email address. Imported nowhere.
+
+### Fixed
+- **Deleting an account left its venue photo submissions in Storage.**
+  `delete-account` purged the `{user_id}/` prefix in `visit-photos` and
+  `profile-photos`, but `venue-photo-submissions` keeps objects at
+  `{venue_type}/{venue_id}/{user_id}/…`, which no prefix purge reaches.
+  The function now reads the caller's `venue_photo_submissions` paths
+  and removes those objects before `deleteUser` (whose cascade deletes
+  the rows that hold the paths), under the same hard-precondition rule
+  as the other buckets: any failure leaves the account intact. Approved
+  photos already copied to `catalogue-media` stay, as the privacy policy
+  says. Four new Deno tests (19 pass, run in `denoland/deno:2.1.4`).
+  The real client is passed through a cast in `Deno.serve`: matching it
+  structurally against the new `from().select().eq()` chain hit TS2589.
+  **Deployed 2026-10-31** as version 14 (ACTIVE, verify_jwt on). Checked
+  live without deleting anything: no Authorization header → 401, the
+  anon key as bearer → 401 "Invalid or expired session". A real account
+  deletion end to end has not been run.
+- **Clients could write PostGIS's `spatial_ref_sys`.** Migration
+  `20261031140000_block_client_writes_on_spatial_ref_sys.sql` adds
+  statement-level triggers that refuse INSERT/UPDATE/DELETE/TRUNCATE
+  from anon and authenticated; a REVOKE can't work because supabase_admin
+  owns the table and made the grants. Tested on a full local replay of
+  all 123 migrations: both roles are refused, reads and geography
+  distance still work, postgres still writes. **Applied 2026-10-31**
+  (ledger 123/123): both triggers exist on production, anon can't
+  execute the trigger function, SRID 4326 is intact, and through the
+  public REST API with the anon key a DELETE matching nothing is refused
+  with 42501 "spatial_ref_sys is read-only for clients" while a read
+  still returns 200.
 
 ---
 
