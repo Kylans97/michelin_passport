@@ -8,6 +8,27 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+
+- **Wishlist → "+": rows open the place, events can be saved too.**
+  Tester feedback on the new add sheet, 2026-10-31:
+  - Tapping a result toggled the heart, so there was no way through to
+    the restaurant or hotel. A row now opens its page (Restaurant, Hotel
+    or Event Detail); the heart is its own button ("Save to wishlist" /
+    "Remove from wishlist" for VoiceOver).
+  - Events couldn't be found. An Event chip searches upcoming and
+    running events (`loadEvents(query, from: now)` — a first try without
+    `from` also listed September's and October's past dinners). The "+"
+    now shows on the Events tab as well, and opens on events there.
+  - The tap highlight hugged the thumbnail and looked cut off at its
+    left edge. Picker rows (`PickerRow`, used by Passport → + as well)
+    now have a rounded highlight with 10pt of room on each side, and
+    `PickerRowList` lets that room bleed past the column so thumbnails
+    still line up with the search field.
+  Two new tests (events; opening on the Events tab); 2,724 pass.
+  Checked in the simulator: the Event chip, upcoming-only results, and
+  a row opening Event Detail; nothing saved.
+
 ---
 
 ## v1.5.3 (21) — 2026-10-31

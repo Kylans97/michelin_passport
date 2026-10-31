@@ -3,37 +3,57 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../../core/constants/app_colors.dart';
+import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../data/repositories/events_repository.dart';
 import '../../../data/repositories/hotel_repository.dart';
 import '../../../data/repositories/restaurant_repository.dart';
 import '../../../data/repositories/wishlist_repository.dart';
+import '../../../models/event.dart';
 import '../../../models/passport_venue.dart';
+import '../../events/event_date_format.dart';
+import '../../events/event_detail_screen.dart';
+import '../../hotels/hotel_detail_screen.dart';
 import '../../passport/widgets/venue_picker_parts.dart';
+import '../../restaurants/restaurant_detail_screen.dart';
 
 /// Searches restaurants or hotels.
 typedef VenueSearch = Future<List<PassportVenue>> Function(String query);
 
+/// Searches upcoming published events.
+typedef EventSearch = Future<List<Event>> Function(String query);
+
 /// Adds or removes one venue from the member's wishlist.
 typedef WishlistWrite = Future<void> Function(PassportVenue venue);
 
+/// Adds or removes one event from the member's wishlist.
+typedef EventWishlistWrite = Future<void> Function(Event event);
+
+/// Which kind of place the sheet is searching.
+enum WishlistAddType { restaurant, hotel, event }
+
 /// Wishlist → "+ Add": find a restaurant or hotel and save it without
 /// leaving the Wishlist (asked for by a tester, 2026-10-31). The same
-/// green picker as Passport → + ("Where did you go?") — Restaurant/Hotel
-/// chips, one search field, [VenuePickerRow] results — but each row ends
-/// in a heart instead of a chevron: tap to save, tap again to remove. The
-/// sheet stays open so several places can be saved in one go.
+/// green picker as Passport → + ("Where did you go?") — type chips, one
+/// search field, the same rows — searching restaurants, hotels or
+/// upcoming events. Tapping a row opens that place's own page; the heart
+/// at the end of the row saves it (tap again to remove). The sheet stays
+/// open so several places can be saved in one go.
 ///
-/// [savedIds] are the venue ids already on the wishlist, so their hearts
-/// start filled. Returns true when anything was added or removed, so the
-/// caller knows to reload.
+/// [savedIds] are the venue and event ids already on the wishlist, so
+/// their hearts start filled. Returns true when anything was added or
+/// removed, so the caller knows to reload.
 Future<bool> showAddToWishlistSheet(
   BuildContext context, {
   required String userId,
   required Set<String> savedIds,
-  bool startWithHotels = false,
+  WishlistAddType startWith = WishlistAddType.restaurant,
   VenueSearch? searchRestaurants,
   VenueSearch? searchHotels,
+  EventSearch? searchEvents,
   WishlistWrite? add,
   WishlistWrite? remove,
+  EventWishlistWrite? addEvent,
+  EventWishlistWrite? removeEvent,
 }) async {
   final changed = await showModalBottomSheet<bool>(
     context: context,
@@ -42,11 +62,14 @@ Future<bool> showAddToWishlistSheet(
     builder: (_) => AddToWishlistSheet(
       userId: userId,
       savedIds: savedIds,
-      startWithHotels: startWithHotels,
+      startWith: startWith,
       searchRestaurants: searchRestaurants,
       searchHotels: searchHotels,
+      searchEvents: searchEvents,
       add: add,
       remove: remove,
+      addEvent: addEvent,
+      removeEvent: removeEvent,
     ),
   );
   return changed ?? false;
@@ -55,22 +78,28 @@ Future<bool> showAddToWishlistSheet(
 class AddToWishlistSheet extends StatefulWidget {
   final String userId;
   final Set<String> savedIds;
-  final bool startWithHotels;
+  final WishlistAddType startWith;
   // Injectable for tests; default to the real repositories.
   final VenueSearch? searchRestaurants;
   final VenueSearch? searchHotels;
+  final EventSearch? searchEvents;
   final WishlistWrite? add;
   final WishlistWrite? remove;
+  final EventWishlistWrite? addEvent;
+  final EventWishlistWrite? removeEvent;
 
   const AddToWishlistSheet({
     super.key,
     required this.userId,
     required this.savedIds,
-    this.startWithHotels = false,
+    this.startWith = WishlistAddType.restaurant,
     this.searchRestaurants,
     this.searchHotels,
+    this.searchEvents,
     this.add,
     this.remove,
+    this.addEvent,
+    this.removeEvent,
   });
 
   @override
@@ -78,7 +107,7 @@ class AddToWishlistSheet extends StatefulWidget {
 }
 
 class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
-  late bool _hotels = widget.startWithHotels;
+  late WishlistAddType _type = widget.startWith;
   late final Set<String> _saved = {...widget.savedIds};
   final Set<String> _busy = {};
   bool _changed = false;
@@ -88,6 +117,7 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
   String _query = '';
   bool _searching = false;
   List<PassportVenue> _results = [];
+  List<Event> _eventResults = [];
   String? _error;
 
   late final VenueSearch _searchRestaurants =
@@ -100,6 +130,12 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
       (q) async => (await HotelRepository(
         Supabase.instance.client,
       ).search(q)).map(HotelVenue.new).toList();
+  late final EventSearch _searchEvents =
+      widget.searchEvents ??
+      // Upcoming or still running only: a past event can't be planned.
+      (q) => EventsRepository(
+        Supabase.instance.client,
+      ).loadEvents(query: q, from: DateTime.now());
   late final WishlistRepository _repo = WishlistRepository(
     Supabase.instance.client,
   );
@@ -128,6 +164,13 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
         ),
       };
 
+  late final EventWishlistWrite _addEvent =
+      widget.addEvent ??
+      (e) => _repo.addEvent(userId: widget.userId, eventId: e.id);
+  late final EventWishlistWrite _removeEvent =
+      widget.removeEvent ??
+      (e) => _repo.removeEvent(userId: widget.userId, eventId: e.id);
+
   @override
   void dispose() {
     _debounce?.cancel();
@@ -140,7 +183,10 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
     final trimmed = value.trim();
     setState(() => _query = trimmed);
     if (trimmed.length < 2) {
-      setState(() => _results = []);
+      setState(() {
+        _results = [];
+        _eventResults = [];
+      });
       return;
     }
     _debounce = Timer(const Duration(milliseconds: 300), _runSearch);
@@ -149,14 +195,21 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
   Future<void> _runSearch() async {
     final query = _query;
     if (query.length < 2 || !mounted) return;
+    final type = _type;
     setState(() => _searching = true);
     try {
-      final results = _hotels
-          ? await _searchHotels(query)
-          : await _searchRestaurants(query);
-      if (!mounted || query != _query) return;
+      final venues = switch (type) {
+        WishlistAddType.restaurant => await _searchRestaurants(query),
+        WishlistAddType.hotel => await _searchHotels(query),
+        WishlistAddType.event => const <PassportVenue>[],
+      };
+      final events = type == WishlistAddType.event
+          ? await _searchEvents(query)
+          : const <Event>[];
+      if (!mounted || query != _query || type != _type) return;
       setState(() {
-        _results = results;
+        _results = venues;
+        _eventResults = events;
         _searching = false;
       });
     } catch (_) {
@@ -165,11 +218,12 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
     }
   }
 
-  void _setHotels(bool hotels) {
-    if (hotels == _hotels) return;
+  void _setType(WishlistAddType type) {
+    if (type == _type) return;
     setState(() {
-      _hotels = hotels;
+      _type = type;
       _results = [];
+      _eventResults = [];
     });
     if (_query.length >= 2) _runSearch();
   }
@@ -179,10 +233,42 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
     HotelVenue(:final hotel) => hotel.id,
   };
 
+  void _openVenue(PassportVenue venue) => Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (_) => switch (venue) {
+        RestaurantVenue(:final restaurant) => RestaurantDetailScreen(
+          restaurant: restaurant,
+        ),
+        HotelVenue(:final hotel) => HotelDetailScreen(hotel: hotel),
+      },
+    ),
+  );
+
+  void _openEvent(Event event) => Navigator.push(
+    context,
+    MaterialPageRoute(builder: (_) => EventDetailScreen(eventId: event.id)),
+  );
+
   // Optimistic, like the heart on a venue page: flip first, write, and
   // flip back with a short message if the write fails.
-  Future<void> _toggle(PassportVenue venue) async {
-    final id = _id(venue);
+  Future<void> _toggle(PassportVenue venue) => _toggleId(
+    _id(venue),
+    add: () => _add(venue),
+    remove: () => _remove(venue),
+  );
+
+  Future<void> _toggleEvent(Event event) => _toggleId(
+    event.id,
+    add: () => _addEvent(event),
+    remove: () => _removeEvent(event),
+  );
+
+  Future<void> _toggleId(
+    String id, {
+    required Future<void> Function() add,
+    required Future<void> Function() remove,
+  }) async {
     if (_busy.contains(id)) return;
     final wasSaved = _saved.contains(id);
     setState(() {
@@ -191,7 +277,7 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
       wasSaved ? _saved.remove(id) : _saved.add(id);
     });
     try {
-      await (wasSaved ? _remove(venue) : _add(venue));
+      await (wasSaved ? remove() : add());
       _changed = true;
     } catch (_) {
       if (!mounted) return;
@@ -290,18 +376,24 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
                           ),
                         ),
                         const SizedBox(height: 18),
-                        Row(
+                        Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
                           children: [
                             VenueTypeChip(
                               label: 'Restaurant',
-                              selected: !_hotels,
-                              onTap: () => _setHotels(false),
+                              selected: _type == WishlistAddType.restaurant,
+                              onTap: () => _setType(WishlistAddType.restaurant),
                             ),
-                            const SizedBox(width: 10),
                             VenueTypeChip(
                               label: 'Hotel',
-                              selected: _hotels,
-                              onTap: () => _setHotels(true),
+                              selected: _type == WishlistAddType.hotel,
+                              onTap: () => _setType(WishlistAddType.hotel),
+                            ),
+                            VenueTypeChip(
+                              label: 'Event',
+                              selected: _type == WishlistAddType.event,
+                              onTap: () => _setType(WishlistAddType.event),
                             ),
                           ],
                         ),
@@ -368,9 +460,11 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
         padding: const EdgeInsets.symmetric(vertical: 24),
         child: Center(
           child: Text(
-            _hotels
-                ? 'Search for a hotel to save.'
-                : 'Search for a restaurant to save.',
+            switch (_type) {
+              WishlistAddType.restaurant => 'Search for a restaurant to save.',
+              WishlistAddType.hotel => 'Search for a hotel to save.',
+              WishlistAddType.event => 'Search for an upcoming event to save.',
+            },
             style: GoogleFonts.inter(
               color: AppColors.secondaryOnDark,
               fontSize: 13,
@@ -394,7 +488,7 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
         ),
       );
     }
-    if (_results.isEmpty) {
+    if (_results.isEmpty && _eventResults.isEmpty) {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 24),
         child: Center(
@@ -408,24 +502,52 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
         ),
       );
     }
-    return Column(
+    return PickerRowList(
       children: [
         for (final v in _results)
           VenuePickerRow(
             venue: v,
-            onTap: () => _toggle(v),
-            trailing: Icon(
-              _saved.contains(_id(v))
-                  ? Icons.favorite_rounded
-                  : Icons.favorite_border_rounded,
-              color: AppColors.textOnDark,
-              size: 22,
-              semanticLabel: _saved.contains(_id(v))
-                  ? 'Saved — tap to remove from wishlist'
-                  : 'Tap to save to wishlist',
+            onTap: () => _openVenue(v),
+            trailing: _heart(_id(v), onTap: () => _toggle(v)),
+          ),
+        for (final e in _eventResults)
+          PickerRow(
+            title: e.name,
+            onTap: () => _openEvent(e),
+            thumbnail: VenueThumbnail(
+              imageUrl: e.imageUrl,
+              size: 52,
+              borderRadius: const BorderRadius.all(Radius.circular(4)),
             ),
+            detail: Text(
+              [
+                formatEventDateRange(e),
+                if (e.city != null && e.city!.isNotEmpty) e.city!,
+              ].join(' · '),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: GoogleFonts.inter(
+                color: AppColors.secondaryOnDark,
+                fontSize: 12,
+              ),
+            ),
+            trailing: _heart(e.id, onTap: () => _toggleEvent(e)),
           ),
       ],
+    );
+  }
+
+  // Its own tap target, apart from the row, which opens the place.
+  Widget _heart(String id, {required VoidCallback onTap}) {
+    final saved = _saved.contains(id);
+    return IconButton(
+      onPressed: onTap,
+      icon: Icon(
+        saved ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+        size: 22,
+      ),
+      color: AppColors.textOnDark,
+      tooltip: saved ? 'Remove from wishlist' : 'Save to wishlist',
     );
   }
 }

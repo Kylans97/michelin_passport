@@ -651,13 +651,17 @@ class _Step1 extends StatelessWidget {
               const SizedBox(height: 16),
               const _SectionLabel('FROM YOUR WISHLIST'),
               const SizedBox(height: 8),
-              for (final v in wishlistForType) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
+              PickerRowList(children: [
+                for (final v in wishlistForType) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
+              ]),
             ],
             if (eventVenuesForType.isNotEmpty) ...[
               SizedBox(height: wishlistForType.isNotEmpty ? 24 : 16),
               const _SectionLabel('FROM YOUR EVENTS'),
               const SizedBox(height: 8),
-              for (final v in eventVenuesForType) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
+              PickerRowList(children: [
+                for (final v in eventVenuesForType) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
+              ]),
             ],
             if (!hasShortcuts && shortcutsLoaded) ...[
               const SizedBox(height: 32),
@@ -709,7 +713,9 @@ class _SearchResultsSection extends StatelessWidget {
     return Column(
       children: [
         const SizedBox(height: 8),
-        for (final v in results) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
+        PickerRowList(children: [
+          for (final v in results) VenuePickerRow(venue: v, onTap: () => onSelect(v)),
+        ]),
       ],
     );
   }

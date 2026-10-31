@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart' show OverflowBoxFit;
 import 'package:google_fonts/google_fonts.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/widgets/cs_editorial_glyphs.dart' show CsCountryLabel;
@@ -55,10 +56,99 @@ class VenueTypeChip extends StatelessWidget {
   );
 }
 
-/// [52pt photo or initial tile | name + stars/keys + City · CC | trailing]
-/// — the row shape of every green venue picker: Passport's add-visit flow
-/// (shortcuts and search results) and Wishlist's add sheet. [trailing]
-/// defaults to a chevron.
+/// How far a picker row's tap highlight reaches past the content on
+/// each side, so the rounded highlight doesn't hug — and look cut off
+/// at — the thumbnail. [PickerRowList] lets rows bleed by exactly this
+/// much, so the thumbnails still line up with the search field above.
+const double pickerRowBleed = 10;
+
+/// Lays out picker rows so each row's highlight reaches [pickerRowBleed]
+/// past both edges of the column, while the rows' content keeps the
+/// column's own left and right edges.
+class PickerRowList extends StatelessWidget {
+  final List<Widget> children;
+  const PickerRowList({super.key, required this.children});
+
+  @override
+  Widget build(BuildContext context) => LayoutBuilder(
+    builder: (context, constraints) => OverflowBox(
+      fit: OverflowBoxFit.deferToChild,
+      minWidth: constraints.maxWidth + 2 * pickerRowBleed,
+      maxWidth: constraints.maxWidth + 2 * pickerRowBleed,
+      child: Column(children: children),
+    ),
+  );
+}
+
+/// [52pt thumbnail | title + detail line | trailing] — the row of every
+/// green picker. [trailing] defaults to a chevron. Use inside a
+/// [PickerRowList].
+class PickerRow extends StatelessWidget {
+  final Widget thumbnail;
+  final String title;
+  final Widget detail;
+  final VoidCallback onTap;
+  final Widget? trailing;
+  const PickerRow({
+    super.key,
+    required this.thumbnail,
+    required this.title,
+    required this.detail,
+    required this.onTap,
+    this.trailing,
+  });
+
+  @override
+  Widget build(BuildContext context) => Material(
+    color: Colors.transparent,
+    child: InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      splashColor: AppColors.ivory.withValues(alpha: 0.06),
+      highlightColor: AppColors.ivory.withValues(alpha: 0.06),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          vertical: 8,
+          horizontal: pickerRowBleed,
+        ),
+        child: Row(
+          children: [
+            thumbnail,
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.cormorantGaramond(
+                      color: AppColors.textOnDark,
+                      fontSize: 17,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  detail,
+                ],
+              ),
+            ),
+            trailing ??
+                const Icon(
+                  Icons.chevron_right_rounded,
+                  color: AppColors.secondaryOnDark,
+                  size: 20,
+                ),
+          ],
+        ),
+      ),
+    ),
+  );
+}
+
+/// A restaurant or hotel as a [PickerRow]: photo, name, stars or Keys,
+/// City · CC. Shared by Passport's add-visit flow and Wishlist's add sheet.
 class VenuePickerRow extends StatelessWidget {
   final PassportVenue venue;
   final VoidCallback onTap;
@@ -86,65 +176,30 @@ class VenuePickerRow extends StatelessWidget {
       RestaurantVenue(:final restaurant) => restaurant.cityName,
       HotelVenue(:final hotel) => hotel.cityName,
     };
-    final countryCode = venue.countryCode;
-
-    return Material(
-      color: Colors.transparent,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8),
-          child: Row(
-            children: [
-              VenueThumbnail(
-                imageUrl: venue.cardImageUrl,
-                framing: venue.cardFraming,
-                size: 52,
-                borderRadius: const BorderRadius.all(Radius.circular(4)),
+    return PickerRow(
+      onTap: onTap,
+      trailing: trailing,
+      title: venuePickerName(venue),
+      thumbnail: VenueThumbnail(
+        imageUrl: venue.cardImageUrl,
+        framing: venue.cardFraming,
+        size: 52,
+        borderRadius: const BorderRadius.all(Radius.circular(4)),
+      ),
+      detail: Row(
+        children: [
+          if (award != null) ...[award, const SizedBox(width: 6)],
+          Flexible(
+            child: CsCountryLabel(
+              cityName: cityName,
+              countryCode: venue.countryCode,
+              style: GoogleFonts.inter(
+                color: AppColors.secondaryOnDark,
+                fontSize: 12,
               ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      venuePickerName(venue),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.cormorantGaramond(
-                        color: AppColors.textOnDark,
-                        fontSize: 17,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Row(
-                      children: [
-                        if (award != null) ...[award, const SizedBox(width: 6)],
-                        Flexible(
-                          child: CsCountryLabel(
-                            cityName: cityName,
-                            countryCode: countryCode,
-                            style: GoogleFonts.inter(
-                              color: AppColors.secondaryOnDark,
-                              fontSize: 12,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              trailing ??
-                  const Icon(
-                    Icons.chevron_right_rounded,
-                    color: AppColors.secondaryOnDark,
-                    size: 20,
-                  ),
-            ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

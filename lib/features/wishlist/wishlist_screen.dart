@@ -169,8 +169,13 @@ class _WishlistBodyState extends State<WishlistBody> {
             RestaurantVenue(:final restaurant) => restaurant.id,
             HotelVenue(:final hotel) => hotel.id,
           },
+        for (final e in _events ?? const <Event>[]) e.id,
       },
-      startWithHotels: _venueType == WishlistVenueType.hotels,
+      startWith: switch (_venueType) {
+        WishlistVenueType.restaurants => WishlistAddType.restaurant,
+        WishlistVenueType.hotels => WishlistAddType.hotel,
+        WishlistVenueType.events => WishlistAddType.event,
+      },
     );
     if (changed && mounted) await _load();
   }
@@ -243,9 +248,9 @@ class _WishlistBodyState extends State<WishlistBody> {
                         color: AppColors.textOnDark,
                       ),
                     ),
-                    // Save a restaurant or hotel without leaving Wishlist.
-                    // Events are saved from the events themselves.
-                    if (!isEvents && !_loading && !_loadError)
+                    // Save a restaurant, hotel or event without leaving
+                    // Wishlist.
+                    if (!_loading && !_loadError)
                       IconButton(
                         onPressed: _openAdd,
                         icon: const Icon(Icons.add_rounded, size: 26),
