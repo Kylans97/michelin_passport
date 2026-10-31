@@ -31,6 +31,10 @@ interface FakeOptions {
   storageListError?: Partial<Record<string, string>>;
   storageRemoveError?: Partial<Record<string, string>>;
   deleteUserError?: string;
+  // Storage paths of the caller's venue_photo_submissions rows, and an
+  // optional lookup failure.
+  submissionPaths?: string[];
+  submissionsLookupError?: string;
 }
 
 function fakeAdmin(opts: FakeOptions = {}): {
@@ -64,6 +68,26 @@ function fakeAdmin(opts: FakeOptions = {}): {
           return Promise.resolve({ error: null });
         },
       },
+    },
+    from(_table: string) {
+      return {
+        select(_columns: string) {
+          return {
+            eq(_column: string, _value: string) {
+              if (opts.submissionsLookupError) {
+                return Promise.resolve({
+                  data: null,
+                  error: { message: opts.submissionsLookupError },
+                });
+              }
+              return Promise.resolve({
+                data: (opts.submissionPaths ?? []).map((storage_path) => ({ storage_path })),
+                error: null,
+              });
+            },
+          };
+        },
+      };
     },
     storage: {
       from(bucket: string) {
@@ -273,4 +297,48 @@ Deno.test('two different callers each delete only their own account', async () =
 
   assertEquals(deleteUserCalls, ['user-1']);
   assertEquals(calls2, ['user-2']);
+});
+
+Deno.test('venue photo submissions (paths not under the user id) are purged by their recorded paths before deleting the user', async () => {
+  const paths = ['restaurant/r1/u1/1_a.jpg', 'hotel/h1/u1/2_b.jpg'];
+  const { admin, deleteUserCalls, removeCalls } = fakeAdmin({
+    validUserId: 'u1',
+    submissionPaths: paths,
+  });
+  const res = await handleRequest(req({ authorization: 'Bearer t' }), admin);
+  assertEquals(res.status, 200);
+  assertEquals(
+    removeCalls.find((c) => c.bucket === 'venue-photo-submissions')?.paths,
+    paths,
+  );
+  assertEquals(deleteUserCalls, ['u1']);
+});
+
+Deno.test('a member with no venue photo submissions deletes normally — no remove call on that bucket', async () => {
+  const { admin, deleteUserCalls, removeCalls } = fakeAdmin({ validUserId: 'u1' });
+  const res = await handleRequest(req({ authorization: 'Bearer t' }), admin);
+  assertEquals(res.status, 200);
+  assertEquals(removeCalls.some((c) => c.bucket === 'venue-photo-submissions'), false);
+  assertEquals(deleteUserCalls, ['u1']);
+});
+
+Deno.test('a venue submissions lookup failure BLOCKS account deletion', async () => {
+  const { admin, deleteUserCalls } = fakeAdmin({
+    validUserId: 'u1',
+    submissionsLookupError: 'boom',
+  });
+  const res = await handleRequest(req({ authorization: 'Bearer t' }), admin);
+  assertEquals(res.status, 500);
+  assertEquals(deleteUserCalls, []);
+});
+
+Deno.test('a venue submissions remove failure BLOCKS account deletion', async () => {
+  const { admin, deleteUserCalls } = fakeAdmin({
+    validUserId: 'u1',
+    submissionPaths: ['restaurant/r1/u1/1_a.jpg'],
+    storageRemoveError: { 'venue-photo-submissions': 'boom' },
+  });
+  const res = await handleRequest(req({ authorization: 'Bearer t' }), admin);
+  assertEquals(res.status, 500);
+  assertEquals(deleteUserCalls, []);
 });

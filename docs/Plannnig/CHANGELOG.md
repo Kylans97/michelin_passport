@@ -8,6 +8,31 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+The two items the pre-launch audit left open (2026-10-31).
+
+### Fixed
+
+- **Deleting an account left its venue photo submissions in Storage.**
+  `delete-account` purged the `{user_id}/` prefix in `visit-photos` and
+  `profile-photos`, but `venue-photo-submissions` keeps objects at
+  `{venue_type}/{venue_id}/{user_id}/…`, which no prefix purge reaches.
+  The function now reads the caller's `venue_photo_submissions` paths
+  and removes those objects before `deleteUser` (whose cascade deletes
+  the rows that hold the paths), under the same hard-precondition rule
+  as the other buckets: any failure leaves the account intact. Approved
+  photos already copied to `catalogue-media` stay, as the privacy policy
+  says. Four new Deno tests (19 pass, run in `denoland/deno:2.1.4`).
+  The real client is passed through a cast in `Deno.serve`: matching it
+  structurally against the new `from().select().eq()` chain hit TS2589.
+  **Not yet deployed.**
+- **Clients could write PostGIS's `spatial_ref_sys`.** Migration
+  `20261031140000_block_client_writes_on_spatial_ref_sys.sql` adds
+  statement-level triggers that refuse INSERT/UPDATE/DELETE/TRUNCATE
+  from anon and authenticated; a REVOKE can't work because supabase_admin
+  owns the table and made the grants. Tested on a full local replay of
+  all 123 migrations: both roles are refused, reads and geography
+  distance still work, postgres still writes. **Prepared, not applied.**
+
 ---
 
 ## v1.5.3 (21) — 2026-10-31

@@ -65,8 +65,10 @@ import { createClient } from 'jsr:@supabase/supabase-js@2';
 
 // A narrow, structural dependency interface — only the operations this
 // function actually performs, not the full Supabase SDK surface. The
-// real `SupabaseClient` satisfies this by structural typing (no cast
-// needed); tests supply a small hand-rolled fake object literal instead
+// real `SupabaseClient` satisfies this structurally (passed through a
+// cast in Deno.serve below, only because the from().select().eq() chain
+// is too deep for the type checker); tests supply a small hand-rolled
+// fake object literal instead
 // (no mocking framework — same testing philosophy the Flutter side of
 // this feature already uses for DeleteAccountScreen).
 export interface DeletionAdminClient {
@@ -77,6 +79,19 @@ export interface DeletionAdminClient {
     }>;
     admin: {
       deleteUser(id: string): Promise<{ error: { message: string } | null }>;
+    };
+  };
+  // Only used to find the caller's venue photo submissions, whose storage
+  // paths don't start with their user id (see purgeVenuePhotoSubmissions).
+  from(table: string): {
+    select(columns: string): {
+      eq(
+        column: string,
+        value: string,
+      ): PromiseLike<{
+        data: Array<{ storage_path: string | null }> | null;
+        error: { message: string } | null;
+      }>;
     };
   };
   storage: {
@@ -175,6 +190,55 @@ async function purgeBucket(
   }
 }
 
+// Venue photo submissions live at `{venue_type}/{venue_id}/{user_id}/...`
+// in `venue-photo-submissions`, so the `{user_id}/` prefix purge above
+// never reaches them (found by the pre-launch privacy audit, 2026-10-31).
+// Their paths are read from the caller's own `venue_photo_submissions`
+// rows instead — BEFORE deleteUser, whose cascade removes those rows.
+// Same hard-precondition contract as purgeBucket. A photo that was
+// approved has already been copied into `catalogue-media` by
+// publish-venue-photo; that published copy is the venue's and stays.
+const VENUE_SUBMISSIONS_BUCKET = 'venue-photo-submissions';
+
+async function purgeVenuePhotoSubmissions(
+  admin: DeletionAdminClient,
+  userId: string,
+): Promise<PurgeResult> {
+  try {
+    const { data, error } = await admin
+      .from('venue_photo_submissions')
+      .select('storage_path')
+      .eq('user_id', userId);
+    if (error) {
+      console.error('delete-account: submissions lookup failed', {
+        userId,
+        message: error.message,
+      });
+      return { ok: false, message: error.message };
+    }
+    const paths = (data ?? [])
+      .map((row) => row.storage_path)
+      .filter((path): path is string => !!path);
+    if (paths.length === 0) return { ok: true };
+    const { error: removeError } = await admin.storage
+      .from(VENUE_SUBMISSIONS_BUCKET)
+      .remove(paths);
+    if (removeError) {
+      console.error('delete-account: storage remove failed', {
+        userId,
+        bucket: VENUE_SUBMISSIONS_BUCKET,
+        message: removeError.message,
+      });
+      return { ok: false, message: removeError.message };
+    }
+    return { ok: true };
+  } catch (err) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.error('delete-account: submissions cleanup failed', { userId, message });
+    return { ok: false, message };
+  }
+}
+
 /// Testable core — accepts an injected admin client so tests can supply a
 /// hand-rolled fake (no mocking framework), mirroring the same
 /// constructor-injection pattern the Flutter side of this feature already
@@ -230,6 +294,11 @@ export async function handleRequest(
     return jsonResponse({ error: 'Could not delete account. Please try again.' }, 500);
   }
 
+  const submissionsResult = await purgeVenuePhotoSubmissions(admin, userId);
+  if (!submissionsResult.ok) {
+    return jsonResponse({ error: 'Could not delete account. Please try again.' }, 500);
+  }
+
   try {
     const { error: deleteError } = await admin.auth.admin.deleteUser(userId);
     if (deleteError) {
@@ -258,5 +327,8 @@ Deno.serve((req) => {
   const admin = createClient(supabaseUrl, serviceRoleKey, {
     auth: { autoRefreshToken: false, persistSession: false },
   });
-  return handleRequest(req, admin);
+  // Cast: matching the full SDK client against the narrow interface's
+  // from().select().eq() chain is too deep for the type checker (TS2589).
+  // The chain used is the SDK's documented one.
+  return handleRequest(req, admin as unknown as DeletionAdminClient);
 });
