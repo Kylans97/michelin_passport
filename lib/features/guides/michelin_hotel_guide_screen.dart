@@ -150,6 +150,10 @@ class _MichelinHotelGuideScreenState extends State<MichelinHotelGuideScreen> {
                     label: GuideKeyFilter.values[i].label,
                     selected: _keyFilter == GuideKeyFilter.values[i],
                     onTap: () => _onKeyFilterChanged(GuideKeyFilter.values[i]),
+                    // The guide's body is ivory: without this the chip used
+                    // its dark-canvas colours, so the selected one turned
+                    // ivory-on-ivory and vanished (tester, 2026-10-31).
+                    surface: CsSurface.light,
                   ),
                 ],
               ],

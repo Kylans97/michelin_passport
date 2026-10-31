@@ -165,6 +165,10 @@ class _MichelinRestaurantGuideScreenState
                     selected: _starFilter == GuideStarFilter.values[i],
                     onTap: () =>
                         _onStarFilterChanged(GuideStarFilter.values[i]),
+                    // The guide's body is ivory: without this the chip used
+                    // its dark-canvas colours, so the selected one turned
+                    // ivory-on-ivory and vanished (tester, 2026-10-31).
+                    surface: CsSurface.light,
                   ),
                 ],
               ],

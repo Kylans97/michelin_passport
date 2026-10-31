@@ -8,6 +8,19 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Fixed
+
+- **The selected star or Key filter vanished in the MICHELIN guides**
+  (tester, 2026-10-31: "when something's off it's gone entirely"). The
+  guides' body is ivory, but their filter chips used `CsFilterChip`'s
+  dark-canvas default, so the selected chip was ivory on ivory and the
+  unselected ones were solid green — the reverse of what reads as
+  selected. Both guide screens now pass `surface: CsSurface.light`
+  (selected: deep green; unselected: light with a hairline). Checked in
+  the simulator with ★ selected. The same report about unrated score
+  bars was looked at too; the product owner judged those fine as they
+  are.
+
 ---
 
 ## v1.5.4 (22) — 2026-10-31
