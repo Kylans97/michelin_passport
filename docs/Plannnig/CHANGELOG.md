@@ -8,9 +8,39 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
-Pre-launch audit, 2026-10-31: three read-only checks — security
-(production catalogs and the repo), App Store Review risks and links, and
-the privacy policy against what the app and backend actually do.
+---
+
+## v1.5.3 (21) — 2026-10-31
+
+Built from `main` after merging `claude/launch-readiness` into
+`release/1.5.3`. The work of a pre-launch audit, 2026-10-31: three
+read-only checks — security (production catalogs and the repo), App
+Store Review risks and links, and the privacy policy against what the
+app and backend actually do.
+
+One migration went to production after 1.5.2 (20) and before this
+build: `20261031130000_tighten_photo_ownership.sql`, applied 2026-10-31.
+Ledger at the version bump: 122 migrations, local and remote in
+agreement.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), 2026-10-31, after the apply:
+- **Replay:** all 122 migrations applied cleanly from scratch on a fresh
+  full stack.
+- **`supabase db dump`:** identical on both sides apart from blank
+  lines.
+- **Storage and auth, compared directly:** buckets, `storage.objects`
+  policies, triggers and RLS on both storage tables are identical, apart
+  from the expected local-only `enforce_versioning_status_transition`
+  trigger.
+- **Before the build:** `flutter analyze` was clean and all 2,718 tests
+  passed on the merged tree.
+
+**Outside the app, done 2026-10-31:** `site/` deployed with `npx
+wrangler@3 pages deploy site --project-name mantelier --branch main`;
+`/privacy` (dated 31 October 2026), `/terms` and `/support` checked live
+with their own titles, and `/`, `/journey`, `/auth/confirm` and
+`/auth/confirmed` still served.
 
 ### Added
 
@@ -25,8 +55,9 @@ the privacy policy against what the app and backend actually do.
 - **Sign-up states the agreement:** "By creating an account you agree to
   the Terms and the Privacy Policy", both linked, above Create account.
   Profile gains Terms and Support rows beside Privacy policy.
-- **Migration `20261031130000_tighten_photo_ownership.sql` — prepared,
-  NOT applied.** `photos_update` checked only the owner, so a member
+- **Migration `20261031130000_tighten_photo_ownership.sql` — applied to
+  production 2026-10-31**, after it was checked: both constraints exist
+  and are validated, and `photos_update` carries the visit check. `photos_update` checked only the owner, so a member
   could repoint their own photo at someone else's visit or attendance,
   or at someone else's storage object, and have it served to that
   person's friends; the update check now matches `photos_insert`.
