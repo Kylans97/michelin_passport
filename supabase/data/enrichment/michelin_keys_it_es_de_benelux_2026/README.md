@@ -15,8 +15,8 @@ Review `match_report.csv` and the decisions below first.
 |---|---|---|---|---|---|---|
 | MICHELIN 2026 Keys (3/2/1) | 17/49/158 = 224 | 5/17/100 = 122 | 6/37/87 = 130 | 0/4/14 = 18 | 1/5/12 = 18 | 0/1/1 = 2 |
 | Production before | 12/37/106 = 155 | 4/10/95 = 109 (+1 W50B, no Key) | 6/31/89 = 126 | 0/2/13 = 15 | 1/5/11 = 17 | 0/0/1 = 1 |
-| Production after | 17/49/**159** | 5/17/**105** | 6/**38**/**98** | 0/4/14 | 1/5/12 | 0/1/1 |
-| … difference = not a Key in 2026, left untouched (QA-387) | 1 | 5 | 12 | — | — | — |
+| Production after | 17/49/158 | 5/17/100 | 6/37/87 | 0/4/14 | 1/5/12 | 0/1/1 |
+| Key lost in 2026, hotel kept with `michelin_keys` NULL (QA-387) | 1 | 5 | 12 | — | — | — |
 | Key hotels added (`hotel_2701`–`hotel_2809`) | 70 | 18 | 16 | 3 | 1 | 1 |
 | Key changes, launch row relabelled 2025 (QA-383) | 6 | 2 | 8 | 1 | — | — |
 | Key import errors corrected in place (QA-384) | 10 | 5 | — | — | — | — |
@@ -26,24 +26,37 @@ Review `match_report.csv` and the decisions below first.
 
 Every Key hotel the file touches or adds ends with exactly one current
 `michelin_keys` row equal to `michelin_keys`, and each country's Key tiers
-are post-conditions in the file. **No restaurant, hotel link,
+are post-conditions in the file: after applying, every country's Key hotels
+equal MICHELIN's 2026 list exactly. **No restaurant, hotel link,
 `property_name`, website, phone or Place ID is written.**
+
+## Keys lost in 2026 (QA-387, decided 2026-10-31)
+
+18 stored Key hotels have a live MICHELIN page with no award in 2026; each
+held exactly its stored Key in MICHELIN's 2025 article. IT: Aethos
+Monterosa. ES: Only YOU Hotel Atocha, Ohla Eixample, The Principal Madrid,
+Little Beach House Barcelona, Yurbban Passage. DE: Hotel de Rome (2 Keys),
+Schloss Eberstein, AMERON Neuschwanstein, Kloster Hornbach, Villa
+Mittermeier, Hanusel Hof, Strandhotel Fischland, DAS.HOCHGRAT,
+Staudacherhof, Haubers Naturresort, Gewandhaus Dresden, Spa & Resort
+Bachmair Weissach.
+
+The product owner decided that a hotel that loses its Key **stays**, as a
+restaurant that loses its stars does: a member who stayed there keeps that
+record. Guides show only the current list; search finds the hotel. So the
+file relabels each launch row 2025 and closes it, writes a current 2026 row
+with NULL (`announced_on` 2026-09-18) and sets `michelin_keys` NULL. Links
+(Schloss Eberstein and Villa Mittermeier have one each) are untouched. This
+revises hotel-scope rule 1 in `CLAUDE.md`; the same wording in
+`docs/Architecture/Michelin_Database/DATABASE_ARCHITECTURE.md` is not
+changed here (that folder is edited only when asked).
+
+The app already behaves this way: the Michelin Hotels guide queries
+`michelin_keys is not null`, while Explore's search includes hotels without
+a Key, and visits keep `keys_at_visit`.
 
 ## Decisions waiting for you
 
-- **QA-387 — 18 hotels are no longer Key hotels.** Their MICHELIN pages are
-  live but carry no award in 2026; each held exactly its stored Key in
-  MICHELIN's 2025 article. IT: Aethos Monterosa. ES: Only YOU Hotel Atocha,
-  Ohla Eixample, The Principal Madrid, Little Beach House Barcelona, Yurbban
-  Passage. DE: Hotel de Rome (2 Keys), Schloss Eberstein, AMERON Neuschwanstein,
-  Kloster Hornbach, Villa Mittermeier, Hanusel Hof, Strandhotel Fischland,
-  DAS.HOCHGRAT, Staudacherhof, Haubers Naturresort, Gewandhaus Dresden, Spa &
-  Resort Bachmair Weissach. None is a World's 50 Best hotel, so keeping them
-  conflicts with the settled hotel-scope rule 1 (`hotels` holds only Key and
-  World's 50 Best hotels), and removing them is destructive (Schloss Eberstein
-  and Villa Mittermeier each carry a restaurant link; visits may reference
-  any). **Left untouched; not prepared either way.** Precedent: none (no
-  earlier pass met a lost Key).
 - **QA-384 — 15 launch Keys match no MICHELIN edition.** For these,
   MICHELIN's 2024 article, its 2025 article and the live 2026 page agree with
   each other and not with production (e.g. Hassler Roma and Le Sirenuse
@@ -195,9 +208,10 @@ from production's catalog), seeded with the real export:
 
 - **Without the migration:** aborts at the first Italian hotel city; nothing
   applied.
-- **Migration + file:** applies; the per-country tiers in the table above;
-  0 Key hotels without exactly one matching current row; 18 non-current 2025
-  rows (17 here + hotel_17's), 131 new 2026 rows (109 + 17 + 5).
+- **Migration + file:** applies; every country equals MICHELIN 2026
+  exactly; 0 Key hotels without exactly one matching current row; 36
+  non-current 2025 rows (17 changes + 18 lost Keys + hotel_17's), 131 new
+  2026 rows (109 + 17 + 5) and 18 current 2026 NULL rows.
 - **Re-run of the file:** aborts. **Re-run of the migration:** no-op.
 - **A renamed or re-keyed existing hotel / a code in the range already taken /
   a current Key row not labelled 2026:** each aborts the whole file.
@@ -207,7 +221,7 @@ RLS and the other tables were not reproduced).
 
 ## Not done here
 
-- QA-387 (lost Keys) and the open questions above.
+- The open questions above, and the DATABASE_ARCHITECTURE.md wording for QA-387.
 - Website, phone and Place ID of the new hotels (QA-385).
 - Hotel links for the new hotels: no restaurant page was read, so no "Stay at
   the hotel" link and no `property_name` were derived.

@@ -266,9 +266,25 @@ def main():
                 continue
             p = pages_by_id.get(mid)
             state = ('page ' + str(p['status']) + (', award ' + p['ld']['award']['awardFor'] if p.get('ld') and p['ld'].get('award') else ', no award on the page')) if p else 'page not read'
-            lost.append(h['code'])
-            report.append(dict(country=CC, code=h['code'], name=h['name'], kind='NOT A 2026 KEY HOTEL ON MICHELIN (QA-387)',
-                               detail=f"MICHELIN id {mid}; production {h['keys']} Key(s); {h['michelin_url']}: {state}; MICHELIN 2025 article {art.get(mid, {}).get(2025)} -- left untouched, needs a decision"))
+            k25 = art.get(mid, {}).get(2025)
+            cur = [x for x in (h['key_history'] or []) if x['current']]
+            launch_ok = bool(cur and cur[0]['year'] == 2026 and cur[0]['announced_on'] is None
+                             and cur[0]['value'] == h['keys'] and len(h['key_history']) == 1)
+            no_award = bool(p and p['status'] == 200 and p.get('ld') and not p['ld'].get('award'))
+            if no_award and k25 == h['keys'] and launch_ok:
+                # Key lost in 2026 (QA-387, product owner 2026-10-31): the hotel stays, as a
+                # restaurant that loses its stars does -- launch row relabelled 2025 and closed,
+                # a current 2026 row with NULL, michelin_keys NULL. Guides show current Keys
+                # only; search, visits and award history keep the hotel.
+                lost.append(dict(code=h['code'], name=h['name'], was=h['keys']))
+                report.append(dict(country=CC, code=h['code'], name=h['name'], kind=f"KEY LOST {h['keys']} -> NULL (QA-387)",
+                                   detail=f"MICHELIN id {mid}; {h['michelin_url']}: {state}; production {h['keys']} is MICHELIN's 2025 Key "
+                                          f"({art_src.get((mid, 2025))}); launch row relabelled 2025, non-current; 2026 = NULL written; michelin_keys NULL"))
+            else:
+                held.append(h['code'])
+                report.append(dict(country=CC, code=h['code'], name=h['name'], kind='NOT A 2026 KEY HOTEL, HELD BACK',
+                                   detail=f"MICHELIN id {mid}; production {h['keys']} Key(s); {h['michelin_url']}: {state}; MICHELIN 2025 article {k25}; "
+                                          f"Key history {h['key_history']}: not proven, left untouched"))
         for k in rows:
             k.setdefault('match', 'HELD'); k.setdefault('town', ''); k.setdefault('town_note', '')
         with open(os.path.join(HERE, f'{cc}_key_hotels.csv'), 'w', newline='') as f:
@@ -281,11 +297,13 @@ def main():
             after[h['keys']] += 1
         for c in changes + fixes:
             after[c['was']] -= 1; after[c['keys']] += 1
+        for c in lost:
+            after[c['was']] -= 1; after[None] += 1
         for h in new:
             after[h['keys']] += 1
         summ[CC] = dict(michelin=dict(collections.Counter(k['keys'] for k in rows)), production_before=dict(collections.Counter(h['keys'] for h in prod)),
                         after={k: v for k, v in after.items() if v}, new_hotels=len(new), key_changes=len(changes), key_import_errors=len(fixes), verified=len(verified),
-                        key_rows_added_existing=len(missing_row), not_key_on_michelin=len(lost), held=len(held), new_towns=len(newtowns))
+                        key_rows_added_existing=len(missing_row), keys_lost=len(lost), held=len(held), new_towns=len(newtowns))
         towns_all += [(CC, t) for t in sorted(newtowns)]
         last = hcode - 1
 
@@ -365,6 +383,32 @@ update public.award_history a set award_value = k.keys
    and a.is_current and a.guide_year = 2026 and a.announced_on is null and a.award_value = k.was;
 update public.hotels h set michelin_keys = k.keys, updated_at = now()
   from _kfix_{cc} k where h.hotel_code = k.code and h.michelin_keys = k.was;""")
+        if lost:
+            P.append(f"""-- {CC} 1d. Keys lost in 2026 (QA-387): MICHELIN's page is live with no award; the stored Key is
+--    MICHELIN's 2025 Key. The hotel stays (product owner, 2026-10-31): launch row relabelled 2025
+--    and closed, a current 2026 row with NULL written, michelin_keys NULL; links untouched
+create temp table _klost_{cc} (code text primary key, was smallint) on commit drop;
+insert into _klost_{cc} values
+{(','+chr(10)).join(f"    ({q(c['code'])}, {c['was']})" for c in lost)};
+do $$
+declare n int;
+begin
+  select count(*) into n from _klost_{cc} k join public.hotels h on h.hotel_code = k.code and h.michelin_keys = k.was
+    join public.award_history a on a.entity_type = 'hotel' and a.entity_id = h.id and a.award_type = 'michelin_keys'
+   where a.is_current and a.guide_year = 2026 and a.award_value = k.was and a.announced_on is null
+     and (select count(*) from public.award_history o where o.entity_type = 'hotel' and o.entity_id = h.id
+           and o.award_type = 'michelin_keys') = 1;
+  if n <> {len(lost)} then raise exception '{CC}: % of {len(lost)} lost-Key launch rows found as exported -- has this file run?', n; end if;
+end $$;
+update public.award_history a set guide_year = 2025, is_current = false
+  from public.hotels h, _klost_{cc} k
+ where h.id = a.entity_id and h.hotel_code = k.code and a.entity_type = 'hotel' and a.award_type = 'michelin_keys'
+   and a.is_current and a.guide_year = 2026 and a.announced_on is null and a.award_value = k.was;
+insert into public.award_history (entity_type, entity_id, guide_year, award_type, award_value, is_current, announced_on)
+select 'hotel', h.id, {KEY_YEAR}, 'michelin_keys', NULL, true, date '{ANNOUNCED}'
+  from public.hotels h join _klost_{cc} k on k.code = h.hotel_code;
+update public.hotels h set michelin_keys = NULL, updated_at = now()
+  from _klost_{cc} k where h.hotel_code = k.code and h.michelin_keys = k.was;""")
         if new:
             P.append(f"""-- {CC} 2. MICHELIN 2026 Key hotels missing from `hotels`: {new[0]['code']}..{new[-1]['code']}
 --    (name = page h1; address, pin and michelin_url = page JSON-LD; website, phone and
@@ -414,7 +458,14 @@ begin
      and (select count(*) from public.award_history a where a.entity_type = 'hotel' and a.entity_id = h.id
            and a.award_type = 'michelin_keys' and a.is_current and a.award_value = h.michelin_keys) <> 1;
   if n <> 0 then raise exception '{CC}: % Key hotels without exactly one matching current Key row', n; end if;
-end $$;""")
+""" + (f"""  select count(*) into n from public.hotels h where h.hotel_code = any(array[{', '.join(q(c['code']) for c in lost)}])
+     and h.michelin_keys is null
+     and (select count(*) from public.award_history a where a.entity_type = 'hotel' and a.entity_id = h.id
+           and a.award_type = 'michelin_keys' and a.is_current and a.award_value is null and a.guide_year = {KEY_YEAR}) = 1
+     and (select count(*) from public.award_history a where a.entity_type = 'hotel' and a.entity_id = h.id
+           and a.award_type = 'michelin_keys' and not a.is_current and a.guide_year = 2025) = 1;
+  if n <> {len(lost)} then raise exception '{CC}: % of {len(lost)} lost-Key hotels end as expected', n; end if;
+""" if lost else '') + """end $$;""")
 
     with open(os.path.join(HERE, 'match_report.csv'), 'w', newline='') as f:
         w = csv.DictWriter(f, fieldnames=['country', 'code', 'name', 'kind', 'detail']); w.writeheader(); w.writerows(report)
@@ -445,8 +496,9 @@ commit;
 -- Germany, Belgium, the Netherlands and Luxembourg: write the Key changes on existing
 -- hotels (launch row relabelled to the edition it holds, QA-217 rule), add the Key
 -- hotels missing from the catalogue, and give every Key hotel exactly one current
--- Key row. Hotels MICHELIN no longer shows with a Key are reported only
--- (match_report.csv, README). No restaurant, link or property_name is touched.
+-- Key row. Hotels whose Key MICHELIN withdrew in 2026 stay in the catalogue with
+-- michelin_keys NULL and a current 2026 NULL row, their 2025 Key kept as history
+-- (QA-387). No restaurant, link or property_name is touched.
 -- Generated by build_keys.py; evidence in match_report.csv, decisions.json, README.md.
 --
 -- PREREQUISITE: supabase/migrations/{mig_name}.
