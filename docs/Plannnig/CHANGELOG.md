@@ -8,6 +8,21 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.4 (22) — 2026-10-31
+
+1.5.3 (21) was archived at 11:44 on 2026-10-31 from `307afb2`, so this
+build carries what came after it: `claude/wishlist-polish`, fast-forwarded
+into `release/1.5.4`, then `claude/follow-and-trips` (follow state, Plan visit's trip list,
+the globe button) `claude/guide-chip-contrast` (the guides' filter
+chips) and `claude/notifications-tidy` (the notifications list), each
+fast-forwarded into main before 22 was archived. App code only — no migration, Edge Function or site change
+since 21; ledger still 123, local and remote in agreement,
+so the schema diff run for 21 (full replay of all 123 migrations,
+identical to production) still stands. `flutter analyze` clean and all
+2,728 tests pass on this tree.
+
 ### Changed
 
 - **Notifications: one row shape, lined up** (product owner, 2026-10-31:
@@ -26,22 +41,6 @@ The format follows Keep a Changelog.
   behaviour changed: same actions, same taps. This screen has no test
   harness (it builds its own repositories); checked in the simulator
   against the real notifications on one account, before and after.
-
----
-
-## v1.5.4 (22) — 2026-10-31
-
-1.5.3 (21) was archived at 11:44 on 2026-10-31 from `307afb2`, so this
-build carries what came after it: `claude/wishlist-polish`, fast-forwarded
-into `release/1.5.4`, then `claude/follow-and-trips` (follow state, Plan visit's trip list,
-the globe button) and `claude/guide-chip-contrast` (the guides' filter
-chips), each fast-forwarded into main before 22 was archived. App code only — no migration, Edge Function or site change
-since 21; ledger still 123, local and remote in agreement,
-so the schema diff run for 21 (full replay of all 123 migrations,
-identical to production) still stands. `flutter analyze` clean and all
-2,728 tests pass on this tree.
-
-### Changed
 
 - **The Passport's map button is a globe.** It opens the spinning globe
   of your places (My Map), so `Icons.map_outlined` became
