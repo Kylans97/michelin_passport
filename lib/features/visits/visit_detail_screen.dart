@@ -8,7 +8,9 @@ import '../../core/widgets/venue_score_strip.dart';
 import '../../core/widgets/star_row.dart';
 import '../../data/repositories/visited_repository.dart';
 import '../../models/restaurant.dart';
+import '../../models/passport_venue.dart';
 import '../../models/visit.dart';
+import '../passport/widgets/add_visit_flow.dart';
 import '../photos/widgets/visit_photos_section.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 
@@ -87,9 +89,32 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
     );
   }
 
-  // The smallest sensible privacy-management seam for a table with no
-  // general edit flow (see the Step 2 implementation report) — a single
-  // toggle alongside the existing Delete action, not a new edit screen.
+  // True once this visit was edited here, so leaving the screen hands
+  // `true` back the way a delete does and the list behind it refreshes.
+  bool _edited = false;
+
+  Future<void> _openEdit() async {
+    final uid = Supabase.instance.client.auth.currentUser?.id;
+    if (uid == null || uid.isEmpty) {
+      _showSnack('Sign in required.');
+      return;
+    }
+    final result = await showAddVisitFlow(
+      context,
+      userId: uid,
+      initialVenue: RestaurantVenue(widget.restaurant),
+      existingVisit: _visit,
+    );
+    if (result == null || !mounted) return;
+    setState(() {
+      _visit = result.visit;
+      _edited = true;
+    });
+    _showSnack('Visit updated.', isError: false);
+  }
+
+  // A one-tap privacy switch in the menu, beside Edit (which can change
+  // visibility too, with everything else) and Delete.
   Future<void> _toggleVisibility() async {
     if (_updatingVisibility) return;
     final uid = Supabase.instance.client.auth.currentUser?.id;
@@ -199,197 +224,226 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
     final menuType = visit.menuType;
     final notes = visit.notes;
 
-    return Scaffold(
-      backgroundColor: AppColors.ivory,
-      appBar: AppBar(
+    return PopScope(
+      canPop: !_edited,
+      onPopInvokedWithResult: (didPop, _) {
+        if (!didPop) Navigator.of(context).pop(true);
+      },
+      child: Scaffold(
         backgroundColor: AppColors.ivory,
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
-        foregroundColor: AppColors.forestGreen,
-        actions: [
-          if (!_isOwner)
-            const SizedBox.shrink()
-          else if (_deleting || _updatingVisibility)
-            const Padding(
-              padding: EdgeInsets.all(16),
-              child: SizedBox(
-                width: 20,
-                height: 20,
-                child: CircularProgressIndicator(
-                  color: AppColors.forestGreen,
-                  strokeWidth: 2,
-                ),
-              ),
-            )
-          else
-            PopupMenuButton<String>(
-              icon: const Icon(Icons.more_vert_rounded),
-              color: AppColors.card,
-              onSelected: (value) {
-                if (value == 'visibility') _toggleVisibility();
-                if (value == 'delete') _confirmDelete();
-              },
-              itemBuilder: (context) => [
-                PopupMenuItem<String>(
-                  value: 'visibility',
-                  child: Row(
-                    children: [
-                      Icon(
-                        visit.visibility == VisitVisibility.friends
-                            ? Icons.lock_open_rounded
-                            : Icons.lock_outline_rounded,
-                        color: AppColors.textPrimary,
-                        size: 18,
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        visit.visibility == VisitVisibility.friends
-                            ? 'Make private'
-                            : 'Make visible to friends',
-                        style: GoogleFonts.inter(color: AppColors.textPrimary),
-                      ),
-                    ],
+        appBar: AppBar(
+          backgroundColor: AppColors.ivory,
+          surfaceTintColor: Colors.transparent,
+          elevation: 0,
+          foregroundColor: AppColors.forestGreen,
+          actions: [
+            if (!_isOwner)
+              const SizedBox.shrink()
+            else if (_deleting || _updatingVisibility)
+              const Padding(
+                padding: EdgeInsets.all(16),
+                child: SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(
+                    color: AppColors.forestGreen,
+                    strokeWidth: 2,
                   ),
                 ),
-                PopupMenuItem<String>(
-                  value: 'delete',
-                  child: Row(
-                    children: [
-                      const Icon(
-                        Icons.delete_outline_rounded,
-                        color: AppColors.error,
-                        size: 18,
-                      ),
-                      const SizedBox(width: 10),
-                      Text(
-                        'Delete visit',
-                        style: GoogleFonts.inter(color: AppColors.error),
-                      ),
-                    ],
+              )
+            else
+              PopupMenuButton<String>(
+                icon: const Icon(Icons.more_vert_rounded),
+                color: AppColors.card,
+                onSelected: (value) {
+                  if (value == 'edit') _openEdit();
+                  if (value == 'visibility') _toggleVisibility();
+                  if (value == 'delete') _confirmDelete();
+                },
+                itemBuilder: (context) => [
+                  PopupMenuItem<String>(
+                    value: 'edit',
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.edit_outlined,
+                          color: AppColors.textPrimary,
+                          size: 18,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          'Edit visit',
+                          style: GoogleFonts.inter(
+                            color: AppColors.textPrimary,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.fromLTRB(
-          CsSpacing.pageHorizontal,
-          0,
-          CsSpacing.pageHorizontal,
-          CsSpacing.xxl,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _VenueTitle(
-              name: restaurant.name,
-              onTap: widget.linkToVenue
-                  ? () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
-                      ),
-                    )
-                  : null,
-            ),
-            const SizedBox(height: 10),
-            Row(
-              children: [
-                Text(
-                  _formatVisitDate(visit.visitedOn),
-                  style: CsTypography.metadata.copyWith(
-                    color: AppColors.taupe,
+                  PopupMenuItem<String>(
+                    value: 'visibility',
+                    child: Row(
+                      children: [
+                        Icon(
+                          visit.visibility == VisitVisibility.friends
+                              ? Icons.lock_open_rounded
+                              : Icons.lock_outline_rounded,
+                          color: AppColors.textPrimary,
+                          size: 18,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          visit.visibility == VisitVisibility.friends
+                              ? 'Make private'
+                              : 'Make visible to friends',
+                          style: GoogleFonts.inter(
+                            color: AppColors.textPrimary,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                if (stars != null && stars > 0) ...[
-                  const SizedBox(width: 10),
-                  StarRow(count: stars, size: 14),
+                  PopupMenuItem<String>(
+                    value: 'delete',
+                    child: Row(
+                      children: [
+                        const Icon(
+                          Icons.delete_outline_rounded,
+                          color: AppColors.error,
+                          size: 18,
+                        ),
+                        const SizedBox(width: 10),
+                        Text(
+                          'Delete visit',
+                          style: GoogleFonts.inter(color: AppColors.error),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
-                const SizedBox(width: 10),
-                Icon(
-                  visit.visibility == VisitVisibility.friends
-                      ? Icons.lock_open_rounded
-                      : Icons.lock_outline_rounded,
-                  color: AppColors.taupe,
-                  size: 13,
-                ),
-                const SizedBox(width: 3),
-                Text(
-                  visit.visibility == VisitVisibility.friends
-                      ? 'Visible to friends'
-                      : 'Private',
-                  style: CsTypography.metadata.copyWith(
+              ),
+          ],
+        ),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.fromLTRB(
+            CsSpacing.pageHorizontal,
+            0,
+            CsSpacing.pageHorizontal,
+            CsSpacing.xxl,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _VenueTitle(
+                name: restaurant.name,
+                onTap: widget.linkToVenue
+                    ? () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              RestaurantDetailScreen(restaurant: restaurant),
+                        ),
+                      )
+                    : null,
+              ),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  Text(
+                    _formatVisitDate(visit.visitedOn),
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.taupe,
+                    ),
+                  ),
+                  if (stars != null && stars > 0) ...[
+                    const SizedBox(width: 10),
+                    StarRow(count: stars, size: 14),
+                  ],
+                  const SizedBox(width: 10),
+                  Icon(
+                    visit.visibility == VisitVisibility.friends
+                        ? Icons.lock_open_rounded
+                        : Icons.lock_outline_rounded,
                     color: AppColors.taupe,
-                    fontSize: 12,
+                    size: 13,
+                  ),
+                  const SizedBox(width: 3),
+                  Text(
+                    visit.visibility == VisitVisibility.friends
+                        ? 'Visible to friends'
+                        : 'Private',
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.taupe,
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 32),
+
+              Text(
+                'SCORES',
+                style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+              ),
+              const SizedBox(height: CsSpacing.md),
+              // The same forest-green rings as the venue page's own
+              // "SCORES (Your latest visit)" strip — never gold, which is for
+              // MICHELIN stars and Keys only.
+              VenueScoreStrip(
+                dimensions: [
+                  ScoreDimension(label: 'Overall', value: visit.rating),
+                  ScoreDimension(label: 'Food', value: visit.foodRating),
+                  ScoreDimension(label: 'Service', value: visit.serviceRating),
+                  ScoreDimension(label: 'Wine', value: visit.wineRating),
+                  ScoreDimension(label: 'Value', value: visit.valueRating),
+                ],
+              ),
+
+              if (menuType != null) ...[
+                const SizedBox(height: 32),
+                Text(
+                  'MENU',
+                  style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  menuType.label,
+                  style: CsTypography.bodyMedium.copyWith(
+                    color: AppColors.forestGreen,
                   ),
                 ),
               ],
-            ),
-            const SizedBox(height: 32),
 
-            Text(
-              'SCORES',
-              style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
-            ),
-            const SizedBox(height: CsSpacing.md),
-            // The same forest-green rings as the venue page's own
-            // "SCORES (Your latest visit)" strip — never gold, which is for
-            // MICHELIN stars and Keys only.
-            VenueScoreStrip(
-              dimensions: [
-                ScoreDimension(label: 'Overall', value: visit.rating),
-                ScoreDimension(label: 'Food', value: visit.foodRating),
-                ScoreDimension(label: 'Service', value: visit.serviceRating),
-                ScoreDimension(label: 'Wine', value: visit.wineRating),
-                ScoreDimension(label: 'Value', value: visit.valueRating),
+              if (notes != null && notes.isNotEmpty) ...[
+                const SizedBox(height: 32),
+                Text(
+                  'NOTES',
+                  style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  notes,
+                  style: CsTypography.body.copyWith(
+                    color: AppColors.forestGreen,
+                  ),
+                ),
               ],
-            ),
 
-            if (menuType != null) ...[
               const SizedBox(height: 32),
               Text(
-              'MENU',
-              style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
-            ),
+                'PHOTOS',
+                style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+              ),
               const SizedBox(height: 10),
-              Text(
-                menuType.label,
-                style: CsTypography.bodyMedium.copyWith(
-                  color: AppColors.forestGreen,
-                ),
+              VisitPhotosSection(
+                visitId: visit.id,
+                entityType: visit.entityType,
+                entityId: visit.entityId,
+                noun: 'visit',
+                readOnly: !_isOwner,
               ),
             ],
-
-            if (notes != null && notes.isNotEmpty) ...[
-              const SizedBox(height: 32),
-              Text(
-              'NOTES',
-              style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
-            ),
-              const SizedBox(height: 10),
-              Text(
-                notes,
-                style: CsTypography.body.copyWith(
-                  color: AppColors.forestGreen,
-                ),
-              ),
-            ],
-
-            const SizedBox(height: 32),
-            Text(
-              'PHOTOS',
-              style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
-            ),
-            const SizedBox(height: 10),
-            VisitPhotosSection(
-              visitId: visit.id,
-              entityType: visit.entityType,
-              entityId: visit.entityId,
-              noun: 'visit',
-              readOnly: !_isOwner,
-            ),
-          ],
+          ),
         ),
       ),
     );

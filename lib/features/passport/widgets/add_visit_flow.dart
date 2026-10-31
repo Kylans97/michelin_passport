@@ -60,16 +60,29 @@ const _liningFigures = [FontFeature.enable('lnum')];
 /// used their own older sheets, which looked different). With it, the
 /// leading control is "Cancel" rather than "‹ Back": there is no step 1
 /// to go back to.
+///
+/// [existingVisit] (with [initialVenue] for its venue) edits that visit or
+/// stay instead of logging a new one: the step-2 screen starts filled in
+/// with its date, scores, menu, visibility and note, saves with "Save
+/// changes", and leaves photos to Visit/Stay Detail, where they already
+/// live. Added 2026-10-31 — until then a visit could only be deleted and
+/// logged again.
 Future<SavedVisit?> showAddVisitFlow(
   BuildContext context, {
   required String userId,
   PassportVenue? initialVenue,
+  Visit? existingVisit,
 }) {
+  assert(existingVisit == null || initialVenue != null);
   return showModalBottomSheet<SavedVisit>(
     context: context,
     isScrollControlled: true,
     backgroundColor: Colors.transparent,
-    builder: (_) => _AddVisitSheet(userId: userId, initialVenue: initialVenue),
+    builder: (_) => _AddVisitSheet(
+      userId: userId,
+      initialVenue: initialVenue,
+      existingVisit: existingVisit,
+    ),
   );
 }
 
@@ -88,7 +101,12 @@ String _venueName(PassportVenue v) => switch (v) {
 class _AddVisitSheet extends StatefulWidget {
   final String userId;
   final PassportVenue? initialVenue;
-  const _AddVisitSheet({required this.userId, this.initialVenue});
+  final Visit? existingVisit;
+  const _AddVisitSheet({
+    required this.userId,
+    this.initialVenue,
+    this.existingVisit,
+  });
 
   @override
   State<_AddVisitSheet> createState() => _AddVisitSheetState();
@@ -150,6 +168,7 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   String? _error;
 
   bool get _openedAtVenue => widget.initialVenue != null;
+  bool get _editing => widget.existingVisit != null;
 
   @override
   void initState() {
@@ -159,6 +178,20 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
       _selectedVenue = venue;
       _type = venue is HotelVenue ? _VenueType.hotel : _VenueType.restaurant;
       _step = 2;
+      final visit = widget.existingVisit;
+      if (visit != null) {
+        _visitedOn = visit.visitedOn;
+        _rating = visit.rating;
+        _foodRating = visit.foodRating;
+        _serviceRating = visit.serviceRating;
+        _wineRating = visit.wineRating;
+        _valueRating = visit.valueRating;
+        _roomRating = visit.roomRating;
+        _experienceRating = visit.experienceRating;
+        _menuType = visit.menuType;
+        _friendsVisible = visit.visibility == VisitVisibility.friends;
+        _notesCtrl.text = visit.notes ?? '';
+      }
       return; // no venue picker, so no shortcuts to load
     }
     _loadWishlist();
@@ -288,6 +321,47 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     final entityId = _venueId(venue);
 
     try {
+      final editing = widget.existingVisit;
+      if (editing != null) {
+        final sameDay = DateUtils.isSameDay(editing.visitedOn, _visitedOn);
+        if (!sameDay &&
+            await _visitedRepo.hasVisitOnDate(
+              userId: widget.userId,
+              entityType: entityType,
+              entityId: entityId,
+              date: _visitedOn,
+            )) {
+          if (!mounted) return;
+          setState(() {
+            _saving = false;
+            _error = 'You already logged a visit here on that date.';
+          });
+          return;
+        }
+        final isRestaurant = venue is RestaurantVenue;
+        final notes = _notesCtrl.text.trim();
+        final updated = await _visitedRepo.updateVisitDetails(
+          userId: widget.userId,
+          visitId: editing.id,
+          visitedOn: _visitedOn,
+          rating: _rating,
+          foodRating: isRestaurant ? _foodRating : null,
+          serviceRating: _serviceRating,
+          wineRating: isRestaurant ? _wineRating : null,
+          valueRating: _valueRating,
+          roomRating: isRestaurant ? null : _roomRating,
+          experienceRating: isRestaurant ? null : _experienceRating,
+          menuType: isRestaurant ? _menuType : null,
+          notes: notes.isEmpty ? null : notes,
+          visibility: _friendsVisible
+              ? VisitVisibility.friends
+              : VisitVisibility.private,
+        );
+        if (!mounted) return;
+        Navigator.pop(context, SavedVisit(updated, SaveOutcome.saved));
+        return;
+      }
+
       final duplicate = await _visitedRepo.hasVisitOnDate(
         userId: widget.userId,
         entityType: entityType,
@@ -413,7 +487,12 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                       _TopRow(
                         onGreen: onGreen,
                         stepLabel: _openedAtVenue
-                            ? (_type == _VenueType.hotel ? 'LOG YOUR STAY' : 'LOG YOUR VISIT')
+                            ? switch ((_editing, _type == _VenueType.hotel)) {
+                                (true, true) => 'EDIT YOUR STAY',
+                                (true, false) => 'EDIT YOUR VISIT',
+                                (false, true) => 'LOG YOUR STAY',
+                                (false, false) => 'LOG YOUR VISIT',
+                              }
                             : (_step == 1 ? 'STEP 1 OF 2' : 'STEP 2 OF 2'),
                         leading: _step == 1 || _openedAtVenue
                             ? _SheetTextButton(
@@ -467,6 +546,8 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                                 pickingPhotos: _pickingPhotos,
                                 onAddPhotos: _addPhotos,
                                 onRemovePhoto: (p) => setState(() => _stagedPhotos.remove(p)),
+                                showPhotos: !_editing,
+                                saveLabel: _editing ? 'Save changes' : 'Press the stamp',
                                 notesCtrl: _notesCtrl,
                                 saving: _saving,
                                 error: _error,
@@ -772,6 +853,11 @@ class _Step2 extends StatelessWidget {
   final VoidCallback onAddPhotos;
   final ValueChanged<StagedPhoto> onRemovePhoto;
 
+  // Off when editing: a saved visit's photos are managed on its detail
+  // page, so the edit sheet doesn't offer a second, different way.
+  final bool showPhotos;
+  final String saveLabel;
+
   final TextEditingController notesCtrl;
   final bool saving;
   final String? error;
@@ -803,6 +889,8 @@ class _Step2 extends StatelessWidget {
     required this.pickingPhotos,
     required this.onAddPhotos,
     required this.onRemovePhoto,
+    required this.showPhotos,
+    required this.saveLabel,
     required this.notesCtrl,
     required this.saving,
     required this.error,
@@ -957,7 +1045,7 @@ class _Step2 extends StatelessWidget {
               filled: false,
               contentPadding: const EdgeInsets.symmetric(vertical: 12),
               border: InputBorder.none,
-              hintText: 'A note for your passport…',
+              hintText: 'Add a note about your experience…',
               hintStyle: GoogleFonts.cormorantGaramond(
                 color: AppColors.textSecondary,
                 fontStyle: FontStyle.italic,
@@ -967,18 +1055,20 @@ class _Step2 extends StatelessWidget {
           ),
           Container(height: 1, color: AppColors.hairlineOnPaper),
           const SizedBox(height: 20),
-          Align(
-            alignment: Alignment.centerLeft,
-            child: _FieldLabel('PHOTOS'),
-          ),
-          const SizedBox(height: 10),
-          StagedPhotoPicker(
-            photos: stagedPhotos,
-            picking: pickingPhotos,
-            onAdd: onAddPhotos,
-            onRemove: onRemovePhoto,
-          ),
-          const SizedBox(height: 20),
+          if (showPhotos) ...[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: _FieldLabel('PHOTOS'),
+            ),
+            const SizedBox(height: 10),
+            StagedPhotoPicker(
+              photos: stagedPhotos,
+              picking: pickingPhotos,
+              onAdd: onAddPhotos,
+              onRemove: onRemovePhoto,
+            ),
+            const SizedBox(height: 20),
+          ],
           if (error != null) ...[
             Text(
               error!,
@@ -1005,7 +1095,7 @@ class _Step2 extends StatelessWidget {
                       height: 20,
                       child: CircularProgressIndicator(color: AppColors.textOnDark, strokeWidth: 2),
                     )
-                  : const Text('Press the stamp'),
+                  : Text(saveLabel),
             ),
           ),
         ],

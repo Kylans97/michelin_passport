@@ -8,6 +8,29 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+
+- **Edit a visit or stay** (tester feedback, 2026-10-31). A saved visit
+  could only be deleted and logged again. Visit Detail and Stay Detail
+  now have "Edit visit" / "Edit stay" in their menu, opening the same
+  stamp screen as logging one (`showAddVisitFlow(existingVisit: …)`),
+  filled in with the date, scores, menu, visibility and note, headed
+  "EDIT YOUR VISIT"/"EDIT YOUR STAY" and saved with "Save changes" via
+  new `VisitedRepository.updateVisitDetails` (owner-scoped like every
+  write there; RLS `visits_update` is the boundary). The venue and the
+  award frozen at the visit never change; a new date is checked against
+  another visit on that day. Photos stay where they're managed, on the
+  detail page, so the edit sheet has no picker. Leaving an edited
+  detail screen returns `true`, as a delete does, so the visit list
+  behind it refreshes. Checked in the simulator on a real visit: the
+  sheet opens filled in; cancelled without saving.
+
+### Changed
+
+- **Notes placeholder: "Add a note about your experience…"** (was "A
+  note for your passport…"; the tester's "Add a note about your
+  evening…" was the old venue-page sheet, removed in 1.5.2 (20)).
+
 ---
 
 ## v1.5.4 (22) — 2026-10-31

@@ -239,9 +239,8 @@ class VisitedRepository {
     return Visit.fromJson(row);
   }
 
-  // Social Foundation Step 2 — the smallest sensible privacy-management
-  // seam: this app has no general visit-edit flow (create + delete only),
-  // so this is a single-column update, not a new edit architecture.
+  // Social Foundation Step 2 — the privacy toggle on Visit/Stay Detail:
+  // a single-column update (the full edit is updateVisitDetails).
   // Scoped by both id and user_id, matching every other owner-write
   // method on this repository — belt-and-suspenders alongside RLS
   // (visits_update), which is the actual security boundary. Returns the
@@ -255,6 +254,50 @@ class VisitedRepository {
     final row = await _client
         .from('visits')
         .update({'visibility': visibility.dbValue})
+        .eq('id', visitId)
+        .eq('user_id', userId)
+        .select(_visitColumns)
+        .single();
+    return Visit.fromJson(row);
+  }
+
+  // Edits one existing visit or stay in place (2026-10-31: until then a
+  // visit could only be deleted and logged again). Every editable field is
+  // written as given, null included: the edit sheet starts from the row's
+  // current values, so a null here means the member cleared it. The venue,
+  // the owner and the award frozen at the visit (stars/keys_at_visit)
+  // never change. Scoped by id and user_id like every owner write here;
+  // RLS (visits_update) is the actual boundary.
+  Future<Visit> updateVisitDetails({
+    required String userId,
+    required String visitId,
+    required DateTime visitedOn,
+    int? rating,
+    int? foodRating,
+    int? serviceRating,
+    int? wineRating,
+    int? valueRating,
+    int? roomRating,
+    int? experienceRating,
+    MenuType? menuType,
+    String? notes,
+    required VisitVisibility visibility,
+  }) async {
+    final row = await _client
+        .from('visits')
+        .update({
+          'visited_on': visitedOn.toIso8601String().substring(0, 10),
+          'rating': rating,
+          'food_rating': foodRating,
+          'service_rating': serviceRating,
+          'wine_rating': wineRating,
+          'value_rating': valueRating,
+          'room_rating': roomRating,
+          'experience_rating': experienceRating,
+          'menu_type': menuType?.dbValue,
+          'notes': (notes == null || notes.isEmpty) ? null : notes,
+          'visibility': visibility.dbValue,
+        })
         .eq('id', visitId)
         .eq('user_id', userId)
         .select(_visitColumns)
