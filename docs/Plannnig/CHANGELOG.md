@@ -32,24 +32,35 @@ before this build: `20261030160000`, `20261030170000` and
 at the build: 121 migrations, local and remote in agreement.
 
 **Schema diff at the version bump** (CLAUDE.md; method in
-`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay
-of all 120 migrations, 2026-10-30:
-- **Replay:** all 120 migrations applied cleanly from scratch, so the
+`NEW_MACHINE_SETUP.md` §4), production against a fresh full-stack replay,
+first of 120 migrations on 2026-10-30 and again of all 121 on 2026-10-31
+after `20261031120000` was applied, with the same result both times:
+- **Replay:** all migrations applied cleanly from scratch, so the
   `20261030170000` rename (it was first written to sort before
   `20261030160000`, see its own entry) replays in the same order
   production ran.
 - **`supabase db dump`:** identical on both sides apart from blank
   lines.
 - **Storage and auth, compared directly:** buckets, `storage.objects`
-  policies, triggers and RLS on both storage tables are identical, apart
-  from the expected local-only `enforce_versioning_status_transition`
+  policies, triggers and RLS on both storage tables are identical
+  (including the new `profile_photos_read_visible_members`), apart from
+  the expected local-only `enforce_versioning_status_transition`
   trigger.
-- **`anon` execute:** false on production for all three new
+- **`anon` execute:** false on production for all six new
   `SECURITY DEFINER` functions (`remove_venue_team_member`,
-  `admin_approve_venue_team`, `admin_reject_venue_team`), checked with
+  `admin_approve_venue_team`, `admin_reject_venue_team`,
+  `can_view_member_avatar`, `get_member_avatar_paths`,
+  `can_view_member_avatar_object`), checked with
   `has_function_privilege`.
-- **Before the build:** `flutter analyze` was clean and all 2,707 tests
+- **Before the build:** `flutter analyze` was clean and all 2,710 tests
   passed on the merged tree.
+
+**Near-miss, 2026-10-31:** main was pushed at `d65f4fb`, the merge of
+both late branches, one commit before this paragraph was written — a
+failed text replacement stopped the commit but not the push that
+followed it in the same command. The code was complete and tested at
+`d65f4fb`; only this changelog text lagged, and it followed in the next
+commit. Chain a push to the commit it depends on with `&&`, never `;`.
 
 No manual steps outside the repo for this build.
 
