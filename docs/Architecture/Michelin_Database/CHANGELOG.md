@@ -6,6 +6,33 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-10-31 — Gault&Millau Benelux applied: NL 2026, BE 2026, LU 2027 (QA-377–QA-382)
+
+| | |
+|---|---|
+| Applied | 2026-10-31, to production, at the product owner's explicit go-ahead ("importeer alle 218 rijen nu in productie, met België als editie 2026"), from `claude/gault-millau-benelux` |
+| Data file | `gault_millau_benelux_2026/prepared_gault_millau_benelux_import.sql` — one transaction, INSERT only, one guarded section per match tier; no migration |
+| Rows | 218 inserted into `gault_millau_awards` (NL 95, BE 111, LU 12); 41 → 259. No restaurant created |
+
+**QA-377.** The 41 existing rows were a research sample (the top ~15 per market, matched by name score in August). This batch reads every entry of the three official sites — gault-millau.nl (875), gaultmillau.be (1,332), gaultmillau.lu (90) — on 2026-10-31, and matches each profile page to the catalogue on website domain, phone and address (postcode + house number, plus street in BE/LU). A map pin within 150 m only corroborates. **Names never make a match**; they only veto a candidate whose name shares nothing with G&M's, which is what keeps a house's second venue (Goeie Louisa at Karel 5, Sazanka and Serre at the Okura) off the main restaurant. Score must agree between the page's score block, its schema.org rating and the listing; toques are counted on the page, never derived. Editions: NL 2026 (launched 9 Feb 2026), BE 2026 (23rd edition, 3 Nov 2025), LU 2027 (launched 26 Oct 2026, 90 restaurants — equal to the online list).
+
+**Control before applying.** All 22 BE/NL rows already in production were re-found and agree with today's pages on score and toques, 22 of 22. A read-only dry run resolved all 218 codes on `restaurant_code` + `country_code`, none already holding a row for its year; the file was run on a scratch PostgreSQL 17 first (218 inserted; a second run aborts).
+
+**Checked after the apply** (read-only, row by row against the staging CSV): 218 of 218 present with exactly the staged year, score, toques, URL and `recognition_type = 'scored'`; no restaurant has two rows for one year; `restaurants` count unchanged at 3,480.
+
+| | 2026 | 2027 |
+|---|---|---|
+| NL | 108 | — |
+| BE | 120 | — |
+| LU | — | 12 |
+| AT / CH / FR (unchanged) | 11 / 7 / 1 | — |
+
+Opened alongside: **QA-378** — 62 NL launch rows whose address disagrees with G&M while website and phone agree; Zoldering and De Juwelier hold the wrong addresses (one has Lastage's, the other Zoldering's), confirmed against their stored Place IDs. Not fixed here. **QA-379** — 45 G&M entries held (siblings, ambiguous pairs, single-signal matches, a phone conflict). **QA-380** — unscored G&M pages, not imported. **QA-381** — the BE 2027 guide launches 9 Nov 2026; 2027 becomes a new batch. **QA-382** — 2,012 G&M restaurants not in the catalogue, not created.
+
+**Near-miss:** the first scratch test connected to port 55432, already in use by another session's scratch PostgreSQL; the two test tables were created there, then dropped (they had not existed there before). The test was rerun on its own instance. Check `show data_directory` before testing on a local port.
+
+---
+
 # 2026-10-30 — Yi Long Court website and phone (QA-299)
 
 | | |
