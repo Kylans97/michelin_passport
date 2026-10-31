@@ -40,6 +40,11 @@ The format follows Keep a Changelog.
   after it went live on 2026-10-31. Pages, stamps and cover lettering
   now scale with the viewport in that range; checked at 900px and
   1100px.
+- **The Arzak stamp's city line ran outside its oval.** "SAN
+  SEBASTIÁN · ES" was set at 6.6 units with wide letter-spacing near the
+  top of the inner ellipse, where the oval is narrowest, so it crossed
+  the rings. It is now smaller, tighter and lower, with the stars,
+  name and date moved down to match; measured inside the inner ring.
 
 ---
 
