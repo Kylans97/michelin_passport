@@ -101,10 +101,9 @@ void main() {
 
       expect(tester.takeException(), isNull);
       expect(find.text('Hottest Places'), findsNothing);
-      // Community Ranking and Dining Together are unconditional siblings
+      // Community Ranking is an unconditional sibling
       // — a Hottest Places failure must never take them down too.
       expect(find.text('Community Ranking'), findsOneWidget);
-      expect(find.text('Dining Together'), findsOneWidget);
     });
 
     testWidgets('tapping the hero looks up the exact tapped restaurant '
@@ -169,23 +168,14 @@ void main() {
         tester.widget<Text>(find.text('Hottest Places')),
         tester.widget<Text>(find.text('Community Ranking')),
         tester.widget<Text>(find.text('Upcoming Events')),
-        tester.widget<Text>(find.text('Dining Together')),
       ];
-      final actionLink = tester.widget<Text>(find.text('Discover the concept'));
 
       for (final title in sectionTitles) {
         expect(title.style?.fontSize, sectionTitles.first.style?.fontSize);
-        expect(
-          title.style?.fontFamily,
-          sectionTitles.first.style?.fontFamily,
-        );
+        expect(title.style?.fontFamily, sectionTitles.first.style?.fontFamily);
         expect(title.style?.color, AppColors.ivory);
         expect(title.style?.color, isNot(AppColors.gold));
         expect(title.style!.fontSize!, lessThan(pageTitle.style!.fontSize!));
-        expect(
-          title.style!.fontSize!,
-          greaterThan(actionLink.style!.fontSize!),
-        );
       }
       // Never the tiny tracked-uppercase eyebrow style previously used.
       expect(find.text('HOTTEST PLACES'), findsNothing);
@@ -222,10 +212,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Trending Now'), findsNothing);
       expect(find.text('Recently Discovered'), findsNothing);
-      expect(
-        find.text('Trending places will appear here.'),
-        findsNothing,
-      );
+      expect(find.text('Trending places will appear here.'), findsNothing);
       expect(
         find.text('Recently discovered places will appear here.'),
         findsNothing,
@@ -239,30 +226,14 @@ void main() {
       expect(find.text('Meet the Community'), findsNothing);
     });
 
-    testWidgets('Dining Together: title, teaser copy, and a "Discover the '
-        'concept" action link — never shows "Coming soon" directly on the '
-        'landing page', (tester) async {
+    testWidgets('Dining Together is hidden for launch — its page is a '
+        '"Coming soon" placeholder', (tester) async {
+      expect(showDiningTogether, isFalse);
       await tester.pumpWidget(_wrap(loadCommunityRankings: () async => []));
       await tester.pumpAndSettle();
-      expect(find.text('Dining Together'), findsOneWidget);
-      expect(find.text('Great tables are better shared.'), findsOneWidget);
-      expect(find.text('Discover the concept'), findsOneWidget);
-      expect(find.text('Coming soon'), findsNothing);
-    });
-
-    testWidgets('Dining Together is tappable and opens its own concept '
-        'page', (tester) async {
-      await tester.pumpWidget(_wrap(loadCommunityRankings: () async => []));
-      await tester.pumpAndSettle();
-      // Dining Together may sit below the default test viewport — scroll
-      // it into view before tapping, the same pattern used elsewhere in
-      // this codebase for a target that may be off-screen.
-      await tester.ensureVisible(find.text('Discover the concept'));
-      await tester.pumpAndSettle();
-      await tester.tap(find.text('Discover the concept'));
-      await tester.pumpAndSettle();
-      expect(find.byType(DiningTogetherScreen), findsOneWidget);
-      expect(tester.takeException(), isNull);
+      expect(find.text('Dining Together'), findsNothing);
+      expect(find.text('Discover the concept'), findsNothing);
+      expect(find.byType(DiningTogetherScreen), findsNothing);
     });
   });
 
@@ -283,9 +254,7 @@ void main() {
     });
 
     testWidgets('the deep-green canvas remains the dominant page surface '
-        '— the page is not converted to a mostly-ivory screen', (
-      tester,
-    ) async {
+        '— the page is not converted to a mostly-ivory screen', (tester) async {
       await tester.pumpWidget(
         _wrap(loadCommunityRankings: () async => [_entry()]),
       );
@@ -329,8 +298,7 @@ void main() {
             data: MediaQueryData(size: size),
             child: Scaffold(
               body: CommunityScreen(
-                loadCommunityRankings: () async =>
-                    withCard ? [_entry()] : [],
+                loadCommunityRankings: () async => withCard ? [_entry()] : [],
               ),
             ),
           ),
@@ -342,9 +310,6 @@ void main() {
         'Connect, follow and explore together.',
         'Community Ranking',
         'Upcoming Events',
-        'Dining Together',
-        'Great tables are better shared.',
-        'Discover the concept',
         if (withCard) 'Hottest Places',
       ];
       for (final t in texts) {
@@ -373,11 +338,7 @@ void main() {
 
     testWidgets('the Hottest Places hero card does not shift the header '
         'or other sections off the left grid', (tester) async {
-      await expectAllLeftAligned(
-        tester,
-        const Size(390, 844),
-        withCard: true,
-      );
+      await expectAllLeftAligned(tester, const Size(390, 844), withCard: true);
     });
   });
 }

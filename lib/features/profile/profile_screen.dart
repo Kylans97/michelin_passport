@@ -561,6 +561,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () =>
                         _openExternal('https://mantelier.app/privacy'),
                   ),
+                  _SettingsRow(
+                    icon: Icons.gavel_rounded,
+                    label: 'Terms',
+                    trailingIcon: Icons.open_in_new_rounded,
+                    onTap: () => _openExternal('https://mantelier.app/terms'),
+                  ),
+                  _SettingsRow(
+                    icon: Icons.help_outline_rounded,
+                    label: 'Support',
+                    trailingIcon: Icons.open_in_new_rounded,
+                    onTap: () => _openExternal('https://mantelier.app/support'),
+                  ),
                   const SizedBox(height: CsSpacing.lg),
                   FutureBuilder<PackageInfo>(
                     future: _packageInfoFuture,

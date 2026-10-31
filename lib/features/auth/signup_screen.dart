@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -225,6 +226,11 @@ class _SignupScreenState extends State<SignupScreen> {
                       ],
 
                       const SizedBox(height: CsSpacing.xl),
+                      // App Review 1.2: members agree to terms with no
+                      // tolerance for objectionable content before they can
+                      // post anything. Creating the account is the agreement.
+                      const _TermsAgreement(),
+                      const SizedBox(height: CsSpacing.base),
                       CsPrimaryButton(
                         label: 'Create account',
                         onTap: _submit,
@@ -313,4 +319,44 @@ class _CheckInboxBody extends StatelessWidget {
       ],
     ),
   );
+}
+
+class _TermsAgreement extends StatelessWidget {
+  const _TermsAgreement();
+
+  static Future<void> _open(String url) =>
+      launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+
+  @override
+  Widget build(BuildContext context) {
+    final base = CsTypography.metadata.copyWith(
+      color: AppColors.secondaryOnDark,
+    );
+    final link = base.copyWith(
+      color: AppColors.textOnDark,
+      decoration: TextDecoration.underline,
+      decorationColor: AppColors.secondaryOnDark,
+    );
+    WidgetSpan linkSpan(String label, String url) => WidgetSpan(
+      alignment: PlaceholderAlignment.baseline,
+      baseline: TextBaseline.alphabetic,
+      child: GestureDetector(
+        onTap: () => _open(url),
+        child: Text(label, style: link),
+      ),
+    );
+    return Text.rich(
+      TextSpan(
+        style: base,
+        children: [
+          const TextSpan(text: 'By creating an account you agree to the '),
+          linkSpan('Terms', 'https://mantelier.app/terms'),
+          const TextSpan(text: ' and the '),
+          linkSpan('Privacy Policy', 'https://mantelier.app/privacy'),
+          const TextSpan(text: '.'),
+        ],
+      ),
+      textAlign: TextAlign.center,
+    );
+  }
 }

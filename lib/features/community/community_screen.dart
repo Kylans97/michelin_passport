@@ -58,6 +58,10 @@ import 'widgets/friends_circle_row.dart';
 ///
 /// A bottom-tab body (no own `Scaffold`, matching `ExploreScreen`/
 /// `PassportScreen`'s established convention).
+/// Whether Community shows the Dining Together teaser. Off for launch;
+/// see the comment where it is used.
+const bool showDiningTogether = false;
+
 class CommunityScreen extends StatefulWidget {
   final Future<List<CommunityRankingEntry>> Function()? loadCommunityRankings;
   final Future<Restaurant?> Function(String id)? getRestaurantById;
@@ -401,17 +405,24 @@ class _CommunityTabBodyState extends State<_CommunityTabBody> {
         // "Meet the Community" is deliberately absent — no genuine
         // editorial/user-story content exists yet (unchanged from before
         // this pass).
-        CommunitySectionTitle('Dining Together'),
-        const SizedBox(height: CsSpacing.xs),
-        Text(
-          'Great tables are better shared.',
-          style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
-        ),
-        const SizedBox(height: CsSpacing.sm),
-        CommunityActionLink(
-          label: 'Discover the concept',
-          onTap: _openDiningTogether,
-        ),
+        //
+        // Dining Together is hidden for launch (2026-10-31): its page is
+        // a "Possible future concepts… Coming soon" placeholder, which
+        // App Review can reject as incomplete (2.1/2.2). Flip
+        // [showDiningTogether] once the concept is real.
+        if (showDiningTogether) ...[
+          CommunitySectionTitle('Dining Together'),
+          const SizedBox(height: CsSpacing.xs),
+          Text(
+            'Great tables are better shared.',
+            style: CsTypography.body.copyWith(color: AppColors.secondaryOnDark),
+          ),
+          const SizedBox(height: CsSpacing.sm),
+          CommunityActionLink(
+            label: 'Discover the concept',
+            onTap: _openDiningTogether,
+          ),
+        ],
       ],
     ),
   );

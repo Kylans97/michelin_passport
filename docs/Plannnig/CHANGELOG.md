@@ -8,6 +8,63 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+Pre-launch audit, 2026-10-31: three read-only checks — security
+(production catalogs and the repo), App Store Review risks and links, and
+the privacy policy against what the app and backend actually do.
+
+### Added
+
+- **Terms and Support pages** (`site/terms.html`, `site/support.html`).
+  `/terms` and `/support` returned 200 but were the home page served as a
+  fallback. Terms carries the "no tolerance for objectionable content or
+  abusive users" clause App Review asks for under 1.2, the 24-hour report
+  promise the report sheet already makes, and a line that Mantelier is
+  not affiliated with Michelin, The World's 50 Best or Gault&Millau.
+  Support gives the contact address and how to delete an account. All
+  three site pages and the home page footer link to each other.
+- **Sign-up states the agreement:** "By creating an account you agree to
+  the Terms and the Privacy Policy", both linked, above Create account.
+  Profile gains Terms and Support rows beside Privacy policy.
+- **Migration `20261031130000_tighten_photo_ownership.sql` — prepared,
+  NOT applied.** `photos_update` checked only the owner, so a member
+  could repoint their own photo at someone else's visit or attendance,
+  or at someone else's storage object, and have it served to that
+  person's friends; the update check now matches `photos_insert`.
+  `photos.storage_path` and `profiles.avatar_path` must sit in the
+  owner's own folder, closing the same trick for avatars through
+  `can_view_member_avatar_object`. Production has 0 rows that break
+  either rule (checked read-only), so both constraints are VALID. Tested
+  on a full local replay of all 122 migrations. A revoke of anon writes
+  on PostGIS's `spatial_ref_sys` was in the first draft and taken out:
+  on the replay anon kept INSERT, because those grants come from another
+  grantor — moving PostGIS out of `public` is its own change.
+
+### Changed
+
+- **Privacy policy rewritten to match what the app does** (dated 31
+  October 2026). It now covers: username, member number and member
+  search (on by default); what friends see (friends-visible visits with
+  ratings, notes and photos; Interested/Going shared by default; the
+  wishlist, which has no toggle); profile photos for friends, pending
+  requests and members who find you (`20261031120000`); trips; venue
+  invites; push notifications and tokens; every usage record
+  (page opens, website/booking/phone/directions taps, screens, that a
+  search or filter happened — never the query); private ratings counting
+  anonymously towards Rankings above three members; venue team names
+  being public; claim notification emails; Resend, MapTiler, Apple push
+  and Google Fonts in the app as processors; and an honest account of
+  what deletion removes and what stays. The stale "until the app
+  launches" waiting-list retention is gone.
+- **Dining Together hidden for launch.** Its page is a "Possible future
+  concepts… Coming soon" placeholder, which App Review can reject as
+  incomplete (2.1/2.2). Behind `showDiningTogether` (false); the screen
+  itself is untouched.
+
+### Removed
+
+- `lib/data/mock/mock_user.dart`, an unused mock carrying the product
+  owner's real name and an old email address. Imported nowhere.
+
 ---
 
 ## v1.5.2 (20) — 2026-10-31
