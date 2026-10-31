@@ -1,0 +1,121 @@
+t,code,name,city,address,status,award,property_name,website_url,phone,michelin_url
+H,hotel_01,Pulitzer Amsterdam,Amsterdam,"Prinsengracht 323, 1016 GZ Amsterdam",open,1,NULL,https://www.pulitzeramsterdam.com/nl/,NULL,https://guide.michelin.com/en/hotels-stays/amsterdam/hotel-pulitzer-amsterdam-8062
+H,hotel_02,Central Park,Voorburg,"Oosteinde 14, 2271 EH Voorburg",open,1,NULL,https://www.centralparkvoorburg.com/,NULL,https://guide.michelin.com/en/hotels-stays/the-hague/central-park-voorburg-13789
+H,hotel_03,The Dylan,Amsterdam,"Keizersgracht 384, 1016 GA Amsterdam",open,1,NULL,https://www.dylanamsterdam.com/nl/,NULL,https://guide.michelin.com/en/hotels-stays/amsterdam/the-dylan-amsterdam-17
+H,hotel_04,Soho House,Amsterdam,"Spuistraat 210, 1012 VT Amsterdam",open,1,NULL,https://www.sohohouse.com/houses/soho-house-amsterdam,NULL,https://guide.michelin.com/en/hotels-stays/amsterdam/soho-house-amsterdam-13086
+H,hotel_05,Van Oys Maastricht Retreat,Maastricht,"Kasteellaan 1, 6245 SB Eijsden",open,1,NULL,https://www.vanoys.com/,NULL,https://guide.michelin.com/en/hotels-stays/maastricht/van-oys-maastricht-retreat-15061
+H,hotel_06,Pillows Grand Boutique Hotel Ter Borch,Zwolle,"Stationsweg 9, 8011 CZ Zwolle",open,1,NULL,https://www.pillowshotels.com/zwolle/,NULL,https://guide.michelin.com/en/hotels-stays/zwolle/pillows-grand-boutique-hotel-ter-borch-zwolle-8757
+H,hotel_07,Château St. Gerlach,Valkenburg,"Joseph Corneli Allee 1, 6301 KK Valkenburg",open,1,NULL,https://www.oostwegelcollection.nl/chateau-st-gerlach/en/,NULL,https://guide.michelin.com/en/hotels-stays/valkenburg/chateau-st-gerlach-11399
+H,hotel_08,Mooirivier,Dalfsen,"Oude Oever 10, 7722 VE Dalfsen",open,1,NULL,https://www.mooirivier.nl/en,NULL,https://guide.michelin.com/en/hotels-stays/dalfsen/mooirivier-9610
+H,hotel_09,The Craftsmen,Amsterdam,"Singel 83, 1012 VE Amsterdam",open,1,NULL,https://hotelthecraftsmen.com/,NULL,https://guide.michelin.com/en/hotels-stays/amsterdam/the-craftsmen-14718
+H,hotel_10,De Plesman Hotel,The Hague,"Plesmanweg 607, 2597 JG Den Haag",open,1,NULL,https://deplesman.com/,NULL,https://guide.michelin.com/en/hotels-stays/the-hague/de-plesman-hotel-the-hague-15198
+H,hotel_11,Landgoed Hotel Het Roode Koper,Ermelo,"Jonkheer Doctor C.J. Sandbergweg 82, 3852 PV Ermelo",open,1,NULL,https://www.roodekoper.nl/en,NULL,https://guide.michelin.com/en/hotels-stays/ermelo/het-roode-koper-10015
+H,hotel_12,Pillows Grand Boutique Hotel Maurits at the Park,Amsterdam,"Mauritskade 61, 1092 AD Amsterdam",open,2,NULL,https://www.pillowshotels.com/amsterdam-mauritskade/,NULL,https://guide.michelin.com/en/hotels-stays/amsterdam/pillows-grand-boutique-hotel-maurits-at-the-park-14777
+H,hotel_13,Château Neercanne,Maastricht,"Von Dopfflaan 10, 6213 NG Maastricht",open,2,NULL,https://www.oostwegelcollection.nl/chateau-neercanne/en,NULL,https://guide.michelin.com/en/hotels-stays/maastricht/chateau-neercanne-15342
+H,hotel_14,TwentySeven,Amsterdam,"Dam 27, 1012 JS Amsterdam",open,2,NULL,https://www.hoteltwentyseven.com/nl,NULL,https://guide.michelin.com/en/hotels-stays/amsterdam/hotel-twentyseven-amsterdam-9299
+H,hotel_15,Rosewood Amsterdam,Amsterdam,"Prinsengracht 432-436, 1017 KE Amsterdam",open,2,NULL,https://www.rosewoodhotels.com/en/amsterdam,NULL,https://guide.michelin.com/en/hotels-stays/amsterdam/rosewood-amsterdam-14998
+H,hotel_16,Tivoli Doelen,Amsterdam,"Nieuwe Doelenstraat 26, 1012 CZ Amsterdam",open,2,NULL,https://www.tivolihotels.com/nl/tivoli-doelen,NULL,https://guide.michelin.com/en/hotels-stays/amsterdam/tivoli-doelen-amsterdam-8433
+H,hotel_17,De L'Europe,Amsterdam,"Nieuwe Doelenstraat 2-14, 1012 CP Amsterdam",open,3,NULL,https://www.deleurope.com/nl/,NULL,https://guide.michelin.com/en/hotels-stays/amsterdam/de-leurope-amsterdam-5293
+R,rest_0001,Aan de Poel,Amstelveen,"Handweg 1, 1185 TS Amstelveen",open,2,NULL,NULL,+31 20 345 1763,https://guide.michelin.com/nl/nl/north-holland/amstelveen/restaurant/aan-de-poel
+R,rest_0005,Alma,Oisterwijk,"Lind 28, 5061 HT Oisterwijk",open,1,NULL,NULL,+31 13 203 2004,https://guide.michelin.com/en/noord-brabant/oisterwijk/restaurant/alma-1188023
+R,rest_0007,Amarone,Rotterdam,"Meent 72, 3011 JN Rotterdam",open,1,NULL,NULL,+31 10 720 0802,https://guide.michelin.com/nl/nl/south-holland/rotterdam/restaurant/amarone
+R,rest_0009,Apicius,Castricum,"Dorpsstraat 67, 1901 EC Castricum",open,1,NULL,NULL,+31 251 676 760,https://guide.michelin.com/en/noord-holland/castricum/restaurant/apicius212340
+R,rest_0011,Au Coin des Bons Enfants,Maastricht,"Ezelmarkt 4, 6211 LJ Maastricht",open,1,NULL,NULL,+31 43 321 2359,https://guide.michelin.com/nl/nl/limburg/maastricht/restaurant/au-coin-des-bons-enfants
+R,rest_0012,Beluga loves you,Maastricht,"Plein 1992 12, 6221 CJ Maastricht",open,1,NULL,NULL,+31 43 321 3364,https://guide.michelin.com/nl/nl/limburg/maastricht/restaurant/beluga-loves-you
+R,rest_0013,Bistro de la Mer,Amsterdam,"Spuistraat 294, 1012 VS Amsterdam",open,1,NULL,NULL,+31 20 237 4790,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/bistro-de-la-mer
+R,rest_0014,Bolenius Rembrandtpark,Amsterdam,"George Gershwinlaan 30, 1082 MT Amsterdam",open,1,NULL,NULL,+31 20 238 6985,https://guide.michelin.com/en/noord-holland/amsterdam/restaurant/bolenius
+R,rest_0016,Bougainville,Amsterdam,"Dam 9, 1012 JS Amsterdam",open,1,NULL,NULL,+31 20 218 2182,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/bougainville
+R,rest_0017,Brass Boer Thuis,Zwolle,"Melkmarkt 9, 8011 MR Zwolle",open,1,NULL,NULL,+31 38 792 0110,https://guide.michelin.com/nl/nl/overijssel/zwolle/restaurant/brass-boer-thuis
+R,rest_0019,Calla's,The Hague,"Laan van Roos en Doorn 51, 2514 BC The Hague",open,1,NULL,NULL,+31 70 345 5866,https://guide.michelin.com/en/zuid-holland/den-haag/restaurant/calla-s115041
+R,rest_0023,Cheval Blanc,Heemstede,"Heemsteedse Dreef 7, 2102 KN Heemstede",open,1,NULL,NULL,+31 23 529 3173,https://guide.michelin.com/en/noord-holland/heemstede/restaurant/cheval-blanc212552
+R,rest_0024,Choux,Amsterdam,"De Ruijterkade 128, 1011 AC Amsterdam",open,1,NULL,NULL,+31 20 210 3090,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/choux
+R,rest_0025,Ciel Bleu,Amsterdam,"Ferdinand Bolstraat 333, 1072 LH Amsterdam",open,2,NULL,NULL,+31 20 678 7450,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/ciel-bleu
+R,rest_0026,Codium,Goes,"Singelstraat 11, 4461 CG Goes",open,1,NULL,NULL,+31 113 853 535,https://guide.michelin.com/nl/nl/zeeland/goes/restaurant/codium
+R,rest_0027,Create by Guido Braeken,Eijsden,"Laamsveldweg 3, 6245 NV Eijsden",open,2,NULL,NULL,+31 43 240 0040,https://guide.michelin.com/nl/nl/limburg/eijsden/restaurant/create-by-guido-braeken
+R,rest_0028,CUE,Amsterdam,"Weesperzijde 15, 1091 EC Amsterdam",open,1,NULL,NULL,NULL,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/cue
+R,rest_0029,Da Vinci,Maasbracht,"Zanddijk 4, 6051 CX Maasbracht",open,NULL,NULL,NULL,+31 475 465 979,https://guide.michelin.com/nl/nl/limburg/maasbracht/restaurant/da-vinci
+R,rest_0030,De Bokkedoorns,Overveen,"Zeeweg 52, 2051 EB Overveen",open,2,NULL,NULL,+31 23 526 3600,https://guide.michelin.com/nl/nl/north-holland/overveen/restaurant/de-bokkedoorns
+R,rest_0031,De Heeren van Harinxma,Beetsterzwaag,"Van Harinxmaweg 2, 9244 CJ Beetsterzwaag",open,1,NULL,NULL,NULL,https://guide.michelin.com/nl/nl/friesland/beetsterzwaag/restaurant/de-heeren-van-harinxma
+R,rest_0032,De Juwelier,Amsterdam,"Utrechtsestraat 141, 1017 VM Amsterdam",open,NULL,NULL,NULL,+31 20 247 1007,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/de-juwelier
+R,rest_0033,De kas,Amsterdam,"Kamerlingh Onneslaan 3, 1097 DE Amsterdam",open,1,NULL,NULL,+31 20 462 4562,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/de-kas
+R,rest_0034,De Kromme Dissel,Heelsum,"Heuvelakkerweg 5, 6866 DS Heelsum",open,1,NULL,NULL,+31 317 313 118,https://guide.michelin.com/nl/nl/gelderland/heelsum/restaurant/de-kromme-dissel
+R,rest_0035,De Kromme Watergang,Hoofdplaat,"Havenweg 1, 4515 RK Hoofdplaat",open,1,NULL,NULL,+31 117 348 696,https://guide.michelin.com/nl/nl/zeeland/hoofdplaat/restaurant/de-kromme-watergang
+R,rest_0036,De Leuf,Ubachsberg,"Bosweg 6, 6367 BG Ubachsberg",open,1,NULL,NULL,+31 45 575 0226,https://guide.michelin.com/nl/nl/limburg/ubachsberg/restaurant/de-leuf
+R,rest_0038,De Lindenhof,Giethoorn,"Beulakerweg 77, 8355 AC Giethoorn",open,2,NULL,NULL,+31 521 361 444,https://guide.michelin.com/nl/nl/overijssel/giethoorn/restaurant/de-lindenhof
+R,rest_0039,De Nederlanden,Vreeland,"Duinkerken 3, 3633 EM Vreeland",open,1,NULL,NULL,+31 294 232 326,https://guide.michelin.com/nl/nl/north-holland/vreeland/restaurant/de-nederlanden
+R,rest_0040,De Nieuwe Winkel,Nijmegen,"Groesbeekseweg 119, 6523 PE Nijmegen",open,2,NULL,NULL,+31 24 322 5093,https://guide.michelin.com/nl/nl/gelderland/nijmegen/restaurant/de-nieuwe-winkel
+R,rest_0041,De Treeswijkhoeve,Waalre,"Meerveldhoven 13, 5581 LV Waalre",open,2,NULL,NULL,+31 40 221 5593,https://guide.michelin.com/nl/nl/north-brabant/waalre/restaurant/de-treeswijkhoeve
+R,rest_0043,Demain,Cadzand,"Visserijweg 1, 4506 CH Cadzand",open,NULL,NULL,NULL,NULL,https://guide.michelin.com/nl/nl/zeeland/cadzand/restaurant/demain
+R,rest_0047,Flore,Amsterdam,"Nieuwe Doelenstraat 2-14, 1012 CP Amsterdam",open,2,NULL,NULL,+31 20 531 1619,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/flore
+R,rest_0048,Fred,Rotterdam,"Honingerdijk 95, 3063 AE Rotterdam",open,2,NULL,NULL,+31 10 212 0110,https://guide.michelin.com/nl/nl/south-holland/rotterdam/restaurant/fred
+R,rest_0050,Herberg Onder de Linden,Groningen,"Schipslootweg 13, 9832 BZ Aduard",open,1,NULL,NULL,+31 50 204 1235,https://guide.michelin.com/nl/nl/groningen/groningen/restaurant/herberg-onder-de-linden
+R,rest_0051,Inter Scaldes,Kruiningen,"Zandweg 2, 4416 NA Kruiningen",open,2,NULL,NULL,+31 113 381 753,https://guide.michelin.com/nl/nl/zeeland/kruiningen/restaurant/inter-scaldes
+R,rest_0052,Joelia,Rotterdam,"Kruiskade 6, 3012 EH Rotterdam",open,1,NULL,NULL,+31 10 710 8034,https://guide.michelin.com/nl/nl/south-holland/rotterdam/restaurant/joelia
+R,rest_0054,Kaatje bij de Sluis,Blokzijl,"Brouwersgracht 20, 8356 DX Blokzijl",open,1,NULL,NULL,+31 527 291 833,https://guide.michelin.com/nl/nl/overijssel/blokzijl/restaurant/kaatje-bij-de-sluis
+R,rest_0055,Karel 5,Utrecht,"Geertebolwerk 1, 3511 XA Utrecht",open,1,NULL,NULL,NULL,https://guide.michelin.com/nl/nl/utrecht/utrecht/restaurant/karel-5
+R,rest_0056,La Provence,Driebergen,"Langbroekerdijk A 14, 3947 BE Driebergen-Rijsenburg",open,1,NULL,NULL,+31 343 512 920,https://guide.michelin.com/en/utrecht/driebergen-rijsenburg/restaurant/la-provence212401
+R,rest_0057,Lars Amsterdam,Amsterdam,"Danzigerkade 5, 1013 AP Amsterdam",open,1,NULL,NULL,+31 20 214 9729,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/lars-amsterdam
+R,rest_0062,Lizz,Gouda,"Lange Tiendeweg 34, 2801 KD Gouda",open,1,NULL,NULL,NULL,https://guide.michelin.com/nl/nl/south-holland/gouda/restaurant/lizz
+R,rest_0063,Lutum,Wijk bij Duurstede,"Markt 35, 3961 BL Wijk bij Duurstede",open,1,NULL,NULL,+31 343 593 366,https://guide.michelin.com/nl/nl/utrecht/wijk-bij-duurstede/restaurant/lutum
+R,rest_0064,Maeve,Utrecht,"Springweg 13, 3511 VJ Utrecht",open,1,NULL,NULL,+31 30 200 6767,https://guide.michelin.com/nl/nl/utrecht/utrecht/restaurant/maeve
+R,rest_0065,Marrees,Weert,"Maaseikerweg 16, 6006 AB Weert",open,1,NULL,NULL,+31 495 452 028,https://guide.michelin.com/nl/nl/limburg/weert/restaurant/marrees
+R,rest_0066,ML,Haarlem,"Kleine Houtstraat 70, 2011 DS Haarlem",open,1,NULL,NULL,+31 23 512 3910,https://guide.michelin.com/nl/nl/north-holland/haarlem/restaurant/ml
+R,rest_0068,Monarh,Tilburg,"Willem II Straat 19, 5038 BD Tilburg",open,1,NULL,NULL,+31 13 536 5805,https://guide.michelin.com/nl/nl/north-brabant/tilburg/restaurant/monarh
+R,rest_0069,MOS,Amsterdam,"Prins Hendrikkade 108, 1011 AK Amsterdam",open,1,NULL,NULL,+31 20 638 0866,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/mos
+R,rest_0070,Nami,Cromvoirt,"Molenstraat 7, 5113 AL Cromvoirt",open,1,NULL,NULL,+31 73 203 4888,https://guide.michelin.com/en/noord-brabant/cromvoirt/restaurant/noble-kitchen
+R,rest_0072,Noor,Groningen,"Herestraat 123, 9711 AG Groningen",open,1,NULL,NULL,+31 50 700 1370,https://guide.michelin.com/en/groningen/groningen/restaurant/noor-1200050
+R,rest_0073,Novaela,Delft,"Bagijnhof 118, 2611 AS Delft",open,1,NULL,NULL,+31 15 206 1456,https://guide.michelin.com/us/en/zuid-holland/delft/restaurant/novaela
+R,rest_0074,O&O,Sint Willebrord,"Molenstraat 35, 4711 BB Sint Willebrord",open,1,NULL,NULL,+31 165 383 249,https://guide.michelin.com/nl/nl/north-brabant/sint-willebrord/restaurant/o-o
+R,rest_0075,Odille,Sint-Oedenrode,"Markt 3, 5492 CA Sint-Oedenrode",open,1,NULL,NULL,+31 413 786 352,https://guide.michelin.com/nl/nl/north-brabant/sint-oedenrode/restaurant/odille
+R,rest_0076,One,Roermond,"Minderbroederssingel 4, 6041 KM Roermond",open,1,NULL,NULL,+31 475 600 262,https://guide.michelin.com/nl/nl/limburg/roermond/restaurant/one
+R,rest_0081,Perceel,Capelle aan de Ijssel,"Algerastraat 22, 2909 LB Capelle aan den IJssel",open,1,NULL,NULL,+31 10 227 1922,https://guide.michelin.com/nl/nl/south-holland/capelle-aan-den-ijssel/restaurant/perceel
+R,rest_0082,Pieters Restaurant,Bergambacht,"Klundertseweg 16, 2972 AK Bergambacht",open,1,NULL,NULL,+31 182 355 750,https://guide.michelin.com/nl/nl/south-holland/bergambacht/restaurant/pieters-restaurant
+R,rest_0083,Ratatouille Food & Wine,Haarlem,"Lange Veerstraat 19, 2011 DD Haarlem",open,1,NULL,NULL,+31 23 542 7270,https://guide.michelin.com/nl/nl/north-holland/haarlem/restaurant/ratatouille-food-wine
+R,rest_0084,Restaurant 1857,Roosendaal,"Kade 7, 4701 PC Roosendaal",open,1,NULL,NULL,+31 165 850 809,https://guide.michelin.com/nl/nl/north-brabant/roosendaal/restaurant/restaurant-1857
+R,rest_0085,Restaurant 212,Amsterdam,"Amsteldijk 212, 1079 LK Amsterdam",open,2,NULL,NULL,+31 20 334 8685,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/restaurant-212
+R,rest_0086,Restaurant Affect,Zwolle,"Luttenbergstraat 4, 8012 EE Zwolle",open,1,NULL,NULL,NULL,https://guide.michelin.com/nl/nl/overijssel/zwolle/restaurant/restaurant-affect
+R,rest_0087,Restaurant Atelier,Gulpen,"Dorpsstraat 45, 6271 BN Gulpen",open,1,NULL,NULL,+31 43 450 4490,https://guide.michelin.com/en/limburg/gulpen/restaurant/l-atelier212517
+R,rest_0088,Restaurant Calva,Nootdorp,"Laan 1940-1945 43, 2636 SG Nootdorp",open,1,NULL,NULL,+31 15 204 9114,https://guide.michelin.com/en/zuid-holland/nootdorp/restaurant/calva
+R,rest_0089,Restaurant de Burgemeester,Linschoten,"Dorpsstraat 102, 3461 BL Linschoten",open,1,NULL,NULL,+31 348 414 040,https://guide.michelin.com/en/utrecht/linschoten/restaurant/de-burgemeester
+R,rest_0090,Restaurant kasteel Heemstede,Houten,"Heemsteedse Dreef 20, 3992 LD Houten",open,1,NULL,NULL,+31 30 272 2207,https://guide.michelin.com/en/utrecht/houten/restaurant/kasteel-heemstede
+R,rest_0091,Restaurant Showw,Amsterdam,"Gelrestraat 28, 1078 GR Amsterdam",open,1,NULL,NULL,+31 20 280 0816,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/restaurant-showw
+R,rest_0092,Restaurant Wolfslaar,Breda,"Wolfslaar 20, 4834 CA Breda",open,1,NULL,NULL,NULL,https://guide.michelin.com/en/noord-brabant/breda/restaurant/wolfslaar
+R,rest_0093,Rijks,Amsterdam,"Museumstraat 2, 1071 XX Amsterdam",open,1,NULL,NULL,+31 20 674 7555,https://guide.michelin.com/en/noord-holland/amsterdam/restaurant/rijks-r
+R,rest_0094,Rijnzicht,Doornenburg,"Pannerdenseweg 5, 6914 CA Doornenburg",open,1,NULL,NULL,+31 481 421 308,https://guide.michelin.com/nl/nl/gelderland/doornenburg/restaurant/rijnzicht
+R,rest_0095,Ron Gastrobar,Amsterdam,"Sophialaan 55, 1075 BP Amsterdam",open,1,NULL,NULL,+31 20 496 1943,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/ron-gastrobar
+R,rest_0096,Sabero,Leende,"Leenderweg 37, 5595 AE Leende",open,1,NULL,NULL,+31 6 51231074,https://guide.michelin.com/en/noord-brabant/leende_2216558/restaurant/sabero-1209599
+R,rest_0098,Sense,Vught,"Taalstraat 100, 5261 BH Vught",open,NULL,NULL,NULL,NULL,https://guide.michelin.com/nl/nl/north-brabant/vught/restaurant/sense
+R,rest_0099,Sinne,Amsterdam,"Ceintuurbaan 342, 1073 EN Amsterdam",open,1,NULL,NULL,+31 20 682 7290,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/sinne
+R,rest_0100,Spetters,Breskens,"Nolledijk 1, 4511 TR Breskens",open,1,NULL,NULL,+31 117 381 223,https://guide.michelin.com/nl/nl/zeeland/breskens/restaurant/spetters
+R,rest_0101,Studio,Maastricht,"Kesselskade 66, 6211 HM Maastricht",open,1,NULL,NULL,+31 6 46027252,https://guide.michelin.com/nl/nl/limburg/maastricht/restaurant/studio
+R,rest_0103,t Amsterdammertje,Loenen aan de Vecht,"Nieuwstraat 1, 3632 BX Loenen aan de Vecht",open,1,NULL,NULL,+31 294 234 848,https://guide.michelin.com/nl/nl/north-holland/loenen-aan-de-vecht/restaurant/t-amsterdammertje
+R,rest_0104,t Ganzenest,Rijswijk,"Haagweg 2, 2281 AT Rijswijk",open,1,NULL,NULL,+31 70 307 7970,https://guide.michelin.com/nl/nl/south-holland/rijswijk/restaurant/t-ganzenest
+R,rest_0105,t Raedthuys,Duiven,"Marktstraat 2, 6921 BG Duiven",open,1,NULL,NULL,+31 316 268 808,https://guide.michelin.com/nl/nl/gelderland/duiven/restaurant/t-raedthuys
+R,rest_0106,Tante Koosje,Loenen aan de Vecht,"Dorpsstraat 8, 3632 BT Loenen aan de Vecht",open,1,NULL,NULL,+31 294 233 201,https://guide.michelin.com/nl/nl/north-holland/loenen-aan-de-vecht/restaurant/tante-koosje
+R,rest_0107,The Millen,Rotterdam,"Meent 72-78, 3011 JN Rotterdam",open,1,NULL,NULL,+31 10 430 2333,https://guide.michelin.com/nl/nl/south-holland/rotterdam/restaurant/the-millen
+R,rest_0108,The White Room by Jacob Jan Boerma,Amsterdam,"Herengracht 542, 1017 CG Amsterdam",open,1,NULL,NULL,+31 20 554 9454,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/the-white-room-by-jacob-jan-boerma
+R,rest_0109,Tout a Fait,Maastricht,"St. Servaasklooster 13, 6211 TE Maastricht",open,1,NULL,NULL,+31 43 350 0405,https://guide.michelin.com/nl/nl/limburg/maastricht/restaurant/tout-a-fait
+R,rest_0110,Tribeca,Heeze,"Kapelstraat 49, 5591 HE Heeze",open,2,NULL,NULL,+31 40 226 3232,https://guide.michelin.com/en/noord-brabant/heeze/restaurant/tribeca502881
+R,rest_0111,Triptyque,Wateringen,"Poeldijkseweg 4, 2291 PC Wateringen",open,1,NULL,NULL,+31 174 725 505,https://guide.michelin.com/nl/nl/south-holland/wateringen/restaurant/triptyque
+R,rest_0113,Versaen,Ravenstein,"Maasdijk 33, 5371 EE Ravenstein",open,1,NULL,NULL,+31 486 851 565,https://guide.michelin.com/nl/nl/north-brabant/ravenstein/restaurant/versaen
+R,rest_0114,Vinkeles,Amsterdam,"Keizersgracht 384, 1016 GA Amsterdam",open,2,NULL,NULL,NULL,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/vinkeles
+R,rest_0115,Vista,Willemstad,"Benedenkade 14, 4761 BA Willemstad",open,1,NULL,NULL,NULL,https://guide.michelin.com/en/noord-brabant/nl-willemstad/restaurant/vista488719
+R,rest_0116,Voltaire,Leersum,"Amerongerweg 1, 3951 AN Leersum",open,1,NULL,NULL,NULL,https://guide.michelin.com/nl/nl/utrecht/leersum/restaurant/voltaire
+R,rest_0117,Wiesen,Eindhoven,"Kardinaal van Rossumstraat 12, 5643 GM Eindhoven",open,1,NULL,NULL,+31 40 244 6666,https://guide.michelin.com/nl/nl/north-brabant/eindhoven/restaurant/wiesen
+R,rest_0118,Wils,Amsterdam,"Stadionplein 26, 1076 CM Amsterdam",open,1,NULL,NULL,+31 20 236 6522,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/wils
+R,rest_0119,Yamazato,Amsterdam,"Ferdinand Bolstraat 333, 1072 LH Amsterdam",open,1,NULL,NULL,+31 20 678 8300,https://guide.michelin.com/en/noord-holland/amsterdam/restaurant/yamazato115431
+R,rest_0120,Zarzo,Eindhoven,"Woenselse Markt 15, 5612 CS Eindhoven",open,1,NULL,NULL,+31 40 211 7700,https://guide.michelin.com/nl/nl/north-brabant/eindhoven/restaurant/zarzo
+R,rest_0121,Zeezout,Rotterdam,"Westerkade 11b, 3016 CL Rotterdam",open,1,NULL,NULL,+31 10 436 5049,https://guide.michelin.com/nl/nl/south-holland/rotterdam/restaurant/zeezout
+R,rest_0122,Zoldering,Amsterdam,"Geldersekade 29, 1011 EJ Amsterdam",open,1,NULL,NULL,+31 20 765 1212,https://guide.michelin.com/nl/nl/north-holland/amsterdam/restaurant/zoldering
+R,rest_0123,Zout & Citroen,Oosterhout,"Heuvelstraat 25, 4901 LG Oosterhout",open,1,NULL,NULL,+31 162 450 806,https://guide.michelin.com/nl/nl/north-brabant/oosterhout/restaurant/zout-citroen
+R,rest_0144,Spectrum,Amsterdam,"Herengracht 542-556, 1017 CG Amsterdam",permanently_closed,NULL,NULL,https://www.restaurantspectrum.com/,NULL,https://guide.michelin.com/gb/en/noord-holland/amsterdam/restaurant/spectrum437663
+R,rest_0149,De Groene Lantaarn,Staphorst,"Gemeenteweg 364, 7951 PG Staphorst",permanently_closed,NULL,NULL,https://degroenelantaarn.com/en/home-en/,NULL,https://guide.michelin.com/en/overijssel/staphorst/restaurant/de-groene-lantaarn
+R,rest_0152,Zenith,Apeldoorn,"Koninginnelaan 37, 7315 BL Apeldoorn",open,1,NULL,NULL,+31 55 203 4140,https://guide.michelin.com/us/en/gelderland/apeldoorn/restaurant/zenith
+R,rest_0153,Joann,Enschede,"Nijverheidstraat 2, 7511 JM Enschede",open,1,NULL,NULL,+31 53 720 0820,https://guide.michelin.com/en/overijssel/enschede/restaurant/joann
+R,rest_0781,Graphite by Peter Gast,Amsterdam,"Paardenstraat 15III, 1017 CX Amsterdam",open,NULL,NULL,NULL,NULL,https://guide.michelin.com/us/en/noord-holland/amsterdam/restaurant/graphite-by-peter-gast
+R,rest_0782,Zheng,The Hague,"Prinsestraat 33, 2513 CA Den Haag",open,NULL,NULL,https://restaurantzheng.com,NULL,https://guide.michelin.com/us/en/zuid-holland/den-haag/restaurant/zheng
+R,rest_0788,De Woage,Gramsbergen,"Meiboomplein 1, 7783 AT Gramsbergen",open,NULL,NULL,NULL,NULL,https://guide.michelin.com/us/en/overijssel/gramsbergen/restaurant/de-woage
+R,rest_0789,De Swarte Ruijter,Holten,"Holterbergweg 7, 7451 JL Holten",open,1,NULL,https://swarteruijter.nl,NULL,https://guide.michelin.com/us/en/overijssel/holten/restaurant/de-swarte-ruijter
+R,rest_0790,'t Lansink,Hengelo,"C.T. Storkstraat 18, Hengelo (Overijssel)",open,1,NULL,https://hotellansink.nl,NULL,https://guide.michelin.com/us/en/overijssel/hengelo/restaurant/t-lansink
+R,rest_0791,De Bloemenbeek,De Lutte,"Beuningerstraat 6, 7587 LD De Lutte",open,1,NULL,https://bloemenbeek.nl,NULL,https://guide.michelin.com/us/en/overijssel/de-lutte/restaurant/de-bloemenbeek
+R,rest_1403,SUIS,Schin op Geul,"Strucht 77, 6305 AH Schin op Geul",open,2,NULL,https://suisralfberendsen.com/,NULL,https://guide.michelin.com/en/limburg/schin-op-geul_2216951/restaurant/suis
