@@ -29,21 +29,52 @@ in the same table aborts the file.
 
 ## Status
 
-| Country | File | Restaurants: Place ID / phone / website | Hotels: Place ID / phone / website |
-|---|---|---|---|
-| FR | `prepared_fr_gap_fill.sql`, prepared, not applied | 598/646 · 99/117 · 462/477 | 201/211 · 1/2 · — |
+Every file is prepared and not applied. Run them in any order; each is fill-only and can safely be run again.
 
-France was tested on a scratch Postgres seeded with the export:
+| Country | Restaurants: Place ID · phone · website | Hotels: Place ID · phone · website |
+|---|---|---|
+| AD | — | 0/0 · 3/4 · 4/4 |
+| AT | 73/79 · 4/6 · 1/1 | 19/24 · 14/25 · 14/25 |
+| BE | 8/10 · 6/14 · 106/118 | 3/3 · 2/3 · 2/3 |
+| CH | 101/103 · 10/11 · 2/3 | 40/47 · 40/47 · 39/47 |
+| DE | 3/5 · 5/24 · 2/4 | 11/16 · 10/19 · 11/19 |
+| DK | 32/32 · 3/4 · 0/0 | 9/9 · 7/9 · 8/9 |
+| ES | 0/4 · 5/8 · 50/52 | 16/19 · 14/22 · 12/18 |
+| FI | 7/7 · 0/0 · 0/0 | 3/3 · 2/3 · 2/3 |
+| FR | 598/646 · 99/117 · 462/477 | 201/211 · 1/2 · 0/0 |
+| GB | 190/191 · 12/29 · 0/0 | 115/123 · 2/5 · 2/3 |
+| GR | — | 0/0 · 0/1 · 0/0 |
+| HR | 0/0 · 1/1 · 1/1 | — |
+| HU | 0/0 · 1/2 · 2/2 | 0/0 · 0/1 · 0/1 |
+| IE | 22/23 · 1/2 · 0/0 | 17/19 · 0/0 · 0/0 |
+| IS | 3/3 · 2/2 · 0/0 | 3/5 · 3/5 · 3/5 |
+| IT | 1/18 · 4/18 · 5/6 | 58/70 · 39/74 · 40/71 |
+| LU | 0/0 · 2/2 · 12/12 | 1/1 · 2/2 · 2/2 |
+| MC | 9/9 · 2/2 · 0/0 | 1/1 · 0/0 · 0/0 |
+| ME | — | 0/0 · 3/6 · 5/6 |
+| MT | 0/0 · 1/1 · 1/1 | 0/0 · 6/6 · 6/6 |
+| NL | 2/3 · 8/10 · 0/3 | 1/1 · 1/1 · 1/1 |
+| NO | 18/18 · 1/8 · 1/1 | 16/16 · 11/16 · 15/16 |
+| PL | 0/0 · 1/1 · 1/1 | — |
+| PT | 0/0 · 0/0 · 1/1 | — |
+| RS | — | 0/0 · 2/4 · 3/4 |
+| SE | 18/18 · 2/4 · 0/1 | 10/10 · 10/10 · 9/10 |
+| SI | 0/0 · 1/1 · 0/1 | 0/0 · 5/6 · 6/6 |
 
-- Restaurant Place IDs go from 4 to 602, phones from 533 to 632 and websites
-  from 173 to 635. Hotel Place IDs go from 0 to 201.
-- A re-run is a no-op.
-- A renamed row, or a Place ID already held by another row, aborts the file
-  with nothing applied.
+**Tested on scratch Postgres** seeded with the export: all 27 files applied
+one after another without a single failed check or Place ID collision
+between countries, and a second run changed nothing.
 
-Findings are logged as QA-392 (6 likely closures), QA-393 (19 stored
-coordinates far from the venue) and QA-394 (named restaurants inside
-hotels).
+| Filled | Before | After |
+|---|---|---|
+| Restaurants with a Place ID | 251 | 1,336 |
+| Restaurants with a phone | 1,153 | 1,324 |
+| Restaurants with a website | 735 | 1,382 |
+| Hotels with a Place ID | 40 | 564 |
+| Hotels with a phone | 347 | 524 |
+| Hotels with a website | 359 | 543 |
 
-**Next:** GB (191 + 123 Place IDs missing), CH, AT, DK, IE, NO, SE, MC, BE
-websites, IT hotels.
+Findings are logged as QA-392 to QA-397: closures, wrong stored
+coordinates, and named restaurants inside hotels.
+
+**Still open:** the values held back per country (see each CSV), mostly phones without a second source.
