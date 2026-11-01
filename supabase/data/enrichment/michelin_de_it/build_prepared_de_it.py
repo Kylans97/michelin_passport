@@ -34,8 +34,8 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ENR = os.path.dirname(HERE)
 MIG_DIR = os.path.join(os.path.dirname(os.path.dirname(ENR)), 'migrations')
 
-ANNOUNCED = {'DE': '2026-06-23', 'IT': '2025-11-19'}
-CCL = {'DE': 'de', 'IT': 'it'}
+ANNOUNCED = {'DE': '2026-06-23', 'IT': '2025-11-19', 'PT': '2026-03-10'}
+CCL = {'DE': 'de', 'IT': 'it', 'PT': 'pt'}
 
 
 def n(s):
@@ -75,6 +75,9 @@ def q(v):
 
 def main():
     export_path, first_code, mig_name, qa_first = sys.argv[1], int(sys.argv[2]), sys.argv[3], int(sys.argv[4])
+    countries = (sys.argv[5] if len(sys.argv) > 5 else 'DE,IT').split(',')
+    out_dir = sys.argv[6] if len(sys.argv) > 6 else HERE
+    out_sql = sys.argv[7] if len(sys.argv) > 7 else 'prepared_de_it_stars_2026.sql'
     X = json.load(open(export_path))
     if isinstance(X, list):
         X = X[0]
@@ -86,6 +89,9 @@ def main():
     pid_in_use = set(X.get('place_ids_in_use') or [])
     url_in_use = set(X.get('michelin_urls_in_use') or [])
     stay = json.load(open(os.path.join(HERE, 'michelin_hotel_pages_20261029.json')))
+    pt_stay = os.path.join(ENR, 'michelin_pt_stars/michelin_hotel_pages_20261101.json')
+    if os.path.exists(pt_stay):
+        stay.update(json.load(open(pt_stay)))
     de2025 = json.load(open(os.path.join(ENR, 'michelin_de_stars/_source/michelin_full_list_2025_parsed.json')))
     it2026 = json.load(open(os.path.join(ENR, 'michelin_it_stars/_source/michelin_full_list_2026_parsed.json')))
 
@@ -96,7 +102,7 @@ def main():
     summary = {}
     expected = {}
 
-    for CC in ('DE', 'IT'):
+    for CC in countries:
         cc = CCL[CC]
         research = list(csv.DictReader(open(os.path.join(ENR, f'michelin_{cc}_stars/{cc}_research_2026.csv'))))
         by_slug = collections.defaultdict(list)
@@ -194,7 +200,7 @@ def main():
                         losses.append(e['code'])
                         report.append(dict(country=CC, code=e['code'], name=e['name'], kind='LOSS (not in MICHELIN 2026 listing)',
                                            detail=f"{base} star(s) in 2025; absent from the live 2026 listing -- MICHELIN's 2026 total is 339 vs 338 live, so one absentee may be a mid-year removal rather than a lost star: confirm"))
-            else:  # IT
+            else:  # IT, PT: launch rows hold the current edition's values
                 if m:
                     s26 = int(m['stars'])
                     if cur['year'] == 2026 and cur['value'] != s26:
@@ -204,7 +210,7 @@ def main():
                     elif cur['year'] != 2026 and cur['value'] != s26:
                         changes.append((e['code'], s26, cur['value']))
                 else:
-                    in_art = [a for a in it2026 if sim(a['name'], e['name']) >= 0.8]
+                    in_art = [a for a in it2026 if sim(a['name'], e['name']) >= 0.8] if CC == 'IT' else []
                     if in_art:
                         kept.append((e['code'], e['stars']))
                         report.append(dict(country=CC, code=e['code'], name=e['name'], kind='KEPT (in 2026 article, offline now)',
@@ -429,7 +435,7 @@ end $$;""")
         sql_parts.append('\n\n'.join(P))
 
     # ---- write outputs
-    with open(os.path.join(HERE, 'match_report.csv'), 'w', newline='') as f:
+    with open(os.path.join(out_dir, 'match_report.csv'), 'w', newline='') as f:
         w = csv.DictWriter(f, fieldnames=['country', 'code', 'name', 'kind', 'detail'])
         w.writeheader(); w.writerows(report)
     towns = sorted(newtowns)
@@ -498,7 +504,10 @@ begin;
 -- chefs left (tageskarte.io), but the timing is unclear and one listing still
 -- shows reviews from April 2026 -- logged, not prepared.
 '''
-    open(os.path.join(HERE, 'prepared_de_it_stars_2026.sql'), 'w').write(head + '\n'.join(sql_parts) + '\n\ncommit;\n' + optional)
+    if countries != ['DE', 'IT']:
+        optional = ''
+        head = head.replace('MICHELIN Germany 2026 (announced 23 June 2026) and Italy 2026 (announced\n-- 19 November 2025)', 'MICHELIN ' + '/'.join(countries) + ' 2026 (announced ' + ', '.join(ANNOUNCED[c] for c in countries) + ')')
+    open(os.path.join(out_dir, out_sql), 'w').write(head + '\n'.join(sql_parts) + '\n\ncommit;\n' + optional)
     print(json.dumps(summary, indent=1))
     print('new towns:', len(towns), '| report rows:', len(report), collections.Counter(r['kind'] for r in report))
     print('expected counts:', {k: dict(v) for k, v in expected.items()}, '| next free code:', code)
