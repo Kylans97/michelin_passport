@@ -1,6 +1,6 @@
 # Poland + Türkiye: MICHELIN stars and Key hotels 2026 (2026-11-01)
 
-Status: **PREPARED, NOT APPLIED.** Waiting for the product owner's go-ahead.
+Status: **APPLIED 2026-11-01**, at the product owner's request. The migration went in with `supabase db push --linked`; the ledger is 127, with local and remote in agreement. The SQL file passed every check. Every staged row was re-checked against a fresh export (`_source/production_after_apply_20261101.json`): PL ends at 0/1/10 stars and 0/5/9 Keys, TR at 0/2/15 stars and 1/3/19 Keys. The product owner accepted the Jaskółka/Bristol correction in place. Originally prepared, not applied —
 
 Apply in this order:
 
@@ -125,4 +125,4 @@ was not available, so the geography type and functions are stubbed.
 - **A re-run** aborts. The migration is idempotent.
 - **A renamed exported row** aborts the whole file.
 
-Not run against the real database.
+Then applied to the real database (see Status).

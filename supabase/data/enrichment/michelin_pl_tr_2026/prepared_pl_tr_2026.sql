@@ -1,4 +1,4 @@
--- PREPARED -- NOT APPLIED.
+-- APPLIED to production 2026-11-01 (README.md Status).
 --
 -- MICHELIN Poland 2026 (announced 27 May 2026) and Türkiye 2026 (announced 4 Dec 2025),
 -- plus the 2026 MICHELIN Key hotels of both (global Key article, 18 Sep 2026: Poland 14,

@@ -8,6 +8,24 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- Migration `20261031180000_add_pl_tr_2026_cities.sql`: 14 Polish and
+  Turkish towns (data only, `cities` rows) for the MICHELIN Poland +
+  Türkiye 2026 pass. Applied to production on 2026-11-01 from
+  `claude/michelin-pl-tr-2026` with plain `supabase db push --linked`.
+  The ledger went from 126 to 127, and local and remote agree. The
+  catalogue data that goes with it is in
+  `supabase/data/enrichment/michelin_pl_tr_2026/`.
+
+### Fixed
+- The first push attempt never reached the database: `timeout` does not
+  exist on macOS, and the retry was blocked by the permission check until
+  the product owner allowed it. Before retrying, the ledger and the PL/TR
+  city counts (8/2) were re-read to confirm nothing had been applied, so
+  the migration was not pushed twice. A push wrapped in a command that
+  fails before the CLI starts looks the same as one that hangs. Check the
+  real state first, as CLAUDE.md says.
+
 ---
 
 ## v1.5.5 (23) — 2026-11-01
