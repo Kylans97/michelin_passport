@@ -1,0 +1,281 @@
+{
+ "/en/hotels-stays/Bad-Ragaz/grand-resort-bad-ragaz-12501": {
+  "h1": "Grand Resort Bad Ragaz",
+  "ld_name": "Grand Resort Bad Ragaz in Bad Ragaz",
+  "lat": 47.001692,
+  "lon": 9.501822,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Bernhard-Simonstrasse 20\",\"addressLocality\":\"Bad Ragaz\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Canton of St. Gallen\"}"
+ },
+ "/en/hotels-stays/Champex-Lac/au-club-alpin-13044": {
+  "h1": "Au Club Alpin",
+  "ld_name": "Au Club Alpin in Champex-Lac",
+  "lat": 46.0304,
+  "lon": 7.11564,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"21 Route du Lac\",\"addressLocality\":\"Champex-Lac\",\"postalCode\":\"1938\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Valais\"}"
+ },
+ "/en/hotels-stays/F%C3%BCrstenau/casa-caminada-9871": {
+  "h1": "Casa Caminada",
+  "ld_name": "Casa Caminada in Fürstenau",
+  "lat": 46.72133,
+  "lon": 9.44578,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Obergass 3\",\"addressLocality\":\"Fürstenau\",\"postalCode\":\"7414\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Swiss Alps\"}"
+ },
+ "/en/hotels-stays/H%C3%B8rve/dragsholm-slot-13460": {
+  "h1": "Dragsholm Slot",
+  "ld_name": "Dragsholm Slot in Hørve",
+  "lat": 55.77129,
+  "lon": 11.39083,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Dragsholm Allé 1\",\"addressLocality\":\"Hørve\",\"postalCode\":\"4534\",\"addressCountry\":\"DNK\"}"
+ },
+ "/en/hotels-stays/Ischgl-2/schlosshotel-ischgl-13941": {
+  "h1": "Schlosshotel Ischgl",
+  "ld_name": "Schlosshotel Ischgl in Ischgl",
+  "lat": 47.00853,
+  "lon": 10.28756,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Dorfstraße 85\",\"addressLocality\":\"Ischgl\",\"postalCode\":\"6561\",\"addressCountry\":\"AUT\",\"addressRegion\":\"Tyrol\"}"
+ },
+ "/en/hotels-stays/St.-Gallen/einstein-stgallen-8557": {
+  "h1": "Einstein St. Gallen",
+  "ld_name": "Einstein St. Gallen in St. Gallen",
+  "lat": 47.42142,
+  "lon": 9.37537,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Berneggstrasse 2\",\"addressLocality\":\"St. Gallen\",\"postalCode\":\"9000\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Canton of St. Gallen\"}"
+ },
+ "/en/hotels-stays/andermatt/the-chedi-andermatt-7567": {
+  "h1": "The Chedi Andermatt",
+  "ld_name": "The Chedi Andermatt in Andermatt",
+  "lat": 46.636076,
+  "lon": 8.59428,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Gotthardstrasse 4\",\"addressLocality\":\"Andermatt\",\"postalCode\":\"6490\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Uri\"}"
+ },
+ "/en/hotels-stays/basel/hotel-les-trois-rois-6395": {
+  "h1": "Hotel Les Trois Rois",
+  "ld_name": "Hotel Les Trois Rois in Basel",
+  "lat": 47.56039,
+  "lon": 7.58755,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Blumenrain 8\",\"addressLocality\":\"Basel\",\"postalCode\":\"4001\",\"addressCountry\":\"CHE\"}"
+ },
+ "/en/hotels-stays/copenhagen/dangleterre-copenhagen-7705": {
+  "h1": "Hotel d'Angleterre",
+  "ld_name": "Hotel d'Angleterre in Copenhagen",
+  "lat": 55.680529,
+  "lon": 12.584379,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Kongens Nytorv 34\",\"addressLocality\":\"Copenhagen\",\"postalCode\":\"1050\",\"addressCountry\":\"DNK\"}"
+ },
+ "/en/hotels-stays/crans-montana/hostellerie-du-pas-de-lours-10189": {
+  "h1": "Hostellerie du Pas de l'Ours",
+  "ld_name": "Hostellerie du Pas de l'Ours in Crans-Montana",
+  "lat": 46.30749,
+  "lon": 7.45982,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Rue du Pas de l'Ours no 41\",\"addressLocality\":\"Crans-Montana\",\"postalCode\":\"3963\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Swiss Alps\"}"
+ },
+ "/en/hotels-stays/crans-montana/lecrans-hotel-spa-7890": {
+  "h1": "LeCrans Hotel & Spa",
+  "ld_name": "LeCrans Hotel & Spa in Crans-Montana",
+  "lat": 46.315184,
+  "lon": 7.46255,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Chemin du Mont-blanc 1, Plans Mayens\",\"addressLocality\":\"Crans-Montana\",\"postalCode\":\"3963\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Swiss Alps\"}"
+ },
+ "/en/hotels-stays/geneva/four-seasons-hotel-des-bergues-geneva-11435": {
+  "h1": "Four Seasons Hotel des Bergues Geneva",
+  "ld_name": "Four Seasons Hotel des Bergues Geneva in Geneva",
+  "lat": 46.206806,
+  "lon": 6.146988,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"33 Quai des Bergues\",\"addressLocality\":\"Geneva\",\"postalCode\":\"1201\",\"addressCountry\":\"CHE\"}"
+ },
+ "/en/hotels-stays/geneva/la-reserve-geneve-hotel-spa-6471": {
+  "h1": "La Reserve Genève",
+  "ld_name": "La Reserve Genève in Geneva",
+  "lat": 46.250594,
+  "lon": 6.149498,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"301 Rte de Lausanne\",\"addressLocality\":\"Geneva\",\"postalCode\":\"1293\",\"addressCountry\":\"CHE\"}"
+ },
+ "/en/hotels-stays/geneva/the-woodward-auberge-collection-12243": {
+  "h1": "The Woodward, Auberge Collection",
+  "ld_name": "The Woodward, Auberge Collection in Geneva",
+  "lat": 46.21212,
+  "lon": 6.1524,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"37 Quai Wilson\",\"addressLocality\":\"Geneva\",\"postalCode\":\"1201\",\"addressCountry\":\"CHE\"}"
+ },
+ "/en/hotels-stays/interlaken/victoria-jungfrau-grand-hotel-spa-5984": {
+  "h1": "Victoria-Jungfrau Grand Hotel & Spa",
+  "ld_name": "Victoria-Jungfrau Grand Hotel & Spa in Interlaken",
+  "lat": 46.68654,
+  "lon": 7.85757,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Hoheweg 41\",\"addressLocality\":\"Interlaken\",\"postalCode\":\"3800\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Canton of Bern\"}"
+ },
+ "/en/hotels-stays/kitzbuhel/schwarzer-adler-kitzbuhel-13942": {
+  "h1": "Schwarzer Adler Kitzbühel",
+  "ld_name": "Schwarzer Adler Kitzbühel in Kitzbühel",
+  "lat": 47.44442,
+  "lon": 12.39454,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Florianigasse 15\",\"addressLocality\":\"Kitzbühel\",\"postalCode\":\"6370\",\"addressCountry\":\"AUT\",\"addressRegion\":\"Tyrol\"}"
+ },
+ "/en/hotels-stays/lausanne/lausanne-palace-and-spa-98": {
+  "h1": "Lausanne Palace",
+  "ld_name": "Lausanne Palace in Lausanne",
+  "lat": 46.519403,
+  "lon": 6.63072,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"7 Rue du Grand-Chêne, 9\",\"addressLocality\":\"Lausanne\",\"postalCode\":\"1003\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Vaud\"}"
+ },
+ "/en/hotels-stays/lech-am-arlberg/burg-vital-resort-13884": {
+  "h1": "Burg Vital Resort",
+  "ld_name": "Burg Vital Resort in Lech am Arlberg",
+  "lat": 47.21743,
+  "lon": 10.13862,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Oberlech 568\",\"addressLocality\":\"Lech am Arlberg\",\"postalCode\":\"6764\",\"addressCountry\":\"AUT\",\"addressRegion\":\"Vorarlberg\"}"
+ },
+ "/en/hotels-stays/lugano/splendide-royal-10502": {
+  "h1": "Splendide Royal Lugano",
+  "ld_name": "Splendide Royal Lugano in Lugano",
+  "lat": 45.99473,
+  "lon": 8.94585,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Riva Caccia 7\",\"addressLocality\":\"Lugano\",\"postalCode\":\"6900\",\"addressCountry\":\"CHE\"}"
+ },
+ "/en/hotels-stays/lugano/the-view-lugano-10031": {
+  "h1": "The View Lugano",
+  "ld_name": "The View Lugano in Lugano",
+  "lat": 45.98721,
+  "lon": 8.95048,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Guidino 29\",\"addressLocality\":\"Lugano\",\"postalCode\":\"6900\",\"addressCountry\":\"CHE\"}"
+ },
+ "/en/hotels-stays/st-moritz/carlton-hotel-st-moritz-6969": {
+  "h1": "Carlton Hotel St. Moritz",
+  "ld_name": "Carlton Hotel St. Moritz in St. Moritz",
+  "lat": 46.499875,
+  "lon": 9.846423,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via J. Badrutt 11\",\"addressLocality\":\"St. Moritz\",\"postalCode\":\"7500\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Swiss Alps\"}"
+ },
+ "/en/hotels-stays/st-moritz/giardino-mountain-6917": {
+  "h1": "Giardino Mountain",
+  "ld_name": "Giardino Mountain in St. Moritz",
+  "lat": 46.477774,
+  "lon": 9.810889,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Via Maistra 3\",\"addressLocality\":\"St. Moritz\",\"postalCode\":\"7512\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Swiss Alps\"}"
+ },
+ "/en/hotels-stays/stavanger/eilert-smith-hotel-9301": {
+  "h1": "Eilert Smith Hotel",
+  "ld_name": "Eilert Smith Hotel in Stavanger",
+  "lat": 58.973874,
+  "lon": 5.730991,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Nordbøgata 8\",\"addressLocality\":\"Stavanger\",\"postalCode\":\"4006\",\"addressCountry\":\"NOR\",\"addressRegion\":\"Rogaland County\"}"
+ },
+ "/en/hotels-stays/trondheim/britannia-hotel-10216": {
+  "h1": "Britannia Hotel",
+  "ld_name": "Britannia Hotel in Trondheim",
+  "lat": 63.431905,
+  "lon": 10.398558,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Dronningens gate 5\",\"addressLocality\":\"Trondheim\",\"postalCode\":\"7401\",\"addressCountry\":\"NOR\"}"
+ },
+ "/en/hotels-stays/vals/7132-hotel-8526": {
+  "h1": "7132 Hotel",
+  "ld_name": "7132 Hotel in Vals",
+  "lat": 46.622321,
+  "lon": 9.181012,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Poststrasse 560\",\"addressLocality\":\"Vals\",\"postalCode\":\"7132\",\"addressCountry\":\"CHE\"}"
+ },
+ "/en/hotels-stays/vienna/anantara-palais-hansen-vienna-hotel-15401": {
+  "h1": "Anantara Palais Hansen Vienna Hotel",
+  "ld_name": "Anantara Palais Hansen Vienna Hotel in Vienna",
+  "lat": 48.2165731475,
+  "lon": 16.3687976969,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Schottenring 24\",\"addressLocality\":\"Vienna\",\"postalCode\":\"1010\",\"addressCountry\":\"AUT\"}"
+ },
+ "/en/hotels-stays/vitznau/park-hotel-vitznau-11122": {
+  "h1": "Park Hotel Vitznau",
+  "ld_name": "Park Hotel Vitznau in Vitznau",
+  "lat": 47.01505,
+  "lon": 8.47818,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Seestrasse 18\",\"addressLocality\":\"Vitznau\",\"postalCode\":\"6354\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Canton of Luzern\"}"
+ },
+ "/en/hotels-stays/zermatt/backstage-hotel-vernissage-10707": {
+  "h1": "Backstage Hotel Vernissage",
+  "ld_name": "Backstage Hotel Vernissage in Zermatt",
+  "lat": 46.022,
+  "lon": 7.74785,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Hofmattstrasse 4\",\"addressLocality\":\"Zermatt\",\"postalCode\":\"3920\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Swiss Alps\"}"
+ },
+ "/en/hotels-stays/zurich/la-reserve-eden-au-lac-zurich-10745": {
+  "h1": "La Réserve Eden au Lac Zurich",
+  "ld_name": " La Réserve Eden au Lac Zurich in Zurich",
+  "lat": 47.36274,
+  "lon": 8.5473,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Utoquai 45\",\"addressLocality\":\"Zurich\",\"postalCode\":\"8008\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Canton of Zurich\"}"
+ },
+ "/en/hotels-stays/zurich/the-dolder-grand-471": {
+  "h1": "The Dolder Grand",
+  "ld_name": "The Dolder Grand in Zurich",
+  "lat": 47.372677,
+  "lon": 8.573155,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Kurhausstrasse 65\",\"addressLocality\":\"Zurich\",\"postalCode\":\"8032\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Canton of Zurich\"}"
+ },
+ "/en/hotels-stays/zurich/widder-hotel-521": {
+  "h1": "Widder Hotel",
+  "ld_name": "Widder Hotel in Zurich",
+  "lat": 47.372278,
+  "lon": 8.539892,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Rennweg 7\",\"addressLocality\":\"Zurich\",\"postalCode\":\"8001\",\"addressCountry\":\"CHE\",\"addressRegion\":\"Canton of Zurich\"}"
+ }
+}
