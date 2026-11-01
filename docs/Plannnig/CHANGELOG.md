@@ -8,8 +8,39 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
-### Added
+---
 
+## v1.5.5 (23) — 2026-11-01
+
+1.5.4 (22) was archived at 17:03 on 2026-10-31 from `a557eeb` and sent
+to Apple, so this build carries what came after it:
+`claude/edit-visits`, fast-forwarded into `release/1.5.5`, and the 2026
+MICHELIN Key refresh (`claude/epic-lumiere-18d5b4`, catalogue data plus
+one migration, applied to production before this build).
+
+**Ledger: 126, local and remote in agreement.** Three migrations went
+to production after 22, all data-only (`cities` rows):
+`20261031150000` (Key-refresh towns, applied from
+`claude/epic-lumiere-18d5b4`), and `20261031160000` / `20261031170000`
+(Portugal towns, applied 2026-11-01 by runbook
+`supabase/data/enrichment/APPLY_2026-11-01.md` from
+`claude/lucid-rubin-us4we5`). Before this build, main also took
+`claude/lucid-rubin-us4we5` (the 2026-11-01 catalogue apply and the
+Aloë decision, QA-363/QA-401), `claude/gault-millau-benelux` (PR #8,
+Gault&Millau Benelux batch 1, already in production, QA-377–QA-382) and
+`claude/michelin-coverage-gaps` (the per-country coverage report). The
+only conflicts were in `qa_issues.csv` and the Michelin_Database
+CHANGELOG; both sides kept, QA-370–QA-403 in order.
+
+**Schema diff at the version bump** (CLAUDE.md; method in
+`NEW_MACHINE_SETUP.md` §4), 2026-11-01, after all three migrations: a
+fresh full-stack replay of all 126 migrations; `supabase db dump`
+identical to production apart from blank lines; storage and auth
+identical apart from the expected local-only
+`enforce_versioning_status_transition` trigger.
+`flutter analyze` clean and all 2,728 tests pass on this tree.
+
+### Added
 - **Portugal, and Place IDs across Europe, in the catalogue** (applied to
   production 2026-11-01 by runbook
   `supabase/data/enrichment/APPLY_2026-11-01.md`, product owner's
@@ -21,38 +52,9 @@ The format follows Keep a Changelog.
   Nordics Place ID fill, 27 Europe gap-fill files and the location
   corrections — none aborted. Details and QA-392–QA-403 in the
   Michelin_Database CHANGELOG. No app change needed. The data-only
-  migrations add `cities` rows; the next version bump's schema diff
-  covers them.
+  migrations add `cities` rows; this build's schema diff (above) covers
+  them.
 
-### Fixed
-
-- **Near-miss:** the runbook's `supabase db query --linked --file
-  <relative path>` from `supabase/data/enrichment/` fails with
-  "failed to read SQL file: NotFound": the CLI resolves the path against
-  the project root, not the shell's directory. Nothing ran; the files
-  were then given by absolute path. Run these from the repository root,
-  or with absolute paths.
-
----
-
-## v1.5.5 (23) — 2026-10-31
-
-1.5.4 (22) was archived at 17:03 on 2026-10-31 from `a557eeb` and sent
-to Apple, so this build carries what came after it:
-`claude/edit-visits`, fast-forwarded into `release/1.5.5`, and the 2026
-MICHELIN Key refresh (`claude/epic-lumiere-18d5b4`, catalogue data plus
-one migration, applied to production before this build).
-
-**Ledger: 124, local and remote in agreement.** The one migration
-added since 22, `20261031150000` (27 cities for the 2026 MICHELIN Key
-refresh), was applied to production from `claude/epic-lumiere-18d5b4`
-by the Key-refresh session; its file reached main first on its own,
-then the whole branch was merged (product owner, 2026-10-31, confirming
-QA-387). It only inserts `cities` rows, so the schema diff run for 21
-still covers the schema.
-`flutter analyze` clean and all 2,728 tests pass on this tree.
-
-### Added
 - 2026-10-31 — Catalogue: MICHELIN Key hotels 2026 for Italy, Spain,
   Germany, Belgium, the Netherlands and Luxembourg, applied to production
   after 1.5.4 (22). No app change needed: the Michelin Hotels guide
@@ -96,6 +98,13 @@ still covers the schema.
   evening…" was the old venue-page sheet, removed in 1.5.2 (20)).
 
 ### Fixed
+- **Near-miss:** the runbook's `supabase db query --linked --file
+  <relative path>` from `supabase/data/enrichment/` fails with
+  "failed to read SQL file: NotFound": the CLI resolves the path against
+  the project root, not the shell's directory. Nothing ran; the files
+  were then given by absolute path. Run these from the repository root,
+  or with absolute paths.
+
 - **Near-miss:** the shared QA-id note was stale (it said QA-377 was free;
   QA-377–382 were already taken), and MICHELIN overwrote its Spanish and
   Benelux 2025 Key articles with the 2026 list. A first build relabelled a
