@@ -1,0 +1,182 @@
+{
+ "/en/hotels-stays/Peso%20da%20R%C3%A9gua/torel-quinta-da-vacaria-douro-valley-14495": {
+  "h1": "Torel Quinta da Vacaria - Douro Valley",
+  "ld_name": "Torel Quinta da Vacaria - Douro Valley in Peso da Régua",
+  "lat": 41.15493,
+  "lon": -7.76914,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Rua de Vilarinho dos Freires\",\"addressLocality\":\"Peso da Régua\",\"postalCode\":\"5050-364\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Douro Valley\"}"
+ },
+ "/en/hotels-stays/Vila%20do%20Conde/the-lince-santa-clara-125128-14443": {
+  "h1": "The Lince Santa Clara",
+  "ld_name": "The Lince Santa Clara in Vila do Conde",
+  "lat": 41.353,
+  "lon": -8.73943,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Mosteiro de Santa Clara, Largo Dom Afonso Sanches\",\"addressLocality\":\"Vila do Conde\",\"postalCode\":\"4480-754\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Norte\"}"
+ },
+ "/en/hotels-stays/Vila-Nova-de-Gaia/the-yeatman-11004": {
+  "h1": "The Yeatman",
+  "ld_name": "The Yeatman in Vila Nova de Gaia",
+  "lat": 41.1337,
+  "lon": -8.61309,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Rua do Choupelo, Santa Marinha\",\"addressLocality\":\"Vila Nova de Gaia\",\"postalCode\":\"4400-088\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Norte\"}"
+ },
+ "/en/hotels-stays/Vila-Nova-de-Gaia/vinha-boutique-hotel-13045": {
+  "h1": "Vinha Boutique Hotel",
+  "ld_name": "Vinha Boutique Hotel in Vila Nova de Gaia",
+  "lat": 41.132418,
+  "lon": -8.57506,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"383 R. Fonte da Vinha\",\"addressLocality\":\"Vila Nova de Gaia\",\"postalCode\":\"4430-487\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Norte\"}"
+ },
+ "/en/hotels-stays/albufeira/vila-joya-7487": {
+  "h1": "Vila Joya",
+  "ld_name": "Vila Joya in Albufeira",
+  "lat": 37.080053,
+  "lon": -8.313732,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Estrada da Galé\",\"addressLocality\":\"Albufeira\",\"postalCode\":\"8200-416\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Algarve\"}"
+ },
+ "/en/hotels-stays/alporchinhos/vila-vita-parc-11366": {
+  "h1": "Vila Vita Parc Resort & Spa",
+  "ld_name": "Vila Vita Parc Resort & Spa in Alporchinhos",
+  "lat": 37.1019,
+  "lon": -8.37945,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Three MICHELIN Keys · An extraordinary stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"R. Anneliese Pohl\",\"addressLocality\":\"Alporchinhos\",\"postalCode\":\"8400-450\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Algarve\"}"
+ },
+ "/en/hotels-stays/amarante/casa-da-calcada-15704": {
+  "h1": "Casa da Calçada",
+  "ld_name": "Casa da Calçada in Amarante",
+  "lat": 41.2682993244,
+  "lon": -8.0778409288,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Largo do Paço, Nº6\",\"addressLocality\":\"Amarante\",\"postalCode\":\"4600-017\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Norte\"}"
+ },
+ "/en/hotels-stays/cascais/fortaleza-do-guincho-13742": {
+  "h1": "Fortaleza Do Guincho",
+  "ld_name": "Fortaleza Do Guincho in Cascais",
+  "lat": 38.728282,
+  "lon": -9.476035,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Estrada do Guincho\",\"addressLocality\":\"Cascais\",\"postalCode\":\"P-2750-642\",\"addressCountry\":\"PRT\"}"
+ },
+ "/en/hotels-stays/funchal/les-suites-at-the-cliff-bay-portobay-14492": {
+  "h1": "Les Suites at The Cliff Bay - PortoBay",
+  "ld_name": "Les Suites at The Cliff Bay - PortoBay in Funchal",
+  "lat": 32.63927,
+  "lon": -16.9258,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Estrada Monumental, Sao Martinho\",\"addressLocality\":\"Funchal\",\"postalCode\":\"9004-532\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Madeira\"}"
+ },
+ "/en/hotels-stays/lisbon/altis-belem-hotel-and-spa-5977": {
+  "h1": "Altis Belém Hotel & SPA",
+  "ld_name": "Altis Belém Hotel & SPA in Lisbon",
+  "lat": 38.693548,
+  "lon": -9.210629,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Doca do Bom Sucesso\",\"addressLocality\":\"Lisbon\",\"postalCode\":\"1400-038\",\"addressCountry\":\"PRT\"}"
+ },
+ "/en/hotels-stays/lisbon/four-seasons-hotel-ritz-lisbon-12766": {
+  "h1": "Four Seasons Hotel Ritz Lisbon",
+  "ld_name": "Four Seasons Hotel Ritz Lisbon in Lisbon",
+  "lat": 38.72561,
+  "lon": -9.15533,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Rua Rodrigo da Fonseca, 88\",\"addressLocality\":\"Lisbon\",\"postalCode\":\"1900-123\",\"addressCountry\":\"PRT\"}"
+ },
+ "/en/hotels-stays/lisbon/torel-palace-9351": {
+  "h1": "Torel Palace Lisbon",
+  "ld_name": "Torel Palace Lisbon in Lisbon",
+  "lat": 38.718157,
+  "lon": -9.140064,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"R. Câmara Pestana 23\",\"addressLocality\":\"Lisbon\",\"postalCode\":\"1150-082\",\"addressCountry\":\"PRT\"}"
+ },
+ "/en/hotels-stays/madeira/reids-palace-a-belmond-hotel-madeira-6371": {
+  "h1": "Reid's Palace, A Belmond Hotel, Madeira",
+  "ld_name": "Reid's Palace, A Belmond Hotel, Madeira in Madeira",
+  "lat": 32.640588,
+  "lon": -16.923988,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Estrada Monumental, 139\",\"addressLocality\":\"Madeira\",\"postalCode\":\"9000-098\",\"addressCountry\":\"PRT\"}"
+ },
+ "/en/hotels-stays/montemor-o-novo/land-vineyards-116311-7144": {
+  "h1": "L’AND Vineyards",
+  "ld_name": "L’AND Vineyards in Montemor-o-Novo",
+  "lat": 38.645584,
+  "lon": -8.247174,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Estrada Nacional 4, Herdade das Valadas\",\"addressLocality\":\"Montemor-o-Novo\",\"postalCode\":\"7050-031\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Alentejo\"}"
+ },
+ "/en/hotels-stays/portimao/bela-vista-hotel-spa-6546": {
+  "h1": "Bela Vista Hotel & Spa",
+  "ld_name": "Bela Vista Hotel & Spa in Portimão",
+  "lat": 37.118533,
+  "lon": -8.537467,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"Two MICHELIN Keys · An exceptional stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Av. Tomás Cabreira, Praia da Rocha\",\"addressLocality\":\"Portimão\",\"postalCode\":\"8500-802\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Algarve\"}"
+ },
+ "/en/hotels-stays/porto/le-monumental-palace-10607": {
+  "h1": "The One Monumental Palace",
+  "ld_name": "The One Monumental Palace  in Porto",
+  "lat": 41.14839,
+  "lon": -8.61142,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"151 Avenida dos Aliados\",\"addressLocality\":\"Porto\",\"postalCode\":\"4000-196\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Norte\"}"
+ },
+ "/en/hotels-stays/porto/palacete-severo-15207": {
+  "h1": "Palacete Severo",
+  "ld_name": "Palacete Severo in Porto",
+  "lat": 41.1561143287,
+  "lon": -8.6253522135,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Rua de Ricardo Severo 21\",\"addressLocality\":\"Porto\",\"postalCode\":\"4050-515\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Norte\"}"
+ },
+ "/en/hotels-stays/porto/torel-palace-porto-9353": {
+  "h1": "Torel Palace Porto",
+  "ld_name": "Torel Palace Porto in Porto",
+  "lat": 41.145197,
+  "lon": -8.605855,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Rua de Entreparedes 40\",\"addressLocality\":\"Porto\",\"postalCode\":\"4050-240\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Norte\"}"
+ },
+ "/en/hotels-stays/porto/vila-foz-hotel-spa-9157": {
+  "h1": "Vila Foz",
+  "ld_name": "Vila Foz in Porto",
+  "lat": 41.161426,
+  "lon": -8.684647,
+  "award": "{\"@type\":\"Award\",\"awardFor\":\"One MICHELIN Key · A very special stay\",\"awardedBy\":{\"@type\":\"Organization\",\"name\":\"Michelin\"}}",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Av. Montevideu, 236\",\"addressLocality\":\"Porto\",\"postalCode\":\"4150-516\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Norte\"}"
+ },
+ "/en/hotels-stays/vilamoura/conrad-algarve-14502": {
+  "h1": "Conrad Algarve",
+  "ld_name": "Conrad Algarve in Vilamoura",
+  "lat": 37.088515,
+  "lon": -8.118548,
+  "award": "null",
+  "keys_text": null,
+  "address": "{\"@type\":\"PostalAddress\",\"streetAddress\":\"Estrada da Quinta do Lago\",\"addressLocality\":\"Vilamoura\",\"postalCode\":\"8135-106\",\"addressCountry\":\"PRT\",\"addressRegion\":\"Algarve\"}"
+ }
+}
