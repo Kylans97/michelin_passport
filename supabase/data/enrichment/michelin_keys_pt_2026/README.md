@@ -1,6 +1,6 @@
 # Portugal: MICHELIN Key hotels 2026 (2026-11-01)
 
-Status: **PREPARED, NOT APPLIED.** Apply together with the Portugal stars
+Status: **APPLIED 2026-11-01** (runbook `../APPLY_2026-11-01.md`, every check passed; 69 hotels, Keys 3/2/1 = 2/14/53, 65 Place IDs, 64 phones, 65 websites, as staged.) Originally prepared, not applied — Apply together with the Portugal stars
 file, **in this order:**
 
 1. `supabase/migrations/20261031160000_add_pt_2026_star_cities.sql` (24 towns)

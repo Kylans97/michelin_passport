@@ -1,6 +1,6 @@
 # Switzerland, Austria and the Nordics: completeness check (2026-11-01)
 
-Status: **PREPARED, NOT APPLIED.** A follow-up to `../michelin_ch_at_nordic_2026/`
+Status: **APPLIED 2026-11-01** (runbook `../APPLY_2026-11-01.md`, every check passed; Fill-only; Place IDs now CH 132/134, AT 94/99 (91 from this file plus 3 from `europe_gaps/prepared_at_gap_fill.sql`), DK 41/41, NO 21/21, SE 24/24, FI 8/8, IS 3/3.) Originally prepared, not applied — A follow-up to `../michelin_ch_at_nordic_2026/`
 (on main, applied 2026-10-30), which added these countries' restaurants and
 Key hotels but **no Google Place IDs**. This pass fills those. Generated from production's export of
 2026-11-01 (`export_query.sql`) by `../michelin_de_it/build_prepared_de_it.py`:

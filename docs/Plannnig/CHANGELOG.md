@@ -8,6 +8,31 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+
+- **Portugal, and Place IDs across Europe, in the catalogue** (applied to
+  production 2026-11-01 by runbook
+  `supabase/data/enrichment/APPLY_2026-11-01.md`, product owner's
+  request). Two migrations: `20261031160000_add_pt_2026_star_cities.sql`
+  (24 towns) and `20261031170000_add_pt_key_hotel_cities.sql` (25 towns),
+  plain `supabase db push --linked`; ledger 124 → 126, local and remote in
+  agreement. Then, by `supabase db query --linked --file`, in order: 69
+  Portuguese Key hotels, 52 Portuguese starred restaurants, the CH/AT/
+  Nordics Place ID fill, 27 Europe gap-fill files and the location
+  corrections — none aborted. Details and QA-392–QA-403 in the
+  Michelin_Database CHANGELOG. No app change needed. The data-only
+  migrations add `cities` rows; the next version bump's schema diff
+  covers them.
+
+### Fixed
+
+- **Near-miss:** the runbook's `supabase db query --linked --file
+  <relative path>` from `supabase/data/enrichment/` fails with
+  "failed to read SQL file: NotFound": the CLI resolves the path against
+  the project root, not the shell's directory. Nothing ran; the files
+  were then given by absolute path. Run these from the repository root,
+  or with absolute paths.
+
 ---
 
 ## v1.5.5 (23) — 2026-10-31

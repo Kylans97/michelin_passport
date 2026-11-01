@@ -29,7 +29,7 @@ in the same table aborts the file.
 
 ## Status
 
-Every file is prepared and not applied. Run them in any order; each is fill-only and can safely be run again.
+**APPLIED 2026-11-01** (runbook `../APPLY_2026-11-01.md`): all 27 gap files and `prepared_location_corrections.sql`, in that order, each without an abort. The table below is what was prepared. Each gap file is fill-only and can safely be run again; the location corrections abort on a second run by design.
 
 | Country | Restaurants: Place ID · phone · website | Hotels: Place ID · phone · website |
 |---|---|---|

@@ -1,6 +1,6 @@
 # MICHELIN Guide Portugal 2026: catalogue completion (2026-11-01)
 
-Status: **PREPARED, NOT APPLIED.** Run, in order:
+Status: **APPLIED 2026-11-01** (runbook `../APPLY_2026-11-01.md`, every check passed; 52 restaurants (`rest_3761`–`rest_3812`); Portugal now 0/9/44.) Originally prepared, not applied — Run, in order:
 
 1. `supabase/migrations/20261031160000_add_pt_2026_star_cities.sql`
    (24 towns)

@@ -6,6 +6,49 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-01 — Portugal stars and Key hotels 2026 (QA-398, QA-399)
+
+| | |
+|---|---|
+| Applied | 2026-11-01, to production, at the product owner's request, by runbook `supabase/data/enrichment/APPLY_2026-11-01.md` from `claude/lucid-rubin-us4we5` |
+| Migrations | `20261031160000_add_pt_2026_star_cities.sql` (24 towns), `20261031170000_add_pt_key_hotel_cities.sql` (25 towns). Plain `supabase db push --linked`; ledger 124 → 126, local and remote in agreement. PT cities 1 → 50 |
+| Data files | `michelin_keys_pt_2026/prepared_pt_key_hotels_2026.sql`, then `michelin_pt_stars/prepared_pt_stars_2026.sql`. One transaction each, every check passed |
+| Rows | 69 Key hotels (`hotel_2810`–`hotel_2878`); 52 starred restaurants (`rest_3761`–`rest_3812`) with 16 Key-hotel links and 4 `property_name` |
+
+**Checked after the apply:** PT Key hotels 3/2/1 = 2/14/53, with 65 Place IDs, 64 phones and 65 websites; PT restaurants 0/9/44, as `michelin_pt_stars/README.md` expects; 52 new restaurant codes.
+
+**Still open:** QA-398 (A Cozinha do Paço, Herdade do Esporão, Éon: Place ID / phone), QA-399 (four Key hotels' Place IDs and towns).
+
+---
+
+# 2026-11-01 — CH, AT and Nordics: Google Place IDs (QA-400–QA-403)
+
+| | |
+|---|---|
+| Applied | 2026-11-01, same runbook and branch |
+| Data file | `michelin_ch_at_nordics/prepared_ch_at_nordics_stars.sql`. Fill-only, one transaction, every check passed |
+| Rows | From 256 staged rows: 250 Place IDs, 13 phones, 1 website, 1 `property_name`. No star changes |
+
+**Checked after the apply** (restaurants with a Place ID / total): CH 132/134, AT 94/99, DK 41/41, NO 21/21, SE 24/24, FI 8/8, IS 3/3. The runbook expected AT 91/99: this file brings AT to 91, and `europe_gaps/prepared_at_gap_fill.sql` (run after it, fill-only, with its own uniqueness check) filled three Austrian restaurants this file didn't stage. Not an error; the expectation counted one file.
+
+**Not decided in this apply** (product owner's call, reported only): QA-400 / QA-362 the Swiss two-stars that are offline now, including La Brezza Ascona — Switzerland's 2026 edition is announced on 2 November 2026; QA-401 / QA-363 Aloë (SE), likely out of 2026; QA-402 La Brezza Arosa's and Döllerer's stored Place IDs differ from the search result; QA-403 Vyn's stored point 2.4 km off, Gründler's record at the corrected location.
+
+---
+
+# 2026-11-01 — Europe gap fill and location corrections (QA-392–QA-397)
+
+| | |
+|---|---|
+| Applied | 2026-11-01, same runbook and branch, after the files above |
+| Data files | 27 `europe_gaps/prepared_<cc>_gap_fill.sql` (AD AT BE CH DE DK ES FI FR GB GR HR HU IE IS IT LU MC ME MT NL NO PL PT RS SE SI), then `europe_gaps/prepared_location_corrections.sql`. One transaction each, fill-only except the corrections; none aborted |
+| Rows | Gap files, from 1,873 staged rows: 1,606 Place IDs, 347 phones, 831 websites. Corrections: 18 coordinates (each guarded on the old point within 5 m) and 12 Place IDs |
+
+See `europe_gaps/README.md` for the per-country table.
+
+**Still open:** QA-392 (six French restaurants likely closed), QA-393 (French hotel pins still off), QA-394 (French Place IDs not found), QA-395 (Google marks five BE/DE records closed permanently), QA-396 (pins outside France still off), QA-397 (two restaurants whose only Google record is their hotel's).
+
+---
+
 # 2026-10-31 — MICHELIN Key hotels 2026: Italy, Spain, Germany, Belgium, the Netherlands, Luxembourg (QA-383–QA-391)
 
 | | |
