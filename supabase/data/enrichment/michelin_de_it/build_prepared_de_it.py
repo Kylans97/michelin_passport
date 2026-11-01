@@ -405,6 +405,13 @@ update public.restaurants r set property_name = f.property_name, updated_at = no
 create temp table _links_{cc} (hotel_code text, restaurant_code text, confidence text, evidence text) on commit drop;
 insert into _links_{cc} values
 {(','+chr(10)).join(f"    ({q(h)}, {q(r)}, {q(c)}, {q(ev)})" for h, r, c, ev in new_links)};
+do $$
+declare bad text;
+begin
+  select string_agg(l.hotel_code, ', ') into bad from _links_{cc} l
+   where not exists (select 1 from public.hotels h where h.hotel_code = l.hotel_code);
+  if bad is not null then raise exception '{CC}: linked hotels do not exist yet (apply the Key hotels file first): %', bad; end if;
+end $$;
 insert into public.hotel_restaurants (hotel_id, restaurant_id, link_confidence, evidence, verified_at)
 select h.id, r.id, l.confidence, l.evidence, now()
   from _links_{cc} l join public.hotels h on h.hotel_code = l.hotel_code join public.restaurants r on r.restaurant_code = l.restaurant_code

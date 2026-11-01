@@ -1,0 +1,3841 @@
+{
+ "fetched_at": "2026-11-01T17:21:39Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/torel-palace-9351",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/torel-palace-9351",
+   "h1": "Torel Palace Lisbon",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "R. Câmara Pestana 23",
+     "addressLocality": "Lisbon",
+     "postalCode": "1150-082",
+     "addressCountry": "PRT"
+    },
+    "name": "Torel Palace Lisbon in Lisbon",
+    "description": "One of Lisbon’s nicknames is Cidade das Sete Colinas — the City of Seven Hills — and Torel Palace shows you why. Situated on Colina Sant’Ana, the most centrally located of the city’s seven hills, the hotel provides sweeping views of the hustle and bustle below while treating guests to luxurious privacy and seclusion.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1445674.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.718157,
+     "longitude": -9.140064
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/torel-palace-9351",
+    "numberOfRooms": 38,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.718157%2C-9.140064",
+    "telephone": "+351 21 829 0810",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.2,
+     "reviewCount": 12,
+     "ratingCount": 12,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/100-maneiras",
+    "/en/lisboa-region/lisboa/restaurant/2monkeys",
+    "/en/lisboa-region/lisboa/restaurant/amago",
+    "/en/lisboa-region/lisboa/restaurant/carnal-1200315",
+    "/en/lisboa-region/lisboa/restaurant/essencial",
+    "/en/lisboa-region/lisboa/restaurant/jncquoi-table",
+    "/en/lisboa-region/lisboa/restaurant/oficio",
+    "/en/lisboa-region/lisboa/restaurant/omakase-wa",
+    "/en/lisboa-region/lisboa/restaurant/oven",
+    "/en/lisboa-region/lisboa/restaurant/terroir"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lamego/six-senses-douro-valley-1901",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lamego/six-senses-douro-valley-1901",
+   "h1": "Six Senses Douro Valley",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Quinta de Vale Abraão, Samodães",
+     "addressLocality": "Lamego",
+     "postalCode": "5100-758",
+     "addressCountry": "PRT",
+     "addressRegion": "Douro Valley"
+    },
+    "name": "Six Senses Douro Valley in Lamego",
+    "description": "Traditionally Portugal hasn’t needed much more than a sunny climate (and maybe a bit of golf) to woo tourists by the tens of thousands. There are places, though, that go above and beyond the basic formula: Six Senses Douro Valley, named for and situated in the wine-making region in the north, is one of these.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1097785.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.144198,
+     "longitude": -7.812248
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lamego/six-senses-douro-valley-1901",
+    "numberOfRooms": 71,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.144198%2C-7.812248",
+    "petsAllowed": "Pets are allowed. Charges may be applicable.",
+    "telephone": "+351 254 660 600",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 9,
+     "ratingCount": 9,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/vila-real-region/peso-da-rgua/restaurant/schisto",
+    "/en/vila-real-region/vila-real/restaurant/cais-da-villa",
+    "/en/viseu-region/folgosa/restaurant/doc216528",
+    "/en/viseu-region/lamego_2420549/restaurant/cozinha-do-douro"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/vila-foz-hotel-spa-9157",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/vila-foz-hotel-spa-9157",
+   "h1": "Vila Foz",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Av. Montevideu, 236",
+     "addressLocality": "Porto",
+     "postalCode": "4150-516",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Vila Foz in Porto",
+    "description": "If you hear your hosts at Vila Foz Hotel & Spa talking about “Ninimalism,” it’s not a mistranslation, and the pun is fully intended. The Portuguese designer Nini Andrade Silva has been known to design-oriented travelers since long before the current boom in Portuguese design hotels, and her signature style is on display here at Vila Foz. It’s a stunning, ornate 19th-century manor house on Porto’s Atlantic coast, and while its architecture has been meticulously restored, its interior design — especially in the guest rooms — is beautifully contemporary, just like everything we’ve seen from Ms. Andrade Silva over the years.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1405684.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.161426,
+     "longitude": -8.684647
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/vila-foz-hotel-spa-9157",
+    "numberOfRooms": 68,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.161426%2C-8.684647",
+    "telephone": "+351 930 462 560 / +351 222 449 700",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.6,
+     "reviewCount": 19,
+     "ratingCount": 19,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/matosinhos_1216168/restaurant/bistro-by-vila-foz",
+    "/en/porto-region/lea-da-palmeira/restaurant/cibu",
+    "/en/porto-region/lea-da-palmeira/restaurant/seiva",
+    "/en/porto-region/porto/restaurant/antiqvvm",
+    "/en/porto-region/porto/restaurant/cafeina",
+    "/en/porto-region/porto/restaurant/in-diferente",
+    "/en/porto-region/porto/restaurant/kaigi",
+    "/en/porto-region/porto/restaurant/liz",
+    "/en/porto-region/porto/restaurant/pedro-lemos",
+    "/en/porto-region/porto/restaurant/vila-foz"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/portimao/bela-vista-hotel-spa-6546",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/portimao/bela-vista-hotel-spa-6546",
+   "h1": "Bela Vista Hotel & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Av. Tomás Cabreira, Praia da Rocha",
+     "addressLocality": "Portimão",
+     "postalCode": "8500-802",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Bela Vista Hotel & Spa in Portimão",
+    "description": "One of the most well-traveled hotspots on the European beach circuit, the Algarve region of southern Portugal is packed with its fair share of big-time resorts — and it’s the contrast with this backdrop of uniformity that makes a newly renovated 19th-century residence like the Bela Vista so appealing. Thankfully, the building stayed in the family over the years, so the redesign wasn’t a scorched-earth overhaul. Elements like the original bar in the main house have been retained, restored, and juxtaposed with modern furniture and eye-catching décor.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1636913.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.118533,
+     "longitude": -8.537467
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/portimao/bela-vista-hotel-spa-6546",
+    "numberOfRooms": 38,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.118533%2C-8.537467",
+    "telephone": "+351 282 460 280 ",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.7,
+     "reviewCount": 7,
+     "ratingCount": 7,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/lagoa/restaurant/bon-bon472583",
+    "/en/faro-region/porches/restaurant/aladin-grill",
+    "/en/faro-region/porches/restaurant/atlantico",
+    "/en/faro-region/porches/restaurant/coral",
+    "/en/faro-region/porches/restaurant/o-leao-de-porches",
+    "/en/faro-region/porches/restaurant/ocean216602",
+    "/en/faro-region/portimo/restaurant/duoo-gastro-theatre",
+    "/en/faro-region/portimo/restaurant/restaurante-f",
+    "/en/faro-region/portimo/restaurant/vista365067",
+    "/en/faro-region/pt-lagos/restaurant/avenida"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/torel-palace-porto-9353",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/torel-palace-porto-9353",
+   "h1": "Torel Palace Porto",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua de Entreparedes 40",
+     "addressLocality": "Porto",
+     "postalCode": "4050-240",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Torel Palace Porto in Porto",
+    "description": "Torel Palace Porto may be a modern hotel, but the most cursory glance reveals that the building is far from new. The Palacete Campos Navarro dates back to 1861, and was built by a wealthy local family in the then-current Romantic style. It’s a promising canvas for the kind of small luxury hotel that is Torel Boutiques’ specialty, but it took a thorough reimagining at the hands of designer Isabel Sá Nogueira before it could become the extraordinary hotel you see before you today.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1179742.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.145197,
+     "longitude": -8.605855
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/torel-palace-porto-9353",
+    "numberOfRooms": 42,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.145197%2C-8.605855",
+    "telephone": "+351226090559 / +351218290810",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 9,
+     "ratingCount": 9,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/almeja",
+    "/en/porto-region/porto/restaurant/atrevo",
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/euskalduna-studio",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/izakaya-japanese-cuisine",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/patio-44"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Vila-Nova-de-Gaia/vinha-boutique-hotel-13045",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Vila-Nova-de-Gaia/vinha-boutique-hotel-13045",
+   "h1": "Vinha Boutique Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "383 R. Fonte da Vinha",
+     "addressLocality": "Vila Nova de Gaia",
+     "postalCode": "4430-487",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Vinha Boutique Hotel in Vila Nova de Gaia",
+    "description": "A salmon-colored 16th-century manor house on the banks of the Douro, a couple of twists and turns up the river from central Porto, might not seem like the most obvious setting for something quite so stylish, but the Vinha Boutique Hotel is a tribute to the fashion world — so much so that its signature rooms and suites are each dedicated to, and designed in the style of, a major fashion house. Missoni, Hermès, Ralph Lauren, Christian Lacroix — the accommodations are a feast for the eyes, made even more so by their views of the river.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1480570.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.132418,
+     "longitude": -8.57506
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Vila-Nova-de-Gaia/vinha-boutique-hotel-13045",
+    "numberOfRooms": 38,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.132418%2C-8.57506",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+351 22 115 4120",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.9,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/almeja",
+    "/en/porto-region/porto/restaurant/atrevo",
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/euskalduna-studio",
+    "/en/porto-region/porto/restaurant/izakaya-japanese-cuisine",
+    "/en/porto-region/porto/restaurant/patio-44",
+    "/en/porto-region/vila-nova-de-gaia/restaurant/the-yeatman",
+    "/en/porto-region/vila-nova-de-gaia/restaurant/vinha"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Peso%20da%20R%C3%A9gua/torel-quinta-da-vacaria-douro-valley-14495",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Peso%20da%20R%C3%A9gua/torel-quinta-da-vacaria-douro-valley-14495",
+   "h1": "Torel Quinta da Vacaria - Douro Valley",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua de Vilarinho dos Freires",
+     "addressLocality": "Peso da Régua",
+     "postalCode": "5050-364",
+     "addressCountry": "PRT",
+     "addressRegion": "Douro Valley"
+    },
+    "name": "Torel Quinta da Vacaria - Douro Valley in Peso da Régua",
+    "description": "Tucked away amid some of the oldest vineyards in one of the world’s most historic wine regions, Torel Quinta da Vacaria is unexpectedly modern. The boutique hotel occupies a small collection of old buildings on a historic wine estate, but architect Luís Miguel Oliveira and Studio Astolfi gave the interiors a facelift: rooms are sleek and silent with pale wood flooring, midcentury modern decor, and private balconies or terraces, many with open-air tubs. Of particular note are the hotel’s gorgeous glass-lined spa and its infinity pool and terrace, all facing the terraced hills of the Douro Valley, and its stylish dining venues, including a lively indoor-outdoor bar with panoramic views over the Douro River.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1464053.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.15493,
+     "longitude": -7.76914
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Peso%20da%20R%C3%A9gua/torel-quinta-da-vacaria-douro-valley-14495",
+    "numberOfRooms": 33,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.15493%2C-7.76914",
+    "telephone": "+351 254 249 388",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/vila-real-region/peso-da-rgua/restaurant/schisto",
+    "/en/vila-real-region/pinho/restaurant/bomfim-1896",
+    "/en/vila-real-region/vila-real/restaurant/cais-da-villa",
+    "/en/viseu-region/folgosa/restaurant/doc216528",
+    "/en/viseu-region/lamego_2420549/restaurant/cozinha-do-douro",
+    "/en/viseu-region/tabuaco_2425134/restaurant/seixo-by-vasco-coelho-santos"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Vila%20do%20Conde/the-lince-santa-clara-125128-14443",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Vila%20do%20Conde/the-lince-santa-clara-125128-14443",
+   "h1": "The Lince Santa Clara",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mosteiro de Santa Clara, Largo Dom Afonso Sanches",
+     "addressLocality": "Vila do Conde",
+     "postalCode": "4480-754",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "The Lince Santa Clara in Vila do Conde",
+    "description": "Just outside Porto in Vila do Conde, a historic 14th-century monastery was transformed into the luxurious Lince Santa Clara. Its design was reimagined by Portuguese architect Carvalho Araújo, who kept many of the building’s best features, including the grand façade and the dramatic stone brick archways of the former convent, now housing a pair of high-end restaurants. Rooms and suites are bright and elegant, outfitted in pale shades of white, ivory, and gray, and Art Deco–inspired details including coffered walls, recessed lighting, and palatial white marble bathrooms. The most charming rooms, including a handful of compact doubles and a range of spacious suites, feature steeply vaulted ceilings built under the monastery's original mansard roof. The open-air infinity pool is a treat in summer, and for the rest of the year, the stone-lined indoor pool and the Sisley spa make for a perfectly peaceful escape.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1467213.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.353,
+     "longitude": -8.73943
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Vila%20do%20Conde/the-lince-santa-clara-125128-14443",
+    "numberOfRooms": 87,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.353%2C-8.73943",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "T. +351 252 035 300",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/matosinhos_1216168/restaurant/bistro-by-vila-foz",
+    "/en/porto-region/lea-da-palmeira/restaurant/casa-de-cha-da-boa-nova",
+    "/en/porto-region/lea-da-palmeira/restaurant/cibu",
+    "/en/porto-region/lea-da-palmeira/restaurant/seiva",
+    "/en/porto-region/maia_2420974/restaurant/machado",
+    "/en/porto-region/pvoa-de-varzim/restaurant/manjar-dos-leitoes",
+    "/en/porto-region/pvoa-de-varzim/restaurant/o-marinheiro215874",
+    "/en/porto-region/vila-do-conde/restaurant/oculto",
+    "/en/porto-region/vila-do-conde/restaurant/rio-by-paulo-andre"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/the-largo-15117",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/the-largo-15117",
+   "h1": "The Largo",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Largo de São Domingos, 60",
+     "addressLocality": "Porto",
+     "postalCode": "4050-545",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "The Largo in Porto",
+    "description": "Once you step into The Largo, is almost hard to believe that the bustle of rua das Flores is right outside the door. Danish design studio Space Copenhagen has imbued the hotel’s five historic buildings with a Nordic sensibility — think muted neutral shades, clean lines of minimalist furnishings, and layers of soothing tactile materials. Outside of the cocooning rooms Bar Flor is open to locals as well as guests, and features some more offbeat ingredients than your usual hotel bar, don’t be surprised if the team is distilling, infusing and clarifying with yoghurt, white chocolate, or even local cod. Restaurant Cozinha das Flores is as much a destination as the hotel itself, with a modern Portuguese menu overseen by lauded chef Nuno Mendes.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1533099.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.143207,
+     "longitude": -8.6148194423
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/the-largo-15117",
+    "numberOfRooms": 18,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.143207%2C-8.6148194423",
+    "petsAllowed": "Pets are allowed for an additional fee.",
+    "telephone": "(+351) 229 760 000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/camilo",
+    "/en/porto-region/porto/restaurant/cozinha-das-flores",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/dop",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito",
+    "/en/porto-region/porto/restaurant/tokkotai"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/amarante/casa-da-calcada-15704",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/amarante/casa-da-calcada-15704",
+   "h1": "Casa da Calçada",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Largo do Paço, Nº6",
+     "addressLocality": "Amarante",
+     "postalCode": "4600-017",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Casa da Calçada in Amarante",
+    "description": "An hour inland from Porto, along the banks of the River Tâmega, is the historic city of Amarante, among whose well-preserved treasures is the 16th-century Baroque palace that’s now the Casa da Calçada. And while the house itself has been lovingly preserved, its 35 rooms and suites feel free to express their 21st-century personalities — the look is crisp, contemporary, a minimalist counterpart to the palace’s maximalist grandeur.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1638989.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.2682993244,
+     "longitude": -8.0778409288
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/amarante/casa-da-calcada-15704",
+    "numberOfRooms": 35,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.2682993244%2C-8.0778409288",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "255410830",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/amarante/restaurant/largo-do-paco"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/palacete-severo-15207",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/palacete-severo-15207",
+   "h1": "Palacete Severo",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua de Ricardo Severo 21",
+     "addressLocality": "Porto",
+     "postalCode": "4050-515",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Palacete Severo in Porto",
+    "description": "Palacete Severo was once the home of Ricardo Severo, a Portuguese archaeologist and architect who built this yellow-fronted townhouse for his Brazilian wife using details gathered from across the country: carved wood, tiled eaves, a stone staircase, and a loggia for watching the garden. Today, it’s a 19-room hotel that still feels residential in spirit, with hand-painted ceilings, stained glass by Catalan artist Antoni Rigalt, and gallery-worthy art throughout. Between the light, the layers, and the garden views, it hardly feels like a hotel at all.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1573671.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.1561143287,
+     "longitude": -8.6253522135
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/palacete-severo-15207",
+    "numberOfRooms": 19,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.1561143287%2C-8.6253522135",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "+351 22 967 7000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/almeja",
+    "/en/porto-region/porto/restaurant/antiqvvm",
+    "/en/porto-region/porto/restaurant/bistro-severo",
+    "/en/porto-region/porto/restaurant/camilo",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/eon",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito",
+    "/en/porto-region/porto/restaurant/oma-1203846"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/torel-1884-9352",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/torel-1884-9352",
+   "h1": "Torel 1884",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "R. de Mouzinho da Silveira N 228",
+     "addressLocality": "Porto",
+     "postalCode": "4050-417",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Torel 1884 in Porto",
+    "description": "Seemingly out of nowhere a homegrown Portuguese hotel brand has established strongholds all across the country. Torel 1884 is one of ten of Torel properties in the picturesque riverside city of Porto, and it’s a gem: a 19th-century townhouse building in a central neighborhood, decorated with one eye on its architectural heritage and one on contemporary boutique style. It’s a long way from the minimalism that once ruled the design-hotel roost, and it’s hard to see how it could be any more pleasing to the eye.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1103080.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.143702,
+     "longitude": -8.612592
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/torel-1884-9352",
+    "numberOfRooms": 23,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.143702%2C-8.612592",
+    "telephone": "+351 22 600 1783 / +351226001966 (Rsvns)",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 23,
+     "ratingCount": 23,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/camilo",
+    "/en/porto-region/porto/restaurant/cozinha-das-flores",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/dop",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito",
+    "/en/porto-region/porto/restaurant/tokkotai"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/vila-nova-de-cacela/conversas-de-alpendre-11818",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/vila-nova-de-cacela/conversas-de-alpendre-11818",
+   "h1": "Conversas de Alpendre",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Estrada de Santa Rita , nº 36",
+     "addressLocality": "Vila Nova de Cacela",
+     "postalCode": "8900-059",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Conversas de Alpendre in Vila Nova de Cacela",
+    "description": "The combination of design-hotel good looks and family-inn friendliness is a tough pairing to deliver, but that’s a nutshell description of Portugal’s Conversas de Alpendre. Set in the countryside of the Eastern Algarve, a mile or so inland from the Atlantic and a three-hour drive from Lisbon, it’s not just family-owned but family-run and family-made — and its effortless marriage of contemporary boutique-hotel style with locally crafted artisanal elements gives it a visual identity that’s totally unique.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1245963.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.173378,
+     "longitude": -7.568118
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/vila-nova-de-cacela/conversas-de-alpendre-11818",
+    "numberOfRooms": 12,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.173378%2C-7.568118",
+    "telephone": "+351 910 035 704",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 20.0,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/tavira/restaurant/a-mesa",
+    "/en/faro-region/tavira/restaurant/a-ver-tavira",
+    "/en/faro-region/tavira/restaurant/mesa-farta"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Santa%20Cruz/areias-do-seixo-5811",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Santa%20Cruz/areias-do-seixo-5811",
+   "h1": "Areias do Seixo",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Praceta do Atlantico – Mexilhoeira, A dos Cunhados e Maceira",
+     "addressLocality": "Santa Cruz",
+     "postalCode": "2560-046",
+     "addressCountry": "PRT",
+     "addressRegion": "Centro"
+    },
+    "name": "Areias do Seixo in Santa Cruz",
+    "description": "Some high-end hotels make a point of being fine places to be alone. Areias do Seixo, on the other hand, is the kind of place that hosts a nightly communal bonfire on its wild — and wildly pretty — stretch of coast to the north of Lisbon. It’s not exactly a free-for-all, however — for although the wine does flow freely, given the vast expanse of farmland and ocean and dunes that’s shared by just fourteen rooms and two charm tents it’s a comfortable, low-key affair, about as private a social gathering as one can have in the company of strangers.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1429479.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 39.153293,
+     "longitude": -9.362714
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Santa%20Cruz/areias-do-seixo-5811",
+    "numberOfRooms": 14,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=39.153293%2C-9.362714",
+    "telephone": "+351 261 936 350 / 351 261 936 355 ",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 13,
+     "ratingCount": 13,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": []
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/encarnacao/aethos-ericeira-12640",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/encarnacao/aethos-ericeira-12640",
+   "h1": "Aethos Ericeira",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "R. da Estalagem, 2640-255",
+     "addressLocality": "Encarnação",
+     "postalCode": "2640-255",
+     "addressCountry": "PRT",
+     "addressRegion": "Ericeira"
+    },
+    "name": "Aethos Ericeira in Encarnação",
+    "description": "Like so many Portuguese hotels, Aethos Ericeira almost seems too extraordinary to be true. Its clifftop location, in the middle of a nature reserve overlooking the Atlantic and the legendary surf beaches of Ericeira, makes for spectacular views and splendid isolation. And the hotel itself is eminently worthy of its setting; the design, by the Spanish studio Astet and the Portuguese architect Luís Pedra Silva, is impressively stylish and thoroughly tailored to the locale. Meanwhile the luxuries on offer are further proof that forward-looking design is perfectly compatible with high-end hospitality.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1310018.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 39.034499,
+     "longitude": -9.417126
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/encarnacao/aethos-ericeira-12640",
+    "numberOfRooms": 53,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=39.034499%2C-9.417126",
+    "telephone": "+351261244510",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 8,
+     "ratingCount": 8,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": []
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/manteigas/casa-de-sao-lourenco-9256",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/manteigas/casa-de-sao-lourenco-9256",
+   "h1": "Casa de São Lourenço",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Estrada Nacional 232, Km 49.3",
+     "addressLocality": "Manteigas",
+     "postalCode": "6260-200",
+     "addressCountry": "PRT",
+     "addressRegion": "Centro"
+    },
+    "name": "Casa de São Lourenço in Manteigas",
+    "description": "It’s incredible, given the density of high-luxury, high-design boutique hotels all across the rest of Portugal, but Casa de São Lourenço is the only luxury hotel in the Serra da Estrela mountains. Perhaps even more noteworthy, however, is the fact that it’s an impressive piece of architecture, where studios P-06 and Site Specific have grafted an ultra-modern concrete structure onto a classically styled Forties mountain inn.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1359524.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 40.418738,
+     "longitude": -7.539849
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/manteigas/casa-de-sao-lourenco-9256",
+    "numberOfRooms": 21,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=40.418738%2C-7.539849",
+    "telephone": "+351275249730",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.6,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": []
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/hotel-torel-avantgarde-9354",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/hotel-torel-avantgarde-9354",
+   "h1": "Torel Avantgarde",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua da Restauração 336",
+     "addressLocality": "Porto",
+     "postalCode": "4050-501",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Torel Avantgarde in Porto",
+    "description": "Portugal’s Torel hotels are a small but growing boutique-hotel family, each one with its own distinct identity. Torel Avantgarde, in the riverside city of Porto, takes art as its inspiration, and the name has a double meaning — it’s a reference to a local architecture and design movement dating back to the ’30s and ’40s, as well as a description of the kind of artists to whom the hotel is dedicated.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1417484.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.145792,
+     "longitude": -8.622546
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/hotel-torel-avantgarde-9354",
+    "numberOfRooms": 60,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.145792%2C-8.622546",
+    "telephone": "+351 22 011 0082",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.2,
+     "reviewCount": 7,
+     "ratingCount": 7,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/antiqvvm",
+    "/en/porto-region/porto/restaurant/bistro-severo",
+    "/en/porto-region/porto/restaurant/camilo",
+    "/en/porto-region/porto/restaurant/cozinha-das-flores",
+    "/en/porto-region/porto/restaurant/dop",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito",
+    "/en/porto-region/porto/restaurant/tokkotai"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/ponta-delgada/white-exclusive-suite-villas-8721",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/ponta-delgada/white-exclusive-suite-villas-8721",
+   "h1": "White Exclusive Suites & Villas",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua. da Rocha Quebrada 10",
+     "addressLocality": "Ponta Delgada",
+     "postalCode": "9560-420",
+     "addressCountry": "PRT",
+     "addressRegion": "Azores"
+    },
+    "name": "White Exclusive Suites & Villas in Ponta Delgada",
+    "description": "Though technically part of Portugal, the Azores are a thousand miles to the west, in the middle of the Atlantic ocean. This volcanic island archipelago is one of the world’s most unique holiday destinations, with its dramatic landscapes and endless sea views. Even São Miguel, the largest of the Azores, is a mere speck of a place, and it’s here that you’ll find White Exclusive Suites and Villas, a boutique hotel whose straightforward name turns out to be entirely apt.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1693629.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.746051,
+     "longitude": -25.596592
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/ponta-delgada/white-exclusive-suite-villas-8721",
+    "numberOfRooms": 10,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.746051%2C-25.596592",
+    "telephone": "+351 296 249 153",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": []
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/funchal/quinta-da-casa-branca-1821",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/funchal/quinta-da-casa-branca-1821",
+   "h1": "Quinta da Casa Branca",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua da Casa Branca 7",
+     "addressLocality": "Funchal",
+     "postalCode": "51410",
+     "addressCountry": "PRT",
+     "addressRegion": "Madeira"
+    },
+    "name": "Quinta da Casa Branca in Funchal",
+    "description": "Madeira, among certain demographics, is something of a well-kept secret. Lush and subtropical, it’s the sort of place that’s very popular indeed with an older generation of travelers. But its pervasive calm is its greatest asset — if it were heaving discos and all-night debauches you were after, you’d be in Ibiza. If, on the other hand, it’s peace and quiet you’re after, Quinta da Casa Branca might just be the place.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1078575.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 32.641797,
+     "longitude": -16.927243
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/funchal/quinta-da-casa-branca-1821",
+    "numberOfRooms": 49,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=32.641797%2C-16.927243",
+    "telephone": "+351291700770",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.4,
+     "reviewCount": 6,
+     "ratingCount": 6,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/ilha-da-madeira/funchal/restaurant/akua",
+    "/en/ilha-da-madeira/funchal/restaurant/audax",
+    "/en/ilha-da-madeira/funchal/restaurant/avista",
+    "/en/ilha-da-madeira/funchal/restaurant/avista-asia",
+    "/en/ilha-da-madeira/funchal/restaurant/casal-da-penha",
+    "/en/ilha-da-madeira/funchal/restaurant/desarma",
+    "/en/ilha-da-madeira/funchal/restaurant/gazebo",
+    "/en/ilha-da-madeira/funchal/restaurant/horta",
+    "/en/ilha-da-madeira/funchal/restaurant/il-gallo-d-oro",
+    "/en/ilha-da-madeira/funchal/restaurant/william216831"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/salvaterra-de-magos/salvaterra-country-house-spa-11886",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/salvaterra-de-magos/salvaterra-country-house-spa-11886",
+   "h1": "Salvaterra Country House & SPA",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "839 N114-3, Foros de Salvaterra ",
+     "addressLocality": "Salvaterra de Magos",
+     "postalCode": "2120-194",
+     "addressCountry": "PRT",
+     "addressRegion": "Santarem"
+    },
+    "name": "Salvaterra Country House & SPA in Salvaterra de Magos",
+    "description": "There may be no country at the moment whose countryside is more packed with exquisite small hotels than that of Portugal. The inland province of Ribatejo, less than an hour’s drive up alongside the Tagus from Lisbon, is the setting for Salvaterra Country House & Spa, a hotel whose name admirably sums up the experience. It’s more a compound than simply a house, surrounded by peaceful gardens, and its suites feel impressively private, opening onto leafy terraces and decorated in a breezy contemporary-rustic style.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1414358.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.997104,
+     "longitude": -8.732031
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/salvaterra-de-magos/salvaterra-country-house-spa-11886",
+    "numberOfRooms": 10,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.997104%2C-8.732031",
+    "telephone": "+351915355566",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 10,
+     "ratingCount": 10,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/azambuja_2429809/restaurant/tasco-da-ilda"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/tavira/colegio-charm-house-12751",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/tavira/colegio-charm-house-12751",
+   "h1": "Colégio Charm House",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua Chefe António Afonso nº1",
+     "addressLocality": "Tavira",
+     "postalCode": "8800-636",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Colégio Charm House in Tavira",
+    "description": "The laid-back seaside town of Tavira, on Portugal’s Algarve coast, is the setting for Colégio Charm House — in the 18th century an aristocratic palace, in the 20th a Catholic boys’ school, and in the 21st, thanks to its family owners, a stylish and rather luxurious 20-room boutique hotel. It’s a mile or so from some fantastic beaches, but the hotel’s swimming pools — one central public one and a few smaller private ones — make a persuasive case for keeping it local.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1636906.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.127313,
+     "longitude": -7.653594
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/tavira/colegio-charm-house-12751",
+    "numberOfRooms": 20,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.127313%2C-7.653594",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+351912061961",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.6,
+     "reviewCount": 9,
+     "ratingCount": 9,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/tavira/restaurant/a-mesa",
+    "/en/faro-region/tavira/restaurant/a-ver-tavira",
+    "/en/faro-region/tavira/restaurant/mesa-farta"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/comporta/spatia-comporta-11624",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/comporta/spatia-comporta-11624",
+   "h1": "Spatia Comporta",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Estrada das Bicas, Marco da Saibreira, Bicas",
+     "addressLocality": "Comporta",
+     "postalCode": "7570-337",
+     "addressCountry": "PRT",
+     "addressRegion": "Alentejo"
+    },
+    "name": "Spatia Comporta in Comporta",
+    "description": "Spatia Comporta promises space, and you’ll get plenty of it — Comporta, on the Atlantic coast of Portugal, an hour and a half from Lisbon, is known for its splendidly empty beaches and its upscale hospitality. Spatia Comporta itself is set just outside of town, surrounded by pine forests and rice fields, a few minutes inland from the beaches, and offers a generous measure of seclusion: just four villas divided into a total of ten rooms, on a private estate surrounding a pair of perfectly lovely outdoor pools (one for kids, one adults-only).",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1232040.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.26473,
+     "longitude": -8.633806
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/comporta/spatia-comporta-11624",
+    "numberOfRooms": 39,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.26473%2C-8.633806",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "+35 1 269 249 486",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.9,
+     "reviewCount": 7,
+     "ratingCount": 7,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/setubal/carvalhal_2430594/restaurant/sublime-comporta-beach-club",
+    "/en/setubal/comporta_2431516/restaurant/cavalarica",
+    "/en/setubal/grandola_2432359/restaurant/sem-porta"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Santo%20Tirso/quinta-de-silvalde-14071",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Santo%20Tirso/quinta-de-silvalde-14071",
+   "h1": "Quinta de Silvalde",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua de Silvalde 126",
+     "addressLocality": "Santo Tirso",
+     "postalCode": "4780-067",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Quinta de Silvalde in Santo Tirso",
+    "description": "Just outside Porto is the historic town of Santo Tirso, originally built around a 10th-century monastery, and later a hub of Portugal’s busy textile industry. Quinta de Silvalde is easily one of the most stylish places to stay, and like Santo Tirso itself, known for its colorful gardens and antique mansions, this boutique hotel is heavy on peaceful greenery and historic charm.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1414478.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.361493,
+     "longitude": -8.474963
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Santo%20Tirso/quinta-de-silvalde-14071",
+    "numberOfRooms": 18,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.361493%2C-8.474963",
+    "petsAllowed": "Pets are allowed on request. Charges may apply.",
+    "telephone": "+351252034140",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.8,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/braga-region/braga/restaurant/palatial",
+    "/en/braga-region/guimares/restaurant/34",
+    "/en/braga-region/guimares/restaurant/a-cozinha",
+    "/en/braga-region/guimares/restaurant/hool",
+    "/en/braga-region/guimares/restaurant/le-babachris",
+    "/en/braga-region/guimares/restaurant/norma-1207644",
+    "/en/braga-region/moreira-de-cnegos/restaurant/s-giao",
+    "/en/braga-region/portela/restaurant/ferrugem",
+    "/en/porto-region/maia_2420974/restaurant/machado",
+    "/en/porto-region/nogueira/restaurant/o-manel"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Seia/casas-da-lapa-nature-spa-hotel-12972",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Seia/casas-da-lapa-nature-spa-hotel-12972",
+   "h1": "Casas da Lapa, Nature & Spa Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua Eira Costa, 10, Lapa dos Dinheiros",
+     "addressLocality": "Seia",
+     "postalCode": "6270-651",
+     "addressCountry": "PRT",
+     "addressRegion": "Centro"
+    },
+    "name": "Casas da Lapa, Nature & Spa Hotel in Seia",
+    "description": "On the western slope of the Serra da Estrela — the Mountain of Stars — is the village of Lapa dos Dinheiros, which is the setting for Casas da Lapa, Nature & Spa Hotel, a 15-room escape with a view unlike anything you’re used to seeing in this low-lying country. It’s a labor of love for its owners, who expanded the original 19th-century house with the addition of a nearby shepherd’s cottage and outfitted all the rooms, new and old, with modern furniture, oversized windows, and all the comforts you expect from a 21st-century design-oriented luxury boutique hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1344198.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 40.377046,
+     "longitude": -7.707519
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Seia/casas-da-lapa-nature-spa-hotel-12972",
+    "numberOfRooms": 15,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=40.377046%2C-7.707519",
+    "petsAllowed": "Pets are allowed on request. Charges may apply.",
+    "telephone": "+351934560401",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 6,
+     "ratingCount": 6,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": []
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/sublime-lisboa-123233-13219",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/sublime-lisboa-123233-13219",
+   "h1": "Sublime Lisboa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua Marques Subserra 10",
+     "addressLocality": "Lisbon",
+     "postalCode": "1070-012",
+     "addressCountry": "PRT"
+    },
+    "name": "Sublime Lisboa in Lisbon",
+    "description": "Set in a century-old townhouse in Amoreiras, an upscale city-center district that’s slightly off the tourist trail, Sublime Lisboa is a beautiful little gem: a 15-room luxury boutique hotel that’s both stylish enough and luxurious enough to be worthy of its lofty name. The house’s well-preserved period architecture provides much of Sublime Lisboa’s visual character, though the hotel’s local designers haven’t been shy about complementing its antique features with bold modern colors and an eclectic variety of eye-catching furnishings and artworks.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1579909.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.725623,
+     "longitude": -9.157059
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/sublime-lisboa-123233-13219",
+    "numberOfRooms": 15,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.725623%2C-9.157059",
+    "petsAllowed": "Pets are allowed on request. Charges may be applicable.",
+    "telephone": "+351 21 846 2121",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/cura",
+    "/en/lisboa-region/lisboa/restaurant/eleven118394",
+    "/en/lisboa-region/lisboa/restaurant/henrique-sa-pessoa",
+    "/en/lisboa-region/lisboa/restaurant/jncquoi-fish",
+    "/en/lisboa-region/lisboa/restaurant/kabuki-lisboa",
+    "/en/lisboa-region/lisboa/restaurant/mitsu",
+    "/en/lisboa-region/lisboa/restaurant/o-talho",
+    "/en/lisboa-region/lisboa/restaurant/pigmeu",
+    "/en/lisboa-region/lisboa/restaurant/salta",
+    "/en/lisboa-region/lisboa/restaurant/santa-joana"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/madeira/the-reserve-hotel-13744",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/madeira/the-reserve-hotel-13744",
+   "h1": "The Reserve Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Avenida do Infante Nº 25 B, Funchal",
+     "addressLocality": "Madeira",
+     "postalCode": "9004-542",
+     "addressCountry": "PRT"
+    },
+    "name": "The Reserve Hotel in Madeira",
+    "description": "If the name Savoy Palace doesn’t sound glamorous enough on its own, consider the idea of an exclusive hotel-within-a-hotel occupying the penthouse level — a place with a private rooftop pool and personal assistants on hand around the clock to attend to guests’ every need. This is The Reserve, a luxurious boutique hotel located on the uppermost six floors of Funchal’s towering waterfront landmark.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1395465.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 32.643655,
+     "longitude": -16.92107
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/madeira/the-reserve-hotel-13744",
+    "numberOfRooms": 43,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=32.643655%2C-16.92107",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "291213000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/ilha-da-madeira/funchal/restaurant/akua",
+    "/en/ilha-da-madeira/funchal/restaurant/audax",
+    "/en/ilha-da-madeira/funchal/restaurant/avista",
+    "/en/ilha-da-madeira/funchal/restaurant/avista-asia",
+    "/en/ilha-da-madeira/funchal/restaurant/casal-da-penha",
+    "/en/ilha-da-madeira/funchal/restaurant/desarma",
+    "/en/ilha-da-madeira/funchal/restaurant/gazebo",
+    "/en/ilha-da-madeira/funchal/restaurant/horta",
+    "/en/ilha-da-madeira/funchal/restaurant/il-gallo-d-oro",
+    "/en/ilha-da-madeira/funchal/restaurant/william216831"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/loule/viceroy-at-ombria-algarve-125179-14490",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/loule/viceroy-at-ombria-algarve-125179-14490",
+   "h1": "Viceroy at Ombria Algarve",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua da Ombria 9",
+     "addressLocality": "Loule",
+     "postalCode": "8100-396",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Viceroy at Ombria Algarve in Loule",
+    "description": "Viceroy at Ombria Algarve enjoys a privileged position in the lush, rolling Algarve hills, on a pristine estate sequestered far from the crush of the beach crowd. The style is less like a traditional resort and more like a hillside village, albeit one whose structures are more modern than historical in aspect. Sleek accommodations range from individual rooms to full-fledged residences, and all include furnished balconies and marble bathrooms; the residences add extra space, obviously, as well as extras like kitchenettes and private pools. A selection of bars pop up throughout the resort, with terrace views and small shareables to whet the appetite. A decadent spa is complemented by four pools with private cabanas and tableside service; the hotel’s 18-hole GEO-certified golf course is a major attraction in its own right.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1464035.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.191098,
+     "longitude": -8.012676
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/loule/viceroy-at-ombria-algarve-125179-14490",
+    "numberOfRooms": 151,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.191098%2C-8.012676",
+    "petsAllowed": "Pets are allowed. Charges may be applicable.",
+    "telephone": "+351 289 078 300",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.1,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/albufeira/restaurant/al-quimia",
+    "/en/faro-region/almancil/restaurant/2-passos",
+    "/en/faro-region/almancil/restaurant/austa",
+    "/en/faro-region/almancil/restaurant/authentic",
+    "/en/faro-region/almancil/restaurant/gusto378372",
+    "/en/faro-region/almancil/restaurant/pequeno-mundo",
+    "/en/faro-region/loule_2432623/restaurant/cafezique-1200566",
+    "/en/faro-region/quarteira_2427490/restaurant/willie-s"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/madeira/savoy-palace-13747",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/madeira/savoy-palace-13747",
+   "h1": "Savoy Palace",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Av. do Infante 25, Funchal",
+     "addressLocality": "Madeira",
+     "postalCode": "9004-542",
+     "addressCountry": "PRT"
+    },
+    "name": "Savoy Palace in Madeira",
+    "description": "Almost exactly a century after the opening of Madeira’s original Savoy hotel in 1918, the Savoy Palace was unveiled on the same spot on Funchal’s waterfront. Though it’s not a remodel — the old hotel was demolished — the new version channels the glamour and sophistication that drew aristocratic travelers from around Europe. There’s plenty of old-world allure here, from the swish marble lobby with romantic staircases to the gleaming grand piano and lavish floral arrangements in the bar. But the Savoy Palace is strikingly modern, too; instead of traditional chandeliers, the reception area features a massive suspended light installation, three stories tall and crafted from miles of matte metal chain.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1395717.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 32.643586,
+     "longitude": -16.920868
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/madeira/savoy-palace-13747",
+    "numberOfRooms": 352,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=32.643586%2C-16.920868",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "+351 291 213 000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/ilha-da-madeira/funchal/restaurant/akua",
+    "/en/ilha-da-madeira/funchal/restaurant/audax",
+    "/en/ilha-da-madeira/funchal/restaurant/avista",
+    "/en/ilha-da-madeira/funchal/restaurant/avista-asia",
+    "/en/ilha-da-madeira/funchal/restaurant/casal-da-penha",
+    "/en/ilha-da-madeira/funchal/restaurant/desarma",
+    "/en/ilha-da-madeira/funchal/restaurant/gazebo",
+    "/en/ilha-da-madeira/funchal/restaurant/horta",
+    "/en/ilha-da-madeira/funchal/restaurant/il-gallo-d-oro",
+    "/en/ilha-da-madeira/funchal/restaurant/william216831"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/tavira/palacio-de-tavira-16823",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/tavira/palacio-de-tavira-16823",
+   "h1": "Palácio de Tavira",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Praça Doutor António Padinha 35",
+     "addressLocality": "Tavira",
+     "postalCode": "8800-549",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Palácio de Tavira in Tavira",
+    "description": "The town of Tavira, on the Algarve coast, is no luxury-hotel hotbed, which means the addition of the Palácio de Tavira changed the hospitality landscape more or less overnight. Its name is understated in a way that straightforwardly conveys the excellence of the place; this 18th-century Moorish-style palace was the home of the noble Tavares family long before it was a luxurious 36-room boutique hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1635406.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.128352,
+     "longitude": -7.649369
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/tavira/palacio-de-tavira-16823",
+    "numberOfRooms": 36,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.128352%2C-7.649369",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+351 281 512 600",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/tavira/restaurant/a-mesa",
+    "/en/faro-region/tavira/restaurant/a-ver-tavira",
+    "/en/faro-region/tavira/restaurant/mesa-farta"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/aljezur/praia-do-canal-nature-resort-15656",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/aljezur/praia-do-canal-nature-resort-15656",
+   "h1": "Praia do Canal Nature Retreat",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Herdade Vale dos Polvos, Valinhos",
+     "addressLocality": "Aljezur",
+     "postalCode": " 8670-156",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Praia do Canal Nature Retreat in Aljezur",
+    "description": "Portugal’s Atlantic-facing Vicentine Coast is spectacular enough; add a striking modernist luxury boutique hotel set on 500+ acres of protected woodland and you’re in for something extraordinary. Safe to say Praia do Canal Nature Retreat is a cut above the majority of the hotels that opened during Portugal’s most recent tourism boom — its low-profile, somewhat austere modernist architecture lends some extra gravity to this tranquil escape. Inside, the rooms and suites are rescued from minimalism by warm textures, natural materials, and colorful crafts and textiles. Some units come with balconies, others with terraces, rooftop lounges, or plunge pools, and all of them face out into the verdant landscape of the nature reserve. An extensive spa and fitness program is present as a matter of course, and the main infinity pool is a stunner. Azeitona, the main restaurant, is joined by a casual poolside option as well as a swanky cocktail bar. And the hotel’s surroundings invite exploration as well — both surfers and golfers find themselves well taken care of in this corner of Portugal.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1636942.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.2609722,
+     "longitude": -8.8317316
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/aljezur/praia-do-canal-nature-resort-15656",
+    "numberOfRooms": 54,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.2609722%2C-8.8317316",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+351 282 242 400",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/odeceixe/restaurant/naperon"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/torel-saboaria-15485",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/torel-saboaria-15485",
+   "h1": "Torel Saboaria",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua do Bonjardim 564",
+     "addressLocality": "Porto",
+     "postalCode": "4000-118",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Torel Saboaria in Porto",
+    "description": "On Rua do Bonjardim, Torel Saboaria is set within a restored mansion that pays homage to Portugal’s soap-making tradition. Its 28 rooms and suites are arranged like chapters in that story, each evoking scents and textures drawn from fruits, oils, and botanicals. Interiors pair earthy materials like rope, terracotta, and basketwork with light-filled spaces overlooking the garden. At Luffa, chefs reinterpret Portuguese ingredients with bold combinations and present-day techniques. More than a stay, it is an immersion in the artistry and sensory heritage that have long shaped Porto.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1532796.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.1513455393,
+     "longitude": -8.6083439423
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/torel-saboaria-15485",
+    "numberOfRooms": 28,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.1513455393%2C-8.6083439423",
+    "petsAllowed": "Pets are allowed on request. Charges may apply.",
+    "telephone": "(+351) 22 318 7016",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/almeja",
+    "/en/porto-region/porto/restaurant/apego",
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/camilo",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito",
+    "/en/porto-region/porto/restaurant/patio-44"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/the-one-palacio-da-anunciada-9196",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/the-one-palacio-da-anunciada-9196",
+   "h1": "The One Palácio da Anunciada",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "R. das Portas de Santo Antão 112-134",
+     "addressLocality": "Lisbon",
+     "postalCode": "1150-268 ",
+     "addressCountry": "PRT"
+    },
+    "name": "The One Palácio da Anunciada in Lisbon",
+    "description": "It takes some nerve for a hotelier to think they can improve on a 16th-century palace in central Lisbon. But we’re grateful for the confidence shown by One Hotels, the high-end division of the Spanish H10 chain. They’ve managed to transform this 1533-vintage aristocratic home into something more than a restoration, thanks to the work of designer Jaime Beriestain, whose contemporary minimalist interiors are a delightful counterpoint to the palace’s ornate architecture. The One Palácio da Anunciada is impressive from top to bottom, and its expertly balanced style will appeal to traditionalists and design enthusiasts alike.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1440191.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.717367,
+     "longitude": -9.141468
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/the-one-palacio-da-anunciada-9196",
+    "numberOfRooms": 82,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.717367%2C-9.141468",
+    "petsAllowed": "Pets are allowed ON REQUEST (charges apply).",
+    "telephone": "+351 21 041 2300",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.9,
+     "reviewCount": 32,
+     "ratingCount": 32,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/100-maneiras",
+    "/en/lisboa-region/lisboa/restaurant/2monkeys",
+    "/en/lisboa-region/lisboa/restaurant/amago",
+    "/en/lisboa-region/lisboa/restaurant/broto",
+    "/en/lisboa-region/lisboa/restaurant/carnal-1200315",
+    "/en/lisboa-region/lisboa/restaurant/essencial",
+    "/en/lisboa-region/lisboa/restaurant/jncquoi-table",
+    "/en/lisboa-region/lisboa/restaurant/oficio",
+    "/en/lisboa-region/lisboa/restaurant/omakase-wa",
+    "/en/lisboa-region/lisboa/restaurant/terroir"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/comporta/sublime-comporta-7703",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/comporta/sublime-comporta-7703",
+   "h1": "Sublime Comporta",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "EN 261-1, Muda",
+     "addressLocality": "Comporta",
+     "postalCode": "7570-337",
+     "addressCountry": "PRT",
+     "addressRegion": "Alentejo"
+    },
+    "name": "Sublime Comporta in Comporta",
+    "description": "For those who are not fully up to speed on the current trends and predilections among Portugal’s A-listers, let us shed a little light. Comporta, a casually chic beach destination located an hour’s drive south of Lisbon amid the rice fields and forests of the Tróia peninsula, has been garnering comparisons with Ibiza — and, perhaps more aptly, with Uruguay’s José Ignacio. There are high-end boutiques and rustic beach bars, beautiful people stretched out on chaises longues, restored fisherman’s cottages available for rent; it’s frequently been referred to as “Cool Comporta,” and only partially because alliteration is what headlines are made of.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1361247.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.27894,
+     "longitude": -8.70096
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/comporta/sublime-comporta-7703",
+    "numberOfRooms": 45,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.27894%2C-8.70096",
+    "petsAllowed": "\\n Pets allowed on request and only in some room types, please contact the hotel. (charges apply)",
+    "telephone": "+351 269 449 376",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.0,
+     "reviewCount": 8,
+     "ratingCount": 8,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/setubal/carvalhal_2430594/restaurant/sublime-comporta-beach-club",
+    "/en/setubal/comporta_2431516/restaurant/cavalarica",
+    "/en/setubal/grandola_2432359/restaurant/sem-porta"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/madeira/reids-palace-a-belmond-hotel-madeira-6371",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/madeira/reids-palace-a-belmond-hotel-madeira-6371",
+   "h1": "Reid's Palace, A Belmond Hotel, Madeira",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Estrada Monumental, 139",
+     "addressLocality": "Madeira",
+     "postalCode": "9000-098",
+     "addressCountry": "PRT"
+    },
+    "name": "Reid's Palace, A Belmond Hotel, Madeira in Madeira",
+    "description": "If you’re finding Reid an unlikely name for a Portuguese fellow you’re not wrong. Reid’s Palace was founded over a century ago by a Scotsman of that name, long before the Belmond hotel group took over, back in the early stages of what’s now a full-fledged relationship between the British and the Portuguese island of Madeira. After all there’s so much to remind them of home, at least the island part, plus a significant improvement in the weather. So it is that everyone who was anyone, from Churchill on down, has spent some time here.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1089655.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 32.640588,
+     "longitude": -16.923988
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/madeira/reids-palace-a-belmond-hotel-madeira-6371",
+    "numberOfRooms": 158,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=32.640588%2C-16.923988",
+    "telephone": "+351291717171",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.3,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/ilha-da-madeira/funchal/restaurant/akua",
+    "/en/ilha-da-madeira/funchal/restaurant/audax",
+    "/en/ilha-da-madeira/funchal/restaurant/avista",
+    "/en/ilha-da-madeira/funchal/restaurant/avista-asia",
+    "/en/ilha-da-madeira/funchal/restaurant/casal-da-penha",
+    "/en/ilha-da-madeira/funchal/restaurant/desarma",
+    "/en/ilha-da-madeira/funchal/restaurant/gazebo",
+    "/en/ilha-da-madeira/funchal/restaurant/horta",
+    "/en/ilha-da-madeira/funchal/restaurant/il-gallo-d-oro",
+    "/en/ilha-da-madeira/funchal/restaurant/william216831"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/castelo-de-paiva/octant-hotels-douro-9149",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/castelo-de-paiva/octant-hotels-douro-9149",
+   "h1": "Octant Douro",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Km 41 R. Vista Alegre",
+     "addressLocality": "Castelo de Paiva",
+     "postalCode": "4550-631",
+     "addressCountry": "PRT",
+     "addressRegion": "Douro Valley"
+    },
+    "name": "Octant Douro in Castelo de Paiva",
+    "description": "The Douro Valley of northern Portugal isn’t exactly a secret among overseas visitors — the English flocked to the city of Porto centuries ago to taste the sweet wine that made the city famous. But in recent years, seemingly every corner of Portugal has undergone a sort of hospitality renaissance, a trend that’s evident in the construction of sleek seaside properties like Octant Hotels Douro, a contemporary luxury-hotel complex housing 56 rooms and 5 suites.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1533591.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.038198,
+     "longitude": -8.351272
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/castelo-de-paiva/octant-hotels-douro-9149",
+    "numberOfRooms": 79,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.038198%2C-8.351272",
+    "petsAllowed": "Pets are allowed upon request with a pet fee of 50€.",
+    "telephone": "+351 255 690 160",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.6,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/aveiro-region/castelo-de-paiva_2418179/restaurant/raiva"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/beja/herdade-de-malhadinha-nova-11446",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/beja/herdade-de-malhadinha-nova-11446",
+   "h1": "Herdade da Malhadinha Nova",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Herdade da Malhadinha Nova",
+     "addressLocality": "Beja",
+     "postalCode": "7800-601",
+     "addressCountry": "PRT",
+     "addressRegion": "Alentejo"
+    },
+    "name": "Herdade da Malhadinha Nova in Beja",
+    "description": "At the heart of a sun-dappled swath of Portuguese farmland dotted with vineyards and olive groves, Herdade da Malhadinha Nova is a quiet paradise for wine enthusiasts. The luxury hotel occupies just a small portion of a vast 1,000-acre property, wedged between Lisbon and the Algarve in the beautiful and sparsely populated region of Baixo Alentejo. Guest rooms and suites are housed in a collection of villas generously spread out among the landscape, and while amenities vary greatly — some have fully equipped kitchens and private pools, others have fireplaces, grand pianos, and wide terraces — all are wonderfully elegant yet down-to-earth, taking inspiration from traditional Portuguese architecture with details like terracotta floors and high wood-beamed ceilings. Go for a dip in the picturesque blue-tiled infinity pool, pedal through the vineyards on a complimentary bicycle, tour the onsite state-of-the-art winery, and dine on regional cuisine in the hotel’s restaurant: nearly all of the ingredients, from free-range eggs to olive oil, are organic and produced on the estate.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1395270.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.821373,
+     "longitude": -7.978345
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/beja/herdade-de-malhadinha-nova-11446",
+    "numberOfRooms": 23,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.821373%2C-7.978345",
+    "telephone": "+351 284 965 432",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.8,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/beja/albernoa/restaurant/malhadinha-nova"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/norte/vidago-palace-7618",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/norte/vidago-palace-7618",
+   "h1": "Vidago Palace",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Parque de Vidago, Apartado 16",
+     "addressLocality": "Norte",
+     "postalCode": "5425-307",
+     "addressCountry": "PRT"
+    },
+    "name": "Vidago Palace in Norte",
+    "description": "Maybe you’re not up to date on your Portuguese history. (Then again, maybe you are.) Anyway the striking Belle Époque facade tells you a thing or two: despite the Vidago Palace’s relatively remote location near the country’s northern border, the hotel has a grand past based on its strategic position. Built in 1910, it’s near the Chaves hot springs, famous since Roman times for their healing properties — and a longtime favorite of Portuguese kings. More than a century later, the hotel is just as glamorous as the day it opened. But the opulent interiors have been smartly adapted to suit modern tastes; the magnificent ballroom now houses the stylish Salão Nobre Dining Room, the region’s healing waters flow through the sleek marble spa, and the guest rooms and suites are smartly outfitted with floor-to-ceiling windows and quaint roll-top bathtubs.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1086348.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.632859,
+     "longitude": -7.575469
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/norte/vidago-palace-7618",
+    "numberOfRooms": 70,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.632859%2C-7.575469",
+    "telephone": "+351 276 990 900",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.9,
+     "reviewCount": 6,
+     "ratingCount": 6,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/vila-real-region/vidago/restaurant/salao-nobre"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/albufeira/vila-joya-7487",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/albufeira/vila-joya-7487",
+   "h1": "Vila Joya",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Estrada da Galé",
+     "addressLocality": "Albufeira",
+     "postalCode": "8200-416",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Vila Joya in Albufeira",
+    "description": "The Algarve is one of those blessed places, a sun-kissed expanse so heavenly it gets to keep a “the” at the front of its name, like the Riviera or the Amalfi. As such it’s quite popular with basically anyone who likes sunshine, and its hotels run the gamut from the big and bland on down to places like the Vila Joya, which is among the Algarve’s smallest and poshest escapes.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1430964.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.080053,
+     "longitude": -8.313732
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/albufeira/vila-joya-7487",
+    "numberOfRooms": 13,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.080053%2C-8.313732",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "351289591795",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.3,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/albufeira/restaurant/al-quimia",
+    "/en/faro-region/albufeira/restaurant/vila-joya",
+    "/en/faro-region/lagoa/restaurant/bon-bon472583",
+    "/en/faro-region/porches/restaurant/aladin-grill",
+    "/en/faro-region/porches/restaurant/atlantico",
+    "/en/faro-region/porches/restaurant/coral",
+    "/en/faro-region/porches/restaurant/o-leao-de-porches",
+    "/en/faro-region/porches/restaurant/ocean216602",
+    "/en/faro-region/quarteira_2427490/restaurant/willie-s"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/funchal/les-suites-at-the-cliff-bay-portobay-14492",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/funchal/les-suites-at-the-cliff-bay-portobay-14492",
+   "h1": "Les Suites at The Cliff Bay - PortoBay",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Estrada Monumental, Sao Martinho",
+     "addressLocality": "Funchal",
+     "postalCode": "9004-532",
+     "addressCountry": "PRT",
+     "addressRegion": "Madeira"
+    },
+    "name": "Les Suites at The Cliff Bay - PortoBay in Funchal",
+    "description": "Just outside Funchal, on a clifftop promontory overlooking the Atlantic, the original Cliff Bay is one of Madeira’s most upscale hotels. When the property next door went up for sale, the owners snapped it up, restoring its tiered gardens and a pair of century-old villas — and adding a new wing and a gorgeous infinity pool — to create the even more luxurious Les Suites.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1467200.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 32.63927,
+     "longitude": -16.9258
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/funchal/les-suites-at-the-cliff-bay-portobay-14492",
+    "numberOfRooms": 23,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=32.63927%2C-16.9258",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+351 291 707 700",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/ilha-da-madeira/funchal/restaurant/akua",
+    "/en/ilha-da-madeira/funchal/restaurant/audax",
+    "/en/ilha-da-madeira/funchal/restaurant/avista",
+    "/en/ilha-da-madeira/funchal/restaurant/avista-asia",
+    "/en/ilha-da-madeira/funchal/restaurant/casal-da-penha",
+    "/en/ilha-da-madeira/funchal/restaurant/desarma",
+    "/en/ilha-da-madeira/funchal/restaurant/gazebo",
+    "/en/ilha-da-madeira/funchal/restaurant/horta",
+    "/en/ilha-da-madeira/funchal/restaurant/il-gallo-d-oro",
+    "/en/ilha-da-madeira/funchal/restaurant/william216831"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Vila-Nova-de-Gaia/tivoli-kopke-porto-gaia-15673",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Vila-Nova-de-Gaia/tivoli-kopke-porto-gaia-15673",
+   "h1": "Tivoli Kopke Porto Gaia",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": " Rua do Barão de Forrester 69",
+     "addressLocality": "Vila Nova de Gaia",
+     "postalCode": "4400-0034",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Tivoli Kopke Porto Gaia in Vila Nova de Gaia",
+    "description": "Sometimes a name contains almost everything you need to know about a hotel. Tivoli Kopke Porto Gaia Hotel is a partnership between Portugal’s Tivoli hotel group and the venerable port wine producer Kopke, situated in Vila Nova de Gaia straight across the River Douro from the city of Porto itself. And it’s impressive on all counts, from its stylish rooms and suites to its supremely restful wellness offerings, its vast contemporary art collection, and its swanky restaurants and bars.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1574550.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.1344660923,
+     "longitude": -8.6174759035
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Vila-Nova-de-Gaia/tivoli-kopke-porto-gaia-15673",
+    "numberOfRooms": 150,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.1344660923%2C-8.6174759035",
+    "petsAllowed": "Pets are allowed. Charges may apply.",
+    "telephone": "+351 224 105 600",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/cozinha-das-flores",
+    "/en/porto-region/porto/restaurant/dop",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito",
+    "/en/porto-region/porto/restaurant/tokkotai",
+    "/en/porto-region/vila-nova-de-gaia/restaurant/1638-restaurant-by-nacho-manzano",
+    "/en/porto-region/vila-nova-de-gaia/restaurant/the-yeatman"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/pousada-de-lisboa-praca-do-comercio-7949",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/pousada-de-lisboa-praca-do-comercio-7949",
+   "h1": "Pousada de Lisboa, Praça do Comércio",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Praça do Comércio, 31-34, VAT 502 812 974",
+     "addressLocality": "Lisbon",
+     "postalCode": "1100-148",
+     "addressCountry": "PRT"
+    },
+    "name": "Pousada de Lisboa, Praça do Comércio in Lisbon",
+    "description": "If you notice a certain repetition in naming, you’re not imagining things — the Pousadas de Portugal are a chain of sorts, created by the government as a way of showcasing the nation’s architectural history, but long since privatized. They’re all a bit different, but they tend to take a classic building, whether a rustic old farmhouse or a gorgeous baroque palace, and kit it out with the latest in luxe-hospitality accoutrements, so you can eat your cultural-history vegetables and enjoy your luxury-hotel dessert all at the same time. And in Pousada de Lisboa, Praça do Comércio, the pousadas have something of an urban flagship: right here in Lisbon’s Palace Square — Commerce Square, in a former government ministry building, you’ll find a hotel that’s worthy of its privileged position along the capital’s waterfront.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1335714.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.708206,
+     "longitude": -9.137707
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/pousada-de-lisboa-praca-do-comercio-7949",
+    "numberOfRooms": 90,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.708206%2C-9.137707",
+    "telephone": "+351 21 040 7640",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.3,
+     "reviewCount": 6,
+     "ratingCount": 6,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/bahr",
+    "/en/lisboa-region/lisboa/restaurant/belcanto",
+    "/en/lisboa-region/lisboa/restaurant/broto",
+    "/en/lisboa-region/lisboa/restaurant/encanto",
+    "/en/lisboa-region/lisboa/restaurant/epur",
+    "/en/lisboa-region/lisboa/restaurant/oficio",
+    "/en/lisboa-region/lisboa/restaurant/oven",
+    "/en/lisboa-region/lisboa/restaurant/prado",
+    "/en/lisboa-region/lisboa/restaurant/sala1154759",
+    "/en/lisboa-region/lisboa/restaurant/terroir"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/monsaraz/sao-lourenco-do-barrocal-11836",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/monsaraz/sao-lourenco-do-barrocal-11836",
+   "h1": "São Lourenço do Barrocal",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "São Lourenço do Barrocal",
+     "addressLocality": "Monsaraz",
+     "postalCode": "7200-177",
+     "addressCountry": "PRT",
+     "addressRegion": "Alentejo"
+    },
+    "name": "São Lourenço do Barrocal in Monsaraz",
+    "description": "São Lourenço do Barrocal is, first and foremost, a 200-year-old, 2,000-acre agricultural estate in Portugal’s spectacular Alentejo countryside. Today, the estate is still an organic farm, producing wine, fruits, and other foodstuffs, but much of its infrastructure has been put to new use as a tranquil and quietly stylish luxury boutique hotel — barns, outbuildings, even an olive press have been transformed for use as hotel rooms, suites, cottages, and a spa, while the stables contain horses for guests’ use.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1248888.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.443208,
+     "longitude": -7.417591
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/monsaraz/sao-lourenco-do-barrocal-11836",
+    "numberOfRooms": 40,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.443208%2C-7.417591",
+    "petsAllowed": "\\n Pets are welcome for an additional fee of €100 per stay for a maximum of 3 nights. For stays longer than 3 nights, an additional fee of €75 will apply for each additional 3-night period.",
+    "telephone": "+351 266 247 140",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/evora-region/reguengos-de-monsaraz/restaurant/esporao"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/santiago-de-alfama-boutique-hotel-8830",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/santiago-de-alfama-boutique-hotel-8830",
+   "h1": "Santiago de Alfama - Boutique Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua de Santiago 10 a 14",
+     "addressLocality": "Lisbon",
+     "postalCode": "1100-494",
+     "addressCountry": "PRT"
+    },
+    "name": "Santiago de Alfama - Boutique Hotel in Lisbon",
+    "description": "We’ve got no hard facts to back this up, but if the local hotel scene is any indication, Portugal must have more palaces per capita than just about any place on the planet. This particular palace, in the Alfama district of Lisbon, dates back to the 15th century, and incorporates a bit of Roman ruin as well — and while it’s lived several lives over the course of many hundreds of years, it’s unlikely ever to have looked quite so splendid as it does today, in its new life as Santiago de Alfama, a 21st-century family-owned luxury boutique hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1530942.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.711435,
+     "longitude": -9.131215
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/santiago-de-alfama-boutique-hotel-8830",
+    "numberOfRooms": 19,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.711435%2C-9.131215",
+    "petsAllowed": "Pets: The hotel cannot accept pets (except for guide-dogs).",
+    "telephone": "+351 21 394 1616",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.0,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/belcanto",
+    "/en/lisboa-region/lisboa/restaurant/encanto",
+    "/en/lisboa-region/lisboa/restaurant/epur",
+    "/en/lisboa-region/lisboa/restaurant/grenache",
+    "/en/lisboa-region/lisboa/restaurant/marlene",
+    "/en/lisboa-region/lisboa/restaurant/oven",
+    "/en/lisboa-region/lisboa/restaurant/prado",
+    "/en/lisboa-region/lisboa/restaurant/sala1154759",
+    "/en/lisboa-region/lisboa/restaurant/terroir",
+    "/en/lisboa-region/lisboa/restaurant/zunzum-gastrobar"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/monforte/torre-de-palma-wine-hotel-8218",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/monforte/torre-de-palma-wine-hotel-8218",
+   "h1": "Torre de Palma Wine Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "7450 Herdade de Torre de Palma, 250",
+     "addressLocality": "Monforte",
+     "postalCode": "7450-250",
+     "addressCountry": "PRT",
+     "addressRegion": "Alentejo"
+    },
+    "name": "Torre de Palma Wine Hotel  in Monforte",
+    "description": "Torre de Palma Wine Hotel, located in a hilltop village in Portugal’s upper Alentejo, was built atop the remains of a villa that dates back to 1338. The whitewashed manor was originally the home of a wealthy family, and despite the interventions of a modern architect, who not only refurbished the existing structures but installed some new ones as well, the place still exudes a certain air of old-world refinement and leisure.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1068724.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 39.068323,
+     "longitude": -7.488911
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/monforte/torre-de-palma-wine-hotel-8218",
+    "numberOfRooms": 19,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=39.068323%2C-7.488911",
+    "telephone": "+351 245 038 890",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.8,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": []
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/portobay-flores-12216",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/portobay-flores-12216",
+   "h1": "PortoBay Flores",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua das Flores, 27",
+     "addressLocality": "Porto",
+     "postalCode": "4050-416",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "PortoBay Flores in Porto",
+    "description": "On a walking street in the heart of historic Porto, right next door to the Misericórdia church and museum, PortoBay Flores is quite literally a collision of the old and the new: a 16th-century palace with a contemporary addition, which together comprise a thoroughly modern luxury boutique hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1635447.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.144544,
+     "longitude": -8.614135
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/portobay-flores-12216",
+    "numberOfRooms": 66,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.144544%2C-8.614135",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "00 351 220 047 000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/camilo",
+    "/en/porto-region/porto/restaurant/cozinha-das-flores",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/dop",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito",
+    "/en/porto-region/porto/restaurant/tokkotai"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Faro/3hb-faro-12597",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Faro/3hb-faro-12597",
+   "h1": "3HB Faro",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua Vasco da Gama nº33",
+     "addressLocality": "Faro",
+     "postalCode": "8000-442",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "3HB Faro in Faro",
+    "description": "The Algarve city of Faro is no stranger to tourism, but at the time of 3HB Faro’s opening, this kind of urban luxury resort was without local precedent. The location is central, right in the pedestrianized heart of this compact city. And while the phrase “urban resort” is often meant loosely, it’s entirely apt here — witness the rooftop pool, lined with loungers, that looks out not over a beach but over the rooftops of Faro’s city center.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1386876.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.01682,
+     "longitude": -7.93232
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Faro/3hb-faro-12597",
+    "numberOfRooms": 104,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.01682%2C-7.93232",
+    "petsAllowed": "Pets are not allowed (except assistance dogs).",
+    "telephone": "+351 289 240 000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.9,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/almancil/restaurant/2-passos",
+    "/en/faro-region/almancil/restaurant/austa",
+    "/en/faro-region/almancil/restaurant/authentic",
+    "/en/faro-region/almancil/restaurant/gusto378372",
+    "/en/faro-region/almancil/restaurant/pequeno-mundo",
+    "/en/faro-region/faro/restaurant/alameda-1198788",
+    "/en/faro-region/faro/restaurant/check-in-faro",
+    "/en/faro-region/faro/restaurant/pearl-1217733",
+    "/en/faro-region/loule_2432623/restaurant/cafezique-1200566",
+    "/en/faro-region/quarteira_2427490/restaurant/willie-s"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/altura/octant-praia-verde-15527",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/altura/octant-praia-verde-15527",
+   "h1": "Octant Praia Verde",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Urbanização Praia Verde",
+     "addressLocality": "Altura",
+     "postalCode": "8950-434",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Octant Praia Verde in Altura",
+    "description": "Octant Praia Verde stands out on the Algarve coast with its steel, bracket-shaped structure rising from a dense pine forest. Inside, the atmosphere softens: the mercado-style lobby doubles as a gathering place, while the restaurant À Terra turns out rustic dishes from local produce and pizzas straight from a wood-fired oven. Families are well considered, with a kids’ club, playroom, and suites equipped with kitchenettes. Rooms share a clean white palette, but higher floors deliver sweeping sea views. Beyond the saltwater pool, a short forest path leads directly to the beach.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1674075.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.1798579,
+     "longitude": -7.4822055
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/altura/octant-praia-verde-15527",
+    "numberOfRooms": 65,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.1798579%2C-7.4822055",
+    "petsAllowed": "Pets are allowed. Charges may apply.",
+    "telephone": "+351 281 530 600",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/tavira/restaurant/a-mesa",
+    "/en/faro-region/tavira/restaurant/a-ver-tavira",
+    "/en/faro-region/tavira/restaurant/mesa-farta"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/bairro-alto-hotel-424",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/bairro-alto-hotel-424",
+   "h1": "Bairro Alto Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Praca Luis de Camões No. 2",
+     "addressLocality": "Lisbon",
+     "postalCode": "1200-243",
+     "addressCountry": "PRT"
+    },
+    "name": "Bairro Alto Hotel in Lisbon",
+    "description": "It’s stylish, it’s plush, it beckons you off the street with its cheery yellow exterior. But perhaps the best thing about the Bairro Alto is the hotel’s choice location on Lisbon’s main square, Praça Luís de Camões. This central spot would make its poet namesake proud: serene by day, the square is home to a number of Baroque churches and historic cafés, with easy access to the nearby fashion district. At night, it becomes a hub for exploring the local clubs and watering holes that overflow onto the side streets through the wee hours of the morning.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1485600.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.710278,
+     "longitude": -9.143333
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/bairro-alto-hotel-424",
+    "numberOfRooms": 87,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.710278%2C-9.143333",
+    "telephone": "+351.21.340.82.88",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.1,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/100-maneiras",
+    "/en/lisboa-region/lisboa/restaurant/bahr",
+    "/en/lisboa-region/lisboa/restaurant/belcanto",
+    "/en/lisboa-region/lisboa/restaurant/broto",
+    "/en/lisboa-region/lisboa/restaurant/carnal-1200315",
+    "/en/lisboa-region/lisboa/restaurant/encanto",
+    "/en/lisboa-region/lisboa/restaurant/epur",
+    "/en/lisboa-region/lisboa/restaurant/essencial",
+    "/en/lisboa-region/lisboa/restaurant/oficio",
+    "/en/lisboa-region/lisboa/restaurant/suba"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Vila-Nova-de-Gaia/the-yeatman-11004",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Vila-Nova-de-Gaia/the-yeatman-11004",
+   "h1": "The Yeatman",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua do Choupelo, Santa Marinha",
+     "addressLocality": "Vila Nova de Gaia",
+     "postalCode": "4400-088",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "The Yeatman in Vila Nova de Gaia",
+    "description": "The Yeatman is elegant and luxurious, often considered the best place to stay in the Porto area — in part for its charms as a luxury hotel, and in part for its restaurant’s two Michelin stars. It’s set on a green hill overlooking the Douro River, and among its many highlights are indoor and outdoor infinity pools, a spa with Roman-style baths, and wine cellars with guided tastings. The history of winemaking in the region is a subtle theme throughout the cheerfully painted but thoroughly refined guest rooms and suites. Each has a private balcony or terrace in addition to a spacious marble bathroom with a deep soaking tub and a separate shower; top-end suites have over-the-top luxuries, like a domed wooden bed that resembles an enormous oak barrel for aging wine.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1533057.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.1337,
+     "longitude": -8.61309
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Vila-Nova-de-Gaia/the-yeatman-11004",
+    "numberOfRooms": 82,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.1337%2C-8.61309",
+    "telephone": "+351220133100",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 20.0,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/cozinha-das-flores",
+    "/en/porto-region/porto/restaurant/dop",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/patio-44",
+    "/en/porto-region/porto/restaurant/tokkotai",
+    "/en/porto-region/vila-nova-de-gaia/restaurant/1638-restaurant-by-nacho-manzano",
+    "/en/porto-region/vila-nova-de-gaia/restaurant/the-yeatman"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/alporchinhos/vila-vita-parc-11366",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/alporchinhos/vila-vita-parc-11366",
+   "h1": "Vila Vita Parc Resort & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "R. Anneliese Pohl",
+     "addressLocality": "Alporchinhos",
+     "postalCode": "8400-450",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Vila Vita Parc Resort & Spa in Alporchinhos",
+    "description": "With Portugal’s first Sisley spa, a golf course, a beach club, six stylish bars, and ten excellent restaurants, including the two-MICHELIN-star Ocean, Vila Vita Parc is a destination in itself. It’s been one of the Algarve’s most luxurious getaways since opening in 1992, and frequent renovations have kept things looking fresh. Crisp whitewashed buildings house rooms, suites, and villas with spacious layouts, gleaming parquet floors, elegant blue and white decor, and charming details like traditional hand-painted pottery made in the nearby village of Porches. All have private outdoor terraces with views of the sea or the flower gardens; clifftop villas feature infinity pools and several levels of living and dining space.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1480565.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.1019,
+     "longitude": -8.37945
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/alporchinhos/vila-vita-parc-11366",
+    "numberOfRooms": 203,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.1019%2C-8.37945",
+    "telephone": "+351 282 310 100",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Three MICHELIN Keys · An extraordinary stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/albufeira/restaurant/vila-joya",
+    "/en/faro-region/lagoa/restaurant/bon-bon472583",
+    "/en/faro-region/porches/restaurant/aladin-grill",
+    "/en/faro-region/porches/restaurant/atlantico",
+    "/en/faro-region/porches/restaurant/coral",
+    "/en/faro-region/porches/restaurant/o-leao-de-porches",
+    "/en/faro-region/porches/restaurant/ocean216602",
+    "/en/faro-region/portimo/restaurant/duoo-gastro-theatre",
+    "/en/faro-region/portimo/restaurant/restaurante-f",
+    "/en/faro-region/portimo/restaurant/vista365067"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/le-monumental-palace-10607",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/le-monumental-palace-10607",
+   "h1": "The One Monumental Palace",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "151 Avenida dos Aliados",
+     "addressLocality": "Porto",
+     "postalCode": "4000-196",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "The One Monumental Palace  in Porto",
+    "description": "To be fair, they’re not wrong — it is indeed a Monumental Palace. Now part of The One Hotels group, this 1923 classic sports Art Deco-inspired interiors which perfectly complement the building’s historic bones. It includes 76 elegant rooms and suites, a lavish spa with a hypnotic indoor pool, and a reincarnation of the original Café Monumental, now three separate venues: there’s the One-MICHELIN-Starred Le Monument, chef Julien Montbabut’s fine-dining concept, as well as Yakuza, a Japanese restaurant by famed Portuguese chef Oliver Da Costa, and the Mezzanine, for breakfast, just above the lobby. The American Bar takes its cues from the hotel’s early days and the glamour of the 1920s, and is an attractive spot for cocktail hour or a nightcap.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1532812.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.14839,
+     "longitude": -8.61142
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/le-monumental-palace-10607",
+    "numberOfRooms": 76,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.14839%2C-8.61142",
+    "telephone": "+351 22 766 2410",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/almeja",
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/camilo",
+    "/en/porto-region/porto/restaurant/cozinha-das-flores",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/dop",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/four-seasons-hotel-ritz-lisbon-12766",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/four-seasons-hotel-ritz-lisbon-12766",
+   "h1": "Four Seasons Hotel Ritz Lisbon",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua Rodrigo da Fonseca, 88",
+     "addressLocality": "Lisbon",
+     "postalCode": "1900-123",
+     "addressCountry": "PRT"
+    },
+    "name": "Four Seasons Hotel Ritz Lisbon in Lisbon",
+    "description": "It’s an accident of history, rather than a new brand collaboration, that gives the Four Seasons Hotel Ritz Lisbon its ultra-distinguished name, but it’s one that paints an accurate picture; this is indeed at the top of the class in the Portuguese capital when it comes to old-world luxury hotels. The interiors are Louis XVI-meets–Art Deco, and the amenities, both in-room and out, are absolutely first-rate; there’s a spa, an indoor and outdoor pool, and even a rooftop running track. There are hipper hotels in town, but none that can boast a restaurant like the Michelin-starred Cura or the exquisite Nikkei-inspired O Japonês.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1695245.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.72561,
+     "longitude": -9.15533
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/four-seasons-hotel-ritz-lisbon-12766",
+    "numberOfRooms": 282,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.72561%2C-9.15533",
+    "petsAllowed": "The hotel welcomes pets up to 15 lbs (7 kgs). A one-time cleaning fee applies per stay. Pets must not be left unattended. If guest requires a pet sitter, pet supplies, they should contact the concierge with advance notice.",
+    "telephone": "351 21 381-1400",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/cura",
+    "/en/lisboa-region/lisboa/restaurant/eleven118394",
+    "/en/lisboa-region/lisboa/restaurant/henrique-sa-pessoa",
+    "/en/lisboa-region/lisboa/restaurant/jncquoi-fish",
+    "/en/lisboa-region/lisboa/restaurant/jncquoi-table",
+    "/en/lisboa-region/lisboa/restaurant/kabuki-lisboa",
+    "/en/lisboa-region/lisboa/restaurant/mitsu",
+    "/en/lisboa-region/lisboa/restaurant/o-talho",
+    "/en/lisboa-region/lisboa/restaurant/salta",
+    "/en/lisboa-region/lisboa/restaurant/santa-joana"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/armacao-de-pera/vilalara-grand-hotel-algarve-10379",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/armacao-de-pera/vilalara-grand-hotel-algarve-10379",
+   "h1": "Vilalara Grand Hotel Algarve",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Praia das Gaivotas - Alporchinhos Porches",
+     "addressLocality": "Armacao de Pera",
+     "postalCode": "8400-450",
+     "addressCountry": "PRT",
+     "addressRegion": "Algarve"
+    },
+    "name": "Vilalara Grand Hotel Algarve in Armacao de Pera",
+    "description": "Though it predates the boutique-hotel boom, Vilalara Grand Hotel Algarve looks right at home among the wave of new Portuguese luxury resorts; its south-facing setting, high above a beach in the Algarve, is spectacular. Its buildings are tucked into acres of gardens, and surrounded by no fewer than five swimming pools, as well as an extensive spa complex. Vilalara’s suites and apartments are spacious and well-equipped, and feature contemporary, quietly luxurious interiors in neutral shades. The hotel’s six restaurants include A-Costa for Portuguese cuisine with an ocean view, and farm-to-table, seasonal cooking at grill restaurant RAIZES.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1531135.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.09928,
+     "longitude": -8.38022
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/armacao-de-pera/vilalara-grand-hotel-algarve-10379",
+    "numberOfRooms": 111,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.09928%2C-8.38022",
+    "petsAllowed": " Pets are not allowed.",
+    "telephone": "+351 282 320 000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 6,
+     "ratingCount": 6,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/faro-region/albufeira/restaurant/vila-joya",
+    "/en/faro-region/lagoa/restaurant/bon-bon472583",
+    "/en/faro-region/porches/restaurant/aladin-grill",
+    "/en/faro-region/porches/restaurant/atlantico",
+    "/en/faro-region/porches/restaurant/coral",
+    "/en/faro-region/porches/restaurant/o-leao-de-porches",
+    "/en/faro-region/porches/restaurant/ocean216602",
+    "/en/faro-region/portimo/restaurant/duoo-gastro-theatre",
+    "/en/faro-region/portimo/restaurant/restaurante-f",
+    "/en/faro-region/portimo/restaurant/vista365067"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lamego/the-wine-house-hotel-quinta-da-pacheca-12025",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lamego/the-wine-house-hotel-quinta-da-pacheca-12025",
+   "h1": "The Wine House Hotel - Quinta da Pacheca",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Quinta Da Pacheca, Cambres",
+     "addressLocality": "Lamego",
+     "postalCode": "5100-424",
+     "addressCountry": "PRT",
+     "addressRegion": "Douro Valley"
+    },
+    "name": "The Wine House Hotel - Quinta da Pacheca in Lamego",
+    "description": "The name leaves little to the imagination, but around here, that’s a good thing — Quinta da Pacheca Wine House Hotel is an 18th-century manor house on a working Douro Valley winery that combines classic charm with contemporary interior design and up-to-date boutique-era comforts. Along with traditional hotel rooms you’ll find two rows of pod-like cabins made from decommissioned wine barrels, just big enough for a cozy bedroom and bathroom and an outdoor terrace overlooking the vineyards. Opportunities for tours and tastings abound, and the hotel’s restaurant offers cooking classes and picnics in addition to regular meal service — all accompanied by a variety of local wines.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1698011.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.15572,
+     "longitude": -7.79846
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lamego/the-wine-house-hotel-quinta-da-pacheca-12025",
+    "numberOfRooms": 50,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.15572%2C-7.79846",
+    "telephone": "+351 254 331 229",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/vila-real-region/peso-da-rgua/restaurant/schisto",
+    "/en/vila-real-region/vila-real/restaurant/cais-da-villa",
+    "/en/viseu-region/folgosa/restaurant/doc216528",
+    "/en/viseu-region/lamego_2420549/restaurant/cozinha-do-douro"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Mes%C3%A3o%20Frio/quinta-de-sbernardo-winery-farmhouse-12431",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Mes%C3%A3o%20Frio/quinta-de-sbernardo-winery-farmhouse-12431",
+   "h1": "Quinta de São Bernardo Winery & Farmhouse",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Caminho do rio 33",
+     "addressLocality": "Mesão Frio",
+     "postalCode": "5040-428",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Quinta de São Bernardo Winery & Farmhouse in Mesão Frio",
+    "description": "Right by the side of the Douro River, in the heart of Portugal’s wine country, Quinta de S.Bernardo - Winery and Farmhouse is just what it sounds like, plus a little more. This charming agricultural estate has been given a modern design-and-architecture makeover, retaining its heritage silhouette but finished in modern fixtures and furnishings. The seven rooms are plush and stylish, and five of them look out over the river — as do the infinity pool, the bar terrace, and the farm-to-table restaurant. The on-site winery is still in operation, and offers tastings and tours.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1305585.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.1448,
+     "longitude": -7.88642
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Mes%C3%A3o%20Frio/quinta-de-sbernardo-winery-farmhouse-12431",
+    "numberOfRooms": 7,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.1448%2C-7.88642",
+    "telephone": "+351 967 293 773",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 20.0,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/vila-real-region/peso-da-rgua/restaurant/schisto",
+    "/en/viseu-region/folgosa/restaurant/doc216528",
+    "/en/viseu-region/lamego_2420549/restaurant/cozinha-do-douro"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/art-legacy-hotel-baixa-chiado-14519",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/art-legacy-hotel-baixa-chiado-14519",
+   "h1": "Art Legacy Hotel Baixa-Chiado",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua Áurea 175-181",
+     "addressLocality": "Lisbon",
+     "postalCode": "1149-021",
+     "addressCountry": "PRT"
+    },
+    "name": "Art Legacy Hotel Baixa-Chiado in Lisbon",
+    "description": "An elegant century-old office building in downtown Lisbon is now the luxurious Art Legacy Hotel Baixa-Chiado, a boutique hotel with designer clout. Local firm Rebelo De Andrade spent seven years restoring the property inside and out, from a painstaking overhaul of the Beaux Arts facade to the extensive refurbishment of the interiors, now decorated almost exclusively with modern furnishings and lighting by the Dutch brand Moooi. Rooms are outfitted in bold primary colors with pops of white, gold, and orange, bathrooms with Bulgari products, and retro-inspired details from Smeg kettles to clawfoot tubs. The similarly striking lobby-level restaurant Áurea serves inventive takes on Portuguese classics.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1485474.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.71105,
+     "longitude": -9.13881
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/art-legacy-hotel-baixa-chiado-14519",
+    "numberOfRooms": 53,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.71105%2C-9.13881",
+    "telephone": "+351 21 145 3090",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/bahr",
+    "/en/lisboa-region/lisboa/restaurant/belcanto",
+    "/en/lisboa-region/lisboa/restaurant/broto",
+    "/en/lisboa-region/lisboa/restaurant/carnal-1200315",
+    "/en/lisboa-region/lisboa/restaurant/encanto",
+    "/en/lisboa-region/lisboa/restaurant/epur",
+    "/en/lisboa-region/lisboa/restaurant/oficio",
+    "/en/lisboa-region/lisboa/restaurant/oven",
+    "/en/lisboa-region/lisboa/restaurant/prado",
+    "/en/lisboa-region/lisboa/restaurant/terroir"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/palacio-ludovice-wine-experience-hotel-14520",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/palacio-ludovice-wine-experience-hotel-14520",
+   "h1": "Palácio Ludovice Wine Experience Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua de São Pedro de Alcântara 39-49",
+     "addressLocality": "Lisbon",
+     "postalCode": "1250-237",
+     "addressCountry": "PRT"
+    },
+    "name": "Palácio Ludovice Wine Experience Hotel in Lisbon",
+    "description": "The German-born architect João Federico Ludovice, responsible for many of Lisbon’s glittering 18th-century palaces and churches, didn’t skimp on luxury for his own private residence, either, designing an opulent five-story mansion that occupies an entire city block in Bairro Alto. As the name suggests, the Palácio Ludovice Wine Experience Hotel pays homage to its original owner and to the building’s later use as a headquarters for the Port Wine Institute.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1485585.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.71408,
+     "longitude": -9.1441
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/palacio-ludovice-wine-experience-hotel-14520",
+    "numberOfRooms": 61,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.71408%2C-9.1441",
+    "telephone": "+351 211 513 850 ",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/100-maneiras",
+    "/en/lisboa-region/lisboa/restaurant/amago",
+    "/en/lisboa-region/lisboa/restaurant/bahr",
+    "/en/lisboa-region/lisboa/restaurant/belcanto",
+    "/en/lisboa-region/lisboa/restaurant/broto",
+    "/en/lisboa-region/lisboa/restaurant/carnal-1200315",
+    "/en/lisboa-region/lisboa/restaurant/encanto",
+    "/en/lisboa-region/lisboa/restaurant/essencial",
+    "/en/lisboa-region/lisboa/restaurant/oficio",
+    "/en/lisboa-region/lisboa/restaurant/omakase-wa"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Melides/vermelho-melides-13109",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Melides/vermelho-melides-13109",
+   "h1": "Vermelho Melides",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua Doutor Evaristo Sousa Gago nº2",
+     "addressLocality": "Melides",
+     "postalCode": "7570-635",
+     "addressCountry": "PRT",
+     "addressRegion": "Alentejo"
+    },
+    "name": "Vermelho Melides in Melides",
+    "description": "A glance at the lavish and maximalist Vermelho Melides makes clear that this is something a little bit different from the recent wave of Portuguese luxury hotels — and the reason, as it happens, is its celebrity owner. Christian Louboutin’s shoes are world-famous, and the technicolor Vermelho Melides will be soon. Its 13 rooms are each different, but all cut from the same stylish cloth; a small but lovely spa is the extent of the leisure offerings. And its most memorable attribute, after its photogenic good looks, might be its restaurant, Xtian, named for Louboutin but overseen by chef Emanuel Machado.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1361941.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.14611,
+     "longitude": -8.72797
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Melides/vermelho-melides-13109",
+    "numberOfRooms": 13,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.14611%2C-8.72797",
+    "telephone": "+351 915 280 511",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/setubal/carvalhal_2430594/restaurant/sublime-comporta-beach-club",
+    "/en/setubal/grandola_2432359/restaurant/sem-porta"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/browns-avenue-hotel-14518",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/browns-avenue-hotel-14518",
+   "h1": "Brown's Avenue Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "48 Rua Rodrigues Sampaio",
+     "addressLocality": "Lisbon",
+     "postalCode": "1150-280",
+     "addressCountry": "PRT"
+    },
+    "name": "Brown's Avenue Hotel in Lisbon",
+    "description": "Brown’s Hotel Group runs a quartet of boutique hotels in Lisbon: stylish, practical, and situated within a few blocks of each other, save for the lone outlier, Brown’s Avenue Hotel. Located just off the glamorous Avenida da Liberdade, it’s sleek but cozy, its pale wood-lined interiors enlivened by lush greenery and warm lighting. Some rooms are located in a historic wing of the building, and others in a newer addition, but all feature parquet floors, mid-century modern décor, and retro-inspired details like Marshall speakers and Smeg mini-fridges stocked with locally produced snacks and drinks. On the ground floor is an airy Mediterranean restaurant and a chic library with an honesty bar, and on the highest level is the hotel’s highlight — the rooftop pool.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1485570.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.72206,
+     "longitude": -9.14572
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/browns-avenue-hotel-14518",
+    "numberOfRooms": 44,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.72206%2C-9.14572",
+    "telephone": "351210988970",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/100-maneiras",
+    "/en/lisboa-region/lisboa/restaurant/2monkeys",
+    "/en/lisboa-region/lisboa/restaurant/amago",
+    "/en/lisboa-region/lisboa/restaurant/boubou-s",
+    "/en/lisboa-region/lisboa/restaurant/jncquoi-fish",
+    "/en/lisboa-region/lisboa/restaurant/jncquoi-table",
+    "/en/lisboa-region/lisboa/restaurant/mitsu",
+    "/en/lisboa-region/lisboa/restaurant/omakase-wa",
+    "/en/lisboa-region/lisboa/restaurant/salta",
+    "/en/lisboa-region/lisboa/restaurant/santa-joana"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/sintra/penha-longa-resort-14501",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/sintra/penha-longa-resort-14501",
+   "h1": "Penha Longa Resort",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Estrada da Lagoa Azul, Linhó",
+     "addressLocality": "Sintra",
+     "postalCode": "2714-511",
+     "addressCountry": "PRT"
+    },
+    "name": "Penha Longa Resort in Sintra",
+    "description": "Today, it’s part of the Ritz-Carlton collection, but Penha Longa Resort, set in the green hills of the Sintra Cascais Nature Reserve, has deep roots in the region’s cultural history. The elegant estate was once an escape for the Portuguese royal family, and its historic palazzo-style buildings still have a regal air; the property’s 14th-century monastery, with its colorful tilework, is a treat to explore. The rooms and suites are comparatively contemporary, with modern décor, lavishly appointed bathrooms with Diptyque products, and balconies overlooking the golf course and the mountains beyond. Other highlights include several indoor and outdoor pools and a sleek spa located in the former royal apartments, plus seven dining venues, including two with MICHELIN Stars.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1467410.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.761532,
+     "longitude": -9.396923
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/sintra/penha-longa-resort-14501",
+    "numberOfRooms": 204,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.761532%2C-9.396923",
+    "telephone": "+351 21 924 9011",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Three MICHELIN Keys · An extraordinary stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/cascais/restaurant/conceito",
+    "/en/lisboa-region/cascais/restaurant/fortaleza-do-guincho",
+    "/en/lisboa-region/cascais/restaurant/izakaya-1204417",
+    "/en/lisboa-region/cascais/restaurant/kappo-1196985",
+    "/en/lisboa-region/cascais/restaurant/mare-jose-avillez",
+    "/en/lisboa-region/cascais/restaurant/porto-de-santa-maria",
+    "/en/lisboa-region/cascais/restaurant/sult-cascais",
+    "/en/lisboa-region/pao-de-arcos/restaurant/intemporal",
+    "/en/lisboa-region/sintra/restaurant/lab-by-sergi-arola",
+    "/en/lisboa-region/sintra/restaurant/midori"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Armamar/quinta-sao-jose-do-barrilario-douro-wine-hotel-e-spa-14494",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Armamar/quinta-sao-jose-do-barrilario-douro-wine-hotel-e-spa-14494",
+   "h1": "Quinta São Jose do Barrilario Douro Wine Hotel e Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "São Joaninho Vacalar",
+     "addressLocality": "Armamar",
+     "postalCode": "5110-662",
+     "addressCountry": "PRT",
+     "addressRegion": "Douro Valley"
+    },
+    "name": "Quinta São Jose do Barrilario Douro Wine Hotel e Spa in Armamar",
+    "description": "To truly appreciate the spectacular location of Quinta São José do Barrilário, positioned high in the green hills of the Douro Valley, framed by terraced vineyards that slope down to the Douro River below, you’d have to see it from the air. Luckily, you can get quite close from this luxury hotel’s rooftop infinity pool. The building has a slightly curving shape, following the lines of the landscape, and its rooms feature floor-to-ceiling windows to make the most of the natural surroundings. Their interiors, modern and wood-lined, take inspiration from the region’s winemaking traditions — custom-made beds look like they’ve been crafted out of giant wine barrels. The restaurant serves wines made at the adjacent vineyard, and locally cultivated grapes are incorporated into treatments at the hotel’s spa.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1698023.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.13587,
+     "longitude": -7.69588
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Armamar/quinta-sao-jose-do-barrilario-douro-wine-hotel-e-spa-14494",
+    "numberOfRooms": 31,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.13587%2C-7.69588",
+    "telephone": "+351 254 103 328",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/vila-real-region/peso-da-rgua/restaurant/schisto",
+    "/en/vila-real-region/pinho/restaurant/bomfim-1896",
+    "/en/vila-real-region/vila-real/restaurant/cais-da-villa",
+    "/en/viseu-region/folgosa/restaurant/doc216528",
+    "/en/viseu-region/lamego_2420549/restaurant/cozinha-do-douro",
+    "/en/viseu-region/tabuaco_2425134/restaurant/seixo-by-vasco-coelho-santos"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Aveiro-1/ms-collection-aveiro-palacete-valdemouro-13715",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Aveiro-1/ms-collection-aveiro-palacete-valdemouro-13715",
+   "h1": "MS Collection Aveiro - Palacete Valdemouro",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "50 Rua José Estevão",
+     "addressLocality": "Aveiro",
+     "postalCode": "3800-201",
+     "addressCountry": "PRT",
+     "addressRegion": "Centro"
+    },
+    "name": "MS Collection Aveiro - Palacete Valdemouro in Aveiro",
+    "description": "With its picturesque canals and elegant waterfront palaces, Aveiro is sometimes called the Venice of Portugal. This seaside town got its first five-star hotel when one of those palaces was reborn as the MS Collection Aveiro - Palacete Valdemouro. The 18th-century landmark still has its original Moorish details, coffered ceilings, glittering chandeliers, and neoclassical facade, but the interiors have been smartly updated with polished parquet floors, luxe floor-to-ceiling drapery, and a mix of modern and Art Deco elements. Each room is named after a character from the works of Eça de Queiroz, the Portuguese novelist and diplomat who once lived here, and a literary theme prevails: there’s a cozy reading room, writing quills fashioned into art, and a large mural of the author by the courtyard swimming pool and café.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1388950.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 40.6425,
+     "longitude": -8.65288
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Aveiro-1/ms-collection-aveiro-palacete-valdemouro-13715",
+    "numberOfRooms": 39,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=40.6425%2C-8.65288",
+    "telephone": "+351 234 245 630",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/aveiro-region/aveiro/restaurant/mercantel",
+    "/en/aveiro-region/aveiro/restaurant/prosa",
+    "/en/aveiro-region/aveiro/restaurant/salpoente",
+    "/en/aveiro-region/gafanha-da-encarnacao_2419914/restaurant/dori"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/ga-palace-hotel-spa-a-xixth-century-villa-14493",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/ga-palace-hotel-spa-a-xixth-century-villa-14493",
+   "h1": "GA Palace",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua Alexandre Herculano 311",
+     "addressLocality": "Porto",
+     "postalCode": "4000-053",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "GA Palace in Porto",
+    "description": "Midway between Batalha Square and the banks of the Douro River is an elegant 19th-century palace that’s been carefully restored and transformed into the luxurious GA Palace Hotel & Spa. The neoclassical façade and lush courtyard garden remain mostly unchanged, but the refreshed interiors are modern and sophisticated, with herringbone floors, sultry lighting, and a bold mix of classic and contemporary artwork. Rooms are just as refined with floor-to-ceiling windows, coffered walls, monogrammed linens, and spacious marble bathrooms. Larger rooms have king-sized canopy beds and private terraces. The striking indoor-outdoor pool is a particular highlight.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1442177.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.14412,
+     "longitude": -8.60543
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/ga-palace-hotel-spa-a-xixth-century-villa-14493",
+    "numberOfRooms": 65,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.14412%2C-8.60543",
+    "telephone": "+351 22 098 7250",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/almeja",
+    "/en/porto-region/porto/restaurant/atrevo",
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/euskalduna-studio",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/izakaya-japanese-cuisine",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/patio-44"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Vidigueira/quinta-do-paral-14400",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Vidigueira/quinta-do-paral-14400",
+   "h1": "Quinta do Paral",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Quinta do Paral, Selmes",
+     "addressLocality": "Vidigueira",
+     "postalCode": "7960-131",
+     "addressCountry": "PRT",
+     "addressRegion": "Alentejo"
+    },
+    "name": "Quinta do Paral in Vidigueira",
+    "description": "It’s a classic love story—with a twist. Owner Dieter Morszeck fell in love, not with another person, but with Portugal’s stunning Alentejo winemaking region. He bought more than 200 acres and set to work redesigning the estate with an eye on sustainability and a dream of sharing this beautiful place with discerning travelers. Mission accomplished.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1467553.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.17731,
+     "longitude": -7.83251
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Vidigueira/quinta-do-paral-14400",
+    "numberOfRooms": 17,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.17731%2C-7.83251",
+    "telephone": "+351 284 441 620",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/beja/vidigueira_2429065/restaurant/quinta-do-quetzal"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/manteigas/casa-das-penhas-douradas-14491",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/manteigas/casa-das-penhas-douradas-14491",
+   "h1": "Casa das Penhas Douradas",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Penhas Douradas",
+     "addressLocality": "Manteigas",
+     "postalCode": "6260 - 200",
+     "addressCountry": "PRT",
+     "addressRegion": "Centro"
+    },
+    "name": "Casa das Penhas Douradas in Manteigas",
+    "description": "There are great places to stay in Portugal’s Serra da Estrela Natural Park, but few are as visually striking or as rooted in regional culture as Casa das Penhas Douradas. Set on a clifftop in Portugal’s highest mountain range, this retro chalet-style escape looks like something straight out of a Wes Anderson film. Though the design is inspired by local tradition, the buildings are relatively new, built with locally sourced materials including cork, birch wood, and wool, and outfitted with a mix of vintage and modern Scandinavian decor. Rooms are stylish and cozy with custom wooden furnishings and large picture windows overlooking the surrounding scenery. All have inviting spaces for reading or working, and suites also feature small libraries and living rooms. There are scenic views from the hotel’s restaurant, the glass-encased heated pool, and an open-air Nordic bath at the spa.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1442159.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 40.40822,
+     "longitude": -7.56776
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/manteigas/casa-das-penhas-douradas-14491",
+    "numberOfRooms": 17,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=40.40822%2C-7.56776",
+    "telephone": "(+351) 275 981 045",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": []
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/hospes-infante-sagres-porto-17314",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/hospes-infante-sagres-porto-17314",
+   "h1": "Hospes Infante Sagres",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Praça D. Filipa de Lencastre 62",
+     "addressLocality": "Porto",
+     "postalCode": "4050-259 ",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Hospes Infante Sagres in Porto",
+    "description": "There is nothing understated about Infante Sagres, and that is precisely what makes it Porto's most distinctive address. The grand heritage building, one of the city's oldest five-star properties, has been pushed into full maximalist color by Nano Design, with each floor offering something different: bold murals, tapestry walls, jewel tones, and parquet floors that shift in pattern from room to room. A rooftop pool surveys the old town, and Scarlett below is the kind of wine-led restaurant that makes dinner feel like the main event.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1669782.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.1480682842,
+     "longitude": -8.6129918865
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/hospes-infante-sagres-porto-17314",
+    "numberOfRooms": 85,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.1480682842%2C-8.6129918865",
+    "petsAllowed": " Pets are allowed. Charges may apply.",
+    "telephone": "+351932025474",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/almeja",
+    "/en/porto-region/porto/restaurant/blind",
+    "/en/porto-region/porto/restaurant/camilo",
+    "/en/porto-region/porto/restaurant/cozinha-das-flores",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/dop",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Braga/the-lince-braga-15843",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Braga/the-lince-braga-15843",
+   "h1": "The Lince Braga",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Estr. Via Falperra EN 309",
+     "addressLocality": "Braga",
+     "postalCode": "4715-390",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "The Lince Braga in Braga",
+    "description": "The Serra de Falperra might be best known for its religious pilgrimages and annual automobile hill climb competition, but its lush green hills also make a picturesque setting for The Lince Braga, a contemporary retreat designed around connecting with nature. The unfussy interiors relax with clean lines, natural materials and soft neutral shades, from the pared back rooms to the modern Altus Wellness Spa, lined in warming wood panels and fully kitted out with a large indoor pool, Turkish bath, ice bath, sauna, and a treatment menu of massages and facials. The name of the Wine Bar is slightly misleading, as it serves a full menu of Portuguese tapas and pizzas alongside its local wine selection, and if you want to head out for dinner, Braga’s historic center is just a ten-minute drive away.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1572431.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.520594,
+     "longitude": -8.389428
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Braga/the-lince-braga-15843",
+    "numberOfRooms": 77,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.520594%2C-8.389428",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+351 253 402 000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/braga-region/braga/restaurant/esperanca-verde",
+    "/en/braga-region/braga/restaurant/inato-bistro",
+    "/en/braga-region/braga/restaurant/o-filho-da-mae",
+    "/en/braga-region/braga/restaurant/palatial",
+    "/en/braga-region/guimares/restaurant/34",
+    "/en/braga-region/guimares/restaurant/a-cozinha",
+    "/en/braga-region/guimares/restaurant/hool",
+    "/en/braga-region/guimares/restaurant/le-babachris",
+    "/en/braga-region/portela/restaurant/ferrugem",
+    "/en/porto-region/nogueira/restaurant/o-manel"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/lisbon/wine-books-lisboa-15378",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/lisbon/wine-books-lisboa-15378",
+   "h1": "Wine & Books Lisboa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "56 Travessa da Memória",
+     "addressLocality": "Lisbon",
+     "postalCode": "1300-403",
+     "addressCountry": "PRT"
+    },
+    "name": "Wine & Books Lisboa in Lisbon",
+    "description": "In Lisbon’s Ajuda neighborhood, Wine & Books Lisboa looks out toward the dome of Igreja da Memória and the rooftops beyond. Inside, it is all polished surfaces, warm light, and nods to Portuguese culture, from the wine list to the library shelves. There are just 24 rooms, each finished with intricate details and plenty of natural light. Views alternate between tiled rooftops and grand baroque façades. Downstairs, the wine bar serves regional picks and sharp takes on petiscos, best enjoyed with a book, or a friend, or both. It is an easy fit for travelers who want to feel Lisbon without chasing it.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1518471.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.702162,
+     "longitude": -9.202193
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/lisbon/wine-books-lisboa-15378",
+    "numberOfRooms": 24,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.702162%2C-9.202193",
+    "petsAllowed": "Pets are allowed. Charges may apply.",
+    "telephone": "+351 21 156 6250",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lisboa-region/lisboa/restaurant/canalha",
+    "/en/lisboa-region/lisboa/restaurant/downunder-by-justin-jennings",
+    "/en/lisboa-region/lisboa/restaurant/feitoria",
+    "/en/lisboa-region/lisboa/restaurant/henrique-sa-pessoa",
+    "/en/lisboa-region/lisboa/restaurant/kanazawa",
+    "/en/lisboa-region/lisboa/restaurant/loco",
+    "/en/lisboa-region/lisboa/restaurant/o-frade",
+    "/en/lisboa-region/lisboa/restaurant/omakase-ri",
+    "/en/lisboa-region/lisboa/restaurant/pigmeu",
+    "/en/lisboa-region/lisboa/restaurant/yoso-1214668"
+   ]
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/porto/wine-books-porto-15373",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/porto/wine-books-porto-15373",
+   "h1": "Wine & Books Porto",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rua de José Falcão",
+     "addressLocality": "Porto",
+     "postalCode": "4050-390",
+     "addressCountry": "PRT",
+     "addressRegion": "Norte"
+    },
+    "name": "Wine & Books Porto in Porto",
+    "description": "Tucked into Porto’s old quarter, Wine & Books Porto draws from the city’s deep ties to literature and winemaking. Interiors are well-composed, with warm wood and moody lighting. Some overlook the surrounding streets, others connect for groups traveling together. The hotel’s name is more than branding: you will find shelves to browse, a solid cellar, and an experience that stays with you long after checkout. The mood is contemporary, but the setting speaks to the city’s older rhythm: layered, lived-in, and just a little poetic.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1533088.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-PRT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.148299,
+     "longitude": -8.614388
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/porto/wine-books-porto-15373",
+    "numberOfRooms": 70,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.148299%2C-8.614388",
+    "petsAllowed": "Pets are allowed. Charges may apply.",
+    "telephone": "+351 22 244 3750",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/porto-region/porto/restaurant/almeja",
+    "/en/porto-region/porto/restaurant/camilo",
+    "/en/porto-region/porto/restaurant/cozinha-das-flores",
+    "/en/porto-region/porto/restaurant/culto-ao-bacalhau",
+    "/en/porto-region/porto/restaurant/dop",
+    "/en/porto-region/porto/restaurant/elemento",
+    "/en/porto-region/porto/restaurant/fauno",
+    "/en/porto-region/porto/restaurant/le-monument",
+    "/en/porto-region/porto/restaurant/mito",
+    "/en/porto-region/porto/restaurant/tokkotai"
+   ]
+  }
+ ]
+}
