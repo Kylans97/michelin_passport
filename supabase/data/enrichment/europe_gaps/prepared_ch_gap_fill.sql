@@ -17,7 +17,7 @@
 -- re-run (fill-only).
 
 begin;
--- restaurants: 106 rows (101 Place IDs, 10 phones, 2 websites)
+-- restaurants: 105 rows (100 Place IDs, 10 phones, 2 websites)
 create temp table _fill_restaurant (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_restaurant values
     ('rest_0245', 'Stucki - Tanja Grandits', NULL, '+41 61 361 82 22', 'http://www.tanjagrandits.ch/'),
@@ -27,7 +27,6 @@ insert into _fill_restaurant values
     ('rest_0264', 'Widder Restaurant', NULL, '+41 44 224 24 12', NULL),
     ('rest_3501', '1910 Gourmet by Hausers', 'ChIJeS5DIlOZj0cR6R3Z-bqvCs4', NULL, NULL),
     ('rest_3502', 'Ackermannshof', 'ChIJNzJCCK65kUcRedE59xW-uc8', NULL, NULL),
-    ('rest_3504', 'Alpenblick', 'ChIJf5d-kIejj0cRy2ERVxKt1fI', NULL, NULL),
     ('rest_3505', 'Alpenblick - Stuba', 'ChIJ0ysJXCECj0cROkwaOeeSzZU', NULL, NULL),
     ('rest_3506', 'Alpine Gourmet Prato Borni', 'ChIJ5TZByd41j0cRCDA9vezHNA8', NULL, NULL),
     ('rest_3507', 'Apollo', 'ChIJUXyOZ0qhhEcR4ABma0cUDkY', NULL, NULL),

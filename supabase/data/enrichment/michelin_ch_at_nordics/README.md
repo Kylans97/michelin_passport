@@ -1,6 +1,8 @@
 # Switzerland, Austria and the Nordics: completeness check (2026-11-01)
 
-Status: **PREPARED, NOT APPLIED.** Generated from production's export of
+Status: **PREPARED, NOT APPLIED.** A follow-up to `../michelin_ch_at_nordic_2026/`
+(on main, applied 2026-10-30), which added these countries' restaurants and
+Key hotels but **no Google Place IDs**. This pass fills those. Generated from production's export of
 2026-11-01 (`export_query.sql`) by `../michelin_de_it/build_prepared_de_it.py`:
 
 ```
@@ -23,9 +25,13 @@ slug, then Place ID, then coordinates; never by name alone.
   value. The edition labels are right: Switzerland 2025 (announced 2025-10-20,
   the current Swiss edition); Austria 2026; the Nordics 2026.
 - **5 rows offline on MICHELIN's site:**
-  - **KEPT (QA-400):** 4 Swiss two-stars, all in MICHELIN's 2025 Swiss
-    article: La Brezza Ascona, IGNIV Bad Ragaz, Stucki, Skin's.
-  - **Left untouched, needs a decision (QA-401):** Aloë (SE).
+  - **Kept at their current value:** 4 Swiss two-stars, all in MICHELIN's 2025
+    Swiss article. IGNIV Bad Ragaz, Stucki and Skin's are QA-362; La Brezza
+    Ascona is QA-400. **Switzerland's 2026 edition is announced on
+    2 November 2026** (QA-360). This file changes no stars, so it can be
+    applied before or after that.
+  - **Left untouched, needs a decision:** Aloë (SE), QA-363, with the count
+    evidence in QA-401.
 
 ## What the file writes (fill-only, never overwrites)
 
@@ -45,6 +51,10 @@ is in `{cc}_research.csv`.
 Held back from the fills:
 - Obauer (AT): its Google record is `CLOSED_PERMANENTLY`.
 - Capri and PM & Vänner: the numbers are hotel switchboards.
+- 3 rows where `../europe_gaps/` had chosen the combined hotel record:
+  Alpenblick (CH), Lukas Kapeller (AT) and Frederiksminde (DK). Here the
+  restaurant's own record is used instead, and those rows were taken out of
+  the gap files, so the two packages no longer disagree on any value.
 - La Brezza Arosa and Döllerer: their stored Place IDs differ from the search
   result and are kept (QA-402).
 - Vyn: its stored point is 2.4 km off (QA-403); no coordinate changes are
