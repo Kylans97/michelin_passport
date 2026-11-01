@@ -78,3 +78,29 @@ Findings are logged as QA-392 to QA-397: closures, wrong stored
 coordinates, and named restaurants inside hotels.
 
 **Still open:** the values held back per country (see each CSV), mostly phones without a second source.
+
+## Location corrections (2026-11-01)
+
+`prepared_location_corrections.sql` is prepared and not applied. Evidence is
+in `location_corrections.csv`. It moves 18 stored points that were
+0.5–53 km off, and fills the 12 Place IDs those moves unblock, plus Blue
+Lagoon's phone and website.
+
+A point moves only when two independent sources agree and our point is the
+outlier:
+
+- **11 rows:** MICHELIN's pin and the venue's own Google record are within
+  150 m of each other. The new point is MICHELIN's pin. Examples: Auberge
+  Sauvage (53 km), La Maison de Pierre, DiverXO, ABaC, Al Gatto Verde.
+- **7 rows:** our point *is* MICHELIN's pin, and an OpenStreetMap geocode of
+  the address sits within 100 m of the Google record and more than 500 m
+  from MICHELIN. The new point is the Google record. Examples: Domaine des
+  Andéols (5.4 km), Dromoland Castle, Altapura, Blue Lagoon.
+
+Where the address sides with MICHELIN (Seaham Hall, Ballyfin, Ca' Matilde),
+our point is right and Google's pin is off, so nothing changes. The other
+cases (an address OSM could not find, or no clear winner) stay open under
+QA-393/396.
+
+**Tested:** a re-run is a no-op; a point is never moved once the row no
+longer holds the old point; a renamed row aborts the file.

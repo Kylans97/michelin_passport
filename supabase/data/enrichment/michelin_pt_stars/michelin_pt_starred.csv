@@ -1,0 +1,54 @@
+name,city,region,stars,michelin_url,michelin_id,latitude,longitude,source_page
+Antiqvvm,Porto,Porto,2,https://guide.michelin.com/en/porto-region/porto/restaurant/antiqvvm,483580,41.14776,-8.62831,https://guide.michelin.com/en/pt/restaurants/2-stars-michelin
+Belcanto,Lisbon,Lisboa,2,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/belcanto,357840,38.7100887,-9.14155,https://guide.michelin.com/en/pt/restaurants/2-stars-michelin
+Casa de Chá da Boa Nova,Leça da Palmeira,Porto,2,https://guide.michelin.com/en/porto-region/lea-da-palmeira/restaurant/casa-de-cha-da-boa-nova,449379,41.2027411,-8.7147233,https://guide.michelin.com/en/pt/restaurants/2-stars-michelin
+Fifty Seconds,Lisbon,Lisboa,2,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/fifty-seconds,1154326,38.7747556,-9.0911606,https://guide.michelin.com/en/pt/restaurants/2-stars-michelin
+Henrique Sá Pessoa,Lisbon,Lisboa,2,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/henrique-sa-pessoa,495726,38.7235877,-9.155779,https://guide.michelin.com/en/pt/restaurants/2-stars-michelin
+Il Gallo d'Oro,Funchal,Ilha da Madeira,2,https://guide.michelin.com/en/ilha-da-madeira/funchal/restaurant/il-gallo-d-oro,216835,32.6382988,-16.9266478,https://guide.michelin.com/en/pt/restaurants/2-stars-michelin
+Ocean,Porches,Faro,2,https://guide.michelin.com/en/faro-region/porches/restaurant/ocean216602,216602,37.1008268,-8.3792041,https://guide.michelin.com/en/pt/restaurants/2-stars-michelin
+The Yeatman Gastronomic R.,Vila Nova de Gaia,Porto,2,https://guide.michelin.com/en/porto-region/vila-nova-de-gaia/restaurant/the-yeatman,296064,41.1336845,-8.6133869,https://guide.michelin.com/en/pt/restaurants/2-stars-michelin
+Vila Joya,Albufeira,Faro,2,https://guide.michelin.com/en/faro-region/albufeira/restaurant/vila-joya,214828,37.08059,-8.31367,https://guide.michelin.com/en/pt/restaurants/2-stars-michelin
+2Monkeys,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/2monkeys,1208830,38.718099,-9.1402435,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+A Cozinha,Guimaraes,Braga,1,https://guide.michelin.com/en/braga-region/guimares/restaurant/a-cozinha,542187,41.4429053,-8.2941256,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+A Cozinha do Paço,Évora,Évora,1,https://guide.michelin.com/en/evora-region/vora/restaurant/a-cozinha-do-paco,1243612,38.6354396,-7.9555723,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+A Ver Tavira,Tavira,Faro,1,https://guide.michelin.com/en/faro-region/tavira/restaurant/a-ver-tavira,555816,37.12565,-7.651429,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Alameda,Faro,Faro,1,https://guide.michelin.com/en/faro-region/faro/restaurant/alameda-1198788,1198788,37.015965,-7.9285331,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Blind,Porto,Porto,1,https://guide.michelin.com/en/porto-region/porto/restaurant/blind,1191346,41.1451049,-8.6060592,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Bon Bon,Lagoa,Faro,1,https://guide.michelin.com/en/faro-region/lagoa/restaurant/bon-bon472583,472583,37.116478,-8.480948,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+CURA,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/cura,1194476,38.7257479,-9.155379,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Desarma,Funchal,Ilha da Madeira,1,https://guide.michelin.com/en/ilha-da-madeira/funchal/restaurant/desarma,1208387,32.648641,-16.9194868,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+dop,Porto,Porto,1,https://guide.michelin.com/en/porto-region/porto/restaurant/dop,306208,41.142819,-8.6146931,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Encanto,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/encanto,1201614,38.7099833,-9.1414928,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+EPUR,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/epur,1077232,38.7087383,-9.1398799,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Euskalduna Studio,Porto,Porto,1,https://guide.michelin.com/en/porto-region/porto/restaurant/euskalduna-studio,528188,41.147396,-8.600956,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Feitoria,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/feitoria,257754,38.6936647,-9.2129467,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Fortaleza do Guincho,Cascais,Lisboa,1,https://guide.michelin.com/en/lisboa-region/cascais/restaurant/fortaleza-do-guincho,216662,38.7282977,-9.4759076,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+G Pousada,Bragança,Bragança,1,https://guide.michelin.com/en/braganca-region/braganca/restaurant/g-pousada,216627,41.8026186,-6.7541046,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Gastro by Elemento,Porto,Porto,1,https://guide.michelin.com/en/porto-region/porto/restaurant/gastro-by-elemento,1208493,41.1643051,-8.588231,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Grenache,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/grenache,1184214,38.7123495,-9.1317038,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Gusto by Heinz Beck,Almancil,Faro,1,https://guide.michelin.com/en/faro-region/almancil/restaurant/gusto378372,378372,37.0633302,-8.0301921,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Herdade do Esporão,Reguengos de Monsaraz,Évora,1,https://guide.michelin.com/en/evora-region/reguengos-de-monsaraz/restaurant/esporao,215906,38.38073,-7.55312,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+In Diferente,Porto,Porto,1,https://guide.michelin.com/en/porto-region/porto/restaurant/in-diferente,1090774,41.1554764,-8.6769615,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Kabuki Lisboa,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/kabuki-lisboa,1199689,38.7255826,-9.1542605,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Kanazawa,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/kanazawa,500442,38.697997,-9.2257159,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Kappo,Cascais,Lisboa,1,https://guide.michelin.com/en/lisboa-region/cascais/restaurant/kappo-1196985,1196985,38.6971584,-9.422948,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+LAB by Sergi Arola,Sintra,Lisboa,1,https://guide.michelin.com/en/lisboa-region/sintra/restaurant/lab-by-sergi-arola,473463,38.7616714,-9.3986077,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Largo do Paço,Amarante,Porto,1,https://guide.michelin.com/en/porto-region/amarante/restaurant/largo-do-paco,216595,41.2683621,-8.0776486,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Le Monument,Porto,Porto,1,https://guide.michelin.com/en/porto-region/porto/restaurant/le-monument,1077231,41.1484635,-8.6114469,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Loco,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/loco,495728,38.7123702,-9.1605213,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+MAPA,Montemor-o-Novo,Évora,1,https://guide.michelin.com/en/evora-region/montemor-o-novo/restaurant/mapa,1213147,38.645633,-8.2467305,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+"Marlene,",Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/marlene,1202484,38.7120612,-9.1240727,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Mesa de Lemos,Silgueiros,Viseu,1,https://guide.michelin.com/en/viseu-region/silgueiros_2424590/restaurant/mesa-de-lemos,545905,40.577633,-7.98049,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Midori,Sintra,Lisboa,1,https://guide.michelin.com/en/lisboa-region/sintra/restaurant/midori,217054,38.7616883,-9.3962995,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Oculto,Vila do Conde,Porto,1,https://guide.michelin.com/en/porto-region/vila-do-conde/restaurant/oculto,1214539,41.3530831,-8.7395553,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Palatial,Braga,Braga,1,https://guide.michelin.com/en/braga-region/braga/restaurant/palatial,1216037,41.5238795,-8.4192035,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Pedro Lemos,Porto,Porto,1,https://guide.michelin.com/en/porto-region/porto/restaurant/pedro-lemos,311644,41.1480595,-8.6501319,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Schistó,Peso da Régua,Vila Real,1,https://guide.michelin.com/en/vila-real-region/peso-da-rgua/restaurant/schisto,1219170,41.1548135,-7.7691469,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+SÁLA de João Sá,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/sala1154759,1154759,38.7091165,-9.1338667,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Vila Foz,Porto,Porto,1,https://guide.michelin.com/en/porto-region/porto/restaurant/vila-foz,1190608,41.1614535,-8.6846149,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Vinha,Vila Nova de Gaia,Porto,1,https://guide.michelin.com/en/porto-region/vila-nova-de-gaia/restaurant/vinha,1206427,41.1320681,-8.5756156,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Vista,Portimao,Faro,1,https://guide.michelin.com/en/faro-region/portimo/restaurant/vista365067,365067,37.1186321,-8.5373631,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+William,Funchal,Ilha da Madeira,1,https://guide.michelin.com/en/ilha-da-madeira/funchal/restaurant/william216831,216831,32.64069,-16.92367,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+YŌSO,Lisbon,Lisboa,1,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/yoso-1214668,1214668,38.7058434,-9.1706413,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Éon,Porto,Porto,1,https://guide.michelin.com/en/porto-region/porto/restaurant/eon,1215936,41.1561698,-8.6254234,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
+Ó Balcão,Santarém,Santarém,1,https://guide.michelin.com/en/santarem-region/santarm/restaurant/o-balcao,1077263,39.2318717,-8.6858859,https://guide.michelin.com/en/pt/restaurants/1-star-michelin
