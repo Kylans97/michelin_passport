@@ -1,0 +1,11 @@
+country,code,name,kind,detail
+CH,rest_0241,La Brezza,"KEPT (in 2025 article, offline now)","MICHELIN's Swiss 2025 article (20 Oct 2025, 145 = 4/27/114, matches production's 27 two-stars) lists it at 2 stars; offline now. Stars kept, as for Belgium (QA-220); confirm"
+CH,rest_0243,IGNIV by Andreas Caminada,"KEPT (in 2025 article, offline now)","MICHELIN's Swiss 2025 article (20 Oct 2025, 145 = 4/27/114, matches production's 27 two-stars) lists it at 2 stars; offline now. Stars kept, as for Belgium (QA-220); confirm"
+CH,rest_0245,Stucki - Tanja Grandits,"KEPT (in 2025 article, offline now)","MICHELIN's Swiss 2025 article (20 Oct 2025, 145 = 4/27/114, matches production's 27 two-stars) lists it at 2 stars; offline now. Stars kept, as for Belgium (QA-220); confirm"
+CH,rest_0251,Skin's - the restaurant,"KEPT (in 2025 article, offline now)","MICHELIN's Swiss 2025 article (20 Oct 2025, 145 = 4/27/114, matches production's 27 two-stars) lists it at 2 stars; offline now. Stars kept, as for Belgium (QA-220); confirm"
+CH,rest_0240,La Brezza,STORED PLACE ID DIFFERS,"stored ChIJp7Y0v_e8hEcR1NRYGOEVwVA vs research ChIJnY9OYPK8hEcRL1oS48rDZ2I (Restaurant La Brezza Arosa) -- stored kept, check by hand"
+CH,,OZ,HOTEL NEAR BUT NAME DIFFERS,"MICHELIN hotel 'Casa Caminada' vs our hotel_2537 'Schloss Schauenstein' 87 m -- no link, no property_name"
+AT,rest_0267,Döllerer,STORED PLACE ID DIFFERS,"stored ChIJCwLXUgDBdkcRNL03dCcm9dc vs research ChIJh3DDh6rBdkcRhD0mpwahA3k (Döllerers Wirtshaus) -- stored kept, check by hand"
+DK,,PAZ,URL ALREADY IN USE ELSEWHERE,https://guide.michelin.com/en/faroe-islands/torshavn/restaurant/paz -- not added
+SE,rest_0142,Vyn,STORED COORDINATES OFF,"matched by MICHELIN slug; stored point is 2359 m from MICHELIN's (55.4962176, 14.3130043)"
+SE,rest_0482,Aloë,UNTOUCHED -- DECISION NEEDED,"MICHELIN's own page shows 2 stars + 'temporarily closed'; absent from the live listing. MICHELIN's 2026 press release gives 15 two-stars for the Nordics, and the live listing has exactly 15 without Aloë, with no Swedish promotion -- so it is probably not in 2026 and its 2026 row is probably the 2025 value. Not written as a loss on a count alone: left untouched, confirm"

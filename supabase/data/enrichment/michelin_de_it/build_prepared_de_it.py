@@ -34,8 +34,27 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ENR = os.path.dirname(HERE)
 MIG_DIR = os.path.join(os.path.dirname(os.path.dirname(ENR)), 'migrations')
 
-ANNOUNCED = {'DE': '2026-06-23', 'IT': '2025-11-19'}
-CCL = {'DE': 'de', 'IT': 'it'}
+# Rows offline on MICHELIN's site now, decided row by row (never by name: by code,
+# from the export). Their stars stay as they are and count in the post-conditions.
+_CH25 = ("MICHELIN's Swiss 2025 article (20 Oct 2025, 145 = 4/27/114, matches production's 27 two-stars) "
+         "lists it at 2 stars; offline now. Stars kept, as for Belgium (QA-220); confirm")
+HAND_KEEP = {
+    'rest_0241': ('KEPT (in 2025 article, offline now)', _CH25),
+    'rest_0243': ('KEPT (in 2025 article, offline now)', _CH25),
+    'rest_0245': ('KEPT (in 2025 article, offline now)', _CH25),
+    'rest_0251': ('KEPT (in 2025 article, offline now)', _CH25),
+    'rest_0482': ('UNTOUCHED -- DECISION NEEDED',
+                  "MICHELIN's own page shows 2 stars + 'temporarily closed'; absent from the live listing. MICHELIN's "
+                  "2026 press release gives 15 two-stars for the Nordics, and the live listing has exactly 15 without "
+                  "Aloë, with no Swedish promotion -- so it is probably not in 2026 and its 2026 row is probably the "
+                  "2025 value. Not written as a loss on a count alone: left untouched, confirm"),
+}
+
+ANNOUNCED = {'DE': '2026-06-23', 'IT': '2025-11-19', 'PT': '2026-03-10', 'CH': '2025-10-20', 'AT': '2026-03-18',
+             'DK': '2026-06-01', 'NO': '2026-06-01', 'SE': '2026-06-01', 'FI': '2026-06-01', 'IS': '2026-06-01'}
+# MICHELIN's own edition label per country (restaurant pages' JSON-LD dateAwarded)
+YEAR = {'CH': 2025}
+CCL = {'DE': 'de', 'IT': 'it', 'PT': 'pt', 'CH': 'ch', 'AT': 'at', 'DK': 'dk', 'NO': 'no', 'SE': 'se', 'FI': 'fi', 'IS': 'is'}
 
 
 def n(s):
@@ -75,6 +94,9 @@ def q(v):
 
 def main():
     export_path, first_code, mig_name, qa_first = sys.argv[1], int(sys.argv[2]), sys.argv[3], int(sys.argv[4])
+    countries = (sys.argv[5] if len(sys.argv) > 5 else 'DE,IT').split(',')
+    out_dir = sys.argv[6] if len(sys.argv) > 6 else HERE
+    out_sql = sys.argv[7] if len(sys.argv) > 7 else 'prepared_de_it_stars_2026.sql'
     X = json.load(open(export_path))
     if isinstance(X, list):
         X = X[0]
@@ -86,6 +108,9 @@ def main():
     pid_in_use = set(X.get('place_ids_in_use') or [])
     url_in_use = set(X.get('michelin_urls_in_use') or [])
     stay = json.load(open(os.path.join(HERE, 'michelin_hotel_pages_20261029.json')))
+    for extra in ('michelin_pt_stars/michelin_hotel_pages_20261101.json', 'michelin_ch_at_nordics/michelin_hotel_pages_20261101.json'):
+        if os.path.exists(os.path.join(ENR, extra)):
+            stay.update(json.load(open(os.path.join(ENR, extra))))
     de2025 = json.load(open(os.path.join(ENR, 'michelin_de_stars/_source/michelin_full_list_2025_parsed.json')))
     it2026 = json.load(open(os.path.join(ENR, 'michelin_it_stars/_source/michelin_full_list_2026_parsed.json')))
 
@@ -96,9 +121,13 @@ def main():
     summary = {}
     expected = {}
 
-    for CC in ('DE', 'IT'):
+    for CC in countries:
         cc = CCL[CC]
-        research = list(csv.DictReader(open(os.path.join(ENR, f'michelin_{cc}_stars/{cc}_research_2026.csv'))))
+        Y = YEAR.get(CC, 2026)
+        rp = os.path.join(ENR, f'michelin_{cc}_stars/{cc}_research_2026.csv')
+        if not os.path.exists(rp):
+            rp = os.path.join(ENR, f'michelin_ch_at_nordics/{cc}_research.csv')
+        research = list(csv.DictReader(open(rp)))
         by_slug = collections.defaultdict(list)
         for r in research:
             by_slug[slug(r['michelin_url'])].append(r)
@@ -194,21 +223,26 @@ def main():
                         losses.append(e['code'])
                         report.append(dict(country=CC, code=e['code'], name=e['name'], kind='LOSS (not in MICHELIN 2026 listing)',
                                            detail=f"{base} star(s) in 2025; absent from the live 2026 listing -- MICHELIN's 2026 total is 339 vs 338 live, so one absentee may be a mid-year removal rather than a lost star: confirm"))
-            else:  # IT
+            else:  # IT, PT: launch rows hold the current edition's values
                 if m:
                     s26 = int(m['stars'])
-                    if cur['year'] == 2026 and cur['value'] != s26:
+                    if cur['year'] == Y and cur['value'] != s26:
                         corrections.append((e['code'], s26, cur['value']))
                         report.append(dict(country=CC, code=e['code'], name=e['name'], kind='IMPORT ERROR CORRECTED',
-                                           detail=f"2026 row holds {cur['value']}, MICHELIN 2026 gives {s26}"))
-                    elif cur['year'] != 2026 and cur['value'] != s26:
+                                           detail=f"{Y} row holds {cur['value']}, MICHELIN {Y} gives {s26}"))
+                    elif cur['year'] != Y and cur['value'] != s26:
                         changes.append((e['code'], s26, cur['value']))
                 else:
-                    in_art = [a for a in it2026 if sim(a['name'], e['name']) >= 0.8]
+                    in_art = [a for a in it2026 if sim(a['name'], e['name']) >= 0.8] if CC == 'IT' else []
                     if in_art:
                         kept.append((e['code'], e['stars']))
                         report.append(dict(country=CC, code=e['code'], name=e['name'], kind='KEPT (in 2026 article, offline now)',
                                            detail=f"article: {[(a['city'], a['name'], a['tier']) for a in in_art]} -- stars kept, as for Belgium (QA-220); confirm"))
+                    elif e['code'] in HAND_KEEP:
+                        # decided row by row from MICHELIN's own edition article or totals
+                        kept.append((e['code'], e['stars']))
+                        report.append(dict(country=CC, code=e['code'], name=e['name'], kind=HAND_KEEP[e['code']][0],
+                                           detail=HAND_KEEP[e['code']][1]))
                     else:
                         report.append(dict(country=CC, code=e['code'], name=e['name'], kind='NOT IN MICHELIN 2026',
                                            detail='neither live nor in the 2026 article -- left untouched, check by hand'))
@@ -331,7 +365,7 @@ update public.award_history ah set is_current = false
  where r.id = ah.entity_id and r.restaurant_code = c.code
    and ah.entity_type = 'restaurant' and ah.award_type = 'michelin_stars' and ah.is_current;
 insert into public.award_history (entity_type, entity_id, guide_year, award_type, award_value, is_current, announced_on)
-select 'restaurant', r.id, 2026, 'michelin_stars', c.stars, true, date '{A}'
+select 'restaurant', r.id, {Y}, 'michelin_stars', c.stars, true, date '{A}'
   from public.restaurants r join _chg_{cc} c on c.code = r.restaurant_code;
 update public.restaurants r set michelin_stars = c.stars, updated_at = now()
   from _chg_{cc} c where r.restaurant_code = c.code;""")
@@ -343,7 +377,7 @@ insert into _fix_{cc} values
 update public.award_history ah set award_value = f.stars
   from public.restaurants r, _fix_{cc} f
  where r.id = ah.entity_id and r.restaurant_code = f.code and ah.entity_type = 'restaurant'
-   and ah.award_type = 'michelin_stars' and ah.guide_year = 2026 and ah.is_current and ah.award_value = f.was;
+   and ah.award_type = 'michelin_stars' and ah.guide_year = {Y} and ah.is_current and ah.award_value = f.was;
 update public.restaurants r set michelin_stars = f.stars, updated_at = now()
   from _fix_{cc} f where r.restaurant_code = f.code and r.michelin_stars = f.was;""")
         if new:
@@ -373,7 +407,7 @@ select x.code, x.name, x.stars, 'michelin_star',
        x.michelin_url, x.website_url, x.phone, x.property_name, x.place_id
   from _new_{cc} x;
 insert into public.award_history (entity_type, entity_id, guide_year, award_type, award_value, is_current, announced_on)
-select 'restaurant', r.id, 2026, 'michelin_stars', x.stars, true, date '{A}'
+select 'restaurant', r.id, {Y}, 'michelin_stars', x.stars, true, date '{A}'
   from _new_{cc} x join public.restaurants r on r.restaurant_code = x.code;""")
         if fills:
             P.append(f"""-- {CC} 5. existing rows, fill-only (never overwrites)
@@ -399,6 +433,13 @@ update public.restaurants r set property_name = f.property_name, updated_at = no
 create temp table _links_{cc} (hotel_code text, restaurant_code text, confidence text, evidence text) on commit drop;
 insert into _links_{cc} values
 {(','+chr(10)).join(f"    ({q(h)}, {q(r)}, {q(c)}, {q(ev)})" for h, r, c, ev in new_links)};
+do $$
+declare bad text;
+begin
+  select string_agg(l.hotel_code, ', ') into bad from _links_{cc} l
+   where not exists (select 1 from public.hotels h where h.hotel_code = l.hotel_code);
+  if bad is not null then raise exception '{CC}: linked hotels do not exist yet (apply the Key hotels file first): %', bad; end if;
+end $$;
 insert into public.hotel_restaurants (hotel_id, restaurant_id, link_confidence, evidence, verified_at)
 select h.id, r.id, l.confidence, l.evidence, now()
   from _links_{cc} l join public.hotels h on h.hotel_code = l.hotel_code join public.restaurants r on r.restaurant_code = l.restaurant_code
@@ -429,7 +470,7 @@ end $$;""")
         sql_parts.append('\n\n'.join(P))
 
     # ---- write outputs
-    with open(os.path.join(HERE, 'match_report.csv'), 'w', newline='') as f:
+    with open(os.path.join(out_dir, 'match_report.csv'), 'w', newline='') as f:
         w = csv.DictWriter(f, fieldnames=['country', 'code', 'name', 'kind', 'detail'])
         w.writeheader(); w.writerows(report)
     towns = sorted(newtowns)
@@ -498,7 +539,22 @@ begin;
 -- chefs left (tageskarte.io), but the timing is unclear and one listing still
 -- shows reviews from April 2026 -- logged, not prepared.
 '''
-    open(os.path.join(HERE, 'prepared_de_it_stars_2026.sql'), 'w').write(head + '\n'.join(sql_parts) + '\n\ncommit;\n' + optional)
+    if countries != ['DE', 'IT']:
+        optional = ''
+        a = head.index('-- MICHELIN Germany'); b = head.index('-- Summary:')
+        ed = '\n'.join(f"--   {c}: {YEAR.get(c, 2026)} edition, announced {ANNOUNCED[c]}" for c in countries)
+        head = head[:a] + f"""-- MICHELIN {'/'.join(countries)}: bring every restaurant's stars and
+-- award_history in line with MICHELIN's live listing of the current edition,
+-- add any starred restaurant missing from the catalogue, and complete the
+-- existing rows (fill-only). Generated by michelin_de_it/build_prepared_de_it.py;
+-- evidence and every judgement call in match_report.csv and README.md.
+{ed}
+-- Rows offline on MICHELIN's site now are KEPT or left untouched, decided
+-- row by row (HAND_KEEP in the generator); their stars count in the
+-- post-conditions.
+--
+""" + head[b:]
+    open(os.path.join(out_dir, out_sql), 'w').write(head + '\n'.join(sql_parts) + '\n\ncommit;\n' + optional)
     print(json.dumps(summary, indent=1))
     print('new towns:', len(towns), '| report rows:', len(report), collections.Counter(r['kind'] for r in report))
     print('expected counts:', {k: dict(v) for k, v in expected.items()}, '| next free code:', code)
