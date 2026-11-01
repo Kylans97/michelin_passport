@@ -1,0 +1,277 @@
+restaurant_code,country_code,name,city,address,website_url,phone,michelin_stars,status,lat,lng,gm_current
+rest_0154,BE,Zilte,Antwerp,"Hanzestedenplaats 5, 2000 Antwerpen",https://www.zilte.be/en/,+32 3 283 40 40,3,open,51.22898,4.40472,18.5|4|2026
+rest_0155,BE,Boury,Roeselare,"Rumbeeksesteenweg 300, 8800 Roeselare",https://www.restaurantboury.be/,+32 51 62 64 62,3,open,50.93739,3.14030,19.0|5|2026
+rest_0156,BE,Bozar Restaurant,Brussels,"Rue Baron Horta 3, 1000 Bruxelles",NULL,+32 2 503 00 00,2,open,50.84419,4.35991,17.5|4|2026
+rest_0157,BE,Le Chalet de la Forêt,Uccle,"Drève de Lorraine 43, 1180 Uccle",NULL,+32 2 374 54 16,2,open,50.78467,4.38654,NULL
+rest_0159,BE,Hertog Jan at Botanic,Antwerp,"Leopoldstraat 26, 2000 Antwerpen",NULL,+32 3 269 90 90,2,open,51.21363,4.40571,18.0|4|2026
+rest_0160,BE,Castor,Beveren-Leie,"Kortrijkseweg 164, 8791 Waregem",NULL,+32 56 19 01 21,2,open,50.87186,3.34274,NULL
+rest_0161,BE,Nuance,Duffel,"Kiliaanstraat 6-8, 2570 Duffel",NULL,+32 15 63 42 65,2,open,51.09580,4.50576,18.0|4|2026
+rest_0162,BE,Vrijmoed,Ghent,"Vlaanderenstraat 22, 9000 Gent",NULL,+32 9 279 99 77,2,open,51.05107,3.72889,NULL
+rest_0163,BE,La Durée,Izegem,"Leenstraat 28, 8870 Izegem",NULL,NULL,NULL,open,50.91184,3.19541,NULL
+rest_0164,BE,Bartholomeus,Knokke-Heist,"Zeedijk-Heist 267, 8301 Knokke-Heist",NULL,+32 50 51 75 76,2,open,51.34172,3.24356,18.0|4|2026
+rest_0165,BE,Hof van Cleve,Kruisem,"Riemegemstraat 1, 9770 Kruisem",NULL,+32 9 383 58 48,2,open,50.90367,3.50966,18.0|4|2026
+rest_0166,BE,Cuchara,Lommel,"Lepelstraat 3, 3920 Lommel",NULL,+32 470 43 74 73,2,open,51.23125,5.30975,17.5|4|2026
+rest_0167,BE,Ralf Berendsen,Neerharen,"Paalsteenlaan 90, 3620 Lanaken",NULL,NULL,NULL,open,50.91488,5.66805,NULL
+rest_0168,BE,Slagmolen,Opglabbeek,"Molenweg 177, 3660 Oudsbergen",NULL,+32 89 85 48 88,2,open,51.04317,5.61588,NULL
+rest_0169,BE,De Jonkman,Bruges,"Maalse Steenweg 438, 8310 Brugge",NULL,+32 50 36 07 67,2,open,51.20759,3.27829,18.0|4|2026
+rest_0170,BE,Sir Kwinten,Sint-Kwintens-Lennik,"Markt 9, 1750 Lennik",NULL,+32 2 582 89 92,2,open,50.80552,4.15545,NULL
+rest_0171,BE,Maison Colette,Tongerlo,"De Trannoyplein 17, 2260 Westerlo",NULL,+32 14 72 29 05,2,open,51.10350,4.91663,NULL
+rest_0172,BE,L'Eau Vive,Arbre,"Rte de Floreffe 37, 5170 Profondeville",NULL,+32 81 41 11 51,2,open,50.36353,4.84668,NULL
+rest_0173,BE,d'Eugénie à Emilie,Baudour,"Pl. de la Résistance 1, 7331 Saint-Ghislain",NULL,+32 65 61 31 70,2,open,50.48317,3.83808,NULL
+rest_0174,BE,La Table de Maxime,Our,"Our 23, 6852 Paliseul",NULL,+32 61 23 95 10,2,open,49.95991,5.12246,NULL
+rest_0795,BE,Bistrot du Nord,Antwerp,"Lange Dijkstraat 36, 2060 Antwerpen, Belgium",NULL,+32 3 233 45 49,1,open,51.22757,4.41872,NULL
+rest_0796,BE,The Butcher's son,Antwerp,"Boomgaardstraat 1, 2018 Antwerpen, Belgium",NULL,+32 3 230 16 38,1,open,51.19955,4.41584,NULL
+rest_0797,BE,Fine Fleur,Antwerp,"Lange Gasthuisstraat 41b, 2000 Antwerpen, Belgium",NULL,+32 3 369 26 36,1,open,51.21533,4.40505,NULL
+rest_0798,BE,Kommilfoo,Antwerp,"Vlaamse Kaai 17, 2000 Antwerpen, Belgium",NULL,NULL,1,open,51.21113,4.39267,NULL
+rest_0799,BE,Misera,Antwerp,"Michel de Braeystraat 18, 2000 Antwerpen, Belgium",NULL,+32 3 644 16 65,1,open,51.20456,4.38231,NULL
+rest_0800,BE,Nathan,Antwerp,"Lange Koepoortstraat 13, 2000 Antwerpen, Belgium",NULL,+32 3 284 28 13,1,open,51.22312,4.40279,NULL
+rest_0801,BE,Pont neuf,Antwerp,"Verbindingsdok Oostkaai 9, 2000 Antwerpen, Belgium",NULL,+32 3 298 86 88,1,open,51.23049,4.40813,NULL
+rest_0802,BE,'t Fornuis,Antwerp,"Reyndersstraat 24, 2000 Antwerpen, Belgium",NULL,+32 3 233 62 70,1,open,51.21902,4.39942,NULL
+rest_0803,BE,Centpourcent,Sint-Katelijne-Waver,"Antwerpsesteenweg 1, 2860 Sint-Katelijne-Waver, Belgium",NULL,+32 15 63 52 66,1,open,51.05580,4.46343,NULL
+rest_0804,BE,De Pastorie,Lichtaart,"Plaats 2, 2460 Lichtaart, Belgium",NULL,+32 14 55 77 86,1,open,51.22612,4.92416,NULL
+rest_0805,BE,Hert,Turnhout,"Turnovatoren 18, 2300 Turnhout, Belgium",NULL,+32 14 73 61 25,1,open,51.32323,4.95231,NULL
+rest_0806,BE,Hof Ter Hulst,Hulshout,"Kerkstraat 33, 2235 Hulshout, Belgium",NULL,+32 15 25 34 40,1,open,51.07706,4.79350,NULL
+rest_0807,BE,La Belle,Geel,"Bel 162, 2440 Geel, Belgium",NULL,+32 14 70 84 51,1,open,51.16325,5.06387,NULL
+rest_0808,BE,Neon,Lier,"Barbara-Vettersplein 4, 2500 Lier, Belgium",NULL,+32 499 32 73 38,1,open,51.13033,4.57663,NULL
+rest_0809,BE,Kelderman,Aalst,"Parklaan 4, 9300 Aalst, Belgium",NULL,+32 53 77 61 25,1,open,50.93011,4.04185,NULL
+rest_0810,BE,Sense,Waasmunster,"Fortenstraat 62, 9250 Waasmunster, Belgium",NULL,+32 52 39 75 57,1,open,51.12293,4.10323,NULL
+rest_0811,BE,Goffin,Sint-Kruis,"Maalse Steenweg 2, 8310 Sint-Kruis (Brugge), Belgium",NULL,+32 50 68 77 88,1,open,51.21196,3.24182,NULL
+rest_0812,BE,Hostellerie St-Nicolas,Elverdinge,"Veurnseweg 532, 8906 Elverdinge (Ieper), Belgium",NULL,+32 57 20 06 22,1,open,50.88558,2.81978,NULL
+rest_0813,BE,Tinèlle,Mechelen,"Goswin de Stassartstraat 90, 2800 Mechelen, Belgium",NULL,+32 15 63 68 61,1,open,51.03364,4.48009,NULL
+rest_0814,BE,Bloesem,Borgerhout,"De Leescorfstraat 8, 2140 Borgerhout, Belgium",NULL,NULL,1,open,51.20052,4.44904,NULL
+rest_0815,BE,Komaf,Wommelgem,"Schranshoevebaan 35, 2160 Wommelgem, Belgium",NULL,+32 467 09 11 27,1,open,51.20023,4.50880,NULL
+rest_0816,BE,Vintage,Kontich,"Rijkerooistraat 14, 2550 Kontich, Belgium",NULL,+32 3 337 09 43,1,open,51.11555,4.43783,NULL
+rest_0817,BE,Benoit en Bernard Dewitte,Ouwegem,"Beertegemstraat 52, 9750 Ouwegem, Belgium",NULL,+32 9 384 56 52,1,open,50.91337,3.60639,NULL
+rest_0818,BE,Fleur de Lin,Zele,"Lokerenbaan 100, 9240 Zele, Belgium",NULL,+32 52 44 45 00,1,open,51.07583,4.04095,NULL
+rest_0819,BE,Le Julien,Lotenhulle,"Prinsenstraat 9, 9880 Lotenhulle, Belgium",NULL,+32 9 324 43 11,1,open,51.05996,3.46650,NULL
+rest_0820,BE,Publiek,Ghent,"Ham 39, 9000 Gent, Belgium",NULL,+32 9 330 04 86,1,open,51.05778,3.73294,NULL
+rest_0821,BE,Hofke van Bazel,Bazel,"Kon. Astridplein 11, 9150 Bazel, Belgium",NULL,+32 3 744 11 40,1,open,51.14729,4.30013,NULL
+rest_0822,BE,'t Korennaer,Nieuwkerken-Waas,"Nieuwkerkenstraat 4, 9100 Nieuwkerken-Waas, Belgium",NULL,+32 3 778 08 45,1,open,51.19288,4.17845,NULL
+rest_0823,BE,Moscou by Danny Horseele,Gentbrugge,"Oefenpleinstraat 3, 9050 Gentbrugge, Belgium",NULL,+32 475 29 75 58,1,open,51.03202,3.75463,NULL
+rest_0824,BE,Bar Bulot Zedelgem,Zedelgem,"Loppemsestraat 52, 8210 Zedelgem, Belgium",NULL,+32 50 70 27 62,NULL,open,51.14890,3.14952,NULL
+rest_0825,BE,Boo Raan,Knokke-Heist,"Edward Verheyestraat 17, 8300 Knokke-Heist, Belgium",NULL,+32 476 30 30 48,1,open,51.33949,3.28927,NULL
+rest_0826,BE,Carcasse,Sint-Idesbald,"Henri Christiaenlaan 5, 8670 Sint-Idesbald, Belgium",NULL,+32 58 51 72 49,1,open,51.10994,2.61124,NULL
+rest_0827,BE,De Zuidkant,Damme,"Jacob van Maerlantstraat 6, 8340 Damme, Belgium",NULL,+32 50 37 16 76,1,open,51.25186,3.28236,NULL
+rest_0828,BE,HAUT,Oostende,"Leopold III-Laan 2, 8400 Oostende, Belgium",NULL,+32 59 46 84 00,1,open,51.22752,2.92435,NULL
+rest_0829,BE,L'Envie,Sint-Denijs,"Helkijnstraat 38, 8554 Sint-Denijs, Belgium",NULL,NULL,1,open,50.74920,3.37121,NULL
+rest_0830,BE,Mémoire,Bruges,"Dijver 7, 8000 Brugge, Belgium",NULL,NULL,NULL,open,51.20631,3.22678,NULL
+rest_0831,BE,Rebelle,Marke,"Rekkemsestraat 226, 8510 Marke, Belgium",NULL,+32 488 25 74 84,1,open,50.80395,3.22192,NULL
+rest_0832,BE,Sans Cravate,Bruges,"Langestraat 159, 8000 Brugge, Belgium",NULL,+32 50 67 83 10,1,open,51.21239,3.23809,NULL
+rest_0833,BE,Cuines 33,Knokke-Heist,"Smedenstraat 33, 8300 Knokke-Heist, Belgium",NULL,+32 50 60 60 69,2,open,51.33942,3.28795,NULL
+rest_0834,BE,L'air du temps,Eghezée,"Rue de la Croix Monet 2, 5310 Eghezee, Belgium",NULL,+32 81 81 30 48,2,open,50.59305,4.83296,NULL
+rest_0835,BE,Arabelle Meirlaen,Marchin,"Chemin de Bertrandfontaine 7, 4570 Marchin, Belgium",NULL,+32 85 25 55 55,1,open,50.48648,5.22224,NULL
+rest_0836,BE,La Paix,Brussels,"Rue Ropsy-Chaudron 49, 1070 Anderlecht, Belgium",NULL,+32 2 593 10 01,2,open,50.84373,4.32836,NULL
+rest_0837,BE,The Jane,Antwerp,"Limastraat 5, 2000 Antwerp, Belgium",NULL,+32 3 808 44 65,2,open,51.23437,4.40487,NULL
+rest_0838,BE,Comme chez Soi,Brussels,"Place Rouppe 23, 1000 Brussels, Belgium",NULL,+32 2 512 29 21,1,open,50.84235,4.34581,NULL
+rest_0839,BE,Sel Gris,Knokke-Heist,"Zeedijk 314, 8300 Knokke-Heist, Belgium",NULL,+32 50 51 49 37,1,open,51.34410,3.25640,NULL
+rest_0840,BE,Table d'Amis,Kortrijk,"Sint-Maartenskerkhof 8, 8500 Kortrijk, Belgium",NULL,NULL,NULL,open,50.82793,3.26817,NULL
+rest_0841,BE,Vol-Ver,Marke,"Watervalstraat 23, 8510 Marke, Belgium",NULL,+32 56 49 85 92,1,open,50.79767,3.23691,NULL
+rest_0842,BE,Willem Hiele,Oudenburg,"Kapittelstraat 71, 8460 Oudenburg, Belgium",NULL,+32 468 00 66 99,1,open,51.19069,2.97313,NULL
+rest_0843,BE,Zet'Joe by Geert Van Hecke,Bruges,"Langestraat 11, 8000 Brugge, Belgium",NULL,+32 50 33 82 59,1,open,51.20977,3.23208,NULL
+rest_0844,BE,Subtiel,De Panne,"Westhoeklaan 31, 8660 De Panne, Belgium",NULL,+32 496 25 21 23,1,open,51.09354,2.58307,NULL
+rest_0845,BE,Alter,Tongeren,"Bilzersteenweg 366, 3700 Tongeren, Belgium",NULL,+32 12 74 16 74,1,open,50.80251,5.46546,NULL
+rest_0846,BE,Aurum by Gary Kirchens,Ordingen,"Ordingen-Dorp 5, 3800 Sint-Truiden, Belgium",NULL,NULL,NULL,open,50.80995,5.22856,NULL
+rest_0847,BE,De Kristalijn,Genk,"Wiemesmeerstraat 105, 3600 Genk, Belgium",NULL,+32 89 35 58 28,1,open,50.97009,5.55599,NULL
+rest_0848,BE,De Mijlpaal,Tongeren,"Sint-Truiderstraat 25, 3700 Tongeren, Belgium",NULL,+32 12 26 42 77,1,open,50.78038,5.46163,NULL
+rest_0849,BE,Hoeve De Bies,Sint-Martens-Voeren,"Bies 4, 3790 Sint-Martens-Voeren, Belgium",NULL,+32 4 381 23 40,1,open,50.74672,5.81516,NULL
+rest_0850,BE,Hostellerie Vivendum,Dilsen-Stokkem,"Vissersstraat 2, 3650 Dilsen-Stokkem, Belgium",NULL,+32 89 57 28 60,1,open,51.03336,5.73641,NULL
+rest_0851,BE,Innesto,Zonhoven,"Kapelhof 13, 3520 Zonhoven, Belgium",NULL,+32 11 49 67 47,1,open,50.98756,5.36890,NULL
+rest_0852,BE,JER,Hasselt,"Persoonstraat 16, 3500 Hasselt, Belgium",NULL,+32 11 26 26 47,1,open,50.93085,5.34062,NULL
+rest_0853,BE,La Botte,Genk,"Europalaan 99, 3600 Genk, Belgium",NULL,+32 89 36 25 45,1,open,50.96633,5.50101,NULL
+rest_0854,BE,Modest,Opglabbeek,"Weg naar Opoeteren 117, 3660 Opglabbeek, Belgium",NULL,+32 89 21 60 20,1,open,51.04947,5.59918,NULL
+rest_0855,BE,Ogst,Hasselt,"Ridder Portmansstraat 4, 3500 Hasselt, Belgium",NULL,+32 11 41 38 13,1,open,50.92937,5.33351,NULL
+rest_0856,BE,Melchior,Tienen,"Veemarkt 47, 3300 Tienen, Belgium",NULL,+32 16 35 54 74,1,open,50.80583,4.94091,NULL
+rest_0857,BE,Agnes,Sint-Martens-Bodegem,"Processiestraat 3, 1700 Dilbeek, Belgium",NULL,+32 2 880 74 31,1,open,50.86206,4.21489,NULL
+rest_0858,BE,EST,Heverlee,"Kapeldreef 46, 3001 Heverlee, Belgium",NULL,+32 16 22 47 75,1,open,50.86096,4.66499,NULL
+rest_0859,BE,Atelier Noun,Leefdaal,"Dorpstraat 252, 3061 Leefdaal, Belgium",NULL,+32 16 84 90 07,1,open,50.85736,4.61409,NULL
+rest_0860,BE,Barge,Brussels,"Boulevard d'Ypres 33, 1000 Bruxelles, Belgium",NULL,+32 2 425 73 60,1,open,50.85689,4.34696,NULL
+rest_0861,BE,Da Mimmo,Woluwe-Saint-Lambert,"Avenue du Roi Chevalier 24, 1200 Woluwe-Saint-Lambert, Belgium",NULL,+32 2 771 58 60,1,open,50.84346,4.41818,NULL
+rest_0862,BE,Eliane,Brussels,"Rue Saint-Laurent 36, 1000 Bruxelles, Belgium",NULL,NULL,1,open,50.85067,4.36009,NULL
+rest_0863,BE,humus x hortense,Ixelles,"Rue De Vergnies 2, 1050 Ixelles, Belgium",NULL,+32 474 65 37 06,1,open,50.82949,4.37038,NULL
+rest_0864,BE,Kamo,Ixelles,"Chaussée de Waterloo 550A, 1050 Ixelles, Belgium",NULL,+32 2 648 78 48,1,open,50.81936,4.36152,NULL
+rest_0865,BE,La Villa in the Sky,Brussels,"Avenue Louise 480, 1050 Bruxelles, Belgium",NULL,+32 2 644 69 14,1,open,50.81727,4.37218,NULL
+rest_0866,BE,Les Gourmands,Blaregnies,"Rue de Sars 15, 7040 Blaregnies, Belgium",NULL,+32 65 56 86 32,1,open,50.36071,3.88722,NULL
+rest_0867,BE,Le Vieux Château,Flobecq,"Rue Docteur Degavre 23, 7880 Flobecq, Belgium",NULL,+32 496 75 36 79,1,open,50.73728,3.73290,NULL
+rest_0868,BE,l'Impératif d'Éole,Quévy-le-Grand,"Grand'Route 58, 7040 Quévy-le-Grand, Belgium",NULL,+32 65 22 05 00,1,open,50.38139,3.96482,NULL
+rest_0869,BE,Vicomté,Roucourt,"Rue d'Arondeau 29, 7601 Roucourt, Belgium",NULL,+32 69 22 16 89,1,open,50.52461,3.57476,NULL
+rest_0870,BE,Au Gré du Vent,Seneffe,"Rue de Soudromont 67, 7180 Seneffe, Belgium",NULL,+32 64 33 66 01,1,open,50.51595,4.26186,NULL
+rest_0871,BE,Le Coq aux Champs,Soheit-Tinlot,"Rue du Montys 71, 4557 Soheit-Tinlot, Belgium",NULL,+32 85 51 20 14,1,open,50.47133,5.38785,NULL
+rest_0872,BE,Le Roannay,Francorchamps,"Rue de Spa 155, 4970 Francorchamps, Belgium",NULL,NULL,1,open,50.45615,5.95263,NULL
+rest_0873,BE,Quadras,Saint-Vith,"Malmedyer Straße 53, 4780 Saint-Vith, Belgium",NULL,+32 80 22 80 22,1,open,50.28446,6.12213,NULL
+rest_0874,BE,¡Toma!,Liège,"Boulevard de la Sauvenière 70, 4000 Liège, Belgium",NULL,+32 4 295 20 98,1,open,50.64361,5.56551,NULL
+rest_0875,BE,Zur Post,Saint-Vith,"Hauptstraße 39, 4780 Saint-Vith, Belgium",NULL,+32 80 22 80 27,1,open,50.28018,6.12612,NULL
+rest_0876,BE,Chai Gourmand,Beuzet,"rue Chainisse 53, 5030 Beuzet, Belgium",NULL,+32 81 60 09 88,1,open,50.53031,4.73984,NULL
+rest_0877,BE,Pré de chez vous,Bouge,"Chaussée de Louvain 380, 5004 Bouge, Belgium",NULL,+32 479 06 49 14,1,open,50.48022,4.88207,NULL
+rest_0878,BE,Le Beau Rivage by Curtis,Dave,"Rue du Rivage 8, 5100 Dave, Belgium",NULL,+32 81 63 36 64,1,open,50.41458,4.88513,NULL
+rest_0879,BE,La Grange d'Hamois,Emptinne,"Chaussée d'Andenne 10a, 5363 Emptinne, Belgium",NULL,+32 83 22 05 49,1,open,50.33763,5.10396,NULL
+rest_0880,BE,Attablez-vous,Namur,"Tienne Maquet 16, 5000 Namur, Belgium",NULL,+32 81 20 10 23,1,open,50.44489,4.85376,NULL
+rest_0881,BE,l'Essentiel,Temploux,"Rue Roger Clément 32, 5020 Temploux, Belgium",NULL,+32 81 56 86 16,1,open,50.47533,4.73871,NULL
+rest_0882,BE,Arden,Villers-sur-Lesse,"Rue de Montainpré 27, 5580 Villers-sur-Lesse, Belgium",NULL,NULL,1,open,50.15781,5.07463,NULL
+rest_0883,BE,La Table-Lasne by Alain Bianchin,Ohain,"Rue du Try Bara 33, 1380 Lasne, Belgium",NULL,+32 2 332 26 61,1,open,50.69858,4.46949,NULL
+rest_0884,BE,Maison Marit,Braine-l'Alleud,"Chaussée de Nivelles 336, 1420 Braine-l'Alleud, Belgium",NULL,+32 2 384 15 01,1,open,50.66034,4.37964,NULL
+rest_0885,BE,Philippe Meyers,Braine-l'Alleud,"rue Doyen Van Belle 6, 1420 Braine-l'Alleud, Belgium",NULL,+32 2 384 83 18,1,open,50.68232,4.37004,NULL
+rest_0886,BE,Bistro Racine,Braine-le-Château,"Place de la Station 3, 1440 Braine-le-Château, Belgium",NULL,+32 2 366 10 51,1,open,50.68159,4.27314,NULL
+rest_0887,BE,Aux petits oignons,Jodoigne,"Chaussée de Tirlemont 260, 1370 Jodoigne, Belgium",NULL,+32 10 76 00 78,1,open,50.74184,4.88018,NULL
+rest_0888,BE,La Grappe d'Or,Arlon,"Route de Luxembourg 317, 6700 Arlon, Belgium",NULL,+32 63 57 70 56,1,open,49.66255,5.84375,NULL
+rest_0889,BE,Le Grand Verre,Durbuy,"Place aux Foires 26, 6940 Durbuy, Belgium",NULL,+32 86 65 03 33,1,open,50.35200,5.45597,NULL
+rest_0890,BE,La Table de Manon,Grandhan,"Rue de Givet 79, 6940 Grandhan, Belgium",NULL,NULL,1,open,50.32419,5.42186,NULL
+rest_0891,BE,Bistrot Blaise,Marche-en-Famenne,"Rue Porte Haute 5, 6900 Marche-en-Famenne, Belgium",NULL,+32 470 89 57 12,1,open,50.22641,5.34495,NULL
+rest_0892,BE,Les Pieds dans le Plat,Marenne,"Rue du Centre 3, 6990 Marenne, Belgium",NULL,+32 84 32 17 92,1,open,50.23964,5.41084,NULL
+rest_0893,BE,Le Gastronome,Paliseul,"rue de Bouillon 2, 6850 Paliseul, Belgium",NULL,+32 61 53 30 64,1,open,49.89532,5.11779,NULL
+rest_0894,BE,Le Cor de Chasse,Wéris,"Rue des Combattants 16, 6940 Wéris, Belgium",NULL,NULL,1,open,50.32450,5.53006,NULL
+rest_1827,BE,'t Stoveke,Strombeek-Bever,"Jetsestraat 52, 1853 Strombeek-Bever",https://www.tstoveke.be/,+32 2 267 67 25,1,open,50.90495,4.35078,NULL
+rest_1828,BE,Couvert Couvert,Heverlee,"Sint-Jansbergsesteenweg 171, 3001 Heverlee",https://couvertcouvert.be/,+32 16 29 69 79,1,open,50.86296,4.65969,NULL
+rest_1829,BE,De Bakermat,Ninove,"Leopoldlaan 95, 9400 Ninove",https://www.debakermatninove.be/,+32 54 25 80 25,1,open,50.82624,4.02033,NULL
+rest_1830,BE,EED,Leuven,"Vaartstraat 14, 3000 Leuven",https://eedleuven.be/,+32 16 19 06 14,1,open,50.88064,4.70248,NULL
+rest_1831,BE,EssenCiel,Leuven,"Bondgenotenlaan 114, 3000 Leuven",https://www.essenciel.be/,+32 474 26 18 64,1,open,50.88060,4.71148,NULL
+rest_1832,BE,Héliport Brasserie,Liège,"allée des Érables, 4000 Liège",https://www.heliportbrasserie.be/,+32 4 366 28 20,1,open,50.57899,5.59616,NULL
+rest_1833,BE,La Roseraie Modave,Modave,"route de Limet 80, 4577 Modave",https://www.laroseraiemodave.com/,+32 85 41 13 60,1,open,50.45413,5.28667,NULL
+rest_1834,BE,Menssa,Woluwe-Saint-Pierre,"Avenue de Tervueren 453, 1150 Woluwe-Saint-Pierre",https://www.menssa.be/,+32 2 346 66 15,1,open,50.82286,4.44662,NULL
+rest_1835,BE,Nebo,Antwerp,"Panamarenkoplein 5, 2000 Antwerpen",https://www.restaurantnebo.be/,+32 3 272 45 00,1,open,51.20515,4.38292,NULL
+rest_1836,BE,OAK,Ghent,"Burgstraat 16, 9000 Gent",https://oakgent.be/,+32 9 353 90 50,1,open,51.05668,3.71905,NULL
+rest_1837,BE,Philippe Fauchet,Saint-Georges-sur-Meuse,"rue de Warfée 62, 4470 Saint-Georges-sur-Meuse",https://philippefauchet.be/,NULL,1,open,50.60961,5.37086,NULL
+rest_1838,BE,Sensum Gent,Sint-Denijs-Westrem,"Kortrijksesteenweg 1026, 9051 Sint-Denijs-Westrem",https://sensumgent.be/,+32 9 246 11 46,1,open,51.02369,3.70299,NULL
+rest_1839,BE,Un Max de Goût,Comblain-au-Pont,"quai de l'Ourthe 17, 4170 Comblain-au-Pont",https://maxdegout.be/,+32 4 369 17 08,1,open,50.47678,5.57858,NULL
+rest_0285,LU,Ma langue sourit,Moutfort,"1 Rte de Remich, 5331 Oetrange Contern",NULL,+352 26 35 20 31,2,open,49.59775,6.24954,NULL
+rest_0286,LU,Louis Linster,Frisange,"17 Letzebuergerstrooss, 5752 Fréiseng",NULL,+352 23 66 84 11,2,open,49.51817,6.18724,NULL
+rest_0287,LU,Guillou Campagne,Schouweiler,"17-19 Rue de la Résistance, 4996 Schouweiler",NULL,+352 37 00 08,1,open,49.58041,5.95544,NULL
+rest_0288,LU,Fani,Roeser,"51 Grand-Rue, 3394 Roeser",NULL,+352 26 65 06 60,1,open,49.54000,6.14472,NULL
+rest_0289,LU,Mosconi,Luxembourg City,"13 Rue Münster, 2160 Grund Luxembourg",NULL,+352 54 69 94,1,open,49.60899,6.13582,NULL
+rest_0290,LU,Ryôdô,Luxembourg City,"27 Rue Raymond Poincaré, 2342 Hollerich Luxembourg",NULL,+352 27 76 92 85,1,open,49.60240,6.11712,NULL
+rest_0291,LU,La Villa de Camille et Julien,Luxembourg City,"5 Rue de Pulvermuhl, 2356 Polfermillen Luxembourg",NULL,+352 28 99 39 93,1,open,49.60893,6.15057,NULL
+rest_0292,LU,Apdikt,Steinfort,"1 Rue des Martyrs, 8442 Steinfort",NULL,+352 26 30 50 87,1,open,49.65961,5.91624,NULL
+rest_0293,LU,Fields by René Mathieu,Findel,"6 Rue de Trèves, 2632 Findel Sandweiler",NULL,NULL,1,open,49.62801,6.20311,NULL
+rest_0294,LU,Archibald De Prince,Lauterborn,"6 Lauterborn, 6562 Iechternach",NULL,+352 27 44 25,1,open,49.79730,6.38814,NULL
+rest_0295,LU,Grünewald Chef's Table,Luxembourg City,"2 Rue des Hauts-Fourneaux, 1719 Dommeldange Luxembourg",NULL,NULL,1,open,49.63317,6.13820,NULL
+rest_1368,LU,Le Lys,Luxembourg City,"1 Avenue Marie-Thérèse, 2132 Luxembourg",NULL,+352 22 17 44 500,1,open,49.60872,6.12480,NULL
+rest_0001,NL,Aan de Poel,Amstelveen,"Handweg 1, 1185 TS Amstelveen",https://aandepoel.nl/,+31 20 345 1763,2,open,52.31330,4.84940,NULL
+rest_0005,NL,Alma,Oisterwijk,"Lind 28, 5061 HT Oisterwijk",https://www.alma.nl/,+31 13 203 2004,1,open,51.58710,5.19280,NULL
+rest_0007,NL,Amarone,Rotterdam,"Meent 72, 3011 JN Rotterdam",https://restaurantamarone.nl/,+31 10 720 0802,1,open,51.92270,4.48340,NULL
+rest_0009,NL,Apicius,Castricum,"Dorpsstraat 67, 1901 EC Castricum",https://apicius.nl/,+31 251 676 760,1,open,52.54880,4.65920,NULL
+rest_0011,NL,Au Coin des Bons Enfants,Maastricht,"Ezelmarkt 4, 6211 LJ Maastricht",https://www.aucoin.nl/,+31 43 321 2359,1,open,50.85000,5.69690,NULL
+rest_0012,NL,Beluga loves you,Maastricht,"Plein 1992 12, 6221 CJ Maastricht",https://belugalovesyou.com/,+31 43 321 3364,1,open,50.85040,5.70070,NULL
+rest_0013,NL,Bistro de la Mer,Amsterdam,"Spuistraat 294, 1012 VS Amsterdam",https://www.bistrodelamer.com/,+31 20 237 4790,1,open,52.37240,4.88930,NULL
+rest_0014,NL,Bolenius Rembrandtpark,Amsterdam,"George Gershwinlaan 30, 1082 MT Amsterdam",https://bolenius-rembrandtpark.nl/,+31 20 238 6985,1,open,52.33850,4.84630,NULL
+rest_0016,NL,Bougainville,Amsterdam,"Dam 9, 1012 JS Amsterdam",https://www.restaurantbougainville.com/,+31 20 218 2182,1,open,52.37310,4.89520,NULL
+rest_0017,NL,Brass Boer Thuis,Zwolle,"Melkmarkt 9, 8011 MR Zwolle",https://www.brassboer.com/thuis/,+31 38 792 0110,1,open,52.50780,6.09580,NULL
+rest_0018,NL,Brut172,Reijmerstok,"Reijmerstokkerdorpsstraat 143, 6274 NK Reijmerstok",https://www.brut172.com/,+31 43 204 1056,2,open,50.79666,5.83641,19.0|5|2026
+rest_0019,NL,Calla's,The Hague,"Laan van Roos en Doorn 51, 2514 BC The Hague",https://www.restaurantcallas.nl/,+31 70 345 5866,1,open,52.08180,4.28920,NULL
+rest_0021,NL,Central Park,Voorburg,"Oosteinde 14, 2271 EH Voorburg",https://www.centralparkvoorburg.com/restaurant/,+31 70 387 2081,1,open,52.05900,4.34630,NULL
+rest_0022,NL,Chateau Neercanne,Maastricht,"Von Dopfflaan 10, 6213 NG Maastricht",https://www.oostwegelcollection.nl/chateau-neercanne/en/restaurants/chateau-neercanne,+31 43 325 1359,1,open,50.82800,5.68820,NULL
+rest_0023,NL,Cheval Blanc,Heemstede,"Heemsteedse Dreef 7, 2102 KN Heemstede",https://cheval-blanc.nl/,+31 23 529 3173,1,open,52.34740,4.62380,NULL
+rest_0024,NL,Choux,Amsterdam,"De Ruijterkade 128, 1011 AC Amsterdam",https://choux.nl/,+31 20 210 3090,1,open,52.38080,4.90630,NULL
+rest_0025,NL,Ciel Bleu,Amsterdam,"Ferdinand Bolstraat 333, 1072 LH Amsterdam",https://www.cielbleu.nl/,+31 20 678 7450,2,open,52.34900,4.89560,19.0|5|2026
+rest_0026,NL,Codium,Goes,"Singelstraat 11, 4461 CG Goes",https://restaurantcodium.nl/,+31 113 853 535,1,open,51.50630,3.89820,NULL
+rest_0027,NL,Create by Guido Braeken,Eijsden,"Laamsveldweg 3, 6245 NV Eijsden",https://restaurant-create.nl/,+31 43 240 0040,2,open,50.77650,5.72480,NULL
+rest_0028,NL,CUE,Amsterdam,"Weesperzijde 15, 1091 EC Amsterdam",https://www.cue-amsterdam.com/,NULL,1,open,52.35510,4.92150,NULL
+rest_0029,NL,Da Vinci,Maasbracht,"Zanddijk 4, 6051 CX Maasbracht",https://www.restaurantdavinci.nl/,+31 475 465 979,NULL,open,51.15990,5.88330,NULL
+rest_0030,NL,De Bokkedoorns,Overveen,"Zeeweg 52, 2051 EB Overveen",https://www.bokkedoorns.nl/,+31 23 526 3600,2,open,52.39040,4.59040,17.5|4|2026
+rest_0031,NL,De Heeren van Harinxma,Beetsterzwaag,"Van Harinxmaweg 2, 9244 CJ Beetsterzwaag",https://www.lauswolt.nl/eten-drinken/de-heeren-van-harinxma,NULL,1,open,53.05610,6.08110,NULL
+rest_0032,NL,De Juwelier,Amsterdam,"Utrechtsestraat 141, 1017 VM Amsterdam",https://www.restaurant-dejuwelier.nl/,+31 20 247 1007,NULL,open,52.36010,4.89820,NULL
+rest_0033,NL,De kas,Amsterdam,"Kamerlingh Onneslaan 3, 1097 DE Amsterdam",https://restaurantdekas.com/,+31 20 462 4562,1,open,52.36440,4.95190,NULL
+rest_0034,NL,De Kromme Dissel,Heelsum,"Heuvelakkerweg 5, 6866 DS Heelsum",https://www.krommedissel.nl/,+31 317 313 118,1,open,51.97400,5.75630,NULL
+rest_0035,NL,De Kromme Watergang,Hoofdplaat,"Havenweg 1, 4515 RK Hoofdplaat",https://krommewatergang.nl/,+31 117 348 696,1,open,51.37640,3.68880,NULL
+rest_0036,NL,De Leuf,Ubachsberg,"Bosweg 6, 6367 BG Ubachsberg",https://deleuf.nl/,+31 45 575 0226,1,open,50.86360,5.94280,NULL
+rest_0037,NL,De Librije,Zwolle,"Broerenkerkplein 13, 8011 TW Zwolle",https://www.librije.com/en/de-librije/,+31 38 853 0000,3,open,52.51170,6.09310,19.5|5|2026
+rest_0038,NL,De Lindenhof,Giethoorn,"Beulakerweg 77, 8355 AC Giethoorn",https://restaurantdelindenhof.nl/,+31 521 361 444,2,open,52.73180,6.07750,18.0|4|2026
+rest_0039,NL,De Nederlanden,Vreeland,"Duinkerken 3, 3633 EM Vreeland",https://www.nederlanden.nl/,+31 294 232 326,1,open,52.22780,5.01190,NULL
+rest_0040,NL,De Nieuwe Winkel,Nijmegen,"Groesbeekseweg 119, 6523 PE Nijmegen",https://denieuwewinkel.com/,+31 24 322 5093,2,open,51.83800,5.86530,17.5|4|2026
+rest_0041,NL,De Treeswijkhoeve,Waalre,"Meerveldhoven 13, 5581 LV Waalre",https://treeswijkhoeve.nl/nl,+31 40 221 5593,2,open,51.38770,5.45000,17.5|4|2026
+rest_0043,NL,Demain,Cadzand,"Visserijweg 1, 4506 CH Cadzand",NULL,NULL,NULL,open,51.37040,3.40820,NULL
+rest_0046,NL,FG - François Geurds,Rotterdam,"Katshoek 37b, 3032 AE Rotterdam",https://www.fgrestaurant.nl/en/,+31 10 425 0520,2,open,51.92639,4.47946,NULL
+rest_0047,NL,Flore,Amsterdam,"Nieuwe Doelenstraat 2-14, 1012 CP Amsterdam",https://restaurantflore.com/,+31 20 531 1619,2,open,52.36380,4.89060,18.0|4|2026
+rest_0048,NL,Fred,Rotterdam,"Honingerdijk 95, 3063 AE Rotterdam",https://www.restaurantfred.nl/,+31 10 212 0110,2,open,51.92900,4.53070,18.0|4|2026
+rest_0049,NL,GEM. by Soenil Bahadoer,Gemert,"Kasteellaan 1, 5421 CB Gemert",https://restaurantgem.com/,+31 40 200 5955,2,open,51.55317,5.68128,18.0|4|2026
+rest_0050,NL,Herberg Onder de Linden,Groningen,"Schipslootweg 13, 9832 BZ Aduard",https://www.herbergonderdelinden.com/,+31 50 204 1235,1,open,53.17530,6.46070,NULL
+rest_0051,NL,Inter Scaldes,Kruiningen,"Zandweg 2, 4416 NA Kruiningen",https://www.interscaldes.nl/,+31 113 381 753,2,open,51.45320,4.02580,NULL
+rest_0052,NL,Joelia,Rotterdam,"Kruiskade 6, 3012 EH Rotterdam",https://www.joelia.eu/,+31 10 710 8034,1,open,51.92100,4.47930,NULL
+rest_0054,NL,Kaatje bij de Sluis,Blokzijl,"Brouwersgracht 20, 8356 DX Blokzijl",https://kaatje.nl/,+31 527 291 833,1,open,52.72450,5.96170,NULL
+rest_0055,NL,Karel 5,Utrecht,"Geertebolwerk 1, 3511 XA Utrecht",https://www.karelv.nl/eten-drinken/restaurant-karel-5,NULL,1,open,52.09110,5.11770,NULL
+rest_0056,NL,La Provence,Driebergen,"Langbroekerdijk A 14, 3947 BE Driebergen-Rijsenburg",https://restaurantlaprovence.nl/restaurant/,+31 343 512 920,1,open,52.01680,5.28350,NULL
+rest_0057,NL,Lars Amsterdam,Amsterdam,"Danzigerkade 5, 1013 AP Amsterdam",https://larsamsterdam.nl/,+31 20 214 9729,1,open,52.39150,4.87790,NULL
+rest_0062,NL,Lizz,Gouda,"Lange Tiendeweg 34, 2801 KD Gouda",https://wshs.nl/eat-drink/lizz/,NULL,1,open,52.01090,4.70900,NULL
+rest_0063,NL,Lutum,Wijk bij Duurstede,"Markt 35, 3961 BL Wijk bij Duurstede",https://restaurantlutum.nl/,+31 343 593 366,1,open,51.97420,5.33920,NULL
+rest_0064,NL,Maeve,Utrecht,"Springweg 13, 3511 VJ Utrecht",https://restaurantmaeve.nl/,+31 30 200 6767,1,open,52.09050,5.11620,NULL
+rest_0065,NL,Marrees,Weert,"Maaseikerweg 16, 6006 AB Weert",https://www.restaurantmarrees.nl/,+31 495 452 028,1,open,51.24080,5.69340,NULL
+rest_0066,NL,ML,Haarlem,"Kleine Houtstraat 70, 2011 DS Haarlem",https://www.mlinhaarlem.nl/,+31 23 512 3910,1,open,52.38250,4.63730,NULL
+rest_0068,NL,Monarh,Tilburg,"Willem II Straat 19, 5038 BD Tilburg",https://www.monarh.nl/,+31 13 536 5805,1,open,51.55800,5.08910,NULL
+rest_0069,NL,MOS,Amsterdam,"Prins Hendrikkade 108, 1011 AK Amsterdam",https://mosamsterdam.nl/,+31 20 638 0866,1,open,52.37720,4.90190,NULL
+rest_0070,NL,Nami,Cromvoirt,"Molenstraat 7, 5113 AL Cromvoirt",https://nami.nl/,+31 73 203 4888,1,open,51.66670,5.17000,NULL
+rest_0072,NL,Noor,Groningen,"Herestraat 123, 9711 AG Groningen",https://noor.nl/,+31 50 700 1370,1,open,53.21940,6.57030,NULL
+rest_0073,NL,Novaela,Delft,"Bagijnhof 118, 2611 AS Delft",https://novaela.nl/,+31 15 206 1456,1,open,52.01401,4.35355,NULL
+rest_0074,NL,O&O,Sint Willebrord,"Molenstraat 35, 4711 BB Sint Willebrord",https://www.restaurantoeno.nl/,+31 165 383 249,1,open,51.54460,4.58880,NULL
+rest_0075,NL,Odille,Sint-Oedenrode,"Markt 3, 5492 CA Sint-Oedenrode",https://odille.nl/,+31 413 786 352,1,open,51.56650,5.45910,NULL
+rest_0076,NL,One,Roermond,"Minderbroederssingel 4, 6041 KM Roermond",https://restaurantone.nl/,+31 475 600 262,1,open,51.19420,5.98740,NULL
+rest_0079,NL,Parkheuvel,Rotterdam,"Heuvellaan 21, 3016 GL Rotterdam",https://www.parkheuvel.nl,+31 (0)10 436 07 66,2,open,51.90690,4.46850,17.5|4|2026
+rest_0081,NL,Perceel,Capelle aan de Ijssel,"Algerastraat 22, 2909 LB Capelle aan den IJssel",https://restaurantperceel.nl/,+31 10 227 1922,1,open,51.92950,4.57140,NULL
+rest_0082,NL,Pieters Restaurant,Bergambacht,"Klundertseweg 16, 2972 AK Bergambacht",https://www.pietersrestaurant.nl/,+31 182 355 750,1,open,51.92760,4.78120,NULL
+rest_0083,NL,Ratatouille Food & Wine,Haarlem,"Lange Veerstraat 19, 2011 DD Haarlem",https://ratatouillefoodandwine.nl/,+31 23 542 7270,1,open,52.38260,4.63680,NULL
+rest_0084,NL,Restaurant 1857,Roosendaal,"Kade 7, 4701 PC Roosendaal",https://restaurant1857.com/,+31 165 850 809,1,open,51.53280,4.46080,NULL
+rest_0085,NL,Restaurant 212,Amsterdam,"Amsteldijk 212, 1079 LK Amsterdam",https://www.212.amsterdam/,+31 20 334 8685,2,open,52.34020,4.90600,NULL
+rest_0086,NL,Restaurant Affect,Zwolle,"Luttenbergstraat 4, 8012 EE Zwolle",https://www.restaurantaffect.com/,+31 38 230 0033,1,open,52.50980,6.09670,NULL
+rest_0087,NL,Restaurant Atelier,Gulpen,"Dorpsstraat 45, 6271 BN Gulpen",https://www.restaurantatelier.nl/,+31 43 450 4490,1,open,50.81460,5.88600,NULL
+rest_0088,NL,Restaurant Calva,Nootdorp,"Laan 1940-1945 43, 2636 SG Nootdorp",https://restaurantcalva.nl/,+31 15 204 9114,1,open,52.03100,4.37240,NULL
+rest_0089,NL,Restaurant de Burgemeester,Linschoten,"Dorpsstraat 102, 3461 BL Linschoten",https://www.deburgemeester.nl/,+31 348 414 040,1,open,52.02120,4.89180,NULL
+rest_0090,NL,Restaurant kasteel Heemstede,Houten,"Heemsteedse Dreef 20, 3992 LD Houten",https://www.restaurant-kasteelheemstede.nl/,+31 30 272 2207,1,open,52.00360,5.15690,NULL
+rest_0091,NL,Restaurant Showw,Amsterdam,"Gelrestraat 28, 1078 GR Amsterdam",https://www.restaurantshoww.com/,+31 20 280 0816,1,open,52.34180,4.87300,NULL
+rest_0092,NL,Restaurant Wolfslaar,Breda,"Wolfslaar 20, 4834 CA Breda",https://www.restaurantwolfslaar.com/,+31 76 201 4975,1,open,51.57650,4.77340,NULL
+rest_0093,NL,Rijks,Amsterdam,"Museumstraat 2, 1071 XX Amsterdam",https://www.rijksrestaurant.nl/,+31 20 674 7555,1,open,52.36010,4.88520,NULL
+rest_0094,NL,Rijnzicht,Doornenburg,"Pannerdenseweg 5, 6914 CA Doornenburg",https://www.rijnzicht.nl/,+31 481 421 308,1,open,51.88710,6.01650,NULL
+rest_0095,NL,Ron Gastrobar,Amsterdam,"Sophialaan 55, 1075 BP Amsterdam",https://rongastrobar.nl/,+31 20 496 1943,1,open,52.35340,4.87550,NULL
+rest_0096,NL,Sabero,Leende,"Leenderweg 37, 5595 AE Leende",https://www.sabero.nl/,+31 6 51231074,1,open,51.35470,5.54380,NULL
+rest_0098,NL,Sense,Vught,"Taalstraat 100, 5261 BH Vught",NULL,NULL,NULL,open,51.65170,5.30260,NULL
+rest_0099,NL,Sinne,Amsterdam,"Ceintuurbaan 342, 1073 EN Amsterdam",https://restaurantsinne.nl/,+31 20 682 7290,1,open,52.35310,4.89160,NULL
+rest_0100,NL,Spetters,Breskens,"Nolledijk 1, 4511 TR Breskens",https://www.restaurantspetters.nl/,+31 117 381 223,1,open,51.39610,3.55870,NULL
+rest_0101,NL,Studio,Maastricht,"Kesselskade 66, 6211 HM Maastricht",https://www.studio.restaurant/,+31 6 46027252,1,open,50.85000,5.69470,NULL
+rest_0103,NL,t Amsterdammertje,Loenen aan de Vecht,"Nieuwstraat 1, 3632 BX Loenen aan de Vecht",https://www.restaurantamsterdammertje.nl/,+31 294 234 848,1,open,52.21550,5.01890,NULL
+rest_0104,NL,t Ganzenest,Rijswijk,"Haagweg 2, 2281 AT Rijswijk",https://ganzenest.nl/,+31 70 307 7970,1,open,52.03800,4.33100,NULL
+rest_0105,NL,t Raedthuys,Duiven,"Marktstraat 2, 6921 BG Duiven",https://www.raedthuys-duiven.nl/,+31 316 268 808,1,open,51.95090,6.02420,NULL
+rest_0106,NL,Tante Koosje,Loenen aan de Vecht,"Dorpsstraat 8, 3632 BT Loenen aan de Vecht",https://www.tante-koosje.nl/,+31 294 233 201,1,open,52.21550,5.01890,NULL
+rest_0107,NL,The Millen,Rotterdam,"Meent 72-78, 3011 JN Rotterdam",https://restaurantthemillen.nl/,+31 10 430 2333,1,open,51.92270,4.48340,NULL
+rest_0108,NL,The White Room by Jacob Jan Boerma,Amsterdam,"Herengracht 542, 1017 CG Amsterdam",https://www.restaurantthewhiteroom.com/,+31 20 554 9454,1,open,52.36360,4.89520,NULL
+rest_0109,NL,Tout a Fait,Maastricht,"St. Servaasklooster 13, 6211 TE Maastricht",https://toutafait.nl/,+31 43 350 0405,1,open,50.84770,5.69210,NULL
+rest_0110,NL,Tribeca,Heeze,"Kapelstraat 49, 5591 HE Heeze",https://restaurant-tribeca.com/,+31 40 226 3232,2,open,51.37760,5.57470,19.0|5|2026
+rest_0111,NL,Triptyque,Wateringen,"Poeldijkseweg 4, 2291 PC Wateringen",https://triptyque.nl/,+31 174 725 505,1,open,52.01750,4.28800,NULL
+rest_0113,NL,Versaen,Ravenstein,"Maasdijk 33, 5371 EE Ravenstein",https://restaurantversaen.nl/,+31 486 851 565,1,open,51.78650,5.64960,NULL
+rest_0114,NL,Vinkeles,Amsterdam,"Keizersgracht 384, 1016 GA Amsterdam",https://www.vinkeles.com/,NULL,2,open,52.36630,4.88510,NULL
+rest_0115,NL,Vista,Willemstad,"Benedenkade 14, 4761 BA Willemstad",https://www.vistawillemstad.nl/,NULL,1,open,51.69090,4.43250,NULL
+rest_0116,NL,Voltaire,Leersum,"Amerongerweg 1, 3951 AN Leersum",https://parcbroekhuizen.nl/eten-drinken/restaurant-voltaire/,NULL,1,open,52.00830,5.41750,NULL
+rest_0117,NL,Wiesen,Eindhoven,"Kardinaal van Rossumstraat 12, 5643 GM Eindhoven",https://www.wiesen-restaurant.nl/,+31 40 244 6666,1,open,51.44080,5.47480,NULL
+rest_0118,NL,Wils,Amsterdam,"Stadionplein 26, 1076 CM Amsterdam",https://www.restaurantwils.nl/,+31 20 236 6522,1,open,52.34080,4.86080,NULL
+rest_0119,NL,Yamazato,Amsterdam,"Ferdinand Bolstraat 333, 1072 LH Amsterdam",https://www.okura.nl/yamazato,+31 20 678 8300,1,open,52.34900,4.89560,NULL
+rest_0120,NL,Zarzo,Eindhoven,"Woenselse Markt 15, 5612 CS Eindhoven",https://zarzo.nl/,+31 40 211 7700,1,open,51.46010,5.46970,NULL
+rest_0121,NL,Zeezout,Rotterdam,"Westerkade 11b, 3016 CL Rotterdam",https://restaurantzeezout.nl/,+31 10 436 5049,1,open,51.91050,4.47820,NULL
+rest_0122,NL,Zoldering,Amsterdam,"Geldersekade 29, 1011 EJ Amsterdam",https://www.zoldering.nl/,+31 20 765 1212,1,open,52.37410,4.90120,NULL
+rest_0123,NL,Zout & Citroen,Oosterhout,"Heuvelstraat 25, 4901 LG Oosterhout",https://www.zoutencitroen.nl/,+31 162 450 806,1,open,51.64270,4.86000,NULL
+rest_0144,NL,Spectrum,Amsterdam,"Herengracht 542-556, 1017 CG Amsterdam",https://www.restaurantspectrum.com/,NULL,NULL,permanently_closed,52.36459,4.89658,NULL
+rest_0146,NL,'t Nonnetje,Harderwijk,"Vischmarkt 38, 3841 BG Harderwijk",https://www.hetnonnetje.nl/,+31 341 415 848,2,open,52.35095,5.62017,18.0|4|2026
+rest_0149,NL,De Groene Lantaarn,Staphorst,"Gemeenteweg 364, 7951 PG Staphorst",https://degroenelantaarn.com/en/home-en/,NULL,NULL,permanently_closed,52.65907,6.24462,NULL
+rest_0150,NL,Olde Marckt,Aalten,"Markt 10, 7121 CS Aalten",https://www.oldemarckt.nl/,+31 543 472 951,1,open,51.92749,6.58169,NULL
+rest_0152,NL,Zenith,Apeldoorn,"Koninginnelaan 37, 7315 BL Apeldoorn",https://restaurantzenith.nl/,+31 55 203 4140,1,open,52.22313,5.95583,NULL
+rest_0153,NL,Joann,Enschede,"Nijverheidstraat 2, 7511 JM Enschede",https://restaurantjoann.nl/,+31 53 720 0820,1,open,52.22018,6.89093,NULL
+rest_0780,NL,Basiliek,Harderwijk,"Vischmarkt 57, 3841 BE Harderwijk",https://restaurantbasiliek.nl,+31 341 415 290,1,open,52.35126,5.62129,NULL
+rest_0781,NL,Graphite by Peter Gast,Amsterdam,"Paardenstraat 15III, 1017 CX Amsterdam",NULL,NULL,NULL,open,52.36649,4.89829,NULL
+rest_0782,NL,Zheng,The Hague,"Prinsestraat 33, 2513 CA Den Haag",https://restaurantzheng.com,+31 70 362 0828,NULL,open,52.07876,4.30608,NULL
+rest_0783,NL,Daalder,Amsterdam,"Lindengracht 90, 1015 KK Amsterdam",https://daalderamsterdam.nl,+31 20 799 5000,NULL,open,52.38052,4.88566,NULL
+rest_0784,NL,Merlet,Schoorl,"Duinweg 15, 1871 AC Schoorl",https://merlet.nl,+31 72 509 3644,1,open,52.69967,4.69429,NULL
+rest_0785,NL,Latour,Noordwijk aan Zee,"Koningin Astrid Boulevard 5, 2202 BK Noordwijk aan Zee",https://restaurantlatour.nl,+31 71 365 1304,1,open,52.24125,4.42762,NULL
+rest_0786,NL,Restaurant Smink,Wolvega,"Van Harenstraat 37, 8471 JC Wolvega",https://jansmink.com,+31 561 728 729,1,open,52.87531,5.99951,NULL
+rest_0787,NL,De Vlindertuin,Zuidlaren,"Stationsweg 41, 9471 GK Zuidlaren",https://restaurant-devlindertuin.nl,+31 50 409 4531,1,open,53.09255,6.68014,NULL
+rest_0788,NL,De Woage,Gramsbergen,"Meiboomplein 1, 7783 AT Gramsbergen",https://restobardewoage.nl/,+31 524 563 788,NULL,open,52.61072,6.67248,NULL
+rest_0789,NL,De Swarte Ruijter,Holten,"Holterbergweg 7, 7451 JL Holten",https://swarteruijter.nl,+31 548 596 660,1,open,52.29463,6.42082,NULL
+rest_0790,NL,'t Lansink,Hengelo,"C.T. Storkstraat 18, Hengelo (Overijssel)",https://hotellansink.nl,+31 74 291 0066,1,open,52.25967,6.78226,NULL
+rest_0791,NL,De Bloemenbeek,De Lutte,"Beuningerstraat 6, 7587 LD De Lutte",https://bloemenbeek.nl,+31 541 551 224,1,open,52.31989,6.99897,NULL
+rest_0792,NL,De Gieser Wildeman,Noordeloos,"Botersloot 1, 4225 PR Noordeloos",https://degieserwildeman.nl,+31 183 554 000,1,open,51.90168,4.93923,NULL
+rest_0793,NL,De Moerbei,Warmond,"Dorpsstraat 5A, 2361 AK Warmond",https://demoerbeiwarmond.nl,+31 71 515 6898,1,open,52.19525,4.50281,NULL
+rest_0794,NL,Bij Jef,Den Hoorn,"Herenstraat 34, 1797 AJ Den Hoorn, Texel",https://bijjef.nl,+31 222 319 623,1,open,53.02477,4.74988,NULL
+rest_1396,NL,Ambrozijn,Valkenburg,"Plenkertstraat 45, 6301 GL Valkenburg",https://www.restaurantambrozijn.nl/,+31 43 200 3068,1,open,50.86465,5.82683,NULL
+rest_1397,NL,Azurite,Delft,"Houttuinen 2, 2611 DX Delft",https://restaurantazurite.nl/,+31 6 42771100,2,open,52.00922,4.35542,NULL
+rest_1398,NL,Bij Sidney,Loenen aan de Vecht,"Kerkstraat 5, 3632 EL Loenen aan de Vecht",https://bijsidney.nl/,+31 294 792 110,1,open,52.20934,5.02313,NULL
+rest_1399,NL,De Cuijt,Mierlo,"Burgemeester Termeerstraat 50, 5731 SE Mierlo",https://www.restaurant-decuijt.nl/,+31 492 661 323,1,open,51.44778,5.60416,NULL
+rest_1400,NL,Le Epifaan,Veeningen,"Bloemberg 5, 7924 PW Veeningen",https://leepifaan.com/,+31 522 463 116,1,open,52.65239,6.34577,NULL
+rest_1401,NL,Nassau,Groningen,"Martinikerkhof 23, 9712 JH Groningen",https://prinsenhof.nl/nl/restaurant-nassau/,+31 50 317 6550,1,open,53.22077,6.56884,NULL
+rest_1402,NL,Rozewied,Kortgene,"Hoofdstraat 35, 4484 CB Kortgene",https://www.rozewied.nl/,+31 6 38112035,1,open,51.55688,3.80195,NULL
+rest_1403,NL,SUIS,Schin op Geul,"Strucht 77, 6305 AH Schin op Geul",https://suisralfberendsen.com/,+32 483 53 60 17,2,open,50.85202,5.86185,NULL
+rest_1404,NL,Wild Atelier,Hoog Soeren,"Amersfoortseweg 86, 7346 AA Hoog Soeren",https://www.echoput.nl/gastronomie/wild-atelier,+31 55 519 1248,1,open,52.23323,5.87796,NULL
+rest_1840,NL,Tacite,Amsterdam,"Cornelis Krusemanstraat 15, 1075 NB Amsterdam",https://tacite.nl/,+31627439207,NULL,open,52.35115,4.86323,NULL
+rest_1841,NL,Petit Péché,Amsterdam,"Nicolaas Beetsstraat 51h, 1053 RJ Amsterdam",https://www.petitpecheamsterdam.nl/,+31621186278,NULL,open,52.36586,4.86546,NULL
