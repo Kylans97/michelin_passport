@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../core/analytics/analytics_event.dart';
@@ -39,12 +40,14 @@ class NewsArticleDetailScreen extends StatefulWidget {
   // can supply fakes without needing a live Supabase session.
   final AnalyticsService? analytics;
   final Future<NewsArticleVenues> Function()? loadVenues;
+  final Future<List<NewsArticlePhoto>> Function()? loadPhotos;
 
   const NewsArticleDetailScreen({
     super.key,
     required this.article,
     this.analytics,
     this.loadVenues,
+    this.loadPhotos,
   });
 
   @override
@@ -54,6 +57,7 @@ class NewsArticleDetailScreen extends StatefulWidget {
 
 class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
   late final Future<NewsArticleVenues> _venuesFuture;
+  late final Future<List<NewsArticlePhoto>> _photosFuture;
 
   @override
   void initState() {
@@ -74,6 +78,17 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
           Supabase.instance.client,
         ).loadLinkedVenues(widget.article.id);
     _venuesFuture = loadVenues();
+
+    final loadPhotos =
+        widget.loadPhotos ??
+        () => NewsRepository(
+          Supabase.instance.client,
+        ).loadPhotos(widget.article.id);
+    // A failed lookup shows the article without its inline photos, never
+    // an error over the text itself.
+    _photosFuture = loadPhotos().catchError(
+      (Object _) => const <NewsArticlePhoto>[],
+    );
   }
 
   Future<void> _openUrl(String url) async {
@@ -127,41 +142,32 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
     final article = widget.article;
     final hasImage = (article.imageUrl ?? '').isNotEmpty;
     final hasLink = (article.linkUrl ?? '').isNotEmpty;
+    final isInterview = article.section == NewsSection.interview;
+    final blocks = article.blocks;
 
     return Scaffold(
       backgroundColor: AppColors.background,
       body: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            backgroundColor: AppColors.deepGreen,
-            foregroundColor: AppColors.textOnDark,
-            pinned: true,
-            leadingWidth: 56,
-            leading: const Padding(
-              padding: EdgeInsets.only(left: CsSpacing.sm),
-              child: EditorialBackButton(),
+          if (hasImage)
+            SliverPersistentHeader(
+              pinned: true,
+              delegate: _PhotoBandHeader(
+                article: article,
+                topPadding: MediaQuery.paddingOf(context).top,
+              ),
+            )
+          else
+            const SliverAppBar(
+              backgroundColor: AppColors.deepGreen,
+              foregroundColor: AppColors.textOnDark,
+              pinned: true,
+              leadingWidth: 56,
+              leading: Padding(
+                padding: EdgeInsets.only(left: CsSpacing.sm),
+                child: EditorialBackButton(),
+              ),
             ),
-            expandedHeight: hasImage ? 240 : kToolbarHeight,
-            flexibleSpace: hasImage
-                ? FlexibleSpaceBar(
-                    background: AppNetworkImage(
-                      article.imageUrl!,
-                      fit: BoxFit.cover,
-                      // Per-article crop focus (news_articles.focus_x/
-                      // focus_y) — a plain center crop on a roughly
-                      // square source under this wide, short hero cuts
-                      // straight through faces near the top of the
-                      // frame, right behind the status bar/back button.
-                      alignment: Alignment(
-                        article.alignmentX,
-                        article.alignmentY,
-                      ),
-                      errorBuilder: (_, _, _) =>
-                          const ColoredBox(color: AppColors.deepGreen),
-                    ),
-                  )
-                : null,
-          ),
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
@@ -170,67 +176,319 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
                 CsSpacing.pageHorizontal,
                 CsSpacing.section,
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    formatNewsDate(article.publishedAt),
-                    style: CsTypography.eyebrow.copyWith(
-                      color: AppColors.taupe,
-                    ),
-                  ),
-                  const SizedBox(height: CsSpacing.sm),
-                  Text(
-                    article.title,
-                    style: CsTypography.placeTitle.copyWith(
-                      fontSize: 26,
-                      color: AppColors.forestGreen,
-                    ),
-                  ),
-                  const SizedBox(height: CsSpacing.lg),
-                  for (final paragraph in article.paragraphs) ...[
-                    Text(
-                      paragraph,
-                      style: CsTypography.body.copyWith(
-                        color: AppColors.textPrimary,
-                        height: 1.5,
-                      ),
-                    ),
-                    const SizedBox(height: CsSpacing.md),
-                  ],
-                  FutureBuilder<NewsArticleVenues>(
-                    future: _venuesFuture,
-                    builder: (context, snap) {
-                      final venues = snap.data;
-                      // Silent while loading and on error — mentioned
-                      // venues are enhancement content, same convention
-                      // as HostedEventsSection: never block or clutter
-                      // the article itself over a lookup that failed.
-                      if (venues == null || venues.isEmpty) {
-                        return const SizedBox.shrink();
-                      }
-                      return Padding(
-                        padding: const EdgeInsets.only(top: CsSpacing.md),
-                        child: _MentionedVenuesSection(
-                          venues: venues,
-                          onTapRestaurant: _openRestaurant,
-                          onTapHotel: _openHotel,
-                          onTapChef: _openChef,
+              child: FutureBuilder<List<NewsArticlePhoto>>(
+                future: _photosFuture,
+                builder: (context, snap) {
+                  final photos = groupNewsPhotos(
+                    snap.data ?? const [],
+                    blocks.length,
+                  );
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        isInterview
+                            ? 'INTERVIEW · ${formatNewsDate(article.publishedAt).toUpperCase()}'
+                            : formatNewsDate(article.publishedAt),
+                        style: CsTypography.eyebrow.copyWith(
+                          color: AppColors.taupe,
                         ),
-                      );
-                    },
-                  ),
-                  if (hasLink) ...[
-                    const SizedBox(height: CsSpacing.md),
-                    _NewsLinkRow(
-                      url: article.linkUrl!,
-                      onTap: () => _openUrl(article.linkUrl!),
-                    ),
-                  ],
-                ],
+                      ),
+                      const SizedBox(height: CsSpacing.sm),
+                      Text(
+                        article.title,
+                        style: CsTypography.placeTitle.copyWith(
+                          fontSize: 26,
+                          color: AppColors.forestGreen,
+                        ),
+                      ),
+                      const SizedBox(height: CsSpacing.lg),
+                      if (photos[0] != null) _NewsPhotos(photos: photos[0]!),
+                      for (var i = 0; i < blocks.length; i++) ...[
+                        _NewsBlockView(
+                          block: blocks[i],
+                          // An interview opens with its introduction, set
+                          // larger than the conversation that follows.
+                          isLead: isInterview && i == 0,
+                        ),
+                        if (photos[i + 1] != null)
+                          _NewsPhotos(photos: photos[i + 1]!),
+                      ],
+                      FutureBuilder<NewsArticleVenues>(
+                        future: _venuesFuture,
+                        builder: (context, snap) {
+                          final venues = snap.data;
+                          // Silent while loading and on error — mentioned
+                          // venues are enhancement content, same convention
+                          // as HostedEventsSection: never block or clutter
+                          // the article itself over a lookup that failed.
+                          if (venues == null || venues.isEmpty) {
+                            return const SizedBox.shrink();
+                          }
+                          return Padding(
+                            padding: const EdgeInsets.only(top: CsSpacing.md),
+                            child: _MentionedVenuesSection(
+                              title: isInterview
+                                  ? 'IN THIS INTERVIEW'
+                                  : 'MENTIONED IN THIS ARTICLE',
+                              venues: venues,
+                              onTapRestaurant: _openRestaurant,
+                              onTapHotel: _openHotel,
+                              onTapChef: _openChef,
+                            ),
+                          );
+                        },
+                      ),
+                      if (hasLink) ...[
+                        const SizedBox(height: CsSpacing.md),
+                        _NewsLinkRow(
+                          url: article.linkUrl!,
+                          onTap: () => _openUrl(article.linkUrl!),
+                        ),
+                      ],
+                    ],
+                  );
+                },
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The article's photo, pinned: full height at the top, and as the reader
+/// scrolls it shrinks to a band under the status bar instead of scrolling
+/// away, with the title fading in beside the back button. Painted by hand
+/// rather than with [FlexibleSpaceBar], which fades its background out as
+/// it collapses — the opposite of what this is for.
+class _PhotoBandHeader extends SliverPersistentHeaderDelegate {
+  _PhotoBandHeader({required this.article, required this.topPadding});
+
+  final NewsArticle article;
+  final double topPadding;
+
+  static const double _expanded = 320;
+  static const double _band = 64;
+
+  @override
+  double get maxExtent => topPadding + _expanded;
+
+  @override
+  double get minExtent => topPadding + _band;
+
+  @override
+  Widget build(BuildContext context, double shrinkOffset, bool overlaps) {
+    final range = maxExtent - minExtent;
+    final t = range <= 0 ? 1.0 : (shrinkOffset / range).clamp(0.0, 1.0);
+    // The title only once the photo is nearly a band, so the two never
+    // overlap the article's own title below.
+    final titleOpacity = ((t - 0.75) / 0.25).clamp(0.0, 1.0);
+    // Light status bar over the photo, whatever the rest of the app sets.
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: _photoBand(titleOpacity, t),
+    );
+  }
+
+  Widget _photoBand(double titleOpacity, double t) {
+    return Stack(
+      fit: StackFit.expand,
+      children: [
+        const ColoredBox(color: AppColors.deepGreen),
+        AppNetworkImage(
+          article.imageUrl!,
+          fit: BoxFit.cover,
+          // Per-article crop focus (news_articles.focus_x/focus_y), so the
+          // band keeps the subject rather than a centre strip of it.
+          alignment: Alignment(article.alignmentX, article.alignmentY),
+          errorBuilder: (_, _, _) => const SizedBox.shrink(),
+        ),
+        DecoratedBox(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                AppColors.heroGradientEnd.withValues(alpha: 0.55),
+                AppColors.heroGradientEnd.withValues(alpha: 0.05 + 0.6 * t),
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          top: topPadding,
+          left: 0,
+          right: 0,
+          height: _band,
+          child: Row(
+            children: [
+              const Padding(
+                padding: EdgeInsets.only(left: CsSpacing.sm),
+                child: EditorialBackButton(),
+              ),
+              const SizedBox(width: CsSpacing.sm),
+              Expanded(
+                child: Opacity(
+                  opacity: titleOpacity,
+                  child: Text(
+                    article.title,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: CsTypography.placeTitle.copyWith(
+                      fontSize: 18,
+                      color: AppColors.ivory,
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(width: CsSpacing.pageHorizontal),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  @override
+  bool shouldRebuild(_PhotoBandHeader old) =>
+      old.article != article || old.topPadding != topPadding;
+}
+
+/// One paragraph of the body, read for its prefix (NewsArticle.blocks).
+class _NewsBlockView extends StatelessWidget {
+  const _NewsBlockView({required this.block, this.isLead = false});
+
+  final NewsBlock block;
+  final bool isLead;
+
+  @override
+  Widget build(BuildContext context) {
+    switch (block.kind) {
+      case NewsBlockKind.question:
+        return Padding(
+          padding: const EdgeInsets.only(
+            top: CsSpacing.sm,
+            bottom: CsSpacing.sm,
+          ),
+          child: Text(
+            block.text,
+            style: CsTypography.editorialTitle(
+              size: 19,
+              italic: true,
+            ).copyWith(color: AppColors.forestGreen, height: 1.35),
+          ),
+        );
+      case NewsBlockKind.quote:
+        return Container(
+          margin: const EdgeInsets.symmetric(vertical: CsSpacing.lg),
+          padding: const EdgeInsets.only(left: CsSpacing.md),
+          decoration: const BoxDecoration(
+            border: Border(
+              left: BorderSide(color: AppColors.forestGreen, width: 2),
+            ),
+          ),
+          child: Text(
+            block.text,
+            style: CsTypography.editorialDisplay(
+              size: 26,
+            ).copyWith(color: AppColors.forestGreen, height: 1.25),
+          ),
+        );
+      case NewsBlockKind.text:
+        return Padding(
+          padding: const EdgeInsets.only(bottom: CsSpacing.md),
+          child: Text(
+            block.text,
+            style: isLead
+                ? CsTypography.editorialLead(
+                    size: 19,
+                  ).copyWith(color: AppColors.forestGreen, height: 1.45)
+                : CsTypography.body.copyWith(
+                    color: AppColors.textPrimary,
+                    height: 1.5,
+                  ),
+          ),
+        );
+    }
+  }
+}
+
+/// Photos at one place in the text: one full width, two or more as a
+/// gallery to swipe through, its caption following the photo on show.
+class _NewsPhotos extends StatefulWidget {
+  const _NewsPhotos({required this.photos});
+
+  final List<NewsArticlePhoto> photos;
+
+  @override
+  State<_NewsPhotos> createState() => _NewsPhotosState();
+}
+
+class _NewsPhotosState extends State<_NewsPhotos> {
+  int _page = 0;
+
+  Widget _image(NewsArticlePhoto photo) => ClipRRect(
+    borderRadius: BorderRadius.circular(12),
+    child: AppNetworkImage(
+      photo.imageUrl,
+      fit: BoxFit.cover,
+      alignment: photo.alignment,
+      errorBuilder: (_, _, _) => const ColoredBox(color: AppColors.cardBorder),
+    ),
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final photos = widget.photos;
+    final shown = photos[_page.clamp(0, photos.length - 1)];
+    final caption = shown.caption?.trim();
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: CsSpacing.md),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          AspectRatio(
+            aspectRatio: 4 / 3,
+            child: photos.length == 1
+                ? _image(photos.single)
+                : PageView.builder(
+                    itemCount: photos.length,
+                    onPageChanged: (i) => setState(() => _page = i),
+                    itemBuilder: (context, i) => Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                      child: _image(photos[i]),
+                    ),
+                  ),
+          ),
+          if (photos.length > 1) ...[
+            const SizedBox(height: CsSpacing.sm),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                for (var i = 0; i < photos.length; i++)
+                  Container(
+                    width: 6,
+                    height: 6,
+                    margin: const EdgeInsets.symmetric(horizontal: 3),
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: i == _page
+                          ? AppColors.forestGreen
+                          : AppColors.subtleBorderLight,
+                    ),
+                  ),
+              ],
+            ),
+          ],
+          if (caption != null && caption.isNotEmpty) ...[
+            const SizedBox(height: CsSpacing.sm),
+            Text(
+              caption,
+              style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+            ),
+          ],
         ],
       ),
     );
@@ -245,12 +503,14 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
 /// gate on restaurants) — a linked pop-up or otherwise-unrecognized venue
 /// is exactly as valid a mention as a starred one.
 class _MentionedVenuesSection extends StatelessWidget {
+  final String title;
   final NewsArticleVenues venues;
   final ValueChanged<Restaurant> onTapRestaurant;
   final ValueChanged<Hotel> onTapHotel;
   final ValueChanged<PrivateChef> onTapChef;
 
   const _MentionedVenuesSection({
+    required this.title,
     required this.venues,
     required this.onTapRestaurant,
     required this.onTapHotel,
@@ -275,7 +535,7 @@ class _MentionedVenuesSection extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'MENTIONED IN THIS ARTICLE',
+          title,
           style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
         ),
         const SizedBox(height: CsSpacing.md),

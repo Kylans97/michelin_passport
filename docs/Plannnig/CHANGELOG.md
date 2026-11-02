@@ -8,6 +8,23 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **News in three parts, and richer articles** (product owner,
+  2026-11-02, options B and 3):
+  - the News tab opens with a quiet "Why Mantelier" card, then a row of
+    Interviews with portrait photos, then Stories as before;
+  - an article's photo now stays on screen: as you scroll it shrinks to
+    a band under the status bar with the title in it, instead of
+    scrolling away;
+  - photos inside the text: one shows full width with its caption, two
+    or more at the same place as a gallery to swipe through;
+  - interviews read "Q: " paragraphs as questions and "> " as a pull
+    quote, open with a larger introduction, and list their venues as
+    "In this interview".
+  Migration `20261101270000_add_news_sections_and_photos.sql`
+  (`news_articles.section`, `news_article_photos`, the current article
+  set to "about" by id), not yet applied.
+
 ---
 
 ## v1.5.7 (28) — 2026-11-02

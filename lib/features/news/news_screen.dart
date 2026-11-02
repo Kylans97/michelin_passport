@@ -27,7 +27,10 @@ const _monthNames = [
 String formatNewsDate(DateTime date) =>
     '${date.day} ${_monthNames[date.month - 1]} ${date.year}';
 
-/// News V1 — a plain list, newest first (`published_at desc`, not
+/// News, in three parts (20261101270000): the "Why Mantelier" article on
+/// top, then Interviews as a horizontal row, then Stories as a list, each
+/// newest first and each left out when empty. Before the sections, News
+/// V1 was a plain list, newest first (`published_at desc`, not
 /// `created_at`, so an article can be scheduled ahead of its actual
 /// authoring date). No categories, tags, comments, or read state —
 /// deliberately out of scope for V1. A bottom-tab body (no own
@@ -148,26 +151,74 @@ class _NewsScreenState extends State<NewsScreen> {
                   ),
                 );
               }
-              return ListView.separated(
-                padding: EdgeInsets.fromLTRB(
-                  CsSpacing.pageHorizontal,
-                  0,
-                  CsSpacing.pageHorizontal,
-                  floatingNavClearance(context),
+              final about = articles
+                  .where((a) => a.section == NewsSection.about)
+                  .firstOrNull;
+              final interviews = articles
+                  .where((a) => a.section == NewsSection.interview)
+                  .toList();
+              final stories = articles
+                  .where((a) => a.section == NewsSection.story)
+                  .toList();
+              void open(NewsArticle article) => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => NewsArticleDetailScreen(article: article),
                 ),
-                itemCount: articles.length,
-                separatorBuilder: (_, _) =>
-                    const SizedBox(height: CsSpacing.md),
-                itemBuilder: (context, i) => _NewsArticleCard(
-                  article: articles[i],
-                  onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) =>
-                          NewsArticleDetailScreen(article: articles[i]),
+              );
+              return ListView(
+                padding: EdgeInsets.only(bottom: floatingNavClearance(context)),
+                children: [
+                  if (about != null)
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(
+                        CsSpacing.pageHorizontal,
+                        0,
+                        CsSpacing.pageHorizontal,
+                        CsSpacing.section,
+                      ),
+                      child: _WhyMantelierCard(
+                        article: about,
+                        onTap: () => open(about),
+                      ),
                     ),
-                  ),
-                ),
+                  if (interviews.isNotEmpty) ...[
+                    const _NewsSectionLabel('Interviews'),
+                    SizedBox(
+                      height: _InterviewCard.height,
+                      child: ListView.separated(
+                        scrollDirection: Axis.horizontal,
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: CsSpacing.pageHorizontal,
+                        ),
+                        itemCount: interviews.length,
+                        separatorBuilder: (_, _) =>
+                            const SizedBox(width: CsSpacing.md),
+                        itemBuilder: (context, i) => _InterviewCard(
+                          article: interviews[i],
+                          onTap: () => open(interviews[i]),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: CsSpacing.section),
+                  ],
+                  if (stories.isNotEmpty) ...[
+                    const _NewsSectionLabel('Stories'),
+                    for (final story in stories)
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(
+                          CsSpacing.pageHorizontal,
+                          0,
+                          CsSpacing.pageHorizontal,
+                          CsSpacing.md,
+                        ),
+                        child: _NewsArticleCard(
+                          article: story,
+                          onTap: () => open(story),
+                        ),
+                      ),
+                  ],
+                ],
               );
             },
           ),
@@ -175,6 +226,172 @@ class _NewsScreenState extends State<NewsScreen> {
       ],
     ),
   );
+}
+
+/// The tab's opening: the one [NewsSection.about] article, quietly — a
+/// label, its title and the start of its first paragraph, no photo, so
+/// it introduces the tab rather than competing with what's new.
+class _WhyMantelierCard extends StatelessWidget {
+  final NewsArticle article;
+  final VoidCallback onTap;
+
+  const _WhyMantelierCard({required this.article, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final intro = article.paragraphs.firstOrNull;
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(16),
+        child: Container(
+          padding: const EdgeInsets.all(CsSpacing.lg),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(color: AppColors.subtleBorderDark, width: 0.5),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'WHY MANTELIER',
+                style: CsTypography.eyebrow.copyWith(
+                  color: AppColors.secondaryOnDark,
+                ),
+              ),
+              const SizedBox(height: CsSpacing.sm),
+              Text(
+                article.title,
+                style: CsTypography.placeTitle.copyWith(
+                  fontSize: 22,
+                  color: AppColors.ivory,
+                ),
+              ),
+              if (intro != null) ...[
+                const SizedBox(height: CsSpacing.sm),
+                Text(
+                  intro,
+                  maxLines: 3,
+                  overflow: TextOverflow.ellipsis,
+                  style: CsTypography.body.copyWith(
+                    color: AppColors.secondaryOnDark,
+                    height: 1.5,
+                  ),
+                ),
+              ],
+              const SizedBox(height: CsSpacing.md),
+              Text(
+                'Read',
+                style: CsTypography.bodyMedium.copyWith(
+                  color: AppColors.ivory,
+                  decoration: TextDecoration.underline,
+                  decorationColor: AppColors.secondaryOnDark,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _NewsSectionLabel extends StatelessWidget {
+  final String text;
+
+  const _NewsSectionLabel(this.text);
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.fromLTRB(
+      CsSpacing.pageHorizontal,
+      0,
+      CsSpacing.pageHorizontal,
+      CsSpacing.md,
+    ),
+    child: Text(
+      text.toUpperCase(),
+      style: CsTypography.eyebrow.copyWith(color: AppColors.secondaryOnDark),
+    ),
+  );
+}
+
+/// An interview in the horizontal row: a portrait photo with the title
+/// over its foot. Without a photo, the same card in deep green, title only.
+class _InterviewCard extends StatelessWidget {
+  final NewsArticle article;
+  final VoidCallback onTap;
+
+  static const double width = 172;
+  static const double height = 240;
+
+  const _InterviewCard({required this.article, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final hasImage = (article.imageUrl ?? '').isNotEmpty;
+    return SizedBox(
+      width: width,
+      child: Material(
+        color: AppColors.forestGreen,
+        borderRadius: BorderRadius.circular(16),
+        clipBehavior: Clip.antiAlias,
+        child: InkWell(
+          onTap: onTap,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              if (hasImage)
+                AppNetworkImage(
+                  article.imageUrl!,
+                  fit: BoxFit.cover,
+                  alignment: Alignment(article.alignmentX, article.alignmentY),
+                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                ),
+              const DecoratedBox(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    stops: [0.45, 1],
+                    colors: [Colors.transparent, AppColors.heroGradientEnd],
+                  ),
+                ),
+              ),
+              Positioned(
+                left: 12,
+                right: 12,
+                bottom: 12,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      article.title,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: CsTypography.placeTitle.copyWith(
+                        fontSize: 17,
+                        color: AppColors.ivory,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      formatNewsDate(article.publishedAt),
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.secondaryOnDark,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
 
 /// One article row. [NewsArticle.imageUrl] is genuinely optional —

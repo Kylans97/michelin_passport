@@ -1,3 +1,5 @@
+import 'package:flutter/widgets.dart' show Alignment;
+
 /// One News V1 article — minimal by design (News V1 spec): title, body,
 /// an optional image, an optional single outbound link (matching
 /// `events.official_url`'s own shape), and `published_at`, the date this
@@ -8,6 +10,11 @@
 /// real Markdown. See `news_articles.body`'s own migration comment.
 class NewsArticle {
   final String id;
+
+  /// Where the article sits on the News tab (news_articles.section,
+  /// 20261101270000): the one [NewsSection.about] heads it as "Why
+  /// Mantelier", then [NewsSection.interview], then [NewsSection.story].
+  final NewsSection section;
   final String title;
   final String body;
   final String? imageUrl;
@@ -24,6 +31,7 @@ class NewsArticle {
 
   const NewsArticle({
     required this.id,
+    this.section = NewsSection.story,
     required this.title,
     required this.body,
     this.imageUrl,
@@ -35,6 +43,7 @@ class NewsArticle {
 
   factory NewsArticle.fromJson(Map<String, dynamic> json) => NewsArticle(
     id: json['id'] as String,
+    section: NewsSection.fromWire(json['section'] as String?),
     title: json['title'] as String,
     body: json['body'] as String,
     imageUrl: json['image_url'] as String?,
@@ -60,4 +69,97 @@ class NewsArticle {
       .map((p) => p.trim())
       .where((p) => p.isNotEmpty)
       .toList();
+
+  /// [paragraphs], each read for the two prefixes the body may carry
+  /// (20261101270000): "Q: " for an interviewer's question, "> " for a
+  /// pull quote. Anything else is plain text.
+  List<NewsBlock> get blocks => [
+    for (final p in paragraphs)
+      if (p.startsWith('Q:'))
+        NewsBlock(NewsBlockKind.question, p.substring(2).trim())
+      else if (p.startsWith('>'))
+        NewsBlock(NewsBlockKind.quote, p.substring(1).trim())
+      else
+        NewsBlock(NewsBlockKind.text, p),
+  ];
+}
+
+enum NewsSection {
+  about,
+  interview,
+  story;
+
+  /// Unknown or missing (an older row, a newer server) reads as a story,
+  /// the plain list — never hidden.
+  static NewsSection fromWire(String? value) => switch (value) {
+    'about' => NewsSection.about,
+    'interview' => NewsSection.interview,
+    _ => NewsSection.story,
+  };
+}
+
+enum NewsBlockKind { text, question, quote }
+
+class NewsBlock {
+  const NewsBlock(this.kind, this.text);
+
+  final NewsBlockKind kind;
+  final String text;
+}
+
+/// A photo inside an article (news_article_photos, 20261101270000).
+/// [afterParagraph] 0 is before the first paragraph, n after paragraph n.
+class NewsArticlePhoto {
+  final String id;
+  final String imageUrl;
+  final String? caption;
+  final int afterParagraph;
+  final int displayOrder;
+  final double focusX;
+  final double focusY;
+
+  const NewsArticlePhoto({
+    required this.id,
+    required this.imageUrl,
+    this.caption,
+    this.afterParagraph = 0,
+    this.displayOrder = 0,
+    this.focusX = 0.5,
+    this.focusY = 0.5,
+  });
+
+  factory NewsArticlePhoto.fromJson(Map<String, dynamic> json) =>
+      NewsArticlePhoto(
+        id: json['id'] as String,
+        imageUrl: json['image_url'] as String,
+        caption: json['caption'] as String?,
+        afterParagraph: (json['after_paragraph'] as num?)?.toInt() ?? 0,
+        displayOrder: (json['display_order'] as num?)?.toInt() ?? 0,
+        focusX: ((json['focus_x'] as num?) ?? 0.5).toDouble(),
+        focusY: ((json['focus_y'] as num?) ?? 0.5).toDouble(),
+      );
+
+  Alignment get alignment => Alignment(focusX * 2 - 1, focusY * 2 - 1);
+}
+
+/// [photos] grouped by where they go, each group in display order: one
+/// photo shows full width, two or more as a gallery. A place past the
+/// last paragraph moves to the end.
+Map<int, List<NewsArticlePhoto>> groupNewsPhotos(
+  List<NewsArticlePhoto> photos,
+  int paragraphCount,
+) {
+  final sorted = [...photos]
+    ..sort((a, b) {
+      final byPlace = a.afterParagraph.compareTo(b.afterParagraph);
+      return byPlace != 0 ? byPlace : a.displayOrder.compareTo(b.displayOrder);
+    });
+  final groups = <int, List<NewsArticlePhoto>>{};
+  for (final photo in sorted) {
+    final place = photo.afterParagraph > paragraphCount
+        ? paragraphCount
+        : photo.afterParagraph;
+    groups.putIfAbsent(place, () => []).add(photo);
+  }
+  return groups;
 }

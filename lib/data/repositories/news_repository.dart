@@ -22,13 +22,32 @@ class NewsRepository {
     final rows = await _client
         .from('news_articles')
         .select(
-          'id, title, body, image_url, link_url, published_at, '
+          'id, section, title, body, image_url, link_url, published_at, '
           'focus_x, focus_y',
         )
         .order('published_at', ascending: false);
     return (rows as List)
         .map((r) => NewsArticle.fromJson(r as Map<String, dynamic>))
         .toList();
+  }
+
+  /// The photos inside [articleId] (news_article_photos,
+  /// 20261101270000), in reading order. The header photo is the
+  /// article's own image_url, not one of these.
+  Future<List<NewsArticlePhoto>> loadPhotos(String articleId) async {
+    final rows = await _client
+        .from('news_article_photos')
+        .select(
+          'id, image_url, caption, after_paragraph, display_order, '
+          'focus_x, focus_y',
+        )
+        .eq('news_article_id', articleId)
+        .order('after_paragraph')
+        .order('display_order');
+    return [
+      for (final row in rows as List)
+        NewsArticlePhoto.fromJson(row as Map<String, dynamic>),
+    ];
   }
 
   /// The restaurants/hotels/chefs linked to [articleId] — mirrors
@@ -57,8 +76,7 @@ class NewsRepository {
     final chefLinks = await chefLinksFuture;
 
     final restaurantIds = [
-      for (final row in restaurantLinks as List)
-        row['restaurant_id'] as String,
+      for (final row in restaurantLinks as List) row['restaurant_id'] as String,
     ];
     final hotelIds = [
       for (final row in hotelLinks as List) row['hotel_id'] as String,
