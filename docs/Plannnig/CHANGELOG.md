@@ -47,8 +47,21 @@ The format follows Keep a Changelog.
   copy of production's restaurant ids and cuisine ids (QA-420–QA-426).
   **Applied to production 2026-11-02**, in that order: 5053 links, 0
   restaurants with `cuisine_id` out of step, unique slug index in place.
-  **Ledger: 130, local and remote in agreement.** No app build reads
-  the new columns yet.
+  **Ledger: 130, local and remote in agreement.**
+- **Cuisine in the app.** Explore's Restaurants search gets a second
+  compact control beside the country one, "All cuisines ▾", opening a
+  sheet of cuisine families to tick (any number); the control itself is
+  the active-filter summary ("Japanese +1"), so there is no new chip row.
+  It offers only families some restaurant has (`getCuisineFamilies`) and
+  filters with an overlap on `cuisine_family_slugs`. Free search also
+  matches `cuisine_search`, so "sushi" or "japanese" finds restaurants the
+  way a city does; each word may still match a different field ("sushi
+  tokyo"). The restaurant page shows the cuisine as MICHELIN names it
+  ("Japanese · Sushi") under the city line, and nothing when none is
+  known. `restaurantFullColumns` now selects `cuisine_names` and
+  `cuisine_family_slugs`, which are live since 2026-11-02, so this build
+  has no ordering hazard. Tests: `test/restaurant_cuisines_test.dart`
+  (13), the live view-columns test, and the full suite (2745) pass.
 
 - **A welcome for venue hosts**, in three places that share one text:
   Mantelier is international, so write in English; events are

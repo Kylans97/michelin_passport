@@ -796,6 +796,17 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                       color: AppColors.taupe,
                     ),
                   ),
+                  // The cuisine, as MICHELIN names it, in the same quiet
+                  // register; nothing when none is known.
+                  if (restaurant.cuisineLabel case final cuisine?) ...[
+                    const SizedBox(height: CsSpacing.xs),
+                    Text(
+                      cuisine,
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    ),
+                  ],
                   if (_hasAwardHistory) ...[
                     const SizedBox(height: CsSpacing.sm),
                     AwardHistoryAction(onTap: _openAwardHistory),
