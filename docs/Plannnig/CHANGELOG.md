@@ -28,11 +28,19 @@ The format follows Keep a Changelog.
     the verified location fields) never included them. The comment and
     tests now record the change, and the previous value stays on each
     edit row.
-- **The review queue has a tab per topic**: Claims, Profiles (about
-  texts, team, Instagram), Photos, Events (new and changed), Contact
-  (website and phone changes), Reports. Each shows its count and opens
-  on the first with something waiting, so no topic disappears under a
-  long list of another.
+- **The review queue is grouped by topic, with one filter**: Claims,
+  Profiles (about texts, team, Instagram), Photos, Events (new and
+  changed), Contact (website and phone changes), Reports. Each topic is
+  a heading with its count, so no topic disappears under a long list of
+  another. One compact "All topics · 12 ▾" control narrows the list to a
+  single topic. Its sheet shows per topic whether anything is waiting:
+  a green dot and "2 waiting", or a muted "Nothing waiting".
+  - A tab per topic was tried first, but six tabs didn't fit on a phone
+    (the product owner saw "Contact" and "Reports" cut off), so it
+    became the filter.
+  - The filter's seven-row sheet then overflowed the default sheet
+    height; the widget test caught that, and the sheet now grows with
+    its content and scrolls.
 - **Everything that needs an admin is now in the review queue.** Two
   things weren't:
   - **member reports** (a photo, rating, profile or event) reached

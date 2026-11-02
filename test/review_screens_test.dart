@@ -225,7 +225,8 @@ void main() {
   });
 
   group('ReviewQueueScreen', () {
-    testWidgets('a tab per topic with counts', (tester) async {
+    testWidgets('a heading per topic with counts, and one filter that shows '
+        'what is waiting per topic', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: ReviewQueueScreen(
@@ -234,16 +235,24 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      // One tab per topic, with its count; it opens on the first with
-      // something waiting.
-      expect(find.text('Claims · 1'), findsOneWidget);
-      expect(find.text('Profiles · 1'), findsOneWidget);
-      expect(find.text('Photos · 1'), findsOneWidget);
-      expect(find.text('Events'), findsOneWidget);
-      expect(find.text('Flore · Amsterdam'), findsOneWidget);
+      expect(find.text('All topics · 3'), findsOneWidget);
+      expect(find.text('CLAIMS · 1'), findsOneWidget);
+      expect(find.text('PROFILES · 1'), findsOneWidget);
+      expect(find.text('PHOTOS · 1'), findsOneWidget);
+      expect(find.text('Flore · Amsterdam'), findsNWidgets(3));
 
-      await tester.tap(find.text('Photos · 1'));
+      // The filter says per topic whether anything is waiting.
+      await tester.tap(find.text('All topics · 3'));
       await tester.pumpAndSettle();
+      expect(find.text('3 waiting'), findsOneWidget);
+      expect(find.text('1 waiting'), findsNWidgets(3));
+      expect(find.text('Nothing waiting'), findsNWidgets(3));
+
+      await tester.tap(find.text('Photos'));
+      await tester.pumpAndSettle();
+      expect(find.text('Photos · 1'), findsOneWidget);
+      expect(find.text('PHOTOS · 1'), findsOneWidget);
+      expect(find.text('CLAIMS · 1'), findsNothing);
       expect(find.text('Flore · Amsterdam'), findsOneWidget);
     });
 
@@ -252,7 +261,7 @@ void main() {
         MaterialApp(home: ReviewQueueScreen(repository: _FakeReviewRepo())),
       );
       await tester.pumpAndSettle();
-      expect(find.text('Nothing waiting under claims.'), findsOneWidget);
+      expect(find.text('Nothing waiting for review.'), findsOneWidget);
     });
   });
 
@@ -375,7 +384,7 @@ void main() {
       expect(repo.calls, ['missingHandled:missing_listing-1']);
     });
 
-    testWidgets('they sit under their own tabs', (tester) async {
+    testWidgets('they sit under their own topics', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: ReviewQueueScreen(
@@ -386,12 +395,9 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.text('Contact · 1'), findsOneWidget);
-      expect(find.text('Reports · 2'), findsOneWidget);
-      // Opens on the first topic with something waiting.
+      expect(find.text('CONTACT · 1'), findsOneWidget);
+      expect(find.text('REPORTS · 2'), findsOneWidget);
       expect(find.text('Flore · Amsterdam'), findsOneWidget);
-      await tester.tap(find.text('Reports · 2'));
-      await tester.pumpAndSettle();
       expect(find.text('REPORTED BY MEMBERS · 1'), findsOneWidget);
       expect(find.text('MISSING LISTINGS · 1'), findsOneWidget);
       expect(find.text('Somewhere New · Utrecht'), findsOneWidget);

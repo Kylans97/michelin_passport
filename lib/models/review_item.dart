@@ -66,7 +66,7 @@ enum ReviewKind {
     ReviewKind.venueClaim => 'VENUE CLAIMS',
     ReviewKind.venueAbout => 'ABOUT TEXTS',
     ReviewKind.venuePhoto => 'PHOTOS',
-    ReviewKind.venueEvent => 'EVENTS',
+    ReviewKind.venueEvent => 'NEW EVENTS',
     ReviewKind.venueEventEdit => 'CHANGES TO LIVE EVENTS',
     ReviewKind.venueTeam => 'TEAM',
     ReviewKind.venueInstagram => 'INSTAGRAM',
