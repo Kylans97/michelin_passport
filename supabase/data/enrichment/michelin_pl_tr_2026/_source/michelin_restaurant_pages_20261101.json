@@ -1,0 +1,1763 @@
+{
+ "fetched_at": "2026-11-01T19:24:16Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/silesia/pszczyna_2382223/restaurant/steampunk",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/silesia/pszczyna_2382223/restaurant/steampunk",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "8th Floor, Wodna Wieża, ul. Jana Kilińskiego 5",
+     "addressLocality": "Pszczyna",
+     "postalCode": "43-200",
+     "addressCountry": "POL",
+     "addressRegion": "Silesia"
+    },
+    "name": "Steampunk",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/6c4d5dbf47ae46e68111fd2c21977271.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:21",
+     "name": "Steampunk",
+     "description": "Everything about this restaurant is striking: its location on the eight floor of a converted water tower; its quirky interior design that feels like it’s been pulled from a HG Wells novel; and of ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 32 438 85 84",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/silesia/pszczyna_2382223/restaurant/steampunk",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 49.9742373,
+    "longitude": 18.9437731,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.9742373%2C18.9437731"
+   },
+   "website": "https://wodna-wieza.pl/steampunk-restauracja/",
+   "tel_link": "tel:+48 32 438 85 84",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Steampunk – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Steampunk – Pszczyna - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/rozbrat-20",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/rozbrat-20",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "ul. Rozbrat 20",
+     "addressLocality": "Warsaw",
+     "postalCode": "00-447",
+     "addressCountry": "POL",
+     "addressRegion": "Mazovia"
+    },
+    "name": "Rozbrat 20",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/5bfcd8d169224c86a9eeebd966d3b209.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:21",
+     "name": "Rozbrat 20",
+     "description": "Managing to retain its neighbourhood feel while serving as a destination restaurant within the city, Rozbrat 20 has continued to evolve onwards and upwards over the years. Today, it’s a smart spot...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 690 125 270",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/rozbrat-20",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 52.2242187,
+    "longitude": 21.0350918,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=52.2242187%2C21.0350918"
+   },
+   "website": "https://rozbrat20.com.pl/",
+   "tel_link": "tel:+48 690 125 270",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Rozbrat 20 – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Rozbrat 20 – Warsaw - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "33rd Floor, Olivia Centre, Aleja Grunwaldzka 472c",
+     "addressLocality": "Gdańsk",
+     "postalCode": "80-309",
+     "addressCountry": "POL",
+     "addressRegion": "Pomerania"
+    },
+    "name": "Arco by Paco Pérez",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/ef3ff17bb6944f5ca2f276596410b76a.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:20",
+     "name": "Arco by Paco Pérez",
+     "description": "Located way up on the 33rd floor of northern Poland’s tallest building, this restaurant affords views over Gdańsk and out to the Baltic Sea. The cooking is equally spectacular, underpinned by ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 731 334 332",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 54.4035847,
+    "longitude": 18.5710527,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=54.4035847%2C18.5710527"
+   },
+   "website": "https://www.oliviastar.pl/restauracje/arco-by-paco-perez/",
+   "tel_link": "tel:+48 731 334 332",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Arco by Paco Pérez – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Arco by Paco Pérez – Gdańsk - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/nuta",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/nuta",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Plac Trzech Krzyży 10/14",
+     "addressLocality": "Warsaw",
+     "postalCode": "00-499",
+     "addressCountry": "POL",
+     "addressRegion": "Mazovia"
+    },
+    "name": "NUTA",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/d90a61dc7d3747f09fd11a1b9fc4fd72.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:21",
+     "name": "NUTA",
+     "description": "Chef Andrea Camastra hails from Puglia, lives in Poland and has a passion for Asian cuisine: all three of these have an influence over the tasting menus at his original restaurant. The ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 570 007 772",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/nuta",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 52.2290249,
+    "longitude": 21.023509,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=52.2290249%2C21.0235090"
+   },
+   "website": "https://nuta.com.pl/",
+   "tel_link": "tel:+48 570 007 772",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "NUTA – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "NUTA – Warsaw - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/lesser-poland/krakow/restaurant/bottiglieria-1881",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/lesser-poland/krakow/restaurant/bottiglieria-1881",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "ul. Bocheńska 5",
+     "addressLocality": "Kraków",
+     "postalCode": "31-061",
+     "addressCountry": "POL",
+     "addressRegion": "Lesser Poland"
+    },
+    "name": "Bottiglieria 1881",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/1a700266c9d9452cb9d97a5b0d1d00cf.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:20",
+     "name": "Bottiglieria 1881",
+     "description": "Go for the ‘Full Experience’ set menu to really discover the range and depth of Chef Przemysław Klima’s intriguing and sophisticated cuisine. The terse menu descriptions give little indication of ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 660 661 756",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/lesser-poland/krakow/restaurant/bottiglieria-1881",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 50.0486603,
+    "longitude": 19.9460552,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.0486603%2C19.9460552"
+   },
+   "website": "https://www.1881.com.pl/",
+   "tel_link": "tel:+48 660 661 756",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Bottiglieria 1881 – a Two Stars: Excellent cooking restaurant in the 2026 MICHELIN Guide Poland. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Bottiglieria 1881 – Kraków - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/most",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/most",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Księcia Witolda 1",
+     "addressLocality": "Wrocław",
+     "postalCode": "50-202",
+     "addressCountry": "POL",
+     "addressRegion": "Lower Silesian"
+    },
+    "name": "Most",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/8f181383f506431eb947e8009e3b1a51.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:21",
+     "name": "Most",
+     "description": "Located to the rear of the Między Mostami restaurant in a riverside property, Most is the team’s smaller, more formal offering specialising in superbly crafted tasting menus. One-word menu ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 733 694 444",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/most",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 51.1148091,
+    "longitude": 17.0312538,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=51.1148091%2C17.0312538"
+   },
+   "website": "https://miedzy-mostami.pl",
+   "tel_link": "tel:+48 733 694 444",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Most – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Most – Wrocław - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Nożownicza 1D",
+     "addressLocality": "Wrocław",
+     "postalCode": "50-119",
+     "addressCountry": "POL",
+     "addressRegion": "Lower Silesian"
+    },
+    "name": "BABA",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/f64beb93803b403292bde6a169c657a0.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:21",
+     "name": "BABA",
+     "description": "Operated by the well-known Chef Beata Śniechowska, this modern bistro is one of those spots where you just know you’re going to have a good time. Closely set tables add to the intimacy and buzz of...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 797 178 694",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "A moderate spend",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 51.1127484,
+    "longitude": 17.0318258,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=51.1127484%2C17.0318258"
+   },
+   "website": "https://baba.wroclaw.pl/",
+   "tel_link": "tel:+48 797 178 694",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "BABA – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "BABA – Wrocław - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/hub-praga",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/hub-praga",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Jagiellońska 22/LU1",
+     "addressLocality": "Warsaw",
+     "postalCode": "03-719",
+     "addressCountry": "POL",
+     "addressRegion": "Mazovia"
+    },
+    "name": "hub.praga",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/8c4abe5e594b44be8cef55e6c9da4e2f.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:21",
+     "name": "hub.praga",
+     "description": "A century-old building on the eastern side of the Vistula River is home to this contemporary yet intimate restaurant. Chef Witek Iwański offers a choice of two tasting menus, both of which ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 570 610 550",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/hub-praga",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 52.2512002,
+    "longitude": 21.035961,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=52.2512002%2C21.0359610"
+   },
+   "website": "https://hub-praga.pl/",
+   "tel_link": "tel:+48 570 610 550",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "hub.praga – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "hub.praga – Warsaw - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/wielkopolskie/poznan_2395985/restaurant/muga",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/wielkopolskie/poznan_2395985/restaurant/muga",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "ul. Krysiewicza 5",
+     "addressLocality": "Poznań",
+     "postalCode": "61-825",
+     "addressCountry": "POL",
+     "addressRegion": "Wielkopolskie"
+    },
+    "name": "Muga",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/7e50425beab846929a1836ce1f485c6e.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:21",
+     "name": "Muga",
+     "description": "Setting a high standard in the Poznań dining scene for many years, Muga is an elegant place with plush, understated décor and classically formal service that mirrors the surroundings. The ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 61 855 10 35",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/wielkopolskie/poznan_2395985/restaurant/muga",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 52.4038298,
+    "longitude": 16.9288155,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=52.4038298%2C16.9288155"
+   },
+   "website": "https://www.restauracjamuga.pl/",
+   "tel_link": "tel:+48 61 855 10 35",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Muga – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Muga – Poznań - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/lesser-poland/koscielisko_2378757/restaurant/giewont",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/lesser-poland/koscielisko_2378757/restaurant/giewont",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "ul. Nędzy Kubińca 4",
+     "addressLocality": "Kościelisko",
+     "postalCode": "34-511",
+     "addressCountry": "POL",
+     "addressRegion": "Lesser Poland"
+    },
+    "name": "Giewont",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/8164575efcff4ae8bb9ed44947520a66.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:21",
+     "name": "Giewont",
+     "description": "Floor-to-ceiling glass windows ensure that a visit here will be accompanied by spectacular views of the eponymous mountain, which towers 1,895m above sea level. The spacious building is in total ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 727 004 647",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/lesser-poland/koscielisko_2378757/restaurant/giewont",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 49.2904379,
+    "longitude": 19.9217654,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.2904379%2C19.9217654"
+   },
+   "website": "https://restaurantgiewont.com/",
+   "tel_link": "tel:+48 727 004 647",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Giewont – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Giewont – Kościelisko - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/alon-omakase",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/alon-omakase",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "ul. Jana Pawła Woronicza 33C/lok.U4",
+     "addressLocality": "Warsaw",
+     "postalCode": "02-640",
+     "addressCountry": "POL",
+     "addressRegion": "Mazovia"
+    },
+    "name": "Alon Omakase",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/c19cde3d0b4f49b1bc41190ff16686b8.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-26T12:21",
+     "name": "Alon Omakase",
+     "description": "Offering a classic omakase experience on the outskirts of the city, this restaurant’s minimalist design is all the better for directing your focus towards Chef Alon Than and his team as they work ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+48 728 555 000",
+    "knowsLanguage": "en-PL",
+    "acceptsReservations": "No",
+    "servesCuisine": "Sushi",
+    "url": "https://guide.michelin.com/en/masovia/warsaw/restaurant/alon-omakase",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "PLN",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 52.1886443,
+    "longitude": 20.9915195,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=52.1886443%2C20.9915195"
+   },
+   "website": "https://omakase.eu/",
+   "tel_link": "tel:+48 728 555 000",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Alon Omakase – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Poland. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Alon Omakase – Warsaw - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ulupelit Köyü, Seçilmiş Sokak No:2, Şile",
+     "addressLocality": "Istanbul",
+     "postalCode": "34980",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul Province"
+    },
+    "name": "Casa Lavanda",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/8c5c0a0ff6084d508e40615f44ddcb48.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Casa Lavanda",
+     "description": "Casa Lavanda is a haven of tranquillity some 40km from Istanbul. The family-run business includes both a hotel and this restaurant, authentic to its core and adorned with artwork by the ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 216 736 56 40",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Traditional Cuisine",
+    "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 41.0871196,
+    "longitude": 29.5117319,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.0871196%2C29.5117319"
+   },
+   "website": "https://www.casalavanda.com.tr/",
+   "tel_link": "tel:+90 216 736 56 40",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Casa Lavanda – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Casa Lavanda – Istanbul - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/nar%C4%B1mor",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/nar%C4%B1mor",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Sıra Mahallesi, Eren Sokak, Urla",
+     "addressLocality": "Izmir",
+     "postalCode": "35320",
+     "addressCountry": "TUR",
+     "addressRegion": "İzmir"
+    },
+    "name": "Narımor",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/beb47cb2486e41d589b2f4a50ada11fa.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Narımor",
+     "description": "Atilla Heilbronn serves up a distinctive take on Turkish cuisine. Having grown up in Germany and worked at several top-flight establishments, he has now set up shop at this stylish boutique hotel....",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 554 190 12 02",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Turkish",
+    "url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/nar%C4%B1mor",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 38.3193131,
+    "longitude": 26.7672542,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.3193131%2C26.7672542"
+   },
+   "website": "https://narimorurla.com/fine-dining",
+   "tel_link": "tel:+90 554 190 12 02",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Narımor – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Narımor – Izmir - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/neolokal",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/neolokal",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Arap Camii Mahallesi, Bankalar Caddesi No:11/1, Beyoğlu",
+     "addressLocality": "Istanbul",
+     "postalCode": "34420",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul Province"
+    },
+    "name": "Neolokal",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/4e48b22b17e5480f8066d416dc025a2d.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Neolokal",
+     "description": "Neolokal bridges the gap between old and new. Respect for Turkish culinary traditions provides the foundation on which this restaurant is able to constantly renew itself. Flavours from the past ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 551 447 45 45",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Turkish",
+    "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/neolokal",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 41.0239621,
+    "longitude": 28.973378,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.0239621%2C28.9733780"
+   },
+   "website": "https://www.neolokal.com/",
+   "tel_link": "tel:+90 551 447 45 45",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Neolokal – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Neolokal – Istanbul - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Dirmil Mahallesi, 6885. Sokak No:3",
+     "addressLocality": "Bodrum",
+     "postalCode": "48990",
+     "addressCountry": "TUR",
+     "addressRegion": "Muğla"
+    },
+    "name": "Mezra Yalıkavak",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/fcbd695e69e2408caf5b1db7f0840ad2.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Mezra Yalıkavak",
+     "description": "Huge floor-to-ceiling windows lend this lofty industrial-style, design-forward restaurant an open feel. The two VIP tables tucked into the corners of the upper level and the marble counter seats ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 532 232 72 74",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Farm to table",
+    "url": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.1149719,
+    "longitude": 27.3254393,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.1149719%2C27.3254393"
+   },
+   "website": "https://www.mezrayalikavak.com/",
+   "tel_link": "tel:+90 532 232 72 74",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Mezra Yalıkavak – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Mezra Yalıkavak – Bodrum - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Dirmil Mahallesi, Balyek Caddesi No:5A, Yalıkavak",
+     "addressLocality": "Bodrum",
+     "postalCode": "48400",
+     "addressCountry": "TUR",
+     "addressRegion": "Muğla"
+    },
+    "name": "Kitchen By Osman Sezener",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/1f6dd82b77b44ba0be87528d53bd2b1a.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Kitchen By Osman Sezener",
+     "description": "Osman Sezener and his team propose an original and cosmopolitan take on Turkish cuisine. Produce from the region takes centre stage and it is always guaranteed to be fresh and flavourful. The ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 252 311 31 35",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.1149915,
+    "longitude": 27.3109897,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.1149915%2C27.3109897"
+   },
+   "website": "https://www.editionhotels.com/bodrum/restaurants-and-bars/kitchen/",
+   "tel_link": "tel:+90 252 311 31 35",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Kitchen By Osman Sezener – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Kitchen By Osman Sezener – Bodrum - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/nevsehir/urgup_2827493/restaurant/revithia",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/nevsehir/urgup_2827493/restaurant/revithia",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Temenni Mahallesi, Eski Kayakapı Mahallesi, Davut Ağa Sokak No:1",
+     "addressLocality": "Ürgüp",
+     "postalCode": "50400",
+     "addressCountry": "TUR",
+     "addressRegion": "Nevşehir"
+    },
+    "name": "Revithia",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/92b813135f8c45e8a50a5944f52603aa.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Revithia",
+     "description": "Before you've even taken a bite, Revithia captures your heart. The restaurant is set in Kayakapi – the name of both the hotel and the UNESCO-listed historic neighbourhood. Inside, the traditional ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 384 341 88 77",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Country cooking",
+    "url": "https://guide.michelin.com/en/nevsehir/urgup_2827493/restaurant/revithia",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 38.6361046,
+    "longitude": 34.9066582,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.6361046%2C34.9066582"
+   },
+   "website": "https://www.kayakapi.com/revithia",
+   "tel_link": "tel:+90 384 341 88 77",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Revithia – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Revithia – Ürgüp - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Bebek, Cevdet Paşa Caddesi No:34, Beşiktaş",
+     "addressLocality": "Istanbul",
+     "postalCode": "34342",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul Province"
+    },
+    "name": "Sankai by Nagaya",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/2f01a3052b3f4ef4b243fad77283a84c.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Sankai by Nagaya",
+     "description": "Yoshizumi Nagaya is a Japanese chef who is making waves in Düsseldorf. His mastery of Japanese tradition and technical precision is widely praised there. In Istanbul, he is living up to his ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 532 379 19 97",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Japanese Contemporary",
+    "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 41.0779114,
+    "longitude": 29.0441298,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.0779114%2C29.0441298"
+   },
+   "website": "https://sankai.com.tr/",
+   "tel_link": "tel:+90 532 379 19 97",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Sankai by Nagaya – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Sankai by Nagaya – Istanbul - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Göltürkbükü Mahallesi, Keleşharim Caddesi No:70",
+     "addressLocality": "Bodrum",
+     "postalCode": "48400",
+     "addressCountry": "TUR",
+     "addressRegion": "Muğla"
+    },
+    "name": "Maçakızı",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/b06db6cc57414eb2bbb30c5384f0c5ae.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Maçakızı",
+     "description": "Maçakızı does not give away its secrets easily. The drive that snakes along the narrow roads raises your expectations with each turn, until you arrive at this luxury hotel (the rooms are gorgeous!...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 252 311 24 00",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.1356417,
+    "longitude": 27.3806702,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.1356417%2C27.3806702"
+   },
+   "website": "https://www.macakizi.com/",
+   "tel_link": "tel:+90 252 311 24 00",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Maçakızı – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Maçakızı – Bodrum - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nicole",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nicole",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Tomtom Kaptan Sokak No:18, Beyoğlu",
+     "addressLocality": "Istanbul",
+     "postalCode": "34433",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul Province"
+    },
+    "name": "Nicole",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/63cf1b1bf03b4b14b056231d19b072b5.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Nicole",
+     "description": "This restaurant is named after Agnés Marthe Nicole, one of the Franciscan nuns and owners who lived here in the early 20C. A series of narrow lanes leads to the building, which, as you will see, ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 212 292 44 67",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nicole",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 41.0302119,
+    "longitude": 28.9777509,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.0302119%2C28.9777509"
+   },
+   "website": "https://nicole.com.tr/",
+   "tel_link": "tel:+90 212 292 44 67",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Nicole – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Nicole – Istanbul - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/vino-locale",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/vino-locale",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kuşçular Mahallesi, 8037. Sokak No:3, Urla",
+     "addressLocality": "Izmir",
+     "postalCode": "35430",
+     "addressCountry": "TUR",
+     "addressRegion": "İzmir"
+    },
+    "name": "Vino Locale",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/12e02543d95c41f986d97ccc8c397a0e.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Vino Locale",
+     "description": "Ozan and Seray Kumbasar make a formidable team who put their heart and soul into their restaurant. Seray wins hearts with her love for regional wines, presenting them with expertise and surprising...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 533 321 84 66",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Turkish",
+    "url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/vino-locale",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 38.2808906,
+    "longitude": 26.7467029,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.2808906%2C26.7467029"
+   },
+   "website": "https://www.urlavinolocale.com",
+   "tel_link": "tel:+90 533 321 84 66",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Vino Locale – a Two Stars: Excellent cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Vino Locale – Izmir - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Bomonti, Cumhuriyet Hacıahmet Silahşör Caddesi, Yeniyol Sokak No:2, Şişli",
+     "addressLocality": "Istanbul",
+     "postalCode": "34440",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul Province"
+    },
+    "name": "TURK FATİH TUTAK",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/33e52e89bd6e4cd7a858688a075e2109.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "TURK FATİH TUTAK",
+     "description": "Fatih Tutak expresses his love for his Turkish terroir by showcasing ingredients from the region and produce from local traders. This is a chef who cooks with respect for tradition and what nature...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 530 051 83 04",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 41.0584197,
+    "longitude": 28.9775024,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.0584197%2C28.9775024"
+   },
+   "website": "https://www.turkft.com/",
+   "tel_link": "tel:+90 530 051 83 04",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "TURK FATİH TUTAK – a Two Stars: Excellent cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "TURK FATİH TUTAK – Istanbul - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Etiler, Dilhayat Sokak No:28, Beşiktaş",
+     "addressLocality": "Istanbul",
+     "postalCode": "34337",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul Province"
+    },
+    "name": "Arkestra",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/58766fbb36ed4406a5344412c3f5121b.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Arkestra",
+     "description": "Cenk Debensason has travelled extensively over the years, and this has shaped his personality as a chef. In brief, he grew up in Istanbul, trained in France, and matured as a chef in the United ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 212 970 72 73",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Fusion",
+    "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 41.0782231,
+    "longitude": 29.0313777,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.0782231%2C29.0313777"
+   },
+   "website": "https://arkestra.com.tr/",
+   "tel_link": "tel:+90 212 970 72 73",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Arkestra – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Arkestra – Istanbul - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kapalı Bakkal Sokak No:8, Yeniköy/Sarıyer",
+     "addressLocality": "Istanbul",
+     "postalCode": "34464",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul Province"
+    },
+    "name": "Araka",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/dd89f531f7cf4d73a65d387c6f254f56.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Araka",
+     "description": "Here you’ll find it's easy to forget you're in the metropolis of Istanbul. You’re actually in the Yeniköy district, in the north of the city, just beyond the exclusive marina you pass on the way (...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 533 392 72 23",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 41.1171693,
+    "longitude": 29.0630471,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.1171693%2C29.0630471"
+   },
+   "website": "https://araka.com.tr/",
+   "tel_link": "tel:+90 533 392 72 23",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Araka – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Araka – Istanbul - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "AG/E İç Kapı, 19 Mayıs Mahallesi Sümer Sokak Sümko N Blok No:1, No:2, Kadıköy",
+     "addressLocality": "Istanbul",
+     "postalCode": "34742",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul Province"
+    },
+    "name": "Araf İstanbul",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/1593eef2ee1d4fa1a5d3dcc136d24126.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Araf İstanbul",
+     "description": "Kenan and Pınar Çetinkaya welcome you warmly to their intimate restaurant, where capacity is limited. A seat at the counter offers the perfect vantage point to watch the chefs expertly tame the ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 533 969 27 23",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Contemporary",
+    "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "A moderate spend",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 40.9788119,
+    "longitude": 29.0932956,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=40.9788119%2C29.0932956"
+   },
+   "website": "https://www.arafistanbul.com/",
+   "tel_link": "tel:+90 533 969 27 23",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Araf İstanbul – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Araf İstanbul – Istanbul - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kusçular Mahallesi, 8028. Sokak No:16, Urla",
+     "addressLocality": "Izmir",
+     "postalCode": "35437",
+     "addressCountry": "TUR",
+     "addressRegion": "İzmir"
+    },
+    "name": "Teruar Urla",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/a4968fddaf2a4b6aa8a58181c2c5f392.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Teruar Urla",
+     "description": "Dining at Teruar Urla gives rise to a sense of natural serenity – and that goes for both the drive along the vineyards and the atmosphere of this luxurious restaurant housed in a building of local...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 532 659 20 90",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Mediterranean Cuisine",
+    "url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 38.2524197,
+    "longitude": 26.739059,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.2524197%2C26.7390590"
+   },
+   "website": "https://www.teruarurla.com/",
+   "tel_link": "tel:+90 532 659 20 90",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Teruar Urla – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Teruar Urla – Izmir - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/od-urla",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/od-urla",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rüstem Mahallesi, Süt Pınarı Mevkii, 2018/9 Sokak No:28, Urla",
+     "addressLocality": "Izmir",
+     "postalCode": "35430",
+     "addressCountry": "TUR",
+     "addressRegion": "İzmir"
+    },
+    "name": "OD Urla",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/976ad2db04494840baf2f128945421dd.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "OD Urla",
+     "description": "A winding road takes you to the top of the hill, from where you get a first impression of Osman Sezener's world. Once you arrive at his family estate, you trade the view of olive trees and vines ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 532 696 39 30",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/od-urla",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 38.3446199,
+    "longitude": 26.7616803,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.3446199%2C26.7616803"
+   },
+   "website": "https://odurla.com",
+   "tel_link": "tel:+90 532 696 39 30",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "OD Urla – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "OD Urla – Izmir - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mikla",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mikla",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Meşrutiyet Caddesi No:15, 18th floor (18. kat), Tepebaşı/Beyoğlu",
+     "addressLocality": "Istanbul",
+     "postalCode": "34430",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul Province"
+    },
+    "name": "Mikla",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/25b0af60e5304756843b2d12af442491.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-04T01:12",
+     "name": "Mikla",
+     "description": "Mikla's New Anatolian Kitchen combines respect for tradition with a sense of innovation. The restaurant is an ambassador for the producers they work with, as well as for the great diversity of ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+90 212 293 56 56",
+    "knowsLanguage": "en-TR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Mediterranean Cuisine",
+    "url": "https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mikla",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "TRY",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 41.0311672,
+    "longitude": 28.9741604,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.0311672%2C28.9741604"
+   },
+   "website": "https://www.miklarestaurant.com/",
+   "tel_link": "tel:+90 212 293 56 56",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Mikla – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Türkiye. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Mikla – Istanbul - a MICHELIN Guide Restaurant"
+  }
+ ]
+}

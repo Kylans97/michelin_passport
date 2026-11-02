@@ -1,0 +1,2100 @@
+{
+ "fetched_at": "2026-11-01T19:22:20Z",
+ "heads": {
+  "PL": [
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/poland",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/poland",
+    "total": "79 hotels",
+    "cards": 53
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/poland/page/2",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/poland/page/2",
+    "total": "79 hotels",
+    "cards": 36
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/poland/page/3",
+    "status": 404,
+    "final": "https://guide.michelin.com/en/hotels-stays/poland/page/3",
+    "total": null,
+    "cards": 5
+   }
+  ],
+  "TR": [
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/turkey",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/turkey",
+    "total": "100 hotels",
+    "cards": 53
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/turkey/page/2",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/turkey/page/2",
+    "total": "100 hotels",
+    "cards": 53
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/turkey/page/3",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/turkey/page/3",
+    "total": "100 hotels",
+    "cards": 9
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/turkey/page/4",
+    "status": 404,
+    "final": "https://guide.michelin.com/en/hotels-stays/turkey/page/4",
+    "total": null,
+    "cards": 5
+   }
+  ]
+ },
+ "rows": [
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "10555",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Indigo Kraków",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/hotel-indigo-krakow-10555"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "6980",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "H15 Boutique Hotel",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/h15-boutique-hotel-6980"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14254",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "pl",
+   "name": "Jaskolka Dom i SPA",
+   "city": "Szklarska Poręba",
+   "url": "https://guide.michelin.com/en/hotels-stays/szklarskapor%C4%99ba/jaskolka-dom-i-spa-14254"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14325",
+   "distinction": "ONE_KEY",
+   "hotel_country": "pl",
+   "name": "Zamek Łeba",
+   "city": "Łeba",
+   "url": "https://guide.michelin.com/en/hotels-stays/leba/zamek-leba-14325"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "15800",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Grano Hotel Solmarina & Apartments - SPA & Wellness",
+   "city": "Wislinka",
+   "url": "https://guide.michelin.com/en/hotels-stays/wislinka/grano-hotel-solmarina-apartments-spa-wellness-15800"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "308",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Nobu Warsaw",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/nobu-hotel-warsaw-308"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12568",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Warszauer Hotel",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/warszauer-hotel-12568"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "7169",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Galery69",
+   "city": "Warmian-Masurian",
+   "url": "https://guide.michelin.com/en/hotels-stays/warmian-masurian/galery69-7169"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12319",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Mercure Krakow Fabryczna City",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/mercure-krakow-fabryczna-city-122303-12319"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "10420",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Indigo Warsaw Nowy Świat",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/indigo-warsaw-nowy-swiat-10420"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12834",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "InterContinental Warszawa",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/intercontinental-warszawa-12834"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "2691",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Blow Up Hall",
+   "city": "Poznan",
+   "url": "https://guide.michelin.com/en/hotels-stays/poznan/blow-up-hall-2691"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13790",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Szczawnica Park Resort & Spa",
+   "city": "Szczawnica",
+   "url": "https://guide.michelin.com/en/hotels-stays/szczawnica/szczawnica-park-resort-spa-13790"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "17635",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel SPA Dr Irena Eris Krynica Zdrój 12+",
+   "city": "Krynica Zdrój",
+   "url": "https://guide.michelin.com/en/hotels-stays/Krynica-Zdr%C3%B3j/hotel-spa-dr-irena-eris-krynica-zdroj-12-17635"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "16896",
+   "distinction": "ONE_KEY",
+   "hotel_country": "pl",
+   "name": "Heron Live Hotel",
+   "city": "Sienna",
+   "url": "https://guide.michelin.com/en/hotels-stays/sienna/heron-live-hotel-16896"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "11432",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "pl",
+   "name": "Hotel Copernicus",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/hotel-copernicus-11432"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13408",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "pl",
+   "name": "Raffles Europejski Warsaw",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/raffles-europejski-warsaw-123592-13408"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13252",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Pod Różą",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/hotel-pod-roza-13252"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "10514",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Queen Boutique Hotel",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/queen-boutique-hotel-10514"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13818",
+   "distinction": "ONE_KEY",
+   "hotel_country": "pl",
+   "name": "Stradom House, Autograph Collection",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/stardom-house-13818"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14783",
+   "distinction": "ONE_KEY",
+   "hotel_country": "pl",
+   "name": "Hotel Altus Palace",
+   "city": "Wrocław",
+   "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/hotel-altus-palace-14783"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14836",
+   "distinction": "ONE_KEY",
+   "hotel_country": "pl",
+   "name": "Pałac Ciekocinko Hotel Resort & Wellness",
+   "city": "Ciekocinko",
+   "url": "https://guide.michelin.com/en/hotels-stays/Ciekocinko/paac-ciekocinko-hotel-resort-wellness-14836"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "7546",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Stary Hotel ",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/stary-hotel-7546"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "6369",
+   "distinction": "ONE_KEY",
+   "hotel_country": "pl",
+   "name": "Hotel Bristol, A Luxury Collection Hotel, Warsaw",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/hotel-bristol-a-luxury-collection-hotel-warsaw-6369"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "6370",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Mamaison Hotel Le Regina Warsaw",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/mamaison-hotel-le-regina-warsaw-6370"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12514",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "PURO Warszawa Centrum",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/puro-warszawa-centrum-12514"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12307",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "PURO Kraków Kazimierz",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/puro-krakow-kazimierz-12307"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "10403",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Puro Kraków Stare Miasto",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/puro-krakow-stare-miasto-10403"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13254",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Bachleda Kraków - MGallery",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/bachleda-luxury-hotel-krakow-mgallery-13254"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13961",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "pl",
+   "name": "EN Hotel",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/enhotel-13961"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12511",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "PURO Gdańsk Stare Miasto",
+   "city": "Gdańsk",
+   "url": "https://guide.michelin.com/en/hotels-stays/Gda%C5%84sk-1/puro-gdansk-stare-miasto-12511"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12515",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "PURO Poznań Stare Miasto",
+   "city": "Poznan",
+   "url": "https://guide.michelin.com/en/hotels-stays/poznan/puro-poznan-stare-miasto-12515"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "10457",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Sofitel Warsaw Victoria",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/sofitel-warsaw-victoria-10457"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14010",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "pl",
+   "name": "Quadrille",
+   "city": "Gdynia",
+   "url": "https://guide.michelin.com/en/hotels-stays/Gdynia/relais-chateaux-hotel-quadrille-adults-only-14010"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13217",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Warszawa",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/hotel-warszawa-123342-13217"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13578",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Verte, Warsaw, Autograph Collection",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/hotel-verte-warsaw-autograph-collection-13578"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12513",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "PURO Łódź Centrum",
+   "city": "Łódź",
+   "url": "https://guide.michelin.com/en/hotels-stays/%C5%81%C3%B3d%C5%BA/puro-odz-centrum-12513"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13046",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "City Solei",
+   "city": "Poznan",
+   "url": "https://guide.michelin.com/en/hotels-stays/poznan/city-solei-13046"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14824",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "PURO Warsaw Stare Miasto",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/puro-warsaw-stare-miasto-14824"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13048",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Liberte 33",
+   "city": "Poznan",
+   "url": "https://guide.michelin.com/en/hotels-stays/poznan/hotel-liberte-33-13048"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14007",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Rezydent Sopot - MGallery",
+   "city": "Sopot",
+   "url": "https://guide.michelin.com/en/hotels-stays/Sopot/rezydent-sopot-mgallery-hotel-collection-14007"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "13966",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Aries Hotel & SPA Zakopane",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/aries-hotel-spa-zakopane-13966"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14832",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Zinar Castle",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/zinar-castle-14832"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14821",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Teatro Boutique Old Town",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/hotel-teatro-boutique-old-town-14821"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12512",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "PURO Wrocław Stare Miasto",
+   "city": "Wrocław",
+   "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/puro-wrocaw-stare-miasto-12512"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14829",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Unicus Palace Old Town",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/hotel-unicus-palace-old-town-14829"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14828",
+   "distinction": "ONE_KEY",
+   "hotel_country": "pl",
+   "name": "H15 Palace, a Luxury Collection Hotel",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/h15-luxury-palace-14828"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "14822",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Flaner Hotel",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/flaner-hotel-14822"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "PL",
+   "page": 1,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14820",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Moxy Warsaw Praga",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/moxy-warsaw-praga-14820"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14149",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Mercure Krakow Stare Miasto",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/mercure-krakow-stare-miasto-14149"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13971",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Villa Milimani - Zakopane",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/villa-milimani-zakopane-13971"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14835",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "The Bridge Wroclaw - MGallery",
+   "city": "Wrocław",
+   "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/the-bridge-wroclaw-mgallery-14835"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14786",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Monopol",
+   "city": "Wrocław",
+   "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/hotel-monopol-14786"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13970",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Villa Nova Zakopane",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/villa-nova-124280-13970"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13969",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Nosalowy Park Hotel & Spa",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/nosalowy-park-hotel-spa-13969"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13968",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Biała Owca",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/biaa-owca-13968"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13967",
+   "distinction": "ONE_KEY",
+   "hotel_country": "pl",
+   "name": "Bachleda Residence Zakopane",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/bachleda-residence-zakopane-13967"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13965",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Rezydencja Nosalowy Dwór",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/rezydencja-nosalowy-dwor-13965"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13963",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Villa T Apartments & SPA",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/villa-t-apartments-spa-13963"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13131",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Ilonn Boutique Limanowskiego",
+   "city": "Poznan",
+   "url": "https://guide.michelin.com/en/hotels-stays/poznan/ilonn-boutique-limanowskiego-13131"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14831",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Balthazar Design Hotel",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/balthazar-design-hotel-14831"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14823",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Colette - LoftAffair Collection",
+   "city": "Warsaw",
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/colette-loftaffair-collection-14823"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14784",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Herbal Hotel",
+   "city": "Wrocław",
+   "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/herbal-hotel-14784"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14897",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Cisowy Zakątek",
+   "city": "Sasino",
+   "url": "https://guide.michelin.com/en/hotels-stays/Sasino/cisowy-zakatek-14897"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14830",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel H15 Francuski Old Town",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/hotel-h15-francuski-old-town-14830"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13962",
+   "distinction": "ONE_KEY",
+   "hotel_country": "pl",
+   "name": "Stary Niedźwiedź",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/stary-niedzwiedz-13962"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "17433",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Palac Warmatowice Sienkiewiczowskie",
+   "city": "Warmatowice Sienkiewiczowskie",
+   "url": "https://guide.michelin.com/en/hotels-stays/Warmatowice-Sienkiewiczowskie/palac-warmatowice-sienkiewiczowskie-17433"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "17255",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Grand Hotel Łódź",
+   "city": "Lodz",
+   "url": "https://guide.michelin.com/en/hotels-stays/lodz/grand-hotel-odz-17255"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "17254",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Entre Hotel by Zdrojowa",
+   "city": "Wrocław",
+   "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/entre-hotel-by-zdrojowa-17254"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "17253",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Traugutta 12",
+   "city": "Lodz",
+   "url": "https://guide.michelin.com/en/hotels-stays/lodz/hotel-traugutta-12-17253"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "17252",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "ARCHE Klasztor Wrocław",
+   "city": "Wrocław",
+   "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/arche-klasztor-wrocaw-17252"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "17251",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Seidorf Luxury Wellness & Spa",
+   "city": "Silesia",
+   "url": "https://guide.michelin.com/en/hotels-stays/silesia/hotel-seidorf-luxury-wellness-spa-17251"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "17250",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Pietryna",
+   "city": "Lodz",
+   "url": "https://guide.michelin.com/en/hotels-stays/lodz/hotel-pietryna-17250"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "17249",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Złoty Groń Resort & Spa",
+   "city": "Istebna",
+   "url": "https://guide.michelin.com/en/hotels-stays/istebna/zoty-gron-resort-spa-17249"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "16830",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Teatr",
+   "city": "Krakow",
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/hotel-teatr-16830"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14785",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Haston Old Town",
+   "city": "Wrocław",
+   "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/old-town-haston-14785"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "14008",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Hotel Testa",
+   "city": "Sopot",
+   "url": "https://guide.michelin.com/en/hotels-stays/Sopot/hotel-testa-14008"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13964",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "Rysy Boutique Hotel",
+   "city": "Zakopane",
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/rysy-boutique-hotel-13964"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "13130",
+   "distinction": "SELECTED",
+   "hotel_country": "pl",
+   "name": "City Park Hotel & Residence",
+   "city": "Poznan",
+   "url": "https://guide.michelin.com/en/hotels-stays/poznan/city-park-hotel-residence-13130"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "PL",
+   "page": 2,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "3941",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "tr",
+   "name": "Argos in Cappadocia",
+   "city": "Nevsehir",
+   "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/argos-in-cappadocia-3941"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "5622",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Taskonaklar Hotel, Cappadocia",
+   "city": "Nevsehir",
+   "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/taskonaklar-hotel-cappadocia-5622"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "1911",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Tomtom Suites",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/tomtom-suites-1911"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "5656",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Macakizi",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/macakizi-5656"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "11898",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Bodrum Loft",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/bodrum-loft-11898"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "6604",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "tr",
+   "name": "Museum Hotel",
+   "city": "Nevsehir",
+   "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/museum-hotel-6604"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "9332",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Bebek Hotel by The Stay",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/bebek-hotel-by-the-stay-9332"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "422",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Witt Istanbul Hotel",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/witt-istanbul-hotel-422"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "7728",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "10 Karakoy Istanbul",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/10-karakoy-istanbul-7728"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "7047",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Gezi Hotel Bosphorus",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/gezi-hotel-bosphorus-7047"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "5547",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Hezen Cave Hotel",
+   "city": "Urgup",
+   "url": "https://guide.michelin.com/en/hotels-stays/urgup/hezen-cave-hotel-5547"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "8731",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "AJWA Sultanahmet",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/ajwa-sultanahmet-8731"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "5940",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Sacred House",
+   "city": "Urgup",
+   "url": "https://guide.michelin.com/en/hotels-stays/urgup/sacred-house-5940"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "11699",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Allium Bodrum Resort & Spa",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/allium-bodrum-resort-spa-11699"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "8005",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Ariana Sustainable Luxury Lodge",
+   "city": "Nevsehir",
+   "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/ariana-sustainable-luxury-lodge-8005"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "6447",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Doria Hotel Bodrum",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/doria-hotel-bodrum-6447"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "14743",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Bobo by The Stay",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/bobo-by-the-stay-14743"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "14075",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Maxx Royal Bodrum",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/maxx-royal-bodrum-14075"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "16948",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Aza Cave Hotel",
+   "city": "Goreme",
+   "url": "https://guide.michelin.com/en/hotels-stays/goreme/aza-cave-hotel-16948"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "16902",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Sultan Cave Suites",
+   "city": "Goreme",
+   "url": "https://guide.michelin.com/en/hotels-stays/goreme/sultan-cave-suites-16902"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "16742",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Flamm Bodrum",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/flamm-bodrum-16742"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "16537",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Hiddenbay Teos",
+   "city": "Seferihisar",
+   "url": "https://guide.michelin.com/en/hotels-stays/seferihisar/hiddenbay-teos-16537"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "15470",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Signature Cave Cappadocia, Trademark Collection by Wyndham",
+   "city": "Nevsehir",
+   "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/signature-cave-cappadocia-trademark-collection-by-wyndham-15470"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "15464",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Ahãma",
+   "city": "Fethiye",
+   "url": "https://guide.michelin.com/en/hotels-stays/fethiye/ahama-15464"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "15334",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Maxx Royal Kemer",
+   "city": "Kemer",
+   "url": "https://guide.michelin.com/en/hotels-stays/Kemer/maxx-royal-kemer-15334"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "15333",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Maxx Royal Belek Golf Resort",
+   "city": "Belek",
+   "url": "https://guide.michelin.com/en/hotels-stays/Belek/maxx-royal-belek-golf-resort-15333"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "7868",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Exedra Hotel Cappadocia",
+   "city": "Cappadocia",
+   "url": "https://guide.michelin.com/en/hotels-stays/cappadocia/exedra-hotel-cappadocia-7868"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "15155",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Orientbank Hotel Istanbul, Autograph Collection",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/orientbank-hotel-istanbul-autograph-collection-15155"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "15154",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Orient Occident Hotel Istanbul, Autograph Collection",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/orient-occident-hotel-istanbul-autograph-collection-15154"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "7054",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Kayakapi Premium Caves - Cappadocia",
+   "city": "Urgup",
+   "url": "https://guide.michelin.com/en/hotels-stays/urgup/kayakapi-premium-caves-cappadocia-7054"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "15004",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Casa Lavanda Boutique Hotel",
+   "city": "Şile",
+   "url": "https://guide.michelin.com/en/hotels-stays/%C5%9Eile/casa-lavanda-boutique-hotel-15004"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "6177",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Georges Hotel Galata",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/georges-hotel-galata-6177"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "4912",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Hotel Ibrahim Pasha",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/hotel-ibrahim-pasha-4912"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "7131",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "The Bank Hotel Istanbul",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-bank-istanbul-7131"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "12677",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Soho House Istanbul",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/soho-house-istanbul-12677"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "8245",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Lampa Design Hotel",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/lampa-design-hotel-8245"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "9358",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Six Senses Kaplankaya",
+   "city": "Bozbük",
+   "url": "https://guide.michelin.com/en/hotels-stays/bozb%C3%BCk/six-senses-kaplankaya-9358"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "8883",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "The Stay Nisantasi",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-stay-nisantasi-8883"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "9320",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Warehouse By The Stay",
+   "city": "Alacati",
+   "url": "https://guide.michelin.com/en/hotels-stays/alacati/warehouse-by-the-stay-9320"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "7725",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Alavya",
+   "city": "Alacati",
+   "url": "https://guide.michelin.com/en/hotels-stays/alacati/alavya-7725"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "6813",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Kuum Hotel & Spa ",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/kuum-hotel-spa-6813"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "12960",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Ecole St. Pierre Hotel",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/ecole-st-pierre-hotel-12960"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "12068",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Casa Sur Antalya",
+   "city": "Antalya",
+   "url": "https://guide.michelin.com/en/hotels-stays/antalya/casa-sur-antalya-12068"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "14207",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Tafoni Houses Cave Hotel, Cappadocia",
+   "city": "Nevsehir",
+   "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/tafoni-houses-cave-hotel-cappadocia-14207"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "13748",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Scorpios Bodrum",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/scorpios-bodrum-13748"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "13065",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "The Stay Boulevard Nisantasi",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-stay-boulevard-nisantasi-13065"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "13756",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "D Maris Bay",
+   "city": "Hisarönü",
+   "url": "https://guide.michelin.com/en/hotels-stays/hisaronu/d-maris-bay-13756"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "17577",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "XO Cape Arnna",
+   "city": "Fethiye",
+   "url": "https://guide.michelin.com/en/hotels-stays/fethiye/xo-cape-arnna-17577"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "TR",
+   "page": 1,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16892",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Cappadocia Cave Suites",
+   "city": "Goreme",
+   "url": "https://guide.michelin.com/en/hotels-stays/goreme/cappadocia-cave-suites-16892"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16754",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Casa Nonna Bodrum",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/casa-nonna-bodrum-16754"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16748",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Lara Barut Collection",
+   "city": "Muratpaşa",
+   "url": "https://guide.michelin.com/en/hotels-stays/muratpasa/lara-barut-collection-16748"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16591",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "CARUS Cappadocia Hotel",
+   "city": "Goreme",
+   "url": "https://guide.michelin.com/en/hotels-stays/goreme/carus-cappadocia-hotel-16591"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16548",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "KestelINN Alaçatı",
+   "city": "Alacati",
+   "url": "https://guide.michelin.com/en/hotels-stays/alacati/kestelinn-alacati-16548"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "7291",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Ciragan Palace Kempinski Istanbul",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/ciragan-palace-kempinski-istanbul-7291"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "7293",
+   "distinction": "THREE_KEYS",
+   "hotel_country": "tr",
+   "name": "Four Seasons Hotel Istanbul at Sultanahmet",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-sultanahmet-7293"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "7308",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Four Seasons Hotel Istanbul at the Bosphorus",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-the-bosphorus-7308"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "7239",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Mandarin Oriental Bodrum",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/mandarin-oriental-bodrum-7239"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "13145",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "The Artisan Istanbul - MGallery",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-artisan-istanbul-mgallery-13145"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "12681",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "The St. Regis Istanbul",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-st-regis-istanbul-12681"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "12678",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Fairmont Quasar Istanbul Hotel",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/fairmont-quasar-istanbul-hotel-12678"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "12990",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "tr",
+   "name": "The Peninsula Istanbul",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-peninsula-istanbul-12990"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "13266",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "The Bodrum EDITION",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/the-bodrum-edition-13266"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "14076",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Avantgarde Refined Yalıkavak",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/avantgarde-refined-yalkavak-14076"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16726",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Şah Saray Cave Suites",
+   "city": "Goreme",
+   "url": "https://guide.michelin.com/en/hotels-stays/goreme/sah-saray-cave-suites-16726"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "15006",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "The Ritz-Carlton, Istanbul at the Bosphorus",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-ritz-carlton-istanbul-at-the-bosphorus-15006"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "1131",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Vakko Hotel Sumahan Bosphorus",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/vakko-hotels-sumahan-bosphorus-64032-1131"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "8540",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Hyatt Centric Levent Istanbul ",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/hyatt-centric-levent-istanbul-8540"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "8003",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Louis Appartements Galata",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/louis-appartements-galata-8003"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "5473",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Med-Inn Boutique Hotel",
+   "city": "Bodrum Peninsula",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum-peninsula/medinn-boutique-hotel-5473"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "7656",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "4reasons Hotel+Bistro",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/4reasons-hotelbistro-7656"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "11174",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Kocataş Mansions, İstanbul",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/six-senses-kocatas-mansions-11174"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "5924",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Park Hyatt Istanbul - Macka Palas",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/park-hyatt-istanbul-macka-palas-5924"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "9092",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Lujo Hotel",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/lujo-hotel-9092"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "8172",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Hotel Unique Fethiye",
+   "city": "Muğla Province",
+   "url": "https://guide.michelin.com/en/hotels-stays/mugla-province/hotel-unique-fethiye-8172"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "7080",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Casa Dell'Arte Arts & Leisure",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/casa-dellarte-arts-leisure-7080"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "13248",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Birdcage 33 Hotel",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/birdcage-33-13248"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "7741",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Viento Hotel Alacati",
+   "city": "Alacati",
+   "url": "https://guide.michelin.com/en/hotels-stays/alacati/viento-hotel-alacati-7741"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "481",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Hotel SU & Aqualand",
+   "city": "Antalya",
+   "url": "https://guide.michelin.com/en/hotels-stays/antalya/hotel-su-481"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "12679",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Raffles Istanbul",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/raffles-istanbul-12679"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "5805",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Key Hotel",
+   "city": "Izmir",
+   "url": "https://guide.michelin.com/en/hotels-stays/izmir/key-hotel-5805"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "13750",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Sofitel Istanbul Taksim",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/sofitel-istanbul-taksim-13750"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "14687",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "BIJAL",
+   "city": "Side",
+   "url": "https://guide.michelin.com/en/hotels-stays/Side/bijal-14687"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "15003",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Princes' Palace Resort",
+   "city": "Büyükada",
+   "url": "https://guide.michelin.com/en/hotels-stays/B%C3%BCy%C3%BCkada/princes-palace-resort-15003"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "17211",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "The Galata Istanbul - MGallery",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/tha-galata-istanbul-hotel-mgallery-17211"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16901",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "JW Marriott Hotel Istanbul Marmara Sea",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/jw-marriott-hotel-istanbul-marmara-sea-16901"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16843",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Siyah Lale Cunda 1841",
+   "city": "Cunda Island",
+   "url": "https://guide.michelin.com/en/hotels-stays/cunda-island/siyah-lale-cunda-1841-16843"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16815",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Shangri-La Bosphorus",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/shangri-la-bosphorusistanbul-16815"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16812",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Avantgarde Refined - Caves of Cappadocia",
+   "city": "Urgup",
+   "url": "https://guide.michelin.com/en/hotels-stays/urgup/avantgarde-refined-caves-of-cappadocia-16812"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16764",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "The Bodrum Yalıkavak - MGallery",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/mgallery-the-bodrum-hotel-yalkavak-128076-16764"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16739",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "The Rupestral House",
+   "city": "Uçhisar",
+   "url": "https://guide.michelin.com/en/hotels-stays/uchisar/the-rupestral-house-16739"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16699",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Amiral Palace Hotel Boutique Class",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/amiral-palace-hotel-boutique-class-16699"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16647",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Casa Foscolo Hotel",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/casa-foscolo-hotel-istanbul-a-member-of-design-hotels-127938-16647"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16625",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Regie Ottoman Hotel",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/regie-ottoman-hotel-126950-16625"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16583",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Karia Bel Hotel",
+   "city": "Bozburun",
+   "url": "https://guide.michelin.com/en/hotels-stays/bozburun/karia-bel-hotel-16583"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16529",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Olympos Mountain Lodge",
+   "city": "Kemer",
+   "url": "https://guide.michelin.com/en/hotels-stays/Kemer/olympos-mountain-lodge-16529"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "16519",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Cappadocia Cave Lodge",
+   "city": "Goreme",
+   "url": "https://guide.michelin.com/en/hotels-stays/goreme/cappadocia-cave-lodge-16519"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "TR",
+   "page": 2,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  },
+  {
+   "listing": "TR",
+   "page": 3,
+   "pid": "15890",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "METT Bodrum",
+   "city": "Bodrum",
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/mett-bodrum-15890"
+  },
+  {
+   "listing": "TR",
+   "page": 3,
+   "pid": "15244",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Mandarin Oriental Bosphorus, Istanbul",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/mandarin-oriental-bosphorus-istanbul-15244"
+  },
+  {
+   "listing": "TR",
+   "page": 3,
+   "pid": "15217",
+   "distinction": "ONE_KEY",
+   "hotel_country": "tr",
+   "name": "Aliée Istanbul",
+   "city": "Beyoğlu",
+   "url": "https://guide.michelin.com/en/hotels-stays/beyoglu/aliee-istanbul-15217"
+  },
+  {
+   "listing": "TR",
+   "page": 3,
+   "pid": "13754",
+   "distinction": "SELECTED",
+   "hotel_country": "tr",
+   "name": "Vakko Hotel and Residence",
+   "city": "Istanbul",
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/vakko-hotel-and-residence-13754"
+  },
+  {
+   "listing": "TR",
+   "page": 3,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "TR",
+   "page": 3,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "TR",
+   "page": 3,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "TR",
+   "page": 3,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "TR",
+   "page": 3,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  }
+ ]
+}

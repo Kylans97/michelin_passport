@@ -1,0 +1,2207 @@
+{
+ "fetched_at": "2026-11-01T19:26:03Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/szklarskapor%C4%99ba/jaskolka-dom-i-spa-14254",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/szklarskapor%C4%99ba/jaskolka-dom-i-spa-14254",
+   "h1": "Jaskolka Dom i SPA",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Wolności 10",
+     "addressLocality": "Szklarska Poręba",
+     "postalCode": "58-580",
+     "addressCountry": "POL"
+    },
+    "name": "Jaskolka Dom i SPA in Szklarska Poręba",
+    "description": "Scenic landscapes have long drawn travelers to the Polish resort of Szklarska Poręba, and the region’s best hotels are strategically positioned to make the most of them. Case in point: Jaskółka Dom i Spa, perched on a high mountain slope, its verandas facing an expanse of pine forests and snowcapped peaks. The landmark inn opened in 1894 and served a variety of purposes over the years — the building functioned as a convent and, later, in the 1960s, was put to use by the government — before undergoing extensive renovations and reopening as a luxury boutique accommodation.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1421376.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.838053,
+     "longitude": 15.505881
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/szklarskapor%C4%99ba/jaskolka-dom-i-spa-14254",
+    "numberOfRooms": 8,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.838053%2C15.505881",
+    "telephone": "+48537106055",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/dolnoslaskie/sosnowka_2397620/restaurant/szyszka",
+    "/en/kralovehradecky/spindleruv-mlyn_1273110/restaurant/savoya",
+    "/en/kralovehradecky/spindleruv-mlyn_1273110/restaurant/soyka"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/leba/zamek-leba-14325",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/leba/zamek-leba-14325",
+   "h1": "Zamek Łeba",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Sosnowa 1",
+     "addressLocality": "Łeba",
+     "postalCode": "84-360",
+     "addressCountry": "POL"
+    },
+    "name": "Zamek Łeba in Łeba",
+    "description": "A seaside town in northern Poland might not be the first place you’d look for a storybook castle. But Zamek Łeba’s off-the-beaten-path location, tucked between the shoreline of the blue Baltic Sea and the shifting dunes of Słowiński National Park, is part of what makes it magical. The castle dates back to the 1900s, and functioned as a wellness retreat for decades before it became a luxury hotel. There’s still an unmistakably old-world air to the place, and many details feel charmingly redolent of the past: an elevator was never installed, bathrooms have vintage-looking tubs instead of modern walk-in showers, and Polish classics like smoked sturgeon and red borscht are served in the restaurant.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1443185.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 54.768044,
+     "longitude": 17.563463
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/leba/zamek-leba-14325",
+    "numberOfRooms": 40,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=54.768044%2C17.563463",
+    "petsAllowed": "Pets are allowed in most rooms. Additional cost is 300 PLN/day. Pets are not allowed in Suites and Comfort Rooms. Pets are not allowed in restaurants and cafes. There is a separate room for guests with pets. The owner is responsible for any damage resulting from the stay of the pet.",
+    "telephone": "+48 59 863 51 20",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/pomerania/ciekocinko_7770295/restaurant/luneta-lorneta-bistro-club"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/sienna/heron-live-hotel-16896",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/sienna/heron-live-hotel-16896",
+   "h1": "Heron Live Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Sienna 104, 104",
+     "addressLocality": "Sienna",
+     "postalCode": "33-318",
+     "addressCountry": "POL"
+    },
+    "name": "Heron Live Hotel in Sienna",
+    "description": "There are certainly places in Poland that are less picturesque than the shores of Lake Rożnowski; similarly, there are hotels that are a good deal less luxurious than Heron Live Hotel. This is the contemporary grand hotel par excellence: a silhouette that might have been familiar a century ago, but executed in a modern architectural style marked by confidently minimalist interiors.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1629993.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 49.720444255,
+     "longitude": 20.6989129644
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/sienna/heron-live-hotel-16896",
+    "numberOfRooms": 83,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.720444255%2C20.6989129644",
+    "petsAllowed": "\\n Pets are allowed on request. Charges may apply.",
+    "telephone": "+48 18 88 88 500",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/hotel-copernicus-11432",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/krakow/hotel-copernicus-11432",
+   "h1": "Hotel Copernicus",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kanonicza 16",
+     "addressLocality": "Krakow",
+     "postalCode": "31-002",
+     "addressCountry": "POL"
+    },
+    "name": "Hotel Copernicus in Krakow",
+    "description": "There was a time when Poland’s second city would have been little more than a tourism punchline. These days Kraków is rapidly emerging as an alternative to well-trod paths like Prague: its historical beauty is still drawing new crowds, it’s a surprisingly lively city, and it’s cheap. Thus you can’t really judge the Hotel Copernicus by its nightly rate — it’s a first-rate boutique hotel, and its relative affordability only makes it more attractive.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1401415.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.05625,
+     "longitude": 19.93752
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/krakow/hotel-copernicus-11432",
+    "numberOfRooms": 29,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.05625%2C19.93752",
+    "telephone": "(+48 12) 424 34 02",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.7,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lesser-poland/krakow/restaurant/amarylis",
+    "/en/lesser-poland/krakow/restaurant/copernicus",
+    "/en/lesser-poland/krakow/restaurant/fiorentina",
+    "/en/lesser-poland/krakow/restaurant/huma",
+    "/en/lesser-poland/krakow/restaurant/karakter",
+    "/en/lesser-poland/krakow/restaurant/kogel-mogel",
+    "/en/lesser-poland/krakow/restaurant/kropka",
+    "/en/lesser-poland/krakow/restaurant/nami-beef-and-reef",
+    "/en/lesser-poland/krakow/restaurant/pod-nosem",
+    "/en/lesser-poland/krakow/restaurant/stradomska-12"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/raffles-europejski-warsaw-123592-13408",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/warsaw/raffles-europejski-warsaw-123592-13408",
+   "h1": "Raffles Europejski Warsaw",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "13 Krakowskie Przedmieście",
+     "addressLocality": "Warsaw",
+     "postalCode": "00-071",
+     "addressCountry": "POL"
+    },
+    "name": "Raffles Europejski Warsaw in Warsaw",
+    "description": "Even more than most Raffles hotels, the Europejski is a true classic — the building dates back to 1857, and is as grand and ornate as anything in the Polish capital. Its 106 rooms and suites are modern in their proportions and their comforts, but antique in their inspiration; the result is not old-fashioned but simply eminently palatable. The service is upright and professional, and all the expected luxury-hotel facilities are present and accounted for, from the Raffles Spa to the flagship Europejski Grill and the Lourse Warszawa, a tribute to a famous local patisserie from a century ago.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1509603.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 52.24199,
+     "longitude": 21.015
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/warsaw/raffles-europejski-warsaw-123592-13408",
+    "numberOfRooms": 144,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=52.24199%2C21.015",
+    "petsAllowed": "\\n Pets are allowed. Charges may be applicable.",
+    "telephone": "+48 22 255 95 00",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/masovia/warsaw/restaurant/bez-gwiazdek",
+    "/en/masovia/warsaw/restaurant/ceviche-bar",
+    "/en/masovia/warsaw/restaurant/epoka",
+    "/en/masovia/warsaw/restaurant/europejski-grill",
+    "/en/masovia/warsaw/restaurant/kieliszki-na-proznej",
+    "/en/masovia/warsaw/restaurant/mund",
+    "/en/masovia/warsaw/restaurant/murena",
+    "/en/masovia/warsaw/restaurant/nuta",
+    "/en/masovia/warsaw/restaurant/rozdzial",
+    "/en/masovia/warsaw/restaurant/rusiko",
+    "/en/masovia/warsaw/restaurant/tuna"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/stardom-house-13818",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/krakow/stardom-house-13818",
+   "h1": "Stradom House, Autograph Collection",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "12-14 Stradomska street ",
+     "addressLocality": "Krakow",
+     "postalCode": "31-058",
+     "addressCountry": "POL"
+    },
+    "name": "Stradom House, Autograph Collection in Krakow",
+    "description": "That’s Stradom, the Krakow neighborhood, not “stardom” — though autocorrect may be on to something, given the locale’s illustrious history of kings and cultural icons. Here is no hamfisted restoration; the facade and public spaces of Stradom House go out of their way to keep this 14th-century edifice in conversation with the medieval town squares and religious monuments around it. Thankfully, the rooms live in the here and now, keeping the ambience unstifled and airy, the better to offset the stone-clad streetscape just outside. Drift from chapel to art gallery to drinks at Hedwig’s, blissfully unmoored in time.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1395856.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.05297,
+     "longitude": 19.94065
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/krakow/stardom-house-13818",
+    "numberOfRooms": 125,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.05297%2C19.94065",
+    "telephone": "+48 12 201 57 00",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lesser-poland/krakow/restaurant/amarylis",
+    "/en/lesser-poland/krakow/restaurant/copernicus",
+    "/en/lesser-poland/krakow/restaurant/fiorentina",
+    "/en/lesser-poland/krakow/restaurant/folga",
+    "/en/lesser-poland/krakow/restaurant/hana-sushi",
+    "/en/lesser-poland/krakow/restaurant/karakter",
+    "/en/lesser-poland/krakow/restaurant/kropka",
+    "/en/lesser-poland/krakow/restaurant/noah",
+    "/en/lesser-poland/krakow/restaurant/pod-nosem",
+    "/en/lesser-poland/krakow/restaurant/stradomska-12",
+    "/en/pomerania/bydgoszcz_2387736/restaurant/meluzyna"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/hotel-altus-palace-14783",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/hotel-altus-palace-14783",
+   "h1": "Hotel Altus Palace",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "15 ul. Wierzbowa",
+     "addressLocality": "Wrocław",
+     "postalCode": "50-005",
+     "addressCountry": "POL"
+    },
+    "name": "Hotel Altus Palace in Wrocław",
+    "description": "Wrocław’s landmark Leipziger Palace is a 19th-century monument at the edge of the city’s picturesque Old Town — and today, after an extremely thorough restoration, it’s open to the public as the Hotel Altus Palace. This is a modern classic of a luxury hotel, a place where ornate historical architecture and modernist-inspired contemporary design are right at home together. Even the basic single and double rooms are handsome and plush, while the suites are downright extravagant. Downstairs you’ll find a stylish spa and wellness area and a restaurant, Wierzbowa 15, serving a cosmopolitan pan-European menu.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1509749.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 51.10497,
+     "longitude": 17.03641
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Wroc%C5%82aw/hotel-altus-palace-14783",
+    "numberOfRooms": 81,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=51.10497%2C17.03641",
+    "telephone": "+48 71 747 50 00",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lower-silesian/wroclaw_2399695/restaurant/acquario",
+    "/en/lower-silesian/wroclaw_2399695/restaurant/campo-modern-grill",
+    "/en/lower-silesian/wroclaw_2399695/restaurant/dinette",
+    "/en/lower-silesian/wroclaw_2399695/restaurant/gustaw",
+    "/en/lower-silesian/wroclaw_2399695/restaurant/mercado-tapas-bistro",
+    "/en/lower-silesian/wroclaw_2399695/restaurant/mloda-polska",
+    "/en/lower-silesian/wroclaw_2399695/restaurant/monopol",
+    "/en/lower-silesian/wroclaw_2399695/restaurant/stacja-breslau",
+    "/en/lower-silesian/wroclaw_2399695/restaurant/usta-usta",
+    "/en/lower-silesian/wroclaw_2399695/restaurant/wierzbowa-15"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Ciekocinko/paac-ciekocinko-hotel-resort-wellness-14836",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Ciekocinko/paac-ciekocinko-hotel-resort-wellness-14836",
+   "h1": "Pałac Ciekocinko Hotel Resort & Wellness",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ciekocinko 9",
+     "addressLocality": "Ciekocinko",
+     "postalCode": "84-210",
+     "addressCountry": "POL"
+    },
+    "name": "Pałac Ciekocinko Hotel Resort & Wellness in Ciekocinko",
+    "description": "Just over an hour’s drive from Gdansk, and mere minutes from the Baltic coast, Pałac Ciekocinko Hotel Resort & Wellness stands on nearly 2,000 acres of parkland, surrounded by verdant forest. This aristocratic house was a near-ruin when its current proprietors took over, but after a meticulous restoration it’s a spectacular country-house luxury hotel, its rooms, suites, and apartments, divided between the main house and the carriage house, marrying classic atmosphere with contemporary comfort. The stables are a unique attraction — this is a working equestrian center — as is the Institut Esthederm spa. Meanwhile two restaurants serve the palace: the formal Luneta & Lorneta Bistro Club and the more casual Restaurant in Park.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1509712.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 54.746411,
+     "longitude": 17.798802
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Ciekocinko/paac-ciekocinko-hotel-resort-wellness-14836",
+    "numberOfRooms": 39,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=54.746411%2C17.798802",
+    "telephone": "+48 608 002 220",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/pomerania/ciekocinko_7770295/restaurant/luneta-lorneta-bistro-club"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/warsaw/hotel-bristol-a-luxury-collection-hotel-warsaw-6369",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/warsaw/hotel-bristol-a-luxury-collection-hotel-warsaw-6369",
+   "h1": "Hotel Bristol, A Luxury Collection Hotel, Warsaw",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Krakowskie Przedmieście 42/44 St.",
+     "addressLocality": "Warsaw",
+     "postalCode": "00-325",
+     "addressCountry": "POL"
+    },
+    "name": "Hotel Bristol, A Luxury Collection Hotel, Warsaw in Warsaw",
+    "description": "This century-old grand hotel, next door to the Presidential Palace, was long the city’s most elegant before falling on hard times, along with Warsaw itself. Today, as Poland recovers from the twentieth century and joins the new Europe, the Bristol is once again its splendid old self: a neo-Renaissance masterpiece underscored with Art Nouveau elegance, lodging of choice for the Picassos and Dietrichs and Rubinsteins of the world.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1695647.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 52.24226,
+     "longitude": 21.01561
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/warsaw/hotel-bristol-a-luxury-collection-hotel-warsaw-6369",
+    "numberOfRooms": 206,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=52.24226%2C21.01561",
+    "telephone": "+48 22 551 1000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.3,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/masovia/warsaw/restaurant/bez-gwiazdek",
+    "/en/masovia/warsaw/restaurant/ceviche-bar",
+    "/en/masovia/warsaw/restaurant/epoka",
+    "/en/masovia/warsaw/restaurant/europejski-grill",
+    "/en/masovia/warsaw/restaurant/kieliszki-na-proznej",
+    "/en/masovia/warsaw/restaurant/mund",
+    "/en/masovia/warsaw/restaurant/murena",
+    "/en/masovia/warsaw/restaurant/rozdzial",
+    "/en/masovia/warsaw/restaurant/rusiko",
+    "/en/masovia/warsaw/restaurant/tuna"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/enhotel-13961",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Zakopane/enhotel-13961",
+   "h1": "EN Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "16 Kuźnice",
+     "addressLocality": "Zakopane",
+     "postalCode": "34-500",
+     "addressCountry": "POL"
+    },
+    "name": "EN Hotel in Zakopane",
+    "description": "The mountain town of Zakopane is one of Poland’s gems, but the EN Hotel goes a bit further. It’s set actually within the Tatra National Park, and occupies a repurposed historical structure in a no-development zone — you’ll leave your car in Zakopane, in fact, and be picked up by the hotel’s driver. And once you’ve arrived, you’re treated to an extraordinary measure of seclusion, and an impressive boutique hotel: 15 memorably stylish and quietly luxe rooms, plus a hyper-local restaurant and a lovely little spa. And at your feet are all the attractions of the Tatra Mountains, winter and summer alike.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1411753.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 49.26758,
+     "longitude": 19.97913
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/enhotel-13961",
+    "numberOfRooms": 15,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.26758%2C19.97913",
+    "telephone": "+48 662 222 333",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lesser-poland/koscielisko_2378757/restaurant/giewont",
+    "/en/lesser-poland/zakopane_2385511/restaurant/grand-kasprowy",
+    "/en/lesser-poland/zakopane_2385511/restaurant/marilor",
+    "/en/lesser-poland/zakopane_2385511/restaurant/stary-niedzwiedz"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Gdynia/relais-chateaux-hotel-quadrille-adults-only-14010",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Gdynia/relais-chateaux-hotel-quadrille-adults-only-14010",
+   "h1": "Quadrille",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Folwarczna 2",
+     "addressLocality": "Gdynia",
+     "postalCode": "81-547",
+     "addressCountry": "POL",
+     "addressRegion": "Baltic Coast"
+    },
+    "name": "Quadrille in Gdynia",
+    "description": "Prosperous trading in port towns along the Baltic coast led to the construction of lavish estates in the countryside, including an 18th-century palace outside Gdynia. Today, it’s home to Hotel Quadrille, one of the only Relais & Châteaux properties in Poland. Though the interiors have been reimagined with an Alice in Wonderland theme — black and white checkerboard floors, whimsical patterned wallpaper, fanciful light installations, overstuffed velvet armchairs — it’s a sophisticated, adults-only escape.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1402575.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 54.48115,
+     "longitude": 18.54011
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Gdynia/relais-chateaux-hotel-quadrille-adults-only-14010",
+    "numberOfRooms": 32,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=54.48115%2C18.54011",
+    "telephone": "+48 583510300",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez",
+    "/en/pomerania/gdansk_2403599/restaurant/treinta-y-tres",
+    "/en/pomerania/gdynia_2403602/restaurant/butchery-wine",
+    "/en/pomerania/gdynia_2403602/restaurant/oberza-86",
+    "/en/pomerania/sopot_2411807/restaurant/cafe-xander",
+    "/en/pomerania/sopot_2411807/restaurant/diuna",
+    "/en/pomerania/sopot_2411807/restaurant/fisherman",
+    "/en/pomerania/sopot_2411807/restaurant/l-entre-villes",
+    "/en/pomerania/sopot_2411807/restaurant/petit-paris",
+    "/en/pomerania/sopot_2411807/restaurant/vinissimo"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/krakow/h15-luxury-palace-14828",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/krakow/h15-luxury-palace-14828",
+   "h1": "H15 Palace, a Luxury Collection Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "ul. Św. Jana 15",
+     "addressLocality": "Krakow",
+     "postalCode": "31-017",
+     "addressCountry": "POL"
+    },
+    "name": "H15 Palace, a Luxury Collection Hotel in Krakow",
+    "description": "Krakow is famous for its wealth of ornate historical architecture, and on that score, H15 Luxury Palace certainly doesn’t disappoint. In its current form it dates back to the 1870s, but the aristocratic Lubomirski family laid the foundations centuries earlier. And today, behind this neo-baroque façade, stands a thoroughly contemporary and memorably atmospheric luxury hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1468866.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.064625,
+     "longitude": 19.939686
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/krakow/h15-luxury-palace-14828",
+    "numberOfRooms": 70,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.064625%2C19.939686",
+    "telephone": "+48 12 371 15 15",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lesser-poland/krakow/restaurant/artesse",
+    "/en/lesser-poland/krakow/restaurant/copernicus",
+    "/en/lesser-poland/krakow/restaurant/farina",
+    "/en/lesser-poland/krakow/restaurant/filipa-18",
+    "/en/lesser-poland/krakow/restaurant/fiorentina",
+    "/en/lesser-poland/krakow/restaurant/huma",
+    "/en/lesser-poland/krakow/restaurant/kogel-mogel",
+    "/en/lesser-poland/krakow/restaurant/molam",
+    "/en/lesser-poland/krakow/restaurant/nami-beef-and-reef",
+    "/en/lesser-poland/krakow/restaurant/pod-roza"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/bachleda-residence-zakopane-13967",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Zakopane/bachleda-residence-zakopane-13967",
+   "h1": "Bachleda Residence Zakopane",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "ul. Tetmajera 16a",
+     "addressLocality": "Zakopane",
+     "postalCode": "34-400",
+     "addressCountry": "POL"
+    },
+    "name": "Bachleda Residence Zakopane in Zakopane",
+    "description": "Local materials of wood, sandstone and granite ensure this comfortable hotel fits perfectly into its surroundings. It sits in the heart of Zakopane, while offering views of the Tatra Mountains and the Gubałówka Range. The bedrooms are warmly decorated and come with a certain understated grandeur; go for one of the deluxe rooms with mountain views. The restaurant offers an extensive selection of Polish and European dishes.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1441621.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 49.28972,
+     "longitude": 19.95788
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/bachleda-residence-zakopane-13967",
+    "numberOfRooms": 128,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.28972%2C19.95788",
+    "telephone": "+48 18 20 23 100",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lesser-poland/koscielisko_2378757/restaurant/giewont",
+    "/en/lesser-poland/zakopane_2385511/restaurant/grand-kasprowy",
+    "/en/lesser-poland/zakopane_2385511/restaurant/marilor",
+    "/en/lesser-poland/zakopane_2385511/restaurant/stary-niedzwiedz"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/stary-niedzwiedz-13962",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Zakopane/stary-niedzwiedz-13962",
+   "h1": "Stary Niedźwiedź",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "33a Strążyska",
+     "addressLocality": "Zakopane",
+     "postalCode": "34-500",
+     "addressCountry": "POL"
+    },
+    "name": "Stary Niedźwiedź in Zakopane",
+    "description": "Zakopane, in southern Poland’s Tatra Mountains, is the country’s most famous mountain town, serving as a ski resort in winter and an all-around adventure hub in warmer months. Stary Niedźwiedź, at the base of the mountains at the south end of town, is perhaps best known for its fine restaurant — but given the setting and the distinctive design of the lodging, it’s well worth spending the night.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1400249.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-POL",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 49.28029,
+     "longitude": 19.94206
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Zakopane/stary-niedzwiedz-13962",
+    "numberOfRooms": 14,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.28029%2C19.94206",
+    "telephone": "",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lesser-poland/koscielisko_2378757/restaurant/giewont",
+    "/en/lesser-poland/zakopane_2385511/restaurant/grand-kasprowy",
+    "/en/lesser-poland/zakopane_2385511/restaurant/marilor",
+    "/en/lesser-poland/zakopane_2385511/restaurant/stary-niedzwiedz"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/argos-in-cappadocia-3941",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/nevsehir/argos-in-cappadocia-3941",
+   "h1": "Argos in Cappadocia",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "No: 23 Kayabaş Sk., Uchisar",
+     "addressLocality": "Nevsehir",
+     "postalCode": "50240",
+     "addressCountry": "TUR",
+     "addressRegion": "Cappadocia"
+    },
+    "name": "Argos in Cappadocia in Nevsehir",
+    "description": "Though not yet so common that they need a name for their particular sub-genre — speleoboutiques, anyone? — it’s safe to say that cave hotels are officially a thing. Especially in Cappadocia, which as a region has what’s probably the world’s most plentiful supply of habitable caves. And if you want to see how it’s done, you need look no further than this repurposed monastery in the village of Uçhisar, now a boutique hotel called Argos in Cappadocia.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1510749.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.629526,
+     "longitude": 34.806701
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/argos-in-cappadocia-3941",
+    "numberOfRooms": 71,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.629526%2C34.806701",
+    "petsAllowed": "Pets are permitted for up to 12 kg at a fee of 30 EUR per day. Pets are not allowed in food & beverage outlets around the hotel.",
+    "telephone": "+90 534 261 04 83 / +90 384 219 31 30",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.6,
+     "reviewCount": 10,
+     "ratingCount": 10,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/happena",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/lil-a-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/moniq-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/nahita-cappadocia",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/reserved-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/sakl%C4%B1-konak-cappadocia",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/seki-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/seten",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/uzundere-kapadokya-mutfag%C4%B1",
+    "/en/nevsehir/urgup_2827493/restaurant/babayan-evi-restaurant"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/museum-hotel-6604",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/nevsehir/museum-hotel-6604",
+   "h1": "Museum Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Tekeli Mh No:1",
+     "addressLocality": "Nevsehir",
+     "postalCode": "50240",
+     "addressCountry": "TUR",
+     "addressRegion": "Cappadocia"
+    },
+    "name": "Museum Hotel in Nevsehir",
+    "description": "Situated as it is between Europe and Asia, Turkey is a land comfortable with dualities: east and west, religious and secular, ancient and modern. It’s no surprise that the Museum Hotel, in the Central Anatolian region, also blends two distinct hotel experiences: luxury and history. Recent visitors, perhaps lured in part by the slew of awards the hotel has been racking up recently, span a range of demographics, from heads of state to the ladies of the 2009 Sports Illustrated Swimsuit calendar. But the big draw, swimsuit models aside, isn’t the crowd; it's Cappadocia’s famous underground cities. Constructed by early Christians to hide from the Roman Empire, these cities consist of great labyrinths carved into and beneath the volcanic rock.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1335205.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.633497,
+     "longitude": 34.807579
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/museum-hotel-6604",
+    "numberOfRooms": 34,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.633497%2C34.807579",
+    "telephone": "+90 (384) 219 2220",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.6,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/happena",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/lil-a-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/moniq-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/nahita-cappadocia",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/reserved-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/sakl%C4%B1-konak-cappadocia",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/seki-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/seten",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/uzundere-kapadokya-mutfag%C4%B1",
+    "/en/nevsehir/urgup_2827493/restaurant/babayan-evi-restaurant"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/ajwa-sultanahmet-8731",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/istanbul/ajwa-sultanahmet-8731",
+   "h1": "AJWA Sultanahmet",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Emin Sinan, Piyer Loti Cd. No:30",
+     "addressLocality": "Istanbul",
+     "postalCode": "34126",
+     "addressCountry": "TUR"
+    },
+    "name": "AJWA Sultanahmet in Istanbul",
+    "description": "Opened in 2017, AJWA Sultanahmet blends seamlessly into one of Istanbul’s most historic neighborhoods, deliberately setting itself apart from the modern boutique minimalism found elsewhere in the city.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1312395.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.006346,
+     "longitude": 28.969234
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/istanbul/ajwa-sultanahmet-8731",
+    "numberOfRooms": 61,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.006346%2C28.969234",
+    "telephone": "+90 212 638 22 00",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 7,
+     "ratingCount": 7,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/ali-ocakbas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/avlu-restaurant",
+    "/en/istanbul-province/istanbul/restaurant/deraliye",
+    "/en/istanbul-province/istanbul/restaurant/gallada",
+    "/en/istanbul-province/istanbul/restaurant/giritli",
+    "/en/istanbul-province/istanbul/restaurant/khorasani",
+    "/en/istanbul-province/istanbul/restaurant/lokanta-1741",
+    "/en/istanbul-province/istanbul/restaurant/neolokal",
+    "/en/istanbul-province/istanbul/restaurant/pandeli",
+    "/en/istanbul-province/istanbul/restaurant/tershane"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/allium-bodrum-resort-spa-11699",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/bodrum/allium-bodrum-resort-spa-11699",
+   "h1": "Allium Bodrum Resort & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "No:68 Çökertme Cd., L/1",
+     "addressLocality": "Bodrum",
+     "postalCode": "48990",
+     "addressCountry": "TUR",
+     "addressRegion": "Bodrum Peninsula"
+    },
+    "name": "Allium Bodrum Resort & Spa in Bodrum",
+    "description": "The Western Mediterranean and the Greek side of the Aegean Sea are justifiably famous, but often overlooked is Turkey’s Bodrum Peninsula, home to landscapes and seascapes that are every bit the equal of their western neighbors. It’s a matter of local pride, and of course within Turkey this place is rated extremely highly — Allium Bodrum Resort & Spa, in the harborside town of Yalikavak, joins a dizzying array of ultra-luxe resort developments. What sets this one apart isn’t so much the location or the concept but the execution: Allium exhibits a tastefulness and a thoughtfulness that’s far beyond the norm.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1486460.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.097344,
+     "longitude": 27.2705
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/bodrum/allium-bodrum-resort-spa-11699",
+    "numberOfRooms": 38,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.097344%2C27.2705",
+    "telephone": "+902523854040",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/mugla/bodrum_2806351/restaurant/beynel",
+    "/en/mugla/bodrum_2806351/restaurant/hodan-yal%C4%B1kavak",
+    "/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+    "/en/mugla/bodrum_2806351/restaurant/kurul-bitez",
+    "/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak",
+    "/en/mugla/bodrum_2806351/restaurant/orkide-bal%C4%B1k",
+    "/en/mugla/bodrum_2806351/restaurant/sait",
+    "/en/mugla/bodrum_2806351/restaurant/sia-eli",
+    "/en/mugla/bodrum_2806351/restaurant/zuma-bodrum"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/ariana-sustainable-luxury-lodge-8005",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/nevsehir/ariana-sustainable-luxury-lodge-8005",
+   "h1": "Ariana Sustainable Luxury Lodge",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Tekelli Mahallesi, Goreme Sokak, no 8",
+     "addressLocality": "Nevsehir",
+     "postalCode": "50240",
+     "addressCountry": "TUR",
+     "addressRegion": "Cappadocia"
+    },
+    "name": "Ariana Sustainable Luxury Lodge in Nevsehir",
+    "description": "There’s no place quite like Cappadocia, the region in central Turkey that’s known for its unique rock formations and its inimitable cave dwellings. (Of particular note is the local tradition of hot-air ballooning, the best way to see these unforgettable landscapes.) And while there are more than a few boutique hotels carved into these stone hillsides, there’s room for many more — our appetite is far from sated. Part modernist structures, part traditional cave dwellings, Ariana Sustainable Luxury Lodge goes perhaps heavier on contemporary design and lighter on heavy stone architecture than many other Cappadocian hotels, and its eleven rooms and suites are among the finest in the region.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1625008.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.633741,
+     "longitude": 34.806305
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/nevsehir/ariana-sustainable-luxury-lodge-8005",
+    "numberOfRooms": 11,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.633741%2C34.806305",
+    "telephone": "90-384-219-2223",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/happena",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/lil-a-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/moniq-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/nahita-cappadocia",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/reserved-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/sakl%C4%B1-konak-cappadocia",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/seki-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/seten",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/uzundere-kapadokya-mutfag%C4%B1",
+    "/en/nevsehir/urgup_2827493/restaurant/babayan-evi-restaurant"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/fethiye/ahama-15464",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/fethiye/ahama-15464",
+   "h1": "Ahãma",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Yanıklar Mahallesi Muğla Caddesi No:1, Günlüklü Bay",
+     "addressLocality": "Fethiye",
+     "addressCountry": "TUR",
+     "addressRegion": "Muğla Province"
+    },
+    "name": "Ahãma in Fethiye",
+    "description": "In a sheltered bay along the Turkish Riviera, Ahãma offers a slower rhythm of living shaped by nature and stillness. Its rooms and cabanas take inspiration from Japanese wabi-sabi, with sun-washed textures, earthy materials, and an open connection to the landscape. Days unfold gently: sunrise yoga, forest bathing in a pine-shaded pool, or sound therapy sessions near the water. Highlights include the adults-only Êge Umi for Japanese coastal fare and Ay for bold, fire-kissed Aegean dishes. There are no TVs here, but panoramic views of the Göcek Islands more than fill the frame. Ahãma, meaning “beloved” in ancient Lycian, lives up to its name.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1506107.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.7162463744,
+     "longitude": 29.0192885794
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/fethiye/ahama-15464",
+    "numberOfRooms": 59,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.7162463744%2C29.0192885794",
+    "petsAllowed": "Please note that the property can only accommodate pets with a maximum weight of 8 kg or less. Additional charges may apply.",
+    "telephone": "+90 252 440 04 00",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/mugla/fethiye_2806867/restaurant/ada-restaurant",
+    "/en/mugla/fethiye_2806867/restaurant/mezegi",
+    "/en/mugla/fethiye_2806867/restaurant/mori-1213357",
+    "/en/mugla/fethiye_2806867/restaurant/onno-grill-bar"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/%C5%9Eile/casa-lavanda-boutique-hotel-15004",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/%C5%9Eile/casa-lavanda-boutique-hotel-15004",
+   "h1": "Casa Lavanda Boutique Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ulupelit Mahallesi, Seçilmiş Sok. Casa Lavanda Hotel No:2",
+     "addressLocality": "Şile",
+     "postalCode": "34980",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul"
+    },
+    "name": "Casa Lavanda Boutique Hotel in Şile",
+    "description": "Casa Lavanda began as a family home, built by hand in the village of Ulupelit, less than an hour’s drive from Istanbul. And while it’s evolved over the years, it still feels deeply personal. Now a luxurious 16-room boutique hotel surrounded by forest, it’s stewarded by owners Feryal and Ahmet Şen and their two sons, and exhibits their love for slow living.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1567452.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.086909,
+     "longitude": 29.51212
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/%C5%9Eile/casa-lavanda-boutique-hotel-15004",
+    "numberOfRooms": 16,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.086909%2C29.51212",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+90 216 736 56 40",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/casa-lavanda"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-bank-istanbul-7131",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-bank-istanbul-7131",
+   "h1": "The Bank Hotel Istanbul",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Azapkapı, Bankalar Cd. No:5 Karaköy, Beyoğlu",
+     "addressLocality": "Istanbul",
+     "postalCode": "34420",
+     "addressCountry": "TUR"
+    },
+    "name": "The Bank Hotel Istanbul in Istanbul",
+    "description": "The Bank Istanbul offers a luxurious, modern, and cosmopolitan take on boutique hospitality — all set within a classic bank building in what was once a financial center, now part of the up-and-coming Karaköy district.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1467912.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.023638,
+     "longitude": 28.974164
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-bank-istanbul-7131",
+    "numberOfRooms": 63,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.023638%2C28.974164",
+    "telephone": "+90 212 283 00 55",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.4,
+     "reviewCount": 17,
+     "ratingCount": 17,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/aheste",
+    "/en/istanbul-province/istanbul/restaurant/ali-ocakbas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/aseka",
+    "/en/istanbul-province/istanbul/restaurant/gallada",
+    "/en/istanbul-province/istanbul/restaurant/karakoy-lokantas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/murver",
+    "/en/istanbul-province/istanbul/restaurant/neolokal",
+    "/en/istanbul-province/istanbul/restaurant/pandeli",
+    "/en/istanbul-province/istanbul/restaurant/tershane",
+    "/en/istanbul-province/istanbul/restaurant/yeni-lokanta"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/bozb%C3%BCk/six-senses-kaplankaya-9358",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/bozb%C3%BCk/six-senses-kaplankaya-9358",
+   "h1": "Six Senses Kaplankaya",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Merkez Sokak No:198",
+     "addressLocality": "Bozbük",
+     "postalCode": "48200",
+     "addressCountry": "TUR",
+     "addressRegion": "Muğla Province"
+    },
+    "name": "Six Senses Kaplankaya in Bozbük",
+    "description": "Tourism isn’t new to the spectacular Bodrum Peninsula, but Kaplankaya, on the other side of the bay another hour and a half up the coast, was hardly on the map before this stunning purpose-built resort broke ground on a hillside overlooking the Aegean. If you know the Six Senses brand you know you’re in for something lavish, but even by the standards of its siblings, Six Senses Kaplankaya is special.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1237592.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.311434,
+     "longitude": 27.410055
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/bozb%C3%BCk/six-senses-kaplankaya-9358",
+    "numberOfRooms": 141,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.311434%2C27.410055",
+    "telephone": "90 252 511 00 30",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.4,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/alacati/warehouse-by-the-stay-9320",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/alacati/warehouse-by-the-stay-9320",
+   "h1": "Warehouse By The Stay",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "4001. Sokak No: 27, Cesme",
+     "addressLocality": "Alacati",
+     "postalCode": "35930",
+     "addressCountry": "TUR",
+     "addressRegion": "Izmir Region"
+    },
+    "name": "Warehouse By The Stay in Alacati",
+    "description": "The Çeşme peninsula, on the west coast of Turkey, extends out into the Aegean Sea, a place with abundantly obvious appeal as a holiday destination. Alaçatı adds a picturesque old town and a protected bay that’s among the world’s best for windsurfing. And thanks to Stay, the Turkish mini-chain, it’s also got Warehouse By The Stay, a design hotel whose concept is as evident from its architecture as it is from its name.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1178429.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.289561,
+     "longitude": 26.367561
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/alacati/warehouse-by-the-stay-9320",
+    "numberOfRooms": 24,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.289561%2C26.367561",
+    "telephone": "+90 232 970 78 29",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/izmir/izmir_2809416/restaurant/asma%C2%A0yaprag%C4%B1",
+    "/en/izmir/izmir_2809416/restaurant/cark-bal%C4%B1k-cesme",
+    "/en/izmir/izmir_2809416/restaurant/kasap-fuat-cesme",
+    "/en/izmir/izmir_2809416/restaurant/rituel",
+    "/en/izmir/izmir_2809416/restaurant/roka-bahce",
+    "/en/izmir/izmir_2809416/restaurant/sota-alacati",
+    "/en/izmir/izmir_2809416/restaurant/terakki"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/alacati/alavya-7725",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/alacati/alavya-7725",
+   "h1": "Alavya",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3005. Sk. No:6",
+     "addressLocality": "Alacati",
+     "postalCode": "35937",
+     "addressCountry": "TUR",
+     "addressRegion": "Izmir Region"
+    },
+    "name": "Alavya in Alacati",
+    "description": "Since opening in 2014, this stylish boutique hotel has appeared in boldface on countless hot lists and “where to go now” round-ups. But that doesn’t mean you’ll feel any immediate recognition with the destination — unless, of course, you’re a European-born jet-setter with your own sailboat, in which case, you know exactly what the Izmir peninsula is all about. For the rest of us: Alavya is located in Alaçatı, 45 miles east of Çeşme — which, in turn, is a coastal city on Turkey’s Aegean coast, some 400 miles southwest of Istanbul. It’s an upscale regional hot spot with Ottoman roots — think historic stone houses, white boats bobbing in the harbor, old windmills and rolling vineyards — and Alavya, when it opened, immediately became the town’s top lodging.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1107292.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.284899,
+     "longitude": 26.37621
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/alacati/alavya-7725",
+    "numberOfRooms": 25,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.284899%2C26.37621",
+    "telephone": "+90 549 786 97 50",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 6,
+     "ratingCount": 6,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/izmir/izmir_2809416/restaurant/asma%C2%A0yaprag%C4%B1",
+    "/en/izmir/izmir_2809416/restaurant/cark-bal%C4%B1k-cesme",
+    "/en/izmir/izmir_2809416/restaurant/kasap-fuat-cesme",
+    "/en/izmir/izmir_2809416/restaurant/rituel",
+    "/en/izmir/izmir_2809416/restaurant/roka-bahce",
+    "/en/izmir/izmir_2809416/restaurant/sota-alacati",
+    "/en/izmir/izmir_2809416/restaurant/terakki"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/ecole-st-pierre-hotel-12960",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/istanbul/ecole-st-pierre-hotel-12960",
+   "h1": "Ecole St. Pierre Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Bereketzade, Galata Kulesi Sk. No:14",
+     "addressLocality": "Istanbul",
+     "postalCode": "34420",
+     "addressCountry": "TUR"
+    },
+    "name": "Ecole St. Pierre Hotel in Istanbul",
+    "description": "Housed in the former Collège des Frères St. Pierre Elementary School, which operated from 1842 to 1935, this hotel retains traces of its original function, along with elements of the thousand-year-old Genoese walls. Opening onto a leafy, delightfully inviting courtyard, the charming restaurant/pizzeria Il Cortile is set in the school’s old refectory, while the 17 rooms, each marked with an abacus, occupy what were once classrooms.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1362371.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.02504,
+     "longitude": 28.97338
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/istanbul/ecole-st-pierre-hotel-12960",
+    "numberOfRooms": 17,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.02504%2C28.97338",
+    "petsAllowed": "Pets are allowed. Charges may apply.",
+    "telephone": "+90 212 244 26 75",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/aheste",
+    "/en/istanbul-province/istanbul/restaurant/ali-ocakbas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/aseka",
+    "/en/istanbul-province/istanbul/restaurant/gallada",
+    "/en/istanbul-province/istanbul/restaurant/gun-lokantas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/karakoy-lokantas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/murver",
+    "/en/istanbul-province/istanbul/restaurant/neolokal",
+    "/en/istanbul-province/istanbul/restaurant/tershane",
+    "/en/istanbul-province/istanbul/restaurant/yeni-lokanta"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/hisaronu/d-maris-bay-13756",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/hisaronu/d-maris-bay-13756",
+   "h1": "D Maris Bay",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Hisarönü Mah. Çubucak Küme Evleri, No: 80",
+     "addressLocality": "Hisarönü",
+     "postalCode": "48380",
+     "addressCountry": "TUR",
+     "addressRegion": "Muğla Province"
+    },
+    "name": "D Maris Bay in Hisarönü",
+    "description": "With its pristine pine forests and gorgeous beaches, Turkey’s Datça Peninsula feels like a secret island mostly undiscovered by international visitors. By far the most luxurious (and most remote) of the region’s few hotels is D Maris Bay. Set back from the main road on a protected nature reserve, this exclusive resort is framed by volcanic mountains and overlooks a turquoise expanse of water where the Aegean and Mediterranean converge.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1434092.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.7664212608,
+     "longitude": 28.0490816543
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/hisaronu/d-maris-bay-13756",
+    "numberOfRooms": 196,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.7664212608%2C28.0490816543",
+    "petsAllowed": "Pets under 8 kg can be accomodated for a daily fee of 70 EUR + tax. Pets are not allowed in public areas where food and beverages are served or consumed, or on any beach except Manos Beach.",
+    "telephone": "+90 0252 441 20 00",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-sultanahmet-7293",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-sultanahmet-7293",
+   "h1": "Four Seasons Hotel Istanbul at Sultanahmet",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Tevkifhane Sokak No 1, Sultanahmet Eminönü",
+     "addressLocality": "Istanbul",
+     "postalCode": "34122",
+     "addressCountry": "TUR"
+    },
+    "name": "Four Seasons Hotel Istanbul at Sultanahmet in Istanbul",
+    "description": "Istanbul is a glorious city—marvelous in its architecture, profound in its history, and exciting in its cuisine. And now, at last, there is a proper place to stay and enjoy it all… in a former jail. But what a jail it is. Certainly, our idea of a penitentiary doesn’t include a delicate, lemon-yellow Neo-Classical facade, complete with archways, balustrades and columns at every turn. The entrance, meanwhile, with its elaborately worked limestone detailing, is enthralling.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1695058.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.009633,
+     "longitude": 28.965165
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-sultanahmet-7293",
+    "numberOfRooms": 65,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.009633%2C28.965165",
+    "petsAllowed": "\\n Pets are allowed, charges may apply. Maximum weight is 26.5 lbs / 12 kg.",
+    "telephone": "90-212-4023000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 6,
+     "ratingCount": 6,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Three MICHELIN Keys · An extraordinary stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/ali-ocakbas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/avlu-restaurant",
+    "/en/istanbul-province/istanbul/restaurant/deraliye",
+    "/en/istanbul-province/istanbul/restaurant/gallada",
+    "/en/istanbul-province/istanbul/restaurant/giritli",
+    "/en/istanbul-province/istanbul/restaurant/khorasani",
+    "/en/istanbul-province/istanbul/restaurant/lokanta-1741",
+    "/en/istanbul-province/istanbul/restaurant/neolokal",
+    "/en/istanbul-province/istanbul/restaurant/pandeli",
+    "/en/istanbul-province/istanbul/restaurant/tershane"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-the-bosphorus-7308",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-the-bosphorus-7308",
+   "h1": "Four Seasons Hotel Istanbul at the Bosphorus",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ciragan Cad Number 28, Beşiktaş",
+     "addressLocality": "Istanbul",
+     "postalCode": "34349",
+     "addressCountry": "TUR"
+    },
+    "name": "Four Seasons Hotel Istanbul at the Bosphorus in Istanbul",
+    "description": "Located in one of Istanbul’s trendiest neighborhoods — just steps from the fashionable shopping street of Nişantaşı and the historic Dolmabahçe Palace — the Four Seasons Hotel at the Bosphorus (the brand’s other Istanbul property is in the Sultanahmet district) is set within a beautifully restored 19th-century Ottoman palace on the European shores of the Bosphorus Strait. Once a private residence for high-ranking Ottoman officials, the building retains all the charm of its imperial past.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1691297.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.044834,
+     "longitude": 29.016609
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-the-bosphorus-7308",
+    "numberOfRooms": 170,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.044834%2C29.016609",
+    "petsAllowed": "\\n Pets are allowed, charges may apply. Maximum weight is 26.5 lbs / 12 kg.",
+    "telephone": "90-212-3814000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/aqua-1202450",
+    "/en/istanbul-province/istanbul/restaurant/lokanta-feriye",
+    "/en/istanbul-province/istanbul/restaurant/monteverdi-ristorante",
+    "/en/istanbul-province/istanbul/restaurant/nobu-1202792",
+    "/en/istanbul-province/istanbul/restaurant/park-fora",
+    "/en/istanbul-province/istanbul/restaurant/ruby",
+    "/en/istanbul-province/istanbul/restaurant/spago-1195842",
+    "/en/istanbul-province/istanbul/restaurant/st-regis-brasserie",
+    "/en/istanbul-province/istanbul/restaurant/topaz-1202702",
+    "/en/istanbul-province/istanbul/restaurant/tugra"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/mandarin-oriental-bodrum-7239",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/bodrum/mandarin-oriental-bodrum-7239",
+   "h1": "Mandarin Oriental Bodrum",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Cennet Koyu, Comca Mevkii, 314. Sokak No. 10, Golturkbuku Mahallesi",
+     "addressLocality": "Bodrum",
+     "postalCode": "48400",
+     "addressCountry": "TUR",
+     "addressRegion": "Bodrum Peninsula"
+    },
+    "name": "Mandarin Oriental Bodrum in Bodrum",
+    "description": "On the Turkish Riviera — is there a more delicious phrase than Turkish Riviera? — you’ll find the Mandarin Oriental, Bodrum. The sprawling 60-acre hillside resort enjoys privacy along a stretch of the Aegean coast that is tellingly called Cennet Koyu (“Paradise Bay”), surrounded by gorgeous beaches and lush olive groves. Save the occasional passing luxury yacht, guests unwind entirely undisturbed. (And some may rest even easier knowing that civilization, in the form of the peninsula’s namesake city of Bodrum, is a mere 20-minute drive away.)",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1487714.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.126039,
+     "longitude": 27.41096
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/bodrum/mandarin-oriental-bodrum-7239",
+    "numberOfRooms": 109,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.126039%2C27.41096",
+    "telephone": "+90 252 311 28 88",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/mugla/bodrum_2806351/restaurant/beynel",
+    "/en/mugla/bodrum_2806351/restaurant/hakkasan-bodrum",
+    "/en/mugla/bodrum_2806351/restaurant/k%C4%B1smet-lokantas%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+    "/en/mugla/bodrum_2806351/restaurant/kurul-bitez",
+    "/en/mugla/bodrum_2806351/restaurant/loft-elia",
+    "/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak",
+    "/en/mugla/bodrum_2806351/restaurant/orkide-bal%C4%B1k",
+    "/en/mugla/bodrum_2806351/restaurant/tuti"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-st-regis-istanbul-12681",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-st-regis-istanbul-12681",
+   "h1": "The St. Regis Istanbul",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mim Kemal Oke Caddesi No:35",
+     "addressLocality": "Istanbul",
+     "postalCode": "34367",
+     "addressCountry": "TUR"
+    },
+    "name": "The St. Regis Istanbul in Istanbul",
+    "description": "Often referred to as the Fifth Avenue of Istanbul, the Nişantaşı district is a refined and exclusive enclave that is home to The St. Regis Istanbul. This vibrant neighborhood enchants visitors with its high-end designer boutiques set within elegant Art Deco and Art Nouveau buildings, as well as a diverse and upscale array of restaurants and cafés.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1473267.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.04747,
+     "longitude": 28.99291
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-st-regis-istanbul-12681",
+    "numberOfRooms": 118,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.04747%2C28.99291",
+    "telephone": "+90 212 368 00 00",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/foxy-nisantas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/lokanta-by-divan",
+    "/en/istanbul-province/istanbul/restaurant/mahir-lokantas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/maromi-istanbul",
+    "/en/istanbul-province/istanbul/restaurant/nobu-1202792",
+    "/en/istanbul-province/istanbul/restaurant/sade-bes-denizler-mutfag%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/spago-1195842",
+    "/en/istanbul-province/istanbul/restaurant/st-regis-brasserie",
+    "/en/istanbul-province/istanbul/restaurant/tatbak",
+    "/en/istanbul-province/istanbul/restaurant/topaz-1202702"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-peninsula-istanbul-12990",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-peninsula-istanbul-12990",
+   "h1": "The Peninsula Istanbul",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "34 Kemankeş Caddesi Kemankeş Kocamustafapaşa Mahallesi",
+     "addressLocality": "Istanbul",
+     "postalCode": "34425",
+     "addressCountry": "TUR"
+    },
+    "name": "The Peninsula Istanbul in Istanbul",
+    "description": "The Peninsula Istanbul in its present form has only existed since 2023, but it’s no newcomer — it occupies three fastidiously restored historic buildings plus one new structure, as a part of the Galataport redevelopment along the Bosphorus waterfront in Karaköy. Like any Peninsula it aims to join the ranks of the most luxurious hotels in town, and like just about any Peninsula, it succeeds; the rooms are ultra-luxe, and tastefully walk a fine line between contemporary international minimalism and classic Turkish ornament.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1467975.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.02301,
+     "longitude": 28.97793
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/istanbul/the-peninsula-istanbul-12990",
+    "numberOfRooms": 177,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.02301%2C28.97793",
+    "telephone": "+90 212 931 2888",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/aheste",
+    "/en/istanbul-province/istanbul/restaurant/ali-ocakbas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/aseka",
+    "/en/istanbul-province/istanbul/restaurant/gallada",
+    "/en/istanbul-province/istanbul/restaurant/karakoy-lokantas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/murver",
+    "/en/istanbul-province/istanbul/restaurant/muutto-anatolian-tapas-bar",
+    "/en/istanbul-province/istanbul/restaurant/neolokal",
+    "/en/istanbul-province/istanbul/restaurant/tershane",
+    "/en/istanbul-province/istanbul/restaurant/yeni-lokanta"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/vakko-hotels-sumahan-bosphorus-64032-1131",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/istanbul/vakko-hotels-sumahan-bosphorus-64032-1131",
+   "h1": "Vakko Hotel Sumahan Bosphorus",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kuleli Caddesi No: 43 Cengelkoy",
+     "addressLocality": "Istanbul",
+     "postalCode": "34684",
+     "addressCountry": "TUR"
+    },
+    "name": "Vakko Hotel Sumahan Bosphorus in Istanbul",
+    "description": "Set within a 19th-century Ottoman distillery, Vakko Hotel Sumahan Bosphorus sits on the Asian bank of the Bosphorus, in an upscale residential neighborhood full of vacation homes, looking across the strait at the city skyline over on the European side of Istanbul. The unobstructed view is what it’s all about — the hotel sits right up against the water’s edge, with terraces peering over, and the upper-level guest rooms look out through tall picture windows at the strait and the long span of the Bosphorus Bridge.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1506682.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.051209,
+     "longitude": 29.05283
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/istanbul/vakko-hotels-sumahan-bosphorus-64032-1131",
+    "numberOfRooms": 12,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.051209%2C29.05283",
+    "telephone": "+90 216 422 80 00",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.1,
+     "reviewCount": 1,
+     "ratingCount": 1,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/29-1195533",
+    "/en/istanbul-province/istanbul/restaurant/alaf",
+    "/en/istanbul-province/istanbul/restaurant/borsa-restaurant",
+    "/en/istanbul-province/istanbul/restaurant/lokanta-feriye",
+    "/en/istanbul-province/istanbul/restaurant/park-fora",
+    "/en/istanbul-province/istanbul/restaurant/ruby",
+    "/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya",
+    "/en/istanbul-province/istanbul/restaurant/sunset-grill-bar",
+    "/en/istanbul-province/istanbul/restaurant/telezzuz",
+    "/en/istanbul-province/istanbul/restaurant/tugra"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/birdcage-33-13248",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/bodrum/birdcage-33-13248",
+   "h1": "Birdcage 33 Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ömer Efendi Caddesi 33, Bodrum",
+     "addressLocality": "Bodrum",
+     "postalCode": "48990",
+     "addressCountry": "TUR",
+     "addressRegion": "Bodrum Peninsula"
+    },
+    "name": "Birdcage 33 Hotel in Bodrum",
+    "description": "Bodrum is home to hotels of every description, but few are smaller or more intimate than the stylish Birdcage 33, an 11-room escape whose atmosphere is even more tranquil than its size implies thanks to its adults-only policy. It’s no accident that the vibe is residential; the hotel’s rooms are divided among a handful of low-profile modernist houses, which combine modern furniture and traditional crafts and construction. The social heart of the hotel is its glamorous pool deck, and by its side is the bar and restaurant, Lika, which serves locally sourced fare with a view of the Aegean.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1354271.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.095837,
+     "longitude": 27.285206
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/bodrum/birdcage-33-13248",
+    "numberOfRooms": 11,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.095837%2C27.285206",
+    "telephone": "+902523853433",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/mugla/bodrum_2806351/restaurant/beynel",
+    "/en/mugla/bodrum_2806351/restaurant/hodan-yal%C4%B1kavak",
+    "/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+    "/en/mugla/bodrum_2806351/restaurant/kurul-bitez",
+    "/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak",
+    "/en/mugla/bodrum_2806351/restaurant/orkide-bal%C4%B1k",
+    "/en/mugla/bodrum_2806351/restaurant/sait",
+    "/en/mugla/bodrum_2806351/restaurant/sia-eli",
+    "/en/mugla/bodrum_2806351/restaurant/zuma-bodrum"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/B%C3%BCy%C3%BCkada/princes-palace-resort-15003",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/B%C3%BCy%C3%BCkada/princes-palace-resort-15003",
+   "h1": "Princes' Palace Resort",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Çankaya Caddesi No 58, Büyükada",
+     "addressLocality": "Büyükada",
+     "postalCode": "34970",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul"
+    },
+    "name": "Princes' Palace Resort in Büyükada",
+    "description": "Princes’ Palace occupies a celebrated spot on Büyükada, the largest of Istanbul’s Princes’ Islands. Once a retreat for Ottoman royals and intellectuals, the island still feels worlds away from the city. The resort draws from this legacy with colonnaded walkways, sculpted gardens, and sea-facing suites styled with layered detail and ease. Views take in the Marmara or manicured courtyards, and the only sounds are gulls and bicycle bells. It is Istanbul: rewound, reimagined, and just offshore.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1486941.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 40.870036,
+     "longitude": 29.120645
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/B%C3%BCy%C3%BCkada/princes-palace-resort-15003",
+    "numberOfRooms": 70,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=40.870036%2C29.120645",
+    "telephone": "+90 216 544 01 00",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/aida-vino-e-cucina",
+    "/en/istanbul-province/istanbul/restaurant/araf-istanbul",
+    "/en/istanbul-province/istanbul/restaurant/basta-neo-bistro",
+    "/en/istanbul-province/istanbul/restaurant/calipso-fish",
+    "/en/istanbul-province/istanbul/restaurant/fauna",
+    "/en/istanbul-province/istanbul/restaurant/mutfakkoz",
+    "/en/istanbul-province/istanbul/restaurant/nazende-cadde",
+    "/en/istanbul-province/istanbul/restaurant/parvus-kalam%C4%B1s",
+    "/en/istanbul-province/istanbul/restaurant/sapa-istanbul",
+    "/en/istanbul-province/istanbul/restaurant/tavac%C4%B1-recep-usta-bostanc%C4%B1"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/istanbul/mandarin-oriental-bosphorus-istanbul-15244",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/istanbul/mandarin-oriental-bosphorus-istanbul-15244",
+   "h1": "Mandarin Oriental Bosphorus, Istanbul",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kurucesme, Muallim Naci Cad. No: 62, Besiktas ",
+     "addressLocality": "Istanbul",
+     "postalCode": "34345 ",
+     "addressCountry": "TUR"
+    },
+    "name": "Mandarin Oriental Bosphorus, Istanbul in Istanbul",
+    "description": "Set along a quiet stretch of the Bosphorus, this Mandarin Oriental leans into understatement: rare for Istanbul, and rarer still for a hotel of this scale. The low-rise form draws from the waterfront mansions that still line this stretch of the strait. Rooms come with embroidered motifs, tulip-patterned tiles, and balconies that open onto the Bosphorus, with Beylerbeyi Palace just across the water. Most of the hotel’s six floors sit underground, housing a vast spa and event spaces. Above ground, dining brings in locals and guests alike, especially when the city lights start to flicker.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1486875.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.0572094182,
+     "longitude": 29.0356592509
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/istanbul/mandarin-oriental-bosphorus-istanbul-15244",
+    "numberOfRooms": 100,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.0572094182%2C29.0356592509",
+    "telephone": "+90 212 349 8888",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/29-1195533",
+    "/en/istanbul-province/istanbul/restaurant/alaf",
+    "/en/istanbul-province/istanbul/restaurant/arkestra",
+    "/en/istanbul-province/istanbul/restaurant/lokanta-feriye",
+    "/en/istanbul-province/istanbul/restaurant/park-fora",
+    "/en/istanbul-province/istanbul/restaurant/ruby",
+    "/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya",
+    "/en/istanbul-province/istanbul/restaurant/sunset-grill-bar",
+    "/en/istanbul-province/istanbul/restaurant/terrazza-italia",
+    "/en/istanbul-province/istanbul/restaurant/tugra"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/beyoglu/aliee-istanbul-15217",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/beyoglu/aliee-istanbul-15217",
+   "h1": "Aliée Istanbul",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Camiikebir Mahallesi Taskizak Tersanesi Caddesi No 11:19, Beyoglu",
+     "addressLocality": "Beyoğlu",
+     "postalCode": "34437",
+     "addressCountry": "TUR",
+     "addressRegion": "Istanbul"
+    },
+    "name": "Aliée Istanbul in Beyoğlu",
+    "description": "Sitting on the banks of the Golden Horn, Aliée Istanbul originally began life as the Aynalıkavak Pavilion before later becoming one of the city’s most important shipyards. The centuries-old property has undergone a dramatic transformation to be reborn as a hotel, but the years of history can still be felt in Aliée’s bones, namely the original stone walls and arched windows that have been left exposed in the guest rooms, and the 600-year-old hammam that is currently being restored to soon reopen as the private Heritage Villa.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1646967.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 41.03442,
+     "longitude": 28.96139
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/beyoglu/aliee-istanbul-15217",
+    "numberOfRooms": 99,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=41.03442%2C28.96139",
+    "petsAllowed": "Pets are allowed. Charges may apply.",
+    "telephone": "+90 212 393 11 00",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istanbul-province/istanbul/restaurant/1924-istanbul",
+    "/en/istanbul-province/istanbul/restaurant/aheste",
+    "/en/istanbul-province/istanbul/restaurant/ali-ocakbas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/gun-lokantas%C4%B1",
+    "/en/istanbul-province/istanbul/restaurant/mikla",
+    "/en/istanbul-province/istanbul/restaurant/neolokal",
+    "/en/istanbul-province/istanbul/restaurant/nicole",
+    "/en/istanbul-province/istanbul/restaurant/tershane",
+    "/en/istanbul-province/istanbul/restaurant/the-red-balloon",
+    "/en/istanbul-province/istanbul/restaurant/yeni-lokanta"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/macakizi-5656",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/bodrum/macakizi-5656",
+   "h1": "Macakizi",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Narçiçeği Sokak",
+     "addressLocality": "Bodrum",
+     "postalCode": "48400",
+     "addressCountry": "TUR",
+     "addressRegion": "Bodrum Peninsula"
+    },
+    "name": "Macakizi in Bodrum",
+    "description": "Though it’s hardly the household name that some other Mediterranean destinations are, Turkey’s Bodrum Peninsula can’t stay secret for long. The combination of hilly seaside geography and crystal blue waters isn’t exactly a hard sell. And the hotels aren’t half bad either — Maçakizi, for its part, is the kind of stylish and sophisticated luxury hotel that’ll put a jealous glint in the eyes of Côte d’Azur or Greek Isles hoteliers.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1696973.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.136472,
+     "longitude": 27.380201
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/bodrum/macakizi-5656",
+    "numberOfRooms": 71,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.136472%2C27.380201",
+    "telephone": "+90 252 3112400",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.1,
+     "reviewCount": 9,
+     "ratingCount": 9,
+     "bestRating": 20
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/mugla/bodrum_2806351/restaurant/hakkasan-bodrum",
+    "/en/mugla/bodrum_2806351/restaurant/hodan-yal%C4%B1kavak",
+    "/en/mugla/bodrum_2806351/restaurant/k%C4%B1smet-lokantas%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+    "/en/mugla/bodrum_2806351/restaurant/loft-elia",
+    "/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak",
+    "/en/mugla/bodrum_2806351/restaurant/orkide-bal%C4%B1k",
+    "/en/mugla/bodrum_2806351/restaurant/sait",
+    "/en/mugla/bodrum_2806351/restaurant/zuma-bodrum"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  }
+ ]
+}

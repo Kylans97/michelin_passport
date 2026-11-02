@@ -6,6 +6,33 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-01 — Poland and Türkiye stars and Key hotels 2026 (QA-404–QA-410)
+
+| | |
+|---|---|
+| Applied | 2026-11-01, to production, at the product owner's request, from `claude/michelin-pl-tr-2026` |
+| Migration | `20261031180000_add_pl_tr_2026_cities.sql` (14 towns). Plain `supabase db push --linked`; ledger 126 → 127, local and remote in agreement. Cities: PL 8 → 13, TR 2 → 11 |
+| Data file | `michelin_pl_tr_2026/prepared_pl_tr_2026.sql`. One transaction, every check passed |
+| Rows | 23 starred restaurants (`rest_3901`–`rest_3923`); 25 Key hotels (`hotel_2901`–`hotel_2925`); 2 hotel links; 2 `property_name` |
+| Corrections | Araka 2 → 1 star (QA-404). PL Keys corrected in place to 2026 (QA-405): Jaskółka 1 → 2, Zamek Łeba 2 → 1, Altus Palace 2 → 1, Bristol 2 → 1. Jaskółka and Bristol without a 2025 source, by the product owner's decision. Four restaurant locations and addresses moved to MICHELIN's pin (QA-406). 5 `michelin_url` values moved to MICHELIN's current pages |
+
+**Checked after the apply**, row by row against `pl_tr_restaurants_2026.csv` and `pl_tr_key_hotels_2026.csv` (fresh export `_source/production_after_apply_20261101.json`):
+
+- **PL:** stars 0/1/10, Keys 0/5/9.
+- **TR:** stars 0/2/15, Keys 1/3/19.
+
+Both equal MICHELIN's live selection and its global Key article (PL 14, TR 23). Every row has exactly one current award row equal to its value. The untouched hotels (`hotel_758`, `hotel_783`, the unchanged PL Key hotels) are identical to the export.
+
+**Still open:**
+
+- **QA-406:** the stored Place IDs of Araka, Sankai and Turk Fatih Tutak may belong to their pre-move record.
+- **QA-407:** no Place IDs for the new rows, and no phone or website for the new hotels.
+- **QA-408:** four phones left blank, and Neolokal's stored phone differs from MICHELIN's.
+- **QA-409:** Maçakızı has no award rows.
+- **QA-410:** town choices.
+
+---
+
 # 2026-11-01 — Portugal stars and Key hotels 2026 (QA-398, QA-399)
 
 | | |

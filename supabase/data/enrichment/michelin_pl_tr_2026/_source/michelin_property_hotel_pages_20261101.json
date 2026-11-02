@@ -1,0 +1,114 @@
+{
+ "fetched_at": "2026-11-01T19:36:07Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/urgup/kayakapi-premium-caves-cappadocia-7054",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/urgup/kayakapi-premium-caves-cappadocia-7054",
+   "h1": "Kayakapi Premium Caves - Cappadocia",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kayakapi Mahallesi, Kuscular Sokak No:43",
+     "addressLocality": "Urgup",
+     "postalCode": "50400",
+     "addressCountry": "TUR",
+     "addressRegion": "Cappadocia"
+    },
+    "name": "Kayakapi Premium Caves - Cappadocia in Urgup",
+    "description": "It’s true; these really are some premium caves. We’ve come a long way since prehistoric times. And even in Cappadocia — which is pretty much the alpha and the omega when it comes to luxurious cave-dwelling — Kayakapi is a standout, twenty-nine beautifully retrofitted rooms carved into the soft stone cliffs of the Kayakapi neighborhood, in Göreme National Park.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1506490.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.636236,
+     "longitude": 34.90185
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/urgup/kayakapi-premium-caves-cappadocia-7054",
+    "numberOfRooms": 42,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.636236%2C34.90185",
+    "telephone": "+90 384 341 88 77",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.0,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/happena",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/lil-a-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/seki-restaurant",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/seten",
+    "/en/nevsehir/nevsehir-merkez_2821449/restaurant/uzundere-kapadokya-mutfag%C4%B1",
+    "/en/nevsehir/urgup_2827493/restaurant/babayan-evi-restaurant",
+    "/en/nevsehir/urgup_2827493/restaurant/gorgoli",
+    "/en/nevsehir/urgup_2827493/restaurant/old-greek-house",
+    "/en/nevsehir/urgup_2827493/restaurant/revithia",
+    "/en/nevsehir/urgup_2827493/restaurant/t%C4%B1k-t%C4%B1k-kad%C4%B1n-emegi"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/bodrum/the-bodrum-edition-13266",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/bodrum/the-bodrum-edition-13266",
+   "h1": "The Bodrum EDITION",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Dirmil Mahallesi, Balyek Cd. No 5A",
+     "addressLocality": "Bodrum",
+     "postalCode": "48400",
+     "addressCountry": "TUR",
+     "addressRegion": "Bodrum Peninsula"
+    },
+    "name": "The Bodrum EDITION in Bodrum",
+    "description": "Whereas the original Ian Schrager vision seemed firmly rooted in its native New York, his collaboration with Marriott is as global as can be. The Bodrum EDITION is true to the brand’s visually minimalist but decidedly high-end style, and yet it looks perfectly at home on a bay overlooking the Aegean Sea. Its 108 rooms, suites, and villas feel residential in their warmth, and the atmosphere is stylish yet casual, in contrast with some of Bodrum’s flashier hotels. A spa, a beach club, and a blissful infinity pool are among the offerings; social venues include a nightclub as well as Turkish, Japanese, and Latin American restaurants.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1354187.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-TUR",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.116236,
+     "longitude": 27.311617
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/bodrum/the-bodrum-edition-13266",
+    "numberOfRooms": 108,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.116236%2C27.311617",
+    "telephone": "+90 252 311 31 31"
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/mugla/bodrum_2806351/restaurant/hakkasan-bodrum",
+    "/en/mugla/bodrum_2806351/restaurant/hodan-yal%C4%B1kavak",
+    "/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+    "/en/mugla/bodrum_2806351/restaurant/kurul-bitez",
+    "/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak",
+    "/en/mugla/bodrum_2806351/restaurant/orkide-bal%C4%B1k",
+    "/en/mugla/bodrum_2806351/restaurant/sait",
+    "/en/mugla/bodrum_2806351/restaurant/sia-eli",
+    "/en/mugla/bodrum_2806351/restaurant/zuma-bodrum"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  }
+ ]
+}
