@@ -8,6 +8,29 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Fixed
+- **A sign-up confirmation was refused as suspicious content**
+  (2026-11-02). Resend showed it as "Blocked due to content" by the new
+  member's company mail server. The mail was Supabase's bare default:
+  one line and a link to `wcmxugunvwsrulcpeyrc.supabase.co`, sent from
+  `hello@mantelier.app`. A sender domain that differs from the link's
+  domain, in a mail with almost no text, is what phishing looks like to
+  a company filter.
+  - That member's email was confirmed by hand (`email_confirmed_at`,
+    run by the product owner in the SQL Editor), after they reported
+    the missing mail themselves.
+  - New templates are in `supabase/templates/`: `confirmation.html`
+    (sign-up, and new links) and `recovery.html` (forgot password).
+    They say who sends the mail and why, what Mantelier is, and what to
+    do if it wasn't you. They use plain tables and inline styles, with
+    no images or web fonts. They take effect once pasted into the
+    dashboard (Authentication → Email Templates); `config.toml` points
+    local stacks at the same files.
+  - Not fixed by this: the link still points to the supabase.co domain.
+    A Supabase custom domain (`auth.mantelier.app`) would make the link
+    match the sender. That's a paid add-on and changes the URL the app
+    signs in against, so it is a decision, not part of this fix.
+
 ### Added
 - **Mantelier Studio, the admin dashboard on the website** (phase 1 of
   `docs/Architecture/VENUE_INSIGHTS_AND_SUBSCRIPTIONS_PLAN.md`, written,

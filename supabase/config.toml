@@ -250,6 +250,17 @@ otp_expiry = 3600
 # sender_name = "Admin"
 
 # Uncomment to customize email template
+# Mantelier's own sign-up and password-reset mails (2026-11-02). Production
+# takes them from the dashboard (Authentication → Email Templates), pasted by
+# hand from these same files; this only makes local stacks match.
+[auth.email.template.confirmation]
+subject = "Confirm your email for Mantelier"
+content_path = "./supabase/templates/confirmation.html"
+
+[auth.email.template.recovery]
+subject = "Reset your Mantelier password"
+content_path = "./supabase/templates/recovery.html"
+
 # [auth.email.template.invite]
 # subject = "You have been invited"
 # content_path = "./supabase/templates/invite.html"

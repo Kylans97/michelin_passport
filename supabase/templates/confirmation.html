@@ -1,0 +1,64 @@
+<!-- Supabase Auth → Email Templates → "Confirm signup".
+     Subject: Confirm your email for Mantelier
+     Sent on sign-up and when a member asks for a new confirmation link.
+     Written 2026-11-02 after a company mail server refused the bare
+     default template as suspicious content. Plain tables and inline
+     styles, no images and no web fonts, so it reads the same everywhere. -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Confirm your email for Mantelier</title>
+</head>
+<body style="margin:0; padding:0; background:#F4F0E7;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#F4F0E7;">
+  <tr>
+    <td align="center" style="padding:32px 16px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:520px;">
+        <tr>
+          <td align="center" style="padding:0 0 24px; font-family:Georgia, 'Times New Roman', serif; font-size:22px; letter-spacing:6px; color:#16302A;">
+            MANTELIER
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#FFFDF8; border:1px solid #E7DFCE; border-radius:16px; padding:36px 32px;">
+            <h1 style="margin:0 0 16px; font-family:Georgia, 'Times New Roman', serif; font-size:28px; font-weight:normal; line-height:1.2; color:#16302A;">
+              Welcome to Mantelier
+            </h1>
+            <p style="margin:0 0 16px; font-family:Helvetica, Arial, sans-serif; font-size:16px; line-height:1.6; color:#20261F;">
+              You created a Mantelier account with this email address, {{ .Email }}.
+              Confirm it to finish signing up, then open the app and sign in with your email and password.
+            </p>
+            <p style="margin:0 0 28px; font-family:Helvetica, Arial, sans-serif; font-size:16px; line-height:1.6; color:#20261F;">
+              Mantelier keeps track of the evenings that only happen once — four-hands dinners,
+              guest chefs, winemaker nights — and keeps the ones you go to in your Passport.
+            </p>
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="background:#16302A; border-radius:12px;">
+                  <a href="{{ .ConfirmationURL }}" style="display:inline-block; padding:14px 28px; font-family:Helvetica, Arial, sans-serif; font-size:16px; font-weight:bold; color:#F4F0E7; text-decoration:none;">
+                    Confirm my email
+                  </a>
+                </td>
+              </tr>
+            </table>
+            <p style="margin:28px 0 0; font-family:Helvetica, Arial, sans-serif; font-size:14px; line-height:1.6; color:#726A60;">
+              The button works once. Didn't create an account? Then you can ignore this email:
+              nothing happens without the button, and no account is made in your name.
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td align="center" style="padding:24px 8px 0; font-family:Helvetica, Arial, sans-serif; font-size:13px; line-height:1.6; color:#726A60;">
+            Mantelier · <a href="https://mantelier.app" style="color:#726A60;">mantelier.app</a> ·
+            <a href="mailto:hello@mantelier.app" style="color:#726A60;">hello@mantelier.app</a><br>
+            You're receiving this because someone signed up for Mantelier with this address.
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
