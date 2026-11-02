@@ -8,6 +8,29 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Fixed
+
+- **Searching "Frans" found nothing; only "French" worked.** The product
+  owner found this on 2026-11-02 while preparing 1.5.6 (25) for testers.
+  Free search matched only MICHELIN's English cuisine labels.
+  - **Migration `20261101200000_add_cuisine_dutch_search_terms.sql`**
+    adds `search_terms` to `cuisine_families` (a Dutch name for each of
+    the 25: Frans, Japans, Italiaans…) and to `cuisines` (44 whose Dutch
+    differs from their family's: Duits, Grieks, Thais, Baskisch…, so
+    "Duits" finds German and not all of Central Europe). It also
+    redefines `restaurants_full` with those terms added to
+    `cuisine_search` alone; every other column is unchanged and in
+    order. What's shown stays MICHELIN's English label.
+  - **No app change:** installed builds, 25 included, pick it up as soon
+    as it's applied.
+  - **Checks:** the 44 cuisine names were checked against production
+    first (all matched). They aren't asserted in the migration, because
+    the cuisines are loaded as data and a fresh replay has none. Replayed
+    locally: a restaurant labelled Alsatian searched as "Alsatian
+    Elzassisch French Frans" and was found by "frans", "elzassisch" and
+    "french", but not by "japans".
+  - **Not applied yet.**
+
 ---
 
 ## v1.5.6 (25) — 2026-11-02
