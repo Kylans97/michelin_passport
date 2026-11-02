@@ -9,13 +9,36 @@
 -- they are counts the operator may see; the suppression rule is for what
 -- leaves Mantelier, and that is phase 2.
 --
--- Who may call it: an admin (is_admin(), the single source of that
--- permission) whose session passed two-factor (aal2). The website
--- dashboard shows unsuppressed numbers, so a password alone is not
--- enough there. The in-app Insights screen keeps using
--- admin_get_member_insights(), which needs no aal2 and stays as it is.
+-- Who may call it: an admin whose session passed two-step sign-in.
+-- is_admin() itself requires aal2 since 20261101220000; the aal check is
+-- kept here, first, so a password-only session gets 'mfa_required'
+-- rather than 'not_admin'.
+--
+-- Renumbered 2026-11-02 from 20261101220000 before it was ever applied
+-- anywhere: 20261101220000_admins_require_two_step took that number on
+-- main first. Same date and content otherwise.
+--
+-- admin_two_step_pending() tells the studio's sign-in, after the password
+-- and before the code, whether this account is an admin still owing its
+-- code — is_admin() is false at that point by design. It says only that,
+-- and only about the caller.
 --
 -- No new table, no new tracking: it reads what the app already records.
+
+create function public.admin_two_step_pending()
+returns boolean
+language sql
+stable
+security definer
+set search_path = public
+as $$
+  select auth.uid() is not null
+     and coalesce(auth.jwt() ->> 'aal', 'aal1') <> 'aal2'
+     and exists (select 1 from public.admins a where a.user_id = auth.uid());
+$$;
+
+revoke execute on function public.admin_two_step_pending() from public, anon;
+grant execute on function public.admin_two_step_pending() to authenticated;
 
 create function public.admin_studio_report(p_days integer default 30)
 returns jsonb
@@ -30,11 +53,11 @@ declare
   v_weeks integer;
   v_result jsonb;
 begin
-  if not public.is_admin() then
-    raise exception 'not_admin' using errcode = '42501';
-  end if;
   if coalesce(auth.jwt() ->> 'aal', 'aal1') <> 'aal2' then
     raise exception 'mfa_required' using errcode = '42501';
+  end if;
+  if not public.is_admin() then
+    raise exception 'not_admin' using errcode = '42501';
   end if;
 
   v_since := now() - make_interval(days => v_days);

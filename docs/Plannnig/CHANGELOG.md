@@ -18,7 +18,9 @@ The format follows Keep a Changelog.
     to set up an authenticator. An admin then sets up two-step sign-in
     (TOTP) the first time, and enters a code every time after. The
     session lives in the tab only (`sessionStorage`).
-  - Migration `20261101220000_add_admin_studio_report`:
+  - Migration `20261101230000_add_admin_studio_report` (renumbered from
+    `20261101220000` before ever being applied, since
+    `20261101220000_admins_require_two_step` took that number on main):
     `admin_studio_report(p_days)` returns one jsonb document with
     headline numbers, weekly members and active members, screens,
     Explore searches and filters (never the text), top venues with taps

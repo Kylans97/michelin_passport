@@ -3,8 +3,9 @@
 //
 // Sign-in is the app account plus a code from an authenticator app.
 // Everything shown comes from two RPCs, both of which check on the server
-// who is asking: admin_studio_report (admin and two-step, 20261101220000)
-// and admin_get_member_insights (admin, 20261101210000). Nothing here is
+// who is asking: admin_studio_report (admin and two-step, 20261101230000)
+// and admin_get_member_insights (admin, 20261101210000). is_admin()
+// itself requires two-step since 20261101220000. Nothing here is
 // a permission check — a found URL shows a sign-in page and nothing else.
 //
 // All data is written with textContent, never innerHTML: venue and event
@@ -48,11 +49,18 @@ async function route() {
   const { data: { session } } = await supabase.auth.getSession();
   if (!session) return show("login");
 
-  // Admins only, asked before two-step sign-in, so a member who isn't
-  // one is never asked to set up an authenticator for nothing. The
-  // report itself checks again on the server; this only picks the screen.
+  // is_admin() is true only after the code (20261101220000). Before it,
+  // admin_two_step_pending() says whether this is an admin still owing
+  // the code, so a member who isn't one is never asked to set up an
+  // authenticator for nothing. The report checks again on the server;
+  // this only picks the screen.
   const { data: admin } = await supabase.rpc("is_admin");
-  if (admin !== true) return show("denied");
+  let allowed = admin === true;
+  if (!allowed) {
+    const { data: pending } = await supabase.rpc("admin_two_step_pending");
+    allowed = pending === true;
+  }
+  if (!allowed) return show("denied");
 
   const { data: aal, error } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
   if (error) return fail("login-error", error.message, "login");
