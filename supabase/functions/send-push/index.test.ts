@@ -285,3 +285,20 @@ Deno.test('the APNs provider token is a verifiable ES256 JWT', async () => {
   );
   assert(ok);
 });
+
+Deno.test('a birthday is pushed with its greeting, whatever the other toggles say', async () => {
+  const store = new FakeStore();
+  store.notifications = [{ id: 'n9', recipient_id: 'u1', type: 'birthday', subject_id: 'u1' }];
+  store.devices = [DEVICE];
+  store.preferences = [{ user_id: 'u1', push_friend_requests: false, push_followed_venue_events: false }];
+  const apns = recordingApns();
+  const res = await handleRequest(req({ body: { notification_ids: ['n9'] } }), store, apns.send, SECRET, NOW);
+  assertEquals(res.status, 200);
+  assertEquals(apns.sent.length, 1);
+  const payload = apns.sent[0].payload as Record<string, unknown>;
+  assertEquals((payload.aps as { alert: unknown }).alert, {
+    title: 'Mantelier',
+    body: 'Happy birthday from all of us at Mantelier.',
+  });
+  assertEquals(payload.type, 'birthday');
+});

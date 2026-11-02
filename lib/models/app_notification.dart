@@ -40,7 +40,11 @@ enum AppNotificationType {
   // A venue the recipient follows published an event (20261030130000):
   // fanned out to the host venue's followers. Only get_notifications_v4
   // returns it.
-  followedVenueEvent;
+  followedVenueEvent,
+
+  // A happy birthday from Mantelier, on the day (20261101210000). Only
+  // get_notifications_v5 returns it.
+  birthday;
 
   static AppNotificationType fromWire(String value) => switch (value) {
     'friend_request_received' => AppNotificationType.friendRequestReceived,
@@ -61,6 +65,7 @@ enum AppNotificationType {
     'trip_invite_received' => AppNotificationType.tripInviteReceived,
     'trip_invite_accepted' => AppNotificationType.tripInviteAccepted,
     'followed_venue_event' => AppNotificationType.followedVenueEvent,
+    'birthday' => AppNotificationType.birthday,
     _ => throw ArgumentError('Unknown notification type: $value'),
   };
 

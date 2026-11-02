@@ -51,12 +51,19 @@ class AuthRepository {
     required String password,
     required String displayName,
     required String username,
+    String? homeCountryCode,
   }) async {
     try {
       final response = await _client.auth.signUp(
         email: email,
         password: password,
-        data: {'display_name': displayName, 'username': username},
+        // handle_new_user keeps home_country_code only when it's a known
+        // country (20261101210000), so a bad one can't fail sign-up.
+        data: {
+          'display_name': displayName,
+          'username': username,
+          'home_country_code': ?homeCountryCode,
+        },
         emailRedirectTo: signupConfirmationRedirectUrl,
       );
       // Supabase returns a user even when email confirmation is required;

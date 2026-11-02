@@ -1,5 +1,6 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../models/event.dart';
+import '../../features/review/member_insights_screen.dart' show MemberInsight;
 import '../../models/review_item.dart';
 import 'events_repository.dart';
 import 'venue_photo_submission_repository.dart'
@@ -36,7 +37,17 @@ class ReviewRepository {
 
   /// A short-lived URL for a pending photo in the private bucket. Admins
   /// may read it (venue_photo_submissions_storage_admin_read).
-  Future<String> signedPhotoUrl(String storagePath) => _client.storage
+  /// Members by country and age group, counts only (groups under 5 come
+  /// back without a number). Admins only; the RPC refuses anyone else.
+  Future<List<MemberInsight>> loadMemberInsights() async {
+    final rows = await _client.rpc('admin_get_member_insights');
+    return [
+      for (final row in rows as List)
+        MemberInsight.fromJson(row as Map<String, dynamic>),
+    ];
+  }
+
+    Future<String> signedPhotoUrl(String storagePath) => _client.storage
       .from(venuePhotoSubmissionsBucket)
       .createSignedUrl(storagePath, 3600);
 

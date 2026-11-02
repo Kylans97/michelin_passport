@@ -28,7 +28,7 @@
 
 import { createClient } from 'jsr:@supabase/supabase-js@2';
 
-export type PushType = 'friend_request_received' | 'followed_venue_event';
+export type PushType = 'friend_request_received' | 'followed_venue_event' | 'birthday';
 export type ApnsEnvironment = 'sandbox' | 'production';
 
 export interface NotificationRow {
@@ -83,7 +83,11 @@ export interface ApnsResult {
 
 export type SendApns = (message: ApnsMessage) => Promise<ApnsResult>;
 
-const PUSH_TYPES: ReadonlySet<string> = new Set(['friend_request_received', 'followed_venue_event']);
+const PUSH_TYPES: ReadonlySet<string> = new Set([
+  'friend_request_received',
+  'followed_venue_event',
+  'birthday',
+]);
 
 function jsonResponse(body: unknown, status: number): Response {
   return new Response(JSON.stringify(body), {
@@ -93,6 +97,9 @@ function jsonResponse(body: unknown, status: number): Response {
 }
 
 function wantsPush(type: PushType, pref: PreferenceRow | undefined): boolean {
+  // A birthday notification exists only when the member kept the greeting
+  // on (profile_private.birthday_greeting), so it is always pushed.
+  if (type === 'birthday') return true;
   // No row means the defaults, which are on.
   if (!pref) return true;
   return type === 'friend_request_received'
@@ -127,6 +134,10 @@ export function followedVenueEventCopy(event: EventContent, now: Date = new Date
     title: event.hostName ?? 'A new event',
     body: `${event.eventName} · ${formatEventDate(event.startDate, now)}`,
   };
+}
+
+export function birthdayCopy(): PushCopy {
+  return { title: 'Mantelier', body: 'Happy birthday from all of us at Mantelier.' };
 }
 
 function buildPayload(n: NotificationRow, copy: PushCopy): Record<string, unknown> {
@@ -248,6 +259,8 @@ export async function handleRequest(
     let copy: PushCopy;
     if (type === 'friend_request_received') {
       copy = friendRequestCopy(await store.friendRequesterName(n.subject_id));
+    } else if (type === 'birthday') {
+      copy = birthdayCopy();
     } else {
       if (!eventCache.has(n.subject_id)) {
         eventCache.set(n.subject_id, await store.eventContent(n.subject_id));

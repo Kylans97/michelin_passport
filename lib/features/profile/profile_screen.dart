@@ -8,6 +8,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/utils/username_rules.dart';
 import '../../core/widgets/country_picker_sheet.dart';
 import '../../core/widgets/cs_primary_button.dart';
+import '../../core/widgets/cs_picker_field.dart';
 import '../../core/widgets/cs_text_field.dart';
 import '../../core/widgets/floating_nav_bar.dart';
 import '../../core/widgets/member_avatar.dart';
@@ -15,6 +16,7 @@ import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/event_confirmed_attendance_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/notifications_repository.dart';
+import '../../data/repositories/profile_private_repository.dart';
 import '../../data/repositories/profile_repository.dart';
 import '../../data/repositories/review_repository.dart';
 import '../../data/repositories/venue_manager_repository.dart';
@@ -26,6 +28,7 @@ import '../../models/venue_entry.dart';
 import '../claims/claim_venue_screen.dart';
 import '../friends/friends_screen.dart';
 import '../notifications/notifications_screen.dart';
+import '../review/member_insights_screen.dart';
 import '../review/review_queue_screen.dart';
 import 'change_avatar_sheet.dart';
 import 'change_password_screen.dart';
@@ -503,11 +506,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     builder: (context, reviewSnap) {
                       final waiting = reviewSnap.data;
                       if (waiting == null) return const SizedBox.shrink();
-                      return _SettingsRow(
-                        icon: Icons.fact_check_outlined,
-                        label: 'Review',
-                        badgeCount: waiting,
-                        onTap: _openReview,
+                      return Column(
+                        children: [
+                          _SettingsRow(
+                            icon: Icons.fact_check_outlined,
+                            label: 'Review',
+                            badgeCount: waiting,
+                            onTap: _openReview,
+                          ),
+                          // Admins only, like Review: members by country
+                          // and age group, counts only.
+                          _SettingsRow(
+                            icon: Icons.insights_outlined,
+                            label: 'Insights',
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) =>
+                                    MemberInsightsScreen(repository: _reviewRepo),
+                              ),
+                            ),
+                          ),
+                        ],
                       );
                     },
                   ),
@@ -947,9 +967,15 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
   bool _saving = false;
   String? _error;
 
+  // Birth date and greeting (profile_private): only this member sees them.
+  late final _privateRepo = ProfilePrivateRepository(Supabase.instance.client);
+  ProfilePrivate _private = const ProfilePrivate();
+  ProfilePrivate _initialPrivate = const ProfilePrivate();
+
   @override
   void initState() {
     super.initState();
+    _loadPrivate();
     final code = widget.initialHomeCountryCode;
     if (code == null) {
       _countryResolved = true;
@@ -1000,6 +1026,39 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
 
   void _clearCountry() => setState(() => _country = null);
 
+  Future<void> _loadPrivate() async {
+    try {
+      final value = await _privateRepo.load(widget.userId);
+      if (!mounted) return;
+      setState(() => _private = _initialPrivate = value);
+    } catch (_) {
+      // The field stays empty; saving only writes it when it changed.
+    }
+  }
+
+  Future<void> _pickBirthDate() async {
+    final latest = latestAllowedBirthDate();
+    final picked = await showDatePicker(
+      context: context,
+      initialDate: _private.birthDate ?? DateTime(latest.year - 14, 1, 1),
+      firstDate: DateTime(1900),
+      lastDate: latest,
+      initialDatePickerMode: DatePickerMode.year,
+      helpText: 'Your birthday',
+    );
+    if (picked == null || !mounted) return;
+    setState(
+      () => _private = ProfilePrivate(
+        birthDate: picked,
+        birthdayGreeting: _private.birthdayGreeting,
+      ),
+    );
+  }
+
+  void _clearBirthDate() => setState(
+    () => _private = ProfilePrivate(birthdayGreeting: _private.birthdayGreeting),
+  );
+
   Future<void> _save() async {
     final name = _nameCtrl.text.trim();
     final username = UsernameRules.normalize(_usernameCtrl.text);
@@ -1032,6 +1091,10 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
           userId: widget.userId,
           homeCountryCode: _country?.code,
         );
+      }
+      if (_private.birthDate != _initialPrivate.birthDate ||
+          _private.birthdayGreeting != _initialPrivate.birthdayGreeting) {
+        await _privateRepo.save(widget.userId, _private);
       }
       if (!mounted) return;
       Navigator.pop(context, true);
@@ -1070,7 +1133,10 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
             borderRadius: BorderRadius.vertical(top: Radius.circular(28)),
           ),
           padding: const EdgeInsets.fromLTRB(24, 14, 24, 28),
-          child: Column(
+          // Scrolls once the birthday field makes it taller than a small
+          // phone's sheet.
+          child: SingleChildScrollView(
+            child: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -1118,6 +1184,44 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
                 onTap: _saving ? null : _pickCountry,
                 onClear: _saving ? null : _clearCountry,
               ),
+              const SizedBox(height: CsSpacing.lg),
+              CsPickerField(
+                label: 'Birthday',
+                value: _private.birthDate == null
+                    ? null
+                    : formatBirthDate(_private.birthDate!),
+                placeholder: 'Not set (optional)',
+                helper:
+                    'Only you see this. We use it to wish you a happy birthday, '
+                    'and in anonymous age statistics.',
+                onTap: _saving ? null : _pickBirthDate,
+                onClear: _saving ? null : _clearBirthDate,
+              ),
+              if (_private.birthDate != null)
+                SwitchListTile(
+                  contentPadding: EdgeInsets.zero,
+                  value: _private.birthdayGreeting,
+                  activeThumbColor: AppColors.ivory,
+                  activeTrackColor: AppColors.forestGreen,
+                  title: Text(
+                    'Birthday greeting',
+                    style: CsTypography.body.copyWith(color: AppColors.textOnDark),
+                  ),
+                  subtitle: Text(
+                    'A note from Mantelier on the day',
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.secondaryOnDark,
+                    ),
+                  ),
+                  onChanged: _saving
+                      ? null
+                      : (v) => setState(
+                          () => _private = ProfilePrivate(
+                            birthDate: _private.birthDate,
+                            birthdayGreeting: v,
+                          ),
+                        ),
+                ),
               if (_error != null) ...[
                 const SizedBox(height: CsSpacing.base),
                 Text(
@@ -1135,6 +1239,7 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
                 ),
               ),
             ],
+            ),
           ),
         ),
       ),

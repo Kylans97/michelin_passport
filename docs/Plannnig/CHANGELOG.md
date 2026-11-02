@@ -8,6 +8,49 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Birthday, sign-up country and member insights**
+  (`claude/birthday-and-insights`, migration
+  `20261101210000_add_birthdays_signup_country_and_insights`, written
+  2026-11-02; **not yet applied**).
+  - Sign-up has an optional Country field. `handle_new_user` keeps it
+    only when the code is in `countries`, so a bad value can never make
+    sign-up fail.
+  - Edit profile has an optional Birthday with a Birthday greeting
+    switch. It lives in the new `profile_private` table, which only the
+    member can read (own-only RLS); friends and admins can't see it. A
+    trigger refuses ages under 16.
+  - On the day, `send_birthday_greetings()` sends one `birthday`
+    notification and a push saying "Happy birthday from all of us at
+    Mantelier." It is scheduled daily at 07:00 UTC with pg_cron (the
+    migration enables the extension), runs on Amsterdam's date, at most
+    once a year. A 29 February birthday is greeted on 28 February in
+    other years. There is no email, by decision.
+  - Admins have an Insights screen under Profile, backed by
+    `admin_get_member_insights()` (checks `is_admin()`). It shows
+    members and new-in-30-days by country and by age group. Any group
+    under 5 shows "fewer than 5" instead of a number; only the total is
+    always shown.
+  - The privacy policy now explains why we collect the birthday and the
+    country, that both are optional, and that they are removed with the
+    account.
+  - New notification versions are `get_notifications_v5` and
+    `get_unread_notification_count_v5`. v4 and older exclude `birthday`,
+    so builds that don't know the type never receive it.
+  - Every new `SECURITY DEFINER` function revokes execute from public
+    and anon in the same migration. `send_birthday_greetings` also
+    revokes it from authenticated.
+  - Tested on a local replay: the country is kept or dropped; under-16
+    is refused; RLS keeps other members out; the greeting goes out once
+    and a second run sends nothing; v5 shows the greeting, while v4,
+    v3 and the old counts don't; with the switch off nothing is sent; a
+    non-admin is refused; small groups are withheld; anon has no
+    execute; the cron job exists.
+
+### Changed
+- `bounded_lists_test.dart` now expects `get_notifications_v5` as the
+  newest version, and v2 as the fallback once v5 to v3 are missing.
+
 ---
 
 ## v1.5.6 (25) — 2026-11-02

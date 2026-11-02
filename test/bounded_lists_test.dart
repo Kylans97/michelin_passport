@@ -77,11 +77,8 @@ void main() {
         (r) => r.url.path.contains('/rpc/get_notifications'),
       );
       final q = reads.single.url.queryParameters;
-      expect(reads.single.url.path, endsWith('/rpc/get_notifications_v4'));
-      expect(
-        requests.last.url.path,
-        endsWith('/rpc/get_member_avatar_paths'),
-      );
+      expect(reads.single.url.path, endsWith('/rpc/get_notifications_v5'));
+      expect(requests.last.url.path, endsWith('/rpc/get_member_avatar_paths'));
       expect(q['order'], 'created_at.desc.nullslast,id.desc.nullslast');
       expect(q['offset'], '50');
       expect(q['limit'], '$notificationsPageSize');
@@ -100,7 +97,10 @@ void main() {
     test('an older server version is paged the same way', () async {
       final repo = NotificationsRepository(
         clientWith(
-          (r) async => r.url.path.endsWith('_v4') || r.url.path.endsWith('_v3')
+          (r) async =>
+              r.url.path.endsWith('_v5') ||
+                  r.url.path.endsWith('_v4') ||
+                  r.url.path.endsWith('_v3')
               ? notFound(r)
               : json([notificationRow(1)], r),
         ),

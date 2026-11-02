@@ -12,6 +12,9 @@ import '../../core/widgets/cs_text_field.dart';
 import '../../core/widgets/detail_hero.dart' show HeroIconButton;
 import '../../data/repositories/auth_repository.dart';
 import '../../data/repositories/profile_repository.dart';
+import '../../core/widgets/country_picker_sheet.dart';
+import '../../core/widgets/cs_picker_field.dart';
+import '../../models/venue_country.dart';
 import 'widgets/auth_presentation.dart';
 
 /// Sign up — the same entrance experience as [LoginScreen] (Step 4A),
@@ -39,6 +42,9 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _loading = false;
   String? _error;
   bool _success = false;
+
+  // Optional, stored as the profile's home country by handle_new_user.
+  VenueCountry? _country;
 
   late final AuthRepository _auth = AuthRepository(Supabase.instance.client);
   late final ProfileRepository _profiles = ProfileRepository(
@@ -87,6 +93,18 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 
+  // Dismissing the picker keeps what was chosen; the cross clears it.
+  Future<void> _pickCountry() async {
+    try {
+      final all = await _profiles.getAllCountries();
+      if (!mounted) return;
+      final picked = await showCountryPickerSheet(context, countries: all);
+      if (picked != null && mounted) setState(() => _country = picked);
+    } catch (_) {
+      // Optional field: a failed lookup just leaves it empty.
+    }
+  }
+
   Future<void> _submit() async {
     if (_loading) return; // guards against a duplicate submit mid-flight
     if (!_formKey.currentState!.validate()) return;
@@ -100,6 +118,7 @@ class _SignupScreenState extends State<SignupScreen> {
         password: _passCtrl.text,
         displayName: _nameCtrl.text.trim(),
         username: UsernameRules.normalize(_usernameCtrl.text),
+        homeCountryCode: _country?.code,
       );
       // If email confirmation is enabled, tell the user to check their inbox.
       // If it's disabled, AuthGate will navigate automatically.
@@ -218,6 +237,21 @@ class _SignupScreenState extends State<SignupScreen> {
                         textInputAction: TextInputAction.done,
                         onFieldSubmitted: (_) => _submit(),
                         validator: PasswordRules.validate,
+                      ),
+
+                      const SizedBox(height: CsSpacing.lg),
+                      CsPickerField(
+                        label: 'Country',
+                        value: _country?.name,
+                        placeholder: 'Optional',
+                        leading: _country == null || _country!.flag.isEmpty
+                            ? null
+                            : Text(_country!.flag, style: const TextStyle(fontSize: 18)),
+                        helper:
+                            'Helps us show what is popular near you. You can '
+                            'change it any time in your profile.',
+                        onTap: _loading ? null : _pickCountry,
+                        onClear: _loading ? null : () => setState(() => _country = null),
                       ),
 
                       if (_error != null) ...[

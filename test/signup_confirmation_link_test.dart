@@ -94,6 +94,29 @@ void main() {
       );
     });
 
+    test('signUp sends the chosen home country with the profile data, and '
+        'none when it is left out', () async {
+      await repo.signUp(
+        email: 'new@example.com',
+        password: 'secret123',
+        displayName: 'New Member',
+        username: 'new.member',
+        homeCountryCode: 'BE',
+      );
+      await repo.signUp(
+        email: 'other@example.com',
+        password: 'secret123',
+        displayName: 'Other Member',
+        username: 'other.member',
+      );
+      final bodies = requests
+          .where((r) => r.url.path.endsWith('/signup'))
+          .map((r) => jsonDecode(r.body)['data'] as Map<String, dynamic>)
+          .toList();
+      expect(bodies[0]['home_country_code'], 'BE');
+      expect(bodies[1].containsKey('home_country_code'), isFalse);
+    });
+
     test(
       'a resent confirmation goes to the web-only /auth/confirmed',
       () async {
@@ -145,10 +168,7 @@ void main() {
         'verifiedSignInNeeded', () {
       expect(
         authLinkNoticeFor(
-          AuthApiException(
-            'invalid flow state',
-            code: 'flow_state_not_found',
-          ),
+          AuthApiException('invalid flow state', code: 'flow_state_not_found'),
         ),
         AuthLinkNotice.verifiedSignInNeeded,
       );

@@ -627,6 +627,12 @@ class _NotificationRow extends StatelessWidget {
       case AppNotificationType.tripInviteReceived:
       case AppNotificationType.tripInviteAccepted:
         return _tripInvite();
+      case AppNotificationType.birthday:
+        return _NotificationTile(
+          unread: _unread,
+          leading: const _IconCircle(Icons.cake_outlined),
+          description: 'Happy birthday from all of us at Mantelier.',
+        );
     }
   }
 

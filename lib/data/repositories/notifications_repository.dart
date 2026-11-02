@@ -46,6 +46,7 @@ class NotificationsRepository {
   Future<NotificationsPage> getNotifications({int offset = 0}) async {
     final rows = await _rpcWithFallback(
       const [
+        'get_notifications_v5',
         'get_notifications_v4',
         'get_notifications_v3',
         'get_notifications_v2',
@@ -75,6 +76,7 @@ class NotificationsRepository {
 
   Future<int> getUnreadCount() async {
     final result = await _rpcWithFallback(const [
+      'get_unread_notification_count_v5',
       'get_unread_notification_count_v4',
       'get_unread_notification_count_v3',
       'get_unread_notification_count_v2',
