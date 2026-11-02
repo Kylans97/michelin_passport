@@ -8,6 +8,38 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.6 (24) — 2026-11-02
+
+1.5.5 (23) was archived at 19:57 on 2026-11-01 from `6a762f7` and is
+with the testers, so this build carries what came after it:
+- the host welcome (`claude/venue-host-welcome`);
+- the MICHELIN Poland + Türkiye pass (`claude/michelin-pl-tr-2026`);
+- Passport as the centre tab (`claude/passport-center-tab`);
+- the hosts link on mantelier.app (`claude/site-hosts-link`);
+- the trip map (`claude/trip-map`);
+- restaurant cuisines (`claude/restaurant-cuisines`), merged in
+  `release/1.5.6`.
+
+**Ledger: 130, local and remote in agreement.** Four migrations went to
+production after 23, all applied before this build:
+- `20261031180000` (Poland/Türkiye towns, data only);
+- `20261031190000` (the host welcome email trigger);
+- `20261101150000` and `20261101160000` (restaurant cuisines).
+
+**Schema diff (2026-11-02, before the push): clean.** All 130
+migrations were replayed on a scratch stack and compared with
+production.
+- `db dump --linked` against `--local`: 15,108 and 15,114 lines, which
+  differ only by the 6 known blank lines (pg_net's filtered grants).
+- Storage and auth, compared directly (buckets, `storage`/`auth`
+  policies, triggers on `auth.users`/`storage.objects`/
+  `storage.buckets`, RLS on the storage tables): 30 rows each side,
+  identical.
+- The local-only `enforce_versioning_status_transition` trigger seen
+  in the last diff did not appear this time.
+
 ### Changed
 
 - **Passport is the centre tab.** The order is now Explore · News ·
