@@ -59,9 +59,17 @@ The format follows Keep a Changelog.
       approved;
     - anon can't read upload paths or execute any of the new functions.
 
-    **Not applied yet**, and `publish-venue-photo` is not yet deployed.
-    This build reads `photo_url` and `venue_instagram_current`, so the
-    migration must be live before a build carrying it ships.
+    **Applied 2026-11-02**, after `publish-venue-photo` was deployed with
+    the team path. Production then showed the sommelier role check,
+    `photo_url` on the view, RLS on the Instagram table, no anon execute
+    on any new function, and `approve_venue_team_photo` closed to
+    `authenticated` too. Production has no team rows yet.
+    **Ledger: 131, local and remote in agreement.**
+    - **Checked in the simulator** with a throwaway preview entry point
+      and made-up data, not committed: the strip, the sheet, initials
+      without a photo, the Instagram action and the Team screen. This
+      account manages no venue, and no venue has team rows, so it could
+      not be seen on a real page yet.
   - Not here: an email to the admins on a new team or Instagram
     submission (`notify-venue-submission` doesn't know these kinds yet,
     as with team texts before).
