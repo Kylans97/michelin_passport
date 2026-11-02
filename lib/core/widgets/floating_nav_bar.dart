@@ -42,8 +42,13 @@ double floatingNavClearance(BuildContext context) =>
     _kFloatingNavBarBreathingRoom;
 
 class FloatingNavDestination {
-  final IconData icon;
-  final IconData selectedIcon;
+  final IconData? icon;
+  final IconData? selectedIcon;
+
+  /// A drawn icon instead of [icon]/[selectedIcon] — the Passport
+  /// booklet. Given the tone the bar picked and whether the tab is
+  /// selected.
+  final Widget Function(Color color, bool selected)? iconBuilder;
 
   /// Never rendered as visible text (see this class's own doc comment on
   /// why the bar is fully icon-only) — kept purely for the accessibility
@@ -52,10 +57,11 @@ class FloatingNavDestination {
   final String label;
 
   const FloatingNavDestination({
-    required this.icon,
-    required this.selectedIcon,
+    this.icon,
+    this.selectedIcon,
+    this.iconBuilder,
     required this.label,
-  });
+  }) : assert(iconBuilder != null || (icon != null && selectedIcon != null));
 }
 
 /// The app's root tab switcher — a floating pill, not a docked full-width
@@ -161,11 +167,13 @@ class _FloatingNavItem extends StatelessWidget {
           onTap: onTap,
           child: Center(
             child: ExcludeSemantics(
-              child: Icon(
-                selected ? destination.selectedIcon : destination.icon,
-                color: color,
-                size: 22,
-              ),
+              child:
+                  destination.iconBuilder?.call(color, selected) ??
+                  Icon(
+                    selected ? destination.selectedIcon : destination.icon,
+                    color: color,
+                    size: 22,
+                  ),
             ),
           ),
         ),

@@ -18,6 +18,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/core/widgets/passport_booklet_icon.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
 import 'package:michelin_passport/core/theme/cs_spacing.dart';
 import 'package:michelin_passport/core/theme/cs_theme.dart';
@@ -112,6 +113,53 @@ Finder _pillDecoratedBox() => find.byWidgetPredicate(
 );
 
 void main() {
+  group('FloatingNavBar — drawn Passport booklet in the centre', () {
+    List<FloatingNavDestination> centred() => [
+      _destinations[0],
+      _destinations[2],
+      FloatingNavDestination(
+        iconBuilder: (color, selected) => PassportBookletIcon(
+          color: color,
+          selected: selected,
+          cutoutColor: AppColors.forestGreen,
+        ),
+        label: 'Passport',
+      ),
+      _destinations[3],
+      _destinations[4],
+    ];
+
+    testWidgets('the booklet sits in the middle slot and takes the bar\'s '
+        'tone: ivory and filled when selected, muted when not', (tester) async {
+      var selected = 0;
+      await _pumpNavBar(
+        tester,
+        StatefulBuilder(
+          builder: (context, setState) => FloatingNavBar(
+            selectedIndex: selected,
+            onDestinationSelected: (i) => setState(() => selected = i),
+            destinations: centred(),
+          ),
+        ),
+      );
+      final booklet = find.byType(PassportBookletIcon);
+      expect(booklet, findsOneWidget);
+      final pill = tester.getRect(_pillDecoratedBox());
+      expect(tester.getCenter(booklet).dx, moreOrLessEquals(pill.center.dx, epsilon: 1));
+      var icon = tester.widget<PassportBookletIcon>(booklet);
+      expect(icon.selected, isFalse);
+      expect(icon.color, AppColors.secondaryOnDark);
+
+      await tester.tap(find.bySemanticsLabel('Passport'));
+      await tester.pump();
+      expect(selected, 2);
+      icon = tester.widget<PassportBookletIcon>(booklet);
+      expect(icon.selected, isTrue);
+      expect(icon.color, AppColors.ivory);
+      expect(icon.color, isNot(AppColors.gold));
+    });
+  });
+
   group('FloatingNavBar — information architecture freeze', () {
     testWidgets('exactly 5 tappable destinations, correct icons in order', (
       tester,

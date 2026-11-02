@@ -3,6 +3,7 @@ import 'core/constants/app_colors.dart';
 import 'core/navigation/route_observer.dart';
 import 'core/theme/app_theme.dart';
 import 'core/widgets/floating_nav_bar.dart';
+import 'core/widgets/passport_booklet_icon.dart';
 import 'features/auth/auth_gate.dart';
 import 'features/community/community_screen.dart';
 import 'features/explore/explore_screen.dart';
@@ -45,8 +46,8 @@ class _MainNavigationState extends State<_MainNavigation> {
 
   static const _tabScreens = [
     AnalyticsScreen.explore,
-    AnalyticsScreen.passport,
     AnalyticsScreen.news,
+    AnalyticsScreen.passport,
     AnalyticsScreen.community,
     AnalyticsScreen.profile,
   ];
@@ -66,8 +67,9 @@ class _MainNavigationState extends State<_MainNavigation> {
 
   // Navigation & Information Architecture V2 — the long-term product
   // structure: five destinations answering five different user questions
-  // (Explore "where can I go", Passport "where have I been/want to go",
-  // News "what's happening", Community "what are other people doing",
+  // (Explore "where can I go", News "what's happening", Passport "where
+  // have I been/want to go" — in the centre since 2026-11-02, as the
+  // heart of the app — Community "what are other people doing",
   // Profile "my identity and settings"). Rankings and Wishlist are no
   // longer their own tabs — both are still fully intact, just re-homed as
   // pushed screens reachable from Passport's own quick-access row (see
@@ -76,11 +78,17 @@ class _MainNavigationState extends State<_MainNavigation> {
   // migration map.
   static const _screens = [
     ExploreScreen(),
-    PassportScreen(),
     NewsScreen(),
+    PassportScreen(),
     CommunityScreen(),
     ProfileScreen(),
   ];
+
+  static Widget _passportIcon(Color color, bool selected) => PassportBookletIcon(
+    color: color,
+    selected: selected,
+    cutoutColor: AppColors.forestGreen,
+  );
 
   static const _destinations = [
     FloatingNavDestination(
@@ -89,14 +97,15 @@ class _MainNavigationState extends State<_MainNavigation> {
       label: 'Explore',
     ),
     FloatingNavDestination(
-      icon: Icons.menu_book_outlined,
-      selectedIcon: Icons.menu_book_rounded,
-      label: 'Passport',
-    ),
-    FloatingNavDestination(
       icon: Icons.article_outlined,
       selectedIcon: Icons.article_rounded,
       label: 'News',
+    ),
+    // The centre of the bar, and of the app: its own booklet icon, not
+    // Material's book (decided 2026-11-02).
+    FloatingNavDestination(
+      iconBuilder: _passportIcon,
+      label: 'Passport',
     ),
     FloatingNavDestination(
       icon: Icons.groups_outlined,

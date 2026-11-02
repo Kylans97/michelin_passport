@@ -8,6 +8,19 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+
+- **Passport is the centre tab.** The order is now Explore · News ·
+  Passport · Community · Profile, so Passport sits in the middle of the
+  bar as the heart of the app; Explore stays the start tab. It has its
+  own drawn icon, `PassportBookletIcon`: a passport booklet with a globe
+  emblem in place of Material's book. It is an outline when idle; when
+  selected it fills ivory with the emblem cut out in the bar's green.
+  No gold. Chosen by the product owner on 2026-11-02 from five options
+  (option B). `FloatingNavDestination` takes an `iconBuilder` for it.
+  Nothing else addressed tabs by position, and analytics tracks screens,
+  not positions, so both are unaffected.
+
 ### Added
 
 - **A welcome for venue hosts**, in three places that share one text:
