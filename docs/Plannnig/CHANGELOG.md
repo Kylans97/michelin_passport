@@ -8,6 +8,22 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.6 (28) — 2026-11-02
+
+Build 27 went to TestFlight from `aa9e0e3`. This build carries the app
+side of the venue insight tracking below: the open sources, ticket and
+website taps, Explore's search and filter signals, cards seen in lists
+and gallery photos seen. Its backend — migrations `20261101250000` and
+`20261101260000`, `send-push`, Studio and the privacy policy — went live
+the same day, before this build.
+
+**Ledger: 140, local and remote in agreement.** Schema diff before the
+push, on all 140 migrations replayed on a scratch stack: the dumps
+(17,624 lines production, 17,630 local) differ only in the 6 known blank
+lines; storage and auth compared directly, 30 rows each, identical.
+
 ### Added
 - **Venue insight tracking** — nine data points for Studio's Basic and
   Pro tiers, asked for by the product owner on 2026-11-02 (plan §5,
