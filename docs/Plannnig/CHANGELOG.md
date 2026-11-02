@@ -23,7 +23,16 @@ The format follows Keep a Changelog.
     "In this interview".
   Migration `20261101270000_add_news_sections_and_photos.sql`
   (`news_articles.section`, `news_article_photos`, the current article
-  set to "about" by id), not yet applied.
+  set to "about" by id). Applied 2026-11-02. **Ledger: 141, local and
+  remote in agreement.**
+  On the product owner's request, three clearly marked placeholder
+  articles went to production the same day, to fill the new sections
+  until real interviews exist: two "Example interview: …" and one
+  "Example story: …", ids `cccccccc-0000-0000-0000-000000000001` to
+  `…003`, photos from picsum.photos. They are visible to every build,
+  including the App Store one. To remove them:
+  `delete from news_articles where id in ('cccccccc-0000-0000-0000-000000000001', 'cccccccc-0000-0000-0000-000000000002', 'cccccccc-0000-0000-0000-000000000003');`
+  (their photos go with them).
 
 ### Fixed
 - **The status bar's time and battery were dark on the green tabs.**
