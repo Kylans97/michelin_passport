@@ -9,6 +9,24 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
+- **A Studio row in Profile, for admins only** (`claude/admin-studio-link`,
+  2026-11-02). It sits under Review and Insights and opens
+  `studio.mantelier.app` in Safari. Like the other external rows
+  (Website, Privacy policy), it never opens an in-app webview. It shows
+  only when `is_admin()` is true, which needs the code since
+  `20261101220000`. Studio keeps its own sign-in with the code; the
+  app's session doesn't carry over. Seen in the simulator against a
+  local replay. There, and only there, `is_admin()` was relaxed so the
+  preview could sign in by password; that database was deleted
+  afterwards. There is no widget test, as for Review and Insights:
+  `ProfileScreen` reads Supabase directly, with no seam for the
+  admin check. Goes out with the next build.
+- **Plan: "Multiple venues and groups"** (plan §7, open). An account can
+  already manage several venues. A chain needs a group above venues,
+  roles in it, a decision on who pays, and suppression that survives
+  adding venues up. What it is worth is for the phase 3 pilot to find
+  out.
+
 - **Studio: Basic and Pro tabs** (`claude/studio-tiers`, migration
   `20261101240000_add_studio_tier_reports`, written, applied and
   deployed 2026-11-02; ledger 138, local and remote in agreement).
@@ -161,6 +179,10 @@ The format follows Keep a Changelog.
     two-step.
 
 ### Fixed
+
+- **Studio's tabs slid sideways when switching to Basic or Pro**: hiding
+  the Period selector narrowed the right of the bar. It is now made
+  invisible but keeps its space.
 
 - **Studio's Basic and Pro tabs did nothing when clicked** (2026-11-02,
   right after they went live). A browser that had loaded Studio earlier

@@ -404,7 +404,9 @@ function openTab(tab) {
   );
   $("tab-overview").hidden = tab !== "overview";
   $("tab-tiers").hidden = tab === "overview";
-  $("period-control").hidden = tab !== "overview";
+  // Kept in the layout, only made invisible: removing it narrowed the
+  // right of the bar and slid the tabs sideways on every switch.
+  $("period-control").style.visibility = tab === "overview" ? "" : "hidden";
   $("tier-basic").hidden = tab === "overview";
   $("tier-pro").hidden = tab !== "pro";
   if (tab !== "overview") {

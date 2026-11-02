@@ -527,6 +527,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                           ),
+                          // Admins only: the website dashboard, in Safari.
+                          // It has its own sign-in with the code; the app's
+                          // session doesn't carry over, on purpose.
+                          _SettingsRow(
+                            icon: Icons.space_dashboard_outlined,
+                            label: 'Studio',
+                            trailingIcon: Icons.open_in_new_rounded,
+                            onTap: () =>
+                                _openExternal('https://studio.mantelier.app'),
+                          ),
                         ],
                       );
                     },

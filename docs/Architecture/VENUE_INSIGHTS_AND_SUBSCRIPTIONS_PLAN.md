@@ -261,7 +261,46 @@ send it, so every chart must handle "no data before date X".
 5. **Reports.** The monthly email to venues, through the Resend setup
    that already sends the claim notifications.
 
-## 7. Risks
+## 7. Multiple venues and groups (open)
+
+Raised by the product owner on 2026-11-02: one account may run several
+venues, and hotel chains are a future customer. Nothing here is decided
+or built; these are the questions to answer before phase 4.
+
+**What already works.** One account can manage several venues: a row
+per venue in `venue_managers_restaurants` / `_hotels` /
+`_private_chefs`, each its own permission (CLAUDE.md, "Venue
+permissions"). A dashboard for such an account is a venue switcher over
+the same per-venue reports. That needs no new model.
+
+**What a chain needs, and doesn't have yet.**
+- **A group above venues.** A chain with its hotels and their
+  restaurants, as an entity of its own (`venue_groups`, membership rows).
+  It doesn't touch `hotel_restaurants`, which stays the only home of the
+  hotel–restaurant relationship.
+- **People and roles in a group.** Who may see the whole group, and who
+  only one venue. A group role would grant access to the group's venues
+  through `is_active_venue_manager()` or a sibling of it — never a
+  second, parallel permission source.
+- **Who pays.** One subscription per venue, per group, or a group plan
+  priced by number of venues. That decides what `venue_subscriptions` is
+  keyed on (plan §3.5).
+- **A group dashboard.** Venues side by side and added up.
+- **Small groups across venues.** "No number below 5" must still hold
+  when venues are added up. Otherwise, two group totals that differ by
+  one venue give that venue's small number away. The suppression has to
+  run on the summed group, and venues below 5 must not be revealed by
+  subtraction.
+
+**What it is worth.** Not known yet, and not to be guessed. Phase 3's
+free pilot is the place to learn it:
+- which panels venues open;
+- what they ask for that isn't there;
+- whether Pro's market view is what convinces them.
+
+Price after that, per venue, with a group rate.
+
+## 8. Risks
 
 - **Small numbers.** Most venues will have few visitors at first, so
   many panels will say "fewer than 5". Pro needs volume to be worth
