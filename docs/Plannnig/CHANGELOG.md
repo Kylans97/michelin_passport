@@ -8,6 +8,72 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+
+- **A venue keeps its own website and phone number.** Decided by the
+  product owner on 2026-11-02: they change during the year, and keeping
+  them current by hand would be a lot of work. A "Website and phone" row
+  on a venue's landing page ("Website" for a private chef, who has no
+  phone column) opens `VenueContactScreen`. Save puts them on the page at
+  once, with no review, and a blank field takes one off. The screen
+  checks first with the same rules as the database (a full `http(s)://`
+  address; digits, spaces and `+ ( ) . / -` with at least six digits).
+  Each change puts a "Website or phone changed" item in the admin review
+  queue with the old and new value, to mark as seen.
+  - **Revises an older rule in the code, not a settled decision:**
+    `VenueManagementScreen`'s doc comment and two tests (from
+    `56a37e8`, 2026-09-29) listed phone and website as verified
+    catalogue data a manager must never overwrite. CLAUDE.md's settled
+    list of verified data (stars, Keys, World's 50 Best, Gault&Millau,
+    the verified location fields) never included them. The comment and
+    tests now record the change, and the previous value stays on each
+    edit row.
+- **The review queue has a tab per topic**: Claims, Profiles (about
+  texts, team, Instagram), Photos, Events (new and changed), Contact
+  (website and phone changes), Reports. Each shows its count and opens
+  on the first with something waiting, so no topic disappears under a
+  long list of another.
+- **Everything that needs an admin is now in the review queue.** Two
+  things weren't:
+  - **member reports** (a photo, rating, profile or event) reached
+    admins only by email (`notify-content-report`) and the dashboard;
+  - **missing-listing reports** from Explore reached them only through
+    the dashboard, with no email at all.
+
+  Both now sit under Reports. A report is marked resolved, with an
+  event or profile one tap away. A missing listing shows the reporter's
+  details if they work there, and is marked handled; one already added
+  to the catalogue leaves the queue by itself. The emails stay as a
+  heads-up. Production had none of either on 2026-11-02.
+- **Migration `20261101190000_add_venue_contact_edits_and_review_inbox.sql`:**
+  - `venue_contact_edits`, with no client access;
+  - `set_venue_contact` (`is_active_venue_manager` only, validates,
+    writes only what changed, logs each changed field with old and new
+    value);
+  - `admin_mark_venue_contact_edit_seen`;
+  - `resolved_at`/`resolved_by` on `content_reports` with
+    `admin_resolve_content_report`;
+  - `handled_at`/`handled_by` on `missing_listing_reports` with
+    `admin_mark_missing_listing_handled`;
+  - `get_review_queue` gains the three kinds and their columns at the
+    end. Installed builds skip kinds they don't know.
+
+  Every new SECURITY DEFINER function revokes `public, anon`. Replayed
+  from scratch locally and exercised:
+  - a manager's website change is logged with old and new value, and
+    clearing the phone is logged too;
+  - an unchanged save logs nothing;
+  - another user is refused, as are `www.` without a scheme,
+    `javascript:` and a five-digit or worded phone number;
+  - a manager can't read the edit log;
+  - the admin sees all three kinds in the queue and clears each, and a
+    non-admin can't;
+  - anon has execute on none of the functions.
+
+  **Not applied yet.** The tabs work against production as it is,
+  checked in the simulator as an admin, but the new kinds and the
+  contact screen need the migration first.
+
 ---
 
 ## v1.5.6 (25) — 2026-11-02

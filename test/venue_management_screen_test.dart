@@ -18,6 +18,7 @@ import 'package:michelin_passport/data/repositories/opening_hours_repository.dar
 import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
 import 'package:michelin_passport/models/opening_hours.dart';
 import 'package:michelin_passport/data/repositories/venue_about_repository.dart';
+import 'package:michelin_passport/data/repositories/venue_contact_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_photo_submission_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_team_repository.dart';
 import 'package:michelin_passport/core/widgets/framed_image.dart';
@@ -297,6 +298,14 @@ class _FakeOpeningHoursRepository extends OpeningHoursRepository {
   Future<OpeningHours> load(String restaurantId) async => OpeningHours.empty;
 }
 
+class _FakeContactRepository extends VenueContactRepository {
+  _FakeContactRepository() : super(_dummyClient());
+
+  @override
+  Future<VenueContact> load({required String venueType, required String venueId}) async =>
+      const VenueContact();
+}
+
 // The landing page: VenueManagementScreen.
 Future<void> _pumpLanding(
   WidgetTester tester,
@@ -318,6 +327,7 @@ Future<void> _pumpLanding(
         eventsRepo: eventsRepo ?? _FakeEventsRepository(),
         teamRepo: teamRepo ?? _FakeTeamRepository(),
         openingHoursRepo: _FakeOpeningHoursRepository(),
+        contactRepo: _FakeContactRepository(),
         shouldShowWelcome: () async => showWelcome,
       ),
     ),
@@ -1044,7 +1054,9 @@ void main() {
 
     testWidgets('no verified-data field appears on the landing page either', (tester) async {
       await _pumpLanding(tester, _FakeVenueAboutRepository(currentText: 'Some about text'));
-      for (final forbidden in ['Address', 'Phone', 'Website', 'MICHELIN', 'Cuisine', 'Place ID']) {
+      // Website and phone left this list on 2026-11-02: a venue keeps its
+      // own now (VenueContactScreen), by the product owner's decision.
+      for (final forbidden in ['Address', 'MICHELIN', 'Cuisine', 'Place ID']) {
         expect(find.textContaining(forbidden), findsNothing, reason: '"$forbidden" must not appear');
       }
     });
@@ -1211,6 +1223,7 @@ void main() {
             eventsRepo: _FakeEventsRepository(),
             teamRepo: _FakeTeamRepository(),
             openingHoursRepo: _FakeOpeningHoursRepository(),
+            contactRepo: _FakeContactRepository(),
             restaurantRepo: restaurantRepo,
           ),
         ),
@@ -1342,6 +1355,7 @@ void _hostWelcomeTests() {
       await _pumpLanding(tester, _FakeVenueAboutRepository());
       expect(find.text('Welcome to Mantelier'), findsNothing);
 
+      await tester.scrollUntilVisible(find.text('Hosting on Mantelier'), 200);
       await tester.ensureVisible(find.text('Hosting on Mantelier'));
       await tester.tap(find.text('Hosting on Mantelier'));
       await tester.pumpAndSettle();

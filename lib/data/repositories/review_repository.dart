@@ -120,6 +120,21 @@ class ReviewRepository {
     params: {'p_submission_id': item.itemId, 'p_review_note': note},
   );
 
+  Future<void> markContactEditSeen(ReviewItem item) => _client.rpc(
+    'admin_mark_venue_contact_edit_seen',
+    params: {'p_edit_id': item.itemId},
+  );
+
+  Future<void> resolveContentReport(ReviewItem item) => _client.rpc(
+    'admin_resolve_content_report',
+    params: {'p_report_id': item.itemId},
+  );
+
+  Future<void> markMissingListingHandled(ReviewItem item) => _client.rpc(
+    'admin_mark_missing_listing_handled',
+    params: {'p_report_id': item.itemId},
+  );
+
   Future<void> approveEvent(ReviewItem item) => _client.rpc(
     'admin_approve_event',
     params: {'p_event_id': item.eventId},

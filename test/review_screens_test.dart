@@ -53,7 +53,60 @@ class _FakeReviewRepo extends ReviewRepository {
   @override
   Future<void> rejectPhoto(ReviewItem item, String note) =>
       _record('rejectPhoto:${item.itemId}:$note');
+  @override
+  Future<void> markContactEditSeen(ReviewItem item) =>
+      _record('contactSeen:${item.itemId}');
+  @override
+  Future<void> resolveContentReport(ReviewItem item) =>
+      _record('reportResolved:${item.itemId}');
+  @override
+  Future<void> markMissingListingHandled(ReviewItem item) =>
+      _record('missingHandled:${item.itemId}');
 }
+
+final _contactEdit = ReviewItem.fromJson(
+  _row(
+    'venue_contact_edit',
+    extra: {
+      'contact_field': 'phone',
+      'contact_old_value': '+31 20 000 0000',
+      'contact_new_value': '+31 20 123 4567',
+    },
+  ),
+)!;
+final _report = ReviewItem.fromJson({
+  ..._row(
+    'content_report',
+    extra: {
+      'report_content_type': 'photo',
+      'report_content_id': 'p1',
+      'report_reason': 'spam',
+      'report_details': 'An advert',
+    },
+  ),
+  'venue_type': null,
+  'venue_id': null,
+  'venue_name': null,
+  'venue_city': null,
+})!;
+final _missing = ReviewItem.fromJson({
+  ..._row(
+    'missing_listing',
+    extra: {
+      'missing_subject_type': 'restaurant',
+      'missing_name': 'Somewhere New',
+      'missing_city': 'Utrecht',
+      'missing_message': 'Opened in October',
+      'missing_works_here': true,
+      'missing_reporter_role': 'Chef',
+      'missing_reporter_contact': 'chef@example.test',
+    },
+  ),
+  'venue_type': null,
+  'venue_id': null,
+  'venue_name': null,
+  'venue_city': null,
+})!;
 
 Map<String, dynamic> _row(
   String kind, {
@@ -172,7 +225,7 @@ void main() {
   });
 
   group('ReviewQueueScreen', () {
-    testWidgets('groups by kind with counts', (tester) async {
+    testWidgets('a tab per topic with counts', (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: ReviewQueueScreen(
@@ -181,10 +234,17 @@ void main() {
         ),
       );
       await tester.pumpAndSettle();
-      expect(find.text('VENUE CLAIMS · 1'), findsOneWidget);
-      expect(find.text('ABOUT TEXTS · 1'), findsOneWidget);
-      expect(find.text('PHOTOS · 1'), findsOneWidget);
-      expect(find.text('Flore · Amsterdam'), findsNWidgets(3));
+      // One tab per topic, with its count; it opens on the first with
+      // something waiting.
+      expect(find.text('Claims · 1'), findsOneWidget);
+      expect(find.text('Profiles · 1'), findsOneWidget);
+      expect(find.text('Photos · 1'), findsOneWidget);
+      expect(find.text('Events'), findsOneWidget);
+      expect(find.text('Flore · Amsterdam'), findsOneWidget);
+
+      await tester.tap(find.text('Photos · 1'));
+      await tester.pumpAndSettle();
+      expect(find.text('Flore · Amsterdam'), findsOneWidget);
     });
 
     testWidgets('an empty queue says so', (tester) async {
@@ -192,7 +252,7 @@ void main() {
         MaterialApp(home: ReviewQueueScreen(repository: _FakeReviewRepo())),
       );
       await tester.pumpAndSettle();
-      expect(find.text('Nothing waiting for review.'), findsOneWidget);
+      expect(find.text('Nothing waiting under claims.'), findsOneWidget);
     });
   });
 
@@ -271,6 +331,70 @@ void main() {
       );
       expect(find.byType(ReviewItemScreen), findsOneWidget);
       expect(popped, isEmpty);
+    });
+  });
+
+  group('Items marked dealt with, never rejected', () {
+    testWidgets('a website or phone change shows was and now, and Mark as '
+        'seen clears it', (tester) async {
+      final repo = _FakeReviewRepo();
+      final popped = await _pumpItem(tester, _contactEdit, repo);
+      expect(find.text('Phone number'), findsOneWidget);
+      expect(find.text('+31 20 000 0000'), findsOneWidget);
+      expect(find.text('+31 20 123 4567'), findsOneWidget);
+      expect(find.text('Reject with a note'), findsNothing);
+      await tester.tap(find.text('Mark as seen'));
+      await tester.pumpAndSettle();
+      expect(repo.calls, ['contactSeen:venue_contact_edit-1']);
+      expect(popped, [true]);
+    });
+
+    testWidgets('a member report shows what and why, and is resolved', (
+      tester,
+    ) async {
+      final repo = _FakeReviewRepo();
+      await _pumpItem(tester, _report, repo);
+      expect(find.text('A reported photo'), findsOneWidget);
+      expect(find.text('spam'), findsOneWidget);
+      expect(find.text('An advert'), findsOneWidget);
+      expect(find.text('Reject with a note'), findsNothing);
+      await tester.tap(find.text('Mark resolved'));
+      await tester.pumpAndSettle();
+      expect(repo.calls, ['reportResolved:content_report-1']);
+    });
+
+    testWidgets('a missing listing shows the reporter\'s details and is '
+        'marked handled', (tester) async {
+      final repo = _FakeReviewRepo();
+      await _pumpItem(tester, _missing, repo);
+      expect(find.text('Somewhere New · Utrecht'), findsOneWidget);
+      expect(find.text('Opened in October'), findsOneWidget);
+      expect(find.text('chef@example.test'), findsOneWidget);
+      await tester.tap(find.text('Mark handled'));
+      await tester.pumpAndSettle();
+      expect(repo.calls, ['missingHandled:missing_listing-1']);
+    });
+
+    testWidgets('they sit under their own tabs', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: ReviewQueueScreen(
+            repository: _FakeReviewRepo(
+              queue: [_contactEdit, _report, _missing],
+            ),
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+      expect(find.text('Contact · 1'), findsOneWidget);
+      expect(find.text('Reports · 2'), findsOneWidget);
+      // Opens on the first topic with something waiting.
+      expect(find.text('Flore · Amsterdam'), findsOneWidget);
+      await tester.tap(find.text('Reports · 2'));
+      await tester.pumpAndSettle();
+      expect(find.text('REPORTED BY MEMBERS · 1'), findsOneWidget);
+      expect(find.text('MISSING LISTINGS · 1'), findsOneWidget);
+      expect(find.text('Somewhere New · Utrecht'), findsOneWidget);
     });
   });
 }

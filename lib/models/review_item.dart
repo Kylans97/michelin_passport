@@ -22,7 +22,17 @@ enum ReviewKind {
   venueTeam,
 
   /// A venue's Instagram account (20261101170000).
-  venueInstagram;
+  venueInstagram,
+
+  /// A website or phone number a venue changed itself: already live,
+  /// shown so an admin can check it now and then (20261101190000).
+  venueContactEdit,
+
+  /// A photo, rating, profile or event a member reported.
+  contentReport,
+
+  /// A venue or event a member couldn't find in Explore.
+  missingListing;
 
   static ReviewKind? fromWire(String value) => switch (value) {
     'venue_claim' => ReviewKind.venueClaim,
@@ -32,6 +42,9 @@ enum ReviewKind {
     'venue_event_edit' => ReviewKind.venueEventEdit,
     'venue_team' => ReviewKind.venueTeam,
     'venue_instagram' => ReviewKind.venueInstagram,
+    'venue_contact_edit' => ReviewKind.venueContactEdit,
+    'content_report' => ReviewKind.contentReport,
+    'missing_listing' => ReviewKind.missingListing,
     _ => null,
   };
 
@@ -43,6 +56,9 @@ enum ReviewKind {
     ReviewKind.venueEventEdit => 'Change to a live event',
     ReviewKind.venueTeam => 'Team',
     ReviewKind.venueInstagram => 'Instagram',
+    ReviewKind.venueContactEdit => 'Website or phone changed',
+    ReviewKind.contentReport => 'Report',
+    ReviewKind.missingListing => 'Missing listing',
   };
 
   /// The queue's group heading.
@@ -54,9 +70,42 @@ enum ReviewKind {
     ReviewKind.venueEventEdit => 'CHANGES TO LIVE EVENTS',
     ReviewKind.venueTeam => 'TEAM',
     ReviewKind.venueInstagram => 'INSTAGRAM',
+    ReviewKind.venueContactEdit => 'WEBSITE AND PHONE CHANGES',
+    ReviewKind.contentReport => 'REPORTED BY MEMBERS',
+    ReviewKind.missingListing => 'MISSING LISTINGS',
   };
 
   bool get isEvent => this == venueEvent || this == venueEventEdit;
+
+  /// Already live or nothing to approve: an admin marks it dealt with
+  /// instead of approving or rejecting it.
+  bool get isAcknowledgeOnly =>
+      this == venueContactEdit || this == contentReport || this == missingListing;
+
+  ReviewTopic get topic => switch (this) {
+    ReviewKind.venueClaim => ReviewTopic.claims,
+    ReviewKind.venueAbout ||
+    ReviewKind.venueTeam ||
+    ReviewKind.venueInstagram => ReviewTopic.profiles,
+    ReviewKind.venuePhoto => ReviewTopic.photos,
+    ReviewKind.venueEvent || ReviewKind.venueEventEdit => ReviewTopic.events,
+    ReviewKind.venueContactEdit => ReviewTopic.contact,
+    ReviewKind.contentReport || ReviewKind.missingListing => ReviewTopic.reports,
+  };
+}
+
+/// The review queue's tabs, one per topic, so no topic disappears under
+/// a long list of another (decided 2026-11-02).
+enum ReviewTopic {
+  claims('Claims'),
+  profiles('Profiles'),
+  photos('Photos'),
+  events('Events'),
+  contact('Contact'),
+  reports('Reports');
+
+  final String label;
+  const ReviewTopic(this.label);
 }
 
 /// One field a venue changed on its live event: what it was, what it is.
@@ -112,6 +161,42 @@ class ReviewItem {
 
   final String? instagramHandle;
 
+  // venueContactEdit
+  final String? contactField;
+  final String? contactOldValue;
+  final String? contactNewValue;
+
+  // contentReport
+  final String? reportContentType;
+  final String? reportContentId;
+  final String? reportReason;
+  final String? reportDetails;
+
+  // missingListing
+  final String? missingSubjectType;
+  final String? missingName;
+  final String? missingCity;
+  final String? missingMessage;
+  final bool missingWorksHere;
+  final String? missingReporterRole;
+  final String? missingReporterContact;
+
+  /// Whether the server named a venue for this item; a missing listing
+  /// and most reports have none.
+  bool get hasVenue => venueType.isNotEmpty && venueId.isNotEmpty;
+
+  /// The queue row's first line.
+  String get rowTitle => switch (kind) {
+    ReviewKind.venueEvent || ReviewKind.venueEventEdit =>
+      eventName ?? 'Untitled event',
+    ReviewKind.missingListing =>
+      '${missingName ?? 'Unnamed'} · ${missingCity ?? ''}',
+    ReviewKind.contentReport =>
+      'A reported ${reportContentType ?? 'item'}'
+          '${eventName != null ? ': $eventName' : ''}',
+    _ => [venueName, ?venueCity].join(' · '),
+  };
+
   const ReviewItem({
     required this.kind,
     required this.itemId,
@@ -141,6 +226,20 @@ class ReviewItem {
     this.teamPhotoPath,
     this.teamRemovePhoto = false,
     this.instagramHandle,
+    this.contactField,
+    this.contactOldValue,
+    this.contactNewValue,
+    this.reportContentType,
+    this.reportContentId,
+    this.reportReason,
+    this.reportDetails,
+    this.missingSubjectType,
+    this.missingName,
+    this.missingCity,
+    this.missingMessage,
+    this.missingWorksHere = false,
+    this.missingReporterRole,
+    this.missingReporterContact,
   });
 
   /// Null for a kind this build doesn't know yet (a newer server), so
@@ -188,6 +287,20 @@ class ReviewItem {
       teamPhotoPath: json['team_photo_path'] as String?,
       teamRemovePhoto: (json['team_remove_photo'] as bool?) ?? false,
       instagramHandle: json['instagram_handle'] as String?,
+      contactField: json['contact_field'] as String?,
+      contactOldValue: json['contact_old_value'] as String?,
+      contactNewValue: json['contact_new_value'] as String?,
+      reportContentType: json['report_content_type'] as String?,
+      reportContentId: json['report_content_id']?.toString(),
+      reportReason: json['report_reason'] as String?,
+      reportDetails: json['report_details'] as String?,
+      missingSubjectType: json['missing_subject_type'] as String?,
+      missingName: json['missing_name'] as String?,
+      missingCity: json['missing_city'] as String?,
+      missingMessage: json['missing_message'] as String?,
+      missingWorksHere: (json['missing_works_here'] as bool?) ?? false,
+      missingReporterRole: json['missing_reporter_role'] as String?,
+      missingReporterContact: json['missing_reporter_contact'] as String?,
     );
   }
 }

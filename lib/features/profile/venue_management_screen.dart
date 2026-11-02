@@ -13,6 +13,7 @@ import '../../data/repositories/opening_hours_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
+import '../../data/repositories/venue_contact_repository.dart';
 import '../../data/repositories/venue_photo_submission_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
 import '../../models/managed_venue.dart';
@@ -27,6 +28,7 @@ import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'card_photo_screen.dart';
+import 'venue_contact_screen.dart';
 import 'venue_events_screen.dart';
 import 'venue_opening_hours_screen.dart';
 import 'venue_host_welcome_screen.dart';
@@ -66,9 +68,12 @@ Uri venueQuestionMailtoUri(String venueName) =>
 /// removed. Private chefs get the same page.
 ///
 /// What this screen does NOT show, and why: address, coordinates, Place
-/// ID, phone, website, MICHELIN stars/Keys, cuisine, and opening status
-/// are all verified catalogue data a manager must never be able to
-/// overwrite, so none of it is shown here at all.
+/// ID, MICHELIN stars/Keys, cuisine, and opening status are verified
+/// catalogue data a manager must never be able to overwrite, so none of
+/// it is shown here at all. Website and phone were on that list until
+/// 2026-11-02, when the product owner decided a venue keeps its own
+/// (they change during the year): "Website and phone" (VenueContactScreen)
+/// changes them at once, and each change reaches the admin review queue.
 ///
 /// A manager can email a question — the same shared inbox
 /// notifications_screen.dart's own claim-question contact line already
@@ -83,6 +88,7 @@ class VenueManagementScreen extends StatefulWidget {
   final VenueEventsRepository? eventsRepo;
   final VenueTeamRepository? teamRepo;
   final OpeningHoursRepository? openingHoursRepo;
+  final VenueContactRepository? contactRepo;
 
   // Owner preview only — the fresh venue re-fetch _openPreview does
   // alongside its existing photo/about-text fetches. Same DI-seam
@@ -103,6 +109,7 @@ class VenueManagementScreen extends StatefulWidget {
     this.eventsRepo,
     this.teamRepo,
     this.openingHoursRepo,
+    this.contactRepo,
     this.restaurantRepo,
     this.hotelRepo,
     this.privateChefRepo,
@@ -138,6 +145,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   late final _eventsRepo =
       widget.eventsRepo ?? VenueEventsRepository(Supabase.instance.client);
   late final _teamRepo = widget.teamRepo ?? VenueTeamRepository(Supabase.instance.client);
+  late final _contactRepo =
+      widget.contactRepo ?? VenueContactRepository(Supabase.instance.client);
   late final _hoursRepo =
       widget.openingHoursRepo ?? OpeningHoursRepository(Supabase.instance.client);
   late final _restaurantRepo =
@@ -155,6 +164,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   Future<_TeamSummary>? _teamFuture;
   // Restaurants only; null for a hotel or a private chef.
   Future<OpeningHours>? _hoursFuture;
+  late Future<VenueContact> _contactFuture;
 
   bool get _hasTeam => widget.venue.venueTypeWireValue != 'private_chef';
 
@@ -218,6 +228,7 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       _teamFuture = _hasTeam ? _loadTeam(type, id) : null;
       // A failed load only blanks the row's summary; marked handled so a
       // reload that replaces it before it settles reports nothing.
+      _contactFuture = _contactRepo.load(venueType: type, venueId: id)..ignore();
       _hoursFuture = type == 'restaurant' ? (_hoursRepo.load(id)..ignore()) : null;
     });
   }
@@ -471,6 +482,24 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                 summary: snap.hasData ? _aboutLine(snap.data!) : null,
                 onTap: () => _open(
                   VenueProfileScreen(venue: widget.venue, aboutRepo: widget.aboutRepo),
+                ),
+              ),
+            ),
+            FutureBuilder<VenueContact>(
+              future: _contactFuture,
+              builder: (context, snap) => _SectionRow(
+                title: isPrivateChef ? 'Website' : 'Website and phone',
+                summary: snap.hasData
+                    ? VenueContactScreen.summary(
+                        snap.data!,
+                        hasPhone: !isPrivateChef,
+                      )
+                    : null,
+                onTap: () => _open(
+                  VenueContactScreen(
+                    venue: widget.venue,
+                    repository: widget.contactRepo,
+                  ),
                 ),
               ),
             ),

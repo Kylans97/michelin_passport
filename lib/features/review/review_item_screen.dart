@@ -18,6 +18,8 @@ import '../../models/private_chef_photo.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/review_item.dart';
 import '../../models/venue_team_member.dart';
+import '../events/event_detail_screen.dart';
+import '../friends/friend_profile_screen.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
@@ -97,6 +99,9 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
       ReviewKind.venuePhoto => widget.repository.approvePhoto(_item),
       ReviewKind.venueTeam => widget.repository.approveTeam(_item),
       ReviewKind.venueInstagram => widget.repository.approveInstagram(_item),
+      ReviewKind.venueContactEdit => widget.repository.markContactEditSeen(_item),
+      ReviewKind.contentReport => widget.repository.resolveContentReport(_item),
+      ReviewKind.missingListing => widget.repository.markMissingListingHandled(_item),
       // Events open ReviewEventScreen, never this one.
       ReviewKind.venueEvent || ReviewKind.venueEventEdit => throw StateError(
         'Events are reviewed in ReviewEventScreen.',
@@ -131,6 +136,12 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
         ReviewKind.venueInstagram => widget.repository.rejectInstagram(
           _item,
           note.trim(),
+        ),
+        // Marked dealt with, never rejected: the button isn't shown.
+        ReviewKind.venueContactEdit ||
+        ReviewKind.contentReport ||
+        ReviewKind.missingListing => throw StateError(
+          '${_item.kind.label} is marked dealt with, not rejected.',
         ),
         ReviewKind.venueEvent || ReviewKind.venueEventEdit => throw StateError(
           'Events are reviewed in ReviewEventScreen.',
@@ -301,7 +312,7 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
           ),
           children: [
             Text(
-              _item.venueName,
+              _item.hasVenue ? _item.venueName : _item.rowTitle,
               style: CsTypography.placeTitle.copyWith(
                 color: AppColors.forestGreen,
               ),
@@ -309,8 +320,8 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
             const SizedBox(height: 2),
             Text(
               [
-                if (_item.venueCity != null) _item.venueCity!,
-                _venueTypeLabel(_item.venueType),
+                if (_item.hasVenue && _item.venueCity != null) _item.venueCity!,
+                if (_item.hasVenue) _venueTypeLabel(_item.venueType),
                 'from ${_item.submitterLabel}',
               ].join(' · '),
               style: CsTypography.metadata.copyWith(color: AppColors.taupe),
@@ -328,26 +339,31 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
             SizedBox(
               width: double.infinity,
               child: CsPrimaryButton(
-                label:
-                    (_item.kind == ReviewKind.venuePhoto ||
-                        _item.teamPhotoPath != null)
-                    ? 'Approve and publish'
-                    : 'Approve',
+                label: switch (_item.kind) {
+                  ReviewKind.venueContactEdit => 'Mark as seen',
+                  ReviewKind.contentReport => 'Mark resolved',
+                  ReviewKind.missingListing => 'Mark handled',
+                  ReviewKind.venuePhoto => 'Approve and publish',
+                  _ when _item.teamPhotoPath != null => 'Approve and publish',
+                  _ => 'Approve',
+                },
                 surface: CsSurface.light,
                 loading: _busy,
                 onTap: _busy ? null : _approve,
               ),
             ),
-            const SizedBox(height: CsSpacing.sm),
-            Center(
-              child: TextButton(
-                onPressed: _busy ? null : _reject,
-                child: Text(
-                  'Reject with a note',
-                  style: CsTypography.metadata.copyWith(color: AppColors.error),
+            if (!_item.kind.isAcknowledgeOnly) ...[
+              const SizedBox(height: CsSpacing.sm),
+              Center(
+                child: TextButton(
+                  onPressed: _busy ? null : _reject,
+                  child: Text(
+                    'Reject with a note',
+                    style: CsTypography.metadata.copyWith(color: AppColors.error),
+                  ),
                 ),
               ),
-            ),
+            ],
           ],
         ),
       ),
@@ -395,6 +411,74 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
         _field('Photo', 'Remove the current photo'),
       const SizedBox(height: CsSpacing.md),
       _previewButton(() => _previewPage()),
+    ],
+    ReviewKind.venueContactEdit => [
+      _field(
+        'What changed',
+        _item.contactField == 'phone' ? 'Phone number' : 'Website',
+      ),
+      _field('Was', _item.contactOldValue ?? '(none)'),
+      _field('Now', _item.contactNewValue ?? '(removed)'),
+      const SizedBox(height: CsSpacing.sm),
+      if (_item.contactField != 'phone' && _item.contactNewValue != null)
+        _previewButton(
+          () => launchUrl(
+            Uri.parse(_item.contactNewValue!),
+            mode: LaunchMode.externalApplication,
+          ),
+          label: 'Open the website',
+        ),
+      Text(
+        'Already on the page. The venue changed it itself; mark it seen once '
+        "you've looked, or write to the venue if it looks wrong.",
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+      ),
+    ],
+    ReviewKind.contentReport => [
+      _field('Reported', _item.reportContentType),
+      _field('Reason', _item.reportReason),
+      _field('Their words', _item.reportDetails),
+      if (_item.reportContentType == 'event' && _item.eventId != null)
+        _previewButton(
+          () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => EventDetailScreen(eventId: _item.eventId!),
+            ),
+          ),
+          label: 'Open the event',
+        ),
+      if (_item.reportContentType == 'profile' && _item.reportContentId != null)
+        _previewButton(
+          () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) =>
+                  FriendProfileScreen(userId: _item.reportContentId!),
+            ),
+          ),
+          label: 'Open the profile',
+        ),
+      Text(
+        'Take the content down in the dashboard if it breaks the rules, then '
+        'mark the report resolved.',
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+      ),
+    ],
+    ReviewKind.missingListing => [
+      _field('Missing', _item.missingSubjectType),
+      _field('Name', _item.missingName),
+      _field('City', _item.missingCity),
+      _field('Their message', _item.missingMessage),
+      if (_item.missingWorksHere) ...[
+        _field('Works there as', _item.missingReporterRole),
+        _field('Contact', _item.missingReporterContact),
+      ],
+      Text(
+        'Add it to the catalogue the usual way if it belongs, then mark it '
+        'handled. One that is added disappears from here by itself.',
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+      ),
     ],
     ReviewKind.venueInstagram => [
       _field('Instagram', '@${_item.instagramHandle ?? ''}'),
