@@ -1,5 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/hotel.dart';
+import '../../models/passport_venue.dart';
+import '../../models/restaurant.dart';
+import 'fetch_all_rows.dart';
+import 'hotel_repository.dart';
+import 'restaurant_repository.dart';
 
 // PostgREST's "column does not exist" error — what a request for
 // latitude/longitude returns before the 20260807140000 migration has been
@@ -75,4 +81,74 @@ class MapRepository {
       return {};
     }
   }
+
+  /// Every restaurant and hotel in a trip leg's place — the cities in
+  /// [cityIds], or the whole countries in [countryCodes] — with its
+  /// coordinates, for the trip map. Keyed on catalogue ids and codes only,
+  /// never a name. Venues without coordinates, expired pop-ups and
+  /// permanently closed venues are left out: there is nothing to plan
+  /// there. Temporarily closed venues stay, as their detail page says so.
+  ///
+  /// Unlike [loadRestaurantCoordinates], this one is allowed to throw: the
+  /// trip map has nothing to show without it, and says so.
+  Future<List<MappedVenue>> loadVenuesInPlaces({
+    List<String> countryCodes = const [],
+    List<String> cityIds = const [],
+  }) async {
+    if (countryCodes.isEmpty && cityIds.isEmpty) return [];
+    final place = [
+      if (cityIds.isNotEmpty) 'city_id.in.(${cityIds.join(',')})',
+      if (countryCodes.isNotEmpty) 'country_code.in.(${countryCodes.join(',')})',
+    ].join(',');
+
+    // A whole-country leg in France or Japan matches hundreds of rows, so
+    // page past the row cap.
+    final results = await Future.wait([
+      fetchAllRows(
+        () => _client
+            .from('restaurants_full')
+            .select('$restaurantFullColumns, latitude, longitude')
+            .or(place)
+            .order('id', ascending: true),
+      ),
+      fetchAllRows(
+        () => _client
+            .from('hotels_full')
+            .select('$hotelFullColumns, latitude, longitude')
+            .or(place)
+            .order('id', ascending: true),
+      ),
+    ]);
+
+    final mapped = <MappedVenue>[];
+    for (final row in results[0]) {
+      final restaurant = Restaurant.fromJson(row);
+      if (restaurant.isExpired || restaurant.isPermanentlyClosed) continue;
+      final point = _point(row);
+      if (point != null) mapped.add(MappedVenue(RestaurantVenue(restaurant), point.$1, point.$2));
+    }
+    for (final row in results[1]) {
+      final hotel = Hotel.fromJson(row);
+      if (hotel.isExpired || hotel.isPermanentlyClosed) continue;
+      final point = _point(row);
+      if (point != null) mapped.add(MappedVenue(HotelVenue(hotel), point.$1, point.$2));
+    }
+    return mapped;
+  }
+
+  static (double, double)? _point(Map<String, dynamic> row) {
+    final lat = (row['latitude'] as num?)?.toDouble();
+    final lng = (row['longitude'] as num?)?.toDouble();
+    return lat == null || lng == null ? null : (lat, lng);
+  }
+}
+
+/// A catalogue venue with its coordinates — see
+/// [MapRepository.loadVenuesInPlaces].
+class MappedVenue {
+  final PassportVenue venue;
+  final double latitude;
+  final double longitude;
+
+  const MappedVenue(this.venue, this.latitude, this.longitude);
 }

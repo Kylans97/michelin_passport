@@ -8,6 +8,7 @@ import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/friendship_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
+import '../../data/repositories/map_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../models/event.dart';
@@ -23,6 +24,7 @@ import '../events/widgets/event_card.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'trip_legs.dart';
+import 'trip_map/trip_map_screen.dart';
 import 'trip_schedule.dart';
 import 'widgets/create_trip_sheet.dart';
 import 'widgets/hotel_picker_sheet.dart';
@@ -76,6 +78,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
   late final FriendshipRepository _friendsRepo = FriendshipRepository(
     Supabase.instance.client,
   );
+  late final MapRepository _mapRepo = MapRepository(Supabase.instance.client);
 
   String get _userId => Supabase.instance.client.auth.currentUser?.id ?? '';
 
@@ -417,6 +420,72 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     }
   }
 
+  // Every Mantelier place in each leg, plus the trip's events, on a map;
+  // what gets added there comes back as a reload of this page.
+  Future<void> _openMap() async {
+    if (_loading) return;
+    var added = false;
+    await Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => TripMapScreen(
+          trip: _trip,
+          events: _matchingEvents,
+          plannedKeys: {
+            for (final v in _venues)
+              switch (v.venue) {
+                RestaurantVenue(:final restaurant) => 'r:${restaurant.id}',
+                HotelVenue(:final hotel) => 'h:${hotel.id}',
+              },
+          },
+          legLabel: _legName,
+          loadVenues: (leg) {
+            final scope = legScope([leg]);
+            return _mapRepo.loadVenuesInPlaces(
+              countryCodes: scope.countryCodes,
+              cityIds: scope.cityIds,
+            );
+          },
+          addToTrip: (venue, leg) async {
+            try {
+              final (entityType, entityId) = switch (venue) {
+                RestaurantVenue(:final restaurant) => ('restaurant', restaurant.id),
+                HotelVenue(:final hotel) => ('hotel', hotel.id),
+              };
+              final isHotel = entityType == 'hotel';
+              await _repo.createPlannedVenue(
+                userId: _userId,
+                entityType: entityType,
+                entityId: entityId,
+                tripId: _trip.id,
+                startDate: legStart(_trip, leg),
+                endDate: isHotel ? legEnd(_trip, leg) : null,
+              );
+              added = true;
+              return true;
+            } catch (_) {
+              return false;
+            }
+          },
+          openVenue: (venue) => switch (venue) {
+            RestaurantVenue(:final restaurant) => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+              ),
+            ),
+            HotelVenue(:final hotel) => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+            ),
+          },
+          openEvent: _openEvent,
+        ),
+      ),
+    );
+    if (added && mounted) _load();
+  }
+
   Future<void> _removeVenue(ResolvedPlannedVenue item) async {
     final isHotel = item.venue is HotelVenue;
     final confirmed = await showTripConfirmDialog(
@@ -585,10 +654,20 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const EditorialBackButton(),
-                  EditorialBackButton(
-                    icon: Icons.more_horiz_rounded,
-                    semanticLabel: 'Trip actions',
-                    onTap: _showTripActions,
+                  Row(
+                    children: [
+                      EditorialBackButton(
+                        icon: Icons.map_outlined,
+                        semanticLabel: 'Trip map',
+                        onTap: _openMap,
+                      ),
+                      const SizedBox(width: CsSpacing.sm),
+                      EditorialBackButton(
+                        icon: Icons.more_horiz_rounded,
+                        semanticLabel: 'Trip actions',
+                        onTap: _showTripActions,
+                      ),
+                    ],
                   ),
                 ],
               ),

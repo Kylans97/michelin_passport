@@ -26,6 +26,30 @@ The format follows Keep a Changelog.
 
 ### Added
 
+- **A map inside every trip.** A map button on the trip page opens
+  `TripMapScreen`, built on tester feedback that travellers want to see
+  where Mantelier's places are. It shows every restaurant and Key hotel
+  in a leg's place (its city, or the whole country for a country leg),
+  the trip's events in that leg, and what's already planned, on the
+  existing MapTiler street map.
+  - **Markers:** a dot for a restaurant, a square for a hotel, a diamond
+    for an event, and an ivory disc with a check for anything already on
+    the trip. Nearby dots fold into numbered clusters until you zoom in
+    (`clusterTripMapItems`, a screen-space grid). Planned places and
+    events never fold.
+  - **Tapping a marker** opens a card with stars or Keys (no gold on the
+    map itself), "Add to trip" (planned on that leg's dates) and "View
+    venue". A trip with several destinations switches leg from chips.
+  - **No migration:** `MapRepository.loadVenuesInPlaces` reads the
+    existing `latitude`/`longitude` columns of `restaurants_full`/
+    `hotels_full`, scoped by city id or country code, never by name.
+    Expired pop-ups and permanently closed venues are left out.
+  - **Checked in the simulator** on a real Andorra → Australia trip:
+    hotels, a planned stay, the card and switching legs. Not tried
+    there: "Add to trip" (it would have written to that trip; the widget
+    tests cover it) and clustering in a dense city (the unit tests cover
+    it).
+
 - **A welcome for venue hosts**, in three places that share one text:
   Mantelier is international, so write in English; events are
   evenings that happen once (a special tasting, a collaboration with
@@ -71,6 +95,12 @@ The format follows Keep a Changelog.
   `supabase/data/enrichment/michelin_pl_tr_2026/`.
 
 ### Fixed
+- **The trip map came up empty after switching destination.** One
+  `MapController` was shared by the map of each leg, but a controller
+  belongs to one map. The widget test for switching legs caught it
+  before it shipped. Each leg now gets its own controller, like its own
+  map.
+
 - The first push attempt never reached the database: `timeout` does not
   exist on macOS, and the retry was blocked by the permission check until
   the product owner allowed it. Before retrying, the ledger and the PL/TR
