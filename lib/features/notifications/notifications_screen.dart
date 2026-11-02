@@ -17,6 +17,8 @@ import '../../data/repositories/venue_invite_repository.dart';
 import '../../models/app_notification.dart';
 import '../friends/friend_profile_screen.dart';
 import '../friends/widgets/identity_row.dart';
+import '../profile/my_venues_screen.dart';
+import '../profile/venue_host_welcome_screen.dart';
 import '../../core/analytics/screen_usage.dart';
 import 'push_prompt_sheet.dart';
 import 'push_service.dart';
@@ -584,7 +586,7 @@ class _NotificationRow extends StatelessWidget {
       case AppNotificationType.venueClaimReceived:
       case AppNotificationType.venueClaimApproved:
       case AppNotificationType.venueClaimRejected:
-        return _venueClaim();
+        return _venueClaim(context);
       case AppNotificationType.venueAboutApproved:
       case AppNotificationType.venueAboutRejected:
       case AppNotificationType.venuePhotoApproved:
@@ -696,8 +698,8 @@ class _NotificationRow extends StatelessWidget {
   // request, nothing to act on here. A rejected AND a blocked claim share
   // the same copy (see AppNotificationType.venueClaimRejected). Received
   // and rejected carry the one contact point a claimant has: the mailto
-  // line.
-  Widget _venueClaim() {
+  // line. Approved opens the host welcome, which leads on to My venues.
+  Widget _venueClaim(BuildContext context) {
     final n = notification;
     final venueName = n.claimVenueName ?? 'the venue you claimed';
     final showContactLine =
@@ -722,7 +724,28 @@ class _NotificationRow extends StatelessWidget {
           ? n.claimReviewNote?.trim()
           : null,
       footer: showContactLine ? _ClaimContactLine(venueName: venueName) : null,
+      onTap: n.type == AppNotificationType.venueClaimApproved
+          ? () => _openHostWelcome(context, n.claimVenueName ?? 'Your venue')
+          : null,
     );
+  }
+
+  // Counts as the one automatic showing, so My venues doesn't repeat it.
+  void _openHostWelcome(BuildContext context, String venueName) {
+    VenueHostWelcomeSeen.takeFirstShow();
+    Navigator.push(
+    context,
+    MaterialPageRoute(
+      fullscreenDialog: true,
+      builder: (welcomeContext) => VenueHostWelcomeScreen(
+        venueName: venueName,
+        actionLabel: 'Manage your venue',
+        onAction: () => Navigator.of(welcomeContext).pushReplacement(
+          MaterialPageRoute(builder: (_) => const MyVenuesScreen()),
+        ),
+      ),
+    ),
+  );
   }
 
   // A manager's about text or photo was reviewed; a rejection carries the

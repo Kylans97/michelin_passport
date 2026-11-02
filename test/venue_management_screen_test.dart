@@ -20,6 +20,7 @@ import 'package:michelin_passport/core/widgets/framed_image.dart';
 import 'package:michelin_passport/features/profile/adjust_photo_framing_screen.dart';
 import 'package:michelin_passport/features/profile/card_photo_screen.dart';
 import 'package:michelin_passport/features/profile/venue_events_screen.dart';
+import 'package:michelin_passport/features/profile/venue_host_welcome_screen.dart';
 import 'package:michelin_passport/features/profile/venue_management_screen.dart';
 import 'package:michelin_passport/features/profile/venue_photos_screen.dart';
 import 'package:michelin_passport/features/profile/venue_profile_screen.dart';
@@ -292,6 +293,7 @@ Future<void> _pumpLanding(
   VenueEventsRepository? eventsRepo,
   VenueTeamRepository? teamRepo,
   List<NavigatorObserver> observers = const [],
+  bool showWelcome = false,
 }) async {
   await tester.pumpWidget(
     MaterialApp(
@@ -302,6 +304,7 @@ Future<void> _pumpLanding(
         photoRepo: photoRepo ?? _FakeVenuePhotoSubmissionRepository(),
         eventsRepo: eventsRepo ?? _FakeEventsRepository(),
         teamRepo: teamRepo ?? _FakeTeamRepository(),
+        shouldShowWelcome: () async => showWelcome,
       ),
     ),
   );
@@ -309,6 +312,7 @@ Future<void> _pumpLanding(
 }
 
 void main() {
+  _hostWelcomeTests();
   // Only the "Preview my page" group below actually needs this: tapping
   // the button navigates for real, so the REAL RestaurantDetailScreen it
   // pushes builds for real too (unlike every other pushed screen in this
@@ -1296,4 +1300,41 @@ class _RecordingNavigatorObserver extends NavigatorObserver {
     pushed.add(route);
     super.didPush(route, previousRoute);
   }
+}
+
+void _hostWelcomeTests() {
+  group('host welcome', () {
+    testWidgets('opens on a first visit, and its button leads to Events', (tester) async {
+      await _pumpLanding(tester, _FakeVenueAboutRepository(), showWelcome: true);
+      expect(find.text('Welcome to Mantelier'), findsOneWidget);
+      expect(find.text('Evenings that happen once'), findsOneWidget);
+
+      await tester.scrollUntilVisible(find.text('Create your first event'), 300);
+      await tester.ensureVisible(find.text('Create your first event'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Create your first event'));
+      await tester.pumpAndSettle();
+      expect(find.byType(VenueHostWelcomeScreen), findsNothing);
+      expect(find.byType(VenueEventsScreen), findsOneWidget);
+    });
+
+    testWidgets('stays closed after the first visit, and the landing page '
+        'reopens it', (tester) async {
+      await _pumpLanding(tester, _FakeVenueAboutRepository());
+      expect(find.text('Welcome to Mantelier'), findsNothing);
+
+      await tester.ensureVisible(find.text('Hosting on Mantelier'));
+      await tester.tap(find.text('Hosting on Mantelier'));
+      await tester.pumpAndSettle();
+      expect(find.text('Welcome to Mantelier'), findsOneWidget);
+    });
+
+    testWidgets('centres "Coming soon" in its stamp', (tester) async {
+      await _pumpLanding(tester, _FakeVenueAboutRepository(), showWelcome: true);
+      await tester.scrollUntilVisible(find.text('COMING SOON'), 300);
+      final label = tester.getCenter(find.text('COMING SOON'));
+      final screen = tester.getSize(find.byType(Scaffold).last);
+      expect(label.dx, moreOrLessEquals(screen.width / 2, epsilon: 0.5));
+    });
+  });
 }

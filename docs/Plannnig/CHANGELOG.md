@@ -8,6 +8,31 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+
+- **A welcome for venue hosts**, in three places that share one text:
+  Mantelier is international, so write in English; events are
+  evenings that happen once (a special tasting, a collaboration with
+  another kitchen, an exceptional setting); why that helps the
+  community and the venue; and the Passport stamp a venue will design
+  with us (coming soon).
+  - In the app: `VenueHostWelcomeScreen`. It opens on a host's first
+    visit to their venue's management page (once per user per device,
+    `VenueHostWelcomeSeen`, SharedPreferences). Its button leads
+    straight to Events. Tapping the claim-approved notification opens
+    it too, and "Hosting on Mantelier" on the management page opens it
+    any time.
+  - By email: `notify-venue-claim` now also takes `event: 'approved'`
+    and sends the welcome to the claim's business email. Migration
+    `20261031190000_add_venue_host_welcome_email.sql` adds the update
+    trigger on the three claims tables (pending → approved only). It
+    reuses the existing webhook secret and has its own exception
+    handler, so it can never block an approval. **Not applied yet.**
+    Deploy the function first, because the old one would read the
+    approved envelope as a new claim and email the admins.
+  - On the site: `site/hosts.html` (mantelier.app/hosts), linked from
+    the email. **Not deployed yet.**
+
 ---
 
 ## v1.5.5 (23) — 2026-11-01

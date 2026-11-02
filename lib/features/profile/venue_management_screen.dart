@@ -26,6 +26,7 @@ import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'card_photo_screen.dart';
 import 'venue_events_screen.dart';
+import 'venue_host_welcome_screen.dart';
 import 'venue_photos_screen.dart';
 import 'venue_preview_photo_merge.dart';
 import 'venue_profile_screen.dart';
@@ -86,6 +87,10 @@ class VenueManagementScreen extends StatefulWidget {
   final HotelRepository? hotelRepo;
   final PrivateChefRepository? privateChefRepo;
 
+  // Whether to open the host welcome on arrival — once per user by
+  // default (VenueHostWelcomeSeen); tests pass their own.
+  final Future<bool> Function()? shouldShowWelcome;
+
   const VenueManagementScreen({
     super.key,
     required this.venue,
@@ -96,6 +101,7 @@ class VenueManagementScreen extends StatefulWidget {
     this.restaurantRepo,
     this.hotelRepo,
     this.privateChefRepo,
+    this.shouldShowWelcome,
   });
 
   @override
@@ -150,6 +156,31 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   void initState() {
     super.initState();
     _loadSummaries();
+    _maybeShowWelcome();
+  }
+
+  Future<void> _maybeShowWelcome() async {
+    final show = await (widget.shouldShowWelcome ?? VenueHostWelcomeSeen.takeFirstShow)();
+    if (show && mounted) _openWelcome();
+  }
+
+  // Its closing button leads straight to the first event, the thing the
+  // welcome is mostly about.
+  void _openWelcome() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (welcomeContext) => VenueHostWelcomeScreen(
+          venueName: widget.venue.name,
+          actionLabel: 'Create your first event',
+          onAction: () {
+            Navigator.of(welcomeContext).pop();
+            _open(VenueEventsScreen(venue: widget.venue, repository: widget.eventsRepo));
+          },
+        ),
+      ),
+    );
   }
 
   void _loadSummaries() {
@@ -461,6 +492,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                 style: CsTypography.metadata.copyWith(color: AppColors.error),
               ),
             ],
+            const SizedBox(height: CsSpacing.sm),
+            SubtleTextAction(label: 'Hosting on Mantelier', onTap: _openWelcome),
             const SizedBox(height: CsSpacing.xl),
             _contactLine(),
             const SizedBox(height: CsSpacing.xxl),

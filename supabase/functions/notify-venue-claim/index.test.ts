@@ -418,3 +418,72 @@ Deno.test('a legacy un-enveloped restaurant payload (pre-genericization trigger)
   assertEquals(fromCalls.includes('restaurants_full'), true);
   assertStringIncludes(calls[0].subject, 'restaurant claim');
 });
+
+// ------------------------------------------------------------
+// event: 'approved' — the host welcome
+// ------------------------------------------------------------
+
+const APPROVED = { claim_type: 'claims_restaurants', event: 'approved', row: VALID_CLAIM };
+
+Deno.test('an approved claim sends the welcome to the business email, not the admins', async () => {
+  const { admin, getUserByIdCalls } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(req({ body: APPROVED }), admin, sendEmail, SECRET);
+  assertEquals(res.status, 200);
+  assertEquals(calls.length, 1);
+  assertEquals(calls[0].to, 'owner@flore.example');
+  assertEquals(calls[0].subject, 'Welcome to Mantelier, Flore Amsterdam');
+  assertStringIncludes(calls[0].text, 'Flore Amsterdam is now part of a community');
+  assertStringIncludes(calls[0].text, 'in English');
+  assertStringIncludes(calls[0].text, 'EVENINGS THAT HAPPEN ONCE');
+  assertStringIncludes(calls[0].text, 'A STAMP OF YOUR OWN');
+  assertStringIncludes(calls[0].html, 'https://mantelier.app/hosts');
+  // The welcome needs only the venue name: no claimant lookups.
+  assertEquals(getUserByIdCalls.length, 0);
+});
+
+Deno.test('the welcome escapes the venue name in its HTML', async () => {
+  const { admin } = fakeAdmin({ venue: { name: 'Bar <b>&</b> Co' } });
+  const { sendEmail, calls } = fakeSendEmail();
+  await handleRequest(req({ body: APPROVED }), admin, sendEmail, SECRET);
+  assertStringIncludes(calls[0].html, 'Bar &lt;b&gt;&amp;&lt;/b&gt; Co');
+});
+
+Deno.test('a welcome with no venue name is not sent', async () => {
+  const { admin } = fakeAdmin({ venue: null });
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(req({ body: APPROVED }), admin, sendEmail, SECRET);
+  assertEquals(res.status, 502);
+  assertEquals(calls.length, 0);
+});
+
+Deno.test('an unknown event is rejected and sends nothing', async () => {
+  const { admin } = fakeAdmin();
+  const { sendEmail, calls } = fakeSendEmail();
+  const res = await handleRequest(
+    req({ body: { ...APPROVED, event: 'rejected' } }),
+    admin,
+    sendEmail,
+    SECRET,
+  );
+  assertEquals(res.status, 400);
+  assertEquals(calls.length, 0);
+});
+
+Deno.test('an approved hotel claim reads the hotel view', async () => {
+  const { admin, fromCalls } = fakeAdmin({
+    venueTable: 'hotels_full',
+    venue: { name: 'Pulitzer Amsterdam' },
+  });
+  const { sendEmail, calls } = fakeSendEmail();
+  const hotelClaim = { ...VALID_CLAIM, restaurant_id: undefined, hotel_id: 'hotel-1' };
+  const res = await handleRequest(
+    req({ body: { claim_type: 'claims_hotels', event: 'approved', row: hotelClaim } }),
+    admin,
+    sendEmail,
+    SECRET,
+  );
+  assertEquals(res.status, 200);
+  assertEquals(fromCalls, ['hotels_full']);
+  assertEquals(calls[0].subject, 'Welcome to Mantelier, Pulitzer Amsterdam');
+});

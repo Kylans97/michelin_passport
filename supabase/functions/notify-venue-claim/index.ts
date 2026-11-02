@@ -112,6 +112,11 @@ export interface ClaimRow {
 export interface ClaimEnvelope {
   claim_type: string;
   row: ClaimRow;
+  // Absent: a new pending claim, emailed to the admins (the original
+  // job). 'approved': the claim was just approved, and the new host gets
+  // the welcome (welcomeEmail below), sent by the update trigger from
+  // 20261031190000_add_venue_host_welcome_email.sql.
+  event?: 'approved';
 }
 
 // The pre-genericization shape — a bare claims_restaurants row with no
@@ -259,10 +264,12 @@ export async function handleRequest(
   // shape with no envelope at all.
   let claimType: string;
   let claim: ClaimRow;
+  let event: string | undefined;
   if (body && typeof body === 'object' && 'claim_type' in body && 'row' in body) {
     const envelope = body as ClaimEnvelope;
     claimType = envelope.claim_type;
     claim = envelope.row;
+    event = envelope.event;
   } else {
     claimType = 'claims_restaurants';
     claim = body as LegacyClaimPayload;
@@ -286,6 +293,13 @@ export async function handleRequest(
     typeof claim.requested_at !== 'string'
   ) {
     return jsonResponse({ error: 'Missing required claim fields' }, 400);
+  }
+
+  if (event === 'approved') {
+    return sendWelcome(claim, claimType, config, subjectId, admin, sendEmail);
+  }
+  if (event !== undefined) {
+    return jsonResponse({ error: `Unknown event: ${event}` }, 400);
   }
 
   // Venue and claimant lookups are independent of each other and of the
@@ -407,6 +421,159 @@ Review in the dashboard: ${link}`;
     return jsonResponse({ error: 'Email send failed' }, 502);
   }
 
+  return jsonResponse({ success: true }, 200);
+}
+
+// ------------------------------------------------------------
+// The host welcome — the approved-claim email
+// ------------------------------------------------------------
+// The same four sections as the in-app VenueHostWelcomeScreen and
+// mantelier.app/hosts, so the three stay one message. Goes to the
+// business email given with the claim: the address the host chose for
+// their venue, which is also where the admins' review already looked.
+
+const HOSTS_PAGE = 'https://mantelier.app/hosts';
+
+const WELCOME_SECTIONS: ReadonlyArray<{ eyebrow: string; title: string; body: string; examples?: string[] }> = [
+  {
+    eyebrow: '01 · One language',
+    title: 'Write for a world of guests',
+    body: 'Mantelier is read by members across Europe and beyond. Please write your about ' +
+      'text, photo captions and event descriptions in English, so every member can discover ' +
+      'what you offer.',
+  },
+  {
+    eyebrow: '02 · Events',
+    title: 'Evenings that happen once',
+    body: 'Events on Mantelier are not your regular menu. They are the nights guests plan a ' +
+      'journey around:',
+    examples: [
+      'A special tasting, from a rare vintage to a single-ingredient menu',
+      'A collaboration with another kitchen, four hands or a guest chef',
+      'An exceptional setting, away from your usual dining room',
+    ],
+  },
+  {
+    eyebrow: '03 · Why it matters',
+    title: 'Unique for guests, visible for you',
+    body: 'Every event gives the Mantelier community the chance to experience something they ' +
+      'could not find anywhere else. In return, we bring your evening to members who follow ' +
+      'you, plan trips nearby and travel for moments like this.',
+  },
+  {
+    eyebrow: '04 · The Passport',
+    title: 'A stamp of your own',
+    body: "Members keep every visit in their Passport. Soon you can design your venue's stamp " +
+      'with us, so each guest leaves with a keepsake that is unmistakably yours.',
+  },
+];
+
+export function welcomeEmail(venueName: string): { subject: string; html: string; text: string } {
+  const intro = `${venueName} is now part of a community that travels for exceptional ` +
+    'gastronomy. Here is how to make the most of it.';
+  const close = 'Open the Mantelier app and go to Profile, then My venues, to manage your ' +
+    'page and create your first event.';
+
+  const text = [
+    'Welcome to Mantelier',
+    '',
+    intro,
+    ...WELCOME_SECTIONS.flatMap((s) => [
+      '',
+      s.title.toUpperCase(),
+      s.body,
+      ...(s.examples ?? []).map((e) => `- ${e}`),
+    ]),
+    '',
+    close,
+    '',
+    `Read this again at ${HOSTS_PAGE}`,
+    `Questions? ${ADMIN_EMAIL}`,
+  ].join('\n');
+
+  const serif = "Georgia,'Times New Roman',serif";
+  const sans = 'Helvetica,Arial,sans-serif';
+  const sections = WELCOME_SECTIONS.map((s) => `
+      <tr><td style="padding:28px 32px 4px;border-top:1px solid #DED8CE;">
+        <p style="margin:0 0 8px;font:11px ${sans};letter-spacing:2px;text-transform:uppercase;color:#7F6947;">${
+    escapeHtml(s.eyebrow)
+  }</p>
+        <p style="margin:0 0 10px;font:24px/1.25 ${serif};color:#20261F;">${escapeHtml(s.title)}</p>
+        <p style="margin:0 0 12px;font:15px/1.6 ${sans};color:#6B6355;">${escapeHtml(s.body)}</p>
+        ${
+    (s.examples ?? []).map((e) =>
+      `<p style="margin:0 0 8px;padding-left:14px;border-left:2px solid #A4875C;font:14px/1.5 ${sans};color:#20261F;">${
+        escapeHtml(e)
+      }</p>`
+    ).join('')
+  }
+      </td></tr>`).join('');
+
+  const html = `<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body style="margin:0;padding:24px 0;background:#F4F0E7;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center">
+    <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#FAF7F0;">
+      <tr><td style="background:#16302A;padding:36px 32px;">
+        <p style="margin:0 0 10px;font:11px ${sans};letter-spacing:2px;color:#A4875C;">FOR VENUE HOSTS</p>
+        <p style="margin:0 0 14px;font:34px/1.1 ${serif};color:#F5EFE1;">Welcome to Mantelier</p>
+        <p style="margin:0;font:15px/1.6 ${sans};color:#B8B0A3;">${escapeHtml(intro)}</p>
+      </td></tr>
+      ${sections}
+      <tr><td style="padding:24px 32px 36px;border-top:1px solid #DED8CE;">
+        <p style="margin:0 0 18px;font:15px/1.6 ${sans};color:#20261F;">${escapeHtml(close)}</p>
+        <p style="margin:0 0 6px;font:13px ${sans};color:#6B6355;"><a href="${HOSTS_PAGE}" style="color:#23473D;">Read this again on mantelier.app</a></p>
+        <p style="margin:0;font:13px ${sans};color:#6B6355;">Questions? <a href="mailto:${ADMIN_EMAIL}" style="color:#23473D;">${ADMIN_EMAIL}</a></p>
+      </td></tr>
+    </table>
+  </td></tr></table>
+</body></html>`;
+
+  return { subject: `Welcome to Mantelier, ${venueName}`, html, text };
+}
+
+async function sendWelcome(
+  claim: ClaimRow,
+  claimType: string,
+  config: ClaimTypeConfig,
+  subjectId: string,
+  admin: NotifyClaimAdminClient,
+  sendEmail: SendEmail,
+): Promise<Response> {
+  const venueResult = await admin.from(config.viewName).select(config.nameColumn).eq(
+    'id',
+    subjectId,
+  ).maybeSingle();
+  // No venue name, no welcome: "Welcome to Mantelier, Unknown venue" is
+  // worse than none, and the in-app welcome still reaches the host.
+  const venueName = venueResult.data?.[config.nameColumn] as string | undefined;
+  if (venueResult.error || !venueName) {
+    console.error('notify-venue-claim: welcome venue lookup failed', {
+      claimId: claim.id,
+      claimType,
+      subjectId,
+      message: venueResult.error?.message ?? 'venue not found',
+    });
+    return jsonResponse({ error: 'Venue not found' }, 502);
+  }
+
+  const { subject, html, text } = welcomeEmail(venueName);
+  const result = await sendEmail({
+    from: FROM_EMAIL,
+    to: claim.business_email,
+    subject,
+    html,
+    text,
+  });
+  if (!result.ok) {
+    console.error('notify-venue-claim: welcome email send failed', {
+      claimId: claim.id,
+      claimType,
+      subjectId,
+      message: result.error,
+    });
+    return jsonResponse({ error: 'Email send failed' }, 502);
+  }
   return jsonResponse({ success: true }, 200);
 }
 
