@@ -9,6 +9,7 @@ import '../../../models/restaurant.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../../passport/widgets/passport_card_chrome.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
+import '../../../core/analytics/analytics_properties.dart';
 
 /// PASSPORT — WISHLIST UI POLISH V1: a saved restaurant, in the exact same
 /// ivory `CsPlaceCard` family as Passport's own collection cards
@@ -58,7 +59,10 @@ class WishlistRestaurantCard extends StatelessWidget {
     onTap: () => Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+        builder: (_) => RestaurantDetailScreen(
+          restaurant: restaurant,
+          openSource: AnalyticsOpenSource.wishlist,
+        ),
       ),
     ),
   );
@@ -99,7 +103,12 @@ class WishlistHotelCard extends StatelessWidget {
     bookmark: PassportCardBookmark(isWishlisted: true, onTap: onRemove),
     onTap: () => Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+      MaterialPageRoute(
+        builder: (_) => HotelDetailScreen(
+          hotel: hotel,
+          openSource: AnalyticsOpenSource.wishlist,
+        ),
+      ),
     ),
   );
 }
@@ -112,6 +121,8 @@ String _locationLabel({
   required String countryName,
   required String flagEmoji,
 }) {
-  final country = flagEmoji.isNotEmpty ? '$flagEmoji $countryName' : countryName;
+  final country = flagEmoji.isNotEmpty
+      ? '$flagEmoji $countryName'
+      : countryName;
   return '$cityName, $country';
 }

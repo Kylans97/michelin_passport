@@ -315,13 +315,21 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+            builder: (_) => RestaurantDetailScreen(
+              restaurant: restaurant,
+              openSource: AnalyticsOpenSource.trips,
+            ),
           ),
         );
       case HotelVenue(:final hotel):
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+          MaterialPageRoute(
+            builder: (_) => HotelDetailScreen(
+              hotel: hotel,
+              openSource: AnalyticsOpenSource.trips,
+            ),
+          ),
         );
     }
   }
@@ -333,6 +341,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
         builder: (_) => EventDetailScreen(
           eventId: event.id,
           sourceSurface: AnalyticsSourceSurface.tripRecommendation,
+          openSource: AnalyticsOpenSource.trips,
         ),
       ),
     );
@@ -449,7 +458,10 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
           addToTrip: (venue, leg) async {
             try {
               final (entityType, entityId) = switch (venue) {
-                RestaurantVenue(:final restaurant) => ('restaurant', restaurant.id),
+                RestaurantVenue(:final restaurant) => (
+                  'restaurant',
+                  restaurant.id,
+                ),
                 HotelVenue(:final hotel) => ('hotel', hotel.id),
               };
               final isHotel = entityType == 'hotel';
@@ -471,12 +483,20 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
             RestaurantVenue(:final restaurant) => Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+                builder: (_) => RestaurantDetailScreen(
+                  restaurant: restaurant,
+                  openSource: AnalyticsOpenSource.trips,
+                ),
               ),
             ),
             HotelVenue(:final hotel) => Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+              MaterialPageRoute(
+                builder: (_) => HotelDetailScreen(
+                  hotel: hotel,
+                  openSource: AnalyticsOpenSource.trips,
+                ),
+              ),
             ),
           },
           openEvent: _openEvent,

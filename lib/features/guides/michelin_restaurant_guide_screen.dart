@@ -19,6 +19,8 @@ import 'models/guide_filters.dart';
 import 'widgets/guide_catalogue_layout.dart';
 import 'widgets/guide_catalogue_states.dart';
 import 'widgets/guide_venue_card.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/impressions.dart';
 
 /// Michelin Guide → Restaurants (Step 2B). A calm, filterable catalogue of
 /// CURRENTLY Michelin-starred restaurants only — never a restaurant that
@@ -121,7 +123,10 @@ class _MichelinRestaurantGuideScreenState
   void _open(Restaurant restaurant) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+      builder: (_) => RestaurantDetailScreen(
+        restaurant: restaurant,
+        openSource: AnalyticsOpenSource.guides,
+      ),
     ),
   );
 
@@ -193,6 +198,11 @@ class _MichelinRestaurantGuideScreenState
                     itemBuilder: (context, index) {
                       final restaurant = _results![index];
                       final stars = restaurant.michelinStars ?? 0;
+                      trackImpression(
+                        AnalyticsEntityType.restaurant,
+                        restaurant.id,
+                        ImpressionSurface.guides,
+                      );
                       return GuideVenueCard(
                         title: restaurant.name,
                         imageUrl: restaurant.cardImageUrl,

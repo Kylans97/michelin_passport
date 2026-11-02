@@ -9,6 +9,7 @@ import '../../data/repositories/push_repository.dart';
 import '../events/event_detail_screen.dart';
 import 'notifications_screen.dart';
 import 'push_prompt_sheet.dart';
+import '../../core/analytics/analytics_properties.dart';
 
 /// The two writes the service makes, so tests can fake them without a
 /// Supabase client. [PushRepository] is the real one.
@@ -74,7 +75,9 @@ class PushService {
        _appVersion = appVersion ?? _platformAppVersion,
        _markRead =
            markRead ??
-           ((id) => NotificationsRepository(Supabase.instance.client).markAsRead(id)),
+           ((id) => NotificationsRepository(
+             Supabase.instance.client,
+           ).markAsRead(id)),
        _enablePreference = enablePreference ?? _enableStoredPreference;
 
   static final PushService instance = PushService();
@@ -102,24 +105,26 @@ class PushService {
   void start({Stream<AuthState>? authStateChanges}) {
     _channel.setHandlers(onTap: _openFromPush, onForeground: (_) {});
     _authSubscription ??=
-        (authStateChanges ?? Supabase.instance.client.auth.onAuthStateChange).listen((state) {
-          if (state.session == null) {
-            _registeredToken = null;
-            return;
-          }
-          if (state.event == AuthChangeEvent.initialSession ||
-              state.event == AuthChangeEvent.signedIn) {
-            unawaited(syncRegistration());
-            unawaited(_handleInitialTap());
-          }
-        });
+        (authStateChanges ?? Supabase.instance.client.auth.onAuthStateChange)
+            .listen((state) {
+              if (state.session == null) {
+                _registeredToken = null;
+                return;
+              }
+              if (state.event == AuthChangeEvent.initialSession ||
+                  state.event == AuthChangeEvent.signedIn) {
+                unawaited(syncRegistration());
+                unawaited(_handleInitialTap());
+              }
+            });
   }
 
   /// Registers this device if iOS allows notifications. Safe to call any
   /// number of times: the server upserts on the token.
   Future<void> syncRegistration() async {
     try {
-      if (await _channel.authorizationStatus() != PushAuthorization.authorized) return;
+      if (await _channel.authorizationStatus() != PushAuthorization.authorized)
+        return;
       final token = await _channel.deviceToken();
       if (token == null) return;
       await _store.registerDevice(
@@ -152,7 +157,9 @@ class PushService {
   /// never answered the app's own sheet.
   Future<void> askAfter(BuildContext context, PushPromptReason reason) async {
     try {
-      if (await _channel.authorizationStatus() != PushAuthorization.notDetermined) return;
+      if (await _channel.authorizationStatus() !=
+          PushAuthorization.notDetermined)
+        return;
       final prefs = await _preferences();
       if (prefs.getBool(promptAnsweredKey) ?? false) return;
       if (!context.mounted) return;
@@ -178,7 +185,8 @@ class PushService {
     return granted;
   }
 
-  Future<PushAuthorization> authorizationStatus() => _channel.authorizationStatus();
+  Future<PushAuthorization> authorizationStatus() =>
+      _channel.authorizationStatus();
 
   Future<void> _handleInitialTap() async {
     if (_initialTapHandled) return;
@@ -209,7 +217,12 @@ class PushService {
     switch (data['type']) {
       case 'followed_venue_event':
         if (subjectId is! String) return null;
-        return MaterialPageRoute(builder: (_) => EventDetailScreen(eventId: subjectId));
+        return MaterialPageRoute(
+          builder: (_) => EventDetailScreen(
+            eventId: subjectId,
+            openSource: AnalyticsOpenSource.push,
+          ),
+        );
       case 'friend_request_received':
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
       default:

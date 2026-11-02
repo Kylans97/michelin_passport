@@ -36,6 +36,7 @@ import 'discovery_selectors.dart';
 import 'explore_view_model.dart';
 import 'models/explore_filters.dart'
     show RestaurantAwardFilter, HotelKeysFilter;
+import 'explore_signals.dart';
 import 'models/explore_search_results.dart';
 import 'models/explore_search_type.dart';
 import 'widgets/explore_discovery_sections.dart';
@@ -88,6 +89,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
   // query or the filter value); see SupabaseAnalyticsService.
   late final AnalyticsService _usage = SupabaseAnalyticsService.ofInstance();
   bool _searchUsageTracked = false;
+  // explore_signals already sent during this search, so a debounce re-run
+  // of the same search never counts twice. Cleared with the field.
+  final Set<ExploreSignal> _sentSearchSignals = {};
 
   ExploreSearchType _searchType = ExploreSearchType.all;
   RestaurantAwardFilter _restaurantAward = RestaurantAwardFilter.all;
@@ -117,8 +121,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
       _restaurantRepo.getDiscoveryCandidates();
   late final Future<List<Hotel>> _discoveryHotelsFuture = _hotelRepo
       .getDiscoveryCandidates();
-  late final Future<List<Restaurant>> _freshRestaurantsFuture =
-      _restaurantRepo.getFreshFindCandidates();
+  late final Future<List<Restaurant>> _freshRestaurantsFuture = _restaurantRepo
+      .getFreshFindCandidates();
   late final Future<List<Hotel>> _freshHotelsFuture = _hotelRepo
       .getFreshFindCandidates();
   // The Selection, newest first. A failure leaves the section out rather
@@ -169,6 +173,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
     _debounce?.cancel();
     if (value.trim().isEmpty) {
       _searchUsageTracked = false;
+      _sentSearchSignals.clear();
       return;
     }
     _debounce = Timer(const Duration(milliseconds: 300), _runSearch);
@@ -191,6 +196,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
         _searchUsageTracked = true;
         _usage.track(AnalyticsEvent.exploreSearchPerformed);
       }
+      unawaited(_sendSearchSignals(_query, results));
     } catch (_) {
       if (!mounted) return;
       setState(() {
@@ -200,6 +206,46 @@ class _ExploreScreenState extends State<ExploreScreen> {
         // all to show yet, mirroring PassportScreen's own _load().
         _searchError = _searchResults == null;
       });
+    }
+  }
+
+  // What this search named and, if it found nothing, what it was
+  // filtered on — entities and filter values, never the text itself.
+  Future<void> _sendSearchSignals(
+    String query,
+    ExploreSearchResults results,
+  ) async {
+    try {
+      final families = await _cuisineFamiliesFuture;
+      final (restaurantCountries, hotelCountries, eventCountries) =
+          await _countriesFuture;
+      final matches = searchMatches(
+        query: query,
+        results: results,
+        families: families,
+        countries: [
+          ...restaurantCountries,
+          ...hotelCountries,
+          ...eventCountries,
+        ],
+      );
+      final signals = [
+        ...matches,
+        if (results.isEmpty)
+          ...noResults(
+            filters: activeFilters(
+              searchType: _searchType,
+              countryCode: _country?.code,
+              cuisineFamilies: _cuisineFamilies,
+              restaurantAward: _restaurantAward,
+              hotelKeys: _hotelKeys,
+            ),
+            matches: matches,
+          ),
+      ].where(_sentSearchSignals.add).toList();
+      sendExploreSignals(signals);
+    } catch (_) {
+      // Tracking is best-effort; the search itself already succeeded.
     }
   }
 
@@ -269,44 +315,71 @@ class _ExploreScreenState extends State<ExploreScreen> {
 
   void _onSearchTypeChanged(ExploreSearchType type) {
     _usage.track(AnalyticsEvent.exploreFilterApplied);
+    if (type != ExploreSearchType.all) {
+      sendExploreSignals([ExploreSignal('filter', 'search_type', type.name)]);
+    }
     setState(() => _searchType = type);
     if (_isSearching) _runSearch();
   }
 
   void _onCountryChanged(VenueCountry? country) {
     _usage.track(AnalyticsEvent.exploreFilterApplied);
+    if (country != null) {
+      sendExploreSignals([ExploreSignal('filter', 'country', country.code)]);
+    }
     setState(() => _country = country);
     if (_isSearching) _runSearch();
   }
 
   void _onCuisineFamiliesChanged(Set<String> families) {
     _usage.track(AnalyticsEvent.exploreFilterApplied);
+    sendExploreSignals([
+      for (final slug in families.difference(_cuisineFamilies))
+        ExploreSignal('filter', 'cuisine_family', slug),
+    ]);
     setState(() => _cuisineFamilies = families);
     if (_isSearching) _runSearch();
   }
 
   void _onRestaurantAwardChanged(RestaurantAwardFilter filter) {
     _usage.track(AnalyticsEvent.exploreFilterApplied);
+    if (filter != RestaurantAwardFilter.all) {
+      sendExploreSignals([
+        ExploreSignal('filter', 'restaurant_award', filter.name),
+      ]);
+    }
     setState(() => _restaurantAward = filter);
     if (_isSearching) _runSearch();
   }
 
   void _onHotelKeysChanged(HotelKeysFilter filter) {
     _usage.track(AnalyticsEvent.exploreFilterApplied);
+    if (filter != HotelKeysFilter.all) {
+      sendExploreSignals([ExploreSignal('filter', 'hotel_keys', filter.name)]);
+    }
     setState(() => _hotelKeys = filter);
     if (_isSearching) _runSearch();
   }
 
+  // Search results and the discovery feed share these three openers.
+  AnalyticsOpenSource get _openSource =>
+      _isSearching ? AnalyticsOpenSource.search : AnalyticsOpenSource.explore;
+
   void _openRestaurant(Restaurant restaurant) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+      builder: (_) => RestaurantDetailScreen(
+        restaurant: restaurant,
+        openSource: _openSource,
+      ),
     ),
   );
 
   void _openHotel(Hotel hotel) => Navigator.push(
     context,
-    MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+    MaterialPageRoute(
+      builder: (_) => HotelDetailScreen(hotel: hotel, openSource: _openSource),
+    ),
   );
 
   void _openEvent(Event event) => Navigator.push(
@@ -315,6 +388,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
       builder: (_) => EventDetailScreen(
         eventId: event.id,
         sourceSurface: AnalyticsSourceSurface.discover,
+        openSource: _openSource,
       ),
     ),
   );
@@ -396,7 +470,8 @@ class _ExploreScreenState extends State<ExploreScreen> {
           children: [
             GuideDestinationRow(
               label: 'Collections',
-              descriptor: "Our Selection, Michelin, World's 50 Best & Gault&Millau.",
+              descriptor:
+                  "Our Selection, Michelin, World's 50 Best & Gault&Millau.",
               onTap: _openGuides,
               surface: CsSurface.dark,
             ),

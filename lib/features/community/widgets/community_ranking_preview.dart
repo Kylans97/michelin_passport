@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/analytics/impressions.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
@@ -82,7 +84,16 @@ class _RankingPreviewRow extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Semantics(
+  Widget build(BuildContext context) {
+    trackImpression(
+      AnalyticsEntityType.restaurant,
+      entry.restaurantId,
+      ImpressionSurface.community,
+    );
+    return _buildRow();
+  }
+
+  Widget _buildRow() => Semantics(
     button: true,
     label:
         '#$rank. ${entry.name}, ${entry.city}. '

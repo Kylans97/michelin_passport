@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/analytics/impressions.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
@@ -89,7 +91,14 @@ class _EventPreviewRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final going = goingCount == null ? null : formatGoingMemberCount(goingCount!);
+    trackImpression(
+      AnalyticsEntityType.event,
+      event.id,
+      ImpressionSurface.community,
+    );
+    final going = goingCount == null
+        ? null
+        : formatGoingMemberCount(goingCount!);
     final location = [
       if (event.city != null && event.city!.isNotEmpty) event.city,
       event.countryCode,
@@ -97,7 +106,8 @@ class _EventPreviewRow extends StatelessWidget {
 
     return Semantics(
       button: true,
-      label: '${event.name}. ${formatEventDateRange(event)}. $location.'
+      label:
+          '${event.name}. ${formatEventDateRange(event)}. $location.'
           '${going != null ? ' $going.' : ''}',
       excludeSemantics: true,
       child: Material(

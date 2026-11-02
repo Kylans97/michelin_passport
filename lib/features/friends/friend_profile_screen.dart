@@ -57,13 +57,21 @@ void openFriendVenue(BuildContext context, PassportVenue venue) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+          builder: (_) => RestaurantDetailScreen(
+            restaurant: restaurant,
+            openSource: AnalyticsOpenSource.friends,
+          ),
         ),
       );
     case HotelVenue(:final hotel):
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+        MaterialPageRoute(
+          builder: (_) => HotelDetailScreen(
+            hotel: hotel,
+            openSource: AnalyticsOpenSource.friends,
+          ),
+        ),
       );
   }
 }
@@ -86,7 +94,8 @@ void openVisitDetail(BuildContext context, FriendVenueVisit fv) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => VisitDetailScreen(restaurant: restaurant, visit: fv.visit),
+          builder: (_) =>
+              VisitDetailScreen(restaurant: restaurant, visit: fv.visit),
         ),
       );
     case HotelVenue(:final hotel):
@@ -112,6 +121,7 @@ void openFriendEvent(BuildContext context, String eventId) {
         eventId: eventId,
         sourceSurface: AnalyticsSourceSurface.friendActivity,
         sourceContext: AnalyticsSourceContext.friendSignal,
+        openSource: AnalyticsOpenSource.friends,
       ),
     ),
   );
@@ -246,7 +256,10 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       visits: visits,
       wishlist: wishlist,
       myWishlist: myWishlist,
-      sharedKeys: sharedWishlistKeys(wishlist: wishlist, myWishlist: myWishlist),
+      sharedKeys: sharedWishlistKeys(
+        wishlist: wishlist,
+        myWishlist: myWishlist,
+      ),
       stats: FriendProfileStats.from(entries),
       coverPhotoByVisitId: coverPhotos,
       countryNameByCode: countryNameByCode,
@@ -271,7 +284,8 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
     try {
       await _repo.sendRequest(widget.userId);
       _load();
-      if (mounted) PushService.instance.askAfter(context, const FriendsPrompt());
+      if (mounted)
+        PushService.instance.askAfter(context, const FriendsPrompt());
     } on PostgrestException catch (e) {
       _showSnack(e.message, isError: true);
     }
@@ -281,7 +295,8 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
     try {
       await _repo.acceptRequest(friendshipId);
       _load();
-      if (mounted) PushService.instance.askAfter(context, const FriendsPrompt());
+      if (mounted)
+        PushService.instance.askAfter(context, const FriendsPrompt());
     } on PostgrestException catch (e) {
       _showSnack(e.message, isError: true);
     }
@@ -420,7 +435,10 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
       ? identity.displayName!
       : identity.label;
 
-  Future<void> _planDinner(FriendProfileLayoutData data, PassportVenue? preselected) async {
+  Future<void> _planDinner(
+    FriendProfileLayoutData data,
+    PassportVenue? preselected,
+  ) async {
     final sent = await showPlanDinnerSheet(
       context,
       data: data,
@@ -497,7 +515,9 @@ class _FriendProfileScreenState extends State<FriendProfileScreen>
                     ),
                     SliverPersistentHeader(
                       pinned: true,
-                      delegate: FriendProfileTabBarDelegate(controller: _tabController),
+                      delegate: FriendProfileTabBarDelegate(
+                        controller: _tabController,
+                      ),
                     ),
                   ],
                   body: TabBarView(
@@ -574,7 +594,12 @@ class _SimpleBackRow extends StatelessWidget {
   Widget build(BuildContext context) => SafeArea(
     bottom: false,
     child: Padding(
-      padding: const EdgeInsets.fromLTRB(CsSpacing.base, CsSpacing.sm, CsSpacing.base, 0),
+      padding: const EdgeInsets.fromLTRB(
+        CsSpacing.base,
+        CsSpacing.sm,
+        CsSpacing.base,
+        0,
+      ),
       child: Align(
         alignment: Alignment.centerLeft,
         child: EditorialBackButton(color: AppColors.ivory),

@@ -146,13 +146,21 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
   void _openRestaurant(Restaurant restaurant) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+      builder: (_) => RestaurantDetailScreen(
+        restaurant: restaurant,
+        openSource: AnalyticsOpenSource.passport,
+      ),
     ),
   );
 
   void _openHotel(Hotel hotel) => Navigator.push(
     context,
-    MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+    MaterialPageRoute(
+      builder: (_) => HotelDetailScreen(
+        hotel: hotel,
+        openSource: AnalyticsOpenSource.passport,
+      ),
+    ),
   );
 
   void _openEvent(String eventId) => Navigator.push(
@@ -161,6 +169,7 @@ class _PassportCollectionBodyState extends State<PassportCollectionBody>
       builder: (_) => EventDetailScreen(
         eventId: eventId,
         sourceSurface: AnalyticsSourceSurface.passport,
+        openSource: AnalyticsOpenSource.passport,
       ),
     ),
   );
@@ -262,7 +271,10 @@ class _ErrorState extends StatelessWidget {
       const SizedBox(height: CsSpacing.base),
       Text(
         'Could not load data',
-        style: GoogleFonts.inter(color: AppColors.secondaryOnDark, fontSize: 14),
+        style: GoogleFonts.inter(
+          color: AppColors.secondaryOnDark,
+          fontSize: 14,
+        ),
       ),
       const SizedBox(height: CsSpacing.md),
       SizedBox(

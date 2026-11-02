@@ -20,6 +20,8 @@ import '../../../models/restaurant.dart';
 import '../../events/event_detail_screen.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
+import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/analytics/impressions.dart';
 
 /// Community Rankings: what members score highest, across restaurants,
 /// hotels and events — unrelated to "My Rankings" and its own data source.
@@ -153,7 +155,10 @@ class _CommunityRankingsTabState extends State<CommunityRankingsTab> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+            builder: (_) => RestaurantDetailScreen(
+              restaurant: restaurant,
+              openSource: AnalyticsOpenSource.rankings,
+            ),
           ),
         );
       case CommunityRankingKind.hotels:
@@ -164,13 +169,21 @@ class _CommunityRankingsTabState extends State<CommunityRankingsTab> {
         if (!mounted || hotel == null) return;
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+          MaterialPageRoute(
+            builder: (_) => HotelDetailScreen(
+              hotel: hotel,
+              openSource: AnalyticsOpenSource.rankings,
+            ),
+          ),
         );
       case CommunityRankingKind.events:
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => EventDetailScreen(eventId: venue.id),
+            builder: (_) => EventDetailScreen(
+              eventId: venue.id,
+              openSource: AnalyticsOpenSource.rankings,
+            ),
           ),
         );
     }
@@ -246,11 +259,24 @@ class _CommunityRankingsTabState extends State<CommunityRankingsTab> {
                 100,
               ),
               itemCount: entries.length,
-              itemBuilder: (_, i) => _RankRow(
-                entry: entries[i],
-                rank: i + 1,
-                onTap: () => _open(entries[i]),
-              ),
+              itemBuilder: (_, i) {
+                final entry = entries[i];
+                trackImpression(
+                  switch (entry.kind) {
+                    CommunityRankingKind.restaurants =>
+                      AnalyticsEntityType.restaurant,
+                    CommunityRankingKind.hotels => AnalyticsEntityType.hotel,
+                    CommunityRankingKind.events => AnalyticsEntityType.event,
+                  },
+                  entry.id,
+                  ImpressionSurface.rankings,
+                );
+                return _RankRow(
+                  entry: entry,
+                  rank: i + 1,
+                  onTap: () => _open(entry),
+                );
+              },
             );
           },
         ),

@@ -120,11 +120,15 @@ class EventDetailScreen extends StatefulWidget {
   final AnalyticsSourceSurface? sourceSurface;
   final AnalyticsSourceContext? sourceContext;
 
+  /// Where this page was opened from, for analytics; null when unattributed.
+  final AnalyticsOpenSource? openSource;
+
   const EventDetailScreen({
     super.key,
     required this.eventId,
     this.sourceSurface,
     this.sourceContext,
+    this.openSource,
   });
 
   @override
@@ -156,7 +160,8 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   // SupabaseAnalyticsService persists only eventOpened from this screen
   // (to app_usage_events); every other event tracked here is still
   // discarded — see that class's own doc comment.
-  late final AnalyticsService _analytics = SupabaseAnalyticsService.ofInstance();
+  late final AnalyticsService _analytics =
+      SupabaseAnalyticsService.ofInstance();
 
   bool _loading = true;
   bool _loadError = false;
@@ -220,6 +225,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       AnalyticsProperties(
         entityType: AnalyticsEntityType.event,
         entityId: widget.eventId,
+        openSource: widget.openSource,
       ),
     );
     _load();
@@ -256,7 +262,10 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
       // comment).
       final wishlistedFuture = uid == null
           ? Future.value(false)
-          : _wishlistRepo.isEventWishlisted(userId: uid, eventId: widget.eventId);
+          : _wishlistRepo.isEventWishlisted(
+              userId: uid,
+              eventId: widget.eventId,
+            );
       final event = await eventFuture;
       final venues = await venuesFuture;
       final intent = await intentFuture;
@@ -768,16 +777,36 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
 
   Future<void> _openUrl(String url) async {
     final uri = Uri.parse(url);
-    if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
-    }
+    if (!await canLaunchUrl(uri)) return;
+    final opened = await launchUrl(uri, mode: LaunchMode.externalApplication);
+    // Counted only once the link actually opened. When the ticket and
+    // website links are the same URL the row shows one button, Tickets,
+    // so it counts as a ticket tap.
+    final event = _event;
+    if (!opened || event == null) return;
+    final AnalyticsEvent? tap = url == event.ticketUrl
+        ? AnalyticsEvent.ticketLinkOpened
+        : url == event.officialUrl
+        ? AnalyticsEvent.eventWebsiteOpened
+        : null;
+    if (tap == null) return;
+    _analytics.track(
+      tap,
+      AnalyticsProperties(
+        entityType: AnalyticsEntityType.event,
+        entityId: event.id,
+      ),
+    );
   }
 
   void _openRestaurant(Restaurant restaurant) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+        builder: (_) => RestaurantDetailScreen(
+          restaurant: restaurant,
+          openSource: AnalyticsOpenSource.event,
+        ),
       ),
     );
   }
@@ -785,7 +814,12 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
   void _openHotel(Hotel hotel) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+      MaterialPageRoute(
+        builder: (_) => HotelDetailScreen(
+          hotel: hotel,
+          openSource: AnalyticsOpenSource.event,
+        ),
+      ),
     );
   }
 

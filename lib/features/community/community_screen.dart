@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/impressions.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -290,7 +291,10 @@ class _CommunityTabBodyState extends State<_CommunityTabBody> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+        builder: (_) => RestaurantDetailScreen(
+          restaurant: restaurant,
+          openSource: AnalyticsOpenSource.community,
+        ),
       ),
     );
   }
@@ -311,6 +315,7 @@ class _CommunityTabBodyState extends State<_CommunityTabBody> {
       builder: (_) => EventDetailScreen(
         eventId: event.id,
         sourceSurface: AnalyticsSourceSurface.discover,
+        openSource: AnalyticsOpenSource.community,
       ),
     ),
   );
@@ -460,7 +465,16 @@ class _HottestPlacesRestaurantCard extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Semantics(
+  Widget build(BuildContext context) {
+    trackImpression(
+      AnalyticsEntityType.restaurant,
+      entry.restaurantId,
+      ImpressionSurface.community,
+    );
+    return _buildCard(context);
+  }
+
+  Widget _buildCard(BuildContext context) => Semantics(
     button: true,
     label:
         '${entry.name}, ${entry.city}. Highest rated by the community, '

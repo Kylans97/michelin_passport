@@ -40,6 +40,9 @@ class RestaurantHero extends StatelessWidget {
   /// the Report action is unaffected.
   final bool isPreview;
 
+  /// See VenueDetailHero.onPhotosSeen — passed straight through.
+  final ValueChanged<List<String>>? onPhotosSeen;
+
   /// The restaurant's latest Gault&Millau edition, loaded separately by
   /// RestaurantDetailScreen (gault_millau_awards is its own table, never
   /// folded onto restaurants_full). Null while loading or when the
@@ -59,6 +62,7 @@ class RestaurantHero extends StatelessWidget {
     this.followBusy = false,
     this.onTapFollow,
     this.isPreview = false,
+    this.onPhotosSeen,
     this.gaultMillauAward,
   });
 
@@ -108,6 +112,7 @@ class RestaurantHero extends StatelessWidget {
           : [restaurant.coverFraming],
       photos: photos,
       isPreview: isPreview,
+      onPhotosSeen: onPhotosSeen,
       primaryRecognition: restaurant.hasMichelinStar
           ? StarRow(count: restaurant.michelinStars!, size: 20)
           : null,

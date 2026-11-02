@@ -40,6 +40,12 @@ enum AnalyticsEvent {
   /// [venueBookingLinkOpened] for the Venue-scoped sibling.
   ticketLinkOpened,
 
+  /// Fired after an event's own website (`official_url`) actually opened
+  /// from Event Detail — the sibling of [ticketLinkOpened], same boundary.
+  /// Carries [AnalyticsProperties.entityId] (the event), REQUIRED. Written
+  /// to `app_usage_events`.
+  eventWebsiteOpened,
+
   /// The narrow venue-link-click-tracking path (see
   /// docs/Architecture/EVENTS_V2_ANALYTICS_CONTRACT.md's "Venue link
   /// clicks" section) — fired after a Restaurant/Hotel's own website or
@@ -173,6 +179,7 @@ enum AnalyticsEvent {
     AnalyticsEvent.eventGoingAdded => 'event_going_added',
     AnalyticsEvent.eventGoingRemoved => 'event_going_removed',
     AnalyticsEvent.ticketLinkOpened => 'ticket_link_opened',
+    AnalyticsEvent.eventWebsiteOpened => 'event_website_opened',
     AnalyticsEvent.venueBookingLinkOpened => 'venue_booking_link_opened',
     AnalyticsEvent.venuePhoneTapped => 'venue_phone_tapped',
     AnalyticsEvent.venueDirectionsOpened => 'venue_directions_opened',

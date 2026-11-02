@@ -17,6 +17,8 @@ import 'widgets/guide_catalogue_layout.dart';
 import 'widgets/guide_catalogue_states.dart';
 import 'widgets/guide_venue_card.dart';
 import 'widgets/guide_year_selector.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/impressions.dart';
 
 /// The World's 50 Best → Restaurants (Step 2C). Unlike Michelin, this
 /// catalogue is fundamentally about rank/year, not a current-recognition
@@ -171,7 +173,10 @@ class _FiftyBestRestaurantGuideScreenState
   void _open(Restaurant restaurant) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+      builder: (_) => RestaurantDetailScreen(
+        restaurant: restaurant,
+        openSource: AnalyticsOpenSource.guides,
+      ),
     ),
   );
 
@@ -246,6 +251,11 @@ class _FiftyBestRestaurantGuideScreenState
                   separatorBuilder: (_, _) => const GuideVenueCardDivider(),
                   itemBuilder: (context, index) {
                     final entry = _results![index];
+                    trackImpression(
+                      AnalyticsEntityType.restaurant,
+                      entry.restaurant.id,
+                      ImpressionSurface.guides,
+                    );
                     return GuideVenueCard(
                       title: entry.restaurant.name,
                       imageUrl: entry.restaurant.cardImageUrl,

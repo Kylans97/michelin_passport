@@ -8,6 +8,39 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Venue insight tracking** — nine data points for Studio's Basic and
+  Pro tiers, asked for by the product owner on 2026-11-02 (plan §5,
+  analytics contract §5 "Venue insights"):
+  - event Tickets and website taps;
+  - where a venue or event page was opened from (`AnalyticsOpenSource`,
+    passed explicitly at every route into a detail page);
+  - what Explore searches named (cuisine family, country, city, venue —
+    never the text) and which filters were chosen;
+  - cards shown in lists (`ImpressionBuffer`, `record_impressions()`);
+  - push delivery of new-event notices (`notifications.push_sent_at`,
+    set by `send-push`);
+  - searches that found nothing;
+  - every Interested/Going change, including taking it back, and whether
+    a friend had already marked the event (server-side trigger);
+  - gallery photos looked at.
+  Migration `20261101250000_add_venue_insight_tracking.sql`, not yet
+  applied. Studio's Basic and Pro tabs show all of it; the two panels
+  that were examples now read real data. Privacy policy updated in
+  `site/privacy.html`, not yet deployed.
+
+### Fixed
+- Near-miss, caught on a replay before anything shipped: a CHECK that a
+  ticket or website tap names its event would have refused **deleting
+  the event**, because `app_usage_events.event_id` is `on delete set
+  null`. The rule stays in the app instead. Would recur for any shape
+  CHECK on a column a foreign key nulls.
+- Near-miss: the first impression buffer flushed on a 20-second
+  `Timer`, which failed every widget test that built a tracked card
+  ("A Timer is still pending"). It now flushes on the next card after
+  20 seconds, at 200 waiting, and when the app goes to the background —
+  no timer, so no test needs a workaround.
+
 ---
 
 ## v1.5.6 (27) — 2026-11-02

@@ -9,10 +9,13 @@ import '../../../models/event.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../events/event_date_format.dart';
-import '../discovery_selectors.dart' show FreshFindItem, FreshFindRestaurant, FreshFindHotel, FreshFindEvent;
+import '../discovery_selectors.dart'
+    show FreshFindItem, FreshFindRestaurant, FreshFindHotel, FreshFindEvent;
 import '../../../core/widgets/framed_image.dart';
 import '../../../models/photo_framing.dart';
 import '../../../core/widgets/app_network_image.dart';
+import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/analytics/impressions.dart';
 
 String _locationOf({required String flagEmoji, required String cityName}) =>
     [if (flagEmoji.isNotEmpty) flagEmoji, cityName].join('  ');
@@ -40,6 +43,11 @@ class ExploreFeaturedEventCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    trackImpression(
+      AnalyticsEntityType.event,
+      event.id,
+      ImpressionSurface.explore,
+    );
     final location = [
       if (event.city != null && event.city!.isNotEmpty) event.city!,
       event.countryCode,
@@ -223,6 +231,11 @@ class ExploreDiscoveryRestaurantCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    trackImpression(
+      AnalyticsEntityType.restaurant,
+      restaurant.id,
+      ImpressionSurface.explore,
+    );
     final location = _locationOf(
       flagEmoji: restaurant.flagEmoji,
       cityName: restaurant.cityName,
@@ -326,6 +339,11 @@ class ExploreDiscoveryHotelCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    trackImpression(
+      AnalyticsEntityType.hotel,
+      hotel.id,
+      ImpressionSurface.explore,
+    );
     final location = _locationOf(
       flagEmoji: hotel.flagEmoji,
       cityName: hotel.cityName,
@@ -441,6 +459,26 @@ class ExploreFreshFindCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    switch (item) {
+      case FreshFindRestaurant(:final restaurant):
+        trackImpression(
+          AnalyticsEntityType.restaurant,
+          restaurant.id,
+          ImpressionSurface.explore,
+        );
+      case FreshFindHotel(:final hotel):
+        trackImpression(
+          AnalyticsEntityType.hotel,
+          hotel.id,
+          ImpressionSurface.explore,
+        );
+      case FreshFindEvent(:final event):
+        trackImpression(
+          AnalyticsEntityType.event,
+          event.id,
+          ImpressionSurface.explore,
+        );
+    }
     final location = _locationOf(
       flagEmoji: item.flagEmoji,
       cityName: item.cityName,

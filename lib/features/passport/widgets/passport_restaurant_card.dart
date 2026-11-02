@@ -7,6 +7,7 @@ import '../../../models/restaurant.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../passport_view_model.dart';
 import 'passport_card_chrome.dart';
+import '../../../core/analytics/analytics_properties.dart';
 
 // "City, 🇳🇱 Country" — falls back to plain "City, Country" when
 // flagEmoji is empty rather than inventing one from countryCode.
@@ -81,7 +82,10 @@ class PassportRestaurantCard extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+          builder: (_) => RestaurantDetailScreen(
+            restaurant: restaurant,
+            openSource: AnalyticsOpenSource.passport,
+          ),
         ),
       ),
     );

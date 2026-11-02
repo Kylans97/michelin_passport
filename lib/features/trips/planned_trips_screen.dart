@@ -219,6 +219,7 @@ class _TripsBodyState extends State<TripsBody> {
         builder: (_) => EventDetailScreen(
           eventId: event.id,
           sourceSurface: AnalyticsSourceSurface.tripRecommendation,
+          openSource: AnalyticsOpenSource.trips,
         ),
       ),
     );
@@ -248,13 +249,21 @@ class _TripsBodyState extends State<TripsBody> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+            builder: (_) => RestaurantDetailScreen(
+              restaurant: restaurant,
+              openSource: AnalyticsOpenSource.trips,
+            ),
           ),
         );
       case HotelVenue(:final hotel):
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+          MaterialPageRoute(
+            builder: (_) => HotelDetailScreen(
+              hotel: hotel,
+              openSource: AnalyticsOpenSource.trips,
+            ),
+          ),
         );
     }
   }

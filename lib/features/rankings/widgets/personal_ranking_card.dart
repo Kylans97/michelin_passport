@@ -4,6 +4,7 @@ import '../../../models/ranking_entry.dart';
 import '../../../models/restaurant.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
 import 'ranking_editorial_card.dart';
+import '../../../core/analytics/analytics_properties.dart';
 
 // "City 🇳🇱" — the same city + flag pairing this card has always shown
 // (unchanged from before this visual pass), matching the reference's
@@ -57,7 +58,10 @@ class PersonalRankingCard extends StatelessWidget {
         await Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+            builder: (_) => RestaurantDetailScreen(
+              restaurant: restaurant,
+              openSource: AnalyticsOpenSource.rankings,
+            ),
           ),
         );
         onReturn();

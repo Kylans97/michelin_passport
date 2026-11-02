@@ -390,8 +390,9 @@ function renderInsights(rows) {
 // measured yet carry an "Example" badge whatever venue is chosen.
 
 let activeTab = "overview";
-let tierVenue = null; // { report, market, example }
+let tierVenue = null; // { report, market, insights, search, example }
 let marketCache = null;
+let searchCache = null;
 
 document.querySelectorAll("[data-tab]").forEach((b) =>
   b.addEventListener("click", () => openTab(b.dataset.tab)),
@@ -449,16 +450,22 @@ $("venue-example").addEventListener("click", showExample);
 async function openVenue(type, id) {
   $("venue-results").hidden = true;
   $("tier-note").textContent = "Loading…";
-  const [report, market] = await Promise.all([
+  const [report, market, insights, search] = await Promise.all([
     supabase.rpc("admin_studio_venue_report", { p_venue_type: type, p_venue_id: id }),
     marketCache ? Promise.resolve({ data: marketCache }) : supabase.rpc("admin_studio_market_report"),
+    supabase.rpc("admin_studio_venue_insights", { p_venue_type: type, p_venue_id: id }),
+    searchCache ? Promise.resolve({ data: searchCache }) : supabase.rpc("admin_studio_search_report", { p_days: 90 }),
   ]);
-  if (report.error || market.error) {
-    $("tier-note").textContent = `Could not load: ${(report.error ?? market.error).message}`;
+  const error = report.error ?? market.error ?? insights.error ?? search.error;
+  if (error) {
+    $("tier-note").textContent = `Could not load: ${error.message}`;
     return;
   }
   marketCache = market.data;
-  tierVenue = { report: report.data, market: market.data, example: false };
+  searchCache = search.data;
+  tierVenue = {
+    report: report.data, market: market.data, insights: insights.data, search: search.data, example: false,
+  };
   $("tier-note").textContent =
     "Real numbers, as this venue would see them. Show them to this venue only.";
   renderTier();
@@ -467,7 +474,9 @@ async function openVenue(type, id) {
 function showExample() {
   $("venue-results").hidden = true;
   $("venue-search").value = "";
-  tierVenue = { report: exampleReport(), market: exampleMarket(), example: true };
+  tierVenue = {
+    report: exampleReport(), market: exampleMarket(), insights: exampleInsights(), search: exampleSearch(), example: true,
+  };
   $("tier-note").textContent = "Search a venue for its real numbers, or show the example.";
   renderTier();
 }
@@ -486,8 +495,12 @@ function renderTier() {
     [v.city, countryLabel(v.country)].filter(Boolean).join(", "),
   ].filter(Boolean).join(" · ");
 
+  const since = new Date(tierVenue.insights.tracking_since).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+  for (const node of document.querySelectorAll(".since")) node.textContent = since;
+
   renderBasic(r.basic);
-  if (activeTab === "pro") renderPro(r, m);
+  renderBasicInsights(tierVenue.insights);
+  if (activeTab === "pro") renderPro(r, m, tierVenue.insights, tierVenue.search);
 }
 
 function hiddenNum(n) {
@@ -534,9 +547,104 @@ function renderBasic(b) {
   ], b.events, "No events at this venue on Mantelier yet.");
 }
 
+function eventCell(e) {
+  const cell = document.createDocumentFragment();
+  const date = e.start_date ? new Date(e.start_date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }) : null;
+  cell.append(e.name, el("span", { class: "where", text: date ?? "" }));
+  return cell;
+}
+
+function renderBasicInsights(x) {
+  table($("basic-event-reach"), [
+    { label: "Event", value: eventCell },
+    { label: "Followers told", value: (e) => hiddenNum(e.notified) },
+    { label: "Push delivered", value: (e) => hiddenNum(e.pushed) },
+    { label: "Opened from it", value: (e) => hiddenNum(e.opened_from_notice) },
+    { label: "Tickets tapped", value: (e) => hiddenNum(e.ticket_tappers) },
+    { label: "Website tapped", value: (e) => hiddenNum(e.website_tappers) },
+  ], x.events, "No events at this venue on Mantelier yet.");
+
+  const recent = x.seen_monthly.slice(-6).reverse();
+  table($("basic-seen"), [
+    { label: "Month", value: (m) => monthLabel(m, true) },
+    { label: "Saw you in a list", value: (m) => hiddenNum(m.seen_by) },
+    { label: "Opened your page", value: (m) => hiddenNum(m.opened_by) },
+    // Only when both are real numbers: a share of a hidden count would
+    // give the hidden count away.
+    { label: "Opened", value: (m) => m.seen_by && m.opened_by ? `${Math.round((100 * m.opened_by) / m.seen_by)}%` : "–" },
+  ], recent, "Nothing seen yet.");
+
+  if (x.trips.added_12m == null && x.trips.upcoming == null) {
+    $("basic-trips").replaceChildren(el("p", { class: "empty", text: "Fewer than 5 members so far." }));
+  } else {
+    renderBars($("basic-trips"), [
+      { label: "Added you to a trip, last 12 months", value: x.trips.added_12m },
+      { label: "Planning a visit still to come", value: x.trips.upcoming },
+    ]);
+  }
+}
+
+const sourceNames = {
+  explore: "Explore", search: "Search", map: "Map", guides: "Guides", rankings: "Rankings",
+  events: "Events", passport: "Their Passport", wishlist: "Their wishlist", trips: "Their trips",
+  friends: "A friend", community: "Community", news: "News", notifications: "A notification",
+  push: "A push", venue: "Another venue's page", event: "An event", private_chefs: "Private chefs",
+  stays: "Their stays", unknown: "Not recorded (older app)",
+};
+const surfaceNames = {
+  explore: "Explore", search: "Search results", map: "Map", guides: "Guides", rankings: "Rankings",
+  events: "Events", wishlist: "Wishlists", community: "Community", private_chefs: "Private chefs",
+};
+const dimensionNames = {
+  cuisine_family: "cuisine", city: "city", country: "country", search_type: "type",
+  restaurant_award: "award", hotel_keys: "Keys",
+};
+const filterValueNames = {
+  restaurants: "Restaurants", hotels: "Hotels", events: "Events",
+  oneStar: "1 Star", twoStars: "2 Stars", threeStars: "3 Stars", worlds50Best: "World's 50 Best", hallOfFame: "Hall of Fame",
+  oneKey: "1 Key", twoKeys: "2 Keys", threeKeys: "3 Keys",
+};
+function signalLabel(x) {
+  const name = x.dimension === "country" ? countryLabel(x.value) : filterValueNames[x.value] ?? x.label ?? x.value;
+  return `${name} (${dimensionNames[x.dimension] ?? x.dimension})`;
+}
+
+function renderProInsights(x, search) {
+  renderBars($("pro-sources"), x.sources.map((s) => ({ label: sourceNames[s.source] ?? s.source, value: s.people })),
+    "No page visits in the last 90 days.");
+  renderBars($("pro-surfaces"), x.seen_surfaces.map((s) => ({ label: surfaceNames[s.surface] ?? s.surface, value: s.people })),
+    "Not seen in a list in the last 90 days.");
+
+  table($("pro-event-depth"), [
+    { label: "Event", value: eventCell },
+    { label: "Said Going", value: (e) => hiddenNum(e.went_going) },
+    { label: "A friend already going", value: (e) => hiddenNum(e.going_with_friend) },
+    { label: "Changed their mind", value: (e) => hiddenNum(e.changed_mind) },
+    { label: "Decided ahead", value: (e) => e.median_lead_days == null ? "–" : `${num(e.median_lead_days)} days` },
+  ], x.events, "No events at this venue on Mantelier yet.");
+
+  if (!x.photos.length) {
+    $("pro-photos").replaceChildren(el("p", { class: "empty", text: "No published photos yet." }));
+  } else {
+    renderBars($("pro-photos"), x.photos.map((ph, i) => ({
+      label: i === 0 ? "Photo 1 (cover)" : `Photo ${i + 1}`, value: ph.viewers,
+    })));
+  }
+
+  $("pro-searches-sub").textContent = x.searched_by_name == null
+    ? "Cuisines, cities and countries that searches named, last 90 days. Never the typed text."
+    : `${num(x.searched_by_name)} members searched for you by name in the last 90 days. Below: cuisines, cities and countries that searches named. Never the typed text.`;
+  renderBars($("pro-searches"), search.matches.map((m) => ({ label: signalLabel(m), value: m.people })),
+    "Not enough searches yet.");
+  renderBars($("market-filters"), search.filters.map((m) => ({ label: signalLabel(m), value: m.people })),
+    "Not enough searches yet.");
+  renderBars($("market-no-results"), search.no_results.map((m) => ({ label: signalLabel(m), value: m.people })),
+    search.no_results_people == null ? "Not enough searches yet." : `${num(search.no_results_people)} members, with no filter or name in their search.`);
+}
+
 const ageOrderTier = ["16-24", "25-34", "35-44", "45-54", "55-64", "65+", "none"];
 
-function renderPro(r, m) {
+function renderPro(r, m, insights, search) {
   const p = r.pro;
   renderBars($("pro-country"), p.audience_country.map((x) => ({ label: countryLabel(x.country), value: x.people })),
     "No audience yet.");
@@ -561,8 +669,7 @@ function renderPro(r, m) {
   }
   renderColumns($("pro-trips"), p.trips, "city", monthLabel);
 
-  renderBars($("pro-sources"), exampleSources().map((x) => ({ label: x.label, value: x.value })));
-  renderBars($("pro-searches"), exampleSearches().map((x) => ({ label: x.label, value: x.value })));
+  renderProInsights(insights, search);
 
   renderBars($("market-cuisines"), m.cuisines.map((x) => ({ label: x.cuisine, value: x.people })),
     "Not enough interest yet.");
@@ -703,20 +810,55 @@ function exampleMarket() {
   };
 }
 
-// Not measured yet, for any venue: examples until plan §5 ships.
-function exampleSources() {
-  return [
-    { label: "Search", value: 38 }, { label: "Map", value: 21 }, { label: "Guides", value: 16 },
-    { label: "A friend's activity", value: 12 }, { label: "An event", value: 9 }, { label: "A notification", value: 4 },
-  ].map((x) => ({ ...x, label: `${x.label} (%)` }));
+// The insights added on 2 November 2026, for the example venue.
+function exampleInsights() {
+  const inDays = (n) => new Date(Date.now() + n * 86400000).toISOString().slice(0, 10);
+  const months = exampleMonths(210, 0.045, 0.08);
+  return {
+    tracking_since: "2026-11-02",
+    sources: [
+      ["search", 690], ["guides", 410], ["map", 352], ["explore", 318], ["friends", 204],
+      ["event", 151], ["push", 88], ["rankings", 64],
+    ].map(([source, people]) => ({ source, people })),
+    seen_monthly: months.map((m) => ({ month: m.month, seen_by: Math.round(m.visitors * 4.2), opened_by: m.visitors })),
+    seen_surfaces: [
+      ["search", 1840], ["explore", 1510], ["guides", 980], ["map", 610], ["rankings", 330], ["wishlist", 120],
+    ].map(([surface, people]) => ({ surface, people })),
+    searched_by_name: 312,
+    photos: [1460, 820, 610, 540, 205].map((viewers) => ({ viewers })),
+    trips: { added_12m: 164, upcoming: 58 },
+    events: [
+      { name: "Four Hands with a guest chef", start_date: inDays(24), notified: 918, pushed: 640, opened_from_notice: 286,
+        ticket_tappers: 171, website_tappers: 54, went_going: 64, going_with_friend: 23, changed_mind: 9, median_lead_days: 19 },
+      { name: "Winemaker dinner", start_date: inDays(-38), notified: 870, pushed: 602, opened_from_notice: 241,
+        ticket_tappers: 122, website_tappers: 38, went_going: 48, going_with_friend: 17, changed_mind: 6, median_lead_days: 12 },
+      { name: "Game season lunch", start_date: inDays(-96), notified: 790, pushed: 551, opened_from_notice: 163,
+        ticket_tappers: 70, website_tappers: null, went_going: 29, going_with_friend: 8, changed_mind: null, median_lead_days: 9 },
+    ],
+  };
 }
 
-function exampleSearches() {
-  return [
-    { label: "Amsterdam (city)", value: 1840 }, { label: "Japanese (cuisine)", value: 1210 },
-    { label: "Four hands (event)", value: 960 }, { label: "Antwerp (city)", value: 720 },
-    { label: "Seafood (cuisine)", value: 650 }, { label: "Copenhagen (city)", value: 410 },
-  ];
+function exampleSearch() {
+  const rows = (signal, list) => list.map(([dimension, value, label, people]) => ({ signal, dimension, value, label, people }));
+  return {
+    tracking_since: "2026-11-02",
+    searchers: 2860,
+    no_results_people: 74,
+    matches: rows("search_match", [
+      ["city", "c1", "Amsterdam", 1840], ["cuisine_family", "japanese", "Japanese", 1210],
+      ["city", "c2", "Antwerp", 720], ["cuisine_family", "seafood", "Fish & seafood", 650],
+      ["country", "DK", "Denmark", 410], ["city", "c3", "Copenhagen", 380],
+    ]),
+    filters: rows("filter", [
+      ["search_type", "restaurants", "restaurants", 1630], ["country", "NL", "Netherlands", 1210],
+      ["restaurant_award", "twoStars", "twoStars", 690], ["cuisine_family", "french", "French", 540],
+      ["country", "BE", "Belgium", 470], ["hotel_keys", "threeKeys", "threeKeys", 210],
+    ]),
+    no_results: rows("no_results", [
+      ["cuisine_family", "korean", "Korean", 96], ["city", "c4", "Utrecht", 61],
+      ["restaurant_award", "threeStars", "threeStars", 44], ["country", "PT", "Portugal", 31],
+    ]),
+  };
 }
 
 supabase.auth.onAuthStateChange((event) => {

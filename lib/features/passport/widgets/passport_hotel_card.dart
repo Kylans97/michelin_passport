@@ -7,6 +7,7 @@ import '../../../models/hotel.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../passport_view_model.dart';
 import 'passport_card_chrome.dart';
+import '../../../core/analytics/analytics_properties.dart';
 
 // "City, 🇬🇧 Country" — falls back to plain "City, Country" when
 // flagEmoji is empty rather than inventing one from countryCode.
@@ -73,7 +74,12 @@ class PassportHotelCard extends StatelessWidget {
       ),
       onTap: () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+        MaterialPageRoute(
+          builder: (_) => HotelDetailScreen(
+            hotel: hotel,
+            openSource: AnalyticsOpenSource.passport,
+          ),
+        ),
       ),
     );
   }

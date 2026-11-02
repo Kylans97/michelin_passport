@@ -13,6 +13,7 @@ import '../../models/visit.dart';
 import '../passport/widgets/add_visit_flow.dart';
 import '../photos/widgets/visit_photos_section.dart';
 import '../hotels/hotel_detail_screen.dart';
+import '../../core/analytics/analytics_properties.dart';
 
 const _monthNames = [
   'January',
@@ -338,7 +339,10 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                     ? () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => HotelDetailScreen(hotel: hotel),
+                          builder: (_) => HotelDetailScreen(
+                            hotel: hotel,
+                            openSource: AnalyticsOpenSource.stays,
+                          ),
                         ),
                       )
                     : null,

@@ -33,6 +33,9 @@ class HotelHero extends StatelessWidget {
   /// the Report action is unaffected.
   final bool isPreview;
 
+  /// See VenueDetailHero.onPhotosSeen — passed straight through.
+  final ValueChanged<List<String>>? onPhotosSeen;
+
   const HotelHero({
     super.key,
     required this.hotel,
@@ -44,6 +47,7 @@ class HotelHero extends StatelessWidget {
     this.followBusy = false,
     this.onTapFollow,
     this.isPreview = false,
+    this.onPhotosSeen,
   });
 
   @override
@@ -61,6 +65,7 @@ class HotelHero extends StatelessWidget {
           : [hotel.coverFraming],
       photos: photos,
       isPreview: isPreview,
+      onPhotosSeen: onPhotosSeen,
       primaryRecognition: hotel.hasMichelinKeys
           ? KeyRow(count: hotel.michelinKeys!, size: 20)
           : null,

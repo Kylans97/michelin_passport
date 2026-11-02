@@ -108,6 +108,11 @@ class VenueDetailHero extends StatefulWidget {
   /// title, which is the entire visible hero surface today.
   final bool isClosed;
 
+  /// Called once, when the hero goes away, with the ids of the [photos]
+  /// that were on screen during this visit — the first one always, then
+  /// every one swiped to. Never called in a preview or without [photos].
+  final ValueChanged<List<String>>? onPhotosSeen;
+
   const VenueDetailHero({
     super.key,
     required this.title,
@@ -132,6 +137,7 @@ class VenueDetailHero extends StatefulWidget {
     this.followBusy = false,
     this.onTapFollow,
     this.isClosed = false,
+    this.onPhotosSeen,
   });
 
   @override
@@ -151,6 +157,9 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
   // same onPageChanged path (no duplicated page-tracking logic).
   final _pageController = PageController();
 
+  // Indexes into widget.photos shown during this visit, for onPhotosSeen.
+  final Set<int> _seenPages = {0};
+
   @override
   void initState() {
     super.initState();
@@ -159,8 +168,19 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
 
   @override
   void dispose() {
+    _reportPhotosSeen();
     _pageController.dispose();
     super.dispose();
+  }
+
+  void _reportPhotosSeen() {
+    final onPhotosSeen = widget.onPhotosSeen;
+    final photos = widget.photos;
+    if (onPhotosSeen == null || widget.isPreview || photos.isEmpty) return;
+    onPhotosSeen([
+      for (final i in _seenPages)
+        if (i < photos.length) photos[i].id,
+    ]);
   }
 
   void _precacheNext(int currentIndex) {
@@ -182,6 +202,7 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
 
   void _onGalleryPageChanged(int index) {
     setState(() => _currentPage = index);
+    _seenPages.add(index);
     _precacheNext(index);
   }
 
@@ -282,9 +303,11 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
                     longEdgePx: _variantSize(_framingAt(index)),
                     fit: BoxFit.cover,
                     alignment: alignment,
-                    loadingBuilder: (_, child, progress) =>
-                        progress == null ? child : _FallbackGradient(isClosed: isClosed),
-                    errorBuilder: (_, _, _) => _FallbackGradient(isClosed: isClosed),
+                    loadingBuilder: (_, child, progress) => progress == null
+                        ? child
+                        : _FallbackGradient(isClosed: isClosed),
+                    errorBuilder: (_, _, _) =>
+                        _FallbackGradient(isClosed: isClosed),
                   ),
                 ),
               )
@@ -298,12 +321,14 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
                   alignment: alignment,
                   // While it loads, the same gradient the no-photo state
                   // uses — never a spinner or a blank frame.
-                  loadingBuilder: (_, child, progress) =>
-                      progress == null ? child : _FallbackGradient(isClosed: isClosed),
+                  loadingBuilder: (_, child, progress) => progress == null
+                      ? child
+                      : _FallbackGradient(isClosed: isClosed),
                   // A failed load falls back to the exact same gradient the
                   // no-photo state uses — never a broken-image icon, and
                   // never a different treatment than "no photo yet".
-                  errorBuilder: (_, _, _) => _FallbackGradient(isClosed: isClosed),
+                  errorBuilder: (_, _, _) =>
+                      _FallbackGradient(isClosed: isClosed),
                 ),
               )
             else
@@ -502,11 +527,7 @@ class _FallbackGradient extends StatelessWidget {
           ? const LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [
-                Color(0xFF5A564D),
-                Color(0xFF3E3B35),
-                Color(0xFF26241F),
-              ],
+              colors: [Color(0xFF5A564D), Color(0xFF3E3B35), Color(0xFF26241F)],
             )
           : const LinearGradient(
               begin: Alignment.topLeft,

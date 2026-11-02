@@ -15,6 +15,8 @@ import '../restaurants/restaurant_detail_screen.dart';
 import 'widgets/guide_catalogue_layout.dart';
 import 'widgets/guide_catalogue_states.dart';
 import 'widgets/guide_venue_card.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/impressions.dart';
 
 /// Every restaurant in our own editorial Selection, newest first — the
 /// Guides counterpart to Explore's "Mantelier's latest". Same catalogue
@@ -106,7 +108,10 @@ class _SelectionRestaurantGuideScreenState
   void _open(SelectionEntry entry) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => RestaurantDetailScreen(restaurant: entry.restaurant),
+      builder: (_) => RestaurantDetailScreen(
+        restaurant: entry.restaurant,
+        openSource: AnalyticsOpenSource.guides,
+      ),
     ),
   );
 
@@ -168,6 +173,11 @@ class _SelectionRestaurantGuideScreenState
                         // A star is still a star — gold StarRow, the only
                         // gold here. Without one, the Selection label in
                         // forest green: never an empty star row.
+                        trackImpression(
+                          AnalyticsEntityType.restaurant,
+                          r.id,
+                          ImpressionSurface.guides,
+                        );
                         return GuideVenueCard(
                           title: r.name,
                           imageUrl: r.cardImageUrl,

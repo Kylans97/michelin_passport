@@ -8,6 +8,8 @@ import '../../../core/widgets/venue_lifecycle_line.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/hotel.dart';
 import '../../hotels/hotel_detail_screen.dart';
+import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/analytics/impressions.dart';
 
 // A discovery card, not a database row — mirrors RestaurantTile's
 // photo-ready thumbnail + folded-in award treatment.
@@ -37,6 +39,11 @@ class HotelTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    trackImpression(
+      AnalyticsEntityType.hotel,
+      hotel.id,
+      ImpressionSurface.search,
+    );
     final locationLabel = _locationLabel;
     final showRankLine = showWorlds50BestRank && hotel.isWorlds50Best;
     final lifecycleState = resolveLifecycleState(
@@ -47,7 +54,12 @@ class HotelTile extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+        MaterialPageRoute(
+          builder: (_) => HotelDetailScreen(
+            hotel: hotel,
+            openSource: AnalyticsOpenSource.search,
+          ),
+        ),
       ),
       child: Container(
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 12),

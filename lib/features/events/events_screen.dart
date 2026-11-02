@@ -4,6 +4,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/analytics_service.dart';
+import '../../core/analytics/impressions.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/app_typography.dart';
 import '../../core/theme/cs_surface_context.dart';
@@ -502,6 +503,7 @@ class _EventsScreenState extends State<EventsScreen> {
           eventId: item.event.id,
           sourceSurface: AnalyticsSourceSurface.eventsFeed,
           sourceContext: _analyticsContextFor(item.primaryReason),
+          openSource: AnalyticsOpenSource.events,
         ),
       ),
     );
@@ -710,8 +712,13 @@ class _EventsScreenState extends State<EventsScreen> {
                   )
                 else
                   SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, i) => Padding(
+                    delegate: SliverChildBuilderDelegate((context, i) {
+                      trackImpression(
+                        AnalyticsEntityType.event,
+                        items[i].event.id,
+                        ImpressionSurface.events,
+                      );
+                      return Padding(
                         padding: EdgeInsets.fromLTRB(
                           20,
                           i == 0 ? 20 : 0,
@@ -723,9 +730,8 @@ class _EventsScreenState extends State<EventsScreen> {
                           reason: items[i].primaryReason,
                           onTap: () => _openEvent(items[i]),
                         ),
-                      ),
-                      childCount: items.length,
-                    ),
+                      );
+                    }, childCount: items.length),
                   ),
               ],
             ),

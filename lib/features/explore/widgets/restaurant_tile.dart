@@ -8,6 +8,8 @@ import '../../../core/widgets/venue_lifecycle_line.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/restaurant.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
+import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/analytics/impressions.dart';
 
 // A discovery card, not a database row: a photo-ready thumbnail leads,
 // with the award context folded into the text content rather than a
@@ -37,6 +39,11 @@ class RestaurantTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    trackImpression(
+      AnalyticsEntityType.restaurant,
+      restaurant.id,
+      ImpressionSurface.search,
+    );
     final locationLabel = _locationLabel;
     final hasHotel =
         restaurant.isInHotel && (restaurant.hotelName?.isNotEmpty ?? false);
@@ -53,7 +60,10 @@ class RestaurantTile extends StatelessWidget {
       onTap: () => Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+          builder: (_) => RestaurantDetailScreen(
+            restaurant: restaurant,
+            openSource: AnalyticsOpenSource.search,
+          ),
         ),
       ),
       child: Container(

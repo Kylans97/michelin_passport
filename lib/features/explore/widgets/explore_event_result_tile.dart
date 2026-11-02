@@ -4,6 +4,8 @@ import '../../../core/theme/app_typography.dart';
 import '../../../core/widgets/cs_image_placeholder.dart';
 import '../../../models/event.dart';
 import '../../events/event_date_format.dart';
+import '../../../core/analytics/analytics_properties.dart';
+import '../../../core/analytics/impressions.dart';
 
 /// A compact event row for Explore's Search-mode results — same shape and
 /// scale as [RestaurantTile]/[HotelTile] (small square thumbnail, name,
@@ -25,6 +27,11 @@ class ExploreEventResultTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    trackImpression(
+      AnalyticsEntityType.event,
+      event.id,
+      ImpressionSurface.search,
+    );
     final location = [
       if (event.city != null && event.city!.isNotEmpty) event.city!,
       event.countryCode,

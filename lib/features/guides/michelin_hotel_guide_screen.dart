@@ -19,6 +19,8 @@ import 'models/guide_filters.dart';
 import 'widgets/guide_catalogue_layout.dart';
 import 'widgets/guide_catalogue_states.dart';
 import 'widgets/guide_venue_card.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/impressions.dart';
 
 /// Michelin Guide → Hotels (Step 2B). The mirror of
 /// [MichelinRestaurantGuideScreen] for hotels — CURRENTLY Michelin Key
@@ -108,7 +110,12 @@ class _MichelinHotelGuideScreenState extends State<MichelinHotelGuideScreen> {
 
   void _open(Hotel hotel) => Navigator.push(
     context,
-    MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+    MaterialPageRoute(
+      builder: (_) => HotelDetailScreen(
+        hotel: hotel,
+        openSource: AnalyticsOpenSource.guides,
+      ),
+    ),
   );
 
   @override
@@ -178,6 +185,11 @@ class _MichelinHotelGuideScreenState extends State<MichelinHotelGuideScreen> {
                     itemBuilder: (context, index) {
                       final hotel = _results![index];
                       final keys = hotel.michelinKeys ?? 0;
+                      trackImpression(
+                        AnalyticsEntityType.hotel,
+                        hotel.id,
+                        ImpressionSurface.guides,
+                      );
                       return GuideVenueCard(
                         title: hotel.name,
                         imageUrl: hotel.cardImageUrl,

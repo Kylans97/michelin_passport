@@ -9,6 +9,7 @@ import '../../events/event_date_format.dart';
 import '../../events/event_detail_screen.dart';
 import '../../passport/widgets/passport_card_chrome.dart';
 import '../../../core/widgets/app_network_image.dart';
+import '../../../core/analytics/analytics_properties.dart';
 
 /// EVENT WISHLIST V1 — a saved Event, in the same ivory [CsPlaceCard]
 /// family as [WishlistRestaurantCard]/[WishlistHotelCard]
@@ -54,7 +55,12 @@ class EventWishlistCard extends StatelessWidget {
       bookmark: PassportCardBookmark(isWishlisted: true, onTap: onRemove),
       onTap: () => Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => EventDetailScreen(eventId: event.id)),
+        MaterialPageRoute(
+          builder: (_) => EventDetailScreen(
+            eventId: event.id,
+            openSource: AnalyticsOpenSource.wishlist,
+          ),
+        ),
       ),
     );
   }
@@ -80,7 +86,8 @@ class _EventCardImage extends StatelessWidget {
       child: AppNetworkImage(
         imageUrl!,
         fit: BoxFit.cover,
-        errorBuilder: (_, _, _) => const CsImagePlaceholder(borderRadius: radius),
+        errorBuilder: (_, _, _) =>
+            const CsImagePlaceholder(borderRadius: radius),
       ),
     );
   }

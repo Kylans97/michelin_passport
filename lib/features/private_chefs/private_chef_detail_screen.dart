@@ -106,6 +106,9 @@ class PrivateChefDetailScreen extends StatefulWidget {
   /// doc comment, identical reasoning.
   final bool previewIsStale;
 
+  /// Where this page was opened from, for analytics; null when unattributed.
+  final AnalyticsOpenSource? openSource;
+
   const PrivateChefDetailScreen({
     super.key,
     required this.chefId,
@@ -114,6 +117,7 @@ class PrivateChefDetailScreen extends StatefulWidget {
     this.photosOverride,
     this.isPreview = false,
     this.previewIsStale = false,
+    this.openSource,
   });
 
   @override
@@ -135,7 +139,8 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   // EventDetailScreen's own established seam). SupabaseAnalyticsService
   // persists only its own narrow set (the page open and the website tap
   // here) — see that class's own doc comment; follows stay discarded.
-  late final AnalyticsService _analytics = SupabaseAnalyticsService.ofInstance();
+  late final AnalyticsService _analytics =
+      SupabaseAnalyticsService.ofInstance();
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -185,6 +190,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
         AnalyticsProperties(
           entityType: AnalyticsEntityType.privateChef,
           entityId: widget.chefId,
+          openSource: widget.openSource,
         ),
       );
     }
@@ -266,16 +272,19 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       // education still fire live either way (see widget.chefOverride's
       // own doc comment for why: they're venue-level content a visitor
       // sees, not part of what a preview is previewing).
-      final chefFuture = widget.chefOverride != null
-          ? Future.value(widget.chefOverride)
-          : _repo.getPrivateChefById(widget.chefId)..ignore();
-      final historyFuture = _repo.getRestaurantHistory(widget.chefId)
-        ..ignore();
+      final chefFuture =
+          widget.chefOverride != null
+                ? Future.value(widget.chefOverride)
+                : _repo.getPrivateChefById(widget.chefId)
+            ..ignore();
+      final historyFuture = _repo.getRestaurantHistory(widget.chefId)..ignore();
       final educationFuture = _repo.getEducationHistory(widget.chefId)
         ..ignore();
-      final photosFuture = widget.photosOverride != null
-          ? Future.value(widget.photosOverride!)
-          : _repo.getChefPhotos(widget.chefId)..ignore();
+      final photosFuture =
+          widget.photosOverride != null
+                ? Future.value(widget.photosOverride!)
+                : _repo.getChefPhotos(widget.chefId)
+            ..ignore();
       final chef = await chefFuture;
       // Each dependent fetch below is defused with its own .catchError,
       // same "a failed lookup leaves this section empty, never takes
@@ -429,7 +438,9 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       if (!wasFollowing) {
         // The one place a follow can lead to notifications: a single
         // explanation the first time, nothing after (PushService).
-        unawaited(PushService.instance.offerAfterFollow(context, chef.displayName));
+        unawaited(
+          PushService.instance.offerAfterFollow(context, chef.displayName),
+        );
       }
     } catch (_) {
       if (!mounted) return;
@@ -447,7 +458,10 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+        builder: (_) => RestaurantDetailScreen(
+          restaurant: restaurant,
+          openSource: AnalyticsOpenSource.venue,
+        ),
       ),
     );
   }
@@ -459,6 +473,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
         builder: (_) => EventDetailScreen(
           eventId: event.id,
           sourceSurface: AnalyticsSourceSurface.hostProfile,
+          openSource: AnalyticsOpenSource.venue,
         ),
       ),
     );
@@ -520,7 +535,9 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     );
     return widget.isPreview
         ? OwnerPreviewMarker(
-            subtitle: widget.previewIsStale ? 'Showing your last saved details' : null,
+            subtitle: widget.previewIsStale
+                ? 'Showing your last saved details'
+                : null,
             child: scaffold,
           )
         : scaffold;
@@ -558,14 +575,13 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     final sections = <Widget>[
       // Same default 'ABOUT' heading Restaurant/Hotel Detail use — no
       // third label invented for this screen.
-      if (effectiveAboutText != null) VenueAboutSection(text: effectiveAboutText),
+      if (effectiveAboutText != null)
+        VenueAboutSection(text: effectiveAboutText),
       if (hasBackground) _backgroundSection(),
       PrivateChefExperienceSection(chef: chef),
       if (hasInstagram || hasWebsite)
         PrivateChefConnectSection(
-          onTapInstagram: hasInstagram
-              ? () => _openUrl(instagramUrl!)
-              : null,
+          onTapInstagram: hasInstagram ? () => _openUrl(instagramUrl!) : null,
           onTapWebsite: hasWebsite
               ? () => _openUrl(
                   chef.websiteUrl!,

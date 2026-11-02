@@ -15,6 +15,7 @@ import '../../events/event_detail_screen.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import '../../passport/widgets/venue_picker_parts.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
+import '../../../core/analytics/analytics_properties.dart';
 
 /// Searches restaurants or hotels.
 typedef VenueSearch = Future<List<PassportVenue>> Function(String query);
@@ -239,15 +240,24 @@ class _AddToWishlistSheetState extends State<AddToWishlistSheet> {
       builder: (_) => switch (venue) {
         RestaurantVenue(:final restaurant) => RestaurantDetailScreen(
           restaurant: restaurant,
+          openSource: AnalyticsOpenSource.wishlist,
         ),
-        HotelVenue(:final hotel) => HotelDetailScreen(hotel: hotel),
+        HotelVenue(:final hotel) => HotelDetailScreen(
+          hotel: hotel,
+          openSource: AnalyticsOpenSource.wishlist,
+        ),
       },
     ),
   );
 
   void _openEvent(Event event) => Navigator.push(
     context,
-    MaterialPageRoute(builder: (_) => EventDetailScreen(eventId: event.id)),
+    MaterialPageRoute(
+      builder: (_) => EventDetailScreen(
+        eventId: event.id,
+        openSource: AnalyticsOpenSource.wishlist,
+      ),
+    ),
   );
 
   // Optimistic, like the heart on a venue page: flip first, write, and

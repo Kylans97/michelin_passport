@@ -67,6 +67,9 @@ export interface PushStore {
   eventContent(eventId: string): Promise<EventContent | null>;
   deleteDevice(token: string): Promise<void>;
   setDeviceEnvironment(token: string, environment: ApnsEnvironment): Promise<void>;
+  /// Records that APNs accepted the push for at least one device
+  /// (notifications.push_sent_at, 20261101250000). Best-effort.
+  markPushed(notificationIds: string[]): Promise<void>;
 }
 
 export interface ApnsMessage {
@@ -250,6 +253,7 @@ export async function handleRequest(
   const eventCache = new Map<string, EventContent | null>();
 
   let sent = 0;
+  const pushed: string[] = [];
   for (const n of notifications) {
     const type = n.type as PushType;
     if (!wantsPush(type, prefByUser.get(n.recipient_id))) continue;
@@ -274,15 +278,30 @@ export async function handleRequest(
     }
 
     const payload = buildPayload(n, copy);
+    let delivered = false;
     for (const device of targets) {
       try {
-        if (await deliver(store, sendApns, device, payload, n.id)) sent++;
+        if (await deliver(store, sendApns, device, payload, n.id)) {
+          sent++;
+          delivered = true;
+        }
       } catch (err) {
         console.error('send-push: delivery failed', {
           notificationId: n.id,
           message: err instanceof Error ? err.message : String(err),
         });
       }
+    }
+    if (delivered) pushed.push(n.id);
+  }
+
+  if (pushed.length > 0) {
+    try {
+      await store.markPushed(pushed);
+    } catch (err) {
+      console.error('send-push: could not record push_sent_at', {
+        message: err instanceof Error ? err.message : String(err),
+      });
     }
   }
 
@@ -411,6 +430,11 @@ function supabaseStore(): PushStore {
     async deleteDevice(token) {
       const { error } = await admin.from('push_devices').delete().eq('token', token);
       if (error) console.error('send-push: could not delete a dead token', { message: error.message });
+    },
+    async markPushed(notificationIds) {
+      const { error } = await admin.from('notifications')
+        .update({ push_sent_at: new Date().toISOString() }).in('id', notificationIds);
+      if (error) console.error('send-push: could not record push_sent_at', { message: error.message });
     },
     async setDeviceEnvironment(token, environment) {
       const { error } = await admin.from('push_devices')

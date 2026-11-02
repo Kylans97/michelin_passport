@@ -4,6 +4,7 @@ import '../../../core/widgets/star_row.dart';
 import '../../../core/widgets/venue_visit_row.dart';
 import '../../../models/restaurant.dart';
 import '../../restaurants/restaurant_detail_screen.dart';
+import '../../../core/analytics/analytics_properties.dart';
 
 /// Restaurants linked to this hotel (resolved via
 /// HotelRepository.getLinkedRestaurants, off restaurants_full's hotel_id).
@@ -45,8 +46,10 @@ class HotelRestaurantsCard extends StatelessWidget {
                 onTap: () => Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (_) =>
-                        RestaurantDetailScreen(restaurant: restaurants[i]),
+                    builder: (_) => RestaurantDetailScreen(
+                      restaurant: restaurants[i],
+                      openSource: AnalyticsOpenSource.venue,
+                    ),
                   ),
                 ),
               ),

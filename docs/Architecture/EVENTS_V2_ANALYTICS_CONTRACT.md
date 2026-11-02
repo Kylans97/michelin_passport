@@ -112,6 +112,31 @@ Means **only** "the user opened the external ticket/booking destination from Man
 
 Call and Directions are separate events rather than new `link_destination` values, so `venue_booking_link_opened` keeps its meaning (§19). No search query, filter value or other free text is ever persisted. Features that already write their own rows (visits, wishlist, follows, attendance, trips) are counted from those tables, not duplicated here. Migration: `20261023200000_add_venue_action_and_app_usage_tracking.sql`.
 
+### Venue insights (added 2026-11-02)
+
+The data points behind Studio's Basic and Pro tiers
+(`docs/Architecture/VENUE_INSIGHTS_AND_SUBSCRIPTIONS_PLAN.md` §5).
+Migration: `20261101250000_add_venue_insight_tracking.sql`.
+
+| What | When | Persisted to |
+|---|---|---|
+| `ticket_link_opened` | Event Detail's Tickets link, after `launchUrl` returns `true` (§15). When ticket and website are the same URL, the one button counts as Tickets | `app_usage_events` (with `event_id`) |
+| `event_website_opened` | Event Detail's website link, same boundary | `app_usage_events` (with `event_id`) |
+| `open_source` on `venue_detail_opened` / `event_opened` | Passed explicitly by the screen that pushed the detail page (`AnalyticsOpenSource`), never derived. Null: an older build, admin review, a manager's preview, or a route that doesn't say | `venue_page_opens.source`, `app_usage_events.source` |
+| Search matches | A finished Explore search whose text equals, after folding case and accents, the name of a cuisine family, a country, or a city/restaurant/hotel/event in its results. The entity's id, slug or code is stored, never the text. Once per search (cleared with the field) | `explore_signals`, `search_match` |
+| Filter values | An Explore filter set to a value: type, country, cuisine family, award, Keys. "All" and no country record nothing | `explore_signals`, `filter` |
+| No results | A finished search that found nothing: one row per active filter and match, or one bare row | `explore_signals`, `no_results` |
+| Impressions | See §14 | `entity_impressions` via `record_impressions()` |
+| Push delivered | `send-push`, once APNs accepted a push for at least one of the member's devices | `notifications.push_sent_at` |
+| Intent changes | Server-side trigger on `event_attendance`: every Interested/Going change including removal, with `friend_signal` = an accepted friend already had the event as Interested or Going with visibility `friends`. Never which friend. Records for every build | `event_intent_changes` |
+| Photos seen | On leaving a Restaurant/Hotel Detail (never in preview): the published photos that were on screen in the gallery, the first always | `venue_photo_views` |
+
+`explore_signals.value` has a CHECK refusing anything but `[A-Za-z0-9_-]`,
+so no typed text can be stored there even by mistake. Trip adds are not a
+new signal: `planned_venues` already holds them. Studio reads all of it
+through `admin_studio_venue_insights()` and `admin_studio_search_report()`,
+admin-only, every count of people under 5 suppressed.
+
 ### Attendance
 
 | Event | When |
@@ -198,6 +223,8 @@ Never, under any circumstance, in any analytics payload: event/visit/trip notes,
 
 **Decision: Option A — do not track raw search text at all, at MVP.** `event_search_performed` fires with `resultsCount` only (a plain integer, never the query). No goal in §31.1 of the architecture document requires the literal query text, and free-text search can incidentally contain personal or unexpected information (a name, a private note-like phrase) with no product benefit to justify collecting it. `event_filter_applied` may carry the filter's controlled-vocabulary value (e.g. `eventCategory`) since that's never free text — only ever one of a fixed, known set of values.
 
+**Extended 2026-11-02 for Explore (plan decision 1, "B, then A", product owner):** raw text is still never recorded. A finished search records the *known entity* its text named exactly — a cuisine family, country, city or venue — and filters record their chosen value (§5, "Venue insights"). A search that names nothing records nothing, except a bare "found nothing" row.
+
 ## 9. Attribution model
 
 `sourceSurface` (§6) is the MVP attribution model: **session-scoped, last-touch** — the surface the user was on immediately before the tracked action. Never multi-touch, never "first ever discovery" (that needs either a persisted first-seen record or a warehouse join across historical raw events — not justified before any product decision depends on the distinction).
@@ -232,11 +259,15 @@ analytics.track(AnalyticsEvent.eventGoingAdded, properties);
 
 `event_opened` fires **exactly once**, when the user's explicit navigation to Event Detail completes and the screen becomes visible to them. It does **not** fire for: a card rendering in a list (even off-screen), hero-image preloading, a route being constructed but never actually shown (e.g. a cancelled navigation), or a rebuild of an already-open Event Detail screen. Implementation guidance: fire from the screen's own lifecycle at the point the screen is confirmed on-screen following a real navigation (not from `initState` alone, which can run before the transition completes) — consistent with how this event has always been described in the architecture document, made precise here.
 
-## 14. Impression definition (deferred, documented for future reference only)
+## 14. Impression definition
 
-**Not implemented in MVP** — `event_opened` is sufficient for every current goal, and impression tracking adds real client-side complexity for a signal nothing in this taxonomy needs yet (`EVENTS_V2_ARCHITECTURE.md` §31.18). If this is ever built, the contract should be: a card counts as an impression only once it becomes *meaningfully visible* (a real viewport-visibility threshold, not "was in the widget tree"), deduplicated per screen-session (the same card scrolling in and out of view repeatedly within one screen visit counts once). `positionInFeed` (§6) is reserved for this future use and unused until then.
+**Built 2026-11-02**, deliberately simpler than the threshold sketched below: a card counts when it is *built* inside a lazily built list (`ListView.builder`, sliver builders), which builds only what is on or next to the screen — no viewport-visibility measurement. The same card on the same surface counts once per 30 minutes (`ImpressionBuffer`), sent in batches through `record_impressions()` and summed per member, entity, surface and day. Surfaces: Explore, search results, Events, Guides, Rankings, Wishlist, Community, Private chefs. Not My Map, Passport, Trips or Friends: those show what the member already has. Two surfaces build eagerly and so overcount slightly: search results (a `Column` of all results) and Community (at most seven cards). `positionInFeed` stays unused.
+
+*Original note, kept:* **Not implemented in MVP** — `event_opened` is sufficient for every current goal, and impression tracking adds real client-side complexity for a signal nothing in this taxonomy needs yet (`EVENTS_V2_ARCHITECTURE.md` §31.18). If this is ever built, the contract should be: a card counts as an impression only once it becomes *meaningfully visible* (a real viewport-visibility threshold, not "was in the widget tree"), deduplicated per screen-session (the same card scrolling in and out of view repeatedly within one screen visit counts once). `positionInFeed` (§6) is reserved for this future use and unused until then.
 
 ## 15. Ticket-link open — exact boundary
+
+*Implemented 2026-11-02 exactly as below, in `EventDetailScreen._openUrl`.*
 
 Fire `ticket_link_opened` **after `launchUrl` returns `true`** (the actual OS-level launch attempt succeeded) — not merely after the user taps the button, and not merely after `canLaunchUrl` returns `true` (which only confirms *capability*, not that an attempt was actually made). This codebase's existing external-link pattern (`_openUrl`/`_openMaps`/`_openCall` across Restaurant/Hotel Detail) already computes this exact boolean via `await launchUrl(...)` but doesn't currently branch on it — Step 3+'s ticket-link implementation should check it (a small, justified addition to the existing pattern, since the value is already computed for free and materially improves analytics truthfulness at zero extra cost).
 

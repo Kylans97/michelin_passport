@@ -183,6 +183,54 @@ enum AnalyticsScreen {
   };
 }
 
+/// [AnalyticsEvent.venueDetailOpened] and [AnalyticsEvent.eventOpened] —
+/// the place a detail page was opened from, passed explicitly by the
+/// screen that pushed it, never derived. Matches the `source` CHECK on
+/// `venue_page_opens` and `app_usage_events`
+/// (20261101250000_add_venue_insight_tracking.sql); extend both together,
+/// in a new migration. Null means a build or a route that doesn't say.
+enum AnalyticsOpenSource {
+  explore,
+  search,
+  map,
+  guides,
+  rankings,
+  events,
+  passport,
+  wishlist,
+  trips,
+  friends,
+  community,
+  news,
+  notifications,
+  push,
+  venue,
+  event,
+  privateChefs,
+  stays;
+
+  String get wireName => switch (this) {
+    AnalyticsOpenSource.explore => 'explore',
+    AnalyticsOpenSource.search => 'search',
+    AnalyticsOpenSource.map => 'map',
+    AnalyticsOpenSource.guides => 'guides',
+    AnalyticsOpenSource.rankings => 'rankings',
+    AnalyticsOpenSource.events => 'events',
+    AnalyticsOpenSource.passport => 'passport',
+    AnalyticsOpenSource.wishlist => 'wishlist',
+    AnalyticsOpenSource.trips => 'trips',
+    AnalyticsOpenSource.friends => 'friends',
+    AnalyticsOpenSource.community => 'community',
+    AnalyticsOpenSource.news => 'news',
+    AnalyticsOpenSource.notifications => 'notifications',
+    AnalyticsOpenSource.push => 'push',
+    AnalyticsOpenSource.venue => 'venue',
+    AnalyticsOpenSource.event => 'event',
+    AnalyticsOpenSource.privateChefs => 'private_chefs',
+    AnalyticsOpenSource.stays => 'stays',
+  };
+}
+
 /// A coarse price bucket — the exact `price_amount` (if that field is ever
 /// added to `events`) must never be sent; this is a deliberate coarsening,
 /// not a placeholder for the real value.
@@ -242,6 +290,7 @@ class AnalyticsProperties {
     this.eventId,
     this.inviteId,
     this.screen,
+    this.openSource,
   });
 
   /// The catalogue entity type this action concerns (Follow's target,
@@ -350,6 +399,10 @@ class AnalyticsProperties {
   /// own doc comment.
   final AnalyticsScreen? screen;
 
+  /// [AnalyticsEvent.venueDetailOpened]/[AnalyticsEvent.eventOpened] only,
+  /// OPTIONAL. See [AnalyticsOpenSource]'s own doc comment.
+  final AnalyticsOpenSource? openSource;
+
   /// Serializes to wire-safe key/value pairs — every enum becomes its
   /// [wireName], every null field is omitted entirely rather than sent as
   /// an explicit null. Used by [DebugPrintAnalyticsService] today, and is
@@ -384,6 +437,7 @@ class AnalyticsProperties {
     put('source_screen', sourceScreen?.wireName);
     put('event_id', eventId);
     put('invite_id', inviteId);
+    put('open_source', openSource?.wireName);
     return map;
   }
 }

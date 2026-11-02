@@ -4,6 +4,7 @@ import '../../../models/hotel.dart';
 import '../../../models/ranking_entry.dart';
 import '../../hotels/hotel_detail_screen.dart';
 import 'ranking_editorial_card.dart';
+import '../../../core/analytics/analytics_properties.dart';
 
 // "City 🇬🇧" — the same city + flag pairing this card has always shown.
 String _locationLabel(Hotel hotel) =>
@@ -53,7 +54,12 @@ class HotelRankingCard extends StatelessWidget {
       onTap: () async {
         await Navigator.push(
           context,
-          MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+          MaterialPageRoute(
+            builder: (_) => HotelDetailScreen(
+              hotel: hotel,
+              openSource: AnalyticsOpenSource.rankings,
+            ),
+          ),
         );
         onReturn();
       },

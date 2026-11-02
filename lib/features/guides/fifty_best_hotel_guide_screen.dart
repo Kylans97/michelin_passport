@@ -17,6 +17,8 @@ import 'widgets/guide_catalogue_layout.dart';
 import 'widgets/guide_catalogue_states.dart';
 import 'widgets/guide_venue_card.dart';
 import 'widgets/guide_year_selector.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/impressions.dart';
 
 /// The World's 50 Best → Hotels (Step 2C). The mirror of
 /// [FiftyBestRestaurantGuideScreen] for hotels — one selected year at a
@@ -156,7 +158,12 @@ class _FiftyBestHotelGuideScreenState extends State<FiftyBestHotelGuideScreen> {
 
   void _open(Hotel hotel) => Navigator.push(
     context,
-    MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+    MaterialPageRoute(
+      builder: (_) => HotelDetailScreen(
+        hotel: hotel,
+        openSource: AnalyticsOpenSource.guides,
+      ),
+    ),
   );
 
   @override
@@ -228,6 +235,11 @@ class _FiftyBestHotelGuideScreenState extends State<FiftyBestHotelGuideScreen> {
                   separatorBuilder: (_, _) => const GuideVenueCardDivider(),
                   itemBuilder: (context, index) {
                     final entry = _results![index];
+                    trackImpression(
+                      AnalyticsEntityType.hotel,
+                      entry.hotel.id,
+                      ImpressionSurface.guides,
+                    );
                     return GuideVenueCard(
                       title: entry.hotel.name,
                       imageUrl: entry.hotel.cardImageUrl,

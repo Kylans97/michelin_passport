@@ -131,6 +131,7 @@ class _EventMapPreviewSheet extends StatelessWidget {
                         builder: (_) => EventDetailScreen(
                           eventId: event.id,
                           sourceSurface: AnalyticsSourceSurface.map,
+                          openSource: AnalyticsOpenSource.map,
                         ),
                       ),
                     );

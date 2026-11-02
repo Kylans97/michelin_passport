@@ -14,7 +14,8 @@ import 'analytics_service.dart';
 /// [AnalyticsEvent.venueDetailOpened], [AnalyticsEvent.newsArticleOpened],
 /// [AnalyticsEvent.venueInviteSent]/`Accepted`/`Declined`, and the app-usage
 /// set ([AnalyticsEvent.screenOpened], [AnalyticsEvent.exploreSearchPerformed],
-/// [AnalyticsEvent.exploreFilterApplied], [AnalyticsEvent.eventOpened]) to
+/// [AnalyticsEvent.exploreFilterApplied], [AnalyticsEvent.eventOpened],
+/// [AnalyticsEvent.ticketLinkOpened], [AnalyticsEvent.eventWebsiteOpened]) to
 /// `app_usage_events`
 /// (20261023200000_add_venue_action_and_app_usage_tracking.sql); every
 /// other [AnalyticsEvent] is silently ignored, matching the explicit "alleen dit, niet de volledige
@@ -78,6 +79,9 @@ class SupabaseAnalyticsService implements AnalyticsService {
         unawaited(_insertUsageEvent(eventName: event.wireName));
       case AnalyticsEvent.eventOpened:
         _trackEventOpened(properties);
+      case AnalyticsEvent.ticketLinkOpened:
+      case AnalyticsEvent.eventWebsiteOpened:
+        _trackEventLink(event, properties);
       case AnalyticsEvent.newsArticleOpened:
         _trackNewsArticleOpened(properties);
       case AnalyticsEvent.venueInviteSent:
@@ -161,7 +165,13 @@ class SupabaseAnalyticsService implements AnalyticsService {
     );
     if (venueType == null || venueId == null) return;
 
-    unawaited(_insertVenuePageOpen(venueType: venueType, venueId: venueId));
+    unawaited(
+      _insertVenuePageOpen(
+        venueType: venueType,
+        venueId: venueId,
+        source: properties?.openSource?.wireName,
+      ),
+    );
   }
 
   void _trackScreenOpened(AnalyticsProperties? properties) {
@@ -188,8 +198,23 @@ class SupabaseAnalyticsService implements AnalyticsService {
       _insertUsageEvent(
         eventName: AnalyticsEvent.eventOpened.wireName,
         eventId: eventId,
+        source: properties?.openSource?.wireName,
       ),
     );
+  }
+
+  // An event's ticket or website link actually opened. Needs the event:
+  // without it the row would say nothing a venue could use.
+  void _trackEventLink(AnalyticsEvent event, AnalyticsProperties? properties) {
+    final eventId = properties?.entityId;
+
+    assert(
+      eventId != null,
+      '${event.wireName} requires entityId (the event id)',
+    );
+    if (eventId == null) return;
+
+    unawaited(_insertUsageEvent(eventName: event.wireName, eventId: eventId));
   }
 
   void _trackNewsArticleOpened(AnalyticsProperties? properties) {
@@ -252,6 +277,7 @@ class SupabaseAnalyticsService implements AnalyticsService {
   Future<void> _insertVenuePageOpen({
     required AnalyticsEntityType venueType,
     required String venueId,
+    String? source,
   }) async {
     try {
       final client = _clientOf();
@@ -262,6 +288,7 @@ class SupabaseAnalyticsService implements AnalyticsService {
         'user_id': userId,
         'venue_type': venueType.wireName,
         'venue_id': venueId,
+        'source': ?source,
       });
     } catch (error, stackTrace) {
       debugPrint('VENUE PAGE OPEN TRACK FAILED: $error');
@@ -273,6 +300,7 @@ class SupabaseAnalyticsService implements AnalyticsService {
     required String eventName,
     String? screen,
     String? eventId,
+    String? source,
   }) async {
     try {
       final client = _clientOf();
@@ -284,6 +312,7 @@ class SupabaseAnalyticsService implements AnalyticsService {
         'event_name': eventName,
         'screen': ?screen,
         'event_id': ?eventId,
+        'source': ?source,
       });
     } catch (error, stackTrace) {
       debugPrint('APP USAGE EVENT TRACK FAILED: $error');

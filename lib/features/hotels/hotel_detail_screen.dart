@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../core/analytics/photo_views.dart';
 import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/analytics_service.dart';
@@ -82,6 +83,9 @@ class HotelDetailScreen extends StatefulWidget {
   /// doc comment, identical reasoning.
   final bool previewIsStale;
 
+  /// Where this page was opened from, for analytics; null when unattributed.
+  final AnalyticsOpenSource? openSource;
+
   const HotelDetailScreen({
     super.key,
     required this.hotel,
@@ -90,6 +94,7 @@ class HotelDetailScreen extends StatefulWidget {
     this.photosOverride,
     this.isPreview = false,
     this.previewIsStale = false,
+    this.openSource,
   });
 
   @override
@@ -122,7 +127,8 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   // persists only its own narrow set (page opens, website/Call/Directions
   // taps here) — see that class's own doc comment; everything else this
   // screen tracks is still discarded.
-  late final AnalyticsService _analytics = SupabaseAnalyticsService.ofInstance();
+  late final AnalyticsService _analytics =
+      SupabaseAnalyticsService.ofInstance();
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -179,6 +185,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         AnalyticsProperties(
           entityType: AnalyticsEntityType.hotel,
           entityId: widget.hotel.id,
+          openSource: widget.openSource,
         ),
       );
     }
@@ -246,7 +253,10 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
 
   Future<void> _loadAboutText() async {
     try {
-      final text = await _venueAboutRepo.loadCurrentText(venueType: 'hotel', venueId: widget.hotel.id);
+      final text = await _venueAboutRepo.loadCurrentText(
+        venueType: 'hotel',
+        venueId: widget.hotel.id,
+      );
       if (!mounted) return;
       setState(() => _aboutText = text);
     } catch (_) {
@@ -277,6 +287,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         builder: (_) => EventDetailScreen(
           eventId: event.id,
           sourceSurface: AnalyticsSourceSurface.hostProfile,
+          openSource: AnalyticsOpenSource.venue,
         ),
       ),
     );
@@ -440,7 +451,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       if (!wasFollowing) {
         // The one place a follow can lead to notifications: a single
         // explanation the first time, nothing after (PushService).
-        unawaited(PushService.instance.offerAfterFollow(context, widget.hotel.name));
+        unawaited(
+          PushService.instance.offerAfterFollow(context, widget.hotel.name),
+        );
       }
     } catch (_) {
       if (!mounted) return;
@@ -451,7 +464,6 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       _showSnack('Could not update. Please try again.', isError: true);
     }
   }
-
 
   Future<void> _openPlanStay() async {
     // Preview: inert — see _toggleWishlist's own comment; opening the
@@ -637,6 +649,11 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
         slivers: [
           HotelHero(
             hotel: hotel,
+            onPhotosSeen: (ids) => trackVenuePhotosSeen(
+              AnalyticsEntityType.hotel,
+              widget.hotel.id,
+              ids,
+            ),
             photos: _photos,
             isPreview: widget.isPreview,
             isWishlisted: _isWishlisted,
@@ -851,7 +868,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     );
     return widget.isPreview
         ? OwnerPreviewMarker(
-            subtitle: widget.previewIsStale ? 'Showing your last saved details' : null,
+            subtitle: widget.previewIsStale
+                ? 'Showing your last saved details'
+                : null,
             child: scaffold,
           )
         : scaffold;

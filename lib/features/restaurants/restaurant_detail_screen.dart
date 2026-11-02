@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../../core/analytics/photo_views.dart';
 import '../../core/analytics/analytics_event.dart';
 import '../../core/analytics/analytics_properties.dart';
 import '../../core/analytics/analytics_service.dart';
@@ -114,6 +115,9 @@ class RestaurantDetailScreen extends StatefulWidget {
   /// when [isPreview] is false.
   final bool previewIsStale;
 
+  /// Where this page was opened from, for analytics; null when unattributed.
+  final AnalyticsOpenSource? openSource;
+
   const RestaurantDetailScreen({
     super.key,
     required this.restaurant,
@@ -122,6 +126,7 @@ class RestaurantDetailScreen extends StatefulWidget {
     this.photosOverride,
     this.isPreview = false,
     this.previewIsStale = false,
+    this.openSource,
   });
 
   @override
@@ -155,7 +160,8 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // persists only its own narrow set (page opens, website/Call/Directions
   // taps here) — see that class's own doc comment; everything else this
   // screen tracks is still discarded.
-  late final AnalyticsService _analytics = SupabaseAnalyticsService.ofInstance();
+  late final AnalyticsService _analytics =
+      SupabaseAnalyticsService.ofInstance();
 
   String? get _userId => Supabase.instance.client.auth.currentUser?.id;
 
@@ -235,6 +241,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         AnalyticsProperties(
           entityType: AnalyticsEntityType.restaurant,
           entityId: widget.restaurant.id,
+          openSource: widget.openSource,
         ),
       );
     }
@@ -358,6 +365,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         builder: (_) => EventDetailScreen(
           eventId: event.id,
           sourceSurface: AnalyticsSourceSurface.hostProfile,
+          openSource: AnalyticsOpenSource.venue,
         ),
       ),
     );
@@ -558,7 +566,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       if (!wasFollowing) {
         // The one place a follow can lead to notifications: a single
         // explanation the first time, nothing after (PushService).
-        unawaited(PushService.instance.offerAfterFollow(context, widget.restaurant.name));
+        unawaited(
+          PushService.instance.offerAfterFollow(
+            context,
+            widget.restaurant.name,
+          ),
+        );
       }
     } catch (_) {
       if (!mounted) return;
@@ -730,7 +743,12 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       }
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+        MaterialPageRoute(
+          builder: (_) => HotelDetailScreen(
+            hotel: hotel,
+            openSource: AnalyticsOpenSource.venue,
+          ),
+        ),
       );
     } catch (_) {
       if (!mounted) return;
@@ -806,6 +824,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         slivers: [
           RestaurantHero(
             restaurant: restaurant,
+            onPhotosSeen: (ids) => trackVenuePhotosSeen(
+              AnalyticsEntityType.restaurant,
+              widget.restaurant.id,
+              ids,
+            ),
             hasHotelBadge: hasHotelBadge,
             photos: _photos,
             isPreview: widget.isPreview,

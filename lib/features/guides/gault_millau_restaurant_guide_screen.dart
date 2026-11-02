@@ -15,6 +15,8 @@ import 'widgets/guide_catalogue_layout.dart';
 import 'widgets/guide_catalogue_states.dart';
 import 'widgets/guide_gault_millau_mark.dart';
 import 'widgets/guide_venue_card.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/impressions.dart';
 
 /// Gault&Millau → Restaurants (Step 2D), the third Guide family. A
 /// filterable index of restaurants with a CURRENT (latest-edition)
@@ -110,7 +112,10 @@ class _GaultMillauRestaurantGuideScreenState
   void _open(RestaurantGaultMillauEntry entry) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => RestaurantDetailScreen(restaurant: entry.restaurant),
+      builder: (_) => RestaurantDetailScreen(
+        restaurant: entry.restaurant,
+        openSource: AnalyticsOpenSource.guides,
+      ),
     ),
   );
 
@@ -160,6 +165,11 @@ class _GaultMillauRestaurantGuideScreenState
                     separatorBuilder: (_, _) => const GuideVenueCardDivider(),
                     itemBuilder: (context, index) {
                       final entry = _results![index];
+                      trackImpression(
+                        AnalyticsEntityType.restaurant,
+                        entry.restaurant.id,
+                        ImpressionSurface.guides,
+                      );
                       return GuideVenueCard(
                         title: entry.restaurant.name,
                         imageUrl: entry.restaurant.cardImageUrl,

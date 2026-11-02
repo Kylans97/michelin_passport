@@ -163,7 +163,8 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       switch (n.type) {
         case AppNotificationType.friendRequestReceived:
           await _friendRepo.acceptRequest(n.subjectId);
-          if (mounted) PushService.instance.askAfter(context, const FriendsPrompt());
+          if (mounted)
+            PushService.instance.askAfter(context, const FriendsPrompt());
         case AppNotificationType.venueInviteReceived:
           await _venueInviteRepo.acceptInvite(n.subjectId);
           _analytics.track(
@@ -274,9 +275,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                     Text(
                       'Friend requests and updates will appear here.',
                       textAlign: TextAlign.center,
-                      style: CsTypography.body.copyWith(
-                        color: AppColors.taupe,
-                      ),
+                      style: CsTypography.body.copyWith(color: AppColors.taupe),
                     ),
                   ],
                 ),
@@ -298,13 +297,13 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             itemBuilder: (_, i) => i == notifications.length
                 ? _LoadMoreRow(onVisible: _loadMore)
                 : _NotificationRow(
-              notification: notifications[i],
-              onAccept: () => _accept(notifications[i]),
-              onDecline: () => _decline(notifications[i]),
-              onTapOther: notifications[i].otherUserId == null
-                  ? null
-                  : () => _openProfile(notifications[i].otherUserId!),
-            ),
+                    notification: notifications[i],
+                    onAccept: () => _accept(notifications[i]),
+                    onDecline: () => _decline(notifications[i]),
+                    onTapOther: notifications[i].otherUserId == null
+                        ? null
+                        : () => _openProfile(notifications[i].otherUserId!),
+                  ),
           );
         },
       ),
@@ -536,7 +535,10 @@ class _NotificationRow extends StatelessWidget {
   void _openEvent(BuildContext context) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => EventDetailScreen(eventId: notification.subjectId),
+      builder: (_) => EventDetailScreen(
+        eventId: notification.subjectId,
+        openSource: AnalyticsOpenSource.notifications,
+      ),
     ),
   );
 
@@ -740,18 +742,18 @@ class _NotificationRow extends StatelessWidget {
   void _openHostWelcome(BuildContext context, String venueName) {
     VenueHostWelcomeSeen.takeFirstShow();
     Navigator.push(
-    context,
-    MaterialPageRoute(
-      fullscreenDialog: true,
-      builder: (welcomeContext) => VenueHostWelcomeScreen(
-        venueName: venueName,
-        actionLabel: 'Manage your venue',
-        onAction: () => Navigator.of(welcomeContext).pushReplacement(
-          MaterialPageRoute(builder: (_) => const MyVenuesScreen()),
+      context,
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (welcomeContext) => VenueHostWelcomeScreen(
+          venueName: venueName,
+          actionLabel: 'Manage your venue',
+          onAction: () => Navigator.of(welcomeContext).pushReplacement(
+            MaterialPageRoute(builder: (_) => const MyVenuesScreen()),
+          ),
         ),
       ),
-    ),
-  );
+    );
   }
 
   // A manager's about text or photo was reviewed; a rejection carries the

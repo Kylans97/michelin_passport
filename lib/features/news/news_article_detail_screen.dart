@@ -92,19 +92,28 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
   void _openRestaurant(Restaurant restaurant) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => RestaurantDetailScreen(restaurant: restaurant),
+      builder: (_) => RestaurantDetailScreen(
+        restaurant: restaurant,
+        openSource: AnalyticsOpenSource.news,
+      ),
     ),
   );
 
   void _openHotel(Hotel hotel) => Navigator.push(
     context,
-    MaterialPageRoute(builder: (_) => HotelDetailScreen(hotel: hotel)),
+    MaterialPageRoute(
+      builder: (_) =>
+          HotelDetailScreen(hotel: hotel, openSource: AnalyticsOpenSource.news),
+    ),
   );
 
   void _openChef(PrivateChef chef) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) => PrivateChefDetailScreen(chefId: chef.id),
+      builder: (_) => PrivateChefDetailScreen(
+        chefId: chef.id,
+        openSource: AnalyticsOpenSource.news,
+      ),
     ),
   );
 
@@ -254,10 +263,7 @@ class _MentionedVenuesSection extends StatelessWidget {
       for (final hotel in venues.hotels)
         LinkedVenueRow(name: hotel.name, onTap: () => onTapHotel(hotel)),
       for (final chef in venues.chefs)
-        LinkedVenueRow(
-          name: chef.displayName,
-          onTap: () => onTapChef(chef),
-        ),
+        LinkedVenueRow(name: chef.displayName, onTap: () => onTapChef(chef)),
     ];
 
     return Column(

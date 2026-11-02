@@ -101,6 +101,7 @@ class PassportEventCard extends StatelessWidget {
           builder: (_) => EventDetailScreen(
             eventId: event.id,
             sourceSurface: AnalyticsSourceSurface.passport,
+            openSource: AnalyticsOpenSource.passport,
           ),
         ),
       ),

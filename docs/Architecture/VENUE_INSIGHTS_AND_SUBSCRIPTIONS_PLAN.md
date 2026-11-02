@@ -242,6 +242,20 @@ Each one: a contract update in `EVENTS_V2_ANALYTICS_CONTRACT.md`, a privacy
 policy update before it ships, and an app release. Old builds simply don't
 send it, so every chart must handle "no data before date X".
 
+**Built 2026-11-02**, with five more the product owner asked for at the
+same time ("laten we gewoon voor al die 9 datapunten gaan"):
+event ticket and website taps; reach of a new-event notice (told, push
+delivered, opened from it); searches that found nothing; Interested/Going
+changes including taking them back, with whether a friend had already
+marked the event; and which gallery photos members looked at. Trip adds
+needed nothing new (`planned_venues`). Migration
+`20261101250000_add_venue_insight_tracking.sql`; the full list is in the
+analytics contract, §5 "Venue insights". Studio's Basic and Pro tabs show
+all of it, and "How members found you" and "What members search for" are
+no longer examples. The intent-change log records from the moment the
+migration applies, for every build; push delivery from the moment
+`send-push` is redeployed; the rest from the first build that sends it.
+
 ## 6. Phases
 
 1. **Admin dashboard (for the product owner).** `studio.mantelier.app`,

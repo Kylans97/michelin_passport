@@ -7,6 +7,7 @@ import '../../../models/passport_venue.dart';
 import '../../passport/passport_view_model.dart' show PassportVenueStats;
 import '../../restaurants/restaurant_detail_screen.dart';
 import '../../hotels/hotel_detail_screen.dart';
+import '../../../core/analytics/analytics_properties.dart';
 
 const _monthNames = [
   'January',
@@ -115,15 +116,20 @@ class _VenuePreviewSheet extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) =>
-                                RestaurantDetailScreen(restaurant: restaurant),
+                            builder: (_) => RestaurantDetailScreen(
+                              restaurant: restaurant,
+                              openSource: AnalyticsOpenSource.map,
+                            ),
                           ),
                         );
                       case HotelVenue(:final hotel):
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => HotelDetailScreen(hotel: hotel),
+                            builder: (_) => HotelDetailScreen(
+                              hotel: hotel,
+                              openSource: AnalyticsOpenSource.map,
+                            ),
                           ),
                         );
                     }

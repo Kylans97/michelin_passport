@@ -40,6 +40,7 @@ class FakeStore implements PushStore {
   event: EventContent | null = { eventName: 'Four Hands Dinner', startDate: '2026-11-14', hostName: 'Hof van Cleve' };
   deleted: string[] = [];
   environmentChanges: Array<[string, string]> = [];
+  pushed: string[] = [];
   eventLookups = 0;
   lookups = 0;
 
@@ -66,6 +67,10 @@ class FakeStore implements PushStore {
   }
   setDeviceEnvironment(token: string, env: string) {
     this.environmentChanges.push([token, env]);
+    return Promise.resolve();
+  }
+  markPushed(ids: string[]) {
+    this.pushed.push(...ids);
     return Promise.resolve();
   }
 }
@@ -193,6 +198,9 @@ Deno.test('a fan-out batch resolves the event once and pushes every device', asy
   await handleRequest(req({ body: { notification_ids: ['n0', 'n1', 'n2'] } }), store, apns.send, SECRET, NOW);
   assertEquals(store.eventLookups, 1);
   assertEquals(apns.sent.length, 3);
+  // Each notification counts once, however many devices took it; u3 has
+  // no device, so n2 was never pushed.
+  assertEquals(store.pushed, ['n0', 'n1']);
   assertEquals((apns.sent[0].payload as { aps: { alert: unknown } }).aps.alert, {
     title: 'Hof van Cleve',
     body: 'Four Hands Dinner · 14 November',
@@ -217,6 +225,7 @@ Deno.test('an Unregistered token is deleted', async () => {
   const res = await handleRequest(req(), store, apns.send, SECRET, NOW);
   assertEquals((await res.json()).sent, 0);
   assertEquals(store.deleted, [DEVICE.token]);
+  assertEquals(store.pushed, []);
 });
 
 Deno.test('a BadDeviceToken is retried on the other environment and corrected', async () => {

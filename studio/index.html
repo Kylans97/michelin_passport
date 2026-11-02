@@ -219,6 +219,23 @@
         <p class="sub">Members who viewed, are Interested or Going, and who attended</p>
         <div class="table-wrap" id="basic-events"></div>
       </article>
+      <article class="panel">
+        <h2>After you announced them</h2>
+        <p class="sub">Followers told about each event, the pushes that reached a phone, who opened it from there, and who tapped Tickets or the website. Measured since <span class="since"></span>.</p>
+        <div class="table-wrap" id="basic-event-reach"></div>
+      </article>
+      <section class="grid two">
+        <article class="panel">
+          <h2>Seen and opened</h2>
+          <p class="sub">Members who saw you in a list, and who opened your page, per month. Measured since <span class="since"></span>.</p>
+          <div class="table-wrap" id="basic-seen"></div>
+        </article>
+        <article class="panel">
+          <h2>In members' trips</h2>
+          <p class="sub">Members who planned a visit to you</p>
+          <div id="basic-trips"></div>
+        </article>
+      </section>
     </div>
 
     <!-- Pro -->
@@ -250,13 +267,30 @@
       </section>
       <section class="grid two">
         <article class="panel">
-          <h2>How members found you <span class="badge">Example</span></h2>
-          <p class="sub">Where a visit to your page started. Not measured yet.</p>
+          <h2>How members found you</h2>
+          <p class="sub">Where a visit to your page started, last 90 days. Measured since <span class="since"></span>.</p>
           <div id="pro-sources"></div>
         </article>
         <article class="panel">
-          <h2>What members search for <span class="badge">Example</span></h2>
-          <p class="sub">Cuisines, cities and venues that searches matched. Never the typed text. Not measured yet.</p>
+          <h2>Where members see you</h2>
+          <p class="sub">Members who saw you in each list, last 90 days</p>
+          <div id="pro-surfaces"></div>
+        </article>
+      </section>
+      <article class="panel">
+        <h2>Your events in depth</h2>
+        <p class="sub">Who said Going, how many had a friend already going, who changed their mind, and how far ahead the typical member decided. Measured since <span class="since"></span>.</p>
+        <div class="table-wrap" id="pro-event-depth"></div>
+      </article>
+      <section class="grid two">
+        <article class="panel">
+          <h2>Your photos</h2>
+          <p class="sub">Members who looked at each photo in your gallery, last 12 months. The first is your cover.</p>
+          <div id="pro-photos"></div>
+        </article>
+        <article class="panel">
+          <h2>What members search for</h2>
+          <p class="sub" id="pro-searches-sub">Cuisines, cities and countries that searches named, last 90 days. Never the typed text.</p>
           <div id="pro-searches"></div>
         </article>
       </section>
@@ -295,6 +329,18 @@
           <h2>Event interest by country</h2>
           <p class="sub">Members who opened events, by the event's country, last 12 months</p>
           <div id="market-event-countries"></div>
+        </article>
+      </section>
+      <section class="grid two">
+        <article class="panel">
+          <h2>Filters members use</h2>
+          <p class="sub">Members who chose each filter in search, last 90 days</p>
+          <div id="market-filters"></div>
+        </article>
+        <article class="panel">
+          <h2>Searched, nothing found</h2>
+          <p class="sub">Members whose search found nothing, by what it asked for, last 90 days. Demand without supply.</p>
+          <div id="market-no-results"></div>
         </article>
       </section>
     </div>

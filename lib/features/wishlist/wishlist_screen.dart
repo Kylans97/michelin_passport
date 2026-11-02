@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../core/analytics/analytics_properties.dart';
+import '../../core/analytics/impressions.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_typography.dart';
@@ -218,7 +220,11 @@ class _WishlistBodyState extends State<WishlistBody> {
                 ),
                 child: Row(
                   children: [
-                    for (var i = 0; i < WishlistVenueType.values.length; i++) ...[
+                    for (
+                      var i = 0;
+                      i < WishlistVenueType.values.length;
+                      i++
+                    ) ...[
                       if (i > 0) const SizedBox(width: CsSpacing.sm),
                       CsFilterChip(
                         label: WishlistVenueType.values[i].label,
@@ -296,27 +302,41 @@ class _WishlistBodyState extends State<WishlistBody> {
                   // each floating ivory card, with the last card getting
                   // extra bottom clearance for the floating nav pill rather
                   // than sitting under it.
-                  (context, i) => Padding(
-                    padding: EdgeInsets.fromLTRB(
-                      CsSpacing.pageHorizontal,
-                      0,
-                      CsSpacing.pageHorizontal,
-                      i == items.length - 1
-                          ? floatingNavClearance(context)
-                          : CsSpacing.md,
-                    ),
-                    child: switch (items[i]) {
-                      RestaurantVenue(:final restaurant) =>
-                        WishlistRestaurantCard(
-                          restaurant: restaurant,
-                          onRemove: () => _remove(items[i]),
-                        ),
-                      HotelVenue(:final hotel) => WishlistHotelCard(
-                        hotel: hotel,
-                        onRemove: () => _remove(items[i]),
+                  (context, i) {
+                    final item = items[i];
+                    final (type, id) = switch (item) {
+                      RestaurantVenue(:final restaurant) => (
+                        AnalyticsEntityType.restaurant,
+                        restaurant.id,
                       ),
-                    },
-                  ),
+                      HotelVenue(:final hotel) => (
+                        AnalyticsEntityType.hotel,
+                        hotel.id,
+                      ),
+                    };
+                    trackImpression(type, id, ImpressionSurface.wishlist);
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(
+                        CsSpacing.pageHorizontal,
+                        0,
+                        CsSpacing.pageHorizontal,
+                        i == items.length - 1
+                            ? floatingNavClearance(context)
+                            : CsSpacing.md,
+                      ),
+                      child: switch (item) {
+                        RestaurantVenue(:final restaurant) =>
+                          WishlistRestaurantCard(
+                            restaurant: restaurant,
+                            onRemove: () => _remove(item),
+                          ),
+                        HotelVenue(:final hotel) => WishlistHotelCard(
+                          hotel: hotel,
+                          onRemove: () => _remove(item),
+                        ),
+                      },
+                    );
+                  },
                   childCount: items.length,
                 ),
               ),
@@ -368,28 +388,30 @@ class _WishlistBodyState extends State<WishlistBody> {
 
   Widget _eventCardsList(List<Event> events, {required bool dimmed}) =>
       SliverList(
-        delegate: SliverChildBuilderDelegate(
-          (context, i) {
-            final card = Padding(
-              padding: EdgeInsets.fromLTRB(
-                CsSpacing.pageHorizontal,
-                0,
-                CsSpacing.pageHorizontal,
-                i == events.length - 1
-                    ? floatingNavClearance(context)
-                    : CsSpacing.md,
-              ),
-              child: EventWishlistCard(
-                event: events[i],
-                onRemove: () => _removeEvent(events[i]),
-              ),
-            );
-            // Past events read as visually secondary to Upcoming — a
-            // restrained opacity dip, not a different card treatment.
-            return dimmed ? Opacity(opacity: 0.7, child: card) : card;
-          },
-          childCount: events.length,
-        ),
+        delegate: SliverChildBuilderDelegate((context, i) {
+          trackImpression(
+            AnalyticsEntityType.event,
+            events[i].id,
+            ImpressionSurface.wishlist,
+          );
+          final card = Padding(
+            padding: EdgeInsets.fromLTRB(
+              CsSpacing.pageHorizontal,
+              0,
+              CsSpacing.pageHorizontal,
+              i == events.length - 1
+                  ? floatingNavClearance(context)
+                  : CsSpacing.md,
+            ),
+            child: EventWishlistCard(
+              event: events[i],
+              onRemove: () => _removeEvent(events[i]),
+            ),
+          );
+          // Past events read as visually secondary to Upcoming — a
+          // restrained opacity dip, not a different card treatment.
+          return dimmed ? Opacity(opacity: 0.7, child: card) : card;
+        }, childCount: events.length),
       );
 }
 
@@ -418,7 +440,11 @@ class _ErrorState extends StatelessWidget {
           const SizedBox(height: CsSpacing.md),
           SizedBox(
             width: 160,
-            child: CsSecondaryButton(label: 'Retry', onTap: onRetry, height: 44),
+            child: CsSecondaryButton(
+              label: 'Retry',
+              onTap: onRetry,
+              height: 44,
+            ),
           ),
         ],
       ),
