@@ -439,9 +439,77 @@ class _NewsPhotosState extends State<_NewsPhotos> {
     ),
   );
 
+  // Small photos: a row of squares, four across, each opening full size
+  // on a tap; the group's captions, each said once, under the row.
+  Widget _smallRow(List<NewsArticlePhoto> photos) {
+    final captions = <String>{
+      for (final p in photos)
+        if ((p.caption ?? '').trim().isNotEmpty) p.caption!.trim(),
+    };
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: CsSpacing.md),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          LayoutBuilder(
+            builder: (context, constraints) {
+              const gap = CsSpacing.sm;
+              final side = (constraints.maxWidth - gap * 3) / 4;
+              return Wrap(
+                spacing: gap,
+                runSpacing: gap,
+                children: [
+                  for (final photo in photos)
+                    SizedBox(
+                      width: side,
+                      height: side,
+                      child: GestureDetector(
+                        onTap: () => _openFull(photo),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(8),
+                          child: AppNetworkImage(
+                            photo.imageUrl,
+                            fit: BoxFit.cover,
+                            alignment: photo.alignment,
+                            errorBuilder: (_, _, _) =>
+                                const ColoredBox(color: AppColors.cardBorder),
+                          ),
+                        ),
+                      ),
+                    ),
+                ],
+              );
+            },
+          ),
+          for (final caption in captions) ...[
+            const SizedBox(height: CsSpacing.sm),
+            Text(
+              caption,
+              style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+            ),
+          ],
+        ],
+      ),
+    );
+  }
+
+  void _openFull(NewsArticlePhoto photo) => showDialog<void>(
+    context: context,
+    barrierColor: AppColors.darkGreen.withValues(alpha: 0.92),
+    builder: (context) => GestureDetector(
+      onTap: () => Navigator.pop(context),
+      child: InteractiveViewer(
+        child: Center(
+          child: AppNetworkImage(photo.imageUrl, fit: BoxFit.contain),
+        ),
+      ),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     final photos = widget.photos;
+    if (photos.every((p) => p.isSmall)) return _smallRow(photos);
     final shown = photos[_page.clamp(0, photos.length - 1)];
     final caption = shown.caption?.trim();
     return Padding(

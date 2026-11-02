@@ -39,7 +39,7 @@ class NewsRepository {
         .from('news_article_photos')
         .select(
           'id, image_url, caption, after_paragraph, display_order, '
-          'focus_x, focus_y',
+          'focus_x, focus_y, size',
         )
         .eq('news_article_id', articleId)
         .order('after_paragraph')

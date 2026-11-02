@@ -118,6 +118,10 @@ class NewsArticlePhoto {
   final double focusX;
   final double focusY;
 
+  /// news_article_photos.size (20261101280000): small photos sit as a row
+  /// of squares, large ones full width.
+  final bool isSmall;
+
   const NewsArticlePhoto({
     required this.id,
     required this.imageUrl,
@@ -126,6 +130,7 @@ class NewsArticlePhoto {
     this.displayOrder = 0,
     this.focusX = 0.5,
     this.focusY = 0.5,
+    this.isSmall = false,
   });
 
   factory NewsArticlePhoto.fromJson(Map<String, dynamic> json) =>
@@ -137,6 +142,7 @@ class NewsArticlePhoto {
         displayOrder: (json['display_order'] as num?)?.toInt() ?? 0,
         focusX: ((json['focus_x'] as num?) ?? 0.5).toDouble(),
         focusY: ((json['focus_y'] as num?) ?? 0.5).toDouble(),
+        isSmall: json['size'] == 'small',
       );
 
   Alignment get alignment => Alignment(focusX * 2 - 1, focusY * 2 - 1);

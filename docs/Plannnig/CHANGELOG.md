@@ -9,6 +9,13 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
+- **Small photos in articles** — `news_article_photos.size` ('large',
+  the default, or 'small'; migration
+  `20261101280000_add_news_photo_size.sql`, not yet applied). Small
+  photos at one place sit as a row of squares, four across, that open
+  full size on a tap, with their captions said once under the row.
+  Asked for by the product owner for the credits at the foot of "Why I
+  built Mantelier".
 - **News in three parts, and richer articles** (product owner,
   2026-11-02, options B and 3):
   - the News tab opens with a quiet "Why Mantelier" card, then a row of

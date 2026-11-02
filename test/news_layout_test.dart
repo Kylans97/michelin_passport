@@ -191,6 +191,26 @@ void main() {
       expect(caption, lessThan(question));
     });
 
+    testWidgets('small photos sit as one row of squares with their credit '
+        'said once', (tester) async {
+      await pumpDetail(tester, _article(body: 'One.\n\nTwo.'), [
+        for (var i = 0; i < 4; i++)
+          NewsArticlePhoto(
+            id: 's$i',
+            imageUrl: 'https://example.test/s$i.jpg',
+            afterParagraph: 9,
+            displayOrder: i,
+            caption: 'Photos: a chef',
+            isSmall: true,
+          ),
+      ]);
+      expect(find.byType(PageView), findsNothing);
+      expect(find.text('Photos: a chef'), findsOneWidget);
+      final two = tester.getTopLeft(find.text('Two.')).dy;
+      final credit = tester.getTopLeft(find.text('Photos: a chef')).dy;
+      expect(two, lessThan(credit));
+    });
+
     testWidgets('a failed photo lookup still shows the article', (
       tester,
     ) async {
