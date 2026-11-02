@@ -4,8 +4,8 @@
   python3 -I _tools/build.py        (run from restaurant_cuisines_2026/)
 
 Inputs (all in this folder):
-  _source/restaurants_LIVE_20261101.csv     read-only export of production
-  _source/cuisines_LIVE_20261101.csv        read-only export, with use counts
+  _source/restaurants_LIVE_20261102.csv     read-only export of production
+  _source/cuisines_LIVE_20261102.csv        read-only export, with use counts
   _source/michelin_restaurant_pages_20261101.jsonl   fetch_michelin.py
   _source/w50b_style_20261101.jsonl                  fetch_w50b.py
   vocabulary_families.csv     hand-curated: MICHELIN label -> family
@@ -52,8 +52,8 @@ def tail_segment(url):
     return urllib.parse.urlparse(url or '').path.rstrip('/').rsplit('/', 1)[-1]
 
 
-restaurants = {r['id']: r for r in read_csv(SRC + 'restaurants_LIVE_20261101.csv')}
-legacy_cuisines = read_csv(SRC + 'cuisines_LIVE_20261101.csv')
+restaurants = {r['id']: r for r in read_csv(SRC + 'restaurants_LIVE_20261102.csv')}
+legacy_cuisines = read_csv(SRC + 'cuisines_LIVE_20261102.csv')
 families = {r['michelin_label']: r['family_slug'] for r in read_csv('vocabulary_families.csv')}
 legacy_map = {r['legacy_name']: r for r in read_csv('legacy_label_map.csv')}
 w50b_map = {r['restaurant_code']: r for r in read_csv('w50b_style_map.csv')}

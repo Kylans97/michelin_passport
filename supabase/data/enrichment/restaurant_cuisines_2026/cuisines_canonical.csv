@@ -8,7 +8,7 @@ Andalusian,andalusian,spanish,3,3
 Apulian,apulian,italian,2,2
 Asian,asian,asian,9,9
 Asian Contemporary,asian-contemporary,asian,10,10
-Asian Influences,asian-influences,asian,15,15
+Asian Influences,asian-influences,asian,16,16
 Asian and Western,asian-and-western,fusion-international,1,1
 Asturian,asturian,spanish,1,1
 Austrian,austrian,central-european,4,5
@@ -31,10 +31,10 @@ Chinese Contemporary,chinese-contemporary,chinese,5,5
 Classic Cuisine,classic-cuisine,classic-traditional,128,128
 Classic French,classic-french,french,48,49
 Colombian,colombian,latin-american,3,6
-Contemporary,contemporary,modern-creative,437,442
+Contemporary,contemporary,modern-creative,438,443
 Corsican,corsican,french,1,1
-Country cooking,country-cooking,classic-traditional,46,46
-Creative,creative,modern-creative,871,873
+Country cooking,country-cooking,classic-traditional,48,48
+Creative,creative,modern-creative,873,875
 Creative British,creative-british,british-irish,5,5
 Creative French,creative-french,french,36,36
 Creole,creole,north-american,1,1
@@ -52,13 +52,13 @@ Emilian,emilian,italian,2,2
 Emirati Cuisine,emirati-cuisine,mediterranean-middle-east,1,1
 European,european,modern-creative,3,3
 European Contemporary,european-contemporary,modern-creative,14,14
-Farm to table,farm-to-table,seasonal-farm,72,72
+Farm to table,farm-to-table,seasonal-farm,73,73
 Filipino,filipino,southeast-asian,2,2
 Fish and Seafood,fish-and-seafood,seafood,62,63
 French,french,french,71,130
-French Contemporary,french-contemporary,french,71,72
+French Contemporary,french-contemporary,french,72,73
 Fujian,fujian,chinese,6,6
-Fusion,fusion,fusion-international,38,39
+Fusion,fusion,fusion-international,39,40
 Galician,galician,spanish,2,2
 German,german,central-european,1,2
 Greek,greek,mediterranean-middle-east,3,3
@@ -89,11 +89,11 @@ Latin American,latin-american,latin-american,5,6
 Ligurian,ligurian,italian,4,4
 Lombardian,lombardian,italian,2,2
 Meats and Grills,meats-and-grills,grill-meat,4,4
-Mediterranean Cuisine,mediterranean-cuisine,mediterranean-middle-east,101,102
+Mediterranean Cuisine,mediterranean-cuisine,mediterranean-middle-east,105,106
 Mexican,mexican,latin-american,45,45
 Middle Eastern,middle-eastern,mediterranean-middle-east,4,4
 Modern British,modern-british,british-irish,56,56
-Modern Cuisine,modern-cuisine,modern-creative,1149,1149
+Modern Cuisine,modern-cuisine,modern-creative,1162,1162
 Modern French,modern-french,french,117,119
 Ningbo,ningbo,chinese,4,4
 Noodles and Congee,noodles-and-congee,chinese,1,1
@@ -103,6 +103,7 @@ Organic,organic,seasonal-farm,9,9
 Pakistani,pakistani,indian,1,1
 Peruvian,peruvian,latin-american,2,3
 Piedmontese,piedmontese,italian,10,10
+Polish,polish,central-european,1,1
 Pork,pork,grill-meat,1,1
 Portuguese,portuguese,portuguese,2,2
 Provençal,proven-al,french,5,5
@@ -126,7 +127,7 @@ Southern,southern,north-american,1,1
 Spanish,spanish,spanish,8,10
 Spanish Contemporary,spanish-contemporary,spanish,2,2
 Steakhouse,steakhouse,grill-meat,7,8
-Sushi,sushi,japanese,63,90
+Sushi,sushi,japanese,64,91
 Swedish,swedish,nordic,1,1
 Swiss,swiss,central-european,2,2
 Taiwanese,taiwanese,chinese,7,7
@@ -136,8 +137,8 @@ Tempura,tempura,japanese,1,16
 Teppanyaki,teppanyaki,japanese,1,1
 Thai,thai,southeast-asian,5,10
 Traditional British,traditional-british,british-irish,7,7
-Traditional Cuisine,traditional-cuisine,classic-traditional,39,39
-Turkish,turkish,mediterranean-middle-east,3,3
+Traditional Cuisine,traditional-cuisine,classic-traditional,41,41
+Turkish,turkish,mediterranean-middle-east,9,9
 Tuscan,tuscan,italian,9,9
 Umbrian,umbrian,italian,3,3
 Vegan,vegan,vegetarian,12,12

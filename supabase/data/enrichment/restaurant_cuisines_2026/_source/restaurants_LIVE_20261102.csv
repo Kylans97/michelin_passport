@@ -1,18 +1,18 @@
 id,restaurant_code,country_code,michelin_url,worlds_50_best_url,michelin_stars,cuisine
 e3b117ed-94f4-4907-9aeb-a19a23d9ff62,rest_0003,IT,https://guide.michelin.com/nl/nl/emilia-romagna/modena/restaurant/al-gatto-verde,NULL,1,Italian
 9e491be9-3a6d-442c-bf7b-d15b3ff1ecec,rest_0006,IT,https://guide.michelin.com/nl/nl/emilia-romagna/fiorano-modenese/restaurant/alto,NULL,1,Italian Contemporary
-671b5687-b60e-4e6f-beda-1551dd5b6ffb,rest_0010,TR,https://guide.michelin.com/nl/nl/istanbul/istanbul/restaurant/araka,NULL,2,Turkish Contemporary
 ff2ec3b7-f8a0-4e19-9998-85940a20abf3,rest_1366,FR,https://guide.michelin.com/en/corse/sartene_1508622/restaurant/la-table-de-la-ferme,NULL,1,NULL
 3c0c048b-2756-4be3-9c44-20793e121efd,rest_1054,FR,https://guide.michelin.com/en/ile-de-france/gambais/restaurant/ruche,NULL,1,NULL
 6e7ed08c-5696-4791-8bac-3298b2ef9e8b,rest_1082,FR,https://guide.michelin.com/en/grand-est/kaysersberg/restaurant/la-table-d-olivier-nasti,NULL,2,NULL
 9e7496b7-74b7-44f2-b3b0-803c46de8ed7,rest_2051,DE,https://guide.michelin.com/en/bayern/augsburg/restaurant/sartory,NULL,1,NULL
+671b5687-b60e-4e6f-beda-1551dd5b6ffb,rest_0010,TR,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka,NULL,1,Turkish Contemporary
+338243e1-aa91-4b47-b9b9-e425f1d90cc5,rest_0015,PL,https://guide.michelin.com/en/lesser-poland/krakow/restaurant/bottiglieria-1881,NULL,2,European Contemporary
 6298cd89-b7ac-4859-b870-5526a2db943b,rest_2445,GB,https://guide.michelin.com/en/highland/torridon/restaurant/1887,NULL,1,NULL
 253ed0e9-abf1-4d2e-b436-74da73e3ead1,rest_2446,GB,https://guide.michelin.com/en/greater-london/london/restaurant/1890-by-gordon-ramsay,NULL,1,NULL
 b4647171-5306-4846-a3a2-6fb32f961c49,rest_2447,GB,https://guide.michelin.com/en/herefordshire/ledbury_1728106/restaurant/33-the-homend,NULL,1,NULL
 3758355c-c20a-4800-b555-26b98e517cfb,rest_1580,MC,https://guide.michelin.com/en/monaco-region/monaco/restaurant/l-abysse-monte-carlo,NULL,2,NULL
 77752b35-7723-445d-8ece-b12b36c44882,rest_1581,MC,https://guide.michelin.com/en/monaco-region/monaco/restaurant/les-ambassadeurs-by-christophe-cussac,NULL,2,NULL
 4d9ea6f4-d83b-4dd0-b0cf-08f67c90c068,rest_1579,MC,https://guide.michelin.com/en/monaco-region/monaco/restaurant/le-louis-xv-alain-ducasse-a-l-hotel-de-paris,NULL,3,NULL
-338243e1-aa91-4b47-b9b9-e425f1d90cc5,rest_0015,PL,https://guide.michelin.com/nl/nl/lesser-poland/krakow/restaurant/bottiglieria-1881,NULL,2,European Contemporary
 9f889dda-28c4-412f-aaf0-547064460691,rest_1130,FR,https://guide.michelin.com/en/normandie/servon/restaurant/auberge-sauvage,NULL,1,NULL
 b57b8458-7e57-45c2-889f-54a7bd613f42,rest_1153,FR,https://guide.michelin.com/en/bretagne/kervignac/restaurant/l-inattendu-domaine-de-locguenole,NULL,1,NULL
 aa0448be-213e-4385-870d-25a735600b94,rest_1588,ES,https://guide.michelin.com/en/castilla-la-mancha/albacete/restaurant/ababol,NULL,1,NULL
@@ -30,7 +30,12 @@ b7135255-a15f-40a5-9fb9-091212dce79c,rest_0797,BE,https://guide.michelin.com/hu/
 40fcddc1-2aee-4874-b97c-18e07b5e53ac,rest_2448,GB,https://guide.michelin.com/en/greater-london/london/restaurant/64-goodge-street,NULL,1,NULL
 5bbf1695-e3cc-4ae0-bf24-0a2c1ee11e1c,rest_2449,GB,https://guide.michelin.com/en/greater-london/london/restaurant/a-wong,NULL,2,NULL
 57f6eef5-cb62-4f0d-a382-1d5be1e7b736,rest_1597,ES,https://guide.michelin.com/en/castilla-y-leon/valladolid/restaurant/alquimia,NULL,1,NULL
+21d44e3a-9b7a-4d80-baa0-9eae1d90ec27,rest_3901,PL,https://guide.michelin.com/en/masovia/warsaw/restaurant/alon-omakase,NULL,1,NULL
+36af1ede-3482-4782-b316-3f6f69d9a983,rest_3902,PL,https://guide.michelin.com/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez,NULL,1,NULL
 3662eb61-3afc-4c97-bff2-f30b0d899973,rest_1598,ES,https://guide.michelin.com/en/pais-vasco/tolosa/restaurant/ama,NULL,1,NULL
+3c3dcebe-89b9-49a5-be3d-e0687fa5a29e,rest_3903,PL,https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184,NULL,1,NULL
+fcbaf856-43d8-49e2-a752-5a02a0c33489,rest_3904,PL,https://guide.michelin.com/en/lesser-poland/koscielisko_2378757/restaurant/giewont,NULL,1,NULL
+261c957d-0fa2-4e15-a754-3555c479cc17,rest_3905,PL,https://guide.michelin.com/en/masovia/warsaw/restaurant/hub-praga,NULL,1,NULL
 1be59983-3845-4b86-b20b-124f5ca95f25,rest_1599,ES,https://guide.michelin.com/en/comunidad-de-madrid/pozuelo-de-alarcon/restaurant/ancestral-1241234,NULL,1,NULL
 70b33ec7-0157-4af4-b793-060a36329488,rest_1600,ES,https://guide.michelin.com/en/pais-vasco/galdakao/restaurant/andra-mari220169,NULL,1,NULL
 e4b3a179-908c-42f9-97a6-c339ecf64c3b,rest_1601,ES,https://guide.michelin.com/en/islas-baleares/llucmajor/restaurant/andreu-genestra-1208507,NULL,1,NULL
@@ -49,21 +54,36 @@ b3b59281-750c-4b36-a18d-d6d00be76147,rest_2450,GB,https://guide.michelin.com/en/
 de6b3c50-959d-45ea-bbf9-3599e4925cbe,rest_2451,GB,https://guide.michelin.com/en/west-midlands/birmingham/restaurant/adam-s,NULL,1,NULL
 7acdb67f-0755-4105-86df-24cef800d9e3,rest_1610,ES,https://guide.michelin.com/en/comunidad-valenciana/alcossebre/restaurant/atalaya,NULL,1,NULL
 cbef7da9-cbc8-48f5-b8bc-60d6bc16e86c,rest_0802,BE,https://guide.michelin.com/us/en/antwerpen/be-antwerpen/restaurant/t-fornuis,NULL,1,Classic Cuisine
+b564615a-256a-4ebc-870d-5f07c3761d8e,rest_3906,PL,https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/most,NULL,1,NULL
+2d4b5a89-0424-4d29-93e1-31359441be1b,rest_3907,PL,https://guide.michelin.com/en/wielkopolskie/poznan_2395985/restaurant/muga,NULL,1,NULL
+4f333201-f5d7-4ca0-8284-938bd6916f41,rest_3908,PL,https://guide.michelin.com/en/masovia/warsaw/restaurant/nuta,NULL,1,NULL
+534b47d3-88ee-4da5-8513-de014d63642d,rest_3909,PL,https://guide.michelin.com/en/masovia/warsaw/restaurant/rozbrat-20,NULL,1,NULL
+8e493505-3a3e-4177-b2b4-5abd2ca381a0,rest_3910,PL,https://guide.michelin.com/en/silesia/pszczyna_2382223/restaurant/steampunk,NULL,1,NULL
+b5e63043-bbb3-4f70-9f5b-49982f9e3d6d,rest_3911,TR,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul,NULL,1,NULL
 8f3aa222-70ca-497a-a57f-0d684bab869c,rest_1611,ES,https://guide.michelin.com/en/catalunya/barcelona/restaurant/atempo-1196425,NULL,1,NULL
 725d3e66-eb68-4295-9c7d-4fb4e3d59a1e,rest_1613,ES,https://guide.michelin.com/en/principado-de-asturias/gijon/restaurant/auga,NULL,1,NULL
 7f92c701-d33e-48e6-a2bf-e9c7f93531ec,rest_1614,ES,https://guide.michelin.com/en/principado-de-asturias/ribadesella/restaurant/ayalga,NULL,1,NULL
+a1a65d9a-e0f0-4f8f-a6b1-3c79d775d2a5,rest_3912,TR,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra,NULL,1,NULL
 c99cbf9d-262a-442f-9e84-6a28e7d84569,rest_1615,ES,https://guide.michelin.com/en/andalucia/marbella/restaurant/back,NULL,1,NULL
 2928f94b-e882-4ecd-9702-8dad6722e818,rest_1616,ES,https://guide.michelin.com/en/comunidad-valenciana/alacant/restaurant/baeza-rufete,NULL,1,NULL
+2ea44e87-7207-4c11-b6a0-3da5593fb51f,rest_3913,TR,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda,NULL,1,NULL
+e5acf873-f82b-4f61-9592-f17c84a6f554,rest_3914,TR,https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228,NULL,1,NULL
 ed32b183-5106-4387-8b0e-30ea872df38a,rest_1617,ES,https://guide.michelin.com/en/andalucia/jaen/restaurant/baga,NULL,1,NULL
-aeba2b5b-99ed-438b-8f79-4192a9f2b0b4,rest_0097,TR,https://guide.michelin.com/nl/nl/istanbul/istanbul/restaurant/sankai-by-nagaya,NULL,1,Japanese
 92947b30-56b4-4dc0-9577-21c6216e52f9,rest_1618,ES,https://guide.michelin.com/en/pais-vasco/mungia_1403141/restaurant/bakea,NULL,1,NULL
 384e0719-0a0e-45e6-b8ac-980981e3131f,rest_1619,ES,https://guide.michelin.com/en/region-de-murcia/yecla/restaurant/barahonda,NULL,1,NULL
 9f9caa14-40b1-406a-bf38-d83fdbd64ca0,rest_1620,ES,https://guide.michelin.com/en/castilla-y-leon/avila/restaurant/barro,NULL,1,NULL
 7010a9fb-f126-4377-b3db-ec86601d9c47,rest_0102,US,https://guide.michelin.com/nl/nl/new-york-state/new-york/restaurant/sushi-sho,NULL,3,Japanese / Sushi
 f3f13d3e-29b7-4281-8caa-a6e92e2cc8c7,rest_1612,ES,https://guide.michelin.com/en/comunidad-valenciana/calp/restaurant/audrey-s-by-rafa-soler,NULL,1,NULL
+b86d745e-0432-41e8-af52-ef1c5703525b,rest_3915,TR,https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1,NULL,1,NULL
+9e37f783-b967-437b-9250-7b1dc263f216,rest_3916,TR,https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak,NULL,1,NULL
+471b8783-d1c0-4378-8ee7-f237c00702b8,rest_3917,TR,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mikla,NULL,1,NULL
+5a2659a1-3c6d-435c-98fc-484e95eb4a56,rest_3918,TR,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/nar%C4%B1mor,NULL,1,NULL
 496b3c23-ea97-4b5a-843a-55d18363485f,rest_1621,ES,https://guide.michelin.com/en/comunidad-valenciana/calp/restaurant/beat,NULL,1,NULL
-ae8fb46a-5b64-4554-9a25-0da7251b0f64,rest_0112,TR,https://guide.michelin.com/nl/nl/istanbul/istanbul/restaurant/turk-fatih-tutak,NULL,2,Turkish Contemporary
+034478f5-ab1f-4ccc-ad35-46da67d56cab,rest_3919,TR,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nicole,NULL,1,NULL
+9e3440fe-c66b-411a-b77f-7f2243c42b20,rest_3920,TR,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/od-urla,NULL,1,NULL
+cd8d3754-96d9-47c8-b0ce-04d9b63ec98b,rest_3921,TR,https://guide.michelin.com/en/nevsehir/urgup_2827493/restaurant/revithia,NULL,1,NULL
 01f58bad-42f1-4e4b-ba09-976446949b10,rest_1622,ES,https://guide.michelin.com/en/andalucia/malaga/restaurant/blossom-1202609,NULL,1,NULL
+d6f15f5a-7823-41bc-ae4e-130bd4a79d36,rest_3922,TR,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla,NULL,1,NULL
 f6540d59-bbef-4083-a23e-a686152723b3,rest_1623,ES,https://guide.michelin.com/en/pais-vasco/amorebieta-etxano/restaurant/boroa,NULL,1,NULL
 595e28c2-3c0d-4b3f-8103-2e100399ba51,rest_1624,ES,https://guide.michelin.com/en/islas-baleares/eivissa/restaurant/la-gaia,NULL,1,NULL
 c68a1529-6104-4be6-bf38-cb6b19402df3,rest_1625,ES,https://guide.michelin.com/en/catalunya/barcelona/restaurant/caelis,NULL,1,NULL
@@ -76,6 +96,7 @@ af9c49c4-04de-4f5c-9c9d-c78e84b20693,rest_1629,ES,https://guide.michelin.com/en/
 23927c82-b6a7-42f1-b8ae-9fefb5498c47,rest_0129,AE,https://guide.michelin.com/nl/nl/abu-dhabi/abu-dhabi/restaurant/talea-by-antonio-guida,NULL,1,Italian
 1fd7cd84-78f6-415e-92aa-eb33f03c0385,rest_0130,AE,https://guide.michelin.com/nl/nl/abu-dhabi/abu-dhabi/restaurant/hakkasan,NULL,1,Cantonese
 7f7c455c-92d1-4e2a-90cf-5672c875b8aa,rest_0131,AE,https://guide.michelin.com/nl/nl/abu-dhabi/abu-dhabi/restaurant/erth,NULL,1,Emirati
+7927baec-c70d-402d-af11-ccd37497bbdd,rest_3923,TR,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/vino-locale,NULL,2,NULL
 e7c6be7c-7e3a-473d-9fb0-d48cb58346a5,rest_1632,ES,https://guide.michelin.com/en/catalunya/calldetenes/restaurant/can-jubany,NULL,1,NULL
 f9987287-712b-45a0-a326-6ccb80f4c7ee,rest_1634,ES,https://guide.michelin.com/en/comunidad-valenciana/benissa/restaurant/casa-bernardi,NULL,1,NULL
 9de53c95-54ff-4682-906f-376e95ca132c,rest_1635,ES,https://guide.michelin.com/en/principado-de-asturias/prendes/restaurant/casa-gerardo,NULL,1,NULL
@@ -95,11 +116,13 @@ d06d4a0b-b9fd-4f1c-8dee-5c2a6c7bfcd8,rest_0149,NL,https://guide.michelin.com/en/
 b1956faa-aa11-4297-b9a9-7c4d5f1875c4,rest_0146,NL,https://guide.michelin.com/us/en/gelderland/harderwijk/restaurant/t-nonnetje,NULL,2,Contemporary
 8f7cb302-8c83-47ba-bb80-2456689a89ff,rest_0150,NL,https://guide.michelin.com/us/en/gelderland/aalten_2215824/restaurant/olde-marckt,NULL,1,Contemporary
 a2a865bc-7433-4e5f-ae88-fb57b05b7079,rest_2455,GB,https://guide.michelin.com/en/cumbria/askham/restaurant/allium-at-askham-hall,NULL,1,NULL
+aeba2b5b-99ed-438b-8f79-4192a9f2b0b4,rest_0097,TR,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya,NULL,1,Japanese
 bb8e92cb-7d96-4904-9fe4-c091206c6fef,rest_1640,ES,https://guide.michelin.com/en/castilla-la-mancha/es-cuenca/restaurant/casas-colgadas,NULL,1,NULL
 7c95e33d-997e-43f7-b7fc-8f40f07d0eff,rest_1641,ES,https://guide.michelin.com/en/cantabria/santander/restaurant/casona-del-judio,NULL,1,NULL
 d9162f61-f715-4e03-b847-938fca1951b6,rest_1642,ES,https://guide.michelin.com/en/catalunya/peralada/restaurant/castell-peralada,NULL,1,NULL
 d98ac355-6d51-4193-8c80-c3dccb47f4ab,rest_1643,ES,https://guide.michelin.com/en/comunidad-de-madrid/madrid/restaurant/cebo-1203091,NULL,1,NULL
 af9142d5-77a0-43d0-9cbe-9e1dc4f395b4,rest_1644,ES,https://guide.michelin.com/en/galicia/ourense/restaurant/ceibe,NULL,1,NULL
+ae8fb46a-5b64-4554-9a25-0da7251b0f64,rest_0112,TR,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak,NULL,2,Turkish Contemporary
 64e99862-4297-42cf-8b4c-054950e4f1e4,rest_1645,ES,https://guide.michelin.com/en/comunidad-de-madrid/valdemoro/restaurant/chiron,NULL,1,NULL
 c50a7414-1d46-4344-b0d3-166dc7e6287a,rest_0199,DE,NULL,NULL,NULL,Mediterranean-Italian
 f35d1f9d-291f-4442-99ae-e8c711702929,rest_2456,GB,https://guide.michelin.com/en/greater-london/london/restaurant/amaya,NULL,1,NULL
@@ -778,7 +801,7 @@ c5353d4c-3346-4176-aed5-2f83fd9c4e6f,rest_2078,DE,https://guide.michelin.com/en/
 fd3955da-1f04-490e-a65c-f6799e81a09e,rest_2081,DE,https://guide.michelin.com/en/niedersachsen/cuxhaven/restaurant/sterneck,NULL,1,NULL
 5ae471ea-56ed-406d-822c-545d6c154edd,rest_2082,DE,https://guide.michelin.com/en/baden-wurttemberg/bad-krozingen/restaurant/storchen,NULL,1,NULL
 66fc0bdf-19be-4fd0-b93b-64fb63cc46ba,rest_0037,NL,https://guide.michelin.com/nl/nl/overijssel/zwolle/restaurant/de-librije,https://www.the50.com/discovery/Establishments/Netherlands/Zwolle/De-Librije.html,3,Dutch Creative
-e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b,rest_0071,TR,https://guide.michelin.com/nl/nl/istanbul/istanbul/restaurant/neolokal,https://www.the50.com/discovery/Establishments/Türkiye/Istanbul/Neolokal.html,1,Turkish Contemporary
+e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b,rest_0071,TR,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/neolokal,https://www.the50.com/discovery/Establishments/Türkiye/Istanbul/Neolokal.html,1,Turkish Contemporary
 7fa7a3bc-b8a0-4a5c-9d8e-c3586e09d753,rest_2677,CN,https://guide.michelin.com/en/tianjin-municipality/tianjin_1031352/restaurant/china-banquet,NULL,1,NULL
 873bb8b1-a3c6-4db9-93ad-f8b962738aeb,rest_0124,SG,https://guide.michelin.com/nl/nl/singapore-region/singapore/restaurant/les-amis,https://www.the50.com/discovery/Establishments/Singapore/Singapore/Les-Amis.html,3,French
 33883be1-5016-4343-b382-c7743494e5c8,rest_0125,SG,https://guide.michelin.com/nl/nl/singapore-region/singapore/restaurant/odette,https://www.the50.com/discovery/Establishments/Singapore/Singapore/Odette.html,3,French Contemporary

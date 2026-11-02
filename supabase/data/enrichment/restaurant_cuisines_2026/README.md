@@ -6,7 +6,9 @@ mixed Dutch, English and our own descriptive labels. Schema:
 `supabase/migrations/20261101150000_add_restaurant_cuisines.sql`. QA:
 QA-420–QA-426.
 
-**Status: prepared, not applied.** Nothing here has touched production.
+**Status: applied to production 2026-11-02** (both migrations and the
+load, in the order below; ledger 130/130). Built against the 2026-11-02
+export, which has the 23 PL/TR restaurants added after the first export.
 
 ## Order of apply
 
@@ -16,9 +18,9 @@ QA-420–QA-426.
    fails on purpose if step 2 has not run (two legacy label pairs share a
    slug).
 
-Step 2 is guarded: it refuses unless production still has 3532
+Step 2 is guarded: it refuses unless production still has 3555
 restaurants, 159 cuisines rows and no `restaurant_cuisines` rows, and it
-checks the end state (5017 links, 147 cuisines all with a family, 3478
+checks the end state (5053 links, 148 cuisines all with a family, 3501
 restaurants with a `cuisine_id` equal to the effective position-1
 cuisine) or rolls back.
 
@@ -32,14 +34,14 @@ cuisine) or rolls back.
 
 Never a name. MICHELIN wins over 50 Best, 50 Best over legacy; the
 lower-ranked rows stay stored (`restaurant_cuisines_effective` picks).
-The canonical vocabulary is exactly the 147 labels MICHELIN's own pages
+The canonical vocabulary is exactly the 148 labels MICHELIN's own pages
 use, spelled as MICHELIN spells them. A 50 Best or legacy value outside
 it is left empty and logged, never invented.
 
 ## Result
 
-- 3478 of 3532 restaurants have a cuisine (was 720): 3211 from MICHELIN
-  (1485 with two), 20 from 50 Best only, 247 legacy (mostly Japan, which
+- 3501 of 3555 restaurants have a cuisine (was 720): 3234 from MICHELIN
+  (1498 with two), 20 from 50 Best only, 247 legacy (mostly Japan, which
   has no `michelin_url`s, QA-421).
 - 50 Best: 64 restaurants mapped, 44 of them a cross-check behind
   MICHELIN; 14 of those differ in family, nearly all style against origin
@@ -47,7 +49,7 @@ it is left empty and logged, never invented.
 - 82 restaurant/source pairs held back (`held_back.csv`): 23 MICHELIN 404s
   (QA-420), 49 50 Best gaps (QA-424), 10 legacy labels with no MICHELIN
   equivalent (QA-425).
-- 131 of 159 old cuisines rows removed, 28 kept with their ids
+- 131 of 159 old cuisines rows removed, 28 kept with their ids; 120 added
   (`cuisines_legacy_resolution.csv`).
 
 ## Files

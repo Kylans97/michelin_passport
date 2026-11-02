@@ -26,7 +26,7 @@ The format follows Keep a Changelog.
 
 ### Added
 
-- **Restaurant cuisines, prepared — not applied.** Up to two cuisines per
+- **Restaurant cuisines.** Up to two cuisines per
   restaurant, per source, grouped into 25 families for search and
   filtering. `20261101150000_add_restaurant_cuisines.sql` adds
   `cuisine_families` (seeded), `cuisines.slug` (generated) and
@@ -41,10 +41,14 @@ The format follows Keep a Changelog.
   `restaurants_full`, so it goes only under the three-step rule. The data
   load, `supabase/data/enrichment/restaurant_cuisines_2026/prepared_restaurant_cuisines.sql`,
   replaces the mixed Dutch/English/self-written vocabulary (159 rows)
-  with MICHELIN's own 147 English labels and links 3478 of 3532
+  with MICHELIN's own 148 English labels and links 3501 of 3555
   restaurants (was 720). `20261101160000_cuisines_slug_unique.sql` goes
   after it. Replayed from scratch and tested end to end locally on a
   copy of production's restaurant ids and cuisine ids (QA-420–QA-426).
+  **Applied to production 2026-11-02**, in that order: 5053 links, 0
+  restaurants with `cuisine_id` out of step, unique slug index in place.
+  **Ledger: 130, local and remote in agreement.** No app build reads
+  the new columns yet.
 
 - **A welcome for venue hosts**, in three places that share one text:
   Mantelier is international, so write in English; events are
@@ -287,10 +291,15 @@ identical to production) still stands. `flutter analyze` clean and all
   that it refuses on uncleaned data.
 - **Near-miss: MICHELIN's JSON-LD drops the second cuisine.**
   `servesCuisine` holds only the first; the page's "Cuisine:" label holds
-  both (1485 of 3211 restaurants have two). Earlier passes' caches were
+  both (1498 of 3234 restaurants have two). Earlier passes' caches were
   not reused for that reason. Also, 111 stored MICHELIN URLs use a Dutch
   or French locale, whose pages give translated labels ("Eigentijds");
   pages are now fetched under `/en/` (QA-422, QA-423).
+- **Near-miss: production moved between export and apply.** The
+  PL/TR pass added 23 restaurants after the 2026-11-01 export, so the
+  load's row-count guard would have refused. Re-exported on 2026-11-02,
+  fetched the 23 new restaurants and the 5 whose `michelin_url` had
+  changed, and rebuilt before applying.
 
 - **The selected star or Key filter vanished in the MICHELIN guides**
   (tester, 2026-10-31: "when something's off it's gone entirely"). The

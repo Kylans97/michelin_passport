@@ -6,11 +6,11 @@
 --
 -- What it does, in one transaction:
 --   1. Guards: production still looks exactly like the export this was built
---      from (3532 restaurants, 159 cuisines rows, no
+--      from (3555 restaurants, 159 cuisines rows, no
 --      restaurant_cuisines rows yet).
---   2. Adds the 147 MICHELIN labels that are missing and sets
+--   2. Adds the 148 MICHELIN labels that are missing and sets
 --      every label's family.
---   3. Inserts 5017 restaurant_cuisines rows (3211 restaurants
+--   3. Inserts 5053 restaurant_cuisines rows (3234 restaurants
 --      from MICHELIN, 64 from World's 50 Best, 247 legacy).
 --      The trigger sets restaurants.cuisine_id to each effective position 1.
 --   4. Clears cuisine_id on the 10 restaurants whose only cuisine was an old
@@ -22,7 +22,7 @@ begin;
 
 do $$
 begin
-  if (select count(*) from public.restaurants) <> 3532 then
+  if (select count(*) from public.restaurants) <> 3555 then
     raise exception 'restaurants count changed since the export';
   end if;
   if (select count(*) from public.cuisines) <> 159 then
@@ -139,6 +139,7 @@ insert into _vocab values
   ('Pakistani', 'indian'),
   ('Peruvian', 'latin-american'),
   ('Piedmontese', 'italian'),
+  ('Polish', 'central-european'),
   ('Pork', 'grill-meat'),
   ('Portuguese', 'portuguese'),
   ('Provençal', 'french'),
@@ -217,8 +218,8 @@ insert into _links values
   ('5ecda7b4-c805-42cc-9e8f-6b1987f5f1b7'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/ile-de-france/paris/restaurant/anne', 'Modern Cuisine'),
   ('ca1b76bb-9cac-4cef-820c-1a8a16188f4b'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/noord-holland/castricum/restaurant/apicius212340', 'Modern Cuisine, Classic Cuisine'),
   ('ca1b76bb-9cac-4cef-820c-1a8a16188f4b'::uuid, 'michelin', 2, 'Classic Cuisine', 'https://guide.michelin.com/en/noord-holland/castricum/restaurant/apicius212340', 'Modern Cuisine, Classic Cuisine'),
-  ('671b5687-b60e-4e6f-beda-1551dd5b6ffb'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/istanbul/istanbul/restaurant/araka', 'Creative, Modern Cuisine'),
-  ('671b5687-b60e-4e6f-beda-1551dd5b6ffb'::uuid, 'michelin', 2, 'Modern Cuisine', 'https://guide.michelin.com/en/istanbul/istanbul/restaurant/araka', 'Creative, Modern Cuisine'),
+  ('671b5687-b60e-4e6f-beda-1551dd5b6ffb'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka', 'Creative, Modern Cuisine'),
+  ('671b5687-b60e-4e6f-beda-1551dd5b6ffb'::uuid, 'michelin', 2, 'Modern Cuisine', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka', 'Creative, Modern Cuisine'),
   ('9dafc6f2-b26d-4d8e-b5c0-0c8682768dda'::uuid, 'michelin', 1, 'Modern French', 'https://guide.michelin.com/en/limburg/maastricht/restaurant/au-coin-des-bons-enfants', 'Modern French, Seasonal Cuisine'),
   ('9dafc6f2-b26d-4d8e-b5c0-0c8682768dda'::uuid, 'michelin', 2, 'Seasonal Cuisine', 'https://guide.michelin.com/en/limburg/maastricht/restaurant/au-coin-des-bons-enfants', 'Modern French, Seasonal Cuisine'),
   ('973c7a70-fa46-47a2-8898-d20e74275847'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/limburg/maastricht/restaurant/beluga-loves-you', 'Creative'),
@@ -307,8 +308,8 @@ insert into _links values
   ('eb74798a-f11d-48f5-b862-f4b51d0738c8'::uuid, 'michelin', 1, 'Creative French', 'https://guide.michelin.com/en/north-holland/amsterdam/restaurant/mos', 'Creative French'),
   ('38329d14-033d-4af6-9fea-8f3d36673372'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/noord-brabant/cromvoirt/restaurant/noble-kitchen', 'Modern Cuisine, Sushi'),
   ('38329d14-033d-4af6-9fea-8f3d36673372'::uuid, 'michelin', 2, 'Sushi', 'https://guide.michelin.com/en/noord-brabant/cromvoirt/restaurant/noble-kitchen', 'Modern Cuisine, Sushi'),
-  ('e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b'::uuid, 'michelin', 1, 'Turkish', 'https://guide.michelin.com/en/istanbul/istanbul/restaurant/neolokal', 'Turkish, Modern Cuisine'),
-  ('e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b'::uuid, 'michelin', 2, 'Modern Cuisine', 'https://guide.michelin.com/en/istanbul/istanbul/restaurant/neolokal', 'Turkish, Modern Cuisine'),
+  ('e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b'::uuid, 'michelin', 1, 'Turkish', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/neolokal', 'Turkish, Modern Cuisine'),
+  ('e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b'::uuid, 'michelin', 2, 'Modern Cuisine', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/neolokal', 'Turkish, Modern Cuisine'),
   ('e995dbc0-fdb2-4031-a137-8212f9b25569'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/groningen/groningen/restaurant/noor-1200050', 'Creative'),
   ('ff9a953a-0c55-41a5-ad36-e457d609214d'::uuid, 'michelin', 1, 'Creative French', 'https://guide.michelin.com/en/zuid-holland/delft/restaurant/novaela', 'Creative French'),
   ('c7d1eee1-e9c6-4124-99b4-f0fec6f6c3f2'::uuid, 'michelin', 1, 'Asian', 'https://guide.michelin.com/en/north-brabant/sint-willebrord/restaurant/o-o', 'Asian, Asian Influences'),
@@ -344,7 +345,7 @@ insert into _links values
   ('febee44d-0653-4149-92e7-03f57e531e9d'::uuid, 'michelin', 1, 'Creative French', 'https://guide.michelin.com/en/north-holland/amsterdam/restaurant/ron-gastrobar', 'Creative French'),
   ('b51c6dae-e1ea-48c9-ad73-1ce16136c326'::uuid, 'michelin', 1, 'Asian and Western', 'https://guide.michelin.com/en/noord-brabant/leende_2216558/restaurant/sabero-1209599', 'Asian and Western, Modern Cuisine'),
   ('b51c6dae-e1ea-48c9-ad73-1ce16136c326'::uuid, 'michelin', 2, 'Modern Cuisine', 'https://guide.michelin.com/en/noord-brabant/leende_2216558/restaurant/sabero-1209599', 'Asian and Western, Modern Cuisine'),
-  ('aeba2b5b-99ed-438b-8f79-4192a9f2b0b4'::uuid, 'michelin', 1, 'Japanese Contemporary', 'https://guide.michelin.com/en/istanbul/istanbul/restaurant/sankai-by-nagaya', 'Japanese Contemporary'),
+  ('aeba2b5b-99ed-438b-8f79-4192a9f2b0b4'::uuid, 'michelin', 1, 'Japanese Contemporary', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya', 'Japanese Contemporary'),
   ('08860b5d-7727-4a76-bc7c-b4efcf242c38'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/north-brabant/vught/restaurant/sense', 'Creative, Contemporary'),
   ('08860b5d-7727-4a76-bc7c-b4efcf242c38'::uuid, 'michelin', 2, 'Contemporary', 'https://guide.michelin.com/en/north-brabant/vught/restaurant/sense', 'Creative, Contemporary'),
   ('94ba6b41-5441-475b-98f2-363f841502ab'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/north-holland/amsterdam/restaurant/sinne', 'Modern Cuisine, Fusion'),
@@ -367,8 +368,8 @@ insert into _links values
   ('b9168b41-6dd5-4c7d-9785-dcbfaf7dba36'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/noord-brabant/heeze/restaurant/tribeca502881', 'Creative'),
   ('2d37657d-36b6-4f9c-a087-397b22a86d07'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/south-holland/wateringen/restaurant/triptyque', 'Creative, Country cooking'),
   ('2d37657d-36b6-4f9c-a087-397b22a86d07'::uuid, 'michelin', 2, 'Country cooking', 'https://guide.michelin.com/en/south-holland/wateringen/restaurant/triptyque', 'Creative, Country cooking'),
-  ('ae8fb46a-5b64-4554-9a25-0da7251b0f64'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/istanbul/istanbul/restaurant/turk-fatih-tutak', 'Modern Cuisine, Turkish'),
-  ('ae8fb46a-5b64-4554-9a25-0da7251b0f64'::uuid, 'michelin', 2, 'Turkish', 'https://guide.michelin.com/en/istanbul/istanbul/restaurant/turk-fatih-tutak', 'Modern Cuisine, Turkish'),
+  ('ae8fb46a-5b64-4554-9a25-0da7251b0f64'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak', 'Modern Cuisine, Turkish'),
+  ('ae8fb46a-5b64-4554-9a25-0da7251b0f64'::uuid, 'michelin', 2, 'Turkish', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak', 'Modern Cuisine, Turkish'),
   ('dacdc6c6-74f1-4e11-b5f2-d8dab54ca301'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/north-brabant/ravenstein/restaurant/versaen', 'Creative, French Contemporary'),
   ('dacdc6c6-74f1-4e11-b5f2-d8dab54ca301'::uuid, 'michelin', 2, 'French Contemporary', 'https://guide.michelin.com/en/north-brabant/ravenstein/restaurant/versaen', 'Creative, French Contemporary'),
   ('132a92c8-e3d9-48fd-a067-77e7c9273f4e'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/north-holland/amsterdam/restaurant/vinkeles', 'Creative, Classic Cuisine'),
@@ -5220,7 +5221,43 @@ insert into _links values
   ('6c4ef422-b2ad-4b19-a40b-3827a6e9e8ce'::uuid, 'michelin', 2, 'Creative', 'https://guide.michelin.com/en/porto-region/vila-nova-de-gaia/restaurant/vinha', 'Portuguese, Creative'),
   ('531cfd89-1341-4ccf-9614-f37092631b47'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/faro-region/portimo/restaurant/vista365067', 'Modern Cuisine'),
   ('21763ac8-0f54-49a8-8cae-4a94f6347bb8'::uuid, 'michelin', 1, 'Contemporary', 'https://guide.michelin.com/en/ilha-da-madeira/funchal/restaurant/william216831', 'Contemporary'),
-  ('9646e4f9-00c9-4be9-942b-71a2ec1e40e5'::uuid, 'michelin', 1, 'Japanese', 'https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/yoso-1214668', 'Japanese');
+  ('9646e4f9-00c9-4be9-942b-71a2ec1e40e5'::uuid, 'michelin', 1, 'Japanese', 'https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/yoso-1214668', 'Japanese'),
+  ('21d44e3a-9b7a-4d80-baa0-9eae1d90ec27'::uuid, 'michelin', 1, 'Sushi', 'https://guide.michelin.com/en/masovia/warsaw/restaurant/alon-omakase', 'Sushi'),
+  ('36af1ede-3482-4782-b316-3f6f69d9a983'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez', 'Creative, Mediterranean Cuisine'),
+  ('36af1ede-3482-4782-b316-3f6f69d9a983'::uuid, 'michelin', 2, 'Mediterranean Cuisine', 'https://guide.michelin.com/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez', 'Creative, Mediterranean Cuisine'),
+  ('3c3dcebe-89b9-49a5-be3d-e0687fa5a29e'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184', 'Modern Cuisine, Polish'),
+  ('3c3dcebe-89b9-49a5-be3d-e0687fa5a29e'::uuid, 'michelin', 2, 'Polish', 'https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184', 'Modern Cuisine, Polish'),
+  ('fcbaf856-43d8-49e2-a752-5a02a0c33489'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/lesser-poland/koscielisko_2378757/restaurant/giewont', 'Modern Cuisine'),
+  ('261c957d-0fa2-4e15-a754-3555c479cc17'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/masovia/warsaw/restaurant/hub-praga', 'Modern Cuisine'),
+  ('b564615a-256a-4ebc-870d-5f07c3761d8e'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/most', 'Modern Cuisine'),
+  ('2d4b5a89-0424-4d29-93e1-31359441be1b'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/wielkopolskie/poznan_2395985/restaurant/muga', 'Modern Cuisine'),
+  ('4f333201-f5d7-4ca0-8284-938bd6916f41'::uuid, 'michelin', 1, 'Creative', 'https://guide.michelin.com/en/masovia/warsaw/restaurant/nuta', 'Creative'),
+  ('534b47d3-88ee-4da5-8513-de014d63642d'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/masovia/warsaw/restaurant/rozbrat-20', 'Modern Cuisine'),
+  ('8e493505-3a3e-4177-b2b4-5abd2ca381a0'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/silesia/pszczyna_2382223/restaurant/steampunk', 'Modern Cuisine'),
+  ('b5e63043-bbb3-4f70-9f5b-49982f9e3d6d'::uuid, 'michelin', 1, 'Contemporary', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul', 'Contemporary, Turkish'),
+  ('b5e63043-bbb3-4f70-9f5b-49982f9e3d6d'::uuid, 'michelin', 2, 'Turkish', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul', 'Contemporary, Turkish'),
+  ('a1a65d9a-e0f0-4f8f-a6b1-3c79d775d2a5'::uuid, 'michelin', 1, 'Fusion', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra', 'Fusion'),
+  ('2ea44e87-7207-4c11-b6a0-3da5593fb51f'::uuid, 'michelin', 1, 'Traditional Cuisine', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda', 'Traditional Cuisine, Mediterranean Cuisine'),
+  ('2ea44e87-7207-4c11-b6a0-3da5593fb51f'::uuid, 'michelin', 2, 'Mediterranean Cuisine', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda', 'Traditional Cuisine, Mediterranean Cuisine'),
+  ('e5acf873-f82b-4f61-9592-f17c84a6f554'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228', 'Modern Cuisine, Country cooking'),
+  ('e5acf873-f82b-4f61-9592-f17c84a6f554'::uuid, 'michelin', 2, 'Country cooking', 'https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228', 'Modern Cuisine, Country cooking'),
+  ('b86d745e-0432-41e8-af52-ef1c5703525b'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1', 'Modern Cuisine'),
+  ('9e37f783-b967-437b-9250-7b1dc263f216'::uuid, 'michelin', 1, 'Farm to table', 'https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak', 'Farm to table, Turkish'),
+  ('9e37f783-b967-437b-9250-7b1dc263f216'::uuid, 'michelin', 2, 'Turkish', 'https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak', 'Farm to table, Turkish'),
+  ('471b8783-d1c0-4378-8ee7-f237c00702b8'::uuid, 'michelin', 1, 'Mediterranean Cuisine', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mikla', 'Mediterranean Cuisine, Modern Cuisine'),
+  ('471b8783-d1c0-4378-8ee7-f237c00702b8'::uuid, 'michelin', 2, 'Modern Cuisine', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mikla', 'Mediterranean Cuisine, Modern Cuisine'),
+  ('5a2659a1-3c6d-435c-98fc-484e95eb4a56'::uuid, 'michelin', 1, 'Turkish', 'https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/nar%C4%B1mor', 'Turkish, Modern Cuisine'),
+  ('5a2659a1-3c6d-435c-98fc-484e95eb4a56'::uuid, 'michelin', 2, 'Modern Cuisine', 'https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/nar%C4%B1mor', 'Turkish, Modern Cuisine'),
+  ('034478f5-ab1f-4ccc-ad35-46da67d56cab'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nicole', 'Modern Cuisine, Turkish'),
+  ('034478f5-ab1f-4ccc-ad35-46da67d56cab'::uuid, 'michelin', 2, 'Turkish', 'https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nicole', 'Modern Cuisine, Turkish'),
+  ('9e3440fe-c66b-411a-b77f-7f2243c42b20'::uuid, 'michelin', 1, 'Modern Cuisine', 'https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/od-urla', 'Modern Cuisine, Turkish'),
+  ('9e3440fe-c66b-411a-b77f-7f2243c42b20'::uuid, 'michelin', 2, 'Turkish', 'https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/od-urla', 'Modern Cuisine, Turkish'),
+  ('cd8d3754-96d9-47c8-b0ce-04d9b63ec98b'::uuid, 'michelin', 1, 'Country cooking', 'https://guide.michelin.com/en/nevsehir/urgup_2827493/restaurant/revithia', 'Country cooking, Traditional Cuisine'),
+  ('cd8d3754-96d9-47c8-b0ce-04d9b63ec98b'::uuid, 'michelin', 2, 'Traditional Cuisine', 'https://guide.michelin.com/en/nevsehir/urgup_2827493/restaurant/revithia', 'Country cooking, Traditional Cuisine'),
+  ('d6f15f5a-7823-41bc-ae4e-130bd4a79d36'::uuid, 'michelin', 1, 'Mediterranean Cuisine', 'https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla', 'Mediterranean Cuisine, French Contemporary'),
+  ('d6f15f5a-7823-41bc-ae4e-130bd4a79d36'::uuid, 'michelin', 2, 'French Contemporary', 'https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla', 'Mediterranean Cuisine, French Contemporary'),
+  ('7927baec-c70d-402d-af11-ccd37497bbdd'::uuid, 'michelin', 1, 'Turkish', 'https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/vino-locale', 'Turkish, Asian Influences'),
+  ('7927baec-c70d-402d-af11-ccd37497bbdd'::uuid, 'michelin', 2, 'Asian Influences', 'https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/vino-locale', 'Turkish, Asian Influences');
 
 do $$
 begin
@@ -5245,17 +5282,17 @@ delete from public.cuisines c
 
 do $$
 begin
-  if (select count(*) from public.restaurant_cuisines) <> 5017 then
-    raise exception 'restaurant_cuisines row count is not 5017';
+  if (select count(*) from public.restaurant_cuisines) <> 5053 then
+    raise exception 'restaurant_cuisines row count is not 5053';
   end if;
-  if (select count(*) from public.cuisines) <> 147 then
-    raise exception 'cuisines is not exactly the 147 MICHELIN labels';
+  if (select count(*) from public.cuisines) <> 148 then
+    raise exception 'cuisines is not exactly the 148 MICHELIN labels';
   end if;
   if exists (select 1 from public.cuisines where family_id is null) then
     raise exception 'a cuisine has no family';
   end if;
-  if (select count(*) from public.restaurants where cuisine_id is not null) <> 3478 then
-    raise exception 'restaurants with a cuisine_id is not 3478';
+  if (select count(*) from public.restaurants where cuisine_id is not null) <> 3501 then
+    raise exception 'restaurants with a cuisine_id is not 3501';
   end if;
   if exists (
     select 1 from public.restaurants r

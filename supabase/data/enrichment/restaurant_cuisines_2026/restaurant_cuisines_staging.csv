@@ -12,8 +12,8 @@ a39f338d-46e0-490a-99d3-27479f72cf73,rest_0007,NL,michelin,1,Modern French,https
 5ecda7b4-c805-42cc-9e8f-6b1987f5f1b7,rest_0008,FR,michelin,1,Modern Cuisine,https://guide.michelin.com/en/ile-de-france/paris/restaurant/anne,Modern Cuisine,2026-11-01
 ca1b76bb-9cac-4cef-820c-1a8a16188f4b,rest_0009,NL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/noord-holland/castricum/restaurant/apicius212340,"Modern Cuisine, Classic Cuisine",2026-11-01
 ca1b76bb-9cac-4cef-820c-1a8a16188f4b,rest_0009,NL,michelin,2,Classic Cuisine,https://guide.michelin.com/en/noord-holland/castricum/restaurant/apicius212340,"Modern Cuisine, Classic Cuisine",2026-11-01
-671b5687-b60e-4e6f-beda-1551dd5b6ffb,rest_0010,TR,michelin,1,Creative,https://guide.michelin.com/en/istanbul/istanbul/restaurant/araka,"Creative, Modern Cuisine",2026-11-01
-671b5687-b60e-4e6f-beda-1551dd5b6ffb,rest_0010,TR,michelin,2,Modern Cuisine,https://guide.michelin.com/en/istanbul/istanbul/restaurant/araka,"Creative, Modern Cuisine",2026-11-01
+671b5687-b60e-4e6f-beda-1551dd5b6ffb,rest_0010,TR,michelin,1,Creative,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka,"Creative, Modern Cuisine",2026-11-01
+671b5687-b60e-4e6f-beda-1551dd5b6ffb,rest_0010,TR,michelin,2,Modern Cuisine,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araka,"Creative, Modern Cuisine",2026-11-01
 9dafc6f2-b26d-4d8e-b5c0-0c8682768dda,rest_0011,NL,michelin,1,Modern French,https://guide.michelin.com/en/limburg/maastricht/restaurant/au-coin-des-bons-enfants,"Modern French, Seasonal Cuisine",2026-11-01
 9dafc6f2-b26d-4d8e-b5c0-0c8682768dda,rest_0011,NL,michelin,2,Seasonal Cuisine,https://guide.michelin.com/en/limburg/maastricht/restaurant/au-coin-des-bons-enfants,"Modern French, Seasonal Cuisine",2026-11-01
 973c7a70-fa46-47a2-8898-d20e74275847,rest_0012,NL,michelin,1,Creative,https://guide.michelin.com/en/limburg/maastricht/restaurant/beluga-loves-you,Creative,2026-11-01
@@ -102,8 +102,8 @@ ec576103-df36-4d0a-a4ab-ce8a58ddb5e6,rest_0067,ES,michelin,1,Creative,https://gu
 eb74798a-f11d-48f5-b862-f4b51d0738c8,rest_0069,NL,michelin,1,Creative French,https://guide.michelin.com/en/north-holland/amsterdam/restaurant/mos,Creative French,2026-11-01
 38329d14-033d-4af6-9fea-8f3d36673372,rest_0070,NL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/noord-brabant/cromvoirt/restaurant/noble-kitchen,"Modern Cuisine, Sushi",2026-11-01
 38329d14-033d-4af6-9fea-8f3d36673372,rest_0070,NL,michelin,2,Sushi,https://guide.michelin.com/en/noord-brabant/cromvoirt/restaurant/noble-kitchen,"Modern Cuisine, Sushi",2026-11-01
-e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b,rest_0071,TR,michelin,1,Turkish,https://guide.michelin.com/en/istanbul/istanbul/restaurant/neolokal,"Turkish, Modern Cuisine",2026-11-01
-e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b,rest_0071,TR,michelin,2,Modern Cuisine,https://guide.michelin.com/en/istanbul/istanbul/restaurant/neolokal,"Turkish, Modern Cuisine",2026-11-01
+e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b,rest_0071,TR,michelin,1,Turkish,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/neolokal,"Turkish, Modern Cuisine",2026-11-01
+e83e6c67-46ce-4ead-8bd8-dfd44d0f3e1b,rest_0071,TR,michelin,2,Modern Cuisine,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/neolokal,"Turkish, Modern Cuisine",2026-11-01
 e995dbc0-fdb2-4031-a137-8212f9b25569,rest_0072,NL,michelin,1,Creative,https://guide.michelin.com/en/groningen/groningen/restaurant/noor-1200050,Creative,2026-11-01
 ff9a953a-0c55-41a5-ad36-e457d609214d,rest_0073,NL,michelin,1,Creative French,https://guide.michelin.com/en/zuid-holland/delft/restaurant/novaela,Creative French,2026-11-01
 c7d1eee1-e9c6-4124-99b4-f0fec6f6c3f2,rest_0074,NL,michelin,1,Asian,https://guide.michelin.com/en/north-brabant/sint-willebrord/restaurant/o-o,"Asian, Asian Influences",2026-11-01
@@ -139,7 +139,7 @@ aa2eef04-d709-4d9b-afcb-1e076b401203,rest_0094,NL,michelin,1,Modern Cuisine,http
 febee44d-0653-4149-92e7-03f57e531e9d,rest_0095,NL,michelin,1,Creative French,https://guide.michelin.com/en/north-holland/amsterdam/restaurant/ron-gastrobar,Creative French,2026-11-01
 b51c6dae-e1ea-48c9-ad73-1ce16136c326,rest_0096,NL,michelin,1,Asian and Western,https://guide.michelin.com/en/noord-brabant/leende_2216558/restaurant/sabero-1209599,"Asian and Western, Modern Cuisine",2026-11-01
 b51c6dae-e1ea-48c9-ad73-1ce16136c326,rest_0096,NL,michelin,2,Modern Cuisine,https://guide.michelin.com/en/noord-brabant/leende_2216558/restaurant/sabero-1209599,"Asian and Western, Modern Cuisine",2026-11-01
-aeba2b5b-99ed-438b-8f79-4192a9f2b0b4,rest_0097,TR,michelin,1,Japanese Contemporary,https://guide.michelin.com/en/istanbul/istanbul/restaurant/sankai-by-nagaya,Japanese Contemporary,2026-11-01
+aeba2b5b-99ed-438b-8f79-4192a9f2b0b4,rest_0097,TR,michelin,1,Japanese Contemporary,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/sankai-by-nagaya,Japanese Contemporary,2026-11-01
 08860b5d-7727-4a76-bc7c-b4efcf242c38,rest_0098,NL,michelin,1,Creative,https://guide.michelin.com/en/north-brabant/vught/restaurant/sense,"Creative, Contemporary",2026-11-01
 08860b5d-7727-4a76-bc7c-b4efcf242c38,rest_0098,NL,michelin,2,Contemporary,https://guide.michelin.com/en/north-brabant/vught/restaurant/sense,"Creative, Contemporary",2026-11-01
 94ba6b41-5441-475b-98f2-363f841502ab,rest_0099,NL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/north-holland/amsterdam/restaurant/sinne,"Modern Cuisine, Fusion",2026-11-01
@@ -162,8 +162,8 @@ afd92370-d399-4ec7-b65f-dfef1598904d,rest_0106,NL,michelin,1,Modern French,https
 b9168b41-6dd5-4c7d-9785-dcbfaf7dba36,rest_0110,NL,michelin,1,Creative,https://guide.michelin.com/en/noord-brabant/heeze/restaurant/tribeca502881,Creative,2026-11-01
 2d37657d-36b6-4f9c-a087-397b22a86d07,rest_0111,NL,michelin,1,Creative,https://guide.michelin.com/en/south-holland/wateringen/restaurant/triptyque,"Creative, Country cooking",2026-11-01
 2d37657d-36b6-4f9c-a087-397b22a86d07,rest_0111,NL,michelin,2,Country cooking,https://guide.michelin.com/en/south-holland/wateringen/restaurant/triptyque,"Creative, Country cooking",2026-11-01
-ae8fb46a-5b64-4554-9a25-0da7251b0f64,rest_0112,TR,michelin,1,Modern Cuisine,https://guide.michelin.com/en/istanbul/istanbul/restaurant/turk-fatih-tutak,"Modern Cuisine, Turkish",2026-11-01
-ae8fb46a-5b64-4554-9a25-0da7251b0f64,rest_0112,TR,michelin,2,Turkish,https://guide.michelin.com/en/istanbul/istanbul/restaurant/turk-fatih-tutak,"Modern Cuisine, Turkish",2026-11-01
+ae8fb46a-5b64-4554-9a25-0da7251b0f64,rest_0112,TR,michelin,1,Modern Cuisine,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak,"Modern Cuisine, Turkish",2026-11-01
+ae8fb46a-5b64-4554-9a25-0da7251b0f64,rest_0112,TR,michelin,2,Turkish,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/turk-fatih-tutak,"Modern Cuisine, Turkish",2026-11-01
 dacdc6c6-74f1-4e11-b5f2-d8dab54ca301,rest_0113,NL,michelin,1,Creative,https://guide.michelin.com/en/north-brabant/ravenstein/restaurant/versaen,"Creative, French Contemporary",2026-11-01
 dacdc6c6-74f1-4e11-b5f2-d8dab54ca301,rest_0113,NL,michelin,2,French Contemporary,https://guide.michelin.com/en/north-brabant/ravenstein/restaurant/versaen,"Creative, French Contemporary",2026-11-01
 132a92c8-e3d9-48fd-a067-77e7c9273f4e,rest_0114,NL,michelin,1,Creative,https://guide.michelin.com/en/north-holland/amsterdam/restaurant/vinkeles,"Creative, Classic Cuisine",2026-11-01
@@ -5016,3 +5016,39 @@ b23aadab-04bf-48e8-b0e5-072c23cf7db5,rest_3800,PT,michelin,1,Creative,https://gu
 531cfd89-1341-4ccf-9614-f37092631b47,rest_3810,PT,michelin,1,Modern Cuisine,https://guide.michelin.com/en/faro-region/portimo/restaurant/vista365067,Modern Cuisine,2026-11-01
 21763ac8-0f54-49a8-8cae-4a94f6347bb8,rest_3811,PT,michelin,1,Contemporary,https://guide.michelin.com/en/ilha-da-madeira/funchal/restaurant/william216831,Contemporary,2026-11-01
 9646e4f9-00c9-4be9-942b-71a2ec1e40e5,rest_3812,PT,michelin,1,Japanese,https://guide.michelin.com/en/lisboa-region/lisboa/restaurant/yoso-1214668,Japanese,2026-11-01
+21d44e3a-9b7a-4d80-baa0-9eae1d90ec27,rest_3901,PL,michelin,1,Sushi,https://guide.michelin.com/en/masovia/warsaw/restaurant/alon-omakase,Sushi,2026-11-01
+36af1ede-3482-4782-b316-3f6f69d9a983,rest_3902,PL,michelin,1,Creative,https://guide.michelin.com/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez,"Creative, Mediterranean Cuisine",2026-11-01
+36af1ede-3482-4782-b316-3f6f69d9a983,rest_3902,PL,michelin,2,Mediterranean Cuisine,https://guide.michelin.com/en/pomerania/gdansk_2403599/restaurant/arco-by-paco-perez,"Creative, Mediterranean Cuisine",2026-11-01
+3c3dcebe-89b9-49a5-be3d-e0687fa5a29e,rest_3903,PL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184,"Modern Cuisine, Polish",2026-11-01
+3c3dcebe-89b9-49a5-be3d-e0687fa5a29e,rest_3903,PL,michelin,2,Polish,https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/baba-1219184,"Modern Cuisine, Polish",2026-11-01
+fcbaf856-43d8-49e2-a752-5a02a0c33489,rest_3904,PL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/lesser-poland/koscielisko_2378757/restaurant/giewont,Modern Cuisine,2026-11-01
+261c957d-0fa2-4e15-a754-3555c479cc17,rest_3905,PL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/masovia/warsaw/restaurant/hub-praga,Modern Cuisine,2026-11-01
+b564615a-256a-4ebc-870d-5f07c3761d8e,rest_3906,PL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/lower-silesian/wroclaw_2399695/restaurant/most,Modern Cuisine,2026-11-01
+2d4b5a89-0424-4d29-93e1-31359441be1b,rest_3907,PL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/wielkopolskie/poznan_2395985/restaurant/muga,Modern Cuisine,2026-11-01
+4f333201-f5d7-4ca0-8284-938bd6916f41,rest_3908,PL,michelin,1,Creative,https://guide.michelin.com/en/masovia/warsaw/restaurant/nuta,Creative,2026-11-01
+534b47d3-88ee-4da5-8513-de014d63642d,rest_3909,PL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/masovia/warsaw/restaurant/rozbrat-20,Modern Cuisine,2026-11-01
+8e493505-3a3e-4177-b2b4-5abd2ca381a0,rest_3910,PL,michelin,1,Modern Cuisine,https://guide.michelin.com/en/silesia/pszczyna_2382223/restaurant/steampunk,Modern Cuisine,2026-11-01
+b5e63043-bbb3-4f70-9f5b-49982f9e3d6d,rest_3911,TR,michelin,1,Contemporary,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul,"Contemporary, Turkish",2026-11-01
+b5e63043-bbb3-4f70-9f5b-49982f9e3d6d,rest_3911,TR,michelin,2,Turkish,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/araf-istanbul,"Contemporary, Turkish",2026-11-01
+a1a65d9a-e0f0-4f8f-a6b1-3c79d775d2a5,rest_3912,TR,michelin,1,Fusion,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/arkestra,Fusion,2026-11-01
+2ea44e87-7207-4c11-b6a0-3da5593fb51f,rest_3913,TR,michelin,1,Traditional Cuisine,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda,"Traditional Cuisine, Mediterranean Cuisine",2026-11-01
+2ea44e87-7207-4c11-b6a0-3da5593fb51f,rest_3913,TR,michelin,2,Mediterranean Cuisine,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/casa-lavanda,"Traditional Cuisine, Mediterranean Cuisine",2026-11-01
+e5acf873-f82b-4f61-9592-f17c84a6f554,rest_3914,TR,michelin,1,Modern Cuisine,https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228,"Modern Cuisine, Country cooking",2026-11-01
+e5acf873-f82b-4f61-9592-f17c84a6f554,rest_3914,TR,michelin,2,Country cooking,https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228,"Modern Cuisine, Country cooking",2026-11-01
+b86d745e-0432-41e8-af52-ef1c5703525b,rest_3915,TR,michelin,1,Modern Cuisine,https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/macak%C4%B1z%C4%B1,Modern Cuisine,2026-11-01
+9e37f783-b967-437b-9250-7b1dc263f216,rest_3916,TR,michelin,1,Farm to table,https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak,"Farm to table, Turkish",2026-11-01
+9e37f783-b967-437b-9250-7b1dc263f216,rest_3916,TR,michelin,2,Turkish,https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/mezra-yal%C4%B1kavak,"Farm to table, Turkish",2026-11-01
+471b8783-d1c0-4378-8ee7-f237c00702b8,rest_3917,TR,michelin,1,Mediterranean Cuisine,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mikla,"Mediterranean Cuisine, Modern Cuisine",2026-11-01
+471b8783-d1c0-4378-8ee7-f237c00702b8,rest_3917,TR,michelin,2,Modern Cuisine,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/mikla,"Mediterranean Cuisine, Modern Cuisine",2026-11-01
+5a2659a1-3c6d-435c-98fc-484e95eb4a56,rest_3918,TR,michelin,1,Turkish,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/nar%C4%B1mor,"Turkish, Modern Cuisine",2026-11-01
+5a2659a1-3c6d-435c-98fc-484e95eb4a56,rest_3918,TR,michelin,2,Modern Cuisine,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/nar%C4%B1mor,"Turkish, Modern Cuisine",2026-11-01
+034478f5-ab1f-4ccc-ad35-46da67d56cab,rest_3919,TR,michelin,1,Modern Cuisine,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nicole,"Modern Cuisine, Turkish",2026-11-01
+034478f5-ab1f-4ccc-ad35-46da67d56cab,rest_3919,TR,michelin,2,Turkish,https://guide.michelin.com/en/istanbul-province/istanbul/restaurant/nicole,"Modern Cuisine, Turkish",2026-11-01
+9e3440fe-c66b-411a-b77f-7f2243c42b20,rest_3920,TR,michelin,1,Modern Cuisine,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/od-urla,"Modern Cuisine, Turkish",2026-11-01
+9e3440fe-c66b-411a-b77f-7f2243c42b20,rest_3920,TR,michelin,2,Turkish,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/od-urla,"Modern Cuisine, Turkish",2026-11-01
+cd8d3754-96d9-47c8-b0ce-04d9b63ec98b,rest_3921,TR,michelin,1,Country cooking,https://guide.michelin.com/en/nevsehir/urgup_2827493/restaurant/revithia,"Country cooking, Traditional Cuisine",2026-11-01
+cd8d3754-96d9-47c8-b0ce-04d9b63ec98b,rest_3921,TR,michelin,2,Traditional Cuisine,https://guide.michelin.com/en/nevsehir/urgup_2827493/restaurant/revithia,"Country cooking, Traditional Cuisine",2026-11-01
+d6f15f5a-7823-41bc-ae4e-130bd4a79d36,rest_3922,TR,michelin,1,Mediterranean Cuisine,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla,"Mediterranean Cuisine, French Contemporary",2026-11-01
+d6f15f5a-7823-41bc-ae4e-130bd4a79d36,rest_3922,TR,michelin,2,French Contemporary,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla,"Mediterranean Cuisine, French Contemporary",2026-11-01
+7927baec-c70d-402d-af11-ccd37497bbdd,rest_3923,TR,michelin,1,Turkish,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/vino-locale,"Turkish, Asian Influences",2026-11-01
+7927baec-c70d-402d-af11-ccd37497bbdd,rest_3923,TR,michelin,2,Asian Influences,https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/vino-locale,"Turkish, Asian Influences",2026-11-01
