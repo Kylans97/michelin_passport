@@ -8,6 +8,21 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Fixed
+- **App Store Connect warned ITMS-90683 on 1.5.6 (26)**: "Missing
+  purpose string" for `NSLocationAlwaysAndWhenInUseUsageDescription`.
+  Delivery still succeeded. `geolocator_apple` contains a
+  `requestAlwaysAuthorization` call, and Apple's static scan flags any
+  app that links it. It never runs here: `PermissionHandler.m` asks
+  when-in-use whenever `NSLocationWhenInUseUsageDescription` is present,
+  which it is. Compiling that call out (`BYPASS_PERMISSION_LOCATION_
+  ALWAYS`) only works through a CocoaPods Podfile, and this project uses
+  Swift Package Manager. So `Info.plist` now carries the missing key,
+  with honest text ("only while you use the app … never in the
+  background"). It is never shown, because the app never asks for
+  always. Checked in a release build's `Info.plist`; Apple's own scan
+  of the next upload is the real confirmation.
+
 ---
 
 ## v1.5.6 (26) — 2026-11-02
@@ -78,9 +93,11 @@ migrations were replayed on a scratch stack.
       backup's code works.
 
     Plus 18 widget and unit tests.
-  - **Not tested:** iOS filling a code in from Passwords on a real
-    iPhone. The simulator's Passwords app is locked, because it has no
-    passcode.
+  - **Not tested before release:** iOS filling a code in from Passwords
+    on a real iPhone, since the simulator's Passwords app is locked
+    without a passcode. Confirmed afterwards by the product owner on
+    their own iPhone with build 26, where they also turned two-step
+    sign-in on for the admin account.
 
 ### Fixed
 - The first code field in the simulator took eight digits after a
