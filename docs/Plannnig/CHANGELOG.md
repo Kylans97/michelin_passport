@@ -38,9 +38,10 @@ The format follows Keep a Changelog.
   (`usage_monthly_totals`, rows and distinct members, no user id),
   written by a monthly pg_cron job, `prune_usage_records()`, just before
   it deletes the raw rows. On production the oldest usage row is from
-  2026-09-19, so nothing is deleted before October 2028. Migration
-  `20261101260000_add_usage_retention.sql`, not yet applied; the privacy
-  policy's "How long we keep it" says the same, not yet deployed.
+  2026-09-19, so nothing is deleted before October 2028. Live on
+  2026-11-02: the privacy policy's "How long we keep it" first, then
+  migration `20261101260000_add_usage_retention.sql`. **Ledger: 140,
+  local and remote in agreement.**
 
 ### Fixed
 - Near-miss, caught on a replay before anything shipped: a CHECK that a
