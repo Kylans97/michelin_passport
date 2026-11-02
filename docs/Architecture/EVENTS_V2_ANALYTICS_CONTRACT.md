@@ -132,6 +132,8 @@ Migration: `20261101250000_add_venue_insight_tracking.sql`.
 | Intent changes | Server-side trigger on `event_attendance`: every Interested/Going change including removal, with `friend_signal` = an accepted friend already had the event as Interested or Going with visibility `friends`. Never which friend. Records for every build | `event_intent_changes` |
 | Photos seen | On leaving a Restaurant/Hotel Detail (never in preview): the published photos that were on screen in the gallery, the first always | `venue_photo_views` |
 
+**Retention (2026-11-02, `20261101260000_add_usage_retention.sql`):** raw usage rows are kept 24 months, `entity_impressions` 13 months, counted in whole months. A monthly pg_cron job, `prune_usage_records()`, first writes each month's totals (rows and distinct members, no user id) to `usage_monthly_totals`, then deletes the raw rows. Any report reading further back than 12 months must read those totals, not the raw tables.
+
 `explore_signals.value` has a CHECK refusing anything but `[A-Za-z0-9_-]`,
 so no typed text can be stored there even by mistake. Trip adds are not a
 new signal: `planned_venues` already holds them. Studio reads all of it

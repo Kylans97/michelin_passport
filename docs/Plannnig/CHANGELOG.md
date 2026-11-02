@@ -33,6 +33,15 @@ The format follows Keep a Changelog.
   that were examples now read real data). The app side ships with the
   next build. **Ledger: 139, local and remote in agreement.**
 
+- **Usage retention** — raw usage rows are now kept 24 months, cards
+  seen in lists 13 months; then only anonymous monthly totals remain
+  (`usage_monthly_totals`, rows and distinct members, no user id),
+  written by a monthly pg_cron job, `prune_usage_records()`, just before
+  it deletes the raw rows. On production the oldest usage row is from
+  2026-09-19, so nothing is deleted before October 2028. Migration
+  `20261101260000_add_usage_retention.sql`, not yet applied; the privacy
+  policy's "How long we keep it" says the same, not yet deployed.
+
 ### Fixed
 - Near-miss, caught on a replay before anything shipped: a CHECK that a
   ticket or website tap names its event would have refused **deleting
