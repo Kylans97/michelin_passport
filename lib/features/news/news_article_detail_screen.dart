@@ -95,6 +95,7 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
       builder: (_) => RestaurantDetailScreen(
         restaurant: restaurant,
         openSource: AnalyticsOpenSource.news,
+        openSourceId: widget.article.id,
       ),
     ),
   );
@@ -102,8 +103,11 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
   void _openHotel(Hotel hotel) => Navigator.push(
     context,
     MaterialPageRoute(
-      builder: (_) =>
-          HotelDetailScreen(hotel: hotel, openSource: AnalyticsOpenSource.news),
+      builder: (_) => HotelDetailScreen(
+        hotel: hotel,
+        openSource: AnalyticsOpenSource.news,
+        openSourceId: widget.article.id,
+      ),
     ),
   );
 
@@ -113,6 +117,7 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
       builder: (_) => PrivateChefDetailScreen(
         chefId: chef.id,
         openSource: AnalyticsOpenSource.news,
+        openSourceId: widget.article.id,
       ),
     ),
   );

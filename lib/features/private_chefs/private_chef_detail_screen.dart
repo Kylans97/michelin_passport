@@ -109,6 +109,9 @@ class PrivateChefDetailScreen extends StatefulWidget {
   /// Where this page was opened from, for analytics; null when unattributed.
   final AnalyticsOpenSource? openSource;
 
+  /// The news article or event id when [openSource] is news or event.
+  final String? openSourceId;
+
   const PrivateChefDetailScreen({
     super.key,
     required this.chefId,
@@ -118,6 +121,7 @@ class PrivateChefDetailScreen extends StatefulWidget {
     this.isPreview = false,
     this.previewIsStale = false,
     this.openSource,
+    this.openSourceId,
   });
 
   @override
@@ -191,6 +195,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
           entityType: AnalyticsEntityType.privateChef,
           entityId: widget.chefId,
           openSource: widget.openSource,
+          openSourceId: widget.openSourceId,
         ),
       );
     }

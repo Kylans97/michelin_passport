@@ -170,6 +170,11 @@ class SupabaseAnalyticsService implements AnalyticsService {
         venueType: venueType,
         venueId: venueId,
         source: properties?.openSource?.wireName,
+        sourceId: switch (properties?.openSource) {
+          AnalyticsOpenSource.news ||
+          AnalyticsOpenSource.event => properties?.openSourceId,
+          _ => null,
+        },
       ),
     );
   }
@@ -278,6 +283,7 @@ class SupabaseAnalyticsService implements AnalyticsService {
     required AnalyticsEntityType venueType,
     required String venueId,
     String? source,
+    String? sourceId,
   }) async {
     try {
       final client = _clientOf();
@@ -289,6 +295,7 @@ class SupabaseAnalyticsService implements AnalyticsService {
         'venue_type': venueType.wireName,
         'venue_id': venueId,
         'source': ?source,
+        'source_id': ?sourceId,
       });
     } catch (error, stackTrace) {
       debugPrint('VENUE PAGE OPEN TRACK FAILED: $error');

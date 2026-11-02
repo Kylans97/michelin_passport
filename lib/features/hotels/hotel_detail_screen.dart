@@ -86,6 +86,9 @@ class HotelDetailScreen extends StatefulWidget {
   /// Where this page was opened from, for analytics; null when unattributed.
   final AnalyticsOpenSource? openSource;
 
+  /// The news article or event id when [openSource] is news or event.
+  final String? openSourceId;
+
   const HotelDetailScreen({
     super.key,
     required this.hotel,
@@ -95,6 +98,7 @@ class HotelDetailScreen extends StatefulWidget {
     this.isPreview = false,
     this.previewIsStale = false,
     this.openSource,
+    this.openSourceId,
   });
 
   @override
@@ -186,6 +190,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
           entityType: AnalyticsEntityType.hotel,
           entityId: widget.hotel.id,
           openSource: widget.openSource,
+          openSourceId: widget.openSourceId,
         ),
       );
     }

@@ -615,6 +615,11 @@ function renderProInsights(x, search) {
   renderBars($("pro-surfaces"), x.seen_surfaces.map((s) => ({ label: surfaceNames[s.surface] ?? s.surface, value: s.people })),
     "Not seen in a list in the last 90 days.");
 
+  renderBars($("pro-from-news"), x.from_news.map((n) => ({ label: n.title, value: n.people })),
+    "No visits from news articles yet.");
+  renderBars($("pro-from-events"), x.from_events.map((e) => ({ label: e.name, value: e.people })),
+    "No visits from event pages yet.");
+
   table($("pro-event-depth"), [
     { label: "Event", value: eventCell },
     { label: "Said Going", value: (e) => hiddenNum(e.went_going) },
@@ -825,6 +830,15 @@ function exampleInsights() {
       ["search", 1840], ["explore", 1510], ["guides", 980], ["map", 610], ["rankings", 330], ["wishlist", 120],
     ].map(([surface, people]) => ({ surface, people })),
     searched_by_name: 312,
+    from_news: [
+      { title: "Ten tables worth the trip this winter", people: 214 },
+      { title: "The chefs cooking four hands this season", people: 96 },
+    ],
+    from_events: [
+      { name: "Four Hands with a guest chef", people: 182 },
+      { name: "Winemaker dinner", people: 77 },
+      { name: "A festival elsewhere, with you as a guest", people: 41 },
+    ],
     photos: [1460, 820, 610, 540, 205].map((viewers) => ({ viewers })),
     trips: { added_12m: 164, upcoming: 58 },
     events: [

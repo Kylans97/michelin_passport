@@ -291,6 +291,7 @@ class AnalyticsProperties {
     this.inviteId,
     this.screen,
     this.openSource,
+    this.openSourceId,
   });
 
   /// The catalogue entity type this action concerns (Follow's target,
@@ -403,6 +404,11 @@ class AnalyticsProperties {
   /// OPTIONAL. See [AnalyticsOpenSource]'s own doc comment.
   final AnalyticsOpenSource? openSource;
 
+  /// [AnalyticsEvent.venueDetailOpened] only, OPTIONAL — which news
+  /// article or event the page was opened from, when [openSource] is
+  /// `news` or `event`. Never set for any other source.
+  final String? openSourceId;
+
   /// Serializes to wire-safe key/value pairs — every enum becomes its
   /// [wireName], every null field is omitted entirely rather than sent as
   /// an explicit null. Used by [DebugPrintAnalyticsService] today, and is
@@ -438,6 +444,7 @@ class AnalyticsProperties {
     put('event_id', eventId);
     put('invite_id', inviteId);
     put('open_source', openSource?.wireName);
+    put('open_source_id', openSourceId);
     return map;
   }
 }

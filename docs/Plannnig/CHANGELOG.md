@@ -14,7 +14,8 @@ The format follows Keep a Changelog.
   analytics contract §5 "Venue insights"):
   - event Tickets and website taps;
   - where a venue or event page was opened from (`AnalyticsOpenSource`,
-    passed explicitly at every route into a detail page);
+    passed explicitly at every route into a detail page), and for a venue
+    opened from a news article or an event, which one;
   - what Explore searches named (cuisine family, country, city, venue —
     never the text) and which filters were chosen;
   - cards shown in lists (`ImpressionBuffer`, `record_impressions()`);

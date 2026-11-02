@@ -118,6 +118,9 @@ class RestaurantDetailScreen extends StatefulWidget {
   /// Where this page was opened from, for analytics; null when unattributed.
   final AnalyticsOpenSource? openSource;
 
+  /// The news article or event id when [openSource] is news or event.
+  final String? openSourceId;
+
   const RestaurantDetailScreen({
     super.key,
     required this.restaurant,
@@ -127,6 +130,7 @@ class RestaurantDetailScreen extends StatefulWidget {
     this.isPreview = false,
     this.previewIsStale = false,
     this.openSource,
+    this.openSourceId,
   });
 
   @override
@@ -242,6 +246,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
           entityType: AnalyticsEntityType.restaurant,
           entityId: widget.restaurant.id,
           openSource: widget.openSource,
+          openSourceId: widget.openSourceId,
         ),
       );
     }

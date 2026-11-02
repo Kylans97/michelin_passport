@@ -806,6 +806,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         builder: (_) => RestaurantDetailScreen(
           restaurant: restaurant,
           openSource: AnalyticsOpenSource.event,
+          openSourceId: widget.eventId,
         ),
       ),
     );
@@ -818,6 +819,7 @@ class _EventDetailScreenState extends State<EventDetailScreen> {
         builder: (_) => HotelDetailScreen(
           hotel: hotel,
           openSource: AnalyticsOpenSource.event,
+          openSourceId: widget.eventId,
         ),
       ),
     );

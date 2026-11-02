@@ -5,7 +5,9 @@
 --
 --   1. Event ticket and website taps   app_usage_events, two new names
 --   2. Where a page was opened from    a `source` on venue_page_opens and
---                                      app_usage_events (event_opened)
+--                                      app_usage_events (event_opened); for
+--                                      a venue opened from a news article or
+--                                      an event, which one (`source_id`)
 --   3. What people search and filter   explore_signals: the cuisine, city,
 --                                      country or venue a search matched,
 --                                      and filter values. Never typed text
@@ -81,6 +83,15 @@ alter table public.venue_page_opens
     'wishlist', 'trips', 'friends', 'community', 'news', 'notifications',
     'push', 'venue', 'event', 'private_chefs', 'stays'
   ));
+
+-- The news article or event a venue page was opened from: which article
+-- or event sent members to a venue it names. No foreign key, so deleting
+-- an article or event never touches the opens it caused; a report simply
+-- finds no title for it.
+alter table public.venue_page_opens
+  add column source_id uuid,
+  add constraint venue_page_opens_source_id_shape
+    check (source_id is null or source in ('news', 'event'));
 
 -- ============================================================
 -- 3 + 6. explore_signals
@@ -355,7 +366,7 @@ begin
     ) as m
   ),
   opens as (
-    select user_id, source, opened_at as at from public.venue_page_opens
+    select user_id, source, source_id, opened_at as at from public.venue_page_opens
     where venue_type = p_venue_type and venue_id = p_venue_id
   ),
   seen as (
@@ -391,6 +402,32 @@ begin
       from seen where seen_on >= current_date - 90
       group by 1
     ) g
+  ),
+  from_news as (
+    select coalesce(jsonb_agg(jsonb_build_object(
+      'article_id', g.source_id, 'title', a.title, 'published_at', a.published_at,
+      'people', public.studio_suppress(g.n)
+    ) order by g.n desc), '[]'::jsonb) as doc
+    from (
+      select source_id, count(distinct user_id) as n
+      from opens
+      where source = 'news' and source_id is not null and at >= now() - interval '12 months'
+      group by 1
+    ) g
+    join public.news_articles a on a.id = g.source_id
+  ),
+  from_events as (
+    select coalesce(jsonb_agg(jsonb_build_object(
+      'event_id', g.source_id, 'name', e.name, 'start_date', e.start_date,
+      'people', public.studio_suppress(g.n)
+    ) order by g.n desc), '[]'::jsonb) as doc
+    from (
+      select source_id, count(distinct user_id) as n
+      from opens
+      where source = 'event' and source_id is not null and at >= now() - interval '12 months'
+      group by 1
+    ) g
+    join public.events e on e.id = g.source_id
   ),
   searched as (
     select public.studio_suppress(count(distinct user_id)) as n
@@ -491,6 +528,8 @@ begin
     'seen_monthly',   (select doc from seen_monthly),
     'seen_surfaces',  (select doc from seen_surfaces),
     'searched_by_name', (select n from searched),
+    'from_news',      (select doc from from_news),
+    'from_events',    (select doc from from_events),
     'photos',         (select doc from photos_doc),
     'trips',          (select doc from trips_doc),
     'events',         (select doc from events_doc)
