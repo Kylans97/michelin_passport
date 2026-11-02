@@ -25,10 +25,13 @@ The format follows Keep a Changelog.
   - every Interested/Going change, including taking it back, and whether
     a friend had already marked the event (server-side trigger);
   - gallery photos looked at.
-  Migration `20261101250000_add_venue_insight_tracking.sql`, not yet
-  applied. Studio's Basic and Pro tabs show all of it; the two panels
-  that were examples now read real data. Privacy policy updated in
-  `site/privacy.html`, not yet deployed.
+  Live on 2026-11-02, in this order: the updated privacy policy
+  (`site/privacy.html`) first, since the Interested/Going trigger records
+  from the moment the migration applies; then migration
+  `20261101250000_add_venue_insight_tracking.sql`; then `send-push`;
+  then Studio, whose Basic and Pro tabs show all of it (the two panels
+  that were examples now read real data). The app side ships with the
+  next build. **Ledger: 139, local and remote in agreement.**
 
 ### Fixed
 - Near-miss, caught on a replay before anything shipped: a CHECK that a
