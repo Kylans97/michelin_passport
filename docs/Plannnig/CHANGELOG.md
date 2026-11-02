@@ -8,6 +8,13 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+
+- **mantelier.app home page copy** (product owner, 2026-11-02): "A wine
+  cellar opening its doors for one night"; "tells you in time to book a
+  table, catch a flight, and inform your friends"; and the list heading
+  is now "Events we are watching".
+
 ---
 
 ## v1.5.6 (25) — 2026-11-02
