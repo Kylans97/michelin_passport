@@ -8,6 +8,24 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.6 (25) — 2026-11-02
+
+Build 24 went onto the product owner's own phone from `c2981a1`, so this
+build carries what came after it: team portraits, the sommelier and
+Instagram for venues (`claude/venue-team-photos`).
+
+**Ledger: 131, local and remote in agreement.** One migration went to
+production after 24, applied before this build:
+`20261101170000_add_venue_team_photos_and_instagram`.
+
+**Schema diff (2026-11-02, before the push): clean.** All 131
+migrations were replayed on a scratch stack.
+- `db dump --linked` against `--local`: 15,397 and 15,403 lines, which
+  differ only by the 6 known blank lines (pg_net's filtered grants).
+- Storage and auth, compared directly: 30 rows each side, identical.
+
 ### Added
 
 - **The team gets portraits and a sommelier, and venues get Instagram.**
