@@ -8,6 +8,24 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.6 (25) — 2026-11-02
+
+Build 24 went onto the product owner's own phone from `c2981a1`, so this
+build carries what came after it: team portraits, the sommelier and
+Instagram for venues (`claude/venue-team-photos`), and opening hours and
+closed days for restaurants (`claude/venue-opening-hours`, merged before
+25 was archived). The mantelier.app copy change below went live on its
+own the same day.
+
+**Ledger: 132, local and remote in agreement.** Two migrations went to
+production after 24, both applied before this build:
+- `20261101170000_add_venue_team_photos_and_instagram`;
+- `20261101180000_add_restaurant_opening_hours`.
+
+SCHEMA_DIFF_RESULT
+
 ### Added
 
 - **Opening hours and closed days on a restaurant's page, kept by the
@@ -58,8 +76,10 @@ The format follows Keep a Changelog.
       over-a-year ranges are refused; anon reads the dates only and has
       no execute on any of the three functions.
 
-    **Not applied yet.** This build reads the table, so the migration
-    must be live before a build carrying it ships.
+    **Applied 2026-11-02**, before this build. Production then showed
+    RLS on both tables, no anon insert and no anon read of
+    `created_by`, and the three functions executable by `authenticated`
+    only. **Ledger: 132, local and remote in agreement.**
   - Checked in the simulator with a throwaway preview entry point and
     made-up hours, not committed: the page section, the editor and its
     24-hour picker. Also walked end to end on an in-memory week, from an
@@ -68,42 +88,6 @@ The format follows Keep a Changelog.
     12:00–14:00 · 18:00–22:00". Then closed days: added 25–26 December
     with the date range picker, and the page read "Closed 25 – 26 Dec
     2026" under the week.
-
-### Fixed
-
-- **"Add a second time" after a range closing at 22:00 proposed
-  22:00–22:00**, which saving then refused. Found walking the editor in
-  the simulator. `suggestSecondRange` now proposes dinner after lunch
-  (four hours on, until 22:00), or else a two-hour range from an hour
-  after the first closes, past midnight if need be. It never proposes an
-  empty range, and a test checks that each suggestion passes the week's
-  own validation. The time picker also opens on the clock dial rather
-  than typed entry, which proved clumsy.
-- **A failed opening-hours load on the landing page could surface as an
-  unhandled error** when a reload replaced the pending future. The
-  future is now marked handled, and the row's summary just stays blank.
-  The landing tests also inject a fake repository instead of reaching a
-  real server.
-
----
-
-## v1.5.6 (25) — 2026-11-02
-
-Build 24 went onto the product owner's own phone from `c2981a1`, so this
-build carries what came after it: team portraits, the sommelier and
-Instagram for venues (`claude/venue-team-photos`).
-
-**Ledger: 131, local and remote in agreement.** One migration went to
-production after 24, applied before this build:
-`20261101170000_add_venue_team_photos_and_instagram`.
-
-**Schema diff (2026-11-02, before the push): clean.** All 131
-migrations were replayed on a scratch stack.
-- `db dump --linked` against `--local`: 15,397 and 15,403 lines, which
-  differ only by the 6 known blank lines (pg_net's filtered grants).
-- Storage and auth, compared directly: 30 rows each side, identical.
-
-### Added
 
 - **The team gets portraits and a sommelier, and venues get Instagram.**
   Decided by the product owner on 2026-11-02, after mock-ups.
@@ -168,6 +152,29 @@ migrations were replayed on a scratch stack.
   - Not here: an email to the admins on a new team or Instagram
     submission (`notify-venue-submission` doesn't know these kinds yet,
     as with team texts before).
+
+### Changed
+
+- **mantelier.app home page copy** (product owner, 2026-11-02): "A wine
+  cellar opening its doors for one night"; "tells you in time to book a
+  table, catch a flight, and inform your friends"; and the list heading
+  is now "Events we are watching".
+
+### Fixed
+
+- **"Add a second time" after a range closing at 22:00 proposed
+  22:00–22:00**, which saving then refused. Found walking the editor in
+  the simulator. `suggestSecondRange` now proposes dinner after lunch
+  (four hours on, until 22:00), or else a two-hour range from an hour
+  after the first closes, past midnight if need be. It never proposes an
+  empty range, and a test checks that each suggestion passes the week's
+  own validation. The time picker also opens on the clock dial rather
+  than typed entry, which proved clumsy.
+- **A failed opening-hours load on the landing page could surface as an
+  unhandled error** when a reload replaced the pending future. The
+  future is now marked handled, and the row's summary just stays blank.
+  The landing tests also inject a fake repository instead of reaching a
+  real server.
 
 ---
 
