@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'core/constants/app_colors.dart';
 import 'core/navigation/route_observer.dart';
 import 'core/theme/app_theme.dart';
@@ -84,11 +85,12 @@ class _MainNavigationState extends State<_MainNavigation> {
     ProfileScreen(),
   ];
 
-  static Widget _passportIcon(Color color, bool selected) => PassportBookletIcon(
-    color: color,
-    selected: selected,
-    cutoutColor: AppColors.forestGreen,
-  );
+  static Widget _passportIcon(Color color, bool selected) =>
+      PassportBookletIcon(
+        color: color,
+        selected: selected,
+        cutoutColor: AppColors.forestGreen,
+      );
 
   static const _destinations = [
     FloatingNavDestination(
@@ -103,10 +105,7 @@ class _MainNavigationState extends State<_MainNavigation> {
     ),
     // The centre of the bar, and of the app: its own booklet icon, not
     // Material's book (decided 2026-11-02).
-    FloatingNavDestination(
-      iconBuilder: _passportIcon,
-      label: 'Passport',
-    ),
+    FloatingNavDestination(iconBuilder: _passportIcon, label: 'Passport'),
     FloatingNavDestination(
       icon: Icons.groups_outlined,
       selectedIcon: Icons.groups_rounded,
@@ -121,6 +120,17 @@ class _MainNavigationState extends State<_MainNavigation> {
 
   @override
   Widget build(BuildContext context) {
+    // Every tab opens on deep green, so the status bar's time and battery
+    // are light here — the same AnnotatedRegion the green pushed screens
+    // (Friends, Private chefs, Guides) already use. Without it they took
+    // the theme's dark default and sat nearly invisible on the green.
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.light,
+      child: _shell(),
+    );
+  }
+
+  Widget _shell() {
     return Scaffold(
       backgroundColor: AppColors.background,
       // The floating pill (FloatingNavBar) sits in a Stack on top of the

@@ -25,6 +25,14 @@ The format follows Keep a Changelog.
   (`news_articles.section`, `news_article_photos`, the current article
   set to "about" by id), not yet applied.
 
+### Fixed
+- **The status bar's time and battery were dark on the green tabs.**
+  Explore, News, Passport, Community and Profile open on deep green, but
+  the tab shell set no status bar style, so it took the theme's dark
+  default and the icons were nearly invisible. The shell now sets the
+  light style, the same AnnotatedRegion the green pushed screens already
+  used. Would recur on any new green screen without its own AppBar.
+
 ---
 
 ## v1.5.7 (28) — 2026-11-02
