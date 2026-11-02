@@ -8,6 +8,56 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+
+- **Opening hours on a restaurant's page, kept by the restaurant.** A
+  claimed restaurant adds and changes them itself, live at once with no
+  admin review. Decided by the product owner on 2026-11-02: hours are
+  practical facts a venue changes often, and waiting for review would
+  leave the page wrong in the meantime.
+  - **On the page:** "OPENING HOURS" under Directions · Website · Call,
+    one line per run of days with the same hours ("Tue – Fri
+    12:00–14:00 · 19:00–22:00"). Closed days are included so the week
+    reads whole. Times are the restaurant's own, never converted to the
+    viewer's clock. Nothing at all without hours.
+  - **For managers:** an "Opening hours" row on a restaurant's landing
+    page opens `VenueOpeningHoursScreen`: per day open or closed, one or
+    two times (24-hour picker). Opening a day copies the nearest earlier
+    open day. Save is checked first with the same rules as the database,
+    and a "Remove opening hours from page" action is there too.
+    Restaurants only: a hotel's own hours say little.
+  - **Migration `20261101180000_add_restaurant_opening_hours.sql`:** the
+    `restaurant_opening_hours` table (weekday 1–7, slot 1–2, `time`
+    opens/closes, a range closing before it opens runs past midnight,
+    plus `updated_at`/`updated_by`). It's world-readable, without
+    `updated_by`, and has no client write. `set_restaurant_opening_hours`
+    (SECURITY DEFINER, `is_active_venue_manager` only, `revoke ... from
+    public, anon`) validates and replaces the whole week in one go.
+    - Replayed from scratch locally and exercised: a manager's week is
+      stored in slot order; someone else is refused; an overlap, three
+      ranges, an overnight range that isn't last, weekday 8, equal
+      times and a non-time are each refused, and leave the week
+      unchanged; direct inserts and deletes are refused; anon reads the
+      hours but neither `updated_by` nor the function; an empty week
+      clears it.
+    - The first local run caught a wrong column reference in the
+      function (`h.opens_at` for `t.opens_at`), fixed before anything
+      was applied.
+
+    **Not applied yet.** This build reads the table, so the migration
+    must be live before a build carrying it ships.
+  - Checked in the simulator with a throwaway preview entry point and
+    made-up hours, not committed: the page section, the editor and its
+    24-hour picker.
+
+### Fixed
+
+- **A failed opening-hours load on the landing page could surface as an
+  unhandled error** when a reload replaced the pending future. The
+  future is now marked handled, and the row's summary just stays blank.
+  The landing tests also inject a fake repository instead of reaching a
+  real server.
+
 ---
 
 ## v1.5.6 (25) — 2026-11-02

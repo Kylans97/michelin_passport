@@ -9,12 +9,14 @@ import '../../core/widgets/framed_image.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../data/repositories/venue_events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
+import '../../data/repositories/opening_hours_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/venue_photo_submission_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
 import '../../models/managed_venue.dart';
+import '../../models/opening_hours.dart';
 import '../../models/private_chef_photo.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/venue_about_submission.dart';
@@ -26,6 +28,7 @@ import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'card_photo_screen.dart';
 import 'venue_events_screen.dart';
+import 'venue_opening_hours_screen.dart';
 import 'venue_host_welcome_screen.dart';
 import 'venue_photos_screen.dart';
 import 'venue_preview_photo_merge.dart';
@@ -79,6 +82,7 @@ class VenueManagementScreen extends StatefulWidget {
   final VenuePhotoSubmissionRepository? photoRepo;
   final VenueEventsRepository? eventsRepo;
   final VenueTeamRepository? teamRepo;
+  final OpeningHoursRepository? openingHoursRepo;
 
   // Owner preview only — the fresh venue re-fetch _openPreview does
   // alongside its existing photo/about-text fetches. Same DI-seam
@@ -98,6 +102,7 @@ class VenueManagementScreen extends StatefulWidget {
     this.photoRepo,
     this.eventsRepo,
     this.teamRepo,
+    this.openingHoursRepo,
     this.restaurantRepo,
     this.hotelRepo,
     this.privateChefRepo,
@@ -133,6 +138,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   late final _eventsRepo =
       widget.eventsRepo ?? VenueEventsRepository(Supabase.instance.client);
   late final _teamRepo = widget.teamRepo ?? VenueTeamRepository(Supabase.instance.client);
+  late final _hoursRepo =
+      widget.openingHoursRepo ?? OpeningHoursRepository(Supabase.instance.client);
   late final _restaurantRepo =
       widget.restaurantRepo ?? RestaurantRepository(Supabase.instance.client);
   late final _hotelRepo = widget.hotelRepo ?? HotelRepository(Supabase.instance.client);
@@ -146,6 +153,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   late Future<List<VenueEvent>> _eventsFuture;
   // Restaurants and hotels only; null for a private chef.
   Future<_TeamSummary>? _teamFuture;
+  // Restaurants only; null for a hotel or a private chef.
+  Future<OpeningHours>? _hoursFuture;
 
   bool get _hasTeam => widget.venue.venueTypeWireValue != 'private_chef';
 
@@ -207,6 +216,9 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       );
       _eventsFuture = _eventsRepo.loadVenueEvents(widget.venue);
       _teamFuture = _hasTeam ? _loadTeam(type, id) : null;
+      // A failed load only blanks the row's summary; marked handled so a
+      // reload that replaces it before it settles reports nothing.
+      _hoursFuture = type == 'restaurant' ? (_hoursRepo.load(id)..ignore()) : null;
     });
   }
 
@@ -462,6 +474,22 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                 ),
               ),
             ),
+            if (_hoursFuture != null)
+              FutureBuilder<OpeningHours>(
+                future: _hoursFuture,
+                builder: (context, snap) => _SectionRow(
+                  title: 'Opening hours',
+                  summary: snap.hasData
+                      ? VenueOpeningHoursScreen.summary(snap.data!)
+                      : null,
+                  onTap: () => _open(
+                    VenueOpeningHoursScreen(
+                      restaurantId: widget.venue.id,
+                      repository: widget.openingHoursRepo,
+                    ),
+                  ),
+                ),
+              ),
             if (_teamFuture != null)
               FutureBuilder<_TeamSummary>(
                 future: _teamFuture,

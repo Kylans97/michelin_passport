@@ -14,7 +14,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:michelin_passport/data/repositories/venue_events_repository.dart';
+import 'package:michelin_passport/data/repositories/opening_hours_repository.dart';
 import 'package:michelin_passport/data/repositories/restaurant_repository.dart';
+import 'package:michelin_passport/models/opening_hours.dart';
 import 'package:michelin_passport/data/repositories/venue_about_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_photo_submission_repository.dart';
 import 'package:michelin_passport/data/repositories/venue_team_repository.dart';
@@ -288,6 +290,13 @@ Future<void> _pumpPhotos(
   await tester.pumpAndSettle();
 }
 
+class _FakeOpeningHoursRepository extends OpeningHoursRepository {
+  _FakeOpeningHoursRepository() : super(_dummyClient());
+
+  @override
+  Future<OpeningHours> load(String restaurantId) async => OpeningHours.empty;
+}
+
 // The landing page: VenueManagementScreen.
 Future<void> _pumpLanding(
   WidgetTester tester,
@@ -308,6 +317,7 @@ Future<void> _pumpLanding(
         photoRepo: photoRepo ?? _FakeVenuePhotoSubmissionRepository(),
         eventsRepo: eventsRepo ?? _FakeEventsRepository(),
         teamRepo: teamRepo ?? _FakeTeamRepository(),
+        openingHoursRepo: _FakeOpeningHoursRepository(),
         shouldShowWelcome: () async => showWelcome,
       ),
     ),
@@ -1200,6 +1210,7 @@ void main() {
             photoRepo: _FakeVenuePhotoSubmissionRepository(),
             eventsRepo: _FakeEventsRepository(),
             teamRepo: _FakeTeamRepository(),
+            openingHoursRepo: _FakeOpeningHoursRepository(),
             restaurantRepo: restaurantRepo,
           ),
         ),
@@ -1258,6 +1269,11 @@ void main() {
       'contact point on this screen',
       (tester) async {
         await _pumpLanding(tester, _FakeVenueAboutRepository());
+        // Below the fold since the Opening hours row joined the list.
+        await tester.scrollUntilVisible(
+          find.textContaining('Questions about your page?'),
+          200,
+        );
         expect(
           find.textContaining('Questions about your page?'),
           findsOneWidget,

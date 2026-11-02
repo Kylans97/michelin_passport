@@ -16,6 +16,7 @@ import '../../core/widgets/personal_photos_preview.dart';
 import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/subtle_text_action.dart';
 import '../../core/widgets/venue_about_section.dart';
+import '../../core/widgets/venue_opening_hours_section.dart';
 import '../../core/widgets/venue_team_section.dart';
 import '../../core/widgets/venue_lifecycle_banner.dart';
 import '../../core/widgets/venue_score_strip.dart';
@@ -30,6 +31,8 @@ import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
+import '../../data/repositories/opening_hours_repository.dart';
+import '../../models/opening_hours.dart';
 import '../../data/repositories/venue_instagram_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
 import '../../models/venue_team_member.dart';
@@ -146,6 +149,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _instagramRepo = VenueInstagramRepository(
     Supabase.instance.client,
   );
+  late final _hoursRepo = OpeningHoursRepository(Supabase.instance.client);
   // Events V2 Step 6 — never wired into a constructor param (matching
   // EventDetailScreen's own established seam). SupabaseAnalyticsService
   // persists only its own narrow set (page opens, website/Call/Directions
@@ -204,6 +208,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // a manager's preview too.
   String? _instagramHandle;
 
+  // The restaurant's own opening hours; live, no review, so a manager's
+  // preview shows what the page shows.
+  OpeningHours _openingHours = OpeningHours.empty;
+
   // The venue's full published-photo set, in display_order — one venue,
   // one query, independent of restaurant_hero.dart's coverImageUrl
   // fallback (see RestaurantHero.photos' own doc comment for why this
@@ -248,6 +256,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       _loadTeam();
     }
     _loadInstagram();
+    _loadOpeningHours();
     if (widget.photosOverride != null) {
       _photos = widget.photosOverride!;
     } else {
@@ -264,6 +273,16 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       // Leave the hero on its single cover photo (or gradient) on a
       // failed lookup — same reasoning as every other enhancement-content
       // load on this screen.
+    }
+  }
+
+  Future<void> _loadOpeningHours() async {
+    try {
+      final hours = await _hoursRepo.load(widget.restaurant.id);
+      if (!mounted) return;
+      setState(() => _openingHours = hours);
+    } catch (_) {
+      // No hours section on a failed lookup.
     }
   }
 
@@ -869,6 +888,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   ),
 
                   const SectionDivider(),
+
+                  if (!_openingHours.isEmpty) ...[
+                    VenueOpeningHoursSection(hours: _openingHours),
+                    const SectionDivider(),
+                  ],
 
                   // ── Planning — a distinct intent from recording a visit
                   // that already happened: creates a planned_venues row
