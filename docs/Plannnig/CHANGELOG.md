@@ -8,29 +8,6 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
-### Fixed
-
-- **Searching "Frans" found nothing; only "French" worked.** The product
-  owner found this on 2026-11-02 while preparing 1.5.6 (25) for testers.
-  Free search matched only MICHELIN's English cuisine labels.
-  - **Migration `20261101200000_add_cuisine_dutch_search_terms.sql`**
-    adds `search_terms` to `cuisine_families` (a Dutch name for each of
-    the 25: Frans, Japans, Italiaans…) and to `cuisines` (44 whose Dutch
-    differs from their family's: Duits, Grieks, Thais, Baskisch…, so
-    "Duits" finds German and not all of Central Europe). It also
-    redefines `restaurants_full` with those terms added to
-    `cuisine_search` alone; every other column is unchanged and in
-    order. What's shown stays MICHELIN's English label.
-  - **No app change:** installed builds, 25 included, pick it up as soon
-    as it's applied.
-  - **Checks:** the 44 cuisine names were checked against production
-    first (all matched). They aren't asserted in the migration, because
-    the cuisines are loaded as data and a fresh replay has none. Replayed
-    locally: a restaurant labelled Alsatian searched as "Alsatian
-    Elzassisch French Frans" and was found by "frans", "elzassisch" and
-    "french", but not by "japans".
-  - **Not applied yet.**
-
 ---
 
 ## v1.5.6 (25) — 2026-11-02
@@ -48,15 +25,17 @@ build carries what came after it:
 The last two were merged before 25 was archived. The mantelier.app copy
 change below went live on its own the same day.
 
-**Ledger: 133, local and remote in agreement.** Three migrations went to
+**Ledger: 134, local and remote in agreement.** Four migrations went to
 production after 24, all applied before this build:
 - `20261101170000_add_venue_team_photos_and_instagram`;
 - `20261101180000_add_restaurant_opening_hours`;
-- `20261101190000_add_venue_contact_edits_and_review_inbox`.
+- `20261101190000_add_venue_contact_edits_and_review_inbox`;
+- `20261101200000_add_cuisine_dutch_search_terms` (Dutch cuisine words in
+  search; no app change, so 24 and older pick it up too).
 
-**Schema diff (2026-11-02, before the push): clean.** All 133
+**Schema diff (2026-11-02, before the push): clean.** All 134
 migrations were replayed on a scratch stack.
-- `db dump --linked` against `--local`: 15,942 and 15,948 lines, which
+- `db dump --linked` against `--local`: 15,944 and 15,950 lines, which
   differ only by the 6 known blank lines (pg_net's filtered grants).
 - Storage and auth, compared directly: 30 rows each side, identical.
 
@@ -270,6 +249,31 @@ migrations were replayed on a scratch stack.
   is now "Events we are watching".
 
 ### Fixed
+
+- **Searching "Frans" found nothing; only "French" worked.** The product
+  owner found this on 2026-11-02 while preparing 1.5.6 (25) for testers.
+  Free search matched only MICHELIN's English cuisine labels.
+  - **Migration `20261101200000_add_cuisine_dutch_search_terms.sql`**
+    adds `search_terms` to `cuisine_families` (a Dutch name for each of
+    the 25: Frans, Japans, Italiaans…) and to `cuisines` (44 whose Dutch
+    differs from their family's: Duits, Grieks, Thais, Baskisch…, so
+    "Duits" finds German and not all of Central Europe). It also
+    redefines `restaurants_full` with those terms added to
+    `cuisine_search` alone; every other column is unchanged and in
+    order. What's shown stays MICHELIN's English label.
+  - **No app change:** installed builds, 25 included, pick it up as soon
+    as it's applied.
+  - **Checks:** the 44 cuisine names were checked against production
+    first (all matched). They aren't asserted in the migration, because
+    the cuisines are loaded as data and a fresh replay has none. Replayed
+    locally: a restaurant labelled Alsatian searched as "Alsatian
+    Elzassisch French Frans" and was found by "frans", "elzassisch" and
+    "french", but not by "japans".
+  - **Applied 2026-11-02**, before 25 was archived: production then had
+    25 families and 44 cuisines with terms, "frans" found 396
+    restaurants (exactly as many as "french"), "japans" 298 and "duits"
+    2, and `restaurants_full` still held all 3555 rows. **Ledger: 134,
+    local and remote in agreement.**
 
 - **"Add a second time" after a range closing at 22:00 proposed
   22:00–22:00**, which saving then refused. Found walking the editor in
