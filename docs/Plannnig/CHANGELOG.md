@@ -163,13 +163,26 @@ The format follows Keep a Changelog.
 ### Fixed
 
 - **Studio's Basic and Pro tabs did nothing when clicked** (2026-11-02,
-  right after they went live). Cloudflare Pages served `studio.js` with
-  `max-age=14400`, so a browser that had loaded Studio earlier kept the
-  old script for up to four hours, next to the new `index.html`. The new
-  tab buttons were there, but no script handled them. `studio/_headers`
-  now sends `Cache-Control: no-cache` for `studio.js`, `studio.css` and
-  `config.js`: the browser checks every time, and the etag keeps that a
-  cheap 304. A hard reload (⌘⇧R) fixes an affected browser at once.
+  right after they went live). A browser that had loaded Studio earlier
+  kept the old `studio.js` for up to four hours, next to the new
+  `index.html`. The new tab buttons were there, but no script handled
+  them.
+  - First fix, not enough: `studio/_headers` sends `Cache-Control:
+    no-cache` for `studio.js`, `studio.css` and `config.js`. That works
+    on `mantelier-studio.pages.dev`, but on `studio.mantelier.app` the
+    header still read `max-age=14400`. The mantelier.app zone's Browser
+    Cache TTL (4 hours) overrides it on the custom domain; checked by
+    comparing both hosts.
+  - Real fix: `index.html` names its assets with a version
+    (`/studio.js?v=<commit>`), so each deploy is a new URL that no
+    browser holds yet. `scripts/deploy-studio.sh` stamps the commit in
+    and deploys; that is now the way to deploy Studio. `index.html`
+    itself is served with `max-age=0`, so it always names the current
+    version. The `_headers` rule stays for the `pages.dev` host.
+  - Alternative left to the product owner: setting the zone's Browser
+    Cache TTL to "Respect Existing Headers" in Cloudflare would also
+    make the header work on mantelier.app.
+  - A hard reload (⌘⇧R) fixes an affected browser at once.
 - **A sign-up confirmation was refused as suspicious content**
   (2026-11-02). Resend showed it as "Blocked due to content" by the new
   member's company mail server. The mail was Supabase's bare default:
