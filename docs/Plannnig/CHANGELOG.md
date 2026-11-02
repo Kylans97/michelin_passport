@@ -10,8 +10,12 @@ The format follows Keep a Changelog.
 
 ### Added
 - **Studio: Basic and Pro tabs** (`claude/studio-tiers`, migration
-  `20261101240000_add_studio_tier_reports`, written 2026-11-02; **not
-  yet applied or deployed**). They show what one venue would see on each
+  `20261101240000_add_studio_tier_reports`, written, applied and
+  deployed 2026-11-02; ledger 138, local and remote in agreement).
+  Checked on production after the push: anon can't execute any of the
+  four functions. `studio.mantelier.app` serves the three tabs with no
+  console errors. Not signed in there: that's the product owner's
+  account. They show what one venue would see on each
   subscription, for conversations with venues about the future state
   (plan §4). Nothing here is visible to venues yet.
   - **Basic** (one venue):
