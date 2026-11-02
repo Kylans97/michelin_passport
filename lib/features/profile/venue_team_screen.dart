@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/constants/app_colors.dart';
@@ -6,15 +7,18 @@ import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../core/widgets/subtle_text_action.dart';
+import '../../data/repositories/venue_photo_submission_repository.dart'
+    show VenuePhotoRejectedException;
 import '../../data/repositories/venue_team_repository.dart';
 import '../../models/managed_venue.dart';
 import '../../models/venue_about_submission.dart';
 import '../../models/venue_team_member.dart';
+import 'widgets/venue_photo_picker.dart';
 
 /// Team, reached from a venue's landing page (VenueManagementScreen): the
-/// chef and the manager the venue shows on its page, each a name and a
-/// short text. Restaurants and hotels only — a private chef's page is the
-/// chef.
+/// chef, the manager and the sommelier the venue shows on its page, each
+/// a name, a text and optionally a portrait. Restaurants and hotels only
+/// — a private chef's page is the chef.
 ///
 /// Same path as the about text (VenueProfileScreen): a new name or text
 /// is reviewed before it shows, and the outcome appears here. Taking
@@ -64,14 +68,22 @@ class _VenueTeamScreenState extends State<VenueTeamScreen> {
   late final _repo =
       widget.teamRepo ?? VenueTeamRepository(Supabase.instance.client);
 
-  // The chef first, as on the page.
-  static const _roles = [VenueTeamRole.chef, VenueTeamRole.manager];
+  // In the page's order.
+  static const _roles = VenueTeamRole.pageOrder;
 
   late Future<_TeamState> _future;
   final _nameCtrls = {for (final r in _roles) r: TextEditingController()};
   final _bioCtrls = {for (final r in _roles) r: TextEditingController()};
   final _busy = <VenueTeamRole>{};
   final _errors = <VenueTeamRole, String>{};
+
+  // A portrait picked but not yet submitted, and a request to take the
+  // current one off. Both clear on a successful submit.
+  final _pickedPhotos = <VenueTeamRole, Uint8List>{};
+  final _removePhoto = <VenueTeamRole>{};
+
+  // A portrait waiting for review, shown through a signed link.
+  final _pendingPhotoUrls = <VenueTeamRole, String>{};
 
   // Prefilled once, on the first load — never on a reload, which would
   // overwrite what the manager is typing (same rule as the about text).
@@ -107,6 +119,7 @@ class _VenueTeamScreenState extends State<VenueTeamScreen> {
               current: results[0] as List<VenueTeamMember>,
               mine: results[1] as Map<VenueTeamRole, VenueTeamSubmission>,
             );
+            _resolvePendingPhotos(state);
             if (!_hasPrefilled) {
               for (final role in _roles) {
                 // What is waiting wins over what is shown: it is the newer
@@ -129,6 +142,37 @@ class _VenueTeamScreenState extends State<VenueTeamScreen> {
     });
   }
 
+  Future<void> _resolvePendingPhotos(_TeamState state) async {
+    for (final entry in state.mine.entries) {
+      final path = entry.value.photoPath;
+      if (!entry.value.isOpen || path == null) continue;
+      try {
+        final url = await _repo.signedPhotoUrl(path);
+        if (mounted) setState(() => _pendingPhotoUrls[entry.key] = url);
+      } catch (_) {
+        // The status line still says a version is waiting.
+      }
+    }
+  }
+
+  Future<void> _pickPhoto(VenueTeamRole role) async {
+    final picked = await pickVenuePhotos(context, maxSelectable: 1);
+    if (!mounted || picked.isEmpty) return;
+    setState(() {
+      _pickedPhotos[role] = picked.first.bytes;
+      _removePhoto.remove(role);
+      _errors.remove(role);
+    });
+  }
+
+  void _clearPhoto(VenueTeamRole role, {required bool hasCurrent}) {
+    setState(() {
+      if (_pickedPhotos.remove(role) == null && hasCurrent) {
+        _removePhoto.add(role);
+      }
+    });
+  }
+
   Future<void> _submit(VenueTeamRole role) async {
     if (_busy.contains(role)) return;
     final name = _nameCtrls[role]!.text.trim();
@@ -147,9 +191,15 @@ class _VenueTeamScreenState extends State<VenueTeamScreen> {
         role: role,
         name: name,
         bio: _bioCtrls[role]!.text,
+        photoBytes: _pickedPhotos[role],
+        removePhoto: _removePhoto.contains(role),
       );
       if (!mounted) return;
-      setState(() => _busy.remove(role));
+      setState(() {
+        _busy.remove(role);
+        _pickedPhotos.remove(role);
+        _removePhoto.remove(role);
+      });
       ScaffoldMessenger.of(
         context,
       ).showSnackBar(const SnackBar(content: Text('Submitted for review.')));
@@ -158,9 +208,11 @@ class _VenueTeamScreenState extends State<VenueTeamScreen> {
       if (!mounted) return;
       setState(() {
         _busy.remove(role);
-        _errors[role] = e is StateError
-            ? e.message
-            : 'Could not submit. Please try again.';
+        _errors[role] = switch (e) {
+          StateError(:final message) => message,
+          VenuePhotoRejectedException(:final rejection) => rejection.message,
+          _ => 'Could not submit. Please try again.',
+        };
       });
     }
   }
@@ -264,9 +316,9 @@ class _VenueTeamScreenState extends State<VenueTeamScreen> {
               ),
               children: [
                 Text(
-                  "Show who runs the kitchen and the room. Each name and text is "
-                  "reviewed by hand before it appears on your page, and you'll see "
-                  "the outcome here.",
+                  "Show who runs the kitchen, the room and the cellar. Each name, "
+                  "text and photo is reviewed by hand before it appears on your "
+                  "page, and you'll see the outcome here. Please write in English.",
                   style: CsTypography.body.copyWith(
                     color: AppColors.forestGreen,
                     height: 1.5,
@@ -315,6 +367,8 @@ class _VenueTeamScreenState extends State<VenueTeamScreen> {
           _StatusLine(submission: mine),
         ],
         const SizedBox(height: CsSpacing.md),
+        _photoRow(role, shown, mine),
+        const SizedBox(height: CsSpacing.md),
         TextField(
           controller: _nameCtrls[role],
           maxLength: venueTeamNameMaxLength,
@@ -355,6 +409,61 @@ class _VenueTeamScreenState extends State<VenueTeamScreen> {
             onTap: busy ? () {} : () => _remove(role),
           ),
         ],
+      ],
+    );
+  }
+
+  // The portrait as it will be: a newly picked one, else one waiting for
+  // review, else the one on the page — unless it's being removed.
+  Widget _photoRow(
+    VenueTeamRole role,
+    VenueTeamMember? shown,
+    VenueTeamSubmission? mine,
+  ) {
+    final picked = _pickedPhotos[role];
+    final removing = _removePhoto.contains(role);
+    final pendingUrl = (mine?.isOpen ?? false) ? _pendingPhotoUrls[role] : null;
+    final url = removing ? null : (pendingUrl ?? shown?.photoUrl);
+    final hasPhoto = picked != null || url != null;
+    final Widget image = picked != null
+        ? Image.memory(picked, width: 64, height: 80, fit: BoxFit.cover)
+        : url != null
+        ? Image.network(url, width: 64, height: 80, fit: BoxFit.cover)
+        : const Icon(Icons.person_outline_rounded, color: AppColors.taupe);
+    return Row(
+      children: [
+        ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Container(
+            width: 64,
+            height: 80,
+            color: AppColors.ivory,
+            alignment: Alignment.center,
+            child: image,
+          ),
+        ),
+        const SizedBox(width: CsSpacing.md),
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SubtleTextAction(
+                label: hasPhoto ? 'Change photo' : 'Add a photo (optional)',
+                onTap: () => _pickPhoto(role),
+              ),
+              if (hasPhoto)
+                SubtleTextAction(
+                  label: picked != null ? 'Undo new photo' : 'Remove photo',
+                  onTap: () => _clearPhoto(role, hasCurrent: url != null),
+                ),
+              if (picked != null || removing)
+                Text(
+                  'Sent with your next submission.',
+                  style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+                ),
+            ],
+          ),
+        ),
       ],
     );
   }

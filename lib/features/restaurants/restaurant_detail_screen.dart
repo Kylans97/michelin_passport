@@ -30,6 +30,7 @@ import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
+import '../../data/repositories/venue_instagram_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
 import '../../models/venue_team_member.dart';
 import '../../data/repositories/visited_repository.dart';
@@ -142,6 +143,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
   late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
   late final _venueTeamRepo = VenueTeamRepository(Supabase.instance.client);
+  late final _instagramRepo = VenueInstagramRepository(
+    Supabase.instance.client,
+  );
   // Events V2 Step 6 — never wired into a constructor param (matching
   // EventDetailScreen's own established seam). SupabaseAnalyticsService
   // persists only its own narrow set (page opens, website/Call/Directions
@@ -196,6 +200,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // only ever set on success" shape as _aboutText.
   List<VenueTeamMember> _team = const [];
 
+  // The venue's approved Instagram account; venue content, so it loads in
+  // a manager's preview too.
+  String? _instagramHandle;
+
   // The venue's full published-photo set, in display_order — one venue,
   // one query, independent of restaurant_hero.dart's coverImageUrl
   // fallback (see RestaurantHero.photos' own doc comment for why this
@@ -239,6 +247,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
     } else {
       _loadTeam();
     }
+    _loadInstagram();
     if (widget.photosOverride != null) {
       _photos = widget.photosOverride!;
     } else {
@@ -255,6 +264,19 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       // Leave the hero on its single cover photo (or gradient) on a
       // failed lookup — same reasoning as every other enhancement-content
       // load on this screen.
+    }
+  }
+
+  Future<void> _loadInstagram() async {
+    try {
+      final handle = await _instagramRepo.loadCurrent(
+        venueType: 'restaurant',
+        venueId: widget.restaurant.id,
+      );
+      if (!mounted) return;
+      setState(() => _instagramHandle = handle);
+    } catch (_) {
+      // No Instagram action on a failed lookup.
     }
   }
 
@@ -832,6 +854,11 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                   // Wishlist control here (UI Consistency Step 1E).
                   VenueUtilityActions(
                     onOpenMaps: _openMaps,
+                    onOpenInstagram: _instagramHandle == null
+                        ? null
+                        : () => _openUrl(
+                            instagramProfileUri(_instagramHandle!).toString(),
+                          ),
                     onOpenWebsite: (hasWebsiteLink && !websiteSuppressed)
                         ? () => _openUrl(
                             websiteUrl,

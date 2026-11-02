@@ -246,11 +246,22 @@ export async function handleRequest(
     }
   }
 
-  let body: { submission_id?: unknown; reviewed_by?: unknown };
+  let body: { submission_id?: unknown; team_submission_id?: unknown; reviewed_by?: unknown };
   try {
     body = await req.json();
   } catch (_err) {
     return jsonResponse({ error: 'Invalid JSON body' }, 400);
+  }
+
+  // A team member's photo (20261101170000): same copy-verify-approve path,
+  // its own table and approval function.
+  if (body?.team_submission_id !== undefined) {
+    const teamId = body.team_submission_id;
+    const teamReviewer = adminUserId ?? body?.reviewed_by;
+    if (typeof teamId !== 'string' || typeof teamReviewer !== 'string') {
+      return jsonResponse({ error: 'team_submission_id and reviewed_by are both required' }, 400);
+    }
+    return publishTeamPhoto(admin, teamId, teamReviewer);
   }
 
   const submissionId = body?.submission_id;
@@ -346,6 +357,95 @@ export async function handleRequest(
   }
 
   return jsonResponse({ success: true, image_url: imageUrl, published: rpcData }, 200);
+}
+
+export interface TeamSubmissionRow {
+  id: string;
+  status: string;
+  venue_type: string;
+  venue_id: string;
+  photo_path: string | null;
+  removed_at: string | null;
+}
+
+/// Where a team member's photo is published: beside the venue's own
+/// photos, in a `team` folder, under the upload's own file name.
+export function teamDestinationPathFor(row: TeamSubmissionRow): string {
+  return `${row.venue_type}/${row.venue_id}/team/${basename(row.photo_path ?? '')}`;
+}
+
+async function publishTeamPhoto(
+  admin: PublishPhotoAdminClient,
+  teamId: string,
+  reviewedBy: string,
+): Promise<Response> {
+  const { data, error } = await admin
+    .from('venue_team_submissions')
+    .select('id, status, venue_type, venue_id, photo_path, removed_at')
+    .eq('id', teamId)
+    .maybeSingle();
+  if (error) {
+    return jsonResponse({ error: `Could not load team submission: ${error.message}` }, 502);
+  }
+  if (!data) {
+    return jsonResponse({ error: `No team submission found with id ${teamId}` }, 404);
+  }
+  const row = data as unknown as TeamSubmissionRow;
+  if (row.status !== 'pending' || row.removed_at !== null) {
+    return jsonResponse({ error: `Team submission ${teamId} is not pending` }, 409);
+  }
+  if (!row.photo_path) {
+    return jsonResponse(
+      { error: `Team submission ${teamId} has no photo; approve it with admin_approve_venue_team` },
+      409,
+    );
+  }
+
+  const destPath = teamDestinationPathFor(row);
+  const copyResult = await admin.storage
+    .from(SUBMISSIONS_BUCKET)
+    .copy(row.photo_path, destPath, { destinationBucket: CATALOGUE_BUCKET });
+  if (copyResult.error) {
+    console.warn('publish-venue-photo: team copy() reported an error, verifying independently', {
+      teamId,
+      destPath,
+      message: copyResult.error.message,
+    });
+  }
+  // As for a venue photo: the destination is read back, never trusted
+  // from copy()'s own answer.
+  const verified = await objectExistsAt(admin.storage, CATALOGUE_BUCKET, destPath);
+  if (!verified) {
+    return jsonResponse(
+      {
+        error: `Copy could not be verified: no object at ${destPath} in ${CATALOGUE_BUCKET}` +
+          (copyResult.error ? ` (copy error: ${copyResult.error.message})` : ''),
+      },
+      502,
+    );
+  }
+
+  const photoUrl = `${CATALOGUE_MEDIA_PUBLIC_PREFIX}${destPath}`;
+  const { error: rpcError } = await admin.rpc('approve_venue_team_photo', {
+    p_submission_id: teamId,
+    p_reviewed_by: reviewedBy,
+    p_photo_url: photoUrl,
+  });
+  if (rpcError) {
+    console.error('publish-venue-photo: approve_venue_team_photo failed after a verified copy', {
+      teamId,
+      destPath,
+      message: rpcError.message,
+    });
+    return jsonResponse(
+      {
+        error: `File copied to ${destPath} but approve_venue_team_photo failed: ${rpcError.message}. ` +
+          'Nothing was published — safe to call this function again.',
+      },
+      502,
+    );
+  }
+  return jsonResponse({ success: true, photo_url: photoUrl }, 200);
 }
 
 Deno.serve((req) => {

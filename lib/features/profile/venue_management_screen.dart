@@ -306,7 +306,11 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       final team = await teamFuture;
       final teamOverride = team == null
           ? null
-          : previewTeam(current: team.current, mine: team.mine);
+          : previewTeam(
+              current: team.current,
+              mine: team.mine,
+              pendingPhotoUrls: await _pendingTeamPhotoUrls(team.mine),
+            );
       final signedUrls = await _photoRepo.resolveDisplayUrls([
         for (final s in openSubmissions) s.storagePath,
       ]);
@@ -395,6 +399,22 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
         _previewError = 'Could not prepare the preview. Please try again.';
       });
     }
+  }
+
+  // Signed links to portraits still waiting for review, so the preview
+  // shows them as the page will. One that can't be resolved shows none.
+  Future<Map<VenueTeamRole, String>> _pendingTeamPhotoUrls(
+    Map<VenueTeamRole, VenueTeamSubmission> mine,
+  ) async {
+    final urls = <VenueTeamRole, String>{};
+    for (final s in mine.values) {
+      final path = s.photoPath;
+      if (!s.isOpen || path == null) continue;
+      try {
+        urls[s.role] = await _teamRepo.signedPhotoUrl(path);
+      } catch (_) {}
+    }
+    return urls;
   }
 
   Future<void> _emailUs() async {

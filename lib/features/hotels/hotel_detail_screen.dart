@@ -27,6 +27,7 @@ import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/planned_trips_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
+import '../../data/repositories/venue_instagram_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
 import '../../models/venue_team_member.dart';
 import '../../data/repositories/visited_repository.dart';
@@ -109,6 +110,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
   late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
   late final _venueTeamRepo = VenueTeamRepository(Supabase.instance.client);
+  late final _instagramRepo = VenueInstagramRepository(
+    Supabase.instance.client,
+  );
   late final Future<List<Restaurant>> _linkedRestaurantsFuture =
       widget.hotel.hasMichelinRestaurant
       ? _hotelRepo.getLinkedRestaurants(widget.hotel.id)
@@ -156,6 +160,10 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
   // only ever set on success" shape as _aboutText.
   List<VenueTeamMember> _team = const [];
 
+  // The venue's approved Instagram account; venue content, so it loads in
+  // a manager's preview too.
+  String? _instagramHandle;
+
   // Mirrors RestaurantDetailScreen's _photos exactly — the hotel's full
   // published-photo set, one venue/one query, independent of hotel_hero
   // .dart's coverImageUrl fallback.
@@ -190,6 +198,7 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
     } else {
       _loadTeam();
     }
+    _loadInstagram();
     if (widget.photosOverride != null) {
       _photos = widget.photosOverride!;
     } else {
@@ -206,6 +215,19 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       // Leave the hero on its single cover photo (or gradient) on a
       // failed lookup — same reasoning as every other enhancement-content
       // load on this screen.
+    }
+  }
+
+  Future<void> _loadInstagram() async {
+    try {
+      final handle = await _instagramRepo.loadCurrent(
+        venueType: 'hotel',
+        venueId: widget.hotel.id,
+      );
+      if (!mounted) return;
+      setState(() => _instagramHandle = handle);
+    } catch (_) {
+      // No Instagram action on a failed lookup.
     }
   }
 
@@ -676,6 +698,11 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                   // Wishlist control here (UI Consistency Step 1E).
                   VenueUtilityActions(
                     onOpenMaps: _openMaps,
+                    onOpenInstagram: _instagramHandle == null
+                        ? null
+                        : () => _openUrl(
+                            instagramProfileUri(_instagramHandle!).toString(),
+                          ),
                     onOpenWebsite: (hasWebsiteLink && !websiteSuppressed)
                         ? () => _openUrl(
                             websiteUrl,

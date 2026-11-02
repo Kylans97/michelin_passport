@@ -8,6 +8,64 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+
+- **The team gets portraits and a sommelier, and venues get Instagram.**
+  Decided by the product owner on 2026-11-02, after mock-ups.
+  - **On the page:** "THE TEAM" is now one row of up to three portraits
+    (chef, manager, sommelier, in that order), each with its role and
+    name. Tapping one opens a sheet with the full text (option B, chosen
+    over a separate Team tab, so a venue with all three doesn't get a
+    longer page). Without a photo, a calm panel of initials. Roles not
+    filled in leave no slot, and no one at all leaves no section.
+    Instagram is a fourth action in the Directions · Website · Call row
+    (a drawn mark, no brand colours), shown only with an approved
+    account. On a private chef's page, an approved account takes over
+    from the catalogue's own `instagram_url`.
+  - **For managers:** Team gains the sommelier and an optional portrait
+    per person (picked with `photo_manager`, checked and EXIF-stripped
+    like a venue photo, uploaded to the private bucket). The text limit
+    goes from 280 to 600 characters. Profile gains an Instagram field
+    that accepts `@name`, a name or a profile link. Everything is
+    reviewed before it shows. Taking a person or the account off happens
+    at once. "Preview my page" shows a waiting portrait.
+  - **Review:** a team item shows its new photo and is approved through
+    `publish-venue-photo` (new `team_submission_id` body: copy to
+    `catalogue-media/<type>/<id>/team/`, verify, then
+    `approve_venue_team_photo`). One without a photo still uses
+    `admin_approve_venue_team`, which now refuses one with a photo. An
+    Instagram item opens the profile to check before approving.
+  - **Migration `20261101170000_add_venue_team_photos_and_instagram.sql`:**
+    - sommelier role; `photo_path`/`remove_photo`/`photo_url` on
+      `venue_team_submissions`; the insert policy keeps a photo in the
+      submitter's own folder;
+    - `venue_team_current` gains `photo_url`; a text-only resubmission
+      keeps the current photo;
+    - `venue_instagram_submissions` with RLS, the
+      `venue_instagram_current` view, `remove_venue_instagram`, and the
+      admin approve/reject functions;
+    - `get_review_queue` gains three trailing columns and the
+      `venue_instagram` kind.
+
+    Every new SECURITY DEFINER function revokes `public, anon`, and
+    `approve_venue_team_photo` is service-role only. Replayed from scratch
+    locally and exercised as manager, admin and anon:
+    - a photo outside the manager's own folder is refused, and setting
+      `photo_url` directly is refused;
+    - a photo submission can't be approved without publishing;
+    - a photo is kept on a text-only resubmission and dropped on a
+      removal;
+    - a pending Instagram is invisible to anon, and visible once
+      approved;
+    - anon can't read upload paths or execute any of the new functions.
+
+    **Not applied yet**, and `publish-venue-photo` is not yet deployed.
+    This build reads `photo_url` and `venue_instagram_current`, so the
+    migration must be live before a build carrying it ships.
+  - Not here: an email to the admins on a new team or Instagram
+    submission (`notify-venue-submission` doesn't know these kinds yet,
+    as with team texts before).
+
 ---
 
 ## v1.5.6 (24) — 2026-11-02

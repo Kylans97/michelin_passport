@@ -356,3 +356,75 @@ Deno.test('without a resolver (the old wiring) a login alone is still rejected',
   const res = await handleRequest(adminReq('admin-jwt'), admin, SECRET);
   assertEquals(res.status, 401);
 });
+
+// ------------------------------------------------------------
+// Team member photos (team_submission_id)
+// ------------------------------------------------------------
+
+const TEAM_ROW = {
+  id: 'team-1',
+  status: 'pending',
+  venue_type: 'restaurant',
+  venue_id: 'restaurant-1',
+  photo_path: 'restaurant/restaurant-1/user-1/team_chef_1.jpg',
+  removed_at: null,
+};
+
+const teamBody = { team_submission_id: 'team-1', reviewed_by: 'reviewer-1' };
+
+Deno.test('a team photo is copied to the team folder, verified, then approved with its URL', async () => {
+  const { admin, copyCalls, rpcCalls } = fakeAdmin({
+    submission: TEAM_ROW as unknown as SubmissionRow,
+  });
+  const res = await handleRequest(req({ body: teamBody }), admin, SECRET);
+  assertEquals(res.status, 200);
+  assertEquals(copyCalls, [{
+    from: TEAM_ROW.photo_path,
+    to: 'restaurant/restaurant-1/team/team_chef_1.jpg',
+    destinationBucket: 'catalogue-media',
+  }]);
+  assertEquals(rpcCalls.length, 1);
+  assertEquals(rpcCalls[0].fn, 'approve_venue_team_photo');
+  assertEquals(rpcCalls[0].params.p_submission_id, 'team-1');
+  assertEquals(rpcCalls[0].params.p_reviewed_by, 'reviewer-1');
+  assertStringIncludes(
+    String(rpcCalls[0].params.p_photo_url),
+    '/catalogue-media/restaurant/restaurant-1/team/team_chef_1.jpg',
+  );
+});
+
+Deno.test('a team copy that does not land is never approved', async () => {
+  const { admin, rpcCalls } = fakeAdmin({
+    submission: TEAM_ROW as unknown as SubmissionRow,
+    copyBehavior: 'silent-fail',
+  });
+  const res = await handleRequest(req({ body: teamBody }), admin, SECRET);
+  assertEquals(res.status, 502);
+  assertEquals(rpcCalls.length, 0);
+});
+
+Deno.test('a team submission without a photo is refused here', async () => {
+  const { admin, copyCalls, rpcCalls } = fakeAdmin({
+    submission: { ...TEAM_ROW, photo_path: null } as unknown as SubmissionRow,
+  });
+  const res = await handleRequest(req({ body: teamBody }), admin, SECRET);
+  assertEquals(res.status, 409);
+  assertEquals(copyCalls.length, 0);
+  assertEquals(rpcCalls.length, 0);
+});
+
+Deno.test('a team submission that is no longer pending is refused', async () => {
+  const { admin, copyCalls } = fakeAdmin({
+    submission: { ...TEAM_ROW, removed_at: '2026-11-02T10:00:00Z' } as unknown as SubmissionRow,
+  });
+  const res = await handleRequest(req({ body: teamBody }), admin, SECRET);
+  assertEquals(res.status, 409);
+  assertEquals(copyCalls.length, 0);
+});
+
+Deno.test('a team request without a secret or admin session is refused', async () => {
+  const { admin, copyCalls } = fakeAdmin({ submission: TEAM_ROW as unknown as SubmissionRow });
+  const res = await handleRequest(req({ body: teamBody, secret: null }), admin, SECRET);
+  assertEquals(res.status, 401);
+  assertEquals(copyCalls.length, 0);
+});

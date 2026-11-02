@@ -6,8 +6,10 @@ import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/cs_primary_button.dart';
 import '../../data/repositories/venue_about_repository.dart';
+import '../../data/repositories/venue_instagram_repository.dart';
 import '../../models/managed_venue.dart';
 import '../../models/venue_about_submission.dart';
+import 'widgets/venue_instagram_editor.dart';
 
 /// Profile, reached from a venue's landing page (VenueManagementScreen):
 /// the venue's current approved about text, the status of its latest
@@ -17,8 +19,14 @@ import '../../models/venue_about_submission.dart';
 class VenueProfileScreen extends StatefulWidget {
   final ManagedVenue venue;
   final VenueAboutRepository? aboutRepo;
+  final VenueInstagramRepository? instagramRepo;
 
-  const VenueProfileScreen({super.key, required this.venue, this.aboutRepo});
+  const VenueProfileScreen({
+    super.key,
+    required this.venue,
+    this.aboutRepo,
+    this.instagramRepo,
+  });
 
   @override
   State<VenueProfileScreen> createState() => _VenueProfileScreenState();
@@ -276,6 +284,16 @@ class _VenueProfileScreenState extends State<VenueProfileScreen> {
               loading: _submitting,
               onTap: _submit,
             ),
+          ),
+          const SizedBox(height: CsSpacing.xl),
+          Container(height: 1, color: AppColors.cardBorder),
+          const SizedBox(height: CsSpacing.lg),
+          VenueInstagramEditor(
+            venueType: widget.venue.venueTypeWireValue,
+            venueId: widget.venue.id,
+            repository:
+                widget.instagramRepo ??
+                VenueInstagramRepository(Supabase.instance.client),
           ),
           const SizedBox(height: CsSpacing.xxl),
         ],

@@ -37,9 +37,16 @@ void main() {
         expect(chef!.role, VenueTeamRole.chef);
         expect(chef.bio, 'Since 1989.');
         expect(
-          VenueTeamMember.fromJson({'role': 'sommelier', 'name': 'X'}),
+          VenueTeamMember.fromJson({'role': 'pastry', 'name': 'X'}),
           isNull,
         );
+        final sommelier = VenueTeamMember.fromJson({
+          'role': 'sommelier',
+          'name': 'S',
+          'photo_url': 'https://cdn/s.jpg',
+        });
+        expect(sommelier!.role, VenueTeamRole.sommelier);
+        expect(sommelier.photoUrl, 'https://cdn/s.jpg');
       },
     );
 
@@ -141,22 +148,21 @@ void main() {
       expect(find.text('THE TEAM'), findsNothing);
     });
 
-    testWidgets('each person with role, name and text, never gold', (
-      tester,
-    ) async {
+    testWidgets('a strip of role and name, the full text in a sheet, never '
+        'gold', (tester) async {
       await tester.pumpWidget(
         wrap(
           const VenueTeamSection(
             venueType: 'hotel',
             members: [
               VenueTeamMember(
-                role: VenueTeamRole.chef,
-                name: 'Jonnie Boer',
-                bio: 'Since 1989.',
+                role: VenueTeamRole.manager,
+                name: 'Manager Name',
               ),
               VenueTeamMember(
-                role: VenueTeamRole.manager,
-                name: 'Thérèse Boer',
+                role: VenueTeamRole.chef,
+                name: 'Chef Name',
+                bio: 'Since 1989.',
               ),
             ],
           ),
@@ -164,12 +170,86 @@ void main() {
       );
       expect(find.text('THE TEAM'), findsOneWidget);
       expect(find.text('Chef'), findsOneWidget);
-      expect(find.text('Hotel manager'), findsOneWidget);
-      expect(find.text('Jonnie Boer'), findsOneWidget);
-      expect(find.text('Since 1989.'), findsOneWidget);
+      expect(find.text('Manager'), findsOneWidget);
+      // The chef comes first in the strip.
+      expect(
+        tester.getTopLeft(find.text('Chef Name')).dx,
+        lessThan(tester.getTopLeft(find.text('Manager Name')).dx),
+      );
+      // The text waits for the sheet; no photo shows initials.
+      expect(find.text('Since 1989.'), findsNothing);
+      expect(find.text('CN'), findsOneWidget);
       for (final text in tester.widgetList<Text>(find.byType(Text))) {
         expect(text.style?.color, isNot(AppColors.gold));
       }
+
+      await tester.tap(find.text('Chef Name'));
+      await tester.pumpAndSettle();
+      expect(find.text('Since 1989.'), findsOneWidget);
+
+      await tester.tapAt(const Offset(10, 10));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Manager Name'));
+      await tester.pumpAndSettle();
+      expect(find.text('Hotel manager'), findsOneWidget);
+    });
+
+    test('the page order is chef, manager, sommelier', () {
+      final ordered = VenueTeamMember.ordered(const [
+        VenueTeamMember(role: VenueTeamRole.sommelier, name: 'S'),
+        VenueTeamMember(role: VenueTeamRole.manager, name: 'M'),
+        VenueTeamMember(role: VenueTeamRole.chef, name: 'C'),
+      ]);
+      expect(ordered.map((m) => m.name), ['C', 'M', 'S']);
+    });
+
+    test('a preview keeps the current photo, shows a waiting one, and drops '
+        'a removed one', () {
+      const current = [
+        VenueTeamMember(
+          role: VenueTeamRole.chef,
+          name: 'C',
+          photoUrl: 'https://cdn/c.jpg',
+        ),
+        VenueTeamMember(
+          role: VenueTeamRole.sommelier,
+          name: 'S',
+          photoUrl: 'https://cdn/s.jpg',
+        ),
+      ];
+      VenueTeamSubmission pending(
+        VenueTeamRole role, {
+        String? photoPath,
+        bool removePhoto = false,
+      }) => VenueTeamSubmission(
+        id: role.name,
+        role: role,
+        name: '${role.name} new',
+        status: VenueAboutSubmissionStatus.pending,
+        submittedAt: DateTime.utc(2026, 11, 2),
+        photoPath: photoPath,
+        removePhoto: removePhoto,
+      );
+      final team = previewTeam(
+        current: current,
+        mine: {
+          VenueTeamRole.chef: pending(VenueTeamRole.chef),
+          VenueTeamRole.manager: pending(
+            VenueTeamRole.manager,
+            photoPath: 'restaurant/r/u/team_manager_1.jpg',
+          ),
+          VenueTeamRole.sommelier: pending(
+            VenueTeamRole.sommelier,
+            removePhoto: true,
+          ),
+        },
+        pendingPhotoUrls: {VenueTeamRole.manager: 'https://signed/m.jpg'},
+      );
+      expect(team.map((m) => (m.name, m.photoUrl)), [
+        ('chef new', 'https://cdn/c.jpg'),
+        ('manager new', 'https://signed/m.jpg'),
+        ('sommelier new', null),
+      ]);
     });
   });
 }

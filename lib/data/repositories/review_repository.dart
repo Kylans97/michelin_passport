@@ -84,13 +84,39 @@ class ReviewRepository {
   );
 
   /// Publishes a submitted event and tells the venue.
-  Future<void> approveTeam(ReviewItem item) => _client.rpc(
-    'admin_approve_venue_team',
-    params: {'p_submission_id': item.itemId},
-  );
+  /// A submission with a new portrait is published through
+  /// publish-venue-photo (copy to catalogue-media, verify, approve), the
+  /// way a venue photo is; one without goes straight to the RPC, which
+  /// refuses one with a photo.
+  Future<void> approveTeam(ReviewItem item) async {
+    if (item.teamPhotoPath == null) {
+      await _client.rpc(
+        'admin_approve_venue_team',
+        params: {'p_submission_id': item.itemId},
+      );
+      return;
+    }
+    final response = await _client.functions.invoke(
+      'publish-venue-photo',
+      body: {'team_submission_id': item.itemId},
+    );
+    if (response.status != 200) {
+      throw StateError('Could not publish the photo (${response.status}).');
+    }
+  }
 
   Future<void> rejectTeam(ReviewItem item, String note) => _client.rpc(
     'admin_reject_venue_team',
+    params: {'p_submission_id': item.itemId, 'p_review_note': note},
+  );
+
+  Future<void> approveInstagram(ReviewItem item) => _client.rpc(
+    'admin_approve_venue_instagram',
+    params: {'p_submission_id': item.itemId},
+  );
+
+  Future<void> rejectInstagram(ReviewItem item, String note) => _client.rpc(
+    'admin_reject_venue_instagram',
     params: {'p_submission_id': item.itemId, 'p_review_note': note},
   );
 

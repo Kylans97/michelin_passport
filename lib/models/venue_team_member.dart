@@ -1,16 +1,26 @@
 import 'venue_about_submission.dart';
 
-/// The two people a restaurant or hotel can show on its page
-/// (venue_team_submissions.role, 20261030170000).
+/// The people a restaurant or hotel can show on its page
+/// (venue_team_submissions.role, 20261030170000; sommelier from
+/// 20261101170000).
 enum VenueTeamRole {
   manager,
-  chef;
+  chef,
+  sommelier;
 
   static VenueTeamRole? fromWire(String? value) => switch (value) {
     'manager' => VenueTeamRole.manager,
     'chef' => VenueTeamRole.chef,
+    'sommelier' => VenueTeamRole.sommelier,
     _ => null,
   };
+
+  /// The page's order: chef, manager, sommelier (decided 2026-11-02).
+  static const pageOrder = [
+    VenueTeamRole.chef,
+    VenueTeamRole.manager,
+    VenueTeamRole.sommelier,
+  ];
 
   String get wireValue => name;
 
@@ -20,6 +30,14 @@ enum VenueTeamRole {
     VenueTeamRole.manager =>
       venueType == 'hotel' ? 'Hotel manager' : 'Restaurant manager',
     VenueTeamRole.chef => 'Chef',
+    VenueTeamRole.sommelier => 'Sommelier',
+  };
+
+  /// The short label under a portrait in the page's team strip.
+  String get shortLabel => switch (this) {
+    VenueTeamRole.manager => 'Manager',
+    VenueTeamRole.chef => 'Chef',
+    VenueTeamRole.sommelier => 'Sommelier',
   };
 }
 
@@ -30,7 +48,15 @@ class VenueTeamMember {
   final String name;
   final String? bio;
 
-  const VenueTeamMember({required this.role, required this.name, this.bio});
+  /// The published portrait (catalogue-media), or null for none.
+  final String? photoUrl;
+
+  const VenueTeamMember({
+    required this.role,
+    required this.name,
+    this.bio,
+    this.photoUrl,
+  });
 
   /// Null for a role this build doesn't know.
   static VenueTeamMember? fromJson(Map<String, dynamic> json) {
@@ -40,12 +66,17 @@ class VenueTeamMember {
       role: role,
       name: json['name'] as String,
       bio: json['bio'] as String?,
+      photoUrl: json['photo_url'] as String?,
     );
   }
 
-  /// The page's order: the chef first, then the manager.
+  /// In the page's order: chef, manager, sommelier.
   static List<VenueTeamMember> ordered(Iterable<VenueTeamMember> members) =>
-      [...members]..sort((a, b) => b.role.index.compareTo(a.role.index));
+      [...members]..sort(
+        (a, b) => VenueTeamRole.pageOrder
+            .indexOf(a.role)
+            .compareTo(VenueTeamRole.pageOrder.indexOf(b.role)),
+      );
 }
 
 /// The manager's own latest submission for one role, read back with its
@@ -63,6 +94,13 @@ class VenueTeamSubmission {
   /// counts for nothing.
   final DateTime? removedAt;
 
+  /// A new portrait sent with this submission, in the private
+  /// venue-photo-submissions bucket; null when it keeps the current one.
+  final String? photoPath;
+
+  /// Asks to take the current portrait off without a new one.
+  final bool removePhoto;
+
   const VenueTeamSubmission({
     required this.id,
     required this.role,
@@ -72,6 +110,8 @@ class VenueTeamSubmission {
     required this.submittedAt,
     this.reviewNote,
     this.removedAt,
+    this.photoPath,
+    this.removePhoto = false,
   });
 
   static VenueTeamSubmission? fromJson(Map<String, dynamic> json) {
@@ -88,6 +128,8 @@ class VenueTeamSubmission {
       removedAt: json['removed_at'] == null
           ? null
           : DateTime.parse(json['removed_at'] as String),
+      photoPath: json['photo_path'] as String?,
+      removePhoto: (json['remove_photo'] as bool?) ?? false,
     );
   }
 
@@ -99,15 +141,29 @@ class VenueTeamSubmission {
 /// The team a manager's "Preview my page" shows: per role, what is still
 /// waiting for review if anything, else what is shown now. A rejected or
 /// withdrawn submission will not happen, so it changes nothing — the
-/// same rule as the about text and photo previews.
+/// same rule as the about text and photo previews. A waiting portrait
+/// shows through [pendingPhotoUrls] (role -> a signed URL of the private
+/// upload); without one, the role keeps its current portrait unless the
+/// submission removes it.
 List<VenueTeamMember> previewTeam({
   required List<VenueTeamMember> current,
   required Map<VenueTeamRole, VenueTeamSubmission> mine,
+  Map<VenueTeamRole, String> pendingPhotoUrls = const {},
 }) {
   final byRole = {for (final m in current) m.role: m};
   for (final s in mine.values) {
     if (s.isOpen) {
-      byRole[s.role] = VenueTeamMember(role: s.role, name: s.name, bio: s.bio);
+      final photoUrl = s.photoPath != null
+          ? pendingPhotoUrls[s.role]
+          : s.removePhoto
+          ? null
+          : byRole[s.role]?.photoUrl;
+      byRole[s.role] = VenueTeamMember(
+        role: s.role,
+        name: s.name,
+        bio: s.bio,
+        photoUrl: photoUrl,
+      );
     }
   }
   return VenueTeamMember.ordered(byRole.values);

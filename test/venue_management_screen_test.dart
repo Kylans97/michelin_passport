@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 // Covers a venue's management screens — the landing page
 // (VenueManagementScreen) and its Profile, Photos and Events screens —
 // via their DI seams, mirroring
@@ -226,6 +228,8 @@ class _FakeTeamRepository extends VenueTeamRepository {
     required VenueTeamRole role,
     required String name,
     String? bio,
+    Uint8List? photoBytes,
+    bool removePhoto = false,
   }) async {
     submitted.add((role: role, name: name, bio: bio));
     mine = {
@@ -366,7 +370,7 @@ void main() {
 
     testWidgets('the edit field is pre-filled with the current text', (tester) async {
       await _pump(tester, _FakeVenueAboutRepository(currentText: 'A quiet corner of Amsterdam.'));
-      final field = tester.widget<TextField>(find.byType(TextField));
+      final field = tester.widget<TextField>(find.byType(TextField).first);
       expect(field.controller?.text, 'A quiet corner of Amsterdam.');
     });
   });
@@ -485,7 +489,7 @@ void main() {
       tester,
     ) async {
       await _pump(tester, _FakeVenueAboutRepository());
-      final field = tester.widget<TextField>(find.byType(TextField));
+      final field = tester.widget<TextField>(find.byType(TextField).first);
       expect(field.maxLength, venueAboutTextMaxLength);
       expect(venueAboutTextMaxLength, 900); // the real venue_about_submissions CHECK constraint
     });
@@ -515,9 +519,9 @@ void main() {
     ) async {
       var calls = 0;
       await _pump(tester, _FakeVenueAboutRepository(onSubmit: (_) => calls++));
-      await tester.enterText(find.byType(TextField), '');
-      await tester.ensureVisible(find.text('Submit for review'));
-      await tester.tap(find.text('Submit for review'));
+      await tester.enterText(find.byType(TextField).first, '');
+      await tester.ensureVisible(find.text('Submit for review').first);
+      await tester.tap(find.text('Submit for review').first);
       await tester.pump();
       expect(find.text('Write something before submitting.'), findsOneWidget);
       expect(calls, 0);
@@ -530,9 +534,9 @@ void main() {
         tester,
         _FakeVenueAboutRepository(onSubmit: (call) => received = call),
       );
-      await tester.enterText(find.byType(TextField), 'A new description of the venue.');
-      await tester.ensureVisible(find.text('Submit for review'));
-      await tester.tap(find.text('Submit for review'));
+      await tester.enterText(find.byType(TextField).first, 'A new description of the venue.');
+      await tester.ensureVisible(find.text('Submit for review').first);
+      await tester.tap(find.text('Submit for review').first);
       await tester.pumpAndSettle();
 
       expect(received?.venueType, 'restaurant');
@@ -547,12 +551,12 @@ void main() {
         tester,
         _FakeVenueAboutRepository(currentText: 'Old approved text', onSubmit: (_) {}),
       );
-      await tester.enterText(find.byType(TextField), 'Brand new draft.');
-      await tester.ensureVisible(find.text('Submit for review'));
-      await tester.tap(find.text('Submit for review'));
+      await tester.enterText(find.byType(TextField).first, 'Brand new draft.');
+      await tester.ensureVisible(find.text('Submit for review').first);
+      await tester.tap(find.text('Submit for review').first);
       await tester.pumpAndSettle();
 
-      final field = tester.widget<TextField>(find.byType(TextField));
+      final field = tester.widget<TextField>(find.byType(TextField).first);
       expect(field.controller?.text, 'Brand new draft.');
     });
 
@@ -560,9 +564,9 @@ void main() {
       tester,
     ) async {
       await _pump(tester, _FakeVenueAboutRepository(submitError: Exception('connection reset')));
-      await tester.enterText(find.byType(TextField), 'Some text');
-      await tester.ensureVisible(find.text('Submit for review'));
-      await tester.tap(find.text('Submit for review'));
+      await tester.enterText(find.byType(TextField).first, 'Some text');
+      await tester.ensureVisible(find.text('Submit for review').first);
+      await tester.tap(find.text('Submit for review').first);
       await tester.pumpAndSettle();
       expect(find.text('Could not submit. Please try again.'), findsOneWidget);
       expect(find.textContaining('connection reset'), findsNothing);
@@ -1037,6 +1041,16 @@ void main() {
   });
 
   group('Team', () {
+    // Tall enough for all three roles, so every one is built.
+    Future<void> pumpTeamScreen(WidgetTester tester, _FakeTeamRepository team) async {
+      await tester.binding.setSurfaceSize(const Size(800, 3200));
+      addTearDown(() => tester.binding.setSurfaceSize(null));
+      await tester.pumpWidget(
+        MaterialApp(home: VenueTeamScreen(venue: _venue(), teamRepo: team)),
+      );
+      await tester.pumpAndSettle();
+    }
+
     testWidgets('the landing page shows Team for a restaurant, with its summary', (tester) async {
       await _pumpLanding(
         tester,
@@ -1072,12 +1086,10 @@ void main() {
 
     testWidgets('submitting a name sends it for review and shows that it waits', (tester) async {
       final team = _FakeTeamRepository();
-      await tester.pumpWidget(
-        MaterialApp(home: VenueTeamScreen(venue: _venue(), teamRepo: team)),
-      );
-      await tester.pumpAndSettle();
+      await pumpTeamScreen(tester, team);
       expect(find.text('CHEF'), findsOneWidget);
       expect(find.text('RESTAURANT MANAGER'), findsOneWidget);
+      expect(find.text('SOMMELIER'), findsOneWidget);
       expect(find.text('Remove from page'), findsNothing);
 
       await tester.enterText(find.byType(TextField).at(0), '  Jonnie Boer ');
@@ -1094,10 +1106,7 @@ void main() {
 
     testWidgets('an empty name is refused before anything is sent', (tester) async {
       final team = _FakeTeamRepository();
-      await tester.pumpWidget(
-        MaterialApp(home: VenueTeamScreen(venue: _venue(), teamRepo: team)),
-      );
-      await tester.pumpAndSettle();
+      await pumpTeamScreen(tester, team);
       await tester.tap(find.text('Submit for review').first);
       await tester.pumpAndSettle();
       expect(team.submitted, isEmpty);
@@ -1108,10 +1117,7 @@ void main() {
       final team = _FakeTeamRepository(
         current: const [VenueTeamMember(role: VenueTeamRole.chef, name: 'Jonnie Boer')],
       );
-      await tester.pumpWidget(
-        MaterialApp(home: VenueTeamScreen(venue: _venue(), teamRepo: team)),
-      );
-      await tester.pumpAndSettle();
+      await pumpTeamScreen(tester, team);
       expect(find.text('On your page: Jonnie Boer'), findsOneWidget);
       await tester.tap(find.text('Remove from page'));
       await tester.pumpAndSettle();
@@ -1135,10 +1141,7 @@ void main() {
           ),
         },
       );
-      await tester.pumpWidget(
-        MaterialApp(home: VenueTeamScreen(venue: _venue(), teamRepo: team)),
-      );
-      await tester.pumpAndSettle();
+      await pumpTeamScreen(tester, team);
       expect(find.textContaining("wasn't approved"), findsOneWidget);
       expect(find.text('Please use the full name.'), findsOneWidget);
     });

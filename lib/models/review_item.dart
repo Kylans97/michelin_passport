@@ -16,9 +16,13 @@ enum ReviewKind {
   /// admin sees it, and can take the event offline if it's wrong.
   venueEventEdit,
 
-  /// A name and short text for a venue's chef or manager
-  /// (20261030170000).
-  venueTeam;
+  /// A name, a text and optionally a portrait for a venue's chef,
+  /// manager or sommelier (20261030170000; portraits and sommelier from
+  /// 20261101170000).
+  venueTeam,
+
+  /// A venue's Instagram account (20261101170000).
+  venueInstagram;
 
   static ReviewKind? fromWire(String value) => switch (value) {
     'venue_claim' => ReviewKind.venueClaim,
@@ -27,6 +31,7 @@ enum ReviewKind {
     'venue_event' => ReviewKind.venueEvent,
     'venue_event_edit' => ReviewKind.venueEventEdit,
     'venue_team' => ReviewKind.venueTeam,
+    'venue_instagram' => ReviewKind.venueInstagram,
     _ => null,
   };
 
@@ -37,6 +42,7 @@ enum ReviewKind {
     ReviewKind.venueEvent => 'Event',
     ReviewKind.venueEventEdit => 'Change to a live event',
     ReviewKind.venueTeam => 'Team',
+    ReviewKind.venueInstagram => 'Instagram',
   };
 
   /// The queue's group heading.
@@ -47,6 +53,7 @@ enum ReviewKind {
     ReviewKind.venueEvent => 'EVENTS',
     ReviewKind.venueEventEdit => 'CHANGES TO LIVE EVENTS',
     ReviewKind.venueTeam => 'TEAM',
+    ReviewKind.venueInstagram => 'INSTAGRAM',
   };
 
   bool get isEvent => this == venueEvent || this == venueEventEdit;
@@ -98,6 +105,13 @@ class ReviewItem {
   final String? teamName;
   final String? teamBio;
 
+  /// A new portrait, in the private bucket; null when the submission
+  /// keeps the current one. [teamRemovePhoto] asks to take it off.
+  final String? teamPhotoPath;
+  final bool teamRemovePhoto;
+
+  final String? instagramHandle;
+
   const ReviewItem({
     required this.kind,
     required this.itemId,
@@ -124,6 +138,9 @@ class ReviewItem {
     this.teamRole,
     this.teamName,
     this.teamBio,
+    this.teamPhotoPath,
+    this.teamRemovePhoto = false,
+    this.instagramHandle,
   });
 
   /// Null for a kind this build doesn't know yet (a newer server), so
@@ -168,6 +185,9 @@ class ReviewItem {
       teamRole: json['team_role'] as String?,
       teamName: json['team_name'] as String?,
       teamBio: json['team_bio'] as String?,
+      teamPhotoPath: json['team_photo_path'] as String?,
+      teamRemovePhoto: (json['team_remove_photo'] as bool?) ?? false,
+      instagramHandle: json['instagram_handle'] as String?,
     );
   }
 }

@@ -15,6 +15,7 @@ import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
+import '../../data/repositories/venue_instagram_repository.dart';
 import '../../models/event.dart';
 import '../../models/private_chef.dart';
 import '../../models/private_chef_education.dart';
@@ -127,6 +128,9 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   late final _followRepo = FollowRepository(Supabase.instance.client);
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
   late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
+  late final _instagramRepo = VenueInstagramRepository(
+    Supabase.instance.client,
+  );
   // Events V2 Step 6 — never wired into a constructor param (matching
   // EventDetailScreen's own established seam). SupabaseAnalyticsService
   // persists only its own narrow set (the page open and the website tap
@@ -166,6 +170,11 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   // failure.
   String? _aboutText;
 
+  // The chef's own approved Instagram account (20261101170000). When there
+  // is one it takes over from the catalogue's instagram_url: the venue's
+  // own submission is the source, not a correction to defer to.
+  String? _instagramHandle;
+
   @override
   void initState() {
     super.initState();
@@ -185,6 +194,20 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       _aboutText = widget.aboutTextOverride;
     } else {
       _loadAboutText();
+    }
+    _loadInstagram();
+  }
+
+  Future<void> _loadInstagram() async {
+    try {
+      final handle = await _instagramRepo.loadCurrent(
+        venueType: 'private_chef',
+        venueId: widget.chefId,
+      );
+      if (!mounted) return;
+      setState(() => _instagramHandle = handle);
+    } catch (_) {
+      // Fall back to the catalogue's own link.
     }
   }
 
@@ -526,7 +549,10 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
         ? aboutText
         : (biography.isNotEmpty ? biography : null);
     final hasBackground = _history.isNotEmpty || _education.isNotEmpty;
-    final hasInstagram = (chef.instagramUrl ?? '').trim().isNotEmpty;
+    final instagramUrl = _instagramHandle != null
+        ? instagramProfileUri(_instagramHandle!).toString()
+        : chef.instagramUrl?.trim();
+    final hasInstagram = (instagramUrl ?? '').isNotEmpty;
     final hasWebsite = (chef.websiteUrl ?? '').trim().isNotEmpty;
 
     final sections = <Widget>[
@@ -538,7 +564,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       if (hasInstagram || hasWebsite)
         PrivateChefConnectSection(
           onTapInstagram: hasInstagram
-              ? () => _openUrl(chef.instagramUrl!)
+              ? () => _openUrl(instagramUrl!)
               : null,
           onTapWebsite: hasWebsite
               ? () => _openUrl(

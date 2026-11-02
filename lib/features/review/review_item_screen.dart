@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../core/constants/app_colors.dart';
 import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
@@ -10,6 +11,7 @@ import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
 import '../../data/repositories/review_repository.dart';
+import '../../data/repositories/venue_instagram_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
 import '../../models/photo_framing.dart';
 import '../../models/private_chef_photo.dart';
@@ -64,6 +66,9 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
         _item.photoStoragePath != null) {
       _signedUrl = widget.repository.signedPhotoUrl(_item.photoStoragePath!);
     }
+    if (_item.kind == ReviewKind.venueTeam && _item.teamPhotoPath != null) {
+      _signedUrl = widget.repository.signedPhotoUrl(_item.teamPhotoPath!);
+    }
   }
 
   Future<void> _decide(Future<void> Function() action) async {
@@ -91,6 +96,7 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
       ReviewKind.venueAbout => widget.repository.approveAbout(_item),
       ReviewKind.venuePhoto => widget.repository.approvePhoto(_item),
       ReviewKind.venueTeam => widget.repository.approveTeam(_item),
+      ReviewKind.venueInstagram => widget.repository.approveInstagram(_item),
       // Events open ReviewEventScreen, never this one.
       ReviewKind.venueEvent || ReviewKind.venueEventEdit => throw StateError(
         'Events are reviewed in ReviewEventScreen.',
@@ -119,6 +125,10 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
           note.trim(),
         ),
         ReviewKind.venueTeam => widget.repository.rejectTeam(
+          _item,
+          note.trim(),
+        ),
+        ReviewKind.venueInstagram => widget.repository.rejectInstagram(
           _item,
           note.trim(),
         ),
@@ -216,10 +226,21 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
     final current = await VenueTeamRepository(
       client,
     ).loadCurrent(venueType: _item.venueType, venueId: _item.venueId);
+    final existing = current.where((m) => m.role == role).firstOrNull;
+    final photoUrl = _item.teamPhotoPath != null
+        ? await _signedUrl
+        : _item.teamRemovePhoto
+        ? null
+        : existing?.photoUrl;
     return VenueTeamMember.ordered([
       for (final m in current)
         if (m.role != role) m,
-      VenueTeamMember(role: role, name: _item.teamName ?? '', bio: _item.teamBio),
+      VenueTeamMember(
+        role: role,
+        name: _item.teamName ?? '',
+        bio: _item.teamBio,
+        photoUrl: photoUrl,
+      ),
     ]);
   }
 
@@ -307,7 +328,9 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
             SizedBox(
               width: double.infinity,
               child: CsPrimaryButton(
-                label: _item.kind == ReviewKind.venuePhoto
+                label:
+                    (_item.kind == ReviewKind.venuePhoto ||
+                        _item.teamPhotoPath != null)
                     ? 'Approve and publish'
                     : 'Approve',
                 surface: CsSurface.light,
@@ -351,8 +374,43 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
       ),
       _field('Name', _item.teamName),
       _field('Their text', _item.teamBio),
+      if (_item.teamPhotoPath != null) ...[
+        _label('NEW PHOTO'),
+        const SizedBox(height: CsSpacing.sm),
+        FutureBuilder<String>(
+          future: _signedUrl,
+          builder: (context, snap) => ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: SizedBox(
+              width: 160,
+              height: 200,
+              child: snap.hasData
+                  ? Image.network(snap.data!, fit: BoxFit.cover)
+                  : const ColoredBox(color: AppColors.ivory),
+            ),
+          ),
+        ),
+        const SizedBox(height: CsSpacing.md),
+      ] else if (_item.teamRemovePhoto)
+        _field('Photo', 'Remove the current photo'),
       const SizedBox(height: CsSpacing.md),
       _previewButton(() => _previewPage()),
+    ],
+    ReviewKind.venueInstagram => [
+      _field('Instagram', '@${_item.instagramHandle ?? ''}'),
+      const SizedBox(height: CsSpacing.sm),
+      _previewButton(
+        () => launchUrl(
+          instagramProfileUri(_item.instagramHandle ?? ''),
+          mode: LaunchMode.externalApplication,
+        ),
+        label: 'Open the profile',
+      ),
+      const SizedBox(height: CsSpacing.sm),
+      Text(
+        "Check it's this venue's own account before approving.",
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+      ),
     ],
     ReviewKind.venueAbout => [
       _label('NEW ABOUT TEXT'),
@@ -393,13 +451,16 @@ class _ReviewItemScreenState extends State<ReviewItemScreen> {
     ],
   };
 
-  Widget _previewButton(VoidCallback onTap) => Align(
+  Widget _previewButton(
+    VoidCallback onTap, {
+    String label = 'Preview the venue page',
+  }) => Align(
     alignment: Alignment.centerLeft,
     child: TextButton.icon(
       onPressed: _busy ? null : onTap,
       icon: const Icon(Icons.visibility_outlined, size: 18),
       label: Text(
-        'Preview the venue page',
+        label,
         style: CsTypography.metadata.copyWith(
           color: AppColors.forestGreen,
           fontWeight: FontWeight.w600,
