@@ -27,11 +27,24 @@ The format follows Keep a Changelog.
     `20261031190000_add_venue_host_welcome_email.sql` adds the update
     trigger on the three claims tables (pending → approved only). It
     reuses the existing webhook secret and has its own exception
-    handler, so it can never block an approval. **Not applied yet.**
-    Deploy the function first, because the old one would read the
-    approved envelope as a new claim and email the admins.
-  - On the site: `site/hosts.html` (mantelier.app/hosts), linked from
-    the email. **Not deployed yet.**
+    handler, so it can never block an approval. The function went out
+    first (v14, 2026-11-02), because the old one would have read the
+    approved envelope as a new claim and emailed the admins. **Applied
+    2026-11-02.** Production then showed 3 triggers, no anon execute,
+    and the vault secret present. **Ledger: 128, local and remote in
+    agreement**, counting `20261031180000` (Poland/Türkiye towns,
+    applied from `claude/michelin-pl-tr-2026`, not yet on main).
+    - Tested first on a scratch local stack with every migration
+      replayed. Approving a claim queued exactly one request. A later
+      update of the approved claim and a rejection queued none.
+    - Near-miss: that local test's pg_net requests went to the
+      production function URL hard-coded in the trigger. Its fake
+      secret meant production refused both with 401, so nothing was
+      sent, but a replay with the real secret would email real
+      addresses. Use a test-only secret, or stub `net.http_post`, when
+      testing these triggers locally.
+  - On the site: `site/hosts.html`, live at mantelier.app/hosts since
+    2026-11-02, deployed with wrangler and linked from the email.
 
 ---
 
