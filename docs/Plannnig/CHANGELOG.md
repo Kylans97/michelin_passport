@@ -8,6 +8,69 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Two-step sign-in with an authenticator app** (`claude/app-two-step`,
+  2026-11-02). Authenticator app only: no SMS and no email, by decision.
+  It's free, stores nothing extra about the member, and on iPhone the
+  Passwords app fills the code in. Uses Supabase Auth MFA (TOTP), which
+  is enabled on production. No migration.
+  - **Profile → Privacy → Two-step sign-in**
+    (`TwoStepSettingsScreen`):
+    - Off: what it is, and Turn on.
+    - On: each linked authenticator with its date, Add a backup
+      authenticator, and Remove.
+    - Setting one up opens the `otpauth://` link in the authenticator
+      app (Passwords on iPhone), with the key shown to copy or type as a
+      fallback. The first code confirms it.
+    - Removing one asks for a code from any linked authenticator.
+      Removing the last turns two-step sign-in off.
+    - Supabase wants a different name per factor, so they are
+      "Authenticator", "Authenticator 2", and so on.
+  - **The code step after the password** (`TwoStepSignInScreen`).
+    `AuthGate` shows it while the session is `aal1` and the account has a
+    verified authenticator; it reads this from the session itself
+    (`sessionNeedsTwoStep`). A right code raises the session to `aal2`,
+    and the gate moves on from the `mfaChallengeVerified` event. A code
+    from any linked authenticator works. The screen also offers Sign out
+    and points a member who lost their phone to hello@mantelier.app.
+  - Code fields take digits only, six at most, and continue on the sixth
+    digit, which suits iOS filling the code in. `CsTextField` gained an
+    optional `inputFormatters` for this.
+  - `docs/Engineering/VENUE_CLAIM_OPERATIONS.md` has the procedure for a
+    member who lost their only authenticator: check it's them, then
+    remove their factors in the dashboard.
+  - `site/privacy.html` (not yet deployed) says the authenticator key is
+    stored by Supabase Auth and no phone number is, and lists two-step
+    sign-in under "Your choices".
+  - **Not yet enforced on the server.** A password-only (`aal1`) token
+    still reads the member's own data through the API, as before. The
+    app hides everything behind the code step, and production's "Limit
+    duration of AAL1 sessions" ends such sessions after 15 minutes for
+    accounts with an authenticator. Next steps, in order:
+    1. Admin review RPCs require `aal2`, once the product owner's phone
+       runs this build.
+    2. Studio goes live.
+  - Tested on a local replay with TOTP on, in the simulator:
+    - turning it on through the `otpauth://` link (Passwords opens) and
+      a confirming code;
+    - a fresh password sign-in shows the code step, where a wrong code
+      shows an error and the right one signs in on the sixth digit;
+    - turning it off with a code removes the factor from
+      `auth.mfa_factors`;
+    - a backup is added as "Authenticator 2", and signing in with the
+      backup's code works.
+
+    Plus 18 widget and unit tests.
+  - **Not tested:** iOS filling a code in from Passwords on a real
+    iPhone. The simulator's Passwords app is locked, because it has no
+    passcode.
+
+### Fixed
+- The first code field in the simulator took eight digits after a
+  partial delete ("00372453"), and sending it could only fail. Seen
+  while testing before release, and fixed with the six-digit limit
+  above.
+
 ---
 
 ## v1.5.6 (25) — 2026-11-02

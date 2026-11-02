@@ -215,3 +215,25 @@ Same shape for `venue_managers_hotels`/`venue_managers_private_chefs`.
 `revoked_reason` is required by the table's own CHECK constraint the
 moment `revoked_at` is set — there is no way to revoke without recording
 why.
+
+## A member who lost their authenticator
+
+Two-step sign-in (Profile → Privacy → Two-step sign-in) uses an
+authenticator app only, and Supabase has no recovery codes. A member who
+lost the phone with their only authenticator writes to
+hello@mantelier.app, as the code screen tells them to.
+
+1. **Check it's them.** The request must come from the account's own
+   email address. A venue manager: also check against the business email
+   on their claim. When in doubt, reply to the account's email address
+   and wait for the answer from there — never act on a message from
+   another address.
+2. **Remove their authenticators** in the dashboard: Authentication →
+   Users → the user → Multi-Factor → delete each factor. This is the
+   documented way; the dashboard is the place for it on purpose, since
+   no client may touch another account's factors.
+3. **Tell them** to sign in with their password and turn two-step
+   sign-in on again, with a backup this time.
+
+Nothing else about the account changes: visits, claims and venue
+permissions stay as they are.

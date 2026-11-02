@@ -6,6 +6,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/editorial_back_button.dart';
 import '../../data/repositories/profile_repository.dart';
 import 'blocked_users_screen.dart';
+import 'two_step_settings_screen.dart';
 
 /// Profile → Settings → Privacy — PROFILE PRIVACY & DISCOVERABILITY V1.
 /// Currently a single setting: **Allow members to find me**, which
@@ -71,9 +72,8 @@ class _PrivacySettingsScreenState extends State<PrivacySettingsScreen> {
     try {
       final load =
           widget.loadDiscoverable ??
-          () => ProfileRepository(Supabase.instance.client).getDiscoverable(
-            _uid,
-          );
+          () =>
+              ProfileRepository(Supabase.instance.client).getDiscoverable(_uid);
       final value = await load();
       if (!mounted) return;
       setState(() => _isDiscoverable = value);
@@ -164,7 +164,18 @@ class _PrivacySettingsScreenState extends State<PrivacySettingsScreen> {
                           onChanged: _toggle,
                         ),
                         const SizedBox(height: CsSpacing.xl),
-                        _BlockedUsersRow(
+                        _NavRow(
+                          label: 'Two-step sign-in',
+                          onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const TwoStepSettingsScreen(),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: CsSpacing.base),
+                        _NavRow(
+                          label: 'Blocked users',
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
@@ -282,12 +293,13 @@ class _DiscoverabilityToggleRow extends StatelessWidget {
   );
 }
 
-/// A tappable navigation row into [BlockedUsersScreen] — Block only works
-/// two-way if there's a place to see and undo it (see that screen's own
-/// doc comment).
-class _BlockedUsersRow extends StatelessWidget {
+/// A tappable navigation row: into [TwoStepSettingsScreen], and into
+/// [BlockedUsersScreen] — Block only works two-way if there's a place to
+/// see and undo it (see that screen's own doc comment).
+class _NavRow extends StatelessWidget {
+  final String label;
   final VoidCallback onTap;
-  const _BlockedUsersRow({required this.onTap});
+  const _NavRow({required this.label, required this.onTap});
 
   @override
   Widget build(BuildContext context) => InkWell(
@@ -299,7 +311,7 @@ class _BlockedUsersRow extends StatelessWidget {
         children: [
           Expanded(
             child: Text(
-              'Blocked users',
+              label,
               style: CsTypography.bodyMedium.copyWith(
                 color: AppColors.textOnDark,
               ),
