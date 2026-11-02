@@ -1,4 +1,5 @@
--- Opening hours on a restaurant's page, kept by the restaurant itself.
+-- Opening hours on a restaurant's page, kept by the restaurant itself,
+-- and the dates it is closed (Christmas, New Year's Day, a holiday).
 --
 -- Decided by the product owner on 2026-11-02: a claimed venue adds and
 -- changes its opening hours without an admin's check. Unlike an about
@@ -10,6 +11,12 @@
 --
 -- Restaurants only: a hotel's own opening hours say little, and its
 -- restaurants are venues of their own.
+--
+-- Closed days (restaurant_closures): a date, or a run of dates, the
+-- restaurant is closed whatever its week says. Added and removed the same
+-- way, live at once, through add_restaurant_closure() and
+-- remove_restaurant_closure(). Dates only, no text: a closure is a fact,
+-- and a free-text note would be descriptive copy, which is reviewed.
 --
 -- Shape: per weekday (ISO, 1 = Monday) none, one or two ranges, such as
 -- lunch and dinner. A weekday without a row is closed, once the
@@ -125,5 +132,89 @@ $$;
 
 revoke execute on function public.set_restaurant_opening_hours(uuid, jsonb) from public, anon;
 grant execute on function public.set_restaurant_opening_hours(uuid, jsonb) to authenticated;
+
+-- ============================================================
+-- Closed days
+-- ============================================================
+
+create table public.restaurant_closures (
+  id            uuid primary key default gen_random_uuid(),
+  restaurant_id uuid not null references public.restaurants(id) on delete cascade,
+  starts_on     date not null,
+  ends_on       date not null,
+  created_at    timestamptz not null default now(),
+  created_by    uuid references public.profiles(id) on delete set null,
+  check (ends_on >= starts_on),
+  -- A closure is a holiday, not a way to close for good: that's a status.
+  check (ends_on - starts_on <= 366)
+);
+
+create index restaurant_closures_restaurant_idx
+  on public.restaurant_closures (restaurant_id, ends_on);
+
+alter table public.restaurant_closures enable row level security;
+
+create policy restaurant_closures_read on public.restaurant_closures
+  for select to anon, authenticated using (true);
+
+revoke all on table public.restaurant_closures from public, anon, authenticated;
+grant select (id, restaurant_id, starts_on, ends_on)
+  on public.restaurant_closures to anon, authenticated;
+
+create function public.add_restaurant_closure(
+  p_restaurant_id uuid,
+  p_starts_on date,
+  p_ends_on date
+)
+returns uuid
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  v_id uuid;
+begin
+  if not public.is_active_venue_manager('restaurant', p_restaurant_id) then
+    raise exception 'Not a manager of this restaurant';
+  end if;
+  if p_starts_on is null or p_ends_on is null or p_ends_on < p_starts_on then
+    raise exception 'A closure needs a first day and a last day on or after it';
+  end if;
+  if p_ends_on < current_date then
+    raise exception 'A closure must not be wholly in the past';
+  end if;
+  if p_ends_on - p_starts_on > 366 then
+    raise exception 'A closure is at most a year long';
+  end if;
+  insert into public.restaurant_closures (restaurant_id, starts_on, ends_on, created_by)
+  values (p_restaurant_id, p_starts_on, p_ends_on, auth.uid())
+  returning id into v_id;
+  return v_id;
+end;
+$$;
+
+create function public.remove_restaurant_closure(p_closure_id uuid)
+returns void
+language plpgsql
+security definer
+set search_path = public, pg_temp
+as $$
+declare
+  v_restaurant uuid;
+begin
+  select restaurant_id into v_restaurant
+    from public.restaurant_closures where id = p_closure_id;
+  if v_restaurant is null
+     or not public.is_active_venue_manager('restaurant', v_restaurant) then
+    raise exception 'Not a closure of a restaurant you manage';
+  end if;
+  delete from public.restaurant_closures where id = p_closure_id;
+end;
+$$;
+
+revoke execute on function public.add_restaurant_closure(uuid, date, date) from public, anon;
+revoke execute on function public.remove_restaurant_closure(uuid) from public, anon;
+grant execute on function public.add_restaurant_closure(uuid, date, date) to authenticated;
+grant execute on function public.remove_restaurant_closure(uuid) to authenticated;
 
 commit;

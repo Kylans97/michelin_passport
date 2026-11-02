@@ -10,22 +10,27 @@ The format follows Keep a Changelog.
 
 ### Added
 
-- **Opening hours on a restaurant's page, kept by the restaurant.** A
-  claimed restaurant adds and changes them itself, live at once with no
-  admin review. Decided by the product owner on 2026-11-02: hours are
+- **Opening hours and closed days on a restaurant's page, kept by the
+  restaurant.** A claimed restaurant adds and changes them itself, live
+  at once with no admin review. Decided by the product owner on 2026-11-02: hours are
   practical facts a venue changes often, and waiting for review would
   leave the page wrong in the meantime.
   - **On the page:** "OPENING HOURS" under Directions · Website · Call,
     one line per run of days with the same hours ("Tue – Fri
     12:00–14:00 · 19:00–22:00"). Closed days are included so the week
     reads whole. Times are the restaurant's own, never converted to the
-    viewer's clock. Nothing at all without hours.
+    viewer's clock. Under the week, up to three closed days still to come
+    ("Closed 25 – 26 Dec 2026"). Nothing at all without either.
   - **For managers:** an "Opening hours" row on a restaurant's landing
     page opens `VenueOpeningHoursScreen`: per day open or closed, one or
     two times (24-hour picker). Opening a day copies the nearest earlier
     open day. Save is checked first with the same rules as the database,
     and a "Remove opening hours from page" action is there too.
-    Restaurants only: a hotel's own hours say little.
+    Restaurants only: a hotel's own hours say little. Below the week,
+    "Closed days" (asked for by the product owner on 2026-11-02 for
+    Christmas, New Year's Day and the like): a date range picker adds a
+    single day or a run of days, a cross removes one, each live at once,
+    and the list shows those not yet passed.
   - **Migration `20261101180000_add_restaurant_opening_hours.sql`:** the
     `restaurant_opening_hours` table (weekday 1–7, slot 1–2, `time`
     opens/closes, a range closing before it opens runs past midnight,
@@ -43,6 +48,15 @@ The format follows Keep a Changelog.
     - The first local run caught a wrong column reference in the
       function (`h.opens_at` for `t.opens_at`), fixed before anything
       was applied.
+    - Closed days, in the same migration since it hadn't been applied:
+      `restaurant_closures` (`starts_on`/`ends_on`, dates only, at most
+      a year), world-readable without `created_by`, no client write;
+      `add_restaurant_closure` (not wholly in the past) and
+      `remove_restaurant_closure`, both `is_active_venue_manager` only
+      with `revoke ... from public, anon`. Exercised locally: a manager
+      adds and removes; another user can't do either; past, reversed and
+      over-a-year ranges are refused; anon reads the dates only and has
+      no execute on any of the three functions.
 
     **Not applied yet.** This build reads the table, so the migration
     must be live before a build carrying it ships.
@@ -51,7 +65,9 @@ The format follows Keep a Changelog.
     24-hour picker. Also walked end to end on an in-memory week, from an
     empty page through the editor, setting Tuesday's times, switching
     Wednesday to Saturday on and saving, to a page reading "Tue – Sat
-    12:00–14:00 · 18:00–22:00".
+    12:00–14:00 · 18:00–22:00". Then closed days: added 25–26 December
+    with the date range picker, and the page read "Closed 25 – 26 Dec
+    2026" under the week.
 
 ### Fixed
 

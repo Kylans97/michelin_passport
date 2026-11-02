@@ -211,6 +211,7 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
   // The restaurant's own opening hours; live, no review, so a manager's
   // preview shows what the page shows.
   OpeningHours _openingHours = OpeningHours.empty;
+  List<RestaurantClosure> _closures = const [];
 
   // The venue's full published-photo set, in display_order — one venue,
   // one query, independent of restaurant_hero.dart's coverImageUrl
@@ -278,9 +279,15 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
 
   Future<void> _loadOpeningHours() async {
     try {
-      final hours = await _hoursRepo.load(widget.restaurant.id);
+      final results = await Future.wait([
+        _hoursRepo.load(widget.restaurant.id),
+        _hoursRepo.loadUpcomingClosures(widget.restaurant.id),
+      ]);
       if (!mounted) return;
-      setState(() => _openingHours = hours);
+      setState(() {
+        _openingHours = results[0] as OpeningHours;
+        _closures = results[1] as List<RestaurantClosure>;
+      });
     } catch (_) {
       // No hours section on a failed lookup.
     }
@@ -889,8 +896,14 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
 
                   const SectionDivider(),
 
-                  if (!_openingHours.isEmpty) ...[
-                    VenueOpeningHoursSection(hours: _openingHours),
+                  if (VenueOpeningHoursSection.hasContent(
+                    _openingHours,
+                    _closures,
+                  )) ...[
+                    VenueOpeningHoursSection(
+                      hours: _openingHours,
+                      closures: _closures,
+                    ),
                     const SectionDivider(),
                   ],
 

@@ -198,3 +198,58 @@ const _names = [
 String weekdayName(int weekday) => _names[weekday - 1];
 
 String weekdayShortName(int weekday) => _names[weekday - 1].substring(0, 3);
+
+/// A date, or a run of dates, a restaurant is closed whatever its week
+/// says (restaurant_closures, 20261101180000): Christmas, New Year's Day,
+/// a holiday. Dates only, in the restaurant's own calendar.
+class RestaurantClosure {
+  final String id;
+  final DateTime startsOn;
+  final DateTime endsOn;
+
+  const RestaurantClosure({
+    required this.id,
+    required this.startsOn,
+    required this.endsOn,
+  });
+
+  factory RestaurantClosure.fromJson(Map<String, dynamic> json) =>
+      RestaurantClosure(
+        id: json['id'].toString(),
+        startsOn: DateTime.parse(json['starts_on'] as String),
+        endsOn: DateTime.parse(json['ends_on'] as String),
+      );
+
+  /// "25 Dec 2026", "24 – 26 Dec 2026", "28 Nov – 2 Dec 2026" or
+  /// "31 Dec 2026 – 2 Jan 2027".
+  String get label {
+    String day(DateTime d) => '${d.day} ${_months[d.month - 1]}';
+    final sameDay =
+        startsOn.year == endsOn.year &&
+        startsOn.month == endsOn.month &&
+        startsOn.day == endsOn.day;
+    if (sameDay) return '${day(startsOn)} ${startsOn.year}';
+    if (startsOn.year != endsOn.year) {
+      return '${day(startsOn)} ${startsOn.year} – ${day(endsOn)} ${endsOn.year}';
+    }
+    if (startsOn.month == endsOn.month) {
+      return '${startsOn.day} – ${day(endsOn)} ${endsOn.year}';
+    }
+    return '${day(startsOn)} – ${day(endsOn)} ${endsOn.year}';
+  }
+}
+
+const _months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];

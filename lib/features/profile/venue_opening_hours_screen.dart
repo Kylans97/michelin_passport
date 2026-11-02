@@ -11,16 +11,22 @@ import '../../models/opening_hours.dart';
 
 /// Opening hours, reached from a restaurant's landing page
 /// (VenueManagementScreen): per day closed, or one or two times, such as
-/// lunch and dinner. Saving puts them on the page at once, with no review
-/// (decided 2026-11-02) — unlike the about text, team and photos.
+/// lunch and dinner — and below it the dates it's closed whatever the
+/// week says (Christmas, New Year's Day, a holiday). Both go on the page
+/// at once, with no review (decided 2026-11-02) — unlike the about text,
+/// team and photos.
 class VenueOpeningHoursScreen extends StatefulWidget {
   final String restaurantId;
   final OpeningHoursRepository? repository;
+
+  /// Picks the closed days; the platform's date range picker by default.
+  final Future<DateTimeRange?> Function(BuildContext context)? pickDates;
 
   const VenueOpeningHoursScreen({
     super.key,
     required this.restaurantId,
     this.repository,
+    this.pickDates,
   });
 
   /// The landing page's one-line summary.
@@ -46,6 +52,9 @@ class _VenueOpeningHoursScreenState extends State<VenueOpeningHoursScreen> {
 
   // Weekday -> ranges being edited. A day absent here is closed.
   Map<int, List<HoursRange>> _days = {};
+  List<RestaurantClosure> _closures = [];
+  bool _closureBusy = false;
+  String? _closureError;
   bool _hadHours = false;
   bool _loading = true;
   bool _loadFailed = false;
@@ -67,8 +76,10 @@ class _VenueOpeningHoursScreenState extends State<VenueOpeningHoursScreen> {
     });
     try {
       final hours = await _repo.load(widget.restaurantId);
+      final closures = await _repo.loadUpcomingClosures(widget.restaurantId);
       if (!mounted) return;
       setState(() {
+        _closures = closures;
         _days = {
           for (final e in hours.days.entries) e.key: [...e.value],
         };
@@ -137,6 +148,64 @@ class _VenueOpeningHoursScreenState extends State<VenueOpeningHoursScreen> {
     _error = null;
     _days[day]!.removeLast();
   });
+
+  Future<DateTimeRange?> _defaultPickDates(BuildContext context) {
+    final today = DateUtils.dateOnly(DateTime.now());
+    return showDateRangePicker(
+      context: context,
+      firstDate: today,
+      lastDate: DateTime(today.year + 2, today.month, today.day),
+      helpText: 'Closed from – to',
+      saveText: 'Add',
+    );
+  }
+
+  Future<void> _addClosure() async {
+    if (_closureBusy) return;
+    final range = await (widget.pickDates ?? _defaultPickDates)(context);
+    if (range == null || !mounted) return;
+    setState(() {
+      _closureBusy = true;
+      _closureError = null;
+    });
+    try {
+      await _repo.addClosure(widget.restaurantId, range.start, range.end);
+      final closures = await _repo.loadUpcomingClosures(widget.restaurantId);
+      if (!mounted) return;
+      setState(() {
+        _closures = closures;
+        _closureBusy = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _closureBusy = false;
+        _closureError = 'Could not add those days. Please try again.';
+      });
+    }
+  }
+
+  Future<void> _removeClosure(RestaurantClosure closure) async {
+    if (_closureBusy) return;
+    setState(() {
+      _closureBusy = true;
+      _closureError = null;
+    });
+    try {
+      await _repo.removeClosure(closure.id);
+      if (!mounted) return;
+      setState(() {
+        _closures = [..._closures]..removeWhere((c) => c.id == closure.id);
+        _closureBusy = false;
+      });
+    } catch (_) {
+      if (!mounted) return;
+      setState(() {
+        _closureBusy = false;
+        _closureError = 'Could not remove those days. Please try again.';
+      });
+    }
+  }
 
   Future<void> _save({bool clear = false}) async {
     if (_saving) return;
@@ -258,6 +327,56 @@ class _VenueOpeningHoursScreenState extends State<VenueOpeningHoursScreen> {
                     onTap: _saving ? () {} : () => _save(clear: true),
                   ),
                 ],
+                const SizedBox(height: CsSpacing.xl),
+                Container(height: 1, color: AppColors.cardBorder),
+                const SizedBox(height: CsSpacing.lg),
+                Text(
+                  'CLOSED DAYS',
+                  style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
+                ),
+                const SizedBox(height: CsSpacing.sm),
+                Text(
+                  'Days you are closed whatever your week says, such as Christmas '
+                  'or a holiday. They show on your page until they have passed.',
+                  style: CsTypography.body.copyWith(
+                    color: AppColors.forestGreen,
+                    height: 1.5,
+                  ),
+                ),
+                const SizedBox(height: CsSpacing.sm),
+                for (final closure in _closures)
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          closure.label,
+                          style: CsTypography.body.copyWith(
+                            color: AppColors.forestGreen,
+                          ),
+                        ),
+                      ),
+                      IconButton(
+                        tooltip: 'Remove ${closure.label}',
+                        icon: const Icon(
+                          Icons.close_rounded,
+                          color: AppColors.taupe,
+                          size: 20,
+                        ),
+                        onPressed: () => _removeClosure(closure),
+                      ),
+                    ],
+                  ),
+                if (_closureError != null)
+                  Text(
+                    _closureError!,
+                    style: CsTypography.metadata.copyWith(
+                      color: AppColors.error,
+                    ),
+                  ),
+                SubtleTextAction(
+                  label: _closureBusy ? 'Saving…' : 'Add closed days',
+                  onTap: _addClosure,
+                ),
                 const SizedBox(height: CsSpacing.xxl),
               ],
             ),

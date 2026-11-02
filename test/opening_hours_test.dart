@@ -25,6 +25,38 @@ class _FakeRepo extends OpeningHoursRepository {
   OpeningHours stored;
   final saved = <OpeningHours>[];
   bool fail = false;
+  List<RestaurantClosure> closures = [];
+  final added = <(DateTime, DateTime)>[];
+  final removed = <String>[];
+
+  @override
+  Future<List<RestaurantClosure>> loadUpcomingClosures(
+    String restaurantId, {
+    DateTime? today,
+  }) async => closures;
+
+  @override
+  Future<void> addClosure(
+    String restaurantId,
+    DateTime startsOn,
+    DateTime endsOn,
+  ) async {
+    added.add((startsOn, endsOn));
+    closures = [
+      ...closures,
+      RestaurantClosure(
+        id: 'c${added.length}',
+        startsOn: startsOn,
+        endsOn: endsOn,
+      ),
+    ];
+  }
+
+  @override
+  Future<void> removeClosure(String closureId) async {
+    removed.add(closureId);
+    closures = closures.where((c) => c.id != closureId).toList();
+  }
 
   @override
   Future<OpeningHours> load(String restaurantId) async => stored;
@@ -82,7 +114,9 @@ void main() {
       expect(late, r('21:00', '23:00'));
       for (final first in [lunch, r('12:00', '22:00'), r('17:00', '20:00')]) {
         expect(
-          OpeningHours({1: [first, suggestSecondRange(first)]}).validationError(),
+          OpeningHours({
+            1: [first, suggestSecondRange(first)],
+          }).validationError(),
           isNull,
           reason: first.label,
         );
@@ -128,7 +162,58 @@ void main() {
     });
   });
 
+  group('RestaurantClosure', () {
+    RestaurantClosure c(DateTime a, DateTime b) =>
+        RestaurantClosure(id: 'x', startsOn: a, endsOn: b);
+
+    test('reads as one day, a run in a month, across months and years', () {
+      expect(
+        c(DateTime(2026, 12, 25), DateTime(2026, 12, 25)).label,
+        '25 Dec 2026',
+      );
+      expect(
+        c(DateTime(2026, 12, 24), DateTime(2026, 12, 26)).label,
+        '24 – 26 Dec 2026',
+      );
+      expect(
+        c(DateTime(2026, 11, 28), DateTime(2026, 12, 2)).label,
+        '28 Nov – 2 Dec 2026',
+      );
+      expect(
+        c(DateTime(2026, 12, 31), DateTime(2027, 1, 2)).label,
+        '31 Dec 2026 – 2 Jan 2027',
+      );
+    });
+  });
+
   group('VenueOpeningHoursSection', () {
+    testWidgets('closed days show under the week, at most three, and on '
+        'their own without hours', (tester) async {
+      final closures = [
+        for (var i = 1; i <= 4; i++)
+          RestaurantClosure(
+            id: 'c$i',
+            startsOn: DateTime(2026, 12, 20 + i),
+            endsOn: DateTime(2026, 12, 20 + i),
+          ),
+      ];
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: VenueOpeningHoursSection(
+              hours: OpeningHours.empty,
+              closures: closures,
+            ),
+          ),
+        ),
+      );
+      expect(find.text('OPENING HOURS'), findsOneWidget);
+      expect(find.text('Closed 21 Dec 2026'), findsOneWidget);
+      expect(find.text('Closed 23 Dec 2026'), findsOneWidget);
+      expect(find.text('Closed 24 Dec 2026'), findsNothing);
+      expect(find.text('Mon'), findsNothing);
+    });
+
     testWidgets('lists the week, and nothing at all without hours', (
       tester,
     ) async {
@@ -160,13 +245,22 @@ void main() {
   });
 
   group('VenueOpeningHoursScreen', () {
-    Future<_FakeRepo> pump(WidgetTester tester, OpeningHours stored) async {
-      final repo = _FakeRepo(stored);
+    Future<_FakeRepo> pump(
+      WidgetTester tester,
+      OpeningHours stored, {
+      List<RestaurantClosure> closures = const [],
+      DateTimeRange? picked,
+    }) async {
+      final repo = _FakeRepo(stored)..closures = [...closures];
       await tester.binding.setSurfaceSize(const Size(800, 2400));
       addTearDown(() => tester.binding.setSurfaceSize(null));
       await tester.pumpWidget(
         MaterialApp(
-          home: VenueOpeningHoursScreen(restaurantId: 'r1', repository: repo),
+          home: VenueOpeningHoursScreen(
+            restaurantId: 'r1',
+            repository: repo,
+            pickDates: (_) async => picked,
+          ),
         ),
       );
       await tester.pumpAndSettle();
@@ -219,6 +313,38 @@ void main() {
       expect(repo.saved.single.isEmpty, isTrue);
       expect(find.text('Remove opening hours from page'), findsNothing);
       expect(find.text('Closed'), findsNWidgets(7));
+    });
+
+    testWidgets('closed days are added from the picker and removed with the '
+        'cross, each at once', (tester) async {
+      final repo = await pump(
+        tester,
+        OpeningHours.empty,
+        closures: [
+          RestaurantClosure(
+            id: 'xmas',
+            startsOn: DateTime(2026, 12, 25),
+            endsOn: DateTime(2026, 12, 26),
+          ),
+        ],
+        picked: DateTimeRange(
+          start: DateTime(2027, 1, 1),
+          end: DateTime(2027, 1, 1),
+        ),
+      );
+      expect(find.text('25 – 26 Dec 2026'), findsOneWidget);
+
+      await tester.tap(find.text('Add closed days'));
+      await tester.pumpAndSettle();
+      expect(repo.added, [(DateTime(2027, 1, 1), DateTime(2027, 1, 1))]);
+      expect(find.text('1 Jan 2027'), findsOneWidget);
+
+      await tester.tap(find.byTooltip('Remove 25 – 26 Dec 2026'));
+      await tester.pumpAndSettle();
+      expect(repo.removed, ['xmas']);
+      expect(find.text('25 – 26 Dec 2026'), findsNothing);
+      // Closed days never touch the week.
+      expect(repo.saved, isEmpty);
     });
 
     test('the landing summary', () {
