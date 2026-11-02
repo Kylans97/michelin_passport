@@ -8,6 +8,43 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Admins need two-step sign-in** (`claude/admin-two-step`, migration
+  `20261101220000_admins_require_two_step`, written 2026-11-02; **not
+  yet applied**). `is_admin()` is now true only when the session's token
+  says `aal2`, so a stolen admin password opens nothing admin. It stays
+  the single source of that permission, and every admin path goes
+  through it, evaluated as the caller, so this one change covers them
+  all:
+  - `get_review_queue` and the 16 `admin_*` RPCs;
+  - the admin read policies on `events`, `event_restaurants`,
+    `event_hotels`, `event_chefs`, and on storage for
+    venue-photo-submissions;
+  - `publish-venue-photo`'s admin path;
+  - the app's Review and Insights rows.
+
+  That list was taken from production with a query over `pg_proc` and
+  `pg_policies`, not from memory. The service_role dashboard fallback
+  never calls `is_admin()` and is unaffected. No app change: build 26
+  asks for the code at sign-in, and the only admin is on 26 with an
+  authenticator. An admin on an older build, or without an
+  authenticator, is no longer an admin, which is the point. CLAUDE.md
+  records the rule under "Venue permissions".
+  - Tested on a local replay of all 136 migrations:
+    - admin, password only (`aal1`): `is_admin()` false; a submitted
+      event is hidden by `events_admin_read`; `get_review_queue` raises
+      "Not an admin".
+    - admin with no `aal` claim at all: false.
+    - admin with `aal2`: true; the event shows, the queue returns its
+      row, and member insights return.
+    - member with `aal2`: false.
+    - anon still has no execute.
+  - **Studio:** its own branch (`claude/venue-insights-plan`) also had a
+    migration named `20261101220000`. It becomes `20261101230000` there,
+    and its sign-in check changes with it: `is_admin()` is false before
+    the code, so Studio can no longer use it to pick the screen before
+    two-step.
+
 ### Fixed
 - **App Store Connect warned ITMS-90683 on 1.5.6 (26)**: "Missing
   purpose string" for `NSLocationAlwaysAndWhenInUseUsageDescription`.
