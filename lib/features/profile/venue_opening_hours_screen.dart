@@ -107,7 +107,7 @@ class _VenueOpeningHoursScreenState extends State<VenueOpeningHoursScreen> {
     final picked = await showTimePicker(
       context: context,
       initialTime: TimeOfDay(hour: initial.hour, minute: initial.minute),
-      initialEntryMode: TimePickerEntryMode.input,
+      initialEntryMode: TimePickerEntryMode.dial,
       builder: (context, child) => MediaQuery(
         data: MediaQuery.of(context).copyWith(alwaysUse24HourFormat: true),
         child: child!,
@@ -130,12 +130,7 @@ class _VenueOpeningHoursScreenState extends State<VenueOpeningHoursScreen> {
 
   void _addSecond(int day) => setState(() {
     _error = null;
-    final first = _days[day]!.first;
-    final opens = HoursTime(
-      (first.closes.hour + 4).clamp(0, 22),
-      first.closes.minute,
-    );
-    _days[day]!.add(HoursRange(opens, const HoursTime(22, 0)));
+    _days[day]!.add(suggestSecondRange(_days[day]!.first));
   });
 
   void _removeSecond(int day) => setState(() {

@@ -148,6 +148,26 @@ class OpeningHours {
   }
 }
 
+/// What "Add a second time" proposes after [first]: dinner after lunch
+/// (four hours after it closes, until 22:00), or — when that no longer
+/// fits in the day — a late range of two hours starting an hour after it,
+/// past midnight if need be. Never an empty range.
+HoursRange suggestSecondRange(HoursRange first) {
+  final opens = first.closes.minutes + 240;
+  if (opens + 60 <= 22 * 60) {
+    return HoursRange(
+      HoursTime(opens ~/ 60, opens % 60),
+      const HoursTime(22, 0),
+    );
+  }
+  final start = (first.closes.minutes + 60) % (24 * 60);
+  final end = (start + 120) % (24 * 60);
+  return HoursRange(
+    HoursTime(start ~/ 60, start % 60),
+    HoursTime(end ~/ 60, end % 60),
+  );
+}
+
 class OpeningHoursLine {
   final int firstDay;
   final int lastDay;

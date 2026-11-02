@@ -75,6 +75,20 @@ void main() {
       expect(r('18:00', '01:00').pastMidnight, isTrue);
     });
 
+    test('a second time follows the first without ever being empty', () {
+      expect(suggestSecondRange(lunch), r('18:00', '22:00'));
+      expect(suggestSecondRange(r('12:00', '22:00')), r('23:00', '01:00'));
+      final late = suggestSecondRange(r('17:00', '20:00'));
+      expect(late, r('21:00', '23:00'));
+      for (final first in [lunch, r('12:00', '22:00'), r('17:00', '20:00')]) {
+        expect(
+          OpeningHours({1: [first, suggestSecondRange(first)]}).validationError(),
+          isNull,
+          reason: first.label,
+        );
+      }
+    });
+
     test('an empty week shows nothing', () {
       expect(OpeningHours.empty.isEmpty, isTrue);
       expect(const OpeningHours({1: []}).isEmpty, isTrue);

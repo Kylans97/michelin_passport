@@ -48,10 +48,21 @@ The format follows Keep a Changelog.
     must be live before a build carrying it ships.
   - Checked in the simulator with a throwaway preview entry point and
     made-up hours, not committed: the page section, the editor and its
-    24-hour picker.
+    24-hour picker. Also walked end to end on an in-memory week, from an
+    empty page through the editor, setting Tuesday's times, switching
+    Wednesday to Saturday on and saving, to a page reading "Tue – Sat
+    12:00–14:00 · 18:00–22:00".
 
 ### Fixed
 
+- **"Add a second time" after a range closing at 22:00 proposed
+  22:00–22:00**, which saving then refused. Found walking the editor in
+  the simulator. `suggestSecondRange` now proposes dinner after lunch
+  (four hours on, until 22:00), or else a two-hour range from an hour
+  after the first closes, past midnight if need be. It never proposes an
+  empty range, and a test checks that each suggestion passes the week's
+  own validation. The time picker also opens on the clock dial rather
+  than typed entry, which proved clumsy.
 - **A failed opening-hours load on the landing page could surface as an
   unhandled error** when a reload replaced the pending future. The
   future is now marked handled, and the row's summary just stays blank.
