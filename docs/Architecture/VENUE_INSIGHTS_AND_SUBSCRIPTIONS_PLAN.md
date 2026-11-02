@@ -1,8 +1,8 @@
 # Venue insights, dashboards and subscriptions — plan
 
-**Status:** proposal, 2026-11-02. Nothing in here is built, and nothing in
-here is a migration. Section 2 lists the decisions the product owner has
-to take before the parts that depend on them can start.
+**Status:** proposal, 2026-11-02. Decisions 1 and 2 were taken the same
+day; 3 to 6 are open. Phase 1 (the admin dashboard) is in progress; nothing
+else is built.
 
 **The idea, in the product owner's words (2026-11-02):** a hidden page on
 the website with dashboards on the app's data, first for the product owner
@@ -69,11 +69,22 @@ named next to it.
    Either way, the privacy policy's "How you use the app" paragraph
    changes before the first row is recorded.
 
+   **Decided 2026-11-02 by the product owner: B, then A.** Raw search text
+   stays unrecorded (§8 of the analytics contract stands). A search
+   records the cuisine, city, country or venue it matched; filters
+   record their chosen value. The privacy policy and the analytics
+   contract are updated in the same change that ships the tracking, not
+   before and not after.
+
 2. **Trip destinations** (blocks "where people travel").
    Trips are personal plans, and the policy doesn't yet list them among
    what is shared in aggregate. Counting members planning a trip to a
    city or country, per month, with the usual rule (no number below 5),
    is defensible — but it is a new use and has to be named in the policy.
+
+   **Decided 2026-11-02 by the product owner: yes, aggregated.** Members
+   planning a trip to a city or country, per month, never a number below
+   5, never who. The privacy policy names it before any venue sees it.
 
 3. **What a free claimed venue sees.** Suggestion: a small free view (page
    opens and followers this month) as the shop window for Basic. Or

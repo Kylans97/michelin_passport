@@ -8,6 +8,45 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **Mantelier Studio, the admin dashboard on the website** (phase 1 of
+  `docs/Architecture/VENUE_INSIGHTS_AND_SUBSCRIPTIONS_PLAN.md`, written
+  2026-11-02; **not yet applied or deployed**). A separate static site
+  in `studio/`, meant for `studio.mantelier.app`.
+  - Sign-in uses the app account. The studio first checks `is_admin()`,
+    so a member who isn't an admin sees "No access" and is never asked
+    to set up an authenticator. An admin then sets up two-step sign-in
+    (TOTP) the first time, and enters a code every time after. The
+    session lives in the tab only (`sessionStorage`).
+  - Migration `20261101220000_add_admin_studio_report`:
+    `admin_studio_report(p_days)` returns one jsonb document with
+    headline numbers, weekly members and active members, screens,
+    Explore searches and filters (never the text), top venues with taps
+    and new followers, events with opens, Interested, Going and
+    attended, and upcoming trips by destination country. It refuses
+    unless the caller is an admin **and** the session passed two-step
+    sign-in (`aal2`). Execute is revoked from public and anon in the
+    same migration. Members by country and age come from the existing
+    `admin_get_member_insights()`.
+  - Counts only, never a person. Admin numbers are not hidden below 5;
+    that rule is for what leaves Mantelier, which is phase 2.
+  - Charts are plain SVG and all text goes in with `textContent`.
+    `_headers` sets noindex, a strict Content-Security-Policy, and
+    blocks framing.
+  - `supabase/config.toml` turns TOTP on for local stacks, so a local
+    replay can sign in to the studio the way production will.
+  - Tested on a local replay of all 136 migrations with seeded
+    fictional venues and members: anon has no execute; an admin
+    without two-step is refused (`mfa_required`); a member with
+    two-step is refused (`not_admin`); an admin with two-step gets the
+    report; `p_days` is clamped to 1–365. In the browser: first sign-in
+    sets up the code and opens the dashboard, a wrong code shows an
+    error, signing in again asks for the code, a non-admin lands on "No
+    access", and phone width has no sideways scroll.
+  - Not tested: production's own TOTP setting (it must be on under
+    Authentication → Multi-Factor in the Supabase dashboard), and the
+    studio on its real domain, which doesn't exist yet.
+
 ---
 
 ## v1.5.6 (25) — 2026-11-02
