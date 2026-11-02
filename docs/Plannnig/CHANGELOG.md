@@ -50,6 +50,43 @@ The format follows Keep a Changelog.
     tests cover it) and clustering in a dense city (the unit tests cover
     it).
 
+- **Restaurant cuisines.** Up to two cuisines per
+  restaurant, per source, grouped into 25 families for search and
+  filtering. `20261101150000_add_restaurant_cuisines.sql` adds
+  `cuisine_families` (seeded), `cuisines.slug` (generated) and
+  `family_id`, `restaurant_cuisines` (restaurant, cuisine, position 1–2,
+  source `michelin`/`worlds_50_best`/`legacy`, source URL and raw label as
+  evidence), the view `restaurant_cuisines_effective` (MICHELIN, else
+  50 Best, else legacy) and four columns appended to `restaurants_full`
+  (`cuisine_names`, `cuisine_slugs`, `cuisine_family_slugs`,
+  `cuisine_search`). All catalogue: world-readable, no client write.
+  `restaurants.cuisine_id` stays and a trigger keeps it equal to the
+  effective position-1 cuisine; no shipped build reads it, but it is on
+  `restaurants_full`, so it goes only under the three-step rule. The data
+  load, `supabase/data/enrichment/restaurant_cuisines_2026/prepared_restaurant_cuisines.sql`,
+  replaces the mixed Dutch/English/self-written vocabulary (159 rows)
+  with MICHELIN's own 148 English labels and links 3501 of 3555
+  restaurants (was 720). `20261101160000_cuisines_slug_unique.sql` goes
+  after it. Replayed from scratch and tested end to end locally on a
+  copy of production's restaurant ids and cuisine ids (QA-420–QA-426).
+  **Applied to production 2026-11-02**, in that order: 5053 links, 0
+  restaurants with `cuisine_id` out of step, unique slug index in place.
+  **Ledger: 130, local and remote in agreement.**
+- **Cuisine in the app.** Explore's Restaurants search gets a second
+  compact control beside the country one, "All cuisines ▾", opening a
+  sheet of cuisine families to tick (any number); the control itself is
+  the active-filter summary ("Japanese +1"), so there is no new chip row.
+  It offers only families some restaurant has (`getCuisineFamilies`) and
+  filters with an overlap on `cuisine_family_slugs`. Free search also
+  matches `cuisine_search`, so "sushi" or "japanese" finds restaurants the
+  way a city does; each word may still match a different field ("sushi
+  tokyo"). The restaurant page shows the cuisine as MICHELIN names it
+  ("Japanese · Sushi") under the city line, and nothing when none is
+  known. `restaurantFullColumns` now selects `cuisine_names` and
+  `cuisine_family_slugs`, which are live since 2026-11-02, so this build
+  has no ordering hazard. Tests: `test/restaurant_cuisines_test.dart`
+  (13), the live view-columns test, and the full suite (2745) pass.
+
 - **A welcome for venue hosts**, in three places that share one text:
   Mantelier is international, so write in English; events are
   evenings that happen once (a special tasting, a collaboration with
@@ -287,6 +324,25 @@ identical to production) still stands. `flutter analyze` clean and all
   a row opening Event Detail; nothing saved.
 
 ### Fixed
+
+- **Near-miss: `cuisines.slug` could not be unique in one step.**
+  Production's legacy labels contain two pairs that slugify alike
+  ("French / Asian" and "French-Asian", "French / Classic" and "French
+  Classic"), so a unique index in the same migration as the column would
+  have failed on production while passing a fresh replay. The index is a
+  second migration that runs after the data load merges them; tested
+  that it refuses on uncleaned data.
+- **Near-miss: MICHELIN's JSON-LD drops the second cuisine.**
+  `servesCuisine` holds only the first; the page's "Cuisine:" label holds
+  both (1498 of 3234 restaurants have two). Earlier passes' caches were
+  not reused for that reason. Also, 111 stored MICHELIN URLs use a Dutch
+  or French locale, whose pages give translated labels ("Eigentijds");
+  pages are now fetched under `/en/` (QA-422, QA-423).
+- **Near-miss: production moved between export and apply.** The
+  PL/TR pass added 23 restaurants after the 2026-11-01 export, so the
+  load's row-count guard would have refused. Re-exported on 2026-11-02,
+  fetched the 23 new restaurants and the 5 whose `michelin_url` had
+  changed, and rebuilt before applying.
 
 - **The selected star or Key filter vanished in the MICHELIN guides**
   (tester, 2026-10-31: "when something's off it's gone entirely"). The

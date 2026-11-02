@@ -12,6 +12,7 @@ import '../../core/theme/cs_spacing.dart';
 import '../../core/theme/cs_surface_context.dart';
 import '../../core/theme/cs_typography.dart';
 import '../../core/widgets/country_filter_control.dart';
+import '../../core/widgets/cuisine_filter_control.dart';
 import '../../core/widgets/cs_filter_chip.dart';
 import '../../core/widgets/cs_search_field.dart';
 import '../../core/widgets/floating_nav_bar.dart';
@@ -19,6 +20,7 @@ import '../../data/repositories/editorial_selection_repository.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/restaurant_repository.dart';
+import '../../models/cuisine_family.dart';
 import '../../models/event.dart';
 import '../../models/hotel.dart';
 import '../../models/restaurant.dart';
@@ -91,6 +93,9 @@ class _ExploreScreenState extends State<ExploreScreen> {
   RestaurantAwardFilter _restaurantAward = RestaurantAwardFilter.all;
   HotelKeysFilter _hotelKeys = HotelKeysFilter.all;
   VenueCountry? _country;
+  // Cuisine family slugs; empty means all cuisines. Restaurants only, like
+  // the award filter.
+  Set<String> _cuisineFamilies = const {};
 
   // The last successfully loaded search result set, kept on screen (stale)
   // while a new one is in flight — see _runSearch: a keystroke never
@@ -128,6 +133,13 @@ class _ExploreScreenState extends State<ExploreScreen> {
     (List<VenueCountry>, List<VenueCountry>, List<VenueCountry>)
   >
   _countriesFuture = _loadCountries();
+
+  // Search mode's cuisine picker options (Restaurants only). A failure
+  // leaves the picker without options rather than failing the search.
+  late final Future<List<CuisineFamily>> _cuisineFamiliesFuture =
+      _restaurantRepo.getCuisineFamilies().catchError(
+        (Object _) => const <CuisineFamily>[],
+      );
 
   bool get _isSearching => isExploreSearching(_query);
 
@@ -205,6 +217,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
           worlds50BestOnly: _restaurantAward.isWorlds50Best,
           hallOfFameOnly: _restaurantAward.isHallOfFame,
           countryCode: _country?.code,
+          cuisineFamilies: _cuisineFamilies,
         );
         return ExploreSearchResults(
           restaurants: restaurants,
@@ -263,6 +276,12 @@ class _ExploreScreenState extends State<ExploreScreen> {
   void _onCountryChanged(VenueCountry? country) {
     _usage.track(AnalyticsEvent.exploreFilterApplied);
     setState(() => _country = country);
+    if (_isSearching) _runSearch();
+  }
+
+  void _onCuisineFamiliesChanged(Set<String> families) {
+    _usage.track(AnalyticsEvent.exploreFilterApplied);
+    setState(() => _cuisineFamilies = families);
     if (_isSearching) _runSearch();
   }
 
@@ -528,13 +547,36 @@ class _ExploreScreenState extends State<ExploreScreen> {
                       eventCountries,
                     ]),
                   };
+                  final countryControl = CountryFilterControl(
+                    selected: _country,
+                    countries: countries,
+                    onChanged: _onCountryChanged,
+                    surface: CsSurface.dark,
+                  );
+                  if (_searchType != ExploreSearchType.restaurants) {
+                    return Align(
+                      alignment: Alignment.centerLeft,
+                      child: countryControl,
+                    );
+                  }
+                  // Restaurants: cuisine sits beside country as a second
+                  // compact control, not another chip row.
                   return Align(
                     alignment: Alignment.centerLeft,
-                    child: CountryFilterControl(
-                      selected: _country,
-                      countries: countries,
-                      onChanged: _onCountryChanged,
-                      surface: CsSurface.dark,
+                    child: Wrap(
+                      spacing: CsSpacing.sm,
+                      runSpacing: CsSpacing.sm,
+                      children: [
+                        countryControl,
+                        FutureBuilder<List<CuisineFamily>>(
+                          future: _cuisineFamiliesFuture,
+                          builder: (context, snap) => CuisineFilterControl(
+                            selected: _cuisineFamilies,
+                            families: snap.data ?? const [],
+                            onChanged: _onCuisineFamiliesChanged,
+                          ),
+                        ),
+                      ],
                     ),
                   );
                 },

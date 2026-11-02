@@ -1,0 +1,90 @@
+restaurant_code,style,cuisines,note
+rest_0044,Irreverent avant-garde Spanish,Spanish; Creative,'avant-garde Spanish'
+rest_0045,Holistic hospitality experience,,no cuisine named
+rest_0059,Luxurious seafood stalwart,Fish and Seafood,
+rest_0071,Slow food classics,,"'slow food' is an approach, not a cuisine"
+rest_0078,Reconstructing Italian classics,Italian,
+rest_0080,Sumptuous French finesse,French,
+rest_0124,Original French classic,Classic French,'French classic'
+rest_0125,Modern French fine dining,Modern French,
+rest_0126,New Nordic heritage,Scandinavian,'New Nordic'; MICHELIN's Nordic label is Scandinavian
+rest_0128,Theatrical Indian extravaganza,Indian,
+rest_0132,Precise imaginative sustainability,,no cuisine named
+rest_0133,Ground-breaking Mexican gastronomy,Mexican,
+rest_0134,Nikkei haute cuisine,Nikkei,only if MICHELIN uses the label; else held
+rest_0135,Laid-back Peruvian,Peruvian,
+rest_0136,Legendary neighbourhood steakhouse,Steakhouse,
+rest_0137,Gold-standard Cantonese classic,Cantonese,
+rest_0139,Contemporary Venezuelan flavours,Venezuelan,only if MICHELIN uses the label
+rest_0140,Seasonal Carioca dining,Brazilian,'Carioca' = from Rio de Janeiro
+rest_0141,Exquisite Latin flavours,Latin American,
+rest_0143,Carribean-Columbian groundbreaker,Colombian,'Carribean-Columbian' (sic)
+rest_0156,New Belgian showstoppers,Belgian,only if MICHELIN uses the label
+rest_0182,Sleek stylish haute cuisine,,'haute cuisine' names no cuisine
+rest_0190,World-leading experimental desserts,,desserts; no cuisine named
+rest_0193,Asian-inspired uber-gastronomy,Asian Influences,'Asian-inspired'
+rest_0237,Fairy-tale Swiss cuisine,Swiss,only if MICHELIN uses the label
+rest_0266,Austrian culinary nirvana,Austrian,
+rest_0297,Extraordinary multi-sensory feast,,no cuisine named
+rest_0298,Master of gastronomic revelry,,no cuisine named
+rest_0299,Immaculate French fare,French,
+rest_0300,Artful elegance,,no cuisine named
+rest_0301,Elegant European-Cantonese,Cantonese; European,'European-Cantonese'; Cantonese first as the core
+rest_0302,Sleek modern Korean,Korean,
+rest_0303,Harmonious medicinal gastronomy,,no cuisine named
+rest_0304,Conceptual haute cuisine,,'haute cuisine' names no cuisine
+rest_0305,Pioneering Afro-tinged finesse,African,'Afro-tinged'
+rest_0307,Refined Southern Thai,Thai,'Southern Thai'
+rest_0310,Innovative Satoyama cuisine,Innovative,'Innovative Satoyama'; Satoyama is not a MICHELIN label
+rest_0311,Germany twinned with Thailand,German; Thai,'Germany twinned with Thailand'
+rest_0312,World-renowned grilled seafood,Fish and Seafood; Grills,'grilled seafood'
+rest_0313,Reimagining Korean specialities,Korean,
+rest_0314,French-influenced Thai cooking,Thai; French,'French-influenced Thai'
+rest_0318,Boundless creativity meets Thai tradition,Thai; Creative,'creativity meets Thai tradition'
+rest_0319,Modernist French,Modern French,'Modernist French'
+rest_0320,Multicultural and mouth-watering Mediterranean,Mediterranean Cuisine,
+rest_0321,Superior Nordic-meets-Asian,Scandinavian; Asian,'Nordic-meets-Asian'
+rest_0322,Sustainable neo-bistro,,'neo-bistro' names no cuisine
+rest_0324,Retelling Portuguese classics,Portuguese,
+rest_0325,Stylish waterfront seafood,Fish and Seafood,
+rest_0326,Elegant classical French,Classic French,'classical French'
+rest_0327,Veg-led haute cuisine,,'veg-led' is not vegetarian
+rest_0328,Invigorated Mexican classics,Mexican,
+rest_0329,Masterful Anglo-Mexican,Mexican,'Anglo-Mexican'; no plain British label
+rest_0331,Inspired and avant-garde,Creative,'avant-garde'
+rest_0337,World-famous Catalan cooking,Catalan,
+rest_0381,Defining haute cuisine,,'haute cuisine' names no cuisine
+rest_0383,Masterful Milanese experience,Italian,'Milanese'
+rest_0424,New Slovenian cuisine,Slovenian,only if MICHELIN uses the label
+rest_0430,Slick contemporay Nordic,Scandinavian,'contemporay Nordic' (sic)
+rest_0440,Palatial Cantonese cuisine,Cantonese,
+rest_0441,Cinematic Italian gastronomy,Italian,
+rest_0473,Elevated modern Scandi,Scandinavian,'Scandi'
+rest_0476,Outstanding Korean cuisine,Korean,
+rest_0532,Irreverent modern Japanese,Japanese,
+rest_0736,Serene Californian kaiseki,Californian,'Californian kaiseki'; kaiseki only if MICHELIN uses it — Californian alone
+rest_0738,Poetic tasting experience,,no cuisine named
+rest_0763,Classic flavours in novel forms,,no cuisine named
+rest_0766,French-Asian fine-dining icon,French; Asian,'French-Asian'
+rest_0772,Immersive sensory journey,,no cuisine named
+rest_1369,Regional Jalisco flavours,Mexican,'Jalisco'
+rest_1370,Seasonal Colombian magic,Colombian,
+rest_1372,The past made present,,no cuisine named
+rest_1373,Hyper-local German cuisine,German,only if MICHELIN uses the label
+rest_1374,Colourful creative Ecuadorean cuisine,Ecuadorian; Creative,only if MICHELIN uses Ecuadorian
+rest_1375,Zen vegetarian fine dining,Vegetarian,
+rest_1376,Progressive fish butchery,Fish and Seafood,'fish butchery'
+rest_1378,Hyper-creative fine Indian,Indian; Creative,'Hyper-creative fine Indian'
+rest_1380,Basque-influenced brilliance,Basque,'Basque-influenced'
+rest_1382,Mapping Colombia’s ingredients,Colombian,'Colombia's ingredients'
+rest_1384,Detailed Brazilian cuisine,Brazilian,
+rest_1385,African-Japanese fusion,Fusion,'African-Japanese fusion'
+rest_1386,Ultimate pig out,,no cuisine named
+rest_1387,Basque-meets-Japanese,Basque; Japanese,
+rest_1388,Best of British,,'Best of British': modern or traditional not said
+rest_1389,Coastal views and foraged flair,,no cuisine named
+rest_1390,Evocative Yucatán sanctuary,Mexican,'Yucatán'
+rest_1391,Australian-style barbecue,Barbecue,'Australian-style barbecue'
+rest_1393,Upscale Italian cuisine,Italian,
+rest_1394,Progressive Singaporean flavors,Singaporean,
+rest_1578,Revolutionary indigenous gastronomy,,'indigenous' names no cuisine

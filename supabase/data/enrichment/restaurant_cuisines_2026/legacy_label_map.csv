@@ -1,0 +1,160 @@
+legacy_id,legacy_name,restaurants_now,canonical_name,rule
+147,Adriatic Seafood,1,Adriatic Seafood,exact-if-michelin
+148,"Alpine ""Cook the Mountain""",1,"Alpine ""Cook the Mountain""",exact-if-michelin
+149,Alpine Contemporary,3,Alpine Contemporary,exact-if-michelin
+150,Amerikaans,2,American,translation
+151,Argentine Grill,1,Argentine Grill,exact-if-michelin
+152,Asian-Inspired,1,Asian-Inspired,exact-if-michelin
+307,Asturian Creative,1,Asturian Creative,exact-if-michelin
+153,Austrian Contemporary,2,Austrian Contemporary,exact-if-michelin
+154,Avant-Garde,2,Avant-Garde,exact-if-michelin
+155,Aziatisch-Amerikaans,1,Aziatisch-Amerikaans,exact-if-michelin
+156,Basque Contemporary,1,Basque Contemporary,exact-if-michelin
+157,Basque Seafood,1,Basque Seafood,exact-if-michelin
+158,Botanical / Vegan,1,Botanical / Vegan,exact-if-michelin
+159,Brazilian Contemporary,1,Brazilian Contemporary,exact-if-michelin
+160,Californisch,5,Californian,translation
+161,Cantonese,6,Cantonese,exact-if-michelin
+162,Catalan,1,Catalan,exact-if-michelin
+163,Catalan Creative,2,Catalan Creative,exact-if-michelin
+164,Chilean Contemporary,1,Chilean Contemporary,exact-if-michelin
+165,Chinees,8,Chinese,translation
+166,Classic Austrian,1,Classic Austrian,exact-if-michelin
+167,Classic Contemporary,1,Classic Contemporary,exact-if-michelin
+315,Classic Cuisine,6,Classic Cuisine,exact-if-michelin
+168,Classic French,9,Classic French,exact-if-michelin
+169,Colombian Caribbean,1,Colombian Caribbean,exact-if-michelin
+170,Contemporary,81,Contemporary,exact-if-michelin
+171,Contemporary American,1,Contemporary American,exact-if-michelin
+172,Contemporary Chinese,1,Contemporary Chinese,exact-if-michelin
+173,Contemporary European,2,Contemporary European,exact-if-michelin
+174,Contemporary French,4,Contemporary French,exact-if-michelin
+175,Contemporary German,2,Contemporary German,exact-if-michelin
+176,Contemporary Korean,2,Contemporary Korean,exact-if-michelin
+177,Contemporary Mexican,1,Contemporary Mexican,exact-if-michelin
+178,Contemporary Portuguese,1,Contemporary Portuguese,exact-if-michelin
+317,Country cooking,1,Country cooking,exact-if-michelin
+179,Creatief,16,Creative,translation
+308,Creative,17,Creative,exact-if-michelin
+180,Creative / Gastrobar,1,Creative / Gastrobar,exact-if-michelin
+309,Creative Seafood,2,Creative Seafood,exact-if-michelin
+181,"Creative, Modern Cuisine",1,"Creative, Modern Cuisine",exact-if-michelin
+182,Dessert-Focused,1,Dessert-Focused,exact-if-michelin
+183,Dutch / French Contemporary,1,Dutch / French Contemporary,exact-if-michelin
+184,Dutch / International,1,Dutch / International,exact-if-michelin
+185,Dutch Classic,7,Dutch Classic,exact-if-michelin
+186,Dutch Contemporary,27,Dutch Contemporary,exact-if-michelin
+187,Dutch Creative,4,Dutch Creative,exact-if-michelin
+188,Dutch Farm-to-Table,1,Dutch Farm-to-Table,exact-if-michelin
+189,Dutch Organic,1,Dutch Organic,exact-if-michelin
+190,Dutch Seafood,2,Dutch Seafood,exact-if-michelin
+191,Dutch Sustainable,1,Dutch Sustainable,exact-if-michelin
+192,Emirati,1,Emirati,exact-if-michelin
+193,European Contemporary,1,European Contemporary,exact-if-michelin
+319,Farm to table,2,Farm to table,exact-if-michelin
+194,Filipijns,1,Filipino,translation
+195,Fire Cuisine,1,Fire Cuisine,exact-if-michelin
+196,Frans,62,French,translation
+197,French,37,French,exact-if-michelin
+198,French / Asian,2,French / Asian,exact-if-michelin
+199,French / Classic,1,French / Classic,exact-if-michelin
+200,French / Dutch,5,French / Dutch,exact-if-michelin
+201,French / Mediterranean,1,French / Mediterranean,exact-if-michelin
+202,French / Seasonal,1,French / Seasonal,exact-if-michelin
+203,French Classic,4,French Classic,exact-if-michelin
+204,French Contemporary,25,French Contemporary,exact-if-michelin
+205,French Sauce-Focused,1,French Sauce-Focused,exact-if-michelin
+206,French Seafood,2,French Seafood,exact-if-michelin
+207,French Vegetable-Forward,1,French Vegetable-Forward,exact-if-michelin
+208,French-Asian,1,French-Asian,exact-if-michelin
+209,French-German,3,French-German,exact-if-michelin
+210,French-German Contemporary,1,French-German Contemporary,exact-if-michelin
+211,French-Japanese,4,French-Japanese,exact-if-michelin
+212,French-Japanese Umami,1,French-Japanese Umami,exact-if-michelin
+213,Fusion,1,Fusion,exact-if-michelin
+214,Global Fusion,1,Global Fusion,exact-if-michelin
+215,Greek-Influenced Contemporary,1,Greek-Influenced Contemporary,exact-if-michelin
+216,Herb-Focused Regional,1,Herb-Focused Regional,exact-if-michelin
+217,Indian Contemporary,1,Indian Contemporary,exact-if-michelin
+218,Innovatief,3,Innovative,translation
+219,International,2,International,exact-if-michelin
+220,International Fusion,1,International Fusion,exact-if-michelin
+221,International Guest Chef Concept,1,International Guest Chef Concept,exact-if-michelin
+222,Italiaans,13,Italian,translation
+223,Italian,11,Italian,exact-if-michelin
+224,Italian Contemporary,9,Italian Contemporary,exact-if-michelin
+225,Italian Innovative,1,Italian Innovative,exact-if-michelin
+226,Japanese,6,Japanese,exact-if-michelin
+227,Japanese / Sushi,1,Japanese / Sushi,exact-if-michelin
+228,Japanese-Fusion,1,Japanese-Fusion,exact-if-michelin
+229,Japanese-German Fusion,1,Japanese-German Fusion,exact-if-michelin
+230,Japanese-Palatinate Fusion,1,Japanese-Palatinate Fusion,exact-if-michelin
+231,Japans,110,Japanese,translation
+310,Kaiseki,1,Kaiseki,exact
+232,Koreaans,2,Korean,translation
+233,Korean Contemporary,1,Korean Contemporary,exact-if-michelin
+316,Meats and Grills,1,Meats and Grills,exact-if-michelin
+234,Mediterranean,2,Mediterranean Cuisine,translation
+235,Mediterranean-Italian,1,Mediterranean-Italian,exact-if-michelin
+236,Mexicaans,1,Mexican,translation
+237,Mexican,1,Mexican,exact-if-michelin
+238,Mexican Contemporary,2,Mexican Contemporary,exact-if-michelin
+239,Modern Classic French,1,Modern Classic French,exact-if-michelin
+240,Modern European,1,Modern European,exact-if-michelin
+241,Modern French,23,Modern French,exact-if-michelin
+242,Modern French Bistro,1,Modern French Bistro,exact-if-michelin
+243,Modern French-Indonesian,1,Modern French-Indonesian,exact-if-michelin
+244,Modern German,1,Modern German,exact-if-michelin
+245,Modern Thai,2,Modern Thai,exact-if-michelin
+246,Neo-French,1,Neo-French,exact-if-michelin
+247,New Nordic,3,New Nordic,exact-if-michelin
+248,Nieuw-Amerikaans,5,Nieuw-Amerikaans,exact-if-michelin
+249,Nikkei (Japanese-Peruvian),1,Nikkei (Japanese-Peruvian),exact-if-michelin
+250,Nordic / Fermented,1,Nordic / Fermented,exact-if-michelin
+251,Nordic Contemporary,1,Nordic Contemporary,exact-if-michelin
+252,Nordic-European,1,Nordic-European,exact-if-michelin
+253,Nordic-French,1,Nordic-French,exact-if-michelin
+254,Nordic-Japanese-French,1,Nordic-Japanese-French,exact-if-michelin
+255,Oostenrijks,1,Austrian,translation
+318,Organic,2,Organic,exact-if-michelin
+256,Pan-Levantine,1,Pan-Levantine,exact-if-michelin
+257,Peruvian Contemporary,2,Peruvian Contemporary,exact-if-michelin
+258,Peruvian-Venezuelan,1,Peruvian-Venezuelan,exact-if-michelin
+259,Plant-Based,1,Plant-Based,exact-if-michelin
+260,Product-Focused French,1,Product-Focused French,exact-if-michelin
+261,Progressive Indian,1,Progressive Indian,exact-if-michelin
+262,Regional Contemporary,1,Regional Contemporary,exact-if-michelin
+263,Regional Franconian,1,Regional Franconian,exact-if-michelin
+264,Satoyama Cuisine,1,Satoyama Cuisine,exact-if-michelin
+265,Scandinavian-Japanese,2,Scandinavian-Japanese,exact-if-michelin
+266,Scandinavisch,2,Scandinavian,translation
+267,Seafood,4,Seafood,exact-if-michelin
+268,Sharing Concept Contemporary,3,Sharing Concept Contemporary,exact-if-michelin
+311,Singaporean Contemporary,1,Singaporean Contemporary,exact-if-michelin
+269,Southern Thai,1,Southern Thai,exact-if-michelin
+270,Spaans,2,Spanish,translation
+271,Spanish / Dutch,1,Spanish / Dutch,exact-if-michelin
+272,Spanish Contemporary,1,Spanish Contemporary,exact-if-michelin
+273,Spanish Creative,1,Spanish Creative,exact-if-michelin
+274,Surinamese-Dutch Contemporary,1,Surinamese-Dutch Contemporary,exact-if-michelin
+275,Sushi,28,Sushi,exact-if-michelin
+276,Swiss Seasonal,1,Swiss Seasonal,exact-if-michelin
+277,Taiwanees,1,Taiwanese,translation
+312,Taiwanese Contemporary,1,Taiwanese Contemporary,exact-if-michelin
+313,Taizhou Chinese,1,Taizhou Chinese,exact-if-michelin
+278,Tempura,15,Tempura,exact
+279,Thai-Chinese,1,Thai-Chinese,exact-if-michelin
+280,Thais,1,Thai,translation
+314,Traditional Cuisine,4,Traditional Cuisine,exact-if-michelin
+281,Traditional French,1,Traditional French,exact-if-michelin
+282,Turkish Contemporary,3,Turkish Contemporary,exact-if-michelin
+283,Vegetable-Focused,1,Vegetable-Focused,exact-if-michelin
+284,Vegetable-Focused Contemporary,1,Vegetable-Focused Contemporary,exact-if-michelin
+285,Vegetable-Focused French,1,Vegetable-Focused French,exact-if-michelin
+286,Vegetable-Forward Contemporary,1,Vegetable-Forward Contemporary,exact-if-michelin
+287,Vegetarian,1,Vegetarian,exact-if-michelin
+288,Vis en zeevruchten,1,Fish and Seafood,translation
+289,West African-Inspired,1,West African-Inspired,exact-if-michelin
+291,Wood-fired / Contemporary,1,Wood-fired / Contemporary,exact-if-michelin
+290,Wood-Fired Basque,1,Wood-Fired Basque,exact-if-michelin
+292,Yakitori,2,Yakitori,exact-if-michelin

@@ -45,6 +45,7 @@ class _FakeRestaurantRepository extends RestaurantRepository {
     bool worlds50BestOnly = false,
     bool hallOfFameOnly = false,
     String? countryCode,
+    Set<String> cuisineFamilies = const {},
   }) async {
     if (!query.toLowerCase().contains('flore')) return [];
     return [

@@ -1,4 +1,5 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
+import '../../models/cuisine_family.dart';
 import '../../models/published_venue_photo.dart';
 import '../../models/restaurant.dart';
 import '../../models/venue_country.dart';
@@ -61,6 +62,9 @@ import 'search_query.dart';
 // worlds_50_best_url (20261021120000_add_worlds_50_best_urls.sql) — that
 // migration must be live before a build carrying this list ships, or every
 // restaurants_full select fails.
+// cuisine_names, cuisine_family_slugs (20261101150000_add_restaurant_
+// cuisines.sql, applied 2026-11-02) — same rule: live before a build
+// carrying this list ships.
 const restaurantFullColumns =
     'id, restaurant_code, name, michelin_stars, inclusion_reason, '
     'city_id, city_name, region, country_code, country_name, flag_emoji, address, '
@@ -70,7 +74,8 @@ const restaurantFullColumns =
     'parent_venue_id, opening_weekdays, is_expired, status, status_since, '
     'status_note, created_at, missing_listing_report_id, cover_photo_url, '
     'cover_focus_x, cover_focus_y, cover_zoom, card_photo_url, card_focus_x, '
-    'card_focus_y, card_zoom, worlds_50_best_url';
+    'card_focus_y, card_zoom, worlds_50_best_url, cuisine_names, '
+    'cuisine_family_slugs';
 
 class RestaurantRepository {
   RestaurantRepository(this._client);
@@ -217,6 +222,7 @@ class RestaurantRepository {
     bool worlds50BestOnly = false,
     bool hallOfFameOnly = false,
     String? countryCode,
+    Set<String> cuisineFamilies = const {},
   }) async {
     PostgrestFilterBuilder<PostgrestList> filtered() {
       var builder = _client
@@ -232,12 +238,25 @@ class RestaurantRepository {
       // buildIlikeOrFilters()'s own doc comment for the full reasoning. A
       // single-word query loops exactly once, producing the identical filter
       // buildIlikeOrFilter() would have built — unchanged single-word search.
+      //
+      // cuisine_search (MICHELIN's cuisine labels plus their family names,
+      // e.g. "Sushi Japanese") makes "sushi" or "japanese" find the
+      // restaurant like a city or a name would.
       for (final filter in buildIlikeOrFilters(query, [
         'name',
         'city_name',
         'country_name',
+        'cuisine_search',
       ])) {
         builder = builder.or(filter);
+      }
+      // Any of the chosen families: a restaurant with Japanese and Creative
+      // matches either.
+      if (cuisineFamilies.isNotEmpty) {
+        builder = builder.overlaps(
+          'cuisine_family_slugs',
+          cuisineFamilies.toList()..sort(),
+        );
       }
       if (stars != null) {
         builder = builder.eq('michelin_stars', stars);
@@ -331,5 +350,31 @@ class RestaurantRepository {
           row['country_code'] as String,
     };
     return resolveVenueCountries(_client, presentCodes);
+  }
+
+  // Explore's cuisine filter options: the cuisine families, in their own
+  // display order, that at least one restaurant actually has — the same
+  // "only what exists" rule as getCountries(), so the picker never offers a
+  // family that can only return nothing. Paged for the same row-cap reason.
+  Future<List<CuisineFamily>> getCuisineFamilies() async {
+    final familiesFuture = _client
+        .from('cuisine_families')
+        .select('slug, name')
+        .order('display_order', ascending: true);
+    final restaurantRows = await fetchAllRows(
+      () => _client
+          .from('restaurants_full')
+          .select('cuisine_family_slugs, id')
+          .not('cuisine_family_slugs', 'is', null)
+          .order('id', ascending: true),
+    );
+    final present = <String>{
+      for (final row in restaurantRows)
+        ...((row['cuisine_family_slugs'] as List?)?.cast<String>() ?? const []),
+    };
+    return [
+      for (final row in await familiesFuture)
+        if (present.contains(row['slug'])) CuisineFamily.fromJson(row),
+    ];
   }
 }

@@ -67,6 +67,16 @@ class Restaurant {
   // call time. Nullable -- most restaurants have none populated yet.
   final String? phone;
 
+  // MICHELIN's cuisine label(s) in source order, e.g. "Japanese, Sushi"
+  // (restaurants_full.cuisine_names, 20261101150000) — MICHELIN where it
+  // has the restaurant, else World's 50 Best, else the old label. Null
+  // when none is known; never filled in by us.
+  final String? cuisineNames;
+
+  // The cuisine families those labels belong to (cuisine_family_slugs),
+  // what Explore's cuisine filter overlaps on. Empty when none is known.
+  final List<String> cuisineFamilySlugs;
+
   // Non-null only for a restaurant inside a non-Key hotel.
   final String? propertyName;
 
@@ -188,6 +198,8 @@ class Restaurant {
     this.websiteUrl,
     this.bookingUrl,
     this.phone,
+    this.cuisineNames,
+    this.cuisineFamilySlugs = const [],
     this.propertyName,
     this.isInHotel = false,
     this.hotelId,
@@ -211,6 +223,15 @@ class Restaurant {
     this.cardPhotoUrl,
     this.cardFraming = PhotoFraming.center,
   });
+
+  /// The cuisine for display, "Japanese · Sushi", or null when none is
+  /// known. cuisine_names joins MICHELIN's labels with ", "; no MICHELIN
+  /// label contains a comma itself.
+  String? get cuisineLabel {
+    final names = cuisineNames?.trim();
+    if (names == null || names.isEmpty) return null;
+    return names.split(', ').join(' · ');
+  }
 
   /// True when the restaurant currently holds at least one Michelin star.
   bool get hasMichelinStar => michelinStars != null;
@@ -246,6 +267,9 @@ class Restaurant {
     websiteUrl: json['website_url'] as String?,
     bookingUrl: json['booking_url'] as String?,
     phone: json['phone'] as String?,
+    cuisineNames: json['cuisine_names'] as String?,
+    cuisineFamilySlugs:
+        (json['cuisine_family_slugs'] as List?)?.cast<String>() ?? const [],
     propertyName: json['property_name'] as String?,
     isInHotel: (json['is_in_hotel'] as bool?) ?? false,
     hotelId: json['hotel_id'] as String?,
