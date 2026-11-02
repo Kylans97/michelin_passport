@@ -8,6 +8,35 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.6 (25) — 2026-11-02
+
+Build 24 went onto the product owner's own phone from `c2981a1`, so this
+build carries what came after it:
+- team portraits, the sommelier and Instagram for venues
+  (`claude/venue-team-photos`);
+- opening hours and closed days for restaurants
+  (`claude/venue-opening-hours`);
+- venues keeping their own website and phone, and a review queue
+  grouped by topic that now takes in member reports and missing
+  listings (`claude/venue-contact-and-review-tabs`).
+
+The last two were merged before 25 was archived. The mantelier.app copy
+change below went live on its own the same day.
+
+**Ledger: 133, local and remote in agreement.** Three migrations went to
+production after 24, all applied before this build:
+- `20261101170000_add_venue_team_photos_and_instagram`;
+- `20261101180000_add_restaurant_opening_hours`;
+- `20261101190000_add_venue_contact_edits_and_review_inbox`.
+
+**Schema diff (2026-11-02, before the push): clean.** All 133
+migrations were replayed on a scratch stack.
+- `db dump --linked` against `--local`: 15,942 and 15,948 lines, which
+  differ only by the 6 known blank lines (pg_net's filtered grants).
+- Storage and auth, compared directly: 30 rows each side, identical.
+
 ### Added
 
 - **A venue keeps its own website and phone number.** Decided by the
@@ -78,33 +107,12 @@ The format follows Keep a Changelog.
     non-admin can't;
   - anon has execute on none of the functions.
 
-  **Not applied yet.** The tabs work against production as it is,
-  checked in the simulator as an admin, but the new kinds and the
-  contact screen need the migration first.
-
----
-
-## v1.5.6 (25) — 2026-11-02
-
-Build 24 went onto the product owner's own phone from `c2981a1`, so this
-build carries what came after it: team portraits, the sommelier and
-Instagram for venues (`claude/venue-team-photos`), and opening hours and
-closed days for restaurants (`claude/venue-opening-hours`, merged before
-25 was archived). The mantelier.app copy change below went live on its
-own the same day.
-
-**Ledger: 132, local and remote in agreement.** Two migrations went to
-production after 24, both applied before this build:
-- `20261101170000_add_venue_team_photos_and_instagram`;
-- `20261101180000_add_restaurant_opening_hours`.
-
-**Schema diff (2026-11-02, before the push): clean.** All 132
-migrations were replayed on a scratch stack.
-- `db dump --linked` against `--local`: 15,669 and 15,675 lines, which
-  differ only by the 6 known blank lines (pg_net's filtered grants).
-- Storage and auth, compared directly: 30 rows each side, identical.
-
-### Added
+  **Applied 2026-11-02**, before this build. Production then showed RLS
+  on `venue_contact_edits` with no `authenticated` read, the new
+  columns on both report tables, and no anon execute on any of the five
+  functions. **Ledger: 133, local and remote in agreement.** The queue
+  was checked in the simulator as an admin against production, before
+  the migration (nothing waiting in any topic).
 
 - **Opening hours and closed days on a restaurant's page, kept by the
   restaurant.** A claimed restaurant adds and changes them itself, live
