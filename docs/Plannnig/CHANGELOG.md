@@ -8,6 +8,37 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.6 (27) — 2026-11-02
+
+Build 26 went to TestFlight from `6773d37`. This build carries what came
+after it:
+- the admin-only Studio row in Profile (`claude/admin-studio-link`);
+- the always-location purpose string that Apple's scan of 26 asked for
+  (`claude/location-purpose`).
+
+Everything else below is backend, website or Studio, and went live on
+its own the same day:
+- admins need two-step sign-in;
+- Studio, with its Basic and Pro tabs;
+- the new auth email templates.
+
+**Ledger: 138, local and remote in agreement.** Three migrations went to
+production after 26:
+- `20261101220000_admins_require_two_step`;
+- `20261101230000_add_admin_studio_report`;
+- `20261101240000_add_studio_tier_reports`.
+
+Builds 26 and older already work with all three. 26 asks for the code at
+sign-in. The other two serve only Studio.
+
+**Schema diff (2026-11-02, before the push): clean.** All 138
+migrations were replayed on a scratch stack.
+- `db dump --linked` against `--local`: 16,917 and 16,923 lines, which
+  differ only by the 6 known blank lines (pg_net's filtered grants).
+- Storage and auth, compared directly: 30 rows each side, identical.
+
 ### Added
 - **A Studio row in Profile, for admins only** (`claude/admin-studio-link`,
   2026-11-02). It sits under Review and Insights and opens
