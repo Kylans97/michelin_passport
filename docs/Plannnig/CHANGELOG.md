@@ -161,6 +161,15 @@ The format follows Keep a Changelog.
     two-step.
 
 ### Fixed
+
+- **Studio's Basic and Pro tabs did nothing when clicked** (2026-11-02,
+  right after they went live). Cloudflare Pages served `studio.js` with
+  `max-age=14400`, so a browser that had loaded Studio earlier kept the
+  old script for up to four hours, next to the new `index.html`. The new
+  tab buttons were there, but no script handled them. `studio/_headers`
+  now sends `Cache-Control: no-cache` for `studio.js`, `studio.css` and
+  `config.js`: the browser checks every time, and the etag keeps that a
+  cheap 304. A hard reload (⌘⇧R) fixes an affected browser at once.
 - **A sign-up confirmation was refused as suspicious content**
   (2026-11-02). Resend showed it as "Blocked due to content" by the new
   member's company mail server. The mail was Supabase's bare default:

@@ -4,3 +4,14 @@
   Referrer-Policy: no-referrer
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; connect-src 'self' https://wcmxugunvwsrulcpeyrc.supabase.co; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; frame-ancestors 'none'; base-uri 'none'; form-action 'self'
+
+# Studio's own scripts and styles change with every deploy, and a browser
+# holding yesterday's studio.js against today's index.html leaves new
+# buttons without handlers (seen 2026-11-02: Basic and Pro did nothing).
+# Always revalidate them; the etag keeps that a cheap 304.
+/studio.js
+  Cache-Control: no-cache
+/studio.css
+  Cache-Control: no-cache
+/config.js
+  Cache-Control: no-cache
