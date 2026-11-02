@@ -8,11 +8,49 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.6 (25) — 2026-11-02
+
+Build 24 went onto the product owner's own phone from `c2981a1`, so this
+build carries what came after it:
+- team portraits, the sommelier and Instagram for venues
+  (`claude/venue-team-photos`);
+- opening hours and closed days for restaurants
+  (`claude/venue-opening-hours`);
+- venues keeping their own website and phone, and a review queue
+  grouped by topic that now takes in member reports and missing
+  listings (`claude/venue-contact-and-review-tabs`);
+- an optional birthday and sign-up country, a birthday greeting, and
+  member insights for admins (`claude/birthday-and-insights`).
+
+The last three were merged before 25 was archived. The mantelier.app copy
+change below went live on its own the same day.
+
+**Ledger: 135, local and remote in agreement.** Five migrations went to
+production after 24, all applied before this build:
+- `20261101170000_add_venue_team_photos_and_instagram`;
+- `20261101180000_add_restaurant_opening_hours`;
+- `20261101190000_add_venue_contact_edits_and_review_inbox`;
+- `20261101200000_add_cuisine_dutch_search_terms` (Dutch cuisine words in
+  search; no app change, so 24 and older pick it up too);
+- `20261101210000_add_birthdays_signup_country_and_insights` (also
+  enables pg_cron for the daily greeting; `send-push` was redeployed
+  first, so it accepts the `birthday` type).
+
+**Schema diff (2026-11-02, before the push): clean.** Run again after
+`20261101210000`: all 135 migrations were replayed on a scratch stack.
+(The first run, on 134, was also clean: 15,944 and 15,950 lines.)
+- `db dump --linked` against `--local`: 16,190 and 16,196 lines, which
+  differ only by the 6 known blank lines (pg_net's filtered grants).
+- Storage and auth, compared directly: 30 rows each side, identical.
+
 ### Added
+
 - **Birthday, sign-up country and member insights**
   (`claude/birthday-and-insights`, migration
   `20261101210000_add_birthdays_signup_country_and_insights`, written
-  2026-11-02; **not yet applied**).
+  and applied 2026-11-02).
   - Sign-up has an optional Country field. `handle_new_user` keeps it
     only when the code is in `countries`, so a bad value can never make
     sign-up fail.
@@ -46,51 +84,6 @@ The format follows Keep a Changelog.
     v3 and the old counts don't; with the switch off nothing is sent; a
     non-admin is refused; small groups are withheld; anon has no
     execute; the cron job exists.
-
-### Fixed
-- The Birthday greeting switch was invisible when on: Edit profile is a
-  green sheet, and the switch used the app's usual forest-green track,
-  the same colour as the sheet. Seen in the simulator before release. On
-  this sheet the switch is now inverted: an ivory track when on, an
-  outline when off. The other switches sit on light screens and keep
-  the forest-green track.
-
-### Changed
-- `bounded_lists_test.dart` now expects `get_notifications_v5` as the
-  newest version, and v2 as the fallback once v5 to v3 are missing.
-
----
-
-## v1.5.6 (25) — 2026-11-02
-
-Build 24 went onto the product owner's own phone from `c2981a1`, so this
-build carries what came after it:
-- team portraits, the sommelier and Instagram for venues
-  (`claude/venue-team-photos`);
-- opening hours and closed days for restaurants
-  (`claude/venue-opening-hours`);
-- venues keeping their own website and phone, and a review queue
-  grouped by topic that now takes in member reports and missing
-  listings (`claude/venue-contact-and-review-tabs`).
-
-The last two were merged before 25 was archived. The mantelier.app copy
-change below went live on its own the same day.
-
-**Ledger: 134, local and remote in agreement.** Four migrations went to
-production after 24, all applied before this build:
-- `20261101170000_add_venue_team_photos_and_instagram`;
-- `20261101180000_add_restaurant_opening_hours`;
-- `20261101190000_add_venue_contact_edits_and_review_inbox`;
-- `20261101200000_add_cuisine_dutch_search_terms` (Dutch cuisine words in
-  search; no app change, so 24 and older pick it up too).
-
-**Schema diff (2026-11-02, before the push): clean.** All 134
-migrations were replayed on a scratch stack.
-- `db dump --linked` against `--local`: 15,944 and 15,950 lines, which
-  differ only by the 6 known blank lines (pg_net's filtered grants).
-- Storage and auth, compared directly: 30 rows each side, identical.
-
-### Added
 
 - **A venue keeps its own website and phone number.** Decided by the
   product owner on 2026-11-02: they change during the year, and keeping
@@ -294,12 +287,22 @@ migrations were replayed on a scratch stack.
 
 ### Changed
 
+- `bounded_lists_test.dart` now expects `get_notifications_v5` as the
+  newest version, and v2 as the fallback once v5 to v3 are missing.
+
 - **mantelier.app home page copy** (product owner, 2026-11-02): "A wine
   cellar opening its doors for one night"; "tells you in time to book a
   table, catch a flight, and inform your friends"; and the list heading
   is now "Events we are watching".
 
 ### Fixed
+
+- The Birthday greeting switch was invisible when on: Edit profile is a
+  green sheet, and the switch used the app's usual forest-green track,
+  the same colour as the sheet. Seen in the simulator before release. On
+  this sheet the switch is now inverted: an ivory track when on, an
+  outline when off. The other switches sit on light screens and keep
+  the forest-green track.
 
 - **Searching "Frans" found nothing; only "French" worked.** The product
   owner found this on 2026-11-02 while preparing 1.5.6 (25) for testers.
