@@ -10,8 +10,11 @@ The format follows Keep a Changelog.
 
 ### Changed
 - **Admins need two-step sign-in** (`claude/admin-two-step`, migration
-  `20261101220000_admins_require_two_step`, written 2026-11-02; **not
-  yet applied**). `is_admin()` is now true only when the session's token
+  `20261101220000_admins_require_two_step`, written and applied
+  2026-11-02, after build 26; ledger 136, local and remote in
+  agreement). Checked on production after the push: `is_admin()`
+  requires `aal2`, anon has no execute, and the one admin has a
+  verified authenticator. `is_admin()` is now true only when the session's token
   says `aal2`, so a stolen admin password opens nothing admin. It stays
   the single source of that permission, and every admin path goes
   through it, evaluated as the caller, so this one change covers them
