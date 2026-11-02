@@ -163,8 +163,9 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
       switch (n.type) {
         case AppNotificationType.friendRequestReceived:
           await _friendRepo.acceptRequest(n.subjectId);
-          if (mounted)
+          if (mounted) {
             PushService.instance.askAfter(context, const FriendsPrompt());
+          }
         case AppNotificationType.venueInviteReceived:
           await _venueInviteRepo.acceptInvite(n.subjectId);
           _analytics.track(

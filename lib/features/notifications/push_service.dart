@@ -123,8 +123,10 @@ class PushService {
   /// number of times: the server upserts on the token.
   Future<void> syncRegistration() async {
     try {
-      if (await _channel.authorizationStatus() != PushAuthorization.authorized)
+      if (await _channel.authorizationStatus() !=
+          PushAuthorization.authorized) {
         return;
+      }
       final token = await _channel.deviceToken();
       if (token == null) return;
       await _store.registerDevice(
@@ -158,8 +160,9 @@ class PushService {
   Future<void> askAfter(BuildContext context, PushPromptReason reason) async {
     try {
       if (await _channel.authorizationStatus() !=
-          PushAuthorization.notDetermined)
+          PushAuthorization.notDetermined) {
         return;
+      }
       final prefs = await _preferences();
       if (prefs.getBool(promptAnsweredKey) ?? false) return;
       if (!context.mounted) return;
