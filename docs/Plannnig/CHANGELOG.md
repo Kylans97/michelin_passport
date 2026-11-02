@@ -25,7 +25,8 @@ build carries what came after it:
   member insights for admins (`claude/birthday-and-insights`).
 
 The last three were merged before 25 was archived. The mantelier.app copy
-change below went live on its own the same day.
+change and the privacy page's "Your choices" section below went live on
+their own the same day.
 
 **Ledger: 135, local and remote in agreement.** Five migrations went to
 production after 24, all applied before this build:
@@ -286,6 +287,16 @@ production after 24, all applied before this build:
     as with team texts before).
 
 ### Changed
+
+- **mantelier.app/privacy has a "Your choices" section** (`#choices`,
+  2026-11-02, live on its own). It lists where a member changes each
+  thing we hold, by its in-app label: being found, birthday and country,
+  who sees a visit, friends and blocks, push, location, and deleting the
+  account. It is the page behind App Store Connect's User Privacy
+  Choices URL. Checked against the code before going live: blocking
+  happens on a member's own profile, while Privacy → Blocked users only
+  unblocks; an early draft said both happen under Privacy. There is no
+  in-app switch for sharing Interested/Going, so the page promises none.
 
 - `bounded_lists_test.dart` now expects `get_notifications_v5` as the
   newest version, and v2 as the fallback once v5 to v3 are missing.
