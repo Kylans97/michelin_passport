@@ -15,7 +15,15 @@ The format follows Keep a Changelog.
   photos at one place sit as a row of squares, four across, that open
   full size on a tap, with their captions said once under the row.
   Asked for by the product owner for the credits at the foot of "Why I
-  built Mantelier".
+  built Mantelier". Applied 2026-11-02. **Ledger: 142, local and remote
+  in agreement.**
+  The same day, on the product owner's request, that article got new
+  photos in production: five files under `news-images/why-mantelier/`,
+  the team photo as its header (focus 0.5/0.2, replacing
+  `news-images/moments-barcelona.jpg` at 0.5/0.1, which stays in the
+  bucket) and four dishes as small photos at its foot, credited "Photos
+  from my internship, by chef Raul Balam Ruscalleda." The header shows
+  in every build at once; the small row needs the next one.
 - **News in three parts, and richer articles** (product owner,
   2026-11-02, options B and 3):
   - the News tab opens with a quiet "Why Mantelier" card, then a row of
