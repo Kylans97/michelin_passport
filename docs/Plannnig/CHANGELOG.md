@@ -8,6 +8,23 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.6 (26) — 2026-11-02
+
+Build 25 was archived at 14:18 from `2a84104`. This build adds two-step
+sign-in (`claude/app-two-step`). It is optional and never part of
+creating an account: a member turns it on from inside the account, and
+only then does sign-in ask for a code (product owner, 2026-11-02).
+
+**Ledger: 135, local and remote in agreement.** No migration since 25.
+
+**Schema diff (2026-11-02, before the push): clean.** All 135
+migrations were replayed on a scratch stack.
+- `db dump --linked` against `--local`: 16,190 and 16,196 lines, which
+  differ only by the 6 known blank lines (pg_net's filtered grants).
+- Storage and auth, compared directly: 30 rows each side, identical.
+
 ### Added
 - **Two-step sign-in with an authenticator app** (`claude/app-two-step`,
   2026-11-02). Authenticator app only: no SMS and no email, by decision.
@@ -39,7 +56,7 @@ The format follows Keep a Changelog.
   - `docs/Engineering/VENUE_CLAIM_OPERATIONS.md` has the procedure for a
     member who lost their only authenticator: check it's them, then
     remove their factors in the dashboard.
-  - `site/privacy.html` (not yet deployed) says the authenticator key is
+  - `site/privacy.html` (deployed with this build's merge) says the authenticator key is
     stored by Supabase Auth and no phone number is, and lists two-step
     sign-in under "Your choices".
   - **Not yet enforced on the server.** A password-only (`aal1`) token
