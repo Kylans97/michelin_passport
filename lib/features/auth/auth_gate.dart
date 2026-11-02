@@ -2,10 +2,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/widgets/branded_splash.dart';
+import '../../data/repositories/two_step_repository.dart';
 import '../onboarding/onboarding_gate.dart';
 import 'auth_link_notice.dart';
 import 'login_screen.dart';
 import 'reset_password_screen.dart';
+import 'two_step_sign_in_screen.dart';
 
 // AuthGate listens to Supabase's auth state stream and shows the main app
 // (behind OnboardingGate — see below), the login screen, or — mid password
@@ -29,6 +31,8 @@ class AuthGate extends StatefulWidget {
     this.authStateChanges,
     this.hasSeenWelcome,
     this.markWelcomeSeen,
+    this.needsTwoStep,
+    this.twoStepRepository,
   });
 
   // The main app scaffold — shown (via OnboardingGate) when a session is
@@ -50,6 +54,12 @@ class AuthGate extends StatefulWidget {
   // ProfileRepository/Supabase.instance call.
   final Future<bool> Function(String userId)? hasSeenWelcome;
   final Future<void> Function(String userId)? markWelcomeSeen;
+
+  // Whether a session still owes its two-step code. Defaults to
+  // sessionNeedsTwoStep (read from the token and the user's factors);
+  // overridable so a test can drive the code step without a real JWT.
+  final bool Function(Session session)? needsTwoStep;
+  final TwoStepRepository? twoStepRepository;
 
   @override
   State<AuthGate> createState() => _AuthGateState();
@@ -116,6 +126,12 @@ class _AuthGateState extends State<AuthGate> {
     }
     final session = _session;
     if (session == null) return LoginScreen(notice: _linkNotice?.message);
+    // Two-step sign-in: a password alone is aal1. Until the code raises the
+    // session to aal2, nothing of the app is shown. The verify call emits
+    // mfaChallengeVerified with the new session, which lands back here.
+    if ((widget.needsTwoStep ?? sessionNeedsTwoStep)(session)) {
+      return TwoStepSignInScreen(repository: widget.twoStepRepository);
+    }
     // OnboardingGate owns "has THIS account completed the welcome flow" —
     // a separate concern from auth state, kept out of this class so it
     // doesn't grow a third sticky flag alongside password recovery.

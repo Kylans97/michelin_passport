@@ -142,6 +142,7 @@
 
   <h3>When you create an account</h3>
   <p>Your email address and a password (stored hashed — we never see it). Sign-in is handled by Supabase Auth. Your profile holds a username, a display name, a member number shown on your Passport, and optionally your home country and a profile photo. It also records whether other members may find you by searching; that is on by default, and you can switch it off under Privacy in the app.</p>
+  <p>If you turn on two-step sign-in, Supabase Auth also stores the key your authenticator app shares with us, so it can check the six-digit codes. We never see your codes, and we don't store a phone number for it.</p>
   <p>Your home country is optional, and you can give it when you sign up or later in your profile. We use it to show what is popular near you, and, counted together with everyone else's, to see in which countries Mantelier is used.</p>
   <p>You can also add your birthday to your profile, if you like. Only you see it: it is never shown to other members, friends included. We use it to wish you a happy birthday in the app — you can switch that greeting off — and, counted in age groups together with everyone else's, to understand who Mantelier reaches. We never look at the birthday or country of one person; our statistics show groups only, and a group of fewer than five people shows no number at all.</p>
 
@@ -221,6 +222,7 @@
   <ul>
     <li><strong>Being found.</strong> Profile → Privacy → Allow members to find me. Switch it off and members can no longer find you by searching.</li>
     <li><strong>Birthday, birthday greeting and home country.</strong> Profile → Edit profile. Change them, clear them, or switch the greeting off.</li>
+    <li><strong>Two-step sign-in.</strong> Profile → Privacy → Two-step sign-in. Turn it on, add a backup authenticator, or turn it off with a code.</li>
     <li><strong>Who sees a visit.</strong> Each visit has its own Visible to friends switch. Off, it stays with you.</li>
     <li><strong>Friends and blocks.</strong> Remove a friend under Profile → Friends. Block someone from their profile, and unblock them under Profile → Privacy → Blocked users.</li>
     <li><strong>Push notifications.</strong> Profile → Notification settings, kind by kind, or all of them in your device settings.</li>

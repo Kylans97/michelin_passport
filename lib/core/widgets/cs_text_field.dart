@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_spacing.dart';
 import '../theme/cs_surface_context.dart';
@@ -42,6 +43,10 @@ class CsTextField extends StatefulWidget {
   final FocusNode? focusNode;
   final CsSurface surface;
 
+  /// Optional input formatters — added for the two-step code fields, which
+  /// take six digits and nothing else.
+  final List<TextInputFormatter>? inputFormatters;
+
   const CsTextField({
     super.key,
     required this.label,
@@ -58,6 +63,7 @@ class CsTextField extends StatefulWidget {
     this.onChanged,
     this.focusNode,
     this.surface = CsSurface.dark,
+    this.inputFormatters,
   });
 
   @override
@@ -101,6 +107,7 @@ class _CsTextFieldState extends State<CsTextField> {
             onFieldSubmitted: widget.onFieldSubmitted,
             onChanged: widget.onChanged,
             focusNode: widget.focusNode,
+            inputFormatters: widget.inputFormatters,
             style: CsTypography.body.copyWith(color: AppColors.charcoal),
             decoration: InputDecoration(
               hintText: widget.hintText,

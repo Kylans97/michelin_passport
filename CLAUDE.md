@@ -135,6 +135,9 @@ stop and say so rather than working around it.
 - **Review happens in the app**, by the small, explicit set of admins
   listed in `public.admins`. `is_admin()` is the **single source of that
   permission**, the way `is_active_venue_manager()` is for venue edits.
+  Since 2026-11-02 it is true only for a session that passed two-step
+  sign-in (`aal2`): a password alone is never admin. Decided by the
+  product owner; `20261101220000_admins_require_two_step.sql`.
   Every review action — approving or rejecting a claim, an about text, a
   photo, and later an event — is a `SECURITY DEFINER` RPC (or, for photo
   publishing, the `publish-venue-photo` Edge Function) that checks

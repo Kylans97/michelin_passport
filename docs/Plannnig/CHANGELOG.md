@@ -13,9 +13,11 @@ The format follows Keep a Changelog.
   `docs/Architecture/VENUE_INSIGHTS_AND_SUBSCRIPTIONS_PLAN.md`, written
   2026-11-02; **not yet applied or deployed**). A separate static site
   in `studio/`, meant for `studio.mantelier.app`.
-  - Sign-in uses the app account. The studio first checks `is_admin()`,
-    so a member who isn't an admin sees "No access" and is never asked
-    to set up an authenticator. An admin then sets up two-step sign-in
+  - Sign-in uses the app account. Before the code, `is_admin()` is false
+    for everyone (`20261101220000`), so the studio asks
+    `admin_two_step_pending()`, new in this migration, whether this is
+    an admin still owing a code. A member who isn't an admin sees "No
+    access" and is never asked to set up an authenticator. An admin then sets up two-step sign-in
     (TOTP) the first time, and enters a code every time after. The
     session lives in the tab only (`sessionStorage`).
   - Migration `20261101230000_add_admin_studio_report` (renumbered from
@@ -27,7 +29,8 @@ The format follows Keep a Changelog.
     and new followers, events with opens, Interested, Going and
     attended, and upcoming trips by destination country. It refuses
     unless the caller is an admin **and** the session passed two-step
-    sign-in (`aal2`). Execute is revoked from public and anon in the
+    sign-in (`aal2`); it checks the code first, so a password-only
+    session gets `mfa_required`, not `not_admin`. Execute is revoked from public and anon in the
     same migration. Members by country and age come from the existing
     `admin_get_member_insights()`.
   - Counts only, never a person. Admin numbers are not hidden below 5;
@@ -48,6 +51,142 @@ The format follows Keep a Changelog.
   - Not tested: production's own TOTP setting (it must be on under
     Authentication → Multi-Factor in the Supabase dashboard), and the
     studio on its real domain, which doesn't exist yet.
+### Changed
+- **Admins need two-step sign-in** (`claude/admin-two-step`, migration
+  `20261101220000_admins_require_two_step`, written and applied
+  2026-11-02, after build 26; ledger 136, local and remote in
+  agreement). Checked on production after the push: `is_admin()`
+  requires `aal2`, anon has no execute, and the one admin has a
+  verified authenticator. `is_admin()` is now true only when the session's token
+  says `aal2`, so a stolen admin password opens nothing admin. It stays
+  the single source of that permission, and every admin path goes
+  through it, evaluated as the caller, so this one change covers them
+  all:
+  - `get_review_queue` and the 16 `admin_*` RPCs;
+  - the admin read policies on `events`, `event_restaurants`,
+    `event_hotels`, `event_chefs`, and on storage for
+    venue-photo-submissions;
+  - `publish-venue-photo`'s admin path;
+  - the app's Review and Insights rows.
+
+  That list was taken from production with a query over `pg_proc` and
+  `pg_policies`, not from memory. The service_role dashboard fallback
+  never calls `is_admin()` and is unaffected. No app change: build 26
+  asks for the code at sign-in, and the only admin is on 26 with an
+  authenticator. An admin on an older build, or without an
+  authenticator, is no longer an admin, which is the point. CLAUDE.md
+  records the rule under "Venue permissions".
+  - Tested on a local replay of all 136 migrations:
+    - admin, password only (`aal1`): `is_admin()` false; a submitted
+      event is hidden by `events_admin_read`; `get_review_queue` raises
+      "Not an admin".
+    - admin with no `aal` claim at all: false.
+    - admin with `aal2`: true; the event shows, the queue returns its
+      row, and member insights return.
+    - member with `aal2`: false.
+    - anon still has no execute.
+  - **Studio:** its own branch (`claude/venue-insights-plan`) also had a
+    migration named `20261101220000`. It becomes `20261101230000` there,
+    and its sign-in check changes with it: `is_admin()` is false before
+    the code, so Studio can no longer use it to pick the screen before
+    two-step.
+
+### Fixed
+- **App Store Connect warned ITMS-90683 on 1.5.6 (26)**: "Missing
+  purpose string" for `NSLocationAlwaysAndWhenInUseUsageDescription`.
+  Delivery still succeeded. `geolocator_apple` contains a
+  `requestAlwaysAuthorization` call, and Apple's static scan flags any
+  app that links it. It never runs here: `PermissionHandler.m` asks
+  when-in-use whenever `NSLocationWhenInUseUsageDescription` is present,
+  which it is. Compiling that call out (`BYPASS_PERMISSION_LOCATION_
+  ALWAYS`) only works through a CocoaPods Podfile, and this project uses
+  Swift Package Manager. So `Info.plist` now carries the missing key,
+  with honest text ("only while you use the app … never in the
+  background"). It is never shown, because the app never asks for
+  always. Checked in a release build's `Info.plist`; Apple's own scan
+  of the next upload is the real confirmation.
+
+---
+
+## v1.5.6 (26) — 2026-11-02
+
+Build 25 was archived at 14:18 from `2a84104`. This build adds two-step
+sign-in (`claude/app-two-step`). It is optional and never part of
+creating an account: a member turns it on from inside the account, and
+only then does sign-in ask for a code (product owner, 2026-11-02).
+
+**Ledger: 135, local and remote in agreement.** No migration since 25.
+
+**Schema diff (2026-11-02, before the push): clean.** All 135
+migrations were replayed on a scratch stack.
+- `db dump --linked` against `--local`: 16,190 and 16,196 lines, which
+  differ only by the 6 known blank lines (pg_net's filtered grants).
+- Storage and auth, compared directly: 30 rows each side, identical.
+
+### Added
+- **Two-step sign-in with an authenticator app** (`claude/app-two-step`,
+  2026-11-02). Authenticator app only: no SMS and no email, by decision.
+  It's free, stores nothing extra about the member, and on iPhone the
+  Passwords app fills the code in. Uses Supabase Auth MFA (TOTP), which
+  is enabled on production. No migration.
+  - **Profile → Privacy → Two-step sign-in**
+    (`TwoStepSettingsScreen`):
+    - Off: what it is, and Turn on.
+    - On: each linked authenticator with its date, Add a backup
+      authenticator, and Remove.
+    - Setting one up opens the `otpauth://` link in the authenticator
+      app (Passwords on iPhone), with the key shown to copy or type as a
+      fallback. The first code confirms it.
+    - Removing one asks for a code from any linked authenticator.
+      Removing the last turns two-step sign-in off.
+    - Supabase wants a different name per factor, so they are
+      "Authenticator", "Authenticator 2", and so on.
+  - **The code step after the password** (`TwoStepSignInScreen`).
+    `AuthGate` shows it while the session is `aal1` and the account has a
+    verified authenticator; it reads this from the session itself
+    (`sessionNeedsTwoStep`). A right code raises the session to `aal2`,
+    and the gate moves on from the `mfaChallengeVerified` event. A code
+    from any linked authenticator works. The screen also offers Sign out
+    and points a member who lost their phone to hello@mantelier.app.
+  - Code fields take digits only, six at most, and continue on the sixth
+    digit, which suits iOS filling the code in. `CsTextField` gained an
+    optional `inputFormatters` for this.
+  - `docs/Engineering/VENUE_CLAIM_OPERATIONS.md` has the procedure for a
+    member who lost their only authenticator: check it's them, then
+    remove their factors in the dashboard.
+  - `site/privacy.html` (deployed with this build's merge) says the authenticator key is
+    stored by Supabase Auth and no phone number is, and lists two-step
+    sign-in under "Your choices".
+  - **Not yet enforced on the server.** A password-only (`aal1`) token
+    still reads the member's own data through the API, as before. The
+    app hides everything behind the code step, and production's "Limit
+    duration of AAL1 sessions" ends such sessions after 15 minutes for
+    accounts with an authenticator. Next steps, in order:
+    1. Admin review RPCs require `aal2`, once the product owner's phone
+       runs this build.
+    2. Studio goes live.
+  - Tested on a local replay with TOTP on, in the simulator:
+    - turning it on through the `otpauth://` link (Passwords opens) and
+      a confirming code;
+    - a fresh password sign-in shows the code step, where a wrong code
+      shows an error and the right one signs in on the sixth digit;
+    - turning it off with a code removes the factor from
+      `auth.mfa_factors`;
+    - a backup is added as "Authenticator 2", and signing in with the
+      backup's code works.
+
+    Plus 18 widget and unit tests.
+  - **Not tested before release:** iOS filling a code in from Passwords
+    on a real iPhone, since the simulator's Passwords app is locked
+    without a passcode. Confirmed afterwards by the product owner on
+    their own iPhone with build 26, where they also turned two-step
+    sign-in on for the admin account.
+
+### Fixed
+- The first code field in the simulator took eight digits after a
+  partial delete ("00372453"), and sending it could only fail. Seen
+  while testing before release, and fixed with the six-digit limit
+  above.
 
 ---
 

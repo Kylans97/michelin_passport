@@ -28,6 +28,8 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Mantelier uses your location only while you use the app, to show gastronomic events happening near you. It never uses it in the background.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Mantelier uses your location to show gastronomic events happening near you.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
