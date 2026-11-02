@@ -80,8 +80,13 @@
   <header class="bar">
     <div class="bar-inner">
       <p class="brand">Mantelier <span>Studio</span></p>
+      <nav class="tabs" aria-label="Studio sections">
+        <button class="tab is-active" data-tab="overview">Overview</button>
+        <button class="tab" data-tab="basic">Basic</button>
+        <button class="tab" data-tab="pro">Pro</button>
+      </nav>
       <div class="bar-controls">
-        <label class="period">Period
+        <label class="period" id="period-control">Period
           <select id="period">
             <option value="7">7 days</option>
             <option value="30" selected>30 days</option>
@@ -94,7 +99,7 @@
     </div>
   </header>
 
-  <main class="page">
+  <main class="page" id="tab-overview">
     <p class="note" id="status">Loading…</p>
 
     <section class="tiles" id="tiles"></section>
@@ -156,6 +161,145 @@
     </section>
 
     <p class="fine foot">Counts only, never a person.</p>
+  </main>
+
+  <!-- Basic and Pro: what one venue would see on each subscription. -->
+  <main class="page" id="tab-tiers" hidden>
+    <section class="panel picker">
+      <div class="picker-row">
+        <label class="picker-label">Venue
+          <input id="venue-search" type="search" placeholder="Search a restaurant, hotel or chef" autocomplete="off">
+        </label>
+        <button class="secondary" id="venue-example">Example venue</button>
+      </div>
+      <div id="venue-results" class="results" hidden></div>
+      <p class="fine" id="tier-note"></p>
+    </section>
+
+    <div class="banner" id="example-banner" hidden>
+      <strong>Example data.</strong> A fictional venue, to show what a subscription looks like.
+      None of these numbers belong to a real venue.
+    </div>
+
+    <header class="venue-head">
+      <p class="eyebrow" id="venue-kind"></p>
+      <h1 id="venue-name"></h1>
+      <p class="sub" id="venue-meta"></p>
+    </header>
+
+    <!-- Basic -->
+    <div id="tier-basic">
+      <section class="tiles" id="basic-tiles"></section>
+      <section class="grid two">
+        <article class="panel">
+          <h2>Visitors</h2>
+          <p class="sub">Members who opened your page, per month</p>
+          <div id="basic-visitors"></div>
+        </article>
+        <article class="panel">
+          <h2>Taps from your page</h2>
+          <p class="sub">Members who tapped through, last 12 months</p>
+          <div id="basic-taps"></div>
+        </article>
+      </section>
+      <section class="grid two">
+        <article class="panel">
+          <h2>New followers</h2>
+          <p class="sub">Per month</p>
+          <div id="basic-followers"></div>
+        </article>
+        <article class="panel">
+          <h2>Saved to wishlists</h2>
+          <p class="sub">Per month</p>
+          <div id="basic-saves"></div>
+        </article>
+      </section>
+      <article class="panel">
+        <h2>Your events</h2>
+        <p class="sub">Members who viewed, are Interested or Going, and who attended</p>
+        <div class="table-wrap" id="basic-events"></div>
+      </article>
+    </div>
+
+    <!-- Pro -->
+    <div id="tier-pro" hidden>
+      <p class="note">Pro includes everything in Basic, plus:</p>
+      <section class="grid two">
+        <article class="panel">
+          <h2>Your audience by country</h2>
+          <p class="sub">Members who opened your page or follow you, by home country</p>
+          <div id="pro-country"></div>
+        </article>
+        <article class="panel">
+          <h2>Your audience by age</h2>
+          <p class="sub">Same members, by age group</p>
+          <div id="pro-age"></div>
+        </article>
+      </section>
+      <section class="grid two">
+        <article class="panel">
+          <h2>Venues like yours</h2>
+          <p class="sub" id="pro-bench-sub">Visitors in the last 90 days</p>
+          <div id="pro-bench"></div>
+        </article>
+        <article class="panel">
+          <h2>Coming your way</h2>
+          <p class="sub">Members planning a trip to your city, by month of arrival</p>
+          <div id="pro-trips"></div>
+        </article>
+      </section>
+      <section class="grid two">
+        <article class="panel">
+          <h2>How members found you <span class="badge">Example</span></h2>
+          <p class="sub">Where a visit to your page started. Not measured yet.</p>
+          <div id="pro-sources"></div>
+        </article>
+        <article class="panel">
+          <h2>What members search for <span class="badge">Example</span></h2>
+          <p class="sub">Cuisines, cities and venues that searches matched. Never the typed text. Not measured yet.</p>
+          <div id="pro-searches"></div>
+        </article>
+      </section>
+
+      <h2 class="section-title">The market</h2>
+      <p class="note">Across all of Mantelier, not one venue.</p>
+      <section class="grid two">
+        <article class="panel">
+          <h2>Popular cuisines</h2>
+          <p class="sub">Members who follow, saved or visited a restaurant of each cuisine</p>
+          <div id="market-cuisines"></div>
+        </article>
+        <article class="panel">
+          <h2>Events members want</h2>
+          <p class="sub">Members Interested, Going or attended, by kind of event</p>
+          <div id="market-events"></div>
+        </article>
+      </section>
+      <article class="panel">
+        <h2>Who looks where</h2>
+        <p class="sub">Members by home country, and the countries of the restaurants they follow, save or visit</p>
+        <div class="table-wrap" id="market-where"></div>
+      </article>
+      <article class="panel">
+        <h2>Cuisines by members' country</h2>
+        <p class="sub">The cuisines members from each country show interest in</p>
+        <div class="table-wrap" id="market-cuisine-country"></div>
+      </article>
+      <section class="grid two">
+        <article class="panel">
+          <h2>Where members travel</h2>
+          <p class="sub">Upcoming trips by destination country</p>
+          <div id="market-destinations"></div>
+        </article>
+        <article class="panel">
+          <h2>Event interest by country</h2>
+          <p class="sub">Members who opened events, by the event's country, last 12 months</p>
+          <div id="market-event-countries"></div>
+        </article>
+      </section>
+    </div>
+
+    <p class="fine foot">As a venue would see it: counts of people only, and any group under 5 shows no number.</p>
   </main>
 </div>
 

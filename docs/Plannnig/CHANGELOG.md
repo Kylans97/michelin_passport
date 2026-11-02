@@ -9,6 +9,57 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
+- **Studio: Basic and Pro tabs** (`claude/studio-tiers`, migration
+  `20261101240000_add_studio_tier_reports`, written 2026-11-02; **not
+  yet applied or deployed**). They show what one venue would see on each
+  subscription, for conversations with venues about the future state
+  (plan §4). Nothing here is visible to venues yet.
+  - **Basic** (one venue):
+    - visitors, followers, wishlist saves, members who recorded a
+      visit, members who tapped through, and the rating;
+    - visitors, new followers and saves per month over 12 months;
+    - taps by kind;
+    - the venue's own events: viewed, Interested, Going, attended.
+  - **Pro**, everything in Basic plus:
+    - the audience by home country and by age group;
+    - "Venues like yours": you next to the median and the top quarter
+      of the same city, or else the same country and stars, from 5
+      peers;
+    - members planning a trip to the venue's city, by month;
+    - the market across all of Mantelier: popular cuisines; event kinds
+      and tags; who looks where (member country × restaurant country);
+      cuisines by member country; trip destinations; event interest by
+      country.
+  - **Numbers as a venue would see them.** Every count of people under
+    5 is null, shown as "fewer than 5" (a hairline in charts). The
+    rating shows from 3 raters, as Rankings does. Peers are only ever a
+    median, never another venue's own number. Months, not days.
+  - **Example venue.** A fictional venue with example data, under a
+    banner saying so, is the default in both tabs. In a conversation
+    with one venue, no other real venue's numbers are on screen; a
+    searched real venue carries "Show them to this venue only".
+  - **Not measured yet**, shown with an "Example" badge for every venue:
+    how members found the venue, and what they search for (as matched
+    cuisines, cities and venues — decision 1). Both wait for the
+    tracking in plan §5, with its privacy policy update.
+  - Three admin-only RPCs: `admin_studio_find_venues`,
+    `admin_studio_venue_report`, `admin_studio_market_report`, plus the
+    helper `studio_suppress`. All go through `is_admin()` (aal2), and
+    execute is revoked from public and anon in the same migration.
+  - Tested on a local replay of all 138 migrations with fictional
+    venues and 80 members:
+    - anon can't execute any of the three; a member and a code-less
+      admin get `not_admin`; an unknown venue raises "venue not found";
+    - a real venue's report shows suppressed months as null and the
+      rating from 3 raters;
+    - in the browser: Basic and Pro with example data and with a
+      searched real venue;
+    - phone width: the market tables first stretched the page to 518px
+      (grid children default to `min-width: auto`). Fixed in the CSS,
+      and now 375px with the tables scrolling inside their panels.
+  - Fixed before release: an upcoming event's Attended showed "fewer
+    than 5"; it now shows "–".
+
 - **Mantelier Studio, the admin dashboard on the website** (phase 1 of
   `docs/Architecture/VENUE_INSIGHTS_AND_SUBSCRIPTIONS_PLAN.md`, written,
   applied and deployed 2026-11-02; ledger 137, local and remote in
