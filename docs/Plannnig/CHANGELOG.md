@@ -24,7 +24,11 @@ production after 24, both applied before this build:
 - `20261101170000_add_venue_team_photos_and_instagram`;
 - `20261101180000_add_restaurant_opening_hours`.
 
-SCHEMA_DIFF_RESULT
+**Schema diff (2026-11-02, before the push): clean.** All 132
+migrations were replayed on a scratch stack.
+- `db dump --linked` against `--local`: 15,669 and 15,675 lines, which
+  differ only by the 6 known blank lines (pg_net's filtered grants).
+- Storage and auth, compared directly: 30 rows each side, identical.
 
 ### Added
 
