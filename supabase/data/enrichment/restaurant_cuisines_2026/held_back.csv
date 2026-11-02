@@ -1,0 +1,83 @@
+restaurant_code,country_code,source,url,reason,detail
+rest_0020,IT,michelin,https://guide.michelin.com/nl/nl/emilia-romagna/maranello/restaurant/cavallino,HTTP 404,https://guide.michelin.com/en/emilia-romagna/maranello/restaurant/cavallino
+rest_0029,NL,legacy,,old label is not a MICHELIN label,Dutch Contemporary
+rest_0029,NL,michelin,https://guide.michelin.com/nl/nl/limburg/maasbracht/restaurant/da-vinci,HTTP 404,https://guide.michelin.com/en/limburg/maasbracht/restaurant/da-vinci
+rest_0037,NL,worlds_50_best,https://www.the50.com/discovery/Establishments/Netherlands/Zwolle/De-Librije.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0043,NL,michelin,https://guide.michelin.com/nl/nl/zeeland/cadzand/restaurant/demain,HTTP 404,https://guide.michelin.com/en/zeeland/cadzand/restaurant/demain
+rest_0045,US,worlds_50_best,https://www.the50.com/discovery/Establishments/US/New-York/Eleven-Madison-Park.html,style line names no cuisine,Holistic hospitality experience — no cuisine named
+rest_0061,IT,michelin,https://guide.michelin.com/nl/nl/emilia-romagna/modena/restaurant/lerba-del-re,HTTP 404,https://guide.michelin.com/en/emilia-romagna/modena/restaurant/lerba-del-re
+rest_0071,TR,worlds_50_best,https://www.the50.com/discovery/Establishments/Türkiye/Istanbul/Neolokal.html,style line names no cuisine,"Slow food classics — 'slow food' is an approach, not a cuisine"
+rest_0130,AE,michelin,https://guide.michelin.com/nl/nl/abu-dhabi/abu-dhabi/restaurant/hakkasan,HTTP 404,https://guide.michelin.com/en/abu-dhabi/abu-dhabi/restaurant/hakkasan
+rest_0132,MX,worlds_50_best,https://www.the50.com/discovery/Establishments/Mexico/Mexico-City/Quintonil.html,style line names no cuisine,Precise imaginative sustainability — no cuisine named
+rest_0134,PE,legacy,,old label is not a MICHELIN label,Nikkei (Japanese-Peruvian)
+rest_0134,PE,worlds_50_best,https://www.the50.com/discovery/Establishments/Peru/Lima/Maido.html,mapped label not in MICHELIN vocabulary,Nikkei
+rest_0138,CL,legacy,,old label is not a MICHELIN label,Chilean Contemporary
+rest_0138,CL,worlds_50_best,https://www.the50.com/discovery/Establishments/Chile/Santiago/Boragó.html,no card with this URL on neighbouring pages,5 + deeper pass pages tried
+rest_0139,PE,legacy,,old label is not a MICHELIN label,Peruvian-Venezuelan
+rest_0139,PE,worlds_50_best,https://www.the50.com/discovery/Establishments/Peru/Lima/Mérito.html,mapped label not in MICHELIN vocabulary,Venezuelan
+rest_0144,NL,michelin,https://guide.michelin.com/gb/en/noord-holland/amsterdam/restaurant/spectrum437663,HTTP 404,https://guide.michelin.com/en/noord-holland/amsterdam/restaurant/spectrum437663
+rest_0149,NL,michelin,https://guide.michelin.com/en/overijssel/staphorst/restaurant/de-groene-lantaarn,HTTP 404,https://guide.michelin.com/en/overijssel/staphorst/restaurant/de-groene-lantaarn
+rest_0165,BE,worlds_50_best,https://www.the50.com/discovery/Establishments/Belgium/Kruisem/Hof-van-Cleve.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0182,DE,worlds_50_best,https://www.the50.com/discovery/Establishments/Germany/Munich/Restaurant-Jan.html,style line names no cuisine,Sleek stylish haute cuisine — 'haute cuisine' names no cuisine
+rest_0186,DE,legacy,,old label is not a MICHELIN label,Contemporary European
+rest_0190,DE,worlds_50_best,https://www.the50.com/discovery/Establishments/Germany/Berlin/CODA.html,style line names no cuisine,World-leading experimental desserts — desserts; no cuisine named
+rest_0199,DE,legacy,,old label is not a MICHELIN label,Mediterranean-Italian
+rest_0212,DE,worlds_50_best,https://www.the50.com/discovery/Establishments/Germany/Munich/Tantris.html,no card with this URL on neighbouring pages,5 + deeper pass pages tried
+rest_0236,CH,worlds_50_best,https://www.the50.com/discovery/Establishments/Switzerland/Crissier/Restaurant-de-lHôtel-de-Ville.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0241,CH,michelin,https://guide.michelin.com/en/ticino/ascona/restaurant/la-brezza,HTTP 404,https://guide.michelin.com/en/ticino/ascona/restaurant/la-brezza
+rest_0243,CH,legacy,,old label is not a MICHELIN label,Sharing Concept Contemporary
+rest_0251,CH,legacy,,old label is not a MICHELIN label,Global Fusion
+rest_0296,ES,worlds_50_best,https://www.the50.com/discovery/Establishments/Spain/Atxondo/Asador-Etxebarri.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0297,DK,worlds_50_best,https://www.the50.com/discovery/Establishments/Denmark/Copenhagen/Alchemist.html,style line names no cuisine,Extraordinary multi-sensory feast — no cuisine named
+rest_0298,TH,legacy,,old label is not a MICHELIN label,Progressive Indian
+rest_0298,TH,worlds_50_best,https://www.the50.com/discovery/Establishments/Thailand/Bangkok/Gaggan.html,style line names no cuisine,Master of gastronomic revelry — no cuisine named
+rest_0299,JP,michelin,https://guide.michelin.com/us/en/tokyo-region/tokyo/restaurant/sezanne,HTTP 404,https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/sezanne
+rest_0300,FR,worlds_50_best,https://www.the50.com/discovery/Establishments/France/Paris/Table.html,style line names no cuisine,Artful elegance — no cuisine named
+rest_0303,TH,worlds_50_best,https://www.the50.com/discovery/Establishments/Thailand/Bangkok/Potong.html,style line names no cuisine,Harmonious medicinal gastronomy — no cuisine named
+rest_0304,FR,worlds_50_best,https://www.the50.com/discovery/Establishments/France/Paris/Plénitude.html,style line names no cuisine,Conceptual haute cuisine — 'haute cuisine' names no cuisine
+rest_0308,IT,worlds_50_best,https://www.the50.com/discovery/Establishments/Italy/Castel-di-Sangro/Reale.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0309,IT,worlds_50_best,https://www.the50.com/discovery/Establishments/Italy/Brunico/Atelier-Moessmer-Norbert-Niederkofler.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0315,IT,worlds_50_best,https://www.the50.com/discovery/Establishments/Italy/Rubano/Le-Calandre.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0316,IT,worlds_50_best,https://www.the50.com/discovery/Establishments/Italy/Alba/Piazza-Duomo.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0322,FR,worlds_50_best,https://www.the50.com/discovery/Establishments/France/Paris/Septime.html,style line names no cuisine,Sustainable neo-bistro — 'neo-bistro' names no cuisine
+rest_0323,DK,worlds_50_best,https://www.the50.com/discovery/Establishments/Denmark/Copenhagen/Kadeau.html,no card with this URL on neighbouring pages,5 + deeper pass pages tried
+rest_0327,FR,worlds_50_best,https://www.the50.com/discovery/Establishments/France/Paris/Arpège.html,style line names no cuisine,Veg-led haute cuisine — 'veg-led' is not vegetarian
+rest_0330,ES,worlds_50_best,https://www.the50.com/discovery/Establishments/Spain/Barcelona/Cocina-Hermanos-Torres.html,no card with this URL on neighbouring pages,5 + deeper pass pages tried
+rest_0333,ES,worlds_50_best,https://www.the50.com/discovery/Establishments/Spain/Dénia/Quique-Dacosta.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0336,ES,worlds_50_best,https://www.the50.com/discovery/Establishments/Spain/El-Puerto-de-Santa-María/Aponiente.html,no card with this URL on neighbouring pages,8 + deeper pass pages tried
+rest_0338,ES,worlds_50_best,https://www.the50.com/discovery/Establishments/Spain/Larrabetzu/Azurmendi.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0339,ES,worlds_50_best,https://www.the50.com/discovery/Establishments/Spain/Lasarte-Oria/Martin-Berasategui.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0356,ES,worlds_50_best,https://www.the50.com/discovery/Establishments/Spain/Errenteria/Mugaritz.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0381,IT,worlds_50_best,https://www.the50.com/discovery/Establishments/Italy/Florence/Enoteca-Pinchiorri.html,style line names no cuisine,Defining haute cuisine — 'haute cuisine' names no cuisine
+rest_0424,SI,worlds_50_best,https://www.the50.com/discovery/Establishments/Slovenia/Kobarid/Hiša-Franko.html,mapped label not in MICHELIN vocabulary,Slovenian
+rest_0474,DK,worlds_50_best,https://www.the50.com/discovery/Establishments/Denmark/Copenhagen/Jordnær.html,no card with this URL on neighbouring pages,5 + deeper pass pages tried
+rest_0485,JP,legacy,,old label is not a MICHELIN label,Kaiseki
+rest_0735,US,worlds_50_best,https://www.the50.com/discovery/Establishments/US/Yountville/The-French-Laundry.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0738,US,worlds_50_best,https://www.the50.com/discovery/Establishments/US/San-Francisco/Atelier-Crenn.html,style line names no cuisine,Poetic tasting experience — no cuisine named
+rest_0762,US,worlds_50_best,https://www.the50.com/discovery/Establishments/US/Pocantico-Hills/Blue-Hill-at-Stone-Barns.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0763,US,worlds_50_best,https://www.the50.com/discovery/Establishments/US/New-York/César.html,style line names no cuisine,Classic flavours in novel forms — no cuisine named
+rest_0772,US,worlds_50_best,https://www.the50.com/discovery/Establishments/US/Chicago/Alinea.html,style line names no cuisine,Immersive sensory journey — no cuisine named
+rest_0781,NL,michelin,https://guide.michelin.com/us/en/noord-holland/amsterdam/restaurant/graphite-by-peter-gast,HTTP 404,https://guide.michelin.com/en/noord-holland/amsterdam/restaurant/graphite-by-peter-gast
+rest_0783,NL,michelin,https://guide.michelin.com/nl/nl/noord-holland/amsterdam/restaurant/daalder-1200903,HTTP 404,https://guide.michelin.com/en/noord-holland/amsterdam/restaurant/daalder-1200903
+rest_0798,BE,michelin,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/kommilfoo,HTTP 404,https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/kommilfoo
+rest_0830,BE,michelin,https://guide.michelin.com/gb/en/west-vlaanderen/brugge/restaurant/memoire,HTTP 404,https://guide.michelin.com/en/west-vlaanderen/brugge/restaurant/memoire
+rest_0836,BE,michelin,https://guide.michelin.com/us/en/bruxelles-capitale/anderlecht/restaurant/la-paix203164,HTTP 404,https://guide.michelin.com/en/bruxelles-capitale/anderlecht/restaurant/la-paix203164
+rest_0840,BE,michelin,https://guide.michelin.com/us/en/west-vlaanderen/kortrijk/restaurant/table-d-amis,HTTP 404,https://guide.michelin.com/en/west-vlaanderen/kortrijk/restaurant/table-d-amis
+rest_0842,BE,worlds_50_best,https://www.the50.com/discovery/Establishments/Belgium/Koksijde/Willem-Hiele.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_0846,BE,michelin,https://guide.michelin.com/th/en/be-limburg/ordingen/restaurant/aurum,HTTP 404,https://guide.michelin.com/en/be-limburg/ordingen/restaurant/aurum
+rest_0890,BE,michelin,https://guide.michelin.com/us/en/be-luxembourg/grandhan/restaurant/la-table-de-manon,HTTP 404,https://guide.michelin.com/en/be-luxembourg/grandhan/restaurant/la-table-de-manon
+rest_0955,FR,michelin,https://guide.michelin.com/us/en/ile-de-france/paris/restaurant/maison-dubois,HTTP 404,https://guide.michelin.com/en/ile-de-france/paris/restaurant/maison-dubois
+rest_0994,FR,michelin,https://guide.michelin.com/gb/en/ile-de-france/paris/restaurant/pages,HTTP 404,https://guide.michelin.com/en/ile-de-france/paris/restaurant/pages
+rest_0995,FR,michelin,https://guide.michelin.com/en/ile-de-france/paris/restaurant/la-scene-theleme,HTTP 404,https://guide.michelin.com/en/ile-de-france/paris/restaurant/la-scene-theleme
+rest_1091,FR,michelin,https://guide.michelin.com/us/en/normandie/caen/restaurant/ivan-vautier,HTTP 404,https://guide.michelin.com/en/normandie/caen/restaurant/ivan-vautier
+rest_1157,FR,michelin,https://guide.michelin.com/us/en/auvergne-rhone-alpes/courchevel/restaurant/sarkara,HTTP 404,https://guide.michelin.com/en/auvergne-rhone-alpes/courchevel/restaurant/sarkara
+rest_1372,KR,worlds_50_best,https://www.the50.com/discovery/Establishments/South-Korea/Seoul/Onjium.html,style line names no cuisine,The past made present — no cuisine named
+rest_1374,EC,worlds_50_best,https://www.the50.com/discovery/Establishments/Ecuador/Quito/Nuema.html,mapped label not in MICHELIN vocabulary,Ecuadorian
+rest_1379,BR,worlds_50_best,https://www.the50.com/discovery/Establishments/Brazil/São-Paulo/Tuju.html,no card with this URL on neighbouring pages,5 + deeper pass pages tried
+rest_1381,PE,worlds_50_best,https://www.the50.com/discovery/Establishments/Peru/Near-Cusco/Mil.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_1383,FR,worlds_50_best,https://www.the50.com/discovery/Establishments/France/Saint-Vrain/Le-Doyenné.html,no card with this URL on neighbouring pages,0 + deeper pass pages tried
+rest_1386,BR,worlds_50_best,https://www.the50.com/discovery/Establishments/Brazil/São-Paulo/A-Casa-do-Porco.html,style line names no cuisine,Ultimate pig out — no cuisine named
+rest_1388,GB,worlds_50_best,https://www.the50.com/discovery/Establishments/UK/London/The-Clove-Club.html,style line names no cuisine,Best of British — 'Best of British': modern or traditional not said
+rest_1389,ZA,worlds_50_best,https://www.the50.com/discovery/Establishments/South-Africa/Cape-Town/Salsify-at-the-Roundhouse.html,style line names no cuisine,Coastal views and foraged flair — no cuisine named
+rest_1578,PE,worlds_50_best,https://www.the50.com/discovery/Establishments/Peru/Lima/Central.html,style line names no cuisine,Revolutionary indigenous gastronomy — 'indigenous' names no cuisine
+rest_2531,GB,michelin,https://guide.michelin.com/en/highland/isle-of-skye/restaurant/loch-bay,HTTP 404,https://guide.michelin.com/en/highland/isle-of-skye/restaurant/loch-bay
