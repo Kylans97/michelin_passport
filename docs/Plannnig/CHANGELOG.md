@@ -8,10 +8,27 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.7 (29) — 2026-11-02
+
+Build 28 went to TestFlight from `1364bb2`. This build carries the News
+work that came after it: the tab in three parts, the photo band, photos
+inside articles (large and small), interviews with questions and pull
+quotes, and the light status bar on the green tabs. Their backend —
+migrations `20261101270000` and `20261101280000`, the example articles
+and the new photos for "Why I built Mantelier" — went live the same day,
+before this build.
+
+**Ledger: 142, local and remote in agreement.** Schema diff before the
+push, on all 142 migrations replayed on a scratch stack: the dumps
+(17,680 lines production, 17,686 local) differ only in the 6 known blank
+lines; storage and auth compared directly, 30 rows each, identical.
+
 ### Added
 - **Small photos in articles** — `news_article_photos.size` ('large',
   the default, or 'small'; migration
-  `20261101280000_add_news_photo_size.sql`, not yet applied). Small
+  `20261101280000_add_news_photo_size.sql`). Small
   photos at one place sit as a row of squares, four across, that open
   full size on a tap, with their captions said once under the row.
   Asked for by the product owner for the credits at the foot of "Why I
