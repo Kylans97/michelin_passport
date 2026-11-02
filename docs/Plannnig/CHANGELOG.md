@@ -47,6 +47,14 @@ The format follows Keep a Changelog.
     non-admin is refused; small groups are withheld; anon has no
     execute; the cron job exists.
 
+### Fixed
+- The Birthday greeting switch was invisible when on: Edit profile is a
+  green sheet, and the switch used the app's usual forest-green track,
+  the same colour as the sheet. Seen in the simulator before release. On
+  this sheet the switch is now inverted: an ivory track when on, an
+  outline when off. The other switches sit on light screens and keep
+  the forest-green track.
+
 ### Changed
 - `bounded_lists_test.dart` now expects `get_notifications_v5` as the
   newest version, and v2 as the fallback once v5 to v3 are missing.

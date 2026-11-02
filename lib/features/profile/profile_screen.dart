@@ -1201,8 +1201,15 @@ class _EditProfileSheetState extends State<_EditProfileSheet> {
                 SwitchListTile(
                   contentPadding: EdgeInsets.zero,
                   value: _private.birthdayGreeting,
-                  activeThumbColor: AppColors.ivory,
-                  activeTrackColor: AppColors.forestGreen,
+                  // The sheet is green itself, so the switch is inverted:
+                  // an ivory track when on, a quiet outline when off.
+                  activeThumbColor: AppColors.deepGreen,
+                  activeTrackColor: AppColors.ivory,
+                  inactiveThumbColor: AppColors.secondaryOnDark,
+                  inactiveTrackColor: Colors.transparent,
+                  trackOutlineColor: const WidgetStatePropertyAll(
+                    AppColors.subtleBorderDark,
+                  ),
                   title: Text(
                     'Birthday greeting',
                     style: CsTypography.body.copyWith(color: AppColors.textOnDark),
