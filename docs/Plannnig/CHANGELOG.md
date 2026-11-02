@@ -10,9 +10,10 @@ The format follows Keep a Changelog.
 
 ---
 
-## v1.5.6 (28) — 2026-11-02
+## v1.5.7 (28) — 2026-11-02
 
-Build 27 went to TestFlight from `aa9e0e3`. This build carries the app
+A new version number because 1.5.6 is already live in the App Store.
+Build 27 (1.5.6) went to TestFlight from `aa9e0e3`. This build carries the app
 side of the venue insight tracking below: the open sources, ticket and
 website taps, Explore's search and filter signals, cards seen in lists
 and gallery photos seen. Its backend — migrations `20261101250000` and
