@@ -20,6 +20,9 @@ The format follows Keep a Changelog.
   (option B). `FloatingNavDestination` takes an `iconBuilder` for it.
   Nothing else addressed tabs by position, and analytics tracks screens,
   not positions, so both are unaffected.
+- **mantelier.app links to the hosts page.** Every page's footer now
+  ends with "For hosts" (/hosts). Before this, the page was reachable
+  only from the welcome email. Deployed 2026-11-02.
 
 ### Added
 
