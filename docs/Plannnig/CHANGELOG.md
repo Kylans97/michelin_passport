@@ -10,9 +10,12 @@ The format follows Keep a Changelog.
 
 ### Added
 - **Mantelier Studio, the admin dashboard on the website** (phase 1 of
-  `docs/Architecture/VENUE_INSIGHTS_AND_SUBSCRIPTIONS_PLAN.md`, written
-  2026-11-02; **not yet applied or deployed**). A separate static site
-  in `studio/`, meant for `studio.mantelier.app`.
+  `docs/Architecture/VENUE_INSIGHTS_AND_SUBSCRIPTIONS_PLAN.md`, written,
+  applied and deployed 2026-11-02; ledger 137, local and remote in
+  agreement). A separate static site in `studio/`, in its own
+  Cloudflare Pages project `mantelier-studio`. It is live at
+  `mantelier-studio.pages.dev`, and `studio.mantelier.app` follows once
+  the product owner adds it as a custom domain.
   - Sign-in uses the app account. Before the code, `is_admin()` is false
     for everyone (`20261101220000`), so the studio asks
     `admin_two_step_pending()`, new in this migration, whether this is
@@ -40,7 +43,17 @@ The format follows Keep a Changelog.
     blocks framing.
   - `supabase/config.toml` turns TOTP on for local stacks, so a local
     replay can sign in to the studio the way production will.
-  - Tested on a local replay of all 136 migrations with seeded
+  - Tested again after `20261101220000`, on a local replay of all 137
+    migrations, in the browser:
+    - an admin without an authenticator is sent to set one up, and the
+      code opens the dashboard;
+    - signing in again asks for the code;
+    - a member gets "No access" with no set-up step.
+
+    Checked on production after the push: anon can't execute either
+    function. The live page sends noindex, the CSP and `DENY` for
+    framing, and loads with no console errors.
+  - First tested on a local replay of all 136 migrations with seeded
     fictional venues and members: anon has no execute; an admin
     without two-step is refused (`mfa_required`); a member with
     two-step is refused (`not_admin`); an admin with two-step gets the
@@ -48,9 +61,10 @@ The format follows Keep a Changelog.
     sets up the code and opens the dashboard, a wrong code shows an
     error, signing in again asks for the code, a non-admin lands on "No
     access", and phone width has no sideways scroll.
-  - Not tested: production's own TOTP setting (it must be on under
-    Authentication → Multi-Factor in the Supabase dashboard), and the
-    studio on its real domain, which doesn't exist yet.
+  - Production's TOTP setting was confirmed on by the product owner in
+    the Supabase dashboard. Not tested: signing in on production (the
+    product owner's account, the product owner's to do), and the studio
+    on `studio.mantelier.app`, which doesn't exist yet.
 ### Changed
 - **Admins need two-step sign-in** (`claude/admin-two-step`, migration
   `20261101220000_admins_require_two_step`, written and applied
