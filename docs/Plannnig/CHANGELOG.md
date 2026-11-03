@@ -8,6 +8,21 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- Migration `20261101290000_add_gr_cities.sql`: 20 Greek towns (data only,
+  `cities` rows) for the MICHELIN Greece pass. Applied to production on
+  2026-11-04 from `claude/michelin-gr-2026` with plain
+  `supabase db push --linked`. The ledger went from 142 to 143, and local
+  and remote agree. The catalogue data that goes with it is in
+  `supabase/data/enrichment/michelin_gr/`.
+
+### Fixed
+- `prepared_gr_2027.sql` was tested only on scratch PostgreSQL with
+  PostGIS stubbed, because Docker isn't installed on this machine. Its
+  first real run was production. Its opening checks and the row-by-row
+  comparison afterwards found no difference. The risk recurs on any
+  machine without Docker.
+
 ---
 
 ## v1.5.7 (29) — 2026-11-02

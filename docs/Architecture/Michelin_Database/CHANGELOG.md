@@ -6,6 +6,36 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-04 — Greece: stars 2027 and Key hotels 2026 (QA-430–QA-435)
+
+| | |
+|---|---|
+| Applied | 2026-11-04, to production, at the product owner's request, from `claude/michelin-gr-2026` |
+| Migration | `20261101290000_add_gr_cities.sql` (20 towns). Plain `supabase db push --linked`; ledger 142 → 143, local and remote in agreement. Cities: GR 1 → 21 |
+| Data file | `michelin_gr/prepared_gr_2027.sql`. One transaction, every check passed |
+| Rows | 20 starred restaurants (`rest_4000`–`rest_4019`), `guide_year` 2027, announced 2026-10-23; 73 Key hotels (`hotel_3000`–`hotel_3072`), `guide_year` 2026, announced 2026-09-18; 1 hotel link (Pelagos → `hotel_716`); 6 `property_name` |
+| Corrections | `hotel_716` Four Seasons Astir Palace had no award row; a 2026 row with 3 Keys is added (QA-434). No earlier year is asserted |
+
+**Checked after the apply**, row by row against `michelin_gr/gr_control.csv` (fresh export `michelin_gr/_source/production_after_apply_20261104.json`):
+
+- **GR:** stars 0/1/19, Keys 1/9/64, equal to MICHELIN's live selection, its press release of 23 Oct 2026 and its global Key article (Greece 74).
+- Every row has exactly one current award row equal to its value.
+- All 94 rows carry the staged name, award, MICHELIN URL and pin. `hotel_716` keeps its stored point, 57 m from MICHELIN's pin, on purpose.
+- Totals moved by exactly the staged amounts: restaurants +20, hotels +73, award rows +94, cities +20, links +1.
+
+**World's 50 Best:** no Greek restaurant on ranks 1–100 of the list shown on the50.com. On the 2026 hotel list only `hotel_716`, rank 27, already stored.
+
+**Decided by the product owner:** Crete stays as the town where MICHELIN's locality is the island; Kastri and Mouzaki come from the address where the locality is a region (QA-432); Tudor Hall's `property_name` King George rests on the restaurant's own site (QA-433).
+
+**Still open:**
+
+- **QA-431:** no Place IDs for the 93 new rows, no phone or website for the new hotels, four restaurant phones left blank, and `hotel_716`'s phone conflict.
+- **QA-432:** addresses written as MICHELIN gives them, including probable errors.
+- **QA-433:** Botrini's Santorini and Selene are not linked to a Katikies hotel.
+- **QA-435:** Spondi's 2013 rank, `hotel_716`'s 2023 rank, and whether a 2026 restaurant list exists.
+
+---
+
 # 2026-11-01 — Poland and Türkiye stars and Key hotels 2026 (QA-404–QA-410)
 
 | | |

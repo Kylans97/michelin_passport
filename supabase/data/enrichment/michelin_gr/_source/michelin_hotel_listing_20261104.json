@@ -1,0 +1,3148 @@
+{
+ "fetched_at": "2026-11-03T23:09:20Z",
+ "heads": {
+  "GR": [
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/greece",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/greece",
+    "total": "279 hotels",
+    "cards": 53
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/greece/page/2",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/greece/page/2",
+    "total": "279 hotels",
+    "cards": 53
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/greece/page/3",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/greece/page/3",
+    "total": "279 hotels",
+    "cards": 53
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/greece/page/4",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/greece/page/4",
+    "total": "279 hotels",
+    "cards": 53
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/greece/page/5",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/greece/page/5",
+    "total": "279 hotels",
+    "cards": 53
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/greece/page/6",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/greece/page/6",
+    "total": "279 hotels",
+    "cards": 44
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/greece/page/7",
+    "status": 404,
+    "final": "https://guide.michelin.com/en/hotels-stays/greece/page/7",
+    "total": null,
+    "cards": 5
+   }
+  ]
+ },
+ "rows": [
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "7037",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Katikies Santorini - Pelagos House",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-pelagos-house-7037"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "4121",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Margi",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-margi-4121"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "7925",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "AthensWas",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/athenswas-7925"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "13193",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "gr",
+   "name": "THE DOLLI at Acropolis, A Hotel to Live",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-dolli-at-acropolis-a-hotel-to-live-13193"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "14635",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Andronis Boutique Hotel",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-boutique-14635"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "14477",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "ON Residence",
+   "city": "Thessaloniki",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/on-residence-14477"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "14469",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Katikies Garden Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-garden-santorini-14469"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "13682",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Andronis Luxury Suites",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-luxury-suites-13682"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "9336",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Minos Beach Art Hotel",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/minos-beach-art-hotel-9336"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "35",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Ostraco Suites",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/ostraco-suites-35"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "8991",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Istoria Hotel",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/istoria-hotel-8991"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "9289",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Parilio",
+   "city": "Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/parilio-9289"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "6200",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Katikies Chromata",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/chromata-6200"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "8244",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "gr",
+   "name": "Tainaron Blue Retreat",
+   "city": "Peloponnese",
+   "url": "https://guide.michelin.com/en/hotels-stays/peloponnese/tainaron-blue-retreat-8244"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "11958",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "NOMAD Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/nomad-mykonos-11958"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "212",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Astarte Suites",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/astarte-suites-212"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "5111",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "ANEMI Folegandros",
+   "city": "Folegandros",
+   "url": "https://guide.michelin.com/en/hotels-stays/folegandros/anemi-folegandros-5111"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "5595",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "New Hotel",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/new-hotel-5595"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "11988",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The WILD Hotel by Interni",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/the-wild-hotel-by-interni-11988"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "5327",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "gr",
+   "name": "Kinsterna Hotel",
+   "city": "Monemvasia",
+   "url": "https://guide.michelin.com/en/hotels-stays/monemvasia/kinsterna-hotel-5327"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "12351",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "ERGON House Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/ergon-house-athens-12351"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "7521",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Katikies Santorini - Gea House",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-gea-house-7521"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "13554",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Acro Suites",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/acro-suites-13554"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "12209",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Dexamenes Seaside Hotel",
+   "city": "Amaliada",
+   "url": "https://guide.michelin.com/en/hotels-stays/amaliada/dexamenes-seaside-hotel-12209"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "5259",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Kivotos Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/kivotos-mykonos-5259"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "7577",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Boheme Mykonos Town",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/boheme-mykonos-town-7577"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "13799",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Gundari",
+   "city": "Folegandros",
+   "url": "https://guide.michelin.com/en/hotels-stays/folegandros/gundari-13799"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "7482",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Perivolas Lifestyle Houses",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/perivolas-lifestyle-houses-7482"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "9326",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Santo Pure",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/santo-pure-9326"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "631",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Periscope Hotel",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/periscope-hotel-631"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "9455",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Mykonos No5 Suites & Villas",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-no5-suites-villas-9455"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "8780",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Porto Zante Villas & Spa",
+   "city": "Zakynthos",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/porto-zante-villas-spa-8780"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "591",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Semiramis Hotel",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/semiramis-hotel-591"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "12107",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Modernist Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-modernist-athens-12107"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "6199",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Mykonos Theoxenia",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-theoxenia-6199"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "8956",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Caesars Gardens Hotel & Spa",
+   "city": "Rhodes",
+   "url": "https://guide.michelin.com/en/hotels-stays/rhodes/caesars-gardens-hotel-spa-8956"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "12330",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Gatsby Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/gatsby-athens-12330"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "8692",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Myconian Ambassador",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-ambassador-8692"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "10751",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Elounda Beach Hotel & Villas",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/elounda-beach-hotel-and-villas-10751"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "9072",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Euphoria Retreat",
+   "city": "Mystras",
+   "url": "https://guide.michelin.com/en/hotels-stays/mystras/euphoria-retreat-9072"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "8698",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Myconian Villa Collection",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-villa-collection-8698"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "11668",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Summer Senses Luxury Resort",
+   "city": "Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/summer-senses-luxury-resort-11668"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "12074",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "A77 Suites",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/a77-suites-12074"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "8782",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Daios Cove",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/daios-cove-8782"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "8699",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Myconian Utopia Resort",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-utopia-resort-8699"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "9430",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Mykonos Bliss",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-bliss-9430"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "12198",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Homeric Poems",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/homeric-poems-12198"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "13253",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Magma Resort Santorini, Part of The Unbound Collection by Hyatt",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/magma-resort-santorini-part-of-the-unbound-collection-by-hyatt-13253"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "GR",
+   "page": 1,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "9347",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Andronis Arcadia",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-arcadia-9347"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "9077",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Mykonos Riviera Hotel & Spa",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-riviera-hotel-spa-9077"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "7101",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Mykonos Grand Hotel & Resort",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-grand-hotel-resort-7101"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13017",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "NOŪS Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/nous-santorini-13017"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "4311",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Elounda Peninsula Luxury Resort",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/elounda-peninsula-luxury-resort-4311"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13403",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Andronis Minois",
+   "city": "Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/minois-hotel-13403"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12948",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Asterion Suites & Spa",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/asterion-suites-spa-12948"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "8706",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Myconian Avaton",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-avaton-8706"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13539",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Mandraki Beach Resort",
+   "city": "Hydra",
+   "url": "https://guide.michelin.com/en/hotels-stays/hydra/mandraki-beach-resort-13539"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "9365",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Lesante Blu",
+   "city": "Zakynthos",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/lesante-blu-9365"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "6766",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Petra",
+   "city": "Patmos",
+   "url": "https://guide.michelin.com/en/hotels-stays/patmos/the-petra-an-slh-hotel-6766"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "5485",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Semeli Hotel",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/semeli-hotel-5485"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13541",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "WeSense Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/wesense-santorini-13541"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "8010",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Grand Resort Lagonissi",
+   "city": "Lagonissi",
+   "url": "https://guide.michelin.com/en/hotels-stays/lagonissi/grand-resort-lagonissi-8010"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "11859",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Saint Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/saint-santorini-11859"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13492",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Monument",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/monument-13492"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12920",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "La Perla Villas & Suites",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/la-perla-villas-and-suites-12920"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13680",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Lesante Cape",
+   "city": "Zakynthos",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/lesante-cape-13680"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13919",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Ergon Bakehouse Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/ergon-bakehouse-123969-13919"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13068",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Celestial Suites",
+   "city": "Kefalonia",
+   "url": "https://guide.michelin.com/en/hotels-stays/kefalonia/celestial-suites-13068"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "9403",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Kivotos Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/kivotos-santorini-9403"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "5413",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Belvedere Hotel Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/belvedere-hotel-5413"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13678",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "NEOMA",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/neoma-13678"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12089",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Kalesma Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/kalesma-mykonos-12089"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13993",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Ergon Beach House Nikiti",
+   "city": "Nikiti Beach",
+   "url": "https://guide.michelin.com/en/hotels-stays/nikiti-beach/ergon-beach-house-nikiti-13993"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12281",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Olea All Suite Hotel",
+   "city": "Zakynthos",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/olea-all-suite-hotel-12281"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12611",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Domes White Coast Milos",
+   "city": "Milos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Milos/domes-white-coast-milos-12611"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "14020",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Nest Resort",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/the-nest-resort-14020"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13075",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Contessina Hotel",
+   "city": "Zakynthos",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/contessina-hotel-13075"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "7812",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Carpe Diem Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/carpe-diem-santorini-7812"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13178",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "PNOĒS Tinos",
+   "city": "Tinos",
+   "url": "https://guide.michelin.com/en/hotels-stays/tinos-island/pnoes-tinos-13178"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13076",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Contessina Suites & Spa",
+   "city": "Zakynthos",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/contessina-suites-spa-13076"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12315",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Eressian Hotel & Hammam Spa",
+   "city": "Lesbos",
+   "url": "https://guide.michelin.com/en/hotels-stays/lesbos/eressian-hotel-hammam-spa-12315"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "14769",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Divine Cave Experience ",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/divine-cave-experience-14769"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13798",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Hom Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/hom-santorini-13798"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "5147",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Life Gallery Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/life-gallery-athens-5147"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13679",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Tanneries Hotel and Spa",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/the-tanneries-hotel-and-spa-123737-13679"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13149",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Mykonos Ammos Hotel",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-ammos-hotel-13149"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13402",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Nautilux Rethymno by Mage Hotels",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/nautilux-rethymno-by-mage-hotels-13402"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12601",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Amyth of Mykonos Agios Stefanos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/amyth-of-mykonos-agios-stefanos-12601"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "11828",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Danai",
+   "city": "Nikiti Beach",
+   "url": "https://guide.michelin.com/en/hotels-stays/nikiti-beach/the-danai-11828"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "14526",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Amethyst Selene",
+   "city": "Pogonia",
+   "url": "https://guide.michelin.com/en/hotels-stays/Pogonia/amethyst-selene-14526"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12095",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Modernist Thessaloniki",
+   "city": "Thessaloniki",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/the-modernist-thessaloniki-12095"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13148",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Mykonos Blanc Hotel",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-blanc-hotel-13148"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12412",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Avaton Luxury Beach Resort",
+   "city": "Ouranoupoli",
+   "url": "https://guide.michelin.com/en/hotels-stays/ouranoupoli/avaton-luxury-hotel-villas-12412"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "14476",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "91 Athens Riviera",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/91-athens-riviera-the-resort-14476"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "13800",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Nikki Beach Resort & Spa Porto Heli",
+   "city": "Porto Heli",
+   "url": "https://guide.michelin.com/en/hotels-stays/porto-heli/nikki-beach-resort-spa-porto-heli-13800"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "14470",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Manili Boutique Suites & Villas",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/manili-boutique-suites-villas-14470"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "GR",
+   "page": 2,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "13609",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Once in Mykonos Luxury Resort",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/once-in-mykonos-luxury-resort-13609"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14474",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Foundry Suites Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-foundry-suites-14474"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "13681",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Bard de Sol",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/bard-de-sol-13681"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14406",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Astra Suites",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/astra-suites-14406"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "12697",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Vanoro Hotel",
+   "city": "Thessaloniki",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/vanoro-hotel-12697"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14475",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Myconian Panoptis Escape",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-panoptis-escape-14475"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "13997",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "NAXIAN UTOPIA",
+   "city": "Naxos",
+   "url": "https://guide.michelin.com/en/hotels-stays/naxos/naxian-utopia-13997"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "13808",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Rocabella Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/rocabella-mykonos-123867-13808"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "12285",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Kókkini Porta Rossa",
+   "city": "Rhodes",
+   "url": "https://guide.michelin.com/en/hotels-stays/rhodes/kokkini-porta-rossa-12285"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14500",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Numo Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/numo-mykonos-14500"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "13768",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "ALERÓ Seaside Skyros Resort",
+   "city": "Skyros",
+   "url": "https://guide.michelin.com/en/hotels-stays/skyros/alero-seaside-skyros-resort-13768"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14480",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Pnoé Breathing Life",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/pnoe-breathing-life-14480"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14484",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Monsieur Didot",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/monsieur-didot-14484"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14813",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "NEMA Design Hotel & Spa",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/nema-design-hotel-spa-14813"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14524",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Laguna Coast Resort",
+   "city": "Naxos",
+   "url": "https://guide.michelin.com/en/hotels-stays/naxos/laguna-coast-resort-small-luxury-hotels-of-the-world-14524"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14471",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Kamares Boutique Hotel",
+   "city": "Ioannina",
+   "url": "https://guide.michelin.com/en/hotels-stays/Ioannina/kamares-boutique-hotel-14471"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "13987",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Cali Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/cali-mykonos-13987"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14375",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "ASTY MYKONOS HOTEL & SPA",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/asty-mykonos-hotel-spa-14375"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "11845",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Eagles Villas",
+   "city": "Ouranoupoli",
+   "url": "https://guide.michelin.com/en/hotels-stays/ouranoupoli/eagles-villas-11845"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14483",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Cayo Exclusive Resort & Spa",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/cayo-exclusive-resort-spa-14483"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14557",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "KaSeas Boutique Hotel",
+   "city": "Gerolimenas",
+   "url": "https://guide.michelin.com/en/hotels-stays/gerolimenas/kaseas-boutique-hotel-14557"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14556",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Nōstos Serifos",
+   "city": "Serifos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Serifos/nostos-serifos-14556"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14529",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "MANNA Arcadia",
+   "city": "Arcadia",
+   "url": "https://guide.michelin.com/en/hotels-stays/Arcadia-Peloponnese/manna-arcadia-14529"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14472",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Stoes Boutique Hotel",
+   "city": "Ioannina",
+   "url": "https://guide.michelin.com/en/hotels-stays/Ioannina/stoes-boutique-hotel-14472"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14393",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Enigma Hideaway Suites Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/enigma-hideaway-suites-mykonos-14393"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "13180",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domes Noruz Kassandra, Halkidiki",
+   "city": "Chaniotis",
+   "url": "https://guide.michelin.com/en/hotels-stays/Chaniotis/domes-noruz-kassandra-halkidiki-13180"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "13176",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Grand Forest Metsovo",
+   "city": "Metsovo",
+   "url": "https://guide.michelin.com/en/hotels-stays/metsovo/grand-forest-metsovo-13176"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14531",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Ammades All Suites Beach Hotel & Spa - Adults Only",
+   "city": "Rhodes",
+   "url": "https://guide.michelin.com/en/hotels-stays/rhodes/ammades-all-suites-beach-hotel-spa-adults-only-14531"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14955",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Esse Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/esse-athens-14955"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14473",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Anthology of Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/anthology-of-athens-14473"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "15067",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domus Blanc Boutique Hotel",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/domus-blanc-boutique-hotel-15067"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14957",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Monastik Living in Athina",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/monastik-living-in-athina-14957"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14405",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Canaves Oia Suites",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-oia-hotel-14405"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "13118",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Pinnacle Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-pinnacle-athens-13118"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "14487",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Phaea Blue",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/phaea-blue-14487"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "15014",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Ela Tinos",
+   "city": "Tinos",
+   "url": "https://guide.michelin.com/en/hotels-stays/tinos-island/ela-tinos-15014"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "15052",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Stamna Sifnos",
+   "city": "Sifnos",
+   "url": "https://guide.michelin.com/en/hotels-stays/sifnos/stamna-sifnos-15052"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "17691",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Twentyone",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-twentyone-17691"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "17671",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domus Renier Boutique Hotel",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/domus-renier-boutique-hotel-17671"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "17670",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Lynx Mountain Resort",
+   "city": "Macedonia",
+   "url": "https://guide.michelin.com/en/hotels-stays/Macedonia/the-lynx-mountain-resort-17670"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "17620",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Vasilicos",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/the-vasilicos-17620"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "17617",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Vione Paros ",
+   "city": "Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/vione-paros-17617"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "17572",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Villa Bordeaux",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/villa-bordeaux-17572"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "17277",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Ostria Inn",
+   "city": "Naxos",
+   "url": "https://guide.michelin.com/en/hotels-stays/naxos/ostria-inn-17277"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "17223",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Castello Infinity Suites",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/castello-infinity-suites-17223"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "17162",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Paralos Irini Mare ",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/paralos-irini-mare-128324-17162"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "16613",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Ydor Hotel & Spa",
+   "city": "Kea",
+   "url": "https://guide.michelin.com/en/hotels-stays/kea/ydor-hotel-spa-16613"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "16447",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Theros All Suite Hotel",
+   "city": "Kos",
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/theros-all-suite-hotel-16447"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "GR",
+   "page": 3,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "16436",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Nauma Paros",
+   "city": "Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/nauma-paros-16436"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "16435",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Valsamo Suites ",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/valsamo-suites-16435"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "16416",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Praxitelous Luxury Suites",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/praxitelous-luxury-suites-16416"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "16415",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Palazzo Santa Maria",
+   "city": "Syros",
+   "url": "https://guide.michelin.com/en/hotels-stays/Syros/palazzo-santa-maria-16415"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15775",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Roc Club, A Hotel to Live",
+   "city": "Vouliagmeni",
+   "url": "https://guide.michelin.com/en/hotels-stays/vouliagmeni/the-roc-club-a-hotel-to-live-15775"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15626",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Anemolethe Suites Hotel Kimolos",
+   "city": "Milos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Milos/anemolethe-suites-hotel-kimolos-15626"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15561",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Maregold Mykonos ",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/maregold-mykonos-15561"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15541",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Olivar Suites",
+   "city": "Corfu",
+   "url": "https://guide.michelin.com/en/hotels-stays/corfu/the-olivar-suites-15541"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15534",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Elysia Boutique Hotel",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/elysia-boutique-hotel-15534"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15531",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Stella Island Resort & Spa",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/stella-island-resort-spa-15531"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15512",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "White Pebble Suites",
+   "city": "Milos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Milos/white-pebble-suites-15512"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15492",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Seaside A Lifestyle Resort",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/sea-side-a-life-style-resort-15492"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15414",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Koia All Suite Wellbeing Resort ",
+   "city": "Kos",
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/koia-all-suite-wellbeing-resort-15414"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15372",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Villa Brown Ermou",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/villa-brown-ermou-15372"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15330",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Cavo Tagoo Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/cavo-tagoo-santorini-125789-15330"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15326",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domes Aulus Elounda",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/domes-aulus-elounda-15326"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15325",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "OMEON Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/omeon-mykonos-15325"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15324",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domes Novos Santorini, Autograph Collection ",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/domes-novos-santorini-autograph-collection-15324"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15282",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Anandes Hotel",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/anandes-hotel-15282"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15262",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Amal Kythnos Suites",
+   "city": "Kythnos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Kythnos/amal-kythnos-suites-15262"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "15234",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Tella Thera",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/tella-thera-15234"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "14066",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Phaea Cretan Malia",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/cretan-malia-park-14066"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "9526",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Domes Zeen Chania",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/domes-zeen-chania-9526"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "2311",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Vedema, a Luxury Collection Resort",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/vedema-a-luxury-collection-resort-2311"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "5257",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Mystique, a Luxury Collection Hotel, Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/mystique-a-luxury-collection-hotel-santorini-5257"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "11909",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domes of Corfu, Autograph Collection",
+   "city": "Corfu",
+   "url": "https://guide.michelin.com/en/hotels-stays/corfu/domes-of-corfu-11909"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "8552",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domes Noruz Chania",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/domes-noruz-8552"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "4781",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domes of Elounda",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/domes-elounda-4781"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "9156",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domes Miramare Corfu",
+   "city": "Corfu",
+   "url": "https://guide.michelin.com/en/hotels-stays/corfu/domes-miramare-corfu-9156"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "12694",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Cosme, a Luxury Collection Resort, Paros",
+   "city": "Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/cosme-a-luxury-collection-resort-paros-12694"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "13061",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Domes Aulus Zante, Autograph Collection",
+   "city": "Zakynthos",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/domes-aulus-zante-13061"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "12765",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Zillers, Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-zillers-athens-122870-12765"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "11884",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Minos Palace Resort",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/minos-palace-resort-11884"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "307",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Fresh Hotel",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/fresh-hotel-307"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "5499",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "1864 The Sea Captain's House",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/1864-the-sea-captains-house-5499"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "8175",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Bellonias Villas",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/bellonias-villas-8175"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "351",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Aigialos",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/aigialos-351"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "11825",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Shila",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/shila-11825"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "13143",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Leeda's Village",
+   "city": "Zakynthos",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/leedas-village-13143"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "11688",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "The Townhouse Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/the-townhouse-mykonos-11688"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "8963",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Vora",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/vora-8963"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "12009",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Brown Acropol by Brown Hotels ",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/brown-acropol-by-brown-hotels-12009"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "12979",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Mona Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/mona-athens-12979"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "11831",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Acron Villas",
+   "city": "Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/acron-villas-11831"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "12194",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "A Hotel Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/a-hotel-mykonos-12194"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "7274",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "gr",
+   "name": "Amanzoe",
+   "city": "Kranidi",
+   "url": "https://guide.michelin.com/en/hotels-stays/kranidi/amanzoe-7274"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "1261",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "The Tsitouras Collection",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/the-tsitouras-collection-1261"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "13123",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Niche Hotel Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/niche-hotel-athens-13123"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "GR",
+   "page": 4,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "13103",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Castro Hotel Syros",
+   "city": "Syros",
+   "url": "https://guide.michelin.com/en/hotels-stays/Syros/castro-hotel-syros-13103"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "7162",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "gr",
+   "name": "Aristi Mountain Resort",
+   "city": "Zagori",
+   "url": "https://guide.michelin.com/en/hotels-stays/zagori/aristi-mountain-resort-7162"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "12630",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Liostasi Hotel",
+   "city": "Ios",
+   "url": "https://guide.michelin.com/en/hotels-stays/ios/liostasi-hotel-12630"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "13113",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "gr",
+   "name": "Eliamos Villas Hotel & Spa",
+   "city": "Kefalonia",
+   "url": "https://guide.michelin.com/en/hotels-stays/kefalonia/eliamos-villas-hotel-spa-13113"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "13091",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Soho Roc House",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/soho-roc-house-13091"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "9318",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Canaves Epitome",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-epitome-9318"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "6677",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "De.light Boutique Hotel",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/delight-boutique-hotel-6677"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "5868",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Excelsior",
+   "city": "Thessaloniki",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/excelsior-hotel-thessaloniki-5868"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "12490",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Melidonia Suites Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/melidonia-suites-santorini-12490"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "13568",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "OKU Kos",
+   "city": "Kos",
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/oku-kos-13568"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "13480",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Lango Design Hotel & Spa",
+   "city": "Kos",
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/lango-design-hotel-spa-13480"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "12613",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Elix by Mar-Bella Collection",
+   "city": "Perdika",
+   "url": "https://guide.michelin.com/en/hotels-stays/Perdika/elix-12613"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "9317",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Canaves Sunday",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-sunday-9317"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "13804",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Limestone Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/limestone-santorini-13804"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "13274",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Teight Hotel",
+   "city": "Thessaloniki",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/teight-hotel-13274"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "14482",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Kapsaliana Village Hotel",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/kapsaliana-village-hotel-14482"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "14468",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "One&Only Aesthesis",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/oneonly-aesthesis-14468"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "14016",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "King Jason Zante",
+   "city": "Zakynthos",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/king-jason-zante-14016"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "14429",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "ALBERGO GELSOMINO",
+   "city": "Kos",
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/albergo-gelsomino-14429"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "14222",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Argini Syros",
+   "city": "Syros",
+   "url": "https://guide.michelin.com/en/hotels-stays/Syros/argini-syros-14222"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "9331",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Canaves Ena",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-ena-9331"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "17667",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Paralos Kosta Alímia",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/paralos-kosta-alimia-17667"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "17666",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Paralos Venus Suites",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/paralos-venus-suites-17666"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "17565",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Erosantorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/erosantorini-17565"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "17284",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Athenian Foss",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/athenian-foss-17284"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "16983",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Onar Andros",
+   "city": "Andros Island",
+   "url": "https://guide.michelin.com/en/hotels-stays/andros-island/onar-andros-16983"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "16939",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "One&Only Kéa Island",
+   "city": "Kea",
+   "url": "https://guide.michelin.com/en/hotels-stays/kea/oneonly-kea-island-16939"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "16849",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Kuka Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/kuka-athens-16849"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "16759",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Anerada Hotel Kalavrita",
+   "city": "Peloponnese",
+   "url": "https://guide.michelin.com/en/hotels-stays/peloponnese/anerada-hotel-kalavrita-16759"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "16758",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "The Chania Hotel Crete, Vignette Collection",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/the-chania-hotel-crete-vignette-collection-16758"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "16689",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Atoles Retreat",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/atoles-retreat-16689"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "15636",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Nammos Hotel Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/nammos-hotel-mykonos-15636"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "15533",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Silk n Cotton",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/silk-n-cotton-15533"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "15374",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Neema Maison Finikia Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/neema-maison-finikia-santorini-15374"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "7272",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "gr",
+   "name": "Hotel Grande Bretagne",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/hotel-grande-bretagne-7272"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "12274",
+   "distinction": "THREE_KEYS",
+   "hotel_country": "gr",
+   "name": "Four Seasons Astir Palace Hotel Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/four-seasons-astir-palace-12274"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "13319",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Monasty Thessaloniki, Autograph Collection",
+   "city": "Thessaloniki",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/monasty-thessaloniki-autograph-collection-13319"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "5978",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "gr",
+   "name": "Grace Hotel, Auberge Collection ",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/grace-hotel-auberge-collection-5978"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "460",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Saint John Hotel Villas & Spa",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/saint-john-hotel-villas-spa-460"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "12273",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Cove Paros",
+   "city": "Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/cove-paros-12273"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "12627",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "White River Cottages",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/white-river-cottages-12627"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "12125",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Perianth Hotel",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/perianth-hotel-12125"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "9440",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Nana Princess",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/nana-princess-hotel-9440"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "9420",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Glavas Inn ",
+   "city": "Gerakini",
+   "url": "https://guide.michelin.com/en/hotels-stays/gerakini/glavas-inn-9420"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "12606",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Xenodocheio Milos",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/xenodocheio-milos-athens-12606"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "11710",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Santa Marina",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/santa-marina-resort-villas-11710"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "6553",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Aqua Blu Hotel & Spa",
+   "city": "Kos",
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/aqua-blu-hotel-spa-6553"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "13124",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Colors Hotel Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/colors-hotel-athens-13124"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "GR",
+   "page": 5,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "12283",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Naxian on the Beach",
+   "city": "Naxos",
+   "url": "https://guide.michelin.com/en/hotels-stays/naxos/naxian-on-the-beach-12283"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "11326",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Poseidonion Grand Hotel Spetses",
+   "city": "Spetses",
+   "url": "https://guide.michelin.com/en/hotels-stays/spetses/poseidonion-grand-hotel-spetses-11326"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "12192",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "The Bold Type Hotel",
+   "city": "Patras",
+   "url": "https://guide.michelin.com/en/hotels-stays/Patras/the-bold-type-hotel-12192"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "12088",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "gr",
+   "name": "Aristide Hotel",
+   "city": "Syros",
+   "url": "https://guide.michelin.com/en/hotels-stays/Syros/aristide-hotel-12088"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "12277",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Coco-Mat Eco Residences Serifos",
+   "city": "Serifos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Serifos/coco-mat-eco-residences-serifos-12277"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "14486",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "NOT Hotel",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/not-hotel-14486"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "14513",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Noma Milos",
+   "city": "Milos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Milos/noma-milos-14513"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "11188",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Kyrimai Hotel ",
+   "city": "Gerolimenas",
+   "url": "https://guide.michelin.com/en/hotels-stays/gerolimenas/kyrimai-hotel-11188"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "5861",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Salvator Hotel Villas and Spa",
+   "city": "Parga",
+   "url": "https://guide.michelin.com/en/hotels-stays/parga/salvator-hotel-villas-and-spa-5861"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "13201",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "W Costa Navarino",
+   "city": "Pylos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Pylos/w-costa-navarino-13201"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "12605",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Peliva Nature & Suites, Pelion",
+   "city": "Pinakátai",
+   "url": "https://guide.michelin.com/en/hotels-stays/Pinak%C3%A1tai/peliva-nature-suites-pelion-12605"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "12101",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Colors Urban Hotel Thessaloniki",
+   "city": "Thessaloniki",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/colors-urban-hotel-thessaloniki-12101"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "14479",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Amazon Suites Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/amazon-suites-mykonos-14479"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "14485",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Elounda Stories Boutique Hotel",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/elounda-stories-boutique-hotel-14485"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "14384",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Bonzoe Suites & Villas",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/bonzoe-suites-villas-14384"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "12284",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Antigon Urban Chic Hotel",
+   "city": "Thessaloniki",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/antigon-urban-chic-hotel-12284"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "13570",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Mandarin Oriental Costa Navarino",
+   "city": "Pylos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Pylos/mandarin-oriental-costa-navarino-13570"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "14481",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Ethereum Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/ethereum-mykonos-14481"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "14478",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Palladium Hotel Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/palladium-hotel-mykonos-14478"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "13181",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Casa Mediterraneo",
+   "city": "Kastellorizo",
+   "url": "https://guide.michelin.com/en/hotels-stays/kastellorizo/casa-mediterraneo-13181"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "14366",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Myconian O",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-o-14366"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "14489",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "MounTrace Suites & SPA",
+   "city": "Ioannina",
+   "url": "https://guide.michelin.com/en/hotels-stays/Ioannina/mountrace-suites-spa-14489"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "17610",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Deos Mykonos - A Myconian Collection Hotel",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/deos-mykonos-a-myconian-collection-hotel-17610"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "17564",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Andronis Concept",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-concept-17564"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "17426",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Kalimera Kriti Hotel & Village",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/kalimera-kriti-hotel-village-17426"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "17413",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Vin Dimora Suites",
+   "city": "Crete",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/vin-dimora-suites-17413"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "17256",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Luura - Cliff, Paros, A Morgans Originals Hotel",
+   "city": "Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/luura-cliff-paros-morgans-originals-17256"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "16958",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Iconic Santorini",
+   "city": "Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/iconic-santorini-16958"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "16773",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Filoxenia Kalamata",
+   "city": "Peloponnese",
+   "url": "https://guide.michelin.com/en/hotels-stays/peloponnese/filoxenia-kalamata-16773"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "16730",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Bill&Coo Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/billcoo-mykonos-16730"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "16728",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Calma Suites Mykonos",
+   "city": "Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/calma-suites-mykonos-16728"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "16619",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "La Villa de Madeleine",
+   "city": "Arcadia",
+   "url": "https://guide.michelin.com/en/hotels-stays/Arcadia-Peloponnese/la-villa-de-madeleine-16619"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "16601",
+   "distinction": "ONE_KEY",
+   "hotel_country": "gr",
+   "name": "Montanema Handmade Village",
+   "city": "Thessaly",
+   "url": "https://guide.michelin.com/en/hotels-stays/Thessaly/montanema-handmade-village-16601"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "16576",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "72 AD",
+   "city": "Thessaloniki",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/72-ad-16576"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "16554",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Mandola Rosa",
+   "city": "Arcadia",
+   "url": "https://guide.michelin.com/en/hotels-stays/Arcadia-Peloponnese/mandola-rosa-16554"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "16504",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Medley Hotel Athens",
+   "city": "Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/medley-hotel-athens-16504"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "15575",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Cook's Club Kolymbia Rhodes",
+   "city": "Rhodes",
+   "url": "https://guide.michelin.com/en/hotels-stays/rhodes/cooks-club-kolymbia-rhodes-15575"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "15568",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Casa Cook Samos",
+   "city": "Samos",
+   "url": "https://guide.michelin.com/en/hotels-stays/samos/casa-cook-samos-126629-15568"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "15567",
+   "distinction": "SELECTED",
+   "hotel_country": "gr",
+   "name": "Casa Cook Rhodes",
+   "city": "Rhodes",
+   "url": "https://guide.michelin.com/en/hotels-stays/rhodes/casa-cook-rhodes-126628-15567"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "GR",
+   "page": 6,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  }
+ ]
+}

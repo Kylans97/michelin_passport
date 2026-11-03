@@ -1,0 +1,893 @@
+{
+ "restaurants": [
+  {
+   "code": "rest_4000",
+   "lat": 37.982982,
+   "lon": 23.717917,
+   "name": "Aleria",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/aleria"
+  },
+  {
+   "code": "rest_4001",
+   "lat": 38.023262,
+   "lon": 23.793694,
+   "name": "Botrini's",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/botrini-s"
+  },
+  {
+   "code": "rest_4002",
+   "lat": 36.462065,
+   "lon": 25.382376,
+   "name": "Botrini's Santorini",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini"
+  },
+  {
+   "code": "rest_4003",
+   "lat": 37.980496,
+   "lon": 23.716869,
+   "name": "CTC Urban Gastronomy",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/ctc"
+  },
+  {
+   "code": "rest_4004",
+   "lat": 37.939177,
+   "lon": 23.691345,
+   "name": "Delta",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/delta"
+  },
+  {
+   "code": "rest_4005",
+   "lat": 37.966657,
+   "lon": 23.709368,
+   "name": "Hervé",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/herve"
+  },
+  {
+   "code": "rest_4006",
+   "lat": 37.981382,
+   "lon": 23.752849,
+   "name": "Hytra",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/hytra"
+  },
+  {
+   "code": "rest_4007",
+   "lat": 36.462028,
+   "lon": 25.378831,
+   "name": "Lauda",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/lauda"
+  },
+  {
+   "code": "rest_4008",
+   "lat": 36.461879,
+   "lon": 25.37986,
+   "name": "Lycabettus",
+   "stars": 2,
+   "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/lycabettus"
+  },
+  {
+   "code": "rest_4009",
+   "lat": 37.976768,
+   "lon": 23.72303,
+   "name": "Makris Athens",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/makris-athens"
+  },
+  {
+   "code": "rest_4010",
+   "lat": 37.813819,
+   "lon": 23.773653,
+   "name": "Patio",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/patio"
+  },
+  {
+   "code": "rest_4011",
+   "lat": 37.805817,
+   "lon": 23.772234,
+   "name": "Pelagos",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/pelagos"
+  },
+  {
+   "code": "rest_4012",
+   "lat": 37.97301,
+   "lon": 23.753633,
+   "name": "see|ds",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/see-ds"
+  },
+  {
+   "code": "rest_4013",
+   "lat": 36.419913,
+   "lon": 25.432247,
+   "name": "Selene",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/selene"
+  },
+  {
+   "code": "rest_4014",
+   "lat": 37.969438,
+   "lon": 23.730856,
+   "name": "SENSE",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/sense"
+  },
+  {
+   "code": "rest_4015",
+   "lat": 37.977852,
+   "lon": 23.750473,
+   "name": "Simul",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/simul"
+  },
+  {
+   "code": "rest_4016",
+   "lat": 37.966955,
+   "lon": 23.742995,
+   "name": "Soil",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/soil"
+  },
+  {
+   "code": "rest_4017",
+   "lat": 37.965176,
+   "lon": 23.743189,
+   "name": "Spondi",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/spondi"
+  },
+  {
+   "code": "rest_4018",
+   "lat": 37.975706,
+   "lon": 23.729491,
+   "name": "The Zillers Rooftop Gastronomy",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/the-zillers"
+  },
+  {
+   "code": "rest_4019",
+   "lat": 37.976273,
+   "lon": 23.734917,
+   "name": "Tudor Hall",
+   "stars": 1,
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/tudor-hall"
+  }
+ ],
+ "hotels": [
+  {
+   "code": "hotel_3000",
+   "keys": 1,
+   "lat": 35.419164,
+   "lon": 25.018141,
+   "name": "Acro Suites",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/acro-suites-13554"
+  },
+  {
+   "code": "hotel_3001",
+   "keys": 1,
+   "lat": 36.893744,
+   "lon": 27.293001,
+   "name": "ALBERGO GELSOMINO",
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/albergo-gelsomino-14429"
+  },
+  {
+   "code": "hotel_3002",
+   "keys": 2,
+   "lat": 37.370547,
+   "lon": 23.11747,
+   "name": "Amanzoe",
+   "url": "https://guide.michelin.com/en/hotels-stays/kranidi/amanzoe-7274"
+  },
+  {
+   "code": "hotel_3003",
+   "keys": 1,
+   "lat": 36.35742,
+   "lon": 28.21104,
+   "name": "Ammades All Suites Beach Hotel & Spa - Adults Only",
+   "url": "https://guide.michelin.com/en/hotels-stays/rhodes/ammades-all-suites-beach-hotel-spa-adults-only-14531"
+  },
+  {
+   "code": "hotel_3004",
+   "keys": 1,
+   "lat": 37.47084,
+   "lon": 25.32143,
+   "name": "Amyth of Mykonos Agios Stefanos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/amyth-of-mykonos-agios-stefanos-12601"
+  },
+  {
+   "code": "hotel_3005",
+   "keys": 1,
+   "lat": 36.464098,
+   "lon": 25.375455,
+   "name": "Andronis Arcadia",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-arcadia-9347"
+  },
+  {
+   "code": "hotel_3006",
+   "keys": 1,
+   "lat": 36.43883,
+   "lon": 25.425388,
+   "name": "Andronis Concept",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-concept-17564"
+  },
+  {
+   "code": "hotel_3007",
+   "keys": 1,
+   "lat": 37.069252,
+   "lon": 25.124369,
+   "name": "Andronis Minois",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/minois-hotel-13403"
+  },
+  {
+   "code": "hotel_3008",
+   "keys": 1,
+   "lat": 37.96949,
+   "lon": 23.7314,
+   "name": "Anthology of Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/anthology-of-athens-14473"
+  },
+  {
+   "code": "hotel_3009",
+   "keys": 1,
+   "lat": 37.4456,
+   "lon": 24.94474,
+   "name": "Argini Syros",
+   "url": "https://guide.michelin.com/en/hotels-stays/Syros/argini-syros-14222"
+  },
+  {
+   "code": "hotel_3010",
+   "keys": 2,
+   "lat": 39.933706,
+   "lon": 20.670278,
+   "name": "Aristi Mountain Resort",
+   "url": "https://guide.michelin.com/en/hotels-stays/zagori/aristi-mountain-resort-7162"
+  },
+  {
+   "code": "hotel_3011",
+   "keys": 2,
+   "lat": 37.4478,
+   "lon": 24.94716,
+   "name": "Aristide Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/Syros/aristide-hotel-12088"
+  },
+  {
+   "code": "hotel_3012",
+   "keys": 1,
+   "lat": 36.373591,
+   "lon": 25.483228,
+   "name": "Bellonias Villas",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/bellonias-villas-8175"
+  },
+  {
+   "code": "hotel_3013",
+   "keys": 1,
+   "lat": 37.439027,
+   "lon": 25.330016,
+   "name": "Boheme Mykonos Town",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/boheme-mykonos-town-7577"
+  },
+  {
+   "code": "hotel_3014",
+   "keys": 1,
+   "lat": 37.443873,
+   "lon": 25.422351,
+   "name": "Cali Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/cali-mykonos-13987"
+  },
+  {
+   "code": "hotel_3015",
+   "keys": 1,
+   "lat": 36.463639,
+   "lon": 25.371107,
+   "name": "Canaves Epitome",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-epitome-9318"
+  },
+  {
+   "code": "hotel_3016",
+   "keys": 1,
+   "lat": 36.461787,
+   "lon": 25.378908,
+   "name": "Canaves Sunday",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-sunday-9317"
+  },
+  {
+   "code": "hotel_3017",
+   "keys": 1,
+   "lat": 37.816921,
+   "lon": 20.867096,
+   "name": "Contessina Suites & Spa",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/contessina-suites-spa-13076"
+  },
+  {
+   "code": "hotel_3018",
+   "keys": 1,
+   "lat": 37.12506,
+   "lon": 25.24733,
+   "name": "Cove Paros",
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/cove-paros-12273"
+  },
+  {
+   "code": "hotel_3019",
+   "keys": 1,
+   "lat": 37.453879,
+   "lon": 25.3318,
+   "name": "Deos Mykonos - A Myconian Collection Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/deos-mykonos-a-myconian-collection-hotel-17610"
+  },
+  {
+   "code": "hotel_3020",
+   "keys": 1,
+   "lat": 37.767592,
+   "lon": 21.296204,
+   "name": "Dexamenes Seaside Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/amaliada/dexamenes-seaside-hotel-12209"
+  },
+  {
+   "code": "hotel_3021",
+   "keys": 1,
+   "lat": 36.74362,
+   "lon": 24.48157,
+   "name": "Domes White Coast Milos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Milos/domes-white-coast-milos-12611"
+  },
+  {
+   "code": "hotel_3022",
+   "keys": 1,
+   "lat": 35.508616,
+   "lon": 23.997065,
+   "name": "Domes Zeen Chania",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/domes-zeen-chania-9526"
+  },
+  {
+   "code": "hotel_3023",
+   "keys": 2,
+   "lat": 38.101208,
+   "lon": 20.564848,
+   "name": "Eliamos Villas Hotel & Spa",
+   "url": "https://guide.michelin.com/en/hotels-stays/kefalonia/eliamos-villas-hotel-spa-13113"
+  },
+  {
+   "code": "hotel_3024",
+   "keys": 1,
+   "lat": 39.33827,
+   "lon": 20.2908,
+   "name": "Elix by Mar-Bella Collection",
+   "url": "https://guide.michelin.com/en/hotels-stays/Perdika/elix-12613"
+  },
+  {
+   "code": "hotel_3025",
+   "keys": 1,
+   "lat": 37.975332,
+   "lon": 23.731565,
+   "name": "ERGON House Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/ergon-house-athens-12351"
+  },
+  {
+   "code": "hotel_3026",
+   "keys": 1,
+   "lat": 36.396346,
+   "lon": 25.437805,
+   "name": "Erosantorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/erosantorini-17565"
+  },
+  {
+   "code": "hotel_3027",
+   "keys": 1,
+   "lat": 37.41675,
+   "lon": 25.33712,
+   "name": "Ethereum Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/ethereum-mykonos-14481"
+  },
+  {
+   "code": "hotel_3028",
+   "keys": 2,
+   "lat": 36.432963,
+   "lon": 25.421019,
+   "name": "Grace Hotel, Auberge Collection",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/grace-hotel-auberge-collection-5978"
+  },
+  {
+   "code": "hotel_3029",
+   "keys": 2,
+   "lat": 37.976223,
+   "lon": 23.735294,
+   "name": "Hotel Grande Bretagne",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/hotel-grande-bretagne-7272"
+  },
+  {
+   "code": "hotel_3030",
+   "keys": 1,
+   "lat": 36.346382,
+   "lon": 25.46522,
+   "name": "Istoria Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/istoria-hotel-8991"
+  },
+  {
+   "code": "hotel_3031",
+   "keys": 1,
+   "lat": 37.41599,
+   "lon": 25.315732,
+   "name": "Kalesma Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/kalesma-mykonos-12089"
+  },
+  {
+   "code": "hotel_3032",
+   "keys": 1,
+   "lat": 39.6677,
+   "lon": 20.858,
+   "name": "Kamares Boutique Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/Ioannina/kamares-boutique-hotel-14471"
+  },
+  {
+   "code": "hotel_3033",
+   "keys": 1,
+   "lat": 35.33948,
+   "lon": 24.62012,
+   "name": "Kapsaliana Village Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/kapsaliana-village-hotel-14482"
+  },
+  {
+   "code": "hotel_3034",
+   "keys": 1,
+   "lat": 36.42123,
+   "lon": 25.43022,
+   "name": "Katikies Garden Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-garden-santorini-14469"
+  },
+  {
+   "code": "hotel_3035",
+   "keys": 1,
+   "lat": 36.461649,
+   "lon": 25.387987,
+   "name": "Katikies Santorini - Gea House",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-gea-house-7521"
+  },
+  {
+   "code": "hotel_3036",
+   "keys": 1,
+   "lat": 36.462159,
+   "lon": 25.381004,
+   "name": "Katikies Santorini - Pelagos House",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-pelagos-house-7037"
+  },
+  {
+   "code": "hotel_3037",
+   "keys": 2,
+   "lat": 36.644278,
+   "lon": 23.014681,
+   "name": "Kinsterna Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/monemvasia/kinsterna-hotel-5327"
+  },
+  {
+   "code": "hotel_3038",
+   "keys": 1,
+   "lat": 36.433008,
+   "lon": 25.421914,
+   "name": "Kivotos Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/kivotos-santorini-9403"
+  },
+  {
+   "code": "hotel_3039",
+   "keys": 1,
+   "lat": 36.44014,
+   "lon": 28.22846,
+   "name": "Kókkini Porta Rossa",
+   "url": "https://guide.michelin.com/en/hotels-stays/rhodes/kokkini-porta-rossa-12285"
+  },
+  {
+   "code": "hotel_3040",
+   "keys": 1,
+   "lat": 36.913346,
+   "lon": 27.27552,
+   "name": "Lango Design Hotel & Spa",
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/lango-design-hotel-spa-13480"
+  },
+  {
+   "code": "hotel_3041",
+   "keys": 1,
+   "lat": 37.705809,
+   "lon": 20.846186,
+   "name": "Leeda's Village",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/leedas-village-13143"
+  },
+  {
+   "code": "hotel_3042",
+   "keys": 1,
+   "lat": 37.811642,
+   "lon": 20.888097,
+   "name": "Lesante Cape",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/lesante-cape-13680"
+  },
+  {
+   "code": "hotel_3043",
+   "keys": 1,
+   "lat": 36.415788,
+   "lon": 25.430736,
+   "name": "Limestone Santorini",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/limestone-santorini-13804"
+  },
+  {
+   "code": "hotel_3044",
+   "keys": 1,
+   "lat": 35.23274,
+   "lon": 25.15959,
+   "name": "Manili Boutique Suites & Villas",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/manili-boutique-suites-villas-14470"
+  },
+  {
+   "code": "hotel_3045",
+   "keys": 1,
+   "lat": 35.202644,
+   "lon": 25.718103,
+   "name": "Minos Palace Resort",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/minos-palace-resort-11884"
+  },
+  {
+   "code": "hotel_3046",
+   "keys": 1,
+   "lat": 39.347607,
+   "lon": 21.647766,
+   "name": "Montanema Handmade Village",
+   "url": "https://guide.michelin.com/en/hotels-stays/Thessaly/montanema-handmade-village-16601"
+  },
+  {
+   "code": "hotel_3047",
+   "keys": 1,
+   "lat": 37.979485,
+   "lon": 23.725959,
+   "name": "Monument",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/monument-13492"
+  },
+  {
+   "code": "hotel_3048",
+   "keys": 1,
+   "lat": 37.4235,
+   "lon": 25.32329,
+   "name": "Myconian O",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-o-14366"
+  },
+  {
+   "code": "hotel_3049",
+   "keys": 1,
+   "lat": 37.422633,
+   "lon": 25.397795,
+   "name": "Myconian Panoptis Escape",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-panoptis-escape-14475"
+  },
+  {
+   "code": "hotel_3050",
+   "keys": 1,
+   "lat": 37.422714,
+   "lon": 25.325315,
+   "name": "Mykonos Blanc Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-blanc-hotel-13148"
+  },
+  {
+   "code": "hotel_3051",
+   "keys": 1,
+   "lat": 37.4315,
+   "lon": 25.402488,
+   "name": "Mykonos Bliss",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-bliss-9430"
+  },
+  {
+   "code": "hotel_3052",
+   "keys": 1,
+   "lat": 37.42093,
+   "lon": 25.313668,
+   "name": "Mykonos Grand Hotel & Resort",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-grand-hotel-resort-7101"
+  },
+  {
+   "code": "hotel_3053",
+   "keys": 1,
+   "lat": 36.66657,
+   "lon": 24.42976,
+   "name": "Noma Milos",
+   "url": "https://guide.michelin.com/en/hotels-stays/Milos/noma-milos-14513"
+  },
+  {
+   "code": "hotel_3054",
+   "keys": 1,
+   "lat": 37.437246,
+   "lon": 25.402242,
+   "name": "NOMAD Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/nomad-mykonos-11958"
+  },
+  {
+   "code": "hotel_3055",
+   "keys": 1,
+   "lat": 37.97862,
+   "lon": 23.71374,
+   "name": "NOT Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/not-hotel-14486"
+  },
+  {
+   "code": "hotel_3056",
+   "keys": 1,
+   "lat": 37.43878,
+   "lon": 25.41548,
+   "name": "Numo Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/numo-mykonos-14500"
+  },
+  {
+   "code": "hotel_3057",
+   "keys": 1,
+   "lat": 36.8659,
+   "lon": 27.12542,
+   "name": "OKU Kos",
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/oku-kos-13568"
+  },
+  {
+   "code": "hotel_3058",
+   "keys": 1,
+   "lat": 37.80848,
+   "lon": 20.8797,
+   "name": "Olea All Suite Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/olea-all-suite-hotel-12281"
+  },
+  {
+   "code": "hotel_3059",
+   "keys": 1,
+   "lat": 40.63306,
+   "lon": 22.93876,
+   "name": "ON Residence",
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/on-residence-14477"
+  },
+  {
+   "code": "hotel_3060",
+   "keys": 1,
+   "lat": 37.85712,
+   "lon": 23.75047,
+   "name": "One&Only Aesthesis",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/oneonly-aesthesis-14468"
+  },
+  {
+   "code": "hotel_3061",
+   "keys": 1,
+   "lat": 37.41774,
+   "lon": 25.33805,
+   "name": "Palladium Hotel Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/palladium-hotel-mykonos-14478"
+  },
+  {
+   "code": "hotel_3062",
+   "keys": 1,
+   "lat": 36.462148,
+   "lon": 25.387155,
+   "name": "Perivolas Lifestyle Houses",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/perivolas-lifestyle-houses-7482"
+  },
+  {
+   "code": "hotel_3063",
+   "keys": 1,
+   "lat": 35.33182,
+   "lon": 25.19997,
+   "name": "Pnoé Breathing Life",
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/pnoe-breathing-life-14480"
+  },
+  {
+   "code": "hotel_3064",
+   "keys": 1,
+   "lat": 37.82578,
+   "lon": 20.852382,
+   "name": "Porto Zante Villas & Spa",
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/porto-zante-villas-spa-8780"
+  },
+  {
+   "code": "hotel_3065",
+   "keys": 1,
+   "lat": 39.66959,
+   "lon": 20.85636,
+   "name": "Stoes Boutique Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/Ioannina/stoes-boutique-hotel-14472"
+  },
+  {
+   "code": "hotel_3066",
+   "keys": 2,
+   "lat": 36.436661,
+   "lon": 22.465772,
+   "name": "Tainaron Blue Retreat",
+   "url": "https://guide.michelin.com/en/hotels-stays/peloponnese/tainaron-blue-retreat-8244"
+  },
+  {
+   "code": "hotel_3067",
+   "keys": 1,
+   "lat": 38.24317,
+   "lon": 21.73731,
+   "name": "The Bold Type Hotel",
+   "url": "https://guide.michelin.com/en/hotels-stays/Patras/the-bold-type-hotel-12192"
+  },
+  {
+   "code": "hotel_3068",
+   "keys": 2,
+   "lat": 37.97581,
+   "lon": 23.72813,
+   "name": "THE DOLLI at Acropolis, A Hotel to Live",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-dolli-at-acropolis-a-hotel-to-live-13193"
+  },
+  {
+   "code": "hotel_3069",
+   "keys": 1,
+   "lat": 37.447421,
+   "lon": 25.329798,
+   "name": "The Townhouse Mykonos",
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/the-townhouse-mykonos-11688"
+  },
+  {
+   "code": "hotel_3070",
+   "keys": 1,
+   "lat": 36.426849,
+   "lon": 25.428605,
+   "name": "The Tsitouras Collection",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/the-tsitouras-collection-1261"
+  },
+  {
+   "code": "hotel_3071",
+   "keys": 1,
+   "lat": 36.418737,
+   "lon": 25.430827,
+   "name": "Villa Bordeaux",
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/villa-bordeaux-17572"
+  },
+  {
+   "code": "hotel_3072",
+   "keys": 1,
+   "lat": 37.97725,
+   "lon": 23.73313,
+   "name": "Xenodocheio Milos",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/xenodocheio-milos-athens-12606"
+  },
+  {
+   "code": "hotel_716",
+   "keys": 3,
+   "lat": 37.805199,
+   "lon": 23.771217,
+   "name": "Four Seasons Astir Palace Hotel Athens",
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/four-seasons-astir-palace-12274"
+  }
+ ],
+ "summary": {
+  "award": [
+   {
+    "announced_on": "2026-09-18",
+    "award_value": 1,
+    "entity_type": "hotel",
+    "guide_year": 2026,
+    "is_current": true,
+    "n": 64
+   },
+   {
+    "announced_on": "2026-09-18",
+    "award_value": 2,
+    "entity_type": "hotel",
+    "guide_year": 2026,
+    "is_current": true,
+    "n": 9
+   },
+   {
+    "announced_on": "2026-09-18",
+    "award_value": 3,
+    "entity_type": "hotel",
+    "guide_year": 2026,
+    "is_current": true,
+    "n": 1
+   },
+   {
+    "announced_on": "2026-10-23",
+    "award_value": 1,
+    "entity_type": "restaurant",
+    "guide_year": 2027,
+    "is_current": true,
+    "n": 19
+   },
+   {
+    "announced_on": "2026-10-23",
+    "award_value": 2,
+    "entity_type": "restaurant",
+    "guide_year": 2027,
+    "is_current": true,
+    "n": 1
+   }
+  ],
+  "cities": 21,
+  "h_contacts": {
+   "open": 74,
+   "phone": 0,
+   "place": 1,
+   "web": 1
+  },
+  "keys": {
+   "1": 64,
+   "2": 9,
+   "3": 1
+  },
+  "links": [
+   {
+    "c": "exact",
+    "h": "hotel_716",
+    "n": "Pelagos",
+    "r": "rest_4011"
+   }
+  ],
+  "now": "2026-11-03T23:35:11.255236+00:00",
+  "outside": 0,
+  "props": [
+   {
+    "c": "rest_4007",
+    "n": "Lauda",
+    "p": "Andronis Boutique Hotel"
+   },
+   {
+    "c": "rest_4008",
+    "n": "Lycabettus",
+    "p": "Andronis Luxury Suites"
+   },
+   {
+    "c": "rest_4010",
+    "n": "Patio",
+    "p": "The Margi"
+   },
+   {
+    "c": "rest_4014",
+    "n": "SENSE",
+    "p": "AthensWas"
+   },
+   {
+    "c": "rest_4018",
+    "n": "The Zillers Rooftop Gastronomy",
+    "p": "The Zillers, Athens"
+   },
+   {
+    "c": "rest_4019",
+    "n": "Tudor Hall",
+    "p": "King George"
+   }
+  ],
+  "r_contacts": {
+   "open": 20,
+   "phone": 16,
+   "place": 0,
+   "prop": 6,
+   "reason": 20,
+   "web": 20
+  },
+  "rows": {
+   "hf": 74,
+   "rf": 20
+  },
+  "stars": {
+   "1": 19,
+   "2": 1
+  },
+  "totals": {
+   "ah": 5797,
+   "c": 2341,
+   "h": 2106,
+   "l": 336,
+   "r": 3575
+  },
+  "w50": [
+   {
+    "r": 35,
+    "y": 2023
+   },
+   {
+    "r": 17,
+    "y": 2025
+   },
+   {
+    "r": 27,
+    "y": 2026
+   }
+  ]
+ }
+}

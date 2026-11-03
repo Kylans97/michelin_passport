@@ -1,0 +1,267 @@
+{
+ "fetched_at": "2026-11-03T23:14:54Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-margi-4121",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/the-margi-4121",
+   "h1": "The Margi",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "11 Litous, Vouliagmeni",
+     "addressLocality": "Athens",
+     "postalCode": "166 71",
+     "addressCountry": "GRC"
+    },
+    "name": "The Margi in Athens",
+    "description": "When you think of a Greek seaside getaway it’s only natural to think of the Aegean islands. But there’s beachfront bliss to be had around the capital as well. This is Vouliagmeni, the heart of the Athenian Riviera, an upscale seaside district just south of Athens proper. And it’s home to, among others, The Margi, an 88-room hotel that’s as clear an exemplar of the luxury-boutique genre as you’re likely to find on these shores.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1502601.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.813767,
+     "longitude": 23.773921
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/the-margi-4121",
+    "numberOfRooms": 89,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.813767%2C23.773921",
+    "telephone": "+30 21 0892 9000 / +30 210 8962061",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.6,
+     "reviewCount": 13,
+     "ratingCount": 13,
+     "bestRating": 20
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/amphibian",
+    "/en/attica/athens/restaurant/delta",
+    "/en/attica/athens/restaurant/gallina",
+    "/en/attica/athens/restaurant/humain",
+    "/en/attica/athens/restaurant/patio",
+    "/en/attica/athens/restaurant/pelagos",
+    "/en/attica/athens/restaurant/soil",
+    "/en/attica/athens/restaurant/spondi",
+    "/en/attica/athens/restaurant/upon",
+    "/en/attica/athens/restaurant/varoulko-seaside"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/athenswas-7925",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/athenswas-7925",
+   "h1": "AthensWas",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5 Dionysiou Areopagitou Str. Acropolis",
+     "addressLocality": "Athens",
+     "postalCode": "117 42",
+     "addressCountry": "GRC"
+    },
+    "name": "AthensWas in Athens",
+    "description": "Athens was great, Athens was grand, Athens was the cradle of Western civilization and the birthplace of democracy. AthensWas, as it happens, is also the name of a this hotel a stone’s throw from the Acropolis. It’s a slightly confusing play on words, but the name produces the desired effect: it makes you think about the relationship between the ancient city’s past and present, and wonder where exactly on that continuum the hotel places itself.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1095510.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.969514,
+     "longitude": 23.730848
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/athenswas-7925",
+    "numberOfRooms": 21,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.969514%2C23.730848",
+    "telephone": "+30 210 924 9954/+302107254871",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.2,
+     "reviewCount": 25,
+     "ratingCount": 25,
+     "bestRating": 20
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/dolli-s",
+    "/en/attica/athens/restaurant/esthio",
+    "/en/attica/athens/restaurant/gallina",
+    "/en/attica/athens/restaurant/nolan",
+    "/en/attica/athens/restaurant/ovio",
+    "/en/attica/athens/restaurant/sense",
+    "/en/attica/athens/restaurant/the-zillers",
+    "/en/attica/athens/restaurant/thirio",
+    "/en/attica/athens/restaurant/tudor-hall",
+    "/en/attica/athens/restaurant/zohos"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-boutique-14635",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-boutique-14635",
+   "h1": "Andronis Boutique Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Nik. Nomikou",
+     "addressLocality": "Santorini",
+     "postalCode": "84702",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Andronis Boutique Hotel in Santorini",
+    "description": "Embedded in Oia’s breathtaking caldera cliffs, Andronis Boutique Hotel captures the soul of Santorini in its most refined form. Each suite is skillfully carved into the rockface, offering private infinity pools that seem to merge with the azure Aegean Sea below. The hotel's position on Oia's cliffs provides unrivaled sunset views without the crowds that gather elsewhere in the village. While many Santorini hotels claim to offer privacy, Andronis delivers it through thoughtful design that creates secluded spaces despite sitting in the heart of Greece's most photographed village.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1679651.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.46186,
+     "longitude": 25.377903
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-boutique-14635",
+    "numberOfRooms": 24,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.46186%2C25.377903",
+    "telephone": "+30 2286 072182"
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-luxury-suites-13682",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-luxury-suites-13682",
+   "h1": "Andronis Luxury Suites",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Oia",
+     "addressLocality": "Santorini",
+     "postalCode": "84702",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Andronis Luxury Suites in Santorini",
+    "description": "Carved into Santorini’s famous caldera cliffs, Andronis Luxury Suites is the epitome of Cycladic romance. Each suite and villa features whitewashed curves, cave-like interiors, and private terraces with incredible Aegean views, many with infinity pools or outdoor hot tubs. The atmosphere is intimate yet indulgent, with a world-class spa (in a cave!) and a cliffside restaurant serving Mediterranean cuisine under the stars. A sanctuary of serenity just steps from Oia’s lively pathways, it offers an intimate escape with breathtaking views.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1679629.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.4621476106,
+     "longitude": 25.3797208036
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-luxury-suites-13682",
+    "numberOfRooms": 39,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.4621476106%2C25.3797208036",
+    "telephone": "(+30) 2286072041"
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-zillers-athens-122870-12765",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/the-zillers-athens-122870-12765",
+   "h1": "The Zillers, Athens",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "54 Mitropoleos",
+     "addressLocality": "Athens",
+     "postalCode": "10563",
+     "addressCountry": "GRC"
+    },
+    "name": "The Zillers, Athens in Athens",
+    "description": "The Zillers is named for its German-born architect and former owner, Ernst Ziller, a pivotal figure in the Athenian neoclassical movement that transformed the cityscape in the late 19th and early 20th centuries. The building has been meticulously restored along the way to its present life as a boutique hotel, and treated with all the reverence it deserves, and then some. Still, not all of its best attributes are contained within its walls — its greatest strength, aided by its central location, might be the impressive front-row views of the Acropolis from Zillers Roof Garden, the hotel’s rooftop terrace restaurant.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1325157.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.97561,
+     "longitude": 23.72967
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/the-zillers-athens-122870-12765",
+    "numberOfRooms": 10,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.97561%2C23.72967",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+30 21 0322 2277",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 17.5,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/ateno-greek-cuisine",
+    "/en/attica/athens/restaurant/dolli-s",
+    "/en/attica/athens/restaurant/gb-roof-garden",
+    "/en/attica/athens/restaurant/linou-soumpasis-k-sia",
+    "/en/attica/athens/restaurant/nolan",
+    "/en/attica/athens/restaurant/ovio",
+    "/en/attica/athens/restaurant/the-zillers",
+    "/en/attica/athens/restaurant/thirio",
+    "/en/attica/athens/restaurant/tudor-hall",
+    "/en/attica/athens/restaurant/zohos"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  }
+ ]
+}
