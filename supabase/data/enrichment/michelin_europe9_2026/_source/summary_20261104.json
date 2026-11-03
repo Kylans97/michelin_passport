@@ -1,0 +1,172 @@
+{
+ "CZ": {
+  "m_s": "0/1/8",
+  "p_s": "0/0/0",
+  "a_s": "0/1/8",
+  "m_k": "0/1/10",
+  "p_k": "0/0/0",
+  "a_k": "0/1/10",
+  "new_r": 9,
+  "new_h": 11,
+  "held": 0,
+  "towns": [
+   "Carlsbad",
+   "Hlohovec",
+   "Mcely",
+   "Olomouc",
+   "Prague",
+   "Vysoký Újezd",
+   "Zlín",
+   "Šumperk"
+  ],
+  "phone": 7,
+  "web": 9
+ },
+ "HR": {
+  "m_s": "0/1/13",
+  "p_s": "0/1/0",
+  "a_s": "0/1/13",
+  "m_k": "1/1/10",
+  "p_k": "1/1/8",
+  "a_k": "1/1/10",
+  "new_r": 13,
+  "new_h": 2,
+  "held": 2,
+  "towns": [
+   "Jastrebarsko",
+   "Korcula",
+   "Mali Lošinj",
+   "Novalja",
+   "Porec",
+   "Rijeka",
+   "Sibenik",
+   "Split"
+  ],
+  "phone": 10,
+  "web": 11
+ },
+ "SI": {
+  "m_s": "1/1/8",
+  "p_s": "1/1/0",
+  "a_s": "1/1/8",
+  "m_k": "0/1/4",
+  "p_k": "0/1/5",
+  "a_k": "0/1/6",
+  "new_r": 8,
+  "new_h": 1,
+  "held": 2,
+  "towns": [
+   "Bohinj",
+   "Lasko",
+   "Nova Gorica",
+   "Petrovče",
+   "Portorož",
+   "Radovljica",
+   "Vipava",
+   "Zgornja Kungota",
+   "Šentjošt nad Horjulom"
+  ],
+  "phone": 7,
+  "web": 8
+ },
+ "HU": {
+  "m_s": "0/1/8",
+  "p_s": "0/2/0",
+  "a_s": "0/2/8",
+  "m_k": "0/2/10",
+  "p_k": "0/3/9",
+  "a_k": "0/3/9",
+  "new_r": 8,
+  "new_h": 0,
+  "held": 2,
+  "towns": [
+   "Esztergom",
+   "Őriszentpéter"
+  ],
+  "phone": 6,
+  "web": 7
+ },
+ "MT": {
+  "m_s": "0/1/6",
+  "p_s": "0/1/0",
+  "a_s": "0/1/6",
+  "m_k": "0/1/5",
+  "p_k": "0/1/5",
+  "a_k": "0/1/5",
+  "new_r": 6,
+  "new_h": 0,
+  "held": 0,
+  "towns": [
+   "Sliema",
+   "St. Julian's"
+  ],
+  "phone": 5,
+  "web": 6
+ },
+ "LT": {
+  "m_s": "0/0/4",
+  "p_s": "0/0/0",
+  "a_s": "0/0/4",
+  "m_k": "0/0/2",
+  "p_k": "0/0/0",
+  "a_k": "0/0/2",
+  "new_r": 4,
+  "new_h": 2,
+  "held": 0,
+  "towns": [
+   "Radiškis",
+   "Trakai",
+   "Vilnius"
+  ],
+  "phone": 4,
+  "web": 4
+ },
+ "LV": {
+  "m_s": "0/0/2",
+  "p_s": "0/0/0",
+  "a_s": "0/0/2",
+  "m_k": "0/0/3",
+  "p_k": "0/0/0",
+  "a_k": "0/0/3",
+  "new_r": 2,
+  "new_h": 3,
+  "held": 0,
+  "towns": [
+   "Riga"
+  ],
+  "phone": 2,
+  "web": 2
+ },
+ "EE": {
+  "m_s": "0/1/1",
+  "p_s": "0/0/0",
+  "a_s": "0/1/1",
+  "m_k": "0/1/1",
+  "p_k": "0/0/0",
+  "a_k": "0/1/1",
+  "new_r": 2,
+  "new_h": 2,
+  "held": 0,
+  "towns": [
+   "Tallinn"
+  ],
+  "phone": 2,
+  "web": 2
+ },
+ "RS": {
+  "m_s": "0/0/2",
+  "p_s": "0/0/0",
+  "a_s": "0/0/2",
+  "m_k": "0/1/3",
+  "p_k": "0/0/4",
+  "a_k": "0/0/4",
+  "new_r": 2,
+  "new_h": 0,
+  "held": 1,
+  "towns": [
+   "Novi Slankamen"
+  ],
+  "phone": 2,
+  "web": 2
+ }
+}

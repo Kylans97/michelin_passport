@@ -1,0 +1,3703 @@
+{
+ "fetched_at": "2026-11-03T23:17:15Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/stredocesky/vysoky-ujezd_1272168/restaurant/restaurant-papilio",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/stredocesky/vysoky-ujezd_1272168/restaurant/restaurant-papilio",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Tyršova náves 1",
+     "addressLocality": "Vysoký Újezd",
+     "postalCode": "26716",
+     "addressCountry": "CZE",
+     "addressRegion": "Středočeský"
+    },
+    "name": "Restaurant Papilio",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/a6040534b6ec44dc8c3b68b3abd93445.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-11T01:08",
+     "name": "Restaurant Papilio",
+     "description": "This elegant restaurant done out all in white and with a beautiful high groin-vaulted ceiling is truly chic – you would never guess this space was once the château's stables. In the open kitchen, ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+420 724 132 013",
+    "knowsLanguage": "en-CZ",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/stredocesky/vysoky-ujezd_1272168/restaurant/restaurant-papilio",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "China UnionPay, Credit card / Debit card accepted, Diners Club credit card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 49.9933899,
+    "longitude": 14.2048483,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.9933899%2C14.2048483"
+   },
+   "website": "https://restaurant-papilio.cz/",
+   "tel_link": "tel:+420 724 132 013",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Restaurant Papilio – a Two Stars: Excellent cooking restaurant in the 2026 MICHELIN Guide Czech Republic. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Restaurant Papilio – Vysoký Újezd - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/olomoucky/olomouc_1277165/restaurant/entree",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/olomoucky/olomouc_1277165/restaurant/entree",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ostravská 1",
+     "addressLocality": "Olomouc",
+     "postalCode": "77900",
+     "addressCountry": "CZE",
+     "addressRegion": "Olomoucký"
+    },
+    "name": "Entrée",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/047bbfeab9004c23ac409da289d9ce4e.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-11T01:08",
+     "name": "Entrée",
+     "description": "The Theatre Hotel not only wows overnight guests with its chic design, but it also offers an interesting dining experience based on an attractive modern concept. In the open kitchen, which can be ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+420 585 312 440",
+    "knowsLanguage": "en-CZ",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/olomoucky/olomouc_1277165/restaurant/entree",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 49.589751,
+    "longitude": 17.2870542,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.5897510%2C17.2870542"
+   },
+   "website": "https://entree-restaurant.cz/",
+   "tel_link": "tel:+420 585 312 440",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Entrée – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Czech Republic. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Entrée – Olomouc - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/zlinsky/zlin_1279638/restaurant/la-villa-1211435",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/zlinsky/zlin_1279638/restaurant/la-villa-1211435",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Stráže 3661",
+     "addressLocality": "Zlín",
+     "postalCode": "76001",
+     "addressCountry": "CZE",
+     "addressRegion": "Zlínský"
+    },
+    "name": "La Villa Restaurant",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/d24c86d8df9f45fa8c36b7a9b1ec970b.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-11T01:08",
+     "name": "La Villa Restaurant",
+     "description": "A really lovely restaurant located slightly above the town… and it's not just the interior that is elegant and stylish – the food certainly holds its own. The classic/French-based dishes are ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+420 571 612 044",
+    "knowsLanguage": "en-CZ",
+    "acceptsReservations": "No",
+    "servesCuisine": "Classic Cuisine",
+    "url": "https://guide.michelin.com/en/zlinsky/zlin_1279638/restaurant/la-villa-1211435",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 49.2375653,
+    "longitude": 17.6536869,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.2375653%2C17.6536869"
+   },
+   "website": "https://www.lavilla.cz/",
+   "tel_link": "tel:+420 571 612 044",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "La Villa Restaurant – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Czech Republic. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "La Villa Restaurant – Zlín - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/prague/prague/restaurant/levitate-1208342",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/prague/prague/restaurant/levitate-1208342",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Vinohradská 1228/47",
+     "addressLocality": "Prague",
+     "postalCode": "12000",
+     "addressCountry": "CZE",
+     "addressRegion": "Prague"
+    },
+    "name": "LEVITATE",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/9a06bc3c225742038954a7def21bdfc9.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-11T01:08",
+     "name": "LEVITATE",
+     "description": "Featuring an interesting combination of Nordic techniques, predominantly Czech ingredients and Asian spices from the owner's homeland, the cuisine here is rather unique. The resulting dishes are ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+420 724 516 996",
+    "knowsLanguage": "en-CZ",
+    "acceptsReservations": "No",
+    "servesCuisine": "Asian Influences",
+    "url": "https://guide.michelin.com/en/prague/prague/restaurant/levitate-1208342",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 50.0775134,
+    "longitude": 14.4401108,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.0775134%2C14.4401108"
+   },
+   "website": "https://www.levitate.cz",
+   "tel_link": "tel:+420 724 516 996",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "LEVITATE – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Czech Republic. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "LEVITATE – Prague - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/prague/prague/restaurant/stangl",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/prague/prague/restaurant/stangl",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Pernerova 49",
+     "addressLocality": "Prague",
+     "postalCode": "18600",
+     "addressCountry": "CZE",
+     "addressRegion": "Prague"
+    },
+    "name": "Štangl",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/8d394ba613a440ca9a9b39f642ba751c.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-11T01:08",
+     "name": "Štangl",
+     "description": "A really interesting modern, open restaurant concept with a fully visible kitchen. They serve a three- or five-course menu based entirely on seasonal Czech produce. Without being fancy, the dishes...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+420 605 938 387",
+    "knowsLanguage": "en-CZ",
+    "acceptsReservations": "No",
+    "servesCuisine": "Seasonal Cuisine",
+    "url": "https://guide.michelin.com/en/prague/prague/restaurant/stangl",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 50.0914482,
+    "longitude": 14.4546772,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.0914482%2C14.4546772"
+   },
+   "website": "https://stangl.ambi.cz/",
+   "tel_link": "tel:+420 605 938 387",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Štangl – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Czech Republic. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Štangl – Prague - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/prague/prague/restaurant/field",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/prague/prague/restaurant/field",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "U Milosrdných 12",
+     "addressLocality": "Prague",
+     "postalCode": "110 00",
+     "addressCountry": "CZE",
+     "addressRegion": "Prague"
+    },
+    "name": "Field",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/594324727ffa4d3ba429210437250fdc.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-11T01:08",
+     "name": "Field",
+     "description": "Two friends run this chic, minimalist restaurant in a stylishly understated way. Available in a longer or shorter form, their tasting menu comprises creative, well-balanced dishes with a strong ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+420 222 316 999",
+    "knowsLanguage": "en-CZ",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/prague/prague/restaurant/field",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 50.0918645,
+    "longitude": 14.4220871,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.0918645%2C14.4220871"
+   },
+   "website": "https://www.fieldrestaurant.cz/en/",
+   "tel_link": "tel:+420 222 316 999",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Field – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Czech Republic. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Field – Prague - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/jihomoravsky/hlohovec_1274686/restaurant/essens",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/jihomoravsky/hlohovec_1274686/restaurant/essens",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "K Zámečku 16",
+     "addressLocality": "Hlohovec",
+     "postalCode": "69143",
+     "addressCountry": "CZE",
+     "addressRegion": "Jihomoravský"
+    },
+    "name": "ESSENS",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/6044bd0dd999417cbfefe4e9e97c06e2.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-11T01:08",
+     "name": "ESSENS",
+     "description": "The Classical building of the Chateau de Frontiere, which cuts a fine, stately figure, is named after the erstwhile Austria-Morovia border. High vaulted ceilings supported by columns and sleek ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+420 730 575 555",
+    "knowsLanguage": "en-CZ",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/jihomoravsky/hlohovec_1274686/restaurant/essens",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 48.7803038,
+    "longitude": 16.7578589,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=48.7803038%2C16.7578589"
+   },
+   "website": "https://www.restaurantessens.cz/",
+   "tel_link": "tel:+420 730 575 555",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "ESSENS – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Czech Republic. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "ESSENS – Hlohovec - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Haštalská 18",
+     "addressLocality": "Prague",
+     "postalCode": "110 00",
+     "addressCountry": "CZE",
+     "addressRegion": "Prague"
+    },
+    "name": "La Degustation Bohême Bourgeoise",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/13625bfdcb6d4a03b73115094b9cddb2.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-11T01:08",
+     "name": "La Degustation Bohême Bourgeoise",
+     "description": "This iconic restaurant is housed in an attractive historical building in central Prague. From one side of the L-shaped room, there is a prime view of the chefs at work in the completely open ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+420 733 332 771",
+    "knowsLanguage": "en-CZ",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 50.0910775,
+    "longitude": 14.4250418,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.0910775%2C14.4250418"
+   },
+   "website": "https://www.ladegustation.cz/",
+   "tel_link": "tel:+420 733 332 771",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "La Degustation Bohême Bourgeoise – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Czech Republic. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "La Degustation Bohême Bourgeoise – Prague - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/prague/prague/restaurant/casa-de-carli",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/prague/prague/restaurant/casa-de-carli",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Vězeňská 5",
+     "addressLocality": "Prague",
+     "postalCode": "11 000",
+     "addressCountry": "CZE",
+     "addressRegion": "Prague"
+    },
+    "name": "Casa De Carli",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/7c426f9782b4470aa23ab9ad15fdc61d.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-11T01:08",
+     "name": "Casa De Carli",
+     "description": "Matteo De Carli and his wife Lenka Hermanová have been running their restaurant since 2012 after several stops around the world. The beautiful interior is straightforward and modern, with an open ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+420 224 816 688",
+    "knowsLanguage": "en-CZ",
+    "acceptsReservations": "No",
+    "servesCuisine": "Italian",
+    "url": "https://guide.michelin.com/en/prague/prague/restaurant/casa-de-carli",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "CZK",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 50.0905287,
+    "longitude": 14.4217856,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.0905287%2C14.4217856"
+   },
+   "website": "https://www.casadecarli.com",
+   "tel_link": "tel:+420 224 816 688",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Casa De Carli – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Czech Republic. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Casa De Carli – Prague - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/primorje-gorski-kotar/rijeka/restaurant/nebo",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/primorje-gorski-kotar/rijeka/restaurant/nebo",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Opatijska ulica 9",
+     "addressLocality": "Rijeka",
+     "postalCode": "51000",
+     "addressCountry": "HRV",
+     "addressRegion": "Primorje-Gorski Kotar "
+    },
+    "name": "Nebo",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/480878b012dd40c68b5429f551e882d5.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Nebo",
+     "description": "On the fifth floor of the Hilton Rijeka Costabella, as soon as you step out of the lift you are immediately captivated by a spectacular view: the Adriatic, the coastline and the wild island of ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 51 600 119",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/primorje-gorski-kotar/rijeka/restaurant/nebo",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.3470174,
+    "longitude": 14.3507329,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.3470174%2C14.3507329"
+   },
+   "website": "https://neborijeka.com/",
+   "tel_link": "tel:+385 51 600 119",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Nebo – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Nebo – Rijeka - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istria/rovinj/restaurant/cap-aureo",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istria/rovinj/restaurant/cap-aureo",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Smareglijeva ulica 1A",
+     "addressLocality": "Rovinj",
+     "postalCode": "52210",
+     "addressCountry": "HRV",
+     "addressRegion": "Istria "
+    },
+    "name": "Cap Aureo",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/56d873cf87be4076a12225a137336687.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Cap Aureo",
+     "description": "Chef Jeffrey Vella’s cuisine stands out for its strong personality, deep attention to the local area, and the use of carefully selected ingredients sourced from within a 50-kilometer radius. His ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 52 642 035",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/istria/rovinj/restaurant/cap-aureo",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.0754807,
+    "longitude": 13.6369528,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.0754807%2C13.6369528"
+   },
+   "website": null,
+   "tel_link": "tel:+385 52 642 035",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Cap Aureo – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Cap Aureo – Rovinj - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/primorje-gorski-kotar/mali-losinj/restaurant/alfred-keller",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/primorje-gorski-kotar/mali-losinj/restaurant/alfred-keller",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Čikat 16",
+     "addressLocality": "Mali Lošinj",
+     "postalCode": "51550",
+     "addressCountry": "HRV",
+     "addressRegion": "Primorje-Gorski Kotar "
+    },
+    "name": "Alfred Keller",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/3132fa3ccd904da5b5ae80e80811ed70.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Alfred Keller",
+     "description": "The town’s most luxurious hotel was designed in 1912 by Austrian architect Alfred Keller, whose name is today borne by the property’s gourmet restaurant. The terrace, overlooking the splendid bay ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 51 260 700",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/primorje-gorski-kotar/mali-losinj/restaurant/alfred-keller",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 44.5308235,
+    "longitude": 14.4580907,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=44.5308235%2C14.4580907"
+   },
+   "website": "https://w.eventlin.com/Restaurant-Alfred-Keller?merchant=25854",
+   "tel_link": "tel:+385 51 260 700",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Alfred Keller – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Alfred Keller – Mali Lošinj - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istria/rovinj/restaurant/agli-amici-rovinj",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istria/rovinj/restaurant/agli-amici-rovinj",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Šetalište Vijeća Europe 1-2",
+     "addressLocality": "Rovinj",
+     "postalCode": "52210",
+     "addressCountry": "HRV",
+     "addressRegion": "Istria "
+    },
+    "name": "Agli Amici Rovinj",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/8ffd61b6244247a4bfdd4bbfa96d2515.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Agli Amici Rovinj",
+     "description": "The restaurant enjoys a splendid seafront position along the elegant promenade of the modern Marina. A charming setting, enhanced by a spacious terrace – where dinner opens with refined finger ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 99 805 1910",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Italian Contemporary",
+    "url": "https://guide.michelin.com/en/istria/rovinj/restaurant/agli-amici-rovinj",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.0747789,
+    "longitude": 13.6360524,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.0747789%2C13.6360524"
+   },
+   "website": "https://www.maistra.com/grand-park-hotel-rovinj/sub/agli-amici-rovinj",
+   "tel_link": "tel:+385 99 805 1910",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Agli Amici Rovinj – a Two Stars: Excellent cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Agli Amici Rovinj – Rovinj - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/zagreb-region/zagreb/restaurant/noel",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/zagreb-region/zagreb/restaurant/noel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ulica Popa Dukljanina 1",
+     "addressLocality": "Zagreb",
+     "postalCode": "10000",
+     "addressCountry": "HRV",
+     "addressRegion": "Zagreb"
+    },
+    "name": "Noel",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/286be1ada2144b85859654e84baa4dab.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Noel",
+     "description": "Towards the end of 2025, chef Bruno Vokal, a key figure at Noel in the past, returned to the kitchen. His presence reaffirms the contemporary character of the restaurant, which offers a concise ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 91 609 7129",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/zagreb-region/zagreb/restaurant/noel",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.810998,
+    "longitude": 15.9880697,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.8109980%2C15.9880697"
+   },
+   "website": "https://noel.hr/",
+   "tel_link": "tel:+385 91 609 7129",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Noel – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Noel – Zagreb - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/sibenik-knin/sibenik/restaurant/pelegrini",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/sibenik-knin/sibenik/restaurant/pelegrini",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Jurja Dalmatinca 1",
+     "addressLocality": "Sibenik",
+     "postalCode": "22000",
+     "addressCountry": "HRV",
+     "addressRegion": "Šibenik-Knin"
+    },
+    "name": "Pelegrini",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/ff3e5e70956144a7888fde555c025abc.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Pelegrini",
+     "description": "In the heart of the old town, the restaurant occupies Villa Pelegrini-Tambača, a Renaissance palazzo situated next to the Cathedral of St. James. Chef Rudolf Štefan, deeply knowledgeable about the...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 22 213 701",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/sibenik-knin/sibenik/restaurant/pelegrini",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 43.7360217,
+    "longitude": 15.8889282,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=43.7360217%2C15.8889282"
+   },
+   "website": "https://pelegrini.hr/",
+   "tel_link": "tel:+385 22 213 701",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Pelegrini – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Pelegrini – Sibenik - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/lika-senj/novalja/restaurant/boskinac",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/lika-senj/novalja/restaurant/boskinac",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Škopaljska Ulica 220",
+     "addressLocality": "Novalja",
+     "postalCode": "53291",
+     "addressCountry": "HRV",
+     "addressRegion": "Lika-Senj"
+    },
+    "name": "Boškinac",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/b9bf21886d12493b80314237dd79fe61.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Boškinac",
+     "description": "Surrounded by vines and olive trees, Boškinac is a refined country house with a boutique hotel, an oasis of peace in which to rediscover the unhurried rhythm of the island of Pag. The kitchen, ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 53 663 500",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/lika-senj/novalja/restaurant/boskinac",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 44.571006,
+    "longitude": 14.8975384,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=44.5710060%2C14.8975384"
+   },
+   "website": "https://www.boskinac.com/",
+   "tel_link": "tel:+385 53 663 500",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Boškinac – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Boškinac – Novalja - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/split-dalmatia/split/restaurant/krug",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/split-dalmatia/split/restaurant/krug",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Trumbićeva obala 17",
+     "addressLocality": "Split",
+     "postalCode": "21000",
+     "addressCountry": "HRV",
+     "addressRegion": "Split-Dalmatia"
+    },
+    "name": "Krug",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/af4ec85892914e26a4f62854a69174c1.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Krug",
+     "description": "An oasis of calm sophistication – with 12 seats on an L-shaped counter in front of the open kitchen – Krug is the creation of Chef-owner Karlo Kaleb. He and his kitchen are all from the local area...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 91 605 0827",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/split-dalmatia/split/restaurant/krug",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 43.5067029,
+    "longitude": 16.4324645,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=43.5067029%2C16.4324645"
+   },
+   "website": "https://krugrestaurantsplit.com/",
+   "tel_link": "tel:+385 91 605 0827",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Krug – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Krug – Split - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/dubrovnik-neretva/dubrovnik/restaurant/360%C2%BA",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/dubrovnik-neretva/dubrovnik/restaurant/360%C2%BA",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ul. Svetog Dominika 2",
+     "addressLocality": "Dubrovnik",
+     "postalCode": "20000",
+     "addressCountry": "HRV",
+     "addressRegion": "Dubrovnik-Neretva"
+    },
+    "name": "Restaurant 360",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/3115fc03055e42fe9c7566091400df2b.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Restaurant 360",
+     "description": "In the heart of Dubrovnik's harbour, the slightly elevated restaurant affords splendid views of the sea and marina. The exclusive terrace, which stretches along the medieval walls and St. John's ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 20 322 222",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/dubrovnik-neretva/dubrovnik/restaurant/360%C2%BA",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 42.6415506,
+    "longitude": 18.1115484,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=42.6415506%2C18.1115484"
+   },
+   "website": "https://www.360dubrovnik.com/",
+   "tel_link": "tel:+385 20 322 222",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Restaurant 360 – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Restaurant 360 – Dubrovnik - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istria/rovinj/restaurant/monte",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istria/rovinj/restaurant/monte",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Montalbano 75",
+     "addressLocality": "Rovinj",
+     "postalCode": "52210",
+     "addressCountry": "HRV",
+     "addressRegion": "Istria "
+    },
+    "name": "Monte",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/d3c2a6eb5bc54d03842ee95766fb87a3.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Monte",
+     "description": "One ascends through the lanes and alleyways of the historic centre to reach the hidden stone courtyard of chef-patron Danijel Đekić’s birthplace, at the foot of the magnificent church of St ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 91 183 0203",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/istria/rovinj/restaurant/monte",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.0826939,
+    "longitude": 13.6310596,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.0826939%2C13.6310596"
+   },
+   "website": "https://www.monte.hr/",
+   "tel_link": "tel:+385 91 183 0203",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Monte – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Monte – Rovinj - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/zagreb-region/zagreb/restaurant/dubravkin-put",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/zagreb-region/zagreb/restaurant/dubravkin-put",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Dubravkin Put 2",
+     "addressLocality": "Zagreb",
+     "postalCode": "10000",
+     "addressCountry": "HRV",
+     "addressRegion": "Zagreb"
+    },
+    "name": "Dubravkin Put",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/4e4e557c5496438c9fad05b30e7923e8.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Dubravkin Put",
+     "description": "Leave the bustle of the capital behind and take refuge in an oasis immersed in the greenery of Zagreb’s forest. At Dubravkin Put, a fresh and fragrant Mediterranean cuisine awaits, with particular...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 1 4834 975",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Mediterranean Cuisine",
+    "url": "https://guide.michelin.com/en/zagreb-region/zagreb/restaurant/dubravkin-put",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.8188384,
+    "longitude": 15.9725596,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.8188384%2C15.9725596"
+   },
+   "website": "https://www.dubravkin-put.com/",
+   "tel_link": "tel:+385 1 4834 975",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Dubravkin Put – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Dubravkin Put – Zagreb - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/istria/porec/restaurant/harry-s-piccolo-porec",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/istria/porec/restaurant/harry-s-piccolo-porec",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Pical 2",
+     "addressLocality": "Porec",
+     "postalCode": "52440",
+     "addressCountry": "HRV",
+     "addressRegion": "Istria "
+    },
+    "name": "Harry’s Piccolo Poreč",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/3b1e9cf11348419fb468a5e818999f15.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Harry’s Piccolo Poreč",
+     "description": "Recently opened within a new five-star hotel, the restaurant follows the gastronomic guidelines of its two-starred sister establishment in Trieste, while the kitchen is entrusted to local chef ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 52 407 033",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Contemporary",
+    "url": "https://guide.michelin.com/en/istria/porec/restaurant/harry-s-piccolo-porec",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.237008,
+    "longitude": 13.5974684,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.2370080%2C13.5974684"
+   },
+   "website": "https://www.harryspiccoloporec.com/",
+   "tel_link": "tel:+385 52 407 033",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Harry’s Piccolo Poreč – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Harry’s Piccolo Poreč – Porec - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/dubrovnik-neretva/korcula/restaurant/ld-terrace",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/dubrovnik-neretva/korcula/restaurant/ld-terrace",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Don Pavla Poše 1-6",
+     "addressLocality": "Korcula",
+     "postalCode": "20260",
+     "addressCountry": "HRV",
+     "addressRegion": "Dubrovnik-Neretva"
+    },
+    "name": "LD Restaurant",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/9a0e296eb6c24b37bdafd94de80f45d9.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "LD Restaurant",
+     "description": "With the freshest catch, seasonal vegetables and local extra virgin olive oil, Marko Gajski builds a refined cuisine that cleverly combines Dalmatian ingredients, Eastern suggestions, French-style...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 91 362 6222",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/dubrovnik-neretva/korcula/restaurant/ld-terrace",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 42.961559,
+    "longitude": 17.1370118,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=42.9615590%2C17.1370118"
+   },
+   "website": "https://www.ldrestaurant.com/",
+   "tel_link": "tel:+385 91 362 6222",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "LD Restaurant – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "LD Restaurant – Korcula - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/zagreb-region/jastrebarsko_1779514/restaurant/korak",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/zagreb-region/jastrebarsko_1779514/restaurant/korak",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Plešivica 34",
+     "addressLocality": "Jastrebarsko",
+     "postalCode": "10450",
+     "addressCountry": "HRV",
+     "addressRegion": "Zagreb"
+    },
+    "name": "Korak",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/e7ee2d5340b042d3a145d5a2617858b7.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-25T07:36",
+     "name": "Korak",
+     "description": "Surrounded by centuries-old linden trees and the rows of the family winery – which provide a backdrop for outdoor tables in fine weather – Bernard Korak has shaped a cuisine that is deeply tied to...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+385 99 276 4204",
+    "knowsLanguage": "en-HR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Contemporary",
+    "url": "https://guide.michelin.com/en/zagreb-region/jastrebarsko_1779514/restaurant/korak",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.7260304,
+    "longitude": 15.6500062,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.7260304%2C15.6500062"
+   },
+   "website": "https://www.korakwinery.com/",
+   "tel_link": "tel:+385 99 276 4204",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Korak – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Croatia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Korak – Jastrebarsko - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/gorizia/kobarid/restaurant/hisa-franko",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/gorizia/kobarid/restaurant/hisa-franko",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Staro selo 1",
+     "addressLocality": "Kobarid",
+     "postalCode": "5222",
+     "addressCountry": "SVN",
+     "addressRegion": "Gorizia"
+    },
+    "name": "Hiša Franko",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/b860e105d75e405daecfa5d4c1cc7e06.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "Hiša Franko",
+     "description": "Few kitchens reflect their chef’s personality as clearly as that of Chef Ana Roš. Her strong, determined character and infectious warmth find perfect expression in a single tasting menu where ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 5 389 41 20",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/gorizia/kobarid/restaurant/hisa-franko",
+    "starRating": "Three Stars: Exceptional cuisine",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Three Stars: Exceptional cuisine",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 46.247312,
+    "longitude": 13.5378132,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.2473120%2C13.5378132"
+   },
+   "website": "https://www.hisafranko.com/",
+   "tel_link": "tel:+386 5 389 41 20",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Hiša Franko – a Three Stars: Exceptional cuisine restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Hiša Franko – Kobarid - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/upper-carniola/kranjska-gora/restaurant/milka",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/upper-carniola/kranjska-gora/restaurant/milka",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Vršiška cesta 45",
+     "addressLocality": "Kranjska Gora",
+     "postalCode": "4280",
+     "addressCountry": "SVN",
+     "addressRegion": "Upper Carniola"
+    },
+    "name": "Milka",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/27940460ece8435baf037615a688043b.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "Milka",
+     "description": "Not far from the Austrian and Italian borders, overlooking a crystal-clear lake surrounded by mountains, Milka represents a magnificent gastronomic synthesis of the territory, interpreted with ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 597 79590",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/upper-carniola/kranjska-gora/restaurant/milka",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 46.4751488,
+    "longitude": 13.7847333,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.4751488%2C13.7847333"
+   },
+   "website": "https://www.hotelmilka.si/restaurant",
+   "tel_link": "tel:+386 597 79590",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Milka – a Two Stars: Excellent cooking restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Milka – Kranjska Gora - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/upper-carniola/radovljica/restaurant/hisa-linhart",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/upper-carniola/radovljica/restaurant/hisa-linhart",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Linhartov trg 17",
+     "addressLocality": "Radovljica",
+     "postalCode": "4240",
+     "addressCountry": "SVN",
+     "addressRegion": "Upper Carniola"
+    },
+    "name": "Hiša Linhart",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/ab8b5feb9fa24b64a2048f0a3a633a0f.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "Hiša Linhart",
+     "description": "In one of the oldest buildings in the country, in the fully pedestrianised centre, chef Uroš Štefelin and his team welcome guests with genuine spontaneity. The gastronomic proposal is structured ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 838 43470",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Contemporary",
+    "url": "https://guide.michelin.com/en/upper-carniola/radovljica/restaurant/hisa-linhart",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 46.3408368,
+    "longitude": 14.1750205,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.3408368%2C14.1750205"
+   },
+   "website": "https://www.hisalinhart.si",
+   "tel_link": "tel:+386 838 43470",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Hiša Linhart – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Hiša Linhart – Radovljica - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/gorizia/nova-gorica/restaurant/dam",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/gorizia/nova-gorica/restaurant/dam",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ulica Vinka Vodopivca 24",
+     "addressLocality": "Nova Gorica",
+     "postalCode": "5000",
+     "addressCountry": "SVN",
+     "addressRegion": "Gorizia"
+    },
+    "name": "Dam",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/b1d305fbdc25455cb4f91af3351eb826.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "Dam",
+     "description": "Located in Nova Gorica, slightly off the beaten track and a few kilometres from the centre, the restaurant welcomes guests into an urban-chic setting. You will be captivated by the relaxed ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 5 333 11 47",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/gorizia/nova-gorica/restaurant/dam",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.9582635,
+    "longitude": 13.6622519,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.9582635%2C13.6622519"
+   },
+   "website": "https://www.damhotel.si",
+   "tel_link": "tel:+386 5 333 11 47",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Dam – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Dam – Nova Gorica - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/gorizia/vipava/restaurant/pri-lojzetu",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/gorizia/vipava/restaurant/pri-lojzetu",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Dvorec Zemono",
+     "addressLocality": "Vipava",
+     "postalCode": "5271",
+     "addressCountry": "SVN",
+     "addressRegion": "Gorizia"
+    },
+    "name": "Gostilna Pri Lojzetu",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/004528722b8f42db91937a281a258773.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "Gostilna Pri Lojzetu",
+     "description": "Situated on a small hill just outside Vipava, this elegant restaurant – in business for over fifty years – occupies a seventeenth-century residence that once belonged to a family of Venetian ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 40 777 761",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/gorizia/vipava/restaurant/pri-lojzetu",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.8557213,
+    "longitude": 13.9491988,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.8557213%2C13.9491988"
+   },
+   "website": "https://www.zemono.si",
+   "tel_link": "tel:+386 40 777 761",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Gostilna Pri Lojzetu – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Gostilna Pri Lojzetu – Vipava - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/lower-carniola/sentjost-nad-horjulom/restaurant/gostisce-gric",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/lower-carniola/sentjost-nad-horjulom/restaurant/gostisce-gric",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Šentjošt nad Horjulom 24d",
+     "addressLocality": "Šentjošt nad Horjulom",
+     "postalCode": "1354",
+     "addressCountry": "SVN",
+     "addressRegion": "Lower Carniola"
+    },
+    "name": "Grič",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/9903f4bf653d4098ac2d24b3f2fcbd64.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "Grič",
+     "description": "Luka Košir's restaurant and home can be reached by driving along hilly roads dotted with small villages and surrounded by lush green landscapes that offer a glimpse of Grič's rural character. The ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 1 754 01 28",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Farm to table",
+    "url": "https://guide.michelin.com/en/lower-carniola/sentjost-nad-horjulom/restaurant/gostisce-gric",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 46.0283624,
+    "longitude": 14.2216299,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.0283624%2C14.2216299"
+   },
+   "website": "https://www.gric.si",
+   "tel_link": "tel:+386 1 754 01 28",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Grič – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Grič – Šentjošt nad Horjulom - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/coastal%E2%80%93karst/portoroz/restaurant/cob",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/coastal%E2%80%93karst/portoroz/restaurant/cob",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Letoviška 1",
+     "addressLocality": "Portorož",
+     "postalCode": "6320",
+     "addressCountry": "SVN",
+     "addressRegion": "Coastal–Karst"
+    },
+    "name": "COB",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/d76263a0148149debc3cceaae32c41f1.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "COB",
+     "description": "COB stands for Cooking Outside the Box – a fitting description for the gastronomic philosophy driving this restaurant. Situated in the upper part of Portorož, it enjoys a magnificent view over the...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 41 886 633",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/coastal%E2%80%93karst/portoroz/restaurant/cob",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.516425,
+    "longitude": 13.5927606,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.5164250%2C13.5927606"
+   },
+   "website": "https://www.cob.si",
+   "tel_link": "tel:+386 41 886 633",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "COB – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "COB – Portorož - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/savinja/lasko/restaurant/pavus",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/savinja/lasko/restaurant/pavus",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Grad Tabor Laško, Cesta na Svetino 23",
+     "addressLocality": "Lasko",
+     "postalCode": "3270",
+     "addressCountry": "SVN",
+     "addressRegion": "Savinja"
+    },
+    "name": "Pavus",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/de7b6bd5424347029d0af375012db6f9.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "Pavus",
+     "description": "The ascent to Grad Tabor castle in Laško, founded in the thirteenth century and, after centuries of history and varied use, transformed today into a gastronomic restaurant of romantic fascination,...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 3 620 07 23",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/savinja/lasko/restaurant/pavus",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 46.1571174,
+    "longitude": 15.237399,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.1571174%2C15.2373990"
+   },
+   "website": "https://www.pavus.si/",
+   "tel_link": "tel:+386 3 620 07 23",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Pavus – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Pavus – Lasko - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/savinja/petrovce/restaurant/galerija-okusov",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/savinja/petrovce/restaurant/galerija-okusov",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Novo Celje 9",
+     "addressLocality": "Petrovče",
+     "postalCode": "3301",
+     "addressCountry": "SVN",
+     "addressRegion": "Savinja"
+    },
+    "name": "Galerija okusov",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/14b893a5a7a149d085a9ae15a904f9c8.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "Galerija okusov",
+     "description": "The setting of this excellent “Gallery of Flavours” is particularly striking: a park at whose centre stands an eighteenth-century Baroque manor, once the castle of Novo Celje. Decidedly more ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 31 657 605",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/savinja/petrovce/restaurant/galerija-okusov",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 46.2457883,
+    "longitude": 15.1784594,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.2457883%2C15.1784594"
+   },
+   "website": "https://galerijaokusov.si/en/home",
+   "tel_link": "tel:+386 31 657 605",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Galerija okusov – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Galerija okusov – Petrovče - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/drava/zgornja-kungota/restaurant/hisa-denk",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/drava/zgornja-kungota/restaurant/hisa-denk",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Zgornja Kungota 11A",
+     "addressLocality": "Zgornja Kungota",
+     "postalCode": "2201",
+     "addressCountry": "SVN",
+     "addressRegion": "Drava"
+    },
+    "name": "Hiša Denk",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/e76d6445c88f465599d10f4ae1683db4.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-15T12:06",
+     "name": "Hiša Denk",
+     "description": "Opened in 1972 and now run by the third generation of the family, the restaurant surprises guests with its modern, minimalist design and large glass walls that flood the rooms with natural light, ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+386 2 656 35 51",
+    "knowsLanguage": "en-SI",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/drava/zgornja-kungota/restaurant/hisa-denk",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 46.6383891,
+    "longitude": 15.6146801,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.6383891%2C15.6146801"
+   },
+   "website": "https://www.hisadenk.si/",
+   "tel_link": "tel:+386 2 656 35 51",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Hiša Denk – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Slovenia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Hiša Denk – Zgornja Kungota - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/stand",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/stand",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Székely Mihály utca 2",
+     "addressLocality": "Budapest",
+     "postalCode": "1061",
+     "addressCountry": "HUN",
+     "addressRegion": "Central Hungary"
+    },
+    "name": "Stand",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/bf465718819047a48f7a630186ca94ed.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-09T07:19",
+     "name": "Stand",
+     "description": "A central glass-walled kitchen is the focal point of this eye-catching modern restaurant; a dining room sits either side, and there’s a chatty buzz to the room, which is helped along by the ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+36 30 785 9139",
+    "knowsLanguage": "en-HU",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/stand",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "HUF",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2025"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 47.5001729,
+    "longitude": 19.0596687,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.5001729%2C19.0596687"
+   },
+   "website": "https://standrestaurant.hu",
+   "tel_link": "tel:+36 30 785 9139",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Stand – a Two Stars: Excellent cooking restaurant in the 2025 MICHELIN Guide Hungary. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Stand – Budapest - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/costes",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/costes",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ráday utca 4",
+     "addressLocality": "Budapest",
+     "postalCode": "1092",
+     "addressCountry": "HUN",
+     "addressRegion": "Central Hungary"
+    },
+    "name": "Costes Restaurant",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/cf335e58246b4136bebca02a3ce81527.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-09T07:19",
+     "name": "Costes Restaurant",
+     "description": "Elegance and sophistication lead the way at Costes, from the smart décor to the well-orchestrated service. Ask for a seat to the front of the main room for a feeling of space, then enjoy the eager...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+36 70 463 4653",
+    "knowsLanguage": "en-HU",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/costes",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "HUF",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2025"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 47.4889155,
+    "longitude": 19.0621952,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.4889155%2C19.0621952"
+   },
+   "website": "https://www.costesrestaurant.hu/",
+   "tel_link": "tel:+36 70 463 4653",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Costes Restaurant – a One Star: High quality cooking restaurant in the 2025 MICHELIN Guide Hungary. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Costes Restaurant – Budapest - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/babel",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/babel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Piarista Köz 2",
+     "addressLocality": "Budapest",
+     "postalCode": "1052",
+     "addressCountry": "HUN",
+     "addressRegion": "Central Hungary"
+    },
+    "name": "Babel",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/7f7051a49e564fceba6c5c1b2d504a33.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-09T07:19",
+     "name": "Babel",
+     "description": "A city institution, Babel represents the perfect blend of tradition and modernity. Its walls still show marks from the 1838 Great Flood of Pest, yet it’s also a chic, stylish place thanks to ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+36 70 600 0800",
+    "knowsLanguage": "en-HU",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/babel",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "HUF",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2025"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 47.492668,
+    "longitude": 19.0522285,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.4926680%2C19.0522285"
+   },
+   "website": "https://www.babel-budapest.hu",
+   "tel_link": "tel:+36 70 600 0800",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Babel – a One Star: High quality cooking restaurant in the 2025 MICHELIN Guide Hungary. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Babel – Budapest - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/rumour",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/rumour",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Petőfi tér 3",
+     "addressLocality": "Budapest",
+     "postalCode": "1051",
+     "addressCountry": "HUN",
+     "addressRegion": "Central Hungary"
+    },
+    "name": "Rumour by Rácz Jenő",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/4093e5dd62e44f0eab26cf41bc148db6.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-09T07:19",
+     "name": "Rumour by Rácz Jenő",
+     "description": "After travelling the world, Chef Jenő returned home to open this unique restaurant. Located in the heart of the city, it comes with concrete walls hung with mirrors, and a 21-seater counter which ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+36 70 463 4655",
+    "knowsLanguage": "en-HU",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/rumour",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "HUF",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2025"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 47.4938437,
+    "longitude": 19.0506611,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.4938437%2C19.0506611"
+   },
+   "website": "https://rumour.restaurant/",
+   "tel_link": "tel:+36 70 463 4655",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Rumour by Rácz Jenő – a One Star: High quality cooking restaurant in the 2025 MICHELIN Guide Hungary. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Rumour by Rácz Jenő – Budapest - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/salt-1196768",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/salt-1196768",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Hotel Rum Budapest, Királyi Pál utca 4",
+     "addressLocality": "Budapest",
+     "postalCode": "1053",
+     "addressCountry": "HUN",
+     "addressRegion": "Central Hungary"
+    },
+    "name": "Salt",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/61c8f0835b7d441e9f0dd117f143eb1b.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-09T07:19",
+     "name": "Salt",
+     "description": "Within a boutique hotel sits this small, sophisticated restaurant, whose open kitchen forms an integral part of the stylishly lit room. Shelves are full of jars containing colourfully preserved ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+36 70 333 2190",
+    "knowsLanguage": "en-HU",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/salt-1196768",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "HUF",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2025"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 47.4904,
+    "longitude": 19.05914,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.4904000%2C19.0591400"
+   },
+   "website": "https://www.saltbudapest.com",
+   "tel_link": "tel:+36 70 333 2190",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Salt – a One Star: High quality cooking restaurant in the 2025 MICHELIN Guide Hungary. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Salt – Budapest - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/vas/oriszentpeter/restaurant/pajta",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/vas/oriszentpeter/restaurant/pajta",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Templomszer 7",
+     "addressLocality": "Őriszentpéter",
+     "postalCode": "9941",
+     "addressCountry": "HUN",
+     "addressRegion": "Vas"
+    },
+    "name": "Pajta",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/ff9a8f990f6e418a9a203b59b05d30d9.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-09T07:19",
+     "name": "Pajta",
+     "description": "Pajta means ‘barn’, which is where it all began for Flóra and Ferenc – in the small barn beside this glass-fronted restaurant. The whole complex has a natural feel, from the beautiful meadow to ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+36 70 416 3388",
+    "knowsLanguage": "en-HU",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/vas/oriszentpeter/restaurant/pajta",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "HUF",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2025"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 46.8498752,
+    "longitude": 16.4043202,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.8498752%2C16.4043202"
+   },
+   "website": "https://pajta.hu/",
+   "tel_link": "tel:+36 70 416 3388",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Pajta – a One Star: High quality cooking restaurant in the 2025 MICHELIN Guide Hungary. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Pajta – Őriszentpéter - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/essencia",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/essencia",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Sas utca 17",
+     "addressLocality": "Budapest",
+     "postalCode": "1051",
+     "addressCountry": "HUN",
+     "addressRegion": "Central Hungary"
+    },
+    "name": "essência",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/c6aa68145e694a318250650a744de32c.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-09T07:19",
+     "name": "essência",
+     "description": "Portuguese Chef-Owner Tiago and his Hungarian wife Éva have created a warmly run and deliciously different restaurant in the heart of the city. A bright front room with arched windows leads past ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+36 70 600 0315",
+    "knowsLanguage": "en-HU",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/essencia",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "HUF",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2025"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 47.5010989,
+    "longitude": 19.0520834,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.5010989%2C19.0520834"
+   },
+   "website": "https://essenciarestaurant.hu",
+   "tel_link": "tel:+36 70 600 0315",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "essência – a One Star: High quality cooking restaurant in the 2025 MICHELIN Guide Hungary. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "essência – Budapest - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/borkonyha-winekitchen",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/borkonyha-winekitchen",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Sas utca 3",
+     "addressLocality": "Budapest",
+     "postalCode": "1051",
+     "addressCountry": "HUN",
+     "addressRegion": "Central Hungary"
+    },
+    "name": "Borkonyha Winekitchen",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/711acb30ef0c4a07a7450538bbb2d8ab.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-09T07:18",
+     "name": "Borkonyha Winekitchen",
+     "description": "While it would be easy to do, to pass by this unassuming-looking restaurant near the Basilica would be a mistake. The kitchen here sources top-class ingredients, treats them with the utmost ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+36 30 351 5153",
+    "knowsLanguage": "en-HU",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/borkonyha-winekitchen",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "HUF",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2025"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 47.4993951,
+    "longitude": 19.0524595,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.4993951%2C19.0524595"
+   },
+   "website": "https://borkonyha.hu/",
+   "tel_link": "tel:+36 30 351 5153",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Borkonyha Winekitchen – a One Star: High quality cooking restaurant in the 2025 MICHELIN Guide Hungary. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Borkonyha Winekitchen – Budapest - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/komarom-esztergom/esztergom/restaurant/42",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/komarom-esztergom/esztergom/restaurant/42",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Széchenyi tér 23",
+     "addressLocality": "Esztergom",
+     "postalCode": "2500",
+     "addressCountry": "HUN",
+     "addressRegion": "Komárom-Esztergom"
+    },
+    "name": "42",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/7aa39d2cbe04427492e1dc77a984dfe3.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-09T07:18",
+     "name": "42",
+     "description": "A pastel blue townhouse plays host to this series of intimate, elegant dining rooms, but many favour a spot in the striking glass-enclosed terrace overlooking the street. The multi-course menu ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+36 20 442 4242",
+    "knowsLanguage": "en-HU",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/komarom-esztergom/esztergom/restaurant/42",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "HUF",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2025"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 47.7930164,
+    "longitude": 18.7414568,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.7930164%2C18.7414568"
+   },
+   "website": "https://42restaurant.hu/",
+   "tel_link": "tel:+36 20 442 4242",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "42 – a One Star: High quality cooking restaurant in the 2025 MICHELIN Guide Hungary. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "42 – Esztergom - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/under-grain",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/under-grain",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "167 Merchants Street",
+     "addressLocality": "Valletta",
+     "postalCode": "VLT 1174",
+     "addressCountry": "MLT",
+     "addressRegion": "South Eastern Region"
+    },
+    "name": "Under Grain",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/42eeebbc5bdf46068678bb4a3180037a.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-02-17T08:14",
+     "name": "Under Grain",
+     "description": "Housed within the stylish Rosselli Hotel, on one of Valletta’s most elegant streets, Under Grain welcomes guests into a setting as sophisticated as its cuisine. The restaurant occupies the ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+356 2235 4168",
+    "knowsLanguage": "en-MT",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/under-grain",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Discover Card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 35.8989233,
+    "longitude": 14.5154686,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.8989233%2C14.5154686"
+   },
+   "website": "https://grain.mt/",
+   "tel_link": "tel:+356 2235 4168",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Under Grain – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Malta. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Under Grain – Valletta - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/malta-central-region/st-julian-s/restaurant/rosami",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/malta-central-region/st-julian-s/restaurant/rosami",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "The Villa, Main Street, Balluta Bay",
+     "addressLocality": "St. Julian's",
+     "postalCode": "STJ 1017",
+     "addressCountry": "MLT",
+     "addressRegion": "Central Region"
+    },
+    "name": "Rosamì",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/127c1ce1319346e3be6ee8c2e032c402.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-02-17T08:14",
+     "name": "Rosamì",
+     "description": "Overlooking Balluta Bay, Rosamì occupies a beautiful Maltese-style villa, whose first floor, pleasantly sheltered from the street below, houses a classic, stylish restaurant, with a distinctly ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+356 7980 0823",
+    "knowsLanguage": "en-MT",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/malta-central-region/st-julian-s/restaurant/rosami",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 35.9143291,
+    "longitude": 14.493543,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.9143291%2C14.4935430"
+   },
+   "website": "https://rosami.xaracollection.com/",
+   "tel_link": "tel:+356 7980 0823",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Rosamì – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Malta. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Rosamì – St. Julian's - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/malta-northern-region/sliema/restaurant/fernando-gastrotheque",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/malta-northern-region/sliema/restaurant/fernando-gastrotheque",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "17 Tigne Street",
+     "addressLocality": "Sliema",
+     "postalCode": "SLM 3172",
+     "addressCountry": "MLT",
+     "addressRegion": "Northern Region"
+    },
+    "name": "Fernandõ Gastrotheque",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/09d2ac3464ae47dcb30651e26ab4e00b.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-02-17T08:14",
+     "name": "Fernandõ Gastrotheque",
+     "description": "Temporary closed for relocation. Tucked away in one of Sliema’s quiet side streets, this small restaurant has become something of a beacon for fine dining in Malta. The cuisine is showcased ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+356 7922 2023",
+    "knowsLanguage": "en-MT",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Mediterranean Cuisine",
+    "url": "https://guide.michelin.com/en/malta-northern-region/sliema/restaurant/fernando-gastrotheque",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 35.9099793,
+    "longitude": 14.5069007,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.9099793%2C14.5069007"
+   },
+   "website": "https://www.fernando.com.mt/",
+   "tel_link": "tel:+356 7922 2023",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Fernandõ Gastrotheque – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Malta. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Fernandõ Gastrotheque – Sliema - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/malta-northern-region/sliema/restaurant/le-gv",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/malta-northern-region/sliema/restaurant/le-gv",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Thornton Street",
+     "addressLocality": "Sliema",
+     "postalCode": "SLM 3143",
+     "addressCountry": "MLT",
+     "addressRegion": "Northern Region"
+    },
+    "name": "Le GV",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/40890d67333b4c9ab9aa61f3d4264176.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-02-17T08:13",
+     "name": "Le GV",
+     "description": "The lavish rooftop restaurant on the eleventh floor of the 1926 Le Soleil Hotel draws inspiration from the carriages of the Orient Express, creating an atmosphere that is both glamorous and ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+356 7963 9049",
+    "knowsLanguage": "en-MT",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/malta-northern-region/sliema/restaurant/le-gv",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 35.9096678,
+    "longitude": 14.5087542,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.9096678%2C14.5087542"
+   },
+   "website": "https://legv.mt",
+   "tel_link": "tel:+356 7963 9049",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Le GV – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Malta. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Le GV – Sliema - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/ion-the-harbour",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/ion-the-harbour",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "11 St. Barbara Bastion",
+     "addressLocality": "Valletta",
+     "postalCode": "VLT 1961",
+     "addressCountry": "MLT",
+     "addressRegion": "South Eastern Region"
+    },
+    "name": "ION Harbour by Simon Rogan",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/5fc6c73114b344c5910a82d4d0c8c588.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-02-17T08:13",
+     "name": "ION Harbour by Simon Rogan",
+     "description": "Located on the seafront, on the fourth floor of the exclusive Iniala Harbour House, ION Harbour offers warm, precise service led by a youthful team, breathtaking views and truly exceptional ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+356 9911 0166",
+    "knowsLanguage": "en-MT",
+    "acceptsReservations": "No",
+    "servesCuisine": "Contemporary",
+    "url": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/ion-the-harbour",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 35.8961598,
+    "longitude": 14.5142772,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.8961598%2C14.5142772"
+   },
+   "website": "https://ionharbour.com/",
+   "tel_link": "tel:+356 9911 0166",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "ION Harbour by Simon Rogan – a Two Stars: Excellent cooking restaurant in the 2026 MICHELIN Guide Malta. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "ION Harbour by Simon Rogan – Valletta - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/noni",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/noni",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "211 Republic Street",
+     "addressLocality": "Valletta",
+     "postalCode": "VLT 1118",
+     "addressCountry": "MLT",
+     "addressRegion": "South Eastern Region"
+    },
+    "name": "Noni",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/3221b1dce8b340db97af87b736b34d20.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-02-17T08:14",
+     "name": "Noni",
+     "description": "In 2017, chef Jonathan Brincat transformed a centuries-old house into a restaurant, naming it after his own nickname: Noni. A small staircase takes you down to the main dining room, set beneath a ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+356 2122 1441",
+    "knowsLanguage": "en-MT",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/noni",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 35.9005092,
+    "longitude": 14.5160236,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.9005092%2C14.5160236"
+   },
+   "website": "https://noni.com.mt/",
+   "tel_link": "tel:+356 2122 1441",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Noni – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Malta. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Noni – Valletta - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/malta-northern-region/mdina/restaurant/de-mondion",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/malta-northern-region/mdina/restaurant/de-mondion",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Council Square",
+     "addressLocality": "Mdina",
+     "postalCode": "MDN 1050",
+     "addressCountry": "MLT",
+     "addressRegion": "Northern Region"
+    },
+    "name": "De Mondion",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/8f95b2e21f124a54b9803f29576c77c5.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-02-17T08:14",
+     "name": "De Mondion",
+     "description": "De Mondion delivers a stylish dining experience that fully matches the magnificent, fortified city of Mdina in which it is set. The gourmet restaurant occupies the top floor of the charming Xara ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+356 2145 0560",
+    "knowsLanguage": "en-MT",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/malta-northern-region/mdina/restaurant/de-mondion",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 35.8851399,
+    "longitude": 14.4046065,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.8851399%2C14.4046065"
+   },
+   "website": "https://demondion.xaracollection.com/",
+   "tel_link": "tel:+356 2145 0560",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "De Mondion – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Malta. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "De Mondion – Mdina - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/vilnius-region/vilnius_1985479/restaurant/nineteen18",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/vilnius-region/vilnius_1985479/restaurant/nineteen18",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Dominikonų gatvė 11",
+     "addressLocality": "Vilnius",
+     "postalCode": "01131",
+     "addressCountry": "LTU",
+     "addressRegion": "Vilnius Region"
+    },
+    "name": "Nineteen18",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/99d2605867fb4213828930fa9e817b8e.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-05T06:08",
+     "name": "Nineteen18",
+     "description": "It was all change in 2026 when Vita Bartininkaitė closed her Pas mus restaurant and returned to the kitchen here at Nineteen18, where she was joined by Justinas Misus. They may have all the latest...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+370 608 08950",
+    "knowsLanguage": "en-LT",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/vilnius-region/vilnius_1985479/restaurant/nineteen18",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 54.6812129,
+    "longitude": 25.2855231,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=54.6812129%2C25.2855231"
+   },
+   "website": "https://nineteen18.lt",
+   "tel_link": "tel:+370 608 08950",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Nineteen18 – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Lithuania. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Nineteen18 – Vilnius - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/vilnius-region/vilnius_1985479/restaurant/dziaugsmas",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/vilnius-region/vilnius_1985479/restaurant/dziaugsmas",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Vilniaus gatvė 28",
+     "addressLocality": "Vilnius",
+     "postalCode": "01144",
+     "addressCountry": "LTU",
+     "addressRegion": "Vilnius Region"
+    },
+    "name": "Džiaugsmas",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/714b1af2149e4f9390f6357e3f39227b.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-05T06:08",
+     "name": "Džiaugsmas",
+     "description": "The discreet sign outside this period house adds to the intimate feel inside, while the dark, modern décor goes well with the easy-going atmosphere. There are two menus on offer but the best ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+370 631 11153",
+    "knowsLanguage": "en-LT",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/vilnius-region/vilnius_1985479/restaurant/dziaugsmas",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 54.6829747,
+    "longitude": 25.2805396,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=54.6829747%2C25.2805396"
+   },
+   "website": "https://www.dziaugsmas.com/",
+   "tel_link": "tel:+370 631 11153",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Džiaugsmas – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Lithuania. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Džiaugsmas – Vilnius - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/vilnius-region/radiskis_7770291/restaurant/red-brick",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/vilnius-region/radiskis_7770291/restaurant/red-brick",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Farmers Circle, Žirgyno gatvė 1",
+     "addressLocality": "Radiškis",
+     "postalCode": "20364",
+     "addressCountry": "LTU",
+     "addressRegion": "Vilnius Region"
+    },
+    "name": "Red Brick",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/bb5dd82392c244c68ea1f98bb5b9f9bb.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-05T06:08",
+     "name": "Red Brick",
+     "description": "An hour out of Vilnius is The Farmers Circle, a wonderfully remote 1,730-acre working farm, and at its centre is this beautifully restored barn. Naturally, produce grown and reared on their farm ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+370 640 26820",
+    "knowsLanguage": "en-LT",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/vilnius-region/radiskis_7770291/restaurant/red-brick",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 55.3396361,
+    "longitude": 24.9135679,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=55.3396361%2C24.9135679"
+   },
+   "website": "https://red-brick.lt",
+   "tel_link": "tel:+370 640 26820",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Red Brick – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Lithuania. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Red Brick – Radiškis - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/vilnius-region/vilnius_1985479/restaurant/deep-roots",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/vilnius-region/vilnius_1985479/restaurant/deep-roots",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Trakų gatvė 14",
+     "addressLocality": "Vilnius",
+     "postalCode": "01132",
+     "addressCountry": "LTU",
+     "addressRegion": "Vilnius Region"
+    },
+    "name": "Deep Roots",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/50e61f6f7dcb4e2480dbf4dcf7ebf740.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-06-05T06:08",
+     "name": "Deep Roots",
+     "description": "The roots of this heritage building sit back in the 17th century, but the moniker means much more than this, with the owners naming it to be: “About home, about connection, about roots. About ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+370 622 11775",
+    "knowsLanguage": "en-LT",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/vilnius-region/vilnius_1985479/restaurant/deep-roots",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 54.680328,
+    "longitude": 25.2810799,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=54.6803280%2C25.2810799"
+   },
+   "website": "https://deeproots.lt/",
+   "tel_link": "tel:+370 622 11775",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Deep Roots – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Lithuania. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Deep Roots – Vilnius - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/riga-region/riga_1991577/restaurant/john-chef-s-hall",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/riga-region/riga_1991577/restaurant/john-chef-s-hall",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "A22 Hotel, Ausekļa iela 22",
+     "addressLocality": "Riga",
+     "postalCode": "1010",
+     "addressCountry": "LVA",
+     "addressRegion": "Riga Region"
+    },
+    "name": "JOHN Chef's Hall",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/df86dc703d5e4a3188bd2f813577cb95.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-22T07:18",
+     "name": "JOHN Chef's Hall",
+     "description": "Situated within the A22 Hotel, this restaurant bears the name of John F. Kennedy, who stayed here back when he was 22. It’s an intimate spot, made all the more special by the addition of a ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+371 27 202 737",
+    "knowsLanguage": "en-LV",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/riga-region/riga_1991577/restaurant/john-chef-s-hall",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 56.9624805,
+    "longitude": 24.1006105,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=56.9624805%2C24.1006105"
+   },
+   "website": "https://jch.johnrestaurant.com/eng",
+   "tel_link": "tel:+371 27 202 737",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "JOHN Chef's Hall – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Latvia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "JOHN Chef's Hall – Riga - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/riga-region/riga_1991577/restaurant/max-cekot-kitchen",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/riga-region/riga_1991577/restaurant/max-cekot-kitchen",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Jelgavas iela 42",
+     "addressLocality": "Riga",
+     "postalCode": "1004",
+     "addressCountry": "LVA",
+     "addressRegion": "Riga Region"
+    },
+    "name": "Max Cekot Kitchen",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/0d8e295951204621a96ece38715d5c65.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-10-22T07:18",
+     "name": "Max Cekot Kitchen",
+     "description": "A red-brick former warehouse on the edge of the city plays host to this surprisingly sophisticated restaurant. You start downstairs with drinks and amuse bouches, before heading up the narrow ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+371 20 112 102",
+    "knowsLanguage": "en-LV",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/riga-region/riga_1991577/restaurant/max-cekot-kitchen",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 56.9299126,
+    "longitude": 24.0989828,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=56.9299126%2C24.0989828"
+   },
+   "website": "https://maxcekot.com/",
+   "tel_link": "tel:+371 20 112 102",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Max Cekot Kitchen – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Latvia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Max Cekot Kitchen – Riga - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/harju/tallinn/restaurant/180%C2%B0-by-matthias-diether",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/harju/tallinn/restaurant/180%C2%B0-by-matthias-diether",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Staapli 4, Port Noblessner",
+     "addressLocality": "Tallinn",
+     "postalCode": "10415",
+     "addressCountry": "EST",
+     "addressRegion": "Harju"
+    },
+    "name": "180° by Matthias Diether",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/1e8fad010d47478183e2633ec27ab742.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-19T07:36",
+     "name": "180° by Matthias Diether",
+     "description": "A modern harbour development just outside the city plays host to this stylish restaurant and its futuristic bar. The name refers to the 180° view from the U-shaped kitchen counter; sit here to ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+372 661 0180",
+    "knowsLanguage": "en-EE",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/harju/tallinn/restaurant/180%C2%B0-by-matthias-diether",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 59.4520952,
+    "longitude": 24.7289707,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=59.4520952%2C24.7289707"
+   },
+   "website": "https://www.180degrees.ee/",
+   "tel_link": "tel:+372 661 0180",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "180° by Matthias Diether – a Two Stars: Excellent cooking restaurant in the 2026 MICHELIN Guide Estonia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "180° by Matthias Diether – Tallinn - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/harju/tallinn/restaurant/noa-chef%E2%80%99s-hall",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/harju/tallinn/restaurant/noa-chef%E2%80%99s-hall",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ranna tee 3",
+     "addressLocality": "Tallinn",
+     "postalCode": "12112",
+     "addressCountry": "EST",
+     "addressRegion": "Harju"
+    },
+    "name": "NOA Chef’s Hall",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/4443f3c6842c4b6c9c18cd08e35bf6da.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-05-19T07:36",
+     "name": "NOA Chef’s Hall",
+     "description": "Set within the same striking building as NOA is the stylish NOA Chef’s Hall, where you start your evening with an aperitif in the romantic lounge overlooking Tallinn Bay. The on-view kitchen is ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+372 5853 5881",
+    "knowsLanguage": "en-EE",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/harju/tallinn/restaurant/noa-chef%E2%80%99s-hall",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 59.4951028,
+    "longitude": 24.8263897,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=59.4951028%2C24.8263897"
+   },
+   "website": "https://nch.ee",
+   "tel_link": "tel:+372 5853 5881",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "NOA Chef’s Hall – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Estonia. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "NOA Chef’s Hall – Tallinn - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/belgrade-region/belgrade/restaurant/langouste",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/belgrade-region/belgrade/restaurant/langouste",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kosančićev Venac 29",
+     "addressLocality": "Belgrade",
+     "postalCode": "11000",
+     "addressCountry": "SRB",
+     "addressRegion": "Belgrade"
+    },
+    "name": "Langouste",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/a5828afcb748465884d3a7fcf4f885b5.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-10T10:08",
+     "name": "Langouste",
+     "description": "Located on the edge of the historic centre, this restaurant boasts expansive picture windows that frame stunning views of the Sava River and the city’s contemporary skyline. Talented and ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+381 64 8132015",
+    "knowsLanguage": "en-RS",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/belgrade-region/belgrade/restaurant/langouste",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "RSD",
+    "paymentAccepted": "Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 44.8176948,
+    "longitude": 20.450754,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=44.8176948%2C20.4507540"
+   },
+   "website": "https://www.langouste.rs/",
+   "tel_link": "tel:+381 64 8132015",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Langouste – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Serbia. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Langouste – Belgrade - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/syrmia/novi-slankamen_7770386/restaurant/fleur-de-sel-1212486",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/syrmia/novi-slankamen_7770386/restaurant/fleur-de-sel-1212486",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Počenta bb",
+     "addressLocality": "Novi Slankamen",
+     "postalCode": "22323",
+     "addressCountry": "SRB",
+     "addressRegion": "Syrmia"
+    },
+    "name": "Fleur de Sel",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/062074208d354fbb9a3096a2e1610d29.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2025-12-10T10:08",
+     "name": "Fleur de Sel",
+     "description": "It is well worth driving the 60-odd kilometres from the centre of Belgrade to get to this fascinating property serving fine cuisine and excellent wines. The restaurant is situated within the ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+381 69 607698",
+    "knowsLanguage": "en-RS",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/syrmia/novi-slankamen_7770386/restaurant/fleur-de-sel-1212486",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "RSD",
+    "paymentAccepted": "China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2026"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 45.1540366,
+    "longitude": 20.2173251,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.1540366%2C20.2173251"
+   },
+   "website": "https://www.sapat.rs/restaurant-fleur-de-sel/?lang=en",
+   "tel_link": "tel:+381 69 607698",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Fleur de Sel – a One Star: High quality cooking restaurant in the 2026 MICHELIN Guide Serbia. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Fleur de Sel – Novi Slankamen - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/komarom-esztergom/tata/restaurant/platan-gourmet",
+   "status": 404,
+   "final_url": "https://guide.michelin.com/en/komarom-esztergom/tata/restaurant/platan-gourmet",
+   "ld": null,
+   "website": null,
+   "tel_link": null,
+   "stay_hotel_urls": [],
+   "sections": [],
+   "description": null,
+   "title": "Restaurant not found"
+  }
+ ]
+}
