@@ -15,6 +15,12 @@ The format follows Keep a Changelog.
   `supabase db push --linked`. The ledger went from 142 to 143, and local
   and remote agree. The catalogue data that goes with it is in
   `supabase/data/enrichment/michelin_gr/`.
+- Migration `20261101300000_add_europe9_2026_countries_and_cities.sql`:
+  countries CZ, EE, LT and LV and 35 towns (data only) for the MICHELIN pass
+  over nine European countries. Applied to production on 2026-11-04 from
+  `claude/michelin-europe9-2026` with plain `supabase db push --linked`. The
+  ledger went from 143 to 144, and local and remote agree. The catalogue data
+  that goes with it is in `supabase/data/enrichment/michelin_europe9_2026/`.
 
 ### Fixed
 - `prepared_gr_2027.sql` was tested only on scratch PostgreSQL with
@@ -22,6 +28,15 @@ The format follows Keep a Changelog.
   first real run was production. Its opening checks and the row-by-row
   comparison afterwards found no difference. The risk recurs on any
   machine without Docker.
+- `prepared_europe9_2026.sql` was also tested only on scratch PostgreSQL
+  with PostGIS stubbed, so its first real run was production too. The row-by-
+  row comparison afterwards found no difference.
+- The first run of that pass's `test_scratch.sh` printed "ok" on every guard
+  while the server wasn't running: it counted any failed `psql` call as a
+  correct abort, and Postgres won't start on this Mac without `LC_ALL`. The
+  script now requires a real SQL error and stops if the server or the seed
+  fails. A test that treats failure as success recurs wherever a guard is
+  only ever expected to fail.
 
 ---
 

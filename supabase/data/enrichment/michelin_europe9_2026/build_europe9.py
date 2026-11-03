@@ -394,7 +394,7 @@ def main():
         summary[cc] = dict(m_s=m_s, p_s=p_s, a_s=after_s, m_k=m_k, p_k=p_k, a_k=after_k, new_r=len(nr), new_h=len(nh), held=len(held_r) + len(held_h), towns=towns,
                            phone=sum(1 for x in nr if x['phone']), web=sum(1 for x in nr if x['website']))
         L = [f"# {NAMES[cc]} ({cc}): MICHELIN-sterren en Keys", "",
-             "Status: **getest op een scratch-database, nog niet toegepast op productie.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.", "",
+             "Status: **toegepast op productie op 2026-11-04.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.", "",
              "| | MICHELIN live (3/2/1) | Productie nu | Na toepassen |", "|---|---|---|---|",
              f"| Sterren | {m_s} | {p_s} | {m_s} |", f"| Keys | {m_k} | {p_k} | {m_k} |", "",
              f"Sterren aangekondigd op {ANNOUNCED[cc]}; Keys op {KEY_ANNOUNCED}. Het Key-totaal klopt met MICHELIN's wereldartikel ({KEY_ARTICLE[cc]}).", "",

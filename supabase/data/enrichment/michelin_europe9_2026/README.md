@@ -1,11 +1,8 @@
 # Negen Europese landen: MICHELIN-sterren en Keys (2026-11-04)
 
-Status: **getest op een scratch-database, nog niet toegepast op productie.** De product owner heeft op 2026-11-04 de 54 restaurants, de 21 hotels en alle voorstellen hieronder geaccepteerd. Voor productie is nog een apart akkoord nodig.
+Status: **TOEGEPAST op 2026-11-04**, op verzoek van de product owner. De migratie ging met `supabase db push --linked`; de ledger staat op 144, lokaal en remote gelijk. `prepared_europe9_2026.sql` slaagde op alle controles. Elke rij is daarna vergeleken met een nieuwe export (`_source/production_after_apply_20261104.json`): 119 rijen, geen verschillen. Alle negen landen staan op MICHELIN's verdeling.
 
-Toepassen, in deze volgorde:
-
-1. `supabase/migrations/20261101300000_add_europe9_2026_countries_and_cities.sql` (4 landen, 35 plaatsen), met `supabase db push --linked`.
-2. `prepared_europe9_2026.sql` (één transactie; breekt af bij elke mislukte controle), met `supabase db query --linked -f <absoluut pad>`.
+Totalen: restaurants +54, hotels +21, award-rijen +81, plaatsen +35, landen +4, koppelingen +3.
 
 ## Resultaat
 
@@ -78,11 +75,7 @@ Op een lokale PostgreSQL 17, gevuld met de productie-export. De beperkingen van 
 - **Controles:** een hernoemde rij, een gewijzigde Key, een bezette code en een al gevulde URL breken het hele bestand af.
 - **Productie ongewijzigd:** een tweede read-only export op 2026-11-04 was gelijk aan de eerste.
 
-**Niet getest:** echte PostGIS, de volledige productie-schema's en de app. De schema-afdruk komt uit de export en de gelezen beperkingen.
-
-## Bij toepassen nog te doen
-
-- Regels in `docs/Architecture/Michelin_Database/CHANGELOG.md` en `docs/Plannnig/CHANGELOG.md`, de status in `qa_issues.csv`, en een controle met een nieuwe export.
+**Niet getest vooraf:** echte PostGIS en het volledige productieschema; de eerste echte run was dus productie. De app is niet getest.
 
 ## Bestanden
 

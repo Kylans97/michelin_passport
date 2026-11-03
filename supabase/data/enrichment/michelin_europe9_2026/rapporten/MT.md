@@ -1,6 +1,6 @@
 # Malta (MT): MICHELIN-sterren en Keys
 
-Status: **getest op een scratch-database, nog niet toegepast op productie.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.
+Status: **toegepast op productie op 2026-11-04.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.
 
 | | MICHELIN live (3/2/1) | Productie nu | Na toepassen |
 |---|---|---|---|

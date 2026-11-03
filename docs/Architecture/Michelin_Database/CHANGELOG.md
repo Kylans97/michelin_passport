@@ -6,6 +6,33 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-04 — Nine European countries: MICHELIN stars and Key hotels (QA-450–QA-459)
+
+| | |
+|---|---|
+| Applied | 2026-11-04, to production, at the product owner's request, from `claude/michelin-europe9-2026` |
+| Countries | CZ, HR, SI, HU, MT, LT, LV, EE, RS |
+| Migration | `20261101300000_add_europe9_2026_countries_and_cities.sql` (4 countries, 35 towns). Plain `supabase db push --linked`; ledger 143 → 144, local and remote in agreement. New countries: CZ, EE, LT, LV |
+| Data file | `michelin_europe9_2026/prepared_europe9_2026.sql`. One transaction, every check passed |
+| Rows | 54 starred restaurants (`rest_4100`–`rest_4153`), 21 Key hotels (`hotel_3100`–`hotel_3120`), 3 hotel links, 4 `property_name`, `michelin_url` filled on 5 restaurants and 16 hotels |
+| Corrections | `hotel_277` Párisi Udvar 2 → 1 Key in place, the stored value matching no edition (QA-451). `hotel_280` The Bristol Belgrade 1 → 2, `hotel_260` Villa Dubrovnik 1 → 2, `hotel_267` Palace Elisabeth Hvar 2 → 1: launch row relabelled 2025, new 2026 row (QA-452, QA-454). `hotel_301` Peterc and `hotel_305` Nebesa lost their Key and stay, per QA-387 (QA-453). `rest_0427` Platán Gourmet: permanently closed, stars NULL, 2 stars kept as 2025 (QA-450) |
+
+**Checked after the apply**, row by row against `michelin_europe9_2026/controle/` (fresh export `_source/production_after_apply_20261104.json`):
+
+- All 119 rows carry the staged award, MICHELIN URL and current award row; new rows also the staged name, town, address, pin and, for restaurants, phone, website and `property_name`. No difference.
+- Stars and Keys (3/2/1) equal MICHELIN's live selection: CZ 0/1/8, 0/1/10; HR 0/1/13, 1/1/10; SI 1/1/8, 0/1/4; HU 0/1/8, 0/2/10; MT 0/1/6, 0/1/5; LT 0/0/4, 0/0/2; LV 0/0/2, 0/0/3; EE 0/1/1, 0/1/1; RS 0/0/2, 0/1/3.
+- Totals moved by exactly the staged amounts: restaurants +54, hotels +21, award rows +81, cities +35, countries +4, links +3.
+
+**Decided by the product owner:** new rows take the MICHELIN page's year, so Hungary 2025 and the others 2026; Stand stays on `guide_year` 2026 (QA-455). Towns keep MICHELIN's spelling: Sibenik, Porec, Korcula, Lasko, Carlsbad (QA-458).
+
+**Platán Gourmet:** MICHELIN announced no loss and the closing date is unknown, so the current 2026 row has a NULL value and NULL `announced_on`, and `status_since` is NULL. The closure rests on the venue's own site. Its link to `hotel_268` stays.
+
+**Not written:** Demo, Vilnius: MICHELIN's article of 5 Jun 2026 gives it a star, but the live list does not and the page gives 404 (QA-456). No Place ID on any new row; no phone or website on new hotels; 9 restaurant phones and 3 restaurant websites unconfirmed (QA-457). Six restaurants where MICHELIN does not name the host hotel (QA-459).
+
+**Near-miss:** comparing Key tiers per country hid Croatia's two changes, which cancel out. Only the per-hotel comparison found them (QA-454).
+
+---
+
 # 2026-11-04 — Greece: stars 2027 and Key hotels 2026 (QA-430–QA-435)
 
 | | |
