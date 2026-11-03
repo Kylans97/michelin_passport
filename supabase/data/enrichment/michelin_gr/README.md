@@ -1,15 +1,22 @@
 # Griekenland: MICHELIN-sterren, Key-hotels en World's 50 Best (2026-11-04)
 
-Status: **voorbereid, niet toegepast.** Het rapport is op 2026-11-04 goedgekeurd door de
-product owner, met de drie adviezen hieronder. De migratie en SQL zijn alleen op een lokale
-testdatabase gedraaid. Naar productie gaan ze pas na expliciete toestemming.
+Status: **TOEGEPAST op productie op 2026-11-04**, op verzoek van de product owner, vanaf
+`claude/michelin-gr-2026`.
 
-Toepassen, in deze volgorde:
+1. `supabase/migrations/20261101290000_add_gr_cities.sql` (20 steden) met
+   `supabase db push --linked`. De ledger ging van 142 naar 143; lokaal en remote komen overeen.
+2. `prepared_gr_2027.sql` met `supabase db query --linked -f <absoluut pad>`. Elke controle slaagde.
 
-1. `supabase/migrations/20261101290000_add_gr_cities.sql` (20 steden), met
-   `supabase db push --linked`
-2. `prepared_gr_2027.sql` (één transactie, die stopt bij elke mislukte controle), met
-   `supabase db query --linked -f <absoluut pad>`
+Daarna is elke rij vergeleken met `gr_control.csv`
+(`_source/production_after_apply_20261104.json`): GR staat op sterren 0/1/19 en Keys 1/9/64.
+`hotel_716` houdt bewust zijn opgeslagen punt. De totalen bewogen precies met wat was
+voorbereid. De app zelf is niet geopend; `restaurants_full` en `hotels_full` tonen wel alle
+20 en 74 rijen.
+
+**Let op:** de migratie staat nog niet op `main`. Tot de merge loopt de ledger van productie
+één voor op `main`.
+
+Hieronder staat het rapport zoals het is goedgekeurd.
 
 ## Conclusie
 
@@ -41,7 +48,7 @@ De totalen kloppen met MICHELIN's eigen publicaties:
 
 Het hotel heeft alleen **geen enkele rij in `award_history`**. Die moet erbij: 2026, 3 Keys.
 
-## Wat de migratie en SQL toevoegen
+## Wat de migratie en SQL hebben toegevoegd
 
 1. **20 steden.** Zie `gr_new_cities.csv`.
 2. **20 restaurants** met `inclusion_reason = 'michelin_star'`, plus een huidige rij in
@@ -133,7 +140,7 @@ Buiten de scope en dus niet opgenomen: 10 Bib Gourmand en 32 Recommended-restaur
 Op een lokale PostgreSQL 17, gevuld met de GR-export door `test_scratch.py`. Docker en PostGIS
 ontbreken hier, dus de echte Supabase-stack is niet gebruikt: het geography-type en de functies
 zijn nagebootst, en de tabellen zijn alleen op de relevante kolommen en beperkingen nagebouwd.
-Een echte toepassing op productie is dus niet getest.
+De eerste echte run was dus productie zelf.
 
 - **Met migratie:** 20 restaurants (0/1/19), 74 hotels (1/9/64), 94 award-rijen, 21 steden,
   1 koppeling, 6 `property_name`, 16 telefoonnummers, 20 websites. Alle punten liggen in Griekenland.
@@ -143,7 +150,6 @@ Een echte toepassing op productie is dus niet getest.
   al in gebruik is, een bezette code, een bestaande award-rij van `hotel_716` en een extra
   Grieks restaurant.
 
-Na toepassing: controleer `supabase migration list --linked` en werk beide changelogs bij.
 
 ## Bestanden
 
