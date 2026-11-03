@@ -1,8 +1,8 @@
 # Tsjechië (CZ): MICHELIN-sterren en Keys
 
-Status: **voorbereid, niets toegepast.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.
+Status: **getest op een scratch-database, nog niet toegepast op productie.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.
 
-| | MICHELIN live (3/2/1) | Productie nu | Na toevoegen, zonder de achtergehouden rijen |
+| | MICHELIN live (3/2/1) | Productie nu | Na toepassen |
 |---|---|---|---|
 | Sterren | 0/1/8 | 0/0/0 | 0/1/8 |
 | Keys | 0/1/10 | 0/0/0 | 0/1/10 |

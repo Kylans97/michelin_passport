@@ -1,6 +1,13 @@
 # Negen Europese landen: MICHELIN-sterren en Keys (2026-11-04)
 
-Status: **voorbereid, niets toegepast.** Er is geen migratie of SQL geschreven en niets naar productie of `main` gegaan. De controlebestanden wachten op het oordeel van de product owner.
+Status: **getest op een scratch-database, nog niet toegepast op productie.** De product owner heeft op 2026-11-04 de 54 restaurants, de 21 hotels en alle voorstellen hieronder geaccepteerd. Voor productie is nog een apart akkoord nodig.
+
+Toepassen, in deze volgorde:
+
+1. `supabase/migrations/20261101300000_add_europe9_2026_countries_and_cities.sql` (4 landen, 35 plaatsen), met `supabase db push --linked`.
+2. `prepared_europe9_2026.sql` (één transactie; breekt af bij elke mislukte controle), met `supabase db query --linked -f <absoluut pad>`.
+
+**Griekenland:** die sessie heeft migratie `20261101290000` op een eigen branch, nog niet toegepast. Wordt deze eerst toegepast, dan heeft de Griekse straks `db push --include-all` nodig.
 
 ## Resultaat
 
@@ -19,9 +26,9 @@ Status: **voorbereid, niets toegepast.** Er is geen migratie of SQL geschreven e
 
 De verdeling is 3/2/1. De live selectie is identiek aan de telling van 31 oktober. De Key-totalen kloppen met MICHELIN's wereldartikel van 18 september 2026.
 
-## Achtergehouden
+## Apart behandeld (in het controlebestand: `HELD BACK`)
 
-| Rij | Productie | MICHELIN | Wat er aan de hand is | Voorstel | Issue |
+| Rij | Productie | MICHELIN | Wat er aan de hand is | Besluit | Issue |
 |---|---|---|---|---|---|
 | HU `rest_0427` Platán Gourmet | 2 sterren | geen | Gestopt volgens de eigen site; MICHELIN-pagina geeft 404 | Rij bewaren, sterren NULL, status gesloten, 2 sterren als geschiedenis | QA-450 |
 | HU `hotel_277` Párisi Udvar | 2 Keys | 1 | Importfout: 1 Key in 2025 en 2026 | Rij van 2026 ter plekke corrigeren (QA-384) | QA-451 |
@@ -33,17 +40,16 @@ De verdeling is 3/2/1. De live selectie is identiek aan de telling van 31 oktobe
 
 De twee Kroatische rijen stonden niet in de opdracht. De verdeling verbergt ze, omdat de wijzigingen elkaar opheffen.
 
-## Te beslissen
+## Besloten op 2026-11-04
 
-1. **Toevoegen:** mogen de 54 restaurants en 21 hotels erin, met de 4 landen en 35 plaatsen die ze nodig hebben?
-2. **Achtergehouden rijen:** elke rij hierboven volgens voorstel, of anders?
-3. **Editiejaar (QA-455):**
-   - Hongarije staat bij MICHELIN nog op 2025, maar Stand staat in productie op `guide_year` 2026.
-   - Tsjechië heet in MICHELIN's artikel "2025", terwijl de pagina's 2026 zeggen.
-   - Voorstel: het jaar van de pagina voor nieuwe rijen, en Stand ongemoeid laten.
-4. **Plaatsnamen (QA-458):** MICHELIN schrijft Sibenik, Porec, Korcula en Lasko zonder diakrieten. Voorstel: overnemen zoals eerdere passes, tenzij je Šibenik, Poreč, Korčula en Laško wilt.
+1. **Toevoegen:** de 54 restaurants en 21 hotels, met 4 landen en 35 plaatsen.
+2. **Apart behandelde rijen:** alle zeven volgens de tabel hierboven.
+3. **Editiejaar (QA-455):** nieuwe rijen krijgen het jaar van de pagina (Hongarije 2025, de rest 2026). Stand blijft op 2026.
+4. **Plaatsnamen (QA-458):** MICHELIN's schrijfwijze, dus Sibenik, Porec, Korcula, Lasko en Carlsbad.
 
-## Niet voorgesteld
+**Eigen invulling bij Platán Gourmet:** MICHELIN kondigde geen verlies aan en Hongarije heeft nog geen 2026-editie. De 2 sterren worden 2025; de huidige rij is 2026 met lege waarde en lege `announced_on`, en `status_since` blijft leeg, omdat de sluitingsdatum onbekend is.
+
+## Niet meegenomen
 
 - **Demo, Vilnius (QA-456):** het artikel van 5 juni 2026 noemt een ster, maar de live lijst niet en de pagina geeft 404.
 - **Place ID's (QA-457):** deze sessie had geen toegang tot Google.
@@ -64,24 +70,30 @@ De twee Kroatische rijen stonden niet in de opdracht. De verdeling verbergt ze, 
 
 Bestaande rijen zijn gekoppeld op MICHELIN's id als de URL is opgeslagen. Anders telt het dichtstbijzijnde punt in hetzelfde land: binnen 150 m en duidelijk dichterbij dan het op één na dichtstbijzijnde. Een grens van 500 m bleek te ruim: in Valletta liggen drie Key-hotels binnen die afstand van elkaar. Er is nergens op naam gematcht.
 
-## Getest en niet getest
+## Getest (`test_scratch.sh`)
 
-- **Gecontroleerd:** de controlebestanden bevatten precies dezelfde ids en waarden als de telling van 31 oktober, geen dubbele codes en de Key-totalen uit het wereldartikel.
-- **Niet getest:** er is geen SQL, dus ook geen proefdraai.
+Op een lokale PostgreSQL 17, gevuld met de productie-export. De beperkingen van productie zijn nagebouwd. Docker en PostGIS waren er niet, dus `geography` en de twee ST-functies zijn vervangers.
 
-## Na toestemming
+- **Zonder de migratie:** breekt af, er verandert niets.
+- **Met de migratie:** alle negen landen staan op MICHELIN's verdeling; 119 rijen uit de controlebestanden vergeleken zonder verschil; zes koppelingen; de geschiedenis van de zeven rijen klopt.
+- **Opnieuw draaien:** het bestand breekt af; de migratie doet niets.
+- **Controles:** een hernoemde rij, een gewijzigde Key, een bezette code en een al gevulde URL breken het hele bestand af.
+- **Productie ongewijzigd:** een tweede read-only export op 2026-11-04 was gelijk aan de eerste.
 
-Nog te maken, en pas dan te testen op een scratch-database:
+**Niet getest:** echte PostGIS, de volledige productie-schema's en de app. De schema-afdruk komt uit de export en de gelezen beperkingen.
 
-1. Een migratie voor `countries` (CZ, LT, LV, EE met tijdzone) en de 35 plaatsen, genummerd na de hoogste bestaande migratie.
-2. Een `prepared_*.sql` volgens `michelin_pl_tr_2026/`.
-3. De regels in `docs/Architecture/Michelin_Database/CHANGELOG.md`, die in deze pass bewust niet is aangeraakt.
+## Bij toepassen nog te doen
+
+- Regels in `docs/Architecture/Michelin_Database/CHANGELOG.md` en `docs/Plannnig/CHANGELOG.md`, de status in `qa_issues.csv`, en een controle met een nieuwe export.
 
 ## Bestanden
 
 - `controle/<CC>.csv`: elke rij met actie, bron en achtergehouden waarden.
 - `rapporten/<CC>.md`: kort rapport per land.
 - `match_report.csv`: elke afweging, met issue-id.
+- `prepared_europe9_2026.sql`: de wijziging zelf.
 - `build_europe9.py`: schrijft de controlebestanden en rapporten uit `_source/`.
+- `build_sql.py`: schrijft de migratie en de SQL uit de controlebestanden.
+- `test_scratch.sh`, `test_seed.py`, `test_verify.py`: de test.
 - `fetch_michelin.py`, `fetch_reviews.py`, `check_sites.py`: halen de bronnen op.
 - Gereserveerd: `rest_4100..rest_4153`, `hotel_3100..hotel_3120`, QA-450..QA-459.

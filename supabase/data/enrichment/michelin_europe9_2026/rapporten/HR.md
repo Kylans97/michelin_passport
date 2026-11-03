@@ -1,8 +1,8 @@
 # Kroatië (HR): MICHELIN-sterren en Keys
 
-Status: **voorbereid, niets toegepast.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.
+Status: **getest op een scratch-database, nog niet toegepast op productie.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.
 
-| | MICHELIN live (3/2/1) | Productie nu | Na toevoegen, zonder de achtergehouden rijen |
+| | MICHELIN live (3/2/1) | Productie nu | Na toepassen |
 |---|---|---|---|
 | Sterren | 0/1/13 | 0/1/0 | 0/1/13 |
 | Keys | 1/1/10 | 1/1/8 | 1/1/10 |
@@ -21,12 +21,12 @@ Sterren aangekondigd op 2026-06-25; Keys op 2026-09-18. Het Key-totaal klopt met
 ## Aandachtspunten
 
 - **Plaatsnamen (QA-458).** MICHELIN's lijst schrijft Sibenik, Porec en Korcula zonder diakrieten; zo staan ze nu voorgesteld.
-- **Twee Key-wijzigingen achtergehouden (QA-454).** Dit stond niet in de telling: de verdeling klopt toevallig wel, doordat de twee elkaar opheffen. Villa Dubrovnik ging van 1 naar 2 Keys, Palace Elisabeth Hvar van 2 naar 1. Productie heeft beide nog op de waarde van 2025.
+- **Twee Key-wijzigingen apart behandeld (QA-454).** Dit stond niet in de telling: de verdeling klopt toevallig wel, doordat de twee elkaar opheffen. Villa Dubrovnik ging van 1 naar 2 Keys, Palace Elisabeth Hvar van 2 naar 1. Productie heeft beide nog op de waarde van 2025.
 - **Twee sites zonder bevestiging (QA-457).** Cap Aureo heeft geen link bij MICHELIN; Alfred Keller alleen een boekingslink. Beide blijven leeg.
 
-## Achtergehouden
+## Apart behandeld
 
-Deze rijen gaan niet mee tot je erover beslist hebt.
+Door de product owner besloten op 2026-11-04, volgens het voorstel in `controle/`.
 
 | Code | Naam | Productie | MICHELIN | Issue |
 |---|---|---|---|---|

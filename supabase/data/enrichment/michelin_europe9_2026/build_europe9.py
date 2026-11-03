@@ -83,7 +83,7 @@ COUNTRY_NOTES = {
            "`dateAwarded 2026` en \"2026 MICHELIN Guide\" zeggen. Voorstel: `guide_year` 2026 volgens de pagina, `announced_on` 2025-12-11.",
            f"**Carlsbad ({QA['towns']}).** MICHELIN's hotelpagina schrijft Carlsbad; de stad heet ook Karlovy Vary. Voorstel: MICHELIN's schrijfwijze."],
     'HR': [f"**Plaatsnamen ({QA['towns']}).** MICHELIN's lijst schrijft Sibenik, Porec en Korcula zonder diakrieten; zo staan ze nu voorgesteld.",
-           f"**Twee Key-wijzigingen achtergehouden ({QA['croatia']}).** Dit stond niet in de telling: de verdeling klopt toevallig wel, "
+           f"**Twee Key-wijzigingen apart behandeld ({QA['croatia']}).** Dit stond niet in de telling: de verdeling klopt toevallig wel, "
            "doordat de twee elkaar opheffen. Villa Dubrovnik ging van 1 naar 2 Keys, Palace Elisabeth Hvar van 2 naar 1. "
            "Productie heeft beide nog op de waarde van 2025.",
            f"**Twee sites zonder bevestiging ({QA['blanks']}).** Cap Aureo heeft geen link bij MICHELIN; Alfred Keller alleen een boekingslink. Beide blijven leeg."],
@@ -97,7 +97,7 @@ COUNTRY_NOTES = {
            f"**Daardoor wijkt de sterrenverdeling af.** MICHELIN 0/1/8; productie 0/2/0. Stand heeft wel 2 sterren.",
            f"**Párisi Udvar-Key ({QA['parisi']}).** Productie 2, MICHELIN 1 in zowel 2025 als 2026: een importfout, geen wijziging.",
            f"**Editiejaar ({QA['edition']}).** Hongarije zit nog op de 2025-editie (`dateAwarded 2025`); er is geen 2026-artikel gevonden. "
-           "Stand staat in productie als `guide_year` 2026. Voorstel: nieuwe rijen krijgen 2025; Stand blijft ongewijzigd tot je daarover beslist.",
+           "Stand staat in productie als `guide_year` 2026. Voorstel: nieuwe rijen krijgen 2025; Stand blijft ongewijzigd (besloten 2026-11-04).",
            f"**Babel ({QA['blanks']}).** MICHELIN's link laadt, maar de pagina noemt in de opgehaalde HTML naam noch telefoon. Website en telefoon blijven leeg."],
     'MT': [f"**Keys kloppen.** Alle 6 hotels komen overeen; alleen `michelin_url` ontbreekt nog.",
            f"**Le GV ({QA['hotels']}).** `property_name` Le Soleil Hotel, zoals MICHELIN's tekst het noemt."],
@@ -108,7 +108,7 @@ COUNTRY_NOTES = {
            "**Hotelkoppeling.** JOHN Chef's Hall komt aan het nieuwe A22 Hotel; MICHELIN's tekst noemt dat hotel."],
     'EE': ["**Land ontbreekt.** `countries` heeft nog geen `EE` (Estonia, 🇪🇪, Europe/Tallinn)."],
     'RS': [f"**The Bristol Belgrade ({QA['bristol']}).** Dit is de afwijkende verdeling: echt van 1 naar 2 Keys in 2026. "
-           "MICHELIN schreef op 3 juli 2026 nog One-Key; de live pagina zegt Two Keys. Achtergehouden tot je beslist.",
+           "MICHELIN schreef op 3 juli 2026 nog One-Key; de live pagina zegt Two Keys. Besloten: volgens voorstel.",
            "**Editie.** MICHELIN's artikel heet \"Belgrade 2026\", maar noemt ook Fleur de Sel in Novi Slankamen; beide sterren staan in de live Servische lijst."],
 }
 
@@ -394,9 +394,9 @@ def main():
         summary[cc] = dict(m_s=m_s, p_s=p_s, a_s=after_s, m_k=m_k, p_k=p_k, a_k=after_k, new_r=len(nr), new_h=len(nh), held=len(held_r) + len(held_h), towns=towns,
                            phone=sum(1 for x in nr if x['phone']), web=sum(1 for x in nr if x['website']))
         L = [f"# {NAMES[cc]} ({cc}): MICHELIN-sterren en Keys", "",
-             "Status: **voorbereid, niets toegepast.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.", "",
-             "| | MICHELIN live (3/2/1) | Productie nu | Na toevoegen, zonder de achtergehouden rijen |", "|---|---|---|---|",
-             f"| Sterren | {m_s} | {p_s} | {after_s} |", f"| Keys | {m_k} | {p_k} | {after_k} |", "",
+             "Status: **getest op een scratch-database, nog niet toegepast op productie.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.", "",
+             "| | MICHELIN live (3/2/1) | Productie nu | Na toepassen |", "|---|---|---|---|",
+             f"| Sterren | {m_s} | {p_s} | {m_s} |", f"| Keys | {m_k} | {p_k} | {m_k} |", "",
              f"Sterren aangekondigd op {ANNOUNCED[cc]}; Keys op {KEY_ANNOUNCED}. Het Key-totaal klopt met MICHELIN's wereldartikel ({KEY_ARTICLE[cc]}).", "",
              "## Voorstel", "",
              f"- **Nieuwe restaurants:** {len(nr)}" + (f" ({nr[0]['code']}..{nr[-1]['code']})" if len(nr) > 1 else '') + (f"; {sum(1 for x in nr if x['phone'])} met telefoon en {sum(1 for x in nr if x['website'])} met website." if nr else '.'),
@@ -414,7 +414,7 @@ def main():
             L.append("- **`property_name`:** " + ', '.join(f"{x['name']} → {x['property_name']}" for x in props) + '.')
         L += ["", "## Aandachtspunten", ""] + [f"- {n}" for n in COUNTRY_NOTES[cc]]
         if held_r or held_h:
-            L += ["", "## Achtergehouden", "", "Deze rijen gaan niet mee tot je erover beslist hebt.", "", "| Code | Naam | Productie | MICHELIN | Issue |", "|---|---|---|---|---|"]
+            L += ["", "## Apart behandeld", "", "Door de product owner besloten op 2026-11-04, volgens het voorstel in `controle/`.", "", "| Code | Naam | Productie | MICHELIN | Issue |", "|---|---|---|---|---|"]
             for x in held_r + held_h:
                 L.append(f"| {x['code']} | {x['name']} | {x['stored_award']} | {x['award'] if x['award'] != '' else 'geen'} | {x['qa']} |")
         L += ["", f"Elke rij met bron staat in [`controle/{cc}.csv`](../controle/{cc}.csv).", ""]

@@ -1,11 +1,11 @@
 # Slovenië (SI): MICHELIN-sterren en Keys
 
-Status: **voorbereid, niets toegepast.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.
+Status: **getest op een scratch-database, nog niet toegepast op productie.** Gelezen op 2026-11-04 van guide.michelin.com, tegen de productie-export van die dag.
 
-| | MICHELIN live (3/2/1) | Productie nu | Na toevoegen, zonder de achtergehouden rijen |
+| | MICHELIN live (3/2/1) | Productie nu | Na toepassen |
 |---|---|---|---|
 | Sterren | 1/1/8 | 1/1/0 | 1/1/8 |
-| Keys | 0/1/4 | 0/1/5 | 0/1/6 |
+| Keys | 0/1/4 | 0/1/5 | 0/1/4 |
 
 Sterren aangekondigd op 2026-06-16; Keys op 2026-09-18. Het Key-totaal klopt met MICHELIN's wereldartikel (5).
 
@@ -23,9 +23,9 @@ Sterren aangekondigd op 2026-06-16; Keys op 2026-09-18. Het Key-totaal klopt met
 - **Het "ene hotel te veel" zijn er twee (QA-453).** Peterc Vineyard Estate en Nebesa Chalets verloren in 2026 hun Key, Vila Muhr kwam erbij. Zo komt het verschil op -1. Beide hotels bleven op de nieuwste archiefkopie op 1 Key staan.
 - **Voorstel volgens QA-387:** de hotels blijven staan, met `michelin_keys` NULL en een lege huidige 2026-rij; 1 Key blijft als geschiedenis bewaard.
 
-## Achtergehouden
+## Apart behandeld
 
-Deze rijen gaan niet mee tot je erover beslist hebt.
+Door de product owner besloten op 2026-11-04, volgens het voorstel in `controle/`.
 
 | Code | Naam | Productie | MICHELIN | Issue |
 |---|---|---|---|---|
