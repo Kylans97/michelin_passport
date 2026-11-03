@@ -1,7 +1,15 @@
 # Griekenland: MICHELIN-sterren, Key-hotels en World's 50 Best (2026-11-04)
 
-Status: **onderzoek, ter goedkeuring.** Er is geen migratie of SQL geschreven en niets
-naar productie gegaan. De productiestand is alleen gelezen.
+Status: **voorbereid, niet toegepast.** Het rapport is op 2026-11-04 goedgekeurd door de
+product owner, met de drie adviezen hieronder. De migratie en SQL zijn alleen op een lokale
+testdatabase gedraaid. Naar productie gaan ze pas na expliciete toestemming.
+
+Toepassen, in deze volgorde:
+
+1. `supabase/migrations/20261101290000_add_gr_cities.sql` (20 steden), met
+   `supabase db push --linked`
+2. `prepared_gr_2027.sql` (één transactie, die stopt bij elke mislukte controle), met
+   `supabase db query --linked -f <absoluut pad>`
 
 ## Conclusie
 
@@ -33,9 +41,7 @@ De totalen kloppen met MICHELIN's eigen publicaties:
 
 Het hotel heeft alleen **geen enkele rij in `award_history`**. Die moet erbij: 2026, 3 Keys.
 
-## Wat een migratie zou toevoegen
-
-Pas na goedkeuring:
+## Wat de migratie en SQL toevoegen
 
 1. **20 steden.** Zie `gr_new_cities.csv`.
 2. **20 restaurants** met `inclusion_reason = 'michelin_star'`, plus een huidige rij in
@@ -54,21 +60,21 @@ Pas na goedkeuring:
 | Patio | The Margi | recensie, zelfde adres |
 | SENSE | AthensWas | recensie, zelfde adres |
 | The Zillers Rooftop Gastronomy | The Zillers, Athens | zelfde adres en telefoonnummer |
-| Tudor Hall | King George | alleen de eigen site: beslispunt 2 |
+| Tudor Hall | King George | alleen de eigen site (QA-433) |
 
 Restaurants krijgen ook:
 
 - **Website:** alle 20. MICHELIN's link laadt en noemt het restaurant.
 - **Telefoon:** 16 van de 20, alleen als het nummer op de eigen site staat.
 
-Rijcodes worden pas bij de migratie toegekend, omdat andere sessies ook nummers reserveren.
+Rijcodes: `rest_4000`-`rest_4019` en `hotel_3000`-`hotel_3072`. Ze zijn gereserveerd in de
+gedeelde notities en de SQL stopt als een code bezet is.
 
 ## Achtergehouden
 
-- **Geen Google Place IDs** voor de 93 nieuwe rijen (QA-431, gereserveerd). Er is in deze sessie
-  geen Places-sleutel, dus dit is niet gecontroleerd. Ze blijven leeg tot een aparte
-  `find-place-id`-ronde. QA-430 is gereserveerd voor de import zelf; beide gaan pas bij de
-  migratie in `qa_issues.csv` en de changelog.
+- **Geen Google Place IDs** voor de 93 nieuwe rijen (QA-431). Er is in deze sessie geen
+  Places-sleutel, dus dit is niet gecontroleerd. Ze blijven leeg tot een aparte
+  `find-place-id`-ronde.
 - **4 telefoonnummers van restaurants** (Pelagos, Lauda, Soil, Delta): MICHELIN's nummer
   staat niet op de eigen site.
 - **Alle telefoonnummers en websites van de 73 hotels.** MICHELIN's hotelpagina's hebben geen
@@ -100,16 +106,14 @@ Buiten de scope en dus niet opgenomen: 10 Bib Gourmand en 32 Recommended-restaur
   Key-artikel over 2025 maar hebben nu geen Key. Ze staan niet in `hotels`, dus ze vallen
   buiten de scope en worden niet toegevoegd.
 
-## Beslispunten
+## Besloten op 2026-11-04 (QA-432, QA-433)
 
 1. **Crete als stad (6 hotels).** MICHELIN geeft als plaats alleen het eiland, zoals bij
-   Santorini en Mykonos. Advies: zo overnemen, want de adressen zijn te ongelijk om een
-   plaats af te leiden.
+   Santorini en Mykonos. De adressen zijn te ongelijk om een plaats af te leiden.
 2. **Tudor Hall → `property_name` King George.** Dit rust op de eigen site ("On the 7th Floor
-   of King George"). MICHELIN's recensie zegt alleen "a hotel". Advies: overnemen.
+   of King George"). MICHELIN's recensie zegt alleen "a hotel".
 3. **Kastri en Mouzaki als stad.** Bij Tainaron Blue Retreat en Montanema geeft MICHELIN een
-   regio als plaats (Peloponnese, Thessaly). Ik gebruik de plaats uit het adres. Advies:
-   overnemen.
+   regio als plaats (Peloponnese, Thessaly). De plaats komt uit het adres.
 
 ## Wat niet is getest of vastgesteld
 
@@ -123,7 +127,23 @@ Buiten de scope en dus niet opgenomen: 10 Bib Gourmand en 32 Recommended-restaur
   het Grieks. De pin van MICHELIN is het sterkste locatiegegeven.
 - **Sitecontrole:** "noemt het restaurant" is een tekstcontrole op één pagina.
 - **Keuken:** MICHELIN's waarde staat in het controlebestand maar is niet aan `cuisines` gekoppeld.
-- **SQL:** er is nog geen SQL, dus ook niets op een testdatabase gedraaid.
+
+## Getest
+
+Op een lokale PostgreSQL 17, gevuld met de GR-export door `test_scratch.py`. Docker en PostGIS
+ontbreken hier, dus de echte Supabase-stack is niet gebruikt: het geography-type en de functies
+zijn nagebootst, en de tabellen zijn alleen op de relevante kolommen en beperkingen nagebouwd.
+Een echte toepassing op productie is dus niet getest.
+
+- **Met migratie:** 20 restaurants (0/1/19), 74 hotels (1/9/64), 94 award-rijen, 21 steden,
+  1 koppeling, 6 `property_name`, 16 telefoonnummers, 20 websites. Alle punten liggen in Griekenland.
+- **Zonder migratie:** stopt, niets toegepast.
+- **Tweede keer draaien:** stopt, geen wijziging. De migratie zelf kan veilig opnieuw.
+- **Stopt ook, zonder iets toe te passen,** bij een hernoemde `hotel_716`, een MICHELIN-id dat
+  al in gebruik is, een bezette code, een bestaande award-rij van `hotel_716` en een extra
+  Grieks restaurant.
+
+Na toepassing: controleer `supabase migration list --linked` en werk beide changelogs bij.
 
 ## Bestanden
 
@@ -131,7 +151,10 @@ Buiten de scope en dus niet opgenomen: 10 Bib Gourmand en 32 Recommended-restaur
   verplichte kolommen uit `PROVENANCE_SCHEMA.md`. `match_method = none_new_row` is hier toegevoegd
   voor rijen zonder bestaande productierij.
 - **`gr_new_cities.csv`:** steden met het aantal rijen.
-- **`build_gr_control.py`:** bouwt beide uit `_source/` en stopt als een telling of award afwijkt.
+- **`prepared_gr_2027.sql`:** de voorbereide data, gegenereerd.
+- **`build_gr_control.py`:** bouwt de CSV's, de migratie en de SQL uit `_source/` en stopt als
+  een telling of award afwijkt.
+- **`test_scratch.py`:** vult de testdatabase.
 - **`fetch_michelin.py` en `check_sites.py`:** ophalen en sitecontrole.
 - **`_source/`:** de ruwe MICHELIN-gegevens, de lijsten van the50.com en de productie-export
   van 2026-11-04, beperkt tot GR.
