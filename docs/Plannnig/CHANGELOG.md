@@ -22,10 +22,6 @@ The format follows Keep a Changelog.
   first real run was production. Its opening checks and the row-by-row
   comparison afterwards found no difference. The risk recurs on any
   machine without Docker.
-- This migration exists only on `claude/michelin-gr-2026` until that
-  branch is merged, so production's ledger is ahead of `main` by one.
-  A `supabase db push` from `main` before the merge reports the
-  difference.
 
 ---
 

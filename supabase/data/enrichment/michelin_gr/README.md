@@ -13,9 +13,6 @@ Daarna is elke rij vergeleken met `gr_control.csv`
 voorbereid. De app zelf is niet geopend; `restaurants_full` en `hotels_full` tonen wel alle
 20 en 74 rijen.
 
-**Let op:** de migratie staat nog niet op `main`. Tot de merge loopt de ledger van productie
-één voor op `main`.
-
 Hieronder staat het rapport zoals het is goedgekeurd.
 
 ## Conclusie
