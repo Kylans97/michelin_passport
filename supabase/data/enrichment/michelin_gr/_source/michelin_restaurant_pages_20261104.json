@@ -1,0 +1,1254 @@
+{
+ "fetched_at": "2026-11-03T23:11:02Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/the-zillers",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/the-zillers",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mitropoleos 54",
+     "addressLocality": "Athens",
+     "postalCode": "10563",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "The Zillers Rooftop Gastronomy",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/87368922a4914f979cb029253c9b57b8.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "The Zillers Rooftop Gastronomy",
+     "description": "This restaurant occupies the former family home of the German architect Ernst Zillers, who came to Athens to design some of its public buildings, fell in love with the city and remained here for ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0322 2277",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Contemporary",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/the-zillers",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9757055,
+    "longitude": 23.7294908,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9757055%2C23.7294908"
+   },
+   "website": "https://thezillersathens.com/rooftop-gastronomy/",
+   "tel_link": "tel:+30 21 0322 2277",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "The Zillers Rooftop Gastronomy – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "The Zillers Rooftop Gastronomy – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/pelagos",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/pelagos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Apollonos 40, Vouliagmeni",
+     "addressLocality": "Athens",
+     "postalCode": "166 71",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Pelagos",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/4f52f67f6373491094dc5ecef7a5ceae.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Pelagos",
+     "description": "Looking to escape the hustle and bustle of Athens? Head to the Four Seasons Astir Palace (three MICHELIN Keys), a luxury hotel south of the Greek capital, and make a reservation at Pelagos. This ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0890 1190",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Contemporary",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/pelagos",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.8058168,
+    "longitude": 23.7722339,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.8058168%2C23.7722339"
+   },
+   "website": "https://www.pelagosathens.com",
+   "tel_link": "tel:+30 21 0890 1190",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Pelagos – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Pelagos – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/patio",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/patio",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Litous 11, Vouliagmeni",
+     "addressLocality": "Athens",
+     "postalCode": "16671",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Patio",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/faada131232d49a488e3e30781636a15.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Patio",
+     "description": "Located in Vouliagmeni (a picturesque coastal area on the shores of the Saronic Gulf, half an hour from Athens), this restaurant occupies the charming inner courtyard of the luxurious Margi hotel....",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0892 9160",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/patio",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.8138188,
+    "longitude": 23.7736533,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.8138188%2C23.7736533"
+   },
+   "website": "https://patio.gr/",
+   "tel_link": "tel:+30 21 0892 9160",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Patio – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Patio – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/sense",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/sense",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Dionysiou Areopagitou 5",
+     "addressLocality": "Athens",
+     "postalCode": "117 42",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "SENSE",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/fe4a31f066ce47af8275c857f6ee8fc1.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "SENSE",
+     "description": "Located on the rooftop of the AthensWas boutique hotel—accessed via the lift to the sixth floor and then up a flight of stairs—SENSE features a truly special panoramic terrace, as it offers ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0920 0240",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/sense",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9694381,
+    "longitude": 23.730856,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9694381%2C23.7308560"
+   },
+   "website": "https://www.senserestaurants.com",
+   "tel_link": "tel:+30 21 0920 0240",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "SENSE – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "SENSE – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/see-ds",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/see-ds",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Oumplianis 14, Diocharous 27",
+     "addressLocality": "Athens",
+     "postalCode": "16121",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "see|ds",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/84256698493f4e03860054d1c7970ba5.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "see|ds",
+     "description": "Located in the residential neighbourhood of Ilisia, this restaurant has great character, taking its name from the combination of the word ‘see’ and the initials of the chef himself, Dimos ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0723 5116",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/see-ds",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9730101,
+    "longitude": 23.753633,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9730101%2C23.7536330"
+   },
+   "website": "https://www.seedsrestaurant.gr",
+   "tel_link": "tel:+30 21 0723 5116",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "see|ds – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "see|ds – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/spondi",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/spondi",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Pyrronos 5",
+     "addressLocality": "Athens",
+     "postalCode": "116 36",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Spondi",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/2343f2f4f3834a58a38e9db5c6690ab2.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Spondi",
+     "description": "At this elegant restaurant in the Pangrati neighbourhood, near the legendary Panathenaic Stadium, enjoy exceptional service in charming vaulted dining rooms and on two Mediterranean-inspired ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0756 4021",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "French",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/spondi",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.965176,
+    "longitude": 23.7431892,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9651760%2C23.7431892"
+   },
+   "website": "https://www.spondi.gr",
+   "tel_link": "tel:+30 21 0756 4021",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Spondi – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Spondi – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/hytra",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/hytra",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Petrou Kokkali 1",
+     "addressLocality": "Athens",
+     "postalCode": "11521",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Hytra",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/e51ee7ffbdde4c76bb57278e0cf23e4e.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Hytra",
+     "description": "If you’re looking for a restaurant with plenty of innate charm, this could be the perfect option for you. Hytra is located inside the lush garden of Megaron Music hall, in a modern building that ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0331 6767",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/hytra",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9813817,
+    "longitude": 23.7528491,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9813817%2C23.7528491"
+   },
+   "website": "https://www.hytra.gr",
+   "tel_link": "tel:+30 21 0331 6767",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Hytra – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Hytra – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/aleria",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/aleria",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Megalou Alexandrou 57",
+     "addressLocality": "Athens",
+     "postalCode": "10435",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Aleria",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/f92403eb0f134b0ba2240adeb725928e.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Aleria",
+     "description": "Time seems to have stood still in this beautiful restaurant in the bohemian neighbourhood of Metaxourgeio; and no wonder, it is housed in a mid-19th-century neoclassical mansion, where the ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0522 2633",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Greek",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/aleria",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9829821,
+    "longitude": 23.7179165,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9829821%2C23.7179165"
+   },
+   "website": "https://www.aleria.gr/en",
+   "tel_link": "tel:+30 21 0522 2633",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Aleria – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Aleria – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/botrini-s",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/botrini-s",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Leof. Vasileos Georgiou B 24B",
+     "addressLocality": "Athens",
+     "postalCode": "152 33",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Botrini's",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/2315e4982dad4ab9a2b3fb2919d639b1.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Botrini's",
+     "description": "When you’re thinking about a restaurant for a special occasion, the aim is to enjoy a unique experience. This is precisely the case at Botrini’s, where guests can embark upon a gastronomic journey...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0685 7323",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Mediterranean Cuisine",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/botrini-s",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "China UnionPay, Credit card / Debit card accepted, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 38.0232617,
+    "longitude": 23.7936937,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.0232617%2C23.7936937"
+   },
+   "website": "https://www.botrinis.com",
+   "tel_link": "tel:+30 21 0685 7323",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Botrini's – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Botrini's – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/tudor-hall",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/tudor-hall",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Vasileos Georgiou 3A - 7th floor",
+     "addressLocality": "Athens",
+     "postalCode": "10564",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Tudor Hall",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/4183cd93673e4e7e8c4b13063d8af1c1.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Tudor Hall",
+     "description": "If the prospect of lunch or dinner on the elegant terrace of a hotel appeals to you, with the added bonus of background piano music and the eternal Acropolis as a backdrop, Tudor Hall is ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0333 0265",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/tudor-hall",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9762726,
+    "longitude": 23.7349168,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9762726%2C23.7349168"
+   },
+   "website": "https://www.tudorhall.gr",
+   "tel_link": "tel:+30 21 0333 0265",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Tudor Hall – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Tudor Hall – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/makris-athens",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/makris-athens",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Astiggos 10, Ermou 119",
+     "addressLocality": "Athens",
+     "postalCode": "10555",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Makris Athens",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/ca98b9dd86d8481cbf84d9d793241445.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Makris Athens",
+     "description": "Located at the foot of the Parthenon, this restaurant comes as something of a surprise for various reasons. Firstly, for the stunning view from its terrace; secondly, for its setting, in a ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 6004 7777",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/makris-athens",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9767678,
+    "longitude": 23.7230301,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9767678%2C23.7230301"
+   },
+   "website": "https://makrisathens.com/en/",
+   "tel_link": "tel:+30 21 6004 7777",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Makris Athens – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Makris Athens – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/soil",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/soil",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ferekidou 5",
+     "addressLocality": "Athens",
+     "postalCode": "116 35",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Soil",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/2651d5c0057b4b6cb2fd810f3f85007b.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Soil",
+     "description": "There are just a few restaurants capable of creating a connection between food, nature and a love of one’s country, but here chef Tasos Mantis manages to express his full passion for all three ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0751 3505",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/soil",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9669545,
+    "longitude": 23.7429946,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9669545%2C23.7429946"
+   },
+   "website": "https://www.soilrestaurant.gr",
+   "tel_link": "tel:+30 21 0751 3505",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Soil – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Soil – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/simul",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/simul",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ipsilantou 63",
+     "addressLocality": "Athens",
+     "postalCode": "11521",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Simul",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/23cc4582d90c41dfb2360ee0a3005bbc.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Simul",
+     "description": "Charisma, irreverence, boldness, youth, technique, and quality are just a few of the words that come to mind when we think of Simul, a restaurant in the cosmopolitan Kolonaki neighbourhood that ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0722 4737",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/simul",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9778519,
+    "longitude": 23.7504729,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9778519%2C23.7504729"
+   },
+   "website": "https://simul.gr/",
+   "tel_link": "tel:+30 21 0722 4737",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Simul – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Simul – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/herve",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/herve",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Trion Ierarchon 170",
+     "addressLocality": "Athens",
+     "postalCode": "118 52",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Hervé",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/41f534a745994df58ae6b119265080f3.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Hervé",
+     "description": "The harmony between the three co-owners of this restaurant is clearly evident, as they all have the same vision – something that can also seen in the professionalism of the staff, who are always ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0347 1332",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "Yes",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/herve",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9666571,
+    "longitude": 23.7093681,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9666571%2C23.7093681"
+   },
+   "website": "https://www.herve-restaurant.com",
+   "tel_link": "tel:+30 21 0347 1332",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Hervé – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. Free online booking on the MICHELIN Guide's official website. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Hervé – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Nik. Nomikou, Oia",
+     "addressLocality": "Santorini",
+     "postalCode": "84702",
+     "addressCountry": "GRC",
+     "addressRegion": "South Aegean"
+    },
+    "name": "Lycabettus",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/cb4e7e4cead84350bc5788c210d86e75.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Lycabettus",
+     "description": "The terrace of this restaurant, part of the Andronis Luxury Suite hotel, is one of the most photographed spots in Oia—and it’s no wonder, since it looks like a real-life natural balcony ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 2286 186602",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "starRating": "Two Stars: Excellent cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two Stars: Excellent cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 36.4618789,
+    "longitude": 25.3798595,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.4618789%2C25.3798595"
+   },
+   "website": "https://www.lycabettusrestaurant.com/",
+   "tel_link": "tel:+30 2286 186602",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Lycabettus – a Two Stars: Excellent cooking restaurant in the 2027 MICHELIN Guide Greece. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Lycabettus – Santorini - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/lauda",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/lauda",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Oia",
+     "addressLocality": "Santorini",
+     "postalCode": "84702",
+     "addressCountry": "GRC",
+     "addressRegion": "South Aegean"
+    },
+    "name": "Lauda",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/6ccdd27351084e3ebae2246d90ff7f39.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Lauda",
+     "description": "Up for some Greek cuisine made with French techniques? Here, on the elegant terrace of the Andronis Boutique Hotel, located on the cliffs surrounding the Santorini caldera, Lauda can boast the ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 2286 072182",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 36.4620283,
+    "longitude": 25.3788314,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.4620283%2C25.3788314"
+   },
+   "website": "https://www.laudarestaurant.com/?utm_source=gmb&utm_medium=website&utm_campaign=gmb_lauda_tracking",
+   "tel_link": "tel:+30 2286 072182",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Lauda – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Lauda – Santorini - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Nik. Nomikou, Oia",
+     "addressLocality": "Santorini",
+     "postalCode": "84702",
+     "addressCountry": "GRC",
+     "addressRegion": "South Aegean"
+    },
+    "name": "Botrini's Santorini",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/1fcb110c99684dfaa65a91e0099d9bc4.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Botrini's Santorini",
+     "description": "Here, enhancing the culinary offerings of Katikies Santorini - Pelagos House (one MICHELIN Key), this romantic restaurant is the island branch of the award-winning Botrini's in Athens. It is found...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 2286 186654",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 36.4620651,
+    "longitude": 25.3823755,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.4620651%2C25.3823755"
+   },
+   "website": "https://botrinissantorini.com/",
+   "tel_link": "tel:+30 2286 186654",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Botrini's Santorini – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Botrini's Santorini – Santorini - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/selene",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/selene",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Old Catholic Monastery, Thira",
+     "addressLocality": "Santorini",
+     "postalCode": "84700",
+     "addressCountry": "GRC",
+     "addressRegion": "South Aegean"
+    },
+    "name": "Selene",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/b29a4a7541e2405e927feec17635c56a.jpg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Selene",
+     "description": "Nestled among the narrow streets of the Venetian neighbourhood of Fira, this restaurant sits in the charming courtyard of an 18th-century monastery that has now been converted into the Katikies ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 2286 022249",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Greek",
+    "url": "https://guide.michelin.com/en/south-aegean/santorini_1772287/restaurant/selene",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, China UnionPay, Credit card / Debit card accepted, Diners Club credit card, Discover Card, JCB, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 36.4199127,
+    "longitude": 25.4322473,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.4199127%2C25.4322473"
+   },
+   "website": "https://selene.gr/",
+   "tel_link": "tel:+30 2286 022249",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Hotels",
+    "Discover more:"
+   ],
+   "description": "Selene – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Selene – Santorini - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/delta",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/delta",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Leof. Andrea Siggrou 364",
+     "addressLocality": "Athens",
+     "postalCode": "17674",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "Delta",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/fc0406223bb542d187307e89a8c79572.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "Delta",
+     "description": "On the fifth floor of the Stavros Niarchos Foundation Cultural Center (SNFCC), a cutting-edge complex that also houses the National Library of Greece and the Greek National Opera, sits this ...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 698 665 7553",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Creative",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/delta",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "Credit card / Debit card accepted, Diners Club credit card, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Spare no expense",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9391772,
+    "longitude": 23.6913453,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9391772%2C23.6913453"
+   },
+   "website": "https://www.deltarestaurant.gr",
+   "tel_link": "tel:+30 698 665 7553",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "Delta – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "Delta – Athens - a MICHELIN Guide Restaurant"
+  },
+  {
+   "url": "https://guide.michelin.com/en/attica/athens/restaurant/ctc",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/attica/athens/restaurant/ctc",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Plateon 15",
+     "addressLocality": "Athens",
+     "postalCode": "10435",
+     "addressCountry": "GRC",
+     "addressRegion": "Attica"
+    },
+    "name": "CTC Urban Gastronomy",
+    "image": "https://prod-pics.guide.michelin.com/api/public/content/74ed772affa14b4996aaf1d3a6c38e69.jpeg?format=jpeg&w=1000&h=1000",
+    "@type": "Restaurant",
+    "review": {
+     "@type": "Review",
+     "datePublished": "2026-10-20T06:08",
+     "name": "CTC Urban Gastronomy",
+     "description": "If a dining experience under the stars appeals to you, this highly-sought-after restaurant, particularly during the summer months, will definitely fit the bill thanks to its charming urban terrace...",
+     "author": {
+      "@type": "Person",
+      "name": "Michelin Inspector"
+     }
+    },
+    "telephone": "+30 21 0722 8812",
+    "knowsLanguage": "en-GR",
+    "acceptsReservations": "No",
+    "servesCuisine": "Modern Cuisine",
+    "url": "https://guide.michelin.com/en/attica/athens/restaurant/ctc",
+    "starRating": "One Star: High quality cooking",
+    "currenciesAccepted": "EUR",
+    "paymentAccepted": "American Express credit card, Credit card / Debit card accepted, Maestro, Mastercard credit card, Visa credit card",
+    "priceRange": "Special occasion",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One Star: High quality cooking",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     },
+     "dateAwarded": "2027"
+    },
+    "brand": "MICHELIN Guide",
+    "hasDriveThroughService": "False",
+    "latitude": 37.9804964,
+    "longitude": 23.7168694,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.9804964%2C23.7168694"
+   },
+   "website": "https://www.ctc-restaurant.com/",
+   "tel_link": "tel:+30 21 0722 8812",
+   "stay_hotel_urls": [],
+   "sections": [
+    "Nearby Restaurants",
+    "Nearby Hotels",
+    "Discover more:",
+    "Related Reads"
+   ],
+   "description": "CTC Urban Gastronomy – a One Star: High quality cooking restaurant in the 2027 MICHELIN Guide Greece. The MICHELIN inspectors’ point of view, information on prices, types of cuisine and opening hours on the MICHELIN Guide's official website",
+   "title": "CTC Urban Gastronomy – Athens - a MICHELIN Guide Restaurant"
+  }
+ ]
+}

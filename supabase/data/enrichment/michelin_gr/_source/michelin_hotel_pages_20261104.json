@@ -1,0 +1,3822 @@
+{
+ "fetched_at": "2026-11-03T23:14:29Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Ioannina/kamares-boutique-hotel-14471",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Ioannina/kamares-boutique-hotel-14471",
+   "h1": "Kamares Boutique Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "74 Zalokosta",
+     "addressLocality": "Ioannina",
+     "postalCode": "45221",
+     "addressCountry": "GRC",
+     "addressRegion": "Epirus"
+    },
+    "name": "Kamares Boutique Hotel in Ioannina",
+    "description": "Only a handful of historic buildings survived the fire that swept through the Greek castle town of Ioannina in 1820. One of these, a handsome stone mansion near the castle walls, is now home to Kamares Boutique Hotel. Much of its old-world grandeur remains — heavy wooden doors, brick archways, ornate fireplaces, sumptuous antiques, and original tile flooring. Rooms exude period charm, too, with exposed stone or brick walls, decorative bedframes, and vaulting wood-beamed ceilings.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1484684.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 39.6677,
+     "longitude": 20.858
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Ioannina/kamares-boutique-hotel-14471",
+    "numberOfRooms": 9,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=39.6677%2C20.858",
+    "telephone": "+30 26510 74120",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Ioannina/stoes-boutique-hotel-14472",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Ioannina/stoes-boutique-hotel-14472",
+   "h1": "Stoes Boutique Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Efthimiou Christou 11",
+     "addressLocality": "Ioannina",
+     "postalCode": "45444",
+     "addressCountry": "GRC",
+     "addressRegion": "Epirus"
+    },
+    "name": "Stoes Boutique Hotel in Ioannina",
+    "description": "Around the corner from Ioannina Castle, an old stone archway leads into the elegant Stoes Boutique Hotel. This mansion dates back to the late 19th century, and much of its old-world character has been preserved, but the hotel’s aesthetic is clean and contemporary — high ceilings, whitewashed walls, gleaming black-and-white tiled floors, a well-placed chandelier.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1492634.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 39.66959,
+     "longitude": 20.85636
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Ioannina/stoes-boutique-hotel-14472",
+    "numberOfRooms": 16,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=39.66959%2C20.85636",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "+30 2651 075700",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Milos/domes-white-coast-milos-12611",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Milos/domes-white-coast-milos-12611",
+   "h1": "Domes White Coast Milos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mytakas Triovasalou, Milos",
+     "addressLocality": "Milos",
+     "postalCode": "84800",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Domes White Coast Milos in Milos",
+    "description": "If Greek-island luxury hospitality sometimes feels formulaic, it’s because the formula is just about perfect: luxe accommodations, ocean views, Mediterranean flavors, and an atmosphere that’s laid all the way back. The best hotels in the genre excel because of the details, and in the case of Domes White Coast Milos it might be the modernist simplicity of the design that sets it apart, above all else; it looks fantastic, and it’s got everything else taken care of, from the private pools that come with each unit to the open-air restaurant on the terrace overlooking the ever-impressive Aegean seascape.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1477688.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.74362,
+     "longitude": 24.48157
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Milos/domes-white-coast-milos-12611",
+    "numberOfRooms": 50,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.74362%2C24.48157",
+    "telephone": "+30 2287 440500",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Milos/noma-milos-14513",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Milos/noma-milos-14513",
+   "h1": "Noma Milos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Κήπος",
+     "addressLocality": "Milos",
+     "postalCode": "84800",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Noma Milos in Milos",
+    "description": "Perched high over the Aegean on a remote stretch of the island’s southern coastline, Noma Milos is a sophisticated and sustainably built boutique hotel with sweeping water views. Rooms and suites are modern and high-ceilinged, outfitted in calming earth tones, with private sea-facing patios and minimalist furnishings in wood, stone, and clay. It’s a place designed for romantic getaways — each room has a single king-sized bed, and no children are allowed — and apart from a massage or a wine tasting, there's nothing to do except lounge around and enjoy the idyllic surroundings. When temptation strikes to dip in the crystalline water in the distance, the nearest beach is just a few minutes’ drive down the hill.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1451628.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.66657,
+     "longitude": 24.42976
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Milos/noma-milos-14513",
+    "numberOfRooms": 7,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.66657%2C24.42976",
+    "telephone": "+30 2152158354",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Patras/the-bold-type-hotel-12192",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Patras/the-bold-type-hotel-12192",
+   "h1": "The Bold Type Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "10, Pal. Patron Germanou",
+     "addressLocality": "Patras",
+     "postalCode": "26225",
+     "addressCountry": "GRC",
+     "addressRegion": "Peloponnese"
+    },
+    "name": "The Bold Type Hotel in Patras",
+    "description": "In Patras, on the northwest coast of the Peloponnese, the perfectly preserved structure of a 19th-century neoclassical residence serves as the backdrop for audaciously minimalist contemporary interiors by architect Empi Spathi. The Bold Type is as luxurious as its design is bold, from its swanky rooms and suites with their Bauhaus and Danish modernist influences to its restaurant, in a tranquil courtyard behind the old house, serving upscale Mediterranean fare in a setting that feels like something straight out of a mid-century cinematic romance.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1635337.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.24317,
+     "longitude": 21.73731
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Patras/the-bold-type-hotel-12192",
+    "numberOfRooms": 10,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.24317%2C21.73731",
+    "telephone": "+30 261 022 0012",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Perdika/elix-12613",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Perdika/elix-12613",
+   "h1": "Elix by Mar-Bella Collection",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Παραλία, Karavostasi ",
+     "addressLocality": "Perdika",
+     "postalCode": "46100",
+     "addressCountry": "GRC",
+     "addressRegion": "Epirus"
+    },
+    "name": "Elix by Mar-Bella Collection in Perdika",
+    "description": "The Mar-Bella Collection is a group of stylish and luxurious resorts located mainly in Corfu. Elix rivals any island hotel in terms of visual appeal, yet it stands on the mainland, overlooking the idyllic Karavostasi Beach and the island of Corfu in the distance.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1697078.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 39.33827,
+     "longitude": 20.2908
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Perdika/elix-12613",
+    "numberOfRooms": 146,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=39.33827%2C20.2908",
+    "telephone": "+30 2665 097000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Syros/argini-syros-14222",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Syros/argini-syros-14222",
+   "h1": "Argini Syros",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "11 Apollonos",
+     "addressLocality": "Syros",
+     "postalCode": "84100",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Argini Syros in Syros",
+    "description": "This island’s gorgeous beaches and rich cultural history form the backdrop for Argini Syros, a 19th-century private residence that’s been transformed into a magnificent 11-room luxury boutique hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1526166.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.4456,
+     "longitude": 24.94474
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Syros/argini-syros-14222",
+    "numberOfRooms": 11,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.4456%2C24.94474",
+    "telephone": "+30 2281 089022",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Syros/aristide-hotel-12088",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Syros/aristide-hotel-12088",
+   "h1": "Aristide Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Babagiotou 27",
+     "addressLocality": "Syros",
+     "postalCode": "84100",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Aristide Hotel in Syros",
+    "description": "Syros’s status as one of the less-traveled Cycladic islands doesn’t preclude it from being home to one of the most attractive hotels in the region. A Neoclassical and Art Deco mansion in the old center of Hermoupolis is now the Aristide Hotel, a passion project for author, economist, and climate activist Oana Aristide. It’s as green as can be in the sustainable sense, and remarkably colorful in the literal sense; the interiors are eclectic, luxurious, and full of carefully selected contemporary artworks. The hotel’s kitchen serves a menu that draws heavily on local and organic ingredients, some grown on-site; the rooftop bar is a little slice of heaven.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1634277.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.4478,
+     "longitude": 24.94716
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Syros/aristide-hotel-12088",
+    "numberOfRooms": 9,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.4478%2C24.94716",
+    "telephone": "+30 698 662 4881",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Thessaly/montanema-handmade-village-16601",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Thessaly/montanema-handmade-village-16601",
+   "h1": "Montanema Handmade Village",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Plastiras Lake 430 60, Mouzaki",
+     "addressLocality": "Thessaly",
+     "postalCode": "43060",
+     "addressCountry": "GRC"
+    },
+    "name": "Montanema Handmade Village in Thessaly",
+    "description": "In 1999, a hiker named Christos Athanasiadis came across a small wooden hut in the fog of the Anthochori gorge, among fir, walnut and cedar trees, 4.5 kilometers from Lake Plastira, and liked it enough to build a village around it. Stone by stone, Montanema grew into a cluster of cottages, mansions and villas where exposed timber, open fireplaces and wood-burning stoves define the atmosphere. Three wood-fired ovens and a kitchen garden supply the restaurant; the cellar is stocked with wines from small Greek producers. Deeply handmade, in every sense.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1592690.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 39.347607,
+     "longitude": 21.647766
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Thessaly/montanema-handmade-village-16601",
+    "numberOfRooms": 34,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=39.347607%2C21.647766",
+    "telephone": "+30 2445045220",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/amaliada/dexamenes-seaside-hotel-12209",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/amaliada/dexamenes-seaside-hotel-12209",
+   "h1": "Dexamenes Seaside Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Beach Front, Kourouta Beach",
+     "addressLocality": "Amaliada",
+     "postalCode": "272 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Peloponnese"
+    },
+    "name": "Dexamenes Seaside Hotel in Amaliada",
+    "description": "Once a winery, this beachside plot in the western Peloponnese has found its true calling, its weathered century-old concrete forms converted into the stunning, industrial-chic Dexamenes Seaside Hotel. Here owner Nikos Karaflos and architects K-Studio have achieved maximal effect with light-handed interventions, removing the winemaking machinery and converting the concrete storage tanks one-to-one into hotel rooms.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1297612.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.767592,
+     "longitude": 21.296204
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/amaliada/dexamenes-seaside-hotel-12209",
+    "numberOfRooms": 34,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.767592%2C21.296204",
+    "petsAllowed": "Our hotel is pet friendly but we can accommodate only dogs.",
+    "telephone": "(+30) 697 252 1806",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/anthology-of-athens-14473",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/anthology-of-athens-14473",
+   "h1": "Anthology of Athens",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "4 Andrea Syngrou Avenue, Acropolis, 11742 ",
+     "addressLocality": "Athens",
+     "postalCode": "11742",
+     "addressCountry": "GRC"
+    },
+    "name": "Anthology of Athens in Athens",
+    "description": "Ideally located for lovers of ancient monuments, Anthology of Athens stands between the Acropolis and what remains of the Temple of Olympian Zeus; many rooms, in fact, look directly out over the columns and toppled stones of the latter site. It takes some confident contemporary architecture to stand confidently in such company, but this five-story structure is up to the task.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1486857.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.96949,
+     "longitude": 23.7314
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/anthology-of-athens-14473",
+    "numberOfRooms": 18,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.96949%2C23.7314",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "+30 21 1103 4800",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/dolli-s",
+    "/en/attica/athens/restaurant/esthio",
+    "/en/attica/athens/restaurant/gallina",
+    "/en/attica/athens/restaurant/nolan",
+    "/en/attica/athens/restaurant/ovio",
+    "/en/attica/athens/restaurant/sense",
+    "/en/attica/athens/restaurant/the-zillers",
+    "/en/attica/athens/restaurant/thirio",
+    "/en/attica/athens/restaurant/tudor-hall",
+    "/en/attica/athens/restaurant/zohos"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/ergon-house-athens-12351",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/ergon-house-athens-12351",
+   "h1": "ERGON House Athens",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "23 Mitropoleos Str",
+     "addressLocality": "Athens",
+     "postalCode": "105 57",
+     "addressCountry": "GRC"
+    },
+    "name": "ERGON House Athens in Athens",
+    "description": "Ergon House is first and foremost a multi-pronged food market, featuring a butcher, a fishmonger, a baker, a grocer, and a restaurant, all under the same Ergon Foods banner that’s been exporting upmarket Greek flavors all across Europe for a decade. It just so happens that above this “modern-day Agora” is a 38-room boutique hotel — and the hotel, it turns out, is no afterthought, but a fully realized holistic hospitality experience, one that takes service and comfort as seriously as it takes its cuisine.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1634086.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.975332,
+     "longitude": 23.731565
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/ergon-house-athens-12351",
+    "numberOfRooms": 38,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.975332%2C23.731565",
+    "telephone": "+30 210 0109090",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.1,
+     "reviewCount": 27,
+     "ratingCount": 27,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/ateno-greek-cuisine",
+    "/en/attica/athens/restaurant/dolli-s",
+    "/en/attica/athens/restaurant/gb-roof-garden",
+    "/en/attica/athens/restaurant/nolan",
+    "/en/attica/athens/restaurant/ovio",
+    "/en/attica/athens/restaurant/sense",
+    "/en/attica/athens/restaurant/the-zillers",
+    "/en/attica/athens/restaurant/thirio",
+    "/en/attica/athens/restaurant/tudor-hall",
+    "/en/attica/athens/restaurant/zohos"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/four-seasons-astir-palace-12274",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/four-seasons-astir-palace-12274",
+   "h1": "Four Seasons Astir Palace Hotel Athens",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "40 Apollonos Street, Vouliagmeni",
+     "addressLocality": "Athens",
+     "postalCode": "16671",
+     "addressCountry": "GRC"
+    },
+    "name": "Four Seasons Astir Palace Hotel Athens in Athens",
+    "description": "On the Athens Riviera, 30 miles from the city center, the Sixties-era Astir Palace has been brought squarely into the 21st century as a part of the ever-luxe Four Seasons family. Its distinctive terraced construction means the views from the spacious balconies are still as abundant as ever; the interiors are sedate compared to the Sixties but quite stylish, and they’re faultlessly luxurious. Creature comforts are plentiful — the pools, the spa, the sea-facing cabanas — and among its several bars and restaurants the flagship, Pelagos, is the proud recipient of a MICHELIN Star.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1692444.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.80483,
+     "longitude": 23.77166
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/four-seasons-astir-palace-12274",
+    "numberOfRooms": 303,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.80483%2C23.77166",
+    "telephone": "+30 21 0890 1040",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Three MICHELIN Keys · An extraordinary stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/amphibian",
+    "/en/attica/athens/restaurant/delta",
+    "/en/attica/athens/restaurant/gallina",
+    "/en/attica/athens/restaurant/humain",
+    "/en/attica/athens/restaurant/patio",
+    "/en/attica/athens/restaurant/pelagos",
+    "/en/attica/athens/restaurant/soil",
+    "/en/attica/athens/restaurant/spondi",
+    "/en/attica/athens/restaurant/upon",
+    "/en/attica/athens/restaurant/varoulko-seaside"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/hotel-grande-bretagne-7272",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/hotel-grande-bretagne-7272",
+   "h1": "Hotel Grande Bretagne",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1 Vasileos Georgiou A Str., Syntagma Square",
+     "addressLocality": "Athens",
+     "postalCode": "105 64",
+     "addressCountry": "GRC"
+    },
+    "name": "Hotel Grande Bretagne in Athens",
+    "description": "The Hotel Grande Bretagne is a bit of a departure for a Greek luxury hotel: rather than some sprawling compound out on a rock by the Aegean, this one is a Victorian mansion right in the bustling heart of Athens. Yes, you read that right — the meticulously restored facade is all Victorian, and wouldn't look out of place alongside some of London's classic hotels.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1638693.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.976223,
+     "longitude": 23.735294
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/hotel-grande-bretagne-7272",
+    "numberOfRooms": 320,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.976223%2C23.735294",
+    "telephone": "(30)(210) 3330 000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.9,
+     "reviewCount": 1,
+     "ratingCount": 1,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/ateno-greek-cuisine",
+    "/en/attica/athens/restaurant/dolli-s",
+    "/en/attica/athens/restaurant/fine-mess",
+    "/en/attica/athens/restaurant/gb-roof-garden",
+    "/en/attica/athens/restaurant/nolan",
+    "/en/attica/athens/restaurant/ovio",
+    "/en/attica/athens/restaurant/the-zillers",
+    "/en/attica/athens/restaurant/thirio",
+    "/en/attica/athens/restaurant/tudor-hall",
+    "/en/attica/athens/restaurant/zohos"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/monument-13492",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/monument-13492",
+   "h1": "Monument",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "11 Kalamida",
+     "addressLocality": "Athens",
+     "postalCode": "105 54",
+     "addressCountry": "GRC"
+    },
+    "name": "Monument in Athens",
+    "description": "This house is a late-19th-century work by Ernst Ziller, a man whose architectural fingerprints are all over modern Greece. After a substantial yet sensitive restoration by the local architecture firm MPlusM, it has become a small and chic boutique hotel that aims to preserve an important piece of local culture while updating it with contemporary design and luxury-hotel comforts.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1373717.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.979485,
+     "longitude": 23.725959
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/monument-13492",
+    "numberOfRooms": 9,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.979485%2C23.725959",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+30 21 0324 1425",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/aleria",
+    "/en/attica/athens/restaurant/ateno-greek-cuisine",
+    "/en/attica/athens/restaurant/ctc",
+    "/en/attica/athens/restaurant/dolli-s",
+    "/en/attica/athens/restaurant/linou-soumpasis-k-sia",
+    "/en/attica/athens/restaurant/makris-athens",
+    "/en/attica/athens/restaurant/nolan",
+    "/en/attica/athens/restaurant/ovio",
+    "/en/attica/athens/restaurant/the-zillers",
+    "/en/attica/athens/restaurant/zohos"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/not-hotel-14486",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/not-hotel-14486",
+   "h1": "NOT Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "16 Voutadon",
+     "addressLocality": "Athens",
+     "postalCode": "11854",
+     "addressCountry": "GRC"
+    },
+    "name": "NOT Hotel in Athens",
+    "description": "In an artsy Athens neighborhood not far from the Temple of Hephaestus, there’s a centuries-old stone building with a colorful past: once a brothel, it later served as a barn, an army barracks, and later a film studio. Today it’s home to the character-filled NOT Hotel. The name is an acronym — NOT stands for No Ordinary Things — an apt description of the eclectic project, its carefully restored interiors enlivened by glamorous 1920s-inspired details. Set around a picturesque central courtyard planted with olive trees, flowers, and herbs are rooms and suites with exposed brick or stone walls, antique writing desks, patterned throw rugs, and marble bathrooms with walk-in showers. Other highlights include a stylish outdoor swimming pool and a culinary program centering around house-made olive oil and locally produced wines.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1451641.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.97862,
+     "longitude": 23.71374
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/not-hotel-14486",
+    "numberOfRooms": 21,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.97862%2C23.71374",
+    "telephone": " +30 216 0002 310",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/aleria",
+    "/en/attica/athens/restaurant/ateno-greek-cuisine",
+    "/en/attica/athens/restaurant/cerdo-negro-1985",
+    "/en/attica/athens/restaurant/ctc",
+    "/en/attica/athens/restaurant/dolli-s",
+    "/en/attica/athens/restaurant/herve",
+    "/en/attica/athens/restaurant/linou-soumpasis-k-sia",
+    "/en/attica/athens/restaurant/makris-athens",
+    "/en/attica/athens/restaurant/sole-giaguaro-athens-italian-dining-house",
+    "/en/attica/athens/restaurant/the-zillers"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/oneonly-aesthesis-14468",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/oneonly-aesthesis-14468",
+   "h1": "One&Only Aesthesis",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "58 Leoforos Poseidonos, Glifada",
+     "addressLocality": "Athens",
+     "postalCode": "16674",
+     "addressCountry": "GRC"
+    },
+    "name": "One&Only Aesthesis in Athens",
+    "description": "Though the Athenian Riviera’s beach hotel scene had its heyday back in the 1960s, the region is undergoing a renaissance with the advent of stylish resorts like One&Only Aesthesis. This exclusive gated enclave, set on a peninsula overlooking Asteras Beach, features a vintage-inspired main building and a collection of luxurious bungalows. Some face the sea and others are tucked into Mediterranean gardens, but all have floor-to-ceiling windows and midcentury modern interiors lined with pale timber and native stone. Bungalows and waterfront villas open onto gorgeous private gardens with pools, fireplaces, and outdoor showers framed by olive trees.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1464148.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.85712,
+     "longitude": 23.75047
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/oneonly-aesthesis-14468",
+    "numberOfRooms": 127,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.85712%2C23.75047",
+    "telephone": "+30 21 6686 1000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/amphibian",
+    "/en/attica/athens/restaurant/delta",
+    "/en/attica/athens/restaurant/gallina",
+    "/en/attica/athens/restaurant/humain",
+    "/en/attica/athens/restaurant/patio",
+    "/en/attica/athens/restaurant/pelagos",
+    "/en/attica/athens/restaurant/soil",
+    "/en/attica/athens/restaurant/spondi",
+    "/en/attica/athens/restaurant/upon",
+    "/en/attica/athens/restaurant/varoulko-seaside"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/the-dolli-at-acropolis-a-hotel-to-live-13193",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/the-dolli-at-acropolis-a-hotel-to-live-13193",
+   "h1": "THE DOLLI at Acropolis, A Hotel to Live",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mitropoleos 49",
+     "addressLocality": "Athens",
+     "postalCode": "10556",
+     "addressCountry": "GRC"
+    },
+    "name": "THE DOLLI at Acropolis, A Hotel to Live in Athens",
+    "description": "Plenty of Athenian hotels are set within sight of the Parthenon, but few do as much with the view as the Dolli at Acropolis. It’s set in a neoclassical building from 1925, to which has been added a rooftop infinity pool and an upscale international restaurant that takes in an extraordinary panorama. And what’s inside is far from shabby — this is not just a stylish boutique hotel but a luxurious one as well. The high ceilings and oversized windows make the rooms feel even larger than they are, and the décor is both visually distinctive and tastefully high-end.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1673660.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.97581,
+     "longitude": 23.72813
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/the-dolli-at-acropolis-a-hotel-to-live-13193",
+    "numberOfRooms": 46,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.97581%2C23.72813",
+    "telephone": "+30 21 6004 7000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.6,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/ateno-greek-cuisine",
+    "/en/attica/athens/restaurant/dolli-s",
+    "/en/attica/athens/restaurant/linou-soumpasis-k-sia",
+    "/en/attica/athens/restaurant/makris-athens",
+    "/en/attica/athens/restaurant/nolan",
+    "/en/attica/athens/restaurant/ovio",
+    "/en/attica/athens/restaurant/the-zillers",
+    "/en/attica/athens/restaurant/thirio",
+    "/en/attica/athens/restaurant/tudor-hall",
+    "/en/attica/athens/restaurant/zohos"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/athens/xenodocheio-milos-athens-12606",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/athens/xenodocheio-milos-athens-12606",
+   "h1": "Xenodocheio Milos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3-5 Kolokotroni",
+     "addressLocality": "Athens",
+     "postalCode": "10562",
+     "addressCountry": "GRC"
+    },
+    "name": "Xenodocheio Milos in Athens",
+    "description": "Xenodocheio Milos is named not directly for the island of Milos but for chef Costas Spiliadis’s Milos restaurants, and you’d be right to suspect that this Athens city-center luxury hotel features a kitchen that’s substantially above average. The accommodations, too, are a cut above, walking the line between minimalism and warmth, with comforts that mark this as a proper high-end luxury boutique hotel. It’s got a small spa of its own, as well as facilities for Pilates and yoga; the restaurant, Estiatorio Milos, serves an artful interpretation of traditional Mediterranean flavors, and attracts locals and guests alike.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1361749.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.97725,
+     "longitude": 23.73313
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/athens/xenodocheio-milos-athens-12606",
+    "numberOfRooms": 43,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.97725%2C23.73313",
+    "telephone": "+30 21 6600 3300",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.4,
+     "reviewCount": 7,
+     "ratingCount": 7,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/attica/athens/restaurant/ateno-greek-cuisine",
+    "/en/attica/athens/restaurant/dolli-s",
+    "/en/attica/athens/restaurant/fine-mess",
+    "/en/attica/athens/restaurant/gb-roof-garden",
+    "/en/attica/athens/restaurant/nolan",
+    "/en/attica/athens/restaurant/ovio",
+    "/en/attica/athens/restaurant/the-zillers",
+    "/en/attica/athens/restaurant/thirio",
+    "/en/attica/athens/restaurant/tudor-hall",
+    "/en/attica/athens/restaurant/zohos"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/acro-suites-13554",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/crete/acro-suites-13554",
+   "h1": "Acro Suites",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mononaftis Bay, Aghia Pelaghia ",
+     "addressLocality": "Crete",
+     "postalCode": "715 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Acro Suites in Crete",
+    "description": "Perhaps inspired by similarly situated dwellings on the island of Santorini, Acro Suites brings cliffside romance and carved-rock drama to the north coast of Crete. This adults-only resort-style luxury boutique hotel is the smaller and more reserved sister to the Sea Side Resort, right next door — an arrangement that allows Acro Suites’ guests to use Sea Side’s substantial facilities, but not the other way around.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1380295.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.419164,
+     "longitude": 25.018141
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/crete/acro-suites-13554",
+    "numberOfRooms": 49,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.419164%2C25.018141",
+    "petsAllowed": "Pets 4 kg and under are allowed on property",
+    "telephone": "+30 2810 812240",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/domes-zeen-chania-9526",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/crete/domes-zeen-chania-9526",
+   "h1": "Domes Zeen Chania",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Apteron Rd.",
+     "addressLocality": "Crete",
+     "postalCode": "73100",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Domes Zeen Chania in Crete",
+    "description": "Domes Zeen Chania, on the northwest coast of Crete, is not only blessed with a spectacular natural setting — it’s also outfitted with top-flight luxury comforts, and thanks to its designers, the Berlin-based Lambs and Lions, it’s one of the most aesthetically distinguished hotels in the region, its modernist geometries warmed by natural textures and warm, earthy neutral tones.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1672917.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.508616,
+     "longitude": 23.997065
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/crete/domes-zeen-chania-9526",
+    "numberOfRooms": 102,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.508616%2C23.997065",
+    "telephone": "+302310810624",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.3,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/kapsaliana-village-hotel-14482",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/crete/kapsaliana-village-hotel-14482",
+   "h1": "Kapsaliana Village Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kapsaliana",
+     "addressLocality": "Crete",
+     "postalCode": "74100",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Kapsaliana Village Hotel in Crete",
+    "description": "The historic village of Kapsaliana, built around an old olive mill and surrounded by Crete’s largest olive grove, was all but abandoned in the 1950s. Years later, a local architect discovered the place and transformed it into what it is today: an uncommonly restful and unusually memorable luxury resort by the name of Kapsaliana Village Hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1440969.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.33948,
+     "longitude": 24.62012
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/crete/kapsaliana-village-hotel-14482",
+    "numberOfRooms": 25,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.33948%2C24.62012",
+    "telephone": " +30 2831 083400",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/manili-boutique-suites-villas-14470",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/crete/manili-boutique-suites-villas-14470",
+   "h1": "Manili Boutique Suites & Villas",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Manili",
+     "addressLocality": "Crete",
+     "postalCode": "70100",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Manili Boutique Suites & Villas in Crete",
+    "description": "Tucked away on an atmospheric side street in the Cretan village of Archanes, Manili Boutique Suites & Villas is perhaps a more modern and stylish luxury boutique hotel than you’d expect to find in this corner of the island, a little less than half an hour inland from the city of Heraklion.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1672849.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.23274,
+     "longitude": 25.15959
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/crete/manili-boutique-suites-villas-14470",
+    "numberOfRooms": 26,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.23274%2C25.15959",
+    "petsAllowed": "Pets are not allowed",
+    "telephone": "+30 281 075 3001",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/minos-palace-resort-11884",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/crete/minos-palace-resort-11884",
+   "h1": "Minos Palace Resort",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ammoudiou",
+     "addressLocality": "Crete",
+     "postalCode": "721 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Minos Palace Resort in Crete",
+    "description": "The spectacular Mirabello Bay on the northeastern coast of the island of Crete is the setting for Minos Palace Resort, an unapologetically high-end boutique-style resort whose peninsula location gives it sea views in just about every direction. The private-island illusion is only heightened by the fact that it’s an adults-only hotel; even though it’s just a mile outside of the seaside town of Agios Nikolaos, it achieves a laid-back tranquility that’s reminiscent of some much more secluded hotels.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1636451.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.202644,
+     "longitude": 25.718103
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/crete/minos-palace-resort-11884",
+    "numberOfRooms": 149,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.202644%2C25.718103",
+    "telephone": "+30 28410 25735",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.6,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/crete/pnoe-breathing-life-14480",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/crete/pnoe-breathing-life-14480",
+   "h1": "Pnoé Breathing Life",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Karteros Beach, Heraklion",
+     "addressLocality": "Crete",
+     "postalCode": "71500",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Pnoé Breathing Life in Crete",
+    "description": "Pnoé means “breath” in Greek, and that’s exactly the idea when checking into Pnoé Breathing Life, a sleek beach resort on a private beach outside Crete’s largest city — inhale, exhale, and repeat, whether floating in your personal pool, relaxing in the state-of-the-art spa, or sipping cocktails at the rooftop bar.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1477416.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.33182,
+     "longitude": 25.19997
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/crete/pnoe-breathing-life-14480",
+    "numberOfRooms": 60,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.33182%2C25.19997",
+    "telephone": "+30 281 000 0990",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/kefalonia/eliamos-villas-hotel-spa-13113",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/kefalonia/eliamos-villas-hotel-spa-13113",
+   "h1": "Eliamos Villas Hotel & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Spartia",
+     "addressLocality": "Kefalonia",
+     "postalCode": "281 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Eliamos Villas Hotel & Spa in Kefalonia",
+    "description": "Eliamos Villas Hotel & Spa benefits, first and foremost, from a beautiful location on the south coast of Kefalonia, on a hillside above a beach, looking out over the Ionian Sea. Also auspicious: its owner is an interior designer, and judging by the look of the hotel’s 12 villas, a fine one indeed — these spaces combine crisp contemporary design and the warmth of materials that feel handmade, all without a hint of Greek-island kitsch. There’s a small spa as well as a gym with facilities for yoga and Pilates, and an outdoor infinity pool; the hotel’s restaurant and bar occupy an impressive open-air space.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1389658.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 38.101208,
+     "longitude": 20.564848
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/kefalonia/eliamos-villas-hotel-spa-13113",
+    "numberOfRooms": 12,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=38.101208%2C20.564848",
+    "petsAllowed": " Pets are allowed on request. Charges may be applicable.",
+    "telephone": "+30 2671 171 100",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/albergo-gelsomino-14429",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/kos/albergo-gelsomino-14429",
+   "h1": "ALBERGO GELSOMINO",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Vasileos Georgiou 1 ",
+     "addressLocality": "Kos",
+     "postalCode": "85300",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "ALBERGO GELSOMINO in Kos",
+    "description": "Hotels in the Dodecanese don’t get much more historic than the century-old Albergo Gelsomino, designed and built in 1927 by Italian architect Rodolfo Petracco as a guesthouse for Italian officials. It stands right on the beach, a minute’s walk from the port and the old town, and its unique silhouette cuts a memorable figure along the seaside boulevard.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1634335.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.893744,
+     "longitude": 27.293001
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/kos/albergo-gelsomino-14429",
+    "numberOfRooms": 8,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.893744%2C27.293001",
+    "telephone": "+30 2242 020200",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/mugla/bodrum_2806351/restaurant/bagaras%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/barbarossa",
+    "/en/mugla/bodrum_2806351/restaurant/beynel",
+    "/en/mugla/bodrum_2806351/restaurant/k%C4%B1smet-lokantas%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/kurul-bitez",
+    "/en/mugla/bodrum_2806351/restaurant/sia-eli"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/lango-design-hotel-spa-13480",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/kos/lango-design-hotel-spa-13480",
+   "h1": "Lango Design Hotel & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Lambi Beach",
+     "addressLocality": "Kos",
+     "postalCode": "853 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Lango Design Hotel & Spa in Kos",
+    "description": "Kos has been relatively late to embrace the boutique-hotel boom. With Lango Design Hotel & Spa, however, the island is making up for lost time. This 54-room adults-only luxury boutique hotel is as polished as they come, a vision in near-monochrome minimalism, set right across the road from Lambi Beach and a few minutes’ walk from the Kos town center.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1401356.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.913346,
+     "longitude": 27.27552
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/kos/lango-design-hotel-spa-13480",
+    "numberOfRooms": 54,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.913346%2C27.27552",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "+30 2242049000 ",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/mugla/bodrum_2806351/restaurant/arka-ristorante-pizzeria",
+    "/en/mugla/bodrum_2806351/restaurant/bagaras%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/barbarossa",
+    "/en/mugla/bodrum_2806351/restaurant/beynel",
+    "/en/mugla/bodrum_2806351/restaurant/k%C4%B1smet-lokantas%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/kurul-bitez",
+    "/en/mugla/bodrum_2806351/restaurant/orfoz-restaurant",
+    "/en/mugla/bodrum_2806351/restaurant/otantik-ocakbas%C4%B1",
+    "/en/mugla/bodrum_2806351/restaurant/sia-eli"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/kos/oku-kos-13568",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/kos/oku-kos-13568",
+   "h1": "OKU Kos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Sikamini, 853 00 Marmari, Marmari",
+     "addressLocality": "Kos",
+     "postalCode": "853 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "OKU Kos in Kos",
+    "description": "OKU Kos is an adults-only hideaway that takes the classic village idiom in a decidedly contemporary direction. The rooms and suites are divided among a number of crisply geometric villas, while in their interiors they’re warmed by earth tones, natural textiles, and a general boho-chic vibe. The best suites come with private pools, and the most extravagant units are the beachfront villas; at all levels, though, the accommodations are luxurious, if quietly so.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1481496.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.8659,
+     "longitude": 27.12542
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/kos/oku-kos-13568",
+    "numberOfRooms": 100,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.8659%2C27.12542",
+    "telephone": "+30 2242 440380",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/kranidi/amanzoe-7274",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/kranidi/amanzoe-7274",
+   "h1": "Amanzoe",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Agios Panteleimonas",
+     "addressLocality": "Kranidi",
+     "postalCode": "213 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Peloponnese"
+    },
+    "name": "Amanzoe in Kranidi",
+    "description": "Aman has a hotel in Greece — while that’s not quite all we think you need to know, we’ll understand if a few of you are already entering your dates. Anyway, if you’re at all familiar with what the Aman group does, and you’ve ever laid eyes on a photograph of the Aegean coast, then you already know where we're going with this.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1179329.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.370547,
+     "longitude": 23.11747
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/kranidi/amanzoe-7274",
+    "numberOfRooms": 38,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.370547%2C23.11747",
+    "telephone": "+(30) 275 4772 888",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/monemvasia/kinsterna-hotel-5327",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/monemvasia/kinsterna-hotel-5327",
+   "h1": "Kinsterna Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Agios Stefanos",
+     "addressLocality": "Monemvasia",
+     "postalCode": "230 70",
+     "addressCountry": "GRC",
+     "addressRegion": "Peloponnese"
+    },
+    "name": "Kinsterna Hotel in Monemvasia",
+    "description": "Between the island paradise of the Cyclades and the chic boutiques of the capital, it’s no wonder the international traveler has scant attention left for some of Greece’s lesser-known destinations. One imagines, however, that fans of these lesser-known destinations like it that way. Every booking in Santorini is one more person with whom you won’t have to share Kinsterna, a thirteenth-century estate converted into a boutique hotel, a few miles down the Peloponnese coast from the medieval citadel of Monemvasia.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1671030.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.644278,
+     "longitude": 23.014681
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/monemvasia/kinsterna-hotel-5327",
+    "numberOfRooms": 51,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.644278%2C23.014681",
+    "telephone": "+30 27320-66300",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.4,
+     "reviewCount": 8,
+     "ratingCount": 8,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/amyth-of-mykonos-agios-stefanos-12601",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/amyth-of-mykonos-agios-stefanos-12601",
+   "h1": "Amyth of Mykonos Agios Stefanos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Agios Stefanos ",
+     "addressLocality": "Mykonos",
+     "postalCode": "84600",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Amyth of Mykonos Agios Stefanos in Mykonos",
+    "description": "Just up the hill from the beach at Agios Stefanos is Amyth of Mykonos, a luxury boutique hotel with a decidedly warm, bohemian aesthetic alongside comforts that are normally the purview of a larger resort. Most of the suites come with either an outdoor hot tub or a private pool, and many also feature direct views out to sea. The hotel’s clean, modern lines are warmed by liberal use of natural materials; the textures of wood and stone reinforce the hotel’s connection with nature. Meanwhile the restaurant and poolside bar serve classic Mediterranean dishes and sophisticated cocktails.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670868.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.47084,
+     "longitude": 25.32143
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/amyth-of-mykonos-agios-stefanos-12601",
+    "numberOfRooms": 17,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.47084%2C25.32143",
+    "telephone": " +30 2289 077205",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/boheme-mykonos-town-7577",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/boheme-mykonos-town-7577",
+   "h1": "Boheme Mykonos Town",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mykonos Town",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Boheme Mykonos Town in Mykonos",
+    "description": "There are times when you don’t want to get away from it all. Mykonos isn’t exactly a desert island, but nobody’s asking it to be one. If you’re going there it’s because along with your sun and surf, to paraphrase the Bard, you want to see people and you want to see life. So why not skip the whole shipwreck fantasy and book in to a stylish boutique hotel in Mykonos town itself? We’ve got just the place, as you might well have guessed, and it goes by the name of Boheme Mykonos.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1698481.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.439027,
+     "longitude": 25.330016
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/boheme-mykonos-town-7577",
+    "numberOfRooms": 27,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.439027%2C25.330016",
+    "petsAllowed": "Pets are allowed upon request.",
+    "telephone": "+30 22894 40360",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.2,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/cali-mykonos-13987",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/cali-mykonos-13987",
+   "h1": "Cali Mykonos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Cali Mykonos",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Cali Mykonos in Mykonos",
+    "description": "Arriving at Cali Mykonos is a slow reveal - an ancient olive tree, whitewashed walls, and then the Aegean stretching endlessly below. Carved into a cliff above Kalafatis Beach, it is a quieter, more refined take on Mykonos, where muted tones and contemporary Greek design set a soothing scene. A 130-meter infinity pool curves along the edge, a private beach awaits below, and days unfold between Pilates, yacht excursions, and freshly-caught seafood. A rare moment of stillness on an island known for its energy.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1466333.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.443873,
+     "longitude": 25.422351
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/cali-mykonos-13987",
+    "numberOfRooms": 40,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.443873%2C25.422351",
+    "telephone": "+30 211 100 0022",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/deos-mykonos-a-myconian-collection-hotel-17610",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/deos-mykonos-a-myconian-collection-hotel-17610",
+   "h1": "Deos Mykonos - A Myconian Collection Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Agios Vasileios",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Deos Mykonos - A Myconian Collection Hotel in Mykonos",
+    "description": "Mykonos pairs extraordinary beauty with some of Greece’s most impressive luxury hotels, many of which operate under the Myconian banner. Deos, named after the Greek word for “awe,” is one of them, and it’s aptly named — from its perch on a hillside above the old port it takes in a spectacular island panorama.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1672605.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.4538794829,
+     "longitude": 25.3317997299
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/deos-mykonos-a-myconian-collection-hotel-17610",
+    "numberOfRooms": 42,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.4538794829%2C25.3317997299",
+    "petsAllowed": " Pets are permitted upon request; additional charges may apply.",
+    "telephone": "+30 2289 441500",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/ethereum-mykonos-14481",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/ethereum-mykonos-14481",
+   "h1": "Ethereum Mykonos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Psarou Beach",
+     "addressLocality": "Mykonos",
+     "postalCode": "84600",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Ethereum Mykonos in Mykonos",
+    "description": "There’s no need to choose between elevated ocean views and easy beach access at Ethereum Mykonos. Set in the hills above the Aegean, this luxury boutique hotel offers sweeping vistas of the curving shoreline, but the beautiful Psarou beach — and one of the island’s most exclusive beach clubs — is just a short walk away. Suites are sophisticated and serene with exposed stone walls, floor-to-ceiling windows, modern decor in earth tones, and private terraces with plunge pools and sunbeds, with the best rooms dramatically positioned over the seascape below. Guests are welcome to use the stylish spa, fitness center, bars, and restaurants at the affiliated Palladium Hotel Mykonos across the street.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1451774.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.41675,
+     "longitude": 25.33712
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/ethereum-mykonos-14481",
+    "numberOfRooms": 11,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.41675%2C25.33712",
+    "telephone": "+30 697 285 7870",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/kalesma-mykonos-12089",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/kalesma-mykonos-12089",
+   "h1": "Kalesma Mykonos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Aleomandra",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Kalesma Mykonos in Mykonos",
+    "description": "Mykonos is already as desirable as any destination in the Mediterranean, and the luxe and alarmingly stylish Kalesma only raises the stakes. It’s set on a hilltop on the island’s west side, fifteen minutes from town, and feels like a private refuge — one whose suites and villas pay tribute to classic Cycladic architecture as well as modern interior design, and feature Rick Owens furnishings among their adornments.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1695438.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.41599,
+     "longitude": 25.315732
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/kalesma-mykonos-12089",
+    "numberOfRooms": 52,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.41599%2C25.315732",
+    "petsAllowed": "Pets are allowed. Charges may be applicable.",
+    "telephone": "+30 2289 077222",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-o-14366",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-o-14366",
+   "h1": "Myconian O",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ornos",
+     "addressLocality": "Mykonos",
+     "postalCode": "84600",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Myconian O in Mykonos",
+    "description": "They take sun-drenched Cycladic getaways seriously in the Myconian Collection. This family run local chain is committed to your relaxation, with O being the prime example. Relax under their parasols on the beach with a drink from the bar, then head back to your room with its moody-chic, black-and-white décor. Then, depending on what style of relaxation works for you, head to either the O’ Spa and its stunning cave pool, or ask the team to arrange adventures from horse riding to scuba diving.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1451677.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.4235,
+     "longitude": 25.32329
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-o-14366",
+    "numberOfRooms": 65,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.4235%2C25.32329",
+    "telephone": "(+30) 22894 44000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-panoptis-escape-14475",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-panoptis-escape-14475",
+   "h1": "Myconian Panoptis Escape",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Elia Beach",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Myconian Panoptis Escape in Mykonos",
+    "description": "Like its sister hotels, Myconian Panoptis Escape is a luxurious escape with dazzling sea views — in this case, 360-degree panoramas over Elia Beach and the bright blue Aegean from its clifftop perch. What further sets it apart is an air of exclusivity, thanks in part to the attentive butlers (or Artisans, as they’re called) that serve the hotel’s 21 stylish villas around the clock. Modern and boho-chic, the villas are outfitted with everything you could possibly need, and many have private pools or outdoor Jacuzzis facing the water. A large saltwater infinity pool and sanctuary-like spa offer additional space for relaxing like a Greek god or goddess.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1442358.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.422633,
+     "longitude": 25.397795
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/myconian-panoptis-escape-14475",
+    "numberOfRooms": 18,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.422633%2C25.397795",
+    "petsAllowed": "\\n Pets are allowed on request. No extra charges.",
+    "telephone": "+30 2289 076060",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-blanc-hotel-13148",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-blanc-hotel-13148",
+   "h1": "Mykonos Blanc Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ornos Beach",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Mykonos Blanc Hotel in Mykonos",
+    "description": "Think of a Mykonos luxury boutique hotel and it’s likely what you’re imagining bears a strong resemblance to the Mykonos Blanc Hotel. Set at one end of the picturesque south-facing Ornos Beach — a short walk from its sister hotel, the beachfront Mykonos Ammos Hotel — it’s a picture-perfect slice of Cycladic hospitality, a terraced village of whitewashed villas containing 42 minimalist-chic rooms and suites.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1349208.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.422714,
+     "longitude": 25.325315
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-blanc-hotel-13148",
+    "numberOfRooms": 42,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.422714%2C25.325315",
+    "petsAllowed": "Pets are allowed on request.",
+    "telephone": "+302289027618",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-bliss-9430",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-bliss-9430",
+   "h1": "Mykonos Bliss",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kalo Livadi ",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Mykonos Bliss in Mykonos",
+    "description": "Some call it the “Island of the Winds,” but really, Mykonos is all about the water. With the Aegean Sea as a backdrop, you’d be hard pressed to find a vacation spot here that doesn’t make the most of its exposure to those iconic cerulean waters. But that’s what makes Mykonos Bliss so special: not only do you get incredible views and close proximity to one of the island’s most famous beaches, you also get your own private slice of aqueous paradise.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670940.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.4315,
+     "longitude": 25.402488
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-bliss-9430",
+    "numberOfRooms": 15,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.4315%2C25.402488",
+    "telephone": "+30 22890 72912",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.7,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-grand-hotel-resort-7101",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-grand-hotel-resort-7101",
+   "h1": "Mykonos Grand Hotel & Resort",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Agios Ioannis",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Mykonos Grand Hotel & Resort in Mykonos",
+    "description": "You know what you’re getting into when you book a stay at a luxury hotel on a Greek island, and much of it comes in shades of white or blue. There’s the clear sky and the azure sea, the sparkling pool, the whitewashed stucco and diaphanous drapery billowing in the breeze. So what distinguishes Mykonos Grand Hotel & Resort from all the other gorgeous resorts on the so-called island of the winds?",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1675619.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.42093,
+     "longitude": 25.313668
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/mykonos-grand-hotel-resort-7101",
+    "numberOfRooms": 96,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.42093%2C25.313668",
+    "telephone": "0030 22890 25555",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.6,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/nomad-mykonos-11958",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/nomad-mykonos-11958",
+   "h1": "NOMAD Mykonos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kalo Livadi",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "NOMAD Mykonos in Mykonos",
+    "description": "Half a world away from the similarly named but unrelated boutique hotels in New York and Los Angeles, NOMAD Mykonos is a one-off, a small and luxurious 14-suite adults-only escape that promises splendid isolation on an island that’s not exactly a well-kept secret. The location helps: it’s on the southeast coast, halfway across the island from Mykonos town, a pleasant few minutes’ walk up the road from the lovely Kalo Livadi beach.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670952.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.437246,
+     "longitude": 25.402242
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/nomad-mykonos-11958",
+    "numberOfRooms": 14,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.437246%2C25.402242",
+    "petsAllowed": "Pets are allowed upon request.",
+    "telephone": "+30 22894 40360",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/numo-mykonos-14500",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/numo-mykonos-14500",
+   "h1": "Numo Mykonos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "addressLocality": "Mykonos",
+     "postalCode": "84600",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Numo Mykonos in Mykonos",
+    "description": "Small-scale, retro-chic, and environmentally friendly, Numo Mykonos is a refreshing antidote to the island’s more party-focused hotels. Housed in a beautifully restored historic building on a gently sloping hill above Kalafati Beach, it’s the work of a boutique hotel group that runs the popular Numo Ierapetra, on the island of Crete.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1440990.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.43878,
+     "longitude": 25.41548
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/numo-mykonos-14500",
+    "numberOfRooms": 27,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.43878%2C25.41548",
+    "telephone": "+30 2834 055000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/palladium-hotel-mykonos-14478",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/palladium-hotel-mykonos-14478",
+   "h1": "Palladium Hotel Mykonos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Psarou Beach",
+     "addressLocality": "Mykonos",
+     "postalCode": "84600",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Palladium Hotel Mykonos in Mykonos",
+    "description": "Just up the hill from the lovely Psarou Beach and its glamorous beach club, a collection of modern whitewashed buildings houses the Palladium Hotel Mykonos. The architecture is Cycladic-inspired, but the rooms and suites are boho-chic, outfitted with wood, linen, raffia, and one-of-a-kind artisan-crafted details. All have spacious walk-in showers and furnished balconies, many facing the sea, and some feature private pools or open-air hot tubs. The main pool, surrounded by plush sunbeds, is lively by day and gorgeously illuminated at night. A pair of restaurants, a spa, and a fitness center mean you’ll barely have to leave the premises, though one of the island’s best beaches is just a short walk away.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1671296.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.41774,
+     "longitude": 25.33805
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/palladium-hotel-mykonos-14478",
+    "numberOfRooms": 50,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.41774%2C25.33805",
+    "telephone": "+30 2289 025925",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mykonos/the-townhouse-mykonos-11688",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mykonos/the-townhouse-mykonos-11688",
+   "h1": "The Townhouse Mykonos",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Manto Square, Mykonos Town",
+     "addressLocality": "Mykonos",
+     "postalCode": "846 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "The Townhouse Mykonos in Mykonos",
+    "description": "It’s often the case that the hotels with the most unassuming names are also the most impressive ones. TownHouse Mykonos is no ordinary townhouse, but an 18th-century manor house in the island’s old town, a listed landmark restored, renovated, and expanded over the course of three years into the adults-only luxury boutique hotel you see today.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1671246.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.447421,
+     "longitude": 25.329798
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mykonos/the-townhouse-mykonos-11688",
+    "numberOfRooms": 20,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.447421%2C25.329798",
+    "telephone": "+30 211 198 9344",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/cove-paros-12273",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/paros/cove-paros-12273",
+   "h1": "Cove Paros",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Agioi Anargyroi Beach S.A.",
+     "addressLocality": "Paros",
+     "postalCode": "84401",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Cove Paros in Paros",
+    "description": "None of the Cyclades is an undiscovered secret, but Paros is quieter than some of its neighbors, and a hotel like Cove Paros does nothing to disturb that tranquility. It’s set just above the cove that gives it its name, and comprises some 45 luxurious, contemporary suites, each one provided with lavish bathrooms and plentiful outdoor lounge space — and the five signature suites come with private pools. The rest of the guests make do with the hotel’s impressive infinity pool, or find their way to the beach club for a sunset cocktail followed by dinner at RADA, the hotel’s impressive seaside restaurant.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1335267.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.12506,
+     "longitude": 25.24733
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/paros/cove-paros-12273",
+    "numberOfRooms": 40,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.12506%2C25.24733",
+    "telephone": "+30 2284 028576 / +30 6944146597",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/paros/minois-hotel-13403",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/paros/minois-hotel-13403",
+   "h1": "Andronis Minois",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Parasporos Beach",
+     "addressLocality": "Paros",
+     "postalCode": "844 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Andronis Minois in Paros",
+    "description": "On the relatively sleepy west coast of the island of Paros, close to the capital but comfortably secluded above a picturesque little bay, is Andronis Minois, a 44-room boutique hotel in a style that’s equal parts modern minimalism and Cycladic tradition. It’s less a party hotel and more a luxurious little enclave, but that doesn’t mean it’s any less glamorous — its buildings combine a contemporary take on Greek architecture with a vibrant mix of Western Mediterranean influences, from the Italian Riviera to France, Spain, and even Morocco, all unified by the confident hand of its Athens-based designers.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1366880.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.069252,
+     "longitude": 25.124369
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/paros/minois-hotel-13403",
+    "numberOfRooms": 44,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.069252%2C25.124369",
+    "petsAllowed": "Pets up to 10 Kilos are allowed",
+    "telephone": "+30 2284 022435",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.5,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/peloponnese/tainaron-blue-retreat-8244",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/peloponnese/tainaron-blue-retreat-8244",
+   "h1": "Tainaron Blue Retreat",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kastri ",
+     "addressLocality": "Peloponnese",
+     "postalCode": "230 62",
+     "addressCountry": "GRC"
+    },
+    "name": "Tainaron Blue Retreat in Peloponnese",
+    "description": "Legend has it that the entrance to the home of Hades, god of the underworld, could be found in a cave at Cape Tainaron, not far from Tainaron Blue Retreat. For a location associated with the underworld, this is a pretty idyllic spot: perfectly positioned at the southernmost point of the Greek mainland, undiscovered by the tourist crowds, boasting spectacular sea views to match any Aegean island (fittingly, it’s also said to have been home to a temple to Poseidon, god of the sea). Housed in a centuries-old tower that was designed to keep intruders out, the fully restored guesthouse now welcomes visitors from around the globe, but not too many of them — there are just three suites, one at the base of the tower, another in its upper section, and a third in the adjoining tower house.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1342303.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.436661,
+     "longitude": 22.465772
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/peloponnese/tainaron-blue-retreat-8244",
+    "numberOfRooms": 4,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.436661%2C22.465772",
+    "telephone": "+30 210 8080049",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/rhodes/ammades-all-suites-beach-hotel-spa-adults-only-14531",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/rhodes/ammades-all-suites-beach-hotel-spa-adults-only-14531",
+   "h1": "Ammades All Suites Beach Hotel & Spa - Adults Only",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Leoforos Kallitheas",
+     "addressLocality": "Rhodes",
+     "postalCode": "85100",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Ammades All Suites Beach Hotel & Spa - Adults Only in Rhodes",
+    "description": "No low-lying cluster of villas, Ammades All Suites Beach Hotel is a substantial seafront presence — but, as its name implies, it offers not a mega-resort experience but something far more private and small-scale. With just 45 suites, the hotel maintains a personal touch, while the atmosphere remains pleasantly tranquil—helped by its adults-only policy. And yet the comforts at Ammades go beyond typical boutique-hotel fare: Ammades Taste, the high-end restaurant, is joined by the more casual Ammades Seaside Restaurant and Bar.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1462313.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.35742,
+     "longitude": 28.21104
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/rhodes/ammades-all-suites-beach-hotel-spa-adults-only-14531",
+    "numberOfRooms": 45,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.35742%2C28.21104",
+    "petsAllowed": "\\n Pets allowed: dogs up to 7 kg, max 1 per room. Extra charges apply; prior notification required.",
+    "telephone": "+302241084190",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/rhodes/kokkini-porta-rossa-12285",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/rhodes/kokkini-porta-rossa-12285",
+   "h1": "Kókkini Porta Rossa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Archiepiskopou Efthimiou 24",
+     "addressLocality": "Rhodes",
+     "postalCode": "85100",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Kókkini Porta Rossa in Rhodes",
+    "description": "A setting within the medieval city center of Rhodes would be remarkable enough; in Kókkini Porta Rossa a local family has transformed a derelict house, long ago associated with the Knights of Saint John, into a richly detailed and uniquely atmospheric six-room boutique hotel. It’s an amateur production in the best possible sense of the word: made not out of professional obligation but out of sheer love of the place. In its services it’s perhaps more bed and breakfast than hotel per se; the breakfast, however, is an extremely fine one, and your hosts have prepared a multitude of recommendations for getting around Rhodes.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1626265.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.44014,
+     "longitude": 28.22846
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/rhodes/kokkini-porta-rossa-12285",
+    "numberOfRooms": 6,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.44014%2C28.22846",
+    "telephone": "+30 2241 075114",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-arcadia-9347",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-arcadia-9347",
+   "h1": "Andronis Arcadia",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Oia",
+     "addressLocality": "Santorini",
+     "postalCode": "847 02",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Andronis Arcadia in Santorini",
+    "description": "Most hotels in Oia partake in the same southerly view of the volcanic caldera, but a few brave souls, Andronis Arcadia, opt for something different. Set on the back side of town, this stylish high-end resort faces to the northwest, looking out over the Aegean Sea and the islands in the distance. If it sounds like a sacrifice, it really isn’t — the sunsets, in particular, are extraordinary. But the most remarkable thing about it is the sense of seclusion you get from being just a few hundred meters off the beaten track.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670249.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.464098,
+     "longitude": 25.375455
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-arcadia-9347",
+    "numberOfRooms": 114,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.464098%2C25.375455",
+    "telephone": "+30 2286 027392",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-concept-17564",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-concept-17564",
+   "h1": "Andronis Concept",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Eparchiaki Odos Firon-Ias",
+     "addressLocality": "Santorini",
+     "postalCode": "84702",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Andronis Concept in Santorini",
+    "description": "The concept, essentially, is slow living, and indeed it’s hard not to linger for an extra moment over Andronis Concept’s elevated views of the Santorini caldera. It has much in common with other hotels of the genre, but manages to set itself apart with its generous spaces and an extra measure of refinement in its modernist-influenced, neutral-toned décor.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670048.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.43883,
+     "longitude": 25.425388
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/andronis-concept-17564",
+    "numberOfRooms": 28,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.43883%2C25.425388",
+    "petsAllowed": " Pets are allowed on request. Charges may apply.",
+    "telephone": "+30 2286 036738",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/bellonias-villas-8175",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/bellonias-villas-8175",
+   "h1": "Bellonias Villas",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kamari Beach",
+     "addressLocality": "Santorini",
+     "postalCode": "847 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Bellonias Villas in Santorini",
+    "description": "Somewhere on the long list of good things that originated in Greece — the Olympic Games, feta cheese, democracy — is architecture. There are the buildings you’ll view on sightseeing tours, the ancient temples and grand palaces of the Acropolis, and there’s the Cycladic tradition. These are the buildings you’ll actually sleep in and wander past while staying on the islands, the charming whitewashed houses and blue-domed churches you’ll never tire of photographing. Bellonias Villas, on Santorini, is a contemporary take on that quaintly rustic Cycladic aesthetic. Like the island’s older buildings, it’s all smooth stucco, clean lines, curving archways, and petite windows that reveal picture-perfect views of the Aegean Sea. But inside the hotel’s 27 villa suites, the look is modern and minimalist.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1344710.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.373591,
+     "longitude": 25.483228
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/bellonias-villas-8175",
+    "numberOfRooms": 27,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.373591%2C25.483228",
+    "telephone": "+30-22860-31138",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.4,
+     "reviewCount": 12,
+     "ratingCount": 12,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-epitome-9318",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-epitome-9318",
+   "h1": "Canaves Epitome",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Eparchiaki Odos, Oia",
+     "addressLocality": "Santorini",
+     "postalCode": "847 02",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Canaves Epitome in Santorini",
+    "description": "Most every high-end hotel in Oia — maybe in all of Santorini — faces toward the volcanic caldera at the center of the island’s crescent arc. But Canaves Epitome means to set itself apart from the crowd, and it does so both literally and figuratively. Literally, with a position about a mile from the center of town, on the western extremity of the island’s north arm; this naturally leads to what sets it figuratively apart, which is its westward view of the island of Thirasia and the open sea beyond.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670257.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.463639,
+     "longitude": 25.371107
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-epitome-9318",
+    "numberOfRooms": 53,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.463639%2C25.371107",
+    "telephone": "+30 2286 072499 / +302286071453",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-sunday-9317",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-sunday-9317",
+   "h1": "Canaves Sunday",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Main Street",
+     "addressLocality": "Santorini",
+     "postalCode": "847 02",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Canaves Sunday in Santorini",
+    "description": "Some destinations are about hard work and self-discovery, but Santorini is all about indulgence, luxury, and finding the optimal spot to catch a breathtaking Mediterreanean sunset. Often called the “supermodel” of the Greek islands, it’s known for the kind of stunning natural beauty that an average hotel would struggle to do justice to — luckily, the upscale Canaves Sunday is anything but an average hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1669991.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.461787,
+     "longitude": 25.378908
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/canaves-sunday-9317",
+    "numberOfRooms": 8,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.461787%2C25.378908",
+    "petsAllowed": "\\n Pets aren't allowed in the property.",
+    "telephone": "+30 22860 71453",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/erosantorini-17565",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/erosantorini-17565",
+   "h1": "Erosantorini",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Main Road, Pirgos Kallistis ",
+     "addressLocality": "Santorini",
+     "postalCode": "87400",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Erosantorini in Santorini",
+    "description": "Erosantorini Luxury Private Estate & Suites is just what it says it is: a surprisingly substantial plot of land on an island where cozy cliffside perches are the rule, and a self-contained escape whose suites are often booked together as a single, sprawling four- or five-bedroom villa. The property cascades down the hillside, splitting the infinity pool into three distinct levels, and there’s a dramatic view of the caldera from just about every square foot of the estate. Meanwhile an open-air kitchen and dining area serve as a communal entertaining space, and each suite comes with either an outdoor Jacuzzi or a plunge pool.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670146.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.396346,
+     "longitude": 25.437805
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/erosantorini-17565",
+    "numberOfRooms": 5,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.396346%2C25.437805",
+    "petsAllowed": " Pets are allowed on request. No extra charges.",
+    "telephone": "+30 2286 036396",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/grace-hotel-auberge-collection-5978",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/grace-hotel-auberge-collection-5978",
+   "h1": "Grace Hotel, Auberge Collection",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Imerovigli",
+     "addressLocality": "Santorini",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Grace Hotel, Auberge Collection  in Santorini",
+    "description": "When it comes to architecture and interior design, there was only ever a hair’s breadth between the Cycladic tradition and the modern minimalist boutique hotel. Both revel in absence of ornament, in geometric lines and vast expanses of white. And in Grace Hotel Santorini the two idioms are brought seamlessly together. It’s near colorless, crisp-edged, clean-lined and packed with modernist furniture, and yet still it looks perfectly at home. And like any good Santorini hotel, Grace knows when to get out of the way and let you enjoy the view.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1669971.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.432963,
+     "longitude": 25.421019
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/grace-hotel-auberge-collection-5978",
+    "numberOfRooms": 23,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.432963%2C25.421019",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "(+30) 22860 21300",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/istoria-hotel-8991",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/istoria-hotel-8991",
+   "h1": "Istoria Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Perivolos",
+     "addressLocality": "Santorini",
+     "postalCode": "84703",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Istoria Hotel in Santorini",
+    "description": "Most Santorini hotels are forced to choose between an idyllic black sand beach or the famous elevated view of the volcanic caldera, but Istoria is the rare hotel that can offer both. The key is that it’s in two places at once: in Perivolos, 12 sea-facing suites make up Istoria Beach, while a few miles away in Firostefani, 9 more cave-house suites comprise the caldera-facing Istoria Cliff.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670859.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.3463816062,
+     "longitude": 25.4652195387
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/istoria-hotel-8991",
+    "numberOfRooms": 21,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.3463816062%2C25.4652195387",
+    "telephone": "+30 698 579 1575",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 9,
+     "ratingCount": 9,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-garden-santorini-14469",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-garden-santorini-14469",
+   "h1": "Katikies Garden Santorini",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Old Catholic Monastery 847 00 , Fira",
+     "addressLocality": "Santorini",
+     "postalCode": "84700",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Katikies Garden Santorini in Santorini",
+    "description": "Located in Fira’s old Venetian neighborhood, Katikies Garden Santorini occupies a restored 18th-century monastery. High-arching whitewashed passageways open onto a charming central courtyard — home to the hotel’s stylish restaurant and wine bar — with palm trees, colorful bougainvillea, and an antique tiled fountain, while beautifully illuminated staircases lead to a rooftop pool overlooking the village, the sea, and the mountains beyond. Suites are elegant and modern with dark wood flooring and a color palette of white, silver, and deep emerald green; all have private patios, and many feature private plunge pools or open-air Jacuzzi tubs.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1495147.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.42123,
+     "longitude": 25.43022
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-garden-santorini-14469",
+    "numberOfRooms": 40,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.42123%2C25.43022",
+    "telephone": "+30 2286 440900",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-gea-house-7521",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-gea-house-7521",
+   "h1": "Katikies Santorini - Gea House",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Oia",
+     "addressLocality": "Santorini",
+     "postalCode": "847 02",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Katikies Santorini - Gea House in Santorini",
+    "description": "The differences between the best Santorini hotels are remarkably subtle; how to distinguish one sun-drenched, white-washed hotel on a scenic seaside cliff from the next? More than anything, it just comes down to execution — well, that and the sublimity of the views, but the photos say it all in that department. Katikies Gea House is hardly breaking new ground on Santorini — if anything, their vision of the quintessential Greek Island hideaway is even purer than the competition’s. It’s just that, at Kirini, all the fresh white paint is somehow more pristine, the infinity pool overlooking the sea that much more spectacular, the suites even sunnier and breezier, and the beds more perfectly cloud-like than the competition’s. Add to all that some of the best food on the island and a serene spa, and Gea House is a contender for the best hotel on an island with some serious competition.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670799.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.461649,
+     "longitude": 25.387987
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-gea-house-7521",
+    "numberOfRooms": 21,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.461649%2C25.387987",
+    "telephone": "+30 2286 071214",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 1,
+     "ratingCount": 1,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-pelagos-house-7037",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-pelagos-house-7037",
+   "h1": "Katikies Santorini - Pelagos House",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Nik. Nomikou (Main Street)",
+     "addressLocality": "Santorini",
+     "postalCode": "847 02",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Katikies Santorini - Pelagos House in Santorini",
+    "description": "On Santorini, the view’s the thing, and there may be none better than that from the pool deck at Katikies, looking out over the island’s submerged volcanic caldera and the sea beyond. This hotel is a feast for the eyes, not just a scenic overlook but a sparkling white modernist take on a traditional cliff dwelling, spilling down the steep hillside a hundred meters above the water.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670384.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.462159,
+     "longitude": 25.381004
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/katikies-santorini-pelagos-house-7037",
+    "numberOfRooms": 27,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.462159%2C25.381004",
+    "telephone": "+30 22860 72382",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/kivotos-santorini-9403",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/kivotos-santorini-9403",
+   "h1": "Kivotos Santorini",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Imerovigli",
+     "addressLocality": "Santorini",
+     "postalCode": "847 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Kivotos Santorini in Santorini",
+    "description": "Plenty of very fine Santorini hotels allow their impressive views of the caldera to do all the heavy lifting, elevating their whitewashed spaces into something that approaches the sublime. Kivotos Santorini, in contrast, isn’t afraid to engage the landscape and seascape directly: dark grey stone and shaded, cavern-like rooms directly refer to the black sand beaches as well as the volcanic forces that created this spectacle, and at the same time lend an extra measure of elegance to this extravagantly luxurious hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1451509.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.433008,
+     "longitude": 25.421914
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/kivotos-santorini-9403",
+    "numberOfRooms": 10,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.433008%2C25.421914",
+    "telephone": "+30 2286028490",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/limestone-santorini-13804",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/limestone-santorini-13804",
+   "h1": "Limestone Santorini",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Agiou Mina",
+     "addressLocality": "Santorini",
+     "postalCode": "847 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Limestone Santorini in Santorini",
+    "description": "Many of Santorini’s best hotels are located in traditional yposkafa, or cave houses built directly into the rocks of the caldera. Geography and historic preservation codes limit their size, which is particularly noticeable at Limestone Santorini, an intimate five-suite hotel in a beautifully restored cave house that dates back to 1925. The name refers to its traditional building materials, which include the island’s rich volcanic soil; great care has been taken both inside and out to harness the laid-back charm and rejuvenating powers of one of Greece’s most famous destinations.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1385982.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.415788,
+     "longitude": 25.430736
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/limestone-santorini-13804",
+    "numberOfRooms": 5,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.415788%2C25.430736",
+    "telephone": "+30 22860 25443",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/perivolas-lifestyle-houses-7482",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/perivolas-lifestyle-houses-7482",
+   "h1": "Perivolas Lifestyle Houses",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Oia",
+     "addressLocality": "Santorini",
+     "postalCode": "847 02",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Perivolas Lifestyle Houses in Santorini",
+    "description": "Sleeping in a cave sounds a bit like sleeping in a treehouse, or sleeping underwater; photogenic, to be sure, but questionable as a real-world lodging. But however unusual the concept might sound, Perivolas — encompassing a series of restored caves that once served as horse stables and fishermen’s homes, set into cliffs above the startlingly blue Aegean — looks and feels like a gorgeous boutique hotel on a Greek island. (There’s a certain logic to that, of course, because that’s exactly what it is.)",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1097644.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.462148,
+     "longitude": 25.387155
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/perivolas-lifestyle-houses-7482",
+    "numberOfRooms": 21,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.462148%2C25.387155",
+    "telephone": "30 22860 71308",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.4,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/the-tsitouras-collection-1261",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/the-tsitouras-collection-1261",
+   "h1": "The Tsitouras Collection",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Firostefani",
+     "addressLocality": "Santorini",
+     "postalCode": "84 700",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "The Tsitouras Collection in Santorini",
+    "description": "Stunning sunset views, check. Whitewashed walls and complimentary cocktails, check. What distinguishes Tsitouras Collection from the various other high-end lodgings on Santorini is the hotel’s structure: unlike the sprawling resorts with infinity pools, Tsitouras is comprised of just five freestanding houses situated on a cliff overlooking the sea.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1252651.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.426849,
+     "longitude": 25.428605
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/the-tsitouras-collection-1261",
+    "numberOfRooms": 5,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.426849%2C25.428605",
+    "petsAllowed": "Pets are allowed on request. No extra charges.",
+    "telephone": "+30.22860.23747",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/santorini/villa-bordeaux-17572",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/santorini/villa-bordeaux-17572",
+   "h1": "Villa Bordeaux",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Agiou Mina, Santorini",
+     "addressLocality": "Santorini",
+     "postalCode": "84700",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Villa Bordeaux in Santorini",
+    "description": "All of the boutique hotels around Santorini’s rim are variations on a theme, and it’s not hard to guess what this one’s angle is. Here the caldera views come with a French accent, and that’s enough to set Villa Bordeaux apart. It’s a rare splash of red in a sea of white, and is home to La Colline, the island’s only French fine dining restaurant. The suites, too, depart from the all-white Santorini custom, opting instead for warm and varied neutral tones and a dash of colorful art. Thanks to the hotel’s small capacity the poolside never feels busy; two of the four suites also feature private Jacuzzis with elevated views.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1680199.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 36.4187366041,
+     "longitude": 25.4308271153
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/santorini/villa-bordeaux-17572",
+    "numberOfRooms": 4,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=36.4187366041%2C25.4308271153",
+    "telephone": "+30 2286 888018",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/south-aegean/santorini_1772287/restaurant/botrini-s-santorini",
+    "/en/south-aegean/santorini_1772287/restaurant/lauda",
+    "/en/south-aegean/santorini_1772287/restaurant/lycabettus",
+    "/en/south-aegean/santorini_1772287/restaurant/selene"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/on-residence-14477",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/on-residence-14477",
+   "h1": "ON Residence",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "5 Leoforos Nikis",
+     "addressLocality": "Thessaloniki",
+     "postalCode": "546 24",
+     "addressCountry": "GRC"
+    },
+    "name": "ON Residence in Thessaloniki",
+    "description": "A glamorous 1920s waterfront mansion, originally occupied by a popular brewery, is now home to the elegant ON Residence. Many of this historical building’s finest features remain, from the carefully restored facade with decorative wrought-iron balconies and freshly painted yellow shutters to the interior’s curving marble staircases and high coffered ceilings.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1696639.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 40.63306,
+     "longitude": 22.93876
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/thessaloniki/on-residence-14477",
+    "numberOfRooms": 60,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=40.63306%2C22.93876",
+    "telephone": "+30 231 440 4000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/7-thalasses",
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/botargo",
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/charoupi",
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/grada-nuevo",
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/maitr-margarita",
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/olympos-naoussa",
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/orizontes-restaurant",
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/poster",
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/sintrofi",
+    "/en/central-macedonia/thessaloniki_1773462/restaurant/three-little-pigs"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/zagori/aristi-mountain-resort-7162",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/zagori/aristi-mountain-resort-7162",
+   "h1": "Aristi Mountain Resort",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Aristi",
+     "addressLocality": "Zagori",
+     "postalCode": "440 04",
+     "addressCountry": "GRC",
+     "addressRegion": "Epirus"
+    },
+    "name": "Aristi Mountain Resort in Zagori",
+    "description": "There’s more to Greece than Athens, the islands and that long, squiggly coastline. In the country’s northwest, out along the border with Albania, is the rugged and mountainous region of Zagori. It’s a landscape of rocky cliffs, verdant slopes and tiny, ancient villages clinging to the hillsides. And among the many lost-in-time-looking villages, one of the most picturesque of all is Aristi — a smattering of traditional stone homes at the edge of a stunning national park, and home to Aristi Mountain Resort.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1638928.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 39.933706,
+     "longitude": 20.670278
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/zagori/aristi-mountain-resort-7162",
+    "numberOfRooms": 26,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=39.933706%2C20.670278",
+    "telephone": "+30 2653 041330",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/contessina-suites-spa-13076",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/zakynthos/contessina-suites-spa-13076",
+   "h1": "Contessina Suites & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Tsilivi",
+     "addressLocality": "Zakynthos",
+     "postalCode": "291 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Contessina Suites & Spa in Zakynthos",
+    "description": "Right around the corner from the slightly larger Contessina Hotel, and a block from the west end of Tsilivi Beach, is the more intimate and more luxurious — and, crucially, adults-only — Contessina Suites & Spa. Its style is modern and rather minimal, with not a hint of island kitsch; in fact it’s sophisticated enough to feel quite urban, even while its compound-like design makes it feel like something of a world unto itself.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1342158.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.816921,
+     "longitude": 20.867096
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/contessina-suites-spa-13076",
+    "numberOfRooms": 64,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.816921%2C20.867096",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+302695022700",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/leedas-village-13143",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/zakynthos/leedas-village-13143",
+   "h1": "Leeda's Village",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Lithakia, Agios Sostis",
+     "addressLocality": "Zakynthos",
+     "postalCode": "290 92",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Leeda's Village in Zakynthos",
+    "description": "The typical Greek island experience involves a sun-bleached, arid cliffside somewhere in the Aegean. But Zakynthos, on the Ionian side of the Greek mainland, is not the typical Greek island. It’s only here that something as lush and green as Leeda’s Village could exist — a set of weathered but rather grand stone buildings nestled amidst olive groves, gardens, and lawns, offering an experience that’s subtle, even sedate, but no less sublime.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1349140.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.705809,
+     "longitude": 20.846186
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/leedas-village-13143",
+    "numberOfRooms": 10,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.705809%2C20.846186",
+    "petsAllowed": "Pets are allowed.",
+    "telephone": "00306979806798",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/lesante-cape-13680",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/zakynthos/lesante-cape-13680",
+   "h1": "Lesante Cape",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Akrotiri",
+     "addressLocality": "Zakynthos",
+     "postalCode": "291 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Lesante Cape in Zakynthos",
+    "description": "Despite a wave of tourism and a proliferation of all-night bars and clubs, the Greek island of Zakynthos is a place where tradition is revered. Nowhere is this more true than at Lesante Cape, an elegant resort that pays homage to Zakynthian culture, from architecture to cuisine. It’s a village within a village, namely the seaside hamlet of Akrotiri; the hotel has its own taverna, shops, church, café, and central square. And while the grand archways, whitewashed buildings, and scenic olive trees mirror elements of the world outside, there’s a luxurious spin and a modern sensibility to this particular interpretation of the island lifestyle.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1385495.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.811642,
+     "longitude": 20.888097
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/lesante-cape-13680",
+    "numberOfRooms": 65,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.811642%2C20.888097",
+    "telephone": "+302695048295",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/olea-all-suite-hotel-12281",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/zakynthos/olea-all-suite-hotel-12281",
+   "h1": "Olea All Suite Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Planos 291 00, Greece",
+     "addressLocality": "Zakynthos",
+     "postalCode": "29100",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Olea All Suite Hotel in Zakynthos",
+    "description": "A hillside escape on the Greek island of Zakynthos doesn’t have to invent a whole new hospitality concept, and Olea All Suite Hotel, indeed, is all about the execution. This tropical-modernist marvel avoids the easy clichés of island design, evoking maximum atmosphere from the textures of concrete and wood. Its suites are strung along a lagoon-like pool, creating almost a floating-villa effect; the Royal Spa is as dramatic as they come, and three restaurants and three bars serve locally sourced Mediterranean cuisine in a variety of environments, from the very casual poolside Cocoon to the double-height Omikron with its far-ranging views.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1647152.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.80848,
+     "longitude": 20.8797
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/olea-all-suite-hotel-12281",
+    "numberOfRooms": 89,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.80848%2C20.8797",
+    "telephone": "+30 2695 022265",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/porto-zante-villas-spa-8780",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/zakynthos/porto-zante-villas-spa-8780",
+   "h1": "Porto Zante Villas & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Tragaki",
+     "addressLocality": "Zakynthos",
+     "postalCode": "291 00",
+     "addressCountry": "GRC",
+     "addressRegion": "Greek Islands"
+    },
+    "name": "Porto Zante Villas & Spa in Zakynthos",
+    "description": "Even if you’ve got a reasonably complete working knowledge of the major Greek island destinations, you might not know Zakynthos. It’s the next one down from Kefalonia, on the Ionian side of the Peloponnese — and, more importantly, it’s a perfect little jewel of a place, featuring the ludicrously beautiful Navagio Beach among its dramatic landforms and seascapes. And, as you might have guessed, it’s the setting for an extraordinary hotel: Porto Zante Villas & Spa, a luxury resort just above a private beach, blessed with extraordinary sea views, elegant contemporary interiors, and all the high-end comforts you could reasonably wish for.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1377314.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-GRC",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 37.82578,
+     "longitude": 20.852382
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/zakynthos/porto-zante-villas-spa-8780",
+    "numberOfRooms": 15,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=37.82578%2C20.852382",
+    "petsAllowed": "Pets are allowed on request but are not allowed in any areas which serve food or beverages.",
+    "telephone": "+30 21 0821 8640",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  }
+ ]
+}
