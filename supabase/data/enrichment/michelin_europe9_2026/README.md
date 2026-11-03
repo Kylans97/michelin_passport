@@ -7,8 +7,6 @@ Toepassen, in deze volgorde:
 1. `supabase/migrations/20261101300000_add_europe9_2026_countries_and_cities.sql` (4 landen, 35 plaatsen), met `supabase db push --linked`.
 2. `prepared_europe9_2026.sql` (één transactie; breekt af bij elke mislukte controle), met `supabase db query --linked -f <absoluut pad>`.
 
-**Griekenland:** die sessie heeft migratie `20261101290000` op een eigen branch, nog niet toegepast. Wordt deze eerst toegepast, dan heeft de Griekse straks `db push --include-all` nodig.
-
 ## Resultaat
 
 | Land | Sterren MICHELIN | Sterren productie | Keys MICHELIN | Keys productie | Nieuwe restaurants | Nieuwe hotels | Achtergehouden |

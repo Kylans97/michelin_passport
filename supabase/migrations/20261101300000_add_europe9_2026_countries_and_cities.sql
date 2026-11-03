@@ -1,8 +1,7 @@
 -- MICHELIN CZ, HR, SI, HU, MT, LT, LV, EE, RS: country and city prerequisite for
 -- supabase/data/enrichment/michelin_europe9_2026/prepared_europe9_2026.sql.
 -- Written 2026-11-04 by build_sql.py from production's read-only export of that day.
--- Filename timestamp is a sequence number only (next after 20261101290000, Greece's slot,
--- which is not applied yet: apply that first, or use `supabase db push --include-all` for it).
+-- Filename timestamp is a sequence number only (next after 20261101290000).
 -- Production has no `countries` row for CZ, EE, LT or LV (export 2026-11-04). Each zone is
 -- present in production's pg_timezone_names (read 2026-11-04). Czechia is MICHELIN's own name.
 -- Restaurant towns are MICHELIN's English listing names, hotel towns the hotel page's locality,
