@@ -758,12 +758,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                     const SectionDivider(),
                     VenueScoreHeader(noun: 'stay', date: latestStay.visitedOn),
                     const SizedBox(height: CsSpacing.md),
-                    VenueScoreStrip(
-                      dimensions: [
-                        ScoreDimension(
-                          label: 'Overall',
-                          value: latestStay.rating,
-                        ),
+                    VenueOverallScore(
+                      overall: latestStay.rating,
+                      scores: [
                         ScoreDimension(
                           label: 'Service',
                           value: latestStay.serviceRating,

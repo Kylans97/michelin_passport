@@ -387,16 +387,32 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                 style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
               ),
               const SizedBox(height: CsSpacing.md),
-              // The same forest-green rings as the venue page's own
-              // "SCORES (Your latest visit)" strip — never gold, which is for
-              // MICHELIN stars and Keys only.
-              VenueScoreStrip(
-                dimensions: [
-                  ScoreDimension(label: 'Overall', value: visit.rating),
-                  ScoreDimension(label: 'Food', value: visit.foodRating),
-                  ScoreDimension(label: 'Service', value: visit.serviceRating),
-                  ScoreDimension(label: 'Wine', value: visit.wineRating),
-                  ScoreDimension(label: 'Value', value: visit.valueRating),
+              // The same overall as the venue page's own "SCORES (Your
+              // latest visit)" — never gold, which is for MICHELIN stars and
+              // Keys only.
+              VenueOverallScore(
+                overall: visit.rating,
+                scores: [
+                  ScoreDimension(
+                    label: 'Food',
+                    value: visit.foodRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Service',
+                    value: visit.serviceRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Wine',
+                    value: visit.wineRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Atmosphere',
+                    value: visit.atmosphereRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Value',
+                    value: visit.valueRating,
+                  ),
                 ],
               ),
 

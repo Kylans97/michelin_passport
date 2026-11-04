@@ -70,7 +70,7 @@ Visit _visit(
   entityId: entityId,
   visitedOn: on,
   starsAtVisit: stars,
-  rating: rating,
+  rating: rating?.toDouble(),
 );
 
 Event _event(String id, {String name = 'Four Hands'}) => Event(

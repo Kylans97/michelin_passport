@@ -1,12 +1,12 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
+import '../../models/visit.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_spacing.dart';
 import '../theme/cs_typography.dart';
 import 'venue_visit_row.dart' show formatVenueVisitDate;
 
 /// The "SCORES (Your latest visit) ⋯ Visited 15 August 2026" header above
-/// a [VenueScoreStrip] — folds what was previously a second "Latest visit
+/// a [VenueOverallScore] — folds what was previously a second "Latest visit
 /// · {date}" line into one row instead of stating the date twice across
 /// the section. [noun] is `'visit'` (Restaurant) or `'stay'` (Hotel); the
 /// right-hand verb follows from it ("Visited"/"Stayed"), matching each
@@ -118,281 +118,165 @@ class VenueScoreHeader extends StatelessWidget {
   }
 }
 
-/// The pure `value / 10` progress calculation a [ScoreRingPainter] draws —
-/// pulled out as its own top-level function (rather than inlined in
-/// [_ScoreColumn]) so it's directly unit-testable without pumping a
-/// widget: null → 0, clamped to [0, 1] so a value can never be drawn as
-/// more than a full circle (or less than an empty one) regardless of
-/// input, and safe for a decimal value (e.g. 8.5 → 0.85) even though every
-/// current `Visit` rating field is `int?`.
-double scoreProgress(num? value) {
-  if (value == null) return 0.0;
-  return (value / 10).clamp(0.0, 1.0).toDouble();
-}
-
-/// One rating dimension in a [VenueScoreStrip] — a label paired with its
-/// value for the latest visit/stay. [value] is the raw stored rating (out
-/// of 10, or null if that dimension wasn't rated) — never fabricated,
-/// never coerced to 0. Typed `num?` rather than `int?` so this component
-/// stays correct if a decimal rating is ever introduced — every current
-/// `Visit` rating field is `int?`, but the progress-ring math below never
-/// assumes that.
+/// One score behind the overall: a label and what was given, null when it
+/// was left blank. Never coerced to 0.
 class ScoreDimension {
   final String label;
-  final num? value;
+  final int? value;
   const ScoreDimension({required this.label, required this.value});
 }
 
-/// The latest-visit/stay score presentation: every actual rating dimension
-/// the venue type supports, each as a compact proportional progress ring,
-/// laid out on one aligned horizontal row. Restaurant visits carry five
-/// dimensions (Overall/Food/Service/Wine/Value, see [Visit]); hotel stays
-/// carry five as well (Overall/Service/Room/Experience/Value) — callers
-/// pass only the dimensions that genuinely exist for that venue type,
-/// nothing is fabricated here.
+/// A visit's or stay's scores as one number: the overall, and on a tap what
+/// it is made of, highest first. Replaces a row of one ring per score, which
+/// at six on a restaurant read as a dashboard (product owner, 2026-11-04).
 ///
-/// The ring visually represents `value / 10` — a score of 7 fills exactly
-/// 70% of the circumference, clockwise from the top, clamped to [0, 1] so
-/// a value is never drawn past a full circle even if a future data source
-/// somehow exceeds 10. The arc is a thin, rounded-cap forest-green stroke
-/// over a subtle taupe background ring — never gold (a personal rating is
-/// not Michelin recognition — that's [StarRow]/[KeyRow]'s job alone) and
-/// never a gradient or a thick dashboard-style ring. The numeral stays the
-/// dominant, centered element; the ring is a quiet visual accent around it.
-///
-/// UI Consistency Step 1F: every ring is a fixed 40×40 [SizedBox], never
-/// wrapped in a [FittedBox] — a longer label (e.g. "Experience" vs "Room")
-/// must never influence ring size.
-///
-/// UI Consistency Step 1G: labels no longer scale independently either.
-/// Step 1F's per-label `FittedBox` fixed the ring but left the *label*
-/// itself shrinking in isolation — "Experience", the widest label, still
-/// rendered visibly smaller than its siblings on physical device, since
-/// each label's `FittedBox` picked its own scale factor based only on its
-/// own text width. All five labels must share one literal `TextStyle`
-/// instance and one label-area height; neither may vary per column.
-///
-/// This widget now measures once, for the whole strip: at the ambient
-/// [TextScaler] and the row's actual per-column width ([LayoutBuilder]),
-/// would *any* label's natural single-line width overflow its column? If
-/// none would, every label renders on one line at the shared [_labelStyle]
-/// — no scaling, no per-label decisions. If at least one would (typically
-/// only at high accessibility text scale), every column uniformly reserves
-/// a two-line-tall label area instead — the label text itself still uses
-/// the same shared style and simply wraps if it needs to, never shrinks.
-/// Either way the decision and the resulting height apply identically to
-/// every column, so labels stay on one shared baseline and one shared
-/// height regardless of how many lines a given label happens to need.
-class VenueScoreStrip extends StatelessWidget {
-  final List<ScoreDimension> dimensions;
-  const VenueScoreStrip({super.key, required this.dimensions});
-
-  static final TextStyle _labelStyle = CsTypography.metadata.copyWith(
-    color: AppColors.taupe,
-    fontSize: 9,
-    fontWeight: FontWeight.w500,
-    height: 1.15,
-    // No letter-spacing: CsTypography.eyebrow's heavy tracking (designed
-    // for short, all-caps section labels) is what made "Experience" not
-    // fit its column in the first place — a plain, compact style is the
-    // uniform size that actually fits all five real labels.
-  );
-
-  @override
-  Widget build(BuildContext context) {
-    if (dimensions.isEmpty) return const SizedBox.shrink();
-
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final textScaler = MediaQuery.textScalerOf(context);
-        final gapCount = dimensions.length - 1;
-        final totalGap = gapCount > 0 ? gapCount * CsSpacing.sm : 0.0;
-        final columnWidth =
-            (constraints.maxWidth - totalGap) / dimensions.length;
-
-        var needsTwoLines = false;
-        for (final d in dimensions) {
-          final width = (TextPainter(
-            text: TextSpan(text: d.label, style: _labelStyle),
-            textDirection: TextDirection.ltr,
-            textScaler: textScaler,
-            maxLines: 1,
-          )..layout()).width;
-          if (width > columnWidth) {
-            needsTwoLines = true;
-            break;
-          }
-        }
-
-        final lineHeight =
-            textScaler.scale(_labelStyle.fontSize!) * _labelStyle.height!;
-        final labelAreaHeight = lineHeight * (needsTwoLines ? 2 : 1);
-        final labelMaxLines = needsTwoLines ? 2 : 1;
-
-        return Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            for (var i = 0; i < dimensions.length; i++) ...[
-              if (i > 0) const SizedBox(width: CsSpacing.sm),
-              Expanded(
-                child: _ScoreColumn(
-                  dimension: dimensions[i],
-                  labelStyle: _labelStyle,
-                  labelAreaHeight: labelAreaHeight,
-                  labelMaxLines: labelMaxLines,
-                ),
-              ),
-            ],
-          ],
-        );
-      },
-    );
-  }
-}
-
-/// One compact score ring + label — the reusable primitive genuinely
-/// shared between Restaurant's and Hotel's 5-dimension strips (same
-/// visual grammar, different dimension labels), kept private since
-/// [VenueScoreStrip] is the only real call-site shape.
-///
-/// A missing rating ([ScoreDimension.value] is null — either never rated,
-/// or a historical Hotel stay predating the Room/Experience columns)
-/// renders with exactly the same ring geometry as a populated one: the
-/// same 40×40 circle, the same background ring, just no foreground arc
-/// (`scoreProgress(null) == 0.0`, and [ScoreRingPainter] only paints an
-/// arc when `progress > 0`) and a centered `—` in place of a numeral —
-/// never a fabricated `0`, never a shrunk or omitted column.
-class _ScoreColumn extends StatelessWidget {
-  final ScoreDimension dimension;
-  final TextStyle labelStyle;
-  final double labelAreaHeight;
-  final int labelMaxLines;
-
-  const _ScoreColumn({
-    required this.dimension,
-    required this.labelStyle,
-    required this.labelAreaHeight,
-    required this.labelMaxLines,
+/// Scores left blank are not listed: they are not part of the overall
+/// (20261101340000). An overall with nothing behind it, from a build that
+/// let a member pick one, has nothing to open, so it is not tappable.
+/// Forest green, never gold: a personal score is not MICHELIN recognition.
+class VenueOverallScore extends StatefulWidget {
+  final double? overall;
+  final List<ScoreDimension> scores;
+  const VenueOverallScore({
+    super.key,
+    required this.overall,
+    required this.scores,
   });
 
-  static const double _diameter = 40;
-  static const double _strokeWidth = 3;
+  @override
+  State<VenueOverallScore> createState() => _VenueOverallScoreState();
+}
+
+class _VenueOverallScoreState extends State<VenueOverallScore> {
+  bool _open = false;
 
   @override
   Widget build(BuildContext context) {
-    final value = dimension.value;
-    final progress = scoreProgress(value);
-    final numeral = value == null
-        ? '—'
-        // Whole ratings ("7") stay bare integers; a hypothetical future
-        // decimal rating ("8.5") is shown as-is, never rounded away.
-        : (value % 1 == 0 ? value.toInt().toString() : value.toString());
+    final overall = widget.overall;
+    if (overall == null) {
+      return Text(
+        'No scores given',
+        style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+      );
+    }
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        // Fixed size, never wrapped in a FittedBox — this is the one
-        // element in the column that must never scale, regardless of how
-        // wide the label beneath it is or how narrow its allotted column
-        // width becomes.
-        SizedBox(
-          width: _diameter,
-          height: _diameter,
-          child: CustomPaint(
-            painter: ScoreRingPainter(
-              progress: progress,
-              strokeWidth: _strokeWidth,
-              foreground: AppColors.forestGreen,
-              background: AppColors.subtleBorderLight,
+    // List.sort is not stable; the index keeps equal scores in the order
+    // the venue type lists them.
+    final given = widget.scores.where((s) => s.value != null).toList();
+    final order = {for (var i = 0; i < given.length; i++) given[i]: i};
+    given.sort((a, b) {
+      final byValue = b.value!.compareTo(a.value!);
+      return byValue != 0 ? byValue : order[a]!.compareTo(order[b]!);
+    });
+    final count = given.length;
+    final canOpen = count > 0;
+    final label = canOpen
+        ? 'Overall · $count ${count == 1 ? 'score' : 'scores'}'
+        : 'Overall';
+
+    final summary = ConstrainedBox(
+      constraints: const BoxConstraints(minHeight: 44),
+      child: Row(
+        children: [
+          Text(
+            formatOverall(overall),
+            style: CsTypography.largeMetric.copyWith(
+              color: AppColors.forestGreen,
+              fontSize: 32,
             ),
-            child: Center(
-              child: Text(
-                numeral,
-                style: CsTypography.bodyMedium.copyWith(
-                  color: AppColors.forestGreen,
-                  fontSize: 17,
-                  fontWeight: FontWeight.w600,
-                  height: 1,
-                ),
+          ),
+          const SizedBox(width: CsSpacing.sm),
+          Expanded(
+            child: Text(
+              label,
+              style: CsTypography.metadata.copyWith(color: AppColors.taupe),
+            ),
+          ),
+          if (canOpen)
+            AnimatedRotation(
+              turns: _open ? 0.5 : 0,
+              duration: const Duration(milliseconds: 180),
+              child: const Icon(
+                Icons.keyboard_arrow_down,
+                size: 20,
+                color: AppColors.taupe,
               ),
             ),
-          ),
-        ),
-        const SizedBox(height: CsSpacing.xs),
-        // Same style, same reserved height, same max line count as every
-        // other column in the strip — decided once by VenueScoreStrip for
-        // the whole row, never per-label.
-        SizedBox(
-          height: labelAreaHeight,
-          child: Center(
-            child: Text(
-              dimension.label,
-              textAlign: TextAlign.center,
-              maxLines: labelMaxLines,
-              overflow: TextOverflow.ellipsis,
-              style: labelStyle,
+        ],
+      ),
+    );
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (canOpen)
+          Semantics(
+            button: true,
+            expanded: _open,
+            child: GestureDetector(
+              behavior: HitTestBehavior.opaque,
+              onTap: () => setState(() => _open = !_open),
+              child: summary,
             ),
-          ),
+          )
+        else
+          summary,
+        AnimatedSize(
+          duration: const Duration(milliseconds: 180),
+          curve: Curves.easeOutCubic,
+          alignment: Alignment.topCenter,
+          child: _open && canOpen
+              ? Padding(
+                  padding: const EdgeInsets.only(top: CsSpacing.sm),
+                  child: Column(
+                    children: [
+                      for (var i = 0; i < given.length; i++) ...[
+                        if (i > 0) const SizedBox(height: CsSpacing.sm),
+                        _ScoreBar(score: given[i]),
+                      ],
+                    ],
+                  ),
+                )
+              : const SizedBox(width: double.infinity),
         ),
       ],
     );
   }
 }
 
-/// Draws the thin proportional ring: a full background circle, then a
-/// clockwise foreground arc (starting at the top, `-pi/2`) covering
-/// `progress` of the circumference. Deterministic, no animation — a
-/// `CustomPainter` here is the smallest clean implementation, cheaper than
-/// stacking two `CircularProgressIndicator`s (which are built for
-/// indeterminate/animated use, not a static value) and without adding a
-/// charting/progress package for something this small. Public (not
-/// library-private) specifically so its configuration is directly
-/// testable — `tester.widget<CustomPaint>(...).painter as ScoreRingPainter`
-/// — without needing a golden-image comparison for something this simple.
-class ScoreRingPainter extends CustomPainter {
-  final double progress;
-  final double strokeWidth;
-  final Color foreground;
-  final Color background;
-
-  const ScoreRingPainter({
-    required this.progress,
-    required this.strokeWidth,
-    required this.foreground,
-    required this.background,
-  });
+class _ScoreBar extends StatelessWidget {
+  final ScoreDimension score;
+  const _ScoreBar({required this.score});
 
   @override
-  void paint(Canvas canvas, Size size) {
-    final rect = Offset.zero & size;
-    final center = rect.center;
-    final radius = (math.min(size.width, size.height) - strokeWidth) / 2;
-
-    final backgroundPaint = Paint()
-      ..color = background
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth;
-    canvas.drawCircle(center, radius, backgroundPaint);
-
-    if (progress <= 0) return;
-    final foregroundPaint = Paint()
-      ..color = foreground
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = strokeWidth
-      ..strokeCap = StrokeCap.round;
-    canvas.drawArc(
-      Rect.fromCircle(center: center, radius: radius),
-      -math.pi / 2,
-      2 * math.pi * progress,
-      false,
-      foregroundPaint,
+  Widget build(BuildContext context) {
+    final style = CsTypography.metadata.copyWith(
+      color: AppColors.forestGreen,
+      fontSize: 13,
+    );
+    return Row(
+      children: [
+        SizedBox(width: 84, child: Text(score.label, style: style)),
+        Expanded(
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(2),
+            child: LinearProgressIndicator(
+              value: score.value! / 10,
+              minHeight: 4,
+              color: AppColors.forestGreen,
+              backgroundColor: AppColors.hairlineOnPaper,
+            ),
+          ),
+        ),
+        SizedBox(
+          width: 24,
+          child: Text(
+            '${score.value}',
+            textAlign: TextAlign.right,
+            style: style,
+          ),
+        ),
+      ],
     );
   }
-
-  @override
-  bool shouldRepaint(ScoreRingPainter oldDelegate) =>
-      oldDelegate.progress != progress ||
-      oldDelegate.foreground != foreground ||
-      oldDelegate.background != background ||
-      oldDelegate.strokeWidth != strokeWidth;
 }

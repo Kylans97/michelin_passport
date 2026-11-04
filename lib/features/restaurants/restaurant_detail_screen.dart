@@ -960,12 +960,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                       date: latestVisit.visitedOn,
                     ),
                     const SizedBox(height: CsSpacing.md),
-                    VenueScoreStrip(
-                      dimensions: [
-                        ScoreDimension(
-                          label: 'Overall',
-                          value: latestVisit.rating,
-                        ),
+                    VenueOverallScore(
+                      overall: latestVisit.rating,
+                      scores: [
                         ScoreDimension(
                           label: 'Food',
                           value: latestVisit.foodRating,
@@ -977,6 +974,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                         ScoreDimension(
                           label: 'Wine',
                           value: latestVisit.wineRating,
+                        ),
+                        ScoreDimension(
+                          label: 'Atmosphere',
+                          value: latestVisit.atmosphereRating,
                         ),
                         ScoreDimension(
                           label: 'Value',

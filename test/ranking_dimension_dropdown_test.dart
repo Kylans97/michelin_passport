@@ -45,7 +45,7 @@ Visit _stay({
   entityType: 'hotel',
   entityId: 'h1',
   visitedOn: visitedOn ?? DateTime(2025, 6, 1),
-  rating: overall,
+  rating: overall?.toDouble(),
   serviceRating: serviceRating,
   valueRating: valueRating,
   roomRating: roomRating,
@@ -70,6 +70,7 @@ void main() {
           RankingDimension.food,
           RankingDimension.service,
           RankingDimension.wine,
+          RankingDimension.atmosphere,
           RankingDimension.value,
         ]);
       },

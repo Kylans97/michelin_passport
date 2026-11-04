@@ -86,7 +86,7 @@ class FriendVisitTile extends StatelessWidget {
             : null,
       ),
     };
-    final rating = visit.rating;
+    final rating = visit.rating == null ? null : formatOverall(visit.rating!);
     final ratingLabel = rating == null
         ? _formatDate(visit.visitedOn)
         : '$rating/10 · ${_formatDate(visit.visitedOn)}';

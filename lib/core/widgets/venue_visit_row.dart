@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../models/visit.dart';
 import '../constants/app_colors.dart';
 import '../theme/cs_spacing.dart';
 import '../theme/cs_typography.dart';
@@ -28,7 +29,7 @@ String formatVenueVisitDate(DateTime date) =>
 /// unchanged VisitDetailScreen/StayDetailScreen.
 class VenueVisitRow extends StatelessWidget {
   final DateTime date;
-  final int? rating;
+  final double? rating;
   final String? subtitle;
   final VoidCallback onTap;
 
@@ -70,7 +71,7 @@ class VenueVisitRow extends StatelessWidget {
                     if (rating != null) ...[
                       const SizedBox(height: 4),
                       Text(
-                        'Overall $rating/10',
+                        'Overall ${formatOverall(rating!)}/10',
                         style: CsTypography.metadata.copyWith(
                           color: AppColors.taupe,
                         ),

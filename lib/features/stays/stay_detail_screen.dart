@@ -391,16 +391,25 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
               // The same forest-green rings as the venue page's own
               // "SCORES (Your latest stay)" strip — never gold, which is for
               // MICHELIN stars and Keys only.
-              VenueScoreStrip(
-                dimensions: [
-                  ScoreDimension(label: 'Overall', value: stay.rating),
-                  ScoreDimension(label: 'Service', value: stay.serviceRating),
-                  ScoreDimension(label: 'Room', value: stay.roomRating),
+              VenueOverallScore(
+                overall: stay.rating,
+                scores: [
+                  ScoreDimension(
+                    label: 'Service',
+                    value: stay.serviceRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Room',
+                    value: stay.roomRating,
+                  ),
                   ScoreDimension(
                     label: 'Experience',
                     value: stay.experienceRating,
                   ),
-                  ScoreDimension(label: 'Value', value: stay.valueRating),
+                  ScoreDimension(
+                    label: 'Value',
+                    value: stay.valueRating,
+                  ),
                 ],
               ),
 

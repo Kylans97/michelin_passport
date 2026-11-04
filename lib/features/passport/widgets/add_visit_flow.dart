@@ -143,20 +143,36 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   // The same rating dimensions the venue pages' own sheets collected
   // (add_visit_sheet.dart / add_stay_sheet.dart, removed 2026-10-31 when
   // those pages moved onto this flow) — never a single generic "score".
-  // Both share Overall/Service/Value; Food/Wine are restaurant-only,
-  // Room/Experience are hotel-only. Corrected after shipping a single
+  // Both share Service/Value; Food/Wine/Atmosphere are restaurant-only,
+  // Room/Experience are hotel-only. Overall is not one of them: the
+  // database computes it from these (20261101340000). Corrected after shipping a single
   // RatingMeter that reused the right WIDGET but not the right per-type
   // FIELDS — the second time this exact class of bug has hit this file
   // (the first correction, reusing RatingMeter itself instead of a
   // hand-rolled picker, missed that the two real flows collect different
   // numbers of dimensions).
-  int? _rating;
+  // An overall with no scores behind it, from a build that still let a
+  // member pick one: nothing to compute, so it stays until a score is given.
+  double? _overallWithoutScores;
   int? _foodRating;
   int? _serviceRating;
   int? _wineRating;
+  int? _atmosphereRating;
   int? _valueRating;
   int? _roomRating;
   int? _experienceRating;
+
+  double? get _overallFromScores => computeOverall(
+    _selectedVenue is HotelVenue
+        ? [_serviceRating, _roomRating, _experienceRating, _valueRating]
+        : [
+            _foodRating,
+            _serviceRating,
+            _wineRating,
+            _atmosphereRating,
+            _valueRating,
+          ],
+  );
 
   // Restaurant-only, like Food/Wine.
   MenuType? _menuType;
@@ -188,13 +204,14 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
       final visit = widget.existingVisit;
       if (visit != null) {
         _visitedOn = visit.visitedOn;
-        _rating = visit.rating;
         _foodRating = visit.foodRating;
         _serviceRating = visit.serviceRating;
         _wineRating = visit.wineRating;
+        _atmosphereRating = visit.atmosphereRating;
         _valueRating = visit.valueRating;
         _roomRating = visit.roomRating;
         _experienceRating = visit.experienceRating;
+        if (_overallFromScores == null) _overallWithoutScores = visit.rating;
         _menuType = visit.menuType;
         _friendsVisible = visit.visibility == VisitVisibility.friends;
         _notesCtrl.text = visit.notes ?? '';
@@ -375,10 +392,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
           userId: widget.userId,
           visitId: editing.id,
           visitedOn: _visitedOn,
-          rating: _rating,
           foodRating: isRestaurant ? _foodRating : null,
           serviceRating: _serviceRating,
           wineRating: isRestaurant ? _wineRating : null,
+          atmosphereRating: isRestaurant ? _atmosphereRating : null,
           valueRating: _valueRating,
           roomRating: isRestaurant ? null : _roomRating,
           experienceRating: isRestaurant ? null : _experienceRating,
@@ -418,10 +435,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
             userId: widget.userId,
             restaurantId: restaurant.id,
             visitedOn: _visitedOn,
-            rating: _rating,
             foodRating: _foodRating,
             serviceRating: _serviceRating,
             wineRating: _wineRating,
+            atmosphereRating: _atmosphereRating,
             valueRating: _valueRating,
             menuType: _menuType,
             notes: _notesCtrl.text.trim().isEmpty ? null : _notesCtrl.text.trim(),
@@ -433,7 +450,6 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
             userId: widget.userId,
             hotelId: hotel.id,
             visitedOn: _visitedOn,
-            rating: _rating,
             serviceRating: _serviceRating,
             roomRating: _roomRating,
             experienceRating: _experienceRating,
@@ -573,14 +589,15 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                                 venue: _selectedVenue!,
                                 visitedOn: _visitedOn,
                                 onPickDate: _pickDate,
-                                rating: _rating,
-                                onRatingChanged: (v) => setState(() => _rating = v),
+                                overall: _overallFromScores ?? _overallWithoutScores,
                                 foodRating: _foodRating,
                                 onFoodRatingChanged: (v) => setState(() => _foodRating = v),
                                 serviceRating: _serviceRating,
                                 onServiceRatingChanged: (v) => setState(() => _serviceRating = v),
                                 wineRating: _wineRating,
                                 onWineRatingChanged: (v) => setState(() => _wineRating = v),
+                                atmosphereRating: _atmosphereRating,
+                                onAtmosphereRatingChanged: (v) => setState(() => _atmosphereRating = v),
                                 valueRating: _valueRating,
                                 onValueRatingChanged: (v) => setState(() => _valueRating = v),
                                 roomRating: _roomRating,
@@ -881,14 +898,15 @@ class _Step2 extends StatelessWidget {
   // field. Which of these render depends on [venue]'s own type (see
   // build() below); a hotel never sees food/wine, a restaurant never sees
   // room/experience.
-  final int? rating;
-  final ValueChanged<int?> onRatingChanged;
+  final double? overall;
   final int? foodRating;
   final ValueChanged<int?> onFoodRatingChanged;
   final int? serviceRating;
   final ValueChanged<int?> onServiceRatingChanged;
   final int? wineRating;
   final ValueChanged<int?> onWineRatingChanged;
+  final int? atmosphereRating;
+  final ValueChanged<int?> onAtmosphereRatingChanged;
   final int? valueRating;
   final ValueChanged<int?> onValueRatingChanged;
   final int? roomRating;
@@ -922,14 +940,15 @@ class _Step2 extends StatelessWidget {
     required this.venue,
     required this.visitedOn,
     required this.onPickDate,
-    required this.rating,
-    required this.onRatingChanged,
+    required this.overall,
     required this.foodRating,
     required this.onFoodRatingChanged,
     required this.serviceRating,
     required this.onServiceRatingChanged,
     required this.wineRating,
     required this.onWineRatingChanged,
+    required this.atmosphereRating,
+    required this.onAtmosphereRatingChanged,
     required this.valueRating,
     required this.onValueRatingChanged,
     required this.roomRating,
@@ -1049,7 +1068,7 @@ class _Step2 extends StatelessWidget {
           // "score" (that was this file's own second miss at parity: the
           // first correction reused the right WIDGET, RatingMeter, but
           // still only wired one field regardless of venue type).
-          RatingMeter(label: 'Overall', value: rating, onChanged: onRatingChanged),
+          _OverallRow(overall: overall),
           const SizedBox(height: 14),
           if (venue is RestaurantVenue) ...[
             RatingMeter(label: 'Food', value: foodRating, onChanged: onFoodRatingChanged),
@@ -1059,6 +1078,12 @@ class _Step2 extends StatelessWidget {
           const SizedBox(height: 14),
           if (venue is RestaurantVenue) ...[
             RatingMeter(label: 'Wine', value: wineRating, onChanged: onWineRatingChanged),
+            const SizedBox(height: 14),
+            RatingMeter(
+              label: 'Atmosphere',
+              value: atmosphereRating,
+              onChanged: onAtmosphereRatingChanged,
+            ),
             const SizedBox(height: 14),
           ],
           if (venue is HotelVenue) ...[
@@ -1173,6 +1198,41 @@ class _Step2 extends StatelessWidget {
       ),
     );
   }
+}
+
+/// The overall while a visit is being filled in. Not a control: it is the
+/// average of the scores below, and the database stores the same number.
+class _OverallRow extends StatelessWidget {
+  final double? overall;
+  const _OverallRow({required this.overall});
+
+  @override
+  Widget build(BuildContext context) => Row(
+    children: [
+      Expanded(
+        child: Text(
+          'Overall',
+          style: GoogleFonts.inter(
+            color: AppColors.textPrimary,
+            fontSize: 13.5,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+      ),
+      Text(
+        overall == null
+            ? 'The average of your scores'
+            : '${formatOverall(overall!)}/10',
+        style: GoogleFonts.inter(
+          color: overall == null
+              ? AppColors.textSecondary
+              : AppColors.forestGreen,
+          fontSize: 12.5,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
+    ],
+  );
 }
 
 class _FieldLabel extends StatelessWidget {

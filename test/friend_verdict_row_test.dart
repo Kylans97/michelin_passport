@@ -34,7 +34,7 @@ FriendVenueVisit _fv({int? rating}) => FriendVenueVisit(
     entityId: 'r1',
     visitedOn: DateTime(DateTime.now().year, 9, 23),
     starsAtVisit: 2,
-    rating: rating,
+    rating: rating?.toDouble(),
   ),
 );
 
@@ -52,7 +52,7 @@ void main() {
     expect(find.byType(RankingEditorialCard), findsOneWidget);
     expect(find.text('Flore'), findsOneWidget);
     expect(
-      tester.widget<Text>(find.text('8/10')).style?.color,
+      tester.widget<Text>(find.text('8.0/10')).style?.color,
       AppColors.forestGreen,
     );
     expect(find.text('· Visited 23 Sep'), findsOneWidget);

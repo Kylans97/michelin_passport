@@ -6,6 +6,7 @@ import '../../../core/widgets/venue_thumbnail.dart';
 import '../../../models/event_attendance.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/photo_framing.dart';
+import '../../../models/visit.dart';
 import '../../events/event_date_format.dart';
 import '../../friends/friend_profile_screen.dart'
     show FriendVenueVisit, openFriendEvent, openVisitDetail;
@@ -96,7 +97,7 @@ class FriendActivityRow extends StatelessWidget {
 
   String get _meta => switch (activity) {
     VisitActivity(:final visit) => [
-      if (visit.rating != null) '${visit.rating}/10',
+      if (visit.rating != null) '${formatOverall(visit.rating!)}/10',
       formatActivityDate(visit.visitedOn),
     ].join(' · '),
     EventIntentActivity(:final event) => formatEventDateRange(event),

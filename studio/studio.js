@@ -450,13 +450,14 @@ $("venue-example").addEventListener("click", showExample);
 async function openVenue(type, id) {
   $("venue-results").hidden = true;
   $("tier-note").textContent = "Loading…";
-  const [report, market, insights, search] = await Promise.all([
+  const [report, market, insights, search, scores] = await Promise.all([
     supabase.rpc("admin_studio_venue_report", { p_venue_type: type, p_venue_id: id }),
     marketCache ? Promise.resolve({ data: marketCache }) : supabase.rpc("admin_studio_market_report"),
     supabase.rpc("admin_studio_venue_insights", { p_venue_type: type, p_venue_id: id }),
     searchCache ? Promise.resolve({ data: searchCache }) : supabase.rpc("admin_studio_search_report", { p_days: 90 }),
+    supabase.rpc("admin_studio_venue_scores", { p_venue_type: type, p_venue_id: id }),
   ]);
-  const error = report.error ?? market.error ?? insights.error ?? search.error;
+  const error = report.error ?? market.error ?? insights.error ?? search.error ?? scores.error;
   if (error) {
     $("tier-note").textContent = `Could not load: ${error.message}`;
     return;
@@ -464,7 +465,7 @@ async function openVenue(type, id) {
   marketCache = market.data;
   searchCache = search.data;
   tierVenue = {
-    report: report.data, market: market.data, insights: insights.data, search: search.data, example: false,
+    report: report.data, market: market.data, insights: insights.data, search: search.data, scores: scores.data, example: false,
   };
   $("tier-note").textContent =
     "Real numbers, as this venue would see them. Show them to this venue only.";
@@ -475,7 +476,7 @@ function showExample() {
   $("venue-results").hidden = true;
   $("venue-search").value = "";
   tierVenue = {
-    report: exampleReport(), market: exampleMarket(), insights: exampleInsights(), search: exampleSearch(), example: true,
+    report: exampleReport(), market: exampleMarket(), insights: exampleInsights(), search: exampleSearch(), scores: exampleScores(), example: true,
   };
   $("tier-note").textContent = "Search a venue for its real numbers, or show the example.";
   renderTier();
@@ -609,6 +610,43 @@ function signalLabel(x) {
   return `${name} (${dimensionNames[x.dimension] ?? x.dimension})`;
 }
 
+const scoreNames = {
+  overall: "Overall", food: "Food", service: "Service", wine: "Wine", atmosphere: "Atmosphere",
+  room: "Room", experience: "Experience", value: "Value",
+};
+
+// Highest average first, so high and low read straight off the table.
+// Overall sits on top: it is the average of the others, not a subject.
+function renderProScores(s) {
+  const fillText = (x, side) => {
+    if (x.fill === "counted") return num(x[side]);
+    if (x.fill === "most") return side === "filled" ? "Most" : "fewer than 5";
+    if (x.fill === "few") return side === "filled" ? "fewer than 5" : "Most";
+    return "fewer than 5";
+  };
+  const subjects = s.scores
+    .filter((x) => x.key !== "overall" && x.average != null)
+    .sort((a, b) => b.average - a.average);
+  const rows = [
+    ...s.scores.filter((x) => x.key === "overall"),
+    ...subjects,
+    ...s.scores.filter((x) => x.key !== "overall" && x.average == null),
+  ];
+  const high = subjects[0];
+  const low = subjects[subjects.length - 1];
+  $("pro-scores-sub").textContent = s.members == null
+    ? "Each member once, on their latest visit. Shown from 5 members."
+    : subjects.length > 1
+      ? `${num(s.members)} members, each once, on their latest visit. Highest: ${scoreNames[high.key]} ${high.average.toFixed(1)}. Lowest: ${scoreNames[low.key]} ${low.average.toFixed(1)}.`
+      : `${num(s.members)} members, each once, on their latest visit.`;
+  table($("pro-scores"), [
+    { label: "Score", value: (x) => scoreNames[x.key] ?? x.key },
+    { label: "Average", value: (x) => x.average == null ? "fewer than 5" : `${x.average.toFixed(1)} / 10` },
+    { label: "Filled in", value: (x) => fillText(x, "filled") },
+    { label: "Left blank", value: (x) => fillText(x, "blank") },
+  ], rows, "Fewer than 5 members have recorded a visit yet.");
+}
+
 function renderProInsights(x, search) {
   renderBars($("pro-sources"), x.sources.map((s) => ({ label: sourceNames[s.source] ?? s.source, value: s.people })),
     "No page visits in the last 90 days.");
@@ -675,6 +713,7 @@ function renderPro(r, m, insights, search) {
   renderColumns($("pro-trips"), p.trips, "city", monthLabel);
 
   renderProInsights(insights, search);
+  renderProScores(tierVenue.scores);
 
   renderBars($("market-cuisines"), m.cuisines.map((x) => ({ label: x.cuisine, value: x.people })),
     "Not enough interest yet.");
@@ -816,6 +855,21 @@ function exampleMarket() {
 }
 
 // The insights added on 2 November 2026, for the example venue.
+function exampleScores() {
+  const row = (key, average, filled, blank) => ({ key, average, filled, blank, fill: "counted" });
+  return {
+    members: 141,
+    scores: [
+      row("overall", 8.4, 128, 13),
+      row("food", 9.1, 126, 15),
+      row("service", 8.6, 119, 22),
+      row("wine", 8.2, 74, 67),
+      row("atmosphere", 7.9, 98, 43),
+      row("value", 7.2, 88, 53),
+    ],
+  };
+}
+
 function exampleInsights() {
   const inDays = (n) => new Date(Date.now() + n * 86400000).toISOString().slice(0, 10);
   const months = exampleMonths(210, 0.045, 0.08);
