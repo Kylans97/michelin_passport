@@ -253,7 +253,7 @@ class _VenueDetailHeroState extends State<VenueDetailHero> {
       leadingWidth: 56,
       leading: Padding(
         padding: const EdgeInsets.only(left: CsSpacing.sm),
-        child: EditorialBackButton(),
+        child: EditorialBackButton(onPhoto: true),
       ),
       actions: [
         Padding(

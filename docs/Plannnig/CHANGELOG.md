@@ -12,7 +12,7 @@ The format follows Keep a Changelog.
 
 ## v1.5.7 (31) — 2026-11-04
 
-The build meant for App Review, with these changes on top of (30). The four fixes under Fixed were seen in the screenshots for the venue lookbook.
+The build meant for App Review, with these changes on top of (30). The fixes for the status bar, back arrows, Explore cards and Hottest Places were seen in the screenshots for the venue lookbook.
 
 ### Changed
 - **A calmer map everywhere** (product owner, 2026-11-04): MapTiler's `basic-v2` instead of `streets-v2`, which drew its own restaurants, hotels and cafés beside our pins, where they read as places Mantelier recommends. One setting, so every MapTiler map changes with it.
@@ -26,6 +26,7 @@ The build meant for App Review, with these changes on top of (30). The four fixe
 - **The time and battery were dark on green and photo app bars**: the venue, event, chef and news heroes and the Events screen took the theme's dark status bar, which is meant for its ivory app bars. They now set it light themselves.
 - **The back arrow on Events was nearly invisible**: `foregroundColor` loses to the theme's dark `iconTheme`, so the arrow was dark on dark green.
 - **Explore's cards had a blank third**: the rails were a fixed 340 and 176 points, sized for 1.6x text. They are now worked out from the text scale, and a test holds a two-line name at 1x to 2x. Near-miss caught by the tests: the "Mantelier Selection" line is taller than a row of stars, so the first height was a few points short.
+- **The back arrow disappeared on light photos**: on venue, event and chef heroes it was a bare ivory glyph, while the wishlist button beside it had a dark circle. It now has the same circle over a photo (`EditorialBackButton.onPhoto`), and stays bare on flat canvases.
 - **Hottest Places showed a letter instead of the venue's photo**: its thumbnail was hard-coded to none, and the query never asked for one.
 - Near-miss on the map names, seen in the simulator: `Text` inherited the theme's letter spacing while `TextPainter` measured without it, so names came out wider than their marker and were cut short ("Canal T…"). The style now sets its spacing outright.
 

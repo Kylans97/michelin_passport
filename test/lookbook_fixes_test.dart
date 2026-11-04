@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:michelin_passport/core/widgets/editorial_back_button.dart';
 import 'package:michelin_passport/core/widgets/venue_detail_hero.dart';
 import 'package:michelin_passport/features/explore/widgets/explore_discovery_cards.dart';
 import 'package:michelin_passport/features/explore/widgets/explore_discovery_sections.dart';
@@ -109,6 +110,42 @@ void main() {
     );
     final bar = tester.widget<SliverAppBar>(find.byType(SliverAppBar));
     expect(bar.systemOverlayStyle, SystemUiOverlayStyle.light);
+  });
+
+  testWidgets('a hero back arrow sits on a dark circle, a flat one does not', (
+    tester,
+  ) async {
+    Material materialOf(Finder button) => tester.widget<Material>(
+      find.descendant(of: button, matching: find.byType(Material)).first,
+    );
+
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          body: CustomScrollView(
+            slivers: [
+              VenueDetailHero(
+                title: 'A Venue',
+                isWishlisted: false,
+                wishlistSaving: false,
+                onTapWishlist: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+    final hero = materialOf(find.byType(EditorialBackButton));
+    expect(hero.shape, isA<CircleBorder>());
+    expect(hero.color, Colors.black.withValues(alpha: 0.24));
+
+    await tester.pumpWidget(
+      const MaterialApp(home: Scaffold(body: EditorialBackButton())),
+    );
+    expect(
+      materialOf(find.byType(EditorialBackButton)).color,
+      Colors.transparent,
+    );
   });
 
   test('a community ranking entry reads its card photo', () {

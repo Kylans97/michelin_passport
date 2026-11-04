@@ -121,7 +121,7 @@ class EventDetailHero extends StatelessWidget {
       leadingWidth: 56,
       leading: const Padding(
         padding: EdgeInsets.only(left: CsSpacing.sm),
-        child: EditorialBackButton(),
+        child: EditorialBackButton(onPhoto: true),
       ),
       actions: onTapWishlist == null
           ? null
