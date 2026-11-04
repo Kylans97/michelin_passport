@@ -1,0 +1,323 @@
+{
+ "fetched_at": "2026-11-04T22:00:58Z",
+ "heads": {
+  "EG": [
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/egypt",
+    "status": 200,
+    "final": "https://guide.michelin.com/en/hotels-stays/egypt",
+    "total": "25 hotels",
+    "cards": 30
+   },
+   {
+    "url": "https://guide.michelin.com/en/hotels-stays/egypt/page/2",
+    "status": 404,
+    "final": "https://guide.michelin.com/en/hotels-stays/egypt/page/2",
+    "total": null,
+    "cards": 5
+   }
+  ]
+ },
+ "rows": [
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "9477",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "eg",
+   "name": "Al Moudira Hotel",
+   "city": "Luxor",
+   "url": "https://guide.michelin.com/en/hotels-stays/luxor/al-moudira-9477"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "14616",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "La Maison Bleue El Gouna",
+   "city": "El Gouna",
+   "url": "https://guide.michelin.com/en/hotels-stays/el-gouna/la-maison-bleue-el-gouna-14616"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "17246",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "voco CAIRO ARABELLA PLAZA by IHG",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/voco-cairo-arabella-plaza-by-ihg-17246"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "14532",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "Kempinski Nile Hotel",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/kempinski-nile-hotel-14532"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "8233",
+   "distinction": "TWO_KEYS",
+   "hotel_country": "eg",
+   "name": "Four Seasons Resort Sharm El Sheikh",
+   "city": "Sharm El Sheikh",
+   "url": "https://guide.michelin.com/en/hotels-stays/sharm-el-sheikh/four-seasons-resort-sharm-el-sheikh-8233"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "7307",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "Sofitel Cairo Nile El Gezirah",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/sofitel-cairo-nile-el-gezirah-7307"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "5946",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "Sofitel Winter Palace Luxor",
+   "city": "Luxor",
+   "url": "https://guide.michelin.com/en/hotels-stays/luxor/sofitel-winter-palace-luxor-5946"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "8431",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "Four Seasons Hotel Cairo at Nile Plaza",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/four-seasons-cairo-at-nile-plaza-8431"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "8258",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "Four Seasons Hotel Cairo at the First Residence",
+   "city": "Giza",
+   "url": "https://guide.michelin.com/en/hotels-stays/Giza/four-seasons-hotel-cairo-at-the-first-residence-8258"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "12311",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "The St. Regis Cairo",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/the-st-regis-cairo-12311"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "9522",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "Four Seasons Hotel Alexandria at San Stefano, Egypt",
+   "city": "Alexandria",
+   "url": "https://guide.michelin.com/en/hotels-stays/alexandria/four-seasons-hotel-alexandria-9522"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "6773",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "The Gabriel",
+   "city": "Heliopolis",
+   "url": "https://guide.michelin.com/en/hotels-stays/heliopolis/the-gabriel-6773"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "14705",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "The Chedi El Gouna",
+   "city": "El Gouna",
+   "url": "https://guide.michelin.com/en/hotels-stays/el-gouna/the-chedi-el-gouna-14705"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "17247",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "The St. Regis New Capital Cairo",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/the-st-regis-new-capital-cairo-17247"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "17142",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "Sunrise Anjum Resort",
+   "city": "Marsa Alam",
+   "url": "https://guide.michelin.com/en/hotels-stays/marsa-alam/sunrise-anjum-resort-17142"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "17141",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "JAZ Elite Riviera",
+   "city": "Marsa Alam",
+   "url": "https://guide.michelin.com/en/hotels-stays/marsa-alam/jaz-elite-riviera-17141"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "16269",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "Rixos Montaza Alexandria",
+   "city": "Alexandria",
+   "url": "https://guide.michelin.com/en/hotels-stays/alexandria/rixos-montaza-alexandria-16269"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "16265",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "Dusit Thani LakeView Cairo",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/dusit-thani-lakeview-cairo-16265"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "15566",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "Casa Cook El Gouna",
+   "city": "El Gouna",
+   "url": "https://guide.michelin.com/en/hotels-stays/el-gouna/casa-cook-el-gouna-126627-15566"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "15528",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "The Oberoi Beach Resort, Sahl Hasheesh",
+   "city": "Hurghada",
+   "url": "https://guide.michelin.com/en/hotels-stays/Hurghada/the-oberoi-beach-resort-sahl-hasheesh-15528"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "15458",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "Hyatt Centric Cairo West",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/hyatt-centric-cairo-west-15458"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "15456",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "Mazeej Balad Boutique Hotel",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/mazeej-balad-boutique-hotel-15456"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "15388",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "Giza Palace Hotel & Spa",
+   "city": "Giza",
+   "url": "https://guide.michelin.com/en/hotels-stays/Giza/giza-palace-hotel-spa-15388"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "15160",
+   "distinction": "ONE_KEY",
+   "hotel_country": "eg",
+   "name": "Fairmont Nile City",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/fairmont-nile-city-15160"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "14602",
+   "distinction": "SELECTED",
+   "hotel_country": "eg",
+   "name": "Sofitel Cairo Downtown Nile",
+   "city": "Cairo",
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/sofitel-cairo-downtown-nile-14602"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "7406",
+   "distinction": "ONE_KEY",
+   "hotel_country": "us",
+   "name": "The Little Nell",
+   "city": "Aspen",
+   "url": "https://guide.michelin.com/en/hotels-stays/aspen/the-little-nell-7406"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "10050",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "Maison Lameloise",
+   "city": "Chagny",
+   "url": "https://guide.michelin.com/en/hotels-stays/chagny/maison-lameloise-10050"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "12463",
+   "distinction": "SELECTED",
+   "hotel_country": "fr",
+   "name": "La Demeure Montaigne",
+   "city": "Paris",
+   "url": "https://guide.michelin.com/en/hotels-stays/paris/la-demeure-montaigne-12463"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "11908",
+   "distinction": "SELECTED",
+   "hotel_country": "jp",
+   "name": "MUNI KYOTO",
+   "city": "Kyoto",
+   "url": "https://guide.michelin.com/en/hotels-stays/kyoto/muni-kyoto-11908"
+  },
+  {
+   "listing": "EG",
+   "page": 1,
+   "pid": "{{id}}",
+   "distinction": "{{distinction}}",
+   "hotel_country": "{{countryCode}}",
+   "name": "{{name}}",
+   "city": "{{city}}",
+   "url": null
+  }
+ ]
+}

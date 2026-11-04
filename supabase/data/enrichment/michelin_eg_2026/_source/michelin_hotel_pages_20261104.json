@@ -1,0 +1,618 @@
+{
+ "fetched_at": "2026-11-04T22:01:35Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/luxor/al-moudira-9477",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/luxor/al-moudira-9477",
+   "h1": "Al Moudira Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Hager Al Dabbeya, West Bank",
+     "addressLocality": "Luxor",
+     "postalCode": "1340304",
+     "addressCountry": "EGY"
+    },
+    "name": "Al Moudira Hotel in Luxor",
+    "description": "The name is Arabic for “the boss” — maybe more poetic if left untranslated, but very much to the point, if what you’re after is summing up the feeling of staying in a palace like Al Moudira. Though constructed in a traditional style, it’s a new build, and must have seemed a bit of a folly, out in the middle of nowhere. Here, surrounded by farmland on the quiet west bank of the Nile, you’re far removed from the east bank tourist crush, and closer to where you’re actually headed, likely as not the Valley of the Kings.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1417385.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 25.684357,
+     "longitude": 32.552754
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/luxor/al-moudira-9477",
+    "numberOfRooms": 50,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=25.684357%2C32.552754",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "(+20) 122 325 13 07",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.4,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/el-gouna/la-maison-bleue-el-gouna-14616",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/el-gouna/la-maison-bleue-el-gouna-14616",
+   "h1": "La Maison Bleue El Gouna",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kite Center Road, Hurghada",
+     "addressLocality": "El Gouna",
+     "postalCode": "84513",
+     "addressCountry": "EGY",
+     "addressRegion": "Red Sea"
+    },
+    "name": "La Maison Bleue El Gouna in El Gouna",
+    "description": "La Maison Bleue stands out in El Gouna for its surreal storybook charm. Conceived by antique collector Amr Khalil, architect Olivier Sednaoui and developer-turned-hotelier Samih Sawiris, it’s a 13-suite luxury boutique escape where Minoan murals, Catalan-style mosaics, Syrian arches, and Venetian tiling live comfortably under one expansive roof.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1676089.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 27.42246,
+     "longitude": 33.67045
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/el-gouna/la-maison-bleue-el-gouna-14616",
+    "numberOfRooms": 13,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=27.42246%2C33.67045",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+20 12 83591110",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/sharm-el-sheikh/four-seasons-resort-sharm-el-sheikh-8233",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/sharm-el-sheikh/four-seasons-resort-sharm-el-sheikh-8233",
+   "h1": "Four Seasons Resort Sharm El Sheikh",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1 Four Seasons Boulevard, PO Box 203",
+     "addressLocality": "Sharm El Sheikh",
+     "addressCountry": "EGY",
+     "addressRegion": "Sinai Peninsula"
+    },
+    "name": "Four Seasons Resort Sharm El Sheikh in Sharm El Sheikh",
+    "description": "If you like the thrill of an undiscovered destination, or a bit of the old Robinson Crusoe spirit, then you’re probably not even reading this. But if you’re looking for the apex of professionalized high-end luxury hospitality, then you’ve clicked on precisely the right link. Sharm El Sheikh, the mega-resort on the Egyptian Red Sea, is not exactly uncharted territory — what it is is home to some fantastically luxurious hotels, and the Four Seasons Sharm El Sheikh is quite possibly the most luxurious among them.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1680488.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 27.955264,
+     "longitude": 34.393036
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/sharm-el-sheikh/four-seasons-resort-sharm-el-sheikh-8233",
+    "numberOfRooms": 237,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=27.955264%2C34.393036",
+    "petsAllowed": "\\n Pets are allowed, charges may apply. Maximum weight is 15 lbs (7 kgs).",
+    "telephone": "20 69 360-3555",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/four-seasons-cairo-at-nile-plaza-8431",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/cairo/four-seasons-cairo-at-nile-plaza-8431",
+   "h1": "Four Seasons Hotel Cairo at Nile Plaza",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "1089 Corniche El Nil, P.O. Box 63 Maglis El Shaab, Garden City",
+     "addressLocality": "Cairo",
+     "postalCode": "11519",
+     "addressCountry": "EGY"
+    },
+    "name": "Four Seasons Hotel Cairo at Nile Plaza in Cairo",
+    "description": "A sprawling metropolis, Cairo’s borders seem indeterminate, and finding the authentic Cairo can be a difficult task for travelers. However any Egyptian will tell you that true Cairo only exists on the east bank of the Nile, and the Four Seasons Cairo at Nile Plaza puts travelers right on the river’s edge and at the center of this ancient culture. Surrounded by a beauty and history that’s intoxicating, the Four Seasons once again deliver on what they do best — providing guests with quiet sophistication and serenity, a bastion of respite in this restless capital.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1694201.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 30.0382348376,
+     "longitude": 31.23215546
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/cairo/four-seasons-cairo-at-nile-plaza-8431",
+    "numberOfRooms": 371,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=30.0382348376%2C31.23215546",
+    "petsAllowed": "\\n Pets are allowed, charges may apply. Maximum weight of 15 lbs/7 kg.",
+    "telephone": "20 2 2791-7000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 1,
+     "ratingCount": 1,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/the-st-regis-cairo-12311",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/cairo/the-st-regis-cairo-12311",
+   "h1": "The St. Regis Cairo",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Corniche El Nile",
+     "addressLocality": "Cairo",
+     "postalCode": "99999",
+     "addressCountry": "EGY"
+    },
+    "name": "The St. Regis Cairo in Cairo",
+    "description": "Standing right on the Nile Corniche, in what might be the most prestigious location for a luxury hotel in the Egyptian capital, the St. Regis Cairo is nothing if not monumental. Inside, it’s as lavish a hotel as you’d expect from this venerable luxury chain, and though its style is meticulously tailored to its setting, its public spaces are as classically elegant as any hotel in the world. The rooms and suites are a touch more contemporary, though far from avant-garde; the in-room comforts are matched by a world-class spa and a selection of fine restaurants.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1370619.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 30.06301,
+     "longitude": 31.22734
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/cairo/the-st-regis-cairo-12311",
+    "numberOfRooms": 362,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=30.06301%2C31.22734",
+    "telephone": "+20 2 25979000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/alexandria/four-seasons-hotel-alexandria-9522",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/alexandria/four-seasons-hotel-alexandria-9522",
+   "h1": "Four Seasons Hotel Alexandria at San Stefano, Egypt",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "399 El Geish Road, San Stefano Grand Plaza",
+     "addressLocality": "Alexandria",
+     "addressCountry": "EGY"
+    },
+    "name": "Four Seasons Hotel Alexandria at San Stefano, Egypt in Alexandria",
+    "description": "Once upon a time this was the site of a classic colonial-style pan-Mediterranean grand hotel called the San Stefano. Today it’s a case of plus ça change; what’s the towering, brand-new Four Seasons Hotel Alexandria at San Stefano, Egypt, if not the modern version of the classic, still recognizably colonial pan-Mediterranean grand hotel?",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1691580.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 31.24584,
+     "longitude": 29.96586
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/alexandria/four-seasons-hotel-alexandria-9522",
+    "numberOfRooms": 170,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=31.24584%2C29.96586",
+    "petsAllowed": "\\n Pets are allowed, 15 lbs maximum.",
+    "telephone": "20 3 581-8000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/alexandria/rixos-montaza-alexandria-16269",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/alexandria/rixos-montaza-alexandria-16269",
+   "h1": "Rixos Montaza Alexandria",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Montaza",
+     "addressLocality": "Alexandria",
+     "postalCode": "21919",
+     "addressCountry": "EGY"
+    },
+    "name": "Rixos Montaza Alexandria in Alexandria",
+    "description": "Rixos Montaza Alexandria stretches along the Mediterranean near Montaza Palace, its accommodations looking out to the water. The hotel runs Rixos’ all-inclusive program: six restaurants covering Turkish, Italian, and seafood menus, plus multiple bars. The Anjana Spa offers hammam treatments and massage therapies. Families get dedicated pools and a kids’ club, while the beach club provides water sports and loungers directly on the sand. Alexandria’s city center is 20 minutes away, close enough for day trips to the Bibliotheca Alexandrina and the Citadel of Qaitbay. The property relies on the Turkish hospitality group's signature style: expansive, resort-focused, and built for longer stays.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1581418.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 31.288405,
+     "longitude": 30.015993
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/alexandria/rixos-montaza-alexandria-16269",
+    "numberOfRooms": 607,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=31.288405%2C30.015993",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+20 11 00000244",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/dusit-thani-lakeview-cairo-16265",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/cairo/dusit-thani-lakeview-cairo-16265",
+   "h1": "Dusit Thani LakeView Cairo",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "El Tesseen Street, Fifth Settlement",
+     "addressLocality": "Cairo",
+     "addressCountry": "EGY"
+    },
+    "name": "Dusit Thani LakeView Cairo in Cairo",
+    "description": "The Dusit Thani LakeView Cairo overlooks a lake in New Cairo’s Fifth Settlement, about 20 minutes from the airport. Three outdoor pools spread across the grounds: Pool Sala Bar grilling kebabs and seafood tableside after sunset. EV, the Turkish restaurant, brings Istanbul’s spice-forward cooking to Egypt, serving charred meats, layered mezzeh, vegetables dressed in pomegranate molasses. Dusit Gourmet handles pastries, macaroons, and sandwiches for takeaway. The spa runs traditional Thai treatments alongside hammam services. Rooms face either the lake or the city, and balconies come standard. New Cairo’s highways put the Pyramids and Egyptian Museum within a 40-minute drive.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1581320.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 30.025529,
+     "longitude": 31.456078
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/cairo/dusit-thani-lakeview-cairo-16265",
+    "numberOfRooms": 449,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=30.025529%2C31.456078",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+20 2 26140000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/el-gouna/casa-cook-el-gouna-126627-15566",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/el-gouna/casa-cook-el-gouna-126627-15566",
+   "h1": "Casa Cook El Gouna",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Hurghada",
+     "addressLocality": "El Gouna",
+     "postalCode": "84513",
+     "addressCountry": "EGY",
+     "addressRegion": "Red Sea"
+    },
+    "name": "Casa Cook El Gouna in El Gouna",
+    "description": "On Egypt’s Red Sea coast, Casa Cook El Gouna reimagines a desert retreat through Brutalist forms softened by natural textures. Blocks of stone-toned concrete echo Nubian village architecture, while rattan, timber, and linen soften the interiors. Rooms range from premium suites with roof terraces to villas with private pools, all oriented toward sand, sea, and sky. The beach club is the social heart, with a pool, DJ sets, and cocktails, while the spa, yoga sessions, and desert excursions bring balance to the hedonism.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1517861.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 27.423875,
+     "longitude": 33.666465
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/el-gouna/casa-cook-el-gouna-126627-15566",
+    "numberOfRooms": 100,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=27.423875%2C33.666465",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+20 65 3545163",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Hurghada/the-oberoi-beach-resort-sahl-hasheesh-15528",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Hurghada/the-oberoi-beach-resort-sahl-hasheesh-15528",
+   "h1": "The Oberoi Beach Resort, Sahl Hasheesh",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Oberoi 117, Sahl Hasheesh",
+     "addressLocality": "Hurghada",
+     "postalCode": "84500",
+     "addressCountry": "EGY",
+     "addressRegion": "Red Sea"
+    },
+    "name": "The Oberoi Beach Resort, Sahl Hasheesh in Hurghada",
+    "description": "At the far end of Hurghada’s hotel strip, The Oberoi makes an immediate contrast: landscaped gardens and low-slung domed suites replace themed facades and package-holiday bustle. Each villa-style suite opens onto a private terrace, some with pools, and interiors pair high ceilings with a calm, sunlit style. The Red Sea is the constant backdrop, framed by the central pool and beachside bar. Dining is a highlight, from Indian breakfasts to freshly grilled seafood, while service: personal, polished, and unfailingly warm, remains the resort’s signature.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1572646.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 27.076915,
+     "longitude": 33.879991
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Hurghada/the-oberoi-beach-resort-sahl-hasheesh-15528",
+    "numberOfRooms": 102,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=27.076915%2C33.879991",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+20 65 3461040",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/mazeej-balad-boutique-hotel-15456",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/cairo/mazeej-balad-boutique-hotel-15456",
+   "h1": "Mazeej Balad Boutique Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "7 Champollion Road",
+     "addressLocality": "Cairo",
+     "postalCode": "4272111",
+     "addressCountry": "EGY"
+    },
+    "name": "Mazeej Balad Boutique Hotel in Cairo",
+    "description": "Mazeej Balad Boutique Hotel offers an authentic retreat in the heart of Downtown Cairo, set within ‘La Viennoise,’ a late 1800s building brimming with history. The hotel’s five unique suites each tell the story of a character, from the sophisticated Madame Marika to the aspiring architect Nabil, creating a vivid connection between Cairo’s past and present. These personalized stories reflect the diversity of the city, and every room is designed to echo this rich cultural tapestry. With its preserved architectural details and modern amenities, Mazeej Balad is a living tribute to Cairo’s heritage, offering guests a truly immersive experience.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1506534.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 30.048159,
+     "longitude": 31.236536
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/cairo/mazeej-balad-boutique-hotel-15456",
+    "numberOfRooms": 5,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=30.048159%2C31.236536",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+20 2 27731525",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Giza/giza-palace-hotel-spa-15388",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Giza/giza-palace-hotel-spa-15388",
+   "h1": "Giza Palace Hotel & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "No.35/36. 26th July Corridor Sheikh Zayed, 6th of October City",
+     "addressLocality": "Giza",
+     "postalCode": "12588",
+     "addressCountry": "EGY",
+     "addressRegion": "Cairo"
+    },
+    "name": "Giza Palace Hotel & Spa in Giza",
+    "description": "Giza Palace Hotel & Spa stands apart in Cairo’s Giza district. The architecture is bold but grounded, with colonnades, shadowed courtyards, and large rooms with Egyptian cotton linens. Bathrooms are finished in cool stone and brass, with deep tubs, twin vanities and ambient lighting. Chef Sergi Arola steers the culinary program, pairing local ingredients with stripped-back techniques. A reliable option for Cairo, with space to relax and a team that gets the essentials right.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1500914.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 30.018278,
+     "longitude": 31.002285
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Giza/giza-palace-hotel-spa-15388",
+    "numberOfRooms": 560,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=30.018278%2C31.002285",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "https://www.gizapalace.com/",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/cairo/fairmont-nile-city-15160",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/cairo/fairmont-nile-city-15160",
+   "h1": "Fairmont Nile City",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Nile City Towers, 2005B Corniche El Nil, Ramlet Bulaq",
+     "addressLocality": "Cairo",
+     "postalCode": "11311",
+     "addressCountry": "EGY"
+    },
+    "name": "Fairmont Nile City in Cairo",
+    "description": "The Fairmont Nile only opened in 2010, but there’s a touch of old-school glamour to its grand twin towers, which sit right on the banks of the river Nile. The feeling persists in the 542 rooms, which nod to Art Deco with their elegant cream and black palette and high gloss wood furnishings. There are numerous bars and restaurants to choose from serving international cuisine, with a more local taste of Egypt at the colorful Bab El Nile, which also puts on a program of live entertainment. The wellbeing offering includes spa treatments, a fitness room, and sauna, plus a hair and nail salon, whilst up on the 25th floor you’ll find the outdoor Sky Pool with Cairo city views.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1495165.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EGY",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 30.0718079847,
+     "longitude": 31.2277493288
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/cairo/fairmont-nile-city-15160",
+    "numberOfRooms": 542,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=30.0718079847%2C31.2277493288",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+20 2 24619494",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  }
+ ]
+}
