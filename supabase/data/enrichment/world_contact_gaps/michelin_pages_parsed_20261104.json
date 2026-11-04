@@ -4301,6 +4301,443 @@
   "identity_ok": true,
   "identity_note": "address agrees: street"
  },
+ "rest_2818": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/beefbar",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/beefbar",
+  "found": true,
+  "name": "Beefbar",
+  "telephone": "+852 2110 8853",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "2F, Club Lusitano, 16 Ice House Street, Central",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2821": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/china-tang-446675",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/china-tang-446675",
+  "found": true,
+  "name": "China Tang",
+  "telephone": "+852 2522 2148",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Shop 411-413, 4F, Landmark Atrium, 15 Queen's Road Central, Central",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://chinatang.hk",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2826": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/fook-lam-moon-wan-chai",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/fook-lam-moon-wan-chai",
+  "found": true,
+  "name": "Fook Lam Moon (Wan Chai)",
+  "telephone": "+852 2866 0663",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "35-45 Johnston Road, Wan Chai",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2828": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/gaddi-s",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/gaddi-s",
+  "found": true,
+  "name": "Gaddi's",
+  "telephone": "+852 2696 6763",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1F, The Peninsula Hotel, Salisbury Road, Tsim Sha Tsui",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://www.peninsula.com/en/hong-kong/hotel-fine-dining/gaddis-french-restaurant",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2829": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/godenya",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/godenya",
+  "found": true,
+  "name": "Godenya",
+  "telephone": "+852 6713 5917",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "UG, 182 Wellington Street, Central",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://www.godenya.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2831": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/ho-hung-kee",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/ho-hung-kee",
+  "found": true,
+  "name": "Ho Hung Kee (Causeway Bay)",
+  "telephone": "+852 2577 6028",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Shop 1204-1205, 12F, Hysan Place, 500 Hennessy Road, Causeway Bay",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://www.tasty.com.hk",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2836": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/liu-yuan-pavilion",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/liu-yuan-pavilion",
+  "found": true,
+  "name": "Liu Yuan Pavilion",
+  "telephone": "+852 2804 2000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "3F, The Broadway, 54-62 Lockhart Road, Wan Chai",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2838": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/louise",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/louise",
+  "found": true,
+  "name": "Louise",
+  "telephone": "+852 5722 3269",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "PMQ, 35 Aberdeen Street, Central",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://www.louise.hk",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2844": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/neighborhood",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/neighborhood",
+  "found": true,
+  "name": "Neighborhood",
+  "telephone": "+852 2617 0891",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "61-63 Hollywood Road, Central",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2846": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/pang-s-kitchen",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/pang-s-kitchen",
+  "found": true,
+  "name": "Pang's Kitchen",
+  "telephone": "+852 2838 5462",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "25 Yik Yam Street, Happy Valley",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2847": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/petrus",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/petrus",
+  "found": true,
+  "name": "Petrus",
+  "telephone": "+852 2820 8590",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "56F, Island Shangri-La Hotel, Pacific Place, Supreme Court Road, Admiralty",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://www.shangri-la.com/hongkong/islandshangrila/dining/restaurants/restaurant-petrus",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2851": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/ryota-kappou-modern",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/ryota-kappou-modern",
+  "found": true,
+  "name": "Ryota Kappou Modern",
+  "telephone": "+852 2628 1899",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "21F,  18 On Lan Street, Central",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://www.ryota.hk",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2853": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/shang-palace",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/shang-palace",
+  "found": true,
+  "name": "Shang Palace",
+  "telephone": "+852 2733 8754",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Lower Level 1, Kowloon Shangri-La Hotel, 64 Mody Road, Tsim Sha Tsui",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://www.shangri-la.com/hongkong/kowloonshangrila/dining/restaurants/shang-palace/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2854": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/spring-moon",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/spring-moon",
+  "found": true,
+  "name": "Spring Moon",
+  "telephone": "+852 2696 6760",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1F, The Peninsula Hotel, Salisbury Road, Tsim Sha Tsui",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://www.peninsula.com/en/hong-kong/hotel-fine-dining/spring-moon-cantonese",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2855": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/summer-palace",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/summer-palace",
+  "found": true,
+  "name": "Summer Palace",
+  "telephone": "+852 2820 8552",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "5F, Island Shangri-La Hotel, Pacific Place, Supreme Court Road, Admiralty",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://www.shangri-la.com/hongkong/islandshangrila/dining/restaurants/summer-palace/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2857": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/sushi-takeshi",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/sushi-takeshi",
+  "found": true,
+  "name": "Sushi Takeshi",
+  "telephone": "+852 9391 9392",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "GF, The Mira, 118-130 Nathan Road, Tsim Sha Tsui",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2858": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/sushi-wadatsumi-1197866",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/sushi-wadatsumi-1197866",
+  "found": true,
+  "name": "Sushi Wadatsumi",
+  "telephone": "+852 2619 0199",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "607, 6F, K11 Musea, 18 Salisbury Road, Tsim Sha Tsui",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": "https://sushi-wadatsumi.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2864": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/xin-rong-ji",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/xin-rong-ji",
+  "found": true,
+  "name": "Xin Rong Ji",
+  "telephone": "+852 3462 3518",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "GF & 1F, China Overseas Building, 139 Lockhart Road, Wan Chai",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2866": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/yat-lok",
+  "canonical": "https://guide.michelin.com/en/hong-kong-region/hong-kong/restaurant/yat-lok",
+  "found": true,
+  "name": "Yat Lok (Central)",
+  "telephone": "+852 2524 3882",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "GF, Conwell House, 34-38 Stanley Street, Central",
+   "addressLocality": "Hong Kong",
+   "addressCountry": "HKG",
+   "addressRegion": "Hong Kong"
+  },
+  "page_country": "HK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
  "hotel_2702": {
   "status": "200",
   "final": "https://guide.michelin.com/en/hotels-stays/milan/bulgari-hotel-milano-6209",
@@ -7235,6 +7672,520 @@
    "addressRegion": "Jalisco"
   },
   "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2904": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/istanbul/ajwa-sultanahmet-8731",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/istanbul/ajwa-sultanahmet-8731",
+  "found": true,
+  "name": "AJWA Sultanahmet in Istanbul",
+  "telephone": "+90 212 638 22 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Emin Sinan, Piyer Loti Cd. No:30",
+   "addressLocality": "Istanbul",
+   "postalCode": "34126",
+   "addressCountry": "TUR"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2905": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/fethiye/ahama-15464",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/fethiye/ahama-15464",
+  "found": true,
+  "name": "Ahãma in Fethiye",
+  "telephone": "+90 252 440 04 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Yanıklar Mahallesi Muğla Caddesi No:1, Günlüklü Bay",
+   "addressLocality": "Fethiye",
+   "addressCountry": "TUR",
+   "addressRegion": "Muğla Province"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "hotel_2906": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/alacati/alavya-7725",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/alacati/alavya-7725",
+  "found": true,
+  "name": "Alavya in Alacati",
+  "telephone": "+90 549 786 97 50",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "3005. Sk. No:6",
+   "addressLocality": "Alacati",
+   "postalCode": "35937",
+   "addressCountry": "TUR",
+   "addressRegion": "Izmir Region"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_2907": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/beyoglu/aliee-istanbul-15217",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/beyoglu/aliee-istanbul-15217",
+  "found": true,
+  "name": "Aliée Istanbul in Beyoğlu",
+  "telephone": "+90 212 393 11 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Camiikebir Mahallesi Taskizak Tersanesi Caddesi No 11:19, Beyoglu",
+   "addressLocality": "Beyoğlu",
+   "postalCode": "34437",
+   "addressCountry": "TUR",
+   "addressRegion": "Istanbul"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2908": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/bodrum/allium-bodrum-resort-spa-11699",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/bodrum/allium-bodrum-resort-spa-11699",
+  "found": true,
+  "name": "Allium Bodrum Resort & Spa in Bodrum",
+  "telephone": "+902523854040",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "No:68 Çökertme Cd., L/1",
+   "addressLocality": "Bodrum",
+   "postalCode": "48990",
+   "addressCountry": "TUR",
+   "addressRegion": "Bodrum Peninsula"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2909": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/nevsehir/argos-in-cappadocia-3941",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/nevsehir/argos-in-cappadocia-3941",
+  "found": true,
+  "name": "Argos in Cappadocia in Nevsehir",
+  "telephone": "+90 534 261 04 83 / +90 384 219 31 30",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "No: 23 Kayabaş Sk., Uchisar",
+   "addressLocality": "Nevsehir",
+   "postalCode": "50240",
+   "addressCountry": "TUR",
+   "addressRegion": "Cappadocia"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2910": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/nevsehir/ariana-sustainable-luxury-lodge-8005",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/nevsehir/ariana-sustainable-luxury-lodge-8005",
+  "found": true,
+  "name": "Ariana Sustainable Luxury Lodge in Nevsehir",
+  "telephone": "90-384-219-2223",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Tekelli Mahallesi, Goreme Sokak, no 8",
+   "addressLocality": "Nevsehir",
+   "postalCode": "50240",
+   "addressCountry": "TUR",
+   "addressRegion": "Cappadocia"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2911": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/bodrum/birdcage-33-13248",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/bodrum/birdcage-33-13248",
+  "found": true,
+  "name": "Birdcage 33 Hotel in Bodrum",
+  "telephone": "+902523853433",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Ömer Efendi Caddesi 33, Bodrum",
+   "addressLocality": "Bodrum",
+   "postalCode": "48990",
+   "addressCountry": "TUR",
+   "addressRegion": "Bodrum Peninsula"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2912": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/%C5%9Eile/casa-lavanda-boutique-hotel-15004",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/%C5%9Eile/casa-lavanda-boutique-hotel-15004",
+  "found": true,
+  "name": "Casa Lavanda Boutique Hotel in Şile",
+  "telephone": "+90 216 736 56 40",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Ulupelit Mahallesi, Seçilmiş Sok. Casa Lavanda Hotel No:2",
+   "addressLocality": "Şile",
+   "postalCode": "34980",
+   "addressCountry": "TUR",
+   "addressRegion": "Istanbul"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2913": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/hisaronu/d-maris-bay-13756",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/hisaronu/d-maris-bay-13756",
+  "found": true,
+  "name": "D Maris Bay in Hisarönü",
+  "telephone": "+90 0252 441 20 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Hisarönü Mah. Çubucak Küme Evleri, No: 80",
+   "addressLocality": "Hisarönü",
+   "postalCode": "48380",
+   "addressCountry": "TUR",
+   "addressRegion": "Muğla Province"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2914": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/istanbul/ecole-st-pierre-hotel-12960",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/istanbul/ecole-st-pierre-hotel-12960",
+  "found": true,
+  "name": "Ecole St. Pierre Hotel in Istanbul",
+  "telephone": "+90 212 244 26 75",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Bereketzade, Galata Kulesi Sk. No:14",
+   "addressLocality": "Istanbul",
+   "postalCode": "34420",
+   "addressCountry": "TUR"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2915": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-sultanahmet-7293",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-sultanahmet-7293",
+  "found": true,
+  "name": "Four Seasons Hotel Istanbul at Sultanahmet in Istanbul",
+  "telephone": "90-212-4023000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Tevkifhane Sokak No 1, Sultanahmet Eminönü",
+   "addressLocality": "Istanbul",
+   "postalCode": "34122",
+   "addressCountry": "TUR"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2916": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-the-bosphorus-7308",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/istanbul/four-seasons-hotel-istanbul-at-the-bosphorus-7308",
+  "found": true,
+  "name": "Four Seasons Hotel Istanbul at the Bosphorus in Istanbul",
+  "telephone": "90-212-3814000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Ciragan Cad Number 28, Beşiktaş",
+   "addressLocality": "Istanbul",
+   "postalCode": "34349",
+   "addressCountry": "TUR"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2917": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/bodrum/mandarin-oriental-bodrum-7239",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/bodrum/mandarin-oriental-bodrum-7239",
+  "found": true,
+  "name": "Mandarin Oriental Bodrum in Bodrum",
+  "telephone": "+90 252 311 28 88",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Cennet Koyu, Comca Mevkii, 314. Sokak No. 10, Golturkbuku Mahallesi",
+   "addressLocality": "Bodrum",
+   "postalCode": "48400",
+   "addressCountry": "TUR",
+   "addressRegion": "Bodrum Peninsula"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2918": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/istanbul/mandarin-oriental-bosphorus-istanbul-15244",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/istanbul/mandarin-oriental-bosphorus-istanbul-15244",
+  "found": true,
+  "name": "Mandarin Oriental Bosphorus, Istanbul in Istanbul",
+  "telephone": "+90 212 349 8888",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Kurucesme, Muallim Naci Cad. No: 62, Besiktas ",
+   "addressLocality": "Istanbul",
+   "postalCode": "34345 ",
+   "addressCountry": "TUR"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2919": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/nevsehir/museum-hotel-6604",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/nevsehir/museum-hotel-6604",
+  "found": true,
+  "name": "Museum Hotel in Nevsehir",
+  "telephone": "+90 (384) 219 2220",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Tekeli Mh No:1",
+   "addressLocality": "Nevsehir",
+   "postalCode": "50240",
+   "addressCountry": "TUR",
+   "addressRegion": "Cappadocia"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2920": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/B%C3%BCy%C3%BCkada/princes-palace-resort-15003",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/B%C3%BCy%C3%BCkada/princes-palace-resort-15003",
+  "found": true,
+  "name": "Princes' Palace Resort in Büyükada",
+  "telephone": "+90 216 544 01 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Çankaya Caddesi No 58, Büyükada",
+   "addressLocality": "Büyükada",
+   "postalCode": "34970",
+   "addressCountry": "TUR",
+   "addressRegion": "Istanbul"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2921": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/bozb%C3%BCk/six-senses-kaplankaya-9358",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/bozb%C3%BCk/six-senses-kaplankaya-9358",
+  "found": true,
+  "name": "Six Senses Kaplankaya in Bozbük",
+  "telephone": "90 252 511 00 30",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Merkez Sokak No:198",
+   "addressLocality": "Bozbük",
+   "postalCode": "48200",
+   "addressCountry": "TUR",
+   "addressRegion": "Muğla Province"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2922": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/istanbul/the-bank-istanbul-7131",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/istanbul/the-bank-istanbul-7131",
+  "found": true,
+  "name": "The Bank Hotel Istanbul in Istanbul",
+  "telephone": "+90 212 283 00 55",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Azapkapı, Bankalar Cd. No:5 Karaköy, Beyoğlu",
+   "addressLocality": "Istanbul",
+   "postalCode": "34420",
+   "addressCountry": "TUR"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2923": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/istanbul/the-st-regis-istanbul-12681",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/istanbul/the-st-regis-istanbul-12681",
+  "found": true,
+  "name": "The St. Regis Istanbul in Istanbul",
+  "telephone": "+90 212 368 00 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Mim Kemal Oke Caddesi No:35",
+   "addressLocality": "Istanbul",
+   "postalCode": "34367",
+   "addressCountry": "TUR"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2924": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/istanbul/vakko-hotels-sumahan-bosphorus-64032-1131",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/istanbul/vakko-hotels-sumahan-bosphorus-64032-1131",
+  "found": true,
+  "name": "Vakko Hotel Sumahan Bosphorus in Istanbul",
+  "telephone": "+90 216 422 80 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Kuleli Caddesi No: 43 Cengelkoy",
+   "addressLocality": "Istanbul",
+   "postalCode": "34684",
+   "addressCountry": "TUR"
+  },
+  "page_country": "TR",
   "website": null,
   "stay_hotels": [],
   "address_agrees": [

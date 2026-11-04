@@ -142,10 +142,14 @@ def name_sim(a, b, extra=()):
         latin = ''.join(c for c in b if not is_cjk(c))
         if fold(latin):
             return name_sim(a, latin, extra)
+    if b and re.search(r'[(（].*[)）]', b) and fold(re.sub(r'\s*[(（][^)）]*[)）]', '', b)):
+        r0 = name_sim(a, re.sub(r'\s*[(（][^)）]*[)）]', '', b), extra)
+    else:
+        r0 = 0.0
     fa, fb = fold(a), fold(b)
     if not fa or not fb:
-        return 0.0
-    r = difflib.SequenceMatcher(None, fa, fb).ratio()
+        return r0
+    r = max(r0, difflib.SequenceMatcher(None, fa, fb).ratio())
     if fa.replace(' ', '') == fb.replace(' ', ''):
         r = 1.0
     ok = GENERIC | {w for e in extra for w in fold(e).split()}
