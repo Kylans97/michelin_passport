@@ -8,6 +8,23 @@ Dit volgt dezelfde werkwijze als de eerdere batches (`docs/Architecture/Events/*
 
 ---
 
+## Aanvulling 5 november 2026: twee migraties op twee branches
+
+| Migratie | Branch | Wat | Wanneer |
+|---|---|---|---|
+| `20261101310000_add_bh_ky_mu_countries.sql` | `claude/overnight-world-events` (deze) | landen BH, KY en MU | **vóór** de events uit die landen, in deze apply |
+| `20261101320000_add_event_announcement_status.sql` | `claude/event-expected-soldout` | kolommen `announcement_status` en `expected_source_url` voor het label "Expected" | **niet in deze apply**: pas als die branch op main staat en de build met het label is uitgebracht |
+
+**Werkwijze voor deze apply:**
+
+1. **Apply-branch:** maak een lokale apply-branch vanaf `origin/main` en merge alleen `origin/claude/overnight-world-events`. Push die apply-branch niet naar main.
+2. **Volgorde:** de landenmigratie moet als enige pending staan in `supabase migration list --linked`. Controleer ook dat haar nummer hoger is dan de hoogste migratie op main; zo niet, hernoem haar en meld dat.
+3. **Uitverkocht:** zet `availability_status = 'sold_out'` als de pagina dat zegt. Die kolom bestaat al, dus dit mag nu. De huidige app toont het nog niet; de build van `claude/event-expected-soldout` wel.
+4. **Expected (bron C):** zet geen event op `expected` en voeg geen `later: expected`-rijen toe. De kolom bestaat pas na migratie `…320000`. Een oudere app zou zo'n event bovendien zonder label als officieel tonen.
+5. **Na de apply:** rond af zoals in fase 2 hierboven beschreven, inclusief `supabase migration list --linked`: lokaal en remote moeten gelijk zijn.
+
+---
+
 ## Fase 1: read-only controle en pre-apply-rapport
 
 ### 1. Schema live lezen, niet aannemen
