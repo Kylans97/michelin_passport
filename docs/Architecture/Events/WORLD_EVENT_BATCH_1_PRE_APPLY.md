@@ -4,6 +4,37 @@ Fase 1 van `supabase/data/enrichment/events/WORLD_EVENT_APPLY_INSTRUCTIONS.md`. 
 
 De exacte rijen staan ook machineleesbaar in `supabase/data/enrichment/events/world_event_batch_1_pre_apply.json`.
 
+## Aanvulling 2026-11-04: de instructie van "5 november" kwam binnen na de apply
+
+**Let op de volgorde.** Batch 1 stond al live (67 events, `WORLD_EVENT_BATCH_1_PRODUCTION_APPLY.md`) toen de product owner de aanvulling doorgaf. Daarom is dit geen nieuw plan voor batch 1, maar een controle ervan en een voorstel voor wat overblijft. Er is opnieuw niets geschreven.
+
+| Punt uit de aanvulling | Stand |
+|---|---|
+| Alleen `apply_decision = batch 1` | 64 van de 67 live events zijn `batch 1`. wev-021, wev-024 en wev-030 zijn `decide`; die heeft de product owner op 2026-11-04 per rij goedgekeurd. Dat past bij "`decide`: per rij beslissen". |
+| Geen `later` of `excluded` | Klopt: er staat geen zo'n rij live. |
+| Uitverkocht is `availability_status`, geen tag | Klopt: 9 live events staan op `sold_out`, volgens hun eigen pagina. Er bestaat geen uitverkocht-tag. |
+| Geen `expected`, `20261101320000` niet toepassen | Klopt: de kolom `announcement_status` bestaat niet in productie en de migratie is niet toegepast. |
+| BH, KY, MU eerst toevoegen | Nog niet gedaan: de vorige opdracht zei "geen migratie". De drie landen staan niet in `countries`. |
+
+**Migratie `20261101310000`:** het nummer komt na de hoogste op main (`20261101300000`), dus hernoemen is niet nodig. Toepassen kan vanaf een lokale apply-branch van `origin/main` met alleen `origin/claude/overnight-world-events` erin; daar is hij de enige openstaande.
+
+**Wat dat oplevert voor batch 1:** maar één event. BH heeft alleen `batch 2`-rijen, en wev-154 (MU) gaf 403 en blijft buiten.
+
+### Voorstel: wev-128 · Cayman Cookout 2027
+
+- `event_type` festival · tags: guest_chef · bron A
+- `start_date` 2027-01-14 · `end_date` 2027-01-17 · alle tijdvelden NULL · `timezone` America/Cayman
+- `venue_name` The Ritz-Carlton, Grand Cayman · `city` Grand Cayman · `country_code` KY
+- `latitude`/`longitude` NULL / NULL
+- `external_host_name` The Ritz-Carlton, Grand Cayman (staat niet in de catalogus)
+- `official_url` https://www.caymancookout.com/ · `ticket_url` NULL
+- `admission_type` paid · `admission_note` NULL · `availability_status` unknown
+- Koppelingen, alle vier participant (`is_host` en `is_venue` false): `event_restaurants` rest_0059 Le Bernardin, rest_3043 Daniel, rest_3052 Emeril's, rest_0743 Providence
+
+**Gecontroleerd op 2026-11-04:** de pagina noemt 14 tot en met 17 januari 2027 en is niet uitverkocht. De vier codes bestaan op code plus land.
+
+**Beslispunt:** de homepage verkoopt vooral verblijfspakketten met tickets, en boekers krijgen eerder toegang tot tickets. Nergens staat dat het alleen voor hotelgasten is, maar het lijkt wel op de twijfelgevallen van besluit 2. **Voorstel:** wel meenemen, omdat het een publiek festival is dat tickets noemt. De naamkoppelingen staan bovendien in de overzichtskolom als geverifieerd; de lijst komt van `talent2027`, die ik niet opnieuw heb gelezen.
+
 ## 1. Kort
 
 - **Kandidaten** met `apply_decision = batch 1`: 81.
