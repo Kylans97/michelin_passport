@@ -25,7 +25,8 @@ class RankingsRepository {
     var builder = _client
         .from('restaurant_rankings')
         .select(
-          'restaurant_id, name, city, country_flag, michelin_stars, community_rating, total_visits',
+          'restaurant_id, name, city, country_flag, michelin_stars, community_rating, total_visits, '
+          'card_photo_url, card_focus_x, card_focus_y, card_zoom',
         );
 
     if (stars != null) {

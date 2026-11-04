@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import '../../core/analytics/analytics_event.dart';
@@ -551,6 +552,12 @@ class _EventsScreenState extends State<EventsScreen> {
               slivers: [
                 SliverAppBar(
                   pinned: true,
+                  // Light: the theme's default is for its ivory app bars, and left the
+                  // time and battery dark on this green.
+                  systemOverlayStyle: SystemUiOverlayStyle.light,
+                  // foregroundColor loses to the theme's dark iconTheme, so the back
+                  // arrow has to be told too.
+                  iconTheme: const IconThemeData(color: AppColors.textOnDark),
                   backgroundColor: AppColors.brandGreen,
                   foregroundColor: AppColors.textOnDark,
                   toolbarHeight: 76,

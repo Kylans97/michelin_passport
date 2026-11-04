@@ -37,6 +37,8 @@ class CommunityRankingEntry {
   final int michelinStars;
   final double communityRating;
   final int totalVisits;
+  final String? imageUrl;
+  final PhotoFraming imageFraming;
 
   const CommunityRankingEntry({
     required this.restaurantId,
@@ -46,6 +48,8 @@ class CommunityRankingEntry {
     required this.michelinStars,
     required this.communityRating,
     required this.totalVisits,
+    this.imageUrl,
+    this.imageFraming = PhotoFraming.center,
   });
 
   factory CommunityRankingEntry.fromJson(Map<String, dynamic> json) =>
@@ -57,6 +61,8 @@ class CommunityRankingEntry {
         michelinStars: (json['michelin_stars'] as int?) ?? 0,
         communityRating: ((json['community_rating'] as num?) ?? 0).toDouble(),
         totalVisits: (json['total_visits'] as int?) ?? 0,
+        imageUrl: json['card_photo_url'] as String?,
+        imageFraming: PhotoFraming.fromJson(json, prefix: 'card_'),
       );
 }
 

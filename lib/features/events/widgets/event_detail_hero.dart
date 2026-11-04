@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
@@ -112,6 +113,9 @@ class EventDetailHero extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: expandedHeight,
       pinned: true,
+      // Light: the theme's default is for its ivory app bars, and left the
+      // time and battery dark on this green.
+      systemOverlayStyle: SystemUiOverlayStyle.light,
       backgroundColor: AppColors.deepGreen,
       foregroundColor: AppColors.textOnDark,
       leadingWidth: 56,
@@ -287,7 +291,9 @@ class _EventWishlistButton extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(9),
           child: Icon(
-            isWishlisted ? Icons.favorite_rounded : Icons.favorite_border_rounded,
+            isWishlisted
+                ? Icons.favorite_rounded
+                : Icons.favorite_border_rounded,
             // Step 1B color rule: gold is reserved for Michelin stars/Keys
             // only. Wishlist state reads through the filled-vs-outline
             // icon shape alone, not color — both states stay ivory-on-dark.

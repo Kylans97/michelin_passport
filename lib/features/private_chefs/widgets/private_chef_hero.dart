@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
 import '../../../core/theme/cs_typography.dart';
@@ -131,6 +132,9 @@ class _PrivateChefHeroState extends State<PrivateChefHero> {
     return SliverAppBar(
       expandedHeight: widget.expandedHeight,
       pinned: true,
+      // Light: the theme's default is for its ivory app bars, and left the
+      // time and battery dark on this green.
+      systemOverlayStyle: SystemUiOverlayStyle.light,
       backgroundColor: AppColors.deepGreen,
       foregroundColor: AppColors.textOnDark,
       leadingWidth: 56,

@@ -206,7 +206,7 @@ class FreshFindsSection extends StatelessWidget {
           // Same row height as WorthTheJourneySection — ExploreFreshFindCard
           // shares its exact card shape/content proportions.
           SizedBox(
-            height: 340,
+            height: _restaurantRailHeight(context),
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(
@@ -225,6 +225,16 @@ class FreshFindsSection extends StatelessWidget {
     );
   }
 }
+
+// Row heights for the card rails: what doesn't scale with text size plus
+// what does, so a card fits a 2-line title and every other line at any text
+// scale, with no empty band under the text at the normal one. They were a
+// fixed 340 and 176, sized for 1.6x, which left a third of every card blank.
+double _restaurantRailHeight(BuildContext context) =>
+    186 + MediaQuery.textScalerOf(context).scale(86);
+
+double _hotelRailHeight(BuildContext context) =>
+    36 + MediaQuery.textScalerOf(context).scale(76);
 
 /// The restaurant discovery section — a horizontally-scrolling row of
 /// [ExploreDiscoveryRestaurantCard]s. [restaurants] is expected to already
@@ -263,13 +273,11 @@ class WorthTheJourneySection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: CsSpacing.base),
-          // Sized generously enough for a 2-line title plus every other
-          // line at ~1.6x text scale (a ListView can't use IntrinsicHeight
-          // to size itself, since a lazy/scrollable Viewport doesn't
-          // support intrinsic-dimension queries) — comfortably above the
-          // ~301px the tallest realistic card content needs at that scale.
+          // A ListView can't use IntrinsicHeight to size itself (a lazy
+          // Viewport doesn't support intrinsic-dimension queries), so this
+          // is worked out: see _restaurantRailHeight.
           SizedBox(
-            height: 340,
+            height: _restaurantRailHeight(context),
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(
@@ -328,7 +336,7 @@ class MantelierLatestSection extends StatelessWidget {
           ),
           const SizedBox(height: CsSpacing.base),
           SizedBox(
-            height: 340,
+            height: _restaurantRailHeight(context),
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(
@@ -382,10 +390,9 @@ class StayALittleLongerSection extends StatelessWidget {
             ),
           ),
           const SizedBox(height: CsSpacing.base),
-          // Same reasoning as WorthTheJourneySection's row height — sized
-          // for a 2-line title at ~1.6x text scale (~151px), with margin.
+          // Same reasoning as WorthTheJourneySection's row height.
           SizedBox(
-            height: 176,
+            height: _hotelRailHeight(context),
             child: ListView.separated(
               scrollDirection: Axis.horizontal,
               padding: const EdgeInsets.symmetric(

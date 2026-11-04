@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../constants/app_colors.dart';
 import '../theme/app_typography.dart';
 
@@ -61,6 +62,9 @@ class DetailHero extends StatelessWidget {
     return SliverAppBar(
       expandedHeight: expandedHeight,
       pinned: true,
+      // Light: the theme's default is for its ivory app bars, and left the
+      // time and battery dark on this green.
+      systemOverlayStyle: SystemUiOverlayStyle.light,
       backgroundColor: AppColors.brandGreen,
       foregroundColor: AppColors.textOnDark,
       leading: Padding(

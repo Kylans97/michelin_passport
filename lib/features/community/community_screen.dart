@@ -495,7 +495,11 @@ class _HottestPlacesRestaurantCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const VenueThumbnail(imageUrl: null, size: 64),
+              VenueThumbnail(
+                imageUrl: entry.imageUrl,
+                framing: entry.imageFraming,
+                size: 64,
+              ),
               const SizedBox(width: CsSpacing.base),
               Expanded(
                 child: Column(
