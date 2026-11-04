@@ -12,13 +12,17 @@ The format follows Keep a Changelog.
 
 ## v1.5.7 (31) — 2026-11-04
 
-The build meant for App Review. Two changes on top of (30).
+The build meant for App Review. Three changes on top of (30).
 
 ### Changed
+- **The trip map says what is where** (product owner, 2026-11-04): a 13-pixel dot, square and diamond with no legend became 28-pixel pins with the icons of the visited map: cutlery, a key, a calendar, a check for what is on the trip. Zoomed in, a pin shows its name, places on the trip and events from zoom 12, the rest from zoom 14. A name moves to the left of its pin when the right is taken and stays hidden when neither side is free (`pickTripMapLabels`).
 - **iPhone only** (`TARGETED_DEVICE_FAMILY = 1`), decided by the product owner 2026-11-04: the app had declared iPad support without ever being looked at on an iPad, which would also ask for iPad screenshots. iPhone apps still run on an iPad in compatibility mode.
 
 ### Added
 - **That Mantelier is independent, at the foot of Profile**, in the same words as `site/terms.html`, which a test holds them to. Until now it was only on the website, while the app shows MICHELIN stars and Keys throughout.
+
+### Fixed
+- Near-miss on the map names, seen in the simulator: `Text` inherited the theme's letter spacing while `TextPainter` measured without it, so names came out wider than their marker and were cut short ("Canal T…"). The style now sets its spacing outright.
 
 ---
 
