@@ -1091,8 +1091,8 @@ Ik beslis deze niet zelf. De kolom "Voorstel" is mijn advies. Wordt een koppelin
 | wev-034 | Burg Hotel | venue | hotel_135 Burg Vital Resort (Lech am Arlberg, AT); rest_0270 Griggeler Stuba (Lech am Arlberg, AT) | nee, geen van beide opties is aantoonbaar "Burg Hotel"; venue_name blijft tekst |
 | wev-037 | Hotel Gasthof Post | venue | hotel_134 Post Lech Arlberg (Lech am Arlberg, AT) | ja, als je bevestigt dat Hotel Gasthof Post nu Post Lech Arlberg heet |
 | wev-039 | Hotel Gasthof Post | venue | hotel_134 Post Lech Arlberg (Lech am Arlberg, AT) | ja, als je bevestigt dat Hotel Gasthof Post nu Post Lech Arlberg heet |
-| wev-117 | Van Oys Maastricht Retreat (Sainte Cécile Ballroom) | host+venue | hotel_05 Van Oys Maastricht Retreat (Maastricht, NL) | ja, de Sainte Cécile Ballroom hoort bij dit hotel volgens de bron |
-| wev-120 | Van Oys Maastricht Retreat (Sainte Cécile Ballroom) | host+venue | hotel_05 Van Oys Maastricht Retreat (Maastricht, NL) | ja, de Sainte Cécile Ballroom hoort bij dit hotel volgens de bron |
+| wev-117 | Van Oys Maastricht Retreat (Sainte Cécile Ballroom) | host+venue | hotel_05 Van Oys Maastricht Retreat (Maastricht, NL) | ja, als je bevestigt dat de Sainte Cécile Ballroom bij dit hotel hoort; de hotelnaam klopt |
+| wev-120 | Van Oys Maastricht Retreat (Sainte Cécile Ballroom) | host+venue | hotel_05 Van Oys Maastricht Retreat (Maastricht, NL) | ja, als je bevestigt dat de Sainte Cécile Ballroom bij dit hotel hoort; de hotelnaam klopt |
 | wev-139 | es:senz (Das Achental Resort) | participant | hotel_103 Das Achental Resort (Grassau, DE); rest_0179 ES:SENZ (Grassau, DE) | ja, het restaurant, niet het resort |
 | wev-146 | La Paulée (Daniel Johnnes) | host | rest_3043 Daniel (New York, US) | nee, Daniel is een restaurant; de host is La Paulée. Wordt external_host_name |
 | wev-147 | L.A. Jordan (Hotel Ketschauer Hof) | participant | hotel_95 Hotel Ketschauer Hof (Deidesheim, DE); rest_0194 L.A. Jordan (Deidesheim, DE) | ja, het restaurant, niet het hotel |
@@ -1104,7 +1104,7 @@ Jouw besluit van 5 november: alleen voor hotelgasten gaat niet mee. Deze pagina'
 - **Blackberry Farm** (wev-035, wev-048, wev-135, wev-143, wev-148): de sitebrede voettekst zegt dat alleen geregistreerde gasten op het terrein mogen. Het zijn meerdaagse arrangementen met activiteitenkosten los van de kamer.
 - **Kandolhu Maldives** (wev-046, wev-047): de pagina noemt de diners een hoogtepunt voor gasten die er verblijven. Een resort op een eigen eiland.
 
-**Voorstel:** alle zeven niet meenemen. Ze zijn in de praktijk niet los te boeken.
+**Voorstel:** alle zeven niet meenemen, omdat ze waarschijnlijk niet los te boeken zijn. Dat heb ik niet kunnen bevestigen.
 
 ### Besluit 3: tijden die de pagina wel noemt en het overzicht niet
 
