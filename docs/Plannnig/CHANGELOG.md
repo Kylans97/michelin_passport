@@ -8,6 +8,17 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.7 (30) — 2026-11-04
+
+Build 29 was made from `014b73f`. This build carries the wines on a visit,
+the computed overall with Atmosphere and the overall alone on venue and
+visit pages, and the first map on the trip screens since build 24: their
+backend was already live. Schema diff against production run before this
+bump: the dumps differ by blank lines only, and storage and auth match apart
+from the Supabase platform triggers under Fixed.
+
 ### Added
 - **Atmosphere, and overall as the average of the scores given** (product owner, 2026-11-04): hand-picked whole numbers tied at the top of every ranking. A new Atmosphere score on restaurants; `visits.rating` is now computed by the database from the scores filled in, blanks left out, so food alone makes the overall that food score. The overall control is gone from the form, which shows the result as you score. Everywhere an overall appears it shows one decimal. Migration `20261101340000_add_atmosphere_and_computed_overall.sql`, applied 2026-11-04; it recomputed the 18 existing rated visits, 7 of which moved by half a point or more, overwriting what members picked by hand. An export of the scores from before it was taken first and kept outside the repository. The app side comes with the next build. Shipped builds keep working: what they send as overall is ignored when any score is present, and they show 8.7 as 8 until they are gone.
 - **The overall alone on venue and visit pages** (product owner, 2026-11-04): one number, with what it is made of opening beneath it on a tap, highest first and blanks left out. `VenueOverallScore` replaces the row of rings, which at six on a restaurant read as a dashboard and cut "Atmosphere" short.
@@ -15,6 +26,8 @@ The format follows Keep a Changelog.
 - **Wines on a visit or stay** (product owner, 2026-11-04): an optional "What we drank" in the review and on the visit page, reading like a wine list. Producer, wine, year or "No year", and size (Glass, Half, Bottle, Magnum, Other), each optional. Suggestions come from the member's own earlier wines. A wine is exactly as visible as its visit. Live on 2026-11-04: the privacy policy first, then migration `20261101330000_add_visit_wines.sql`; the app side comes with the next build. **Ledger: 146, local and remote in agreement.** The unapplied `20261101320000` on `claude/event-expected-soldout` now sorts before an applied migration, so it needs renaming to follow the highest before it is applied.
 
 ### Fixed
+- The trip map and the event location picker said "The map can't be shown right now" in builds 25 to 29: the main checkout's gitignored `.env`, which archives are made from, had no `MAPTILER_KEY`, and `MapTilerConfig.key` returns null silently. Added 2026-11-04; the key names in that file are now checked at every version bump.
+- Near-miss in this build's schema diff: production's `storage.buckets` has three triggers the replay does not (`protect_active_lifecycle_states`, `wake_lifecycle_on_policy_write`, `wake_lifecycle_on_versioning_enable`). Not drift: Supabase's own storage migrations added them on 2026-11-04 at 07:51 UTC (`lifecycle-writer-coordination` and neighbours in `storage.migrations`), and their functions belong to `supabase_storage_admin`. The storage half of the diff will show them until the CLI's local storage image catches up.
 - Near-miss on the new scores report: hiding only the small one of filled in and left blank would still have given it away, because the two add up to the members total shown beside them. Both are hidden when either is under 5.
 - Near-miss on the new wines, seen in the simulator: `.order()` in `supabase_flutter` defaults to descending, so wines showed last-first until `ascending: true`. Would recur on any new ordered list; tests with a fake repository don't catch it.
 
