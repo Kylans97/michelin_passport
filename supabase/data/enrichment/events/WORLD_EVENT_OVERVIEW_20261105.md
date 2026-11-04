@@ -2,7 +2,7 @@
 
 **Status: onderzoek, niets toegepast.** Er is niets naar Supabase geschreven. Bestanden:
 
-- `world_event_overview_20261105.csv`: alle 215 kandidaten, gesorteerd.
+- `world_event_overview_20261105.csv`: alle 217 kandidaten, gesorteerd.
 - `_source/world_20261105/`: de ruwe onderzoeksregels per regio en de onderzoeksopdracht.
 
 Periode: 3 november 2026 tot en met 31 december 2027, met de nadruk op de komende zes maanden. Opgesteld op 3–5 november 2026, op branch `claude/overnight-world-events`.
@@ -39,7 +39,6 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 
 | id | datum | event | plaats | type | tags | bron | fit | catalogus |
 |---|---|---|---|---|---|---|---|---|
-| wev-001 | 2026-11-05 | White Truffle & Gaja Dinner | London, GB | Dinner | Wine, Winemaker | A | high | geen catalogusmatch |
 | wev-002 | 2026-11-05 t/m 2026-11-07 | Big Sur Food & Wine Festival 2026 | Big Sur, US | Festival | Wine, Charity | A | high | geen catalogusmatch |
 | wev-003 | 2026-11-05 | Signature Sessions: Sapiens X Kol | Lima, PE | Dinner | Guest Chef, Four Hands | A | high | geen catalogusmatch; voorgesteld: rest_0329 |
 | wev-004 | 2026-11-06 | Cos d'Estournel Four-Hands Dinner: Jérôme Banctel x Marco Ortolani | Zurich, CH | Dinner | Four Hands, Guest Chef, Wine | A | high | hotel_87, rest_0060 |
@@ -59,6 +58,7 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-018 | 2026-11-18 | 18. November: Gravner x Hiša Franko | Kobarid, SI | Dinner | Wine, Winemaker | A | high | rest_0424 |
 | wev-020 | 2026-11-19 t/m 2026-11-22 | Pair'd Margaret River Region 2026 | Margaret River, AU | Festival | Wine, Guest Chef | A | high | geen catalogusmatch |
 | wev-021 | 2026-11-20 | An extraordinary evening with Domaine Kuheiji (Kuheiji Dinner) | Amsterdam, NL | Dinner | Wine, Winemaker | A | high | rest_0119 |
+| wev-022 | 2026-11-20 | Château Palmer 4-Hands Dinner | Bray, GB | Dinner | Wine, Winemaker, Four Hands, Guest Chef | A | high | rest_2630 |
 
 ## Top 5 per regio
 
@@ -70,9 +70,9 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-021 | 2026-11-20 | An extraordinary evening with Domaine Kuheiji (Kuheiji Dinner) | Amsterdam, NL | Dinner | Wine, Winemaker | A | high | rest_0119 |
 | wev-029 | 2026-11-25 | Truffelavond met Licata | Francorchamps, BE | Dinner | Wine, Winemaker | A | high | rest_0872 |
 | wev-043 | 2026-12-12 | YVESKE'S Kitchen at MASTERS EXPO - Dinner 12 Dec | Amsterdam, NL | Dinner | Guest Chef | A | high | rest_0016, rest_0025, rest_0030, rest_0069 |
-| wev-114 | 2026-11-07 t/m 2026-11-08 | Gary Gielen & Friends Dinner Show | Maastricht, NL | Party | – | A | low | hotel_05 |
+| wev-116 | 2026-11-07 t/m 2026-11-08 | Gary Gielen & Friends Dinner Show | Maastricht, NL | Party | – | A | low | hotel_05 |
 
-### Zuid-Europa (24 kandidaten)
+### Zuid-Europa (25 kandidaten)
 
 | id | datum | event | plaats | type | tags | bron | fit | catalogus |
 |---|---|---|---|---|---|---|---|---|
@@ -82,15 +82,15 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-031 | 2026-11-26 t/m 2026-11-27 | XI. Gastromasa İstanbul International Gastronomy Conference & Exhibition | Istanbul, TR | Festival | Guest Chef | A | high | rest_0325, rest_0331, rest_0362, rest_1003 |
 | wev-045 | 2026-12-13 | Gourmet Skisafari Alta Badia | Alta Badia, IT | Tasting | Guest Chef | A | high | rest_0315, rest_2202, rest_2296 |
 
-### Noord-/Centraal-Europa (80 kandidaten)
+### Noord-/Centraal-Europa (81 kandidaten)
 
 | id | datum | event | plaats | type | tags | bron | fit | catalogus |
 |---|---|---|---|---|---|---|---|---|
-| wev-001 | 2026-11-05 | White Truffle & Gaja Dinner | London, GB | Dinner | Wine, Winemaker | A | high | geen catalogusmatch |
 | wev-004 | 2026-11-06 | Cos d'Estournel Four-Hands Dinner: Jérôme Banctel x Marco Ortolani | Zurich, CH | Dinner | Four Hands, Guest Chef, Wine | A | high | hotel_87, rest_0060 |
 | wev-007 | 2026-11-07 | Four-Hands Dinner | Six courses - two culinary signatures | Cologne, DE | Dinner | Four Hands, Guest Chef, Wine | A | high | hotel_162, rest_1936, rest_2084 |
 | wev-012 | 2026-11-10 | KRUG 4-Hands-Dinner | Zurich, CH | Dinner | Four Hands, Guest Chef, Wine | A | high | hotel_2502, rest_0263, rest_0282 |
 | wev-013 | 2026-11-13 | Winzer Dinner mit Weingut Lackner Tinnacher | Cologne, DE | Dinner | Wine, Winemaker | A | high | rest_2084 |
+| wev-022 | 2026-11-20 | Château Palmer 4-Hands Dinner | Bray, GB | Dinner | Wine, Winemaker, Four Hands, Guest Chef | A | high | rest_2630 |
 
 ### Noord-Amerika (39 kandidaten)
 
@@ -120,17 +120,17 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-014 | 2026-11-13 | Jantar Magno Mesa SP 2026 – Grand Hyatt São Paulo | São Paulo, BR | Dinner | Guest Chef | A | high | geen catalogusmatch; voorgesteld: rest_0134, rest_1393 |
 | wev-020 | 2026-11-19 t/m 2026-11-22 | Pair'd Margaret River Region 2026 | Margaret River, AU | Festival | Wine, Guest Chef | A | high | geen catalogusmatch |
 | wev-023 | 2026-11-20 | Wayfinder x St JOHN, presented by Lexus | Margaret River, AU | Dinner | Wine, Winemaker, Guest Chef | A | high | geen catalogusmatch; voorgesteld: rest_2590 |
-| wev-064 | 2026-11-06 | Heritage Culinary Calendar 2026: Chef Cris Oberhammer & Anna Oberhammer | Bel Ombre, MU ⚠ land niet in countries | Dinner | Guest Chef | A | medium | geen catalogusmatch; voorgesteld: rest_2414 |
+| wev-065 | 2026-11-06 | Heritage Culinary Calendar 2026: Chef Cris Oberhammer & Anna Oberhammer | Bel Ombre, MU ⚠ land niet in countries | Dinner | Guest Chef | A | medium | geen catalogusmatch; voorgesteld: rest_2414 |
 
 ## Aantallen
 
-**Per land:** DE 47, US 28, NL 19, AT 16, SG 12, IT 8, CH 7, FR 7, TH 6, BR 5, AU 5, MV 5, PT 5, HK 4, CA 4, MU 4, GB 3, MO 3, (geen) 3, LU 2, BE 2, IE 2, DK 2, MX 2, PE 1, BL 1, MC 1, SI 1, TR 1, AE 1, BH 1, JP 1, SE 1, ZA 1, KY 1, ES 1, IS 1, HU 1
+**Per land:** DE 47, US 28, NL 19, AT 16, SG 12, IT 8, CH 7, FR 7, TH 6, PT 6, BR 5, AU 5, MV 5, HK 4, CA 4, MU 4, GB 3, MO 3, (geen) 3, LU 2, BE 2, IE 2, DK 2, HU 2, MX 2, PE 1, BL 1, MC 1, SI 1, TR 1, AE 1, BH 1, JP 1, SE 1, ZA 1, KY 1, ES 1, IS 1
 
 **Per maand (startdatum):**
 
 | maand | aantal |
 |---|---|
-| 2026-11 | 87 |
+| 2026-11 | 89 |
 | 2026-12 | 36 |
 | 2027-01 | 20 |
 | 2027-02 | 24 |
@@ -144,15 +144,15 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | 2027-12 | 1 |
 | zonder  | 9 |
 
-**Per prioriteit:** P0 79, P1 118, P2 18  
-**Per bronniveau:** A 177, B 19, C 19  
-**Per zekerheid:** confirmed 189, unclear 26
+**Per prioriteit:** P0 79, P1 120, P2 18  
+**Per bronniveau:** A 179, B 19, C 19  
+**Per zekerheid:** confirmed 190, unclear 27
 
 **Landen die niet in `countries` staan** (die moeten eerst worden toegevoegd): (geen), BH, KY, MU.
 
 ## Wat is afgevallen en waarom
 
-**voorbij / vorige editie (83)**
+**voorbij / vorige editie (87)**
 
 - Salisterra x Toyo Eatery Four Hands Dinner (Upper House 16th anniversary) (Azië & Midden-Oosten): Past: took place 7 Nov 2025; no 2026 edition found.
 - Ho Lee Fook x Man Ho - The Four Treasures (Azië & Midden-Oosten): Past: 13 Nov 2025 (Tatler article dated 31 Oct 2025); search summary wrongly suggested 2026.
@@ -214,6 +214,10 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 - Mauro Colagreco x Quique Dacosta, Raffles London at The OWO (Thursday 28 Nov) (Noord-/Centraal-Europa): Thursday 28 November matches 2024, not 2026; past.
 - Ein Prosit Udine 2026 (Zuid-Europa): Past: 14-18 October 2026.
 - Italian Wine Experience Gstaad 2026 (HUUS) (Noord-/Centraal-Europa): Past: 6-7 June 2026.
+- Sheen Falls Lodge Four Hands Dinner with Robbie McCauley (12 Nov) (Noord-/Centraal-Europa): Official page 404; search listing ~344 days old indicates 2025 edition.
+- Fotografiska Stockholm Four Hands Menu (Andersson x Buchet) (Noord-/Centraal-Europa): Past: 24 May 2025.
+- Four Seasons Madrid Dani Brasserie x Gonzalo Aramburu (Zuid-Europa): Past: 22 October 2026.
+- Kulm St. Moritz Gourmet Festival 4-Hands Dinner (Noord-/Centraal-Europa): Page shows only the 2025 edition; festival moved to late August (2026 edition 25-30 Aug, 2027 already in pass 1).
 - Le Meurice four-hands Quique Dacosta x Amaury Bouhours (13-14 Nov) (Zuid-Europa): Past: article dated 24/10/2025, events were November 2025.
 - Ocean x F.X. Pichler, Vila Vita Parc (Zuid-Europa): Past (12 Aug 2025).
 - Monte-Carlo Festival des Étoilés 2026 four-hands dinners (May-Sept) (Zuid-Europa): Past; only the 14 Nov closing gala remains (included).
@@ -238,7 +242,7 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 - Eat Out Woolworths Restaurant Awards (Zuid-Amerika, Afrika & Oceanië): 2026 ceremony was 23 Mar 2026 (past); 2027 date not published
 - Heritage Resorts Sustainable Gastronomy Week (5-11 Oct 2026) and Jakob Mielcke residency (13/15 Oct 2026) (Zuid-Amerika, Afrika & Oceanië): past
 
-**geen (exacte) datum gepubliceerd (35)**
+**geen (exacte) datum gepubliceerd (37)**
 
 - Gourmet Abu Dhabi 2027 (Azië & Midden-Oosten): No 2027 edition found; brand appears folded into Abu Dhabi Culinary Season; no dates.
 - Dubai Food Festival 2027 (Azië & Midden-Oosten): No official 2027 dates found; also largely mass-market.
@@ -264,6 +268,8 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 - Zilte residency at The Pagoda, Tivoli (autumn 2026) (Noord-/Centraal-Europa): No dates on official page; multi-week residency.
 - Care's - The Ethical Chef Days 2027 (Zuid-Europa): No 2027 dates published on organiser/tourism pages.
 - Soirée Laurent-Perrier Grand Siècle à 4 mains (MySwitzerland listing) (Noord-/Centraal-Europa): Listing page is JS-only and no date/venue could be confirmed from any source.
+- Chefs Get Together, PortoBay Santa Maria (22 Nov) (Zuid-Europa): Official page gives no date/year/chefs; year unconfirmed.
+- Ashcombe Estate x Carousel 2027 (May-Sep 2027) (Noord-/Centraal-Europa): Season-long summer series with no dated chef evenings published.
 - Gran Cena "L'Oro della Terra" with Castiglion del Bosco (Campo del Drago, rest_0390) – San Giovanni d'Asso (Zuid-Europa): Sold out and no date printed on organiser page (7 Nov 2026 only inferable from image filename).
 - Identità Golose Milano 2027 congress (Zuid-Europa): No 2027 dates published yet.
 - Food & Wine Classic in Aspen 2027 (Noord-Amerika): No official 2027 date; only an aggregator (carnifest) lists June 18-20, 2027. foodandwine.com refuses fetch.
@@ -276,7 +282,7 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 - Central Otago Pinot Noir Celebration 2027 (Zuid-Amerika, Afrika & Oceanië): official site 503; no 2027 dates found
 - Constantia Fresh 2027 (Zuid-Amerika, Afrika & Oceanië): no 2027 dates published
 
-**overig (29)**
+**overig (32)**
 
 - 1887 by André x visiting chef (TBC) - Marina Bay collaboration (Azië & Midden-Oosten): March 2027, guest chef 'to be confirmed' - too vague; recheck later.
 - Sudachi x La BOMBANCE Kouri Island collaboration dinner (Azië & Midden-Oosten): 7-8 Nov 2026 but exclusively for hotel guests on a specific stay plan - not publicly bookable.
@@ -300,6 +306,9 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 - Burns Night Dinner, Claridge's L'Epicerie (Noord-/Centraal-Europa): Themed annual holiday dinner, no named guest chef/producer; year not stated.
 - Vila Joya International Gourmet Festival / Tribute to Claudia 2026 (Zuid-Europa): No 2026/2027 edition on official site; hotel in hibernation until re-opening 21 March (year not stated).
 - Roda dles Saus Genusswoche, Alta Badia (14-21 Mar 2027) (Zuid-Europa): Week-long traditional Ladin dishes promotion in ski huts; not a one-off high-end event.
+- Conrad Algarve Culinary Extravaganza (Heinz Beck, 4-6 Nov) (Zuid-Europa): Archive article without year; refers to Heinz Beck at Gusto (older era); no 2026 confirmation.
+- Carousel London guest residency: Andrés Reyes (3-7 Nov) (Noord-/Centraal-Europa): Rolling guest-chef residency space (Tue-Sat); year not printed and chef/restaurant not identified; mid-tier, not a curated one-off.
+- Gastrofestival Madrid 2027 (Zuid-Europa): Gastrofestival Madrid: official page redirects to Instagram; 2027 dates not verifiable.
 - Hotel Eden Rome Taste Society guest-chef Sunday lunches (Zuid-Europa): 2026 series ended 4 Oct 2026; no later dates.
 - Yeatman 'Taste & Toast Fest' (6 Nov 2026) (Zuid-Europa): Content unclear (no producer/chef named); looks like a general party — not verified as high-end gastronomy.
 - Alba International White Truffle Fair 2026 (10 Oct - 6 Dec) (Zuid-Europa): Weeks-long fair/market, not a one-off; official site did not render; the World Auction (8 Nov) recorded separately.
@@ -351,4 +360,67 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 
 ## Dekking per regio: wat wel, deels en niet is doorzocht
 
-(volgt)
+Elke regio is in één of twee rondes onderzocht. De eerste ronde liep tegen een gedeeld zoeklimiet aan (200 webzoekopdrachten per beurt, voor alle agents samen). Halverwege konden de agents daarom alleen nog pagina's openen waarvan ze het adres al kenden. Een tweede ronde vulde de grootste gaten voor de Benelux, Europa en Azië/Midden-Oosten. **Geen enkele regio is volledig doorzocht.**
+
+**1. Benelux: deels**
+- **Nederland:** ongeveer 35 sterrenzaken en hotels nagelopen, onder meer:
+  - Flore/De L'Europe, Okura (Ciel Bleu en Yamazato), Inter Scaldes, De Librije en Parkheuvel;
+  - Olde Marckt, VanOost, Merlet, Treeswijkhoeve, FG, Joann, 212, RIJKS, Latour, Van Oys, GEM, Voltaire, Pulitzer en Des Indes.
+
+  Daarnaast de vakmedia: De RestaurantKrant, Horecatrends, Culy en Talkiesman. De meeste eensterrenzaken zijn niet nagelopen.
+- **België:** ongeveer 25 zaken, onder meer Zilte, Hof van Cleve, Boury, Hertog Jan, Comme chez Soi, L'air du temps, Vrijmoed, Le Roannay en Cuchara. Wallonië en de hotels in Gent en Brugge zijn nauwelijks gedekt.
+- **Luxemburg:** dun. Mosconi, Fields en kachen.lu zijn nagelopen.
+- **Niet bereikbaar vanuit deze omgeving** (DNS of proxy):
+  - restaurantvanoost.nl, events.relaischateaux.com, restaurantnuance.be en malanguesourit.lu;
+  - lansink.nl, restaurant212.nl, julianabrussels.com, louislinster.lu en een paar andere.
+
+  Wel bereikbaar maar geweigerd (403 of Cloudflare): botanicantwerp.be en dekas.nl.
+- **Patroon:** Belgische sterrenzaken kondigen vrijwel alleen aan via Instagram of de nieuwsbrief, en die waren hier niet leesbaar. Nederlandse samenwerkingen verschijnen vaak eerst in de vakpers; dat levert niveau C op tot de venue het zelf publiceert.
+
+**2. Rest van Europa: deels**
+- **Goed gedekt:** Duitsland en Oostenrijk, via festivalprogramma's:
+  - Rheingau Gourmet & Wein Festival, Schleswig-Holstein Gourmet Festival, Weinberg Arlberg en wachau GOURMETfestival;
+  - de reeksen van Althoff, Excelsior Ernst/taku en Open Mouth.
+- **Deels:**
+  - Frankrijk en Monaco (festivals, Monte-Carlo SBM, Grand Tasting, Sirha);
+  - Italië (Merano, Alba, Alta Badia, Vinitaly);
+  - Spanje (alleen festivals) en Portugal (Porto);
+  - Slovenië (Hiša Franko), Turkije (Gastromasa) en Zwitserland (Dolder, St. Moritz);
+  - het VK (Chewton Glen) en Denemarken, IJsland en Hongarije (alleen festivaldatums).
+- **De tweede ronde** leverde 18 extra kandidaten op:
+  - **VK en Ierland:** Waterside Inn, Claridge's en Ballyfin. Niets bij Connaught, Dorchester, Mandarin Oriental, Raffles OWO, Gleneagles, Ashford Castle en Adare Manor.
+  - **Zwitserland:** La Réserve Eden au Lac, VILLA Schweizerhof, Gstaad Wine & Food 2027 en Top Taste Grindelwald. Badrutt's, Suvretta, Kulm, Gstaad Palace, The Alpina en The Chedi publiceren geen winterdatums.
+  - **Scandinavië:** dun. Alleen Tivoli (Kopenhagen) en Trottoir (Jönköping); niets in Oslo en Helsinki, en niets bij Alchemist, Geranium, Frantzén en Maaemo.
+  - **Frankrijk:** alleen festivals en wijnveilingen in Bourgondië.
+  - **Spanje en Portugal:** vrijwel niets extra.
+- **Niet gedekt:** Griekenland, Kroatië, Malta, Montenegro, Servië, Andorra, Polen, Tsjechië en de Baltische staten.
+
+**3. Noord-Amerika: deels**
+- **Goed gedekt:** de grote festivals (Cayman Cookout, SOBEWFF, Naples, Charleston, Pebble Beach, La Paulée) en de resortkalenders van Blackberry Farm en Twin Farms.
+- **Dun:** losse vierhandendiners in New York, San Francisco, Los Angeles en Chicago; die staan meestal op Tock of OpenTable of op Instagram. Mexico zwak, Canada deels.
+- **Niet gedekt:** Aruba en Panama.
+
+**4. Azië en Midden-Oosten: deels**
+- **Redelijk gedekt:** Singapore, Bangkok, Macau, de residenties in Malediven-resorts en de persruimtes van Four Seasons in de hele regio.
+- **Wel gezocht, niets actueels gevonden:**
+  - Japan (in het Engels en het Japans), Korea, Taiwan en het Chinese vasteland;
+  - Doha, Riyad/AlUla, India en Vietnam.
+- **Niet bereikt:** Oman, Bahrein (op één Wolfgang Puck-diner na), Indonesië buiten Bali, Israël, Jordanië en Libanon.
+- **Patroon:** veel restaurants in Hongkong en Seoul kondigen alleen aan via Instagram. Japanse aankondigingen staan vooral in persberichten en PDF's.
+
+**5. Zuid-Amerika, Afrika en Oceanië: deels, één ronde**
+- **Gedekt:**
+  - Peru (50 Best-week, inmiddels voorbij) en São Paulo (Mesa SP);
+  - West-Australië (Pair'd Margaret River) en Zuid-Australië (Tasting Australia, alleen datums);
+  - Mauritius en Kaapstad/Franschhoek (alleen festivals).
+- **Niet gedekt:** Marokko, Chili (buiten Ñam), Ecuador, Cusco en het grootste deel van Nieuw-Zeeland.
+- **Geen officiële datum gevonden:** Melbourne Food & Wine 2027 (de organisator noemt alleen "March 2027"), Margaret River Gourmet Escape en Mistura.
+
+**Algemeen**
+- Veel grote 2027-festivals hebben nog geen datum gepubliceerd: Identità Golose, San Sebastián Gastronomika, Taste of Paris, Omnivore, Gourmet Abu Dhabi, Dubai Food Festival, Asia's 50 Best 2027, Aspen Food & Wine en Melbourne Food & Wine. Die zijn afgewezen, niet geraden. Ze zijn het eerst de moeite waard om opnieuw te controleren.
+- **Hoe productie is gecontroleerd:**
+  - Er was geen leestoegang tot productie: geen anon key in deze omgeving.
+  - De controle tegen productie gebruikt de gedocumenteerde apply-bestanden.
+  - De catalogusmatch gebruikt de export van 2 november 2026.
+  - Events die via de app zijn ingediend, kunnen dus ontbreken in de vergelijking.
+
