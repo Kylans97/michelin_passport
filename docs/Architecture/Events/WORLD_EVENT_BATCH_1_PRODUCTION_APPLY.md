@@ -112,8 +112,17 @@ wev-117 eindigt om 00:00: `end_at` valt daarom op de volgende dag, `end_date` bl
 | wev-152 | Dorfer & Friends | 2027-04-12 | 18:00 | AT | unknown | rest_0272 (host+venue); extern: wachau GOURMETfestival |
 | wev-153 | Tasting Australia presented by Journey Beyond 2027 | 2027-04-30 – 2027-05-09 | – | AU | unknown | extern: Tasting Australia (festival hub, Adelaide and regional South Australia) |
 
+## 5a. Aanvulling: landen en Cayman Cookout (2026-11-04)
+
+Na expliciet akkoord van de product owner, op de instructie "Aanvulling 5 november 2026":
+
+- **Migratie `20261101310000_add_bh_ky_mu_countries.sql` toegepast**, vanaf de lokale apply-branch `claude/apply-bh-ky-mu` (`origin/main` plus alleen `origin/claude/overnight-world-events`). Ze was de enige openstaande. BH, KY en MU staan nu in `countries`. **Ledger: 145, lokaal en remote gelijk op die branch.**
+- **wev-128 Cayman Cookout 2027 toegevoegd** in één transactie, zoals in het pre-apply-rapport: 14–17 januari 2027, alleen datum, `external_host_name` The Ritz-Carlton, Grand Cayman, vier participants (rest_0059, rest_0743, rest_3043, rest_3052), tag guest_chef. Teruggelezen: geen afwijkingen.
+- **Aantallen:** events 97 → 98, `event_restaurants` 108 → 112, `event_tag_assignments` 158 → 159, `notifications` (followed_venue_event) 0 → 0.
+- **Niet toegepast:** `20261101320000`; die gaat mee met de app-build. wev-154 (MU) blijft buiten: de pagina gaf 403.
+
 ## 6. Om later op te pakken
 
-- Op de branch `claude/overnight-world-events` staat `20261101310000_add_bh_ky_mu_countries.sql`, niet toegepast. Komt die branch in main, dan telt hij als openstaande migratie.
+- `20261101310000` is toegepast maar staat nog niet op main. Tot ze daar staat, toont `supabase migration list --linked` op main één remote-rij zonder lokaal bestand.
 - `sold_out` wordt nog niet als label getoond in de app.
 - Batch 2 en de `decide`-rijen staan nog in het overzicht.

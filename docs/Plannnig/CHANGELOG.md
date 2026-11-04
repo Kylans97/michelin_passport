@@ -10,6 +10,7 @@ The format follows Keep a Changelog.
 
 ### Added
 - **67 events in production** (data, no migration, no build), 2026-11-04: world event batch 1, 30 to 97 events, 80 venue links, no photos, no pushes (the hosts had no followers). `docs/Architecture/Events/WORLD_EVENT_BATCH_1_PRODUCTION_APPLY.md`.
+- Migration `20261101310000_add_bh_ky_mu_countries.sql` applied 2026-11-04 (BH, KY, MU), then Cayman Cookout 2027: 98 events. **Ledger: 145, local and remote in agreement** on the branch carrying the migration; not on main yet.
 - Migration `20261101290000_add_gr_cities.sql`: 20 Greek towns (data only,
   `cities` rows) for the MICHELIN Greece pass. Applied to production on
   2026-11-04 from `claude/michelin-gr-2026` with plain
