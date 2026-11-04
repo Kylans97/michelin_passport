@@ -1,0 +1,3691 @@
+{
+ "rest_4000": {
+  "url": "https://www.aleria.gr/",
+  "pages": [
+   [
+    "https://www.aleria.gr/",
+    200,
+    "https://aleria.gr/el/archiki/"
+   ]
+  ],
+  "name_tokens": {
+   "aleria": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "rest_4001": {
+  "url": "https://www.botrinis.com/",
+  "pages": [
+   [
+    "https://www.botrinis.com/",
+    200,
+    "https://botrinis.com/"
+   ],
+   [
+    "https://botrinis.com/contact/",
+    200,
+    "https://botrinis.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "botrini": true
+  },
+  "michelin_on_site": [
+   "2106857323"
+  ],
+  "google_on_site": "2106857323",
+  "phones_on_site": [
+   "2106857323",
+   "2106857324",
+   "2120721000",
+   "2260847712",
+   "2321471273",
+   "2373981677",
+   "2440270403",
+   "2447725112",
+   "2451351806",
+   "2453482210",
+   "2454876398",
+   "2631718958",
+   "2636167607",
+   "2647133346",
+   "2666142096",
+   "2734246510",
+   "2872740966",
+   "2902137322",
+   "2949505161"
+  ]
+ },
+ "rest_4002": {
+  "url": "https://botrinissantorini.com/",
+  "pages": [
+   [
+    "https://botrinissantorini.com/",
+    200,
+    "https://botrinissantorini.com/"
+   ]
+  ],
+  "name_tokens": {
+   "botrini": true
+  },
+  "michelin_on_site": [
+   "2286186654"
+  ],
+  "google_on_site": "2286186654",
+  "phones_on_site": [
+   "2286186654"
+  ]
+ },
+ "rest_4003": {
+  "url": "https://www.ctc-restaurant.com/",
+  "pages": [
+   [
+    "https://www.ctc-restaurant.com/",
+    200,
+    "https://ctc-restaurant.com/"
+   ],
+   [
+    "https://ctc-restaurant.com/contact-ctc/",
+    200,
+    "https://ctc-restaurant.com/contact-ctc/"
+   ]
+  ],
+  "name_tokens": {
+   "urban": true,
+   "gastronomy": true
+  },
+  "michelin_on_site": [
+   "2107228812"
+  ],
+  "google_on_site": "2107228812",
+  "phones_on_site": [
+   "2107228812",
+   "6972213324"
+  ]
+ },
+ "rest_4004": {
+  "url": "https://deltarestaurant.gr/",
+  "pages": [
+   [
+    "https://deltarestaurant.gr/",
+    200,
+    "https://deltarestaurant.gr/"
+   ],
+   [
+    "https://deltarestaurant.gr/portfolio/contact/",
+    200,
+    "https://deltarestaurant.gr/portfolio/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "delta": true
+  },
+  "michelin_on_site": [
+   "6986657553"
+  ],
+  "google_on_site": "6986657553",
+  "phones_on_site": [
+   "2026102913",
+   "2026110311",
+   "6986657553"
+  ]
+ },
+ "rest_4005": {
+  "url": "https://www.herve-restaurant.com/",
+  "pages": [
+   [
+    "https://www.herve-restaurant.com/",
+    200,
+    "https://herve-restaurant.com/"
+   ],
+   [
+    "https://herve-restaurant.com/contact/",
+    200,
+    "https://herve-restaurant.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "herv\u00e9": false
+  },
+  "michelin_on_site": [
+   "2103471332"
+  ],
+  "google_on_site": "2103471332",
+  "phones_on_site": [
+   "2103471332",
+   "6936637873"
+  ]
+ },
+ "rest_4006": {
+  "url": "https://www.hytra.gr/",
+  "pages": [
+   [
+    "https://www.hytra.gr/",
+    200,
+    "https://hytra.gr/"
+   ]
+  ],
+  "name_tokens": {
+   "hytra": true
+  },
+  "michelin_on_site": [
+   "2103316767"
+  ],
+  "google_on_site": "2103316767",
+  "phones_on_site": [
+   "2103316767",
+   "2177071118",
+   "2293474264",
+   "2294264261",
+   "2622623445",
+   "2622625834",
+   "2681226826",
+   "2682682681",
+   "2682682682",
+   "2752034332",
+   "2951179959",
+   "2959995913"
+  ]
+ },
+ "rest_4007": {
+  "url": "https://www.laudarestaurant.com/",
+  "pages": [
+   [
+    "https://www.laudarestaurant.com/",
+    200,
+    "https://www.laudarestaurant.com/"
+   ],
+   [
+    "https://www.laudarestaurant.com/contact/",
+    200,
+    "https://www.laudarestaurant.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "lauda": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "2286186696",
+  "phones_on_site": [
+   "1851895851",
+   "2160456089",
+   "2286186696",
+   "2561281280",
+   "2563105235",
+   "2704954950",
+   "2871328729",
+   "2929000285",
+   "2929000286",
+   "2929000288",
+   "8061126828"
+  ]
+ },
+ "rest_4008": {
+  "url": "https://www.lycabettusrestaurant.com/",
+  "pages": [
+   [
+    "https://www.lycabettusrestaurant.com/",
+    200,
+    "https://www.lycabettusrestaurant.com/"
+   ],
+   [
+    "https://www.lycabettusrestaurant.com/contact/",
+    200,
+    "https://www.lycabettusrestaurant.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "lycabettus": true
+  },
+  "michelin_on_site": [
+   "2286186602"
+  ],
+  "google_on_site": "2286186602",
+  "phones_on_site": [
+   "1851895851",
+   "2160456089",
+   "2286186602",
+   "2561281280",
+   "2563105235",
+   "2704954950",
+   "2871328729",
+   "2929000285",
+   "2929000286",
+   "2929000288",
+   "8061126828",
+   "8086309593"
+  ]
+ },
+ "rest_4009": {
+  "url": "https://makrisathens.com/",
+  "pages": [
+   [
+    "https://makrisathens.com/",
+    200,
+    "https://makrisathens.com/"
+   ]
+  ],
+  "name_tokens": {
+   "makris": true
+  },
+  "michelin_on_site": [
+   "2160047777"
+  ],
+  "google_on_site": "2160047777",
+  "phones_on_site": [
+   "2147483647",
+   "2160047777",
+   "2911524552"
+  ]
+ },
+ "rest_4010": {
+  "url": "https://www.patio.gr/",
+  "pages": [
+   [
+    "https://www.patio.gr/",
+    200,
+    "https://patio.gr/"
+   ],
+   [
+    "https://patio.gr/contact/",
+    200,
+    "https://patio.gr/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "patio": true
+  },
+  "michelin_on_site": [
+   "2108929160"
+  ],
+  "google_on_site": "2108929160",
+  "phones_on_site": [
+   "2026110401",
+   "2108929160"
+  ]
+ },
+ "rest_4011": {
+  "url": "https://www.pelagosathens.com/",
+  "pages": [
+   [
+    "https://www.pelagosathens.com/",
+    200,
+    "https://www.pelagosathens.com/"
+   ]
+  ],
+  "name_tokens": {
+   "pelagos": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "rest_4012": {
+  "url": "https://www.seedsrestaurant.gr/",
+  "pages": [
+   [
+    "https://www.seedsrestaurant.gr/",
+    200,
+    "https://www.seedsrestaurant.gr/en/"
+   ],
+   [
+    "https://www.seedsrestaurant.gr/en/contact",
+    200,
+    "https://www.seedsrestaurant.gr/en/contact"
+   ]
+  ],
+  "name_tokens": {
+   "see|ds": false
+  },
+  "michelin_on_site": [
+   "2107235116"
+  ],
+  "google_on_site": "2107235116",
+  "phones_on_site": [
+   "2022111221",
+   "2024031814",
+   "2107235116"
+  ]
+ },
+ "rest_4013": {
+  "url": "https://selene.gr/",
+  "pages": [
+   [
+    "https://selene.gr/",
+    200,
+    "https://selene.gr/"
+   ]
+  ],
+  "name_tokens": {
+   "selene": true
+  },
+  "michelin_on_site": [
+   "2286022249"
+  ],
+  "google_on_site": "2286022249",
+  "phones_on_site": [
+   "2286022249",
+   "2286023241",
+   "9315930000",
+   "9317500000"
+  ]
+ },
+ "rest_4014": {
+  "url": "https://www.senserestaurants.com/",
+  "pages": [
+   [
+    "https://www.senserestaurants.com/",
+    200,
+    "https://www.senserestaurants.com/"
+   ],
+   [
+    "https://www.senserestaurants.com/contact/",
+    200,
+    "https://www.senserestaurants.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "sense": true
+  },
+  "michelin_on_site": [
+   "2109200240"
+  ],
+  "google_on_site": "2109200240",
+  "phones_on_site": [
+   "2026110401",
+   "2109200240",
+   "2109249954"
+  ]
+ },
+ "rest_4015": {
+  "url": "https://www.simul.gr/",
+  "pages": [
+   [
+    "https://www.simul.gr/",
+    200,
+    "https://simul.gr/"
+   ],
+   [
+    "https://simul.gr/#simul-contact",
+    200,
+    "https://simul.gr/#simul-contact"
+   ]
+  ],
+  "name_tokens": {
+   "simul": true
+  },
+  "michelin_on_site": [
+   "2107224737"
+  ],
+  "google_on_site": "2107224737",
+  "phones_on_site": [
+   "2107224737"
+  ]
+ },
+ "rest_4016": {
+  "url": "https://www.soilrestaurant.gr/",
+  "pages": [
+   [
+    "https://www.soilrestaurant.gr/",
+    200,
+    "https://soilrestaurant.gr/"
+   ]
+  ],
+  "name_tokens": {
+   "soil": true
+  },
+  "michelin_on_site": [
+   "2107513505"
+  ],
+  "google_on_site": "2107513505",
+  "phones_on_site": [
+   "2026110401",
+   "2107513505",
+   "2875938921",
+   "6974781994"
+  ]
+ },
+ "rest_4017": {
+  "url": "https://www.spondi.gr/",
+  "pages": [
+   [
+    "https://www.spondi.gr/",
+    200,
+    "https://www.spondi.gr/en/"
+   ],
+   [
+    "https://www.spondi.gr/en/#contact",
+    200,
+    "https://www.spondi.gr/en/#contact"
+   ]
+  ],
+  "name_tokens": {
+   "spondi": true
+  },
+  "michelin_on_site": [
+   "2107564021"
+  ],
+  "google_on_site": "2107564021",
+  "phones_on_site": [
+   "2025022418",
+   "2025081110",
+   "2107564021"
+  ]
+ },
+ "rest_4018": {
+  "url": "https://thezillersathens.com/rooftop-gastronomy/",
+  "pages": [
+   [
+    "https://thezillersathens.com/rooftop-gastronomy/",
+    200,
+    "https://thezillersathens.com/rooftop-gastronomy/"
+   ],
+   [
+    "https://thezillersathens.com/rooftop-gastronomy/contact/",
+    200,
+    "https://thezillersathens.com/rooftop-gastronomy/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "zillers": true,
+   "rooftop": true,
+   "gastronomy": true
+  },
+  "michelin_on_site": [
+   "2103222277"
+  ],
+  "google_on_site": "2103222277",
+  "phones_on_site": [
+   "2026010901",
+   "2026010902",
+   "2103222277",
+   "2103241651",
+   "2293474264",
+   "2294264261",
+   "2400023418",
+   "2416000122",
+   "2622623445",
+   "2622625834",
+   "2672151413",
+   "2681226826",
+   "2682682681",
+   "2682682682",
+   "2714055524",
+   "2924290001",
+   "2951179959",
+   "2959995913"
+  ]
+ },
+ "rest_4019": {
+  "url": "https://www.tudorhall.gr/",
+  "pages": [
+   [
+    "https://www.tudorhall.gr/",
+    200,
+    "https://www.tudorhall.gr/"
+   ],
+   [
+    "https://www.tudorhall.gr/contact-us",
+    200,
+    "https://www.tudorhall.gr/contact-us"
+   ]
+  ],
+  "name_tokens": {
+   "tudor": true,
+   "hall": true
+  },
+  "michelin_on_site": [
+   "2103330265"
+  ],
+  "google_on_site": "2103330265",
+  "phones_on_site": [
+   "2103330265"
+  ]
+ },
+ "hotel_3000": {
+  "url": "https://www.acrosuites.com/",
+  "pages": [
+   [
+    "https://www.acrosuites.com/",
+    200,
+    "https://acrosuites.com/"
+   ],
+   [
+    "https://acrosuites.com/contact",
+    200,
+    "https://acrosuites.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "acro": true
+  },
+  "michelin_on_site": [
+   "2810812240"
+  ],
+  "google_on_site": "2810812240",
+  "phones_on_site": [
+   "2122163263",
+   "2182971643",
+   "2191855324",
+   "2221683482",
+   "2281715417",
+   "2324566319",
+   "2400023418",
+   "2416000122",
+   "2471665222",
+   "2652154848",
+   "2714055524",
+   "2794384192",
+   "2810812240",
+   "2828547423",
+   "2886428864",
+   "2924290001"
+  ]
+ },
+ "hotel_3001": {
+  "url": "https://www.gelsominohotel.com/",
+  "pages": [
+   [
+    "https://www.gelsominohotel.com/",
+    200,
+    "https://www.gelsominohotel.com/"
+   ],
+   [
+    "https://www.gelsominohotel.com/contact",
+    200,
+    "https://www.gelsominohotel.com/contact"
+   ]
+  ],
+  "name_tokens": {
+   "albergo": true,
+   "gelsomino": true
+  },
+  "michelin_on_site": [
+   "2242020200"
+  ],
+  "google_on_site": "2242020200",
+  "phones_on_site": [
+   "2242020200"
+  ]
+ },
+ "hotel_3002": {
+  "url": "https://www.aman.com/resorts/amanzoe",
+  "pages": [
+   [
+    "https://www.aman.com/resorts/amanzoe",
+    200,
+    "https://www.aman.com/resorts/amanzoe"
+   ],
+   [
+    "https://www.aman.com/contact-us",
+    200,
+    "https://www.aman.com/contact-us"
+   ]
+  ],
+  "name_tokens": {
+   "amanzoe": true
+  },
+  "michelin_on_site": [
+   "2754772888"
+  ],
+  "google_on_site": "2754772888",
+  "phones_on_site": [
+   "0120951124",
+   "2015920159",
+   "2038618700",
+   "2042046204",
+   "2045803204",
+   "2055121835",
+   "2055121845",
+   "2114502917",
+   "2220593252",
+   "2320412657",
+   "2550111080",
+   "2731995372",
+   "2754772863",
+   "2754772888",
+   "2787330380",
+   "2792385273",
+   "2797330380",
+   "2800807647",
+   "2917556657",
+   "2942826332",
+   "6560279617",
+   "6568830555",
+   "6568832555",
+   "8008526690"
+  ]
+ },
+ "hotel_3003": {
+  "url": "https://www.esperiagroup.gr/en/hotels/ammades-all-suites-beach-hotel-adults-only/",
+  "pages": [
+   [
+    "https://www.esperiagroup.gr/en/hotels/ammades-all-suites-beach-hotel-adults-only/",
+    200,
+    "https://www.esperiagroup.gr/en/hotels/ammades-all-suites-beach-hotel-spa-adults-only/"
+   ],
+   [
+    "https://www.esperiagroup.gr/en/contact-us/",
+    200,
+    "https://www.esperiagroup.gr/en/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "ammades": true,
+   "beach": true,
+   "adults": true,
+   "only": true
+  },
+  "michelin_on_site": [
+   "2241084190"
+  ],
+  "google_on_site": "2241084190",
+  "phones_on_site": [
+   "2241022420",
+   "2241023164",
+   "2241023941",
+   "2241076033",
+   "2241084100",
+   "2241084150",
+   "2241084151",
+   "2241084190",
+   "2241084199",
+   "2241084200",
+   "2241084240",
+   "2241084241",
+   "2241084290",
+   "2241084298",
+   "2241084299",
+   "2241084300",
+   "2241084380",
+   "2241084403",
+   "2241084406",
+   "6101306110"
+  ]
+ },
+ "hotel_3004": {
+  "url": "https://www.amythhotels.com/mykonos/agios-stefanos",
+  "pages": [
+   [
+    "https://www.amythhotels.com/mykonos/agios-stefanos",
+    200,
+    "https://www.amythhotels.com/mykonos/agios-stefanos"
+   ]
+  ],
+  "name_tokens": {
+   "amyth": true,
+   "agios": true,
+   "stefanos": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": [
+   "2111219975"
+  ]
+ },
+ "hotel_3005": {
+  "url": "https://www.andronis.com/hotels/andronis-arcadia/",
+  "pages": [
+   [
+    "https://www.andronis.com/hotels/andronis-arcadia/",
+    200,
+    "https://www.andronis.com/hotels/andronis-arcadia"
+   ],
+   [
+    "https://www.andronis.com/contact",
+    200,
+    "https://www.andronis.com/contact"
+   ]
+  ],
+  "name_tokens": {
+   "andronis": true,
+   "arcadia": true
+  },
+  "michelin_on_site": [
+   "2286027392"
+  ],
+  "google_on_site": "2286027392",
+  "phones_on_site": [
+   "2012123073",
+   "2012727001",
+   "2030016583",
+   "2080963508",
+   "2106018554",
+   "2135923367",
+   "2141544212",
+   "2171377451",
+   "2201012020",
+   "2222000038",
+   "2250450577",
+   "2251745338",
+   "2252250573",
+   "2256754510",
+   "2257181576",
+   "2282283435",
+   "2284022435",
+   "2286027392",
+   "2286036363",
+   "2286036738",
+   "2286072041",
+   "2286072044",
+   "2286072182",
+   "2286072185",
+   "2286072214",
+   "2322823438",
+   "2340405223",
+   "2354297649",
+   "2380561857",
+   "2381692476",
+   "2385858001",
+   "2389264510",
+   "2389281059",
+   "2400520167",
+   "2429513965",
+   "2432444974",
+   "2435415095",
+   "2450533104",
+   "2461734182",
+   "2461858040",
+   "2520976600",
+   "2522394692",
+   "2528693371",
+   "2539426442",
+   "2542376783",
+   "2543182336",
+   "2550594390",
+   "2551821085",
+   "2572132574",
+   "2575981056",
+   "2581525767",
+   "2599031016",
+   "2651456600",
+   "2671053390",
+   "2679372371",
+   "2694653751",
+   "2700024751",
+   "2725975392",
+   "2727001086",
+   "2727001197",
+   "2731724256",
+   "2740574276",
+   "2762760010",
+   "2790004344",
+   "2800004344",
+   "2816883959",
+   "2821123943",
+   "2821745507",
+   "2860832313",
+   "2878750611",
+   "2891286437",
+   "2929400013",
+   "4304000634",
+   "9013437013"
+  ]
+ },
+ "hotel_3006": {
+  "url": "https://www.andronis.com/hotels/andronis-concept/",
+  "pages": [
+   [
+    "https://www.andronis.com/hotels/andronis-concept/",
+    200,
+    "https://www.andronis.com/hotels/andronis-concept"
+   ],
+   [
+    "https://www.andronis.com/contact",
+    200,
+    "https://www.andronis.com/contact"
+   ]
+  ],
+  "name_tokens": {
+   "andronis": true,
+   "concept": true
+  },
+  "michelin_on_site": [
+   "2286036738"
+  ],
+  "google_on_site": "2286036738",
+  "phones_on_site": [
+   "2012123073",
+   "2030016583",
+   "2080963508",
+   "2106018554",
+   "2135923367",
+   "2141544212",
+   "2171377451",
+   "2201012020",
+   "2250450577",
+   "2251745338",
+   "2252250573",
+   "2256754510",
+   "2284022435",
+   "2286027392",
+   "2286036363",
+   "2286036738",
+   "2286072041",
+   "2286072044",
+   "2286072182",
+   "2286072185",
+   "2286072214",
+   "2354297649",
+   "2380561857",
+   "2381692476",
+   "2389264510",
+   "2432444974",
+   "2461734182",
+   "2461858040",
+   "2528693371",
+   "2539426442",
+   "2542376783",
+   "2543182336",
+   "2550594390",
+   "2581525767",
+   "2679372371",
+   "2700024751",
+   "2725975392",
+   "2731724256",
+   "2790004344",
+   "2800004344",
+   "2816883959",
+   "2821123943",
+   "2821745507",
+   "2860832313",
+   "2878750611",
+   "2929400013",
+   "4304000634"
+  ]
+ },
+ "hotel_3007": {
+  "url": "https://www.andronis.com/hotels/andronis-minois/",
+  "pages": [
+   [
+    "https://www.andronis.com/hotels/andronis-minois/",
+    200,
+    "https://www.andronis.com/hotels/andronis-minois"
+   ],
+   [
+    "https://www.andronis.com/contact",
+    200,
+    "https://www.andronis.com/contact"
+   ]
+  ],
+  "name_tokens": {
+   "andronis": true,
+   "minois": true
+  },
+  "michelin_on_site": [
+   "2284022435"
+  ],
+  "google_on_site": "2284022435",
+  "phones_on_site": [
+   "2012123073",
+   "2030016583",
+   "2080963508",
+   "2106018554",
+   "2135923367",
+   "2141544212",
+   "2171377451",
+   "2201012020",
+   "2250450577",
+   "2251745338",
+   "2252250573",
+   "2256754510",
+   "2284022435",
+   "2286027392",
+   "2286036363",
+   "2286036738",
+   "2286072041",
+   "2286072044",
+   "2286072182",
+   "2286072185",
+   "2286072214",
+   "2354297649",
+   "2380561857",
+   "2381692476",
+   "2389264510",
+   "2432444974",
+   "2461734182",
+   "2461858040",
+   "2528693371",
+   "2539426442",
+   "2542376783",
+   "2543182336",
+   "2550594390",
+   "2581525767",
+   "2679372371",
+   "2700024751",
+   "2725975392",
+   "2731724256",
+   "2790004344",
+   "2800004344",
+   "2816883959",
+   "2821123943",
+   "2821745507",
+   "2860832313",
+   "2878750611",
+   "2929400013",
+   "4304000634"
+  ]
+ },
+ "hotel_3008": {
+  "url": "https://www.anthologyofathens.com/",
+  "pages": [
+   [
+    "https://www.anthologyofathens.com/",
+    200,
+    "https://www.anthologyofathens.com/"
+   ],
+   [
+    "https://www.anthologyofathens.com/contact/",
+    200,
+    "https://www.anthologyofathens.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "anthology": true
+  },
+  "michelin_on_site": [
+   "2111034800"
+  ],
+  "google_on_site": "2111034800",
+  "phones_on_site": [
+   "2026110401",
+   "2060872251",
+   "2092215411",
+   "2095209000",
+   "2103530000",
+   "2111034800",
+   "2153184174",
+   "2172170010",
+   "2212822761",
+   "2217001292",
+   "2218001293",
+   "2230140090",
+   "2231131226",
+   "2260421109",
+   "2335800037",
+   "2362069243",
+   "2365236001",
+   "2367100023",
+   "2371661371",
+   "2394824820",
+   "2401100006",
+   "2422743977",
+   "2427242001",
+   "2442492490",
+   "2477247000",
+   "2478247000",
+   "2491561560",
+   "2498120916",
+   "2498127324",
+   "2510310780",
+   "2518195125",
+   "2518200013",
+   "2543254000",
+   "2563325386",
+   "2567300013",
+   "2578257000",
+   "2597228797",
+   "2632700030",
+   "2658853897",
+   "2676267001",
+   "2713613600",
+   "2716224192",
+   "2753329818",
+   "2755735730",
+   "2786360648",
+   "2788943963",
+   "2845235147",
+   "2855285001",
+   "2876076070",
+   "2894328302",
+   "2911291011",
+   "2955727324",
+   "2970213218",
+   "6773306773"
+  ]
+ },
+ "hotel_3009": {
+  "url": "https://www.arginisyros.gr/",
+  "pages": [
+   [
+    "https://www.arginisyros.gr/",
+    200,
+    "https://www.arginisyros.gr/"
+   ],
+   [
+    "https://www.arginisyros.gr/#contact",
+    200,
+    "https://www.arginisyros.gr/#contact"
+   ]
+  ],
+  "name_tokens": {
+   "argini": true,
+   "syros": true
+  },
+  "michelin_on_site": [
+   "2281089022"
+  ],
+  "google_on_site": "2281089022",
+  "phones_on_site": [
+   "2281081749",
+   "2281089022",
+   "6944564898",
+   "6989405339"
+  ]
+ },
+ "hotel_3010": {
+  "url": "https://www.aristi.eu/",
+  "pages": [
+   [
+    "https://www.aristi.eu/",
+    "ERR <urlopen error [Errno -2] Name or service not known>",
+    "https://www.aristi.eu/"
+   ]
+  ],
+  "name_tokens": {
+   "aristi": false,
+   "mountain": false
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "hotel_3011": {
+  "url": "https://www.hotelaristide.com/",
+  "pages": [
+   [
+    "https://www.hotelaristide.com/",
+    200,
+    "https://www.hotelaristide.com/"
+   ],
+   [
+    "https://www.hotelaristide.com/contact#map",
+    200,
+    "https://www.hotelaristide.com/contact#map"
+   ]
+  ],
+  "name_tokens": {
+   "aristide": true
+  },
+  "michelin_on_site": [
+   "6986624881"
+  ],
+  "google_on_site": "6986624881",
+  "phones_on_site": [
+   "2281081601",
+   "6986624881"
+  ]
+ },
+ "hotel_3012": {
+  "url": "https://www.belloniasvillas.com/",
+  "pages": [
+   [
+    "https://www.belloniasvillas.com/",
+    200,
+    "https://www.belloniasvillas.com/"
+   ],
+   [
+    "https://www.belloniasvillas.com/contact-location/",
+    200,
+    "https://www.belloniasvillas.com/contact-location/"
+   ]
+  ],
+  "name_tokens": {
+   "bellonias": true
+  },
+  "michelin_on_site": [
+   "2286031138"
+  ],
+  "google_on_site": "2286031138",
+  "phones_on_site": [
+   "2286031138",
+   "2286032593"
+  ]
+ },
+ "hotel_3013": {
+  "url": "https://www.bohememykonos.com/",
+  "pages": [
+   [
+    "https://www.bohememykonos.com/",
+    200,
+    "https://bohememykonos.com/"
+   ],
+   [
+    "https://bohememykonos.com/contact/",
+    200,
+    "https://bohememykonos.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "boheme": true,
+   "town": true
+  },
+  "michelin_on_site": [
+   "2289440360"
+  ],
+  "google_on_site": "",
+  "phones_on_site": [
+   "2026110401",
+   "2289023300",
+   "2289440360",
+   "6980424768"
+  ]
+ },
+ "hotel_3014": {
+  "url": "https://www.calimykonos.com/",
+  "pages": [
+   [
+    "https://www.calimykonos.com/",
+    200,
+    "https://www.calimykonos.com/"
+   ],
+   [
+    "https://www.calimykonos.com/mykonos-hotel-contact",
+    200,
+    "https://www.calimykonos.com/mykonos-hotel-contact"
+   ]
+  ],
+  "name_tokens": {
+   "cali": true
+  },
+  "michelin_on_site": [
+   "2111000022"
+  ],
+  "google_on_site": "2111000022",
+  "phones_on_site": [
+   "2103250196",
+   "2111000022",
+   "2289440700"
+  ]
+ },
+ "hotel_3015": {
+  "url": "https://canaves.com/canaves-oia-epitome/",
+  "pages": [
+   [
+    "https://canaves.com/canaves-oia-epitome/",
+    200,
+    "https://canaves.com/canaves-oia-epitome/"
+   ],
+   [
+    "https://canaves.com/canaves-oia-epitome/contact/",
+    200,
+    "https://canaves.com/canaves-oia-epitome/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "canaves": true,
+   "epitome": true
+  },
+  "michelin_on_site": [
+   "2286072499",
+   "2286071453"
+  ],
+  "google_on_site": "2286072499",
+  "phones_on_site": [
+   "2026110317",
+   "2286071453",
+   "2286072499"
+  ]
+ },
+ "hotel_3016": {
+  "url": "https://canaves.com/",
+  "pages": [
+   [
+    "https://canaves.com/",
+    200,
+    "https://canaves.com/"
+   ],
+   [
+    "https://canaves.com/contact/",
+    200,
+    "https://canaves.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "canaves": true,
+   "sunday": true
+  },
+  "michelin_on_site": [
+   "2286071453"
+  ],
+  "google_on_site": "",
+  "phones_on_site": [
+   "2026110317",
+   "2286071453"
+  ]
+ },
+ "hotel_3017": {
+  "url": "https://contessinacollection.com/contessinasuitesnspa",
+  "pages": [
+   [
+    "https://contessinacollection.com/contessinasuitesnspa",
+    200,
+    "https://contessinacollection.com/contessinasuitesnspa/"
+   ],
+   [
+    "https://contessinacollection.com/contessinasuitesnspa/contact/",
+    200,
+    "https://contessinacollection.com/contessinasuitesnspa/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "contessina": true
+  },
+  "michelin_on_site": [
+   "2695022700"
+  ],
+  "google_on_site": "2695022700",
+  "phones_on_site": [
+   "2026110401",
+   "2695022508",
+   "2695022510",
+   "2695022700",
+   "2695022707",
+   "2695043774"
+  ]
+ },
+ "hotel_3018": {
+  "url": "https://coveparos.gr/",
+  "pages": [
+   [
+    "https://coveparos.gr/",
+    200,
+    "https://coveparos.gr/"
+   ],
+   [
+    "https://coveparos.gr/contact.html",
+    200,
+    "https://coveparos.gr/contact.html"
+   ]
+  ],
+  "name_tokens": {
+   "cove": true,
+   "paros": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": [
+   "2284052300"
+  ]
+ },
+ "hotel_3019": {
+  "url": "https://www.deosmykonos.gr/",
+  "pages": [
+   [
+    "https://www.deosmykonos.gr/",
+    200,
+    "https://www.deosmykonos.gr/"
+   ],
+   [
+    "https://www.deosmykonos.gr/contact-us/",
+    200,
+    "https://www.deosmykonos.gr/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "deos": true,
+   "myconian": true
+  },
+  "michelin_on_site": [
+   "2289441500"
+  ],
+  "google_on_site": "2289441500",
+  "phones_on_site": [
+   "2104506104",
+   "2107329507",
+   "2107616627",
+   "2113611920",
+   "2212604216",
+   "2212904216",
+   "2289441500",
+   "2305704144",
+   "2309218426",
+   "2315812626",
+   "2408730408",
+   "2409319707",
+   "2415812626",
+   "2416928425",
+   "2506706230",
+   "2510705918",
+   "2525323627",
+   "2525624427",
+   "2525624727",
+   "2525823275",
+   "2525824227",
+   "2526723328",
+   "2606706330",
+   "2903409805",
+   "2903409905",
+   "2948127848"
+  ]
+ },
+ "hotel_3020": {
+  "url": "https://www.dexamenes.com/",
+  "pages": [
+   [
+    "https://www.dexamenes.com/",
+    200,
+    "https://dexamenes.com/"
+   ],
+   [
+    "https://dexamenes.com/contact/",
+    200,
+    "https://dexamenes.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "dexamenes": true,
+   "seaside": true
+  },
+  "michelin_on_site": [
+   "6972521806"
+  ],
+  "google_on_site": "2622025999",
+  "phones_on_site": [
+   "2102005202",
+   "2111545674",
+   "2241745213",
+   "2293474264",
+   "2294264261",
+   "2622025999",
+   "2622623445",
+   "2622625834",
+   "2650482154",
+   "2652154848",
+   "2681226826",
+   "2682682681",
+   "2682682682",
+   "2714055524",
+   "2886428864",
+   "2927344141",
+   "2951179959",
+   "2959995913",
+   "6972521806"
+  ]
+ },
+ "hotel_3021": {
+  "url": "https://www.domesresorts.com/domeswhitecoastmilos/",
+  "pages": [
+   [
+    "https://www.domesresorts.com/domeswhitecoastmilos/",
+    200,
+    "https://www.domesresorts.com/domeswhitecoastmilos/"
+   ],
+   [
+    "https://domesresorts.com/domeswhitecoastmilos/contact-us/",
+    200,
+    "https://domesresorts.com/domeswhitecoastmilos/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "domes": true,
+   "white": true,
+   "coast": true,
+   "milos": true
+  },
+  "michelin_on_site": [
+   "2287440500"
+  ],
+  "google_on_site": "",
+  "phones_on_site": [
+   "2044663818",
+   "2082312022",
+   "2085326547",
+   "2135232481",
+   "2141203041",
+   "2141945129",
+   "2238732679",
+   "2287440500",
+   "2312317000",
+   "2393582119",
+   "2511548185",
+   "2513527494",
+   "2535521166",
+   "2567341186",
+   "2703105375",
+   "2711555185",
+   "2742483539",
+   "2791152792",
+   "2792791152",
+   "2842158626",
+   "2897783131",
+   "2943178313",
+   "2973832983",
+   "6936153720",
+   "9920163224"
+  ]
+ },
+ "hotel_3022": {
+  "url": "https://www.marriott.com/en-us/hotels/chqlc-domes-zeen-chania-a-luxury-collection-resort-crete/overview/",
+  "pages": [
+   [
+    "https://www.marriott.com/en-us/hotels/chqlc-domes-zeen-chania-a-luxury-collection-resort-crete/overview/",
+    403,
+    "https://www.marriott.com/en-us/hotels/chqlc-domes-zeen-chania-a-luxury-collection-resort-crete/overview/"
+   ]
+  ],
+  "name_tokens": {
+   "domes": false,
+   "zeen": false,
+   "chania": false
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "hotel_3023": {
+  "url": "https://eliamos.com/",
+  "pages": [
+   [
+    "https://eliamos.com/",
+    200,
+    "https://eliamos.com/"
+   ],
+   [
+    "https://eliamos.com/contact/",
+    200,
+    "https://eliamos.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "eliamos": true
+  },
+  "michelin_on_site": [
+   "2671171100"
+  ],
+  "google_on_site": "2671171100",
+  "phones_on_site": [
+   "2025031901",
+   "2026110308",
+   "2026110309",
+   "2147483647",
+   "2671171100"
+  ]
+ },
+ "hotel_3024": {
+  "url": "https://www.marbella.gr/marbella-elix/",
+  "pages": [
+   [
+    "https://www.marbella.gr/marbella-elix/",
+    200,
+    "https://www.marbella.gr/hotels/marbella-elix/"
+   ],
+   [
+    "https://www.marbella.gr/contact/",
+    200,
+    "https://www.marbella.gr/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "elix": true,
+   "bella": true
+  },
+  "michelin_on_site": [
+   "2665097000"
+  ],
+  "google_on_site": "2665097000",
+  "phones_on_site": [
+   "1076387232",
+   "2042349576",
+   "2065100019",
+   "2066016962",
+   "2067196962",
+   "2070480029",
+   "2074891515",
+   "2078207001",
+   "2083208001",
+   "2119211000",
+   "2119211001",
+   "2121500091",
+   "2151975197",
+   "2171900123",
+   "2173421429",
+   "2203220300",
+   "2216256250",
+   "2262226000",
+   "2278400018",
+   "2301900028",
+   "2304200028",
+   "2309300028",
+   "2325232000",
+   "2410592663",
+   "2417137142",
+   "2431336083",
+   "2435771243",
+   "2443244000",
+   "2462246001",
+   "2482248001",
+   "2497418734",
+   "2514400018",
+   "2521258115",
+   "2521258265",
+   "2535439292",
+   "2541259185",
+   "2562500047",
+   "2571126251",
+   "2573257000",
+   "2619261000",
+   "2646264001",
+   "2661071123",
+   "2661071125",
+   "2661071183",
+   "2661071189",
+   "2661072273",
+   "2661072400",
+   "2661072444",
+   "2661076452",
+   "2661076713",
+   "2661442961",
+   "2661442970",
+   "2661442971",
+   "2663738785",
+   "2663743035",
+   "2665097000",
+   "2695269000",
+   "2707825509",
+   "2723272001",
+   "2731168858",
+   "2733247138",
+   "2733273001",
+   "2734229064",
+   "2778348568",
+   "2815281001",
+   "2819281000",
+   "2826671624",
+   "2836500073",
+   "2841044700",
+   "2855285001",
+   "2859285000",
+   "2919291000",
+   "2923292011",
+   "2997300111",
+   "6973550884",
+   "6983922805",
+   "6985114245",
+   "6985114247"
+  ]
+ },
+ "hotel_3025": {
+  "url": "https://houses.ergonfoods.com/ergon-house-athens",
+  "pages": [
+   [
+    "https://houses.ergonfoods.com/ergon-house-athens",
+    200,
+    "https://houses.ergonfoods.com/ergon-house-athens"
+   ],
+   [
+    "https://houses.ergonfoods.com/contact-page",
+    200,
+    "https://houses.ergonfoods.com/contact-page"
+   ]
+  ],
+  "name_tokens": {
+   "ergon": true,
+   "house": true
+  },
+  "michelin_on_site": [
+   "2100109090"
+  ],
+  "google_on_site": "2100109090",
+  "phones_on_site": [
+   "2045318941",
+   "2091414541",
+   "2100109090",
+   "2105495001",
+   "2160006770",
+   "2160007440",
+   "2310284224",
+   "2375022300",
+   "2645122847",
+   "2720705971",
+   "2721205971"
+  ]
+ },
+ "hotel_3026": {
+  "url": "https://erosantorini.com/",
+  "pages": [
+   [
+    "https://erosantorini.com/",
+    200,
+    "https://erosantorini.com/"
+   ],
+   [
+    "https://erosantorini.com/contact/",
+    200,
+    "https://erosantorini.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "erosantorini": true
+  },
+  "michelin_on_site": [
+   "2286036396"
+  ],
+  "google_on_site": "2286036396",
+  "phones_on_site": [
+   "2037117405",
+   "2110129116",
+   "2111545674",
+   "2138483441",
+   "2241135811",
+   "2241745213",
+   "2286036396",
+   "2400023418",
+   "2416000122",
+   "2650482154",
+   "2652154848",
+   "2924290001",
+   "2927344141",
+   "6972835164"
+  ]
+ },
+ "hotel_3027": {
+  "url": "https://ethereummykonos.com/",
+  "pages": [
+   [
+    "https://ethereummykonos.com/",
+    200,
+    "https://www.ethereummykonos.com/"
+   ],
+   [
+    "https://www.ethereummykonos.com/contact-us/",
+    200,
+    "https://www.ethereummykonos.com/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "ethereum": true
+  },
+  "michelin_on_site": [
+   "6972857870"
+  ],
+  "google_on_site": "6972857870",
+  "phones_on_site": [
+   "2024091110",
+   "2289027767",
+   "6972857870"
+  ]
+ },
+ "hotel_716": {
+  "url": "https://www.fourseasons.com/athens/",
+  "pages": [
+   [
+    "https://www.fourseasons.com/athens/",
+    403,
+    "https://www.fourseasons.com/athens/"
+   ]
+  ],
+  "name_tokens": {
+   "four": false,
+   "seasons": false,
+   "astir": false,
+   "palace": false
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "hotel_3028": {
+  "url": "https://auberge.com/grace-hotel/",
+  "pages": [
+   [
+    "https://auberge.com/grace-hotel/",
+    200,
+    "https://auberge.com/grace-hotel/"
+   ],
+   [
+    "https://auberge.com/grace-hotel/contact-us/",
+    200,
+    "https://auberge.com/grace-hotel/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "grace": true,
+   "auberge": true
+  },
+  "michelin_on_site": [
+   "2286021300"
+  ],
+  "google_on_site": "2286021300",
+  "phones_on_site": [
+   "2008835272",
+   "2026944823",
+   "2028822317",
+   "2029382212",
+   "2029822299",
+   "2031299821",
+   "2031302818",
+   "2031945823",
+   "2033821120",
+   "2036949827",
+   "2037826304",
+   "2038253021",
+   "2039826302",
+   "2041302825",
+   "2042301824",
+   "2042303823",
+   "2042951824",
+   "2043028261",
+   "2048263011",
+   "2088803799",
+   "2092797355",
+   "2093567991",
+   "2095354797",
+   "2099807803",
+   "2101358803",
+   "2102801357",
+   "2106356801",
+   "2118781848",
+   "2119372278",
+   "2119392278",
+   "2119492278",
+   "2120038342",
+   "2121755817",
+   "2122486545",
+   "2140153059",
+   "2147483647",
+   "2161434758",
+   "2161578757",
+   "2161579758",
+   "2162434758",
+   "2162439758",
+   "2162447571",
+   "2162579754",
+   "2163436756",
+   "2163438757",
+   "2163577756",
+   "2164436756",
+   "2164441756",
+   "2164578755",
+   "2164579754",
+   "2164582755",
+   "2171759439",
+   "2172436762",
+   "2172761441",
+   "2173436762",
+   "2173441762",
+   "2173442761",
+   "2173761439",
+   "2173764411",
+   "2174439761",
+   "2174447611",
+   "2174759441",
+   "2175439761",
+   "2175443761",
+   "2175582758",
+   "2175762439",
+   "2175764391",
+   "2175764417",
+   "2176762439",
+   "2211261958",
+   "2211705514",
+   "2212117394",
+   "2212514706",
+   "2212617394",
+   "2212717299",
+   "2213517051",
+   "2220062728",
+   "2221725817",
+   "2221725827",
+   "2221755837",
+   "2222709516",
+   "2223516711",
+   "2224513709",
+   "2229562671",
+   "2229668561",
+   "2229671562",
+   "2229671563",
+   "2231194671",
+   "2231197665",
+   "2231198669",
+   "2231559669",
+   "2231561669",
+   "2231565669",
+   "2231671561",
+   "2232561668",
+   "2234118651",
+   "2238584651",
+   "2238618619",
+   "2238651584",
+   "2239619619",
+   "2239621619",
+   "2241198675",
+   "2243195675",
+   "2243198669",
+   "2243199672",
+   "2243562672",
+   "2243564672",
+   "2243567672",
+   "2243675563",
+   "2244564671",
+   "2245656731",
+   "2246119654",
+   "2246715641",
+   "2246755651",
+   "2246755661",
+   "2249119653",
+   "2249587653",
+   "2249621622",
+   "2249654587",
+   "2251622622",
+   "2251624622",
+   "2286021300",
+   "2311241949",
+   "2313164786",
+   "2321715827",
+   "2321755857",
+   "2362316326",
+   "2412517379",
+   "2412617289",
+   "2421735827",
+   "2421755827",
+   "2457721627",
+   "2457821627",
+   "2457821647",
+   "2457921617",
+   "2458216755",
+   "2484327517",
+   "2512517319",
+   "2517494620",
+   "2518888591",
+   "2557921657",
+   "2558216375",
+   "2612217399",
+   "2612617399",
+   "2612817389",
+   "2618891858",
+   "2684327717",
+   "2684827717",
+   "2718881858",
+   "2719472288",
+   "2719492288",
+   "2757721647",
+   "2758216475",
+   "2758421637",
+   "2782230317",
+   "2784827817",
+   "2812617379",
+   "2884527417",
+   "2911553526",
+   "2916491222",
+   "2984627417",
+   "2984927617"
+  ]
+ },
+ "hotel_3029": {
+  "url": "https://www.marriott.com/en-us/hotels/athlc-hotel-grande-bretagne-a-luxury-collection-hotel-athens/overview/",
+  "pages": [
+   [
+    "https://www.marriott.com/en-us/hotels/athlc-hotel-grande-bretagne-a-luxury-collection-hotel-athens/overview/",
+    403,
+    "https://www.marriott.com/en-us/hotels/athlc-hotel-grande-bretagne-a-luxury-collection-hotel-athens/overview/"
+   ]
+  ],
+  "name_tokens": {
+   "grande": false,
+   "bretagne": false
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "hotel_3030": {
+  "url": "https://istoriahotel.gr/",
+  "pages": [
+   [
+    "https://istoriahotel.gr/",
+    200,
+    "https://istoriahotel.gr/"
+   ],
+   [
+    "https://istoriahotel.gr/contact/",
+    200,
+    "https://istoriahotel.gr/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "istoria": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "2286085051",
+  "phones_on_site": [
+   "2026110401",
+   "2286085051"
+  ]
+ },
+ "hotel_3031": {
+  "url": "https://www.kalesmamykonos.com/",
+  "pages": [
+   [
+    "https://www.kalesmamykonos.com/",
+    200,
+    "https://www.kalesmamykonos.com/"
+   ],
+   [
+    "https://www.kalesmamykonos.com/contact-us/",
+    200,
+    "https://www.kalesmamykonos.com/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "kalesma": true
+  },
+  "michelin_on_site": [
+   "2289077222"
+  ],
+  "google_on_site": "2289077222",
+  "phones_on_site": [
+   "2025121015",
+   "2025121116",
+   "2026013014",
+   "2026013015",
+   "2026020408",
+   "2026020511",
+   "2026020515",
+   "2026020608",
+   "2026021011",
+   "2026021815",
+   "2026022015",
+   "2026031910",
+   "2026041610",
+   "2026080806",
+   "2026090211",
+   "2026100507",
+   "2026102908",
+   "2103642393",
+   "2289077222",
+   "6983918726",
+   "6985115400"
+  ]
+ },
+ "hotel_3032": {
+  "url": "https://hotelkamares.gr/",
+  "pages": [
+   [
+    "https://hotelkamares.gr/",
+    "ERR <urlopen error [Errno -2] Name or service not known>",
+    "https://hotelkamares.gr/"
+   ]
+  ],
+  "name_tokens": {
+   "kamares": false
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "hotel_3033": {
+  "url": "https://www.kapsalianavillage.gr/",
+  "pages": [
+   [
+    "https://www.kapsalianavillage.gr/",
+    200,
+    "https://www.kapsalianavillage.gr/"
+   ],
+   [
+    "https://www.kapsalianavillage.gr/contact/",
+    200,
+    "https://www.kapsalianavillage.gr/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "kapsaliana": true
+  },
+  "michelin_on_site": [
+   "2831083400"
+  ],
+  "google_on_site": "2831083400",
+  "phones_on_site": [
+   "1207255668",
+   "1227955668",
+   "1307155668",
+   "2006462006",
+   "2006532459",
+   "2007462007",
+   "2017768589",
+   "2084032637",
+   "2157488216",
+   "2164297448",
+   "2180553655",
+   "2194022121",
+   "2198191103",
+   "2201462201",
+   "2212261388",
+   "2212395518",
+   "2214632879",
+   "2235762362",
+   "2301127511",
+   "2330181942",
+   "2333496682",
+   "2333604692",
+   "2461611229",
+   "2522525042",
+   "2559552525",
+   "2584241164",
+   "2589628111",
+   "2623894589",
+   "2653912654",
+   "2654026013",
+   "2665723698",
+   "2670563710",
+   "2671295751",
+   "2680543710",
+   "2683106363",
+   "2687568401",
+   "2704954950",
+   "2710514182",
+   "2830810786",
+   "2831083062",
+   "2831083400",
+   "2831248826",
+   "2831490812",
+   "2851683447",
+   "2860272822",
+   "2898322161",
+   "2970609295",
+   "3273834242"
+  ]
+ },
+ "hotel_3034": {
+  "url": "https://www.katikies.com/katikiesgardensantorini/",
+  "pages": [
+   [
+    "https://www.katikies.com/katikiesgardensantorini/",
+    200,
+    "https://www.katikies.com/katikiesgardensantorini/"
+   ],
+   [
+    "https://www.katikies.com/katikiesgardensantorini/contact/",
+    200,
+    "https://www.katikies.com/katikiesgardensantorini/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "katikies": true,
+   "garden": true
+  },
+  "michelin_on_site": [
+   "2286440900"
+  ],
+  "google_on_site": "2286440900",
+  "phones_on_site": [
+   "2286440900"
+  ]
+ },
+ "hotel_3035": {
+  "url": "https://www.katikies.com/katikieshotelsantorini/",
+  "pages": [
+   [
+    "https://www.katikies.com/katikieshotelsantorini/",
+    200,
+    "https://www.katikies.com/katikieshotelsantorini/"
+   ],
+   [
+    "https://www.katikies.com/katikieshotelsantorini/contact/",
+    200,
+    "https://www.katikies.com/katikieshotelsantorini/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "katikies": true,
+   "house": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": [
+   "2286071129",
+   "2286072382"
+  ]
+ },
+ "hotel_3036": {
+  "url": "https://www.katikies.com/katikieshotelsantorini/",
+  "pages": [
+   [
+    "https://www.katikies.com/katikieshotelsantorini/",
+    200,
+    "https://www.katikies.com/katikieshotelsantorini/"
+   ],
+   [
+    "https://www.katikies.com/katikieshotelsantorini/contact/",
+    200,
+    "https://www.katikies.com/katikieshotelsantorini/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "katikies": true,
+   "pelagos": true,
+   "house": true
+  },
+  "michelin_on_site": [
+   "2286072382"
+  ],
+  "google_on_site": "2286072382",
+  "phones_on_site": [
+   "2286071129",
+   "2286072382"
+  ]
+ },
+ "hotel_3037": {
+  "url": "https://www.kinsternahotel.gr/en/",
+  "pages": [
+   [
+    "https://www.kinsternahotel.gr/en/",
+    200,
+    "https://www.kinsternahotel.gr/"
+   ],
+   [
+    "https://www.kinsternahotel.gr/contact/",
+    200,
+    "https://www.kinsternahotel.gr/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "kinsterna": true
+  },
+  "michelin_on_site": [
+   "2732066300"
+  ],
+  "google_on_site": "2732066300",
+  "phones_on_site": [
+   "1851895851",
+   "2031381442",
+   "2164425328",
+   "2174473327",
+   "2238134586",
+   "2290063301",
+   "2348892283",
+   "2358798284",
+   "2385244531",
+   "2409115939",
+   "2453793436",
+   "2463834437",
+   "2471247001",
+   "2479024091",
+   "2479864091",
+   "2482480000",
+   "2532372888",
+   "2571126251",
+   "2583523885",
+   "2621262001",
+   "2624689174",
+   "2624739174",
+   "2625584649",
+   "2625643649",
+   "2660685398",
+   "2660692398",
+   "2662371591",
+   "2689377328",
+   "2732066116",
+   "2732066300",
+   "2786423604",
+   "2825511281",
+   "2871328729",
+   "2892136112",
+   "2921086112",
+   "2929000285",
+   "2929000286",
+   "2929000288",
+   "2961149383",
+   "6181133352",
+   "8061126828"
+  ]
+ },
+ "hotel_3038": {
+  "url": "https://www.kivotoshotels.com/santorini/luxury-hotel-villas/",
+  "pages": [
+   [
+    "https://www.kivotoshotels.com/santorini/luxury-hotel-villas/",
+    200,
+    "https://www.kivotoshotels.com/santorini/luxury-hotel-villas/"
+   ],
+   [
+    "https://www.kivotoshotels.com/santorini/contact/",
+    200,
+    "https://www.kivotoshotels.com/santorini/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "kivotos": true
+  },
+  "michelin_on_site": [
+   "2286028490"
+  ],
+  "google_on_site": "2286028490",
+  "phones_on_site": [
+   "2106749111",
+   "2106749299",
+   "2286028490",
+   "2289024094"
+  ]
+ },
+ "hotel_3039": {
+  "url": "https://www.kokkiniporta.com/",
+  "pages": [
+   [
+    "https://www.kokkiniporta.com/",
+    200,
+    "https://kokkiniporta.com/"
+   ],
+   [
+    "https://kokkiniporta.com/contact/",
+    200,
+    "https://kokkiniporta.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "k\u00f3kkini": true,
+   "porta": true,
+   "rossa": true
+  },
+  "michelin_on_site": [
+   "2241075114"
+  ],
+  "google_on_site": "2241075114",
+  "phones_on_site": [
+   "1234567890",
+   "2241075114",
+   "6946103929"
+  ]
+ },
+ "hotel_3040": {
+  "url": "https://www.langohotel.com/",
+  "pages": [
+   [
+    "https://www.langohotel.com/",
+    200,
+    "https://www.langohotel.com/"
+   ],
+   [
+    "https://www.langohotel.com/contact",
+    200,
+    "https://www.langohotel.com/contact"
+   ]
+  ],
+  "name_tokens": {
+   "lango": true,
+   "design": true
+  },
+  "michelin_on_site": [
+   "2242049000"
+  ],
+  "google_on_site": "2242049000",
+  "phones_on_site": [
+   "2242049000",
+   "2242049010"
+  ]
+ },
+ "hotel_3041": {
+  "url": "https://leedas-villas.com/",
+  "pages": [
+   [
+    "https://leedas-villas.com/",
+    200,
+    "https://leedas-villas.com/"
+   ],
+   [
+    "https://leedas-villas.com/contact-book/",
+    200,
+    "https://leedas-villas.com/contact-book/"
+   ]
+  ],
+  "name_tokens": {
+   "leeda": true
+  },
+  "michelin_on_site": [
+   "6979806798"
+  ],
+  "google_on_site": "6979806798",
+  "phones_on_site": [
+   "6975426951",
+   "6979806798"
+  ]
+ },
+ "hotel_3042": {
+  "url": "https://www.lesantecollection.gr/hotels/lesante-cape/",
+  "pages": [
+   [
+    "https://www.lesantecollection.gr/hotels/lesante-cape/",
+    200,
+    "https://www.lesantecollection.gr/hotels/lesante-cape/"
+   ],
+   [
+    "https://www.lesantecollection.gr/hotels/lesante-cape/contact/",
+    200,
+    "https://www.lesantecollection.gr/hotels/lesante-cape/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "lesante": true,
+   "cape": true
+  },
+  "michelin_on_site": [
+   "2695048295"
+  ],
+  "google_on_site": "2695044495",
+  "phones_on_site": [
+   "0095152542",
+   "0226548896",
+   "0683168554",
+   "1014474628",
+   "1049290224",
+   "1049524765",
+   "1243153228",
+   "1778180188",
+   "1801140042",
+   "1905167994",
+   "1947286855",
+   "2002212572",
+   "2005738282",
+   "2018280742",
+   "2022311669",
+   "2024023332",
+   "2024065030",
+   "2024173406",
+   "2025576013",
+   "2026449698",
+   "2027686626",
+   "2035781489",
+   "2042168708",
+   "2043146941",
+   "2044683618",
+   "2046829883",
+   "2047480868",
+   "2048230975",
+   "2048653198",
+   "2067115628",
+   "2067908475",
+   "2068297806",
+   "2073320807",
+   "2083137469",
+   "2088474628",
+   "2092349394",
+   "2099037006",
+   "2099075318",
+   "2114902162",
+   "2115183525",
+   "2115421154",
+   "2121326866",
+   "2129158613",
+   "2129184086",
+   "2129759326",
+   "2133250473",
+   "2136433971",
+   "2139429007",
+   "2143675397",
+   "2145339016",
+   "2178830464",
+   "2181383074",
+   "2203768679",
+   "2207248822",
+   "2208316668",
+   "2208747629",
+   "2211172627",
+   "2219885226",
+   "2224928326",
+   "2225180796",
+   "2227170542",
+   "2232443085",
+   "2236141637",
+   "2238968071",
+   "2259070943",
+   "2263772096",
+   "2284277166",
+   "2287412083",
+   "2289120224",
+   "2293751085",
+   "2295155342",
+   "2295408781",
+   "2295571281",
+   "2297304242",
+   "2298126841",
+   "2299309276",
+   "2307324971",
+   "2308725744",
+   "2308789054",
+   "2309705196",
+   "2309885629",
+   "2320291366",
+   "2326795198",
+   "2332471682",
+   "2335245158",
+   "2347510763",
+   "2353854515",
+   "2371713566",
+   "2372716327",
+   "2375392276",
+   "2377703683",
+   "2379714918",
+   "2381166626",
+   "2383106812",
+   "2390132312",
+   "2396968637",
+   "2402400279",
+   "2412382216",
+   "2412409859",
+   "2413050341",
+   "2426481996",
+   "2427202364",
+   "2429679624",
+   "2432334448",
+   "2432938999",
+   "2433167025",
+   "2434100367",
+   "2434200455",
+   "2437700466",
+   "2438146483",
+   "2439287611",
+   "2441200437",
+   "2441200459",
+   "2441300466",
+   "2441300469",
+   "2444700459",
+   "2445475631",
+   "2447149048",
+   "2447476463",
+   "2456511417",
+   "2461255288",
+   "2468105107",
+   "2468875911",
+   "2485159975",
+   "2488185798",
+   "2491474628",
+   "2507148367",
+   "2509257628",
+   "2511589551",
+   "2516174842",
+   "2519607066",
+   "2521449507",
+   "2522134696",
+   "2524222986",
+   "2524223012",
+   "2526515496",
+   "2528720743",
+   "2532606868",
+   "2535559255",
+   "2538732889",
+   "2541725631",
+   "2542382831",
+   "2548131164",
+   "2552459575",
+   "2556158673",
+   "2561181641",
+   "2562238994",
+   "2563236016",
+   "2566181691",
+   "2573902493",
+   "2589401277",
+   "2597145877",
+   "2597196823",
+   "2607064523",
+   "2610500691",
+   "2621105647",
+   "2625319992",
+   "2626300316",
+   "2626997379",
+   "2628473957",
+   "2636104113",
+   "2645800667",
+   "2673281669",
+   "2674100737",
+   "2677220158",
+   "2677500737",
+   "2677500741",
+   "2677500748",
+   "2681100741",
+   "2681100744",
+   "2682143066",
+   "2682533236",
+   "2684600931",
+   "2691205862",
+   "2691257576",
+   "2691309261",
+   "2691375182",
+   "2695044495",
+   "2695048295",
+   "2696922582",
+   "2698756408",
+   "2705316261",
+   "2705326822",
+   "2705911865",
+   "2717245561",
+   "2717457034",
+   "2717581548",
+   "2725138457",
+   "2728100682",
+   "2728169812",
+   "2735930946",
+   "2742107137",
+   "2742705196",
+   "2742890936",
+   "2765267104",
+   "2766887676",
+   "2769138432",
+   "2769384783",
+   "2771452163",
+   "2773922286",
+   "2783400247",
+   "2786891211",
+   "2801452562",
+   "2805981518",
+   "2807285994",
+   "2814911552",
+   "2834504151",
+   "2836423843",
+   "2842780762",
+   "2854518109",
+   "2855219852",
+   "2855599873",
+   "2865127592",
+   "2871148975",
+   "2871546494",
+   "2877923753",
+   "2878339855",
+   "2884665595",
+   "2889200885",
+   "2897238186",
+   "2897276948",
+   "2901161656",
+   "2902497379",
+   "2908150021",
+   "2909376273",
+   "2909429662",
+   "2918210688",
+   "2921245841",
+   "2926435296",
+   "2926521396",
+   "2932429225",
+   "2936528241",
+   "2938610809",
+   "2942775477",
+   "2949437642",
+   "2954275021",
+   "2959800988",
+   "2965307513",
+   "2968458698",
+   "2973731093",
+   "2975939999",
+   "2982375837",
+   "2984413382",
+   "2989609678",
+   "2995101908",
+   "3025180596",
+   "3356179451",
+   "3534172399",
+   "3636142026",
+   "3763146685",
+   "3763173595",
+   "3763177134",
+   "3763177185",
+   "3839174817",
+   "5208467331",
+   "5455420715",
+   "6192061577",
+   "6676694413",
+   "6676748544",
+   "6726481196",
+   "6796633654",
+   "7088391493",
+   "7201481959",
+   "9402474628",
+   "9745158268",
+   "9859446052"
+  ]
+ },
+ "hotel_3043": {
+  "url": "https://www.limestonesantorini.com/",
+  "pages": [
+   [
+    "https://www.limestonesantorini.com/",
+    200,
+    "https://limestonesantorini.com/"
+   ],
+   [
+    "https://limestonesantorini.com/contact/",
+    200,
+    "https://limestonesantorini.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "limestone": true
+  },
+  "michelin_on_site": [
+   "2286025443"
+  ],
+  "google_on_site": "2286025443",
+  "phones_on_site": [
+   "2022022501",
+   "2022111024",
+   "2026110306",
+   "2026110307",
+   "2286025443",
+   "2455155150",
+   "2455155300",
+   "2455155768",
+   "2922056189",
+   "3277365690",
+   "6972645564"
+  ]
+ },
+ "hotel_3044": {
+  "url": "https://www.manili.gr/",
+  "pages": [
+   [
+    "https://www.manili.gr/",
+    200,
+    "https://manili.gr/"
+   ],
+   [
+    "https://manili.gr/contact/",
+    200,
+    "https://manili.gr/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "manili": true
+  },
+  "michelin_on_site": [
+   "2810753001"
+  ],
+  "google_on_site": "2810753001",
+  "phones_on_site": [
+   "2025042321",
+   "2810753001"
+  ]
+ },
+ "hotel_3045": {
+  "url": "https://www.minospalace.com/",
+  "pages": [
+   [
+    "https://www.minospalace.com/",
+    200,
+    "https://www.minospalace.com/"
+   ],
+   [
+    "https://www.minospalace.com/contact-us/",
+    200,
+    "https://www.minospalace.com/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "minos": true,
+   "palace": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "2841023801",
+  "phones_on_site": [
+   "2130385173",
+   "2131723853",
+   "2293474264",
+   "2294264261",
+   "2622623445",
+   "2622625834",
+   "2672151413",
+   "2681226826",
+   "2682682681",
+   "2682682682",
+   "2714055524",
+   "2841023801",
+   "2875938921",
+   "2951179959",
+   "2959995913"
+  ]
+ },
+ "hotel_3046": {
+  "url": "https://www.montanema.gr/",
+  "pages": [
+   [
+    "https://www.montanema.gr/",
+    200,
+    "https://www.montanema.gr/el/"
+   ]
+  ],
+  "name_tokens": {
+   "montanema": true,
+   "handmade": true
+  },
+  "michelin_on_site": [
+   "2445045220"
+  ],
+  "google_on_site": "2445045220",
+  "phones_on_site": [
+   "2024080209",
+   "2024112801",
+   "2126082023",
+   "2445045220"
+  ]
+ },
+ "hotel_3047": {
+  "url": "https://www.monumenthotelathens.com/",
+  "pages": [
+   [
+    "https://www.monumenthotelathens.com/",
+    200,
+    "https://www.monumenthotelathens.com/"
+   ],
+   [
+    "https://www.monumenthotelathens.com/contact/",
+    200,
+    "https://www.monumenthotelathens.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "monument": true
+  },
+  "michelin_on_site": [
+   "2103241425"
+  ],
+  "google_on_site": "2103241425",
+  "phones_on_site": [
+   "2017327287",
+   "2026110401",
+   "2103241425",
+   "2110523618",
+   "2143623875",
+   "2204200154",
+   "2209863916",
+   "2210644388",
+   "2211335175",
+   "2219262225",
+   "2220741558",
+   "2231533703",
+   "2281463854",
+   "2310683108",
+   "2310819223",
+   "2310820710",
+   "2310827234",
+   "2311726834",
+   "2315315421",
+   "2315425885",
+   "2318147326",
+   "2319213227",
+   "2323416538",
+   "2323441541",
+   "2326516526",
+   "2344213484",
+   "2363853858",
+   "2371527177",
+   "2381492212",
+   "2385192851",
+   "2452513602",
+   "2464379607",
+   "2478178571",
+   "2510242147",
+   "2512437829",
+   "2512844179",
+   "2514524241",
+   "2518192292",
+   "2532424258",
+   "2552230174",
+   "2570146172",
+   "2571411387",
+   "2612318111",
+   "2614899477",
+   "2627221815",
+   "2634517731",
+   "2641316625",
+   "2663815211",
+   "2664000192",
+   "2706731133",
+   "2712342165",
+   "2713404211",
+   "2713473134",
+   "2713938499",
+   "2714663289",
+   "2715245123",
+   "2716541654",
+   "2719794621",
+   "2723458234",
+   "2726527549",
+   "2731582479",
+   "2742425873",
+   "2744273522",
+   "2758571134",
+   "2762217517",
+   "2773852071",
+   "2785181134",
+   "2801280128",
+   "2810531672",
+   "2810645715",
+   "2812722812",
+   "2822224093",
+   "2856519485",
+   "2868517893",
+   "2903192031",
+   "2927171341"
+  ]
+ },
+ "hotel_3048": {
+  "url": "https://www.omyconian.gr/",
+  "pages": [
+   [
+    "https://www.omyconian.gr/",
+    200,
+    "https://www.omyconian.gr/"
+   ],
+   [
+    "https://www.omyconian.gr/contact-us/",
+    200,
+    "https://www.omyconian.gr/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "myconian": true
+  },
+  "michelin_on_site": [
+   "2289444000"
+  ],
+  "google_on_site": "2289444000",
+  "phones_on_site": [
+   "2104506104",
+   "2107329507",
+   "2107616627",
+   "2113611920",
+   "2212604216",
+   "2212904216",
+   "2222372254",
+   "2289444000",
+   "2305704144",
+   "2309218426",
+   "2315812626",
+   "2334473642",
+   "2408730408",
+   "2409319707",
+   "2415812626",
+   "2416928425",
+   "2506706230",
+   "2510705918",
+   "2525323627",
+   "2525624427",
+   "2525624727",
+   "2525823275",
+   "2525824227",
+   "2526723328",
+   "2606706330",
+   "2673931973",
+   "2728922744",
+   "2732436732",
+   "2903409805",
+   "2903409905",
+   "2948127848"
+  ]
+ },
+ "hotel_3049": {
+  "url": "https://panoptisescapemykonos.com/",
+  "pages": [
+   [
+    "https://panoptisescapemykonos.com/",
+    200,
+    "https://www.panoptisescapemykonos.com/"
+   ],
+   [
+    "https://www.panoptisescapemykonos.com/contact/",
+    200,
+    "https://www.panoptisescapemykonos.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "myconian": true,
+   "panoptis": true,
+   "escape": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "2289445400",
+  "phones_on_site": [
+   "2026110323",
+   "2222222222",
+   "2289445400",
+   "2333333333",
+   "2545454545",
+   "2635431918",
+   "2727272727",
+   "2857142857",
+   "2928257687"
+  ]
+ },
+ "hotel_3050": {
+  "url": "https://www.mykonosblanchotel.com/",
+  "pages": [
+   [
+    "https://www.mykonosblanchotel.com/",
+    200,
+    "https://www.mykonosblanchotel.com/"
+   ],
+   [
+    "https://www.mykonosblanchotel.com/contact/",
+    200,
+    "https://www.mykonosblanchotel.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "blanc": true
+  },
+  "michelin_on_site": [
+   "2289027618"
+  ],
+  "google_on_site": "2289027618",
+  "phones_on_site": [
+   "1851895851",
+   "2031381442",
+   "2156111709",
+   "2289022243",
+   "2289027618",
+   "2343446766",
+   "2459291284",
+   "2471247001",
+   "2482480000",
+   "2583523885",
+   "2621262001",
+   "2704954950",
+   "2719000656",
+   "2724270018",
+   "2825511281",
+   "2861429242",
+   "2871328729",
+   "2912583179",
+   "2929000285",
+   "2929000286",
+   "2929000288",
+   "2935626696",
+   "6181133352",
+   "8061126828"
+  ]
+ },
+ "hotel_3051": {
+  "url": "https://www.mykonosbliss.gr/",
+  "pages": [
+   [
+    "https://www.mykonosbliss.gr/",
+    200,
+    "https://www.mykonosbliss.gr/"
+   ],
+   [
+    "https://www.mykonosbliss.gr/contact/",
+    200,
+    "https://www.mykonosbliss.gr/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "bliss": true
+  },
+  "michelin_on_site": [
+   "2289072912"
+  ],
+  "google_on_site": "2289072912",
+  "phones_on_site": [
+   "2289072912"
+  ]
+ },
+ "hotel_3052": {
+  "url": "https://www.mykonosgrand.gr/",
+  "pages": [
+   [
+    "https://www.mykonosgrand.gr/",
+    200,
+    "https://www.mykonosgrand.gr/"
+   ],
+   [
+    "https://www.mykonosgrand.gr/contact/",
+    200,
+    "https://www.mykonosgrand.gr/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "grand": true
+  },
+  "michelin_on_site": [
+   "2289025555"
+  ],
+  "google_on_site": "2289025555",
+  "phones_on_site": [
+   "2289025555",
+   "2289079440",
+   "2289079460"
+  ]
+ },
+ "hotel_3053": {
+  "url": "https://nomamilos.gr/",
+  "pages": [
+   [
+    "https://nomamilos.gr/",
+    200,
+    "https://nomamilos.gr/"
+   ],
+   [
+    "https://nomamilos.gr/contact-us/",
+    200,
+    "https://nomamilos.gr/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "noma": true,
+   "milos": true
+  },
+  "michelin_on_site": [
+   "2152158354"
+  ],
+  "google_on_site": "2152158354",
+  "phones_on_site": [
+   "2026050518",
+   "2026110302",
+   "2026110309",
+   "2152158354"
+  ]
+ },
+ "hotel_3054": {
+  "url": "https://nomadsmykonos.com/",
+  "pages": [
+   [
+    "https://nomadsmykonos.com/",
+    "ERR <urlopen error [Errno -2] Name or service not known>",
+    "https://nomadsmykonos.com/"
+   ]
+  ],
+  "name_tokens": {
+   "nomad": false
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "hotel_3055": {
+  "url": "https://not-hotel.com/",
+  "pages": [
+   [
+    "https://not-hotel.com/",
+    200,
+    "https://not-hotel.com/"
+   ]
+  ],
+  "name_tokens": {},
+  "michelin_on_site": [
+   "2160002310"
+  ],
+  "google_on_site": "2160002310",
+  "phones_on_site": [
+   "2123247123",
+   "2160002310",
+   "2411374301",
+   "2455153195",
+   "2668211532",
+   "2732288138",
+   "2926410229"
+  ]
+ },
+ "hotel_3056": {
+  "url": "https://www.numomykonos.com/",
+  "pages": [
+   [
+    "https://www.numomykonos.com/",
+    200,
+    "https://numomykonos.com/"
+   ],
+   [
+    "https://numomykonos.com/contact/",
+    200,
+    "https://numomykonos.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "numo": true
+  },
+  "michelin_on_site": [
+   "2834055000"
+  ],
+  "google_on_site": "2834055000",
+  "phones_on_site": [
+   "2289071420",
+   "2740422734",
+   "2834055000",
+   "6890959696"
+  ]
+ },
+ "hotel_3057": {
+  "url": "https://www.okuhotels.com/oku-kos",
+  "pages": [
+   [
+    "https://www.okuhotels.com/oku-kos",
+    403,
+    "https://www.okuhotels.com/oku-kos"
+   ]
+  ],
+  "name_tokens": {},
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "hotel_3058": {
+  "url": "https://oleaallsuitehotel.com/",
+  "pages": [
+   [
+    "https://oleaallsuitehotel.com/",
+    200,
+    "https://oleaallsuitehotel.com/"
+   ],
+   [
+    "https://oleaallsuitehotel.com/contact/",
+    200,
+    "https://oleaallsuitehotel.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "olea": true,
+   "suite": true
+  },
+  "michelin_on_site": [
+   "2695022265"
+  ],
+  "google_on_site": "2695022265",
+  "phones_on_site": [
+   "2695022265"
+  ]
+ },
+ "hotel_3059": {
+  "url": "https://onresidence.gr/",
+  "pages": [
+   [
+    "https://onresidence.gr/",
+    200,
+    "https://www.onresidence.gr/"
+   ],
+   [
+    "https://www.onresidence.gr/contact",
+    200,
+    "https://www.onresidence.gr/contact"
+   ]
+  ],
+  "name_tokens": {
+   "residence": true
+  },
+  "michelin_on_site": [
+   "2314404000"
+  ],
+  "google_on_site": "2314404000",
+  "phones_on_site": [
+   "2310021000",
+   "2310021005",
+   "2314404000"
+  ]
+ },
+ "hotel_3060": {
+  "url": "https://www.oneandonlyresorts.com/aesthesis",
+  "pages": [
+   [
+    "https://www.oneandonlyresorts.com/aesthesis",
+    "ERR The read operation timed out",
+    "https://www.oneandonlyresorts.com/aesthesis"
+   ]
+  ],
+  "name_tokens": {
+   "only": false,
+   "aesthesis": false
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "hotel_3061": {
+  "url": "https://www.hotelpalladium.gr/",
+  "pages": [
+   [
+    "https://www.hotelpalladium.gr/",
+    200,
+    "https://www.hotelpalladium.gr/"
+   ],
+   [
+    "https://www.hotelpalladium.gr/contact/",
+    200,
+    "https://www.hotelpalladium.gr/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "palladium": true
+  },
+  "michelin_on_site": [
+   "2289025925"
+  ],
+  "google_on_site": "2289025925",
+  "phones_on_site": [
+   "2026110402",
+   "2289025925",
+   "2810457516"
+  ]
+ },
+ "hotel_3062": {
+  "url": "https://deals.vio.com/",
+  "pages": [
+   [
+    "https://deals.vio.com/",
+    400,
+    "https://deals.vio.com/"
+   ]
+  ],
+  "name_tokens": {
+   "perivolas": false,
+   "lifestyle": false,
+   "houses": false
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": []
+ },
+ "hotel_3063": {
+  "url": "https://pnoe-breathinglife.com/",
+  "pages": [
+   [
+    "https://pnoe-breathinglife.com/",
+    200,
+    "https://pnoe-breathinglife.com/en/home/"
+   ],
+   [
+    "https://pnoe-breathinglife.com/en/contact/",
+    200,
+    "https://pnoe-breathinglife.com/en/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "pno\u00e9": true,
+   "breathing": true,
+   "life": true
+  },
+  "michelin_on_site": [
+   "2810000990"
+  ],
+  "google_on_site": "2810000990",
+  "phones_on_site": [
+   "2018323347",
+   "2022100607",
+   "2355457327",
+   "2810000990"
+  ]
+ },
+ "hotel_3064": {
+  "url": "https://www.portozante.com/",
+  "pages": [
+   [
+    "https://www.portozante.com/",
+    200,
+    "https://portozante.com/"
+   ],
+   [
+    "https://portozante.com/contact/",
+    200,
+    "https://portozante.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "porto": true,
+   "zante": true
+  },
+  "michelin_on_site": [
+   "2108218640"
+  ],
+  "google_on_site": "2108218640",
+  "phones_on_site": [
+   "2026022503",
+   "2038636998",
+   "2108218640",
+   "2108228834",
+   "2196531407",
+   "2201426553",
+   "2202704103",
+   "2223175884",
+   "2241525443",
+   "2318685255",
+   "2319663675",
+   "2403229284",
+   "2475508269",
+   "2476481266",
+   "2508664482",
+   "2551526253",
+   "2598636998",
+   "2636433836",
+   "2654508827",
+   "2683654674",
+   "2688541216",
+   "2695065100",
+   "2695065102",
+   "2728624242",
+   "2746528877",
+   "2816827663",
+   "2837423431",
+   "2857427663",
+   "2857527663",
+   "2955524809",
+   "2973703065",
+   "2979440837",
+   "2981325969",
+   "2998672407",
+   "7885456628",
+   "7942506115"
+  ]
+ },
+ "hotel_3065": {
+  "url": "https://stoeshotel.reserve-online.net/",
+  "pages": [
+   [
+    "https://stoeshotel.reserve-online.net/",
+    200,
+    "https://stoeshotel.reserve-online.net/"
+   ]
+  ],
+  "name_tokens": {
+   "stoes": true
+  },
+  "michelin_on_site": [],
+  "google_on_site": "",
+  "phones_on_site": [
+   "1576672576",
+   "2035001132",
+   "2101470462",
+   "2142593241",
+   "2214102228",
+   "2248622419",
+   "2272672600",
+   "2281153058",
+   "2282200010",
+   "2282200110",
+   "2317142342",
+   "2380013467",
+   "2384001337",
+   "2394000023",
+   "2394000238",
+   "2394000242",
+   "2394001242",
+   "2400103385",
+   "2400112823",
+   "2400133871",
+   "2400133881",
+   "2406001033",
+   "2406001128",
+   "2406240600",
+   "2409001034",
+   "2411462412",
+   "2417001034",
+   "2424000128",
+   "2431045159",
+   "2432757762",
+   "2454965478",
+   "2502554554",
+   "2511728416",
+   "2527443459",
+   "2529630512",
+   "2530529330",
+   "2581695913",
+   "2602352773",
+   "2622657152",
+   "2624552657",
+   "2714311422",
+   "2753131911",
+   "2928422996",
+   "2928422997",
+   "2957856578"
+  ]
+ },
+ "hotel_3066": {
+  "url": "https://tainaron-blue.com/",
+  "pages": [
+   [
+    "https://tainaron-blue.com/",
+    200,
+    "https://tainaron-blue.com/"
+   ],
+   [
+    "https://tainaron-blue.com/contact-us/",
+    200,
+    "https://tainaron-blue.com/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "tainaron": true,
+   "blue": true,
+   "retreat": true
+  },
+  "michelin_on_site": [
+   "2108080049"
+  ],
+  "google_on_site": "6973007006",
+  "phones_on_site": [
+   "2026110120",
+   "2108080049",
+   "6973007006"
+  ]
+ },
+ "hotel_3067": {
+  "url": "https://www.theboldtypehotel.com/",
+  "pages": [
+   [
+    "https://www.theboldtypehotel.com/",
+    200,
+    "https://theboldtypehotel.com/"
+   ]
+  ],
+  "name_tokens": {
+   "bold": true,
+   "type": true
+  },
+  "michelin_on_site": [
+   "2610220012"
+  ],
+  "google_on_site": "2610220012",
+  "phones_on_site": [
+   "2610220012"
+  ]
+ },
+ "hotel_3068": {
+  "url": "https://thedolli.com/",
+  "pages": [
+   [
+    "https://thedolli.com/",
+    200,
+    "https://www.thedolli.com/"
+   ],
+   [
+    "https://www.thedolli.com/contact/",
+    200,
+    "https://www.thedolli.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "dolli": true,
+   "acropolis": true,
+   "live": true
+  },
+  "michelin_on_site": [
+   "2160047000"
+  ],
+  "google_on_site": "2160047000",
+  "phones_on_site": [
+   "2032520125",
+   "2052267524",
+   "2131752151",
+   "2160047000",
+   "2404125825",
+   "2465145212",
+   "2501325187",
+   "2501327518",
+   "2502250254",
+   "2502565317",
+   "2503757551",
+   "2511752050",
+   "2511757451",
+   "2514250513",
+   "2514502250",
+   "2514925225",
+   "2515470181",
+   "2516510512",
+   "2517291745",
+   "2517545251",
+   "2518250625",
+   "2520252353",
+   "2521251725",
+   "2521912675",
+   "2525125717",
+   "2525325225",
+   "2525682510",
+   "2532323285",
+   "2543275065",
+   "2545125575",
+   "2545162511",
+   "2546192112",
+   "2547502595",
+   "2549225595",
+   "2549517425",
+   "2551151725",
+   "2562510625",
+   "2562522522",
+   "2574555751",
+   "2575854825",
+   "2576760655",
+   "2577532511",
+   "2582565312",
+   "2595367524",
+   "2818525582",
+   "2852355252",
+   "2905825587"
+  ]
+ },
+ "hotel_3069": {
+  "url": "https://www.mykonostownhousehotel.com/",
+  "pages": [
+   [
+    "https://www.mykonostownhousehotel.com/",
+    200,
+    "https://mykonostownhousehotel.com/"
+   ],
+   [
+    "https://mykonostownhousehotel.com/contact-us/",
+    200,
+    "https://mykonostownhousehotel.com/contact-us/"
+   ]
+  ],
+  "name_tokens": {
+   "townhouse": true
+  },
+  "michelin_on_site": [
+   "2111989344"
+  ],
+  "google_on_site": "2289028543",
+  "phones_on_site": [
+   "2036999936",
+   "2111989344",
+   "2124611580",
+   "2289028543"
+  ]
+ },
+ "hotel_3070": {
+  "url": "https://www.tsitouras.com/",
+  "pages": [
+   [
+    "https://www.tsitouras.com/",
+    200,
+    "https://www.tsitouras.com/"
+   ],
+   [
+    "https://www.tsitouras.com/contact/",
+    200,
+    "https://www.tsitouras.com/contact/"
+   ]
+  ],
+  "name_tokens": {
+   "tsitouras": true
+  },
+  "michelin_on_site": [
+   "2286023747"
+  ],
+  "google_on_site": "2286023747",
+  "phones_on_site": [
+   "2286022760",
+   "2286023747",
+   "2286023918"
+  ]
+ },
+ "hotel_3071": {
+  "url": "https://www.vbs.gr/",
+  "pages": [
+   [
+    "https://www.vbs.gr/",
+    200,
+    "https://vbs.gr/"
+   ],
+   [
+    "https://vbs.gr/wp-content/plugins/add-template-for-contact-form-7/assets/style.css?ver=1.0.3",
+    200,
+    "https://vbs.gr/wp-content/plugins/add-template-for-contact-form-7/assets/style.css?ver=1.0.3"
+   ]
+  ],
+  "name_tokens": {
+   "villa": true,
+   "bordeaux": true
+  },
+  "michelin_on_site": [
+   "2286888018"
+  ],
+  "google_on_site": "2286888018",
+  "phones_on_site": [
+   "2026102901",
+   "2041800124",
+   "2046466166",
+   "2169552544",
+   "2173035453",
+   "2211844024",
+   "2213221000",
+   "2256611971",
+   "2271063383",
+   "2285228001",
+   "2286888018",
+   "2297320004",
+   "2346613639",
+   "2356457356",
+   "2421412242",
+   "2442445709",
+   "2456457456",
+   "2462326207",
+   "2519425000",
+   "2521971252",
+   "2525025021",
+   "2554763591",
+   "2582191914",
+   "2782754195",
+   "2813554420",
+   "2835291347",
+   "2857585475",
+   "2857585575",
+   "2862228001",
+   "2899138690",
+   "2921887314",
+   "2970244323",
+   "2987278755",
+   "3441303707",
+   "8365167309",
+   "9338141281"
+  ]
+ },
+ "hotel_3072": {
+  "url": "https://www.xenodocheiomilos.com/",
+  "pages": [
+   [
+    "https://www.xenodocheiomilos.com/",
+    200,
+    "https://www.xenodocheiomilos.com/Default"
+   ],
+   [
+    "https://www.xenodocheiomilos.com/Contact",
+    200,
+    "https://www.xenodocheiomilos.com/Contact"
+   ]
+  ],
+  "name_tokens": {
+   "xenodocheio": true,
+   "milos": true
+  },
+  "michelin_on_site": [
+   "2166003300"
+  ],
+  "google_on_site": "2166003300",
+  "phones_on_site": [
+   "2166003300"
+  ]
+ }
+}

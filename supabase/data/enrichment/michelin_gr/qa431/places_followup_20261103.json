@@ -1,0 +1,282 @@
+{
+ "hotel_3024": {
+  "query": "Elix Mar-Bella Collection Perdika",
+  "candidates": [
+   {
+    "id": "ChIJ2_TYrZSHXBMRp8uKvC4F0FY",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2665 097000",
+    "internationalPhoneNumber": "+30 2665 097000",
+    "formattedAddress": "Παραλία, Karavostasi 461 00, Greece",
+    "location": {
+     "latitude": 39.3426042,
+     "longitude": 20.2863652
+    },
+    "websiteUri": "https://www.marbella.gr/marbella-elix/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Elix, Mar-Bella Collection",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 615
+   }
+  ]
+ },
+ "hotel_3061": {
+  "query": "Palladium Hotel Mykonos",
+  "candidates": [
+   {
+    "id": "ChIJ7X7-n5K-ohQRyQgZ_g8IDTk",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 025925",
+    "internationalPhoneNumber": "+30 2289 025925",
+    "formattedAddress": "Πλατυς Γιαλος, Platis Gialos 846 00, Greece",
+    "location": {
+     "latitude": 37.4144931,
+     "longitude": 25.344113800000002
+    },
+    "websiteUri": "https://www.hotelpalladium.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Palladium Boutique Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 646
+   }
+  ]
+ },
+ "hotel_3058": {
+  "query": "Olea All Suite Hotel Zakynthos",
+  "candidates": [
+   {
+    "id": "ChIJuxaRU9RHZxMRZkUDpnmpfGc",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2695 022265",
+    "internationalPhoneNumber": "+30 2695 022265",
+    "formattedAddress": "Planos 291 00, Greece",
+    "location": {
+     "latitude": 37.806124499999996,
+     "longitude": 20.8721246
+    },
+    "websiteUri": "https://oleaallsuitehotel.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Olea All Suite Hotel, Member of Design Hotels",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 715
+   }
+  ]
+ },
+ "hotel_3025": {
+  "query": "ERGON House Athens hotel",
+  "candidates": [
+   {
+    "id": "ChIJSyLizgS9oRQR2ESu_x0Qhqo",
+    "types": [
+     "greek_restaurant",
+     "butcher_shop",
+     "mediterranean_restaurant",
+     "deli",
+     "coffee_shop",
+     "cafe",
+     "hotel",
+     "lodging",
+     "grocery_store",
+     "food_store",
+     "european_restaurant",
+     "manufacturer",
+     "restaurant",
+     "food",
+     "store",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0010 9090",
+    "internationalPhoneNumber": "+30 21 0010 9090",
+    "formattedAddress": "23, Mitropoleos Street, Athina 105 57, Greece",
+    "location": {
+     "latitude": 37.9752809,
+     "longitude": 23.7315222
+    },
+    "websiteUri": "https://houses.ergonfoods.com/ergon-house-athens",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "ERGON House Athens",
+     "languageCode": "en"
+    },
+    "primaryType": "greek_restaurant",
+    "distance_m": 7
+   }
+  ]
+ },
+ "hotel_3026": {
+  "query": "Erosantorini hotel",
+  "candidates": [
+   {
+    "id": "ChIJkXE2gMXPmRQRh7Zui34eJJs",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 036222",
+    "internationalPhoneNumber": "+30 2286 036222",
+    "formattedAddress": "Ευθεια Φηρων-Πυργου, Mesaria 847 00, Greece",
+    "location": {
+     "latitude": 36.3911532,
+     "longitude": 25.439021699999998
+    },
+    "websiteUri": "http://www.argentonero.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Argento Nero",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 588
+   }
+  ]
+ },
+ "hotel_3041": {
+  "query": "Leeda's Village Zakynthos",
+  "candidates": [
+   {
+    "id": "ChIJFS1Kr1Q4ZxMR1LpLV2b8Zj0",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "697 980 6798",
+    "internationalPhoneNumber": "+30 697 980 6798",
+    "formattedAddress": "Lithakia, Zakinthos 290 92, Greece",
+    "location": {
+     "latitude": 37.7197846,
+     "longitude": 20.848907
+    },
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "The Farm Cottage by Leeda's Cottages",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 1572
+   }
+  ]
+ },
+ "hotel_3062": {
+  "query": "Perivolas Lifestyle Houses Oia",
+  "candidates": [
+   {
+    "id": "ChIJla6ox4fMmRQRmPBJs1xJHRg",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 071308",
+    "internationalPhoneNumber": "+30 2286 071308",
+    "formattedAddress": "Oia 847 02, Greece",
+    "location": {
+     "latitude": 36.4613048,
+     "longitude": 25.388072599999997
+    },
+    "websiteUri": "http://www.perivolas.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Perivolas Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 125
+   }
+  ]
+ },
+ "hotel_3030": {
+  "query": "Istoria Hotel Santorini",
+  "candidates": [
+   {
+    "id": "ChIJEf_lXyrQmRQRElusBegQRMU",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 085051",
+    "internationalPhoneNumber": "+30 2286 085051",
+    "formattedAddress": "Perissa 847 03, Greece",
+    "location": {
+     "latitude": 36.3464162,
+     "longitude": 25.465241
+    },
+    "websiteUri": "https://istoriahotel.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Istoria Beach, a Member of Design Hotels, Santorini",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 4
+   }
+  ]
+ },
+ "hotel_3045": {
+  "query": "Minos Palace Resort Agios Nikolaos",
+  "candidates": [
+   {
+    "id": "ChIJb_azJ9aDkBQRD0QEgkR-gUY",
+    "types": [
+     "hotel",
+     "lodging",
+     "spa",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2841 023801",
+    "internationalPhoneNumber": "+30 2841 023801",
+    "formattedAddress": "Ammoudiou, Ag. Nikolaos 721 00, Greece",
+    "location": {
+     "latitude": 35.202897899999996,
+     "longitude": 25.718337
+    },
+    "websiteUri": "https://www.minospalace.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Minos Palace Hotel & Suites",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 35
+   }
+  ]
+ }
+}

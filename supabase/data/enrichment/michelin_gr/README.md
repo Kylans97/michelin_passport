@@ -172,3 +172,8 @@ Bronnen:
 [Key-artikel 2026](https://guide.michelin.com/us/en/article/travel/all-the-key-hotels-in-the-world-michelin-guide),
 [50 Best Restaurants](https://www.the50.com/restaurants/best-in-the-world/list/1-50),
 [50 Best Hotels](https://www.the50.com/hotels/best-in-the-world/list/1-50).
+
+## Vervolg: QA-431 (2026-11-03)
+
+De Place IDs, telefoons en websites zijn voorbereid in `qa431/`, maar **niet toegepast**. Zie
+`qa431/README.md`. Nieuwe bevindingen staan onder QA-460 t/m QA-463.

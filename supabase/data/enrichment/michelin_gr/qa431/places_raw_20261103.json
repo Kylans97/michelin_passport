@@ -1,0 +1,3381 @@
+{
+ "rest_4000": {
+  "name": "Aleria",
+  "kind": "restaurant",
+  "query": "Aleria Athens Greece",
+  "lat": 37.9829821,
+  "lon": 23.7179165,
+  "candidates": [
+   {
+    "id": "ChIJq_UsCSe9oRQR4zQ8hj4rxRs",
+    "types": [
+     "fine_dining_restaurant",
+     "restaurant",
+     "point_of_interest",
+     "food",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0522 2633",
+    "internationalPhoneNumber": "+30 21 0522 2633",
+    "formattedAddress": "Meg. Alexandrou 57, Athina 104 35, Greece",
+    "location": {
+     "latitude": 37.9830778,
+     "longitude": 23.7177722
+    },
+    "websiteUri": "http://www.aleria.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Aleria Restaurant",
+     "languageCode": "en"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 17
+   }
+  ]
+ },
+ "rest_4001": {
+  "name": "Botrini's",
+  "kind": "restaurant",
+  "query": "Botrini's Athens Greece",
+  "lat": 38.0232617,
+  "lon": 23.7936937,
+  "candidates": [
+   {
+    "id": "ChIJ2x4_mPaYoRQRi8YGpT4_wIo",
+    "types": [
+     "fine_dining_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0685 7323",
+    "internationalPhoneNumber": "+30 21 0685 7323",
+    "formattedAddress": "Leof. Vasileos Georgiou B 24B, Athina 152 33, Greece",
+    "location": {
+     "latitude": 38.0234331,
+     "longitude": 23.7936733
+    },
+    "websiteUri": "http://www.botrinis.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Botrini's Restaurant Athens",
+     "languageCode": "en"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 19
+   }
+  ]
+ },
+ "rest_4002": {
+  "name": "Botrini's Santorini",
+  "kind": "restaurant",
+  "query": "Botrini's Santorini Santorini Greece",
+  "lat": 36.4620651,
+  "lon": 25.3823755,
+  "candidates": [
+   {
+    "id": "ChIJM9F4K8nNmRQR1jOsppMDvFc",
+    "types": [
+     "fine_dining_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 186654",
+    "internationalPhoneNumber": "+30 2286 186654",
+    "formattedAddress": "Main Street, Νικ. Νομικού, Οία 847 02, Greece",
+    "location": {
+     "latitude": 36.462015799999996,
+     "longitude": 25.3825437
+    },
+    "websiteUri": "https://botrinissantorini.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Botrini's Santorini",
+     "languageCode": "en"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 16
+   }
+  ]
+ },
+ "rest_4003": {
+  "name": "CTC Urban Gastronomy",
+  "kind": "restaurant",
+  "query": "CTC Urban Gastronomy Athens Greece",
+  "lat": 37.9804964,
+  "lon": 23.7168694,
+  "candidates": [
+   {
+    "id": "ChIJ9WOIj1y9oRQRlzRu3DA1rHw",
+    "types": [
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0722 8812",
+    "internationalPhoneNumber": "+30 21 0722 8812",
+    "formattedAddress": "Plateon 15, Athina 104 35, Greece",
+    "location": {
+     "latitude": 37.9804945,
+     "longitude": 23.7168896
+    },
+    "websiteUri": "http://www.ctc-restaurant.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "CTC Urban Gastronomy",
+     "languageCode": "en"
+    },
+    "primaryType": "restaurant",
+    "distance_m": 2
+   }
+  ]
+ },
+ "rest_4004": {
+  "name": "Delta",
+  "kind": "restaurant",
+  "query": "Delta Athens Greece",
+  "lat": 37.9391772,
+  "lon": 23.6913453,
+  "candidates": [
+   {
+    "id": "ChIJPSgVfVa9oRQRwZ4mJ5kITvQ",
+    "types": [
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "698 665 7553",
+    "internationalPhoneNumber": "+30 698 665 7553",
+    "formattedAddress": "Leof. Andrea Siggrou 364, Athina 176 74, Greece",
+    "location": {
+     "latitude": 37.9390808,
+     "longitude": 23.6914694
+    },
+    "websiteUri": "https://deltarestaurant.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Delta Restaurant",
+     "languageCode": "en"
+    },
+    "primaryType": "restaurant",
+    "distance_m": 15
+   }
+  ]
+ },
+ "rest_4005": {
+  "name": "Hervé",
+  "kind": "restaurant",
+  "query": "Hervé Athens Greece",
+  "lat": 37.9666571,
+  "lon": 23.7093681,
+  "candidates": [
+   {
+    "id": "ChIJC_jIHhe9oRQRww-ZA41MGck",
+    "types": [
+     "fine_dining_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0347 1332",
+    "internationalPhoneNumber": "+30 21 0347 1332",
+    "formattedAddress": "Trion Ierarchon 170, Athina 118 52, Greece",
+    "location": {
+     "latitude": 37.9667062,
+     "longitude": 23.7093613
+    },
+    "websiteUri": "http://www.herve-restaurant.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Herve Restaurant",
+     "languageCode": "el"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 5
+   }
+  ]
+ },
+ "rest_4006": {
+  "name": "Hytra",
+  "kind": "restaurant",
+  "query": "Hytra Athens Greece",
+  "lat": 37.9813817,
+  "lon": 23.7528491,
+  "candidates": [
+   {
+    "id": "ChIJdTdlpiqjoRQRIk7Wh7FYGBY",
+    "types": [
+     "restaurant",
+     "point_of_interest",
+     "food",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0331 6767",
+    "internationalPhoneNumber": "+30 21 0331 6767",
+    "formattedAddress": "1, Petrou Kokkali STR, Athina 115 21, Greece",
+    "location": {
+     "latitude": 37.9815438,
+     "longitude": 23.7529091
+    },
+    "websiteUri": "https://www.hytra.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Hytra Restaurant & Bar",
+     "languageCode": "en"
+    },
+    "primaryType": "restaurant",
+    "distance_m": 19
+   }
+  ]
+ },
+ "rest_4007": {
+  "name": "Lauda",
+  "kind": "restaurant",
+  "query": "Lauda Santorini Greece",
+  "lat": 36.4620283,
+  "lon": 25.3788314,
+  "candidates": [
+   {
+    "id": "ChIJL3_uDoDLmRQR1WeebhTH6h4",
+    "types": [
+     "fine_dining_restaurant",
+     "bed_and_breakfast",
+     "mediterranean_restaurant",
+     "lodging",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 186696",
+    "internationalPhoneNumber": "+30 2286 186696",
+    "formattedAddress": "Oia 847 02, Greece",
+    "location": {
+     "latitude": 36.4619536,
+     "longitude": 25.377938699999998
+    },
+    "websiteUri": "https://www.laudarestaurant.com/?utm_source=gmb&utm_medium=website&utm_campaign=gmb_lauda_tracking",
+    "businessStatus": "CLOSED_TEMPORARILY",
+    "displayName": {
+     "text": "Lauda Restaurant",
+     "languageCode": "en"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 80
+   }
+  ]
+ },
+ "rest_4008": {
+  "name": "Lycabettus",
+  "kind": "restaurant",
+  "query": "Lycabettus Santorini Greece",
+  "lat": 36.4618789,
+  "lon": 25.3798595,
+  "candidates": [
+   {
+    "id": "ChIJSaGl53_MmRQRhSuGOOS_UXU",
+    "types": [
+     "fine_dining_restaurant",
+     "greek_restaurant",
+     "mediterranean_restaurant",
+     "european_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 186602",
+    "internationalPhoneNumber": "+30 2286 186602",
+    "formattedAddress": "Nik. Nomikou, Oía 847 02, Greece",
+    "location": {
+     "latitude": 36.462097,
+     "longitude": 25.379910499999998
+    },
+    "websiteUri": "https://www.lycabettusrestaurant.com/",
+    "businessStatus": "CLOSED_TEMPORARILY",
+    "displayName": {
+     "text": "Lycabettus Restaurant",
+     "languageCode": "en"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 25
+   }
+  ]
+ },
+ "rest_4009": {
+  "name": "Makris Athens",
+  "kind": "restaurant",
+  "query": "Makris Athens Athens Greece",
+  "lat": 37.9767678,
+  "lon": 23.7230301,
+  "candidates": [
+   {
+    "id": "ChIJbSeMEYC9oRQR6v8p_yhQWOk",
+    "types": [
+     "fine_dining_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 6004 7777",
+    "internationalPhoneNumber": "+30 21 6004 7777",
+    "formattedAddress": "Astiggos 10, Ermou 119, Athina 105 55, Greece",
+    "location": {
+     "latitude": 37.9767575,
+     "longitude": 23.7228835
+    },
+    "websiteUri": "https://makrisathens.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Makris Athens Restaurant",
+     "languageCode": "en"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 13
+   }
+  ]
+ },
+ "rest_4010": {
+  "name": "Patio",
+  "kind": "restaurant",
+  "query": "Patio Athens Greece",
+  "lat": 37.8138188,
+  "lon": 23.7736533,
+  "candidates": [
+   {
+    "id": "ChIJUyfI9a_qoRQRRXvofx5C8ys",
+    "types": [
+     "mediterranean_restaurant",
+     "restaurant",
+     "point_of_interest",
+     "food",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0892 9160",
+    "internationalPhoneNumber": "+30 21 0892 9160",
+    "formattedAddress": "Litous 11, Vouliagmeni 166 71, Greece",
+    "location": {
+     "latitude": 37.8137123,
+     "longitude": 23.7740108
+    },
+    "websiteUri": "http://www.patio.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Patio at The Margi",
+     "languageCode": "en"
+    },
+    "primaryType": "mediterranean_restaurant",
+    "distance_m": 34
+   }
+  ]
+ },
+ "rest_4011": {
+  "name": "Pelagos",
+  "kind": "restaurant",
+  "query": "Pelagos Athens Greece",
+  "lat": 37.8058168,
+  "lon": 23.7722339,
+  "candidates": [
+   {
+    "id": "ChIJYT2q81TroRQRkJ2kcTN5qLc",
+    "types": [
+     "mediterranean_restaurant",
+     "fine_dining_restaurant",
+     "greek_restaurant",
+     "seafood_restaurant",
+     "european_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0890 1192",
+    "internationalPhoneNumber": "+30 21 0890 1192",
+    "formattedAddress": "Apollonos 40, Vouliagmeni 166 71, Greece",
+    "location": {
+     "latitude": 37.8050937,
+     "longitude": 23.7706522
+    },
+    "websiteUri": "https://www.pelagosathens.com/?utm_source=google&utm_medium=organicsearch&utm_campaign=tor-apl-fab-mid-seo-na&utm_content=na-na&utm_term=na",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Pelagos",
+     "languageCode": "en"
+    },
+    "primaryType": "mediterranean_restaurant",
+    "distance_m": 161
+   }
+  ]
+ },
+ "rest_4012": {
+  "name": "see|ds",
+  "kind": "restaurant",
+  "query": "see|ds Athens Greece",
+  "lat": 37.9730101,
+  "lon": 23.753633,
+  "candidates": [
+   {
+    "id": "ChIJnSg26Me9oRQRRtN-iaEc5dM",
+    "types": [
+     "fine_dining_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0723 5116",
+    "internationalPhoneNumber": "+30 21 0723 5116",
+    "formattedAddress": "Oumplianis 14, Diocharous 27, 16121, Athina 161 21, Greece",
+    "location": {
+     "latitude": 37.973038599999995,
+     "longitude": 23.753789200000003
+    },
+    "websiteUri": "http://www.seedsrestaurant.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Seeds Restaurant",
+     "languageCode": "el"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 14
+   },
+   {
+    "id": "ChIJlTtL4mi9oRQRKp__ai7U2A4",
+    "types": [
+     "bar",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "694 201 7057",
+    "internationalPhoneNumber": "+30 694 201 7057",
+    "formattedAddress": "Frinis 25, Athina 116 33, Greece",
+    "location": {
+     "latitude": 37.9659731,
+     "longitude": 23.748709899999998
+    },
+    "websiteUri": "https://www.facebook.com/SEE-YOU-193953224076309/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "See you bar",
+     "languageCode": "en"
+    },
+    "primaryType": "bar",
+    "distance_m": 894
+   },
+   {
+    "id": "ChIJT_-Ltrq8oRQR21ey4cE97To",
+    "types": [
+     "womens_clothing_store",
+     "clothing_store",
+     "store",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 3034 5494",
+    "internationalPhoneNumber": "+30 21 3034 5494",
+    "formattedAddress": "Smirnis 30, Egaleo 122 42, Greece",
+    "location": {
+     "latitude": 37.9927016,
+     "longitude": 23.6802776
+    },
+    "websiteUri": "https://www.facebook.com/DandSboutique",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "D&S Boutique",
+     "languageCode": "en"
+    },
+    "primaryType": "womens_clothing_store",
+    "distance_m": 6792
+   },
+   {
+    "id": "ChIJnxENjOeYoRQRS9mH4beX66A",
+    "types": [
+     "corporate_office",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0956 8191",
+    "internationalPhoneNumber": "+30 21 0956 8191",
+    "formattedAddress": "Leof. Kifisias 32, Marousi 151 25, Greece",
+    "location": {
+     "latitude": 38.0379814,
+     "longitude": 23.800910299999998
+    },
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "DS Smith Hellas S.A",
+     "languageCode": "en"
+    },
+    "primaryType": "corporate_office",
+    "distance_m": 8328
+   },
+   {
+    "id": "ChIJ90VTN6i9oRQRHbWfRnKBIjs",
+    "types": [
+     "car_repair",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0901 8900",
+    "internationalPhoneNumber": "+30 21 0901 8900",
+    "formattedAddress": "Mpaknana 45Α, Athina 117 44, Greece",
+    "location": {
+     "latitude": 37.9531765,
+     "longitude": 23.7257085
+    },
+    "websiteUri": "https://dsservice.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "DS Service",
+     "languageCode": "el"
+    },
+    "primaryType": "car_repair",
+    "distance_m": 3295
+   }
+  ]
+ },
+ "rest_4013": {
+  "name": "Selene",
+  "kind": "restaurant",
+  "query": "Selene Santorini Greece",
+  "lat": 36.4199127,
+  "lon": 25.4322473,
+  "candidates": [
+   {
+    "id": "ChIJX8E34kPPmRQRuP0FvNTwPMg",
+    "types": [
+     "fine_dining_restaurant",
+     "greek_restaurant",
+     "mediterranean_restaurant",
+     "european_restaurant",
+     "place_of_worship",
+     "association_or_organization",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 022249",
+    "internationalPhoneNumber": "+30 2286 022249",
+    "formattedAddress": "Old catholic monastery, Φηρά 847 00, Greece",
+    "location": {
+     "latitude": 36.4214959,
+     "longitude": 25.4307765
+    },
+    "websiteUri": "https://selene.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Selene Restaurant",
+     "languageCode": "el"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 220
+   }
+  ]
+ },
+ "rest_4014": {
+  "name": "SENSE",
+  "kind": "restaurant",
+  "query": "SENSE Athens Greece",
+  "lat": 37.9694381,
+  "lon": 23.730856,
+  "candidates": [
+   {
+    "id": "ChIJw_8i4Ra9oRQRFt_sV82wg_M",
+    "types": [
+     "fine_dining_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0920 0240",
+    "internationalPhoneNumber": "+30 21 0920 0240",
+    "formattedAddress": "Dionysiou Areopagitou 5, Athina 117 42, Greece",
+    "location": {
+     "latitude": 37.9697023,
+     "longitude": 23.730838199999997
+    },
+    "websiteUri": "https://www.senserestaurants.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Sense Rooftop Restaurant",
+     "languageCode": "en"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 29
+   }
+  ]
+ },
+ "rest_4015": {
+  "name": "Simul",
+  "kind": "restaurant",
+  "query": "Simul Athens Greece",
+  "lat": 37.9778519,
+  "lon": 23.7504729,
+  "candidates": [
+   {
+    "id": "ChIJl8iORkW9oRQR9xzJXeL2tRY",
+    "types": [
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0722 4737",
+    "internationalPhoneNumber": "+30 21 0722 4737",
+    "formattedAddress": "Ipsilantou 63, Athina 115 21, Greece",
+    "location": {
+     "latitude": 37.9779176,
+     "longitude": 23.7504271
+    },
+    "websiteUri": "http://www.simul.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Simul",
+     "languageCode": "en"
+    },
+    "primaryType": "restaurant",
+    "distance_m": 8
+   }
+  ]
+ },
+ "rest_4016": {
+  "name": "Soil",
+  "kind": "restaurant",
+  "query": "Soil Athens Greece",
+  "lat": 37.9669545,
+  "lon": 23.7429946,
+  "candidates": [
+   {
+    "id": "ChIJr9_aRfm9oRQRWj0x3vCftJE",
+    "types": [
+     "fine_dining_restaurant",
+     "bar",
+     "restaurant",
+     "point_of_interest",
+     "food",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0751 3505",
+    "internationalPhoneNumber": "+30 21 0751 3505",
+    "formattedAddress": "Ferekidou 5, Athina 116 35, Greece",
+    "location": {
+     "latitude": 37.966958,
+     "longitude": 23.743067200000002
+    },
+    "websiteUri": "https://www.soilrestaurant.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Soil restaurant",
+     "languageCode": "en"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 6
+   }
+  ]
+ },
+ "rest_4017": {
+  "name": "Spondi",
+  "kind": "restaurant",
+  "query": "Spondi Athens Greece",
+  "lat": 37.965176,
+  "lon": 23.7431892,
+  "candidates": [
+   {
+    "id": "ChIJ87zFe2y9oRQR_ryfDQ9QfNI",
+    "types": [
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0756 4021",
+    "internationalPhoneNumber": "+30 21 0756 4021",
+    "formattedAddress": "Pirronos 5, Athina 116 36, Greece",
+    "location": {
+     "latitude": 37.9651249,
+     "longitude": 23.7430485
+    },
+    "websiteUri": "http://www.spondi.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Spondi Restaurant",
+     "languageCode": "en"
+    },
+    "primaryType": "restaurant",
+    "distance_m": 14
+   }
+  ]
+ },
+ "rest_4018": {
+  "name": "The Zillers Rooftop Gastronomy",
+  "kind": "restaurant",
+  "query": "The Zillers Rooftop Gastronomy Athens Greece",
+  "lat": 37.9757055,
+  "lon": 23.7294908,
+  "candidates": [
+   {
+    "id": "ChIJy9tfHD29oRQRAg79vioVVZ4",
+    "types": [
+     "greek_restaurant",
+     "mediterranean_restaurant",
+     "european_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0322 2277",
+    "internationalPhoneNumber": "+30 21 0322 2277",
+    "formattedAddress": "Mitropoleos 54, Athina 105 63, Greece",
+    "location": {
+     "latitude": 37.9756102,
+     "longitude": 23.7296192
+    },
+    "websiteUri": "https://thezillersathens.com/rooftop-gastronomy/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "The Zillers Rooftop Gastronomy",
+     "languageCode": "en"
+    },
+    "primaryType": "greek_restaurant",
+    "distance_m": 15
+   }
+  ]
+ },
+ "rest_4019": {
+  "name": "Tudor Hall",
+  "kind": "restaurant",
+  "query": "Tudor Hall Athens Greece",
+  "lat": 37.9762726,
+  "lon": 23.7349168,
+  "candidates": [
+   {
+    "id": "ChIJYdVsvz69oRQRiiL1z2qIbw8",
+    "types": [
+     "fine_dining_restaurant",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0333 0265",
+    "internationalPhoneNumber": "+30 21 0333 0265",
+    "formattedAddress": "Geor. A' 3, Athina 105 64, Greece",
+    "location": {
+     "latitude": 37.976265,
+     "longitude": 23.734921000000003
+    },
+    "websiteUri": "https://www.tudorhall.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Tudor Hall",
+     "languageCode": "en"
+    },
+    "primaryType": "fine_dining_restaurant",
+    "distance_m": 1
+   }
+  ]
+ },
+ "hotel_3000": {
+  "name": "Acro Suites",
+  "kind": "hotel",
+  "query": "Acro Suites Crete Greece",
+  "lat": 35.419164,
+  "lon": 25.018141,
+  "candidates": [
+   {
+    "id": "ChIJk0qkX5NRmhQRk-r2ZnIKxf4",
+    "types": [
+     "hotel",
+     "gym",
+     "lodging",
+     "spa",
+     "sports_activity_location",
+     "health",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "281 081 2240",
+    "internationalPhoneNumber": "+30 281 081 2240",
+    "formattedAddress": "Mononaftis, Ag. Pelagia 715 00, Greece",
+    "location": {
+     "latitude": 35.4191643,
+     "longitude": 25.018140799999998
+    },
+    "websiteUri": "http://www.acrosuites.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Acro Suites, an SLH Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3001": {
+  "name": "ALBERGO GELSOMINO",
+  "kind": "hotel",
+  "query": "ALBERGO GELSOMINO Kos Greece",
+  "lat": 36.893744,
+  "lon": 27.293001,
+  "candidates": [
+   {
+    "id": "ChIJyRGVOOAOvhQROs6mNp1zhB0",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2242 020200",
+    "internationalPhoneNumber": "+30 2242 020200",
+    "formattedAddress": "1 Vas. Georgiou, 85300, Kos 853 00, Greece",
+    "location": {
+     "latitude": 36.8937479,
+     "longitude": 27.2930417
+    },
+    "websiteUri": "https://www.gelsominohotel.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Albergo Gelsomino Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 4
+   }
+  ]
+ },
+ "hotel_3002": {
+  "name": "Amanzoe",
+  "kind": "hotel",
+  "query": "Amanzoe Kranidi Greece",
+  "lat": 37.370547,
+  "lon": 23.11747,
+  "candidates": [
+   {
+    "id": "ChIJD9XVrpqWnxQRVZS4ikgSrgk",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2754 772888",
+    "internationalPhoneNumber": "+30 2754 772888",
+    "formattedAddress": "Agios Panteleimonas,Kranidi,213 00, Kranidi 213 00, Greece",
+    "location": {
+     "latitude": 37.3705299,
+     "longitude": 23.117464599999998
+    },
+    "websiteUri": "http://www.aman.com/resorts/amanzoe?utm_source=Google&utm_medium=Yext&y_source=1_MTU3MDczODEtNzE1LWxvY2F0aW9uLndlYnNpdGU%3D",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Amanzoe",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 2
+   }
+  ]
+ },
+ "hotel_3003": {
+  "name": "Ammades All Suites Beach Hotel & Spa - Adults Only",
+  "kind": "hotel",
+  "query": "Ammades All Suites Beach Hotel & Spa - Adults Only Rhodes Greece",
+  "lat": 36.35742,
+  "lon": 28.21104,
+  "candidates": [
+   {
+    "id": "ChIJw8LhsJxnlRQR86iTEDus2t0",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2241 084190",
+    "internationalPhoneNumber": "+30 2241 084190",
+    "formattedAddress": "Leof. Kallitheas, Faliraki 851 00, Greece",
+    "location": {
+     "latitude": 36.3574024,
+     "longitude": 28.211125799999998
+    },
+    "websiteUri": "https://www.esperiagroup.gr/en/hotels/ammades-all-suites-beach-hotel-adults-only/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Ammades All Suites Beach Hotel & Spa - Adults Only",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 8
+   }
+  ]
+ },
+ "hotel_3004": {
+  "name": "Amyth of Mykonos Agios Stefanos",
+  "kind": "hotel",
+  "query": "Amyth of Mykonos Agios Stefanos Mykonos Greece",
+  "lat": 37.47084,
+  "lon": 25.32143,
+  "candidates": [
+   {
+    "id": "ChIJ3Ri1pZW_ohQRlJ-yrasau0A",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 077205",
+    "internationalPhoneNumber": "+30 2289 077205",
+    "formattedAddress": "Agios Stefanos 846 00, Greece",
+    "location": {
+     "latitude": 37.470917299999996,
+     "longitude": 25.3213838
+    },
+    "websiteUri": "http://www.amythhotels.com/mykonos/agios-stefanos",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Amyth of Mykonos Agios Stefanos",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 10
+   }
+  ]
+ },
+ "hotel_3005": {
+  "name": "Andronis Arcadia",
+  "kind": "hotel",
+  "query": "Andronis Arcadia Santorini Greece",
+  "lat": 36.464098,
+  "lon": 25.375455,
+  "candidates": [
+   {
+    "id": "ChIJnQoxoZLLmRQRtV6396WW4qM",
+    "types": [
+     "hotel",
+     "lodging",
+     "spa",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 027392",
+    "internationalPhoneNumber": "+30 2286 027392",
+    "formattedAddress": "Oia 847 02, Greece",
+    "location": {
+     "latitude": 36.4638535,
+     "longitude": 25.3754249
+    },
+    "websiteUri": "https://www.andronis.com/hotels/andronis-arcadia/?utm_source=gmb%20listing&utm_medium=gmb&utm_campaign=google_my_business",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Andronis Arcadia",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 27
+   }
+  ]
+ },
+ "hotel_3006": {
+  "name": "Andronis Concept",
+  "kind": "hotel",
+  "query": "Andronis Concept Santorini Greece",
+  "lat": 36.43883,
+  "lon": 25.425388,
+  "candidates": [
+   {
+    "id": "ChIJ4xk7jEzMmRQRW8rk7P7TXtQ",
+    "types": [
+     "hotel",
+     "lodging",
+     "spa",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 036738",
+    "internationalPhoneNumber": "+30 2286 036738",
+    "formattedAddress": "Epar.Od. Firon-Ias, Thira 847 00, Greece",
+    "location": {
+     "latitude": 36.438075999999995,
+     "longitude": 25.4239616
+    },
+    "websiteUri": "https://www.andronis.com/hotels/andronis-concept/?utm_source=gmb%20listing&utm_medium=gmb&utm_campaign=google_my_business",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Andronis Concept",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 153
+   }
+  ]
+ },
+ "hotel_3007": {
+  "name": "Andronis Minois",
+  "kind": "hotel",
+  "query": "Andronis Minois Paros Greece",
+  "lat": 37.069252,
+  "lon": 25.124369,
+  "candidates": [
+   {
+    "id": "ChIJJXuhXQRxmBQRVjHE_QkTJpg",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2284 022435",
+    "internationalPhoneNumber": "+30 2284 022435",
+    "formattedAddress": "Parasporos beach, Paros Island 844 00, Greece",
+    "location": {
+     "latitude": 37.069252,
+     "longitude": 25.124368999999998
+    },
+    "websiteUri": "https://www.andronis.com/hotels/andronis-minois/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Andronis Minois, an SLH Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3008": {
+  "name": "Anthology of Athens",
+  "kind": "hotel",
+  "query": "Anthology of Athens Athens Greece",
+  "lat": 37.96949,
+  "lon": 23.7314,
+  "candidates": [
+   {
+    "id": "ChIJ8QNM7WW9oRQRJ1VY14-SwyU",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 1103 4800",
+    "internationalPhoneNumber": "+30 21 1103 4800",
+    "formattedAddress": "Leof. Andrea Siggrou 4, Athina 117 42, Greece",
+    "location": {
+     "latitude": 37.9693908,
+     "longitude": 23.7313817
+    },
+    "websiteUri": "https://www.anthologyofathens.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Anthology of Athens member of The Leading Hotels of the World",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 11
+   }
+  ]
+ },
+ "hotel_3009": {
+  "name": "Argini Syros",
+  "kind": "hotel",
+  "query": "Argini Syros Syros Greece",
+  "lat": 37.4456,
+  "lon": 24.94474,
+  "candidates": [
+   {
+    "id": "ChIJd-vcaVOIohQRuEfPz2lQU1M",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2281 089022",
+    "internationalPhoneNumber": "+30 2281 089022",
+    "formattedAddress": "Apollonos 11, Ermoupoli 841 00, Greece",
+    "location": {
+     "latitude": 37.445688499999996,
+     "longitude": 24.944748999999998
+    },
+    "websiteUri": "http://www.arginisyros.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Argini Syros",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 10
+   }
+  ]
+ },
+ "hotel_3010": {
+  "name": "Aristi Mountain Resort",
+  "kind": "hotel",
+  "query": "Aristi Mountain Resort Zagori Greece",
+  "lat": 39.933706,
+  "lon": 20.670278,
+  "candidates": [
+   {
+    "id": "ChIJU0Xmpf61WxMR5eJQb958r_A",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2653 041330",
+    "internationalPhoneNumber": "+30 2653 041330",
+    "formattedAddress": "Aristi 440 04, Greece",
+    "location": {
+     "latitude": 39.933706300000004,
+     "longitude": 20.6702782
+    },
+    "websiteUri": "http://www.aristi.eu/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Aristi Mountain Resort Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "lodging",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3011": {
+  "name": "Aristide Hotel",
+  "kind": "hotel",
+  "query": "Aristide Hotel Syros Greece",
+  "lat": 37.4478,
+  "lon": 24.94716,
+  "candidates": [
+   {
+    "id": "ChIJuf5pUv6JohQRMEnWp9IYJug",
+    "types": [
+     "hotel",
+     "lodging",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "698 662 4881",
+    "internationalPhoneNumber": "+30 698 662 4881",
+    "formattedAddress": "Mpampagiwtou 27, Ermoupoli 841 00, Greece",
+    "location": {
+     "latitude": 37.447894,
+     "longitude": 24.947168899999998
+    },
+    "websiteUri": "https://www.hotelaristide.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Aristide Hotel, an SLH Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 10
+   }
+  ]
+ },
+ "hotel_3012": {
+  "name": "Bellonias Villas",
+  "kind": "hotel",
+  "query": "Bellonias Villas Santorini Greece",
+  "lat": 36.373591,
+  "lon": 25.483228,
+  "candidates": [
+   {
+    "id": "ChIJX7AvYVc_mBQR6Fb99QD-6VA",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 031138",
+    "internationalPhoneNumber": "+30 2286 031138",
+    "formattedAddress": "Kamari Boulevard, Kamari, Santorini - Greece 847 00, Greece",
+    "location": {
+     "latitude": 36.373590799999995,
+     "longitude": 25.4832283
+    },
+    "websiteUri": "http://www.belloniasvillas.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Bellonias Villas",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3013": {
+  "name": "Boheme Mykonos Town",
+  "kind": "hotel",
+  "query": "Boheme Mykonos Town Mykonos Greece",
+  "lat": 37.439027,
+  "lon": 25.330016,
+  "candidates": [
+   {
+    "id": "ChIJdbO6RVW-ohQRxId6EnLVn4E",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 077722",
+    "internationalPhoneNumber": "+30 2289 077722",
+    "formattedAddress": "Mykonos Town, Mikonos 846 00, Greece",
+    "location": {
+     "latitude": 37.4390271,
+     "longitude": 25.3300165
+    },
+    "websiteUri": "https://www.bohememykonos.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Boheme Mykonos",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3014": {
+  "name": "Cali Mykonos",
+  "kind": "hotel",
+  "query": "Cali Mykonos Mykonos Greece",
+  "lat": 37.443873,
+  "lon": 25.422351,
+  "candidates": [
+   {
+    "id": "ChIJWfVgv0u5ohQRsh7aK8q9Agw",
+    "types": [
+     "hotel",
+     "lodging",
+     "spa",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 1100 0022",
+    "internationalPhoneNumber": "+30 21 1100 0022",
+    "formattedAddress": "Mykonos 846 00, Greece",
+    "location": {
+     "latitude": 37.442944499999996,
+     "longitude": 25.4258484
+    },
+    "websiteUri": "https://www.calimykonos.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Cali Mykonos",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 326
+   }
+  ]
+ },
+ "hotel_3015": {
+  "name": "Canaves Epitome",
+  "kind": "hotel",
+  "query": "Canaves Epitome Santorini Greece",
+  "lat": 36.463639,
+  "lon": 25.371107,
+  "candidates": [
+   {
+    "id": "ChIJeRpcd4LLmRQRVWxVFYJRZ9k",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 072499",
+    "internationalPhoneNumber": "+30 2286 072499",
+    "formattedAddress": "Main Street, Oía 847 02, Greece",
+    "location": {
+     "latitude": 36.4636385,
+     "longitude": 25.3711066
+    },
+    "websiteUri": "https://canaves.com/canaves-oia-epitome/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Canaves Epitome",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3016": {
+  "name": "Canaves Sunday",
+  "kind": "hotel",
+  "query": "Canaves Sunday Santorini Greece",
+  "lat": 36.461787,
+  "lon": 25.378908,
+  "candidates": [
+   {
+    "id": "ChIJP2YAnLHNmRQRYvLDdv0eDrI",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 072238",
+    "internationalPhoneNumber": "+30 2286 072238",
+    "formattedAddress": "Main Street, Oía 847 02, Greece",
+    "location": {
+     "latitude": 36.461787199999996,
+     "longitude": 25.3789083
+    },
+    "websiteUri": "https://canaves.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Canaves Sunday",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3017": {
+  "name": "Contessina Suites & Spa",
+  "kind": "hotel",
+  "query": "Contessina Suites & Spa Zakynthos Greece",
+  "lat": 37.816921,
+  "lon": 20.867096,
+  "candidates": [
+   {
+    "id": "ChIJaRLosKJHZxMRHEbNI6vDweI",
+    "types": [
+     "hotel",
+     "lodging",
+     "spa",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2695 022700",
+    "internationalPhoneNumber": "+30 2695 022700",
+    "formattedAddress": "Tsilivi, Πλάνος 291 00, Greece",
+    "location": {
+     "latitude": 37.816921199999996,
+     "longitude": 20.8670959
+    },
+    "websiteUri": "http://contessinacollection.com/contessinasuitesnspa",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Contessina Suites and Spa",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3018": {
+  "name": "Cove Paros",
+  "kind": "hotel",
+  "query": "Cove Paros Paros Greece",
+  "lat": 37.12506,
+  "lon": 25.24733,
+  "candidates": [
+   {
+    "id": "ChIJY4Y-Nnh1mBQRuyGeMU651bg",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2284 028576",
+    "internationalPhoneNumber": "+30 2284 028576",
+    "formattedAddress": "Agioi Anargyroi, Naousa 844 01, Greece",
+    "location": {
+     "latitude": 37.123773799999995,
+     "longitude": 25.2490909
+    },
+    "websiteUri": "https://coveparos.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Cove Paros",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 212
+   }
+  ]
+ },
+ "hotel_3019": {
+  "name": "Deos Mykonos - A Myconian Collection Hotel",
+  "kind": "hotel",
+  "query": "Deos Mykonos - A Myconian Collection Hotel Mykonos Greece",
+  "lat": 37.4538794829,
+  "lon": 25.3317997299,
+  "candidates": [
+   {
+    "id": "ChIJZY6ppl2_ohQRjQHxO80zTog",
+    "types": [
+     "resort_hotel",
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 441500",
+    "internationalPhoneNumber": "+30 2289 441500",
+    "formattedAddress": "Mykonos 846 00, Greece",
+    "location": {
+     "latitude": 37.453489399999995,
+     "longitude": 25.331901199999997
+    },
+    "websiteUri": "https://www.deosmykonos.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Deos Mykonos - A Myconian Collection Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "resort_hotel",
+    "distance_m": 44
+   }
+  ]
+ },
+ "hotel_3020": {
+  "name": "Dexamenes Seaside Hotel",
+  "kind": "hotel",
+  "query": "Dexamenes Seaside Hotel Amaliada Greece",
+  "lat": 37.767592,
+  "lon": 21.296204,
+  "candidates": [
+   {
+    "id": "ChIJXe-k5Q-6YBMRdl3yBcgAcHI",
+    "types": [
+     "hotel",
+     "clothing_store",
+     "lodging",
+     "point_of_interest",
+     "store",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2622 025999",
+    "internationalPhoneNumber": "+30 2622 025999",
+    "formattedAddress": "Pedestrian of Kourouta, Kourouta 272 00, Greece",
+    "location": {
+     "latitude": 37.7678455,
+     "longitude": 21.296473499999998
+    },
+    "websiteUri": "http://www.dexamenes.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Dexamenes Seaside Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 37
+   }
+  ]
+ },
+ "hotel_3021": {
+  "name": "Domes White Coast Milos",
+  "kind": "hotel",
+  "query": "Domes White Coast Milos Milos Greece",
+  "lat": 36.74362,
+  "lon": 24.48157,
+  "candidates": [
+   {
+    "id": "ChIJjUneyFTemBQR8l8IIFjXpKE",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "231 084 0550",
+    "internationalPhoneNumber": "+30 231 084 0550",
+    "formattedAddress": "Mytakas, Pachena 848 00, Greece",
+    "location": {
+     "latitude": 36.7445297,
+     "longitude": 24.4817218
+    },
+    "websiteUri": "http://www.domesresorts.com/domeswhitecoastmilos/",
+    "businessStatus": "CLOSED_TEMPORARILY",
+    "displayName": {
+     "text": "Domes White Coast Milos",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 102
+   }
+  ]
+ },
+ "hotel_3022": {
+  "name": "Domes Zeen Chania",
+  "kind": "hotel",
+  "query": "Domes Zeen Chania Crete Greece",
+  "lat": 35.508616,
+  "lon": 23.997065,
+  "candidates": [
+   {
+    "id": "ChIJxb5H6b19nBQR6zj_RWFiuxQ",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2821 607000",
+    "internationalPhoneNumber": "+30 2821 607000",
+    "formattedAddress": "Apteron Road Parigoria, Kon/nou Paleologou, Chania 731 00, Greece",
+    "location": {
+     "latitude": 35.5085778,
+     "longitude": 23.997110199999998
+    },
+    "websiteUri": "https://www.marriott.com/en-us/hotels/chqlc-domes-zeen-chania-a-luxury-collection-resort-crete/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Domes Zeen Chania, a Luxury Collection Resort, Crete",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 6
+   }
+  ]
+ },
+ "hotel_3023": {
+  "name": "Eliamos Villas Hotel & Spa",
+  "kind": "hotel",
+  "query": "Eliamos Villas Hotel & Spa Kefalonia Greece",
+  "lat": 38.101208,
+  "lon": 20.564848,
+  "candidates": [
+   {
+    "id": "ChIJ_ycy5_NiZxMROs2xuHMORRU",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2671 171100",
+    "internationalPhoneNumber": "+30 2671 171100",
+    "formattedAddress": "Spartià 281 00, Greece",
+    "location": {
+     "latitude": 38.1012078,
+     "longitude": 20.5648482
+    },
+    "websiteUri": "https://eliamos.com/?utm_source=google&utm_medium=organic&utm_campaign=google_local_eliamos",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Eliamos Villas Hotel & Spa",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3024": {
+  "name": "Elix by Mar-Bella Collection",
+  "kind": "hotel",
+  "query": "Elix by Mar-Bella Collection Perdika Greece",
+  "lat": 39.33827,
+  "lon": 20.2908,
+  "candidates": [
+   {
+    "id": "ChIJ2_TYrZSHXBMRp8uKvC4F0FY",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2665 097000",
+    "internationalPhoneNumber": "+30 2665 097000",
+    "formattedAddress": "Παραλία, Karavostasi 461 00, Greece",
+    "location": {
+     "latitude": 39.3426042,
+     "longitude": 20.2863652
+    },
+    "websiteUri": "https://www.marbella.gr/marbella-elix/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Elix, Mar-Bella Collection",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 615
+   }
+  ]
+ },
+ "hotel_3025": {
+  "name": "ERGON House Athens",
+  "kind": "hotel",
+  "query": "ERGON House Athens Athens Greece",
+  "lat": 37.975332,
+  "lon": 23.731565,
+  "candidates": [
+   {
+    "id": "ChIJSyLizgS9oRQR2ESu_x0Qhqo",
+    "types": [
+     "greek_restaurant",
+     "butcher_shop",
+     "mediterranean_restaurant",
+     "deli",
+     "coffee_shop",
+     "cafe",
+     "hotel",
+     "lodging",
+     "grocery_store",
+     "food_store",
+     "european_restaurant",
+     "manufacturer",
+     "restaurant",
+     "food",
+     "store",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0010 9090",
+    "internationalPhoneNumber": "+30 21 0010 9090",
+    "formattedAddress": "23, Mitropoleos Street, Athina 105 57, Greece",
+    "location": {
+     "latitude": 37.9752809,
+     "longitude": 23.7315222
+    },
+    "websiteUri": "https://houses.ergonfoods.com/ergon-house-athens",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "ERGON House Athens",
+     "languageCode": "en"
+    },
+    "primaryType": "greek_restaurant",
+    "distance_m": 7
+   }
+  ]
+ },
+ "hotel_3026": {
+  "name": "Erosantorini",
+  "kind": "hotel",
+  "query": "Erosantorini Santorini Greece",
+  "lat": 36.396346,
+  "lon": 25.437805,
+  "candidates": [
+   {
+    "id": "ChIJ87JwQmXOmRQR1lDwcvfaWHQ",
+    "types": [
+     "wedding_venue",
+     "event_venue",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 036396",
+    "internationalPhoneNumber": "+30 2286 036396",
+    "formattedAddress": "Main Road, Πύργος Καλλίστης 847 00, Greece",
+    "location": {
+     "latitude": 36.3966565,
+     "longitude": 25.4381353
+    },
+    "websiteUri": "https://erosantorini.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Erosantorini",
+     "languageCode": "en"
+    },
+    "primaryType": "service",
+    "distance_m": 45
+   }
+  ]
+ },
+ "hotel_3027": {
+  "name": "Ethereum Mykonos",
+  "kind": "hotel",
+  "query": "Ethereum Mykonos Mykonos Greece",
+  "lat": 37.41675,
+  "lon": 25.33712,
+  "candidates": [
+   {
+    "id": "ChIJGzWa4FO_ohQRSvt6a8Kyq-g",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "697 285 7870",
+    "internationalPhoneNumber": "+30 697 285 7870",
+    "formattedAddress": "Psarou, Mikonos 846 00, Greece",
+    "location": {
+     "latitude": 37.4175896,
+     "longitude": 25.3378677
+    },
+    "websiteUri": "https://ethereummykonos.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Ethereum Mykonos",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 114
+   }
+  ]
+ },
+ "hotel_716": {
+  "name": "Four Seasons Astir Palace Hotel Athens",
+  "kind": "hotel",
+  "query": "Four Seasons Astir Palace Hotel Athens Athens Greece",
+  "lat": 37.80483,
+  "lon": 23.77166,
+  "candidates": [
+   {
+    "id": "ChIJKwqn-87roRQRo5RKNIcMG64",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "extended_stay_hotel",
+     "wedding_venue",
+     "lodging",
+     "wellness_center",
+     "spa",
+     "event_venue",
+     "health",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0890 1000",
+    "internationalPhoneNumber": "+30 21 0890 1000",
+    "formattedAddress": "Apollonos 40, Vouliagmeni 166 71, Greece",
+    "location": {
+     "latitude": 37.805205,
+     "longitude": 23.77115
+    },
+    "websiteUri": "https://www.fourseasons.com/athens/?utm_source=google&utm_medium=organicsearch&utm_campaign=tor-apl-hre-mid-seo-na&utm_content=na-na&utm_term=na",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Four Seasons Astir Palace Hotel Athens",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 61
+   }
+  ]
+ },
+ "hotel_3028": {
+  "name": "Grace Hotel, Auberge Collection",
+  "kind": "hotel",
+  "query": "Grace Hotel, Auberge Collection Santorini Greece",
+  "lat": 36.432963,
+  "lon": 25.421019,
+  "candidates": [
+   {
+    "id": "ChIJEVOuZUrMmRQRCWhII1hHD68",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 021300",
+    "internationalPhoneNumber": "+30 2286 021300",
+    "formattedAddress": "Imerovigli 847 00, Greece",
+    "location": {
+     "latitude": 36.432955799999995,
+     "longitude": 25.420961499999997
+    },
+    "websiteUri": "https://auberge.com/grace-hotel/?utm_source=gmb&utm_medium=Yext",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Grace Hotel, Auberge Collection",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 5
+   }
+  ]
+ },
+ "hotel_3029": {
+  "name": "Hotel Grande Bretagne",
+  "kind": "hotel",
+  "query": "Hotel Grande Bretagne Athens Greece",
+  "lat": 37.976223,
+  "lon": 23.735294,
+  "candidates": [
+   {
+    "id": "ChIJgSMyRUu9oRQRS9UFR1xmJrE",
+    "types": [
+     "hotel",
+     "wedding_venue",
+     "lodging",
+     "event_venue",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0333 0000",
+    "internationalPhoneNumber": "+30 21 0333 0000",
+    "formattedAddress": "1 Vasileos Georgiou A, Syntagma Square Str, Athina 105 64, Greece",
+    "location": {
+     "latitude": 37.976178,
+     "longitude": 23.7353123
+    },
+    "websiteUri": "https://www.marriott.com/en-us/hotels/athlc-hotel-grande-bretagne-a-luxury-collection-hotel-athens/overview/?scid=f2ae0541-1279-4f24-b197-a979c79310b0",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Hotel Grande Bretagne",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 5
+   }
+  ]
+ },
+ "hotel_3030": {
+  "name": "Istoria Hotel",
+  "kind": "hotel",
+  "query": "Istoria Hotel Santorini Greece",
+  "lat": 36.3463816062,
+  "lon": 25.4652195387,
+  "candidates": [
+   {
+    "id": "ChIJEf_lXyrQmRQRElusBegQRMU",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 085051",
+    "internationalPhoneNumber": "+30 2286 085051",
+    "formattedAddress": "Perissa 847 03, Greece",
+    "location": {
+     "latitude": 36.3464162,
+     "longitude": 25.465241
+    },
+    "websiteUri": "https://istoriahotel.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Istoria Beach, a Member of Design Hotels, Santorini",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 4
+   }
+  ]
+ },
+ "hotel_3031": {
+  "name": "Kalesma Mykonos",
+  "kind": "hotel",
+  "query": "Kalesma Mykonos Mykonos Greece",
+  "lat": 37.41599,
+  "lon": 25.315732,
+  "candidates": [
+   {
+    "id": "ChIJL44t-m6-ohQR1rTQLjFdunE",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 077222",
+    "internationalPhoneNumber": "+30 2289 077222",
+    "formattedAddress": "Aleomandra, Mykonos, Mikonos 846 00, Greece",
+    "location": {
+     "latitude": 37.415990099999995,
+     "longitude": 25.3157317
+    },
+    "websiteUri": "http://www.kalesmamykonos.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Kalesma Mykonos",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3032": {
+  "name": "Kamares Boutique Hotel",
+  "kind": "hotel",
+  "query": "Kamares Boutique Hotel Ioannina Greece",
+  "lat": 39.6677,
+  "lon": 20.858,
+  "candidates": [
+   {
+    "id": "ChIJ8XsBRrrpWxMR3XA8RnkFgic",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2651 074120",
+    "internationalPhoneNumber": "+30 2651 074120",
+    "formattedAddress": "Zalokosta 74, Ioannina 452 21, Greece",
+    "location": {
+     "latitude": 39.668054399999995,
+     "longitude": 20.857694499999997
+    },
+    "websiteUri": "https://hotelkamares.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "KAMARES Historic Boutique Hotel & Spa | Ioannina",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 47
+   }
+  ]
+ },
+ "hotel_3033": {
+  "name": "Kapsaliana Village Hotel",
+  "kind": "hotel",
+  "query": "Kapsaliana Village Hotel Crete Greece",
+  "lat": 35.33948,
+  "lon": 24.62012,
+  "candidates": [
+   {
+    "id": "ChIJ2Xb-QIoJmxQRYmx0lJb6jf8",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2831 083400",
+    "internationalPhoneNumber": "+30 2831 083400",
+    "formattedAddress": "ΚΑΨΑΛΙΑΝΑ 0, Kapsaliana 741 50, Greece",
+    "location": {
+     "latitude": 35.3394852,
+     "longitude": 24.6201675
+    },
+    "websiteUri": "http://www.kapsalianavillage.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Kapsaliana Village Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 4
+   }
+  ]
+ },
+ "hotel_3034": {
+  "name": "Katikies Garden Santorini",
+  "kind": "hotel",
+  "query": "Katikies Garden Santorini Santorini Greece",
+  "lat": 36.42123,
+  "lon": 25.43022,
+  "candidates": [
+   {
+    "id": "ChIJSY_dCtrNmRQRi8o3-kBZ9e8",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 440900",
+    "internationalPhoneNumber": "+30 2286 440900",
+    "formattedAddress": "town, Old catholic monastery, Φηρά 847 00, Greece",
+    "location": {
+     "latitude": 36.4214627,
+     "longitude": 25.4307774
+    },
+    "websiteUri": "https://www.katikies.com/katikiesgardensantorini/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Katikies Garden Santorini",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 56
+   }
+  ]
+ },
+ "hotel_3035": {
+  "name": "Katikies Santorini - Gea House",
+  "kind": "hotel",
+  "query": "Katikies Santorini - Gea House Santorini Greece",
+  "lat": 36.461649,
+  "lon": 25.387987,
+  "candidates": [
+   {
+    "id": "ChIJIyJLg4fMmRQRfr_wvy64d_E",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 071214",
+    "internationalPhoneNumber": "+30 2286 071214",
+    "formattedAddress": "Main Street, Oía 847 02, Greece",
+    "location": {
+     "latitude": 36.4616492,
+     "longitude": 25.387986599999998
+    },
+    "websiteUri": "https://www.katikies.com/katikieshotelsantorini/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Katikies Santorini - Gea House",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3036": {
+  "name": "Katikies Santorini - Pelagos House",
+  "kind": "hotel",
+  "query": "Katikies Santorini - Pelagos House Santorini Greece",
+  "lat": 36.462159,
+  "lon": 25.381004,
+  "candidates": [
+   {
+    "id": "ChIJZfN8nIDMmRQRxE4k-4aOrXw",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 072382",
+    "internationalPhoneNumber": "+30 2286 072382",
+    "formattedAddress": "Nik. Nomikou, Oía 847 02, Greece",
+    "location": {
+     "latitude": 36.4617363,
+     "longitude": 25.3824513
+    },
+    "websiteUri": "https://www.katikies.com/katikieshotelsantorini/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Katikies Santorini - Pelagos House",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 138
+   }
+  ]
+ },
+ "hotel_3037": {
+  "name": "Kinsterna Hotel",
+  "kind": "hotel",
+  "query": "Kinsterna Hotel Monemvasia Greece",
+  "lat": 36.644278,
+  "lon": 23.014681,
+  "candidates": [
+   {
+    "id": "ChIJx3YMoCdrnhQRkMnw31f9Alg",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2732 066300",
+    "internationalPhoneNumber": "+30 2732 066300",
+    "formattedAddress": "Ag. Stefanos 230 70, Greece",
+    "location": {
+     "latitude": 36.6436503,
+     "longitude": 23.0163548
+    },
+    "websiteUri": "http://www.kinsternahotel.gr/en/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Kinsterna Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 165
+   }
+  ]
+ },
+ "hotel_3038": {
+  "name": "Kivotos Santorini",
+  "kind": "hotel",
+  "query": "Kivotos Santorini Santorini Greece",
+  "lat": 36.433008,
+  "lon": 25.421914,
+  "candidates": [
+   {
+    "id": "ChIJW8aq0N3NmRQRGJ-K8oXSM10",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 028490",
+    "internationalPhoneNumber": "+30 2286 028490",
+    "formattedAddress": "Imerovigli 847 00, Greece",
+    "location": {
+     "latitude": 36.4330083,
+     "longitude": 25.4219136
+    },
+    "websiteUri": "https://www.kivotoshotels.com/santorini/luxury-hotel-villas/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Kivotos Santorini",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3039": {
+  "name": "Kókkini Porta Rossa",
+  "kind": "hotel",
+  "query": "Kókkini Porta Rossa Rhodes Greece",
+  "lat": 36.44014,
+  "lon": 28.22846,
+  "candidates": [
+   {
+    "id": "ChIJYUCkYuphlRQR8jOJc9GEngU",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2241 075114",
+    "internationalPhoneNumber": "+30 2241 075114",
+    "formattedAddress": "Archiepiskopou Efthimiou 24, Rodos 851 00, Greece",
+    "location": {
+     "latitude": 36.4402151,
+     "longitude": 28.228458399999997
+    },
+    "websiteUri": "http://www.kokkiniporta.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "KÓKKINI PORTA ROSSA",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 8
+   }
+  ]
+ },
+ "hotel_3040": {
+  "name": "Lango Design Hotel & Spa",
+  "kind": "hotel",
+  "query": "Lango Design Hotel & Spa Kos Greece",
+  "lat": 36.913346,
+  "lon": 27.27552,
+  "candidates": [
+   {
+    "id": "ChIJR4LqsMgOvhQRifixpkmqYT0",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2242 049000",
+    "internationalPhoneNumber": "+30 2242 049000",
+    "formattedAddress": "Lambi Beach, Kos 853 00, Greece",
+    "location": {
+     "latitude": 36.9133457,
+     "longitude": 27.2755196
+    },
+    "websiteUri": "https://www.langohotel.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Lango Design Hotel & Spa",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3041": {
+  "name": "Leeda's Village",
+  "kind": "hotel",
+  "query": "Leeda's Village Zakynthos Greece",
+  "lat": 37.705809,
+  "lon": 20.846186,
+  "candidates": [
+   {
+    "id": "ChIJe1hJACE5ZxMR9Yed_XAXoXs",
+    "types": [
+     "apartment_complex",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "697 980 6798",
+    "internationalPhoneNumber": "+30 697 980 6798",
+    "formattedAddress": ",Griekenland, Lithakia 290 92, Greece",
+    "location": {
+     "latitude": 37.7058093,
+     "longitude": 20.8461864
+    },
+    "websiteUri": "https://leedas-villas.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Leeda's Village",
+     "languageCode": "en"
+    },
+    "primaryType": "apartment_complex",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3042": {
+  "name": "Lesante Cape",
+  "kind": "hotel",
+  "query": "Lesante Cape Zakynthos Greece",
+  "lat": 37.811642,
+  "lon": 20.888097,
+  "candidates": [
+   {
+    "id": "ChIJEVBkjlpHZxMR_Qeq1j4b3tc",
+    "types": [
+     "resort_hotel",
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2695 044495",
+    "internationalPhoneNumber": "+30 2695 044495",
+    "formattedAddress": "Akrotiri 291 00, Greece",
+    "location": {
+     "latitude": 37.811214299999996,
+     "longitude": 20.887675500000004
+    },
+    "websiteUri": "https://www.lesantecollection.gr/hotels/lesante-cape/?utm_source=gmb_listing&utm_medium=gmb&utm_campaign=google_my_business",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Lesante Cape - The Leading Hotels of the World",
+     "languageCode": "el"
+    },
+    "primaryType": "resort_hotel",
+    "distance_m": 60
+   }
+  ]
+ },
+ "hotel_3043": {
+  "name": "Limestone Santorini",
+  "kind": "hotel",
+  "query": "Limestone Santorini Santorini Greece",
+  "lat": 36.415788,
+  "lon": 25.430736,
+  "candidates": [
+   {
+    "id": "ChIJzVaz5NPNmRQR4wzubqRbM1s",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 025443",
+    "internationalPhoneNumber": "+30 2286 025443",
+    "formattedAddress": "Agiou Mina, Thira 847 00, Greece",
+    "location": {
+     "latitude": 36.415788299999996,
+     "longitude": 25.430735799999997
+    },
+    "websiteUri": "http://www.limestonesantorini.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Limestone Santorini",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3044": {
+  "name": "Manili Boutique Suites & Villas",
+  "kind": "hotel",
+  "query": "Manili Boutique Suites & Villas Crete Greece",
+  "lat": 35.23274,
+  "lon": 25.15959,
+  "candidates": [
+   {
+    "id": "ChIJ84oEyl9YmhQRukTL2AR5DP4",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "281 075 3001",
+    "internationalPhoneNumber": "+30 281 075 3001",
+    "formattedAddress": "Epano Archanes 701 00, Greece",
+    "location": {
+     "latitude": 35.232766999999996,
+     "longitude": 25.159227200000004
+    },
+    "websiteUri": "http://www.manili.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Manili Boutique Suites & Villas, an SLH Hotel",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 33
+   }
+  ]
+ },
+ "hotel_3045": {
+  "name": "Minos Palace Resort",
+  "kind": "hotel",
+  "query": "Minos Palace Resort Crete Greece",
+  "lat": 35.202644,
+  "lon": 25.718103,
+  "candidates": [
+   {
+    "id": "ChIJb_azJ9aDkBQRD0QEgkR-gUY",
+    "types": [
+     "hotel",
+     "lodging",
+     "spa",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2841 023801",
+    "internationalPhoneNumber": "+30 2841 023801",
+    "formattedAddress": "Ammoudiou, Ag. Nikolaos 721 00, Greece",
+    "location": {
+     "latitude": 35.202897899999996,
+     "longitude": 25.718337
+    },
+    "websiteUri": "https://www.minospalace.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Minos Palace Hotel & Suites",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 35
+   }
+  ]
+ },
+ "hotel_3046": {
+  "name": "Montanema Handmade Village",
+  "kind": "hotel",
+  "query": "Montanema Handmade Village Thessaly Greece",
+  "lat": 39.347607,
+  "lon": 21.647766,
+  "candidates": [
+   {
+    "id": "ChIJ5XbwWzkwWRMR1vMa8_RDlI8",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2445 045220",
+    "internationalPhoneNumber": "+30 2445 045220",
+    "formattedAddress": "Λίμνη Πλαστήρα 430 60, Greece",
+    "location": {
+     "latitude": 39.3476758,
+     "longitude": 21.6478718
+    },
+    "websiteUri": "http://www.montanema.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Montanema Handmade Village",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 12
+   }
+  ]
+ },
+ "hotel_3047": {
+  "name": "Monument",
+  "kind": "hotel",
+  "query": "Monument Athens Greece",
+  "lat": 37.979485,
+  "lon": 23.725959,
+  "candidates": [
+   {
+    "id": "ChIJT_fEmCS9oRQR6uQxeRywg08",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0324 1425",
+    "internationalPhoneNumber": "+30 21 0324 1425",
+    "formattedAddress": "Kalamida 11, Athina 105 54, Greece",
+    "location": {
+     "latitude": 37.979487999999996,
+     "longitude": 23.725965
+    },
+    "websiteUri": "http://www.monumenthotelathens.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Monument",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 1
+   },
+   {
+    "id": "ChIJlwGg3T69oRQRQvI-Av79lsQ",
+    "types": [
+     "tourist_attraction",
+     "historical_landmark",
+     "historical_place",
+     "point_of_interest",
+     "establishment"
+    ],
+    "formattedAddress": "Leof. Vasilisis Amalias 133, Athina 105 57, Greece",
+    "location": {
+     "latitude": 37.9753575,
+     "longitude": 23.7362604
+    },
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Monument to the Unknown Soldier",
+     "languageCode": "en"
+    },
+    "distance_m": 1013
+   },
+   {
+    "id": "ChIJKYFZrSi9oRQRz3kAINolHGw",
+    "types": [
+     "tourist_attraction",
+     "historical_landmark",
+     "historical_place",
+     "point_of_interest",
+     "establishment"
+    ],
+    "formattedAddress": "Pl. Karaiskaki 2, Athina 104 37, Greece",
+    "location": {
+     "latitude": 37.9856073,
+     "longitude": 23.7216007
+    },
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Fallen Aviators Monument",
+     "languageCode": "en"
+    },
+    "distance_m": 781
+   },
+   {
+    "id": "ChIJvdt48Ba9oRQRqF6Se5lpQg8",
+    "types": [
+     "sculpture",
+     "tourist_attraction",
+     "point_of_interest",
+     "establishment"
+    ],
+    "formattedAddress": "Leof. Vasilisis Amalias 54, Athina 105 58, Greece",
+    "location": {
+     "latitude": 37.969901899999996,
+     "longitude": 23.7314464
+    },
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Melina Merkouri Bust",
+     "languageCode": "en"
+    },
+    "distance_m": 1169
+   }
+  ]
+ },
+ "hotel_3048": {
+  "name": "Myconian O",
+  "kind": "hotel",
+  "query": "Myconian O Mykonos Greece",
+  "lat": 37.4235,
+  "lon": 25.32329,
+  "candidates": [
+   {
+    "id": "ChIJaY3SUsO_ohQRXzBulxBY4co",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 444000",
+    "internationalPhoneNumber": "+30 2289 444000",
+    "formattedAddress": "Ornos Beach, Mikonos 846 00, Greece",
+    "location": {
+     "latitude": 37.4227341,
+     "longitude": 25.3217246
+    },
+    "websiteUri": "https://www.omyconian.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Myconian O",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 162
+   }
+  ]
+ },
+ "hotel_3049": {
+  "name": "Myconian Panoptis Escape",
+  "kind": "hotel",
+  "query": "Myconian Panoptis Escape Mykonos Greece",
+  "lat": 37.422633,
+  "lon": 25.397795,
+  "candidates": [
+   {
+    "id": "ChIJJ4jFgyi5ohQRYUM0r_o3iIM",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 445400",
+    "internationalPhoneNumber": "+30 2289 445400",
+    "formattedAddress": "Elia Beach, Mikonos 846 00, Greece",
+    "location": {
+     "latitude": 37.4226332,
+     "longitude": 25.397794899999997
+    },
+    "websiteUri": "https://panoptisescapemykonos.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Panoptis Escape, an SLH Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3050": {
+  "name": "Mykonos Blanc Hotel",
+  "kind": "hotel",
+  "query": "Mykonos Blanc Hotel Mykonos Greece",
+  "lat": 37.422714,
+  "lon": 25.325315,
+  "candidates": [
+   {
+    "id": "ChIJ-19U1l2-ohQRrp_egUVLdjY",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 027618",
+    "internationalPhoneNumber": "+30 2289 027618",
+    "formattedAddress": "Ornos 846 00, Greece",
+    "location": {
+     "latitude": 37.422714299999996,
+     "longitude": 25.3253155
+    },
+    "websiteUri": "https://www.mykonosblanchotel.com/?utm_source=google&utm_medium=organic&utm_campaign=gmb",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Mykonos Blanc Hotel",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3051": {
+  "name": "Mykonos Bliss",
+  "kind": "hotel",
+  "query": "Mykonos Bliss Mykonos Greece",
+  "lat": 37.4315,
+  "lon": 25.402488,
+  "candidates": [
+   {
+    "id": "ChIJfVIVjei4ohQRK4Lm969Vwos",
+    "types": [
+     "resort_hotel",
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 072912",
+    "internationalPhoneNumber": "+30 2289 072912",
+    "formattedAddress": "Kalo Livadi, Mikonos 846 00, Greece",
+    "location": {
+     "latitude": 37.4315004,
+     "longitude": 25.4024878
+    },
+    "websiteUri": "https://www.mykonosbliss.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Mykonos Bliss | Cozy Suites",
+     "languageCode": "en"
+    },
+    "primaryType": "resort_hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3052": {
+  "name": "Mykonos Grand Hotel & Resort",
+  "kind": "hotel",
+  "query": "Mykonos Grand Hotel & Resort Mykonos Greece",
+  "lat": 37.42093,
+  "lon": 25.313668,
+  "candidates": [
+   {
+    "id": "ChIJ-3KOz2u-ohQRBedpETb8hoQ",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "massage_spa",
+     "spa",
+     "massage",
+     "lodging",
+     "service",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 025555",
+    "internationalPhoneNumber": "+30 2289 025555",
+    "formattedAddress": "Agios Ioannis 846 00, Greece",
+    "location": {
+     "latitude": 37.420929799999996,
+     "longitude": 25.313668399999997
+    },
+    "websiteUri": "http://www.mykonosgrand.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Mykonos Grand Hotel & Resort",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3053": {
+  "name": "Noma Milos",
+  "kind": "hotel",
+  "query": "Noma Milos Milos Greece",
+  "lat": 36.66657,
+  "lon": 24.42976,
+  "candidates": [
+   {
+    "id": "ChIJJ00SbwMnmRQR5rDw6-uMMWA",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 5215 8354",
+    "internationalPhoneNumber": "+30 21 5215 8354",
+    "formattedAddress": "Kipos, Μήλος 848 00, Greece",
+    "location": {
+     "latitude": 36.6664989,
+     "longitude": 24.4296452
+    },
+    "websiteUri": "https://nomamilos.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Noma Milos",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 13
+   }
+  ]
+ },
+ "hotel_3054": {
+  "name": "NOMAD Mykonos",
+  "kind": "hotel",
+  "query": "NOMAD Mykonos Mykonos Greece",
+  "lat": 37.437246,
+  "lon": 25.402242,
+  "candidates": [
+   {
+    "id": "ChIJL-VwsnO5ohQRhPTektM9UFc",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 072800",
+    "internationalPhoneNumber": "+30 2289 072800",
+    "formattedAddress": "Kalo Livadi, Mikonos 846 00, Greece",
+    "location": {
+     "latitude": 37.437245499999996,
+     "longitude": 25.4022425
+    },
+    "websiteUri": "https://nomadsmykonos.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "NOMAD Mykonos",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3055": {
+  "name": "NOT Hotel",
+  "kind": "hotel",
+  "query": "NOT Hotel Athens Greece",
+  "lat": 37.97862,
+  "lon": 23.71374,
+  "candidates": [
+   {
+    "id": "ChIJabvKpN-8oRQRybvplm02Dt0",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 6000 2310",
+    "internationalPhoneNumber": "+30 21 6000 2310",
+    "formattedAddress": "Voutadon 16, Athina 118 54, Greece",
+    "location": {
+     "latitude": 37.978649499999996,
+     "longitude": 23.7137465
+    },
+    "websiteUri": "https://not-hotel.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Not Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 3
+   }
+  ]
+ },
+ "hotel_3056": {
+  "name": "Numo Mykonos",
+  "kind": "hotel",
+  "query": "Numo Mykonos Mykonos Greece",
+  "lat": 37.43878,
+  "lon": 25.41548,
+  "candidates": [
+   {
+    "id": "ChIJiy4MDFy5ohQRobTXy48WrzE",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2834 055000",
+    "internationalPhoneNumber": "+30 2834 055000",
+    "formattedAddress": "Kalafati 846 00, Greece",
+    "location": {
+     "latitude": 37.438865,
+     "longitude": 25.415955099999998
+    },
+    "websiteUri": "https://www.numomykonos.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Numo Mykonos",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 43
+   }
+  ]
+ },
+ "hotel_3057": {
+  "name": "OKU Kos",
+  "kind": "hotel",
+  "query": "OKU Kos Kos Greece",
+  "lat": 36.8659,
+  "lon": 27.12542,
+  "candidates": [
+   {
+    "id": "ChIJyzU_raP9vRQR-Fn84v4kv7k",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2242 440380",
+    "internationalPhoneNumber": "+30 2242 440380",
+    "formattedAddress": "OKU Kos, Sikamini, Marmari, Kos, 85, Kos 853 00, Greece",
+    "location": {
+     "latitude": 36.8654601,
+     "longitude": 27.1260676
+    },
+    "websiteUri": "http://www.okuhotels.com/oku-kos",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "OKU Kos",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 76
+   }
+  ]
+ },
+ "hotel_3058": {
+  "name": "Olea All Suite Hotel",
+  "kind": "hotel",
+  "query": "Olea All Suite Hotel Zakynthos Greece",
+  "lat": 37.80848,
+  "lon": 20.8797,
+  "candidates": [
+   {
+    "id": "ChIJuxaRU9RHZxMRZkUDpnmpfGc",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2695 022265",
+    "internationalPhoneNumber": "+30 2695 022265",
+    "formattedAddress": "Planos 291 00, Greece",
+    "location": {
+     "latitude": 37.806124499999996,
+     "longitude": 20.8721246
+    },
+    "websiteUri": "https://oleaallsuitehotel.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Olea All Suite Hotel, Member of Design Hotels",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 715
+   }
+  ]
+ },
+ "hotel_3059": {
+  "name": "ON Residence",
+  "kind": "hotel",
+  "query": "ON Residence Thessaloniki Greece",
+  "lat": 40.63306,
+  "lon": 22.93876,
+  "candidates": [
+   {
+    "id": "ChIJdQrv-l45qBQR6WLVl54uxU0",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "231 440 4000",
+    "internationalPhoneNumber": "+30 231 440 4000",
+    "formattedAddress": "Leof. Nikis 5, Thessaloniki 546 24, Greece",
+    "location": {
+     "latitude": 40.633066400000004,
+     "longitude": 22.938698199999997
+    },
+    "websiteUri": "http://onresidence.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "ON Residence, Small Luxury Hotels of the World",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 5
+   }
+  ]
+ },
+ "hotel_3060": {
+  "name": "One&Only Aesthesis",
+  "kind": "hotel",
+  "query": "One&Only Aesthesis Athens Greece",
+  "lat": 37.85712,
+  "lon": 23.75047,
+  "candidates": [
+   {
+    "id": "ChIJO77BYra_oRQRFSf9HMe74nA",
+    "types": [
+     "resort_hotel",
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 6686 1000",
+    "internationalPhoneNumber": "+30 21 6686 1000",
+    "formattedAddress": "Leof. Poseidonos 110, Glifada 166 74, Greece",
+    "location": {
+     "latitude": 37.8554478,
+     "longitude": 23.7512181
+    },
+    "websiteUri": "https://www.oneandonlyresorts.com/aesthesis?utm_medium=organic-search&utm_source=gbp&utm_campaign=gbp_ao_y_ooaa_row_wt__ao__kz&utm_content=__&utm_term=one-and-only-aesthesis&utm_id=dwfafi",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "One&Only Aesthesis",
+     "languageCode": "en"
+    },
+    "primaryType": "resort_hotel",
+    "distance_m": 197
+   }
+  ]
+ },
+ "hotel_3061": {
+  "name": "Palladium Hotel Mykonos",
+  "kind": "hotel",
+  "query": "Palladium Hotel Mykonos Mykonos Greece",
+  "lat": 37.41774,
+  "lon": 25.33805,
+  "candidates": [
+   {
+    "id": "ChIJ7X7-n5K-ohQRyQgZ_g8IDTk",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 025925",
+    "internationalPhoneNumber": "+30 2289 025925",
+    "formattedAddress": "Πλατυς Γιαλος, Platis Gialos 846 00, Greece",
+    "location": {
+     "latitude": 37.4144931,
+     "longitude": 25.344113800000002
+    },
+    "websiteUri": "https://www.hotelpalladium.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Palladium Boutique Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 646
+   }
+  ]
+ },
+ "hotel_3062": {
+  "name": "Perivolas Lifestyle Houses",
+  "kind": "hotel",
+  "query": "Perivolas Lifestyle Houses Santorini Greece",
+  "lat": 36.462148,
+  "lon": 25.387155,
+  "candidates": [
+   {
+    "id": "ChIJbevoPoDLmRQR3yx1DtXId50",
+    "types": [
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "formattedAddress": "Oia 847 02, Greece",
+    "location": {
+     "latitude": 36.4619713,
+     "longitude": 25.3768292
+    },
+    "websiteUri": "https://deals.vio.com/?sig=73aca13c7f952d2641c156f3e69125e1eb497c325f122828ee5aa8797168b9a12d32303331333438363233&turl=https%3A%2F%2Fwww.vio.com%2FHotel%2FSearch%3FhotelId%3D23337651%26utm_source%3Dgha-vr%26utm_campaign%3Dstatic%26openHotelDetails%3D1",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Perivolas Lifestyle Houses",
+     "languageCode": "en"
+    },
+    "primaryType": "lodging",
+    "distance_m": 924
+   },
+   {
+    "id": "ChIJla6ox4fMmRQRmPBJs1xJHRg",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 071308",
+    "internationalPhoneNumber": "+30 2286 071308",
+    "formattedAddress": "Oia 847 02, Greece",
+    "location": {
+     "latitude": 36.4613048,
+     "longitude": 25.388072599999997
+    },
+    "websiteUri": "http://www.perivolas.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Perivolas Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 125
+   }
+  ]
+ },
+ "hotel_3063": {
+  "name": "Pnoé Breathing Life",
+  "kind": "hotel",
+  "query": "Pnoé Breathing Life Crete Greece",
+  "lat": 35.33182,
+  "lon": 25.19997,
+  "candidates": [
+   {
+    "id": "ChIJE_wukBBcmhQRb1F2K8_z04E",
+    "types": [
+     "resort_hotel",
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "281 000 0990",
+    "internationalPhoneNumber": "+30 281 000 0990",
+    "formattedAddress": "Karteros, Beach, Ηράκλειο 715 00, Greece",
+    "location": {
+     "latitude": 35.330083099999996,
+     "longitude": 25.2030984
+    },
+    "websiteUri": "https://pnoe-breathinglife.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Pnoé Breathing Life",
+     "languageCode": "en"
+    },
+    "primaryType": "resort_hotel",
+    "distance_m": 343
+   }
+  ]
+ },
+ "hotel_3064": {
+  "name": "Porto Zante Villas & Spa",
+  "kind": "hotel",
+  "query": "Porto Zante Villas & Spa Zakynthos Greece",
+  "lat": 37.82578,
+  "lon": 20.852382,
+  "candidates": [
+   {
+    "id": "ChIJpy2f0Y5GZxMRFjPNm9KXI10",
+    "types": [
+     "hotel",
+     "resort_hotel",
+     "lodging",
+     "point_of_interest",
+     "service",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 0821 8640",
+    "internationalPhoneNumber": "+30 21 0821 8640",
+    "formattedAddress": "Tragaki 291 00, Greece",
+    "location": {
+     "latitude": 37.8257797,
+     "longitude": 20.8523821
+    },
+    "websiteUri": "http://www.portozante.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Porto Zante Villas & Spa",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3065": {
+  "name": "Stoes Boutique Hotel",
+  "kind": "hotel",
+  "query": "Stoes Boutique Hotel Ioannina Greece",
+  "lat": 39.66959,
+  "lon": 20.85636,
+  "candidates": [
+   {
+    "id": "ChIJy8Mhzl3pWxMRD_3rJeR2dPg",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2651 075700",
+    "internationalPhoneNumber": "+30 2651 075700",
+    "formattedAddress": "Christou Efthimiou 11, Ioannina 454 44, Greece",
+    "location": {
+     "latitude": 39.6695582,
+     "longitude": 20.8563983
+    },
+    "websiteUri": "https://stoeshotel.reserve-online.net/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Stoes Boutique Hotel",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 5
+   }
+  ]
+ },
+ "hotel_3066": {
+  "name": "Tainaron Blue Retreat",
+  "kind": "hotel",
+  "query": "Tainaron Blue Retreat Peloponnese Greece",
+  "lat": 36.436661,
+  "lon": 22.465772,
+  "candidates": [
+   {
+    "id": "ChIJVwCeuvoCYhMRh8k91QG5sWM",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "697 300 7006",
+    "internationalPhoneNumber": "+30 697 300 7006",
+    "formattedAddress": "36.436773, 22.465654, Βάθειας 230 62, Greece",
+    "location": {
+     "latitude": 36.436661300000004,
+     "longitude": 22.4657724
+    },
+    "websiteUri": "https://tainaron-blue.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Tainaron Blue Retreat",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3067": {
+  "name": "The Bold Type Hotel",
+  "kind": "hotel",
+  "query": "The Bold Type Hotel Patras Greece",
+  "lat": 38.24317,
+  "lon": 21.73731,
+  "candidates": [
+   {
+    "id": "ChIJHaLbAN5JXhMRRbN9hoSnd-I",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "261 022 0012",
+    "internationalPhoneNumber": "+30 261 022 0012",
+    "formattedAddress": "Paleon Patron Germanou 10, Patra 262 25, Greece",
+    "location": {
+     "latitude": 38.2431676,
+     "longitude": 21.7373085
+    },
+    "websiteUri": "http://www.theboldtypehotel.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "The Bold Type Hotel",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3068": {
+  "name": "THE DOLLI at Acropolis, A Hotel to Live",
+  "kind": "hotel",
+  "query": "THE DOLLI at Acropolis, A Hotel to Live Athens Greece",
+  "lat": 37.97581,
+  "lon": 23.72813,
+  "candidates": [
+   {
+    "id": "ChIJ8UkelJ-9oRQR3C0IucbNFZI",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 6004 7000",
+    "internationalPhoneNumber": "+30 21 6004 7000",
+    "formattedAddress": "Mitropoleos 49, Athina 105 56, Greece",
+    "location": {
+     "latitude": 37.9758119,
+     "longitude": 23.7281266
+    },
+    "websiteUri": "https://thedolli.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "THE DOLLI® at Acropolis, A Hotel to Live®",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3069": {
+  "name": "The Townhouse Mykonos",
+  "kind": "hotel",
+  "query": "The Townhouse Mykonos Mykonos Greece",
+  "lat": 37.447421,
+  "lon": 25.329798,
+  "candidates": [
+   {
+    "id": "ChIJBw80Nai_ohQR3LW-atX-Xec",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2289 028543",
+    "internationalPhoneNumber": "+30 2289 028543",
+    "formattedAddress": "Manto Square Mykonos Town, Μύκονος 846 00, Greece",
+    "location": {
+     "latitude": 37.4474215,
+     "longitude": 25.329798099999998
+    },
+    "websiteUri": "http://www.mykonostownhousehotel.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "The TownHouse Mykonos",
+     "languageCode": "el"
+    },
+    "primaryType": "hotel",
+    "distance_m": 0
+   }
+  ]
+ },
+ "hotel_3070": {
+  "name": "The Tsitouras Collection",
+  "kind": "hotel",
+  "query": "The Tsitouras Collection Santorini Greece",
+  "lat": 36.426849,
+  "lon": 25.428605,
+  "candidates": [
+   {
+    "id": "ChIJqZQ0cMvNmRQRMGsd7tJWhN8",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 023747",
+    "internationalPhoneNumber": "+30 2286 023747",
+    "formattedAddress": "Firostefani, Μεσαριά 847 00, Greece",
+    "location": {
+     "latitude": 36.4267022,
+     "longitude": 25.428648199999998
+    },
+    "websiteUri": "http://www.tsitouras.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "The Tsitouras Collection",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 17
+   }
+  ]
+ },
+ "hotel_3071": {
+  "name": "Villa Bordeaux",
+  "kind": "hotel",
+  "query": "Villa Bordeaux Santorini Greece",
+  "lat": 36.4187366041,
+  "lon": 25.4308271153,
+  "candidates": [
+   {
+    "id": "ChIJXy2zZdHNmRQRC_jazh2jjlQ",
+    "types": [
+     "hotel",
+     "lodging",
+     "bar",
+     "restaurant",
+     "food",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "2286 888018",
+    "internationalPhoneNumber": "+30 2286 888018",
+    "formattedAddress": "Agiou Mina, Thira 847 00, Greece",
+    "location": {
+     "latitude": 36.4185294,
+     "longitude": 25.4307842
+    },
+    "websiteUri": "https://www.vbs.gr/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "Villa Bordeaux Santorini",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 23
+   }
+  ]
+ },
+ "hotel_3072": {
+  "name": "Xenodocheio Milos",
+  "kind": "hotel",
+  "query": "Xenodocheio Milos Athens Greece",
+  "lat": 37.97725,
+  "lon": 23.73313,
+  "candidates": [
+   {
+    "id": "ChIJ_x7X6VS9oRQRHllbhowh30E",
+    "types": [
+     "hotel",
+     "lodging",
+     "point_of_interest",
+     "establishment"
+    ],
+    "nationalPhoneNumber": "21 6600 3300",
+    "internationalPhoneNumber": "+30 21 6600 3300",
+    "formattedAddress": "Kolokotroni 3-5, Athina 105 62, Greece",
+    "location": {
+     "latitude": 37.9772195,
+     "longitude": 23.7330211
+    },
+    "websiteUri": "https://www.xenodocheiomilos.com/",
+    "businessStatus": "OPERATIONAL",
+    "displayName": {
+     "text": "xenodocheio Milos",
+     "languageCode": "en"
+    },
+    "primaryType": "hotel",
+    "distance_m": 10
+   }
+  ]
+ }
+}
