@@ -10,6 +10,18 @@ The format follows Keep a Changelog.
 
 ---
 
+## v1.5.7 (31) — 2026-11-04
+
+The build meant for App Review. Two changes on top of (30).
+
+### Changed
+- **iPhone only** (`TARGETED_DEVICE_FAMILY = 1`), decided by the product owner 2026-11-04: the app had declared iPad support without ever being looked at on an iPad, which would also ask for iPad screenshots. iPhone apps still run on an iPad in compatibility mode.
+
+### Added
+- **That Mantelier is independent, at the foot of Profile**, in the same words as `site/terms.html`, which a test holds them to. Until now it was only on the website, while the app shows MICHELIN stars and Keys throughout.
+
+---
+
 ## v1.5.7 (30) — 2026-11-04
 
 Build 29 was made from `014b73f`. This build carries the wines on a visit,
