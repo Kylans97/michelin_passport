@@ -16,6 +16,7 @@ import '../../../models/photo_framing.dart';
 import '../../../core/widgets/app_network_image.dart';
 import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/analytics/impressions.dart';
+import '../../events/widgets/event_status_badges.dart';
 
 String _locationOf({required String flagEmoji, required String cityName}) =>
     [if (flagEmoji.isNotEmpty) flagEmoji, cityName].join('  ');
@@ -105,6 +106,10 @@ class ExploreFeaturedEventCard extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: CsTypography.metadata,
                     ),
+                    if (eventStatusLabels(event).isNotEmpty) ...[
+                      const SizedBox(height: CsSpacing.sm),
+                      EventStatusBadges(event: event),
+                    ],
                     if (event.isFreeEntry) ...[
                       const SizedBox(height: CsSpacing.sm),
                       const _FreeEntryBadge(),

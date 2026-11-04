@@ -6,6 +6,7 @@ import '../../../models/event.dart';
 import '../../events/event_date_format.dart';
 import '../../../core/analytics/analytics_properties.dart';
 import '../../../core/analytics/impressions.dart';
+import '../../events/widgets/event_status_badges.dart';
 
 /// A compact event row for Explore's Search-mode results — same shape and
 /// scale as [RestaurantTile]/[HotelTile] (small square thumbnail, name,
@@ -107,6 +108,10 @@ class ExploreEventResultTile extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       style: AppTypography.metadata.copyWith(fontSize: 11),
                     ),
+                  ],
+                  if (eventStatusLabels(event).isNotEmpty) ...[
+                    const SizedBox(height: 4),
+                    EventStatusBadges(event: event),
                   ],
                 ],
               ),

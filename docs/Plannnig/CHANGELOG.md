@@ -21,6 +21,27 @@ The format follows Keep a Changelog.
   `claude/michelin-europe9-2026` with plain `supabase db push --linked`. The
   ledger went from 143 to 144, and local and remote agree. The catalogue data
   that goes with it is in `supabase/data/enrichment/michelin_europe9_2026/`.
+- **"Sold out" and "Expected" labels on events** (product owner, 2026-11-05):
+  - **Where they show:** event cards (Events, the Explore result tile, the
+    Explore discovery card, the Community preview) and the event detail page.
+    One shared definition lives in `event_status_badges.dart`. A cancelled
+    event shows only CANCELLED.
+  - **Sold out** reads the existing `events.availability_status`
+    (`sold_out`), which no build had shown until now. It needs no migration.
+  - **Expected** reads the new `events.announcement_status`: an event known
+    from a secondary source that the venue has not announced yet.
+  - **Migration `20261101320000_add_event_announcement_status.sql`**,
+    prepared and not applied:
+    - adds `announcement_status` (`official`/`expected`, default `official`)
+      and `expected_source_url`, with a check that an expected event has a
+      source;
+    - extends the host-edit column lock to both columns.
+
+    It was tested on scratch PostgreSQL 16 against a minimal `events` table,
+    not the full stack.
+  - **Rollout:** this build reads both columns safely when they are absent.
+    A build without this change shows an expected event with no label, so
+    no event may be set to `expected` until this build has shipped.
 
 ### Fixed
 - `prepared_gr_2027.sql` was tested only on scratch PostgreSQL with

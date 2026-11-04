@@ -75,6 +75,20 @@ class EventMetaSection extends StatelessWidget {
           ),
           const SizedBox(height: CsSpacing.md),
         ],
+        // Sold out and expected only for an event that is still on: a
+        // cancelled event says so above and nothing else.
+        if (!event.isCancelled && event.isSoldOut) ...[
+          const _MetaRow(icon: Icons.event_busy_outlined, text: 'Sold out'),
+          const SizedBox(height: CsSpacing.md),
+        ],
+        if (!event.isCancelled && event.isExpected) ...[
+          const _MetaRow(
+            icon: Icons.schedule_outlined,
+            text: 'Expected',
+            secondaryText: 'Not yet announced by the venue or organiser',
+          ),
+          const SizedBox(height: CsSpacing.md),
+        ],
         _MetaRow(
           icon: Icons.calendar_today_rounded,
           // Events V2 Time Precision Phase B: one precision-aware line via

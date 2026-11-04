@@ -7,6 +7,7 @@ import '../../../models/event.dart';
 import '../../../models/event_relevance_reason.dart';
 import '../event_date_format.dart';
 import '../../../core/widgets/app_network_image.dart';
+import 'event_status_badges.dart';
 
 /// One event in the discovery list — an atmospheric banner image (fixed
 /// 16:9, BoxFit.cover) across the top when [Event.imageUrl] is populated,
@@ -96,6 +97,10 @@ class EventCard extends StatelessWidget {
                         fontSize: 12,
                       ),
                     ),
+                    if (eventStatusLabels(event).isNotEmpty) ...[
+                      const SizedBox(height: 6),
+                      EventStatusBadges(event: event),
+                    ],
                     if (reason != null) ...[
                       const SizedBox(height: 6),
                       _RelevanceReasonRow(reason: reason!),
