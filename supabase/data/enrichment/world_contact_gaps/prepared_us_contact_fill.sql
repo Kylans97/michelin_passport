@@ -20,7 +20,7 @@
 -- re-run (fill-only).
 
 begin;
--- restaurants: 75 rows (68 Place IDs, 43 phones, 1 websites)
+-- restaurants: 75 rows (68 Place IDs, 36 phones, 1 websites)
 create temp table _fill_restaurant (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_restaurant values
     ('rest_0737', 'Benu', NULL, '+1 415 685 4860', NULL),
@@ -37,12 +37,12 @@ insert into _fill_restaurant values
     ('rest_3016', 'Bell''s', 'ChIJfT-piWsF7IAR5sFnqRC8c7Y', NULL, NULL),
     ('rest_3017', 'Boia De', 'ChIJte0b2xux2YgRr8f-xaLb0jw', '+1 786 209 6310', NULL),
     ('rest_3020', 'Bosq', 'ChIJpwZsz2I5QIcRTrrX_dgF0aM', '+1 970 710 7299', NULL),
-    ('rest_3021', 'Bresca', 'ChIJIfKOC-i3t4kRjYSije_nwy0', '+1 771 210 3168', NULL),
+    ('rest_3021', 'Bresca', 'ChIJIfKOC-i3t4kRjYSije_nwy0', NULL, NULL),
     ('rest_3022', 'Bridges', 'ChIJ5Q8Bl1NbwokRjuIXKz8OfRQ', NULL, NULL),
     ('rest_3023', 'Brutø', 'ChIJabPzMvx5bIcRuR-TMXhM1xQ', '+1 720 325 2195', NULL),
     ('rest_3031', 'Chez Noir', 'ChIJSZwHIcTnjYAR40RvFRpNQLM', NULL, NULL),
     ('rest_3033', 'Corima', 'ChIJgaiXlpNbwokRN0vlYTshs-c', '+1 646 964 4836', NULL),
-    ('rest_3034', 'CorkScrew BBQ', 'ChIJRfY7ATs0R4YRNVMqjkDzTHU', '+1 281 330 2178', NULL),
+    ('rest_3034', 'CorkScrew BBQ', 'ChIJRfY7ATs0R4YRNVMqjkDzTHU', NULL, NULL),
     ('rest_3035', 'Corridor 109', 'ChIJo_avB77HwoAR6KembIfXRCk', NULL, NULL),
     ('rest_3040', 'Crown Shy', 'ChIJ__9LNBZawokREnkOiVx7ydc', '+1 212 517 1932', NULL),
     ('rest_3042', 'Dakar NOLA', 'ChIJrZTdR6ylIIYRE3vWwDQt90M', '+1 504 493 9396', NULL),
@@ -59,14 +59,14 @@ insert into _fill_restaurant values
     ('rest_3084', 'Kadence', 'ChIJPbVFebF654gRFipJm9-WS6Q', NULL, NULL),
     ('rest_3086', 'Kappo Kappo', 'ChIJ__-PqA-1RIYRhgaIU5RY_58', '+1 512 628 1441', NULL),
     ('rest_3090', 'KOJIMA', 'ChIJ0ybze4W7woARnWibOHEoHPU', '+1 424 248 0116', NULL),
-    ('rest_3096', 'L''Atelier de Joël Robuchon Las Vegas', 'ChIJZ-93QcvFyIARqArsJhw7Mso', '+1 702 891 7358', NULL),
+    ('rest_3096', 'L''Atelier de Joël Robuchon Las Vegas', 'ChIJZ-93QcvFyIARqArsJhw7Mso', NULL, NULL),
     ('rest_3099', 'Le Jardinier Houston', 'ChIJIUTbMUu_QIYRvNV3_RXqZDw', '+1 713 714 3015', NULL),
     ('rest_3100', 'Le Jardinier Miami', 'ChIJq6q6Rlex2YgRLVY5meAunEM', NULL, NULL),
     ('rest_3107', 'Locust', 'ChIJZTkU2HdlZIgR_V55oayk0Lw', NULL, NULL),
     ('rest_3119', 'Meju', 'ChIJ6alY3R1ZwokRQXUSqpo8OIM', NULL, NULL),
     ('rest_3122', 'Milpero', 'ChIJt4KCNOl5bIcRseIyRUaU8Fo', NULL, NULL),
     ('rest_3129', 'Mori Nozomi', 'ChIJh_EchAm7woAR_M_f_w6W50c', '+1 424 273 1146', NULL),
-    ('rest_3133', 'Mutra', 'ChIJVxmvsZCz2YgRamqn_tHB5Tw', '+1 786 833 8666', NULL),
+    ('rest_3133', 'Mutra', 'ChIJVxmvsZCz2YgRamqn_tHB5Tw', NULL, NULL),
     ('rest_3135', 'Next', 'ChIJqdQDvtAsDogRMmlkDTCE-W4', NULL, NULL),
     ('rest_3140', 'Noda', 'ChIJBxKYEqZZwokRL__Emm2Tl2Y', NULL, NULL),
     ('rest_3143', 'Nozawa Bar', 'ChIJwXV42C27woARZnY7NuiUIu4', '+1 424 216 6158', NULL),
@@ -75,7 +75,7 @@ insert into _fill_restaurant values
     ('rest_3153', 'Oyster Oyster', 'ChIJQcHOEK-3t4kRbvsIP3ccItA', NULL, NULL),
     ('rest_3154', 'Pasta|Bar', 'ChIJO84WyaaXwoARGH9mHWHN5mw', '+1 818 208 1805', NULL),
     ('rest_3158', 'Protégé', 'ChIJ14CVruW6j4ARoh-i6iIAe5g', NULL, NULL),
-    ('rest_3161', 'Restaurant de Joël Robuchon', 'ChIJJULcuqLFyIARupiJy1b4gWQ', '+1 702 891 7925', NULL),
+    ('rest_3161', 'Restaurant de Joël Robuchon', 'ChIJJULcuqLFyIARupiJy1b4gWQ', NULL, NULL),
     ('rest_3164', 'Restaurant Naides', 'ChIJzyIspeuBhYARUNRInz8tBdk', NULL, NULL),
     ('rest_3165', 'Restaurant Yuu', 'ChIJh2cqMDNZwokRqMMqNP9srxI', '+1 347 422 0270', NULL),
     ('rest_3166', 'Rezdôra', 'ChIJDdKSyCVZwokR-9svvc9YDFo', '+1 646 692 9090', NULL),
@@ -90,14 +90,14 @@ insert into _fill_restaurant values
     ('rest_3192', 'Ssal', 'ChIJz9axs6SBhYARWHXy6JCAk_0', '+1 415 814 2704', NULL),
     ('rest_3194', 'Stubborn Seed', 'ChIJkwRTevG02YgRQqy7_cHUWGQ', '+1 786 322 5211', NULL),
     ('rest_3195', 'Sun Moon Studio', 'ChIJ05gry4t_hYAR4tpX79itpGo', NULL, NULL),
-    ('rest_3197', 'Sushi Kaneyoshi', 'ChIJIXKeGv_HwoARtFSSk2sS2AI', '+1 213 277 2388', NULL),
+    ('rest_3197', 'Sushi Kaneyoshi', 'ChIJIXKeGv_HwoARtFSSk2sS2AI', NULL, NULL),
     ('rest_3198', 'Sushi Nakazawa New York', 'ChIJsw80F5NZwokRcDtxajLLOeA', '+1 212 924 2212', NULL),
     ('rest_3200', 'Tatemó', 'ChIJCbdfsUW_QIYRrevB02-CIV0', NULL, NULL),
     ('rest_3205', 'The Four Horsemen', 'ChIJbTCMl19ZwokRUohF137p9cQ', '+1 718 599 4900', NULL),
     ('rest_3211', 'The Wolf''s Tailor', 'ChIJgZlxHYt4bIcRbUoKhywj5CE', '+1 720 456 6705', NULL),
     ('rest_3214', 'Torrisi', 'ChIJWd7fRdZZwokRhru5tn4KsVM', '+1 212 254 3000', NULL),
     ('rest_3216', 'Tsukimi', 'ChIJRQgS7etZwokR8IMUTfuDXOM', NULL, NULL),
-    ('rest_3226', 'YingTao', 'ChIJkYkkoh1ZwokRE01ymVZhhpg', '+1 914 496 5055', NULL);
+    ('rest_3226', 'YingTao', 'ChIJkYkkoh1ZwokRE01ymVZhhpg', NULL, NULL);
 
 do $$
 declare bad text;
@@ -119,7 +119,7 @@ update public.restaurants x set phone = f.phone, updated_at = now()
 update public.restaurants x set website_url = f.website, updated_at = now()
   from _fill_restaurant f where x.restaurant_code = f.code and f.website is not null and x.website_url is null;
 
--- hotels: 60 rows (59 Place IDs, 50 phones, 17 websites)
+-- hotels: 60 rows (59 Place IDs, 49 phones, 17 websites)
 create temp table _fill_hotel (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_hotel values
     ('hotel_1517', 'Beverly Wilshire, Beverly Hills (A Four Seasons Hotel)', 'ChIJz-22Hfm7woARmoLOmvYW4J0', '+1 310 275 5200', NULL),
@@ -159,7 +159,7 @@ insert into _fill_hotel values
     ('hotel_1720', 'Pendry Baltimore', 'ChIJXTD2CoEDyIkR8Nxs8o-wpOM', '+1 443 552 1400', 'https://www.pendry.com/baltimore/'),
     ('hotel_1722', 'Pendry Natirar', 'ChIJ_1pD1hqXw4kRjD36_aTMNT0', '+1 908 254 2300', 'https://www.pendry.com/natirar/'),
     ('hotel_1723', 'Pendry Park City', 'ChIJCTCakN1tUocRupr5OtlR6FA', '+1 435 800 1990', 'https://www.pendry.com/park-city/'),
-    ('hotel_1724', 'Pendry Washington DC – The Wharf', 'ChIJbxsPmXC3t4kRswReGkd7M2c', '+1 202 843 1112', 'https://www.pendry.com/washington-dc/'),
+    ('hotel_1724', 'Pendry Washington DC – The Wharf', 'ChIJbxsPmXC3t4kRswReGkd7M2c', NULL, 'https://www.pendry.com/washington-dc/'),
     ('hotel_1733', 'Regent Santa Monica Beach', 'ChIJpWsmhcelwoARbuhT0M70HQY', '+1 310 458 6700', 'https://santamonica.regenthotels.com/'),
     ('hotel_1745', 'Six Bells Countryside Inn', 'ChIJ2V7lCQAb3YkRZGXETAo87BQ', '+1 845 658 2047', NULL),
     ('hotel_1754', 'Stein Eriksen Lodge', 'ChIJyxf_edlyUocRYOYp7Ec6nXA', NULL, NULL),

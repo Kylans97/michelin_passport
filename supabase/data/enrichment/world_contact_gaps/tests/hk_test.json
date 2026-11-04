@@ -1,2 +1,2 @@
-{"file": "prepared_hk_contact_fill.sql", "apply": true, "values_written": 39, "rerun_noop": true, "renamed_row": "rest_0301", "rename_aborts": true, "error": ""}
-{"all_files_in_sequence": true, "filled_total": 927}
+{"file": "prepared_hk_contact_fill.sql", "apply": true, "values_written": 38, "rerun_noop": true, "renamed_row": "rest_0301", "rename_aborts": true, "error": ""}
+{"all_files_in_sequence": true, "filled_total": 926}

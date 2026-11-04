@@ -20,11 +20,11 @@
 -- re-run (fill-only).
 
 begin;
--- restaurants: 2 rows (2 Place IDs, 0 phones, 0 websites)
+-- restaurants: 2 rows (2 Place IDs, 1 phones, 0 websites)
 create temp table _fill_restaurant (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_restaurant values
     ('rest_3914', 'Kitchen By Osman Sezener', 'ChIJ35wBdEJxvhQRPl1MYDk6fkw', NULL, NULL),
-    ('rest_3922', 'Teruar Urla', 'ChIJhZHd4V2TuxQRcnUStkAqXkA', NULL, NULL);
+    ('rest_3922', 'Teruar Urla', 'ChIJhZHd4V2TuxQRcnUStkAqXkA', '+90 532 659 20 90', NULL);
 
 do $$
 declare bad text;
@@ -46,7 +46,7 @@ update public.restaurants x set phone = f.phone, updated_at = now()
 update public.restaurants x set website_url = f.website, updated_at = now()
   from _fill_restaurant f where x.restaurant_code = f.code and f.website is not null and x.website_url is null;
 
--- hotels: 17 rows (17 Place IDs, 14 phones, 8 websites)
+-- hotels: 17 rows (17 Place IDs, 15 phones, 8 websites)
 create temp table _fill_hotel (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_hotel values
     ('hotel_2904', 'AJWA Sultanahmet', 'ChIJVcbDoJC5yhQRtPDNFoCst64', '+90 212 638 22 00', NULL),
@@ -65,7 +65,7 @@ insert into _fill_hotel values
     ('hotel_2921', 'Six Senses Kaplankaya', 'ChIJYcZqaM2JvhQRqP4nJL6BgNM', '+90 252 511 00 30', NULL),
     ('hotel_2922', 'The Bank Hotel Istanbul', 'ChIJMcSt2I25yhQRuehbtlb4he8', '+90 212 283 00 55', 'https://www.thebankhotelistanbul.com/'),
     ('hotel_2923', 'The St. Regis Istanbul', 'ChIJc0DhkAy3yhQRPuBapvRaCAQ', '+90 212 368 00 00', NULL),
-    ('hotel_2925', 'Warehouse By The Stay', 'ChIJlblI3B55uxQRg8Tj_TCpSFQ', NULL, NULL);
+    ('hotel_2925', 'Warehouse By The Stay', 'ChIJlblI3B55uxQRg8Tj_TCpSFQ', '+90 232 970 78 29', NULL);
 
 do $$
 declare bad text;

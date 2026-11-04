@@ -47,9 +47,19 @@ def addr_agrees(row_addr, ld_addr):
     words = [w for w in re.sub(r'\d+', ' ', street).split() if len(w) > 2]
     if nums and all(n in ra_nums for n in nums) and words and sum(w in ra_flat for w in words) >= len(words) / 2:
         why.append('street')
+    elif not nums and len(words) >= 2 and sum(w in ra_flat for w in words) >= 0.6 * len(words):
+        why.append('street words (no number)')
     return why
 
 
+# Checked by hand on 2026-11-04: same address, written differently.
+MANUAL_OK = {
+    'hotel_759': 'checked by hand: Crescent Rd = Crescent Road, Palm Jumeirah',
+    'hotel_761': 'checked by hand: Marasi Drive, Business Bay in both',
+    'rest_0131': 'checked by hand: Qasr Al Hosn / North Parking, Al Hosn, Abu Dhabi',
+    'rest_0210': 'checked by hand: Promenadeplatz 2 within Promenadepl. 2-6 (postcode 80331 vs 80333)',
+    'rest_0313': 'checked by hand: 19 Dosan-daero 67-gil in both (MICHELIN adds 2F)',
+}
 EXP, RAW, OUT = sys.argv[1:4]
 idx = json.load(open(os.path.join(RAW, 'index.json')))
 res = {}
@@ -77,6 +87,8 @@ for r in json.load(open(EXP))['gaps']:
                  page_country=cc, website=html.unescape(web.group(1)) if web else None, stay_hotels=stay)
         agree = addr_agrees(r['address'], a)
         d['address_agrees'] = agree
+        if not agree and c in MANUAL_OK and cc == r['country']:
+            agree = [MANUAL_OK[c]]
         d['identity_ok'] = cc == r['country'] and bool(agree)
         d['identity_note'] = ('country ' + str(cc) + ' != ' + r['country']) if cc != r['country'] else \
             ('address agrees: ' + '+'.join(agree) if agree else 'address does not agree: ' + json.dumps(a, ensure_ascii=False))

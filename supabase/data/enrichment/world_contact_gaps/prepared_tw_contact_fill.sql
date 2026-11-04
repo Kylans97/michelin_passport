@@ -20,7 +20,7 @@
 -- re-run (fill-only).
 
 begin;
--- restaurants: 31 rows (29 Place IDs, 21 phones, 0 websites)
+-- restaurants: 31 rows (29 Place IDs, 20 phones, 0 websites)
 create temp table _fill_restaurant (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_restaurant values
     ('rest_0469', 'Mudan', NULL, '+886 2 2706 8699', NULL),
@@ -51,7 +51,7 @@ insert into _fill_restaurant values
     ('rest_2929', 'Tien Hsiang Lo', 'ChIJt3yXuFupQjQR4fGsPcwIluI', '+886 2 2597 1234', NULL),
     ('rest_2930', 'T+T', 'ChIJZ0R6E8mrQjQR3LBJvDh6gwc', '+886 2 2719 9191', NULL),
     ('rest_2931', 'Wok by O''BOND', 'ChIJYSnuobSrQjQRYJh45svt_T8', '+886 2 2778 4503', NULL),
-    ('rest_2932', 'Ya Ge', 'ChIJCToTHearQjQR4sFNUhOOeU8', '+886 2 2715 6668', NULL),
+    ('rest_2932', 'Ya Ge', 'ChIJCToTHearQjQR4sFNUhOOeU8', NULL, NULL),
     ('rest_2933', 'Yu Dao', 'ChIJ3TodK1F1bjQRCbXXahcYHJc', NULL, NULL),
     ('rest_2935', 'ZEA', 'ChIJA1BTJUirQjQRkALACCyp9yc', NULL, NULL);
 

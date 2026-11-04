@@ -1,55 +1,55 @@
 country,rows,status,place_filled,place_needed,phone_filled,phone_needed,website_filled,website_needed,closed,note
-JP,272,klaar,0,0,136,266,163,267,2,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
-US,175,klaar,127,161,93,167,18,86,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+JP,272,klaar,0,0,131,266,163,267,2,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+US,175,klaar,127,161,85,167,18,86,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
 CN,128,klaar,0,125,0,127,0,90,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
 GR,78,overgeslagen,,,,,,,,"voorbereid in ../michelin_gr (QA-431), wacht op akkoord"
 MX,53,klaar,37,52,13,43,13,34,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
 IT,50,klaar,0,16,20,49,1,32,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
-TW,42,klaar,32,38,23,42,0,25,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+TW,42,klaar,32,38,22,42,0,25,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
 DE,28,klaar,0,7,4,28,0,10,3,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
 FR,26,klaar,2,13,2,19,5,15,5,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
-HK,25,klaar,19,20,16,24,4,11,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
-TR,24,klaar,19,24,14,24,8,22,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
-CA,20,niet begonnen,,,,,,,,
-GB,20,niet begonnen,,,,,,,,
-BE,14,niet begonnen,,,,,,,,
-ES,14,niet begonnen,,,,,,,,
-AT,13,niet begonnen,,,,,,,,
-CZ,13,niet begonnen,,,,,,,,
-EG,13,niet begonnen,,,,,,,,
-NO,12,niet begonnen,,,,,,,,
-SG,10,niet begonnen,,,,,,,,
-CH,9,niet begonnen,,,,,,,,
-AE,7,niet begonnen,,,,,,,,
-PT,7,niet begonnen,,,,,,,,
-TH,7,niet begonnen,,,,,,,,
-PE,6,niet begonnen,,,,,,,,
-HR,5,niet begonnen,,,,,,,,
-MO,5,niet begonnen,,,,,,,,
-PL,5,niet begonnen,,,,,,,,
-SI,4,niet begonnen,,,,,,,,
-BR,3,niet begonnen,,,,,,,,
-DK,3,niet begonnen,,,,,,,,
-HU,3,niet begonnen,,,,,,,,
-LV,3,niet begonnen,,,,,,,,
-ME,3,niet begonnen,,,,,,,,
-NL,3,niet begonnen,,,,,,,,
-SE,3,niet begonnen,,,,,,,,
-AU,2,niet begonnen,,,,,,,,
-EE,2,niet begonnen,,,,,,,,
-IN,2,niet begonnen,,,,,,,,
-KR,2,niet begonnen,,,,,,,,
-LT,2,niet begonnen,,,,,,,,
-RS,2,niet begonnen,,,,,,,,
-AD,1,niet begonnen,,,,,,,,
-AR,1,niet begonnen,,,,,,,,
-AW,1,niet begonnen,,,,,,,,
-BL,1,niet begonnen,,,,,,,,
-CL,1,niet begonnen,,,,,,,,
-CO,1,niet begonnen,,,,,,,,
-FI,1,niet begonnen,,,,,,,,
-ID,1,niet begonnen,,,,,,,,
-IE,1,niet begonnen,,,,,,,,
-IS,1,niet begonnen,,,,,,,,
-MT,1,niet begonnen,,,,,,,,
-MV,1,niet begonnen,,,,,,,,
+HK,25,klaar,19,20,15,24,4,11,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+TR,24,klaar,19,24,16,24,8,22,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+CA,20,klaar,19,20,11,19,3,9,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+GB,20,klaar,0,0,2,20,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+BE,14,klaar,0,2,2,9,5,13,3,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+ES,14,klaar,0,3,4,11,0,8,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+AT,13,klaar,0,6,7,13,0,11,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+CZ,13,klaar,12,13,9,13,5,11,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+EG,13,klaar,8,13,8,13,6,13,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+NO,12,klaar,0,0,3,12,1,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+SG,10,klaar,0,0,6,9,3,6,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+CH,9,klaar,0,7,0,8,1,9,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+AE,7,klaar,0,0,3,6,3,4,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+PT,7,klaar,0,4,0,7,0,4,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+TH,7,klaar,0,0,2,2,4,5,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+PE,6,klaar,2,2,2,2,3,6,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+HR,5,klaar,5,5,4,5,3,4,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+MO,5,klaar,1,4,0,5,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+PL,5,klaar,4,5,3,5,1,3,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+SI,4,klaar,2,2,1,3,2,2,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+BR,3,klaar,0,0,0,0,1,3,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+DK,3,klaar,0,0,1,3,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+HU,3,klaar,2,2,3,3,1,2,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+LV,3,klaar,3,3,2,3,2,3,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+ME,3,klaar,0,0,1,3,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+NL,3,klaar,0,1,0,2,0,3,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+SE,3,klaar,0,0,0,2,1,2,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+AU,2,klaar,0,1,1,2,0,0,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+EE,2,klaar,2,2,2,2,1,2,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+IN,2,klaar,1,1,2,2,0,0,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+KR,2,klaar,0,0,0,0,1,2,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+LT,2,klaar,1,2,1,2,1,2,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+RS,2,klaar,0,0,2,2,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+AD,1,klaar,0,0,0,1,0,0,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+AR,1,klaar,0,0,0,0,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+AW,1,klaar,0,0,1,1,1,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+BL,1,klaar,0,0,0,1,0,0,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+CL,1,klaar,0,0,0,0,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+CO,1,klaar,0,0,0,0,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+FI,1,klaar,0,0,0,1,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+ID,1,klaar,0,0,0,1,0,0,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+IE,1,klaar,0,0,0,1,0,0,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+IS,1,klaar,0,1,0,1,0,1,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+MT,1,klaar,1,1,1,1,0,0,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+MV,1,klaar,1,1,1,1,0,0,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV

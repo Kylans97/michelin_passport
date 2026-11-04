@@ -1,4 +1,1381 @@
 {
+ "hotel_759": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/palm-jumeirah/atlantis-the-royal-dubai-12999",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/palm-jumeirah/atlantis-the-royal-dubai-12999",
+  "found": true,
+  "name": "Atlantis The Royal, Dubai in Palm Jumeirah",
+  "telephone": "+971 4 426 3000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Crescent Rd",
+   "addressLocality": "Palm Jumeirah",
+   "addressCountry": "ARE",
+   "addressRegion": "Dubai"
+  },
+  "page_country": "AE",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [],
+  "identity_ok": true,
+  "identity_note": "address agrees: checked by hand: Crescent Rd = Crescent Road, Palm Jumeirah"
+ },
+ "hotel_761": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/dubai/the-lana-dorchester-collection-13525",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/dubai/the-lana-dorchester-collection-13525",
+  "found": true,
+  "name": "The Lana - Dorchester Collection in Dubai",
+  "telephone": "+971 4 882 2000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Marasi Drive Burj Khalifa District, Business Bay",
+   "addressLocality": "Dubai",
+   "addressCountry": "ARE"
+  },
+  "page_country": "AE",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [],
+  "identity_ok": true,
+  "identity_note": "address agrees: checked by hand: Marasi Drive, Business Bay in both"
+ },
+ "rest_0127": {
+  "status": "200",
+  "final": "https://guide.michelin.com/nl/nl/dubai-emirate/dubai/restaurant/fzn-by-bjorn-frantzen",
+  "canonical": "https://guide.michelin.com/nl/nl/dubai-emirate/dubai/restaurant/fzn-by-bjorn-frantzen",
+  "found": true,
+  "name": "FZN by Björn Frantzén",
+  "telephone": "+971 50 107 6322",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Atlantis The Palm Jumeirah, Crescent Road",
+   "addressLocality": "Dubai",
+   "addressCountry": "ARE",
+   "addressRegion": "Dubai Emirate"
+  },
+  "page_country": "AE",
+  "website": "https://www.restaurantfzn.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "rest_0129": {
+  "status": "200",
+  "final": "https://guide.michelin.com/nl/nl/abu-dhabi-emirate/abu-dhabi/restaurant/talea-by-antonio-guida",
+  "canonical": "https://guide.michelin.com/nl/nl/abu-dhabi-emirate/abu-dhabi/restaurant/talea-by-antonio-guida",
+  "found": true,
+  "name": "Talea by Antonio Guida",
+  "telephone": "+971 2 690 7999",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Emirates Palace Mandarin Oriental Hotel, West Corniche Road, Al Ras Al Akhdar",
+   "addressLocality": "Abu Dhabi",
+   "addressCountry": "ARE",
+   "addressRegion": "Abu Dhabi Emirate"
+  },
+  "page_country": "AE",
+  "website": "https://www.mandarinoriental.com/en/abu-dhabi/emirates-palace/dine/talea-by-antonio-guida",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "rest_0130": {
+  "status": "404",
+  "final": "https://guide.michelin.com/nl/nl/abu-dhabi/abu-dhabi/restaurant/hakkasan",
+  "canonical": null,
+  "found": false,
+  "identity_ok": false,
+  "identity_note": "no venue on the page (status 404, final https://guide.michelin.com/nl/nl/abu-dhabi/abu-dhabi/restaurant/hakkasan)"
+ },
+ "rest_0131": {
+  "status": "200",
+  "final": "https://guide.michelin.com/nl/nl/abu-dhabi-emirate/abu-dhabi/restaurant/erth",
+  "canonical": "https://guide.michelin.com/nl/nl/abu-dhabi-emirate/abu-dhabi/restaurant/erth",
+  "found": true,
+  "name": "Erth",
+  "telephone": "+971 58 600 6922",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "North Parking, Al Hosn",
+   "addressLocality": "Abu Dhabi",
+   "addressCountry": "ARE",
+   "addressRegion": "Abu Dhabi Emirate"
+  },
+  "page_country": "AE",
+  "website": "https://erthrestaurant.ae/",
+  "stay_hotels": [],
+  "address_agrees": [],
+  "identity_ok": true,
+  "identity_note": "address agrees: checked by hand: Qasr Al Hosn / North Parking, Al Hosn, Abu Dhabi"
+ },
+ "hotel_2548": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/vienna/anantara-palais-hansen-vienna-hotel-15401",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/vienna/anantara-palais-hansen-vienna-hotel-15401",
+  "found": true,
+  "name": "Anantara Palais Hansen Vienna Hotel in Vienna",
+  "telephone": "+43 1 236 1000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Schottenring 24",
+   "addressLocality": "Vienna",
+   "postalCode": "1010",
+   "addressCountry": "AUT"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2551": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Seefeld/alpin-resort-sacher-13890",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Seefeld/alpin-resort-sacher-13890",
+  "found": true,
+  "name": "Alpin Resort Sacher in Seefeld",
+  "telephone": "+43 5212 2272 0",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Geigenbühelstraße 185",
+   "addressLocality": "Seefeld",
+   "postalCode": "6100",
+   "addressCountry": "AUT",
+   "addressRegion": "Tyrol"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2555": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/afiesl/genieerhotel-bergergut-16963",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/afiesl/genieerhotel-bergergut-16963",
+  "found": true,
+  "name": "Genießerhotel BERGERGUT in Afiesl",
+  "telephone": "+43 7216 4451",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Afiesl 7",
+   "addressLocality": "Afiesl",
+   "postalCode": "4170",
+   "addressCountry": "AUT",
+   "addressRegion": "Upper Austria"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2558": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/salzburg/hotel-goldener-hirsch-7439",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/salzburg/hotel-goldener-hirsch-7439",
+  "found": true,
+  "name": "Hotel Goldener Hirsch in Salzburg",
+  "telephone": "(43)(662) 80840",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Getreidegasse 37",
+   "addressLocality": "Salzburg",
+   "postalCode": "5020",
+   "addressCountry": "AUT"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2560": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/vienna/hotel-josefine-12995",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/vienna/hotel-josefine-12995",
+  "found": true,
+  "name": "Hotel Josefine in Vienna",
+  "telephone": " +43 1 58870",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Esterházygasse 33",
+   "addressLocality": "Vienna",
+   "postalCode": "1060",
+   "addressCountry": "AUT"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2564": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/solden/hotel-schone-aussicht-16810",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/solden/hotel-schone-aussicht-16810",
+  "found": true,
+  "name": "Hotel Schöne Aussicht in Sölden",
+  "telephone": "+43 5254 2221",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Hochsöldenstraße 3",
+   "addressLocality": "Sölden",
+   "postalCode": "6450",
+   "addressCountry": "AUT",
+   "addressRegion": "Tyrol"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2565": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/vienna/hyatt-regency-vienna-9364",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/vienna/hyatt-regency-vienna-9364",
+  "found": true,
+  "name": "Hyatt Regency Vienna in Vienna",
+  "telephone": "+43 1 205 7744 1234",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Arsenalstraße 10",
+   "addressLocality": "Vienna",
+   "postalCode": "1100",
+   "addressCountry": "AUT"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2566": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/styria/lieperts-cafe-dinner-rooms-16827",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/styria/lieperts-cafe-dinner-rooms-16827",
+  "found": true,
+  "name": "Lieperts Café Dinner Rooms in Styria",
+  "telephone": "+43 664 1418116",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Arnfelser Strasse 2",
+   "addressLocality": "Styria",
+   "postalCode": "8463",
+   "addressCountry": "AUT"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2567": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/badvigaun/neuwirt-hotel-wirtshaus-16970",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/badvigaun/neuwirt-hotel-wirtshaus-16970",
+  "found": true,
+  "name": "Neuwirt. Hotel & Wirtshaus in Bad Vigaun",
+  "telephone": "0624583434",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Am Dorfplatz 10",
+   "addressLocality": "Bad Vigaun",
+   "postalCode": "5424",
+   "addressCountry": "AUT",
+   "addressRegion": "Salzburg"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2571": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/St.-Anton-am-Arlberg/ullrhaus-st-anton-16324",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/St.-Anton-am-Arlberg/ullrhaus-st-anton-16324",
+  "found": true,
+  "name": "Ullrhaus - St. Anton in St. Anton am Arlberg",
+  "telephone": "00436503462543",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Alte Arlbergstraße 2",
+   "addressLocality": "St. Anton am Arlberg",
+   "postalCode": "6580",
+   "addressCountry": "AUT",
+   "addressRegion": "Tyrol"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_46": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/vienna/park-hyatt-vienna-7641",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/vienna/park-hyatt-vienna-7641",
+  "found": true,
+  "name": "Park Hyatt Vienna in Vienna",
+  "telephone": "+43 1 22740 1234",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Am Hof 2",
+   "addressLocality": "Vienna",
+   "postalCode": "1010",
+   "addressCountry": "AUT"
+  },
+  "page_country": "AT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3666": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/karnten/weissensee_1047660/restaurant/rouge-noir",
+  "canonical": "https://guide.michelin.com/en/karnten/weissensee_1047660/restaurant/rouge-noir",
+  "found": true,
+  "name": "Rouge Noir",
+  "telephone": "+43 664 2178570",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Neusach 1",
+   "addressLocality": "Weissensee",
+   "postalCode": "9762",
+   "addressCountry": "AUT",
+   "addressRegion": "Kärnten"
+  },
+  "page_country": "AT",
+  "website": "https://www.rougenoir.at",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3680": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/niederosterreich/waidhofen-an-der-thaya_1052291/restaurant/zimmerl",
+  "canonical": "https://guide.michelin.com/en/niederosterreich/waidhofen-an-der-thaya_1052291/restaurant/zimmerl",
+  "found": true,
+  "name": "Zimmerl",
+  "telephone": "+43 2842 24184",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Heidenreichsteiner Straße 28",
+   "addressLocality": "Waidhofen an der Thaya",
+   "postalCode": "3830",
+   "addressCountry": "AUT",
+   "addressRegion": "Niederösterreich"
+  },
+  "page_country": "AT",
+  "website": "https://www.restaurantzimmerl.at/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_700": {
+  "status": "200",
+  "final": "https://guide.michelin.com/us/en/hotels-stays/sydney/capella-sydney-13134",
+  "canonical": "https://guide.michelin.com/us/en/hotels-stays/sydney/capella-sydney-13134",
+  "found": true,
+  "name": "Capella Sydney in Sydney",
+  "telephone": "+61 2 9071 5000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "24 Loftus Street",
+   "addressLocality": "Sydney",
+   "postalCode": "2000",
+   "addressCountry": "AUS",
+   "addressRegion": "New South Wales"
+  },
+  "page_country": "AU",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "hotel_703": {
+  "status": "200",
+  "final": "https://guide.michelin.com/us/en/hotels-stays/hobart/the-tasman-a-luxury-collection-hotel-hobart-12558",
+  "canonical": "https://guide.michelin.com/us/en/hotels-stays/hobart/the-tasman-a-luxury-collection-hotel-hobart-12558",
+  "found": true,
+  "name": "The Tasman, a Luxury Collection Hotel, Hobart in Hobart",
+  "telephone": "+61 3 6240 6000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "12 Murray Street",
+   "addressLocality": "Hobart",
+   "postalCode": "7000",
+   "addressCountry": "AUS",
+   "addressRegion": "Tasmania"
+  },
+  "page_country": "AU",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "hotel_2805": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/kortrijk/cobergher-hotel-15640",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/kortrijk/cobergher-hotel-15640",
+  "found": true,
+  "name": "Cobergher Hotel in Kortrijk",
+  "telephone": "0470170519",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Onze Lieve Vrouwestraat 41",
+   "addressLocality": "Kortrijk",
+   "postalCode": "8500",
+   "addressCountry": "BEL",
+   "addressRegion": "Flanders"
+  },
+  "page_country": "BE",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0798": {
+  "status": "404",
+  "final": "https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/kommilfoo",
+  "canonical": null,
+  "found": false,
+  "identity_ok": false,
+  "identity_note": "no venue on the page (status 404, final https://guide.michelin.com/en/antwerpen/be-antwerpen/restaurant/kommilfoo)"
+ },
+ "rest_0814": {
+  "status": "200",
+  "final": "https://guide.michelin.com/us/en/antwerpen/borgerhout/restaurant/bloesem",
+  "canonical": "https://guide.michelin.com/us/en/antwerpen/borgerhout/restaurant/bloesem",
+  "found": true,
+  "name": "Bloesem",
+  "telephone": "+32 468 53 63 42",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "De Leescorfstraat 8",
+   "addressLocality": "Borgerhout",
+   "postalCode": "2140",
+   "addressCountry": "BEL",
+   "addressRegion": "Antwerpen"
+  },
+  "page_country": "BE",
+  "website": "https://www.restaurantbloesem.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0817": {
+  "status": "200",
+  "final": "https://guide.michelin.com/us/en/oost-vlaanderen/ouwegem/restaurant/benoit-en-bernard-dewitte",
+  "canonical": "https://guide.michelin.com/us/en/oost-vlaanderen/ouwegem/restaurant/benoit-en-bernard-dewitte",
+  "found": true,
+  "name": "Benoit en Bernard Dewitte",
+  "telephone": "+32 9 384 56 52",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Beertegemstraat 52",
+   "addressLocality": "Ouwegem",
+   "postalCode": "9750",
+   "addressCountry": "BEL",
+   "addressRegion": "Oost-Vlaanderen"
+  },
+  "page_country": "BE",
+  "website": "https://www.restaurantdewitte.be",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0829": {
+  "status": "200",
+  "final": "https://guide.michelin.com/gb/en/west-vlaanderen/sint-denijs/restaurant/l-envie",
+  "canonical": "https://guide.michelin.com/gb/en/west-vlaanderen/sint-denijs/restaurant/l-envie",
+  "found": true,
+  "name": "L'Envie",
+  "telephone": "+32 56 22 19 83",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Helkijnstraat 38",
+   "addressLocality": "Sint-Denijs",
+   "postalCode": "8554",
+   "addressCountry": "BEL",
+   "addressRegion": "West-Vlaanderen"
+  },
+  "page_country": "BE",
+  "website": "https://www.lenvie-restaurant.be/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0830": {
+  "status": "404",
+  "final": "https://guide.michelin.com/gb/en/west-vlaanderen/brugge/restaurant/memoire",
+  "canonical": null,
+  "found": false,
+  "identity_ok": false,
+  "identity_note": "no venue on the page (status 404, final https://guide.michelin.com/gb/en/west-vlaanderen/brugge/restaurant/memoire)"
+ },
+ "rest_0836": {
+  "status": "404",
+  "final": "https://guide.michelin.com/us/en/bruxelles-capitale/anderlecht/restaurant/la-paix203164",
+  "canonical": null,
+  "found": false,
+  "identity_ok": false,
+  "identity_note": "no venue on the page (status 404, final https://guide.michelin.com/us/en/bruxelles-capitale/anderlecht/restaurant/la-paix203164)"
+ },
+ "rest_0840": {
+  "status": "404",
+  "final": "https://guide.michelin.com/us/en/west-vlaanderen/kortrijk/restaurant/table-d-amis",
+  "canonical": null,
+  "found": false,
+  "identity_ok": false,
+  "identity_note": "no venue on the page (status 404, final https://guide.michelin.com/us/en/west-vlaanderen/kortrijk/restaurant/table-d-amis)"
+ },
+ "rest_0846": {
+  "status": "404",
+  "final": "https://guide.michelin.com/th/en/be-limburg/ordingen/restaurant/aurum",
+  "canonical": null,
+  "found": false,
+  "identity_ok": false,
+  "identity_note": "no venue on the page (status 404, final https://guide.michelin.com/th/en/be-limburg/ordingen/restaurant/aurum)"
+ },
+ "rest_0858": {
+  "status": "200",
+  "final": "https://guide.michelin.com/be/nl/vlaams-brabant/heverlee/restaurant/est-1242817",
+  "canonical": "https://guide.michelin.com/be/nl/vlaams-brabant/heverlee/restaurant/est-1242817",
+  "found": true,
+  "name": "EST",
+  "telephone": "+32 16 22 47 75",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Kapeldreef 46",
+   "addressLocality": "Heverlee",
+   "postalCode": "3001",
+   "addressCountry": "BEL",
+   "addressRegion": "Vlaams-Brabant"
+  },
+  "page_country": "BE",
+  "website": "https://www.restaurant-est.be/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0862": {
+  "status": "200",
+  "final": "https://guide.michelin.com/ca/fr/bruxelles-capitale/bruxelles/restaurant/eliane",
+  "canonical": "https://guide.michelin.com/ca/fr/bruxelles-capitale/bruxelles/restaurant/eliane",
+  "found": true,
+  "name": "Eliane",
+  "telephone": "+32 469 19 92 27",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Rue Saint-Laurent 36",
+   "addressLocality": "Bruxelles",
+   "postalCode": "1000",
+   "addressCountry": "BEL",
+   "addressRegion": "Bruxelles-Capitale"
+  },
+  "page_country": "BE",
+  "website": "https://www.elianerestaurant.be",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0890": {
+  "status": "404",
+  "final": "https://guide.michelin.com/us/en/be-luxembourg/grandhan/restaurant/la-table-de-manon",
+  "canonical": null,
+  "found": false,
+  "identity_ok": false,
+  "identity_note": "no venue on the page (status 404, final https://guide.michelin.com/us/en/be-luxembourg/grandhan/restaurant/la-table-de-manon)"
+ },
+ "hotel_1854": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/montreal/four-seasons-hotel-montreal-17279",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/montreal/four-seasons-hotel-montreal-17279",
+  "found": true,
+  "name": "Four Seasons Hotel Montreal in Montreal",
+  "telephone": "1-514-843-2500",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1440 Rue de la Montagne",
+   "addressLocality": "Montreal",
+   "postalCode": "H3G 1Z5",
+   "addressCountry": "CAN",
+   "addressRegion": "Quebec"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1855": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/toronto/four-seasons-hotel-toronto-12447",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/toronto/four-seasons-hotel-toronto-12447",
+  "found": true,
+  "name": "Four Seasons Hotel Toronto in Toronto",
+  "telephone": "+1 416-964-0411",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "60 Yorkville Avenue",
+   "addressLocality": "Toronto",
+   "postalCode": "M4W 0A4",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1856": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/whistler/four-seasons-resort-whistler-7388",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/whistler/four-seasons-resort-whistler-7388",
+  "found": true,
+  "name": "Four Seasons Resort and Residences Whistler in Whistler",
+  "telephone": "+1 (604) 935-3400",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "4591 Blackcomb Way",
+   "addressLocality": "Whistler",
+   "postalCode": "V0N 1B4",
+   "addressCountry": "CAN",
+   "addressRegion": "British Columbia"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1862": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/kingston-on/belvedere-hotel-kingston-16242",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/kingston-on/belvedere-hotel-kingston-16242",
+  "found": true,
+  "name": "Belvedere Hotel - Kingston in Kingston ON",
+  "telephone": "6133442423",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "141 King Street East",
+   "addressLocality": "Kingston ON",
+   "postalCode": " K7L 2Z9",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1878": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Picton/merrill-house-15537",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Picton/merrill-house-15537",
+  "found": true,
+  "name": "Merrill House in Picton",
+  "telephone": "6134767451",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "343 Main Street East",
+   "addressLocality": "Picton",
+   "postalCode": "K0K2T0",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1879": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Halifax/muir-halifax-12474",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Halifax/muir-halifax-12474",
+  "found": true,
+  "name": "Muir, a Luxury Collection Hotel, Halifax in Halifax",
+  "telephone": "+1 902-407-6847",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1709 Lower Water Street",
+   "addressLocality": "Halifax",
+   "postalCode": "B3J1S5",
+   "addressCountry": "CAN",
+   "addressRegion": "Nova Scotia"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1881": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/toronto/park-hyatt-toronto-7352",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/toronto/park-hyatt-toronto-7352",
+  "found": true,
+  "name": "Park Hyatt Toronto in Toronto",
+  "telephone": "+1.416.925.1234",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "4 Avenue Road",
+   "addressLocality": "Toronto",
+   "postalCode": "M5R 2E8",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1883": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/toronto/shangrila-hotel-toronto-7646",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/toronto/shangrila-hotel-toronto-7646",
+  "found": true,
+  "name": "Shangri-La Hotel, Toronto in Toronto",
+  "telephone": "(1 647) 788 8888",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "188 University Avenue",
+   "addressLocality": "Toronto",
+   "postalCode": "M5H 0A3",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1884": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/calgary/the-dorian-autograph-collection-13259",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/calgary/the-dorian-autograph-collection-13259",
+  "found": true,
+  "name": "The Dorian, Autograph Collection in Calgary",
+  "telephone": "403-300-6630",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "525 5th Avenue SW",
+   "addressLocality": "Calgary",
+   "postalCode": "T2P 3R7",
+   "addressCountry": "CAN",
+   "addressRegion": "Alberta"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1885": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/lake-louise/the-lodge-at-bow-lake-14569",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/lake-louise/the-lodge-at-bow-lake-14569",
+  "found": true,
+  "name": "The Lodge at Bow Lake in Lake Louise",
+  "telephone": "403-522-0148",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Icefields Parkway, P.O. Box 39",
+   "addressLocality": "Lake Louise",
+   "postalCode": "T0L 1E0",
+   "addressCountry": "CAN",
+   "addressRegion": "Alberta"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1889": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/kingston-on/the-smith-hotel-16448",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/kingston-on/the-smith-hotel-16448",
+  "found": true,
+  "name": "The Smith Hotel in Kingston ON",
+  "telephone": "+1-613-344-2423",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "221 Queen Street",
+   "addressLocality": "Kingston ON",
+   "postalCode": " K7L 1N8",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3235": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/ontario/toronto/restaurant/danico",
+  "canonical": "https://guide.michelin.com/en/ontario/toronto/restaurant/danico",
+  "found": true,
+  "name": "DaNico",
+  "telephone": "+1 647-715-1200",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "440 College St.",
+   "addressLocality": "Toronto",
+   "postalCode": "M5T 1T3",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": "https://www.danicotoronto.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3236": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/ontario/toronto/restaurant/don-alfonso-1890-toronto",
+  "canonical": "https://guide.michelin.com/en/ontario/toronto/restaurant/don-alfonso-1890-toronto",
+  "found": true,
+  "name": "Don Alfonso 1890",
+  "telephone": "+1 416-214-5888",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "The Westin Harbour Castle, 1 Harbour Sq.",
+   "addressLocality": "Toronto",
+   "postalCode": "M5J 1A6",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": "https://www.donalfonsotoronto.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3244": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/quebec/quebec_2434166/restaurant/kebec-club-prive",
+  "canonical": "https://guide.michelin.com/en/quebec/quebec_2434166/restaurant/kebec-club-prive",
+  "found": true,
+  "name": "Kebec Club Privé",
+  "telephone": "+1 819-342-2030",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "767 rue Saint-Joseph Est",
+   "addressLocality": "Québec",
+   "postalCode": "G1K 3C6",
+   "addressCountry": "CAN",
+   "addressRegion": "Quebec"
+  },
+  "page_country": "CA",
+  "website": "https://www.kebecclubprive.ca/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3251": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/quebec/rimouski_2986917/restaurant/narval",
+  "canonical": "https://guide.michelin.com/en/quebec/rimouski_2986917/restaurant/narval",
+  "found": true,
+  "name": "Narval",
+  "telephone": "+1 581-246-4818",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "144-A avenue de la Cathédrale",
+   "addressLocality": "Rimouski",
+   "postalCode": "G5L 5H8",
+   "addressCountry": "CAN",
+   "addressRegion": "Quebec"
+  },
+  "page_country": "CA",
+  "website": "https://restaurantnarval.ca",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3256": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/ontario/toronto/restaurant/restaurant-20-victoria",
+  "canonical": "https://guide.michelin.com/en/ontario/toronto/restaurant/restaurant-20-victoria",
+  "found": true,
+  "name": "Restaurant 20 Victoria",
+  "telephone": "+1 416-804-6066",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "20 Victoria St., Unit 100",
+   "addressLocality": "Toronto",
+   "postalCode": "M5C 2N8",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": "https://www.exploretock.com/restaurant20victoria",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3261": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sumibiyaki-arashi",
+  "canonical": "https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sumibiyaki-arashi",
+  "found": true,
+  "name": "Sumibiyaki Arashi",
+  "telephone": "+1 604-568-0522",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "363 E. Broadway",
+   "addressLocality": "Vancouver",
+   "postalCode": "V5T 1W5",
+   "addressCountry": "CAN",
+   "addressRegion": "British Columbia"
+  },
+  "page_country": "CA",
+  "website": "https://sumibiyakiarashi.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3262": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sushi-hyun",
+  "canonical": "https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sushi-hyun",
+  "found": true,
+  "name": "Sushi Hyun",
+  "telephone": "+1 778-788-0795",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "795 Jervis St.",
+   "addressLocality": "Vancouver",
+   "postalCode": "V6E 2B1",
+   "addressCountry": "CAN",
+   "addressRegion": "British Columbia"
+  },
+  "page_country": "CA",
+  "website": "https://www.sushihyun.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3264": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sushi-masuda-1214860",
+  "canonical": "https://guide.michelin.com/en/british-columbia/ca-vancouver/restaurant/sushi-masuda-1214860",
+  "found": true,
+  "name": "Sushi Masuda",
+  "telephone": "+1 604-816-3312",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1066 W. Hastings St.",
+   "addressLocality": "Vancouver",
+   "postalCode": "V6E 3X2",
+   "addressCountry": "CAN",
+   "addressRegion": "British Columbia"
+  },
+  "page_country": "CA",
+  "website": "https://www.sushimasuda.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3267": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/ontario/creemore_1244926/restaurant/the-pine-1209935",
+  "canonical": "https://guide.michelin.com/en/ontario/creemore_1244926/restaurant/the-pine-1209935",
+  "found": true,
+  "name": "The Pine",
+  "telephone": "+1 705-466-2888",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "7535 County Rd. 9",
+   "addressLocality": "Creemore",
+   "postalCode": "L0M 1G0",
+   "addressCountry": "CAN",
+   "addressRegion": "Ontario"
+  },
+  "page_country": "CA",
+  "website": "https://www.thepinecreemore.ca",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2501": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/crans-montana/six-senses-crans-montana-12936",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/crans-montana/six-senses-crans-montana-12936",
+  "found": true,
+  "name": "Six Senses Crans-Montana in Crans-Montana",
+  "telephone": "+41 58 806 20 20",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Route des Téléphériques 60",
+   "addressLocality": "Crans-Montana",
+   "postalCode": "3963",
+   "addressCountry": "CHE",
+   "addressRegion": "Swiss Alps"
+  },
+  "page_country": "CH",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2504": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/zermatt/22-summits-boutique-hotel-10722",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/zermatt/22-summits-boutique-hotel-10722",
+  "found": true,
+  "name": "22 SUMMITS Boutique Hotel in Zermatt",
+  "telephone": "+41 27 966 35 22",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Zen Steckenstraße 4",
+   "addressLocality": "Zermatt",
+   "postalCode": "3920",
+   "addressCountry": "CHE",
+   "addressRegion": "Swiss Alps"
+  },
+  "page_country": "CH",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2505": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/davos/ameron-swiss-mountain-10720",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/davos/ameron-swiss-mountain-10720",
+  "found": true,
+  "name": "AMERON Davos Swiss Mountain Resort in Davos",
+  "telephone": "+41 81 544 19 19",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Scalettastrasse 22",
+   "addressLocality": "Davos",
+   "postalCode": "7270",
+   "addressCountry": "CHE",
+   "addressRegion": "Swiss Alps"
+  },
+  "page_country": "CH",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2520": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/rougemont/hotel-de-rougemont-10871",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/rougemont/hotel-de-rougemont-10871",
+  "found": true,
+  "name": "Hotel de Rougemont & Spa in Rougemont",
+  "telephone": "+41 26 921 01 01",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Chemin des Palettes 14",
+   "addressLocality": "Rougemont",
+   "postalCode": "1659",
+   "addressCountry": "CHE",
+   "addressRegion": "Vaud"
+  },
+  "page_country": "CH",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2523": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/neuchatel/hotel-palafitte-7053",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/neuchatel/hotel-palafitte-7053",
+  "found": true,
+  "name": "Hotel Palafitte in Neuchâtel",
+  "telephone": "+41.(0)32 723 02 02",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Route des Gouttes d'Or 2",
+   "addressLocality": "Neuchâtel",
+   "postalCode": "2000",
+   "addressCountry": "CHE"
+  },
+  "page_country": "CH",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2537": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/F%C3%BCrstenau/schloss-schauenstein-14136",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/F%C3%BCrstenau/schloss-schauenstein-14136",
+  "found": true,
+  "name": "Schloss Schauenstein in Fürstenau",
+  "telephone": "+41 81 632 10 80",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Schauenstein Castle , Obergass 15 ",
+   "addressLocality": "Fürstenau",
+   "addressCountry": "CHE",
+   "addressRegion": "Swiss Alps"
+  },
+  "page_country": "CH",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "hotel_2545": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/gstaad/ultima-gstaad-9716",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/gstaad/ultima-gstaad-9716",
+  "found": true,
+  "name": "Ultima Gstaad in Gstaad",
+  "telephone": "+41 33 748 05 50",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Gsteigstrasse 70",
+   "addressLocality": "Gstaad",
+   "postalCode": "3780",
+   "addressCountry": "CHE",
+   "addressRegion": "Swiss Alps"
+  },
+  "page_country": "CH",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2547": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/burgenstock/waldhotel-10206",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/burgenstock/waldhotel-10206",
+  "found": true,
+  "name": "Waldhotel by Bürgenstock in Burgenstock",
+  "telephone": "+41 41 612 60 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Bürgenstock",
+   "addressLocality": "Burgenstock",
+   "postalCode": "6365",
+   "addressCountry": "CHE",
+   "addressRegion": "Swiss Alps"
+  },
+  "page_country": "CH",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
  "hotel_1000": {
   "status": "200",
   "final": "https://guide.michelin.com/en/hotels-stays/nanjing/yihe-mansions-10840",
@@ -2989,6 +4366,321 @@
   "identity_ok": true,
   "identity_note": "address agrees: street"
  },
+ "hotel_3100": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/prague/alcron-hotel-prague-10504",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/prague/alcron-hotel-prague-10504",
+  "found": true,
+  "name": "Almanac X Alcron Prague in Prague",
+  "telephone": "+420 222 820 048",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Stepanska 40",
+   "addressLocality": "Prague",
+   "postalCode": "110 00",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3101": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/prague/andaz-prague-12576",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/prague/andaz-prague-12576",
+  "found": true,
+  "name": "Andaz Prague in Prague",
+  "telephone": "+420 227 344 124",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Senovazne Namesti 976/31",
+   "addressLocality": "Prague",
+   "postalCode": "11000",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3102": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/prague/augustine-3031",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/prague/augustine-3031",
+  "found": true,
+  "name": "Augustine in Prague",
+  "telephone": "+42 0 266 11-2233",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Letenská 12/33",
+   "addressLocality": "Prague",
+   "postalCode": "118 00",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3103": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/prague/boho-prague-hotel-8053",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/prague/boho-prague-hotel-8053",
+  "found": true,
+  "name": "BoHo Prague Hotel in Prague",
+  "telephone": "+420 234 622 600",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Senovázná 1254/4",
+   "addressLocality": "Prague",
+   "postalCode": "110 00",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3104": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/mcely/chateau-mcely-6723",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/mcely/chateau-mcely-6723",
+  "found": true,
+  "name": "Chateau Mcely in Mcely",
+  "telephone": "+420 325 600 000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Mcely 61",
+   "addressLocality": "Mcely",
+   "postalCode": "289 36",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3105": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/prague/fairmont-golden-prague-14952",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/prague/fairmont-golden-prague-14952",
+  "found": true,
+  "name": "Fairmont Golden Prague in Prague",
+  "telephone": "420 296 631 111",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Parizska 30",
+   "addressLocality": "Prague",
+   "postalCode": "110 00",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3106": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/prague/four-seasons-hotel-prague-8238",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/prague/four-seasons-hotel-prague-8238",
+  "found": true,
+  "name": "Four Seasons Hotel Prague in Prague",
+  "telephone": "420 221 427 000 ",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Veleslavinova 2A 1098, Praha 1",
+   "addressLocality": "Prague",
+   "postalCode": "110 00",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3107": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/%C5%A0umperk/hotel-perk-13482",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/%C5%A0umperk/hotel-perk-13482",
+  "found": true,
+  "name": "Hotel Perk in Šumperk",
+  "telephone": "+420 581 580 000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "ul. 17. listopadu 413/1",
+   "addressLocality": "Šumperk",
+   "postalCode": "787 01",
+   "addressCountry": "CZE",
+   "addressRegion": "Moravia"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3108": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/prague/mosaic-house-13224",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/prague/mosaic-house-13224",
+  "found": true,
+  "name": "Mosaic House in Prague",
+  "telephone": "+420 277 016 880",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Odborů 4",
+   "addressLocality": "Prague",
+   "postalCode": "120 00",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3109": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/prague/the-julius-prague-12722",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/prague/the-julius-prague-12722",
+  "found": true,
+  "name": "The Julius Prague in Prague",
+  "telephone": "+420 233 111 222",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "3 Senovážné Náměstí",
+   "addressLocality": "Prague",
+   "postalCode": "110 00",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3110": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/carlsbad/villa-julius-a-emma-luxury-boutique-retreat-14947",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/carlsbad/villa-julius-a-emma-luxury-boutique-retreat-14947",
+  "found": true,
+  "name": "Villa Julius a Emma - Luxury Boutique Retreat in Carlsbad",
+  "telephone": "+420 604 796 889",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Jarní, Carlsbad",
+   "addressLocality": "Carlsbad",
+   "postalCode": "360 01",
+   "addressCountry": "CZE"
+  },
+  "page_country": "CZ",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "rest_4103": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/jihomoravsky/hlohovec_1274686/restaurant/essens",
+  "canonical": "https://guide.michelin.com/en/jihomoravsky/hlohovec_1274686/restaurant/essens",
+  "found": true,
+  "name": "ESSENS",
+  "telephone": "+420 730 575 555",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "K Zámečku 16",
+   "addressLocality": "Hlohovec",
+   "postalCode": "69143",
+   "addressCountry": "CZE",
+   "addressRegion": "Jihomoravský"
+  },
+  "page_country": "CZ",
+  "website": "https://www.restaurantessens.cz/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_4107": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/prague/prague/restaurant/levitate-1208342",
+  "canonical": "https://guide.michelin.com/en/prague/prague/restaurant/levitate-1208342",
+  "found": true,
+  "name": "LEVITATE",
+  "telephone": "+420 724 516 996",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Vinohradská 1228/47",
+   "addressLocality": "Prague",
+   "postalCode": "12000",
+   "addressCountry": "CZE",
+   "addressRegion": "Prague"
+  },
+  "page_country": "CZ",
+  "website": "https://www.levitate.cz",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
  "hotel_244": {
   "status": "200",
   "final": "https://guide.michelin.com/en/hotels-stays/munich/andaz-munich-schwabinger-tor-11143",
@@ -3280,8 +4972,8 @@
   "website": "https://www.bayerischerhof.de/de/",
   "stay_hotels": [],
   "address_agrees": [],
-  "identity_ok": false,
-  "identity_note": "address does not agree: {\"@type\": \"PostalAddress\", \"streetAddress\": \"Promenadeplatz 2\", \"addressLocality\": \"Munich\", \"postalCode\": \"80331\", \"addressCountry\": \"DEU\", \"addressRegion\": \"Bavaria\"}"
+  "identity_ok": true,
+  "identity_note": "address agrees: checked by hand: Promenadeplatz 2 within Promenadepl. 2-6 (postcode 80331 vs 80333)"
  },
  "rest_1852": {
   "status": "200",
@@ -3632,6 +5324,809 @@
   "identity_ok": true,
   "identity_note": "address agrees: postcode+street"
  },
+ "hotel_2574": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/copenhagen/25hours-hotel-paper-island-13999",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/copenhagen/25hours-hotel-paper-island-13999",
+  "found": true,
+  "name": "25hours Hotel Paper Island in Copenhagen",
+  "telephone": "+45 70 77 07 01 / paper island reception +45 88 77 99 04",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Papirøen 25",
+   "addressLocality": "Copenhagen",
+   "postalCode": "1436",
+   "addressCountry": "DNK"
+  },
+  "page_country": "DK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2576": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Millinge/falsled-kro-15345",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Millinge/falsled-kro-15345",
+  "found": true,
+  "name": "Falsled Kro in Millinge",
+  "telephone": "+45 62 68 11 11",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Assensvej 513",
+   "addressLocality": "Millinge",
+   "postalCode": "5642",
+   "addressCountry": "DNK",
+   "addressRegion": "Funen"
+  },
+  "page_country": "DK",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3696": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/capital-region/copenhagen/restaurant/jatak",
+  "canonical": "https://guide.michelin.com/en/capital-region/copenhagen/restaurant/jatak",
+  "found": true,
+  "name": "Jatak",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Rantzausgade 39",
+   "addressLocality": "Copenhagen",
+   "postalCode": "2200",
+   "addressCountry": "DNK",
+   "addressRegion": "Capital Region"
+  },
+  "page_country": "DK",
+  "website": "https://www.jatakcph.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3119": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/tallinn/schlossle-hotel-12625",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/tallinn/schlossle-hotel-12625",
+  "found": true,
+  "name": "Schlössle Hotel in Tallinn",
+  "telephone": "+372 699 7700",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Pühavaimu 13/15",
+   "addressLocality": "Tallinn",
+   "postalCode": "10123",
+   "addressCountry": "EST"
+  },
+  "page_country": "EE",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3120": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/tallinn/the-burman-hotel-15065",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/tallinn/the-burman-hotel-15065",
+  "found": true,
+  "name": "The Burman Hotel in Tallinn",
+  "telephone": "+372 618 8800",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Rataskaevu tänav 7",
+   "addressLocality": "Tallinn",
+   "postalCode": "10123",
+   "addressCountry": "EST"
+  },
+  "page_country": "EE",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3121": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/luxor/al-moudira-9477",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/luxor/al-moudira-9477",
+  "found": true,
+  "name": "Al Moudira Hotel in Luxor",
+  "telephone": "(+20) 122 325 13 07",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Hager Al Dabbeya, West Bank",
+   "addressLocality": "Luxor",
+   "postalCode": "1340304",
+   "addressCountry": "EGY"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_3122": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/el-gouna/casa-cook-el-gouna-126627-15566",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/el-gouna/casa-cook-el-gouna-126627-15566",
+  "found": true,
+  "name": "Casa Cook El Gouna in El Gouna",
+  "telephone": "+20 65 3545163",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Hurghada",
+   "addressLocality": "El Gouna",
+   "postalCode": "84513",
+   "addressCountry": "EGY",
+   "addressRegion": "Red Sea"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_3123": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/cairo/dusit-thani-lakeview-cairo-16265",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/cairo/dusit-thani-lakeview-cairo-16265",
+  "found": true,
+  "name": "Dusit Thani LakeView Cairo in Cairo",
+  "telephone": "+20 2 26140000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "El Tesseen Street, Fifth Settlement",
+   "addressLocality": "Cairo",
+   "addressCountry": "EGY"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "hotel_3124": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/cairo/fairmont-nile-city-15160",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/cairo/fairmont-nile-city-15160",
+  "found": true,
+  "name": "Fairmont Nile City in Cairo",
+  "telephone": "+20 2 24619494",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Nile City Towers, 2005B Corniche El Nil, Ramlet Bulaq",
+   "addressLocality": "Cairo",
+   "postalCode": "11311",
+   "addressCountry": "EGY"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3125": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/alexandria/four-seasons-hotel-alexandria-9522",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/alexandria/four-seasons-hotel-alexandria-9522",
+  "found": true,
+  "name": "Four Seasons Hotel Alexandria at San Stefano, Egypt in Alexandria",
+  "telephone": "20 3 581-8000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "399 El Geish Road, San Stefano Grand Plaza",
+   "addressLocality": "Alexandria",
+   "addressCountry": "EGY"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "hotel_3126": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/cairo/four-seasons-cairo-at-nile-plaza-8431",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/cairo/four-seasons-cairo-at-nile-plaza-8431",
+  "found": true,
+  "name": "Four Seasons Hotel Cairo at Nile Plaza in Cairo",
+  "telephone": "20 2 2791-7000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1089 Corniche El Nil, P.O. Box 63 Maglis El Shaab, Garden City",
+   "addressLocality": "Cairo",
+   "postalCode": "11519",
+   "addressCountry": "EGY"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3127": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/sharm-el-sheikh/four-seasons-resort-sharm-el-sheikh-8233",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/sharm-el-sheikh/four-seasons-resort-sharm-el-sheikh-8233",
+  "found": true,
+  "name": "Four Seasons Resort Sharm El Sheikh in Sharm El Sheikh",
+  "telephone": "20 69 360-3555",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1 Four Seasons Boulevard, PO Box 203",
+   "addressLocality": "Sharm El Sheikh",
+   "addressCountry": "EGY",
+   "addressRegion": "Sinai Peninsula"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "hotel_3128": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Giza/giza-palace-hotel-spa-15388",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Giza/giza-palace-hotel-spa-15388",
+  "found": true,
+  "name": "Giza Palace Hotel & Spa in Giza",
+  "telephone": "https://www.gizapalace.com/",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "No.35/36. 26th July Corridor Sheikh Zayed, 6th of October City",
+   "addressLocality": "Giza",
+   "postalCode": "12588",
+   "addressCountry": "EGY",
+   "addressRegion": "Cairo"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3129": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/el-gouna/la-maison-bleue-el-gouna-14616",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/el-gouna/la-maison-bleue-el-gouna-14616",
+  "found": true,
+  "name": "La Maison Bleue El Gouna in El Gouna",
+  "telephone": "+20 12 83591110",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Kite Center Road, Hurghada",
+   "addressLocality": "El Gouna",
+   "postalCode": "84513",
+   "addressCountry": "EGY",
+   "addressRegion": "Red Sea"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_3130": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/cairo/mazeej-balad-boutique-hotel-15456",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/cairo/mazeej-balad-boutique-hotel-15456",
+  "found": true,
+  "name": "Mazeej Balad Boutique Hotel in Cairo",
+  "telephone": "+20 2 27731525",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "7 Champollion Road",
+   "addressLocality": "Cairo",
+   "postalCode": "4272111",
+   "addressCountry": "EGY"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3131": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/alexandria/rixos-montaza-alexandria-16269",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/alexandria/rixos-montaza-alexandria-16269",
+  "found": true,
+  "name": "Rixos Montaza Alexandria in Alexandria",
+  "telephone": "+20 11 00000244",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Montaza",
+   "addressLocality": "Alexandria",
+   "postalCode": "21919",
+   "addressCountry": "EGY"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_3132": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Hurghada/the-oberoi-beach-resort-sahl-hasheesh-15528",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Hurghada/the-oberoi-beach-resort-sahl-hasheesh-15528",
+  "found": true,
+  "name": "The Oberoi Beach Resort, Sahl Hasheesh in Hurghada",
+  "telephone": "+20 65 3461040",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Oberoi 117, Sahl Hasheesh",
+   "addressLocality": "Hurghada",
+   "postalCode": "84500",
+   "addressCountry": "EGY",
+   "addressRegion": "Red Sea"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3133": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/cairo/the-st-regis-cairo-12311",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/cairo/the-st-regis-cairo-12311",
+  "found": true,
+  "name": "The St. Regis Cairo in Cairo",
+  "telephone": "+20 2 25979000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Corniche El Nile",
+   "addressLocality": "Cairo",
+   "postalCode": "99999",
+   "addressCountry": "EGY"
+  },
+  "page_country": "EG",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "hotel_2771": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/majorca/four-seasons-resort-mallorca-at-formentor-125434-14683",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/majorca/four-seasons-resort-mallorca-at-formentor-125434-14683",
+  "found": true,
+  "name": "Four Seasons Resort Mallorca at Formentor in Mallorca",
+  "telephone": "+34 971 89 91 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Playa de Formentor",
+   "addressLocality": "Mallorca",
+   "postalCode": "07470",
+   "addressCountry": "ESP",
+   "addressRegion": "Balearic Islands"
+  },
+  "page_country": "ES",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_2773": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/formentera/dunas-de-formentera-16333",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/formentera/dunas-de-formentera-16333",
+  "found": true,
+  "name": "Dunas de Formentera in Formentera",
+  "telephone": "+34 971 12 45 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Lugar Venda Ses Clotades 4449",
+   "addressLocality": "Formentera",
+   "postalCode": "07872",
+   "addressCountry": "ESP",
+   "addressRegion": "Balearic Islands"
+  },
+  "page_country": "ES",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2774": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Montecorto/la-donaira-14220",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Montecorto/la-donaira-14220",
+  "found": true,
+  "name": "Finca La Donaira in Montecorto",
+  "telephone": "+34 680 65 44 54",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Camino de las minas s/n",
+   "addressLocality": "Montecorto",
+   "postalCode": "29430",
+   "addressCountry": "ESP",
+   "addressRegion": "Andalusia"
+  },
+  "page_country": "ES",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_2779": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/sevilla/hotel-alfonso-xiii-11425",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/sevilla/hotel-alfonso-xiii-11425",
+  "found": true,
+  "name": "Hotel Alfonso XIII in Sevilla",
+  "telephone": "+34954917000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "San Fernando 2",
+   "addressLocality": "Sevilla",
+   "postalCode": "41004",
+   "addressCountry": "ESP",
+   "addressRegion": "Andalusia"
+  },
+  "page_country": "ES",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2781": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/barcelona/gran-hotel-la-florida-6513",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/barcelona/gran-hotel-la-florida-6513",
+  "found": true,
+  "name": "METT Barcelona in Barcelona",
+  "telephone": "+34.93.259.3000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "83-93 Crta. Vallvidrera al Tibidabo",
+   "addressLocality": "Barcelona",
+   "postalCode": "08035",
+   "addressCountry": "ESP",
+   "addressRegion": "Catalonia"
+  },
+  "page_country": "ES",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2786": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/barcelona/sofitel-barcelona-skipper-6387",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/barcelona/sofitel-barcelona-skipper-6387",
+  "found": true,
+  "name": "Sofitel Barcelona Skipper in Barcelona",
+  "telephone": "+34 93 221 65 65",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Litoral, 10",
+   "addressLocality": "Barcelona",
+   "postalCode": "08005",
+   "addressCountry": "ESP",
+   "addressRegion": "Catalonia"
+  },
+  "page_country": "ES",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_551": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/garraf/little-beach-house-barcelona-13093",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/garraf/little-beach-house-barcelona-13093",
+  "found": true,
+  "name": "Little Beach House Barcelona in Garraf",
+  "telephone": "+34 935 22 15 52",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Carrer Mirador del Port 1",
+   "addressLocality": "Garraf",
+   "postalCode": "08871",
+   "addressCountry": "ESP",
+   "addressRegion": "Catalonia"
+  },
+  "page_country": "ES",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_566": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/la-coruna/casa-beatnik-hotel-13030",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/la-coruna/casa-beatnik-hotel-13030",
+  "found": true,
+  "name": "Casa Beatnik Country House in La Coruña",
+  "telephone": "076 556 75 75",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Lugar de Galegos, 6, Vedra",
+   "addressLocality": "La Coruña",
+   "postalCode": "15885",
+   "addressCountry": "ESP",
+   "addressRegion": "Galicia"
+  },
+  "page_country": "ES",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_698": {
+  "status": "200",
+  "final": "https://guide.michelin.com/us/en/hotels-stays/ibiza/six-senses-ibiza-12071",
+  "canonical": "https://guide.michelin.com/us/en/hotels-stays/ibiza/six-senses-ibiza-12071",
+  "found": true,
+  "name": "Six Senses Ibiza in Ibiza",
+  "telephone": "+ 34 871 005 600",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Carrer Camí de sa Torre, 71",
+   "addressLocality": "Ibiza",
+   "postalCode": "07810",
+   "addressCountry": "ESP",
+   "addressRegion": "Balearic Islands"
+  },
+  "page_country": "ES",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_0358": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/canarias/gua-de-isora/restaurant/m-b",
+  "canonical": "https://guide.michelin.com/en/canarias/gua-de-isora/restaurant/m-b",
+  "found": true,
+  "name": "M.B",
+  "telephone": "+34 922 12 60 00",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Maria Zambrano 2, Carretera TF 47",
+   "addressLocality": "Guía de Isora",
+   "postalCode": "38687",
+   "addressCountry": "ESP",
+   "addressRegion": "Canarias"
+  },
+  "page_country": "ES",
+  "website": "https://www.mb-tenerife.com/es/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0373": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/comunidad-foral-de-navarra/urdaitz/restaurant/el-molino-de-urdaniz",
+  "canonical": "https://guide.michelin.com/en/comunidad-foral-de-navarra/urdaitz/restaurant/el-molino-de-urdaniz",
+  "found": true,
+  "name": "Molino de Urdániz",
+  "telephone": "+34 948 30 41 09",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Carretera N 135",
+   "addressLocality": "Urdaitz",
+   "postalCode": "31698",
+   "addressCountry": "ESP",
+   "addressRegion": "Chartered Community of Navarre"
+  },
+  "page_country": "ES",
+  "website": "https://www.elmolinourdaniz.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_1622": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/andalucia/malaga/restaurant/blossom-1202609",
+  "canonical": "https://guide.michelin.com/en/andalucia/malaga/restaurant/blossom-1202609",
+  "found": true,
+  "name": "Blossom",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Plaza de la Aduana",
+   "addressLocality": "Malaga",
+   "postalCode": "29015",
+   "addressCountry": "ESP",
+   "addressRegion": "Andalusia"
+  },
+  "page_country": "ES",
+  "website": "https://blossommalaga.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "rest_1666": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/castilla-y-leon/benavente/restaurant/el-ermitano",
+  "canonical": "https://guide.michelin.com/en/castilla-y-leon/benavente/restaurant/el-ermitano",
+  "found": true,
+  "name": "El Ermitaño",
+  "telephone": "+34 980 63 67 95",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Arrabal Huerta de los Salados",
+   "addressLocality": "Benavente",
+   "postalCode": "49600",
+   "addressCountry": "ESP",
+   "addressRegion": "Castille and Leon"
+  },
+  "page_country": "ES",
+  "website": "https://www.elermitano.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "rest_1682": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/comunidad-de-madrid/madrid/restaurant/eter",
+  "canonical": "https://guide.michelin.com/en/comunidad-de-madrid/madrid/restaurant/eter",
+  "found": true,
+  "name": "Èter",
+  "telephone": "+34 918 78 07 87",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Granito 20",
+   "addressLocality": "Madrid",
+   "postalCode": "28045",
+   "addressCountry": "ESP",
+   "addressRegion": "Community of Madrid"
+  },
+  "page_country": "ES",
+  "website": "https://eterrestaurant.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2609": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/helsinki/waldorf-astoria-helsinki-13290",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/helsinki/waldorf-astoria-helsinki-13290",
+  "found": true,
+  "name": "Waldorf Astoria Helsinki in Helsinki",
+  "telephone": "+358 9 88600170",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Mariankatu 23",
+   "addressLocality": "Helsinki",
+   "postalCode": "00170",
+   "addressCountry": "FIN"
+  },
+  "page_country": "FI",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
  "hotel_2028": {
   "status": "200",
   "final": "https://guide.michelin.com/en/hotels-stays/bommes/hotel-restaurant-lalique-chateau-lafaurie-peyraguey-9006",
@@ -3651,10 +6146,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "rest_0300": {
   "status": "200",
@@ -3989,10 +6485,11 @@
   "website": "https://fr.auberge.com/domaine-des-etangs/dine/",
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "rest_1199": {
   "status": "200",
@@ -4063,10 +6560,11 @@
   "website": "https://www.chateaudemontcaud.com/fr/restaurants/le-cedre-de-montcaud",
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "rest_1304": {
   "status": "200",
@@ -4086,9 +6584,11 @@
   "page_country": "FR",
   "website": "https://www.oetkerhotels.com/fr/hotels/hotel-du-cap-eden-roc",
   "stay_hotels": [],
-  "address_agrees": [],
-  "identity_ok": false,
-  "identity_note": "address does not agree: {\"@type\": \"PostalAddress\", \"streetAddress\": \"Boulevard J.-F.-Kennedy, au Cap d'Antibes\", \"addressLocality\": \"Antibes\", \"postalCode\": \"06160\", \"addressCountry\": \"FRA\", \"addressRegion\": \"Provence-Alpes-Côte d'Azur\"}"
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
  },
  "rest_1331": {
   "status": "200",
@@ -4109,10 +6609,11 @@
   "website": "https://fr.louisvuitton.com/fra-fr/magasin/france/louis-vuitton-restaurant-saint-tropez",
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "rest_1338": {
   "status": "200",
@@ -4163,6 +6664,500 @@
   ],
   "identity_ok": true,
   "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_854": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/london/the-lanesborough-14504",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/london/the-lanesborough-14504",
+  "found": true,
+  "name": "The Lanesborough  in London",
+  "telephone": "+44 20 7259 5599",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Hyde Park Corner",
+   "addressLocality": "London",
+   "postalCode": "SW1X 7TA",
+   "addressCountry": "GBR"
+  },
+  "page_country": "GB",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_908": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/padstow/padstow-townhouse-10035",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/padstow/padstow-townhouse-10035",
+  "found": true,
+  "name": "Padstow Townhouse in Padstow",
+  "telephone": "+44 1841 550950",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "16-18 High Street",
+   "addressLocality": "Padstow",
+   "postalCode": "PL28 8BB",
+   "addressCountry": "GBR",
+   "addressRegion": "Cornwall"
+  },
+  "page_country": "GB",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_914": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/london/redchurch-townhouse-13080",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/london/redchurch-townhouse-13080",
+  "found": true,
+  "name": "Redchurch Townhouse in London",
+  "telephone": "+44 20 3819 8180",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "25-27 Whitby Street",
+   "addressLocality": "London",
+   "postalCode": "E1 6JU",
+   "addressCountry": "GBR"
+  },
+  "page_country": "GB",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_1380": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/mountain",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/mountain",
+  "found": true,
+  "name": "Mountain",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "16-18 Beak Street, Soho",
+   "addressLocality": "London",
+   "postalCode": "W1F 9RD",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://mountainbeakstreet.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "rest_2464": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/behind",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/behind",
+  "found": true,
+  "name": "Behind",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "20 Sidworth Street, London Fields",
+   "addressLocality": "London",
+   "postalCode": "E8 3SD",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://www.behindrestaurant.co.uk/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2467": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/north-yorkshire/oldstead/restaurant/black-swan",
+  "canonical": "https://guide.michelin.com/en/north-yorkshire/oldstead/restaurant/black-swan",
+  "found": true,
+  "name": "Black Swan",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Main Street",
+   "addressLocality": "Oldstead",
+   "postalCode": "YO61 4BL",
+   "addressCountry": "GBR",
+   "addressRegion": "North Yorkshire"
+  },
+  "page_country": "GB",
+  "website": "https://www.blackswanoldstead.co.uk",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "rest_2469": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/brat",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/brat",
+  "found": true,
+  "name": "Brat",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "4 Redchurch Street, Shoreditch",
+   "addressLocality": "London",
+   "postalCode": "E1 6JL",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://bratrestaurant.co.uk",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2478": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/chishuru",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/chishuru",
+  "found": true,
+  "name": "Chishuru",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "3 Great Titchfield Street, Fitzrovia",
+   "addressLocality": "London",
+   "postalCode": "W1W 8AX",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://www.chishuru.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2492": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/evelyn-s-table",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/evelyn-s-table",
+  "found": true,
+  "name": "Evelyn's Table",
+  "telephone": "+44 7921 336010",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "The Blue Posts, 28 Rupert Street, Soho",
+   "addressLocality": "London",
+   "postalCode": "W1D 6DJ",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://www.theblueposts.co.uk/evelyns-table/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2503": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/gymkhana",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/gymkhana",
+  "found": true,
+  "name": "Gymkhana",
+  "telephone": "+44 20 3011 5900",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "42 Albemarle Street, Mayfair",
+   "addressLocality": "London",
+   "postalCode": "W1S 4JH",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://gymkhanalondon.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2506": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/cumbria/newton-in-cartmel/restaurant/heft",
+  "canonical": "https://guide.michelin.com/en/cumbria/newton-in-cartmel/restaurant/heft",
+  "found": true,
+  "name": "heft",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "addressLocality": "Newton in Cartmel",
+   "postalCode": "LA11 6JH",
+   "addressCountry": "GBR",
+   "addressRegion": "Cumbria"
+  },
+  "page_country": "GB",
+  "website": "https://hefthighnewton.co.uk",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "rest_2514": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/humble-chicken",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/humble-chicken",
+  "found": true,
+  "name": "Humble Chicken",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "54 Frith Street, Soho",
+   "addressLocality": "London",
+   "postalCode": "W1D 4SL",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://www.humblechickenuk.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2521": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/kitchen-table",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/kitchen-table",
+  "found": true,
+  "name": "Kitchen Table",
+  "telephone": "+44 20 3011 5770",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "70 Charlotte Street, Fitzrovia",
+   "addressLocality": "London",
+   "postalCode": "W1T 4QG",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://kitchentablelondon.co.uk/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2536": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-manchester/manchester/restaurant/mana",
+  "canonical": "https://guide.michelin.com/en/greater-manchester/manchester/restaurant/mana",
+  "found": true,
+  "name": "mana",
+  "telephone": "+44 161 392 7294",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "42 Blossom Street, Ancoats",
+   "addressLocality": "Manchester",
+   "postalCode": "M4 6BF",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater Manchester"
+  },
+  "page_country": "GB",
+  "website": "https://www.manarestaurant.co.uk/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2539": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/mauro-colagreco-at-raffles-london-at-the-owo",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/mauro-colagreco-at-raffles-london-at-the-owo",
+  "found": true,
+  "name": "Mauro Colagreco at Raffles London at The OWO",
+  "telephone": "+44 20 3907 7520",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Whitehall",
+   "addressLocality": "London",
+   "postalCode": "SW1A 2BX",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://www.raffles.com/london/dining/mauro-colagreco/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "rest_2547": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/north-yorkshire/hovingham/restaurant/myse",
+  "canonical": "https://guide.michelin.com/en/north-yorkshire/hovingham/restaurant/myse",
+  "found": true,
+  "name": "mýse",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Main Street",
+   "addressLocality": "Hovingham",
+   "postalCode": "YO62 4LF",
+   "addressCountry": "GBR",
+   "addressRegion": "North Yorkshire"
+  },
+  "page_country": "GB",
+  "website": "https://www.restaurantmyse.co.uk/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "rest_2579": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/york-region/york/restaurant/roots1090849",
+  "canonical": "https://guide.michelin.com/en/york-region/york/restaurant/roots1090849",
+  "found": true,
+  "name": "Roots",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "68 Marygate",
+   "addressLocality": "York",
+   "postalCode": "YO30 7BH",
+   "addressCountry": "GBR",
+   "addressRegion": "York"
+  },
+  "page_country": "GB",
+  "website": "https://www.rootsyork.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2580": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/greater-london/london/restaurant/row-on-5",
+  "canonical": "https://guide.michelin.com/en/greater-london/london/restaurant/row-on-5",
+  "found": true,
+  "name": "Row on 5",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "5 Savile Row, Mayfair",
+   "addressLocality": "London",
+   "postalCode": "W1S 3PB",
+   "addressCountry": "GBR",
+   "addressRegion": "Greater London"
+  },
+  "page_country": "GB",
+  "website": "https://www.rowon5london.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2587": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/tyne-and-wear/newcastle-upon-tyne/restaurant/solstice-by-kenny-atkinson",
+  "canonical": "https://guide.michelin.com/en/tyne-and-wear/newcastle-upon-tyne/restaurant/solstice-by-kenny-atkinson",
+  "found": true,
+  "name": "SOLSTICE BY KENNY ATKINSON",
+  "telephone": "+44 191 222 1722",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "5-7 Side",
+   "addressLocality": "Newcastle Upon Tyne",
+   "postalCode": "NE1 3JE",
+   "addressCountry": "GBR",
+   "addressRegion": "Tyne and Wear"
+  },
+  "page_country": "GB",
+  "website": "https://www.solsticencl.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2634": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/windsor-and-maidenhead/ascot/restaurant/coworth-park",
+  "canonical": "https://guide.michelin.com/en/windsor-and-maidenhead/ascot/restaurant/coworth-park",
+  "found": true,
+  "name": "Woven by Adam Smith",
+  "telephone": "+44 1344 876600",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Coworth Park, Blacknest Road",
+   "addressLocality": "Ascot",
+   "postalCode": "SL5 7SE",
+   "addressCountry": "GBR",
+   "addressRegion": "Windsor and Maidenhead"
+  },
+  "page_country": "GB",
+  "website": "https://www.dorchestercollection.com/ascot/coworth-park/dining/woven-by-adam-smith",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1012": {
   "status": "200",
@@ -4738,6 +7733,323 @@
   "identity_ok": true,
   "identity_note": "address agrees: street"
  },
+ "hotel_3111": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Orebi%C4%87/hotel-katarina-17566",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Orebi%C4%87/hotel-katarina-17566",
+  "found": true,
+  "name": "Hotel Katarina in Orebić",
+  "telephone": "+385 99 166 4444",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Škvar 2",
+   "addressLocality": "Orebić",
+   "postalCode": "20250",
+   "addressCountry": "HRV",
+   "addressRegion": "Dalmatia"
+  },
+  "page_country": "HR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3112": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Split1/palazzo-president-17412",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Split1/palazzo-president-17412",
+  "found": true,
+  "name": "Palazzo President in Split",
+  "telephone": "+385 21 305 222",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Starceviceva 1",
+   "addressLocality": "Split",
+   "postalCode": "21000",
+   "addressCountry": "HRV"
+  },
+  "page_country": "HR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_4109": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/primorje-gorski-kotar/mali-losinj/restaurant/alfred-keller",
+  "canonical": "https://guide.michelin.com/en/primorje-gorski-kotar/mali-losinj/restaurant/alfred-keller",
+  "found": true,
+  "name": "Alfred Keller",
+  "telephone": "+385 51 260 700",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Čikat 16",
+   "addressLocality": "Mali Lošinj",
+   "postalCode": "51550",
+   "addressCountry": "HRV",
+   "addressRegion": "Primorje-Gorski Kotar "
+  },
+  "page_country": "HR",
+  "website": "https://w.eventlin.com/Restaurant-Alfred-Keller?merchant=25854",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_4111": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/istria/rovinj/restaurant/cap-aureo",
+  "canonical": "https://guide.michelin.com/en/istria/rovinj/restaurant/cap-aureo",
+  "found": true,
+  "name": "Cap Aureo",
+  "telephone": "+385 52 642 035",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Smareglijeva ulica 1A",
+   "addressLocality": "Rovinj",
+   "postalCode": "52210",
+   "addressCountry": "HRV",
+   "addressRegion": "Istria "
+  },
+  "page_country": "HR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_4120": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/sibenik-knin/sibenik/restaurant/pelegrini",
+  "canonical": "https://guide.michelin.com/en/sibenik-knin/sibenik/restaurant/pelegrini",
+  "found": true,
+  "name": "Pelegrini",
+  "telephone": "+385 22 213 701",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Jurja Dalmatinca 1",
+   "addressLocality": "Sibenik",
+   "postalCode": "22000",
+   "addressCountry": "HRV",
+   "addressRegion": "Šibenik-Knin"
+  },
+  "page_country": "HR",
+  "website": "https://pelegrini.hr/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_277": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/budapest/parisi-udvar-hotel-budapest-120059-9359",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/budapest/parisi-udvar-hotel-budapest-120059-9359",
+  "found": true,
+  "name": "Párisi Udvar Hotel Budapest in Budapest",
+  "telephone": "+36 1 576 1600",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Petőfi Sándor u. 2-4",
+   "addressLocality": "Budapest",
+   "postalCode": "1052",
+   "addressCountry": "HUN"
+  },
+  "page_country": "HU",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_4131": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/babel",
+  "canonical": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/babel",
+  "found": true,
+  "name": "Babel",
+  "telephone": "+36 70 600 0800",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Piarista Köz 2",
+   "addressLocality": "Budapest",
+   "postalCode": "1052",
+   "addressCountry": "HUN",
+   "addressRegion": "Central Hungary"
+  },
+  "page_country": "HU",
+  "website": "https://www.babel-budapest.hu",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_4137": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/salt-1196768",
+  "canonical": "https://guide.michelin.com/en/central-hungary/budapest/restaurant/salt-1196768",
+  "found": true,
+  "name": "Salt",
+  "telephone": "+36 70 333 2190",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Hotel Rum Budapest, Királyi Pál utca 4",
+   "addressLocality": "Budapest",
+   "postalCode": "1053",
+   "addressCountry": "HUN",
+   "addressRegion": "Central Hungary"
+  },
+  "page_country": "HU",
+  "website": "https://www.saltbudapest.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_727": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/seminyak/desa-potato-head-bali-8192",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/seminyak/desa-potato-head-bali-8192",
+  "found": true,
+  "name": "Desa Potato Head Bali in Seminyak",
+  "telephone": "+62361 3029999",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Jl. Petitenget No.51B, Seminyak, Kec. , Kuta Utara, Kabupaten Badung",
+   "addressLocality": "Seminyak",
+   "postalCode": "80361",
+   "addressCountry": "IDN",
+   "addressRegion": "Bali"
+  },
+  "page_country": "ID",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_2651": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/galway/bullaun/restaurant/lignum",
+  "canonical": "https://guide.michelin.com/en/galway/bullaun/restaurant/lignum",
+  "found": true,
+  "name": "LIGИUM",
+  "telephone": "+353 87 330 0559",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Slatefort House",
+   "addressLocality": "Bullaun",
+   "postalCode": "H62 H798",
+   "addressCountry": "IRL",
+   "addressRegion": "Galway"
+  },
+  "page_country": "IE",
+  "website": "https://lignum.ie",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_725": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/agra/the-oberoi-amarvilas-6143",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/agra/the-oberoi-amarvilas-6143",
+  "found": true,
+  "name": "The Oberoi Amarvilas in Agra",
+  "telephone": "+91 562 223 1515",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Taj East Gate Road",
+   "addressLocality": "Agra",
+   "postalCode": "282001",
+   "addressCountry": "IND"
+  },
+  "page_country": "IN",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "hotel_726": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/mumbai/taj-mahal-palace-mumbai-8799",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/mumbai/taj-mahal-palace-mumbai-8799",
+  "found": true,
+  "name": "Taj Mahal Palace, Mumbai in Mumbai",
+  "telephone": "+91 22 6665 3366",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Apollo Bandar, Colaba",
+   "addressLocality": "Mumbai",
+   "postalCode": "400001",
+   "addressCountry": "IND"
+  },
+  "page_country": "IN",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "hotel_2613": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/reykjavik/the-reykjavik-edition-12473",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/reykjavik/the-reykjavik-edition-12473",
+  "found": true,
+  "name": "The Reykjavik EDITION in Reykjavik",
+  "telephone": "+354 582 0000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Austurbakki 2",
+   "addressLocality": "Reykjavik",
+   "postalCode": "101",
+   "addressCountry": "ISL"
+  },
+  "page_country": "IS",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
  "hotel_2702": {
   "status": "200",
   "final": "https://guide.michelin.com/en/hotels-stays/milan/bulgari-hotel-milano-6209",
@@ -5056,10 +8368,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_2727": {
   "status": "200",
@@ -5280,10 +8593,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_2754": {
   "status": "200",
@@ -5354,10 +8668,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_2758": {
   "status": "200",
@@ -5378,10 +8693,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_2759": {
   "status": "200",
@@ -5402,10 +8718,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_2761": {
   "status": "200",
@@ -5776,10 +9093,11 @@
   "website": "https://sardinia.baglionihotels.com/it/ristoranti/gusto-by-sadler",
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "rest_2290": {
   "status": "200",
@@ -6372,10 +9690,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_664": {
   "status": "200",
@@ -6402,6 +9721,334 @@
   "identity_ok": true,
   "identity_note": "address agrees: postcode+street"
  },
+ "rest_0313": {
+  "status": "200",
+  "final": "https://guide.michelin.com/us/en/seoul-capital-area/kr-seoul/restaurant/mingles",
+  "canonical": "https://guide.michelin.com/us/en/seoul-capital-area/kr-seoul/restaurant/mingles",
+  "found": true,
+  "name": "Mingles",
+  "telephone": "+82 2-515-7306",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "2F, 19 Dosan-daero 67-gil, Gangnam-gu",
+   "addressLocality": "Seoul",
+   "postalCode": "06016",
+   "addressCountry": "KOR",
+   "addressRegion": "Seoul Capital Area"
+  },
+  "page_country": "KR",
+  "website": "https://www.restaurant-mingles.com",
+  "stay_hotels": [],
+  "address_agrees": [],
+  "identity_ok": true,
+  "identity_note": "address agrees: checked by hand: 19 Dosan-daero 67-gil in both (MICHELIN adds 2F)"
+ },
+ "rest_1372": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/seoul-capital-area/kr-seoul/restaurant/onjium",
+  "canonical": "https://guide.michelin.com/en/seoul-capital-area/kr-seoul/restaurant/onjium",
+  "found": true,
+  "name": "Onjium",
+  "telephone": "+82 2-6952-0024",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "4F, 49 Hyoja-ro, Jongno-gu",
+   "addressLocality": "Seoul",
+   "postalCode": "03043",
+   "addressCountry": "KOR",
+   "addressRegion": "Seoul Capital Area"
+  },
+  "page_country": "KR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "hotel_3114": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Trakai/esperanza-lake-resort-15389",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Trakai/esperanza-lake-resort-15389",
+  "found": true,
+  "name": "Esperanza Lake Resort in Trakai",
+  "telephone": "+370 660 03366",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Paunguriai, Trakų sen., Trakų r. sav., Vilniaus apskr.",
+   "addressLocality": "Trakai",
+   "postalCode": "LT-21282",
+   "addressCountry": "LTU",
+   "addressRegion": "Vilnius"
+  },
+  "page_country": "LT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_3115": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Vilnius/hotel-pacai-13980",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Vilnius/hotel-pacai-13980",
+  "found": true,
+  "name": "Hotel Pacai in Vilnius",
+  "telephone": "+370 5 2770000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Didžioji g. 7",
+   "addressLocality": "Vilnius",
+   "postalCode": "LT-01128",
+   "addressCountry": "LTU"
+  },
+  "page_country": "LT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3116": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/riga/a22-hotel-12532",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/riga/a22-hotel-12532",
+  "found": true,
+  "name": "A22 Hotel in Riga",
+  "telephone": "371 62 222 250",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Ausekļa iela 22",
+   "addressLocality": "Riga",
+   "postalCode": "LV-1010",
+   "addressCountry": "LVA"
+  },
+  "page_country": "LV",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3117": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/riga/dome-hotel-spa-6351",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/riga/dome-hotel-spa-6351",
+  "found": true,
+  "name": "Dome Hotel & Spa in Riga",
+  "telephone": "+37167509010",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "4 Miesnieku Street",
+   "addressLocality": "Riga",
+   "postalCode": "LV-1050",
+   "addressCountry": "LVA"
+  },
+  "page_country": "LV",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3118": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/riga/grand-poet-hotel-and-spa-by-semarah-12950",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/riga/grand-poet-hotel-and-spa-by-semarah-12950",
+  "found": true,
+  "name": "Grand Poet Hotel and SPA by Semarah in Riga",
+  "telephone": "+371 60 008 600",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Raiņa bulvāris 5/6 ",
+   "addressLocality": "Riga",
+   "postalCode": "LV-1050",
+   "addressCountry": "LVA"
+  },
+  "page_country": "LV",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1018": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/cotai/four-seasons-hotel-macao-7351",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/cotai/four-seasons-hotel-macao-7351",
+  "found": true,
+  "name": "Four Seasons Hotel Macao in Cotai",
+  "telephone": "+853-2881-8888",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Estrada da Baia de N. Senhora, Esperanca, SN",
+   "addressLocality": "Cotai",
+   "addressCountry": "MAC"
+  },
+  "page_country": "MO",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "rest_0439": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/macau-region/macau/restaurant/feng-wei-ju",
+  "canonical": "https://guide.michelin.com/en/macau-region/macau/restaurant/feng-wei-ju",
+  "found": true,
+  "name": "Feng Wei Ju",
+  "telephone": "+853 8290 8668",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "5F, StarWorld Hotel, Avenida da Amizade, Macau",
+   "addressLocality": "Macau",
+   "addressCountry": "MAC",
+   "addressRegion": "Macau"
+  },
+  "page_country": "MO",
+  "website": "https://www.starworldmacau.com/restaurant/feng-wei-ju",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2875": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/macau-region/macau/restaurant/lai-heen",
+  "canonical": "https://guide.michelin.com/en/macau-region/macau/restaurant/lai-heen",
+  "found": true,
+  "name": "Lai Heen",
+  "telephone": "+853 8886 6868",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "51F, The Ritz-Carlton, Galaxy, Estrada da Baía de Nossa Senhora da Esperança, Cotai",
+   "addressLocality": "Macau",
+   "addressCountry": "MAC",
+   "addressRegion": "Macau"
+  },
+  "page_country": "MO",
+  "website": "https://www.laiheenmacau.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street"
+ },
+ "rest_2876": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/macau-region/macau/restaurant/mizumi-1215974",
+  "canonical": "https://guide.michelin.com/en/macau-region/macau/restaurant/mizumi-1215974",
+  "found": true,
+  "name": "Mizumi",
+  "telephone": "+853 8889 3688",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "GF, North Esplanade, Wynn Palace, Avenida da Nave Desportiva, Cotai",
+   "addressLocality": "Macau",
+   "addressCountry": "MAC",
+   "addressRegion": "Macau"
+  },
+  "page_country": "MO",
+  "website": "https://www.wynnresortsmacau.com/en/wynn-palace/dining/mizumi-wp",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "rest_2883": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/macau-region/macau/restaurant/zi-yat-heen",
+  "canonical": "https://guide.michelin.com/en/macau-region/macau/restaurant/zi-yat-heen",
+  "found": true,
+  "name": "Zi Yat Heen",
+  "telephone": "+853 2881 8888",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "GF, Four Seasons Hotel, Estrada da Baía de Nossa Senhora da Esperança, Cotai",
+   "addressLocality": "Macau",
+   "addressCountry": "MAC",
+   "addressRegion": "Macau"
+  },
+  "page_country": "MO",
+  "website": "https://www.fourseasons.com/macau/dining/restaurants/zi_yat_heen",
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "rest_4141": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/noni",
+  "canonical": "https://guide.michelin.com/en/malta-south-eastern-region/valletta/restaurant/noni",
+  "found": true,
+  "name": "Noni",
+  "telephone": "+356 2122 1441",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "211 Republic Street",
+   "addressLocality": "Valletta",
+   "postalCode": "VLT 1118",
+   "addressCountry": "MLT",
+   "addressRegion": "South Eastern Region"
+  },
+  "page_country": "MT",
+  "website": "https://noni.com.mt/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_732": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/medhufaru-island-noonu-atoll/soneva-jani-9087",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/medhufaru-island-noonu-atoll/soneva-jani-9087",
+  "found": true,
+  "name": "Soneva Jani in Medhufaru Island Noonu Atoll",
+  "telephone": "+960 656-6666",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Medhufaru Island Noonu Atoll",
+   "addressLocality": "Medhufaru Island Noonu Atoll",
+   "addressCountry": "MDV"
+  },
+  "page_country": "MV",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
  "hotel_1892": {
   "status": "200",
   "final": "https://guide.michelin.com/en/hotels-stays/puerto-vallarta/xinalani-8418",
@@ -6420,10 +10067,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1893": {
   "status": "200",
@@ -6493,10 +10141,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1902": {
   "status": "200",
@@ -6542,10 +10191,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1907": {
   "status": "200",
@@ -6762,10 +10412,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1922": {
   "status": "200",
@@ -6811,10 +10462,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1930": {
   "status": "200",
@@ -6859,10 +10511,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1933": {
   "status": "200",
@@ -7179,10 +10832,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1969": {
   "status": "200",
@@ -7672,6 +11326,1006 @@
    "addressRegion": "Jalisco"
   },
   "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0043": {
+  "status": "404",
+  "final": "https://guide.michelin.com/nl/nl/zeeland/cadzand/restaurant/demain",
+  "canonical": null,
+  "found": false,
+  "identity_ok": false,
+  "identity_note": "no venue on the page (status 404, final https://guide.michelin.com/nl/nl/zeeland/cadzand/restaurant/demain)"
+ },
+ "rest_0098": {
+  "status": "200",
+  "final": "https://guide.michelin.com/nl/nl/attica/athens/restaurant/sense",
+  "canonical": "https://guide.michelin.com/nl/nl/attica/athens/restaurant/sense",
+  "found": true,
+  "name": "SENSE",
+  "telephone": "+30 21 0920 0240",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Dionysiou Areopagitou 5",
+   "addressLocality": "Athens",
+   "postalCode": "117 42",
+   "addressCountry": "GRC",
+   "addressRegion": "Attica"
+  },
+  "page_country": "GR",
+  "website": "https://www.senserestaurants.com",
+  "stay_hotels": [],
+  "address_agrees": [],
+  "identity_ok": false,
+  "identity_note": "country GR != NL"
+ },
+ "rest_0781": {
+  "status": "404",
+  "final": "https://guide.michelin.com/us/en/noord-holland/amsterdam/restaurant/graphite-by-peter-gast",
+  "canonical": null,
+  "found": false,
+  "identity_ok": false,
+  "identity_note": "no venue on the page (status 404, final https://guide.michelin.com/us/en/noord-holland/amsterdam/restaurant/graphite-by-peter-gast)"
+ },
+ "hotel_2595": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/kristiansand/boen-gard-13218",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/kristiansand/boen-gard-13218",
+  "found": true,
+  "name": "Boen Gård in Kristiansand",
+  "telephone": "+47 38 99 1813",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Dønnestadveien 341",
+   "addressLocality": "Kristiansand",
+   "postalCode": "4658",
+   "addressCountry": "NOR",
+   "addressRegion": "Agder"
+  },
+  "page_country": "NO",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2598": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/skulestadmo/elva-hotel-13307",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/skulestadmo/elva-hotel-13307",
+  "found": true,
+  "name": "Elva Hotel in Skulestadmo",
+  "telephone": "+47 56 51 05 25",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "25 Nedkvitnesvegen",
+   "addressLocality": "Skulestadmo",
+   "postalCode": "5710",
+   "addressCountry": "NOR",
+   "addressRegion": "Rogaland County"
+  },
+  "page_country": "NO",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2602": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Valldal/juvet-12187",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Valldal/juvet-12187",
+  "found": true,
+  "name": "Juvet Landscape Hotel in Valldal",
+  "telephone": "+47 950 32 010 ",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Alstad 24",
+   "addressLocality": "Valldal",
+   "postalCode": "6210",
+   "addressCountry": "NOR",
+   "addressRegion": "Alesund"
+  },
+  "page_country": "NO",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2603": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/herdla/lilly-lindenberg-15364",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/herdla/lilly-lindenberg-15364",
+  "found": true,
+  "name": "Lilløy Lindenberg in Herdla",
+  "telephone": "01778110227",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Midtoyni",
+   "addressLocality": "Herdla",
+   "postalCode": "5315",
+   "addressCountry": "NOR",
+   "addressRegion": "Rogaland County"
+  },
+  "page_country": "NO",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_2604": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/manshausen-island/manshausen-11007",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/manshausen-island/manshausen-11007",
+  "found": true,
+  "name": "Manshausen in Manshausen Island",
+  "telephone": "+4723382200 (not always works)",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Nordskot 8283",
+   "addressLocality": "Manshausen Island",
+   "postalCode": "8283",
+   "addressCountry": "NOR",
+   "addressRegion": "Nordskot"
+  },
+  "page_country": "NO",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0430": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/oslo-region/oslo/restaurant/maaemo-1194933",
+  "canonical": "https://guide.michelin.com/en/oslo-region/oslo/restaurant/maaemo-1194933",
+  "found": true,
+  "name": "Maaemo",
+  "telephone": "+47 22 17 99 69",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Dronning Eufemias gate 23",
+   "addressLocality": "Oslo",
+   "postalCode": "0194",
+   "addressCountry": "NOR",
+   "addressRegion": "Oslo"
+  },
+  "page_country": "NO",
+  "website": "https://www.maaemo.no",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3733": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/oslo-region/oslo/restaurant/credo-1248105",
+  "canonical": "https://guide.michelin.com/en/oslo-region/oslo/restaurant/credo-1248105",
+  "found": true,
+  "name": "Credo",
+  "telephone": "+47 954 37 028",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "The National Library, Henrik Ibsens Gate 110",
+   "addressLocality": "Oslo",
+   "postalCode": "0255",
+   "addressCountry": "NOR",
+   "addressRegion": "Oslo"
+  },
+  "page_country": "NO",
+  "website": "https://www.restaurantcredo.no",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3736": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/rogaland/stavanger/restaurant/hermetikken",
+  "canonical": "https://guide.michelin.com/en/rogaland/stavanger/restaurant/hermetikken",
+  "found": true,
+  "name": "Hermetikken",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Niels Juels Gate 50",
+   "addressLocality": "Stavanger",
+   "postalCode": "4008",
+   "addressCountry": "NOR",
+   "addressRegion": "Rogaland"
+  },
+  "page_country": "NO",
+  "website": "https://hermetikken-restaurant.no",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3741": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/vestland/bekkjarvik_7770446/restaurant/mirabelle-by-orjan-johannessen",
+  "canonical": "https://guide.michelin.com/en/vestland/bekkjarvik_7770446/restaurant/mirabelle-by-orjan-johannessen",
+  "found": true,
+  "name": "Mirabelle by Ørjan Johannessen",
+  "telephone": "+47 404 51 614",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "3rd Floor, Beckerwyc House, Horgestykket 17",
+   "addressLocality": "Bekkjarvik",
+   "postalCode": "5397",
+   "addressCountry": "NOR",
+   "addressRegion": "Vestland"
+  },
+  "page_country": "NO",
+  "website": "https://www.restaurantmirabelle.no/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3742": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/oslo-region/oslo/restaurant/mon-oncle",
+  "canonical": "https://guide.michelin.com/en/oslo-region/oslo/restaurant/mon-oncle",
+  "found": true,
+  "name": "Mon Oncle",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Universitetsgata 9",
+   "addressLocality": "Oslo",
+   "postalCode": "0164",
+   "addressCountry": "NOR",
+   "addressRegion": "Oslo"
+  },
+  "page_country": "NO",
+  "website": "https://www.mononcle.no",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3746": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/oslo-region/oslo/restaurant/savage-1205580",
+  "canonical": "https://guide.michelin.com/en/oslo-region/oslo/restaurant/savage-1205580",
+  "found": true,
+  "name": "SAVAGE",
+  "telephone": "+47 967 19 826",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Nedre Slottsgate 2",
+   "addressLocality": "Oslo",
+   "postalCode": "0153",
+   "addressCountry": "NOR",
+   "addressRegion": "Oslo"
+  },
+  "page_country": "NO",
+  "website": "https://www.restaurantsavage.no/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3750": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/agder/lindesnes/restaurant/under",
+  "canonical": "https://guide.michelin.com/en/agder/lindesnes/restaurant/under",
+  "found": true,
+  "name": "Under",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Bålyveien 50",
+   "addressLocality": "Lindesnes",
+   "postalCode": "4521",
+   "addressCountry": "NOR",
+   "addressRegion": "Agder"
+  },
+  "page_country": "NO",
+  "website": "https://www.under.no/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_815": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/cusco/antigua-casona-san-blas-14521",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/cusco/antigua-casona-san-blas-14521",
+  "found": true,
+  "name": "Antigua Casona San Blas in Cusco",
+  "telephone": "+51 84 200700 /1800-678-4172",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Calle Carmen Bajo 243",
+   "addressLocality": "Cusco",
+   "postalCode": "08003",
+   "addressCountry": "PER"
+  },
+  "page_country": "PE",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_817": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/urubamba/tambo-del-inka-11285",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/urubamba/tambo-del-inka-11285",
+  "found": true,
+  "name": "Tambo del Inka in Urubamba",
+  "telephone": "+51 84-581777",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Avenida Ferrocarril S/N",
+   "addressLocality": "Urubamba",
+   "addressCountry": "PER"
+  },
+  "page_country": "PE",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: street words (no number)"
+ },
+ "hotel_2901": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Zakopane/bachleda-residence-zakopane-13967",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Zakopane/bachleda-residence-zakopane-13967",
+  "found": true,
+  "name": "Bachleda Residence Zakopane in Zakopane",
+  "telephone": "+48 18 20 23 100",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "ul. Tetmajera 16a",
+   "addressLocality": "Zakopane",
+   "postalCode": "34-400",
+   "addressCountry": "POL"
+  },
+  "page_country": "PL",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2902": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/sienna/heron-live-hotel-16896",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/sienna/heron-live-hotel-16896",
+  "found": true,
+  "name": "Heron Live Hotel in Sienna",
+  "telephone": "+48 18 88 88 500",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Sienna 104, 104",
+   "addressLocality": "Sienna",
+   "postalCode": "33-318",
+   "addressCountry": "POL"
+  },
+  "page_country": "PL",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2903": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Zakopane/stary-niedzwiedz-13962",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Zakopane/stary-niedzwiedz-13962",
+  "found": true,
+  "name": "Stary Niedźwiedź in Zakopane",
+  "telephone": "",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "33a Strążyska",
+   "addressLocality": "Zakopane",
+   "postalCode": "34-500",
+   "addressCountry": "POL"
+  },
+  "page_country": "PL",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3901": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/masovia/warsaw/restaurant/alon-omakase",
+  "canonical": "https://guide.michelin.com/en/masovia/warsaw/restaurant/alon-omakase",
+  "found": true,
+  "name": "Alon Omakase",
+  "telephone": "+48 728 555 000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "ul. Jana Pawła Woronicza 33C/lok.U4",
+   "addressLocality": "Warsaw",
+   "postalCode": "02-640",
+   "addressCountry": "POL",
+   "addressRegion": "Mazovia"
+  },
+  "page_country": "PL",
+  "website": "https://omakase.eu/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3905": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/masovia/warsaw/restaurant/hub-praga",
+  "canonical": "https://guide.michelin.com/en/masovia/warsaw/restaurant/hub-praga",
+  "found": true,
+  "name": "hub.praga",
+  "telephone": "+48 570 610 550",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Jagiellońska 22/LU1",
+   "addressLocality": "Warsaw",
+   "postalCode": "03-719",
+   "addressCountry": "POL",
+   "addressRegion": "Mazovia"
+  },
+  "page_country": "PL",
+  "website": "https://hub-praga.pl/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2837": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/aljezur/praia-do-canal-nature-resort-15656",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/aljezur/praia-do-canal-nature-resort-15656",
+  "found": true,
+  "name": "Praia do Canal Nature Retreat in Aljezur",
+  "telephone": "+351 282 242 400",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Herdade Vale dos Polvos, Valinhos",
+   "addressLocality": "Aljezur",
+   "postalCode": " 8670-156",
+   "addressCountry": "PRT",
+   "addressRegion": "Algarve"
+  },
+  "page_country": "PT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_2841": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Vidigueira/quinta-do-paral-14400",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Vidigueira/quinta-do-paral-14400",
+  "found": true,
+  "name": "Quinta do Paral in Vidigueira",
+  "telephone": "+351 284 441 620",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Quinta do Paral, Selmes",
+   "addressLocality": "Vidigueira",
+   "postalCode": "7960-131",
+   "addressCountry": "PRT",
+   "addressRegion": "Alentejo"
+  },
+  "page_country": "PT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_2846": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/monsaraz/sao-lourenco-do-barrocal-11836",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/monsaraz/sao-lourenco-do-barrocal-11836",
+  "found": true,
+  "name": "São Lourenço do Barrocal in Monsaraz",
+  "telephone": "+351 266 247 140",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "São Lourenço do Barrocal",
+   "addressLocality": "Monsaraz",
+   "postalCode": "7200-177",
+   "addressCountry": "PRT",
+   "addressRegion": "Alentejo"
+  },
+  "page_country": "PT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "hotel_2850": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/comporta/sublime-comporta-7703",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/comporta/sublime-comporta-7703",
+  "found": true,
+  "name": "Sublime Comporta in Comporta",
+  "telephone": "+351 269 449 376",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "EN 261-1, Muda",
+   "addressLocality": "Comporta",
+   "postalCode": "7570-337",
+   "addressCountry": "PRT",
+   "addressRegion": "Alentejo"
+  },
+  "page_country": "PT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2865": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Peso%20da%20R%C3%A9gua/torel-quinta-da-vacaria-douro-valley-14495",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Peso%20da%20R%C3%A9gua/torel-quinta-da-vacaria-douro-valley-14495",
+  "found": true,
+  "name": "Torel Quinta da Vacaria - Douro Valley in Peso da Régua",
+  "telephone": "+351 254 249 388",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Rua de Vilarinho dos Freires",
+   "addressLocality": "Peso da Régua",
+   "postalCode": "5050-364",
+   "addressCountry": "PRT",
+   "addressRegion": "Douro Valley"
+  },
+  "page_country": "PT",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street words (no number)"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street words (no number)"
+ },
+ "rest_3774": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/porto-region/porto/restaurant/eon",
+  "canonical": "https://guide.michelin.com/en/porto-region/porto/restaurant/eon",
+  "found": true,
+  "name": "Éon",
+  "telephone": "+351 22 967 7008",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Rua Ricardo Severo 21",
+   "addressLocality": "Porto",
+   "postalCode": "4050-515",
+   "addressCountry": "PRT",
+   "addressRegion": "Porto"
+  },
+  "page_country": "PT",
+  "website": "https://palacetesevero.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3793": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/porto-region/porto/restaurant/le-monument",
+  "canonical": "https://guide.michelin.com/en/porto-region/porto/restaurant/le-monument",
+  "found": true,
+  "name": "Le Monument",
+  "telephone": "+351 22 766 2411",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Avenida dos Aliados 151",
+   "addressLocality": "Porto",
+   "postalCode": "4000-067",
+   "addressCountry": "PRT",
+   "addressRegion": "Porto"
+  },
+  "page_country": "PT",
+  "website": "https://www.hotelstheone.com/pt/hoteis-porto/the-one-monumental-palace/restaurantes",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_282": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/belgrade/square-nine-hotel-6698",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/belgrade/square-nine-hotel-6698",
+  "found": true,
+  "name": "Square Nine Hotel in Belgrade",
+  "telephone": "00 381 11 3333 500",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Studentski Trg 9",
+   "addressLocality": "Belgrade",
+   "postalCode": "11000",
+   "addressCountry": "SRB"
+  },
+  "page_country": "RS",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_283": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/belgrade/the-st-regis-belgrade-14898",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/belgrade/the-st-regis-belgrade-14898",
+  "found": true,
+  "name": "The St. Regis Belgrade in Belgrade",
+  "telephone": "+381 11 6666111",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Nikolaja Kravcova 1a",
+   "addressLocality": "Belgrade",
+   "postalCode": "11000",
+   "addressCountry": "SRB"
+  },
+  "page_country": "RS",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2588": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/stockholm/stockholm-stadshotell-15159",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/stockholm/stockholm-stadshotell-15159",
+  "found": true,
+  "name": "Stockholm Stadshotell in Stockholm",
+  "telephone": "+46-8-165030",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Björngårdsgatan 23",
+   "addressLocality": "Stockholm",
+   "postalCode": "11852",
+   "addressCountry": "SWE"
+  },
+  "page_country": "SE",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3723": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/vastra-gotaland/gothenburg/restaurant/hoze",
+  "canonical": "https://guide.michelin.com/en/vastra-gotaland/gothenburg/restaurant/hoze",
+  "found": true,
+  "name": "HOZE",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Stigbergsliden 17",
+   "addressLocality": "Gothenburg",
+   "postalCode": "414 63",
+   "addressCountry": "SWE",
+   "addressRegion": "Västra Götaland "
+  },
+  "page_country": "SE",
+  "website": "https://www.hozerestaurant.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0124": {
+  "status": "200",
+  "final": "https://guide.michelin.com/nl/nl/singapore-region/singapore/restaurant/les-amis",
+  "canonical": "https://guide.michelin.com/nl/nl/singapore-region/singapore/restaurant/les-amis",
+  "found": true,
+  "name": "Les Amis",
+  "telephone": "+65 6733 2225",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Shaw Centre, #01-16, 1 Scotts Road",
+   "addressLocality": "Singapore",
+   "postalCode": "228208",
+   "addressCountry": "SGP",
+   "addressRegion": "Singapore"
+  },
+  "page_country": "SG",
+  "website": "https://www.lesamis.com.sg/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0125": {
+  "status": "200",
+  "final": "https://guide.michelin.com/nl/nl/singapore-region/singapore/restaurant/odette",
+  "canonical": "https://guide.michelin.com/nl/nl/singapore-region/singapore/restaurant/odette",
+  "found": true,
+  "name": "Odette",
+  "telephone": "+65 9822 8283",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "National Gallery, #01-04, 1 St. Andrew's Road (entrance via Supreme Court wing's foyer)",
+   "addressLocality": "Singapore",
+   "postalCode": "178957",
+   "addressCountry": "SGP",
+   "addressRegion": "Singapore"
+  },
+  "page_country": "SG",
+  "website": "https://odetterestaurant.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "rest_0126": {
+  "status": "200",
+  "final": "https://guide.michelin.com/nl/nl/singapore-region/singapore/restaurant/zen",
+  "canonical": "https://guide.michelin.com/nl/nl/singapore-region/singapore/restaurant/zen",
+  "found": true,
+  "name": "Zén",
+  "telephone": "+65 9236 6368",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "41 Bukit Pasoh Road",
+   "addressLocality": "Singapore",
+   "postalCode": "089855",
+   "addressCountry": "SGP",
+   "addressRegion": "Singapore"
+  },
+  "page_country": "SG",
+  "website": "https://www.restaurantzen.com",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_300": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/otocec/hotel-grad-otocec-13601",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/otocec/hotel-grad-otocec-13601",
+  "found": true,
+  "name": "Grad Otočec in Otocec",
+  "telephone": "",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Grajska cesta 2",
+   "addressLocality": "Otocec",
+   "postalCode": "8222",
+   "addressCountry": "SVN"
+  },
+  "page_country": "SI",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_3113": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Bohinj/vila-muhr-15483",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Bohinj/vila-muhr-15483",
+  "found": true,
+  "name": "Vila Muhr in Bohinj",
+  "telephone": "+386 70 801 144",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "44 Ribčev Laz",
+   "addressLocality": "Bohinj",
+   "postalCode": "4265",
+   "addressCountry": "SVN",
+   "addressRegion": "Gorenjska"
+  },
+  "page_country": "SI",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_0425": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/upper-carniola/kranjska-gora/restaurant/milka",
+  "canonical": "https://guide.michelin.com/en/upper-carniola/kranjska-gora/restaurant/milka",
+  "found": true,
+  "name": "Milka",
+  "telephone": "+386 597 79590",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Vršiška cesta 45",
+   "addressLocality": "Kranjska Gora",
+   "postalCode": "4280",
+   "addressCountry": "SVN",
+   "addressRegion": "Upper Carniola"
+  },
+  "page_country": "SI",
+  "website": "https://www.hotelmilka.si/restaurant",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_4127": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/drava/zgornja-kungota/restaurant/hisa-denk",
+  "canonical": "https://guide.michelin.com/en/drava/zgornja-kungota/restaurant/hisa-denk",
+  "found": true,
+  "name": "Hiša Denk",
+  "telephone": "+386 2 656 35 51",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Zgornja Kungota 11A",
+   "addressLocality": "Zgornja Kungota",
+   "postalCode": "2201",
+   "addressCountry": "SVN",
+   "addressRegion": "Drava"
+  },
+  "page_country": "SI",
+  "website": "https://www.hisadenk.si/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_752": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/bangkok/capella-bangkok-12207",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/bangkok/capella-bangkok-12207",
+  "found": true,
+  "name": "Capella Bangkok in Bangkok",
+  "telephone": "+66 2 098 3888",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "300/2 Charoen Krung Road, Yannawa",
+   "addressLocality": "Bangkok",
+   "postalCode": "10120",
+   "addressCountry": "THA",
+   "addressRegion": "Central Thailand"
+  },
+  "page_country": "TH",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_754": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/bangkok/four-seasons-bangkok-13358",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/bangkok/four-seasons-bangkok-13358",
+  "found": true,
+  "name": "Four Seasons Hotel Bangkok at Chao Phraya River in Bangkok",
+  "telephone": "66-2-0320888",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "300 1 Charoen Krung Rd, Sathorn",
+   "addressLocality": "Bangkok",
+   "postalCode": "10120",
+   "addressCountry": "THA",
+   "addressRegion": "Central Thailand"
+  },
+  "page_country": "TH",
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
@@ -8187,6 +12841,81 @@
   },
   "page_country": "TR",
   "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_2925": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/alacati/warehouse-by-the-stay-9320",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/alacati/warehouse-by-the-stay-9320",
+  "found": true,
+  "name": "Warehouse By The Stay in Alacati",
+  "telephone": "+90 232 970 78 29",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "4001. Sokak No: 27, Cesme",
+   "addressLocality": "Alacati",
+   "postalCode": "35930",
+   "addressCountry": "TUR",
+   "addressRegion": "Izmir Region"
+  },
+  "page_country": "TR",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3914": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+  "canonical": "https://guide.michelin.com/en/mugla/bodrum_2806351/restaurant/kitchen-1208228",
+  "found": true,
+  "name": "Kitchen By Osman Sezener",
+  "telephone": "+90 252 311 31 35",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Dirmil Mahallesi, Balyek Caddesi No:5A, Yalıkavak",
+   "addressLocality": "Bodrum",
+   "postalCode": "48400",
+   "addressCountry": "TUR",
+   "addressRegion": "Muğla"
+  },
+  "page_country": "TR",
+  "website": "https://www.editionhotels.com/bodrum/restaurants-and-bars/kitchen/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3922": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla",
+  "canonical": "https://guide.michelin.com/en/izmir/izmir_2809416/restaurant/teruar-urla",
+  "found": true,
+  "name": "Teruar Urla",
+  "telephone": "+90 532 659 20 90",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Kusçular Mahallesi, 8028. Sokak No:16, Urla",
+   "addressLocality": "Izmir",
+   "postalCode": "35437",
+   "addressCountry": "TUR",
+   "addressRegion": "İzmir"
+  },
+  "page_country": "TR",
+  "website": "https://www.teruarurla.com/",
   "stay_hotels": [],
   "address_agrees": [
    "postcode",
@@ -9489,10 +14218,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1558": {
   "status": "200",
@@ -10037,10 +14767,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1652": {
   "status": "200",
@@ -10186,10 +14917,11 @@
   "website": null,
   "stay_hotels": [],
   "address_agrees": [
-   "postcode"
+   "postcode",
+   "street words (no number)"
   ],
   "identity_ok": true,
-  "identity_note": "address agrees: postcode"
+  "identity_note": "address agrees: postcode+street words (no number)"
  },
  "hotel_1658": {
   "status": "200",

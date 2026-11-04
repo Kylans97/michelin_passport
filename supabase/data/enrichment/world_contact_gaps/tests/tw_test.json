@@ -1,2 +1,2 @@
-{"file": "prepared_tw_contact_fill.sql", "apply": true, "values_written": 55, "rerun_noop": true, "renamed_row": "rest_0469", "rename_aborts": true, "error": ""}
-{"all_files_in_sequence": true, "filled_total": 943}
+{"file": "prepared_tw_contact_fill.sql", "apply": true, "values_written": 54, "rerun_noop": true, "renamed_row": "rest_0469", "rename_aborts": true, "error": ""}
+{"all_files_in_sequence": true, "filled_total": 942}

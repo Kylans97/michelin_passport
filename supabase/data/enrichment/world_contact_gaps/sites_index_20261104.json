@@ -16801,5 +16801,128 @@
     "url": "https://www.rosewoodhotels.com/en/our-global-reservation-information"
    }
   ]
+ },
+ "https://www.babel-budapest.hu/": {
+  "status": "200",
+  "final": "https://www.babel-budapest.hu/challenge",
+  "length": 14901,
+  "file": "3377665c15f6c8876b1856b0e45bd635d97344d4",
+  "fetched_at": "2026-11-04T22:51:27Z",
+  "subpages": []
+ },
+ "https://w.eventlin.com/Restaurant-Alfred-Keller?merchant=25854": {
+  "status": "200",
+  "final": "https://w.eventlin.com/Restaurant-Alfred-Keller?merchant=25854",
+  "length": 10707,
+  "file": "92599fc427f1260198107322bc029ddd6fafaa16",
+  "fetched_at": "2026-11-04T22:51:27Z",
+  "subpages": []
+ },
+ "https://www.mb-tenerife.com/es/": {
+  "status": "200",
+  "final": "https://www.mb-tenerife.com/es",
+  "length": 69758,
+  "file": "4a7dab032cca5b664bfb9f60c822de2e6344eb82",
+  "fetched_at": "2026-11-04T22:51:27Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.mb-tenerife.com/es/about-us",
+    "length": 53849,
+    "file": "5fd9e68ac07d20ce360581e2398e91b37cef5747",
+    "fetched_at": "2026-11-04T22:51:28Z",
+    "url": "https://www.mb-tenerife.com/es/about-us"
+   },
+   {
+    "status": "200",
+    "final": "https://www.mb-tenerife.com/es/contact-location",
+    "length": 55285,
+    "file": "85f7211f3739bf13231ddb3241ee566c20a6afd4",
+    "fetched_at": "2026-11-04T22:51:29Z",
+    "url": "https://www.mb-tenerife.com/es/contact-location"
+   },
+   {
+    "status": "200",
+    "final": "https://www.mb-tenerife.com/es/accessibility",
+    "length": 46474,
+    "file": "1f0d6b40a1e7b73fd69dddecf8cdeb227de20f4a",
+    "fetched_at": "2026-11-04T22:51:30Z",
+    "url": "https://www.mb-tenerife.com/es/accessibility"
+   }
+  ]
+ },
+ "https://www.lenvie-restaurant.be/": {
+  "status": "200",
+  "final": "https://lenvie-restaurant.be/nl/",
+  "length": 162402,
+  "file": "1e32e03a4c14204b4d725d9de20fb7e30994fbdf",
+  "fetched_at": "2026-11-04T22:51:28Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://lenvie-restaurant.be/nl/contact/",
+    "length": 154925,
+    "file": "1c6ad8b37226764ee326e3e03f7948690f2d9c57",
+    "fetched_at": "2026-11-04T22:51:29Z",
+    "url": "https://lenvie-restaurant.be/nl/contact/"
+   },
+   {
+    "status": "200",
+    "final": "https://lenvie-restaurant.be/nl/reserveren/",
+    "length": 152249,
+    "file": "6071ab0fc0e5d285adce791de187f9f32b1d1633",
+    "fetched_at": "2026-11-04T22:51:30Z",
+    "url": "https://lenvie-restaurant.be/nl/reserveren/"
+   }
+  ]
+ },
+ "https://www.restaurantdewitte.be/": {
+  "status": "200",
+  "final": "https://www.benoitdewitte.be/nl",
+  "length": 16011,
+  "file": "19a71e7689e0d9136cf721cab8708073e12bf7ad",
+  "fetched_at": "2026-11-04T22:51:29Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.benoitdewitte.be/nl/contact",
+    "length": 22191,
+    "file": "93d0fb635507024d80fc8dae49c70c7584465445",
+    "fetched_at": "2026-11-04T22:51:30Z",
+    "url": "https://www.benoitdewitte.be/nl/contact"
+   },
+   {
+    "status": "200",
+    "final": "https://www.benoitdewitte.be/nl/contact&info",
+    "length": 18368,
+    "file": "904a0d3eadcf0b29404ec94ae54ce223b9728f0e",
+    "fetched_at": "2026-11-04T22:51:31Z",
+    "url": "https://www.benoitdewitte.be/nl/contact&info"
+   }
+  ]
+ },
+ "https://www.hotelmilka.si/restaurant": {
+  "status": "500",
+  "final": "https://www.hotelmilka.si/restaurant/",
+  "length": 175484,
+  "file": "a76e0afa5e656e3c0314cc371b9d93d3770c04d6",
+  "fetched_at": "2026-11-04T22:51:31Z",
+  "subpages": []
+ },
+ "https://www.elmolinourdaniz.com/": {
+  "status": "000",
+  "final": "https://www.elmolinourdaniz.com/",
+  "length": 0,
+  "file": "e433b684341ade92dd5332bb0055a1a58ac1698a",
+  "fetched_at": "2026-11-04T22:51:37Z",
+  "subpages": []
+ },
+ "https://www.restaurant-mingles.com/": {
+  "status": "200",
+  "final": "https://www.restaurant-mingles.com/",
+  "length": 1340,
+  "file": "2f91322ca305d35c1a950565b78187ea2b725b58",
+  "fetched_at": "2026-11-04T22:55:12Z",
+  "subpages": []
  }
 }

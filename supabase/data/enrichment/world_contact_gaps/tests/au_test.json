@@ -1,0 +1,2 @@
+{"file": "prepared_au_contact_fill.sql", "apply": true, "values_written": 1, "rerun_noop": true, "renamed_row": "hotel_700", "rename_aborts": true, "error": ""}
+{"all_files_in_sequence": true, "filled_total": 889}

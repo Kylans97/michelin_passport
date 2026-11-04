@@ -46,6 +46,7 @@ SIDX = json.load(open(os.path.join(SR, 'index.json')))
 
 GENERIC = set('restaurant restaurante ristorante hotel hotels resort spa the and by at le la les de del di da du des el los il of a an '
               'sushi kitchen bar dining room house table inn ryokan lodge villa villas suites club cuisine maison casa'.split())
+HOTEL_SITE = re.compile(r'hotel|resort|raffles|mandarinoriental|fourseasons|marriott|hilton|hyatt|maistra|ritzcarlton|rosewood|peninsula|shangri|belmond|oetker|aman\\.|kempinski|accor|ihg|palace|sofitel|fairmont|lottehotel|okura|imperialhotel|palacehotel|rocco|dorchester|bulgari|bvlgari|edition|stregis|aubergeresorts|montage|pendry|capella|sixsenses|anantara|oberoi|tajhotels|banyantree|jumeirah|langham|regent|rosewood|kaikan', re.I)
 CLOSED_WORDS = ('permanently closed', 'closed permanently', 'has closed its doors', 'have closed our doors', 'we have closed',
                 'closed for good', 'chiuso definitivamente', 'definitivement fermé', 'endgültig geschlossen',
                 '閉店いたしました', '閉店しました', '閉店のお知らせ', '永久停業', '結束營業', '结束营业', '歇業', '歇业')
@@ -311,6 +312,12 @@ for r in ROWS:
     in_hotel = r['kind'] == 'restaurant' and bool(r['property_name'] or (m and m.get('stay_hotels')))
     if in_hotel:
         f['notes'].append('restaurant in a hotel (%s)' % (r['property_name'] or ', '.join(m['stay_hotels'])))
+    elif r['kind'] == 'restaurant':
+        for u in (m and m.get('website'), g and g.get('websiteUri')):
+            if u and HOTEL_SITE.search(host(u)) and re.search(r'/(dining|dine|restaurants?|ristorante|gastronomie|sub)/', u, re.I):
+                in_hotel = True
+                f['notes'].append('restaurant page on a hotel site (%s): treated as a restaurant in a hotel' % host(u))
+                break
     variants = name_variants(r, g and g['displayName']['text'], f['gnative'] if g else None, m and m.get('name'))
     D = dict(place=f['place'], website=None, phone=None)
     # candidate websites
@@ -397,7 +404,12 @@ for r in ROWS:
             agree = [k for k, v in srcs.items() if len(v) == 2]
             site_hits = [k for k in srcs if k in on_site]
             pick, why = None, None
-            if len(site_hits) == 1:
+            differ = mp and gp and e164(mp) != e164(gp)
+            if len(site_hits) == 1 and differ and site_hits[0] != e164(mp):
+                why = 'MICHELIN (%s) and Google (%s) differ; only Google\'s is on the own site %s (could be a hotel or group line)' % (e164(mp), e164(gp), own['url'])
+            elif len(site_hits) == 1 and in_hotel and srcs[site_hits[0]] == ['Google']:
+                why = 'restaurant in a hotel: Google\'s number only (%s), MICHELIN gives none' % site_hits[0]
+            elif len(site_hits) == 1:
                 pick, why = site_hits[0], '%s; printed on the own site %s' % ('+'.join(srcs[site_hits[0]]), own['url'])
             elif len(site_hits) > 1:
                 why = 'MICHELIN and Google differ and both numbers are on the own site'

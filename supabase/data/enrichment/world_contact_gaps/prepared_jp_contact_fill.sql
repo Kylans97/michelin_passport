@@ -20,7 +20,7 @@
 -- re-run (fill-only).
 
 begin;
--- restaurants: 162 rows (0 Place IDs, 131 phones, 162 websites)
+-- restaurants: 162 rows (0 Place IDs, 126 phones, 162 websites)
 create temp table _fill_restaurant (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_restaurant values
     ('rest_0310', 'Narisawa', NULL, NULL, 'http://www.narisawa-yoshihiro.com/'),
@@ -28,7 +28,7 @@ insert into _fill_restaurant values
     ('rest_0326', 'La Cime', NULL, NULL, 'http://www.la-cime.com/'),
     ('rest_0485', 'Kikunoi Honten', NULL, '+81 75-561-0015', 'https://kikunoi.jp/restaurant/'),
     ('rest_0486', 'Hyotei', NULL, '+81 75-771-4116', 'http://hyotei.co.jp/'),
-    ('rest_0487', 'Miyamasou', NULL, '+81 75-746-0231', 'https://miyamasou.jp/'),
+    ('rest_0487', 'Miyamasou', NULL, NULL, 'https://miyamasou.jp/'),
     ('rest_0488', 'Mizai', NULL, '+81 75-551-3310', 'http://www.mizai.jp/'),
     ('rest_0489', 'Gion Sasaki', NULL, '+81 75-551-5000', 'http://gionsasaki.com/'),
     ('rest_0490', 'Taian', NULL, '+81 6-6120-0790', 'https://osaka-taian.com/'),
@@ -156,13 +156,13 @@ insert into _fill_restaurant values
     ('rest_0683', 'L''ARGENT', NULL, '+81 3-6268-8427', 'https://www.largent.tokyo/'),
     ('rest_0686', 'Towa', NULL, NULL, 'https://towa-nishiazabu.com/'),
     ('rest_0687', 'Higashiyama Muku', NULL, '+81 70-3149-4112', 'https://higashiyama-muku.jp/'),
-    ('rest_0688', 'Les Saisons', NULL, '+81 3-3539-8087', 'https://www.imperialhotel.co.jp/tokyo/restaurant/les-saisons'),
-    ('rest_0689', 'Torakuro', NULL, '+81 3-3539-8224', 'https://www.imperialhotel.co.jp/tokyo/restaurant/imperialhotel-torakuro'),
+    ('rest_0688', 'Les Saisons', NULL, NULL, 'https://www.imperialhotel.co.jp/tokyo/restaurant/les-saisons'),
+    ('rest_0689', 'Torakuro', NULL, NULL, 'https://www.imperialhotel.co.jp/tokyo/restaurant/imperialhotel-torakuro'),
     ('rest_0690', 'Sushi Miura', NULL, '+81 90-8894-0020', 'https://sushimiura-japan.com/'),
     ('rest_0691', 'Jushu', NULL, '+81 3-6427-5167', 'https://nishiazabu-jushu.com/'),
     ('rest_0692', 'NéMo', NULL, '+81 3-5962-6085', 'https://restaurantnemo.net/'),
     ('rest_0693', 'Kappo Muroi', NULL, NULL, 'https://kappou-muroi.jp/'),
-    ('rest_0694', 'PRUNIER', NULL, '+81 3-3215-2111', 'https://www.kaikan.co.jp/restaurant/prunier/index.html'),
+    ('rest_0694', 'PRUNIER', NULL, NULL, 'https://www.kaikan.co.jp/restaurant/prunier/index.html'),
     ('rest_0697', 'le sputnik', NULL, NULL, 'https://le-sputnik.jp/'),
     ('rest_0699', 'Nishiazabu Taku', NULL, '+81 3-5774-4372', 'https://nishiazabu-taku.com/'),
     ('rest_0701', 'Sushi Ichijo', NULL, '+81 3-6661-1335', 'https://sushi-ichijo.com/'),
@@ -175,7 +175,7 @@ insert into _fill_restaurant values
     ('rest_0710', 'Sushi Masashi', NULL, '+81 3-6384-5526', 'https://sushimasashi.tokyo/'),
     ('rest_0712', 'CYCLE by Mauro Colagreco', NULL, '+81 3-6551-2885', 'https://cyclerestaurant.com/'),
     ('rest_0716', 'Tenoshima', NULL, '+81 3-6316-2150', 'https://www.tenoshima.com/'),
-    ('rest_0718', 'ESTERRE by Alain Ducasse', NULL, '+81 3-3211-5317', 'https://www.palacehoteltokyo.com/restaurant/esterre/'),
+    ('rest_0718', 'ESTERRE by Alain Ducasse', NULL, NULL, 'https://www.palacehoteltokyo.com/restaurant/esterre/'),
     ('rest_0719', 'Guchokuni', NULL, NULL, 'https://kagurazaka-guchokuni.jp/'),
     ('rest_0720', 'Sushi Oya', NULL, '+81 3-6228-1868', 'https://sushioya.com/'),
     ('rest_0721', 'FUSHIKINO', NULL, '+81 3-3269-4556', 'http://www.fushikino.com/'),

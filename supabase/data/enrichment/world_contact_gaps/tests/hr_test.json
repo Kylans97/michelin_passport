@@ -1,0 +1,2 @@
+{"file": "prepared_hr_contact_fill.sql", "apply": true, "values_written": 12, "rerun_noop": true, "renamed_row": "rest_4109", "rename_aborts": true, "error": ""}
+{"all_files_in_sequence": true, "filled_total": 900}
