@@ -12,7 +12,7 @@ BLOCKED = ('opentable.', 'resy.com', 'exploretock.com', 'tock.com', 'sevenrooms.
            'autoreserve.com', 'gnavi.co.jp', 'hotpepper.jp', 'retty.me', 'line.me', 'lin.ee', 'weibo.com', 'dianping.com', 'meituan.com',
            'x.com', 'twitter.com', 'tiktok.com', 'youtube.com', 'agoda.', 'trip.com', 'ctrip.com', 'airbnb.', 'rakuten.co.jp', 'jalan.net',
            'yanolja.', 'catchtable.', 'chope.co', 'quandoo.', 'zenchef.', 'formitable.', 'covermanager.', 'resdiary.', 'bookatable.',
-           'wa.me', 'whatsapp.com', 'linkin.bio', 'beacons.ai', 'carrd.co', 'business.site', 'wixsite.com/', 'inline.app', 'eztable.',
+           'wa.me', 'whatsapp.com', 'linkin.bio', 'beacons.ai', 'carrd.co', 'business.site', 'inline.app', 'eztable.',
            'mr-gourmet', 'reserve.', 'reservations.', 'res.', 'secure.', 'be.synxis.com', 'synxis.com', 'mews.', 'simplebooking.',
            'tablelog', 'yoyaku', 'ebica.jp', 'gourmet.yahoo', 'travel.rakuten', 'relux.jp', 'ikyu', 'jtb.co.jp', 'rurubu', 'hitosara',
            'openrice.com', 'gorp.jp', 'myconciergejapan.net', 'tableall.com', 'pocket-concierge.jp', 'omakase.', 'favy.jp', 'savorjapan', 'ikkyu', 'byfood.com', 'tablecheck.', 'restaurant.ikyu', 'ozmall.co.jp', 'yelp', 'zomato.', 'resengo.', 'bookings.', 'book.', 'booking.', 'uber', 'doordash', 'grubhub', 'deliveroo', 'foodpanda', 'eatigo', 'pinterest.', 'linkedin.', 'xiaohongshu')
@@ -41,14 +41,24 @@ def reg_domain(u):
 
 
 def blocked(u):
+    """The blocked entry a URL hits, or None. 'x.' = a host label starting x.;
+    'a.b' = that domain or a subdomain of it; 'a.b/' = a path on that domain;
+    a plain word = anywhere in the host."""
     if re.search(r'%20|\s|https?://.*https?://', u):
         return 'malformed URL'
-    s = (host(u) + urlsplit(u).path).lower()
     h = host(u)
+    hp = (h + urlsplit(u).path).lower()
     for b in BLOCKED:
-        if b.endswith('.') and (h.startswith(b) or ('.' + b) in '.' + h):
-            return b
-        if not b.endswith('.') and (b in h or (b.endswith('/') and b in s)):
+        if b.endswith('/'):
+            if b in hp:
+                return b
+        elif b.endswith('.'):
+            if h.startswith(b) or ('.' + b) in h:
+                return b
+        elif '.' in b:
+            if h == b or h.endswith('.' + b):
+                return b
+        elif b in h:
             return b
     return None
 

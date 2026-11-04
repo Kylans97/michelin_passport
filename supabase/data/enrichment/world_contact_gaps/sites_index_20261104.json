@@ -212,14 +212,6 @@
    }
   ]
  },
- "http://kitchentablelondon.co.uk/": {
-  "status": "000",
-  "final": "https://kitchentablelondon.co.uk/",
-  "length": 0,
-  "file": "37e192002f02f288ebb68345686debad0d809b07",
-  "fetched_at": "2026-11-04T22:18:58Z",
-  "subpages": []
- },
  "http://guillaume-scheer.fr/": {
   "status": "200",
   "final": "https://les-plaisirs-gourmands.com/",
@@ -411,14 +403,6 @@
     "url": "https://kikunoi.jp/reserve/"
    }
   ]
- },
- "http://bratrestaurant.com/": {
-  "status": "000",
-  "final": "https://bratrestaurant.co.uk/",
-  "length": 0,
-  "file": "df2dc60aec442f5e1d6364964ac60c16a26b24c7",
-  "fetched_at": "2026-11-04T22:19:02Z",
-  "subpages": []
  },
  "http://lapaix-m.jp/": {
   "status": "200",
@@ -684,14 +668,6 @@
   "fetched_at": "2026-11-04T22:19:08Z",
   "subpages": []
  },
- "http://www.blackswanoldstead.co.uk/": {
-  "status": "202",
-  "final": "http://www.blackswanoldstead.co.uk/",
-  "length": 168,
-  "file": "e49964c279e3deeec883690d4cd16876db75935a",
-  "fetched_at": "2026-11-04T22:19:08Z",
-  "subpages": []
- },
  "http://www.bianc.de/": {
   "status": "200",
   "final": "https://www.buoy.hamburg/",
@@ -825,14 +801,6 @@
    }
   ]
  },
- "http://mountainbeakstreet.com/": {
-  "status": "000",
-  "final": "https://mountainbeakstreet.com/",
-  "length": 0,
-  "file": "1a33975804384ade27bc3cbcc0b7f882d09b7779",
-  "fetched_at": "2026-11-04T22:19:10Z",
-  "subpages": []
- },
  "http://www.bergschenke-halle.com/": {
   "status": "200",
   "final": "https://bergschenke-halle.com/",
@@ -956,14 +924,6 @@
     "url": "https://eterrestaurant.com/reservas"
    }
   ]
- },
- "http://www.gymkhanarestaurants.com/": {
-  "status": "429",
-  "final": "https://www.gymkhanarestaurants.com/",
-  "length": 20768,
-  "file": "d1e10a386329958a29fd0efcf00d71aa8f29eac3",
-  "fetched_at": "2026-11-04T22:19:15Z",
-  "subpages": []
  },
  "http://www.falsledkro.dk/": {
   "status": "200",
@@ -1106,27 +1066,11 @@
   "fetched_at": "2026-11-04T22:19:19Z",
   "subpages": []
  },
- "http://www.hotelmilka.si/restaurant": {
-  "status": "500",
-  "final": "http://www.hotelmilka.si/restaurant/",
-  "length": 175477,
-  "file": "0204e7eeaab99c2c13a8289909ea19bc4149c42b",
-  "fetched_at": "2026-11-04T22:19:20Z",
-  "subpages": []
- },
  "http://www.kinobu.co.jp/": {
   "status": "200",
   "final": "http://www.kinobu.co.jp/",
   "length": 12594,
   "file": "be78582a438e52946cc8badc3010181ed7850419",
-  "fetched_at": "2026-11-04T22:19:20Z",
-  "subpages": []
- },
- "http://soujiki-nakahigashi.jp/": {
-  "status": "503",
-  "final": "http://soujiki-nakahigashi.jp/",
-  "length": 114,
-  "file": "d67cf01eed484b0c7e4d4dc1439abf8a0836bc8a",
   "fetched_at": "2026-11-04T22:19:20Z",
   "subpages": []
  },
@@ -1171,14 +1115,6 @@
     "url": "https://juvet.com/informasjonskapslar-og-personvern"
    }
   ]
- },
- "http://www.koji-shimomura.jp/": {
-  "status": "429",
-  "final": "https://www.koji-shimomura.jp/",
-  "length": 10300,
-  "file": "14df126439eee7631e8b00120539ec0e873ae653",
-  "fetched_at": "2026-11-04T22:19:21Z",
-  "subpages": []
  },
  "http://www.dominique-bouchet.jp/": {
   "status": "200",
@@ -1485,22 +1421,6 @@
     "url": "https://www.kyoto-horibe.com/beta/info/"
    }
   ]
- },
- "http://www.murlo.com/": {
-  "status": "202",
-  "final": "http://www.murlo.com/",
-  "length": 168,
-  "file": "7bc9c122e073884d5bfdff534ca8ed31ee8f6878",
-  "fetched_at": "2026-11-04T22:19:27Z",
-  "subpages": []
- },
- "http://www.fft-crony.jp/": {
-  "status": "503",
-  "final": "http://www.fft-crony.jp/",
-  "length": 114,
-  "file": "a29527aa9d6a1590d9c385a8ab3ac24a10b6e0d7",
-  "fetched_at": "2026-11-04T22:19:27Z",
-  "subpages": []
  },
  "http://www.nihonryori-kanda.com/restaurant/": {
   "status": "200",
@@ -2080,14 +2000,6 @@
   "fetched_at": "2026-11-04T22:19:42Z",
   "subpages": []
  },
- "http://www.nodaiwa.co.jp/index2.html": {
-  "status": "503",
-  "final": "http://www.nodaiwa.co.jp/index2.html",
-  "length": 114,
-  "file": "1337c0ab13d07bbb93cc7c78046f0021df14b625",
-  "fetched_at": "2026-11-04T22:19:42Z",
-  "subpages": []
- },
  "https://apotheose.jp/": {
   "status": "200",
   "final": "https://apotheose.jp/",
@@ -2278,14 +2190,6 @@
     "url": "https://awara.co.jp/contact/"
    }
   ]
- },
- "https://dolomiti.lefayresorts.com/it/lefay-vital-gourmet-dolomiti-ristorante-di-lusso-dolomiti": {
-  "status": "000",
-  "final": "https://dolomiti.lefayresorts.com/it/lefay-vital-gourmet-dolomiti-ristorante-di-lusso-dolomiti",
-  "length": 0,
-  "file": "8c7bb9e8b2719b767863ba7e1b8cbcd335f65c2f",
-  "fetched_at": "2026-11-04T22:19:47Z",
-  "subpages": []
  },
  "https://cyclerestaurant.com/": {
   "status": "200",
@@ -2666,14 +2570,6 @@
   "fetched_at": "2026-11-04T22:19:56Z",
   "subpages": []
  },
- "http://www.taku.de/": {
-  "status": "000",
-  "final": "https://taku.de/",
-  "length": 0,
-  "file": "a4d5eb0bef8eb098f814b1be9c361978ada0124d",
-  "fetched_at": "2026-11-04T22:19:56Z",
-  "subpages": []
- },
  "https://chakaiseki-akiyoshi.fr/": {
   "status": "200",
   "final": "https://chakaiseki-akiyoshi.fr/",
@@ -2910,14 +2806,6 @@
   "final": "https://kiyama-kyoto.com/",
   "length": 75170,
   "file": "5cdb3a33451cb21da8d21d5bdebd289719ee6007",
-  "fetched_at": "2026-11-04T22:20:01Z",
-  "subpages": []
- },
- "https://gion-nishikawa.co.jp/": {
-  "status": "000",
-  "final": "https://gion-nishikawa.co.jp/",
-  "length": 0,
-  "file": "10b35850fcd7e46fb31828c997cc55c67907b4a9",
   "fetched_at": "2026-11-04T22:20:01Z",
   "subpages": []
  },
@@ -3252,14 +3140,6 @@
     "url": "https://losier.shiseido.co.jp/e/access/"
    }
   ]
- },
- "https://maytalima.com/": {
-  "status": "500",
-  "final": "https://maytalima.com.pe/",
-  "length": 188,
-  "file": "ac2a67caf95bda467338bc684f1b4d37ad9bb3ae",
-  "fetched_at": "2026-11-04T22:20:09Z",
-  "subpages": []
  },
  "https://maido.pe/": {
   "status": "200",
@@ -4080,27 +3960,11 @@
   "fetched_at": "2026-11-04T22:20:25Z",
   "subpages": []
  },
- "https://www.atlantis.com/dubai/atlantis-the-royal": {
-  "status": "000",
-  "final": "https://www.atlantis.com/dubai/atlantis-the-royal",
-  "length": 0,
-  "file": "5cbc2533422f769474afd943c6ff5d631498729c",
-  "fetched_at": "2026-11-04T22:20:25Z",
-  "subpages": []
- },
  "https://www.bayerischerhof.de/de/erleben-geniessen/restaurants-bars/restaurants/atelier.html": {
   "status": "403",
   "final": "https://www.bayerischerhof.de/de/erleben-geniessen/restaurants-bars/restaurants/atelier.html",
   "length": 5906,
   "file": "c4a83b50647cdc0f6f51b58ecfa113c17f8df0b3",
-  "fetched_at": "2026-11-04T22:20:25Z",
-  "subpages": []
- },
- "https://www.behindrestaurant.co.uk/": {
-  "status": "429",
-  "final": "https://www.behindrestaurant.co.uk/",
-  "length": 10518,
-  "file": "60d932de6e5f692d036c7417de8bb69cf0ecc23c",
   "fetched_at": "2026-11-04T22:20:25Z",
   "subpages": []
  },
@@ -4631,75 +4495,11 @@
   "fetched_at": "2026-11-04T22:20:31Z",
   "subpages": []
  },
- "https://www.fufukawaguchiko.jp/": {
-  "status": "503",
-  "final": "https://www.fufukawaguchiko.jp/",
-  "length": 2554,
-  "file": "cb955e2d9d04914f3fd1fc4e905aa5af60d0c9a2",
-  "fetched_at": "2026-11-04T22:20:32Z",
-  "subpages": []
- },
- "https://www.fufuhakone.jp/": {
-  "status": "503",
-  "final": "https://www.fufuhakone.jp/",
-  "length": 2520,
-  "file": "fb777abd757ac5f66b29eb671e093fd8736d3452",
-  "fetched_at": "2026-11-04T22:20:32Z",
-  "subpages": []
- },
- "https://www.fufukaruizawa.jp/": {
-  "status": "503",
-  "final": "https://www.fufukaruizawa.jp/",
-  "length": 2542,
-  "file": "3896a347a53780cb78fb7d342694bd3e038da6d3",
-  "fetched_at": "2026-11-04T22:20:32Z",
-  "subpages": []
- },
- "https://www.fufukyoto.jp/": {
-  "status": "503",
-  "final": "https://www.fufukyoto.jp/",
-  "length": 2514,
-  "file": "20b01f8c411ed2a6fc11050c71a8b6b19cecb8fb",
-  "fetched_at": "2026-11-04T22:20:32Z",
-  "subpages": []
- },
- "https://www.fufunara.jp/": {
-  "status": "503",
-  "final": "https://www.fufunara.jp/",
-  "length": 2508,
-  "file": "25acbe64ee4a5cb7a5bb714a5abd1401e4dbd278",
-  "fetched_at": "2026-11-04T22:20:32Z",
-  "subpages": []
- },
- "https://www.fufukyukaruizawa.jp/": {
-  "status": "503",
-  "final": "https://www.fufukyukaruizawa.jp/",
-  "length": 2564,
-  "file": "eabbb291fbfdeb9eae8d34514e888034740d0670",
-  "fetched_at": "2026-11-04T22:20:32Z",
-  "subpages": []
- },
- "https://www.germogliokyoto.com/": {
-  "status": "429",
-  "final": "https://www.germogliokyoto.com/",
-  "length": 10301,
-  "file": "b11112fd2a4f9517cff42849035010bb304a408c",
-  "fetched_at": "2026-11-04T22:20:32Z",
-  "subpages": []
- },
  "https://www.heritagebykei.com/": {
   "status": "403",
   "final": "https://www.heritagebykei.com/",
   "length": 5678,
   "file": "0373528437f6033f3e64a6d095207c5b57002450",
-  "fetched_at": "2026-11-04T22:20:32Z",
-  "subpages": []
- },
- "https://www.fufunikko.jp/": {
-  "status": "503",
-  "final": "https://www.fufunikko.jp/",
-  "length": 2514,
-  "file": "82bb12f3a40a95d4b38278149d787d2405d6f899",
   "fetched_at": "2026-11-04T22:20:32Z",
   "subpages": []
  },
@@ -5080,14 +4880,6 @@
    }
   ]
  },
- "https://www.loumi-dining.com/": {
-  "status": "429",
-  "final": "https://www.loumi-dining.com/",
-  "length": 10277,
-  "file": "13ef351769d3d3e097c80006765ba6eef8d62c12",
-  "fetched_at": "2026-11-04T22:20:39Z",
-  "subpages": []
- },
  "https://www.kokyu-kyoto.com/": {
   "status": "200",
   "final": "https://www.kokyu-kyoto.com/",
@@ -5325,14 +5117,6 @@
    }
   ]
  },
- "https://www.oetkercollection.com/hotels/eden-rock-st-barths/": {
-  "status": "429",
-  "final": "https://www.oetkercollection.com/hotels/eden-rock-st-barths/",
-  "length": 20768,
-  "file": "676cbf237e1b2fd933c60b5bc62f77d5eeaa0730",
-  "fetched_at": "2026-11-04T22:20:44Z",
-  "subpages": []
- },
  "https://www.mankamerou.com/": {
   "status": "200",
   "final": "https://www.mankamerou.com/",
@@ -5365,14 +5149,6 @@
     "url": "https://www.mankamerou.com/about/rooms/"
    }
   ]
- },
- "https://www.oneandonlyresorts.com/portonovi": {
-  "status": "000",
-  "final": "https://www.oneandonlyresorts.com/portonovi",
-  "length": 0,
-  "file": "8424090acebf5dccff119ce3316ee1622d505c7a",
-  "fetched_at": "2026-11-04T22:20:44Z",
-  "subpages": []
  },
  "https://www.nusarabkk.com/": {
   "status": "200",
@@ -5638,14 +5414,6 @@
    }
   ]
  },
- "https://www.restaurantfzn.com/": {
-  "status": "000",
-  "final": "https://www.restaurantfzn.com/",
-  "length": 0,
-  "file": "62ba63ed04eee8062b7e2c27032cdafceff6faec",
-  "fetched_at": "2026-11-04T22:20:48Z",
-  "subpages": []
- },
  "https://www.restaurantbloesem.com/": {
   "status": "200",
   "final": "https://www.restaurantbloesem.com/",
@@ -5795,14 +5563,6 @@
     "url": "https://www.ritzcarlton.com/en/about-the-ritz-carlton/"
    }
   ]
- },
- "https://www.neuwirt-badvigaun.at/": {
-  "status": "000",
-  "final": "https://www.neuwirt-badvigaun.at/",
-  "length": 0,
-  "file": "0cebcf3977aa5141c7f44628f8e542ee8ff23941",
-  "fetched_at": "2026-11-04T22:20:52Z",
-  "subpages": []
  },
  "https://www.restaurantmemoire.be/": {
   "status": "200",
@@ -6093,14 +5853,6 @@
   "fetched_at": "2026-11-04T22:20:56Z",
   "subpages": []
  },
- "https://www.resortragaz.ch/igniv": {
-  "status": "000",
-  "final": "https://www.resortragaz.ch/igniv",
-  "length": 0,
-  "file": "67f24d809c7824e9cd3ed4ba781e19afc6dcb477",
-  "fetched_at": "2026-11-04T22:20:56Z",
-  "subpages": []
- },
  "https://www.senserestaurant.nl/": {
   "status": "200",
   "final": "https://senserestaurant.nl/",
@@ -6131,14 +5883,6 @@
   "final": "https://www.ten-yokota.com/",
   "length": 4548,
   "file": "1e1f9e89c92feb3e843f261882ce1db0050013a2",
-  "fetched_at": "2026-11-04T22:20:57Z",
-  "subpages": []
- },
- "https://www.tenoshima.com/": {
-  "status": "429",
-  "final": "https://www.tenoshima.com/",
-  "length": 10274,
-  "file": "42f42659a393c74868ac4436b39f12806b062f95",
   "fetched_at": "2026-11-04T22:20:57Z",
   "subpages": []
  },
@@ -6432,22 +6176,6 @@
     "url": "https://yama-dessert.com/contact"
    }
   ]
- },
- "https://www.the-earth.in/": {
-  "status": "000",
-  "final": "https://www.the-earth.in/",
-  "length": 0,
-  "file": "f5b0d24a471571449db65680ca5ffcf0aceb7496",
-  "fetched_at": "2026-11-04T22:21:07Z",
-  "subpages": []
- },
- "https://www.thelindenberg.com/en/hotels/lilloey/": {
-  "status": "000",
-  "final": "https://www.thelindenberg.com/en/hotels/lilloey/",
-  "length": 0,
-  "file": "d1656e0a761d4430518975fd32f9db4d85b46475",
-  "fetched_at": "2026-11-04T22:21:17Z",
-  "subpages": []
  },
  "http://brutodenver.com/": {
   "status": "200",
@@ -6951,14 +6679,6 @@
     "url": "https://ludlowhotel.com/contact/"
    }
   ]
- },
- "http://treehouseboutiquehotel.com/": {
-  "status": "202",
-  "final": "http://treehouseboutiquehotel.com/",
-  "length": 166,
-  "file": "c78d01efd8e3c5a2190a589984cdca3ce9814209",
-  "fetched_at": "2026-11-04T22:23:34Z",
-  "subpages": []
  },
  "http://thepinecreemore.ca/": {
   "status": "200",
@@ -7675,14 +7395,6 @@
    }
   ]
  },
- "http://www.impromptu.com.tw/": {
-  "status": "503",
-  "final": "http://www.impromptu.com.tw/",
-  "length": 1099,
-  "file": "b38d1b86bfe68b59eededec75992c235b0716f73",
-  "fetched_at": "2026-11-04T22:23:45Z",
-  "subpages": []
- },
  "http://www.koli.mx/": {
   "status": "200",
   "final": "http://www.koli.mx/",
@@ -7758,14 +7470,6 @@
   "fetched_at": "2026-11-04T22:23:47Z",
   "subpages": []
  },
- "http://www.lesvoilesdor.fr/": {
-  "status": "000",
-  "final": "http://www.lesvoilesdor.fr/",
-  "length": 0,
-  "file": "41769e9f58d041143de35c62208ea31e712c608c",
-  "fetched_at": "2026-11-04T22:23:47Z",
-  "subpages": []
- },
  "http://www.lejardinier-miami.com/": {
   "status": "200",
   "final": "https://www.lejardinier-miami.com/",
@@ -7782,14 +7486,6 @@
     "url": "https://www.lejardinier-miami.com/contact"
    }
   ]
- },
- "http://www.corkscrewbbq.com/": {
-  "status": "000",
-  "final": "https://corkscrewbbq.com/",
-  "length": 0,
-  "file": "1ab04bb55274ef519be11bf4ce7044e7dada93ad",
-  "fetched_at": "2026-11-04T22:23:48Z",
-  "subpages": []
  },
  "http://www.lodgeatbowlake.com/": {
   "status": "200",
@@ -7866,14 +7562,6 @@
   "fetched_at": "2026-11-04T22:23:50Z",
   "subpages": []
  },
- "http://www.motodesushi.com.tw/": {
-  "status": "000",
-  "final": "http://www.motodesushi.com.tw/",
-  "length": 0,
-  "file": "943566cc0e9f856df2d5338f66fc796e2d9e72a4",
-  "fetched_at": "2026-11-04T22:23:50Z",
-  "subpages": []
- },
  "http://www.maisonceleste.mx/": {
   "status": "200",
   "final": "https://maisonceleste.mx/",
@@ -7898,14 +7586,6 @@
     "url": "https://maisonceleste.mx/contact"
    }
   ]
- },
- "http://www.moudira.com/": {
-  "status": "429",
-  "final": "https://www.moudira.com/",
-  "length": 10272,
-  "file": "771868582479a60f890cbc22b92933f2d5a390b4",
-  "fetched_at": "2026-11-04T22:23:50Z",
-  "subpages": []
  },
  "http://www.nextrestaurant.com/": {
   "status": "200",
@@ -7940,14 +7620,6 @@
     "url": "https://www.locandamargon.it/contatti"
    }
   ]
- },
- "http://www.noni.com.mt/": {
-  "status": "202",
-  "final": "http://www.noni.com.mt/",
-  "length": 167,
-  "file": "865f606b35ee28555d91abee9ba933c2f65751b6",
-  "fetched_at": "2026-11-04T22:23:51Z",
-  "subpages": []
  },
  "http://www.pastabarencino.com/": {
   "status": "200",
@@ -8094,14 +7766,6 @@
   "final": "https://www.palafitte.ch/en/home/",
   "length": 47636,
   "file": "7f6bd9384d97dae0e3f2ba9d3610713babdc0d50",
-  "fetched_at": "2026-11-04T22:23:53Z",
-  "subpages": []
- },
- "http://www.ryota.hk/": {
-  "status": "429",
-  "final": "https://www.ryota.hk/",
-  "length": 10269,
-  "file": "fa3273e11d94ec68f22e9d9d03a8aa314d9d460c",
   "fetched_at": "2026-11-04T22:23:53Z",
   "subpages": []
  },
@@ -8732,14 +8396,6 @@
   "fetched_at": "2026-11-04T22:24:04Z",
   "subpages": []
  },
- "http://www.schloesslehotel.com/": {
-  "status": "000",
-  "final": "https://www.schloesslehotel.com/",
-  "length": 0,
-  "file": "ea2dd35ec69e5fd2f93d25b192e3d268089cb93f",
-  "fetched_at": "2026-11-04T22:24:04Z",
-  "subpages": []
- },
  "https://emelinawpb.com/": {
   "status": "200",
   "final": "https://www.emelinawpb.com/",
@@ -8847,22 +8503,6 @@
     "url": "https://beefbar.com/about-riccardo-giraudi/"
    }
   ]
- },
- "https://grual.lefayresorts.com/it/": {
-  "status": "000",
-  "final": "https://grual.lefayresorts.com/it/",
-  "length": 0,
-  "file": "526716b49106b7b45c711158373a090a40fd07b6",
-  "fetched_at": "2026-11-04T22:24:06Z",
-  "subpages": []
- },
- "https://gymkhanalondon.com/": {
-  "status": "429",
-  "final": "https://gymkhanalondon.com/",
-  "length": 20768,
-  "file": "94e07a573dd29d4402a2dd398c776210dcbfa8f2",
-  "fetched_at": "2026-11-04T22:24:06Z",
-  "subpages": []
  },
  "https://goldeesbbq.com/": {
   "status": "200",
@@ -9147,14 +8787,6 @@
   "fetched_at": "2026-11-04T22:24:09Z",
   "subpages": []
  },
- "https://kitchentablelondon.co.uk/": {
-  "status": "000",
-  "final": "https://kitchentablelondon.co.uk/",
-  "length": 0,
-  "file": "d14b281d6763733bf8330a29fa70e293db8f56f1",
-  "fetched_at": "2026-11-04T22:24:09Z",
-  "subpages": []
- },
  "https://lafayettehotelsd.com/": {
   "status": "200",
   "final": "https://lafayettehotelsd.com/",
@@ -9361,22 +8993,6 @@
    }
   ]
  },
- "https://mgmgrand.mgmresorts.com/en/restaurants/joel-robuchon-french-restaurant.html": {
-  "status": "000",
-  "final": "https://mgmgrand.mgmresorts.com/en/restaurants/joel-robuchon-french-restaurant.html",
-  "length": 0,
-  "file": "33295b4f3f9118aab1492414db53c09719b8d245",
-  "fetched_at": "2026-11-04T22:24:12Z",
-  "subpages": []
- },
- "https://mgmgrand.mgmresorts.com/en/restaurants/joel-robuchon-french-restaurant.html?ecid=GMB": {
-  "status": "000",
-  "final": "https://mgmgrand.mgmresorts.com/en/restaurants/joel-robuchon-french-restaurant.html?ecid=GMB",
-  "length": 0,
-  "file": "bc2d3870b002644ef208a2e32f7a849073071a97",
-  "fetched_at": "2026-11-04T22:24:12Z",
-  "subpages": []
- },
  "https://levaduradeolla.mx/": {
   "status": "200",
   "final": "https://levaduradeolla.mx/",
@@ -9393,30 +9009,6 @@
     "url": "https://levaduradeolla.mx/reserva-aqui/"
    }
   ]
- },
- "https://mgmgrand.mgmresorts.com/en/restaurants/latelier-joel-robuchon-french-restaurant.html?ecid=GMB": {
-  "status": "000",
-  "final": "https://mgmgrand.mgmresorts.com/en/restaurants/latelier-joel-robuchon-french-restaurant.html?ecid=GMB",
-  "length": 0,
-  "file": "046f8bea05ef1ba1fe5f1043e49103c028a28518",
-  "fetched_at": "2026-11-04T22:24:13Z",
-  "subpages": []
- },
- "https://mgmgrand.mgmresorts.com/en/restaurants/latelier-joel-robuchon-french-restaurant.html": {
-  "status": "000",
-  "final": "https://mgmgrand.mgmresorts.com/en/restaurants/latelier-joel-robuchon-french-restaurant.html",
-  "length": 0,
-  "file": "da8f1c32ab675fbdfd77918c12aade4c074aab46",
-  "fetched_at": "2026-11-04T22:24:13Z",
-  "subpages": []
- },
- "https://lavalisebacalar.com/": {
-  "status": "000",
-  "final": "https://lavalisebacalar.com/",
-  "length": 0,
-  "file": "a8751802ebfaa09b9b6d9e65f60304d4106b1f72",
-  "fetched_at": "2026-11-04T22:24:13Z",
-  "subpages": []
  },
  "https://jadran-crikvenica.hr/en/hotel-katarina-selce": {
   "status": "200",
@@ -9641,14 +9233,6 @@
   "length": 161085,
   "file": "96c7c9ac658899c60129361c1154a35ec7bc912c",
   "fetched_at": "2026-11-04T22:24:17Z",
-  "subpages": []
- },
- "https://hotelpacai.com/en": {
-  "status": "000",
-  "final": "https://www.hotelpacai.com/en",
-  "length": 0,
-  "file": "1dc26d821345235b84ed08a843f24f492b442110",
-  "fetched_at": "2026-11-04T22:24:18Z",
   "subpages": []
  },
  "https://restaurant-gutlaerchenhof.de/": {
@@ -9957,14 +9541,6 @@
   "fetched_at": "2026-11-04T22:24:22Z",
   "subpages": []
  },
- "https://mountainbeakstreet.com/": {
-  "status": "000",
-  "final": "https://mountainbeakstreet.com/",
-  "length": 0,
-  "file": "faff25ae2775fd1e1783e0d2d0047edc2696d52e",
-  "fetched_at": "2026-11-04T22:24:23Z",
-  "subpages": []
- },
  "https://surcuisine.com/": {
   "status": "200",
   "final": "https://surcuisine.com/",
@@ -9995,14 +9571,6 @@
   "length": 71128,
   "file": "7e2a04352dad7bb04b1bdecbb2928ebe03c66b64",
   "fetched_at": "2026-11-04T22:24:23Z",
-  "subpages": []
- },
- "https://umacasa.mx/": {
-  "status": "429",
-  "final": "https://www.umacasa.mx/en",
-  "length": 10277,
-  "file": "6f03e00dd0eae4bdd1fb501b75415ea4c1f0e786",
-  "fetched_at": "2026-11-04T22:24:24Z",
   "subpages": []
  },
  "https://sushi-wadatsumi.com/": {
@@ -10186,22 +9754,6 @@
   "final": "https://www.alpenroyal.com/it/alpenroyal-gourmet-restaurant.asp",
   "length": 29760,
   "file": "9df79af1198befe3573a95d1a606d0b566dc6ce1",
-  "fetched_at": "2026-11-04T22:24:27Z",
-  "subpages": []
- },
- "https://restaurantnarval.ca/": {
-  "status": "000",
-  "final": "https://restaurantnarval.ca/",
-  "length": 0,
-  "file": "c1e79f241058ee46907a98ea5f2813954e30099f",
-  "fetched_at": "2026-11-04T22:24:27Z",
-  "subpages": []
- },
- "https://www.arcrestaurant.de/": {
-  "status": "429",
-  "final": "https://www.arcrestaurant.de/",
-  "length": 10277,
-  "file": "3ce8d46143ed80ee6898c4dc347286fb82d66c85",
   "fetched_at": "2026-11-04T22:24:27Z",
   "subpages": []
  },
@@ -10421,14 +9973,6 @@
   "fetched_at": "2026-11-04T22:24:31Z",
   "subpages": []
  },
- "https://sumibiyakiarashi.com/": {
-  "status": "000",
-  "final": "https://sumibiyakiarashi.com/",
-  "length": 0,
-  "file": "5416cf54c118a08909a8578884fa674bc961e334",
-  "fetched_at": "2026-11-04T22:24:31Z",
-  "subpages": []
- },
  "https://www.argosincappadocia.com/": {
   "status": "200",
   "final": "https://www.argosincappadocia.com/",
@@ -10495,14 +10039,6 @@
    }
   ]
  },
- "https://www.belvederehotel.ca/": {
-  "status": "429",
-  "final": "https://www.belvederehotel.ca/",
-  "length": 10300,
-  "file": "073369a432b9caf8c77e6ecdc150b50defbc1403",
-  "fetched_at": "2026-11-04T22:24:32Z",
-  "subpages": []
- },
  "https://www.bernarduslodge.com/": {
   "status": "403",
   "final": "https://www.bernarduslodge.com/",
@@ -10551,14 +10087,6 @@
     "url": "https://www.banyantree.com/contact-us"
    }
   ]
- },
- "https://unmi.group/": {
-  "status": "000",
-  "final": "https://unmi.group/",
-  "length": 0,
-  "file": "3565a8a90d8a175d7b19c14e7296b5a532cb6d49",
-  "fetched_at": "2026-11-04T22:24:33Z",
-  "subpages": []
  },
  "https://www.banyantree.com/mexico/puebla": {
   "status": "200",
@@ -11098,14 +10626,6 @@
     "url": "https://www.cignohotel.com/contact"
    }
   ]
- },
- "https://www.dadongdadong.com/": {
-  "status": "000",
-  "final": "https://www.dadongdadong.com/",
-  "length": 0,
-  "file": "5075efbb4b4669b8401ecfceb05604be63aeea8a",
-  "fetched_at": "2026-11-04T22:24:39Z",
-  "subpages": []
  },
  "https://www.desiertoazulbaja.com/": {
   "status": "200",
@@ -13547,27 +13067,11 @@
    }
   ]
  },
- "https://www.nomadetemple.com/holbox": {
-  "status": "429",
-  "final": "https://www.nomadetemple.com/holbox",
-  "length": 10295,
-  "file": "b4690d38f2003ca2874ddc492d9e8c70ad01c05e",
-  "fetched_at": "2026-11-04T22:25:05Z",
-  "subpages": []
- },
  "https://www.museumhotel.com.tr/": {
   "status": "200",
   "final": "https://www.museumhotel.com.tr/",
   "length": 20153,
   "file": "6752e55a15a5b0bdbcd4a7837bf1128b56c6df7f",
-  "fetched_at": "2026-11-04T22:25:05Z",
-  "subpages": []
- },
- "https://www.omakasetableatl.com/": {
-  "status": "429",
-  "final": "https://www.omakasetableatl.com/",
-  "length": 10302,
-  "file": "b51c1b11e921743bfa1699e5bf549643d1fdc168",
   "fetched_at": "2026-11-04T22:25:05Z",
   "subpages": []
  },
@@ -13595,14 +13099,6 @@
     "url": "https://www.nozawabar.com/accessibility/"
    }
   ]
- },
- "https://www.obscura-sh.com/": {
-  "status": "000",
-  "final": "https://www.obscura-sh.com/",
-  "length": 0,
-  "file": "306550f8d7042441f3ef05ee4d5cb386dc723365",
-  "fetched_at": "2026-11-04T22:25:05Z",
-  "subpages": []
  },
  "https://www.odo.nyc/": {
   "status": "200",
@@ -13636,22 +13132,6 @@
     "url": "https://www.odo.nyc/reservations"
    }
   ]
- },
- "https://www.oneandonlyresorts.com/moonlight-basin": {
-  "status": "000",
-  "final": "https://www.oneandonlyresorts.com/moonlight-basin",
-  "length": 0,
-  "file": "dc0ef84b972462ce14a55ff50205e48fa889840d",
-  "fetched_at": "2026-11-04T22:25:05Z",
-  "subpages": []
- },
- "https://www.oneandonlyresorts.com/palmilla": {
-  "status": "000",
-  "final": "https://www.oneandonlyresorts.com/palmilla",
-  "length": 0,
-  "file": "64069d7accbb6646acd2c6ba6de99ceb3d209f55",
-  "fetched_at": "2026-11-04T22:25:06Z",
-  "subpages": []
  },
  "https://www.ogawamiami.com/": {
   "status": "200",
@@ -13908,14 +13388,6 @@
     "url": "https://www.pendry.com/washington-dc/contact/"
    }
   ]
- },
- "https://www.pfortenhaus.com/": {
-  "status": "000",
-  "final": "https://www.pfortenhaus.com/",
-  "length": 0,
-  "file": "29cc8f57226dde8557516a6e0fe91a0ccaa10341",
-  "fetched_at": "2026-11-04T22:25:07Z",
-  "subpages": []
  },
  "https://www.peninsula.com/newyork": {
   "status": "403",
@@ -14445,14 +13917,6 @@
   "fetched_at": "2026-11-04T22:25:16Z",
   "subpages": []
  },
- "https://www.shangri-la.com/beijing/chinaworld/dining/restaurants/giada-garden/": {
-  "status": "000",
-  "final": "https://www.shangri-la.com/beijing/chinaworld/dining/restaurants/giada-garden/",
-  "length": 0,
-  "file": "6afcfe74fc85b2f0ab3b8d03f135c54cfa7fa3c0",
-  "fetched_at": "2026-11-04T22:25:16Z",
-  "subpages": []
- },
  "https://www.shangri-la.com/hongkong/islandshangrila/dining/restaurants/summer-palace/": {
   "status": "200",
   "final": "https://www.shangri-la.com/hongkong/islandshangrila/dining/restaurants/summer-palace/",
@@ -14658,14 +14122,6 @@
    }
   ]
  },
- "https://www.sushi-kajin.com/": {
-  "status": "000",
-  "final": "https://www.sushi-kajin.com/",
-  "length": 0,
-  "file": "a1f45671dd7af65bed6dc134d04fac3ebfa428ed",
-  "fetched_at": "2026-11-04T22:25:19Z",
-  "subpages": []
- },
  "https://www.sushiinabamanhattanbeach.com/": {
   "status": "200",
   "final": "https://www.sushiinabamanhattanbeach.com/",
@@ -14781,14 +14237,6 @@
     "url": "https://www.tate.com.hk/pages/access"
    }
   ]
- },
- "https://www.surcuisine.com/": {
-  "status": "000",
-  "final": "https://www.surcuisine.com/",
-  "length": 0,
-  "file": "bf1763cd1d37f6a0eb0e2d400e6d4a903671f618",
-  "fetched_at": "2026-11-04T22:25:21Z",
-  "subpages": []
  },
  "https://www.theblueposts.co.uk/evelyns-table/": {
   "status": "403",
@@ -15070,14 +14518,6 @@
   "fetched_at": "2026-11-04T22:25:26Z",
   "subpages": []
  },
- "https://www.umacasa.mx/en": {
-  "status": "429",
-  "final": "https://www.umacasa.mx/en",
-  "length": 10277,
-  "file": "d228df87f041bc73e4512e223ae48e541f491573",
-  "fetched_at": "2026-11-04T22:25:26Z",
-  "subpages": []
- },
  "https://www.us.despegar.com/hotels/h-4604948": {
   "status": "403",
   "final": "https://www.us.despegar.com/hotels/h-4604948",
@@ -15149,14 +14589,6 @@
   "final": "https://www.vivantshanghai.com/",
   "length": 3652,
   "file": "497f94bb6d905e02497cfc767741c70518a91ac3",
-  "fetched_at": "2026-11-04T22:25:28Z",
-  "subpages": []
- },
- "https://www.sumibiyakiarashi.com/": {
-  "status": "000",
-  "final": "https://www.sumibiyakiarashi.com/",
-  "length": 0,
-  "file": "c258383e65e2234089bb34ecca21ca482e4a5176",
   "fetched_at": "2026-11-04T22:25:28Z",
   "subpages": []
  },
@@ -15598,22 +15030,6 @@
   "fetched_at": "2026-11-04T22:25:35Z",
   "subpages": []
  },
- "https://www.wisca.cn/": {
-  "status": "000",
-  "final": "https://www.wisca.cn/",
-  "length": 0,
-  "file": "93b3950c69df1f219192324b6078bcb4048a15cf",
-  "fetched_at": "2026-11-04T22:25:39Z",
-  "subpages": []
- },
- "https://www.taku.de/": {
-  "status": "000",
-  "final": "https://taku.de/",
-  "length": 0,
-  "file": "3ee560f4b8f2acbebcbff8eceddb3ccb4a281124",
-  "fetched_at": "2026-11-04T22:25:40Z",
-  "subpages": []
- },
  "https://www.hilton.com/en/hotels/chiwawa-waldorf-astoria-chicago/": {
   "status": "403",
   "final": "https://www.hilton.com/en/hotels/chiwawa-waldorf-astoria-chicago/",
@@ -15710,5 +15126,1680 @@
   "file": "f887c7e69270eaa9120054b24f575fa3c3458590",
   "fetched_at": "2026-11-04T22:29:25Z",
   "subpages": []
+ },
+ "http://kitchentablelondon.co.uk/": {
+  "status": "000",
+  "final": "https://kitchentablelondon.co.uk/",
+  "length": 0,
+  "file": "37e192002f02f288ebb68345686debad0d809b07",
+  "fetched_at": "2026-11-04T22:32:44Z",
+  "subpages": []
+ },
+ "http://mountainbeakstreet.com/": {
+  "status": "200",
+  "final": "https://mountainbeakstreet.com/",
+  "length": 14425,
+  "file": "1a33975804384ade27bc3cbcc0b7f882d09b7779",
+  "fetched_at": "2026-11-04T22:32:45Z",
+  "subpages": []
+ },
+ "http://bratrestaurant.com/": {
+  "status": "000",
+  "final": "https://bratrestaurant.co.uk/",
+  "length": 0,
+  "file": "df2dc60aec442f5e1d6364964ac60c16a26b24c7",
+  "fetched_at": "2026-11-04T22:32:54Z",
+  "subpages": []
+ },
+ "http://treehouseboutiquehotel.com/": {
+  "status": "200",
+  "final": "https://treehouseboutiquehotel.com/",
+  "length": 71128,
+  "file": "c78d01efd8e3c5a2190a589984cdca3ce9814209",
+  "fetched_at": "2026-11-04T22:32:55Z",
+  "subpages": []
+ },
+ "http://www.blackswanoldstead.co.uk/": {
+  "status": "202",
+  "final": "http://www.blackswanoldstead.co.uk/",
+  "length": 166,
+  "file": "e49964c279e3deeec883690d4cd16876db75935a",
+  "fetched_at": "2026-11-04T22:32:56Z",
+  "subpages": []
+ },
+ "http://soujiki-nakahigashi.jp/": {
+  "status": "503",
+  "final": "http://soujiki-nakahigashi.jp/",
+  "length": 114,
+  "file": "d67cf01eed484b0c7e4d4dc1439abf8a0836bc8a",
+  "fetched_at": "2026-11-04T22:33:01Z",
+  "subpages": []
+ },
+ "http://www.corkscrewbbq.com/": {
+  "status": "000",
+  "final": "https://corkscrewbbq.com/",
+  "length": 0,
+  "file": "1ab04bb55274ef519be11bf4ce7044e7dada93ad",
+  "fetched_at": "2026-11-04T22:33:06Z",
+  "subpages": []
+ },
+ "http://www.gymkhanarestaurants.com/": {
+  "status": "429",
+  "final": "https://www.gymkhanarestaurants.com/",
+  "length": 20768,
+  "file": "d1e10a386329958a29fd0efcf00d71aa8f29eac3",
+  "fetched_at": "2026-11-04T22:33:07Z",
+  "subpages": []
+ },
+ "http://www.hotelmilka.si/restaurant": {
+  "status": "500",
+  "final": "http://www.hotelmilka.si/restaurant/",
+  "length": 175477,
+  "file": "0204e7eeaab99c2c13a8289909ea19bc4149c42b",
+  "fetched_at": "2026-11-04T22:33:10Z",
+  "subpages": []
+ },
+ "http://www.impromptu.com.tw/": {
+  "status": "503",
+  "final": "http://www.impromptu.com.tw/",
+  "length": 1099,
+  "file": "b38d1b86bfe68b59eededec75992c235b0716f73",
+  "fetched_at": "2026-11-04T22:33:10Z",
+  "subpages": []
+ },
+ "http://www.koji-shimomura.jp/": {
+  "status": "429",
+  "final": "https://www.koji-shimomura.jp/",
+  "length": 10300,
+  "file": "14df126439eee7631e8b00120539ec0e873ae653",
+  "fetched_at": "2026-11-04T22:33:11Z",
+  "subpages": []
+ },
+ "http://www.lesvoilesdor.fr/": {
+  "status": "000",
+  "final": "http://www.lesvoilesdor.fr/",
+  "length": 0,
+  "file": "41769e9f58d041143de35c62208ea31e712c608c",
+  "fetched_at": "2026-11-04T22:33:11Z",
+  "subpages": []
+ },
+ "http://www.motodesushi.com.tw/": {
+  "status": "000",
+  "final": "http://www.motodesushi.com.tw/",
+  "length": 0,
+  "file": "943566cc0e9f856df2d5338f66fc796e2d9e72a4",
+  "fetched_at": "2026-11-04T22:33:12Z",
+  "subpages": []
+ },
+ "http://www.moudira.com/": {
+  "status": "200",
+  "final": "https://www.moudira.com/",
+  "length": 706305,
+  "file": "771868582479a60f890cbc22b92933f2d5a390b4",
+  "fetched_at": "2026-11-04T22:33:12Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.moudira.com/booking",
+    "length": 603702,
+    "file": "c2a2366218f300ff55780698c9d304337ef2675b",
+    "fetched_at": "2026-11-04T22:33:12Z",
+    "url": "https://www.moudira.com/booking"
+   },
+   {
+    "status": "200",
+    "final": "https://www.moudira.com/contact",
+    "length": 645845,
+    "file": "189e3b170e27edd199114ee71a7f828317053dd7",
+    "fetched_at": "2026-11-04T22:33:12Z",
+    "url": "https://www.moudira.com/contact"
+   }
+  ]
+ },
+ "http://www.murlo.com/": {
+  "status": "202",
+  "final": "http://www.murlo.com/",
+  "length": 167,
+  "file": "7bc9c122e073884d5bfdff534ca8ed31ee8f6878",
+  "fetched_at": "2026-11-04T22:33:13Z",
+  "subpages": []
+ },
+ "http://www.fft-crony.jp/": {
+  "status": "503",
+  "final": "http://www.fft-crony.jp/",
+  "length": 114,
+  "file": "a29527aa9d6a1590d9c385a8ab3ac24a10b6e0d7",
+  "fetched_at": "2026-11-04T22:33:16Z",
+  "subpages": []
+ },
+ "http://www.noni.com.mt/": {
+  "status": "202",
+  "final": "http://www.noni.com.mt/",
+  "length": 167,
+  "file": "865f606b35ee28555d91abee9ba933c2f65751b6",
+  "fetched_at": "2026-11-04T22:33:16Z",
+  "subpages": []
+ },
+ "http://www.ryota.hk/": {
+  "status": "200",
+  "final": "https://www.ryota.hk/",
+  "length": 728040,
+  "file": "fa3273e11d94ec68f22e9d9d03a8aa314d9d460c",
+  "fetched_at": "2026-11-04T22:33:17Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.ryota.hk/contact-1",
+    "length": 653989,
+    "file": "dfef7087b3003c3e6b499b82461f3764c59d332e",
+    "fetched_at": "2026-11-04T22:33:17Z",
+    "url": "https://www.ryota.hk/contact-1"
+   },
+   {
+    "status": "200",
+    "final": "https://www.ryota.hk/access",
+    "length": 706629,
+    "file": "ceafc43faefdec3391dad1bf536b86388c7c49cf",
+    "fetched_at": "2026-11-04T22:33:17Z",
+    "url": "https://www.ryota.hk/access"
+   },
+   {
+    "status": "200",
+    "final": "https://www.ryota.hk/about-1",
+    "length": 653929,
+    "file": "ea3d77e3f96526033d48f323846bec25ad9644e3",
+    "fetched_at": "2026-11-04T22:33:18Z",
+    "url": "https://www.ryota.hk/about-1"
+   }
+  ]
+ },
+ "http://www.nodaiwa.co.jp/index2.html": {
+  "status": "503",
+  "final": "http://www.nodaiwa.co.jp/index2.html",
+  "length": 114,
+  "file": "1337c0ab13d07bbb93cc7c78046f0021df14b625",
+  "fetched_at": "2026-11-04T22:33:29Z",
+  "subpages": []
+ },
+ "http://www.schloesslehotel.com/": {
+  "status": "000",
+  "final": "https://www.schloesslehotel.com/",
+  "length": 0,
+  "file": "ea2dd35ec69e5fd2f93d25b192e3d268089cb93f",
+  "fetched_at": "2026-11-04T22:33:30Z",
+  "subpages": []
+ },
+ "https://dolomiti.lefayresorts.com/it/lefay-vital-gourmet-dolomiti-ristorante-di-lusso-dolomiti": {
+  "status": "000",
+  "final": "https://dolomiti.lefayresorts.com/it/lefay-vital-gourmet-dolomiti-ristorante-di-lusso-dolomiti",
+  "length": 0,
+  "file": "8c7bb9e8b2719b767863ba7e1b8cbcd335f65c2f",
+  "fetched_at": "2026-11-04T22:33:30Z",
+  "subpages": []
+ },
+ "https://gion-nishikawa.co.jp/": {
+  "status": "000",
+  "final": "https://gion-nishikawa.co.jp/",
+  "length": 0,
+  "file": "10b35850fcd7e46fb31828c997cc55c67907b4a9",
+  "fetched_at": "2026-11-04T22:33:41Z",
+  "subpages": []
+ },
+ "https://grual.lefayresorts.com/it/": {
+  "status": "000",
+  "final": "https://grual.lefayresorts.com/it/",
+  "length": 0,
+  "file": "526716b49106b7b45c711158373a090a40fd07b6",
+  "fetched_at": "2026-11-04T22:33:41Z",
+  "subpages": []
+ },
+ "https://gymkhanalondon.com/": {
+  "status": "429",
+  "final": "https://gymkhanalondon.com/",
+  "length": 20768,
+  "file": "94e07a573dd29d4402a2dd398c776210dcbfa8f2",
+  "fetched_at": "2026-11-04T22:33:42Z",
+  "subpages": []
+ },
+ "https://hotelpacai.com/en": {
+  "status": "200",
+  "final": "https://www.hotelpacai.com/en",
+  "length": 81743,
+  "file": "1dc26d821345235b84ed08a843f24f492b442110",
+  "fetched_at": "2026-11-04T22:33:43Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.hotelpacai.com/en/contact",
+    "length": 64048,
+    "file": "edd09a49245d0acd02f669083bfdc91069590320",
+    "fetched_at": "2026-11-04T22:33:44Z",
+    "url": "https://www.hotelpacai.com/en/contact"
+   },
+   {
+    "status": "200",
+    "final": "https://www.hotelpacai.com/en/about-us",
+    "length": 64298,
+    "file": "c4c724056f497301c1a491f2f5a559956139b6d2",
+    "fetched_at": "2026-11-04T22:33:45Z",
+    "url": "https://www.hotelpacai.com/en/about-us"
+   },
+   {
+    "status": "200",
+    "final": "https://www.hotelpacai.com/en/contact",
+    "length": 64048,
+    "file": "8d0327285d2ac92ebcdecb664e2931fc4a298eb3",
+    "fetched_at": "2026-11-04T22:33:46Z",
+    "url": "https://www.hotelpacai.com/contact"
+   }
+  ]
+ },
+ "https://kitchentablelondon.co.uk/": {
+  "status": "000",
+  "final": "https://kitchentablelondon.co.uk/",
+  "length": 0,
+  "file": "d14b281d6763733bf8330a29fa70e293db8f56f1",
+  "fetched_at": "2026-11-04T22:33:47Z",
+  "subpages": []
+ },
+ "https://lavalisebacalar.com/": {
+  "status": "200",
+  "final": "https://lavalisebacalar.com/",
+  "length": 188855,
+  "file": "a8751802ebfaa09b9b6d9e65f60304d4106b1f72",
+  "fetched_at": "2026-11-04T22:33:47Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://lavalisebacalar.com/contact",
+    "length": 66750,
+    "file": "dccb1d620d813448b1e29800000138a5eaae5a2a",
+    "fetched_at": "2026-11-04T22:33:47Z",
+    "url": "https://lavalisebacalar.com/contact"
+   },
+   {
+    "status": "200",
+    "final": "https://lavalisebacalar.com/bookingstep1",
+    "length": 18211,
+    "file": "83699da351aed156566fef12ddd1ecdd6dc18f21",
+    "fetched_at": "2026-11-04T22:33:48Z",
+    "url": "https://lavalisebacalar.com/bookingstep1"
+   }
+  ]
+ },
+ "http://www.taku.de/": {
+  "status": "000",
+  "final": "https://taku.de/",
+  "length": 0,
+  "file": "a4d5eb0bef8eb098f814b1be9c361978ada0124d",
+  "fetched_at": "2026-11-04T22:33:49Z",
+  "subpages": []
+ },
+ "https://mgmgrand.mgmresorts.com/en/restaurants/joel-robuchon-french-restaurant.html": {
+  "status": "000",
+  "final": "https://mgmgrand.mgmresorts.com/en/restaurants/joel-robuchon-french-restaurant.html",
+  "length": 0,
+  "file": "33295b4f3f9118aab1492414db53c09719b8d245",
+  "fetched_at": "2026-11-04T22:33:50Z",
+  "subpages": []
+ },
+ "https://mgmgrand.mgmresorts.com/en/restaurants/joel-robuchon-french-restaurant.html?ecid=GMB": {
+  "status": "000",
+  "final": "https://mgmgrand.mgmresorts.com/en/restaurants/joel-robuchon-french-restaurant.html?ecid=GMB",
+  "length": 0,
+  "file": "bc2d3870b002644ef208a2e32f7a849073071a97",
+  "fetched_at": "2026-11-04T22:33:50Z",
+  "subpages": []
+ },
+ "https://mgmgrand.mgmresorts.com/en/restaurants/latelier-joel-robuchon-french-restaurant.html": {
+  "status": "000",
+  "final": "https://mgmgrand.mgmresorts.com/en/restaurants/latelier-joel-robuchon-french-restaurant.html",
+  "length": 0,
+  "file": "da8f1c32ab675fbdfd77918c12aade4c074aab46",
+  "fetched_at": "2026-11-04T22:33:50Z",
+  "subpages": []
+ },
+ "https://mgmgrand.mgmresorts.com/en/restaurants/latelier-joel-robuchon-french-restaurant.html?ecid=GMB": {
+  "status": "000",
+  "final": "https://mgmgrand.mgmresorts.com/en/restaurants/latelier-joel-robuchon-french-restaurant.html?ecid=GMB",
+  "length": 0,
+  "file": "046f8bea05ef1ba1fe5f1043e49103c028a28518",
+  "fetched_at": "2026-11-04T22:33:51Z",
+  "subpages": []
+ },
+ "https://maytalima.com/": {
+  "status": "200",
+  "final": "https://maytalima.com.pe/",
+  "length": 54362,
+  "file": "ac2a67caf95bda467338bc684f1b4d37ad9bb3ae",
+  "fetched_at": "2026-11-04T22:33:51Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://maytalima.com.pe/contacto/",
+    "length": 80712,
+    "file": "ff8aa813410ba47e2a0d6244b5d49d7456121b63",
+    "fetched_at": "2026-11-04T22:33:53Z",
+    "url": "https://maytalima.com.pe/contacto/"
+   }
+  ]
+ },
+ "https://mountainbeakstreet.com/": {
+  "status": "000",
+  "final": "https://mountainbeakstreet.com/",
+  "length": 0,
+  "file": "faff25ae2775fd1e1783e0d2d0047edc2696d52e",
+  "fetched_at": "2026-11-04T22:34:01Z",
+  "subpages": []
+ },
+ "https://restaurantnarval.ca/": {
+  "status": "000",
+  "final": "https://restaurantnarval.ca/",
+  "length": 0,
+  "file": "c1e79f241058ee46907a98ea5f2813954e30099f",
+  "fetched_at": "2026-11-04T22:34:03Z",
+  "subpages": []
+ },
+ "https://umacasa.mx/": {
+  "status": "200",
+  "final": "https://www.umacasa.mx/en",
+  "length": 942036,
+  "file": "6f03e00dd0eae4bdd1fb501b75415ea4c1f0e786",
+  "fetched_at": "2026-11-04T22:34:04Z",
+  "subpages": []
+ },
+ "https://sumibiyakiarashi.com/": {
+  "status": "000",
+  "final": "https://sumibiyakiarashi.com/",
+  "length": 0,
+  "file": "5416cf54c118a08909a8578884fa674bc961e334",
+  "fetched_at": "2026-11-04T22:34:11Z",
+  "subpages": []
+ },
+ "https://www.arcrestaurant.de/": {
+  "status": "200",
+  "final": "https://www.arcrestaurant.de/",
+  "length": 836052,
+  "file": "3ce8d46143ed80ee6898c4dc347286fb82d66c85",
+  "fetched_at": "2026-11-04T22:34:12Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.arcrestaurant.de/about",
+    "length": 483356,
+    "file": "0948206a3d5e06ef085d19371c4b119eb85851f6",
+    "fetched_at": "2026-11-04T22:34:12Z",
+    "url": "https://www.arcrestaurant.de/about"
+   },
+   {
+    "status": "200",
+    "final": "https://www.arcrestaurant.de/contact",
+    "length": 481507,
+    "file": "95d206c3ef0a56edba52fa34190c43253525edb6",
+    "fetched_at": "2026-11-04T22:34:13Z",
+    "url": "https://www.arcrestaurant.de/contact"
+   }
+  ]
+ },
+ "https://www.atlantis.com/dubai/atlantis-the-royal": {
+  "status": "000",
+  "final": "https://www.atlantis.com/dubai/atlantis-the-royal",
+  "length": 0,
+  "file": "5cbc2533422f769474afd943c6ff5d631498729c",
+  "fetched_at": "2026-11-04T22:34:14Z",
+  "subpages": []
+ },
+ "https://unmi.group/": {
+  "status": "000",
+  "final": "https://unmi.group/",
+  "length": 0,
+  "file": "3565a8a90d8a175d7b19c14e7296b5a532cb6d49",
+  "fetched_at": "2026-11-04T22:34:14Z",
+  "subpages": []
+ },
+ "https://www.behindrestaurant.co.uk/": {
+  "status": "200",
+  "final": "https://www.behindrestaurant.co.uk/",
+  "length": 658244,
+  "file": "60d932de6e5f692d036c7417de8bb69cf0ecc23c",
+  "fetched_at": "2026-11-04T22:34:14Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.behindrestaurant.co.uk/about",
+    "length": 650312,
+    "file": "015fc848a5984bb5cb4ec598ffc4dcc9d05e6b02",
+    "fetched_at": "2026-11-04T22:34:14Z",
+    "url": "https://www.behindrestaurant.co.uk/about"
+   }
+  ]
+ },
+ "https://www.belvederehotel.ca/": {
+  "status": "200",
+  "final": "https://www.belvederehotel.ca/",
+  "length": 1448555,
+  "file": "073369a432b9caf8c77e6ecdc150b50defbc1403",
+  "fetched_at": "2026-11-04T22:34:15Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.belvederehotel.ca/about-the-belvedere",
+    "length": 1019252,
+    "file": "0e42c822b1d2585fc0b9a99622a79a0e55fb7860",
+    "fetched_at": "2026-11-04T22:34:15Z",
+    "url": "https://www.belvederehotel.ca/about-the-belvedere"
+   }
+  ]
+ },
+ "https://www.dadongdadong.com/": {
+  "status": "000",
+  "final": "https://www.dadongdadong.com/",
+  "length": 0,
+  "file": "5075efbb4b4669b8401ecfceb05604be63aeea8a",
+  "fetched_at": "2026-11-04T22:34:15Z",
+  "subpages": []
+ },
+ "https://www.fufuhakone.jp/": {
+  "status": "503",
+  "final": "https://www.fufuhakone.jp/",
+  "length": 2520,
+  "file": "fb777abd757ac5f66b29eb671e093fd8736d3452",
+  "fetched_at": "2026-11-04T22:34:16Z",
+  "subpages": []
+ },
+ "https://www.fufukaruizawa.jp/": {
+  "status": "503",
+  "final": "https://www.fufukaruizawa.jp/",
+  "length": 2542,
+  "file": "3896a347a53780cb78fb7d342694bd3e038da6d3",
+  "fetched_at": "2026-11-04T22:34:17Z",
+  "subpages": []
+ },
+ "https://www.fufukawaguchiko.jp/": {
+  "status": "503",
+  "final": "https://www.fufukawaguchiko.jp/",
+  "length": 2554,
+  "file": "cb955e2d9d04914f3fd1fc4e905aa5af60d0c9a2",
+  "fetched_at": "2026-11-04T22:34:17Z",
+  "subpages": []
+ },
+ "https://www.fufukyoto.jp/": {
+  "status": "503",
+  "final": "https://www.fufukyoto.jp/",
+  "length": 2514,
+  "file": "20b01f8c411ed2a6fc11050c71a8b6b19cecb8fb",
+  "fetched_at": "2026-11-04T22:34:18Z",
+  "subpages": []
+ },
+ "https://www.fufukyukaruizawa.jp/": {
+  "status": "503",
+  "final": "https://www.fufukyukaruizawa.jp/",
+  "length": 2564,
+  "file": "eabbb291fbfdeb9eae8d34514e888034740d0670",
+  "fetched_at": "2026-11-04T22:34:19Z",
+  "subpages": []
+ },
+ "https://www.fufunara.jp/": {
+  "status": "503",
+  "final": "https://www.fufunara.jp/",
+  "length": 2508,
+  "file": "25acbe64ee4a5cb7a5bb714a5abd1401e4dbd278",
+  "fetched_at": "2026-11-04T22:34:19Z",
+  "subpages": []
+ },
+ "https://www.fufunikko.jp/": {
+  "status": "503",
+  "final": "https://www.fufunikko.jp/",
+  "length": 2514,
+  "file": "82bb12f3a40a95d4b38278149d787d2405d6f899",
+  "fetched_at": "2026-11-04T22:34:20Z",
+  "subpages": []
+ },
+ "https://www.germogliokyoto.com/": {
+  "status": "200",
+  "final": "https://www.germogliokyoto.com/",
+  "length": 443923,
+  "file": "b11112fd2a4f9517cff42849035010bb304a408c",
+  "fetched_at": "2026-11-04T22:34:19Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.germogliokyoto.com/location",
+    "length": 456119,
+    "file": "892c697dc2e4c8dd6e33278c2fd468c33c219225",
+    "fetched_at": "2026-11-04T22:34:20Z",
+    "url": "https://www.germogliokyoto.com/location"
+   },
+   {
+    "status": "200",
+    "final": "https://www.germogliokyoto.com/reservation",
+    "length": 472022,
+    "file": "8b435b6dbc1f6d499da3956e799530c3617368e1",
+    "fetched_at": "2026-11-04T22:34:21Z",
+    "url": "https://www.germogliokyoto.com/reservation"
+   }
+  ]
+ },
+ "https://www.loumi-dining.com/": {
+  "status": "200",
+  "final": "https://www.loumi-dining.com/",
+  "length": 697399,
+  "file": "13ef351769d3d3e097c80006765ba6eef8d62c12",
+  "fetched_at": "2026-11-04T22:34:20Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.loumi-dining.com/en/about",
+    "length": 701729,
+    "file": "6043e089d8df60fb21a377a9e76093c0bafcc145",
+    "fetched_at": "2026-11-04T22:34:20Z",
+    "url": "https://www.loumi-dining.com/about"
+   },
+   {
+    "status": "200",
+    "final": "https://www.loumi-dining.com/en/kontakt",
+    "length": 738303,
+    "file": "5c373eec6d796c5e253a7f138e06319418a3979b",
+    "fetched_at": "2026-11-04T22:34:21Z",
+    "url": "https://www.loumi-dining.com/kontakt"
+   },
+   {
+    "status": "200",
+    "final": "https://www.loumi-dining.com/contact",
+    "length": 715979,
+    "file": "e98a074c654d001cace98bdae418ac1391d5bd26",
+    "fetched_at": "2026-11-04T22:34:21Z",
+    "url": "https://www.loumi-dining.com/contact"
+   }
+  ]
+ },
+ "https://www.nomadetemple.com/holbox": {
+  "status": "429",
+  "final": "https://www.nomadetemple.com/holbox",
+  "length": 10295,
+  "file": "b4690d38f2003ca2874ddc492d9e8c70ad01c05e",
+  "fetched_at": "2026-11-04T22:34:21Z",
+  "subpages": []
+ },
+ "https://www.obscura-sh.com/": {
+  "status": "000",
+  "final": "https://www.obscura-sh.com/",
+  "length": 0,
+  "file": "306550f8d7042441f3ef05ee4d5cb386dc723365",
+  "fetched_at": "2026-11-04T22:34:22Z",
+  "subpages": []
+ },
+ "https://www.oetkercollection.com/hotels/eden-rock-st-barths/": {
+  "status": "429",
+  "final": "https://www.oetkercollection.com/hotels/eden-rock-st-barths/",
+  "length": 20768,
+  "file": "676cbf237e1b2fd933c60b5bc62f77d5eeaa0730",
+  "fetched_at": "2026-11-04T22:34:23Z",
+  "subpages": []
+ },
+ "https://www.omakasetableatl.com/": {
+  "status": "200",
+  "final": "https://www.omakasetableatl.com/",
+  "length": 799978,
+  "file": "b51c1b11e921743bfa1699e5bf549643d1fdc168",
+  "fetched_at": "2026-11-04T22:34:23Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.omakasetableatl.com/reservation",
+    "length": 799131,
+    "file": "f6bf9602c797d24314553be8dde5730357dfc631",
+    "fetched_at": "2026-11-04T22:34:23Z",
+    "url": "https://www.omakasetableatl.com/reservation"
+   }
+  ]
+ },
+ "https://www.oneandonlyresorts.com/moonlight-basin": {
+  "status": "000",
+  "final": "https://www.oneandonlyresorts.com/moonlight-basin",
+  "length": 0,
+  "file": "dc0ef84b972462ce14a55ff50205e48fa889840d",
+  "fetched_at": "2026-11-04T22:34:24Z",
+  "subpages": []
+ },
+ "https://www.oneandonlyresorts.com/palmilla": {
+  "status": "000",
+  "final": "https://www.oneandonlyresorts.com/palmilla",
+  "length": 0,
+  "file": "64069d7accbb6646acd2c6ba6de99ceb3d209f55",
+  "fetched_at": "2026-11-04T22:34:24Z",
+  "subpages": []
+ },
+ "https://www.oneandonlyresorts.com/portonovi": {
+  "status": "000",
+  "final": "https://www.oneandonlyresorts.com/portonovi",
+  "length": 0,
+  "file": "8424090acebf5dccff119ce3316ee1622d505c7a",
+  "fetched_at": "2026-11-04T22:34:25Z",
+  "subpages": []
+ },
+ "https://www.pfortenhaus.com/": {
+  "status": "000",
+  "final": "https://www.pfortenhaus.com/",
+  "length": 0,
+  "file": "29cc8f57226dde8557516a6e0fe91a0ccaa10341",
+  "fetched_at": "2026-11-04T22:34:25Z",
+  "subpages": []
+ },
+ "https://www.neuwirt-badvigaun.at/": {
+  "status": "000",
+  "final": "https://www.neuwirt-badvigaun.at/",
+  "length": 0,
+  "file": "0cebcf3977aa5141c7f44628f8e542ee8ff23941",
+  "fetched_at": "2026-11-04T22:34:31Z",
+  "subpages": []
+ },
+ "https://www.restaurantfzn.com/": {
+  "status": "000",
+  "final": "https://www.restaurantfzn.com/",
+  "length": 0,
+  "file": "62ba63ed04eee8062b7e2c27032cdafceff6faec",
+  "fetched_at": "2026-11-04T22:34:31Z",
+  "subpages": []
+ },
+ "https://www.shangri-la.com/beijing/chinaworld/dining/restaurants/giada-garden/": {
+  "status": "200",
+  "final": "https://www.shangri-la.com/beijing/chinaworld/dining/restaurants/giada-garden/",
+  "length": 7373,
+  "file": "6afcfe74fc85b2f0ab3b8d03f135c54cfa7fa3c0",
+  "fetched_at": "2026-11-04T22:34:32Z",
+  "subpages": []
+ },
+ "https://www.resortragaz.ch/igniv": {
+  "status": "000",
+  "final": "https://www.resortragaz.ch/igniv",
+  "length": 0,
+  "file": "67f24d809c7824e9cd3ed4ba781e19afc6dcb477",
+  "fetched_at": "2026-11-04T22:34:35Z",
+  "subpages": []
+ },
+ "https://www.surcuisine.com/": {
+  "status": "200",
+  "final": "https://www.surcuisine.com/",
+  "length": 5318,
+  "file": "bf1763cd1d37f6a0eb0e2d400e6d4a903671f618",
+  "fetched_at": "2026-11-04T22:34:37Z",
+  "subpages": []
+ },
+ "https://www.sushi-kajin.com/": {
+  "status": "000",
+  "final": "https://www.sushi-kajin.com/",
+  "length": 0,
+  "file": "a1f45671dd7af65bed6dc134d04fac3ebfa428ed",
+  "fetched_at": "2026-11-04T22:34:38Z",
+  "subpages": []
+ },
+ "https://www.sumibiyakiarashi.com/": {
+  "status": "000",
+  "final": "https://www.sumibiyakiarashi.com/",
+  "length": 0,
+  "file": "c258383e65e2234089bb34ecca21ca482e4a5176",
+  "fetched_at": "2026-11-04T22:34:43Z",
+  "subpages": []
+ },
+ "https://www.tenoshima.com/": {
+  "status": "200",
+  "final": "https://www.tenoshima.com/",
+  "length": 952328,
+  "file": "42f42659a393c74868ac4436b39f12806b062f95",
+  "fetched_at": "2026-11-04T22:34:43Z",
+  "subpages": []
+ },
+ "https://www.the-earth.in/": {
+  "status": "000",
+  "final": "https://www.the-earth.in/",
+  "length": 0,
+  "file": "f5b0d24a471571449db65680ca5ffcf0aceb7496",
+  "fetched_at": "2026-11-04T22:34:54Z",
+  "subpages": []
+ },
+ "https://www.taku.de/": {
+  "status": "000",
+  "final": "https://taku.de/",
+  "length": 0,
+  "file": "3ee560f4b8f2acbebcbff8eceddb3ccb4a281124",
+  "fetched_at": "2026-11-04T22:34:59Z",
+  "subpages": []
+ },
+ "https://www.umacasa.mx/en": {
+  "status": "200",
+  "final": "https://www.umacasa.mx/en",
+  "length": 942036,
+  "file": "d228df87f041bc73e4512e223ae48e541f491573",
+  "fetched_at": "2026-11-04T22:34:59Z",
+  "subpages": []
+ },
+ "https://www.wisca.cn/": {
+  "status": "000",
+  "final": "https://www.wisca.cn/",
+  "length": 0,
+  "file": "93b3950c69df1f219192324b6078bcb4048a15cf",
+  "fetched_at": "2026-11-04T22:35:10Z",
+  "subpages": []
+ },
+ "https://www.thelindenberg.com/en/hotels/lilloey/": {
+  "status": "200",
+  "final": "https://www.thelindenberg.com/en/hotels/lilloey/",
+  "length": 168154,
+  "file": "d1656e0a761d4430518975fd32f9db4d85b46475",
+  "fetched_at": "2026-11-04T22:34:54Z",
+  "subpages": [
+   {
+    "status": "000",
+    "final": "https://www.thelindenberg.com/en/hotels/lilloey/contact/",
+    "length": 0,
+    "file": "0f4df8f767eeae9d64e177e8a676e205e853e1cf",
+    "fetched_at": "2026-11-04T22:35:14Z",
+    "url": "https://www.thelindenberg.com/en/hotels/lilloey/contact/"
+   },
+   {
+    "status": "000",
+    "final": "https://www.thelindenberg.com/en/contact-us/",
+    "length": 0,
+    "file": "d5f091b40fbe13c94b1606c9ce8e675e98377db5",
+    "fetched_at": "2026-11-04T22:35:34Z",
+    "url": "https://www.thelindenberg.com/en/contact-us/"
+   }
+  ]
+ },
+ "https://capellahotels.com/en/capella-bangkok": {
+  "status": "403",
+  "final": "https://capellahotels.com/en/capella-bangkok",
+  "length": 5706,
+  "file": "7d111381aa6854cd7127dbd6d84f4034c8a0480c",
+  "fetched_at": "2026-11-04T22:39:27Z",
+  "subpages": []
+ },
+ "https://capellahotels.com/zh-tc/capella-taipei/dining": {
+  "status": "403",
+  "final": "https://capellahotels.com/zh-tc/capella-taipei/dining",
+  "length": 5755,
+  "file": "f43d662cb7b145c8d3aecf617fd04bdb0b0af4d7",
+  "fetched_at": "2026-11-04T22:39:27Z",
+  "subpages": []
+ },
+ "https://capellahotels.com/en/capella-shanghai/dining/le-comptoir-de-pierre-gagnaire": {
+  "status": "403",
+  "final": "https://capellahotels.com/en/capella-shanghai/dining/le-comptoir-de-pierre-gagnaire",
+  "length": 5887,
+  "file": "1aa6226606f7cd3c144b8f596ec07338d9219ef4",
+  "fetched_at": "2026-11-04T22:39:27Z",
+  "subpages": []
+ },
+ "https://capellahotels.com/en/capella-sydney": {
+  "status": "403",
+  "final": "https://capellahotels.com/en/capella-sydney",
+  "length": 5703,
+  "file": "af7fa4f50a8504c3df4ea05862aae6906ee14ce7",
+  "fetched_at": "2026-11-04T22:39:27Z",
+  "subpages": []
+ },
+ "https://capellahotels.com/zh-tc/capella-taipei": {
+  "status": "403",
+  "final": "https://capellahotels.com/zh-tc/capella-taipei",
+  "length": 5712,
+  "file": "d8ed9de384f9aaa9fb7791ae05ab1278d5b2b59c",
+  "fetched_at": "2026-11-04T22:39:27Z",
+  "subpages": []
+ },
+ "https://capellahotels.com/zh-tc/capella-taipei/dining/mizue": {
+  "status": "403",
+  "final": "https://capellahotels.com/zh-tc/capella-taipei/dining/mizue",
+  "length": 5773,
+  "file": "8270ac357378084547e6f148ab125b868f691a7e",
+  "fetched_at": "2026-11-04T22:39:27Z",
+  "subpages": []
+ },
+ "https://fr.louisvuitton.com/fra-fr/magasin/france/louis-vuitton-restaurant-saint-tropez": {
+  "status": "403",
+  "final": "https://fr.louisvuitton.com/fra-fr/magasin/france/louis-vuitton-restaurant-saint-tropez",
+  "length": 12539,
+  "file": "5e2c1aa4e07ffb4b110cb8b7f33da10d0abe0082",
+  "fetched_at": "2026-11-04T22:39:27Z",
+  "subpages": []
+ },
+ "http://paraderohotels.com/": {
+  "status": "200",
+  "final": "https://paraderohotels.com/",
+  "length": 53978,
+  "file": "48c76ca5c5121e7db6c93e72580f440d9738e779",
+  "fetched_at": "2026-11-04T22:39:27Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://paraderohotels.com/contact",
+    "length": 43407,
+    "file": "a7363d64dca82c797abd5cd077b485145fb1cfe3",
+    "fetched_at": "2026-11-04T22:39:27Z",
+    "url": "https://paraderohotels.com/contact"
+   }
+  ]
+ },
+ "http://www.manfredihotels.com/hotels/the-james/": {
+  "status": "403",
+  "final": "https://www.manfredihotels.com/the-james/",
+  "length": 392,
+  "file": "6a11e01451573dbc3553f8289402b8b86ac39b9e",
+  "fetched_at": "2026-11-04T22:39:28Z",
+  "subpages": []
+ },
+ "https://m.wowotrip.com/homestay/detail?hotelId=9lNr": {
+  "status": "200",
+  "final": "https://m.wowotrip.com/homestay/detail?hotelId=9lNr",
+  "length": 1254,
+  "file": "209b1638b65a5665dc475585a39874f45df3b6d3",
+  "fetched_at": "2026-11-04T22:39:28Z",
+  "subpages": []
+ },
+ "https://mazeejhotels.com/": {
+  "status": "200",
+  "final": "https://mazeejhotels.com/",
+  "length": 210644,
+  "file": "900e80156ad2c4f5b6bf20b73814ad86fed68be5",
+  "fetched_at": "2026-11-04T22:39:28Z",
+  "subpages": []
+ },
+ "https://grandpoet.semarahhotels.com/": {
+  "status": "200",
+  "final": "https://grandpoet.semarahhotels.com/",
+  "length": 407451,
+  "file": "48b35569a7638eb3c4191cefcaa69705b8c50071",
+  "fetched_at": "2026-11-04T22:39:28Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://semarahhotels.com/kontakti/",
+    "length": 352295,
+    "file": "280c47a8b6e6c4a92039f1e0b0b6c0b9b5894609",
+    "fetched_at": "2026-11-04T22:39:29Z",
+    "url": "https://semarahhotels.com/kontakti/"
+   }
+  ]
+ },
+ "https://lugny.fr/": {
+  "status": "200",
+  "final": "https://lugny.fr/",
+  "length": 201667,
+  "file": "4126bb5d664139f7b0d35891e4c65202a57758df",
+  "fetched_at": "2026-11-04T22:39:29Z",
+  "subpages": []
+ },
+ "https://puglia.baglionihotels.com/": {
+  "status": "403",
+  "final": "https://puglia.baglionihotels.com/",
+  "length": 781,
+  "file": "0c60ee76a673003b098357c39d4af5a62e831436",
+  "fetched_at": "2026-11-04T22:39:29Z",
+  "subpages": []
+ },
+ "https://sardinia.baglionihotels.com/it/ristoranti/gusto-by-sadler": {
+  "status": "403",
+  "final": "https://sardinia.baglionihotels.com/it/ristoranti/gusto-by-sadler",
+  "length": 781,
+  "file": "5164782c263249bec3836df15a1eb0076bcb23b8",
+  "fetched_at": "2026-11-04T22:39:29Z",
+  "subpages": []
+ },
+ "https://www.25hours-hotels.com/en/hotels/copenhagen/paper-island": {
+  "status": "403",
+  "final": "https://www.25hours-hotels.com/en/hotels/copenhagen/paper-island",
+  "length": 4215,
+  "file": "8514b31ec20437b613dfaca804d7b36e0e78a6f0",
+  "fetched_at": "2026-11-04T22:39:29Z",
+  "subpages": []
+ },
+ "https://equinox-hotels.com/nyc/": {
+  "status": "200",
+  "final": "https://equinox-hotels.com/nyc/",
+  "length": 129723,
+  "file": "2ae48acdf86efef3fe884726c26d086b045e7e4d",
+  "fetched_at": "2026-11-04T22:39:28Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://equinox-hotels.com/about/",
+    "length": 91222,
+    "file": "4f0e83f5273cc7bf6502d283f5ffa9eed50489ae",
+    "fetched_at": "2026-11-04T22:39:28Z",
+    "url": "https://equinox-hotels.com/about/"
+   },
+   {
+    "status": "200",
+    "final": "https://equinox-hotels.com/contact/",
+    "length": 58633,
+    "file": "ef8a8ec688e0f33197578083cc1e26dbfc64e9a2",
+    "fetched_at": "2026-11-04T22:39:29Z",
+    "url": "https://equinox-hotels.com/contact-us/"
+   },
+   {
+    "status": "200",
+    "final": "https://equinox-hotels.com/privacy-policy/accessibility/",
+    "length": 57552,
+    "file": "6d5cbb8c99a69b11799eec24c5a17046f08229eb",
+    "fetched_at": "2026-11-04T22:39:29Z",
+    "url": "https://equinox-hotels.com/policies-and-accessibility/"
+   }
+  ]
+ },
+ "http://www.ameronhotels.com/de/hotel-davos": {
+  "status": "200",
+  "final": "https://www.ameroncollection.com/de/davos-swiss-mountain-resort",
+  "length": 86512,
+  "file": "1f849d3aff3c2d652340d3ac446a6052c719fa70",
+  "fetched_at": "2026-11-04T22:39:29Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.ameroncollection.com/davos-swiss-mountain-resort/booking/",
+    "length": 4853,
+    "file": "dabe8369ec1d7bb8fa1fcbf11a17c4031f502b4f",
+    "fetched_at": "2026-11-04T22:39:29Z",
+    "url": "https://www.ameroncollection.com/davos-swiss-mountain-resort/booking/"
+   },
+   {
+    "status": "200",
+    "final": "https://www.ameroncollection.com/davos-swiss-mountain-resort/booking",
+    "length": 4853,
+    "file": "f43b4a4f02f3d8e2ec70606766b88a5af99e5c4d",
+    "fetched_at": "2026-11-04T22:39:30Z",
+    "url": "https://www.ameroncollection.com/davos-swiss-mountain-resort/booking"
+   }
+  ]
+ },
+ "https://santamonica.regenthotels.com/": {
+  "status": "200",
+  "final": "https://santamonica.regenthotels.com/",
+  "length": 151702,
+  "file": "1bf9b2af9ece3be89c6c11953242b9150eb5e59f",
+  "fetched_at": "2026-11-04T22:39:29Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://santamonica.regenthotels.com/about/",
+    "length": 110851,
+    "file": "cc6d9fb89264ab109c6111bd7601207f8daed633",
+    "fetched_at": "2026-11-04T22:39:29Z",
+    "url": "https://santamonica.regenthotels.com/about/"
+   },
+   {
+    "status": "200",
+    "final": "https://santamonica.regenthotels.com/rooms-suites/accessible-rooms-suites/",
+    "length": 95835,
+    "file": "8cf9486ed40e76dbc52fa93c9194e6c50e90fb1f",
+    "fetched_at": "2026-11-04T22:39:30Z",
+    "url": "https://santamonica.regenthotels.com/rooms-suites/accessible-rooms-suites/"
+   }
+  ]
+ },
+ "https://www.ambassador-hotels.com/tc/taipei/dining/a-cut-steakhouse": {
+  "status": "200",
+  "final": "https://www.ambassador-hotels.com/tc/taipei/dining/a-cut-steakhouse",
+  "length": 205,
+  "file": "6b887d6533eafab7a99f1b4a3f89d4c7138eee7f",
+  "fetched_at": "2026-11-04T22:39:30Z",
+  "subpages": []
+ },
+ "https://www.bulgarihotels.com/en_US/beijing/dining/il-ristorante-niko-romito": {
+  "status": "403",
+  "final": "https://www.bulgarihotels.com/en_US/beijing/dining/il-ristorante-niko-romito",
+  "length": 449,
+  "file": "0905f16b371f8eb61e6d97b8f6f589458ef79da8",
+  "fetched_at": "2026-11-04T22:39:30Z",
+  "subpages": []
+ },
+ "https://les-plaisirs-gourmands.com/": {
+  "status": "200",
+  "final": "https://les-plaisirs-gourmands.com/",
+  "length": 55381,
+  "file": "48fdc3bb1a6df62d935ea280c7ea3290227415de",
+  "fetched_at": "2026-11-04T22:39:29Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://les-plaisirs-gourmands.com/contact/",
+    "length": 74942,
+    "file": "50368964528860486b116aa4f6935050bf53e97e",
+    "fetched_at": "2026-11-04T22:39:31Z",
+    "url": "https://les-plaisirs-gourmands.com/contact/"
+   }
+  ]
+ },
+ "https://maroma.chablehotels.com/es/inicio/": {
+  "status": "200",
+  "final": "https://maroma.chablehotels.com/es/inicio/",
+  "length": 302347,
+  "file": "04f20075d999346a4f605a33b115423a7491070f",
+  "fetched_at": "2026-11-04T22:39:29Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://maroma.chablehotels.com/es/contacto/",
+    "length": 299455,
+    "file": "16385d897d0f21c37ce9970d097524a24794ec37",
+    "fetched_at": "2026-11-04T22:39:31Z",
+    "url": "https://maroma.chablehotels.com/es/contacto/"
+   }
+  ]
+ },
+ "https://www.bulgarihotels.com/en_US/milan": {
+  "status": "403",
+  "final": "https://www.bulgarihotels.com/en_US/milan",
+  "length": 394,
+  "file": "fedfbee2c883bada0c2a532faad4a0f5d57bd047",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": []
+ },
+ "https://munihotels.com/": {
+  "status": "200",
+  "final": "https://munihotels.com/",
+  "length": 267136,
+  "file": "3d0b55c120aec659db886ad043d48c10ac9351bf",
+  "fetched_at": "2026-11-04T22:39:30Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://munihotels.com/access/",
+    "length": 58324,
+    "file": "3d36a8506506c0781b3f5820d8920ed79d7db7da",
+    "fetched_at": "2026-11-04T22:39:31Z",
+    "url": "https://munihotels.com/access/"
+   }
+  ]
+ },
+ "https://www.bulgarihotels.com/en_US/shanghai/dining/il-ristorante-niko-romito": {
+  "status": "403",
+  "final": "https://www.bulgarihotels.com/en_US/shanghai/dining/il-ristorante-niko-romito",
+  "length": 450,
+  "file": "ab2a157bc57f5ef422689be86177a34c1b4e0a6c",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": []
+ },
+ "https://www.bulgarihotels.com/en_US/shanghai/dining/chinese-fine-dining-restaurant": {
+  "status": "403",
+  "final": "https://www.bulgarihotels.com/en_US/shanghai/dining/chinese-fine-dining-restaurant",
+  "length": 455,
+  "file": "badc4f1a415d298a7a2477aff430747ecc249436",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": []
+ },
+ "https://www.bunkhousehotels.com/hotel-san-cristobal": {
+  "status": "403",
+  "final": "https://www.bunkhousehotels.com/hotel-san-cristobal",
+  "length": 404,
+  "file": "532568b72c5ebce72850bf901a09957097bc0a77",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": []
+ },
+ "https://www.capellahotels.com/en/capella-bangkok": {
+  "status": "403",
+  "final": "https://www.capellahotels.com/en/capella-bangkok",
+  "length": 5710,
+  "file": "a4dd3a0769cc82fb73a7767fb32dbf5e819801ef",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": []
+ },
+ "https://www.capellahotels.com/en/capella-singapore": {
+  "status": "403",
+  "final": "https://www.capellahotels.com/en/capella-singapore",
+  "length": 5716,
+  "file": "0937e100463440eed9c24e0f6ad2b030eaa67d84",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": []
+ },
+ "https://www.bulgarihotels.com/en_US/tokyo/dining/il-ristorante-niko-romito": {
+  "status": "403",
+  "final": "https://www.bulgarihotels.com/en_US/tokyo/dining/il-ristorante-niko-romito",
+  "length": 447,
+  "file": "029a7365bcd96c585fbc1649d1541f6e47ef0597",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": []
+ },
+ "https://www.larkhotels.com/maine/portland/blind-tiger-portland-carleton-street": {
+  "status": "403",
+  "final": "https://www.larkhotels.com/maine/portland/blind-tiger-portland-carleton-street",
+  "length": 4557,
+  "file": "0733eb085eaf403e9b01378702ac9412dbf2360b",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": []
+ },
+ "https://www.larkhotels.com/maine/portland/blind-tiger-portland-danforth-street": {
+  "status": "403",
+  "final": "https://www.larkhotels.com/maine/portland/blind-tiger-portland-danforth-street",
+  "length": 4557,
+  "file": "0accdd7f4f6471a6f9e6266fdc37f6f7d4b660e0",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": []
+ },
+ "https://www.hotel-licorne.com/": {
+  "status": "000",
+  "final": "https://www.hotel-licorne.com/",
+  "length": 0,
+  "file": "414f80cecabcb4b55fa8c192bfc9c9b4d506a7e8",
+  "fetched_at": "2026-11-04T22:39:32Z",
+  "subpages": []
+ },
+ "https://www.editionhotels.com/bodrum/restaurants-and-bars/kitchen/": {
+  "status": "200",
+  "final": "https://www.editionhotels.com/bodrum/restaurants-and-bars/kitchen/",
+  "length": 229425,
+  "file": "29746ad0fb94be73d25c23458bc75d1b9c3bf7ab",
+  "fetched_at": "2026-11-04T22:39:31Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.editionhotels.com/bodrum/contact/",
+    "length": 226095,
+    "file": "1f3f99b9f9bb67c187faa918457e21b663cfc571",
+    "fetched_at": "2026-11-04T22:39:31Z",
+    "url": "https://www.editionhotels.com/bodrum/contact/"
+   },
+   {
+    "status": "200",
+    "final": "https://www.editionhotels.com/contact/",
+    "length": 346750,
+    "file": "825d8f879126f7b31fc249110fd13970ec8f52ae",
+    "fetched_at": "2026-11-04T22:39:32Z",
+    "url": "https://www.editionhotels.com/contact/"
+   }
+  ]
+ },
+ "https://www.manfredihotels.com/en/le-monzu/": {
+  "status": "403",
+  "final": "https://www.manfredihotels.com/en/le-monzu/",
+  "length": 398,
+  "file": "2f7131afd25530415b686c53ec8bc3055bc59b96",
+  "fetched_at": "2026-11-04T22:39:32Z",
+  "subpages": []
+ },
+ "https://www.manfredihotels.com/le-monzu/": {
+  "status": "403",
+  "final": "https://www.manfredihotels.com/le-monzu/",
+  "length": 391,
+  "file": "319afe6dbbfab4d871bdd7cd80e02e5a53884789",
+  "fetched_at": "2026-11-04T22:39:32Z",
+  "subpages": []
+ },
+ "https://www.almanachotels.com/cs/praguex": {
+  "status": "200",
+  "final": "https://www.almanachotels.com/cs/praguex",
+  "length": 484440,
+  "file": "8936b668b4e5ad87fca678d238f1eaeab5327a58",
+  "fetched_at": "2026-11-04T22:39:30Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.almanachotels.com/barcelona/contact/",
+    "length": 381978,
+    "file": "44cd8a2eb9ab935fab4d10a991155c8821ff773b",
+    "fetched_at": "2026-11-04T22:39:31Z",
+    "url": "https://www.almanachotels.com/barcelona/contact/"
+   },
+   {
+    "status": "200",
+    "final": "https://www.almanachotels.com/cs/praguex/kontakt/",
+    "length": 367775,
+    "file": "b41443f1820adffed302341cc6b65844b4ac148d",
+    "fetched_at": "2026-11-04T22:39:32Z",
+    "url": "https://www.almanachotels.com/cs/praguex/kontakt/"
+   },
+   {
+    "status": "200",
+    "final": "https://www.almanachotels.com/vienna/contact/",
+    "length": 374885,
+    "file": "60a0ce82f027aedb3c1df933362d6d711bd313aa",
+    "fetched_at": "2026-11-04T22:39:32Z",
+    "url": "https://www.almanachotels.com/vienna/contact/"
+   }
+  ]
+ },
+ "https://www.nomadeholbox.com/": {
+  "status": "200",
+  "final": "https://nomadeholbox.com/",
+  "length": 366983,
+  "file": "cbb21981a596fad5cc2d1514f0f994a03c988c21",
+  "fetched_at": "2026-11-04T22:39:33Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://nomadeholbox.com/location",
+    "length": 293239,
+    "file": "0cc6fe4a2ea8dc4a557713e220810581ebb0e348",
+    "fetched_at": "2026-11-04T22:39:33Z",
+    "url": "https://nomadeholbox.com/location"
+   }
+  ]
+ },
+ "https://www.naboahotels.com/": {
+  "status": "200",
+  "final": "https://www.naboahotels.com/",
+  "length": 298496,
+  "file": "f767dda74fb68966ea0c76aed1e11ee4317e5298",
+  "fetched_at": "2026-11-04T22:39:32Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.naboahotels.com/about",
+    "length": 289783,
+    "file": "2ac13d6c0f681ccf348d4c40a9b14253961c373a",
+    "fetched_at": "2026-11-04T22:39:33Z",
+    "url": "https://www.naboahotels.com/about"
+   },
+   {
+    "status": "200",
+    "final": "https://www.naboahotels.com/contact",
+    "length": 236350,
+    "file": "87b4635a62d15fa55128c37bc0e265024d4166bd",
+    "fetched_at": "2026-11-04T22:39:33Z",
+    "url": "https://www.naboahotels.com/contact"
+   }
+  ]
+ },
+ "https://www.oetkerhotels.com/fr/hotels/hotel-du-cap-eden-roc": {
+  "status": "429",
+  "final": "https://www.oetkerhotels.com/fr/hotels/hotel-du-cap-eden-roc",
+  "length": 20768,
+  "file": "657f6daca5e18eeb3aa259605894792815ed4b6b",
+  "fetched_at": "2026-11-04T22:39:33Z",
+  "subpages": []
+ },
+ "https://www.oetkerhotels.com/hotels/brenners-park-hotel-spa/": {
+  "status": "429",
+  "final": "https://www.oetkerhotels.com/hotels/brenners-park-hotel-spa/",
+  "length": 20768,
+  "file": "3786c6442018acfd79e528db6d19e72ed4a7b9ea",
+  "fetched_at": "2026-11-04T22:39:33Z",
+  "subpages": []
+ },
+ "https://www.oetkerhotels.com/hotels/eden-rock-st-barths/": {
+  "status": "429",
+  "final": "https://www.oetkerhotels.com/hotels/eden-rock-st-barths/",
+  "length": 20768,
+  "file": "e7f07e438808bbda63279c3819a3556dd3c2033e",
+  "fetched_at": "2026-11-04T22:39:33Z",
+  "subpages": []
+ },
+ "https://www.oetkerhotels.com/hotels/hotel-la-palma/": {
+  "status": "429",
+  "final": "https://www.oetkerhotels.com/hotels/hotel-la-palma/",
+  "length": 20768,
+  "file": "0342bacba56eb0e267ad7cbbbbe9f5bd7b0f8c6c",
+  "fetched_at": "2026-11-04T22:39:34Z",
+  "subpages": []
+ },
+ "https://www.oetkerhotels.com/hotels/hotel-du-cap-eden-roc/restaurants-bars/louroc-restaurant/": {
+  "status": "429",
+  "final": "https://www.oetkerhotels.com/hotels/hotel-du-cap-eden-roc/restaurants-bars/louroc-restaurant/",
+  "length": 20768,
+  "file": "ebbdf7c80011e7a434770588e99e81ea1a835554",
+  "fetched_at": "2026-11-04T22:39:34Z",
+  "subpages": []
+ },
+ "https://www.oetkerhotels.com/hotels/the-lanesborough/": {
+  "status": "429",
+  "final": "https://www.oetkerhotels.com/hotels/the-lanesborough/",
+  "length": 20768,
+  "file": "e208e23fd5fd1f48679beb5c73a8210a0b9c8a29",
+  "fetched_at": "2026-11-04T22:39:34Z",
+  "subpages": []
+ },
+ "https://www.oetkerhotels.com/hotels/the-vineta-hotel/": {
+  "status": "429",
+  "final": "https://www.oetkerhotels.com/hotels/the-vineta-hotel/",
+  "length": 20768,
+  "file": "81222c535806890efce6e29e6d135b7627b41058",
+  "fetched_at": "2026-11-04T22:39:34Z",
+  "subpages": []
+ },
+ "https://www.hommage-hotels.com/nassauer-hof-wiesbaden/kulinarik/restaurant-ente": {
+  "status": "200",
+  "final": "https://nassauer-hof-wiesbaden.hommage-hotels.com/kulinarik/restaurant-ente/",
+  "length": 173709,
+  "file": "7a0c5cb6d561285f2dacca139ea43c8920dab01e",
+  "fetched_at": "2026-11-04T22:39:33Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://nassauer-hof-wiesbaden.hommage-hotels.com/kontakt/",
+    "length": 32390,
+    "file": "76f4fcf4cb6aa41d5005a7b655022fbc2361b57d",
+    "fetched_at": "2026-11-04T22:39:34Z",
+    "url": "https://nassauer-hof-wiesbaden.hommage-hotels.com/kontakt/"
+   }
+  ]
+ },
+ "https://www.roccofortehotels.com/hotels-and-resorts/hotel-de-la-ville/": {
+  "status": "403",
+  "final": "https://www.roccofortehotels.com/hotels-and-resorts/hotel-de-la-ville/",
+  "length": 443,
+  "file": "7b2b3f2d4b7dfe14b5990f8c29090a4ea07d3948",
+  "fetched_at": "2026-11-04T22:39:34Z",
+  "subpages": []
+ },
+ "https://www.roccofortehotels.com/hotels-and-resorts/the-carlton-milan/": {
+  "status": "403",
+  "final": "https://www.roccofortehotels.com/hotels-and-resorts/the-carlton-milan/",
+  "length": 439,
+  "file": "f592021006f1eb344e8dff665285ac04e15488e1",
+  "fetched_at": "2026-11-04T22:39:35Z",
+  "subpages": []
+ },
+ "https://wingrestaurant.hk/": {
+  "status": "200",
+  "final": "https://wingrestaurant.hk/",
+  "length": 36916,
+  "file": "c79cbb1bf5788fba3edeaba43dd48740c343bbd4",
+  "fetched_at": "2026-11-04T22:39:30Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://wingrestaurant.hk/reserve",
+    "length": 32321,
+    "file": "9cb689e8d39a9c025939caa61016bbd963d8e3a8",
+    "fetched_at": "2026-11-04T22:39:32Z",
+    "url": "https://wingrestaurant.hk/reserve"
+   },
+   {
+    "status": "200",
+    "final": "https://wingrestaurant.hk/contact",
+    "length": 28022,
+    "file": "3d367afb53f7258678bf4ca5d08b353d2df41d80",
+    "fetched_at": "2026-11-04T22:39:34Z",
+    "url": "https://wingrestaurant.hk/contact"
+   },
+   {
+    "status": "200",
+    "final": "https://wingrestaurant.hk/reservation-terms-and-conditions",
+    "length": 31137,
+    "file": "d18025f02629aacb3d41af89d07bb517abfa8b1c",
+    "fetched_at": "2026-11-04T22:39:35Z",
+    "url": "https://wingrestaurant.hk/reservation-terms-and-conditions"
+   }
+  ]
+ },
+ "https://www.losinj-hotels.com/en/dining/restaurant-alfred-keller/": {
+  "status": "200",
+  "final": "https://www.losinj-hotels.com/en/dining/restaurant-alfred-keller/",
+  "length": 72196,
+  "file": "44e4c6845b150eb389f7420574ae638da0f7b275",
+  "fetched_at": "2026-11-04T22:39:33Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.losinj-hotels.com/en/all-offers/early-booking/",
+    "length": 58445,
+    "file": "97b9d5a26164e63529db095491645c2df4624592",
+    "fetched_at": "2026-11-04T22:39:34Z",
+    "url": "https://www.losinj-hotels.com/en/all-offers/early-booking/"
+   },
+   {
+    "status": "200",
+    "final": "https://www.losinj-hotels.com/en/contact/",
+    "length": 61835,
+    "file": "e124bf4d84d5baa1c420c137f883998afad328e8",
+    "fetched_at": "2026-11-04T22:39:35Z",
+    "url": "https://www.losinj-hotels.com/en/contact/"
+   },
+   {
+    "status": "200",
+    "final": "https://www.losinj-hotels.com/en/about-losinj-hotels/",
+    "length": 30965,
+    "file": "7cb78c1a3f54476f56a57f8bb03d3c00924ba127",
+    "fetched_at": "2026-11-04T22:39:36Z",
+    "url": "https://www.losinj-hotels.com/en/about-losinj-hotels/"
+   }
+  ]
+ },
+ "https://www.les-glycines-dordogne.com/": {
+  "status": "200",
+  "final": "https://www.les-glycines-dordogne.com/en/hotel-les-eyzies",
+  "length": 457224,
+  "file": "430036c044b4ef103d8c1d59b4dd2c8a58fa0f1d",
+  "fetched_at": "2026-11-04T22:39:34Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.les-glycines-dordogne.com/en/contact-access-luxury-hotel-dordogne",
+    "length": 485202,
+    "file": "58c895c1e889346127319fb0a3215c40cdd49ea5",
+    "fetched_at": "2026-11-04T22:39:36Z",
+    "url": "https://www.les-glycines-dordogne.com/en/contact-access-luxury-hotel-dordogne"
+   }
+  ]
+ },
+ "https://www.oberoihotels.com/hotels-in-agra-amarvilas-resort/": {
+  "status": "200",
+  "final": "https://www.oberoihotels.com/hotels-in-agra-amarvilas-resort/",
+  "length": 2601798,
+  "file": "e1cc635378c9c649d4e2f03d4c7b1286bf3bf1a7",
+  "fetched_at": "2026-11-04T22:39:34Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.oberoihotels.com/hotels-in-agra-amarvilas-resort/contact-us/",
+    "length": 2435411,
+    "file": "84ee662fc2cb7e22c1f7368ac447ec0c3f19e4c8",
+    "fetched_at": "2026-11-04T22:39:35Z",
+    "url": "https://www.oberoihotels.com/hotels-in-agra-amarvilas-resort/contact-us/"
+   },
+   {
+    "status": "200",
+    "final": "https://www.oberoihotels.com/hotels-in-agra-amarvilas-resort/travel-information/",
+    "length": 2433126,
+    "file": "5f9b1dd98e5fb3360d1825982d4f78fe78c54af4",
+    "fetched_at": "2026-11-04T22:39:36Z",
+    "url": "https://www.oberoihotels.com/hotels-in-agra-amarvilas-resort/travel-information"
+   },
+   {
+    "status": "200",
+    "final": "https://www.oberoihotels.com/contact-us/",
+    "length": 2581860,
+    "file": "f5167c3220ddb279f90893b929c34cc60a998c2f",
+    "fetched_at": "2026-11-04T22:39:37Z",
+    "url": "https://www.oberoihotels.com/contact-us/"
+   }
+  ]
+ },
+ "https://www.oberoihotels.com/hotels-in-sahl-hasheesh/": {
+  "status": "200",
+  "final": "https://www.oberoihotels.com/hotels-in-sahl-hasheesh/",
+  "length": 2560898,
+  "file": "4ae543f8460c03d6df702bcd13a1d56211e02d1e",
+  "fetched_at": "2026-11-04T22:39:35Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.oberoihotels.com/hotels-in-sahl-hasheesh/contact-us/",
+    "length": 2435210,
+    "file": "5ca30a7169a617b78ca886d20214eef409b0b9c7",
+    "fetched_at": "2026-11-04T22:39:36Z",
+    "url": "https://www.oberoihotels.com/hotels-in-sahl-hasheesh/contact-us/"
+   },
+   {
+    "status": "200",
+    "final": "https://www.oberoihotels.com/hotels-in-sahl-hasheesh/travel-information/",
+    "length": 2408806,
+    "file": "079f69c39b6081ce343c2e7fd0adc1915a852f26",
+    "fetched_at": "2026-11-04T22:39:37Z",
+    "url": "https://www.oberoihotels.com/hotels-in-sahl-hasheesh/travel-information"
+   },
+   {
+    "status": "200",
+    "final": "https://www.oberoihotels.com/contact-us/",
+    "length": 2581859,
+    "file": "f5167c3220ddb279f90893b929c34cc60a998c2f",
+    "fetched_at": "2026-11-04T22:39:37Z",
+    "url": "https://www.oberoihotels.com/contact-us/"
+   }
+  ]
+ },
+ "https://www.tajhotels.com/en-in/hotels/taj-mahal-palace-mumbai": {
+  "status": "403",
+  "final": "https://www.tajhotels.com/en-in/hotels/taj-mahal-palace-mumbai",
+  "length": 431,
+  "file": "213b3a0fcb1df6c8f0da1d38cb5ec6ea2c4a7b93",
+  "fetched_at": "2026-11-04T22:39:38Z",
+  "subpages": []
+ },
+ "https://www.roccofortehotels.com/hotels-and-resorts/hotel-de-russie/": {
+  "status": "403",
+  "final": "https://www.roccofortehotels.com/hotels-and-resorts/hotel-de-russie/",
+  "length": 437,
+  "file": "a32d0ccb0cfb5d835737fa3c1658436cdbae3c3f",
+  "fetched_at": "2026-11-04T22:39:38Z",
+  "subpages": []
+ },
+ "https://www.roccofortehotels.com/hotels-and-resorts/masseria-torre-maizza/": {
+  "status": "403",
+  "final": "https://www.roccofortehotels.com/hotels-and-resorts/masseria-torre-maizza/",
+  "length": 443,
+  "file": "cf1337d70c2adcfdace18a5c6da686dbf14c6de4",
+  "fetched_at": "2026-11-04T22:39:38Z",
+  "subpages": []
+ },
+ "https://www.roccofortehotels.com/hotels-and-resorts/villa-igiea/": {
+  "status": "403",
+  "final": "https://www.roccofortehotels.com/hotels-and-resorts/villa-igiea/",
+  "length": 429,
+  "file": "20a10155d79a6960d25f48455e324561d6acc24f",
+  "fetched_at": "2026-11-04T22:39:38Z",
+  "subpages": []
+ },
+ "https://www.tatemohtx.com/": {
+  "status": "200",
+  "final": "https://www.tatemohtx.com/",
+  "length": 217676,
+  "file": "0fb5ee0e254c524d957953e17e58392040d72363",
+  "fetched_at": "2026-11-04T22:39:38Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.tatemohtx.com/contact",
+    "length": 177541,
+    "file": "65a764ea0ea981324d5db42b1a9c198382725797",
+    "fetched_at": "2026-11-04T22:39:38Z",
+    "url": "https://www.tatemohtx.com/contact"
+   }
+  ]
+ },
+ "https://www.rosewoodhotels.com/en/sao-paulo": {
+  "status": "200",
+  "final": "https://www.rosewoodhotels.com/en/sao-paulo",
+  "length": 128294,
+  "file": "6e27222d129944ca5b978b742b10daa6c9eb7628",
+  "fetched_at": "2026-11-04T22:39:37Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.rosewoodhotels.com/en/sao-paulo/overview/location",
+    "length": 81784,
+    "file": "92db7724c4683ec831baa769417787775240f2f2",
+    "fetched_at": "2026-11-04T22:39:38Z",
+    "url": "https://www.rosewoodhotels.com/en/sao-paulo/overview/location"
+   },
+   {
+    "status": "200",
+    "final": "https://www.rosewoodhotels.com/en/sao-paulo/reservations/select-a-service",
+    "length": 17510,
+    "file": "903767e05831d198929a69e77b8dc87f8f7578e8",
+    "fetched_at": "2026-11-04T22:39:38Z",
+    "url": "https://www.rosewoodhotels.com/en/sao-paulo/reservations/select-a-service"
+   },
+   {
+    "status": "200",
+    "final": "https://www.rosewoodhotels.com/en/sao-paulo/reservations/room-availability?hotelId=sao-paulo&rateType=PRMMORE3",
+    "length": 14839,
+    "file": "86d532976218fb42ca3491b21c7aa908b1b99071",
+    "fetched_at": "2026-11-04T22:39:39Z",
+    "url": "https://www.rosewoodhotels.com/en/sao-paulo/reservations/room-availability?hotelId=sao-paulo&rateType=PRMMORE3"
+   }
+  ]
+ },
+ "https://www.rosewoodhotels.com/en/miyakojima": {
+  "status": "200",
+  "final": "https://www.rosewoodhotels.com/en/miyakojima",
+  "length": 137489,
+  "file": "e03a12cd193eca141e57fa4feabbe44a9f32a435",
+  "fetched_at": "2026-11-04T22:39:36Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.rosewoodhotels.com/en/miyakojima/overview/location",
+    "length": 88684,
+    "file": "987634a3462c49d7cf76443171bc66913fae639e",
+    "fetched_at": "2026-11-04T22:39:37Z",
+    "url": "https://www.rosewoodhotels.com/en/miyakojima/overview/location"
+   },
+   {
+    "status": "200",
+    "final": "https://www.rosewoodhotels.com/en/miyakojima/reservations/select-a-service",
+    "length": 17493,
+    "file": "b2d364a7d6c17501f8f4062cf3d75cb35d4e2ef7",
+    "fetched_at": "2026-11-04T22:39:38Z",
+    "url": "https://www.rosewoodhotels.com/en/miyakojima/reservations/select-a-service"
+   },
+   {
+    "status": "200",
+    "final": "https://www.rosewoodhotels.com/en/our-global-reservation-information",
+    "length": 119069,
+    "file": "9413e113e4523454774ead464d97e15a6f91b6bf",
+    "fetched_at": "2026-11-04T22:39:39Z",
+    "url": "https://www.rosewoodhotels.com/en/our-global-reservation-information"
+   }
+  ]
+ },
+ "https://yucatan.chablehotels.com/cuisine/ixiim/": {
+  "status": "200",
+  "final": "https://yucatan.chablehotels.com/cuisine/ixiim/",
+  "length": 313032,
+  "file": "0f9b8be5244bf48d606860a2f0e2e3f2e0ee37d1",
+  "fetched_at": "2026-11-04T22:39:39Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://yucatan.chablehotels.com/contact/",
+    "length": 257143,
+    "file": "4d1a54699d55d64d5732842258f6d68921742281",
+    "fetched_at": "2026-11-04T22:39:40Z",
+    "url": "https://yucatan.chablehotels.com/contact/"
+   }
+  ]
+ },
+ "https://www.rosewoodhotels.com/jp/miyakojima": {
+  "status": "200",
+  "final": "https://www.rosewoodhotels.com/ja/miyakojima",
+  "length": 129298,
+  "file": "97535f707521de96c38f23ad7dce6e6db2951ec4",
+  "fetched_at": "2026-11-04T22:39:37Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://www.rosewoodhotels.com/ja/miyakojima/overview/location",
+    "length": 86136,
+    "file": "7f9f6d6b0ca9c60d8cb3c8d23f0117fc0e2bb26b",
+    "fetched_at": "2026-11-04T22:39:38Z",
+    "url": "https://www.rosewoodhotels.com/ja/miyakojima/overview/location"
+   },
+   {
+    "status": "200",
+    "final": "https://reservations.rosewoodhotels.com/?Chain=5159&Hotel=46422&locale=ja-JP",
+    "length": 535294,
+    "file": "29c58c4599945f81e3707dba511141b393c23185",
+    "fetched_at": "2026-11-04T22:39:40Z",
+    "url": "https://www.rosewoodhotels.com/ja/miyakojima/reservations/select-a-service"
+   },
+   {
+    "status": "200",
+    "final": "https://www.rosewoodhotels.com/en/our-global-reservation-information",
+    "length": 119069,
+    "file": "9413e113e4523454774ead464d97e15a6f91b6bf",
+    "fetched_at": "2026-11-04T22:39:41Z",
+    "url": "https://www.rosewoodhotels.com/en/our-global-reservation-information"
+   }
+  ]
  }
 }

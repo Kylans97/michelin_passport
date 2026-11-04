@@ -20,7 +20,7 @@
 -- re-run (fill-only).
 
 begin;
--- restaurants: 160 rows (0 Place IDs, 129 phones, 160 websites)
+-- restaurants: 162 rows (0 Place IDs, 131 phones, 162 websites)
 create temp table _fill_restaurant (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_restaurant values
     ('rest_0310', 'Narisawa', NULL, NULL, 'http://www.narisawa-yoshihiro.com/'),
@@ -74,6 +74,7 @@ insert into _fill_restaurant values
     ('rest_0549', 'Yusokuryori Mankamero', NULL, '+81 75-441-5020', 'https://www.mankamerou.com/'),
     ('rest_0551', 'Muromachi Yui', NULL, '+81 75-251-8877', 'https://muromachi-yui.jp/'),
     ('rest_0552', 'anpeiji', NULL, '+81 50-1807-4044', 'https://www.anpeiji.com/'),
+    ('rest_0554', 'Germoglio', NULL, '+81 75-343-0690', 'https://www.germogliokyoto.com/'),
     ('rest_0555', 'Restaurant Hiramatsu Kodaiji', NULL, '+81 75-533-6063', 'https://www.hiramatsurestaurant.jp/smp/hiramatsu-kodaiji/'),
     ('rest_0557', 'Gion Fukushi', NULL, '+81 75-354-5314', 'https://gion-fukushi.com/'),
     ('rest_0561', 'Ryoriya Maekawa', NULL, '+81 75-744-0808', 'https://ryouriya-maekawa.com/'),
@@ -173,6 +174,7 @@ insert into _fill_restaurant values
     ('rest_0709', 'La Paix', NULL, NULL, 'http://lapaix-m.jp/'),
     ('rest_0710', 'Sushi Masashi', NULL, '+81 3-6384-5526', 'https://sushimasashi.tokyo/'),
     ('rest_0712', 'CYCLE by Mauro Colagreco', NULL, '+81 3-6551-2885', 'https://cyclerestaurant.com/'),
+    ('rest_0716', 'Tenoshima', NULL, '+81 3-6316-2150', 'https://www.tenoshima.com/'),
     ('rest_0718', 'ESTERRE by Alain Ducasse', NULL, '+81 3-3211-5317', 'https://www.palacehoteltokyo.com/restaurant/esterre/'),
     ('rest_0719', 'Guchokuni', NULL, NULL, 'https://kagurazaka-guchokuni.jp/'),
     ('rest_0720', 'Sushi Oya', NULL, '+81 3-6228-1868', 'https://sushioya.com/'),
@@ -204,13 +206,14 @@ update public.restaurants x set phone = f.phone, updated_at = now()
 update public.restaurants x set website_url = f.website, updated_at = now()
   from _fill_restaurant f where x.restaurant_code = f.code and f.website is not null and x.website_url is null;
 
--- hotels: 4 rows (0 Place IDs, 4 phones, 0 websites)
+-- hotels: 5 rows (0 Place IDs, 5 phones, 1 websites)
 create temp table _fill_hotel (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_hotel values
     ('hotel_574', 'Rosewood Miyakojima', NULL, '+81 980-79-8899', NULL),
     ('hotel_585', 'Fuji Speedway Hotel', NULL, '+81 550-20-1234', NULL),
     ('hotel_592', 'Kofuyuden Beniya', NULL, '+81 776-77-2333', NULL),
-    ('hotel_596', 'Ryokan Onomichi Nishiyama', NULL, '+81 848-37-3145', NULL);
+    ('hotel_596', 'Ryokan Onomichi Nishiyama', NULL, '+81 848-37-3145', NULL),
+    ('hotel_664', 'MUNI KYOTO', NULL, '+81 75-863-1110', 'https://munihotels.com/');
 
 do $$
 declare bad text;

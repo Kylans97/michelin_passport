@@ -119,7 +119,7 @@ update public.restaurants x set phone = f.phone, updated_at = now()
 update public.restaurants x set website_url = f.website, updated_at = now()
   from _fill_restaurant f where x.restaurant_code = f.code and f.website is not null and x.website_url is null;
 
--- hotels: 60 rows (59 Place IDs, 50 phones, 16 websites)
+-- hotels: 60 rows (59 Place IDs, 50 phones, 17 websites)
 create temp table _fill_hotel (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_hotel values
     ('hotel_1517', 'Beverly Wilshire, Beverly Hills (A Four Seasons Hotel)', 'ChIJz-22Hfm7woARmoLOmvYW4J0', '+1 310 275 5200', NULL),
@@ -160,7 +160,7 @@ insert into _fill_hotel values
     ('hotel_1722', 'Pendry Natirar', 'ChIJ_1pD1hqXw4kRjD36_aTMNT0', '+1 908 254 2300', 'https://www.pendry.com/natirar/'),
     ('hotel_1723', 'Pendry Park City', 'ChIJCTCakN1tUocRupr5OtlR6FA', '+1 435 800 1990', 'https://www.pendry.com/park-city/'),
     ('hotel_1724', 'Pendry Washington DC – The Wharf', 'ChIJbxsPmXC3t4kRswReGkd7M2c', '+1 202 843 1112', 'https://www.pendry.com/washington-dc/'),
-    ('hotel_1733', 'Regent Santa Monica Beach', 'ChIJpWsmhcelwoARbuhT0M70HQY', '+1 310 458 6700', NULL),
+    ('hotel_1733', 'Regent Santa Monica Beach', 'ChIJpWsmhcelwoARbuhT0M70HQY', '+1 310 458 6700', 'https://santamonica.regenthotels.com/'),
     ('hotel_1745', 'Six Bells Countryside Inn', 'ChIJ2V7lCQAb3YkRZGXETAo87BQ', '+1 845 658 2047', NULL),
     ('hotel_1754', 'Stein Eriksen Lodge', 'ChIJyxf_edlyUocRYOYp7Ec6nXA', NULL, NULL),
     ('hotel_1763', 'The Bowery Hotel', 'ChIJqzkICohZwokR456MkSkZnLU', '+1 212 505 9100', 'http://www.theboweryhotel.com/'),

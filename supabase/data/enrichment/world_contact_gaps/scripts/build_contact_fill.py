@@ -138,10 +138,16 @@ def name_sim(a, b, extra=()):
     """difflib ratio of the folded names; 0.9 when one name's distinctive words
     are contained in the other's and every extra word is generic or the city
     (or the shorter name still has two distinctive words)."""
+    if b and is_cjk(b) and not is_cjk(a):
+        latin = ''.join(c for c in b if not is_cjk(c))
+        if fold(latin):
+            return name_sim(a, latin, extra)
     fa, fb = fold(a), fold(b)
     if not fa or not fb:
         return 0.0
     r = difflib.SequenceMatcher(None, fa, fb).ratio()
+    if fa.replace(' ', '') == fb.replace(' ', ''):
+        r = 1.0
     ok = GENERIC | {w for e in extra for w in fold(e).split()}
     ta = {w for w in fa.split() if w not in GENERIC}
     tb = {w for w in fb.split() if w not in GENERIC}

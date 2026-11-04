@@ -1,11 +1,11 @@
 country,rows,status,place_filled,place_needed,phone_filled,phone_needed,website_filled,website_needed,closed,note
-JP,272,klaar,0,0,133,266,160,267,2,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
-US,175,klaar,127,161,93,167,17,86,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+JP,272,klaar,0,0,136,266,163,267,2,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+US,175,klaar,127,161,93,167,18,86,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
 CN,128,klaar,0,125,0,127,0,90,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
 GR,78,overgeslagen,,,,,,,,"voorbereid in ../michelin_gr (QA-431), wacht op akkoord"
-MX,53,niet begonnen,,,,,,,,
-IT,50,niet begonnen,,,,,,,,
-TW,42,niet begonnen,,,,,,,,
+MX,53,klaar,37,52,13,43,13,34,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+IT,50,klaar,0,16,20,49,1,32,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
+TW,42,klaar,32,38,23,42,0,25,0,alle rijen beoordeeld; achtergehouden waarden met reden in de CSV
 DE,28,niet begonnen,,,,,,,,
 FR,26,niet begonnen,,,,,,,,
 HK,25,niet begonnen,,,,,,,,

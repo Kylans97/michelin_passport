@@ -62,7 +62,7 @@ def work(u):
 
 
 urls = sorted({u.strip() for u in open(URLS) if u.strip()})
-with cf.ThreadPoolExecutor(8) as ex:
+with cf.ThreadPoolExecutor(int(os.environ.get("WORKERS", "8"))) as ex:
     list(ex.map(work, urls))
 json.dump(idx, open(IP, 'w'), indent=1)
 print('done', len(idx))
