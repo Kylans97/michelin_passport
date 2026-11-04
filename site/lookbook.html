@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lookbook — Mantelier</title>
+<meta name="description" content="How Mantelier looks once venues have added their photos, stories and events.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#16302A">
+
+<link rel="icon" href="/favicon-32.png" sizes="32x32">
+<link rel="icon" href="/favicon-192.png" sizes="192x192">
+<link rel="apple-touch-icon" href="/apple-touch-icon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ivory: #F4F0E7;
+    --green: #16302A;
+    --ink: #1D2B27;
+    --line: rgba(244, 240, 231, 0.22);
+    --muted: rgba(244, 240, 231, 0.66);
+    --ink-muted: rgba(29, 43, 39, 0.68);
+    --ink-line: rgba(29, 43, 39, 0.16);
+
+    --display: "Cormorant Garamond", Georgia, serif;
+    --body: "IBM Plex Sans", system-ui, sans-serif;
+    --util: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--green);
+    color: var(--ivory);
+    font-family: var(--body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+  .eyebrow {
+    font-family: var(--util);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin: 0 0 18px;
+  }
+
+  h1, h2 { font-family: var(--display); font-weight: 400; letter-spacing: 0.01em; margin: 0; }
+  h1 { font-size: clamp(44px, 8vw, 84px); line-height: 1.04; max-width: 13em; }
+  h2 { font-size: clamp(32px, 4.6vw, 48px); line-height: 1.1; }
+
+  .intro { padding: 12vh 0 9vh; }
+  .intro p.lede { font-size: 19px; max-width: 34em; margin: 26px 0 0; color: var(--muted); }
+
+  .notice {
+    margin-top: 34px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    max-width: 46em;
+    font-size: 14px;
+    color: var(--muted);
+  }
+
+  section.chapter { padding: 9vh 0; border-top: 1px solid var(--line); }
+  section.chapter.paper {
+    background: var(--ivory);
+    color: var(--ink);
+    border-top: 0;
+  }
+  .paper .eyebrow, .paper .copy p { color: var(--ink-muted); }
+
+  .chapter-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+    gap: 56px;
+    align-items: start;
+  }
+  .copy { position: sticky; top: 48px; }
+  .copy p { margin: 18px 0 0; color: var(--muted); }
+
+  .phones {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 26px;
+    align-items: start;
+  }
+  .phones.two { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 68%; }
+
+  figure { margin: 0; }
+  .phone {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 9% / 4.2%;
+    box-shadow: 0 0 0 1px rgba(244, 240, 231, 0.28), 0 18px 44px rgba(0, 0, 0, 0.32);
+    background: #10231f;
+  }
+  .paper .phone { box-shadow: 0 0 0 1px var(--ink-line), 0 18px 44px rgba(22, 48, 42, 0.2); }
+  figcaption {
+    font-size: 13px;
+    line-height: 1.45;
+    margin-top: 14px;
+    color: var(--muted);
+  }
+  .paper figcaption { color: var(--ink-muted); }
+
+  .split {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 56px;
+    margin-top: 40px;
+  }
+  .split h3 { font-family: var(--display); font-weight: 500; font-size: 26px; margin: 0 0 12px; }
+  .split ul { margin: 0; padding: 0; list-style: none; }
+  .split li { padding: 10px 0; border-top: 1px solid var(--line); color: var(--muted); }
+
+  .close { padding: 11vh 0 9vh; border-top: 1px solid var(--line); }
+  .close p { max-width: 36em; color: var(--muted); margin: 20px 0 0; }
+  .close a { color: var(--ivory); }
+
+  footer { padding: 26px 0 60px; border-top: 1px solid var(--line); font-size: 12.5px; color: var(--muted); }
+  footer p { margin: 0 0 8px; max-width: 60em; }
+
+  @media (max-width: 860px) {
+    .wrap { padding: 0 16px; }
+    .chapter-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+    .copy { position: static; }
+    .phones, .phones.two { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: none; }
+    .split { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="wrap intro">
+  <p class="eyebrow">Mantelier · Lookbook</p>
+  <h1>How your place could look in Mantelier.</h1>
+  <p class="lede">Mantelier connects remarkable restaurants, hotels and one-off evenings with the people who travel for them. These are real screens from the app, filled the way we expect it to look once venues have added their own photos, stories and events.</p>
+  <p class="notice"><strong>An illustration, not a listing.</strong> Every venue, event, person, award and score on this page is invented, and the photos are stock images. The screens themselves are the app as it is built today.</p>
+</header>
+
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Discover</p>
+      <h2>Where members start</h2>
+      <p>Explore opens on what is worth planning for. Your photo is the first thing a member sees, on a calm page with no ratings or adverts competing for attention.</p>
+    </div>
+    <div class="phones">
+      <figure><img class="phone" src="lookbook/01_explore.jpg" width="720" height="1565" loading="lazy" alt="Explore screen with a search field and an event card with a photo of a laid table"><figcaption>Explore leads with what's on.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/02_explore_cards.jpg" width="720" height="1565" loading="lazy" alt="Explore screen with restaurant and hotel cards, each with a photo"><figcaption>Restaurants and hotels, each with their own photo.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/08_events.jpg" width="720" height="1565" loading="lazy" alt="Events screen with large photo cards"><figcaption>Events get the full width, and a nudge when they fall during a member's trip.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter paper">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Your page</p>
+      <h2>Told in your own words</h2>
+      <p>Your photos lead the page, in the order and framing you choose. Your description, opening hours, team and events sit beneath them, with direct links to your website and phone.</p>
+    </div>
+    <div class="phones">
+      <figure><img class="phone" src="lookbook/03_venue_top.jpg" width="720" height="1565" loading="lazy" alt="Restaurant page with a large photo of the dining room, opening hours and links"><figcaption>Your photo gallery, website, phone and opening hours.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/04_venue_about.jpg" width="720" height="1565" loading="lazy" alt="Restaurant page with a member's score, the about text and the team"><figcaption>Your story and your team.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/05_venue_events.jpg" width="720" height="1565" loading="lazy" alt="Restaurant page listing the linked hotel, an upcoming event and practical information"><figcaption>Your events and your connected hotel or restaurant.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Events</p>
+      <h2>Evenings that happen once</h2>
+      <p>A four-hands dinner, a winemaker's table, a gala. Each event gets its own page, links every venue and chef involved, and shows members which friends are going. Followers of the host hear about it when it goes live.</p>
+    </div>
+    <div class="phones two">
+      <figure><img class="phone" src="lookbook/06_event_top.jpg" width="720" height="1565" loading="lazy" alt="Event page with a photo of a long table, date, place and a link to tickets"><figcaption>Date, place, price and your ticket link.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/07_event_friends.jpg" width="720" height="1565" loading="lazy" alt="Event page listing friends going, the description and the participating restaurants"><figcaption>Friends going, your description, and every host.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter paper">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Hotels</p>
+      <h2>A stay and a table, connected</h2>
+      <p>Hotels have the same page with their own details. A hotel and its restaurant link to each other, so a member who finds one finds the other.</p>
+    </div>
+    <div class="phones two">
+      <figure><img class="phone" src="lookbook/18_hotel.jpg" width="720" height="1565" loading="lazy" alt="Hotel page with a large photo of the building"><figcaption>The same care for hotels.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/19_hotel_about.jpg" width="720" height="1565" loading="lazy" alt="Hotel page with a member's scores, the about text and its restaurant"><figcaption>Its story, and the restaurant inside it.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Plan</p>
+      <h2>Part of the journey</h2>
+      <p>Members plan trips around tables. Your venue can sit in their itinerary and on their trip map, and your events surface when they match the dates.</p>
+    </div>
+    <div class="phones two">
+      <figure><img class="phone" src="lookbook/13_trip.jpg" width="720" height="1565" loading="lazy" alt="Trip screen listing a hotel stay and a restaurant"><figcaption>A trip, with stays and dining.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/14_map.jpg" width="720" height="1565" loading="lazy" alt="Street map of a city with pins for places on the trip"><figcaption>The trip map, with what's planned and what's near.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter paper">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Remember</p>
+      <h2>A stamp of your own</h2>
+      <p>After a visit, your venue becomes a stamp in the member's Passport, kept for years and shared with friends if they choose. Their own ranking helps them remember and recommend.</p>
+    </div>
+    <div class="phones">
+      <figure><img class="phone" src="lookbook/09_passport.jpg" width="720" height="1565" loading="lazy" alt="Leather passport cover with the Mantelier mark"><figcaption>The Passport.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/15_stamps.jpg" width="720" height="1565" loading="lazy" alt="Passport page with three overlapping venue stamps"><figcaption>A stamp for each place.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/11_ranking.jpg" width="720" height="1565" loading="lazy" alt="A member's personal ranking of restaurants with photos and scores"><figcaption>A member's own ranking.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="chapter">
+  <div class="wrap chapter-grid">
+    <div class="copy">
+      <p class="eyebrow">Community</p>
+      <h2>Stories and shared taste</h2>
+      <p>Interviews and stories bring the people behind the table forward. Community shows what members rate highest and what's coming up.</p>
+    </div>
+    <div class="phones two">
+      <figure><img class="phone" src="lookbook/16_news.jpg" width="720" height="1565" loading="lazy" alt="News screen with an interview card and a story"><figcaption>Interviews and stories.</figcaption></figure>
+      <figure><img class="phone" src="lookbook/17_community.jpg" width="720" height="1565" loading="lazy" alt="Community screen with a ranking of restaurants"><figcaption>What the community rates highest.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="wrap">
+    <p class="eyebrow">How it works</p>
+    <h2>Your content, our verification</h2>
+    <div class="split">
+      <div>
+        <h3>What comes from you</h3>
+        <ul>
+          <li>Photos, their order and how they are framed</li>
+          <li>Your description, in your own words</li>
+          <li>Opening hours, team and contact details</li>
+          <li>Your events, dinners and collaborations</li>
+        </ul>
+      </div>
+      <div>
+        <h3>What comes from us</h3>
+        <ul>
+          <li>Verified recognition from the guides themselves</li>
+          <li>Location and practical facts we can check</li>
+          <li>A short review of what you submit, before it goes live</li>
+          <li>The members, and the trips they plan</li>
+        </ul>
+      </div>
+    </div>
+    <p>Want to see your own place like this? Write to <a href="mailto:claimedvenues@mantelier.app">claimedvenues@mantelier.app</a>.</p>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p>All venues, events, people, awards and scores shown are fictional and for illustration only. Photos from Unsplash, under the Unsplash License, by Tanja Tepavac, Franco Debartolo, Igor Rand, Sue Winston, Vi Tran, David Goldman, Piermario Eva, liuyun wu and others. Screens may change as the app develops.</p>
+  <p>Mantelier is independent. It is not affiliated with, endorsed by or sponsored by Michelin, The World's 50 Best, Gault&amp;Millau or any venue listed.</p>
+</footer>
+
+</body>
+</html>

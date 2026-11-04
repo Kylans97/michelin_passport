@@ -8,6 +8,9 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Added
+- **A lookbook for conversations with venues** (product owner, 2026-11-04): `site/lookbook.html`, real app screens filled with invented venues, events and members on a local stack (`scripts/seed_lookbook.py`, never for production) and Unsplash photos, so a venue can see the app as it will look once venues have added their own content. Reachable by link only: not linked from the site, `noindex`. Says at the top and in the footer that everything on it is fictional. Sources in `docs/Design/LOOKBOOK.md`.
+
 ---
 
 ## v1.5.7 (30) — 2026-11-04
