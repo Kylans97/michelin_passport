@@ -31,10 +31,11 @@ def get(url):
     return '202', url, ''
 
 
-rows = [r for r in json.load(open(EXP))['gaps'] if r['country'] != 'GR' and r['michelin_url']]
-# biggest countries first, as the run is ordered
+ALL = [r for r in json.load(open(EXP))['gaps'] if r['country'] != 'GR']
+rows = [r for r in ALL if r['michelin_url']]
+# countries with the most export rows first, as the run is ordered
 order = {}
-for r in rows:
+for r in ALL:
     order[r['country']] = order.get(r['country'], 0) + 1
 rows.sort(key=lambda r: (-order[r['country']], r['country'], r['kind'], r['code']))
 for i, r in enumerate(rows):

@@ -2989,6 +2989,281 @@
   "identity_ok": true,
   "identity_note": "address agrees: street"
  },
+ "hotel_574": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/miyakojima/rosewood-miyakojima-14863",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/miyakojima/rosewood-miyakojima-14863",
+  "found": true,
+  "name": "Rosewood Miyakojima in Miyakojima",
+  "telephone": "+81 980-79-8899",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1068-1 Aza-Nikadori, Hirara",
+   "addressLocality": "Miyakojima",
+   "postalCode": "906-0008",
+   "addressCountry": "JPN",
+   "addressRegion": "Okinawa Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_584": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Otake/simose-art-garden-villa-14272",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Otake/simose-art-garden-villa-14272",
+  "found": true,
+  "name": "SIMOSE ART GARDEN VILLA in Otake",
+  "telephone": "+81-8-2793-1600",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "2-10-50 Harumi",
+   "addressLocality": "Otake",
+   "postalCode": "739-0622",
+   "addressCountry": "JPN",
+   "addressRegion": "Hiroshima Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_585": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Oyama/fuji-speedway-hotel-14253",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Oyama/fuji-speedway-hotel-14253",
+  "found": true,
+  "name": "Fuji Speedway Hotel in Oyama",
+  "telephone": "+81 550-20-1234",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "645 Omika, Sunto-district",
+   "addressLocality": "Oyama",
+   "postalCode": "410-1308",
+   "addressCountry": "JPN",
+   "addressRegion": "Shizuoka Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_592": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Awara/beniya-kofuyuden-13385",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Awara/beniya-kofuyuden-13385",
+  "found": true,
+  "name": "Kofuyuden Beniya in Awara",
+  "telephone": "+81 776-77-2333",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "4-510 Onsen",
+   "addressLocality": "Awara",
+   "postalCode": "910-4104",
+   "addressCountry": "JPN",
+   "addressRegion": "Fukui Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_594": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/nara/fufu-nara-13938",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/nara/fufu-nara-13938",
+  "found": true,
+  "name": "Fufu Nara in Nara",
+  "telephone": "+81 570-011-722",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Takabatakecho 1184-1",
+   "addressLocality": "Nara",
+   "postalCode": "630-8301",
+   "addressCountry": "JPN",
+   "addressRegion": "Nara Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_596": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/onomichi/ryokan-onomichi-nishivama-13396",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/onomichi/ryokan-onomichi-nishivama-13396",
+  "found": true,
+  "name": "Ryokan Onomichi Nishiyama in Onomichi",
+  "telephone": "+81 848-37-3145",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "678-1 Sanbacho",
+   "addressLocality": "Onomichi",
+   "postalCode": "722-0052",
+   "addressCountry": "JPN",
+   "addressRegion": "Hiroshima Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_597": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/karuizawamachi/fufu-karuizawa-yokou-no-kaze-13391",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/karuizawamachi/fufu-karuizawa-yokou-no-kaze-13391",
+  "found": true,
+  "name": "Fufu Karuizawa Wind in the Sunshine in Karuizawamachi, Kitasaku-gun",
+  "telephone": "",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "568-1 Nagakura",
+   "addressLocality": "Karuizawamachi, Kitasaku-gun",
+   "postalCode": "389-0111",
+   "addressCountry": "JPN",
+   "addressRegion": "Nagano Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_602": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/nikko/fufu-nikko-13437",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/nikko/fufu-nikko-13437",
+  "found": true,
+  "name": "Fufu Nikko in Nikko",
+  "telephone": "+81 570-011-722",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1573-8 Honcho",
+   "addressLocality": "Nikko",
+   "postalCode": "321-1435",
+   "addressCountry": "JPN",
+   "addressRegion": "Tochigi Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_607": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/karuizawamachi/fufu-kyu-karuizawa-seiyou-no-mori-13395",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/karuizawamachi/fufu-kyu-karuizawa-seiyou-no-mori-13395",
+  "found": true,
+  "name": "Fufu Kyu-Karuizawa Restful Forest in Karuizawamachi, Kitasaku-gun",
+  "telephone": "0570-0117-22",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1299-2 Karuizawa",
+   "addressLocality": "Karuizawamachi, Kitasaku-gun",
+   "postalCode": "389-0102",
+   "addressCountry": "JPN",
+   "addressRegion": "Nagano Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_610": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/kutchancho/park-hyatt-niseko-hanazono-11905",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/kutchancho/park-hyatt-niseko-hanazono-11905",
+  "found": true,
+  "name": "Park Hyatt Niseko Hanazono in Kutchancho, Abuta-gun",
+  "telephone": "+81 1 36 27 1233",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "328-47 Iwaobetsu",
+   "addressLocality": "Kutchancho, Abuta-gun",
+   "postalCode": "044-0082",
+   "addressCountry": "JPN",
+   "addressRegion": "Hokkaido Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_616": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/hakone/fufu-hakone-13389",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/hakone/fufu-hakone-13389",
+  "found": true,
+  "name": "Fufu Hakone in Hakonemachi, Ashigarashimo-gun",
+  "telephone": "+810460-87-0523 // +81 0557-86-3646 (central rsvn) // +81 570-0117-22",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "1320-807 Gora",
+   "addressLocality": "Hakonemachi, Ashigarashimo-gun",
+   "postalCode": "250-0408",
+   "addressCountry": "JPN",
+   "addressRegion": "Kanagawa Prefecture"
+  },
+  "page_country": "JP",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
  "hotel_1892": {
   "status": "200",
   "final": "https://guide.michelin.com/en/hotels-stays/puerto-vallarta/xinalani-8418",
@@ -3173,6 +3448,990 @@
    "postalCode": "62520",
    "addressCountry": "MEX",
    "addressRegion": "Morelos"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1912": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/acapulco/banyan-tree-cabo-marques-6871",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/acapulco/banyan-tree-cabo-marques-6871",
+  "found": true,
+  "name": "Banyan Tree Cabo Marqués in Acapulco",
+  "telephone": "+ 52 744 434 0100",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Blvd. Cabo Marqués, Lote 1, Col. Punta Diamente",
+   "addressLocality": "Acapulco",
+   "postalCode": "39907",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1913": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/puebla/banyan-tree-puebla-12458",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/puebla/banyan-tree-puebla-12458",
+  "found": true,
+  "name": "Banyan Tree Puebla in Puebla",
+  "telephone": "+52 222 122 2300",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "10 Norte #1402, Col. Barrio del Alto",
+   "addressLocality": "Puebla",
+   "postalCode": "72000",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1914": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/tulum/be-destination-tulum-5607",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/tulum/be-destination-tulum-5607",
+  "found": true,
+  "name": "BE Destination Tulum in Tulum",
+  "telephone": "+52 984 803 2243 | direct to property: +52 984 689 0577",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Carr. Tulum-Boca Paila, Km.10",
+   "addressLocality": "Tulum",
+   "postalCode": "77780",
+   "addressCountry": "MEX",
+   "addressRegion": "Riviera Maya"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1915": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/puerto-vallarta/bellview-boutique-hotel-11969",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/puerto-vallarta/bellview-boutique-hotel-11969",
+  "found": true,
+  "name": "BellView Boutique Hotel in Puerto Vallarta",
+  "telephone": "+52 322 688 6269",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Calle Miramar 363 B, Centro",
+   "addressLocality": "Puerto Vallarta",
+   "postalCode": "48300",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1916": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/bacalar/boca-de-agua-bacalar-13524",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/bacalar/boca-de-agua-bacalar-13524",
+  "found": true,
+  "name": "Boca de Agua Bacalar in Bacalar",
+  "telephone": "(+52) 983 137 8187",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "KM 4.5 Cancun - Chetumal",
+   "addressLocality": "Bacalar",
+   "postalCode": "77963",
+   "addressCountry": "MEX",
+   "addressRegion": "Yucatan Peninsula"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1917": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/mexico-city/brick-hotel-12727",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/mexico-city/brick-hotel-12727",
+  "found": true,
+  "name": "Brick Hotel in Mexico City",
+  "telephone": "+52 55 9155 7610",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Orizba 95",
+   "addressLocality": "Mexico City",
+   "postalCode": "06700",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1919": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/zihuatanejo/cala-de-mar-resort-spa-ixtapa-6355",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/zihuatanejo/cala-de-mar-resort-spa-ixtapa-6355",
+  "found": true,
+  "name": "Cala de Mar Resort & Spa Ixtapa in Zihuatanejo",
+  "telephone": "+52 755 55 51100",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "S/N Paseo Punta Ixtapa",
+   "addressLocality": "Zihuatanejo",
+   "postalCode": "40884",
+   "addressCountry": "MEX",
+   "addressRegion": "Guerrero"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_1922": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/bacalar/casa-hormiga-11832",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/bacalar/casa-hormiga-11832",
+  "found": true,
+  "name": "Casa Hormiga in Bacalar",
+  "telephone": "+529831019124 / +52 983 120 5655",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Av. 3 Corner Calle 32, Col. Mario Villanueva",
+   "addressLocality": "Bacalar",
+   "postalCode": "77930",
+   "addressCountry": "MEX",
+   "addressRegion": "Yucatan Peninsula"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1929": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/playa-del-carmen/chable-maroma-8970",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/playa-del-carmen/chable-maroma-8970",
+  "found": true,
+  "name": "Chablé Maroma in Playa del Carmen",
+  "telephone": "+52 998 387 0044",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Camino predio",
+   "addressLocality": "Playa del Carmen",
+   "postalCode": "77710",
+   "addressCountry": "MEX",
+   "addressRegion": "Riviera Maya"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_1930": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/mexico-city/colima-71-casa-de-arte-hotel-13356",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/mexico-city/colima-71-casa-de-arte-hotel-13356",
+  "found": true,
+  "name": "Colima 71 - Casa de Arte Hotel in Mexico City",
+  "telephone": "+52 55 9962 9238",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Colima No. 71, Col. Roma Norte",
+   "addressLocality": "Mexico City",
+   "postalCode": "06700",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1932": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/todos-santos/desierto-azul-14332",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/todos-santos/desierto-azul-14332",
+  "found": true,
+  "name": "Desierto Azul in Todos Santos",
+  "telephone": "+526122332789",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Las Playitas, Colonia Las Tunas",
+   "addressLocality": "Todos Santos",
+   "postalCode": "23300",
+   "addressCountry": "MEX",
+   "addressRegion": "Baja California Sur"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_1933": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/Ensenada/el-cielo-resort-15017",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/Ensenada/el-cielo-resort-15017",
+  "found": true,
+  "name": "El Cielo Resort Valle de Guadalupe in Ensenada",
+  "telephone": "+52 646 978 0011",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Carretera El Tigre-El Porvenir Km 7.5 Parcela 117, El Porvenir, Valle de Guadalupe",
+   "addressLocality": "Ensenada",
+   "postalCode": "22755",
+   "addressCountry": "MEX",
+   "addressRegion": "Baja California"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1934": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/merida/galopina-17034",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/merida/galopina-17034",
+  "found": true,
+  "name": "Galopina in Mérida",
+  "telephone": "+52 999 638 8437",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Carretera Seye - Acancéh, Supermanzana Tablaje Catastral 3096",
+   "addressLocality": "Mérida",
+   "postalCode": "97570",
+   "addressCountry": "MEX",
+   "addressRegion": "Yucatan Peninsula"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1942": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/merida/hotel-cigno-12964",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/merida/hotel-cigno-12964",
+  "found": true,
+  "name": "Hotel CIGNO in Mérida",
+  "telephone": "+52 999 479 9724",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "C. 66 593, Barrio de la Ermita",
+   "addressLocality": "Mérida",
+   "postalCode": "97000",
+   "addressCountry": "MEX",
+   "addressRegion": "Yucatan Peninsula"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1944": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/todos-santos/hotel-san-cristobal-8518",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/todos-santos/hotel-san-cristobal-8518",
+  "found": true,
+  "name": "Hotel San Cristóbal in Todos Santos",
+  "telephone": "855-227-1535; 1 855 227 1535",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "N° Km 54+, México 19",
+   "addressLocality": "Todos Santos",
+   "postalCode": "23300",
+   "addressCountry": "MEX",
+   "addressRegion": "Baja California Sur"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1945": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/merida/hotel-sevilla-15571",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/merida/hotel-sevilla-15571",
+  "found": true,
+  "name": "Hotel Sevilla in Mérida",
+  "telephone": "+52 999-9647025",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "62nd Street 511",
+   "addressLocality": "Mérida",
+   "postalCode": "97000",
+   "addressCountry": "MEX",
+   "addressRegion": "Yucatan Peninsula"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1948": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/san-miguel-de-allende/lotel-casa-arca-8449",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/san-miguel-de-allende/lotel-casa-arca-8449",
+  "found": true,
+  "name": "L'Ôtel - Casa Arca in San Miguel de Allende",
+  "telephone": "+52 415 154 7114",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Calle Relox 22, Centro",
+   "addressLocality": "San Miguel de Allende",
+   "postalCode": "37700",
+   "addressCountry": "MEX",
+   "addressRegion": "Guanajuato"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1953": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/mexico-city/maison-celeste-14458",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/mexico-city/maison-celeste-14458",
+  "found": true,
+  "name": "Maison Celeste in Mexico City",
+  "telephone": "+52 55 2769 8415",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Av. Yucatán 96, Roma Nte., Cuauhtémoc",
+   "addressLocality": "Mexico City",
+   "postalCode": "06700",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1956": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/tulum/naboa-hotel-tulum-15529",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/tulum/naboa-hotel-tulum-15529",
+  "found": true,
+  "name": "NABOA Hotel Tulum in Tulum",
+  "telephone": "+52 984 256 9972",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "C. 29 Pte. 29 Naboa",
+   "addressLocality": "Tulum",
+   "postalCode": "77765",
+   "addressCountry": "MEX",
+   "addressRegion": "Riviera Maya"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1957": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/mexico-city/nima-local-house-hotel-spa-8575",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/mexico-city/nima-local-house-hotel-spa-8575",
+  "found": true,
+  "name": "Nima Local House Hotel & Spa in Mexico City",
+  "telephone": "+52 55 7591 7175",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Colima 236",
+   "addressLocality": "Mexico City",
+   "postalCode": "06700",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1960": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/isla-holbox/nomade-temple-holbox-13802",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/isla-holbox/nomade-temple-holbox-13802",
+  "found": true,
+  "name": "Nômade Temple Holbox in Isla Holbox",
+  "telephone": "+18552712843",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "C. Caracol",
+   "addressLocality": "Isla Holbox",
+   "postalCode": "77310",
+   "addressCountry": "MEX",
+   "addressRegion": "Riviera Maya"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_1961": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/mexico-city/octavia-casa-13685",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/mexico-city/octavia-casa-13685",
+  "found": true,
+  "name": "OCTAVIA CASA in Mexico City",
+  "telephone": "+525554166350",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Amatlan 126, Condesa",
+   "addressLocality": "Mexico City",
+   "postalCode": "06107",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1962": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/bacalar/our-habitas-bacalar-12562",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/bacalar/our-habitas-bacalar-12562",
+  "found": true,
+  "name": "Our Habitas Bacalar in Bacalar",
+  "telephone": "+52 983 123 4141",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Carretera Federal Chetumal-Bacalar Fraccion 03, Lote 164",
+   "addressLocality": "Bacalar",
+   "postalCode": "77963",
+   "addressCountry": "MEX",
+   "addressRegion": "Yucatan Peninsula"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1963": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/todos-santos/paradero-todos-santos-12164",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/todos-santos/paradero-todos-santos-12164",
+  "found": true,
+  "name": "Paradero Todos Santos – Exclusive Experiences in Todos Santos",
+  "telephone": "+52 55 7005 5094",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Degollado, Carretera Todos Santos - Cabo San Lucas, El Pescadero",
+   "addressLocality": "Todos Santos",
+   "postalCode": "23300",
+   "addressCountry": "MEX",
+   "addressRegion": "Baja California Sur"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_1969": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/punta-de-mita/st-regis-punta-mita-resort-13686",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/punta-de-mita/st-regis-punta-mita-resort-13686",
+  "found": true,
+  "name": "St. Regis Punta Mita Resort in Punta de Mita",
+  "telephone": "52-329-291 5800",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Lote H-4 Cond. Maestro Ramal, Carretera Federal 200, Km 19.5",
+   "addressLocality": "Punta de Mita",
+   "postalCode": "63734",
+   "addressCountry": "MEX",
+   "addressRegion": "Nayarit"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1970": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/los-cabos/the-cape-a-thompson-hotel-7933",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/los-cabos/the-cape-a-thompson-hotel-7933",
+  "found": true,
+  "name": "The Cape, a Thompson Hotel in Los Cabos",
+  "telephone": "+52 624 163 0000",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Carretera Transpeninsular Km 5, Misiones del Cabo",
+   "addressLocality": "Los Cabos",
+   "postalCode": "23410",
+   "addressCountry": "MEX",
+   "addressRegion": "Baja California Sur"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1971": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/playa-del-carmen/the-st-regis-kanai-resort-riviera-maya-13184",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/playa-del-carmen/the-st-regis-kanai-resort-riviera-maya-13184",
+  "found": true,
+  "name": "The St. Regis Kanai Resort, Riviera Maya in Playa del Carmen",
+  "telephone": "+52 984-1224800",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Paseo Kanai 15",
+   "addressLocality": "Playa del Carmen",
+   "postalCode": "77730",
+   "addressCountry": "MEX",
+   "addressRegion": "Riviera Maya"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1974": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/merida/treehouse-boutique-hotel-11989",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/merida/treehouse-boutique-hotel-11989",
+  "found": true,
+  "name": "TreeHouse Boutique Hotel in Mérida",
+  "telephone": "+52 (999) 268 1456",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "#489 C. 43, 58 y 60",
+   "addressLocality": "Mérida",
+   "postalCode": "97000",
+   "addressCountry": "MEX",
+   "addressRegion": "Yucatan Peninsula"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode"
+ },
+ "hotel_1975": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/mexico-city/uma-casa-14467",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/mexico-city/uma-casa-14467",
+  "found": true,
+  "name": "UMA Casa in Mexico City",
+  "telephone": "5626900472",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Monte Himalaya 105, Lomas de Chapultepec, Miguel Hidalgo",
+   "addressLocality": "Mexico City",
+   "postalCode": "11000",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1979": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/mexico-city/volga-13078",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/mexico-city/volga-13078",
+  "found": true,
+  "name": "Volga in Mexico City",
+  "telephone": "+525579247894 / +525590375200 / +525576537130",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Río Volga 105, Cuauhtémoc",
+   "addressLocality": "Mexico City",
+   "postalCode": "06500",
+   "addressCountry": "MEX"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "hotel_1980": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/hotels-stays/cancun/waldorf-astoria-riviera-maya-13140",
+  "canonical": "https://guide.michelin.com/en/hotels-stays/cancun/waldorf-astoria-riviera-maya-13140",
+  "found": true,
+  "name": "Waldorf Astoria Riviera Maya in Cancun",
+  "telephone": "+529984320350",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Carr Federal Libre 307",
+   "addressLocality": "Cancun",
+   "postalCode": "ROO 77580",
+   "addressCountry": "MEX",
+   "addressRegion": "Riviera Maya"
+  },
+  "page_country": "MX",
+  "website": null,
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3269": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/baja-california-sur/cabo-san-lucas_2059129/restaurant/cocina-de-autor-los-cabos",
+  "canonical": "https://guide.michelin.com/en/baja-california-sur/cabo-san-lucas_2059129/restaurant/cocina-de-autor-los-cabos",
+  "found": true,
+  "name": "Cocina de Autor Los Cabos",
+  "telephone": "+52 322 176 0227",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Grand Velas Los Cabos, Carr. Transpeninsular Km. 17, San José del Cabo, Corredor Turístico",
+   "addressLocality": "Cabo San Lucas",
+   "postalCode": "23405",
+   "addressCountry": "MEX",
+   "addressRegion": "Baja California Sur"
+  },
+  "page_country": "MX",
+  "website": "https://loscabos.grandvelas.com/dining/cocina-de-autor",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3270": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/quintana-roo/playa-del-carmen_2068368/restaurant/cocina-de-autor-riviera-maya",
+  "canonical": "https://guide.michelin.com/en/quintana-roo/playa-del-carmen_2068368/restaurant/cocina-de-autor-riviera-maya",
+  "found": true,
+  "name": "Cocina de Autor Riviera Maya",
+  "telephone": "+52 984 877 4400",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Grand Velas, Carr. Cancún - Tulum Km 62, Playa del Carmen",
+   "addressLocality": "Playa del Carmen",
+   "postalCode": "77710",
+   "addressCountry": "MEX",
+   "addressRegion": "Quintana Roo"
+  },
+  "page_country": "MX",
+  "website": "https://rivieramaya.grandvelas.com/dining/cocina-de-autor",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3274": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/esquina-comun",
+  "canonical": "https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/esquina-comun",
+  "found": true,
+  "name": "Esquina Común",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Fernando Montes De Oca, 86, Condesa",
+   "addressLocality": "Cuauhtémoc",
+   "postalCode": "06140",
+   "addressCountry": "MEX",
+   "addressRegion": "Ciudad de México"
+  },
+  "page_country": "MX",
+  "website": "https://www.instagram.com/esquinacomun?igsh=YzVjaTkzOGZzbjB5",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3275": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/expendio-de-maiz",
+  "canonical": "https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/expendio-de-maiz",
+  "found": true,
+  "name": "Expendio de Maíz",
+  "telephone": "+52 55 6508 2722",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Av. Yucatán 84, Roma Norte",
+   "addressLocality": "Cuauhtémoc",
+   "postalCode": "06700",
+   "addressCountry": "MEX",
+   "addressRegion": "Ciudad de México"
+  },
+  "page_country": "MX",
+  "website": "https://www.expendiodemaizsinnombre.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3276": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/gaba",
+  "canonical": "https://guide.michelin.com/en/ciudad-de-mexico/cuauhtemoc_1995126/restaurant/gaba",
+  "found": true,
+  "name": "Gaba",
+  "telephone": "+55 9107 8494",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Av. Mazatlán 190, Colonia Condesa",
+   "addressLocality": "Cuauhtémoc",
+   "postalCode": "06170",
+   "addressCountry": "MEX",
+   "addressRegion": "Ciudad de México"
+  },
+  "page_country": "MX",
+  "website": "https://gabarestaurante.com/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3278": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/yucatan/chochola_2067346/restaurant/ixi-im",
+  "canonical": "https://guide.michelin.com/en/yucatan/chochola_2067346/restaurant/ixi-im",
+  "found": true,
+  "name": "Ixi'im",
+  "telephone": "+52 999 747 1386",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Chablé Yucatán, Tablaje #642, San Antonio Chablé",
+   "addressLocality": "Chocholá",
+   "postalCode": "97816",
+   "addressCountry": "MEX",
+   "addressRegion": "Yucatan"
+  },
+  "page_country": "MX",
+  "website": "https://yucatan.chablehotels.com/cuisine/ixiim/",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3279": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/nuevo-leon/monterrey_2041973/restaurant/koli-cocina-de-origen",
+  "canonical": "https://guide.michelin.com/en/nuevo-leon/monterrey_2041973/restaurant/koli-cocina-de-origen",
+  "found": true,
+  "name": "KOLI Cocina de Origen",
+  "telephone": "+52 81 9688 7333",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Río Amazonas 225, Colonia Del Valle",
+   "addressLocality": "Monterrey",
+   "postalCode": "66220",
+   "addressCountry": "MEX",
+   "addressRegion": "Nuevo León"
+  },
+  "page_country": "MX",
+  "website": "https://www.koli.mx",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3280": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/yucatan/merida_2068208/restaurant/la-barra-de-huniik",
+  "canonical": "https://guide.michelin.com/en/yucatan/merida_2068208/restaurant/la-barra-de-huniik",
+  "found": true,
+  "name": "La Barra de Huniik",
+  "telephone": "+52 961 162 3881",
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "C. 60 417, Parque Santa Ana, Centro",
+   "addressLocality": "Mérida",
+   "postalCode": "97000",
+   "addressCountry": "MEX",
+   "addressRegion": "Yucatan"
+  },
+  "page_country": "MX",
+  "website": "https://www.instagram.com/labarradehuniik?igsh=dmN4Z3lsMDN5cGY5",
+  "stay_hotels": [],
+  "address_agrees": [
+   "postcode",
+   "street"
+  ],
+  "identity_ok": true,
+  "identity_note": "address agrees: postcode+street"
+ },
+ "rest_3281": {
+  "status": "200",
+  "final": "https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/la-once-mil",
+  "canonical": "https://guide.michelin.com/en/ciudad-de-mexico/miguel-hidalgo_1999281/restaurant/la-once-mil",
+  "found": true,
+  "name": "La Once Mil",
+  "telephone": null,
+  "address": {
+   "@type": "PostalAddress",
+   "streetAddress": "Monte Everest 780, Lomas de Chapultepec",
+   "addressLocality": "Miguel Hildalgo",
+   "postalCode": "11000",
+   "addressCountry": "MEX",
+   "addressRegion": "Ciudad de México"
   },
   "page_country": "MX",
   "website": null,
