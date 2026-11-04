@@ -119,7 +119,7 @@ update public.restaurants x set phone = f.phone, updated_at = now()
 update public.restaurants x set website_url = f.website, updated_at = now()
   from _fill_restaurant f where x.restaurant_code = f.code and f.website is not null and x.website_url is null;
 
--- hotels: 60 rows (59 Place IDs, 49 phones, 17 websites)
+-- hotels: 61 rows (59 Place IDs, 50 phones, 18 websites)
 create temp table _fill_hotel (code text primary key, name text not null, place_id text unique, phone text, website text) on commit drop;
 insert into _fill_hotel values
     ('hotel_1517', 'Beverly Wilshire, Beverly Hills (A Four Seasons Hotel)', 'ChIJz-22Hfm7woARmoLOmvYW4J0', '+1 310 275 5200', NULL),
@@ -146,7 +146,7 @@ insert into _fill_hotel values
     ('hotel_1654', 'Four Seasons Resort Oahu at Ko Olina', 'ChIJ1XDUJbxiAHwRPmdoXJkLaXc', '+1 808 679 0079', NULL),
     ('hotel_1655', 'Four Seasons Resort Palm Beach', 'ChIJ-QQHE8TZ2IgREeYVGXlMFaU', '+1 561 582 2800', NULL),
     ('hotel_1657', 'Four Seasons Vail', 'ChIJ-Q664WhwaocR2r-q1oanbNM', '+1 970 477 8600', NULL),
-    ('hotel_1658', 'Goldener Hirsch, Auberge Collection', 'ChIJW0lLvtlyUocRlTzMQiuMFoA', NULL, NULL),
+    ('hotel_1658', 'Goldener Hirsch, Auberge Collection', 'ChIJW0lLvtlyUocRlTzMQiuMFoA', NULL, 'https://auberge.com/goldener-hirsch/'),
     ('hotel_1672', 'Hotel Daphne', 'ChIJUTPOPQDHQIYRMsGkWdhvlrA', '+1 346 601 1099', NULL),
     ('hotel_1681', 'Hotel Saint Augustine', 'ChIJE9thT57BQIYRKKURG2AK59U', '+1 832 844 0057', NULL),
     ('hotel_1690', 'Inn at Thorn Hill', 'ChIJyW7ZyleYs0wRf4-KjZYZ3_g', '+1 603 383 4242', NULL),
@@ -154,6 +154,7 @@ insert into _fill_hotel values
     ('hotel_1697', 'Le Petit Pali Brentwood', 'ChIJ6Y4ZyaC9woARhQfbQbHzGR4', '+1 310 400 0080', 'https://www.lepetitpali.com/locations/brentwood'),
     ('hotel_1699', 'Lotte Hotel Seattle', 'ChIJl3yvuRJrkFQRa1ze_XPfDFo', NULL, NULL),
     ('hotel_1700', 'Lumière by Dunton', 'ChIJ5TIIgwXYPocRP4mX3NIkb_c', NULL, 'https://www.duntondestinations.com/lumiere'),
+    ('hotel_1705', 'Mayflower Inn & Spa, Auberge Collection', NULL, '+1 860 868 9466', NULL),
     ('hotel_1709', 'Montage Deer Valley', 'ChIJX4wqEkJzUocROz0EtRH_Q4o', '+1 435 604 1300', 'https://www.montage.com/deervalley/'),
     ('hotel_1719', 'Park Hyatt Chicago', 'ChIJeQOqg1PTD4gRc2VKeAYbq1M', '+1 312 335 1234', NULL),
     ('hotel_1720', 'Pendry Baltimore', 'ChIJXTD2CoEDyIkR8Nxs8o-wpOM', '+1 443 552 1400', 'https://www.pendry.com/baltimore/'),

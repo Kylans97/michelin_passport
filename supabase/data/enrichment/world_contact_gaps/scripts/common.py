@@ -14,8 +14,8 @@ BLOCKED = ('opentable.', 'resy.com', 'exploretock.com', 'tock.com', 'sevenrooms.
            'yanolja.', 'catchtable.', 'chope.co', 'quandoo.', 'zenchef.', 'formitable.', 'covermanager.', 'resdiary.', 'bookatable.',
            'wa.me', 'whatsapp.com', 'linkin.bio', 'beacons.ai', 'carrd.co', 'business.site', 'inline.app', 'eztable.',
            'mr-gourmet', 'reserve.', 'reservations.', 'res.', 'secure.', 'be.synxis.com', 'synxis.com', 'mews.', 'simplebooking.',
-           'tablelog', 'yoyaku', 'ebica.jp', 'gourmet.yahoo', 'travel.rakuten', 'relux.jp', 'ikyu', 'jtb.co.jp', 'rurubu', 'hitosara',
-           'openrice.com', 'gorp.jp', 'myconciergejapan.net', 'tableall.com', 'pocket-concierge.jp', 'omakase.', 'favy.jp', 'savorjapan', 'ikkyu', 'byfood.com', 'tablecheck.', 'restaurant.ikyu', 'ozmall.co.jp', 'yelp', 'zomato.', 'resengo.', 'bookings.', 'book.', 'booking.', 'uber', 'doordash', 'grubhub', 'deliveroo', 'foodpanda', 'eatigo', 'pinterest.', 'linkedin.', 'xiaohongshu')
+           'ebica.jp', 'gourmet.yahoo', 'travel.rakuten', 'relux.jp', 'jtb.co.jp', 'rurubu', 'hitosara',
+           'openrice.com', 'gorp.jp', 'myconciergejapan.net', 'tableall.com', 'pocket-concierge.jp', 'omakase.in', 'favy.jp', 'savorjapan', 'byfood.com', 'tablecheck.', 'restaurant.ikyu', 'ozmall.co.jp', 'yelp', 'zomato.', 'resengo.', 'bookings.', 'book.', 'booking.', 'ubereats.com', 'doordash', 'grubhub', 'deliveroo', 'foodpanda', 'eatigo', 'pinterest.', 'linkedin.', 'xiaohongshu')
 SECOND_LEVEL = {'co', 'com', 'net', 'org', 'ne', 'or', 'ac', 'gr', 'go', 'ed', 'lg', 'gov', 'edu'}
 
 

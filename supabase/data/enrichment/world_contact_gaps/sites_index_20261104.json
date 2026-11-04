@@ -16924,5 +16924,170 @@
   "file": "2f91322ca305d35c1a950565b78187ea2b725b58",
   "fetched_at": "2026-11-04T22:55:12Z",
   "subpages": []
+ },
+ "https://fr.auberge.com/domaine-des-etangs/dine/": {
+  "status": "421",
+  "final": "https://fr.auberge.com/domaine-des-etangs/dine/",
+  "length": 20,
+  "file": "d36343a81aa13611f4d519bbb026ce4810f8dd5d",
+  "fetched_at": "2026-11-04T23:00:51Z",
+  "subpages": []
+ },
+ "https://yoyaku.at/syarikimon_onozawa": {
+  "status": "403",
+  "final": "https://omakase.in/r/cv507062",
+  "length": 5660,
+  "file": "ccf676bf5da0a0f424f15fbce35db2810c95f4ff",
+  "fetched_at": "2026-11-04T23:00:52Z",
+  "subpages": []
+ },
+ "https://auberge.com/mayflower/": {
+  "status": "200",
+  "final": "https://auberge.com/mayflower/",
+  "length": 223385,
+  "file": "497d4790b38c2380afaa4b090f7ca96cf4beb351",
+  "fetched_at": "2026-11-04T23:00:51Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://reserve.auberge.com/?chain=16237&hotel=25783&level=chain&config=initial",
+    "length": 572667,
+    "file": "d344633189b1f2b8940506df8f06671f56d16d64",
+    "fetched_at": "2026-11-04T23:00:53Z",
+    "url": "https://reserve.auberge.com?chain=16237&hotel=25783&level=chain&config=initial"
+   },
+   {
+    "status": "200",
+    "final": "https://auberge.com/mayflower/hotel-accessibility/",
+    "length": 142877,
+    "file": "ad4c2838e1dc508674e5e6a8c0ace67961863a4a",
+    "fetched_at": "2026-11-04T23:00:53Z",
+    "url": "https://auberge.com/mayflower/hotel-accessibility/"
+   },
+   {
+    "status": "200",
+    "final": "https://reserve.auberge.com/?adult=2&arrive=2025-11-23&chain=16237&child=0&currency=USD&depart=2025-11-26&hotel=25783&level=chain&locale=en-US&productcurrency=USD&promo=SPA24&rooms=1",
+    "length": 572889,
+    "file": "23d3f5d1093fcfe00ca850dcafa22252ddc06635",
+    "fetched_at": "2026-11-04T23:00:54Z",
+    "url": "https://reserve.auberge.com/?adult=2&arrive=2025-11-23&chain=16237&child=0&currency=USD&depart=2025-11-26&hotel=25783&level=chain&locale=en-US&productcurrency=USD&promo=SPA24&rooms=1"
+   }
+  ]
+ },
+ "https://auberge.com/stanly-ranch//": {
+  "status": "200",
+  "final": "https://auberge.com/stanly-ranch//",
+  "length": 252827,
+  "file": "693274d229fea387d96ce79746daca48c1f2d78c",
+  "fetched_at": "2026-11-04T23:00:51Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://reserve.auberge.com/?chain=16237&hotel=32989&level=chain&config=initial",
+    "length": 571809,
+    "file": "78d4553f4009bf4bfabc9271ffe73470a64cb18c",
+    "fetched_at": "2026-11-04T23:00:53Z",
+    "url": "https://reserve.auberge.com?chain=16237&hotel=32989&level=chain&config=initial"
+   },
+   {
+    "status": "200",
+    "final": "https://auberge.com/stanly-ranch/hotel-accessibility/",
+    "length": 158623,
+    "file": "9f554b7c30efd30cf7d1d8929a1461a73d1918f6",
+    "fetched_at": "2026-11-04T23:00:53Z",
+    "url": "https://auberge.com/stanly-ranch/hotel-accessibility/"
+   },
+   {
+    "status": "200",
+    "final": "https://reserve.auberge.com/?chain=16237&hotel=32989&level=chain&nights=4",
+    "length": 571781,
+    "file": "9e439e4546911bbc096269f7b5141b1091dea0c2",
+    "fetched_at": "2026-11-04T23:00:54Z",
+    "url": "https://reserve.auberge.com/?chain=16237&hotel=32989&level=chain&nights=4"
+   }
+  ]
+ },
+ "https://auberge.com/goldener-hirsch/": {
+  "status": "200",
+  "final": "https://auberge.com/goldener-hirsch/",
+  "length": 319132,
+  "file": "f727f3a1107838fd18d987c943c646c9ee7662bf",
+  "fetched_at": "2026-11-04T23:00:52Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://reserve.auberge.com/?chain=16237&hotel=36485&level=chain&arrive=2026-11-30&nights=2",
+    "length": 575976,
+    "file": "3c39bcc08418556bf763cc4b4523ae3d468e86c1",
+    "fetched_at": "2026-11-04T23:00:53Z",
+    "url": "https://reserve.auberge.com/?chain=16237&hotel=36485&level=chain&arrive=2026-11-30&nights=2"
+   },
+   {
+    "status": "200",
+    "final": "https://reserve.auberge.com/?chain=16237&hotel=36485&level=chain&config=initial",
+    "length": 575958,
+    "file": "2d654a137dfdfe40956779eb5cd085da21348ad8",
+    "fetched_at": "2026-11-04T23:00:54Z",
+    "url": "https://reserve.auberge.com?chain=16237&hotel=36485&level=chain&config=initial"
+   },
+   {
+    "status": "200",
+    "final": "https://auberge.com/goldener-hirsch/hotel-information/",
+    "length": 270073,
+    "file": "5a3415bb8f2c49c4ac3f8d43983675f6849175a3",
+    "fetched_at": "2026-11-04T23:00:55Z",
+    "url": "https://auberge.com/goldener-hirsch/hotel-information/"
+   }
+  ]
+ },
+ "http://omakase.eu/": {
+  "status": "200",
+  "final": "https://omakase.eu/",
+  "length": 122809,
+  "file": "9f9d5aa8665300e133224d94890f1bd6c18c6220",
+  "fetched_at": "2026-11-04T23:00:54Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://omakase.eu/info/",
+    "length": 120969,
+    "file": "1bd2e7e698a296f1e0749a46e54797b8645ecb11",
+    "fetched_at": "2026-11-04T23:00:55Z",
+    "url": "https://omakase.eu/info/"
+   },
+   {
+    "status": "200",
+    "final": "https://omakase.eu/reservation-restaurant/",
+    "length": 152280,
+    "file": "958c494fadb946b0c29bcecbf9c7cc4609b951e6",
+    "fetched_at": "2026-11-04T23:00:57Z",
+    "url": "https://omakase.eu/reservation-restaurant/"
+   }
+  ]
+ },
+ "https://omakase.eu/": {
+  "status": "200",
+  "final": "https://omakase.eu/",
+  "length": 122809,
+  "file": "9666f93149c0d3fe20031dffc8c65d4f10e5d479",
+  "fetched_at": "2026-11-04T23:00:54Z",
+  "subpages": [
+   {
+    "status": "200",
+    "final": "https://omakase.eu/info/",
+    "length": 120969,
+    "file": "1bd2e7e698a296f1e0749a46e54797b8645ecb11",
+    "fetched_at": "2026-11-04T23:00:55Z",
+    "url": "https://omakase.eu/info/"
+   },
+   {
+    "status": "200",
+    "final": "https://omakase.eu/reservation-restaurant/",
+    "length": 152280,
+    "file": "958c494fadb946b0c29bcecbf9c7cc4609b951e6",
+    "fetched_at": "2026-11-04T23:00:57Z",
+    "url": "https://omakase.eu/reservation-restaurant/"
+   }
+  ]
  }
 }

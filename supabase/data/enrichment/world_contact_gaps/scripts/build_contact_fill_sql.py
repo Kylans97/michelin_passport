@@ -79,6 +79,9 @@ head = f"""-- PREPARED -- NOT APPLIED.
 begin;
 """
 if not blocks:
+    import os
+    if os.path.exists(OUT):
+        os.remove(OUT)  # a stale file from an earlier build must not survive
     print('nothing to write for', CC)
     sys.exit(0)
 open(OUT, 'w').write(head + '\n\n'.join(blocks) + '\n\ncommit;\n')

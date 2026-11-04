@@ -1,2 +1,2 @@
-{"file": "prepared_us_contact_fill.sql", "apply": true, "values_written": 230, "rerun_noop": true, "renamed_row": "rest_0737", "rename_aborts": true, "error": ""}
-{"all_files_in_sequence": true, "filled_total": 1118}
+{"file": "prepared_us_contact_fill.sql", "apply": true, "values_written": 232, "rerun_noop": true, "renamed_row": "rest_0737", "rename_aborts": true, "error": ""}
+{"all_files_in_sequence": true, "filled_total": 1120}
