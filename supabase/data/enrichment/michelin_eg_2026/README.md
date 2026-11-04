@@ -1,6 +1,6 @@
 # Egypte: MICHELIN Key-hotels (2026-11-04)
 
-Status: **getest op een scratch-database, nog niet toegepast op productie.**
+Status: **TOEGEPAST op 2026-11-04**, op verzoek van de product owner. Ledger 150, lokaal en remote gelijk. Elke rij is daarna vergeleken met een nieuwe export (`_source/production_after_apply_20261104.json`): 13 rijen, geen verschillen. Totalen: hotels +13, award-rijen +13, plaatsen +7, landen +1.
 
 Productie had geen enkele Egyptische rij: geen land, plaats, hotel of restaurant. Egypte heeft 13 Key-hotels (0/2/11) en geen sterrenlijst: `/en/eg/restaurants/all-starred` geeft 404.
 

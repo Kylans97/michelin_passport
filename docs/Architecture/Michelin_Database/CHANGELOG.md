@@ -6,6 +6,21 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-04 — Egypt: MICHELIN Key hotels 2026 (QA-460)
+
+| | |
+|---|---|
+| Applied | 2026-11-04, to production, at the product owner's request, from `claude/michelin-eg-2026` |
+| Migration | `20261101370000_add_eg_2026_country_and_cities.sql` (country EG, 7 towns). Plain `supabase db push --linked`; ledger 149 → 150, local and remote in agreement |
+| Data file | `michelin_eg_2026/prepared_eg_2026.sql`. One transaction, every check passed |
+| Rows | 13 Key hotels (`hotel_3121`–`hotel_3133`), `guide_year` 2026, announced 2026-09-18. Production held no Egyptian row before |
+
+**Checked after the apply**, row by row against `michelin_eg_2026/eg_key_hotels_2026.csv` (fresh export `_source/production_after_apply_20261104.json`): all 13 carry the staged name, Key, town, address, MICHELIN URL, pin and one current award row. Keys 0/2/11, equal to MICHELIN's live listing and its global Key article (Egypt 13). Totals moved by exactly the staged amounts: hotels +13, award rows +13, cities +7, countries +1.
+
+**Not written (QA-460):** no Place ID, phone or website. MICHELIN has no star listing for Egypt, so no restaurants and no links. MICHELIN's postal code 99999 on the St. Regis and the URL in Giza Palace's telephone field are left out.
+
+---
+
 # 2026-11-04 — Nine European countries: MICHELIN stars and Key hotels (QA-450–QA-459)
 
 | | |
