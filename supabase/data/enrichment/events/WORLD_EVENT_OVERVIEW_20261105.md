@@ -2,8 +2,10 @@
 
 **Status: onderzoek, niets toegepast.** Er is niets naar Supabase geschreven. Bestanden:
 
-- `world_event_overview_20261105.csv`: alle 217 kandidaten, gesorteerd.
+- `world_event_overview_20261105.csv`: alle 218 kandidaten, gesorteerd.
 - `_source/world_20261105/`: de ruwe onderzoeksregels per regio en de onderzoeksopdracht.
+
+`european_event_candidates_2026_2027.csv` bestaat niet in de repo. De kolommen volgen daarom de velden van `dutch_event_candidates_2026_2027.json` (de vorige kandidatenlijst), plus `timezone`, `tags`, `catalog_match`, `country_in_catalogue`, `already_in_production`, foto-, bron- en prioriteitsvelden.
 
 Periode: 3 november 2026 tot en met 31 december 2027, met de nadruk op de komende zes maanden. Opgesteld op 3–5 november 2026, op branch `claude/overnight-world-events`.
 
@@ -57,8 +59,8 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-017 | 2026-11-18 | Château d'Yquem Wine Dinner with Chef Anne-Sophie Pic | Bangkok, TH | Dinner | Wine, Winemaker, Guest Chef | A | high | geen catalogusmatch |
 | wev-018 | 2026-11-18 | 18. November: Gravner x Hiša Franko | Kobarid, SI | Dinner | Wine, Winemaker | A | high | rest_0424 |
 | wev-020 | 2026-11-19 t/m 2026-11-22 | Pair'd Margaret River Region 2026 | Margaret River, AU | Festival | Wine, Guest Chef | A | high | geen catalogusmatch |
-| wev-021 | 2026-11-20 | An extraordinary evening with Domaine Kuheiji (Kuheiji Dinner) | Amsterdam, NL | Dinner | Wine, Winemaker | A | high | rest_0119 |
 | wev-022 | 2026-11-20 | Château Palmer 4-Hands Dinner | Bray, GB | Dinner | Wine, Winemaker, Four Hands, Guest Chef | A | high | rest_2630 |
+| wev-023 | 2026-11-20 | Wayfinder x St JOHN, presented by Lexus | Margaret River, AU | Dinner | Wine, Winemaker, Guest Chef | A | high | geen catalogusmatch; voorgesteld: rest_2590 |
 
 ## Top 5 per regio
 
@@ -67,10 +69,10 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | id | datum | event | plaats | type | tags | bron | fit | catalogus |
 |---|---|---|---|---|---|---|---|---|
 | wev-016 | 2026-11-16 | Dîner de Gala de Charité 2026 au profit de la Banque Alimentaire Luxembourg | Luxembourg City, LU | Gala | Charity, Guest Chef | A | high | geen catalogusmatch |
-| wev-021 | 2026-11-20 | An extraordinary evening with Domaine Kuheiji (Kuheiji Dinner) | Amsterdam, NL | Dinner | Wine, Winemaker | A | high | rest_0119 |
 | wev-029 | 2026-11-25 | Truffelavond met Licata | Francorchamps, BE | Dinner | Wine, Winemaker | A | high | rest_0872 |
 | wev-043 | 2026-12-12 | YVESKE'S Kitchen at MASTERS EXPO - Dinner 12 Dec | Amsterdam, NL | Dinner | Guest Chef | A | high | rest_0016, rest_0025, rest_0030, rest_0069 |
-| wev-116 | 2026-11-07 t/m 2026-11-08 | Gary Gielen & Friends Dinner Show | Maastricht, NL | Party | – | A | low | hotel_05 |
+| wev-117 | 2026-11-07 t/m 2026-11-08 | Gary Gielen & Friends Dinner Show | Eijsden-Margraten, NL | Party | – | A | low | geen catalogusmatch |
+| wev-122 | 2026-11-22 | Club Leroy x Latour | Noordwijk aan Zee, NL | Lunch | – | A | low | rest_0785 |
 
 ### Zuid-Europa (25 kandidaten)
 
@@ -102,7 +104,7 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-011 | 2026-11-09 t/m 2026-11-15 | Saint Barth Gourmet Festival 2026 (13e édition) | Gustavia / Saint-Barthélemy, BL | Festival | Guest Chef | A | high | geen catalogusmatch |
 | wev-035 | 2026-12-06 t/m 2026-12-09 | By Land and Sea (Blackberry Farm) | Walland, US | Dinner | Guest Chef, Winemaker, Wine | A | high | rest_0755 |
 
-### Azië & Midden-Oosten (33 kandidaten)
+### Azië & Midden-Oosten (34 kandidaten)
 
 | id | datum | event | plaats | type | tags | bron | fit | catalogus |
 |---|---|---|---|---|---|---|---|---|
@@ -110,7 +112,7 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-010 | 2026-11-08 | XXVII World Alba White Truffle Auction dinner at Riva del Fiume Ristorante | Bangkok, TH | Gala | Guest Chef, Charity, Wine | A | high | geen catalogusmatch |
 | wev-017 | 2026-11-18 | Château d'Yquem Wine Dinner with Chef Anne-Sophie Pic | Bangkok, TH | Dinner | Wine, Winemaker, Guest Chef | A | high | geen catalogusmatch |
 | wev-042 | 2026-12-12 | An Evening with Château Cheval Blanc | Macau, MO | Dinner | Wine, Winemaker | A | high | rest_0434 |
-| wev-046 | 2026-12-26 t/m 2026-12-29 | An Exclusive Culinary Experience with Two-Star Michelin Chef Benjamin Peifer | Kandolhu Island (North Ari Atoll), MV | Dinner | Guest Chef | A | high | geen catalogusmatch |
+| wev-046 | 2026-12-26 | An Exclusive Culinary Experience with Two-Star Michelin Chef Benjamin Peifer | Kandolhu Island (North Ari Atoll), MV | Dinner | Guest Chef | A | high | geen catalogusmatch |
 
 ### Zuid-Amerika, Afrika & Oceanië (16 kandidaten)
 
@@ -120,18 +122,18 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-014 | 2026-11-13 | Jantar Magno Mesa SP 2026 – Grand Hyatt São Paulo | São Paulo, BR | Dinner | Guest Chef | A | high | geen catalogusmatch; voorgesteld: rest_0134, rest_1393 |
 | wev-020 | 2026-11-19 t/m 2026-11-22 | Pair'd Margaret River Region 2026 | Margaret River, AU | Festival | Wine, Guest Chef | A | high | geen catalogusmatch |
 | wev-023 | 2026-11-20 | Wayfinder x St JOHN, presented by Lexus | Margaret River, AU | Dinner | Wine, Winemaker, Guest Chef | A | high | geen catalogusmatch; voorgesteld: rest_2590 |
-| wev-065 | 2026-11-06 | Heritage Culinary Calendar 2026: Chef Cris Oberhammer & Anna Oberhammer | Bel Ombre, MU ⚠ land niet in countries | Dinner | Guest Chef | A | medium | geen catalogusmatch; voorgesteld: rest_2414 |
+| wev-066 | 2026-11-06 | Heritage Culinary Calendar 2026: Chef Cris Oberhammer & Anna Oberhammer | Bel Ombre, MU ⚠ land niet in countries | Dinner | Guest Chef | A | medium | geen catalogusmatch; voorgesteld: rest_2414 |
 
 ## Aantallen
 
-**Per land:** DE 47, US 28, NL 19, AT 16, SG 12, IT 8, CH 7, FR 7, TH 6, PT 6, BR 5, AU 5, MV 5, HK 4, CA 4, MU 4, GB 3, MO 3, (geen) 3, LU 2, BE 2, IE 2, DK 2, HU 2, MX 2, PE 1, BL 1, MC 1, SI 1, TR 1, AE 1, BH 1, JP 1, SE 1, ZA 1, KY 1, ES 1, IS 1
+**Per land:** DE 47, US 28, NL 19, AT 16, SG 12, IT 8, CH 7, FR 7, TH 6, MV 6, PT 6, BR 5, AU 5, HK 4, CA 4, MU 4, GB 3, MO 3, (geen) 3, LU 2, BE 2, IE 2, DK 2, HU 2, MX 2, PE 1, BL 1, MC 1, SI 1, TR 1, AE 1, BH 1, JP 1, SE 1, ZA 1, KY 1, ES 1, IS 1
 
 **Per maand (startdatum):**
 
 | maand | aantal |
 |---|---|
 | 2026-11 | 89 |
-| 2026-12 | 36 |
+| 2026-12 | 37 |
 | 2027-01 | 20 |
 | 2027-02 | 24 |
 | 2027-03 | 19 |
@@ -144,9 +146,9 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | 2027-12 | 1 |
 | zonder  | 9 |
 
-**Per prioriteit:** P0 79, P1 120, P2 18  
-**Per bronniveau:** A 179, B 19, C 19  
-**Per zekerheid:** confirmed 190, unclear 27
+**Per prioriteit:** P0 80, P1 120, P2 18  
+**Per bronniveau:** A 180, B 19, C 19  
+**Per zekerheid:** confirmed 189, unclear 29
 
 **Landen die niet in `countries` staan** (die moeten eerst worden toegevoegd): (geen), BH, KY, MU.
 
@@ -357,6 +359,32 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 - Spectrum (Waldorf Astoria Amsterdam) guest dinners (Benelux): restaurant closed May 2026 per secondary sources
 - F.A.Z. Lieblinge of the Year (Schloss Bensberg) (Noord-/Centraal-Europa): held back: page contradicts itself (banner 23 Jan 2027 vs details 24 Jan 2026 / title 2026); chefs unnamed
 - Traful Invita 2026 (Villa Traful, Argentina) (Zuid-Amerika, Afrika & Oceanië): Sept/Oct 2026 article; not verified as upcoming, secondary only, regional event
+
+## Controle
+
+- **Onafhankelijke steekproef (4 november 2026).** Een aparte agent opende de bronpagina van de 30 topkandidaten opnieuw, zonder de conclusies van de onderzoekers. Uitkomst:
+  - 30 van de 30 pagina's laden, en het event staat erop.
+  - Geen enkele datum of tijd is in strijd met de pagina, en niets is afgelast.
+  - Bij 2 rijen staat het jaar niet bij het event; die zijn naar `unclear` gezet (Claridge's, Kuheiji/Okura).
+  - De twee diners in Kandolhu zijn gesplitst in twee rijen.
+  - De plaats van Van Oys is gecorrigeerd naar Eijsden-Margraten.
+
+  De gecontroleerde rijen dragen in `notes` de tekst "independently re-checked". De overige rijen zijn alleen door de onderzoekende agent zelf geverifieerd.
+- **Correcties bij het samenvoegen:**
+  - Cuchara: het jaar was afgeleid uit het uploadpad van een afbeelding, dus `unclear`.
+  - Mesa SP: Maido en Evvai zijn alleen via de chefnaam gekoppeld, dus `PROPOSED` in plaats van geverifieerd.
+  - Noord-Amerika: `admission_type` was aangevuld met "paid" zonder bron; teruggezet naar `unknown`.
+  - Een stuk of veertig Noord-Amerikaanse rijen kwamen door een gedeeld hulpscript in het Azië-bestand terecht. Ze zijn verplaatst, en hun ontbrekende verificatievelden zijn per pagina opnieuw ingevuld.
+- **Datumgrens:** events die vóór 5 november 2026 eindigen, zijn bij het samenvoegen weggelaten als voorbij bij oplevering. Het gaat onder meer om de 50 Best-week in Lima en het truffeldiner bij Voltaire.
+
+## Te beslissen vóór het toevoegen
+
+1. **Landen die niet in `countries` staan:** Bahrein (BH), Kaaimaneilanden (KY) en Mauritius (MU). Die moeten eerst worden toegevoegd. Drie rijen van Four Seasons Yachts (cruises) hebben geen enkel land; dat past niet in het datamodel. Mijn advies: weglaten.
+2. **Residenties van meerdere dagen of weken in plaats van één avond:** Knystaforsen in Tivoli (zes weken), de Conrad Maldives Master Series, Atul Kochhar in Patina en Pic in Le Normandie. Passen die bij "eenmalig"?
+3. **Alleen voor hotelgasten:** de weekenden van Twin Farms en de residenties in de Malediven. Zichtbaar maken op de eventpagina?
+4. **Uitverkocht maar nog niet voorbij:** Monte-Carlo-gala, Lions-gala Luxemburg, Pair'd-diners, JBF Gala en 5 van de 7 sessies op MASTERS EXPO. Alleen tonen als er een wachtlijst is?
+5. **`PROPOSED`- en `AMBIGUOUS`-koppelingen:** die zijn gevonden via naam, plaats en land, nooit als besluit. Elke koppeling moet op code plus land worden bevestigd vóór het toevoegen.
+6. **Bron C (secundair):** die horen er pas in als de venue het event zelf publiceert, bijvoorbeeld RIJKS × Jessica Rosval en GEM × OAK.
 
 ## Dekking per regio: wat wel, deels en niet is doorzocht
 
