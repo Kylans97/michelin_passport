@@ -6,6 +6,63 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-04 — Nine European countries: MICHELIN stars and Key hotels (QA-450–QA-459)
+
+| | |
+|---|---|
+| Applied | 2026-11-04, to production, at the product owner's request, from `claude/michelin-europe9-2026` |
+| Countries | CZ, HR, SI, HU, MT, LT, LV, EE, RS |
+| Migration | `20261101300000_add_europe9_2026_countries_and_cities.sql` (4 countries, 35 towns). Plain `supabase db push --linked`; ledger 143 → 144, local and remote in agreement. New countries: CZ, EE, LT, LV |
+| Data file | `michelin_europe9_2026/prepared_europe9_2026.sql`. One transaction, every check passed |
+| Rows | 54 starred restaurants (`rest_4100`–`rest_4153`), 21 Key hotels (`hotel_3100`–`hotel_3120`), 3 hotel links, 4 `property_name`, `michelin_url` filled on 5 restaurants and 16 hotels |
+| Corrections | `hotel_277` Párisi Udvar 2 → 1 Key in place, the stored value matching no edition (QA-451). `hotel_280` The Bristol Belgrade 1 → 2, `hotel_260` Villa Dubrovnik 1 → 2, `hotel_267` Palace Elisabeth Hvar 2 → 1: launch row relabelled 2025, new 2026 row (QA-452, QA-454). `hotel_301` Peterc and `hotel_305` Nebesa lost their Key and stay, per QA-387 (QA-453). `rest_0427` Platán Gourmet: permanently closed, stars NULL, 2 stars kept as 2025 (QA-450) |
+
+**Checked after the apply**, row by row against `michelin_europe9_2026/controle/` (fresh export `_source/production_after_apply_20261104.json`):
+
+- All 119 rows carry the staged award, MICHELIN URL and current award row; new rows also the staged name, town, address, pin and, for restaurants, phone, website and `property_name`. No difference.
+- Stars and Keys (3/2/1) equal MICHELIN's live selection: CZ 0/1/8, 0/1/10; HR 0/1/13, 1/1/10; SI 1/1/8, 0/1/4; HU 0/1/8, 0/2/10; MT 0/1/6, 0/1/5; LT 0/0/4, 0/0/2; LV 0/0/2, 0/0/3; EE 0/1/1, 0/1/1; RS 0/0/2, 0/1/3.
+- Totals moved by exactly the staged amounts: restaurants +54, hotels +21, award rows +81, cities +35, countries +4, links +3.
+
+**Decided by the product owner:** new rows take the MICHELIN page's year, so Hungary 2025 and the others 2026; Stand stays on `guide_year` 2026 (QA-455). Towns keep MICHELIN's spelling: Sibenik, Porec, Korcula, Lasko, Carlsbad (QA-458).
+
+**Platán Gourmet:** MICHELIN announced no loss and the closing date is unknown, so the current 2026 row has a NULL value and NULL `announced_on`, and `status_since` is NULL. The closure rests on the venue's own site. Its link to `hotel_268` stays.
+
+**Not written:** Demo, Vilnius: MICHELIN's article of 5 Jun 2026 gives it a star, but the live list does not and the page gives 404 (QA-456). No Place ID on any new row; no phone or website on new hotels; 9 restaurant phones and 3 restaurant websites unconfirmed (QA-457). Six restaurants where MICHELIN does not name the host hotel (QA-459).
+
+**Near-miss:** comparing Key tiers per country hid Croatia's two changes, which cancel out. Only the per-hotel comparison found them (QA-454).
+
+---
+
+# 2026-11-04 — Greece: stars 2027 and Key hotels 2026 (QA-430–QA-435)
+
+| | |
+|---|---|
+| Applied | 2026-11-04, to production, at the product owner's request, from `claude/michelin-gr-2026` |
+| Migration | `20261101290000_add_gr_cities.sql` (20 towns). Plain `supabase db push --linked`; ledger 142 → 143, local and remote in agreement. Cities: GR 1 → 21 |
+| Data file | `michelin_gr/prepared_gr_2027.sql`. One transaction, every check passed |
+| Rows | 20 starred restaurants (`rest_4000`–`rest_4019`), `guide_year` 2027, announced 2026-10-23; 73 Key hotels (`hotel_3000`–`hotel_3072`), `guide_year` 2026, announced 2026-09-18; 1 hotel link (Pelagos → `hotel_716`); 6 `property_name` |
+| Corrections | `hotel_716` Four Seasons Astir Palace had no award row; a 2026 row with 3 Keys is added (QA-434). No earlier year is asserted |
+
+**Checked after the apply**, row by row against `michelin_gr/gr_control.csv` (fresh export `michelin_gr/_source/production_after_apply_20261104.json`):
+
+- **GR:** stars 0/1/19, Keys 1/9/64, equal to MICHELIN's live selection, its press release of 23 Oct 2026 and its global Key article (Greece 74).
+- Every row has exactly one current award row equal to its value.
+- All 94 rows carry the staged name, award, MICHELIN URL and pin. `hotel_716` keeps its stored point, 57 m from MICHELIN's pin, on purpose.
+- Totals moved by exactly the staged amounts: restaurants +20, hotels +73, award rows +94, cities +20, links +1.
+
+**World's 50 Best:** no Greek restaurant on ranks 1–100 of the list shown on the50.com. On the 2026 hotel list only `hotel_716`, rank 27, already stored.
+
+**Decided by the product owner:** Crete stays as the town where MICHELIN's locality is the island; Kastri and Mouzaki come from the address where the locality is a region (QA-432); Tudor Hall's `property_name` King George rests on the restaurant's own site (QA-433).
+
+**Still open:**
+
+- **QA-431:** no Place IDs for the 93 new rows, no phone or website for the new hotels, four restaurant phones left blank, and `hotel_716`'s phone conflict.
+- **QA-432:** addresses written as MICHELIN gives them, including probable errors.
+- **QA-433:** Botrini's Santorini and Selene are not linked to a Katikies hotel.
+- **QA-435:** Spondi's 2013 rank, `hotel_716`'s 2023 rank, and whether a 2026 restaurant list exists.
+
+---
+
 # 2026-11-01 — Poland and Türkiye stars and Key hotels 2026 (QA-404–QA-410)
 
 | | |

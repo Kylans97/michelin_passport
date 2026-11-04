@@ -1,0 +1,373 @@
+{
+ "si_list_20251022": [
+  {
+   "pid": "11378",
+   "name": "Kendov Dvorec",
+   "keys": 0
+  },
+  {
+   "pid": "6975",
+   "name": "Vander Urbani Resort",
+   "keys": 0
+  },
+  {
+   "pid": "13562",
+   "name": "Hotel Bohinj",
+   "keys": 0
+  },
+  {
+   "pid": "13601",
+   "name": "Grad Otočec",
+   "keys": 1
+  },
+  {
+   "pid": "14033",
+   "name": "Peterc Vineyard Estate",
+   "keys": 1
+  },
+  {
+   "pid": "13564",
+   "name": "InterContinental - Ljubljana, an IHG Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "14260",
+   "name": "Bloom Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "14259",
+   "name": "Tivoli Boutique Inn",
+   "keys": 0
+  },
+  {
+   "pid": "14899",
+   "name": "AS Boutique Hotel",
+   "keys": 1
+  },
+  {
+   "pid": "14258",
+   "name": "ALPIK Chalets",
+   "keys": 0
+  },
+  {
+   "pid": "14903",
+   "name": "Grand Hotel Union Eurostars",
+   "keys": 0
+  },
+  {
+   "pid": "14902",
+   "name": "Zlata Ladjica Boutique Hotel",
+   "keys": 1
+  },
+  {
+   "pid": "14901",
+   "name": "ONE66 Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "15581",
+   "name": "Milka Boutique Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "15580",
+   "name": "April1550 Boutique Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "15483",
+   "name": "Vila Muhr",
+   "keys": 0
+  },
+  {
+   "pid": "15423",
+   "name": "Chalet Sofija",
+   "keys": 2
+  },
+  {
+   "pid": "15390",
+   "name": "Nebesa Chalets",
+   "keys": 1
+  },
+  {
+   "pid": "14909",
+   "name": "Hotel Nox",
+   "keys": 0
+  }
+ ],
+ "hr_list_20251017": [
+  {
+   "pid": "6196",
+   "name": "Sun Gardens Dubrovnik",
+   "keys": 0
+  },
+  {
+   "pid": "12293",
+   "name": "Maslina Resort",
+   "keys": 1
+  },
+  {
+   "pid": "8145",
+   "name": "D-Resort Šibenik",
+   "keys": 0
+  },
+  {
+   "pid": "12045",
+   "name": "Villa Nai 3.3",
+   "keys": 3
+  },
+  {
+   "pid": "14590",
+   "name": "Pomâlo Inn",
+   "keys": 0
+  },
+  {
+   "pid": "11683",
+   "name": "Rixos Premium Dubrovnik",
+   "keys": 0
+  },
+  {
+   "pid": "8030",
+   "name": "Boutique Hotel Alhambra",
+   "keys": 0
+  },
+  {
+   "pid": "9308",
+   "name": "Hotel Excelsior",
+   "keys": 0
+  },
+  {
+   "pid": "9309",
+   "name": "Hotel Kompas",
+   "keys": 0
+  },
+  {
+   "pid": "7107",
+   "name": "Hotel Villa Dubrovnik",
+   "keys": 1
+  },
+  {
+   "pid": "6783",
+   "name": "Lone Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "6683",
+   "name": "Hotel Bellevue",
+   "keys": 0
+  },
+  {
+   "pid": "11133",
+   "name": "The Byron Dubrovnik",
+   "keys": 0
+  },
+  {
+   "pid": "14324",
+   "name": "Hotel Supetar",
+   "keys": 1
+  },
+  {
+   "pid": "6198",
+   "name": "Esplanade Zagreb Hotel",
+   "keys": 1
+  },
+  {
+   "pid": "11063",
+   "name": "Brown Beach House & Spa",
+   "keys": 0
+  },
+  {
+   "pid": "7549",
+   "name": "Riva Hvar Yacht Harbour Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "6197",
+   "name": "Valamar Riviera Hotel & Residence",
+   "keys": 0
+  },
+  {
+   "pid": "7548",
+   "name": "Hotel Pucic Palace",
+   "keys": 0
+  },
+  {
+   "pid": "12309",
+   "name": "San Canzian Hotel & Residences",
+   "keys": 1
+  },
+  {
+   "pid": "12301",
+   "name": "Meneghetti Wine Hotel and Winery",
+   "keys": 1
+  },
+  {
+   "pid": "10847",
+   "name": "Le Meridien Lav Split",
+   "keys": 0
+  },
+  {
+   "pid": "13116",
+   "name": "Hotel Moeesy, Blue & Green Oasis",
+   "keys": 0
+  },
+  {
+   "pid": "12298",
+   "name": "Hotel Lemongarden",
+   "keys": 0
+  },
+  {
+   "pid": "12300",
+   "name": "Boutique Hotel Valsabbion",
+   "keys": 0
+  },
+  {
+   "pid": "12305",
+   "name": "Hotel Osam",
+   "keys": 0
+  },
+  {
+   "pid": "7613",
+   "name": "Hotel Luxe",
+   "keys": 0
+  },
+  {
+   "pid": "12296",
+   "name": "Imperial Valamar Collection Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "13815",
+   "name": "Grand Park Hotel Rovinj by Maistra Collection",
+   "keys": 1
+  },
+  {
+   "pid": "13059",
+   "name": "Roxanich Winery & Design Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "7793",
+   "name": "Falkensteiner Hotel & Spa Iadera",
+   "keys": 0
+  },
+  {
+   "pid": "13929",
+   "name": "Armerun Heritage Hotel & Residences",
+   "keys": 0
+  },
+  {
+   "pid": "13928",
+   "name": "Almayer Art & Heritage Hotel and Dépendance",
+   "keys": 0
+  },
+  {
+   "pid": "12292",
+   "name": "Heritage Hotel Martinis Marchi",
+   "keys": 0
+  },
+  {
+   "pid": "13925",
+   "name": "Hotel Ambasador Split",
+   "keys": 0
+  },
+  {
+   "pid": "14599",
+   "name": "Heritage Hotel Life Palace",
+   "keys": 0
+  },
+  {
+   "pid": "13924",
+   "name": "Bastion Heritage Hotel",
+   "keys": 0
+  },
+  {
+   "pid": "15415",
+   "name": "Villa Korta Katarina & Winery",
+   "keys": 1
+  },
+  {
+   "pid": "15344",
+   "name": "Palace Elisabeth Hvar Hotel",
+   "keys": 2
+  },
+  {
+   "pid": "15295",
+   "name": "Boutique Hotel Boškinac",
+   "keys": 0
+  },
+  {
+   "pid": "15239",
+   "name": "Hyatt Regency Zadar",
+   "keys": 0
+  },
+  {
+   "pid": "15238",
+   "name": "Hotel Vila Rova",
+   "keys": 0
+  },
+  {
+   "pid": "15237",
+   "name": "Boutique & Design Hotel Navis",
+   "keys": 0
+  },
+  {
+   "pid": "15236",
+   "name": "art'otel Zagreb",
+   "keys": 0
+  }
+ ],
+ "rs_list_20251016": [
+  {
+   "pid": "14965",
+   "name": "The Bristol Belgrade",
+   "keys": 1
+  },
+  {
+   "pid": "8591",
+   "name": "SAINT TEN Hotel",
+   "keys": 1
+  },
+  {
+   "pid": "13494",
+   "name": "Metropol Palace Hotel, Belgrade",
+   "keys": 0
+  },
+  {
+   "pid": "6698",
+   "name": "Square Nine Hotel",
+   "keys": 1
+  },
+  {
+   "pid": "8090",
+   "name": "Townhouse 27",
+   "keys": 0
+  },
+  {
+   "pid": "11055",
+   "name": "Mama Shelter Belgrade",
+   "keys": 0
+  },
+  {
+   "pid": "12441",
+   "name": "Hotel Indigo Belgrade",
+   "keys": 0
+  },
+  {
+   "pid": "12548",
+   "name": "Viceroy Kopaonik Serbia",
+   "keys": 0
+  },
+  {
+   "pid": "14898",
+   "name": "The St. Regis Belgrade",
+   "keys": 1
+  },
+  {
+   "pid": "14967",
+   "name": "Smokvica Dorćol",
+   "keys": 0
+  }
+ ]
+}

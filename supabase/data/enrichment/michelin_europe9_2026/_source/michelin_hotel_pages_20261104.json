@@ -1,0 +1,3425 @@
+{
+ "fetched_at": "2026-11-03T23:19:57Z",
+ "pages": [
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/prague/boho-prague-hotel-8053",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/prague/boho-prague-hotel-8053",
+   "h1": "BoHo Prague Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Senovázná 1254/4",
+     "addressLocality": "Prague",
+     "postalCode": "110 00",
+     "addressCountry": "CZE"
+    },
+    "name": "BoHo Prague Hotel in Prague",
+    "description": "Old Town is still very much the place to be in Prague’s hospitality scene, which makes minimalist-chic design that much more of a statement, given the city center’s Gothic-Baroque backdrop of spires and ornate stonework. BoHo Prague’s post-office past is plain enough, what with the soaring ceilings and oversize windows, but the present state of design eschews municipal grandeur for a refined, minimal boutique look. Thus the sleek, neutral-hued lobby bar and library, but also the futuristic cluster of globe bulbs and pendant lamps. It’s a fine spot to gather oneself with an early coffee, arty hardback in hand, plotting the day’s excursions, or to unwind and cool the heels with something stronger as twilight falls over the Czech capital.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1496747.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.086123,
+     "longitude": 14.429461
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/prague/boho-prague-hotel-8053",
+    "numberOfRooms": 57,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.086123%2C14.429461",
+    "telephone": "+420 234 622 600",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 26,
+     "ratingCount": 26,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/prague/prague/restaurant/420-restaurant",
+    "/en/prague/prague/restaurant/amano-1215603",
+    "/en/prague/prague/restaurant/cafe-imperial",
+    "/en/prague/prague/restaurant/divinis",
+    "/en/prague/prague/restaurant/grand-cru",
+    "/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise",
+    "/en/prague/prague/restaurant/marie-b",
+    "/en/prague/prague/restaurant/next-door-by-imperial",
+    "/en/prague/prague/restaurant/portfolio",
+    "/en/prague/prague/restaurant/pot-au-feu"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/prague/the-julius-prague-12722",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/prague/the-julius-prague-12722",
+   "h1": "The Julius Prague",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "3 Senovážné Náměstí",
+     "addressLocality": "Prague",
+     "postalCode": "110 00",
+     "addressCountry": "CZE"
+    },
+    "name": "The Julius Prague in Prague",
+    "description": "The Julius is owned by the Viennese coffee and dining concern Julius Meinl, and as a foray into the hotel business it’s no half-measure; this heritage building in central Prague has had its interiors redesigned by the Milanese architects Matteo Thun & Partners. The result is 168 new rooms and suites — or, to use their preferred term, residences — in a subdued but luxurious contemporary style, with the full complement of modern hotel comforts and a vibe that’s sedate enough for even the longest stay. There’s an Italian-inspired bistro and bar, and the neighborhood — and the greater city — offers no shortage of other fine options.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1361636.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.08585,
+     "longitude": 14.43038
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/prague/the-julius-prague-12722",
+    "numberOfRooms": 168,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.08585%2C14.43038",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+420 233 111 222",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.1,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/prague/prague/restaurant/420-restaurant",
+    "/en/prague/prague/restaurant/amano-1215603",
+    "/en/prague/prague/restaurant/cafe-imperial",
+    "/en/prague/prague/restaurant/divinis",
+    "/en/prague/prague/restaurant/grand-cru",
+    "/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise",
+    "/en/prague/prague/restaurant/marie-b",
+    "/en/prague/prague/restaurant/next-door-by-imperial",
+    "/en/prague/prague/restaurant/portfolio",
+    "/en/prague/prague/restaurant/pot-au-feu"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/prague/four-seasons-hotel-prague-8238",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/prague/four-seasons-hotel-prague-8238",
+   "h1": "Four Seasons Hotel Prague",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Veleslavinova 2A 1098, Praha 1",
+     "addressLocality": "Prague",
+     "postalCode": "110 00",
+     "addressCountry": "CZE"
+    },
+    "name": "Four Seasons Hotel Prague in Prague",
+    "description": "Many of the best hotels depend on some element of surprise. But in the case of the Four Seasons it’s a very subtle form of surprise, consisting in the ability to do exactly what you’d expect from a luxury hotel, just slightly better than you’d expect to see it done. In Prague it starts with the location. You’d want a hotel to be just steps from the Charles Bridge, in what travel writers call “the heart” of the old town. So that’s where the Four Seasons is, the real-estate market be damned.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1698280.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.08778,
+     "longitude": 14.41457
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/prague/four-seasons-hotel-prague-8238",
+    "numberOfRooms": 157,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.08778%2C14.41457",
+    "petsAllowed": "\\n Pet Policy: Pet must be fully trained and appropriately restrained by guest. Pet must comply with local legislation requirements. Pet must be kept on a leash when in the hotel or on hotel property unless it is in the guest's room. Pets must not be left unattended. If guest requires a pet-sitter or pet supplies, they should contact the concierge with advance notice. Pets are not allowed in any food and beverage outlets, health club and pool areas. Guests are responsible for cleaning up after their pet on hotel property and in the neighborhood. Any disturbances such as barking must be curtailed to ensure other guests are not inconvenienced. Guests must contact the housekeeping department to arrange for a convenient time for servicing their room. Guests can require pet-sitter or pet supplies, when Concierge is contacted in advance.",
+    "telephone": "420 221 427 000 ",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.8,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/prague/prague/restaurant/420-restaurant",
+    "/en/prague/prague/restaurant/antricote-steakhouse",
+    "/en/prague/prague/restaurant/casa-de-carli",
+    "/en/prague/prague/restaurant/cottocrudo",
+    "/en/prague/prague/restaurant/la-finestra-in-cucina",
+    "/en/prague/prague/restaurant/la-veranda-104137",
+    "/en/prague/prague/restaurant/mlynec",
+    "/en/prague/prague/restaurant/monarch",
+    "/en/prague/prague/restaurant/parzival",
+    "/en/prague/prague/restaurant/v-zatisi"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/prague/augustine-3031",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/prague/augustine-3031",
+   "h1": "Augustine",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Letenská 12/33",
+     "addressLocality": "Prague",
+     "postalCode": "118 00",
+     "addressCountry": "CZE"
+    },
+    "name": "Augustine in Prague",
+    "description": "Built into the remains of a 13th-century monastery, Augustine sits just beneath Prague Castle in the Malá Strana quarter. For centuries, this complex housed Augustinian monks, some of whom still reside in a separate, active wing. The transformation into a hotel was led by designer Olga Polizzi, who wove together preserved frescoes, baroque detailing, and early 20th-century Czech design. You will still find the monks’ original beer recipe served in the garden, and the former observatory now functions as a panoramic suite. It is a place where Prague’s layered history feels surprisingly intimate.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1310055.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.08866,
+     "longitude": 14.40613
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/prague/augustine-3031",
+    "numberOfRooms": 101,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.08866%2C14.40613",
+    "telephone": "+42 0 266 11-2233",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.6,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/prague/prague/restaurant/420-restaurant",
+    "/en/prague/prague/restaurant/antricote-steakhouse",
+    "/en/prague/prague/restaurant/coda-1217172",
+    "/en/prague/prague/restaurant/cottocrudo",
+    "/en/prague/prague/restaurant/la-finestra-in-cucina",
+    "/en/prague/prague/restaurant/la-veranda-104137",
+    "/en/prague/prague/restaurant/mlynec",
+    "/en/prague/prague/restaurant/monarch",
+    "/en/prague/prague/restaurant/parzival",
+    "/en/prague/prague/restaurant/v-zatisi"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/prague/andaz-prague-12576",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/prague/andaz-prague-12576",
+   "h1": "Andaz Prague",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Senovazne Namesti 976/31",
+     "addressLocality": "Prague",
+     "postalCode": "11000",
+     "addressCountry": "CZE"
+    },
+    "name": "Andaz Prague in Prague",
+    "description": "Hyatt’s Andaz hotels have become more or less synonymous with the classic luxury boutique hotel — as comfortable and full-featured as any traditional luxury hotel, and as stylish and design-forward as any boutique. So it is with Andaz Prague, set in the century-old Sugar Palace on Senovážné Square. The décor is inspired by multiple eras in the intervening years, combining Art Nouveau elegance with forward-looking modernism; the comforts, meanwhile, are as contemporary as they come. Mez, the bar, is complemented by Zem, the hotel’s flagship restaurant, an homage to the coffee houses of the Twenties, serving Japanese-accented Czech fare.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1361618.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.08571,
+     "longitude": 14.43044
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/prague/andaz-prague-12576",
+    "numberOfRooms": 176,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.08571%2C14.43044",
+    "telephone": "+420 227 344 124",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/prague/prague/restaurant/420-restaurant",
+    "/en/prague/prague/restaurant/amano-1215603",
+    "/en/prague/prague/restaurant/cafe-imperial",
+    "/en/prague/prague/restaurant/divinis",
+    "/en/prague/prague/restaurant/grand-cru",
+    "/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise",
+    "/en/prague/prague/restaurant/marie-b",
+    "/en/prague/prague/restaurant/next-door-by-imperial",
+    "/en/prague/prague/restaurant/portfolio",
+    "/en/prague/prague/restaurant/pot-au-feu"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mcely/chateau-mcely-6723",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mcely/chateau-mcely-6723",
+   "h1": "Chateau Mcely",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mcely 61",
+     "addressLocality": "Mcely",
+     "postalCode": "289 36",
+     "addressCountry": "CZE"
+    },
+    "name": "Chateau Mcely in Mcely",
+    "description": "While the spires and bridges of Prague might be the unofficial mascots of the Czech Republic, there’s a lot more to the country than its capital. The Central Bohemian countryside may not evoke the same absinthe-soaked visions, but places like the St. George Forest — home to several coveted species of wild mushrooms — have a magic all their own. Situated at the edge of that forest, about an hour northeast of Prague, Chateau Mcely is the modern five-star incarnation of a 17th-century hunting lodge.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1582541.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.29962,
+     "longitude": 15.07737
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mcely/chateau-mcely-6723",
+    "numberOfRooms": 24,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.29962%2C15.07737",
+    "telephone": "+420 325 600 000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/stredocesky/mcely_1268098/restaurant/piano-nobile"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/prague/mosaic-house-13224",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/prague/mosaic-house-13224",
+   "h1": "Mosaic House",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Odborů 4",
+     "addressLocality": "Prague",
+     "postalCode": "120 00",
+     "addressCountry": "CZE"
+    },
+    "name": "Mosaic House in Prague",
+    "description": "Mosaic House is a stone’s throw from Prague’s old town, at a tranquil and restful distance from the city’s famed nightlife. Its interiors embody boutique sensibilities to a tee, especially impressive given the hotel’s modest footprint. Patterns abound, as do whimsical lighting and statement furniture. Rooms are bright, uncluttered, and thoughtfully adorned with mementos and art books. The courtyard garden makes for the perfect retreat from the tourist bustle just outside.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1537372.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.07752,
+     "longitude": 14.41806
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/prague/mosaic-house-13224",
+    "numberOfRooms": 54,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.07752%2C14.41806",
+    "telephone": "+420 277 016 880",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/prague/prague/restaurant/alma-1218075",
+    "/en/prague/prague/restaurant/bockem",
+    "/en/prague/prague/restaurant/mlynec",
+    "/en/prague/prague/restaurant/monarch",
+    "/en/prague/prague/restaurant/parzival",
+    "/en/prague/prague/restaurant/qq-asian-kitchen",
+    "/en/prague/prague/restaurant/taro-1217153",
+    "/en/prague/prague/restaurant/u-kalendu",
+    "/en/prague/prague/restaurant/v-zatisi",
+    "/en/prague/prague/restaurant/vallmo"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/%C5%A0umperk/hotel-perk-13482",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/%C5%A0umperk/hotel-perk-13482",
+   "h1": "Hotel Perk",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "ul. 17. listopadu 413/1",
+     "addressLocality": "Šumperk",
+     "postalCode": "787 01",
+     "addressCountry": "CZE",
+     "addressRegion": "Moravia"
+    },
+    "name": "Hotel Perk in Šumperk",
+    "description": "What began life as Hotel Grand in the 1930s was reimagined in 2020 as a cool, contemporary space full of unique design touches. Just consider the lighting, which in most hotels is merely functional, but here it is used to enhance both style and mood. From its rooftop wellness area and outside terrace to the crisp, uncluttered bedrooms and the cozy ground floor restaurant specializing in local specialties, it is clear that this hotel is the antidote to corporate conformity.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1441654.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 49.96584,
+     "longitude": 16.98008
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/%C5%A0umperk/hotel-perk-13482",
+    "numberOfRooms": 34,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=49.96584%2C16.98008",
+    "telephone": "+420 581 580 000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [],
+   "sections": [],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/prague/alcron-hotel-prague-10504",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/prague/alcron-hotel-prague-10504",
+   "h1": "Almanac X Alcron Prague",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Stepanska 40",
+     "addressLocality": "Prague",
+     "postalCode": "110 00",
+     "addressCountry": "CZE"
+    },
+    "name": "Almanac X Alcron Prague in Prague",
+    "description": "Almanac X Alcron brings new energy to a historical address just off Wenceslas Square. Housed in a former Art Deco landmark, it still carries the elegance of its 1930s origins, but with a sharper, more present-day outlook. Rooms are refined and comfortable, with touches that feel distinctly local. The restaurant draws on Czech traditions with a lighter, plant-forward hand, while the cocktail bar and coffee shop have become local favorites. The location keeps you in the thick of things without feeling like a tourist.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1697441.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.07993,
+     "longitude": 14.42629
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/prague/alcron-hotel-prague-10504",
+    "numberOfRooms": 204,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.07993%2C14.42629",
+    "telephone": "+420 222 820 048",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/prague/prague/restaurant/420-restaurant",
+    "/en/prague/prague/restaurant/alma-1218075",
+    "/en/prague/prague/restaurant/aromi",
+    "/en/prague/prague/restaurant/divinis",
+    "/en/prague/prague/restaurant/monarch",
+    "/en/prague/prague/restaurant/parzival",
+    "/en/prague/prague/restaurant/portfolio",
+    "/en/prague/prague/restaurant/qq-asian-kitchen",
+    "/en/prague/prague/restaurant/taro-1217153",
+    "/en/prague/prague/restaurant/v-zatisi"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/prague/fairmont-golden-prague-14952",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/prague/fairmont-golden-prague-14952",
+   "h1": "Fairmont Golden Prague",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Parizska 30",
+     "addressLocality": "Prague",
+     "postalCode": "110 00",
+     "addressCountry": "CZE"
+    },
+    "name": "Fairmont Golden Prague in Prague",
+    "description": "Set above the Vltava in one of Prague’s best-known buildings, Fairmont Golden Prague writes a bold new chapter for a modernist landmark. Long regarded as a work of art in its own right, the hotel now houses one of the country’s most significant private collections of Czech art and film. Hand-blown glass, sculpted wood, and gilded fixtures run through the interiors, while six dining venues, including rooftop Zlata Praha, offer varied views of the city. This is nostalgia and legacy made current.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1576180.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.091412,
+     "longitude": 14.41877
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/prague/fairmont-golden-prague-14952",
+    "numberOfRooms": 320,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.091412%2C14.41877",
+    "petsAllowed": "Pets are allowed. Charges may be applicable.",
+    "telephone": "420 296 631 111",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/prague/prague/restaurant/420-restaurant",
+    "/en/prague/prague/restaurant/antricote-steakhouse",
+    "/en/prague/prague/restaurant/casa-de-carli",
+    "/en/prague/prague/restaurant/cottocrudo",
+    "/en/prague/prague/restaurant/divinis",
+    "/en/prague/prague/restaurant/field",
+    "/en/prague/prague/restaurant/la-degustation-boheme-bourgeoise",
+    "/en/prague/prague/restaurant/la-finestra-in-cucina",
+    "/en/prague/prague/restaurant/la-veranda-104137",
+    "/en/prague/prague/restaurant/pot-au-feu"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/carlsbad/villa-julius-a-emma-luxury-boutique-retreat-14947",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/carlsbad/villa-julius-a-emma-luxury-boutique-retreat-14947",
+   "h1": "Villa Julius a Emma - Luxury Boutique Retreat",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Jarní, Carlsbad",
+     "addressLocality": "Carlsbad",
+     "postalCode": "360 01",
+     "addressCountry": "CZE"
+    },
+    "name": "Villa Julius a Emma - Luxury Boutique Retreat in Carlsbad",
+    "description": "Perched above the historic center of Karlovy Vary, this 1914 villa has been carefully reimagined as a nine-room boutique hotel. Original architectural details remain, but the mood is contemporary: clean lines, warm materials, muted and neutral interiors. A compact spa offers sauna, treatments, and yoga, while the surrounding hills invite slow walks and longer pauses. The famous colonnades are close, but Villa Julius a Emma stands apart as a quieter vantage point to experience the town.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1485628.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-CZE",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 50.218795,
+     "longitude": 12.892227
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/carlsbad/villa-julius-a-emma-luxury-boutique-retreat-14947",
+    "numberOfRooms": 9,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=50.218795%2C12.892227",
+    "telephone": "+420 604 796 889",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/karlovarsky/karlovy-vary_1266571/restaurant/grandrestaurant-pupp",
+    "/en/karlovarsky/karlovy-vary_1266571/restaurant/le-marche",
+    "/en/karlovarsky/karlovy-vary_1266571/restaurant/mala-dvorana"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Stari-Grad/maslina-resort-12293",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Stari-Grad/maslina-resort-12293",
+   "h1": "Maslina Resort",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "11 Uvala Maslinica",
+     "addressLocality": "Stari Grad",
+     "postalCode": "21460",
+     "addressCountry": "HRV",
+     "addressRegion": "Hvar"
+    },
+    "name": "Maslina Resort in Stari Grad",
+    "description": "Croatia’s Dalmatian Coast is a justifiably famous destination, and like all justifiably famous destinations it is prone to a bit of crowding during the high season. No such affliction befalls Maslina Resort, however; its position, just outside the UNESCO-listed town of Stari Grad, itself set on a protected bay on the west side of the island of Hvar, affords it a generous measure of seclusion — and the verdant landscaping and modernist simplicity of the architecture take care of the rest.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1334899.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 43.180312,
+     "longitude": 16.571937
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Stari-Grad/maslina-resort-12293",
+    "numberOfRooms": 53,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=43.180312%2C16.571937",
+    "petsAllowed": "Pets are allowed on request. Charges may apply.",
+    "telephone": "+385 21 888 700",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/split-dalmatia/hvar_1779354/restaurant/mediterraneo-1204562",
+    "/en/split-dalmatia/stari-grad/restaurant/terra-restaurant-by-maslina-resort"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/dugi-otok/villa-nai-33-12045",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/dugi-otok/villa-nai-33-12045",
+   "h1": "Villa Nai 3.3",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Žman 199, Dugi otok",
+     "addressLocality": "Dugi Otok",
+     "postalCode": "23282",
+     "addressCountry": "HRV",
+     "addressRegion": "Dalmatia"
+    },
+    "name": "Villa Nai 3.3 in Dugi Otok",
+    "description": "Croatia may not be as plentifully supplied with extraordinary hotels as its neighbor across the Adriatic, but the best of them are up there with the most inspiring hotels in the world. Among them is Villa Nai 3.3, the work of the Croatian architect Nikola Bašić, whose plan called for the excavation of the interior of a hillside on the Dalmatian island of Dugi Otok — halfway between Venice and Dubrovnik — and whose low-profile exterior structures are built from the stone extracted from the caves.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1677100.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 43.9649256638,
+     "longitude": 15.1227560087
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/dugi-otok/villa-nai-33-12045",
+    "numberOfRooms": 8,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=43.9649256638%2C15.1227560087",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "+385 91 3005625",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Three MICHELIN Keys · An extraordinary stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/zadar-region/sukosan_1783199/restaurant/konoba-griblja",
+    "/en/zadar-region/zadar/restaurant/fosa",
+    "/en/zadar-region/zadar/restaurant/labrax",
+    "/en/zadar-region/zadar/restaurant/maguro-1241333"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/dubrovnik/hotel-villa-dubrovnik-7107",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/dubrovnik/hotel-villa-dubrovnik-7107",
+   "h1": "Villa Dubrovnik",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Vlaha Bukovca 6",
+     "addressLocality": "Dubrovnik",
+     "postalCode": "20000",
+     "addressCountry": "HRV"
+    },
+    "name": "Villa Dubrovnik in Dubrovnik",
+    "description": "Hotel Villa Dubrovnik has been a long-time fixture on the Croatian seaside, when it opened as a prestigious residential building back in 1961. It was quickly transformed into an annex of the Hotel Argentina in 1963, and its rooms have looked across the old city and the Adriatic ever since. The chic neutral interiors have retro mid-century touches and blends together pieces by iconic Italian designer Gio Ponti with local Croatian designed furnishings. In Villa Spa, treatments are based around natural Mediterranean herbs and ingredients prized for their wellbeing properties, such as lavender to aid relaxation and mint for a restful night's sleep. The indoor pool and hot tubs show off the panoramic views of the Adriatic with floor to ceiling windows, although it’s even better from the outdoor terrace. The four bars and restaurants include the MICHELIN Guide recommended Restaurant Pjerin and Galanto bar, the only rooftop bar in Dubrovnik.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1501898.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 42.639073,
+     "longitude": 18.126461
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/dubrovnik/hotel-villa-dubrovnik-7107",
+    "numberOfRooms": 56,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=42.639073%2C18.126461",
+    "petsAllowed": "Pets are allowed upon request at 50 EUR per pet per day subject to approval by management.",
+    "telephone": "+385.20.422.933",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/360%C2%BA",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/dubrovnik",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/marco-polo-1202424",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/nautika",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/pjerin",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/proto-fish",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/stara-loza",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/taj-mahal",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/vapor",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/zuzori"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/cavtat/hotel-supetar-14324",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/cavtat/hotel-supetar-14324",
+   "h1": "Supetar",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Obala A.Starcevica 27",
+     "addressLocality": "Cavtat",
+     "postalCode": "20210",
+     "addressCountry": "HRV",
+     "addressRegion": "Dubrovnik"
+    },
+    "name": "Supetar in Cavtat",
+    "description": "A short drive or ferry ride down the coast from Dubrovnik in the village of Cavtat, Hotel Supetar occupies a century-old villa right on the waterfront promenade. Though fully restored, this boutique hotel oozes old-world charm, with its open-air decks shaded by white sun umbrellas, a cozy wine bar serving locally produced varietals, and fragrant citrus trees framing the swimming pool.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1459106.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 42.583876,
+     "longitude": 18.215302
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/cavtat/hotel-supetar-14324",
+    "numberOfRooms": 21,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=42.583876%2C18.215302",
+    "petsAllowed": "\\n Pets are not allowed.",
+    "telephone": "+38520300305",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 20.0,
+     "reviewCount": 1,
+     "ratingCount": 1,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/dubrovnik-neretva/cavtat/restaurant/bugenvila",
+    "/en/dubrovnik-neretva/cavtat/restaurant/the-restaurant-hotel-supetar",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/360%C2%BA",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/dubrovnik",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/marco-polo-1202424",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/pjerin",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/proto-fish",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/stara-loza",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/taj-mahal",
+    "/en/dubrovnik-neretva/dubrovnik/restaurant/zuzori"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/zagreb/esplanade-zagreb-hotel-6198",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/zagreb/esplanade-zagreb-hotel-6198",
+   "h1": "Esplanade Zagreb Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mihanoviceva 1",
+     "addressLocality": "Zagreb",
+     "postalCode": "10000",
+     "addressCountry": "HRV"
+    },
+    "name": "Esplanade Zagreb Hotel in Zagreb",
+    "description": "Surely it won’t be long before the contemporary-design boutique hotels move in to Zagreb, but there’ll never be anything in the Croatian capital to match the historic appeal of the Esplanade Zagreb Hotel. It dates back to the Twenties, to the heyday of the Orient Express, and while its Art Deco interiors have been continually updated, they remain true to their original inspiration.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1260572.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 45.805454,
+     "longitude": 15.976286
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/zagreb/esplanade-zagreb-hotel-6198",
+    "numberOfRooms": 208,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.805454%2C15.976286",
+    "telephone": "+385-1-45 66 666",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.9,
+     "reviewCount": 7,
+     "ratingCount": 7,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/zagreb-region/zagreb/restaurant/bestija",
+    "/en/zagreb-region/zagreb/restaurant/boban",
+    "/en/zagreb-region/zagreb/restaurant/kiyomi",
+    "/en/zagreb-region/zagreb/restaurant/le-bistro-esplanade",
+    "/en/zagreb-region/zagreb/restaurant/nav",
+    "/en/zagreb-region/zagreb/restaurant/nico-s-bar-bistro",
+    "/en/zagreb-region/zagreb/restaurant/sol-1241330",
+    "/en/zagreb-region/zagreb/restaurant/takenoko",
+    "/en/zagreb-region/zagreb/restaurant/theatrium-by-filho",
+    "/en/zagreb-region/zagreb/restaurant/zinfandel-s"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Buje/san-canzian-hotel-residences-12309",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Buje/san-canzian-hotel-residences-12309",
+   "h1": "San Canzian",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Mužolini Donji 7",
+     "addressLocality": "Buje",
+     "postalCode": "52460",
+     "addressCountry": "HRV",
+     "addressRegion": "Istria"
+    },
+    "name": "San Canzian in Buje",
+    "description": "On the Istrian Peninsula, mere miles from the Adriatic coast, stands the hillside village of Mužolini Donji, home to the beautifully atmospheric San Canzian Hotel & Residences. It’s built on the site of a medieval fortification, and is now a cluster of stone buildings containing some 24 rooms and suites as well as a restaurant and bar. The units themselves are remarkably contemporary in design, and completely modern in function; comforts include an outdoor pool and a luxe indoor spa. Luciano, the restaurant, shows the pronounced Italian influence in this melting pot of a region, just an hour’s drive from Trieste.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1302837.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 45.38761,
+     "longitude": 13.68638
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Buje/san-canzian-hotel-residences-12309",
+    "numberOfRooms": 24,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.38761%2C13.68638",
+    "telephone": "+385 52 853 897",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/coastal%E2%80%93karst/izola/restaurant/hisa-torkla",
+    "/en/coastal%E2%80%93karst/portoroz/restaurant/rizibizi",
+    "/en/istria/brtonigla/restaurant/konoba-morgan",
+    "/en/istria/brtonigla/restaurant/san-rocco",
+    "/en/istria/buje/restaurant/konoba-malo-selo",
+    "/en/istria/buje/restaurant/luciano",
+    "/en/istria/lovreica/restaurant/badi",
+    "/en/istria/novigrad/restaurant/damir-ornella",
+    "/en/istria/novigrad/restaurant/marina",
+    "/en/istria/umag/restaurant/konoba-buscina"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Bale/meneghetti-wine-hotel-and-winery-12301",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Bale/meneghetti-wine-hotel-and-winery-12301",
+   "h1": "Meneghetti Wine Hotel and Winery",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Stancija Meneghetti 1",
+     "addressLocality": "Bale",
+     "postalCode": "52211",
+     "addressCountry": "HRV",
+     "addressRegion": "Istria"
+    },
+    "name": "Meneghetti Wine Hotel and Winery in Bale",
+    "description": "A few minutes inland from the Adriatic Sea on Croatia’s Istrian Peninsula is a country estate whose centerpiece is a 19th-century stone farmhouse, the first structure in what’s now a remarkably self-sufficient hospitality experience: the Meneghetti Wine Hotel and Winery. Today it features rooms and suites in the old house, in a modern addition, and in a new building, as well as a couple of restored villas available in their entirety. Some are aesthetically more modern than others, though all are quite luxurious; the Meneghetti restaurant and the Olivetto restaurant and bar lean heavily on the wines and olive oil produced on-site.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1507998.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 45.0075,
+     "longitude": 13.74533
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Bale/meneghetti-wine-hotel-and-winery-12301",
+    "numberOfRooms": 58,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.0075%2C13.74533",
+    "telephone": "+385 52 528 800",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istria/bale/restaurant/meneghetti",
+    "/en/istria/hr-pula/restaurant/ribarska-koliba",
+    "/en/istria/rovinj/restaurant/agli-amici-rovinj",
+    "/en/istria/rovinj/restaurant/cap-aureo",
+    "/en/istria/rovinj/restaurant/monte",
+    "/en/istria/rovinj/restaurant/riva-lounge",
+    "/en/istria/rovinj/restaurant/tekka-by-lone",
+    "/en/istria/valbandon/restaurant/alla-beccaccia"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/rovinj/grand-park-hotel-rovinj-by-maistra-collection-13815",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/rovinj/grand-park-hotel-rovinj-by-maistra-collection-13815",
+   "h1": "Grand Park Hotel Rovinj by Maistra Collection",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "A. Smareglia 1A",
+     "addressLocality": "Rovinj",
+     "postalCode": "52210",
+     "addressCountry": "HRV"
+    },
+    "name": "Grand Park Hotel Rovinj by Maistra Collection in Rovinj",
+    "description": "You don’t mess with a classic formula. Backed by pristine Istrian wine country and fronting jaw-dropping views of old-town Rovinj and the north Adriatic, the Grand Park Hotel Rovinj by Maistra Collection has it made in the proverbial shade. And because it’s a bit south of the bulk of Croatia’s tourist action, it has space to spare. That translates to roomy accommodations and plenty of photogenic backdrops for a drink, a chat, a massage, or whatever else you have in mind. Ask about island-hopping sunset charters if you’re adventurous, or a taverna crawl along the enchanted cobblestone streets of Rovinj.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1395845.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 45.07531,
+     "longitude": 13.63756
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/rovinj/grand-park-hotel-rovinj-by-maistra-collection-13815",
+    "numberOfRooms": 209,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.07531%2C13.63756",
+    "telephone": "+385 52 808 000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/istria/bale/restaurant/meneghetti",
+    "/en/istria/porec/restaurant/harry-s-piccolo-porec",
+    "/en/istria/porec/restaurant/jaz-by-ana-ros-porec",
+    "/en/istria/porec/restaurant/spinnaker",
+    "/en/istria/rovinj/restaurant/agli-amici-rovinj",
+    "/en/istria/rovinj/restaurant/cap-aureo",
+    "/en/istria/rovinj/restaurant/monte",
+    "/en/istria/rovinj/restaurant/riva-lounge",
+    "/en/istria/rovinj/restaurant/tekka-by-lone"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Orebi%C4%87/hotel-katarina-17566",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Orebi%C4%87/hotel-katarina-17566",
+   "h1": "Hotel Katarina",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Škvar 2",
+     "addressLocality": "Orebić",
+     "postalCode": "20250",
+     "addressCountry": "HRV",
+     "addressRegion": "Dalmatia"
+    },
+    "name": "Hotel Katarina in Orebić",
+    "description": "Sister to the Villa Korta Katarina, at the other end of the seaside town of Orebić, Hotel Katarina is naturally cut from similar cloth: a luxurious 11-room villa set on the seafront that delivers an experience of refined tranquility alongside a lively and colorful Mediterranean-maritime visual style. Terraces and balconies take in views of the sea, and the Neptune Spa offers an extra measure of relaxation. Meanwhile the Captain’s Terrace restaurant and the American Bar both feature plentiful outdoor space and are amply supplied with the products of the Korta Katarina Winery.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1670589.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 42.9749162966,
+     "longitude": 17.1680428595
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Orebi%C4%87/hotel-katarina-17566",
+    "numberOfRooms": 11,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=42.9749162966%2C17.1680428595",
+    "petsAllowed": " Pets: Small pets may be accepted on request, but typically subject to prior approval and possible charges/restrictions",
+    "telephone": "+385 99 166 4444",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/dubrovnik-neretva/korcula/restaurant/filippi",
+    "/en/dubrovnik-neretva/korcula/restaurant/konoba-mate",
+    "/en/dubrovnik-neretva/korcula/restaurant/ld-terrace"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Split1/palazzo-president-17412",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Split1/palazzo-president-17412",
+   "h1": "Palazzo President",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Starceviceva 1",
+     "addressLocality": "Split",
+     "postalCode": "21000",
+     "addressCountry": "HRV"
+    },
+    "name": "Palazzo President in Split",
+    "description": "In the heart of Split, at the edge of the old town, stands the stately Palazzo President, a 32-room luxury hotel with a contemporary boutique-hotel aesthetic. The design is a subtle tribute to local tradition, from the unmistakable accents in green granite to a collection of works by modern and contemporary Croatian artists. Even the entry-level rooms come with extra lounge space, and the suites quickly begin to feel extravagant — the Residential Suites feature fireplaces and small libraries. The bar and restaurant are suitably grand as well, and open onto a pleasant outdoor terrace.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1668948.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 43.513145,
+     "longitude": 16.437685
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Split1/palazzo-president-17412",
+    "numberOfRooms": 32,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=43.513145%2C16.437685",
+    "petsAllowed": " Pets are allowed on request. Charges may apply.",
+    "telephone": "+385 21 305 222",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/split-dalmatia/split/restaurant/bome",
+    "/en/split-dalmatia/split/restaurant/dvor",
+    "/en/split-dalmatia/split/restaurant/k-uzina",
+    "/en/split-dalmatia/split/restaurant/kadena",
+    "/en/split-dalmatia/split/restaurant/konoba-fetivi",
+    "/en/split-dalmatia/split/restaurant/krug",
+    "/en/split-dalmatia/split/restaurant/sug",
+    "/en/split-dalmatia/split/restaurant/zinfandel-food-wine-bar",
+    "/en/split-dalmatia/split/restaurant/zoi",
+    "/en/split-dalmatia/split/restaurant/zrno-soli"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Orebi%C4%87/villa-korta-katarina-winery-15415",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Orebi%C4%87/villa-korta-katarina-winery-15415",
+   "h1": "Villa Korta Katarina & Winery",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ul. Bana Josipa Jelačića 3",
+     "addressLocality": "Orebić",
+     "postalCode": "20250",
+     "addressCountry": "HRV",
+     "addressRegion": "Dalmatia"
+    },
+    "name": "Villa Korta Katarina & Winery in Orebić",
+    "description": "Overlooking the Adriatic from a hillside in Orebić, Villa Korta Katarina is part grand villa, part boutique hotel, and part winery. Originally designed as a private home, the 1930s estate now features eight suites styled with Baroque touches: gilt mirrors, chandeliers, and balconies that open to the sound of waves below. American philanthropists Lee and Penny Anderson opened the property in 2018 following nearly a decade of restoration, pairing it with a winery focused on the bold reds of the Pelješac Peninsula. Guests can cruise the coast aboard the villa’s yacht or enjoy a private tasting among the vines.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1669681.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 42.9799776023,
+     "longitude": 17.1938401153
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Orebi%C4%87/villa-korta-katarina-winery-15415",
+    "numberOfRooms": 8,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=42.9799776023%2C17.1938401153",
+    "telephone": "+385 20 414 489",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/dubrovnik-neretva/korcula/restaurant/filippi",
+    "/en/dubrovnik-neretva/korcula/restaurant/konoba-mate",
+    "/en/dubrovnik-neretva/korcula/restaurant/ld-terrace",
+    "/en/split-dalmatia/gradac_1779105/restaurant/nicolo-polo"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/hvar/palace-elisabeth-hvar-hotel-15344",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/hvar/palace-elisabeth-hvar-hotel-15344",
+   "h1": "Palace Elisabeth Hvar",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Trg Svetog Stjepana 5",
+     "addressLocality": "Hvar",
+     "postalCode": "21450",
+     "addressCountry": "HRV"
+    },
+    "name": "Palace Elisabeth Hvar in Hvar",
+    "description": "Just above Hvar’s main square and steps from the waterfront, Palace Elisabeth is a landmark with centuries of history behind its elegant façade. Originally a 13th-century palace, it was transformed in 1899 with the support of Empress Elisabeth of Austria and still carries her name today. Inside, original architectural details sit alongside understated modern design, letting the building’s character lead. With sweeping views of the harbor and a prime position in the heart of town, it is a stay that connects you to Hvar’s past and present in equal measure.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1669811.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HRV",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 43.172655,
+     "longitude": 16.441058
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/hvar/palace-elisabeth-hvar-hotel-15344",
+    "numberOfRooms": 45,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=43.172655%2C16.441058",
+    "petsAllowed": "Pets are allowed. Charges may be applicable.",
+    "telephone": "+385 21 750 400",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/split-dalmatia/hvar_1779354/restaurant/mediterraneo-1204562",
+    "/en/split-dalmatia/stari-grad/restaurant/terra-restaurant-by-maslina-resort"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/otocec/hotel-grad-otocec-13601",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/otocec/hotel-grad-otocec-13601",
+   "h1": "Grad Otočec",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Grajska cesta 2",
+     "addressLocality": "Otocec",
+     "postalCode": "8222",
+     "addressCountry": "SVN"
+    },
+    "name": "Grad Otočec in Otocec",
+    "description": "It’s not every night you get to sleep in a real-life castle, or one with the fairytale setting of Grad Otočec. The former castle turned boutique hotel sits hidden away on islet in the middle of the Krka River, making it Slovenia’s only “water castle”, and one of its most unusual stays. The centuries old stone walls and turrets have been restored to their original Renaissance and Gothic glory and now house 16 guest room that feel contemporary but still classic with warm shades of wood and brown. The restaurant serves a seasonal menu of regional flavors and European classics, such as Piran sea bass carpaccio and steak with Dijon mustard and dishes are based around local produce from nearby farms, and even the hotel’s own organic garden. In addition to the main dining room there’s also the cozy Hunting Room for drinks by the fire and in summer months, an outdoor terrace. There’s no spa but there is an 18-hole golf course, and wine tastings take place in the memorable setting of one of the castle’s towers.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1640141.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SVN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 45.83794,
+     "longitude": 15.23476
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/otocec/hotel-grad-otocec-13601",
+    "numberOfRooms": 16,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=45.83794%2C15.23476",
+    "petsAllowed": "Pets are allowed. Charges may be applicable.",
+    "telephone": "",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/lower-carniola/novo-mesto_2579824/restaurant/gostilnica-barba",
+    "/en/southeast-slovenia/brusnice/restaurant/gostilna-vovko",
+    "/en/southeast-slovenia/otocec-na-krki/restaurant/otocec-castle",
+    "/en/southeast-slovenia/sentjanz/restaurant/gostilna-repovz"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/ljubljana/as-boutique-hotel-14899",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/ljubljana/as-boutique-hotel-14899",
+   "h1": "AS Boutique Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Čopova ulica 5",
+     "addressLocality": "Ljubljana",
+     "postalCode": "1000",
+     "addressCountry": "SVN"
+    },
+    "name": "AS Boutique Hotel in Ljubljana",
+    "description": "In Ljubljana’s historic center, AS Boutique Hotel makes a statement with its timber-slat façade and standout interiors: striped chaises, vintage finds, and a sharp edit of Slovenian contemporary art. The rooftop terrace, complete with Jacuzzi and castle views, enhances its city-stay appeal.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1481304.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SVN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 46.051718,
+     "longitude": 14.504448
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/ljubljana/as-boutique-hotel-14899",
+    "numberOfRooms": 28,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.051718%2C14.504448",
+    "telephone": "+386 1 547 66 66",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-slovenia/ljubljana/restaurant/aftr",
+    "/en/central-slovenia/ljubljana/restaurant/as",
+    "/en/central-slovenia/ljubljana/restaurant/georgie-bistro",
+    "/en/central-slovenia/ljubljana/restaurant/jaz-by-ana-ros",
+    "/en/central-slovenia/ljubljana/restaurant/landerik",
+    "/en/central-slovenia/ljubljana/restaurant/pen-klub-restavracija",
+    "/en/central-slovenia/ljubljana/restaurant/peti-181",
+    "/en/central-slovenia/ljubljana/restaurant/strelec",
+    "/en/central-slovenia/ljubljana/restaurant/sushimama",
+    "/en/central-slovenia/ljubljana/restaurant/the-restaurant-1240990"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/ljubljana/zlata-ladjica-boutique-hotel-14902",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/ljubljana/zlata-ladjica-boutique-hotel-14902",
+   "h1": "Zlata Ladjica Boutique Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Jurčičev trg 1",
+     "addressLocality": "Ljubljana",
+     "postalCode": "1000",
+     "addressCountry": "SVN"
+    },
+    "name": "Zlata Ladjica Boutique Hotel in Ljubljana",
+    "description": "Situated in a restored 17th-century house on the banks of the Ljubljanica River, the \"Golden Boat\" tells the story of the city through 15 individually styled rooms, each shaped by original stonework, timber ceilings, or hand-exposed murals. The building has housed everything from a goldsmith’s shop to a famed inn, and its meticulous restoration preserves the past without sacrificing comfort. One of the few freestanding buildings in Ljubljana’s old town, it offers rare views and a sense of continuity that is hard to find and easy to remember.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1511093.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SVN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 46.0484,
+     "longitude": 14.505347
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/ljubljana/zlata-ladjica-boutique-hotel-14902",
+    "numberOfRooms": 15,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.0484%2C14.505347",
+    "telephone": "+386 1 421 11 11",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-slovenia/ljubljana/restaurant/altroke",
+    "/en/central-slovenia/ljubljana/restaurant/breg",
+    "/en/central-slovenia/ljubljana/restaurant/jaz-by-ana-ros",
+    "/en/central-slovenia/ljubljana/restaurant/landerik",
+    "/en/central-slovenia/ljubljana/restaurant/na-gradu",
+    "/en/central-slovenia/ljubljana/restaurant/peti-181",
+    "/en/central-slovenia/ljubljana/restaurant/shambala",
+    "/en/central-slovenia/ljubljana/restaurant/strelec",
+    "/en/central-slovenia/ljubljana/restaurant/sushimama",
+    "/en/central-slovenia/ljubljana/restaurant/the-restaurant-1240990"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Bohinj/vila-muhr-15483",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Bohinj/vila-muhr-15483",
+   "h1": "Vila Muhr",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "44 Ribčev Laz",
+     "addressLocality": "Bohinj",
+     "postalCode": "4265",
+     "addressCountry": "SVN",
+     "addressRegion": "Gorenjska"
+    },
+    "name": "Vila Muhr in Bohinj",
+    "description": "Built in 1902 as a hunting lodge for Adolf Muhr and later favored by King Alexander of Yugoslavia, Vila Muhr carries a patina of aristocratic history into its new life as a lakeside retreat. Its four suites are lined with larch and layered with natural textures, each with balconies that open to Alpine scenery and bathrooms fitted with either saunas or deep tubs. A fine-dining restaurant celebrates seasonal produce from the region. History, design, and wilderness meet in this quietly glamorous corner of Triglav National Park.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1570313.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SVN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 46.276966,
+     "longitude": 13.888908
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Bohinj/vila-muhr-15483",
+    "numberOfRooms": 4,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.276966%2C13.888908",
+    "petsAllowed": "Pets are allowed on request. Charges may apply.",
+    "telephone": "+386 70 801 144",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/upper-carniola/bled/restaurant/julijana",
+    "/en/upper-carniola/bled/restaurant/old-cellar-bled",
+    "/en/upper-carniola/bled/restaurant/restavracija-1906",
+    "/en/upper-carniola/stara-fuzina_7770293/restaurant/restavracija-majerca"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/kranjska-gora/chalet-sofija-15423",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/kranjska-gora/chalet-sofija-15423",
+   "h1": "Chalet Sofija",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "10 Srednji Vrh",
+     "addressLocality": "Kranjska Gora",
+     "postalCode": "4282",
+     "addressCountry": "SVN",
+     "addressRegion": "Upper Carniola"
+    },
+    "name": "Chalet Sofija in Kranjska Gora",
+    "description": "The owners of the highly regarded Gostilna AS in Ljubljana are behind this mountain retreat, a striking modernist structure set on the hillside above the Julian Alpine village of Gozd Martuljek. Chalet Sofija offers just five suites, each named after one of the owners’ grandchildren. They range from the lavish Suite Izabela, with its panoramic views and 60 square meters of space, to the extraordinary Presidential Suite Izak, whose expansive outdoor terrace nearly doubles its already generous footprint.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1675137.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SVN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 46.489098,
+     "longitude": 13.837199
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/kranjska-gora/chalet-sofija-15423",
+    "numberOfRooms": 5,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.489098%2C13.837199",
+    "petsAllowed": "Pets are allowed. Charges may apply.",
+    "telephone": "+386 41 930 597",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/karnten/villach_1047295/restaurant/aurea",
+    "/en/karnten/villach_1047295/restaurant/frierss-feines-haus",
+    "/en/karnten/villach_1047295/restaurant/lagana",
+    "/en/upper-carniola/gozd-martuljek_7770292/restaurant/triangel",
+    "/en/upper-carniola/kranjska-gora/restaurant/milka"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Tata/platan-manor-13561",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Tata/platan-manor-13561",
+   "h1": "Platán Manor",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Kastély square 6",
+     "addressLocality": "Tata",
+     "postalCode": "2890",
+     "addressCountry": "HUN"
+    },
+    "name": "Platán Manor in Tata",
+    "description": "Less than an hour by car from Budapest, the lakeside Tata Castle is one of rural Hungary’s signature attractions. Perhaps unsurprisingly, you can’t stay in the castle itself; right next door, however, in a 17th-century palace that once belonged to the aristocratic Esterházy family, is Platán Manor, a small-scale hideaway that combines the noble character of a historical residence with the comforts of a modern luxury boutique hotel and the stylistic range of a contemporary designer with the freedom to range across centuries of visual inspiration.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1388668.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.648097,
+     "longitude": 18.318461
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Tata/platan-manor-13561",
+    "numberOfRooms": 26,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.648097%2C18.318461",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+36304449055",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/komarom-esztergom/tata/restaurant/platan-bisztro"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/hotel-clark-budapest-9054",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/hotel-clark-budapest-9054",
+   "h1": "Hotel Clark Budapest",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Clark Ádám tér 1.",
+     "addressLocality": "Budapest",
+     "postalCode": "1013",
+     "addressCountry": "HUN"
+    },
+    "name": "Hotel Clark Budapest in Budapest",
+    "description": "It would be hard to find a more central location in Budapest than Clark Ádám Square, situated quite literally between the iconic Chain Bridge over the Danube and the Castle Hill funicular.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1458377.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.498555,
+     "longitude": 19.040164
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/hotel-clark-budapest-9054",
+    "numberOfRooms": 79,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.498555%2C19.040164",
+    "petsAllowed": "Pets allowed: 15 EUR surcharge/night.",
+    "telephone": "+36 1 610 4890",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 10,
+     "ratingCount": 10,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/aleli",
+    "/en/central-hungary/budapest/restaurant/bibo-budapest",
+    "/en/central-hungary/budapest/restaurant/bilanx",
+    "/en/central-hungary/budapest/restaurant/costes-downtown",
+    "/en/central-hungary/budapest/restaurant/felix-1191677",
+    "/en/central-hungary/budapest/restaurant/kollazs",
+    "/en/central-hungary/budapest/restaurant/mak",
+    "/en/central-hungary/budapest/restaurant/moszkvate%D1%8F-bistro",
+    "/en/central-hungary/budapest/restaurant/stand25-bisztro",
+    "/en/central-hungary/budapest/restaurant/umo"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/kozmo-hotel-suites-spa-12004",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/kozmo-hotel-suites-spa-12004",
+   "h1": "Kozmo Hotel Suites & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Horváth Mihály tér 17",
+     "addressLocality": "Budapest",
+     "postalCode": "1082",
+     "addressCountry": "HUN"
+    },
+    "name": "Kozmo Hotel Suites & Spa in Budapest",
+    "description": "Kozmo Hotel Suites & Spa strikes what might be the perfect balance between past and present, updating a stately 20th-century building — formerly home to the largest telecommunications center in Eastern and Central Europe — with chic contemporary furnishings and décor, seamlessly blending classic elegance with modern sophistication.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1289908.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.490005,
+     "longitude": 19.074783
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/kozmo-hotel-suites-spa-12004",
+    "numberOfRooms": 84,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.490005%2C19.074783",
+    "petsAllowed": "No pets allowed",
+    "telephone": "+36 1 576 1098 /  +36 1 701 6300",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/94-konyha-bar",
+    "/en/central-hungary/budapest/restaurant/babel",
+    "/en/central-hungary/budapest/restaurant/cabrio",
+    "/en/central-hungary/budapest/restaurant/costes",
+    "/en/central-hungary/budapest/restaurant/nobu-budapest",
+    "/en/central-hungary/budapest/restaurant/rumour",
+    "/en/central-hungary/budapest/restaurant/salt-1196768",
+    "/en/central-hungary/budapest/restaurant/spago-by-wolfgang-puck",
+    "/en/central-hungary/budapest/restaurant/stand",
+    "/en/central-hungary/budapest/restaurant/tati"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/kimpton-bem-budapest-14261",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/kimpton-bem-budapest-14261",
+   "h1": "Kimpton Bem Budapest",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Bem József tér 3.",
+     "addressLocality": "Budapest",
+     "postalCode": "1027",
+     "addressCountry": "HUN"
+    },
+    "name": "Kimpton Bem Budapest in Budapest",
+    "description": "Inaugurated in 2024, the Kimpton BEM Budapest transforms a 19th-century palace through the creative lens of Marcel Wanders, blending classicism with hypermodernity. The historic building has been meticulously restored with a distinctive design inspired by local history and nature. Decorative motifs pay homage to mythological figures and animals, while the color palette − dominated by shades of blue and green − draws inspiration from Lake Balaton’s waters and Hungary’s lush forests. The swanky, stylish rooms reflect this theme, alternating between serene blue and vibrant green tones.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1501001.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.51238,
+     "longitude": 19.03761
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/kimpton-bem-budapest-14261",
+    "numberOfRooms": 127,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.51238%2C19.03761",
+    "petsAllowed": "Pets are allowed. No extra charges.",
+    "telephone": "+36 1 883 9880",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/arany-kaviar",
+    "/en/central-hungary/budapest/restaurant/costes-downtown",
+    "/en/central-hungary/budapest/restaurant/hoppa-bistro",
+    "/en/central-hungary/budapest/restaurant/kollazs",
+    "/en/central-hungary/budapest/restaurant/majorelle-1242518",
+    "/en/central-hungary/budapest/restaurant/mak",
+    "/en/central-hungary/budapest/restaurant/moszkvate%D1%8F-bistro",
+    "/en/central-hungary/budapest/restaurant/st-andrea-wine-gourmet-bar",
+    "/en/central-hungary/budapest/restaurant/umo",
+    "/en/central-hungary/budapest/restaurant/zincenco-kitchen"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/anantara-new-york-palace-budapest-7674",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/anantara-new-york-palace-budapest-7674",
+   "h1": "Anantara New York Palace Budapest",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Erzsébet krt. 9-11",
+     "addressLocality": "Budapest",
+     "postalCode": "1073",
+     "addressCountry": "HUN"
+    },
+    "name": "Anantara New York Palace Budapest in Budapest",
+    "description": "It’s been well over a century since Budapest’s New York Café first opened its doors in 1894 — the day renowned Hungarian writer Ferenc Molnár allegedly seized the keys and tossed them into the Danube, ensuring the café would never close. Situated on the ground floor of an ornate palace just off the Grand Boulevard, the beautifully restored café remains the crown jewel of the Anantara New York Palace Budapest. With its original frescoes, Venetian chandeliers, and gilded details, the space exudes old-world charm. Soaring ceilings, sixteen grand windows, and twisting columns adorned with golden stucco make it a true architectural masterpiece. Among whimsical sculptures of devilish fauns and \"El Asmodai\"—an ancient symbol of coffee and meditation—the café's signature 24-carat gold New York cappuccino awaits to be savored.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1459208.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.49848,
+     "longitude": 19.07038
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/anantara-new-york-palace-budapest-7674",
+    "numberOfRooms": 185,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.49848%2C19.07038",
+    "petsAllowed": "Please note dogs and cats are allowed, max. weight 25kg. Limited availability, please contact the hotel before booking. A charge of 50€ per day will be applied (max. 2 pets per room). Guide dogs free of charge.",
+    "telephone": " +36 1 886 6111",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/94-konyha-bar",
+    "/en/central-hungary/budapest/restaurant/borkonyha-winekitchen",
+    "/en/central-hungary/budapest/restaurant/cabrio",
+    "/en/central-hungary/budapest/restaurant/costes",
+    "/en/central-hungary/budapest/restaurant/goli",
+    "/en/central-hungary/budapest/restaurant/n28-wine-and-kitchen",
+    "/en/central-hungary/budapest/restaurant/salt-1196768",
+    "/en/central-hungary/budapest/restaurant/stand",
+    "/en/central-hungary/budapest/restaurant/tati",
+    "/en/central-hungary/budapest/restaurant/textura"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/verno-house-13047",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/verno-house-13047",
+   "h1": "Verno House",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "26 Október 6. utca",
+     "addressLocality": "Budapest",
+     "postalCode": "1051",
+     "addressCountry": "HUN"
+    },
+    "name": "Verno House in Budapest",
+    "description": "While deeply rooted in history, Verno House is far more than a mere retro reconstruction. It masterfully blends historic inspiration with a fresh, contemporary perspective, creating a space that is both elegant and effortlessly modern.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1537749.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.50265,
+     "longitude": 19.05045
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/verno-house-13047",
+    "numberOfRooms": 48,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.50265%2C19.05045",
+    "telephone": "+36 1 886 1120",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/bilanx",
+    "/en/central-hungary/budapest/restaurant/borkonyha-winekitchen",
+    "/en/central-hungary/budapest/restaurant/costes-downtown",
+    "/en/central-hungary/budapest/restaurant/essencia",
+    "/en/central-hungary/budapest/restaurant/goli",
+    "/en/central-hungary/budapest/restaurant/hoppa-bistro",
+    "/en/central-hungary/budapest/restaurant/kollazs",
+    "/en/central-hungary/budapest/restaurant/majorelle-1242518",
+    "/en/central-hungary/budapest/restaurant/mak",
+    "/en/central-hungary/budapest/restaurant/textura"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/four-seasons-hotel-gresham-palace-budapest-6348",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/four-seasons-hotel-gresham-palace-budapest-6348",
+   "h1": "Four Seasons Hotel Gresham Palace Budapest",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Széchenyi István tér 5-6, Gresham Palace",
+     "addressLocality": "Budapest",
+     "postalCode": "1051",
+     "addressCountry": "HUN"
+    },
+    "name": "Four Seasons Hotel Gresham Palace Budapest in Budapest",
+    "description": "Set within one of Budapest’s most captivating buildings, originally constructed in 1906 for the Gresham Life Assurance Company, the hotel boasts a prime location overlooking the Chain Bridge, with a direct view of Buda Castle. After a tumultuous history, its interiors were magnificently restored to their original splendor, culminating in the 2004 opening of this stunning Art Nouveau-style gem.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1691588.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.49975,
+     "longitude": 19.04776
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/four-seasons-hotel-gresham-palace-budapest-6348",
+    "numberOfRooms": 179,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.49975%2C19.04776",
+    "petsAllowed": "\\n Pets are allowed and must be fully trained and appropriately restrained by guest. Pet must comply with local legislation requirements. Pet must be kept on a leash when in the hotel or on hotel property unless it is in the guest's room. Pets should not be left unattended. If guest requires a pet-sitter or pet supplies, they should contact the concierge with advance notice. Pets are not allowed in any food and beverage outlets, health club and pool areas of the hotel. This exclusion does not apply to guide dogs. Guests are responsible for cleaning up after their pet on hotel property and in the neighbourhood. Any disturbances such as barking must be curtailed to ensure other guests are not inconvenienced. Guests must contact the housekeeping department to arrange for a convenient time for servicing their room.",
+    "telephone": "36 (1) 268.6000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.7,
+     "reviewCount": 4,
+     "ratingCount": 4,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/aleli",
+    "/en/central-hungary/budapest/restaurant/bibo-budapest",
+    "/en/central-hungary/budapest/restaurant/bilanx",
+    "/en/central-hungary/budapest/restaurant/costes-downtown",
+    "/en/central-hungary/budapest/restaurant/essencia",
+    "/en/central-hungary/budapest/restaurant/hoppa-bistro",
+    "/en/central-hungary/budapest/restaurant/kollazs",
+    "/en/central-hungary/budapest/restaurant/mak",
+    "/en/central-hungary/budapest/restaurant/onyx",
+    "/en/central-hungary/budapest/restaurant/textura"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/matild-palace-a-luxury-collection-hotel-12094",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/matild-palace-a-luxury-collection-hotel-12094",
+   "h1": "Matild Palace, a Luxury Collection Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Váci utca 36",
+     "addressLocality": "Budapest",
+     "postalCode": "1056",
+     "addressCountry": "HUN"
+    },
+    "name": "Matild Palace, a Luxury Collection Hotel in Budapest",
+    "description": "One of a matching pair of Belle Epoque palaces built by Marie Clotilde, Archduchess of Austria, the Matild Palace has been not just lovingly restored but functionally transformed into a 130-room Luxury Collection hotel. The location is a grand one, just off the Elizabeth Bridge, and what’s inside is a heady mixture of historical heritage and contemporary style.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1342366.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.49228,
+     "longitude": 19.05378
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/matild-palace-a-luxury-collection-hotel-12094",
+    "numberOfRooms": 130,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.49228%2C19.05378",
+    "telephone": "+36 1 550 5000",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/aleli",
+    "/en/central-hungary/budapest/restaurant/babel",
+    "/en/central-hungary/budapest/restaurant/bibo-budapest",
+    "/en/central-hungary/budapest/restaurant/cabrio",
+    "/en/central-hungary/budapest/restaurant/costes",
+    "/en/central-hungary/budapest/restaurant/nobu-budapest",
+    "/en/central-hungary/budapest/restaurant/onyx",
+    "/en/central-hungary/budapest/restaurant/rumour",
+    "/en/central-hungary/budapest/restaurant/salt-1196768",
+    "/en/central-hungary/budapest/restaurant/spago-by-wolfgang-puck"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/dorothea-hotel-budapest-autograph-collection-13598",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/dorothea-hotel-budapest-autograph-collection-13598",
+   "h1": "Dorothea Hotel, Budapest, Autograph Collection",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Dorottya utca 2",
+     "addressLocality": "Budapest",
+     "postalCode": "1051",
+     "addressCountry": "HUN"
+    },
+    "name": "Dorothea Hotel, Budapest, Autograph Collection in Budapest",
+    "description": "Opened in 2023, the hotel is the result of the union of three buildings from the 19th and 20th centuries, each with its own distinct architectural identity. Designed by Italian architect Piero Lissoni, it maintains a deep connection to local history and traditions, starting with its name — a tribute to Dorothea of Württemberg, wife of Archduke Palatine Joseph, governor of Hungary in the 19th century, and a beloved figure among the Hungarian people.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1431750.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.49708,
+     "longitude": 19.04942
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/dorothea-hotel-budapest-autograph-collection-13598",
+    "numberOfRooms": 216,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.49708%2C19.04942",
+    "telephone": "+36 1-884-5100",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/aleli",
+    "/en/central-hungary/budapest/restaurant/bibo-budapest",
+    "/en/central-hungary/budapest/restaurant/bilanx",
+    "/en/central-hungary/budapest/restaurant/borkonyha-winekitchen",
+    "/en/central-hungary/budapest/restaurant/costes-downtown",
+    "/en/central-hungary/budapest/restaurant/kollazs",
+    "/en/central-hungary/budapest/restaurant/nobu-budapest",
+    "/en/central-hungary/budapest/restaurant/onyx",
+    "/en/central-hungary/budapest/restaurant/rumour",
+    "/en/central-hungary/budapest/restaurant/textura"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/parisi-udvar-hotel-budapest-120059-9359",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/parisi-udvar-hotel-budapest-120059-9359",
+   "h1": "Párisi Udvar Hotel Budapest",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Petőfi Sándor u. 2-4",
+     "addressLocality": "Budapest",
+     "postalCode": "1052",
+     "addressCountry": "HUN"
+    },
+    "name": "Párisi Udvar Hotel Budapest in Budapest",
+    "description": "To say that the Párisi Udvar Hotel Budapest is one of the most opulent hotels we’ve ever seen actually risks underselling it somewhat. The Art Nouveau shopping arcade that’s been converted into its lobby looks as though it’s been dipped in gold, and the original architecture is an eclectic mix of Parisian, Gothic, and Moorish styles.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1094862.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.493439,
+     "longitude": 19.055216
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/parisi-udvar-hotel-budapest-120059-9359",
+    "numberOfRooms": 110,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.493439%2C19.055216",
+    "telephone": "+36 1 576 1600",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/aleli",
+    "/en/central-hungary/budapest/restaurant/babel",
+    "/en/central-hungary/budapest/restaurant/bibo-budapest",
+    "/en/central-hungary/budapest/restaurant/borkonyha-winekitchen",
+    "/en/central-hungary/budapest/restaurant/cabrio",
+    "/en/central-hungary/budapest/restaurant/nobu-budapest",
+    "/en/central-hungary/budapest/restaurant/onyx",
+    "/en/central-hungary/budapest/restaurant/rumour",
+    "/en/central-hungary/budapest/restaurant/salt-1196768",
+    "/en/central-hungary/budapest/restaurant/spago-by-wolfgang-puck"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/budapest/w-budapest-14320",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/budapest/w-budapest-14320",
+   "h1": "W Budapest",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Andrassy ut 25",
+     "addressLocality": "Budapest",
+     "postalCode": "1061",
+     "addressCountry": "HUN"
+    },
+    "name": "W Budapest in Budapest",
+    "description": "Budapest’s Drechsler Palace is an opulent jewel in an expressive French Renaissance style — an unusual choice of venue for the W Budapest, but one that results a truly memorable hotel. Its classic architecture serves as a vibrant counterpoint to the brand’s signature saturated colors and modernist décor, while its position at the heart of the city makes it a natural gathering place for travelers and locals alike. Among its offerings are a subterranean spa and an Asian restaurant from the Beefbar brand.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1431291.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 47.50216,
+     "longitude": 19.05913
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/budapest/w-budapest-14320",
+    "numberOfRooms": 151,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=47.50216%2C19.05913",
+    "telephone": "+36 1 253 3100",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/central-hungary/budapest/restaurant/94-konyha-bar",
+    "/en/central-hungary/budapest/restaurant/bilanx",
+    "/en/central-hungary/budapest/restaurant/borkonyha-winekitchen",
+    "/en/central-hungary/budapest/restaurant/essencia",
+    "/en/central-hungary/budapest/restaurant/goli",
+    "/en/central-hungary/budapest/restaurant/hoppa-bistro",
+    "/en/central-hungary/budapest/restaurant/majorelle-1242518",
+    "/en/central-hungary/budapest/restaurant/n28-wine-and-kitchen",
+    "/en/central-hungary/budapest/restaurant/stand",
+    "/en/central-hungary/budapest/restaurant/textura"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Balatonf%C3%BCred/hotel-petit-bois-15109",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Balatonf%C3%BCred/hotel-petit-bois-15109",
+   "h1": "Hotel Petit Bois",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Táncsics Mihály u. 7",
+     "addressLocality": "Balatonfüred",
+     "postalCode": "8230",
+     "addressCountry": "HUN",
+     "addressRegion": "Veszprém"
+    },
+    "name": "Hotel Petit Bois in Balatonfüred",
+    "description": "Two hours’ drive from Budapest, in the lakeside resort town of Balatonfüred, the Hotel Petit Bois offers a thoroughly luxurious experience. The adults-only policy certainly doesn’t hurt, but more important is its atmosphere of Belle Époque elegance, tempered with judicious contemporary flourishes and modern, even high-tech comforts. Many rooms overlook the park that lends the hotel its name, while others have views of the lake. The rooftop bar and restaurant is a particular highlight, opening as it does onto a terrace with a pool; the spa, too, is noteworthy, an elaborate escape in a characteristically Hungarian manner.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1487815.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-HUN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 46.958282,
+     "longitude": 17.896626
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Balatonf%C3%BCred/hotel-petit-bois-15109",
+    "numberOfRooms": 13,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.958282%2C17.896626",
+    "telephone": "+36 30 258 9371",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/somogy/balatonszemes/restaurant/kistucsok",
+    "/en/veszprem-region/balatonfured/restaurant/noon",
+    "/en/veszprem-region/balatonfured/restaurant/sparhelt",
+    "/en/veszprem-region/balatonfured/restaurant/zelna-borbar-es-vinoteka",
+    "/en/veszprem-region/balatonszolos/restaurant/casa-christa",
+    "/en/veszprem-region/csopak/restaurant/csopaki-resti-by-laurel",
+    "/en/veszprem-region/csopak/restaurant/petranyi-csopak",
+    "/en/veszprem-region/csopak/restaurant/vig-molnar-csarda",
+    "/en/veszprem-region/tihany/restaurant/tihanyi-vinarius",
+    "/en/veszprem-region/zanka/restaurant/neked-foztem"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/valletta/rosselli-ax-privilege-9221",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/valletta/rosselli-ax-privilege-9221",
+   "h1": "Rosselli – AX Privilege",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "167 Merchants St",
+     "addressLocality": "Valletta",
+     "postalCode": "VLT 1174",
+     "addressCountry": "MLT"
+    },
+    "name": "Rosselli – AX Privilege in Valletta",
+    "description": "The Baroque palazzo known as Casa Rosselli-Massa is a splendid piece of 17th-century history, and many of Valletta’s hoteliers would have been perfectly content to keep it that way. But the AX Hotels group had greater ambitions. Forward Architects transformed this heritage structure into Rosselli – AX Privilege, developing no fewer than six distinct looks for the hotel’s 25 rooms and suites. It’s a much-needed dose of high design for Malta’s capital city, and a hotel that makes good on its promise to deliver an experience you won’t soon forget.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1385514.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-MLT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.898876,
+     "longitude": 14.515381
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/valletta/rosselli-ax-privilege-9221",
+    "numberOfRooms": 24,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.898876%2C14.515381",
+    "telephone": "+356 2331 2345 / +356 2124 5245",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 17.7,
+     "reviewCount": 5,
+     "ratingCount": 5,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/malta-south-eastern-region/valletta/restaurant/59-republic",
+    "/en/malta-south-eastern-region/valletta/restaurant/aaron%C2%B4s-kitchen",
+    "/en/malta-south-eastern-region/valletta/restaurant/aki",
+    "/en/malta-south-eastern-region/valletta/restaurant/grain-street",
+    "/en/malta-south-eastern-region/valletta/restaurant/kaiseki-1209604",
+    "/en/malta-south-eastern-region/valletta/restaurant/la-pira",
+    "/en/malta-south-eastern-region/valletta/restaurant/noni",
+    "/en/malta-south-eastern-region/valletta/restaurant/one80-st-christopher-street",
+    "/en/malta-south-eastern-region/valletta/restaurant/rubino",
+    "/en/malta-south-eastern-region/valletta/restaurant/under-grain"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/valletta/the-phoenicia-malta-8796",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/valletta/the-phoenicia-malta-8796",
+   "h1": "The Phoenicia Malta",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "The Mall, Il-Belt",
+     "addressLocality": "Valletta",
+     "postalCode": "FRN1478",
+     "addressCountry": "MLT"
+    },
+    "name": "The Phoenicia Malta  in Valletta",
+    "description": "For decades, The Phoenicia Malta has been known as one of the top hotels on the island. But even if you knew the old Phoenicia, you’re in for a pleasant surprise. In its current incarnation the new edition of The Phoenicia Malta combines top-flight luxury with no small amount of stylistic distinction, and a standard of service that’s substantially above and beyond the norm.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1633598.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-MLT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.895553,
+     "longitude": 14.507037
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/valletta/the-phoenicia-malta-8796",
+    "numberOfRooms": 132,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.895553%2C14.507037",
+    "telephone": "+356 2122 5241",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 18.9,
+     "reviewCount": 6,
+     "ratingCount": 6,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/malta-south-eastern-region/valletta/restaurant/59-republic",
+    "/en/malta-south-eastern-region/valletta/restaurant/aaron%C2%B4s-kitchen",
+    "/en/malta-south-eastern-region/valletta/restaurant/aki",
+    "/en/malta-south-eastern-region/valletta/restaurant/guze-bistro",
+    "/en/malta-south-eastern-region/valletta/restaurant/ion-the-harbour",
+    "/en/malta-south-eastern-region/valletta/restaurant/la-pira",
+    "/en/malta-south-eastern-region/valletta/restaurant/legligin",
+    "/en/malta-south-eastern-region/valletta/restaurant/risette",
+    "/en/malta-south-eastern-region/valletta/restaurant/rubino",
+    "/en/malta-south-eastern-region/valletta/restaurant/the-harbour-club"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/mellieha/lure-hotel-13019",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/mellieha/lure-hotel-13019",
+   "h1": "Lure Hotel & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "9, Parish Square",
+     "addressLocality": "Mellieha",
+     "postalCode": "MLH1072",
+     "addressCountry": "MLT",
+     "addressRegion": "Northern Region"
+    },
+    "name": "Lure Hotel & Spa in Mellieha",
+    "description": "Almost all of Malta’s impressive crop of luxury boutique hotels have been built in and around Valletta, the capital city. But this island has charms that are capable of tempting you away from the crowd. And while we’re not certain that’s why it’s called Lure Hotel & Spa, the upshot is the same: a compelling hospitality reason to venture into the island’s north, to the picturesque village of Mellieħa.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1334795.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-MLT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.959811,
+     "longitude": 14.360893
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/mellieha/lure-hotel-13019",
+    "numberOfRooms": 12,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.959811%2C14.360893",
+    "telephone": "0035627600223",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/gozo-region/ghajnsielem_2108986/restaurant/tmun",
+    "/en/malta-northern-region/marr/restaurant/verbena",
+    "/en/malta-northern-region/mdina/restaurant/de-mondion",
+    "/en/malta-northern-region/mdina/restaurant/scala-1218684",
+    "/en/malta-northern-region/mdina/restaurant/the-medina",
+    "/en/malta-northern-region/melliea/restaurant/commando",
+    "/en/malta-northern-region/melliea/restaurant/rebekah-s",
+    "/en/malta-northern-region/mt-rabat/restaurant/grotto-tavern",
+    "/en/malta-northern-region/naxxar/restaurant/giuseppi-s",
+    "/en/malta-northern-region/saint-paul-s-bay_2109071/restaurant/loa"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/valletta/iniala-valletta-12940",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/valletta/iniala-valletta-12940",
+   "h1": "Iniala Valletta",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "10 St.Barbara Bastion",
+     "addressLocality": "Valletta",
+     "postalCode": "VLT 1961",
+     "addressCountry": "MLT"
+    },
+    "name": "Iniala Valletta in Valletta",
+    "description": "Among Malta’s most compelling attractions is its recent surplus of residential-style luxury boutique hotels. One of them, in the capital city of Valletta, is Iniala Valletta, a row of four antique townhouses, meticulously renovated by three distinguished design studios — Autoban from Turkey, A-cero from Spain, and DAAA Haus from Malta — into an ultra-luxe lodging that blends eclectic design with contemporary comforts. The location is equally attractive, facing right out over the harbor, and the vibe, thanks to its small size, is ultra-private and ultra-discreet.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1420228.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-MLT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.89626,
+     "longitude": 14.51427
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/valletta/iniala-valletta-12940",
+    "numberOfRooms": 33,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.89626%2C14.51427",
+    "petsAllowed": "Pets are allowed on request. Charges may apply.",
+    "telephone": "+35679495668 / +35621661111 ",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/malta-south-eastern-region/valletta/restaurant/59-republic",
+    "/en/malta-south-eastern-region/valletta/restaurant/aki",
+    "/en/malta-south-eastern-region/valletta/restaurant/grain-street",
+    "/en/malta-south-eastern-region/valletta/restaurant/guze-bistro",
+    "/en/malta-south-eastern-region/valletta/restaurant/ion-the-harbour",
+    "/en/malta-south-eastern-region/valletta/restaurant/kaiseki-1209604",
+    "/en/malta-south-eastern-region/valletta/restaurant/la-pira",
+    "/en/malta-south-eastern-region/valletta/restaurant/one80-st-christopher-street",
+    "/en/malta-south-eastern-region/valletta/restaurant/the-harbour-club",
+    "/en/malta-south-eastern-region/valletta/restaurant/under-grain"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Mdina/xara-palace-11850",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Mdina/xara-palace-11850",
+   "h1": "Xara Palace",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Misrah Il-Kunsill",
+     "addressLocality": "Mdina",
+     "postalCode": "MDN 1050",
+     "addressCountry": "MLT"
+    },
+    "name": "Xara Palace in Mdina",
+    "description": "High-end boutique hotels are flourishing in Malta, but mostly in the Baroque capital — the Xara Palace is the rare exception, a stunning 17th-century palazzo in the mostly medieval city of Mdina, a historically rich destination in the island’s interior. In its current incarnation the hotel is a tribute to the city’s aristocratic heritage, and while it’s been subtly updated to meet contemporary luxury-hotel expectations, its atmosphere remains period-correct. De Mondion, the Michelin-starred restaurant, is a particular highlight, and For a more informal dining experience, head to Trattoria AD 1530.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1572187.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-MLT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.88513,
+     "longitude": 14.40403
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Mdina/xara-palace-11850",
+    "numberOfRooms": 17,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.88513%2C14.40403",
+    "telephone": "(+356) 21 450560",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/malta-central-region/balzan/restaurant/bahia",
+    "/en/malta-northern-region/marr/restaurant/verbena",
+    "/en/malta-northern-region/mdina/restaurant/de-mondion",
+    "/en/malta-northern-region/mdina/restaurant/scala-1218684",
+    "/en/malta-northern-region/mdina/restaurant/the-fork-and-cork",
+    "/en/malta-northern-region/mdina/restaurant/the-medina",
+    "/en/malta-northern-region/mt-rabat/restaurant/grotto-tavern",
+    "/en/malta-northern-region/mt-rabat/restaurant/root-81",
+    "/en/malta-northern-region/mt-rabat/restaurant/the-golden-fork",
+    "/en/malta-northern-region/saint-paul-s-bay_2109071/restaurant/loa"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/valletta/domus-zamitello-11851",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/valletta/domus-zamitello-11851",
+   "h1": "Domus Zamittello",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "7, Republic Street",
+     "addressLocality": "Valletta",
+     "postalCode": "VLT 1111",
+     "addressCountry": "MLT"
+    },
+    "name": "Domus Zamittello in Valletta",
+    "description": "A beautifully restored 17th-century palazzo in a prime location at the head of Valletta’s main drag of Republic Street, Domus Zamittello is the opulent luxury hotel this famous Baroque city demands. The public spaces are imposingly elegant, all lovingly rebuilt to the original specifications, while the rooms balance the old-world grandeur with smart 21st-century comforts like underfloor heating and double-glazed windows. A terrace offers an impressive view of the urban panorama, from the city gates to the Royal Opera House, and Mezzodi, the restaurant, offers Italian fare and light bites all day long.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1341366.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-MLT",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 35.89696,
+     "longitude": 14.51037
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/valletta/domus-zamitello-11851",
+    "numberOfRooms": 21,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=35.89696%2C14.51037",
+    "telephone": "+356 2122 7700",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/malta-south-eastern-region/valletta/restaurant/59-republic",
+    "/en/malta-south-eastern-region/valletta/restaurant/aaron%C2%B4s-kitchen",
+    "/en/malta-south-eastern-region/valletta/restaurant/aki",
+    "/en/malta-south-eastern-region/valletta/restaurant/guze-bistro",
+    "/en/malta-south-eastern-region/valletta/restaurant/ion-the-harbour",
+    "/en/malta-south-eastern-region/valletta/restaurant/la-pira",
+    "/en/malta-south-eastern-region/valletta/restaurant/legligin",
+    "/en/malta-south-eastern-region/valletta/restaurant/risette",
+    "/en/malta-south-eastern-region/valletta/restaurant/rubino",
+    "/en/malta-south-eastern-region/valletta/restaurant/the-harbour-club"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Vilnius/hotel-pacai-13980",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Vilnius/hotel-pacai-13980",
+   "h1": "Hotel Pacai",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Didžioji g. 7",
+     "addressLocality": "Vilnius",
+     "postalCode": "LT-01128",
+     "addressCountry": "LTU"
+    },
+    "name": "Hotel Pacai in Vilnius",
+    "description": "Hotel Pacai has borne witness to centuries of Vilnius’s storied past — from the grandeur of the czars to Napoleon’s march, through the Soviet era, and into modern independence. Originally constructed in the 15th century as a noble residence, the building today houses a refined, design-forward hotel that masterfully blends historical legacy with contemporary elegance.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1492998.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-LTU",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 54.68018,
+     "longitude": 25.28804
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Vilnius/hotel-pacai-13980",
+    "numberOfRooms": 104,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=54.68018%2C25.28804",
+    "telephone": "+370 5 2770000",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.6,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/vilnius-region/vilnius_1985479/restaurant/14horses",
+    "/en/vilnius-region/vilnius_1985479/restaurant/augustin",
+    "/en/vilnius-region/vilnius_1985479/restaurant/buff-on",
+    "/en/vilnius-region/vilnius_1985479/restaurant/ertlio-namas",
+    "/en/vilnius-region/vilnius_1985479/restaurant/justa-pasta",
+    "/en/vilnius-region/vilnius_1985479/restaurant/kristoforas",
+    "/en/vilnius-region/vilnius_1985479/restaurant/motif",
+    "/en/vilnius-region/vilnius_1985479/restaurant/nineteen18",
+    "/en/vilnius-region/vilnius_1985479/restaurant/pacai",
+    "/en/vilnius-region/vilnius_1985479/restaurant/stikliai"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/Trakai/esperanza-lake-resort-15389",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/Trakai/esperanza-lake-resort-15389",
+   "h1": "Esperanza Lake Resort",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Paunguriai, Trakų sen., Trakų r. sav., Vilniaus apskr.",
+     "addressLocality": "Trakai",
+     "postalCode": "LT-21282",
+     "addressCountry": "LTU",
+     "addressRegion": "Vilnius"
+    },
+    "name": "Esperanza Lake Resort in Trakai",
+    "description": "Esperanza Lake Resort spans eleven private hectares along the wooded edge of Ungurys Lake, deep inside Aukštadvaris Regional Park. Though just 40 kilometers from Vilnius, the landscape shifts quickly to forest roads and still water. The main lodge, built from centuries-old cedar, is shaped by natural materials and subtle detailing. Interiors are warm, open, and sophisticated, with rooms that look onto either the lake or the trees. Guests fall into step with the landscape with slow mornings, long walks, and no real need for a watch.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1633594.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-LTU",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 54.604538,
+     "longitude": 24.749193
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/Trakai/esperanza-lake-resort-15389",
+    "numberOfRooms": 30,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=54.604538%2C24.749193",
+    "telephone": "+370 660 03366",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/vilnius-region/trakai_1984277/restaurant/apvalaus-stalo-klubo"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/riga/a22-hotel-12532",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/riga/a22-hotel-12532",
+   "h1": "A22 Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Ausekļa iela 22",
+     "addressLocality": "Riga",
+     "postalCode": "LV-1010",
+     "addressCountry": "LVA"
+    },
+    "name": "A22 Hotel in Riga",
+    "description": "The stately building that houses A22 was originally constructed in the 1930s and served as the American embassy. With an ultra-modern addition and a thorough interior redesign, it now bridges the gap between classic and contemporary with ease and panache. The hotel takes its name from its address — Ausekļa iela 22 — blending local character with a cosmopolitan edge.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1633575.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-LVA",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 56.96243,
+     "longitude": 24.1005
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/riga/a22-hotel-12532",
+    "numberOfRooms": 20,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=56.96243%2C24.1005",
+    "petsAllowed": "\\n Pets are allowed on request. Charges may be applicable.",
+    "telephone": "371 62 222 250",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/riga-region/riga_1991577/restaurant/b7",
+    "/en/riga-region/riga_1991577/restaurant/chef-s-corner",
+    "/en/riga-region/riga_1991577/restaurant/john-chef-s-hall",
+    "/en/riga-region/riga_1991577/restaurant/lowine",
+    "/en/riga-region/riga_1991577/restaurant/masa-1216043",
+    "/en/riga-region/riga_1991577/restaurant/riviera-1205086",
+    "/en/riga-region/riga_1991577/restaurant/shoyu",
+    "/en/riga-region/riga_1991577/restaurant/smor-bistro",
+    "/en/riga-region/riga_1991577/restaurant/snatch",
+    "/en/riga-region/riga_1991577/restaurant/the-catch"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/riga/grand-poet-hotel-and-spa-by-semarah-12950",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/riga/grand-poet-hotel-and-spa-by-semarah-12950",
+   "h1": "Grand Poet Hotel and SPA by Semarah",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Raiņa bulvāris 5/6 ",
+     "addressLocality": "Riga",
+     "postalCode": "LV-1050",
+     "addressCountry": "LVA"
+    },
+    "name": "Grand Poet Hotel and SPA by Semarah in Riga",
+    "description": "You can probably guess from the name that the Grand Poet Hotel by Semarah isn’t afraid of an artistic flourish or two. Set just across from the charming canalside Bastejkalna Park and a short stroll from Riga’s Old Town, the hotel occupies a stately 19th-century building. Step inside, though, and you’ll find yourself in a postmodern Belle Époque fantasy—amplified by bold graphic murals and a vivid contemporary color palette.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1633583.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-LVA",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 56.95362,
+     "longitude": 24.11056
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/riga/grand-poet-hotel-and-spa-by-semarah-12950",
+    "numberOfRooms": 168,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=56.95362%2C24.11056",
+    "petsAllowed": "Pets are allowed on request. Charges may be applicable.",
+    "telephone": "+371 60 008 600",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/riga-region/riga_1991577/restaurant/3-chefs",
+    "/en/riga-region/riga_1991577/restaurant/babo",
+    "/en/riga-region/riga_1991577/restaurant/chef-s-corner",
+    "/en/riga-region/riga_1991577/restaurant/le-dome",
+    "/en/riga-region/riga_1991577/restaurant/lowine",
+    "/en/riga-region/riga_1991577/restaurant/seasons-1215471",
+    "/en/riga-region/riga_1991577/restaurant/smor-bistro",
+    "/en/riga-region/riga_1991577/restaurant/snatch",
+    "/en/riga-region/riga_1991577/restaurant/stage-22",
+    "/en/riga-region/riga_1991577/restaurant/the-catch"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/riga/dome-hotel-spa-6351",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/riga/dome-hotel-spa-6351",
+   "h1": "Dome Hotel & Spa",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "4 Miesnieku Street",
+     "addressLocality": "Riga",
+     "postalCode": "LV-1050",
+     "addressCountry": "LVA"
+    },
+    "name": "Dome Hotel & Spa in Riga",
+    "description": "It wasn’t the first city in Europe to embrace the boutique-hotel concept, but Riga is home to some real gems. Among them is the Dome Hotel, a 17th-century residence in the city’s picturesque old town that’s been transformed into a luxury boutique hotel that celebrates Riga’s joyfully unique architectural heritage alongside modernist design furniture and contemporary boutique-hotel comforts.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1491992.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-LVA",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 56.949717,
+     "longitude": 24.103553
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/riga/dome-hotel-spa-6351",
+    "numberOfRooms": 15,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=56.949717%2C24.103553",
+    "telephone": "+37167509010",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.2,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/riga-region/riga_1991577/restaurant/3-chefs",
+    "/en/riga-region/riga_1991577/restaurant/babo",
+    "/en/riga-region/riga_1991577/restaurant/chef-s-corner",
+    "/en/riga-region/riga_1991577/restaurant/le-dome",
+    "/en/riga-region/riga_1991577/restaurant/lowine",
+    "/en/riga-region/riga_1991577/restaurant/milda",
+    "/en/riga-region/riga_1991577/restaurant/neiburgs",
+    "/en/riga-region/riga_1991577/restaurant/seasons-1215471",
+    "/en/riga-region/riga_1991577/restaurant/snatch",
+    "/en/riga-region/riga_1991577/restaurant/stage-22"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/tallinn/schlossle-hotel-12625",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/tallinn/schlossle-hotel-12625",
+   "h1": "Schlössle Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Pühavaimu 13/15",
+     "addressLocality": "Tallinn",
+     "postalCode": "10123",
+     "addressCountry": "EST"
+    },
+    "name": "Schlössle Hotel in Tallinn",
+    "description": "Tallinn is home to one of Europe’s most captivating medieval city centers. It’s here, in a picturesque 13th-century townhouse, that you’ll find the Schlössle Hotel, one of the city’s most elegant luxury boutique hotels.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1368281.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EST",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 59.43863,
+     "longitude": 24.74762
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/tallinn/schlossle-hotel-12625",
+    "numberOfRooms": 23,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=59.43863%2C24.74762",
+    "petsAllowed": "Pets are allowed. Charges may be applicable.",
+    "telephone": "+372 699 7700",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 3,
+     "ratingCount": 3,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/harju/tallinn/restaurant/art-priori",
+    "/en/harju/tallinn/restaurant/fume",
+    "/en/harju/tallinn/restaurant/koyo-1217894",
+    "/en/harju/tallinn/restaurant/lee",
+    "/en/harju/tallinn/restaurant/osteria-il-cru",
+    "/en/harju/tallinn/restaurant/pull",
+    "/en/harju/tallinn/restaurant/r14",
+    "/en/harju/tallinn/restaurant/rado",
+    "/en/harju/tallinn/restaurant/shang-shi",
+    "/en/harju/tallinn/restaurant/tchaikovsky"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/tallinn/the-burman-hotel-15065",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/tallinn/the-burman-hotel-15065",
+   "h1": "The Burman Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Rataskaevu tänav 7",
+     "addressLocality": "Tallinn",
+     "postalCode": "10123",
+     "addressCountry": "EST"
+    },
+    "name": "The Burman Hotel in Tallinn",
+    "description": "The Burman has existed in one form or another for over 150 years, but not like this. Today, thoroughly renovated, it’s part of the Bombay Club, a high-end, boutique-sized casino complex in the heart of Tallinn’s Old Town, complete with gaming salons, performance spaces, restaurants, and, in the Burman, a 17-room luxury boutique hotel.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1487209.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-EST",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 59.436942,
+     "longitude": 24.74293
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/tallinn/the-burman-hotel-15065",
+    "numberOfRooms": 17,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=59.436942%2C24.74293",
+    "telephone": "+372 618 8800",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/harju/tallinn/restaurant/art-priori",
+    "/en/harju/tallinn/restaurant/cafe-tempo",
+    "/en/harju/tallinn/restaurant/fotografiska-1199007",
+    "/en/harju/tallinn/restaurant/koyo-1217894",
+    "/en/harju/tallinn/restaurant/lee",
+    "/en/harju/tallinn/restaurant/moon",
+    "/en/harju/tallinn/restaurant/osteria-il-cru",
+    "/en/harju/tallinn/restaurant/rado",
+    "/en/harju/tallinn/restaurant/shang-shi",
+    "/en/harju/tallinn/restaurant/tchaikovsky"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/belgrade/the-bristol-belgrade-14965",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/belgrade/the-bristol-belgrade-14965",
+   "h1": "The Bristol Belgrade",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Karađorđeva 50 ",
+     "addressLocality": "Belgrade",
+     "postalCode": "11000",
+     "addressCountry": "SRB"
+    },
+    "name": "The Bristol Belgrade in Belgrade",
+    "description": "The Art Nouveau façade of The Bristol Belgrade marks it out as one of the city’s original grand dames. Opened in 1912, this historic hotel was quite the hotspot during the Roaring Twenties and the Golden Age of the 1930s, when the likes of the Rockefellers and the British royal family came to stay. It’s now looking younger than its years (and its many nights of entertaining), thanks to a recent facelift — guest rooms have been refreshed with classic creamy shades, plush burgundy furnishings, and Art Deco-inspired accessories which nod to its heyday. The hotel’s bistro, The Dining Room, puts a contemporary twist on traditional Serbian dishes, and an elegant afternoon tea is served in The Courtyard and The Library. The complete spa experience offers a fitness room, hammam, and a range of treatments.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1486121.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SRB",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 44.812965,
+     "longitude": 20.452332
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/belgrade/the-bristol-belgrade-14965",
+    "numberOfRooms": 143,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=44.812965%2C20.452332",
+    "petsAllowed": "Pets are allowed. Charges may apply (€120 per stay)",
+    "telephone": "+381 11 7888700",
+    "award": {
+     "@type": "Award",
+     "awardFor": "Two MICHELIN Keys · An exceptional stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/belgrade-region/belgrade/restaurant/comunale-cafe-e-cucina",
+    "/en/belgrade-region/belgrade/restaurant/ebisu",
+    "/en/belgrade-region/belgrade/restaurant/istok",
+    "/en/belgrade-region/belgrade/restaurant/klub-knjizevnika",
+    "/en/belgrade-region/belgrade/restaurant/langouste",
+    "/en/belgrade-region/belgrade/restaurant/mezestoran-dvoriste",
+    "/en/belgrade-region/belgrade/restaurant/na-cosku",
+    "/en/belgrade-region/belgrade/restaurant/prime",
+    "/en/belgrade-region/belgrade/restaurant/salon-1905",
+    "/en/belgrade-region/belgrade/restaurant/skylounge"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/belgrade/saint-ten-hotel-8591",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/belgrade/saint-ten-hotel-8591",
+   "h1": "SAINT TEN Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Svetog Save 10",
+     "addressLocality": "Belgrade",
+     "postalCode": "11000",
+     "addressCountry": "SRB"
+    },
+    "name": "SAINT TEN Hotel in Belgrade",
+    "description": "It’s entirely understandable if Belgrade missed out on the first wave of the boutique-hotel revolution. What’s important now, from the perspective of international travelers, is that there are now hotels in town of Saint Ten’s caliber. The stately old building, in the central district of Vračar, was built in the Twenties by architect Stojan Veljkovic, and over the past century it’s served as a backdrop for more than a few pivotal moments in the city’s political history. It’s since seen a dramatic modern addition, and today its interiors, though thoroughly contemporary, exhibit a certain seriousness, a sense of sober luxury that’s well suited to the history of the place.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1663481.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SRB",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 44.801316,
+     "longitude": 20.46719
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/belgrade/saint-ten-hotel-8591",
+    "numberOfRooms": 54,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=44.801316%2C20.46719",
+    "petsAllowed": "Saint Ten requires certain personal documents for registration. For Serbian citizens, Saint Ten requires a identity card or passport. For foreign citizens, Saint Ten requires a passport or identity card.  Guest's visitors must be registered at the reception with a valid personal document.  All rooms are non-smoking as well as public areas. Pets up to 8 kg are allowed only in guest rooms and there is a 40 € per night charge. Pets must be on leashes in all other areas of the hotel.  Children under the age of 7 years stay free with an accompanied adult. Breakfast is free of charge for children under the age of 7.",
+    "telephone": "+381 11 411 66 33",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.9,
+     "reviewCount": 2,
+     "ratingCount": 2,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/belgrade-region/belgrade/restaurant/istok",
+    "/en/belgrade-region/belgrade/restaurant/iva-new-balkan-cuisine",
+    "/en/belgrade-region/belgrade/restaurant/klub-knjizevnika",
+    "/en/belgrade-region/belgrade/restaurant/l-adresse",
+    "/en/belgrade-region/belgrade/restaurant/mezestoran-dvoriste",
+    "/en/belgrade-region/belgrade/restaurant/na-cosku",
+    "/en/belgrade-region/belgrade/restaurant/puter",
+    "/en/belgrade-region/belgrade/restaurant/salon-1905",
+    "/en/belgrade-region/belgrade/restaurant/skylounge",
+    "/en/belgrade-region/belgrade/restaurant/twenty-two"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/belgrade/square-nine-hotel-6698",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/belgrade/square-nine-hotel-6698",
+   "h1": "Square Nine Hotel",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Studentski Trg 9",
+     "addressLocality": "Belgrade",
+     "postalCode": "11000",
+     "addressCountry": "SRB"
+    },
+    "name": "Square Nine Hotel in Belgrade",
+    "description": "Belgrade’s block-to-block shifts from Byzantine to Brutalist can be head-spinning — as can its party-till-dawn nightlife. And for a long time, it was the global mega-chains dominated the city’s hospitality, plopping themselves down among the city’s myriad sights. But even against this eclectic backdrop there’s no missing the majestic, statement-making Square Nine, a boutique hotel that combines architect Isay Weinfeld’s bold, functional dynamism with a generous helping of mid-century, jet-age romance.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1662401.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SRB",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 44.819505,
+     "longitude": 20.456326
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/belgrade/square-nine-hotel-6698",
+    "numberOfRooms": 45,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=44.819505%2C20.456326",
+    "telephone": "00 381 11 3333 500",
+    "aggregateRating": {
+     "@type": "AggregateRating",
+     "ratingValue": 19.5,
+     "reviewCount": 1,
+     "ratingCount": 1,
+     "bestRating": 20
+    },
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/belgrade-region/belgrade/restaurant/comunale-cafe-e-cucina",
+    "/en/belgrade-region/belgrade/restaurant/ebisu",
+    "/en/belgrade-region/belgrade/restaurant/homa",
+    "/en/belgrade-region/belgrade/restaurant/istok",
+    "/en/belgrade-region/belgrade/restaurant/klub-knjizevnika",
+    "/en/belgrade-region/belgrade/restaurant/langouste",
+    "/en/belgrade-region/belgrade/restaurant/mezestoran-dvoriste",
+    "/en/belgrade-region/belgrade/restaurant/na-cosku",
+    "/en/belgrade-region/belgrade/restaurant/salon-1905",
+    "/en/belgrade-region/belgrade/restaurant/skylounge"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/belgrade/the-st-regis-belgrade-14898",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/belgrade/the-st-regis-belgrade-14898",
+   "h1": "The St. Regis Belgrade",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Nikolaja Kravcova 1a",
+     "addressLocality": "Belgrade",
+     "postalCode": "11000",
+     "addressCountry": "SRB"
+    },
+    "name": "The St. Regis Belgrade in Belgrade",
+    "description": "Rising above the Sava River, The St. Regis Belgrade is a composed counterpoint to the energy of its surroundings. Its 119 rooms are beautifully detailed, with expansive views and well-thought-out touches: a mix of contemporary silhouettes, polished marble, and warm-toned textiles. The spa, indoor pool, and brasserie-style dining create space to reset, while the signature butler service brings ease without excess. Just steps from Belgrade Waterfront, it is a poised landing place in a city moving quickly toward the spotlight.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1477207.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SRB",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 44.805436,
+     "longitude": 20.446451
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/belgrade/the-st-regis-belgrade-14898",
+    "numberOfRooms": 119,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=44.805436%2C20.446451",
+    "telephone": "+381 11 6666111",
+    "award": {
+     "@type": "Award",
+     "awardFor": "One MICHELIN Key · A very special stay",
+     "awardedBy": {
+      "@type": "Organization",
+      "name": "Michelin"
+     }
+    }
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/belgrade-region/belgrade/restaurant/comunale-cafe-e-cucina",
+    "/en/belgrade-region/belgrade/restaurant/ebisu",
+    "/en/belgrade-region/belgrade/restaurant/iva-new-balkan-cuisine",
+    "/en/belgrade-region/belgrade/restaurant/klub-knjizevnika",
+    "/en/belgrade-region/belgrade/restaurant/l-adresse",
+    "/en/belgrade-region/belgrade/restaurant/langouste",
+    "/en/belgrade-region/belgrade/restaurant/na-cosku",
+    "/en/belgrade-region/belgrade/restaurant/prime",
+    "/en/belgrade-region/belgrade/restaurant/salon-1905",
+    "/en/belgrade-region/belgrade/restaurant/skylounge"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  },
+  {
+   "url": "https://guide.michelin.com/en/hotels-stays/kobarid/nebesa-chalets-15390",
+   "status": 200,
+   "final_url": "https://guide.michelin.com/en/hotels-stays/kobarid/nebesa-chalets-15390",
+   "h1": "Nebesa Chalets",
+   "ld": {
+    "@context": "http://schema.org",
+    "address": {
+     "@type": "PostalAddress",
+     "streetAddress": "Livek 39",
+     "addressLocality": "Kobarid",
+     "postalCode": "5222",
+     "addressCountry": "SVN"
+    },
+    "name": "Nebesa Chalets in Kobarid",
+    "description": "Perched nearly 1,000 meters above the Soča Valley, Nebesa is a quartet of pared-back chalets designed for two. The views stretch from the Julian Alps to the Adriatic, with clouds often sitting below eye level. Built on the site of a former ski hut, the retreat is fully solar-powered and designed to disappear into the hillside. There is no restaurant, but there is wine, a sauna, and a deep quiet that settles in fast. It is the kind of place people come to pause, reset, and stay off the radar a little longer.",
+    "image": "https://static.prod.r53.tablethotels.com/media/hotels/slideshow_images_staged/large/1506008.jpg",
+    "@type": "Hotel",
+    "availableLanguage": "en-SVN",
+    "brand": "Tablet Hotels",
+    "geo": {
+     "@type": "GeoCoordinates",
+     "latitude": 46.204614,
+     "longitude": 13.61044
+    },
+    "url": "https://guide.michelin.com/en/hotels-stays/kobarid/nebesa-chalets-15390",
+    "numberOfRooms": 4,
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=46.204614%2C13.61044",
+    "petsAllowed": "Pets are not allowed.",
+    "telephone": "+386 41 769 484"
+   },
+   "ld_types": [
+    "Hotel"
+   ],
+   "restaurants": [
+    "/en/friuli-venezia-giulia/cividale-del-friuli/restaurant/al-monastero",
+    "/en/gorizia/bovec_2577165/restaurant/bistro-9-45",
+    "/en/gorizia/kobarid/restaurant/hisa-franko",
+    "/en/gorizia/kobarid/restaurant/hisa-polonka"
+   ],
+   "sections": [
+    "Restaurants near the hotel"
+   ],
+   "website": null
+  }
+ ]
+}

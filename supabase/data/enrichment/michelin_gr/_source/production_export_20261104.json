@@ -1,0 +1,49 @@
+{
+ "exported_at": "2026-11-03T23:08:11.041258+00:00",
+ "max_restaurant_code": 3923,
+ "max_hotel_code": 2925,
+ "countries": [
+  {
+   "country_code": "GR",
+   "flag_emoji": "🇬🇷",
+   "name": "Greece",
+   "timezones": [
+    "Europe/Athens"
+   ]
+  }
+ ],
+ "cities": [
+  {
+   "country": "GR",
+   "name": "Athens",
+   "postal_municipality": null,
+   "region": null
+  }
+ ],
+ "restaurants": null,
+ "hotels": [
+  {
+   "address": "40 Apollonos Street, Vouliagmeni, Athens",
+   "city": "Athens",
+   "code": "hotel_716",
+   "country": "GR",
+   "google_place_id": "ChIJKwqn-87roRQRo5RKNIcMG64",
+   "history": null,
+   "keys": 3,
+   "lat": 37.805199,
+   "lon": 23.771217,
+   "michelin_url": "https://guide.michelin.com/en/hotels-stays/athens/four-seasons-astir-palace-12274",
+   "name": "Four Seasons Astir Palace Hotel Athens",
+   "phone": null,
+   "status": "open",
+   "website_url": "https://www.fourseasons.com/athens/"
+  }
+ ],
+ "links": null,
+ "hotel_michelin_urls_with_greek_ids": [
+  "https://guide.michelin.com/en/hotels-stays/athens/four-seasons-astir-palace-12274"
+ ],
+ "restaurant_michelin_urls_with_greek_slugs": [
+  "https://guide.michelin.com/nl/nl/north-brabant/vught/restaurant/sense"
+ ]
+}
