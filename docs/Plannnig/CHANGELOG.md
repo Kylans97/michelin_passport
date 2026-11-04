@@ -40,6 +40,16 @@ The format follows Keep a Changelog.
   fails. A test that treats failure as success recurs wherever a guard is
   only ever expected to fail.
 
+### Fixed
+- **The trip map and the event location picker showed no map in builds
+  1.5.6 (25) to 1.5.7 (29).** Those builds were archived from the main
+  checkout, whose `.env` had no `MAPTILER_KEY`; checked in the archives
+  themselves. The trip map was built and checked in a worktree that did
+  have the key, so nothing showed it. `.env` is not in git and a missing
+  key fails silently, so this recurs on any checkout set up without it.
+  The key is now in the main checkout's `.env`; no code changed, and it
+  reaches testers with the next build.
+
 ---
 
 ## v1.5.7 (29) — 2026-11-02
