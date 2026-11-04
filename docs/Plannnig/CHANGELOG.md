@@ -9,7 +9,7 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
-- **Wines on a visit or stay** (product owner, 2026-11-04): an optional "What we drank" in the review and on the visit page, reading like a wine list. Producer, wine, year or "No year", and size (Glass, Half, Bottle, Magnum, Other), each optional. Suggestions come from the member's own earlier wines. Migration `20261101330000_add_visit_wines.sql`, not yet applied; a wine is exactly as visible as its visit. Privacy policy names it in `site/privacy.html`, not yet deployed.
+- **Wines on a visit or stay** (product owner, 2026-11-04): an optional "What we drank" in the review and on the visit page, reading like a wine list. Producer, wine, year or "No year", and size (Glass, Half, Bottle, Magnum, Other), each optional. Suggestions come from the member's own earlier wines. A wine is exactly as visible as its visit. Live on 2026-11-04: the privacy policy first, then migration `20261101330000_add_visit_wines.sql`; the app side comes with the next build. **Ledger: 146, local and remote in agreement.** The unapplied `20261101320000` on `claude/event-expected-soldout` now sorts before an applied migration, so it needs renaming to follow the highest before it is applied.
 
 ### Fixed
 - Near-miss on the new wines, seen in the simulator: `.order()` in `supabase_flutter` defaults to descending, so wines showed last-first until `ascending: true`. Would recur on any new ordered list; tests with a fake repository don't catch it.
