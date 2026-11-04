@@ -11,6 +11,7 @@ import '../../events/event_date_format.dart';
 import '../../events/going_member_count_format.dart';
 import 'community_shared.dart';
 import '../../../core/widgets/app_network_image.dart';
+import '../../events/widgets/event_status_badges.dart';
 
 /// COMMUNITY V1 UI REFINEMENT — a compact, editorial "Upcoming Events"
 /// preview reusing the existing Events infrastructure: [events] arrives
@@ -104,10 +105,15 @@ class _EventPreviewRow extends StatelessWidget {
       event.countryCode,
     ].join(', ');
 
+    // Sold out / Expected as one quiet line: the card sits on dark green,
+    // where the outlined light-surface badges would not read.
+    final status = eventStatusLabels(event).join(' · ');
+
     return Semantics(
       button: true,
       label:
           '${event.name}. ${formatEventDateRange(event)}. $location.'
+          '${status.isNotEmpty ? ' $status.' : ''}'
           '${going != null ? ' $going.' : ''}',
       excludeSemantics: true,
       child: Material(
@@ -149,6 +155,18 @@ class _EventPreviewRow extends StatelessWidget {
                           color: AppColors.secondaryOnDark,
                         ),
                       ),
+                      if (status.isNotEmpty) ...[
+                        const SizedBox(height: 4),
+                        Text(
+                          status,
+                          style: CsTypography.metadata.copyWith(
+                            color: AppColors.secondaryOnDark,
+                            fontSize: 11,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.5,
+                          ),
+                        ),
+                      ],
                       if (going != null) ...[
                         const SizedBox(height: 4),
                         Text(

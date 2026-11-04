@@ -85,6 +85,44 @@ enum EventAdmissionType {
   };
 }
 
+/// The permitted values of `events.availability_status` (see
+/// supabase/migrations/20260819140000_events_v2_host_venue_moderation.sql).
+/// Availability is its own dimension — never a tag, never a type — so a
+/// sold-out event stays listed and is labelled, not hidden.
+enum EventAvailability {
+  available('available'),
+  soldOut('sold_out'),
+  unknown('unknown');
+
+  final String dbValue;
+  const EventAvailability(this.dbValue);
+
+  static EventAvailability fromDbValue(String? value) {
+    for (final status in EventAvailability.values) {
+      if (status.dbValue == value) return status;
+    }
+    return EventAvailability.unknown;
+  }
+}
+
+/// The permitted values of `events.announcement_status` (see
+/// supabase/migrations/20261101320000_add_event_announcement_status.sql).
+/// [expected] is an event we know of from a secondary source that the
+/// venue or organiser has not announced itself yet; it is shown with an
+/// "Expected" label until they do. A database without the column yet
+/// (an older schema) sends nothing, which reads as [official] — the
+/// meaning every existing event already had.
+enum EventAnnouncement {
+  official('official'),
+  expected('expected');
+
+  final String dbValue;
+  const EventAnnouncement(this.dbValue);
+
+  static EventAnnouncement fromDbValue(String? value) =>
+      value == expected.dbValue ? expected : official;
+}
+
 class Event {
   final String id;
   final String name;
@@ -156,6 +194,17 @@ class Event {
   final String? admissionNote;
   final DateTime createdAt;
 
+  /// Sold out is shown as a label; the event stays listed.
+  final EventAvailability availability;
+
+  /// Official (announced by the venue or organiser) or expected (known
+  /// from a secondary source, see [expectedSourceUrl]).
+  final EventAnnouncement announcement;
+
+  /// The secondary source an [EventAnnouncement.expected] event rests on.
+  /// Null for official events, whose source is [officialUrl].
+  final String? expectedSourceUrl;
+
   // Non-null only when this event was added because of a
   // missing_listing_reports submission — see the identical field on
   // Restaurant (Fresh Finds) for full semantics.
@@ -219,6 +268,9 @@ class Event {
     this.admissionNote,
     required this.createdAt,
     this.missingListingReportId,
+    this.availability = EventAvailability.unknown,
+    this.announcement = EventAnnouncement.official,
+    this.expectedSourceUrl,
   }) : startDate =
            startDate ??
            _deriveDateOnly(
@@ -273,6 +325,10 @@ class Event {
   }
 
   bool get isCancelled => cancelledAt != null;
+
+  bool get isSoldOut => availability == EventAvailability.soldOut;
+
+  bool get isExpected => announcement == EventAnnouncement.expected;
 
   // "mixed" is free general admission with a separately-ticketed add-on
   // (e.g. 't Preuvenemint) — attending the event itself costs nothing, so
@@ -365,6 +421,13 @@ class Event {
     admissionNote: json['admission_note'] as String?,
     createdAt: DateTime.parse(json['created_at'] as String).toLocal(),
     missingListingReportId: json['missing_listing_report_id'] as String?,
+    availability: EventAvailability.fromDbValue(
+      json['availability_status'] as String?,
+    ),
+    announcement: EventAnnouncement.fromDbValue(
+      json['announcement_status'] as String?,
+    ),
+    expectedSourceUrl: json['expected_source_url'] as String?,
   );
 }
 
