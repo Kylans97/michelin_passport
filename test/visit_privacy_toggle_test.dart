@@ -25,7 +25,7 @@ void main() {
       );
       expect(find.text('Visible to friends'), findsOneWidget);
       expect(
-        find.text('Friends can see this visit, your rating and photos.'),
+        find.text('Friends can see this visit, your rating, wines and photos.'),
         findsOneWidget,
       );
       final Switch sw = tester.widget(find.byType(Switch));
