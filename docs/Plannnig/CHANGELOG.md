@@ -9,6 +9,12 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
+- **Wines on a visit or stay** (product owner, 2026-11-04): an optional "What we drank" in the review and on the visit page, reading like a wine list. Producer, wine, year or "No year", and size (Glass, Half, Bottle, Magnum, Other), each optional. Suggestions come from the member's own earlier wines. Migration `20261101330000_add_visit_wines.sql`, not yet applied; a wine is exactly as visible as its visit. Privacy policy names it in `site/privacy.html`, not yet deployed.
+
+### Fixed
+- Near-miss on the new wines, seen in the simulator: `.order()` in `supabase_flutter` defaults to descending, so wines showed last-first until `ascending: true`. Would recur on any new ordered list; tests with a fake repository don't catch it.
+
+### Added
 - **67 events in production** (data, no migration, no build), 2026-11-04: world event batch 1, 30 to 97 events, 80 venue links, no photos, no pushes (the hosts had no followers). `docs/Architecture/Events/WORLD_EVENT_BATCH_1_PRODUCTION_APPLY.md`.
 - Migration `20261101310000_add_bh_ky_mu_countries.sql` applied 2026-11-04 (BH, KY, MU), then Cayman Cookout 2027: 98 events. **Ledger: 145, local and remote in agreement** on the branch carrying the migration; not on main yet.
 - Migration `20261101290000_add_gr_cities.sql`: 20 Greek towns (data only,

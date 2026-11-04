@@ -526,11 +526,14 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       await _refreshStays();
       if (!mounted) return;
       final photoErrors = result.outcome == SaveOutcome.savedWithPhotoErrors;
+      final wineErrors = result.outcome == SaveOutcome.savedWithWineErrors;
       _showSnack(
         photoErrors
             ? 'Stay saved, but some photos could not be uploaded.'
+            : wineErrors
+            ? 'Stay saved, but some wines could not be added.'
             : 'Stay saved',
-        isError: photoErrors,
+        isError: photoErrors || wineErrors,
       );
     }
   }

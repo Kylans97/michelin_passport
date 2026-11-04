@@ -614,11 +614,14 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       await _refreshVisits();
       if (!mounted) return;
       final photoErrors = result.outcome == SaveOutcome.savedWithPhotoErrors;
+      final wineErrors = result.outcome == SaveOutcome.savedWithWineErrors;
       _showSnack(
         photoErrors
             ? 'Visit saved, but some photos could not be uploaded.'
+            : wineErrors
+            ? 'Visit saved, but some wines could not be added.'
             : 'Visit saved',
-        isError: photoErrors,
+        isError: photoErrors || wineErrors,
       );
     }
   }

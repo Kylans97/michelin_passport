@@ -12,6 +12,7 @@ import '../../models/passport_venue.dart';
 import '../../models/visit.dart';
 import '../passport/widgets/add_visit_flow.dart';
 import '../photos/widgets/visit_photos_section.dart';
+import '../visits/widgets/visit_wines.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../../core/analytics/analytics_properties.dart';
 
@@ -418,6 +419,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                 ),
               ],
 
+              VisitWinesSection(visitId: stay.id, readOnly: !_isOwner),
               const SizedBox(height: 32),
               Text(
                 'PHOTOS',

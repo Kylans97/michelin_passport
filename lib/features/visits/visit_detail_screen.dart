@@ -12,6 +12,7 @@ import '../../models/passport_venue.dart';
 import '../../models/visit.dart';
 import '../passport/widgets/add_visit_flow.dart';
 import '../photos/widgets/visit_photos_section.dart';
+import 'widgets/visit_wines.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 
 const _monthNames = [
@@ -429,6 +430,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                 ),
               ],
 
+              VisitWinesSection(visitId: visit.id, readOnly: !_isOwner),
               const SizedBox(height: 32),
               Text(
                 'PHOTOS',

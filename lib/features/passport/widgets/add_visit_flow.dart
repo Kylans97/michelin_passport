@@ -9,15 +9,18 @@ import '../../../data/repositories/events_repository.dart';
 import '../../../data/repositories/hotel_repository.dart';
 import '../../../data/repositories/photo_repository.dart';
 import '../../../data/repositories/restaurant_repository.dart';
+import '../../../data/repositories/visit_wine_repository.dart';
 import '../../../data/repositories/visited_repository.dart';
 import '../../../data/repositories/wishlist_repository.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/save_outcome.dart';
 import '../../../models/visit.dart';
+import '../../../models/visit_wine.dart';
 import '../../photos/staged_photo.dart';
 import '../../photos/widgets/staged_photo_picker.dart';
 import '../../visits/widgets/menu_type_selector.dart';
 import '../../visits/widgets/rating_meter.dart';
+import '../../visits/widgets/visit_wines.dart';
 import '../../visits/widgets/visit_privacy_toggle.dart';
 import '../models/passport_stamp_item.dart';
 import '../utils/passport_stamp_style.dart';
@@ -162,6 +165,10 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
   bool _friendsVisible = false;
   final List<StagedPhoto> _stagedPhotos = [];
   bool _pickingPhotos = false;
+  // Wines wait for the visit row, like photos, and are kept apart from it:
+  // editing a visit leaves both to Visit/Stay Detail.
+  final List<VisitWine> _stagedWines = [];
+  late final _wineRepo = VisitWineRepository(Supabase.instance.client);
 
   final _notesCtrl = TextEditingController();
   bool _saving = false;
@@ -309,6 +316,30 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
     }
   }
 
+  Future<WineSuggestions> _wineSuggestions() => _wineRepo
+      .loadSuggestions(widget.userId)
+      .catchError((Object _) => const WineSuggestions());
+
+  Future<void> _addWine() => showWineSheet(
+    context,
+    suggestions: _wineSuggestions(),
+    onSave: (wine) async {
+      setState(() => _stagedWines.add(wine));
+      return true;
+    },
+  );
+
+  Future<void> _editWine(int index) => showWineSheet(
+    context,
+    initial: _stagedWines[index],
+    suggestions: _wineSuggestions(),
+    onSave: (wine) async {
+      setState(() => _stagedWines[index] = wine);
+      return true;
+    },
+    onDelete: () async => setState(() => _stagedWines.removeAt(index)),
+  );
+
   Future<void> _save() async {
     final venue = _selectedVenue;
     if (venue == null || _saving) return;
@@ -430,12 +461,30 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
           photoFailures++;
         }
       }
+      // Same rule for wines: a failure is reported, the visit stays saved.
+      var wineFailures = 0;
+      for (var i = 0; i < _stagedWines.length; i++) {
+        try {
+          await _wineRepo.add(
+            userId: widget.userId,
+            visitId: saved.id,
+            wine: _stagedWines[i],
+            displayOrder: i,
+          );
+        } catch (_) {
+          wineFailures++;
+        }
+      }
       if (!mounted) return;
       Navigator.pop(
         context,
         SavedVisit(
           saved,
-          photoFailures > 0 ? SaveOutcome.savedWithPhotoErrors : SaveOutcome.saved,
+          photoFailures > 0
+              ? SaveOutcome.savedWithPhotoErrors
+              : wineFailures > 0
+              ? SaveOutcome.savedWithWineErrors
+              : SaveOutcome.saved,
         ),
       );
     } catch (_) {
@@ -547,6 +596,9 @@ class _AddVisitSheetState extends State<_AddVisitSheet> {
                                 onAddPhotos: _addPhotos,
                                 onRemovePhoto: (p) => setState(() => _stagedPhotos.remove(p)),
                                 showPhotos: !_editing,
+                                stagedWines: _stagedWines,
+                                onAddWine: _addWine,
+                                onEditWine: _editWine,
                                 saveLabel: _editing ? 'Save changes' : 'Press the stamp',
                                 notesCtrl: _notesCtrl,
                                 saving: _saving,
@@ -856,6 +908,9 @@ class _Step2 extends StatelessWidget {
   // Off when editing: a saved visit's photos are managed on its detail
   // page, so the edit sheet doesn't offer a second, different way.
   final bool showPhotos;
+  final List<VisitWine> stagedWines;
+  final VoidCallback onAddWine;
+  final ValueChanged<int> onEditWine;
   final String saveLabel;
 
   final TextEditingController notesCtrl;
@@ -890,6 +945,9 @@ class _Step2 extends StatelessWidget {
     required this.onAddPhotos,
     required this.onRemovePhoto,
     required this.showPhotos,
+    required this.stagedWines,
+    required this.onAddWine,
+    required this.onEditWine,
     required this.saveLabel,
     required this.notesCtrl,
     required this.saving,
@@ -1056,6 +1114,19 @@ class _Step2 extends StatelessWidget {
           Container(height: 1, color: AppColors.hairlineOnPaper),
           const SizedBox(height: 20),
           if (showPhotos) ...[
+            Align(
+              alignment: Alignment.centerLeft,
+              child: _FieldLabel('WHAT WE DRANK'),
+            ),
+            if (stagedWines.isNotEmpty) ...[
+              const SizedBox(height: 4),
+              WineList(wines: stagedWines, onTapWine: onEditWine),
+            ],
+            Align(
+              alignment: Alignment.centerLeft,
+              child: AddWineButton(onTap: onAddWine),
+            ),
+            const SizedBox(height: 12),
             Align(
               alignment: Alignment.centerLeft,
               child: _FieldLabel('PHOTOS'),
