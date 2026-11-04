@@ -13,6 +13,19 @@ The format follows Keep a Changelog.
 
 ---
 
+## v1.5.7 (32) — 2026-11-04
+
+The build meant for App Review; (31) went to TestFlight first.
+
+### Changed
+- **Deleting a trip takes your own plans with it** (product owner, 2026-11-04, reversing the original "detach, never delete" from `20260810120000`): left behind they read as plans nobody made. Others' plans on a shared trip stay with them, through the column's ON DELETE SET NULL, and leaving a trip still keeps yours. No migration. The 14 standalone plans already on production are not touched: there is no way to tell leftovers from plans made without a trip.
+- **A visible button on planned visits**: edit, cancel and delete were behind a long press nobody could find.
+
+### Fixed
+- Near-miss while changing trip deletion: RLS refuses a delete by returning no rows, not an error, so a refused trip would still have lost its plans. The plans now go only after the delete returns the trip's row.
+
+---
+
 ## v1.5.7 (31) — 2026-11-04
 
 The build meant for App Review, with these changes on top of (30). The fixes for the status bar, back arrows, Explore cards and Hottest Places were seen in the screenshots for the venue lookbook.

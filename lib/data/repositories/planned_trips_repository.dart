@@ -330,17 +330,47 @@ class PlannedTripsRepository {
     return PlannedTrip.fromJson(row);
   }
 
-  // Planned venues attached to this trip are detached (trip_id -> null) by
-  // the column's own ON DELETE SET NULL, never deleted — see the migration.
+  // Deletes the trip and the caller's own plans on it (product owner,
+  // 2026-11-04: left behind, they read as plans nobody made). Other
+  // members' plans are never theirs to delete: the column's ON DELETE SET
+  // NULL keeps those as standalone plans.
+  //
+  // In this order so nothing is lost if a step fails: the plans go only once
+  // the trip is confirmed gone. RLS refuses a delete by returning no rows
+  // rather than an error, hence the check; without it a refused trip would
+  // still lose its plans. A failure on the plans themselves leaves them
+  // standalone, which the member can remove, so the trip still counts as
+  // deleted.
   Future<void> deleteTrip({
     required String userId,
     required String tripId,
   }) async {
-    await _client
+    final plans = await _client
+        .from('planned_venues')
+        .select('id')
+        .eq('trip_id', tripId)
+        .eq('user_id', userId);
+    final deleted = await _client
         .from('planned_trips')
         .delete()
         .eq('id', tripId)
-        .eq('user_id', userId);
+        .eq('user_id', userId)
+        .select('id');
+    if ((deleted as List).isEmpty) {
+      throw StateError('Trip $tripId was not deleted');
+    }
+    final planIds = [
+      for (final row in (plans as List).cast<Map<String, dynamic>>())
+        row['id'] as String,
+    ];
+    if (planIds.isEmpty) return;
+    try {
+      await _client
+          .from('planned_venues')
+          .delete()
+          .inFilter('id', planIds)
+          .eq('user_id', userId);
+    } catch (_) {}
   }
 
   // Every country in the reference table, not just ones present in the

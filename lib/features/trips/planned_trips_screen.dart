@@ -414,6 +414,13 @@ class _TripsBodyState extends State<TripsBody> {
                                       onLongPress: () => _showVenueActions(
                                         upcomingUntripped[i],
                                       ),
+                                      trailing: PlannedVisitMoreButton(
+                                        venueName:
+                                            upcomingUntripped[i].venue.name,
+                                        onTap: () => _showVenueActions(
+                                          upcomingUntripped[i],
+                                        ),
+                                      ),
                                     ),
                                   ],
                               ],
