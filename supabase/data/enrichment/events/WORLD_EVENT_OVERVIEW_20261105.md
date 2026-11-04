@@ -37,7 +37,7 @@ Periode: 3 november 2026 tot en met 31 december 2027, met de nadruk op de komend
 
 ## Top 20 om eerst toe te voegen
 
-De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of B, en nog niet in productie. Per organisator-pagina staan er maximaal 2, zodat één festival de lijst niet vult.
+De beste kandidaten uit **batch 1** (zie de besluiten hieronder), volgens de sortering. Per organisator-pagina staan er maximaal 2, zodat één festival de lijst niet vult.
 
 | id | datum | event | plaats | type | tags | bron | fit | catalogus |
 |---|---|---|---|---|---|---|---|---|
@@ -47,7 +47,6 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-005 | 2026-11-06 t/m 2026-11-10 | Merano WineFestival 2026 (35th edition) | Merano, IT | Festival | Wine | A | high | geen catalogusmatch |
 | wev-006 | 2026-11-06 | 2026 JBF Gala for Good™ | New York, US | Gala | Charity, Guest Chef | A | high | rest_0746, rest_3043 |
 | wev-007 | 2026-11-07 | Four-Hands Dinner | Six courses - two culinary signatures | Cologne, DE | Dinner | Four Hands, Guest Chef, Wine | A | high | hotel_162, rest_1936, rest_2084 |
-| wev-008 | 2026-11-07 | Autumn in Vermont White Truffle Dinner Weekend (Twin Farms) | Barnard, US | Dinner | – | A | high | geen catalogusmatch |
 | wev-009 | 2026-11-08 | 2026 World Alba White Truffle Charity Auction | Macau, MO | Gala | Charity, Guest Chef, Wine | A | high | geen catalogusmatch |
 | wev-010 | 2026-11-08 | XXVII World Alba White Truffle Auction dinner at Riva del Fiume Ristorante | Bangkok, TH | Gala | Guest Chef, Charity, Wine | A | high | geen catalogusmatch |
 | wev-011 | 2026-11-09 t/m 2026-11-15 | Saint Barth Gourmet Festival 2026 (13e édition) | Gustavia / Saint-Barthélemy, BL | Festival | Guest Chef | A | high | geen catalogusmatch |
@@ -61,6 +60,7 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-020 | 2026-11-19 t/m 2026-11-22 | Pair'd Margaret River Region 2026 | Margaret River, AU | Festival | Wine, Guest Chef | A | high | geen catalogusmatch |
 | wev-022 | 2026-11-20 | Château Palmer 4-Hands Dinner | Bray, GB | Dinner | Wine, Winemaker, Four Hands, Guest Chef | A | high | rest_2630 |
 | wev-023 | 2026-11-20 | Wayfinder x St JOHN, presented by Lexus | Margaret River, AU | Dinner | Wine, Winemaker, Guest Chef | A | high | geen catalogusmatch; voorgesteld: rest_2590 |
+| wev-025 | 2026-11-21 | Falstaff Wine Trophy | Bergisch Gladbach, DE | Gala | Wine, Winemaker, Guest Chef | A | high | hotel_175, rest_0189, rest_2044, rest_2089, rest_2114, rest_2117 |
 
 ## Top 5 per regio
 
@@ -100,9 +100,9 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 |---|---|---|---|---|---|---|---|---|
 | wev-002 | 2026-11-05 t/m 2026-11-07 | Big Sur Food & Wine Festival 2026 | Big Sur, US | Festival | Wine, Charity | A | high | geen catalogusmatch |
 | wev-006 | 2026-11-06 | 2026 JBF Gala for Good™ | New York, US | Gala | Charity, Guest Chef | A | high | rest_0746, rest_3043 |
-| wev-008 | 2026-11-07 | Autumn in Vermont White Truffle Dinner Weekend (Twin Farms) | Barnard, US | Dinner | – | A | high | geen catalogusmatch |
 | wev-011 | 2026-11-09 t/m 2026-11-15 | Saint Barth Gourmet Festival 2026 (13e édition) | Gustavia / Saint-Barthélemy, BL | Festival | Guest Chef | A | high | geen catalogusmatch |
 | wev-035 | 2026-12-06 t/m 2026-12-09 | By Land and Sea (Blackberry Farm) | Walland, US | Dinner | Guest Chef, Winemaker, Wine | A | high | rest_0755 |
+| wev-128 | 2027-01-14 t/m 2027-01-17 | Cayman Cookout 2027 | George Town (Seven Mile Beach), Grand Cayman, KY ⚠ land niet in countries | Festival | Guest Chef | A | high | rest_0059, rest_0743, rest_3043, rest_3052 |
 
 ### Azië & Midden-Oosten (34 kandidaten)
 
@@ -122,9 +122,12 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
 | wev-014 | 2026-11-13 | Jantar Magno Mesa SP 2026 – Grand Hyatt São Paulo | São Paulo, BR | Dinner | Guest Chef | A | high | geen catalogusmatch; voorgesteld: rest_0134, rest_1393 |
 | wev-020 | 2026-11-19 t/m 2026-11-22 | Pair'd Margaret River Region 2026 | Margaret River, AU | Festival | Wine, Guest Chef | A | high | geen catalogusmatch |
 | wev-023 | 2026-11-20 | Wayfinder x St JOHN, presented by Lexus | Margaret River, AU | Dinner | Wine, Winemaker, Guest Chef | A | high | geen catalogusmatch; voorgesteld: rest_2590 |
-| wev-066 | 2026-11-06 | Heritage Culinary Calendar 2026: Chef Cris Oberhammer & Anna Oberhammer | Bel Ombre, MU ⚠ land niet in countries | Dinner | Guest Chef | A | medium | geen catalogusmatch; voorgesteld: rest_2414 |
+| wev-153 | 2027-04-30 t/m 2027-05-09 | Tasting Australia presented by Journey Beyond 2027 | Adelaide, AU | Festival | Wine | A | high | geen catalogusmatch |
 
 ## Aantallen
+
+**Per besluit (`apply_decision`):** batch 2 82, batch 1 81, decide: unclear date/format, see notes 26, later: expected 18, excluded: hotel/resort guests only 6, excluded: no single country 3, later: pop-up section 2  
+**Uitverkocht (`availability_status = sold_out`, afgeleid uit de notities; de productiesessie controleert het op de pagina):** 14
 
 **Per land:** DE 47, US 28, NL 19, AT 16, SG 12, IT 8, CH 7, FR 7, TH 6, MV 6, PT 6, BR 5, AU 5, HK 4, CA 4, MU 4, GB 3, MO 3, (geen) 3, LU 2, BE 2, IE 2, DK 2, HU 2, MX 2, PE 1, BL 1, MC 1, SI 1, TR 1, AE 1, BH 1, JP 1, SE 1, ZA 1, KY 1, ES 1, IS 1
 
@@ -377,14 +380,25 @@ De beste kandidaten volgens de sortering: met een datum, `confirmed`, bron A of 
   - Een stuk of veertig Noord-Amerikaanse rijen kwamen door een gedeeld hulpscript in het Azië-bestand terecht. Ze zijn verplaatst, en hun ontbrekende verificatievelden zijn per pagina opnieuw ingevuld.
 - **Datumgrens:** events die vóór 5 november 2026 eindigen, zijn bij het samenvoegen weggelaten als voorbij bij oplevering. Het gaat onder meer om de 50 Best-week in Lima en het truffeldiner bij Voltaire.
 
-## Te beslissen vóór het toevoegen
+## Besluiten van de product owner (5 november 2026)
 
-1. **Landen die niet in `countries` staan:** Bahrein (BH), Kaaimaneilanden (KY) en Mauritius (MU). Die moeten eerst worden toegevoegd. Drie rijen van Four Seasons Yachts (cruises) hebben geen enkel land; dat past niet in het datamodel. Mijn advies: weglaten.
-2. **Residenties van meerdere dagen of weken in plaats van één avond:** Knystaforsen in Tivoli (zes weken), de Conrad Maldives Master Series, Atul Kochhar in Patina en Pic in Le Normandie. Passen die bij "eenmalig"?
-3. **Alleen voor hotelgasten:** de weekenden van Twin Farms en de residenties in de Malediven. Zichtbaar maken op de eventpagina?
-4. **Uitverkocht maar nog niet voorbij:** Monte-Carlo-gala, Lions-gala Luxemburg, Pair'd-diners, JBF Gala en 5 van de 7 sessies op MASTERS EXPO. Alleen tonen als er een wachtlijst is?
-5. **`PROPOSED`- en `AMBIGUOUS`-koppelingen:** die zijn gevonden via naam, plaats en land, nooit als besluit. Elke koppeling moet op code plus land worden bevestigd vóór het toevoegen.
-6. **Bron C (secundair):** die horen er pas in als de venue het event zelf publiceert, bijvoorbeeld RIJKS × Jessica Rosval en GEM × OAK.
+De kolom `apply_decision` in de CSV volgt deze besluiten.
+
+1. **Landen BH, KY en MU worden toegevoegd.** Daarvoor is de migratie `supabase/migrations/20261101310000_add_bh_ky_mu_countries.sql` voorbereid en getest, maar nog niet toegepast. Die moet vóór de events met die landen. De drie cruise-rijen (Four Seasons Yachts) hebben geen land en vallen af.
+2. **Meerdere dagen telt mee; een week of langer is een pop-up.** Residenties van 7 dagen of meer (geen festivals) gaan naar de pop-upsectie die later komt (`later: pop-up section`). Het gaat om Knystaforsen in Tivoli (40 dagen) en Gabriela Filca in Conrad Maldives (7 dagen). Festivals van meer dan een week blijven events.
+3. **Alleen voor hotelgasten: niet tonen.** Dat zijn de 6 rijen van Twin Farms. Bij de resortdiners van Blackberry Farm en in de Malediven noemt de bron geen gastenbeperking. Die blijven staan, maar de productiesessie controleert dat op de pagina.
+4. **Uitverkocht: wel tonen, met een label.** Daarvoor bestaat de kolom al: `events.availability_status` kent `sold_out`. Een tag "uitverkocht" zou botsen met de vastgelegde V1-tags (type en tags zijn aparte dimensies, en beschikbaarheid is een derde). De app toont `availability_status` nu nergens, dus voor het label is een appwijziging nodig. De data kan er nu al in.
+5. **Bron C als "expected".** Ook dit is geen tag, maar een status naast het event: officieel aangekondigd of verwacht. Daar bestaat nog geen kolom voor. Het vraagt een migratie, een appwijziging en een regel voor wanneer "expected" naar "officieel" gaat. Tot die er zijn, gaan deze 18 rijen niet mee (`later: expected`).
+
+**Batch-indeling:**
+- **`batch 1`:** prioriteit P0, plus Benelux met bron A en `confirmed`.
+- **`batch 2`:** overige rijen met bron A of B en `confirmed`.
+- **`decide`:** een onduidelijke datum, of een aflevering uit een reeks; per rij beslissen.
+
+## Nog open
+
+- Bij koppelingen met `PROPOSED` en `AMBIGUOUS` moet elke koppeling op code plus land worden bevestigd vóór het toevoegen.
+- De pop-upsectie, het label voor uitverkocht en het veld "expected" zijn productwerk dat apart moet worden gepland.
 
 ## Dekking per regio: wat wel, deels en niet is doorzocht
 

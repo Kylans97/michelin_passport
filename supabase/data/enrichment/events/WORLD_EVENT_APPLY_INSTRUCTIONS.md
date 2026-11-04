@@ -23,9 +23,21 @@ Gebruik alleen waarden die de constraints toestaan.
 
 ### 2. Kandidaten kiezen
 
-- **Voorstel voor batch 1:** de rijen met `priority = P0`, plus de Benelux-rijen met `source_confidence` A en `certainty = confirmed`.
-- **Niet in batch 1:** rijen met `certainty = unclear` of `source_confidence = C`. Die gaan alleen mee als de product owner dat per rij beslist.
-- **Datum:** sla alles over dat op de dag van de apply al voorbij is.
+Volg de kolom `apply_decision` in de CSV. Die legt de besluiten van de product owner van 5 november 2026 vast; zie de sectie "Besluiten" in het rapport.
+
+- **`batch 1`:** deze batch.
+- **`batch 2`:** de volgende batch, op dezelfde manier.
+- **`decide: …`:** alleen mee als de product owner dat per rij beslist.
+- **`later: pop-up section`:** niet als event. Er komt later een aparte pop-upsectie voor residenties van een week of langer.
+- **`later: expected`:** niet toevoegen. Bron C wacht op de officiële aankondiging, of op een nog te bouwen "expected"-status.
+- **`excluded: …`:** niet toevoegen: alleen voor hotelgasten, of geen land (cruise).
+- Sla alles over dat op de dag van de apply al voorbij is.
+
+**Landen BH, KY en MU** staan nog niet in `countries`. Pas eerst `supabase/migrations/20261101310000_add_bh_ky_mu_countries.sql` toe:
+- **Nummering:** controleer dat het nummer nog na de hoogste migratie op main komt. Zo niet, hernoem het bestand; het is nergens toegepast.
+- **Toepassen:** `supabase db push --linked`.
+- **Controle:** `supabase migration list --linked`.
+- **Branch:** de migratie staat op een branch die achterloopt op main. Pas haar toe vanuit een checkout die main plus deze branch bevat, zoals in `APPLY_2026-11-01.md` §0.
 
 ### 3. Per kandidaat controleren, live in productie
 
@@ -37,6 +49,8 @@ Gebruik alleen waarden die de constraints toestaan.
 4. **Bron:** open `official_url` opnieuw en controleer datum, tijd en uitverkocht/afgelast.
    - Wijkt iets af? Dan gaat de rij niet mee; noteer de afwijking.
    - Corrigeer niets op basis van een andere bron.
+   - Stel ook vast of het event **uitverkocht** is. De kolom `availability_status` in de CSV is afgeleid uit notities, dus de pagina beslist. Uitverkocht wordt `events.availability_status = 'sold_out'`, geen tag.
+   - Controleer of het event **alleen voor hotelgasten** is. Is dat zo, dan gaat het niet mee.
 
 ### 4. Pre-apply-rapport schrijven
 
@@ -78,7 +92,8 @@ Klopt er iets niet meer? Stop en meld het. Wijk niet af van het plan.
 - **Koppelingen:**
   - `event_restaurants`/`event_hotels` volgens de goedgekeurde rollen: host en venue → `is_host`/`is_venue` true;
   - participant → beide false. Een participant wordt nooit host.
-- **Tags:** via `event_tag_assignments`, alleen met de zes bestaande slugs.
+- **Tags:** via `event_tag_assignments`, alleen met de zes bestaande slugs. Maak geen tags aan voor "uitverkocht" of "expected": dat zijn geen tags, zie de besluiten in het rapport.
+- **`availability_status`:** `sold_out` als de pagina dat zegt, `available` als er nog te boeken is, anders `unknown`.
 - **Niet aanraken:** maak geen `event_chefs`, attendance-, trip-, visit- of fotorijen aan. Download geen foto's: `image_url` blijft NULL tenzij de product owner anders beslist.
 
 ### 3. Na het schrijven
