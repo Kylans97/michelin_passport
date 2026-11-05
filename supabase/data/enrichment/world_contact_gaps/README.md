@@ -1,6 +1,6 @@
 # Wereld: ontbrekende telefoons, websites en Place IDs (nachtronde 2026-11-04)
 
-**Status: VOORBEREID, NIET TOEGEPAST.** Niets is naar productie of Supabase geschreven.
+**Status: GOEDGEKEURD (2026-11-05), NOG NIET TOEGEPAST.** Zie `APPLY.md`; deze sessie had geen toegang tot productie.
 
 ## Bron en omvang
 
