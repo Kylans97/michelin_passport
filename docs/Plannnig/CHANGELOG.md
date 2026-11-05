@@ -9,12 +9,91 @@ The format follows Keep a Changelog.
 ## Unreleased
 
 ### Added
+- **A lookbook for conversations with venues** (product owner, 2026-11-04): `site/lookbook.html`, real app screens filled with invented venues, events and members on a local stack (`scripts/seed_lookbook.py`, never for production) and Unsplash photos, so a venue can see the app as it will look once venues have added their own content. Reachable by link only: not linked from the site, `noindex`. Says at the top and in the footer that everything on it is fictional. Sources in `docs/Design/LOOKBOOK.md`.
+- **A weekly email about sign-ups that look automated** (product owner, 2026-11-04): `20261101360000_add_signup_watch.sql` and the `notify-signup-watch` Edge Function. Mondays at 07:00 UTC, also in a quiet week, so that no mail means the watch itself is broken. Flags many sign-ups, a burst in one hour, many unconfirmed accounts, an uncommon domain with 3 or more accounts, and 3 or more accounts on one mailbox. Reports only: blocks nothing, stores nothing, and carries counts and at most an uncommon domain, never an address or user id. It can't see a patient bot on different real mailboxes.
+- Migration `20261101370000_add_eg_2026_country_and_cities.sql`: country EG and
+  7 towns (data only) for MICHELIN's 13 Key hotels in Egypt. Applied to
+  production on 2026-11-04 from `claude/michelin-eg-2026` with plain
+  `supabase db push --linked`. The ledger went from 149 to 150, and local and
+  remote agree. The catalogue data is in
+  `supabase/data/enrichment/michelin_eg_2026/`.
+
+### Fixed
+- **Links in sign-up and password-reset mails now use our own domain** (product owner, 2026-11-04): `auth.mantelier.app` is active as a Supabase custom domain, with a CNAME and a TXT record in Cloudflare (DNS only). The mails came from mantelier.app while their button pointed to `wcmxugunvwsrulcpeyrc.supabase.co`. Resend warned about that mismatch, and on 2026-11-02 a company mail server refused a confirmation mail as "Blocked due to content"; the mismatch is the likely cause, not a proven one, since that mail also still had Supabase's bare default text. No code or build needed: the old address keeps working, so installed builds, the site and Studio are unchanged. Checked on 2026-11-04 with a real mail: the link starts with `auth.mantelier.app`, the mail has the Mantelier style and the step completes. Not yet checked: delivery to a strict company mail server, the only test that shows the refusal itself is gone.
+
+---
+
+## v1.5.7 (32) — 2026-11-04
+
+The build meant for App Review; (31) went to TestFlight first.
+
+### Changed
+- **Deleting a trip takes your own plans with it** (product owner, 2026-11-04, reversing the original "detach, never delete" from `20260810120000`): left behind they read as plans nobody made. Others' plans on a shared trip stay with them, through the column's ON DELETE SET NULL, and leaving a trip still keeps yours. No migration. The 14 standalone plans already on production are not touched: there is no way to tell leftovers from plans made without a trip.
+- **A visible button on planned visits**: edit, cancel and delete were behind a long press nobody could find.
+
+### Fixed
+- Near-miss while changing trip deletion: RLS refuses a delete by returning no rows, not an error, so a refused trip would still have lost its plans. The plans now go only after the delete returns the trip's row.
+
+---
+
+## v1.5.7 (31) — 2026-11-04
+
+The build meant for App Review, with these changes on top of (30). The fixes for the status bar, back arrows, Explore cards and Hottest Places were seen in the screenshots for the venue lookbook.
+
+### Changed
+- **A calmer map everywhere** (product owner, 2026-11-04): MapTiler's `basic-v2` instead of `streets-v2`, which drew its own restaurants, hotels and cafés beside our pins, where they read as places Mantelier recommends. One setting, so every MapTiler map changes with it.
+- **The trip map says what is where** (product owner, 2026-11-04): a 13-pixel dot, square and diamond with no legend became 28-pixel pins with the icons of the visited map: cutlery, a key, a calendar, a check for what is on the trip. Zoomed in, a pin shows its name, places on the trip and events from zoom 12, the rest from zoom 14. A name moves to the left of its pin when the right is taken and stays hidden when neither side is free (`pickTripMapLabels`).
+- **iPhone only** (`TARGETED_DEVICE_FAMILY = 1`), decided by the product owner 2026-11-04: the app had declared iPad support without ever being looked at on an iPad, which would also ask for iPad screenshots. iPhone apps still run on an iPad in compatibility mode.
+
+### Added
+- **That Mantelier is independent, at the foot of Profile**, in the same words as `site/terms.html`, which a test holds them to. Until now it was only on the website, while the app shows MICHELIN stars and Keys throughout.
+
+### Fixed
+- **The time and battery were dark on green and photo app bars**: the venue, event, chef and news heroes and the Events screen took the theme's dark status bar, which is meant for its ivory app bars. They now set it light themselves.
+- **The back arrow on Events was nearly invisible**: `foregroundColor` loses to the theme's dark `iconTheme`, so the arrow was dark on dark green.
+- **Explore's cards had a blank third**: the rails were a fixed 340 and 176 points, sized for 1.6x text. They are now worked out from the text scale, and a test holds a two-line name at 1x to 2x. Near-miss caught by the tests: the "Mantelier Selection" line is taller than a row of stars, so the first height was a few points short.
+- **The back arrow disappeared on light photos**: on venue, event and chef heroes it was a bare ivory glyph, while the wishlist button beside it had a dark circle. It now has the same circle over a photo (`EditorialBackButton.onPhoto`), and stays bare on flat canvases.
+- **Hottest Places showed a letter instead of the venue's photo**: its thumbnail was hard-coded to none, and the query never asked for one.
+- Near-miss on the map names, seen in the simulator: `Text` inherited the theme's letter spacing while `TextPainter` measured without it, so names came out wider than their marker and were cut short ("Canal T…"). The style now sets its spacing outright.
+
+---
+
+## v1.5.7 (30) — 2026-11-04
+
+Build 29 was made from `014b73f`. This build carries the wines on a visit,
+the computed overall with Atmosphere and the overall alone on venue and
+visit pages, and the first map on the trip screens since build 24: their
+backend was already live. Schema diff against production run before this
+bump: the dumps differ by blank lines only, and storage and auth match apart
+from the Supabase platform triggers under Fixed.
+
+### Added
+- **Atmosphere, and overall as the average of the scores given** (product owner, 2026-11-04): hand-picked whole numbers tied at the top of every ranking. A new Atmosphere score on restaurants; `visits.rating` is now computed by the database from the scores filled in, blanks left out, so food alone makes the overall that food score. The overall control is gone from the form, which shows the result as you score. Everywhere an overall appears it shows one decimal. Migration `20261101340000_add_atmosphere_and_computed_overall.sql`, applied 2026-11-04; it recomputed the 18 existing rated visits, 7 of which moved by half a point or more, overwriting what members picked by hand. An export of the scores from before it was taken first and kept outside the repository. The app side comes with the next build. Shipped builds keep working: what they send as overall is ignored when any score is present, and they show 8.7 as 8 until they are gone.
+- **The overall alone on venue and visit pages** (product owner, 2026-11-04): one number, with what it is made of opening beneath it on a tap, highest first and blanks left out. `VenueOverallScore` replaces the row of rings, which at six on a restaurant read as a dashboard and cut "Atmosphere" short.
+- **"What members score you on" in Studio's Pro tab** (product owner, 2026-11-04): per restaurant and hotel, the average per score and how often it is filled in or left blank. Each member once, on their latest visit. Shown from 5 members, and when filled in or blank is under 5 both are hidden, since they add up to the total and the small one could be worked out by subtraction. Live on 2026-11-04: the privacy policy in `site/privacy.html` first, then migration `20261101350000_add_studio_venue_scores.sql`, then `studio/`. **Ledger: 148, local and remote in agreement.** `20261101320000` on `claude/event-expected-soldout` is still unapplied and must be renamed past these before it is.
+- **Wines on a visit or stay** (product owner, 2026-11-04): an optional "What we drank" in the review and on the visit page, reading like a wine list. Producer, wine, year or "No year", and size (Glass, Half, Bottle, Magnum, Other), each optional. Suggestions come from the member's own earlier wines. A wine is exactly as visible as its visit. Live on 2026-11-04: the privacy policy first, then migration `20261101330000_add_visit_wines.sql`; the app side comes with the next build. **Ledger: 146, local and remote in agreement.** The unapplied `20261101320000` on `claude/event-expected-soldout` now sorts before an applied migration, so it needs renaming to follow the highest before it is applied.
+
+### Fixed
+- The trip map and the event location picker said "The map can't be shown right now" in builds 25 to 29: the main checkout's gitignored `.env`, which archives are made from, had no `MAPTILER_KEY`, and `MapTilerConfig.key` returns null silently. Added 2026-11-04; the key names in that file are now checked at every version bump.
+- Near-miss in this build's schema diff: production's `storage.buckets` has three triggers the replay does not (`protect_active_lifecycle_states`, `wake_lifecycle_on_policy_write`, `wake_lifecycle_on_versioning_enable`). Not drift: Supabase's own storage migrations added them on 2026-11-04 at 07:51 UTC (`lifecycle-writer-coordination` and neighbours in `storage.migrations`), and their functions belong to `supabase_storage_admin`. The storage half of the diff will show them until the CLI's local storage image catches up.
+- Near-miss on the new scores report: hiding only the small one of filled in and left blank would still have given it away, because the two add up to the members total shown beside them. Both are hidden when either is under 5.
+- Near-miss on the new wines, seen in the simulator: `.order()` in `supabase_flutter` defaults to descending, so wines showed last-first until `ascending: true`. Would recur on any new ordered list; tests with a fake repository don't catch it.
+
+### Added
+- **67 events in production** (data, no migration, no build), 2026-11-04: world event batch 1, 30 to 97 events, 80 venue links, no photos, no pushes (the hosts had no followers). `docs/Architecture/Events/WORLD_EVENT_BATCH_1_PRODUCTION_APPLY.md`.
+- Migration `20261101310000_add_bh_ky_mu_countries.sql` applied 2026-11-04 (BH, KY, MU), then Cayman Cookout 2027: 98 events. **Ledger: 145, local and remote in agreement** on the branch carrying the migration; not on main yet.
 - Migration `20261101290000_add_gr_cities.sql`: 20 Greek towns (data only,
   `cities` rows) for the MICHELIN Greece pass. Applied to production on
   2026-11-04 from `claude/michelin-gr-2026` with plain
   `supabase db push --linked`. The ledger went from 142 to 143, and local
   and remote agree. The catalogue data that goes with it is in
   `supabase/data/enrichment/michelin_gr/`.
+- Migration `20261101300000_add_europe9_2026_countries_and_cities.sql`:
+  countries CZ, EE, LT and LV and 35 towns (data only) for the MICHELIN pass
+  over nine European countries. Applied to production on 2026-11-04 from
+  `claude/michelin-europe9-2026` with plain `supabase db push --linked`. The
+  ledger went from 143 to 144, and local and remote agree. The catalogue data
+  that goes with it is in `supabase/data/enrichment/michelin_europe9_2026/`.
 
 - Contact data on production, 2026-11-05: Greece (QA-431) and the 41-country
   world round, by `APPLY_2026-11-05.md`. 386 Place IDs, 465 phones and 327
@@ -27,10 +106,15 @@ The format follows Keep a Changelog.
   first real run was production. Its opening checks and the row-by-row
   comparison afterwards found no difference. The risk recurs on any
   machine without Docker.
-- This migration exists only on `claude/michelin-gr-2026` until that
-  branch is merged, so production's ledger is ahead of `main` by one.
-  A `supabase db push` from `main` before the merge reports the
-  difference.
+- `prepared_europe9_2026.sql` was also tested only on scratch PostgreSQL
+  with PostGIS stubbed, so its first real run was production too. The row-by-
+  row comparison afterwards found no difference.
+- The first run of that pass's `test_scratch.sh` printed "ok" on every guard
+  while the server wasn't running: it counted any failed `psql` call as a
+  correct abort, and Postgres won't start on this Mac without `LC_ALL`. The
+  script now requires a real SQL error and stops if the server or the seed
+  fails. A test that treats failure as success recurs wherever a guard is
+  only ever expected to fail.
 
 ---
 

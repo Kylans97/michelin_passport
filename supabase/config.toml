@@ -450,6 +450,13 @@ verify_jwt = false
 [functions.send-push]
 verify_jwt = false
 
+# notify-signup-watch is called only by send_signup_watch() through pg_cron
+# and pg_net (see 20261101360000_add_signup_watch.sql): no user JWT there,
+# so it checks its own shared secret (x-webhook-secret, compared against the
+# NOTIFY_SIGNUP_WATCH_WEBHOOK_SECRET function secret) instead.
+[functions.notify-signup-watch]
+verify_jwt = false
+
 [analytics]
 enabled = true
 port = 54327

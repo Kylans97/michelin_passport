@@ -68,9 +68,11 @@ class Visit {
   final String entityId;
   final DateTime visitedOn;
 
-  // Overall rating, 1-10, nullable. Never renamed to "overall_rating" — the
-  // database column is `rating`.
-  final int? rating;
+  // Overall rating, 1-10 with two decimals, nullable. Never set by the app:
+  // the database computes it as the average of the sub-ratings filled in
+  // (20261101340000). Never renamed to "overall_rating" — the database
+  // column is `rating`.
+  final double? rating;
 
   // Optional per-aspect sub-ratings, each 1-10. Independently nullable: a
   // visit may rate food but not wine (e.g. no wine was consumed), or record
@@ -85,6 +87,8 @@ class Visit {
   final int? foodRating;
   final int? serviceRating;
   final int? wineRating;
+  // Restaurant-only, like foodRating/wineRating (20261101340000).
+  final int? atmosphereRating;
   final int? valueRating;
   final int? roomRating;
   final int? experienceRating;
@@ -132,6 +136,7 @@ class Visit {
     this.foodRating,
     this.serviceRating,
     this.wineRating,
+    this.atmosphereRating,
     this.valueRating,
     this.roomRating,
     this.experienceRating,
@@ -152,10 +157,11 @@ class Visit {
     entityType: (json['entity_type'] as String?) ?? '',
     entityId: json['entity_id'].toString(),
     visitedOn: DateTime.parse(json['visited_on'] as String),
-    rating: (json['rating'] as num?)?.toInt(),
+    rating: (json['rating'] as num?)?.toDouble(),
     foodRating: (json['food_rating'] as num?)?.toInt(),
     serviceRating: (json['service_rating'] as num?)?.toInt(),
     wineRating: (json['wine_rating'] as num?)?.toInt(),
+    atmosphereRating: (json['atmosphere_rating'] as num?)?.toInt(),
     valueRating: (json['value_rating'] as num?)?.toInt(),
     // Absent on a historical row read before the Step 1E migration ships
     // (the column won't exist yet in production) exactly as absent as a
@@ -174,3 +180,19 @@ class Visit {
     verificationMethod: json['verification_method'] as String?,
   );
 }
+
+/// The overall a visit's [scores] come to: their average, the ones not
+/// filled in left out, rounded to two decimals. Null when none is filled
+/// in. The same rule as the database's visits_compute_overall
+/// (20261101340000), which is what stores it; this only shows it while the
+/// form is being filled in.
+double? computeOverall(Iterable<int?> scores) {
+  final given = scores.nonNulls.toList();
+  if (given.isEmpty) return null;
+  final average = given.reduce((a, b) => a + b) / given.length;
+  return (average * 100).round() / 100;
+}
+
+/// An overall as shown everywhere: always one decimal, so "8.0" and "8.3"
+/// read as the same kind of number.
+String formatOverall(num overall) => overall.toStringAsFixed(1);

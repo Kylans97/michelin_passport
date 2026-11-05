@@ -41,9 +41,9 @@ HAS_PLACE = {'hotel_716'}
 
 # ---- Place ID: rows that are not the plain first candidate -----------------
 PLACE_HOLD = {
-    'hotel_3024': 'Google record "Elix, Mar-Bella Collection" (marbella.gr, MICHELIN phone) is 615 m from the stored point: over 500 m, rejected. Stored point vs record: QA-460',
-    'hotel_3058': 'Google record "Olea All Suite Hotel, Member of Design Hotels" (oleaallsuitehotel.com, MICHELIN phone) is 715 m from the stored point: over 500 m, rejected. QA-460',
-    'hotel_3061': 'Google record "Palladium Boutique Hotel" (hotelpalladium.gr, MICHELIN phone) is 646 m from the stored point: over 500 m, rejected. QA-460',
+    'hotel_3024': 'Google record "Elix, Mar-Bella Collection" (marbella.gr, MICHELIN phone) is 615 m from the stored point: over 500 m, rejected. Stored point vs record: QA-472',
+    'hotel_3058': 'Google record "Olea All Suite Hotel, Member of Design Hotels" (oleaallsuitehotel.com, MICHELIN phone) is 715 m from the stored point: over 500 m, rejected. QA-472',
+    'hotel_3061': 'Google record "Palladium Boutique Hotel" (hotelpalladium.gr, MICHELIN phone) is 646 m from the stored point: over 500 m, rejected. QA-472',
     'hotel_3026': 'Only record is "Erosantorini" typed wedding_venue/event_venue, no lodging type; a lodging-only search returns Argento Nero 588 m away. No hotel record',
     'hotel_3041': 'Only record is "Leeda\'s Village" typed apartment_complex, not lodging; the lodging-only search returns a different property (The Farm Cottage) 1,572 m away',
     'hotel_3062': 'Two records: "Perivolas Lifestyle Houses" (lodging, 924 m, website a deal site) and "Perivolas Hotel" (hotel, 125 m, perivolas.gr). perivolas.gr answers 403, so the domain cannot be verified; two candidates: held back',

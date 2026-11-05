@@ -93,7 +93,7 @@ Visit _visit({
   entityType: entityType,
   entityId: entityId,
   visitedOn: visitedOn,
-  rating: rating,
+  rating: rating?.toDouble(),
   starsAtVisit: starsAtVisit,
   keysAtVisit: keysAtVisit,
 );

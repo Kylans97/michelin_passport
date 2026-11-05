@@ -1,0 +1,70 @@
+country,code,name,kind,qa,detail
+CZ,,,EDITION YEAR,QA-455,"MICHELIN's articles of 11 Dec 2025 say 'Czechia 2025'; every page says dateAwarded 2026 and '2026 MICHELIN Guide'. Proposed guide_year 2026, announced 2025-12-11"
+CZ,rest_4103,ESSENS,LEFT BLANK,QA-457,"phone: site status 200, MICHELIN link https://www.restaurantessens.cz/"
+CZ,rest_4107,LEVITATE,LEFT BLANK,QA-457,"phone: site status 200, MICHELIN link https://www.levitate.cz"
+CZ,,Carlsbad,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+CZ,,Hlohovec,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+CZ,,Mcely,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+CZ,,Olomouc,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+CZ,,Prague,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+CZ,,Vysoký Újezd,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+CZ,,Zlín,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+CZ,,Šumperk,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+CZ,rest_4102,Entrée,property_name PROPOSED,QA-459,The Theatre Hotel. MICHELIN's review: 'The Theatre Hotel not only wows overnight guests'
+CZ,rest_4103,ESSENS,property_name PROPOSED,QA-459,Chateau de Frontiere. MICHELIN's review: 'The Classical building of the Chateau de Frontiere'
+HR,rest_4109,Alfred Keller,HOTEL NOT PLACED,QA-459,"review: 'The town's most luxurious hotel', not named"
+HR,rest_4110,Boškinac,HOTEL NOT PLACED,QA-459,"review: 'a refined country house with a boutique hotel', same name; no separate MICHELIN hotel page read"
+HR,rest_4111,Cap Aureo,HOTEL NOT PLACED,QA-459,"pin 10 m from hotel_266 Grand Park Hotel Rovinj, but the review does not say so: no link on distance alone"
+HR,rest_4113,Harry’s Piccolo Poreč,HOTEL NOT PLACED,QA-459,"review: 'within a new five-star hotel', not named"
+HR,hotel_260,Villa Dubrovnik,KEY HELD BACK,QA-454,"stored 1, MICHELIN 2. real change: 1 Key on MICHELIN's listing archived 17 Oct 2025, 2 Keys on the live 2026 page. Proposal: relabel the launch row 2025 and close it; new current 2026 row of 2 (QA-383 shape)"
+HR,hotel_267,Palace Elisabeth Hvar,KEY HELD BACK,QA-454,"stored 2, MICHELIN 1. real change: 2 Keys on MICHELIN's listing archived 17 Oct 2025, 1 Key on the live 2026 page. Proposal: relabel the launch row 2025 and close it; new current 2026 row of 1 (QA-383 shape)"
+HR,rest_4109,Alfred Keller,LEFT BLANK,QA-457,"phone and website: site status 200, MICHELIN link https://w.eventlin.com/Restaurant-Alfred-Keller?merchant=25854"
+HR,rest_4111,Cap Aureo,LEFT BLANK,QA-457,"phone and website: site status None, MICHELIN link None"
+HR,rest_4120,Pelegrini,LEFT BLANK,QA-457,"phone: site status 200, MICHELIN link https://pelegrini.hr/"
+HR,,Jastrebarsko,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HR,,Korcula,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HR,,Mali Lošinj,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HR,,Novalja,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HR,,Porec,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HR,,Rijeka,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HR,,Sibenik,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HR,,Split,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HR,rest_4118,Nebo,property_name PROPOSED,QA-459,Hilton Rijeka Costabella. MICHELIN's review: 'On the fifth floor of the Hilton Rijeka Costabella'
+SI,rest_0425,Milka,HOTEL NOT PLACED,QA-459,"review: 'refined hotel rooms are available'; a MICHELIN card 'Milka Boutique Hotel' exists without a Key, but no page was read that ties the two, so no property_name"
+SI,hotel_301,Peterc Vineyard Estate,"KEY LOST, HELD BACK",QA-453,"stored 1, MICHELIN none. lost its Key: 1 Key on MICHELIN's listing archived 22 Oct 2025; the live page (14033) has no award and the hotel is no longer on the Slovenia listing. Proposal: keep the hotel, michelin_keys NULL, launch row relabelled 2025 and closed, current 2026 row NULL (QA-387)"
+SI,hotel_305,Nebesa Chalets,"KEY LOST, HELD BACK",QA-453,"stored 1, MICHELIN none. lost its Key: 1 Key on MICHELIN's listing archived 22 Oct 2025 and its page archived 14 Jan 2026; the live card and page (15390) carry no Key. Proposal: keep the hotel, michelin_keys NULL, launch row relabelled 2025 and closed, current 2026 row NULL (QA-387)"
+SI,rest_0425,Milka,LEFT BLANK,QA-457,"website: site status 500, MICHELIN link https://www.hotelmilka.si/restaurant"
+SI,rest_4127,Hiša Denk,LEFT BLANK,QA-457,"phone: site status 200, MICHELIN link https://www.hisadenk.si/"
+SI,,Bohinj,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+SI,,Lasko,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+SI,,Nova Gorica,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+SI,,Petrovče,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+SI,,Portorož,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+SI,,Radovljica,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+SI,,Vipava,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+SI,,Zgornja Kungota,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+SI,,Šentjošt nad Horjulom,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+SI,rest_0425,Milka,WEBSITE NOT FILLED,QA-457,"stored website empty; MICHELIN's link https://www.hotelmilka.si/restaurant answered HTTP 500 on the check, so it is not proposed"
+HU,rest_0428,Stand,EDITION YEAR,QA-455,"stored current row is guide_year 2026; MICHELIN's page says dateAwarded 2025, announced 2025-10-09. Not changed"
+HU,rest_4137,Salt,HOTEL NOT PLACED,QA-459,"review: 'Within a boutique hotel', not named"
+HU,hotel_277,Párisi Udvar Hotel Budapest,KEY HELD BACK,QA-451,"stored 2, MICHELIN 1. stored 2 matches no edition: MICHELIN's Hungary Key article of 8 Oct 2025 names only Gresham Palace and Matild Palace as Two-Key and calls Párisi Udvar One-Key; the 2026 page says One. Proposal: correct the 2026 row in place to 1 (QA-384 shape)"
+HU,rest_4131,Babel,LEFT BLANK,QA-457,"phone and website: site status 200, MICHELIN link https://www.babel-budapest.hu"
+HU,rest_4137,Salt,LEFT BLANK,QA-457,"phone: site status 200, MICHELIN link https://www.saltbudapest.com"
+HU,,Esztergom,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HU,,Őriszentpéter,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+HU,rest_0427,Platán Gourmet,STARS HELD BACK,QA-450,"stored 2, MICHELIN none. MICHELIN page gives 404 and the restaurant is off the live star list; the 2025 edition (9 Oct 2025) still gave it 2 stars; MICHELIN's Platán Manor page lists only Platán Bisztró; the venue's own site platangourmet.com says it has stopped trading. Proposal: keep the row for visits and the Passport, stars NULL, 2 stars kept as history, status closed; keep the link to hotel_268. Closing date unknown"
+MT,rest_4141,Noni,LEFT BLANK,QA-457,"phone: site status 200, MICHELIN link https://noni.com.mt/"
+MT,rest_4138,De Mondion,LINK PROPOSED,QA-459,-> hotel_292. MICHELIN's review: 'occupies the top floor of the charming Xara Palace hotel'; pins 40 m apart
+MT,rest_4143,Under Grain,LINK PROPOSED,QA-459,-> hotel_288. MICHELIN's review: 'Housed within the stylish Rosselli Hotel'; pins 9 m apart
+MT,,Sliema,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+MT,,St. Julian's,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+MT,rest_4140,Le GV,property_name PROPOSED,QA-459,Le Soleil Hotel. MICHELIN's review: 'on the eleventh floor of the 1926 Le Soleil Hotel'
+LT,,Radiškis,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+LT,,Trakai,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+LT,,Vilnius,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+LT,,Demo,NOT ADDED,QA-456,"MICHELIN's article of 5 Jun 2026 counts five One Stars including Demo, Vilnius; the live list has four and the page /restaurant/demo-1210016 gives 404. Beware: the slug /restaurant/demo redirects to a different restaurant in Helsinki"
+LV,rest_4148,JOHN Chef's Hall,LINK PROPOSED,QA-459,-> hotel_3116. MICHELIN's review: 'Situated within the A22 Hotel'; pins 9 m apart
+LV,,Riga,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+EE,,Tallinn,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)
+RS,hotel_280,The Bristol Belgrade,KEY HELD BACK,QA-452,"stored 1, MICHELIN 2. real change: 1 Key on MICHELIN's listing archived 16 Oct 2025 and in its article of 3 Jul 2026, 2 Keys on the live 2026 page. Proposal: relabel the launch row 2025 and close it; new current 2026 row of 2 (QA-383 shape)"
+RS,,Novi Slankamen,NEW TOWN,QA-458,spelling as MICHELIN's listing (restaurants) or page locality (hotels)

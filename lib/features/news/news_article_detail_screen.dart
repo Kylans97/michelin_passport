@@ -159,6 +159,9 @@ class _NewsArticleDetailScreenState extends State<NewsArticleDetailScreen> {
             )
           else
             const SliverAppBar(
+              // Light: the theme's default is for its ivory app bars, and left the
+              // time and battery dark on this green.
+              systemOverlayStyle: SystemUiOverlayStyle.light,
               backgroundColor: AppColors.deepGreen,
               foregroundColor: AppColors.textOnDark,
               pinned: true,

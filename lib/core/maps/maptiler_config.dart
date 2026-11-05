@@ -12,9 +12,11 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class MapTilerConfig {
   MapTilerConfig._();
 
-  /// MapTiler's Streets map, as 256 px raster tiles; `{r}` becomes `@2x` on
-  /// high-density screens (flutter_map's retina mode).
-  static const style = 'streets-v2';
+  /// MapTiler's Basic map, as 256 px raster tiles; `{r}` becomes `@2x` on
+  /// high-density screens (flutter_map's retina mode). Not Streets: that one
+  /// draws its own restaurants, hotels and cafés, which next to our pins
+  /// read as places Mantelier recommends.
+  static const style = 'basic-v2';
 
   /// Null when `MAPTILER_KEY` is missing or empty in `.env` (or `.env` was
   /// never loaded, as in widget tests) — callers show no map rather than

@@ -4,6 +4,7 @@ import '../../../core/widgets/star_row.dart';
 import '../../../models/passport_venue.dart';
 import '../../../models/photo_framing.dart';
 import '../../rankings/widgets/ranking_editorial_card.dart';
+import '../../../models/visit.dart';
 import '../friend_profile_data.dart';
 import '../friend_profile_screen.dart' show FriendVenueVisit;
 
@@ -58,7 +59,7 @@ class FriendVerdictRow extends StatelessWidget {
           : isHotel && keys > 0
           ? KeyRow(count: keys, size: 12)
           : null,
-      scoreText: visit.score == null ? null : '${visit.score}/10',
+      scoreText: visit.score == null ? null : '${formatOverall(visit.score!)}/10',
       visitText: isHotel ? 'Stayed $dateLabel' : 'Visited $dateLabel',
       onTap: onTap,
     );

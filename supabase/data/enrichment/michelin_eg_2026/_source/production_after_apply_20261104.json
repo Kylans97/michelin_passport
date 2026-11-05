@@ -1,0 +1,249 @@
+[
+ {
+  "address": "Hager Al Dabbeya, West Bank, 1340304 Luxor",
+  "city": "Luxor",
+  "code": "hotel_3121",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 2,
+    "y": 2026
+   }
+  ],
+  "keys": 2,
+  "lat": 25.684357,
+  "lon": 32.552754,
+  "name": "Al Moudira Hotel",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/luxor/al-moudira-9477"
+ },
+ {
+  "address": "Hurghada, 84513 El Gouna",
+  "city": "El Gouna",
+  "code": "hotel_3122",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 27.423875,
+  "lon": 33.666465,
+  "name": "Casa Cook El Gouna",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/el-gouna/casa-cook-el-gouna-126627-15566"
+ },
+ {
+  "address": "El Tesseen Street, Fifth Settlement, Cairo",
+  "city": "Cairo",
+  "code": "hotel_3123",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 30.025529,
+  "lon": 31.456078,
+  "name": "Dusit Thani LakeView Cairo",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/cairo/dusit-thani-lakeview-cairo-16265"
+ },
+ {
+  "address": "Nile City Towers, 2005B Corniche El Nil, Ramlet Bulaq, 11311 Cairo",
+  "city": "Cairo",
+  "code": "hotel_3124",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 30.0718079847,
+  "lon": 31.2277493288,
+  "name": "Fairmont Nile City",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/cairo/fairmont-nile-city-15160"
+ },
+ {
+  "address": "399 El Geish Road, San Stefano Grand Plaza, Alexandria",
+  "city": "Alexandria",
+  "code": "hotel_3125",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 31.24584,
+  "lon": 29.96586,
+  "name": "Four Seasons Hotel Alexandria at San Stefano, Egypt",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/alexandria/four-seasons-hotel-alexandria-9522"
+ },
+ {
+  "address": "1089 Corniche El Nil, P.O. Box 63 Maglis El Shaab, Garden City, 11519 Cairo",
+  "city": "Cairo",
+  "code": "hotel_3126",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 30.0382348376,
+  "lon": 31.23215546,
+  "name": "Four Seasons Hotel Cairo at Nile Plaza",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/cairo/four-seasons-cairo-at-nile-plaza-8431"
+ },
+ {
+  "address": "1 Four Seasons Boulevard, PO Box 203, Sharm El Sheikh",
+  "city": "Sharm El Sheikh",
+  "code": "hotel_3127",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 2,
+    "y": 2026
+   }
+  ],
+  "keys": 2,
+  "lat": 27.955264,
+  "lon": 34.393036,
+  "name": "Four Seasons Resort Sharm El Sheikh",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/sharm-el-sheikh/four-seasons-resort-sharm-el-sheikh-8233"
+ },
+ {
+  "address": "No.35/36. 26th July Corridor Sheikh Zayed, 6th of October City, 12588 Giza",
+  "city": "Giza",
+  "code": "hotel_3128",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 30.018278,
+  "lon": 31.002285,
+  "name": "Giza Palace Hotel & Spa",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/Giza/giza-palace-hotel-spa-15388"
+ },
+ {
+  "address": "Kite Center Road, Hurghada, 84513 El Gouna",
+  "city": "El Gouna",
+  "code": "hotel_3129",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 27.42246,
+  "lon": 33.67045,
+  "name": "La Maison Bleue El Gouna",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/el-gouna/la-maison-bleue-el-gouna-14616"
+ },
+ {
+  "address": "7 Champollion Road, 4272111 Cairo",
+  "city": "Cairo",
+  "code": "hotel_3130",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 30.048159,
+  "lon": 31.236536,
+  "name": "Mazeej Balad Boutique Hotel",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/cairo/mazeej-balad-boutique-hotel-15456"
+ },
+ {
+  "address": "Montaza, 21919 Alexandria",
+  "city": "Alexandria",
+  "code": "hotel_3131",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 31.288405,
+  "lon": 30.015993,
+  "name": "Rixos Montaza Alexandria",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/alexandria/rixos-montaza-alexandria-16269"
+ },
+ {
+  "address": "Oberoi 117, Sahl Hasheesh, 84500 Hurghada",
+  "city": "Hurghada",
+  "code": "hotel_3132",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 27.076915,
+  "lon": 33.879991,
+  "name": "The Oberoi Beach Resort, Sahl Hasheesh",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/Hurghada/the-oberoi-beach-resort-sahl-hasheesh-15528"
+ },
+ {
+  "address": "Corniche El Nile, Cairo",
+  "city": "Cairo",
+  "code": "hotel_3133",
+  "history": [
+   {
+    "ann": "2026-09-18",
+    "cur": true,
+    "v": 1,
+    "y": 2026
+   }
+  ],
+  "keys": 1,
+  "lat": 30.06301,
+  "lon": 31.22734,
+  "name": "The St. Regis Cairo",
+  "status": "open",
+  "url": "https://guide.michelin.com/en/hotels-stays/cairo/the-st-regis-cairo-12311"
+ }
+]

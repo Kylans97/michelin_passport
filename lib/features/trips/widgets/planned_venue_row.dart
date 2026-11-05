@@ -63,10 +63,41 @@ String _locationLabel(PassportVenue venue) {
   return '$city, $countryPart';
 }
 
+/// The visible way to a plan's edit/cancel/delete sheet. Long-press still
+/// opens it too, but nobody finds that on their own.
+class PlannedVisitMoreButton extends StatelessWidget {
+  final String venueName;
+  final VoidCallback onTap;
+
+  const PlannedVisitMoreButton({
+    super.key,
+    required this.venueName,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) => SizedBox(
+    width: 44,
+    height: 44,
+    child: IconButton(
+      onPressed: onTap,
+      padding: EdgeInsets.zero,
+      constraints: const BoxConstraints.tightFor(width: 44, height: 44),
+      tooltip: 'More options for $venueName',
+      icon: const Icon(
+        Icons.more_horiz_rounded,
+        size: 22,
+        color: AppColors.forestGreen,
+      ),
+    ),
+  );
+}
+
 /// One planned restaurant visit / hotel stay — used both under
 /// "PLANNED VISITS" (standalone, no trip) and inside Trip Detail's
 /// Stay/Dining lists. Tapping opens the venue's existing Detail screen;
-/// edit/cancel live behind [onLongPress] to keep the card itself calm.
+/// edit/cancel/delete sit behind [onLongPress] and, so they can be found,
+/// a [PlannedVisitMoreButton] on the standalone list.
 ///
 /// Trips restyle (2026-10-28): built on [CsPlaceCard] — the same ivory
 /// photo card Passport's collection, Wishlist and Rankings already use —
@@ -77,7 +108,8 @@ String _locationLabel(PassportVenue venue) {
 /// Keys come straight from [item.venue] (already resolved, no new query)
 /// and stay the only gold on the card. A cancelled plan is dimmed and
 /// labelled rather than struck through. [trailing] is an optional
-/// top-right control — Trip Detail's explicit "remove from trip".
+/// top-right control: Trip Detail's explicit "remove from trip", or
+/// [PlannedVisitMoreButton].
 class PlannedVenueRow extends StatelessWidget {
   final ResolvedPlannedVenue item;
   final VoidCallback onTap;

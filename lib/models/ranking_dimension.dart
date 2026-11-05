@@ -15,6 +15,7 @@ enum RankingDimension {
   food,
   service,
   wine,
+  atmosphere,
   value,
   room,
   experience;
@@ -24,6 +25,7 @@ enum RankingDimension {
     RankingDimension.food => 'Food',
     RankingDimension.service => 'Service',
     RankingDimension.wine => 'Wine',
+    RankingDimension.atmosphere => 'Atmosphere',
     RankingDimension.value => 'Value',
     RankingDimension.room => 'Room',
     RankingDimension.experience => 'Experience',
@@ -32,24 +34,26 @@ enum RankingDimension {
   /// This dimension's rating on [visit], or null when that visit didn't
   /// record it. Never coerced to 0 — a null here must be excluded from any
   /// average, not counted as a low score.
-  int? valueFor(Visit visit) => switch (this) {
+  num? valueFor(Visit visit) => switch (this) {
     RankingDimension.overall => visit.rating,
     RankingDimension.food => visit.foodRating,
     RankingDimension.service => visit.serviceRating,
     RankingDimension.wine => visit.wineRating,
+    RankingDimension.atmosphere => visit.atmosphereRating,
     RankingDimension.value => visit.valueRating,
     RankingDimension.room => visit.roomRating,
     RankingDimension.experience => visit.experienceRating,
   };
 
   /// True for every dimension a restaurant visit can rate — Overall, Food,
-  /// Service, Wine, Value. Room/Experience are hotel-only concepts a
+  /// Service, Wine, Atmosphere, Value. Room/Experience are hotel-only concepts a
   /// restaurant visit never records.
   bool get validForRestaurant => switch (this) {
     RankingDimension.overall => true,
     RankingDimension.food => true,
     RankingDimension.service => true,
     RankingDimension.wine => true,
+    RankingDimension.atmosphere => true,
     RankingDimension.value => true,
     RankingDimension.room => false,
     RankingDimension.experience => false,
@@ -67,5 +71,6 @@ enum RankingDimension {
     RankingDimension.experience => true,
     RankingDimension.food => false,
     RankingDimension.wine => false,
+    RankingDimension.atmosphere => false,
   };
 }

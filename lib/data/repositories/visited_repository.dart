@@ -28,7 +28,8 @@ const _hotelEntity = 'hotel';
 // production until then.
 const _visitColumns =
     'id, user_id, entity_type, entity_id, visited_on, rating, '
-    'food_rating, service_rating, wine_rating, value_rating, room_rating, '
+    'food_rating, service_rating, wine_rating, atmosphere_rating, '
+    'value_rating, room_rating, '
     'experience_rating, menu_type, notes, price_paid, currency, '
     'keys_at_visit, stars_at_visit, visibility';
 
@@ -103,10 +104,10 @@ class VisitedRepository {
     required String userId,
     required String restaurantId,
     DateTime? visitedOn,
-    int? rating,
     int? foodRating,
     int? serviceRating,
     int? wineRating,
+    int? atmosphereRating,
     int? valueRating,
     MenuType? menuType,
     String? notes,
@@ -121,10 +122,10 @@ class VisitedRepository {
       entityType: _restaurantEntity,
       entityId: restaurantId,
       visitedOn: visitedOn,
-      rating: rating,
       foodRating: foodRating,
       serviceRating: serviceRating,
       wineRating: wineRating,
+      atmosphereRating: atmosphereRating,
       valueRating: valueRating,
       menuType: menuType,
       notes: notes,
@@ -157,7 +158,6 @@ class VisitedRepository {
     required String userId,
     required String hotelId,
     DateTime? visitedOn,
-    int? rating,
     int? serviceRating,
     int? roomRating,
     int? experienceRating,
@@ -171,7 +171,6 @@ class VisitedRepository {
       entityType: _hotelEntity,
       entityId: hotelId,
       visitedOn: visitedOn,
-      rating: rating,
       serviceRating: serviceRating,
       roomRating: roomRating,
       experienceRating: experienceRating,
@@ -193,10 +192,10 @@ class VisitedRepository {
     required String entityType,
     required String entityId,
     DateTime? visitedOn,
-    int? rating,
     int? foodRating,
     int? serviceRating,
     int? wineRating,
+    int? atmosphereRating,
     int? valueRating,
     int? roomRating,
     int? experienceRating,
@@ -219,10 +218,10 @@ class VisitedRepository {
           'entity_type': entityType,
           'entity_id': entityId,
           'visited_on': date,
-          'rating': ?rating,
           'food_rating': ?foodRating,
           'service_rating': ?serviceRating,
           'wine_rating': ?wineRating,
+          'atmosphere_rating': ?atmosphereRating,
           'value_rating': ?valueRating,
           'room_rating': ?roomRating,
           'experience_rating': ?experienceRating,
@@ -272,10 +271,10 @@ class VisitedRepository {
     required String userId,
     required String visitId,
     required DateTime visitedOn,
-    int? rating,
     int? foodRating,
     int? serviceRating,
     int? wineRating,
+    int? atmosphereRating,
     int? valueRating,
     int? roomRating,
     int? experienceRating,
@@ -287,10 +286,10 @@ class VisitedRepository {
         .from('visits')
         .update({
           'visited_on': visitedOn.toIso8601String().substring(0, 10),
-          'rating': rating,
           'food_rating': foodRating,
           'service_rating': serviceRating,
           'wine_rating': wineRating,
+          'atmosphere_rating': atmosphereRating,
           'value_rating': valueRating,
           'room_rating': roomRating,
           'experience_rating': experienceRating,

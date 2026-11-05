@@ -39,6 +39,7 @@ import 'my_venues_screen.dart';
 import 'privacy_settings_screen.dart';
 import '../notifications/notification_settings_screen.dart';
 import '../notifications/push_service.dart';
+import 'widgets/independence_note.dart';
 
 /// My Profile — PROFILE UI REDESIGN V1.
 ///
@@ -604,6 +605,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onTap: () => _openExternal('https://mantelier.app/support'),
                   ),
                   const SizedBox(height: CsSpacing.lg),
+                  const IndependenceNote(),
+                  const SizedBox(height: CsSpacing.md),
                   FutureBuilder<PackageInfo>(
                     future: _packageInfoFuture,
                     builder: (context, infoSnap) {

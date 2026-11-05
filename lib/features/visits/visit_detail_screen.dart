@@ -12,6 +12,7 @@ import '../../models/passport_venue.dart';
 import '../../models/visit.dart';
 import '../passport/widgets/add_visit_flow.dart';
 import '../photos/widgets/visit_photos_section.dart';
+import 'widgets/visit_wines.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 
 const _monthNames = [
@@ -386,16 +387,32 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                 style: CsTypography.eyebrow.copyWith(color: AppColors.taupe),
               ),
               const SizedBox(height: CsSpacing.md),
-              // The same forest-green rings as the venue page's own
-              // "SCORES (Your latest visit)" strip — never gold, which is for
-              // MICHELIN stars and Keys only.
-              VenueScoreStrip(
-                dimensions: [
-                  ScoreDimension(label: 'Overall', value: visit.rating),
-                  ScoreDimension(label: 'Food', value: visit.foodRating),
-                  ScoreDimension(label: 'Service', value: visit.serviceRating),
-                  ScoreDimension(label: 'Wine', value: visit.wineRating),
-                  ScoreDimension(label: 'Value', value: visit.valueRating),
+              // The same overall as the venue page's own "SCORES (Your
+              // latest visit)" — never gold, which is for MICHELIN stars and
+              // Keys only.
+              VenueOverallScore(
+                overall: visit.rating,
+                scores: [
+                  ScoreDimension(
+                    label: 'Food',
+                    value: visit.foodRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Service',
+                    value: visit.serviceRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Wine',
+                    value: visit.wineRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Atmosphere',
+                    value: visit.atmosphereRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Value',
+                    value: visit.valueRating,
+                  ),
                 ],
               ),
 
@@ -429,6 +446,7 @@ class _VisitDetailScreenState extends State<VisitDetailScreen> {
                 ),
               ],
 
+              VisitWinesSection(visitId: visit.id, readOnly: !_isOwner),
               const SizedBox(height: 32),
               Text(
                 'PHOTOS',

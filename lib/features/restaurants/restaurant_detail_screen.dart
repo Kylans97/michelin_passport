@@ -614,11 +614,14 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
       await _refreshVisits();
       if (!mounted) return;
       final photoErrors = result.outcome == SaveOutcome.savedWithPhotoErrors;
+      final wineErrors = result.outcome == SaveOutcome.savedWithWineErrors;
       _showSnack(
         photoErrors
             ? 'Visit saved, but some photos could not be uploaded.'
+            : wineErrors
+            ? 'Visit saved, but some wines could not be added.'
             : 'Visit saved',
-        isError: photoErrors,
+        isError: photoErrors || wineErrors,
       );
     }
   }
@@ -957,12 +960,9 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                       date: latestVisit.visitedOn,
                     ),
                     const SizedBox(height: CsSpacing.md),
-                    VenueScoreStrip(
-                      dimensions: [
-                        ScoreDimension(
-                          label: 'Overall',
-                          value: latestVisit.rating,
-                        ),
+                    VenueOverallScore(
+                      overall: latestVisit.rating,
+                      scores: [
                         ScoreDimension(
                           label: 'Food',
                           value: latestVisit.foodRating,
@@ -974,6 +974,10 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
                         ScoreDimension(
                           label: 'Wine',
                           value: latestVisit.wineRating,
+                        ),
+                        ScoreDimension(
+                          label: 'Atmosphere',
+                          value: latestVisit.atmosphereRating,
                         ),
                         ScoreDimension(
                           label: 'Value',

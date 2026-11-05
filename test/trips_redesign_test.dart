@@ -13,6 +13,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:michelin_passport/core/constants/app_colors.dart';
+import 'package:michelin_passport/features/trips/trip_detail_screen.dart';
 import 'package:michelin_passport/features/trips/widgets/planned_venue_row.dart';
 import 'package:michelin_passport/features/trips/widgets/trip_card.dart';
 import 'package:michelin_passport/features/trips/widgets/trip_eyebrow.dart';
@@ -111,6 +112,37 @@ Widget _wrap(Widget child) => MaterialApp(
 );
 
 void main() {
+  group('deleteTripMessage', () {
+    test('says how many of your own plans go with the trip', () {
+      expect(
+        deleteTripMessage(ownPlans: 2, shared: false),
+        "This will permanently remove the trip and your 2 planned visits. "
+        "The places themselves and your Passport aren't affected.",
+      );
+      expect(
+        deleteTripMessage(ownPlans: 1, shared: false),
+        contains('your 1 planned visit.'),
+      );
+    });
+
+    test('without plans it only mentions the trip', () {
+      expect(
+        deleteTripMessage(ownPlans: 0, shared: false),
+        'This will permanently remove the trip.',
+      );
+    });
+
+    test('on a shared trip others keep their plans', () {
+      expect(
+        deleteTripMessage(ownPlans: 1, shared: true),
+        allOf(
+          contains('for everyone on it'),
+          endsWith('Plans made by others stay with them.'),
+        ),
+      );
+    });
+  });
+
   group('formatTripDateRange', () {
     test('same month/year', () {
       expect(
@@ -267,6 +299,30 @@ void main() {
   });
 
   group('PlannedVenueRow', () {
+    testWidgets('a visible button opens the same actions as a long press', (
+      tester,
+    ) async {
+      var opened = 0;
+      var venueOpened = 0;
+      await tester.pumpWidget(
+        _wrap(
+          PlannedVenueRow(
+            item: _plannedRestaurant(),
+            onTap: () => venueOpened++,
+            onLongPress: () => opened++,
+            trailing: PlannedVisitMoreButton(
+              venueName: 'A Venue',
+              onTap: () => opened++,
+            ),
+          ),
+        ),
+      );
+      await tester.tap(find.byIcon(Icons.more_horiz_rounded));
+      expect(opened, 1);
+      expect(venueOpened, 0, reason: 'the button does not open the venue');
+      expect(find.byTooltip('More options for A Venue'), findsOneWidget);
+    });
+
     testWidgets('renders venue name, location and plan date', (tester) async {
       await tester.pumpWidget(
         _wrap(PlannedVenueRow(item: _plannedRestaurant(), onTap: () {})),

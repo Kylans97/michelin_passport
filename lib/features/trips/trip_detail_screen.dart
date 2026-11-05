@@ -53,6 +53,20 @@ import '../../core/analytics/screen_usage.dart';
 /// ([PlannedTripsRepository.sharedTripsAvailable]).
 ///
 /// Pickers are scoped to the destinations (codes and ids, never names) —
+/// What deleting a trip does, said before it happens: the member's own plans
+/// go with it, other members' stay with them.
+@visibleForTesting
+String deleteTripMessage({required int ownPlans, required bool shared}) => [
+  'This will permanently remove the trip',
+  if (shared) ' for everyone on it',
+  if (ownPlans > 0)
+    '${shared ? ',' : ''} and your $ownPlans planned '
+        '${ownPlans == 1 ? 'visit' : 'visits'}',
+  '.',
+  if (ownPlans > 0) " The places themselves and your Passport aren't affected.",
+  if (shared) ' Plans made by others stay with them.',
+].join();
+
 /// the whole trip's, or one leg's when added from that leg.
 class TripDetailScreen extends StatefulWidget {
   final PlannedTrip trip;
@@ -268,14 +282,7 @@ class _TripDetailScreenState extends State<TripDetailScreen> {
     final confirmed = await showTripConfirmDialog(
       context,
       title: 'Delete this trip?',
-      message: [
-        'This will permanently remove the trip',
-        if (shared) ' for everyone on it',
-        '.',
-        if (own > 0)
-          ' Your $own planned ${own == 1 ? 'venue' : 'venues'} will not be '
-              'deleted — they\'ll just no longer belong to a trip.',
-      ].join(),
+      message: deleteTripMessage(ownPlans: own, shared: shared),
       confirmLabel: 'Delete trip',
     );
     if (!confirmed) return;

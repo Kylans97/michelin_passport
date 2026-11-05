@@ -94,6 +94,80 @@ void main() {
     });
   });
 
+  group('pickTripMapLabels', () {
+    // One degree of latitude/longitude is one hundred pixels here.
+    Offset project(LatLng p) => Offset(p.longitude * 100, -p.latitude * 100);
+    TripMapVenueItem venue(
+      String id,
+      double lat,
+      double lng, {
+      bool planned = false,
+    }) => TripMapVenueItem(
+      RestaurantVenue(_restaurant(id, id)),
+      LatLng(lat, lng),
+      planned: planned,
+    );
+    Map<String, TripMapLabelSide> pick(
+      List<TripMapItem> items, {
+      double zoom = 15,
+      List<Offset> obstacles = const [],
+      String? selectedKey,
+    }) => pickTripMapLabels(
+      items,
+      zoom: zoom,
+      project: project,
+      labelWidth: (_) => 60,
+      obstacles: obstacles,
+      selectedKey: selectedKey,
+    );
+
+    test('zoomed out, no names; a planned place shows its name first', () {
+      final items = [venue('a', 0, 0), venue('b', 2, 0, planned: true)];
+      expect(pick(items, zoom: 11), isEmpty);
+      expect(pick(items, zoom: 12).keys, ['r:b']);
+      expect(pick(items, zoom: 14).keys.toSet(), {'r:a', 'r:b'});
+    });
+
+    test('the selected place shows its name at any zoom', () {
+      final items = [venue('a', 0, 0), venue('b', 2, 0)];
+      expect(pick(items, zoom: 6, selectedKey: 'r:a').keys, ['r:a']);
+    });
+
+    test('a name goes left when another pin stands on its right', () {
+      final labels = pick([venue('a', 0, 0), venue('b', 0, 0.5)]);
+      expect(labels['r:a'], TripMapLabelSide.left);
+      expect(labels['r:b'], TripMapLabelSide.right);
+    });
+
+    test('a name with no room on either side stays hidden', () {
+      final labels = pick([
+        venue('left', 0, -0.5),
+        venue('middle', 0, 0),
+        venue('right', 0, 0.5),
+      ]);
+      expect(labels.containsKey('r:middle'), isFalse);
+      expect(labels['r:left'], TripMapLabelSide.left);
+      expect(labels['r:right'], TripMapLabelSide.right);
+    });
+
+    test('names never overlap: a planned place picks first, the next moves', () {
+      final labels = pick([
+        venue('rest', 0.1, 0),
+        venue('planned', 0, 0, planned: true),
+      ]);
+      expect(labels['r:planned'], TripMapLabelSide.right);
+      expect(labels['r:rest'], TripMapLabelSide.left);
+    });
+
+    test('a numbered cluster blocks a name like a pin does', () {
+      final labels = pick(
+        [venue('a', 0, 0)],
+        obstacles: [const Offset(50, 0), const Offset(-50, 0)],
+      );
+      expect(labels, isEmpty);
+    });
+  });
+
   group('TripMapScreen', () {
     late List<TripDestination> loadedLegs;
     late List<String> added;

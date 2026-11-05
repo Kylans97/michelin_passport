@@ -1,3 +1,5 @@
+import 'dart:math' as math;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
@@ -28,12 +30,13 @@ import 'trip_map_items.dart';
 /// on a street map. Tapping a marker opens a small card with "Add to trip".
 /// A trip with several destinations switches leg from the chips on top.
 ///
-/// Markers: a dot for a restaurant, a rounded square for a hotel, a
-/// diamond for an event, an ivory disc with a check for anything already
-/// on the trip. Nearby dots fold into a numbered cluster until zoomed in;
-/// planned places and events never fold. No gold on the map itself: stars
-/// and Keys appear only on the card, the way the rest of the app shows
-/// them.
+/// Markers: green pins with cutlery for a restaurant and a key for a hotel,
+/// as on the visited map ([VenuePin]), an ivory pin with a calendar for an
+/// event and with a check for anything already on the trip. Nearby pins
+/// fold into a numbered cluster until zoomed in; planned places and events
+/// never fold. Zoomed in, a pin shows its name (see [pickTripMapLabels]).
+/// No gold on the map itself: stars and Keys appear only on the card, the
+/// way the rest of the app shows them.
 class TripMapScreen extends StatefulWidget {
   final PlannedTrip trip;
 
@@ -374,8 +377,41 @@ class _ClusteredMarkers extends StatelessWidget {
       items,
       (p) => camera.projectAtZoom(p, zoom),
     );
+    final singles = [
+      for (final cluster in clusters)
+        if (cluster.items.length == 1) cluster.items.single,
+    ];
+    final textScaler = MediaQuery.textScalerOf(context);
+    final labels = pickTripMapLabels(
+      singles,
+      zoom: zoom,
+      project: (p) => camera.projectAtZoom(p, zoom),
+      labelWidth: (item) => _labelWidth(item, textScaler),
+      obstacles: [
+        for (final cluster in clusters)
+          if (cluster.items.length > 1)
+            camera.projectAtZoom(cluster.center, zoom),
+      ],
+      selectedKey: selectedKey,
+    );
     return MarkerLayer(
       markers: [
+        // Names first, so a pin is always drawn over them.
+        for (final item in singles)
+          if (labels[item.key] case final side?)
+            Marker(
+              point: item.point,
+              width: _labelWidth(item, textScaler) + _labelInset,
+              height: 22,
+              alignment: side == TripMapLabelSide.right
+                  ? Alignment.centerRight
+                  : Alignment.centerLeft,
+              child: _ItemLabel(
+                item: item,
+                side: side,
+                onTap: () => onTap(TripMapCluster([item])),
+              ),
+            ),
         for (final cluster in clusters)
           if (cluster.items.length == 1)
             Marker(
@@ -403,6 +439,96 @@ class _ClusteredMarkers extends StatelessWidget {
   }
 }
 
+// From a pin's centre to where its name starts: the pin's radius and a gap.
+const double _labelInset = 18;
+const double _labelMaxWidth = 130;
+
+TextStyle get _labelStyle => CsTypography.metadata.copyWith(
+  color: AppColors.forestGreen,
+  fontSize: 11,
+  fontWeight: FontWeight.w600,
+  height: 1.2,
+  // Set, so the Text cannot inherit spacing the theme adds and come out
+  // wider than _labelWidth measured.
+  letterSpacing: 0,
+);
+
+String _itemName(TripMapItem item) => switch (item) {
+  TripMapVenueItem(:final venue) => venue.name,
+  TripMapEventItem(:final event) => event.name,
+};
+
+double _labelWidth(TripMapItem item, TextScaler textScaler) {
+  final painter = TextPainter(
+    text: TextSpan(text: _itemName(item), style: _labelStyle),
+    textDirection: TextDirection.ltr,
+    textScaler: textScaler,
+    maxLines: 1,
+  )..layout();
+  final width = painter.width;
+  painter.dispose();
+  return math.min(width.ceilToDouble() + 1, _labelMaxWidth);
+}
+
+/// A pin's name, with a pale halo so it stays readable on any street. The
+/// pin carries the name for screen readers, so this is left out of the
+/// semantics tree.
+class _ItemLabel extends StatelessWidget {
+  final TripMapItem item;
+  final TripMapLabelSide side;
+  final VoidCallback onTap;
+
+  const _ItemLabel({
+    required this.item,
+    required this.side,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final name = _itemName(item);
+    return ExcludeSemantics(
+      child: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onTap: onTap,
+        child: Padding(
+          padding: side == TripMapLabelSide.right
+              ? const EdgeInsets.only(left: _labelInset)
+              : const EdgeInsets.only(right: _labelInset),
+          child: Align(
+            alignment: side == TripMapLabelSide.right
+                ? Alignment.centerLeft
+                : Alignment.centerRight,
+            child: Stack(
+              children: [
+                Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: _labelStyle.copyWith(
+                    color: null,
+                    foreground: Paint()
+                      ..style = PaintingStyle.stroke
+                      ..strokeWidth = 3
+                      ..strokeJoin = StrokeJoin.round
+                      ..color = AppColors.ivory,
+                  ),
+                ),
+                Text(
+                  name,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: _labelStyle,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class _ItemMarker extends StatelessWidget {
   final TripMapItem item;
   final bool selected;
@@ -422,51 +548,32 @@ class _ItemMarker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scale = selected ? 1.4 : 1.0;
+    final scale = selected ? 1.25 : 1.0;
+    Widget pin(IconData icon, {required bool light}) => Container(
+      width: 28,
+      height: 28,
+      decoration: BoxDecoration(
+        color: light ? AppColors.ivory : AppColors.forestGreen,
+        shape: BoxShape.circle,
+        border: Border.all(
+          color: light ? AppColors.forestGreen : AppColors.ivory,
+          width: 1.5,
+        ),
+      ),
+      child: Icon(
+        icon,
+        size: 15,
+        color: light ? AppColors.forestGreen : AppColors.ivory,
+      ),
+    );
     final Widget shape = switch (item) {
-      TripMapVenueItem(planned: true) => Container(
-        width: 20,
-        height: 20,
-        decoration: BoxDecoration(
-          color: AppColors.ivory,
-          shape: BoxShape.circle,
-          border: Border.all(color: AppColors.forestGreen, width: 2),
-        ),
-        child: const Icon(
-          Icons.check_rounded,
-          size: 13,
-          color: AppColors.forestGreen,
-        ),
+      TripMapVenueItem(planned: true) => pin(Icons.check_rounded, light: true),
+      TripMapVenueItem(isHotel: true) => pin(
+        Icons.vpn_key_rounded,
+        light: false,
       ),
-      TripMapVenueItem(isHotel: true) => Container(
-        width: 13,
-        height: 13,
-        decoration: BoxDecoration(
-          color: AppColors.forestGreen,
-          borderRadius: BorderRadius.circular(3),
-          border: Border.all(color: AppColors.ivory, width: 1.5),
-        ),
-      ),
-      TripMapVenueItem() => Container(
-        width: 13,
-        height: 13,
-        decoration: BoxDecoration(
-          color: AppColors.forestGreen,
-          shape: BoxShape.circle,
-          border: Border.all(color: AppColors.ivory, width: 1.5),
-        ),
-      ),
-      TripMapEventItem() => Transform.rotate(
-        angle: 0.785398,
-        child: Container(
-          width: 12,
-          height: 12,
-          decoration: BoxDecoration(
-            color: AppColors.ivory,
-            border: Border.all(color: AppColors.forestGreen, width: 1.8),
-          ),
-        ),
-      ),
+      TripMapVenueItem() => pin(Icons.restaurant_rounded, light: false),
+      TripMapEventItem() => pin(Icons.event_rounded, light: true),
     };
     return Semantics(
       button: true,

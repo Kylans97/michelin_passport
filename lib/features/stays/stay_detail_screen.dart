@@ -12,6 +12,7 @@ import '../../models/passport_venue.dart';
 import '../../models/visit.dart';
 import '../passport/widgets/add_visit_flow.dart';
 import '../photos/widgets/visit_photos_section.dart';
+import '../visits/widgets/visit_wines.dart';
 import '../hotels/hotel_detail_screen.dart';
 import '../../core/analytics/analytics_properties.dart';
 
@@ -390,16 +391,25 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
               // The same forest-green rings as the venue page's own
               // "SCORES (Your latest stay)" strip — never gold, which is for
               // MICHELIN stars and Keys only.
-              VenueScoreStrip(
-                dimensions: [
-                  ScoreDimension(label: 'Overall', value: stay.rating),
-                  ScoreDimension(label: 'Service', value: stay.serviceRating),
-                  ScoreDimension(label: 'Room', value: stay.roomRating),
+              VenueOverallScore(
+                overall: stay.rating,
+                scores: [
+                  ScoreDimension(
+                    label: 'Service',
+                    value: stay.serviceRating,
+                  ),
+                  ScoreDimension(
+                    label: 'Room',
+                    value: stay.roomRating,
+                  ),
                   ScoreDimension(
                     label: 'Experience',
                     value: stay.experienceRating,
                   ),
-                  ScoreDimension(label: 'Value', value: stay.valueRating),
+                  ScoreDimension(
+                    label: 'Value',
+                    value: stay.valueRating,
+                  ),
                 ],
               ),
 
@@ -418,6 +428,7 @@ class _StayDetailScreenState extends State<StayDetailScreen> {
                 ),
               ],
 
+              VisitWinesSection(visitId: stay.id, readOnly: !_isOwner),
               const SizedBox(height: 32),
               Text(
                 'PHOTOS',

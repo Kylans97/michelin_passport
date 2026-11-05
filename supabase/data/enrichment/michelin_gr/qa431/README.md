@@ -124,7 +124,7 @@ zou overschrijven. Zie `gr_qa432_qa433_findings.csv`.
   seizoensgebonden, geen sluiting.
 - **Pelagos:** het record van het restaurant zelf is gebruikt (161 m, met MICHELIN's eigen domein).
   Het record van de Four Seasons is niet gebruikt.
-- **Elix, Olea en Palladium:** het juiste record ligt 615–715 m van ons punt (QA-460). Het punt is
+- **Elix, Olea en Palladium:** het juiste record ligt 615–715 m van ons punt (QA-472). Het punt is
   niet aangepast.
 
 ## Getest
@@ -160,6 +160,6 @@ Place ID, 0 telefoons en 1 website; restaurants 16 telefoons en 20 websites.
 - **`places_raw_20261103.json`, `places_followup_20261103.json` en `sites_20261103.json`:** de ruwe
   antwoorden. Er staat geen API-sleutel in.
 
-Nieuwe QA-ids: QA-460 t/m QA-463. De gedeelde notities zijn in deze container niet bereikbaar. De
+Nieuwe QA-ids: QA-461 t/m QA-463 en QA-472 (eerst QA-460; dat nummer bleek al gebruikt voor Egypte). De gedeelde notities zijn in deze container niet bereikbaar. De
 hoogste id op een andere branch was QA-459 (`claude/michelin-europe9-2026`). **Controleer deze
 nummers tegen de gedeelde notities.**

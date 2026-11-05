@@ -526,11 +526,14 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
       await _refreshStays();
       if (!mounted) return;
       final photoErrors = result.outcome == SaveOutcome.savedWithPhotoErrors;
+      final wineErrors = result.outcome == SaveOutcome.savedWithWineErrors;
       _showSnack(
         photoErrors
             ? 'Stay saved, but some photos could not be uploaded.'
+            : wineErrors
+            ? 'Stay saved, but some wines could not be added.'
             : 'Stay saved',
-        isError: photoErrors,
+        isError: photoErrors || wineErrors,
       );
     }
   }
@@ -755,12 +758,9 @@ class _HotelDetailScreenState extends State<HotelDetailScreen> {
                     const SectionDivider(),
                     VenueScoreHeader(noun: 'stay', date: latestStay.visitedOn),
                     const SizedBox(height: CsSpacing.md),
-                    VenueScoreStrip(
-                      dimensions: [
-                        ScoreDimension(
-                          label: 'Overall',
-                          value: latestStay.rating,
-                        ),
+                    VenueOverallScore(
+                      overall: latestStay.rating,
+                      scores: [
                         ScoreDimension(
                           label: 'Service',
                           value: latestStay.serviceRating,

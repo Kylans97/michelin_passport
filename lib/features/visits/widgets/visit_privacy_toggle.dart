@@ -63,7 +63,7 @@ class VisitPrivacyToggle extends StatelessWidget {
                     ),
                     const SizedBox(height: 3),
                     Text(
-                      'Friends can see this visit, your rating and photos.',
+                      'Friends can see this visit, your rating, wines and photos.',
                       style: GoogleFonts.inter(
                         color: AppColors.textSecondary,
                         fontSize: 12.5,

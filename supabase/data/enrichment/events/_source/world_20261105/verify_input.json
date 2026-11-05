@@ -1,0 +1,302 @@
+[
+ {
+  "id": "wev-001",
+  "name": "White Truffle & Gaja Dinner",
+  "official_url": "https://www.maybourne.com/en/hotels/claridges/restaurants-bars/experiences",
+  "start_date": "2026-11-05",
+  "end_date": "2026-11-05",
+  "start_time": "19:00",
+  "end_time": "",
+  "city": "London"
+ },
+ {
+  "id": "wev-002",
+  "name": "Big Sur Food & Wine Festival 2026",
+  "official_url": "https://bigsurfoodandwine.squarespace.com/festival",
+  "start_date": "2026-11-05",
+  "end_date": "2026-11-07",
+  "start_time": "",
+  "end_time": "",
+  "city": "Big Sur"
+ },
+ {
+  "id": "wev-003",
+  "name": "Signature Sessions: Sapiens X Kol",
+  "official_url": "https://www.the50.com/restaurants/best-in-the-world/experiences.html",
+  "start_date": "2026-11-05",
+  "end_date": "2026-11-05",
+  "start_time": "",
+  "end_time": "",
+  "city": "Lima"
+ },
+ {
+  "id": "wev-004",
+  "name": "Cos d'Estournel Four-Hands Dinner: Jérôme Banctel x Marco Ortolani",
+  "official_url": "https://www.lareserve-paris.com/en/actualites/cos-d-estournel-four-hands-dinner-jerome-banctel-x-marco-ortolani/",
+  "start_date": "2026-11-06",
+  "end_date": "2026-11-06",
+  "start_time": "",
+  "end_time": "",
+  "city": "Zurich"
+ },
+ {
+  "id": "wev-005",
+  "name": "Merano WineFestival 2026 (35th edition)",
+  "official_url": "https://www.meranowinefestival.com/en/",
+  "start_date": "2026-11-06",
+  "end_date": "2026-11-10",
+  "start_time": "",
+  "end_time": "",
+  "city": "Merano"
+ },
+ {
+  "id": "wev-006",
+  "name": "2026 JBF Gala for Good™",
+  "official_url": "https://www.jamesbeard.org/events/2026-jbf-gala-for-good",
+  "start_date": "2026-11-06",
+  "end_date": "2026-11-06",
+  "start_time": "18:00",
+  "end_time": "",
+  "city": "New York"
+ },
+ {
+  "id": "wev-007",
+  "name": "Four-Hands Dinner | Six courses - two culinary signatures",
+  "official_url": "https://shop.e-guma.ch/excelsiorhotelernst/en/events/four-hands-dinner-sechs-gaenge-zwei-handschriften-2225363",
+  "start_date": "2026-11-07",
+  "end_date": "2026-11-07",
+  "start_time": "18:30",
+  "end_time": "",
+  "city": "Cologne"
+ },
+ {
+  "id": "wev-008",
+  "name": "Autumn in Vermont White Truffle Dinner Weekend (Twin Farms)",
+  "official_url": "https://www.twinfarms.com/events-calendar/white-truffle-dinner/",
+  "start_date": "2026-11-07",
+  "end_date": "2026-11-07",
+  "start_time": "",
+  "end_time": "",
+  "city": "Barnard"
+ },
+ {
+  "id": "wev-009",
+  "name": "2026 World Alba White Truffle Charity Auction",
+  "official_url": "https://www.grandlisboapalace.com/en/happenings/2026-world-alba-white-truffle-charity-auction",
+  "start_date": "2026-11-08",
+  "end_date": "2026-11-08",
+  "start_time": "18:00",
+  "end_time": "",
+  "city": "Macau"
+ },
+ {
+  "id": "wev-010",
+  "name": "XXVII World Alba White Truffle Auction dinner at Riva del Fiume Ristorante",
+  "official_url": "https://press.fourseasons.com/bangkok/hotel-news/2026/truffle-auction",
+  "start_date": "2026-11-08",
+  "end_date": "2026-11-08",
+  "start_time": "18:30",
+  "end_time": "",
+  "city": "Bangkok"
+ },
+ {
+  "id": "wev-011",
+  "name": "Saint Barth Gourmet Festival 2026 (13e édition)",
+  "official_url": "https://www.saintbarthgourmetfestival.com/",
+  "start_date": "2026-11-09",
+  "end_date": "2026-11-15",
+  "start_time": "",
+  "end_time": "",
+  "city": "Gustavia / Saint-Barthélemy"
+ },
+ {
+  "id": "wev-012",
+  "name": "KRUG 4-Hands-Dinner",
+  "official_url": "https://www.thedoldergrand.com/en/special-offer/krug-4-hands-dinner/",
+  "start_date": "2026-11-10",
+  "end_date": "2026-11-10",
+  "start_time": "",
+  "end_time": "",
+  "city": "Zurich"
+ },
+ {
+  "id": "wev-013",
+  "name": "Winzer Dinner mit Weingut Lackner Tinnacher",
+  "official_url": "https://taku.de/events/",
+  "start_date": "2026-11-13",
+  "end_date": "2026-11-13",
+  "start_time": "19:00",
+  "end_time": "",
+  "city": "Cologne"
+ },
+ {
+  "id": "wev-014",
+  "name": "Jantar Magno Mesa SP 2026 – Grand Hyatt São Paulo",
+  "official_url": "https://mesasp.com.br/jantaresmagno",
+  "start_date": "2026-11-13",
+  "end_date": "2026-11-13",
+  "start_time": "20:00",
+  "end_time": "",
+  "city": "São Paulo"
+ },
+ {
+  "id": "wev-015",
+  "name": "Gala de clôture du Festival des Étoilés Monte-Carlo 2026",
+  "official_url": "https://www.montecarlosbm.com/it/activity/gala-di-chiusura-del-festival-des-etoiles-monte-carlo",
+  "start_date": "2026-11-14",
+  "end_date": "2026-11-14",
+  "start_time": "",
+  "end_time": "",
+  "city": "Monte Carlo"
+ },
+ {
+  "id": "wev-016",
+  "name": "Dîner de Gala de Charité 2026 au profit de la Banque Alimentaire Luxembourg",
+  "official_url": "https://www.tickettailor.com/events/lcli/2263683",
+  "start_date": "2026-11-16",
+  "end_date": "2026-11-16",
+  "start_time": "19:00",
+  "end_time": "23:45",
+  "city": "Luxembourg City"
+ },
+ {
+  "id": "wev-017",
+  "name": "Château d'Yquem Wine Dinner with Chef Anne-Sophie Pic",
+  "official_url": "https://cdn-assets-dynamic.frontify.com/4001946/eyJhc3NldF9pZCI6NjM1MTUsInNjb3BlIjoiYXNzZXQ6dmlldyJ9:mandarin-oriental-hotel-group:tVkSC3bDoMQAJ3qLoo6fXnkH0xjpePgnvuJvnTVxvbc",
+  "start_date": "2026-11-18",
+  "end_date": "2026-11-18",
+  "start_time": "",
+  "end_time": "",
+  "city": "Bangkok"
+ },
+ {
+  "id": "wev-018",
+  "name": "18. November: Gravner x Hiša Franko",
+  "official_url": "https://www.hisafranko.com/novice/234/18-november-gravner-x-hisa-franko",
+  "start_date": "2026-11-18",
+  "end_date": "2026-11-18",
+  "start_time": "",
+  "end_time": "",
+  "city": "Kobarid"
+ },
+ {
+  "id": "wev-020",
+  "name": "Pair'd Margaret River Region 2026",
+  "official_url": "https://pairdmargaretriver.com/",
+  "start_date": "2026-11-19",
+  "end_date": "2026-11-22",
+  "start_time": "",
+  "end_time": "",
+  "city": "Margaret River"
+ },
+ {
+  "id": "wev-021",
+  "name": "An extraordinary evening with Domaine Kuheiji (Kuheiji Dinner)",
+  "official_url": "https://www.okura.nl/yamazato",
+  "start_date": "2026-11-20",
+  "end_date": "2026-11-20",
+  "start_time": "",
+  "end_time": "",
+  "city": "Amsterdam"
+ },
+ {
+  "id": "wev-029",
+  "name": "Truffelavond met Licata",
+  "official_url": "https://roannay.be/nl/nieuws/25-november-truffelavond-met-licata/",
+  "start_date": "2026-11-25",
+  "end_date": "2026-11-25",
+  "start_time": "19:00",
+  "end_time": "",
+  "city": "Francorchamps"
+ },
+ {
+  "id": "wev-043",
+  "name": "YVESKE'S Kitchen at MASTERS EXPO - Dinner 12 Dec",
+  "official_url": "https://mastersexpo.com/en/the-yveske-kitchen",
+  "start_date": "2026-12-12",
+  "end_date": "2026-12-12",
+  "start_time": "",
+  "end_time": "",
+  "city": "Amsterdam"
+ },
+ {
+  "id": "wev-114",
+  "name": "Gary Gielen & Friends Dinner Show",
+  "official_url": "https://www.vanoys.com/event-calendar/gary-gielen-friends-dinnershow/",
+  "start_date": "2026-11-07",
+  "end_date": "2026-11-08",
+  "start_time": "19:00",
+  "end_time": "00:00",
+  "city": "Maastricht"
+ },
+ {
+  "id": "wev-031",
+  "name": "XI. Gastromasa İstanbul International Gastronomy Conference & Exhibition",
+  "official_url": "https://gastromasa.com/",
+  "start_date": "2026-11-26",
+  "end_date": "2026-11-27",
+  "start_time": "09:00",
+  "end_time": "19:00",
+  "city": "Istanbul"
+ },
+ {
+  "id": "wev-045",
+  "name": "Gourmet Skisafari Alta Badia",
+  "official_url": "https://www.altabadia.org/en/events/gourmet-skisafari.html",
+  "start_date": "2026-12-13",
+  "end_date": "2026-12-13",
+  "start_time": "11:00",
+  "end_time": "15:00",
+  "city": "Alta Badia"
+ },
+ {
+  "id": "wev-035",
+  "name": "By Land and Sea (Blackberry Farm)",
+  "official_url": "https://www.blackberryfarm.com/experiences/events/by-land-and-sea",
+  "start_date": "2026-12-06",
+  "end_date": "2026-12-09",
+  "start_time": "",
+  "end_time": "",
+  "city": "Walland"
+ },
+ {
+  "id": "wev-042",
+  "name": "An Evening with Château Cheval Blanc",
+  "official_url": "https://www.grandlisboa.com/en/experience/an-evening-with-chateau-cheval-blanc",
+  "start_date": "2026-12-12",
+  "end_date": "2026-12-12",
+  "start_time": "18:30",
+  "end_time": "23:00",
+  "city": "Macau"
+ },
+ {
+  "id": "wev-046",
+  "name": "An Exclusive Culinary Experience with Two-Star Michelin Chef Benjamin Peifer",
+  "official_url": "https://www.kandolhu.com/festive-season.html",
+  "start_date": "2026-12-26",
+  "end_date": "2026-12-29",
+  "start_time": "",
+  "end_time": "",
+  "city": "Kandolhu Island (North Ari Atoll)"
+ },
+ {
+  "id": "wev-023",
+  "name": "Wayfinder x St JOHN, presented by Lexus",
+  "official_url": "https://pairdmargaretriver.com/events/wayfinder-x-st-john",
+  "start_date": "2026-11-20",
+  "end_date": "2026-11-20",
+  "start_time": "18:00",
+  "end_time": "22:00",
+  "city": "Margaret River"
+ },
+ {
+  "id": "wev-064",
+  "name": "Heritage Culinary Calendar 2026: Chef Cris Oberhammer & Anna Oberhammer",
+  "official_url": "https://heritageresorts.mu/hotels-mauritius/culinary-calendar",
+  "start_date": "2026-11-06",
+  "end_date": "2026-11-06",
+  "start_time": "",
+  "end_time": "",
+  "city": "Bel Ombre"
+ }
+]

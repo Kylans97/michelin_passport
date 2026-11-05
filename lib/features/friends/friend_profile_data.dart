@@ -32,7 +32,7 @@ extension FriendProfileVisitDisplay on FriendVenueVisit {
   /// 1–10, or null if this visit wasn't rated. Shown as the stamps' own
   /// "score" (e.g. "8/10") — this screen's own addition; the main
   /// Passport stamps don't show a score.
-  int? get score => visit.rating;
+  double? get score => visit.rating;
 }
 
 /// The friend-profile's stats — the Passport tab's own "Stamps /
@@ -76,7 +76,7 @@ class FriendProfileStats {
   factory FriendProfileStats.from(List<VenueEntry> entries) {
     var stamps = 0;
     final countries = <String>{};
-    final scores = <int>[];
+    final scores = <double>[];
     var starSum = 0;
 
     for (final entry in entries) {

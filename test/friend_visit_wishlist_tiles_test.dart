@@ -70,7 +70,7 @@ Visit _visit({
   entityType: 'restaurant',
   entityId: 'r1',
   visitedOn: visitedOn ?? DateTime(2026, 6, 12),
-  rating: rating,
+  rating: rating?.toDouble(),
   notes: notes,
   visibility: visibility,
 );
@@ -102,7 +102,7 @@ void main() {
       );
       expect(find.text('Paris'), findsOneWidget);
       expect(find.text('🇫🇷'), findsOneWidget);
-      expect(find.text('9/10 · 12 June 2026'), findsOneWidget);
+      expect(find.text('9.0/10 · 12 June 2026'), findsOneWidget);
       expect(find.byType(StarRow), findsOneWidget);
       expect(tester.takeException(), isNull);
     });
@@ -202,7 +202,7 @@ void main() {
       // position, which is what this test actually cares about.
       expect(
         find.bySemanticsLabel(
-          'Test Restaurant, Paris, France, 3 Michelin stars, rated 9 out of 10',
+          'Test Restaurant, Paris, France, 3 Michelin stars, rated 9.0 out of 10',
         ),
         findsOneWidget,
       );
@@ -297,7 +297,7 @@ void main() {
           ),
         ),
       );
-      final ratingText = tester.widget<Text>(find.text('9/10 · 12 June 2026'));
+      final ratingText = tester.widget<Text>(find.text('9.0/10 · 12 June 2026'));
       expect(ratingText.style?.color, isNot(AppColors.gold));
       expect(ratingText.style?.color, AppColors.taupe);
     });

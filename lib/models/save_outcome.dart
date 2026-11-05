@@ -6,7 +6,7 @@ import 'visit.dart';
 /// record saved but one or more staged photos failed to upload, so the
 /// caller can tell the user clearly rather than pretending everything
 /// succeeded.
-enum SaveOutcome { saved, savedWithPhotoErrors }
+enum SaveOutcome { saved, savedWithPhotoErrors, savedWithWineErrors }
 
 /// What an "Add" sheet returns once its visit/stay row is saved: the row
 /// itself (which is what earns the Passport stamp — see

@@ -137,8 +137,8 @@ Migration: `20261101250000_add_venue_insight_tracking.sql`.
 `explore_signals.value` has a CHECK refusing anything but `[A-Za-z0-9_-]`,
 so no typed text can be stored there even by mistake. Trip adds are not a
 new signal: `planned_venues` already holds them. Studio reads all of it
-through `admin_studio_venue_insights()` and `admin_studio_search_report()`,
-admin-only, every count of people under 5 suppressed.
+through `admin_studio_venue_insights()`, `admin_studio_venue_scores()` and
+`admin_studio_search_report()`, admin-only, every count of people under 5 suppressed.
 
 ### Attendance
 

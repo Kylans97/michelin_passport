@@ -225,6 +225,9 @@ A starting point to react to, not settled.
   per country of the member (decisions 1 and 2)
 - **Travel:** members planning trips to your city or country, by month
   (decision 2)
+- **What members score you on:** the average per score, highest to lowest,
+  and how often each is filled in or left blank (5 or more members;
+  `admin_studio_venue_scores`)
 - **Venues like yours:** your numbers next to the median of similar
   venues (5 or more)
 - Longer history, CSV export, and data per event

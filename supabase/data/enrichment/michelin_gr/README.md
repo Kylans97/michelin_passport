@@ -13,9 +13,6 @@ Daarna is elke rij vergeleken met `gr_control.csv`
 voorbereid. De app zelf is niet geopend; `restaurants_full` en `hotels_full` tonen wel alle
 20 en 74 rijen.
 
-**Let op:** de migratie staat nog niet op `main`. Tot de merge loopt de ledger van productie
-één voor op `main`.
-
 Hieronder staat het rapport zoals het is goedgekeurd.
 
 ## Conclusie
@@ -176,4 +173,4 @@ Bronnen:
 ## Vervolg: QA-431 (2026-11-03)
 
 De Place IDs, telefoons en websites zijn voorbereid in `qa431/`, maar **niet toegepast**. Zie
-`qa431/README.md`. Nieuwe bevindingen staan onder QA-460 t/m QA-463.
+`qa431/README.md`. Nieuwe bevindingen staan onder QA-461 t/m QA-463 en QA-472.
