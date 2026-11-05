@@ -1,0 +1,11 @@
+-- Read-only. Confirms the 81 proposed matches by code and looks up the 19 unmatched names.
+-- The SQL Editor returns at most 100 rows: run with offset 0, then offset 100.
+select 'by_code' as how, r.restaurant_code as code, r.name, c.name as city, r.country_code, r.michelin_stars, r.status
+from restaurants r join cities c on c.id = r.city_id
+where r.restaurant_code in ('rest_0296','rest_0298','rest_0297','rest_0132','rest_0301','rest_0137','rest_0135','rest_0323','rest_0044','rest_0304','rest_0302','rest_0307','rest_0139','rest_0311','rest_0125','rest_1379','rest_0313','rest_0318','rest_0182','rest_0316','rest_0138','rest_0142','rest_0003','rest_0140','rest_1378','rest_0308','rest_0128','rest_0317','rest_0266','rest_0143','rest_0303','rest_0312','rest_1371','rest_1374','rest_0309','rest_0237','rest_0474','rest_1372','rest_0156','rest_0315','rest_0136','rest_0141','rest_1370','rest_0305','rest_1376','rest_0325','rest_0326','rest_1369','rest_0502','rest_0476','rest_0321','rest_0310','rest_0424','rest_0319','rest_1375','rest_1385','rest_0842','rest_0327','rest_1393','rest_0330','rest_0329','rest_1389','rest_0440','rest_0314','rest_0324','rest_1373','rest_1390','rest_1387','rest_0322','rest_0190','rest_1383','rest_0193','rest_1377','rest_1391','rest_0532','rest_0736','rest_0071','rest_1381','rest_0328','rest_1394','rest_0336')
+union all
+select 'by_name', r.restaurant_code, r.name, c.name, r.country_code, r.michelin_stars, r.status
+from restaurants r join cities c on c.id = r.city_id
+where lower(r.name) like '%meet the bund%' or lower(r.name) like '%coquillage%' or lower(r.name) like '%ru yuan%' or lower(r.name) like '%louis xv%' or lower(r.name) like '%naar%' or lower(r.name) like '%ling long%' or lower(r.name) like '%nelita%' or lower(r.name) like '%the jane%' or lower(r.name) like '%seroja%' or lower(r.name) like '%eatanic%' or lower(r.name) like '%caprice%' or lower(r.name) like '%mosu%' or lower(r.name) like '%ledbury%' or lower(r.name) like '%eliane%' or lower(r.name) like '%fzn%' or lower(r.name) like '%baan tepa%' or lower(r.name) like '%lamdre%' or lower(r.name) like '%khufu%' or lower(r.name) like '%fauna%'
+order by 1, 2
+limit 100 offset 0;

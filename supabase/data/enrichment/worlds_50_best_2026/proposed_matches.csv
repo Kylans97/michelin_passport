@@ -1,0 +1,82 @@
+rank,name,city,code,known_name,known_city,cc
+1,Asador Etxebarri,Atxondo,rest_0296,Asador Etxebarri,Atxondo,ES
+2,Gaggan,Bangkok,rest_0298,Gaggan,Bangkok,TH
+3,Alchemist,Copenhagen,rest_0297,Alchemist,Copenhagen,DK
+4,Quintonil,Mexico City,rest_0132,Quintonil,Mexico City,MX
+5,Wing,Hong Kong,rest_0301,Wing,Hong Kong,HK
+6,The Chairman,Hong Kong,rest_0137,The Chairman,Hong Kong,HK
+7,Kjolle,Lima,rest_0135,Kjolle,Lima,PE
+8,Kadeau,Copenhagen,rest_0323,Kadeau,Copenhagen,DK
+9,Diverxo,Madrid,rest_0044,DiverXO,Madrid,ES
+10,Plénitude,Paris,rest_0304,Plénitude,Paris,FR
+11,Atomix,New York,rest_0302,Atomix,New York,US
+12,Sorn,Bangkok,rest_0307,Sorn,Bangkok,TH
+13,Mérito,Lima,rest_0139,Mérito,Lima,PE
+14,Sühring,Bangkok,rest_0311,Sühring,Bangkok,TH
+15,Odette,Singapore,rest_0125,Odette,Singapore,SG
+16,Tuju,São Paulo,rest_1379,Tuju,São Paulo,BR
+17,Mingles,Seoul,rest_0313,Mingles,Seoul,KR
+18,Nusara,Bangkok,rest_0318,Nusara,Bangkok,TH
+19,Jan,Munich,rest_0182,JAN,Munich,DE
+20,Piazza Duomo,Alba,rest_0316,Piazza Duomo,Alba,IT
+22,Boragó,Santiago,rest_0138,Boragó,Santiago,CL
+23,Vyn,Skillinge,rest_0142,Vyn,Skillinge,SE
+24,Al Gatto Verde,Modena,rest_0003,Al Gatto Verde,Modena,IT
+25,Lasai,Rio de Janeiro,rest_0140,Lasai,Rio de Janeiro,BR
+26,Masque,Mumbai,rest_1378,Masque,Mumbai,IN
+27,Reale,Castel di Sangro,rest_0308,Reale,Castel di Sangro,IT
+28,Trèsind Studio,Dubai,rest_0128,Tresind Studio,Dubai,AE
+29,Enigma,Barcelona,rest_0317,Enigma,Barcelona,ES
+30,Steirereck,Vienna,rest_0266,Steirereck im Stadtpark,Vienna,AT
+31,Celele,Cartagena,rest_0143,Celele,Cartagena,CO
+32,Potong,Bangkok,rest_0303,Potong,Bangkok,TH
+33,Elkano,Getaria,rest_0312,Elkano,Getaria,ES
+35,La Colombe,Cape Town,rest_1371,La Colombe,Cape Town,ZA
+37,Nuema,Quito,rest_1374,Nuema,Quito,EC
+38,Atelier Moessmer Norbert Niederkofler,Brunico,rest_0309,Atelier Moessmer Norbert Niederkofler,Brunico,IT
+39,Schloss Schauenstein,Fürstenau,rest_0237,Schloss Schauenstein,Fürstenau,CH
+40,Jordnær,Copenhagen,rest_0474,Jordnær,Gentofte,DK
+41,Onjium,Seoul,rest_1372,Onjium,Seoul,KR
+42,Bozar,Brussels,rest_0156,Bozar Restaurant,Brussels,BE
+43,Le Calandre,Rubano,rest_0315,Le Calandre,Rubano,IT
+44,Don Julio,Buenos Aires,rest_0136,Don Julio,Buenos Aires,AR
+45,Mayta,Lima,rest_0141,Mayta,Lima,PE
+46,El Chato,Bogotá,rest_1370,El Chato,Bogotá,CO
+48,Ikoyi,London,rest_0305,Ikoyi,London,GB
+50,Saint Peter,Sydney,rest_1376,Saint Peter,Sydney,AU
+51,Uliassi,Senigallia,rest_0325,Uliassi,Senigallia,IT
+52,La Cime,Osaka,rest_0326,La Cime,Osaka,JP
+55,Alcalde,Guadalajara,rest_1369,Alcalde,Guadalajara,MX
+56,Sazenka,Tokyo,rest_0502,Sazenka,Tokyo,JP
+57,Koan,Copenhagen,rest_0476,Koan,Copenhagen,DK
+58,Frantzén,Stockholm,rest_0321,Frantzén,Stockholm,SE
+59,Narisawa,Tokyo,rest_0310,Narisawa,Tokyo,JP
+60,Hiša Franko,Kobarid,rest_0424,Hiša Franko,Kobarid,SI
+61,Florilège,Tokyo,rest_0319,Florilège,Tokyo,JP
+62,Fu He Hui,Shanghai,rest_1375,Fu He Hui,Shanghai,CN
+65,Fyn,Cape Town,rest_1385,Fyn,Cape Town,ZA
+66,Willem Hiele,Oudenburg,rest_0842,Willem Hiele,Oudenburg,BE
+67,Arpège,Paris,rest_0327,Arpège,Paris,FR
+68,Evvai,São Paulo,rest_1393,Evvai,São Paulo,BR
+69,Cocina Hermanos Torres,Barcelona,rest_0330,Cocina Hermanos Torres,Barcelona,ES
+70,Kol,London,rest_0329,Kol,London,GB
+71,Salsify at the Roundhouse,Cape Town,rest_1389,Salsify at the Roundhouse,Cape Town,ZA
+73,Chef Tam's Seasons,Macau,rest_0440,Chef Tam's Seasons,Macau,MO
+74,Le Du,Bangkok,rest_0314,Le Du,Bangkok,TH
+75,Belcanto,Lisbon,rest_0324,Belcanto,Lisbon,PT
+76,Nobelhart & Schmutzig,Berlin,rest_1373,Nobelhart & Schmutzig,Berlin,DE
+79,Huniik,Mérida,rest_1390,Huniik,Mérida,MX
+80,Txispa,Atxondo,rest_1387,Txispa,Atxondo,ES
+81,Septime,Paris,rest_0322,Septime,Paris,FR
+82,Coda,Berlin,rest_0190,CODA Dessert Dining,Berlin,DE
+84,Le Doyenné,Saint-Vrain,rest_1383,Le Doyenné,Saint-Vrain,FR
+85,Tim Raue,Berlin,rest_0193,Tim Raue,Berlin,DE
+87,Arca,Tulum,rest_1377,Arca,Tulum,MX
+89,Burnt Ends,Singapore,rest_1391,Burnt Ends,Singapore,SG
+91,Den,Tokyo,rest_0532,Den,Tokyo,JP
+93,SingleThread,Healdsburg,rest_0736,SingleThread,Healdsburg,US
+94,Neolokal,Istanbul,rest_0071,Neolokal,Istanbul,TR
+95,Mil,Cusco,rest_1381,Mil,Cusco,PE
+96,Rosetta,Mexico City,rest_0328,Rosetta,Mexico City,MX
+98,Labyrinth,Singapore,rest_1394,Labyrinth,Singapore,SG
+100,Aponiente,El Puerto de Santa María,rest_0336,Aponiente,El Puerto de Santa María,ES
