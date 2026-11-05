@@ -1,6 +1,6 @@
 # Wereld: ontbrekende telefoons, websites en Place IDs (nachtronde 2026-11-04)
 
-**Status: GOEDGEKEURD (2026-11-05), NOG NIET TOEGEPAST.** Zie `APPLY.md`; deze sessie had geen toegang tot productie.
+**Status: TOEGEPAST op productie op 2026-11-05.** Alle 41 bestanden zonder fout. Gevuld: 300 Place IDs, 394 telefoons, 262 websites; per land gelijk aan `progress.csv`. Controle achteraf, rij voor rij tegen een read-only momentopname van vlak voor het toepassen: alle 5769 rijen in beide tabellen vergeleken; geen rij erbij of weg; geen naam of land gewijzigd; geen bestaande waarde overschreven; geen dubbele Place ID binnen een tabel. Als controle is die rij-voor-rij-vergelijking gebruikt in plaats van `export_world_contact_gaps_query.sql` opnieuw te draaien.
 
 ## Bron en omvang
 

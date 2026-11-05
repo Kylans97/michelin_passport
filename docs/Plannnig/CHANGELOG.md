@@ -16,6 +16,11 @@ The format follows Keep a Changelog.
   and remote agree. The catalogue data that goes with it is in
   `supabase/data/enrichment/michelin_gr/`.
 
+- Contact data on production, 2026-11-05: Greece (QA-431) and the 41-country
+  world round, by `APPLY_2026-11-05.md`. 386 Place IDs, 465 phones and 327
+  websites, written only into empty fields. Data SQL, no migration, so the
+  ledger is unchanged. Details in the Michelin_Database changelog.
+
 ### Fixed
 - `prepared_gr_2027.sql` was tested only on scratch PostgreSQL with
   PostGIS stubbed, because Docker isn't installed on this machine. Its

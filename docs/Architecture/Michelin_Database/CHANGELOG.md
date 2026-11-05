@@ -6,6 +6,28 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-05 — Greece and 41 countries: Place IDs, phones and websites (QA-431, QA-464–QA-471)
+
+| | |
+|---|---|
+| Applied | 2026-11-05, to production, at the product owner's request, following `APPLY_2026-11-05.md`, from `claude/world-contact-gaps` |
+| Migration | None. Data SQL only; the ledger doesn't change |
+| Greece (QA-431) | `michelin_gr/qa431/prepared_gr_qa431_fill.sql`: 86 Place IDs, 71 phones, 65 websites. Nothing of it was filled at the start |
+| World round | `world_contact_gaps/prepared_<cc>_contact_fill.sql`, 41 files, each one transaction, no failure: 300 Place IDs, 394 phones, 262 websites |
+
+**Checked after the apply**, row by row against a read-only snapshot taken just before it:
+
+- 5769 rows compared across `restaurants` and `hotels`; none added or removed; no name or country changed.
+- 1178 fields changed, exactly the 1178 the files name, each to the file's value. No value was overwritten.
+- Per country and table, the empty counts fell by exactly the number filled. The world totals per country equal `progress.csv`.
+- No duplicate Place ID within a table.
+
+**Not done on purpose:** the Greek addresses (QA-432) and the Selene/Botrini's links (QA-433), which need separate approval. The findings logged as QA-464–QA-471 stay open: this pass filled empty fields only and changed no status, address, location or existing value.
+
+**Not checked:** `export_world_contact_gaps_query.sql` was not rerun; the row-by-row comparison stands in for it. Whether each phone or website is still right today was not retested: the evidence is the research in the CSVs.
+
+---
+
 # 2026-11-04 — Greece: stars 2027 and Key hotels 2026 (QA-430–QA-435)
 
 | | |

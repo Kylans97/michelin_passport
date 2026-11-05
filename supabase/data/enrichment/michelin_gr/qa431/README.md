@@ -1,6 +1,8 @@
 # Griekenland: Place IDs, telefoon en website (QA-431)
 
-Status: **VOORBEREID, NIET TOEGEPAST.** Geschreven op 2026-11-03.
+Status: **TOEGEPAST op productie op 2026-11-05.** Geschreven op 2026-11-03.
+
+Gevuld: 86 Place IDs, 71 telefoons, 65 websites, precies de waarden uit `gr_qa431_fill.csv`. Bij de start was nog niets ervan gevuld. Controle achteraf, rij voor rij tegen een read-only momentopname van vlak voor het toepassen: alle 5769 rijen in beide tabellen vergeleken; geen rij erbij of weg; geen naam of land gewijzigd; geen bestaande waarde overschreven; geen dubbele Place ID binnen een tabel. Niet toegepast: de adressen (QA-432) en de Selene/Botrini's-koppelingen (QA-433).
 
 `prepared_gr_qa431_fill.sql` is fill-only. Het schrijft alleen in lege velden. Het draait bovenop
 `../prepared_gr_2027.sql`, dat op 2026-11-04 is toegepast.
