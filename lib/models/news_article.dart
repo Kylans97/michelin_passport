@@ -16,6 +16,11 @@ class NewsArticle {
   /// Mantelier", then [NewsSection.interview], then [NewsSection.story].
   final NewsSection section;
   final String title;
+
+  /// A shorter title for cards and the shrunken photo band
+  /// (news_articles.card_title, 20261101380000); the article itself always
+  /// leads with [title]. Use [shortTitle], which falls back to [title].
+  final String? cardTitle;
   final String body;
   final String? imageUrl;
   final String? linkUrl;
@@ -33,6 +38,7 @@ class NewsArticle {
     required this.id,
     this.section = NewsSection.story,
     required this.title,
+    this.cardTitle,
     required this.body,
     this.imageUrl,
     this.linkUrl,
@@ -45,6 +51,7 @@ class NewsArticle {
     id: json['id'] as String,
     section: NewsSection.fromWire(json['section'] as String?),
     title: json['title'] as String,
+    cardTitle: json['card_title'] as String?,
     body: json['body'] as String,
     imageUrl: json['image_url'] as String?,
     linkUrl: json['link_url'] as String?,
@@ -52,6 +59,12 @@ class NewsArticle {
     focusX: ((json['focus_x'] as num?) ?? 0.5).toDouble(),
     focusY: ((json['focus_y'] as num?) ?? 0.5).toDouble(),
   );
+
+  /// What a card shows: [cardTitle] when there is one, else [title].
+  String get shortTitle {
+    final short = cardTitle?.trim() ?? '';
+    return short.isEmpty ? title : short;
+  }
 
   /// [focusX]/[focusY] converted to Flutter's own -1..1 [Alignment]
   /// coordinate space for a `BoxFit.cover` image — the same "keep

@@ -262,7 +262,7 @@ class _WhyMantelierCard extends StatelessWidget {
               ),
               const SizedBox(height: CsSpacing.sm),
               Text(
-                article.title,
+                article.shortTitle,
                 style: CsTypography.placeTitle.copyWith(
                   fontSize: 22,
                   color: AppColors.ivory,
@@ -368,7 +368,7 @@ class _InterviewCard extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      article.title,
+                      article.shortTitle,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
                       style: CsTypography.placeTitle.copyWith(
@@ -451,7 +451,7 @@ class _NewsArticleCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      article.title,
+                      article.shortTitle,
                       style: CsTypography.placeTitle.copyWith(
                         fontSize: 17,
                         color: AppColors.forestGreen,

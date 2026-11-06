@@ -336,7 +336,7 @@ class _PhotoBandHeader extends SliverPersistentHeaderDelegate {
                 child: Opacity(
                   opacity: titleOpacity,
                   child: Text(
-                    article.title,
+                    article.shortTitle,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                     style: CsTypography.placeTitle.copyWith(

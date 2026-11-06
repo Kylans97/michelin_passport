@@ -13,10 +13,12 @@ import '../../core/widgets/section_divider.dart';
 import '../../core/widgets/venue_about_section.dart';
 import '../../data/repositories/events_repository.dart';
 import '../../data/repositories/follow_repository.dart';
+import '../../data/repositories/news_repository.dart';
 import '../../data/repositories/private_chef_repository.dart';
 import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/venue_instagram_repository.dart';
 import '../../models/event.dart';
+import '../../models/news_article.dart';
 import '../../models/private_chef.dart';
 import '../../models/private_chef_education.dart';
 import '../../models/private_chef_photo.dart';
@@ -24,6 +26,8 @@ import '../../models/private_chef_restaurant_history.dart';
 import '../../models/venue_country.dart';
 import '../events/event_detail_screen.dart';
 import '../events/widgets/hosted_events_section.dart';
+import '../news/news_article_detail_screen.dart';
+import '../news/widgets/news_mentions_section.dart';
 import '../profile/widgets/owner_preview_marker.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'private_chef_location.dart';
@@ -135,6 +139,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   late final _repo = PrivateChefRepository(Supabase.instance.client);
   late final _followRepo = FollowRepository(Supabase.instance.client);
   late final _eventsRepo = EventsRepository(Supabase.instance.client);
+  late final _newsRepo = NewsRepository(Supabase.instance.client);
   late final _venueAboutRepo = VenueAboutRepository(Supabase.instance.client);
   late final _instagramRepo = VenueInstagramRepository(
     Supabase.instance.client,
@@ -167,6 +172,10 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
   // Production currently has zero event_chefs rows, so this stays empty
   // (section hidden) on every real device today.
   List<Event> _hostedEvents = const [];
+
+  // Published articles linked to this chef (news_article_chefs). Loaded
+  // and failing quietly exactly like _hostedEvents.
+  List<NewsArticle> _newsArticles = const [];
 
   // venue_about_current for this chef — the latest APPROVED venue_about_
   // submissions row, a manager's own reviewed copy. Takes precedence over
@@ -201,6 +210,7 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     }
     _load();
     _loadHostedEvents();
+    _loadNewsArticles();
     if (widget.aboutTextOverride != null) {
       _aboutText = widget.aboutTextOverride;
     } else {
@@ -246,6 +256,16 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       final events = await _eventsRepo.loadHostedEventsForChef(widget.chefId);
       if (!mounted) return;
       setState(() => _hostedEvents = events);
+    } catch (_) {
+      // Leave the section hidden on a failed lookup.
+    }
+  }
+
+  Future<void> _loadNewsArticles() async {
+    try {
+      final articles = await _newsRepo.loadArticlesForChef(widget.chefId);
+      if (!mounted) return;
+      setState(() => _newsArticles = articles);
     } catch (_) {
       // Leave the section hidden on a failed lookup.
     }
@@ -471,6 +491,15 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
     );
   }
 
+  void _openArticle(NewsArticle article) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (_) => NewsArticleDetailScreen(article: article),
+      ),
+    );
+  }
+
   void _openEvent(Event event) {
     Navigator.push(
       context,
@@ -602,6 +631,13 @@ class _PrivateChefDetailScreenState extends State<PrivateChefDetailScreen> {
       // device today.
       if (_hostedEvents.isNotEmpty)
         HostedEventsSection(events: _hostedEvents, onTapEvent: _openEvent),
+      // After EVENTS: what has been written about the chef, the reverse
+      // of an article's own "IN THIS INTERVIEW".
+      if (_newsArticles.isNotEmpty)
+        NewsMentionsSection(
+          articles: _newsArticles,
+          onTapArticle: _openArticle,
+        ),
     ];
 
     // Step 3 will add "Request an Experience" here as the final section.

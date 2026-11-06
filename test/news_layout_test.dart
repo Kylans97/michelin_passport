@@ -6,6 +6,7 @@ import 'package:michelin_passport/core/analytics/analytics_service.dart';
 import 'package:michelin_passport/data/repositories/news_repository.dart';
 import 'package:michelin_passport/features/news/news_article_detail_screen.dart';
 import 'package:michelin_passport/features/news/news_screen.dart';
+import 'package:michelin_passport/features/news/widgets/news_mentions_section.dart';
 import 'package:michelin_passport/models/news_article.dart';
 
 NewsArticle _article({
@@ -53,6 +54,29 @@ void main() {
         'section': 'interview',
       });
       expect(parsed.section, NewsSection.interview);
+    });
+
+    test('a card shows card_title, or the title when there is none', () {
+      final parsed = NewsArticle.fromJson({
+        'id': 'x',
+        'title': 'Fine Dining, Wherever You Are: A Conversation',
+        'card_title': 'Fine Dining, Wherever You Are',
+        'body': 'B',
+        'published_at': '2026-11-06T10:00:00Z',
+      });
+      expect(parsed.title, 'Fine Dining, Wherever You Are: A Conversation');
+      expect(parsed.shortTitle, 'Fine Dining, Wherever You Are');
+      expect(_article(title: 'Only one').shortTitle, 'Only one');
+      expect(
+        NewsArticle(
+          id: 'y',
+          title: 'Kept',
+          cardTitle: '  ',
+          body: 'B',
+          publishedAt: DateTime(2026, 11, 6),
+        ).shortTitle,
+        'Kept',
+      );
     });
 
     test('blocks read the Q: and > prefixes, everything else is text', () {
@@ -229,6 +253,48 @@ void main() {
       expect(find.text('Still here'), findsOneWidget);
       expect(find.text('Body text.'), findsOneWidget);
       expect(tester.takeException(), isNull);
+    });
+  });
+
+  group('NewsMentionsSection', () {
+    testWidgets('lists the short title and opens the article on a tap', (
+      tester,
+    ) async {
+      NewsArticle? opened;
+      final article = NewsArticle(
+        id: 'i',
+        title: 'A long title: with a conversation after it',
+        cardTitle: 'A long title',
+        body: 'B',
+        section: NewsSection.interview,
+        publishedAt: DateTime(2026, 11, 6),
+      );
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: NewsMentionsSection(
+              articles: [article],
+              onTapArticle: (a) => opened = a,
+            ),
+          ),
+        ),
+      );
+      expect(find.text('IN THE NEWS'), findsOneWidget);
+      expect(find.text('A long title'), findsOneWidget);
+      expect(find.textContaining('Interview · '), findsOneWidget);
+      await tester.tap(find.text('A long title'));
+      expect(opened, same(article));
+    });
+
+    testWidgets('renders nothing without articles', (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: NewsMentionsSection(articles: const [], onTapArticle: (_) {}),
+          ),
+        ),
+      );
+      expect(find.text('IN THE NEWS'), findsNothing);
     });
   });
 }

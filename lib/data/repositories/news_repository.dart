@@ -21,10 +21,33 @@ class NewsRepository {
   Future<List<NewsArticle>> getPublishedArticles() async {
     final rows = await _client
         .from('news_articles')
-        .select(
-          'id, section, title, body, image_url, link_url, published_at, '
-          'focus_x, focus_y',
-        )
+        .select(_articleColumns)
+        .order('published_at', ascending: false);
+    return (rows as List)
+        .map((r) => NewsArticle.fromJson(r as Map<String, dynamic>))
+        .toList();
+  }
+
+  static const _articleColumns =
+      'id, section, title, card_title, body, image_url, link_url, '
+      'published_at, focus_x, focus_y';
+
+  /// The published articles that mention [chefId] (news_article_chefs),
+  /// newest first — the reverse of [loadLinkedVenues], for the chef's own
+  /// page. RLS on news_articles leaves out anything unpublished.
+  Future<List<NewsArticle>> loadArticlesForChef(String chefId) async {
+    final links = await _client
+        .from('news_article_chefs')
+        .select('news_article_id')
+        .eq('chef_id', chefId);
+    final ids = [
+      for (final row in links as List) row['news_article_id'] as String,
+    ];
+    if (ids.isEmpty) return const [];
+    final rows = await _client
+        .from('news_articles')
+        .select(_articleColumns)
+        .inFilter('id', ids)
         .order('published_at', ascending: false);
     return (rows as List)
         .map((r) => NewsArticle.fromJson(r as Map<String, dynamic>))
