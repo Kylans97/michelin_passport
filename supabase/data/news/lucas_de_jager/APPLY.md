@@ -1,6 +1,6 @@
 # Publishing Lucas de Jager's interview
 
-Prepared 2026-11-06, not applied. Each step stops on any error; nothing is
+Prepared 2026-11-06, applied the same day (see the app CHANGELOG). Each step stops on any error; nothing is
 retried on CLI output alone (CLAUDE.md).
 
 ## Files
