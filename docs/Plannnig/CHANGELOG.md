@@ -8,6 +8,14 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.7 (34) — 2026-11-06
+
+(33) is already in App Store Connect. This build adds the new look of interview questions; no backend change since (33).
+
+**Ledger: 151, local and remote in agreement.** Schema diff before the push, on all 151 migrations replayed on a scratch stack: the dumps (18,013 lines production, 18,019 local) differ only in 6 blank lines; storage and auth compared directly, identical apart from the three Supabase platform storage triggers already noted under (30).
+
 ### Changed
 - **Interview questions stand apart from the answers** (product owner, 2026-11-06, option C of three): a question now has more room above it, a short green rule and a larger size (21 instead of 19), so it no longer reads as one more paragraph. Every interview at once; needs the next build. A test holds that each question, and no answer, has its rule.
 
