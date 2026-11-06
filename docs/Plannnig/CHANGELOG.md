@@ -8,6 +8,14 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.5.7 (33) — 2026-11-06
+
+(32) is already in App Store Connect. This build adds the short card title on news articles and "In the news" on a private chef's page; their migration, `20261101380000`, and Lucas de Jager's interview went live the same day, before this build.
+
+**Ledger: 151, local and remote in agreement.** Schema diff before the push, on all 151 migrations replayed on a scratch stack: the dumps (18,013 lines production, 18,019 local) differ only in 6 blank lines; storage and auth compared directly, identical apart from the three Supabase platform storage triggers already noted under (30).
+
 ### Added
 - **A lookbook for conversations with venues** (product owner, 2026-11-04): `site/lookbook.html`, real app screens filled with invented venues, events and members on a local stack (`scripts/seed_lookbook.py`, never for production) and Unsplash photos, so a venue can see the app as it will look once venues have added their own content. Reachable by link only: not linked from the site, `noindex`. Says at the top and in the footer that everything on it is fictional. Sources in `docs/Design/LOOKBOOK.md`.
 - **A weekly email about sign-ups that look automated** (product owner, 2026-11-04): `20261101360000_add_signup_watch.sql` and the `notify-signup-watch` Edge Function. Mondays at 07:00 UTC, also in a quiet week, so that no mail means the watch itself is broken. Flags many sign-ups, a burst in one hour, many unconfirmed accounts, an uncommon domain with 3 or more accounts, and 3 or more accounts on one mailbox. Reports only: blocks nothing, stores nothing, and carries counts and at most an uncommon domain, never an address or user id. It can't see a patient bot on different real mailboxes.
