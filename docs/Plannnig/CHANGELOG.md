@@ -8,6 +8,9 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+### Changed
+- **Interview questions stand apart from the answers** (product owner, 2026-11-06, option C of three): a question now has more room above it, a short green rule and a larger size (21 instead of 19), so it no longer reads as one more paragraph. Every interview at once; needs the next build. A test holds that each question, and no answer, has its rule.
+
 ---
 
 ## v1.5.7 (33) — 2026-11-06

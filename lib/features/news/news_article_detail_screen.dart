@@ -370,17 +370,32 @@ class _NewsBlockView extends StatelessWidget {
   Widget build(BuildContext context) {
     switch (block.kind) {
       case NewsBlockKind.question:
+        // Set apart from the answers by room above, a short rule and a
+        // larger size, so a reader scanning the page finds each question
+        // (product owner, 2026-11-06, option C).
         return Padding(
           padding: const EdgeInsets.only(
-            top: CsSpacing.sm,
+            top: CsSpacing.base,
             bottom: CsSpacing.sm,
           ),
-          child: Text(
-            block.text,
-            style: CsTypography.editorialTitle(
-              size: 19,
-              italic: true,
-            ).copyWith(color: AppColors.forestGreen, height: 1.35),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                key: const ValueKey('news-question-rule'),
+                width: 24,
+                height: 1.5,
+                color: AppColors.forestGreen,
+              ),
+              const SizedBox(height: CsSpacing.md),
+              Text(
+                block.text,
+                style: CsTypography.editorialTitle(
+                  size: 21,
+                  italic: true,
+                ).copyWith(color: AppColors.forestGreen, height: 1.3),
+              ),
+            ],
           ),
         );
       case NewsBlockKind.quote:

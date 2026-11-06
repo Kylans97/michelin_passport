@@ -215,6 +215,26 @@ void main() {
       expect(caption, lessThan(question));
     });
 
+    testWidgets('each question has its own rule above it, answers none', (
+      tester,
+    ) async {
+      await pumpDetail(
+        tester,
+        _article(
+          section: NewsSection.interview,
+          body: 'Intro.\n\nQ: One?\n\nAnswer.\n\nQ: Two?\n\nAnswer two.',
+        ),
+        const [],
+      );
+      final rules = find.byKey(const ValueKey('news-question-rule'));
+      expect(rules, findsNWidgets(2));
+      final rule = tester.getTopLeft(rules.first).dy;
+      final question = tester.getTopLeft(find.text('One?')).dy;
+      final intro = tester.getBottomLeft(find.text('Intro.')).dy;
+      expect(intro, lessThan(rule));
+      expect(rule, lessThan(question));
+    });
+
     testWidgets('small photos sit as one row of squares with their credit '
         'said once', (tester) async {
       await pumpDetail(tester, _article(body: 'One.\n\nTwo.'), [
