@@ -6,6 +6,24 @@ Two passes are recorded. **Pass 1** implemented `ENGINEERING_REVIEW.md`; **Pass 
 
 ---
 
+# 2026-11-16 — An event's "website" was a PDF (QA-495)
+
+| | |
+|---|---|
+| Applied | 2026-11-16, to production, at the product owner's request ("Haal de website van het Château d'Yquem-evenement weg (official_url leeg maken) en leg het vast in de logs"), from `claude/site-next-signin` |
+| Migration | None. Data SQL only; the ledger doesn't change |
+| SQL | `supabase/data/enrichment/events/qa495_yquem_official_url/prepared_qa495_clear_official_url.sql`: one row, only while it held exactly the old value |
+| Row | `events` 2c1f25cd-d160-58ef-af05-25188dc4fd9c, Château d'Yquem Wine Dinner with Chef Anne-Sophie Pic, Le Normandie, Mandarin Oriental Bangkok, 18 November 2026 |
+| Change | `official_url` from a Frontify asset link (`cdn-assets-dynamic.frontify.com/4001946/…`, a 7 MB `application/pdf`) to NULL |
+
+The product owner saw it on the hidden site as "Event website →"; the app shows the same field the same way. The link is Mandarin Oriental's own file, probably the menu, but it isn't a page about the event. No such page was found on 2026-11-16: Mandarin Oriental has only the restaurant's page (Anne-Sophie Pic at Le Normandie), and putting that in its place would have made the link about something else. So the value is cleared, not replaced.
+
+**Checked:** the SQL was run twice against a local stack first (first run cleared one row, second refused with "matched 0"); in production a snapshot before (`before_20261116.json`) and after (`after_20261116.json`) shows only `official_url` changed, `moderation_status` still `published`. The event now shows no website link; it had no ticket link either.
+
+**Not checked:** whether other events hold file links instead of pages. A scan of `events.official_url` and `ticket_url` for asset hosts and file types would answer it.
+
+---
+
 # 2026-11-05 — Greece and 41 countries: Place IDs, phones and websites (QA-431, QA-464–QA-471)
 
 | | |
