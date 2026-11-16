@@ -253,6 +253,16 @@ class _NotificationSettingsScreenState extends State<NotificationSettingsScreen>
           busy: _saving,
           onChanged: (v) => _change(prefs.copyWith(followedVenueEvents: v), v),
         ),
+        const SizedBox(height: CsSpacing.xl),
+        _ToggleRow(
+          title: 'Booking reminders',
+          subtitle:
+              'The day before bookings open for a month you plan to visit a '
+              'restaurant on your wishlist.',
+          value: allowed && prefs.bookingReminders,
+          busy: _saving,
+          onChanged: (v) => _change(prefs.copyWith(bookingReminders: v), v),
+        ),
         if (_saveError != null) ...[
           const SizedBox(height: CsSpacing.sm),
           Text(_saveError!, style: CsTypography.metadata.copyWith(color: AppColors.error)),

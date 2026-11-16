@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import '../../../core/constants/app_colors.dart';
 import '../../../core/theme/cs_spacing.dart';
+import '../../../core/theme/cs_typography.dart';
 import '../../../core/widgets/cs_place_card.dart';
 import '../../../core/widgets/key_row.dart';
 import '../../../core/widgets/star_row.dart';
 import '../../../core/widgets/venue_thumbnail.dart';
+import '../../../models/booking_window.dart';
 import '../../../models/hotel.dart';
 import '../../../models/restaurant.dart';
 import '../../hotels/hotel_detail_screen.dart';
@@ -23,6 +26,12 @@ import '../../../core/analytics/analytics_properties.dart';
 /// fabricated or misleading; the card answers exactly what/where/
 /// recognition/saved, nothing else.
 ///
+/// The one footer it does carry is the member's own plan
+/// (20261101400000): the month they'd like to go and, when the
+/// restaurant's booking window is known, when that month opens. Tapping
+/// it ([onEditPlan]) sets, changes or clears the month. Without
+/// [onEditPlan] (no signed-in member) there is no footer.
+///
 /// [onRemove] always means "remove from wishlist" — every card in this
 /// list is, by definition, already wishlisted, so [PassportCardBookmark]
 /// is used here as a filled, remove-only affordance rather than a
@@ -30,11 +39,19 @@ import '../../../core/analytics/analytics_properties.dart';
 class WishlistRestaurantCard extends StatelessWidget {
   final Restaurant restaurant;
   final VoidCallback onRemove;
+  final WishlistPlan? plan;
+  final VoidCallback? onEditPlan;
+
+  /// Decides whether the opening date needs its year; tests pass a fixed one.
+  final DateTime? now;
 
   const WishlistRestaurantCard({
     super.key,
     required this.restaurant,
     required this.onRemove,
+    this.plan,
+    this.onEditPlan,
+    this.now,
   });
 
   @override
@@ -56,6 +73,13 @@ class WishlistRestaurantCard extends StatelessWidget {
         ? StarRow(count: restaurant.michelinStars!, size: 14)
         : null,
     bookmark: PassportCardBookmark(isWishlisted: true, onTap: onRemove),
+    fullWidthFooter: onEditPlan == null
+        ? null
+        : WishlistPlanFooter(
+            plan: plan,
+            onTap: onEditPlan!,
+            now: now ?? DateTime.now(),
+          ),
     onTap: () => Navigator.push(
       context,
       MaterialPageRoute(
@@ -66,6 +90,78 @@ class WishlistRestaurantCard extends StatelessWidget {
       ),
     ),
   );
+}
+
+/// "Going in May 2027" and, when known, when May's bookings open — or,
+/// with no month yet, a quiet invitation to set one.
+class WishlistPlanFooter extends StatelessWidget {
+  final WishlistPlan? plan;
+  final VoidCallback onTap;
+  final DateTime now;
+
+  const WishlistPlanFooter({
+    super.key,
+    required this.plan,
+    required this.onTap,
+    required this.now,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final plan = this.plan;
+    final status = plan?.statusLine(now);
+    return Semantics(
+      button: true,
+      label: plan == null ? 'Set when you would like to go' : 'Change the month',
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(CsRadius.small),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(
+              plan?.status == BookingStatus.open ||
+                      plan?.status == BookingStatus.opensToday
+                  ? Icons.event_available_outlined
+                  : Icons.calendar_month_outlined,
+              color: AppColors.forestGreen,
+              size: 16,
+            ),
+            const SizedBox(width: CsSpacing.sm),
+            Expanded(
+              child: plan == null
+                  ? Text(
+                      'When would you like to go?',
+                      style: CsTypography.metadata.copyWith(
+                        color: AppColors.taupe,
+                      ),
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          plan.monthLabel,
+                          style: CsTypography.bodyMedium.copyWith(
+                            color: AppColors.forestGreen,
+                          ),
+                        ),
+                        if (status != null) ...[
+                          const SizedBox(height: 2),
+                          Text(status, style: CsTypography.metadata),
+                        ],
+                      ],
+                    ),
+            ),
+            const Icon(
+              Icons.chevron_right_rounded,
+              color: AppColors.taupe,
+              size: 18,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 /// The hotel counterpart to [WishlistRestaurantCard] — same shell, Keys

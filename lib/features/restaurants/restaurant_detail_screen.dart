@@ -59,6 +59,7 @@ import 'widgets/restaurant_info_card.dart';
 import 'widgets/restaurant_visits_card.dart';
 import '../notifications/push_service.dart';
 import '../friends/widgets/venue_friends_been_row.dart';
+import '../wishlist/planned_month_flow.dart';
 
 const _signInMessage = 'Sign in to save visits and wishlist restaurants.';
 
@@ -514,12 +515,29 @@ class _RestaurantDetailScreenState extends State<RestaurantDetailScreen> {
         _isWishlisted = nowWishlisted;
         _wishlistSaving = false;
       });
-      _showSnack(nowWishlisted ? 'Added to wishlist' : 'Removed from wishlist');
+      if (!nowWishlisted) {
+        _showSnack('Removed from wishlist');
+        return;
+      }
     } catch (_) {
       if (!mounted) return;
       setState(() => _wishlistSaving = false);
       _showSnack('Could not update wishlist. Please try again.', isError: true);
+      return;
     }
+    // Saved: ask when they'd like to go — optional, the sheet itself
+    // says the restaurant is saved, so it stands in for the snackbar.
+    final outcome = await askPlannedMonth(
+      context,
+      repository: _wishlistRepo,
+      restaurantId: widget.restaurant.id,
+      restaurantName: widget.restaurant.name,
+    );
+    if (!mounted) return;
+    _showSnack(
+      outcome.message ?? 'Added to wishlist',
+      isError: outcome.isError,
+    );
   }
 
   // Events V2 Step 6; optimistic since 2026-10-30 (the pill must read

@@ -226,7 +226,10 @@ class PushService {
             openSource: AnalyticsOpenSource.push,
           ),
         );
+      // A booking reminder opens the list, where its row leads to the
+      // restaurant (the push carries the reminder's id, not the venue's).
       case 'friend_request_received':
+      case 'booking_window_opening':
         return MaterialPageRoute(builder: (_) => const NotificationsScreen());
       default:
         return null;
@@ -244,6 +247,7 @@ class PushService {
     final next = switch (reason) {
       FollowedVenuePrompt() => current.copyWith(followedVenueEvents: true),
       FriendsPrompt() => current.copyWith(friendRequests: true),
+      BookingReminderPrompt() => current.copyWith(bookingReminders: true),
     };
     if (next != current) await repo.savePreferences(uid, next);
   }

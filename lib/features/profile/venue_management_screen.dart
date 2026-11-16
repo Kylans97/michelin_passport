@@ -7,6 +7,7 @@ import '../../core/theme/cs_typography.dart';
 import '../../core/utils/mailto_uri.dart';
 import '../../core/widgets/framed_image.dart';
 import '../../core/widgets/subtle_text_action.dart';
+import '../../data/repositories/booking_window_repository.dart';
 import '../../data/repositories/venue_events_repository.dart';
 import '../../data/repositories/hotel_repository.dart';
 import '../../data/repositories/opening_hours_repository.dart';
@@ -16,6 +17,7 @@ import '../../data/repositories/venue_about_repository.dart';
 import '../../data/repositories/venue_contact_repository.dart';
 import '../../data/repositories/venue_photo_submission_repository.dart';
 import '../../data/repositories/venue_team_repository.dart';
+import '../../models/booking_window.dart';
 import '../../models/managed_venue.dart';
 import '../../models/opening_hours.dart';
 import '../../models/private_chef_photo.dart';
@@ -28,6 +30,7 @@ import '../hotels/hotel_detail_screen.dart';
 import '../private_chefs/private_chef_detail_screen.dart';
 import '../restaurants/restaurant_detail_screen.dart';
 import 'card_photo_screen.dart';
+import 'venue_booking_window_screen.dart';
 import 'venue_contact_screen.dart';
 import 'venue_events_screen.dart';
 import 'venue_opening_hours_screen.dart';
@@ -88,6 +91,7 @@ class VenueManagementScreen extends StatefulWidget {
   final VenueEventsRepository? eventsRepo;
   final VenueTeamRepository? teamRepo;
   final OpeningHoursRepository? openingHoursRepo;
+  final BookingWindowRepository? bookingWindowRepo;
   final VenueContactRepository? contactRepo;
 
   // Owner preview only — the fresh venue re-fetch _openPreview does
@@ -109,6 +113,7 @@ class VenueManagementScreen extends StatefulWidget {
     this.eventsRepo,
     this.teamRepo,
     this.openingHoursRepo,
+    this.bookingWindowRepo,
     this.contactRepo,
     this.restaurantRepo,
     this.hotelRepo,
@@ -149,6 +154,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       widget.contactRepo ?? VenueContactRepository(Supabase.instance.client);
   late final _hoursRepo =
       widget.openingHoursRepo ?? OpeningHoursRepository(Supabase.instance.client);
+  late final _bookingWindowRepo =
+      widget.bookingWindowRepo ?? BookingWindowRepository(Supabase.instance.client);
   late final _restaurantRepo =
       widget.restaurantRepo ?? RestaurantRepository(Supabase.instance.client);
   late final _hotelRepo = widget.hotelRepo ?? HotelRepository(Supabase.instance.client);
@@ -164,6 +171,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
   Future<_TeamSummary>? _teamFuture;
   // Restaurants only; null for a hotel or a private chef.
   Future<OpeningHours>? _hoursFuture;
+  // Restaurants only, like opening hours.
+  Future<BookingWindow?>? _bookingWindowFuture;
   late Future<VenueContact> _contactFuture;
 
   bool get _hasTeam => widget.venue.venueTypeWireValue != 'private_chef';
@@ -230,6 +239,8 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
       // reload that replaces it before it settles reports nothing.
       _contactFuture = _contactRepo.load(venueType: type, venueId: id)..ignore();
       _hoursFuture = type == 'restaurant' ? (_hoursRepo.load(id)..ignore()) : null;
+      _bookingWindowFuture =
+          type == 'restaurant' ? (_bookingWindowRepo.load(id)..ignore()) : null;
     });
   }
 
@@ -515,6 +526,28 @@ class _VenueManagementScreenState extends State<VenueManagementScreen> {
                     VenueOpeningHoursScreen(
                       restaurantId: widget.venue.id,
                       repository: widget.openingHoursRepo,
+                    ),
+                  ),
+                ),
+              ),
+            if (_bookingWindowFuture != null)
+              FutureBuilder<BookingWindow?>(
+                future: _bookingWindowFuture,
+                builder: (context, snap) => _SectionRow(
+                  title: 'Booking window',
+                  summary: snap.connectionState == ConnectionState.done &&
+                          !snap.hasError
+                      ? VenueBookingWindowScreen.summary(snap.data)
+                      : null,
+                  onTap: () => _open(
+                    VenueBookingWindowScreen(
+                      restaurantId: widget.venue.id,
+                      countryCode: switch (widget.venue) {
+                        ManagedRestaurant(:final restaurant) =>
+                          restaurant.countryCode,
+                        _ => '',
+                      },
+                      repository: widget.bookingWindowRepo,
                     ),
                   ),
                 ),

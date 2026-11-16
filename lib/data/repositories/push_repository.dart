@@ -31,7 +31,10 @@ class PushRepository {
   Future<NotificationPreferences> getPreferences(String userId) async {
     final row = await _client
         .from('notification_preferences')
-        .select('push_friend_requests, push_followed_venue_events')
+        .select(
+          'push_friend_requests, push_followed_venue_events, '
+          'push_booking_reminders',
+        )
         .eq('user_id', userId)
         .maybeSingle();
     return row == null

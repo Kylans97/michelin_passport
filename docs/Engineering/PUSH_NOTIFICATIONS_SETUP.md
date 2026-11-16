@@ -75,3 +75,14 @@ On a real iPhone, signed with the team that owns the key:
 3. Edge Function logs: one call, `{"sent":1}`. A `500 APNs secrets are not
    configured` means step 2 is missing; an error from `fetch` there is
    the HTTP/2 question in the CHANGELOG entry: the fallback is FCM.
+
+## 5. Adding a push type later
+
+A new push type needs both halves live, in this order: deploy `send-push`
+first (an older function filters the new type out and sends nothing), then
+apply the migration whose trigger hands it over. Booking reminders
+(`booking_window_opening`, `20261101400000`) are the latest; their reminder
+job runs hourly through pg_cron (`booking-window-reminders`), and the
+function reads the reminder from `booking_reminders`. Check after apply:
+`select * from cron.job where jobname = 'booking-window-reminders';` and, the
+day a reminder is due, the function's logs for `{"sent":1}`.
