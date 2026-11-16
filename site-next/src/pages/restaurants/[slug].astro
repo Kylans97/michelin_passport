@@ -23,7 +23,7 @@ const where = place(r);
 const description = `${r.name}${where ? `, ${where}` : ''}: how MICHELIN, The World’s 50 Best and Gault&Millau see the same kitchen.`;
 const listLabel = (l: Restaurant['w50bHistory'][number]) =>
   l.list === 'hall_of_fame' ? 'Hall of Fame' : l.rank !== null ? `#${l.rank}` : 'Listed';
-const hasHistory = r.michelinHistory.length > 0 || r.w50bHistory.length > 0 || r.gaultMillau !== null;
+const hasHistory = r.michelinHistory.length > 0 || r.w50bHistory.length > 0 || r.gaultMillau !== null || r.otherGuides.length > 0;
 const links = [
   r.websiteUrl && { href: r.websiteUrl, label: 'Restaurant website' },
   r.michelinUrl && { href: r.michelinUrl, label: 'In the MICHELIN Guide' },
@@ -76,6 +76,12 @@ const links = [
               <ul><li><span class="year">{r.gaultMillau.year}</span><span>{gaultMillauText(r.gaultMillau)}</span></li></ul>
             </div>
           )}
+          {r.otherGuides.map((g) => (
+            <div>
+              <h3 class="col-title">{g.name}</h3>
+              <ul>{g.history.map((h) => <li><span class="year">{h.year}</span><span>{h.value}</span></li>)}</ul>
+            </div>
+          ))}
         </div>
       </section>
     )}

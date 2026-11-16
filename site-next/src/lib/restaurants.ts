@@ -14,6 +14,19 @@ export interface GaultMillau {
   url: string | null;
 }
 
+/** A guide from the shared guide tables (guides / guide_awards /
+ *  guide_coverage): today the regional 50 Best lists. */
+export interface OtherGuide {
+  code: string;
+  name: string;
+  /** Every edition this restaurant appears in, newest first. */
+  history: { year: number; value: string }[];
+  /** The guide's latest edition, when this restaurant is in it. */
+  current: { year: number; value: string } | null;
+  /** The guide's own coverage note for its latest edition: what we hold. */
+  coverageNote: string | null;
+}
+
 export interface Restaurant {
   id: string;
   code: string;
@@ -48,6 +61,9 @@ export interface Restaurant {
 
   /** Current member of the Mantelier Selection (editorial_selections, removed_on is null). */
   inSelection: boolean;
+
+  /** Guides from the shared tables this restaurant appears in. */
+  otherGuides: OtherGuide[];
 }
 
 export interface Catalogue {
@@ -83,7 +99,7 @@ let cache: Promise<Catalogue> | null = null;
 
 export function loadCatalogue(): Promise<Catalogue> {
   cache ??= (async () => {
-    const [rows, michelin, w50b, gm, selection] = await Promise.all([
+    const [rows, michelin, w50b, gm, selection, guides, guideAwards, coverage] = await Promise.all([
       selectAll<RestaurantRow>(
         'restaurants_full',
         'select=id,restaurant_code,name,michelin_stars,country_code,address,website_url,michelin_url,worlds_50_best_url,status,is_expired,hotel_name,property_name,city_name,region,country_name,worlds_50_best_rank,is_hall_of_fame,cuisine_names&order=restaurant_code',
@@ -100,6 +116,14 @@ export function loadCatalogue(): Promise<Catalogue> {
         distinction_label: string | null; gault_millau_url: string | null;
       }>('gault_millau_awards', 'select=restaurant_id,guide_year,score,toque_count,distinction_label,gault_millau_url&order=id'),
       selectAll<{ restaurant_id: string }>('editorial_selections', 'select=restaurant_id&removed_on=is.null&order=restaurant_id'),
+      selectAll<{ guide_code: string; name: string; measure: string }>('guides', 'select=guide_code,name,measure&order=guide_code'),
+      selectAll<{
+        restaurant_id: string | null; guide_code: string; edition_year: number; rank: number | null;
+        score: number | null; tier: number | null; distinction_label: string | null;
+      }>('guide_awards', 'select=restaurant_id,guide_code,edition_year,rank,score,tier,distinction_label&restaurant_id=not.is.null&order=id'),
+      selectAll<{ guide_code: string; edition_year: number; note: string }>(
+        'guide_coverage', 'select=guide_code,edition_year,note&country_code=is.null&order=id',
+      ),
     ]);
 
     const historyBy = new Map<string, Restaurant['michelinHistory']>();
@@ -133,6 +157,42 @@ export function loadCatalogue(): Promise<Catalogue> {
 
     const selected = new Set(selection.map((s) => s.restaurant_id));
 
+    // Shared-table guides. A guide's current edition is its own latest one,
+    // as guide_awards_current reads it; each value in the guide's own
+    // measure, and nothing shown that the row doesn't hold.
+    const guideBy = new Map(guides.map((g) => [g.guide_code, g]));
+    const latestEdition = new Map<string, number>();
+    for (const a of guideAwards) {
+      latestEdition.set(a.guide_code, Math.max(latestEdition.get(a.guide_code) ?? a.edition_year, a.edition_year));
+    }
+    const noteBy = new Map<string, string>();
+    for (const c of coverage) if (c.edition_year === latestEdition.get(c.guide_code)) noteBy.set(c.guide_code, c.note);
+    const valueOf = (a: (typeof guideAwards)[number]): string | null => {
+      const measure = guideBy.get(a.guide_code)?.measure;
+      if (measure === 'rank' && a.rank !== null) return `#${a.rank}`;
+      if (measure === 'score' && a.score !== null) return String(Number(a.score));
+      if (measure === 'tier' && a.tier !== null) return String(a.tier);
+      return a.distinction_label;
+    };
+    const otherBy = new Map<string, Map<string, OtherGuide>>();
+    for (const a of guideAwards) {
+      const value = valueOf(a);
+      const guide = guideBy.get(a.guide_code);
+      if (!value || !guide || !a.restaurant_id) continue;
+      if (!otherBy.has(a.restaurant_id)) otherBy.set(a.restaurant_id, new Map());
+      const forRestaurant = otherBy.get(a.restaurant_id)!;
+      if (!forRestaurant.has(a.guide_code)) {
+        forRestaurant.set(a.guide_code, {
+          code: a.guide_code, name: guide.name, history: [], current: null,
+          coverageNote: noteBy.get(a.guide_code) ?? null,
+        });
+      }
+      const og = forRestaurant.get(a.guide_code)!;
+      og.history.push({ year: a.edition_year, value });
+      if (a.edition_year === latestEdition.get(a.guide_code)) og.current = { year: a.edition_year, value };
+    }
+    for (const m of otherBy.values()) for (const og of m.values()) og.history.sort((x, y) => y.year - x.year);
+
     const restaurants: Restaurant[] = rows
       .filter((r) => !r.is_expired)
       .map((r) => ({
@@ -159,6 +219,7 @@ export function loadCatalogue(): Promise<Catalogue> {
         w50bHistory: (w50bBy.get(r.id) ?? []).sort((a, b) => b.year - a.year),
         gaultMillau: gmBy.get(r.id) ?? null,
         inSelection: selected.has(r.id),
+        otherGuides: [...(otherBy.get(r.id)?.values() ?? [])].sort((a, b) => a.name.localeCompare(b.name)),
       }));
 
     // Addresses: name and city. Two restaurants that would share one both
