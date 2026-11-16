@@ -1,0 +1,107 @@
+---
+// The events the member is Going to or Interested in that haven't ended,
+// soonest first. Confirming you were there, and the Passport stamp that
+// follows, stay in the app.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import '../../styles/account.css';
+---
+<Base title="Your events" description="The events you marked in Mantelier." noindex>
+  <PageHeader eyebrow='<a href="/account">Your account</a>' title="Your events" />
+
+  <div class="wrap account-body">
+    <p class="empty" data-loading>Loading your events…</p>
+    <p class="notice error" data-error hidden>Your events couldn’t be loaded. Please try again.</p>
+    <p class="empty" data-empty hidden>No upcoming events marked yet. <a href="/events">See what’s coming up →</a></p>
+    <section class="saved-group" data-group="going" hidden>
+      <h2 class="eyebrow">Going</h2>
+      <ul class="saved-list"></ul>
+    </section>
+    <section class="saved-group" data-group="interested" hidden>
+      <h2 class="eyebrow">Interested</h2>
+      <ul class="saved-list"></ul>
+    </section>
+    <p class="help after">Been to one? Confirm it in the app to add it to your Passport.</p>
+  </div>
+</Base>
+
+<style>
+  .after { margin-top: 36px; }
+  .empty a { text-decoration: underline; text-underline-offset: 3px; }
+</style>
+
+<script>
+  import { requireSession } from '../../lib/account/client';
+  import { catalogue, el } from '../../lib/account/catalogue';
+  import { eventHasEnded, myIntents, publishedEvents, removeIntent, type Intent } from '../../lib/account/data';
+  import { formatDateRange } from '../../lib/event-dates';
+
+  interface Item { id: string; status: Intent; name: string; href: string | null; meta: string; start: string }
+
+  async function main() {
+    const session = await requireSession();
+    const userId = session.user.id;
+    try {
+      const rows = await myIntents(userId);
+      const cat = await catalogue(rows.map((r) => r.event_id));
+      // Every event is checked live for still being published, as the
+      // app's lists do; the build supplies the address and the wording.
+      const live = await publishedEvents(rows.map((r) => r.event_id));
+      const byId = new Map(live.map((e) => [e.id, e]));
+      const items: Item[] = [];
+      for (const row of rows) {
+        const e = byId.get(row.event_id);
+        if (!e || eventHasEnded({ endAt: e.end_at, endDate: e.end_date, timezone: e.timezone })) continue;
+        const built = cat.e[e.id];
+        const cancelled = e.cancelled_at ? 'Cancelled' : null;
+        items.push(built
+          ? { id: e.id, status: row.status, name: built[1], href: `/events/${built[0]}`, meta: [cancelled, built[2], built[3]].filter(Boolean).join(' · '), start: e.start_date }
+          : { id: e.id, status: row.status, name: e.name, href: null, meta: [cancelled, formatDateRange({ startDate: e.start_date, endDate: e.end_date }), e.city].filter(Boolean).join(' · '), start: e.start_date });
+      }
+      items.sort((a, b) => a.start.localeCompare(b.start));
+
+      for (const status of ['going', 'interested'] as const) {
+        const group = document.querySelector<HTMLElement>(`[data-group="${status}"]`)!;
+        const list = group.querySelector('ul')!;
+        const mine = items.filter((i) => i.status === status);
+        group.hidden = mine.length === 0;
+        for (const item of mine) {
+          const li = el('li');
+          const text = el('div');
+          const name = el('p', 'saved-name');
+          if (item.href) {
+            const a = el('a', undefined, item.name);
+            a.href = item.href;
+            name.append(a);
+          } else {
+            name.textContent = item.name;
+          }
+          text.append(name, el('p', 'saved-meta', item.meta));
+          const remove = el('button', 'button quiet', status === 'going' ? 'Not going' : 'Not interested');
+          remove.type = 'button';
+          remove.addEventListener('click', async () => {
+            remove.disabled = true;
+            try {
+              await removeIntent(userId, item.id);
+              li.remove();
+              if (!list.children.length) group.hidden = true;
+              if (!document.querySelector('[data-group]:not([hidden])')) {
+                document.querySelector<HTMLElement>('[data-empty]')!.hidden = false;
+              }
+            } catch {
+              remove.disabled = false;
+              remove.textContent = 'Try again';
+            }
+          });
+          li.append(text, remove);
+          list.append(li);
+        }
+      }
+      document.querySelector<HTMLElement>('[data-empty]')!.hidden = items.length > 0;
+    } catch {
+      document.querySelector<HTMLElement>('[data-error]')!.hidden = false;
+    }
+    document.querySelector<HTMLElement>('[data-loading]')!.hidden = true;
+  }
+  main();
+</script>

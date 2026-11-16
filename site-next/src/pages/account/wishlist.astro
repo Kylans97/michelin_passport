@@ -1,0 +1,127 @@
+---
+// The member's Wishlist, newest first, as the app's: restaurants, hotels
+// and events, each removable. Read and written in the browser only.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import '../../styles/account.css';
+---
+<Base title="Wishlist" description="Your Mantelier wishlist." noindex>
+  <PageHeader eyebrow='<a href="/account">Your account</a>' title="Wishlist" />
+
+  <div class="wrap account-body">
+    <p class="empty" data-loading>Loading your wishlist…</p>
+    <p class="notice error" data-error hidden>Your wishlist couldn’t be loaded. Please try again.</p>
+    <p class="empty" data-empty hidden>Nothing saved yet. “Add to wishlist” on a restaurant or an event puts it here, and in the app.</p>
+    <section class="saved-group" data-group="restaurant" hidden>
+      <h2 class="eyebrow">Restaurants</h2>
+      <ul class="saved-list"></ul>
+    </section>
+    <section class="saved-group" data-group="hotel" hidden>
+      <h2 class="eyebrow">Hotels</h2>
+      <ul class="saved-list"></ul>
+    </section>
+    <section class="saved-group" data-group="event" hidden>
+      <h2 class="eyebrow">Events</h2>
+      <ul class="saved-list"></ul>
+    </section>
+  </div>
+</Base>
+
+<script>
+  import { requireSession } from '../../lib/account/client';
+  import { catalogue, el, starLabel } from '../../lib/account/catalogue';
+  import { loadWishlist, publishedEvents, removeFromWishlist, venuesById, type WishlistEntity } from '../../lib/account/data';
+  import { formatDateRange } from '../../lib/event-dates';
+
+  interface Item { type: WishlistEntity; id: string; name: string; href: string | null; meta: string; stars?: string | null }
+
+  function render(userId: string, items: Item[]) {
+    for (const type of ['restaurant', 'hotel', 'event'] as const) {
+      const group = document.querySelector<HTMLElement>(`[data-group="${type}"]`)!;
+      const list = group.querySelector('ul')!;
+      list.replaceChildren();
+      const mine = items.filter((i) => i.type === type);
+      group.hidden = mine.length === 0;
+      for (const item of mine) {
+        const li = el('li');
+        const text = el('div');
+        const name = el('p', 'saved-name');
+        if (item.href) {
+          const a = el('a', undefined, item.name);
+          a.href = item.href;
+          name.append(a);
+        } else {
+          name.textContent = item.name;
+        }
+        const meta = el('p', 'saved-meta');
+        if (item.stars) meta.append(el('span', 'gold', item.stars), ' ');
+        meta.append(item.meta);
+        text.append(name, meta);
+        const remove = el('button', 'button quiet', 'Remove');
+        remove.type = 'button';
+        remove.addEventListener('click', async () => {
+          remove.disabled = true;
+          try {
+            await removeFromWishlist(userId, item.type, item.id);
+            li.remove();
+            if (!list.children.length) group.hidden = true;
+            if (!document.querySelector('[data-group]:not([hidden])')) {
+              document.querySelector<HTMLElement>('[data-empty]')!.hidden = false;
+            }
+          } catch {
+            remove.disabled = false;
+            remove.textContent = 'Try again';
+          }
+        });
+        li.append(text, remove);
+        list.append(li);
+      }
+    }
+    document.querySelector<HTMLElement>('[data-empty]')!.hidden = items.length > 0;
+  }
+
+  async function main() {
+    const session = await requireSession();
+    const userId = session.user.id;
+    try {
+      const rows = await loadWishlist(userId);
+      const cat = await catalogue(rows.map((r) => r.entity_id));
+      // What this build doesn't know (newer than the build, or an event
+      // that has ended) is looked up live; what can't be found any more
+      // (unpublished, removed) is left out, as in the app.
+      const missing = (type: WishlistEntity, known: Record<string, unknown>) =>
+        rows.filter((r) => r.entity_type === type && !known[r.entity_id]).map((r) => r.entity_id);
+      const [liveRestaurants, liveHotels, liveEvents] = await Promise.all([
+        venuesById('restaurants_full', missing('restaurant', cat.r)),
+        venuesById('hotels_full', missing('hotel', cat.h)),
+        publishedEvents(missing('event', cat.e)),
+      ]);
+      const live = new Map<string, Item>();
+      for (const v of liveRestaurants) live.set(v.id, { type: 'restaurant', id: v.id, name: v.name, href: null, meta: [v.city_name, v.country_name].filter(Boolean).join(', ') });
+      for (const v of liveHotels) live.set(v.id, { type: 'hotel', id: v.id, name: v.name, href: null, meta: [v.city_name, v.country_name].filter(Boolean).join(', ') });
+      for (const e of liveEvents) live.set(e.id, { type: 'event', id: e.id, name: e.name, href: null, meta: [formatDateRange({ startDate: e.start_date, endDate: e.end_date }), e.city].filter(Boolean).join(' · ') });
+
+      const items: Item[] = [];
+      for (const row of rows) {
+        const id = row.entity_id;
+        if (row.entity_type === 'restaurant' && cat.r[id]) {
+          const [slug, name, place, stars] = cat.r[id];
+          items.push({ type: 'restaurant', id, name, href: `/restaurants/${slug}`, meta: place, stars: starLabel(stars) });
+        } else if (row.entity_type === 'hotel' && cat.h[id]) {
+          const [name, place, keys] = cat.h[id];
+          items.push({ type: 'hotel', id, name, href: null, meta: place, stars: keys ? `${keys} MICHELIN Key${keys > 1 ? 's' : ''} ·` : null });
+        } else if (row.entity_type === 'event' && cat.e[id]) {
+          const [slug, name, when, place, cancelled] = cat.e[id];
+          items.push({ type: 'event', id, name, href: `/events/${slug}`, meta: [cancelled ? 'Cancelled' : null, when, place].filter(Boolean).join(' · ') });
+        } else if (live.has(id)) {
+          items.push(live.get(id)!);
+        }
+      }
+      render(userId, items);
+    } catch {
+      document.querySelector<HTMLElement>('[data-error]')!.hidden = false;
+    }
+    document.querySelector<HTMLElement>('[data-loading]')!.hidden = true;
+  }
+  main();
+</script>

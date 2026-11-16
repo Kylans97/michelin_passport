@@ -1,6 +1,6 @@
 ---
 import Base from '../../layouts/Base.astro';
-import AppCta from '../../components/AppCta.astro';
+import SaveControls from '../../components/SaveControls.astro';
 import GuideScores from '../../components/GuideScores.astro';
 import { formatNewsDate, loadRestaurantMentions, sectionLabel } from '../../lib/news';
 import { gaultMillauText, loadCatalogue, place, type Restaurant } from '../../lib/restaurants';
@@ -43,7 +43,7 @@ const links = [
     <section aria-labelledby="every-guide">
       <h2 class="eyebrow section-title" id="every-guide">Every guide</h2>
       <GuideScores restaurant={r} w50bYear={w50bYear} />
-      {!r.closed && <div class="cta"><AppCta label="Add to wishlist in the app" /></div>}
+      {!r.closed && <div class="cta"><SaveControls type="restaurant" id={r.id} appLabel="Add to wishlist in the app" /></div>}
     </section>
 
     {hasHistory && (

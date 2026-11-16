@@ -1,0 +1,163 @@
+---
+// Sign in with a Mantelier app account: email and password, then the code
+// from the authenticator app for an account with two-step sign-in on, as
+// the app's LoginScreen and TwoStepSignInScreen. The page itself is static;
+// everything happens in the browser.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import { CONTACT_EMAIL } from '../../config';
+import '../../styles/account.css';
+---
+<Base title="Sign in" description="Sign in with your Mantelier account." noindex>
+  <PageHeader title="Sign in" intro="With the account you use in the Mantelier app." />
+
+  <div class="wrap account-body">
+    <div class="account-narrow">
+      <form class="form" data-step="password" novalidate>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="username" required>
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <p class="notice error" data-error hidden></p>
+        <p class="notice ok" data-ok hidden></p>
+        <button class="text-button" type="button" data-resend hidden>Send a new confirmation link</button>
+        <button class="button" type="submit">Sign in</button>
+        <p class="help">Forgot your password? Reset it in the Mantelier app: on its sign-in screen, tap “Forgot password?”.</p>
+        <p class="help">No account yet? Accounts are made in the Mantelier app.</p>
+      </form>
+
+      <form class="form" data-step="code" novalidate hidden>
+        <p class="lead">Two-step sign-in</p>
+        <p class="help">Enter the code from your authenticator app.</p>
+        <div class="field">
+          <label for="code">Code</label>
+          <input class="code" id="code" name="code" inputmode="numeric" autocomplete="one-time-code" maxlength="7" placeholder="123456" required>
+        </div>
+        <p class="notice error" data-error hidden></p>
+        <button class="button" type="submit">Continue</button>
+        <p class="help">Lost the phone with your authenticator? Write to <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and we will help you back in.</p>
+        <button class="text-button" type="button" data-sign-out>Sign out</button>
+      </form>
+    </div>
+  </div>
+</Base>
+
+<script>
+  import { loadName, resendConfirmation, signIn, signOut, supabase, verifyTwoStep } from '../../lib/account/client';
+  import { peek, safeNext } from '../../lib/account/peek';
+
+  const next = safeNext(new URLSearchParams(location.search).get('next'));
+  const passwordForm = document.querySelector<HTMLFormElement>('[data-step="password"]')!;
+  const codeForm = document.querySelector<HTMLFormElement>('[data-step="code"]')!;
+  const resend = passwordForm.querySelector<HTMLButtonElement>('[data-resend]')!;
+  const ok = passwordForm.querySelector<HTMLElement>('[data-ok]')!;
+  let unconfirmedEmail: string | null = null;
+
+  const showError = (form: HTMLFormElement, message: string | null) => {
+    const el = form.querySelector<HTMLElement>('[data-error]')!;
+    el.textContent = message ?? '';
+    el.hidden = !message;
+  };
+  const busy = (form: HTMLFormElement, on: boolean) => {
+    form.querySelector<HTMLButtonElement>('button[type="submit"]')!.disabled = on;
+  };
+
+  async function finish() {
+    const { data } = await supabase().auth.getUser();
+    if (data.user) await loadName(data.user.id);
+    location.replace(next);
+  }
+
+  function showCodeStep() {
+    passwordForm.hidden = true;
+    codeForm.hidden = false;
+    codeForm.querySelector<HTMLInputElement>('#code')!.focus();
+  }
+
+  // Already signed in, or signed in with the password but not the code.
+  const state = peek();
+  if (state === 'signed-in') location.replace(next);
+  else if (state === 'needs-two-step') showCodeStep();
+
+  passwordForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const email = (passwordForm.elements.namedItem('email') as HTMLInputElement).value.trim();
+    const password = (passwordForm.elements.namedItem('password') as HTMLInputElement).value;
+    showError(passwordForm, null);
+    ok.hidden = true;
+    resend.hidden = true;
+    if (!email || !password) {
+      showError(passwordForm, 'Enter your email and password.');
+      return;
+    }
+    busy(passwordForm, true);
+    try {
+      const result = await signIn(email, password);
+      if (result === 'unconfirmed') {
+        unconfirmedEmail = email;
+        showError(passwordForm, 'Your email isn’t confirmed yet. Use the link in the email we sent you, or send a new one.');
+        resend.hidden = false;
+      } else if (result === 'needs-two-step') {
+        showCodeStep();
+      } else {
+        await finish();
+        return;
+      }
+    } catch (e) {
+      showError(passwordForm, e instanceof Error && e.message ? e.message : 'Something went wrong. Please try again.');
+    }
+    busy(passwordForm, false);
+  });
+
+  resend.addEventListener('click', async () => {
+    if (!unconfirmedEmail) return;
+    resend.disabled = true;
+    try {
+      await resendConfirmation(unconfirmedEmail);
+      showError(passwordForm, null);
+      resend.hidden = true;
+      ok.textContent = 'A new confirmation link is on its way. Open it, then sign in here.';
+      ok.hidden = false;
+    } catch (e) {
+      showError(passwordForm, e instanceof Error && e.message ? e.message : 'Something went wrong. Please try again.');
+    }
+    resend.disabled = false;
+  });
+
+  const codeInput = codeForm.querySelector<HTMLInputElement>('#code')!;
+  let verifying = false;
+  async function submitCode() {
+    if (verifying) return;
+    showError(codeForm, null);
+    if (codeInput.value.replace(/[^0-9]/g, '').length !== 6) {
+      showError(codeForm, 'Enter the six-digit code.');
+      return;
+    }
+    verifying = true;
+    busy(codeForm, true);
+    try {
+      await verifyTwoStep(codeInput.value);
+      await finish();
+      return;
+    } catch {
+      showError(codeForm, 'That code didn’t match. Try the newest one.');
+    }
+    verifying = false;
+    busy(codeForm, false);
+  }
+  codeForm.addEventListener('submit', (event) => { event.preventDefault(); submitCode(); });
+  // Six digits submit by themselves, as in the app.
+  codeInput.addEventListener('input', () => {
+    if (codeInput.value.replace(/[^0-9]/g, '').length === 6) submitCode();
+  });
+
+  codeForm.querySelector('[data-sign-out]')!.addEventListener('click', async () => {
+    await signOut();
+    codeForm.hidden = true;
+    passwordForm.hidden = false;
+  });
+</script>

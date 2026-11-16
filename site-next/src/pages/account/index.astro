@@ -1,0 +1,54 @@
+---
+// The signed-in home: who is signed in, where their saved things are, and
+// signing out of the site. Nothing personal is in the HTML; the script
+// fills it in.
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import '../../styles/account.css';
+---
+<Base title="Your account" description="Your Mantelier account." noindex>
+  <PageHeader eyebrow="Your account" title="Welcome" />
+
+  <div class="wrap account-body" data-account-page hidden>
+    <ul class="saved-list account-narrow">
+      <li>
+        <div>
+          <p class="saved-name"><a href="/account/wishlist">Wishlist</a></p>
+          <p class="saved-meta">The restaurants, hotels and events you saved.</p>
+        </div>
+      </li>
+      <li>
+        <div>
+          <p class="saved-name"><a href="/account/events">Your events</a></p>
+          <p class="saved-meta">Where you’re Interested or Going.</p>
+        </div>
+      </li>
+    </ul>
+    <p class="help signed-as">Signed in as <span data-email></span>. Your Passport, trips and friends are in the app.</p>
+    <button class="button quiet" type="button" data-sign-out>Sign out</button>
+  </div>
+</Base>
+
+<style>
+  .signed-as { margin: 28px 0 18px; }
+</style>
+
+<script>
+  import { loadName, requireSession, signOut } from '../../lib/account/client';
+  import { showMemberInHeader } from '../../lib/account/peek';
+
+  async function main() {
+    const session = await requireSession();
+    const name = await loadName(session.user.id);
+    document.querySelector('.band h1')!.textContent = name ? `Welcome, ${name}` : 'Welcome';
+    document.querySelector('[data-email]')!.textContent = session.user.email ?? '';
+    document.querySelector<HTMLElement>('[data-account-page]')!.hidden = false;
+    showMemberInHeader(name);
+  }
+  main();
+
+  document.querySelector('[data-sign-out]')!.addEventListener('click', async () => {
+    await signOut();
+    location.replace('/');
+  });
+</script>

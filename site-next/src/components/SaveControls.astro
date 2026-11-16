@@ -1,0 +1,134 @@
+---
+// "Add to wishlist" and, on an event, Interested / Going: the app's own
+// controls for a signed-in reader, the app's call to action for everyone
+// else. The static page always carries the call to action; a stored
+// session swaps it for the real controls in the browser, so nothing
+// personal is ever in the HTML.
+import AppCta from './AppCta.astro';
+import type { SiteEvent } from '../lib/events';
+
+interface Props {
+  type: 'restaurant' | 'event';
+  id: string;
+  /** The label for a reader who isn't signed in. */
+  appLabel: string;
+  variant?: 'outline' | 'solid';
+  /** For an event: Interested / Going while it hasn't ended. */
+  event?: Pick<SiteEvent, 'endDate' | 'endAt' | 'timezone'>;
+}
+const { type, id, appLabel, variant = 'outline', event } = Astro.props;
+---
+<div
+  class="save"
+  data-save
+  data-type={type}
+  data-id={id}
+  data-ends={event ? JSON.stringify({ endDate: event.endDate, endAt: event.endAt, timezone: event.timezone }) : undefined}
+>
+  <div class="signed-out" data-signed-out>
+    <AppCta label={appLabel} variant={variant} />
+    <a class="sign-in" href="/account/sign-in" data-sign-in>or sign in</a>
+  </div>
+  <div class="signed-in" data-signed-in hidden>
+    {event && (
+      <div class="intents" role="group" aria-label="Your plans" data-intents hidden>
+        <button type="button" class="pill" data-intent="interested" aria-pressed="false">Interested</button>
+        <button type="button" class="pill" data-intent="going" aria-pressed="false">Going</button>
+      </div>
+    )}
+    <button type="button" class="pill" data-wishlist aria-pressed="false">Add to wishlist</button>
+    <span class="error" data-save-error hidden>That didn’t save. Please try again.</span>
+  </div>
+</div>
+
+<style>
+  .save, .signed-out, .signed-in, .intents { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; }
+  .signed-out[hidden], .signed-in[hidden], .intents[hidden] { display: none; }
+  .sign-in { font-size: 12px; color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }
+  .pill {
+    font: inherit;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    border-radius: 999px;
+    padding: 6px 14px;
+    border: 1px solid var(--green);
+    background: transparent;
+    color: var(--green);
+    cursor: pointer;
+  }
+  .pill[aria-pressed='true'] { background: var(--green); color: var(--ivory); }
+  .pill:disabled { opacity: 0.55; cursor: default; }
+  .error { font-size: 12px; color: #6E2B1A; }
+</style>
+
+<script>
+  import { peek, signInHref } from '../lib/account/peek';
+
+  // The sign-in link returns here.
+  document.querySelectorAll<HTMLAnchorElement>('[data-sign-in]').forEach((a) => { a.href = signInHref(); });
+
+  async function wire(box: HTMLElement) {
+    const { fullSession } = await import('../lib/account/client');
+    const data = await import('../lib/account/data');
+    const session = await fullSession();
+    if (!session) return;
+    const userId = session.user.id;
+    const type = box.dataset.type as 'restaurant' | 'event';
+    const id = box.dataset.id!;
+    const wishlist = box.querySelector<HTMLButtonElement>('[data-wishlist]')!;
+    const errorNote = box.querySelector<HTMLElement>('[data-save-error]')!;
+    const intents = box.querySelector<HTMLElement>('[data-intents]');
+    const ends = box.dataset.ends ? JSON.parse(box.dataset.ends) : null;
+    const canAttend = ends && !data.eventHasEnded(ends);
+
+    const setWishlisted = (on: boolean) => {
+      wishlist.setAttribute('aria-pressed', String(on));
+      wishlist.textContent = on ? 'On your wishlist' : 'Add to wishlist';
+    };
+    let intent: 'interested' | 'going' | null = null;
+    const showIntent = () => box.querySelectorAll<HTMLButtonElement>('[data-intent]').forEach((b) => {
+      b.setAttribute('aria-pressed', String(b.dataset.intent === intent));
+    });
+
+    const [wishlisted, current] = await Promise.all([
+      data.isWishlisted(userId, type, id),
+      canAttend ? data.myIntent(userId, id) : Promise.resolve(null),
+    ]);
+    setWishlisted(wishlisted);
+    intent = current;
+    showIntent();
+    if (intents) intents.hidden = !canAttend;
+    box.querySelector<HTMLElement>('[data-signed-out]')!.hidden = true;
+    box.querySelector<HTMLElement>('[data-signed-in]')!.hidden = false;
+
+    // The write first; the button changes only once it succeeded.
+    async function attempt(button: HTMLButtonElement, write: () => Promise<void>) {
+      button.disabled = true;
+      errorNote.hidden = true;
+      try { await write(); } catch { errorNote.hidden = false; }
+      button.disabled = false;
+    }
+
+    wishlist.addEventListener('click', () => attempt(wishlist, async () => {
+      const on = wishlist.getAttribute('aria-pressed') === 'true';
+      if (on) await data.removeFromWishlist(userId, type, id);
+      else await data.addToWishlist(userId, type, id);
+      setWishlisted(!on);
+    }));
+
+    box.querySelectorAll<HTMLButtonElement>('[data-intent]').forEach((button) => {
+      button.addEventListener('click', () => attempt(button, async () => {
+        const next = data.resolveIntentTap(intent, button.dataset.intent as 'interested' | 'going');
+        if (next) await data.setIntent(userId, id, next);
+        else await data.removeIntent(userId, id);
+        intent = next;
+        showIntent();
+      }));
+    });
+  }
+
+  if (peek() === 'signed-in') {
+    document.querySelectorAll<HTMLElement>('[data-save]').forEach((box) => { wire(box).catch(() => {}); });
+  }
+</script>
