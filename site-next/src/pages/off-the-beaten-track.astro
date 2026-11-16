@@ -1,0 +1,1004 @@
+---
+import Base from '../layouts/Base.astro';
+import { loadCatalogue } from '../lib/restaurants';
+
+// Off the beaten track: the clickable prototype of the trip planner
+// (product owner, 2026-11-16), reached from the footer compass. No real
+// AI yet; the proposal is an example built on real catalogue hotels and
+// restaurants. Its markup, styles and script come from the prototype
+// artifact, scoped under .otbt so they can't touch the rest of the site.
+
+// Restaurants in the example link to their pages here, resolved by
+// restaurant code, never by name.
+const CODES = ['rest_0141', 'rest_1578', 'rest_0135', 'rest_1381', 'rest_0139', 'rest_0134'];
+const { restaurants } = await loadCatalogue();
+const links = Object.fromEntries(
+  restaurants.filter((r) => CODES.includes(r.code)).map((r) => [r.code, `/restaurants/${r.slug}`]),
+);
+---
+<Base title="Off the beaten track" description="Plan a journey around the table: tell us who's travelling, where and when, and get a route with the hotels and restaurants worth the trip.">
+  <div class="otbt">
+<header class="band">
+  <div class="gutter"><div class="col inner">
+    <div class="brand">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="9.5"/><path d="M15.5 8.5 13.4 13.4 8.5 15.5 10.6 10.6Z"/></svg>
+      <span>Mantelier · Off the beaten track</span>
+    </div>
+    <h1>Plan a journey around the table</h1>
+    <p>Tell us who's travelling, where and when, and how you like to travel. We'll come back with a route that pairs the places worth the journey with the hotels and evenings around them.</p>
+    <span class="proto">Prototype · no real AI yet · the proposal is an example</span>
+  </div></div>
+</header>
+
+<div class="gutter">
+  <div class="col">
+
+    <!-- INTAKE -->
+    <div id="intake" class="view">
+      <div class="mytrips" id="mytrips" hidden></div>
+      <ol class="steps" id="steps" aria-label="Steps"></ol>
+
+      <form id="form" novalidate>
+        <!-- 1 Who -->
+        <fieldset data-step="0">
+          <legend><h2>Who's travelling</h2><p class="lead">Nationality decides which government's travel advice applies, and with it what your travel insurance covers.</p></legend>
+          <div class="field">
+            <span class="q" id="trav-q">Travellers</span>
+            <div id="travellers" class="advice" aria-labelledby="trav-q"></div>
+            <div><button type="button" class="chip" id="add-trav">+ Add a traveller</button></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="children">Children (under 18)</label><input id="children" type="number" min="0" max="8" value="0"></div>
+            <div class="field"><label for="occasion">Occasion</label>
+              <select id="occasion"><option>No particular occasion</option><option selected>An anniversary</option><option>Honeymoon</option><option>A birthday</option><option>Family trip</option></select></div>
+          </div>
+        </fieldset>
+
+        <!-- 2 Where and when -->
+        <fieldset data-step="1" hidden>
+          <legend><h2>Where and when</h2><p class="lead">Leave from one place and come home from another if that suits the route.</p></legend>
+          <div class="field">
+            <span class="q" id="countries-q">Countries</span>
+            <div class="chips" id="countries" role="group" aria-labelledby="countries-q"></div>
+            <p class="error" id="countries-err" hidden>Choose at least one country.</p>
+          </div>
+          <div class="row">
+            <div class="field"><label for="from">Leaving from</label><input id="from" type="text" value="Amsterdam"></div>
+            <div class="field"><label for="to">Coming home to</label><input id="to" type="text" value="Amsterdam"></div>
+          </div>
+          <div class="row">
+            <div class="field"><label for="start">Departure</label><input id="start" type="date" value="2027-04-10"></div>
+            <div class="field"><label for="end">Return</label><input id="end" type="date" value="2027-04-23"></div>
+          </div>
+          <p class="error" id="dates-err" hidden>The return date must come after the departure date.</p>
+          <div class="field"><label for="flex">How flexible are the dates?</label>
+            <select id="flex"><option value="fixed">These exact dates</option><option value="3" selected>Give or take 3 days</option><option value="7">Give or take a week</option><option value="month">Any time that month</option></select></div>
+        </fieldset>
+
+        <!-- 3 Style -->
+        <fieldset data-step="2" hidden>
+          <legend><h2>How you like to travel</h2><p class="lead">Pick as many as fit. Adventure means different things, so tell us how far you'd go.</p></legend>
+          <div class="field">
+            <span class="q" id="style-q">Kind of trip</span>
+            <div class="chips" id="styles" role="group" aria-labelledby="style-q"></div>
+          </div>
+          <div class="field">
+            <label for="adventure">How adventurous</label>
+            <div class="range"><span>Gentle walks</span><input id="adventure" type="range" min="1" max="5" step="1" value="3" aria-describedby="adv-out"><span>Multi-day treks</span></div>
+            <p class="hint" id="adv-out"></p>
+          </div>
+          <div class="field">
+            <label for="pace">Pace</label>
+            <div class="range"><span>Slow, few moves</span><input id="pace" type="range" min="1" max="5" step="1" value="2"><span>Full and varied</span></div>
+          </div>
+          <div class="field"><label for="nogo">Anything you'd rather not do</label><textarea id="nogo" placeholder="Night buses, altitude above 4,000 m, cruise ships">Altitude above 4,000 m</textarea></div>
+        </fieldset>
+
+        <!-- 4 Budget -->
+        <fieldset data-step="3" hidden>
+          <legend><h2>Budget and getting around</h2><p class="lead">A rough number is enough. We'll show where it goes, and mark every price as an estimate until it's quoted.</p></legend>
+          <div class="row">
+            <div class="field"><label for="budget">Budget (€)</label><input id="budget" type="number" min="0" step="500" value="14000"></div>
+            <div class="field"><label for="basis">That's</label><select id="basis"><option value="total" selected>For everyone, in total</option><option value="pp">Per person</option></select></div>
+          </div>
+          <p class="error" id="budget-err" hidden>Enter a budget above zero.</p>
+          <label class="check"><input id="flights" type="checkbox" checked> Including international flights</label>
+          <div class="row">
+            <div class="field"><label for="cabin">Long-haul cabin</label><select id="cabin"><option>Economy</option><option selected>Premium economy</option><option>Business</option></select></div>
+            <div class="field"><label for="ground">Getting around there</label><select id="ground"><option>Private driver</option><option selected>Mix of driver and train</option><option>Self-drive</option><option>As few flights as possible</option></select></div>
+          </div>
+        </fieldset>
+
+        <!-- 5 Table and practicalities -->
+        <fieldset data-step="4" hidden>
+          <legend><h2>The table, and the practical things</h2><p class="lead">This is where the trip becomes yours.</p></legend>
+          <label class="check"><input id="wishlist" type="checkbox" checked> Build around restaurants on my Mantelier wishlist</label>
+          <label class="check"><input id="events" type="checkbox" checked> Include one-off events on my dates (four-hands dinners, festivals)</label>
+          <div class="field"><label for="diet">Dietary needs and allergies</label><input id="diet" type="text" value="One of us doesn't eat shellfish"></div>
+          <div class="field"><label for="mobility">Mobility or health</label><input id="mobility" type="text" placeholder="Anything we should plan around"></div>
+          <div class="field"><label for="musts">Must-haves</label><textarea id="musts">One night somewhere truly remote. A dinner we'll talk about for years.</textarea></div>
+          <p class="note">For your eyes: in the real version, the travel advice comes from each traveller's own government on the day we write the proposal, with its date and a link, and is checked again before you leave.</p>
+        </fieldset>
+
+        <div class="nav">
+          <button type="button" class="btn" id="back">Back</button>
+          <span class="mono" id="count"></span>
+          <button type="submit" class="btn primary" id="next">Next</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- PROPOSAL -->
+    <div id="proposal" class="view proposal" hidden>
+      <p class="example"><strong>Example proposal.</strong> In this prototype the route is always Peru. The hotels and restaurants are real, from the Mantelier catalogue, with their MICHELIN Keys and World's 50 Best positions as we hold them. The travel-advice colours are illustrations, not the current advice. Flight times are approximate and every amount is an estimate, not a quote. Your dates, travellers and budget are used throughout.</p>
+
+      <div class="tools" id="tools">
+        <button type="button" class="btn primary" id="save-btn">Save trip</button>
+        <button type="button" class="btn" id="share-btn">Share</button>
+        <button type="button" class="btn" id="edit-btn" aria-pressed="false">Edit trip</button>
+        <span class="status" id="save-status"></span>
+      </div>
+      <div class="panel" id="save-panel" hidden>
+        <h4>Save this trip</h4>
+        <div class="row2">
+          <div class="field"><label for="trip-name">Name</label><input id="trip-name" type="text"></div>
+          <button type="button" class="btn primary" id="save-confirm">Save</button>
+        </div>
+        <p class="error" id="trip-name-err" hidden>Give the trip a name.</p>
+        <p class="hint">In the app this saves to your Trips, on every device, where friends you invite can plan with you. In this prototype it stays in this browser.</p>
+      </div>
+      <div class="panel" id="share-panel" hidden>
+        <h4>Share this trip</h4>
+        <div class="share-opts">
+          <div class="share-opt"><strong>With friends on Mantelier</strong>
+            <div class="chips" id="share-friends" role="group" aria-label="Friends"></div>
+            <span class="hint" id="share-friends-status">Example friends. They'd see the trip in their app and can add ideas.</span></div>
+          <div class="share-opt"><strong>WhatsApp</strong><a class="btn" id="share-wa" href="#" target="_blank" rel="noopener">Open WhatsApp</a>
+            <span class="hint">Sends the summary below.</span></div>
+          <div class="share-opt"><strong>Email</strong><a class="btn" id="share-mail" href="#">Open email</a>
+            <span class="hint">If nothing opens, copy the summary instead.</span></div>
+        </div>
+        <div class="row2" style="align-items:center"><span class="hint" style="flex:1">Summary</span><button type="button" class="btn" id="copy-summary">Copy summary</button></div>
+        <div class="summary" id="summary"></div>
+        <p class="hint">In the real version this also includes a link to the trip on mantelier.app, readable by anyone you send it to.</p>
+      </div>
+
+      <div class="ptitle">
+        <p class="eyebrow" id="p-kicker"></p>
+        <h2>Peru, from Lima's tables to the Sacred Valley</h2>
+        <p id="p-intro"></p>
+      </div>
+
+      <dl class="facts" id="p-facts"></dl>
+
+      <section aria-labelledby="adv-h">
+        <div class="sec-head"><h3 id="adv-h">Travel advice</h3><span class="mono">Nederland Wereldwijd · example</span></div>
+        <div class="advice" id="p-advice"></div>
+      </section>
+
+      <section class="journey" aria-labelledby="journey-h">
+        <div class="sec-head"><h3 id="journey-h">The journey</h3><button type="button" class="btn" id="play">Play the journey</button></div>
+        <div class="j-grid">
+          <div class="j-map"><div class="sticky">
+            <svg class="map" id="map" viewBox="0 0 600 791" role="img" aria-labelledby="map-t">
+              <title id="map-t">Map of Peru with the route: Lima, the Sacred Valley, a day at Machu Picchu, Cusco and back to Lima</title>
+            </svg>
+            <p class="caption" id="caption" aria-live="polite"></p>
+            <svg class="alt" id="alt" viewBox="0 0 600 150" role="img" aria-label="Altitude along the route"></svg>
+          </div></div>
+          <div>
+            <p class="mono" id="p-nights" style="margin:0 0 4px"></p>
+            <ol class="days" id="p-days"></ol>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="win-h">
+        <div class="sec-head"><h3 id="win-h">Book these first</h3><span class="mono">Booking windows</span></div>
+        <div class="windows" id="p-windows"></div>
+      </section>
+
+      <section aria-labelledby="flights-h">
+        <div class="sec-head"><h3 id="flights-h">Flights</h3><span class="mono" id="p-cabin"></span></div>
+        <div class="flights" id="p-flights"></div>
+        <p class="hint" style="margin-top:10px">Routes and flying times are approximate. In the real version each flight shows live options and prices from a booking partner; here the cost is part of the estimate below.</p>
+      </section>
+
+      <section aria-labelledby="todo-h">
+        <div class="sec-head"><h3 id="todo-h">Your booking checklist</h3><span class="mono">Tick it off as you go</span></div>
+        <div class="progress"><div class="track"><div class="fill" id="todo-fill"></div></div><span id="todo-count"></span></div>
+        <div id="p-todo"></div>
+        <p class="hint" style="margin-top:10px">Ticked items and references are kept in this browser only. In the app this becomes part of your trip, on every device, and a reminder comes for anything still open as its date gets close.</p>
+      </section>
+
+      <section aria-labelledby="budget-h">
+        <div class="sec-head"><h3 id="budget-h">Where the budget goes</h3><span class="mono" id="p-budget-basis"></span></div>
+        <div style="overflow-x:auto"><table id="p-budget"></table></div>
+      </section>
+
+      <section aria-labelledby="incl-h">
+        <div class="sec-head"><h3 id="incl-h">What's in this proposal</h3><span class="mono">Advice, not a package</span></div>
+        <div class="incl">
+          <div class="yes"><h4>We plan for you</h4><ul>
+            <li>The route, day by day, with travel times</li>
+            <li>Every hotel and restaurant by name, with its MICHELIN Keys and World's 50 Best position</li>
+            <li>When to book each table and ticket, with a reminder the day before a window opens</li>
+            <li>The flights to look for, and in which cabin</li>
+            <li>Transfers, trains and guides to arrange</li>
+            <li>Your government's travel advice for every stop, checked again a week before you leave</li>
+          </ul></div>
+          <div class="no"><h4>You book and pay yourself</h4><ul>
+            <li>Flights, hotels and restaurants, directly with each of them</li>
+            <li>Machu Picchu entry and the train (we tell you when)</li>
+            <li>Travel and cancellation insurance</li>
+            <li>Passport and entry requirements for your nationality</li>
+            <li>Tips, entrance fees and anything not named above</li>
+          </ul></div>
+        </div>
+      </section>
+
+      <div class="actions">
+        <button type="button" class="btn primary" id="ask">Ask for this trip</button>
+        <button type="button" class="btn" id="edit">Change my answers</button>
+      </div>
+      <p class="note" id="asked" hidden>In the real version this sends the proposal to you (the advisor) to check before anything is booked. In this prototype nothing is sent.</p>
+    </div>
+  </div>
+</div>
+  </div>
+  <script is:inline set:html={`window.OTBT_LINKS = ${JSON.stringify(links)};`}></script>
+  <script is:inline>
+(() => {
+  const STEPS = ['Who', 'Where and when', 'Style', 'Budget', 'The table'];
+  const COUNTRIES = ['Peru', 'Chile', 'Argentina', 'Japan', 'Norway', 'Italy', 'South Africa', 'Iceland', 'Mexico', 'Morocco'];
+  const STYLES = ['Adventure', 'Luxury', 'Beach', 'Sun', 'Winter sports', 'Nature and wildlife', 'Culture', 'Wine'];
+  const ADV = ['', 'Gentle walks and easy days', 'Day hikes, nothing technical', 'Long hikes, the odd early start', 'Demanding days, rough lodges are fine', 'Multi-day treks and remote camps'];
+  const NATIONALITIES = ['Dutch', 'Belgian', 'German', 'British', 'American', 'French'];
+
+  const state = { step: 0, countries: new Set(['Peru']), styles: new Set(['Adventure', 'Luxury', 'Nature and wildlife']),
+    travellers: [{ name: 'Traveller 1', nat: 'Dutch' }, { name: 'Traveller 2', nat: 'Dutch' }] };
+  const $ = (id) => document.getElementById(id);
+  const fieldsets = [...document.querySelectorAll('fieldset[data-step]')];
+
+  // stepper
+  $('steps').innerHTML = STEPS.map((s, i) => `<li><button type="button" data-go="${i}" aria-label="Step ${i + 1}: ${s}"><span class="bar"></span><span class="lbl">${s}</span></button></li>`).join('');
+  $('steps').addEventListener('click', (e) => { const b = e.target.closest('[data-go]'); if (!b) return; const to = +b.dataset.go; if (to < state.step || validate(state.step)) show(to); });
+
+  // chips
+  const chipGroup = (el, list, set) => {
+    el.innerHTML = list.map((c) => `<button type="button" class="chip" aria-pressed="${set.has(c)}">${c}</button>`).join('');
+    el.addEventListener('click', (e) => { const b = e.target.closest('.chip'); if (!b) return; const v = b.textContent;
+      set.has(v) ? set.delete(v) : set.add(v); b.setAttribute('aria-pressed', set.has(v)); if (el.id === 'countries') $('countries-err').hidden = true; });
+  };
+  chipGroup($('countries'), COUNTRIES, state.countries);
+  chipGroup($('styles'), STYLES, state.styles);
+
+  // travellers
+  const renderTravellers = () => {
+    $('travellers').innerHTML = state.travellers.map((t, i) => `
+      <div class="traveller">
+        <input type="text" id="tname-${i}" aria-label="Traveller ${i + 1} name" value="${t.name}">
+        <select id="tnat-${i}" aria-label="Traveller ${i + 1} nationality">${NATIONALITIES.map((n) => `<option ${n === t.nat ? 'selected' : ''}>${n}</option>`).join('')}</select>
+      </div>`).join('');
+  };
+  $('travellers').addEventListener('input', (e) => { const m = e.target.id.match(/^t(name|nat)-(\d+)$/); if (!m) return;
+    state.travellers[+m[2]][m[1] === 'name' ? 'name' : 'nat'] = e.target.value; });
+  $('add-trav').addEventListener('click', () => { if (state.travellers.length >= 8) return; state.travellers.push({ name: `Traveller ${state.travellers.length + 1}`, nat: 'Dutch' }); renderTravellers(); });
+  renderTravellers();
+
+  const advOut = () => { $('adv-out').textContent = ADV[+$('adventure').value]; };
+  $('adventure').addEventListener('input', advOut); advOut();
+  ['start', 'end'].forEach((id) => $(id).addEventListener('input', () => { $('dates-err').hidden = true; }));
+  $('budget').addEventListener('input', () => { $('budget-err').hidden = true; });
+
+  function validate(step) {
+    if (step === 1) {
+      let ok = true;
+      if (state.countries.size === 0) { $('countries-err').hidden = false; ok = false; }
+      const s = $('start').value, e = $('end').value;
+      if (!s || !e || e <= s) { $('dates-err').hidden = false; ok = false; }
+      return ok;
+    }
+    if (step === 3 && !(+$('budget').value > 0)) { $('budget-err').hidden = false; return false; }
+    return true;
+  }
+
+  function show(step) {
+    state.step = step;
+    fieldsets.forEach((f, i) => { f.hidden = i !== step; });
+    [...$('steps').children].forEach((li, i) => { li.className = i < step ? 'done' : i === step ? 'on' : ''; });
+    $('back').hidden = step === 0;
+    $('next').textContent = step === STEPS.length - 1 ? 'Make my proposal' : 'Next';
+    $('count').textContent = `${step + 1} of ${STEPS.length}`;
+    const first = fieldsets[step].querySelector('input, select, textarea, button');
+    if (first && document.activeElement && document.activeElement !== document.body) first.focus({ preventScroll: true });
+  }
+
+  $('back').addEventListener('click', () => show(Math.max(0, state.step - 1)));
+  $('form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!validate(state.step)) return;
+    if (state.step < STEPS.length - 1) { show(state.step + 1); return; }
+    openProposal(false);
+    autosave();
+  });
+  function openProposal(again) {
+    renderProposal(again);
+    $('intake').hidden = true; $('proposal').hidden = false;
+    $('proposal').classList.toggle('editing', state.editing);
+    if (!again) { $('save-panel').hidden = true; $('share-panel').hidden = true; window.scrollTo({ top: 0, behavior: 'smooth' }); }
+  }
+  $('edit').addEventListener('click', () => { stop(); $('proposal').hidden = true; $('intake').hidden = false; $('asked').hidden = true; renderMyTrips(); show(0); window.scrollTo({ top: 0 }); });
+  $('ask').addEventListener('click', () => { $('asked').hidden = false; });
+
+  // ---- saved trips (prototype: this browser only) ----
+  const FIELDS = ['children', 'occasion', 'from', 'to', 'start', 'end', 'flex', 'adventure', 'pace', 'nogo', 'budget', 'basis', 'flights', 'cabin', 'ground', 'wishlist', 'events', 'diet', 'mobility', 'musts'];
+  state.extras = []; state.tripId = null; state.tripName = ''; state.editing = false;
+  const uid = () => Math.random().toString(36).slice(2, 9);
+  const loadTrips = () => { try { return JSON.parse(localStorage.getItem('otbt-trips') || '[]'); } catch { return []; } };
+  const storeTrips = (trips) => { try { localStorage.setItem('otbt-trips', JSON.stringify(trips)); return true; } catch { return false; } };
+  function getAnswers() {
+    const f = {}; FIELDS.forEach((id) => { const el = $(id); f[id] = el.type === 'checkbox' ? el.checked : el.value; });
+    return { fields: f, travellers: state.travellers.map((t) => ({ ...t })), countries: [...state.countries], styles: [...state.styles] };
+  }
+  function setAnswers(a) {
+    FIELDS.forEach((id) => { const el = $(id); if (!(id in a.fields)) return; if (el.type === 'checkbox') el.checked = a.fields[id]; else el.value = a.fields[id]; });
+    state.travellers = a.travellers.map((t) => ({ ...t })); renderTravellers();
+    state.countries.clear(); a.countries.forEach((c) => state.countries.add(c));
+    state.styles.clear(); a.styles.forEach((c) => state.styles.add(c));
+    document.querySelectorAll('#countries .chip').forEach((b) => b.setAttribute('aria-pressed', state.countries.has(b.textContent)));
+    document.querySelectorAll('#styles .chip').forEach((b) => b.setAttribute('aria-pressed', state.styles.has(b.textContent)));
+    advOut();
+  }
+  function renderMyTrips() {
+    const trips = loadTrips();
+    $('mytrips').hidden = trips.length === 0;
+    $('mytrips').innerHTML = trips.length ? `<p class="eyebrow">Your saved trips</p>` + trips.map((t) => `
+      <div class="trip-row" data-id="${t.id}"><span class="name">${esc(t.name)}</span><span class="when">saved ${new Date(t.savedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}</span>
+        <button type="button" class="linkbtn" data-act="open">Open</button><button type="button" class="linkbtn danger" data-act="del">Delete</button></div>`).join('') : '';
+  }
+  $('mytrips').addEventListener('click', (e) => {
+    const b = e.target.closest('[data-act]'); if (!b) return;
+    const row = b.closest('.trip-row'); const id = row.dataset.id;
+    if (b.dataset.act === 'del') {
+      if (b.dataset.sure) { storeTrips(loadTrips().filter((t) => t.id !== id)); try { localStorage.removeItem('otbt-todo-' + id); } catch {} renderMyTrips(); }
+      else { b.dataset.sure = '1'; b.textContent = 'Delete for good?'; }
+      return;
+    }
+    const t = loadTrips().find((x) => x.id === id); if (!t) return;
+    setAnswers(t.answers); state.extras = t.extras || []; state.tripId = t.id; state.tripName = t.name;
+    openProposal(false);
+    $('save-status').textContent = `Saved as “${t.name}”`;
+  });
+  function saveTrip(name) {
+    const trips = loadTrips();
+    const id = state.tripId || uid();
+    const entry = { id, name, savedAt: Date.now(), answers: getAnswers(), extras: state.extras };
+    const i = trips.findIndex((t) => t.id === id);
+    if (i >= 0) trips[i] = entry; else trips.unshift(entry);
+    // move this draft's checklist under the trip's own key
+    if (!state.tripId) { try { const draft = localStorage.getItem('otbt-todo-draft'); if (draft) localStorage.setItem('otbt-todo-' + id, draft); } catch {} }
+    state.tripId = id; state.tripName = name;
+    const ok = storeTrips(trips);
+    $('save-status').textContent = ok ? `Saved as “${name}”` : 'This browser won’t keep it. In the app it would be saved to your account.';
+    renderMyTrips();
+  }
+  const autosave = () => { if (state.tripId) saveTrip(state.tripName); };
+
+  $('save-btn').addEventListener('click', () => {
+    $('share-panel').hidden = true;
+    $('save-panel').hidden = !$('save-panel').hidden;
+    if (!$('save-panel').hidden) { $('trip-name').value = state.tripName || `Peru, ${fmt(d($('start').value))}`; $('trip-name').focus(); }
+  });
+  $('trip-name').addEventListener('input', () => { $('trip-name-err').hidden = true; });
+  $('save-confirm').addEventListener('click', () => {
+    const name = $('trip-name').value.trim();
+    if (!name) { $('trip-name-err').hidden = false; return; }
+    saveTrip(name); $('save-panel').hidden = true;
+  });
+
+  // share
+  const FRIENDS = ['Sanne', 'Joost', 'Mila', 'Ruben'];
+  const shared = new Set();
+  $('share-friends').innerHTML = FRIENDS.map((f) => `<button type="button" class="chip" aria-pressed="false">${f}</button>`).join('');
+  $('share-friends').addEventListener('click', (e) => { const b = e.target.closest('.chip'); if (!b) return; const n = b.textContent;
+    shared.has(n) ? shared.delete(n) : shared.add(n); b.setAttribute('aria-pressed', shared.has(n));
+    $('share-friends-status').textContent = shared.size ? `Shared with ${[...shared].join(', ')} (prototype: nothing is sent).` : 'Example friends. They’d see the trip in their app and can add ideas.'; });
+  $('share-btn').addEventListener('click', () => {
+    $('save-panel').hidden = true;
+    $('share-panel').hidden = !$('share-panel').hidden;
+    if ($('share-panel').hidden) return;
+    const text = state.summary || '';
+    $('summary').textContent = text;
+    $('share-wa').href = 'https://wa.me/?text=' + encodeURIComponent(text);
+    $('share-mail').href = 'mailto:?subject=' + encodeURIComponent(state.tripName || 'Our Peru trip') + '&body=' + encodeURIComponent(text);
+  });
+  $('copy-summary').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText($('summary').textContent); $('copy-summary').textContent = 'Copied'; }
+    catch { const r = document.createRange(); r.selectNodeContents($('summary')); const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r); $('copy-summary').textContent = 'Selected, press copy'; }
+    setTimeout(() => { $('copy-summary').textContent = 'Copy summary'; }, 2000);
+  });
+
+  // edit mode: add your own places, remove them again
+  $('edit-btn').addEventListener('click', () => {
+    state.editing = !state.editing;
+    $('proposal').classList.toggle('editing', state.editing);
+    $('edit-btn').setAttribute('aria-pressed', state.editing);
+    $('edit-btn').textContent = state.editing ? 'Done editing' : 'Edit trip';
+  });
+  function placeForm(day) {
+    return `<form class="panel place-form" data-day="${day}" novalidate>
+      <h4>Add a place not in Mantelier</h4>
+      <div class="row2">
+        <div class="field"><label for="pk-${day}">What</label><select id="pk-${day}" name="kind"><option>Hotel</option><option>Restaurant</option><option>Experience</option><option>Other</option></select></div>
+        <div class="field"><label for="pn-${day}">Name</label><input id="pn-${day}" name="name" type="text" placeholder="A small guesthouse in Pisac"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label for="pc-${day}">Town or area</label><input id="pc-${day}" name="city" type="text"></div>
+        <div class="field"><label for="pu-${day}">Website (optional)</label><input id="pu-${day}" name="url" type="text" placeholder="https://"></div>
+      </div>
+      <div class="field"><label for="pt-${day}">Note (optional)</label><input id="pt-${day}" name="note" type="text" placeholder="Recommended by a friend"></div>
+      <p class="error" hidden>Give the place a name.</p>
+      <div class="row2"><button type="submit" class="btn primary">Add to this day</button><button type="button" class="btn" data-cancel>Cancel</button></div>
+    </form>`;
+  }
+
+  // ---- proposal ----
+  const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const d = (iso) => { const [y, m, dd] = iso.split('-').map(Number); return new Date(Date.UTC(y, m - 1, dd)); };
+  const fmt = (dt) => `${dt.getUTCDate()} ${MONTHS[dt.getUTCMonth()]}`;
+  const fmtY = (dt) => `${fmt(dt)} ${dt.getUTCFullYear()}`;
+  const add = (dt, n) => new Date(dt.getTime() + n * 86400000);
+  const eur = (n) => '€' + Math.round(n).toLocaleString('en-GB');
+  const esc = (s) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+  // Country outlines: Natural Earth 1:50m via world-atlas 2.0.2, projected
+  // to this viewBox once, offline. Stops at their real coordinates;
+  // altitudes and travel times are approximate.
+  const GEO = {"W":600,"H":791,"Peru":"M501.4 192.0L501.1 194.7L499.8 195.8L497.8 196.0L494.8 194.2L492.6 194.6L490.5 194.7L487.3 192.5L486.3 190.4L483.8 188.6L478.8 189.3L474.6 189.4L471.2 188.9L468.0 189.5L465.4 191.8L463.4 194.5L461.1 196.7L454.2 198.2L450.6 198.2L447.3 199.7L442.5 200.3L439.2 201.5L433.3 202.3L426.2 203.0L422.2 204.9L420.8 205.8L416.7 208.5L409.7 212.9L405.9 214.4L401.2 219.1L395.7 223.4L392.1 225.8L386.8 226.9L384.5 228.0L383.8 229.4L384.2 231.1L383.3 235.3L381.6 243.2L381.2 247.0L380.9 248.8L377.3 255.1L373.5 260.9L371.7 264.8L370.5 267.6L371.8 270.0L373.2 274.2L374.5 277.6L375.0 279.8L374.5 282.5L373.0 284.9L370.4 286.5L367.1 286.9L360.0 291.2L352.2 297.4L349.6 300.3L348.9 303.1L347.8 307.4L348.3 309.6L349.6 311.2L351.1 314.8L351.2 316.7L350.1 317.8L347.8 318.0L345.9 318.4L344.3 319.3L342.9 319.1L341.4 319.5L341.4 321.1L341.9 322.9L341.7 324.7L340.7 325.9L340.0 326.7L340.7 327.9L342.1 329.0L344.2 330.7L347.2 334.1L349.3 334.8L351.2 335.9L351.4 337.8L350.8 339.7L349.1 340.5L348.9 342.1L351.2 344.1L352.7 345.6L354.2 347.7L355.5 350.6L355.5 352.5L357.1 354.9L358.0 356.9L358.0 358.8L360.4 360.7L362.6 362.1L364.0 363.3L365.6 364.2L365.9 365.6L365.8 367.7L367.9 371.2L371.9 373.9L375.1 377.8L377.1 380.5L381.0 385.0L381.2 390.2L376.4 396.1L371.7 402.0L379.4 401.8L387.5 401.9L395.9 403.6L401.5 405.2L404.8 406.0L407.2 407.8L408.4 410.8L409.4 413.2L409.5 416.7L413.1 419.5L412.8 422.2L412.7 426.0L414.3 426.1L424.5 426.1L435.7 426.1L446.4 425.4L450.4 424.5L455.3 419.9L458.3 418.5L461.2 416.4L464.7 412.4L467.4 410.7L469.7 408.5L473.0 406.3L474.5 404.7L475.6 404.1L478.4 403.0L477.2 405.2L476.3 407.3L476.1 410.4L477.4 413.9L476.2 416.4L474.5 418.7L474.5 424.7L474.5 433.2L474.5 440.5L474.3 449.6L474.3 459.9L474.3 466.8L476.2 465.4L478.7 464.2L482.0 467.4L484.3 468.8L486.3 469.1L488.4 469.0L491.2 468.3L497.4 465.7L501.5 463.5L506.4 463.7L513.1 464.5L516.8 464.4L521.9 473.2L525.5 479.6L529.6 487.0L533.1 493.0L538.1 501.9L542.6 509.6L547.2 518.0L552.5 527.3L550.9 529.7L549.5 531.6L549.6 534.8L547.5 536.5L545.3 537.6L542.6 540.3L540.9 542.7L540.7 546.0L541.1 563.0L540.7 567.7L539.3 571.6L537.8 573.6L537.0 575.2L539.1 579.1L541.0 587.1L542.4 588.6L544.3 591.9L545.2 595.0L544.7 596.1L541.1 597.6L539.9 598.8L539.4 603.4L537.8 605.0L535.2 607.2L533.5 609.6L532.1 611.3L530.6 612.3L529.9 615.3L528.9 618.3L525.6 620.3L525.0 624.1L525.0 627.1L526.7 630.2L532.5 636.7L533.1 638.2L529.8 642.1L527.9 644.8L523.3 653.1L523.1 654.6L524.3 658.5L531.4 675.2L532.5 676.6L534.7 678.2L538.1 678.0L543.5 679.8L546.0 681.9L546.3 682.9L545.8 683.5L542.9 685.0L539.7 686.8L538.7 688.5L538.4 691.2L539.1 695.2L537.8 696.5L534.7 698.1L532.1 700.4L529.3 704.1L524.7 709.8L523.1 711.4L522.4 713.3L519.8 714.0L514.9 717.8L514.2 719.8L514.9 721.7L517.4 723.3L519.1 725.5L519.5 728.4L519.5 730.2L516.5 733.0L512.6 736.1L507.7 736.7L505.9 738.3L506.3 741.6L507.9 746.2L507.9 749.9L506.4 754.1L503.0 758.7L497.7 761.8L492.6 763.5L488.7 763.5L484.8 763.8L483.3 764.3L480.4 761.6L467.3 752.4L462.4 747.5L457.8 745.2L446.5 737.4L445.4 734.9L444.1 726.8L442.5 724.6L438.8 721.7L429.0 717.8L425.2 715.9L421.3 712.3L415.6 709.8L409.2 704.7L405.5 700.6L401.3 697.9L388.2 694.1L381.7 690.3L369.5 685.0L364.0 681.5L350.9 677.3L347.0 675.4L334.1 665.7L325.1 662.4L317.8 657.0L295.8 645.3L292.3 641.6L289.0 635.9L284.1 632.4L278.6 624.5L270.4 619.9L262.6 613.8L259.8 608.1L254.6 601.0L253.0 597.2L248.4 593.5L248.1 586.0L244.9 582.5L247.2 580.8L249.7 580.0L252.7 568.4L251.0 562.6L242.9 552.0L239.9 546.9L237.7 540.3L234.6 536.5L229.7 528.3L226.6 521.1L220.2 515.8L218.4 513.9L217.4 511.3L213.8 509.4L213.7 503.9L211.2 493.3L207.6 488.0L194.7 478.1L194.4 474.2L193.4 467.3L190.5 459.8L176.2 436.4L172.5 429.5L168.9 418.1L165.7 411.7L162.1 400.3L156.8 391.6L153.4 384.1L149.8 374.7L149.5 369.7L143.0 361.2L139.5 353.3L133.5 346.7L127.4 341.6L124.8 338.1L116.5 321.2L115.3 316.2L109.6 306.9L103.8 300.2L100.2 294.8L95.6 290.0L67.5 275.1L57.6 268.9L54.3 265.9L52.8 261.3L53.4 258.6L56.3 256.0L60.3 257.9L62.8 257.2L64.6 253.9L64.8 248.8L62.3 242.3L53.3 229.9L54.0 227.2L55.7 224.2L52.3 218.2L48.4 213.4L46.5 209.6L48.7 195.6L50.7 192.0L64.4 177.7L68.1 171.6L73.9 167.8L79.9 162.0L87.0 157.7L88.1 158.5L89.1 159.2L89.1 160.6L89.4 161.9L90.1 163.1L90.3 165.4L91.1 166.8L91.3 168.5L91.3 170.8L90.9 171.9L91.3 173.9L92.9 177.5L92.3 178.7L90.7 179.4L89.3 180.4L87.8 182.7L85.7 182.6L82.5 181.6L80.3 182.9L79.6 185.4L80.2 187.3L80.5 189.2L81.8 190.8L85.8 191.0L82.2 196.1L80.5 198.4L80.9 199.9L83.1 201.2L84.7 201.3L88.3 199.4L90.7 196.7L92.2 195.1L94.5 194.5L97.5 195.8L101.5 198.3L106.3 200.6L108.1 201.8L111.6 201.5L114.5 201.0L116.9 202.8L119.4 204.4L119.9 209.7L121.8 213.6L124.0 216.5L126.7 220.1L129.3 221.3L132.5 221.3L136.9 222.7L138.7 221.8L140.2 219.4L141.0 218.0L143.3 217.3L143.4 215.7L143.0 213.7L143.7 211.5L145.6 209.5L150.3 206.5L152.5 205.3L153.1 203.5L153.9 201.1L153.5 199.7L152.6 198.1L152.8 195.7L154.1 192.5L155.8 188.9L157.4 184.2L158.0 182.0L159.7 180.6L160.3 178.5L161.1 176.1L163.1 173.5L163.1 170.6L164.0 169.3L164.0 166.1L166.2 159.4L166.2 158.0L167.0 157.7L168.6 158.1L169.9 159.7L170.3 161.1L170.9 161.8L172.2 161.6L173.7 160.8L173.5 159.4L172.5 158.2L172.2 157.4L172.6 156.1L174.8 153.5L177.3 150.4L182.4 143.9L185.6 141.2L193.7 138.4L199.7 136.3L205.6 134.2L213.5 131.3L224.8 127.2L232.8 124.2L240.0 118.9L245.7 114.8L250.4 111.3L256.5 106.8L264.5 97.1L270.3 90.4L274.3 85.4L277.2 82.4L279.5 73.7L282.1 63.7L283.2 59.3L283.7 57.8L284.8 58.4L286.1 59.5L287.6 59.5L289.1 59.5L290.0 58.9L288.7 49.0L288.9 46.8L289.6 44.2L289.4 42.8L287.0 40.8L283.0 36.9L281.4 33.3L280.4 30.3L277.6 28.4L274.7 26.7L274.9 25.3L276.6 25.3L280.9 26.7L284.1 26.2L286.4 26.0L288.6 24.6L291.0 21.9L292.6 21.9L294.5 22.3L297.8 25.0L299.8 26.6L302.3 27.9L304.4 28.3L306.6 28.5L307.9 28.4L308.7 30.2L309.7 32.4L312.3 33.8L315.4 35.3L317.8 37.7L319.4 39.3L321.4 41.3L323.3 43.8L325.0 48.3L325.9 51.4L326.9 53.1L326.6 54.8L328.6 57.9L330.2 59.6L332.8 60.7L337.8 62.0L340.6 64.8L342.9 65.9L345.5 68.8L347.8 69.7L350.6 69.5L353.4 70.9L355.5 73.7L357.0 77.1L359.1 79.0L360.3 82.6L359.0 86.7L360.1 89.0L362.4 90.7L366.0 92.6L369.4 92.1L371.1 92.8L372.1 94.5L372.8 96.6L374.3 101.5L375.0 104.7L373.5 107.7L373.1 109.8L373.8 112.7L377.3 114.0L380.4 115.2L382.3 117.3L384.5 118.0L387.5 117.8L391.4 117.3L393.5 116.0L395.0 115.7L396.6 116.2L400.0 117.4L404.2 118.8L407.9 118.0L411.3 117.6L414.6 116.8L417.9 114.5L420.6 114.7L422.6 113.1L425.4 110.7L427.8 108.1L429.8 107.6L433.1 108.8L437.6 110.5L440.2 112.7L442.1 113.3L444.1 114.9L448.0 114.9L452.2 114.1L455.5 111.4L458.9 110.5L461.2 109.8L463.4 110.2L471.7 115.2L474.0 117.8L476.9 118.3L479.4 119.7L483.3 121.3L485.4 122.8L488.2 123.8L490.2 126.0L493.3 127.3L496.2 128.1L497.4 129.9L497.4 131.0L497.1 131.8L494.1 136.4L488.4 145.5L483.3 153.7L475.2 166.5L470.6 173.7L471.7 173.9L478.8 177.1L480.5 177.2L483.1 176.4L484.8 175.1L486.4 175.0L488.0 176.2L490.5 177.8L492.0 182.3L493.3 184.5L496.2 186.3L499.2 189.1L501.4 192.0Z","Ecuador":"M288.6 24.6L286.4 26.0L284.1 26.2L280.9 26.7L276.6 25.3L274.9 25.3L274.7 26.7L277.6 28.4L280.4 30.3L281.4 33.3L283.0 36.9L287.0 40.8L289.4 42.8L289.6 44.2L288.9 46.8L288.7 49.0L290.0 58.9L289.1 59.5L287.6 59.5L286.1 59.5L284.8 58.4L283.7 57.8L283.2 59.3L282.1 63.7L279.5 73.7L277.2 82.4L274.3 85.4L270.3 90.4L264.5 97.1L256.5 106.8L250.4 111.3L245.7 114.8L240.0 118.9L232.8 124.2L224.8 127.2L213.5 131.3L205.6 134.2L199.7 136.3L193.7 138.4L185.6 141.2L182.4 143.9L177.3 150.4L174.8 153.5L172.6 156.1L172.2 157.4L172.5 158.2L173.5 159.4L173.7 160.8L172.2 161.6L170.9 161.8L170.3 161.1L169.9 159.7L168.6 158.1L167.0 157.7L166.2 158.0L166.2 159.4L164.0 166.1L164.0 169.3L163.1 170.6L163.1 173.5L161.1 176.1L160.3 178.5L159.7 180.6L158.0 182.0L157.4 184.2L155.8 188.9L154.1 192.5L152.8 195.7L152.6 198.1L153.5 199.7L153.9 201.1L153.1 203.5L152.5 205.3L150.3 206.5L145.6 209.5L143.7 211.5L143.0 213.7L143.4 215.7L143.3 217.3L141.0 218.0L140.2 219.4L138.7 221.8L136.9 222.7L132.5 221.3L129.3 221.3L126.7 220.1L124.0 216.5L121.8 213.6L119.9 209.7L119.4 204.4L116.9 202.8L114.5 201.0L111.6 201.5L108.1 201.8L106.3 200.6L101.5 198.3L97.5 195.8L94.5 194.5L92.2 195.1L90.7 196.7L88.3 199.4L84.7 201.3L83.1 201.2L80.9 199.9L80.5 198.4L82.2 196.1L85.8 191.0L81.8 190.8L80.5 189.2L80.2 187.3L79.6 185.4L80.3 182.9L82.5 181.6L85.7 182.6L87.8 182.7L89.3 180.4L90.7 179.4L92.3 178.7L92.9 177.5L91.3 173.9L90.9 171.9L91.3 170.8L91.3 168.5L91.1 166.8L90.3 165.4L90.1 163.1L89.4 161.9L89.1 160.6L89.1 159.2L88.1 158.5L87.0 157.7L87.8 157.1L93.6 155.1L96.0 153.0L98.9 151.2L101.5 148.3L103.1 145.6L107.1 132.9L110.9 124.9L110.2 121.1L107.1 115.9L106.4 108.2L106.7 105.9L106.3 104.1L104.2 107.3L104.8 118.5L103.0 123.6L100.5 124.9L98.8 124.0L99.8 115.7L97.9 117.3L94.9 122.8L90.0 127.0L89.8 128.3L88.6 130.1L84.8 128.5L81.9 126.8L72.6 117.5L66.4 115.5L62.8 112.3L61.9 110.9L61.5 109.0L65.2 107.1L69.3 104.5L69.5 98.8L69.5 94.2L66.7 86.5L68.0 76.4L67.2 72.4L63.9 64.0L66.4 59.8L75.0 56.7L77.9 54.7L79.8 48.0L81.8 44.0L85.7 45.6L88.7 45.5L84.7 44.0L81.2 38.0L80.8 35.2L87.1 27.0L90.6 24.9L94.6 20.5L98.2 14.0L99.1 3.6L97.6 -3.8L96.5 -11.6L98.6 -13.5L103.8 -14.6L108.1 -17.1L110.3 -19.5L115.5 -19.1L121.4 -22.7L130.9 -24.5L144.0 -28.6L146.9 -32.3L145.6 -38.7L146.9 -37.9L150.5 -34.8L152.8 -31.8L156.5 -29.9L159.5 -28.3L167.5 -22.1L172.8 -19.0L178.6 -16.1L186.8 -13.2L191.9 -13.7L193.1 -11.4L194.1 -9.0L196.0 -7.7L199.0 -6.5L200.7 -6.1L201.3 -5.5L203.0 3.1L204.2 4.3L208.4 5.7L213.4 6.2L215.4 5.9L219.9 8.3L223.2 9.4L226.8 10.3L229.2 10.5L230.4 10.1L230.8 9.3L232.8 9.4L235.9 10.5L240.2 10.7L242.9 9.7L243.2 7.9L243.5 4.9L244.5 3.8L247.5 2.1L249.1 2.4L257.3 6.2L258.9 7.6L261.1 10.3L264.8 14.1L269.0 16.7L275.3 17.7L281.4 21.8L288.6 24.6ZM94.7 140.9L94.0 142.4L90.1 142.3L89.1 141.8L89.1 140.0L90.0 134.3L91.0 131.9L94.2 129.7L96.8 128.5L100.1 128.7L103.7 130.8L99.5 134.7L97.2 135.2L96.3 135.7L94.7 140.9ZM143.6 -30.5L141.4 -30.2L140.4 -32.2L143.1 -34.5L144.0 -34.9L143.6 -30.5Z","Colombia":"M447.3 -460.8L445.8 -460.3L443.9 -459.2L438.6 -457.2L431.3 -455.3L421.6 -452.9L419.5 -450.3L410.1 -433.8L402.2 -430.5L399.3 -428.0L397.1 -424.9L392.4 -419.1L390.4 -414.8L385.2 -405.2L382.3 -393.2L381.3 -386.5L379.7 -376.8L377.4 -371.8L374.4 -367.2L371.1 -362.7L368.2 -357.8L365.8 -354.0L365.3 -352.6L366.5 -351.6L372.2 -352.6L374.5 -353.7L377.7 -355.2L379.6 -354.4L381.6 -350.2L383.8 -349.7L385.9 -350.2L388.1 -349.2L391.0 -338.6L393.4 -329.6L399.0 -324.0L403.3 -319.7L404.3 -315.8L405.5 -310.4L405.6 -307.7L404.3 -306.1L402.2 -302.8L401.6 -296.4L401.2 -294.4L400.9 -288.5L401.2 -284.9L402.3 -282.1L404.2 -280.5L408.1 -279.6L411.7 -278.6L413.7 -273.8L416.6 -267.6L419.8 -265.0L424.4 -263.2L427.5 -263.8L435.2 -265.0L441.6 -264.7L451.3 -263.0L454.9 -263.1L459.5 -263.4L467.6 -266.8L470.4 -267.3L473.8 -267.0L478.5 -265.2L481.2 -263.9L484.6 -262.5L489.3 -261.5L492.5 -261.7L494.8 -261.7L496.2 -261.1L503.9 -251.4L510.5 -243.1L516.2 -236.1L522.4 -228.6L522.9 -228.1L525.7 -229.1L527.6 -228.6L529.3 -227.1L532.2 -227.7L536.4 -230.5L542.4 -231.1L550.5 -229.4L561.2 -229.4L574.3 -231.1L582.5 -232.9L585.6 -234.8L591.0 -234.6L597.3 -232.9L600.8 -230.4L601.2 -227.9L602.5 -224.1L601.1 -220.3L597.0 -216.3L594.7 -211.2L594.3 -205.2L592.3 -200.7L588.5 -197.7L586.9 -193.5L587.8 -187.9L587.4 -179.7L585.8 -168.9L585.8 -162.5L587.4 -160.4L588.2 -157.4L588.1 -153.4L588.7 -150.0L590.7 -145.5L593.6 -136.5L595.9 -132.6L597.9 -131.1L600.0 -129.4L606.1 -120.2L607.5 -118.2L607.1 -116.5L606.5 -115.3L605.8 -114.5L599.5 -109.0L586.7 -97.0L585.5 -95.5L585.6 -93.0L589.4 -94.6L593.3 -93.3L595.3 -93.0L596.2 -92.0L597.3 -88.8L598.6 -88.3L600.5 -86.9L604.4 -83.5L607.5 -79.9L609.8 -78.2L611.6 -76.6L612.1 -74.3L611.4 -72.0L613.4 -66.6L614.7 -64.9L615.5 -62.9L614.7 -60.9L616.5 -58.4L618.2 -53.7L620.5 -47.8L620.8 -44.7L621.6 -43.2L622.8 -38.9L624.7 -34.8L624.2 -32.1L625.0 -29.3L617.3 -27.5L616.7 -27.8L616.3 -28.8L616.5 -36.5L616.5 -45.2L615.2 -48.8L611.7 -54.5L607.2 -62.1L605.9 -64.3L603.9 -65.6L601.6 -65.7L600.0 -65.2L597.7 -63.8L595.6 -62.3L591.5 -57.7L587.4 -52.3L584.9 -51.1L582.6 -50.6L580.5 -50.8L578.7 -52.3L576.9 -55.2L574.8 -59.0L572.3 -60.3L571.2 -59.1L570.4 -56.8L569.8 -54.6L571.5 -51.7L573.0 -49.4L570.4 -49.5L562.3 -49.5L552.8 -49.5L543.5 -49.5L535.1 -49.5L527.2 -49.5L524.2 -49.7L521.1 -51.0L518.3 -51.6L516.8 -51.6L513.9 -50.3L510.5 -50.1L508.0 -48.9L506.0 -49.0L506.0 -42.3L506.0 -32.8L505.9 -22.7L508.0 -23.5L509.9 -23.4L511.3 -22.7L515.2 -23.3L517.2 -23.0L519.3 -22.7L521.1 -22.6L522.3 -21.8L523.9 -22.0L525.6 -22.9L527.5 -22.3L529.6 -20.9L531.1 -18.8L532.2 -16.1L533.5 -14.7L533.4 -12.3L533.4 -10.3L532.9 -8.6L533.5 -7.6L533.8 -6.4L533.8 -5.8L533.1 -5.5L531.5 -5.3L529.8 -5.1L528.6 -5.2L527.8 -6.1L526.9 -6.3L525.6 -6.1L524.3 -6.8L523.1 -8.1L521.1 -9.3L519.0 -8.8L517.4 -8.1L515.8 -7.3L514.5 -6.5L513.1 -6.7L511.2 -6.1L509.8 -5.1L507.7 -4.4L505.6 -4.0L503.0 -3.6L500.5 -3.5L497.8 -3.2L497.7 2.2L497.4 12.6L497.2 19.5L497.2 25.9L498.2 28.2L503.1 33.1L506.9 35.7L510.0 38.6L513.4 39.8L514.7 41.0L515.5 42.7L515.9 44.6L516.4 46.2L515.9 47.9L515.2 49.5L515.5 51.2L516.7 52.6L517.0 54.3L517.8 55.9L518.3 57.5L519.3 58.6L520.4 59.5L522.0 60.8L522.3 62.0L522.0 63.5L522.0 64.5L523.6 67.0L524.0 68.8L523.3 70.8L522.6 77.9L520.8 86.1L519.7 92.3L518.0 102.3L515.8 114.1L513.2 128.5L510.8 142.6L508.2 156.3L506.0 168.7L503.6 182.4L502.1 190.6L501.4 192.0L499.2 189.1L496.2 186.3L493.3 184.5L492.0 182.3L490.5 177.8L488.0 176.2L486.4 175.0L484.8 175.1L483.1 176.4L480.5 177.2L478.8 177.1L471.7 173.9L470.6 173.7L475.2 166.5L483.3 153.7L488.4 145.5L494.1 136.4L497.1 131.8L497.4 131.0L497.4 129.9L496.2 128.1L493.3 127.3L490.2 126.0L488.2 123.8L485.4 122.8L483.3 121.3L479.4 119.7L476.9 118.3L474.0 117.8L471.7 115.2L463.4 110.2L461.2 109.8L458.9 110.5L455.5 111.4L452.2 114.1L448.0 114.9L444.1 114.9L442.1 113.3L440.2 112.7L437.6 110.5L433.1 108.8L429.8 107.6L427.8 108.1L425.4 110.7L422.6 113.1L420.6 114.7L417.9 114.5L414.6 116.8L411.3 117.6L407.9 118.0L404.2 118.8L400.0 117.4L396.6 116.2L395.0 115.7L393.5 116.0L391.4 117.3L387.5 117.8L384.5 118.0L382.3 117.3L380.4 115.2L377.3 114.0L373.8 112.7L373.1 109.8L373.5 107.7L375.0 104.7L374.3 101.5L372.8 96.6L372.1 94.5L371.1 92.8L369.4 92.1L366.0 92.6L362.4 90.7L360.1 89.0L359.0 86.7L360.3 82.6L359.1 79.0L357.0 77.1L355.5 73.7L353.4 70.9L350.6 69.5L347.8 69.7L345.5 68.8L342.9 65.9L340.6 64.8L337.8 62.0L332.8 60.7L330.2 59.6L328.6 57.9L326.6 54.8L326.9 53.1L325.9 51.4L325.0 48.3L323.3 43.8L321.4 41.3L319.4 39.3L317.8 37.7L315.4 35.3L312.3 33.8L309.7 32.4L308.7 30.2L307.9 28.4L306.6 28.5L304.4 28.3L302.3 27.9L299.8 26.6L297.8 25.0L294.5 22.3L292.6 21.9L291.0 21.9L288.6 24.6L281.4 21.8L275.3 17.7L269.0 16.7L264.8 14.1L261.1 10.3L258.9 7.6L257.3 6.2L249.1 2.4L247.5 2.1L244.5 3.8L243.5 4.9L243.2 7.9L242.9 9.7L240.2 10.7L235.9 10.5L232.8 9.4L230.8 9.3L230.4 10.1L229.2 10.5L226.8 10.3L223.2 9.4L219.9 8.3L215.4 5.9L213.4 6.2L208.4 5.7L204.2 4.3L203.0 3.1L201.3 -5.5L200.7 -6.1L199.0 -6.5L196.0 -7.7L194.1 -9.0L193.1 -11.4L191.9 -13.7L186.8 -13.2L178.6 -16.1L172.8 -19.0L167.5 -22.1L159.5 -28.3L156.5 -29.9L152.8 -31.8L150.5 -34.8L146.9 -37.9L145.6 -38.7L144.4 -41.6L139.0 -45.6L141.7 -50.8L148.3 -54.7L157.0 -51.6L158.0 -57.8L154.8 -63.1L155.4 -73.2L156.4 -75.3L158.7 -78.0L161.6 -79.9L163.3 -80.4L166.3 -79.5L168.2 -81.6L175.2 -80.6L177.4 -81.5L178.8 -82.9L180.6 -83.9L182.7 -86.3L184.0 -89.2L185.0 -90.3L187.5 -89.9L187.6 -91.1L188.9 -92.7L193.2 -96.5L193.1 -98.1L191.9 -101.7L192.2 -103.0L194.7 -103.5L197.7 -104.5L199.1 -107.9L201.2 -110.8L203.3 -115.3L205.8 -115.6L207.1 -120.6L210.2 -125.1L216.9 -138.4L215.0 -138.2L213.4 -136.3L211.5 -136.5L209.5 -137.6L210.1 -143.6L208.9 -144.3L205.6 -139.7L202.9 -144.4L202.6 -147.2L203.8 -150.1L203.6 -152.0L199.1 -150.6L199.4 -152.3L202.2 -154.1L203.5 -156.0L205.9 -158.1L206.9 -161.2L207.5 -166.0L208.5 -171.3L207.8 -173.8L206.5 -176.0L205.3 -185.6L205.6 -191.2L205.0 -195.6L203.9 -199.4L198.6 -204.3L207.1 -209.9L210.1 -214.1L206.2 -222.9L201.2 -230.3L201.0 -234.6L202.5 -234.1L204.0 -234.2L205.6 -243.5L205.2 -246.4L202.5 -251.1L199.0 -251.2L196.0 -257.0L194.1 -258.3L192.8 -262.0L187.9 -269.2L184.0 -272.9L186.9 -281.6L189.4 -283.3L190.2 -285.4L189.2 -290.7L189.5 -291.9L190.1 -292.5L190.6 -292.4L191.8 -291.6L193.7 -289.3L195.3 -286.5L196.6 -285.7L198.4 -286.6L205.9 -292.2L205.5 -294.0L206.2 -297.6L208.6 -300.4L211.4 -301.4L212.1 -303.1L211.5 -305.5L208.6 -311.8L206.2 -315.1L204.6 -318.4L203.8 -321.5L200.9 -324.4L202.0 -327.1L204.3 -330.3L205.0 -330.9L206.2 -330.0L209.5 -324.2L214.8 -320.4L220.3 -314.3L222.6 -310.2L224.3 -309.4L225.9 -307.8L225.2 -306.7L223.5 -305.5L223.0 -303.1L224.2 -301.7L225.4 -300.9L228.5 -301.4L230.2 -304.2L229.1 -316.8L227.2 -323.0L225.1 -324.9L223.2 -327.4L224.5 -329.3L227.9 -330.2L232.4 -332.3L249.0 -344.3L254.6 -355.5L258.9 -359.6L263.8 -362.2L269.7 -361.6L274.5 -363.0L275.9 -366.6L274.6 -371.4L272.7 -374.3L274.5 -378.6L276.3 -385.0L276.2 -390.4L278.5 -393.6L277.6 -394.9L274.3 -392.3L271.7 -391.1L273.2 -393.2L277.9 -398.6L280.2 -406.7L282.1 -410.1L288.7 -414.8L290.2 -417.0L295.0 -420.6L303.1 -428.2L306.3 -430.3L321.8 -425.4L326.7 -425.7L325.9 -424.8L323.6 -424.5L320.3 -423.2L319.4 -420.3L321.5 -417.2L324.0 -416.3L326.0 -418.3L328.0 -423.9L331.2 -430.1L332.1 -436.6L334.2 -438.9L337.7 -439.6L343.6 -438.4L348.2 -437.0L352.9 -436.8L367.5 -437.8L391.1 -454.7L402.2 -458.4L409.0 -461.9L413.4 -468.9L414.6 -474.1L417.7 -476.0L421.2 -476.0L422.8 -477.3L423.2 -478.9L431.4 -483.4L436.2 -484.0L440.2 -483.9L449.6 -480.0L453.7 -473.1L454.5 -468.3L448.7 -463.1L447.3 -460.8ZM175.4 -82.8L174.4 -81.9L172.4 -83.5L171.6 -85.6L172.8 -87.0L174.5 -86.6L175.2 -85.3L175.4 -82.8Z","Chile":"M483.3 764.3L484.8 763.8L488.7 763.5L492.6 763.5L497.7 761.8L503.0 758.7L506.4 754.1L507.9 749.9L507.9 746.2L506.3 741.6L505.9 738.3L507.7 736.7L512.6 736.1L516.5 733.0L519.5 730.2L520.3 734.9L525.7 741.0L527.5 748.0L528.8 748.9L536.3 752.3L536.4 753.2L535.2 754.4L534.2 756.1L535.0 758.5L536.3 761.8L536.8 764.7L537.5 767.8L538.4 772.6L539.0 776.9L540.9 783.2L541.3 787.2L541.3 789.6L542.7 791.9L545.6 794.6L549.6 797.4L552.8 800.7L555.1 802.9L558.1 804.7L560.3 806.3L561.2 807.5L561.5 808.4L560.6 809.3L557.0 813.6L552.1 820.1L552.1 820.9L556.8 825.6L557.6 827.5L557.6 830.1L556.0 833.2L550.9 834.2L549.8 835.1L549.6 836.1L550.8 837.5L550.7 840.5L552.5 844.0L551.5 845.1L549.6 846.7L549.6 848.3L550.2 850.0L552.2 851.4L560.0 856.3L560.6 856.9L560.4 857.4L557.4 860.6L557.1 862.6L557.3 865.9L557.7 868.0L558.7 868.9L562.6 869.8L567.5 877.2L572.1 884.1L572.1 890.1L572.5 897.0L575.6 902.5L576.0 906.9L576.9 911.8L580.5 914.8L581.9 920.8L582.2 924.0L582.0 926.0L584.8 932.5L585.1 938.1L584.3 942.1L584.5 944.3L584.8 945.9L587.2 947.3L588.2 948.2L591.7 948.6L596.7 948.7L605.5 947.2L612.1 945.8L619.6 953.1L616.5 963.0L611.3 978.8L607.2 991.0L606.5 992.6L605.8 995.0L597.2 998.5L584.5 1003.5L578.2 1006.1L569.9 1009.5L568.1 1012.3L565.6 1013.8L563.0 1015.7L562.2 1017.8L559.7 1019.2L557.6 1024.0L557.6 1027.6L558.9 1030.1L561.3 1031.1L562.2 1034.2L562.9 1036.3L564.6 1037.9L564.2 1039.2L562.7 1040.2L560.2 1040.8L558.4 1043.8L556.3 1051.2L556.0 1053.9L558.3 1060.6L559.6 1064.2L562.9 1077.4L563.5 1081.0L558.9 1086.0L557.0 1089.0L556.3 1091.7L556.3 1093.8L556.7 1095.8L560.6 1101.9L565.1 1107.5L567.2 1110.3L567.2 1114.2L566.2 1116.4L563.8 1117.2L558.6 1118.7L556.3 1121.0L554.0 1121.3L551.7 1119.6L549.2 1120.0L546.2 1121.5L545.0 1125.3L542.3 1131.7L540.0 1133.5L538.3 1138.4L535.2 1145.5L533.8 1149.7L533.1 1152.8L529.9 1154.8L526.3 1158.7L523.6 1162.6L522.6 1163.6L520.4 1164.0L519.0 1167.4L513.8 1172.7L512.5 1178.6L510.6 1181.9L510.3 1187.6L507.5 1198.3L506.9 1200.6L504.0 1202.4L500.1 1206.5L499.0 1209.5L500.7 1218.6L502.8 1227.6L503.0 1231.9L502.1 1237.6L501.5 1240.2L503.0 1241.2L505.4 1241.9L506.3 1244.0L504.4 1245.6L503.7 1248.4L501.7 1251.5L495.9 1252.7L493.9 1251.6L493.2 1252.6L493.5 1254.8L492.2 1257.4L489.2 1264.5L487.3 1270.8L486.1 1273.5L486.6 1275.9L487.6 1277.2L487.6 1278.5L486.0 1280.0L484.4 1282.4L482.8 1282.8L481.1 1282.1L479.2 1283.5L478.8 1286.6L477.8 1290.4L477.4 1294.9L476.6 1300.6L478.9 1304.5L482.0 1311.6L484.3 1313.4L486.7 1313.3L488.7 1314.7L489.9 1316.4L488.3 1319.3L485.7 1319.8L485.4 1321.5L486.3 1325.2L487.1 1328.9L489.7 1330.6L490.7 1335.6L493.2 1337.2L492.9 1343.5L495.4 1350.9L497.9 1353.0L499.1 1353.9L498.4 1357.2L496.2 1359.7L495.8 1363.8L496.7 1366.8L499.2 1369.6L501.3 1369.9L504.1 1368.8L507.2 1370.1L507.6 1372.6L508.0 1374.8L506.4 1377.7L504.7 1383.0L504.3 1388.3L504.7 1396.3L505.6 1402.6L505.7 1406.5L505.9 1408.3L504.9 1409.5L502.1 1410.1L499.8 1410.4L497.9 1411.4L497.5 1413.4L495.9 1416.7L494.3 1419.1L491.6 1422.7L489.9 1426.5L488.4 1428.9L488.6 1430.6L487.6 1433.9L486.4 1436.6L484.3 1445.7L481.4 1447.6L478.9 1448.5L477.8 1449.8L478.7 1452.2L481.2 1452.9L482.1 1455.0L481.7 1458.1L483.4 1461.0L483.3 1464.5L484.8 1471.0L483.4 1475.4L483.8 1479.1L483.8 1482.8L481.7 1485.7L477.5 1486.2L475.2 1488.9L471.2 1491.8L470.7 1494.1L470.0 1496.2L468.4 1497.0L465.8 1497.0L463.8 1497.4L460.9 1500.0L457.8 1501.5L457.1 1503.8L457.3 1506.4L455.8 1508.1L453.6 1511.2L452.3 1514.5L453.6 1517.6L455.0 1523.1L455.3 1525.5L453.5 1530.1L452.0 1533.1L453.5 1536.8L454.6 1538.9L453.5 1543.6L452.6 1546.4L453.3 1551.8L456.2 1557.8L458.9 1563.1L459.2 1569.2L459.9 1574.2L461.2 1579.5L464.0 1581.6L466.1 1583.4L465.7 1585.9L464.1 1589.0L461.9 1591.4L456.5 1592.1L452.2 1594.2L448.6 1595.7L445.8 1597.5L443.9 1599.3L442.9 1601.4L443.7 1610.3L443.2 1613.6L441.4 1618.3L439.6 1622.1L438.9 1623.2L438.8 1624.9L438.5 1626.4L436.5 1626.8L433.9 1626.1L432.3 1626.5L431.1 1627.8L432.1 1630.6L433.1 1635.8L434.4 1638.0L434.2 1639.7L433.6 1643.4L431.9 1646.3L429.4 1646.3L428.0 1647.6L427.2 1649.7L428.0 1652.5L431.1 1654.7L432.1 1656.1L431.7 1658.0L429.3 1658.8L427.8 1660.4L426.5 1663.8L424.7 1667.7L422.8 1670.6L422.3 1674.5L425.1 1678.7L424.8 1682.9L424.5 1694.9L424.4 1699.0L425.1 1705.8L424.1 1707.7L423.5 1709.4L426.2 1714.4L429.3 1722.4L430.0 1725.5L429.5 1727.7L425.5 1729.6L422.2 1730.4L420.3 1729.1L418.9 1729.6L417.5 1732.0L415.7 1733.9L415.0 1735.8L416.9 1738.2L417.9 1742.8L415.7 1744.8L414.3 1747.0L414.9 1749.9L415.4 1755.1L414.1 1763.8L415.9 1766.9L417.9 1768.4L424.1 1770.1L428.7 1771.0L430.0 1773.8L429.4 1776.2L427.2 1777.3L423.8 1778.3L423.8 1782.0L426.7 1785.6L430.0 1788.1L430.7 1790.4L430.6 1792.8L428.3 1794.8L431.4 1799.0L432.9 1801.9L431.4 1804.1L429.3 1807.4L427.5 1809.1L427.5 1810.9L426.8 1814.5L426.7 1818.1L427.2 1820.3L447.0 1822.0L451.4 1822.6L454.0 1824.8L453.6 1827.5L451.1 1830.3L449.6 1835.7L445.7 1836.6L441.8 1835.2L437.6 1835.7L433.9 1836.0L428.7 1836.2L421.8 1836.9L417.5 1836.1L417.2 1838.1L418.3 1841.4L427.5 1842.5L436.2 1844.5L438.8 1848.1L442.2 1852.1L445.8 1854.7L446.0 1858.8L440.3 1863.1L439.6 1866.1L432.3 1867.0L430.1 1868.8L429.1 1874.7L430.0 1879.3L432.9 1880.9L434.7 1884.0L432.6 1887.6L427.7 1890.0L424.9 1892.3L426.7 1894.2L428.8 1897.2L429.5 1898.8L430.7 1903.2L432.1 1909.3L432.0 1912.3L430.7 1914.5L425.8 1918.0L422.3 1919.6L421.8 1923.9L421.5 1927.1L421.8 1929.9L423.9 1932.3L423.8 1934.6L420.9 1935.1L418.3 1936.2L415.9 1940.3L408.7 1944.5L406.2 1946.4L406.4 1949.7L403.5 1954.2L401.2 1958.2L399.3 1962.0L399.6 1965.9L403.6 1967.6L406.9 1971.4L408.2 1976.3L405.8 1981.8L400.0 1983.9L396.7 1986.3L395.7 1988.0L396.6 1993.9L396.3 1996.5L395.4 1999.1L394.0 2001.1L390.8 2003.3L385.3 2005.3L380.7 2006.6L378.7 2008.1L376.3 2011.5L374.1 2015.1L374.5 2019.7L361.6 2020.3L360.7 2023.6L357.8 2026.3L357.0 2031.2L359.9 2035.8L361.1 2039.8L358.8 2044.5L359.7 2049.3L360.0 2053.1L364.6 2057.4L367.5 2062.8L369.1 2067.2L369.9 2070.7L371.1 2072.9L373.0 2075.3L373.8 2078.0L376.7 2078.9L381.7 2076.3L385.3 2074.6L387.8 2073.9L395.1 2074.3L399.6 2072.7L401.6 2072.9L404.3 2073.8L406.4 2075.7L407.9 2080.1L409.0 2085.0L407.7 2090.0L405.6 2091.1L404.9 2092.5L405.6 2095.5L407.9 2097.7L407.8 2100.7L405.4 2107.7L403.6 2110.6L406.7 2113.8L409.2 2116.7L414.6 2118.8L418.9 2121.9L421.9 2124.3L421.2 2127.8L423.2 2128.8L431.3 2128.8L443.4 2129.0L462.2 2129.1L480.7 2129.3L501.5 2129.5L511.5 2132.3L520.4 2134.7L531.8 2134.7L543.0 2137.6L551.4 2139.5L556.4 2140.3L561.6 2141.0L562.3 2143.7L539.7 2139.9L534.7 2137.8L530.3 2137.6L522.1 2140.1L517.5 2146.3L515.2 2148.1L509.5 2149.7L503.7 2150.0L484.4 2156.0L477.5 2156.5L472.7 2158.1L468.1 2160.4L466.4 2165.3L467.1 2168.3L461.9 2179.0L460.7 2184.9L460.7 2188.0L462.1 2192.9L460.2 2201.4L456.6 2203.2L448.1 2205.6L442.2 2203.9L432.3 2202.3L425.1 2199.1L416.0 2196.8L413.0 2195.4L404.9 2188.9L404.1 2186.7L403.5 2184.0L407.8 2180.0L410.1 2179.7L416.7 2179.9L422.3 2179.2L425.9 2181.4L426.8 2185.9L425.4 2188.3L423.9 2189.9L424.4 2191.0L428.4 2189.4L430.4 2179.2L443.9 2174.1L448.4 2171.1L452.7 2166.5L453.5 2165.2L453.7 2163.5L450.9 2162.1L444.5 2160.2L424.1 2169.8L414.9 2172.3L408.8 2175.1L401.6 2180.1L400.3 2181.6L398.7 2184.8L398.0 2188.5L391.0 2186.8L380.0 2181.6L377.9 2179.6L380.0 2176.9L383.3 2174.7L383.6 2167.2L384.5 2164.5L386.8 2162.4L391.0 2160.1L393.0 2159.6L394.7 2160.6L395.0 2162.3L401.9 2162.2L415.3 2155.6L420.8 2155.4L428.1 2156.9L436.3 2156.0L437.9 2155.3L439.5 2153.8L433.4 2151.9L427.5 2151.0L411.0 2150.3L407.4 2151.0L402.5 2154.6L400.9 2153.7L399.9 2151.9L394.3 2150.7L391.5 2150.9L388.9 2152.6L389.4 2155.2L387.9 2158.1L382.7 2160.9L379.1 2165.4L379.3 2168.8L379.1 2170.7L377.9 2171.6L375.1 2172.8L366.5 2172.0L361.6 2168.3L359.7 2165.9L354.2 2163.1L366.2 2159.8L370.4 2157.9L374.3 2153.6L377.1 2150.9L375.1 2149.0L372.7 2149.0L372.8 2152.0L370.2 2154.5L364.7 2153.3L356.5 2157.0L351.5 2156.0L343.4 2157.1L339.4 2155.2L338.5 2152.6L340.0 2150.0L338.5 2145.5L336.2 2144.5L333.9 2144.7L332.9 2142.1L330.5 2137.4L329.3 2136.2L328.2 2134.0L329.5 2133.5L332.2 2134.0L334.7 2135.5L338.4 2135.7L346.6 2138.7L350.1 2138.0L351.9 2137.3L352.7 2134.7L352.7 2132.4L354.1 2132.4L358.7 2135.4L361.7 2135.1L366.9 2135.9L369.6 2135.6L374.5 2134.5L382.3 2131.1L386.2 2127.6L388.2 2127.1L390.5 2127.6L392.3 2128.6L392.3 2131.0L394.0 2133.3L396.4 2135.1L397.1 2137.3L396.7 2139.5L392.3 2142.6L391.4 2143.7L393.0 2144.8L394.7 2144.3L397.3 2142.8L398.7 2140.7L399.0 2139.5L399.2 2138.0L399.0 2136.1L395.4 2130.7L395.0 2129.5L395.0 2127.0L399.0 2124.7L400.2 2123.0L400.5 2119.6L398.3 2117.3L389.5 2111.9L375.0 2106.5L373.2 2107.1L372.1 2108.1L373.5 2108.8L375.4 2109.1L388.4 2113.6L391.8 2116.2L394.0 2116.9L396.7 2118.6L396.0 2121.1L382.9 2123.5L372.5 2128.8L364.6 2132.1L359.3 2130.9L356.7 2127.6L353.9 2123.3L349.9 2120.9L347.6 2121.2L345.7 2120.7L344.2 2119.4L341.1 2120.5L334.1 2117.5L332.2 2116.2L337.2 2112.1L342.9 2113.7L344.2 2102.1L342.4 2099.5L335.1 2096.6L331.6 2096.9L326.7 2096.6L323.4 2095.2L319.7 2094.7L316.5 2093.9L312.3 2092.2L307.4 2091.2L300.7 2083.8L297.8 2080.0L296.2 2075.7L306.6 2075.6L312.6 2074.9L314.1 2073.1L311.9 2069.8L309.0 2067.2L311.2 2064.6L314.2 2062.7L317.4 2063.6L325.4 2067.9L326.7 2070.7L332.3 2079.6L333.8 2080.5L334.4 2081.2L346.2 2086.2L347.8 2086.2L347.0 2082.0L350.3 2076.3L353.7 2074.5L355.2 2074.5L355.4 2073.6L352.2 2071.2L353.8 2068.1L352.8 2068.0L350.1 2070.0L344.3 2079.8L340.8 2081.7L336.1 2077.2L333.5 2074.0L332.1 2072.8L332.6 2067.8L342.0 2068.8L338.8 2067.2L327.7 2064.2L325.0 2062.8L323.0 2062.3L319.4 2058.9L314.8 2056.0L322.7 2050.8L326.6 2047.1L339.3 2049.0L341.7 2047.9L339.5 2045.2L337.1 2046.0L333.2 2044.3L327.0 2039.3L327.3 2036.7L328.3 2032.0L330.8 2031.0L335.9 2030.1L341.9 2031.6L344.3 2032.8L346.6 2032.2L344.3 2028.8L340.4 2027.4L336.2 2025.0L336.7 2022.2L338.0 2019.9L339.1 2017.5L339.8 2013.9L339.4 2011.2L340.6 2010.0L342.4 2009.4L342.6 2008.4L338.8 2008.6L337.5 2012.0L337.1 2015.2L334.4 2017.7L333.4 2020.5L332.6 2023.9L331.2 2027.8L327.9 2026.3L326.0 2024.8L325.3 2023.8L325.7 2021.8L324.9 2009.5L324.7 1999.1L326.3 1991.1L330.9 1988.0L332.9 1987.0L334.8 1987.5L337.7 1987.4L339.7 1986.3L333.2 1984.3L329.2 1985.4L326.3 1987.0L321.0 1985.8L320.0 1981.7L316.9 1978.1L316.4 1973.5L316.7 1967.0L324.0 1967.5L330.0 1968.8L345.9 1968.7L358.8 1975.0L364.6 1974.2L364.3 1972.9L360.0 1971.3L357.3 1967.7L355.7 1966.8L354.8 1964.6L354.7 1962.1L351.4 1953.0L350.1 1953.2L348.8 1956.3L346.2 1961.5L342.4 1964.1L336.7 1965.1L330.9 1965.7L326.0 1964.7L324.9 1962.5L325.0 1960.1L322.8 1958.9L317.2 1957.7L315.6 1957.2L313.8 1954.9L316.5 1951.5L318.7 1949.4L321.3 1949.9L323.9 1950.8L327.2 1953.5L330.3 1953.9L333.9 1951.8L334.7 1950.4L332.3 1949.4L330.3 1949.1L327.0 1948.0L320.7 1943.9L323.9 1939.7L331.3 1934.9L333.6 1933.8L331.6 1929.8L333.9 1925.4L331.6 1921.8L327.5 1917.8L321.8 1917.0L320.7 1918.1L320.4 1919.7L321.3 1920.9L320.8 1921.8L319.5 1921.8L312.3 1920.9L307.6 1918.3L299.8 1915.9L298.8 1914.1L297.9 1911.4L300.7 1906.6L299.2 1906.6L294.2 1910.2L286.6 1912.1L280.8 1912.8L278.3 1914.2L277.3 1915.4L278.9 1916.1L282.1 1916.3L284.5 1920.9L284.0 1922.6L282.8 1923.7L280.1 1924.0L274.6 1920.9L271.7 1917.3L271.7 1914.4L273.7 1910.6L282.5 1905.4L285.0 1903.3L290.2 1900.9L297.1 1895.4L303.0 1892.3L300.1 1889.8L297.1 1886.1L297.4 1880.8L309.5 1878.7L314.8 1879.6L321.5 1879.4L325.3 1878.1L327.9 1877.9L333.6 1876.4L336.1 1874.4L336.7 1872.8L336.7 1871.4L336.1 1869.8L335.1 1865.4L336.1 1864.0L338.5 1862.3L341.7 1861.7L343.1 1861.9L347.0 1863.4L346.2 1865.7L344.7 1868.4L341.6 1879.2L340.0 1881.6L337.5 1883.8L339.3 1888.1L336.7 1891.2L325.7 1894.5L324.3 1894.7L325.1 1895.9L331.5 1895.6L336.4 1894.9L341.3 1892.1L342.9 1887.9L344.9 1879.7L347.5 1878.5L350.6 1878.3L352.2 1880.2L351.6 1884.5L351.6 1888.7L347.6 1901.1L342.6 1906.1L342.0 1907.5L342.3 1909.0L346.2 1908.8L349.2 1906.1L351.4 1902.7L353.5 1897.9L353.2 1894.5L353.9 1892.3L354.8 1885.3L356.4 1881.8L356.3 1876.8L353.5 1875.0L349.8 1873.8L348.8 1870.8L350.8 1864.7L358.0 1865.0L364.9 1860.8L369.4 1859.3L371.9 1859.7L380.9 1863.6L382.6 1863.7L382.3 1862.2L381.0 1861.2L377.4 1859.9L370.9 1855.7L362.2 1855.0L363.7 1849.5L365.5 1844.4L369.8 1843.8L376.8 1842.1L390.4 1834.5L392.8 1828.8L393.4 1822.4L386.9 1820.8L380.0 1816.6L374.4 1814.4L369.4 1811.6L370.4 1807.4L371.1 1800.6L377.3 1799.1L380.2 1789.8L376.0 1782.6L377.0 1777.3L382.5 1772.8L383.3 1769.6L384.9 1766.2L389.7 1765.8L389.8 1763.9L389.4 1760.5L386.2 1756.4L386.1 1750.8L389.1 1744.1L393.8 1744.6L394.7 1744.3L391.4 1740.3L388.7 1735.8L389.1 1734.1L391.7 1732.6L394.7 1731.7L398.0 1734.0L402.8 1741.2L403.5 1739.3L401.6 1732.0L400.0 1722.9L395.0 1724.1L390.5 1723.4L388.8 1722.0L387.1 1719.9L388.7 1717.5L390.2 1715.6L393.5 1713.2L400.6 1712.4L405.6 1709.4L407.2 1703.3L405.6 1703.9L402.9 1709.3L398.3 1711.1L396.0 1710.8L393.3 1709.8L387.8 1705.1L384.8 1704.1L381.9 1703.9L379.4 1705.1L373.1 1713.4L370.4 1714.8L359.1 1715.4L355.1 1714.4L350.6 1713.2L351.1 1711.2L352.5 1709.0L355.0 1707.9L355.1 1706.7L351.6 1706.3L347.6 1704.1L345.7 1701.2L345.0 1696.0L341.4 1687.9L340.7 1682.0L343.1 1677.9L348.6 1661.6L350.3 1653.2L353.2 1645.9L353.2 1641.1L360.7 1636.6L363.6 1634.0L370.1 1619.1L370.9 1611.1L360.7 1586.7L359.1 1582.1L358.7 1576.3L361.1 1566.7L361.4 1563.1L359.3 1557.8L353.5 1549.2L353.4 1544.8L355.8 1540.3L353.5 1534.7L354.7 1531.2L356.0 1528.5L365.0 1530.0L369.2 1529.3L371.4 1527.6L373.1 1523.1L374.0 1515.8L374.5 1512.7L375.3 1508.2L379.7 1506.4L381.3 1502.1L385.1 1496.2L388.8 1479.4L392.7 1475.3L396.6 1470.5L395.0 1463.5L397.6 1460.3L399.7 1457.9L401.8 1453.6L404.5 1449.5L411.1 1443.6L412.7 1436.5L417.7 1424.1L418.7 1416.3L420.3 1410.9L419.9 1405.9L422.9 1399.9L425.8 1394.7L426.8 1391.9L433.4 1385.1L434.6 1379.7L432.1 1376.1L432.1 1370.4L430.3 1362.5L434.6 1359.6L436.3 1357.4L441.9 1344.8L441.5 1339.9L443.1 1333.7L439.5 1326.5L438.9 1310.2L436.9 1297.6L433.6 1284.4L433.9 1277.0L431.7 1267.8L431.7 1262.4L433.3 1250.4L443.9 1242.8L446.1 1234.3L447.4 1222.8L447.0 1214.4L445.8 1210.6L440.6 1204.5L439.2 1193.4L440.2 1190.5L444.7 1187.4L447.7 1183.1L449.3 1176.5L452.6 1171.2L453.9 1158.4L456.5 1148.3L457.9 1144.8L462.2 1140.3L463.0 1139.1L463.7 1135.8L463.4 1127.8L464.1 1122.9L467.4 1113.3L467.9 1108.9L471.6 1098.9L472.5 1091.8L474.2 1088.1L473.5 1083.9L474.6 1074.4L472.0 1069.1L471.5 1066.0L474.6 1056.3L476.9 1053.9L480.4 1049.4L482.0 1044.4L482.3 1041.2L477.6 1025.2L477.1 1019.7L478.1 1007.1L479.7 998.9L479.2 992.3L479.7 989.0L480.5 984.7L483.5 979.7L484.3 976.0L483.3 974.5L479.5 972.6L476.5 968.0L476.2 963.4L477.2 960.1L477.5 955.4L482.0 954.5L484.4 951.9L486.7 946.9L489.6 935.0L490.9 920.3L492.6 911.5L493.8 907.1L494.8 897.9L496.5 891.9L496.8 886.5L496.5 882.2L492.2 860.8L492.2 852.9L494.1 840.7L494.1 823.5L493.8 819.5L492.0 815.7L491.6 810.6L489.0 801.7L486.6 783.9L486.6 774.4L485.6 766.4L483.3 764.3Z","Brazil":"M625.0 -29.3L635.2 -19.9L642.8 -13.0L646.1 -10.9L648.0 -10.2L652.3 -10.7L657.6 -11.6L660.1 -12.6L663.0 -14.7L667.6 -17.8L671.3 -19.4L672.8 -19.6L674.2 -19.1L677.4 -17.3L679.1 -13.9L677.5 -10.0L677.8 -7.6L681.1 -7.8L683.7 -11.8L685.6 -15.0L689.5 -17.5L693.2 -21.1L695.8 -24.7L699.0 -26.7L703.6 -29.2L707.3 -30.7L710.8 -30.6L713.4 -32.2L716.7 -35.3L719.0 -37.8L720.6 -38.6L723.7 -38.4L727.8 -38.7L731.8 -41.8L735.4 -45.4L737.3 -51.6L738.6 -57.0L739.7 -58.0L741.0 -59.0L742.5 -59.5L746.2 -59.9L752.7 -62.8L757.2 -65.7L761.5 -66.3L762.8 -67.1L764.2 -69.9L765.1 -74.7L764.5 -77.5L756.6 -78.5L751.5 -78.5L743.0 -79.2L739.0 -80.4L738.1 -81.2L738.0 -82.1L738.9 -84.2L739.6 -88.1L738.4 -93.3L734.3 -101.6L731.2 -109.7L730.8 -115.3L730.9 -121.3L731.1 -125.2L728.9 -128.2L717.3 -137.9L713.2 -142.5L711.9 -145.6L707.3 -151.4L708.5 -153.2L711.1 -153.1L713.4 -151.5L715.4 -148.4L717.0 -147.6L719.0 -147.6L729.8 -147.7L732.2 -147.1L733.8 -146.0L735.1 -144.6L737.1 -140.9L739.2 -139.1L743.5 -139.1L750.1 -139.2L753.8 -139.6L756.1 -138.5L758.9 -137.7L764.8 -139.6L766.5 -139.6L768.2 -138.8L774.6 -132.0L778.2 -129.2L781.2 -125.5L785.7 -125.5L789.4 -128.7L790.4 -139.5L791.6 -142.7L793.4 -143.6L795.6 -143.7L798.2 -145.3L801.1 -147.6L803.5 -148.3L813.9 -145.9L816.8 -147.1L827.1 -149.9L837.8 -153.6L840.8 -158.2L845.3 -159.5L848.7 -162.9L851.6 -162.5L855.9 -162.4L858.5 -163.0L859.8 -163.6L861.4 -165.3L863.7 -169.8L866.7 -171.5L870.3 -173.4L872.8 -175.5L874.9 -178.2L875.8 -180.5L875.8 -182.3L874.7 -185.8L873.1 -189.1L871.5 -190.3L870.3 -190.7L873.9 -191.5L877.0 -190.3L881.6 -190.1L883.6 -191.0L886.6 -190.6L890.4 -192.9L892.8 -192.2L894.4 -192.2L895.8 -190.4L896.8 -188.4L900.4 -185.9L900.0 -182.1L899.4 -178.8L899.0 -174.9L898.7 -172.0L897.3 -169.0L895.0 -166.2L894.4 -165.1L894.1 -163.6L895.5 -162.7L898.1 -162.4L901.4 -162.3L903.7 -161.4L906.6 -161.3L910.2 -158.9L911.8 -157.4L912.0 -156.3L910.9 -153.6L910.5 -151.1L911.4 -149.6L912.4 -148.4L915.1 -142.9L916.6 -141.0L917.7 -140.3L918.0 -139.3L917.0 -137.2L915.8 -134.6L913.2 -131.9L912.8 -129.8L910.8 -128.4L905.8 -125.2L906.6 -120.1L906.9 -117.5L906.8 -115.6L905.0 -112.9L902.2 -104.9L901.2 -101.0L900.1 -91.9L900.3 -88.8L901.6 -84.7L904.5 -75.6L906.0 -74.1L909.8 -72.0L910.2 -65.8L909.9 -59.3L909.8 -56.8L910.4 -55.7L912.1 -55.2L913.2 -54.4L913.4 -52.5L913.4 -50.6L916.1 -49.4L918.6 -48.7L920.9 -45.9L924.9 -41.6L926.5 -40.9L927.4 -39.1L930.8 -35.5L936.0 -34.2L941.3 -32.6L943.3 -30.4L945.5 -28.5L947.1 -28.5L948.5 -28.7L950.8 -30.3L952.6 -31.7L955.7 -31.6L959.5 -31.8L960.2 -33.0L960.5 -34.4L959.8 -38.0L961.1 -39.2L964.2 -39.8L964.8 -41.8L965.5 -42.8L966.4 -44.1L967.4 -44.3L968.7 -43.6L970.8 -43.1L973.0 -42.5L974.3 -41.2L976.3 -41.1L978.6 -41.4L979.5 -42.2L980.2 -43.6L980.6 -46.6L982.1 -46.6L985.1 -47.3L988.1 -48.7L992.3 -48.9L996.2 -48.8L998.2 -49.7L999.9 -51.6L1003.5 -57.1L1005.3 -58.4L1007.3 -59.4L1009.0 -59.2L1012.5 -60.1L1015.2 -61.4L1016.4 -61.1L1018.5 -58.2L1019.7 -57.6L1021.2 -57.5L1026.6 -56.0L1029.3 -56.5L1032.3 -57.3L1035.4 -57.7L1037.5 -57.1L1039.0 -57.9L1040.7 -58.5L1041.8 -58.1L1044.6 -57.8L1050.9 -56.2L1059.3 -54.4L1061.4 -55.0L1062.9 -56.3L1063.2 -59.9L1063.4 -62.4L1061.6 -64.7L1059.3 -67.3L1057.1 -70.4L1054.5 -71.3L1054.8 -73.0L1056.5 -74.7L1058.3 -75.6L1059.1 -76.8L1060.3 -81.0L1061.0 -81.8L1061.7 -82.0L1062.6 -81.8L1064.3 -80.7L1070.8 -77.3L1073.7 -77.8L1084.6 -78.7L1086.2 -80.6L1088.5 -81.1L1092.5 -83.0L1094.1 -83.2L1095.4 -82.7L1097.1 -83.1L1099.7 -84.9L1100.9 -85.1L1101.3 -83.1L1102.9 -81.0L1104.9 -79.1L1105.9 -78.7L1109.4 -79.3L1111.1 -78.7L1111.8 -77.0L1112.1 -75.4L1113.6 -74.1L1115.3 -74.1L1116.3 -73.5L1118.0 -72.8L1119.5 -70.8L1122.6 -69.2L1128.2 -67.1L1130.8 -67.1L1133.3 -66.4L1134.9 -65.7L1136.5 -66.9L1142.2 -70.3L1144.9 -72.1L1146.8 -73.5L1148.3 -74.9L1149.3 -75.2L1150.0 -74.4L1150.6 -73.3L1152.7 -72.7L1157.5 -71.5L1159.6 -71.1L1162.7 -72.2L1165.4 -74.0L1166.7 -74.6L1168.6 -72.8L1169.9 -70.3L1170.9 -69.2L1172.7 -69.4L1176.8 -69.0L1179.7 -68.2L1181.4 -68.2L1183.8 -69.4L1185.1 -71.6L1188.7 -73.7L1192.0 -75.6L1193.9 -78.1L1196.6 -82.3L1197.7 -84.1L1197.8 -87.1L1201.8 -95.8L1203.3 -97.5L1204.1 -100.3L1205.7 -103.5L1205.7 -106.2L1206.9 -108.7L1209.2 -111.0L1210.8 -112.4L1213.5 -116.2L1215.4 -119.7L1220.0 -127.6L1220.4 -129.9L1222.3 -131.2L1222.9 -132.9L1224.9 -135.0L1226.9 -136.7L1227.7 -139.1L1229.3 -141.7L1232.6 -143.6L1233.9 -144.4L1237.7 -151.4L1238.1 -154.6L1241.6 -154.7L1246.9 -151.0L1251.2 -145.8L1257.0 -128.7L1257.8 -112.8L1260.3 -104.5L1266.9 -87.3L1267.3 -84.1L1268.4 -80.2L1270.5 -76.1L1272.8 -69.4L1273.0 -68.1L1271.4 -66.3L1273.7 -66.1L1275.7 -65.1L1277.0 -60.8L1278.6 -57.9L1281.6 -54.0L1287.8 -52.6L1292.5 -52.1L1297.9 -49.9L1301.8 -47.1L1304.8 -37.3L1303.8 -31.2L1304.1 -26.9L1302.5 -25.2L1298.2 -22.4L1297.2 -20.9L1288.2 -13.6L1286.2 -10.2L1281.5 -5.6L1276.7 3.2L1269.8 11.2L1267.3 13.3L1263.6 13.8L1261.3 15.0L1256.0 21.5L1248.6 23.7L1248.1 27.5L1243.9 36.2L1240.1 41.0L1237.8 42.6L1231.9 51.2L1231.2 55.0L1231.2 61.6L1227.2 65.6L1223.1 68.2L1222.6 73.8L1220.8 75.7L1219.3 77.0L1210.9 75.5L1197.8 81.7L1193.5 83.2L1207.6 83.5L1212.2 86.8L1222.1 84.6L1234.1 76.9L1238.7 75.2L1248.1 69.9L1251.9 66.4L1258.9 62.1L1260.3 60.3L1264.2 58.3L1266.3 60.8L1266.5 62.4L1263.3 65.5L1264.2 67.5L1266.2 70.0L1266.9 73.5L1267.2 76.1L1268.5 80.7L1272.8 86.9L1273.0 89.0L1272.4 91.7L1274.4 94.0L1276.6 95.3L1283.9 102.0L1289.5 98.3L1293.1 97.2L1295.3 95.6L1300.0 94.6L1303.9 96.2L1311.3 98.4L1316.6 96.0L1327.4 90.5L1324.1 100.2L1321.6 109.2L1319.8 112.8L1317.9 122.5L1316.0 125.1L1314.6 128.0L1317.0 127.0L1319.0 125.6L1321.6 121.8L1323.7 115.4L1331.6 98.0L1333.9 96.4L1340.4 94.5L1351.6 80.6L1356.1 80.7L1358.8 83.8L1361.5 85.7L1362.1 81.9L1366.0 80.4L1362.0 78.5L1361.2 76.8L1360.9 74.0L1363.7 70.1L1362.0 66.7L1367.7 62.4L1367.3 59.3L1369.3 56.6L1371.9 53.8L1374.9 52.5L1375.3 50.2L1377.2 49.2L1378.7 48.9L1381.5 51.5L1384.7 48.4L1387.7 47.2L1389.0 47.7L1390.8 49.1L1392.5 49.7L1393.9 49.4L1397.7 47.4L1401.1 50.7L1403.3 51.4L1402.7 49.5L1401.6 47.9L1402.4 46.5L1404.0 45.7L1409.2 46.4L1411.9 47.9L1414.9 50.5L1419.0 50.7L1422.3 50.5L1424.3 51.9L1427.6 51.9L1429.2 54.2L1434.2 57.4L1435.3 59.6L1439.3 60.7L1443.2 62.1L1447.2 62.4L1451.2 62.1L1451.4 64.9L1454.4 65.7L1458.1 65.0L1461.2 68.4L1468.8 71.0L1474.3 75.0L1477.7 74.3L1481.6 75.3L1485.9 83.8L1486.8 90.0L1488.7 89.1L1490.4 86.4L1492.7 81.4L1496.9 79.7L1498.9 81.6L1503.2 84.7L1506.8 88.1L1508.4 90.2L1511.1 90.6L1508.8 93.3L1511.1 93.0L1513.9 91.1L1516.3 95.0L1518.2 99.2L1518.5 103.5L1516.8 106.0L1515.3 107.6L1513.6 110.7L1511.7 111.1L1509.7 112.1L1512.0 114.4L1513.4 116.5L1516.9 110.7L1519.2 109.1L1522.5 108.2L1524.4 112.3L1524.7 116.2L1519.2 117.8L1519.2 120.9L1517.5 122.6L1516.5 124.7L1515.6 128.8L1514.5 132.3L1511.1 147.7L1511.1 150.2L1515.0 147.5L1522.5 139.7L1524.8 131.4L1527.7 123.1L1530.9 120.5L1532.9 120.5L1535.8 121.4L1535.9 124.1L1535.5 125.7L1532.3 129.7L1531.0 132.0L1532.3 134.2L1539.5 127.4L1542.7 125.1L1545.4 125.5L1550.9 122.4L1561.8 121.8L1562.6 118.2L1564.9 116.6L1570.8 117.1L1582.6 120.2L1586.7 122.8L1592.9 125.3L1596.2 128.2L1610.1 133.5L1620.0 134.1L1624.9 131.6L1631.1 134.2L1634.4 137.1L1640.7 138.5L1647.2 139.4L1652.3 137.3L1664.9 136.6L1681.1 133.7L1690.6 134.4L1701.4 136.4L1709.1 141.4L1715.6 144.2L1719.5 147.1L1725.8 149.9L1739.4 157.8L1744.1 162.3L1752.5 168.5L1761.0 171.1L1765.6 177.5L1769.2 180.4L1778.0 191.3L1788.2 198.9L1795.0 206.5L1807.9 211.4L1813.0 219.5L1821.8 220.5L1825.5 221.7L1830.1 225.1L1836.4 227.0L1844.5 226.5L1853.6 226.9L1860.8 225.3L1878.1 228.3L1880.8 229.8L1884.2 233.2L1890.6 246.0L1894.3 260.3L1896.2 271.1L1900.5 279.6L1902.8 295.5L1904.8 300.5L1905.0 304.3L1906.7 305.2L1907.7 315.9L1907.3 320.2L1905.7 325.8L1905.6 328.3L1905.9 329.9L1905.1 332.2L1904.8 334.5L1906.6 339.5L1906.6 343.6L1904.4 348.5L1901.4 361.2L1893.8 382.5L1886.4 394.7L1876.2 407.2L1869.4 413.8L1866.8 414.5L1864.4 413.1L1866.1 416.6L1864.5 419.7L1857.8 428.9L1851.1 434.9L1844.1 445.5L1843.5 445.7L1834.6 449.8L1829.2 453.1L1822.5 459.1L1816.3 468.6L1815.0 469.9L1812.7 469.2L1812.7 474.0L1807.4 481.6L1805.8 482.7L1805.8 480.6L1806.8 478.9L1807.2 477.2L1807.1 475.1L1805.6 476.6L1802.5 482.4L1803.5 486.5L1801.2 492.9L1792.5 511.0L1781.7 526.3L1779.3 530.9L1770.3 541.2L1763.9 546.1L1762.1 546.2L1760.0 545.8L1759.0 537.9L1753.8 533.1L1752.3 532.2L1750.2 537.3L1748.5 538.7L1745.9 539.0L1748.6 541.2L1749.5 543.7L1746.7 548.9L1746.6 553.5L1741.7 558.6L1738.8 562.3L1737.4 567.0L1736.4 571.4L1738.7 570.2L1739.7 571.1L1740.4 572.4L1740.0 574.5L1738.4 578.3L1738.7 587.7L1738.1 589.8L1739.7 592.2L1741.4 588.2L1742.3 589.3L1737.7 614.6L1739.5 626.0L1740.1 638.9L1742.3 651.5L1744.6 662.8L1744.7 663.7L1741.5 676.7L1737.5 689.6L1735.1 700.2L1733.5 711.5L1731.9 717.0L1731.3 722.5L1733.2 735.8L1733.8 738.3L1728.9 744.2L1723.5 747.1L1720.5 749.9L1714.0 760.5L1710.4 776.3L1710.3 784.6L1712.0 802.1L1710.7 809.3L1708.7 814.0L1706.3 817.2L1699.9 820.9L1694.3 830.1L1691.9 839.8L1688.0 843.3L1687.3 848.6L1684.2 854.5L1676.2 863.2L1671.0 865.8L1668.4 868.1L1666.8 873.2L1661.8 881.6L1658.2 892.4L1659.0 896.2L1659.2 896.7L1660.5 909.3L1660.0 912.5L1655.1 916.0L1636.7 922.4L1631.8 925.1L1620.7 936.1L1620.2 938.6L1620.6 942.4L1622.3 944.5L1620.4 946.8L1618.3 950.9L1615.1 950.7L1596.8 950.7L1586.9 952.0L1581.7 951.7L1579.4 950.7L1576.8 949.1L1575.9 947.0L1577.4 943.8L1576.5 941.9L1573.8 941.9L1570.9 942.8L1570.3 944.8L1570.5 946.2L1571.6 948.1L1572.2 950.6L1571.0 952.7L1565.3 953.0L1558.7 955.0L1550.6 955.8L1544.1 957.2L1541.1 955.4L1544.1 954.5L1548.3 955.0L1552.9 953.5L1551.9 951.7L1545.4 949.5L1538.1 950.8L1534.0 953.6L1525.3 953.3L1514.5 955.3L1512.7 957.4L1513.0 961.4L1515.2 962.4L1517.2 964.2L1515.2 965.9L1513.3 966.6L1501.9 968.5L1491.4 976.4L1486.9 977.4L1483.1 980.9L1482.6 983.8L1481.5 985.6L1478.9 985.7L1473.4 984.1L1466.2 984.0L1461.2 985.3L1434.8 998.1L1425.3 1003.2L1414.5 1013.6L1396.4 1025.3L1386.7 1032.3L1385.0 1034.1L1383.4 1034.2L1380.4 1035.6L1381.7 1036.8L1383.7 1037.0L1382.8 1041.0L1379.1 1043.8L1371.9 1051.1L1370.3 1050.6L1372.6 1046.8L1369.0 1046.6L1363.8 1045.2L1361.7 1046.8L1363.0 1050.6L1360.9 1052.1L1357.5 1052.3L1354.2 1051.9L1350.7 1049.2L1352.3 1054.1L1359.7 1055.4L1362.8 1056.5L1364.0 1058.4L1358.2 1067.3L1353.3 1068.5L1352.9 1069.6L1355.5 1069.6L1356.9 1072.1L1355.2 1082.0L1352.9 1083.9L1351.4 1083.9L1350.0 1085.6L1352.0 1088.9L1353.9 1091.2L1353.6 1095.8L1352.9 1099.6L1352.9 1103.2L1355.3 1110.3L1356.2 1117.7L1357.2 1120.3L1357.8 1123.2L1356.2 1126.0L1357.1 1130.4L1354.3 1137.9L1355.8 1148.8L1355.2 1158.9L1354.0 1164.3L1352.3 1168.4L1348.1 1173.8L1348.0 1179.2L1339.1 1184.2L1329.1 1191.2L1320.1 1199.5L1310.1 1211.2L1298.6 1228.9L1288.1 1254.3L1275.3 1273.4L1270.1 1280.3L1263.2 1288.0L1254.0 1297.0L1241.6 1306.0L1228.0 1314.0L1223.1 1317.6L1218.4 1322.8L1217.2 1320.6L1218.2 1317.2L1217.7 1314.6L1217.5 1311.2L1220.3 1310.6L1224.3 1312.7L1226.3 1311.3L1227.9 1309.8L1232.8 1309.0L1242.1 1300.2L1249.1 1296.8L1253.1 1291.3L1253.7 1288.3L1253.5 1282.3L1255.8 1280.8L1260.9 1281.4L1261.9 1279.7L1261.4 1277.8L1262.3 1273.6L1269.2 1270.0L1272.4 1265.5L1271.4 1254.3L1272.5 1253.8L1275.4 1255.5L1276.7 1254.7L1278.1 1249.8L1277.4 1247.3L1274.1 1246.6L1262.7 1252.1L1259.0 1251.9L1258.4 1247.6L1252.8 1245.5L1250.6 1241.9L1250.1 1239.4L1248.1 1238.4L1248.2 1242.7L1248.8 1246.9L1253.7 1251.7L1252.5 1253.7L1250.1 1255.9L1248.5 1260.9L1248.6 1267.4L1247.3 1265.4L1245.6 1264.3L1244.9 1271.3L1241.6 1274.0L1240.6 1276.6L1241.4 1279.7L1239.7 1281.8L1231.3 1287.4L1223.0 1291.3L1221.1 1293.1L1220.3 1297.4L1219.0 1301.8L1215.2 1305.7L1212.2 1313.5L1212.3 1316.8L1213.3 1321.6L1214.9 1324.9L1212.3 1327.1L1209.0 1331.2L1206.3 1335.9L1199.7 1353.6L1193.9 1364.2L1189.4 1369.4L1183.1 1374.9L1165.1 1388.7L1164.1 1388.5L1161.5 1387.4L1159.2 1386.1L1158.8 1385.2L1158.5 1383.9L1158.8 1378.9L1158.8 1365.6L1159.5 1363.0L1160.6 1361.4L1164.2 1359.1L1167.6 1355.7L1171.4 1351.3L1175.0 1348.0L1173.7 1345.6L1170.7 1343.5L1165.5 1341.6L1160.4 1338.5L1155.9 1334.4L1153.9 1330.2L1152.0 1325.6L1150.1 1322.1L1149.6 1320.4L1147.8 1319.7L1144.9 1317.8L1143.2 1316.1L1140.6 1315.2L1136.0 1314.1L1131.1 1312.2L1125.2 1307.8L1120.9 1302.8L1118.7 1299.5L1116.4 1297.2L1104.2 1293.4L1098.6 1288.8L1096.4 1290.2L1093.1 1288.9L1089.8 1286.6L1088.8 1285.0L1087.5 1283.3L1086.2 1281.3L1085.3 1279.4L1082.0 1276.1L1077.7 1272.5L1075.8 1271.5L1075.0 1271.8L1074.0 1273.1L1073.4 1274.5L1071.8 1275.4L1069.8 1277.0L1067.6 1279.0L1065.0 1280.4L1061.9 1280.8L1059.8 1280.7L1059.4 1280.0L1059.3 1277.2L1060.0 1270.9L1058.3 1268.5L1055.8 1265.9L1052.9 1262.4L1043.7 1255.1L1031.2 1244.5L1026.7 1241.3L1022.5 1241.1L1018.7 1241.4L1015.2 1242.8L1012.5 1247.7L1011.5 1248.5L1004.7 1248.3L997.9 1247.6L995.6 1244.6L997.5 1242.6L1003.8 1238.3L1007.3 1234.5L1008.0 1231.2L1011.0 1228.1L1016.5 1225.5L1022.4 1220.5L1029.2 1213.3L1033.2 1208.1L1034.5 1204.6L1037.2 1202.0L1041.0 1200.2L1044.3 1196.3L1047.2 1190.4L1050.9 1185.7L1056.0 1182.3L1058.7 1179.4L1059.3 1177.2L1060.6 1175.7L1062.7 1175.0L1063.9 1173.9L1063.7 1172.1L1064.4 1170.9L1065.6 1170.2L1067.8 1170.5L1070.8 1171.5L1072.5 1171.3L1073.1 1169.8L1072.4 1168.1L1070.2 1166.2L1070.9 1164.1L1076.7 1160.8L1080.9 1159.5L1083.6 1157.4L1086.2 1154.1L1090.2 1151.7L1096.0 1150.5L1097.4 1149.2L1097.3 1147.6L1098.4 1146.5L1101.7 1145.6L1103.6 1144.1L1103.9 1141.7L1104.9 1139.6L1106.8 1137.6L1108.9 1136.9L1111.3 1137.4L1113.4 1136.7L1115.4 1134.6L1117.9 1133.7L1120.6 1133.9L1122.1 1133.4L1126.9 1132.5L1129.5 1130.8L1131.8 1127.0L1133.7 1125.6L1135.4 1126.5L1138.5 1125.2L1142.6 1121.8L1143.4 1121.8L1146.5 1120.2L1149.7 1114.4L1151.3 1110.6L1150.9 1107.4L1149.8 1105.1L1150.3 1101.8L1151.3 1092.7L1151.6 1089.0L1153.3 1086.4L1153.2 1083.9L1150.1 1078.1L1147.1 1073.1L1145.4 1064.6L1144.4 1061.3L1141.8 1060.4L1139.5 1057.6L1136.6 1057.4L1135.3 1056.3L1133.9 1055.4L1131.7 1055.6L1130.0 1057.3L1126.7 1057.4L1124.6 1058.0L1122.2 1059.5L1119.9 1058.9L1118.5 1057.5L1115.4 1057.5L1115.6 1051.8L1121.0 1043.1L1122.5 1039.1L1121.9 1036.8L1123.5 1028.8L1127.5 1015.0L1128.8 1006.1L1127.4 1001.8L1127.2 998.8L1129.4 996.3L1130.3 995.5L1125.2 992.5L1122.3 989.7L1118.9 987.6L1115.0 986.0L1113.1 986.7L1111.1 987.6L1107.4 989.1L1102.9 991.6L1100.7 992.6L1096.7 993.5L1092.2 994.3L1088.5 993.8L1085.3 993.3L1083.3 991.6L1082.3 988.2L1082.3 985.2L1081.6 980.9L1079.3 978.5L1078.4 976.6L1078.3 974.3L1078.6 971.8L1079.3 970.0L1078.8 967.6L1077.8 966.0L1078.1 963.2L1077.6 959.3L1076.0 956.9L1075.1 954.1L1075.1 951.3L1074.0 948.5L1073.8 945.4L1075.0 942.6L1075.2 939.8L1074.1 937.7L1071.8 936.5L1070.1 933.3L1069.9 929.1L1068.0 926.9L1066.0 925.0L1063.7 925.0L1060.3 923.9L1057.2 924.1L1052.4 923.9L1050.2 923.3L1048.9 921.8L1045.9 919.8L1044.1 916.3L1042.1 915.6L1039.1 916.7L1038.0 918.0L1036.8 919.9L1034.6 922.0L1031.9 921.9L1029.0 923.1L1026.1 923.3L1022.5 923.5L1018.8 922.4L1014.3 921.2L1010.4 920.5L1006.7 921.2L1004.3 920.5L1000.9 920.2L997.2 919.9L994.3 917.7L991.2 916.5L989.4 916.9L987.1 918.3L984.8 918.0L981.8 916.9L980.6 914.4L980.8 912.8L981.5 911.2L982.7 908.9L982.1 906.4L982.2 904.3L982.8 902.4L983.4 900.3L982.9 898.3L982.8 896.2L982.5 894.1L982.2 892.0L983.8 888.9L985.1 886.4L984.2 884.2L984.5 882.7L985.5 880.3L987.0 877.4L986.8 871.9L985.5 868.6L984.2 867.8L984.0 866.8L984.7 865.5L984.0 864.2L983.7 862.9L984.4 861.7L983.4 859.4L981.5 858.7L980.8 858.1L980.2 855.5L979.6 852.6L979.9 850.3L978.9 848.3L977.6 847.1L976.3 844.9L975.0 843.3L974.4 841.0L973.6 838.1L976.3 837.5L977.3 835.9L979.2 833.6L981.6 833.1L984.5 832.2L985.5 830.6L978.8 824.6L974.7 821.0L977.2 816.2L981.1 808.0L985.0 800.1L988.0 794.2L988.7 793.0L991.3 792.6L990.9 789.5L990.7 787.5L988.7 787.4L991.0 780.0L994.5 769.6L997.1 761.6L997.9 760.3L999.8 759.9L1000.2 759.0L997.9 757.7L996.5 755.2L993.6 748.2L988.8 737.0L988.4 733.0L986.7 730.5L983.8 731.4L980.4 730.5L971.7 724.5L966.1 721.1L964.2 719.2L963.4 713.0L961.6 706.1L960.9 697.6L961.2 695.5L966.0 689.1L966.0 685.8L966.4 683.0L966.2 680.7L964.9 680.7L963.1 681.6L960.2 682.4L958.5 682.5L941.8 681.9L922.6 681.2L906.8 680.6L892.9 680.1L892.5 674.5L891.8 665.2L891.2 658.6L890.4 648.1L884.7 641.5L878.8 634.4L876.7 632.6L883.9 632.4L889.1 632.2L888.0 613.1L886.5 611.2L885.0 605.0L884.2 601.6L881.6 598.7L881.0 595.5L881.4 593.4L882.9 592.1L883.9 588.8L883.2 585.5L881.6 582.5L879.7 579.6L876.2 577.7L871.1 574.5L863.4 570.3L856.9 567.4L854.8 567.7L843.4 568.9L839.5 569.5L836.9 568.8L828.4 568.9L825.0 566.6L822.2 564.0L816.2 557.3L815.3 554.0L813.0 552.9L809.4 553.4L805.8 552.9L798.9 550.1L792.6 547.3L789.4 547.4L786.5 545.6L781.6 541.3L779.3 539.6L778.3 537.4L777.3 534.1L775.3 533.4L772.7 534.0L770.0 535.7L766.1 534.6L761.3 531.5L758.3 529.1L756.6 528.0L752.4 526.3L748.5 526.0L742.5 528.4L737.6 527.5L729.8 526.5L723.2 524.8L720.7 520.2L719.4 517.1L715.5 515.2L712.4 512.9L708.6 509.4L706.8 508.2L703.4 507.2L700.3 506.0L700.0 503.7L698.8 500.8L698.5 500.1L696.4 496.5L695.4 496.2L694.2 496.9L693.5 497.5L692.6 496.8L692.3 495.2L692.9 492.6L691.8 489.9L688.7 487.1L687.2 484.2L687.0 481.2L686.3 479.2L685.1 478.2L684.4 476.4L684.3 473.9L685.1 470.8L687.0 467.4L686.6 462.0L683.9 454.8L682.4 449.6L682.1 446.4L682.6 444.0L684.1 441.8L687.5 436.1L688.0 431.8L687.0 426.9L686.9 423.3L687.6 420.6L686.4 417.3L684.1 414.2L682.6 414.1L680.3 414.9L677.7 417.6L674.5 418.1L671.8 416.4L663.0 417.1L649.4 418.8L644.0 420.5L640.8 421.2L637.1 421.8L630.9 424.9L615.6 436.8L612.4 438.5L608.8 438.7L606.7 440.4L603.4 441.6L596.7 446.3L593.3 450.1L591.1 453.5L588.5 453.7L586.7 452.8L580.3 453.2L577.1 454.4L573.7 457.7L569.4 463.7L567.5 465.4L564.0 467.2L560.0 468.6L555.1 470.8L552.8 471.0L550.9 471.3L549.2 470.4L548.6 468.2L546.0 466.8L540.0 466.1L530.9 464.6L521.6 464.3L516.8 464.4L513.1 464.5L506.4 463.7L501.5 463.5L497.4 465.7L491.2 468.3L488.4 469.0L486.3 469.1L484.3 468.8L482.0 467.4L478.7 464.2L476.2 465.4L474.3 466.8L474.3 459.9L474.3 449.6L474.5 440.5L474.5 433.2L474.5 424.7L474.5 418.7L476.2 416.4L477.4 413.9L476.1 410.4L476.3 407.3L477.2 405.2L478.4 403.0L475.6 404.1L474.5 404.7L473.0 406.3L469.7 408.5L467.4 410.7L464.7 412.4L461.2 416.4L458.3 418.5L455.3 419.9L450.4 424.5L446.4 425.4L435.7 426.1L424.5 426.1L414.3 426.1L412.7 426.0L412.8 422.2L413.1 419.5L409.5 416.7L409.4 413.2L408.4 410.8L407.2 407.8L404.8 406.0L401.5 405.2L395.9 403.6L387.5 401.9L379.4 401.8L371.7 402.0L376.4 396.1L381.2 390.2L381.0 385.0L377.1 380.5L375.1 377.8L371.9 373.9L367.9 371.2L365.8 367.7L365.9 365.6L365.6 364.2L364.0 363.3L362.6 362.1L360.4 360.7L358.0 358.8L358.0 356.9L357.1 354.9L355.5 352.5L355.5 350.6L354.2 347.7L352.7 345.6L351.2 344.1L348.9 342.1L349.1 340.5L350.8 339.7L351.4 337.8L351.2 335.9L349.3 334.8L347.2 334.1L344.2 330.7L342.1 329.0L340.7 327.9L340.0 326.7L340.7 325.9L341.7 324.7L341.9 322.9L341.4 321.1L341.4 319.5L342.9 319.1L344.3 319.3L345.9 318.4L347.8 318.0L350.1 317.8L351.2 316.7L351.1 314.8L349.6 311.2L348.3 309.6L347.8 307.4L348.9 303.1L349.6 300.3L352.2 297.4L360.0 291.2L367.1 286.9L370.4 286.5L373.0 284.9L374.5 282.5L375.0 279.8L374.5 277.6L373.2 274.2L371.8 270.0L370.5 267.6L371.7 264.8L373.5 260.9L377.3 255.1L380.9 248.8L381.2 247.0L381.6 243.2L383.3 235.3L384.2 231.1L383.8 229.4L384.5 228.0L386.8 226.9L392.1 225.8L395.7 223.4L401.2 219.1L405.9 214.4L409.7 212.9L416.7 208.5L420.8 205.8L422.2 204.9L426.2 203.0L433.3 202.3L439.2 201.5L442.5 200.3L447.3 199.7L450.6 198.2L454.2 198.2L461.1 196.7L463.4 194.5L465.4 191.8L468.0 189.5L471.2 188.9L474.6 189.4L478.8 189.3L483.8 188.6L486.3 190.4L487.3 192.5L490.5 194.7L492.6 194.6L494.8 194.2L497.8 196.0L499.8 195.8L501.1 194.7L501.4 192.0L502.1 190.6L503.6 182.4L506.0 168.7L508.2 156.3L510.8 142.6L513.2 128.5L515.8 114.1L518.0 102.3L519.7 92.3L520.8 86.1L522.6 77.9L523.3 70.8L524.0 68.8L523.6 67.0L522.0 64.5L522.0 63.5L522.3 62.0L522.0 60.8L520.4 59.5L519.3 58.6L518.3 57.5L517.8 55.9L517.0 54.3L516.7 52.6L515.5 51.2L515.2 49.5L515.9 47.9L516.4 46.2L515.9 44.6L515.5 42.7L514.7 41.0L513.4 39.8L510.0 38.6L506.9 35.7L503.1 33.1L498.2 28.2L497.2 25.9L497.2 19.5L497.4 12.6L497.7 2.2L497.8 -3.2L500.5 -3.5L503.0 -3.6L505.6 -4.0L507.7 -4.4L509.8 -5.1L511.2 -6.1L513.1 -6.7L514.5 -6.5L515.8 -7.3L517.4 -8.1L519.0 -8.8L521.1 -9.3L523.1 -8.1L524.3 -6.8L525.6 -6.1L526.9 -6.3L527.8 -6.1L528.6 -5.2L529.8 -5.1L531.5 -5.3L533.1 -5.5L533.8 -5.8L533.8 -6.4L533.5 -7.6L532.9 -8.6L533.4 -10.3L533.4 -12.3L533.5 -14.7L532.2 -16.1L531.1 -18.8L529.6 -20.9L527.5 -22.3L525.6 -22.9L523.9 -22.0L522.3 -21.8L521.1 -22.6L519.3 -22.7L517.2 -23.0L515.2 -23.3L511.3 -22.7L509.9 -23.4L508.0 -23.5L505.9 -22.7L506.0 -32.8L506.0 -42.3L506.0 -49.0L508.0 -48.9L510.5 -50.1L513.9 -50.3L516.8 -51.6L518.3 -51.6L521.1 -51.0L524.2 -49.7L527.2 -49.5L535.1 -49.5L543.5 -49.5L552.8 -49.5L562.3 -49.5L570.4 -49.5L573.0 -49.4L571.5 -51.7L569.8 -54.6L570.4 -56.8L571.2 -59.1L572.3 -60.3L574.8 -59.0L576.9 -55.2L578.7 -52.3L580.5 -50.8L582.6 -50.6L584.9 -51.1L587.4 -52.3L591.5 -57.7L595.6 -62.3L597.7 -63.8L600.0 -65.2L601.6 -65.7L603.9 -65.6L605.9 -64.3L607.2 -62.1L611.7 -54.5L615.2 -48.8L616.5 -45.2L616.5 -36.5L616.3 -28.8L616.7 -27.8L617.3 -27.5L625.0 -29.3Z","Bolivia":"M519.5 730.2L519.5 728.4L519.1 725.5L517.4 723.3L514.9 721.7L514.2 719.8L514.9 717.8L519.8 714.0L522.4 713.3L523.1 711.4L524.7 709.8L529.3 704.1L532.1 700.4L534.7 698.1L537.8 696.5L539.1 695.2L538.4 691.2L538.7 688.5L539.7 686.8L542.9 685.0L545.8 683.5L546.3 682.9L546.0 681.9L543.5 679.8L538.1 678.0L534.7 678.2L532.5 676.6L531.4 675.2L524.3 658.5L523.1 654.6L523.3 653.1L527.9 644.8L529.8 642.1L533.1 638.2L532.5 636.7L526.7 630.2L525.0 627.1L525.0 624.1L525.6 620.3L528.9 618.3L529.9 615.3L530.6 612.3L532.1 611.3L533.5 609.6L535.2 607.2L537.8 605.0L539.4 603.4L539.9 598.8L541.1 597.6L544.7 596.1L545.2 595.0L544.3 591.9L542.4 588.6L541.0 587.1L539.1 579.1L537.0 575.2L537.8 573.6L539.3 571.6L540.7 567.7L541.1 563.0L540.7 546.0L540.9 542.7L542.6 540.3L545.3 537.6L547.5 536.5L549.6 534.8L549.5 531.6L550.9 529.7L552.5 527.3L547.2 518.0L542.6 509.6L538.1 501.9L533.1 493.0L529.6 487.0L525.5 479.6L521.9 473.2L516.8 464.4L521.6 464.3L530.9 464.6L540.0 466.1L546.0 466.8L548.6 468.2L549.2 470.4L550.9 471.3L552.8 471.0L555.1 470.8L560.0 468.6L564.0 467.2L567.5 465.4L569.4 463.7L573.7 457.7L577.1 454.4L580.3 453.2L586.7 452.8L588.5 453.7L591.1 453.5L593.3 450.1L596.7 446.3L603.4 441.6L606.7 440.4L608.8 438.7L612.4 438.5L615.6 436.8L630.9 424.9L637.1 421.8L640.8 421.2L644.0 420.5L649.4 418.8L663.0 417.1L671.8 416.4L674.5 418.1L677.7 417.6L680.3 414.9L682.6 414.1L684.1 414.2L686.4 417.3L687.6 420.6L686.9 423.3L687.0 426.9L688.0 431.8L687.5 436.1L684.1 441.8L682.6 444.0L682.1 446.4L682.4 449.6L683.9 454.8L686.6 462.0L687.0 467.4L685.1 470.8L684.3 473.9L684.4 476.4L685.1 478.2L686.3 479.2L687.0 481.2L687.2 484.2L688.7 487.1L691.8 489.9L692.9 492.6L692.3 495.2L692.6 496.8L693.5 497.5L694.2 496.9L695.4 496.2L696.4 496.5L698.5 500.1L698.8 500.8L700.0 503.7L700.3 506.0L703.4 507.2L706.8 508.2L708.6 509.4L712.4 512.9L715.5 515.2L719.4 517.1L720.7 520.2L723.2 524.8L729.8 526.5L737.6 527.5L742.5 528.4L748.5 526.0L752.4 526.3L756.6 528.0L758.3 529.1L761.3 531.5L766.1 534.6L770.0 535.7L772.7 534.0L775.3 533.4L777.3 534.1L778.3 537.4L779.3 539.6L781.6 541.3L786.5 545.6L789.4 547.4L792.6 547.3L798.9 550.1L805.8 552.9L809.4 553.4L813.0 552.9L815.3 554.0L816.2 557.3L822.2 564.0L825.0 566.6L828.4 568.9L836.9 568.8L839.5 569.5L843.4 568.9L854.8 567.7L856.9 567.4L863.4 570.3L871.1 574.5L876.2 577.7L879.7 579.6L881.6 582.5L883.2 585.5L883.9 588.8L882.9 592.1L881.4 593.4L881.0 595.5L881.6 598.7L884.2 601.6L885.0 605.0L886.5 611.2L888.0 613.1L889.1 632.2L883.9 632.4L876.7 632.6L878.8 634.4L884.7 641.5L890.4 648.1L891.2 658.6L891.8 665.2L892.5 674.5L892.9 680.1L906.8 680.6L922.6 681.2L941.8 681.9L958.5 682.5L960.2 682.4L963.1 681.6L964.9 680.7L966.2 680.7L966.4 683.0L966.0 685.8L966.0 689.1L961.2 695.5L960.9 697.6L961.6 706.1L963.4 713.0L964.2 719.2L966.1 721.1L971.7 724.5L980.4 730.5L983.8 731.4L986.7 730.5L988.4 733.0L988.8 737.0L993.6 748.2L996.5 755.2L997.9 757.7L1000.2 759.0L999.8 759.9L997.9 760.3L997.1 761.6L994.5 769.6L991.0 780.0L988.7 787.4L990.7 787.5L990.9 789.5L991.3 792.6L988.7 793.0L988.0 794.2L985.0 800.1L981.1 808.0L977.2 816.2L974.7 821.0L978.8 824.6L985.5 830.6L984.5 832.2L981.6 833.1L979.2 833.6L977.3 835.9L976.3 837.5L973.6 838.1L974.4 831.3L973.6 825.5L972.9 824.0L961.1 817.0L950.4 810.7L936.4 802.5L918.4 802.7L899.7 802.9L882.0 806.6L864.4 810.3L856.2 812.0L839.5 815.4L829.7 817.0L827.1 823.7L823.4 833.6L819.5 839.5L815.2 845.6L809.0 854.2L809.0 864.7L809.0 874.6L804.5 888.6L800.9 900.5L797.3 912.1L794.9 920.0L794.0 922.0L793.4 921.4L790.3 919.0L787.4 914.5L786.7 912.5L786.2 912.4L769.2 912.5L753.0 912.7L751.4 913.6L748.9 913.6L747.2 912.7L745.6 912.8L743.2 913.7L741.0 915.5L734.7 927.4L731.7 932.4L729.4 937.0L727.6 944.8L727.1 946.1L725.0 943.4L722.2 936.2L720.9 932.2L719.0 927.6L715.8 921.8L711.9 920.0L709.6 919.5L706.3 918.3L700.3 916.9L697.7 916.7L680.5 916.5L679.2 916.4L672.6 917.0L669.2 916.6L665.6 913.3L657.6 907.6L656.1 905.8L653.0 904.6L651.2 904.5L650.2 905.6L648.7 910.4L647.1 914.7L645.4 917.2L639.8 918.9L634.5 920.8L631.6 921.3L630.0 923.4L629.3 926.4L628.0 929.1L620.3 933.2L618.6 934.9L617.8 938.9L613.6 943.9L612.1 945.8L605.5 947.2L596.7 948.7L591.7 948.6L588.2 948.2L587.2 947.3L584.8 945.9L584.5 944.3L584.3 942.1L585.1 938.1L584.8 932.5L582.0 926.0L582.2 924.0L581.9 920.8L580.5 914.8L576.9 911.8L576.0 906.9L575.6 902.5L572.5 897.0L572.1 890.1L572.1 884.1L567.5 877.2L562.6 869.8L558.7 868.9L557.7 868.0L557.3 865.9L557.1 862.6L557.4 860.6L560.4 857.4L560.6 856.9L560.0 856.3L552.2 851.4L550.2 850.0L549.6 848.3L549.6 846.7L551.5 845.1L552.5 844.0L550.7 840.5L550.8 837.5L549.6 836.1L549.8 835.1L550.9 834.2L556.0 833.2L557.6 830.1L557.6 827.5L556.8 825.6L552.1 820.9L552.1 820.1L557.0 813.6L560.6 809.3L561.5 808.4L561.2 807.5L560.3 806.3L558.1 804.7L555.1 802.9L552.8 800.7L549.6 797.4L545.6 794.6L542.7 791.9L541.3 789.6L541.3 787.2L540.9 783.2L539.0 776.9L538.4 772.6L537.5 767.8L536.8 764.7L536.3 761.8L535.0 758.5L534.2 756.1L535.2 754.4L536.4 753.2L536.3 752.3L528.8 748.9L527.5 748.0L525.7 741.0L520.3 734.9L519.5 730.2Z","stop:Lima":[218.3,508.8],"stop:Sacred Valley":[415.4,559.9],"stop:Cusco":[421.3,569.1],"stop:Cloud forest":[399.0,553.8]};
+  const STOP = {
+    lima: { name: 'Lima', alt: 150, at: GEO['stop:Lima'], ll: [-77.043, -12.046] },
+    valley: { name: 'Sacred Valley', alt: 2870, at: GEO['stop:Sacred Valley'], ll: [-72.116, -13.305] },
+    cusco: { name: 'Cusco', alt: 3399, at: GEO['stop:Cusco'], ll: [-71.967, -13.532] },
+    mp: { name: 'Machu Picchu', alt: 2430, at: GEO['stop:Cloud forest'], ll: [-72.525, -13.155] },
+  };
+  const LEGS = [
+    { from: 'lima', to: 'valley', mode: 'Flight + drive', time: 'about 3 h', text: 'Fly Lima to Cusco, then drive down into the valley, 500 m lower than the city and gentler for the first Andean nights.' },
+    { from: 'valley', to: 'mp', mode: 'Train', time: 'about 1 h 30 to 2 h', text: 'The train from Ollantaytambo along the Urubamba to Machu Picchu.', train: true, bend: 0.35 },
+    { from: 'mp', to: 'valley', mode: 'Train', time: 'about 1 h 30 to 2 h', text: 'Back up the river by train the same evening.', train: true, bend: 0.35 },
+    { from: 'valley', to: 'cusco', mode: 'Drive', time: 'about 1 h 30', text: 'Up to Cusco for three nights, the highest point of the trip.' },
+    { from: 'cusco', to: 'lima', mode: 'Flight', time: 'about 1 h 20', text: 'Back down to the coast for a last two nights at the table.' },
+  ];
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SVGNS = 'http://www.w3.org/2000/svg';
+  // The three Andean stops sit within 25 px of each other at country
+  // scale, so they are drawn again in a magnifying inset over the ocean.
+  const LOUPE = { cx: 150, cy: 662, r: 116, center: [-72.21, -13.34], k: 270 };
+  const inLoupe = (key) => key !== 'lima';
+  const loupeXY = (key) => { const [lon, lat] = STOP[key].ll; return [LOUPE.cx + (lon - LOUPE.center[0]) * LOUPE.k * 0.97, LOUPE.cy - (lat - LOUPE.center[1]) * LOUPE.k]; };
+  const xy = (key, preferLoupe) => preferLoupe && inLoupe(key) ? loupeXY(key) : STOP[key].at;
+  const curve = (a, b, bend) => { const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2; const dx = b[0] - a[0], dy = b[1] - a[1];
+    return `M${a[0]} ${a[1]} Q${mx - dy * bend} ${my + dx * bend} ${b[0]} ${b[1]}`; };
+  const legPath = (leg) => {
+    if (inLoupe(leg.from) && inLoupe(leg.to)) return { d: curve(loupeXY(leg.from), loupeXY(leg.to), leg.bend ?? 0.25), loupe: true };
+    return { d: curve(STOP[leg.from].at, STOP[leg.to].at, leg.from === 'lima' ? -0.18 : -0.22), loupe: false };
+  };
+
+  function renderMap() {
+    const m = $('map');
+    [...m.querySelectorAll(':scope > :not(title)')].forEach((n) => n.remove());
+    const nb = ['Ecuador', 'Colombia', 'Brazil', 'Bolivia', 'Chile'].map((n) => `<path class="country nb" d="${GEO[n]}"/>`).join('');
+    const labels = [['ECUADOR', 120, 40], ['COLOMBIA', 420, 30], ['BRAZIL', 540, 330], ['BOLIVIA', 545, 640], ['CHILE', 525, 778], ['PACIFIC OCEAN', 40, 400], ['AMAZON', 380, 230]]
+      .map(([t, x, y]) => `<text class="lbl" x="${x}" y="${y}">${t}</text>`).join('');
+    const [lx, ly] = STOP.lima.at;
+    const region = STOP.valley.at;
+    const ghosts = LEGS.map((l) => { const p = legPath(l); return `<path class="ghost" d="${p.d}"/>`; }).join('');
+    const legs = LEGS.map((l, i) => { const p = legPath(l); return `<path class="leg${l.train ? ' train' : ''}" id="leg-${i}" d="${p.d}"/>`; }).join('');
+    const loupeStops = ['valley', 'cusco', 'mp'].map((k) => { const [x, y] = loupeXY(k);
+      // Label placement per stop, kept inside the inset circle.
+      const lp = { valley: [10, 24, 'start'], cusco: [0, 26, 'middle'], mp: [12, -12, 'start'] }[k];
+      return `<circle class="stop" data-stop="${k}" cx="${x}" cy="${y}" r="7"/><text class="stop-lbl" x="${x + lp[0]}" y="${y + lp[1]}" text-anchor="${lp[2]}">${STOP[k].name}</text>`; }).join('');
+    m.insertAdjacentHTML('beforeend', `
+      ${nb}<path class="peru" d="${GEO.Peru}"/>${labels}
+      <line x1="${region[0]}" y1="${region[1]}" x2="${LOUPE.cx + LOUPE.r * 0.72}" y2="${LOUPE.cy - LOUPE.r * 0.69}" stroke="var(--ink)" stroke-width="0.8"/>
+      <circle cx="${region[0] + 4}" cy="${region[1] + 2}" r="16" fill="none" stroke="var(--ink)" stroke-width="0.8"/>
+      <defs><clipPath id="loupe-clip"><circle cx="${LOUPE.cx}" cy="${LOUPE.cy}" r="${LOUPE.r}"/></clipPath></defs>
+      <circle class="loupe-bg" cx="${LOUPE.cx}" cy="${LOUPE.cy}" r="${LOUPE.r}"/>
+      <text class="lbl" x="${LOUPE.cx}" y="${LOUPE.cy + LOUPE.r - 16}" text-anchor="middle">SACRED VALLEY AND CUSCO</text>
+      ${ghosts}${legs}
+      <circle class="stop" data-stop="lima" cx="${lx}" cy="${ly}" r="7"/>
+      <text class="stop-lbl" x="${lx - 14}" y="${ly + 5}" text-anchor="end">Lima</text>
+      <g clip-path="url(#loupe-clip)">${loupeStops}</g>
+      <circle class="loupe-ring" cx="${LOUPE.cx}" cy="${LOUPE.cy}" r="${LOUPE.r}"/>
+      <circle class="marker" id="marker" r="7" cx="${lx}" cy="${ly}"/>`);
+    LEGS.forEach((_, i) => { const el = $('leg-' + i); const len = el.getTotalLength(); el.style.strokeDasharray = el.classList.contains('train') ? '' : `${len}`; el.dataset.len = len; el.style.strokeDashoffset = el.classList.contains('train') ? '0' : `${len}`; el.style.opacity = '0'; });
+  }
+
+  function renderAltitude() {
+    const order = ['lima', 'valley', 'mp', 'cusco', 'lima'];
+    const W = 600, H = 150, top = 22, bottom = 118, max = 4500;
+    const x = (i) => 40 + i * ((W - 80) / (order.length - 1));
+    const y = (m) => bottom - (m / max) * (bottom - top);
+    const pts = order.map((k, i) => [x(i), y(STOP[k].alt)]);
+    const line = pts.map((p, i) => `${i ? 'L' : 'M'}${p[0]} ${p[1]}`).join(' ');
+    const limit = $('nogo').value.toLowerCase().includes('altitude');
+    $('alt').innerHTML = `
+      <path d="${line} L${pts[pts.length - 1][0]} ${bottom} L${pts[0][0]} ${bottom} Z" fill="var(--land)"/>
+      <path d="${line}" fill="none" stroke="var(--route)" stroke-width="1.6"/>
+      <line x1="30" x2="${W - 30}" y1="${y(4000)}" y2="${y(4000)}" stroke="${limit ? 'var(--error)' : 'var(--muted)'}" stroke-dasharray="4 4" stroke-width="1"/>
+      <text x="${W - 30}" y="${y(4000) - 6}" text-anchor="end">${limit ? 'YOUR LIMIT · 4,000 M' : '4,000 M'}</text>
+      ${pts.map((p, i) => `<circle cx="${p[0]}" cy="${p[1]}" r="3.5" fill="var(--route)"/>
+        <text class="name" x="${p[0]}" y="${bottom + 18}" text-anchor="middle">${STOP[order[i]].name}</text>
+        <text x="${p[0]}" y="${p[1] - 8}" text-anchor="middle">~${STOP[order[i]].alt.toLocaleString('en-GB')} M</text>`).join('')}`;
+  }
+
+  function highlight(stopKey) {
+    document.querySelectorAll('#map .stop').forEach((c) => c.classList.toggle('on', c.dataset.stop === stopKey));
+  }
+  function setMarker(stopKey) {
+    const [x, y] = xy(stopKey, true);
+    const mk = $('marker'); mk.setAttribute('cx', x); mk.setAttribute('cy', y);
+  }
+  function showLegsUpTo(n) {
+    LEGS.forEach((_, i) => { const el = $('leg-' + i); el.style.opacity = i <= n ? '1' : '0'; if (!el.classList.contains('train')) el.style.strokeDashoffset = i <= n ? '0' : el.dataset.len; });
+  }
+  function caption(day) {
+    const leg = day.leg ? LEGS[day.leg[0]] : null;
+    $('caption').innerHTML = `<strong>${day.t}.</strong> ${leg ? `${leg.mode}, ${leg.time}. ${leg.text}` : `${STOP[day.stop].name}, about ${STOP[day.stop].alt.toLocaleString('en-GB')} m.`}`;
+  }
+  function focusDay(i, quiet) {
+    const day = state.plan[i]; if (!day) return;
+    document.querySelectorAll('#p-days .day').forEach((li) => li.classList.toggle('on', +li.dataset.i === i));
+    const lastLeg = Math.max(-1, ...state.plan.slice(0, i + 1).flatMap((d) => d.leg ?? [-1]));
+    showLegsUpTo(lastLeg); highlight(day.stop); setMarker(day.stop); caption(day);
+  }
+  function wireDays() {
+    const list = $('p-days');
+    list.onclick = (e) => {
+      const add = e.target.closest('.add-place');
+      if (add) { const holder = add.parentElement.querySelector('.form-holder'); holder.innerHTML = holder.innerHTML ? '' : placeForm(add.dataset.day); holder.querySelector('input[name=name]')?.focus(); return; }
+      const rm = e.target.closest('.rm');
+      if (rm) { state.extras = state.extras.filter((x) => x.id !== rm.dataset.id); autosave(); openProposal(true); return; }
+      if (e.target.closest('[data-cancel]')) { e.target.closest('.form-holder').innerHTML = ''; return; }
+      if (e.target.closest('button, input, select, a, form')) return;
+      const li = e.target.closest('.day'); if (li) { stop(); focusDay(+li.dataset.i); } };
+    list.onsubmit = (e) => {
+      e.preventDefault();
+      const f = e.target; const data = Object.fromEntries(new FormData(f));
+      if (!data.name.trim()) { f.querySelector('.error').hidden = false; return; }
+      const url = /^https?:\/\//i.test(data.url.trim()) ? data.url.trim() : '';
+      state.extras.push({ id: uid(), day: +f.dataset.day, kind: data.kind, name: data.name.trim(), city: data.city.trim(), url, note: data.note.trim() });
+      autosave(); openProposal(true);
+    };
+    list.onkeydown = (e) => { if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('day')) { e.preventDefault(); stop(); focusDay(+e.target.dataset.i); } };
+  }
+
+  // Play: each leg draws itself while the marker travels along it.
+  let playing = null;
+  function stop() { if (playing) { cancelAnimationFrame(playing); playing = null; $('play').textContent = 'Play the journey'; } }
+  function play() {
+    if (playing) { stop(); return; }
+    if (reduce) { focusDay(state.plan.length - 1); return; }
+    $('play').textContent = 'Pause';
+    const seq = []; // [dayIndex, legIndex|null]
+    state.plan.forEach((d, i) => (d.leg ?? [null]).forEach((l) => seq.push([i, l])));
+    focusDay(0);
+    let k = 0, t0 = null;
+    const DWELL = 900, TRAVEL = 1800;
+    const step = (ts) => {
+      if (t0 === null) t0 = ts;
+      const [di, li] = seq[k];
+      const dur = li === null ? DWELL : TRAVEL;
+      const f = Math.min(1, (ts - t0) / dur);
+      if (li !== null) {
+        const el = $('leg-' + li), len = +el.dataset.len;
+        el.style.opacity = '1';
+        if (!el.classList.contains('train')) el.style.strokeDashoffset = `${len * (1 - f)}`;
+        const pt = el.getPointAtLength(len * f);
+        const mk = $('marker'); mk.setAttribute('cx', pt.x); mk.setAttribute('cy', pt.y);
+        if (f === 1) focusDay(di);
+      } else if (t0 === ts) focusDay(di);
+      if (f < 1) { playing = requestAnimationFrame(step); return; }
+      k += 1; t0 = null;
+      if (k < seq.length) playing = requestAnimationFrame(step); else { playing = null; $('play').textContent = 'Play again'; }
+    };
+    playing = requestAnimationFrame(step);
+  }
+  $('play').addEventListener('click', play);
+
+  function renderProposal(again) {
+    const start = d($('start').value), end = d($('end').value);
+    const nights = Math.round((end - start) / 86400000);
+    const people = state.travellers.length + (+$('children').value || 0);
+    const budgetIn = +$('budget').value;
+    const total = $('basis').value === 'pp' ? budgetIn * people : budgetIn;
+    const names = state.travellers.map((t) => t.name.trim()).filter(Boolean);
+    const nats = [...new Set(state.travellers.map((t) => t.nat))];
+
+    $('p-kicker').textContent = `${$('occasion').value === 'No particular occasion' ? 'A proposal' : $('occasion').value} · ${fmtY(start)} – ${fmtY(end)}`;
+    $('p-intro').textContent = `${nights} nights for ${names.join(' and ') || 'you'}: three nights of Lima's tables, the Sacred Valley on foot at your pace, and a cloud forest lodge with no road to it. The route stays below 4,000 m${$('nogo').value.toLowerCase().includes('altitude') ? ', as you asked' : ''}.`;
+
+    const flexTxt = { fixed: 'Exact dates', 3: '± 3 days', 7: '± 1 week', month: 'Any time that month' }[$('flex').value];
+    $('p-facts').innerHTML = [
+      ['Travellers', `${people} ${people === 1 ? 'person' : 'people'}`],
+      ['Dates', `${fmt(start)} – ${fmt(end)}`],
+      ['Flexibility', flexTxt],
+      ['Budget', `${eur(total)} total`],
+      ['From / to', `${esc($('from').value)} → ${esc($('to').value)}`],
+    ].map(([k, v]) => `<div><dt>${k}</dt><dd>${v}</dd></div>`).join('');
+
+    // travel advice: one block per nationality (illustrative colours)
+    const ADVICE = [
+      { c: 'var(--adv-yellow)', t: 'Yellow', who: 'Lima, Cusco, Sacred Valley', note: 'Security risks; take normal precautions. On the route.' },
+      { c: 'var(--adv-yellow)', t: 'Yellow', who: 'Cloud forest region', note: 'On the route.' },
+      { c: 'var(--adv-orange)', t: 'Orange', who: 'VRAEM valley and border areas', note: 'Only necessary travel. The route stays out of these areas; many policies cover less here.' },
+    ];
+    $('p-advice').innerHTML = nats.map((n) => `
+      <p class="eyebrow" style="margin-top:4px">${n} travellers · ${n === 'Dutch' ? 'Nederland Wereldwijd' : 'own government'} · checked ${fmtY(new Date(Date.UTC(2026, 10, 16)))} (example)</p>
+      ${ADVICE.map((a) => `<div class="adv-row"><span class="dot" style="background:${a.c}"></span><div><strong>${a.who}</strong><p>${a.note}</p></div><span class="tag" style="color:${a.c}">${a.t}</span></div>`).join('')}
+    `).join('') + `<p class="hint" style="margin-top:6px">Check what your travel insurance covers for each colour. We check the advice again a week before you leave and tell you if it changes.</p>`;
+
+    // ---- the journey: map, altitude, days ----
+    renderMap();
+    renderAltitude();
+    // Venues: real catalogue rows (MICHELIN Keys, World's 50 Best 2026 as held).
+    const H = (name, city, keys) => ['Hotel', `${name} · ${city}`, `<span class="gold">${keys} MICHELIN Key${keys === 1 ? '' : 's'}</span>`];
+    // Restaurants carry their catalogue code; the site links them to their page.
+    const LINKS = window.OTBT_LINKS || {};
+    const R = (when, name, mark, code) => [when, LINKS[code] ? `<a href="${LINKS[code]}">${name}</a>` : name, mark];
+    const plan = [
+      { off: 0, stop: 'lima', t: 'Arrive in Lima', p: `Overnight flight from ${esc($('from').value)}; a driver meets you. Three nights by the sea in Barranco.`, items: [H('Hotel B', 'Lima', 1)] },
+      { off: 1, stop: 'lima', t: 'Lima at the table', p: 'Market walk in the morning, then the two meals this trip is built around.', items: [R('Lunch', 'Mayta · Lima', 'The 50 Best #45', 'rest_0141'), R('Dinner', 'Central · Lima', 'The 50 Best Hall of Fame', 'rest_1578')] },
+      { off: 2, stop: 'lima', t: 'Lima, slowly', p: 'A free day along the Malecón, with one more serious dinner.', items: [R('Dinner', 'Kjolle · Lima', 'The 50 Best #7', 'rest_0135')] },
+      { off: 3, stop: 'valley', leg: [0], t: 'Into the Sacred Valley', p: 'Three nights low in the valley before the altitude of Cusco.', items: [H('Inkaterra Hacienda Urubamba', 'Sacred Valley', 2)] },
+      { off: 4, stop: 'valley', t: 'A day on foot', p: `${ADV[+$('adventure').value]}. A guide sets the pace; nothing above 4,000 m. Lunch at the edge of the Moray terraces.`, items: [R('Lunch', 'Mil · Cusco region', 'The 50 Best #95', 'rest_1381')] },
+      { off: 5, stop: 'mp', leg: [1, 2], t: 'Machu Picchu', p: 'Out on the morning train, a guided visit, back to the valley for dinner. Entry tickets are limited: the first thing to book.', items: [] },
+      { off: 6, stop: 'cusco', leg: [3], t: 'Cusco', p: 'Three nights in the old town, the highest point of the trip at about 3,400 m.', items: [H('Inkaterra La Casona', 'Cusco', 2)] },
+      { off: 7, stop: 'cusco', t: 'Cusco, on your own time', p: 'San Blas, the Inca walls, a slow afternoon. Kept free on purpose.', items: [] },
+      { off: 9, stop: 'lima', leg: [4], t: 'Back to Lima', p: 'Two last nights on the coast, at a different hotel.', items: [H('Atemporal by Andean', 'Lima', 1), R('Dinner', 'Mérito · Lima', 'The 50 Best #13', 'rest_0139')] },
+      { off: 10, stop: 'lima', t: 'A last lunch, and home', p: `Lunch, then the evening flight to ${esc($('to').value)}.`, items: [R('Lunch', 'Maido · Lima', 'The 50 Best Hall of Fame', 'rest_0134')] },
+    ];
+    const scale = Math.max(1, nights) / 11;
+    const extrasFor = (i) => state.extras.filter((x) => x.day === i);
+    $('p-nights').textContent = `${nights} nights · 3 bases and a day at Machu Picchu · tap a day to see it on the map`;
+    $('p-days').innerHTML = plan.map((day, i) => {
+      const dt = add(start, Math.min(nights, Math.round(day.off * scale)));
+      const legs = (day.leg ?? []).map((n) => LEGS[n]);
+      return `<li class="day" data-i="${i}" data-stop="${day.stop}" tabindex="0"><span class="when">${fmt(dt).toUpperCase()}</span><div>
+        <h4><span class="pin" aria-hidden="true"></span>${day.t}</h4>
+        ${legs.map((leg) => `<div class="leg-row"><span class="mode">${leg.mode}</span><span>${STOP[leg.from].name} → ${STOP[leg.to].name}, ${leg.time} (approx.)</span></div>`).join('')}
+        <p>${day.p}</p>
+        ${day.items.length ? `<div class="items">${day.items.map(([k, v, m]) => `<div class="item"><span class="kind">${k}</span><span>${v}</span>${m ? `<span class="est">${m}</span>` : ''}</div>`).join('')}</div>` : ''}
+        ${extrasFor(i).length ? `<div class="items">${extrasFor(i).map((x) => `<div class="extra"><span class="kind">${esc(x.kind)}</span><span>${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.name)}</a>` : esc(x.name)}${x.city ? ` · ${esc(x.city)}` : ''}</span><span class="mine">Added by you</span>${x.note ? `<span class="est">${esc(x.note)}</span>` : ''}<button type="button" class="linkbtn danger rm" data-id="${x.id}">Remove</button></div>`).join('')}</div>` : ''}
+        <button type="button" class="chip add-place" data-day="${i}">+ Add a place not in Mantelier</button>
+        <div class="form-holder"></div></div></li>`;
+    }).join('');
+    state.plan = plan;
+    wireDays();
+    focusDay(0, true);
+    if (!reduce && !again) setTimeout(() => play(), 500);
+
+    // booking timeline: no restaurant window is known yet, so none is
+    // invented. Each says so, and what happens once it is known.
+    const plain = (v) => v.replace(/<[^>]+>/g, '');
+    const tables = plan.flatMap((d, i) => d.items.filter(([k]) => k === 'Lunch' || k === 'Dinner').map(([k, v, m]) => ({ when: add(start, Math.min(nights, Math.round(d.off * scale))), meal: k, name: plain(v).split(' · ')[0], mark: m })));
+    $('p-windows').innerHTML = `
+      <div class="win"><strong>Machu Picchu entry and train · ${fmtY(add(start, Math.round(5 * scale)))}</strong><span class="mono">book first</span>
+        <p>Daily entry is capped and sells out in the dry season. Book as soon as the dates are fixed; the rest of the route can move around it.</p></div>
+      ${tables.map((t) => `<div class="win unknown"><strong>${t.name} · ${t.meal.toLowerCase()} ${fmtY(t.when)}</strong><span class="mono">window not known yet</span>
+        <p>${t.mark}. We don't hold this restaurant's booking window yet, so we won't guess one. We check its own booking page before you book, and from then on you get a reminder the day before it opens.</p></div>`).join('')}`;
+
+    // flights
+    $('p-cabin').textContent = $('cabin').value;
+    const from = esc($('from').value), to = esc($('to').value);
+    const direct = (c) => /amsterdam/i.test(c);
+    const flights = [
+      [direct(from) ? 'AMS – LIM' : `${from.slice(0, 3).toUpperCase()} – LIM`, `${from} to Lima`, fmtY(start), direct(from) ? 'Direct flights exist on this route, about 13 h. Arrives the same evening.' : 'One stop via a European hub, about 15–17 h.'],
+      ['LIM – CUZ', 'Lima to Cusco', fmtY(add(start, Math.round(3 * scale))), 'About 1 h 20, morning flights. Then the drive down to the valley.'],
+      ['CUZ – LIM', 'Cusco to Lima', fmtY(add(start, Math.round(9 * scale))), 'About 1 h 20.'],
+      [direct(to) ? 'LIM – AMS' : `LIM – ${to.slice(0, 3).toUpperCase()}`, `Lima to ${to}`, fmtY(add(start, Math.min(nights, Math.round(10 * scale)))), 'Evening departure, overnight, home the next afternoon.'],
+    ];
+    $('p-flights').innerHTML = flights.map(([code, what, when, meta]) => `<div class="flight"><span class="route-code">${code}</span><span class="what">${what}</span><span class="mono">${when}</span><p class="meta">${meta}</p></div>`).join('');
+
+    // booking checklist: everything to book, in the order to book it,
+    // with where the confirmation will turn up.
+    const T = (id, group, title, date, where, first) => ({ id, group, title, date, where, first });
+    const stayEnd = (from, n) => add(start, Math.min(nights, Math.round((from + n) * scale)));
+    const todos = [
+      T('mp', 'Book first', 'Machu Picchu entry tickets', fmtY(add(start, Math.round(5 * scale))), 'Ticket PDF from the official Machu Picchu ticket site, by email. Bring it on your phone and printed.', true),
+      T('train', 'Book first', 'Train Ollantaytambo – Machu Picchu, return', fmtY(add(start, Math.round(5 * scale))), 'E-ticket from the train operator, by email; show it with your passport.', true),
+      T('ins', 'Before you book', 'Travel and cancellation insurance', 'Before booking anything', 'Policy document from your insurer. Check that every stop on the route is covered for its travel-advice colour.', false),
+      T('entry', 'Before you book', 'Passport valid long enough, entry rules checked', 'Before booking flights', 'Your own passport. Entry rules on your government’s travel-advice page for Peru.', false),
+      ...flights.map(([code, what, when], i) => T('fl' + i, 'Flights', `${what} (${code})`, when, i === 0 || i === 3 ? 'Confirmation email from the airline: six-character booking code. Seats and luggage in the airline’s app.' : 'Confirmation email from the airline: booking code. Check the luggage allowance, often lower on domestic flights.', false)),
+      ...plan.flatMap((d) => d.items.filter(([k]) => k === 'Hotel').map(([, v]) => ({ d, name: v.split(' · ')[0] })))
+        .map(({ d, name }, i, arr) => T('h' + i, 'Hotels', name, `${fmt(add(start, Math.round(d.off * scale)))} – ${fmtY(stayEnd(d.off, (arr[i + 1]?.d.off ?? 11) - d.off))}`, 'Confirmation email from the hotel: reservation number and cancellation terms. Ask them for the airport or station transfer in the same email.', false)),
+      ...tables.map((t, i) => T('r' + i, 'Restaurants', `${t.name} · ${t.meal.toLowerCase()}`, fmtY(t.when), 'Confirmation email or text from the restaurant or its booking system. Note the deposit and how late you can cancel.', false)),
+      ...state.extras.map((x) => T('x' + x.id, x.kind === 'Hotel' ? 'Hotels' : x.kind === 'Restaurant' ? 'Restaurants' : 'On the ground', `${x.name}${x.city ? ' · ' + x.city : ''}`, fmtY(add(start, Math.round(plan[x.day].off * scale))), 'Your own confirmation. Not in Mantelier, so add the reference here to keep everything in one place.', false)),
+      T('drv', 'On the ground', 'Driver Cusco airport – Sacred Valley, and the transfers in Lima', fmtY(add(start, Math.round(3 * scale))), 'Driver’s name and phone number from the hotel or agency, by email or WhatsApp.', false),
+      T('guide', 'On the ground', 'Guide for Machu Picchu and the day on foot', fmtY(add(start, Math.round(4 * scale))), 'Meeting point and time, by email from the guide or the hotel.', false),
+    ];
+    let saved = {};
+    const todoKey = 'otbt-todo-' + (state.tripId || 'draft');
+    try { saved = JSON.parse(localStorage.getItem(todoKey) || '{}'); } catch { saved = {}; }
+    const groups = [...new Set(todos.map((t) => t.group))];
+    $('p-todo').innerHTML = groups.map((g) => `<div class="check-group"><h4>${g}</h4>${todos.filter((t) => t.group === g).map((t) => {
+      const st = saved[t.id] || {};
+      return `<div class="todo${st.done ? ' done' : ''}" data-id="${t.id}">
+        <input type="checkbox" id="todo-${t.id}" ${st.done ? 'checked' : ''}>
+        <label for="todo-${t.id}"><span class="t">${esc(t.title)}</span><span class="d">${t.date}</span>${t.first ? '<span class="first">Book first</span>' : ''}</label>
+        <p class="where">${t.where}</p>
+        <div class="ref"><input type="text" id="ref-${t.id}" aria-label="Booking reference or note for ${esc(t.title)}" placeholder="Booking reference, or where you saved it" value="${esc(st.ref || '')}"></div>
+      </div>`; }).join('')}</div>`).join('');
+    const updateCount = () => {
+      const done = todos.filter((t) => $('todo-' + t.id).checked).length;
+      $('todo-count').textContent = `${done} of ${todos.length} booked`;
+      $('todo-fill').style.width = `${(done / todos.length) * 100}%`;
+    };
+    const persist = () => {
+      const out = {};
+      todos.forEach((t) => { out[t.id] = { done: $('todo-' + t.id).checked, ref: $('ref-' + t.id).value }; });
+      try { localStorage.setItem(todoKey, JSON.stringify(out)); } catch { /* fine without */ }
+    };
+    $('p-todo').onchange = (e) => { const row = e.target.closest('.todo'); if (!row) return;
+      if (e.target.type === 'checkbox') { row.classList.toggle('done', e.target.checked); if (e.target.checked) $('ref-' + row.dataset.id).focus(); }
+      updateCount(); persist(); };
+    $('p-todo').oninput = (e) => { if (e.target.id?.startsWith('ref-')) persist(); };
+    updateCount();
+
+    // summary for WhatsApp and email
+    state.summary = [
+      `${state.tripName || 'Peru, from Lima’s tables to the Sacred Valley'}`,
+      `${fmtY(start)} – ${fmtY(end)} · ${people} ${people === 1 ? 'traveller' : 'travellers'}`,
+      '',
+      ...plan.map((day, i) => {
+        const dt = add(start, Math.min(nights, Math.round(day.off * scale)));
+        const bits = [...day.items.filter(([k]) => k !== 'Why').map(([k, v]) => `${k}: ${v.replace(/<[^>]+>/g, '').split(' · ')[0]}`), ...extrasFor(i).map((x) => `${x.kind}: ${x.name}`)];
+        return `${fmt(dt)} · ${day.t}${bits.length ? '\n   ' + bits.join('\n   ') : ''}`;
+      }),
+      '',
+      'Planned with Mantelier',
+    ].join('\n');
+
+    // budget: shares of the total, flights optional
+    const lines = [
+      ['International flights', $('flights').checked ? 0.30 : 0, $('cabin').value],
+      ['Hotels', 0.38, `${nights} nights, MICHELIN Key hotels throughout`],
+      ['Restaurants and wine', 0.12, 'six restaurants from The World\'s 50 Best'],
+      ['Domestic flights, trains, drivers and guides', 0.12, $('ground').value],
+      ['Machu Picchu and other entries', 0.05, ''],
+      ['Margin for the unexpected', 0.03, ''],
+    ].filter((l) => l[1] > 0);
+    const share = lines.reduce((s, l) => s + l[1], 0);
+    const rows = lines.map(([k, f, note]) => [k, total * f / share, note]);
+    const sum = rows.reduce((s, r) => s + r[1], 0);
+    $('p-budget-basis').textContent = $('basis').value === 'pp' ? `${eur(budgetIn)} per person × ${people}` : 'Total for everyone';
+    $('p-budget').innerHTML = `<thead><tr><th>Part</th><th class="num">Estimate</th></tr></thead>
+      <tbody>${rows.map(([k, v, note]) => `<tr><td>${k}${note ? `<br><span class="est">${esc(note)}</span>` : ''}</td><td class="num">${eur(v)} <span class="est">est.</span></td></tr>`).join('')}</tbody>
+      <tfoot><tr><td>Total, ${people} ${people === 1 ? 'person' : 'people'}${$('flights').checked ? ', flights included' : ''}</td><td class="num">${eur(sum)}</td></tr>
+        <tr><td>Per person</td><td class="num">${eur(sum / people)}</td></tr></tfoot>`;
+  }
+
+  renderMyTrips();
+  show(0);
+})();
+</script>
+</Base>
+
+<style is:global>
+.otbt {
+  --bg: #F4F0E7;          
+  --paper: #FBF8F1;       
+  --ink: #16302A;         
+  --ink-soft: #4D5A54;
+  --muted: #8A7F6C;
+  --rule: #D6CFBF;
+  --band: #16302A;        
+  --on-band: #F4F0E7;
+  --on-band-muted: rgba(244, 240, 231, 0.7);
+  --accent: #C9B48A;      
+  --gold: #AC8244;        
+  --sel-bg: #16302A;      
+  --sel-fg: #F4F0E7;
+  --land: #E6DFCF;        
+  --land-2: #EDE8DC;      
+  --sea: #DCE3DD;
+  --route: #16302A;
+  --adv-green: #5E8C4A; --adv-yellow: #D9B23C; --adv-orange: #D9772E; --adv-red: #B5402E;
+  --error: #A3362A;
+  --display: "Cormorant Garamond", Georgia, serif;
+  --body: "IBM Plex Sans", system-ui, sans-serif;
+  --util: "IBM Plex Mono", ui-monospace, monospace;
+}
+.otbt, .otbt * { box-sizing: border-box; }
+.otbt { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+.otbt .gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.otbt .col { max-width: 760px; margin: 0 auto; }
+.otbt h1, .otbt h2, .otbt h3 { font-family: var(--display); font-weight: 500; line-height: 1.1; margin: 0; text-wrap: balance; }
+.otbt .eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.otbt .mono { font-family: var(--util); font-size: 12px; letter-spacing: 0.06em; }
+.otbt .band { background: var(--band); color: var(--on-band); }
+.otbt .band .inner { padding-block: 28px 36px; display: flex; flex-direction: column; gap: 14px; }
+.otbt .brand { display: flex; align-items: center; gap: 10px; color: var(--accent); }
+.otbt .brand span { font-family: var(--util); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; }
+.otbt .band h1 { font-size: clamp(36px, 6vw, 54px); }
+.otbt .band p { margin: 0; color: var(--on-band-muted); max-width: 52ch; }
+.otbt .proto { display: inline-flex; align-self: flex-start; gap: 8px; align-items: center; border: 1px solid var(--accent); color: var(--accent); border-radius: 999px; padding: 3px 12px; font-size: 12px; }
+.otbt .steps { display: flex; gap: 6px; padding-block: 24px 8px; list-style: none; margin: 0; padding-left: 0; flex-wrap: wrap; }
+.otbt .steps li { flex: 1 1 0; min-width: 0; }
+.otbt .steps button { all: unset; cursor: pointer; display: block; width: 100%; }
+.otbt .steps .bar { height: 3px; background: var(--rule); border-radius: 2px; }
+.otbt .steps .lbl { display: block; font-size: 11px; color: var(--muted); margin-top: 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.otbt .steps li.done .bar, .otbt .steps li.on .bar { background: var(--ink); }
+.otbt .steps li.on .lbl { color: var(--ink); font-weight: 500; }
+.otbt .steps button:focus-visible .bar { outline: 2px solid var(--gold); outline-offset: 3px; }
+.otbt form { padding-block: 16px 48px; }
+.otbt fieldset { border: 0; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 22px; }
+.otbt legend { padding: 0; margin-bottom: 4px; }
+.otbt legend h2 { font-size: 32px; }
+.otbt .lead { color: var(--ink-soft); margin: 6px 0 0; }
+.otbt .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.otbt .field > label, .otbt .field > .q { font-weight: 500; font-size: 14px; }
+.otbt .hint { font-size: 13px; color: var(--muted); margin: -4px 0 0; }
+.otbt .row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.otbt input[type=text], .otbt input[type=number], .otbt input[type=date], .otbt select, .otbt textarea {
+  font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 10px 12px; width: 100%; min-width: 0; }
+.otbt textarea { min-height: 76px; resize: vertical; }
+.otbt input:focus-visible, .otbt select:focus-visible, .otbt textarea:focus-visible { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--ink); }
+.otbt .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.otbt .chip { font: inherit; font-size: 14px; cursor: pointer; border: 1px solid var(--rule); background: var(--paper); color: var(--ink); border-radius: 999px; padding: 7px 14px; }
+.otbt .chip[aria-pressed="true"] { background: var(--sel-bg); color: var(--sel-fg); border-color: var(--sel-bg); }
+.otbt .chip:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.otbt .check { display: flex; gap: 10px; align-items: flex-start; font-size: 14px; }
+.otbt .check input { margin-top: 4px; accent-color: var(--ink); }
+.otbt .range { display: flex; align-items: center; gap: 12px; }
+.otbt .range input { flex: 1; accent-color: var(--ink); }
+.otbt .range span { font-size: 13px; color: var(--muted); white-space: nowrap; }
+.otbt .traveller { display: grid; grid-template-columns: minmax(0, 1fr) 120px; gap: 12px; }
+.otbt .error { color: var(--error); font-size: 13px; margin: 0; }
+.otbt .note { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 12px 14px; font-size: 13px; color: var(--ink-soft); }
+.otbt .nav { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.otbt .btn { font: inherit; font-weight: 500; font-size: 14px; cursor: pointer; border-radius: 999px; padding: 10px 20px; border: 1px solid var(--ink); background: transparent; color: var(--ink); }
+.otbt .btn.primary { background: var(--ink); color: var(--bg); }
+.otbt .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.otbt .btn[hidden] { display: none; }
+.otbt .proposal { padding-block: 28px 64px; display: flex; flex-direction: column; gap: 40px; }
+.otbt .example { border: 1px dashed var(--muted); color: var(--ink-soft); border-radius: 6px; padding: 10px 14px; font-size: 13px; }
+.otbt .ptitle h2 { font-size: clamp(34px, 5vw, 46px); margin-top: 8px; }
+.otbt .ptitle p { color: var(--ink-soft); margin: 10px 0 0; max-width: 60ch; }
+.otbt .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 0; }
+.otbt .facts div { padding: 14px 12px 14px 0; }
+.otbt .facts dt { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.otbt .facts dd { margin: 4px 0 0; font-family: var(--display); font-size: 21px; line-height: 1.25; }
+.otbt section h3 { font-size: 26px; margin-bottom: 14px; }
+.otbt .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid var(--ink); padding-bottom: 8px; margin-bottom: 16px; }
+.otbt .sec-head h3 { margin: 0; }
+.otbt .advice { display: grid; gap: 10px; }
+.otbt .adv-row { display: grid; grid-template-columns: 14px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--rule); }
+.otbt .dot { width: 12px; height: 12px; border-radius: 50%; margin-top: 5px; }
+.otbt .adv-row strong { font-weight: 500; }
+.otbt .adv-row p { margin: 2px 0 0; font-size: 13px; color: var(--ink-soft); }
+.otbt .tag { font-size: 11px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 999px; padding: 2px 8px; white-space: nowrap; border: 1px solid currentColor; }
+.otbt #proposal { max-width: 1080px; margin: 0 auto; }
+.otbt #proposal > :not(.journey) { max-width: 760px; width: 100%; margin-left: auto; margin-right: auto; }
+.otbt .j-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 40px; align-items: start; }
+.otbt .j-map .sticky { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); display: flex; flex-direction: column; gap: 12px; }
+.otbt .map { display: block; width: 100%; max-width: 100%; height: auto; background: var(--sea); border-radius: 8px; }
+.otbt .map .country { stroke: var(--rule); stroke-width: 0.8; }
+.otbt .map .peru { fill: var(--land); stroke: var(--muted); stroke-width: 1; }
+.otbt .map .nb { fill: var(--land-2); }
+.otbt .map .lbl { font-family: var(--util); font-size: 11px; letter-spacing: 0.14em; fill: var(--muted); }
+.otbt .map .stop-lbl { font-family: var(--display); font-size: 19px; fill: var(--ink); paint-order: stroke; stroke: var(--sea); stroke-width: 4px; }
+.otbt .map .leg { fill: none; stroke: var(--route); stroke-width: 2.2; stroke-linecap: round; }
+.otbt .map .leg.train { stroke-dasharray: 2 6; }
+.otbt .map .ghost { fill: none; stroke: var(--route); stroke-opacity: 0.18; stroke-width: 2.2; }
+.otbt .map .stop { fill: var(--bg); stroke: var(--route); stroke-width: 2; transition: r 200ms ease; }
+.otbt .map .stop.on { fill: var(--route); }
+.otbt .map .marker { fill: var(--gold); stroke: var(--bg); stroke-width: 2; }
+.otbt .map .loupe-ring { fill: none; stroke: var(--ink); stroke-width: 1.2; }
+.otbt .map .loupe-bg { fill: var(--land); }
+.otbt .caption { min-height: 44px; margin: 0; font-size: 14px; color: var(--ink-soft); }
+.otbt .caption strong { color: var(--ink); font-weight: 500; }
+.otbt .alt { display: block; width: 100%; height: auto; }
+.otbt .alt text { font-family: var(--util); font-size: 10px; fill: var(--muted); letter-spacing: 0.06em; }
+.otbt .alt .name { font-family: var(--display); font-size: 13px; fill: var(--ink); letter-spacing: 0; }
+.otbt .day { transition: background-color 250ms ease; border-radius: 6px; }
+.otbt .day.on { background: var(--paper); }
+.otbt .day .pin { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--route); margin-right: 6px; vertical-align: 1px; }
+.otbt .leg-row { display: flex; gap: 8px; align-items: baseline; font-size: 13px; color: var(--muted); padding: 6px 0 0; }
+.otbt .leg-row .mode { font-family: var(--util); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; }
+@media (max-width: 860px) {
+.otbt .j-grid { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+.otbt .j-map .sticky { position: static; }
+}
+.otbt .days { list-style: none; margin: 0; padding: 0; }
+.otbt .day { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.otbt .day .when { font-family: var(--util); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; padding-top: 4px; }
+.otbt .day h4 { font-family: var(--display); font-weight: 500; font-size: 22px; margin: 0; line-height: 1.2; }
+.otbt .day p { margin: 4px 0 0; color: var(--ink-soft); font-size: 14px; }
+.otbt .items { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+.otbt .item { display: flex; gap: 10px; align-items: baseline; font-size: 14px; flex-wrap: wrap; }
+.otbt .kind { font-family: var(--util); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); min-width: 72px; }
+.otbt .gold { color: var(--gold); letter-spacing: 0.08em; }
+.otbt .why { font-size: 13px; color: var(--muted); font-style: italic; font-family: var(--display); font-size: 16px; }
+.otbt table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.otbt th, .otbt td { text-align: left; padding: 10px 8px 10px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.otbt th { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+.otbt td.num, .otbt th.num { text-align: right; padding-right: 0; }
+.otbt tfoot td { font-weight: 500; border-bottom: 0; border-top: 1px solid var(--ink); }
+.otbt .est { font-size: 11px; color: var(--muted); }
+.otbt .over { color: var(--error); }
+.otbt .windows { display: grid; gap: 10px; }
+.otbt .win { background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: 14px 16px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 16px; align-items: baseline; }
+.otbt .win p { margin: 0; font-size: 13px; color: var(--ink-soft); grid-column: 1 / -1; }
+.otbt .actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.otbt .flights { display: grid; gap: 0; }
+.otbt .flight { display: grid; grid-template-columns: 110px minmax(0, 1fr) auto; gap: 4px 16px; padding: 14px 0; border-bottom: 1px solid var(--rule); align-items: baseline; }
+.otbt .flight .route-code { font-family: var(--util); font-size: 15px; letter-spacing: 0.08em; }
+.otbt .flight .what { font-family: var(--display); font-size: 20px; line-height: 1.2; }
+.otbt .flight .meta { grid-column: 2 / -1; font-size: 13px; color: var(--ink-soft); margin: 0; }
+.otbt .incl { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+.otbt .incl h4 { font-family: var(--body); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.otbt .incl ul { margin: 0; padding: 0; list-style: none; }
+.otbt .incl li { padding: 8px 0 8px 22px; border-bottom: 1px solid var(--rule); position: relative; font-size: 14px; }
+.otbt .incl li::before { position: absolute; left: 0; top: 8px; font-family: var(--util); color: var(--muted); }
+.otbt .incl .yes li::before { content: '✓'; color: var(--ink); }
+.otbt .incl .no li::before { content: '–'; }
+.otbt .win.unknown { background: transparent; }
+.otbt .mytrips { padding-block: 20px 0; display: flex; flex-direction: column; gap: 8px; }
+.otbt .trip-row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; padding: 10px 14px; background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; }
+.otbt .trip-row .name { font-family: var(--display); font-size: 19px; flex: 1; min-width: 0; }
+.otbt .trip-row .when { font-family: var(--util); font-size: 11px; color: var(--muted); }
+.otbt .linkbtn { font: inherit; font-size: 13px; background: none; border: 0; padding: 4px 2px; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.otbt .linkbtn.danger { color: var(--error); }
+.otbt .tools { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.otbt .tools .status { font-size: 13px; color: var(--muted); }
+.otbt .panel { background: var(--paper); border: 1px solid var(--rule); border-radius: 8px; padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+.otbt .panel h4 { font-family: var(--display); font-weight: 500; font-size: 22px; margin: 0; }
+.otbt .panel .row2 { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+.otbt .panel .row2 > * { flex: 1 1 180px; min-width: 0; }
+.otbt .share-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.otbt .share-opt { border: 1px solid var(--rule); border-radius: 6px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: var(--bg); }
+.otbt .share-opt strong { font-weight: 500; }
+.otbt .share-opt a.btn { text-align: center; text-decoration: none; }
+.otbt .summary { font-family: var(--util); font-size: 12px; white-space: pre-wrap; background: var(--bg); border: 1px solid var(--rule); border-radius: 6px; padding: 10px; max-height: 180px; overflow: auto; user-select: all; }
+.otbt .add-place { margin-top: 10px; }
+.otbt .editing .add-place, .otbt .editing .rm { display: inline-flex; }
+.otbt .add-place, .otbt .rm { display: none; }
+.otbt .extra { display: flex; gap: 10px; align-items: baseline; font-size: 14px; flex-wrap: wrap; }
+.otbt .extra .mine { font-size: 11px; color: var(--muted); border: 1px dashed var(--muted); border-radius: 999px; padding: 1px 8px; }
+.otbt .place-form { margin-top: 10px; }
+.otbt .editing-note { display: none; font-size: 13px; color: var(--ink-soft); }
+.otbt .editing .editing-note { display: block; }
+.otbt .progress { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+.otbt .progress .track { flex: 1; height: 4px; background: var(--rule); border-radius: 2px; overflow: hidden; }
+.otbt .progress .fill { height: 100%; background: var(--ink); width: 0; transition: width 300ms ease; }
+.otbt .progress span { font-family: var(--util); font-size: 12px; color: var(--muted); white-space: nowrap; }
+.otbt .check-group h4 { font-family: var(--body); font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin: 20px 0 4px; }
+.otbt .todo { display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 4px 12px; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.otbt .todo input[type=checkbox] { width: 18px; height: 18px; margin: 3px 0 0; accent-color: var(--ink); }
+.otbt .todo label { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; cursor: pointer; }
+.otbt .todo .t { font-family: var(--display); font-size: 19px; line-height: 1.25; }
+.otbt .todo .d { font-family: var(--util); font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+.otbt .todo .first { font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--error); }
+.otbt .todo .where { grid-column: 2; font-size: 13px; color: var(--ink-soft); margin: 0; }
+.otbt .todo .ref { grid-column: 2; display: none; }
+.otbt .todo .ref input { font-size: 13px; padding: 7px 10px; }
+.otbt .todo.done .t { text-decoration: line-through; text-decoration-thickness: 1px; color: var(--muted); }
+.otbt .todo.done .ref { display: block; }
+.otbt .todo.done .first { display: none; }
+@media (max-width: 560px) {
+.otbt .flight { grid-template-columns: minmax(0, 1fr) auto; }
+.otbt .flight .route-code { grid-column: 1 / -1; }
+.otbt .flight .meta { grid-column: 1 / -1; }
+}
+@media (max-width: 560px) {
+.otbt .day { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+.otbt .traveller { grid-template-columns: minmax(0, 1fr) 96px; }
+.otbt .steps .lbl { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+.otbt .view { animation: in 260ms ease-out; }
+@keyframes in { from { opacity: 0.4; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+}
+</style>

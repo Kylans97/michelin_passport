@@ -18,14 +18,14 @@ import Mark from './Mark.astro';
   </div>
   <div class="wrap base">
     <span>© {new Date().getFullYear()} Mantelier</span>
-    <!-- A wink, not a section: no link and no explanation until it exists. -->
-    <span class="compass" aria-label="Off the beaten track, coming later">
+    <!-- A wink more than a section: the way into the trip planner. -->
+    <a class="compass" href="/off-the-beaten-track">
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true">
         <circle cx="12" cy="12" r="9.5" />
         <path d="M15.5 8.5 13.4 13.4 8.5 15.5 10.6 10.6Z" />
       </svg>
       <span class="util">Off the beaten track · 64°08′N</span>
-    </span>
+    </a>
   </div>
 </footer>
 
@@ -42,5 +42,6 @@ import Mark from './Mark.astro';
     padding-top: 14px; padding-bottom: 28px; border-top: 1px solid var(--on-green-rule); color: var(--on-green-muted); font-size: 12px;
   }
   .compass { display: inline-flex; align-items: center; gap: 7px; color: var(--on-green-accent); }
+  .compass:hover { color: var(--ivory); text-decoration: none; }
   .compass .util { font-size: 10px; }
 </style>
