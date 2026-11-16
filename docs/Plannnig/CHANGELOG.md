@@ -8,6 +8,14 @@ The format follows Keep a Changelog.
 
 ## Unreleased
 
+---
+
+## v1.6.0 (35) — 2026-11-17
+
+A new version, not another 1.5.7 build: it brings Trains & Ships, the wishlist month with booking-window reminders, the regional 50 Best lists and Guía Repsol in the app, and the database-side hardening of four app-only rules. Merged into main on 2026-11-17 from `claude/w50b-2026`, `claude/compassionate-diffie-ce76ef`, `claude/guide-inventory`, `claude/booking-windows` and `claude/trains-and-ships`; the one code conflict, in `wishlist_screen.dart`, joins both sides (planned months and journeys load side by side, each failing on its own). `flutter analyze` clean, `flutter test` 2,891 passing on the merged tree.
+
+**Ledger: 159, local and remote in agreement.** Before the merge, production held 8 migrations main didn't have (`20261101390000` to `20261101500000`), all applied from their own branches; the merge closes that. Schema diff before the push, on all 159 migrations replayed on a scratch stack (own project id and ports, so the other sessions' local stacks were untouched): the replay came up clean, and the dumps differ in one line only, `EXTRACT(day …)` against `EXTRACT("day" …)` in `wishlist_planned_month_check`, the same expression quoted differently by two Postgres versions. Storage and auth: the buckets, the `storage`/`auth` policies and RLS hash identical; production has three triggers on `storage.buckets` the replay doesn't (`protect_active_lifecycle_states`, `wake_lifecycle_on_policy_write`, `wake_lifecycle_on_versioning_enable`), which come from the platform's newer storage service, not from a migration, like `enforce_versioning_status_transition` before them.
+
 ### Changed
 
 - **Plainer copy on the hidden site** (product owner, 2026-11-16: "de teksten die jij hebt geschreven minder AI achtig maakt, zoals die \"-\" verwijderen"). Page titles now use "|" instead of an em dash. The em dash is gone from the one notification sentence that used it. Intros, descriptions and the Off the beaten track prototype now say plainly what is there, without phrases like "worth travelling for", "behind the pass" or "seen from the kitchen and from the table". Date ranges, flight routes and the "—" shown for an empty score keep their dashes; there they are typography, not style. Only copy we wrote changed: article bodies, venue text and guide data are untouched. Checked by a full build and by reading the titles and the planner page in the output.
