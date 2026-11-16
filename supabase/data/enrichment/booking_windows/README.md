@@ -1,8 +1,8 @@
-# Booking windows — collection plan (not started)
+# Booking windows — collection plan
 
 Planned 2026-11-16, alongside `supabase/migrations/20261101400000_add_wishlist_month_and_booking_windows.sql`.
-**Nothing here has been researched or imported.** This is the plan and an
-empty staging file, for review before a run starts.
+**Nothing here has been imported.** The Netherlands was researched on 2026-11-16 (`RUN_LOG.md`); staged, awaiting review. This is the plan and the
+staging file. The staging file has extra columns beyond the table below: `has_active_manager`, `result` and `platform_seen` (the platform as seen, when the enum says `other`).
 
 ## Why
 
