@@ -1,0 +1,96 @@
+# Builds the hidden new public site (site-next/) from live Supabase data
+# and deploys it to the `next` preview of the Cloudflare Pages project,
+# https://next.mantelier.pages.dev. Never to `main`: that is mantelier.app,
+# which still serves site/ until launch.
+#
+# Every three hours a new article or event appears without anyone
+# deploying. A run whose output is identical to the last deployed one
+# skips the deploy, so the Pages history only grows when content changed.
+#
+# Scheduled and manual runs only exist once this file is on the default
+# branch (GitHub's rule); until then a push to the site branch runs it.
+name: Hidden site (site-next)
+
+on:
+  schedule:
+    - cron: '17 */3 * * *'
+  workflow_dispatch:
+  push:
+    branches: [main, claude/site-next]
+    paths: ['site-next/**', '.github/workflows/site-next.yml']
+
+concurrency:
+  group: site-next
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: site-next
+    env:
+      # Set by the product owner in the repository's secrets: a Cloudflare
+      # API token limited to Pages edit on this account. Without it the
+      # build still runs as a check, and the deploy is skipped.
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: def0797bc70e73b89f2ce9e4c365f20d
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: site-next/package-lock.json
+
+      - run: npm ci --no-audit --no-fund
+
+      # Resized photos from earlier runs, so a photo is fetched from
+      # Supabase storage once, not on every build.
+      - uses: actions/cache@v4
+        with:
+          path: site-next/node_modules/.astro
+          key: site-next-astro-${{ github.run_id }}
+          restore-keys: site-next-astro-
+
+      - run: npm run build
+
+      - name: Fingerprint the output
+        id: fingerprint
+        run: echo "hash=$(find dist -type f -print0 | sort -z | xargs -0 sha256sum | sha256sum | cut -c1-40)" >> "$GITHUB_OUTPUT"
+
+      - name: Was this exact output deployed already?
+        id: deployed
+        uses: actions/cache/restore@v4
+        with:
+          path: site-next/.deployed
+          key: site-next-deployed-${{ steps.fingerprint.outputs.hash }}
+          lookup-only: true
+
+      - name: Deploy to the hidden preview
+        if: env.CLOUDFLARE_API_TOKEN != '' && steps.deployed.outputs.cache-hit != 'true'
+        run: npx --yes wrangler@3 pages deploy dist --project-name mantelier --branch next --commit-dirty=true
+
+      - name: Remember this output as deployed
+        if: env.CLOUDFLARE_API_TOKEN != '' && steps.deployed.outputs.cache-hit != 'true'
+        run: echo "${{ steps.fingerprint.outputs.hash }}" > .deployed
+
+      - if: env.CLOUDFLARE_API_TOKEN != '' && steps.deployed.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: site-next/.deployed
+          key: site-next-deployed-${{ steps.fingerprint.outputs.hash }}
+
+      - name: Note a skipped deploy
+        if: env.CLOUDFLARE_API_TOKEN == '' || steps.deployed.outputs.cache-hit == 'true'
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::notice::No CLOUDFLARE_API_TOKEN secret: built as a check, not deployed."
+          else
+            echo "::notice::Output unchanged since the last deploy: nothing to deploy."
+          fi

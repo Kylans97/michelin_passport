@@ -13,6 +13,15 @@ npm run build      # into dist/
 
 ## Deploy (hidden preview only)
 
+Automatic: `.github/workflows/site-next.yml` builds from live Supabase
+data every three hours (and on every push to this folder) and deploys to
+the `next` preview when the output changed. It needs the repository
+secret `CLOUDFLARE_API_TOKEN` (Cloudflare → My Profile → API Tokens, a
+custom token with Account · Cloudflare Pages · Edit); without it the
+workflow only builds. Schedules run only once the workflow is on `main`.
+
+By hand:
+
 ```
 npm run build
 npx wrangler@3 pages deploy dist --project-name mantelier --branch next
