@@ -16,12 +16,17 @@ import '../../styles/account.css';
     <div class="canvas-box" data-box>
       <canvas data-canvas aria-hidden="true"></canvas>
       <div class="pins" data-pins></div>
+      <div class="controls" role="group" aria-label="Globe controls">
+        <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+        <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
+        <button type="button" class="whole" data-whole>Whole globe</button>
+      </div>
       <div class="card" data-card hidden>
         <button class="close" type="button" data-close aria-label="Close">×</button>
         <div data-card-body></div>
       </div>
     </div>
-    <p class="hint wrap">Drag to turn the globe; scroll or pinch to zoom.</p>
+    <div class="wrap"><p class="hint">Drag to turn the globe; scroll or pinch to zoom. Tap a pin for your visits there.</p></div>
   </section>
 
   <div class="wrap account-body">
@@ -39,7 +44,7 @@ import '../../styles/account.css';
   .kicker a { text-decoration: underline; text-underline-offset: 3px; }
   h1 { font-size: clamp(40px, 5.6vw, 68px); }
   .sub { color: var(--on-green-muted); margin: 10px 0 0; }
-  .canvas-box { position: relative; height: min(72vh, 760px); min-height: 380px; touch-action: none; cursor: grab; user-select: none; }
+  .canvas-box { position: relative; height: min(86vh, 900px); min-height: 420px; touch-action: none; cursor: grab; user-select: none; }
   .canvas-box:active { cursor: grabbing; }
   canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
   .pins { position: absolute; inset: 0; pointer-events: none; }
@@ -81,6 +86,14 @@ import '../../styles/account.css';
   .card { max-height: 60%; overflow-y: auto; }
   .card :global(.saved-meta a) { text-decoration: underline; text-underline-offset: 3px; }
   .hint { color: var(--on-green-muted); font-size: 12px; margin: 0; }
+  .controls { position: absolute; right: max(16px, calc((100% - var(--measure)) / 2 + var(--gutter))); top: 16px; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
+  .controls button { min-width: 36px; height: 36px; border-radius: 999px; border: 1px solid var(--on-green-rule); background: rgba(14, 36, 31, 0.72); color: var(--ivory); font: 400 18px var(--body); cursor: pointer; padding: 0 12px; }
+  .controls button:hover { border-color: var(--on-green-accent); }
+  .controls .whole { font-size: 12px; letter-spacing: 0.02em; }
+  @media (max-width: 760px) {
+    .canvas-box { height: auto; min-height: 0; aspect-ratio: 1 / 1.08; }
+    .controls { top: auto; bottom: 10px; flex-direction: row; }
+  }
   .places { max-width: 880px; }
   h2 { margin-bottom: 12px; }
 </style>
@@ -112,6 +125,7 @@ import '../../styles/account.css';
   let camera: Camera = { latitude: 30, longitude: 10, zoom: 1 };
   let idle = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   let frame = 0;
+  let home: Camera = camera;
   let clusters: ReturnType<typeof clusterPins<Place>> = [];
 
   function describe(p: Place): string {
@@ -246,6 +260,13 @@ import '../../styles/account.css';
     draw();
   }, { passive: false });
   $('[data-close]').addEventListener('click', () => { card.hidden = true; });
+  document.querySelectorAll<HTMLButtonElement>('[data-zoom]').forEach((b) => b.addEventListener('click', () => {
+    flyTo(clampCamera({ ...camera, zoom: camera.zoom * (b.dataset.zoom === 'in' ? 2 : 0.5) }));
+  }));
+  $('[data-whole]').addEventListener('click', () => {
+    card.hidden = true;
+    flyTo({ ...home, longitude: camera.longitude, latitude: home.latitude });
+  });
   new ResizeObserver(() => draw()).observe(box);
 
   async function main() {
@@ -271,8 +292,11 @@ import '../../styles/account.css';
       visited = new Set(passport.countryCodes);
       const n = places.length, c = passport.countryCodes.length;
       $('[data-summary]').textContent = n ? `${n} place${n === 1 ? '' : 's'} in ${c} countr${c === 1 ? 'y' : 'ies'}` : 'Nothing on your globe yet';
-      camera = fitCamera(places.map((p) => [p.latitude, p.longitude]), camera);
-      if (camera.zoom > 1.2) idle = false;
+      // Opens on the whole globe, turned towards the member's places; a
+      // pin, the list or the zoom buttons take it closer.
+      const fit = fitCamera(places.map((p) => [p.latitude, p.longitude]), camera);
+      home = clampCamera({ latitude: Math.max(-35, Math.min(35, fit.latitude)), longitude: fit.longitude, zoom: 1 });
+      camera = home;
 
       const list = $('[data-list]');
       for (const p of places.slice().sort((a, b) => a.name.localeCompare(b.name))) {
@@ -284,6 +308,7 @@ import '../../styles/account.css';
         button.style.fontFamily = 'var(--display)';
         button.style.fontSize = '22px';
         button.style.color = 'var(--green)';
+        button.style.textAlign = 'left';
         button.addEventListener('click', () => {
           box.scrollIntoView({ behavior: 'smooth', block: 'center' });
           flyTo(clampCamera({ latitude: p.latitude, longitude: p.longitude, zoom: Math.max(camera.zoom, 4) }), () => openCard([p]));
